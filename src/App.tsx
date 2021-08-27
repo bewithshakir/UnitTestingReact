@@ -1,19 +1,14 @@
 import React from 'react';
-import {Input} from './components/UIComponents/Input/Input';
+import { Input } from './components/UIComponents/Input/Input';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Input/>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <Input />
+        <h1>
           Learn React
-        </a>
+        </h1>
       </header>
     </div>
   );

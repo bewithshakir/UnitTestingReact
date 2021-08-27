@@ -1,7 +1,6 @@
-body {
-    margin: 0;
-    font-family: 'Arial';
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    background-color: aqua;
-}
+@import "./abstract/mixins";
+@import "./abstract/variables";
+
+@import "./base/colors";
+@import "./base/typography";
+@import "./base/utilities";

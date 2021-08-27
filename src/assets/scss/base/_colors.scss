@@ -1,1 +1,34 @@
-
+.text {
+    &-primary {
+      color: $color-primary-blue !important;
+    }
+    &-secondary {
+      color: $color-secondary-orange !important;
+    }
+  }
+.bg {
+    &-light {
+      background-color: $color-lightgray-4 !important;
+    }
+    &-primary {
+      background-color: $color-primary-blue !important;
+    }
+    &-secondary {
+      background-color: $color-gray !important;
+    }
+    &-secondary-lighter {
+      background-color: $color-lightergray !important;
+    }
+    &-secondary-light {
+      background-color: $color-lightgray !important;
+    }
+  }
+.border {
+    &-primary {
+      border-color: $color-primary-blue !important;
+    }
+    &-gray {
+      border-color: $color-gray !important;
+    }
+  }
+  
