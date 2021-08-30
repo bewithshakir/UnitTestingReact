@@ -1,0 +1,10 @@
+{
+  "email" : "E-mail" ,
+  "content" : "Apprendre Réagir",
+  "english" : "Anglais",
+  "french" : "français",
+  "spanish" : "Espanol",
+  "buttons":{
+    "ok" : "d'accord"
+  }
+}

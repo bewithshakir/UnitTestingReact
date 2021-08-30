@@ -1,0 +1,10 @@
+{
+  "content" : "Learn React",
+  "email" : "Email" ,
+  "english" : "English",
+  "french" : "French",
+  "spanish" : "Spanish",
+  "buttons":{
+    "ok" : "OK"
+  }
+}
