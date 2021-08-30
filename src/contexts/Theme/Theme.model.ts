@@ -1,4 +1,4 @@
-import { Color } from '../../models/color.model';
+import { Color } from './color.pallate';
 
 export type ThemeType = 'UK' | 'USA';
 
