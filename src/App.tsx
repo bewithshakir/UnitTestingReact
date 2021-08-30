@@ -1,15 +1,25 @@
 import React from 'react';
-import { Input } from './components/UIComponents/Input/Input';
+import { useTheme } from './contexts/Theme/Theme.context';
+import { Content } from './components/UIComponents/Content/Content.component';
+import { Footer } from './components/UIComponents/Footer/Footer.component';
+import bg from './assets/images/bg_shapes.svg';
 
 function App() {
+  const { theme } = useTheme();
   return (
-    <div className="App">
-      <header className="App-header">
-        <Input />
-        <h1>
-          Learn React
-        </h1>
-      </header>
+    <div
+      className={'app'}
+      style={{
+        ...theme
+      } as React.CSSProperties}
+    >
+      <div className={'app__main'}>
+        <Content />
+        <Footer />
+      </div>
+      <div className={'app__bg'}>
+        <img src={bg} alt={'bg'} />
+      </div>
     </div>
   );
 }
