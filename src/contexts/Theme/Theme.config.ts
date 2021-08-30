@@ -1,4 +1,4 @@
-import { Color } from './color.pallate';
+import { Color } from './color.palette';
 import { ThemeType, Theme } from './Theme.model';
 
 export const THEMES: Record<ThemeType, Theme> = {
