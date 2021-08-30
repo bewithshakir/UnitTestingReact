@@ -1,4 +1,4 @@
-import { Color } from './color.pallate';
+import { Color } from './color.palette';
 
 export type ThemeType = 'UK' | 'USA';
 
