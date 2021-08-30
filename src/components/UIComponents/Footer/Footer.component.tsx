@@ -1,13 +1,13 @@
 import React from 'react';
-import logoWhite from '../../../assets/images/logo_white.svg';
-import logoViolet from '../../../assets/images/logo_violet.svg';
+import logoOne from '../../../assets/images/Shell Taup logo.svg';
+import logoTwo from '../../../assets/images/Shell Taup logo2.svg';
 import { useTheme } from '../../../contexts/Theme/Theme.context';
 
 import './Footer.style.scss';
 
 export const Footer: React.FC = () => {
   const { themeType } = useTheme();
-  const logoSrc = themeType === 'UK' ? logoWhite : logoViolet;
+  const logoSrc = themeType === 'UK' ? logoOne : logoTwo;
 
   return (
     <div className={'footer'}>

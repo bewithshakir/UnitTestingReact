@@ -30,14 +30,14 @@ export const Content: React.FC = () => {
           theme={theme}
           onClick={() => setCurrentTheme('USA')}
         >
-          Light theme
+          USA theme
         </Button>
         <Button
           type={'secondary'}
           theme={theme}
           onClick={() => setCurrentTheme('UK')}
         >
-          Dark theme
+          UK theme
         </Button>
       </div>
     </div>
