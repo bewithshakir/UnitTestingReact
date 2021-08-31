@@ -21,6 +21,7 @@ export const ThemeProvider: React.FC = ({ children }) => {
     return savedTheme
       ? JSON.parse(savedTheme) : 'USA';
   }
+
   useEffect(() => {
     localStorage.setItem('theme', JSON.stringify(currentTheme))
   }, [currentTheme])
