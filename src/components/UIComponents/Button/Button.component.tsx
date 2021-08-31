@@ -1,23 +1,24 @@
 import React from 'react';
-
-import { Theme } from '../../../contexts/Theme/Theme.model';
+import { Button as ButtonField } from "@material-ui/core";
 
 import './Button.style.scss';
 
 type ButtonType = 'primary' | 'secondary';
 
-interface ButtonProps {
+interface ButtonFieldProps {
   type: ButtonType;
-  theme: Theme;
+  disabled?: boolean;
   onClick: (...args: any[]) => void;
 }
 
-export const Button: React.FC<ButtonProps> = ({ theme, type, onClick, children }) => (
-  <button
-    className={`button button--${type}`}
+export const Button: React.FC<ButtonFieldProps> = ({ type, disabled, onClick, children }) => (
+  <ButtonField
+    variant="contained"
+    disabled={disabled}
+    className={`btn btn-${type}`}
+    style={{}}
     onClick={onClick}
-    style={{ ...theme as React.CSSProperties }}
   >
     {children}
-  </button>
+  </ButtonField>
 )
