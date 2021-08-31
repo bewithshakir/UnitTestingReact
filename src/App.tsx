@@ -1,28 +1,29 @@
 import React from 'react';
-import { Input } from './components/UIComponents/Input/Input';
-import { useTranslation } from "react-i18next";
-import { namespaces } from "./i18n/i18n.constants";
+import { useTheme } from './contexts/Theme/Theme.context';
+import { Content } from './components/UIComponents/Content/Content.component';
+import { Footer } from './components/UIComponents/Footer/Footer.component';
+import bg from './assets/images/bg_shapes.svg';
 
 function App() {
-  const { t, i18n } = useTranslation(namespaces.pages.simple);
-  console.log(t("buttons.ok"))
-  const changeLanguage = (language: string) => () => {
-    i18n.changeLanguage(language);
-  };
+  const { theme } = useTheme();
   return (
-    <div className="App">
-      <header className="App-header">
-        <Input />
-        <h1>
-        {t("content")}
-        </h1>
-      <button>{t("buttons.ok")}</button>
-      <button onClick={changeLanguage("en")}>{t("english")}</button>
-      <button onClick={changeLanguage("es")}>{t("spanish")}</button>
-      <button onClick={changeLanguage("fr")}>{t("french")}</button>
-      </header>
+    <div className="App"
+    style={{
+      ...theme
+    } as React.CSSProperties}
+    >
+      <div>
+          <div className={'app__main'}>
+        <Content />
+        <Footer />
+      </div>
+      <div className={'app__bg'}>
+        <img src={bg} alt={'bg'} />
+      </div>
     </div>
-  );
+      </div>
+  )
 }
+
 
 export default App;

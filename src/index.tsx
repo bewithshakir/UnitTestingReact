@@ -1,14 +1,20 @@
-import React from 'react';
+import React , {Suspense}from 'react';
 import ReactDOM from 'react-dom';
 import "./assets/scss/main.scss";
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import "./i18n/i18n"
+import { ThemeProvider } from './contexts/Theme/Theme.context';
+
 
 ReactDOM.render(
-  <React.Suspense fallback={<>Loading...</>}>
+  <React.StrictMode>
+    <Suspense fallback={<>Loading...</>}>
+    <ThemeProvider>
       <App />
-  </React.Suspense>,
+    </ThemeProvider>
+   </Suspense>
+  </React.StrictMode>,
   document.getElementById('root')
 );
 
