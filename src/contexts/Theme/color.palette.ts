@@ -2,22 +2,10 @@ export enum Color {
 
   // main Colors
   primaryDark = '#003C88',
-  primaryMedium = '#003C88',
-  primaryMediumLight = '#003C88',
-  primaryLight = '#003C88',
-  primaryExtraLight = '#003C88',
 
   secondaryDark = '#FBCE07',
-  secondaryMedium = '#FBCE07',
-  secondaryMediumLight = '#FBCE07',
-  secondaryLight = '#FBCE07',
-  secondaryExtraLight = '#FBCE07',
 
   tertiaryDark = '#DD1D21',
-  tertiaryMedium = '#DD1D21',
-  tertiaryMediumLight = '#DD1D21',
-  tertiaryLight = '#DD1D21',
-  tertiaryExtraLight = '#DD1D21',
 
   // Neutral or Universal Colors
   universalWhite = '#FFFFFF',

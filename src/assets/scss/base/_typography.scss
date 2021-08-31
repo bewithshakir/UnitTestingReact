@@ -29,9 +29,9 @@ h3 {
 .h2,
 .h3 {
   font-weight: normal;
-  color: $color-black;
+  color: var(--Black);
   &-primary{
-    color: $color-primary-blue;
+    color: var(--Black);
     &-bold{
         font-weight: bold;
     }
@@ -44,5 +44,5 @@ h3 {
 
 p {
   font-size: 1rem;
-  color: $color-black;
+  color: var(--Black);
 }
