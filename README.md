@@ -1,6 +1,10 @@
 # Readme will be updated soon
 
 
-# To test this application 
+# To run test cases written in this application 
+Go to the Repository Directory: 
  For test - Enter *npm test* command to verify the test results.
  For coverage - Enter *npm test -- --coverage* or *npm run coverage* command, after running successfully, it will create coverage folder in the directory. When you open coverage/index.html in the browser you will be able to see all the information related code coverage.
+
+ # To Play with the UI Components(StoryBook)
+ Go to the Repository Directory and Enter *npm run storybook*
