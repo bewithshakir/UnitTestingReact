@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = {
     stories: ["../src/**/*.stories.tsx"],
     addons: [
@@ -31,6 +33,11 @@ module.exports = {
       })
   
       config.module.rules.push(
+        {
+          test: /\.scss$/,
+          use: ['style-loader', 'css-loader?url=false', 'sass-loader'],
+          include: path.resolve(__dirname, '../'),
+        },
         {
           test: /.svg$/,
           use: ['@svgr/webpack'],
