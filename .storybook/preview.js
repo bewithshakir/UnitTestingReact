@@ -1,19 +1,16 @@
-import React from "react";
-import { ThemeProvider, useTheme } from '../src/contexts/Theme/Theme.context';
+import React, { Fragment } from "react";
+import { ThemeProvider } from '../src/contexts/Theme/Theme.context';
 import ThemeSelect from "./ThemeSelect";
 
-const ThemeChanger = ({ children }) => {
-    const { theme } = useTheme();
-
-    return (
-        <>
+const ThemeChanger = ({ children }) => (
+        <Fragment>
             <ThemeProvider>
                 <ThemeSelect>
                     {children}
                 </ThemeSelect>
             </ThemeProvider>
-        </>
-    );
-};
+        </Fragment>
+);
+
 
 export const decorators = [(Story) => <ThemeChanger><Story /></ThemeChanger>];
