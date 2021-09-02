@@ -1,0 +1,25 @@
+.MuiInputBase-input.Mui-disabled {
+    background: #F7F7F7 0% 0% no-repeat padding-box;
+    opacity: 1;
+}
+
+.MuiFormLabel-root{
+    color: #404040 !important;
+}
+
+.MuiFormLabel-root.Mui-focused {
+    color: #404040!important;
+}
+
+.MuiInputBase-input:invalid {
+    box-shadow: none;
+    border: 2px solid #DD1D21;
+}
+
+.MuiFormHelperText-error{
+    color:#DD1D21 !important;
+}
+
+.super{
+    font-size: 1em;
+}
