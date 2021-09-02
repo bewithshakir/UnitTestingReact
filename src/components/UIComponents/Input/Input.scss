@@ -1,23 +1,23 @@
 .MuiInputBase-input.Mui-disabled {
-    background: #F7F7F7 0% 0% no-repeat padding-box;
+    background: var(--White) 0% 0% no-repeat padding-box;
     opacity: 1;
 }
 
 .MuiFormLabel-root{
-    color: #404040 !important;
+    color: var(--Darkgray) !important;
 }
 
 .MuiFormLabel-root.Mui-focused {
-    color: #404040!important;
+    color: var(--Darkgray)!important;
 }
 
 .MuiInputBase-input:invalid {
     box-shadow: none;
-    border: 2px solid #DD1D21;
+    border: 2px solid var(--Tertiary);
 }
 
 .MuiFormHelperText-error{
-    color:#DD1D21 !important;
+    color: var(--Tertiary) !important;
 }
 
 .super{
