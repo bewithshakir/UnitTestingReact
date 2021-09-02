@@ -21,8 +21,7 @@ export const Footer: React.FC = () => {
           Save
         </Button>
         <Button
-          type={'save'}
-          disabled
+          type={'primary'}
           onClick={() => { }}
         >
           Save

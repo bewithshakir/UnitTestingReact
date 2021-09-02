@@ -9,18 +9,22 @@ interface ButtonFieldProps {
   disabled?: boolean;
   variant?: 'text' | 'outlined' | 'contained';
   startIcon?: React.ReactNode;
+  style?: React.CSSProperties;
+  children: React.ReactNode;
   onClick: (...args: any[]) => void;
 }
 
-export const Button: React.FC<ButtonFieldProps> = ({ type, disabled, variant = "contained", startIcon, onClick, children }) => (
-  <ButtonField
-    variant={variant}
-    disabled={disabled}
-    className={`btn btn-${type}`}
-    style={{}}
-    onClick={onClick}
-    startIcon={startIcon}
-  >
-    {children}
-  </ButtonField>
-)
+export const Button: React.FC<ButtonFieldProps> = ({ style, type, disabled, variant = "contained", startIcon, onClick, children }) => {
+  return (
+    <ButtonField
+      variant={variant}
+      disabled={disabled}
+      className={`btn btn-${type}`}
+      onClick={onClick}
+      style={{ ...style }}
+      startIcon={startIcon}
+    >
+      {children}
+    </ButtonField>
+  )
+}
