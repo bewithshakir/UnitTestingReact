@@ -1,18 +1,32 @@
 div{ 
 .btn {
   border-radius: 0%;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Arial, Helvetica, sans-serif !important;
   font-weight: bold;
   height: 50px;
   text-transform: capitalize;
   font-size: 16px;
   letter-spacing: 0px;
+  box-shadow: none !important;
   &-primary {
     background-color: var(--Blue-Btn);
     border: 0px;
     color: var(--White);
   }
   &-secondary {
+    background-color: var(--Save-Btn);
+    border: 0px;
+    color: var(--Darkgray);
+    &:hover{
+      background-color: var(--Gray);
+      color: var(--Save-Btn);
+    }
+    &:disabled{
+      background-color: var(--Lightgray_2);
+      color: var(--Lightergray);
+    }
+  }
+  &-save {
     width: 200px;
     background-color: var(--Save-Btn);
     border: 0px;
@@ -20,6 +34,35 @@ div{
     &:hover{
       background-color: var(--Gray);
       color: var(--Save-Btn);
+    }
+    &:disabled{
+      background-color: var(--Lightgray_2);
+      color: var(--Lightergray);
+    }
+  }
+  &-edit {
+    width: 120px;
+    background-color: var(--Save-Btn);
+    border: 0px;
+    color: var(--Darkgray);
+    &:hover{
+      background-color: var(--Gray);
+      color: var(--Save-Btn);
+    }
+    &:disabled{
+      background-color: var(--Lightgray_2);
+      color: var(--Lightergray);
+    }
+  }
+  &-delete {
+    width: 200px;
+    background-color: var(--Delete-Btn);
+    border: 0px;
+    color: var(--White);
+    &:hover{
+      background-color: transparent;
+      border: 1px solid var(--Delete-Btn);
+      color: var(--Delete-Btn);
     }
     &:disabled{
       background-color: var(--Lightgray_2);
