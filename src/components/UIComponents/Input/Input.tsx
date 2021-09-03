@@ -53,6 +53,7 @@ const useStyles = makeStyles((theme: Theme) =>
 
 interface props {
     name?: string;
+    id?:string;
     label: string;
     placeholder?: string;
     description?: string;
@@ -69,16 +70,16 @@ interface props {
     onBlur?: (...args: any[]) => void;
   }
 
-export const TextField: React.FC<props> = (props:props) => {
+ const TextField: React.FC<props> = (props:props) => {
     const classes = useStyles();
     return(
         <Fragment>
         <FormControl className={classes.margin}>
-        <InputLabel shrink htmlFor="validation-outlined-input" aria-labelledby={props.label} aria-required={props.required}>
+        <InputLabel shrink htmlFor={props.id || "input"} aria-labelledby={props.label} aria-required={props.required}>
           <b>{props.label.toUpperCase()}{props.required && props.label && (<span className='super'>*</span>)}</b>
         </InputLabel>
         <Input 
-            id="validation-outlined-input"
+            id={props.id || "input"}
             aria-describedby={props.description}
             name={props.name} 
             value={props.value} 
@@ -104,3 +105,5 @@ export const TextField: React.FC<props> = (props:props) => {
         </Fragment>
         )
 }
+
+export default TextField;

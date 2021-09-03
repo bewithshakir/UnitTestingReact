@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useTheme } from './contexts/Theme/Theme.context';
 import { Content } from './components/UIComponents/Content/Content.component';
 import { Footer } from './components/UIComponents/Footer/Footer.component';
-import {TextField as Input } from './components/UIComponents/Input/Input';
+import Input  from './components/UIComponents/Input/Input';
 import bg from './assets/images/bg_shapes.svg';
 
 function App() {
