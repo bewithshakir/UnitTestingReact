@@ -34,7 +34,7 @@ const Input = withStyles((theme: Theme) =>
         background: 'var(--White) 0% 0% no-repeat padding-box',
         color: 'var(--Darkgray)',  
         border: '1px solid var(--Gray)',
-      }
+      },
     },
   }),
 )(InputBase);
@@ -53,13 +53,20 @@ const useStyles = makeStyles((theme: Theme) =>
 
 interface props {
     name?: string;
-    label: String;
-    description?: String;
+    label: string;
+    placeholder?: string;
+    description?: string;
     disabled?: boolean;
     required?: boolean;
+    autoComplete?:string;
+    classes?:object;
+    multiline?:boolean;
+    type?:string;
     error?: boolean;
-    value?: String;
+    value?: string;
+    helperText?:string
     onChange?: (...args: any[]) => void;
+    onBlur?: (...args: any[]) => void;
   }
 
 export const TextField: React.FC<props> = (props:props) => {
@@ -67,11 +74,32 @@ export const TextField: React.FC<props> = (props:props) => {
     return(
         <Fragment>
         <FormControl className={classes.margin}>
-        <InputLabel shrink htmlFor="validation-outlined-input">
+        <InputLabel shrink htmlFor="validation-outlined-input" aria-labelledby={props.label} aria-required={props.required}>
           <b>{props.label.toUpperCase()}{props.required && props.label && (<span className='super'>*</span>)}</b>
         </InputLabel>
-        <Input name={props.name} value={props.value} id="validation-outlined-input" aria-describedby="component-text" disabled={props.disabled} required={props.required || props.error} onChange={props.onChange}/>
-        {props.description && (<FormHelperText id="component-text" className={props.error ? 'MuiFormHelperText-error' : '' }>{props.description}</FormHelperText>)}
+        <Input 
+            id="validation-outlined-input"
+            aria-describedby={props.description}
+            name={props.name} 
+            value={props.value} 
+            disabled={props.disabled} 
+            placeholder={props.placeholder}
+            required={props.required}
+            aria-required={props.required}
+            autoComplete={props.autoComplete}
+            classes={props.classes}
+            multiline={props.multiline}
+            type={props.type}
+            error={props.error} 
+            onChange={props.onChange}
+            onBlur={props.onBlur}
+            />
+        {props.helperText && (
+            <FormHelperText 
+                id={props.description} 
+                className={props.error ? 'MuiFormHelperText-error' : '' }>
+                    {props.helperText}
+            </FormHelperText>)}
         </FormControl>
         </Fragment>
         )

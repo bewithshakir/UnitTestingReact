@@ -1,5 +1,7 @@
 .MuiInputBase-input.Mui-disabled {
-    background: var(--White) 0% 0% no-repeat padding-box;
+    background: var(--Lightgray_4) 0% 0% no-repeat padding-box !important;
+    //border: 1px solid var(--Lightgray_2) !important;
+    color: var(--Lightergray) !important;  
     opacity: 1;
 }
 
@@ -11,7 +13,7 @@
     color: var(--Darkgray)!important;
 }
 
-.MuiInputBase-input:invalid {
+.Mui-error .MuiInputBase-input{
     box-shadow: none;
     border: 2px solid var(--Tertiary);
 }

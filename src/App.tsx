@@ -25,12 +25,14 @@ function App() {
         onChange={handleChange}
         value={form.userName}
         description=''
+        error
        />
        <Input name='email'
        label='Email'
         onChange={handleChange}
         value={form.email}
         description=''
+        required
        />
         <Footer />
       </div>
