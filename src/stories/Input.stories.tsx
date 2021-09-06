@@ -15,7 +15,8 @@ Primary.args = {
   label: "Contact Name",
   onChange: e => e.target.value,
   value : onchange,
-  description: ''
+  width: 16,
+  helperText: ''
 };
 
 export const Disabled = Template.bind({});
@@ -32,7 +33,7 @@ Error.args = {
   onChange: e => e.target.value,
   value : onchange,
   error: true,
-  description: 'Message'
+  helperText: 'Message'
 };
 
 export const Required = Template.bind({});
@@ -41,5 +42,14 @@ Required.args = {
   onChange: e => e.target.value,
   value : onchange,
   required: true,
-  description: 'Message'
+  helperText: 'Message'
+};
+
+export const Custom = Template.bind({});
+Custom.args = {
+  label: "Contact Name",
+  onChange: e => e.target.value,
+  value : onchange,
+  width: 16,
+  multiline:true
 };
