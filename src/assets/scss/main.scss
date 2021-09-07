@@ -1,9 +1,9 @@
-// @import "./abstract/mixins";
+@import "./abstract/mixins";
 // @import "./abstract/variables";
 
 // @import "./base/colors";
-// @import "./base/typography";
-// @import "./base/utilities";
+@import "./base/typography";
+@import "./base/utilities";
 
 .app {
   position: relative;

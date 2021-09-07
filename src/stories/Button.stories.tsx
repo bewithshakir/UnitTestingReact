@@ -13,8 +13,6 @@ const Template: ComponentStory<typeof Button> = (args) => {
 
 export const Primary = Template.bind({});
 Primary.args = {
-  type: "primary",
-  onClick: () => { },
-  theme: 'USA',
-  children: "Primary Button",
+  color: "primary",
+  children: "Primary Button -",
 };

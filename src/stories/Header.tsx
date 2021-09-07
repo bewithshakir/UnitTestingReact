@@ -1,7 +1,6 @@
 import React from 'react';
 
 import { Button } from '../components/UIComponents/Button/Button.component';
-import { useTheme } from '../contexts/Theme/Theme.context';
 import './header.css';
 
 interface HeaderProps {
