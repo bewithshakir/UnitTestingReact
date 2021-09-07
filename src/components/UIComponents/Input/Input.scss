@@ -13,7 +13,8 @@
     color: var(--Darkgray)!important;
 }
 
-.Mui-error .MuiInputBase-input{
+.Mui-error .MuiInputBase-input,
+.MuiInputBase-input:invalid{
     box-shadow: none;
     border: 2px solid var(--Tertiary);
 }

@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useState } from 'react'
 import { InputLabel, InputBase, FormControl, FormHelperText} from '@material-ui/core';
 import {
     createStyles,
@@ -25,10 +25,13 @@ interface props {
     value?: string;
     helperText?:string
     onChange?: (...args: any[]) => void;
-    onBlur?: (...args: any[]) => void;
   }
 
  const TextField: React.FC<props> = (props:props) => {
+
+  const [flag, setFlag] = useState(false);
+
+  const onBlur = () => setFlag(true);
 
   const Input = withStyles((theme: Theme) =>
   createStyles({
@@ -74,6 +77,7 @@ interface props {
  );
 
   const classes = useStyles();
+  console.log(flag);
     return(
         <Fragment>
         <FormControl className={classes.margin}>
@@ -87,7 +91,7 @@ interface props {
             value={props.value} 
             disabled={props.disabled} 
             placeholder={props.placeholder}
-            required={props.required}
+            required={flag && !props.value}
             aria-required={props.required}
             autoComplete={props.autoComplete}
             classes={props.classes}
@@ -95,7 +99,7 @@ interface props {
             type={props.type}
             error={props.error} 
             onChange={props.onChange}
-            onBlur={props.onBlur}
+            onBlur={onBlur}
             />
         {props.helperText && (
             <FormHelperText 
