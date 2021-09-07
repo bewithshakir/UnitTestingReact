@@ -27,7 +27,7 @@ interface props {
     onChange?: (...args: any[]) => void;
   }
 
- const TextField: React.FC<props> = (props:props) => {
+  export default function TextField (props:props) {
 
   const [flag, setFlag] = useState(false);
 
@@ -77,7 +77,6 @@ interface props {
  );
 
   const classes = useStyles();
-  console.log(flag);
     return(
         <Fragment>
         <FormControl className={classes.margin}>
@@ -111,5 +110,3 @@ interface props {
         </Fragment>
         )
 }
-
-export default TextField;
