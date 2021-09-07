@@ -1,21 +1,29 @@
 {
-  "themes" : "Temas",
+  "themes": "Temas",
   "content1": "en React",
   "content2": "Este es un ejemplo de cómo hacer",
   "content3": "temas ",
   "para": "en la aplicación React Mire mi nuevo video para ver cómo hacer esto de manera fácil",
-  "para1" : "El ejemplo contiene React with ",
+  "para1": "El ejemplo contiene React with ",
   "para2": "Mecanografiado ",
-  "para3":"API de contexto ",
+  "para3": "API de contexto ",
   "para4": "Reaccionar ganchos",
-  "ustheme" : "Tema de Estados Unidos",
+  "ustheme": "Tema de Estados Unidos",
   "uktheme": "Tema del Reino Unido",
-  "email" : "Correo electrónico" ,
-  "content" : "Aprenda Reaccionar",
-  "english" : "Inglés",
-  "french" : "Francés",
-  "spanish" : "Español",
-  "buttons":{
-    "ok" : "OK"
+  "email": "Correo electrónico",
+  "content": "Aprenda Reaccionar",
+  "english": "Inglés",
+  "french": "Francés",
+  "spanish": "Español",
+  "buttons": {
+    "save": "Ahorrar",
+    "edit": "Editar",
+    "delete": "Borrar",
+    "cancel": "Cancelar",
+    "download": "Descargar (.csv formato)",
+    "primary": "Primaria",
+    "secondary": "Secundaria",
+    "add customer": "Agregar cliente",
+    "show more": "Mostrar más"
   }
 }

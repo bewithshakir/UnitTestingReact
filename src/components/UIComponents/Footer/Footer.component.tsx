@@ -13,11 +13,15 @@ import CreditCardOutlinedIcon from '@material-ui/icons/CreditCardOutlined';
 import MapOutlinedIcon from '@material-ui/icons/MapOutlined';
 import DescriptionOutlinedIcon from '@material-ui/icons/DescriptionOutlined';
 import TrainOutlinedIcon from '@material-ui/icons/TrainOutlined';
+import { useTranslation } from 'react-i18next';
+import { namespaces } from '../../../i18n/i18n.constants';
 
 import './Footer.style.scss';
 
 export const Footer: React.FC = () => {
   const { themeType } = useTheme();
+  const { t } = useTranslation(namespaces.pages.simple);
+
   const logoSrc = themeType === 'UK' ? logoOne : logoTwo;
 
   return (
@@ -27,52 +31,52 @@ export const Footer: React.FC = () => {
           type={'save'}
           onClick={() => { }}
         >
-          Save
+          {t("buttons.save")}
         </Button>--
         <Button
           type={'edit'}
           onClick={() => { }}
           startIcon={<EditIcon />}
         >
-          Edit
+          {t("buttons.edit")}
         </Button>--
         <Button
           type={'delete'}
           onClick={() => { }}
         >
-          Delete
+          {t("buttons.delete")}
         </Button>--
         <Button
           type={'cancel'}
           onClick={() => { }}
         >
-          Cancel
+          {t("buttons.cancel")}
         </Button>--
         <Button
           type={'download'}
           onClick={() => { }}
           startIcon={<Download />}
         >
-          Download (.csv format)
+          {t("buttons.download")}
         </Button>----------
         <Button
           type="primary"
           onClick={() => { }}
         >
-          Primary
+          {t("buttons.primary")}
         </Button>--
         <Button
           type="secondary"
           onClick={() => { }}
         >
-          Secondary
+          {t("buttons.secondary")}
         </Button>--
         <Button
           type="primary"
           onClick={() => { }}
           startIcon={<Add />}
         >
-          Add Customer
+          {t("buttons.add customer")}
         </Button>--
         <Button
           type="accordian"
@@ -130,7 +134,7 @@ export const Footer: React.FC = () => {
           type="showmore"
           onClick={() => { }}
         >
-          Show more
+          {t("buttons.show more")}
         </Button>--
       </div>
       <img
