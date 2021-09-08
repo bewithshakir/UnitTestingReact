@@ -13,10 +13,13 @@ import CreditCardOutlinedIcon from '@material-ui/icons/CreditCardOutlined';
 import MapOutlinedIcon from '@material-ui/icons/MapOutlined';
 import DescriptionOutlinedIcon from '@material-ui/icons/DescriptionOutlined';
 import TrainOutlinedIcon from '@material-ui/icons/TrainOutlined';
+import ArrowDownwardOutlinedIcon from '@material-ui/icons/ArrowDownwardOutlined';
+import PermIdentityOutlinedIcon from '@material-ui/icons/PermIdentityOutlined';
 import { useTranslation } from 'react-i18next';
 import { namespaces } from '../../../i18n/i18n.constants';
 
 import './Footer.style.scss';
+import { Icon } from '@material-ui/core';
 
 export const Footer: React.FC = () => {
   const { themeType } = useTheme();
@@ -135,6 +138,25 @@ export const Footer: React.FC = () => {
           onClick={() => { }}
         >
           {t("buttons.show more")}
+        </Button>--
+        <Button
+          type="sortby"
+          onClick={() => { }}
+          startIcon={<ArrowDownwardOutlinedIcon />}
+        >
+          {t("buttons.sort by")}
+        </Button>--
+        <Button
+          type="listmemu"
+          onClick={() => { }}
+          startIcon={<Icon><ArrowDownwardOutlinedIcon /></Icon>}
+        >
+        </Button>--
+        <Button
+          type="profile"
+          onClick={() => { }}
+          startIcon={<Icon><PermIdentityOutlinedIcon /></Icon>}
+        >
         </Button>--
       </div>
       <img

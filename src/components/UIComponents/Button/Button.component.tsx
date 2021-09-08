@@ -2,7 +2,9 @@ import React from 'react';
 import { Button as ButtonField } from "@material-ui/core";
 import './Button.style.scss';
 
-type ButtonType = '' | 'primary' | 'secondary' | 'save' | 'edit' | 'delete' | 'download' | 'cancel' | 'accordian' | 'showmore';
+type ButtonType = '' | 'primary' | 'secondary'
+  | 'save' | 'edit' | 'delete' | 'download' | 'cancel'
+  | 'accordian' | 'showmore' | 'sortby' | 'listmemu' | 'profile';
 type Color = 'inherit' | 'primary' | 'secondary' | 'default';
 interface ButtonFieldProps {
   type?: ButtonType;
