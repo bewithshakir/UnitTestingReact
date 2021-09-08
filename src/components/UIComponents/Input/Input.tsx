@@ -8,6 +8,49 @@ import {
   } from '@material-ui/core/styles';
 import './Input.scss';
 
+
+const Input = withStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      'label + &': {
+        color: 'var(--Darkgray)',
+        marginTop: theme.spacing(2.5),
+      },
+    },
+    input: {
+      borderRadius: 0,
+      position: 'relative',
+      background: 'var(--White) 0% 0% no-repeat padding-box',
+      border: '1px solid var(--Lightgray_2)',  
+      fontSize: 14,
+      width: `16rem`,
+      padding: '10px 12px',
+      '&:focus': {
+        background: 'var(--White) 0% 0% no-repeat padding-box',
+        color: 'var(--Darkgray)',  
+        border: '2px solid var(--Darkgray)',
+      },
+      '&:active' : {
+        background: 'var(--White) 0% 0% no-repeat padding-box',
+        color: 'var(--Darkgray)',  
+        border: '1px solid var(--Gray)',
+      },
+    },
+  }),
+)(InputBase);
+
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      display: 'flex',
+      flexWrap: 'wrap',
+    },
+    margin: {
+      margin: theme.spacing(1),
+    },
+  }),
+ );
+
 interface props {
     name?: string;
     id?:string;
@@ -32,49 +75,6 @@ interface props {
   const [flag, setFlag] = useState(false);
 
   const onBlur = () => setFlag(true);
-
-  const Input = withStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      'label + &': {
-        color: 'var(--Darkgray)',
-        marginTop: theme.spacing(2.5),
-      },
-    },
-    input: {
-      borderRadius: 0,
-      position: 'relative',
-      background: 'var(--White) 0% 0% no-repeat padding-box',
-      border: '1px solid var(--Lightgray_2)',  
-      fontSize: 14,
-      width: `${props.width || 16}rem`,
-      padding: '10px 12px',
-      '&:focus': {
-        background: 'var(--White) 0% 0% no-repeat padding-box',
-        color: 'var(--Darkgray)',  
-        border: '2px solid var(--Darkgray)',
-      },
-      '&:active' : {
-        background: 'var(--White) 0% 0% no-repeat padding-box',
-        color: 'var(--Darkgray)',  
-        border: '1px solid var(--Gray)',
-      },
-    },
-  }),
-)(InputBase);
-
-
- const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      display: 'flex',
-      flexWrap: 'wrap',
-    },
-    margin: {
-      margin: theme.spacing(1),
-    },
-  }),
- );
 
   const classes = useStyles();
     return(
