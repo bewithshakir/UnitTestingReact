@@ -1,0 +1,161 @@
+svg {
+  display: block;
+  width: 1.5em;
+  height: 1.5em;
+  fill: var(--Lightgray);
+}
+
+.select {
+  position: relative;
+  display: inline-block;
+  width: 300px;
+
+  
+  &:focus {
+    outline: 0;
+    
+    & .selection {
+      box-shadow: 0 0 1px 1px var(--Gray);
+    }
+  }
+}
+
+.label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+.selection {
+  position: relative;
+  padding: 5px;
+  height: 30px;
+  border: 1px solid var(--Darkgray);
+  background: #fff;
+}
+
+.value {
+  position: relative;
+  display: inline-block;
+  padding: 5px 10px;
+}
+
+.multiple {
+  padding-right: 30px;
+  margin-right: 5px;
+  background: var(--White);
+  color: var(--Gray);
+}
+
+.delete {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: block;
+  padding: 10px;
+  font-size: 10px;
+  cursor: pointer;
+}
+
+.placeholder {
+  padding: 5px 10px;
+  color: var(--Gray);
+}
+
+.arrow {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  display: block;
+  padding: 10px;
+  font-size: 10px;
+  color: var(--Gray);
+}
+
+.options {
+  position: absolute;
+  top: 115%;
+  width:115%;
+  left: 0;
+  right: 0;
+  border: solid var(--Lightgray_4);
+  border-width: 0 1px;
+  background:var(--White);
+  box-shadow: 3px 6px 14px #00000026;
+  z-index: 999;
+}
+
+.option {
+  line-height: 1.5rem;
+  font-size: 14px;  
+  padding: 10px 15px;
+  border-bottom: 1px solid var(--White);
+  cursor: pointer;
+
+  &.selected {
+    border: 1px solid var(--White);
+    margin: -1px -1px 0;
+    background: var(--White);
+  }
+  
+  &.focused {
+    background: var(--White);
+  }
+}
+
+.checkbox {
+  content: '';
+  vertical-align: top;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  padding: 2px;
+  border: 1px solid var(--Darkgray);
+  border-radius: 2px;
+  margin: 2px 12px 0 0;
+  color: var(--White);
+  font-size: 10px;
+  
+  .selected & {
+    border-color:var(--Black);
+    background: var(--White);
+  }
+}
+
+.ui.search .input{
+    width :100%;
+    height: 50px;
+    box-sizing: border-box;
+    display: flex;
+    font-size: 14px;
+    align-items: center;
+    margin: 10px 0;
+    border-bottom: 1px solid var(--Lightgray_3);
+}
+
+.ui.search .prompt{
+    //position:fixed;
+    height: 90%;
+    width: 97%; 
+    border-radius: 0;
+    font-size: 14px;
+}
+
+.ui.input > input {
+    border: 1px solid var(--White);
+    border-bottom: 1px solid var(--Lightgray_4);
+    font-size: 14px;
+}
+
+.icon{
+    float: right;
+    cursor: pointer;
+    padding-left: 12px;
+}
+
+.ui.search input{
+    &:focus-visible{
+        border: 1px solid var(--White);
+        outline-color: var(--White);
+    }
+}
