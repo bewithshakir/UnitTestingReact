@@ -272,6 +272,14 @@ div{
         color: var(--Lightergray);
       }
     }
+    &-sortby.active{
+      background-color: var(--Blue-Btn);
+      border: 1px solid var(--Blue-Btn);
+      color: var(--White);
+      .MuiButton-startIcon{
+        color: var(--White);
+      }
+    }
    &-listmemu {
       background-color: var(--White);
       color: var(--Darkgray);

@@ -1,4 +1,4 @@
-import React , {Suspense}from 'react';
+import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom';
 import "./assets/scss/main.scss";
 import App from './App';
@@ -10,10 +10,10 @@ import { ThemeProvider } from './contexts/Theme/Theme.context';
 ReactDOM.render(
   <React.StrictMode>
     <Suspense fallback={<>Loading...</>}>
-    <ThemeProvider>
-      <App />
-    </ThemeProvider>
-   </Suspense>
+      <ThemeProvider>
+        <App />
+      </ThemeProvider>
+    </Suspense>
   </React.StrictMode>,
   document.getElementById('root')
 );

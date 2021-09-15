@@ -6,6 +6,7 @@ import { useTheme } from '../../../contexts/Theme/Theme.context';
 import './Content.style.scss';
 import { useTranslation } from 'react-i18next';
 import { namespaces } from '../../../i18n/i18n.constants';
+import SortbyMenu from '../Menu/SortbyMenu.component';
 
 export const Content: React.FC = () => {
   const { setCurrentTheme } = useTheme();
@@ -17,7 +18,6 @@ export const Content: React.FC = () => {
     <div>
       <div
         className={'content'}
-      // style={{ ...theme } as React.CSSProperties}
       >
         <h1 className={'content__title'}>
           <span className={'content__title--colored'}>{t("themes")} </span>
@@ -31,13 +31,13 @@ export const Content: React.FC = () => {
         </p>
         <div className={'content__buttons'}>
           <Button
-            type={'primary'}
+            types={'primary'}
             onClick={() => setCurrentTheme('USA')}
           >
             {t("ustheme")}
           </Button>
           <Button
-            type={'secondary'}
+            types={'secondary'}
             onClick={() => setCurrentTheme('UK')}
           >
             {t("uktheme")}
@@ -45,20 +45,31 @@ export const Content: React.FC = () => {
         </div>
       </div>
       <div className={'content__buttons1'}>
+        <SortbyMenu
+          options={[
+            t("menus.sortby.payment completed"),
+            t("menus.sortby.payment in progress"),
+            t("menus.sortby.recently added lots"),
+          ]}
+          onSelect={(value) => {
+            console.log("🚀 ~ file: Content.component.tsx ~ line 60 ~ value", value)
+          }}
+        />
+
         <Button
-          type={'primary'}
+          types={'primary'}
           onClick={changeLanguage("en")}
         >
           {t("english")}
         </Button>
         <Button
-          type={'primary'}
+          types={'primary'}
           onClick={changeLanguage("es")}
         >
           {t("spanish")}
         </Button>
         <Button
-          type={'primary'}
+          types={'primary'}
           onClick={changeLanguage("fr")}
         >
           {t("french")}

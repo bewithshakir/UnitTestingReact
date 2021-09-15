@@ -26,5 +26,12 @@
     "add customer": "Add Customer",
     "show more": "Show more",
     "sort by": "Sort by"
+  },
+  "menus": {
+    "sortby": {
+      "payment completed": "Payment completed",
+      "payment in progress": "Payment In Progress",
+      "recently added lots": "Recently Added Lots"
+    }
   }
 }

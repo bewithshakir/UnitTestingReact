@@ -31,65 +31,65 @@ export const Footer: React.FC = () => {
     <div className={'footer'}>
       <div className={'content__buttons'}>
         <Button
-          type={'save'}
+          types={'save'}
           onClick={() => { }}
         >
           {t("buttons.save")}
         </Button>--
         <Button
-          type={'edit'}
+          types={'edit'}
           onClick={() => { }}
           startIcon={<EditIcon />}
         >
           {t("buttons.edit")}
         </Button>--
         <Button
-          type={'delete'}
+          types={'delete'}
           onClick={() => { }}
         >
           {t("buttons.delete")}
         </Button>--
         <Button
-          type={'cancel'}
+          types={'cancel'}
           onClick={() => { }}
         >
           {t("buttons.cancel")}
         </Button>--
         <Button
-          type={'download'}
+          types={'download'}
           onClick={() => { }}
           startIcon={<Download />}
         >
           {t("buttons.download")}
         </Button>----------
         <Button
-          type="primary"
+          types="primary"
           onClick={() => { }}
         >
           {t("buttons.primary")}
         </Button>--
         <Button
-          type="secondary"
+          types="secondary"
           onClick={() => { }}
         >
           {t("buttons.secondary")}
         </Button>--
         <Button
-          type="primary"
+          types="primary"
           onClick={() => { }}
           startIcon={<Add />}
         >
           {t("buttons.add customer")}
         </Button>--
         <Button
-          type="accordian"
+          types="accordian"
           onClick={() => { }}
           startIcon={<DriveEtaOutlinedIcon />}
         >
           20
         </Button>--
         <Button
-          type="accordian"
+          types="accordian"
           className="active"
           onClick={() => { }}
           startIcon={<LocationOnOutlinedIcon />}
@@ -97,7 +97,7 @@ export const Footer: React.FC = () => {
           20
         </Button>--
         <Button
-          type="accordian"
+          types="accordian"
           disabled
           onClick={() => { }}
           startIcon={<InvertColorsOutlinedIcon />}
@@ -105,7 +105,7 @@ export const Footer: React.FC = () => {
           20
         </Button>--
         <Button
-          type="accordian"
+          types="accordian"
           className="empty"
           onClick={() => { }}
           startIcon={<CreditCardOutlinedIcon />}
@@ -113,47 +113,47 @@ export const Footer: React.FC = () => {
           0
         </Button>--
         <Button
-          type="accordian"
+          types="accordian"
           onClick={() => { }}
           startIcon={<MapOutlinedIcon />}
         >
           20
         </Button>--
         <Button
-          type="accordian"
+          types="accordian"
           onClick={() => { }}
           startIcon={<DescriptionOutlinedIcon />}
         >
           20
         </Button>--
         <Button
-          type="accordian"
+          types="accordian"
           onClick={() => { }}
           startIcon={<TrainOutlinedIcon />}
         >
           20
         </Button>--
         <Button
-          type="showmore"
+          types="showmore"
           onClick={() => { }}
         >
           {t("buttons.show more")}
         </Button>--
         <Button
-          type="sortby"
+          types="sortby"
           onClick={() => { }}
           startIcon={<ArrowDownwardOutlinedIcon />}
         >
           {t("buttons.sort by")}
         </Button>--
         <Button
-          type="listmemu"
+          types="listmemu"
           onClick={() => { }}
           startIcon={<Icon><ArrowDownwardOutlinedIcon /></Icon>}
         >
         </Button>--
         <Button
-          type="profile"
+          types="profile"
           onClick={() => { }}
           startIcon={<Icon><PermIdentityOutlinedIcon /></Icon>}
         >

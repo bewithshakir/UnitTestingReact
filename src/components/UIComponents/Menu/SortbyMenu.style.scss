@@ -1,0 +1,38 @@
+div{ 
+  .sortby-popper{
+    .MuiPaper-elevation1{
+      box-shadow: 6px 6px 14px #00000026;
+      border-radius: unset;
+    }
+  }
+  .sortby-menu{
+    padding: unset;
+    margin-top: 0.625rem;
+    .menuitem{
+      font-family: Arial, Helvetica, sans-serif !important;
+      padding: .907rem 1.25rem;
+      font-size: 14px;
+     
+    }
+    .menuitem-text{
+      min-width: 150px;
+      max-width: 360px;
+      width: -webkit-fill-available;
+      white-space: normal;
+    }
+    .menuitem-icon {
+      justify-content: flex-end;
+    }
+    .Mui-selected{
+      font-weight: bold;
+      color: var(--Blue-Btn);
+      .menuitem-icon{
+        svg path {
+          stroke: var(--Blue-Btn);
+          stroke-width: 1px;
+        }
+      }
+    }
+  }
+}
+   
