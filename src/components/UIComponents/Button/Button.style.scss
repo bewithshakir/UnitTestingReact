@@ -338,5 +338,35 @@ div{
         color: var(--Lightergray);
       }
     }
+    &-grid-action {
+      background-color: var(--White);
+      color: var(--Darkgray);
+      width: 50px;
+      border: 1px solid var(--Gray);
+      .MuiButton-startIcon{
+        color: var(--Gray);
+        margin: unset;
+      }
+      &:hover{
+        background-color: var(--Blue-Btn);
+        color: var(--White);
+        border: 1px solid var(--Blue-Btn);
+        .MuiButton-startIcon{
+          color: var(--White);
+        }
+      }
+      &:disabled{
+        background-color: var(--Lightgray_2);
+        color: var(--Lightergray);
+      }
+    }
+     &-grid-action.active{
+      background-color: var(--Blue-Btn);
+      border: 1px solid var(--Blue-Btn);
+      color: var(--White);
+      .MuiButton-startIcon{
+        color: var(--White);
+      }
+    }
   }
 }

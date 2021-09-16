@@ -1,4 +1,4 @@
-import { Button, ListItemIcon, SvgIcon, Typography } from "@material-ui/core";
+import { Button, IconButton, ListItemIcon, SvgIcon, Typography } from "@material-ui/core";
 import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 import Grow from "@material-ui/core/Grow";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -6,21 +6,21 @@ import MenuList from "@material-ui/core/MenuList";
 import Paper from "@material-ui/core/Paper";
 import Popper from "@material-ui/core/Popper";
 import React from "react";
-import { ActionsListIcon } from '../../../assets/icons';
-import './ActionsMenu.style.scss';
+import { DataGridActionIcon } from '../../../assets/icons';
+import './DataGridActionsMenu.style.scss';
 
-type ActionsMenuOption = {
+type DataGridActionsMenuOption = {
   label: string;
   icon?: React.ReactNode;
   color?: string;
 }
 
-interface ActionsMenuProps {
-  options: ActionsMenuOption[],
+interface DataGridActionsMenuProps {
+  options: DataGridActionsMenuOption[],
   menuName?: string,
   onSelect: (selectedValue: object) => void,
 }
-export default function ActionsMenu(props: ActionsMenuProps) {
+export default function DataGridActionsMenu(props: DataGridActionsMenuProps) {
   const [open, setOpen] = React.useState(false);
   const [selectedIndex, setSelectedIndex] = React.useState(-1);
   const anchorRef = React.useRef<HTMLButtonElement>(null);
@@ -68,16 +68,23 @@ export default function ActionsMenu(props: ActionsMenuProps) {
 
   return (
     <div>
-      <Button
+      {/* <Button
         ref={anchorRef}
         variant="contained"
-        className={`btn-listmemu ${open ? 'active' : ''}`}
+        className={`btn-grid-action ${open ? 'active' : ''}`}
         aria-controls={open ? "actions-menu-list" : undefined}
         aria-haspopup="true"
         onClick={handleToggle}
-        size="small"
-        startIcon={<SvgIcon component={ActionsListIcon} viewBox="0 0 20 20" />}
-      />
+        startIcon={<SvgIcon component={DataGridActionIcon} viewBox="0 0 40 40" />}
+      /> */}
+      <IconButton
+        ref={anchorRef}
+        // className={`btn-listmemu ${open ? 'active' : ''}`}
+        onClick={handleToggle}
+        aria-label="add an alarm"
+      >
+        <DataGridActionIcon />
+      </IconButton>
 
       <Popper
         open={open}
@@ -108,13 +115,16 @@ export default function ActionsMenu(props: ActionsMenuProps) {
                     <MenuItem
                       key={option.label}
                       className={"menuitem"}
-                      disabled={index === 3}
+                      // disabled={index === 3}
                       selected={index === selectedIndex}
                       onClick={(event) => handleMenuItemClick(event, index)}
                     >
-                      <ListItemIcon className="menuitem-icon" >
-                        {option.icon}
-                      </ListItemIcon>
+                      {
+                        option.icon &&
+                        <ListItemIcon className="menuitem-icon" >
+                          option.icon
+                        </ListItemIcon>
+                      }
                       <div className="menuitem-text">
                         <Typography variant="inherit">{option.label}</Typography>
                       </div>

@@ -38,6 +38,12 @@
       "import data": "Import data",
       "export data": "Export data",
       "delete": "Delete"
+    },
+    "data-grid-actions": {
+      "raise a request": "Raise a request",
+      "fee & driver details": "Fee & Driver details",
+      "other details": "Other details",
+      "contact details": "Contact details"
     }
   }
 }

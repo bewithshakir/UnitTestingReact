@@ -1,6 +1,6 @@
 import * as React from "react"
 
-export function SvgComponent(props: React.SVGProps<SVGSVGElement>) {
+export function ActionsListIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -88,6 +88,24 @@ export function DeleteIcon(props: React.SVGProps<SVGSVGElement>) {
         fill={props.color}
       />
       <path fill="none" d="M0 0h20v20H0z" />
+    </svg>
+  )
+}
+
+export function DataGridActionIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="1em"
+      height="1em"
+      viewBox="0 0 40 40"
+      {...props}
+    >
+      <path
+        d="M18 27.778A2.222 2.222 0 1120.222 30 2.222 2.222 0 0118 27.778zm0-15.556a2.222 2.222 0 112.222 2.222A2.222 2.222 0 0118 12.222zM18 20a2.222 2.222 0 112.222 2.222A2.222 2.222 0 0118 20z"
+        fill={props.color}
+      />
+      <path fill="none" d="M0 0h40v40H0z" />
     </svg>
   )
 }

@@ -8,6 +8,7 @@ import { useTranslation } from 'react-i18next';
 import { namespaces } from '../../../i18n/i18n.constants';
 import SortbyMenu from '../Menu/SortbyMenu.component';
 import ActionsMenu from '../Menu/ActionsMenu.component';
+import DataGridActionsMenu from '../Menu/DataGridActionsMenu.component';
 import { ImportIcon, ExportIcon, PlusIcon, DeleteIcon } from '../../../assets/icons';
 
 export const Content: React.FC = () => {
@@ -75,6 +76,26 @@ export const Content: React.FC = () => {
             {
               label: t("menus.actions.delete"),
               icon: <DeleteIcon />
+            }
+          ]}
+          onSelect={(value) => {
+            console.log("🚀 ~ file: Content.component.tsx ~ line 60 ~ value", value)
+          }}
+        />
+
+        <DataGridActionsMenu
+          options={[
+            {
+              label: t("menus.data-grid-actions.raise a request"),
+            },
+            {
+              label: t("menus.data-grid-actions.fee & driver details"),
+            },
+            {
+              label: t("menus.data-grid-actions.other details"),
+            },
+            {
+              label: t("menus.data-grid-actions.contact details"),
             }
           ]}
           onSelect={(value) => {
