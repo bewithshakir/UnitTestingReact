@@ -1,6 +1,8 @@
 import React from "react"
-import { queryClient } from "."
+import { useQueryClient } from "react-query"
+
 export const QueryComponent = (): React.ReactElement => {
+    const queryClient =  useQueryClient()
     const todos: any = queryClient.getQueryData("repoData")
     console.log(todos, "cacheTodos")
     return (

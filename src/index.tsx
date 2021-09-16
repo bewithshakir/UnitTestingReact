@@ -8,7 +8,7 @@ import { ThemeProvider } from "./contexts/Theme/Theme.context";
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { ReactQueryDevtools } from 'react-query/devtools'
 
-export const queryClient = new QueryClient()
+const queryClient = new QueryClient()
 ReactDOM.render(
     <QueryClientProvider client={queryClient}>
       <ThemeProvider>
