@@ -68,30 +68,22 @@ export default function DataGridActionsMenu(props: DataGridActionsMenuProps) {
 
   return (
     <div>
-      {/* <Button
+      <Button
         ref={anchorRef}
         variant="contained"
         className={`btn-grid-action ${open ? 'active' : ''}`}
-        aria-controls={open ? "actions-menu-list" : undefined}
+        aria-controls={open ? "datagrid-actions-menu-list" : undefined}
         aria-haspopup="true"
         onClick={handleToggle}
         startIcon={<SvgIcon component={DataGridActionIcon} viewBox="0 0 40 40" />}
-      /> */}
-      <IconButton
-        ref={anchorRef}
-        // className={`btn-listmemu ${open ? 'active' : ''}`}
-        onClick={handleToggle}
-        aria-label="add an alarm"
-      >
-        <DataGridActionIcon />
-      </IconButton>
+      />
 
       <Popper
         open={open}
         anchorEl={anchorRef.current}
         role={undefined}
         transition
-        className={"actions-popper"}
+        className={"datagrid-actions-popper"}
         placement="bottom-end"
         disablePortal
       >
@@ -106,9 +98,9 @@ export default function DataGridActionsMenu(props: DataGridActionsMenuProps) {
             <Paper>
               <ClickAwayListener onClickAway={handleClose}>
                 <MenuList
-                  className="actions-menu"
+                  className="datagrid-actions-menu"
                   autoFocusItem={open}
-                  id="actions-menu-list"
+                  id="datagrid-actions-menu-list"
                   onKeyDown={handleListKeyDown}
                 >
                   {options.map((option, index) => (

@@ -339,33 +339,35 @@ div{
       }
     }
     &-grid-action {
-      background-color: var(--White);
+      border-radius: 0;
+      background-color: transparent;
       color: var(--Darkgray);
-      width: 50px;
-      border: 1px solid var(--Gray);
+      width: 10px;
+      padding: unset;
       .MuiButton-startIcon{
         color: var(--Gray);
         margin: unset;
       }
+      .MuiSvgIcon-root{
+        font-size: 40px;
+      }
       &:hover{
-        background-color: var(--Blue-Btn);
-        color: var(--White);
-        border: 1px solid var(--Blue-Btn);
+        color: var(--Blue-Btn);
+        background-color: transparent;
         .MuiButton-startIcon{
-          color: var(--White);
+          color: var(--Blue-Btn);
         }
       }
       &:disabled{
+        border-radius: 0;
         background-color: var(--Lightgray_2);
         color: var(--Lightergray);
       }
     }
      &-grid-action.active{
-      background-color: var(--Blue-Btn);
-      border: 1px solid var(--Blue-Btn);
-      color: var(--White);
+      color: var(--Blue-Btn);
       .MuiButton-startIcon{
-        color: var(--White);
+        color: var(--Blue-Btn);
       }
     }
   }
