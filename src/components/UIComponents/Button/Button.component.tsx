@@ -10,7 +10,7 @@ interface ButtonFieldProps extends ButtonProps {
 }
 
 export const Button: React.FC<ButtonFieldProps> = (props) => {
-  const { types, className = '', color = "default", variant = "contained", size, disabled, children, ...rest } = props;
+  const { types, className = '', color = "default", variant = "contained", children, ...rest } = props;
   return (
     <ButtonField
       variant={variant}

@@ -32,6 +32,12 @@
       "payment completed": "Paiement terminé",
       "payment in progress": "Paiement en cours",
       "recently added lots": "Récemment ajoutés lots"
+    },
+    "actions": {
+      "add vehicle": "Add vehicle",
+      "import data": "Import data",
+      "export data": "Export data",
+      "delete": "Delete"
     }
   }
 }

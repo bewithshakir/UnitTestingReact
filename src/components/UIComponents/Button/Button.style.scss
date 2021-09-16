@@ -1,7 +1,7 @@
 div{ 
   .btn, .MuiButton-root{
     border-radius: 0%;
-    font-family: Arial, Helvetica, sans-serif !important;
+    font-family: Arial !important;
     font-weight: bold;
     height: 50px;
     text-transform:  unset;
@@ -9,6 +9,14 @@ div{
     letter-spacing: 0px;
     min-width: 10px;
     box-shadow: none !important;
+    // .MuiButton-iconSizeLarge > *:first-child{
+    //   font-size: 28px;
+    // }
+    // img.svgIcon-root {
+    //   object-fit: contain;
+    //   height: 100%;
+    //   width: 100%;
+    // }
     &.MuiButton-containedPrimary {
       background-color: var(--Blue-Btn);
       border: 0px;
@@ -287,7 +295,7 @@ div{
       border: 1px solid var(--Gray);
       .MuiButton-startIcon{
         color: var(--Gray);
-        margin-right: unset;
+        margin: unset;
       }
       &:hover{
         background-color: var(--Blue-Btn);
@@ -302,13 +310,21 @@ div{
         color: var(--Lightergray);
       }
     }
+     &-listmemu.active{
+      background-color: var(--Blue-Btn);
+      border: 1px solid var(--Blue-Btn);
+      color: var(--White);
+      .MuiButton-startIcon{
+        color: var(--White);
+      }
+    }
    &-profile {
       background-color: var(--White);
       color: var(--Darkgray);
       width: 50px;
       .MuiButton-startIcon{
         color: var(--Gray);
-        margin-right: unset;
+        margin: unset;
       }
       &:hover{
         background-color: var(--Blue-Btn);
@@ -323,9 +339,4 @@ div{
       }
     }
   }
-}
-
-
-.button:first-of-type {
-  margin-right: 20px;
 }

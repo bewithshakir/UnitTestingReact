@@ -8,20 +8,20 @@ function App() {
   const { theme } = useTheme();
   return (
     <div className="App"
-    style={{
-      ...theme
-    } as React.CSSProperties}
+      style={{
+        ...theme
+      } as React.CSSProperties}
     >
       <div>
-          <div className={'app__main'}>
-        <Content />
-        <Footer />
-      </div>
-      <div className={'app__bg'}>
-        <img src={bg} alt={'bg'} />
+        <div className={'app__main'}>
+          <Content />
+          <Footer />
+        </div>
+        <div className={'app__bg'}>
+          <img src={bg} alt={'bg'} />
+        </div>
       </div>
     </div>
-      </div>
   )
 }
 

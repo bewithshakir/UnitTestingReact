@@ -5,9 +5,9 @@
 @import "./base/typography";
 @import "./base/utilities";
 
-.app {
+body {
   position: relative;
-  font-family: Arial, Helvetica, sans-serif !important;
+  font-family: Arial !important;
   background-color: var(--Primary-Background);
 }
 

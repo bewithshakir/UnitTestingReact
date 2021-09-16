@@ -7,6 +7,8 @@ import './Content.style.scss';
 import { useTranslation } from 'react-i18next';
 import { namespaces } from '../../../i18n/i18n.constants';
 import SortbyMenu from '../Menu/SortbyMenu.component';
+import ActionsMenu from '../Menu/ActionsMenu.component';
+import { ImportIcon, ExportIcon, PlusIcon, DeleteIcon } from '../../../assets/icons';
 
 export const Content: React.FC = () => {
   const { setCurrentTheme } = useTheme();
@@ -50,6 +52,30 @@ export const Content: React.FC = () => {
             t("menus.sortby.payment completed"),
             t("menus.sortby.payment in progress"),
             t("menus.sortby.recently added lots"),
+          ]}
+          onSelect={(value) => {
+            console.log("🚀 ~ file: Content.component.tsx ~ line 60 ~ value", value)
+          }}
+        />
+
+        <ActionsMenu
+          options={[
+            {
+              label: t("menus.actions.add vehicle"),
+              icon: <PlusIcon />
+            },
+            {
+              label: t("menus.actions.import data"),
+              icon: <ImportIcon />
+            },
+            {
+              label: t("menus.actions.export data"),
+              icon: <ExportIcon />
+            },
+            {
+              label: t("menus.actions.delete"),
+              icon: <DeleteIcon />
+            }
           ]}
           onSelect={(value) => {
             console.log("🚀 ~ file: Content.component.tsx ~ line 60 ~ value", value)

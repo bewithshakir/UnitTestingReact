@@ -1,12 +1,12 @@
 div{ 
-  .sortby-popper{
+  .actions-popper{
     z-index: 999;
     .MuiPaper-elevation1{
       box-shadow: 6px 6px 14px #00000026;
       border-radius: unset;
     }
   }
-  .sortby-menu{
+  .actions-menu{
     padding: unset;
     margin-top: 0.625rem;
     .menuitem{
@@ -16,15 +16,15 @@ div{
      
     }
     .menuitem-text{
-      min-width: 150px;
+      min-width: 120px;
       max-width: 360px;
       width: -webkit-fill-available;
       white-space: normal;
     }
     .menuitem-icon {
-      justify-content: flex-end;
       min-width: 20px;
-      padding-left: 1.25rem;
+      padding-right: 1.25rem;
+      justify-content: flex-start;
     }
     .Mui-selected{
       font-weight: bold;
@@ -32,6 +32,7 @@ div{
       .menuitem-icon{
         svg path:first-child {
           fill: var(--Blue-Btn);
+          stroke-width: 1px;
         }
       }
     }

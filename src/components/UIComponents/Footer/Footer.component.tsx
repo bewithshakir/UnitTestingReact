@@ -1,25 +1,24 @@
+import Add from '@material-ui/icons/Add';
+import ArrowDownwardOutlinedIcon from '@material-ui/icons/ArrowDownwardOutlined';
+import CreditCardOutlinedIcon from '@material-ui/icons/CreditCardOutlined';
+import DescriptionOutlinedIcon from '@material-ui/icons/DescriptionOutlined';
+import DriveEtaOutlinedIcon from '@material-ui/icons/DriveEtaOutlined';
+import EditIcon from '@material-ui/icons/Edit';
+import Download from '@material-ui/icons/GetAppOutlined';
+import InvertColorsOutlinedIcon from '@material-ui/icons/InvertColorsOutlined';
+import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined';
+import MapOutlinedIcon from '@material-ui/icons/MapOutlined';
+import PermIdentityOutlinedIcon from '@material-ui/icons/PermIdentityOutlined';
+import TrainOutlinedIcon from '@material-ui/icons/TrainOutlined';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import logoOne from '../../../assets/images/Shell Taup logo.svg';
 import logoTwo from '../../../assets/images/Shell Taup logo2.svg';
 import { useTheme } from '../../../contexts/Theme/Theme.context';
-import { Button } from '../Button/Button.component';
-import EditIcon from '@material-ui/icons/Edit';
-import Download from '@material-ui/icons/GetAppOutlined';
-import Add from '@material-ui/icons/Add';
-import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined';
-import DriveEtaOutlinedIcon from '@material-ui/icons/DriveEtaOutlined';
-import InvertColorsOutlinedIcon from '@material-ui/icons/InvertColorsOutlined';
-import CreditCardOutlinedIcon from '@material-ui/icons/CreditCardOutlined';
-import MapOutlinedIcon from '@material-ui/icons/MapOutlined';
-import DescriptionOutlinedIcon from '@material-ui/icons/DescriptionOutlined';
-import TrainOutlinedIcon from '@material-ui/icons/TrainOutlined';
-import ArrowDownwardOutlinedIcon from '@material-ui/icons/ArrowDownwardOutlined';
-import PermIdentityOutlinedIcon from '@material-ui/icons/PermIdentityOutlined';
-import { useTranslation } from 'react-i18next';
 import { namespaces } from '../../../i18n/i18n.constants';
-
+import { Button } from '../Button/Button.component';
 import './Footer.style.scss';
-import { Icon } from '@material-ui/core';
+
 
 export const Footer: React.FC = () => {
   const { themeType } = useTheme();
@@ -149,13 +148,14 @@ export const Footer: React.FC = () => {
         <Button
           types="listmemu"
           onClick={() => { }}
-          startIcon={<Icon><ArrowDownwardOutlinedIcon /></Icon>}
+          startIcon={<ArrowDownwardOutlinedIcon />}
         >
         </Button>--
         <Button
           types="profile"
+          size="large"
           onClick={() => { }}
-          startIcon={<Icon><PermIdentityOutlinedIcon /></Icon>}
+          startIcon={<PermIdentityOutlinedIcon />}
         >
         </Button>--
       </div>
