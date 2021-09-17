@@ -3,8 +3,13 @@ import { useTheme } from './contexts/Theme/Theme.context';
 import { Content } from './components/UIComponents/Content/Content.component';
 import { Footer } from './components/UIComponents/Footer/Footer.component';
 import bg from './assets/images/bg_shapes.svg';
+import { useQuery } from 'react-query';
+import { fetchQueryTodos } from './actions/todos-with-query';
+import { QueryComponent } from './QueryTest';
 
-function App() {
+const App = () => {
+  const {  data } = useQuery('repoData', fetchQueryTodos)
+  console.log(data)
   const { theme } = useTheme();
   return (
     <div className="App"
@@ -21,9 +26,12 @@ function App() {
           <img src={bg} alt={'bg'} />
         </div>
       </div>
+      <QueryComponent />
     </div>
   )
 }
 
+export default App
 
-export default App;
+
+

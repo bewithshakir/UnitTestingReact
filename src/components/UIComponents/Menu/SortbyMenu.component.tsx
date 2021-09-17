@@ -10,7 +10,6 @@ import MenuList from "@material-ui/core/MenuList";
 
 import './SortbyMenu.style.scss';
 import { useTranslation } from "react-i18next";
-import { namespaces } from "../../../i18n/i18n.constants";
 import { Button, ListItemIcon, Typography } from "@material-ui/core";
 
 
@@ -24,7 +23,7 @@ export default function SortbyMenu(props: SortbyMenuProps) {
   const [selectedIndex, setSelectedIndex] = React.useState(-1);
   const anchorRef = React.useRef<HTMLButtonElement>(null);
 
-  const { t } = useTranslation(namespaces.pages.simple);
+  const { t } = useTranslation();
   const { menuName, options, onSelect } = props
 
   const handleToggle = () => {

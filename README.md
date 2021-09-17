@@ -8,3 +8,7 @@ Go to the Repository Directory:
 
  # To Play with the UI Components(StoryBook)
  Go to the Repository Directory and Enter *npm run storybook*
+
+
+ # Dev url 
+ https://tapupglobal-webapp-dev.azurewebsites.net/

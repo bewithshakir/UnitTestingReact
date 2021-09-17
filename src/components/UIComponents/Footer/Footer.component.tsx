@@ -16,14 +16,14 @@ import { CustomerProfileIcon, DeleteIcon } from '../../../assets/icons';
 import logoOne from '../../../assets/images/Shell Taup logo.svg';
 import logoTwo from '../../../assets/images/Shell Taup logo2.svg';
 import { useTheme } from '../../../contexts/Theme/Theme.context';
-import { namespaces } from '../../../i18n/i18n.constants';
+
 import { Button } from '../Button/Button.component';
 import './Footer.style.scss';
 
 
 export const Footer: React.FC = () => {
   const { themeType } = useTheme();
-  const { t } = useTranslation(namespaces.pages.simple);
+  const { t } = useTranslation();
 
   const logoSrc = themeType === 'UK' ? logoOne : logoTwo;
 

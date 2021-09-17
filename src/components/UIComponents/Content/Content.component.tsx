@@ -5,16 +5,16 @@ import { useTheme } from '../../../contexts/Theme/Theme.context';
 
 import './Content.style.scss';
 import { useTranslation } from 'react-i18next';
-import { namespaces } from '../../../i18n/i18n.constants';
 import SortbyMenu from '../Menu/SortbyMenu.component';
 import ActionsMenu from '../Menu/ActionsMenu.component';
 import ProfileMenu from '../Menu/ProfileMenu.component';
 import DataGridActionsMenu from '../Menu/DataGridActionsMenu.component';
 import { ExportIcon, PlusIcon, DeleteIcon, ImportIcon, SettingsIcon, LogoutIcon, CustomerProfileIcon2 } from '../../../assets/icons';
 
+
 export const Content: React.FC = () => {
   const { setCurrentTheme } = useTheme();
-  const { t, i18n } = useTranslation(namespaces.pages.simple);
+  const { t, i18n } = useTranslation();
   const changeLanguage = (language: string) => () => {
     i18n.changeLanguage(language);
   };
