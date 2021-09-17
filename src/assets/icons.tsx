@@ -170,4 +170,3 @@ export function LogoutIcon(props: React.SVGProps<SVGSVGElement>) {
     </svg>
   )
 }
-

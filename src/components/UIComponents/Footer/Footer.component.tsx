@@ -12,7 +12,7 @@ import MapOutlinedIcon from '@material-ui/icons/MapOutlined';
 import TrainOutlinedIcon from '@material-ui/icons/TrainOutlined';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { CustomerProfileIcon } from '../../../assets/icons';
+import { CustomerProfileIcon, DeleteIcon } from '../../../assets/icons';
 import logoOne from '../../../assets/images/Shell Taup logo.svg';
 import logoTwo from '../../../assets/images/Shell Taup logo2.svg';
 import { useTheme } from '../../../contexts/Theme/Theme.context';
@@ -150,6 +150,12 @@ export const Footer: React.FC = () => {
           types="listmemu"
           onClick={() => { }}
           startIcon={<ArrowDownwardOutlinedIcon />}
+        >
+        </Button>--
+        <Button
+          types="delete2"
+          onClick={() => { }}
+          startIcon={<DeleteIcon />}
         >
         </Button>--
         <Button

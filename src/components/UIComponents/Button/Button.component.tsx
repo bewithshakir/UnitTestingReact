@@ -3,7 +3,7 @@ import { Button as ButtonField, ButtonProps } from "@material-ui/core";
 import './Button.style.scss';
 
 type ButtonType = '' | 'primary' | 'secondary'
-  | 'save' | 'edit' | 'delete' | 'download' | 'cancel'
+  | 'save' | 'edit' | 'delete' | 'delete2' | 'download' | 'cancel'
   | 'accordian' | 'showmore' | 'sortby' | 'listmemu' | 'profile' | 'grid-action';
 interface ButtonFieldProps extends ButtonProps {
   types?: ButtonType;
