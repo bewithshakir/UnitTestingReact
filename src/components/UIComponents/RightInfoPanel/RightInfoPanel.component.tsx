@@ -1,14 +1,10 @@
 import React from 'react';
-import { Drawer, IconButton, Divider , List, ListItem, ListItemText, AppBar, Toolbar, Typography, Box} from "@material-ui/core";
-import Grid from '@mui/material/Grid';
+import { Drawer, IconButton, Divider , List, ListItem, ListItemText, AppBar, Toolbar, Box} from "@material-ui/core";
 import KeyboardTabIcon from '@material-ui/icons/KeyboardTab';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import { styled } from '@material-ui/styles';
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import { useTranslation } from 'react-i18next';
-
-
-import { namespaces } from '../../../i18n/i18n.constants';
 
 
 import { useTheme } from '../../../contexts/Theme/Theme.context';
@@ -44,7 +40,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 
 export const RightInfoPanel: React.FC<InfoPanelProps> = ({ open, data, style, onClose}) => {
     const { setCurrentTheme } = useTheme();
-    const { t, i18n } = useTranslation(namespaces.pages.simple);
+    const { t, i18n } = useTranslation();
     const changeLanguage = (language: string) => () => {
         i18n.changeLanguage(language);
     };
@@ -86,9 +82,9 @@ export const RightInfoPanel: React.FC<InfoPanelProps> = ({ open, data, style, on
                     >
                         <KeyboardTabIcon />
                     </IconButton> 
-                    <Typography variant="h6" color="inherit" component="div" sx={{ flexGrow: 1 }}>
+                    <h6>
                         {t(data.customerName)}
-                    </Typography>
+                    </h6>
                     <IconButton 
                         edge="start"
                         color="inherit"
@@ -104,24 +100,7 @@ export const RightInfoPanel: React.FC<InfoPanelProps> = ({ open, data, style, on
         </DrawerHeader>
         <Box sx={{ flexGrow: 1 , padding: '18px 47px'}}>  
             <Box sx={{ flexGrow: 1 }}>
-           
-
-<Box sx={{ width: '100%' }}>
-      <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-        <Grid item xs={6}>
-          <Item>1</Item>
-        </Grid>
-        <Grid item xs={6}>
-          <Item>2</Item>
-        </Grid>
-        <Grid item xs={6}>
-          <Item>3</Item>
-        </Grid>
-        <Grid item xs={6}>
-          <Item>4</Item>
-        </Grid>
-      </Grid>
-    </Box>
+          
             </Box>
             {/* <Grid container  columnSpacing={{ xs: 1, sm: 2, md: 3 }} >
                 <Grid item xs={6}>
