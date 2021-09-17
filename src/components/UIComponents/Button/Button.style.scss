@@ -1,79 +1,406 @@
 div{ 
-.btn {
-  border-radius: 0%;
-  font-family: Arial, Helvetica, sans-serif !important;
-  font-weight: bold;
-  height: 50px;
-  text-transform: capitalize;
-  font-size: 16px;
-  letter-spacing: 0px;
-  box-shadow: none !important;
-  &-primary {
-    background-color: var(--Blue-Btn);
-    border: 0px;
-    color: var(--White);
+  .btn, .MuiButton-root, .MuiButton-contained, .MuiButton-outlined, .MuiButton-text{
+    box-shadow: none;
   }
-  &-secondary {
-    background-color: var(--Save-Btn);
-    border: 0px;
-    color: var(--Darkgray);
-    &:hover{
-      background-color: var(--Gray);
+  .btn, .MuiButton-root, .MuiButton-contained:hover, .MuiButton-outlined:hover{
+    box-shadow: none;
+  }
+  .btn, .MuiButton-root{
+    border-radius: 0%;
+    font-family: Arial;
+    font-weight: bold;
+    height: 50px;
+    text-transform:  unset;
+    font-size: 16px;
+    letter-spacing: 0px;
+    min-width: 10px;
+    &.MuiButton-containedPrimary {
+      background-color: var(--Blue-Btn);
+      border: 0px;
+      color: var(--White);
+      &:hover{
+        background-color: var(--Lightgray_2);
+        color: var(--Blue-Btn);
+      }
+      &:disabled{
+        background-color: var(--Lightgray_2);
+        color: var(--Lightergray);
+      }
+    }
+    &.MuiButton-containedSecondary  {
+      background-color: var(--Save-Btn);
+      border: 0px;
+      color: var(--Darkgray);
+      &:hover{
+        background-color: var(--Gray);
+        color: var(--Save-Btn);
+      }
+      &:disabled{
+        background-color: var(--Lightgray_2);
+        color: var(--Lightergray);
+      }
+    }
+    &.MuiButton-outlinedPrimary {
+      color: var(--Blue-Btn);
+      border: 1px solid  var(--Blue-Btn);
+      &:hover{
+        border: 1px solid var(--Blue-Btn);
+        color: var(--White);
+        background-color: var(--Blue-Btn);
+      }
+      &:disabled{
+        background-color: var(--Lightgray_2);
+        color: var(--Lightergray);
+      }
+    }
+    &.MuiButton-outlinedSecondary {
+      color: var(--Darkgray);
+      border: 1px solid  var(--Save-Btn);
+      &:hover{
+        border: 1px solid var(--Save-Btn);
+        color: var(--Darkgray);
+        background-color: var(--Save-Btn);
+      }
+      &:disabled{
+        background-color: var(--Lightgray_2);
+        color: var(--Lightergray);
+      }
+    }
+    &.MuiButton-textPrimary {
+      color: var(--Blue-Btn);
+      &:hover{
+        color: var(--White);
+        background-color: var(--Blue-Btn); 
+      }
+      &:disabled{
+        background-color: var(--Lightgray_2);
+        color: var(--Lightergray);
+      }
+    }
+    &.MuiButton-textSecondary {
       color: var(--Save-Btn);
+      &:hover{
+        color: var(--Darkgray);
+        background-color: var(--Save-Btn);
+      }
+      &:disabled{
+        background-color: var(--Lightgray_2);
+        color: var(--Lightergray);
+      }
     }
-    &:disabled{
-      background-color: var(--Lightgray_2);
-      color: var(--Lightergray);
+    &-primary{
+      background-color:  var(--Blue-Btn);
+      opacity: 1;
+      padding: 0.375rem 1.25rem;
+      border: 0px;
+      color: var(--White);
+      &:hover{
+        background-color:  var(--Blue-Btn);
+        opacity: .8;
+      }
+      &:disabled{
+        background-color: var(--Lightgray_2);
+        color: var(--Lightergray);
+      }
     }
-  }
-  &-save {
-    width: 200px;
-    background-color: var(--Save-Btn);
-    border: 0px;
-    color: var(--Darkgray);
-    &:hover{
-      background-color: var(--Gray);
-      color: var(--Save-Btn);
+    &-secondary {
+      background-color: var(--Save-Btn);
+      border: 0px;
+      padding: 0.375rem 1.25rem;
+      color: var(--Darkgray);
+      &:hover{
+        background-color: var(--Gray);
+        color: var(--Save-Btn);
+      }
+      &:disabled{
+        background-color: var(--Lightgray_2);
+        color: var(--Lightergray);
+      }
     }
-    &:disabled{
-      background-color: var(--Lightgray_2);
-      color: var(--Lightergray);
+    &-save {
+      width: 200px;
+      background-color: var(--Save-Btn);
+      border: 0px;
+      color: var(--Darkgray);
+      &:hover{
+        background-color: var(--Gray);
+        color: var(--Save-Btn);
+      }
+      &:disabled{
+        background-color: var(--Lightgray_2);
+        color: var(--Lightergray);
+      }
     }
-  }
-  &-edit {
-    width: 120px;
-    background-color: var(--Save-Btn);
-    border: 0px;
-    color: var(--Darkgray);
-    &:hover{
-      background-color: var(--Gray);
-      color: var(--Save-Btn);
+    &-edit {
+      width: 120px;
+      background-color: var(--Save-Btn);
+      border: 0px;
+      color: var(--Darkgray);
+      padding: 0.375rem 1.25rem;
+      &:hover{
+        background-color: var(--Gray);
+        color: var(--Save-Btn);
+      }
+      &:disabled{
+        background-color: var(--Lightgray_2);
+        color: var(--Lightergray);
+      }
     }
-    &:disabled{
-      background-color: var(--Lightgray_2);
-      color: var(--Lightergray);
+    &-delete {
+      width: 200px;
+      background-color: var(--Delete-Btn);
+      border: 0px;
+      color: var(--White);
+      &:hover{
+        background-color: transparent;
+        border: 1px solid var(--Delete-Btn);
+        color: var(--Delete-Btn);
+      }
+      &:disabled{
+        background-color: var(--Lightgray_2);
+        color: var(--Lightergray);
+      }
     }
-  }
-  &-delete {
-    width: 200px;
-    background-color: var(--Delete-Btn);
-    border: 0px;
-    color: var(--White);
-    &:hover{
+    &-delete2{
+      background-color:  var(--Lightgray_3);
+      border: 0px;
+      .MuiButton-startIcon{
+        margin: unset;
+        fill: var(--Gray);
+      }
+      &:hover{
+        background-color: var(--Delete-Btn);
+        color: var(--White);
+        .MuiButton-startIcon{
+          fill: var(--White);
+        }
+      }
+      &:disabled{
+        background-color: var(--Lightgray_2);
+        color: var(--Lightergray);
+      }
+      
+    }
+    &-download {
+      width: 270px;
+      background-color: var(--Download-Btn);
+      border: 0px;
+      color: var(--White);
+      padding: 0.375rem 1.25rem;
+      &:hover{
+        background-color: transparent;
+        border: 1px solid var(--Gray);
+        color: var(--Download-Btn);
+      }
+      &:disabled{
+        background-color: var(--Lightgray_2);
+        color: var(--Lightergray);
+      }
+    }
+    &-cancel {
+      width: 200px;
+      background-color: var(--Cancel-Btn);
+      color: var(--Darkgray);
+      border: 1px solid var(--Gray);
+      &:hover{
+        background-color: var(--Lightgray_2);
+      }
+      &:disabled{
+        background-color: var(--Lightgray_2);
+        color: var(--Lightergray);
+      }
+    }
+    &-accordian {
+      background-color: var(--White);
+      color: var(--Darkgray);
+      height: 37px;
+      width: 89px;
+      padding: 0.375rem 1.25rem;
+      border: 1px solid var(--Lightergray);
+      .MuiButton-startIcon{
+        color: var(--Gray);
+      }
+      &:hover{
+        background-color: var(--Blue-Btn);
+        border: 1px solid var(--Blue-Btn);
+        color: var(--White);
+        .MuiButton-startIcon{
+          color: var(--White);
+        }
+      }
+      &:disabled{
+        background-color: var(--Lightgray_2);
+        color: var(--Lightergray);
+      }
+    }
+    &-accordian.active{
+      background-color: var(--Blue-Btn);
+      border: 1px solid var(--Blue-Btn);
+      color: var(--White);
+      .MuiButton-startIcon{
+        color: var(--White);
+      }
+      &:hover{
+        opacity: 0.8;
+      }
+    }
+    &-accordian.empty{
+      background-color: var(--White);
+      color: var(--Tertiary);
+      &:hover{
+        opacity: 0.8;
+        border: 1px solid var(--Lightergray);
+        .MuiButton-startIcon{
+          color: var(--Gray);
+        }
+      }
+    }
+    &-showmore {
+      background-color: var(--White);
+      color: var(--Darkgray);
+      height: 40px;
+      border: 1px solid var(--Gray);
+      .MuiButton-startIcon{
+        color: var(--Gray);
+      }
+      &:hover{
+        background-color: var(--Blue-Btn);
+        color: var(--White);
+        border: 1px solid var(--Blue-Btn);
+        .MuiButton-startIcon{
+          color: var(--White);
+        }
+      }
+      &:disabled{
+        background-color: var(--Lightgray_2);
+        color: var(--Lightergray);
+      }
+    }
+    &-sortby {
+      background-color: var(--White);
+      color: var(--Darkgray);
+      padding: 0.375rem 1.25rem;
+      border: 1px solid var(--Gray);
+      .MuiButton-startIcon{
+        color: var(--Gray);
+      }
+      &:hover{
+        background-color: var(--Blue-Btn);
+        color: var(--White);
+        border: 1px solid var(--Blue-Btn);
+        .MuiButton-startIcon{
+          color: var(--White);
+        }
+      }
+      &:disabled{
+        background-color: var(--Lightgray_2);
+        color: var(--Lightergray);
+      }
+    }
+    &-sortby.active{
+      background-color: var(--Blue-Btn);
+      border: 1px solid var(--Blue-Btn);
+      color: var(--White);
+      .MuiButton-startIcon{
+        color: var(--White);
+      }
+    }
+    &-listmemu {
+      background-color: var(--White);
+      color: var(--Darkgray);
+      width: 50px;
+      border: 1px solid var(--Gray);
+      .MuiButton-startIcon{
+        color: var(--Gray);
+        margin: unset;
+      }
+      &:hover{
+        background-color: var(--Blue-Btn);
+        color: var(--White);
+        border: 1px solid var(--Blue-Btn);
+        .MuiButton-startIcon{
+          color: var(--White);
+        }
+      }
+      &:disabled{
+        background-color: var(--Lightgray_2);
+        color: var(--Lightergray);
+      }
+    }
+     &-listmemu.active{
+      background-color: var(--Blue-Btn);
+      border: 1px solid var(--Blue-Btn);
+      color: var(--White);
+      .MuiButton-startIcon{
+        color: var(--White);
+      }
+    }
+    &-profile {
       background-color: transparent;
-      border: 1px solid var(--Delete-Btn);
-      color: var(--Delete-Btn);
+      color: var(--Darkgray);
+      width: 50px;
+      .MuiButton-startIcon{
+        color: var(--Gray);
+        margin: unset;
+      }
+      .MuiButton-iconSizeSmall > *:first-child{
+        font-size: 20px;
+      }
+      .MuiButton-iconSizeMedium > *:first-child{
+        font-size: 35px;
+      }
+      .MuiButton-iconSizeLarge > *:first-child{
+        font-size: 40px;
+      }
+      &:hover{
+        background-color: transparent;
+        color: var(--White);
+        .MuiButton-startIcon{
+          color: var(--Blue-Btn);
+        }
+      }
+      &:disabled{
+        background-color: var(--Lightgray_2);
+        color: var(--Lightergray);
+      }
+    } 
+    &-profile.active{
+      color: var(--Blue-Btn);
+      .MuiButton-startIcon{
+        color: var(--Blue-Btn);
+      }
     }
-    &:disabled{
-      background-color: var(--Lightgray_2);
-      color: var(--Lightergray);
+    &-grid-action {
+      border-radius: 0;
+      background-color: transparent;
+      color: var(--Darkgray);
+      width: 10px;
+      padding: unset;
+      .MuiButton-startIcon{
+        color: var(--Gray);
+        margin: unset;
+      }
+      .MuiSvgIcon-root{
+        font-size: 40px;
+      }
+      &:hover{
+        color: var(--Blue-Btn);
+        background-color: transparent;
+        .MuiButton-startIcon{
+          color: var(--Blue-Btn);
+        }
+      }
+      &:disabled{
+        border-radius: 0;
+        background-color: var(--Lightgray_2);
+        color: var(--Lightergray);
+      }
+    }
+     &-grid-action.active{
+      color: var(--Blue-Btn);
+      .MuiButton-startIcon{
+        color: var(--Blue-Btn);
+      }
     }
   }
-}
-}
-
-
-
-.button:first-of-type {
-  margin-right: 20px;
 }

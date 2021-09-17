@@ -1,21 +1,26 @@
 import i18next, { i18n as i18nInstance } from "i18next";
 import { initReactI18next } from "react-i18next";
-import { languages, namespaces } from "./i18n.constants";
-import HttpApi from "i18next-http-backend";
+import { languages } from "./i18n.constants";
+import HttpApi from "i18next-xhr-backend";
+import LanguageDetector from 'i18next-browser-languagedetector';
 
 const createI18n = (language: string): i18nInstance => {
   const i18n = i18next.createInstance().use(initReactI18next);
 
   i18n
     .use(HttpApi) // Use backend plugin for translation file download.
+    .use(LanguageDetector)
     .init({
-      backend: {
-        loadPath: "./locales/{{lng}}/{{ns}}.json", // Specify where backend will find translation files.
-      },
+      // backend: {
+      //   loadPath: "./locales/{{lng}}/{{ns}}.json", // Specify where backend will find translation files.
+      // },
       lng: language,
       debug: true,
       fallbackLng: language,
-      ns: namespaces.pages.simple,
+      interpolation: {
+        escapeValue: false, // not needed for react as it escapes by default
+      },
+      // ns: namespaces.pages.simple,
     });
 
   return i18n;

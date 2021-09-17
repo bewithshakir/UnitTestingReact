@@ -1,0 +1,41 @@
+div{ 
+  .datagrid-actions-popper{
+    z-index: 999;
+    .MuiPaper-elevation1{
+      box-shadow: 6px 6px 14px #00000026;
+      border-radius: unset;
+    }
+  }
+  .datagrid-actions-menu{
+    padding: unset;
+    .menuitem{
+      font-family: Arial;
+      padding: .907rem 1.25rem;
+      font-size: 14px;
+     
+    }
+    .menuitem-text{
+      letter-spacing: 0;
+      min-width: 131px;
+      max-width: 360px;
+      width: -webkit-fill-available;
+      white-space: normal;
+    }
+    .menuitem-icon {
+      min-width: 20px;
+      padding-right: 1.25rem;
+      justify-content: flex-start;
+    }
+    .Mui-selected{
+      font-weight: bold;
+      color: var(--Blue-Btn);
+      .menuitem-icon{
+        svg path:first-child {
+          fill: var(--Blue-Btn);
+          stroke-width: 1px;
+        }
+      }
+    }
+  }
+}
+   

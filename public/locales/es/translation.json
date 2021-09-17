@@ -1,0 +1,54 @@
+{
+  "themes": "Temas",
+  "content1": "en React",
+  "content2": "Este es un ejemplo de cómo hacer",
+  "content3": "temas ",
+  "para": "en la aplicación React Mire mi nuevo video para ver cómo hacer esto de manera fácil",
+  "para1": "El ejemplo contiene React with ",
+  "para2": "Mecanografiado ",
+  "para3": "API de contexto ",
+  "para4": "Reaccionar ganchos",
+  "ustheme": "Tema de Estados Unidos",
+  "uktheme": "Tema del Reino Unido",
+  "email": "Correo electrónico",
+  "content": "Aprenda Reaccionar",
+  "english": "Inglés",
+  "french": "Francés",
+  "spanish": "Español",
+  "buttons": {
+    "save": "Ahorrar",
+    "edit": "Editar",
+    "delete": "Borrar",
+    "cancel": "Cancelar",
+    "download": "Descargar (.csv formato)",
+    "primary": "Primaria",
+    "secondary": "Secundaria",
+    "add customer": "Agregar cliente",
+    "show more": "Mostrar más",
+    "sort by": "Ordenar por"
+  },
+  "menus": {
+    "sortby": {
+      "payment completed": "Pago completado",
+      "payment in progress": "Pago en curso",
+      "recently added lots": "Recientemente añadidos lotes"
+    },
+    "actions": {
+      "add vehicle": "Add vehicle",
+      "import data": "Import data",
+      "export data": "Export data",
+      "delete": "Delete"
+    },
+    "data-grid-actions": {
+      "raise a request": "Raise a request",
+      "fee & driver details": "Fee & Driver details",
+      "other details": "Other details",
+      "contact details": "Contact details"
+    },
+    "profile-actions": {
+      "profile": "Profile",
+      "settings": "Settings",
+      "logout": "Logout"
+    }
+  }
+}
