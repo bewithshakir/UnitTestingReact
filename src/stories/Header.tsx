@@ -1,7 +1,6 @@
 import React from 'react';
 
 import { Button } from '../components/UIComponents/Button/Button.component';
-import { useTheme } from '../contexts/Theme/Theme.context';
 import './header.css';
 
 interface HeaderProps {
@@ -37,15 +36,15 @@ export const Header = ({ user, onLogin, onLogout, onCreateAccount }: HeaderProps
         </div>
         <div>
           {user ? (
-            <Button type="delete" onClick={onLogout} >
+            <Button types="delete" onClick={onLogout} >
               Log out
             </Button>
           ) : (
             <>
-              <Button type="primary" onClick={onLogin} >
+              <Button types="primary" onClick={onLogin} >
                 Log in
               </Button>
-              <Button type="secondary" onClick={onCreateAccount} >
+              <Button types="secondary" onClick={onCreateAccount} >
                 Sign up
               </Button>
             </>

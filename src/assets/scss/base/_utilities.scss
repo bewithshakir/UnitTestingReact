@@ -1,0 +1,48 @@
+@for $factor from 1 to 5 {
+  .m {
+    &t-#{$factor} {
+      margin-top: .25rem * $factor;
+    }
+    &b-#{$factor} {
+        margin-bottom: .25rem * $factor;
+      }
+    &l-#{$factor} {
+      margin-left: .25rem * $factor;
+    }
+    &r-#{$factor} {
+      margin-right: .25rem * $factor;
+    }
+    &x-#{$factor} {
+      margin-left: .25rem * $factor;
+      margin-right: .25rem * $factor;
+    }
+    &y-#{$factor} {
+      margin-top: .25rem * $factor;
+      margin-bottom: .25rem * $factor;
+    }
+  }
+}
+@for $factor from 1 to 5 {
+  .p {
+    &t-#{$factor} {
+      padding-top: .25rem * $factor;
+    }
+    &b-#{$factor} {
+        padding-bottom: .25rem * $factor;
+      }
+    &l-#{$factor} {
+      padding-left: .25rem * $factor;
+    }
+    &r-#{$factor} {
+      padding-right: .25rem * $factor;
+    }
+    &x-#{$factor} {
+      padding-left: .25rem * $factor;
+      padding-right: .25rem * $factor;
+    }
+    &y-#{$factor} {
+      padding-top: .25rem * $factor;
+      padding-bottom: .25rem * $factor;
+    }
+  }
+}

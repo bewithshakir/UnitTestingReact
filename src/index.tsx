@@ -10,16 +10,16 @@ import { ReactQueryDevtools } from 'react-query/devtools'
 
 const queryClient = new QueryClient()
 ReactDOM.render(
-    <QueryClientProvider client={queryClient}>
-      <ThemeProvider>
-        <React.StrictMode>
-          <Suspense fallback={<>Loading...</>}>
-            <App />
-            <ReactQueryDevtools initialIsOpen />
-          </Suspense>
-        </React.StrictMode>
-      </ThemeProvider>
-      </QueryClientProvider>,
+  <QueryClientProvider client={queryClient}>
+    <ThemeProvider>
+      <React.StrictMode>
+        <Suspense fallback={<>Loading...</>}>
+          <App />
+          <ReactQueryDevtools initialIsOpen />
+        </Suspense>
+      </React.StrictMode>
+    </ThemeProvider>
+  </QueryClientProvider>,
   document.getElementById("root")
 );
 
