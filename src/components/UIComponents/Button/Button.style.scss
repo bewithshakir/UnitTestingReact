@@ -319,23 +319,38 @@ div{
       }
     }
    &-profile {
-      background-color: var(--White);
+      background-color: transparent;
       color: var(--Darkgray);
       width: 50px;
       .MuiButton-startIcon{
         color: var(--Gray);
         margin: unset;
       }
+      .MuiButton-iconSizeSmall > *:first-child{
+        font-size: 20px;
+      }
+      .MuiButton-iconSizeMedium > *:first-child{
+        font-size: 35px;
+      }
+      .MuiButton-iconSizeLarge > *:first-child{
+        font-size: 40px;
+      }
       &:hover{
-        background-color: var(--Blue-Btn);
+        background-color: transparent;
         color: var(--White);
         .MuiButton-startIcon{
-          color: var(--White);
+          color: var(--Blue-Btn);
         }
       }
       &:disabled{
         background-color: var(--Lightgray_2);
         color: var(--Lightergray);
+      }
+    } 
+    &-profile.active{
+      color: var(--Blue-Btn);
+      .MuiButton-startIcon{
+        color: var(--Blue-Btn);
       }
     }
     &-grid-action {

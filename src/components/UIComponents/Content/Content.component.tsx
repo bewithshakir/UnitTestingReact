@@ -8,8 +8,9 @@ import { useTranslation } from 'react-i18next';
 import { namespaces } from '../../../i18n/i18n.constants';
 import SortbyMenu from '../Menu/SortbyMenu.component';
 import ActionsMenu from '../Menu/ActionsMenu.component';
+import ProfileMenu from '../Menu/ProfileMenu.component';
 import DataGridActionsMenu from '../Menu/DataGridActionsMenu.component';
-import { ImportIcon, ExportIcon, PlusIcon, DeleteIcon } from '../../../assets/icons';
+import { ExportIcon, PlusIcon, DeleteIcon, ImportIcon, SettingsIcon, LogoutIcon, CustomerProfileIcon2 } from '../../../assets/icons';
 
 export const Content: React.FC = () => {
   const { setCurrentTheme } = useTheme();
@@ -97,6 +98,27 @@ export const Content: React.FC = () => {
             {
               label: t("menus.data-grid-actions.contact details"),
             }
+          ]}
+          onSelect={(value) => {
+            console.log("🚀 ~ file: Content.component.tsx ~ line 60 ~ value", value)
+          }}
+        />
+
+        <ProfileMenu
+          options={[
+            {
+              label: t("menus.profile-actions.profile"),
+              icon: <CustomerProfileIcon2 /> // width={"20px"} height={"20px"}
+            },
+            {
+              label: t("menus.profile-actions.settings"),
+              icon: <SettingsIcon />
+
+            },
+            {
+              label: t("menus.profile-actions.logout"),
+              icon: <LogoutIcon />
+            },
           ]}
           onSelect={(value) => {
             console.log("🚀 ~ file: Content.component.tsx ~ line 60 ~ value", value)

@@ -44,6 +44,11 @@
       "fee & driver details": "Fee & Driver details",
       "other details": "Other details",
       "contact details": "Contact details"
+    },
+    "profile-actions": {
+      "profile": "Profile",
+      "settings": "Settings",
+      "logout": "Logout"
     }
   }
 }

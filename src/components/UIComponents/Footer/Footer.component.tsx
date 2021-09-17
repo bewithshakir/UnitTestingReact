@@ -1,3 +1,4 @@
+import { SvgIcon } from '@material-ui/core';
 import Add from '@material-ui/icons/Add';
 import ArrowDownwardOutlinedIcon from '@material-ui/icons/ArrowDownwardOutlined';
 import CreditCardOutlinedIcon from '@material-ui/icons/CreditCardOutlined';
@@ -8,10 +9,10 @@ import Download from '@material-ui/icons/GetAppOutlined';
 import InvertColorsOutlinedIcon from '@material-ui/icons/InvertColorsOutlined';
 import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined';
 import MapOutlinedIcon from '@material-ui/icons/MapOutlined';
-import PermIdentityOutlinedIcon from '@material-ui/icons/PermIdentityOutlined';
 import TrainOutlinedIcon from '@material-ui/icons/TrainOutlined';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { CustomerProfileIcon } from '../../../assets/icons';
 import logoOne from '../../../assets/images/Shell Taup logo.svg';
 import logoTwo from '../../../assets/images/Shell Taup logo2.svg';
 import { useTheme } from '../../../contexts/Theme/Theme.context';
@@ -155,7 +156,7 @@ export const Footer: React.FC = () => {
           types="profile"
           size="large"
           onClick={() => { }}
-          startIcon={<PermIdentityOutlinedIcon />}
+          startIcon={<SvgIcon component={CustomerProfileIcon} viewBox="0 0 40 40" />}
         >
         </Button>--
       </div>

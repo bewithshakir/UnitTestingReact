@@ -6,21 +6,21 @@ import MenuList from "@material-ui/core/MenuList";
 import Paper from "@material-ui/core/Paper";
 import Popper from "@material-ui/core/Popper";
 import React from "react";
-import { DataGridActionIcon } from '../../../assets/icons';
-import './DataGridActionsMenu.style.scss';
+import { CustomerProfileIcon } from '../../../assets/icons';
+import './ProfileMenu.style.scss';
 
-type DataGridActionsMenuOption = {
+type ProfileMenuOption = {
   label: string;
   icon?: React.ReactNode;
   color?: string;
 }
 
-interface DataGridActionsMenuProps {
-  options: DataGridActionsMenuOption[],
+interface ProfileMenuProps {
+  options: ProfileMenuOption[],
   menuName?: string,
   onSelect: (selectedValue: object) => void,
 }
-export default function DataGridActionsMenu(props: DataGridActionsMenuProps) {
+export default function ProfileMenu(props: ProfileMenuProps) {
   const [open, setOpen] = React.useState(false);
   const [selectedIndex, setSelectedIndex] = React.useState(-1);
   const anchorRef = React.useRef<HTMLButtonElement>(null);
@@ -71,11 +71,12 @@ export default function DataGridActionsMenu(props: DataGridActionsMenuProps) {
       <Button
         ref={anchorRef}
         variant="contained"
-        className={`btn-grid-action ${open ? 'active' : ''}`}
-        aria-controls={open ? "datagrid-actions-menu-list" : undefined}
+        className={`btn-profile ${open ? 'active' : ''}`}
+        aria-controls={open ? "profile-menu-list" : undefined}
         aria-haspopup="true"
         onClick={handleToggle}
-        startIcon={<SvgIcon component={DataGridActionIcon} viewBox="0 0 40 40" />}
+        size="large"
+        startIcon={<SvgIcon component={CustomerProfileIcon} viewBox="0 0 40 40" />}
       />
 
       <Popper
@@ -83,7 +84,7 @@ export default function DataGridActionsMenu(props: DataGridActionsMenuProps) {
         anchorEl={anchorRef.current}
         role={undefined}
         transition
-        className={"datagrid-actions-popper"}
+        className={"profile-popper"}
         placement="bottom-end"
         disablePortal
       >
@@ -98,25 +99,24 @@ export default function DataGridActionsMenu(props: DataGridActionsMenuProps) {
             <Paper>
               <ClickAwayListener onClickAway={handleClose}>
                 <MenuList
-                  className="datagrid-actions-menu"
+                  className="profile-menu"
                   autoFocusItem={open}
-                  id="datagrid-actions-menu-list"
+                  id="profile-menu-list"
                   onKeyDown={handleListKeyDown}
                 >
                   {options.map((option, index) => (
                     <MenuItem
                       key={option.label}
                       className={"menuitem"}
-                      // disabled={index === 3}
+                      disabled={index === 3}
                       selected={index === selectedIndex}
                       onClick={(event) => handleMenuItemClick(event, index)}
                     >
-                      {
-                        option.icon &&
-                        <ListItemIcon className="menuitem-icon" >
-                          option.icon
-                        </ListItemIcon>
-                      }
+                      <ListItemIcon className="menuitem-icon" >
+                        {/* <span className="MuiButton-startIcon MuiButton-iconSizeMedium"> */}
+                        {option.icon}
+                        {/* </span> */}
+                      </ListItemIcon>
                       <div className="menuitem-text">
                         <Typography variant="inherit">{option.label}</Typography>
                       </div>
