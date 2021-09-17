@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { RightInfoPanel } from '../RightInfoPanel/RightInfoPanel.component';
 import { Button } from '../Button/Button.component';
 import { useTheme } from '../../../contexts/Theme/Theme.context';
 
@@ -13,6 +14,9 @@ export const Content: React.FC = () => {
   const changeLanguage = (language: string) => () => {
     i18n.changeLanguage(language);
   };
+  const [open, setOpen] = React.useState(false);
+  const handleDrawerOpen = () => setOpen(!open);
+  const handleDrawerClose = () => setOpen(false);
   return (
     <div>
       <div
@@ -63,6 +67,13 @@ export const Content: React.FC = () => {
         >
           {t("french")}
         </Button>
+        <Button
+          type={'primary'}
+          onClick={handleDrawerOpen}
+        >
+          {t("Right Panel")}
+        </Button>
+        <RightInfoPanel open={open} data={{customerName: "Accurate Transportation", info: {}}} style={{}} onClose={handleDrawerClose} />
       </div>
     </div>
 
