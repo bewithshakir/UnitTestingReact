@@ -1,21 +1,26 @@
-import React , {Suspense}from 'react';
-import ReactDOM from 'react-dom';
+import React, { Suspense } from "react";
+import ReactDOM from "react-dom";
 import "./assets/scss/main.scss";
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import "./i18n/i18n"
-import { ThemeProvider } from './contexts/Theme/Theme.context';
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import "./i18n/i18n";
+import { ThemeProvider } from "./contexts/Theme/Theme.context";
+import { QueryClient, QueryClientProvider } from 'react-query'
+import { ReactQueryDevtools } from 'react-query/devtools'
 
-
+const queryClient = new QueryClient()
 ReactDOM.render(
-  <React.StrictMode>
-    <Suspense fallback={<>Loading...</>}>
-    <ThemeProvider>
-      <App />
-    </ThemeProvider>
-   </Suspense>
-  </React.StrictMode>,
-  document.getElementById('root')
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider>
+        <React.StrictMode>
+          <Suspense fallback={<>Loading...</>}>
+            <App />
+            <ReactQueryDevtools initialIsOpen />
+          </Suspense>
+        </React.StrictMode>
+      </ThemeProvider>
+      </QueryClientProvider>,
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function
