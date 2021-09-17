@@ -6,10 +6,11 @@ svg {
 }
 
 .select {
+  font-family: arial;
+  font-size: 14px;
   position: relative;
   display: inline-block;
-  width: 300px;
-
+  box-sizing: border-box;
   
   &:focus {
     outline: 0;
@@ -21,23 +22,44 @@ svg {
 }
 
 .label {
+  color: var(--Darkgray) !important;
+  font-size: 14px;
+  font-family: arial;
   display: block;
   margin-bottom: 6px;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .selection {
   position: relative;
   padding: 5px;
-  height: 30px;
-  border: 1px solid var(--Darkgray);
-  background: #fff;
+  height: 50px;
+  box-sizing: border-box;
+  border: 1px solid var(--Lightgray_2);
+  background: var(--White) 0% 0% no-repeat padding-box;
+  &:focus {
+        background: var(--White) 0% 0% no-repeat padding-box;
+        color: var(--Darkgray);  
+        border:2px solid var(--Darkgray);
+      }
+  &:active {
+        background: var(--White) 0% 0% no-repeat padding-box;
+        color: var(--Darkgray); 
+        border: 1px solid var(--Gray);
+      }     
+}
+
+.open{
+      background: var(--White) 0% 0% no-repeat padding-box;
+      color: var(--Darkgray);  
+      border:2px solid var(--Darkgray);
 }
 
 .value {
   position: relative;
   display: inline-block;
   padding: 5px 10px;
+  margin-top: 5px;
 }
 
 .multiple {
@@ -60,6 +82,7 @@ svg {
 .placeholder {
   padding: 5px 10px;
   color: var(--Gray);
+  margin-top: 5px;
 }
 
 .arrow {
@@ -83,6 +106,22 @@ svg {
   background:var(--White);
   box-shadow: 3px 6px 14px #00000026;
   z-index: 999;
+  box-sizing: border-box;
+  padding: 0 10px;
+}
+
+.opt-items{
+  display: flex;
+  height: 200px;
+  overflow-y: scroll;
+  flex-direction: column;
+  width: 100%;
+  overflow-x: auto;
+}
+
+.opt-search {
+  display: flex;
+  flex-direction: column;
 }
 
 .option {
@@ -95,11 +134,12 @@ svg {
   &.selected {
     border: 1px solid var(--White);
     margin: -1px -1px 0;
-    background: var(--White);
+    background: var(--Lightgray_3);
   }
   
   &.focused {
-    background: var(--White);
+    background: var(--Lightgray_3);
+    opacity: 1;
   }
 }
 
@@ -129,12 +169,11 @@ svg {
     display: flex;
     font-size: 14px;
     align-items: center;
-    margin: 10px 0;
-    border-bottom: 1px solid var(--Lightgray_3);
+    margin: 0;
+    border:0;
 }
 
 .ui.search .prompt{
-    //position:fixed;
     height: 90%;
     width: 97%; 
     border-radius: 0;
@@ -143,7 +182,6 @@ svg {
 
 .ui.input > input {
     border: 1px solid var(--White);
-    border-bottom: 1px solid var(--Lightgray_4);
     font-size: 14px;
 }
 
@@ -158,4 +196,11 @@ svg {
         border: 1px solid var(--White);
         outline-color: var(--White);
     }
+}
+
+.divider{
+  height: 1px;
+  margin: 5px 0;
+  background-color: var(--White);
+  border-bottom: 1px solid var(--Lightgray_2);
 }

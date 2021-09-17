@@ -1,112 +1,70 @@
 import React, { Fragment, useState } from 'react'
-import { InputLabel, InputBase, FormControl, FormHelperText} from '@material-ui/core';
-import {
-    createStyles,
-    Theme,
-    withStyles,
-    makeStyles,
-  } from '@material-ui/core/styles';
+import { InputLabel, InputBase, FormControl, FormHelperText } from '@material-ui/core';
 import './Input.scss';
 
-
-const Input = withStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      'label + &': {
-        color: 'var(--Darkgray)',
-        marginTop: theme.spacing(2.5),
-      },
-    },
-    input: {
-      borderRadius: 0,
-      position: 'relative',
-      background: 'var(--White) 0% 0% no-repeat padding-box',
-      border: '1px solid var(--Lightgray_2)',  
-      fontSize: 14,
-      width: `16rem`,
-      padding: '10px 12px',
-      '&:focus': {
-        background: 'var(--White) 0% 0% no-repeat padding-box',
-        color: 'var(--Darkgray)',  
-        border: '2px solid var(--Darkgray)',
-      },
-      '&:active' : {
-        background: 'var(--White) 0% 0% no-repeat padding-box',
-        color: 'var(--Darkgray)',  
-        border: '1px solid var(--Gray)',
-      },
-    },
-  }),
-)(InputBase);
-
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      display: 'flex',
-      flexWrap: 'wrap',
-    },
-    margin: {
-      margin: theme.spacing(1),
-    },
-  }),
- );
-
 interface props {
-    name?: string;
-    id?:string;
-    width?:number;
-    label: string;
-    placeholder?: string;
-    description?: string;
-    disabled?: boolean;
-    required?: boolean;
-    autoComplete?:string;
-    classes?:object;
-    multiline?:boolean;
-    type?:string;
-    error?: boolean;
-    value?: string;
-    helperText?:string
-    onChange?: (...args: any[]) => void;
-  }
+  name?: string;
+  id?: string;
+  width?: number;
+  label: string;
+  placeholder?: string;
+  description?: string;
+  disabled?: boolean;
+  required?: boolean;
+  autoComplete?: string;
+  classes?: object;
+  multiline?: boolean;
+  type?: string;
+  error?: boolean;
+  value?: string;
+  helperText?: string
+  onChange?: (...args: any[]) => void;
+}
 
-  export default function TextField (props:props) {
+export default function Input(props: props) {
 
   const [flag, setFlag] = useState(false);
 
   const onBlur = () => setFlag(true);
 
-  const classes = useStyles();
-    return(
-        <Fragment>
-        <FormControl className={classes.margin}>
-        <InputLabel shrink htmlFor={props.id || "input"} aria-labelledby={props.label} aria-required={props.required}>
+  return (
+    <Fragment>
+      <FormControl>
+        <InputLabel shrink htmlFor={props.id} aria-labelledby={props.label} aria-required={props.required}>
           <b>{props.label.toUpperCase()}{props.required && props.label && (<span className='super'>*</span>)}</b>
         </InputLabel>
-        <Input 
-            id={props.id || "input"}
-            aria-describedby={props.description}
-            name={props.name} 
-            value={props.value} 
-            disabled={props.disabled} 
-            placeholder={props.placeholder}
-            required={flag && !props.value}
-            aria-required={props.required}
-            autoComplete={props.autoComplete}
-            classes={props.classes}
-            multiline={props.multiline}
-            type={props.type}
-            error={props.error} 
-            onChange={props.onChange}
-            onBlur={onBlur}
-            />
+        <InputBase
+          id={props.id}
+          style={{ width: props.width }}
+          aria-describedby={props.description}
+          name={props.name}
+          value={props.value}
+          disabled={props.disabled}
+          placeholder={props.placeholder}
+          required={flag && !props.value}
+          aria-required={props.required}
+          autoComplete={props.autoComplete}
+          classes={props.classes}
+          multiline={props.multiline}
+          type={props.type}
+          error={props.error}
+          onChange={props.onChange}
+          onBlur={onBlur}
+        />
         {props.helperText && (
-            <FormHelperText 
-                id={props.description} 
-                className={props.error ? 'MuiFormHelperText-error' : '' }>
-                    {props.helperText}
-            </FormHelperText>)}
-        </FormControl>
-        </Fragment>
-        )
+          <FormHelperText
+            id={props.description}
+            className={props.error ? 'MuiFormHelperText-error' : ''}>
+            {props.helperText}
+          </FormHelperText>)}
+      </FormControl>
+    </Fragment>
+  )
+}
+
+Input.defaultProps = {
+  width: 460,
+  disabled: false,
+  required: false,
+  id: "input",
 }

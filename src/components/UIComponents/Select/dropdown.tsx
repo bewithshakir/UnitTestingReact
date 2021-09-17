@@ -1,4 +1,7 @@
 import React, { useState, useEffect, Fragment } from 'react';
+// import {ReactComponent as upArrow} from '../../../assets/images/ArrowUp.svg';
+// import { ReactComponent as downArrow } from '../../../assets/images/ArrowDown.svg';
+// import { SvgIcon as Icon } from '@material-ui/core';
 import './dropdown.scss';
 
 interface props {
@@ -13,6 +16,11 @@ interface props {
   items: Array<any>;
   onChange?: (...args: any[]) => void;
 }
+
+const Divider = () => <div className='divider'></div>;
+
+// const ChevronUp = () => <Icon component={upArrow} viewBox="0 0 30 30" />
+// const ChevronDown = () => <Icon component={downArrow} viewBox="0 0 10 10" />
 
 export default  function Select (props: props) {
   const [ selectedValues, setSelectedValues ] = useState<any>([]);
@@ -32,10 +40,8 @@ export default  function Select (props: props) {
     setSelectedProps(x => ({ ...x, focusedValue: index }));
   }
 
-  const stopPropagation = (e: any) => e.stopPropagation();
-
   const onClickOption = (e: any) => {
-    const { multiple, items } = props;
+    const { multiple } = props;
     const { value } = e.currentTarget.dataset;
     const index = searchResults.findIndex(i => i.value === value);
     if(!multiple){
@@ -96,6 +102,8 @@ export default  function Select (props: props) {
 
   const renderValues = () => {
     const { placeholder, multiple } = props;
+    const length = selectedValues.length;
+    const ablength = length-1;
 
     if (selectedValues.length === 0) {
       return (
@@ -105,25 +113,13 @@ export default  function Select (props: props) {
       )
     }
 
-    if (multiple) {
-      return selectedValues.map((x:any) => {
-        return (
-          <span
-            key={x.value}
-            onClick={stopPropagation}
-            className="multiple value"
-          >
-            {x.label}
-            <span
-              data-value={x.value}
-              //onClick={onDeleteOption}
-              className="delete"
-            >
-              <X />
-            </span>
-          </span>
-        )
-      })
+    if(multiple){
+      return (
+        <div className="value">
+          {length === 1 && (selectedValues[0].label)}
+          {length > 1 && ([selectedValues[0].label, 'and', ablength, 'more'].join(' ')) }
+        </div>
+      )
     }
 
     return (
@@ -165,7 +161,9 @@ export default  function Select (props: props) {
   }
 
   const renderOptions = () => {
+    const { search, multiple } = props;
     const { isOpen } = selectProps;
+    const length = selectedValues.length;
 
     if (!isOpen) {
       return null
@@ -173,8 +171,19 @@ export default  function Select (props: props) {
 
     return (
       <div className="options">
-        {renderSearch()}
-        {searchResults.map(renderOption)}
+        {search &&(<div className="opt-search">
+          {renderSearch()}
+          <Divider />
+        </div>)}
+        <div className="opt-items">
+        {multiple && (<div className="selected-items">
+          {length > 0 && (selectedValues.map(renderOption))}
+          {length > 0 && (<Divider/>)}
+          </div>)}
+        <div className='items'>
+          {searchResults.map(renderOption)}
+        </div>  
+        </div>
       </div>
     )
   }
@@ -183,10 +192,11 @@ export default  function Select (props: props) {
   return (
     <div
       className="select"
+      style={{width: props.width}}
       onFocus={onFocus}
     >
       <label className="label">{props.label}</label>
-      <div className="selection" onClick={onClick}>
+      <div className={selectProps.isOpen ? "selection open" : "selection"} onClick={onClick}>
         {renderValues()}
         <span className="arrow">
           {selectProps.isOpen ? <ChevronUp /> : <ChevronDown />}
@@ -201,7 +211,7 @@ export default  function Select (props: props) {
 
 const ChevronDown = () => (
   <svg viewBox="0 0 10 7">
-    <path d="M2.08578644,6.5 C1.69526215,6.89052429 1.69526215,7.52368927 2.08578644,7.91421356 C2.47631073,8.30473785 3.10947571,8.30473785 3.5,7.91421356 L8.20710678,3.20710678 L3.5,-1.5 C3.10947571,-1.89052429 2.47631073,-1.89052429 2.08578644,-1.5 C1.69526215,-1.10947571 1.69526215,-0.476310729 2.08578644,-0.0857864376 L5.37867966,3.20710678 L2.08578644,6.5 Z" transform="translate(5.000000, 3.207107) rotate(90.000000) translate(-6.000000, -3.207107) " />
+    <path d="M2.08578644,6.5 C1.69526215,6.89052429 1.69526215,7.52368927 2.08578644,7.91421356 C2.47631073,8.30473785 3.10947571,8.30473785 3.5,7.91421356 L8.20710678,3.20710678 L3.5,-1.5 C3.10947571,-1.89052429 2.47631073,-1.89052429 2.08578644,-1.5 C1.69526215,-1.10947571 1.69526215,-0.476310729 2.08578644,-0.0857864376 L5.37867966,3.20710678 L2.08578644,6.5 Z" transform="translate(5.000000, 5.207107) rotate(90.000000) translate(-6.000000, -3.207107) " />
   </svg>
 )
 
@@ -229,7 +239,8 @@ const SearchIcon = () => (
   </svg>
 )
 Select.defaultProps = {
-  search: true,
+  search: false,
   id: "select-label",
-  multiple: true,
+  multiple: false,
+  width: 460,
 }
