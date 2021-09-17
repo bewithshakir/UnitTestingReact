@@ -50,5 +50,10 @@
       "settings": "Settings",
       "logout": "Logout"
     }
+  },
+  "right-info-panel":{
+      "settings":{
+        "view details": "View Details"
+      }
   }
 }

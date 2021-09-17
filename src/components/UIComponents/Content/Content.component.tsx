@@ -1,9 +1,6 @@
 import React from 'react';
-
-import { RightInfoPanel } from '../RightInfoPanel/RightInfoPanel.component';
 import { Button } from '../Button/Button.component';
 import { useTheme } from '../../../contexts/Theme/Theme.context';
-
 import './Content.style.scss';
 import { useTranslation } from 'react-i18next';
 import SortbyMenu from '../Menu/SortbyMenu.component';
@@ -19,9 +16,7 @@ export const Content: React.FC = () => {
   const changeLanguage = (language: string) => () => {
     i18n.changeLanguage(language);
   };
-  const [open, setOpen] = React.useState(false);
-  const handleDrawerOpen = () => setOpen(!open);
-  const handleDrawerClose = () => setOpen(false);
+
   return (
     <div>
       <div
@@ -128,7 +123,7 @@ export const Content: React.FC = () => {
             console.log("🚀 ~ file: Content.component.tsx ~ line 60 ~ value", value)
           }}
         />
-
+        
         <Button
           types={'primary'}
           onClick={changeLanguage("en")}
@@ -147,13 +142,6 @@ export const Content: React.FC = () => {
         >
           {t("french")}
         </Button>
-        <Button
-          type={'primary'}
-          onClick={handleDrawerOpen}
-        >
-          {t("Right Panel")}
-        </Button>
-        <RightInfoPanel open={open} data={{customerName: "Accurate Transportation", info: {}}} style={{}} onClose={handleDrawerClose} />
       </div>
     </div>
 

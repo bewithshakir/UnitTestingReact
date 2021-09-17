@@ -1,14 +1,17 @@
 .right_info_panel {
     .MuiDrawer-paper{
         width: 566px;
+        .info_panel_header{
+            height: 64px;
+        }
+        
+        .info_panel_content{
+            padding: 47px 47px;    
+        }
+        
+        .info_panel_content_item_divider{
+            width: 100%;
+        }
     }
 }
 
-.info_panel_header{
-    height: 64px;
-}
-
-.panel_content_list{
-    width: '100%';
-    max-width: 360;
-}
