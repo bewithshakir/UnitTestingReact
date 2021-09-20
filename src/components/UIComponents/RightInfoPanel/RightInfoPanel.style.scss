@@ -3,22 +3,31 @@
         width: 566px;
         box-shadow: -10px 0px 10px #A6A6A640;
         .right_info_panel_header{
-            height: 64px;
             .MuiAppBar-root{
                 background-color: var(--Blue-Btn);
                 box-shadow: none;
-                .MuiButton-startIcon{
-                    color: var(--White);
-                    &:hover{
+                padding: 4px 0;
+                .MuiToolbar-root{
+                    .MuiIconButton-root{
+                        padding-right: 10px;
+                    }
+                    .MuiButton-startIcon{
                         color: var(--White);
+                        &:hover{
+                            color: var(--White);
+                        }
+                    }
+                    .right_info_panel_close_icon{
+                        font-size: 17px; 
                     }
                 }
             }
         }
         .right_info_panel_content{
-            padding: 27px 67px;
+            padding: 20px 67px;
             .MuiGrid-container{
                 padding: 16px 0px;
+                font-weight: bold;
                 .right_info_panel_content_label{
                     color: #595959;
                 }
@@ -27,7 +36,6 @@
                 }
             }  
         }
-        
         .right_info_panel_content_item_divider{
             width: 100%;
         }

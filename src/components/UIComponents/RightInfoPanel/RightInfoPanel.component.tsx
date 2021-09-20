@@ -35,11 +35,11 @@ export const RightInfoPanel: React.FC<InfoPanelProps> = ({ open, headingText, in
                 aria-label="menu"
                 onClick={onClose}
               >
-                <CloseIcon color="var(--White)" fontSize="20px"/>
+                <CloseIcon className="right_info_panel_close_icon" color="var(--White)"/>
               </IconButton>
-              <h4 style={{ flexGrow: 1 }}>
+              <h2 style={{ flexGrow: 1 }}>
                 {t(headingText)}
-              </h4>
+              </h2>
               <DataGridActionsMenu
                 options={[
                   {
@@ -48,7 +48,7 @@ export const RightInfoPanel: React.FC<InfoPanelProps> = ({ open, headingText, in
                   }
                 ]}
                 onSelect={(value) => {
-                  console.log("selected")
+                  // console.log("selected")
                 }}
               />
             </Toolbar>
