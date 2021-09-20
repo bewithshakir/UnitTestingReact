@@ -6,10 +6,11 @@
 @import "./base/utilities";
 
 body {
+  #root, .MuiButton-root{
+    font-family: Arial;
+  }
   position: relative;
-  font-family: Arial;
 }
-
 .app__main {
   position: relative;
   z-index: 2;
