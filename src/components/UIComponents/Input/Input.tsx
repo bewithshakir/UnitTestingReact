@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react'
+import { Fragment, useState } from 'react'
 import { InputLabel, InputBase, FormControl, FormHelperText } from '@material-ui/core';
 import './Input.scss';
 
@@ -29,8 +29,8 @@ export default function Input(props: props) {
 
   return (
     <Fragment>
-      <FormControl>
-        <InputLabel shrink htmlFor={props.id} aria-labelledby={props.label} aria-required={props.required}>
+      <FormControl style={{margin:8}}>
+        <InputLabel shrink htmlFor={props.id} style={{ color: 'var(--Darkgray)'}} aria-labelledby={props.label} aria-required={props.required}>
           <b>{props.label.toUpperCase()}{props.required && props.label && (<span className='super'>*</span>)}</b>
         </InputLabel>
         <InputBase
@@ -54,7 +54,7 @@ export default function Input(props: props) {
         {props.helperText && (
           <FormHelperText
             id={props.description}
-            className={props.error ? 'MuiFormHelperText-error' : ''}>
+            error={props.error}>
             {props.helperText}
           </FormHelperText>)}
       </FormControl>
@@ -67,4 +67,5 @@ Input.defaultProps = {
   disabled: false,
   required: false,
   id: "input",
+  error: false,
 }

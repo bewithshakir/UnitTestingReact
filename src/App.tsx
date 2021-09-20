@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useTheme } from './contexts/Theme/Theme.context';
 import { Content } from './components/UIComponents/Content/Content.component';
 import { Footer } from './components/UIComponents/Footer/Footer.component';
@@ -10,13 +10,12 @@ function App() {
   const { theme } = useTheme();
   const [form, setForm] = useState({ userName: '', email: '', item: '' });
   const items = [
-    { label: 'xyxyz', value: 'xyxyz' },
-    { label: 'xyzxznjbvhvghccfrxdxdxdzdzfszzdzszddzzfdzfdzf', value: 'xyzyz' },
-    { label: 'xzyzx', value: 'xzyzx' },
-    { label: 'xzxzx', value: 'xzxzx' },
-    { label: 'xyxyx', value: 'xyxyx' },
-    { label: 'yzxyz', value: 'yzxyz' },
-  ];
+    { label: 'Amazon', value: 'Amazon' },
+    { label: 'Nike', value: 'Nike' },
+    { label: 'Flipkart', value: 'Flipkart' },
+    { label: 'Apple', value: 'Apple' },
+    { label: 'Hp', value: 'Hp' }
+  ]
 
   const handleChange = (e: any) => setForm(x => ({ ...x, [e.target.name]: e.target.value }));
 

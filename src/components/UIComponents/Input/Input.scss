@@ -1,13 +1,12 @@
 .MuiFormControl-root {
     border: 0;
-    margin: 8px !important;
-    display: inline-flex !important;
+    display: inline-flex;
     padding: 0;
     position: relative;
     min-width: 0;
-    flex-direction: column !important;
+    flex-direction: column;
     vertical-align: top;
-    flex-wrap: 'wrap'!important;
+    flex-wrap: 'wrap';
 }
 
 div{
@@ -20,7 +19,7 @@ div{
  .MuiInputBase-root{
     label + &{
         color: 'var(--Darkgray)';
-        margin-top: 20px !important;
+        margin-top: 20px;
     }
  }
  .MuiInputBase-input{
@@ -48,28 +47,23 @@ div{
 
 
 .MuiInputBase-input.Mui-disabled {
-    background: var(--Lightgray_4) 0% 0% no-repeat padding-box !important;
-    //border: 1px solid var(--Lightgray_2) !important;
-    color: var(--Lightergray) !important;  
+    background: var(--Lightgray_4) 0% 0% no-repeat padding-box ;
+    color: var(--Lightergray) ;  
     opacity: 1;
 }
 
 .MuiFormLabel-root{
-    color: var(--Darkgray) !important;
+    color: var(--Darkgray);
 }
 
 .MuiFormLabel-root.Mui-focused {
-    color: var(--Darkgray)!important;
+    color: var(--Darkgray);
 }
 
 .Mui-error .MuiInputBase-input,
 .MuiInputBase-input:invalid{
     box-shadow: none;
     border: 2px solid var(--Tertiary);
-}
-
-.MuiFormHelperText-error{
-    color: var(--Tertiary) !important;
 }
 
 .super{
