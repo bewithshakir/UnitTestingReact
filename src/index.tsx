@@ -10,7 +10,7 @@ import { ReactQueryDevtools } from 'react-query/devtools'
 
 const queryClient = new QueryClient()
 ReactDOM.render(
-  <QueryClientProvider client={queryClient}>
+  <QueryClientProvider client={queryClient} contextSharing={true}>
     <ThemeProvider>
       <React.StrictMode>
         <Suspense fallback={<>Loading...</>}>

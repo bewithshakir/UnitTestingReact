@@ -5,29 +5,41 @@ import { Footer } from './components/UIComponents/Footer/Footer.component';
 import bg from './assets/images/bg_shapes.svg';
 import { useQuery } from 'react-query';
 import { fetchQueryTodos } from './actions/todos-with-query';
-import { QueryComponent } from './QueryTest';
+import { QueryComponent } from './containers/QueryTest';
+import Home from './containers/Home';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 const App = () => {
   const {  data } = useQuery('repoData', fetchQueryTodos)
   console.log(data)
   const { theme } = useTheme();
   return (
+    <Router>
     <div className="App"
       style={{
         ...theme
       } as React.CSSProperties}
     >
-      <div>
-        <div className={'app__main'}>
-          <Content />
-          <Footer />
-        </div>
-        <div className={'app__bg'}>
-          <img src={bg} alt={'bg'} />
-        </div>
-      </div>
-      <QueryComponent />
+        <ul>
+          <li>
+            <Link to="/queryTestData">Query Data</Link>
+          </li>
+        </ul>
+      <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route path="/queryTestData">
+            <QueryComponent />
+          </Route>
+        </Switch>
     </div>
+    </Router>
   )
 }
 

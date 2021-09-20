@@ -121,6 +121,7 @@
     "@storybook/react": "^6.3.7",
     "@types/enzyme": "3.10.9",
     "@types/enzyme-adapter-react-16": "1.0.6",
+    "@types/react-router-dom": "^5.1.9",
     "css-loader": "^5.2.7",
     "enzyme": "3.11.0",
     "enzyme-adapter-react-16": "1.15.6",
