@@ -5,6 +5,11 @@
 // @import "./base/typography";
 // @import "./base/utilities";
 
+* {
+  box-sizing: border-box;
+  font-family: Arial;
+}
+
 .app {
   position: relative;
   background-color: var(--Primary-Background);
