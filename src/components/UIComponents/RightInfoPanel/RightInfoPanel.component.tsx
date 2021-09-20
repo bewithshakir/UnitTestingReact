@@ -3,10 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Drawer, IconButton, AppBar, Toolbar, Box, Grid, Divider } from "@material-ui/core";
 import VisibilityOutlinedIcon from '@material-ui/icons/VisibilityOutlined';
 
-
-
 import DataGridActionsMenu from '../Menu/DataGridActionsMenu.component';
-import { useTheme } from '../../../contexts/Theme/Theme.context';
 import  {CloseIcon} from '../../../assets/icons';
 import './RightInfoPanel.style.scss';
 
@@ -19,7 +16,6 @@ interface InfoPanelProps {
 }
 
 export const RightInfoPanel: React.FC<InfoPanelProps> = ({ open, headingText, info, style, onClose }) => {
-  const { setCurrentTheme } = useTheme();
   const { t, i18n } = useTranslation();
 
   return (
@@ -29,23 +25,22 @@ export const RightInfoPanel: React.FC<InfoPanelProps> = ({ open, headingText, in
       anchor="right"
       open={open}
     >
-      <div className="info_panel_header">
+      <div className="right_info_panel_header">
         <Box sx={{ flexGrow: 1 }}>
           <AppBar position="static">
             <Toolbar variant="dense">
-              <IconButton //to be replaced
+              <IconButton
                 edge="start"
                 color="inherit"
                 aria-label="menu"
                 onClick={onClose}
-                {...{ mr: 2 }}
               >
                 <CloseIcon color="var(--White)" fontSize="20px"/>
               </IconButton>
               <h4 style={{ flexGrow: 1 }}>
                 {t(headingText)}
               </h4>
-              <DataGridActionsMenu //to be edited
+              <DataGridActionsMenu
                 options={[
                   {
                     label: t("right-info-panel.settings.view details"),
@@ -60,7 +55,7 @@ export const RightInfoPanel: React.FC<InfoPanelProps> = ({ open, headingText, in
           </AppBar>
         </Box>
       </div>
-      <div className="info_panel_content">
+      <div className="right_info_panel_content">
         <Grid container spacing={4}>
           {Object.entries(info).map(([key,value],i) =>
             <React.Fragment>
@@ -72,7 +67,7 @@ export const RightInfoPanel: React.FC<InfoPanelProps> = ({ open, headingText, in
                   {value?value:'-'}
                 </Grid>
               </Grid>
-              <Divider className="info_panel_content_item_divider" />
+              <Divider className="right_info_panel_content_item_divider" />
             </React.Fragment>) 
           }
         </Grid>

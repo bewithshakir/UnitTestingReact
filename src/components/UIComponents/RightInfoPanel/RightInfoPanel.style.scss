@@ -1,7 +1,7 @@
 .right_info_panel {
     .MuiDrawer-paper{
         width: 566px;
-        .info_panel_header{
+        .right_info_panel_header{
             height: 64px;
             .MuiAppBar-root{
                 background-color: var(--Blue-Btn);
@@ -13,7 +13,7 @@
                 }
             }
         }
-        .info_panel_content{
+        .right_info_panel_content{
             padding: 27px 67px;
             .MuiGrid-container{
                 padding: 16px 0px;
@@ -21,7 +21,7 @@
             }  
         }
         
-        .info_panel_content_item_divider{
+        .right_info_panel_content_item_divider{
             width: 100%;
         }
     }
