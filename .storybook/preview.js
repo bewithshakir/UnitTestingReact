@@ -1,16 +1,24 @@
 import React, { Fragment } from "react";
-import { ThemeProvider } from '../src/contexts/Theme/Theme.context';
+import { ThemeProvider, useTheme } from '../src/contexts/Theme/Theme.context';
 import ThemeSelect from "./ThemeSelect";
 
-const ThemeChanger = ({ children }) => (
+const ThemeChanger = ({ children }) => {
+    const { theme, setCurrentTheme } = useTheme();
+
+    return (
         <Fragment>
             <ThemeProvider>
-                <ThemeSelect>
+                <div style={{ ...theme }}>
                     {children}
-                </ThemeSelect>
+                </div>
+                {/* To Enable Theme Changer Dropdown Just comment above <div> block and uncomment <ThemeSelect> block  */}
+                {/* <ThemeSelect>
+                    {children}
+                </ThemeSelect> */}
             </ThemeProvider>
         </Fragment>
-);
+    )
+};
 
 
 export const decorators = [(Story) => <ThemeChanger><Story /></ThemeChanger>];

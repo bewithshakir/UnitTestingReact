@@ -1,0 +1,45 @@
+div{ 
+  .actions-popper{
+    z-index: 999;
+    .MuiPaper-elevation1{
+      box-shadow: 6px 6px 14px #00000026;
+      border-radius: unset;
+    }
+  }
+  .actions-menu{
+    padding: unset;
+    margin-top: 0.625rem;
+    .menuitem{
+      font-family: Arial;
+      padding: .907rem 1.25rem;
+      font-size: 14px;
+     
+    }
+    .menuitem-text{
+      letter-spacing: 0;
+      min-width: 120px;
+      max-width: 360px;
+      width: -webkit-fill-available;
+      white-space: normal;
+      color: var(--Darkgray);
+    }
+    .menuitem-icon {
+      fill: var(--Gray);
+      min-width: 20px;
+      padding-right: .625rem;
+      justify-content: flex-start;
+    }
+    .Mui-selected{
+      font-weight: bold;
+      .menuitem-text{
+        color: var(--Blue-Btn);
+      }
+      .menuitem-icon{
+        svg path:first-child {
+          fill: var(--Blue-Btn);
+        }
+      }
+    }
+  }
+}
+   

@@ -1,9 +1,9 @@
-// @import "./abstract/mixins";
+@import "./abstract/mixins";
 // @import "./abstract/variables";
 
 // @import "./base/colors";
-// @import "./base/typography";
-// @import "./base/utilities";
+@import "./base/typography";
+@import "./base/utilities";
 
 * {
   box-sizing: border-box;
@@ -11,10 +11,12 @@
 }
 
 .app {
+body {
+  #root, .MuiButton-root{
+    font-family: Arial;
+  }
   position: relative;
-  background-color: var(--Primary-Background);
 }
-
 .app__main {
   position: relative;
   z-index: 2;

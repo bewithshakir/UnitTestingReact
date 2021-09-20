@@ -5,8 +5,13 @@ import { Footer } from './components/UIComponents/Footer/Footer.component';
 import Input from './components/UIComponents/Input/Input';
 import Select from './components/UIComponents/Select/dropdown';
 import bg from './assets/images/bg_shapes.svg';
+import { useQuery } from 'react-query';
+import { fetchQueryTodos } from './actions/todos-with-query';
+import { QueryComponent } from './QueryTest';
 
-function App() {
+const App = () => {
+  const {  data } = useQuery('repoData', fetchQueryTodos)
+  console.log(data)
   const { theme } = useTheme();
   const [form, setForm] = useState({ userName: '', email: '', item: '' });
   const items = [
@@ -58,9 +63,16 @@ function App() {
           <img src={bg} alt={'bg'} />
         </div>
       </div>
+      <QueryComponent />
     </div>
   )
 }
 
+export default App
 
+
+
+<<<<<<< HEAD
 export default App;
+=======
+>>>>>>> e37bbde3246f3f8f3fe3bbd1ddb0bd68aa053e3f

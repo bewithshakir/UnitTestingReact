@@ -1,34 +1,28 @@
 .text {
     &-primary {
-      color: $color-primary-blue !important;
+      color: var(--Primary-Background);
     }
     &-secondary {
-      color: $color-secondary-orange !important;
+      color: var(--Primary-Background);
+    }
+    &-danger {
+      color: var(--Primary-Background);
     }
   }
 .bg {
-    &-light {
-      background-color: $color-lightgray-4 !important;
-    }
     &-primary {
-      background-color: $color-primary-blue !important;
+      background-color: var(--Primary-Background);
     }
     &-secondary {
-      background-color: $color-gray !important;
-    }
-    &-secondary-lighter {
-      background-color: $color-lightergray !important;
-    }
-    &-secondary-light {
-      background-color: $color-lightgray !important;
+      background-color: var(--Primary-Background);
     }
   }
 .border {
     &-primary {
-      border-color: $color-primary-blue !important;
+      border-color: var(--Primary-Background);
     }
     &-gray {
-      border-color: $color-gray !important;
+      border-color: var(--Primary-Background);
     }
   }
   
