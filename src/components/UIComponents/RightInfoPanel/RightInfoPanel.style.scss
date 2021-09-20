@@ -1,10 +1,12 @@
 .right_info_panel {
     .MuiDrawer-paper{
         width: 566px;
+        box-shadow: -10px 0px 10px #A6A6A640;
         .right_info_panel_header{
             height: 64px;
             .MuiAppBar-root{
                 background-color: var(--Blue-Btn);
+                box-shadow: none;
                 .MuiButton-startIcon{
                     color: var(--White);
                     &:hover{
@@ -17,7 +19,12 @@
             padding: 27px 67px;
             .MuiGrid-container{
                 padding: 16px 0px;
-
+                .right_info_panel_content_label{
+                    color: #595959;
+                }
+                .right_info_panel_content_value{
+                    color: #404040;
+                }
             }  
         }
         

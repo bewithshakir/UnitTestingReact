@@ -60,10 +60,10 @@ export const RightInfoPanel: React.FC<InfoPanelProps> = ({ open, headingText, in
           {Object.entries(info).map(([key,value],i) =>
             <React.Fragment>
               <Grid container item xs={12} spacing={2} key={key}>
-                <Grid item xs={6}>
+                <Grid item xs={6} className="right_info_panel_content_label">
                   {key}
                 </Grid>
-                <Grid item xs={6}>
+                <Grid item xs={6} className="right_info_panel_content_value">
                   {value?value:'-'}
                 </Grid>
               </Grid>
