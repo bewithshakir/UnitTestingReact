@@ -113,8 +113,8 @@ export default function DataGridActionsMenu(props: DataGridActionsMenuProps) {
                     >
                       {
                         option.icon &&
-                        <ListItemIcon className="menuitem-icon" >
-                          option.icon
+                        <ListItemIcon className="menuitem-icon">
+                          {option.icon}
                         </ListItemIcon>
                       }
                       <div className="menuitem-text">
