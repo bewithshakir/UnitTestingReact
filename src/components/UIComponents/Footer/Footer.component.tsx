@@ -29,7 +29,7 @@ const rightPanelData = {
     'Email':'peterparker@gmail.com',
     'Phone':'0923131',
     'Settlement Type':'WEX',
-    'Card Added':true,
+    'Card Added':"",
     'Address':'9555 S Post Oak Rd',
     'City':'Houston',
     'State':'Texas',

@@ -5,12 +5,20 @@
             height: 64px;
             .MuiAppBar-root{
                 background-color: var(--Blue-Btn);
+                .MuiButton-startIcon{
+                    color: #fff;
+                    &:hover{
+                        color: #fff;
+                    }
+                }
             }
-           
         }
-        
         .info_panel_content{
-            padding: 47px 47px;    
+            padding: 20px 47px;
+            .MuiGrid-container{
+                padding: 16px 0px;
+
+            }  
         }
         
         .info_panel_content_item_divider{
