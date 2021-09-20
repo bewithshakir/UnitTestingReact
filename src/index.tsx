@@ -5,21 +5,15 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "./i18n/i18n";
 import { ThemeProvider } from "./contexts/Theme/Theme.context";
-import { QueryClient, QueryClientProvider } from 'react-query'
-import { ReactQueryDevtools } from 'react-query/devtools'
 
-const queryClient = new QueryClient()
 ReactDOM.render(
-  <QueryClientProvider client={queryClient} contextSharing={true}>
     <ThemeProvider>
       <React.StrictMode>
         <Suspense fallback={<>Loading...</>}>
           <App />
-          <ReactQueryDevtools initialIsOpen />
         </Suspense>
       </React.StrictMode>
-    </ThemeProvider>
-  </QueryClientProvider>,
+    </ThemeProvider>,
   document.getElementById("root")
 );
 
