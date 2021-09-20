@@ -72,6 +72,7 @@ export default function SortbyMenu(props: SortbyMenuProps) {
         color={undefined}
         className={`btn-sortby ${open ? 'active' : ''}`}
         aria-controls={open ? "sortby-menu-list" : undefined}
+        aria-label="sortby menu list"
         aria-haspopup="true"
         onClick={handleToggle}
         startIcon={<ArrowDownwardOutlinedIcon />}

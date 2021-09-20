@@ -73,6 +73,7 @@ export default function ProfileMenu(props: ProfileMenuProps) {
         variant="contained"
         className={`btn-profile ${open ? 'active' : ''}`}
         aria-controls={open ? "profile-menu-list" : undefined}
+        aria-label="user profile menu list"
         aria-haspopup="true"
         onClick={handleToggle}
         size="large"
