@@ -73,6 +73,7 @@ export default function DataGridActionsMenu(props: DataGridActionsMenuProps) {
         variant="contained"
         className={`btn-grid-action ${open ? 'active' : ''}`}
         aria-controls={open ? "datagrid-actions-menu-list" : undefined}
+        aria-label="datagrid actions menu list"
         aria-haspopup="true"
         onClick={handleToggle}
         startIcon={<SvgIcon component={DataGridActionIcon} viewBox="0 0 40 40" />}
