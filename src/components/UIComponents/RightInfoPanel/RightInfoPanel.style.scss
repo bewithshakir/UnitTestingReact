@@ -3,6 +3,10 @@
         width: 566px;
         .info_panel_header{
             height: 64px;
+            .MuiAppBar-root{
+                background-color: var(--Blue-Btn);
+            }
+           
         }
         
         .info_panel_content{
