@@ -1,11 +1,13 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Drawer, IconButton, AppBar, Toolbar, Box, Grid, Divider } from "@material-ui/core";
-import KeyboardTabIcon from '@material-ui/icons/KeyboardTab';
 import VisibilityOutlinedIcon from '@material-ui/icons/VisibilityOutlined';
+
+
 
 import DataGridActionsMenu from '../Menu/DataGridActionsMenu.component';
 import { useTheme } from '../../../contexts/Theme/Theme.context';
+import  {CloseIcon} from '../../../assets/icons';
 import './RightInfoPanel.style.scss';
 
 interface InfoPanelProps {
@@ -38,7 +40,7 @@ export const RightInfoPanel: React.FC<InfoPanelProps> = ({ open, headingText, in
                 onClick={onClose}
                 {...{ mr: 2 }}
               >
-                <KeyboardTabIcon />
+                <CloseIcon color="var(--White)" fontSize="20px"/>
               </IconButton>
               <h4 style={{ flexGrow: 1 }}>
                 {t(headingText)}

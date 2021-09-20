@@ -6,9 +6,9 @@
             .MuiAppBar-root{
                 background-color: var(--Blue-Btn);
                 .MuiButton-startIcon{
-                    color: #fff;
+                    color: var(--White);
                     &:hover{
-                        color: #fff;
+                        color: var(--White);
                     }
                 }
             }
