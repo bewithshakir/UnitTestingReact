@@ -1,12 +1,55 @@
-import { ComponentMeta } from '@storybook/react';
-import { Input } from '../components/UIComponents/Input/Input';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
+import  Input from '../components/UIComponents/Input/Input';
 
 export default {
-  title: 'Example/Button',
+  title: 'Components/Input',
   component: Input,
-  argTypes: {
-    backgroundColor: { control: 'color' },
+  argTypes: { 
   },
 } as ComponentMeta<typeof Input>;
 
-// const Template: ComponentStory<typeof Input> = (args) => <Input {...args} />;
+const Template: ComponentStory<typeof Input> = (args) => <Input {...args} />;
+
+export const Primary = Template.bind({});
+Primary.args = {
+  label: "Contact Name",
+  onChange: e => e.target.value,
+  value : onchange,
+  width: 16,
+  helperText: ''
+};
+
+export const Disabled = Template.bind({});
+Disabled.args = {
+  label: "Contact Name",
+  onChange: e => e.target.value,
+  value : 'John Wick',
+  disabled: true,
+};
+
+export const Error = Template.bind({});
+Error.args = {
+  label: "Contact Name",
+  onChange: e => e.target.value,
+  value : onchange,
+  error: true,
+  helperText: 'Message'
+};
+
+export const Required = Template.bind({});
+Required.args = {
+  label: "Contact Name",
+  onChange: e => e.target.value,
+  value : onchange,
+  required: true,
+  helperText: 'Message'
+};
+
+export const Custom = Template.bind({});
+Custom.args = {
+  label: "Contact Name",
+  onChange: e => e.target.value,
+  value : onchange,
+  width: 16,
+  multiline:true
+};
