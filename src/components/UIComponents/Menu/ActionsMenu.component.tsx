@@ -74,6 +74,7 @@ export default function ActionsMenu(props: ActionsMenuProps) {
         className={`btn-listmemu ${open ? 'active' : ''}`}
         aria-controls={open ? "actions-menu-list" : undefined}
         aria-haspopup="true"
+        aria-label="actions menu list"
         onClick={handleToggle}
         size="small"
         startIcon={<SvgIcon component={ActionsListIcon} viewBox="0 0 20 20" />}
