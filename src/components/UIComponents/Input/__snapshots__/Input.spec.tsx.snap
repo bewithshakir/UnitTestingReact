@@ -87,6 +87,93 @@ exports[`renders the Input component disabled snapshot test 1`] = `
 </Fragment>
 `;
 
+exports[`renders the Input component disabled snapshot test for Input component disabled 1`] = `
+<Fragment>
+  <WithStyles(ForwardRef(FormControl))
+    style={
+      Object {
+        "margin": 8,
+      }
+    }
+  >
+    <WithStyles(ForwardRef(InputLabel))
+      aria-labelledby="Input"
+      aria-required={false}
+      htmlFor="input"
+      shrink={true}
+      style={
+        Object {
+          "color": "var(--Darkgray)",
+        }
+      }
+    >
+      <b>
+        INPUT
+      </b>
+    </WithStyles(ForwardRef(InputLabel))>
+    <WithStyles(ForwardRef(InputBase))
+      aria-required={false}
+      disabled={true}
+      error={false}
+      id="input"
+      onBlur={[Function]}
+      required={false}
+      style={
+        Object {
+          "width": 460,
+        }
+      }
+    />
+  </WithStyles(ForwardRef(FormControl))>
+</Fragment>
+`;
+
+exports[`renders the Input component error and helpertext snapshot test for Input component with error and helpertext 1`] = `
+<Fragment>
+  <WithStyles(ForwardRef(FormControl))
+    style={
+      Object {
+        "margin": 8,
+      }
+    }
+  >
+    <WithStyles(ForwardRef(InputLabel))
+      aria-labelledby="Input"
+      aria-required={false}
+      htmlFor="input"
+      shrink={true}
+      style={
+        Object {
+          "color": "var(--Darkgray)",
+        }
+      }
+    >
+      <b>
+        INPUT
+      </b>
+    </WithStyles(ForwardRef(InputLabel))>
+    <WithStyles(ForwardRef(InputBase))
+      aria-required={false}
+      disabled={false}
+      error={true}
+      id="input"
+      onBlur={[Function]}
+      required={false}
+      style={
+        Object {
+          "width": 460,
+        }
+      }
+    />
+    <WithStyles(ForwardRef(FormHelperText))
+      error={true}
+    >
+      Error
+    </WithStyles(ForwardRef(FormHelperText))>
+  </WithStyles(ForwardRef(FormControl))>
+</Fragment>
+`;
+
 exports[`renders the Input component error helpertext snapshot test 1`] = `
 <Fragment>
   <WithStyles(ForwardRef(FormControl))
@@ -179,7 +266,140 @@ exports[`renders the Input component required snapshot test 1`] = `
 </Fragment>
 `;
 
+exports[`renders the Input component required snapshot test for Input component required 1`] = `
+<Fragment>
+  <WithStyles(ForwardRef(FormControl))
+    style={
+      Object {
+        "margin": 8,
+      }
+    }
+  >
+    <WithStyles(ForwardRef(InputLabel))
+      aria-labelledby="Input"
+      aria-required={true}
+      htmlFor="input"
+      shrink={true}
+      style={
+        Object {
+          "color": "var(--Darkgray)",
+        }
+      }
+    >
+      <b>
+        INPUT
+        <span
+          className="super"
+        >
+          *
+        </span>
+      </b>
+    </WithStyles(ForwardRef(InputLabel))>
+    <WithStyles(ForwardRef(InputBase))
+      aria-required={true}
+      disabled={false}
+      error={false}
+      id="input"
+      onBlur={[Function]}
+      required={false}
+      style={
+        Object {
+          "width": 460,
+        }
+      }
+    />
+  </WithStyles(ForwardRef(FormControl))>
+</Fragment>
+`;
+
 exports[`renders the Input component snapshot test 1`] = `
+<Fragment>
+  <WithStyles(ForwardRef(FormControl))
+    style={
+      Object {
+        "margin": 8,
+      }
+    }
+  >
+    <WithStyles(ForwardRef(InputLabel))
+      aria-labelledby="Input"
+      aria-required={false}
+      htmlFor="input"
+      shrink={true}
+      style={
+        Object {
+          "color": "var(--Darkgray)",
+        }
+      }
+    >
+      <b>
+        INPUT
+      </b>
+    </WithStyles(ForwardRef(InputLabel))>
+    <WithStyles(ForwardRef(InputBase))
+      aria-required={false}
+      disabled={false}
+      error={false}
+      id="input"
+      onBlur={[Function]}
+      required={false}
+      style={
+        Object {
+          "width": 460,
+        }
+      }
+    />
+  </WithStyles(ForwardRef(FormControl))>
+</Fragment>
+`;
+
+exports[`renders the Input component with helpertext snapshot test for Input component with helpertext 1`] = `
+<Fragment>
+  <WithStyles(ForwardRef(FormControl))
+    style={
+      Object {
+        "margin": 8,
+      }
+    }
+  >
+    <WithStyles(ForwardRef(InputLabel))
+      aria-labelledby="Input"
+      aria-required={false}
+      htmlFor="input"
+      shrink={true}
+      style={
+        Object {
+          "color": "var(--Darkgray)",
+        }
+      }
+    >
+      <b>
+        INPUT
+      </b>
+    </WithStyles(ForwardRef(InputLabel))>
+    <WithStyles(ForwardRef(InputBase))
+      aria-required={false}
+      disabled={false}
+      error={false}
+      id="input"
+      onBlur={[Function]}
+      required={false}
+      style={
+        Object {
+          "width": 460,
+        }
+      }
+    />
+    <WithStyles(ForwardRef(FormHelperText))
+      error={false}
+    >
+      Message
+    </WithStyles(ForwardRef(FormHelperText))>
+  </WithStyles(ForwardRef(FormControl))>
+</Fragment>
+`;
+
+exports[`renders the default Input component snapshot test for default Input 1`] = `
 <Fragment>
   <WithStyles(ForwardRef(FormControl))
     style={
