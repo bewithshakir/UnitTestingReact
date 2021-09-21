@@ -211,7 +211,7 @@ export const Footer: React.FC = () => {
           {t("Right Menu")}
         </Button>
       </div>
-      <RightInfoPanel open={open} headingText={rightPanelHeading} info={rightPanelData} style={{}} onClose={handleDrawerClose} />
+      <RightInfoPanel open={open} headingText={rightPanelHeading} info={rightPanelData} onClose={handleDrawerClose} />
       <img
         className="footer__logo"
         src={logoSrc}

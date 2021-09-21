@@ -10,11 +10,10 @@ interface InfoPanelProps {
   open: boolean;
   headingText: string;
   info: Object,
-  style?: React.CSSProperties;
   onClose: (...args: any[]) => void;
 }
 
-export const RightInfoPanel: React.FC<InfoPanelProps> = ({ open, headingText, info, style, onClose }) => {
+export const RightInfoPanel: React.FC<InfoPanelProps> = ({ open, headingText, info, onClose }) => {
   const { t, i18n } = useTranslation();
 
   return (
