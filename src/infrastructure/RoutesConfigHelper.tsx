@@ -6,7 +6,7 @@ export const RouteConfig = (route: {path:string,routes:[],component:any}) => {
   return (
     <Route
       path={route.path}
-      render={props => (
+      render={(props: any) => (
         <route.component {...props} routes={route.routes} />
       )}
     />
