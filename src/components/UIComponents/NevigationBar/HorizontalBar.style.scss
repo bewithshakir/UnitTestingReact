@@ -1,0 +1,32 @@
+div{ 
+    .header{
+        background-color: var(--White);
+        &__toolbar{
+            padding-left: 50px;
+            padding-right: unset;
+        }
+        .btn-profile{
+            width: 64px;
+            height: 64px;
+        }
+        .vl {
+            border-left: 1px solid var(--Lightgray) ;
+            height: 44px;
+        }
+        &__country-selector{
+            display: inline-flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 0 1.25rem;
+            .country-selector-logo{
+                display: flex;
+                justify-content: flex-end;
+                width: 40px;
+                height: 40px;
+            }
+            span{
+                color: var(--Black);
+            }
+        }
+    }
+}
