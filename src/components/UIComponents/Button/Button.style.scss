@@ -7,13 +7,15 @@ div{
   }
   .btn, .MuiButton-root{
     border-radius: 0%;
-    font-family: Arial;
     font-weight: bold;
     height: 50px;
     text-transform:  unset;
     font-size: 16px;
     letter-spacing: 0px;
     min-width: 10px;
+    .MuiButton-startIcon{
+      margin-right: .625rem;
+    }
     &.MuiButton-containedPrimary {
       background-color: var(--Blue-Btn);
       border: 0px;

@@ -31,146 +31,166 @@ export const Footer: React.FC = () => {
     <div className={'footer'}>
       <div className={'content__buttons'}>
         <Button
-          types={'save'}
+          types="save"
+          aria-label="save"
           onClick={() => { }}
         >
           {t("buttons.save")}
         </Button>--
         <Button
-          types={'edit'}
+          types="edit"
+          aria-label="edit"
           onClick={() => { }}
           startIcon={<EditIcon />}
         >
           {t("buttons.edit")}
         </Button>--
         <Button
-          types={'delete'}
+          types="delete"
+          aria-label="delete"
           onClick={() => { }}
         >
           {t("buttons.delete")}
         </Button>--
-        <Button
-          types={'cancel'}
+        < Button
+          types="cancel"
+          aria-label="cancel"
           onClick={() => { }}
         >
           {t("buttons.cancel")}
-        </Button>--
-        <Button
-          types={'download'}
+        </Button > --
+        < Button
+          types="download"
+          aria-label="download"
           onClick={() => { }}
-          startIcon={<Download />}
+          startIcon={< Download />}
         >
           {t("buttons.download")}
-        </Button>----------
-        <Button
+        </Button > ----------
+        < Button
           types="primary"
+          aria-label="primary"
           onClick={() => { }}
         >
           {t("buttons.primary")}
-        </Button>--
-        <Button
+        </Button > --
+        < Button
           types="secondary"
+          aria-label="secondary"
           onClick={() => { }}
         >
           {t("buttons.secondary")}
-        </Button>--
-        <Button
+        </Button > --
+        < Button
           types="primary"
+          aria-label="primary"
           onClick={() => { }}
-          startIcon={<Add />}
+          startIcon={< Add />}
         >
           {t("buttons.add customer")}
-        </Button>--
-        <Button
+        </Button > --
+        < Button
           types="accordian"
+          aria-label="accordian"
           onClick={() => { }}
-          startIcon={<DriveEtaOutlinedIcon />}
+          startIcon={< DriveEtaOutlinedIcon />}
         >
           20
-        </Button>--
-        <Button
+        </Button > --
+        < Button
           types="accordian"
+          aria-label="accordian"
           className="active"
           onClick={() => { }}
-          startIcon={<LocationOnOutlinedIcon />}
+          startIcon={< LocationOnOutlinedIcon />}
         >
           20
-        </Button>--
-        <Button
+        </Button > --
+        < Button
           types="accordian"
+          aria-label="accordian"
           disabled
           onClick={() => { }}
-          startIcon={<InvertColorsOutlinedIcon />}
+          startIcon={< InvertColorsOutlinedIcon />}
         >
           20
-        </Button>--
-        <Button
+        </Button > --
+        < Button
           types="accordian"
+          aria-label="accordian"
           className="empty"
           onClick={() => { }}
-          startIcon={<CreditCardOutlinedIcon />}
+          startIcon={< CreditCardOutlinedIcon />}
         >
           0
-        </Button>--
-        <Button
+        </Button > --
+        < Button
           types="accordian"
+          aria-label="accordian"
           onClick={() => { }}
-          startIcon={<MapOutlinedIcon />}
+          startIcon={< MapOutlinedIcon />}
         >
           20
-        </Button>--
-        <Button
+        </Button > --
+        < Button
           types="accordian"
+          aria-label="accordian"
           onClick={() => { }}
-          startIcon={<DescriptionOutlinedIcon />}
+          startIcon={< DescriptionOutlinedIcon />}
         >
           20
-        </Button>--
-        <Button
+        </Button > --
+        < Button
           types="accordian"
+          aria-label="accordian"
           onClick={() => { }}
-          startIcon={<TrainOutlinedIcon />}
+          startIcon={< TrainOutlinedIcon />}
         >
           20
-        </Button>--
-        <Button
+        </Button > --
+        < Button
           types="showmore"
+          aria-label="showmore"
           onClick={() => { }}
         >
           {t("buttons.show more")}
-        </Button>--
-        <Button
+        </Button > --
+        < Button
           types="sortby"
+          aria-label="sortby"
           onClick={() => { }}
-          startIcon={<ArrowDownwardOutlinedIcon />}
+          startIcon={< ArrowDownwardOutlinedIcon />}
         >
           {t("buttons.sort by")}
-        </Button>--
-        <Button
+        </Button > --
+        < Button
           types="listmemu"
+          aria-label="listmemu"
           onClick={() => { }}
-          startIcon={<ArrowDownwardOutlinedIcon />}
+          startIcon={< ArrowDownwardOutlinedIcon />}
         >
-        </Button>--
-        <Button
+        </Button > --
+        < Button
           types="delete2"
+          aria-label="delete2"
           onClick={() => { }}
-          startIcon={<DeleteIcon />}
+          startIcon={< DeleteIcon />}
         >
-        </Button>--
-        <Button
+        </Button > --
+        < Button
           types="profile"
+          aria-label="profile"
           size="large"
           onClick={() => { }}
-          startIcon={<SvgIcon component={CustomerProfileIcon} viewBox="0 0 40 40" />}
+          startIcon={< SvgIcon component={CustomerProfileIcon} viewBox="0 0 40 40" />}
         >
-        </Button>--
-      </div>
+        </Button > --
+      </div >
       <img
-        className={'footer__logo'}
+        className="footer__logo"
         src={logoSrc}
-        alt={'logo'}
+        alt="logo"
       />
-    </div>
+    </div >
   )
 }
