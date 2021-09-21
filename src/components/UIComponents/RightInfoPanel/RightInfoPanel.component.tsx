@@ -1,7 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { Drawer, IconButton, AppBar, Toolbar, Box, Grid, Divider } from "@material-ui/core";
-import VisibilityOutlinedIcon from '@material-ui/icons/VisibilityOutlined';
+import { Drawer, IconButton, AppBar, Toolbar, Box, Grid, Divider } from "@mui/material";
 
 import DataGridActionsMenu from '../Menu/DataGridActionsMenu.component';
 import  {CloseIcon} from '../../../assets/icons';
@@ -31,8 +30,6 @@ export const RightInfoPanel: React.FC<InfoPanelProps> = ({ open, headingText, in
             <Toolbar variant="dense">
               <IconButton
                 edge="start"
-                color="inherit"
-                aria-label="menu"
                 onClick={onClose}
               >
                 <CloseIcon className="right_info_panel_close_icon" color="var(--White)"/>
@@ -43,8 +40,7 @@ export const RightInfoPanel: React.FC<InfoPanelProps> = ({ open, headingText, in
               <DataGridActionsMenu
                 options={[
                   {
-                    label: t("right-info-panel.settings.view details"),
-                    icon: <VisibilityOutlinedIcon />
+                    label: t("right-info-panel.settings.view & edit details")
                   }
                 ]}
                 onSelect={(value) => {

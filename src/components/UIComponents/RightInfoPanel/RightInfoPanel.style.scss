@@ -24,15 +24,15 @@
             }
         }
         .right_info_panel_content{
-            padding: 20px 67px;
+            padding: 45px 80px;
             .MuiGrid-container{
                 padding: 16px 0px;
                 font-weight: bold;
                 .right_info_panel_content_label{
-                    color: #595959;
+                    color: var(--Gray);
                 }
                 .right_info_panel_content_value{
-                    color: #404040;
+                    color: var(--DarkGray);
                 }
             }  
         }

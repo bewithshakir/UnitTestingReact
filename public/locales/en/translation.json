@@ -53,7 +53,7 @@
   },
   "right-info-panel":{
       "settings":{
-        "view details": "View Details"
+        "view & edit details": "View & Edit Details"
       }
   }
 }
