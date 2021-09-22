@@ -17,9 +17,10 @@ import logoOne from '../../../assets/images/Shell Taup logo.svg';
 import logoTwo from '../../../assets/images/Shell Taup logo2.svg';
 import { useTheme } from '../../../contexts/Theme/Theme.context';
 import { RightInfoPanel } from '../RightInfoPanel/RightInfoPanel.component';
-
+import { useHistory } from "react-router-dom";
 import { Button } from '../Button/Button.component';
 import './Footer.style.scss';
+import { NavLink } from 'react-router-dom';
 
 const rightPanelHeading = 'Accurate Transportation';
 
@@ -43,8 +44,13 @@ export const Footer: React.FC = () => {
   const [open, setOpen] = React.useState(false);
   const handleDrawerOpen = () => setOpen(!open);
   const handleDrawerClose = () => setOpen(false);
+  const history = useHistory();
 
   const logoSrc = themeType === 'UK' ? logoOne : logoTwo;
+
+  const navigateToAddCustomer =  ()=>{
+    history.push("/addCustomer")
+  }
 
   return (
     <div className={'footer'}>
@@ -103,7 +109,7 @@ export const Footer: React.FC = () => {
         <Button
           types="primary"
           aria-label="primary"
-          onClick={() => { }}
+          onClick={navigateToAddCustomer}
           startIcon={<Add />}
         >
           {t("buttons.add customer")}

@@ -7,7 +7,7 @@ const Page = ({ route }:any) => {
     <>
       <NestedMenu route={route} />
       {route.parent && <Breadcrumbs route={route} />}
-      <PageBody />
+      <PageBody {...route}/>
     </>
   );
 };

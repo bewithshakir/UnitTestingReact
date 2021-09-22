@@ -1,10 +1,10 @@
 import { Breadcrumbs, Link, SvgIcon } from "@material-ui/core";
-import AppBar from "@material-ui/core/AppBar";
+// import AppBar from "@material-ui/core/AppBar";
 import {
   createStyles, makeStyles,
   Theme
 } from "@material-ui/core/styles";
-import Toolbar from "@material-ui/core/Toolbar";
+// import Toolbar from "@material-ui/core/Toolbar";
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { BackIcon, CustomerProfileIcon2, LogoutIcon, SettingsIcon, LeftArrowIcon } from "../../../assets/icons";
@@ -13,8 +13,13 @@ import NotificationsMenu from '../Menu/NotificationsMenu.component';
 import ProfileMenu from '../Menu/ProfileMenu.component';
 import './HorizontalBar.style.scss';
 import { Button } from "../Button/Button.component";
+import { Divider, Drawer, List, ListItem, ListItemIcon, ListItemText, MenuList } from "@mui/material";
+import InboxIcon from '@mui/icons-material/MoveToInbox';
+import MailIcon from '@mui/icons-material/Mail';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
 
-
+const drawerWidth = 60;
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     grow: {
@@ -38,7 +43,7 @@ const useStyles = makeStyles((theme: Theme) =>
       fontFamily: "Arial",
       fontSize: "18px",
       fontWeight: "bold",
-      color: "var(--Darkgray)"
+      // color: "var(--Darkgray)"
     },
   })
 );
@@ -51,7 +56,7 @@ interface HorizontalBarProps {
 export default function HorizontalBar(props: HorizontalBarProps) {
   const classes = useStyles();
   const { t } = useTranslation();
-
+  console.log(props, "horizontalProps")
   function handleClick(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
     event.preventDefault();
     console.info('You clicked a breadcrumb.');
@@ -114,16 +119,18 @@ export default function HorizontalBar(props: HorizontalBarProps) {
   }
 
   return (
+    <div>
     <div className={classes.grow}>
-      <AppBar position="fixed" className="header" >
+      <AppBar position="fixed" className="header" sx={{ width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px` }} >
         <Toolbar className="header__toolbar">
-          <Button
+          {props.version === "v2" ? null : (<Button
             types="profile"
             aria-label="back button"
             onClick={handleBack}
             size="small"
             startIcon={<SvgIcon component={props.version === "v3" ? LeftArrowIcon : BackIcon} />}
-          />
+          />)
+          }
           {
             props.version === "v1" ?
               V1() :
@@ -183,6 +190,32 @@ export default function HorizontalBar(props: HorizontalBarProps) {
           </div>
         </Toolbar>
       </AppBar>
+    </div>
+    <Drawer
+        sx={{
+          width: drawerWidth,
+          flexShrink: 0,
+          '& .MuiDrawer-paper': {
+            width: drawerWidth,
+            boxSizing: 'border-box',
+          },
+        }}
+        variant="permanent"
+        anchor="left"
+      >
+        <Toolbar />
+        <Divider />
+        <List>
+          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+            <ListItem button key={text}>
+              <ListItemIcon>
+                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+              </ListItemIcon>
+            </ListItem>
+          ))}
+          <ListItemText>{"query"}</ListItemText>
+        </List>
+      </Drawer>
     </div>
   );
 }
