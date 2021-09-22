@@ -10,7 +10,7 @@ interface props {
     value?: string | number;
     placeholder?: string;
     disabled?: boolean;
-    style?: object;
+    classes?: object;
     type?: string;
     onChange?: (...args: any[]) => void;
     onBlur?: (...args: any[]) => void;
@@ -30,11 +30,12 @@ export default function SearchInput (props:props) {
             </IconButton>
             <InputBase
                 id={props.id}
-                style={props.style}
+                style={{ width:'100%' }}
                 name={props.name}
                 value={props.value}
                 disabled={props.disabled}
                 placeholder={props.placeholder}
+                classes={props.classes}
                 type={props.type}
                 onChange={props.onChange}
                 onBlur={props.onBlur}
