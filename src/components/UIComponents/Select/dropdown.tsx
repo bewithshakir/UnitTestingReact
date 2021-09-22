@@ -1,8 +1,5 @@
 import { useState, useEffect, Fragment } from 'react';
-import {ReactComponent as UpArrow} from '../../../assets/images/ArrowUp.svg';
-import { ReactComponent as DownArrow } from '../../../assets/images/ArrowDown.svg';
-import { ReactComponent as CheckBox } from '../../../assets/images/ToggleCheckmark.svg';
-import { ReactComponent as Search } from '../../../assets/images/SearchIcon.svg';
+import { SearchIcon, Check, ArrowUp, ArrowDown, UnCheck } from '../../../assets/icons';
 import './dropdown.scss';
 
 interface props {
@@ -17,12 +14,8 @@ interface props {
   onChange: (...args: any[]) => void;
 }
 
-const Divider = () => <div className='divider'></div>;
+export const Divider = () => <div className='divider'></div>;
 
-const ChevronUp = () => <UpArrow/>;
-const ChevronDown = () => <DownArrow />;
-const Check = () => <CheckBox />;
-const SearchIcon = () => <Search />;
 
 export default function Select(props: props) {
   const [selectedValues, setSelectedValues] = useState<any>([]);
@@ -165,7 +158,7 @@ export default function Select(props: props) {
       >
         {multiple ?
           <span className="checkbox">
-            {selected ? <Check /> : null}
+            {selected ? <Check /> : <UnCheck />}
           </span> :
           null
         }
@@ -213,7 +206,7 @@ export default function Select(props: props) {
       <div className={selectProps.isOpen ? "selection open" : "selection"} onClick={onClick}>
         {renderValues()}
         <span className="arrow">
-          {selectProps.isOpen ? <ChevronUp /> : <ChevronDown />}
+          {selectProps.isOpen ? <ArrowUp /> : <ArrowDown />}
         </span>
       </div>
       {renderOptions()}

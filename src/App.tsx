@@ -1,19 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTheme } from './contexts/Theme/Theme.context';
 import { Content } from './components/UIComponents/Content/Content.component';
 import { Footer } from './components/UIComponents/Footer/Footer.component';
 import Input from './components/UIComponents/Input/Input';
 import Select from './components/UIComponents/Select/dropdown';
+import SearchInput from './components/UIComponents/SearchInput/SearchInput';
+import useDebounce from './utils/useDebounce';
 import bg from './assets/images/bg_shapes.svg';
 import { useQuery } from 'react-query';
 import { fetchQueryTodos } from './actions/todos-with-query';
 import { QueryComponent } from './QueryTest';
 
 const App = () => {
-  const {  data } = useQuery('repoData', fetchQueryTodos)
+  const { data } = useQuery('repoData', fetchQueryTodos)
   console.log(data)
   const { theme } = useTheme();
-  const [form, setForm] = useState({ userName: '', email: '', item: '' });
+  const [form, setForm] = useState({ userName: '', email: '', item: '', searchTerm: '' });
+  const debouncedValue = useDebounce<string>(form.searchTerm, 1000);
   const items = [
     { label: 'Amazon', value: 'Amazon' },
     { label: 'Nike', value: 'Nike' },
@@ -23,6 +26,8 @@ const App = () => {
   ]
 
   const handleChange = (e: any) => setForm(x => ({ ...x, [e.target.name]: e.target.value }));
+
+  useEffect(() => { console.log('Debounced Value:', debouncedValue) }, [debouncedValue]);
 
   return (
     <div className="App"
@@ -56,6 +61,11 @@ const App = () => {
             value={form.email}
             description=''
             required
+          />
+          <SearchInput
+            name='searchTerm'
+            value={form.searchTerm}
+            onChange={handleChange}
           />
           <Footer />
         </div>

@@ -147,19 +147,10 @@ svg {
   content: '';
   vertical-align: top;
   display: inline-block;
-  width: 16px;
-  height: 16px;
   padding: 2px;
-  border: 1px solid var(--Darkgray);
-  border-radius: 2px;
   margin: 2px 12px 0 0;
   color: var(--White);
   font-size: 10px;
-  
-  .selected & {
-    border-color:var(--Black);
-    background: var(--White);
-  }
 }
 
 .ui.search .input{

@@ -170,3 +170,105 @@ export function LogoutIcon(props: React.SVGProps<SVGSVGElement>) {
     </svg>
   )
 }
+
+export function SearchIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      width="1em"
+      height="1em"
+      viewBox="0 0 20 20"
+      {...props}
+    >
+      <path
+        d="M14.02 14.02a7.182 7.182 0 1 1 0-10.162 7.139 7.139 0 0 1 0 10.162m6.3 5.406-4.983-4.983a8.463 8.463 0 1 0-.89.89l4.983 4.983a.63.63 0 0 0 .89-.89"
+        fill={props.color || 'var(--Gray)'}
+      />
+      <path fill="none" d="M0 0h20v20H0z" />
+    </svg>
+  )
+}
+
+export function Check(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      width="1em"
+      height="1em"
+      viewBox="0 0 20 20"
+      {...props}
+    >
+      <path
+        d="M20 0v20H0V0Zm-2 2H2v16h16Zm-4.441 3.589L14.973 7l-7.449 7.452-3.231-3.2L5.7 9.831l1.817 1.8Z"
+        fill={props.color || 'var(--Gray)'}
+      />
+      <path fill="none" d="M0 0h20v20H0z" />
+    </svg>
+  )
+}
+
+export function UnCheck(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      width="1em"
+      height="1em"
+      viewBox="0 0 20 20"
+      {...props}
+    >
+      <path
+        d="M20 0v20H0V0Zm-2 2H2v16h16Z"
+        fill={props.color || 'var(--Gray)'}
+      />
+      <path fill="none" d="M0 0h20v20H0z" />
+    </svg>
+  )
+}
+
+export function ArrowUp(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      width="1em"
+      height="1em"
+      viewBox="0 0 20 20"
+      {...props}
+    >
+      <path
+        d="M18.258 15 9.63 7.156l-7.821 7.812L.396 13.55l9.17-9.159 10.038 9.129Z"
+        fill={props.color || 'var(--Gray)'}
+      />
+      <path fill="none" d="M0 0h20v20H0z" />
+    </svg>
+  )
+}
+
+export function ArrowDown(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      width="1em"
+      height="1em"
+      viewBox="0 0 20 20"
+      {...props}
+    >
+      <path
+        d="m1.742 5 8.628 7.844 7.821-7.812 1.413 1.418-9.17 9.159L.396 6.48Z"
+        fill={props.color || 'var(--Gray)'}
+      />
+      <path fill="none" d="M0 0h20v20H0z" />
+    </svg>
+  )
+}
+
+export function CloseSml(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      width="1em"
+      height="1em"
+      viewBox="0 0 20 20"
+      {...props}
+    >
+      <path
+        d="m17 1 1.414 1.414-7.293 7.293L18.414 17 17 18.414l-7.293-7.293-7.293 7.293L1 17l7.293-7.293L1 2.414 2.414 1l7.293 7.293Z"
+        fill={props.color || 'var(--Gray)'}
+      />
+      <path fill="none" d="M0 0h20v20H0z" />
+    </svg>
+  )
+}
