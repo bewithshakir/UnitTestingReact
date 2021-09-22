@@ -141,6 +141,5 @@
   },
   "resolutions": {
     "babel-loader": "8.1.0"
-  },
-  "homepage": "https://github.com/sede-x/TapUpFrontEnd"
+  }
 }

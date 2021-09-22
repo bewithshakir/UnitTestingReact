@@ -12,18 +12,18 @@ import { useTranslation } from 'react-i18next';
 import Input from '../components/UIComponents/Input/Input';
 import Select from '../components/UIComponents/Select/dropdown';
 const Home = (props: {}) => {
-    const {  data } = useQuery('repoData', fetchQueryTodos)
+    const { data } = useQuery('repoData', fetchQueryTodos, { retry: false })
     console.log(data)
     const { theme } = useTheme();
     const [form, setForm] = useState({ userName: '', email: '', item: '' });
     const items = [
-      { label: 'Amazon', value: 'Amazon' },
-      { label: 'Nike', value: 'Nike' },
-      { label: 'Flipkart', value: 'Flipkart' },
-      { label: 'Apple', value: 'Apple' },
-      { label: 'Hp', value: 'Hp' }
+        { label: 'Amazon', value: 'Amazon' },
+        { label: 'Nike', value: 'Nike' },
+        { label: 'Flipkart', value: 'Flipkart' },
+        { label: 'Apple', value: 'Apple' },
+        { label: 'Hp', value: 'Hp' }
     ]
-  
+
     const handleChange = (e: any) => setForm(x => ({ ...x, [e.target.name]: e.target.value }));
     const { t } = useTranslation()
     return (

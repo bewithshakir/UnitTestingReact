@@ -3,23 +3,25 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 
 import {
   BrowserRouter as Router,
+  Route,
   Switch,
 } from "react-router-dom";
 import { ReactQueryDevtools } from 'react-query/devtools'
 import { Suspense } from 'react';
-import { RouteConfig } from "./infrastructure/RoutesConfigHelper"
-import { routes } from './routes';
+import Page from './navigation/Page';
 
 
-const App = () => {
+const App = ({routes}:any) => {
   const queryClient = new QueryClient()
   return (
     <QueryClientProvider client={queryClient}>
       <Router>
         <Suspense fallback={<>Loading...</>}>
           <Switch>
-            {routes.map((route: any, i) => (
-              <RouteConfig key={i} {...route} />
+            {routes.map((route: any) => (
+              <Route key={route.path} path={route.path} exact={route.exact}>
+                <Page route={route} />
+              </Route>
             ))}
           </Switch>
         </Suspense>
