@@ -235,7 +235,22 @@ export function ShellTapup2(props: React.SVGProps<SVGSVGElement>) {
   )
 }
 
-// export function BackIcon(props: React.SVGProps<SVGSVGElement>) {
+export function BackIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      width="1em"
+      height="1em"
+      viewBox="0 0 20 20"
+      {...props}
+    >
+      <path
+        d="M8.026 4l1.479 1.346-3.83 4.217H18.42v2H5.761l3.714 3.717-1.417 1.413L2 10.628z"
+        fill="#595959"
+      />
+      <path fill="none" d="M0 0h20v20H0z" />
+    </svg>
+  )
+}
 export function CloseIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg

@@ -42,8 +42,8 @@ const Home = (props: {}) => {
                         version='v3'
                         onBack={onClickBack}
                     />
-                    <NavLink to="/query">{t("query")}</NavLink>
                     <Content />
+                    <NavLink to="/query">{t("query")}</NavLink>
                     <Input name='userName'
                         label='User Name'
                         type='text'
