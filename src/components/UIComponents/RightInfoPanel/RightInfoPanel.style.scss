@@ -1,0 +1,44 @@
+.right_info_panel {
+    .MuiDrawer-paper{
+        width: 566px;
+        box-shadow: -10px 0px 10px #A6A6A640;
+        .right_info_panel_header{
+            .MuiAppBar-root{
+                background-color: var(--Blue-Btn);
+                box-shadow: none;
+                padding: 4px 0;
+                .MuiToolbar-root{
+                    .MuiIconButton-root{
+                        padding-right: 10px;
+                    }
+                    .MuiButton-startIcon{
+                        color: var(--White);
+                        &:hover{
+                            color: var(--White);
+                        }
+                    }
+                    .right_info_panel_close_icon{
+                        font-size: 12px; 
+                    }
+                }
+            }
+        }
+        .right_info_panel_content{
+            padding: 45px 80px;
+            .MuiGrid-container{
+                padding: 16px 0px;
+                font-weight: bold;
+                .right_info_panel_content_label{
+                    color: var(--Gray);
+                }
+                .right_info_panel_content_value{
+                    color: var(--DarkGray);
+                }
+            }  
+        }
+        .right_info_panel_content_item_divider{
+            width: 100%;
+        }
+    }
+}
+
