@@ -5,6 +5,11 @@
 @import "./base/typography";
 @import "./base/utilities";
 
+* {
+  box-sizing: border-box;
+  font-family: Arial;
+}
+
 body {
   #root, .MuiButton-root{
     font-family: Arial;

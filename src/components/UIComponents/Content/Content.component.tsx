@@ -1,8 +1,6 @@
 import React from 'react';
-
 import { Button } from '../Button/Button.component';
 import { useTheme } from '../../../contexts/Theme/Theme.context';
-
 import './Content.style.scss';
 import { useTranslation } from 'react-i18next';
 import SortbyMenu from '../Menu/SortbyMenu.component';
@@ -18,6 +16,7 @@ export const Content: React.FC = () => {
   const changeLanguage = (language: string) => () => {
     i18n.changeLanguage(language);
   };
+
   return (
     <div>
       <div
@@ -124,7 +123,7 @@ export const Content: React.FC = () => {
             console.log("🚀 ~ file: Content.component.tsx ~ line 60 ~ value", value)
           }}
         />
-
+        
         <Button
           types={'primary'}
           onClick={changeLanguage("en")}

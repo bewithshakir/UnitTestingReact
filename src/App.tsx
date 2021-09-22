@@ -1,43 +1,34 @@
-import React from 'react';
-import { useTheme } from './contexts/Theme/Theme.context';
-import { Content } from './components/UIComponents/Content/Content.component';
-import { Footer } from './components/UIComponents/Footer/Footer.component';
-import { useQuery } from 'react-query';
-import { fetchQueryTodos } from './actions/todos-with-query';
-import { QueryComponent } from './QueryTest';
-import HorizontalBar from './components/UIComponents/NevigationBar/HorizontalBar';
 
-const App = () => {
-  const { data } = useQuery('repoData', fetchQueryTodos)
-  console.log(data)
-  const { theme } = useTheme();
+import { QueryClient, QueryClientProvider } from 'react-query';
 
-  function onClickBack() {
-    // history.push('/customer');
-  }
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+} from "react-router-dom";
+import { ReactQueryDevtools } from 'react-query/devtools'
+import { Suspense } from 'react';
+import Page from './navigation/Page';
 
+
+const App = ({routes}:any) => {
+  const queryClient = new QueryClient()
   return (
-    <div className="App"
-      style={{
-        ...theme
-      } as React.CSSProperties}
-    >
-      <div>
-        <div className={'app__main'}>
-          <HorizontalBar
-            version='v3'
-            onBack={onClickBack}
-          />
-          <Content />
-          <Footer />
-        </div>
-      </div>
-      <QueryComponent />
-    </div>
+    <QueryClientProvider client={queryClient}>
+      <Router>
+        <Suspense fallback={<>Loading...</>}>
+          <Switch>
+            {routes.map((route: any) => (
+              <Route key={route.path} path={route.path} exact={route.exact}>
+                <Page route={route} />
+              </Route>
+            ))}
+          </Switch>
+        </Suspense>
+      </Router>
+      <ReactQueryDevtools initialIsOpen />
+    </QueryClientProvider>
   )
 }
 
-export default App
-
-
-
+export default App;
