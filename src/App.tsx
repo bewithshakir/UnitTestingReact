@@ -1,70 +1,33 @@
-import React, { useState } from 'react';
-import { useTheme } from './contexts/Theme/Theme.context';
-import { Content } from './components/UIComponents/Content/Content.component';
-import { Footer } from './components/UIComponents/Footer/Footer.component';
-import Input from './components/UIComponents/Input/Input';
-import Select from './components/UIComponents/Select/dropdown';
-import bg from './assets/images/bg_shapes.svg';
-import { useQuery } from 'react-query';
-import { fetchQueryTodos } from './actions/todos-with-query';
-import { QueryComponent } from './QueryTest';
 
-const App = () => {
-  const {  data } = useQuery('repoData', fetchQueryTodos)
-  console.log(data)
-  const { theme } = useTheme();
-  const [form, setForm] = useState({ userName: '', email: '', item: '' });
-  const items = [
-    { label: 'Amazon', value: 'Amazon' },
-    { label: 'Nike', value: 'Nike' },
-    { label: 'Flipkart', value: 'Flipkart' },
-    { label: 'Apple', value: 'Apple' },
-    { label: 'Hp', value: 'Hp' }
-  ]
+import { QueryClient, QueryClientProvider } from 'react-query';
 
-  const handleChange = (e: any) => setForm(x => ({ ...x, [e.target.name]: e.target.value }));
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+} from "react-router-dom";
+import { ReactQueryDevtools } from 'react-query/devtools'
+import { Suspense } from 'react';
+import Page from './navigation/Page';
 
+
+const App = ({routes}:any) => {
+  const queryClient = new QueryClient()
   return (
-    <div className="App"
-      style={{
-        ...theme
-      } as React.CSSProperties}
-    >
-      <div>
-        <div className={'app__main'}>
-          <Content />
-          <Input name='userName'
-            label='User Name'
-            type='text'
-            onChange={handleChange}
-            value={form.userName}
-            description=''
-            helperText='User Name'
-            error
-          />
-          <Select
-            name='item'
-            label='Select item'
-            value={form.item}
-            placeholder='Choose'
-            items={items}
-            onChange={handleChange}
-          />
-          <Input name='email'
-            label='Email'
-            onChange={handleChange}
-            value={form.email}
-            description=''
-            required
-          />
-          <Footer />
-        </div>
-        <div className={'app__bg'}>
-          <img src={bg} alt={'bg'} />
-        </div>
-      </div>
-      <QueryComponent />
-    </div>
+    <QueryClientProvider client={queryClient}>
+      <Router>
+        <Suspense fallback={<>Loading...</>}>
+          <Switch>
+            {routes.map((route: any) => (
+              <Route key={route.path} path={route.path} exact={route.exact}>
+                <Page route={route} />
+              </Route>
+            ))}
+          </Switch>
+        </Suspense>
+      </Router>
+      <ReactQueryDevtools initialIsOpen />
+    </QueryClientProvider>
   )
 }
 
