@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Drawer, IconButton, AppBar, Toolbar, Box, Grid, Divider } from "@mui/material";
 
 import DataGridActionsMenu from '../Menu/DataGridActionsMenu.component';
-import  {CloseIcon} from '../../../assets/icons';
+import { CloseIcon } from '../../../assets/icons';
 import './RightInfoPanel.style.scss';
 
 interface InfoPanelProps {
@@ -14,7 +14,7 @@ interface InfoPanelProps {
 }
 
 export const RightInfoPanel: React.FC<InfoPanelProps> = ({ open, headingText, info, onClose }) => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   return (
     <Drawer
@@ -31,7 +31,7 @@ export const RightInfoPanel: React.FC<InfoPanelProps> = ({ open, headingText, in
                 edge="start"
                 onClick={onClose}
               >
-                <CloseIcon className="right_info_panel_close_icon" color="var(--White)"/>
+                <CloseIcon className="right_info_panel_close_icon" color="var(--White)" />
               </IconButton>
               <h2 style={{ flexGrow: 1 }}>
                 {t(headingText)}
@@ -52,18 +52,18 @@ export const RightInfoPanel: React.FC<InfoPanelProps> = ({ open, headingText, in
       </div>
       <div className="right_info_panel_content">
         <Grid container spacing={4}>
-          {Object.entries(info).map(([key,value],i) =>
+          {Object.entries(info).map(([key, value], i) =>
             <React.Fragment>
               <Grid container item xs={12} spacing={2} key={key}>
                 <Grid item xs={6} className="right_info_panel_content_label">
                   {key}
                 </Grid>
                 <Grid item xs={6} className="right_info_panel_content_value">
-                  {value?value:'-'}
+                  {value ? value : '-'}
                 </Grid>
               </Grid>
               <Divider className="right_info_panel_content_item_divider" />
-            </React.Fragment>) 
+            </React.Fragment>)
           }
         </Grid>
       </div>

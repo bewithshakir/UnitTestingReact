@@ -1,10 +1,19 @@
+import { homedir } from 'os';
 import { lazy } from 'react';
 
 export const routes = [
     {
       path: "/",
       component: lazy(() => import('./pages/Home')),
+      sidebarName: 'Home',
       exact: true,
+      version: "v2",
+      routes: [
+        {
+          path: "/addCustomer",
+          component: lazy(() => import('./pages/AddCustomer')),
+          version: "v1",
+        }]
     },
     {
       path: "/query",
