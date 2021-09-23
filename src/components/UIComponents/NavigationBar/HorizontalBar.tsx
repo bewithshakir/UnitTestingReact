@@ -9,6 +9,7 @@ import Toolbar from '@mui/material/Toolbar';
 // import Toolbar from "@material-ui/core/Toolbar";
 import React from "react";
 import { useTranslation } from "react-i18next";
+import { NavLink } from "react-router-dom";
 import { BackIcon, CustomerProfileIcon2, LeftArrowIcon, LogoutIcon, SettingsIcon } from "../../../assets/icons";
 import { Button } from "../Button/Button.component";
 import NotificationsMenu from '../Menu/NotificationsMenu.component';
@@ -19,14 +20,13 @@ const drawerWidth = 130;
 
 
 interface HorizontalBarProps {
-  version: "v1" | "v2" | "v3",
+  version: "Breadcrumbs-Single" | "NavLinks" | "Breadcrumbs-Many",
   onBack: () => void,
 }
 export default function HorizontalBar(props: HorizontalBarProps) {
   const { t } = useTranslation();
   console.log(props, "horizontalProps")
   function handleClick(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
-    event.preventDefault();
     console.info('You clicked a breadcrumb.');
   }
 
@@ -36,7 +36,7 @@ export default function HorizontalBar(props: HorizontalBarProps) {
     console.info('You clicked a back button.');
   }
 
-  function V1() {
+  function versionBreadcrumbsSingle() {
     return (<>
       <Breadcrumbs separator={<NavigateNextIcon />} aria-label="breadcrumb">
         <Link className="breadcrubs-title" href="/getting-started/installation/" onClick={handleClick}>
@@ -46,40 +46,40 @@ export default function HorizontalBar(props: HorizontalBarProps) {
     </>)
   }
 
-  function V2() {
+  function varsionNavLinks() {
     return (<>
       <div className="linkitem">
-        <Link className="breadcrubs-title" href="/getting-started/installation/" onClick={handleClick}>
+        <NavLink className="breadcrubs-title" to="/addCustomer" onClick={handleClick}>
           Customer List
-        </Link>
+        </NavLink>
       </div>
       <div className="linkitem">
-        <Link className="breadcrubs-title" href="/getting-started/installation/" onClick={handleClick}>
+        <NavLink className="breadcrubs-title" to="/parkinglots" onClick={handleClick}>
           Parking Lots
-        </Link>
+        </NavLink>
       </div>
       <div className="linkitem">
-        <Link className="breadcrubs-title" href="/getting-started/installation/" onClick={handleClick}>
+        <NavLink className="breadcrubs-title" to="/vehicles" onClick={handleClick}>
           Vehicles
-        </Link>
+        </NavLink>
       </div>
       <div className="linkitem">
-        <Link className="breadcrubs-title" href="/getting-started/installation/" onClick={handleClick}>
+        <NavLink className="breadcrubs-title" to="/users" onClick={handleClick}>
           Users
-        </Link>
+        </NavLink>
       </div>
       <div className="linkitem">
-        <Link className="breadcrubs-title" href="/getting-started/installation/" onClick={handleClick}>
+        <NavLink className="breadcrubs-title" to="/invoices" onClick={handleClick}>
           Invoices
-        </Link>
+        </NavLink>
       </div>
     </>)
   }
 
-  function V3() {
+  function versionBreadcrumbsMany() {
     return (<>
       <Breadcrumbs separator={<NavigateNextIcon />} aria-label="breadcrumb">
-        <Link className="breadcrubs-Title" href="/getting-started/installation/" onClick={handleClick}>
+        <Link className="breadcrubs-title" href="/getting-started/installation/" onClick={handleClick}>
           Accurate Transportation
         </Link>
       </Breadcrumbs>
@@ -91,21 +91,21 @@ export default function HorizontalBar(props: HorizontalBarProps) {
       <div className="app__header">
         <AppBar position="fixed" className="header" sx={{ width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px` }} >
           <Toolbar className="header__toolbar">
-            {props.version === "v2" ? null : (<Button
+            {props.version === "NavLinks" ? null : (<Button
               types="profile"
               aria-label="back button"
               onClick={handleBack}
               size="small"
-              startIcon={<SvgIcon component={props.version === "v3" ? LeftArrowIcon : BackIcon} />}
+              startIcon={<SvgIcon component={props.version === "Breadcrumbs-Many" ? LeftArrowIcon : BackIcon} />}
             />)
             }
             {
-              props.version === "v1" ?
-                V1() :
-                props.version === "v2" ?
-                  V2() :
-                  props.version === "v3" ?
-                    V3() :
+              props.version === "Breadcrumbs-Single" ?
+                versionBreadcrumbsSingle() :
+                props.version === "NavLinks" ?
+                  varsionNavLinks() :
+                  props.version === "Breadcrumbs-Many" ?
+                    versionBreadcrumbsMany() :
                     null
             }
             <div className="app__header-section" />
@@ -114,7 +114,7 @@ export default function HorizontalBar(props: HorizontalBarProps) {
                 <div>
                   <img className="country-selector-logo" src="/static/media/Shell Taup logo2.11573aa2.svg" alt="logo" />
                 </div>
-                <span>United States</span>
+                <span className="country-title">United States</span>
               </div>
               <div className="vl"></div>
               <NotificationsMenu

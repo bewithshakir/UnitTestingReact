@@ -4,7 +4,7 @@ div{
     }
     .header{
         .app__header-right-section-desktop{
-             display: flex;
+            display: flex;
             align-items: center;
         }
         background-color: var(--White);
@@ -19,9 +19,21 @@ div{
         }
         &__toolbar{
             .linkitem {
-                padding-right: 30px;
+                padding: 16px 30px;
+                border-bottom: 4px solid  var(--White);
+                :hover{
+                    color: var(--Primary);
+                }
+            }
+            .linkitem.active{
+                color: var(--Primary);
+                .breadcrubs-title{
+                    color: var(--Primary);
+                }
+                border-bottom: 4px solid  var(--Primary);
             }
             .breadcrubs-title {
+                text-decoration: none;
                 font-family: "Arial";
                 font-size: 18px;
                 font-weight: bold;
@@ -37,6 +49,9 @@ div{
             justify-content: flex-start;
             align-items: center;
             padding: 0 1.25rem;
+            .country-title{
+                font-size: 16px;
+            }
             .country-selector-logo{
                 display: flex;
                 justify-content: flex-end;
