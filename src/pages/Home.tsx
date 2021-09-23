@@ -31,20 +31,16 @@ const Home = (props: { version: any }) => {
     const handleChange = (e: any) => setForm(x => ({ ...x, [e.target.name]: e.target.value }));
     const { t } = useTranslation()
     return (
-        <Box sx={{ display: 'flex' }}>
+        <Box sx={{ display: 'flex' }} style={{
+            ...theme
+        } as React.CSSProperties}>
             <CssBaseline />
             <HorizontalBar
                 version={props.version}
                 onBack={onClickBack}
             />
-            <div className="App"
-                style={{
-                    ...theme
-                } as React.CSSProperties}
-            >
-
+            <div className="App">
                 <div className={'app__main'}>
-
                     <Content />
                     <NavLink to="/query">{t("query")}</NavLink>
                     <Input name='userName'

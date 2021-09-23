@@ -1,6 +1,7 @@
 div{ 
     .header{
         background-color: var(--White);
+        z-index: 100;
         &__toolbar{
             padding-left: 50px;
             padding-right: unset;
@@ -8,6 +9,17 @@ div{
         .btn-profile{
             width: 64px;
             height: 64px;
+        }
+        &__toolbar{
+            .linkitem {
+                padding-right: 30px;
+            }
+            .breadcrubs-title {
+                font-family: "Arial";
+                font-size: 18px;
+                font-weight: bold;
+                color: var(--Darkgray);
+            }
         }
         .vl {
             border-left: 1px solid var(--Lightgray) ;

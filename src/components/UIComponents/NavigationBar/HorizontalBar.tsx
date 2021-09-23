@@ -4,20 +4,20 @@ import {
   createStyles, makeStyles,
   Theme
 } from "@material-ui/core/styles";
+import NavigateNextIcon from '@material-ui/icons/NavigateNext';
+import MailIcon from '@mui/icons-material/Mail';
+import InboxIcon from '@mui/icons-material/MoveToInbox';
+import { Divider, Drawer, List, ListItem, ListItemIcon, ListItemText } from "@mui/material";
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
 // import Toolbar from "@material-ui/core/Toolbar";
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { BackIcon, CustomerProfileIcon2, LogoutIcon, SettingsIcon, LeftArrowIcon } from "../../../assets/icons";
-import NavigateNextIcon from '@material-ui/icons/NavigateNext';
+import { BackIcon, CustomerProfileIcon2, LeftArrowIcon, LogoutIcon, SettingsIcon } from "../../../assets/icons";
+import { Button } from "../Button/Button.component";
 import NotificationsMenu from '../Menu/NotificationsMenu.component';
 import ProfileMenu from '../Menu/ProfileMenu.component';
 import './HorizontalBar.style.scss';
-import { Button } from "../Button/Button.component";
-import { Divider, Drawer, List, ListItem, ListItemIcon, ListItemText, MenuList } from "@mui/material";
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
 
 const drawerWidth = 60;
 const useStyles = makeStyles((theme: Theme) =>
@@ -35,15 +35,6 @@ const useStyles = makeStyles((theme: Theme) =>
     sectionDesktop: {
       display: "flex",
       alignItems: "center"
-    },
-    linkItem: {
-      paddingRight: "30px",
-    },
-    breadcrubsTitle: {
-      fontFamily: "Arial",
-      fontSize: "18px",
-      fontWeight: "bold",
-      // color: "var(--Darkgray)"
     },
   })
 );
@@ -71,7 +62,7 @@ export default function HorizontalBar(props: HorizontalBarProps) {
   function V1() {
     return (<>
       <Breadcrumbs separator={<NavigateNextIcon />} aria-label="breadcrumb">
-        <Link className={classes.breadcrubsTitle} href="/getting-started/installation/" onClick={handleClick}>
+        <Link className="breadcrubs-title" href="/getting-started/installation/" onClick={handleClick}>
           Add Customer
         </Link>
       </Breadcrumbs>
@@ -80,28 +71,28 @@ export default function HorizontalBar(props: HorizontalBarProps) {
 
   function V2() {
     return (<>
-      <div className={classes.linkItem}>
-        <Link className={classes.breadcrubsTitle} href="/getting-started/installation/" onClick={handleClick}>
+      <div className="linkitem">
+        <Link className="breadcrubs-title" href="/getting-started/installation/" onClick={handleClick}>
           Customer List
         </Link>
       </div>
-      <div className={classes.linkItem}>
-        <Link className={classes.breadcrubsTitle} href="/getting-started/installation/" onClick={handleClick}>
+      <div className="linkitem">
+        <Link className="breadcrubs-title" href="/getting-started/installation/" onClick={handleClick}>
           Parking Lots
         </Link>
       </div>
-      <div className={classes.linkItem}>
-        <Link className={classes.breadcrubsTitle} href="/getting-started/installation/" onClick={handleClick}>
+      <div className="linkitem">
+        <Link className="breadcrubs-title" href="/getting-started/installation/" onClick={handleClick}>
           Vehicles
         </Link>
       </div>
-      <div className={classes.linkItem}>
-        <Link className={classes.breadcrubsTitle} href="/getting-started/installation/" onClick={handleClick}>
+      <div className="linkitem">
+        <Link className="breadcrubs-title" href="/getting-started/installation/" onClick={handleClick}>
           Users
         </Link>
       </div>
-      <div className={classes.linkItem}>
-        <Link className={classes.breadcrubsTitle} href="/getting-started/installation/" onClick={handleClick}>
+      <div className="linkitem">
+        <Link className="breadcrubs-title" href="/getting-started/installation/" onClick={handleClick}>
           Invoices
         </Link>
       </div>
@@ -111,7 +102,7 @@ export default function HorizontalBar(props: HorizontalBarProps) {
   function V3() {
     return (<>
       <Breadcrumbs separator={<NavigateNextIcon />} aria-label="breadcrumb">
-        <Link className={classes.breadcrubsTitle} href="/getting-started/installation/" onClick={handleClick}>
+        <Link className="breadcrubs-Title" href="/getting-started/installation/" onClick={handleClick}>
           Accurate Transportation
         </Link>
       </Breadcrumbs>
@@ -120,78 +111,78 @@ export default function HorizontalBar(props: HorizontalBarProps) {
 
   return (
     <div>
-    <div className={classes.grow}>
-      <AppBar position="fixed" className="header" sx={{ width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px` }} >
-        <Toolbar className="header__toolbar">
-          {props.version === "v2" ? null : (<Button
-            types="profile"
-            aria-label="back button"
-            onClick={handleBack}
-            size="small"
-            startIcon={<SvgIcon component={props.version === "v3" ? LeftArrowIcon : BackIcon} />}
-          />)
-          }
-          {
-            props.version === "v1" ?
-              V1() :
-              props.version === "v2" ?
-                V2() :
-                props.version === "v3" ?
-                  V3() :
-                  null
-          }
-          <div className={classes.grow} />
-          <div className={classes.sectionDesktop}>
-            <div className="header__country-selector">
-              <div>
-                <img className="country-selector-logo" src="/static/media/Shell Taup logo2.11573aa2.svg" alt="logo" />
+      <div className={classes.grow}>
+        <AppBar position="fixed" className="header" sx={{ width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px` }} >
+          <Toolbar className="header__toolbar">
+            {props.version === "v2" ? null : (<Button
+              types="profile"
+              aria-label="back button"
+              onClick={handleBack}
+              size="small"
+              startIcon={<SvgIcon component={props.version === "v3" ? LeftArrowIcon : BackIcon} />}
+            />)
+            }
+            {
+              props.version === "v1" ?
+                V1() :
+                props.version === "v2" ?
+                  V2() :
+                  props.version === "v3" ?
+                    V3() :
+                    null
+            }
+            <div className={classes.grow} />
+            <div className={classes.sectionDesktop}>
+              <div className="header__country-selector">
+                <div>
+                  <img className="country-selector-logo" src="/static/media/Shell Taup logo2.11573aa2.svg" alt="logo" />
+                </div>
+                <span>United States</span>
               </div>
-              <span>United States</span>
+              <div className="vl"></div>
+              <NotificationsMenu
+                options={[
+                  {
+                    label: "Notification 1",
+                  },
+                  {
+                    label: "Notification 2",
+
+                  },
+                  {
+                    label: "Notification 3",
+                  },
+                ]}
+                onSelect={(value) => {
+                  console.log("🚀 ~ file: Content.component.tsx ~ line 60 ~ value", value)
+                }}
+              />
+              <div className="vl"></div>
+              <ProfileMenu
+                options={[
+                  {
+                    label: t("menus.profile-actions.profile"),
+                    icon: <CustomerProfileIcon2 />
+                  },
+                  {
+                    label: t("menus.profile-actions.settings"),
+                    icon: <SettingsIcon />
+
+                  },
+                  {
+                    label: t("menus.profile-actions.logout"),
+                    icon: <LogoutIcon />
+                  },
+                ]}
+                onSelect={(value) => {
+                  console.log("🚀 ~ file: Content.component.tsx ~ line 60 ~ value", value)
+                }}
+              />
             </div>
-            <div className="vl"></div>
-            <NotificationsMenu
-              options={[
-                {
-                  label: "Notification 1",
-                },
-                {
-                  label: "Notification 2",
-
-                },
-                {
-                  label: "Notification 3",
-                },
-              ]}
-              onSelect={(value) => {
-                console.log("🚀 ~ file: Content.component.tsx ~ line 60 ~ value", value)
-              }}
-            />
-            <div className="vl"></div>
-            <ProfileMenu
-              options={[
-                {
-                  label: t("menus.profile-actions.profile"),
-                  icon: <CustomerProfileIcon2 />
-                },
-                {
-                  label: t("menus.profile-actions.settings"),
-                  icon: <SettingsIcon />
-
-                },
-                {
-                  label: t("menus.profile-actions.logout"),
-                  icon: <LogoutIcon />
-                },
-              ]}
-              onSelect={(value) => {
-                console.log("🚀 ~ file: Content.component.tsx ~ line 60 ~ value", value)
-              }}
-            />
-          </div>
-        </Toolbar>
-      </AppBar>
-    </div>
-    <Drawer
+          </Toolbar>
+        </AppBar>
+      </div>
+      <Drawer
         sx={{
           width: drawerWidth,
           flexShrink: 0,
