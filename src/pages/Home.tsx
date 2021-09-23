@@ -11,6 +11,8 @@ import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import Input from '../components/UIComponents/Input/Input';
 import Select from '../components/UIComponents/Select/dropdown';
+import { SideBarDrawer } from '../components/UIComponents/SideBarMenu/SideBarMenu.component';
+
 const Home = (props: {}) => {
     const { data } = useQuery('repoData', fetchQueryTodos, { retry: false })
     console.log(data)
@@ -61,6 +63,7 @@ const Home = (props: {}) => {
                         required
                     />
                     <Footer />
+                    <SideBarDrawer />
                 </div>
                 <div className={'app__bg'}>
                     <img src={bg} alt={'bg'} />
