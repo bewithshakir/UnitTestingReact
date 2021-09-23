@@ -20,22 +20,21 @@ import { RightInfoPanel } from '../RightInfoPanel/RightInfoPanel.component';
 import { useHistory } from "react-router-dom";
 import { Button } from '../Button/Button.component';
 import './Footer.style.scss';
-import { NavLink } from 'react-router-dom';
 
 const rightPanelHeading = 'Accurate Transportation';
 
 const rightPanelData = {
-    'Customer ID':'0923131',
-    'Name':'Peter Parker',
-    'Email':'peterparker@gmail.com',
-    'Phone':'0923131',
-    'Settlement Type':'WEX',
-    'Card Added':"",
-    'Address':'9555 S Post Oak Rd',
-    'City':'Houston',
-    'State':'Texas',
-    'Country':'US',
-    'ZIP Code':'30013',
+  'Customer ID': '0923131',
+  'Name': 'Peter Parker',
+  'Email': 'peterparker@gmail.com',
+  'Phone': '0923131',
+  'Settlement Type': 'WEX',
+  'Card Added': "",
+  'Address': '9555 S Post Oak Rd',
+  'City': 'Houston',
+  'State': 'Texas',
+  'Country': 'US',
+  'ZIP Code': '30013',
 }
 
 export const Footer: React.FC = () => {
@@ -48,7 +47,7 @@ export const Footer: React.FC = () => {
 
   const logoSrc = themeType === 'UK' ? logoOne : logoTwo;
 
-  const navigateToAddCustomer =  ()=>{
+  const navigateToAddCustomer = () => {
     history.push("/addCustomer")
   }
 

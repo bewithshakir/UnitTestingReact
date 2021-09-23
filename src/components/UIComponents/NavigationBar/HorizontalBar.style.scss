@@ -1,5 +1,12 @@
 div{ 
+    .app__header .app__header-section{
+        flex-grow: 1;
+    }
     .header{
+        .app__header-right-section-desktop{
+             display: flex;
+            align-items: center;
+        }
         background-color: var(--White);
         z-index: 100;
         &__toolbar{

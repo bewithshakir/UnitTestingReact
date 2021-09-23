@@ -1,9 +1,5 @@
 import { Breadcrumbs, Link, SvgIcon } from "@material-ui/core";
 // import AppBar from "@material-ui/core/AppBar";
-import {
-  createStyles, makeStyles,
-  Theme
-} from "@material-ui/core/styles";
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import MailIcon from '@mui/icons-material/Mail';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
@@ -19,25 +15,7 @@ import NotificationsMenu from '../Menu/NotificationsMenu.component';
 import ProfileMenu from '../Menu/ProfileMenu.component';
 import './HorizontalBar.style.scss';
 
-const drawerWidth = 60;
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    grow: {
-      flexGrow: 1
-    },
-    menuButton: {
-      marginRight: theme.spacing(2)
-    },
-    title: {
-      display: "block",
-      color: "red",
-    },
-    sectionDesktop: {
-      display: "flex",
-      alignItems: "center"
-    },
-  })
-);
+const drawerWidth = 130;
 
 
 interface HorizontalBarProps {
@@ -45,7 +23,6 @@ interface HorizontalBarProps {
   onBack: () => void,
 }
 export default function HorizontalBar(props: HorizontalBarProps) {
-  const classes = useStyles();
   const { t } = useTranslation();
   console.log(props, "horizontalProps")
   function handleClick(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
@@ -111,7 +88,7 @@ export default function HorizontalBar(props: HorizontalBarProps) {
 
   return (
     <div>
-      <div className={classes.grow}>
+      <div className="app__header">
         <AppBar position="fixed" className="header" sx={{ width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px` }} >
           <Toolbar className="header__toolbar">
             {props.version === "v2" ? null : (<Button
@@ -131,8 +108,8 @@ export default function HorizontalBar(props: HorizontalBarProps) {
                     V3() :
                     null
             }
-            <div className={classes.grow} />
-            <div className={classes.sectionDesktop}>
+            <div className="app__header-section" />
+            <div className="app__header-right-section-desktop">
               <div className="header__country-selector">
                 <div>
                   <img className="country-selector-logo" src="/static/media/Shell Taup logo2.11573aa2.svg" alt="logo" />
