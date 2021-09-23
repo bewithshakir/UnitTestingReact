@@ -1,0 +1,29 @@
+.customer_filter_panel {
+    .MuiDrawer-paper{
+        width: 615px;
+        box-shadow: -10px 0px 10px #A6A6A640;
+        .customer_filter_panel_header{
+            .MuiAppBar-root{
+                background-color: var(--Blue-Btn);
+                box-shadow: none;
+                padding: 4px 0;
+                .MuiToolbar-root{
+                    padding: 0px 48px;
+                    .customer_filter_panel_close_icon{
+                        font-size: 12px; 
+                    }
+                }
+            }
+        }
+        .customer_filter_panel_content{
+            padding: 45px 50px;
+            .filter_panel_field_box{
+                margin-bottom: 45px;
+            }
+        }
+    }
+}
+
+.custom-toolbar{
+    background-color: var(--Blue-Btn);
+}

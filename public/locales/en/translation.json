@@ -57,5 +57,10 @@
       "settings":{
         "view & edit details": "View & Edit Details"
       }
+  },
+  "customer-filter-panel":{
+    "header":{
+      "filter":"Filter"
+    }
   }
 }

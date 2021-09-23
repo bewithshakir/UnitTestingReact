@@ -17,6 +17,7 @@ import logoOne from '../../../assets/images/Shell Taup logo.svg';
 import logoTwo from '../../../assets/images/Shell Taup logo2.svg';
 import { useTheme } from '../../../contexts/Theme/Theme.context';
 import { RightInfoPanel } from '../RightInfoPanel/RightInfoPanel.component';
+import { CustomerFilterPanel } from '../CustomerFilterPanel/CustomerFilterPanel.component';
 
 import { Button } from '../Button/Button.component';
 import './Footer.style.scss';
@@ -40,15 +41,25 @@ const rightPanelData = {
 export const Footer: React.FC = () => {
   const { themeType } = useTheme();
   const { t } = useTranslation();
-  const [open, setOpen] = React.useState(false);
-  const handleDrawerOpen = () => setOpen(!open);
-  const handleDrawerClose = () => setOpen(false);
+  const [infoPanelVisible, setInfoPanelVisible] = React.useState(false);
+  const [custFilterPanelVisible, setCustFilterPanelVisible] = React.useState(false);
+  const handleInfoPanelOpen = () => setInfoPanelVisible(!infoPanelVisible);
+  const handleInfoPanelClose = () => setInfoPanelVisible(false);
+  
+  const handleCustFilterPanelOpen = () => setCustFilterPanelVisible(!custFilterPanelVisible);
+  const handleCustFilterPanelClose = () => setCustFilterPanelVisible(false);
 
   const logoSrc = themeType === 'UK' ? logoOne : logoTwo;
 
   return (
     <div className={'footer'}>
       <div className={'content__buttons'}>
+        <Button
+          types="primary"
+          onClick={handleCustFilterPanelOpen}
+        >
+          {t("Customer Filter Panel")}
+        </Button>-
         <Button
           types="save"
           aria-label="save"
@@ -206,12 +217,15 @@ export const Footer: React.FC = () => {
         </Button>--
         <Button
           types="primary"
-          onClick={handleDrawerOpen}
+          onClick={handleInfoPanelOpen}
         >
-          {t("Right Menu")}
-        </Button>
+          {t("Right Info Panel")}
+        </Button>------
+        <CustomerFilterPanel open={custFilterPanelVisible} onClose={handleCustFilterPanelClose} />
       </div>
-      <RightInfoPanel open={open} headingText={rightPanelHeading} info={rightPanelData} onClose={handleDrawerClose} />
+      <RightInfoPanel open={infoPanelVisible} headingText={rightPanelHeading} info={rightPanelData} onClose={handleInfoPanelClose} />
+      
+  
       <img
         className="footer__logo"
         src={logoSrc}
