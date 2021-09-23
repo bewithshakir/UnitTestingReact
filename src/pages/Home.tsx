@@ -4,7 +4,6 @@ import { Footer } from '../components/UIComponents/Footer/Footer.component';
 import bg from "../assets/images/bg_shapes.svg"
 import { useQuery } from 'react-query';
 import { fetchQueryTodos } from '../actions/todos-with-query';
-import { useTheme } from '../contexts/Theme/Theme.context';
 import { NavLink, useHistory } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import Input from '../components/UIComponents/Input/Input';
@@ -14,7 +13,6 @@ import { Box, CssBaseline } from '@mui/material';
 const Home = (props: { version: any }) => {
     const { data } = useQuery('repoData', fetchQueryTodos, { retry: false })
     console.log(data)
-    const { theme } = useTheme();
     const [form, setForm] = useState({ userName: '', email: '', item: '' });
     const items = [
         { label: 'Amazon', value: 'Amazon' },
@@ -31,9 +29,7 @@ const Home = (props: { version: any }) => {
     const handleChange = (e: any) => setForm(x => ({ ...x, [e.target.name]: e.target.value }));
     const { t } = useTranslation()
     return (
-        <Box sx={{ display: 'flex' }} style={{
-            ...theme
-        } as React.CSSProperties}>
+        <Box sx={{ display: 'flex' }}>
             <CssBaseline />
             <HorizontalBar
                 version={props.version}
