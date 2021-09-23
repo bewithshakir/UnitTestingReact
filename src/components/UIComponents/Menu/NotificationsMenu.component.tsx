@@ -6,21 +6,21 @@ import MenuList from "@material-ui/core/MenuList";
 import Paper from "@material-ui/core/Paper";
 import Popper from "@material-ui/core/Popper";
 import React from "react";
-import { CustomerProfileIcon } from '../../../assets/icons';
-import './ProfileMenu.style.scss';
+import { NotificationIcon } from '../../../assets/icons';
+import './NotificationsMenu.style.scss';
 
-type ProfileMenuOption = {
+type NotificationsMenuOption = {
   label: string;
   icon?: React.ReactNode;
   color?: string;
 }
 
-interface ProfileMenuProps {
-  options: ProfileMenuOption[],
+interface NotificationsMenuProps {
+  options: NotificationsMenuOption[],
   menuName?: string,
   onSelect: (selectedValue: object) => void,
 }
-export default function ProfileMenu(props: ProfileMenuProps) {
+export default function NotificationsMenu(props: NotificationsMenuProps) {
   const [open, setOpen] = React.useState(false);
   const [selectedIndex, setSelectedIndex] = React.useState(-1);
   const anchorRef = React.useRef<HTMLButtonElement>(null);
@@ -72,18 +72,18 @@ export default function ProfileMenu(props: ProfileMenuProps) {
         ref={anchorRef}
         variant="contained"
         className={`btn-profile ${open ? 'active' : ''}`}
-        aria-controls={open ? "profile-menu-list" : undefined}
-        aria-label="user profile menu list"
+        aria-controls={open ? "notification-menu-list" : undefined}
+        aria-label="notification menu list"
         aria-haspopup="true"
         onClick={handleToggle}
-        startIcon={<SvgIcon component={CustomerProfileIcon} viewBox="0 0 40 40" />}
+        startIcon={<SvgIcon component={NotificationIcon} viewBox="0 0 40 40" />}
       />
       <Popper
         open={open}
         anchorEl={anchorRef.current}
         role={undefined}
         transition
-        className={"profile-popper"}
+        className={"notification-popper"}
         placement="bottom-end"
         disablePortal
       >
@@ -98,9 +98,9 @@ export default function ProfileMenu(props: ProfileMenuProps) {
             <Paper>
               <ClickAwayListener onClickAway={handleClose}>
                 <MenuList
-                  className="profile-menu"
+                  className="notification-menu"
                   autoFocusItem={open}
-                  id="profile-menu-list"
+                  id="notification-menu-list"
                   onKeyDown={handleListKeyDown}
                 >
                   {options.map((option, index) => (

@@ -2,7 +2,7 @@ import React from 'react';
 import { Button as ButtonField, ButtonProps } from "@material-ui/core";
 import './Button.style.scss';
 
-type ButtonType = '' | 'primary' | 'secondary'
+type ButtonType = '' | 'primary' | 'secondary' | 'filter'
   | 'save' | 'edit' | 'delete' | 'delete2' | 'download' | 'cancel'
   | 'accordian' | 'showmore' | 'sortby' | 'listmemu' | 'profile' | 'grid-action';
 interface ButtonFieldProps extends ButtonProps {
