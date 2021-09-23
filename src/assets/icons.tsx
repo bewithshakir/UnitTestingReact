@@ -17,6 +17,22 @@ export function ActionsListIcon(props: React.SVGProps<SVGSVGElement>) {
   )
 }
 
+export function FilterIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      width="1em"
+      height="1em"
+      viewBox="0 0 20 21.111"
+      {...props}
+    >
+      <path
+        d="M20 0l-6.667 7.778v8.889l-6.666 4.444V10L0 0zm-4.832 2.222H4.152l4.737 7.1v7.631l2.222-1.481V6.956z"
+        fill="#595959"
+      />
+      <path fill="none" d="M0 0h20v20H0z" />
+    </svg>
+  )
+}
 
 export function ImportIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
@@ -239,6 +255,41 @@ export function ArrowUp(props: React.SVGProps<SVGSVGElement>) {
   )
 }
 
+export function BackIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      width="1em"
+      height="1em"
+      viewBox="0 0 20 20"
+      {...props}
+    >
+      <path
+        d="M8.026 4l1.479 1.346-3.83 4.217H18.42v2H5.761l3.714 3.717-1.417 1.413L2 10.628z"
+        fill="#595959"
+      />
+      <path fill="none" d="M0 0h20v20H0z" />
+    </svg>
+  )
+}
+
+export function CloseIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      width="1em"
+      height="1em"
+      viewBox="0 0 20 20"
+      {...props}
+    >
+      <path
+        d="M8.026 4l1.479 1.346-3.83 4.217H18.42v2H5.761l3.714 3.717-1.417 1.413L2 10.628z"
+        fill="#595959"
+      />
+      <path fill="none" d="M0 0h20v20H0z" />
+    </svg>
+  )
+}
+
+
 export function ArrowDown(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
@@ -269,6 +320,40 @@ export function CloseSml(props: React.SVGProps<SVGSVGElement>) {
         fill={props.color || 'var(--Gray)'}
       />
       <path fill="none" d="M0 0h20v20H0z" />
+    </svg>
+  )
+}
+
+export function LeftArrowIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      width="1em"
+      height="1em"
+      viewBox="0 0 20 20"
+      {...props}
+    >
+      <path
+        d="M15.606 1.345L7.763 9.973l7.811 7.821-1.411 1.413L5 10.038 14.126 0z"
+        fill="#595959"
+      />
+      <path fill="none" d="M20 20H0V0h20z" />
+    </svg>
+  )
+}
+
+export function NotificationIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      width="1em"
+      height="1em"
+      viewBox="0 0 40 40"
+      {...props}
+    >
+      <path fill="none" d="M0 0h40v40H0z" />
+      <path
+        d="M20 10a3 3 0 012.85 2.06A6 6 0 0128 18v7h2v2h-6.126a4 4 0 01-7.748 0H10v-2h2v-7a6 6 0 015.151-5.94A3 3 0 0120 10zm1.732 17h-3.464a2 2 0 003.464 0zM20 12a1 1 0 00-.907.578l-.042.107-.389 1.181-1.23.174a4 4 0 00-3.427 3.754L14 18v7h12v-7a4 4 0 00-3.23-3.926l-.2-.034-1.23-.174-.389-1.18A1 1 0 0020 12z"
+        fill={props.color}
+      />
     </svg>
   )
 }

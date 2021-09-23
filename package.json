@@ -9,6 +9,7 @@
     "@material-ui/icons": "^4.11.2",
     "@microsoft/applicationinsights-react-js": "^3.1.5",
     "@microsoft/applicationinsights-web": "^2.6.5",
+    "@mui/icons-material": "^5.0.1",
     "@mui/material": "^5.0.0",
     "@reduxjs/toolkit": "^1.6.1",
     "@testing-library/jest-dom": "^5.11.4",
@@ -45,7 +46,9 @@
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
-    "postbuild": "node iisConfig/copyIISConfig.js"
+    "postbuild": "node iisConfig/copyIISConfig.js",
+    "predeploy-storybook": "npm run build-storybook",
+    "deploy-storybook": "gh-pages -d storybook-static"
   },
   "jest": {
     "collectCoverageFrom": [
@@ -122,13 +125,17 @@
     "@storybook/node-logger": "^6.3.7",
     "@storybook/preset-create-react-app": "^3.2.0",
     "@storybook/react": "^6.3.7",
+    "@testing-library/react-hooks": "^7.0.2",
     "@types/enzyme": "3.10.9",
     "@types/enzyme-adapter-react-16": "1.0.6",
+    "@types/react-router-dom": "^5.1.9",
     "css-loader": "^5.2.7",
     "enzyme": "3.11.0",
     "enzyme-adapter-react-16": "1.15.6",
     "enzyme-to-json": "3.6.2",
+    "gh-pages": "^3.2.3",
     "jest-fetch-mock": "3.0.3",
+    "react-test-renderer": "^17.0.2",
     "sass-loader": "^10.1.1",
     "style-loader": "^2.0.0",
     "ts-jest": "27.0.5"

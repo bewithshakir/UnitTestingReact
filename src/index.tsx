@@ -5,21 +5,19 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "./i18n/i18n";
 import { ThemeProvider } from "./contexts/Theme/Theme.context";
-import { QueryClient, QueryClientProvider } from 'react-query'
-import { ReactQueryDevtools } from 'react-query/devtools'
+import { routes } from "./routes";
+import { generateAppRoutes } from "./navigation/utils";
 
-const queryClient = new QueryClient()
+const appRoutes = generateAppRoutes(routes);
+
 ReactDOM.render(
-  <QueryClientProvider client={queryClient}>
     <ThemeProvider>
       <React.StrictMode>
         <Suspense fallback={<>Loading...</>}>
-          <App />
-          <ReactQueryDevtools initialIsOpen />
+          <App routes={appRoutes}/>
         </Suspense>
       </React.StrictMode>
-    </ThemeProvider>
-  </QueryClientProvider>,
+    </ThemeProvider>,
   document.getElementById("root")
 );
 
