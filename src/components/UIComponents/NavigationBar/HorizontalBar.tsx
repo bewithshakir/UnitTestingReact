@@ -17,7 +17,7 @@ import ProfileMenu from '../Menu/ProfileMenu.component';
 import SideBarDrawer from "../SideBarMenu/SideBarMenu.component";
 import './HorizontalBar.style.scss';
 
-const drawerWidth = 130;
+const drawerWidth = 64;
 
 
 interface HorizontalBarProps {
@@ -90,7 +90,7 @@ export default function HorizontalBar(props: HorizontalBarProps) {
   return (
     <div>
       <div className="app__header">
-        <AppBar position="fixed" className="header" sx={{ width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px` }} >
+        <AppBar position="fixed" className="header" sx={{ width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px` }}>
           <Toolbar className="header__toolbar">
             {props.version === "NavLinks" ? null : (<Button
               types="profile"
@@ -188,7 +188,7 @@ export default function HorizontalBar(props: HorizontalBarProps) {
         </List>
       </Drawer> */}
 
-    <SideBarDrawer />
+      <SideBarDrawer />
     </div>
   );
 }

@@ -1,5 +1,4 @@
 div {
-
     .sidebarmenu_logo {   
         width: 64px;
         height: 64px;
@@ -12,6 +11,7 @@ div {
         padding: 0;
         .MuiTab-textColorInherit { 
             min-width: 0;
+             opacity: 1;
             &:hover{
                 background: var(--Primary);
                 opacity: .5;
