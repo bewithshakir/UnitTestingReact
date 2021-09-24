@@ -62,15 +62,10 @@ export default function SideBarDrawer(props: sideBarMenuProps) {
       <Drawer className={'sidebar-drawer'}
         sx={{
           width: drawerWidth,
-          flexShrink: 0,
-          '& .MuiDrawer-paper': {
-            width: drawerWidth,
-            boxSizing: 'border-box',
-          },
         }}
         variant="permanent"
         anchor="left">
-        <div style={{ padding: 0, margin: 0 }}>
+        <div>
           <img className="sidebarmenu_logo"
             src={logoSrc}
             alt="logo" />
