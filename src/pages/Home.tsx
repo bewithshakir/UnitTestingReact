@@ -10,11 +10,38 @@ import Input from '../components/UIComponents/Input/Input';
 import Select from '../components/UIComponents/Select/dropdown';
 import HorizontalBar from '../components/UIComponents/NavigationBar/HorizontalBar';
 import { Box, CssBaseline } from '@mui/material';
+import { RightInfoPanel } from '../components/UIComponents/RightInfoPanel/RightInfoPanel.component';
+import { CustomerFilterPanel } from '../components/UIComponents/CustomerFilterPanel/CustomerFilterPanel.component';
+import { Button } from '../components/UIComponents/Button/Button.component';
 
 
 const Home = (props: { version: any }) => {
     const { data } = useQuery('repoData', fetchQueryTodos, { retry: false })
     console.log(data)
+    // right info panel and customer filter panel  starts here--
+    const [infoPanelVisible, setInfoPanelVisible] = React.useState(false);
+    const [custFilterPanelVisible, setCustFilterPanelVisible] = React.useState(false);
+    const handleInfoPanelOpen = () => setInfoPanelVisible(!infoPanelVisible);
+    const handleInfoPanelClose = () => setInfoPanelVisible(false);
+    const handleCustFilterPanelOpen = () => setCustFilterPanelVisible(!custFilterPanelVisible);
+    const handleCustFilterPanelClose = () => setCustFilterPanelVisible(false);
+    const rightPanelHeading = 'Accurate Transportation';
+    const rightPanelData = {
+        'Customer ID': '0923131',
+        'Name': 'Peter Parker',
+        'Email': 'peterparker@gmail.com',
+        'Phone': '0923131',
+        'Settlement Type': 'WEX',
+        'Card Added': "",
+        'Address': '9555 S Post Oak Rd',
+        'City': 'Houston',
+        'State': 'Texas',
+        'Country': 'US',
+        'ZIP Code': '30013',
+      }
+      
+    // right info panel and customer filter panel  ends here--
+
     const [form, setForm] = useState({ userName: '', email: '', item: '' });
     const items = [
         { label: 'Amazon', value: 'Amazon' },
@@ -65,14 +92,27 @@ const Home = (props: { version: any }) => {
                         description=''
                         required
                     />
+                    <Button
+                        types="primary"
+                        onClick={handleCustFilterPanelOpen}
+                        >
+                        {t("Customer Filter Panel")}
+                    </Button>
+                    <Button
+                        types="primary"
+                        onClick={handleInfoPanelOpen}
+                        >
+                        {   t("Right Info Panel")}
+                    </Button>
                     <Footer />
-                    
                 </div>
                 <div className={'app__bg'}>
                     <img src={bg} alt={'bg'} />
                 </div>
 
             </div>
+            <CustomerFilterPanel open={custFilterPanelVisible} onClose={handleCustFilterPanelClose} />
+            <RightInfoPanel open={infoPanelVisible} headingText={rightPanelHeading} info={rightPanelData} onClose={handleInfoPanelClose} />
         </Box>
     );
 };
