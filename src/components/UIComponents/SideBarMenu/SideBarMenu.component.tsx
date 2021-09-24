@@ -8,8 +8,6 @@ import logoOne from '../../../assets/images/Shell Taup logo.svg';
 import logoTwo from '../../../assets/images/Shell Taup logo2.svg';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import MailIcon from '@material-ui/icons/MoveToInbox';
-import InboxIcon from '@material-ui/icons/Inbox';
 import { NotificationIcon } from '../../../assets/icons';
 
 type SideBarMenuOption = {
@@ -25,22 +23,22 @@ interface sideBarMenuProps {
 
 const SideBarMenuoptions = [{
   index: 0,
-  icon: <InboxIcon />,
+  icon: <NotificationIcon />,
   text: 'Home',
   route: 'home'
 }, {
   index: 1,
-  icon: <MailIcon />,
+  icon: <NotificationIcon />,
   text: 'Dashboard',
   route: 'dashboard'
 }, {
   index: 2,
-  icon: <InboxIcon />,
+  icon: <NotificationIcon />,
   text: 'Dashboard',
   route: 'home'
 }, {
   index: 3,
-  icon: <MailIcon />,
+  icon: <NotificationIcon />,
   text: 'Dashboard',
   route: 'home'
 }];
@@ -85,7 +83,7 @@ export default function SideBarDrawer(props: sideBarMenuProps) {
           className={'sidebarmenu_tabs'} >
           {SideBarMenuoptions && SideBarMenuoptions.map((item, index) => {
             return (
-              <Tab className={'sidebarmenu_tab'} icon={<NotificationIcon />} component={Link} />
+              <Tab className={'sidebarmenu_tab'} icon={item.icon} component={Link} />
             )
           })}
         </Tabs>

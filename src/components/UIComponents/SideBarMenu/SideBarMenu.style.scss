@@ -26,16 +26,16 @@ div {
         .sidebar-drawer {
             flex-shrink: 0;
             &.MuiDrawer-paper {
-            box-sizing: 'border-box';
-            margin: 0;
-            padding: 0;
+                box-sizing: 'border-box';
+                margin: 0;
+                padding: 0;
             }
         }
         .css-12i7wg6-MuiPaper-root-MuiDrawer-paper {
             background:  var(--Primary);
         }
         .sidebarmenu_tab {
-            font-size: 30px;
+            font-size: 35px;
             color: var(--White);
         }
     }
