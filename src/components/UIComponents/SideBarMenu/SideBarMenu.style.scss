@@ -1,9 +1,11 @@
 div {
+
     .sidebarmenu_logo {   
         width: 64px;
         height: 64px;
         margin: 0;
     }
+
     .sidebar-menu {
         display: 'flex';
         margin: 0;
@@ -24,9 +26,9 @@ div {
         .sidebar-drawer {
             flex-shrink: 0;
             &.MuiDrawer-paper {
-                box-sizing: 'border-box';
-                margin: 0;
-                padding: 0;
+            box-sizing: 'border-box';
+            margin: 0;
+            padding: 0;
             }
         }
         .css-12i7wg6-MuiPaper-root-MuiDrawer-paper {
@@ -34,6 +36,7 @@ div {
         }
         .sidebarmenu_tab {
             font-size: 30px;
+            color: var(--White);
         }
     }
 }
