@@ -8,7 +8,6 @@ import { NavLink, useHistory } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import Input from '../components/UIComponents/Input/Input';
 import Select from '../components/UIComponents/Select/dropdown';
-import { SideBarDrawer } from '../components/UIComponents/SideBarMenu/SideBarMenu.component';
 import HorizontalBar from '../components/UIComponents/NavigationBar/HorizontalBar';
 import { Box, CssBaseline } from '@mui/material';
 
@@ -67,7 +66,7 @@ const Home = (props: { version: any }) => {
                         required
                     />
                     <Footer />
-                    <SideBarDrawer />
+                    
                 </div>
                 <div className={'app__bg'}>
                     <img src={bg} alt={'bg'} />

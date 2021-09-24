@@ -14,6 +14,7 @@ import { BackIcon, CustomerProfileIcon2, LeftArrowIcon, LogoutIcon, SettingsIcon
 import { Button } from "../Button/Button.component";
 import NotificationsMenu from '../Menu/NotificationsMenu.component';
 import ProfileMenu from '../Menu/ProfileMenu.component';
+import SideBarDrawer from "../SideBarMenu/SideBarMenu.component";
 import './HorizontalBar.style.scss';
 
 const drawerWidth = 130;
@@ -159,7 +160,9 @@ export default function HorizontalBar(props: HorizontalBarProps) {
           </Toolbar>
         </AppBar>
       </div>
-      <Drawer
+
+
+      {/* <Drawer
         sx={{
           width: drawerWidth,
           flexShrink: 0,
@@ -183,7 +186,9 @@ export default function HorizontalBar(props: HorizontalBarProps) {
           ))}
           <ListItemText>{"query"}</ListItemText>
         </List>
-      </Drawer>
+      </Drawer> */}
+
+    <SideBarDrawer />
     </div>
   );
 }
