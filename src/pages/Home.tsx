@@ -10,6 +10,8 @@ import Input from '../components/UIComponents/Input/Input';
 import Select from '../components/UIComponents/Select/dropdown';
 import HorizontalBar from '../components/UIComponents/NavigationBar/HorizontalBar';
 import { Box, CssBaseline } from '@mui/material';
+
+
 const Home = (props: { version: any }) => {
     const { data } = useQuery('repoData', fetchQueryTodos, { retry: false })
     console.log(data)
@@ -64,6 +66,7 @@ const Home = (props: { version: any }) => {
                         required
                     />
                     <Footer />
+                    
                 </div>
                 <div className={'app__bg'}>
                     <img src={bg} alt={'bg'} />
