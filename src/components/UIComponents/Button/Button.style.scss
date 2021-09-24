@@ -90,6 +90,20 @@ div{
         color: var(--Lightergray);
       }
     }
+    &-filter{
+      background-color:  var(--Lightgray_3);
+      opacity: 1;
+      padding: 0.375rem 1.25rem;
+      border: 0px;
+      color: var(--Darkgray);
+      &:hover{
+        background-color:  var(--Lightgray_2);
+      }
+      &:disabled{
+        background-color: var(--Lightgray_2);
+        color: var(--Darkgray);
+      }
+    }
     &-primary{
       background-color:  var(--Blue-Btn);
       opacity: 1;
@@ -250,7 +264,6 @@ div{
       background-color: var(--White);
       color: var(--Tertiary);
       &:hover{
-        opacity: 0.8;
         border: 1px solid var(--Lightergray);
         .MuiButton-startIcon{
           color: var(--Gray);
@@ -340,13 +353,14 @@ div{
     &-profile {
       background-color: transparent;
       color: var(--Darkgray);
-      width: 50px;
+      width: 40px;
+      height: 40px;
       .MuiButton-startIcon{
         color: var(--Gray);
         margin: unset;
       }
       .MuiButton-iconSizeSmall > *:first-child{
-        font-size: 20px;
+        font-size: 25px;
       }
       .MuiButton-iconSizeMedium > *:first-child{
         font-size: 35px;

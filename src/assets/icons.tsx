@@ -171,6 +171,86 @@ export function LogoutIcon(props: React.SVGProps<SVGSVGElement>) {
   )
 }
 
+export function NotificationIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      width="1em"
+      height="1em"
+      viewBox="0 0 40 40"
+      {...props}
+    >
+      <path fill="none" d="M0 0h40v40H0z" />
+      <path
+        d="M20 10a3 3 0 012.85 2.06A6 6 0 0128 18v7h2v2h-6.126a4 4 0 01-7.748 0H10v-2h2v-7a6 6 0 015.151-5.94A3 3 0 0120 10zm1.732 17h-3.464a2 2 0 003.464 0zM20 12a1 1 0 00-.907.578l-.042.107-.389 1.181-1.23.174a4 4 0 00-3.427 3.754L14 18v7h12v-7a4 4 0 00-3.23-3.926l-.2-.034-1.23-.174-.389-1.18A1 1 0 0020 12z"
+        // fill={props.color}
+        fill={'currentColor'}
+      />
+    </svg>
+  )
+}
+
+export function ShellTapup(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      width="1em"
+      height="1em"
+      viewBox="0 0 40 40"
+      {...props}
+    >
+      <path fill="none" d="M0 0h40v40H0z" />
+      <path
+        d="M20 10a3 3 0 012.85 2.06A6 6 0 0128 18v7h2v2h-6.126a4 4 0 01-7.748 0H10v-2h2v-7a6 6 0 015.151-5.94A3 3 0 0120 10zm1.732 17h-3.464a2 2 0 003.464 0zM20 12a1 1 0 00-.907.578l-.042.107-.389 1.181-1.23.174a4 4 0 00-3.427 3.754L14 18v7h12v-7a4 4 0 00-3.23-3.926l-.2-.034-1.23-.174-.389-1.18A1 1 0 0020 12z"
+        fill={props.color}
+      />
+    </svg>
+  )
+}
+
+export function ShellTapup2(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      width="1em"
+      height="1em"
+      viewBox="0 0 64 64"
+      {...props}
+    >
+      <path fill="none" d="M0 0h64v64H0z" />
+      <path
+        d="M30.12 46h-8.128l-.745-6.019-4.922-3.581a16 16 0 1131.352 0l-4.922 3.581L41.996 46h-8.128l-.452.339a2.393 2.393 0 01-2.822 0z"
+        stroke="#fff"
+        strokeMiterlimit={40}
+        strokeWidth={1.75}
+        fill="none"
+      />
+      <path
+        d="M30.12 46h-8.128l-.745-6.019-4.922-3.581a16 16 0 1131.352 0l-4.922 3.581L41.996 46h-8.128l-.452.339a2.393 2.393 0 01-2.822 0z"
+        fill="#fbce07"
+      />
+      <path
+        d="M30.12 46h-8.128l-.745-6.019-4.922-3.581a16 16 0 1131.352 0l-4.922 3.581L41.996 46h-8.128l-.452.339a2.393 2.393 0 01-2.822 0zm.253-2.8h-5.9l-.6-4.769-4.859-3.536a6.733 6.733 0 01-.217-1.7 6.841 6.841 0 01.592-2.773l8.607 8.706L19.63 28.8a6.819 6.819 0 012.091-3.462l7.5 12.946-6.642-14.175a6.773 6.773 0 013.427-2.407l4.583 16.066-3.35-16.708a6.773 6.773 0 014.064-.835l.686 17.4.682-17.4a6.805 6.805 0 014.064.835l-3.319 16.708 4.583-16.067a6.773 6.773 0 013.427 2.407l-6.653 14.175 7.507-12.945a6.773 6.773 0 012.093 3.462l-8.369 10.332 8.607-8.706a6.841 6.841 0 01.592 2.773 6.733 6.733 0 01-.217 1.7l-4.859 3.536-.6 4.769h-5.9l-.876.632a1.246 1.246 0 01-.75.248 1.26 1.26 0 01-.754-.248z"
+        fill="#dd1d21"
+        fillRule="evenodd"
+      />
+    </svg>
+  )
+}
+
+export function BackIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      width="1em"
+      height="1em"
+      viewBox="0 0 20 20"
+      {...props}
+    >
+      <path
+        d="M8.026 4l1.479 1.346-3.83 4.217H18.42v2H5.761l3.714 3.717-1.417 1.413L2 10.628z"
+        fill="#595959"
+      />
+      <path fill="none" d="M0 0h20v20H0z" />
+    </svg>
+  )
+}
 export function CloseIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
@@ -180,10 +260,75 @@ export function CloseIcon(props: React.SVGProps<SVGSVGElement>) {
       {...props}
     >
       <path
-        d="M17 1l1.414 1.414-7.293 7.293L18.414 17 17 18.414l-7.293-7.293-7.293 7.293L1 17l7.293-7.293L1 2.414 2.414 1l7.293 7.293z"
-        fill={props.color}
+        d="M8.026 4l1.479 1.346-3.83 4.217H18.42v2H5.761l3.714 3.717-1.417 1.413L2 10.628z"
+        fill="#595959"
       />
       <path fill="none" d="M0 0h20v20H0z" />
     </svg>
   )
 }
+
+export function FilterIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      width="1em"
+      height="1em"
+      viewBox="0 0 20 21.111"
+      {...props}
+    >
+      <path
+        d="M20 0l-6.667 7.778v8.889l-6.666 4.444V10L0 0zm-4.832 2.222H4.152l4.737 7.1v7.631l2.222-1.481V6.956z"
+        fill="#595959"
+      />
+      <path fill="none" d="M0 0h20v20H0z" />
+    </svg>
+  )
+}
+
+
+export function LeftArrowIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      width="1em"
+      height="1em"
+      viewBox="0 0 20 20"
+      {...props}
+    >
+      <path
+        d="M15.606 1.345L7.763 9.973l7.811 7.821-1.411 1.413L5 10.038 14.126 0z"
+        fill="#595959"
+      />
+      <path fill="none" d="M20 20H0V0h20z" />
+    </svg>
+  )
+}
+
+export function DeliveryTruckIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      width="1em"
+      height="1em"
+      viewBox="0 0 40 40"
+      {...props}
+    >
+      <path
+        d="M37.68 19.189l-3.56-5.281a.445.445 0 00-.37-.2h-3.521c0-1.6.028-2.709-1.334-2.709H13.028c-1.361 0-1.261 1.108-1.261 2.469v.562H3v.893h8.767v2.366H5.62v.893h6.143v2.366h-3.2v.893h3.2v2.1c0 1.361 1.108 1.305 2.469 1.305h.39a3.152 3.152 0 106.2 0h5.852a3.15 3.15 0 106.253.539 3.1 3.1 0 00-.05-.539h4.433a.447.447 0 00.446-.446v-4.962a.447.447 0 00-.076-.249zM17.728 27.64a2.259 2.259 0 112.259-2.258 2.261 2.261 0 01-2.259 2.258zm2.8-3.69a3.146 3.146 0 00-5.607 0h-.688a1.578 1.578 0 01-1.576-1.576v-8.9a1.578 1.578 0 011.576-1.576h13.528a1.578 1.578 0 011.576 1.576v8.8a3.154 3.154 0 00-2.357 1.684zm9.251 3.69a2.259 2.259 0 112.259-2.258 2.261 2.261 0 01-2.255 2.258zm7.081-3.69h-4.273a3.156 3.156 0 00-2.327-1.68v-7.668h3.249l3.354 4.973z"
+        strokeWidth={1.5}
+        fill={"currentColor"}
+        stroke={"currentColor"}
+      />
+      <path
+        d="M22.796 14.665l-.1-.145-.1.145c-.093.133-2.256 3.28-2.256 4.537a2.356 2.356 0 104.711 0c0-1.257-2.163-4.404-2.255-4.537zm-.1 6.649a2.114 2.114 0 01-2.112-2.112c0-1.035 1.68-3.606 2.112-4.25.432.644 2.112 3.215 2.112 4.25a2.114 2.114 0 01-2.112 2.107z"
+        strokeWidth={1.3}
+        fill={"currentColor"}
+        stroke={"currentColor"}
+      />
+      <path fill="none" d="M0 0h40v40H0z" />
+    </svg>
+  )
+}
+
+
+
+
+
