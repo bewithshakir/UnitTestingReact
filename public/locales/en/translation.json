@@ -61,6 +61,10 @@
   "customer-filter-panel":{
     "header":{
       "filter":"Filter"
+    },
+    "buttons":{
+      "apply":"Apply",
+      "clear all":"Clear All"
     }
   }
 }

@@ -2,29 +2,49 @@
     .MuiDrawer-paper{
         width: 615px;
         box-shadow: -10px 0px 10px #A6A6A640;
-        .customer_filter_panel_header{
+        .cust_filter_panel_header{
             .MuiAppBar-root{
                 background-color: var(--Blue-Btn);
                 box-shadow: none;
                 padding: 4px 0;
                 .MuiToolbar-root{
-                    padding: 0px 48px;
+                    padding: 0px 20px 0px 38px;
                     .customer_filter_panel_close_icon{
                         font-size: 12px; 
                     }
                 }
             }
         }
-        .customer_filter_panel_content{
-            padding: 45px 50px;
-            .MuiGrid-root{
-                .select{
-                    width: 100%;
+        .cust_filter_panel_content{
+            padding: 45px 38px;
+            .cust_filter_parent_grid{
+                & > .MuiGrid-item{
+                    padding-bottom: 44px;
+                    padding-top: 14px;
                 }
-            } 
-            // .filter_panel_field_box{
-            //     margin-bottom: 45px;
-            // }
+                .MuiGrid-root{
+                    .select{
+                        width: 100%;
+                        .label{
+                            font-size: 16px;
+                            margin-bottom: 14px;
+                        }
+                    }
+                } 
+                .cust_filter_date_label_grid{
+                    padding-bottom: 14px;
+                    font-size: 16px;
+                    font-weight: 700;
+                }
+            }
+            .cust_filter_buttons_container{
+                position: absolute;
+                right: 38px;
+                bottom: 26px;
+                .MuiButton-root{
+                    margin-left: 30px;
+                }
+            }
         }
     }
 }
