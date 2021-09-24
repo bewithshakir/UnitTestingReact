@@ -1,55 +1,52 @@
 import React, { Fragment, useState } from 'react'
+import moment from "moment";
 import { InputLabel, InputBase, FormControl, FormHelperText , TextField} from '@mui/material';
-import { DatePicker as DatePickerField, LocalizationProvider } from '@mui/lab';
+import { DatePicker as DatePickerField, LocalizationProvider , DatePickerProps as DatePickerFieldProps} from '@mui/lab';
 import DateAdapter from '@mui/lab/AdapterMoment';
 import './DatePicker.style.scss';
 
-interface props {
-  name?: string;
+// extends DatePickerFieldProps 
+interface DatePickerProps {
+  name: string;
+  description?:string;
   id?: string;
-//   width?: number;
-  label: string;
-//   placeholder?: string;
-//   description?: string;
-//   disabled?: boolean;
+  width?: number;
+  label?: string;
+  placeholder?: string;
+  disabled?: boolean;
   required?: boolean;
-//   autoComplete?: string;
-//   classes?: object;
-//   multiline?: boolean;
-//   type?: string;
-//   error?: boolean;
-//   value?: string;
-//   helperText?: string
-//   onChange?: (...args: any[]) => void;
+  type?: string;
+  error?: boolean;
+  value: Date | string | null | moment.Moment;
+  helperText?: string;
+  mask?:string;
+  onChange:(name: string, text: Date|string |null | moment.Moment) => void;
 }
 
-export default function DatePicker(props: props) {
-    const [value, setValue] = React.useState<Date | null>(new Date())
+export const DatePicker: React.FC<DatePickerProps> = (props) => {
+    // const [value, setValue] = React.useState<Date | null>(new Date())
   const [flag, setFlag] = useState(false);
-
   const onBlur = () => setFlag(true);
 
   return (
     <Fragment>
-      <FormControl>
-        <InputLabel shrink htmlFor={props.id} style={{ color: 'var(--Darkgray)'}} aria-labelledby={props.label} aria-required={props.required}>
-          <b>{props.label}{props.required && props.label && (<span className='super'>*</span>)}</b>
-        </InputLabel>
+      <FormControl className="date-picker-container">
+        {props.label && <InputLabel htmlFor={"my-input"}>{props.label}</InputLabel>}
         <LocalizationProvider dateAdapter={DateAdapter}>
-            <DatePickerField
-                mask="____/__/__"
-                value={value}
-                onChange={(newValue) => setValue(newValue)}
-                renderInput={(params) => <TextField {...params} />}
-            />
+          <DatePickerField
+                  mask={props.mask?props.mask:"____/__/__"}
+                  
+                  value={props.value}
+                  onChange={(newValue)=>props.onChange(props.name, newValue)}
+                  renderInput={(params) => <TextField {...params} helperText={props.helperText} />}
+          />
         </LocalizationProvider>
-        
-        {/* {props.helperText && (
-          <FormHelperText
-            id={props.description}
-            error={props.error}>
-            {props.helperText}
-          </FormHelperText>)} */}
+        {props.helperText && <FormHelperText id={props.name} error={props.error}>{props.helperText}</FormHelperText>}
+      </FormControl>
+      <FormControl >
+        {/* <InputLabel shrink htmlFor={props.id} className="date-picker-label" aria-labelledby={props.label} aria-required={props.required}>
+          {props.label}{props.required && props.label && (<span className='super'>*</span>)}
+        </InputLabel> */}
       </FormControl>
     </Fragment>
   )
@@ -59,6 +56,5 @@ DatePicker.defaultProps = {
   width: 460,
   disabled: false,
   required: false,
-  id: "input",
   error: false,
 }

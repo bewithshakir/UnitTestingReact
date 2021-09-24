@@ -12,7 +12,7 @@ interface props {
   placeholder?: string;
   multiple?: boolean;
   value?: string | number;
-  width?: number;
+  width?: string | number;
   items: Array<any>;
   onChange: (...args: any[]) => void;
 }

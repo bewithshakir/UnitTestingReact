@@ -17,9 +17,14 @@
         }
         .customer_filter_panel_content{
             padding: 45px 50px;
-            .filter_panel_field_box{
-                margin-bottom: 45px;
-            }
+            .MuiGrid-root{
+                .select{
+                    width: 100%;
+                }
+            } 
+            // .filter_panel_field_box{
+            //     margin-bottom: 45px;
+            // }
         }
     }
 }

@@ -10,6 +10,7 @@
     "@material-ui/icons": "^4.11.2",
     "@microsoft/applicationinsights-react-js": "^3.1.5",
     "@microsoft/applicationinsights-web": "^2.6.5",
+    "@mui/lab": "^5.0.0-alpha.48",
     "@mui/material": "^5.0.0",
     "@reduxjs/toolkit": "^1.6.1",
     "@testing-library/jest-dom": "^5.11.4",
