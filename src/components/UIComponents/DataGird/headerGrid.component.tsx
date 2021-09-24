@@ -13,7 +13,8 @@ interface GridHeaderProps {
     order: string | any,
     orderBy: string,
     headCells: HeadCellsOptions[],
-    onRequestSort: (event: any, property: any) => void
+    onRequestSort: (event: any, property: any) => void,
+    isError?: any
 }
 
 
@@ -26,7 +27,7 @@ const EnhancedGridHead: React.FC<GridHeaderProps> = (props) => {
     return (
 
         <TableHead>
-            <TableRow>
+            {props.isError ? <TableRow>{"No Data Received"}</TableRow> : <TableRow>
                 {props.headCells.map((headCell) => (
                     <TableCell
                         key={headCell.id}
@@ -49,7 +50,7 @@ const EnhancedGridHead: React.FC<GridHeaderProps> = (props) => {
 
                     </TableCell>
                 ))}
-            </TableRow>
+            </TableRow>}
         </TableHead>
 
     );
