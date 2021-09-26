@@ -1,4 +1,5 @@
 .date-picker-container{
+    // width: 80%;
     .date-picker-label{
         color: var(--Darkgray);
         font-size: 14px;
@@ -7,5 +8,29 @@
         margin-bottom: 6px;
         font-weight: 700;
     }
+    .SingleDatePicker{
+        .SingleDatePickerInput{
+            width: 100%;
+            .DateInput{
+                width: 77%;
+            }
+        }
+        .CalendarDay__selected{
+            background-color: var(--Secondary);
+            color: var(--Black);
+            border: 1px double var(--Secondary);
+        }
+        .DayPickerNavigation_button{
+            border-radius: 3px;
+            border: 1px solid var(----Download-Btn);
+            .DayPickerNavigation_svg__horizontal{
+                fill:var(--Download-Btn);
+            }
+        }
+        .DayPicker_weekHeader_li{
+            color: var(--Tertiary);
+        }
+    }
 }
+
 

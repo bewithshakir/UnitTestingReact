@@ -92,18 +92,22 @@ const Home = (props: { version: any }) => {
                         description=''
                         required
                     />
-                    <Button
-                        types="primary"
-                        onClick={handleCustFilterPanelOpen}
-                        >
-                        {t("Customer Filter Panel")}
-                    </Button>
-                    <Button
-                        types="primary"
-                        onClick={handleInfoPanelOpen}
-                        >
-                        {   t("Right Info Panel")}
-                    </Button>
+                    <Box  sx={{'marginBottom': '10px'}}>
+                        <Button
+                            types="primary"
+                            onClick={handleCustFilterPanelOpen}
+                            >
+                            {t("Customer Filter Panel")}
+                        </Button>
+                    </Box> 
+                    <Box>
+                        <Button
+                            types="primary"
+                            onClick={handleInfoPanelOpen}
+                            >
+                            {   t("Right Info Panel")}
+                        </Button>
+                    </Box>
                     <Footer />
                 </div>
                 <div className={'app__bg'}>

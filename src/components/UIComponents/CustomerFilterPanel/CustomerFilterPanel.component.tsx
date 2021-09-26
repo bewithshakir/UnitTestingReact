@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import moment from "moment";
 import Backdrop from '@mui/material/Backdrop';
 import { Drawer, IconButton, AppBar, Toolbar, Box, Grid } from "@mui/material";
-
+import { useTheme } from '../../../contexts/Theme/Theme.context';
 import Select from "../Select/dropdown";
 import { DatePicker } from "../DatePicker/DatePicker.component";
 import { Button } from '../Button/Button.component';
@@ -16,10 +16,11 @@ interface InfoPanelProps {
 }
 
 export const CustomerFilterPanel: React.FC<InfoPanelProps> = ({ open, onClose }) => {
-  const [form, setForm] = React.useState<{ state: string, city: string, settlementType: string, startDate: Date | string | null | moment.Moment, endDate: Date | string | null | moment.Moment }>(
-    { state: "", city: "", settlementType: "", startDate: '', endDate: '' }
-  )
+  const formInitial = { state: [], city: [], settlementType: [], startDate: null, endDate: null };
+  const [form, setForm] = React.useState(formInitial);
+  // const [form, setForm] = React.useState<{ state: string | Array<object>, city: string | Array<object>, settlementType: string | Array<object>, startDate: Date | string | null | moment.Moment, endDate: Date | string | null | moment.Moment }>(formInitial)
 
+  
   const { t, i18n } = useTranslation();
 
   const geoData = {
@@ -53,6 +54,14 @@ export const CustomerFilterPanel: React.FC<InfoPanelProps> = ({ open, onClose })
     setForm(x => ({ ...x, [e.target.name]: e.target.value }));
   }
 
+  const applyFilter = () => {
+    console.log(form);
+  }
+
+  const clearFilter = () => {
+    setForm(formInitial);
+  }
+
   return (
     <Backdrop
       sx={{ color: "var(--White)", zIndex: (theme) => theme.zIndex.drawer + 1 }}
@@ -84,50 +93,64 @@ export const CustomerFilterPanel: React.FC<InfoPanelProps> = ({ open, onClose })
         <div className="cust_filter_panel_content">
           {/* {JSON.stringify(form)} */}
           <Grid container spacing={2} className="cust_filter_parent_grid">
-            <Grid item xs={12} container>
+            <Grid item xs={12} columnSpacing={{ xs: 1, sm: 2, md: 3 }} container>
               <Grid item xs={12} className="cust_filter_date_label_grid">
                 Period
               </Grid>
-              <Grid item xs={6}>
-                <DatePicker placeholder="From" name="startDate" onChange={onDateChange} value={form.startDate} />
+              <Grid item xs={6} spacing={2}>
+                <DatePicker
+                  placeholder="From Date" 
+                  name="startDate" 
+                  onChange={onDateChange} 
+                  value={form.startDate} 
+                />
               </Grid>
-              <Grid item xs={6}>
-                <DatePicker placeholder="To" name="endDate" onChange={onDateChange} value={form.endDate} />
+              <Grid item xs={6} spacing={2}>
+              <DatePicker 
+                disableBeforeDate={form.startDate} 
+                placeholder="To Date" 
+                name="endDate" 
+                onChange={onDateChange} 
+                value={form.endDate} 
+              />
               </Grid>
             </Grid>
             <Grid item xs={12}>
               <Select
                 name='state'
                 label='Select State'
-                value={form.state}
+                // value={form.state}
                 placeholder=''
                 items={geoData.states}
                 onChange={handleSelect}
                 multiple
                 width="100%"
+                // selectedValues={form.state}
               />
             </Grid>
             <Grid item xs={12}>
               <Select
                 name='city'
                 label='Select City'
-                value={form.city}
+                // value={form.city}
                 placeholder=''
                 items={geoData.cities}
                 onChange={handleSelect}
                 multiple
                 width="100%"
+                // selectedValues={form.city}
               />
             </Grid>
             <Grid item xs={12}>
               <Select
-                name='settlement-type'
+                name='settlementType'
                 label='Settlement Type'
-                value={form.settlementType}
+                // value={form.settlementType}
                 placeholder=''
                 items={settlementTypes}
                 onChange={handleSelect}
                 multiple
+                // selectedValues={form.settlementType}
                 width="100%"
               />
             </Grid>
@@ -136,14 +159,14 @@ export const CustomerFilterPanel: React.FC<InfoPanelProps> = ({ open, onClose })
             < Button
               types="cancel"
               aria-label={t("customer-filter-panel.buttons.clear all")}
-              onClick={() => { }}
+              onClick={clearFilter}
             >
               {t("customer-filter-panel.buttons.clear all")}
             </Button >
             <Button
               types="save"
               aria-label={t("customer-filter-panel.buttons.apply")}
-              onClick={() => { }}
+              onClick={applyFilter}
             >
               {t("customer-filter-panel.buttons.apply")}
             </Button>
