@@ -24,7 +24,7 @@ interface DatePickerProps {
 
 
 export const DatePicker: React.FC<DatePickerProps> = (props) => {
-  const [dateFocused, setDateFocused] = React.useState<boolean>(true)
+  const [dateFocused, setDateFocused] = React.useState<boolean>(false)
 
   const disableDates = (date: moment.Moment | null) => {
     if(props.disableBeforeDate && props.disableAfterDate){
