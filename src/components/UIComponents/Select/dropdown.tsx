@@ -1,5 +1,5 @@
 import { useState, useEffect, Fragment } from 'react';
-import { SearchIcon, Check, ArrowUp, ArrowDown, UnCheck } from '../../../assets/icons';
+import { DropSearchIcon as SearchIcon, Check, ArrowUp, ArrowDown, UnCheck } from '../../../assets/icons';
 import './dropdown.scss';
 
 interface props {

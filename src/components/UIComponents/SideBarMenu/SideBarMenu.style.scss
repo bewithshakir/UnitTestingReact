@@ -1,0 +1,44 @@
+div {
+    .sidebarmenu_logo {   
+        width: 64px;
+        height: 64px;
+        margin: 0;
+    }
+
+    .sidebar-menu {
+        display: 'flex';
+        margin: 0;
+        padding: 0;
+        .MuiTab-textColorInherit { 
+            min-width: 0;
+             opacity: 1;
+            &:hover{
+                background: var(--Primary);
+                opacity: .5;
+            }
+        }
+        .MuiTab-textColorInherit.Mui-selected {
+            opacity: 1;
+            background: var(--Secondary);
+            min-width: 0;
+            color: var(--Gray);
+        }
+        .sidebar-drawer {
+            flex-shrink: 0;
+            &.MuiDrawer-paper {
+                box-sizing: 'border-box';
+                margin: 0;
+                padding: 0;
+            }
+        }
+        .css-12i7wg6-MuiPaper-root-MuiDrawer-paper {
+            background:  var(--Primary);
+        }
+        .sidebarmenu_tab {
+            font-size: 30px;
+            color: var(--White);
+            height: 64px;
+            width: 64px;
+        }
+    }
+}

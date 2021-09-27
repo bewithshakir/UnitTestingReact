@@ -196,6 +196,24 @@ export function SearchIcon(props: React.SVGProps<SVGSVGElement>) {
       {...props}
     >
       <path
+        d="M20 10a3 3 0 012.85 2.06A6 6 0 0128 18v7h2v2h-6.126a4 4 0 01-7.748 0H10v-2h2v-7a6 6 0 015.151-5.94A3 3 0 0120 10zm1.732 17h-3.464a2 2 0 003.464 0zM20 12a1 1 0 00-.907.578l-.042.107-.389 1.181-1.23.174a4 4 0 00-3.427 3.754L14 18v7h12v-7a4 4 0 00-3.23-3.926l-.2-.034-1.23-.174-.389-1.18A1 1 0 0020 12z"
+        // fill={props.color}
+        fill={'currentColor'}
+      />
+      <path fill="none" d="M0 0h20v20H0z" />
+    </svg>
+  )
+}
+
+export function DropSearchIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      width="1em"
+      height="1em"
+      viewBox="0 0 20 20"
+      {...props}
+    >
+      <path
         d="M14.02 14.02a7.182 7.182 0 1 1 0-10.162 7.139 7.139 0 0 1 0 10.162m6.3 5.406-4.983-4.983a8.463 8.463 0 1 0-.89.89l4.983 4.983a.63.63 0 0 0 .89-.89"
         fill={props.color || 'var(--Gray)'}
       />
@@ -203,6 +221,7 @@ export function SearchIcon(props: React.SVGProps<SVGSVGElement>) {
     </svg>
   )
 }
+
 
 export function Check(props: React.SVGProps<SVGSVGElement>) {
   return (
@@ -337,6 +356,37 @@ export function NotificationIcon(props: React.SVGProps<SVGSVGElement>) {
         d="M20 10a3 3 0 012.85 2.06A6 6 0 0128 18v7h2v2h-6.126a4 4 0 01-7.748 0H10v-2h2v-7a6 6 0 015.151-5.94A3 3 0 0120 10zm1.732 17h-3.464a2 2 0 003.464 0zM20 12a1 1 0 00-.907.578l-.042.107-.389 1.181-1.23.174a4 4 0 00-3.427 3.754L14 18v7h12v-7a4 4 0 00-3.23-3.926l-.2-.034-1.23-.174-.389-1.18A1 1 0 0020 12z"
         fill={props.color}
       />
+      <path fill="none" d="M0 0h20v20H0z" />
     </svg>
   )
 }
+
+export function DeliveryTruckIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      width="1em"
+      height="1em"
+      viewBox="0 0 40 40"
+      {...props}
+    >
+      <path
+        d="M37.68 19.189l-3.56-5.281a.445.445 0 00-.37-.2h-3.521c0-1.6.028-2.709-1.334-2.709H13.028c-1.361 0-1.261 1.108-1.261 2.469v.562H3v.893h8.767v2.366H5.62v.893h6.143v2.366h-3.2v.893h3.2v2.1c0 1.361 1.108 1.305 2.469 1.305h.39a3.152 3.152 0 106.2 0h5.852a3.15 3.15 0 106.253.539 3.1 3.1 0 00-.05-.539h4.433a.447.447 0 00.446-.446v-4.962a.447.447 0 00-.076-.249zM17.728 27.64a2.259 2.259 0 112.259-2.258 2.261 2.261 0 01-2.259 2.258zm2.8-3.69a3.146 3.146 0 00-5.607 0h-.688a1.578 1.578 0 01-1.576-1.576v-8.9a1.578 1.578 0 011.576-1.576h13.528a1.578 1.578 0 011.576 1.576v8.8a3.154 3.154 0 00-2.357 1.684zm9.251 3.69a2.259 2.259 0 112.259-2.258 2.261 2.261 0 01-2.255 2.258zm7.081-3.69h-4.273a3.156 3.156 0 00-2.327-1.68v-7.668h3.249l3.354 4.973z"
+        strokeWidth={1.5}
+        fill={"currentColor"}
+        stroke={"currentColor"}
+      />
+      <path
+        d="M22.796 14.665l-.1-.145-.1.145c-.093.133-2.256 3.28-2.256 4.537a2.356 2.356 0 104.711 0c0-1.257-2.163-4.404-2.255-4.537zm-.1 6.649a2.114 2.114 0 01-2.112-2.112c0-1.035 1.68-3.606 2.112-4.25.432.644 2.112 3.215 2.112 4.25a2.114 2.114 0 01-2.112 2.107z"
+        strokeWidth={1.3}
+        fill={"currentColor"}
+        stroke={"currentColor"}
+      />
+      <path fill="none" d="M0 0h40v40H0z" />
+    </svg>
+  )
+}
+
+
+
+
+
