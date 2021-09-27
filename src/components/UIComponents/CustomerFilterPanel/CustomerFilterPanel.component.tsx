@@ -97,6 +97,7 @@ export const CustomerFilterPanel: React.FC<InfoPanelProps> = ({ open, onClose })
               </Grid>
               <Grid item xs={6} spacing={2}>
                 <DatePicker
+                  id="cust-filter-start-date"
                   placeholder="From Date" 
                   name="startDate" 
                   onChange={onDateChange} 
@@ -105,6 +106,7 @@ export const CustomerFilterPanel: React.FC<InfoPanelProps> = ({ open, onClose })
               </Grid>
               <Grid item xs={6} spacing={2}>
               <DatePicker 
+                id="cust-filter-end-date"
                 disableBeforeDate={form.startDate} 
                 placeholder="To Date" 
                 name="endDate" 
