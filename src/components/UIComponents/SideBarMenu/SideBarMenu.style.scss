@@ -31,7 +31,7 @@ div {
                 padding: 0;
             }
         }
-        .css-12i7wg6-MuiPaper-root-MuiDrawer-paper {
+        &.MuiPaper-root,.MuiDrawer-paper {
             background:  var(--Primary);
         }
         .sidebarmenu_tab {
