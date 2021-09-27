@@ -8,6 +8,7 @@ import ActionsMenu from '../Menu/ActionsMenu.component';
 import ProfileMenu from '../Menu/ProfileMenu.component';
 import DataGridActionsMenu from '../Menu/DataGridActionsMenu.component';
 import { ExportIcon, PlusIcon, DeleteIcon, ImportIcon, SettingsIcon, LogoutIcon, CustomerProfileIcon2 } from '../../../assets/icons';
+import CheckBox from '../Checkbox/Checkbox.component';
 
 
 export const Content: React.FC = () => {
@@ -143,6 +144,8 @@ export const Content: React.FC = () => {
           {t("french")}
         </Button>
       </div>
+
+      <CheckBox />
     </div>
 
   )
