@@ -1,7 +1,6 @@
 import { useState, useEffect, Fragment } from 'react';
 import { DropSearchIcon as SearchIcon, Check, ArrowUp, ArrowDown, UnCheck } from '../../../assets/icons';
 import './dropdown.scss';
-
 interface props {
   name?: string;
   label: string;
@@ -36,11 +35,13 @@ export default function Select(props: props) {
   }
 
   const onChange = () => {
-    const {name, onChange } = props;
-    let obj = {target :{
-      name: name,
-      value: selectedValues
-    }}
+    const { name, onChange } = props;
+    let obj = {
+      target: {
+        name: name,
+        value: selectedValues
+      }
+    }
     onChange(obj);
   }
 
@@ -81,7 +82,7 @@ export default function Select(props: props) {
 
   const getSearchTerm = (e: any) => { setSearchTerm(e.target.value); }
 
-  useEffect(() =>  searchHandler(searchTerm), [searchTerm]);
+  useEffect(() => searchHandler(searchTerm), [searchTerm]);
 
   const renderSearch = () => {
     const { search } = props;
@@ -215,9 +216,9 @@ export default function Select(props: props) {
 
 }
 
- Select.defaultProps = {
+Select.defaultProps = {
   search: false,
   id: "select-label",
   multiple: false,
-  width: 460,
+  width: "100%",
 }

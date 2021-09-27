@@ -6,7 +6,7 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import { ListSubheader } from '@mui/material';
 import "./style.scss"
-import { boxSystem,  config } from './config';
+import { boxSystem, config } from './config';
 import { useTranslation } from 'react-i18next';
 
 
@@ -18,28 +18,28 @@ const Legend: React.FC = () => {
   }
   return (
 
-      <Box className="box" sx={boxSystem}>
-        <nav >
-          <List subheader={
-            <ListSubheader className="subHeader">
-              {t("legend.customerName")}
-            </ListSubheader>
-          }>
-            {config.map((ConfigItem) => {
-              const isLegendSelected =  ConfigItem.index === legendSelected ? true : false
-              return (
-                <ListItem key={ConfigItem.index} >
-                  <ListItemButton onClick={onLegendClick(ConfigItem.index)} className={"listItemButton"} selected={isLegendSelected}>
-                    <ListItemText className="listItemTextPrimary" primary={t(ConfigItem.label)} />
-                    <ListItemText className="listItemTextSecondary" primary={0} />
-                  </ListItemButton>
-                </ListItem>
-              )
-            })
-            }
-          </List>
-        </nav>
-      </Box>
+    <Box className="legend-box" sx={boxSystem}>
+      <nav >
+        <List subheader={
+          <ListSubheader className="subHeader">
+            {t("legend.customerName")}
+          </ListSubheader>
+        }>
+          {config.map((ConfigItem) => {
+            const isLegendSelected = ConfigItem.index === legendSelected ? true : false
+            return (
+              <ListItem key={ConfigItem.index} >
+                <ListItemButton onClick={onLegendClick(ConfigItem.index)} className={"listItemButton"} selected={isLegendSelected}>
+                  <ListItemText className="listItemTextPrimary" primary={t(ConfigItem.label)} />
+                  <ListItemText className="listItemTextSecondary" primary={0} />
+                </ListItemButton>
+              </ListItem>
+            )
+          })
+          }
+        </List>
+      </nav>
+    </Box>
   );
 }
 
