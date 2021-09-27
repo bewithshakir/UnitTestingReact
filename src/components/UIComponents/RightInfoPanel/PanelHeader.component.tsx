@@ -21,7 +21,7 @@ export const PanelHeader: React.FC<InfoPanelProps> = ({ headingText, panelType, 
                         edge="start"
                         onClick={onClose}
                     >
-                        <CloseIcon className="right_info_panel_close_icon" color="var(--White)" />
+                        <CloseIcon className="info_panel_close_icon" color="var(--White)" />
                     </IconButton>}
                     <h2 style={{ flexGrow: 1 }}>
                         {t(headingText)}
@@ -40,7 +40,7 @@ export const PanelHeader: React.FC<InfoPanelProps> = ({ headingText, panelType, 
                         edge="start"
                         onClick={onClose}
                     >
-                        <CloseIcon className="customer_filter_panel_close_icon" color="var(--White)" />
+                        <CloseIcon className="info_panel_close_icon" color="var(--White)" />
                     </IconButton>}
                 </Toolbar>
             </AppBar>
