@@ -13,7 +13,6 @@ import useDebounce from '../utils/useDebounce';
 import HorizontalBar from '../components/UIComponents/NavigationBar/HorizontalBar';
 import { Box, CssBaseline } from '@mui/material';
 import { RightInfoPanel } from '../components/UIComponents/RightInfoPanel/RightInfoPanel.component';
-import { CustomerFilterPanel } from '../components/UIComponents/CustomerFilterPanel/CustomerFilterPanel.component';
 import { Button } from '../components/UIComponents/Button/Button.component';
 
 
@@ -29,7 +28,6 @@ const Home = (props: { version: any }) => {
     const handleInfoPanelClose = () => setInfoPanelVisible(false);
     const handleCustFilterPanelOpen = () => setCustFilterPanelVisible(!custFilterPanelVisible);
     const handleCustFilterPanelClose = (filterData:object) => {
-        debugger;
         console.log("returnedFilter Data--->",filterData);
         setCustFilterPanelVisible(false)
     };

@@ -1,10 +1,10 @@
-import React from 'react';
-import { useTranslation } from 'react-i18next';
+import React from "react";
+import { useTranslation } from "react-i18next";
 import { Grid } from "@mui/material";
 import moment from "moment";
 import Select from "../Select/dropdown";
 import { DatePicker } from "../DatePicker/DatePicker.component";
-import { Button } from '../Button/Button.component';
+import { Button } from "../Button/Button.component";
 
 interface InfoPanelProps {
     info?: Object;
@@ -18,25 +18,25 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ onClose }) => {
 
     const geoData = {
         states: [
-            { label: 'Alabama', value: 'Alabama' },
-            { label: 'Alaska', value: 'Alaska' },
-            { label: 'California', value: 'California' },
-            { label: 'Virginia', value: 'Virginia' },
-            { label: 'Florida', value: 'Florida' }
+            { label: "Alabama", value: "Alabama" },
+            { label: "Alaska", value: "Alaska" },
+            { label: "California", value: "California" },
+            { label: "Virginia", value: "Virginia" },
+            { label: "Florida", value: "Florida" }
         ],
         cities: [
-            { label: 'New York', value: 'New York' },
-            { label: 'Los Angeles', value: 'Los Angeles' },
-            { label: 'Chicago', value: 'Chicago' },
-            { label: 'San Diego', value: 'San Diego' },
-            { label: 'Houston', value: 'Houston' }
+            { label: "New York", value: "New York" },
+            { label: "Los Angeles", value: "Los Angeles" },
+            { label: "Chicago", value: "Chicago" },
+            { label: "San Diego", value: "San Diego" },
+            { label: "Houston", value: "Houston" }
         ]
     }
 
     const settlementTypes = [
-        { label: 'Invoice', value: 'Invoice' },
-        { label: 'Voyager', value: 'Voyager' },
-        { label: 'WEX', value: 'WEX' }
+        { label: "Invoice", value: "Invoice" },
+        { label: "Voyager", value: "Voyager" },
+        { label: "WEX", value: "WEX" }
     ]
 
     const onDateChange = (name: string, newValue: Date | string | null | moment.Moment) => {
@@ -48,7 +48,6 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ onClose }) => {
     }
 
     const applyFilter = () => {
-        debugger
         onClose(form);
         console.log("inside-filter-main",form);
     }
@@ -85,9 +84,9 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ onClose }) => {
             </Grid>
             <Grid item xs={12}>
                 <Select
-                    name='state'
-                    label='Select State'
-                    placeholder=''
+                    name="state"
+                    label="Select State"
+                    placeholder=""
                     items={geoData.states}
                     onChange={handleSelect}
                     multiple
@@ -96,9 +95,9 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ onClose }) => {
             </Grid>
             <Grid item xs={12}>
                 <Select
-                    name='city'
-                    label='Select City'
-                    placeholder=''
+                    name="city"
+                    label="Select City"
+                    placeholder=""
                     items={geoData.cities}
                     onChange={handleSelect}
                     multiple
@@ -107,9 +106,9 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ onClose }) => {
             </Grid>
             <Grid item xs={12}>
                 <Select
-                    name='settlementType'
-                    label='Settlement Type'
-                    placeholder=''
+                    name="settlementType"
+                    label="Settlement Type"
+                    placeholder=""
                     items={settlementTypes}
                     onChange={handleSelect}
                     multiple

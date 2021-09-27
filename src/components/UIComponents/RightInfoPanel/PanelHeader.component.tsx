@@ -1,11 +1,10 @@
-import React from 'react';
-import { useTranslation } from 'react-i18next';
+import React from "react";
+import { useTranslation } from "react-i18next";
 import { IconButton, AppBar, Toolbar, Box } from "@mui/material";
 
-import DataGridActionsMenu from '../Menu/DataGridActionsMenu.component';
-import { CloseIcon } from '../../../assets/icons';
-import './RightInfoPanel.style.scss';
-import './CustomerFilterPanel.style.scss';
+import DataGridActionsMenu from "../Menu/DataGridActionsMenu.component";
+import { CloseIcon } from "../../../assets/icons";
+import "./RightInfoPanel.style.scss";
 
 interface InfoPanelProps {
     headingText: string;
@@ -18,7 +17,7 @@ export const PanelHeader: React.FC<InfoPanelProps> = ({ headingText, panelType, 
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static">
                 <Toolbar variant="dense">
-                    {panelType === 'info-view' && <IconButton
+                    {panelType === "info-view" && <IconButton
                         edge="start"
                         onClick={onClose}
                     >
@@ -27,7 +26,7 @@ export const PanelHeader: React.FC<InfoPanelProps> = ({ headingText, panelType, 
                     <h2 style={{ flexGrow: 1 }}>
                         {t(headingText)}
                     </h2>
-                    {panelType === 'info-view' && <DataGridActionsMenu
+                    {panelType === "info-view" && <DataGridActionsMenu
                         options={[
                             {
                                 label: t("right-info-panel.settings.view & edit details")
@@ -37,7 +36,7 @@ export const PanelHeader: React.FC<InfoPanelProps> = ({ headingText, panelType, 
                             // console.log("selected")
                         }}
                     />}
-                    {panelType === 'customer-filter' && <IconButton
+                    {panelType === "customer-filter" && <IconButton
                         edge="start"
                         onClick={onClose}
                     >

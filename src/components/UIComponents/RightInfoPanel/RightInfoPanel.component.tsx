@@ -1,11 +1,9 @@
-import React from 'react';
-import { useTranslation } from 'react-i18next';
+import React from "react";
 import { Drawer, Backdrop } from "@mui/material";
-import './RightInfoPanel.style.scss';
-import './CustomerFilterPanel.style.scss';
-import { PanelHeader } from './PanelHeader.component';
-import { InfoViewContent } from './InfoViewContent.component';
-import { FilterContent } from './FilterContent.component';
+import "./RightInfoPanel.style.scss";
+import { PanelHeader } from "./PanelHeader.component";
+import { InfoViewContent } from "./InfoViewContent.component";
+import { FilterContent } from "./FilterContent.component";
 
 type drawerVariant = "info-view" | "customer-filter";
 
@@ -20,9 +18,9 @@ interface InfoPanelProps {
 export const RightInfoPanel: React.FC<InfoPanelProps> = ({ open, headingText, info, onClose, panelType }) => {
 
   const provideContentForPanel = () => {
-    if (panelType === 'info-view') {
+    if (panelType === "info-view") {
       return <InfoViewContent info={info} />;
-    } else if (panelType === 'customer-filter') {
+    } else if (panelType === "customer-filter") {
       return <FilterContent onClose={onClose} />
     } else {
       return <React.Fragment></React.Fragment>
@@ -30,7 +28,7 @@ export const RightInfoPanel: React.FC<InfoPanelProps> = ({ open, headingText, in
   }
 
   const panelDrawer = <Drawer
-    className={panelType === "info-view" ? "right_info_panel": "customer_filter_panel"}
+    className={"right_panel_main_class " + (panelType === "info-view" ? "right_info_panel": "customer_filter_panel")}
     variant="persistent"
     anchor="right"
     open={open}
@@ -47,9 +45,9 @@ export const RightInfoPanel: React.FC<InfoPanelProps> = ({ open, headingText, in
   </Backdrop>
 
   const renderPanel = () => {
-    if (panelType === 'customer-filter') {
+    if (panelType === "customer-filter") {
       return panelDrawerUnderBackdrop;
-    } else if (panelType === 'info-view') {
+    } else if (panelType === "info-view") {
       return panelDrawer;
     }
   }

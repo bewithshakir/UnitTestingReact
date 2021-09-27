@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import { Grid, Divider } from "@mui/material";
 
 interface InfoPanelProps {
@@ -15,7 +15,7 @@ export const InfoViewContent: React.FC<InfoPanelProps> = ({ info }) => {
                             {key}
                         </Grid>
                         <Grid item xs={6} className="right_info_panel_content_value">
-                            {value ? value : '-'}
+                            {value ? value : "-"}
                         </Grid>
                     </Grid>
                     <Divider className="right_info_panel_content_item_divider" />
