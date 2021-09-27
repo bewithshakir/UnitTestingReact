@@ -1,18 +1,30 @@
 .date-picker-container{
-    // width: 80%;
     .date-picker-label{
-        color: var(--Darkgray);
+        color: var(--universalDarkgray);
         font-size: 14px;
         font-family: arial;
         display: block;
-        margin-bottom: 6px;
         font-weight: 700;
+        margin-bottom: 30px;
+        margin-left: -14px;
     }
     .SingleDatePicker{
         .SingleDatePickerInput{
             width: 100%;
             .DateInput{
                 width: 77%;
+                .DateInput_input{
+                    font-size: 14px;
+                }
+            }
+            .CalendarMonth_caption{
+                font-size: 14px;
+            }
+            .CalendarMonth_table{
+                margin-top:10px;
+                .CalendarDay{
+                    font-size: 14px;
+                }
             }
         }
         .CalendarDay__selected{

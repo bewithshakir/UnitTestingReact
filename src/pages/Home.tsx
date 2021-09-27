@@ -28,7 +28,11 @@ const Home = (props: { version: any }) => {
     const handleInfoPanelOpen = () => setInfoPanelVisible(!infoPanelVisible);
     const handleInfoPanelClose = () => setInfoPanelVisible(false);
     const handleCustFilterPanelOpen = () => setCustFilterPanelVisible(!custFilterPanelVisible);
-    const handleCustFilterPanelClose = () => setCustFilterPanelVisible(false);
+    const handleCustFilterPanelClose = (filterData:object) => {
+        debugger;
+        console.log("returnedFilter Data--->",filterData);
+        setCustFilterPanelVisible(false)
+    };
     const rightPanelHeading = 'Accurate Transportation';
     const rightPanelData = {
         'Customer ID': '0923131',
@@ -123,8 +127,8 @@ const Home = (props: { version: any }) => {
                 </div>
 
             </div>
-            <CustomerFilterPanel open={custFilterPanelVisible} onClose={handleCustFilterPanelClose} />
-            {/* <RightInfoPanel panelType={'customer-filter'} open={custFilterPanelVisible} headingText={rightPanelHeading} info={rightPanelData} onClose={handleCustFilterPanelClose} /> */}
+            {/* <CustomerFilterPanel open={custFilterPanelVisible} onClose={handleCustFilterPanelClose} /> */}
+            <RightInfoPanel panelType={'customer-filter'} open={custFilterPanelVisible} headingText={rightPanelHeading} info={rightPanelData} onClose={handleCustFilterPanelClose} />
             <RightInfoPanel panelType={'info-view'} open={infoPanelVisible} headingText={rightPanelHeading} info={rightPanelData} onClose={handleInfoPanelClose} />
         </Box>
     );

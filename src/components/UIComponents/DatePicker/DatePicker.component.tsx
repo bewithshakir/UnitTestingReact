@@ -2,7 +2,7 @@ import React, { Fragment, useState } from 'react'
 import moment from "moment";
 import { SingleDatePicker, toMomentObject } from 'react-dates';
 import 'react-dates/initialize';
-import { InputLabel, FormControl, FormHelperText} from '@mui/material';
+import { InputLabel, FormControl, FormHelperText, Grid} from '@mui/material';
 import 'react-dates/lib/css/_datepicker.css';
 import './DatePicker.style.scss';
 
@@ -24,7 +24,7 @@ interface DatePickerProps {
 
 
 export const DatePicker: React.FC<DatePickerProps> = (props) => {
-  const [dateFocused, setDateFocused] = React.useState<boolean>(true)
+  const [dateFocused, setDateFocused] = React.useState<boolean>(false)
 
   const disableDates = (date: moment.Moment | null) => {
     if(props.disableBeforeDate && props.disableAfterDate){
@@ -42,35 +42,33 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
   return (
     <Fragment>
       <FormControl className="date-picker-container">
-        {props.label && <InputLabel htmlFor={"my-input"}>{props.label}</InputLabel>}
-
-              <SingleDatePicker
-                disabled={props.disabled}
-                required={props.required}
-                hideKeyboardShortcutsPanel
-                showDefaultInputIcon 
-                inputIconPosition="before"
-                transitionDuration={0}
-                verticalSpacing={0}
-                numberOfMonths={1}
-                displayFormat={props.displayFormat}
-                placeholder={props.placeholder}
-                isOutsideRange={date => disableDates(date)}
-                date={toMomentObject(props.value)} // momentPropTypes.momentObj or null
-                onDateChange={date => props.onChange(props.name, date)} // PropTypes.func.isRequired
-                focused={dateFocused} // PropTypes.bool
-                onFocusChange={({ focused }) => setDateFocused(focused)} // PropTypes.func.isRequired
-                id={props.id}
-              />
+        {props.label && <InputLabel 
+            htmlFor={props.id} 
+            className="date-picker-label"
+            aria-labelledby={props.label} 
+            aria-required={props.required}>
+                {props.label} {props.required && (<span className='super'>*</span>)}
+        </InputLabel >}
+            <SingleDatePicker
+                    disabled={props.disabled}
+                    required={props.required}
+                    hideKeyboardShortcutsPanel
+                    showDefaultInputIcon 
+                    inputIconPosition="after"
+                    transitionDuration={0}
+                    verticalSpacing={0}
+                    numberOfMonths={1}
+                    displayFormat={props.displayFormat}
+                    placeholder={props.placeholder}
+                    isOutsideRange={date => disableDates(date)}
+                    date={toMomentObject(props.value)} // momentPropTypes.momentObj or null
+                    onDateChange={date => props.onChange(props.name, date)} // PropTypes.func.isRequired
+                    focused={dateFocused} // PropTypes.bool
+                    onFocusChange={({ focused }) => setDateFocused(focused)} // PropTypes.func.isRequired
+                    id={props.id}
+                />         
         {props.helperText && <FormHelperText id={props.name} error={props.error}>{props.helperText}</FormHelperText>}
       </FormControl>
     </Fragment>
   )
-}
-
-DatePicker.defaultProps = {
-  disabled: false,
-  required: false,
-  id:'single-date-picker-component',
-  displayFormat:"MM/DD/YYYY"
 }

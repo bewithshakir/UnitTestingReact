@@ -6,7 +6,7 @@ import Select from "../Select/dropdown";
 import { DatePicker } from "../DatePicker/DatePicker.component";
 import { Button } from '../Button/Button.component';
 import { CloseIcon } from "../../../assets/icons";
-import "./CustomerFilterPanel.style.scss";
+// import "./CustomerFilterPanel.style.scss";
 
 interface InfoPanelProps {
   open: boolean;
@@ -111,7 +111,7 @@ export const CustomerFilterPanel: React.FC<InfoPanelProps> = ({ open, onClose })
                 placeholder="To Date" 
                 name="endDate" 
                 onChange={onDateChange} 
-                value={form.endDate} 
+                value={form.endDate}
               />
               </Grid>
             </Grid>
@@ -119,38 +119,32 @@ export const CustomerFilterPanel: React.FC<InfoPanelProps> = ({ open, onClose })
               <Select
                 name='state'
                 label='Select State'
-                // value={form.state}
                 placeholder=''
                 items={geoData.states}
                 onChange={handleSelect}
                 multiple
                 width="100%"
-                // selectedValues={form.state}
               />
             </Grid>
             <Grid item xs={12}>
               <Select
                 name='city'
                 label='Select City'
-                // value={form.city}
                 placeholder=''
                 items={geoData.cities}
                 onChange={handleSelect}
                 multiple
                 width="100%"
-                // selectedValues={form.city}
               />
             </Grid>
             <Grid item xs={12}>
               <Select
                 name='settlementType'
                 label='Settlement Type'
-                // value={form.settlementType}
                 placeholder=''
                 items={settlementTypes}
                 onChange={handleSelect}
                 multiple
-                // selectedValues={form.settlementType}
                 width="100%"
               />
             </Grid>
