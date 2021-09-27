@@ -1,7 +1,7 @@
 import * as React from "react";
 import { TableSortLabel, TableRow, TableHead, TableCell, Box } from '@mui/material';
-import { visuallyHidden } from "@mui/utils";
 import './grid.style.scss';
+
 
 
 type HeadCellsOptions = {
@@ -14,10 +14,8 @@ interface GridHeaderProps {
     orderBy: string,
     headCells: HeadCellsOptions[],
     onRequestSort: (event: any, property: any) => void,
-    isError?: any
+    isError?: any,
 }
-
-
 const EnhancedGridHead: React.FC<GridHeaderProps> = (props) => {
 
     const createSortHandler = (property: any) => (event: any) => {
@@ -40,9 +38,8 @@ const EnhancedGridHead: React.FC<GridHeaderProps> = (props) => {
                         >
 
                             {headCell.label}
-
                             {props.orderBy === headCell.id ? (
-                                <Box component="span" sx={visuallyHidden}>
+                                <Box component="span" sx={{visibility:"hidden"}}>
                                     {props.order === "desc" ? "sorted descending" : "sorted ascending"}
                                 </Box>
                             ) : null}
