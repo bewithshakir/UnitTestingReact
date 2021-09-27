@@ -45,7 +45,6 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
         {props.label && <InputLabel 
             htmlFor={props.id} 
             className="date-picker-label"
-            style={{ color: 'var(--Darkgray)' }} 
             aria-labelledby={props.label} 
             aria-required={props.required}>
                 {props.label} {props.required && (<span className='super'>*</span>)}
