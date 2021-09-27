@@ -116,7 +116,8 @@ const Home = (props: { version: any }) => {
 
             </div>
             <CustomerFilterPanel open={custFilterPanelVisible} onClose={handleCustFilterPanelClose} />
-            <RightInfoPanel open={infoPanelVisible} headingText={rightPanelHeading} info={rightPanelData} onClose={handleInfoPanelClose} />
+            {/* <RightInfoPanel panelType={'customer-filter'} open={custFilterPanelVisible} headingText={rightPanelHeading} info={rightPanelData} onClose={handleCustFilterPanelClose} /> */}
+            <RightInfoPanel panelType={'info-view'} open={infoPanelVisible} headingText={rightPanelHeading} info={rightPanelData} onClose={handleInfoPanelClose} />
         </Box>
     );
 };

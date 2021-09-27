@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useTranslation } from "react-i18next";
 import moment from "moment";
-import Backdrop from '@mui/material/Backdrop';
-import { Drawer, IconButton, AppBar, Toolbar, Box, Grid } from "@mui/material";
-import { useTheme } from '../../../contexts/Theme/Theme.context';
+import { Drawer, IconButton, AppBar, Toolbar, Box, Grid, Backdrop } from "@mui/material";
 import Select from "../Select/dropdown";
 import { DatePicker } from "../DatePicker/DatePicker.component";
 import { Button } from '../Button/Button.component';
