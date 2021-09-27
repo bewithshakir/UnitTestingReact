@@ -1,3 +1,51 @@
+div{
+
+.MuiTypography-h1,
+h1 {
+  font-size: 1.3125rem
+}
+
+.MuiTypography-h2,
+h2 {
+  font-size: 1.125rem;
+}
+
+.MuiTypography-h3,
+h3 {
+  font-size: 1rem;
+}
+
+.MuiTypography-h4,
+h4 {
+  font-size: 0.875rem;
+}
+
+.MuiTypography-h5,
+h5 {
+  font-size: 0.75rem;
+}
+
+.MuiTypography-h1,
+.MuiTypography-h2,
+.MuiTypography-h3,
+.MuiTypography-h4,
+.MuiTypography-h5 {
+  font-family: Arial;
+  font-weight: normal;
+  color: var(--Darkgray);
+  &-primary{
+    color: var(--Primary);
+    &-bold{
+        font-weight: bold;
+    }
+  }
+}
+
+p {
+  font-size: 1rem;
+  color: var(--Black);
+}
+
 .fw {
   &-normal {
     font-weight: normal;
@@ -10,49 +58,4 @@
   }
 }
 
-body{
-   font-size: 0.875rem;
-   font-family: Arial; 
-}
-
-.h1,
-h1 {
-  font-size: 1.3125rem
-}
-
-.h2,
-h2 {
-  font-size: 1.125rem;
-}
-
-.h3,
-h3 {
-  font-size: 0.875rem;
-}
-
-.h4,
-h4 {
-  font-size: 0.75rem;
-}
-
-.h1,
-.h2,
-.h3 {
-  font-weight: normal;
-  color: var(--Black);
-  &-primary{
-    color: var(--Black);
-    &-bold{
-        font-weight: bold;
-    }
-  }
-  &-bold{
-    font-weight: bold;
-  }
-}
-
-
-p {
-  font-size: 1rem;
-  color: var(--Black);
 }

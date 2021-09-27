@@ -16,21 +16,22 @@ interface props {
     onBlur?: (...args: any[]) => void;
 }
 
-export default function SearchInput (props:props) {
-    
+export default function SearchInput(props: props) {
+
 
     return (
-       
+
         <Paper
+            className="search-paper"
             component="form"
-            sx={{ p: '0px 4px', boxShadow:'none', borderRadius:0, display: 'flex', alignItems: 'center', width: props.width }}
+            sx={{ p: '0px 4px', boxShadow: 'none', borderRadius: 0, display: 'flex', alignItems: 'center', width: props.width }}
         >
             <IconButton sx={{ p: '10px' }} aria-label="Search">
                 <SearchIcon />
             </IconButton>
             <InputBase
                 id={props.id}
-                style={{ width:'100%' }}
+                style={{ width: '100%' }}
                 name={props.name}
                 value={props.value}
                 disabled={props.disabled}
@@ -49,5 +50,5 @@ SearchInput.defaultProps = {
     width: 270,
     disabled: false,
     placeholder: 'Search',
-    type: 'text', 
+    type: 'text',
 }
