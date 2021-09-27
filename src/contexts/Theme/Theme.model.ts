@@ -42,4 +42,5 @@ export interface Theme {
   '--Lightgray_2': Color;
   '--Lightgray_3': Color;
   '--Lightgray_4': Color;
+  '--Lightgray_5': Color;
 }

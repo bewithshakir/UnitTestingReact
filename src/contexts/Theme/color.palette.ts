@@ -17,6 +17,7 @@ export enum Color {
   universalLightgray2 = '#D9D9D9',
   universalLightgray3 = '#EDEDED',
   universalLightgray4 = '#F7F7F7',
+  universalLightgray5 = '#FAFAFB',
 
   // Other colours (fuel Colors)
   shellyellow = '#FBCE07',
