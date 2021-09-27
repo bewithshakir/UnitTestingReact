@@ -1,28 +1,7 @@
-.checkboxStyle {
- width: 16;
-      height: 16;
-      display: "block";
-    //   color: rgba(0, 0, 0, 0.54);
-    //   background-color: var(--Gray);
-      fill: var(--White);
-      border: 1px solid var(--Gray);
-}
-
-.checkedIconStyle {
-    background-color: var(--Gray);
-    width: 16;
-      height: 16;
-      display: "block";
-    // backgroundImage: "blue",
-    fill: var(--White);
-      border: 1px solid var(--Gray);
-    &:before {
-      display: "block";
-      width: 16;
-      height: 16;
-      color: var(--Gray);
+div {
+  .checkboxStyle {
+    &:hover {
+      background-color: 'transparent';
     }
-    // input:hover ~ &: {
-    //   backgroundColor: "#106ba3"
-    // }
+  }
 }
