@@ -42,8 +42,6 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
   return (
     <Fragment>
       <FormControl className="date-picker-container">
-      {/* <Grid container spacing={3}> */}
-        {/* <Grid item xs={12}> */}
         {props.label && <InputLabel 
             htmlFor={props.id} 
             className="date-picker-label"
@@ -52,14 +50,12 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
             aria-required={props.required}>
                 {props.label} {props.required && (<span className='super'>*</span>)}
         </InputLabel >}
-        {/* </Grid> */}
-        {/* <Grid item xs={12}> */}
             <SingleDatePicker
                     disabled={props.disabled}
                     required={props.required}
                     hideKeyboardShortcutsPanel
                     showDefaultInputIcon 
-                    inputIconPosition="before"
+                    inputIconPosition="after"
                     transitionDuration={0}
                     verticalSpacing={0}
                     numberOfMonths={1}
@@ -71,20 +67,9 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
                     focused={dateFocused} // PropTypes.bool
                     onFocusChange={({ focused }) => setDateFocused(focused)} // PropTypes.func.isRequired
                     id={props.id}
-                />
-        {/* </Grid> */}
-        {/* </Grid> */}
-       
-              
+                />         
         {props.helperText && <FormHelperText id={props.name} error={props.error}>{props.helperText}</FormHelperText>}
       </FormControl>
     </Fragment>
   )
-}
-
-DatePicker.defaultProps = {
-  disabled: false,
-  required: false,
-  id:'single-date-picker-component',
-  displayFormat:"MM/DD/YYYY"
 }
