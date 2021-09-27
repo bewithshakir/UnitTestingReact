@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Content } from '../components/UIComponents/Content/Content.component';
 import { Footer } from '../components/UIComponents/Footer/Footer.component';
 import bg from "../assets/images/bg_shapes.svg"
@@ -8,6 +8,8 @@ import { NavLink, useHistory } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import Input from '../components/UIComponents/Input/Input';
 import Select from '../components/UIComponents/Select/dropdown';
+import SearchInput from '../components/UIComponents/SearchInput/SearchInput';
+import useDebounce from '../utils/useDebounce';
 import HorizontalBar from '../components/UIComponents/NavigationBar/HorizontalBar';
 import { Box, CssBaseline } from '@mui/material';
 import { RightInfoPanel } from '../components/UIComponents/RightInfoPanel/RightInfoPanel.component';
@@ -18,6 +20,8 @@ import { Button } from '../components/UIComponents/Button/Button.component';
 const Home = (props: { version: any }) => {
     const { data } = useQuery('repoData', fetchQueryTodos, { retry: false })
     console.log(data)
+    const [form, setForm] = useState({ userName: '', email: '', item: '', searchTerm:'' });
+    const debouncedValue = useDebounce<string>(form.searchTerm, 1000);
     // right info panel and customer filter panel  starts here--
     const [infoPanelVisible, setInfoPanelVisible] = React.useState(false);
     const [custFilterPanelVisible, setCustFilterPanelVisible] = React.useState(false);
@@ -41,8 +45,6 @@ const Home = (props: { version: any }) => {
       }
       
     // right info panel and customer filter panel  ends here--
-
-    const [form, setForm] = useState({ userName: '', email: '', item: '' });
     const items = [
         { label: 'Amazon', value: 'Amazon' },
         { label: 'Nike', value: 'Nike' },
@@ -56,6 +58,7 @@ const Home = (props: { version: any }) => {
     }
     console.log(props, "home props")
     const handleChange = (e: any) => setForm(x => ({ ...x, [e.target.name]: e.target.value }));
+    useEffect(() => { console.log('Debounced Value:', debouncedValue) }, [debouncedValue]);
     const { t } = useTranslation()
     return (
         <Box sx={{ display: 'flex' }}>
@@ -108,6 +111,11 @@ const Home = (props: { version: any }) => {
                             {   t("Right Info Panel")}
                         </Button>
                     </Box>
+                    <SearchInput
+                        name='searchTerm'
+                        value={form.searchTerm}
+                        onChange={handleChange}
+                    />
                     <Footer />
                 </div>
                 <div className={'app__bg'}>

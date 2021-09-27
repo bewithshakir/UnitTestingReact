@@ -1,10 +1,11 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import  Input from '../components/UIComponents/Select/dropdown';
+import  Input, {Divider} from '../components/UIComponents/Select/dropdown';
 
 export default {
   title: 'Components/Select',
   component: Input,
+  subcomponents: { Divider },
   argTypes: { 
   },
 } as ComponentMeta<typeof Input>;

@@ -1,10 +1,6 @@
 import { useState, useEffect, Fragment } from 'react';
-import {ReactComponent as UpArrow} from '../../../assets/images/ArrowUp.svg';
-import { ReactComponent as DownArrow } from '../../../assets/images/ArrowDown.svg';
-import { ReactComponent as CheckBox } from '../../../assets/images/ToggleCheckmark.svg';
-import { ReactComponent as Search } from '../../../assets/images/SearchIcon.svg';
+import { DropSearchIcon as SearchIcon, Check, ArrowUp, ArrowDown, UnCheck } from '../../../assets/icons';
 import './dropdown.scss';
-
 interface props {
   name?: string;
   label: string;
@@ -17,12 +13,8 @@ interface props {
   onChange: (...args: any[]) => void;
 }
 
-const Divider = () => <div className='divider'></div>;
+export const Divider = () => <div className='divider'></div>;
 
-const ChevronUp = () => <UpArrow/>;
-const ChevronDown = () => <DownArrow />;
-const Check = () => <CheckBox />;
-const SearchIcon = () => <Search />;
 
 export default function Select(props: props) {
   const [selectedValues, setSelectedValues] = useState<any>([]);
@@ -43,11 +35,13 @@ export default function Select(props: props) {
   }
 
   const onChange = () => {
-    const {name, onChange } = props;
-    let obj = {target :{
-      name: name,
-      value: selectedValues
-    }}
+    const { name, onChange } = props;
+    let obj = {
+      target: {
+        name: name,
+        value: selectedValues
+      }
+    }
     onChange(obj);
   }
 
@@ -88,7 +82,7 @@ export default function Select(props: props) {
 
   const getSearchTerm = (e: any) => { setSearchTerm(e.target.value); }
 
-  useEffect(() =>  searchHandler(searchTerm), [searchTerm]);
+  useEffect(() => searchHandler(searchTerm), [searchTerm]);
 
   const renderSearch = () => {
     const { search } = props;
@@ -165,7 +159,7 @@ export default function Select(props: props) {
       >
         {multiple ?
           <span className="checkbox">
-            {selected ? <Check /> : null}
+            {selected ? <Check /> : <UnCheck />}
           </span> :
           null
         }
@@ -213,7 +207,7 @@ export default function Select(props: props) {
       <div className={selectProps.isOpen ? "selection open" : "selection"} onClick={onClick}>
         {renderValues()}
         <span className="arrow">
-          {selectProps.isOpen ? <ChevronUp /> : <ChevronDown />}
+          {selectProps.isOpen ? <ArrowUp /> : <ArrowDown />}
         </span>
       </div>
       {renderOptions()}
@@ -222,9 +216,9 @@ export default function Select(props: props) {
 
 }
 
- Select.defaultProps = {
+Select.defaultProps = {
   search: false,
   id: "select-label",
   multiple: false,
-  width: 460,
+  width: "100%",
 }

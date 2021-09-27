@@ -8,6 +8,7 @@ import ActionsMenu from '../Menu/ActionsMenu.component';
 import ProfileMenu from '../Menu/ProfileMenu.component';
 import DataGridActionsMenu from '../Menu/DataGridActionsMenu.component';
 import { ExportIcon, PlusIcon, DeleteIcon, ImportIcon, SettingsIcon, LogoutIcon, CustomerProfileIcon2 } from '../../../assets/icons';
+import GridComponent from '../DataGird/grid.component';
 
 
 export const Content: React.FC = () => {
@@ -32,6 +33,7 @@ export const Content: React.FC = () => {
         <p className={'content__paragraph'}>
           {t("para1")} <b>{t("para1")}</b> ,<b>{t("para2")}</b> <b>{t("para3")}</b> <b>{t("para4")}</b>
         </p>
+        <GridComponent />
         <div className={'content__buttons'}>
           <Button
             types={'primary'}

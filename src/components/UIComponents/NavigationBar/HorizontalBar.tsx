@@ -24,9 +24,11 @@ interface HorizontalBarProps {
   version: "Breadcrumbs-Single" | "NavLinks" | "Breadcrumbs-Many",
   onBack: () => void,
 }
+
 export default function HorizontalBar(props: HorizontalBarProps) {
   const { t } = useTranslation();
   console.log(props, "horizontalProps")
+
   function handleClick(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
     console.info('You clicked a breadcrumb.');
   }
@@ -88,7 +90,7 @@ export default function HorizontalBar(props: HorizontalBarProps) {
   }
 
   return (
-    <div>
+    <>
       <div className="app__header">
         <AppBar position="fixed" className="header" sx={{ width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px` }}>
           <Toolbar className="header__toolbar">
@@ -160,35 +162,7 @@ export default function HorizontalBar(props: HorizontalBarProps) {
           </Toolbar>
         </AppBar>
       </div>
-
-
-      {/* <Drawer
-        sx={{
-          width: drawerWidth,
-          flexShrink: 0,
-          '& .MuiDrawer-paper': {
-            width: drawerWidth,
-            boxSizing: 'border-box',
-          },
-        }}
-        variant="permanent"
-        anchor="left"
-      >
-        <Toolbar />
-        <Divider />
-        <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-            </ListItem>
-          ))}
-          <ListItemText>{"query"}</ListItemText>
-        </List>
-      </Drawer> */}
-
       <SideBarDrawer />
-    </div>
+    </>
   );
 }
