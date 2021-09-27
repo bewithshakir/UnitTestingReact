@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import moment from "moment";
 import { Content } from '../components/UIComponents/Content/Content.component';
 import { Footer } from '../components/UIComponents/Footer/Footer.component';
 import bg from "../assets/images/bg_shapes.svg"
@@ -18,7 +19,7 @@ import { Box, CssBaseline } from '@mui/material';
 const Home = (props: { version: any }) => {
     const { data } = useQuery('repoData', fetchQueryTodos, { retry: false })
     console.log(data)
-    const [form, setForm] = useState({ userName: '', email: '', item: '', searchTerm:'', startDate: null, endDate: null });
+    const [form, setForm] = useState({ userName: '', email: '', item: '', searchTerm:'', startDate: moment(), endDate: moment() });
     const debouncedValue = useDebounce<string>(form.searchTerm, 1000);
     const items = [
         { label: 'Amazon', value: 'Amazon' },
