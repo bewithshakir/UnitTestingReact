@@ -77,14 +77,17 @@ const Home = (props: { version: any }) => {
                         value={form.searchTerm}
                         onChange={handleChange}
                     />
-                    <Box>
-                        <DatePicker 
+                    {/* temporary styles */}
+                    <Box style={{'marginLeft':'20px'}}> 
+                        <DatePicker
+                            label="FROM DATE" 
                             id="cust-filter-end-date"
                             disableBeforeDate={form.startDate} 
                             placeholder="To Date" 
                             name="endDate" 
                             onChange={onDateChange} 
                             value={form.endDate} 
+                            required
                         />
                     </Box>
                     <Footer />

@@ -2,7 +2,7 @@ import React, { Fragment, useState } from 'react'
 import moment from "moment";
 import { SingleDatePicker, toMomentObject } from 'react-dates';
 import 'react-dates/initialize';
-import { InputLabel, FormControl, FormHelperText} from '@mui/material';
+import { InputLabel, FormControl, FormHelperText, Grid} from '@mui/material';
 import 'react-dates/lib/css/_datepicker.css';
 import './DatePicker.style.scss';
 
@@ -42,26 +42,40 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
   return (
     <Fragment>
       <FormControl className="date-picker-container">
-        {props.label && <InputLabel htmlFor={"my-input"}>{props.label}</InputLabel>}
-
-              <SingleDatePicker
-                disabled={props.disabled}
-                required={props.required}
-                hideKeyboardShortcutsPanel
-                showDefaultInputIcon 
-                inputIconPosition="before"
-                transitionDuration={0}
-                verticalSpacing={0}
-                numberOfMonths={1}
-                displayFormat={props.displayFormat}
-                placeholder={props.placeholder}
-                isOutsideRange={date => disableDates(date)}
-                date={toMomentObject(props.value)} // momentPropTypes.momentObj or null
-                onDateChange={date => props.onChange(props.name, date)} // PropTypes.func.isRequired
-                focused={dateFocused} // PropTypes.bool
-                onFocusChange={({ focused }) => setDateFocused(focused)} // PropTypes.func.isRequired
-                id={props.id}
-              />
+      {/* <Grid container spacing={3}> */}
+        {/* <Grid item xs={12}> */}
+        {props.label && <InputLabel 
+            htmlFor={props.id} 
+            className="date-picker-label"
+            style={{ color: 'var(--Darkgray)' }} 
+            aria-labelledby={props.label} 
+            aria-required={props.required}>
+                {props.label} {props.required && (<span className='super'>*</span>)}
+        </InputLabel >}
+        {/* </Grid> */}
+        {/* <Grid item xs={12}> */}
+            <SingleDatePicker
+                    disabled={props.disabled}
+                    required={props.required}
+                    hideKeyboardShortcutsPanel
+                    showDefaultInputIcon 
+                    inputIconPosition="before"
+                    transitionDuration={0}
+                    verticalSpacing={0}
+                    numberOfMonths={1}
+                    displayFormat={props.displayFormat}
+                    placeholder={props.placeholder}
+                    isOutsideRange={date => disableDates(date)}
+                    date={toMomentObject(props.value)} // momentPropTypes.momentObj or null
+                    onDateChange={date => props.onChange(props.name, date)} // PropTypes.func.isRequired
+                    focused={dateFocused} // PropTypes.bool
+                    onFocusChange={({ focused }) => setDateFocused(focused)} // PropTypes.func.isRequired
+                    id={props.id}
+                />
+        {/* </Grid> */}
+        {/* </Grid> */}
+       
+              
         {props.helperText && <FormHelperText id={props.name} error={props.error}>{props.helperText}</FormHelperText>}
       </FormControl>
     </Fragment>
