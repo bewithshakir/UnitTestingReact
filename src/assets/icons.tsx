@@ -171,6 +171,23 @@ export function LogoutIcon(props: React.SVGProps<SVGSVGElement>) {
   )
 }
 
+export function CloseIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      width="1em"
+      height="1em"
+      viewBox="0 0 20 20"
+      {...props}
+    >
+      <path
+        d="M17 1l1.414 1.414-7.293 7.293L18.414 17 17 18.414l-7.293-7.293-7.293 7.293L1 17l7.293-7.293L1 2.414 2.414 1l7.293 7.293z"
+        fill={props.color}
+      />
+      <path fill="none" d="M0 0h20v20H0z" />
+    </svg>
+  )
+}
+
 export function SearchIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
