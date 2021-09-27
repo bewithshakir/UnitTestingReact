@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Rendering of Search Input Component Search Input Snapshot testing 1`] = `
+<ForwardRef(Paper)
+  component="form"
+  sx={
+    Object {
+      "alignItems": "center",
+      "borderRadius": 0,
+      "boxShadow": "none",
+      "display": "flex",
+      "p": "0px 4px",
+      "width": 270,
+    }
+  }
+>
+  <ForwardRef(IconButton)
+    aria-label="Search"
+    sx={
+      Object {
+        "p": "10px",
+      }
+    }
+  >
+    <SearchIcon />
+  </ForwardRef(IconButton)>
+  <ForwardRef(InputBase)
+    disabled={false}
+    id="SearchInput"
+    placeholder="Search"
+    type="text"
+  />
+</ForwardRef(Paper)>
+`;

@@ -42,6 +42,7 @@ export const THEMES: Record<ThemeType, Theme> = {
     '--Lightgray_2': Color.universalLightgray2,
     '--Lightgray_3': Color.universalLightgray3,
     '--Lightgray_4': Color.universalLightgray4,
+    '--Lightgray_5': Color.universalLightgray5,
   },
   UK: {
     //  Main Colors
@@ -85,5 +86,6 @@ export const THEMES: Record<ThemeType, Theme> = {
     '--Lightgray_2': Color.universalLightgray2,
     '--Lightgray_3': Color.universalLightgray3,
     '--Lightgray_4': Color.universalLightgray4,
+    '--Lightgray_5': Color.universalLightgray5,
   }
 };

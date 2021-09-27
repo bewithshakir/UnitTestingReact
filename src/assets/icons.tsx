@@ -17,6 +17,22 @@ export function ActionsListIcon(props: React.SVGProps<SVGSVGElement>) {
   )
 }
 
+export function FilterIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      width="1em"
+      height="1em"
+      viewBox="0 0 20 21.111"
+      {...props}
+    >
+      <path
+        d="M20 0l-6.667 7.778v8.889l-6.666 4.444V10L0 0zm-4.832 2.222H4.152l4.737 7.1v7.631l2.222-1.481V6.956z"
+        fill="#595959"
+      />
+      <path fill="none" d="M0 0h20v20H0z" />
+    </svg>
+  )
+}
 
 export function ImportIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
@@ -171,66 +187,89 @@ export function LogoutIcon(props: React.SVGProps<SVGSVGElement>) {
   )
 }
 
-export function NotificationIcon(props: React.SVGProps<SVGSVGElement>) {
+export function SearchIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       width="1em"
       height="1em"
-      viewBox="0 0 40 40"
+      viewBox="0 0 20 20"
       {...props}
     >
-      <path fill="none" d="M0 0h40v40H0z" />
       <path
         d="M20 10a3 3 0 012.85 2.06A6 6 0 0128 18v7h2v2h-6.126a4 4 0 01-7.748 0H10v-2h2v-7a6 6 0 015.151-5.94A3 3 0 0120 10zm1.732 17h-3.464a2 2 0 003.464 0zM20 12a1 1 0 00-.907.578l-.042.107-.389 1.181-1.23.174a4 4 0 00-3.427 3.754L14 18v7h12v-7a4 4 0 00-3.23-3.926l-.2-.034-1.23-.174-.389-1.18A1 1 0 0020 12z"
         // fill={props.color}
         fill={'currentColor'}
       />
+      <path fill="none" d="M0 0h20v20H0z" />
     </svg>
   )
 }
 
-export function ShellTapup(props: React.SVGProps<SVGSVGElement>) {
+export function DropSearchIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       width="1em"
       height="1em"
-      viewBox="0 0 40 40"
+      viewBox="0 0 20 20"
       {...props}
     >
-      <path fill="none" d="M0 0h40v40H0z" />
       <path
-        d="M20 10a3 3 0 012.85 2.06A6 6 0 0128 18v7h2v2h-6.126a4 4 0 01-7.748 0H10v-2h2v-7a6 6 0 015.151-5.94A3 3 0 0120 10zm1.732 17h-3.464a2 2 0 003.464 0zM20 12a1 1 0 00-.907.578l-.042.107-.389 1.181-1.23.174a4 4 0 00-3.427 3.754L14 18v7h12v-7a4 4 0 00-3.23-3.926l-.2-.034-1.23-.174-.389-1.18A1 1 0 0020 12z"
-        fill={props.color}
+        d="M14.02 14.02a7.182 7.182 0 1 1 0-10.162 7.139 7.139 0 0 1 0 10.162m6.3 5.406-4.983-4.983a8.463 8.463 0 1 0-.89.89l4.983 4.983a.63.63 0 0 0 .89-.89"
+        fill={props.color || 'var(--Gray)'}
       />
+      <path fill="none" d="M0 0h20v20H0z" />
     </svg>
   )
 }
 
-export function ShellTapup2(props: React.SVGProps<SVGSVGElement>) {
+
+export function Check(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       width="1em"
       height="1em"
-      viewBox="0 0 64 64"
+      viewBox="0 0 20 20"
       {...props}
     >
-      <path fill="none" d="M0 0h64v64H0z" />
       <path
-        d="M30.12 46h-8.128l-.745-6.019-4.922-3.581a16 16 0 1131.352 0l-4.922 3.581L41.996 46h-8.128l-.452.339a2.393 2.393 0 01-2.822 0z"
-        stroke="#fff"
-        strokeMiterlimit={40}
-        strokeWidth={1.75}
-        fill="none"
+        d="M20 0v20H0V0Zm-2 2H2v16h16Zm-4.441 3.589L14.973 7l-7.449 7.452-3.231-3.2L5.7 9.831l1.817 1.8Z"
+        fill={props.color || 'var(--Gray)'}
       />
+      <path fill="none" d="M0 0h20v20H0z" />
+    </svg>
+  )
+}
+
+export function UnCheck(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      width="1em"
+      height="1em"
+      viewBox="0 0 20 20"
+      {...props}
+    >
       <path
-        d="M30.12 46h-8.128l-.745-6.019-4.922-3.581a16 16 0 1131.352 0l-4.922 3.581L41.996 46h-8.128l-.452.339a2.393 2.393 0 01-2.822 0z"
-        fill="#fbce07"
+        d="M20 0v20H0V0Zm-2 2H2v16h16Z"
+        fill={props.color || 'var(--Gray)'}
       />
+      <path fill="none" d="M0 0h20v20H0z" />
+    </svg>
+  )
+}
+
+export function ArrowUp(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      width="1em"
+      height="1em"
+      viewBox="0 0 20 20"
+      {...props}
+    >
       <path
-        d="M30.12 46h-8.128l-.745-6.019-4.922-3.581a16 16 0 1131.352 0l-4.922 3.581L41.996 46h-8.128l-.452.339a2.393 2.393 0 01-2.822 0zm.253-2.8h-5.9l-.6-4.769-4.859-3.536a6.733 6.733 0 01-.217-1.7 6.841 6.841 0 01.592-2.773l8.607 8.706L19.63 28.8a6.819 6.819 0 012.091-3.462l7.5 12.946-6.642-14.175a6.773 6.773 0 013.427-2.407l4.583 16.066-3.35-16.708a6.773 6.773 0 014.064-.835l.686 17.4.682-17.4a6.805 6.805 0 014.064.835l-3.319 16.708 4.583-16.067a6.773 6.773 0 013.427 2.407l-6.653 14.175 7.507-12.945a6.773 6.773 0 012.093 3.462l-8.369 10.332 8.607-8.706a6.841 6.841 0 01.592 2.773 6.733 6.733 0 01-.217 1.7l-4.859 3.536-.6 4.769h-5.9l-.876.632a1.246 1.246 0 01-.75.248 1.26 1.26 0 01-.754-.248z"
-        fill="#dd1d21"
-        fillRule="evenodd"
+        d="M18.258 15 9.63 7.156l-7.821 7.812L.396 13.55l9.17-9.159 10.038 9.129Z"
+        fill={props.color || 'var(--Gray)'}
       />
+      <path fill="none" d="M0 0h20v20H0z" />
     </svg>
   )
 }
@@ -251,6 +290,7 @@ export function BackIcon(props: React.SVGProps<SVGSVGElement>) {
     </svg>
   )
 }
+
 export function CloseIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
@@ -261,30 +301,30 @@ export function CloseIcon(props: React.SVGProps<SVGSVGElement>) {
     >
       <path
         d="M8.026 4l1.479 1.346-3.83 4.217H18.42v2H5.761l3.714 3.717-1.417 1.413L2 10.628z"
-        fill="#595959"
+        fill={props.color || 'var(--Gray)'}
       />
       <path fill="none" d="M0 0h20v20H0z" />
     </svg>
   )
 }
 
-export function FilterIcon(props: React.SVGProps<SVGSVGElement>) {
+
+export function ArrowDown(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       width="1em"
       height="1em"
-      viewBox="0 0 20 21.111"
+      viewBox="0 0 20 20"
       {...props}
     >
       <path
-        d="M20 0l-6.667 7.778v8.889l-6.666 4.444V10L0 0zm-4.832 2.222H4.152l4.737 7.1v7.631l2.222-1.481V6.956z"
-        fill="#595959"
+        d="m1.742 5 8.628 7.844 7.821-7.812 1.413 1.418-9.17 9.159L.396 6.48Z"
+        fill={props.color || 'var(--Gray)'}
       />
       <path fill="none" d="M0 0h20v20H0z" />
     </svg>
   )
 }
-
 
 export function LeftArrowIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
@@ -299,6 +339,24 @@ export function LeftArrowIcon(props: React.SVGProps<SVGSVGElement>) {
         fill="#595959"
       />
       <path fill="none" d="M20 20H0V0h20z" />
+    </svg>
+  )
+}
+
+export function NotificationIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      width="1em"
+      height="1em"
+      viewBox="0 0 40 40"
+      {...props}
+    >
+      <path fill="none" d="M0 0h40v40H0z" />
+      <path
+        d="M20 10a3 3 0 012.85 2.06A6 6 0 0128 18v7h2v2h-6.126a4 4 0 01-7.748 0H10v-2h2v-7a6 6 0 015.151-5.94A3 3 0 0120 10zm1.732 17h-3.464a2 2 0 003.464 0zM20 12a1 1 0 00-.907.578l-.042.107-.389 1.181-1.23.174a4 4 0 00-3.427 3.754L14 18v7h12v-7a4 4 0 00-3.23-3.926l-.2-.034-1.23-.174-.389-1.18A1 1 0 0020 12z"
+        fill={props.color}
+      />
+      <path fill="none" d="M0 0h20v20H0z" />
     </svg>
   )
 }
