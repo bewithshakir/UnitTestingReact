@@ -15,7 +15,7 @@ Primary.args = {
   label: "Contact Name",
   onChange: e => e.target.value,
   value : onchange,
-  width: 16,
+  width: 460,
   helperText: ''
 };
 
@@ -50,6 +50,6 @@ Custom.args = {
   label: "Contact Name",
   onChange: e => e.target.value,
   value : onchange,
-  width: 16,
+  width: 260,
   multiline:true
 };
