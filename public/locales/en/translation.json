@@ -57,5 +57,14 @@
       "settings":{
         "view & edit details": "View & Edit Details"
       }
+  },
+  "legend":{
+    "customerName": "Customer Name",
+    "customerProfile": "Customer Profile",
+    "parkingLots": "Parking Lots",
+    "vehicles": "Vehicles",
+    "users": "Users",
+    "dsp": "DSP",
+    "attachments": "Attachments"
   }
 }

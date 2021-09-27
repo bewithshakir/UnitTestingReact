@@ -25,38 +25,7 @@ exports[`renders the Default Select component snapshot test for Default Select c
     <span
       className="arrow"
     >
-      <ChevronDown />
-    </span>
-  </div>
-</div>
-`;
-
-exports[`renders the MultiSelect component snapshot test 1`] = `
-<div
-  className="select"
-  onFocus={[Function]}
-  style={
-    Object {
-      "width": 460,
-    }
-  }
->
-  <label
-    className="label"
-  >
-    Input
-  </label>
-  <div
-    className="selection"
-    onClick={[Function]}
-  >
-    <div
-      className="placeholder"
-    />
-    <span
-      className="arrow"
-    >
-      <ChevronDown />
+      <ArrowDown />
     </span>
   </div>
 </div>
@@ -87,38 +56,7 @@ exports[`renders the MultiSelect component snapshot test for the MultiSelect com
     <span
       className="arrow"
     >
-      <ChevronDown />
-    </span>
-  </div>
-</div>
-`;
-
-exports[`renders the MultiSelect with search component snapshot test 1`] = `
-<div
-  className="select"
-  onFocus={[Function]}
-  style={
-    Object {
-      "width": 460,
-    }
-  }
->
-  <label
-    className="label"
-  >
-    Input
-  </label>
-  <div
-    className="selection"
-    onClick={[Function]}
-  >
-    <div
-      className="placeholder"
-    />
-    <span
-      className="arrow"
-    >
-      <ChevronDown />
+      <ArrowDown />
     </span>
   </div>
 </div>
@@ -149,69 +87,7 @@ exports[`renders the MultiSelect with search component snapshot test for the Mul
     <span
       className="arrow"
     >
-      <ChevronDown />
-    </span>
-  </div>
-</div>
-`;
-
-exports[`renders the Select component snapshot test 1`] = `
-<div
-  className="select"
-  onFocus={[Function]}
-  style={
-    Object {
-      "width": 460,
-    }
-  }
->
-  <label
-    className="label"
-  >
-    Input
-  </label>
-  <div
-    className="selection"
-    onClick={[Function]}
-  >
-    <div
-      className="placeholder"
-    />
-    <span
-      className="arrow"
-    >
-      <ChevronDown />
-    </span>
-  </div>
-</div>
-`;
-
-exports[`renders the Select with search component snapshot test 1`] = `
-<div
-  className="select"
-  onFocus={[Function]}
-  style={
-    Object {
-      "width": 460,
-    }
-  }
->
-  <label
-    className="label"
-  >
-    Input
-  </label>
-  <div
-    className="selection"
-    onClick={[Function]}
-  >
-    <div
-      className="placeholder"
-    />
-    <span
-      className="arrow"
-    >
-      <ChevronDown />
+      <ArrowDown />
     </span>
   </div>
 </div>
@@ -242,7 +118,7 @@ exports[`renders the Select with search component snapshot test for Select with 
     <span
       className="arrow"
     >
-      <ChevronDown />
+      <ArrowDown />
     </span>
   </div>
 </div>

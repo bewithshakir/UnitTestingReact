@@ -1,0 +1,64 @@
+div{  
+    .subHeader{
+        color: var(--Darkgray);
+        font-size: 16px;
+        font-weight: bold;
+        background-color: var(--Lightgray_5);
+        font-family: Arial, Helvetica, sans-serif
+    }
+    .legend-box{
+        background-color: var(--Lightgray_5);
+        // margin-top:100px;
+        border-color:var(--Lightgray_2);
+        // margin-left:100px ;
+    }
+    .listItemTextPrimary{
+       .MuiTypography-body1 {
+        text-align:start;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        margin-left: 20px;
+        font-size: 14px;
+        width:200px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bold;
+     }
+    }
+    .listItemTextSecondary{
+        .MuiTypography-body1 {
+            margin-top: 20px;
+         margin-right: 20px;
+         margin-bottom: 20px;
+         font-size: 14px;
+         font-family: Arial, Helvetica, sans-serif;
+         font-weight: bold;
+      }
+     }
+    .listItemButton{
+        width:240px;
+        height:32px;
+        &.MuiButtonBase-root.MuiListItemButton-root.Mui-selected{
+            background-color:var(--Primary);
+            color: var(--White);
+            & .MuiListItemIcon-root {
+                color: var(--White)
+            }
+        }
+        
+        &.selected:hover {
+            background-color: var(--Primary);
+            color: var(--White);
+            & .MuiListItemIcon-root {
+                color: var(--White)
+            }
+        }
+        &:hover {
+            background-color: var(--Primary);
+            color: var(--White);
+            & .MuiListItemIcon-root{
+                color: var(--White),
+            }
+        }
+        
+    }
+}
