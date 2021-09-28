@@ -1,4 +1,4 @@
-.MuiFormControl-root {
+.MuiFormControl-root.formInput{
     border: 0;
     display: inline-flex;
     padding: 0;
@@ -46,26 +46,26 @@ div{
 
 
 
-.MuiInputBase-input.Mui-disabled {
+.formInput .MuiInputBase-input.Mui-disabled {
     background: var(--Lightgray_4) 0% 0% no-repeat padding-box ;
     color: var(--Lightergray) ;  
     opacity: 1;
 }
 
-.MuiFormLabel-root{
+.formInput .MuiFormLabel-root{
     color: var(--Darkgray);
 }
 
-.MuiFormLabel-root.Mui-focused {
+.formInput .MuiFormLabel-root.Mui-focused {
     color: var(--Darkgray);
 }
 
-.Mui-error .MuiInputBase-input,
+.formInput .Mui-error .MuiInputBase-input,
 .MuiInputBase-input:invalid{
     box-shadow: none;
     border: 2px solid var(--Tertiary);
 }
 
-.super{
+ .formInput .super{
     font-size: 1em;
 }

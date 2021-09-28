@@ -19,7 +19,7 @@ import { Box, CssBaseline } from '@mui/material';
 const Home = (props: { version: any }) => {
     const { data } = useQuery('repoData', fetchQueryTodos, { retry: false })
     console.log(data)
-    const [form, setForm] = useState({ userName: '', email: '', item: '', searchTerm:'', startDate: moment(), endDate: moment() });
+    const [form, setForm] = useState({ userName: '', email: '', item: [{ label: 'Nike', value: 'Nike' }], searchTerm:'', startDate: moment(), endDate: moment() });
     const debouncedValue = useDebounce<string>(form.searchTerm, 1000);
     const items = [
         { label: 'Amazon', value: 'Amazon' },
