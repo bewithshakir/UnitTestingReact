@@ -1,7 +1,6 @@
 import { Add, FileCopy } from '@material-ui/icons';
 import { Box, Checkbox, Container, CssBaseline, FormControl, FormControlLabel, FormGroup, Grid, Link, Typography } from '@mui/material';
 import { useFormik } from 'formik';
-import moment from "moment";
 import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';
 import { Button } from '../components/UIComponents/Button/Button.component';
@@ -74,11 +73,11 @@ const AddCustomer = (props: any) => {
                 onBack={onClickBack}
             />
 
-            <Grid container mt={5} ml={6.25} className="main-area">
-                <Grid item md={2} xs={2} className="legend-area">
+            <Grid container pl={6.25} className="main-area">
+                <Grid item md={2} pt={5} xs={2} className="legend-area">
                     <Legend />
                 </Grid>
-                <Grid item md={10} xs={10} className="page-area">
+                <Grid item md={10} pt={5} xs={10} className="page-area">
                     <Container maxWidth="lg" className="page-container">
                         <form onSubmit={formik.handleSubmit}>
                             <Typography variant="h3" component="h3" gutterBottom className="fw-bold" mb={1}>
