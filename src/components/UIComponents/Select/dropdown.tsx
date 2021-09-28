@@ -1,15 +1,20 @@
 import { useState, useEffect, Fragment } from 'react';
 import { DropSearchIcon as SearchIcon, Check, ArrowUp, ArrowDown, UnCheck } from '../../../assets/icons';
 import './dropdown.scss';
+
+type item = {
+  label: string,
+  value: string | number
+}
 interface props {
   name?: string;
   label: string;
   search?: boolean;
   placeholder?: string;
   multiple?: boolean;
-  value?: string | number;
-  width?: string | number;
-  items: Array<any>;
+  value?: Array<item>;
+  width?: number | string;
+  items: Array<item>;
   onChange: (...args: any[]) => void;
 }
 
@@ -21,6 +26,11 @@ export default function Select(props: props) {
   const [selectProps, setSelectedProps] = useState({ focusedValue: -1, isFocused: false, isOpen: false });
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState<any[]>([]);
+
+  useEffect(() => {
+    const { value } = props;
+    value && value.length > 0 && setSelectedValues([...value])
+  }, [])
 
   const onFocus = () => setSelectedProps(x => ({ ...x, isFocused: true }));
   const onClick = () => {
@@ -64,6 +74,88 @@ export default function Select(props: props) {
       setSelectedProps(x => ({ ...x, isOpen: false }));
     }
   }
+
+  const onBlur = () => {
+    const { items, multiple } = props;
+    if (multiple) {
+      setSelectedProps(x => ({ ...x, isOpen: false, isFocused: false, focusedValue: -1 }));
+    } else {
+      const value = selectedValues[0]
+      let focusedValue = -1
+      if (value) {
+        focusedValue = items.findIndex(option => option.value === value)
+      }
+      setSelectedProps(x => ({ ...x, isOpen: false, isFocused: false, focusedValue: focusedValue }));
+    }
+  }
+
+  const onKeyDown = (e: React.KeyboardEvent) => {
+    const { items, multiple } = props
+    const { isOpen } = selectProps;
+    let { focusedValue } = selectProps;
+    switch (e.key) {     
+      case 'Esc':
+        if (isOpen) {
+          e.preventDefault()
+          setSelectedProps(x => ({ ...x, isOpen: false }));
+        }
+        break
+      case 'Tab':
+        setSelectedProps(x => ({ ...x, isOpen: !isOpen }));
+        break
+      case 'Enter':
+        setSelectedProps(x => ({ ...x, isOpen: true }));
+        break
+      case 'ArrowDown':
+        e.preventDefault()
+        if (focusedValue < items.length - 1) {
+          focusedValue++
+
+          if (multiple) {
+            setSelectedProps(x => ({ ...x, focusedValue: focusedValue }));
+          } else {
+            setSelectedValues([items[focusedValue].value]);
+            setSelectedProps(x => ({ ...x, focusedValue: focusedValue }));
+          }
+        }
+
+        break
+      case 'ArrowUp':
+        e.preventDefault()
+        if (focusedValue > 0) {
+          focusedValue--
+
+          if (multiple) {
+            setSelectedProps(x => ({ ...x, focusedValue: focusedValue }));
+          } else {
+            setSelectedValues([items[focusedValue].value]);
+            setSelectedProps(x => ({ ...x, focusedValue: focusedValue }));
+          }
+        }
+        break
+      default:
+        e.preventDefault()
+        if (isOpen) {
+          if (multiple) {
+            if (focusedValue !== -1) {
+              const value = items[focusedValue].value
+              const index = selectedValues.indexOf(value)
+
+              if (index === -1) {
+                selectedValues.push(value)
+              } else {
+                selectedValues.splice(index, 1)
+              }
+              setSelectedValues([...selectedValues]);
+            }
+          }
+        } else {
+          setSelectedProps(x => ({ ...x, isOpen: true }));
+        }
+        break
+    }
+  }
+
 
   const searchHandler = (searchTerm: string) => {
     const { items } = props;
@@ -199,11 +291,14 @@ export default function Select(props: props) {
 
   return (
     <div
-      className="select"
+      className="select-dropdown"
       style={{ width: props.width }}
       onFocus={onFocus}
+      onBlur={onBlur}
+      onKeyDown={onKeyDown}
+      tabIndex={0}
     >
-      <label className="label">{props.label}</label>
+      <label className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink label"><b>{props.label.toUpperCase()}</b></label>
       <div className={selectProps.isOpen ? "selection open" : "selection"} onClick={onClick}>
         {renderValues()}
         <span className="arrow">

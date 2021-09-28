@@ -9,7 +9,7 @@ import Legend from './Legend/index';
 
 
 const AddCustomer = (props: any) => {
-    const [form, setForm] = useState({ customerName: '', customerId: '', email: '', item: '', addressLine1: '', addressLine2: '', city: '' });
+    const [form, setForm] = useState({ customerName: '', customerId: '', email: '', item: [], addressLine1: '', addressLine2: '', city: '' });
     const items = [
         { label: 'Amazon', value: 'Amazon' },
         { label: 'Nike', value: 'Nike' },
