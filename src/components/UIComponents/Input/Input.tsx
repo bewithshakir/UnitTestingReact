@@ -29,8 +29,8 @@ export default function Input(props: props) {
 
   return (
     <Fragment>
-      <FormControl>
-        <InputLabel shrink htmlFor={props.id} style={{ color: 'var(--Darkgray)' }} aria-labelledby={props.label} aria-required={props.required}>
+      <FormControl className="custom-form-input-control">
+        <InputLabel shrink htmlFor={props.id} aria-labelledby={props.label} aria-required={props.required}>
           <b>{props.label.toUpperCase()}{props.required && props.label && (<span className='super'>*</span>)}</b>
         </InputLabel>
         <InputBase
@@ -63,7 +63,7 @@ export default function Input(props: props) {
 }
 
 Input.defaultProps = {
-  width: 460,
+  width: "100%",
   disabled: false,
   required: false,
   id: "input",
