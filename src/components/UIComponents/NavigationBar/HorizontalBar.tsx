@@ -1,16 +1,11 @@
 import { Breadcrumbs, Link, SvgIcon } from "@material-ui/core";
-// import AppBar from "@material-ui/core/AppBar";
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
-import MailIcon from '@mui/icons-material/Mail';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import { Divider, Drawer, List, ListItem, ListItemIcon, ListItemText } from "@mui/material";
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
-// import Toolbar from "@material-ui/core/Toolbar";
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { NavLink } from "react-router-dom";
-import { BackIcon, CustomerProfileIcon2, LeftArrowIcon, LogoutIcon, SettingsIcon } from "../../../assets/icons";
+import { BackIcon, CustomerProfileIcon2, LeftArrowIcon, LogoutIcon, SettingsIcon, USAFlagIcon } from "../../../assets/icons";
 import { Button } from "../Button/Button.component";
 import NotificationsMenu from '../Menu/NotificationsMenu.component';
 import ProfileMenu from '../Menu/ProfileMenu.component';
@@ -114,9 +109,7 @@ export default function HorizontalBar(props: HorizontalBarProps) {
             <div className="app__header-section" />
             <div className="app__header-right-section-desktop">
               <div className="header__country-selector">
-                <div>
-                  <img className="country-selector-logo" src="/static/media/Shell Taup logo2.11573aa2.svg" alt="logo" />
-                </div>
+                <SvgIcon component={USAFlagIcon} />
                 <span className="country-title">United States</span>
               </div>
               <div className="vl"></div>
