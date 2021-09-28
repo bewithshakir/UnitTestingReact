@@ -386,6 +386,35 @@ export function DeliveryTruckIcon(props: React.SVGProps<SVGSVGElement>) {
   )
 }
 
+export function UncheckedCheckboxIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      width="20" 
+      height="20" 
+      viewBox="0 0 20 20"
+      {...props}
+    >
+      <path d="M22,2V22H2V2ZM20,4H4V20H20Z" transform="translate(-2 -2)"
+        fill={props.color}
+      />
+    </svg>
+  )
+}
+
+export function CheckedCheckboxIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 20 20"
+      {...props}
+    >
+      <path d="M22,2V22H2V2ZM20,4H4V20H20ZM15.559,7.589,16.973,9,9.524,16.452l-3.231-3.2L7.7,11.831l1.817,1.8Z" transform="translate(-2 -2)"
+        fill={props.color}
+      />
+    </svg>
+  )
+}
 
 
 
