@@ -1,37 +1,38 @@
-.search-paper{
-   .MuiPaper-root{
-      background: var(--White) 0% 0% no-repeat padding-box;
-      color: var(--Lightgray);
-      border: 1px solid var(--Lightgray);
-      opacity: 1;
-   
-   .css-17dm0u2-MuiPaper-root {
-      border-radius: 0;
-   }   
-
-   .MuiButtonBase-root{
-      width: 40px;
-      height: 40px;
-   }
-
-   .MuiInputBase-root{
-      font-size: 16px;
-      label + &{
-         display: none;
-      }
-   }
-   .MuiInputBase-input{
-      border-radius: 0;
-      padding-left: 0;
-      border: none;
-      &:focus {
-         border:none;
-      }
-      &:active {
-         border:none;
-   }
-   }
-   }
-
+.searchinput.css-1q6at85-MuiInputBase-root-MuiOutlinedInput-root{
+   border-radius: 0;
 }
 
+div.searchinput{
+   outline: 0;
+
+   svg {
+    display: block;
+    width: 0.9em;
+    height: 0.9em;
+    fill: var(--Lightgray);
+  }
+}
+
+div.searchinput.MuiInputBase-root.MuiOutlinedInput-root {
+        & fieldset {
+          border-color: var(--Lightgray_2);
+        }
+        &.Mui-focused fieldset {
+         border: 2px solid var(--Darkgray);
+        }
+}
+
+div.searchinput .MuiInputBase-input{
+   background: var(--White) 0% 0% no-repeat padding-box;
+   border: 0;
+   font-size: 14;
+   padding-left: 0;
+   &:focus {
+   background: var(--White) 0% 0% no-repeat padding-box;
+   border: 0;
+   }
+   &:active {
+   background: var(--White) 0% 0% no-repeat padding-box;
+   border: 0;
+   }
+}
