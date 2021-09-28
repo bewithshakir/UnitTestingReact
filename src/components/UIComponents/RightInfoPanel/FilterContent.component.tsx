@@ -91,7 +91,6 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ onClose }) => {
                     items={geoData.states}
                     onChange={handleSelect}
                     multiple
-                    width="100%"
                 />
             </Grid>
             <Grid item xs={12}>
@@ -103,7 +102,6 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ onClose }) => {
                     items={geoData.cities}
                     onChange={handleSelect}
                     multiple
-                    width="100%"
                 />
             </Grid>
             <Grid item xs={12}>
@@ -115,7 +113,6 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ onClose }) => {
                     items={settlementTypes}
                     onChange={handleSelect}
                     multiple
-                    width="100%"
                 />
             </Grid>
         </Grid>
