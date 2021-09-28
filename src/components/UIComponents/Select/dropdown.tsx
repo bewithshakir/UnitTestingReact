@@ -104,7 +104,7 @@ export default function Select(props: props) {
         setSelectedProps(x => ({ ...x, isOpen: !isOpen }));
         break
       case 'Enter':
-        setSelectedProps(x => ({ ...x, isOpen: !isOpen }));
+        setSelectedProps(x => ({ ...x, isOpen: true }));
         break
       case 'ArrowDown':
         e.preventDefault()

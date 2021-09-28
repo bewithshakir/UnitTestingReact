@@ -7,6 +7,11 @@
   box-sizing: border-box;
   &:focus {
     outline: 0;
+    & .selection {
+      background: var(--White) 0% 0% no-repeat padding-box;
+      color: var(--Darkgray);  
+      border:2px solid var(--Darkgray);
+    }
   }
 
   svg {
