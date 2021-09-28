@@ -13,7 +13,6 @@ interface props {
   placeholder?: string;
   multiple?: boolean;
   value?: Array<item>;
-  width?: number | string;
   items: Array<item>;
   onChange: (...args: any[]) => void;
 }
@@ -93,7 +92,7 @@ export default function Select(props: props) {
     const { items, multiple } = props
     const { isOpen } = selectProps;
     let { focusedValue } = selectProps;
-    switch (e.key) {     
+    switch (e.key) {
       case 'Esc':
         if (isOpen) {
           e.preventDefault()
@@ -292,7 +291,6 @@ export default function Select(props: props) {
   return (
     <div
       className="select-dropdown"
-      style={{ width: props.width }}
       onFocus={onFocus}
       onBlur={onBlur}
       onKeyDown={onKeyDown}
@@ -315,5 +313,4 @@ Select.defaultProps = {
   search: false,
   id: "select-label",
   multiple: false,
-  width: "100%",
 }

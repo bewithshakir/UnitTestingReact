@@ -1,32 +1,34 @@
 export const config = [
     {
-        index:1,
+        index: 1,
         label: "legend.customerProfile"
     },
     {
-        index:2,
+        index: 2,
         label: "legend.parkingLots"
     },
     {
-        index:3,
+        index: 3,
         label: "legend.vehicles"
     },
     {
-        index:4,
+        index: 4,
         label: "legend.users"
     },
     {
-        index:5,
+        index: 5,
         label: "legend.dsp"
     },
     {
-        index:6,
+        index: 6,
         label: "legend.attachments"
     }
 ]
 
 export const boxSystem = {
-    width: 276, 
-    height: 375, 
+    // width: 276, 
+    // height: 375, 
+    marginRight: '.5rem',
+    marginLeft: '.5rem',
     border: 1
 }
