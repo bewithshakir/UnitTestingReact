@@ -354,7 +354,7 @@ export function NotificationIcon(props: React.SVGProps<SVGSVGElement>) {
       <path fill="none" d="M0 0h40v40H0z" />
       <path
         d="M20 10a3 3 0 012.85 2.06A6 6 0 0128 18v7h2v2h-6.126a4 4 0 01-7.748 0H10v-2h2v-7a6 6 0 015.151-5.94A3 3 0 0120 10zm1.732 17h-3.464a2 2 0 003.464 0zM20 12a1 1 0 00-.907.578l-.042.107-.389 1.181-1.23.174a4 4 0 00-3.427 3.754L14 18v7h12v-7a4 4 0 00-3.23-3.926l-.2-.034-1.23-.174-.389-1.18A1 1 0 0020 12z"
-        fill={props.color}
+        fill={"currentColor"}
       />
       <path fill="none" d="M0 0h20v20H0z" />
     </svg>
