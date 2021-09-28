@@ -27,7 +27,7 @@ interface HorizontalBarProps {
 
 export default function HorizontalBar(props: HorizontalBarProps) {
   const { t } = useTranslation();
-  console.log(props, "horizontalProps")
+  // console.log(props, "horizontalProps")
 
   function handleClick(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
     console.info('You clicked a breadcrumb.');
