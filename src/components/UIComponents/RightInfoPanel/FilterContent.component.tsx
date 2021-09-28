@@ -87,6 +87,7 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ onClose }) => {
                     name="state"
                     label="Select State"
                     placeholder=""
+                    value={form.state}
                     items={geoData.states}
                     onChange={handleSelect}
                     multiple
@@ -98,6 +99,7 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ onClose }) => {
                     name="city"
                     label="Select City"
                     placeholder=""
+                    value={form.city}
                     items={geoData.cities}
                     onChange={handleSelect}
                     multiple
@@ -109,6 +111,7 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ onClose }) => {
                     name="settlementType"
                     label="Settlement Type"
                     placeholder=""
+                    value={form.settlementType}
                     items={settlementTypes}
                     onChange={handleSelect}
                     multiple
