@@ -5,7 +5,6 @@ import './SearchInput.scss';
 
 interface props {
     id?: string;
-    width?: number | string;
     name?: string;
     value?: string | number;
     placeholder?: string;
@@ -19,7 +18,6 @@ export default function SearchInput(props: props) {
     return (
         <Input
             className='searchinput'
-            style={{ width: props.width }}
             id={props.id}
             name={props.name}
             value={props.value}
@@ -42,7 +40,6 @@ export default function SearchInput(props: props) {
 
 SearchInput.defaultProps = {
     id: "SearchInput",
-    width: 270,
     placeholder: 'Search',
     type: 'text',
 }
