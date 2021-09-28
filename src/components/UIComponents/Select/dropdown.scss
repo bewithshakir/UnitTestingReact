@@ -1,5 +1,6 @@
 
-.select {
+.select-dropdown {
+  width: 100%;
   font-family: arial;
   font-size: 14px;
   position: relative;
@@ -8,7 +9,9 @@
   &:focus {
     outline: 0;
     & .selection {
-      box-shadow: 0 0 1px 1px var(--Gray);
+      background: var(--White) 0% 0% no-repeat padding-box;
+      color: var(--Darkgray);  
+      border:2px solid var(--Darkgray);
     }
   }
 
@@ -21,11 +24,8 @@
 
   .label {
     color: var(--Darkgray);
-    font-size: 14px;
+    line-height: 16px;
     font-family: arial;
-    display: block;
-    margin-bottom: 6px;
-    font-weight: 700;
   }
 
   .selection {
@@ -44,6 +44,9 @@
       background: var(--White) 0% 0% no-repeat padding-box;
       color: var(--Darkgray); 
       border: 1px solid var(--Gray);
+    }
+    &:focus-visible{
+      outline: 0;
     }     
   }
   .open{
@@ -143,19 +146,10 @@
     content: '';
     vertical-align: top;
     display: inline-block;
-    width: 16px;
-    height: 16px;
     padding: 2px;
-    border: 1px solid var(--Darkgray);
-    border-radius: 2px;
     margin: 2px 12px 0 0;
     color: var(--White);
     font-size: 10px;
-    
-    .selected & {
-      border-color:var(--Black);
-      background: var(--White);
-    }
   }
   
   .ui.search .input{

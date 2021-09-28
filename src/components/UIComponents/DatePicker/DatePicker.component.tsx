@@ -42,13 +42,21 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
   return (
     <Fragment>
       <FormControl className="date-picker-container">
-        {props.label && <InputLabel
-          htmlFor={props.id}
-          className="date-picker-label"
-          aria-labelledby={props.label}
-          aria-required={props.required}>
-          {props.label} {props.required && (<span className='super'>*</span>)}
-        </InputLabel >}
+        {props.label &&
+
+          // <InputLabel
+          //   shrink
+          //   htmlFor={props.id}
+          //   className="date-picker-label"
+          //   aria-labelledby={props.label}
+          //   aria-required={props.required}>
+          //   {props.label} {props.required && (<span className='super'>*</span>)}
+          // </InputLabel>
+          <InputLabel shrink htmlFor={props.id} style={{ color: 'var(--Darkgray)' }} aria-labelledby={props.label} aria-required={props.required}>
+            <b>{props.label.toUpperCase()}{props.required && props.label && (<span className='super'>*</span>)}</b>
+          </InputLabel>
+        }
+
         <SingleDatePicker
           disabled={props.disabled}
           required={props.required}
