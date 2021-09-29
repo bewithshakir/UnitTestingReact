@@ -2,9 +2,9 @@ import React from 'react';
 import Checkbox from '@material-ui/core/Checkbox';
 import { UncheckedCheckboxIcon, CheckedCheckboxIcon } from '../../../assets/icons';
 interface checkBoxProps {
-    name?: string;
-    checked?: boolean;
-    onChange?: (...args: any[]) => void;
+    name: string;
+    checked: boolean;
+    onChange: (...args: any[]) => void;
 }
 
 export default function Checkboxes(props: checkBoxProps) {
