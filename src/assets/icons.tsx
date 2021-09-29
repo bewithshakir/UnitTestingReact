@@ -1,5 +1,150 @@
 import * as React from "react"
 
+
+export function USAFlagIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="1em"
+      height="1em"
+      viewBox="0 0 24 24"
+      {...props}
+    >
+      <defs>
+        <clipPath id="prefix__a">
+          <path
+            data-name="Path 501"
+            d="M1277.5-980a12 12 0 0012-12 12 12 0 00-12-12 12 12 0 00-12 12 12 12 0 0012 12z"
+            fill="none"
+          />
+        </clipPath>
+        <clipPath id="prefix__b">
+          <path data-name="Path 500" d="M0 0h1440v-1024H0z" fill="none" />
+        </clipPath>
+        <clipPath id="prefix__c">
+          <path
+            data-name="Rectangle 5"
+            transform="translate(1264 -1005)"
+            fill="none"
+            d="M0 0h27v26H0z"
+          />
+        </clipPath>
+        <clipPath id="prefix__d">
+          <path data-name="Path 481" d="M1265-980h25v-24h-25z" fill="none" />
+        </clipPath>
+        <clipPath id="prefix__e">
+          <path
+            data-name="Path 487"
+            d="M1277.7-991.25h13.3a12.756 12.756 0 00-.439-3.326H1277.7z"
+            fill="none"
+          />
+        </clipPath>
+        <clipPath id="prefix__f">
+          <path
+            data-name="Path 490"
+            d="M1277.7-997.9h11.433a12.825 12.825 0 00-2.942-3.326h-8.491z"
+            fill="none"
+          />
+        </clipPath>
+        <clipPath id="prefix__g">
+          <path
+            data-name="Path 493"
+            d="M1278.25-978.5a12.7 12.7 0 007.937-2.772h-15.874a12.7 12.7 0 007.937 2.772z"
+            fill="none"
+          />
+        </clipPath>
+        <clipPath id="prefix__h">
+          <path
+            data-name="Path 496"
+            d="M1267.371-984.6h21.758a12.712 12.712 0 001.432-3.326h-24.622a12.712 12.712 0 001.432 3.326z"
+            fill="none"
+          />
+        </clipPath>
+        <clipPath id="prefix__i">
+          <path
+            data-name="Path 499"
+            d="M1271.406-1002.009h1.162l-1.081.785.413 1.271-1.081-.785-1.08.785.356-1.1a12.869 12.869 0 00-2.473 2.756h.373l-.688.5c-.108.179-.21.36-.309.545l.329 1.011-.613-.445q-.229.484-.417.99l.362 1.114h1.336l-1.081.785.413 1.27-1.081-.785-.647.47a12.844 12.844 0 00-.1 1.59h12.75V-1004a12.692 12.692 0 00-6.843 1.991zm.494 9.484l-1.081-.785-1.08.785.412-1.27-1.08-.785h1.336l.412-1.27.413 1.27h1.336l-1.081.785zm-.413-4.985l.413 1.271-1.081-.785-1.08.785.412-1.271-1.08-.785h1.336l.412-1.27.413 1.27h1.336zm4.986 4.985l-1.08-.785-1.081.785.413-1.27-1.081-.785h1.336l.413-1.27.412 1.27h1.336l-1.08.785zm-.412-4.985l.412 1.271-1.08-.785-1.081.785.413-1.271-1.081-.785h1.336l.413-1.27.412 1.27h1.336zm0-3.714l.412 1.271-1.08-.785-1.081.785.413-1.271-1.081-.785h1.336l.413-1.27.412 1.27h1.336z"
+            fill="none"
+          />
+        </clipPath>
+      </defs>
+      <g
+        data-name="Country Flag"
+        transform="translate(-1265.5 1004)"
+        clipPath="url(#prefix__a)"
+      >
+        <g data-name="Group 539">
+          <g data-name="Group 538" clipPath="url(#prefix__b)">
+            <g data-name="Group 537" clipPath="url(#prefix__c)">
+              <g data-name="Group 524" clipPath="url(#prefix__d)">
+                <path
+                  data-name="Path 480"
+                  d="M1264-1005h27v26h-27z"
+                  fill="#d7d7d7"
+                />
+              </g>
+              <g data-name="Group 526" clipPath="url(#prefix__a)">
+                <g data-name="Group 525" clipPath="url(#prefix__d)">
+                  <path
+                    data-name="Path 482"
+                    d="M1264.5-1005h26v26h-26z"
+                    fill="#f0f0f0"
+                  />
+                </g>
+              </g>
+              <g data-name="Group 528" clipPath="url(#prefix__e)">
+                <g data-name="Group 527" clipPath="url(#prefix__d)">
+                  <path
+                    data-name="Path 485"
+                    d="M1276.7-995.576h14.3v5.326h-14.3z"
+                    fill="#d70027"
+                  />
+                </g>
+              </g>
+              <g data-name="Group 530" clipPath="url(#prefix__f)">
+                <g data-name="Group 529" clipPath="url(#prefix__d)">
+                  <path
+                    data-name="Path 488"
+                    d="M1276.7-1002.228h13.433v5.326H1276.7z"
+                    fill="#d70027"
+                  />
+                </g>
+              </g>
+              <g data-name="Group 532" clipPath="url(#prefix__g)">
+                <g data-name="Group 531" clipPath="url(#prefix__d)">
+                  <path
+                    data-name="Path 491"
+                    d="M1269.313-982.272h17.874V-979h-17.874z"
+                    fill="#d70027"
+                  />
+                </g>
+              </g>
+              <g data-name="Group 534" clipPath="url(#prefix__h)">
+                <g data-name="Group 533" clipPath="url(#prefix__d)">
+                  <path
+                    data-name="Path 494"
+                    d="M1264.939-988.924H1291v5.326h-26.061z"
+                    fill="#d70027"
+                  />
+                </g>
+              </g>
+              <g data-name="Group 536" clipPath="url(#prefix__i)">
+                <g data-name="Group 535" clipPath="url(#prefix__d)">
+                  <path
+                    data-name="Path 497"
+                    d="M1264.5-1005h14.75v14.75h-14.75z"
+                    fill="#0051b4"
+                  />
+                </g>
+              </g>
+            </g>
+          </g>
+        </g>
+      </g>
+    </svg>
+  )
+}
+
 export function ActionsListIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
@@ -354,7 +499,7 @@ export function NotificationIcon(props: React.SVGProps<SVGSVGElement>) {
       <path fill="none" d="M0 0h40v40H0z" />
       <path
         d="M20 10a3 3 0 012.85 2.06A6 6 0 0128 18v7h2v2h-6.126a4 4 0 01-7.748 0H10v-2h2v-7a6 6 0 015.151-5.94A3 3 0 0120 10zm1.732 17h-3.464a2 2 0 003.464 0zM20 12a1 1 0 00-.907.578l-.042.107-.389 1.181-1.23.174a4 4 0 00-3.427 3.754L14 18v7h12v-7a4 4 0 00-3.23-3.926l-.2-.034-1.23-.174-.389-1.18A1 1 0 0020 12z"
-        fill={props.color}
+        fill={"currentColor"}
       />
       <path fill="none" d="M0 0h20v20H0z" />
     </svg>
@@ -389,8 +534,8 @@ export function DeliveryTruckIcon(props: React.SVGProps<SVGSVGElement>) {
 export function UncheckedCheckboxIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
-      width="20" 
-      height="20" 
+      width="20"
+      height="20"
       viewBox="0 0 20 20"
       {...props}
     >

@@ -1,18 +1,23 @@
+div{
 .date-picker-container{
+    display: flex;
     .date-picker-label{
         color: var(--universalDarkgray);
         font-size: 14px;
         font-family: arial;
         display: block;
         font-weight: 700;
-        margin-bottom: 30px;
-        margin-left: -14px;
+        transform: translate(14px, -6px) scale(0.75);
+        // margin-bottom: 30px;
+        // margin-left: -14px;
     }
     .SingleDatePicker{
         .SingleDatePickerInput{
             width: 100%;
+            display: flex;
+            justify-content: space-between;
             .DateInput{
-                width: 77%;
+                // width: 77%;
                 .DateInput_input{
                     font-size: 14px;
                 }
@@ -44,5 +49,5 @@
         }
     }
 }
-
+}
 
