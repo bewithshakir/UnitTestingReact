@@ -15,15 +15,21 @@ import SuccessMessage from'../SuccessMessage/SuccessMessage.component';
 export const Content: React.FC = () => {
   const { setCurrentTheme } = useTheme();
   const { t, i18n } = useTranslation();
+  const [isOpen, setOpen] = React.useState(false);
   const changeLanguage = (language: string) => () => {
     i18n.changeLanguage(language);
   };
 
-  let isOpen = false;
+  const MessageTypes = ["Success", "Error", "Info"];
 
   const handleButtonClick = () => {
     console.log("handleButtonClick");
-    isOpen = true;
+    setOpen(true);
+  }
+
+  const handleMessageBoxClose = () => {
+    console.log("handleMessageBoxClose called");
+    setOpen(false);
   }
 
   return (
@@ -159,7 +165,7 @@ export const Content: React.FC = () => {
         <Button variant="outlined" onClick={handleButtonClick}>
           Open success snackbar
         </Button>
-      {isOpen && <SuccessMessage /> }
+        {isOpen && <SuccessMessage isOpen={isOpen} messageType={MessageTypes[0]} onClose={handleMessageBoxClose}/> }
       </div>
     </div>
 

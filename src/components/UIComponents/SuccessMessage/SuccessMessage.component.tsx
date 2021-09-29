@@ -54,28 +54,38 @@ import Snackbar from '@material-ui/core/Snackbar';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import './SuccessMessage.style.scss';
 
-const useStyles = makeStyles((theme: Theme) => ({
-    root: {
-        width: '100%',
-        '& > * + *': {
-            marginTop: theme.spacing(2),
-        },
-    },
-}));
+// const useStyles = makeStyles((theme: Theme) => ({
+//     root: {
+//         width: '100%',
+//         '& > * + *': {
+//             marginTop: theme.spacing(2),
+//         },
+//     },
+// }));
 
-export default function SuccessMessage() {
+interface SuccessMessageProps {
+    isOpen: boolean;
+    messageType?: string;
+    setOpen?: any;
+    onClose: (...args: any[]) => void;
+}
+
+export default function SuccessMessage(props: SuccessMessageProps) { //= ({ open, headingText, info, onClose }) => {
+    // export default function Checkboxes(props: checkBoxProps) {
+
     console.log("SuccessMessage UP")
-    const classes = useStyles();
-    const [open, setOpen] = React.useState(true);
-    const handleClick = () => {
-        setOpen(true);
-    };
+    // const classes = useStyles();
+    const [isOpen, setOpen] = React.useState(false);
+    // const handleClick = () => {
+    //     setOpen(true);
+    // };
 
     const handleClose = (event?: React.SyntheticEvent, reason?: string) => {
+        console.log("handleClose called")
         if (reason === 'clickaway') {
             return;
         }
-        setOpen(false);
+        props.onClose();
     };
 
     return (
@@ -83,7 +93,7 @@ export default function SuccessMessage() {
             <Snackbar 
             // anchorOrigin={{ vertical, horizontal }}
                 // autoHideDuration={6000}
-                open={open}
+                open={props.isOpen}
                 onClose={handleClose}
                 message="I love snacks"
                 // key={vertical + horizontal}
