@@ -8,7 +8,6 @@ import ActionsMenu from '../Menu/ActionsMenu.component';
 import ProfileMenu from '../Menu/ProfileMenu.component';
 import DataGridActionsMenu from '../Menu/DataGridActionsMenu.component';
 import { ExportIcon, PlusIcon, DeleteIcon, ImportIcon, SettingsIcon, LogoutIcon, CustomerProfileIcon2 } from '../../../assets/icons';
-import CheckBox from '../Checkbox/Checkbox.component';
 import GridComponent from '../DataGird/grid.component';
 import SuccessMessage from'../SuccessMessage/SuccessMessage.component';
 
@@ -160,7 +159,6 @@ export const Content: React.FC = () => {
         </Button>
       </div>
 
-      <CheckBox />
       <div className={''}>
         <Button variant="outlined" onClick={handleButtonClick}>
           Open success snackbar
