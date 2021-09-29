@@ -4,7 +4,7 @@ import { UncheckedCheckboxIcon, CheckedCheckboxIcon } from '../../../assets/icon
 interface checkBoxProps {
     name: string;
     checked: boolean;
-    onChange: (...args: any[]) => void;
+    onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
 }
 
 export default function Checkboxes(props: checkBoxProps) {
