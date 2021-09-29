@@ -1,5 +1,5 @@
 import { Add, FileCopy } from '@material-ui/icons';
-import { Box, Checkbox, Container, CssBaseline, FormControl, FormControlLabel, FormGroup, Grid, Link, Typography } from '@mui/material';
+import { Box, Container, CssBaseline, FormControl, FormControlLabel, FormGroup, Grid, Link, Typography } from '@mui/material';
 import { useFormik } from 'formik';
 import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';
@@ -10,7 +10,7 @@ import HorizontalBar from '../components/UIComponents/NavigationBar/HorizontalBa
 import Select from '../components/UIComponents/Select/dropdown';
 import "./AddCustomer.style.scss";
 import Legend from './Legend/index';
-
+import Checkbox from '../components/UIComponents/Checkbox/Checkbox.component';
 
 const AddCustomer = (props: any) => {
     const { t } = useTranslation();
@@ -30,7 +30,7 @@ const AddCustomer = (props: any) => {
             endDate: null,
             firstName: '',
             lastName: '',
-            lotLevel: true,
+            lotLevel: false,
             businessLevel: false,
             vehicleLevel: false,
         },
