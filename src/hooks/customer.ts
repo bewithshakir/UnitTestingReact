@@ -1,5 +1,3 @@
-
-
 import { AxiosRequestConfig } from "axios"
 import { useQuery } from "react-query"
 import axios from "../infrastructure/ApiHelper"
@@ -7,38 +5,24 @@ import axios from "../infrastructure/ApiHelper"
 export interface CustomerMangementProps{
     data: []
 }
-
-class CustomerManagemnet<CustomerMangementProps>{
-    constructor(data: any){
+class CustomerManagementModel<CustomerMangementProps>{
+    data: []
+    constructor(data: []){
         this.data = data
         this.intialize()
     }
     intialize(){
-        const customerList =  useQuery("getCustomersList",this.getCustomer)
+          useQuery("getCustomersList",this.getCustomer)
       
     }
     async getCustomer(){
         const options: AxiosRequestConfig = {
             method: 'get',
-            url: '/todos'
+            url: 'http://20.81.30.168:4001/api/customer-service/customers?limit=15&offset=0&countryCode=us'
           }
         const result =  await axios(options)
+        console.log(result)
     }
 }
 
-
-class Rectangle {
- 
-    constructor(height: any, width: any) {
-      this.height = height;
-      this.width = width;
-    }
-    // Getter
-    get area() {
-      return this.calcArea();
-    }
-    // Method
-    calcArea() {
-      return this.height * this.width;
-    }
-  }
+export {CustomerManagementModel}
