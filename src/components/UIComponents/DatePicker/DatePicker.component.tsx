@@ -15,6 +15,7 @@ interface DatePickerProps {
   value: moment.Moment | null;
   helperText?: string;
   onChange: (name: string, text: moment.Moment | null) => void;
+  onClose?: ((arg: { date: moment.Moment | null }) => void) | undefined;
   disableBeforeDate?: moment.Moment | null;
   disableAfterDate?: moment.Moment | null;
   displayFormat?: string;
@@ -44,14 +45,6 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
       <FormControl className="date-picker-container">
         {props.label &&
 
-          // <InputLabel
-          //   shrink
-          //   htmlFor={props.id}
-          //   className="date-picker-label"
-          //   aria-labelledby={props.label}
-          //   aria-required={props.required}>
-          //   {props.label} {props.required && (<span className='super'>*</span>)}
-          // </InputLabel>
           <InputLabel shrink htmlFor={props.id} style={{ color: 'var(--Darkgray)' }} aria-labelledby={props.label} aria-required={props.required}>
             <b>{props.label.toUpperCase()}{props.required && props.label && (<span className='super'>*</span>)}</b>
           </InputLabel>
@@ -59,13 +52,15 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
 
         <SingleDatePicker
           disabled={props.disabled}
-          required={props.required}
+          readOnly={true}
+          // required={props.required}
           hideKeyboardShortcutsPanel
           showDefaultInputIcon
           inputIconPosition="after"
           transitionDuration={0}
           verticalSpacing={0}
           numberOfMonths={1}
+          onClose={props.onClose}
           displayFormat={props.displayFormat}
           placeholder={props.placeholder}
           isOutsideRange={date => disableDates(date)}

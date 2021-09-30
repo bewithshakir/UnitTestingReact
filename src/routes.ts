@@ -11,7 +11,7 @@ export const routes = [
     routes: [
       {
         path: "/addCustomer",
-        component: lazy(() => import('./pages/AddCustomer')),
+        component: lazy(() => import('./pages/AddCustomer/AddCustomer')),
         version: "Breadcrumbs-Single",
       }]
   },
