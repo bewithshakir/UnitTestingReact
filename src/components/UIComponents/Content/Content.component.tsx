@@ -9,7 +9,7 @@ import ProfileMenu from '../Menu/ProfileMenu.component';
 import DataGridActionsMenu from '../Menu/DataGridActionsMenu.component';
 import { ExportIcon, PlusIcon, DeleteIcon, ImportIcon, SettingsIcon, LogoutIcon, CustomerProfileIcon2 } from '../../../assets/icons';
 import CheckBox from '../Checkbox/Checkbox.component';
-import GridComponent from '../DataGird/grid.component';
+import CustomerListHeader from '../CustomerListComponent/CustomerListHeader.component';
 
 
 export const Content: React.FC = () => {
@@ -24,6 +24,7 @@ export const Content: React.FC = () => {
       <div
         className={'content'}
       >
+        <CustomerListHeader />
         <h1 className={'content__title'}>
           <span className={'content__title--colored'}>{t("themes")} </span>
           {t("content1")}
@@ -34,7 +35,6 @@ export const Content: React.FC = () => {
         <p className={'content__paragraph'}>
           {t("para1")} <b>{t("para1")}</b> ,<b>{t("para2")}</b> <b>{t("para3")}</b> <b>{t("para4")}</b>
         </p>
-        <GridComponent />
         <div className={'content__buttons'}>
           <Button
             types={'primary'}

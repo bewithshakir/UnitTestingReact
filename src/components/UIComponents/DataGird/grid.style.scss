@@ -3,10 +3,35 @@ div {
         padding-bottom: 0;
         padding-top: 0;
     }
-    .header-options{
+    .grid-list-table-header {
+        padding-top: 15px;
+        padding-right: 60px;
+        padding-left: 60px;
+    }
+    @media(min-width: 780px){
+        .grid-list-table-header {
+            padding-top: 10px;
+            padding-right: 0px;
+            padding-left: 0px;
+        }
+      }
+    .header-options {
         background-color: #F7F7F7;
         font-size: 14px;
         font-weight: bold;
         padding-bottom: 18px;
+    }
+    .grid-error-message {
+        font-size: 20px;
+        font-weight: bold;
+        text-align: center;
+        padding: 20;
+        color: var(--Darkgray);
+    }
+    .handle-scroll {
+        overflow: hidden;
+    }
+    .handle-scroll:hover {
+        overflow-y: scroll;
     }
 }
