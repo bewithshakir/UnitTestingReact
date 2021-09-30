@@ -1,6 +1,6 @@
 import { Add, FileCopy } from '@material-ui/icons';
 import { Box, Container, CssBaseline, FormControl, FormControlLabel, FormGroup, Grid, Link, Typography } from '@mui/material';
-import { useFormik, FieldArray } from 'formik';
+import { useFormik, FieldArray, FormikProvider } from 'formik';
 import moment from 'moment';
 import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -26,6 +26,14 @@ interface EmergencyContact {
     email?: string,
     phoneNumber?: string,
 }
+
+interface ApContact {
+    firstName?: string,
+    lastName?: string,
+    email?: string,
+    phoneNumber?: string,
+}
+
 interface AddCustomerForm {
     // General Information
     customerName: string,
@@ -51,6 +59,7 @@ interface AddCustomerForm {
     vehicleLevel: boolean,
     // Emergency Contact
     emergencyContact: EmergencyContact[]
+    apContact: ApContact[]
 }
 
 const initialValues: AddCustomerForm = {
@@ -74,6 +83,7 @@ const initialValues: AddCustomerForm = {
     businessLevel: false,
     vehicleLevel: false,
     emergencyContact: [],
+    apContact: []
 };
 
 
@@ -174,6 +184,7 @@ const AddCustomer: React.FC<{}> = (props: any) => {
                 </Grid>
                 <Grid item md={10} pt={5} xs={10} className="page-area">
                     <Container maxWidth="lg" className="page-container">
+                    <FormikProvider value={formik}>
                         <form onSubmit={formik.handleSubmit}>
                             <Typography variant="h3" component="h3" gutterBottom className="fw-bold" mb={1}>
                                 Customer Profile
@@ -472,21 +483,76 @@ const AddCustomer: React.FC<{}> = (props: any) => {
                                         description=''
                                     />
                                 </Grid>
-                                <Grid item md={12} mt={2} mb={4}>
-                                    <Link
-                                        component="button"
-                                        variant="body2"
-                                        sx={{ display: "flex", alignItems: "center" }}
-                                        onClick={() => {
-                                            console.info("I'm a button.");
-                                        }}
-                                    >
-                                        <Add />
-                                        <Typography variant="h3" component="h3" className="fw-bold MuiTypography-h5-primary" mb={1}>
-                                            ADD EMERGENCY CONTACT
-                                        </Typography>
-                                    </Link>
-                                </Grid>
+                                
+                                <FieldArray
+                                        name="emergencyContact"
+                                        render={(arrayHelpers) => (
+                                            <React.Fragment>
+                                                {formik.values.emergencyContact.map((contactList, index) => (
+                                                    <Grid container key={index}>
+                                                        <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
+                                                            <Input
+                                                                name={`emergencyContact[${index}].firstName`}
+                                                                label='First Name'
+                                                                type='text'
+                                                                onChange={formik.handleChange}
+                                                                value={formik.values.emergencyContact[index].firstName}
+                                                                description=''
+                                                                required
+                                                            />
+                                                        </Grid>
+                                                        <Grid item xs={12} md={6} pl={2.5} pb={2.5}>
+                                                            <Input
+                                                                name={`emergencyContact[${index}].lastName`}
+                                                                label='Last Name'
+                                                                type='text'
+                                                                onChange={formik.handleChange}
+                                                                value={formik.values.emergencyContact[index].lastName}
+                                                                description=''
+                                                            />
+                                                        </Grid>
+                                                        <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
+                                                            <Input
+                                                                name={`emergencyContact[${index}].email`}
+                                                                label='Email'
+                                                                onChange={formik.handleChange}
+                                                                value={formik.values.emergencyContact[index].email}
+                                                                description=''
+                                                                required
+                                                            />
+                                                        </Grid>
+                                                        <Grid item xs={12} md={6} pl={2.5} pb={2.5}>
+                                                            <Input
+                                                                name={`emergencyContact[${index}].phoneNumber`}
+                                                                label='Phone Number'
+                                                                type='text'
+                                                                onChange={formik.handleChange}
+                                                                value={formik.values.emergencyContact[index].phoneNumber}
+                                                                description=''
+                                                            />
+                                                        </Grid>
+
+                                                    </Grid>
+
+                                                ))}
+
+                                                <Grid item md={12} mt={2} mb={4}>
+                                                    <Link
+                                                        component="button"
+                                                        variant="body2"
+                                                        sx={{ display: "flex", alignItems: "center" }}
+                                                        onClick={() => arrayHelpers.push({ firstName: "", lastName: "", email: "", phoneNumber: "" })}
+                                                    >
+                                                        <Add />
+                                                        <Typography variant="h3" component="h3" className="fw-bold MuiTypography-h5-primary" mb={1}>
+                                                            ADD EMERGENCY CONTACT
+                                                        </Typography>
+                                                    </Link>
+                                                </Grid>
+                                            </React.Fragment>
+                                        )}
+                                    />
+
                                 <Grid item md={12} mt={2} mb={1}>
                                     <Typography variant="h4" component="h4" gutterBottom className="fw-bold" mb={1}>
                                         AP Contact
@@ -532,21 +598,75 @@ const AddCustomer: React.FC<{}> = (props: any) => {
                                         description=''
                                     />
                                 </Grid>
-                                <Grid item md={12} mt={2} mb={4}>
-                                    <Link
-                                        component="button"
-                                        variant="body2"
-                                        sx={{ display: "flex", alignItems: "center" }}
-                                        onClick={() => {
-                                            console.info("I'm a button.");
-                                        }}
-                                    >
-                                        <Add />
-                                        <Typography variant="h3" component="h3" className="fw-bold MuiTypography-h5-primary" mb={1}>
-                                            ADD AP CONTACT
-                                        </Typography>
-                                    </Link>
-                                </Grid>
+                                <FieldArray
+                                        name="apContact"
+                                        render={(arrayHelpers) => (
+                                            <React.Fragment>
+                                                {formik.values.apContact.map((apContactList, index) => (
+                                                    <Grid container key={index}>
+                                                        <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
+                                                            <Input
+                                                                name={`apContact[${index}].firstName`}
+                                                                label='First Name'
+                                                                type='text'
+                                                                onChange={formik.handleChange}
+                                                                value={formik.values.apContact[index].firstName}
+                                                                description=''
+                                                                required
+                                                            />
+                                                        </Grid>
+                                                        <Grid item xs={12} md={6} pl={2.5} pb={2.5}>
+                                                            <Input
+                                                                name={`apContact[${index}].lastName`}
+                                                                label='Last Name'
+                                                                type='text'
+                                                                onChange={formik.handleChange}
+                                                                value={formik.values.apContact[index].lastName}
+                                                                description=''
+                                                            />
+                                                        </Grid>
+                                                        <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
+                                                            <Input
+                                                                name={`apContact[${index}].email`}
+                                                                label='Email'
+                                                                onChange={formik.handleChange}
+                                                                value={formik.values.apContact[index].email}
+                                                                description=''
+                                                                required
+                                                            />
+                                                        </Grid>
+                                                        <Grid item xs={12} md={6} pl={2.5} pb={2.5}>
+                                                            <Input
+                                                                name={`apContact[${index}].phoneNumber`}
+                                                                label='Phone Number'
+                                                                type='text'
+                                                                onChange={formik.handleChange}
+                                                                value={formik.values.apContact[index].phoneNumber}
+                                                                description=''
+                                                            />
+                                                        </Grid>
+
+                                                    </Grid>
+
+                                                ))}
+
+                                                <Grid item md={12} mt={2} mb={4}>
+                                                    <Link
+                                                        component="button"
+                                                        variant="body2"
+                                                        sx={{ display: "flex", alignItems: "center" }}
+                                                        onClick={() => arrayHelpers.push({ firstName: "", lastName: "", email: "", phoneNumber: "" })}
+                                                    >
+                                                        <Add />
+                                                        <Typography variant="h3" component="h3" className="fw-bold MuiTypography-h5-primary" mb={1}>
+                                                            ADD AP CONTACT
+                                                        </Typography>
+                                                    </Link>
+                                                </Grid>
+
+                                            </React.Fragment>
+                                        )}
+                                    />
 
                                 <Grid item md={12} mt={2} mb={1}>
                                     <Typography variant="h4" component="h4" gutterBottom className="fw-bold" mb={1}>
@@ -583,6 +703,7 @@ const AddCustomer: React.FC<{}> = (props: any) => {
                                 </Grid>
                             </Grid>
                         </form>
+                    </FormikProvider>
                     </Container>
                 </Grid>
             </Grid>
