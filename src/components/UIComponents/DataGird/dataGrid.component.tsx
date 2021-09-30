@@ -3,8 +3,9 @@ import './grid.style.scss';
 import { Button } from './../Button/Button.component';
 import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined';
 import DataGridActionsMenu from '../Menu/DataGridActionsMenu.component';
-import { Collapse, Paper, TableRow, TableHead, TableCell, TableBody, Table, Box } from '@mui/material';
+import { Collapse, TableRow, TableHead, TableCell, TableBody, Table, Box } from '@mui/material';
 import { useTranslation } from 'react-i18next';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 type HeadCellsOptions = {
     id: string;
@@ -17,7 +18,8 @@ interface GridBodyProps {
     order: string | any,
     orderBy: string,
     headCells: HeadCellsOptions[],
-    isError?: string
+    error: any,
+    isValidRowData: boolean
 }
 
 
@@ -75,10 +77,11 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
             return stableSort(props.rows, getComparator(props.order, props.orderBy))
                 .map((row: any, indexKey: any) => {
                     return <React.Fragment>
-                         <TableRow key={indexKey}>
+                        <TableRow key={indexKey} >
                             {keys.map((key: any, index: any) => {
-                                return <TableCell component="th" scope="row" key={row[key]}>
-                                    {props.headCells[index].type === 'text' ? index === 0 ? <b>{row[key]}</b> : row[key] :
+                                return <TableCell component="th" scope="row" key={row[key]}
+                                >
+                                    {props.headCells[index].type === 'text' || props.headCells[index].type === 'number' ? index === 0 ? <b>{row[key]}</b> : row[key] :
                                         props.headCells[index].type === 'button' ?
                                             <Button
                                                 types="accordian"
@@ -114,7 +117,9 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
                                         <Table size="small" aria-label="purchases">
                                             <TableHead>
                                                 <TableRow>
-                                                    <h1>Show Another Table {indexKey} - {row.lots}</h1>
+                                                    <CircularProgress
+                                                        size={40}
+                                                    />
                                                 </TableRow>
                                             </TableHead>
                                             <TableBody>
@@ -125,13 +130,18 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
                                 </Collapse>
                             </TableCell>
                         </TableRow>
+                       
                     </React.Fragment>
                 })
         }
     }
 
     return (
-        getRowsData()
+        <>
+            {props.error === true ? <TableRow><TableCell className="grid-error-message" colSpan={12}>Please check your internet connection and try again.</TableCell></TableRow>:
+                props.isValidRowData === true ? <TableRow><TableCell className="grid-error-message" colSpan={12}>No data found and try again.</TableCell></TableRow>:
+            <TableBody>{getRowsData()}</TableBody>}
+        </>
     )
 
 }
