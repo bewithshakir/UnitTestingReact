@@ -1,5 +1,5 @@
 import * as React from "react";
-import { TableSortLabel, TableRow, TableHead, TableCell } from '@mui/material';
+import { TableSortLabel, TableRow, TableHead, TableCell, Box } from '@mui/material';
 import './grid.style.scss';
 
 
@@ -7,7 +7,6 @@ import './grid.style.scss';
 type HeadCellsOptions = {
     id: string;
     label: string;
-    type: string;
 }
 
 interface GridHeaderProps {
@@ -15,6 +14,7 @@ interface GridHeaderProps {
     orderBy: string,
     headCells: HeadCellsOptions[],
     onRequestSort: (event: any, property: any) => void,
+    isError?: any,
 }
 const EnhancedGridHead: React.FC<GridHeaderProps> = (props) => {
 
@@ -25,12 +25,11 @@ const EnhancedGridHead: React.FC<GridHeaderProps> = (props) => {
     return (
 
         <TableHead>
-            <TableRow>
+            {props.isError ? <TableRow>{"No Data Received"}</TableRow> : <TableRow>
                 {props.headCells.map((headCell) => (
                     <TableCell
                         key={headCell.id}
                         className="header-options"
-                        style={{minWidth:100, maxWidth:100}}
                         sortDirection={props.orderBy === headCell.id ? props.order : false}
                     >
                         {headCell.id === '' ? '' : <TableSortLabel active={props.orderBy === headCell.id}
@@ -39,10 +38,16 @@ const EnhancedGridHead: React.FC<GridHeaderProps> = (props) => {
                         >
 
                             {headCell.label}
+                            {props.orderBy === headCell.id ? (
+                                <Box component="span" sx={{visibility:"hidden"}}>
+                                    {props.order === "desc" ? "sorted descending" : "sorted ascending"}
+                                </Box>
+                            ) : null}
                         </TableSortLabel>}
+
                     </TableCell>
                 ))}
-            </TableRow>
+            </TableRow>}
         </TableHead>
 
     );
