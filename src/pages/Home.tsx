@@ -3,7 +3,7 @@ import { Content } from '../components/UIComponents/Content/Content.component';
 import { Footer } from '../components/UIComponents/Footer/Footer.component';
 import bg from "../assets/images/bg_shapes.svg"
 import { useQuery } from 'react-query';
-import { fetchQueryTodos } from '../actions/todos-with-query';
+import { fetchQueryTodos } from '../hooks/todos-with-query';
 import { NavLink, useHistory } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import Input from '../components/UIComponents/Input/Input';
