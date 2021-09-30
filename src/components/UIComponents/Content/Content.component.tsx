@@ -11,7 +11,6 @@ import { ExportIcon, PlusIcon, DeleteIcon, ImportIcon, SettingsIcon, LogoutIcon,
 import CheckBox from '../Checkbox/Checkbox.component';
 import CustomerListHeader from '../CustomerListComponent/CustomerListHeader.component';
 
-
 export const Content: React.FC = () => {
   const { setCurrentTheme } = useTheme();
   const { t, i18n } = useTranslation();
@@ -146,8 +145,6 @@ export const Content: React.FC = () => {
           {t("french")}
         </Button>
       </div>
-
-      <CheckBox />
     </div>
 
   )

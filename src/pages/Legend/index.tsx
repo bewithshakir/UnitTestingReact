@@ -8,14 +8,12 @@ import { ListSubheader } from '@mui/material';
 import "./style.scss"
 import { boxSystem, config } from './config';
 import { useTranslation } from 'react-i18next';
+import { useLocation } from 'react-router-dom';
 
 
 const Legend: React.FC = () => {
-  const { t } = useTranslation()
-  let [legendSelected, setLengendSelected] = React.useState(-1)
-  const onLegendClick = (index: any) => () => {
-    setLengendSelected(index)
-  }
+  const { t } = useTranslation();
+  const { pathname } = useLocation();
   return (
 
     <Box className="legend-box" sx={boxSystem}>
@@ -26,12 +24,12 @@ const Legend: React.FC = () => {
           </ListSubheader>
         }>
           {config.map((ConfigItem) => {
-            const isLegendSelected = ConfigItem.index === legendSelected ? true : false
+            const isLegendSelected = pathname.includes(ConfigItem.to)
             return (
               <ListItem key={ConfigItem.index} >
-                <ListItemButton onClick={onLegendClick(ConfigItem.index)} className={"listItemButton"} selected={isLegendSelected}>
+                <ListItemButton className={"listItemButton"} selected={isLegendSelected} disabled={ConfigItem.disabled}>
                   <ListItemText className="listItemTextPrimary" primary={t(ConfigItem.label)} />
-                  <ListItemText className="listItemTextSecondary" primary={0} />
+                  {!ConfigItem.disabled && ConfigItem.secondaryText && <ListItemText className="listItemTextSecondary" primary={0} />}
                 </ListItemButton>
               </ListItem>
             )
