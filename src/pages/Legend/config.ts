@@ -1,27 +1,48 @@
+
 export const config = [
     {
         index: 1,
-        label: "legend.customerProfile"
+        label: "legend.customerProfile",
+        secondaryText:false,
+        disabled:false,
+        to: "/addCustomer"
+    
     },
     {
         index: 2,
-        label: "legend.parkingLots"
+        label: "legend.parkingLots",
+        secondaryText:true,
+        disabled:true,
+        to: "/parkingLots"
     },
     {
         index: 3,
-        label: "legend.vehicles"
+        label: "legend.vehicles",
+        secondaryText:true,
+        disabled:true,
+        to: "/vehicles"
     },
     {
         index: 4,
-        label: "legend.users"
+        label: "legend.users",
+        secondaryText:true,
+        disabled:true,
+        to: "/users"
     },
     {
         index: 5,
-        label: "legend.dsp"
+        label: "legend.dsp",
+        secondaryText:true,
+        disabled:true,
+        to: "/dsp"
+
     },
     {
         index: 6,
-        label: "legend.attachments"
+        label: "legend.attachments",
+        secondaryText:true,
+        disabled:true,
+        to: `/attachments`
     }
 ]
 

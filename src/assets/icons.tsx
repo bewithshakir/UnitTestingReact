@@ -561,6 +561,138 @@ export function CheckedCheckboxIcon(props: React.SVGProps<SVGSVGElement>) {
   )
 }
 
+export function BriefCase64Icon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      width="1em"
+      height="1em"
+      viewBox="0 0 64 64"
+      {...props}
+    >
+      <g data-name="Group 1965">
+        <path
+          d="M33.2 23a2.4 2.4 0 012.4 2.4v1.2h6A2.4 2.4 0 0144 29v13.2a2.4 2.4 0 01-2.4 2.4H22.4a2.4 2.4 0 01-2.4-2.4V29a2.4 2.4 0 012.4-2.4h6v-1.2a2.4 2.4 0 012.4-2.4zm8.4 15.6H22.4v3.6h19.2zm0-9.6H22.4v7.2h19.2zm-6 3.6V35h-7.2v-2.4zm-2.4-7.2h-2.4v1.2h2.4z"
+          fill="currentColor"
+        />
+        <path data-name="Rectangle 2281" fill="none" d="M0 0h64v64H0z" />
+      </g>
+    </svg>
+  )
+}
+
+export function ToggleList64Icon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      width="1em"
+      height="1em"
+      viewBox="0 0 64 64"
+      {...props}
+    >
+      <g data-name="Group 1961">
+        <path
+          d="M27.2 36.8V44H20v-7.2zM44 39.2v2.4H29.6v-2.4zm-19.2 0h-2.4v2.4h2.4zm2.4-10.8v7.2H20v-7.2zM44 30.8v2.4H29.6v-2.4zm-19.2 0h-2.4v2.4h2.4zM27.2 20v7.2H20V20zM44 22.4v2.4H29.6v-2.4zm-19.2 0h-2.4v2.4h2.4z"
+          fill="currentColor"
+        />
+        <path data-name="Rectangle 2281" fill="none" d="M0 0h64v64H0z" />
+      </g>
+    </svg>
+  )
+}
+
+export function Truck64Icon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      width="1em"
+      height="1em"
+      viewBox="0 0 64 64"
+      {...props}
+    >
+      <g data-name="Group 1955">
+        <path
+          d="M36.933 22v1.411h3.927l3.14 3.9v4.566h-.012v5.644H41.1a3.528 3.528 0 11-6.915 0H28.4a3.528 3.528 0 11-6.915 0H20V22zM24.939 37.522a.706.706 0 10.706.706.706.706 0 00-.706-.706zm12.7 0a.706.706 0 10.706.706.706.706 0 00-.706-.706zm-3.529-12.7H22.822V34.7h11.289v-2.822zm7.057 7.055h-4.234V34.7h4.233zm-1.659-5.644h-2.575v2.822h4.24v-.779z"
+          fill="currentColor"
+        />
+        <path data-name="Rectangle 2281" fill="none" d="M0 0h64v64H0z" />
+      </g>
+    </svg>
+  )
+}
+
+export function Invoice64Icon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      width="1em"
+      height="1em"
+      viewBox="0 0 64 64"
+      {...props}
+    >
+      <g data-name="Group 1959">
+        <path
+          d="M41.334 24.454v-2.185H44v6.665h-6.666v-2.666h2.034a9.333 9.333 0 101.091 9.675l2.416 1.127a12 12 0 11-1.541-12.616zM33.093 27.2v1.089a4.362 4.362 0 011.051.283 4.552 4.552 0 01.89.5l-1.008 1.567a4.614 4.614 0 00-1.007-.523 3.147 3.147 0 00-1.078-.181 1.019 1.019 0 00-.618.128.417.417 0 00-.149.331.305.305 0 00.059.186.525.525 0 00.2.15 2.336 2.336 0 00.373.139q.234.07.6.154a9.52 9.52 0 011.218.374 3.083 3.083 0 01.847.48 1.715 1.715 0 01.493.662 2.324 2.324 0 01.162.906 2.511 2.511 0 01-.145.885 1.883 1.883 0 01-.413.661 2.165 2.165 0 01-.638.453 3.347 3.347 0 01-.83.262v1.1h-2.012v-1.084a5.888 5.888 0 01-1.2-.33 5.983 5.983 0 01-1-.5l1-1.568a3.809 3.809 0 00.474.272 5.721 5.721 0 00.566.239 4.322 4.322 0 00.592.171 2.6 2.6 0 00.554.064 1.869 1.869 0 00.763-.107.385.385 0 00.208-.374.328.328 0 00-.06-.192.568.568 0 00-.2-.165 2.237 2.237 0 00-.389-.16 7.272 7.272 0 00-.62-.165 11.039 11.039 0 01-1.173-.342 2.809 2.809 0 01-.831-.454 1.714 1.714 0 01-.5-.656 2.406 2.406 0 01-.165-.949 2.039 2.039 0 01.523-1.434 2.683 2.683 0 011.458-.772v-1.1z"
+          fill="currentColor"
+        />
+        <path data-name="Rectangle 2281" fill="none" d="M0 0h64v64H0z" />
+      </g>
+    </svg>
+  )
+}
+
+export function DocumentFile64Icon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      width="1em"
+      height="1em"
+      viewBox="0 0 64 64"
+      {...props}
+    >
+      <g data-name="Group 1962">
+        <path
+          d="M33.6 20l7.2 7.2V44H24V20zm-2.4 2.4h-4.8v19.2h12v-12h-7.2zm6.292 4.8L33.6 23.476V27.2z"
+          fill="currentColor"
+        />
+        <path data-name="Rectangle 2281" fill="none" d="M0 0h64v64H0z" />
+      </g>
+    </svg>
+  )
+}
+
+export function ToggleMail64Icon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      width="1em"
+      height="1em"
+      viewBox="0 0 64 64"
+      {...props}
+    >
+      <g data-name="Group 1954">
+        <path
+          d="M44 22v19.2H20V22zm-21.6 3.94V38.8h19.2V25.941l-9.6 8.6zm17.322-1.54H24.279L32 31.322z"
+          fill="currentColor"
+        />
+        <path data-name="Rectangle 2281" fill="none" d="M0 0h64v64H0z" />
+      </g>
+    </svg>
+  )
+}
+
+export function ChartPie64Icon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      width="1em"
+      height="1em"
+      viewBox="0 0 64 64"
+      {...props}
+    >
+      <g data-name="Group 1953">
+        <path
+          d="M32 20v12l7.207 9.6A12 12 0 1131.664 20zm-2.4 2.7l-.2.053a9.6 9.6 0 106.014 18.22l.246-.1L29.6 32.8zM44 32q0 5.458-3.338 8.194l-.262.206-7.2-8.4zM33.2 20q10.156 0 10.78 10.411l.02.389H33.2zm2.4 2.591V28.4h5.72l-.018-.093c-.664-3.207-2.376-5.007-5.339-5.645z"
+          fill="currentColor"
+        />
+        <path data-name="Rectangle 2281" fill="none" d="M0 0h64v64H0z" />
+      </g>
+    </svg>
+  )
+}
 
 
 
