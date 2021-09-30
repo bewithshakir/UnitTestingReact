@@ -8,7 +8,7 @@ import logoOne from '../../../assets/images/Shell Taup logo.svg';
 import logoTwo from '../../../assets/images/Shell Taup logo2.svg';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import { NotificationIcon } from '../../../assets/icons';
+import { BriefCase64Icon, Invoice64Icon, ToggleList64Icon, Truck64Icon, DocumentFile64Icon, ToggleMail64Icon, ChartPie64Icon } from '../../../assets/icons';
 
 type SideBarMenuOption = {
   index: number;
@@ -23,25 +23,40 @@ interface sideBarMenuProps {
 
 const SideBarMenuoptions = [{
   index: 0,
-  icon: <NotificationIcon />,
+  icon: <BriefCase64Icon />,
   text: 'Home',
   route: 'home'
 }, {
   index: 1,
-  icon: <NotificationIcon />,
+  icon: <Invoice64Icon />,
   text: 'Dashboard',
   route: 'dashboard'
 }, {
   index: 2,
-  icon: <NotificationIcon />,
+  icon: <ToggleList64Icon />,
   text: 'Dashboard',
   route: 'home'
 }, {
   index: 3,
-  icon: <NotificationIcon />,
+  icon: <Truck64Icon />,
   text: 'Dashboard',
   route: 'home'
-}];
+}, {
+  index: 4,
+  icon: <ToggleMail64Icon />,
+  text: 'Dashboard',
+  route: 'home'
+}, {
+  index: 5,
+  icon: <ChartPie64Icon />,
+  text: 'Dashboard',
+  route: 'home'
+}, {
+  index: 6,
+  icon: <DocumentFile64Icon />,
+  text: 'Dashboard',
+  route: 'home'
+},];
 
 export default function SideBarDrawer(props: sideBarMenuProps) {
   const { themeType } = useTheme();

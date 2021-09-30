@@ -31,14 +31,17 @@ div {
                 padding: 0;
             }
         }
-        .css-12i7wg6-MuiPaper-root-MuiDrawer-paper {
+        &.MuiPaper-root,.MuiDrawer-paper {
             background:  var(--Primary);
         }
         .sidebarmenu_tab {
-            font-size: 30px;
+            font-size: 45px;
             color: var(--White);
             height: 64px;
             width: 64px;
+        }
+        .MuiTabs-indicator{
+            display:none;
         }
     }
 }

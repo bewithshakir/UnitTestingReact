@@ -1,0 +1,53 @@
+div{
+.date-picker-container{
+    display: flex;
+    .date-picker-label{
+        color: var(--universalDarkgray);
+        font-size: 14px;
+        font-family: arial;
+        display: block;
+        font-weight: 700;
+        transform: translate(14px, -6px) scale(0.75);
+        // margin-bottom: 30px;
+        // margin-left: -14px;
+    }
+    .SingleDatePicker{
+        .SingleDatePickerInput{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            .DateInput{
+                // width: 77%;
+                .DateInput_input{
+                    font-size: 14px;
+                }
+            }
+            .CalendarMonth_caption{
+                font-size: 14px;
+            }
+            .CalendarMonth_table{
+                margin-top:10px;
+                .CalendarDay{
+                    font-size: 14px;
+                }
+            }
+        }
+        .CalendarDay__selected{
+            background-color: var(--Secondary);
+            color: var(--Black);
+            border: 1px double var(--Secondary);
+        }
+        .DayPickerNavigation_button{
+            border-radius: 3px;
+            border: 1px solid var(----Download-Btn);
+            .DayPickerNavigation_svg__horizontal{
+                fill:var(--Download-Btn);
+            }
+        }
+        .DayPicker_weekHeader_li{
+            color: var(--Tertiary);
+        }
+    }
+}
+}
+
