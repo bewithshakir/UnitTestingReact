@@ -1,7 +1,8 @@
 import React from 'react';
 import Snackbar from '@material-ui/core/Snackbar';
-import MuiAlert, { AlertProps } from '@material-ui/lab/Alert';
+// import MuiAlert, { AlertProps } from '@material-ui/lab/Alert';
 import { ErrorExclamationIcon, SuccessTickIcon } from '../../../assets/icons';
+import MuiAlert, { AlertProps } from '@mui/material/Alert';
 import './ToastMessage.style.scss';
 
 interface ToastMessageProps {
