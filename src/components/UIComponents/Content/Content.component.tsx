@@ -9,7 +9,7 @@ import ProfileMenu from '../Menu/ProfileMenu.component';
 import DataGridActionsMenu from '../Menu/DataGridActionsMenu.component';
 import { ExportIcon, PlusIcon, DeleteIcon, ImportIcon, SettingsIcon, LogoutIcon, CustomerProfileIcon2 } from '../../../assets/icons';
 import GridComponent from '../DataGird/grid.component';
-import SuccessMessage from'../SuccessMessage/SuccessMessage.component';
+import ToastMessage from'../ToastMessage/ToastMessage.component';
 
 export const Content: React.FC = () => {
   const { setCurrentTheme } = useTheme();
@@ -22,12 +22,10 @@ export const Content: React.FC = () => {
   const MessageTypes = ["Success", "Error", "Info"];
 
   const handleButtonClick = () => {
-    console.log("handleButtonClick");
     setOpen(true);
   }
 
   const handleMessageBoxClose = () => {
-    console.log("handleMessageBoxClose called");
     setOpen(false);
   }
 
@@ -163,7 +161,7 @@ export const Content: React.FC = () => {
         <Button variant="outlined" onClick={handleButtonClick}>
           Open success snackbar
         </Button>
-        {isOpen && <SuccessMessage isOpen={isOpen} messageType={MessageTypes[0]} onClose={handleMessageBoxClose}/> }
+        {isOpen && <ToastMessage isOpen={isOpen} messageType={MessageTypes[1]} onClose={handleMessageBoxClose} message='MyMessage'/> }
       </div>
     </div>
 

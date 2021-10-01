@@ -43,4 +43,6 @@ export interface Theme {
   '--Lightgray_3': Color;
   '--Lightgray_4': Color;
   '--Lightgray_5': Color;
+  '--ToastMessageRed': Color;
+  '--ToastMessageGreen' : Color;
 }
