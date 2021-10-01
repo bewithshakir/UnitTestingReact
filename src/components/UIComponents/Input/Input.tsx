@@ -68,5 +68,6 @@ Input.defaultProps = {
   disabled: false,
   required: false,
   id: "input",
+  autoComplete: "new-password",  // do not change this value to ( "off" ) or remove this.otherwise, it will not work. check with MDN js offical website
   error: false,
 }
