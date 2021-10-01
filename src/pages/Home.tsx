@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import moment from "moment";
-import { Content } from '../components/UIComponents/Content/Content.component';
+import { Content } from './CustomerManagement';
 import { Footer } from '../components/UIComponents/Footer/Footer.component';
 import bg from "../assets/images/bg_shapes.svg"
 import { useQuery } from 'react-query';
@@ -19,8 +19,6 @@ import { useCustomers } from '../hooks/customer';
 
 
 const Home = (props: { version: any }) => {
-    // const { data } = useQuery('repoData', fetchQueryTodos, { retry: false })
-    // console.log(data)
     const [form, setForm] = useState({ userName: '', email: '', item: [{ label: 'Nike', value: 'Nike' }], searchTerm:'', startDate: moment(), endDate: moment() });
     const debouncedValue = useDebounce<string>(form.searchTerm, 1000);
     const items = [

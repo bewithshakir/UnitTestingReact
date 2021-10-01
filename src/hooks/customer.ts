@@ -1,17 +1,21 @@
 import { useQuery } from "react-query";
 import axios, { AxiosRequestConfig } from "axios";
 import { AnyARecord } from "node:dns";
+import { useStore } from "../store";
 
-const getCustomers = async () => {
+
+const getCustomers = async (searchTerm: string,sortBy:string) => {
+    const customersEntitySet = "/api/customer-service/customers"
+    const url = searchTerm ? `?limit=15&offset=0&countryCode=us&search=${searchTerm}` : `?limit=15&offset=0&countryCode=us`
     const options: AxiosRequestConfig = {
         method: 'get',
-        url: 'http://20.81.30.168:4001/api/customer-service/customers?limit=15&offset=0&countryCode=us'
+        url: customersEntitySet + url
     }
     const { data } = await axios(options);
-    console.log(data,"gg")
+    console.log(data, "gg")
     return data;
 };
-
-export const useCustomers = (searchTerm : string)=> {
-    return useQuery("getCustomers" ,getCustomers);
+export const useCustomers = (query: string,sortBy:string) => {
+    //    const query =  useStore(state => state.query)
+    return useQuery(["getCustomers", query], () => getCustomers(query,sortBy));
 }

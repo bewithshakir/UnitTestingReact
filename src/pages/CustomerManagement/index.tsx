@@ -1,36 +1,42 @@
 import React from 'react';
-import { Button } from '../Button/Button.component';
-import { useTheme } from '../../../contexts/Theme/Theme.context';
-import './Content.style.scss';
+import { Button } from '../../components/UIComponents/Button/Button.component';
+import { useTheme } from '../../contexts/Theme/Theme.context';
+import './style.scss';
 import { useTranslation } from 'react-i18next';
-import SortbyMenu from '../Menu/SortbyMenu.component';
-import ActionsMenu from '../Menu/ActionsMenu.component';
-import ProfileMenu from '../Menu/ProfileMenu.component';
-import DataGridActionsMenu from '../Menu/DataGridActionsMenu.component';
-import { ExportIcon, PlusIcon, DeleteIcon, ImportIcon, SettingsIcon, LogoutIcon, CustomerProfileIcon2, FilterIcon } from '../../../assets/icons';
-import GridComponent from '../DataGird/grid.component';
-import { useCustomers } from '../../../hooks/customer';
+import SortbyMenu from '../../components/UIComponents/Menu/SortbyMenu.component';
+import ActionsMenu from '../../components/UIComponents/Menu/ActionsMenu.component';
+import ProfileMenu from '../../components/UIComponents/Menu/ProfileMenu.component';
+import DataGridActionsMenu from '../../components/UIComponents/Menu/DataGridActionsMenu.component';
+import { ExportIcon, PlusIcon, DeleteIcon, ImportIcon, SettingsIcon, LogoutIcon, CustomerProfileIcon2, FilterIcon } from '../../assets/icons';
+import GridComponent from '../../components/UIComponents/DataGird/grid.component';
+import { useCustomers } from '../../hooks/customer';
 import { AppBar, Toolbar } from '@mui/material';
-import SearchInput from '../SearchInput/SearchInput';
+import SearchInput from '../../components/UIComponents/SearchInput/SearchInput';
 import { Add } from '@mui/icons-material';
 import { useHistory } from 'react-router-dom';
+import { sortByOptions } from './config';
 
 interface ContentProps {
   rows?: []
 }
 export const Content: React.FC<ContentProps> = (props) => {
-  const { setCurrentTheme } = useTheme();
   const history = useHistory()
   const [ searchTerm,setSearchTerm] = React.useState("")
+  const [sortBy,setSortBy] = React.useState('asc')
   const { t, i18n } = useTranslation();
-  const changeLanguage = (language: string) => () => {
-    i18n.changeLanguage(language);
-  };
-  const { data } = useCustomers(searchTerm)
+  const {data, isLoading} =  useCustomers(searchTerm,sortBy) 
   const navigateToAddCustomer = () => {
     history.push("/addCustomer")
   }
-
+  const onSortBySlected = (value:string)=>{
+    let sortVariable
+    if(value === "A-Z"){
+      sortVariable = "asc"
+    }else {
+      sortVariable = "desc"
+    }
+    setSortBy(sortVariable)
+  }
   const onInputChange = (event : React.ChangeEvent<HTMLInputElement>)=>{
     event.preventDefault()
     setSearchTerm(event.currentTarget.value)
@@ -52,14 +58,8 @@ export const Content: React.FC<ContentProps> = (props) => {
               Filter
             </Button>
             <SortbyMenu
-              options={[
-                t("menus.sortby.payment completed"),
-                t("menus.sortby.payment in progress"),
-                t("menus.sortby.recently added lots"),
-              ]}
-              onSelect={(value) => {
-                console.log("🚀 ~ file: Content.component.tsx ~ line 60 ~ value", value)
-              }}
+              options={sortByOptions.map((sortByItem)=>t(sortByItem))}
+              onSelect={(value) => onSortBySlected(value)}
             />
             <SearchInput name='searchTerm'
               value={searchTerm}
@@ -192,7 +192,7 @@ export const Content: React.FC<ContentProps> = (props) => {
         <p className={'content__paragraph'}>
           {t("para1")} <b>{t("para1")}</b> ,<b>{t("para2")}</b> <b>{t("para3")}</b> <b>{t("para4")}</b>
         </p> */}
-        <GridComponent rows={data?.data?.customers} />
+        <GridComponent rows={data?.data?.customers} isLoading={isLoading}/>
         {/* <div className={'content__buttons'}>
           <Button
             types={'primary'}

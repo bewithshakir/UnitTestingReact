@@ -7,7 +7,8 @@ import EnhancedGridBody from './dataGrid.component';
 interface GridComponentProps {
     width?: string,
     height?: string,
-    rows?: []
+    rows?: [], 
+    isLoading?: boolean
 }
 
 let x: GridComponentProps = {
@@ -22,7 +23,7 @@ const headCells = [{ id: "customername", label: "CUSTOMER NAME", type: 'text' },
 { id: "city", label: "CITY", type: 'text' },
 { id: "zipcode", label: "ZIP", type: 'text' },
 { id: "state", label: "STATE", type: 'text' },
-// { id: "lots", label: "LOTS", type: 'button' },
+{ id: "lots", label: "LOTS", type: 'button' },
 // { id: "settlementtype", label: "SETTLEMENT TYPE", type: 'text' },
 // { id: "cardAdded", label: "CARD ADDED", type: 'text' },
 { id: "paymentType", label: "PAYMENT TYPE", type: 'text' },
@@ -30,7 +31,7 @@ const headCells = [{ id: "customername", label: "CUSTOMER NAME", type: 'text' },
 { id: "cardAdded", label: "CARD ADDED", type: 'text' },
 { id: "country", label: "COUNTRY", type: 'text' },
 { id: "email", label: "EMAIL", type: 'text' },
-{ id: "id", label: "ID", type: 'text' },
+// { id: "id", label: "ID", type: 'text' },
 { id: "", label: "", type: 'icon' }
 ];
 
@@ -114,6 +115,7 @@ const GridComponent: React.FC<GridComponentProps> = (props) => {
                                 order={order}
                                 orderBy={orderBy}
                                 headCells={headCells}
+                                {...props}
                             />
                         </Table>
                     </TableContainer>
