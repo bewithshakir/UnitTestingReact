@@ -694,5 +694,34 @@ export function ChartPie64Icon(props: React.SVGProps<SVGSVGElement>) {
   )
 }
 
+export function ErrorExclamationIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 20 20"
+      {...props}
+    >
+      <path d="M22,2V22H2V2ZM12,16a1,1,0,1,0,1,1A1,1,0,0,0,12,16ZM13,6H11v8h2Z" transform="translate(-2 -2)"
+        fill="currentColor"
+      />
+    </svg>
+  )
+}
+
+export function SuccessTickIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg 
+      width="20" 
+      height="20" 
+      viewBox="0 0 20 20"
+      {...props}
+      >
+      <path d="M12,2A10,10,0,1,1,2,12,10,10,0,0,1,12,2Zm3.559,5.589L9.518,13.63,7.7,11.831,6.293,13.252l3.231,3.2L16.973,9Z" transform="translate(-2 -2)"
+        fill="currentColor" />
+    </svg>
+  )
+}
+
 
 

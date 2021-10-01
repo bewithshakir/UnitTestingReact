@@ -9,14 +9,25 @@ import ProfileMenu from '../Menu/ProfileMenu.component';
 import DataGridActionsMenu from '../Menu/DataGridActionsMenu.component';
 import { ExportIcon, PlusIcon, DeleteIcon, ImportIcon, SettingsIcon, LogoutIcon, CustomerProfileIcon2 } from '../../../assets/icons';
 import GridComponent from '../DataGird/grid.component';
-
+import ToastMessage from'../ToastMessage/ToastMessage.component';
 
 export const Content: React.FC = () => {
   const { setCurrentTheme } = useTheme();
   const { t, i18n } = useTranslation();
+  const [isOpen, setOpen] = React.useState(false);
   const changeLanguage = (language: string) => () => {
     i18n.changeLanguage(language);
   };
+
+  const MessageTypes = ["Success", "Error", "Info"];
+
+  const handleButtonClick = () => {
+    setOpen(true);
+  }
+
+  const handleMessageBoxClose = () => {
+    setOpen(false);
+  }
 
   return (
     <div>
@@ -144,6 +155,13 @@ export const Content: React.FC = () => {
         >
           {t("french")}
         </Button>
+      </div>
+
+      <div className={''}>
+        <Button variant="outlined" onClick={handleButtonClick}>
+          Open success snackbar
+        </Button>
+        {isOpen && <ToastMessage isOpen={isOpen} messageType={MessageTypes[1]} onClose={handleMessageBoxClose} message='MyMessage'/> }
       </div>
     </div>
 
