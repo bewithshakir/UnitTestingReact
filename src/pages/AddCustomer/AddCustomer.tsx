@@ -131,6 +131,9 @@ const AddCustomer: React.FC<{}> = (props: any) => {
 
     const createNewCustomer = async (data: AddCustomerForm, resetForm: Function) => {
         try {
+            console.log('displayFormStatus', displayFormStatus);
+            console.log('formStatus', formStatus);
+
             // API call integration will be here. Handle success / error response accordingly.
             if (data) {
                 setFormStatus(formStatusProps.success)

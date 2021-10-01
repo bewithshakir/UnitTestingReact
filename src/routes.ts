@@ -1,4 +1,3 @@
-import { homedir } from 'os';
 import { lazy } from 'react';
 
 export const routes = [

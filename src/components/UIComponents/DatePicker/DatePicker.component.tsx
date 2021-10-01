@@ -1,8 +1,8 @@
-import React, { Fragment, useState } from 'react'
+import { FormControl, FormHelperText, InputLabel } from '@mui/material';
 import moment from "moment";
+import React, { Fragment } from 'react';
 import { SingleDatePicker, toMomentObject } from 'react-dates';
 import 'react-dates/initialize';
-import { InputLabel, FormControl, FormHelperText, Grid } from '@mui/material';
 import 'react-dates/lib/css/_datepicker.css';
 import './DatePicker.style.scss';
 
