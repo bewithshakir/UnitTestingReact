@@ -14,11 +14,13 @@ import { DatePicker } from '../components/UIComponents/DatePicker/DatePicker.com
 import useDebounce from '../utils/useDebounce';
 import HorizontalBar from '../components/UIComponents/NavigationBar/HorizontalBar';
 import { Box, CssBaseline } from '@mui/material';
+import { useCustomers } from '../hooks/customer';
+
 
 
 const Home = (props: { version: any }) => {
-    const { data } = useQuery('repoData', fetchQueryTodos, { retry: false })
-    console.log(data)
+    // const { data } = useQuery('repoData', fetchQueryTodos, { retry: false })
+    // console.log(data)
     const [form, setForm] = useState({ userName: '', email: '', item: [{ label: 'Nike', value: 'Nike' }], searchTerm:'', startDate: moment(), endDate: moment() });
     const debouncedValue = useDebounce<string>(form.searchTerm, 1000);
     const items = [
@@ -32,6 +34,8 @@ const Home = (props: { version: any }) => {
     function onClickBack() {
         history.goBack()
     }
+  
+
     console.log(props, "home props")
     const handleChange = (e: any) => setForm(x => ({ ...x, [e.target.name]: e.target.value }));
     useEffect(() => { console.log('Debounced Value:', debouncedValue) }, [debouncedValue]);
@@ -46,8 +50,8 @@ const Home = (props: { version: any }) => {
             />
             <div className="App">
                 <div className={'app__main'}>
-                    <Content />
-                    <NavLink to="/query">{t("query")}</NavLink>
+                    <Content/>
+                    {/* <NavLink to="/query">{t("query")}</NavLink>
                     <Input name='userName'
                         label='User Name'
                         type='text'
@@ -78,7 +82,7 @@ const Home = (props: { version: any }) => {
                         onChange={handleChange}
                     />
                     {/* temporary styles */}
-                    <Box style={{'marginLeft':'20px'}}> 
+                    {/* <Box style={{'marginLeft':'20px'}}> 
                         <DatePicker
                             label="FROM DATE" 
                             id="cust-filter-end-date"
@@ -88,14 +92,14 @@ const Home = (props: { version: any }) => {
                             onChange={onDateChange} 
                             value={form.endDate} 
                             required
-                        />
-                    </Box>
-                    <Footer />
+                        /> */}
+                    {/* </Box>
+                    <Footer /> */} 
                     
                 </div>
-                <div className={'app__bg'}>
+                {/* <div className={'app__bg'}>
                     <img src={bg} alt={'bg'} />
-                </div>
+                </div> */}
 
             </div>
         </Box>

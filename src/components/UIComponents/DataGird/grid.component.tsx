@@ -6,7 +6,8 @@ import EnhancedGridBody from './dataGrid.component';
 
 interface GridComponentProps {
     width?: string,
-    height?: string
+    height?: string,
+    rows?: []
 }
 
 let x: GridComponentProps = {
@@ -19,10 +20,17 @@ const headCells = [{ id: "customername", label: "CUSTOMER NAME", type: 'text' },
 { id: "contactname", label: "CANTACT NAME", type: 'text' },
 { id: "address", label: "ADDRESS", type: 'text' },
 { id: "city", label: "CITY", type: 'text' },
-{ id: "zip", label: "ZIP", type: 'text' },
+{ id: "zipcode", label: "ZIP", type: 'text' },
 { id: "state", label: "STATE", type: 'text' },
-{ id: "lots", label: "LOTS", type: 'button' },
-{ id: "settlementtype", label: "SETTLEMENT TYPE", type: 'text' },
+// { id: "lots", label: "LOTS", type: 'button' },
+// { id: "settlementtype", label: "SETTLEMENT TYPE", type: 'text' },
+// { id: "cardAdded", label: "CARD ADDED", type: 'text' },
+{ id: "paymentType", label: "PAYMENT TYPE", type: 'text' },
+{ id: "phone", label: "PHONE", type: 'text' },
+{ id: "cardAdded", label: "CARD ADDED", type: 'text' },
+{ id: "country", label: "COUNTRY", type: 'text' },
+{ id: "email", label: "EMAIL", type: 'text' },
+{ id: "id", label: "ID", type: 'text' },
 { id: "", label: "", type: 'icon' }
 ];
 
@@ -84,7 +92,7 @@ const GridComponent: React.FC<GridComponentProps> = (props) => {
             console.log("At The Bottom"); //Add in what you want here
         }
     };
-
+   console.log(props.rows,"zx")
 
     return (
         <div>
@@ -102,7 +110,7 @@ const GridComponent: React.FC<GridComponentProps> = (props) => {
                                 onRequestSort={handleRequestSort}
                             />
                             <EnhancedGridBody
-                                rows={rows}
+                                rows={props.rows}
                                 order={order}
                                 orderBy={orderBy}
                                 headCells={headCells}

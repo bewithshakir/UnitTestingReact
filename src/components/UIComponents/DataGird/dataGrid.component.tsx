@@ -57,7 +57,7 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
     const { t, i18n } = useTranslation();
 
     const getKeys = () => {
-        return Object.keys(props.rows[0]);
+        return Object.keys(props?.rows[0]);
     }
 
     const handleCollapaseClick = (key: any) => {
@@ -75,7 +75,7 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
             return stableSort(props.rows, getComparator(props.order, props.orderBy))
                 .map((row: any, indexKey: any) => {
                     return <React.Fragment>
-                         <TableRow key={indexKey}>
+                        <TableRow key={indexKey}>
                             {keys.map((key: any, index: any) => {
                                 return <TableCell component="th" scope="row" key={row[key]}>
                                     {props.headCells[index].type === 'text' ? index === 0 ? <b>{row[key]}</b> : row[key] :
@@ -130,9 +130,13 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
         }
     }
 
-    return (
-        getRowsData()
-    )
+
+    if (props?.rows) {
+        return getRowsData()
+    } else {
+        return null
+    }
+
 
 }
 

@@ -1,28 +1,17 @@
-import { AxiosRequestConfig } from "axios"
-import { useQuery } from "react-query"
-import axios from "../infrastructure/ApiHelper"
+import { useQuery } from "react-query";
+import axios, { AxiosRequestConfig } from "axios";
+import { AnyARecord } from "node:dns";
 
-export interface CustomerMangementProps{
-    data: []
-}
-class CustomerManagementModel<CustomerMangementProps>{
-    data: []
-    constructor(data: []){
-        this.data = data
-        this.intialize()
+const getCustomers = async () => {
+    const options: AxiosRequestConfig = {
+        method: 'get',
+        url: 'http://20.81.30.168:4001/api/customer-service/customers?limit=15&offset=0&countryCode=us'
     }
-    intialize(){
-          useQuery("getCustomersList",this.getCustomer)
-      
-    }
-    async getCustomer(){
-        const options: AxiosRequestConfig = {
-            method: 'get',
-            url: 'http://20.81.30.168:4001/api/customer-service/customers?limit=15&offset=0&countryCode=us'
-          }
-        const result =  await axios(options)
-        console.log(result)
-    }
-}
+    const { data } = await axios(options);
+    console.log(data,"gg")
+    return data;
+};
 
-export {CustomerManagementModel}
+export const useCustomers = (searchTerm : string)=> {
+    return useQuery("getCustomers" ,getCustomers);
+}
