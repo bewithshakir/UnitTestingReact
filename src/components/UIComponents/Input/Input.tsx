@@ -1,4 +1,4 @@
-import { Fragment, useState } from 'react'
+import { Fragment } from 'react'
 import { InputLabel, InputBase, FormControl, FormHelperText } from '@material-ui/core';
 import './Input.scss';
 
@@ -19,13 +19,14 @@ interface props {
   value?: string;
   helperText?: string
   onChange?: (...args: any[]) => void;
+  onBlur?: (...args: any[]) => void;
 }
 
-export default function Input(props: props) {
+export default function Input (props: props) {
 
-  const [flag, setFlag] = useState(false);
+  // const [flag, setFlag] = useState(false);
 
-  const onBlur = () => setFlag(true);
+  // const onBlur = () => setFlag(true);
 
   return (
     <Fragment>
@@ -41,7 +42,7 @@ export default function Input(props: props) {
           value={props.value}
           disabled={props.disabled}
           placeholder={props.placeholder}
-          required={flag && !props.value}
+          // required={flag && !props.value}
           aria-required={props.required}
           autoComplete={props.autoComplete}
           classes={props.classes}
@@ -49,7 +50,7 @@ export default function Input(props: props) {
           type={props.type}
           error={props.error}
           onChange={props.onChange}
-          onBlur={onBlur}
+          onBlur={props.onBlur}
         />
         {props.helperText && (
           <FormHelperText
@@ -67,5 +68,6 @@ Input.defaultProps = {
   disabled: false,
   required: false,
   id: "input",
+  autoComplete: "new-password",  // do not change this value to ( "off" ) or remove this.otherwise, it will not work. check with MDN js offical website
   error: false,
 }
