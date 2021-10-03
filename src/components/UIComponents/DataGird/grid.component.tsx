@@ -1,8 +1,8 @@
+import { Box, Paper, Table, TableContainer } from '@mui/material';
 import * as React from "react";
-import { Paper, TableContainer, Table, Box } from '@mui/material';
+import EnhancedGridBody from './dataGrid.component';
 import './grid.style.scss';
 import EnhancedGridHead from './headerGrid.component';
-import EnhancedGridBody from './dataGrid.component';
 
 interface GridComponentProps {
     width?: string,
@@ -48,22 +48,22 @@ const rows = [{ "customername": "Accurate Transportation", "contactname": "Peter
 { "customername": "Accurate Transportation", "contactname": "Peter Parker", "address": "9555 Post Oak Rd", "city": "Houston", "state": "TX", "zip": 77024, "lots": 20, "settlementtype": "Voyager" }];
 
 
-const headCells1 = [{ id: "lotname", label: "LOT NAME", type: 'text' },
-{ id: "streetaddress", label: "STREET ADDRESS", type: 'text' },
-{ id: "city", label: "CITY", type: 'text' },
-{ id: "state", label: "STATE", type: 'text' },
-{ id: "zip", label: "ZIP", type: 'text' },
-{ id: "walletstatus", label: "WALLET STATUS", type: 'text' },
-{ id: "vehicles", label: "VEHICLES", type: 'button' },
-{ id: "fuel", label: "FUEL", type: 'text' },
-{ id: "", label: "", type: 'icon' }
-];
+// const headCells1 = [{ id: "lotname", label: "LOT NAME", type: 'text' },
+// { id: "streetaddress", label: "STREET ADDRESS", type: 'text' },
+// { id: "city", label: "CITY", type: 'text' },
+// { id: "state", label: "STATE", type: 'text' },
+// { id: "zip", label: "ZIP", type: 'text' },
+// { id: "walletstatus", label: "WALLET STATUS", type: 'text' },
+// { id: "vehicles", label: "VEHICLES", type: 'button' },
+// { id: "fuel", label: "FUEL", type: 'text' },
+// { id: "", label: "", type: 'icon' }
+// ];
 
-const rows1 = [{ "lotname": "Lot Name", "streetaddress": "898987-9898", "city": "Houston", "state": "TX-Texas", "zip": "777878", "walletstatus": "Flag", "vehicles": "20", "fuel": "Diesel", "icon": "icon" },
-{ "lotname": "Lot Name", "streetaddress": "898987-9898", "city": "Houston", "state": "TX-Texas", "zip": "777878", "walletstatus": "Flag", "vehicles": "20", "fuel": "Diesel", "icon": "icon" },
-{ "lotname": "Lot Name", "streetaddress": "898987-9898", "city": "Houston", "state": "TX-Texas", "zip": "777878", "walletstatus": "Flag", "vehicles": "18", "fuel": "Diesel", "icon": "icon" },
-{ "lotname": "Lot Name", "streetaddress": "898987-9898", "city": "Houston", "state": "TX-Texas", "zip": "777878", "walletstatus": "Flag", "vehicles": "20", "fuel": "Diesel", "icon": "icon" },
-{ "lotname": "Lot Name", "streetaddress": "898987-9898", "city": "Houston", "state": "TX-Texas", "zip": "777878", "walletstatus": "Flag", "vehicles": "21", "fuel": "Diesel", "icon": "icon" }];
+// const rows1 = [{ "lotname": "Lot Name", "streetaddress": "898987-9898", "city": "Houston", "state": "TX-Texas", "zip": "777878", "walletstatus": "Flag", "vehicles": "20", "fuel": "Diesel", "icon": "icon" },
+// { "lotname": "Lot Name", "streetaddress": "898987-9898", "city": "Houston", "state": "TX-Texas", "zip": "777878", "walletstatus": "Flag", "vehicles": "20", "fuel": "Diesel", "icon": "icon" },
+// { "lotname": "Lot Name", "streetaddress": "898987-9898", "city": "Houston", "state": "TX-Texas", "zip": "777878", "walletstatus": "Flag", "vehicles": "18", "fuel": "Diesel", "icon": "icon" },
+// { "lotname": "Lot Name", "streetaddress": "898987-9898", "city": "Houston", "state": "TX-Texas", "zip": "777878", "walletstatus": "Flag", "vehicles": "20", "fuel": "Diesel", "icon": "icon" },
+// { "lotname": "Lot Name", "streetaddress": "898987-9898", "city": "Houston", "state": "TX-Texas", "zip": "777878", "walletstatus": "Flag", "vehicles": "21", "fuel": "Diesel", "icon": "icon" }];
 
 
 
