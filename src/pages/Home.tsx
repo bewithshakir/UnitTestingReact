@@ -14,6 +14,8 @@ import { DatePicker } from '../components/UIComponents/DatePicker/DatePicker.com
 import useDebounce from '../utils/useDebounce';
 import HorizontalBar from '../components/UIComponents/NavigationBar/HorizontalBar';
 import { Box, CssBaseline } from '@mui/material';
+import GoogleAutoCompleteAddress from '../components/UIComponents/GoogleAddressComponent/GoogleAutoCompleteAddress';
+import  Autocomplete  from '../components/UIComponents/AutoComplete/AutoComplete';
 
 
 const Home = (props: { version: any }) => {
@@ -77,6 +79,11 @@ const Home = (props: { version: any }) => {
                         value={form.searchTerm}
                         onChange={handleChange}
                     />
+                    <Autocomplete label='autocomplete' options={[
+                    {title: 'The Shawshank Redemption', year: 1994 },
+                    {title: 'The Godfather', year: 1972 },
+                    {title: 'The Godfather: Part II', year: 1974 }]} optionTitle='title'/>
+                    <GoogleAutoCompleteAddress/>
                     {/* temporary styles */}
                     <Box style={{'marginLeft':'20px'}}> 
                         <DatePicker

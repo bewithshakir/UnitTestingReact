@@ -1,0 +1,43 @@
+.autocomplete{
+    box-sizing: border-box;
+    .label {
+    color: var(--Darkgray);
+    line-height: 16px;
+    font-family: arial;
+  }
+
+  .listbox{
+    width: 100%;
+    margin: 0;
+    position: absolute ;
+    border: solid var(--Lightgray_4);
+    border-width: 0 1px;
+    background:var(--White);
+    box-shadow: 3px 6px 14px #00000026;
+    z-index: 999;
+    box-sizing: border-box;
+    padding: 0 10px;
+    max-height: 200px;
+    overflow: auto;
+    & li {
+    line-height:1.5rem;
+    font-size: 14px;  
+    padding: 10px 15px;
+    border-bottom: 1px solid var(--White);
+    cursor: pointer;
+    }
+    & li[data-focus="true"]{
+        background-color:var(--Lightgray_3);
+        color: var(--Black);
+        cursor: pointer;
+    }
+    & li:active{
+         background-color:var(--Lightgray_3);
+        color: var(--Black);
+   } 
+   & li.Mui-focused{
+      background-color:var(--Lightgray_3);
+      color: var(--Black);
+    }
+ }
+} 
