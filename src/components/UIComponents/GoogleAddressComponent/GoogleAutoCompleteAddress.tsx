@@ -12,17 +12,34 @@ interface props {
     //name: string,
 }
 
+type address =
+    { address1: string, address2: string, city: string, state: string, zip: string}
+
 
 
 export default function GoogleAutoCompleteAddress(props: props) {
-    const [address, setAddress] = useState({ address1: '', addressLine2: '', city: '', state: '', zip: '' , placeId:''});
+    const [address, setAddress] = useState({ address1: '', address2: '', city: '', state: '', zip: '' , placeId:''});
     const handleChange = (e: any) => setAddress(x => ({ ...x, [e.target.name]: e.target.value }));
     const debouncedValue = useDebounce(address.placeId, 10);
     const { data } = FetchFormattedAddress(debouncedValue);
 
     useEffect(() => {
         if (data) {
-           setAddress(data.data);
+            // temporary fix for address2
+            const getAddress2 = (x:string) => {
+                let a = x.split(',');
+                return a[a.length -1] || a[a.length-2];
+            }
+            const {address1, city, state, zip} = data.data;
+            const obj ={
+                address1,
+                address2: getAddress2(address1),
+                city,
+                state,
+                zip,
+                placeId: ''
+            }
+           setAddress(obj);
         }
     }, [data])
 
@@ -47,7 +64,7 @@ export default function GoogleAutoCompleteAddress(props: props) {
                         label='ADDRESS LINE 2'
                         type='text'
                         onChange={handleChange}
-                        value={address.addressLine2}
+                        value={address.address2}
                         required={props.required}
                     />
                 </Grid>

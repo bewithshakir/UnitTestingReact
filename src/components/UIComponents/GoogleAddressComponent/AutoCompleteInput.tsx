@@ -42,7 +42,7 @@ export default function AutoCompleteInput(props: props){
     const [value, setValue] = useState<prediction | null>(null);
     const [options, setOptions] = useState([]);
     const [inputValue, setInputValue] = useState('');
-    const debouncedValue = useDebounce<string>(inputValue, 1000);
+    const debouncedValue = useDebounce<string>(inputValue, 700);
     const { data } = FetchGoogleAddress(debouncedValue);
 
     
