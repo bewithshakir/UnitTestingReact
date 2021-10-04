@@ -28,9 +28,11 @@ export const Content: React.FC<ContentProps> = (props) => {
   const [searchTerm, setSearchTerm] = React.useState("");
   const [drawerOpen, setDrawerOpen] = React.useState(false);
   const [order, setOrder] = React.useState("asc");
+  const [sortKey,setSortKey] = React.useState("customerName");
   const { t } = useTranslation();
   const { data, fetchNextPage, isLoading, hasNextPage }: any = useCustomers(
     searchTerm,
+    sortKey,
     order
   );
   const openDrawer = (row:SyntheticEvent)=>{
@@ -45,11 +47,21 @@ export const Content: React.FC<ContentProps> = (props) => {
   };
   const onSortBySlected = (value: string) => {
     let sortVariable;
+    let sortKey;
     if (value === "A-Z") {
-      sortVariable = "asc";
-    } else {
-      sortVariable = "desc";
+      sortKey="customerName"
+      sortVariable = "asc"
+    } else if(value === "Z-A"){
+      sortKey="customerName"
+      sortVariable = "desc"
+    }else if(value = "Newest to Oldest"){
+      sortKey="date"
+      sortVariable = "asc"
+    }else{
+      sortKey="date"
+      sortVariable = "desc"
     }
+    setSortKey(sortKey)
     setOrder(sortVariable);
   };
   const onInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {

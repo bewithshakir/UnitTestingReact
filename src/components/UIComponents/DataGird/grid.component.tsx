@@ -21,12 +21,12 @@ let x: GridComponentProps = {
 
 
 const headCells = [
-// { id: "id", label: "ID", type: 'text' },
+{ id: "id", label: "ID", type: 'text' },
 { id: "customername", label: "CUSTOMER NAME", type: 'text' },
 { id: "contactname", label: "CONTACT NAME", type: 'text' },
 { id: "address", label: "ADDRESS", type: 'text' },
 { id: "city", label: "CITY", type: 'text' },
-{ id: "id", label: "ID", type: 'text' },
+{ id: "state", label: "STATE", type: 'text' },
 { id: "zipcode", label: "ZIP", type: 'text' },
 { id: "lots", label: "LOTS", type: 'button' },
 { id: "phone", label: "PHONE", type: 'text' },
