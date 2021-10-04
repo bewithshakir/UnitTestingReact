@@ -11,6 +11,7 @@ interface GridComponentProps {
     isLoading?: boolean,
     getPages?:any
     ref?: any
+    openDrawer?:any
 }
 
 let x: GridComponentProps = {
