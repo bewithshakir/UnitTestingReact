@@ -184,17 +184,12 @@ export const DemoComponents: React.FC = () => {
                 </Button>
             </div>
 
+
             <div className={''} style={{ 'marginLeft': '20px' }}>
                 <Button variant="outlined" onClick={handleButtonClick}>
                     Open success snackbar
                 </Button>
                 {isOpen && <ToastMessage isOpen={isOpen} messageType={MessageTypes[1]} onClose={handleMessageBoxClose} message='MyMessage' />}
-            </div>
-            <div className={''} style={{ 'marginLeft': '20px' }}>
-                <Button variant="outlined" onClick={handleButtonClick}>
-                    Open error snackbar
-                </Button>
-                {isOpen && <ToastMessage isOpen={isOpen} messageType={MessageTypes[0]} onClose={handleMessageBoxClose} message='MyMessage' />}
             </div>
 
             <Footer />
