@@ -6,7 +6,11 @@ import EnhancedGridHead from './headerGrid.component';
 
 interface GridComponentProps {
     width?: string,
-    height?: string
+    height?: string,
+    rows?: any[], 
+    isLoading?: boolean,
+    getPages?:any
+    ref?: any
 }
 
 let x: GridComponentProps = {
@@ -19,10 +23,17 @@ const headCells = [{ id: "customername", label: "CUSTOMER NAME", type: 'text' },
 { id: "contactname", label: "CANTACT NAME", type: 'text' },
 { id: "address", label: "ADDRESS", type: 'text' },
 { id: "city", label: "CITY", type: 'text' },
-{ id: "zip", label: "ZIP", type: 'text' },
+{ id: "zipcode", label: "ZIP", type: 'text' },
 { id: "state", label: "STATE", type: 'text' },
 { id: "lots", label: "LOTS", type: 'button' },
-{ id: "settlementtype", label: "SETTLEMENT TYPE", type: 'text' },
+// { id: "settlementtype", label: "SETTLEMENT TYPE", type: 'text' },
+// { id: "cardAdded", label: "CARD ADDED", type: 'text' },
+{ id: "paymentType", label: "PAYMENT TYPE", type: 'text' },
+{ id: "phone", label: "PHONE", type: 'text' },
+{ id: "cardAdded", label: "CARD ADDED", type: 'text' },
+{ id: "country", label: "COUNTRY", type: 'text' },
+{ id: "email", label: "EMAIL", type: 'text' },
+// { id: "id", label: "ID", type: 'text' },
 { id: "", label: "", type: 'icon' }
 ];
 
@@ -81,16 +92,15 @@ const GridComponent: React.FC<GridComponentProps> = (props) => {
     const handleTableScroll = (event: any) => {
         const bottomValue = event.target.scrollHeight - event.target.scrollTop;
         if (bottomValue - event.target.clientHeight <= 0) {
-            console.log("At The Bottom"); //Add in what you want here
+           props.getPages()
         }
     };
-
 
     return (
         <div>
             <Box sx={{ width: x.width }}>
                 <Paper sx={{ width: x.width, mb: 2 }}>
-                    <TableContainer sx={{ maxHeight: x.height }} onScroll={handleTableScroll}>
+                    <TableContainer sx={{ maxHeight: x.height }} onScroll={handleTableScroll} ref={props.ref}>
                         <Table
                             aria-labelledby="tableTitle"
                             stickyHeader
@@ -102,10 +112,11 @@ const GridComponent: React.FC<GridComponentProps> = (props) => {
                                 onRequestSort={handleRequestSort}
                             />
                             <EnhancedGridBody
-                                rows={rows}
+                                rows={props.rows}
                                 order={order}
                                 orderBy={orderBy}
                                 headCells={headCells}
+                                {...props}
                             />
                         </Table>
                     </TableContainer>
