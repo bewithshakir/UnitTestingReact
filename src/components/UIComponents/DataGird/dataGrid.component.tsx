@@ -1,5 +1,5 @@
 import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined';
-import { Box, Collapse, Table, TableBody, TableCell, TableHead, TableRow } from '@mui/material';
+import { Box, CircularProgress, Collapse, Table, TableBody, TableCell, TableHead, TableRow } from '@mui/material';
 import * as React from "react";
 import { useTranslation } from 'react-i18next';
 import DataGridActionsMenu from '../Menu/DataGridActionsMenu.component';
@@ -17,7 +17,8 @@ interface GridBodyProps {
     order: string | any,
     orderBy: string,
     headCells: HeadCellsOptions[],
-    isError?: string
+    isError?: string,
+    isLoading?: boolean
 }
 
 
@@ -57,7 +58,7 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
     const { t } = useTranslation();
 
     const getKeys = () => {
-        return Object.keys(props.rows[0]);
+        return Object.keys(props?.rows[0]);
     }
 
     const handleCollapaseClick = (key: any) => {
@@ -87,7 +88,7 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
                                                 onClick={() => handleCollapaseClick(indexKey)}
                                                 startIcon={< LocationOnOutlinedIcon />}
                                             >
-                                                {row[key]}
+                                                {0}
                                             </Button > :
                                             props.headCells[index].type === 'icon' ?
                                                 <DataGridActionsMenu
@@ -128,9 +129,15 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
         )
     }
 
-    return (
-        getRowsData()
-    )
+
+    if (props?.rows?.length > 1) {
+        return getRowsData()
+    } else if(props?.isLoading) {
+        return <CircularProgress />
+    }else {
+        return <div>{"No Data found"}</div>
+    }
+
 
 }
 
