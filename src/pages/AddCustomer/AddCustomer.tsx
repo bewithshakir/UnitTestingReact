@@ -4,6 +4,7 @@ import { FieldArray, FormikProvider, useFormik } from 'formik';
 import moment from 'moment';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import ToastMessage from '../../components/UIComponents/ToastMessage/ToastMessage.component';
 import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';
 import { Button } from '../../components/UIComponents/Button/Button.component';
@@ -98,8 +99,42 @@ const initialValues: AddCustomerForm = {
         email: '',
         phoneNumber: '',
     }],
-    paymentTypes: [],
-    initialInvoiceFrequencies: []
+    paymentTypes: [
+        {
+            value: "1",
+            label: "voyager",
+        },
+        {
+            value: "2",
+            label: "invoice",
+        },
+        {
+            value: "3",
+            label: "wex",
+        },
+        {
+            value: "f6f0ec11-cd88-455d-9158-8ade75ddf2ba",
+            label: "new",
+        }
+    ],
+    initialInvoiceFrequencies: [
+        {
+            value: "1",
+            label: "Weekly",
+        },
+        {
+            value: "f6f0ec11-cd88-455d-9158-8ade75ddfb5b",
+            label: "Bi-weekly",
+        },
+        {
+            value: "g6f0ec11-cd88-455d-9158-8ade75ddfb8b",
+            label: "Daily",
+        },
+        {
+            value: "h6f0ec11-cd88-455d-9158-8ade75ddfb4b",
+            label: "Monthly",
+        }
+    ]
 };
 
 function getTokenApplicable (Obj: any) {
@@ -123,30 +158,30 @@ interface IFormStatusProps {
 const formStatusProps: IFormStatusProps = {
     success: {
         message: 'Signed up successfully.',
-        type: 'success',
+        type: 'Success',
     },
     duplicate: {
         message: 'Email-id already exist. Please use different email-id.',
-        type: 'error',
+        type: 'Error',
     },
     error: {
         message: 'Something went wrong. Please try again.',
-        type: 'error',
+        type: 'Error',
     },
 }
 
 const AddCustomer: React.FC<{}> = (props: any) => {
     const { t } = useTranslation();
-    const [displayFormStatus, setDisplayFormStatus] = useState(false)
+    // const [displayFormStatus, setDisplayFormStatus] = useState(false)
     const [formStatus, setFormStatus] = useState<IFormStatus>({
         message: '',
         type: '',
     })
 
+    const [apiResposneState, setAPIResponse] = useState(false);
+
     const createNewCustomer = async (data: AddCustomerForm, resetForm: Function) => {
         try {
-            console.log('displayFormStatus', displayFormStatus);
-            console.log('formStatus', formStatus);
             const apiPayload = {
                 "customerName": data.customerName,
                 "customerInputId": data.customerId,
@@ -183,12 +218,14 @@ const AddCustomer: React.FC<{}> = (props: any) => {
                     lot: data.lotLevel, business: data.businessLevel, vehicle: data.vehicleLevel
                 })
             }
-            console.log("🚀 ~ file: AddCustomer.tsx ~ line 184 ~ createNewCustomer ~ apiPayload", apiPayload)
             axios.post('http://20.81.30.168:4001/api/customer-service/customers', apiPayload)
                 .then(function (response) {
-                    console.log(response);
+                    setAPIResponse(true);
                     if (response.data) {
                         setFormStatus(formStatusProps.success)
+                        setTimeout(() => {
+                            setAPIResponse(false);
+                        }, 6000);
                         resetForm({})
                     }
                 })
@@ -204,9 +241,9 @@ const AddCustomer: React.FC<{}> = (props: any) => {
                     }
                 });
         } catch (error) {
-            console.log("🚀 ~ file: AddCustomer.tsx ~ line 207 ~ createNewCustomer ~ error", error)
+            setFormStatus(formStatusProps.error)
         } finally {
-            setDisplayFormStatus(true)
+            // setDisplayFormStatus(true)
         }
     }
 
@@ -215,35 +252,34 @@ const AddCustomer: React.FC<{}> = (props: any) => {
         validationSchema: AddCustomerValidationSchema,
         onSubmit: (values, actions) => {
             createNewCustomer(values, actions.resetForm);
-            alert(JSON.stringify(values, null, 2));
         },
         enableReinitialize: true,
     });
 
-    const fetchList = (listof: string, fieldName: string) => {
-        axios.get(`http://20.81.30.168:4001/api/customer-service/customers/${listof}?countryCode=us`)
-            .then(response => response.data)
-            .then(({ data }) => {
-                if (data) {
-                    setTimeout(() => {
-                        formik.setFieldValue(fieldName, data.map((obj: any) => ({ label: obj[`${listof}Nm`].trim(), value: obj[`${listof}Id`].trim() })))
-                    }, 1);
-                }
-            })
-            .catch(error => {
-                console.log("🚀 ~ file: AddCustomer.tsx ~ line 172 ~ useEffect ~ error", error)
-            });
-    }
+    // const fetchList = (listof: string, fieldName: string) => {
+    //     axios.get(`http://20.81.30.168:4001/api/customer-service/customers/${listof}?countryCode=us`)
+    //         .then(response => response.data)
+    //         .then(({ data }) => {
+    //             if (data) {
+    //                 setTimeout(() => {
+    //                     formik.setFieldValue(fieldName, data.map((obj: any) => ({ label: obj[`${listof}Nm`].trim(), value: obj[`${listof}Id`].trim() })))
+    //                 }, 1);
+    //             }
+    //         })
+    //         .catch(error => {
+    //             setFormStatus(formStatusProps.error)
+    //         });
+    // }
 
-    useEffect(() => {
-        fetchList('paymentType', 'paymentTypes');
-        fetchList('invoiceFrequency', 'initialInvoiceFrequencies');
-    }, [])
+    // useEffect(() => {
+    //     fetchList('paymentType', 'paymentTypes');
+    //     fetchList('invoiceFrequency', 'initialInvoiceFrequencies');
+    // }, [])
 
     const history = useHistory()
 
     function onClickBack () {
-        history.goBack()
+        history.push('/')
     }
 
     return (
@@ -413,11 +449,6 @@ const AddCustomer: React.FC<{}> = (props: any) => {
                                         </Typography>
                                     </Grid>
                                     <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
-                                        <select id="paymentType" name="paymentType">
-                                            {formik.values.paymentTypes.map(obj => (
-                                                <option>{obj.label}</option>
-                                            ))}
-                                        </select>
                                         <Select
                                             id='paymentType'
                                             name='paymentType'
@@ -603,7 +634,6 @@ const AddCustomer: React.FC<{}> = (props: any) => {
                                                                         ? true : false
                                                                 }
                                                                 description=''
-                                                                required
                                                                 {...formik.getFieldProps(`emergencyContact[${index}].phoneNumber`)}
                                                             />
                                                         </Grid>
@@ -614,7 +644,11 @@ const AddCustomer: React.FC<{}> = (props: any) => {
                                                     <Link
                                                         variant="body2"
                                                         sx={{ display: "flex", alignItems: "center" }}
-                                                        onClick={() => arrayHelpers.push({ firstName: "", lastName: "", email: "", phoneNumber: "" })}
+                                                        onClick={() => {
+                                                            if (formik.values.emergencyContact.length < 5) {
+                                                                arrayHelpers.push({ firstName: "", lastName: "", email: "", phoneNumber: "" })
+                                                            }
+                                                        }}
                                                     >
                                                         <Add />
                                                         <Typography variant="h3" component="h3" className="fw-bold MuiTypography-h5-primary" mb={1}>
@@ -717,7 +751,6 @@ const AddCustomer: React.FC<{}> = (props: any) => {
                                                                         ? true : false
                                                                 }
                                                                 description=''
-                                                                required
                                                                 {...formik.getFieldProps(`apContact[${index}].phoneNumber`)}
                                                             />
                                                         </Grid>
@@ -728,7 +761,11 @@ const AddCustomer: React.FC<{}> = (props: any) => {
                                                     <Link
                                                         variant="body2"
                                                         sx={{ display: "flex", alignItems: "center" }}
-                                                        onClick={() => arrayHelpers.push({ firstName: "", lastName: "", email: "", phoneNumber: "" })}
+                                                        onClick={() => {
+                                                            if (formik.values.apContact.length < 5) {
+                                                                arrayHelpers.push({ firstName: "", lastName: "", email: "", phoneNumber: "" })
+                                                            }
+                                                        }}
                                                     >
                                                         <Add />
                                                         <Typography variant="h3" component="h3" className="fw-bold MuiTypography-h5-primary" mb={1}>
@@ -774,6 +811,7 @@ const AddCustomer: React.FC<{}> = (props: any) => {
                                                 {t("buttons.save")}
                                             </Button>
                                         </Box>
+                                        <ToastMessage isOpen={apiResposneState} messageType={formStatus.type} onClose={() => { }} message={formStatus.message} />
                                     </Grid>
                                 </Grid>
                             </form>
