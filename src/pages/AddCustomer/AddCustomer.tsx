@@ -797,7 +797,7 @@ const AddCustomer: React.FC<{}> = (props: any) => {
                                                 types="cancel"
                                                 aria-label="cancel"
                                                 className="mr-4"
-                                                onClick={() => { }}
+                                                onClick={onClickBack}
                                             >
                                                 {t("buttons.cancel")}
                                             </Button>
