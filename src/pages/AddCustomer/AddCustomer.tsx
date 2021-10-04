@@ -2,7 +2,8 @@ import { Add, FileCopy } from '@material-ui/icons';
 import { Box, Container, CssBaseline, FormControl, FormControlLabel, FormGroup, Grid, Link, Typography } from '@mui/material';
 import { FieldArray, FormikProvider, useFormik } from 'formik';
 import moment from 'moment';
-import React, { useState } from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';
 import { Button } from '../../components/UIComponents/Button/Button.component';
@@ -11,6 +12,7 @@ import { DatePicker } from '../../components/UIComponents/DatePicker/DatePicker.
 import Input from '../../components/UIComponents/Input/Input';
 import HorizontalBar from '../../components/UIComponents/NavigationBar/HorizontalBar';
 import Select from '../../components/UIComponents/Select/dropdown';
+import { getCountryCode } from '../../navigation/utils';
 import Legend from '../Legend/index';
 import "./AddCustomer.style.scss";
 import AddCustomerValidationSchema from './validation';
@@ -59,7 +61,9 @@ interface AddCustomerForm {
     vehicleLevel: boolean,
     // Emergency Contact
     emergencyContact: EmergencyContact[]
-    apContact: ApContact[]
+    apContact: ApContact[],
+    paymentTypes: any[],
+    initialInvoiceFrequencies: any[]
 }
 
 const initialValues: AddCustomerForm = {
@@ -93,10 +97,20 @@ const initialValues: AddCustomerForm = {
         lastName: '',
         email: '',
         phoneNumber: '',
-    }]
+    }],
+    paymentTypes: [],
+    initialInvoiceFrequencies: []
 };
 
-
+function getTokenApplicable (Obj: any) {
+    const temp: any = [];
+    Object.entries(Obj).forEach(obj => {
+        if (obj[1]) {
+            temp.push(obj[0]).toString();
+        }
+    })
+    return temp;
+}
 
 interface IFormStatus {
     message: string
@@ -133,22 +147,64 @@ const AddCustomer: React.FC<{}> = (props: any) => {
         try {
             console.log('displayFormStatus', displayFormStatus);
             console.log('formStatus', formStatus);
-
-            // API call integration will be here. Handle success / error response accordingly.
-            if (data) {
-                setFormStatus(formStatusProps.success)
-                resetForm({})
+            const apiPayload = {
+                "customerName": data.customerName,
+                "customerInputId": data.customerId,
+                "addressLine1": data.addressLine1,
+                "addressLine2": data.addressLine2,
+                "addressLine3": "",
+                "cityNm": data.city,
+                "stateNm": data.state,
+                "postalCd": Number(data.postalCode),
+                "contactFirstNm": data.firstName,
+                "contactLastNm": data.lastName,
+                "contactEmailId": data.email,
+                "contactPhoneNo": data.phoneNumber,
+                "paymentTypeId": "f6f0ec11-cd88-455d-9158-8ade75ddf2ba" || data.paymentType[0].value,
+                "customerTypeId": "f6f0ec11-cd88-455d-9158-8ade75ddfb3b",
+                "invoiceFrequencyId": "f6f0ec11-cd88-455d-9158-8ade75ddfb5b" || data.invoiceFrequency[0].value,
+                "firstSettlementDt": data.endDate,
+                "paymentTerm": Number(data.paymentTerm),
+                "countryCd": getCountryCode(),
+                "soldToNo": 10,
+                "emergencyContact": data.emergencyContact.map(emgcyObj => ({
+                    "firstNm": emgcyObj.firstName,
+                    "lastNm": emgcyObj.lastName,
+                    "email": emgcyObj.email,
+                    "phoneNo": emgcyObj.phoneNumber
+                })),
+                "apContact": data.apContact.map(apObj => ({
+                    "firstNm": apObj.firstName,
+                    "lastNm": apObj.lastName,
+                    "email": apObj.email,
+                    "phoneNo": apObj.phoneNumber
+                })),
+                "tokenApplicabilityLevel": getTokenApplicable({
+                    lot: data.lotLevel, business: data.businessLevel, vehicle: data.vehicleLevel
+                })
             }
+            console.log("🚀 ~ file: AddCustomer.tsx ~ line 184 ~ createNewCustomer ~ apiPayload", apiPayload)
+            axios.post('http://20.81.30.168:4001/api/customer-service/customers', apiPayload)
+                .then(function (response) {
+                    console.log(response);
+                    if (response.data) {
+                        setFormStatus(formStatusProps.success)
+                        resetForm({})
+                    }
+                })
+                .catch(function (error) {
+                    const response = error.response
+                    if (
+                        response.data === 'user already exist' &&
+                        response.status === 400
+                    ) {
+                        setFormStatus(formStatusProps.duplicate)
+                    } else {
+                        setFormStatus(formStatusProps.error)
+                    }
+                });
         } catch (error) {
-            const response = error.response
-            if (
-                response.data === 'user already exist' &&
-                response.status === 400
-            ) {
-                setFormStatus(formStatusProps.duplicate)
-            } else {
-                setFormStatus(formStatusProps.error)
-            }
+            console.log("🚀 ~ file: AddCustomer.tsx ~ line 207 ~ createNewCustomer ~ error", error)
         } finally {
             setDisplayFormStatus(true)
         }
@@ -161,20 +217,28 @@ const AddCustomer: React.FC<{}> = (props: any) => {
             createNewCustomer(values, actions.resetForm);
             alert(JSON.stringify(values, null, 2));
         },
+        enableReinitialize: true,
     });
 
-    const initialPaymentTypes = [
-        { label: 'Invoice', value: 'Invoice' },
-        { label: 'Voyager', value: 'Voyager' },
-        { label: 'WEX', value: 'WEX' }
-    ]
+    const fetchList = (listof: string, fieldName: string) => {
+        axios.get(`http://20.81.30.168:4001/api/customer-service/customers/${listof}?countryCode=us`)
+            .then(response => response.data)
+            .then(({ data }) => {
+                if (data) {
+                    setTimeout(() => {
+                        formik.setFieldValue(fieldName, data.map((obj: any) => ({ label: obj[`${listof}Nm`].trim(), value: obj[`${listof}Id`].trim() })))
+                    }, 1);
+                }
+            })
+            .catch(error => {
+                console.log("🚀 ~ file: AddCustomer.tsx ~ line 172 ~ useEffect ~ error", error)
+            });
+    }
 
-    const initialInvoiceFrequencies = [
-        { label: 'Daily T+1', value: 'Daily T+1' },
-        { label: 'Weekly', value: 'Weekly' },
-        { label: 'Bi-weekly', value: 'Bi-weekly' },
-        { label: 'Monthly', value: 'Monthly' }
-    ]
+    useEffect(() => {
+        fetchList('paymentType', 'paymentTypes');
+        fetchList('invoiceFrequency', 'initialInvoiceFrequencies');
+    }, [])
 
     const history = useHistory()
 
@@ -349,13 +413,18 @@ const AddCustomer: React.FC<{}> = (props: any) => {
                                         </Typography>
                                     </Grid>
                                     <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
+                                        <select id="paymentType" name="paymentType">
+                                            {formik.values.paymentTypes.map(obj => (
+                                                <option>{obj.label}</option>
+                                            ))}
+                                        </select>
                                         <Select
                                             id='paymentType'
                                             name='paymentType'
                                             label='PAYMENT TYPE'
                                             value={formik.values.paymentType}
                                             placeholder='Choose'
-                                            items={initialPaymentTypes}
+                                            items={formik.values.paymentTypes}
                                             helperText={(formik.touched.paymentType && formik.errors.paymentType) ? formik.errors.paymentType : undefined}
                                             error={(formik.touched.paymentType && formik.errors.paymentType) ? true : false}
                                             onChange={formik.handleChange}
@@ -371,7 +440,7 @@ const AddCustomer: React.FC<{}> = (props: any) => {
                                             label='INVOICE FREQUENCY'
                                             value={formik.values.invoiceFrequency}
                                             placeholder='Choose'
-                                            items={initialInvoiceFrequencies}
+                                            items={formik.values.initialInvoiceFrequencies}
                                             helperText={(formik.touched.invoiceFrequency && formik.errors.invoiceFrequency) ? formik.errors.invoiceFrequency : undefined}
                                             error={(formik.touched.invoiceFrequency && formik.errors.invoiceFrequency) ? true : false}
                                             onChange={formik.handleChange}
