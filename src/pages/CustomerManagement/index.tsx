@@ -13,7 +13,6 @@ import {
 } from "../../assets/icons";
 import GridComponent from "../../components/UIComponents/DataGird/grid.component";
 import { useCustomers } from "./queries";
-import { Toolbar } from "@mui/material";
 import SearchInput from "../../components/UIComponents/SearchInput/SearchInput";
 import { Add } from "@mui/icons-material";
 import { useHistory } from "react-router-dom";
@@ -27,13 +26,11 @@ export const Content: React.FC<ContentProps> = (props) => {
   const [info,setInfo] = React.useState({})
   const [searchTerm, setSearchTerm] = React.useState("");
   const [drawerOpen, setDrawerOpen] = React.useState(false);
-  const [order, setOrder] = React.useState("asc");
-  const [sortKey,setSortKey] = React.useState("customerName");
+  const [sortOrder, setSortOrder] = React.useState<{sortBy:string,order:string}>({sortBy:"customerName",order:"asc"});
   const { t } = useTranslation();
   const { data, fetchNextPage, isLoading, hasNextPage }: any = useCustomers(
     searchTerm,
-    sortKey,
-    order
+    sortOrder
   );
   const openDrawer = (row:SyntheticEvent)=>{
     setInfo(row)
@@ -46,23 +43,22 @@ export const Content: React.FC<ContentProps> = (props) => {
     history.push("/addCustomer");
   };
   const onSortBySlected = (value: string) => {
-    let sortVariable;
-    let sortKey;
-    if (value === "A-Z") {
-      sortKey="customerName"
-      sortVariable = "asc"
-    } else if(value === "Z-A"){
-      sortKey="customerName"
-      sortVariable = "desc"
-    }else if(value = "Newest to Oldest"){
-      sortKey="date"
-      sortVariable = "asc"
-    }else{
-      sortKey="date"
-      sortVariable = "desc"
+    let sortOrder
+    switch (value) {
+    case "Z-A":
+      sortOrder = {sortBy:"customerName",order:"desc"}
+       break;
+       case "Newest to Oldest":
+        sortOrder = {sortBy:"date",order:"desc"}
+       break;
+       case "Oldest to New":
+        sortOrder = {sortBy:"date",order:"asc"}
+       break;
+      default:
+        sortOrder = {sortBy:"customerName",order:"asc"}
+        break;
     }
-    setSortKey(sortKey)
-    setOrder(sortVariable);
+    setSortOrder(sortOrder)
   };
   const onInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(event.currentTarget.value);
