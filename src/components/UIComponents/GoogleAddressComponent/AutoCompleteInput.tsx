@@ -13,6 +13,11 @@ interface props {
     onChange: (...args: any[]) => void;
     onInputChange?: (...args: any[]) => void;
     required ?: boolean
+    id?: string;
+    helperText?: string;
+    error?: boolean;
+    onBlur?: (...args: any[]) => void;
+    description?:string;
 }
 
 interface MainTextMatchedSubstrings {
@@ -56,7 +61,7 @@ export default function AutoCompleteInput(props: props){
 
     const handleChange = (opt1:prediction|null) => {
         if (opt1 !== null){
-        const { name, onChange } = props;
+        const { onChange } = props;
             let obj = {
                 target: {
                     name: 'placeId',
@@ -69,6 +74,7 @@ export default function AutoCompleteInput(props: props){
  
     return (
         <AutoComplete 
+            name={props.name}
             freeSolo
             options={options} 
             label={props.label} 

@@ -21,7 +21,7 @@ import  Autocomplete  from '../components/UIComponents/AutoComplete/AutoComplete
 const Home = (props: { version: any }) => {
     const { data } = useQuery('repoData', fetchQueryTodos, { retry: false })
     console.log(data)
-    const [form, setForm] = useState({ userName: '', email: '', item: [{ label: 'Nike', value: 'Nike' }], searchTerm:'', startDate: moment(), endDate: moment() });
+    const [form, setForm] = useState({ userName: '', email: '', item: [{ label: 'Nike', value: 'Nike' }], searchTerm: '', movie:'', startDate: moment(), endDate: moment(), address: { addressLine1: '', addressLine2: '', city: '', state: '', postalCode: ''} });
     const debouncedValue = useDebounce<string>(form.searchTerm, 1000);
     const items = [
         { label: 'Amazon', value: 'Amazon' },
@@ -79,11 +79,17 @@ const Home = (props: { version: any }) => {
                         value={form.searchTerm}
                         onChange={handleChange}
                     />
-                    <Autocomplete label='autocomplete' options={[
+                    <Autocomplete name='movie' label='autocomplete' options={[
                     {title: 'The Shawshank Redemption', year: 1994 },
                     {title: 'The Godfather', year: 1972 },
                     {title: 'The Godfather: Part II', year: 1974 }]} optionTitle='title'/>
-                    <GoogleAutoCompleteAddress/>
+
+                    <GoogleAutoCompleteAddress 
+                        name='address' 
+                        onChange={handleChange}
+                        value={form.address}
+                    />
+
                     {/* temporary styles */}
                     <Box style={{'marginLeft':'20px'}}> 
                         <DatePicker

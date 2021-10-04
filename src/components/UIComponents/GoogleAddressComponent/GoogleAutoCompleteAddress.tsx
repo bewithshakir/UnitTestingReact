@@ -7,14 +7,16 @@ import AutocompleteInput from './AutoCompleteInput';
 import './GoogleAutoCompleteAddress.scss';
 
 interface props {
-    className?: string,
-    required?: boolean,
-    //name: string,
+    className?: string;
+    name: string
+    onChange: (...args: any[]) => void;
+    onInputChange?: (...args: any[]) => void;
+    required?: boolean;
+    value: value;
 }
 
-type address =
-    { address1: string, address2: string, city: string, state: string, zip: string}
-
+type value =
+    { addressLine1: string, addressLine2: string, city: string, state: string, postalCode: string }
 
 
 export default function GoogleAutoCompleteAddress(props: props) {
@@ -22,6 +24,26 @@ export default function GoogleAutoCompleteAddress(props: props) {
     const handleChange = (e: any) => setAddress(x => ({ ...x, [e.target.name]: e.target.value }));
     const debouncedValue = useDebounce(address.placeId, 10);
     const { data } = FetchFormattedAddress(debouncedValue);
+
+    const onChanges = () => {
+        const { name, onChange } = props;
+        const { address1, address2, city, state, zip } = address;
+        const required = address1 && address2 && city && state && zip;
+        const obj = { 
+            addressLine1: address1,
+            addressLine2: address2,
+            city,
+            state,
+            postalCode: zip,
+        }
+        let objA = {
+            target: {
+                name: name,
+                value: obj
+            }
+        }
+        required && onChange(objA);
+    }
 
     useEffect(() => {
         if (data) {
@@ -41,7 +63,23 @@ export default function GoogleAutoCompleteAddress(props: props) {
             }
            setAddress(obj);
         }
-    }, [data])
+        onChanges();
+    }, [data, props, onChanges])
+
+    useEffect(() => {
+        if(props.value){
+            const { addressLine1, addressLine2, city, state, postalCode} = props.value;
+            const obj = {
+                address1: addressLine1,
+                address2: addressLine2,
+                city,
+                state,
+                zip: postalCode,
+                placeId: ''
+            }
+            setAddress(obj);
+        }
+    }, [])
 
  
 
