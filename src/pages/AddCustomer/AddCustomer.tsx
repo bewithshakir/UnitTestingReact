@@ -17,7 +17,6 @@ import { getCountryCode } from '../../navigation/utils';
 import Legend from '../Legend/index';
 import "./AddCustomer.style.scss";
 import AddCustomerValidationSchema from './validation';
-import AutoCompleteInput from '../../components/UIComponents/GoogleAddressComponent/AutoCompleteInput';
 
 interface SelectProps {
     label: string,
@@ -138,7 +137,7 @@ const initialValues: AddCustomerForm = {
     ]
 };
 
-function getTokenApplicable (Obj: any) {
+function getTokenApplicable(Obj: any) {
     const temp: any = [];
     Object.entries(Obj).forEach(obj => {
         if (obj[1]) {
@@ -279,7 +278,7 @@ const AddCustomer: React.FC<{}> = (props: any) => {
 
     const history = useHistory()
 
-    function onClickBack () {
+    function onClickBack() {
         history.push('/')
     }
 
@@ -333,19 +332,15 @@ const AddCustomer: React.FC<{}> = (props: any) => {
                                         />
                                     </Grid>
                                     <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
-                                        <AutoCompleteInput
-                                            name='addressLine1'
+                                        <Input
                                             id='addressLine1'
                                             label='ADDRESS LINE 1'
                                             type='text'
                                             helperText={(formik.touched.addressLine1 && formik.errors.addressLine1) ? formik.errors.addressLine1 : undefined}
                                             error={(formik.touched.addressLine1 && formik.errors.addressLine1) ? true : false}
-                                            value=''
                                             description=''
                                             required
-                                            //{...formik.getFieldProps('addressLine1')}
-                                            onChange={e=>console.log(e)}
-                                            onBlur={() => { formik.setFieldTouched("addressLine1"); formik.validateField("addressLine1"); }}
+                                            {...formik.getFieldProps('addressLine1')}
                                         />
                                     </Grid>
                                     <Grid item xs={12} md={6} pl={2.5} pb={2.5}>

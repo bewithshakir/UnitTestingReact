@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { Box, Grid} from '@mui/material';
 import Input from '../Input/Input';
 import useDebounce from '../../../utils/useDebounce';
-import { FetchFormattedAddress } from '../../../actions/googleAddressAutoComlete';
+import { FetchFormattedAddress } from '../../../hooks/googleAddressAutoComlete';
 import AutocompleteInput from './AutoCompleteInput';
 import './GoogleAutoCompleteAddress.scss';
 

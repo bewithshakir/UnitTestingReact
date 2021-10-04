@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import useDebounce from '../../../utils/useDebounce';
-import { FetchGoogleAddress } from '../../../actions/googleAddressAutoComlete';
+import { FetchGoogleAddress } from '../../../hooks/googleAddressAutoComlete';
 import AutoComplete from '../AutoComplete/AutoComplete';
 
 
