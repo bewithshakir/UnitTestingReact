@@ -14,7 +14,7 @@ import { DatePicker } from '../components/UIComponents/DatePicker/DatePicker.com
 import useDebounce from '../utils/useDebounce';
 import HorizontalBar from '../components/UIComponents/NavigationBar/HorizontalBar';
 import { Box, CssBaseline } from '@mui/material';
-import { useCustomers } from '../hooks/customer';
+import { useCustomers } from './CustomerManagement/queries';
 
 
 

@@ -78,7 +78,7 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
                     return <React.Fragment>
                         <TableRow key={indexKey}>
                             {keys.map((key: any, index: any) => {
-                                return <TableCell component="th" scope="row" key={row[key]}>
+                                return <TableCell component="th" scope="row" key={row[key]} > 
                                     {props.headCells[index].type === 'text' ? index === 0 ? <b>{row[key]}</b> : row[key] :
                                         props.headCells[index].type === 'button' ?
                                             <Button
@@ -132,7 +132,7 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
     }
 
 
-    if (props?.rows?.length > 0) {
+    if (props?.rows?.length > 1) {
         return getRowsData()
     } else if(props?.isLoading) {
         return <CircularProgress />
