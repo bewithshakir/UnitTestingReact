@@ -61,7 +61,7 @@ export const DemoComponents: React.FC = () => {
             <div
                 className={'content'}
             >
-                <h1 className={'content__title'}>
+                {/* <h1 className={'content__title'}>
                     <span className={'content__title--colored'}>{t("themes")} </span>
                     {t("content1")}
                 </h1>
@@ -70,7 +70,7 @@ export const DemoComponents: React.FC = () => {
                 </p>
                 <p className={'content__paragraph'}>
                     {t("para1")} <b>{t("para1")}</b> ,<b>{t("para2")}</b> <b>{t("para3")}</b> <b>{t("para4")}</b>
-                </p>
+                </p> */}
                 <GridComponent />
                 <div className={'content__buttons'}>
                     <Button
@@ -184,7 +184,8 @@ export const DemoComponents: React.FC = () => {
                 </Button>
             </div>
 
-            <div className={''}>
+
+            <div className={''} style={{ 'marginLeft': '20px' }}>
                 <Button variant="outlined" onClick={handleButtonClick}>
                     Open success snackbar
                 </Button>
@@ -193,9 +194,9 @@ export const DemoComponents: React.FC = () => {
 
             <Footer />
 
-            <div className="App">
+            <div className="App" style={{ 'marginLeft': '20px' }}>
                 <div className={'app__main'}>
-                    
+
                     <NavLink to="/query">{t("query")}</NavLink>
                     <Input name='userName'
                         label='User Name'
@@ -205,6 +206,7 @@ export const DemoComponents: React.FC = () => {
                         description=''
                         helperText='User Name'
                         error
+
                     />
                     <Select
                         name='item'
@@ -227,7 +229,7 @@ export const DemoComponents: React.FC = () => {
                         onChange={handleChange}
                     />
                     {/* temporary styles */}
-                    <Box style={{ 'marginLeft': '20px' }}>
+                    <Box style={{ 'marginLeft': '20px', 'marginBottom': '20px' }}>
                         <DatePicker
                             label="FROM DATE"
                             id="cust-filter-end-date"
@@ -241,13 +243,13 @@ export const DemoComponents: React.FC = () => {
                     </Box>
 
                 </div>
-                <div className={'app__bg'}>
+                {/* <div className={'app__bg'}>
                     <img src={bg} alt={'bg'} />
-                </div>
+                </div> */}
 
             </div>
 
-        </div>
+        </div >
 
     )
 }
