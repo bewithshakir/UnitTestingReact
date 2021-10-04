@@ -8,13 +8,13 @@
   box-sizing: border-box;
   &:focus {
     outline: 0;
-    & .selection {
+    &.selection {
       background: var(--White) 0% 0% no-repeat padding-box;
       color: var(--Darkgray);  
       border:2px solid var(--Darkgray);
     }
   }
-
+ 
   svg {
     display: block;
     width: 1.5em;
@@ -26,6 +26,8 @@
     color: var(--Darkgray);
     line-height: 16px;
     font-family: arial;
+    margin-top: 0.5rem;
+    margin-bottom: 0.25rem;
   }
 
   .selection {
@@ -47,8 +49,11 @@
     }
     &:focus-visible{
       outline: 0;
-    }     
+    }  
   }
+  .selection.error {
+    border: 2px solid var(--Tertiary);
+  }   
   .open{
     background: var(--White) 0% 0% no-repeat padding-box;
     color: var(--Darkgray);  
