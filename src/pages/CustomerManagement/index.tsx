@@ -55,7 +55,7 @@ export const Content: React.FC<ContentProps> = (props) => {
     <div>
       <div className={"content"}>
         <div className={"content__buttons1"}>
-          <Toolbar sx={{ width: "100%" }}>
+          <div className={"content__buttons2"}>
             <Button
               types="filter"
               aria-label="dafault"
@@ -64,15 +64,19 @@ export const Content: React.FC<ContentProps> = (props) => {
             >
               Filter
             </Button>
+            <div className={"space"} />
             <SortbyMenu
               options={sortByOptions.map((sortByItem) => t(sortByItem))}
               onSelect={(value) => onSortBySlected(value)}
             />
+            <div className={"space"} />
             <SearchInput
               name="searchTerm"
               value={searchTerm}
               onChange={onInputChange}
             />
+           </div>
+           <div  className={"content__buttons3"}>
             <Button
               types="primary"
               aria-label="primary"
@@ -81,6 +85,7 @@ export const Content: React.FC<ContentProps> = (props) => {
             >
               {t("buttons.add customer")}
             </Button>
+            <div className={"space"} />
             <ActionsMenu
               options={[
                 {
@@ -107,7 +112,7 @@ export const Content: React.FC<ContentProps> = (props) => {
                 );
               }}
             />
-          </Toolbar>
+            </div>
         </div>
         <GridComponent
           rows={list}
