@@ -20,11 +20,10 @@ interface HorizontalBarProps {
   onBack: () => void,
 }
 
-export default function HorizontalBar(props: HorizontalBarProps) {
+export default function HorizontalBar (props: HorizontalBarProps) {
   const { t } = useTranslation();
-  // console.log(props, "horizontalProps")
 
-  function handleClick(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
+  function handleClick (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
     console.info('You clicked a breadcrumb.');
   }
 
@@ -34,20 +33,23 @@ export default function HorizontalBar(props: HorizontalBarProps) {
     console.info('You clicked a back button.');
   }
 
-  function versionBreadcrumbsSingle() {
+  function versionBreadcrumbsSingle () {
     return (<>
       <Breadcrumbs separator={<NavigateNextIcon />} aria-label="breadcrumb">
-        <Link className="breadcrubs-title" href="/getting-started/installation/" onClick={handleClick}>
+        <Link className="breadcrubs-title" href="#" onClick={handleClick}>
           Add Customer
         </Link>
       </Breadcrumbs>
     </>)
   }
 
-  function varsionNavLinks() {
+  function varsionNavLinks () {
     return (<>
-      <div className="linkitem">
-        <NavLink className="breadcrubs-title" to="/addCustomer" onClick={handleClick}>
+      <div className="linkitem active">
+        <NavLink
+          className="breadcrubs-title"
+          to="/"
+          onClick={handleClick}>
           Customer List
         </NavLink>
       </div>
@@ -74,10 +76,10 @@ export default function HorizontalBar(props: HorizontalBarProps) {
     </>)
   }
 
-  function versionBreadcrumbsMany() {
+  function versionBreadcrumbsMany () {
     return (<>
       <Breadcrumbs separator={<NavigateNextIcon />} aria-label="breadcrumb">
-        <Link className="breadcrubs-title" href="/getting-started/installation/" onClick={handleClick}>
+        <Link className="breadcrubs-title" href="#" onClick={handleClick}>
           Accurate Transportation
         </Link>
       </Breadcrumbs>
