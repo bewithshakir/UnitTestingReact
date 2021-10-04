@@ -11,6 +11,7 @@ interface GridComponentProps {
     isLoading?: boolean,
     getPages?:any
     ref?: any
+    openDrawer?:any
 }
 
 let x: GridComponentProps = {
@@ -19,21 +20,19 @@ let x: GridComponentProps = {
 }
 
 
-const headCells = [{ id: "customername", label: "CUSTOMER NAME", type: 'text' },
-{ id: "contactname", label: "CANTACT NAME", type: 'text' },
+const headCells = [
+// { id: "id", label: "ID", type: 'text' },
+{ id: "customername", label: "CUSTOMER NAME", type: 'text' },
+{ id: "contactname", label: "CONTACT NAME", type: 'text' },
 { id: "address", label: "ADDRESS", type: 'text' },
 { id: "city", label: "CITY", type: 'text' },
+{ id: "id", label: "ID", type: 'text' },
 { id: "zipcode", label: "ZIP", type: 'text' },
-{ id: "state", label: "STATE", type: 'text' },
 { id: "lots", label: "LOTS", type: 'button' },
-// { id: "settlementtype", label: "SETTLEMENT TYPE", type: 'text' },
-// { id: "cardAdded", label: "CARD ADDED", type: 'text' },
-{ id: "paymentType", label: "PAYMENT TYPE", type: 'text' },
 { id: "phone", label: "PHONE", type: 'text' },
-{ id: "cardAdded", label: "CARD ADDED", type: 'text' },
+{ id: "paymentType", label: "PAYMENT TYPE", type: 'text' },
 { id: "country", label: "COUNTRY", type: 'text' },
-{ id: "email", label: "EMAIL", type: 'text' },
-// { id: "id", label: "ID", type: 'text' },
+{ id: "cardAdded", label: "CARD ADDED", type: 'text' },
 { id: "", label: "", type: 'icon' }
 ];
 

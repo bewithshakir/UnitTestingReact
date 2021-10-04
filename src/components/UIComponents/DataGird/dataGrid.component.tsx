@@ -19,6 +19,7 @@ interface GridBodyProps {
     headCells: HeadCellsOptions[],
     isError?: string,
     isLoading?: boolean
+    openDrawer?:any
 }
 
 
@@ -68,7 +69,9 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
             setSelectedKey(key);
         }
     }
-
+   const openDrawer =(event:React.SyntheticEvent)=>{
+     props.openDrawer(event) 
+   }
 
     const getRowsData = () => {
         var keys = getKeys();
@@ -78,7 +81,7 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
                     <React.Fragment>
                         <TableRow key={indexKey}>
                             {keys.map((key: any, index: any) =>
-                                <TableCell component="th" scope="row" key={row[key]}>
+                                <TableCell component="th" scope="row" key={row[key]} onClick={()=>openDrawer(row)}>
                                     {props.headCells[index].type === 'text' ? index === 0 ? <b>{row[key]}</b> : row[key] :
                                         props.headCells[index].type === 'button' ?
                                             <Button

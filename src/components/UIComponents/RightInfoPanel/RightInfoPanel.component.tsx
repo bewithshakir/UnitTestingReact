@@ -10,7 +10,7 @@ interface InfoPanelProps {
   open: boolean;
   headingText: string;
   info: Object,
-  onClose: (...args: any[]) => void;
+  onClose?: (...args: any[]) => void;
 }
 
 export const RightInfoPanel: React.FC<InfoPanelProps> = ({ open, headingText, info, onClose }) => {
