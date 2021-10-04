@@ -101,21 +101,21 @@ const initialValues: AddCustomerForm = {
     }],
     paymentTypes: [
         {
-            value: "f6f0ec11-cd88-455d-9158-8ade75ddf2ba",
+            value: "1",
             label: "voyager",
         },
         {
-            value: "f6f0ec11-cd88-455d-9158-8ade75ddf2ba",
+            value: "2",
             label: "invoice",
         },
         {
-            value: "f6f0ec11-cd88-455d-9158-8ade75ddf2ba",
+            value: "3",
             label: "wex",
         },
     ],
     initialInvoiceFrequencies: [
         {
-            value: "f6f0ec11-cd88-455d-9158-8ade75ddf2ba",
+            value: "1",
             label: "Weekly",
         },
         {
