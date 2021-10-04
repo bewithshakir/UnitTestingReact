@@ -18,5 +18,10 @@ export const routes = [
     path: "/query",
     component: lazy(() => import('./pages/QueryTest')),
     exact: false,
+  },
+  {
+    path: "/demo",
+    component: lazy(() => import('./pages/DemoComponents/DemoComponents')),
+    exact: false,
   }
 ];

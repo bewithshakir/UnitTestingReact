@@ -3,23 +3,12 @@ import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import { useTheme } from '../../../contexts/Theme/Theme.context';
 import './SideBarMenu.style.scss';
-import { Link } from '@material-ui/core';
 import logoOne from '../../../assets/images/Shell Taup logo.svg';
 import logoTwo from '../../../assets/images/Shell Taup logo2.svg';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import { BriefCase64Icon, Invoice64Icon, ToggleList64Icon, Truck64Icon, DocumentFile64Icon, ToggleMail64Icon, ChartPie64Icon } from '../../../assets/icons';
-
-type SideBarMenuOption = {
-  index: number;
-  icon?: React.ReactNode;
-  text?: string;
-  route?: string;
-}
-interface sideBarMenuProps {
-  options?: SideBarMenuOption[],
-  onSelect?: (selectedValue: object) => void
-}
+import { BrowserRouter, useHistory } from "react-router-dom";
 
 const SideBarMenuoptions = [{
   index: 0,
@@ -56,14 +45,38 @@ const SideBarMenuoptions = [{
   icon: <DocumentFile64Icon />,
   text: 'Dashboard',
   route: 'home'
-},];
+}, {
+  index: 7,
+  icon: <DocumentFile64Icon />,
+  text: 'Dashboard',
+  route: '/demo'
+}];
+
+type SideBarMenuOption = {
+  index: number;
+  icon?: React.ReactNode;
+  text?: string;
+  route?: string;
+  component?: React.ReactNode;
+  to?: any;
+}
+interface sideBarMenuProps {
+  options?: SideBarMenuOption[],
+  onSelect?: (selectedValue: object) => void
+}
 
 export default function SideBarDrawer(props: sideBarMenuProps) {
   const { themeType } = useTheme();
   const logoSrc = themeType === 'UK' ? logoOne : logoTwo;
   const [value, setValue] = React.useState(0);
+  const history = useHistory();
+
   const onSelectOptions = (value: number) => {
     console.log("🚀 ~ file: Content.component.tsx ~ line 60 ~ value", value)
+    if(value == 7) {
+      console.log("value 7 encountered");
+      history.push("/demo")
+    }
   };
 
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
@@ -71,6 +84,7 @@ export default function SideBarDrawer(props: sideBarMenuProps) {
     onSelectOptions(newValue);
     console.log(newValue)
   };
+
   const drawerWidth = 64;
   return (
     <Box className={'sidebar-menu'}>
@@ -85,6 +99,7 @@ export default function SideBarDrawer(props: sideBarMenuProps) {
             src={logoSrc}
             alt="logo" />
         </div>
+        <BrowserRouter>
         <Tabs
           orientation="vertical"
           value={value}
@@ -93,10 +108,11 @@ export default function SideBarDrawer(props: sideBarMenuProps) {
           className={'sidebarmenu_tabs'} >
           {SideBarMenuoptions && SideBarMenuoptions.map((item, index) => {
             return (
-              <Tab className={'sidebarmenu_tab'} icon={item.icon} component={Link} />
+              <Tab className={'sidebarmenu_tab'} icon={item.icon} />
             )
           })}
         </Tabs>
+        </BrowserRouter>
       </Drawer>
     </Box>
   );
