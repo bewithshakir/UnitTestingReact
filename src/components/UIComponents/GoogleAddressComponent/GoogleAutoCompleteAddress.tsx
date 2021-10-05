@@ -9,7 +9,9 @@ import './GoogleAutoCompleteAddress.scss';
 interface props {
     className?: string;
     name: string;
-    label: string;
+    label?: string;
+    description?: string;
+    placeholder?: string;
     onChange: (...args: any[]) => void;
     onInputChange?: (...args: any[]) => void;
     required?: boolean;
@@ -19,20 +21,19 @@ interface props {
     onBlur?: (...args: any[]) => void;
 }
 
-// type value =
-//     { addressLine1: string, addressLine2: string, city: string, state: string, postalCode: string }
+type addressValue =
+    { address1: string, address2: string, city: string, state: string, zip: string }
 
 
-export default function GoogleAutoCompleteAddress(props: props) {
+export default function GoogleAutoCompleteAddress (props: props) {
     const [address, setAddress] = useState({ address1: '', address2: '', city: '', state: '', zip: '', placeId: '' });
-    const handleChange = (e: any) => { console.log('================='); setAddress(x => ({ ...x, [e.target.name]: e.target.value })) };
+    const handleChange = (e: any) => { setAddress(x => ({ ...x, [e.target.name]: e.target.value })) };
     const debouncedValue = useDebounce(address.placeId, 10);
     const { data } = FetchFormattedAddress(debouncedValue);
 
-    const onChanges = () => {
-        const { name, onChange } = props;
-        const { address1, address2, city, state, zip } = address;
-        //const required = address1 && address2 && city && state && zip;
+    const onFinalChanges = (addresss: addressValue) => {
+        const { address1, address2, city, state, zip } = addresss;
+        const required = address1 && address2 && city && state && zip;
         const obj = {
             addressLine1: address1,
             addressLine2: address2,
@@ -40,13 +41,7 @@ export default function GoogleAutoCompleteAddress(props: props) {
             state,
             postalCode: zip,
         }
-        let objA = {
-            target: {
-                name: name,
-                value: obj
-            }
-        }
-      address1 && onChange(objA);
+        required && props.onChange(obj);
     }
 
     useEffect(() => {
@@ -66,31 +61,16 @@ export default function GoogleAutoCompleteAddress(props: props) {
                 placeId: ''
             }
             setAddress(obj);
+            onFinalChanges(obj);
         }
-        onChanges();
-    }, [data, props, onChanges])
-
-    // useEffect(() => {
-    //     if (props.value) {
-    //         //const { addressLine1, addressLine2, city, state, postalCode } = props.value;
-    //         const obj = {
-    //             address1: addressLine1,
-    //             address2: '',
-    //             city,
-    //             state,
-    //             zip: postalCode,
-    //             placeId: ''
-    //         }
-    //         setAddress(obj);
-    //     }
-    // }, [])
-
-
+    }, [data])
 
     return (
         <AutocompleteInput
             name={props.name}
             label={props.label}
+            description={props.description}
+            placeholder={props.placeholder}
             type='text'
             onChange={handleChange}
             onBlur={props.onBlur}
