@@ -13,6 +13,7 @@ import { Footer } from '../Footer/Footer.component';
 import Input from '../Input/Input';
 import Select from '../Select/dropdown';
 import SearchInput from '../SearchInput/SearchInput';
+import GoogleAutoCompleteAddress from '../GoogleAddressComponent/GoogleAutoCompleteAddress';
 import { DatePicker } from '../DatePicker/DatePicker.component';
 import { NavLink } from 'react-router-dom';
 import useDebounce from '../../../utils/useDebounce';
@@ -41,7 +42,7 @@ export const DemoComponents: React.FC = () => {
     const handleMessageBoxClose = () => {
         setOpen(false);
     }
-    const [form, setForm] = useState({ userName: '', email: '', item: [{ label: 'Nike', value: 'Nike' }], searchTerm: '', startDate: moment(), endDate: moment() });
+    const [form, setForm] = useState({ userName: '', email: '', item: [{ label: 'Nike', value: 'Nike' }], searchTerm: '', startDate: moment(), endDate: moment(), address:{addressLine1:'', addressLine2:'', state:'', city:'', postalCode:''} });
     const debouncedValue = useDebounce<string>(form.searchTerm, 1000);
     const items = [
         { label: 'Amazon', value: 'Amazon' },
@@ -237,6 +238,7 @@ export const DemoComponents: React.FC = () => {
                         value={form.searchTerm}
                         onChange={handleChange}
                     />
+                    {/* <GoogleAutoCompleteAddress name='address' onChange={handleChange} value={form.address}/> */}
                     {/* temporary styles */}
                     <Box style={{ 'marginLeft': '20px', 'marginBottom': '20px' }}>
                         <DatePicker

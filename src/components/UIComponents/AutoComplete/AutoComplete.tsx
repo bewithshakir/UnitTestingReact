@@ -1,4 +1,4 @@
-import { FormControl, FormHelperText, useAutocomplete } from '@mui/material';
+import { FormControl, FormHelperText, useAutocomplete, InputBase} from '@mui/material';
 import './AutoComplete.scss';
 
 interface props {
@@ -17,6 +17,7 @@ interface props {
     helperText?: string
     onChange?: (...args: any[]) => void;
     onInputChange?: (...args: any[]) => void;
+    onBlur?: (...args: any[]) => void;
     options: Array<any>;
     optionTitle: string;
     freeSolo?: boolean;
@@ -47,11 +48,12 @@ export default function Autocomplete(props: props) {
                     <label className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink label" {...getInputLabelProps()}>
                         <b>{props.label.toUpperCase()}{props.required && props.label && (<span className='super'>*</span>)}</b>
                     </label>
-                    <div className="MuiInputBase-root MuiInputBase-formControl" aria-required="false">
-                        <input aria-invalid="false" id="input" disabled={props.disabled} placeholder={props.placeholder} name={props.name} type="text" className="MuiInputBase-input" value={props.value} {...getInputProps()} />
+                    <div className={props.error ? "MuiInputBase-root MuiInputBase-formControl Mui-error" : "MuiInputBase-root MuiInputBase-formControl"} aria-required={props.required}>
+                        <input aria-invalid="false" id="input" disabled={props.disabled} placeholder={props.placeholder} name={props.name} type="text" className="MuiInputBase-input" value={props.value} {...getInputProps()} onBlur={props.onBlur}/>
                     </div>
                     {props.helperText && (
                         <FormHelperText
+                            className='helper'
                             id={props.description}
                             error={props.error}>
                             {props.helperText}

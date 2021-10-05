@@ -75,7 +75,11 @@ export default function AutoCompleteInput(props: props){
     return (
         <AutoComplete 
             name={props.name}
+            error={props.error}
+            required={props.required}
+            helperText={props.helperText}
             freeSolo
+            onBlur={props.onBlur}
             options={options} 
             label={props.label} 
             value={value}

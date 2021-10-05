@@ -17,6 +17,7 @@ import { getCountryCode } from '../../navigation/utils';
 import Legend from '../Legend/index';
 import "./AddCustomer.style.scss";
 import AddCustomerValidationSchema from './validation';
+import AutocompleteInput from '../../components/UIComponents/GoogleAddressComponent/GoogleAutoCompleteAddress';
 
 interface SelectProps {
     label: string,
@@ -328,7 +329,21 @@ const AddCustomer: React.FC<{}> = (props: any) => {
                                         />
                                     </Grid>
                                     <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
-                                        <Input
+                                        <AutocompleteInput
+                                            name='address1'
+                                            label='ADDRESS LINE 1'
+                                            onChange={(e)=>{
+                                                console.log('=====>',e);
+                                                // formik.setFieldValue('address1',e)
+                                            }}
+                                            //onBlur={props.onBlur}
+                                            value={formik.values.addressLine1}
+                                            required
+                                            helperText={(formik.touched.addressLine1 && formik.errors.addressLine1) ? formik.errors.addressLine1 : undefined}
+                                            error={(formik.touched.addressLine1 && formik.errors.addressLine1) ? true : false}
+                                            //{...formik.getFieldProps('addressLine1')}
+                                        />
+                                        {/* <Input
                                             id='addressLine1'
                                             label='ADDRESS LINE 1'
                                             type='text'
@@ -337,7 +352,7 @@ const AddCustomer: React.FC<{}> = (props: any) => {
                                             description=''
                                             required
                                             {...formik.getFieldProps('addressLine1')}
-                                        />
+                                        /> */}
                                     </Grid>
                                     <Grid item xs={12} md={6} pl={2.5} pb={2.5}>
                                         <Input
