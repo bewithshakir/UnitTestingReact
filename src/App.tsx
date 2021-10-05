@@ -14,7 +14,13 @@ import Page from './navigation/Page';
 
 const App = ({ routes }: any) => {
   const { theme } = useTheme();
-  const queryClient = new QueryClient()
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        refetchOnWindowFocus: false,
+      },
+    },
+  })
   return (
     <QueryClientProvider client={queryClient}>
       <Router>

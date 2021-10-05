@@ -1,10 +1,10 @@
-import * as React from "react";
-import './grid.style.scss';
-import { Button } from './../Button/Button.component';
 import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined';
-import DataGridActionsMenu from '../Menu/DataGridActionsMenu.component';
-import { Collapse, Paper, TableRow, TableHead, TableCell, TableBody, Table, Box } from '@mui/material';
+import { Box, CircularProgress, Collapse, Table, TableBody, TableCell, TableHead, TableRow } from '@mui/material';
+import * as React from "react";
 import { useTranslation } from 'react-i18next';
+import DataGridActionsMenu from '../Menu/DataGridActionsMenu.component';
+import { Button } from './../Button/Button.component';
+import './grid.style.scss';
 
 type HeadCellsOptions = {
     id: string;
@@ -17,11 +17,13 @@ interface GridBodyProps {
     order: string | any,
     orderBy: string,
     headCells: HeadCellsOptions[],
-    isError?: string
+    isError?: string,
+    isLoading?: boolean
+    openDrawer?:any
 }
 
 
-function descendingComparator(a: any, b: any, orderBy: any) {
+function descendingComparator (a: any, b: any, orderBy: any) {
     if (b[orderBy] < a[orderBy]) {
         return -1;
     }
@@ -32,13 +34,13 @@ function descendingComparator(a: any, b: any, orderBy: any) {
 }
 
 
-function getComparator(order: any, orderBy: any) {
+function getComparator (order: any, orderBy: any) {
     return order === "desc"
         ? (a: any, b: any) => descendingComparator(a, b, orderBy)
         : (a: any, b: any) => -descendingComparator(a, b, orderBy);
 }
 
-function stableSort(array: any, comparator: any) {
+function stableSort (array: any, comparator: any) {
     const stabilizedThis = array.map((el: any, index: any) => [el, index]);
     stabilizedThis.sort((a: any, b: any) => {
         const order = comparator(a[0], b[0]);
@@ -54,10 +56,10 @@ function stableSort(array: any, comparator: any) {
 
 const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
     const [selectedIndexKey, setSelectedKey] = React.useState(null);
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
 
     const getKeys = () => {
-        return Object.keys(props.rows[0]);
+        return Object.keys(props?.rows[0]);
     }
 
     const handleCollapaseClick = (key: any) => {
@@ -67,17 +69,19 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
             setSelectedKey(key);
         }
     }
-
+   const openDrawer =(event:React.SyntheticEvent)=>{
+     props.openDrawer(event) 
+   }
 
     const getRowsData = () => {
         var keys = getKeys();
-        {
-            return stableSort(props.rows, getComparator(props.order, props.orderBy))
-                .map((row: any, indexKey: any) => {
-                    return <React.Fragment>
-                         <TableRow key={indexKey}>
-                            {keys.map((key: any, index: any) => {
-                                return <TableCell component="th" scope="row" key={row[key]}>
+        return (
+            stableSort(props.rows, getComparator(props.order, props.orderBy))
+                .map((row: any, indexKey: any) =>
+                    <React.Fragment>
+                        <TableRow key={indexKey}>
+                            {keys.map((key: any, index: any) =>
+                                <TableCell component="th" scope="row" key={row[key]} onClick={()=>openDrawer(row)}>
                                     {props.headCells[index].type === 'text' ? index === 0 ? <b>{row[key]}</b> : row[key] :
                                         props.headCells[index].type === 'button' ?
                                             <Button
@@ -87,7 +91,7 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
                                                 onClick={() => handleCollapaseClick(indexKey)}
                                                 startIcon={< LocationOnOutlinedIcon />}
                                             >
-                                                {row[key]}
+                                                {0}
                                             </Button > :
                                             props.headCells[index].type === 'icon' ?
                                                 <DataGridActionsMenu
@@ -103,9 +107,7 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
                                                 : ""
                                     }
                                 </TableCell>
-                            })
-                            }
-
+                            )}
                         </TableRow>
                         <TableRow>
                             <TableCell className="grid-cell" colSpan={12}>
@@ -126,13 +128,19 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
                             </TableCell>
                         </TableRow>
                     </React.Fragment>
-                })
-        }
+                )
+        )
     }
 
-    return (
-        getRowsData()
-    )
+
+    if (props?.rows?.length > 1) {
+        return getRowsData()
+    } else if(props?.isLoading) {
+        return <CircularProgress />
+    }else {
+        return <div>{"No Data found"}</div>
+    }
+
 
 }
 

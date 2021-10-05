@@ -1,4 +1,3 @@
-import { homedir } from 'os';
 import { lazy } from 'react';
 
 export const routes = [
@@ -11,13 +10,18 @@ export const routes = [
     routes: [
       {
         path: "/addCustomer",
-        component: lazy(() => import('./pages/AddCustomer')),
+        component: lazy(() => import('./pages/AddCustomer/AddCustomer')),
         version: "Breadcrumbs-Single",
       }]
   },
   {
     path: "/query",
     component: lazy(() => import('./pages/QueryTest')),
+    exact: false,
+  },
+  {
+    path: "/demo",
+    component: lazy(() => import('./pages/DemoComponents/DemoComponents')),
     exact: false,
   }
 ];

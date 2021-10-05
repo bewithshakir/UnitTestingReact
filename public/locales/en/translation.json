@@ -75,5 +75,13 @@
     "users": "Users",
     "dsp": "DSP",
     "attachments": "Attachments"
+  },
+  "customerManagement":{
+    "sortBy":{
+      "atoz":"A-Z",
+      "ztoa":"Z-A",
+      "newestToOldest":"Newest to Oldest",
+      "oldestToNew":"Oldest to New"
+    }
   }
 }

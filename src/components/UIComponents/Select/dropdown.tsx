@@ -1,6 +1,9 @@
+import { FormikErrors } from 'formik';
 import { useState, useEffect, Fragment } from 'react';
 import { DropSearchIcon as SearchIcon, Check, ArrowUp, ArrowDown, UnCheck } from '../../../assets/icons';
 import './dropdown.scss';
+import { FormHelperText } from '@mui/material';
+import { InputLabel } from '@material-ui/core';
 
 type item = {
   label: string,
@@ -14,13 +17,21 @@ interface props {
   multiple?: boolean;
   value?: Array<item>;
   items: Array<item>;
+
+  required?: boolean;
+  error?: boolean;
+  helperText?: string | string[] | FormikErrors<item>[] | undefined;
+
+  description?: string;
   onChange: (...args: any[]) => void;
+  onBlur?: (...args: any[]) => void;
 }
 
 export const Divider = () => <div className='divider'></div>;
 
 
-export default function Select(props: props) {
+export default function Select (props: props) {
+  console.log("🚀 ~ file: dropdown.tsx ~ line 34 ~ Select ~ props", props)
   const [selectedValues, setSelectedValues] = useState<any>([]);
   const [selectProps, setSelectedProps] = useState({ focusedValue: -1, isFocused: false, isOpen: false });
   const [searchTerm, setSearchTerm] = useState('');
@@ -74,7 +85,7 @@ export default function Select(props: props) {
     }
   }
 
-  const onBlur = () => {
+  const onBlurSelect = () => {
     const { items, multiple } = props;
     if (multiple) {
       setSelectedProps(x => ({ ...x, isOpen: false, isFocused: false, focusedValue: -1 }));
@@ -85,6 +96,9 @@ export default function Select(props: props) {
         focusedValue = items.findIndex(option => option.value === value)
       }
       setSelectedProps(x => ({ ...x, isOpen: false, isFocused: false, focusedValue: focusedValue }));
+    }
+    if (props.onBlur) {
+      props.onBlur();
     }
   }
 
@@ -287,24 +301,36 @@ export default function Select(props: props) {
     )
   }
 
+  let selectionClassName = `selection ${selectProps.isOpen ? 'open' : ''} ${props.helperText ? 'error' : ''}`
+
 
   return (
-    <div
-      className="select-dropdown"
-      onFocus={onFocus}
-      onBlur={onBlur}
-      onKeyDown={onKeyDown}
-      tabIndex={0}
-    >
-      <label className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink label"><b>{props.label.toUpperCase()}</b></label>
-      <div className={selectProps.isOpen ? "selection open" : "selection"} onClick={onClick}>
-        {renderValues()}
-        <span className="arrow">
-          {selectProps.isOpen ? <ArrowUp /> : <ArrowDown />}
-        </span>
+    <>
+      <div
+        className="select-dropdown"
+        onFocus={onFocus}
+        onBlur={onBlurSelect}
+        onKeyDown={onKeyDown}
+        tabIndex={0}
+      >
+        <InputLabel shrink htmlFor={props.name} className="label" aria-labelledby={props.label} aria-required={props.required}>
+          <b>{props.label.toUpperCase()}{props.required && props.label && (<span className='super'>*</span>)}</b>
+        </InputLabel>
+        <div className={selectionClassName} onClick={onClick}>
+          {renderValues()}
+          <span className="arrow">
+            {selectProps.isOpen ? <ArrowUp /> : <ArrowDown />}
+          </span>
+        </div>
+        {renderOptions()}
       </div>
-      {renderOptions()}
-    </div>
+      {props.helperText && (
+        <FormHelperText
+          id={props.description}
+          error={props.error}>
+          {props.helperText}
+        </FormHelperText>)}
+    </>
   )
 
 }

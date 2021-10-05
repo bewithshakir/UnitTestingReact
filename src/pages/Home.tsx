@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import moment from "moment";
-import { Content } from '../components/UIComponents/Content/Content.component';
+import { Content } from "../pages/CustomerManagement";
 import { Footer } from '../components/UIComponents/Footer/Footer.component';
 import bg from "../assets/images/bg_shapes.svg"
 import { useQuery } from 'react-query';
-import { fetchQueryTodos } from '../actions/todos-with-query';
+import { fetchQueryTodos } from '../hooks/todos-with-query';
 import { NavLink, useHistory } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import Input from '../components/UIComponents/Input/Input';
@@ -18,53 +18,18 @@ import { RightInfoPanel } from '../components/UIComponents/RightInfoPanel/RightI
 import { Button } from '../components/UIComponents/Button/Button.component';
 
 
+
 const Home = (props: { version: any }) => {
-    const { data } = useQuery('repoData', fetchQueryTodos, { retry: false })
-    console.log(data)
-    const [form, setForm] = useState({ userName: '', email: '', item: [{ label: 'Nike', value: 'Nike' }], searchTerm:'', startDate: moment(), endDate: moment() });
-    const debouncedValue = useDebounce<string>(form.searchTerm, 1000);
-    // right info panel and customer filter panel  starts here--
-    const [infoPanelVisible, setInfoPanelVisible] = React.useState(false);
-    const [custFilterPanelVisible, setCustFilterPanelVisible] = React.useState(false);
-    const handleInfoPanelOpen = () => setInfoPanelVisible(!infoPanelVisible);
-    const handleInfoPanelClose = () => setInfoPanelVisible(false);
-    const handleCustFilterPanelOpen = () => setCustFilterPanelVisible(!custFilterPanelVisible);
-    const handleCustFilterPanelClose = (filterData:object) => {
-        console.log("returnedFilter Data--->",filterData);
-        setCustFilterPanelVisible(false)
-    };
-    const rightPanelHeading = 'Accurate Transportation';
-    const rightPanelData = {
-        'Customer ID': '0923131',
-        'Name': 'Peter Parker',
-        'Email': 'peterparker@gmail.com',
-        'Phone': '0923131',
-        'Settlement Type': 'WEX',
-        'Card Added': "",
-        'Address': '9555 S Post Oak Rd',
-        'City': 'Houston',
-        'State': 'Texas',
-        'Country': 'US',
-        'ZIP Code': '30013',
-      }
-      
-    // right info panel and customer filter panel  ends here--
-    const items = [
-        { label: 'Amazon', value: 'Amazon' },
-        { label: 'Nike', value: 'Nike' },
-        { label: 'Flipkart', value: 'Flipkart' },
-        { label: 'Apple', value: 'Apple' },
-        { label: 'Hp', value: 'Hp' }
-    ]
+    
+   
     const history = useHistory()
     function onClickBack() {
         history.goBack()
     }
+  
+
     console.log(props, "home props")
-    const handleChange = (e: any) => setForm(x => ({ ...x, [e.target.name]: e.target.value }));
-    useEffect(() => { console.log('Debounced Value:', debouncedValue) }, [debouncedValue]);
-    const onDateChange = (name: string, newValue: Date | string | null | moment.Moment) => setForm(x => ({ ...x, [name]: newValue }));
-    const { t } = useTranslation()
+    
     return (
         <Box sx={{ display: 'flex' }}>
             <CssBaseline />
@@ -72,78 +37,7 @@ const Home = (props: { version: any }) => {
                 version={props.version}
                 onBack={onClickBack}
             />
-            <div className="App">
-                <div className={'app__main'}>
-                    <Content />
-                    <NavLink to="/query">{t("query")}</NavLink>
-                    <Input name='userName'
-                        label='User Name'
-                        type='text'
-                        onChange={handleChange}
-                        value={form.userName}
-                        description=''
-                        helperText='User Name'
-                        error
-                    />
-                    <Select
-                        name='item'
-                        label='Select item'
-                        value={form.item}
-                        placeholder='Choose'
-                        items={items}
-                        onChange={handleChange}
-                    />
-                    <Input name='email'
-                        label='Email'
-                        onChange={handleChange}
-                        value={form.email}
-                        description=''
-                        required
-                    />
-                    <Box  sx={{'marginBottom': '10px'}}>
-                        <Button
-                            types="primary"
-                            onClick={handleCustFilterPanelOpen}
-                            >
-                            {t("Customer Filter Panel")}
-                        </Button>
-                    </Box> 
-                    <Box>
-                        <Button
-                            types="primary"
-                            onClick={handleInfoPanelOpen}
-                            >
-                            {   t("Right Info Panel")}
-                        </Button>
-                    </Box>
-                    <SearchInput
-                        name='searchTerm'
-                        value={form.searchTerm}
-                        onChange={handleChange}
-                    />
-                    {/* temporary styles */}
-                    <Box style={{'marginLeft':'20px'}}> 
-                        <DatePicker
-                            label="FROM DATE" 
-                            id="cust-filter-end-date"
-                            disableBeforeDate={form.startDate} 
-                            placeholder="To Date" 
-                            name="endDate" 
-                            onChange={onDateChange} 
-                            value={form.endDate} 
-                            required
-                        />
-                    </Box>
-                    <Footer />
-                </div>
-                <div className={'app__bg'}>
-                    <img src={bg} alt={'bg'} />
-                </div>
-
-            </div>
-            {/* <CustomerFilterPanel open={custFilterPanelVisible} onClose={handleCustFilterPanelClose} /> */}
-            <RightInfoPanel panelType={'customer-filter'} open={custFilterPanelVisible} headingText={rightPanelHeading} info={rightPanelData} onClose={handleCustFilterPanelClose} />
-            <RightInfoPanel panelType={'info-view'} open={infoPanelVisible} headingText={rightPanelHeading} info={rightPanelData} onClose={handleInfoPanelClose} />
+            <Content />
         </Box>
     );
 };

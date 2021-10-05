@@ -33,7 +33,7 @@ export const RightInfoPanel: React.FC<InfoPanelProps> = ({ open, headingText, in
 
   const panelDrawer = <Drawer
     className={"right_panel_main_class " + (panelType === "info-view" ? "right_info_panel": "customer_filter_panel")}
-    variant="temporary"
+    variant={panelType === "customer-filter"?"temporary":"persistent"}
     anchor="right"
     open={open}
   >
@@ -58,6 +58,6 @@ export const RightInfoPanel: React.FC<InfoPanelProps> = ({ open, headingText, in
   }
 
   return (
-    <React.Fragment>{renderPanel()}</React.Fragment>
+    <React.Fragment>{panelDrawer}</React.Fragment>
   );
 }

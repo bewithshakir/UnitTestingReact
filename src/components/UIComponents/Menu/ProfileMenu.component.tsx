@@ -20,7 +20,7 @@ interface ProfileMenuProps {
   menuName?: string,
   onSelect: (selectedValue: object) => void,
 }
-export default function ProfileMenu(props: ProfileMenuProps) {
+export default function ProfileMenu (props: ProfileMenuProps) {
   const [open, setOpen] = React.useState(false);
   const [selectedIndex, setSelectedIndex] = React.useState(-1);
   const anchorRef = React.useRef<HTMLButtonElement>(null);
@@ -48,7 +48,7 @@ export default function ProfileMenu(props: ProfileMenuProps) {
   };
 
 
-  function handleListKeyDown(event: React.KeyboardEvent) {
+  function handleListKeyDown (event: React.KeyboardEvent) {
     if (event.key === "Tab") {
       event.preventDefault();
       setOpen(false);
