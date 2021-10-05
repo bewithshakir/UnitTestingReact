@@ -279,14 +279,13 @@ const AddCustomer: React.FC<{}> = (props: any) => {
         history.push('/')
     }
 
-    // function handleGoogleAddressChange (addressObj: any) {
-    //     console.log("🚀 ~ file: AddCustomer.tsx ~ line 283 ~ handleGoogleAddressChange ~ addressObj", addressObj)
-    //     formik.setFieldValue('addressLine1', addressObj.addressLine1)
-    //     formik.setFieldValue('addressLine2', addressObj.addressLine2)
-    //     formik.setFieldValue('city', addressObj.city)
-    //     formik.setFieldValue('state', addressObj.state)
-    //     formik.setFieldValue('postalCode', addressObj.postalCode)
-    // }
+    function handleGoogleAddressChange (addressObj: any) {
+        formik.setFieldValue('addressLine1', addressObj.addressLine1)
+        formik.setFieldValue('addressLine2', addressObj.addressLine2)
+        formik.setFieldValue('city', addressObj.city)
+        formik.setFieldValue('state', addressObj.state)
+        formik.setFieldValue('postalCode', addressObj.postalCode)
+    }
 
     return (
         <Box display="flex" mt={8}>
@@ -338,7 +337,7 @@ const AddCustomer: React.FC<{}> = (props: any) => {
                                         />
                                     </Grid>
                                     <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
-                                        {/* <AutocompleteInput
+                                        <AutocompleteInput
                                             name='addressLine1'
                                             label='ADDRESS LINE 1'
                                             onChange={handleGoogleAddressChange}
@@ -347,17 +346,8 @@ const AddCustomer: React.FC<{}> = (props: any) => {
                                             helperText={(formik.touched.addressLine1 && formik.errors.addressLine1) ? formik.errors.addressLine1 : undefined}
                                             error={(formik.touched.addressLine1 && formik.errors.addressLine1) ? true : false}
                                             required
-                                        /> */}
-                                        <Input
-                                            id='addressLine1'
-                                            label='ADDRESS LINE 1'
-                                            type='text'
-                                            helperText={(formik.touched.addressLine1 && formik.errors.addressLine1) ? formik.errors.addressLine1 : undefined}
-                                            error={(formik.touched.addressLine1 && formik.errors.addressLine1) ? true : false}
-                                            description=''
-                                            required
-                                            {...formik.getFieldProps('addressLine1')}
                                         />
+
                                     </Grid>
                                     <Grid item xs={12} md={6} pl={2.5} pb={2.5}>
                                         <Input
