@@ -5,6 +5,7 @@ import { IconButton, AppBar, Toolbar, Box } from "@mui/material";
 import DataGridActionsMenu from "../Menu/DataGridActionsMenu.component";
 import { CloseIcon } from "../../../assets/icons";
 import "./RightInfoPanel.style.scss";
+import { useTheme } from '../../../contexts/Theme/Theme.context';
 
 interface InfoPanelProps {
     headingText: string;
@@ -12,11 +13,12 @@ interface InfoPanelProps {
     onClose: (...args: any[]) => void;
 }
 export const PanelHeader: React.FC<InfoPanelProps> = ({ headingText, panelType, onClose }) => {
+    const {theme} = useTheme();
     const { t } = useTranslation();
     return (<div className="right_info_panel_header">
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static">
-                <Toolbar variant="dense">
+                <Toolbar sx={{bgcolor:theme["--Primary"], border: 1}} variant="dense">
                     {panelType === "info-view" && <IconButton
                         edge="start"
                         onClick={onClose}

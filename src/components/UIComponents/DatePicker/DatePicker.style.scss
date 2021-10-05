@@ -1,6 +1,9 @@
 div{
 .date-picker-container{
     display: flex;
+    .MuiInputLabel-outlined.MuiInputLabel-shrink {
+        transform: translate(0px, 0px) scale(0.75);
+    }    
     .date-picker-label{
         color: var(--universalDarkgray);
         font-size: 14px;
