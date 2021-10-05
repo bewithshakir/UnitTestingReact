@@ -7,10 +7,11 @@ import EnhancedGridHead from './headerGrid.component';
 interface GridComponentProps {
     width?: string,
     height?: string,
-    rows?: any[], 
+    rows?: any[],
     isLoading?: boolean,
-    getPages?:any
+    getPages?: any
     ref?: any
+    openDrawer?: any
 }
 
 let x: GridComponentProps = {
@@ -19,45 +20,27 @@ let x: GridComponentProps = {
 }
 
 
-const headCells = [{ id: "customername", label: "CUSTOMER NAME", type: 'text' },
-{ id: "contactname", label: "CANTACT NAME", type: 'text' },
-{ id: "address", label: "ADDRESS", type: 'text' },
-{ id: "city", label: "CITY", type: 'text' },
-{ id: "zipcode", label: "ZIP", type: 'text' },
-{ id: "state", label: "STATE", type: 'text' },
-{ id: "lots", label: "LOTS", type: 'button' },
-// { id: "settlementtype", label: "SETTLEMENT TYPE", type: 'text' },
-// { id: "cardAdded", label: "CARD ADDED", type: 'text' },
-{ id: "paymentType", label: "PAYMENT TYPE", type: 'text' },
-{ id: "phone", label: "PHONE", type: 'text' },
-{ id: "cardAdded", label: "CARD ADDED", type: 'text' },
-{ id: "country", label: "COUNTRY", type: 'text' },
-{ id: "email", label: "EMAIL", type: 'text' },
-// { id: "id", label: "ID", type: 'text' },
-{ id: "", label: "", type: 'icon' }
+const headCells = [
+    { id: "id", label: "ID", type: 'text' },
+    { id: "customername", label: "CUSTOMER NAME", type: 'text' },
+    { id: "contactname", label: "CONTACT NAME", type: 'text' },
+    { id: "address", label: "ADDRESS", type: 'text' },
+    { id: "city", label: "CITY", type: 'text' },
+    { id: "state", label: "STATE", type: 'text' },
+    { id: "zipcode", label: "ZIP", type: 'text' },
+    { id: "lots", label: "LOTS", type: 'button' },
+    { id: "phone", label: "PHONE", type: 'text' },
+    { id: "paymentType", label: "PAYMENT TYPE", type: 'text' },
+    { id: "country", label: "COUNTRY", type: 'text' },
+    { id: "cardAdded", label: "CARD ADDED", type: 'text' },
+    { id: "", label: "", type: 'icon' }
 ];
 
 const rows = [{ "customername": "Accurate Transportation", "contactname": "Peter Parker", "address": "9555 Post Oak Rd", "city": "Houston", "state": "TX", "zip": 77024, "lots": 20, "settlementtype": "Voyager", "icon": "icon" },
 { "customername": "Accurate Transportation", "contactname": "Peter Parker", "address": "9555 Post Oak Rd", "city": "Houston", "state": "TX", "zip": 77024, "lots": 21, "settlementtype": "Voyager" },
 { "customername": "B_Accurate Transportation", "contactname": "Peter Parker", "address": "9555 Post Oak Rd", "city": "Houston", "state": "TX", "zip": 77024, "lots": 10, "settlementtype": "Voyager" },
 { "customername": "C_Accurate Transportation", "contactname": "Peter Parker", "address": "9555 Post Oak Rd", "city": "Houston", "state": "TX", "zip": 77024, "lots": 18, "settlementtype": "Voyager" },
-{ "customername": "Accurate Transportation", "contactname": "Peter Parker", "address": "9555 Post Oak Rd", "city": "Houston", "state": "TX", "zip": 77024, "lots": 20, "settlementtype": "Voyager" },
-{ "customername": "Accurate Transportation", "contactname": "Peter Parker", "address": "9555 Post Oak Rd", "city": "Houston", "state": "TX", "zip": 77024, "lots": 20, "settlementtype": "Voyager" },
-{ "customername": "Accurate Transportation", "contactname": "Peter Parker", "address": "9555 Post Oak Rd", "city": "Houston", "state": "TX", "zip": 77024, "lots": 21, "settlementtype": "Voyager" },
-{ "customername": "B_Accurate Transportation", "contactname": "Peter Parker", "address": "9555 Post Oak Rd", "city": "Houston", "state": "TX", "zip": 77024, "lots": 10, "settlementtype": "Voyager" },
-{ "customername": "C_Accurate Transportation", "contactname": "Peter Parker", "address": "9555 Post Oak Rd", "city": "Houston", "state": "TX", "zip": 77024, "lots": 18, "settlementtype": "Voyager" },
-{ "customername": "Accurate Transportation", "contactname": "Peter Parker", "address": "9555 Post Oak Rd", "city": "Houston", "state": "TX", "zip": 77024, "lots": 20, "settlementtype": "Voyager" },
-{ "customername": "Accurate Transportation", "contactname": "Peter Parker", "address": "9555 Post Oak Rd", "city": "Houston", "state": "TX", "zip": 77024, "lots": 20, "settlementtype": "Voyager" },
-{ "customername": "Accurate Transportation", "contactname": "Peter Parker", "address": "9555 Post Oak Rd", "city": "Houston", "state": "TX", "zip": 77024, "lots": 21, "settlementtype": "Voyager" },
-{ "customername": "B_Accurate Transportation", "contactname": "Peter Parker", "address": "9555 Post Oak Rd", "city": "Houston", "state": "TX", "zip": 77024, "lots": 10, "settlementtype": "Voyager" },
-{ "customername": "C_Accurate Transportation", "contactname": "Peter Parker", "address": "9555 Post Oak Rd", "city": "Houston", "state": "TX", "zip": 77024, "lots": 18, "settlementtype": "Voyager" },
-{ "customername": "Accurate Transportation", "contactname": "Peter Parker", "address": "9555 Post Oak Rd", "city": "Houston", "state": "TX", "zip": 77024, "lots": 20, "settlementtype": "Voyager" },
-{ "customername": "Accurate Transportation", "contactname": "Peter Parker", "address": "9555 Post Oak Rd", "city": "Houston", "state": "TX", "zip": 77024, "lots": 20, "settlementtype": "Voyager" },
-{ "customername": "Accurate Transportation", "contactname": "Peter Parker", "address": "9555 Post Oak Rd", "city": "Houston", "state": "TX", "zip": 77024, "lots": 21, "settlementtype": "Voyager" },
-{ "customername": "B_Accurate Transportation", "contactname": "Peter Parker", "address": "9555 Post Oak Rd", "city": "Houston", "state": "TX", "zip": 77024, "lots": 10, "settlementtype": "Voyager" },
-{ "customername": "C_Accurate Transportation", "contactname": "Peter Parker", "address": "9555 Post Oak Rd", "city": "Houston", "state": "TX", "zip": 77024, "lots": 18, "settlementtype": "Voyager" },
 { "customername": "Accurate Transportation", "contactname": "Peter Parker", "address": "9555 Post Oak Rd", "city": "Houston", "state": "TX", "zip": 77024, "lots": 20, "settlementtype": "Voyager" }];
-
 
 // const headCells1 = [{ id: "lotname", label: "LOT NAME", type: 'text' },
 // { id: "streetaddress", label: "STREET ADDRESS", type: 'text' },
@@ -92,7 +75,7 @@ const GridComponent: React.FC<GridComponentProps> = (props) => {
     const handleTableScroll = (event: any) => {
         const bottomValue = event.target.scrollHeight - event.target.scrollTop;
         if (bottomValue - event.target.clientHeight <= 0) {
-           props.getPages()
+            props.getPages()
         }
     };
 
@@ -112,7 +95,7 @@ const GridComponent: React.FC<GridComponentProps> = (props) => {
                                 onRequestSort={handleRequestSort}
                             />
                             <EnhancedGridBody
-                                rows={props.rows}
+                                rows={rows}
                                 order={order}
                                 orderBy={orderBy}
                                 headCells={headCells}

@@ -3,13 +3,14 @@ import { AxiosRequestConfig } from "axios";
 import axios from "../../infrastructure/ApiHelper"
 
 
-const getCustomers = async (pageParam: number, searchTerm: string, sortBy: string) => {
+
+const getCustomers = async (pageParam: number, searchTerm: string, sortOrder:{sortBy: string,order:string}) => {
     let query = new URLSearchParams()
     if (searchTerm) {
         query.append("search", searchTerm)
     }
-    query.append("sortBy", "customerName")
-    query.append("order", sortBy)
+    query.append("sortBy", sortOrder.sortBy)
+    query.append("order", sortOrder.order)
     const customersEntitySet = `/api/customer-service/customers?limit=15&offset=${pageParam}`
     const url = query ? `&countryCode=us&${query.toString()}` : `&countryCode=us`
     const options: AxiosRequestConfig = {
@@ -19,8 +20,8 @@ const getCustomers = async (pageParam: number, searchTerm: string, sortBy: strin
     const { data } = await axios(options);
     return data;
 };
-export const useCustomers = (query: string, sortBy: string) => {
-    return useInfiniteQuery(["getCustomers", query, sortBy], ({ pageParam = 0 }) => getCustomers(pageParam, query, sortBy), {
+export const useCustomers = (query: string, sortOrder:{sortBy: string,order:string}) => {
+    return useInfiniteQuery(["getCustomers", query, sortOrder], ({ pageParam = 0 }) => getCustomers(pageParam, query, sortOrder), {
         getNextPageParam: (lastGroup: any, allGroups:any) => {
           if(lastGroup.data.pagination.offset < lastGroup.data.pagination.totalCount ){
               return lastGroup.data.pagination.offset + 15
