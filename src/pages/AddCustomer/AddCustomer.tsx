@@ -369,6 +369,7 @@ const AddCustomer: React.FC<{}> = (props: any) => {
                                             helperText={(formik.touched.city && formik.errors.city) ? formik.errors.city : undefined}
                                             error={(formik.touched.city && formik.errors.city) ? true : false}
                                             description=''
+                                            disabled
                                             required
                                             {...formik.getFieldProps('city')}
                                         />
@@ -381,6 +382,7 @@ const AddCustomer: React.FC<{}> = (props: any) => {
                                             helperText={(formik.touched.state && formik.errors.state) ? formik.errors.state : undefined}
                                             error={(formik.touched.state && formik.errors.state) ? true : false}
                                             description=''
+                                            disabled
                                             required
                                             {...formik.getFieldProps('state')}
                                         />
@@ -393,6 +395,7 @@ const AddCustomer: React.FC<{}> = (props: any) => {
                                             helperText={(formik.touched.postalCode && formik.errors.postalCode) ? formik.errors.postalCode : undefined}
                                             error={(formik.touched.postalCode && formik.errors.postalCode) ? true : false}
                                             description=''
+                                            disabled
                                             required
                                             {...formik.getFieldProps('postalCode')}
                                         />
