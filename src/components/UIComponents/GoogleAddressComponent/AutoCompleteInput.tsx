@@ -7,17 +7,18 @@ import AutoComplete from '../AutoComplete/AutoComplete';
 
 interface props {
     value: string;
-    name: string; 
-    label: string;
+    name: string;
+    label?: string;
+    placeholder?: string;
     type: string;
     onChange: (...args: any[]) => void;
     onInputChange?: (...args: any[]) => void;
-    required ?: boolean
+    required?: boolean
     id?: string;
     helperText?: string;
     error?: boolean;
     onBlur?: (...args: any[]) => void;
-    description?:string;
+    description?: string;
 }
 
 interface MainTextMatchedSubstrings {
@@ -43,53 +44,55 @@ interface prediction {
 
 
 
-export default function AutoCompleteInput(props: props){
+export default function AutoCompleteInput (props: props) {
     const [value, setValue] = useState<prediction | null>(null);
     const [options, setOptions] = useState([]);
     const [inputValue, setInputValue] = useState('');
     const debouncedValue = useDebounce<string>(inputValue, 700);
     const { data } = FetchGoogleAddress(debouncedValue);
 
-    
-    
-    useEffect(()=> { 
-        if(data){
+
+
+    useEffect(() => {
+        if (data) {
             let predictions = data.data.predictions;
             setOptions(predictions);
         }
     }, [data])
 
-    const handleChange = (opt1:prediction|null) => {
-        if (opt1 !== null){
-        const { onChange } = props;
+    const handleChange = (opt1: prediction | null) => {
+        if (opt1 !== null) {
+            const { onChange } = props;
             let obj = {
                 target: {
                     name: 'placeId',
                     value: opt1.place_id
                 }
             }
-        onChange(obj)
+            onChange(obj)
         }
     }
- 
+
     return (
-        <AutoComplete 
+        <AutoComplete
             name={props.name}
+            description={props.description}
             error={props.error}
             required={props.required}
             helperText={props.helperText}
             freeSolo
             onBlur={props.onBlur}
-            options={options} 
-            label={props.label} 
+            options={options}
+            label={props.label}
+            placeholder={props.placeholder}
             value={value}
-            optionTitle='description' 
+            optionTitle='description'
             onChange={(event: any, newValue: prediction | null) => {
-             handleChange(newValue);   
-            setValue(newValue);
+                handleChange(newValue);
+                setValue(newValue);
             }}
             onInputChange={(event, newInputValue) => {
                 setInputValue(newInputValue);
-            }}/>
+            }} />
     )
 }
