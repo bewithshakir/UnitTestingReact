@@ -18,7 +18,7 @@ export const PanelHeader: React.FC<InfoPanelProps> = ({ headingText, panelType, 
     return (<div className="right_info_panel_header">
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static">
-                <Toolbar sx={{bgcolor:theme["--Primary"], border: 1}} variant="dense">
+                <Toolbar sx={{bgcolor:theme["--Primary"]}} variant="dense">
                     {panelType === "info-view" && <IconButton
                         edge="start"
                         onClick={onClose}

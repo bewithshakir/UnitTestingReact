@@ -5,13 +5,32 @@ import moment from "moment";
 import Select from "../Select/dropdown";
 import { DatePicker } from "../DatePicker/DatePicker.component";
 import { Button } from "../Button/Button.component";
+import { useTheme } from '../../../contexts/Theme/Theme.context';
+import { styled } from '@mui/system';
+
+const MyComponent = styled('div')({ /* Experimental Code: Custom Style div */
+    color: 'darkslategray',
+    backgroundColor: 'aliceblue',
+    padding: 8,
+    borderRadius: 4,
+  });
+
+  const CustomBtn = styled(Button)({   /* Experimental Code: Custom Style to TAPUP Button Component */
+    color: '#fff',
+    backgroundColor: '#000',
+    padding: 8,
+    borderRadius: 4,
+  });
+
+
 
 interface InfoPanelProps {
     info?: Object;
-    onClose:(...args: any[]) => void;
+    onClose: (...args: any[]) => void;
 }
 
 export const FilterContent: React.FC<InfoPanelProps> = ({ onClose }) => {
+    const { theme } = useTheme();
     const formInitial = { state: [], city: [], settlementType: [], startDate: null, endDate: null };
     const [form, setForm] = React.useState(formInitial);
     const { t } = useTranslation();
@@ -49,7 +68,7 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ onClose }) => {
 
     const applyFilter = () => {
         onClose(form);
-        console.log("inside-filter-main",form);
+        console.log("inside-filter-main", form);
     }
 
     const clearFilter = () => {
@@ -57,6 +76,8 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ onClose }) => {
     }
     return <div className="cust_filter_panel_content">
         {/* {JSON.stringify(form)} */}
+        <MyComponent>Styled div</MyComponent>  {/* Experimental Code: Custom Style div */}
+        <CustomBtn> Custom Btn </CustomBtn> {/* Experimental Code: Custom Style to TAPUP Button Component */}
         <Grid container spacing={2} className="cust_filter_parent_grid">
             <Grid item xs={12} columnSpacing={{ xs: 1, sm: 2, md: 3 }} container>
                 <Grid item xs={12} className="cust_filter_date_label_grid">

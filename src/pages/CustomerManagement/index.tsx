@@ -27,6 +27,7 @@ export const Content: React.FC<ContentProps> = (props) => {
   const [searchTerm, setSearchTerm] = React.useState("");
   const [drawerOpen, setDrawerOpen] = React.useState(false);
   const [sortOrder, setSortOrder] = React.useState<{sortBy:string,order:string}>({sortBy:"customerName",order:"asc"});
+  const [custFilterPanelVisible, setCustFilterPanelVisible] = React.useState(false);
   const { t } = useTranslation();
   const { data, fetchNextPage, isLoading, hasNextPage }: any = useCustomers(
     searchTerm,
@@ -68,6 +69,14 @@ export const Content: React.FC<ContentProps> = (props) => {
   data?.pages?.map((item: any) => {
     list.push(...item.data.customers )
   })
+ 
+
+  const handleCustFilterPanelOpen = () => setCustFilterPanelVisible(!custFilterPanelVisible);
+  const handleCustFilterPanelClose = (filterData:object) => {
+      console.log("returnedFilter Data--->",filterData);
+      setCustFilterPanelVisible(false)
+  };
+
   return (
     <div>
       <div className={"content"}>
@@ -76,7 +85,7 @@ export const Content: React.FC<ContentProps> = (props) => {
             <Button
               types="filter"
               aria-label="dafault"
-              onClick={() => { }}
+              onClick={handleCustFilterPanelOpen}
               startIcon={<FilterIcon />}
             >
               Filter
@@ -137,7 +146,7 @@ export const Content: React.FC<ContentProps> = (props) => {
           getPages={fetchNextPage}
           openDrawer={openDrawer}
         />
-
+       <RightInfoPanel panelType="customer-filter" open={custFilterPanelVisible} headingText={"Filters"} onClose={handleCustFilterPanelClose} />
        <RightInfoPanel panelType="info-view" open={drawerOpen} headingText={"Accurate Transportation"} info={info} onClose={drawerClose}/>
       </div>
     </div>
