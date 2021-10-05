@@ -134,7 +134,7 @@ const initialValues: AddCustomerForm = {
     ]
 };
 
-function getTokenApplicable(Obj: any) {
+function getTokenApplicable (Obj: any) {
     const temp: any = [];
     Object.entries(Obj).forEach(obj => {
         if (obj[1]) {
@@ -275,9 +275,18 @@ const AddCustomer: React.FC<{}> = (props: any) => {
 
     const history = useHistory()
 
-    function onClickBack() {
+    function onClickBack () {
         history.push('/')
     }
+
+    // function handleGoogleAddressChange (addressObj: any) {
+    //     console.log("🚀 ~ file: AddCustomer.tsx ~ line 283 ~ handleGoogleAddressChange ~ addressObj", addressObj)
+    //     formik.setFieldValue('addressLine1', addressObj.addressLine1)
+    //     formik.setFieldValue('addressLine2', addressObj.addressLine2)
+    //     formik.setFieldValue('city', addressObj.city)
+    //     formik.setFieldValue('state', addressObj.state)
+    //     formik.setFieldValue('postalCode', addressObj.postalCode)
+    // }
 
     return (
         <Box display="flex" mt={8}>
@@ -329,21 +338,17 @@ const AddCustomer: React.FC<{}> = (props: any) => {
                                         />
                                     </Grid>
                                     <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
-                                        <AutocompleteInput
-                                            name='address1'
+                                        {/* <AutocompleteInput
+                                            name='addressLine1'
                                             label='ADDRESS LINE 1'
-                                            onChange={(e)=>{
-                                                console.log('=====>',e);
-                                                // formik.setFieldValue('address1',e)
-                                            }}
-                                            //onBlur={props.onBlur}
+                                            onChange={handleGoogleAddressChange}
+                                            onBlur={() => { formik.setFieldTouched("addressLine1"); formik.validateField("addressLine1"); }}
                                             value={formik.values.addressLine1}
-                                            required
                                             helperText={(formik.touched.addressLine1 && formik.errors.addressLine1) ? formik.errors.addressLine1 : undefined}
                                             error={(formik.touched.addressLine1 && formik.errors.addressLine1) ? true : false}
-                                            //{...formik.getFieldProps('addressLine1')}
-                                        />
-                                        {/* <Input
+                                            required
+                                        /> */}
+                                        <Input
                                             id='addressLine1'
                                             label='ADDRESS LINE 1'
                                             type='text'
@@ -352,7 +357,7 @@ const AddCustomer: React.FC<{}> = (props: any) => {
                                             description=''
                                             required
                                             {...formik.getFieldProps('addressLine1')}
-                                        /> */}
+                                        />
                                     </Grid>
                                     <Grid item xs={12} md={6} pl={2.5} pb={2.5}>
                                         <Input
