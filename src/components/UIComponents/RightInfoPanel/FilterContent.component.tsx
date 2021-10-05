@@ -8,19 +8,7 @@ import { Button } from "../Button/Button.component";
 import { useTheme } from '../../../contexts/Theme/Theme.context';
 import { styled } from '@mui/system';
 
-const MyComponent = styled('div')({ /* Experimental Code: Custom Style div */
-    color: 'darkslategray',
-    backgroundColor: 'aliceblue',
-    padding: 8,
-    borderRadius: 4,
-  });
 
-  const CustomBtn = styled(Button)({   /* Experimental Code: Custom Style to TAPUP Button Component */
-    color: '#fff',
-    backgroundColor: '#000',
-    padding: 8,
-    borderRadius: 4,
-  });
 
 
 
@@ -34,6 +22,18 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ onClose }) => {
     const formInitial = { state: [], city: [], settlementType: [], startDate: null, endDate: null };
     const [form, setForm] = React.useState(formInitial);
     const { t } = useTranslation();
+
+    const MyComponent = styled('div')({ /* Experimental Code: Custom Style div */   
+        color: theme["--White"],
+        backgroundColor: theme["--Primary"]  /* Themes getting applied */
+      });
+
+      const CustomBtn = styled(Button)({   /* Experimental Code: Custom Style to TAPUP Button Component */
+        color: theme["--White"],
+        backgroundColor: theme["--Primary"] /* Themes NOT getting applied */
+      });
+    
+    
 
     const geoData = {
         states: [
@@ -76,8 +76,8 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ onClose }) => {
     }
     return <div className="cust_filter_panel_content">
         {/* {JSON.stringify(form)} */}
-        <MyComponent>Styled div</MyComponent>  {/* Experimental Code: Custom Style div */}
-        <CustomBtn> Custom Btn </CustomBtn> {/* Experimental Code: Custom Style to TAPUP Button Component */}
+        <MyComponent>Styled div</MyComponent>  {/* Experimental Code: Custom Style div -- theme getting applied here */}
+        <CustomBtn> Custom Btn </CustomBtn> {/* Experimental Code: Custom Style to TAPUP Button Component -- themes not getting applied here */}
         <Grid container spacing={2} className="cust_filter_parent_grid">
             <Grid item xs={12} columnSpacing={{ xs: 1, sm: 2, md: 3 }} container>
                 <Grid item xs={12} className="cust_filter_date_label_grid">
