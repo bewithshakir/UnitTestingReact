@@ -1,11 +1,11 @@
-import { FormControl, FormHelperText, useAutocomplete, InputBase} from '@mui/material';
+import { FormControl, FormHelperText, useAutocomplete, InputBase } from '@mui/material';
 import './AutoComplete.scss';
 
 interface props {
     name?: string;
     id?: string;
     width?: number | string;
-    label: string;
+    label?: string;
     placeholder?: string;
     description?: string;
     disabled?: boolean;
@@ -23,7 +23,7 @@ interface props {
     freeSolo?: boolean;
 }
 
-export default function Autocomplete(props: props) {
+export default function Autocomplete (props: props) {
     const {
         getRootProps,
         getInputLabelProps,
@@ -35,9 +35,9 @@ export default function Autocomplete(props: props) {
         id: 'autocomplete',
         options: props.options,
         getOptionLabel: (option) => option[props.optionTitle],
-        onChange:props.onChange,
+        onChange: props.onChange,
         onInputChange: props.onInputChange,
-        freeSolo:props.freeSolo
+        freeSolo: props.freeSolo
     });
 
 
@@ -46,10 +46,10 @@ export default function Autocomplete(props: props) {
             <div {...getRootProps()}>
                 <FormControl className='formInput'>
                     <label className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink label" {...getInputLabelProps()}>
-                        <b>{props.label.toUpperCase()}{props.required && props.label && (<span className='super'>*</span>)}</b>
+                        <b>{props.label && props.label.toUpperCase()}{props.required && props.label && (<span className='super'>*</span>)}</b>
                     </label>
                     <div className={props.error ? "MuiInputBase-root MuiInputBase-formControl Mui-error" : "MuiInputBase-root MuiInputBase-formControl"} aria-required={props.required}>
-                        <input aria-invalid="false" id="input" disabled={props.disabled} placeholder={props.placeholder} name={props.name} type="text" className="MuiInputBase-input" value={props.value} {...getInputProps()} onBlur={props.onBlur}/>
+                        <input aria-invalid="false" id="input" disabled={props.disabled} placeholder={props.placeholder} name={props.name} type="text" className="MuiInputBase-input" value={props.value} {...getInputProps()} onBlur={props.onBlur} />
                     </div>
                     {props.helperText && (
                         <FormHelperText
@@ -61,7 +61,7 @@ export default function Autocomplete(props: props) {
                 </FormControl>
             </div>
             {groupedOptions.length > 0 ? (
-                    <ul className='listbox' {...getListboxProps()}>
+                <ul className='listbox' {...getListboxProps()}>
                     {(groupedOptions as typeof props.options).map((option, index) => (
                         <li {...getOptionProps({ option, index })}>{option[props.optionTitle]}</li>
                     ))}
