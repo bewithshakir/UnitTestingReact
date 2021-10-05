@@ -18,16 +18,16 @@ import { Box, CssBaseline } from '@mui/material';
 
 
 const Home = (props: { version: any }) => {
-    
-   
+
+
     const history = useHistory()
     function onClickBack() {
         history.goBack()
     }
-  
+
 
     console.log(props, "home props")
-    
+
     return (
         <Box sx={{ display: 'flex' }}>
             <CssBaseline />
