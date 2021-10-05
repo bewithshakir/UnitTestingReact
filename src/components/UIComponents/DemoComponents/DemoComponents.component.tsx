@@ -14,13 +14,12 @@ import Input from '../Input/Input';
 import Select from '../Select/dropdown';
 import SearchInput from '../SearchInput/SearchInput';
 import { DatePicker } from '../DatePicker/DatePicker.component';
-import bg from "../../../assets/images/bg_shapes.svg"
 import { NavLink } from 'react-router-dom';
 import useDebounce from '../../../utils/useDebounce';
 import moment from "moment";
 import { useQuery } from 'react-query';
 import { fetchQueryTodos } from '../../../hooks/todos-with-query';
-import { Box, CssBaseline } from '@mui/material';
+import { Box, FormControl } from '@mui/material';
 import './DemoComponents.style.scss';
 
 export const DemoComponents: React.FC = () => {
@@ -61,7 +60,7 @@ export const DemoComponents: React.FC = () => {
             <div
                 className={'content'}
             >
-                {/* <h1 className={'content__title'}>
+                <h1 className={'content__title'}>
                     <span className={'content__title--colored'}>{t("themes")} </span>
                     {t("content1")}
                 </h1>
@@ -70,7 +69,7 @@ export const DemoComponents: React.FC = () => {
                 </p>
                 <p className={'content__paragraph'}>
                     {t("para1")} <b>{t("para1")}</b> ,<b>{t("para2")}</b> <b>{t("para3")}</b> <b>{t("para4")}</b>
-                </p> */}
+                </p>
                 <GridComponent />
                 <div className={'content__buttons'}>
                     <Button
@@ -88,100 +87,110 @@ export const DemoComponents: React.FC = () => {
                 </div>
             </div>
             <div className={'content__buttons1'}>
-                <SortbyMenu
-                    options={[
-                        t("menus.sortby.payment completed"),
-                        t("menus.sortby.payment in progress"),
-                        t("menus.sortby.recently added lots"),
-                    ]}
-                    onSelect={(value) => {
-                        console.log("🚀 ~ file: Content.component.tsx ~ line 60 ~ value", value)
-                    }}
-                />
+                <FormControl>
+                    <SortbyMenu
+                        options={[
+                            t("menus.sortby.payment completed"),
+                            t("menus.sortby.payment in progress"),
+                            t("menus.sortby.recently added lots"),
+                        ]}
+                        onSelect={(value) => {
+                            console.log("🚀 ~ file: Content.component.tsx ~ line 60 ~ value", value)
+                        }}
+                    />
+                </FormControl>
+                <FormControl>
+                    <ActionsMenu
+                        options={[
+                            {
+                                label: t("menus.actions.add vehicle"),
+                                icon: <PlusIcon />
+                            },
+                            {
+                                label: t("menus.actions.import data"),
+                                icon: <ImportIcon />
+                            },
+                            {
+                                label: t("menus.actions.export data"),
+                                icon: <ExportIcon />
+                            },
+                            {
+                                label: t("menus.actions.delete"),
+                                icon: <DeleteIcon />
+                            }
+                        ]}
+                        onSelect={(value) => {
+                            console.log("🚀 ~ file: Content.component.tsx ~ line 60 ~ value", value)
+                        }}
+                    />
+                </FormControl>
+                <FormControl>
+                    <DataGridActionsMenu
+                        options={[
+                            {
+                                label: t("menus.data-grid-actions.raise a request"),
+                            },
+                            {
+                                label: t("menus.data-grid-actions.fee & driver details"),
+                            },
+                            {
+                                label: t("menus.data-grid-actions.other details"),
+                            },
+                            {
+                                label: t("menus.data-grid-actions.contact details"),
+                            }
+                        ]}
+                        onSelect={(value) => {
+                            console.log("🚀 ~ file: Content.component.tsx ~ line 60 ~ value", value)
+                        }}
+                    />
+                </FormControl>
+                <FormControl>
+                    <ProfileMenu
+                        options={[
+                            {
+                                label: t("menus.profile-actions.profile"),
+                                icon: <CustomerProfileIcon2 /> // width={"20px"} height={"20px"}
+                            },
+                            {
+                                label: t("menus.profile-actions.settings"),
+                                icon: <SettingsIcon />
 
-                <ActionsMenu
-                    options={[
-                        {
-                            label: t("menus.actions.add vehicle"),
-                            icon: <PlusIcon />
-                        },
-                        {
-                            label: t("menus.actions.import data"),
-                            icon: <ImportIcon />
-                        },
-                        {
-                            label: t("menus.actions.export data"),
-                            icon: <ExportIcon />
-                        },
-                        {
-                            label: t("menus.actions.delete"),
-                            icon: <DeleteIcon />
-                        }
-                    ]}
-                    onSelect={(value) => {
-                        console.log("🚀 ~ file: Content.component.tsx ~ line 60 ~ value", value)
-                    }}
-                />
-
-                <DataGridActionsMenu
-                    options={[
-                        {
-                            label: t("menus.data-grid-actions.raise a request"),
-                        },
-                        {
-                            label: t("menus.data-grid-actions.fee & driver details"),
-                        },
-                        {
-                            label: t("menus.data-grid-actions.other details"),
-                        },
-                        {
-                            label: t("menus.data-grid-actions.contact details"),
-                        }
-                    ]}
-                    onSelect={(value) => {
-                        console.log("🚀 ~ file: Content.component.tsx ~ line 60 ~ value", value)
-                    }}
-                />
-
-                <ProfileMenu
-                    options={[
-                        {
-                            label: t("menus.profile-actions.profile"),
-                            icon: <CustomerProfileIcon2 /> // width={"20px"} height={"20px"}
-                        },
-                        {
-                            label: t("menus.profile-actions.settings"),
-                            icon: <SettingsIcon />
-
-                        },
-                        {
-                            label: t("menus.profile-actions.logout"),
-                            icon: <LogoutIcon />
-                        },
-                    ]}
-                    onSelect={(value) => {
-                        console.log("🚀 ~ file: Content.component.tsx ~ line 60 ~ value", value)
-                    }}
-                />
-
-                <Button
-                    types={'primary'}
-                    onClick={changeLanguage("en")}
-                >
-                    {t("english")}
-                </Button>
-                <Button
-                    types={'primary'}
-                    onClick={changeLanguage("es")}
-                >
-                    {t("spanish")}
-                </Button>
-                <Button
-                    types={'primary'}
-                    onClick={changeLanguage("fr")}
-                >
-                    {t("french")}
-                </Button>
+                            },
+                            {
+                                label: t("menus.profile-actions.logout"),
+                                icon: <LogoutIcon />
+                            },
+                        ]}
+                        onSelect={(value) => {
+                            console.log("🚀 ~ file: Content.component.tsx ~ line 60 ~ value", value)
+                        }}
+                    />
+                </FormControl>
+                <FormControl>
+                    <Button
+                        types={'primary'}
+                        onClick={changeLanguage("en")}
+                    >
+                        {t("english")}
+                    </Button>
+                </FormControl>
+                <FormControl>
+                    <Button
+                        types={'primary'}
+                        onClick={changeLanguage("es")}
+                    >
+                        {t("spanish")}
+                    </Button>
+                </FormControl>
+                <FormControl>
+                    <Button
+                        types={'primary'}
+                        onClick={changeLanguage("fr")}
+                    >
+                        {t("french")}
+                    </Button>
+                </FormControl>
             </div>
 
 
@@ -243,9 +252,6 @@ export const DemoComponents: React.FC = () => {
                     </Box>
 
                 </div>
-                {/* <div className={'app__bg'}>
-                    <img src={bg} alt={'bg'} />
-                </div> */}
 
             </div>
 

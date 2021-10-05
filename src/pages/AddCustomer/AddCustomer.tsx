@@ -1,10 +1,9 @@
+import React, { useState } from 'react';
 import { Add, FileCopy } from '@material-ui/icons';
 import { Box, Container, CssBaseline, FormControl, FormControlLabel, FormGroup, Grid, Link, Typography } from '@mui/material';
+import axios from 'axios';
 import { FieldArray, FormikProvider, useFormik } from 'formik';
 import moment from 'moment';
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
-import ToastMessage from '../../components/UIComponents/ToastMessage/ToastMessage.component';
 import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';
 import { Button } from '../../components/UIComponents/Button/Button.component';
@@ -13,6 +12,7 @@ import { DatePicker } from '../../components/UIComponents/DatePicker/DatePicker.
 import Input from '../../components/UIComponents/Input/Input';
 import HorizontalBar from '../../components/UIComponents/NavigationBar/HorizontalBar';
 import Select from '../../components/UIComponents/Select/dropdown';
+import ToastMessage from '../../components/UIComponents/ToastMessage/ToastMessage.component';
 import { getCountryCode } from '../../navigation/utils';
 import Legend from '../Legend/index';
 import "./AddCustomer.style.scss";

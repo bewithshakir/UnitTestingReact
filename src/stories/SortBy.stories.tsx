@@ -1,13 +1,14 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import SortbyMenu from '../components/UIComponents/Menu/SortbyMenu.component';
+import { FormControl } from '@mui/material';
 export default {
   title: 'Example/Menu',
   component: SortbyMenu,
 } as ComponentMeta<typeof SortbyMenu>;
 
 const Template: ComponentStory<typeof SortbyMenu> = (args) => {
-  return <SortbyMenu {...args} />;
+  return <FormControl><SortbyMenu {...args} /></FormControl>;
 }
 
 
