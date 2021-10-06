@@ -20,16 +20,16 @@ import { Button } from '../components/UIComponents/Button/Button.component';
 
 
 const Home = (props: { version: any }) => {
-    
-   
+
+
     const history = useHistory()
     function onClickBack() {
         history.goBack()
     }
-  
+
 
     console.log(props, "home props")
-    
+
     return (
         <Box sx={{ display: 'flex' }}>
             <CssBaseline />
