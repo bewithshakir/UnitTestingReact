@@ -27,15 +27,43 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ onClose }) => {
         color: theme["--White"],
         backgroundColor: theme["--Primary"]  /* Themes getting applied */
       });
+      
+      const ClearBtn = styled(Button)((props) =>({ 
+        "&&":{
+            width: '200px',
+            backgroundColor: theme["--Cancel-Btn"],
+            color: theme["--Darkgray"],
+            border: "1px solid "+ theme["--Gray"],
+            "&:hover": {
+              backgroundColor: theme["--Lightgray_2"],
+            }
+        }
+    }));
 
-      const CustomBtn = styled(Button)((props) =>({ 
+    const ApplyBtn = styled(Button)((props) =>({ 
+        "&&":{
+            width: '200px',
+            backgroundColor: theme["--Save-Btn"],
+            color: theme["--Darkgray"],
+            border: "0px",
+            "&:hover": {
+                backgroundColor: theme["--Gray"],
+                color: theme["--Save-Btn"],
+            }
+        }
+    }));
+    
+
+
+    const CustomBtn = styled(Button)((props) =>({ 
           "&&":{
             backgroundColor: theme["--Primary"],
             "&:hover": {
                 backgroundColor: theme["--Cancel-Btn"]  /* Experimental Code: Custom Style to TAPUP Button Component */
             } 
           }
-      }));
+    }));
+      
 
       const CustomSelect = styled('div')((props) =>({ 
           "& .selection": {
@@ -151,20 +179,20 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ onClose }) => {
             </Grid>
         </Grid>
         <div className="cust_filter_buttons_container">
-            < Button
+            <ClearBtn
                 types="cancel"
                 aria-label={t("customer-filter-panel.buttons.clear all")}
                 onClick={clearFilter}
             >
                 {t("customer-filter-panel.buttons.clear all")}
-            </Button >
-            <Button
+            </ClearBtn >
+            <ApplyBtn
                 types="save"
                 aria-label={t("customer-filter-panel.buttons.apply")}
                 onClick={applyFilter}
             >
                 {t("customer-filter-panel.buttons.apply")}
-            </Button>
+            </ApplyBtn>
         </div>
     </div>
 }
