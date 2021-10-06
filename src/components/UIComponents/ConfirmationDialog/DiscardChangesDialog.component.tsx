@@ -27,23 +27,12 @@ function DiscardChangesDialog (props: Props) {
             <Typography variant="h2" component="h2" className="fw-bold" p={2.5}>
                 {title}
             </Typography>
-            <DialogContent
-                sx={{
-                    paddingTop: 0,
-                    paddingLeft: 2.5,
-                    paddingRight: 2.5,
-                }}>
+            <DialogContent className="dialog-content">
                 <DialogContentText id="discard-changes-dialog-description" color={'var(--Darkgray)'}>
                     {content}
                 </DialogContentText>
             </DialogContent>
-            <DialogActions
-                className="content"
-                sx={{
-                    paddingTop: 0,
-                    paddingLeft: 2.5,
-                    paddingRight: 2.5,
-                }}>
+            <DialogActions className="dialog-actions">
                 <Button variant="outlined" onClick={handleToggle} className="action-no">
                     No
                 </Button>
