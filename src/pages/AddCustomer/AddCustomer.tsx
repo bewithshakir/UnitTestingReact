@@ -12,7 +12,7 @@ import Checkbox from '../../components/UIComponents/Checkbox/Checkbox.component'
 import { DatePicker } from '../../components/UIComponents/DatePicker/DatePicker.component';
 import Input from '../../components/UIComponents/Input/Input';
 import HorizontalBar from '../../components/UIComponents/NavigationBar/HorizontalBar';
-import Select from '../../components/UIComponents/Select/dropdown';
+import Select from '../../components/UIComponents/Select/SingleSelect';
 import { getCountryCode } from '../../navigation/utils';
 import Legend from '../Legend/index';
 import "./AddCustomer.style.scss";
@@ -52,8 +52,8 @@ interface AddCustomerForm {
     email: string,
     phoneNumber: string,
     // Payment and Wallet rules
-    paymentType: SelectProps[],
-    invoiceFrequency: SelectProps[],
+    paymentType: SelectProps,
+    invoiceFrequency: SelectProps,
     startDate: moment.Moment | null,
     endDate: moment.Moment | null,
     paymentTerm: string,
@@ -79,8 +79,8 @@ const initialValues: AddCustomerForm = {
     lastName: '',
     email: '',
     phoneNumber: '',
-    paymentType: [],
-    invoiceFrequency: [],
+    paymentType: { label: '', value: '' },
+    invoiceFrequency: {label:'', value:''},
     startDate: moment(),
     endDate: moment(),
     paymentTerm: '',
@@ -100,36 +100,36 @@ const initialValues: AddCustomerForm = {
         phoneNumber: '',
     }],
     paymentTypes: [
-        {
-            value: "1",
-            label: "voyager",
-        },
-        {
-            value: "2",
-            label: "invoice",
-        },
-        {
-            value: "3",
-            label: "wex",
-        },
+        // {
+        //     value: "1",
+        //     label: "voyager",
+        // },
+        // {
+        //     value: "2",
+        //     label: "invoice",
+        // },
+        // {
+        //     value: "3",
+        //     label: "wex",
+        // },
     ],
     initialInvoiceFrequencies: [
-        {
-            value: "1",
-            label: "Weekly",
-        },
-        {
-            value: "f6f0ec11-cd88-455d-9158-8ade75ddfb5b",
-            label: "Bi-weekly",
-        },
-        {
-            value: "g6f0ec11-cd88-455d-9158-8ade75ddfb8b",
-            label: "Daily",
-        },
-        {
-            value: "h6f0ec11-cd88-455d-9158-8ade75ddfb4b",
-            label: "Monthly",
-        }
+        // {
+        //     value: "1",
+        //     label: "Weekly",
+        // },
+        // {
+        //     value: "f6f0ec11-cd88-455d-9158-8ade75ddfb5b",
+        //     label: "Bi-weekly",
+        // },
+        // {
+        //     value: "g6f0ec11-cd88-455d-9158-8ade75ddfb8b",
+        //     label: "Daily",
+        // },
+        // {
+        //     value: "h6f0ec11-cd88-455d-9158-8ade75ddfb4b",
+        //     label: "Monthly",
+        // }
     ]
 };
 
@@ -191,9 +191,9 @@ const AddCustomer: React.FC<{}> = (props: any) => {
                 "contactLastNm": data.lastName,
                 "contactEmailId": data.email,
                 "contactPhoneNo": data.phoneNumber,
-                "paymentTypeId": data.paymentType[0].value,
+                "paymentTypeId": data.paymentType.value,
                 "customerTypeId": "f6f0ec11-cd88-455d-9158-8ade75ddfb3b",
-                "invoiceFrequencyId": data.invoiceFrequency[0].value,
+                "invoiceFrequencyId": data.invoiceFrequency.value,
                 "firstSettlementDt": data.endDate,
                 "paymentTerm": Number(data.paymentTerm),
                 "countryCd": getCountryCode(),
@@ -252,25 +252,25 @@ const AddCustomer: React.FC<{}> = (props: any) => {
         enableReinitialize: true,
     });
 
-    // const fetchList = (listof: string, fieldName: string) => {
-    //     axios.get(`http://20.81.30.168:4001/api/customer-service/customers/${listof}?countryCode=us`)
-    //         .then(response => response.data)
-    //         .then(({ data }) => {
-    //             if (data) {
-    //                 setTimeout(() => {
-    //                     formik.setFieldValue(fieldName, data.map((obj: any) => ({ label: obj[`${listof}Nm`].trim(), value: obj[`${listof}Id`].trim() })))
-    //                 }, 1);
-    //             }
-    //         })
-    //         .catch(error => {
-    //             setFormStatus(formStatusProps.error)
-    //         });
-    // }
+    const fetchList = (listof: string, fieldName: string) => {
+        axios.get(`http://20.81.30.168:4001/api/customer-service/customers/${listof}?countryCode=us`)
+            .then(response => response.data)
+            .then(({ data }) => {
+                if (data) {
+                    setTimeout(() => {
+                        formik.setFieldValue(fieldName, data.map((obj: any) => ({ label: obj[`${listof}Nm`].trim(), value: obj[`${listof}Id`].trim() })))
+                    }, 1);
+                }
+            })
+            .catch(error => {
+                setFormStatus(formStatusProps.error)
+            });
+    }
 
-    // useEffect(() => {
-    //     fetchList('paymentType', 'paymentTypes');
-    //     fetchList('invoiceFrequency', 'initialInvoiceFrequencies');
-    // }, [])
+    useEffect(() => {
+        fetchList('paymentType', 'paymentTypes');
+        fetchList('invoiceFrequency', 'initialInvoiceFrequencies');
+    }, [])
 
     const history = useHistory()
 
@@ -452,7 +452,7 @@ const AddCustomer: React.FC<{}> = (props: any) => {
                                             value={formik.values.paymentType}
                                             placeholder='Choose'
                                             items={formik.values.paymentTypes}
-                                            helperText={(formik.touched.paymentType && formik.errors.paymentType) ? formik.errors.paymentType : undefined}
+                                            //helperText={(formik.touched.paymentType && formik.errors.paymentType) ? formik.errors.paymentType : undefined}
                                             error={(formik.touched.paymentType && formik.errors.paymentType) ? true : false}
                                             onChange={formik.handleChange}
                                             onBlur={() => { formik.setFieldTouched("paymentType"); formik.validateField("paymentType"); }}
@@ -468,7 +468,7 @@ const AddCustomer: React.FC<{}> = (props: any) => {
                                             value={formik.values.invoiceFrequency}
                                             placeholder='Choose'
                                             items={formik.values.initialInvoiceFrequencies}
-                                            helperText={(formik.touched.invoiceFrequency && formik.errors.invoiceFrequency) ? formik.errors.invoiceFrequency : undefined}
+                                            //helperText={(formik.touched.invoiceFrequency && formik.errors.invoiceFrequency) ? formik.errors.invoiceFrequency : undefined}
                                             error={(formik.touched.invoiceFrequency && formik.errors.invoiceFrequency) ? true : false}
                                             onChange={formik.handleChange}
                                             onBlur={() => { formik.setFieldTouched("invoiceFrequency"); formik.validateField("invoiceFrequency"); }}

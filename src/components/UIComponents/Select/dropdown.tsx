@@ -42,6 +42,8 @@ export default function Select (props: props) {
     value && value.length > 0 && setSelectedValues([...value])
   }, [])
 
+  useEffect(()=>{}, [props]);
+
   const onFocus = () => setSelectedProps(x => ({ ...x, isFocused: true }));
   const onClick = () => {
     const { isOpen } = selectProps;
