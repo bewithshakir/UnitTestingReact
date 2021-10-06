@@ -69,8 +69,7 @@ export default function SingleSelect(props: props) {
 }
 
 SingleSelect.defaultProps = {
-    search: false,
+    required: false,
     id: "select-label",
-    multiple: false,
-    error: true,
+    error: false,
 }
