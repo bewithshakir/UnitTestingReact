@@ -51,7 +51,7 @@ export const DemoComponents: React.FC = () => {
         { label: 'Apple', value: 'Apple12' },
         { label: 'Hp', value: 'Hp23' }
     ]
-
+    const handleSelect = (e:any) => setForm(x=>({ ...x, item: e}));
     const handleChange = (e: any) => setForm(x => ({ ...x, [e.target.name]: e.target.value }));
     useEffect(() => { console.log('Debounced Value:', debouncedValue) }, [debouncedValue]);
     const onDateChange = (name: string, newValue: Date | string | null | moment.Moment) => setForm(x => ({ ...x, [name]: newValue }));
@@ -224,7 +224,7 @@ export const DemoComponents: React.FC = () => {
                         value={form.item}
                         placeholder='Choose'
                         items={items}
-                        onChange={handleChange}
+                        onChange={handleSelect}
                     />
                     <Input name='email'
                         label='Email'
