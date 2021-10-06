@@ -28,10 +28,21 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ onClose }) => {
         backgroundColor: theme["--Primary"]  /* Themes getting applied */
       });
 
-      const CustomBtn = styled(Button)({   /* Experimental Code: Custom Style to TAPUP Button Component */
-        color: theme["--White"],
-        backgroundColor: theme["--Primary"] /* Themes NOT getting applied */
-      });
+      const CustomBtn = styled(Button)((props) =>({ 
+          "&&":{
+            backgroundColor: theme["--Primary"],
+            "&:hover": {
+                backgroundColor: theme["--Cancel-Btn"]  /* Experimental Code: Custom Style to TAPUP Button Component */
+            } 
+          }
+      }));
+
+      const CustomSelect = styled('div')((props) =>({ 
+          "& .selection": {
+            border: "1px solid "+ theme["--Lightgray_2"],
+            background: theme["--White"] + "0% 0% no-repeat padding-box"
+          }
+    }));
     
     
 
@@ -76,8 +87,8 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ onClose }) => {
     }
     return <div className="cust_filter_panel_content">
         {/* {JSON.stringify(form)} */}
-        <MyComponent>Styled div</MyComponent>  {/* Experimental Code: Custom Style div -- theme getting applied here */}
-        <CustomBtn> Custom Btn </CustomBtn> {/* Experimental Code: Custom Style to TAPUP Button Component -- themes not getting applied here */}
+        {/* <MyComponent>Styled div</MyComponent> */} {/* Experimental Code: Custom Style div -- theme getting applied here */}
+         {/* <CustomBtn> Custom Btn </CustomBtn> */} {/* Experimental Code: Custom Style to TAPUP Button Component -- themes not getting applied here */}
         <Grid container spacing={2} className="cust_filter_parent_grid">
             <Grid item xs={12} columnSpacing={{ xs: 1, sm: 2, md: 3 }} container>
                 <Grid item xs={12} className="cust_filter_date_label_grid">
@@ -104,6 +115,7 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ onClose }) => {
                 </Grid>
             </Grid>
             <Grid item xs={12}>
+                {/* <CustomSelect> */}
                 <Select
                     name="state"
                     label="Select State"
@@ -113,6 +125,7 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ onClose }) => {
                     onChange={handleSelect}
                     multiple
                 />
+                {/* </CustomSelect> */}
             </Grid>
             <Grid item xs={12}>
                 <Select
