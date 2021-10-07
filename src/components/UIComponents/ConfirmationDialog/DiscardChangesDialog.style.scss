@@ -1,20 +1,23 @@
 div{
-    .dialog-content{
-        padding: 1.25rem;
-    }
-    .dialog-actions {
-        padding: 0rem 1.25rem 1.25rem 1.25rem;
-        .action-no {
-            padding-left: 3.05rem;
-            padding-right: 3.05rem;
-            margin-right: .9rem;
+    .discard-dialog-container{
+        max-width: 477px;
+        .dialog-content{
+            padding: 1.25rem;
         }
-        .action-yes{
-            background-color: var(--Darkgray);
-            color: var(--White);
-            margin-left: .9rem;
-            padding-left: 2.9rem;
-            padding-right: 2.9rem;
+        .dialog-actions {
+            padding: 0rem 1.25rem 1.25rem 1.25rem;
+            .action-no {
+                padding-left: 3.05rem;
+                padding-right: 3.05rem;
+                margin-right: .9rem;
+            }
+            .action-yes{
+                background-color: var(--Darkgray);
+                color: var(--White);
+                margin-left: .9rem;
+                padding-left: 2.9rem;
+                padding-right: 2.9rem;
+            }
         }
     }
 }

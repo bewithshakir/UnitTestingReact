@@ -18,28 +18,29 @@ function DiscardChangesDialog (props: Props) {
     return (
         <Dialog
             open={open}
-            maxWidth="sm"
             // ---------  un-comment the code to auto close model on outside click ---------
             // onClose={handleToggle} 
             aria-labelledby="discard-changes-dialog-title"
             aria-describedby="discard-changes-dialog-description"
         >
-            <Typography variant="h2" component="h2" className="fw-bold" p={2.5}>
-                {title}
-            </Typography>
-            <DialogContent className="dialog-content">
-                <DialogContentText id="discard-changes-dialog-description" color={'var(--Darkgray)'}>
-                    {content}
-                </DialogContentText>
-            </DialogContent>
-            <DialogActions className="dialog-actions">
-                <Button variant="outlined" onClick={handleToggle} className="action-no">
-                    No
-                </Button>
-                <Button color="default" onClick={handleConfirm} className="action-yes">
-                    Yes
-                </Button>
-            </DialogActions>
+            <div className="discard-dialog-container">
+                <Typography variant="h2" component="h2" className="fw-bold" p={2.5}>
+                    {title}
+                </Typography>
+                <DialogContent className="dialog-content">
+                    <DialogContentText id="discard-changes-dialog-description" color={'var(--Darkgray)'}>
+                        {content}
+                    </DialogContentText>
+                </DialogContent>
+                <DialogActions className="dialog-actions">
+                    <Button variant="outlined" onClick={handleToggle} className="action-no">
+                        No
+                    </Button>
+                    <Button color="default" onClick={handleConfirm} className="action-yes">
+                        Yes
+                    </Button>
+                </DialogActions>
+            </div>
         </Dialog>
     );
 }
