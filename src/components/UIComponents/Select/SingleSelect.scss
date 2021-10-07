@@ -8,7 +8,7 @@
 
     .react-select-container{
         &.error {
-        border: 1px solid var(--Tertiary);
+        border: 2px solid var(--Tertiary);
         box-shadow: none;
             &  .react-select{
                 &__control{
@@ -43,7 +43,7 @@
                     height: 50px;
                     border-radius: 0;
                     border-color: #404040;
-                    border: 1px solid var(--Darkgray);
+                    border: 2px solid var(--Darkgray);
                     box-shadow: none;
                 }
             }
