@@ -11,7 +11,7 @@ import GridComponent from '../DataGird/grid.component';
 import ToastMessage from '../ToastMessage/ToastMessage.component';
 import { Footer } from '../Footer/Footer.component';
 import Input from '../Input/Input';
-import Select from '../Select/dropdown';
+import Select from '../Select/SingleSelect';
 import SearchInput from '../SearchInput/SearchInput';
 import GoogleAutoCompleteAddress from '../GoogleAddressComponent/GoogleAutoCompleteAddress';
 import { DatePicker } from '../DatePicker/DatePicker.component';
@@ -42,16 +42,16 @@ export const DemoComponents: React.FC = () => {
     const handleMessageBoxClose = () => {
         setOpen(false);
     }
-    const [form, setForm] = useState({ userName: '', email: '', item: [{ label: 'Nike', value: 'Nike' }], searchTerm: '', startDate: moment(), endDate: moment(), address:{addressLine1:'', addressLine2:'', state:'', city:'', postalCode:''} });
+    const [form, setForm] = useState({ userName: '', email: '', item: { label: 'Nike', value: 'Nike' }, searchTerm: '', startDate: moment(), endDate: moment(), address:{addressLine1:'', addressLine2:'', state:'', city:'', postalCode:''} });
     const debouncedValue = useDebounce<string>(form.searchTerm, 1000);
     const items = [
-        { label: 'Amazon', value: 'Amazon' },
-        { label: 'Nike', value: 'Nike' },
-        { label: 'Flipkart', value: 'Flipkart' },
-        { label: 'Apple', value: 'Apple' },
-        { label: 'Hp', value: 'Hp' }
+        { label: 'Amazon', value: 'Amazon23' },
+        { label: 'Nike', value: 'Nike15' },
+        { label: 'Flipkart', value: 'Flipkart12' },
+        { label: 'Apple', value: 'Apple12' },
+        { label: 'Hp', value: 'Hp23' }
     ]
-
+    const handleSelect = (name:any,e:any) => setForm(x=>({ ...x, [name]: e}));
     const handleChange = (e: any) => setForm(x => ({ ...x, [e.target.name]: e.target.value }));
     useEffect(() => { console.log('Debounced Value:', debouncedValue) }, [debouncedValue]);
     const onDateChange = (name: string, newValue: Date | string | null | moment.Moment) => setForm(x => ({ ...x, [name]: newValue }));
@@ -224,7 +224,7 @@ export const DemoComponents: React.FC = () => {
                         value={form.item}
                         placeholder='Choose'
                         items={items}
-                        onChange={handleChange}
+                        onChange={handleSelect}
                     />
                     <Input name='email'
                         label='Email'
