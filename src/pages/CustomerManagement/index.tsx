@@ -21,18 +21,26 @@ import { RightInfoPanel } from "../../components/UIComponents/RightInfoPanel/Rig
 interface ContentProps {
   rows?: [];
 }
+
+// interface filterParams {
+//   filterBy: string;
+//   value: string[];
+// }
+
+
 export const Content: React.FC<ContentProps> = (props) => {
   const history = useHistory();
   const [info,setInfo] = React.useState({})
   const [searchTerm, setSearchTerm] = React.useState("");
   const [drawerOpen, setDrawerOpen] = React.useState(false);
   const [sortOrder, setSortOrder] = React.useState<{sortBy:string,order:string}>({sortBy:"customerName",order:"asc"});
-  const [filterParams, setFilterParams] = React.useState({});
+  const [filterData, setFilterData] = React.useState<{filterBy: string, value:string[]}>();
   const [custFilterPanelVisible, setCustFilterPanelVisible] = React.useState(false);
   const { t } = useTranslation();
   const { data, fetchNextPage, isLoading, hasNextPage }: any = useCustomers(
     searchTerm,
-    sortOrder
+    sortOrder,
+    filterData
   );
   const openDrawer = (row:SyntheticEvent)=>{
     setInfo(row)
@@ -73,9 +81,9 @@ export const Content: React.FC<ContentProps> = (props) => {
  
 
   const handleCustFilterPanelOpen = () => setCustFilterPanelVisible(!custFilterPanelVisible);
-  const handleCustFilterPanelClose = (filterData:object) => {
-      console.log("returnedFilter Data--->",filterData);
-      setFilterParams(filterData);
+  const handleCustFilterPanelClose = (filterObj:{filterBy: string, value:string[]}) => {
+      console.log("returnedFilter Data--->",filterObj);
+      setFilterData(filterObj);
       setCustFilterPanelVisible(false)
   };
 

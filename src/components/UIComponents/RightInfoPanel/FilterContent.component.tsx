@@ -2,7 +2,7 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { Grid } from "@mui/material";
 import moment from "moment";
-import Select from "../Select/dropdown";
+import Select from "../Select/SingleSelect";
 import { DatePicker } from "../DatePicker/DatePicker.component";
 import { Button } from "../Button/Button.component";
 import { useTheme } from '../../../contexts/Theme/Theme.context';
@@ -19,15 +19,18 @@ interface InfoPanelProps {
 
 export const FilterContent: React.FC<InfoPanelProps> = ({ onClose }) => {
     const { theme } = useTheme();
-    const formInitial = { state: [], city: [], settlementType: [], fromDate: null, toDate:null };
+
+    const formInitial = { state: [], city: [], paymentType: [], fromDate: null, toDate:null };
+    // const filterParamsInitial = { state: [], city: [], paymentType: [], date:[] };  //actual
+    const filterParamsInitial = { filterBy:"", value: []}; // temporary
     const [form, setForm] = React.useState(formInitial);
-    const [filterParams, setFilterParams] = React.useState({state: [], city: [], settlementType: [], date:[]} );
+    const [filterParams, setFilterParams] = React.useState<{filterBy: string, value:string[]}>(filterParamsInitial); 
     const { t } = useTranslation();
 
-    const MyComponent = styled('div')({ /* Experimental Code: Custom Style div */   
-        color: theme["--White"],
-        backgroundColor: theme["--Primary"]  /* Themes getting applied */
-      });
+    // const MyComponent = styled('div')({ /* Experimental Code: Custom Style div */   
+    //     color: theme["--White"],
+    //     backgroundColor: theme["--Primary"]  /* Themes getting applied */
+    //   });
       
       const ClearBtn = styled(Button)((props) =>({ 
         "&&":{
@@ -56,22 +59,22 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ onClose }) => {
     
 
 
-    const CustomBtn = styled(Button)((props) =>({ 
-          "&&":{
-            backgroundColor: theme["--Primary"],
-            "&:hover": {
-                backgroundColor: theme["--Cancel-Btn"]  /* Experimental Code: Custom Style to TAPUP Button Component */
-            } 
-          }
-    }));
+    // const CustomBtn = styled(Button)((props) =>({ 
+    //       "&&":{
+    //         backgroundColor: theme["--Primary"],
+    //         "&:hover": {
+    //             backgroundColor: theme["--Cancel-Btn"]  /* Experimental Code: Custom Style to TAPUP Button Component */
+    //         } 
+    //       }
+    // }));
       
 
-      const CustomSelect = styled('div')((props) =>({ 
-          "& .selection": {
-            border: "1px solid "+ theme["--Lightgray_2"],
-            background: theme["--White"] + "0% 0% no-repeat padding-box"
-          }
-    }));
+    //   const CustomSelect = styled('div')((props) =>({ 
+    //       "& .selection": {
+    //         border: "1px solid "+ theme["--Lightgray_2"],
+    //         background: theme["--White"] + "0% 0% no-repeat padding-box"
+    //       }
+    // }));
     
     
 
@@ -84,49 +87,55 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ onClose }) => {
             { label: "Florida", value: "Florida" }
         ],
         cities: [
-            { label: "New York", value: "New York" },
-            { label: "Los Angeles", value: "Los Angeles" },
-            { label: "Chicago", value: "Chicago" },
-            { label: "San Diego", value: "San Diego" },
-            { label: "Houston", value: "Houston" }
+            { label: "Houston", value: "Houston" },
+            { label: "Hoston", value: "Houston" },
+            { label: "Saratoga", value: "Saratoga" },
+            { label: "kalol", value: "kalol" },
         ]
     }
 
-    const settlementTypes = [
+    const paymentTypes = [
         { label: "Invoice", value: "Invoice" },
         { label: "Voyager", value: "Voyager" },
-        { label: "WEX", value: "WEX" }
+        { label: "WEX", value: "wex" }
     ]
 
     const onDateChange = (name: string, newValue: Date | string | null | moment.Moment) => {
         setForm(x => ({ ...x, [name]: newValue }));
-        // Object.values({...array1, [1]:"seven"});
-        // Object.assign([...oldArray], {[dynamicIndex]: 4});
+ 
+        // if(name == "fromDate"){ //actual
+        //     setFilterParams(x => ({ ...x, date:Object.assign([...filterParams.date], {[0]: newValue?moment(newValue).format("MM-DD-YYYY"):""})}));
+        // }else if(name=="toDate"){
+        //     setFilterParams(x => ({ ...x, date:Object.assign([...filterParams.date], {[1]: newValue?moment(newValue).format("MM-DD-YYYY"):""})}));
+        // }
 
-        if(name == "fromDate"){
-            setFilterParams(x => ({ ...x, date:Object.assign([...filterParams.date], {[0]: newValue})}));
+        if(name == "fromDate"){ //temporary
+            setFilterParams(x => ({ ...x, filterBy: "date", value:Object.assign([...filterParams.value], {[0]: newValue?moment(newValue).format("MM-DD-YYYY"):""})}));
         }else if(name=="toDate"){
-            setFilterParams(x => ({ ...x, date:Object.assign([...filterParams.date], {[1]: newValue})}));
+             setFilterParams(x => ({ ...x, filterBy: "date", value:Object.assign([...filterParams.value], {[1]: newValue?moment(newValue).format("MM-DD-YYYY"):""})}));
         }
+
         
     }
-
-    const handleSelect = (e: any) => {
-        setForm(x => ({ ...x, [e.target.name]: e.target.value }));
+    
+    const handleSelect = (name:any,e:any) => {
+        setForm(x => ({ ...x, [name]: e }));
+        // setFilterParams(x => ({...x, [name]: [...e.value], filterBy:name+"By"})) // actual
+        
+        setFilterParams(x => ({...x, value: [e.value], filterBy:name})) // temporary
     }
 
-    // const createFilterParams = (formData: Object) => {
-    //     // setFilterParams
-    // }
-
     const applyFilter = () => {
-        onClose(form);
+        onClose(filterParams);
         console.log("inside-filter-main", form);
     }
 
     const clearFilter = () => {
         setForm(formInitial);
+        setFilterParams(filterParamsInitial);
     }
+
+
     return <div className="cust_filter_panel_content">
         <div>{JSON.stringify(form)}</div>
         <div>{JSON.stringify(filterParams)}</div>
@@ -166,7 +175,7 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ onClose }) => {
                     value={form.state}
                     items={geoData.states}
                     onChange={handleSelect}
-                    multiple
+                    // multiple
                 />
                 {/* </CustomSelect> */}
             </Grid>
@@ -178,18 +187,18 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ onClose }) => {
                     value={form.city}
                     items={geoData.cities}
                     onChange={handleSelect}
-                    multiple
+                    // multiple
                 />
             </Grid>
             <Grid item xs={12}>
                 <Select
-                    name="settlementType"
+                    name="paymentType"
                     label="Settlement Type"
                     placeholder=""
-                    value={form.settlementType}
-                    items={settlementTypes}
+                    value={form.paymentType}
+                    items={paymentTypes}
                     onChange={handleSelect}
-                    multiple
+                    // multiple
                 />
             </Grid>
         </Grid>
