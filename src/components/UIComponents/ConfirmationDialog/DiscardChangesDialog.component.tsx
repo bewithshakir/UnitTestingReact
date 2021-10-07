@@ -18,8 +18,6 @@ function DiscardChangesDialog (props: Props) {
     return (
         <Dialog
             open={open}
-            // ---------  un-comment the code to auto close model on outside click ---------
-            // onClose={handleToggle} 
             aria-labelledby="discard-changes-dialog-title"
             aria-describedby="discard-changes-dialog-description"
         >
