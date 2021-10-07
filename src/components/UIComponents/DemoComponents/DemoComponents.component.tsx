@@ -11,7 +11,7 @@ import GridComponent from '../DataGird/grid.component';
 import ToastMessage from '../ToastMessage/ToastMessage.component';
 import { Footer } from '../Footer/Footer.component';
 import Input from '../Input/Input';
-import Select from '../Select/SingleSelect';
+import Select from '../Select/MultiSelect';
 import SearchInput from '../SearchInput/SearchInput';
 import GoogleAutoCompleteAddress from '../GoogleAddressComponent/GoogleAutoCompleteAddress';
 import { DatePicker } from '../DatePicker/DatePicker.component';
@@ -42,7 +42,7 @@ export const DemoComponents: React.FC = () => {
     const handleMessageBoxClose = () => {
         setOpen(false);
     }
-    const [form, setForm] = useState({ userName: '', email: '', item: { label: 'Nike', value: 'Nike' }, searchTerm: '', startDate: moment(), endDate: moment(), address:{addressLine1:'', addressLine2:'', state:'', city:'', postalCode:''} });
+    const [form, setForm] = useState({ userName: '', email: '', item: [{ label: 'Nike', value: 'Nike' }], searchTerm: '', startDate: moment(), endDate: moment(), address:{addressLine1:'', addressLine2:'', state:'', city:'', postalCode:''} });
     const debouncedValue = useDebounce<string>(form.searchTerm, 1000);
     const items = [
         { label: 'Amazon', value: 'Amazon23' },
