@@ -17,6 +17,7 @@ import { getCountryCode } from '../../navigation/utils';
 import Legend from '../Legend/index';
 import "./AddCustomer.style.scss";
 import AddCustomerValidationSchema from './validation';
+import DiscardChangesDialog from '../../components/UIComponents/ConfirmationDialog/DiscardChangesDialog.component';
 import AutocompleteInput from '../../components/UIComponents/GoogleAddressComponent/GoogleAutoCompleteAddress';
 
 interface SelectProps {
@@ -148,6 +149,17 @@ const AddCustomer: React.FC<{}> = (props: any) => {
 
     const [apiResposneState, setAPIResponse] = useState(false);
 
+    const [open, setOpen] = React.useState(false);
+
+    const handleModelToggle = () => {
+        setOpen(prev => !prev);
+    };
+
+    const handleModelConfirm = () => {
+        setOpen(prev => !prev);
+        history.push('/')
+    };
+
     const createNewCustomer = async (data: AddCustomerForm, resetForm: Function) => {
         try {
             const apiPayload = {
@@ -247,7 +259,7 @@ const AddCustomer: React.FC<{}> = (props: any) => {
     const history = useHistory()
 
     function onClickBack () {
-        history.push('/')
+        handleModelToggle();
     }
 
     // function handleGoogleAddressChange (addressObj: any) {
@@ -773,6 +785,7 @@ const AddCustomer: React.FC<{}> = (props: any) => {
                                     <Grid item md={12} mt={2} mb={1}>
                                         <Box className="import-file">
                                             <FileCopy />
+
                                             <Typography variant="h4" component="h4" display={"inline-flex"} className="fw-bold pl-3" mb={1}>
                                                 Import Contract (Optional)
                                             </Typography>
@@ -806,7 +819,14 @@ const AddCustomer: React.FC<{}> = (props: any) => {
                     </Container>
                 </Grid>
             </Grid>
-        </Box >
+            <DiscardChangesDialog
+                title="Discard the changes ?"
+                content="You have unsaved data which will be lost once you select discard or select cancel to save the data."
+                open={open}
+                handleToggle={handleModelToggle}
+                handleConfirm={handleModelConfirm}
+            />
+        </Box>
     );
 };
 

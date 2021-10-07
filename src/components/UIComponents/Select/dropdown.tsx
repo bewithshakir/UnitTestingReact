@@ -31,7 +31,6 @@ export const Divider = () => <div className='divider'></div>;
 
 
 export default function Select (props: props) {
-  console.log("🚀 ~ file: dropdown.tsx ~ line 34 ~ Select ~ props", props)
   const [selectedValues, setSelectedValues] = useState<any>([]);
   const [selectProps, setSelectedProps] = useState({ focusedValue: -1, isFocused: false, isOpen: false });
   const [searchTerm, setSearchTerm] = useState('');
