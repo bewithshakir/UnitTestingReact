@@ -65,8 +65,6 @@ interface AddCustomerForm {
     // Emergency Contact
     emergencyContact: EmergencyContact[]
     apContact: ApContact[],
-    paymentTypes: any[],
-    initialInvoiceFrequencies: any[]
 }
 
 const initialValues: AddCustomerForm = {
@@ -82,7 +80,7 @@ const initialValues: AddCustomerForm = {
     email: '',
     phoneNumber: '',
     paymentType: { label: '', value: '' },
-    invoiceFrequency: {label:'', value:''},
+    invoiceFrequency: { label: '', value: '' },
     startDate: moment(),
     endDate: moment(),
     paymentTerm: '',
@@ -101,9 +99,6 @@ const initialValues: AddCustomerForm = {
         email: '',
         phoneNumber: '',
     }],
-    paymentTypes: [],
-    initialInvoiceFrequencies: [
-]
 };
 
 function getTokenApplicable (Obj: any) {
@@ -141,11 +136,13 @@ const formStatusProps: IFormStatusProps = {
 
 const AddCustomer: React.FC<{}> = (props: any) => {
     const { t } = useTranslation();
-    // const [displayFormStatus, setDisplayFormStatus] = useState(false)
     const [formStatus, setFormStatus] = useState<IFormStatus>({
         message: '',
         type: '',
     })
+
+    const [paymentTypes, setpaymentTypes] = useState([]);
+    const [initialInvoiceFrequencies, setinitialInvoiceFrequencies] = useState([]);
 
     const [apiResposneState, setAPIResponse] = useState(false);
 
@@ -222,8 +219,6 @@ const AddCustomer: React.FC<{}> = (props: any) => {
                 });
         } catch (error) {
             setFormStatus(formStatusProps.error)
-        } finally {
-            // setDisplayFormStatus(true)
         }
     }
 
@@ -241,9 +236,11 @@ const AddCustomer: React.FC<{}> = (props: any) => {
             .then(response => response.data)
             .then(({ data }) => {
                 if (data) {
-                    setTimeout(() => {
-                        formik.setFieldValue(fieldName, data.map((obj: any) => ({ label: obj[`${listof}Nm`].trim(), value: obj[`${listof}Id`].trim() })))
-                    }, 1);
+                    if (fieldName === 'paymentTypes') {
+                        setpaymentTypes(data.map((obj: any) => ({ label: obj[`${listof}Nm`].trim(), value: obj[`${listof}Id`].trim() })));
+                    } else {
+                        setinitialInvoiceFrequencies(data.map((obj: any) => ({ label: obj[`${listof}Nm`].trim(), value: obj[`${listof}Id`].trim() })));
+                    }
                 }
             })
             .catch(error => {
@@ -258,8 +255,14 @@ const AddCustomer: React.FC<{}> = (props: any) => {
 
     const history = useHistory()
 
+    const isFormFieldChange = () => formik.dirty
+
     function onClickBack () {
-        handleModelToggle();
+        if (isFormFieldChange()) {
+            handleModelToggle();
+        } else {
+            history.push('/')
+        }
     }
 
     function handleGoogleAddressChange (addressObj: any) {
@@ -270,6 +273,7 @@ const AddCustomer: React.FC<{}> = (props: any) => {
         formik.setFieldValue('postalCode', addressObj.postalCode)
     }
 
+    console.log("🚀 ~ file: AddCustomer.tsx ~ line 271 ~ handleGoogleAddressChange ~ formik", formik)
     return (
         <Box display="flex" mt={8}>
             <CssBaseline />
@@ -447,8 +451,8 @@ const AddCustomer: React.FC<{}> = (props: any) => {
                                             label='PAYMENT TYPE'
                                             value={formik.values.paymentType}
                                             placeholder='Choose'
-                                            items={formik.values.paymentTypes}
-                                            helperText={(formik.touched.paymentType && formik.errors.paymentType) ? formik.errors.paymentType.value: undefined}
+                                            items={paymentTypes}
+                                            helperText={(formik.touched.paymentType && formik.errors.paymentType) ? formik.errors.paymentType.value : undefined}
                                             error={(formik.touched.paymentType && formik.errors.paymentType) ? true : false}
                                             onChange={formik.setFieldValue}
                                             onBlur={() => { formik.setFieldTouched("paymentType"); formik.validateField("paymentType"); }}
@@ -463,7 +467,7 @@ const AddCustomer: React.FC<{}> = (props: any) => {
                                             label='INVOICE FREQUENCY'
                                             value={formik.values.invoiceFrequency}
                                             placeholder='Choose'
-                                            items={formik.values.initialInvoiceFrequencies}
+                                            items={initialInvoiceFrequencies}
                                             helperText={(formik.touched.invoiceFrequency && formik.errors.invoiceFrequency) ? formik.errors.invoiceFrequency.value : undefined}
                                             error={(formik.touched.invoiceFrequency && formik.errors.invoiceFrequency) ? true : false}
                                             onChange={formik.setFieldValue}
@@ -799,7 +803,7 @@ const AddCustomer: React.FC<{}> = (props: any) => {
                                                 types="save"
                                                 aria-label="save"
                                                 className="ml-4"
-                                                disabled={!formik.isValid}
+                                                disabled={!formik.isValid || formik.isSubmitting}
                                             >
                                                 {t("buttons.save")}
                                             </Button>
