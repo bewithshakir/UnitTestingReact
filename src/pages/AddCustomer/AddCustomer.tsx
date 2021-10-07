@@ -100,38 +100,9 @@ const initialValues: AddCustomerForm = {
         email: '',
         phoneNumber: '',
     }],
-    paymentTypes: [
-        // {
-        //     value: "1",
-        //     label: "voyager",
-        // },
-        // {
-        //     value: "2",
-        //     label: "invoice",
-        // },
-        // {
-        //     value: "3",
-        //     label: "wex",
-        // },
-    ],
+    paymentTypes: [],
     initialInvoiceFrequencies: [
-        // {
-        //     value: "1",
-        //     label: "Weekly",
-        // },
-        // {
-        //     value: "f6f0ec11-cd88-455d-9158-8ade75ddfb5b",
-        //     label: "Bi-weekly",
-        // },
-        // {
-        //     value: "g6f0ec11-cd88-455d-9158-8ade75ddfb8b",
-        //     label: "Daily",
-        // },
-        // {
-        //     value: "h6f0ec11-cd88-455d-9158-8ade75ddfb4b",
-        //     label: "Monthly",
-        // }
-    ]
+]
 };
 
 function getTokenApplicable (Obj: any) {
@@ -472,9 +443,9 @@ const AddCustomer: React.FC<{}> = (props: any) => {
                                             value={formik.values.paymentType}
                                             placeholder='Choose'
                                             items={formik.values.paymentTypes}
-                                            //helperText={(formik.touched.paymentType && formik.errors.paymentType) ? formik.errors.paymentType : undefined}
+                                            helperText={(formik.touched.paymentType && formik.errors.paymentType) ? formik.errors.paymentType.value: undefined}
                                             error={(formik.touched.paymentType && formik.errors.paymentType) ? true : false}
-                                            onChange={formik.handleChange}
+                                            onChange={formik.setFieldValue}
                                             onBlur={() => { formik.setFieldTouched("paymentType"); formik.validateField("paymentType"); }}
                                             required
                                         />
@@ -488,9 +459,9 @@ const AddCustomer: React.FC<{}> = (props: any) => {
                                             value={formik.values.invoiceFrequency}
                                             placeholder='Choose'
                                             items={formik.values.initialInvoiceFrequencies}
-                                            //helperText={(formik.touched.invoiceFrequency && formik.errors.invoiceFrequency) ? formik.errors.invoiceFrequency : undefined}
+                                            helperText={(formik.touched.invoiceFrequency && formik.errors.invoiceFrequency) ? formik.errors.invoiceFrequency.value : undefined}
                                             error={(formik.touched.invoiceFrequency && formik.errors.invoiceFrequency) ? true : false}
-                                            onChange={formik.handleChange}
+                                            onChange={formik.setFieldValue}
                                             onBlur={() => { formik.setFieldTouched("invoiceFrequency"); formik.validateField("invoiceFrequency"); }}
                                             required
                                         />

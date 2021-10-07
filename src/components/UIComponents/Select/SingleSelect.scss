@@ -101,6 +101,11 @@
             box-shadow: 3px 6px 14px #00000026;
             z-index: 999;
         }    
-     }
+    }
+
+    &.MuiFormControl-root .select-helper{
+        margin-left: 2px;
+        font-family: Arial;
+    }
 
 }

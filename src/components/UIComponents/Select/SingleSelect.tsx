@@ -5,6 +5,7 @@ import { FormHelperText, InputLabel, FormControl} from '@mui/material';
 import './SingleSelect.scss';
 import { ArrowDown } from '../../../assets/icons';
 
+
 type item = {
     label: string,
     value: string | number
@@ -19,7 +20,7 @@ interface props {
 
     required?: boolean;
     error?: boolean;
-    helperText?: string | string[] | FormikErrors<item>[] | undefined;
+    helperText?: string | FormikErrors<item> | undefined;
 
     description?: string;
     onChange: (...args: any[]) => void;
@@ -35,7 +36,12 @@ export default function SingleSelect(props: props) {
            </components.DropdownIndicator>
        )
    }
-   
+
+   const handleChange = (e:any ) =>{
+       const {name, onChange} = props;
+       onChange(name, e);
+   } 
+
     return (
         <Fragment>
             <FormControl className='select' >
@@ -50,13 +56,14 @@ export default function SingleSelect(props: props) {
                     classNamePrefix='react-select'
                     value={props.value}
                     options={props.items}
-                    onChange={props.onChange}
+                    onChange={handleChange}
                     onBlur={props.onBlur}
                     components={{ IndicatorSeparator: () => null, DropdownIndicator }}
                     isSearchable={false}
                 />
                 {props.helperText && (
                 <FormHelperText
+                    className='select-helper'
                     id={props.description}
                     error={props.error}>
                     {props.helperText}
