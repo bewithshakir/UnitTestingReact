@@ -14,7 +14,7 @@ interface props {
     name?: string;
     label: string;
     placeholder?: string;
-    value?: any;
+    value?: item | Array<item> ;
     items: Array<item>;
 
     required?: boolean;
@@ -45,7 +45,7 @@ export default function SingleSelect(props: props) {
                 <Select
                     id={props.id}
                     name={props.name}
-                    placeholder={'Select'}
+                    placeholder={props.placeholder}
                     className={props.error ? 'react-select-container error' : 'react-select-container'}
                     classNamePrefix='react-select'
                     value={props.value}
@@ -72,4 +72,5 @@ SingleSelect.defaultProps = {
     required: false,
     id: "select-label",
     error: false,
+    placeholder: 'Select',
 }
