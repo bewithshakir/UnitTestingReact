@@ -273,7 +273,6 @@ const AddCustomer: React.FC<{}> = (props: any) => {
         formik.setFieldValue('postalCode', addressObj.postalCode)
     }
 
-    console.log("🚀 ~ file: AddCustomer.tsx ~ line 271 ~ handleGoogleAddressChange ~ formik", formik)
     return (
         <Box display="flex" mt={8}>
             <CssBaseline />
