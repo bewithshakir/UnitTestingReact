@@ -27,6 +27,7 @@ export const Content: React.FC<ContentProps> = (props) => {
   const [searchTerm, setSearchTerm] = React.useState("");
   const [drawerOpen, setDrawerOpen] = React.useState(false);
   const [sortOrder, setSortOrder] = React.useState<{sortBy:string,order:string}>({sortBy:"customerName",order:"asc"});
+  const [filterParams, setFilterParams] = React.useState({});
   const [custFilterPanelVisible, setCustFilterPanelVisible] = React.useState(false);
   const { t } = useTranslation();
   const { data, fetchNextPage, isLoading, hasNextPage }: any = useCustomers(
@@ -74,6 +75,7 @@ export const Content: React.FC<ContentProps> = (props) => {
   const handleCustFilterPanelOpen = () => setCustFilterPanelVisible(!custFilterPanelVisible);
   const handleCustFilterPanelClose = (filterData:object) => {
       console.log("returnedFilter Data--->",filterData);
+      setFilterParams(filterData);
       setCustFilterPanelVisible(false)
   };
 

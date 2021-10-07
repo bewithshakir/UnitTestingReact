@@ -19,8 +19,9 @@ interface InfoPanelProps {
 
 export const FilterContent: React.FC<InfoPanelProps> = ({ onClose }) => {
     const { theme } = useTheme();
-    const formInitial = { state: [], city: [], settlementType: [], startDate: null, endDate: null };
+    const formInitial = { state: [], city: [], settlementType: [], fromDate: null, toDate:null };
     const [form, setForm] = React.useState(formInitial);
+    const [filterParams, setFilterParams] = React.useState({state: [], city: [], settlementType: [], date:[]} );
     const { t } = useTranslation();
 
     const MyComponent = styled('div')({ /* Experimental Code: Custom Style div */   
@@ -76,10 +77,10 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ onClose }) => {
 
     const geoData = {
         states: [
-            { label: "Alabama", value: "Alabama" },
-            { label: "Alaska", value: "Alaska" },
-            { label: "California", value: "California" },
-            { label: "Virginia", value: "Virginia" },
+            { label: "Texas", value: "Texas" },
+            { label: "TX", value: "TX" },
+            { label: "California", value: "CA" },
+            { label: "Gujarat", value: "Gujarat" },
             { label: "Florida", value: "Florida" }
         ],
         cities: [
@@ -99,11 +100,24 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ onClose }) => {
 
     const onDateChange = (name: string, newValue: Date | string | null | moment.Moment) => {
         setForm(x => ({ ...x, [name]: newValue }));
+        // Object.values({...array1, [1]:"seven"});
+        // Object.assign([...oldArray], {[dynamicIndex]: 4});
+
+        if(name == "fromDate"){
+            setFilterParams(x => ({ ...x, date:Object.assign([...filterParams.date], {[0]: newValue})}));
+        }else if(name=="toDate"){
+            setFilterParams(x => ({ ...x, date:Object.assign([...filterParams.date], {[1]: newValue})}));
+        }
+        
     }
 
     const handleSelect = (e: any) => {
         setForm(x => ({ ...x, [e.target.name]: e.target.value }));
     }
+
+    // const createFilterParams = (formData: Object) => {
+    //     // setFilterParams
+    // }
 
     const applyFilter = () => {
         onClose(form);
@@ -114,31 +128,32 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ onClose }) => {
         setForm(formInitial);
     }
     return <div className="cust_filter_panel_content">
-        {/* {JSON.stringify(form)} */}
+        <div>{JSON.stringify(form)}</div>
+        <div>{JSON.stringify(filterParams)}</div>
         {/* <MyComponent>Styled div</MyComponent> */} {/* Experimental Code: Custom Style div -- theme getting applied here */}
          {/* <CustomBtn> Custom Btn </CustomBtn> */} {/* Experimental Code: Custom Style to TAPUP Button Component -- themes not getting applied here */}
         <Grid container spacing={2} className="cust_filter_parent_grid">
-            <Grid item xs={12} columnSpacing={{ xs: 1, sm: 2, md: 3 }} container>
+            <Grid item  xs={12} columnSpacing={{ xs: 1, sm: 2, md: 3 }} container>
                 <Grid item xs={12} className="cust_filter_date_label_grid">
                     Period
                 </Grid>
-                <Grid item xs={6} spacing={2}>
+                <Grid container item xs={6} spacing="2">
                     <DatePicker
                         id="cust-filter-start-date"
                         placeholder="From Date"
-                        name="startDate"
+                        name="fromDate"
                         onChange={onDateChange}
-                        value={form.startDate}
+                        value={form.fromDate}
                     />
                 </Grid>
-                <Grid item xs={6} spacing={2}>
+                <Grid container item xs={6} spacing="2">
                     <DatePicker
                         id="cust-filter-end-date"
-                        disableBeforeDate={form.startDate}
+                        disableBeforeDate={form.fromDate}
                         placeholder="To Date"
-                        name="endDate"
+                        name="toDate"
                         onChange={onDateChange}
-                        value={form.endDate}
+                        value={form.toDate}
                     />
                 </Grid>
             </Grid>
