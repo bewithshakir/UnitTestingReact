@@ -24,7 +24,7 @@ function DiscardChangesDialog (props: Props) {
             aria-describedby="discard-changes-dialog-description"
         >
             <div className="discard-dialog-container">
-                <Typography variant="h2" component="h2" className="fw-bold" p={2.5}>
+                <Typography variant="h2" component="h2" className="fw-bold" px={2.5} pt={2.5} >
                     {title}
                 </Typography>
                 <DialogContent className="dialog-content">
@@ -41,7 +41,7 @@ function DiscardChangesDialog (props: Props) {
                     </Button>
                 </DialogActions>
             </div>
-        </Dialog>
+        </Dialog >
     );
 }
 

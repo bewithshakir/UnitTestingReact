@@ -3,6 +3,9 @@ div{
         max-width: 477px;
         .dialog-content{
             padding: 1.25rem;
+            .MuiTypography-body1{
+                font-size: 14px;
+            }
         }
         .dialog-actions {
             padding: 0rem 1.25rem 1.25rem 1.25rem;
