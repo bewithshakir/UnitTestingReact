@@ -94,7 +94,6 @@ export default function MultiSelect(props: props) {
                     hideSelectedOptions={false}
                     closeMenuOnSelect={false}
                     isMulti={true}
-                    //menuIsOpen
                 />
                 {props.helperText && (
                     <FormHelperText
