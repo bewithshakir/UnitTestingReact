@@ -16,14 +16,32 @@ export const ThemeContext = React.createContext<ThemeContextProps>({
 export const ThemeProvider: React.FC = ({ children }) => {
   const [currentTheme, setCurrentTheme] = React.useState<ThemeType>(getInitialTheme);
 
-  function getInitialTheme() {
+  function getInitialTheme () {
     const savedTheme = localStorage.getItem('theme');
     return savedTheme
       ? JSON.parse(savedTheme) : 'USA';
   }
 
+  function generateStyle (themeVar: any) {
+    var css = ':root' + JSON.stringify(themeVar).replace(/['"]+/g, '').replace(/[,]+/g, ';')
+
+    var head = document.head || document.getElementsByTagName('head')[0],
+      style: any = document.createElement('style');
+
+    head.appendChild(style);
+
+    if (style.styleSheet) {
+      // This is required for IE8 and below.
+      style.styleSheet.cssText = css;
+    } else {
+      style.appendChild(document.createTextNode(css));
+    }
+  }
+
   useEffect(() => {
-    localStorage.setItem('theme', JSON.stringify(currentTheme))
+    localStorage.setItem('theme', JSON.stringify(currentTheme));
+    generateStyle(THEMES[currentTheme])
+
   }, [currentTheme])
 
   return (
