@@ -65,8 +65,6 @@ interface AddCustomerForm {
     // Emergency Contact
     emergencyContact: EmergencyContact[]
     apContact: ApContact[],
-    paymentTypes: any[],
-    initialInvoiceFrequencies: any[]
 }
 
 const initialValues: AddCustomerForm = {
@@ -82,7 +80,7 @@ const initialValues: AddCustomerForm = {
     email: '',
     phoneNumber: '',
     paymentType: { label: '', value: '' },
-    invoiceFrequency: {label:'', value:''},
+    invoiceFrequency: { label: '', value: '' },
     startDate: moment(),
     endDate: moment(),
     paymentTerm: '',
@@ -101,9 +99,6 @@ const initialValues: AddCustomerForm = {
         email: '',
         phoneNumber: '',
     }],
-    paymentTypes: [],
-    initialInvoiceFrequencies: [
-]
 };
 
 function getTokenApplicable (Obj: any) {
@@ -141,11 +136,13 @@ const formStatusProps: IFormStatusProps = {
 
 const AddCustomer: React.FC<{}> = (props: any) => {
     const { t } = useTranslation();
-    // const [displayFormStatus, setDisplayFormStatus] = useState(false)
     const [formStatus, setFormStatus] = useState<IFormStatus>({
         message: '',
         type: '',
     })
+
+    const [paymentTypes, setpaymentTypes] = useState([]);
+    const [initialInvoiceFrequencies, setinitialInvoiceFrequencies] = useState([]);
 
     const [apiResposneState, setAPIResponse] = useState(false);
 
@@ -222,8 +219,6 @@ const AddCustomer: React.FC<{}> = (props: any) => {
                 });
         } catch (error) {
             setFormStatus(formStatusProps.error)
-        } finally {
-            // setDisplayFormStatus(true)
         }
     }
 
@@ -241,9 +236,11 @@ const AddCustomer: React.FC<{}> = (props: any) => {
             .then(response => response.data)
             .then(({ data }) => {
                 if (data) {
-                    setTimeout(() => {
-                        formik.setFieldValue(fieldName, data.map((obj: any) => ({ label: obj[`${listof}Nm`].trim(), value: obj[`${listof}Id`].trim() })))
-                    }, 1);
+                    if (fieldName === 'paymentTypes') {
+                        setpaymentTypes(data.map((obj: any) => ({ label: obj[`${listof}Nm`].trim(), value: obj[`${listof}Id`].trim() })));
+                    } else {
+                        setinitialInvoiceFrequencies(data.map((obj: any) => ({ label: obj[`${listof}Nm`].trim(), value: obj[`${listof}Id`].trim() })));
+                    }
                 }
             })
             .catch(error => {
@@ -258,18 +255,23 @@ const AddCustomer: React.FC<{}> = (props: any) => {
 
     const history = useHistory()
 
+    const isFormFieldChange = () => formik.dirty
+
     function onClickBack () {
-        handleModelToggle();
+        if (isFormFieldChange()) {
+            handleModelToggle();
+        } else {
+            history.push('/')
+        }
     }
 
-    // function handleGoogleAddressChange (addressObj: any) {
-    //     console.log("🚀 ~ file: AddCustomer.tsx ~ line 283 ~ handleGoogleAddressChange ~ addressObj", addressObj)
-    //     formik.setFieldValue('addressLine1', addressObj.addressLine1)
-    //     formik.setFieldValue('addressLine2', addressObj.addressLine2)
-    //     formik.setFieldValue('city', addressObj.city)
-    //     formik.setFieldValue('state', addressObj.state)
-    //     formik.setFieldValue('postalCode', addressObj.postalCode)
-    // }
+    function handleGoogleAddressChange (addressObj: any) {
+        formik.setFieldValue('addressLine1', addressObj.addressLine1)
+        formik.setFieldValue('addressLine2', addressObj.addressLine2)
+        formik.setFieldValue('city', addressObj.city)
+        formik.setFieldValue('state', addressObj.state)
+        formik.setFieldValue('postalCode', addressObj.postalCode)
+    }
 
     return (
         <Box display="flex" mt={8}>
@@ -321,7 +323,7 @@ const AddCustomer: React.FC<{}> = (props: any) => {
                                         />
                                     </Grid>
                                     <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
-                                        {/* <AutocompleteInput
+                                        <AutocompleteInput
                                             name='addressLine1'
                                             label='ADDRESS LINE 1'
                                             onChange={handleGoogleAddressChange}
@@ -330,17 +332,8 @@ const AddCustomer: React.FC<{}> = (props: any) => {
                                             helperText={(formik.touched.addressLine1 && formik.errors.addressLine1) ? formik.errors.addressLine1 : undefined}
                                             error={(formik.touched.addressLine1 && formik.errors.addressLine1) ? true : false}
                                             required
-                                        /> */}
-                                        <Input
-                                            id='addressLine1'
-                                            label='ADDRESS LINE 1'
-                                            type='text'
-                                            helperText={(formik.touched.addressLine1 && formik.errors.addressLine1) ? formik.errors.addressLine1 : undefined}
-                                            error={(formik.touched.addressLine1 && formik.errors.addressLine1) ? true : false}
-                                            description=''
-                                            required
-                                            {...formik.getFieldProps('addressLine1')}
                                         />
+
                                     </Grid>
                                     <Grid item xs={12} md={6} pl={2.5} pb={2.5}>
                                         <Input
@@ -362,6 +355,7 @@ const AddCustomer: React.FC<{}> = (props: any) => {
                                             helperText={(formik.touched.city && formik.errors.city) ? formik.errors.city : undefined}
                                             error={(formik.touched.city && formik.errors.city) ? true : false}
                                             description=''
+                                            disabled
                                             required
                                             {...formik.getFieldProps('city')}
                                         />
@@ -374,6 +368,7 @@ const AddCustomer: React.FC<{}> = (props: any) => {
                                             helperText={(formik.touched.state && formik.errors.state) ? formik.errors.state : undefined}
                                             error={(formik.touched.state && formik.errors.state) ? true : false}
                                             description=''
+                                            disabled
                                             required
                                             {...formik.getFieldProps('state')}
                                         />
@@ -386,6 +381,7 @@ const AddCustomer: React.FC<{}> = (props: any) => {
                                             helperText={(formik.touched.postalCode && formik.errors.postalCode) ? formik.errors.postalCode : undefined}
                                             error={(formik.touched.postalCode && formik.errors.postalCode) ? true : false}
                                             description=''
+                                            disabled
                                             required
                                             {...formik.getFieldProps('postalCode')}
                                         />
@@ -454,8 +450,8 @@ const AddCustomer: React.FC<{}> = (props: any) => {
                                             label='PAYMENT TYPE'
                                             value={formik.values.paymentType}
                                             placeholder='Choose'
-                                            items={formik.values.paymentTypes}
-                                            helperText={(formik.touched.paymentType && formik.errors.paymentType) ? formik.errors.paymentType.value: undefined}
+                                            items={paymentTypes}
+                                            helperText={(formik.touched.paymentType && formik.errors.paymentType) ? formik.errors.paymentType.value : undefined}
                                             error={(formik.touched.paymentType && formik.errors.paymentType) ? true : false}
                                             onChange={formik.setFieldValue}
                                             onBlur={() => { formik.setFieldTouched("paymentType"); formik.validateField("paymentType"); }}
@@ -470,7 +466,7 @@ const AddCustomer: React.FC<{}> = (props: any) => {
                                             label='INVOICE FREQUENCY'
                                             value={formik.values.invoiceFrequency}
                                             placeholder='Choose'
-                                            items={formik.values.initialInvoiceFrequencies}
+                                            items={initialInvoiceFrequencies}
                                             helperText={(formik.touched.invoiceFrequency && formik.errors.invoiceFrequency) ? formik.errors.invoiceFrequency.value : undefined}
                                             error={(formik.touched.invoiceFrequency && formik.errors.invoiceFrequency) ? true : false}
                                             onChange={formik.setFieldValue}
@@ -806,7 +802,7 @@ const AddCustomer: React.FC<{}> = (props: any) => {
                                                 types="save"
                                                 aria-label="save"
                                                 className="ml-4"
-                                                disabled={!formik.isValid}
+                                                disabled={!formik.isValid || formik.isSubmitting}
                                             >
                                                 {t("buttons.save")}
                                             </Button>
