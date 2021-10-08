@@ -1,7 +1,9 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { Grid } from "@mui/material";
 import moment from "moment";
+import { Grid } from "@mui/material";
+import { FieldArray, FormikProvider, useFormik } from 'formik';
+import * as Yup from 'yup';
 import Select from "../Select/MultiSelect";
 import { DatePicker } from "../DatePicker/DatePicker.component";
 import { Button } from "../Button/Button.component";
@@ -17,17 +19,23 @@ interface InfoPanelProps {
     onClose: (...args: any[]) => void;
 }
 
-interface FilterDataProps {
-    date?: string[],
-    state?: string[],
-    city?: string[],
-    paymentType?: string[]
+interface filterForm {
+    state: string[],
+    city: string[],
+    paymentType: string[],
+    fromDate: moment.Moment | null,
+    toDate: moment.Moment | null 
 }
+
+const initialValues: filterForm = {state: [], city: [], paymentType: [], fromDate: null, toDate:null }
+  
+
+const formInitial = { state: [], city: [], paymentType: [], fromDate: null, toDate:null };
 
 export const FilterContent: React.FC<InfoPanelProps> = ({ onClose }) => {
     const { theme } = useTheme();
 
-    const formInitial = { state: [], city: [], paymentType: [], fromDate: null, toDate:null };
+   
     const [form, setForm] = React.useState(formInitial);
     const [filterParams, setFilterParams] = React.useState<{[key: string]: string[]}>({ }); 
     const { t } = useTranslation();
@@ -57,7 +65,6 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ onClose }) => {
         }
     }));
     
-    //temporary dropdown data
     const geoData = {
         states: [
             { label: "Texas", value: "Texas" },
@@ -95,8 +102,9 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ onClose }) => {
         setFilterParams(x => ({...x, [name]: e.map((obj:{label:string,value:string}) => obj.value)})) // actual
     }
 
-    const applyFilter = () => {
+    const applyFilter = (resetForm: Function) => {
         console.log("inside-filter-main", form);
+        resetForm();
         onClose(filterParams);
         console.log("inside-filter-main", filterParams);
     }
@@ -106,11 +114,22 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ onClose }) => {
         setFilterParams({});
     }
 
+    const formik = useFormik({
+        initialValues,
+        onSubmit: (values, actions) => {
+            applyFilter(actions.resetForm);
+        
+        },
+        enableReinitialize: true,
+    });
 
     return <div className="cust_filter_panel_content">
         <div>{JSON.stringify(form)}</div>
         <div>{JSON.stringify(filterParams)}</div>
+        <FormikProvider value={formik}>
+        <form onSubmit={formik.handleSubmit}>
         <Grid container spacing={2} className="cust_filter_parent_grid">
+            
             <Grid item  xs={12} columnSpacing={{ xs: 1, sm: 2, md: 3 }} container>
                 <Grid item xs={12} className="cust_filter_date_label_grid">
                     Period
@@ -168,6 +187,7 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ onClose }) => {
         </Grid>
         <div className="cust_filter_buttons_container">
             <ClearBtn
+                type="submit"
                 types="cancel"
                 aria-label={t("customer-filter-panel.buttons.clear all")}
                 onClick={clearFilter}
@@ -182,6 +202,8 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ onClose }) => {
                 {t("customer-filter-panel.buttons.apply")}
             </ApplyBtn>
         </div>
+        </form>
+        </FormikProvider>
     </div>
 }
 

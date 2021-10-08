@@ -1,10 +1,10 @@
 import React from "react";
-import { Drawer, Backdrop } from "@mui/material";
-import "./RightInfoPanel.style.scss";
+import { Drawer } from "@mui/material";
 import { PanelHeader } from "./PanelHeader.component";
 import { InfoViewContent } from "./InfoViewContent.component";
 import { FilterContent } from "./FilterContent.component";
 import { useTheme } from '../../../contexts/Theme/Theme.context';
+import "./RightInfoPanel.style.scss";
 
 
 type drawerVariant = "info-view" | "customer-filter";
@@ -20,7 +20,7 @@ interface InfoPanelProps {
 export const RightInfoPanel: React.FC<InfoPanelProps> = ({ open, headingText, info, onClose, panelType }) => {
 
   const {theme} = useTheme();
-  console.log("teheme-->>", theme);
+  // console.log("teheme-->>", theme);
   const provideContentForPanel = () => {
     if (panelType === "info-view") {
       return <InfoViewContent info={info} />;
@@ -42,12 +42,6 @@ export const RightInfoPanel: React.FC<InfoPanelProps> = ({ open, headingText, in
   </Drawer >
 
   const panelDrawerUnderBackdrop = <React.Fragment>{panelDrawer}</React.Fragment>
-  // <Backdrop
-  //   sx={{ color: "var(--White)", zIndex: (theme) => theme.zIndex.drawer + 1 }}
-  //   open={open}
-  // >
-  //   {panelDrawer}
-  // </Backdrop>
 
   const renderPanel = () => {
     if (panelType === "customer-filter") {
