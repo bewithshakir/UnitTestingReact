@@ -21,6 +21,8 @@ interface props {
     required?: boolean;
     error?: boolean;
     helperText?: string | FormikErrors<item> | undefined;
+    loadingMessage?: string;
+    noOptionsMessage?: string;
 
     description?: string;
     onChange: (...args: any[]) => void;
@@ -94,6 +96,8 @@ export default function MultiSelect(props: props) {
                     hideSelectedOptions={false}
                     closeMenuOnSelect={false}
                     isMulti={true}
+                    noOptionsMessage={() => props.noOptionsMessage || null}
+                    loadingMessage={() => props.loadingMessage || null}
                 />
                 {props.helperText && (
                     <FormHelperText
@@ -114,4 +118,6 @@ MultiSelect.defaultProps = {
     id: "select-label",
     error: false,
     placeholder: 'Select',
+    noOptionsMessage: 'No Options found',
+    loadingMessage: 'Loading...'
 }
