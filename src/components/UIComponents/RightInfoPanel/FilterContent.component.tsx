@@ -91,9 +91,15 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ onClose }) => {
     const onDateChange = (name: string, value: null | moment.Moment) => {
         formik.setFieldValue(name, value);
         if (name == "fromDate") {
-            filterParams = { ...filterParams, date: [moment(value).format("MM-DD-YYYY"), filterParams.date && filterParams.date[1] ? moment(filterParams.toDate).format("MM-DD-YYYY") : ''] };
+            filterParams = { 
+                ...filterParams, 
+                date: [moment(value).format("MM-DD-YYYY"), filterParams.date && filterParams.date[1] ? moment(filterParams.toDate).format("MM-DD-YYYY") : ''] 
+            };
         } else if (name == "toDate") {
-            filterParams = { ...filterParams, date: [filterParams.date && filterParams.date[0] ? moment(filterParams.date[0]).format("MM-DD-YYYY") : '', moment(value).format("MM-DD-YYYY")] };
+            filterParams = { 
+                ...filterParams, 
+                date: [filterParams.date && filterParams.date[0] ? moment(filterParams.date[0]).format("MM-DD-YYYY") : '', moment(value).format("MM-DD-YYYY")] 
+            };
         }
     }
 
@@ -103,8 +109,8 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ onClose }) => {
     }
 
     const applyFilter = (formData: filterForm, resetForm: Function) => {
-        // resetForm();
-        onClose(filterParams);
+        resetForm({});
+        // onClose(filterParams);
         console.log("inside-filter-main------>>", filterParams);
     }
 
@@ -128,15 +134,14 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ onClose }) => {
                 then: Yup.object().nullable(true).required('to date is required')
             })),
         }),
-        onSubmit: (values, actions) => {
-            applyFilter(values, actions.resetForm);
-        },
+        onSubmit: (values, { resetForm }) => applyFilter(values, resetForm),
+        onReset:(values, { resetForm }) => clearFilter(),
         enableReinitialize: true,
     });
 
     return <div className="cust_filter_panel_content">
         <FormikProvider value={formik}>
-            <form onSubmit={formik.handleSubmit}>
+            <form onSubmit={formik.handleSubmit}  onReset={formik.handleReset}>
                 <Grid container spacing={2} className="cust_filter_parent_grid">
 
                     <Grid item xs={12} columnSpacing={{ xs: 1, sm: 2, md: 3 }} container>
@@ -171,7 +176,7 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ onClose }) => {
                         <Select
                             id="state"
                             name="state"
-                            label="Select State"
+                            label={"State".toLowerCase()}
                             placeholder=""
                             value={formik.values.state}
                             items={geoData.states}
@@ -184,7 +189,7 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ onClose }) => {
                         <Select
                             id="city"
                             name="city"
-                            label="Select City"
+                            label="City"
                             placeholder="Select City"
                             value={formik.values.city}
                             items={geoData.cities}
@@ -209,10 +214,9 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ onClose }) => {
                 </Grid>
                 <div className="cust_filter_buttons_container">
                     <ClearBtn
-
+                        type="reset" 
                         types="cancel"
                         aria-label={t("customer-filter-panel.buttons.clear all")}
-                        onClick={clearFilter}
                     >
                         {t("customer-filter-panel.buttons.clear all")}
                     </ClearBtn >

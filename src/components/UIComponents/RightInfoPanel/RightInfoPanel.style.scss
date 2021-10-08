@@ -76,7 +76,14 @@
           }
           .select {
             width: 100%;
-            .label {
+            .MuiInputLabel-root {
+              //   font-size: 16px;
+              //   margin-bottom: 14px;
+              //   transform: translate(1px, -18px) scale(0.75);
+              //     font-size: 16px;
+              //     margin-bottom: 14px;
+
+              transform: translate(1px, -18px) scale(0.75);
               font-size: 16px;
               margin-bottom: 14px;
             }
