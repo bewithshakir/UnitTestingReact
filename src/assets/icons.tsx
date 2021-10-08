@@ -378,7 +378,7 @@ export function Check(props: React.SVGProps<SVGSVGElement>) {
     >
       <path
         d="M20 0v20H0V0Zm-2 2H2v16h16Zm-4.441 3.589L14.973 7l-7.449 7.452-3.231-3.2L5.7 9.831l1.817 1.8Z"
-        fill={props.color || 'var(--Gray)'}
+        fill={'currentColor'}
       />
       <path fill="none" d="M0 0h20v20H0z" />
     </svg>
@@ -395,7 +395,7 @@ export function UnCheck(props: React.SVGProps<SVGSVGElement>) {
     >
       <path
         d="M20 0v20H0V0Zm-2 2H2v16h16Z"
-        fill={props.color || 'var(--Gray)'}
+        fill={'currentColor'}
       />
       <path fill="none" d="M0 0h20v20H0z" />
     </svg>
@@ -540,7 +540,7 @@ export function UncheckedCheckboxIcon(props: React.SVGProps<SVGSVGElement>) {
       {...props}
     >
       <path d="M22,2V22H2V2ZM20,4H4V20H20Z" transform="translate(-2 -2)"
-        fill={props.color}
+        fill='currentColor'
       />
     </svg>
   )
@@ -555,7 +555,7 @@ export function CheckedCheckboxIcon(props: React.SVGProps<SVGSVGElement>) {
       {...props}
     >
       <path d="M22,2V22H2V2ZM20,4H4V20H20ZM15.559,7.589,16.973,9,9.524,16.452l-3.231-3.2L7.7,11.831l1.817,1.8Z" transform="translate(-2 -2)"
-        fill={props.color}
+        fill='currentColor'
       />
     </svg>
   )
