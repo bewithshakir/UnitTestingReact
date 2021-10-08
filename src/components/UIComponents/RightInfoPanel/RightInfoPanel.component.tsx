@@ -14,18 +14,17 @@ interface InfoPanelProps {
   headingText: string;
   panelType: drawerVariant;
   info?: Object;
-  onClose: (...args: any[]) => void;
+  onClose: (...args: any) => void;
+  provideFilterParams?: (...args: any) => void;
 }
 
-export const RightInfoPanel: React.FC<InfoPanelProps> = ({ open, headingText, info, onClose, panelType }) => {
+export const RightInfoPanel: React.FC<InfoPanelProps> = ({ open, headingText, info, onClose, provideFilterParams, panelType }) => {
 
-  const {theme} = useTheme();
-  // console.log("teheme-->>", theme);
   const provideContentForPanel = () => {
     if (panelType === "info-view") {
       return <InfoViewContent info={info} />;
     } else if (panelType === "customer-filter") {
-      return <FilterContent onClose={onClose} />
+      return <FilterContent provideFilterParams={provideFilterParams} onClose={onClose} />
     } else {
       return <React.Fragment></React.Fragment>
     }

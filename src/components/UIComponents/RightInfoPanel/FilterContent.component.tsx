@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import moment from "moment";
 import { Grid } from "@mui/material";
@@ -37,8 +37,8 @@ interface filterParamsProps { //temporary data
 }
 
 interface InfoPanelProps {
-    info?: Object;
-    onClose: (...args: any[]) => void;
+    provideFilterParams?:(...args: any) => void;
+    onClose: (...args: any) => void;
 }
 
 interface filterForm {
@@ -59,7 +59,7 @@ const initialValues: filterForm = {
 
 let filterParams: filterParamsProps = {};
 
-export const FilterContent: React.FC<InfoPanelProps> = ({ onClose }) => {
+export const FilterContent: React.FC<InfoPanelProps> = ({ provideFilterParams, onClose }) => {
     const { theme } = useTheme();
     const { t } = useTranslation();
 
@@ -103,6 +103,10 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ onClose }) => {
         }
     }
 
+    useEffect(()=>{
+        filterParams = {};
+    },[])
+
     function handleSelect(name: string, value: any[]) {
         formik.setFieldValue(name, value);
         filterParams = { ...filterParams, [name]: value.map((obj: { label: string, value: string }) => obj.value) };
@@ -110,12 +114,11 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ onClose }) => {
 
     const applyFilter = (formData: filterForm, resetForm: Function) => {
         resetForm({});
-        // onClose(filterParams);
-        console.log("inside-filter-main------>>", filterParams);
-    }
+        if(provideFilterParams){
+            provideFilterParams(filterParams);
+        }
+        onClose();
 
-    const clearFilter = () => {
-        filterParams = {};
     }
 
     const formik = useFormik({
@@ -125,17 +128,16 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ onClose }) => {
                 is: ((toDate: moment.Moment | null) => {
                     return (!!toDate) ? true : false;
                 }),
-                then: Yup.object().nullable(true).required('from date is required')
+                then: Yup.object().nullable(true).required('From date is required')
             })),
             toDate: Yup.lazy(() => Yup.object().nullable(true).when('fromDate', {
                 is: ((fromDate: moment.Moment | null) => {
                     return (!!fromDate) ? true : false;
                 }),
-                then: Yup.object().nullable(true).required('to date is required')
+                then: Yup.object().nullable(true).required('To date is required')
             })),
         }),
         onSubmit: (values, { resetForm }) => applyFilter(values, resetForm),
-        onReset:(values, { resetForm }) => clearFilter(),
         enableReinitialize: true,
     });
 
@@ -157,6 +159,8 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ onClose }) => {
                                 onChange={(name, val) => onDateChange(name, val)}
                                 helperText={(formik.touched.fromDate && formik.errors.fromDate) ? formik.errors.fromDate : undefined}
                                 error={(formik.touched.fromDate && formik.errors.fromDate) ? true : false}
+                                required
+                        
                             />
                         </Grid>
                         <Grid container item xs={6} spacing="2">
@@ -169,6 +173,7 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ onClose }) => {
                                 onChange={(name, val) => onDateChange(name, val)}
                                 helperText={(formik.touched.toDate && formik.errors.toDate) ? formik.errors.toDate : undefined}
                                 error={(formik.touched.toDate && formik.errors.toDate) ? true : false}
+                                required
                             />
                         </Grid>
                     </Grid>
@@ -183,6 +188,7 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ onClose }) => {
                             onChange={(name, val) => handleSelect(name, val)}
                             helperText={(formik.touched.state && formik.errors.state) ? formik.errors.state : undefined}
                             error={(formik.touched.state && formik.errors.state) ? true : false}
+                            required
                         />
                     </Grid>
                     <Grid item xs={12}>
@@ -224,7 +230,6 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ onClose }) => {
                         type="submit"
                         types="save"
                         aria-label={t("customer-filter-panel.buttons.apply")}
-
                     >
                         {t("customer-filter-panel.buttons.apply")}
                     </ApplyBtn>

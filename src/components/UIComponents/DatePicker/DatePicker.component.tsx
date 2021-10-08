@@ -1,8 +1,8 @@
 import { FormControl, FormHelperText, InputLabel } from '@mui/material';
 import moment from "moment";
 import React, { Fragment } from 'react';
-import { SingleDatePicker, toMomentObject } from 'react-dates';
 import 'react-dates/initialize';
+import { SingleDatePicker, toMomentObject } from 'react-dates';
 import 'react-dates/lib/css/_datepicker.css';
 import './DatePicker.style.scss';
 
@@ -43,9 +43,8 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
   return (
     <Fragment>
       <FormControl className="date-picker-container">
-        {props.label &&
-
-          <InputLabel shrink htmlFor={props.id} style={{ color: 'var(--Darkgray)' }} aria-labelledby={props.label} aria-required={props.required}>
+        <div className={props.error ? 'date-picker-error' : ''}>
+        {props.label && <InputLabel shrink htmlFor={props.id} style={{ color: 'var(--Darkgray)' }} aria-labelledby={props.label} aria-required={props.required}>
             <b>{props.label.toUpperCase()}{props.required && props.label && (<span className='super'>*</span>)}</b>
           </InputLabel>
         }
@@ -53,7 +52,7 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
         <SingleDatePicker
           disabled={props.disabled}
           readOnly={true}
-          // required={props.required}
+          required={props.required}
           hideKeyboardShortcutsPanel
           showDefaultInputIcon
           inputIconPosition="after"
@@ -71,6 +70,7 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
           id={props.id}
         />
         {props.helperText && <FormHelperText id={props.name} error={props.error}>{props.helperText}</FormHelperText>}
+        </div>
       </FormControl>
     </Fragment>
   )

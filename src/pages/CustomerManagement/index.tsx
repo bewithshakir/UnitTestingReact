@@ -75,11 +75,10 @@ export const Content: React.FC<ContentProps> = (props) => {
  
 
   const handleCustFilterPanelOpen = () => setCustFilterPanelVisible(!custFilterPanelVisible);
-  const handleCustFilterPanelClose = (filterObj:{[key: string]: string[]}) => {
-      console.log("returnedFilter Data--->",filterObj);
-      setFilterData(filterObj);
-      setCustFilterPanelVisible(false)
-  };
+
+  const handleCustFilterPanelClose = () => setCustFilterPanelVisible(false);
+
+  const getFilterParams =  (filterObj:{[key: string]: string[]}) => setFilterData(filterObj);
 
   return (
     <div>
@@ -150,7 +149,7 @@ export const Content: React.FC<ContentProps> = (props) => {
           getPages={fetchNextPage}
           openDrawer={openDrawer}
         />
-       <RightInfoPanel panelType="customer-filter" open={custFilterPanelVisible} headingText={"Filters"} onClose={handleCustFilterPanelClose} />
+       <RightInfoPanel panelType="customer-filter" open={custFilterPanelVisible} headingText={"Filters"} provideFilterParams={getFilterParams} onClose={handleCustFilterPanelClose} />
        <RightInfoPanel panelType="info-view" open={drawerOpen} headingText={"Accurate Transportation"} info={info} onClose={drawerClose}/>
       </div>
     </div>
