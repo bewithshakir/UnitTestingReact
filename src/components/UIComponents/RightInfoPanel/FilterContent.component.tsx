@@ -17,14 +17,21 @@ interface InfoPanelProps {
     onClose: (...args: any[]) => void;
 }
 
+interface FilterDataProps {
+    date?: string[],
+    state?: string[],
+    city?: string[],
+    paymentType?: string[]
+}
+
 export const FilterContent: React.FC<InfoPanelProps> = ({ onClose }) => {
     const { theme } = useTheme();
 
     const formInitial = { state: [], city: [], paymentType: [], fromDate: null, toDate:null };
-    // const filterParamsInitial = { state: [], city: [], paymentType: [], date:[] };  //actual
-    const filterParamsInitial = { filterBy:"", value: []}; // temporary
+    // const filterParamsInitial = { };  //actual
+    // const filterParamsInitial = { filterBy:"", value: []}; // temporary
     const [form, setForm] = React.useState(formInitial);
-    const [filterParams, setFilterParams] = React.useState<{filterBy: string, value:string[]}>(filterParamsInitial); 
+    const [filterParams, setFilterParams] = React.useState<{[key: string]: string[]}>({ }); 
     const { t } = useTranslation();
 
     // const MyComponent = styled('div')({ /* Experimental Code: Custom Style div */   
@@ -103,36 +110,29 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ onClose }) => {
     const onDateChange = (name: string, newValue: Date | string | null | moment.Moment) => {
         setForm(x => ({ ...x, [name]: newValue }));
  
-        // if(name == "fromDate"){ //actual
-        //     setFilterParams(x => ({ ...x, date:Object.assign([...filterParams.date], {[0]: newValue?moment(newValue).format("MM-DD-YYYY"):""})}));
-        // }else if(name=="toDate"){
-        //     setFilterParams(x => ({ ...x, date:Object.assign([...filterParams.date], {[1]: newValue?moment(newValue).format("MM-DD-YYYY"):""})}));
-        // }
-
-        if(name == "fromDate"){ //temporary
-            setFilterParams(x => ({ ...x, filterBy: "date", value:Object.assign([...filterParams.value], {[0]: newValue?moment(newValue).format("MM-DD-YYYY"):""})}));
+        if(name == "fromDate"){ //actual
+            setFilterParams(x => ({ ...x, date: [moment(newValue).format("MM-DD-YYYY"), form.toDate?moment(form.toDate).format("MM-DD-YYYY"):'']}));
         }else if(name=="toDate"){
-             setFilterParams(x => ({ ...x, filterBy: "date", value:Object.assign([...filterParams.value], {[1]: newValue?moment(newValue).format("MM-DD-YYYY"):""})}));
+            setFilterParams(x => ({ ...x, date: [form.fromDate?moment(form.fromDate).format("MM-DD-YYYY"):'', moment(newValue).format("MM-DD-YYYY")]}));
         }
-
-        
     }
     
     const handleSelect = (name:any,e:any) => {
         setForm(x => ({ ...x, [name]: e }));
-        // setFilterParams(x => ({...x, [name]: [...e.value], filterBy:name+"By"})) // actual
+        setFilterParams(x => ({...x, [name]: [e.value]})) // actual
         
-        setFilterParams(x => ({...x, value: [e.value], filterBy:name})) // temporary
+        // setFilterParams(x => ({...x, value: [e.value], filterBy:name})) // temporary
     }
 
     const applyFilter = () => {
-        onClose(filterParams);
         console.log("inside-filter-main", form);
+        onClose(filterParams);
+        console.log("inside-filter-main", filterParams);
     }
 
     const clearFilter = () => {
         setForm(formInitial);
-        setFilterParams(filterParamsInitial);
+        setFilterParams({});
     }
 
 

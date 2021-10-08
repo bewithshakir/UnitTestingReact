@@ -22,19 +22,13 @@ interface ContentProps {
   rows?: [];
 }
 
-// interface filterParams {
-//   filterBy: string;
-//   value: string[];
-// }
-
-
 export const Content: React.FC<ContentProps> = (props) => {
   const history = useHistory();
   const [info,setInfo] = React.useState({})
   const [searchTerm, setSearchTerm] = React.useState("");
   const [drawerOpen, setDrawerOpen] = React.useState(false);
   const [sortOrder, setSortOrder] = React.useState<{sortBy:string,order:string}>({sortBy:"customerName",order:"asc"});
-  const [filterData, setFilterData] = React.useState<{filterBy: string, value:string[]}>();
+  const [filterData, setFilterData] = React.useState<{[key: string]: string[]}>({});
   const [custFilterPanelVisible, setCustFilterPanelVisible] = React.useState(false);
   const { t } = useTranslation();
   const { data, fetchNextPage, isLoading, hasNextPage }: any = useCustomers(
@@ -81,7 +75,7 @@ export const Content: React.FC<ContentProps> = (props) => {
  
 
   const handleCustFilterPanelOpen = () => setCustFilterPanelVisible(!custFilterPanelVisible);
-  const handleCustFilterPanelClose = (filterObj:{filterBy: string, value:string[]}) => {
+  const handleCustFilterPanelClose = (filterObj:{[key: string]: string[]}) => {
       console.log("returnedFilter Data--->",filterObj);
       setFilterData(filterObj);
       setCustFilterPanelVisible(false)
