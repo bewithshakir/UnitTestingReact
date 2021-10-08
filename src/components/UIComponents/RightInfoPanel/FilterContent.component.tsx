@@ -10,6 +10,10 @@ import { Button } from "../Button/Button.component";
 import { useTheme } from '../../../contexts/Theme/Theme.context';
 import { styled } from '@mui/system';
 
+interface SelectProps {
+    label: string,
+    value: string,
+}
 
 
 
@@ -20,14 +24,20 @@ interface InfoPanelProps {
 }
 
 interface filterForm {
-    state: string[],
-    city: string[],
-    paymentType: string[],
-    fromDate: moment.Moment | null,
+    state: any[],
+    city: any[],
+    paymentType?: any[],
+    fromDate: moment.Moment | null ,
     toDate: moment.Moment | null 
 }
 
-const initialValues: filterForm = {state: [], city: [], paymentType: [], fromDate: null, toDate:null }
+const initialValues: filterForm = {
+    state:  [], 
+    city:  [],
+    paymentType:  [], 
+    fromDate: null, 
+    toDate:null 
+}
   
 
 const formInitial = { state: [], city: [], paymentType: [], fromDate: null, toDate:null };
@@ -98,15 +108,14 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ onClose }) => {
     }
     
     const handleSelect = (name:any,e:any) => {
-        setForm(x => ({ ...x, [name]: e }));
+        // setForm(x => ({ ...x, [name]: e }));
         setFilterParams(x => ({...x, [name]: e.map((obj:{label:string,value:string}) => obj.value)})) // actual
     }
 
-    const applyFilter = (resetForm: Function) => {
-        console.log("inside-filter-main", form);
-        resetForm();
-        onClose(filterParams);
-        console.log("inside-filter-main", filterParams);
+    const applyFilter = (formData: filterForm, resetForm: Function) => {
+        // resetForm();
+        // onClose(filterParams);
+        console.log("inside-filter-main------>>", formData);
     }
 
     const clearFilter = () => {
@@ -116,8 +125,16 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ onClose }) => {
 
     const formik = useFormik({
         initialValues,
+        validationSchema:  Yup.object().shape({
+            fromDate: Yup.object().nullable(),
+            toDate: Yup.object().nullable().when("fromDate", {
+                is: true,
+                then: Yup.object().required("Please enter to date")
+              })
+        }),
         onSubmit: (values, actions) => {
-            applyFilter(actions.resetForm);
+            
+            applyFilter(values, actions.resetForm);
         
         },
         enableReinitialize: true,
@@ -136,21 +153,29 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ onClose }) => {
                 </Grid>
                 <Grid container item xs={6} spacing="2">
                     <DatePicker
-                        id="cust-filter-start-date"
+                        id="fromDate"
                         placeholder="From Date"
                         name="fromDate"
-                        onChange={onDateChange}
-                        value={form.fromDate}
+                        // onChange={onDateChange}
+                        value={formik.values.fromDate}
+                        onChange={formik.setFieldValue}
+                        helperText={(formik.touched.fromDate && formik.errors.fromDate) ? formik.errors.fromDate : undefined}
+                        error={(formik.touched.fromDate && formik.errors.fromDate) ? true : false}
+                        // {...formik.getFieldProps('fromDate')}
                     />
                 </Grid>
                 <Grid container item xs={6} spacing="2">
                     <DatePicker
-                        id="cust-filter-end-date"
+                        id="toDate"
                         disableBeforeDate={form.fromDate}
                         placeholder="To Date"
                         name="toDate"
-                        onChange={onDateChange}
-                        value={form.toDate}
+                        // onChange={onDateChange}
+                        value={formik.values.toDate}
+                        onChange={formik.setFieldValue}
+                        helperText={(formik.touched.toDate && formik.errors.toDate) ? formik.errors.toDate : undefined}
+                        error={(formik.touched.toDate && formik.errors.toDate) ? true : false}
+                        // {...formik.getFieldProps('toDate')}
                     />
                 </Grid>
             </Grid>
@@ -159,9 +184,11 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ onClose }) => {
                     name="state"
                     label="Select State"
                     placeholder=""
-                    value={form.state}
+                    value={formik.values.state}
                     items={geoData.states}
-                    onChange={handleSelect}
+                    onChange={formik.setFieldValue}
+                     // helperText={(formik.touched.state && formik.errors.state) ? formik.errors.state : undefined}
+                    // error={(formik.touched.state && formik.errors.state) ? true : false}
                 />
             </Grid>
             <Grid item xs={12}>
@@ -169,9 +196,11 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ onClose }) => {
                     name="city"
                     label="Select City"
                     placeholder=""
-                    value={form.city}
+                    value={formik.values.city}
                     items={geoData.cities}
-                    onChange={handleSelect}
+                    onChange={formik.setFieldValue}
+                     // helperText={(formik.touched.city && formik.errors.city) ? formik.errors.city : undefined}
+                    // error={(formik.touched.city && formik.errors.city) ? true : false}
                 />
             </Grid>
             <Grid item xs={12}>
@@ -179,15 +208,17 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ onClose }) => {
                     name="paymentType"
                     label="Settlement Type"
                     placeholder=""
-                    value={form.paymentType}
                     items={paymentTypes}
-                    onChange={handleSelect}
+                    onChange={formik.setFieldValue}
+                    value={formik.values.paymentType}
+                    helperText={(formik.touched.paymentType && formik.errors.paymentType) ? formik.errors.paymentType : undefined}
+                    error={(formik.touched.paymentType && formik.errors.paymentType) ? true : false}
                 />
             </Grid>
         </Grid>
         <div className="cust_filter_buttons_container">
             <ClearBtn
-                type="submit"
+                
                 types="cancel"
                 aria-label={t("customer-filter-panel.buttons.clear all")}
                 onClick={clearFilter}
@@ -195,9 +226,10 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ onClose }) => {
                 {t("customer-filter-panel.buttons.clear all")}
             </ClearBtn >
             <ApplyBtn
+                type="submit"
                 types="save"
                 aria-label={t("customer-filter-panel.buttons.apply")}
-                onClick={applyFilter}
+                
             >
                 {t("customer-filter-panel.buttons.apply")}
             </ApplyBtn>
