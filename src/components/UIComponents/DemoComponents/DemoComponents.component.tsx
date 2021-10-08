@@ -45,11 +45,11 @@ export const DemoComponents: React.FC = () => {
     const [form, setForm] = useState({ userName: '', email: '', item: [{ label: 'Nike', value: 'Nike' }], searchTerm: '', startDate: moment(), endDate: moment(), address:{addressLine1:'', addressLine2:'', state:'', city:'', postalCode:''} });
     const debouncedValue = useDebounce<string>(form.searchTerm, 1000);
     const items = [
-        { label: 'Amazon', value: 'Amazon23' },
-        { label: 'Nike', value: 'Nike15' },
-        { label: 'Flipkart', value: 'Flipkart12' },
-        { label: 'Apple', value: 'Apple12' },
-        { label: 'Hp', value: 'Hp23' }
+        { label: 'Amazon', value: 'Amazon' },
+        { label: 'Nike', value: 'Nike' },
+        { label: 'Flipkart', value: 'Flipkart' },
+        { label: 'Apple', value: 'Apple' },
+        { label: 'Hp', value: 'Hp' }
     ]
     const handleSelect = (name:any,e:any) => setForm(x=>({ ...x, [name]: e}));
     const handleChange = (e: any) => setForm(x => ({ ...x, [e.target.name]: e.target.value }));
