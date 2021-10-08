@@ -444,11 +444,13 @@ export function CloseIcon(props: React.SVGProps<SVGSVGElement>) {
       viewBox="0 0 20 20"
       {...props}
     >
-      <path
-        d="M8.026 4l1.479 1.346-3.83 4.217H18.42v2H5.761l3.714 3.717-1.417 1.413L2 10.628z"
-        fill={props.color || 'var(--Gray)'}
-      />
-      <path fill="none" d="M0 0h20v20H0z" />
+      <g data-name="Group 1862">
+        <path
+          d="M17 1l1.414 1.414-7.293 7.293L18.414 17 17 18.414l-7.293-7.293-7.293 7.293L1 17l7.293-7.293L1 2.414 2.414 1l7.293 7.293z"
+          fill="currentColor"
+        />
+        <path data-name="Rectangle 2250" fill="none" d="M0 0h20v20H0z" />
+      </g>
     </svg>
   )
 }

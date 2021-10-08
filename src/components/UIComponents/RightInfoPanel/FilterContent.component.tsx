@@ -2,7 +2,7 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { Grid } from "@mui/material";
 import moment from "moment";
-import Select from "../Select/SingleSelect";
+import Select from "../Select/MultiSelect";
 import { DatePicker } from "../DatePicker/DatePicker.component";
 import { Button } from "../Button/Button.component";
 import { useTheme } from '../../../contexts/Theme/Theme.context';
@@ -28,18 +28,11 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ onClose }) => {
     const { theme } = useTheme();
 
     const formInitial = { state: [], city: [], paymentType: [], fromDate: null, toDate:null };
-    // const filterParamsInitial = { };  //actual
-    // const filterParamsInitial = { filterBy:"", value: []}; // temporary
     const [form, setForm] = React.useState(formInitial);
     const [filterParams, setFilterParams] = React.useState<{[key: string]: string[]}>({ }); 
     const { t } = useTranslation();
 
-    // const MyComponent = styled('div')({ /* Experimental Code: Custom Style div */   
-    //     color: theme["--White"],
-    //     backgroundColor: theme["--Primary"]  /* Themes getting applied */
-    //   });
-      
-      const ClearBtn = styled(Button)((props) =>({ 
+    const ClearBtn = styled(Button)((props) =>({ 
         "&&":{
             width: '200px',
             backgroundColor: theme["--Cancel-Btn"],
@@ -64,27 +57,7 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ onClose }) => {
         }
     }));
     
-
-
-    // const CustomBtn = styled(Button)((props) =>({ 
-    //       "&&":{
-    //         backgroundColor: theme["--Primary"],
-    //         "&:hover": {
-    //             backgroundColor: theme["--Cancel-Btn"]  /* Experimental Code: Custom Style to TAPUP Button Component */
-    //         } 
-    //       }
-    // }));
-      
-
-    //   const CustomSelect = styled('div')((props) =>({ 
-    //       "& .selection": {
-    //         border: "1px solid "+ theme["--Lightgray_2"],
-    //         background: theme["--White"] + "0% 0% no-repeat padding-box"
-    //       }
-    // }));
-    
-    
-
+    //temporary dropdown data
     const geoData = {
         states: [
             { label: "Texas", value: "Texas" },
@@ -95,7 +68,7 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ onClose }) => {
         ],
         cities: [
             { label: "Houston", value: "Houston" },
-            { label: "Hoston", value: "Houston" },
+            { label: "Hoston", value: "Hoston" },
             { label: "Saratoga", value: "Saratoga" },
             { label: "kalol", value: "kalol" },
         ]
@@ -119,9 +92,7 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ onClose }) => {
     
     const handleSelect = (name:any,e:any) => {
         setForm(x => ({ ...x, [name]: e }));
-        setFilterParams(x => ({...x, [name]: [e.value]})) // actual
-        
-        // setFilterParams(x => ({...x, value: [e.value], filterBy:name})) // temporary
+        setFilterParams(x => ({...x, [name]: e.map((obj:{label:string,value:string}) => obj.value)})) // actual
     }
 
     const applyFilter = () => {
@@ -139,8 +110,6 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ onClose }) => {
     return <div className="cust_filter_panel_content">
         <div>{JSON.stringify(form)}</div>
         <div>{JSON.stringify(filterParams)}</div>
-        {/* <MyComponent>Styled div</MyComponent> */} {/* Experimental Code: Custom Style div -- theme getting applied here */}
-         {/* <CustomBtn> Custom Btn </CustomBtn> */} {/* Experimental Code: Custom Style to TAPUP Button Component -- themes not getting applied here */}
         <Grid container spacing={2} className="cust_filter_parent_grid">
             <Grid item  xs={12} columnSpacing={{ xs: 1, sm: 2, md: 3 }} container>
                 <Grid item xs={12} className="cust_filter_date_label_grid">
@@ -167,7 +136,6 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ onClose }) => {
                 </Grid>
             </Grid>
             <Grid item xs={12}>
-                {/* <CustomSelect> */}
                 <Select
                     name="state"
                     label="Select State"
@@ -175,9 +143,7 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ onClose }) => {
                     value={form.state}
                     items={geoData.states}
                     onChange={handleSelect}
-                    // multiple
                 />
-                {/* </CustomSelect> */}
             </Grid>
             <Grid item xs={12}>
                 <Select
@@ -187,7 +153,6 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ onClose }) => {
                     value={form.city}
                     items={geoData.cities}
                     onChange={handleSelect}
-                    // multiple
                 />
             </Grid>
             <Grid item xs={12}>
@@ -198,7 +163,6 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ onClose }) => {
                     value={form.paymentType}
                     items={paymentTypes}
                     onChange={handleSelect}
-                    // multiple
                 />
             </Grid>
         </Grid>
