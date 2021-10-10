@@ -5,7 +5,10 @@
     .MuiAppBar-root {
       background-color: var(--Blue-Btn);
       box-shadow: none;
-      // padding: 4px 0;
+      h2{
+        color: var(--White);
+        flex-grow: 1 ;
+      }
       .info_panel_close_icon {
         font-size: 17px;
       }
