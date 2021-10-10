@@ -60,22 +60,21 @@ const initialValues: filterForm = {
 let filterParams: filterParamsProps = {};
 
 export const FilterContent: React.FC<InfoPanelProps> = ({ provideFilterParams, onClose }) => {
-    const [ formSubmitClicked, setFormSubmitClicked] = React.useState<boolean>(false);
-    const [formValuesSaved,setFormValuesSaved] = React.useState<filterForm | null>(null);
+    const [formSubmitClicked, setFormSubmitClicked] = React.useState<boolean>(false);
+    const [formValuesSaved, setFormValuesSaved] = React.useState<filterForm | null>(null);
     const { theme } = useTheme();
     const { t } = useTranslation();
 
     useEffect(() => {
         filterParams = {};
         setFormSubmitClicked(false);
-        if(sessionStorage.getItem("filterFormData")){
+        if (sessionStorage.getItem("filterFormData")) {
             const filterDataObj = JSON.parse(sessionStorage.getItem('filterFormData')!);
             setFormValuesSaved(filterDataObj);
-            console.log(filterDataObj);
-            if(filterDataObj && Object.keys(filterDataObj).length > 0){
+            if (filterDataObj && Object.keys(filterDataObj).length > 0) {
                 for (let key of Object.keys(filterDataObj)) {
-                    formik.setFieldValue(key, filterDataObj[key])
-                }    
+                    formik.setFieldValue(key, typeof filterDataObj[key] === 'string' ? moment(filterDataObj[key]) : filterDataObj[key])
+                }
             }
         }
     }, [])
@@ -122,9 +121,9 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ provideFilterParams, o
     const applyFilter = (formData: filterForm, resetForm: Function) => {
         setFormSubmitClicked(true);
         resetForm(initialValues);
-      
+
         if (provideFilterParams && Object.keys(filterParams).length > 0) {
-              sessionStorage.setItem("filterFormData", JSON.stringify(formData));
+            sessionStorage.setItem("filterFormData", JSON.stringify(formData));
             provideFilterParams(filterParams);
             onClose();
         }
@@ -134,16 +133,16 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ provideFilterParams, o
     const clearFilter = (formData: filterForm, resetForm: Function) => {
         setFormSubmitClicked(false);
         setFormValuesSaved(null);
-        if(provideFilterParams){
+        if (provideFilterParams) {
             provideFilterParams(filterParams);
         }
         sessionStorage.removeItem("filterFormData");
-        
+
     }
 
 
     const formik = useFormik({
-        initialValues: formValuesSaved? formValuesSaved:initialValues,
+        initialValues: formValuesSaved ? formValuesSaved : initialValues,
         validationSchema: Yup.object().shape({
             fromDate: Yup.object().nullable(true).when('toDate', {
                 is: ((toDate: moment.Moment | null) => {
@@ -159,27 +158,17 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ provideFilterParams, o
             }),
 
 
-        },[["fromDate", "toDate"]]
+        }, [["fromDate", "toDate"]]
         ),
         onSubmit: (values, { resetForm }) => applyFilter(values, resetForm),
-        onReset: (values, { resetForm }) => {
-            clearFilter(values,resetForm );
-            // sessionStorage.removeItem("filterFormData");
-            // setFormSubmitClicked(false)
-        },
-            
-        // onReset: (values, { resetForm }) => {
-        //     sessionStorage.removeItem("filterFormData");
-        //     setFormSubmitClicked(false)
-        // },
-        // enableReinitialize: true,
+        onReset: (values, { resetForm }) => clearFilter(values, resetForm),
     });
 
     return <div className="cust_filter_panel_content">
         <FormikProvider value={formik}>
             <form onSubmit={formik.handleSubmit} onReset={formik.handleReset}>
                 <Grid container spacing={2} className="cust_filter_parent_grid">
-                    <Grid item xs={12} spacing={{ xs: 1, sm: 2, md: 3 }}  container>
+                    <Grid item xs={12} spacing={{ xs: 1, sm: 2, md: 3 }} container>
                         <Grid item xs={12} className="cust_filter_date_label_grid">
                             {"Period".toUpperCase()}
                         </Grid>
@@ -250,7 +239,7 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ provideFilterParams, o
                 {!formik.dirty && formSubmitClicked && (
                     <div className="filter-error-box">Please select the criteria to apply the filter</div>
                 )}
-                
+
                 <div className="cust_filter_buttons_container">
                     <ClearBtn
                         type="reset"
