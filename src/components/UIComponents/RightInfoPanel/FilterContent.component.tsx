@@ -150,9 +150,9 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ provideFilterParams, o
                     {JSON.stringify(formik.touched)}
                     <br/>---{JSON.stringify(formik.isSubmitting)}
                     <br/>--- */}
-                    <Grid item xs={12} columnSpacing={{ xs: 1, sm: 2, md: 3 }} container>
+                    <Grid item xs={12} spacing={{ xs: 1, sm: 2, md: 3 }}  container>
                         <Grid item xs={12} className="cust_filter_date_label_grid">
-                            Period
+                            {"Period".toUpperCase()}
                         </Grid>
                         <Grid container item xs={6} spacing="2">
                             <DatePicker
