@@ -166,7 +166,7 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ provideFilterParams, o
         <FormikProvider value={formik}>
             <form onSubmit={formik.handleSubmit} onReset={formik.handleReset}>
                 <Grid container spacing={2} className="cust_filter_parent_grid">
-                    <Grid item xs={12} spacing={{ xs: 1, sm: 2, md: 3 }} container>
+                    <Grid item xs={12} columnSpacing={2} container>
                         <Grid item xs={12} className="cust_filter_date_label_grid">
                             {"Period".toUpperCase()}
                         </Grid>
