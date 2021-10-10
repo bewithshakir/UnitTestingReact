@@ -61,12 +61,23 @@ let filterParams: filterParamsProps = {};
 
 export const FilterContent: React.FC<InfoPanelProps> = ({ provideFilterParams, onClose }) => {
     const [ formSubmitClicked, setFormSubmitClicked] = React.useState<boolean>(false);
+    const [formValuesSaved,setFormValuesSaved] = React.useState<filterForm | null>(null);
     const { theme } = useTheme();
     const { t } = useTranslation();
 
     useEffect(() => {
         filterParams = {};
         setFormSubmitClicked(false);
+        if(sessionStorage.getItem("filterFormData")){
+            const filterDataObj = JSON.parse(sessionStorage.getItem('filterFormData')!);
+            setFormValuesSaved(filterDataObj);
+            console.log(filterDataObj);
+            if(filterDataObj && Object.keys(filterDataObj).length > 0){
+                for (let key of Object.keys(filterDataObj)) {
+                    formik.setFieldValue(key, filterDataObj[key])
+                }    
+            }
+        }
     }, [])
 
     const ClearBtn = styled(Button)((props) => ({
@@ -110,16 +121,29 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ provideFilterParams, o
 
     const applyFilter = (formData: filterForm, resetForm: Function) => {
         setFormSubmitClicked(true);
-        resetForm({});
+        resetForm(initialValues);
+      
         if (provideFilterParams && Object.keys(filterParams).length > 0) {
+              sessionStorage.setItem("filterFormData", JSON.stringify(formData));
             provideFilterParams(filterParams);
             onClose();
         }
 
     }
 
+    const clearFilter = (formData: filterForm, resetForm: Function) => {
+        setFormSubmitClicked(false);
+        setFormValuesSaved(null);
+        if(provideFilterParams){
+            provideFilterParams(filterParams);
+        }
+        sessionStorage.removeItem("filterFormData");
+        
+    }
+
+
     const formik = useFormik({
-        initialValues,
+        initialValues: formValuesSaved? formValuesSaved:initialValues,
         validationSchema: Yup.object().shape({
             fromDate: Yup.object().nullable(true).when('toDate', {
                 is: ((toDate: moment.Moment | null) => {
@@ -138,18 +162,23 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ provideFilterParams, o
         },[["fromDate", "toDate"]]
         ),
         onSubmit: (values, { resetForm }) => applyFilter(values, resetForm),
-        // onReset: (values, { resetForm }) => setFormSubmitClicked(false),
-        enableReinitialize: true,
+        onReset: (values, { resetForm }) => {
+            clearFilter(values,resetForm );
+            // sessionStorage.removeItem("filterFormData");
+            // setFormSubmitClicked(false)
+        },
+            
+        // onReset: (values, { resetForm }) => {
+        //     sessionStorage.removeItem("filterFormData");
+        //     setFormSubmitClicked(false)
+        // },
+        // enableReinitialize: true,
     });
 
     return <div className="cust_filter_panel_content">
         <FormikProvider value={formik}>
             <form onSubmit={formik.handleSubmit} onReset={formik.handleReset}>
                 <Grid container spacing={2} className="cust_filter_parent_grid">
-                    {/* {JSON.stringify(formik.dirty)}<br/>---
-                    {JSON.stringify(formik.touched)}
-                    <br/>---{JSON.stringify(formik.isSubmitting)}
-                    <br/>--- */}
                     <Grid item xs={12} spacing={{ xs: 1, sm: 2, md: 3 }}  container>
                         <Grid item xs={12} className="cust_filter_date_label_grid">
                             {"Period".toUpperCase()}
