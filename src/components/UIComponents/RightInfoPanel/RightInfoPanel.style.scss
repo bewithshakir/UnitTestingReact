@@ -74,6 +74,9 @@
           .date-picker-container {
             width: 100%;
           }
+          .multi-select__control{
+            border: 1px solid var(--Lightgray_2);
+          }
           .select {
             width: 100%;
             .MuiInputLabel-root {
@@ -94,6 +97,9 @@
           font-size: 16px;
           font-weight: 700;
         }
+      }
+      .filter-error-box{
+        color: var(--Tertiary);
       }
       .cust_filter_buttons_container {
         position: absolute;

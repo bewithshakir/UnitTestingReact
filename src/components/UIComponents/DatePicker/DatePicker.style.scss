@@ -1,14 +1,7 @@
 div{
 .date-picker-container{
     display: flex;
-    .date-picker-error{
-        .SingleDatePickerInput{
-            border: 1px solid var(--Tertiary);
-        }
-        .MuiFormHelperText-root{
-            margin-left: 0px;
-        }
-    }
+    
     .MuiInputLabel-outlined.MuiInputLabel-shrink {
         transform: translate(0px, 0px) scale(0.75);
     }    
@@ -22,12 +15,27 @@ div{
         // margin-bottom: 30px;
         // margin-left: -14px;
     }
+    .date-picker-error{
+        .SingleDatePicker{
+            .SingleDatePickerInput{
+                border: 2px solid var(--Tertiary);
+            }
+        }
+        .date-picker-helper-text{
+            margin-left: 0px;
+        }
+    
+    }
     .SingleDatePicker{
         width: 100%;
         .SingleDatePickerInput{
             width: 100%;
             display: flex;
+            border: 1px solid var(--Lightgray_2);
             justify-content: space-between;
+            &:hover{
+
+            }
             .DateInput{
                 // width: 77%;
                 .DateInput_input{
@@ -44,6 +52,7 @@ div{
                 }
             }
         }
+        
         .CalendarDay__selected{
             background-color: var(--Secondary);
             color: var(--Black);

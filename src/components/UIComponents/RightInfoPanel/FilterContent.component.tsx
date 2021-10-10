@@ -37,7 +37,7 @@ interface filterParamsProps { //temporary data
 }
 
 interface InfoPanelProps {
-    provideFilterParams?:(...args: any) => void;
+    provideFilterParams?: (...args: any) => void;
     onClose: (...args: any) => void;
 }
 
@@ -60,8 +60,14 @@ const initialValues: filterForm = {
 let filterParams: filterParamsProps = {};
 
 export const FilterContent: React.FC<InfoPanelProps> = ({ provideFilterParams, onClose }) => {
+    const [ formSubmitClicked, setFormSubmitClicked] = React.useState<boolean>(false);
     const { theme } = useTheme();
     const { t } = useTranslation();
+
+    useEffect(() => {
+        filterParams = {};
+        setFormSubmitClicked(false);
+    }, [])
 
     const ClearBtn = styled(Button)((props) => ({
         "&&": {
@@ -91,61 +97,59 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ provideFilterParams, o
     const onDateChange = (name: string, value: null | moment.Moment) => {
         formik.setFieldValue(name, value);
         if (name == "fromDate") {
-            filterParams = { 
-                ...filterParams, 
-                date: [moment(value).format("MM-DD-YYYY"), filterParams.date && filterParams.date[1] ? moment(filterParams.toDate).format("MM-DD-YYYY") : ''] 
-            };
+            filterParams.date = [moment(value).format("MM-DD-YYYY"), filterParams.date && filterParams.date[1] ? moment(filterParams.date[1]).format("MM-DD-YYYY") : ''];
         } else if (name == "toDate") {
-            filterParams = { 
-                ...filterParams, 
-                date: [filterParams.date && filterParams.date[0] ? moment(filterParams.date[0]).format("MM-DD-YYYY") : '', moment(value).format("MM-DD-YYYY")] 
-            };
+            filterParams.date = [filterParams.date && filterParams.date[0] ? moment(filterParams.date[0]).format("MM-DD-YYYY") : '', moment(value).format("MM-DD-YYYY")];
         }
     }
-
-    useEffect(()=>{
-        filterParams = {};
-    },[])
 
     function handleSelect(name: string, value: any[]) {
         formik.setFieldValue(name, value);
-        filterParams = { ...filterParams, [name]: value.map((obj: { label: string, value: string }) => obj.value) };
+        filterParams[name] = value.map((obj: { label: string, value: string }) => obj.value);
     }
 
     const applyFilter = (formData: filterForm, resetForm: Function) => {
+        setFormSubmitClicked(true);
         resetForm({});
-        if(provideFilterParams){
+        if (provideFilterParams && Object.keys(filterParams).length > 0) {
             provideFilterParams(filterParams);
+            onClose();
         }
-        onClose();
 
     }
 
     const formik = useFormik({
         initialValues,
         validationSchema: Yup.object().shape({
-            fromDate: Yup.lazy(() => Yup.object().nullable(true).when('toDate', {
+            fromDate: Yup.object().nullable(true).when('toDate', {
                 is: ((toDate: moment.Moment | null) => {
                     return (!!toDate) ? true : false;
                 }),
                 then: Yup.object().nullable(true).required('From date is required')
-            })),
-            toDate: Yup.lazy(() => Yup.object().nullable(true).when('fromDate', {
+            }),
+            toDate: Yup.object().nullable(true).when('fromDate', {
                 is: ((fromDate: moment.Moment | null) => {
                     return (!!fromDate) ? true : false;
                 }),
                 then: Yup.object().nullable(true).required('To date is required')
-            })),
-        }),
+            }),
+
+
+        },[["fromDate", "toDate"]]
+        ),
         onSubmit: (values, { resetForm }) => applyFilter(values, resetForm),
+        // onReset: (values, { resetForm }) => setFormSubmitClicked(false),
         enableReinitialize: true,
     });
 
     return <div className="cust_filter_panel_content">
         <FormikProvider value={formik}>
-            <form onSubmit={formik.handleSubmit}  onReset={formik.handleReset}>
+            <form onSubmit={formik.handleSubmit} onReset={formik.handleReset}>
                 <Grid container spacing={2} className="cust_filter_parent_grid">
-
+                    {/* {JSON.stringify(formik.dirty)}<br/>---
+                    {JSON.stringify(formik.touched)}
+                    <br/>---{JSON.stringify(formik.isSubmitting)}
+                    <br/>--- */}
                     <Grid item xs={12} columnSpacing={{ xs: 1, sm: 2, md: 3 }} container>
                         <Grid item xs={12} className="cust_filter_date_label_grid">
                             Period
@@ -159,8 +163,6 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ provideFilterParams, o
                                 onChange={(name, val) => onDateChange(name, val)}
                                 helperText={(formik.touched.fromDate && formik.errors.fromDate) ? formik.errors.fromDate : undefined}
                                 error={(formik.touched.fromDate && formik.errors.fromDate) ? true : false}
-                                required
-                        
                             />
                         </Grid>
                         <Grid container item xs={6} spacing="2">
@@ -173,7 +175,6 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ provideFilterParams, o
                                 onChange={(name, val) => onDateChange(name, val)}
                                 helperText={(formik.touched.toDate && formik.errors.toDate) ? formik.errors.toDate : undefined}
                                 error={(formik.touched.toDate && formik.errors.toDate) ? true : false}
-                                required
                             />
                         </Grid>
                     </Grid>
@@ -188,7 +189,6 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ provideFilterParams, o
                             onChange={(name, val) => handleSelect(name, val)}
                             helperText={(formik.touched.state && formik.errors.state) ? formik.errors.state : undefined}
                             error={(formik.touched.state && formik.errors.state) ? true : false}
-                            required
                         />
                     </Grid>
                     <Grid item xs={12}>
@@ -196,7 +196,7 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ provideFilterParams, o
                             id="city"
                             name="city"
                             label="City"
-                            placeholder="Select City"
+                            placeholder=""
                             value={formik.values.city}
                             items={geoData.cities}
                             onChange={(name, val) => handleSelect(name, val)}
@@ -218,9 +218,13 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ provideFilterParams, o
                         />
                     </Grid>
                 </Grid>
+                {!formik.dirty && formSubmitClicked && (
+                    <div className="filter-error-box">Please select the criteria to apply the filter</div>
+                )}
+                
                 <div className="cust_filter_buttons_container">
                     <ClearBtn
-                        type="reset" 
+                        type="reset"
                         types="cancel"
                         aria-label={t("customer-filter-panel.buttons.clear all")}
                     >

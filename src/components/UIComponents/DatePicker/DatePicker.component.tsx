@@ -69,7 +69,7 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
           onFocusChange={({ focused }) => setDateFocused(focused)} // PropTypes.func.isRequired
           id={props.id}
         />
-        {props.helperText && <FormHelperText id={props.name} error={props.error}>{props.helperText}</FormHelperText>}
+        {props.helperText && <FormHelperText id={props.name} className="date-picker-helper-text" error={props.error}>{props.helperText}</FormHelperText>}
         </div>
       </FormControl>
     </Fragment>
