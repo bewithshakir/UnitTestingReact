@@ -73,7 +73,8 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ provideFilterParams, o
             setFormValuesSaved(filterDataObj);
             if (filterDataObj && Object.keys(filterDataObj).length > 0) {
                 for (let key of Object.keys(filterDataObj)) {
-                    formik.setFieldValue(key, typeof filterDataObj[key] === 'string' ? moment(filterDataObj[key]) : filterDataObj[key])
+                    const tempVal = filterDataObj[key];
+                    formik.setFieldValue(key, moment(tempVal).isValid() ? moment(tempVal) : tempVal)
                 }
             }
         }
@@ -120,8 +121,6 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ provideFilterParams, o
 
     const applyFilter = (formData: filterForm, resetForm: Function) => {
         setFormSubmitClicked(true);
-        resetForm(initialValues);
-
         if (provideFilterParams && Object.keys(filterParams).length > 0) {
             sessionStorage.setItem("filterFormData", JSON.stringify(formData));
             provideFilterParams(filterParams);
@@ -137,7 +136,6 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ provideFilterParams, o
             provideFilterParams(filterParams);
         }
         sessionStorage.removeItem("filterFormData");
-
     }
 
 
