@@ -55,5 +55,6 @@ module.exports = {
         "no-useless-constructor": "off",
         "@typescript-eslint/no-useless-constructor": "error",
         "react/prop-types": 0,
+        "react/display-name": "off"
     }
 };

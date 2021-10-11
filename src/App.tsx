@@ -9,7 +9,7 @@ import { useTheme } from './contexts/Theme/Theme.context';
 import SideBarDrawer from './components/UIComponents/SideBarMenu/SideBarMenu.component';
 
 
-const App = ({ routes }: any) => {
+const App = () => {
   const { theme } = useTheme();
   const queryClient = new QueryClient({
     defaultOptions: {
