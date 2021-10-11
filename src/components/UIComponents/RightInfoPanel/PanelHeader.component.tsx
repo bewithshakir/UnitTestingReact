@@ -10,6 +10,7 @@ import { useTheme } from '../../../contexts/Theme/Theme.context';
 interface InfoPanelProps {
     headingText: string;
     panelType: string;
+    info: object | null;
     onClose: (...args: any[]) => void;
 }
 export const PanelHeader: React.FC<InfoPanelProps> = ({ headingText, panelType, onClose }) => {

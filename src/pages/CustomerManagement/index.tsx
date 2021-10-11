@@ -74,7 +74,10 @@ export const Content: React.FC<ContentProps> = (props) => {
   })
  
 
-  const handleCustFilterPanelOpen = () => setCustFilterPanelVisible(!custFilterPanelVisible);
+  const handleCustFilterPanelOpen = () => {
+    setDrawerOpen(false);
+    setCustFilterPanelVisible(!custFilterPanelVisible)
+  };
 
   const handleCustFilterPanelClose = () => setCustFilterPanelVisible(false);
 

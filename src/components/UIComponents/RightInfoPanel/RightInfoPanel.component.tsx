@@ -22,7 +22,7 @@ export const RightInfoPanel: React.FC<InfoPanelProps> = ({ open, headingText, in
 
   const provideContentForPanel = () => {
     if (panelType === "info-view") {
-      return <InfoViewContent info={info} />;
+      return <InfoViewContent info={info}  />;
     } else if (panelType === "customer-filter") {
       return <FilterContent provideFilterParams={provideFilterParams} onClose={onClose} />
     } else {
@@ -36,7 +36,7 @@ export const RightInfoPanel: React.FC<InfoPanelProps> = ({ open, headingText, in
     anchor="right"
     open={open}
   >
-    <PanelHeader onClose={onClose} headingText={headingText} panelType={panelType} />
+    <PanelHeader onClose={onClose} headingText={headingText} info={info?info:null}  panelType={panelType}  />
     {provideContentForPanel()}
   </Drawer >
 
