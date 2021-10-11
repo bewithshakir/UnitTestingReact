@@ -11,7 +11,7 @@ interface props {
     disabled?: boolean;
     required?: boolean;
     autoComplete?: string;
-    classes?: object;
+    classes?: any;
     error?: boolean;
     value?: any;
     helperText?: string

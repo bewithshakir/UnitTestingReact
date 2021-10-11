@@ -23,16 +23,15 @@ interface HorizontalBarProps {
 
 export default function HorizontalBar (props: HorizontalBarProps) {
   const { t } = useTranslation();
-  const version =  useStore((state)=>state.version)
+  const version =  useStore((state)=>state.version);
   function handleClick (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
-    console.info('You clicked a breadcrumb.');
+      return event;
   }
 
   const handleBack = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     event.preventDefault();
     props.onBack();
-    console.info('You clicked a back button.');
-  }
+  };
 
   function versionBreadcrumbsSingle () {
     return (<>
@@ -41,7 +40,7 @@ export default function HorizontalBar (props: HorizontalBarProps) {
           Add Customer
         </Link>
       </Breadcrumbs>
-    </>)
+    </>);
   }
 
   function varsionNavLinks () {
@@ -74,7 +73,7 @@ export default function HorizontalBar (props: HorizontalBarProps) {
           Invoices
         </NavLink>
       </div>
-    </>)
+    </>);
   }
 
   function versionBreadcrumbsMany () {
@@ -84,7 +83,7 @@ export default function HorizontalBar (props: HorizontalBarProps) {
           Accurate Transportation
         </Link>
       </Breadcrumbs>
-    </>)
+    </>);
   }
 
   return (
@@ -130,7 +129,7 @@ export default function HorizontalBar (props: HorizontalBarProps) {
                   },
                 ]}
                 onSelect={(value) => {
-                  console.log("🚀 ~ file: Content.component.tsx ~ line 60 ~ value", value)
+                  return value;
                 }}
               />
               <div className="vl"></div>
@@ -151,7 +150,7 @@ export default function HorizontalBar (props: HorizontalBarProps) {
                   },
                 ]}
                 onSelect={(value) => {
-                  console.log("🚀 ~ file: Content.component.tsx ~ line 60 ~ value", value)
+                  return value;
                 }}
               />
             </div>

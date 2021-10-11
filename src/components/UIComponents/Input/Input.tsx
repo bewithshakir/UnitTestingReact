@@ -12,7 +12,7 @@ interface props {
   disabled?: boolean;
   required?: boolean;
   autoComplete?: string;
-  classes?: object;
+  classes?: any;
   multiline?: boolean;
   type?: string;
   error?: boolean;
@@ -60,7 +60,7 @@ export default function Input (props: props) {
           </FormHelperText>)}
       </FormControl>
     </Fragment>
-  )
+  );
 }
 
 Input.defaultProps = {
@@ -68,6 +68,6 @@ Input.defaultProps = {
   disabled: false,
   required: false,
   id: "input",
-  autoComplete: "new-password",  // do not change this value to ( "off" ) or remove this.otherwise, it will not work. check with MDN js offical website
+  autoComplete: "new-password",
   error: false,
-}
+};

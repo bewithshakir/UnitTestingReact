@@ -49,7 +49,12 @@ export const DemoComponents: React.FC = () => {
     ];
     const handleSelect = (name:any,e:any) => setForm(x=>({ ...x, [name]: e}));
     const handleChange = (e: any) => setForm(x => ({ ...x, [e.target.name]: e.target.value }));
-    useEffect(() => { console.log('Debounced Value:', debouncedValue); }, [debouncedValue]);
+    const tempCode = () => {
+        return 0;
+    };
+    useEffect(() => { 
+        tempCode();
+    }, [debouncedValue]);
     const onDateChange = (name: string, newValue: Date | string | null | moment.Moment) => setForm(x => ({ ...x, [name]: newValue }));
     const { t } = useTranslation();
     return (
@@ -138,7 +143,7 @@ export const DemoComponents: React.FC = () => {
                             }
                         ]}
                         onSelect={(value) => {
-                            console.log("🚀 ~ file: Content.component.tsx ~ line 60 ~ value", value);
+                            return value;
                         }}
                     />
                 </FormControl>
@@ -147,7 +152,7 @@ export const DemoComponents: React.FC = () => {
                         options={[
                             {
                                 label: t("menus.profile-actions.profile"),
-                                icon: <CustomerProfileIcon2 /> // width={"20px"} height={"20px"}
+                                icon: <CustomerProfileIcon2 />
                             },
                             {
                                 label: t("menus.profile-actions.settings"),

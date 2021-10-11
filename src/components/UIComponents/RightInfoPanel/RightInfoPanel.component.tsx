@@ -43,6 +43,7 @@ export const RightInfoPanel: React.FC<InfoPanelProps> = ({ open, headingText, in
                   }
                 ]}
                 onSelect={(value) => {
+                  return value;
                   // console.log("selected")
                 }}
               />
@@ -52,7 +53,7 @@ export const RightInfoPanel: React.FC<InfoPanelProps> = ({ open, headingText, in
       </div>
       <div className="right_info_panel_content">
         <Grid container spacing={4}>
-          {Object.entries(info).map(([key, value], i) =>
+          {Object.entries(info).map(([key, value]) =>
             <React.Fragment key={key}>
               <Grid container item xs={12} spacing={2} key={key}>
                 <Grid item xs={6} className="right_info_panel_content_label">
