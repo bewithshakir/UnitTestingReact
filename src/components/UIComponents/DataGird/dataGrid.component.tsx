@@ -2,6 +2,7 @@ import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined';
 import { Box, CircularProgress, Collapse, Table, TableBody, TableCell, TableHead, TableRow } from '@mui/material';
 import * as React from "react";
 import { useTranslation } from 'react-i18next';
+import { Loader } from '../Loader';
 import DataGridActionsMenu from '../Menu/DataGridActionsMenu.component';
 import { Button } from './../Button/Button.component';
 import './grid.style.scss';
@@ -136,9 +137,9 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
     if (props?.rows?.length > 1) {
         return getRowsData()
     } else if(props?.isLoading) {
-        return <CircularProgress />
+        return <Loader />
     }else {
-        return <div>{"No Data found"}</div>
+        return <div style={{display:"flex",justifyContent:"center",alignItems:"center",height:"100%",width:"auto"}}>{"No Data found"}</div>
     }
 
 

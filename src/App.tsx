@@ -10,6 +10,7 @@ import { ReactQueryDevtools } from 'react-query/devtools'
 import { Suspense } from 'react';
 import { useTheme } from './contexts/Theme/Theme.context';
 import Page from './navigation/Page';
+import SideBarDrawer from './components/UIComponents/SideBarMenu/SideBarMenu.component';
 
 
 const App = ({ routes }: any) => {
@@ -24,18 +25,11 @@ const App = ({ routes }: any) => {
   return (
     <QueryClientProvider client={queryClient}>
       <Router>
+ 
         <div style={{
           ...theme
         } as React.CSSProperties}>
-          <Suspense fallback={<>Loading...</>}>
-            <Switch>
-              {routes.map((route: any) => (
-                <Route key={route.path} path={route.path} exact={route.exact}>
-                  <Page route={route} />
-                </Route>
-              ))}
-            </Switch>
-          </Suspense>
+          <SideBarDrawer/>
         </div>
       </Router>
       <ReactQueryDevtools initialIsOpen />
