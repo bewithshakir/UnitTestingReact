@@ -8,7 +8,7 @@ interface props {
     name?: string;
     value?: string | number;
     placeholder?: string;
-    classes?: object;
+    classes?: any;
     type?: string;
     onChange?: (...args: any[]) => void;
     onBlur?: (...args: any[]) => void;
@@ -35,11 +35,11 @@ export default function SearchInput(props: props) {
                 </InputAdornment>
             }
         />
-    )
+    );
 }
 
 SearchInput.defaultProps = {
     id: "SearchInput",
     placeholder: 'Search',
     type: 'text',
-}
+};

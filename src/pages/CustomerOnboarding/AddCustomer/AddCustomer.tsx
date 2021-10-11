@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Add, FileCopy } from '@material-ui/icons';
-import { Box, Container, CssBaseline, FormControl, FormControlLabel, FormGroup, Grid, Link, Typography } from '@mui/material';
-import axios from 'axios';
+import { Box, Container, FormControl, FormControlLabel, FormGroup, Grid, Link, Typography } from '@mui/material';
 import { FieldArray, FormikProvider, useFormik } from 'formik';
 import moment from 'moment';
 import { useTranslation } from 'react-i18next';
@@ -106,7 +105,7 @@ function getTokenApplicable (Obj: any) {
         if (obj[1]) {
             temp.push(obj[0]).toString();
         }
-    })
+    });
     return temp;
 }
 
@@ -131,14 +130,14 @@ const formStatusProps: IFormStatusProps = {
         message: 'Something went wrong. Please try again.',
         type: 'Error',
     },
-}
+};
 
-const AddCustomer: React.FC<{}> = (props: any) => {
+const AddCustomer: React.FC<any> = () => {
     const { t } = useTranslation();
     const [formStatus, setFormStatus] = useState<IFormStatus>({
         message: '',
         type: '',
-    })
+    });
 
     const [paymentTypes, setpaymentTypes] = useState([]);
     const [initialInvoiceFrequencies, setinitialInvoiceFrequencies] = useState([]);
@@ -150,29 +149,31 @@ const AddCustomer: React.FC<{}> = (props: any) => {
     useEffect(() => {
         if (isSuccess) {
             setAPIResponse(true);
-            setFormStatus(formStatusProps.success)
+            setFormStatus(formStatusProps.success);
         }
         if (isError) {
             setAPIResponse(true);
-            setFormStatus(formStatusProps.error)
+            setFormStatus(formStatusProps.error);
         }
         setTimeout(() => {
             setAPIResponse(false);
         }, 6000);
         formik.resetForm({});
-    }, [isSuccess, isError])
+    }, [isSuccess, isError]);
 
     useEffect(() => {
         if (frequencyList?.data.length) {
             setinitialInvoiceFrequencies(frequencyList.data.map((obj: any) => ({ label: obj.invoiceFrequencyNm.trim(), value: obj.invoiceFrequencyId.trim() })));
         }
-    }, [frequencyList])
+    }, [frequencyList]);
+
 
     useEffect(() => {
         if (paymentTypeList?.data.length) {
             setpaymentTypes(paymentTypeList.data.map((obj: any) => ({ label: obj.paymentTypeNm.trim(), value: obj.paymentTypeId.trim() })));
         }
-    }, [paymentTypeList])
+    }, [paymentTypeList]);
+
 
 
     const [apiResposneState, setAPIResponse] = useState(false);
@@ -186,7 +187,7 @@ const AddCustomer: React.FC<{}> = (props: any) => {
 
     const handleModelConfirm = () => {
         setOpen(prev => !prev);
-        history.push('/')
+        history.push('/');
     };
 
     const createNewCustomer = (form: AddCustomerForm) => {
@@ -226,12 +227,13 @@ const AddCustomer: React.FC<{}> = (props: any) => {
                 "tokenApplicabilityLevel": getTokenApplicable({
                     lot: form.lotLevel, business: form.businessLevel, vehicle: form.vehicleLevel
                 })
-            }
+            };
+
             addNewCustomer(apiPayload);
         } catch (error) {
-            setFormStatus(formStatusProps.error)
+            setFormStatus(formStatusProps.error);
         }
-    }
+    };
 
     const formik = useFormik({
         initialValues,
@@ -242,24 +244,25 @@ const AddCustomer: React.FC<{}> = (props: any) => {
         enableReinitialize: true,
     });
 
-    const history = useHistory()
 
-    const isFormFieldChange = () => formik.dirty
+    const history = useHistory();
+
+    const isFormFieldChange = () => formik.dirty;
 
     function onClickBack () {
         if (isFormFieldChange()) {
             handleModelToggle();
         } else {
-            history.push('/')
+            history.push('/');
         }
     }
 
     function handleGoogleAddressChange (addressObj: any) {
-        formik.setFieldValue('addressLine1', addressObj.addressLine1)
-        formik.setFieldValue('addressLine2', addressObj.addressLine2)
-        formik.setFieldValue('city', addressObj.city)
-        formik.setFieldValue('state', addressObj.state)
-        formik.setFieldValue('postalCode', addressObj.postalCode)
+        formik.setFieldValue('addressLine1', addressObj.addressLine1);
+        formik.setFieldValue('addressLine2', addressObj.addressLine2);
+        formik.setFieldValue('city', addressObj.city);
+        formik.setFieldValue('state', addressObj.state);
+        formik.setFieldValue('postalCode', addressObj.postalCode);
     }
 
     return (
@@ -621,7 +624,7 @@ const AddCustomer: React.FC<{}> = (props: any) => {
                                                         sx={{ display: "flex", alignItems: "center" }}
                                                         onClick={() => {
                                                             if (formik.values.emergencyContact.length < 5) {
-                                                                arrayHelpers.push({ firstName: "", lastName: "", email: "", phoneNumber: "" })
+                                                                arrayHelpers.push({ firstName: "", lastName: "", email: "", phoneNumber: "" });
                                                             }
                                                         }}
                                                     >
@@ -738,7 +741,7 @@ const AddCustomer: React.FC<{}> = (props: any) => {
                                                         sx={{ display: "flex", alignItems: "center" }}
                                                         onClick={() => {
                                                             if (formik.values.apContact.length < 5) {
-                                                                arrayHelpers.push({ firstName: "", lastName: "", email: "", phoneNumber: "" })
+                                                                arrayHelpers.push({ firstName: "", lastName: "", email: "", phoneNumber: "" });
                                                             }
                                                         }}
                                                     >
@@ -787,7 +790,7 @@ const AddCustomer: React.FC<{}> = (props: any) => {
                                                 {t("buttons.save")}
                                             </Button>
                                         </Box>
-                                        <ToastMessage isOpen={apiResposneState} messageType={formStatus.type} onClose={() => { }} message={formStatus.message} />
+                                        <ToastMessage isOpen={apiResposneState} messageType={formStatus.type} onClose={() => { return ''; }} message={formStatus.message} />
                                     </Grid>
                                 </Grid>
                             </form>

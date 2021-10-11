@@ -3,7 +3,6 @@ import NestedMenu from "./NestedMenu";
 
 const Page = ({ route }: any) => {
   const PageBody = route.component;
-  console.log(PageBody,"body")
   return (
     <>
       <NestedMenu route={route} />

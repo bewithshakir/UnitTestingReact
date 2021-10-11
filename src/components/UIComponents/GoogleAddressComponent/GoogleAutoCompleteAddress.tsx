@@ -1,6 +1,4 @@
-import { useState, useEffect } from 'react'
-import { Box, Grid } from '@mui/material';
-import Input from '../Input/Input';
+import { useState, useEffect } from 'react';
 import useDebounce from '../../../utils/useDebounce';
 import { FetchFormattedAddress } from '../../../hooks/googleAddressAutoComlete';
 import AutocompleteInput from './AutoCompleteInput';
@@ -27,7 +25,7 @@ type addressValue =
 
 export default function GoogleAutoCompleteAddress (props: props) {
     const [address, setAddress] = useState({ address1: '', address2: '', city: '', state: '', zip: '', placeId: '' });
-    const handleChange = (e: any) => { setAddress(x => ({ ...x, [e.target.name]: e.target.value })) };
+    const handleChange = (e: any) => { setAddress(x => ({ ...x, [e.target.name]: e.target.value })); };
     const debouncedValue = useDebounce(address.placeId, 10);
     const { data } = FetchFormattedAddress(debouncedValue);
 
@@ -40,17 +38,17 @@ export default function GoogleAutoCompleteAddress (props: props) {
             city,
             state,
             postalCode: zip,
-        }
+        };
         required && props.onChange(obj);
-    }
+    };
 
     useEffect(() => {
         if (data) {
             // temporary fix for address2
             const getAddress2 = (x: string) => {
-                let a = x.split(',');
+                const a = x.split(',');
                 return a[a.length - 1] || a[a.length - 2];
-            }
+            };
             const { address1, city, state, zip } = data.data;
             const obj = {
                 address1,
@@ -59,11 +57,11 @@ export default function GoogleAutoCompleteAddress (props: props) {
                 state,
                 zip,
                 placeId: ''
-            }
+            };
             setAddress(obj);
             onFinalChanges(obj);
         }
-    }, [data])
+    }, [data]);
 
     return (
         <AutocompleteInput
@@ -79,5 +77,5 @@ export default function GoogleAutoCompleteAddress (props: props) {
             helperText={props.helperText}
             error={props.error}
         />
-    )
+    );
 }
