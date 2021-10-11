@@ -22,7 +22,7 @@ import { Box, FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } fro
 import { HorizontalBarVersionState, useStore } from "../../store";
 interface ContentProps {
   rows?: [];
-  version:any
+  version:string
 }
 const Content: React.FC<ContentProps> = (props) => {
   const history = useHistory();
