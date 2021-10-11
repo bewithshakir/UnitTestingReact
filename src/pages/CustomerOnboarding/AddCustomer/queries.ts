@@ -54,7 +54,3 @@ export const useGetPaymentTypes = () => {
     return useQuery(["getCustomers"], () => getPaymentTypes());
 };
 
-
-export const useCreateCustomer = () => {
-    return useMutation((payload: any) => createCustomer(payload))
-};
