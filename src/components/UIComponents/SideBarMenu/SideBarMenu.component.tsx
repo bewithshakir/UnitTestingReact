@@ -8,18 +8,26 @@ import logoTwo from '../../../assets/images/Shell Taup logo2.svg';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import { BriefCase64Icon, Invoice64Icon, ToggleList64Icon, Truck64Icon, DocumentFile64Icon, ToggleMail64Icon, ChartPie64Icon } from '../../../assets/icons';
-import { BrowserRouter, useHistory } from "react-router-dom";
+import { BrowserRouter, Link, NavLink, Route, Switch, useHistory } from "react-router-dom";
+import HorizontalBar from '../NavigationBar/HorizontalBar';
+import { DemoComponents } from '../DemoComponents/DemoComponents.component';
+import { Fragment, Suspense } from 'react';
+import { routes } from '../../../routes';
+import Page from '../../../navigation/Page';
+import { CssBaseline } from '@mui/material';
+import { Loader } from '../Loader';
 
 const SideBarMenuoptions = [{
   index: 0,
   icon: <BriefCase64Icon />,
   text: 'Home',
-  route: 'home'
-}, {
+  route: '/'
+},
+{
   index: 1,
   icon: <Invoice64Icon />,
   text: 'Dashboard',
-  route: 'dashboard'
+  route: '/dashboard'
 }, {
   index: 2,
   icon: <ToggleList64Icon />,
@@ -40,42 +48,38 @@ const SideBarMenuoptions = [{
   icon: <ChartPie64Icon />,
   text: 'Dashboard',
   route: 'home'
-}, {
+},
+{
   index: 6,
   icon: <DocumentFile64Icon />,
   text: 'Dashboard',
-  route: 'home'
-}, {
-  index: 7,
-  icon: <DocumentFile64Icon />,
-  text: 'Dashboard',
-  route: '/demo'
+  route: 'demo'
 }];
 
 type SideBarMenuOption = {
   index: number;
   icon?: React.ReactNode;
   text?: string;
-  route?: string;
+  route?: any;
   component?: React.ReactNode;
   to?: any;
 }
 interface sideBarMenuProps {
   options?: SideBarMenuOption[],
   onSelect?: (selectedValue: object) => void
+  children?: {}
 }
 
 export default function SideBarDrawer(props: sideBarMenuProps) {
   const { themeType } = useTheme();
   const logoSrc = themeType === 'UK' ? logoOne : logoTwo;
   const [value, setValue] = React.useState(0);
-  const history = useHistory();
 
   const onSelectOptions = (value: number) => {
     console.log("🚀 ~ file: Content.component.tsx ~ line 60 ~ value", value)
-    if(value == 7) {
+    if (value == 6) {
       console.log("value 7 encountered");
-      history.push("/demo")
+      // history.push("/demo")
     }
   };
 
@@ -85,35 +89,61 @@ export default function SideBarDrawer(props: sideBarMenuProps) {
     console.log(newValue)
   };
 
+
+  const history = useHistory()
+  function onClickBack() {
+    history.goBack()
+  }
+
   const drawerWidth = 64;
   return (
     <Box className={'sidebar-menu'}>
-      <Drawer className={'sidebar-drawer'}
-        sx={{
-          width: drawerWidth,
-        }}
-        variant="permanent"
-        anchor="left">
-        <div>
-          <img className="sidebarmenu_logo"
-            src={logoSrc}
-            alt="logo" />
-        </div>
-        <BrowserRouter>
-        <Tabs
-          orientation="vertical"
-          value={value}
-          onChange={handleChange}
-          aria-label="sidebar menu"
-          className={'sidebarmenu_tabs'} >
-          {SideBarMenuoptions && SideBarMenuoptions.map((item, index) => {
-            return (
-              <Tab className={'sidebarmenu_tab'} icon={item.icon} />
-            )
-          })}
-        </Tabs>
-        </BrowserRouter>
-      </Drawer>
+      <CssBaseline />
+      {routes.map((route) => {
+   
+        return (
+          <Fragment>
+            <HorizontalBar
+              onBack={onClickBack}
+            />
+            <Drawer className={'sidebar-drawer'}
+              sx={{
+                width: drawerWidth,
+              }}
+              variant="permanent"
+              anchor="left">
+              <div>
+                <img className="sidebarmenu_logo"
+                  src={logoSrc}
+                  alt="logo" />
+              </div>
+
+              <Tabs
+                orientation="vertical"
+                value={value}
+                onChange={handleChange}
+                aria-label="sidebar menu"
+                className={'sidebarmenu_tabs'} >
+                {SideBarMenuoptions && SideBarMenuoptions.map((item, index) => {
+                  return (
+                    <Tab className={'sidebarmenu_tab'} icon={item.icon} component={Link} to={item.route} />
+                  )
+                })}
+              </Tabs>
+
+            </Drawer>
+            <main className="content1">
+            <Suspense fallback={<Loader />}>
+                <Switch>
+                  <Route key={route.path} path={route.path} exact={route.exact}>
+                    <Page route={route} />
+                  </Route>
+                </Switch>
+              </Suspense>
+            </main>
+          </Fragment>
+        )
+      })}
     </Box>
   );
 }

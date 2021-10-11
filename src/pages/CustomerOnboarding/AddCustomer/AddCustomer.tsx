@@ -6,19 +6,18 @@ import { FieldArray, FormikProvider, useFormik } from 'formik';
 import moment from 'moment';
 import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';
-import { Button } from '../../components/UIComponents/Button/Button.component';
-import Checkbox from '../../components/UIComponents/Checkbox/Checkbox.component';
-import { DatePicker } from '../../components/UIComponents/DatePicker/DatePicker.component';
-import Input from '../../components/UIComponents/Input/Input';
-import HorizontalBar from '../../components/UIComponents/NavigationBar/HorizontalBar';
-import Select from '../../components/UIComponents/Select/SingleSelect';
-import ToastMessage from '../../components/UIComponents/ToastMessage/ToastMessage.component';
-import { getCountryCode } from '../../navigation/utils';
-import Legend from '../Legend/index';
+import { Button } from '../../../components/UIComponents/Button/Button.component';
+import Checkbox from '../../../components/UIComponents/Checkbox/Checkbox.component';
+import { DatePicker } from '../../../components/UIComponents/DatePicker/DatePicker.component';
+import Input from '../../../components/UIComponents/Input/Input';
+import HorizontalBar from '../../../components/UIComponents/NavigationBar/HorizontalBar';
+import Select from '../../../components/UIComponents/Select/SingleSelect';
+import ToastMessage from '../../../components/UIComponents/ToastMessage/ToastMessage.component';
+import { getCountryCode } from '../../../navigation/utils';
 import "./AddCustomer.style.scss";
 import AddCustomerValidationSchema from './validation';
-import DiscardChangesDialog from '../../components/UIComponents/ConfirmationDialog/DiscardChangesDialog.component';
-import AutocompleteInput from '../../components/UIComponents/GoogleAddressComponent/GoogleAutoCompleteAddress';
+import DiscardChangesDialog from '../../../components/UIComponents/ConfirmationDialog/DiscardChangesDialog.component';
+import AutocompleteInput from '../../../components/UIComponents/GoogleAddressComponent/GoogleAutoCompleteAddress';
 
 interface SelectProps {
     label: string,
@@ -145,6 +144,7 @@ const AddCustomer: React.FC<{}> = (props: any) => {
     const [initialInvoiceFrequencies, setinitialInvoiceFrequencies] = useState([]);
 
     const [apiResposneState, setAPIResponse] = useState(false);
+   
 
     const [open, setOpen] = React.useState(false);
 
@@ -274,17 +274,8 @@ const AddCustomer: React.FC<{}> = (props: any) => {
     }
 
     return (
-        <Box display="flex" mt={8}>
-            <CssBaseline />
-            <HorizontalBar
-                version={props.version}
-                onBack={onClickBack}
-            />
-
-            <Grid container pl={6.25} className="main-area">
-                <Grid item md={2} pt={5} xs={2} className="legend-area">
-                    <Legend />
-                </Grid>
+           <Box>
+               <Grid>
                 <Grid item md={10} pt={5} xs={10} className="page-area">
                     <Container maxWidth="lg" className="page-container">
                         <FormikProvider value={formik}>

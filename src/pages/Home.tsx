@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import moment from "moment";
-import { Content } from "../pages/CustomerManagement";
+
 import { Footer } from '../components/UIComponents/Footer/Footer.component';
 import bg from "../assets/images/bg_shapes.svg"
 import { useQuery } from 'react-query';
@@ -14,12 +14,14 @@ import { DatePicker } from '../components/UIComponents/DatePicker/DatePicker.com
 import useDebounce from '../utils/useDebounce';
 import HorizontalBar from '../components/UIComponents/NavigationBar/HorizontalBar';
 import { Box, CssBaseline } from '@mui/material';
+import { DemoComponents } from '../components/UIComponents/DemoComponents/DemoComponents.component';
+import SideBarDrawer from '../components/UIComponents/SideBarMenu/SideBarMenu.component';
 
 
 
 const Home = (props: { version: any }) => {
 
-
+//    console.log(version,"version")
     const history = useHistory()
     function onClickBack() {
         history.goBack()
@@ -31,11 +33,12 @@ const Home = (props: { version: any }) => {
     return (
         <Box sx={{ display: 'flex' }}>
             <CssBaseline />
-            <HorizontalBar
+            {/* <HorizontalBar
                 version={props.version}
                 onBack={onClickBack}
-            />
-            <Content />
+            /> */}
+            <SideBarDrawer />
+       
         </Box>
     );
 };

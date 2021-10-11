@@ -30,11 +30,13 @@ div {
                 margin: 0;
                 padding: 0;
             }
+            &.MuiPaper-root,.MuiDrawer-paper{
+                background:  var(--Primary);
+            }
         }
-        &.MuiPaper-root,.MuiDrawer-paper {
-            background:  var(--Primary);
-        }
+       
         .sidebarmenu_tab {
+            background:  var(--Primary);
             font-size: 45px;
             color: var(--White);
             height: 64px;
