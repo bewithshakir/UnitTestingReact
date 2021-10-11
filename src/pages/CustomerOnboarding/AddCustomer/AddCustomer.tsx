@@ -83,7 +83,7 @@ const initialValues: AddCustomerForm = {
     startDate: moment(),
     endDate: moment(),
     paymentTerm: '',
-    lotLevel: true,
+    lotLevel: false,
     businessLevel: false,
     vehicleLevel: false,
     emergencyContact: [{
