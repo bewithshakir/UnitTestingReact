@@ -206,8 +206,6 @@ export const DemoComponents: React.FC = () => {
 
             <div className="App" style={{ 'marginLeft': '20px' }}>
                 <div className={'app__main'}>
-
-                    <NavLink to="/query">{t("query")}</NavLink>
                     <Input name='userName'
                         label='User Name'
                         type='text'

@@ -3,15 +3,18 @@ import { lazy } from 'react';
 export const routes = [
   {
     path: "/",
-    component: lazy(() => import('./pages/Home')),
+    component: lazy(() => import("./pages/CustomerManagement")),
     sidebarName: 'Home',
-    exact: true,
-    version: "NavLinks",
+    exact: true
+  },
+  {
+    path: "/customer",
+    component: lazy(() => import('./pages/CustomerOnboarding')),
     routes: [
       {
-        path: "/addCustomer",
-        component: lazy(() => import('./pages/AddCustomer/AddCustomer')),
-        version: "Breadcrumbs-Single",
+        path: "/customer/addCustomer",
+        component: lazy(() => import('./pages/CustomerOnboarding/AddCustomer/AddCustomer')),
+        exact: true
       }]
   },
   {

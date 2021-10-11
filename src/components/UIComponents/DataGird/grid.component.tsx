@@ -16,7 +16,7 @@ interface GridComponentProps {
 
 let x: GridComponentProps = {
     height: '1000px',
-    width: '1748px'
+    width: "auto"
 }
 
 

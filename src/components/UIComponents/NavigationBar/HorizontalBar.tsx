@@ -4,25 +4,26 @@ import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import React from "react";
 import { useTranslation } from "react-i18next";
+
 import { NavLink } from "react-router-dom";
 import { BackIcon, CustomerProfileIcon2, LeftArrowIcon, LogoutIcon, SettingsIcon, USAFlagIcon } from "../../../assets/icons";
+import { useStore } from "../../../store";
 import { Button } from "../Button/Button.component";
 import NotificationsMenu from '../Menu/NotificationsMenu.component';
 import ProfileMenu from '../Menu/ProfileMenu.component';
-import SideBarDrawer from "../SideBarMenu/SideBarMenu.component";
 import './HorizontalBar.style.scss';
 
 const drawerWidth = 64;
 
 
 interface HorizontalBarProps {
-  version: "Breadcrumbs-Single" | "NavLinks" | "Breadcrumbs-Many",
+  version?: any,
   onBack: () => void,
 }
 
 export default function HorizontalBar (props: HorizontalBarProps) {
   const { t } = useTranslation();
-
+  const version =  useStore((state)=>state.version)
   function handleClick (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
     console.info('You clicked a breadcrumb.');
   }
@@ -91,20 +92,20 @@ export default function HorizontalBar (props: HorizontalBarProps) {
       <div className="app__header">
         <AppBar position="fixed" className="header" sx={{ width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px` }}>
           <Toolbar className="header__toolbar">
-            {props.version === "NavLinks" ? null : (<Button
+            {version=== "NavLinks" ? null : (<Button
               types="profile"
               aria-label="back button"
               onClick={handleBack}
               size="small"
-              startIcon={<SvgIcon component={props.version === "Breadcrumbs-Many" ? LeftArrowIcon : BackIcon} />}
+              startIcon={<SvgIcon component={version === "Breadcrumbs-Many" ? LeftArrowIcon : BackIcon} />}
             />)
             }
             {
-              props.version === "Breadcrumbs-Single" ?
+              version === "Breadcrumbs-Single" ?
                 versionBreadcrumbsSingle() :
-                props.version === "NavLinks" ?
+                version === "NavLinks" ?
                   varsionNavLinks() :
-                  props.version === "Breadcrumbs-Many" ?
+                  version === "Breadcrumbs-Many" ?
                     versionBreadcrumbsMany() :
                     null
             }
@@ -157,7 +158,6 @@ export default function HorizontalBar (props: HorizontalBarProps) {
           </Toolbar>
         </AppBar>
       </div>
-      <SideBarDrawer />
     </>
   );
 }

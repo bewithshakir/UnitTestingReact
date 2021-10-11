@@ -1,18 +1,4 @@
 div{  
-    .main-area{
-      overflow: unset;
-    }
-    .legend-area{
-      .legend-box{
-        max-height: calc(100vh - 90px);
-        overflow-y: auto;
-      }
-    }
-    .page-area{
-      max-height: calc(100vh - 64px);
-      overflow-y: auto;
-    }
-    
     .page-container{
       margin: 0px;
       max-width: 950px;

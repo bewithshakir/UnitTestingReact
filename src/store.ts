@@ -1,7 +1,9 @@
 import create from "zustand";
+import { persist } from "zustand/middleware"
 
-interface state{
-    query: string
+export interface HorizontalBarVersionState{
+    version: string
+    setVersion: (version:string)=>void
 }
 
 interface customerFilterFormObj {
@@ -18,16 +20,19 @@ interface customerFilterState{
     removeFormData: (...args: any) => void,
 }
 
-
-export const useStore  = create<state>((set) => ({
-    query: "",
-    setQuery: () => set((state):state => ({ query: state.query })),
-  }))
-
+export const useStore  = create<HorizontalBarVersionState>((persist(
+    (set) => ({
+      version: "NavLinks",
+      setVersion: (version:string) => set((state) => ({ ...state,version })),
+    }),
+    {
+      name: "hortizontalBarVerion"
+    }
+  ))
+)
 
 export const useCustomerFilterStore  = create<customerFilterState>((set) => ({
     filterFormData: null,
     setFormData: (filterFormData:customerFilterFormObj|null) =>set((state) => ({filterFormData})),
     removeFormData:  () =>set((state) => ({filterFormData:null})),
 }))
-  
