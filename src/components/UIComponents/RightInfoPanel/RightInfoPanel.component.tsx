@@ -3,7 +3,6 @@ import { Drawer } from "@mui/material";
 import { PanelHeader } from "./PanelHeader.component";
 import { InfoViewContent } from "./InfoViewContent.component";
 import { FilterContent } from "./FilterContent.component";
-import { useTheme } from '../../../contexts/Theme/Theme.context';
 import "./RightInfoPanel.style.scss";
 
 
@@ -39,16 +38,6 @@ export const RightInfoPanel: React.FC<InfoPanelProps> = ({ open, headingText, in
     <PanelHeader onClose={onClose} headingText={headingText} info={info?info:null}  panelType={panelType}  />
     {provideContentForPanel()}
   </Drawer >
-
-  const panelDrawerUnderBackdrop = <React.Fragment>{panelDrawer}</React.Fragment>
-
-  const renderPanel = () => {
-    if (panelType === "customer-filter") {
-      return panelDrawerUnderBackdrop;
-    } else if (panelType === "info-view") {
-      return panelDrawer;
-    }
-  }
 
   return (
     <React.Fragment>{panelDrawer}</React.Fragment>
