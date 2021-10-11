@@ -49,6 +49,10 @@ interface filterForm {
     toDate: moment.Moment | null
 }
 
+window.onunload = function () {
+	sessionStorage.removeItem('filterFormData');
+}
+
 const initialValues: filterForm = {
     state: [],
     city: [],
