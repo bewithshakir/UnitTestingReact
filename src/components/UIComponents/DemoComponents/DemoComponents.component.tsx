@@ -13,19 +13,15 @@ import { Footer } from '../Footer/Footer.component';
 import Input from '../Input/Input';
 import Select from '../Select/MultiSelect';
 import SearchInput from '../SearchInput/SearchInput';
-import GoogleAutoCompleteAddress from '../GoogleAddressComponent/GoogleAutoCompleteAddress';
 import { DatePicker } from '../DatePicker/DatePicker.component';
 import { NavLink } from 'react-router-dom';
 import useDebounce from '../../../utils/useDebounce';
 import moment from "moment";
-import { useQuery } from 'react-query';
-import { fetchQueryTodos } from '../../../hooks/todos-with-query';
 import { Box, FormControl } from '@mui/material';
 import './DemoComponents.style.scss';
 
 export const DemoComponents: React.FC = () => {
-    const { data } = useQuery('repoData', fetchQueryTodos, { retry: false });
-    console.log(data);
+    //const { data } = useQuery('repoData', fetchQueryTodos, { retry: false });
     const { setCurrentTheme } = useTheme();
     const { i18n } = useTranslation();
     const changeLanguage = (language: string) => () => {
@@ -96,7 +92,7 @@ export const DemoComponents: React.FC = () => {
                             t("menus.sortby.recently added lots"),
                         ]}
                         onSelect={(value) => {
-                            console.log("🚀 ~ file: Content.component.tsx ~ line 60 ~ value", value);
+                            return value;
                         }}
                     />
                 </FormControl>
@@ -121,7 +117,7 @@ export const DemoComponents: React.FC = () => {
                             }
                         ]}
                         onSelect={(value) => {
-                            console.log("🚀 ~ file: Content.component.tsx ~ line 60 ~ value", value);
+                            return value;
                         }}
                     />
                 </FormControl>
@@ -164,7 +160,7 @@ export const DemoComponents: React.FC = () => {
                             },
                         ]}
                         onSelect={(value) => {
-                            console.log("🚀 ~ file: Content.component.tsx ~ line 60 ~ value", value);
+                            return value;
                         }}
                     />
                 </FormControl>

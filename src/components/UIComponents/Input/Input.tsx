@@ -1,4 +1,4 @@
-import { Fragment } from 'react'
+import { Fragment } from 'react';
 import { InputLabel, InputBase, FormControl, FormHelperText } from '@material-ui/core';
 import './Input.scss';
 
