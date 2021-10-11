@@ -92,7 +92,7 @@ export default function SideBarDrawer(props: sideBarMenuProps) {
 
   const history = useHistory()
   function onClickBack() {
-    history.goBack()
+    history.push("/")
   }
 
   const drawerWidth = 64;

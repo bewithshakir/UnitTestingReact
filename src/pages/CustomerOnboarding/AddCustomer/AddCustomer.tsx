@@ -10,7 +10,6 @@ import { Button } from '../../../components/UIComponents/Button/Button.component
 import Checkbox from '../../../components/UIComponents/Checkbox/Checkbox.component';
 import { DatePicker } from '../../../components/UIComponents/DatePicker/DatePicker.component';
 import Input from '../../../components/UIComponents/Input/Input';
-import HorizontalBar from '../../../components/UIComponents/NavigationBar/HorizontalBar';
 import Select from '../../../components/UIComponents/Select/SingleSelect';
 import ToastMessage from '../../../components/UIComponents/ToastMessage/ToastMessage.component';
 import { getCountryCode } from '../../../navigation/utils';

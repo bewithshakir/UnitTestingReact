@@ -19,7 +19,6 @@ import { useHistory } from "react-router-dom";
 import { sortByOptions } from "./config";
 import { RightInfoPanel } from "../../components/UIComponents/RightInfoPanel/RightInfoPanel.component";
 import { Box, FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from "@mui/material";
-import HorizontalBar from "../../components/UIComponents/NavigationBar/HorizontalBar";
 import { HorizontalBarVersionState, useStore } from "../../store";
 interface ContentProps {
   rows?: [];
@@ -48,9 +47,6 @@ const Content: React.FC<ContentProps> = (props) => {
   const navigateToAddCustomer = () => {
     history.push("/customer");
   };
-  function onClickBack() {
-    history.goBack()
-  }
   const onSortBySlected = (value: string) => {
     let sortOrder
     switch (value) {

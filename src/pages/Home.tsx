@@ -20,23 +20,9 @@ import SideBarDrawer from '../components/UIComponents/SideBarMenu/SideBarMenu.co
 
 
 const Home = (props: { version: any }) => {
-
-//    console.log(version,"version")
-    const history = useHistory()
-    function onClickBack() {
-        history.goBack()
-    }
-
-
-    console.log(props, "home props")
-
     return (
         <Box sx={{ display: 'flex' }}>
             <CssBaseline />
-            {/* <HorizontalBar
-                version={props.version}
-                onBack={onClickBack}
-            /> */}
             <SideBarDrawer />
        
         </Box>
