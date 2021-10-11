@@ -58,7 +58,16 @@
       "view & edit details": "View & Edit Details"
     }
   },
-  "legend": {
+  "customer-filter-panel":{
+    "header":{
+      "filter":"Filter"
+    },
+    "buttons":{
+      "apply":"Apply",
+      "clear all":"Clear All"
+    }
+  },
+  "legend":{
     "customerName": "Customer Name",
     "customerProfile": "Customer Profile",
     "parkingLots": "Parking Lots",

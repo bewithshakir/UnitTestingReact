@@ -1,3 +1,6 @@
+import React from 'react';
+import { useHistory } from "react-router-dom";
+
 import { SvgIcon } from '@material-ui/core';
 import Add from '@material-ui/icons/Add';
 import ArrowDownwardOutlinedIcon from '@material-ui/icons/ArrowDownwardOutlined';
@@ -10,39 +13,19 @@ import InvertColorsOutlinedIcon from '@material-ui/icons/InvertColorsOutlined';
 import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined';
 import MapOutlinedIcon from '@material-ui/icons/MapOutlined';
 import TrainOutlinedIcon from '@material-ui/icons/TrainOutlined';
-import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { CustomerProfileIcon, DeleteIcon, FilterIcon } from '../../../assets/icons';
 import logoOne from '../../../assets/images/Shell Taup logo.svg';
 import logoTwo from '../../../assets/images/Shell Taup logo2.svg';
 import { useTheme } from '../../../contexts/Theme/Theme.context';
-import { RightInfoPanel } from '../RightInfoPanel/RightInfoPanel.component';
-import { useHistory } from "react-router-dom";
 import { Button } from '../Button/Button.component';
 import './Footer.style.scss';
-
-const rightPanelHeading = 'Accurate Transportation';
-
-const rightPanelData = {
-  'Customer ID': '0923131',
-  'Name': 'Peter Parker',
-  'Email': 'peterparker@gmail.com',
-  'Phone': '0923131',
-  'Settlement Type': 'WEX',
-  'Card Added': "",
-  'Address': '9555 S Post Oak Rd',
-  'City': 'Houston',
-  'State': 'Texas',
-  'Country': 'US',
-  'ZIP Code': '30013',
-}
 
 export const Footer: React.FC = () => {
   const { themeType } = useTheme();
   const { t } = useTranslation();
-  const [open, setOpen] = React.useState(false);
-  const handleDrawerOpen = () => setOpen(!open);
-  const handleDrawerClose = () => setOpen(false);
+
+  
   const history = useHistory();
 
   const logoSrc = themeType === 'UK' ? logoOne : logoTwo;
@@ -54,6 +37,7 @@ export const Footer: React.FC = () => {
   return (
     <div className={'footer'}>
       <div className={'content__buttons'}>
+        
         <Button
           types="save"
           aria-label="save"
@@ -217,14 +201,7 @@ export const Footer: React.FC = () => {
         >
           Filter
         </Button> --
-        <Button
-          types="primary"
-          onClick={handleDrawerOpen}
-        >
-          {t("Right Menu")}
-        </Button>
       </div>
-      <RightInfoPanel open={open} headingText={rightPanelHeading} info={rightPanelData} onClose={handleDrawerClose} />
       <img
         className="footer__logo"
         src={logoSrc}
