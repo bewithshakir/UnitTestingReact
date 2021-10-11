@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import { useCustomerFilterStore } from "../../../store";
 import moment from "moment";
 import { Grid } from "@mui/material";
 import { FormikProvider, useFormik } from 'formik';
@@ -49,9 +50,7 @@ interface filterForm {
     toDate: moment.Moment | null
 }
 
-window.onunload = function () {
-	sessionStorage.removeItem('filterFormData');
-}
+
 
 const initialValues: filterForm = {
     state: [],
@@ -66,23 +65,32 @@ let filterParams: filterParamsProps = {};
 export const FilterContent: React.FC<InfoPanelProps> = ({ provideFilterParams, onClose }) => {
     const [formSubmitClicked, setFormSubmitClicked] = React.useState<boolean>(false);
     const [formValuesSaved, setFormValuesSaved] = React.useState<filterForm | null>(null);
+    const filterFormData = useCustomerFilterStore((state) => state.filterFormData);
+    const setFormData = useCustomerFilterStore((state) => state.setFormData);
+    const removeFormData = useCustomerFilterStore((state) => state.removeFormData);
+
     const { theme } = useTheme();
     const { t } = useTranslation();
 
     useEffect(() => {
         filterParams = {};
         setFormSubmitClicked(false);
-        if (sessionStorage.getItem("filterFormData")) {
-            const filterDataObj = JSON.parse(sessionStorage.getItem('filterFormData')!);
-            setFormValuesSaved(filterDataObj);
-            if (filterDataObj && Object.keys(filterDataObj).length > 0) {
-                for (let key of Object.keys(filterDataObj)) {
-                    const tempVal = filterDataObj[key];
-                    formik.setFieldValue(key, moment(tempVal).isValid() ? moment(tempVal) : tempVal)
+        if (filterFormData) {
+            // debugger;
+            setFormValuesSaved(filterFormData);
+            console.log("main check --->>",filterFormData)
+            if (filterFormData && Object.keys(filterFormData).length > 0) {
+                for (let [key, value] of Object.entries(filterFormData)) {
+                    console.log("check--->>>",key, value);
+                    formik.setFieldValue(key, key === 'fromDate' || key === 'toDate' ? moment(value) : value)
                 }
             }
         }
     }, [])
+
+    window.onunload = function () {
+        removeFormData()
+    }
 
     const ClearBtn = styled(Button)((props) => ({
         "&&": {
@@ -119,6 +127,7 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ provideFilterParams, o
     }
 
     function handleSelect(name: string, value: any[]) {
+        console.log("main check 2 -->",value)
         formik.setFieldValue(name, value);
         filterParams[name] = value.map((obj: { label: string, value: string }) => obj.value);
     }
@@ -126,7 +135,7 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ provideFilterParams, o
     const applyFilter = (formData: filterForm, resetForm: Function) => {
         setFormSubmitClicked(true);
         if (provideFilterParams && Object.keys(filterParams).length > 0) {
-            sessionStorage.setItem("filterFormData", JSON.stringify(formData));
+            setFormData(formData);
             provideFilterParams(filterParams);
             onClose();
         }
@@ -139,7 +148,7 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ provideFilterParams, o
         if (provideFilterParams) {
             provideFilterParams(filterParams);
         }
-        sessionStorage.removeItem("filterFormData");
+        removeFormData();
     }
 
 
