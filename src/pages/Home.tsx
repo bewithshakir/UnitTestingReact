@@ -14,13 +14,8 @@ import { DatePicker } from '../components/UIComponents/DatePicker/DatePicker.com
 import useDebounce from '../utils/useDebounce';
 import HorizontalBar from '../components/UIComponents/NavigationBar/HorizontalBar';
 import { Box, CssBaseline } from '@mui/material';
-<<<<<<< HEAD
-import { RightInfoPanel } from '../components/UIComponents/RightInfoPanel/RightInfoPanel.component';
-import { Button } from '../components/UIComponents/Button/Button.component';
-=======
 import { DemoComponents } from '../components/UIComponents/DemoComponents/DemoComponents.component';
 import SideBarDrawer from '../components/UIComponents/SideBarMenu/SideBarMenu.component';
->>>>>>> 98c8e21cec391792df47f18362f9904d711ea759
 
 
 
