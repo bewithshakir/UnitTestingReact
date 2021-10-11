@@ -1,4 +1,4 @@
-import React, { EffectCallback, SyntheticEvent, useEffect } from "react";
+import React, { EffectCallback, Fragment, SyntheticEvent, useEffect } from "react";
 import { Button } from "../../components/UIComponents/Button/Button.component";
 import "./style.scss";
 import { useTranslation } from "react-i18next";
@@ -18,44 +18,49 @@ import { Add } from "@mui/icons-material";
 import { useHistory } from "react-router-dom";
 import { sortByOptions } from "./config";
 import { RightInfoPanel } from "../../components/UIComponents/RightInfoPanel/RightInfoPanel.component";
+import { Box, FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from "@mui/material";
+import { HorizontalBarVersionState, useStore } from "../../store";
 interface ContentProps {
   rows?: [];
+  version:any
 }
-export const Content: React.FC<ContentProps> = (props) => {
+const Content: React.FC<ContentProps> = (props) => {
   const history = useHistory();
-  const [info,setInfo] = React.useState({})
+  const [info, setInfo] = React.useState({})
   const [searchTerm, setSearchTerm] = React.useState("");
   const [drawerOpen, setDrawerOpen] = React.useState(false);
-  const [sortOrder, setSortOrder] = React.useState<{sortBy:string,order:string}>({sortBy:"customerName",order:"asc"});
+  const [sortOrder, setSortOrder] = React.useState<{ sortBy: string, order: string }>({ sortBy: "customerName", order: "asc" });
   const { t } = useTranslation();
   const { data, fetchNextPage, isLoading, hasNextPage }: any = useCustomers(
     searchTerm,
     sortOrder
   );
-  const openDrawer = (row:SyntheticEvent)=>{
+  const setVersion =  useStore((state : HorizontalBarVersionState) => state.setVersion);
+  setVersion("NavLinks")
+  const openDrawer = (row: SyntheticEvent) => {
     setInfo(row)
     setDrawerOpen(true)
   }
-  const drawerClose =()=>{
+  const drawerClose = () => {
     setDrawerOpen(false)
   }
   const navigateToAddCustomer = () => {
-    history.push("/addCustomer");
+    history.push("/customer");
   };
   const onSortBySlected = (value: string) => {
     let sortOrder
     switch (value) {
-    case "Z-A":
-      sortOrder = {sortBy:"customerName",order:"desc"}
-       break;
-       case "Newest to Oldest":
-        sortOrder = {sortBy:"date",order:"desc"}
-       break;
-       case "Oldest to New":
-        sortOrder = {sortBy:"date",order:"asc"}
-       break;
+      case "Z-A":
+        sortOrder = { sortBy: "customerName", order: "desc" }
+        break;
+      case "Newest to Oldest":
+        sortOrder = { sortBy: "date", order: "desc" }
+        break;
+      case "Oldest to New":
+        sortOrder = { sortBy: "date", order: "asc" }
+        break;
       default:
-        sortOrder = {sortBy:"customerName",order:"asc"}
+        sortOrder = { sortBy: "customerName", order: "asc" }
         break;
     }
     setSortOrder(sortOrder)
@@ -66,10 +71,10 @@ export const Content: React.FC<ContentProps> = (props) => {
   let list: any = []
   console.log(data)
   data?.pages?.map((item: any) => {
-    list.push(...item.data.customers )
+    list.push(...item.data.customers)
   })
   return (
-    <div>
+
       <div className={"content"}>
         <div className={"content__buttons1"}>
           <div className={"content__buttons2"}>
@@ -82,18 +87,23 @@ export const Content: React.FC<ContentProps> = (props) => {
               Filter
             </Button>
             <div className={"space"} />
+            <div className={"space"} />
+            <div>
+            <FormControl>
             <SortbyMenu
               options={sortByOptions.map((sortByItem) => t(sortByItem))}
               onSelect={(value) => onSortBySlected(value)}
             />
+           </FormControl>
+            </div>
             <div className={"space"} />
             <SearchInput
               name="searchTerm"
               value={searchTerm}
               onChange={onInputChange}
             />
-           </div>
-           <div  className={"content__buttons3"}>
+          </div>
+          <div className={"content__buttons3"}>
             <Button
               types="primary"
               aria-label="primary"
@@ -103,6 +113,7 @@ export const Content: React.FC<ContentProps> = (props) => {
               {t("buttons.add customer")}
             </Button>
             <div className={"space"} />
+            <FormControl>
             <ActionsMenu
               options={[
                 {
@@ -129,7 +140,8 @@ export const Content: React.FC<ContentProps> = (props) => {
                 );
               }}
             />
-            </div>
+             </FormControl>
+          </div>
         </div>
         <GridComponent
           rows={list}
@@ -138,8 +150,9 @@ export const Content: React.FC<ContentProps> = (props) => {
           openDrawer={openDrawer}
         />
 
-       <RightInfoPanel open={drawerOpen} headingText={"Accurate Transportation"} info={info} onClose={drawerClose}/>
+        <RightInfoPanel open={drawerOpen} headingText={"Accurate Transportation"} info={info} onClose={drawerClose} />
       </div>
-    </div>
   );
 };
+
+export default Content
