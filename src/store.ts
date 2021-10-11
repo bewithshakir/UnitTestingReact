@@ -1,5 +1,5 @@
 import create from "zustand";
-import { persist } from "zustand/middleware";
+import { persist } from "zustand/middleware"
 
 export interface HorizontalBarVersionState{
     version: string
@@ -15,4 +15,5 @@ export const useStore  = create<HorizontalBarVersionState>((persist(
       name: "hortizontalBarVerion"
     }
   ))
-);
+)
+

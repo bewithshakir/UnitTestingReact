@@ -30,7 +30,7 @@ export default function ToastMessage(props: ToastMessageProps) {
                                 </Alert>
                             </div>
                         </Snackbar>
-                    );
+                    )
                 }
                 case 'Error' : {
                     return (
@@ -42,7 +42,7 @@ export default function ToastMessage(props: ToastMessageProps) {
                                 </Alert>
                             </div>
                         </Snackbar>
-                    );
+                    )
                 }
                 default : {
                     return (
@@ -53,11 +53,11 @@ export default function ToastMessage(props: ToastMessageProps) {
                                 </Alert>
                             </div>
                         </Snackbar>
-                    );
+                    )
                 }
         }
         
-    };
+    }
 
     return (
         getComponentToRender()
