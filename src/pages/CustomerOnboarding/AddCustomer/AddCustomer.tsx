@@ -15,6 +15,7 @@ import ToastMessage from '../../../components/UIComponents/ToastMessage/ToastMes
 import { getCountryCode } from '../../../navigation/utils';
 import "./AddCustomer.style.scss";
 import AddCustomerValidationSchema from './validation';
+import { useCreateCustomer, useGetFrequencies, useGetPaymentTypes } from './queries';
 import DiscardChangesDialog from '../../../components/UIComponents/ConfirmationDialog/DiscardChangesDialog.component';
 import AutocompleteInput from '../../../components/UIComponents/GoogleAddressComponent/GoogleAutoCompleteAddress';
 
@@ -82,7 +83,7 @@ const initialValues: AddCustomerForm = {
     startDate: moment(),
     endDate: moment(),
     paymentTerm: '',
-    lotLevel: true,
+    lotLevel: false,
     businessLevel: false,
     vehicleLevel: false,
     emergencyContact: [{
@@ -142,8 +143,40 @@ const AddCustomer: React.FC<{}> = (props: any) => {
     const [paymentTypes, setpaymentTypes] = useState([]);
     const [initialInvoiceFrequencies, setinitialInvoiceFrequencies] = useState([]);
 
+    const { mutate: addNewCustomer, isSuccess, isError } = useCreateCustomer();
+    const { data: frequencyList } = useGetFrequencies();
+    const { data: paymentTypeList } = useGetPaymentTypes();
+
+    useEffect(() => {
+        if (isSuccess) {
+            setAPIResponse(true);
+            setFormStatus(formStatusProps.success)
+        }
+        if (isError) {
+            setAPIResponse(true);
+            setFormStatus(formStatusProps.error)
+        }
+        setTimeout(() => {
+            setAPIResponse(false);
+        }, 6000);
+        formik.resetForm({});
+    }, [isSuccess, isError])
+
+    useEffect(() => {
+        if (frequencyList?.data.length) {
+            setinitialInvoiceFrequencies(frequencyList.data.map((obj: any) => ({ label: obj.invoiceFrequencyNm.trim(), value: obj.invoiceFrequencyId.trim() })));
+        }
+    }, [frequencyList])
+
+    useEffect(() => {
+        if (paymentTypeList?.data.length) {
+            setpaymentTypes(paymentTypeList.data.map((obj: any) => ({ label: obj.paymentTypeNm.trim(), value: obj.paymentTypeId.trim() })));
+        }
+    }, [paymentTypeList])
+
+
     const [apiResposneState, setAPIResponse] = useState(false);
-   
+
 
     const [open, setOpen] = React.useState(false);
 
@@ -156,66 +189,45 @@ const AddCustomer: React.FC<{}> = (props: any) => {
         history.push('/')
     };
 
-    const createNewCustomer = async (data: AddCustomerForm, resetForm: Function) => {
+    const createNewCustomer = (form: AddCustomerForm) => {
         try {
             const apiPayload = {
-                "customerName": data.customerName,
-                "customerInputId": data.customerId,
-                "addressLine1": data.addressLine1,
-                "addressLine2": data.addressLine2,
+                "customerName": form.customerName,
+                "customerInputId": form.customerId,
+                "addressLine1": form.addressLine1,
+                "addressLine2": form.addressLine2,
                 "addressLine3": "",
-                "cityNm": data.city,
-                "stateNm": data.state,
-                "postalCd": Number(data.postalCode),
-                "contactFirstNm": data.firstName,
-                "contactLastNm": data.lastName,
-                "contactEmailId": data.email,
-                "contactPhoneNo": data.phoneNumber,
-                "paymentTypeId": data.paymentType.value,
+                "cityNm": form.city,
+                "stateNm": form.state,
+                "postalCd": Number(form.postalCode),
+                "contactFirstNm": form.firstName,
+                "contactLastNm": form.lastName,
+                "contactEmailId": form.email,
+                "contactPhoneNo": form.phoneNumber,
+                "paymentTypeId": form.paymentType.value,
                 "customerTypeId": "f6f0ec11-cd88-455d-9158-8ade75ddfb3b",
-                "invoiceFrequencyId": data.invoiceFrequency.value,
-                "firstSettlementDt": data.endDate,
-                "paymentTerm": Number(data.paymentTerm),
+                "invoiceFrequencyId": form.invoiceFrequency.value,
+                "firstSettlementDt": form.endDate,
+                "paymentTerm": Number(form.paymentTerm),
                 "countryCd": getCountryCode(),
                 "soldToNo": 10,
-                "emergencyContact": data.emergencyContact.map(emgcyObj => ({
+                "emergencyContact": form.emergencyContact.map(emgcyObj => ({
                     "firstNm": emgcyObj.firstName,
                     "lastNm": emgcyObj.lastName,
                     "email": emgcyObj.email,
                     "phoneNo": emgcyObj.phoneNumber
                 })),
-                "apContact": data.apContact.map(apObj => ({
+                "apContact": form.apContact.map(apObj => ({
                     "firstNm": apObj.firstName,
                     "lastNm": apObj.lastName,
                     "email": apObj.email,
                     "phoneNo": apObj.phoneNumber
                 })),
                 "tokenApplicabilityLevel": getTokenApplicable({
-                    lot: data.lotLevel, business: data.businessLevel, vehicle: data.vehicleLevel
+                    lot: form.lotLevel, business: form.businessLevel, vehicle: form.vehicleLevel
                 })
             }
-            axios.post('http://20.81.30.168:4001/api/customer-service/customers', apiPayload)
-                .then(function (response) {
-                    setAPIResponse(true);
-                    if (response.data) {
-                        setFormStatus(formStatusProps.success)
-                        setTimeout(() => {
-                            setAPIResponse(false);
-                        }, 6000);
-                        resetForm({})
-                    }
-                })
-                .catch(function (error) {
-                    const response = error.response
-                    if (
-                        response.data === 'user already exist' &&
-                        response.status === 400
-                    ) {
-                        setFormStatus(formStatusProps.duplicate)
-                    } else {
-                        setFormStatus(formStatusProps.error)
-                    }
-                });
+            addNewCustomer(apiPayload);
         } catch (error) {
             setFormStatus(formStatusProps.error)
         }
@@ -224,33 +236,11 @@ const AddCustomer: React.FC<{}> = (props: any) => {
     const formik = useFormik({
         initialValues,
         validationSchema: AddCustomerValidationSchema,
-        onSubmit: (values, actions) => {
-            createNewCustomer(values, actions.resetForm);
+        onSubmit: (values) => {
+            createNewCustomer(values);
         },
         enableReinitialize: true,
     });
-
-    const fetchList = (listof: string, fieldName: string) => {
-        axios.get(`http://20.81.30.168:4001/api/customer-service/customers/${listof}?countryCode=us`)
-            .then(response => response.data)
-            .then(({ data }) => {
-                if (data) {
-                    if (fieldName === 'paymentTypes') {
-                        setpaymentTypes(data.map((obj: any) => ({ label: obj[`${listof}Nm`].trim(), value: obj[`${listof}Id`].trim() })));
-                    } else {
-                        setinitialInvoiceFrequencies(data.map((obj: any) => ({ label: obj[`${listof}Nm`].trim(), value: obj[`${listof}Id`].trim() })));
-                    }
-                }
-            })
-            .catch(error => {
-                setFormStatus(formStatusProps.error)
-            });
-    }
-
-    useEffect(() => {
-        fetchList('paymentType', 'paymentTypes');
-        fetchList('invoiceFrequency', 'initialInvoiceFrequencies');
-    }, [])
 
     const history = useHistory()
 
@@ -273,8 +263,8 @@ const AddCustomer: React.FC<{}> = (props: any) => {
     }
 
     return (
-           <Box>
-               <Grid>
+        <Box>
+            <Grid>
                 <Grid item md={10} pt={5} xs={10} className="page-area">
                     <Container maxWidth="lg" className="page-container">
                         <FormikProvider value={formik}>
@@ -792,7 +782,7 @@ const AddCustomer: React.FC<{}> = (props: any) => {
                                                 types="save"
                                                 aria-label="save"
                                                 className="ml-4"
-                                                disabled={!formik.isValid || formik.isSubmitting}
+                                                disabled={(!formik.isValid || !formik.dirty) || formik.isSubmitting}
                                             >
                                                 {t("buttons.save")}
                                             </Button>
@@ -806,8 +796,8 @@ const AddCustomer: React.FC<{}> = (props: any) => {
                 </Grid>
             </Grid>
             <DiscardChangesDialog
-                title="Discard the changes ?"
-                content="You have unsaved data which will be lost once you select discard or select cancel to save the data."
+                title={t("customerManagement.discardchangesdialog.title")}
+                content={t("customerManagement.discardchangesdialog.content")}
                 open={open}
                 handleToggle={handleModelToggle}
                 handleConfirm={handleModelConfirm}
