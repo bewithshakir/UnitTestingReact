@@ -36,7 +36,6 @@ export const PanelHeader: React.FC<InfoPanelProps> = ({ headingText, panelType, 
                             }
                         ]}
                         onSelect={(value) => {
-                            // console.log("selected")
                         }}
                     />}
                     {panelType === "customer-filter" && <IconButton
