@@ -22,7 +22,7 @@ import { FormControl } from "@mui/material";
 import { HorizontalBarVersionState, useStore } from "../../store";
 interface ContentProps {
   rows?: [];
-  version:any
+  version:string
 }
 const Content: React.FC<ContentProps> = () => {
   const history = useHistory();
