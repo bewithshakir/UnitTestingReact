@@ -16,7 +16,7 @@
   "french": "French",
   "spanish": "Spanish",
   "query": "Query",
-  "back":"back",
+  "back": "back",
   "buttons": {
     "save": "Save",
     "edit": "Edit",
@@ -53,12 +53,12 @@
       "logout": "Logout"
     }
   },
-  "right-info-panel":{
-      "settings":{
-        "view & edit details": "View & Edit Details"
-      }
+  "right-info-panel": {
+    "settings": {
+      "view & edit details": "View & Edit Details"
+    }
   },
-  "legend":{
+  "legend": {
     "customerName": "Customer Name",
     "customerProfile": "Customer Profile",
     "parkingLots": "Parking Lots",
@@ -67,12 +67,16 @@
     "dsp": "DSP",
     "attachments": "Attachments"
   },
-  "customerManagement":{
-    "sortBy":{
-      "atoz":"A-Z",
-      "ztoa":"Z-A",
-      "newestToOldest":"Newest to Oldest",
-      "oldestToNew":"Oldest to New"
+  "customerManagement": {
+    "sortBy": {
+      "atoz": "A-Z",
+      "ztoa": "Z-A",
+      "newestToOldest": "Newest to Oldest",
+      "oldestToNew": "Oldest to New"
+    },
+    "discardchangesdialog": {
+      "title": "Discard the changes ?",
+      "content": "You have unsaved data which will be lost once you select discard or select cancel to save the data."
     }
   }
 }

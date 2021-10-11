@@ -167,11 +167,13 @@ const AddCustomer: React.FC<any> = () => {
         }
     }, [frequencyList]);
 
+
     useEffect(() => {
         if (paymentTypeList?.data.length) {
             setpaymentTypes(paymentTypeList.data.map((obj: any) => ({ label: obj.paymentTypeNm.trim(), value: obj.paymentTypeId.trim() })));
         }
     }, [paymentTypeList]);
+
 
 
     const [apiResposneState, setAPIResponse] = useState(false);
@@ -226,6 +228,7 @@ const AddCustomer: React.FC<any> = () => {
                     lot: form.lotLevel, business: form.businessLevel, vehicle: form.vehicleLevel
                 })
             };
+
             addNewCustomer(apiPayload);
         } catch (error) {
             setFormStatus(formStatusProps.error);
@@ -240,6 +243,7 @@ const AddCustomer: React.FC<any> = () => {
         },
         enableReinitialize: true,
     });
+
 
     const history = useHistory();
 
