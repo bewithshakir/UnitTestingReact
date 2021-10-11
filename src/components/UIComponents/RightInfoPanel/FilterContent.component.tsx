@@ -76,7 +76,6 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ provideFilterParams, o
         filterParams = {};
         setFormSubmitClicked(false);
         if (filterFormData) {
-            // debugger;
             setFormValuesSaved(filterFormData);
             console.log("main check --->>",filterFormData)
             if (filterFormData && Object.keys(filterFormData).length > 0) {
