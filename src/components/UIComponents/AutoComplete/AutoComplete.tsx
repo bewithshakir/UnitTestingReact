@@ -1,4 +1,4 @@
-import { FormControl, FormHelperText, useAutocomplete, InputBase } from '@mui/material';
+import { FormControl, FormHelperText, useAutocomplete } from '@mui/material';
 import './AutoComplete.scss';
 
 interface props {
@@ -63,7 +63,7 @@ export default function Autocomplete (props: props) {
             {groupedOptions.length > 0 ? (
                 <ul className='listbox' {...getListboxProps()}>
                     {(groupedOptions as typeof props.options).map((option, index) => (
-                        <li {...getOptionProps({ option, index })}>{option[props.optionTitle]}</li>
+                        <li {...getOptionProps({ option, index })} key={index}>{option[props.optionTitle]}</li>
                     ))}
                 </ul>
             ) : null}
@@ -77,6 +77,6 @@ Autocomplete.defaultProps = {
     required: false,
     id: "input",
     error: false,
-}
+};
 
 

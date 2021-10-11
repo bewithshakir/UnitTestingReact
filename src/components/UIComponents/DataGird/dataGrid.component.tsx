@@ -1,5 +1,5 @@
 import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined';
-import { Box, CircularProgress, Collapse, Table, TableBody, TableCell, TableHead, TableRow } from '@mui/material';
+import { Box, Collapse, Table, TableBody, TableCell, TableHead, TableRow } from '@mui/material';
 import * as React from "react";
 import { useTranslation } from 'react-i18next';
 import { Loader } from '../Loader';
@@ -61,7 +61,7 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
 
     const getKeys = () => {
         return Object.keys(props?.rows[0]);
-    }
+    };
 
     const handleCollapaseClick = (key: any) => {
         if (key === selectedIndexKey) {
@@ -69,17 +69,17 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
         } else {
             setSelectedKey(key);
         }
-    }
+    };
    const openDrawer =(event:React.SyntheticEvent)=>{
-     props.openDrawer(event) 
-   }
+     props.openDrawer(event); 
+   };
 
     const getRowsData = () => {
-        var keys = getKeys();
+        const keys = getKeys();
         return (
             stableSort(props.rows, getComparator(props.order, props.orderBy))
                 .map((row: any, indexKey: any) =>
-                    <React.Fragment>
+                    <React.Fragment key={indexKey}>
                         <TableRow key={indexKey}>
                             {keys.map((key: any, index: any) =>
                                 <TableCell component="th" scope="row" key={row[key]} onClick={()=>openDrawer(row)}>
@@ -102,7 +102,7 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
                                                     { label: t("menus.data-grid-actions.contact details"), }
                                                     ]}
                                                     onSelect={(value) => {
-                                                        console.log("🚀 ~ file: Content.component.tsx ~ line 60 ~ value", value)
+                                                        return value;
                                                     }}
                                                 />
                                                 : ""
@@ -130,19 +130,19 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
                         </TableRow>
                     </React.Fragment>
                 )
-        )
-    }
+        );
+    };
 
 
     if (props?.rows?.length > 1) {
-        return getRowsData()
+        return getRowsData();
     } else if(props?.isLoading) {
-        return <Loader />
+        return (<Loader />);
     }else {
-        return <div style={{display:"flex",justifyContent:"center",alignItems:"center",height:"100%",width:"auto"}}>{"No Data found"}</div>
+        return (<div style={{display:"flex",justifyContent:"center",alignItems:"center",height:"100%",width:"auto"}}>{"No Data found"}</div>);
     }
 
 
-}
+};
 
 export default EnhancedGridBody;

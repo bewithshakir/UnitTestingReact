@@ -1,19 +1,11 @@
 import create from "zustand";
-import { persist } from "zustand/middleware"
 
-export interface HorizontalBarVersionState{
-    version: string
-    setVersion: (version:string)=>void
+interface state{
+    query: string
 }
 
-export const useStore  = create<HorizontalBarVersionState>((persist(
-    (set) => ({
-      version: "NavLinks",
-      setVersion: (version:string) => set((state) => ({ ...state,version })),
-    }),
-    {
-      name: "hortizontalBarVerion"
-    }
-  ))
-)
-
+export const useStore  = create<state>((set) => ({
+    query: "",
+    setQuery: () => set((state):state => ({ query: state.query })),
+  }));
+  
