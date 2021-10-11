@@ -23,9 +23,9 @@ export const ThemeProvider: React.FC = ({ children }) => {
   }
 
   function generateStyle (themeVar: any) {
-    var css = ':root' + JSON.stringify(themeVar).replace(/['"]+/g, '').replace(/[,]+/g, ';')
+    const css = ':root' + JSON.stringify(themeVar).replace(/['"]+/g, '').replace(/[,]+/g, ';');
 
-    var head = document.head || document.getElementsByTagName('head')[0],
+    const head = document.head || document.getElementsByTagName('head')[0],
       style: any = document.createElement('style');
 
     head.appendChild(style);
@@ -40,9 +40,9 @@ export const ThemeProvider: React.FC = ({ children }) => {
 
   useEffect(() => {
     localStorage.setItem('theme', JSON.stringify(currentTheme));
-    generateStyle(THEMES[currentTheme])
+    generateStyle(THEMES[currentTheme]);
 
-  }, [currentTheme])
+  }, [currentTheme]);
 
   return (
     <ThemeContext.Provider value={{
@@ -52,7 +52,7 @@ export const ThemeProvider: React.FC = ({ children }) => {
     }}>
       {children}
     </ThemeContext.Provider>
-  )
-}
+  );
+};
 
 export const useTheme = () => React.useContext(ThemeContext);

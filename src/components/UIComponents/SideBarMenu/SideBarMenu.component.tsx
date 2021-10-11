@@ -52,29 +52,27 @@ const SideBarMenuoptions = [{
   route: '/demo'
 }];
 
-type SideBarMenuOption = {
-  index: number;
-  icon?: React.ReactNode;
-  text?: string;
-  route?: string;
-  component?: React.ReactNode;
-  to?: any;
-}
-interface sideBarMenuProps {
-  options?: SideBarMenuOption[],
-  onSelect?: (selectedValue: any) => void
-}
+// type SideBarMenuOption = {
+//   index: number;
+//   icon?: React.ReactNode;
+//   text?: string;
+//   route?: string;
+//   component?: React.ReactNode;
+//   to?: any;
+// }
+// interface sideBarMenuProps {
+//   options?: SideBarMenuOption[],
+//   onSelect?: (selectedValue: any) => void
+// }
 
-export default function SideBarDrawer(props: sideBarMenuProps) {
+export default function SideBarDrawer() {
   const { themeType } = useTheme();
   const logoSrc = themeType === 'UK' ? logoOne : logoTwo;
   const [value, setValue] = React.useState(0);
   const history = useHistory();
 
   const onSelectOptions = (value: number) => {
-    console.log("🚀 ~ file: Content.component.tsx ~ line 60 ~ value", value);
     if(value == 7) {
-      console.log("value 7 encountered");
       history.push("/demo");
     }
   };
@@ -82,7 +80,6 @@ export default function SideBarDrawer(props: sideBarMenuProps) {
   const handleChange = (event: React.ChangeEvent<any>, newValue: number) => {
     setValue(newValue);
     onSelectOptions(newValue);
-    console.log(newValue);
   };
 
   const drawerWidth = 64;

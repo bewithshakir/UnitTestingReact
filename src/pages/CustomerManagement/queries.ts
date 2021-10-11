@@ -1,4 +1,4 @@
-import { useInfiniteQuery, useQuery } from "react-query";
+import { useInfiniteQuery } from "react-query";
 import { AxiosRequestConfig } from "axios";
 import axios from "../../infrastructure/ApiHelper";
 
@@ -22,7 +22,7 @@ const getCustomers = async (pageParam: number, searchTerm: string, sortOrder:{so
 };
 export const useCustomers = (query: string, sortOrder:{sortBy: string,order:string}) => {
     return useInfiniteQuery(["getCustomers", query, sortOrder], ({ pageParam = 0 }) => getCustomers(pageParam, query, sortOrder), {
-        getNextPageParam: (lastGroup: any, allGroups:any) => {
+        getNextPageParam: (lastGroup: any) => {
           if(lastGroup.data.pagination.offset < lastGroup.data.pagination.totalCount ){
               return lastGroup.data.pagination.offset + 15;
           }
