@@ -20,5 +20,5 @@ export default function Checkboxes(props: checkBoxProps) {
             inputProps={{ 'aria-label': 'checkbox' }}
             name={props.name}
         />
-    );}
+    )}
 

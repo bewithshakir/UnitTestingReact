@@ -20,5 +20,5 @@ export const Button: React.FC<ButtonFieldProps> = (props) => {
     >
       {children}
     </ButtonField>
-  );
-};
+  )
+}

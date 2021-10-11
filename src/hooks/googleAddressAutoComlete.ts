@@ -8,8 +8,8 @@ const getAddresses = async (searchQuery: string) => {
         const payload: AxiosRequestConfig = {
             method: 'get',
             url: `http://20.81.30.168:4001/api/customer-service/address/auto-complete?address=${searchQuery}`
-        };
-        const { data } = await axios(payload);
+        }
+        const { data } = await axios(payload)
         return data;
     }
 };
@@ -23,8 +23,8 @@ const getAddress = async (placeId: string) => {
         const payload: AxiosRequestConfig = {
             method: 'get',
             url: `http://20.81.30.168:4001/api/customer-service/address/place-detail?placeId=${placeId}`
-        };
-        const { data } = await axios(payload);
+        }
+        const { data } = await axios(payload)
         return data;
     }
 };

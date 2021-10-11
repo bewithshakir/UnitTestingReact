@@ -34,13 +34,13 @@ export default function SingleSelect(props: props) {
            <components.DropdownIndicator {...props}>
                <ArrowDown/>
            </components.DropdownIndicator>
-       );
-   };
+       )
+   }
 
    const handleChange = (e:any ) =>{
        const {name, onChange} = props;
        onChange(name, e);
-   }; 
+   } 
 
     return (
         <Fragment>
@@ -80,4 +80,4 @@ SingleSelect.defaultProps = {
     id: "select-label",
     error: false,
     placeholder: 'Select',
-};
+}

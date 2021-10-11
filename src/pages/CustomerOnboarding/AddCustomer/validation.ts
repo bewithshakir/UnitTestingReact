@@ -28,7 +28,7 @@ const AddCustomerValidationSchema = Yup.object().shape({
                 phoneNumber: Yup.string().matches(/^(?:\+?1[-.●]?)?\(?([0-9]{3})\)?[-.●]?([0-9]{3})[-.●]?([0-9]{4})$/, 'Invalid phone number'),
             })
         )
-        .required('Must have emergency contact')
+        .required('Must have emergency contact') // these constraints are shown if and only if inner constraints are satisfied
         .min(1, 'Minimum of 1 emergency contact'),
     apContact: Yup.array()
         .of(
@@ -39,7 +39,7 @@ const AddCustomerValidationSchema = Yup.object().shape({
                 phoneNumber: Yup.string().matches(/^(?:\+?1[-.●]?)?\(?([0-9]{3})\)?[-.●]?([0-9]{3})[-.●]?([0-9]{4})$/, 'Invalid phone number'),
             })
         )
-        .required('Must have cp contact')
+        .required('Must have cp contact') // these constraints are shown if and only if inner constraints are satisfied
         .min(1, 'Minimum of 1 cp contact'),
 });
 

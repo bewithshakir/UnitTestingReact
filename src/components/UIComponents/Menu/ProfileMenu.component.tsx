@@ -18,14 +18,14 @@ type ProfileMenuOption = {
 interface ProfileMenuProps {
   options: ProfileMenuOption[],
   menuName?: string,
-  onSelect: (selectedValue: any) => void,
+  onSelect: (selectedValue: object) => void,
 }
 export default function ProfileMenu (props: ProfileMenuProps) {
   const [open, setOpen] = React.useState(false);
   const [selectedIndex, setSelectedIndex] = React.useState(-1);
   const anchorRef = React.useRef<HTMLButtonElement>(null);
 
-  const { options, onSelect } = props;
+  const { options, onSelect } = props
 
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
