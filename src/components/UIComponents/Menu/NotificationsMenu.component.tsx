@@ -18,14 +18,14 @@ type NotificationsMenuOption = {
 interface NotificationsMenuProps {
   options: NotificationsMenuOption[],
   menuName?: string,
-  onSelect: (selectedValue: any) => void,
+  onSelect: (selectedValue: object) => void,
 }
 export default function NotificationsMenu(props: NotificationsMenuProps) {
   const [open, setOpen] = React.useState(false);
   const [selectedIndex, setSelectedIndex] = React.useState(-1);
   const anchorRef = React.useRef<HTMLButtonElement>(null);
 
-  const { options, onSelect } = props;
+  const { options, onSelect } = props
 
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);

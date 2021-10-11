@@ -4,6 +4,8 @@ import axios from "axios";
   });
 
   instance.interceptors.request.use(function (config) {
+
+    console.log(config,"config")
     // Do something before request is sent
     return config;
   }, function (error) {
@@ -20,6 +22,6 @@ import axios from "axios";
     // Any status codes that falls outside the range of 2xx cause this function to trigger
     // Do something with response error
     return Promise.reject(error);
-  });
+  })
 
-  export default instance;
+  export default instance

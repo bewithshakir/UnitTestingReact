@@ -14,10 +14,10 @@ interface GridComponentProps {
     openDrawer?: any
 }
 
-const x: GridComponentProps = {
+let x: GridComponentProps = {
     height: '1000px',
     width: "auto"
-};
+}
 
 
 const headCells = [
@@ -75,7 +75,7 @@ const GridComponent: React.FC<GridComponentProps> = (props) => {
     const handleTableScroll = (event: any) => {
         const bottomValue = event.target.scrollHeight - event.target.scrollTop;
         if (bottomValue - event.target.clientHeight <= 0) {
-            props.getPages();
+            props.getPages()
         }
     };
 
@@ -108,6 +108,6 @@ const GridComponent: React.FC<GridComponentProps> = (props) => {
         </div>
     );
 
-};
+}
 
 export default GridComponent;

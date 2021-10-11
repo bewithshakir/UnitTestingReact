@@ -8,8 +8,9 @@ import logoTwo from '../../../assets/images/Shell Taup logo2.svg';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import { BriefCase64Icon, Invoice64Icon, ToggleList64Icon, Truck64Icon, DocumentFile64Icon, ToggleMail64Icon, ChartPie64Icon } from '../../../assets/icons';
-import {Link, Route, Switch, useHistory } from "react-router-dom";
+import { BrowserRouter, Link, NavLink, Route, Switch, useHistory } from "react-router-dom";
 import HorizontalBar from '../NavigationBar/HorizontalBar';
+import { DemoComponents } from '../DemoComponents/DemoComponents.component';
 import { Fragment, Suspense } from 'react';
 import { routes } from '../../../routes';
 import Page from '../../../navigation/Page';
@@ -55,50 +56,53 @@ const SideBarMenuoptions = [{
   route: 'demo'
 }];
 
-// type SideBarMenuOption = {
-//   index: number;
-//   icon?: React.ReactNode;
-//   text?: string;
-//   route?: any;
-//   component?: React.ReactNode;
-//   to?: any;
-// }
-// interface sideBarMenuProps {
-//   options?: SideBarMenuOption[],
-//   onSelect?: (selectedValue: any) => void
-//   children?: any
-// }
+type SideBarMenuOption = {
+  index: number;
+  icon?: React.ReactNode;
+  text?: string;
+  route?: any;
+  component?: React.ReactNode;
+  to?: any;
+}
+interface sideBarMenuProps {
+  options?: SideBarMenuOption[],
+  onSelect?: (selectedValue: object) => void
+  children?: {}
+}
 
-export default function SideBarDrawer() { 
+export default function SideBarDrawer(props: sideBarMenuProps) {
   const { themeType } = useTheme();
   const logoSrc = themeType === 'UK' ? logoOne : logoTwo;
   const [value, setValue] = React.useState(0);
 
   const onSelectOptions = (value: number) => {
+    console.log("🚀 ~ file: Content.component.tsx ~ line 60 ~ value", value)
     if (value == 6) {
+      console.log("value 7 encountered");
       // history.push("/demo")
     }
   };
 
-  const handleChange = (event: React.ChangeEvent<any>, newValue: number) => {
+  const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
     setValue(newValue);
     onSelectOptions(newValue);
+    console.log(newValue)
   };
 
 
-  const history = useHistory();
+  const history = useHistory()
   function onClickBack() {
-    history.push("/");
+    history.push("/")
   }
 
   const drawerWidth = 64;
   return (
     <Box className={'sidebar-menu'}>
       <CssBaseline />
-      {routes.map((route,index) => {
+      {routes.map((route) => {
    
         return (
-          <Fragment key={index}>
+          <Fragment>
             <HorizontalBar
               onBack={onClickBack}
             />
@@ -122,8 +126,8 @@ export default function SideBarDrawer() {
                 className={'sidebarmenu_tabs'} >
                 {SideBarMenuoptions && SideBarMenuoptions.map((item, index) => {
                   return (
-                    <Tab className={'sidebarmenu_tab'} icon={item.icon} component={Link} to={item.route} key={index} />
-                  );
+                    <Tab className={'sidebarmenu_tab'} icon={item.icon} component={Link} to={item.route} />
+                  )
                 })}
               </Tabs>
 
@@ -138,7 +142,7 @@ export default function SideBarDrawer() {
               </Suspense>
             </main>
           </Fragment>
-        );
+        )
       })}
     </Box>
   );

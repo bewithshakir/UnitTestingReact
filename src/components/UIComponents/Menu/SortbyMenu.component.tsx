@@ -24,7 +24,7 @@ export default function SortbyMenu(props: SortbyMenuProps) {
   const anchorRef = React.useRef<HTMLButtonElement>(null);
 
   const { t } = useTranslation();
-  const { menuName, options, onSelect } = props;
+  const { menuName, options, onSelect } = props
 
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
