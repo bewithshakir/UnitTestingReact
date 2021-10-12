@@ -1,6 +1,6 @@
 import { useMutation, useQuery } from "react-query";
 import { AxiosRequestConfig } from "axios";
-import axios from "../../infrastructure/ApiHelper"
+import axios from "../../infrastructure/ApiHelper";
 
 
 const createCustomer = async (payload: any) => {
