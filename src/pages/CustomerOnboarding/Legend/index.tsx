@@ -5,26 +5,26 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import { ListSubheader } from '@mui/material';
-import "./style.scss"
+import "./style.scss";
 import { boxSystem, config } from './config';
 import { useTranslation } from 'react-i18next';
 import { useHistory, useLocation } from 'react-router-dom';
-import { SyntheticEvent } from 'react';
 import { useEffect } from 'react';
 
 
 const Legend: React.FC = () => {
   const { t } = useTranslation();
   const { pathname } = useLocation();
-  const history = useHistory()
+  const history = useHistory();
   useEffect(()=>{
-    history.push("/customer/addCustomer")
-  },[])
-  const onItemClick = (index: number): void => {
+    history.push("/customer/addCustomer");
+  },[]);
+  const onItemClick = (index: number) => {
+    return index;
     // if (index === 1) {
     //   history.push("/customer/addCustomer")
     // }
-  }
+  };
   return (
 
     <Box className="legend-box" sx={boxSystem}>
@@ -35,7 +35,7 @@ const Legend: React.FC = () => {
           </ListSubheader>
         }>
           {config.map((ConfigItem) => {
-            const isLegendSelected = pathname.includes(ConfigItem.to)
+            const isLegendSelected = pathname.includes(ConfigItem.to);
             return (
               <ListItem key={ConfigItem.index} onClick={() => onItemClick(ConfigItem.index)} >
                 <ListItemButton className={"listItemButton"} selected={isLegendSelected} >
@@ -43,13 +43,13 @@ const Legend: React.FC = () => {
                   {ConfigItem.secondaryText && <ListItemText className="listItemTextSecondary" primary={0} />}
                 </ListItemButton>
               </ListItem>
-            )
+            );
           })
           }
         </List>
       </nav>
     </Box>
   );
-}
+};
 
-export default Legend
+export default Legend;

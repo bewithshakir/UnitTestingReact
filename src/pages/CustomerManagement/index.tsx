@@ -1,4 +1,4 @@
-import React, { EffectCallback, Fragment, SyntheticEvent, useEffect } from "react";
+import React, { SyntheticEvent } from "react";
 import { Button } from "../../components/UIComponents/Button/Button.component";
 import "./style.scss";
 import { useTranslation } from "react-i18next";
@@ -18,15 +18,15 @@ import { Add } from "@mui/icons-material";
 import { useHistory } from "react-router-dom";
 import { sortByOptions } from "./config";
 import { RightInfoPanel } from "../../components/UIComponents/RightInfoPanel/RightInfoPanel.component";
-import { Box, FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from "@mui/material";
+import { FormControl } from "@mui/material";
 import { HorizontalBarVersionState, useStore } from "../../store";
 interface ContentProps {
   rows?: [];
   version:string
 }
-const Content: React.FC<ContentProps> = (props) => {
+const Content: React.FC<ContentProps> = () => {
   const history = useHistory();
-  const [info, setInfo] = React.useState({})
+  const [info, setInfo] = React.useState({});
   const [searchTerm, setSearchTerm] = React.useState("");
   const [drawerOpen, setDrawerOpen] = React.useState(false);
   const [sortOrder, setSortOrder] = React.useState<{ sortBy: string, order: string }>({ sortBy: "customerName", order: "asc" });
@@ -34,54 +34,53 @@ const Content: React.FC<ContentProps> = (props) => {
   const [custFilterPanelVisible, setCustFilterPanelVisible] = React.useState(false);
 
   const { t } = useTranslation();
-  const { data, fetchNextPage, isLoading, hasNextPage }: any = useCustomers(
+  const { data, fetchNextPage, isLoading }: any = useCustomers(
     searchTerm,
     sortOrder,
     filterData
   );
   const setVersion =  useStore((state : HorizontalBarVersionState) => state.setVersion);
-  setVersion("NavLinks")
+  setVersion("NavLinks");
   const openDrawer = (row: SyntheticEvent) => {
-    setInfo(row)
-    setDrawerOpen(true)
-  }
+    setInfo(row);
+    setDrawerOpen(true);
+  };
   const drawerClose = () => {
-    setDrawerOpen(false)
-  }
+    setDrawerOpen(false);
+  };
   const navigateToAddCustomer = () => {
     history.push("/customer");
   };
   const onSortBySlected = (value: string) => {
-    let sortOrder
+    let sortOrder;
     switch (value) {
       case "Z-A":
-        sortOrder = { sortBy: "customerName", order: "desc" }
+        sortOrder = { sortBy: "customerName", order: "desc" };
         break;
       case "Newest to Oldest":
-        sortOrder = { sortBy: "date", order: "desc" }
+        sortOrder = { sortBy: "date", order: "desc" };
         break;
       case "Oldest to New":
-        sortOrder = { sortBy: "date", order: "asc" }
+        sortOrder = { sortBy: "date", order: "asc" };
         break;
       default:
-        sortOrder = { sortBy: "customerName", order: "asc" }
+        sortOrder = { sortBy: "customerName", order: "asc" };
         break;
     }
-    setSortOrder(sortOrder)
+    setSortOrder(sortOrder);
   };
   const onInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(event.currentTarget.value);
   };
-  let list: any = []
-  console.log(data)
+  const list: any = [];
   data?.pages?.map((item: any) => {
-    list.push(...item.data.customers)
-  })
+    list.push(...item.data.customers);
+  });
  
 
   const handleCustFilterPanelOpen = () => {
     setDrawerOpen(false);
-    setCustFilterPanelVisible(!custFilterPanelVisible)
+    setCustFilterPanelVisible(!custFilterPanelVisible);
   };
 
   const handleCustFilterPanelClose = () => setCustFilterPanelVisible(false);
@@ -149,10 +148,7 @@ const Content: React.FC<ContentProps> = (props) => {
                 },
               ]}
               onSelect={(value) => {
-                console.log(
-                  "🚀 ~ file: Content.component.tsx ~ line 60 ~ value",
-                  value
-                );
+                return value;
               }}
             />
              </FormControl>
@@ -170,4 +166,4 @@ const Content: React.FC<ContentProps> = (props) => {
   );
 };
 
-export default Content
+export default Content;

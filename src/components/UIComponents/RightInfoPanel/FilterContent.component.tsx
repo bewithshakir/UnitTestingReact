@@ -11,7 +11,7 @@ import { Button } from "../Button/Button.component";
 import { useTheme } from '../../../contexts/Theme/Theme.context';
 import { styled } from '@mui/system';
 
-const geoData = { //temporary data
+const geoData = { 
     states: [
         { label: "Texas", value: "Texas" },
         { label: "TX", value: "TX" },
@@ -25,15 +25,15 @@ const geoData = { //temporary data
         { label: "Saratoga", value: "Saratoga" },
         { label: "kalol", value: "kalol" },
     ]
-}
+};
 
-const paymentTypes = [ //temporary data
+const paymentTypes = [ 
     { label: "Invoice", value: "Invoice" },
     { label: "Voyager", value: "Voyager" },
     { label: "WEX", value: "wex" }
-]
+];
 
-interface filterParamsProps { //temporary data
+interface filterParamsProps {
     [key: string]: string[]
 }
 
@@ -58,7 +58,7 @@ const initialValues: filterForm = {
     paymentType: [],
     fromDate: null,
     toDate: null
-}
+};
 
 let filterParams: filterParamsProps = {};
 
@@ -76,20 +76,20 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ provideFilterParams, o
         filterParams = {};
         setFormSubmitClicked(false);
         if (filterFormData) {
-            setFormValuesSaved(filterFormData)
+            setFormValuesSaved(filterFormData);
             if (filterFormData && Object.keys(filterFormData).length > 0) {
-                for (let [key, value] of Object.entries(filterFormData)) {
-                    formik.setFieldValue(key, key === 'fromDate' || key === 'toDate' ? moment(value) : value)
+                for (const [key, value] of Object.entries(filterFormData)) {
+                    formik.setFieldValue(key, key === 'fromDate' || key === 'toDate' ? moment(value) : value);
                 }
             }
         }
-    }, [])
+    }, []);
 
     window.onunload = function () {
-        removeFormData()
-    }
+        removeFormData();
+    };
 
-    const ClearBtn = styled(Button)((props) => ({
+    const ClearBtn = styled(Button)(() => ({
         "&&": {
             width: '200px',
             backgroundColor: theme["--Cancel-Btn"],
@@ -101,7 +101,7 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ provideFilterParams, o
         }
     }));
 
-    const ApplyBtn = styled(Button)((props) => ({
+    const ApplyBtn = styled(Button)(() => ({
         "&&": {
             width: '200px',
             backgroundColor: theme["--Save-Btn"],
@@ -121,13 +121,16 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ provideFilterParams, o
         } else if (name == "toDate") {
             filterParams.date = [filterParams.date && filterParams.date[0] ? moment(filterParams.date[0]).format("MM-DD-YYYY") : '', moment(value).format("MM-DD-YYYY")];
         }
-    }
+    };
 
     function handleSelect(name: string, value: any[]) {
         formik.setFieldValue(name, value);
         filterParams[name] = value.map((obj: { label: string, value: string }) => obj.value);
     }
 
+    const tempFilterCode = (val:any) => {
+        return val;
+    };
     const applyFilter = (formData: filterForm, resetForm: Function) => {
         setFormSubmitClicked(true);
         if (provideFilterParams && Object.keys(filterParams).length > 0) {
@@ -135,8 +138,8 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ provideFilterParams, o
             provideFilterParams(filterParams);
             onClose();
         }
-
-    }
+        tempFilterCode(resetForm);
+    };
 
     const clearFilter = (formData: filterForm, resetForm: Function) => {
         setFormSubmitClicked(false);
@@ -145,7 +148,8 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ provideFilterParams, o
             provideFilterParams(filterParams);
         }
         removeFormData();
-    }
+        tempFilterCode(resetForm);
+    };
 
 
     const formik = useFormik({
@@ -265,6 +269,6 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ provideFilterParams, o
                 </div>
             </form>
         </FormikProvider>
-    </div>
-}
+    </div>;
+};
 

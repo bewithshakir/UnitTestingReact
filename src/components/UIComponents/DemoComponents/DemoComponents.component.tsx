@@ -16,13 +16,13 @@ import SearchInput from '../SearchInput/SearchInput';
 import { DatePicker } from '../DatePicker/DatePicker.component';
 import useDebounce from '../../../utils/useDebounce';
 import moment from "moment";
-import { useQuery } from 'react-query';
-import { fetchQueryTodos } from '../../../hooks/todos-with-query';
+//import { useQuery } from 'react-query';
+//import { fetchQueryTodos } from '../../../hooks/todos-with-query';
 import { Box, FormControl } from '@mui/material';
 import './DemoComponents.style.scss';
 
 export const DemoComponents: React.FC = () => {
-    const { data } = useQuery('repoData', fetchQueryTodos, { retry: false });
+    //const { data } = useQuery('repoData', fetchQueryTodos, { retry: false });
     const { setCurrentTheme } = useTheme();
     const { i18n } = useTranslation();
     const changeLanguage = (language: string) => () => {
@@ -50,7 +50,12 @@ export const DemoComponents: React.FC = () => {
     ];
     const handleSelect = (name:any,e:any) => setForm(x=>({ ...x, [name]: e}));
     const handleChange = (e: any) => setForm(x => ({ ...x, [e.target.name]: e.target.value }));
-    useEffect(() => { console.log('Debounced Value:', debouncedValue); }, [debouncedValue]);
+    const setTempValue = (value:any) => {
+        return value;
+    };
+    useEffect(() => { 
+        setTempValue(debouncedValue);
+    }, [debouncedValue]);
     const onDateChange = (name: string, newValue: Date | string | null | moment.Moment) => setForm(x => ({ ...x, [name]: newValue }));
     const { t } = useTranslation();
     return (
