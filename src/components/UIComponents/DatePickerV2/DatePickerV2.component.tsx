@@ -66,6 +66,14 @@ export const DatePickerV2: React.FC<DatePickerProps> = (props) => {
     //     }
     // }
 
+    // const renderLabel = (date:moment.Moment) => {
+    //     console.log(date.isValid());
+    //     if (date.isValid()) {
+    //       return date.format("DD/MM/YYYY");
+    //     } else {
+    //       return '';
+    //     }
+    //   }
     return (
         <Fragment>
 
@@ -101,9 +109,8 @@ export const DatePickerV2: React.FC<DatePickerProps> = (props) => {
                         {props.type === "single-date" && 
                         <DatePicker
                             disabled={props.disabled}
+                            // label={"hello"}
                             components={{ OpenPickerIcon: CalendarIconComp }}
-
-
                             views={['year', 'month', 'day']}
                             value={props.value}
                             onChange={(newValue) => {
@@ -112,8 +119,19 @@ export const DatePickerV2: React.FC<DatePickerProps> = (props) => {
                                 }
                                
                             }}
-
-                            renderInput={(params) => <TextField {...params} InputLabelProps={{ shrink: false }} />}
+                            
+                            renderInput={(params) => {
+                                console.warn("params-->",params);
+                            return <TextField  placeholder="Outlined" {...params} inputProps={{placeholder:props.placeholder,value:props.value?moment(props.value).format("MM/DD/YYYY"):null  }} InputLabelProps={{ shrink: false }} />;}
+                        }
+                            // inputProps={{
+                            //     endAdornment: (
+                            //    <InputAdornment position="end">
+                            //      <Icon>  <CalendarIcon />  </Icon>
+                            //    </InputAdornment>
+                            //  ) 
+                        //    }}  
+                           
                         />}
                           </LocalizationProvider>
                         {props.helperText && (
