@@ -74,7 +74,6 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ provideFilterParams, o
     const prepateLastFormWithPayload = () =>{
         if (filterFormData && Object.keys(filterFormData).length > 0) {
             for (const [key, value] of Object.entries(filterFormData)) {
-                console.warn("key-->",key, "value->>", value);
                 if(key === 'fromDate' || key === 'toDate'){
                     formik.setFieldValue(key, value?moment(value) : null);
                     if(!filterParams.date){
