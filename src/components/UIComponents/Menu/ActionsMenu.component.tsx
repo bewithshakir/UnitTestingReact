@@ -18,14 +18,14 @@ type ActionsMenuOption = {
 interface ActionsMenuProps {
   options: ActionsMenuOption[],
   menuName?: string,
-  onSelect: (selectedValue: object) => void,
+  onSelect: (selectedValue: any) => void,
 }
 export default function ActionsMenu(props: ActionsMenuProps) {
   const [open, setOpen] = React.useState(false);
   const [selectedIndex, setSelectedIndex] = React.useState(-1);
   const anchorRef = React.useRef<HTMLButtonElement>(null);
 
-  const { options, onSelect } = props
+  const { options, onSelect } = props;
 
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);

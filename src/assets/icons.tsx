@@ -1,4 +1,4 @@
-import * as React from "react"
+import * as React from "react";
 
 
 export function USAFlagIcon(props: React.SVGProps<SVGSVGElement>) {
@@ -142,7 +142,7 @@ export function USAFlagIcon(props: React.SVGProps<SVGSVGElement>) {
         </g>
       </g>
     </svg>
-  )
+  );
 }
 
 export function ActionsListIcon(props: React.SVGProps<SVGSVGElement>) {
@@ -159,7 +159,7 @@ export function ActionsListIcon(props: React.SVGProps<SVGSVGElement>) {
       />
       <path fill="none" d="M0 0h20v20H0z" />
     </svg>
-  )
+  );
 }
 
 export function FilterIcon(props: React.SVGProps<SVGSVGElement>) {
@@ -176,7 +176,7 @@ export function FilterIcon(props: React.SVGProps<SVGSVGElement>) {
       />
       <path fill="none" d="M0 0h20v20H0z" />
     </svg>
-  )
+  );
 }
 
 export function ImportIcon(props: React.SVGProps<SVGSVGElement>) {
@@ -193,7 +193,7 @@ export function ImportIcon(props: React.SVGProps<SVGSVGElement>) {
       />
       <path fill="none" d="M0 0h20v20H0z" />
     </svg>
-  )
+  );
 }
 
 
@@ -211,7 +211,7 @@ export function ExportIcon(props: React.SVGProps<SVGSVGElement>) {
       />
       <path fill="none" d="M0 0h20v20H0z" />
     </svg>
-  )
+  );
 }
 
 export function PlusIcon(props: React.SVGProps<SVGSVGElement>) {
@@ -228,7 +228,7 @@ export function PlusIcon(props: React.SVGProps<SVGSVGElement>) {
       />
       <path fill="none" d="M0 0h20v20H0z" />
     </svg>
-  )
+  );
 }
 
 export function DeleteIcon(props: React.SVGProps<SVGSVGElement>) {
@@ -245,7 +245,7 @@ export function DeleteIcon(props: React.SVGProps<SVGSVGElement>) {
       />
       <path fill="none" d="M0 0h20v20H0z" />
     </svg>
-  )
+  );
 }
 
 export function DataGridActionIcon(props: React.SVGProps<SVGSVGElement>) {
@@ -262,7 +262,7 @@ export function DataGridActionIcon(props: React.SVGProps<SVGSVGElement>) {
       />
       <path fill="none" d="M0 0h40v40H0z" />
     </svg>
-  )
+  );
 }
 
 export function CustomerProfileIcon(props: React.SVGProps<SVGSVGElement>) {
@@ -279,7 +279,7 @@ export function CustomerProfileIcon(props: React.SVGProps<SVGSVGElement>) {
       />
       <path fill="none" d="M0 0h40v40H0z" />
     </svg>
-  )
+  );
 }
 export function CustomerProfileIcon2(props: React.SVGProps<SVGSVGElement>) {
   return (
@@ -295,7 +295,7 @@ export function CustomerProfileIcon2(props: React.SVGProps<SVGSVGElement>) {
       />
       <path fill="none" d="M0 0h20v20H0z" />
     </svg>
-  )
+  );
 }
 
 export function SettingsIcon(props: React.SVGProps<SVGSVGElement>) {
@@ -312,7 +312,7 @@ export function SettingsIcon(props: React.SVGProps<SVGSVGElement>) {
       />
       <path fill="none" d="M0 0h20v20H0z" />
     </svg>
-  )
+  );
 }
 
 export function LogoutIcon(props: React.SVGProps<SVGSVGElement>) {
@@ -329,7 +329,7 @@ export function LogoutIcon(props: React.SVGProps<SVGSVGElement>) {
       />
       <path fill="none" d="M0 0h20v20H0z" />
     </svg>
-  )
+  );
 }
 
 export function SearchIcon(props: React.SVGProps<SVGSVGElement>) {
@@ -347,7 +347,7 @@ export function SearchIcon(props: React.SVGProps<SVGSVGElement>) {
       />
       <path fill="none" d="M0 0h20v20H0z" />
     </svg>
-  )
+  );
 }
 
 export function DropSearchIcon(props: React.SVGProps<SVGSVGElement>) {
@@ -364,7 +364,7 @@ export function DropSearchIcon(props: React.SVGProps<SVGSVGElement>) {
       />
       <path fill="none" d="M0 0h20v20H0z" />
     </svg>
-  )
+  );
 }
 
 
@@ -382,7 +382,7 @@ export function Check(props: React.SVGProps<SVGSVGElement>) {
       />
       <path fill="none" d="M0 0h20v20H0z" />
     </svg>
-  )
+  );
 }
 
 export function UnCheck(props: React.SVGProps<SVGSVGElement>) {
@@ -399,7 +399,7 @@ export function UnCheck(props: React.SVGProps<SVGSVGElement>) {
       />
       <path fill="none" d="M0 0h20v20H0z" />
     </svg>
-  )
+  );
 }
 
 export function ArrowUp(props: React.SVGProps<SVGSVGElement>) {
@@ -416,7 +416,7 @@ export function ArrowUp(props: React.SVGProps<SVGSVGElement>) {
       />
       <path fill="none" d="M0 0h20v20H0z" />
     </svg>
-  )
+  );
 }
 
 export function BackIcon(props: React.SVGProps<SVGSVGElement>) {
@@ -433,7 +433,7 @@ export function BackIcon(props: React.SVGProps<SVGSVGElement>) {
       />
       <path fill="none" d="M0 0h20v20H0z" />
     </svg>
-  )
+  );
 }
 
 export function CloseIcon(props: React.SVGProps<SVGSVGElement>) {
@@ -444,13 +444,15 @@ export function CloseIcon(props: React.SVGProps<SVGSVGElement>) {
       viewBox="0 0 20 20"
       {...props}
     >
-      <path
-        d="M8.026 4l1.479 1.346-3.83 4.217H18.42v2H5.761l3.714 3.717-1.417 1.413L2 10.628z"
-        fill={props.color || 'var(--Gray)'}
-      />
-      <path fill="none" d="M0 0h20v20H0z" />
+      <g data-name="Group 1862">
+        <path
+          d="M17 1l1.414 1.414-7.293 7.293L18.414 17 17 18.414l-7.293-7.293-7.293 7.293L1 17l7.293-7.293L1 2.414 2.414 1l7.293 7.293z"
+          fill="currentColor"
+        />
+        <path data-name="Rectangle 2250" fill="none" d="M0 0h20v20H0z" />
+      </g>
     </svg>
-  )
+  );
 }
 
 
@@ -468,7 +470,7 @@ export function ArrowDown(props: React.SVGProps<SVGSVGElement>) {
       />
       <path fill="none" d="M0 0h20v20H0z" />
     </svg>
-  )
+  );
 }
 
 export function LeftArrowIcon(props: React.SVGProps<SVGSVGElement>) {
@@ -485,7 +487,7 @@ export function LeftArrowIcon(props: React.SVGProps<SVGSVGElement>) {
       />
       <path fill="none" d="M20 20H0V0h20z" />
     </svg>
-  )
+  );
 }
 
 export function NotificationIcon(props: React.SVGProps<SVGSVGElement>) {
@@ -503,7 +505,7 @@ export function NotificationIcon(props: React.SVGProps<SVGSVGElement>) {
       />
       <path fill="none" d="M0 0h20v20H0z" />
     </svg>
-  )
+  );
 }
 
 export function DeliveryTruckIcon(props: React.SVGProps<SVGSVGElement>) {
@@ -528,7 +530,7 @@ export function DeliveryTruckIcon(props: React.SVGProps<SVGSVGElement>) {
       />
       <path fill="none" d="M0 0h40v40H0z" />
     </svg>
-  )
+  );
 }
 
 export function UncheckedCheckboxIcon(props: React.SVGProps<SVGSVGElement>) {
@@ -543,7 +545,7 @@ export function UncheckedCheckboxIcon(props: React.SVGProps<SVGSVGElement>) {
         fill='currentColor'
       />
     </svg>
-  )
+  );
 }
 
 export function CheckedCheckboxIcon(props: React.SVGProps<SVGSVGElement>) {
@@ -558,7 +560,7 @@ export function CheckedCheckboxIcon(props: React.SVGProps<SVGSVGElement>) {
         fill='currentColor'
       />
     </svg>
-  )
+  );
 }
 
 export function BriefCase64Icon(props: React.SVGProps<SVGSVGElement>) {
@@ -577,7 +579,7 @@ export function BriefCase64Icon(props: React.SVGProps<SVGSVGElement>) {
         <path data-name="Rectangle 2281" fill="none" d="M0 0h64v64H0z" />
       </g>
     </svg>
-  )
+  );
 }
 
 export function ToggleList64Icon(props: React.SVGProps<SVGSVGElement>) {
@@ -596,7 +598,7 @@ export function ToggleList64Icon(props: React.SVGProps<SVGSVGElement>) {
         <path data-name="Rectangle 2281" fill="none" d="M0 0h64v64H0z" />
       </g>
     </svg>
-  )
+  );
 }
 
 export function Truck64Icon(props: React.SVGProps<SVGSVGElement>) {
@@ -615,7 +617,7 @@ export function Truck64Icon(props: React.SVGProps<SVGSVGElement>) {
         <path data-name="Rectangle 2281" fill="none" d="M0 0h64v64H0z" />
       </g>
     </svg>
-  )
+  );
 }
 
 export function Invoice64Icon(props: React.SVGProps<SVGSVGElement>) {
@@ -634,7 +636,7 @@ export function Invoice64Icon(props: React.SVGProps<SVGSVGElement>) {
         <path data-name="Rectangle 2281" fill="none" d="M0 0h64v64H0z" />
       </g>
     </svg>
-  )
+  );
 }
 
 export function DocumentFile64Icon(props: React.SVGProps<SVGSVGElement>) {
@@ -653,7 +655,7 @@ export function DocumentFile64Icon(props: React.SVGProps<SVGSVGElement>) {
         <path data-name="Rectangle 2281" fill="none" d="M0 0h64v64H0z" />
       </g>
     </svg>
-  )
+  );
 }
 
 export function ToggleMail64Icon(props: React.SVGProps<SVGSVGElement>) {
@@ -672,7 +674,7 @@ export function ToggleMail64Icon(props: React.SVGProps<SVGSVGElement>) {
         <path data-name="Rectangle 2281" fill="none" d="M0 0h64v64H0z" />
       </g>
     </svg>
-  )
+  );
 }
 
 export function ChartPie64Icon(props: React.SVGProps<SVGSVGElement>) {
@@ -691,7 +693,7 @@ export function ChartPie64Icon(props: React.SVGProps<SVGSVGElement>) {
         <path data-name="Rectangle 2281" fill="none" d="M0 0h64v64H0z" />
       </g>
     </svg>
-  )
+  );
 }
 
 export function ErrorExclamationIcon(props: React.SVGProps<SVGSVGElement>) {
@@ -706,7 +708,7 @@ export function ErrorExclamationIcon(props: React.SVGProps<SVGSVGElement>) {
         fill="currentColor"
       />
     </svg>
-  )
+  );
 }
 
 export function SuccessTickIcon(props: React.SVGProps<SVGSVGElement>) {
@@ -720,7 +722,7 @@ export function SuccessTickIcon(props: React.SVGProps<SVGSVGElement>) {
       <path d="M12,2A10,10,0,1,1,2,12,10,10,0,0,1,12,2Zm3.559,5.589L9.518,13.63,7.7,11.831,6.293,13.252l3.231,3.2L16.973,9Z" transform="translate(-2 -2)"
         fill="currentColor" />
     </svg>
-  )
+  );
 }
 
 export function CalendarIcon(props: React.SVGProps<SVGSVGElement>) {
@@ -739,7 +741,7 @@ export function CalendarIcon(props: React.SVGProps<SVGSVGElement>) {
         />
       </g>
     </svg>
-  )
+  );
 }
 
 

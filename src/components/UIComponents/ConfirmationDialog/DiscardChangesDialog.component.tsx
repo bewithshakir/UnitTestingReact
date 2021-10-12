@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Button } from '../Button/Button.component';
-import { Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, Typography } from '@mui/material';
-import PropTypes from 'prop-types'
+import { Dialog, DialogContent, DialogContentText, DialogActions, Typography } from '@mui/material';
 import './DiscardChangesDialog.style.scss';
 
 interface Props {
@@ -45,6 +44,6 @@ function DiscardChangesDialog (props: Props) {
 
 DiscardChangesDialog.propTypes = {
 
-}
+};
 
 export default DiscardChangesDialog;

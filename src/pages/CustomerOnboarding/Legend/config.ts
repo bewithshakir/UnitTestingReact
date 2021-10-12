@@ -43,7 +43,7 @@ export const config = [
         secondaryText:true,
         to: `/attachments`
     }
-]
+];
 
 export const boxSystem = {
     // width: 276, 
@@ -51,4 +51,4 @@ export const boxSystem = {
     marginRight: '.5rem',
     marginLeft: '.5rem',
     border: 1
-}
+};

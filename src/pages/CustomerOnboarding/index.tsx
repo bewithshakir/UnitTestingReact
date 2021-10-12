@@ -1,16 +1,15 @@
 import { Box, CssBaseline, Grid } from '@mui/material';
 import React, { memo, Suspense } from 'react';
-import { Redirect, Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import { Loader } from '../../components/UIComponents/Loader';
 import Page from '../../navigation/Page';
 import { routes } from '../../routes';
 import { HorizontalBarVersionState, useStore } from '../../store';
-import AddCustomer from './AddCustomer/AddCustomer';
 import Legend from './Legend';
 
 const customerOnboarding = memo(() => {
     const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
-    setVersion("Breadcrumbs-Single")
+    setVersion("Breadcrumbs-Single");
     return (
         <Box display="flex" mt={8} ml={8}>
             <CssBaseline />
@@ -19,12 +18,11 @@ const customerOnboarding = memo(() => {
                     <Legend />
                 </Grid>
                 <Grid item md={10} pt={5} xs={10} className="page-area">
-                    {routes.map((route) => {
-                        const subRoutes = route?.routes
+                    {routes.map((route,index) => {
+                        const subRoutes = route?.routes;
                         return subRoutes?.map(subRoute => {
-                            console.log(subRoute)
                             return (
-                                <main>
+                                <main key={index}>
                                     <Suspense fallback={<Loader />}>
                                         <Switch>
                                             <Route key={subRoute.path} path={subRoute.path} exact={subRoute.exact} >
@@ -34,8 +32,8 @@ const customerOnboarding = memo(() => {
                                         </Switch>
                                     </Suspense>
                                 </main>
-                            )
-                        })
+                            );
+                        });
 
                     })}
                 </Grid>

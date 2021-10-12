@@ -1,3 +1,6 @@
+import React from 'react';
+import { useHistory } from "react-router-dom";
+
 import { SvgIcon } from '@material-ui/core';
 import Add from '@material-ui/icons/Add';
 import ArrowDownwardOutlinedIcon from '@material-ui/icons/ArrowDownwardOutlined';
@@ -10,61 +13,42 @@ import InvertColorsOutlinedIcon from '@material-ui/icons/InvertColorsOutlined';
 import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined';
 import MapOutlinedIcon from '@material-ui/icons/MapOutlined';
 import TrainOutlinedIcon from '@material-ui/icons/TrainOutlined';
-import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { CustomerProfileIcon, DeleteIcon, FilterIcon } from '../../../assets/icons';
 import logoOne from '../../../assets/images/Shell Taup logo.svg';
 import logoTwo from '../../../assets/images/Shell Taup logo2.svg';
 import { useTheme } from '../../../contexts/Theme/Theme.context';
-import { RightInfoPanel } from '../RightInfoPanel/RightInfoPanel.component';
-import { useHistory } from "react-router-dom";
 import { Button } from '../Button/Button.component';
 import './Footer.style.scss';
-
-const rightPanelHeading = 'Accurate Transportation';
-
-const rightPanelData = {
-  'Customer ID': '0923131',
-  'Name': 'Peter Parker',
-  'Email': 'peterparker@gmail.com',
-  'Phone': '0923131',
-  'Settlement Type': 'WEX',
-  'Card Added': "",
-  'Address': '9555 S Post Oak Rd',
-  'City': 'Houston',
-  'State': 'Texas',
-  'Country': 'US',
-  'ZIP Code': '30013',
-}
 
 export const Footer: React.FC = () => {
   const { themeType } = useTheme();
   const { t } = useTranslation();
-  const [open, setOpen] = React.useState(false);
-  const handleDrawerOpen = () => setOpen(!open);
-  const handleDrawerClose = () => setOpen(false);
+
+  
   const history = useHistory();
 
   const logoSrc = themeType === 'UK' ? logoOne : logoTwo;
 
   const navigateToAddCustomer = () => {
-    history.push("/addCustomer")
-  }
+    history.push("/addCustomer");
+  };
 
   return (
     <div className={'footer'}>
       <div className={'content__buttons'}>
+        
         <Button
           types="save"
           aria-label="save"
-          onClick={() => { }}
+          //onClick={() => { }}
         >
           {t("buttons.save")}
         </Button>--
         <Button
           types="edit"
           aria-label="edit"
-          onClick={() => { }}
+          //onClick={() => { }}
           startIcon={<EditIcon />}
         >
           {t("buttons.edit")}
@@ -72,21 +56,21 @@ export const Footer: React.FC = () => {
         <Button
           types="delete"
           aria-label="delete"
-          onClick={() => { }}
+          //onClick={() => { }}
         >
           {t("buttons.delete")}
         </Button>--
         <Button
           types="cancel"
           aria-label="cancel"
-          onClick={() => { }}
+          //onClick={() => { }}
         >
           {t("buttons.cancel")}
         </Button> --
         <Button
           types="download"
           aria-label="download"
-          onClick={() => { }}
+          //onClick={() => { }}
           startIcon={<Download />}
         >
           {t("buttons.download")}
@@ -94,14 +78,14 @@ export const Footer: React.FC = () => {
         <Button
           types="primary"
           aria-label="primary"
-          onClick={() => { }}
+          //onClick={() => { }}
         >
           {t("buttons.primary")}
         </Button> --
         <Button
           types="secondary"
           aria-label="secondary"
-          onClick={() => { }}
+          //onClick={() => { }}
         >
           {t("buttons.secondary")}
         </Button> --
@@ -116,7 +100,7 @@ export const Footer: React.FC = () => {
         <Button
           types="accordian"
           aria-label="accordian"
-          onClick={() => { }}
+          //onClick={() => { }}
           startIcon={<DriveEtaOutlinedIcon />}
         >
           20
@@ -125,7 +109,7 @@ export const Footer: React.FC = () => {
           types="accordian"
           aria-label="accordian"
           className="active"
-          onClick={() => { }}
+          //onClick={() => { }}
           startIcon={<LocationOnOutlinedIcon />}
         >
           20
@@ -134,7 +118,7 @@ export const Footer: React.FC = () => {
           types="accordian"
           aria-label="accordian"
           disabled
-          onClick={() => { }}
+          //onClick={() => { }}
           startIcon={<InvertColorsOutlinedIcon />}
         >
           20
@@ -143,7 +127,7 @@ export const Footer: React.FC = () => {
           types="accordian"
           aria-label="accordian"
           className="empty"
-          onClick={() => { }}
+          //onClick={() => { }}
           startIcon={<CreditCardOutlinedIcon />}
         >
           0
@@ -151,7 +135,7 @@ export const Footer: React.FC = () => {
         <Button
           types="accordian"
           aria-label="accordian"
-          onClick={() => { }}
+          //onClick={() => { }}
           startIcon={<MapOutlinedIcon />}
         >
           20
@@ -159,7 +143,7 @@ export const Footer: React.FC = () => {
         <Button
           types="accordian"
           aria-label="accordian"
-          onClick={() => { }}
+          //onClick={() => { }}
           startIcon={<DescriptionOutlinedIcon />}
         >
           20
@@ -167,7 +151,7 @@ export const Footer: React.FC = () => {
         <Button
           types="accordian"
           aria-label="accordian"
-          onClick={() => { }}
+          //onClick={() => { }}
           startIcon={<TrainOutlinedIcon />}
         >
           20
@@ -175,14 +159,14 @@ export const Footer: React.FC = () => {
         <Button
           types="showmore"
           aria-label="showmore"
-          onClick={() => { }}
+          //onClick={() => { }}
         >
           {t("buttons.show more")}
         </Button> --
         <Button
           types="sortby"
           aria-label="sortby"
-          onClick={() => { }}
+          //onClick={() => { }}
           startIcon={<ArrowDownwardOutlinedIcon />}
         >
           {t("buttons.sort by")}
@@ -190,14 +174,14 @@ export const Footer: React.FC = () => {
         <Button
           types="listmemu"
           aria-label="listmemu"
-          onClick={() => { }}
+          //onClick={() => { }}
           startIcon={<ArrowDownwardOutlinedIcon />}
         >
         </Button> --
         <Button
           types="delete2"
           aria-label="delete2"
-          onClick={() => { }}
+          //onClick={() => { }}
           startIcon={<DeleteIcon />}
         >
         </Button> --
@@ -205,31 +189,24 @@ export const Footer: React.FC = () => {
           types="profile"
           aria-label="profile"
           size="large"
-          onClick={() => { }}
+          //onClick={() => { }}
           startIcon={<SvgIcon component={CustomerProfileIcon} viewBox="0 0 40 40" />}
         >
         </Button> --
         <Button
           types="filter"
           aria-label="dafault"
-          onClick={() => { }}
+          //onClick={() => { }}
           startIcon={<FilterIcon />}
         >
           Filter
         </Button> --
-        <Button
-          types="primary"
-          onClick={handleDrawerOpen}
-        >
-          {t("Right Menu")}
-        </Button>
       </div>
-      <RightInfoPanel open={open} headingText={rightPanelHeading} info={rightPanelData} onClose={handleDrawerClose} />
       <img
         className="footer__logo"
         src={logoSrc}
         alt="logo"
       />
     </div >
-  )
-}
+  );
+};

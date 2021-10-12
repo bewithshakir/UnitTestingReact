@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import SortbyMenu from '../Menu/SortbyMenu.component';
 import ActionsMenu from '../Menu/ActionsMenu.component';
 import ProfileMenu from '../Menu/ProfileMenu.component';
-import {DatePickerV2} from '../DatePickerV2/DatePickerV2.component'
+import { DatePickerV2 } from '../DatePickerV2/DatePickerV2.component';
 import DataGridActionsMenu from '../Menu/DataGridActionsMenu.component';
 import { ExportIcon, PlusIcon, DeleteIcon, ImportIcon, SettingsIcon, LogoutIcon, CustomerProfileIcon2 } from '../../../assets/icons';
 import GridComponent from '../DataGird/grid.component';
@@ -14,19 +14,18 @@ import { Footer } from '../Footer/Footer.component';
 import Input from '../Input/Input';
 import Select from '../Select/MultiSelect';
 import SearchInput from '../SearchInput/SearchInput';
-import GoogleAutoCompleteAddress from '../GoogleAddressComponent/GoogleAutoCompleteAddress';
-import { DatePicker } from '../DatePicker/DatePicker.component';
-import { NavLink } from 'react-router-dom';
 import useDebounce from '../../../utils/useDebounce';
 import moment from "moment";
-import { useQuery } from 'react-query';
-import { fetchQueryTodos } from '../../../hooks/todos-with-query';
+//import { useQuery } from 'react-query';
+//import { fetchQueryTodos } from '../../../hooks/todos-with-query';
 import { Box, FormControl } from '@mui/material';
 import './DemoComponents.style.scss';
+import { DateRange } from '@mui/lab/DateRangePicker';
+
+type DatePickerRange = DateRange<Date>;
 
 export const DemoComponents: React.FC = () => {
-    const { data } = useQuery('repoData', fetchQueryTodos, { retry: false })
-    console.log(data)
+    //const { data } = useQuery('repoData', fetchQueryTodos, { retry: false });
     const { setCurrentTheme } = useTheme();
     const { i18n } = useTranslation();
     const changeLanguage = (language: string) => () => {
@@ -38,12 +37,13 @@ export const DemoComponents: React.FC = () => {
 
     const handleButtonClick = () => {
         setOpen(true);
-    }
+    };
 
     const handleMessageBoxClose = () => {
         setOpen(false);
-    }
-    const [form, setForm] = useState({ userName: '', email: '', item: [{ label: 'Nike', value: 'Nike' }], searchTerm: '', startDate: moment(), endDate: moment(), address:{addressLine1:'', addressLine2:'', state:'', city:'', postalCode:''} });
+    };
+    const [dateRange, setDateRange] = useState<DatePickerRange>([null,null]);
+    const [form, setForm] = useState({ userName: '', email: '', item: [{ label: 'Nike', value: 'Nike' }], searchTerm: '', startDate: moment(), endDate: moment(), address: { addressLine1: '', addressLine2: '', state: '', city: '', postalCode: '' } });
     const debouncedValue = useDebounce<string>(form.searchTerm, 1000);
     const items = [
         { label: 'Amazon', value: 'Amazon' },
@@ -51,12 +51,18 @@ export const DemoComponents: React.FC = () => {
         { label: 'Flipkart', value: 'Flipkart' },
         { label: 'Apple', value: 'Apple' },
         { label: 'Hp', value: 'Hp' }
-    ]
-    const handleSelect = (name:any,e:any) => setForm(x=>({ ...x, [name]: e}));
+    ];
+    const handleSelect = (name: any, e: any) => setForm(x => ({ ...x, [name]: e }));
     const handleChange = (e: any) => setForm(x => ({ ...x, [e.target.name]: e.target.value }));
-    useEffect(() => { console.log('Debounced Value:', debouncedValue) }, [debouncedValue]);
-    const onDateChange = (name: string, newValue: Date | string | null | moment.Moment) => setForm(x => ({ ...x, [name]: newValue }));
-    const { t } = useTranslation()
+    const setTempValue = (value: any) => {
+        return value;
+    };
+    useEffect(() => {
+        setTempValue(debouncedValue);
+    }, [debouncedValue]);
+    const onDateRangeChange = (name: string, newValue: DatePickerRange) => setDateRange(newValue);
+    const onDateChange = (name: string, newValue: Date | string | null | moment.Moment ) => setForm(x => ({ ...x, [name]: newValue }));
+    const { t } = useTranslation();
     return (
         <div>
             <div
@@ -97,7 +103,7 @@ export const DemoComponents: React.FC = () => {
                             t("menus.sortby.recently added lots"),
                         ]}
                         onSelect={(value) => {
-                            console.log("🚀 ~ file: Content.component.tsx ~ line 60 ~ value", value)
+                            return value;
                         }}
                     />
                 </FormControl>
@@ -122,7 +128,7 @@ export const DemoComponents: React.FC = () => {
                             }
                         ]}
                         onSelect={(value) => {
-                            console.log("🚀 ~ file: Content.component.tsx ~ line 60 ~ value", value)
+                            return value;
                         }}
                     />
                 </FormControl>
@@ -143,7 +149,7 @@ export const DemoComponents: React.FC = () => {
                             }
                         ]}
                         onSelect={(value) => {
-                            console.log("🚀 ~ file: Content.component.tsx ~ line 60 ~ value", value)
+                            return value;
                         }}
                     />
                 </FormControl>
@@ -152,7 +158,7 @@ export const DemoComponents: React.FC = () => {
                         options={[
                             {
                                 label: t("menus.profile-actions.profile"),
-                                icon: <CustomerProfileIcon2 /> // width={"20px"} height={"20px"}
+                                icon: <CustomerProfileIcon2 />
                             },
                             {
                                 label: t("menus.profile-actions.settings"),
@@ -165,7 +171,7 @@ export const DemoComponents: React.FC = () => {
                             },
                         ]}
                         onSelect={(value) => {
-                            console.log("🚀 ~ file: Content.component.tsx ~ line 60 ~ value", value)
+                            return value;
                         }}
                     />
                 </FormControl>
@@ -207,6 +213,43 @@ export const DemoComponents: React.FC = () => {
 
             <div className="App" style={{ 'marginLeft': '20px' }}>
                 <div className={'app__main'}>
+                    {/* temporary styles */}
+                    <Box
+                        sx={{
+                            display: 'flex',
+                            flexWrap: 'wrap',
+                            marginLeft: '70px', 
+                            marginBottom: '20px',
+                            '& > :not(style)': {
+                                m: 1,
+                                minWidth: '400px'
+                            },
+                        }}
+                    >
+                        <DatePickerV2
+                            label="DATE RANGE"
+                            type="date-range"
+                            id="cust-filter-date-range"
+                            // disableBeforeDate={form.startDate}
+                            placeholder="Date Range"
+                            name="dateRange"
+                            onDateRangeChange={onDateRangeChange}
+                            dateRangeValue={dateRange}
+                            required
+                        />
+                        <DatePickerV2
+                            label="FROM DATE"
+                            type="single-date"
+                            id="cust-filter-start-date"
+                            // disableBeforeDate={form.startDate}
+                            placeholder="Start date"
+                            name="startDate"
+                            onChange={onDateChange}
+                            value={form.startDate}
+                            required
+                        />
+                    </Box>
+                    
                     <Input name='userName'
                         label='User Name'
                         type='text'
@@ -238,19 +281,7 @@ export const DemoComponents: React.FC = () => {
                         onChange={handleChange}
                     />
                     {/* <GoogleAutoCompleteAddress name='address' onChange={handleChange} value={form.address}/> */}
-                    {/* temporary styles */}
-                    <Box style={{ 'marginLeft': '70px', 'marginBottom': '20px' }}>
-                        <DatePickerV2
-                            label="FROM DATE"
-                            id="cust-filter-end-date"
-                            disableBeforeDate={form.startDate}
-                            placeholder="To Date"
-                            name="endDate"
-                            onChange={onDateChange}
-                            value={form.endDate}
-                            required
-                        />
-                    </Box>
+
 
                 </div>
 
@@ -258,5 +289,5 @@ export const DemoComponents: React.FC = () => {
 
         </div >
 
-    )
-}
+    );
+};
