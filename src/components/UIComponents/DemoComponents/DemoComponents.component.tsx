@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import SortbyMenu from '../Menu/SortbyMenu.component';
 import ActionsMenu from '../Menu/ActionsMenu.component';
 import ProfileMenu from '../Menu/ProfileMenu.component';
+import {DatePickerV2} from '../DatePickerV2/DatePickerV2.component'
 import DataGridActionsMenu from '../Menu/DataGridActionsMenu.component';
 import { ExportIcon, PlusIcon, DeleteIcon, ImportIcon, SettingsIcon, LogoutIcon, CustomerProfileIcon2 } from '../../../assets/icons';
 import GridComponent from '../DataGird/grid.component';
@@ -238,8 +239,8 @@ export const DemoComponents: React.FC = () => {
                     />
                     {/* <GoogleAutoCompleteAddress name='address' onChange={handleChange} value={form.address}/> */}
                     {/* temporary styles */}
-                    <Box style={{ 'marginLeft': '20px', 'marginBottom': '20px' }}>
-                        <DatePicker
+                    <Box style={{ 'marginLeft': '70px', 'marginBottom': '20px' }}>
+                        <DatePickerV2
                             label="FROM DATE"
                             id="cust-filter-end-date"
                             disableBeforeDate={form.startDate}
