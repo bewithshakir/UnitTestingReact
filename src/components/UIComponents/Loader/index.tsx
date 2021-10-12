@@ -1,7 +1,7 @@
 import { Box, CircularProgress } from '@mui/material';
-import "./loader.scss"
+import "./loader.scss";
 
-function Loader(props:any) {
+function Loader() {
     return (
         <div>
             <Box className="loader">

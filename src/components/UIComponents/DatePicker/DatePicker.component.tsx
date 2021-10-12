@@ -25,21 +25,21 @@ interface DatePickerProps {
 
 
 export const DatePicker: React.FC<DatePickerProps> = (props) => {
-  const [dateFocused, setDateFocused] = React.useState<boolean>(false)
+  const [dateFocused, setDateFocused] = React.useState<boolean>(false);
 
   const disableDates = (date: moment.Moment | null) => {
     if (props.disableBeforeDate && props.disableAfterDate) {
-      return moment(date).isBefore(moment(props.disableBeforeDate)) && moment(date).isAfter(moment(props.disableAfterDate))
+      return moment(date).isBefore(moment(props.disableBeforeDate)) && moment(date).isAfter(moment(props.disableAfterDate));
     } else {
       if (props.disableAfterDate) {
-        return moment(date).isAfter(moment(props.disableAfterDate))
+        return moment(date).isAfter(moment(props.disableAfterDate));
       } else if (props.disableBeforeDate) {
-        return moment(date).isBefore(moment(props.disableBeforeDate))
+        return moment(date).isBefore(moment(props.disableBeforeDate));
       } else {
         return false;
       }
     }
-  }
+  };
   return (
     <Fragment>
       <FormControl className="date-picker-container">
@@ -63,15 +63,15 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
           displayFormat={props.displayFormat}
           placeholder={props.placeholder}
           isOutsideRange={date => disableDates(date)}
-          date={toMomentObject(props.value)} // momentPropTypes.momentObj or null
-          onDateChange={date => props.onChange(props.name, date)} // PropTypes.func.isRequired
-          focused={dateFocused} // PropTypes.bool
-          onFocusChange={({ focused }) => setDateFocused(focused)} // PropTypes.func.isRequired
+          date={toMomentObject(props.value)} 
+          onDateChange={date => props.onChange(props.name, date)} 
+          focused={dateFocused} 
+          onFocusChange={({ focused }) => setDateFocused(focused)} 
           id={props.id}
         />
         {props.helperText && <FormHelperText id={props.name} className="date-picker-helper-text" error={props.error}>{props.helperText}</FormHelperText>}
         </div>
       </FormControl>
     </Fragment>
-  )
-}
+  );
+};

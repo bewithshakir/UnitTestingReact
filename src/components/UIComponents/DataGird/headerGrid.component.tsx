@@ -51,5 +51,5 @@ const EnhancedGridHead: React.FC<GridHeaderProps> = (props) => {
         </TableHead>
 
     );
-}
+};
 export default EnhancedGridHead;
