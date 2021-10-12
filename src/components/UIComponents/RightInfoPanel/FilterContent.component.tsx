@@ -144,6 +144,7 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ provideFilterParams, o
     const clearFilter = (formData: filterForm, resetForm: Function) => {
         setFormSubmitClicked(false);
         setFormValuesSaved(null);
+        filterParams={};
         if (provideFilterParams) {
             provideFilterParams(filterParams);
         }

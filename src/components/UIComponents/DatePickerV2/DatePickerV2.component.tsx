@@ -122,7 +122,7 @@ export const DatePickerV2: React.FC<DatePickerProps> = (props) => {
                             
                             renderInput={(params) => {
                                 
-                            return <TextField  placeholder="Outlined" {...params} inputProps={{placeholder:props.placeholder,value:props.value?moment(props.value).format("MM/DD/YYYY"):null  }} InputLabelProps={{ shrink: false }} />;}
+                            return <TextField  placeholder="Outlined" {...params} inputProps={{placeholder:props.placeholder,value:props.value?moment(props.value).format("MM/DD/YYYY"):''  }} InputLabelProps={{ shrink: false }} />;}
                         }
                             // inputProps={{
                             //     endAdornment: (
