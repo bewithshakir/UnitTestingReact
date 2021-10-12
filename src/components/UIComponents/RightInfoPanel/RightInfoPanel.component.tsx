@@ -12,7 +12,7 @@ interface InfoPanelProps {
   open: boolean;
   headingText: string;
   panelType: drawerVariant;
-  info?: Object;
+  info?: any;
   onClose: (...args: any) => void;
   provideFilterParams?: (...args: any) => void;
 }
@@ -23,11 +23,11 @@ export const RightInfoPanel: React.FC<InfoPanelProps> = ({ open, headingText, in
     if (panelType === "info-view") {
       return <InfoViewContent info={info}  />;
     } else if (panelType === "customer-filter") {
-      return <FilterContent provideFilterParams={provideFilterParams} onClose={onClose} />
+      return <FilterContent provideFilterParams={provideFilterParams} onClose={onClose} />;
     } else {
-      return <React.Fragment></React.Fragment>
+      return <React.Fragment></React.Fragment>;
     }
-  }
+  };
 
   const panelDrawer = <Drawer
     className={"right_panel_main_class " + (panelType === "info-view" ? "right_info_panel": "customer_filter_panel")}
@@ -37,9 +37,9 @@ export const RightInfoPanel: React.FC<InfoPanelProps> = ({ open, headingText, in
   >
     <PanelHeader onClose={onClose} headingText={headingText} info={info?info:null}  panelType={panelType}  />
     {provideContentForPanel()}
-  </Drawer >
+  </Drawer >;
 
   return (
     <React.Fragment>{panelDrawer}</React.Fragment>
   );
-}
+};

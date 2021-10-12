@@ -1,5 +1,5 @@
 import { FormikErrors } from 'formik';
-import { Fragment, Children } from 'react';
+import { Fragment } from 'react';
 import Select, { components, DropdownIndicatorProps, OptionProps, ValueContainerProps } from 'react-select';
 import { FormHelperText, InputLabel, FormControl } from '@mui/material';
 import './SingleSelect.scss';
@@ -46,8 +46,8 @@ export default function MultiSelect(props: props) {
                 {length > 2 && ([`${value[0].label},`,value[1].label, 'and', abLength, 'more'].join(' '))} 
                 {children}
             </components.ValueContainer>
-        )
-    }
+        );
+    };
 
 
     const DropdownIndicator = (props: DropdownIndicatorProps<any>) => {
@@ -55,8 +55,8 @@ export default function MultiSelect(props: props) {
             <components.DropdownIndicator {...props}>
                 <ArrowDown />
             </components.DropdownIndicator>
-        )
-    }
+        );
+    };
 
     const Option = (props: OptionProps<any>) => {
         return (
@@ -68,12 +68,12 @@ export default function MultiSelect(props: props) {
                     </span>
                 </Fragment>
             </components.Option>
-        )
-    }
+        );
+    };
     const handleChange = (e: any) => {
         const { name, onChange } = props;
         onChange(name, e);
-    }
+    };
 
     return (
         <Fragment>
@@ -120,4 +120,4 @@ MultiSelect.defaultProps = {
     placeholder: 'Select',
     noOptionsMessage: 'No Options found',
     loadingMessage: 'Loading...'
-}
+};

@@ -31,8 +31,8 @@ export const Footer: React.FC = () => {
   const logoSrc = themeType === 'UK' ? logoOne : logoTwo;
 
   const navigateToAddCustomer = () => {
-    history.push("/addCustomer")
-  }
+    history.push("/addCustomer");
+  };
 
   return (
     <div className={'footer'}>
@@ -41,14 +41,14 @@ export const Footer: React.FC = () => {
         <Button
           types="save"
           aria-label="save"
-          onClick={() => { }}
+          //onClick={() => { }}
         >
           {t("buttons.save")}
         </Button>--
         <Button
           types="edit"
           aria-label="edit"
-          onClick={() => { }}
+          //onClick={() => { }}
           startIcon={<EditIcon />}
         >
           {t("buttons.edit")}
@@ -56,21 +56,21 @@ export const Footer: React.FC = () => {
         <Button
           types="delete"
           aria-label="delete"
-          onClick={() => { }}
+          //onClick={() => { }}
         >
           {t("buttons.delete")}
         </Button>--
         <Button
           types="cancel"
           aria-label="cancel"
-          onClick={() => { }}
+          //onClick={() => { }}
         >
           {t("buttons.cancel")}
         </Button> --
         <Button
           types="download"
           aria-label="download"
-          onClick={() => { }}
+          //onClick={() => { }}
           startIcon={<Download />}
         >
           {t("buttons.download")}
@@ -78,14 +78,14 @@ export const Footer: React.FC = () => {
         <Button
           types="primary"
           aria-label="primary"
-          onClick={() => { }}
+          //onClick={() => { }}
         >
           {t("buttons.primary")}
         </Button> --
         <Button
           types="secondary"
           aria-label="secondary"
-          onClick={() => { }}
+          //onClick={() => { }}
         >
           {t("buttons.secondary")}
         </Button> --
@@ -100,7 +100,7 @@ export const Footer: React.FC = () => {
         <Button
           types="accordian"
           aria-label="accordian"
-          onClick={() => { }}
+          //onClick={() => { }}
           startIcon={<DriveEtaOutlinedIcon />}
         >
           20
@@ -109,7 +109,7 @@ export const Footer: React.FC = () => {
           types="accordian"
           aria-label="accordian"
           className="active"
-          onClick={() => { }}
+          //onClick={() => { }}
           startIcon={<LocationOnOutlinedIcon />}
         >
           20
@@ -118,7 +118,7 @@ export const Footer: React.FC = () => {
           types="accordian"
           aria-label="accordian"
           disabled
-          onClick={() => { }}
+          //onClick={() => { }}
           startIcon={<InvertColorsOutlinedIcon />}
         >
           20
@@ -127,7 +127,7 @@ export const Footer: React.FC = () => {
           types="accordian"
           aria-label="accordian"
           className="empty"
-          onClick={() => { }}
+          //onClick={() => { }}
           startIcon={<CreditCardOutlinedIcon />}
         >
           0
@@ -135,7 +135,7 @@ export const Footer: React.FC = () => {
         <Button
           types="accordian"
           aria-label="accordian"
-          onClick={() => { }}
+          //onClick={() => { }}
           startIcon={<MapOutlinedIcon />}
         >
           20
@@ -143,7 +143,7 @@ export const Footer: React.FC = () => {
         <Button
           types="accordian"
           aria-label="accordian"
-          onClick={() => { }}
+          //onClick={() => { }}
           startIcon={<DescriptionOutlinedIcon />}
         >
           20
@@ -151,7 +151,7 @@ export const Footer: React.FC = () => {
         <Button
           types="accordian"
           aria-label="accordian"
-          onClick={() => { }}
+          //onClick={() => { }}
           startIcon={<TrainOutlinedIcon />}
         >
           20
@@ -159,14 +159,14 @@ export const Footer: React.FC = () => {
         <Button
           types="showmore"
           aria-label="showmore"
-          onClick={() => { }}
+          //onClick={() => { }}
         >
           {t("buttons.show more")}
         </Button> --
         <Button
           types="sortby"
           aria-label="sortby"
-          onClick={() => { }}
+          //onClick={() => { }}
           startIcon={<ArrowDownwardOutlinedIcon />}
         >
           {t("buttons.sort by")}
@@ -174,14 +174,14 @@ export const Footer: React.FC = () => {
         <Button
           types="listmemu"
           aria-label="listmemu"
-          onClick={() => { }}
+          //onClick={() => { }}
           startIcon={<ArrowDownwardOutlinedIcon />}
         >
         </Button> --
         <Button
           types="delete2"
           aria-label="delete2"
-          onClick={() => { }}
+          //onClick={() => { }}
           startIcon={<DeleteIcon />}
         >
         </Button> --
@@ -189,14 +189,14 @@ export const Footer: React.FC = () => {
           types="profile"
           aria-label="profile"
           size="large"
-          onClick={() => { }}
+          //onClick={() => { }}
           startIcon={<SvgIcon component={CustomerProfileIcon} viewBox="0 0 40 40" />}
         >
         </Button> --
         <Button
           types="filter"
           aria-label="dafault"
-          onClick={() => { }}
+          //onClick={() => { }}
           startIcon={<FilterIcon />}
         >
           Filter
@@ -208,5 +208,5 @@ export const Footer: React.FC = () => {
         alt="logo"
       />
     </div >
-  )
-}
+  );
+};

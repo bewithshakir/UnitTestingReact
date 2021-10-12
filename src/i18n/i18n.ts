@@ -8,7 +8,7 @@ const createI18n = (language: string): i18nInstance => {
   const i18n = i18next.createInstance().use(initReactI18next);
 
   i18n
-    .use(HttpApi) // Use backend plugin for translation file download.
+    .use(HttpApi)
     .use(LanguageDetector)
     .init({
       // backend: {
@@ -18,7 +18,7 @@ const createI18n = (language: string): i18nInstance => {
       debug: true,
       fallbackLng: language,
       interpolation: {
-        escapeValue: false, // not needed for react as it escapes by default
+        escapeValue: false,
       },
       // ns: namespaces.pages.simple,
     });

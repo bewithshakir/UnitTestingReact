@@ -10,7 +10,7 @@ import { useTheme } from '../../../contexts/Theme/Theme.context';
 interface InfoPanelProps {
     headingText: string;
     panelType: string;
-    info: object | null;
+    info: any | null;
     onClose: (...args: any[]) => void;
 }
 export const PanelHeader: React.FC<InfoPanelProps> = ({ headingText, panelType, onClose }) => {
@@ -36,6 +36,7 @@ export const PanelHeader: React.FC<InfoPanelProps> = ({ headingText, panelType, 
                             }
                         ]}
                         onSelect={(value) => {
+                            return value;
                         }}
                     />}
                     {panelType === "customer-filter" && <IconButton
@@ -47,5 +48,5 @@ export const PanelHeader: React.FC<InfoPanelProps> = ({ headingText, panelType, 
                 </Toolbar>
             </AppBar>
         </Box>
-    </div>)
-}
+    </div>);
+};

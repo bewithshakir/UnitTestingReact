@@ -63,7 +63,6 @@ export const pathTo = (route: { parent: any; }): any => {
 export const getCountryCode = () => {
   const savedTheme = localStorage.getItem('theme');
   if (savedTheme) {
-    console.log("🚀 ~ file: utils.ts ~ line 68 ~ getCountryCode ~ JSON.parse(savedTheme)", JSON.parse(savedTheme))
     switch (JSON.parse(savedTheme)) {
       case "USA":
         return "us";
@@ -73,4 +72,4 @@ export const getCountryCode = () => {
         return "us";
     }
   }
-}
+};

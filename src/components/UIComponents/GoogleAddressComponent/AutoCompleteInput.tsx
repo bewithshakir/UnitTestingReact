@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react';
 import useDebounce from '../../../utils/useDebounce';
 import { FetchGoogleAddress } from '../../../hooks/googleAddressAutoComlete';
 import AutoComplete from '../AutoComplete/AutoComplete';
@@ -55,23 +55,23 @@ export default function AutoCompleteInput (props: props) {
 
     useEffect(() => {
         if (data) {
-            let predictions = data.data.predictions;
+            const predictions = data.data.predictions;
             setOptions(predictions);
         }
-    }, [data])
+    }, [data]);
 
     const handleChange = (opt1: prediction | null) => {
         if (opt1 !== null) {
             const { onChange } = props;
-            let obj = {
+            const obj = {
                 target: {
                     name: 'placeId',
                     value: opt1.place_id
                 }
-            }
-            onChange(obj)
+            };
+            onChange(obj);
         }
-    }
+    };
 
     return (
         <AutoComplete
@@ -94,5 +94,5 @@ export default function AutoCompleteInput (props: props) {
             onInputChange={(event, newInputValue) => {
                 setInputValue(newInputValue);
             }} />
-    )
+    );
 }
