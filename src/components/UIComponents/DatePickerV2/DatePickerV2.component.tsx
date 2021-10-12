@@ -48,6 +48,7 @@ const CalendarIconComp: React.FC = () => {
 };
 
 export const DatePickerV2: React.FC<DatePickerProps> = (props) => {
+    // const [dateOpen,setDateOpen] = React.useState(false);
     // const [dateFocused, setDateFocused] = React.useState<boolean>(false)
 
     // const [value, setValue] = React.useState<datePickerRange>([null, null]);
@@ -74,6 +75,68 @@ export const DatePickerV2: React.FC<DatePickerProps> = (props) => {
     //       return '';
     //     }
     //   }
+
+//   InputProps={{
+//                                 startAdornment: (
+//                                  <InputAdornment
+//                                   position={'start'}
+//                                   style={{
+//                                    maxHeight: 'none',
+//                                    display: 'none',
+//                                    height: 'auto',
+//                                    marginTop: '-1px',
+//                                    marginRight: '-1px',
+//                                    marginBottom: '-1px',
+//                                   }}
+//                                  >
+//                                    <IconButton>  <CalendarIcon />  </IconButton>
+//                                  </InputAdornment>
+//                                 ),
+//                                 endAdornment: (
+//                                     <InputAdornment
+//                                      position={'end'}
+//                                      style={{
+
+//                                       maxHeight: 'none',
+//                                       height: 'auto',
+//                                       marginTop: '-1px',
+//                                       marginRight: '-1px',
+//                                       marginBottom: '-1px',
+//                                     }}
+//                                     >
+//                                       <IconButton>  <CalendarIcon />  </IconButton>
+//                                     </InputAdornment>
+//                                    )
+//                                }} 
+
+// InputAdornmentProps={{position:"end", style:{display:"none"}}}
+//                             InputAdornmentProps={{
+//                                 position:"start",
+//                                 children: <InputAdornment
+//                                 position={'end'}
+//                                 style={{
+
+//                                  maxHeight: 'none',
+//                                  height: 'auto',
+//                                  marginTop: '-1px',
+//                                  marginRight: '-1px',
+//                                  marginBottom: '-1px',
+//                                }}
+//                                >
+//                                  <IconButton>  <CalendarIcon />  </IconButton>
+//                                </InputAdornment>
+
+//                             }}
+//                             required={props.required}
+//                             label={props.placeholder} 
+
+// inputProps={{placeholder:props.placeholder,
+//                              endAdornment: (
+//                             <InputAdornment position="end">
+//                               <Icon>  <CalendarIcon />  </Icon>
+//                             </InputAdornment>
+//                           ) 
+//                         }} 
     return (
         <Fragment>
 
@@ -110,6 +173,9 @@ export const DatePickerV2: React.FC<DatePickerProps> = (props) => {
                         <DatePicker
                             disabled={props.disabled}
                             // label={"hello"}
+                            // open={dateOpen}
+                            
+                            clearText="hello"
                             components={{ OpenPickerIcon: CalendarIconComp }}
                             views={['year', 'month', 'day']}
                             value={props.value}
@@ -119,10 +185,17 @@ export const DatePickerV2: React.FC<DatePickerProps> = (props) => {
                                 }
                                
                             }}
+                            // PopperProps={{
+                            //     disableRestoreFocus: true,
+                            //     onClose: () => {
+                            //         setDateOpen(false);
+                            //     }
+                            // }}
                             
+                            // onClick={() => setDateOpen(true)}
                             renderInput={(params) => {
-                                
-                            return <TextField  placeholder="Outlined" {...params} inputProps={{placeholder:props.placeholder,value:props.value?moment(props.value).format("MM/DD/YYYY"):''  }} InputLabelProps={{ shrink: false }} />;}
+                                    console.warn("params-->",params);
+                            return <TextField {...params} placeholder="sample" InputLabelProps={{ shrink: false }} />;}
                         }
                             // inputProps={{
                             //     endAdornment: (
