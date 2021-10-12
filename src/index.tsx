@@ -5,16 +5,16 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "./i18n/i18n";
 import { ThemeProvider } from "./contexts/Theme/Theme.context";
-import { routes } from "./routes";
-import { generateAppRoutes } from "./navigation/utils";
+//import { routes } from "./routes";
+//import { generateAppRoutes } from "./navigation/utils";
 
-const appRoutes = generateAppRoutes(routes);
+//const appRoutes = generateAppRoutes(routes);
 
 ReactDOM.render(
     <ThemeProvider>
       <React.StrictMode>
         <Suspense fallback={<>Loading...</>}>
-          <App routes={appRoutes}/>
+          <App />
         </Suspense>
       </React.StrictMode>
     </ThemeProvider>,
