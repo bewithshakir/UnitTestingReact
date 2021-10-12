@@ -42,6 +42,7 @@ div{
         
         }
         .MuiFormControl-root{
+            width: 100%;
             & label.Mui-focused {
                 color: var(--Darkgray);
               }
