@@ -16,12 +16,12 @@ interface GridComponentProps {
 
 const headCells = [
     { id: "id", label: "ID", type: 'text' },
-    { id: "customername", label: "CUSTOMER NAME", type: 'text' },
-    { id: "contactname", label: "CONTACT NAME", type: 'text' },
+    { id: "customerName", label: "CUSTOMER NAME", type: 'text' },
+    { id: "contactName", label: "CONTACT NAME", type: 'text' },
     { id: "address", label: "ADDRESS", type: 'text' },
     { id: "city", label: "CITY", type: 'text' },
     { id: "state", label: "STATE", type: 'text' },
-    { id: "zipcode", label: "ZIP", type: 'text' },
+    { id: "zipCode", label: "ZIP", type: 'text' },
     { id: "lots", label: "LOTS", type: 'button' },
     { id: "phone", label: "PHONE", type: 'text' },
     { id: "paymentType", label: "PAYMENT TYPE", type: 'text' },
@@ -29,12 +29,6 @@ const headCells = [
     { id: "cardAdded", label: "CARD ADDED", type: 'text' },
     { id: "", label: "", type: 'icon' }
 ];
-
-const rows = [{ "customername": "Accurate Transportation", "contactname": "Peter Parker", "address": "9555 Post Oak Rd", "city": "Houston", "state": "TX", "zip": 77024, "lots": 20, "settlementtype": "Voyager", "icon": "icon" },
-{ "customername": "Accurate Transportation", "contactname": "Peter Parker", "address": "9555 Post Oak Rd", "city": "Houston", "state": "TX", "zip": 77024, "lots": 21, "settlementtype": "Voyager" },
-{ "customername": "B_Accurate Transportation", "contactname": "Peter Parker", "address": "9555 Post Oak Rd", "city": "Houston", "state": "TX", "zip": 77024, "lots": 10, "settlementtype": "Voyager" },
-{ "customername": "C_Accurate Transportation", "contactname": "Peter Parker", "address": "9555 Post Oak Rd", "city": "Houston", "state": "TX", "zip": 77024, "lots": 18, "settlementtype": "Voyager" },
-{ "customername": "Accurate Transportation", "contactname": "Peter Parker", "address": "9555 Post Oak Rd", "city": "Houston", "state": "TX", "zip": 77024, "lots": 20, "settlementtype": "Voyager" }];
 
 const GridComponent: React.FC<GridComponentProps> = (props) => {
     const [order, setOrder] = React.useState("asc");
@@ -67,7 +61,7 @@ const GridComponent: React.FC<GridComponentProps> = (props) => {
                     onRequestSort={handleRequestSort}
                 />
                 <EnhancedGridBody
-                    rows={rows}
+                    rows={props.rows}
                     order={order}
                     orderBy={orderBy}
                     headCells={headCells}
