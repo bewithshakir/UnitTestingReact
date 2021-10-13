@@ -182,9 +182,11 @@ export const DatePickerV2: React.FC<DatePickerProps> = (props) => {
                             onChange={(newValue) => {
                                 if(props.onChange){
                                     props.onChange(props.name, newValue);
+                                    // setDateOpen(false);
                                 }
                                
                             }}
+                        
                             // PopperProps={{
                             //     disableRestoreFocus: true,
                             //     onClose: () => {
@@ -193,9 +195,10 @@ export const DatePickerV2: React.FC<DatePickerProps> = (props) => {
                             // }}
                             
                             // onClick={() => setDateOpen(true)}
+                            // inputProps={{placeholder:"hello", value:props.value}} onClick={() => setDateOpen(true)}
                             renderInput={(params) => {
                                     console.warn("params-->",params);
-                            return <TextField {...params} placeholder="sample" InputLabelProps={{ shrink: false }} />;}
+                            return <TextField {...params} placeholder="sample"  InputLabelProps={{ shrink: false }} />;}
                         }
                             // inputProps={{
                             //     endAdornment: (
