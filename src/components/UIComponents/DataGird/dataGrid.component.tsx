@@ -1,11 +1,13 @@
 import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined';
-import { Box, Collapse, Table, TableBody, TableCell, TableHead, TableRow, FormControl } from '@mui/material';
+import { Collapse, TableBody, TableCell, TableRow, FormControl } from '@mui/material';
 import * as React from "react";
 import { useTranslation } from 'react-i18next';
 import { Loader } from '../Loader';
 import DataGridActionsMenu from '../Menu/DataGridActionsMenu.component';
 import { Button } from './../Button/Button.component';
 import './grid.style.scss';
+import NoDataFound from './NoData';
+
 
 type HeadCellsOptions = {
     id: string;
@@ -60,7 +62,7 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
     const { t } = useTranslation();
 
     const getKeys = () => {
-        return props?.headCells.map((i: any) => i.id);
+        return props?.headCells.map((i:any)=> i.id);
     };
 
     const handleCollapaseClick = (e: React.MouseEvent<HTMLButtonElement>, key: any) => {
@@ -77,6 +79,7 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
 
     const getRowsData = () => {
         const keys = getKeys();
+        console.log('**********************', keys,'++++++++++++++++++++',props.rows);
         return (
             stableSort(props.rows, getComparator(props.order, props.orderBy))
                 .map((row: any, indexKey: any) =>
@@ -120,18 +123,7 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
                         <TableRow>
                             <TableCell className="grid-cell" colSpan={12}>
                                 <Collapse in={indexKey === selectedIndexKey ? true : false} timeout="auto" unmountOnExit>
-                                    <Box sx={{ margin: 1 }}>
-                                        <Table size="small" aria-label="purchases">
-                                            <TableHead>
-                                                <TableRow>
-                                                    <h1>Show Another Table {indexKey} - {row.lots}</h1>
-                                                </TableRow>
-                                            </TableHead>
-                                            <TableBody>
-
-                                            </TableBody>
-                                        </Table>
-                                    </Box>
+                                   
                                 </Collapse>
                             </TableCell>
                         </TableRow>
@@ -145,8 +137,8 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
         return getRowsData();
     } else if (props?.isLoading) {
         return (<Loader />);
-    } else {
-        return (<div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100%", width: "auto" }}>{"No Data found"}</div>);
+    }else {
+        return (<TableBody className='NoData'> <NoDataFound /> </TableBody>);
     }
 
 

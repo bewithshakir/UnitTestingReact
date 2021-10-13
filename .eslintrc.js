@@ -44,12 +44,12 @@ module.exports = {
             }
           ],
         "no-inline-comments": "error",
-        "no-console": [
-            "error",
-            {
-              "allow": ["warn", "error"]
-            }
-        ],
+        // "no-console": [
+        //     "error",
+        //     {
+        //       "allow": ["warn", "error"]
+        //     }
+        // ],
         "no-unused-vars": "off",
         "@typescript-eslint/no-unused-vars": "error",
         "no-useless-constructor": "off",
