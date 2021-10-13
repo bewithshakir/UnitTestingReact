@@ -1,4 +1,4 @@
-import { Box, Paper, Table, TableContainer } from '@mui/material';
+import { Table, TableContainer } from '@mui/material';
 import * as React from "react";
 import EnhancedGridBody from './dataGrid.component';
 import './grid.style.scss';
@@ -13,12 +13,6 @@ interface GridComponentProps {
     ref?: any
     openDrawer?: any
 }
-
-const x: GridComponentProps = {
-    height: '1000px',
-    width: "auto"
-};
-
 
 const headCells = [
     { id: "id", label: "ID", type: 'text' },
@@ -42,25 +36,6 @@ const rows = [{ "customername": "Accurate Transportation", "contactname": "Peter
 { "customername": "C_Accurate Transportation", "contactname": "Peter Parker", "address": "9555 Post Oak Rd", "city": "Houston", "state": "TX", "zip": 77024, "lots": 18, "settlementtype": "Voyager" },
 { "customername": "Accurate Transportation", "contactname": "Peter Parker", "address": "9555 Post Oak Rd", "city": "Houston", "state": "TX", "zip": 77024, "lots": 20, "settlementtype": "Voyager" }];
 
-// const headCells1 = [{ id: "lotname", label: "LOT NAME", type: 'text' },
-// { id: "streetaddress", label: "STREET ADDRESS", type: 'text' },
-// { id: "city", label: "CITY", type: 'text' },
-// { id: "state", label: "STATE", type: 'text' },
-// { id: "zip", label: "ZIP", type: 'text' },
-// { id: "walletstatus", label: "WALLET STATUS", type: 'text' },
-// { id: "vehicles", label: "VEHICLES", type: 'button' },
-// { id: "fuel", label: "FUEL", type: 'text' },
-// { id: "", label: "", type: 'icon' }
-// ];
-
-// const rows1 = [{ "lotname": "Lot Name", "streetaddress": "898987-9898", "city": "Houston", "state": "TX-Texas", "zip": "777878", "walletstatus": "Flag", "vehicles": "20", "fuel": "Diesel", "icon": "icon" },
-// { "lotname": "Lot Name", "streetaddress": "898987-9898", "city": "Houston", "state": "TX-Texas", "zip": "777878", "walletstatus": "Flag", "vehicles": "20", "fuel": "Diesel", "icon": "icon" },
-// { "lotname": "Lot Name", "streetaddress": "898987-9898", "city": "Houston", "state": "TX-Texas", "zip": "777878", "walletstatus": "Flag", "vehicles": "18", "fuel": "Diesel", "icon": "icon" },
-// { "lotname": "Lot Name", "streetaddress": "898987-9898", "city": "Houston", "state": "TX-Texas", "zip": "777878", "walletstatus": "Flag", "vehicles": "20", "fuel": "Diesel", "icon": "icon" },
-// { "lotname": "Lot Name", "streetaddress": "898987-9898", "city": "Houston", "state": "TX-Texas", "zip": "777878", "walletstatus": "Flag", "vehicles": "21", "fuel": "Diesel", "icon": "icon" }];
-
-
-
 const GridComponent: React.FC<GridComponentProps> = (props) => {
     const [order, setOrder] = React.useState("asc");
     const [orderBy, setOrderBy] = React.useState("");
@@ -80,32 +55,26 @@ const GridComponent: React.FC<GridComponentProps> = (props) => {
     };
 
     return (
-        <div>
-            <Box sx={{ width: x.width }}>
-                <Paper sx={{ width: x.width, mb: 2 }}>
-                    <TableContainer sx={{ maxHeight: x.height }} onScroll={handleTableScroll} ref={props.ref}>
-                        <Table
-                            aria-labelledby="tableTitle"
-                            stickyHeader
-                        >
-                            <EnhancedGridHead
-                                order={order}
-                                orderBy={orderBy}
-                                headCells={headCells}
-                                onRequestSort={handleRequestSort}
-                            />
-                            <EnhancedGridBody
-                                rows={rows}
-                                order={order}
-                                orderBy={orderBy}
-                                headCells={headCells}
-                                {...props}
-                            />
-                        </Table>
-                    </TableContainer>
-                </Paper>
-            </Box>
-        </div>
+        <TableContainer className="table-container" onScroll={handleTableScroll} ref={props.ref}>
+            <Table
+                aria-labelledby="tableTitle"
+                stickyHeader
+            >
+                <EnhancedGridHead
+                    order={order}
+                    orderBy={orderBy}
+                    headCells={headCells}
+                    onRequestSort={handleRequestSort}
+                />
+                <EnhancedGridBody
+                    rows={rows}
+                    order={order}
+                    orderBy={orderBy}
+                    headCells={headCells}
+                    {...props}
+                />
+            </Table>
+        </TableContainer>
     );
 
 };
