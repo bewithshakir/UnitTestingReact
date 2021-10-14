@@ -215,9 +215,6 @@ export const DemoComponents: React.FC = () => {
                 <div className={'app__main'}>
 
                     <Box className={'date_box'}>
-                              
-                        <div>{dateRange[0] ? moment(dateRange[0]).format('MM/DD/YYYY') : ''} to
-                        {dateRange[1] ? moment(dateRange[1]).format('MM/DD/YYYY') : ''}</div>
                         <DatePickerInput
                             label="DATE RANGE"
                             type="date-range"
