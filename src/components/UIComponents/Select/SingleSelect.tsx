@@ -1,7 +1,7 @@
 import { FormikErrors } from 'formik';
 import { Fragment } from 'react';
-import Select, { components, DropdownIndicatorProps }  from 'react-select';
-import { FormHelperText, InputLabel, FormControl} from '@mui/material';
+import Select, { components, DropdownIndicatorProps } from 'react-select';
+import { FormHelperText, InputLabel, FormControl } from '@mui/material';
 import './SingleSelect.scss';
 import { ArrowDown } from '../../../assets/icons';
 
@@ -15,12 +15,14 @@ interface props {
     name?: string;
     label: string;
     placeholder?: string;
-    value?: item | Array<item> ;
+    value?: item | Array<item>;
     items: Array<item>;
 
     required?: boolean;
     error?: boolean;
     helperText?: string | FormikErrors<item> | undefined;
+
+    isDisabled?: boolean;
 
     description?: string;
     onChange: (...args: any[]) => void;
@@ -60,14 +62,15 @@ export default function SingleSelect(props: props) {
                     onBlur={props.onBlur}
                     components={{ IndicatorSeparator: () => null, DropdownIndicator }}
                     isSearchable={false}
+                    isDisabled={props.isDisabled}
                 />
                 {props.helperText && (
-                <FormHelperText
-                    className='select-helper'
-                    id={props.description}
-                    error={props.error}>
-                    {props.helperText}
-                </FormHelperText>)}
+                    <FormHelperText
+                        className='select-helper'
+                        id={props.description}
+                        error={props.error}>
+                        {props.helperText}
+                    </FormHelperText>)}
             </FormControl>
         </Fragment>
     );

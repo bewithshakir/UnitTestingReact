@@ -1,10 +1,11 @@
+/* eslint-disable no-console */
 import React, { useState, useEffect } from 'react';
 import { Add, FileCopy } from '@material-ui/icons';
 import { Box, Container, FormControl, FormControlLabel, FormGroup, Grid, Link, Typography } from '@mui/material';
 import { FieldArray, FormikProvider, useFormik } from 'formik';
 import moment from 'moment';
 import { useTranslation } from 'react-i18next';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import { Button } from '../../../components/UIComponents/Button/Button.component';
 import Checkbox from '../../../components/UIComponents/Checkbox/Checkbox.component';
 import { DatePicker } from '../../../components/UIComponents/DatePicker/DatePicker.component';
@@ -17,12 +18,12 @@ import AddCustomerValidationSchema from './validation';
 import { useCreateCustomer, useGetFrequencies, useGetPaymentTypes } from './queries';
 import DiscardChangesDialog from '../../../components/UIComponents/ConfirmationDialog/DiscardChangesDialog.component';
 import AutocompleteInput from '../../../components/UIComponents/GoogleAddressComponent/GoogleAutoCompleteAddress';
-
+import EditIcon from '@material-ui/icons/Edit';
+import axios from "axios";
 interface SelectProps {
     label: string,
     value: string,
 }
-
 interface EmergencyContact {
     firstName: string,
     lastName: string,
@@ -36,7 +37,6 @@ interface ApContact {
     email: string,
     phoneNumber: string,
 }
-
 interface AddCustomerForm {
     // General Information
     customerName: string,
@@ -99,7 +99,7 @@ const initialValues: AddCustomerForm = {
     }],
 };
 
-function getTokenApplicable (Obj: any) {
+function getTokenApplicable(Obj: any) {
     const temp: any = [];
     Object.entries(Obj).forEach(obj => {
         if (obj[1]) {
@@ -132,7 +132,61 @@ const formStatusProps: IFormStatusProps = {
     },
 };
 
-const AddCustomer: React.FC<any> = () => {
+const AddCustomer: React.FC = () => {
+    const location = useLocation();
+    const history = useHistory();
+    useEffect(() => {
+        const data = location.state;
+        console.log(location);
+        console.log(data);
+        // getDataForSelectedCustomer("d917eb08-e5b9-4fb4-a346-b8bbbec8ceb4");
+        if (data) {
+            // console.log("Came from View Flow Right info panel")
+            setDisabled(true);
+            // console.log("Disable all fields  " + isDisabled);
+            // getDataForSelectedCustomer("d917eb08-e5b9-4fb4-a346-b8bbbec8ceb4");
+            // populateDataInAllFields(data);
+        } else {
+            // console.log("Came from Add button flow")
+        }
+    }, [location]);
+
+    const populateDataInAllFields = (dataToPopulate: any) => {
+        formik.setFieldValue('customerName', dataToPopulate.customer.companyNm);
+        formik.setFieldValue('customerId', dataToPopulate.customer.customerInputId);
+        formik.setFieldValue('addressLine1', dataToPopulate.customer.addressLine1);
+        formik.setFieldValue('addressLine2', dataToPopulate.customer.addressLine2);
+        formik.setFieldValue('city', dataToPopulate.customer.cityNm);
+        formik.setFieldValue('state', dataToPopulate.customer.stateNm);
+        formik.setFieldValue('postalCode', dataToPopulate.customer.postalCd);
+        formik.setFieldValue('firstName', dataToPopulate.customer.contactFirstNm);
+        formik.setFieldValue('lastName', dataToPopulate.customer.contactLastNm);
+        formik.setFieldValue('email', dataToPopulate.customer.contactEmailId);
+        formik.setFieldValue('phoneNumber', dataToPopulate.customer.contactPhoneNo);
+        formik.setFieldValue("paymentTypeId", dataToPopulate.customer.PaymentType.paymentTypeNm);
+        // formik.setFieldValue("customerTypeId", );
+        formik.setFieldValue("invoiceFrequencyId", dataToPopulate.customer.InvoiceFrequency.invoiceFrequencyNm);
+        formik.setFieldValue("firstSettlementDt", dataToPopulate.customer.firstSettlementDt);
+        formik.setFieldValue("paymentTerm", dataToPopulate.customer.paymentTerm);
+                //         "countryCd": getCountryCode(),
+                //             "soldToNo": 10,
+                //                 "emergencyContact": data.emergencyContact.map(emgcyObj => ({
+                //                     "firstNm": emgcyObj.firstName,
+                //                     "lastNm": emgcyObj.lastName,
+                //                     "email": emgcyObj.email,
+                //                     "phoneNo": emgcyObj.phoneNumber
+                //                 })),
+                //                     "apContact": data.apContact.map(apObj => ({
+                //                         "firstNm": apObj.firstName,
+                //                         "lastNm": apObj.lastName,
+                //                         "email": apObj.email,
+                //                         "phoneNo": apObj.phoneNumber
+                //                     })),
+                //                         "tokenApplicabilityLevel": getTokenApplicable({
+        setDisabled(true);
+
+    };
+
     const { t } = useTranslation();
     const [formStatus, setFormStatus] = useState<IFormStatus>({
         message: '',
@@ -179,6 +233,10 @@ const AddCustomer: React.FC<any> = () => {
 
     const [open, setOpen] = React.useState(false);
 
+    const [isDisabled, setDisabled] = useState(false);
+
+    const [isEditMode, setEditMode] = useState(false);
+
     const handleModelToggle = () => {
         setOpen(prev => !prev);
     };
@@ -188,7 +246,108 @@ const AddCustomer: React.FC<any> = () => {
         history.push('/');
     };
 
-    const createNewCustomer = (form: AddCustomerForm) => {
+    const handleEditButtonClick = () => {
+        // setDisabled(prev => !prev);
+        setEditMode(true);
+        setDisabled(false);
+        // console.log("handleEditButtonClick :: " + isEditMode);
+    };
+
+    const getDataForSelectedCustomer = async (customerId: string) => {
+        try {
+            axios.get(`http://52.146.63.31/api/customer-service/customers/${customerId}?countryCode=us`)
+                .then(response => response.data)
+                .then(({ data }) => {
+                    if (data) {
+                        console.log("%%%%");
+                        console.log(data);
+                        populateDataInAllFields(data);
+                    }
+                })
+                .catch(function (error: any) {
+                    const response = error.response;
+                    if (
+                        response.data === 'user already exist' &&
+                        response.status === 400
+                    ) {
+                        setFormStatus(formStatusProps.duplicate);
+                    } else {
+                        setFormStatus(formStatusProps.error);
+                    }
+                });
+        } catch (error) {
+            setFormStatus(formStatusProps.error);
+        }
+    };
+
+    const editCustomerData = async (data: AddCustomerForm, resetForm: Function) => {
+        try {
+            const apiPayload = {
+                "customerName": data.customerName,
+                "customerInputId": data.customerId,
+                "addressLine1": data.addressLine1,
+                "addressLine2": data.addressLine2,
+                "addressLine3": "",
+                "cityNm": data.city,
+                "stateNm": data.state,
+                "postalCd": Number(data.postalCode),
+                "contactFirstNm": data.firstName,
+                "contactLastNm": data.lastName,
+                "contactEmailId": data.email,
+                "contactPhoneNo": data.phoneNumber,
+                "paymentTypeId": data.paymentType.value,
+                "customerTypeId": "f6f0ec11-cd88-455d-9158-8ade75ddfb3b",
+                "invoiceFrequencyId": data.invoiceFrequency.value,
+                "firstSettlementDt": data.endDate,
+                "paymentTerm": Number(data.paymentTerm),
+                "countryCd": getCountryCode(),
+                "soldToNo": 10,
+                "emergencyContact": data.emergencyContact.map(emgcyObj => ({
+                    "customerContactId":"",
+                    "firstNm": emgcyObj.firstName,
+                    "lastNm": emgcyObj.lastName,
+                    "email": emgcyObj.email,
+                    "phoneNo": emgcyObj.phoneNumber
+                })),
+                "apContact": data.apContact.map(apObj => ({
+                    "customerContactId":"",
+                    "firstNm": apObj.firstName,
+                    "lastNm": apObj.lastName,
+                    "email": apObj.email,
+                    "phoneNo": apObj.phoneNumber
+                })),
+                "tokenApplicabilityLevel": getTokenApplicable({
+                    lot: data.lotLevel, business: data.businessLevel, vehicle: data.vehicleLevel
+                })
+            };
+            axios.put(`http://52.146.63.31/api/customer-service/customers/d917eb08-e5b9-4fb4-a346-b8bbbec8ceb4`, apiPayload) 
+                .then(function (response) {
+                    setAPIResponse(true);
+                    if (response.data) {
+                        setFormStatus(formStatusProps.success);
+                        setTimeout(() => {
+                            setAPIResponse(false);
+                        }, 6000);
+                        resetForm({});
+                    }
+                })
+                .catch(function (error: any) {
+                    const response = error.response;
+                    if (
+                        response.data === 'user already exist' &&
+                        response.status === 400
+                    ) {
+                        setFormStatus(formStatusProps.duplicate);
+                    } else {
+                        setFormStatus(formStatusProps.error);
+                    }
+                });
+        } catch (error) {
+            setFormStatus(formStatusProps.error);
+        }
+    };
+
+    const createNewCustomer = async (form: AddCustomerForm) => {
         try {
             const apiPayload = {
                 "customerName": form.customerName,
@@ -235,17 +394,25 @@ const AddCustomer: React.FC<any> = () => {
     const formik = useFormik({
         initialValues,
         validationSchema: AddCustomerValidationSchema,
-        onSubmit: (values) => {
-            createNewCustomer(values);
+        onSubmit: (values, actions) => {
+            // console.log("Formik onsubmit called  :: " + isEditMode)
+            if (isEditMode) {
+                // console.log("edit api call  :: ");
+                editCustomerData(values, actions.resetForm);
+            } else {
+                createNewCustomer(values);
+                getDataForSelectedCustomer("d917eb08-e5b9-4fb4-a346-b8bbbec8ceb4");
+            }
+
         },
         enableReinitialize: true,
     });
 
-    const history = useHistory();
+    
 
     const isFormFieldChange = () => formik.dirty;
 
-    function onClickBack () {
+    function onClickBack() {
         if (isFormFieldChange()) {
             handleModelToggle();
         } else {
@@ -268,9 +435,17 @@ const AddCustomer: React.FC<any> = () => {
                     <Container maxWidth="lg" className="page-container">
                         <FormikProvider value={formik}>
                             <form onSubmit={formik.handleSubmit}>
-                                <Typography variant="h3" component="h3" gutterBottom className="fw-bold" mb={1}>
-                                    Customer Profile
-                                </Typography>
+                                <div style={{ display: "flex" }}>
+                                    <Typography variant="h3" component="h3" gutterBottom className="fw-bold" mb={1} style={{ width: "86%" }}>
+                                        Customer Profile
+                                    </Typography>
+                                    <Button
+                                        types="edit"
+                                        aria-label="edit"
+                                        onClick={handleEditButtonClick}
+                                        startIcon={<EditIcon />}
+                                    />
+                                </div>
                                 <Grid container mt={1}>
                                     <Grid item md={12} mt={2} mb={1}>
                                         <Typography variant="h4" component="h4" gutterBottom className="fw-bold" mb={1}>
@@ -286,6 +461,7 @@ const AddCustomer: React.FC<any> = () => {
                                             error={(formik.touched.customerName && formik.errors.customerName) ? true : false}
                                             description=''
                                             required
+                                            disabled={isDisabled}
                                             {...formik.getFieldProps('customerName')}
                                         />
                                     </Grid>
@@ -298,6 +474,7 @@ const AddCustomer: React.FC<any> = () => {
                                             error={(formik.touched.customerId && formik.errors.customerId) ? true : false}
                                             description=''
                                             required
+                                            disabled={isDisabled}
                                             {...formik.getFieldProps('customerId')}
                                         />
                                     </Grid>
@@ -311,6 +488,7 @@ const AddCustomer: React.FC<any> = () => {
                                             helperText={(formik.touched.addressLine1 && formik.errors.addressLine1) ? formik.errors.addressLine1 : undefined}
                                             error={(formik.touched.addressLine1 && formik.errors.addressLine1) ? true : false}
                                             required
+                                            disabled={isDisabled}
                                         />
 
                                     </Grid>
@@ -323,6 +501,7 @@ const AddCustomer: React.FC<any> = () => {
                                             error={(formik.touched.addressLine2 && formik.errors.addressLine2) ? true : false}
                                             description=''
                                             required
+                                            disabled={isDisabled}
                                             {...formik.getFieldProps('addressLine2')}
                                         />
                                     </Grid>
@@ -379,6 +558,7 @@ const AddCustomer: React.FC<any> = () => {
                                             error={(formik.touched.firstName && formik.errors.firstName) ? true : false}
                                             description=''
                                             required
+                                            disabled={isDisabled}
                                             {...formik.getFieldProps('firstName')}
                                         />
                                     </Grid>
@@ -391,6 +571,7 @@ const AddCustomer: React.FC<any> = () => {
                                             error={(formik.touched.lastName && formik.errors.lastName) ? true : false}
                                             description=''
                                             required
+                                            disabled={isDisabled}
                                             {...formik.getFieldProps('lastName')}
                                         />
                                     </Grid>
@@ -402,6 +583,7 @@ const AddCustomer: React.FC<any> = () => {
                                             error={(formik.touched.email && formik.errors.email) ? true : false}
                                             description=''
                                             required
+                                            disabled={isDisabled}
                                             {...formik.getFieldProps('email')}
                                         />
                                     </Grid>
@@ -414,6 +596,7 @@ const AddCustomer: React.FC<any> = () => {
                                             error={(formik.touched.phoneNumber && formik.errors.phoneNumber) ? true : false}
                                             description=''
                                             required
+                                            disabled={isDisabled}
                                             {...formik.getFieldProps('phoneNumber')}
                                         />
                                     </Grid>
@@ -435,6 +618,7 @@ const AddCustomer: React.FC<any> = () => {
                                             onChange={formik.setFieldValue}
                                             onBlur={() => { formik.setFieldTouched("paymentType"); formik.validateField("paymentType"); }}
                                             required
+                                            isDisabled={isDisabled}
                                         />
                                     </Grid>
                                     <Grid item xs={12} md={6} pl={2.5} pb={2.5} />
@@ -451,6 +635,7 @@ const AddCustomer: React.FC<any> = () => {
                                             onChange={formik.setFieldValue}
                                             onBlur={() => { formik.setFieldTouched("invoiceFrequency"); formik.validateField("invoiceFrequency"); }}
                                             required
+                                            isDisabled={isDisabled}
                                         />
                                     </Grid>
                                     <Grid item md={3} pl={2.5} pr={2.5} pb={2.5}>
@@ -465,6 +650,7 @@ const AddCustomer: React.FC<any> = () => {
                                             helperText={(formik.touched.endDate && formik.errors.endDate) ? formik.errors.endDate : undefined}
                                             error={(formik.touched.endDate && formik.errors.endDate) ? true : false}
                                             required
+                                            disabled={isDisabled}
                                         />
                                     </Grid>
                                     <Grid item md={3} pl={2.5}>
@@ -475,6 +661,7 @@ const AddCustomer: React.FC<any> = () => {
                                             helperText={(formik.touched.paymentTerm && formik.errors.paymentTerm) ? formik.errors.paymentTerm : undefined}
                                             error={(formik.touched.paymentTerm && formik.errors.paymentTerm) ? true : false}
                                             description=''
+                                            // disabled={isDisabled}
                                             {...formik.getFieldProps('paymentTerm')}
                                         />
                                     </Grid>
@@ -484,7 +671,7 @@ const AddCustomer: React.FC<any> = () => {
                                                 <FormControlLabel
                                                     sx={{ margin: "0px", marginBottom: "1rem", fontWeight: "bold" }}
                                                     control={
-                                                        <Checkbox checked={formik.values.lotLevel} onChange={formik.handleChange} name="lotLevel" />
+                                                        <Checkbox checked={formik.values.lotLevel} onChange={formik.handleChange} name="lotLevel" disabled={isDisabled} />
                                                     }
                                                     label={
                                                         <Typography variant="h4" component="h4" className="fw-bold">
@@ -495,7 +682,7 @@ const AddCustomer: React.FC<any> = () => {
                                                 <FormControlLabel
                                                     sx={{ margin: "0px", marginBottom: "1rem", fontWeight: "bold" }}
                                                     control={
-                                                        <Checkbox checked={formik.values.businessLevel} onChange={formik.handleChange} name="businessLevel" />
+                                                        <Checkbox checked={formik.values.businessLevel} onChange={formik.handleChange} name="businessLevel" disabled={isDisabled} />
                                                     }
                                                     label={
                                                         <Typography variant="h4" component="h4" className="fw-bold">
@@ -506,7 +693,7 @@ const AddCustomer: React.FC<any> = () => {
                                                 <FormControlLabel
                                                     sx={{ margin: "0px", marginBottom: "1rem", fontWeight: "bold" }}
                                                     control={
-                                                        <Checkbox checked={formik.values.vehicleLevel} onChange={formik.handleChange} name="vehicleLevel" />
+                                                        <Checkbox checked={formik.values.vehicleLevel} onChange={formik.handleChange} name="vehicleLevel" disabled={isDisabled} />
                                                     }
                                                     label={
                                                         <Typography variant="h4" component="h4" className="fw-bold">
@@ -547,6 +734,7 @@ const AddCustomer: React.FC<any> = () => {
                                                                 description=''
                                                                 required
                                                                 {...formik.getFieldProps(`emergencyContact[${index}].firstName`)}
+                                                                disabled={isDisabled}
                                                             />
                                                         </Grid>
                                                         <Grid item xs={12} md={6} pl={2.5} pb={2.5}>
@@ -568,6 +756,7 @@ const AddCustomer: React.FC<any> = () => {
                                                                 description=''
                                                                 required
                                                                 {...formik.getFieldProps(`emergencyContact[${index}].lastName`)}
+                                                                disabled={isDisabled}
                                                             />
                                                         </Grid>
                                                         <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
@@ -589,6 +778,7 @@ const AddCustomer: React.FC<any> = () => {
                                                                 description=''
                                                                 required
                                                                 {...formik.getFieldProps(`emergencyContact[${index}].email`)}
+                                                                disabled={isDisabled}
                                                             />
                                                         </Grid>
                                                         <Grid item xs={12} md={6} pl={2.5} pb={2.5}>
@@ -609,6 +799,7 @@ const AddCustomer: React.FC<any> = () => {
                                                                 }
                                                                 description=''
                                                                 {...formik.getFieldProps(`emergencyContact[${index}].phoneNumber`)}
+                                                                disabled={isDisabled}
                                                             />
                                                         </Grid>
                                                     </Grid>
@@ -664,6 +855,7 @@ const AddCustomer: React.FC<any> = () => {
                                                                 description=''
                                                                 required
                                                                 {...formik.getFieldProps(`apContact[${index}].firstName`)}
+                                                                disabled={isDisabled}
                                                             />
                                                         </Grid>
                                                         <Grid item xs={12} md={6} pl={2.5} pb={2.5}>
@@ -685,6 +877,7 @@ const AddCustomer: React.FC<any> = () => {
                                                                 description=''
                                                                 required
                                                                 {...formik.getFieldProps(`apContact[${index}].lastName`)}
+                                                                disabled={isDisabled}
                                                             />
                                                         </Grid>
                                                         <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
@@ -706,6 +899,7 @@ const AddCustomer: React.FC<any> = () => {
                                                                 description=''
                                                                 required
                                                                 {...formik.getFieldProps(`apContact[${index}].email`)}
+                                                                disabled={isDisabled}
                                                             />
                                                         </Grid>
                                                         <Grid item xs={12} md={6} pl={2.5} pb={2.5}>
@@ -726,6 +920,7 @@ const AddCustomer: React.FC<any> = () => {
                                                                 }
                                                                 description=''
                                                                 {...formik.getFieldProps(`apContact[${index}].phoneNumber`)}
+                                                                disabled={isDisabled}
                                                             />
                                                         </Grid>
                                                     </Grid>
