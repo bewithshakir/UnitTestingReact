@@ -18,11 +18,11 @@ import { Add } from "@mui/icons-material";
 import { useHistory } from "react-router-dom";
 import { sortByOptions } from "./config";
 import { RightInfoPanel } from "../../components/UIComponents/RightInfoPanel/RightInfoPanel.component";
-import { FormControl } from "@mui/material";
+import { Box, FormControl, Grid } from "@mui/material";
 import { HorizontalBarVersionState, useStore } from "../../store";
 interface ContentProps {
   rows?: [];
-  version:string
+  version: string
 }
 const Content: React.FC<ContentProps> = () => {
   const history = useHistory();
@@ -30,7 +30,7 @@ const Content: React.FC<ContentProps> = () => {
   const [searchTerm, setSearchTerm] = React.useState("");
   const [drawerOpen, setDrawerOpen] = React.useState(false);
   const [sortOrder, setSortOrder] = React.useState<{ sortBy: string, order: string }>({ sortBy: "customerName", order: "asc" });
-  const [filterData, setFilterData] = React.useState<{[key: string]: string[]}>({});
+  const [filterData, setFilterData] = React.useState<{ [key: string]: string[] }>({});
   const [custFilterPanelVisible, setCustFilterPanelVisible] = React.useState(false);
 
   const { t } = useTranslation();
@@ -39,7 +39,7 @@ const Content: React.FC<ContentProps> = () => {
     sortOrder,
     filterData
   );
-  const setVersion =  useStore((state : HorizontalBarVersionState) => state.setVersion);
+  const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
   setVersion("NavLinks");
   const openDrawer = (row: SyntheticEvent) => {
     setInfo(row);
@@ -76,7 +76,7 @@ const Content: React.FC<ContentProps> = () => {
   data?.pages?.map((item: any) => {
     list.push(...item.data.customers);
   });
- 
+
 
   const handleCustFilterPanelOpen = () => {
     setDrawerOpen(false);
@@ -85,84 +85,91 @@ const Content: React.FC<ContentProps> = () => {
 
   const handleCustFilterPanelClose = () => setCustFilterPanelVisible(false);
 
-  const getFilterParams =  (filterObj:{[key: string]: string[]}) => setFilterData(filterObj);
+  const getFilterParams = (filterObj: { [key: string]: string[] }) => setFilterData(filterObj);
 
   return (
-
-      <div className={"content"}>
-        <div className={"content__buttons1"}>
-          <div className={"content__buttons2"}>
-            <Button
-              types="filter"
-              aria-label="dafault"
-              onClick={handleCustFilterPanelOpen}
-              startIcon={<FilterIcon />}
-            >
-              Filter
-            </Button>
-            <div className={"space"} />
-            <div className={"space"} />
-            <div>
-            <FormControl>
-            <SortbyMenu
-              options={sortByOptions.map((sortByItem) => t(sortByItem))}
-              onSelect={(value) => onSortBySlected(value)}
-            />
-           </FormControl>
-            </div>
-            <div className={"space"} />
-            <SearchInput
-              name="searchTerm"
-              value={searchTerm}
-              onChange={onInputChange}
-            />
-          </div>
-          <div className={"content__buttons3"}>
-            <Button
-              types="primary"
-              aria-label="primary"
-              onClick={navigateToAddCustomer}
-              startIcon={<Add />}
-            >
-              {t("buttons.add customer")}
-            </Button>
-            <div className={"space"} />
-            <FormControl>
-            <ActionsMenu
-              options={[
-                {
-                  label: t("menus.actions.add vehicle"),
-                  icon: <PlusIcon />,
-                },
-                {
-                  label: t("menus.actions.import data"),
-                  icon: <ImportIcon />,
-                },
-                {
-                  label: t("menus.actions.export data"),
-                  icon: <ExportIcon />,
-                },
-                {
-                  label: t("menus.actions.delete"),
-                  icon: <DeleteIcon />,
-                },
-              ]}
-              onSelect={(value) => {
-                return value;
-              }}
-            />
-             </FormControl>
-          </div>
-        </div>
-        <GridComponent
-          rows={list}
-          isLoading={isLoading}
-          getPages={fetchNextPage}
-          openDrawer={openDrawer}
-        />
-       <RightInfoPanel panelType="customer-filter" open={custFilterPanelVisible} headingText={"Filters"} provideFilterParams={getFilterParams} onClose={handleCustFilterPanelClose} />
-       <RightInfoPanel panelType="info-view" open={drawerOpen} headingText={"Accurate Transportation"} info={info} onClose={drawerClose}/>
-      </div>
+    <Box display="flex" mt={8} ml={8}>
+      <Grid container pl={6.25} pr={6.25} className="main-area">
+        <Grid container pt={2.5} display="flex" flexGrow={1}>
+          <Grid item md={8} lg={9} display="flex" >
+            <Grid item pr={2.5}>
+              <Button
+                types="filter"
+                aria-label="dafault"
+                onClick={handleCustFilterPanelOpen}
+                startIcon={<FilterIcon />}
+              >
+                Filter
+              </Button>
+            </Grid>
+            <Grid item pr={2.5}>
+              <FormControl>
+                <SortbyMenu
+                  options={sortByOptions.map((sortByItem) => t(sortByItem))}
+                  onSelect={(value) => onSortBySlected(value)}
+                />
+              </FormControl>
+            </Grid>
+            <Grid item>
+              <SearchInput
+                name="searchTerm"
+                value={searchTerm}
+                onChange={onInputChange}
+              />
+            </Grid>
+          </Grid>
+          <Grid item md={4} lg={3} display="flex" justifyContent="flex-end">
+            <Grid item pr={2.5}>
+              <Button
+                types="primary"
+                aria-label="primary"
+                onClick={navigateToAddCustomer}
+                startIcon={<Add />}
+              >
+                {t("buttons.add customer")}
+              </Button>
+            </Grid>
+            <Grid item>
+              <FormControl>
+                <ActionsMenu
+                  options={[
+                    {
+                      label: t("menus.actions.add vehicle"),
+                      icon: <PlusIcon />,
+                    },
+                    {
+                      label: t("menus.actions.import data"),
+                      icon: <ImportIcon />,
+                    },
+                    {
+                      label: t("menus.actions.export data"),
+                      icon: <ExportIcon />,
+                    },
+                    {
+                      label: t("menus.actions.delete"),
+                      icon: <DeleteIcon />,
+                    },
+                  ]}
+                  onSelect={(value) => {
+                    return value;
+                  }}
+                />
+              </FormControl>
+            </Grid>
+          </Grid>
+        </Grid>
+        <Grid container pt={2.5} display="flex" flexGrow={1}>
+          <GridComponent
+            rows={list}
+            isLoading={isLoading}
+            getPages={fetchNextPage}
+            openDrawer={openDrawer}
+          />
+          <RightInfoPanel panelType="customer-filter" open={custFilterPanelVisible} headingText={"Filters"} provideFilterParams={getFilterParams} onClose={handleCustFilterPanelClose} />
+          <RightInfoPanel panelType="info-view" open={drawerOpen} headingText={"Accurate Transportation"} info={info} onClose={drawerClose} />
+        </Grid>
+      </Grid>
+    </Box>
   );
 };
 

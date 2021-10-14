@@ -1,5 +1,5 @@
 import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined';
-import { Box, Collapse, Table, TableBody, TableCell, TableHead, TableRow } from '@mui/material';
+import { Box, Collapse, Table, TableBody, TableCell, TableHead, TableRow, FormControl } from '@mui/material';
 import * as React from "react";
 import { useTranslation } from 'react-i18next';
 import { Loader } from '../Loader';
@@ -20,7 +20,7 @@ interface GridBodyProps {
     headCells: HeadCellsOptions[],
     isError?: string,
     isLoading?: boolean
-    openDrawer?:any
+    openDrawer?: any
 }
 
 
@@ -60,19 +60,20 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
     const { t } = useTranslation();
 
     const getKeys = () => {
-        return Object.keys(props?.rows[0]);
+        return props?.headCells.map((i: any) => i.id);
     };
 
-    const handleCollapaseClick = (key: any) => {
+    const handleCollapaseClick = (e: React.MouseEvent<HTMLButtonElement>, key: any) => {
+        e.stopPropagation();
         if (key === selectedIndexKey) {
             setSelectedKey(null);
         } else {
             setSelectedKey(key);
         }
     };
-   const openDrawer =(event:React.SyntheticEvent)=>{
-     props.openDrawer(event); 
-   };
+    const openDrawer = (event: React.SyntheticEvent) => {
+        props.openDrawer(event);
+    };
 
     const getRowsData = () => {
         const keys = getKeys();
@@ -80,31 +81,37 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
             stableSort(props.rows, getComparator(props.order, props.orderBy))
                 .map((row: any, indexKey: any) =>
                     <React.Fragment key={indexKey}>
-                        <TableRow key={indexKey}>
+                        <TableRow key={indexKey} sx={{
+                            cursor: "pointer"
+                        }}>
                             {keys.map((key: any, index: any) =>
-                                <TableCell component="th" scope="row" key={row[key]} onClick={()=>openDrawer(row)}>
-                                    {props.headCells[index].type === 'text' ? index === 0 ? <b>{row[key]}</b> : row[key] :
+                                <TableCell component="th" scope="row" key={row[key]} onClick={() => openDrawer(row)}>
+                                    {props.headCells[index].type === 'text'
+                                        ? index === 0 ? <b>{row[key]}</b> : row[key] :
                                         props.headCells[index].type === 'button' ?
                                             <Button
                                                 types="accordian"
                                                 aria-label="accordian"
                                                 className="active"
-                                                onClick={() => handleCollapaseClick(indexKey)}
+                                                onClick={(e) => handleCollapaseClick(e, indexKey)}
                                                 startIcon={< LocationOnOutlinedIcon />}
                                             >
                                                 {0}
                                             </Button > :
                                             props.headCells[index].type === 'icon' ?
-                                                <DataGridActionsMenu
-                                                    options={[{ label: t("menus.data-grid-actions.raise a request"), },
-                                                    { label: t("menus.data-grid-actions.fee & driver details"), },
-                                                    { label: t("menus.data-grid-actions.other details"), },
-                                                    { label: t("menus.data-grid-actions.contact details"), }
-                                                    ]}
-                                                    onSelect={(value) => {
-                                                        return value;
-                                                    }}
-                                                />
+                                                <FormControl>
+                                                    <DataGridActionsMenu
+                                                        options={[{ label: t("menus.data-grid-actions.raise a request"), },
+                                                        { label: t("menus.data-grid-actions.fee & driver details"), },
+                                                        { label: t("menus.data-grid-actions.other details"), },
+                                                        { label: t("menus.data-grid-actions.contact details"), }
+                                                        ]}
+                                                        onSelect={(e: React.SyntheticEvent, value: any) => {
+                                                            e.stopPropagation();
+                                                            return value;
+                                                        }}
+                                                    />
+                                                </FormControl>
                                                 : ""
                                     }
                                 </TableCell>
@@ -136,10 +143,10 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
 
     if (props?.rows?.length > 1) {
         return getRowsData();
-    } else if(props?.isLoading) {
+    } else if (props?.isLoading) {
         return (<Loader />);
-    }else {
-        return (<div style={{display:"flex",justifyContent:"center",alignItems:"center",height:"100%",width:"auto"}}>{"No Data found"}</div>);
+    } else {
+        return (<div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100%", width: "auto" }}>{"No Data found"}</div>);
     }
 
 
