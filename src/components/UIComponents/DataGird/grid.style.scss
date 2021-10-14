@@ -1,12 +1,22 @@
 div { 
+    .table-container{
+        max-height: calc(100vh - 200px);
+
+    }
     .grid-cell {
         padding-bottom: 0;
         padding-top: 0;
     }
     .header-options{
-        background-color: #F7F7F7;
+        background-color: var(--Lightgray_2);
         font-size: 14px;
         font-weight: bold;
-        padding-bottom: 18px;
+        padding: 5px 20px;
+        line-height: 1.25rem;
+        letter-spacing: unset;
+        .MuiTableSortLabel-icon {
+            width: 20px;
+            height: 20px;
+        }
     }
 }

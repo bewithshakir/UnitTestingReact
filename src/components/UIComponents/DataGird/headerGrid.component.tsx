@@ -1,6 +1,7 @@
 import * as React from "react";
-import { TableSortLabel, TableRow, TableHead, TableCell, Box } from '@mui/material';
+import { TableSortLabel, TableRow, TableHead, TableCell } from '@mui/material';
 import './grid.style.scss';
+import { SortByIcon } from '../../../assets/icons';
 
 
 
@@ -24,7 +25,11 @@ const EnhancedGridHead: React.FC<GridHeaderProps> = (props) => {
 
     return (
 
-        <TableHead>
+        <TableHead
+            sx={{
+                height: '51px'
+            }}
+        >
             {props.isError ? <TableRow>{"No Data Received"}</TableRow> : <TableRow>
                 {props.headCells.map((headCell) => (
                     <TableCell
@@ -32,19 +37,22 @@ const EnhancedGridHead: React.FC<GridHeaderProps> = (props) => {
                         className="header-options"
                         sortDirection={props.orderBy === headCell.id ? props.order : false}
                     >
-                        {headCell.id === '' ? '' : <TableSortLabel active={props.orderBy === headCell.id}
-                            direction={props.orderBy === headCell.id ? props.order : "asc"}
-                            onClick={createSortHandler(headCell.id)}
-                        >
+                        {headCell.id === '' ? '' :
+                            <TableSortLabel
+                                IconComponent={SortByIcon}
+                                active={props.orderBy === headCell.id}
+                                direction={props.orderBy === headCell.id ? props.order : "asc"}
+                                onClick={createSortHandler(headCell.id)}
+                            >
 
-                            {headCell.label}
-                            {props.orderBy === headCell.id ? (
-                                <Box component="span" sx={{visibility:"hidden"}}>
-                                    {props.order === "desc" ? "sorted descending" : "sorted ascending"}
-                                </Box>
-                            ) : null}
-                        </TableSortLabel>}
-
+                                {headCell.label}
+                                {/* {props.orderBy === headCell.id ? (
+                                    <Box component="span" sx={{ visibility: "hidden" }}>
+                                        {props.order === "desc" ? "sorted descending" : "sorted ascending"}
+                                    </Box>
+                                ) : null} */}
+                            </TableSortLabel>
+                        }
                     </TableCell>
                 ))}
             </TableRow>}
