@@ -35,6 +35,7 @@ interface DatePickerProps {
     displayFormat?: string;
     id: string;
     name: string;
+    dateRangeMiddleText?:string 
 }
 
 
@@ -42,7 +43,7 @@ const CalendarIconComp: React.FC = () => {
     return <div><CalendarIcon style={{ fontSize: '16px' }} /></div>;
 };
 
-export const DatePickerInput: React.FC<DatePickerProps> = ({label,type, placeholder, disabled, required, error, value, dateRangeValue, helperText, onChange, onDateRangeChange, disableBeforeDate, disableAfterDate, id, name}) => {
+export const DatePickerInput: React.FC<DatePickerProps> = ({label,type, placeholder, disabled, required, error, value, dateRangeValue, helperText, onChange, onDateRangeChange, disableBeforeDate, disableAfterDate, id, name, dateRangeMiddleText}) => {
       const disableDates = (date: moment.Moment  | null) => {
 
         if (disableBeforeDate && disableAfterDate) {
@@ -83,7 +84,7 @@ export const DatePickerInput: React.FC<DatePickerProps> = ({label,type, placehol
                                         startProps.inputProps.placeholder = (typeof placeholder === 'object' && placeholder !== null) ? placeholder.start : "from";
                                     }
                                     if (endProps.inputProps) {
-                                        endProps.inputProps.placeholder = (typeof placeholder === 'object' && placeholder !== null) ? placeholder.end : "from";
+                                        endProps.inputProps.placeholder = (typeof placeholder === 'object' && placeholder !== null) ? placeholder.end : "to";
                                     }
                                     return <React.Fragment>
                                         <TextField {...startProps} InputProps={{
@@ -93,7 +94,7 @@ export const DatePickerInput: React.FC<DatePickerProps> = ({label,type, placehol
                                                 </InputAdornment>
                                             ),
                                         }} InputLabelProps={{ shrink: false }} />
-                                        <Box sx={{ mx: 2 }}> to </Box>
+                                        <Box sx={{ mx: 2 }}> {dateRangeMiddleText?dateRangeMiddleText:""} </Box>
                                         <TextField {...endProps} InputProps={{
                                             endAdornment: (
                                                 <InputAdornment position="end">
