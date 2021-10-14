@@ -16,6 +16,9 @@ div {
     }
     .date-picker-container {
       display: flex;
+      .calendar-icon-div{
+          font-size: 16px;
+      }
       .MuiDateRangePickerDay-root {
         border-top-right-radius: 0px;
         border-bottom-right-radius: 0px;
@@ -89,7 +92,7 @@ div {
     .PrivatePickersMonth-root{
       border: 0px;
       background-color: var(--White);
-      color: #000;
+      color: var(--Black);
       &.Mui-selected{
         background-color: var(--Primary);
         color: var(--White);

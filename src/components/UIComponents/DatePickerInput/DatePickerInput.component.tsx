@@ -40,7 +40,7 @@ interface DatePickerProps {
 
 
 const CalendarIconComp: React.FC = () => {
-    return <div><CalendarIcon style={{ fontSize: '16px' }} /></div>;
+    return <div><CalendarIcon className="calendar-icon-div" /></div>;
 };
 
 export const DatePickerInput: React.FC<DatePickerProps> = ({label,type, placeholder, disabled, required, error, value, dateRangeValue, helperText, onChange, onDateRangeChange, disableBeforeDate, disableAfterDate, id, name, dateRangeMiddleText}) => {
