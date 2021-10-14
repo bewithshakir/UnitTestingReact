@@ -6,7 +6,7 @@ import { Grid } from "@mui/material";
 import { FormikProvider, useFormik } from 'formik';
 import * as Yup from 'yup';
 import Select from "../Select/MultiSelect";
-import { DatePickerV2 } from "../DatePickerV2/DatePickerV2.component";
+import { DatePickerInput } from "../DatePickerInput/DatePickerInput.component";
 import { Button } from "../Button/Button.component";
 import { useTheme } from '../../../contexts/Theme/Theme.context';
 import { styled } from '@mui/system';
@@ -185,7 +185,7 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ provideFilterParams, o
                             {"Period".toUpperCase()}
                         </Grid>
                         <Grid container item xs={6} spacing="2">
-                            <DatePickerV2
+                            <DatePickerInput
                                 type="single-date"
                                 id="fromDate"
                                 placeholder="From Date"
@@ -197,7 +197,7 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ provideFilterParams, o
                             />
                         </Grid>
                         <Grid container item xs={6} spacing="2">
-                            <DatePickerV2
+                            <DatePickerInput
                                 type="single-date"
                                 id="toDate"
                                 disableBeforeDate={formik.values.fromDate}

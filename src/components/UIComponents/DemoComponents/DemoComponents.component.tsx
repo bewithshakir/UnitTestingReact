@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import SortbyMenu from '../Menu/SortbyMenu.component';
 import ActionsMenu from '../Menu/ActionsMenu.component';
 import ProfileMenu from '../Menu/ProfileMenu.component';
-import { DatePickerV2 } from '../DatePickerV2/DatePickerV2.component';
+import { DatePickerInput } from '../DatePickerInput/DatePickerInput.component';
 import DataGridActionsMenu from '../Menu/DataGridActionsMenu.component';
 import { ExportIcon, PlusIcon, DeleteIcon, ImportIcon, SettingsIcon, LogoutIcon, CustomerProfileIcon2 } from '../../../assets/icons';
 import GridComponent from '../DataGird/grid.component';
@@ -229,7 +229,7 @@ export const DemoComponents: React.FC = () => {
                               
                         <div>{dateRange[0] ? moment(dateRange[0]).format('MM/DD/YYYY') : ''} to
                         {dateRange[1] ? moment(dateRange[1]).format('MM/DD/YYYY') : ''}</div>
-                        <DatePickerV2
+                        <DatePickerInput
                             label="DATE RANGE"
                             type="date-range"
                             id="cust-filter-date-range"
@@ -242,7 +242,7 @@ export const DemoComponents: React.FC = () => {
                         />
                         <br />
 
-                        <DatePickerV2
+                        <DatePickerInput
                             label="Select Date"
                             type="single-date"
                             id="cust-filter-start-date"
@@ -253,7 +253,7 @@ export const DemoComponents: React.FC = () => {
                             value={form.startDate}
                             required
                         /> <span>{form.startDate}</span>
-                        <DatePickerV2
+                        <DatePickerInput
                             type="single-date"
                             id="cust-filter-end-date"
                             // disableBeforeDate={form.endDate}

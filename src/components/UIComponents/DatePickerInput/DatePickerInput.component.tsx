@@ -8,7 +8,7 @@ import moment from "moment";
 import DateRangePicker, { DateRange } from '@mui/lab/DateRangePicker';
 
 
-import './DatePickerV2.style.scss';
+import './DatePicker.style.scss';
 import { CalendarIcon } from '../../../assets/icons';
 
 type datePickerRange = DateRange<Date>;
@@ -42,7 +42,7 @@ const CalendarIconComp: React.FC = () => {
     return <div><CalendarIcon style={{ fontSize: '16px' }} /></div>;
 };
 
-export const DatePickerV2: React.FC<DatePickerProps> = ({label,type, placeholder, disabled, required, error, value, dateRangeValue, helperText, onChange, onDateRangeChange, disableBeforeDate, disableAfterDate, id, name}) => {
+export const DatePickerInput: React.FC<DatePickerProps> = ({label,type, placeholder, disabled, required, error, value, dateRangeValue, helperText, onChange, onDateRangeChange, disableBeforeDate, disableAfterDate, id, name}) => {
       const disableDates = (date: moment.Moment  | null) => {
 
         if (disableBeforeDate && disableAfterDate) {

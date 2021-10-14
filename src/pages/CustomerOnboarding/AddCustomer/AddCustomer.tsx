@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';
 import { Button } from '../../../components/UIComponents/Button/Button.component';
 import Checkbox from '../../../components/UIComponents/Checkbox/Checkbox.component';
-import { DatePickerV2 } from '../../../components/UIComponents/DatePickerV2/DatePickerV2.component';
+import { DatePickerInput } from '../../../components/UIComponents/DatePickerInput/DatePickerInput.component';
 import Input from '../../../components/UIComponents/Input/Input';
 import Select from '../../../components/UIComponents/Select/SingleSelect';
 import ToastMessage from '../../../components/UIComponents/ToastMessage/ToastMessage.component';
@@ -454,7 +454,7 @@ const AddCustomer: React.FC<any> = () => {
                                         />
                                     </Grid>
                                     <Grid item md={3} pl={2.5} pr={2.5} pb={2.5}>
-                                        <DatePickerV2
+                                        <DatePickerInput
                                             type="single-date"
                                             id="endDate"
                                             name="endDate"
