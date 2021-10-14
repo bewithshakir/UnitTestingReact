@@ -11,17 +11,8 @@ import DateRangePicker, { DateRange } from '@mui/lab/DateRangePicker';
 import './DatePickerV2.style.scss';
 import { CalendarIcon } from '../../../assets/icons';
 
-
-// const styles = () => ({
-//     notchedOutline: {
-//         borderWidth: "1px",
-//         borderColor: "yellow !important"
-//       }
-// });
-
 type datePickerRange = DateRange<Date>;
 type datePickerVariant = "single-date" | "date-range";
-// interface rangePlaceHolder
 
 interface DatePickerProps {
     label?: string;
@@ -51,52 +42,48 @@ const CalendarIconComp: React.FC = () => {
     return <div><CalendarIcon style={{ fontSize: '16px' }} /></div>;
 };
 
-export const DatePickerV2: React.FC<DatePickerProps> = (props) => {
-    // const disableRandomDates = () =>  {
-    //     return Math.random() > 0.7;
-    //   };
+export const DatePickerV2: React.FC<DatePickerProps> = ({label,type, placeholder, disabled, required, error, value, dateRangeValue, helperText, onChange, onDateRangeChange, disableBeforeDate, disableAfterDate, id, name}) => {
       const disableDates = (date: moment.Moment  | null) => {
 
-        if (props.disableBeforeDate && props.disableAfterDate) {
-          return moment(date).isBefore(moment(props.disableBeforeDate)) && moment(date).isAfter(moment(props.disableAfterDate));
+        if (disableBeforeDate && disableAfterDate) {
+          return moment(date).isBefore(moment(disableBeforeDate)) && moment(date).isAfter(moment(disableAfterDate));
         } else {
-          if (props.disableAfterDate) {
-            return moment(date).isAfter(moment(props.disableAfterDate));
-          } else if (props.disableBeforeDate) {
-            return moment(date).isBefore(moment(props.disableBeforeDate));
+          if (disableAfterDate) {
+            return moment(date).isAfter(moment(disableAfterDate));
+          } else if (disableBeforeDate) {
+            return moment(date).isBefore(moment(disableBeforeDate));
           } else {
             return false;
           }
         }
       };
-    // className={"date-picker-container " + (props.type==="date-range" ? 'date-range-picker-error ' : '') + (props.error ? 'date-picker-error' : '')}
     return (
         <Fragment>
             <FormControl className="date-picker-container" >
-                <div className={props.error ? 'date-picker-error' : ''}>
-                    {props.label && <InputLabel shrink htmlFor={props.id} style={{ color: 'var(--Darkgray)' }} aria-labelledby={props.label} aria-required={props.required}>
-                        <b>{props.label.toUpperCase()}{props.required && props.label && (<span className='super'>*</span>)}</b>
+                <div className={error ? 'date-picker-error' : ''}>
+                    {label && <InputLabel shrink htmlFor={id} style={{ color: 'var(--Darkgray)' }} aria-labelledby={label} aria-required={required}>
+                        <b>{label.toUpperCase()}{required && label && (<span className='super'>*</span>)}</b>
                     </InputLabel>
                     }
                     <LocalizationProvider dateAdapter={DateAdapter}>
-                        {props.type === "date-range" &&
+                        {type === "date-range" &&
                             <DateRangePicker
                                 className="custom-date-range-picker"
                                 startText={null}
                                 endText={null}
                                 shouldDisableDate={(val)=>disableDates(moment(val))}
-                                value={props.dateRangeValue ? props.dateRangeValue : [null, null]}
+                                value={dateRangeValue ? dateRangeValue : [null, null]}
                                 onChange={(newValue) => {
-                                    if (props.onDateRangeChange) {
-                                        props.onDateRangeChange(props.name, newValue);
+                                    if (onDateRangeChange) {
+                                        onDateRangeChange(name, newValue);
                                     }
                                 }}
                                 renderInput={(startProps, endProps) => {
                                     if (startProps.inputProps) {
-                                        startProps.inputProps.placeholder = (typeof props.placeholder === 'object' && props.placeholder !== null) ? props.placeholder.start : "from";
+                                        startProps.inputProps.placeholder = (typeof placeholder === 'object' && placeholder !== null) ? placeholder.start : "from";
                                     }
                                     if (endProps.inputProps) {
-                                        endProps.inputProps.placeholder = (typeof props.placeholder === 'object' && props.placeholder !== null) ? props.placeholder.end : "from";
+                                        endProps.inputProps.placeholder = (typeof placeholder === 'object' && placeholder !== null) ? placeholder.end : "from";
                                     }
                                     return <React.Fragment>
                                         <TextField {...startProps} InputProps={{
@@ -117,36 +104,35 @@ export const DatePickerV2: React.FC<DatePickerProps> = (props) => {
                                     </React.Fragment>;
                                 }}
                             />}
-                        {props.type === "single-date" &&
+                        {type === "single-date" &&
                             <DatePicker
-                                disabled={props.disabled}
+                                disabled={disabled}
                                 components={{ OpenPickerIcon: CalendarIconComp }}
                                 views={['year', 'month', 'day']}
-                                value={props.value}
+                                value={value}
                                 onChange={(newValue) => {
-                                    if (props.onChange) {
-                                        props.onChange(props.name, newValue);
+                                    if (onChange) {
+                                        onChange(name, newValue);
                                     }
                                 }}
                                 shouldDisableDate={(val)=>disableDates(val)}
                                 renderInput={(params) => {
                                     if (params.inputProps) {
-                                        params.inputProps.placeholder = (typeof props.placeholder === 'string' && props.placeholder !== null)? props.placeholder:"";
+                                        params.inputProps.placeholder = (typeof placeholder === 'string' && placeholder !== null)? placeholder:"";
                                     }
                                     return <TextField {...params} />;
 
                                 }}
                             />}
                     </LocalizationProvider>
-                    {props.helperText && (
+                    {helperText && (
                         <FormHelperText
-                            id={props.name}
-                            error={props.error}
+                            id={name}
+                            error={error}
                             className="date-picker-helper-text"
                         >
-                            {props.helperText}
+                            {helperText}
                         </FormHelperText>)}
-
                 </div>
             </FormControl>
         </Fragment>

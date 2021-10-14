@@ -227,8 +227,8 @@ export const DemoComponents: React.FC = () => {
                         }}
                     >
                               
-                        {dateRange[0] ? moment(dateRange[0]).format('MM/DD/YYYY') : ''} to
-                        {dateRange[1] ? moment(dateRange[1]).format('MM/DD/YYYY') : ''}
+                        <div>{dateRange[0] ? moment(dateRange[0]).format('MM/DD/YYYY') : ''} to
+                        {dateRange[1] ? moment(dateRange[1]).format('MM/DD/YYYY') : ''}</div>
                         <DatePickerV2
                             label="DATE RANGE"
                             type="date-range"
@@ -256,7 +256,7 @@ export const DemoComponents: React.FC = () => {
                         <DatePickerV2
                             type="single-date"
                             id="cust-filter-end-date"
-                            disableBeforeDate={form.endDate}
+                            // disableBeforeDate={form.endDate}
                             placeholder="End date"
                             name="endDate"
                             onChange={onDateChange}
