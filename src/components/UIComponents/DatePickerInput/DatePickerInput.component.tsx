@@ -8,7 +8,7 @@ import moment from "moment";
 import DateRangePicker, { DateRange } from '@mui/lab/DateRangePicker';
 
 
-import './DatePicker.style.scss';
+import './DatePickerInput.style.scss';
 import { CalendarIcon } from '../../../assets/icons';
 
 type datePickerRange = DateRange<Date>;
