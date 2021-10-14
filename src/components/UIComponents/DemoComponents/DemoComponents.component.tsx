@@ -214,26 +214,15 @@ export const DemoComponents: React.FC = () => {
             <div className="App" style={{ 'marginLeft': '20px' }}>
                 <div className={'app__main'}>
 
-                    <Box
-                        sx={{
-                            display: 'flex',
-                            flexWrap: 'wrap',
-                            marginLeft: '70px',
-                            marginBottom: '20px',
-                            '& > :not(style)': {
-                                m: 1,
-                                minWidth: '200px'
-                            },
-                        }}
-                    >
+                    <Box className={'date_box'}>
                               
                         <div>{dateRange[0] ? moment(dateRange[0]).format('MM/DD/YYYY') : ''} to
                         {dateRange[1] ? moment(dateRange[1]).format('MM/DD/YYYY') : ''}</div>
                         <DatePickerInput
                             label="DATE RANGE"
                             type="date-range"
+                            dateRangeMiddleText="To"
                             id="cust-filter-date-range"
-                            // disableBeforeDate={form.startDate}
                             placeholder={{start:"From", end: "To"}}
                             name="dateRange"
                             onDateRangeChange={onDateRangeChange}
@@ -243,10 +232,9 @@ export const DemoComponents: React.FC = () => {
                         <br />
 
                         <DatePickerInput
-                            label="Select Date"
+                            label="Start Date"
                             type="single-date"
                             id="cust-filter-start-date"
-                           
                             placeholder="From"
                             name="startDate"
                             onChange={onDateChange}
@@ -256,7 +244,7 @@ export const DemoComponents: React.FC = () => {
                         <DatePickerInput
                             type="single-date"
                             id="cust-filter-end-date"
-                            // disableBeforeDate={form.endDate}
+                            label="End Date"
                             placeholder="End date"
                             name="endDate"
                             onChange={onDateChange}

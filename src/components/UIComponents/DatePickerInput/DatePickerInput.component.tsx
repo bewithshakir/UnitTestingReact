@@ -6,8 +6,7 @@ import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import DatePicker from '@mui/lab/DatePicker';
 import moment from "moment";
 import DateRangePicker, { DateRange } from '@mui/lab/DateRangePicker';
-
-
+import {dateRangeMiddleTextSx} from './config';
 import './DatePickerInput.style.scss';
 import { CalendarIcon } from '../../../assets/icons';
 
@@ -41,6 +40,14 @@ interface DatePickerProps {
 
 const CalendarIconComp: React.FC = () => {
     return <div><CalendarIcon className="calendar-icon-div" /></div>;
+};
+
+const  inputEndornmentProps = {
+    endAdornment: (
+        <InputAdornment position="end">
+           <Icon > <CalendarIconComp /></Icon>
+        </InputAdornment>
+    )
 };
 
 export const DatePickerInput: React.FC<DatePickerProps> = ({label,type, placeholder, disabled, required, error, value, dateRangeValue, helperText, onChange, onDateRangeChange, disableBeforeDate, disableAfterDate, id, name, dateRangeMiddleText}) => {
@@ -87,21 +94,9 @@ export const DatePickerInput: React.FC<DatePickerProps> = ({label,type, placehol
                                         endProps.inputProps.placeholder = (typeof placeholder === 'object' && placeholder !== null) ? placeholder.end : "to";
                                     }
                                     return <React.Fragment>
-                                        <TextField {...startProps} InputProps={{
-                                            endAdornment: (
-                                                <InputAdornment position="end">
-                                                   <Icon > <CalendarIconComp /></Icon>
-                                                </InputAdornment>
-                                            ),
-                                        }} InputLabelProps={{ shrink: false }} />
-                                        <Box sx={{ mx: 2 }}> {dateRangeMiddleText?dateRangeMiddleText:""} </Box>
-                                        <TextField {...endProps} InputProps={{
-                                            endAdornment: (
-                                                <InputAdornment position="end">
-                                                   <Icon > <CalendarIconComp /></Icon>
-                                                </InputAdornment>
-                                            ),
-                                        }} InputLabelProps={{ shrink: false }} />
+                                        <TextField {...startProps} InputProps={inputEndornmentProps} InputLabelProps={{ shrink: false }} />
+                                        <Box sx={dateRangeMiddleTextSx}> {dateRangeMiddleText?dateRangeMiddleText:""} </Box>
+                                        <TextField {...endProps} InputProps={inputEndornmentProps} InputLabelProps={{ shrink: false }} />
                                     </React.Fragment>;
                                 }}
                             />}
