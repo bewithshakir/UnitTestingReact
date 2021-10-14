@@ -1,5 +1,10 @@
 div {
     .custom-date-range-picker {
+            .MuiPickersDay-root{
+                &.Mui-selected{
+                    background-color: var(--Primary);
+                }
+            } 
       .PrivatePickersSlideTransition-root {
         .MuiDateRangePickerDay-root {
           border-top-right-radius: 0px;
@@ -73,6 +78,14 @@ div {
       }
       
     }
+    .MuiCalendarPicker-root{
+        .MuiPickersDay-root{
+            &.Mui-selected{
+                background-color: var(--Primary);
+            }
+        } 
+    }
+    
     .PrivatePickersMonth-root{
       border: 0px;
       background-color: var(--White);
@@ -89,7 +102,11 @@ div {
           background-color: var(--Primary);
         }
         border-radius: 0px;
-      } 
+      }
+      
     }
+    .MuiIconButton-edgeEnd{
+        margin-right: 0px;
+    } 
   }
   
