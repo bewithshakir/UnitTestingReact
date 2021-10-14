@@ -139,19 +139,16 @@ const AddCustomer: React.FC = () => {
         const data = location.state;
         console.log(location);
         console.log(data);
-        // getDataForSelectedCustomer("d917eb08-e5b9-4fb4-a346-b8bbbec8ceb4");
+        getDataForSelectedCustomer("d917eb08-e5b9-4fb4-a346-b8bbbec8ceb4");
         if (data) {
-            // console.log("Came from View Flow Right info panel")
             setDisabled(true);
-            // console.log("Disable all fields  " + isDisabled);
-            // getDataForSelectedCustomer("d917eb08-e5b9-4fb4-a346-b8bbbec8ceb4");
-            // populateDataInAllFields(data);
         } else {
             // console.log("Came from Add button flow")
         }
     }, [location]);
 
     const populateDataInAllFields = (dataToPopulate: any) => {
+        console.log(dataToPopulate.customer.PaymentType.paymentTypeNm + "  ::  " + dataToPopulate.customer.InvoiceFrequency.invoiceFrequencyNm );
         formik.setFieldValue('customerName', dataToPopulate.customer.companyNm);
         formik.setFieldValue('customerId', dataToPopulate.customer.customerInputId);
         formik.setFieldValue('addressLine1', dataToPopulate.customer.addressLine1);
@@ -163,26 +160,11 @@ const AddCustomer: React.FC = () => {
         formik.setFieldValue('lastName', dataToPopulate.customer.contactLastNm);
         formik.setFieldValue('email', dataToPopulate.customer.contactEmailId);
         formik.setFieldValue('phoneNumber', dataToPopulate.customer.contactPhoneNo);
-        formik.setFieldValue("paymentTypeId", dataToPopulate.customer.PaymentType.paymentTypeNm);
-        // formik.setFieldValue("customerTypeId", );
-        formik.setFieldValue("invoiceFrequencyId", dataToPopulate.customer.InvoiceFrequency.invoiceFrequencyNm);
+        formik.setFieldValue("paymentType", dataToPopulate.customer.PaymentType.paymentTypeNm);
+        formik.setFieldValue("invoiceFrequency", dataToPopulate.customer.InvoiceFrequency.invoiceFrequencyNm);
         formik.setFieldValue("firstSettlementDt", dataToPopulate.customer.firstSettlementDt);
         formik.setFieldValue("paymentTerm", dataToPopulate.customer.paymentTerm);
-                //         "countryCd": getCountryCode(),
-                //             "soldToNo": 10,
-                //                 "emergencyContact": data.emergencyContact.map(emgcyObj => ({
-                //                     "firstNm": emgcyObj.firstName,
-                //                     "lastNm": emgcyObj.lastName,
-                //                     "email": emgcyObj.email,
-                //                     "phoneNo": emgcyObj.phoneNumber
-                //                 })),
-                //                     "apContact": data.apContact.map(apObj => ({
-                //                         "firstNm": apObj.firstName,
-                //                         "lastNm": apObj.lastName,
-                //                         "email": apObj.email,
-                //                         "phoneNo": apObj.phoneNumber
-                //                     })),
-                //                         "tokenApplicabilityLevel": getTokenApplicable({
+                
         setDisabled(true);
 
     };
@@ -247,10 +229,8 @@ const AddCustomer: React.FC = () => {
     };
 
     const handleEditButtonClick = () => {
-        // setDisabled(prev => !prev);
         setEditMode(true);
         setDisabled(false);
-        // console.log("handleEditButtonClick :: " + isEditMode);
     };
 
     const getDataForSelectedCustomer = async (customerId: string) => {
@@ -395,9 +375,7 @@ const AddCustomer: React.FC = () => {
         initialValues,
         validationSchema: AddCustomerValidationSchema,
         onSubmit: (values, actions) => {
-            // console.log("Formik onsubmit called  :: " + isEditMode)
             if (isEditMode) {
-                // console.log("edit api call  :: ");
                 editCustomerData(values, actions.resetForm);
             } else {
                 createNewCustomer(values);
