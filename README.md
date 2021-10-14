@@ -17,5 +17,5 @@ https://tapupglobal-webapp-dev.azurewebsites.net/
 # To Formate code files - Prettier
 
 Go to the Repository Directory:
-For single file - npx prettier --write <File_Name_Location> (npx prettier --write src/App.tsx)
-For complete project - npx prettier --write .
+For single file run - npx prettier --write <File_Name_Location> (npx prettier --write src/App.tsx)
+For complete project run- npx prettier --write .
