@@ -220,7 +220,7 @@ export const DemoComponents: React.FC = () => {
                             type="date-range"
                             dateRangeMiddleText="To"
                             id="cust-filter-date-range"
-                            placeholder={{start:"From", end: "To"}}
+                            placeholder={{ start: "From", end: "To" }}
                             name="dateRange"
                             onDateRangeChange={onDateRangeChange}
                             dateRangeValue={dateRange}
@@ -248,38 +248,39 @@ export const DemoComponents: React.FC = () => {
                             value={form.endDate}
                             required
                         /> <span>{form.endDate}</span>
+                        <Input name='userName'
+                            label='User Name'
+                            type='text'
+                            onChange={handleChange}
+                            value={form.userName}
+                            description=''
+                            helperText='User Name'
+                            error
+
+                        />
+                        <Select
+                            name='item'
+                            label='Select item'
+                            value={form.item}
+                            placeholder='Choose'
+                            items={items}
+                            onChange={handleSelect}
+                        />
+                        <Input name='email'
+                            label='Email'
+                            onChange={handleChange}
+                            value={form.email}
+                            description=''
+                            required
+                        />
+                        <SearchInput
+                            name='searchTerm'
+                            value={form.searchTerm}
+                            onChange={handleChange}
+                        />
                     </Box>
 
-                    <Input name='userName'
-                        label='User Name'
-                        type='text'
-                        onChange={handleChange}
-                        value={form.userName}
-                        description=''
-                        helperText='User Name'
-                        error
 
-                    />
-                    <Select
-                        name='item'
-                        label='Select item'
-                        value={form.item}
-                        placeholder='Choose'
-                        items={items}
-                        onChange={handleSelect}
-                    />
-                    <Input name='email'
-                        label='Email'
-                        onChange={handleChange}
-                        value={form.email}
-                        description=''
-                        required
-                    />
-                    <SearchInput
-                        name='searchTerm'
-                        value={form.searchTerm}
-                        onChange={handleChange}
-                    />
                     {/* <GoogleAutoCompleteAddress name='address' onChange={handleChange} value={form.address}/> */}
 
 
