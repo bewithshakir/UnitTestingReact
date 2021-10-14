@@ -114,7 +114,7 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ provideFilterParams, o
         }
     }));
 
-    const onDateChange = (name: string, value: null | moment.Moment) => {
+    const onDateChange = (name: string, value: null | string | moment.Moment) => {
         formik.setFieldValue(name, value);
         if (name == "fromDate") {
             filterParams.date = [moment(value).format("MM-DD-YYYY"), filterParams.date && filterParams.date[1] ? moment(filterParams.date[1]).format("MM-DD-YYYY") : ''];

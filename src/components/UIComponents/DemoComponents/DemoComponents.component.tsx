@@ -18,12 +18,9 @@ import useDebounce from '../../../utils/useDebounce';
 import moment from "moment";
 //import { useQuery } from 'react-query';
 //import { fetchQueryTodos } from '../../../hooks/todos-with-query';
-import { Box, FormControl, TextField } from '@mui/material';
+import { Box, FormControl } from '@mui/material';
 import './DemoComponents.style.scss';
 import { DateRange } from '@mui/lab/DateRangePicker';
-import DateAdapter from '@mui/lab/AdapterMoment';
-import LocalizationProvider from '@mui/lab/LocalizationProvider';
-import DatePicker from '@mui/lab/DatePicker';
 
 type DatePickerRange = DateRange<Date>;
 
@@ -45,8 +42,8 @@ export const DemoComponents: React.FC = () => {
     const handleMessageBoxClose = () => {
         setOpen(false);
     };
-    const [dateRange, setDateRange] = useState<DatePickerRange>([null,null]);
-    const [form, setForm] = useState({ userName: '', email: '', item: [{ label: 'Nike', value: 'Nike' }], searchTerm: '', startDate: null, endDate: moment(), address: { addressLine1: '', addressLine2: '', state: '', city: '', postalCode: '' } });
+    const [dateRange, setDateRange] = useState<DatePickerRange>([new Date(), new Date()]);
+    const [form, setForm] = useState({ userName: '', email: '', item: [{ label: 'Nike', value: 'Nike' }], searchTerm: '', startDate: moment().format("MM/DD/YYYY"), endDate: moment().format("MM/DD/YYYY"), address: { addressLine1: '', addressLine2: '', state: '', city: '', postalCode: '' } });
     const debouncedValue = useDebounce<string>(form.searchTerm, 1000);
     const items = [
         { label: 'Amazon', value: 'Amazon' },
@@ -64,7 +61,7 @@ export const DemoComponents: React.FC = () => {
         setTempValue(debouncedValue);
     }, [debouncedValue]);
     const onDateRangeChange = (name: string, newValue: DatePickerRange) => setDateRange(newValue);
-    const onDateChange = (name: string, newValue: Date | string | null | moment.Moment ) => setForm(x => ({ ...x, [name]: (name==="startDate" || name==="endDate") && newValue ? moment(newValue).format('MM/DD/YYYY'):null }));
+    const onDateChange = (name: string, newValue: Date | string | null | moment.Moment) => setForm(x => ({ ...x, [name]: (name === "startDate" || name === "endDate") && newValue ? moment(newValue).format('MM/DD/YYYY') : null }));
     const { t } = useTranslation();
     return (
         <div>
@@ -216,59 +213,58 @@ export const DemoComponents: React.FC = () => {
 
             <div className="App" style={{ 'marginLeft': '20px' }}>
                 <div className={'app__main'}>
-                    
+
                     <Box
                         sx={{
                             display: 'flex',
                             flexWrap: 'wrap',
-                            marginLeft: '70px', 
+                            marginLeft: '70px',
                             marginBottom: '20px',
                             '& > :not(style)': {
                                 m: 1,
-                                minWidth: '400px'
+                                minWidth: '200px'
                             },
                         }}
                     >
-                        
-                        {dateRange[0]?moment(dateRange[0]).format('MM/DD/YYYY'):''} to 
-                        {dateRange[1]?moment(dateRange[1]).format('MM/DD/YYYY'):''}
+                              
+                        {dateRange[0] ? moment(dateRange[0]).format('MM/DD/YYYY') : ''} to
+                        {dateRange[1] ? moment(dateRange[1]).format('MM/DD/YYYY') : ''}
                         <DatePickerV2
                             label="DATE RANGE"
                             type="date-range"
                             id="cust-filter-date-range"
                             // disableBeforeDate={form.startDate}
-                            placeholder="Date Range"
+                            placeholder={{start:"From", end: "To"}}
                             name="dateRange"
                             onDateRangeChange={onDateRangeChange}
                             dateRangeValue={dateRange}
                             required
                         />
-                        <br/>
-                        
+                        <br />
+
                         <DatePickerV2
-                            label="FROM DATE"
+                            label="Select Date"
                             type="single-date"
                             id="cust-filter-start-date"
-                            // disableBeforeDate={form.startDate}
-                            placeholder="Start date"
+                           
+                            placeholder="From"
                             name="startDate"
                             onChange={onDateChange}
                             value={form.startDate}
                             required
                         /> <span>{form.startDate}</span>
-
-<LocalizationProvider dateAdapter={DateAdapter}>
-  <DatePicker
-    label="Basic example"
-    value={form.startDate}
-    onChange={(newValue) => {
-        onDateChange("startDate",newValue);
-    }}
-    renderInput={(params) => <TextField {...params} />}
-  />
-</LocalizationProvider>
+                        <DatePickerV2
+                            type="single-date"
+                            id="cust-filter-end-date"
+                            disableBeforeDate={form.endDate}
+                            placeholder="End date"
+                            name="endDate"
+                            onChange={onDateChange}
+                            value={form.endDate}
+                            required
+                        /> <span>{form.endDate}</span>
                     </Box>
-                    
+
                     <Input name='userName'
                         label='User Name'
                         type='text'
