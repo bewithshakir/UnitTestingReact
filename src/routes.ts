@@ -15,6 +15,11 @@ export const routes = [
         path: "/customer/addCustomer",
         component: lazy(() => import('./pages/CustomerOnboarding/AddCustomer/AddCustomer')),
         exact: true
+      },
+      {
+        path: "/customer/viewCustomer",
+        component: lazy(() => import('./pages/CustomerOnboarding/AddCustomer/AddCustomer')),
+        exact: true
       }]
   },
   {

@@ -135,18 +135,41 @@ const formStatusProps: IFormStatusProps = {
 const AddCustomer: React.FC = () => {
     const location = useLocation();
     const history = useHistory();
+    
+    
     useEffect(() => {
-        const data = location.state;
-        console.log(location);
-        console.log(data);
-        getDataForSelectedCustomer("d917eb08-e5b9-4fb4-a346-b8bbbec8ceb4");
-        if (data) {
+        const selectedCustomerId = location.state; 
+        console.log(selectedCustomerId);
+        if(selectedCustomerId) {
+            getDataForSelectedCustomer("" + selectedCustomerId);
             setDisabled(true);
         } else {
-            // console.log("Came from Add button flow")
+            setEditShown(false);
         }
     }, [location]);
 
+    //below 2 methods to segregate the list of emergency contacts and ap contacts from get api response
+    const getEmergencyContacts = (data: any) => {
+        const TempData:any = [];
+        data.map((obj:any) => { 
+            if(obj.customerContactTypeNm === "emergency") {
+                TempData.push(obj);
+            }
+        });
+        return TempData;
+    };
+
+    const getAPContacts= (data: any) => {
+        const TempData: any = [];
+        data.map((obj: any) => {
+            if (obj.customerContactTypeNm === "ap_contact") {
+                TempData.push(obj);
+            }
+        });
+        return TempData;
+    };
+
+    //to populate all the data in the form fields
     const populateDataInAllFields = (dataToPopulate: any) => {
         console.log(dataToPopulate.customer.PaymentType.paymentTypeNm + "  ::  " + dataToPopulate.customer.InvoiceFrequency.invoiceFrequencyNm );
         formik.setFieldValue('customerName', dataToPopulate.customer.companyNm);
@@ -161,12 +184,14 @@ const AddCustomer: React.FC = () => {
         formik.setFieldValue('email', dataToPopulate.customer.contactEmailId);
         formik.setFieldValue('phoneNumber', dataToPopulate.customer.contactPhoneNo);
         formik.setFieldValue("paymentType", dataToPopulate.customer.PaymentType.paymentTypeNm);
-        formik.setFieldValue("invoiceFrequency", dataToPopulate.customer.InvoiceFrequency.invoiceFrequencyNm);
+        formik.setFieldValue("invoiceFrequency", dataToPopulate.customer.invoiceFrequencyId);
         formik.setFieldValue("firstSettlementDt", dataToPopulate.customer.firstSettlementDt);
         formik.setFieldValue("paymentTerm", dataToPopulate.customer.paymentTerm);
-                
+        const emergenyContactList = getEmergencyContacts(dataToPopulate.customerContact);
+        const APContactList = getAPContacts(dataToPopulate.customerContact);
+              console.log(emergenyContactList);
+              console.log(APContactList);
         setDisabled(true);
-
     };
 
     const { t } = useTranslation();
@@ -218,6 +243,8 @@ const AddCustomer: React.FC = () => {
     const [isDisabled, setDisabled] = useState(false);
 
     const [isEditMode, setEditMode] = useState(false);
+
+    const [isEditShown, setEditShown] = useState(true);
 
     const handleModelToggle = () => {
         setOpen(prev => !prev);
@@ -300,7 +327,7 @@ const AddCustomer: React.FC = () => {
                     lot: data.lotLevel, business: data.businessLevel, vehicle: data.vehicleLevel
                 })
             };
-            axios.put(`http://52.146.63.31/api/customer-service/customers/d917eb08-e5b9-4fb4-a346-b8bbbec8ceb4`, apiPayload) 
+            axios.put(`http://52.146.63.31/api/customer-service/customers/${location.state}`, apiPayload)
                 .then(function (response) {
                     setAPIResponse(true);
                     if (response.data) {
@@ -312,15 +339,8 @@ const AddCustomer: React.FC = () => {
                     }
                 })
                 .catch(function (error: any) {
-                    const response = error.response;
-                    if (
-                        response.data === 'user already exist' &&
-                        response.status === 400
-                    ) {
-                        setFormStatus(formStatusProps.duplicate);
-                    } else {
-                        setFormStatus(formStatusProps.error);
-                    }
+                    console.log(error);
+                    setFormStatus(formStatusProps.error);
                 });
         } catch (error) {
             setFormStatus(formStatusProps.error);
@@ -379,14 +399,12 @@ const AddCustomer: React.FC = () => {
                 editCustomerData(values, actions.resetForm);
             } else {
                 createNewCustomer(values);
-                getDataForSelectedCustomer("d917eb08-e5b9-4fb4-a346-b8bbbec8ceb4");
+                getDataForSelectedCustomer("" + location.state);
             }
 
         },
         enableReinitialize: true,
     });
-
-    
 
     const isFormFieldChange = () => formik.dirty;
 
@@ -417,12 +435,12 @@ const AddCustomer: React.FC = () => {
                                     <Typography variant="h3" component="h3" gutterBottom className="fw-bold" mb={1} style={{ width: "86%" }}>
                                         Customer Profile
                                     </Typography>
-                                    <Button
+                                    {isEditShown && <Button
                                         types="edit"
                                         aria-label="edit"
                                         onClick={handleEditButtonClick}
                                         startIcon={<EditIcon />}
-                                    />
+                                    /> }
                                 </div>
                                 <Grid container mt={1}>
                                     <Grid item md={12} mt={2} mb={1}>

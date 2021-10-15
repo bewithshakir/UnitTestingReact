@@ -20,16 +20,12 @@ export const PanelHeader: React.FC<InfoPanelProps> = ({ info, headingText, panel
     const { t } = useTranslation();
     const history = useHistory();
     const navigateToCustomerPage = () => {
-        console.log("#####");
-        console.log(info);
-        // history.push("/Customer");
         history.push({
-            pathname: "/customer/addCustomer",
-            state: { data: info }
+            pathname: "/customer/viewCustomer",
+            state: info.customerId
         });
     };
     
-    // console.log(info);
     return (<div className="right_info_panel_header">
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static">
@@ -49,9 +45,7 @@ export const PanelHeader: React.FC<InfoPanelProps> = ({ info, headingText, panel
                                 label: t("right-info-panel.settings.view & edit details")
                             }
                         ]}
-                        onSelect={() => {
-                            navigateToCustomerPage();
-                        }}
+                        onSelect={navigateToCustomerPage}
                     />}
                     {panelType === "customer-filter" && <IconButton
                         edge="start"

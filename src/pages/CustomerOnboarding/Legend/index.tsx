@@ -8,16 +8,24 @@ import { ListSubheader } from '@mui/material';
 import "./style.scss";
 import { boxSystem, config } from './config';
 import { useTranslation } from 'react-i18next';
-import { useHistory, useLocation } from 'react-router-dom';
+import {  useHistory, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 
 
 const Legend: React.FC = () => {
   const { t } = useTranslation();
-  const { pathname } = useLocation();
+  const { pathname, state } = useLocation();
   const history = useHistory();
   useEffect(()=>{
-    history.push("/customer/addCustomer");
+    if(state) {
+      history.push({
+        pathname: "/customer/viewCustomer",
+        state: state
+      });
+    } else {
+      history.push("/customer/addCustomer");
+    }
+    
   },[]);
   const onItemClick = (index: number) => {
     return index;
