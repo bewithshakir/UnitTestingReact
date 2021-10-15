@@ -34,7 +34,7 @@ const paymentTypes = [
 ];
 
 interface filterParamsProps {
-    [key: string]: string[]
+    [key: string]: string[] | null[] | null
 }
 
 interface InfoPanelProps {
@@ -63,7 +63,6 @@ const initialValues: filterForm = {
 let filterParams: filterParamsProps = {};
 
 export const FilterContent: React.FC<InfoPanelProps> = ({ provideFilterParams, onClose }) => {
-    const [formSubmitClicked, setFormSubmitClicked] = React.useState<boolean>(false);
     const [formValuesSaved, setFormValuesSaved] = React.useState<filterForm | null>(null);
     const filterFormData = useCustomerFilterStore((state) => state.filterFormData);
     const setFormData = useCustomerFilterStore((state) => state.setFormData);
@@ -72,16 +71,33 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ provideFilterParams, o
     const { theme } = useTheme();
     const { t } = useTranslation();
 
+    const prepateLastFormWithPayload = () =>{
+        if (filterFormData && Object.keys(filterFormData).length > 0) {
+            for (const [key, value] of Object.entries(filterFormData)) {
+                if(key === 'fromDate' || key === 'toDate'){
+                    formik.setFieldValue(key, value?moment(value) : null);
+                    if(!filterParams.date){
+                        filterParams.date = [];
+                    }
+                    if(key === 'fromDate'){
+                        filterParams.date[0] = value?moment(value).format("MM-DD-YYYY"):null;
+                    }else if(key === 'toDate'){
+                        filterParams.date[1] = value?moment(value).format("MM-DD-YYYY"):null;
+                    }
+                }else{
+                    formik.setFieldValue(key, value);
+                    filterParams[key] = value.length>0?value.map((obj: { label: string, value: string }) => obj.value):[];
+                }
+                
+            }
+        }
+    };
+
     useEffect(() => {
         filterParams = {};
-        setFormSubmitClicked(false);
         if (filterFormData) {
             setFormValuesSaved(filterFormData);
-            if (filterFormData && Object.keys(filterFormData).length > 0) {
-                for (const [key, value] of Object.entries(filterFormData)) {
-                    formik.setFieldValue(key, key === 'fromDate' || key === 'toDate' ? moment(value) : value);
-                }
-            }
+            prepateLastFormWithPayload();
         }
     }, []);
 
@@ -114,7 +130,7 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ provideFilterParams, o
         }
     }));
 
-    const onDateChange = (name: string, value: null | moment.Moment) => {
+    const onDateChange = (name: string, value: null | string | moment.Moment) => {
         formik.setFieldValue(name, value);
         if (name == "fromDate") {
             filterParams.date = [moment(value).format("MM-DD-YYYY"), filterParams.date && filterParams.date[1] ? moment(filterParams.date[1]).format("MM-DD-YYYY") : ''];
@@ -132,7 +148,6 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ provideFilterParams, o
         return val;
     };
     const applyFilter = (formData: filterForm, resetForm: Function) => {
-        setFormSubmitClicked(true);
         if (provideFilterParams && Object.keys(filterParams).length > 0) {
             setFormData(formData);
             provideFilterParams(filterParams);
@@ -142,8 +157,8 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ provideFilterParams, o
     };
 
     const clearFilter = (formData: filterForm, resetForm: Function) => {
-        setFormSubmitClicked(false);
         setFormValuesSaved(null);
+        filterParams={};
         if (provideFilterParams) {
             provideFilterParams(filterParams);
         }
@@ -247,9 +262,6 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ provideFilterParams, o
                         />
                     </Grid>
                 </Grid>
-                {!formik.dirty && formSubmitClicked && (
-                    <div className="filter-error-box">Please select the criteria to apply the filter</div>
-                )}
 
                 <div className="cust_filter_buttons_container">
                     <ClearBtn
@@ -262,6 +274,7 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ provideFilterParams, o
                     <ApplyBtn
                         type="submit"
                         types="save"
+                        disabled={!formik.dirty}
                         aria-label={t("customer-filter-panel.buttons.apply")}
                     >
                         {t("customer-filter-panel.buttons.apply")}
