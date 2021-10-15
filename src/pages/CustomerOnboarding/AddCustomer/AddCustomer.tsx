@@ -118,6 +118,10 @@ interface IFormStatusProps {
 }
 
 const formStatusProps: IFormStatusProps = {
+    editsuccess: {
+        message: 'Data updated successfully',
+        type: 'EditSuccess',
+    },
     success: {
         message: 'Signed up successfully.',
         type: 'Success',
@@ -266,21 +270,11 @@ const AddCustomer: React.FC = () => {
                 .then(response => response.data)
                 .then(({ data }) => {
                     if (data) {
-                        console.log("%%%%");
-                        console.log(data);
                         populateDataInAllFields(data);
                     }
                 })
-                .catch(function (error: any) {
-                    const response = error.response;
-                    if (
-                        response.data === 'user already exist' &&
-                        response.status === 400
-                    ) {
-                        setFormStatus(formStatusProps.duplicate);
-                    } else {
-                        setFormStatus(formStatusProps.error);
-                    }
+                .catch(function () {
+                    setFormStatus(formStatusProps.error);
                 });
         } catch (error) {
             setFormStatus(formStatusProps.error);
@@ -331,15 +325,14 @@ const AddCustomer: React.FC = () => {
                 .then(function (response) {
                     setAPIResponse(true);
                     if (response.data) {
-                        setFormStatus(formStatusProps.success);
+                        setFormStatus(formStatusProps.editsuccess);
                         setTimeout(() => {
                             setAPIResponse(false);
                         }, 6000);
                         resetForm({});
                     }
                 })
-                .catch(function (error: any) {
-                    console.log(error);
+                .catch(function () {
                     setFormStatus(formStatusProps.error);
                 });
         } catch (error) {
