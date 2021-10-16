@@ -19,6 +19,7 @@ import moment from "moment";
 //import { useQuery } from 'react-query';
 //import { fetchQueryTodos } from '../../../hooks/todos-with-query';
 import { Box, FormControl } from '@mui/material';
+import { TimePicker } from '../TimePicker/TimePicker.component';
 import './DemoComponents.style.scss';
 
 export const DemoComponents: React.FC = () => {
@@ -39,7 +40,7 @@ export const DemoComponents: React.FC = () => {
     const handleMessageBoxClose = () => {
         setOpen(false);
     };
-    const [form, setForm] = useState({ userName: '', email: '', item: [{ label: 'Nike', value: 'Nike' }], searchTerm: '', startDate: moment(), endDate: moment(), address:{addressLine1:'', addressLine2:'', state:'', city:'', postalCode:''} });
+    const [form, setForm] = useState({ userName: '', email: '', item: [{ label: 'Nike', value: 'Nike' }], searchTerm: '', startDate: moment(), time: { hour: null, minute: null, timeStr:'' }, endDate: moment(), address: { addressLine1: '', addressLine2: '', state: '', city: '', postalCode: '' } });
     const debouncedValue = useDebounce<string>(form.searchTerm, 1000);
     const items = [
         { label: 'Amazon', value: 'Amazon' },
@@ -48,12 +49,12 @@ export const DemoComponents: React.FC = () => {
         { label: 'Apple', value: 'Apple' },
         { label: 'Hp', value: 'Hp' }
     ];
-    const handleSelect = (name:any,e:any) => setForm(x=>({ ...x, [name]: e}));
+    const handleSelect = (name: any, e: any) => setForm(x => ({ ...x, [name]: e }));
     const handleChange = (e: any) => setForm(x => ({ ...x, [e.target.name]: e.target.value }));
-    const setTempValue = (value:any) => {
+    const setTempValue = (value: any) => {
         return value;
     };
-    useEffect(() => { 
+    useEffect(() => {
         setTempValue(debouncedValue);
     }, [debouncedValue]);
     const onDateChange = (name: string, newValue: Date | string | null | moment.Moment) => setForm(x => ({ ...x, [name]: newValue }));
@@ -123,7 +124,7 @@ export const DemoComponents: React.FC = () => {
                             }
                         ]}
                         onSelect={(value) => {
-                           return value;
+                            return value;
                         }}
                     />
                 </FormControl>
@@ -144,7 +145,7 @@ export const DemoComponents: React.FC = () => {
                             }
                         ]}
                         onSelect={(value) => {
-                           return value;
+                            return value;
                         }}
                     />
                 </FormControl>
@@ -207,6 +208,25 @@ export const DemoComponents: React.FC = () => {
             <Footer />
 
             <div className="App" style={{ 'marginLeft': '20px' }}>
+                {/* temporary styles */}
+                <Box style={{ 'marginLeft': '100px', 'marginBottom': '20px', width: '200px' }}>
+                        <TimePicker
+                            label=''
+                            id="time-picker"
+                            name="start-time"
+                            value={form.time}
+                            onChange={handleChange} />
+                        <DatePicker
+                            label="FROM DATE"
+                            id="cust-filter-end-date"
+                            disableBeforeDate={form.startDate}
+                            placeholder="To Date"
+                            name="endDate"
+                            onChange={onDateChange}
+                            value={form.endDate}
+                            required
+                        />
+                    </Box>
                 <div className={'app__main'}>
                     <Input name='userName'
                         label='User Name'
@@ -239,19 +259,7 @@ export const DemoComponents: React.FC = () => {
                         onChange={handleChange}
                     />
                     {/* <GoogleAutoCompleteAddress name='address' onChange={handleChange} value={form.address}/> */}
-                    {/* temporary styles */}
-                    <Box style={{ 'marginLeft': '20px', 'marginBottom': '20px' }}>
-                        <DatePicker
-                            label="FROM DATE"
-                            id="cust-filter-end-date"
-                            disableBeforeDate={form.startDate}
-                            placeholder="To Date"
-                            name="endDate"
-                            onChange={onDateChange}
-                            value={form.endDate}
-                            required
-                        />
-                    </Box>
+                    
 
                 </div>
 

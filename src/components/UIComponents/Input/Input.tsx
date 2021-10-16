@@ -20,6 +20,9 @@ interface props {
   helperText?: string
   onChange?: (...args: any[]) => void;
   onBlur?: (...args: any[]) => void;
+  onFocus?:(...args: any[]) => void;
+  onClick?:(...args: any[]) => void;
+  autoFocus?:boolean
 }
 
 export default function Input (props: props) {
@@ -50,7 +53,7 @@ export default function Input (props: props) {
           type={props.type}
           error={props.error}
           onChange={props.onChange}
-          onBlur={props.onBlur}
+          onClick={props.onClick}
         />
         {props.helperText && (
           <FormHelperText
@@ -70,4 +73,5 @@ Input.defaultProps = {
   id: "input",
   autoComplete: "new-password",
   error: false,
+  autoFocus: false
 };

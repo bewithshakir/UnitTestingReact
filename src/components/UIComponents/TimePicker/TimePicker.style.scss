@@ -1,0 +1,15 @@
+.time-picker-container{
+    position: relative;
+    .time-div{
+        position: sticky;
+        
+        z-index: 9999;
+        // width: 300px;
+        height: 500px;
+        display: none;
+        &.open{
+            display: block;
+        }
+
+    }
+}
