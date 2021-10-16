@@ -5,8 +5,8 @@ import Toolbar from '@mui/material/Toolbar';
 import React from "react";
 import { useTranslation } from "react-i18next";
 
-import { NavLink } from "react-router-dom";
-import { BackIcon, CustomerProfileIcon2, LeftArrowIcon, LogoutIcon, SettingsIcon, USAFlagIcon } from "../../../assets/icons";
+import { NavLink, useHistory } from "react-router-dom";
+import { BackIcon, CustomerProfileIcon2, LogoutIcon, SettingsIcon, USAFlagIcon } from "../../../assets/icons";
 import { useStore } from "../../../store";
 import { Button } from "../Button/Button.component";
 import NotificationsMenu from '../Menu/NotificationsMenu.component';
@@ -24,6 +24,7 @@ interface HorizontalBarProps {
 export default function HorizontalBar (props: HorizontalBarProps) {
   const { t } = useTranslation();
   const version =  useStore((state)=>state.version);
+  const  history =  useHistory();
   function handleClick (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
     return event;
   }
@@ -76,11 +77,18 @@ export default function HorizontalBar (props: HorizontalBarProps) {
     </>);
   }
 
+  const handleCustomerBack =  ()=>{
+    history.push("/customer/addCustomer");
+  };
+
   function versionBreadcrumbsMany () {
     return (<>
       <Breadcrumbs separator={<NavigateNextIcon />} aria-label="breadcrumb">
+        <Link className="breadcrubs-title" onClick={handleCustomerBack}>
+          Cutomer Name
+        </Link>
         <Link className="breadcrubs-title" href="#" onClick={handleClick}>
-          Accurate Transportation
+          {"Add Lot & Details"}
         </Link>
       </Breadcrumbs>
     </>);
@@ -96,7 +104,7 @@ export default function HorizontalBar (props: HorizontalBarProps) {
               aria-label="back button"
               onClick={handleBack}
               size="small"
-              startIcon={<SvgIcon component={version === "Breadcrumbs-Many" ? LeftArrowIcon : BackIcon} />}
+              startIcon={<SvgIcon component={BackIcon} />}
             />)
             }
             {
