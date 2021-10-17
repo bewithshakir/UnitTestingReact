@@ -34,8 +34,8 @@ interface TimePickerProps {
 
 const initialTimeObj = { timeStr: '', hour: null, minute: null, merd: '', timeStrVal:'' };
 
-const timeValidation = (strTime:string) =>  {
-    return moment(strTime, timeValidationFormat, true).isValid();
+const timeValidation = (str:string) =>  {
+    return moment(str, timeValidationFormat, true).isValid();
 };
 
 export const TimePicker: React.FC<TimePickerProps> = ({ label, value, onChange , name,required}) => {
@@ -46,8 +46,7 @@ export const TimePicker: React.FC<TimePickerProps> = ({ label, value, onChange ,
     const [open, setOpen] = React.useState(Boolean(anchorEl));
     const inputRef = React.useRef();
 
-    useEffect(() => {
-        setInputValue(value);
+    const checkTimeAndPrepareTimeObj = (value: string) =>{
         if(value && timeValidation(value)){
             setValidTime(true);
             const hourStr = moment(value,timeFormatStr).hours();
@@ -60,12 +59,22 @@ export const TimePicker: React.FC<TimePickerProps> = ({ label, value, onChange ,
                 
             });
         }else{
-            if(required){
+            if(value){
                 setValidTime(false);
             }else{
-                setValidTime(true);
-            }   
+                if(required){
+                    setValidTime(false);
+                }else{
+                    setValidTime(true);
+                }   
+            }
         }
+    };
+
+    useEffect(() => {
+        setInputValue(value);
+        checkTimeAndPrepareTimeObj(value);
+        
     }, [value]);
 
 
@@ -84,7 +93,8 @@ export const TimePicker: React.FC<TimePickerProps> = ({ label, value, onChange ,
     const onChangeByInput = (e: any) => {
         setInputValue(e.target.value);
         onChange(name,e.target.value);
-        setTimeObj((timeObj) => ({ ...timeObj, timeStr: e.target.value }));
+        const val = e.target.value;
+        checkTimeAndPrepareTimeObj(val);
     };
 
     const onChangeByTimePicker = (timeStr: string | '' , merdVal: string | '') => {
