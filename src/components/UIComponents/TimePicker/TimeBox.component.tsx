@@ -4,9 +4,6 @@ import { Paper, Grid } from '@mui/material';
 import { Button } from '../Button/Button.component';
 import {AM, PM} from './config';
 
-
-
-
 type timeMer = 'AM' | 'PM' | '';
 
 interface TimeBoxProps {
@@ -14,9 +11,8 @@ interface TimeBoxProps {
     onClose: (...args: any) => void;
     applyTimeStr: (...args: any) => void;
     timeStrVal: string | '';
+    timeDiffMins?: number;
 }
-
-
 
 export const TimeBox: React.FC<TimeBoxProps> = ({ applyTimeStr, onClose, merd , timeStrVal}) => {
     const generateTimeArray = () => {
@@ -75,5 +71,9 @@ export const TimeBox: React.FC<TimeBoxProps> = ({ applyTimeStr, onClose, merd , 
             </Paper>
         </div >
     );
+};
+
+TimeBox.defaultProps = {
+    timeDiffMins:30
 };
 

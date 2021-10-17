@@ -213,10 +213,11 @@ export const DemoComponents: React.FC = () => {
                 <Box style={{ 'marginLeft': '100px', 'marginBottom': '20px', width: '200px' }}>
                         {form.time}
                         <TimePicker
-                            label=''
+                            label='Start time'
                             id="time-picker"
                             name="time"
                             value={form.time}
+                            timeDiffMins={30}
                             onChange={onTimeChange} />
                         <DatePicker
                             label="FROM DATE"

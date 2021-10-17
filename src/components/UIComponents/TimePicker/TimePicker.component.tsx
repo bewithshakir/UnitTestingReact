@@ -4,15 +4,14 @@ import './TimePicker.style.scss';
 import Input from '../Input/Input';
 import { TimeBox } from './TimeBox.component';
 import moment from 'moment';
-import {timeFormatStr, timeValidationFormat, AM} from './config';
-
+import { timeFormatStr, timeValidationFormat, AM, initialTimeObj, timeErrorText } from './config';
 
 type timeMer = 'AM' | 'PM' | '';
 
 interface TimeFormat {
     timeStr: string | '',
     merd: string | timeMer,
-    timeStrVal:  string | '';
+    timeStrVal: string | '';
 }
 
 interface TimePickerProps {
@@ -24,21 +23,17 @@ interface TimePickerProps {
     value: string | '';
     helperText?: string;
     onChange: (name: string, newValue: string | '') => void;
-    onClose?: ((arg: { date: moment.Moment | null }) => void) | undefined;
-    disableBeforeDate?: moment.Moment | null;
-    disableAfterDate?: moment.Moment | null;
-    displayFormat?: string;
     id: string;
     name: string;
+    timeDiffMins?: number;
 }
 
-const initialTimeObj = { timeStr: '', hour: null, minute: null, merd: '', timeStrVal:'' };
-
-const timeValidation = (str:string) =>  {
+const timeValidation = (str: string) => {
     return moment(str, timeValidationFormat, true).isValid();
 };
 
-export const TimePicker: React.FC<TimePickerProps> = ({ label, value, onChange , name,required}) => {
+
+export const TimePicker: React.FC<TimePickerProps> = ({ label, value, onChange, name, required, timeDiffMins, disabled, id, helperText, error }) => {
     const [validTime, setValidTime] = React.useState<boolean>(true);
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const [inputValue, setInputValue] = React.useState<string>('');
@@ -46,27 +41,27 @@ export const TimePicker: React.FC<TimePickerProps> = ({ label, value, onChange ,
     const [open, setOpen] = React.useState(Boolean(anchorEl));
     const inputRef = React.useRef();
 
-    const checkTimeAndPrepareTimeObj = (value: string) =>{
-        if(value && timeValidation(value)){
+    const checkTimeAndPrepareTimeObj = (value: string) => {
+        if (value && timeValidation(value)) {
             setValidTime(true);
-            const hourStr = moment(value,timeFormatStr).hours();
+            const hourStr = moment(value, timeFormatStr).hours();
             const twelveHourStr = (hourStr % 12) || 12;
-            const minuteStr = moment(value,timeFormatStr).minutes();
+            const minuteStr = moment(value, timeFormatStr).minutes();
             setTimeObj({
-                timeStr: value, 
+                timeStr: value,
                 merd: value.slice(-2),
                 timeStrVal: ('0' + twelveHourStr).slice(-2) + ':' + ('0' + minuteStr).slice(-2)
-                
+
             });
-        }else{
-            if(value){
+        } else {
+            if (value) {
                 setValidTime(false);
-            }else{
-                if(required){
+            } else {
+                if (required) {
                     setValidTime(false);
-                }else{
+                } else {
                     setValidTime(true);
-                }   
+                }
             }
         }
     };
@@ -74,7 +69,7 @@ export const TimePicker: React.FC<TimePickerProps> = ({ label, value, onChange ,
     useEffect(() => {
         setInputValue(value);
         checkTimeAndPrepareTimeObj(value);
-        
+
     }, [value]);
 
 
@@ -92,34 +87,34 @@ export const TimePicker: React.FC<TimePickerProps> = ({ label, value, onChange ,
 
     const onChangeByInput = (e: any) => {
         setInputValue(e.target.value);
-        onChange(name,e.target.value);
+        onChange(name, e.target.value);
         const val = e.target.value;
         checkTimeAndPrepareTimeObj(val);
     };
 
-    const onChangeByTimePicker = (timeStr: string | '' , merdVal: string | '') => {
-        const composedTimeStr = moment(`${timeStr} ${merdVal?merdVal:AM}`,timeFormatStr).format(timeFormatStr);
+    const onChangeByTimePicker = (timeStr: string | '', merdVal: string | '') => {
+        const composedTimeStr = moment(`${timeStr} ${merdVal ? merdVal : AM}`, timeFormatStr).format(timeFormatStr);
         setInputValue(composedTimeStr);
-        onChange(name,composedTimeStr); 
-        setTimeObj((timeObj) => ({ 
-            ...timeObj, 
+        onChange(name, composedTimeStr);
+        setTimeObj((timeObj) => ({
+            ...timeObj,
             merd: merdVal,
             timeStr: composedTimeStr,
-            timeStrVal:timeStr
+            timeStrVal: timeStr
         }));
     };
 
     return (
         <ClickAwayListener onClickAway={handleClickAway}>
             <div className="time-picker-container">
-                <Input id="time-picker-input" autoFocus={true} autoComplete='off' error={!validTime} ref={inputRef} label={label} value={inputValue} onChange={onChangeByInput} onClick={handleClick} />
+                <Input id={id} autoFocus={true} name={name} helperText={helperText?helperText:(!validTime)?timeErrorText:''} error={error?error:!validTime} disabled={disabled} autoComplete='off' ref={inputRef} label={label} value={inputValue} onChange={onChangeByInput} onClick={handleClick} />
                 <Popper
                     className="custom-popper"
                     disablePortal={true}
                     open={open}
                     anchorEl={anchorEl}
                 >
-                    <TimeBox timeStrVal={timeObj.timeStrVal} applyTimeStr={onChangeByTimePicker} merd={timeObj.merd} onClose={handleClickAway} />
+                    <TimeBox timeDiffMins={timeDiffMins} timeStrVal={timeObj.timeStrVal} applyTimeStr={onChangeByTimePicker} merd={timeObj.merd} onClose={handleClickAway} />
                 </Popper>
             </div>
         </ClickAwayListener>
@@ -131,5 +126,6 @@ TimePicker.defaultProps = {
     required: false,
     id: "time-picker",
     error: false,
-    value: ''
+    value: '',
+    timeDiffMins: 30
 };
