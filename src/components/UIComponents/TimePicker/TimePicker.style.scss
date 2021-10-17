@@ -1,15 +1,66 @@
-.time-picker-container{
-    position: relative;
-    .time-div{
-        position: sticky;
-        
-        z-index: 9999;
-        // width: 300px;
-        height: 500px;
-        display: none;
-        &.open{
-            display: block;
+div{
+    .time-picker-container{
+        position: relative;
+        .custom-popper{
+            margin: 0px;
+            left: 0px;
+            top: 62px;
+            right: 0px;
+            transform: translate3d(0px, 62px, 0px);
+            // width: 100%;
+            z-index: 999;
+            .MuiInputBase-input{
+                font-size: 14px;
+            }
         }
-
+        .time-div{
+           width: 100%;
+           .MuiPaper-root{
+            box-shadow: 6px 6px 14px #00000026;
+            border-radius: 0px;
+            padding: 10px;
+            // width: 149px;
+            // height: 197px;
+            // overflow-y: scroll;
+            .MuiGrid-container{
+                
+                &::-webkit-scrollbar {
+                    display: none;
+                }
+                .hm-box{
+                    font-size: 14px;
+                    .hours-scroll{
+                        height: 197px;
+                        overflow-y: scroll;
+                    }
+                    &::-webkit-scrollbar {
+                        // width: 0;  /* Remove scrollbar space */
+                        // background: transparent;  /* Optional: just make scrollbar invisible */
+                    }
+                    .h-m-value-box{
+                        margin-bottom: 15px;
+                        cursor: pointer;
+                        &.selected{
+                            color: var(--Primary);
+                            font-weight: 700;
+                        }
+                    }
+                }
+                
+                .meridiem-div{
+                    margin:0px 20px;
+                    font-size: 14px;
+                    .MuiButton-root{
+                        margin-bottom: 15px;
+                        font-size: 14px;
+                        width: 50px;
+                        height: 30px;
+                    }
+                }
+            }
+           }
+        }
+        
     }
+    
 }

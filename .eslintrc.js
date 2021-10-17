@@ -21,7 +21,6 @@ module.exports = {
         "@typescript-eslint"
     ],
     "rules": {
-        "no-debugger":"off",
         'indent': 'off',
         "react/react-in-jsx-scope": "off",
         "linebreak-style": 0,

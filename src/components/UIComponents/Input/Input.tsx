@@ -22,7 +22,8 @@ interface props {
   onBlur?: (...args: any[]) => void;
   onFocus?:(...args: any[]) => void;
   onClick?:(...args: any[]) => void;
-  autoFocus?:boolean
+  autoFocus?:boolean,
+  ref?:any
 }
 
 export default function Input (props: props) {

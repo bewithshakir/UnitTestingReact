@@ -1,15 +1,19 @@
-import React, { } from 'react';
-// import Input from '@mui/material/Input';
-import { InputAdornment } from '@mui/material';
-import { Paper, Popper } from '@mui/material';
+import React, { useEffect } from 'react';
+import { Popper, ClickAwayListener } from '@mui/material';
 import './TimePicker.style.scss';
-import Input from "../Input/Input";
-import { ClickAwayListener } from '@mui/material';
+import Input from '../Input/Input';
+import { TimeBox } from './TimeBox.component';
+import moment from 'moment';
+import {timeFormatStr, timeValidationFormat} from './config';
+
+
+type timeMer = 'AM' | 'PM' | '';
 
 interface TimeFormat {
-    timeStr: string,
+    timeStr: string | '',
     hour: number | null,
-    minute: number | null
+    minute: number | null,
+    merd: string | timeMer
 }
 
 interface TimePickerProps {
@@ -18,9 +22,10 @@ interface TimePickerProps {
     disabled?: boolean;
     required?: boolean;
     error?: boolean;
-    value: TimeFormat | null;
+    // value: TimeFormat | null;
+    value: string | '';
     helperText?: string;
-    onChange: (name: string, timeObject: 'string' | number | null) => void;
+    onChange: (name: string, newValue: string | '') => void;
     onClose?: ((arg: { date: moment.Moment | null }) => void) | undefined;
     disableBeforeDate?: moment.Moment | null;
     disableAfterDate?: moment.Moment | null;
@@ -29,37 +34,81 @@ interface TimePickerProps {
     name: string;
 }
 
-export const TimePicker: React.FC<TimePickerProps> = ({ label, value }) => {
+const initialTimeObj = { timeStr: '', hour: null, minute: null, merd: '' };
 
+const timeValidation = (strTime:string) =>  {
+    return moment(strTime, timeValidationFormat, true).isValid();
+};
+
+export const TimePicker: React.FC<TimePickerProps> = ({ label, value, onChange , name,required}) => {
+    const [validTime, setValidTime] = React.useState<boolean>(true);
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+    const [inputValue, setInputValue] = React.useState<string>('');
+    const [timeObj, setTimeObj] = React.useState<TimeFormat>(initialTimeObj);
     const [open, setOpen] = React.useState(Boolean(anchorEl));
-    const popperId = open ? 'simple-popper' : undefined;
+    const inputRef = React.useRef();
+
+    useEffect(() => {
+        setInputValue(value);
+        if(value && timeValidation(value)){
+            setValidTime(true);
+            const timeHourStr = moment(value,timeFormatStr).hours();
+            setTimeObj({
+                timeStr: value, 
+                hour: timeHourStr>12?(timeHourStr-12):12, 
+                minute: moment(value,timeFormatStr).minutes(), 
+                merd: value.slice(-2)
+            });
+        }else{
+            if(required){
+                setValidTime(false);
+            }else{
+                setValidTime(true);
+            }   
+        }
+    }, [value]);
+
+
     const handleClick = (event: any) => {
-        console.warn(event.currentTarget);
         setAnchorEl(event.currentTarget);
         setOpen(true);
     };
 
-    const onChange = () => {
-        setOpen(true);
-    };
-
-    const onBlur = () => {
+    const handleClickAway = () => {
+        if (inputRef && inputRef.current) {
+            setAnchorEl(inputRef.current);
+        }
         setOpen(false);
     };
 
+    const onChangeByInput = (e: any) => {
+        setInputValue(e.target.value);
+        onChange(name,e.target.value);
+        setTimeObj((timeObj) => ({ ...timeObj, timeStr: e.target.value }));
+    };
+
+    const onChangeByTimePicker = (timeStr: string | '') => {
+        debugger;
+        setInputValue(timeStr);
+        onChange(name,timeStr);
+        console.warn(timeValidation(timeStr)); 
+        setTimeObj((timeObj) => ({ 
+            ...timeObj, 
+            timeStr: timeStr 
+        }));
+    };
+
     return (
-        <ClickAwayListener onClickAway={handleClick}>
+        <ClickAwayListener onClickAway={handleClickAway}>
             <div className="time-picker-container">
-                <Input label={label} autoFocus={false} value={value?.timeStr} onChange={onChange} onClick={handleClick} onBlur={onBlur} />
+                <Input id="time-picker-input" autoFocus={true} autoComplete='off' error={!validTime} ref={inputRef} label={label} value={inputValue} onChange={onChangeByInput} onClick={handleClick} />
                 <Popper
-                    id={popperId}
+                    className="custom-popper"
+                    disablePortal={true}
                     open={open}
                     anchorEl={anchorEl}
                 >
-                    <div className='time-div'>
-                        <Paper > Hello Simple Popper</Paper>
-                    </div>
+                    <TimeBox hour={timeObj.hour} applyTimeStr={onChangeByTimePicker} minute={timeObj.minute} merd={timeObj.merd} onClose={handleClickAway} />
                 </Popper>
             </div>
         </ClickAwayListener>
@@ -71,9 +120,5 @@ TimePicker.defaultProps = {
     required: false,
     id: "time-picker",
     error: false,
-    value: {
-        timeStr: '',
-        hour: null,
-        minute: null
-    }
+    value: ''
 };

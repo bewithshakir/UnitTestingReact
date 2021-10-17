@@ -40,7 +40,7 @@ export const DemoComponents: React.FC = () => {
     const handleMessageBoxClose = () => {
         setOpen(false);
     };
-    const [form, setForm] = useState({ userName: '', email: '', item: [{ label: 'Nike', value: 'Nike' }], searchTerm: '', startDate: moment(), time: { hour: null, minute: null, timeStr:'' }, endDate: moment(), address: { addressLine1: '', addressLine2: '', state: '', city: '', postalCode: '' } });
+    const [form, setForm] = useState({ userName: '', email: '', item: [{ label: 'Nike', value: 'Nike' }], searchTerm: '', startDate: moment(), time: '05:30 PM', endDate: moment(), address: { addressLine1: '', addressLine2: '', state: '', city: '', postalCode: '' } });
     const debouncedValue = useDebounce<string>(form.searchTerm, 1000);
     const items = [
         { label: 'Amazon', value: 'Amazon' },
@@ -58,6 +58,7 @@ export const DemoComponents: React.FC = () => {
         setTempValue(debouncedValue);
     }, [debouncedValue]);
     const onDateChange = (name: string, newValue: Date | string | null | moment.Moment) => setForm(x => ({ ...x, [name]: newValue }));
+    const onTimeChange = (name: string, newValue: string | '' ) => setForm(x => ({ ...x, [name]: newValue }));
     const { t } = useTranslation();
     return (
         <div>
@@ -210,12 +211,13 @@ export const DemoComponents: React.FC = () => {
             <div className="App" style={{ 'marginLeft': '20px' }}>
                 {/* temporary styles */}
                 <Box style={{ 'marginLeft': '100px', 'marginBottom': '20px', width: '200px' }}>
+                        {form.time}
                         <TimePicker
                             label=''
                             id="time-picker"
-                            name="start-time"
+                            name="time"
                             value={form.time}
-                            onChange={handleChange} />
+                            onChange={onTimeChange} />
                         <DatePicker
                             label="FROM DATE"
                             id="cust-filter-end-date"
