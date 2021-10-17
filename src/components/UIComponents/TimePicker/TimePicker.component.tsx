@@ -90,9 +90,7 @@ export const TimePicker: React.FC<TimePickerProps> = ({ label, value, onChange ,
     const onChangeByTimePicker = (timeStr: string | '' , merdVal: string | '') => {
         const composedTimeStr = moment(`${timeStr} ${merdVal?merdVal:AM}`,timeFormatStr).format(timeFormatStr);
         setInputValue(composedTimeStr);
-        onChange(name,composedTimeStr);
-        
-        console.warn(timeValidation(timeStr)); 
+        onChange(name,composedTimeStr); 
         setTimeObj((timeObj) => ({ 
             ...timeObj, 
             merd: merdVal,

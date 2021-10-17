@@ -30,7 +30,6 @@ export const TimeBox: React.FC<TimeBoxProps> = ({ applyTimeStr, onClose, merd , 
             const wrappedHH = ("0" + ((hh == 12) ? "12" : (hh % 12 == 0 ? "12" : hh % 12))).slice(-2);
             const wrappedMM = ("0" + mm).slice(-2);
             times[i] = wrappedHH + ':' + wrappedMM;
-            console.warn("For Loop--->", timeStrVal);
             arr.push(<div
                 className={`h-m-value-box ${timeStrVal === times[i] ? 'selected' : ''}`}
                 key={i}
