@@ -126,6 +126,5 @@ TimePicker.defaultProps = {
     required: false,
     id: "time-picker",
     error: false,
-    value: '',
-    timeDiffMins: 30
+    value: ''
 };

@@ -2,7 +2,7 @@ import React from 'react';
 import './TimePicker.style.scss';
 import { Paper, Grid } from '@mui/material';
 import { Button } from '../Button/Button.component';
-import {AM, PM} from './config';
+import {AM, PM, defaultTimeDiff} from './config';
 
 type timeMer = 'AM' | 'PM' | '';
 
@@ -14,9 +14,8 @@ interface TimeBoxProps {
     timeDiffMins?: number;
 }
 
-export const TimeBox: React.FC<TimeBoxProps> = ({ applyTimeStr, onClose, merd , timeStrVal}) => {
+export const TimeBox: React.FC<TimeBoxProps> = ({ applyTimeStr, onClose, merd , timeStrVal, timeDiffMins}) => {
     const generateTimeArray = () => {
-        const x = 30;
         const times: any[] = [];
         let tt = 0;
         const arr = [];
@@ -33,7 +32,7 @@ export const TimeBox: React.FC<TimeBoxProps> = ({ applyTimeStr, onClose, merd , 
             >
                 {times[i]}
             </div>);
-            tt = tt + x;
+            tt = timeDiffMins? tt + timeDiffMins: tt + defaultTimeDiff;
         }
         return <div className=''>{arr}</div>;
 
@@ -71,9 +70,5 @@ export const TimeBox: React.FC<TimeBoxProps> = ({ applyTimeStr, onClose, merd , 
             </Paper>
         </div >
     );
-};
-
-TimeBox.defaultProps = {
-    timeDiffMins:30
 };
 

@@ -217,7 +217,6 @@ export const DemoComponents: React.FC = () => {
                             id="time-picker"
                             name="time"
                             value={form.time}
-                            timeDiffMins={30}
                             onChange={onTimeChange} />
                         <DatePicker
                             label="FROM DATE"
