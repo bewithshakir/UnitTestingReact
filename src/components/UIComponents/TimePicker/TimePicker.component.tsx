@@ -4,16 +4,15 @@ import './TimePicker.style.scss';
 import Input from '../Input/Input';
 import { TimeBox } from './TimeBox.component';
 import moment from 'moment';
-import {timeFormatStr, timeValidationFormat} from './config';
+import {timeFormatStr, timeValidationFormat, AM} from './config';
 
 
 type timeMer = 'AM' | 'PM' | '';
 
 interface TimeFormat {
     timeStr: string | '',
-    hour: number | null,
-    minute: number | null,
-    merd: string | timeMer
+    merd: string | timeMer,
+    timeStrVal:  string | '';
 }
 
 interface TimePickerProps {
@@ -22,7 +21,6 @@ interface TimePickerProps {
     disabled?: boolean;
     required?: boolean;
     error?: boolean;
-    // value: TimeFormat | null;
     value: string | '';
     helperText?: string;
     onChange: (name: string, newValue: string | '') => void;
@@ -34,7 +32,7 @@ interface TimePickerProps {
     name: string;
 }
 
-const initialTimeObj = { timeStr: '', hour: null, minute: null, merd: '' };
+const initialTimeObj = { timeStr: '', hour: null, minute: null, merd: '', timeStrVal:'' };
 
 const timeValidation = (strTime:string) =>  {
     return moment(strTime, timeValidationFormat, true).isValid();
@@ -52,12 +50,14 @@ export const TimePicker: React.FC<TimePickerProps> = ({ label, value, onChange ,
         setInputValue(value);
         if(value && timeValidation(value)){
             setValidTime(true);
-            const timeHourStr = moment(value,timeFormatStr).hours();
+            const hourStr = moment(value,timeFormatStr).hours();
+            const twelveHourStr = (hourStr % 12) || 12;
+            const minuteStr = moment(value,timeFormatStr).minutes();
             setTimeObj({
                 timeStr: value, 
-                hour: timeHourStr>12?(timeHourStr-12):12, 
-                minute: moment(value,timeFormatStr).minutes(), 
-                merd: value.slice(-2)
+                merd: value.slice(-2),
+                timeStrVal: ('0' + twelveHourStr).slice(-2) + ':' + ('0' + minuteStr).slice(-2)
+                
             });
         }else{
             if(required){
@@ -87,14 +87,17 @@ export const TimePicker: React.FC<TimePickerProps> = ({ label, value, onChange ,
         setTimeObj((timeObj) => ({ ...timeObj, timeStr: e.target.value }));
     };
 
-    const onChangeByTimePicker = (timeStr: string | '') => {
-        debugger;
-        setInputValue(timeStr);
-        onChange(name,timeStr);
+    const onChangeByTimePicker = (timeStr: string | '' , merdVal: string | '') => {
+        const composedTimeStr = moment(`${timeStr} ${merdVal?merdVal:AM}`,timeFormatStr).format(timeFormatStr);
+        setInputValue(composedTimeStr);
+        onChange(name,composedTimeStr);
+        
         console.warn(timeValidation(timeStr)); 
         setTimeObj((timeObj) => ({ 
             ...timeObj, 
-            timeStr: timeStr 
+            merd: merdVal,
+            timeStr: composedTimeStr,
+            timeStrVal:timeStr
         }));
     };
 
@@ -108,7 +111,7 @@ export const TimePicker: React.FC<TimePickerProps> = ({ label, value, onChange ,
                     open={open}
                     anchorEl={anchorEl}
                 >
-                    <TimeBox hour={timeObj.hour} applyTimeStr={onChangeByTimePicker} minute={timeObj.minute} merd={timeObj.merd} onClose={handleClickAway} />
+                    <TimeBox timeStrVal={timeObj.timeStrVal} applyTimeStr={onChangeByTimePicker} merd={timeObj.merd} onClose={handleClickAway} />
                 </Popper>
             </div>
         </ClickAwayListener>

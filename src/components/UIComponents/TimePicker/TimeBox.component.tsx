@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './TimePicker.style.scss';
 import { Paper, Grid } from '@mui/material';
 import { Button } from '../Button/Button.component';
-import moment from 'moment';
-import {timeFormatStr, AM, PM} from './config';
+import {AM, PM} from './config';
 
 
 
@@ -11,25 +10,15 @@ import {timeFormatStr, AM, PM} from './config';
 type timeMer = 'AM' | 'PM' | '';
 
 interface TimeBoxProps {
-    hour: number | null,
-    minute: number | null,
     merd: string | timeMer,
     onClose: (...args: any) => void;
     applyTimeStr: (...args: any) => void;
+    timeStrVal: string | '';
 }
 
 
 
-export const TimeBox: React.FC<TimeBoxProps> = ({ applyTimeStr, onClose, hour, minute, merd }) => {
-    const [timeStrVal, setTimeStrVal] = useState<string>('');
-    const [merdVal, setMerdVal] = useState<string>('');
-    
-    useEffect(() => {
-        console.warn("check time->", ('0' + hour).slice(-2) + ':' + ('0' + minute).slice(-2));
-        setTimeStrVal(('0' + hour).slice(-2) + ':' + ('0' + minute).slice(-2));
-        setMerdVal(merd.toUpperCase());
-    }, [hour, minute, merd]);
-
+export const TimeBox: React.FC<TimeBoxProps> = ({ applyTimeStr, onClose, merd , timeStrVal}) => {
     const generateTimeArray = () => {
         const x = 30;
         const times: any[] = [];
@@ -41,10 +30,11 @@ export const TimeBox: React.FC<TimeBoxProps> = ({ applyTimeStr, onClose, hour, m
             const wrappedHH = ("0" + ((hh == 12) ? "12" : (hh % 12 == 0 ? "12" : hh % 12))).slice(-2);
             const wrappedMM = ("0" + mm).slice(-2);
             times[i] = wrappedHH + ':' + wrappedMM;
+            console.warn("For Loop--->", timeStrVal);
             arr.push(<div
                 className={`h-m-value-box ${timeStrVal === times[i] ? 'selected' : ''}`}
                 key={i}
-                onClick={(e) => selectTimeStr(e, hh, mm, times[i])}
+                onClick={() => selectTimeStr(hh, mm, times[i])}
             >
                 {times[i]}
             </div>);
@@ -54,19 +44,16 @@ export const TimeBox: React.FC<TimeBoxProps> = ({ applyTimeStr, onClose, hour, m
 
     };
 
-    const selectTimeStr = (e: any, hh: number, mm: number, timeStr: string | '') => {
-
-        setTimeStrVal(timeStr);
-        applyTimeStr(moment(`${timeStr} ${merdVal?merdVal:AM}`,timeFormatStr).format(timeFormatStr));
-        if (merdVal && timeStr) {
+    const selectTimeStr = (hh: number, mm: number, timeStr: string | '') => {
+        applyTimeStr(timeStr, merd);
+        if (merd && timeStr) {
             onClose();
         }
     };
 
-    const selectMeridian = (e: any, mer: string) => {
-        setMerdVal(mer);
-        applyTimeStr(moment(`${timeStrVal?timeStrVal:'12:00'} ${mer}`,timeFormatStr).format(timeFormatStr));
-        if (mer && timeStrVal) {
+    const selectMeridian = (mer: string) => {
+        applyTimeStr(timeStrVal, mer);
+        if (merd && timeStrVal) {
             onClose();
         }
     };
@@ -82,8 +69,8 @@ export const TimeBox: React.FC<TimeBoxProps> = ({ applyTimeStr, onClose, hour, m
 
                     </Grid>
                     <Grid item>
-                        <div className="meridiem-div"><Button types={merdVal === AM ? 'primary' : 'cancel'} onClick={(e) => selectMeridian(e, AM)} className="">{AM}</Button></div>
-                        <div className="meridiem-div"><Button types={merdVal === PM ? 'primary' : 'cancel'} onClick={(e) => selectMeridian(e, PM)} className="">{PM}</Button></div>
+                        <div className="meridiem-div"><Button types={merd === AM ? 'primary' : 'cancel'} onClick={() => selectMeridian(AM)} className="">{AM}</Button></div>
+                        <div className="meridiem-div"><Button types={merd === PM ? 'primary' : 'cancel'} onClick={() => selectMeridian(PM)} className="">{PM}</Button></div>
                     </Grid>
                 </Grid >
             </Paper>

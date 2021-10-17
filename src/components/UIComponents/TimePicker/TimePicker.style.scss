@@ -23,15 +23,15 @@ div{
             // height: 197px;
             // overflow-y: scroll;
             .MuiGrid-container{
-                
+                height: 197px;
+                overflow-y: scroll;
                 &::-webkit-scrollbar {
                     display: none;
                 }
                 .hm-box{
                     font-size: 14px;
                     .hours-scroll{
-                        height: 197px;
-                        overflow-y: scroll;
+                        
                     }
                     &::-webkit-scrollbar {
                         // width: 0;  /* Remove scrollbar space */
