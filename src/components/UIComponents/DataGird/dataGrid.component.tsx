@@ -21,6 +21,8 @@ interface GridBodyProps {
     headCells: HeadCellsOptions[];
     isError?: string;
     isLoading?: boolean;
+    enableRowSelection?: boolean;
+    enableRowAction?: boolean;
     openDrawer?: any;
     selectedRows: string[];
     handleCheckChange: (customerId: string) => void;
@@ -94,6 +96,22 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
                         <TableRow key={indexKey} sx={{
                             cursor: "pointer"
                         }}>
+                            {
+                                props.enableRowSelection ?
+                                    <TableCell
+                                        className="grid-cell-parent"
+                                        component="th"
+                                        scope="row"
+                                        onClick={() => openDrawer(row)}
+                                    >
+                                        <Checkbox
+                                            name={`checkbox${row.customerId}`}
+                                            checked={isItemSelected}
+                                            onChange={() => props.handleCheckChange(row.customerId)}
+                                            onClick={e => e.stopPropagation()}
+                                        />
+                                    </TableCell>
+                                    : null}
                             {keys.map((key: any, index: any) =>
                                 <TableCell
                                     className="grid-cell-parent"
@@ -103,7 +121,6 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
                                     onClick={() => openDrawer(row)}
                                 >
                                     {
-
                                         props.headCells[index].type === 'text' ?
                                             index === 0 ? <b>{row[key]}</b> : row[key]
                                             :
@@ -116,33 +133,32 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
                                                     startIcon={< LocationOnOutlinedIcon />}
                                                 >
                                                     {0}
-                                                </Button> :
-                                                props.headCells[index].type === 'checkbox' ?
-                                                    <Checkbox
-                                                        name={`checkbox${row.customerId}`}
-                                                        checked={isItemSelected}
-                                                        onChange={() => props.handleCheckChange(row.customerId)}
-                                                        onClick={e => e.stopPropagation()}
-                                                    />
-                                                    :
-                                                    props.headCells[index].type === 'icon' ?
-                                                        <FormControl>
-                                                            <DataGridActionsMenu
-                                                                options={[{ label: t("menus.data-grid-actions.raise a request"), },
-                                                                { label: t("menus.data-grid-actions.fee & driver details"), },
-                                                                { label: t("menus.data-grid-actions.other details"), },
-                                                                { label: t("menus.data-grid-actions.contact details"), }
-                                                                ]}
-                                                                onSelect={(e: React.SyntheticEvent, value: any) => {
-                                                                    e.stopPropagation();
-                                                                    return value;
-                                                                }}
-                                                            />
-                                                        </FormControl>
-                                                        : ""
+                                                </Button> : ""
                                     }
                                 </TableCell>
                             )}
+                            {
+                                props.enableRowAction ?
+                                    <TableCell
+                                        className="grid-cell-parent"
+                                        component="th"
+                                        scope="row"
+                                        onClick={() => openDrawer(row)}
+                                    >
+                                        <FormControl>
+                                            <DataGridActionsMenu
+                                                options={[{ label: t("menus.data-grid-actions.raise a request"), },
+                                                { label: t("menus.data-grid-actions.fee & driver details"), },
+                                                { label: t("menus.data-grid-actions.other details"), },
+                                                { label: t("menus.data-grid-actions.contact details"), }
+                                                ]}
+                                                onSelect={(e: React.SyntheticEvent, value: any) => {
+                                                    return value;
+                                                }}
+                                            />
+                                        </FormControl>
+                                    </TableCell>
+                                    : null}
                         </TableRow>
                         <TableRow>
                             <TableCell className="grid-cell" colSpan={12}>
