@@ -7,7 +7,6 @@ import ActionsMenu from '../Menu/ActionsMenu.component';
 import ProfileMenu from '../Menu/ProfileMenu.component';
 import DataGridActionsMenu from '../Menu/DataGridActionsMenu.component';
 import { ExportIcon, PlusIcon, DeleteIcon, ImportIcon, SettingsIcon, LogoutIcon, CustomerProfileIcon2 } from '../../../assets/icons';
-import GridComponent from '../DataGird/grid.component';
 import ToastMessage from '../ToastMessage/ToastMessage.component';
 import { Footer } from '../Footer/Footer.component';
 import Input from '../Input/Input';
@@ -39,7 +38,7 @@ export const DemoComponents: React.FC = () => {
     const handleMessageBoxClose = () => {
         setOpen(false);
     };
-    const [form, setForm] = useState({ userName: '', email: '', item: [{ label: 'Nike', value: 'Nike' }], searchTerm: '', startDate: moment(), endDate: moment(), address:{addressLine1:'', addressLine2:'', state:'', city:'', postalCode:''} });
+    const [form, setForm] = useState({ userName: '', email: '', item: [{ label: 'Nike', value: 'Nike' }], searchTerm: '', startDate: moment(), endDate: moment(), address: { addressLine1: '', addressLine2: '', state: '', city: '', postalCode: '' } });
     const debouncedValue = useDebounce<string>(form.searchTerm, 1000);
     const items = [
         { label: 'Amazon', value: 'Amazon' },
@@ -48,12 +47,12 @@ export const DemoComponents: React.FC = () => {
         { label: 'Apple', value: 'Apple' },
         { label: 'Hp', value: 'Hp' }
     ];
-    const handleSelect = (name:any,e:any) => setForm(x=>({ ...x, [name]: e}));
+    const handleSelect = (name: any, e: any) => setForm(x => ({ ...x, [name]: e }));
     const handleChange = (e: any) => setForm(x => ({ ...x, [e.target.name]: e.target.value }));
-    const setTempValue = (value:any) => {
+    const setTempValue = (value: any) => {
         return value;
     };
-    useEffect(() => { 
+    useEffect(() => {
         setTempValue(debouncedValue);
     }, [debouncedValue]);
     const onDateChange = (name: string, newValue: Date | string | null | moment.Moment) => setForm(x => ({ ...x, [name]: newValue }));
@@ -73,7 +72,6 @@ export const DemoComponents: React.FC = () => {
                 <p className={'content__paragraph'}>
                     {t("para1")} <b>{t("para1")}</b> ,<b>{t("para2")}</b> <b>{t("para3")}</b> <b>{t("para4")}</b>
                 </p>
-                <GridComponent />
                 <div className={'content__buttons'}>
                     <Button
                         types={'primary'}
@@ -123,7 +121,7 @@ export const DemoComponents: React.FC = () => {
                             }
                         ]}
                         onSelect={(value) => {
-                           return value;
+                            return value;
                         }}
                     />
                 </FormControl>
@@ -144,7 +142,7 @@ export const DemoComponents: React.FC = () => {
                             }
                         ]}
                         onSelect={(value) => {
-                           return value;
+                            return value;
                         }}
                     />
                 </FormControl>

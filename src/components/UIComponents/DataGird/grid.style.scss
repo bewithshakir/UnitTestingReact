@@ -3,6 +3,12 @@ div {
         max-height: calc(100vh - 200px);
 
     }
+    .grid-cell-parent{
+        padding: 5px 20px;
+        font-family: "Arial";
+        color: var(--Darkgray);
+        letter-spacing: unset;
+    }
     .grid-cell {
         padding-bottom: 0;
         padding-top: 0;

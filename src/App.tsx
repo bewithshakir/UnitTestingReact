@@ -9,7 +9,7 @@ import { useTheme } from './contexts/Theme/Theme.context';
 import SideBarDrawer from './components/UIComponents/SideBarMenu/SideBarMenu.component';
 
 
-const App = () => {
+const App = (): JSX.Element => {
   const { theme } = useTheme();
   const queryClient = new QueryClient({
     defaultOptions: {
@@ -21,11 +21,11 @@ const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <Router>
- 
+
         <div style={{
           ...theme
         } as React.CSSProperties}>
-          <SideBarDrawer/>
+          <SideBarDrawer />
         </div>
       </Router>
       <ReactQueryDevtools initialIsOpen />

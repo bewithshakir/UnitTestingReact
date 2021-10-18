@@ -24,6 +24,21 @@ interface ContentProps {
   rows?: [];
   version: string
 }
+
+const headCells = [
+  { id: "", label: "", type: 'checkbox' },
+  { id: "customerId", label: "ID", type: 'text' },
+  { id: "customerName", label: "CUSTOMER NAME", type: 'text' },
+  { id: "contactName", label: "CONTACT NAME", type: 'text' },
+  { id: "address", label: "ADDRESS", type: 'text' },
+  { id: "city", label: "CITY", type: 'text' },
+  { id: "state", label: "STATE", type: 'text' },
+  { id: "zipCode", label: "ZIP", type: 'text' },
+  { id: "lots", label: "LOTS", type: 'button' },
+  { id: "paymentType", label: "SETTLEMENT TYPE", type: 'text' },
+  { id: "", label: "", type: 'icon' }
+];
+
 const Content: React.FC<ContentProps> = () => {
   const history = useHistory();
   const [info, setInfo] = React.useState({});
@@ -159,12 +174,15 @@ const Content: React.FC<ContentProps> = () => {
           </Grid>
         </Grid>
         <Grid container pt={2.5} display="flex" flexGrow={1}>
+
           <GridComponent
             rows={list}
+            header={headCells}
             isLoading={isLoading}
             getPages={fetchNextPage}
             openDrawer={openDrawer}
           />
+
           <RightInfoPanel panelType="customer-filter" open={custFilterPanelVisible} headingText={"Filters"} provideFilterParams={getFilterParams} onClose={handleCustFilterPanelClose} />
           <RightInfoPanel panelType="info-view" open={drawerOpen} headingText={"Accurate Transportation"} info={info} onClose={drawerClose} />
         </Grid>
