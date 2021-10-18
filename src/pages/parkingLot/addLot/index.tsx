@@ -1,11 +1,9 @@
 import React from "react";
 import { HorizontalBarVersionState, useStore } from "../../../store";
 
-addLot.propTypes = {
 
-};
 
-function addLot(): React.ReactElement {
+function AddLot(): React.ReactElement {
     const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
     setVersion("Breadcrumbs-Many");
     return (
@@ -13,4 +11,4 @@ function addLot(): React.ReactElement {
     );
 }
 
-export default addLot;
+export default AddLot;

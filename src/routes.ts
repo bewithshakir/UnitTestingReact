@@ -21,7 +21,7 @@ export const routes = [
       },
       {
         path: "/customer/parkingLots",
-        component: lazy(() => import("./pages/ParkingLot/index")),
+        component: lazy(() => import("./pages/ParkingLot")),
         version:"Breadcrumbs-Single",
         exact: true,
       }

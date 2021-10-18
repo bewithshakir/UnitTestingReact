@@ -2,11 +2,8 @@ import { Button } from '@mui/material';
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 
-parkingLot.propTypes = {
 
-};
-
-function parkingLot(props: any): React.ReactElement {
+function ParkingLot(props: any): React.ReactElement {
     console.warn(props);
     const history = useHistory();
     const onItemClick = () => {
@@ -19,4 +16,4 @@ function parkingLot(props: any): React.ReactElement {
     );
 }
 
-export default parkingLot;
+export default ParkingLot;
