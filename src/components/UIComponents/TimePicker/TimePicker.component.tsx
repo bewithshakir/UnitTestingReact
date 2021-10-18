@@ -92,6 +92,17 @@ export const TimePicker: React.FC<TimePickerProps> = ({ label, value, onChange, 
         checkTimeAndPrepareTimeObj(val);
     };
 
+    const handleKeyDown = (e: any) => {
+        // checkTimeAndPrepareTimeObj(val);
+        if(e.keyCode != 8 && (inputValue.length === 2)) {
+            setInputValue((value)=>value += ":");
+        }else{
+            setInputValue(e.target.value);
+        }
+        //collapse double colons
+        setInputValue((value)=>value.replace(/:+/g,":"));
+    };
+
     const onChangeByTimePicker = (timeStr: string | '', merdVal: string | '') => {
         const composedTimeStr = moment(`${timeStr} ${merdVal ? merdVal : AM}`, timeFormatStr).format(timeFormatStr);
         setInputValue(composedTimeStr);
@@ -107,7 +118,20 @@ export const TimePicker: React.FC<TimePickerProps> = ({ label, value, onChange, 
     return (
         <ClickAwayListener onClickAway={handleClickAway}>
             <div className="time-picker-container">
-                <Input id={id} autoFocus={true} name={name} helperText={helperText?helperText:(!validTime)?timeErrorText:''} error={error?error:!validTime} disabled={disabled} autoComplete='off' innerRef={inputRef} label={label} value={inputValue} onChange={onChangeByInput} onClick={handleClick} />
+                <Input 
+                id={id} 
+                autoFocus={true} 
+                name={name} 
+                helperText={helperText?helperText:(!validTime)?timeErrorText:''} 
+                error={error?error:!validTime} disabled={disabled} 
+                autoComplete='off' 
+                innerRef={inputRef} 
+                label={label} 
+                value={inputValue} 
+                onChange={onChangeByInput} 
+                onClick={handleClick} 
+                onKeyDown={handleKeyDown}
+                />
                 <Popper
                     className="custom-popper"
                     disablePortal={true}

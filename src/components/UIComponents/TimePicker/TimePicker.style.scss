@@ -23,13 +23,15 @@ div{
             // height: 197px;
             // overflow-y: scroll;
             .MuiGrid-container{
-                height: 197px;
-                overflow-y: scroll;
+                
                 &::-webkit-scrollbar {
-                    display: none;
+                    // display: none;
                 }
                 .hm-box{
                     font-size: 14px;
+                    padding-right: 10px;;
+                    height: 197px;
+                    overflow-y: scroll;
                     .hours-scroll{
                         
                     }
@@ -48,7 +50,7 @@ div{
                 }
                 
                 .meridiem-div{
-                    margin:0px 20px;
+                    margin:0px 20px 0px 10px;
                     font-size: 14px;
                     .MuiButton-root{
                         margin-bottom: 15px;

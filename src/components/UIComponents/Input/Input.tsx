@@ -22,9 +22,10 @@ interface props {
   onBlur?: (...args: any[]) => void;
   onFocus?:(...args: any[]) => void;
   onClick?:(...args: any[]) => void;
-  autoFocus?:boolean,
-  ref?:any,
-  innerRef?:any
+  autoFocus?:boolean;
+  ref?:any;
+  innerRef?:any;
+  onKeyDown?:(...args: any[]) => void;
 }
 
 export default function Input (props: props) {
@@ -36,11 +37,12 @@ export default function Input (props: props) {
   return (
     <Fragment>
       <FormControl className='formInput'>
-        <InputLabel shrink htmlFor={props.id} style={{ color: 'var(--Darkgray)' }} ref={props.innerRef} aria-labelledby={props.label} aria-required={props.required}>
+        <InputLabel shrink htmlFor={props.id} style={{ color: 'var(--Darkgray)' }} aria-labelledby={props.label} aria-required={props.required}>
           <b>{props.label.toUpperCase()}{props.required && props.label && (<span className='super'>*</span>)}</b>
         </InputLabel>
         <InputBase
           id={props.id}
+          ref={props.innerRef} 
           style={{ width: props.width }}
           aria-describedby={props.description}
           name={props.name}
@@ -56,6 +58,7 @@ export default function Input (props: props) {
           error={props.error}
           onChange={props.onChange}
           onClick={props.onClick}
+          onKeyDown={props.onKeyDown}
         />
         {props.helperText && (
           <FormHelperText
