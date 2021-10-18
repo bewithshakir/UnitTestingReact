@@ -21,7 +21,7 @@ export const routes = [
       },
       {
         path: "/customer/parkingLots",
-        component: lazy(() => import("./pages/parkingLot/index")),
+        component: lazy(() => import("./pages/ParkingLot/index")),
         version:"Breadcrumbs-Single",
         exact: true,
       }
@@ -30,7 +30,7 @@ export const routes = [
   {
     version:"Breadcrumbs-Many",
     path: "/customer/parkingLots/addLot",
-    component: lazy(() => import('./pages/parkingLot/addLot')),
+    component: lazy(() => import('./pages/ParkingLot/AddLot')),
     exact: false,
   },
   {
