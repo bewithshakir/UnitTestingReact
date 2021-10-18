@@ -13,8 +13,6 @@ interface customerFilterFormObj {
     state?: any[],
     city?: any[],
     paymentType?: any[],
-    // fromDate: moment.Moment | null,
-    // toDate: moment.Moment | null,
     date: DatePickerRange
 }
 
