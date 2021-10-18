@@ -19,6 +19,8 @@ interface GridComponentProps {
     getPages?: any
     ref?: any
     openDrawer?: any
+    enableRowSelection?: boolean,
+    enableRowAction?: boolean,
 }
 
 const GridComponent: React.FC<GridComponentProps> = (props) => {
@@ -26,7 +28,7 @@ const GridComponent: React.FC<GridComponentProps> = (props) => {
     const [orderBy, setOrderBy] = React.useState("");
     const [selected, setSelected] = React.useState<selectedRow>([]);
 
-    const { rows } = props;
+    const { rows, enableRowSelection, enableRowAction } = props;
     const handleRequestSort = (event: any, property: any) => {
         const isAsc = orderBy === property && order === "asc";
         setOrder(isAsc ? "desc" : "asc");
@@ -79,6 +81,8 @@ const GridComponent: React.FC<GridComponentProps> = (props) => {
                     order={order}
                     orderBy={orderBy}
                     headCells={props.header}
+                    enableRowSelection={enableRowSelection}
+                    enableRowAction={enableRowAction}
                     onRequestSort={handleRequestSort}
                     onSelectAllClick={handleSelectAllClick}
                     numSelected={selected.length}
@@ -88,6 +92,8 @@ const GridComponent: React.FC<GridComponentProps> = (props) => {
                     order={order}
                     orderBy={orderBy}
                     selectedRows={selected}
+                    enableRowSelection={enableRowSelection}
+                    enableRowAction={enableRowAction}
                     handleCheckChange={handleCheckChange}
                     headCells={props.header}
                     {...props}
@@ -98,4 +104,11 @@ const GridComponent: React.FC<GridComponentProps> = (props) => {
 
 };
 
+GridComponent.defaultProps = {
+    enableRowSelection: false,
+    enableRowAction: false,
+};
+
+
 export default GridComponent;
+

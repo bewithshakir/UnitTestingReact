@@ -26,7 +26,6 @@ interface ContentProps {
 }
 
 const headCells = [
-  { id: "", label: "", type: 'checkbox' },
   { id: "customerId", label: "ID", type: 'text' },
   { id: "customerName", label: "CUSTOMER NAME", type: 'text' },
   { id: "contactName", label: "CONTACT NAME", type: 'text' },
@@ -36,7 +35,6 @@ const headCells = [
   { id: "zipCode", label: "ZIP", type: 'text' },
   { id: "lots", label: "LOTS", type: 'button' },
   { id: "paymentType", label: "SETTLEMENT TYPE", type: 'text' },
-  { id: "", label: "", type: 'icon' }
 ];
 
 const Content: React.FC<ContentProps> = () => {
@@ -179,6 +177,8 @@ const Content: React.FC<ContentProps> = () => {
             rows={list}
             header={headCells}
             isLoading={isLoading}
+            enableRowSelection
+            enableRowAction
             getPages={fetchNextPage}
             openDrawer={openDrawer}
           />
