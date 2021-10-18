@@ -15,7 +15,7 @@ interface TimeBoxProps {
 }
 
 export const TimeBox: React.FC<TimeBoxProps> = ({ applyTimeStr, onClose, merd , timeStrVal, timeDiffMins}) => {
-    const generateTimeArray = () => {
+    const generateTimeDivStack = () => {
         const times: any[] = [];
         let tt = 0;
         const arr = [];
@@ -58,9 +58,8 @@ export const TimeBox: React.FC<TimeBoxProps> = ({ applyTimeStr, onClose, merd , 
                 <Grid container spacing={1}>
                     <Grid item>
                         <div className='hm-box'>
-                            {generateTimeArray()}
+                            {generateTimeDivStack()}
                         </div>
-
                     </Grid>
                     <Grid item>
                         <div className="meridiem-div"><Button types={merd === AM ? 'primary' : 'cancel'} onClick={() => selectMeridian(AM)} className="">{AM}</Button></div>

@@ -33,7 +33,7 @@ const timeValidation = (str: string) => {
 };
 
 
-export const TimePicker: React.FC<TimePickerProps> = ({ label, value, onChange, name, required, timeDiffMins, disabled, id, helperText, error }) => {
+export const TimePicker: React.FC<TimePickerProps> = ({ label, value, onChange, name, required, timeDiffMins, disabled, id, helperText, error, placeholder }) => {
     const [validTime, setValidTime] = React.useState<boolean>(true);
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const [inputValue, setInputValue] = React.useState<string>('');
@@ -54,15 +54,7 @@ export const TimePicker: React.FC<TimePickerProps> = ({ label, value, onChange, 
 
             });
         } else {
-            if (value) {
-                setValidTime(false);
-            } else {
-                if (required) {
-                    setValidTime(false);
-                } else {
-                    setValidTime(true);
-                }
-            }
+            setValidTime(value?false:!required);
         }
     };
 
@@ -93,13 +85,11 @@ export const TimePicker: React.FC<TimePickerProps> = ({ label, value, onChange, 
     };
 
     const handleKeyDown = (e: any) => {
-        // checkTimeAndPrepareTimeObj(val);
         if(e.keyCode != 8 && (inputValue.length === 2)) {
             setInputValue((value)=>value += ":");
         }else{
             setInputValue(e.target.value);
         }
-        //collapse double colons
         setInputValue((value)=>value.replace(/:+/g,":"));
     };
 
@@ -129,7 +119,8 @@ export const TimePicker: React.FC<TimePickerProps> = ({ label, value, onChange, 
                 label={label} 
                 value={inputValue} 
                 onChange={onChangeByInput} 
-                onClick={handleClick} 
+                onClick={handleClick}
+                placeholder={placeholder} 
                 onKeyDown={handleKeyDown}
                 />
                 <Popper

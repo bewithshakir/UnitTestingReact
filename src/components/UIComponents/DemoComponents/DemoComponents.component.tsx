@@ -217,6 +217,7 @@ export const DemoComponents: React.FC = () => {
                             id="time-picker"
                             name="time"
                             value={form.time}
+                            placeholder="select time"
                             onChange={onTimeChange} />
                         <DatePicker
                             label="FROM DATE"
