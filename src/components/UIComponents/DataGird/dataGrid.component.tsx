@@ -1,5 +1,6 @@
 import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined';
 import { Box, Collapse, Table, TableBody, TableCell, TableHead, TableRow, FormControl } from '@mui/material';
+import Checkbox from '../Checkbox/Checkbox.component';
 import * as React from "react";
 import { useTranslation } from 'react-i18next';
 import { Loader } from '../Loader';
@@ -14,21 +15,27 @@ type HeadCellsOptions = {
 }
 
 interface GridBodyProps {
-    rows?: any,
-    order: string | any,
-    orderBy: string,
-    headCells: HeadCellsOptions[],
-    isError?: string,
-    isLoading?: boolean
-    openDrawer?: any
+    rows?: any;
+    order: string | any;
+    orderBy: string;
+    headCells: HeadCellsOptions[];
+    isError?: string;
+    isLoading?: boolean;
+    enableRowSelection?: boolean;
+    enableRowAction?: boolean;
+    openDrawer?: any;
+    selectedRows: string[];
+    handleCheckChange: (customerId: string) => void;
 }
 
 
 function descendingComparator (a: any, b: any, orderBy: any) {
-    if (b[orderBy] < a[orderBy]) {
+    const valueA = isNaN(a[orderBy]) ? a[orderBy]?.toLowerCase() : Number(a[orderBy]);
+    const valueB = isNaN(b[orderBy]) ? b[orderBy]?.toLowerCase() : Number(b[orderBy]);
+    if (valueB < valueA) {
         return -1;
     }
-    if (b[orderBy] > a[orderBy]) {
+    if (valueB > valueA) {
         return 1;
     }
     return 0;
@@ -57,6 +64,7 @@ function stableSort (array: any, comparator: any) {
 
 const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
     const [selectedIndexKey, setSelectedKey] = React.useState(null);
+
     const { t } = useTranslation();
 
     const getKeys = () => {
@@ -71,51 +79,86 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
             setSelectedKey(key);
         }
     };
-    const openDrawer = (event: React.SyntheticEvent) => {
-        props.openDrawer(event);
+    const openDrawer = (row: any) => {
+        props.openDrawer(row);
     };
+
+    const isSelected = (customerId: string) => props.selectedRows.indexOf(customerId) !== -1;
+
 
     const getRowsData = () => {
         const keys = getKeys();
         return (
             stableSort(props.rows, getComparator(props.order, props.orderBy))
-                .map((row: any, indexKey: any) =>
-                    <React.Fragment key={indexKey}>
+                .map((row: any, indexKey: any) => {
+                    const isItemSelected = isSelected(row.customerId);
+                    return (<React.Fragment key={indexKey}>
                         <TableRow key={indexKey} sx={{
                             cursor: "pointer"
                         }}>
+                            {
+                                props.enableRowSelection ?
+                                    <TableCell
+                                        className="grid-cell-parent"
+                                        component="th"
+                                        scope="row"
+                                        onClick={() => openDrawer(row)}
+                                    >
+                                        <Checkbox
+                                            name={`checkbox${row.customerId}`}
+                                            checked={isItemSelected}
+                                            onChange={() => props.handleCheckChange(row.customerId)}
+                                            onClick={e => e.stopPropagation()}
+                                        />
+                                    </TableCell>
+                                    : null}
                             {keys.map((key: any, index: any) =>
-                                <TableCell component="th" scope="row" key={row[key]} onClick={() => openDrawer(row)}>
-                                    {props.headCells[index].type === 'text'
-                                        ? index === 0 ? <b>{row[key]}</b> : row[key] :
-                                        props.headCells[index].type === 'button' ?
-                                            <Button
-                                                types="accordian"
-                                                aria-label="accordian"
-                                                className="active"
-                                                onClick={(e) => handleCollapaseClick(e, indexKey)}
-                                                startIcon={< LocationOnOutlinedIcon />}
-                                            >
-                                                {0}
-                                            </Button > :
-                                            props.headCells[index].type === 'icon' ?
-                                                <FormControl>
-                                                    <DataGridActionsMenu
-                                                        options={[{ label: t("menus.data-grid-actions.raise a request"), },
-                                                        { label: t("menus.data-grid-actions.fee & driver details"), },
-                                                        { label: t("menus.data-grid-actions.other details"), },
-                                                        { label: t("menus.data-grid-actions.contact details"), }
-                                                        ]}
-                                                        onSelect={(e: React.SyntheticEvent, value: any) => {
-                                                            e.stopPropagation();
-                                                            return value;
-                                                        }}
-                                                    />
-                                                </FormControl>
-                                                : ""
+                                <TableCell
+                                    className="grid-cell-parent"
+                                    component="th"
+                                    scope="row"
+                                    key={row[key]}
+                                    onClick={() => openDrawer(row)}
+                                >
+                                    {
+                                        props.headCells[index].type === 'text' ?
+                                            index === 0 ? <b>{row[key]}</b> : row[key]
+                                            :
+                                            props.headCells[index].type === 'button' ?
+                                                <Button
+                                                    types="accordian"
+                                                    aria-label="accordian"
+                                                    className="active"
+                                                    onClick={(e) => handleCollapaseClick(e, indexKey)}
+                                                    startIcon={< LocationOnOutlinedIcon />}
+                                                >
+                                                    {0}
+                                                </Button> : ""
                                     }
                                 </TableCell>
                             )}
+                            {
+                                props.enableRowAction ?
+                                    <TableCell
+                                        className="grid-cell-parent"
+                                        component="th"
+                                        scope="row"
+                                        onClick={() => openDrawer(row)}
+                                    >
+                                        <FormControl>
+                                            <DataGridActionsMenu
+                                                options={[{ label: t("menus.data-grid-actions.raise a request"), },
+                                                { label: t("menus.data-grid-actions.fee & driver details"), },
+                                                { label: t("menus.data-grid-actions.other details"), },
+                                                { label: t("menus.data-grid-actions.contact details"), }
+                                                ]}
+                                                onSelect={(e: React.SyntheticEvent, value: any) => {
+                                                    return value;
+                                                }}
+                                            />
+                                        </FormControl>
+                                    </TableCell>
+                                    : null}
                         </TableRow>
                         <TableRow>
                             <TableCell className="grid-cell" colSpan={12}>
@@ -135,8 +178,8 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
                                 </Collapse>
                             </TableCell>
                         </TableRow>
-                    </React.Fragment>
-                )
+                    </React.Fragment>);
+                })
         );
     };
 
