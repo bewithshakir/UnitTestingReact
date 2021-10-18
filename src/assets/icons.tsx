@@ -725,6 +725,26 @@ export function SuccessTickIcon (props: React.SVGProps<SVGSVGElement>) {
   );
 }
 
+export function CalendarIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      width="1em"
+      height="1em"
+      viewBox="0 0 20 20"
+      {...props}
+    >
+      <g data-name="Group 1774">
+        <path data-name="Rectangle 2197" fill="none" d="M0 0h20v20H0z" />
+        <path
+          d="M5 0v2h10V0h3v2h2v18H0V2h2V0zm13 8H2v10h16zM5 14v2H3v-2zm4 0v2H7v-2zm4 0v2h-2v-2zm4 0v2h-2v-2zM5 10v2H3v-2zm4 0v2H7v-2zm4 0v2h-2v-2zm4 0v2h-2v-2zm1-6H2v2h16z"
+          fill={props.color || 'var(--Gray)'}
+        />
+      </g>
+    </svg>
+  );
+}
+
+
 
 export function SortByIcon (props: React.SVGProps<SVGSVGElement>) {
   return (
