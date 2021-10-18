@@ -28,10 +28,12 @@ interface GridBodyProps {
 
 
 function descendingComparator (a: any, b: any, orderBy: any) {
-    if (b[orderBy] < a[orderBy]) {
+    const valueA = isNaN(a[orderBy]) ? a[orderBy]?.toLowerCase() : Number(a[orderBy]);
+    const valueB = isNaN(b[orderBy]) ? b[orderBy]?.toLowerCase() : Number(b[orderBy]);
+    if (valueB < valueA) {
         return -1;
     }
-    if (b[orderBy] > a[orderBy]) {
+    if (valueB > valueA) {
         return 1;
     }
     return 0;
