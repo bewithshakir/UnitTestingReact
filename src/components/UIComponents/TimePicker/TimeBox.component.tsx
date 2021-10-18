@@ -23,8 +23,9 @@ export const TimeBox: React.FC<TimeBoxProps> = ({ applyTimeStr, onClose, merd , 
     useEffect(() => {
         if(matchedRefIndex){
             scrollToRef(matchedRefIndex);    
+            matchedRefIndex = null;
         }
-      }, [timeStrVal]);
+      }, []);
 
     const generateTimeDivStack = () => {
         const times: any[] = [];
