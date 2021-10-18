@@ -51,9 +51,13 @@ export const TimePicker: React.FC<TimePickerProps> = ({ label, value, onChange, 
                 timeStr: value,
                 merd: value.slice(-2),
                 timeStrVal: ('0' + twelveHourStr).slice(-2) + ':' + ('0' + minuteStr).slice(-2)
-
             });
         } else {
+            setTimeObj({
+                timeStr: '',
+                merd: '',
+                timeStrVal: ''
+            });
             setValidTime(value?false:!required);
         }
     };
