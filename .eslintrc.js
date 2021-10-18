@@ -22,7 +22,6 @@ module.exports = {
     ],
     "rules": {
         'indent': 'off',
-        "no-debugger":"off",
         "react/react-in-jsx-scope": "off",
         "linebreak-style": 0,
         "semi": [
