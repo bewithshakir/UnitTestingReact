@@ -23,7 +23,8 @@ interface props {
   onFocus?:(...args: any[]) => void;
   onClick?:(...args: any[]) => void;
   autoFocus?:boolean,
-  ref?:any
+  ref?:any,
+  innerRef?:any
 }
 
 export default function Input (props: props) {
@@ -35,7 +36,7 @@ export default function Input (props: props) {
   return (
     <Fragment>
       <FormControl className='formInput'>
-        <InputLabel shrink htmlFor={props.id} style={{ color: 'var(--Darkgray)' }} aria-labelledby={props.label} aria-required={props.required}>
+        <InputLabel shrink htmlFor={props.id} style={{ color: 'var(--Darkgray)' }} ref={props.innerRef} aria-labelledby={props.label} aria-required={props.required}>
           <b>{props.label.toUpperCase()}{props.required && props.label && (<span className='super'>*</span>)}</b>
         </InputLabel>
         <InputBase

@@ -107,7 +107,7 @@ export const TimePicker: React.FC<TimePickerProps> = ({ label, value, onChange, 
     return (
         <ClickAwayListener onClickAway={handleClickAway}>
             <div className="time-picker-container">
-                <Input id={id} autoFocus={true} name={name} helperText={helperText?helperText:(!validTime)?timeErrorText:''} error={error?error:!validTime} disabled={disabled} autoComplete='off' ref={inputRef} label={label} value={inputValue} onChange={onChangeByInput} onClick={handleClick} />
+                <Input id={id} autoFocus={true} name={name} helperText={helperText?helperText:(!validTime)?timeErrorText:''} error={error?error:!validTime} disabled={disabled} autoComplete='off' innerRef={inputRef} label={label} value={inputValue} onChange={onChangeByInput} onClick={handleClick} />
                 <Popper
                     className="custom-popper"
                     disablePortal={true}
