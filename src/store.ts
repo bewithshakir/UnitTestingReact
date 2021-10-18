@@ -1,5 +1,8 @@
 import create from "zustand";
 import { persist } from "zustand/middleware";
+import { DateRange } from '@mui/lab/DateRangePicker';
+
+type DatePickerRange = DateRange<Date>;
 
 export interface HorizontalBarVersionState{
     version: string
@@ -10,8 +13,9 @@ interface customerFilterFormObj {
     state?: any[],
     city?: any[],
     paymentType?: any[],
-    fromDate: moment.Moment | null,
-    toDate: moment.Moment | null
+    // fromDate: moment.Moment | null,
+    // toDate: moment.Moment | null,
+    date: DatePickerRange
 }
 
 interface customerFilterState{
