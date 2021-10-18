@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import SortbyMenu from '../Menu/SortbyMenu.component';
 import ActionsMenu from '../Menu/ActionsMenu.component';
 import ProfileMenu from '../Menu/ProfileMenu.component';
+import { DatePickerInput } from '../DatePickerInput/DatePickerInput.component';
 import DataGridActionsMenu from '../Menu/DataGridActionsMenu.component';
 import { ExportIcon, PlusIcon, DeleteIcon, ImportIcon, SettingsIcon, LogoutIcon, CustomerProfileIcon2 } from '../../../assets/icons';
 import ToastMessage from '../ToastMessage/ToastMessage.component';
@@ -12,13 +13,15 @@ import { Footer } from '../Footer/Footer.component';
 import Input from '../Input/Input';
 import Select from '../Select/MultiSelect';
 import SearchInput from '../SearchInput/SearchInput';
-import { DatePicker } from '../DatePicker/DatePicker.component';
 import useDebounce from '../../../utils/useDebounce';
 import moment from "moment";
 //import { useQuery } from 'react-query';
 //import { fetchQueryTodos } from '../../../hooks/todos-with-query';
 import { Box, FormControl } from '@mui/material';
 import './DemoComponents.style.scss';
+import { DateRange } from '@mui/lab/DateRangePicker';
+
+type DatePickerRange = DateRange<Date>;
 
 export const DemoComponents: React.FC = () => {
     //const { data } = useQuery('repoData', fetchQueryTodos, { retry: false });
@@ -38,7 +41,8 @@ export const DemoComponents: React.FC = () => {
     const handleMessageBoxClose = () => {
         setOpen(false);
     };
-    const [form, setForm] = useState({ userName: '', email: '', item: [{ label: 'Nike', value: 'Nike' }], searchTerm: '', startDate: moment(), endDate: moment(), address: { addressLine1: '', addressLine2: '', state: '', city: '', postalCode: '' } });
+    const [dateRange, setDateRange] = useState<DatePickerRange>([new Date(), new Date()]);
+    const [form, setForm] = useState({ userName: '', email: '', item: [{ label: 'Nike', value: 'Nike' }], searchTerm: '', startDate: moment().format("MM/DD/YYYY"), endDate: moment().format("MM/DD/YYYY"), address: { addressLine1: '', addressLine2: '', state: '', city: '', postalCode: '' } });
     const debouncedValue = useDebounce<string>(form.searchTerm, 1000);
     const items = [
         { label: 'Amazon', value: 'Amazon' },
@@ -55,7 +59,8 @@ export const DemoComponents: React.FC = () => {
     useEffect(() => {
         setTempValue(debouncedValue);
     }, [debouncedValue]);
-    const onDateChange = (name: string, newValue: Date | string | null | moment.Moment) => setForm(x => ({ ...x, [name]: newValue }));
+    const onDateRangeChange = (name: string, newValue: DatePickerRange) => setDateRange(newValue);
+    const onDateChange = (name: string, newValue: Date | string | null | moment.Moment) => setForm(x => ({ ...x, [name]: (name === "startDate" || name === "endDate") && newValue ? moment(newValue).format('MM/DD/YYYY') : null }));
     const { t } = useTranslation();
     return (
         <div>
@@ -206,50 +211,76 @@ export const DemoComponents: React.FC = () => {
 
             <div className="App" style={{ 'marginLeft': '20px' }}>
                 <div className={'app__main'}>
-                    <Input name='userName'
-                        label='User Name'
-                        type='text'
-                        onChange={handleChange}
-                        value={form.userName}
-                        description=''
-                        helperText='User Name'
-                        error
 
-                    />
-                    <Select
-                        name='item'
-                        label='Select item'
-                        value={form.item}
-                        placeholder='Choose'
-                        items={items}
-                        onChange={handleSelect}
-                    />
-                    <Input name='email'
-                        label='Email'
-                        onChange={handleChange}
-                        value={form.email}
-                        description=''
-                        required
-                    />
-                    <SearchInput
-                        name='searchTerm'
-                        value={form.searchTerm}
-                        onChange={handleChange}
-                    />
-                    {/* <GoogleAutoCompleteAddress name='address' onChange={handleChange} value={form.address}/> */}
-                    {/* temporary styles */}
-                    <Box style={{ 'marginLeft': '20px', 'marginBottom': '20px' }}>
-                        <DatePicker
-                            label="FROM DATE"
+                    <Box className={'date_box'}>
+                        <DatePickerInput
+                            label="DATE RANGE"
+                            type="date-range"
+                            dateRangeMiddleText="To"
+                            id="cust-filter-date-range"
+                            placeholder={{ start: "From", end: "To" }}
+                            name="dateRange"
+                            onDateRangeChange={onDateRangeChange}
+                            dateRangeValue={dateRange}
+                            required
+                        />
+                        <br />
+
+                        <DatePickerInput
+                            label="Start Date"
+                            type="single-date"
+                            id="cust-filter-start-date"
+                            placeholder="From"
+                            name="startDate"
+                            onChange={onDateChange}
+                            value={form.startDate}
+                            required
+                        /> <span>{form.startDate}</span>
+                        <DatePickerInput
+                            type="single-date"
                             id="cust-filter-end-date"
-                            disableBeforeDate={form.startDate}
-                            placeholder="To Date"
+                            label="End Date"
+                            placeholder="End date"
                             name="endDate"
                             onChange={onDateChange}
                             value={form.endDate}
                             required
+                        /> <span>{form.endDate}</span>
+                        <Input name='userName'
+                            label='User Name'
+                            type='text'
+                            onChange={handleChange}
+                            value={form.userName}
+                            description=''
+                            helperText='User Name'
+                            error
+
+                        />
+                        <Select
+                            name='item'
+                            label='Select item'
+                            value={form.item}
+                            placeholder='Choose'
+                            items={items}
+                            onChange={handleSelect}
+                        />
+                        <Input name='email'
+                            label='Email'
+                            onChange={handleChange}
+                            value={form.email}
+                            description=''
+                            required
+                        />
+                        <SearchInput
+                            name='searchTerm'
+                            value={form.searchTerm}
+                            onChange={handleChange}
                         />
                     </Box>
+
+
+                    {/* <GoogleAutoCompleteAddress name='address' onChange={handleChange} value={form.address}/> */}
+
 
                 </div>
 
