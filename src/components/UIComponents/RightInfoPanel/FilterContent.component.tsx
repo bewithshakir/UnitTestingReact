@@ -170,6 +170,7 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ provideFilterParams, o
 
     const onDateRangeChange = (name: string, newValue: DatePickerRange) => {
         formik.setFieldValue(name, newValue);
+        console.warn("type check->", typeof newValue);
         console.warn("time check1->",timeValidation(newValue[0]));
         console.warn("time check2->",timeValidation(newValue[1]));
         
@@ -214,21 +215,16 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ provideFilterParams, o
     const formik = useFormik({
         initialValues: formValuesSaved ? formValuesSaved : initialValues,
         // validationSchema: Yup.object().shape({
-        //     fromDate: Yup.object().nullable(true).when('toDate', {
-        //         is: ((toDate: moment.Moment | null) => {
-        //             return (!!toDate) ? true : false;
-        //         }),
-        //         then: Yup.object().nullable(true).required('From date is required')
-        //     }),
-        //     toDate: Yup.object().nullable(true).when('fromDate', {
-        //         is: ((fromDate: moment.Moment | null) => {
-        //             return (!!fromDate) ? true : false;
-        //         }),
-        //         then: Yup.object().nullable(true).required('To date is required')
-        //     }),
+        //     date: Yup.object().nullable(true)
+        //     // toDate: Yup.object().nullable(true).when('fromDate', {
+        //     //     is: ((fromDate: moment.Moment | null) => {
+        //     //         return (!!fromDate) ? true : false;
+        //     //     }),
+        //     //     then: Yup.object().nullable(true).required('To date is required')
+        //     // }),
 
 
-        // }, [["fromDate", "toDate"]]
+        // }, 
         // ),
         onSubmit: (values, { resetForm }) => applyFilter(values, resetForm),
         onReset: (values, { resetForm }) => clearFilter(values, resetForm),
