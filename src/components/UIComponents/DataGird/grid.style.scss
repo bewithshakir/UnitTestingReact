@@ -3,6 +3,12 @@ div {
         max-height: calc(100vh - 200px);
 
     }
+    .grid-cell-parent{
+        padding: 5px 20px;
+        font-family: "Arial";
+        color: var(--Darkgray);
+        letter-spacing: unset;
+    }
     .grid-cell {
         padding-bottom: 0;
         padding-top: 0;
@@ -13,6 +19,8 @@ div {
         font-weight: bold;
         padding: 5px 20px;
         line-height: 1.25rem;
+        border-bottom: none;
+        align-items: center;
         letter-spacing: unset;
         .MuiTableSortLabel-icon {
             width: 20px;

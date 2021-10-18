@@ -5,15 +5,14 @@ import { useTranslation } from 'react-i18next';
 import SortbyMenu from '../Menu/SortbyMenu.component';
 import ActionsMenu from '../Menu/ActionsMenu.component';
 import ProfileMenu from '../Menu/ProfileMenu.component';
+import { DatePickerInput } from '../DatePickerInput/DatePickerInput.component';
 import DataGridActionsMenu from '../Menu/DataGridActionsMenu.component';
 import { ExportIcon, PlusIcon, DeleteIcon, ImportIcon, SettingsIcon, LogoutIcon, CustomerProfileIcon2 } from '../../../assets/icons';
-import GridComponent from '../DataGird/grid.component';
 import ToastMessage from '../ToastMessage/ToastMessage.component';
 import { Footer } from '../Footer/Footer.component';
 import Input from '../Input/Input';
 import Select from '../Select/MultiSelect';
 import SearchInput from '../SearchInput/SearchInput';
-import { DatePicker } from '../DatePicker/DatePicker.component';
 import useDebounce from '../../../utils/useDebounce';
 import moment from "moment";
 //import { useQuery } from 'react-query';
@@ -21,6 +20,9 @@ import moment from "moment";
 import { Box, FormControl } from '@mui/material';
 import { TimePicker } from '../TimePicker/TimePicker.component';
 import './DemoComponents.style.scss';
+import { DateRange } from '@mui/lab/DateRangePicker';
+
+type DatePickerRange = DateRange<Date>;
 
 export const DemoComponents: React.FC = () => {
     //const { data } = useQuery('repoData', fetchQueryTodos, { retry: false });
@@ -40,7 +42,8 @@ export const DemoComponents: React.FC = () => {
     const handleMessageBoxClose = () => {
         setOpen(false);
     };
-    const [form, setForm] = useState({ userName: '', email: '', item: [{ label: 'Nike', value: 'Nike' }], searchTerm: '', startDate: moment(), time: '05:30 PM', endDate: moment(), address: { addressLine1: '', addressLine2: '', state: '', city: '', postalCode: '' } });
+    const [dateRange, setDateRange] = useState<DatePickerRange>([new Date(), new Date()]);
+    const [form, setForm] = useState({ userName: '', email: '', item: [{ label: 'Nike', value: 'Nike' }], searchTerm: '', startDate: moment().format("MM/DD/YYYY"), endDate: moment().format("MM/DD/YYYY"), time: '05:30 PM', address: { addressLine1: '', addressLine2: '', state: '', city: '', postalCode: '' } });
     const debouncedValue = useDebounce<string>(form.searchTerm, 1000);
     const items = [
         { label: 'Amazon', value: 'Amazon' },
@@ -57,8 +60,11 @@ export const DemoComponents: React.FC = () => {
     useEffect(() => {
         setTempValue(debouncedValue);
     }, [debouncedValue]);
-    const onDateChange = (name: string, newValue: Date | string | null | moment.Moment) => setForm(x => ({ ...x, [name]: newValue }));
-    const onTimeChange = (name: string, newValue: string | '' ) => setForm(x => ({ ...x, [name]: newValue }));
+
+    const onDateRangeChange = (name: string, newValue: DatePickerRange) => setDateRange(newValue);
+    const onDateChange = (name: string, newValue: Date | string | null | moment.Moment) => setForm(x => ({ ...x, [name]: (name === "startDate" || name === "endDate") && newValue ? moment(newValue).format('MM/DD/YYYY') : null }));
+    const onTimeChange = (name: string, newValue: string | '') => setForm(x => ({ ...x, [name]: newValue }));
+
     const { t } = useTranslation();
     return (
         <div>
@@ -75,7 +81,6 @@ export const DemoComponents: React.FC = () => {
                 <p className={'content__paragraph'}>
                     {t("para1")} <b>{t("para1")}</b> ,<b>{t("para2")}</b> <b>{t("para3")}</b> <b>{t("para4")}</b>
                 </p>
-                <GridComponent />
                 <div className={'content__buttons'}>
                     <Button
                         types={'primary'}
@@ -210,59 +215,85 @@ export const DemoComponents: React.FC = () => {
 
             <div className="App" style={{ 'marginLeft': '20px' }}>
                 {/* temporary styles */}
-                <Box style={{ 'marginLeft': '100px', 'marginBottom': '20px', width: '200px' }}>
-                        {form.time}
-                        <TimePicker
-                            label='Start time'
-                            id="time-picker"
-                            name="time"
-                            value={form.time}
-                            placeholder="select time"
-                            onChange={onTimeChange} />
-                        <DatePicker
-                            label="FROM DATE"
+                <div className={'app__main'}>
+                    <Box className={'date_box'}>
+                    {form.time}
+                    <TimePicker
+                        label='Start time'
+                        id="time-picker"
+                        name="time"
+                        value={form.time}
+                        placeholder="select time"
+                        onChange={onTimeChange} />
+
+                        <DatePickerInput
+                            label="DATE RANGE"
+                            type="date-range"
+                            dateRangeMiddleText="To"
+                            id="cust-filter-date-range"
+                            placeholder={{ start: "From", end: "To" }}
+                            name="dateRange"
+                            onDateRangeChange={onDateRangeChange}
+                            dateRangeValue={dateRange}
+                            required
+                        />
+                        <br />
+
+                        <DatePickerInput
+                            label="Start Date"
+                            type="single-date"
+                            id="cust-filter-start-date"
+                            placeholder="From"
+                            name="startDate"
+                            onChange={onDateChange}
+                            value={form.startDate}
+                            required
+                        /> <span>{form.startDate}</span>
+                        <DatePickerInput
+                            type="single-date"
                             id="cust-filter-end-date"
-                            disableBeforeDate={form.startDate}
-                            placeholder="To Date"
+                            label="End Date"
+                            placeholder="End date"
                             name="endDate"
                             onChange={onDateChange}
                             value={form.endDate}
                             required
+                        /> <span>{form.endDate}</span>
+                        <Input name='userName'
+                            label='User Name'
+                            type='text'
+                            onChange={handleChange}
+                            value={form.userName}
+                            description=''
+                            helperText='User Name'
+                            error
+
+                        />
+                        <Select
+                            name='item'
+                            label='Select item'
+                            value={form.item}
+                            placeholder='Choose'
+                            items={items}
+                            onChange={handleSelect}
+                        />
+                        <Input name='email'
+                            label='Email'
+                            onChange={handleChange}
+                            value={form.email}
+                            description=''
+                            required
+                        />
+                        <SearchInput
+                            name='searchTerm'
+                            value={form.searchTerm}
+                            onChange={handleChange}
                         />
                     </Box>
-                <div className={'app__main'}>
-                    <Input name='userName'
-                        label='User Name'
-                        type='text'
-                        onChange={handleChange}
-                        value={form.userName}
-                        description=''
-                        helperText='User Name'
-                        error
 
-                    />
-                    <Select
-                        name='item'
-                        label='Select item'
-                        value={form.item}
-                        placeholder='Choose'
-                        items={items}
-                        onChange={handleSelect}
-                    />
-                    <Input name='email'
-                        label='Email'
-                        onChange={handleChange}
-                        value={form.email}
-                        description=''
-                        required
-                    />
-                    <SearchInput
-                        name='searchTerm'
-                        value={form.searchTerm}
-                        onChange={handleChange}
-                    />
+
                     {/* <GoogleAutoCompleteAddress name='address' onChange={handleChange} value={form.address}/> */}
-                    
+
 
                 </div>
 
