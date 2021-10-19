@@ -4,63 +4,31 @@ import EnhancedGridBody from './dataGrid.component';
 import './grid.style.scss';
 import EnhancedGridHead from './headerGrid.component';
 
+interface headerObj {
+    id: string,
+    label: string,
+    type: string,
+}
+type selectedRow = string[];
 interface GridComponentProps {
     width?: string,
     height?: string,
-    rows?: any[],
+    rows: any[],
+    header: headerObj[],
     isLoading?: boolean,
     getPages?: any
     ref?: any
     openDrawer?: any
+    enableRowSelection?: boolean,
+    enableRowAction?: boolean,
 }
-
-const headCells = [
-    //{ id: "id", label: "ID", type: 'text' },
-    { id: "", label: "", type: 'checkBox' },
-    { id: "customerName", label: "CUSTOMER NAME", type: 'text' },
-    { id: "contactName", label: "CONTACT NAME", type: 'text' },
-    { id: "address", label: "ADDRESS", type: 'text' },
-    { id: "city", label: "CITY", type: 'text' },
-    { id: "state", label: "STATE", type: 'text' },
-    { id: "zipCode", label: "ZIP", type: 'text' },
-    { id: "lots", label: "LOTS", type: 'button' },
-    { id: "phone", label: "PHONE", type: 'text' },
-    //{ id: "paymentType", label: "PAYMENT TYPE", type: 'text' },
-    { id: "country", label: "COUNTRY", type: 'text' },
-    { id: "cardAdded", label: "CARD ADDED", type: 'text' },
-    { id: "", label: "", type: 'icon' }
-];
-
-// const rows = [{ "customername": "Accurate Transportation", "contactname": "Peter Parker", "address": "9555 Post Oak Rd", "city": "Houston", "state": "TX", "zip": 77024, "lots": 20, "settlementtype": "Voyager", "icon": "icon" },
-// { "customername": "Accurate Transportation", "contactname": "Peter Parker", "address": "9555 Post Oak Rd", "city": "Houston", "state": "TX", "zip": 77024, "lots": 21, "settlementtype": "Voyager" },
-// { "customername": "B_Accurate Transportation", "contactname": "Peter Parker", "address": "9555 Post Oak Rd", "city": "Houston", "state": "TX", "zip": 77024, "lots": 10, "settlementtype": "Voyager" },
-// { "customername": "C_Accurate Transportation", "contactname": "Peter Parker", "address": "9555 Post Oak Rd", "city": "Houston", "state": "TX", "zip": 77024, "lots": 18, "settlementtype": "Voyager" },
-// { "customername": "Accurate Transportation", "contactname": "Peter Parker", "address": "9555 Post Oak Rd", "city": "Houston", "state": "TX", "zip": 77024, "lots": 20, "settlementtype": "Voyager" }];
-
-// const headCells1 = [{ id: "lotname", label: "LOT NAME", type: 'text' },
-// { id: "streetaddress", label: "STREET ADDRESS", type: 'text' },
-// { id: "city", label: "CITY", type: 'text' },
-// { id: "state", label: "STATE", type: 'text' },
-// { id: "zip", label: "ZIP", type: 'text' },
-// { id: "walletstatus", label: "WALLET STATUS", type: 'text' },
-// { id: "vehicles", label: "VEHICLES", type: 'button' },
-// { id: "fuel", label: "FUEL", type: 'text' },
-// { id: "", label: "", type: 'icon' }
-// ];
-
-// const rows1 = [{ "lotname": "Lot Name", "streetaddress": "898987-9898", "city": "Houston", "state": "TX-Texas", "zip": "777878", "walletstatus": "Flag", "vehicles": "20", "fuel": "Diesel", "icon": "icon" },
-// { "lotname": "Lot Name", "streetaddress": "898987-9898", "city": "Houston", "state": "TX-Texas", "zip": "777878", "walletstatus": "Flag", "vehicles": "20", "fuel": "Diesel", "icon": "icon" },
-// { "lotname": "Lot Name", "streetaddress": "898987-9898", "city": "Houston", "state": "TX-Texas", "zip": "777878", "walletstatus": "Flag", "vehicles": "18", "fuel": "Diesel", "icon": "icon" },
-// { "lotname": "Lot Name", "streetaddress": "898987-9898", "city": "Houston", "state": "TX-Texas", "zip": "777878", "walletstatus": "Flag", "vehicles": "20", "fuel": "Diesel", "icon": "icon" },
-// { "lotname": "Lot Name", "streetaddress": "898987-9898", "city": "Houston", "state": "TX-Texas", "zip": "777878", "walletstatus": "Flag", "vehicles": "21", "fuel": "Diesel", "icon": "icon" }];
-
-
 
 const GridComponent: React.FC<GridComponentProps> = (props) => {
     const [order, setOrder] = React.useState("asc");
     const [orderBy, setOrderBy] = React.useState("");
+    const [selected, setSelected] = React.useState<selectedRow>([]);
 
-
+    const { rows, enableRowSelection, enableRowAction } = props;
     const handleRequestSort = (event: any, property: any) => {
         const isAsc = orderBy === property && order === "asc";
         setOrder(isAsc ? "desc" : "asc");
@@ -69,9 +37,38 @@ const GridComponent: React.FC<GridComponentProps> = (props) => {
 
     const handleTableScroll = (event: any) => {
         const bottomValue = event.target.scrollHeight - event.target.scrollTop;
-        if (bottomValue - event.target.clientHeight <= 0) {
+        if ((bottomValue - event.target.clientHeight) <= 0) {
             props.getPages();
         }
+    };
+
+
+    const handleSelectAllClick = (event: React.ChangeEvent<HTMLInputElement>) => {
+        if (event.target.checked) {
+            const newSelecteds: selectedRow = rows.map((n) => n.customerId);
+            setSelected(newSelecteds);
+            return;
+        }
+        setSelected([]);
+    };
+
+    const handleCheckChange = (customerId: string) => {
+        const selectedIndex = selected.indexOf(customerId);
+        let newSelected: selectedRow = [];
+
+        if (selectedIndex === -1) {
+            newSelected = newSelected.concat(selected, customerId);
+        } else if (selectedIndex === 0) {
+            newSelected = newSelected.concat(selected.slice(1));
+        } else if (selectedIndex === selected.length - 1) {
+            newSelected = newSelected.concat(selected.slice(0, -1));
+        } else if (selectedIndex > 0) {
+            newSelected = newSelected.concat(
+                selected.slice(0, selectedIndex),
+                selected.slice(selectedIndex + 1),
+            );
+        }
+        setSelected(newSelected);
     };
 
     return (
@@ -83,14 +80,22 @@ const GridComponent: React.FC<GridComponentProps> = (props) => {
                 <EnhancedGridHead
                     order={order}
                     orderBy={orderBy}
-                    headCells={headCells}
+                    headCells={props.header}
+                    enableRowSelection={enableRowSelection}
+                    enableRowAction={enableRowAction}
                     onRequestSort={handleRequestSort}
+                    onSelectAllClick={handleSelectAllClick}
+                    numSelected={selected.length}
+                    rowCount={rows.length}
                 />
                 <EnhancedGridBody
-                    rows={props.rows}
                     order={order}
                     orderBy={orderBy}
-                    headCells={headCells}
+                    selectedRows={selected}
+                    enableRowSelection={enableRowSelection}
+                    enableRowAction={enableRowAction}
+                    handleCheckChange={handleCheckChange}
+                    headCells={props.header}
                     {...props}
                 />
             </Table>
@@ -99,4 +104,11 @@ const GridComponent: React.FC<GridComponentProps> = (props) => {
 
 };
 
+GridComponent.defaultProps = {
+    enableRowSelection: false,
+    enableRowAction: false,
+};
+
+
 export default GridComponent;
+

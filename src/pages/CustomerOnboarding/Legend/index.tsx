@@ -19,11 +19,8 @@ const Legend: React.FC = () => {
   useEffect(()=>{
     history.push("/customer/addCustomer");
   },[]);
-  const onItemClick = (index: number) => {
-    return index;
-    // if (index === 1) {
-    //   history.push("/customer/addCustomer")
-    // }
+  const onItemClick = (to: string) => {
+    history.push(to);
   };
   return (
 
@@ -37,7 +34,7 @@ const Legend: React.FC = () => {
           {config.map((ConfigItem) => {
             const isLegendSelected = pathname.includes(ConfigItem.to);
             return (
-              <ListItem key={ConfigItem.index} onClick={() => onItemClick(ConfigItem.index)} >
+              <ListItem key={ConfigItem.index} onClick={() => onItemClick(ConfigItem.to)} >
                 <ListItemButton className={"listItemButton"} selected={isLegendSelected} >
                   <ListItemText className="listItemTextPrimary" primary={t(ConfigItem.label)} />
                   {ConfigItem.secondaryText && <ListItemText className="listItemTextSecondary" primary={0} />}

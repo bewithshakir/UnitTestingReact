@@ -4,16 +4,14 @@ export const config = [
         index: 1,
         label: "legend.customerProfile",
         secondaryText:false,
-    
-        to: "/addCustomer"
+        to: "/customer/addCustomer"
     
     },
     {
         index: 2,
         label: "legend.parkingLots",
         secondaryText:true,
-    
-        to: "/parkingLots"
+        to: "/customer/parkingLots"
     },
     {
         index: 3,
