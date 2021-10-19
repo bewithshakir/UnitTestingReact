@@ -13,32 +13,35 @@ div {
       }
     }
     .time-div {
-      width: 100%;
       .MuiPaper-root {
         box-shadow: 6px 6px 14px #00000026;
         border-radius: 0px;
-        padding: 10px 0px 10px 10px;
-        min-width: 149px;
         .MuiGrid-container {
-          .hm-box {
-            font-size: 14px;
-            padding-right: 10px;
-            height: 197px;
-            overflow-y: scroll;
-            .h-m-value-box {
-              margin-bottom: 15px;
-              cursor: pointer;
-              &.selected {
-                color: var(--Primary);
-                font-weight: 700;
-              }
-              &:last-child{
-                margin-bottom: 0px;
+          padding: 16px 22px 16px;
+           .MuiGrid-item{
+             padding: 0px;
+            .hm-box {
+              font-size: 14px;
+              padding-right: 10px;
+              height: 197px;
+              overflow-y: scroll;
+              padding-right: 20px;
+              // width: 160px;
+              .h-m-value-box {
+                margin-bottom: 15px;
+                cursor: pointer;
+                &.selected {
+                  color: var(--Primary);
+                  font-weight: 700;
+                }
+                &:last-child{
+                  margin-bottom: 0px;
+                }
               }
             }
-          }
+           }
+          
           .meridiem-div {
-            margin: 0px 20px 0px 10px;
             font-size: 14px;
             .MuiButton-root {
               margin-bottom: 15px;

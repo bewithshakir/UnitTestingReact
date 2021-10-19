@@ -132,6 +132,7 @@ export const TimePicker: React.FC<TimePickerProps> = ({ label, value, onChange, 
                     disablePortal={true}
                     open={open}
                     anchorEl={anchorEl}
+                    placement="bottom-start"
                 >
                     <TimeBox timeDiffMins={timeDiffMins} timeStrVal={timeObj.timeStrVal} applyTimeStr={onChangeByTimePicker} merd={timeObj.merd} onClose={handleClickAway} />
                 </Popper>

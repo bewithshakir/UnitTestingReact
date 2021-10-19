@@ -21,6 +21,7 @@ import { Box, FormControl } from '@mui/material';
 import { TimePicker } from '../TimePicker/TimePicker.component';
 import './DemoComponents.style.scss';
 import { DateRange } from '@mui/lab/DateRangePicker';
+import { boxSX } from './config';
 
 type DatePickerRange = DateRange<Date>;
 
@@ -216,15 +217,18 @@ export const DemoComponents: React.FC = () => {
             <div className="App" style={{ 'marginLeft': '20px' }}>
                 {/* temporary styles */}
                 <div className={'app__main'}>
+                    
                     <Box className={'date_box'}>
-                    {form.time}
-                    <TimePicker
-                        label='Start time'
-                        id="time-picker"
-                        name="time"
-                        value={form.time}
-                        placeholder="select time"
-                        onChange={onTimeChange} />
+                    <Box sx={boxSX}>
+                        {form.time}
+                        <TimePicker
+                            label='Start time'
+                            id="time-picker"
+                            name="time"
+                            value={form.time}
+                            placeholder="select time"
+                            onChange={onTimeChange} />
+                    </Box>
 
                         <DatePickerInput
                             label="DATE RANGE"
