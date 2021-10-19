@@ -43,6 +43,7 @@ export default function DataGridActionsMenu (props: DataGridActionsMenuProps) {
   };
 
   const handleMenuItemClick = (event: React.SyntheticEvent, index: number) => {
+    event.stopPropagation();
     setSelectedIndex(index);
     onSelect(event, options[index]);
     setOpen(false);
