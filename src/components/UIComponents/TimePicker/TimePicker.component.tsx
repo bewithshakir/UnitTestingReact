@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react';
-import { Popper, ClickAwayListener } from '@mui/material';
+import { Popper, ClickAwayListener, Icon } from '@mui/material';
+import InputAdornment from '@mui/material/InputAdornment';
 import './TimePicker.style.scss';
 import Input from '../Input/Input';
 import { TimeBox } from './TimeBox.component';
 import moment from 'moment';
 import { timeFormatStr, timeValidationFormat, AM, initialTimeObj, timeErrorText } from './config';
+import { TimeIcon } from '../../../assets/icons';
 
 type timeMer = 'AM' | 'PM' | '';
 
@@ -58,7 +60,7 @@ export const TimePicker: React.FC<TimePickerProps> = ({ label, value, onChange, 
                 merd: '',
                 timeStrVal: ''
             });
-            setValidTime(value?false:!required);
+            setValidTime(value ? false : !required);
         }
     };
 
@@ -89,12 +91,12 @@ export const TimePicker: React.FC<TimePickerProps> = ({ label, value, onChange, 
     };
 
     const handleKeyDown = (e: any) => {
-        if(e.keyCode != 8 && (inputValue.length === 2)) {
-            setInputValue((value)=>value += ":");
-        }else{
+        if (e.keyCode != 8 && (inputValue.length === 2)) {
+            setInputValue((value) => value += ":");
+        } else {
             setInputValue(e.target.value);
         }
-        setInputValue((value)=>value.replace(/:+/g,":"));
+        setInputValue((value) => value.replace(/:+/g, ":"));
     };
 
     const onChangeByTimePicker = (timeStr: string | '', merdVal: string | '') => {
@@ -109,23 +111,28 @@ export const TimePicker: React.FC<TimePickerProps> = ({ label, value, onChange, 
         }));
     };
 
+    const TimeIconComp: React.FC = () => {
+        return <div><TimeIcon className="calendar-icon-div" /></div>;
+    };
+
     return (
         <ClickAwayListener onClickAway={handleClickAway}>
             <div className="time-picker-container">
-                <Input 
-                id={id} 
-                autoFocus={true} 
-                name={name} 
-                helperText={helperText?helperText:(!validTime)?timeErrorText:''} 
-                error={error?error:!validTime} disabled={disabled} 
-                autoComplete='off' 
-                innerRef={inputRef} 
-                label={label} 
-                value={inputValue} 
-                onChange={onChangeByInput} 
-                onClick={handleClick}
-                placeholder={placeholder} 
-                onKeyDown={handleKeyDown}
+                <Input
+                    id={id}
+                    autoFocus={true}
+                    name={name}
+                    helperText={helperText ? helperText : (!validTime) ? timeErrorText : ''}
+                    error={error ? error : !validTime} disabled={disabled}
+                    autoComplete='off'
+                    innerRef={inputRef}
+                    label={label}
+                    value={inputValue}
+                    onChange={onChangeByInput}
+                    onClick={handleClick}
+                    placeholder={placeholder}
+                    onKeyDown={handleKeyDown}
+                    endAdornment={<InputAdornment position="start"> <Icon ><TimeIconComp /></Icon></InputAdornment>}
                 />
                 <Popper
                     className="custom-popper"

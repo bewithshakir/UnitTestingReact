@@ -26,6 +26,9 @@ interface props {
   ref?:any;
   innerRef?:any;
   onKeyDown?:(...args: any[]) => void;
+  inputProps?:any;
+  endAdornment?:any;
+  startAdornment?:any;
 }
 
 export default function Input (props: props) {
@@ -59,6 +62,9 @@ export default function Input (props: props) {
           onChange={props.onChange}
           onClick={props.onClick}
           onKeyDown={props.onKeyDown}
+          inputProps={props.inputProps}
+          endAdornment={props.endAdornment}
+          startAdornment={props.startAdornment}
         />
         {props.helperText && (
           <FormHelperText

@@ -1,7 +1,7 @@
 import * as React from "react";
 
 
-export function USAFlagIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
+export function USAFlagIcon(props: React.SVGProps<SVGSVGElement>): JSX.Element {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -145,7 +145,7 @@ export function USAFlagIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element 
   );
 }
 
-export function ActionsListIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
+export function ActionsListIcon(props: React.SVGProps<SVGSVGElement>): JSX.Element {
   return (
     <svg
       width="1em"
@@ -162,7 +162,7 @@ export function ActionsListIcon (props: React.SVGProps<SVGSVGElement>): JSX.Elem
   );
 }
 
-export function FilterIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
+export function FilterIcon(props: React.SVGProps<SVGSVGElement>): JSX.Element {
   return (
     <svg
       width="1em"
@@ -179,7 +179,7 @@ export function FilterIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
   );
 }
 
-export function ImportIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
+export function ImportIcon(props: React.SVGProps<SVGSVGElement>): JSX.Element {
   return (
     <svg
       width="1em"
@@ -197,7 +197,7 @@ export function ImportIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
 }
 
 
-export function ExportIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
+export function ExportIcon(props: React.SVGProps<SVGSVGElement>): JSX.Element {
   return (
     <svg
       width="1em"
@@ -214,7 +214,7 @@ export function ExportIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
   );
 }
 
-export function PlusIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
+export function PlusIcon(props: React.SVGProps<SVGSVGElement>): JSX.Element {
   return (
     <svg
       width="1em"
@@ -231,7 +231,7 @@ export function PlusIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
   );
 }
 
-export function DeleteIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
+export function DeleteIcon(props: React.SVGProps<SVGSVGElement>): JSX.Element {
   return (
     <svg
       width="1em"
@@ -248,7 +248,7 @@ export function DeleteIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
   );
 }
 
-export function DataGridActionIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
+export function DataGridActionIcon(props: React.SVGProps<SVGSVGElement>): JSX.Element {
   return (
     <svg
       width="1em"
@@ -265,7 +265,7 @@ export function DataGridActionIcon (props: React.SVGProps<SVGSVGElement>): JSX.E
   );
 }
 
-export function CustomerProfileIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
+export function CustomerProfileIcon(props: React.SVGProps<SVGSVGElement>): JSX.Element {
   return (
     <svg
       width="1em"
@@ -281,7 +281,7 @@ export function CustomerProfileIcon (props: React.SVGProps<SVGSVGElement>): JSX.
     </svg>
   );
 }
-export function CustomerProfileIcon2 (props: React.SVGProps<SVGSVGElement>): JSX.Element {
+export function CustomerProfileIcon2(props: React.SVGProps<SVGSVGElement>): JSX.Element {
   return (
     <svg
       width="1em"
@@ -298,7 +298,7 @@ export function CustomerProfileIcon2 (props: React.SVGProps<SVGSVGElement>): JSX
   );
 }
 
-export function SettingsIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
+export function SettingsIcon(props: React.SVGProps<SVGSVGElement>): JSX.Element {
   return (
     <svg
       width="1em"
@@ -315,7 +315,7 @@ export function SettingsIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element
   );
 }
 
-export function LogoutIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
+export function LogoutIcon(props: React.SVGProps<SVGSVGElement>): JSX.Element {
   return (
     <svg
       width="1em"
@@ -332,7 +332,7 @@ export function LogoutIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
   );
 }
 
-export function SearchIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
+export function SearchIcon(props: React.SVGProps<SVGSVGElement>): JSX.Element {
   return (
     <svg
       width="1em"
@@ -350,7 +350,7 @@ export function SearchIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
   );
 }
 
-export function DropSearchIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
+export function DropSearchIcon(props: React.SVGProps<SVGSVGElement>): JSX.Element {
   return (
     <svg
       width="1em"
@@ -368,7 +368,7 @@ export function DropSearchIcon (props: React.SVGProps<SVGSVGElement>): JSX.Eleme
 }
 
 
-export function Check (props: React.SVGProps<SVGSVGElement>): JSX.Element {
+export function Check(props: React.SVGProps<SVGSVGElement>): JSX.Element {
   return (
     <svg
       width="1em"
@@ -385,7 +385,7 @@ export function Check (props: React.SVGProps<SVGSVGElement>): JSX.Element {
   );
 }
 
-export function UnCheck (props: React.SVGProps<SVGSVGElement>): JSX.Element {
+export function UnCheck(props: React.SVGProps<SVGSVGElement>): JSX.Element {
   return (
     <svg
       width="1em"
@@ -402,7 +402,7 @@ export function UnCheck (props: React.SVGProps<SVGSVGElement>): JSX.Element {
   );
 }
 
-export function ArrowUp (props: React.SVGProps<SVGSVGElement>): JSX.Element {
+export function ArrowUp(props: React.SVGProps<SVGSVGElement>): JSX.Element {
   return (
     <svg
       width="1em"
@@ -419,7 +419,7 @@ export function ArrowUp (props: React.SVGProps<SVGSVGElement>): JSX.Element {
   );
 }
 
-export function BackIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
+export function BackIcon(props: React.SVGProps<SVGSVGElement>): JSX.Element {
   return (
     <svg
       width="1em"
@@ -436,7 +436,7 @@ export function BackIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
   );
 }
 
-export function CloseIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
+export function CloseIcon(props: React.SVGProps<SVGSVGElement>): JSX.Element {
   return (
     <svg
       width="1em"
@@ -456,7 +456,7 @@ export function CloseIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
 }
 
 
-export function ArrowDown (props: React.SVGProps<SVGSVGElement>): JSX.Element {
+export function ArrowDown(props: React.SVGProps<SVGSVGElement>): JSX.Element {
   return (
     <svg
       width="1em"
@@ -473,7 +473,7 @@ export function ArrowDown (props: React.SVGProps<SVGSVGElement>): JSX.Element {
   );
 }
 
-export function LeftArrowIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
+export function LeftArrowIcon(props: React.SVGProps<SVGSVGElement>): JSX.Element {
   return (
     <svg
       width="1em"
@@ -490,7 +490,7 @@ export function LeftArrowIcon (props: React.SVGProps<SVGSVGElement>): JSX.Elemen
   );
 }
 
-export function NotificationIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
+export function NotificationIcon(props: React.SVGProps<SVGSVGElement>): JSX.Element {
   return (
     <svg
       width="1em"
@@ -508,7 +508,7 @@ export function NotificationIcon (props: React.SVGProps<SVGSVGElement>): JSX.Ele
   );
 }
 
-export function DeliveryTruckIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
+export function DeliveryTruckIcon(props: React.SVGProps<SVGSVGElement>): JSX.Element {
   return (
     <svg
       width="1em"
@@ -533,7 +533,7 @@ export function DeliveryTruckIcon (props: React.SVGProps<SVGSVGElement>): JSX.El
   );
 }
 
-export function UncheckedCheckboxIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
+export function UncheckedCheckboxIcon(props: React.SVGProps<SVGSVGElement>): JSX.Element {
   return (
     <svg
       width="20"
@@ -548,7 +548,7 @@ export function UncheckedCheckboxIcon (props: React.SVGProps<SVGSVGElement>): JS
   );
 }
 
-export function CheckedCheckboxIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
+export function CheckedCheckboxIcon(props: React.SVGProps<SVGSVGElement>): JSX.Element {
   return (
     <svg
       width="20"
@@ -563,7 +563,7 @@ export function CheckedCheckboxIcon (props: React.SVGProps<SVGSVGElement>): JSX.
   );
 }
 
-export function BriefCase64Icon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
+export function BriefCase64Icon(props: React.SVGProps<SVGSVGElement>): JSX.Element {
   return (
     <svg
       width="1em"
@@ -582,7 +582,7 @@ export function BriefCase64Icon (props: React.SVGProps<SVGSVGElement>): JSX.Elem
   );
 }
 
-export function ToggleList64Icon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
+export function ToggleList64Icon(props: React.SVGProps<SVGSVGElement>): JSX.Element {
   return (
     <svg
       width="1em"
@@ -601,7 +601,7 @@ export function ToggleList64Icon (props: React.SVGProps<SVGSVGElement>): JSX.Ele
   );
 }
 
-export function Truck64Icon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
+export function Truck64Icon(props: React.SVGProps<SVGSVGElement>): JSX.Element {
   return (
     <svg
       width="1em"
@@ -620,7 +620,7 @@ export function Truck64Icon (props: React.SVGProps<SVGSVGElement>): JSX.Element 
   );
 }
 
-export function Invoice64Icon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
+export function Invoice64Icon(props: React.SVGProps<SVGSVGElement>): JSX.Element {
   return (
     <svg
       width="1em"
@@ -639,7 +639,7 @@ export function Invoice64Icon (props: React.SVGProps<SVGSVGElement>): JSX.Elemen
   );
 }
 
-export function DocumentFile64Icon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
+export function DocumentFile64Icon(props: React.SVGProps<SVGSVGElement>): JSX.Element {
   return (
     <svg
       width="1em"
@@ -658,7 +658,7 @@ export function DocumentFile64Icon (props: React.SVGProps<SVGSVGElement>): JSX.E
   );
 }
 
-export function ToggleMail64Icon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
+export function ToggleMail64Icon(props: React.SVGProps<SVGSVGElement>): JSX.Element {
   return (
     <svg
       width="1em"
@@ -677,7 +677,7 @@ export function ToggleMail64Icon (props: React.SVGProps<SVGSVGElement>): JSX.Ele
   );
 }
 
-export function ChartPie64Icon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
+export function ChartPie64Icon(props: React.SVGProps<SVGSVGElement>): JSX.Element {
   return (
     <svg
       width="1em"
@@ -696,7 +696,7 @@ export function ChartPie64Icon (props: React.SVGProps<SVGSVGElement>): JSX.Eleme
   );
 }
 
-export function ErrorExclamationIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
+export function ErrorExclamationIcon(props: React.SVGProps<SVGSVGElement>): JSX.Element {
   return (
     <svg
       width="20"
@@ -711,7 +711,7 @@ export function ErrorExclamationIcon (props: React.SVGProps<SVGSVGElement>): JSX
   );
 }
 
-export function SuccessTickIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
+export function SuccessTickIcon(props: React.SVGProps<SVGSVGElement>): JSX.Element {
   return (
     <svg
       width="20"
@@ -746,7 +746,7 @@ export function CalendarIcon(props: React.SVGProps<SVGSVGElement>) {
 
 
 
-export function SortByIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
+export function SortByIcon(props: React.SVGProps<SVGSVGElement>): JSX.Element {
   return (
     <svg
       width="1em"
@@ -759,5 +759,24 @@ export function SortByIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
         <path data-name="Rectangle 2251" fill="none" d="M0 0h20v20H0z" />
       </g>
     </svg >
+  );
+}
+
+export function TimeIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      width="1em"
+      height="1em"
+      viewBox="0 0 20 20"
+      {...props}
+    >
+      <g data-name="Group 1966">
+        <path data-name="Rectangle 2213" fill="none" d="M0 0h20v20H0z" />
+        <path
+          d="M10 0A10 10 0 110 10 10 10 0 0110 0zm0 2a8 8 0 108 8 8 8 0 00-8-8zm1 2v5.632l3.759 3.76-1.414 1.414L9 10.461V4z"
+          fill={props.color || 'var(--Gray)'}
+        />
+      </g>
+    </svg>
   );
 }

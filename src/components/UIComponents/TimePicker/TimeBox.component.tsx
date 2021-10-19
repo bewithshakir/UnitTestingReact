@@ -3,7 +3,6 @@ import './TimePicker.style.scss';
 import { Paper, Grid } from '@mui/material';
 import { Button } from '../Button/Button.component';
 import {AM, PM, defaultTimeDiff} from './config';
-// import { useTimePickerScrollRefStore } from "../../../store";
 
 type timeMer = 'AM' | 'PM' | '';
 

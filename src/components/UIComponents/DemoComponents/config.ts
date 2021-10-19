@@ -1,1 +1,1 @@
-export const boxSX = { width: '150px' } ;
+export const boxSX = { width: '170px' } ;
