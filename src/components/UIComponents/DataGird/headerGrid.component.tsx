@@ -23,6 +23,8 @@ interface GridHeaderProps {
     numSelected: number;
     onSelectAllClick: (event: React.ChangeEvent<HTMLInputElement>) => void;
     rowCount: number;
+    enableRowSelection?: boolean;
+    enableRowAction?: boolean;
 }
 const EnhancedGridHead: React.FC<GridHeaderProps> = (props) => {
 
@@ -41,38 +43,37 @@ const EnhancedGridHead: React.FC<GridHeaderProps> = (props) => {
                 <TableRow>{"No Data Received"}</TableRow>
                 :
                 <TableRow>
+                    {props.enableRowSelection ?
+                        <TableCell padding="checkbox" className="header-options">
+                            <Checkbox
+                                name='checkbox-all'
+                                indeterminate={props.numSelected > 0 && props.numSelected < props.rowCount}
+                                checked={props.rowCount > 0 && props.numSelected === props.rowCount}
+                                onChange={props.onSelectAllClick}
+
+                                onClick={e => e.stopPropagation()}
+                            />
+                        </TableCell> : null}
                     {props.headCells.map((headCell) => (
-
-                        headCell.type === 'checkbox' ?
-                            <TableCell padding="checkbox" className="header-options">
-                                <Checkbox
-                                    name={`checkbox${headCell.id}`}
-                                    indeterminate={props.numSelected > 0 && props.numSelected < props.rowCount}
-                                    checked={props.rowCount > 0 && props.numSelected === props.rowCount}
-                                    onChange={props.onSelectAllClick}
-
-                                    onClick={e => e.stopPropagation()}
-                                />
-                            </TableCell>
-                            :
-                            <TableCell
-                                key={headCell.id}
-                                className="header-options"
-                                sortDirection={props.orderBy === headCell.id ? props.order : false}
+                        <TableCell
+                            key={headCell.id}
+                            className="header-options"
+                            sortDirection={props.orderBy === headCell.id ? props.order : false}
+                        >
+                            <TableSortLabel
+                                IconComponent={SortByIcon}
+                                active={props.orderBy === headCell.id}
+                                direction={props.orderBy === headCell.id ? props.order : "asc"}
+                                onClick={createSortHandler(headCell.id)}
                             >
-                                {headCell.id === '' ? '' :
-                                    <TableSortLabel
-                                        IconComponent={SortByIcon}
-                                        active={props.orderBy === headCell.id}
-                                        direction={props.orderBy === headCell.id ? props.order : "asc"}
-                                        onClick={createSortHandler(headCell.id)}
-                                    >
 
-                                        {headCell.label}
-                                    </TableSortLabel>
-                                }
-                            </TableCell>
+                                {headCell.label}
+                            </TableSortLabel>
+                        </TableCell>
                     ))}
+                    {props.enableRowAction ? <TableCell className="header-options">
+                        <TableSortLabel>{''}</TableSortLabel>
+                    </TableCell> : null}
                 </TableRow>}
         </TableHead>
 
