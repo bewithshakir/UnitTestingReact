@@ -83,8 +83,8 @@ export const TimeBox: React.FC<TimeBoxProps> = ({ applyTimeStr, onClose, merd , 
                         </div>
                     </Grid>
                     <Grid item>
-                        <div className="meridiem-div"><Button types={merd === AM ? 'primary' : 'cancel'} onClick={() => selectMeridian(AM)} className="">{AM}</Button></div>
-                        <div className="meridiem-div"><Button types={merd === PM ? 'primary' : 'cancel'} onClick={() => selectMeridian(PM)} className="">{PM}</Button></div>
+                        <div className="meridiem-div"><Button types={merd && merd.toUpperCase() === AM ? 'primary' : 'cancel'} onClick={() => selectMeridian(AM)} className="">{AM}</Button></div>
+                        <div className="meridiem-div"><Button types={merd && merd.toUpperCase() === PM ? 'primary' : 'cancel'} onClick={() => selectMeridian(PM)} className="">{PM}</Button></div>
                     </Grid>
                 </Grid >
             </Paper>

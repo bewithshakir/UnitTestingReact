@@ -5,7 +5,7 @@ import './TimePicker.style.scss';
 import Input from '../Input/Input';
 import { TimeBox } from './TimeBox.component';
 import moment from 'moment';
-import { timeFormatStr, timeValidationFormat, AM, initialTimeObj, timeErrorText } from './config';
+import { timeFormatStr, timeValidationFormat, AM, initialTimeObj, timeErrorText, hoursMinsAutoSelection } from './config';
 import { TimeIcon } from '../../../assets/icons';
 
 type timeMer = 'AM' | 'PM' | '';
@@ -91,6 +91,10 @@ export const TimePicker: React.FC<TimePickerProps> = ({ label, value, onChange, 
     };
 
     const handleKeyDown = (e: any) => {
+        if(inputValue && inputValue.length === 2) {
+            setInputValue((value) => value.indexOf('0')<0 ? '0' + value: value);
+        }
+
         if (e.keyCode != 8 && (inputValue.length === 2)) {
             setInputValue((value) => value += ":");
         } else {
@@ -100,7 +104,7 @@ export const TimePicker: React.FC<TimePickerProps> = ({ label, value, onChange, 
     };
 
     const onChangeByTimePicker = (timeStr: string | '', merdVal: string | '') => {
-        const composedTimeStr = moment(`${timeStr?timeStr:'10:00'} ${merdVal ? merdVal : AM}`, timeFormatStr).format(timeFormatStr);
+        const composedTimeStr = moment(`${timeStr?timeStr:hoursMinsAutoSelection} ${merdVal ? merdVal : AM}`, timeFormatStr).format(timeFormatStr);
         setInputValue(composedTimeStr);
         onChange(name, composedTimeStr);
         setTimeObj((timeObj) => ({
