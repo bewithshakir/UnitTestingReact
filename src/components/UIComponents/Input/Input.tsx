@@ -22,8 +22,6 @@ interface props {
   onBlur?: (...args: any[]) => void;
   onFocus?:(...args: any[]) => void;
   onClick?:(...args: any[]) => void;
-  autoFocus?:boolean;
-  ref?:any;
   innerRef?:any;
   onKeyDown?:(...args: any[]) => void;
   inputProps?:any;
@@ -32,10 +30,6 @@ interface props {
 }
 
 export default function Input (props: props) {
-
-  // const [flag, setFlag] = useState(false);
-
-  // const onBlur = () => setFlag(true);
 
   return (
     <Fragment>
@@ -52,7 +46,6 @@ export default function Input (props: props) {
           value={props.value}
           disabled={props.disabled}
           placeholder={props.placeholder}
-          // required={flag && !props.value}
           aria-required={props.required}
           autoComplete={props.autoComplete}
           classes={props.classes}
@@ -60,6 +53,7 @@ export default function Input (props: props) {
           type={props.type}
           error={props.error}
           onChange={props.onChange}
+          onBlur={props.onBlur}
           onClick={props.onClick}
           onKeyDown={props.onKeyDown}
           inputProps={props.inputProps}
@@ -84,5 +78,4 @@ Input.defaultProps = {
   id: "input",
   autoComplete: "new-password",
   error: false,
-  autoFocus: false
 };

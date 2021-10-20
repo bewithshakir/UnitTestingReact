@@ -91,7 +91,7 @@ export const TimePicker: React.FC<TimePickerProps> = ({ label, value, onChange, 
     };
 
     const handleKeyDown = (e: any) => {
-        if(inputValue && inputValue.length === 2) {
+        if((inputValue && inputValue.length === 2) || (timeValidation(inputValue))) {
             setInputValue((value) => value.indexOf('0')<0 ? '0' + value: value);
         }
 
@@ -124,7 +124,6 @@ export const TimePicker: React.FC<TimePickerProps> = ({ label, value, onChange, 
             <div className="time-picker-container">
                 <Input
                     id={id}
-                    autoFocus={true}
                     name={name}
                     helperText={helperText ? helperText : (!validTime) ? timeErrorText : ''}
                     error={error ? error : !validTime} disabled={disabled}
