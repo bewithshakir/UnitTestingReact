@@ -125,14 +125,6 @@ const Content: React.FC<ContentProps> = () => {
                 />
               </FormControl>
             </Grid>
-            <Grid item pr={2.5}>
-              <FormControl>
-                <SortbyMenu
-                  options={sortByOptions.map((sortByItem) => t(sortByItem))}
-                  onSelect={(value) => onSortBySlected(value)}
-                />
-              </FormControl>
-            </Grid>
             <Grid item>
               <SearchInput
                 name="searchTerm"
