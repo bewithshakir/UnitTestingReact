@@ -20,13 +20,16 @@ interface props {
   helperText?: string
   onChange?: (...args: any[]) => void;
   onBlur?: (...args: any[]) => void;
+  onFocus?:(...args: any[]) => void;
+  onClick?:(...args: any[]) => void;
+  innerRef?:any;
+  onKeyDown?:(...args: any[]) => void;
+  inputProps?:any;
+  endAdornment?:any;
+  startAdornment?:any;
 }
 
 export default function Input (props: props) {
-
-  // const [flag, setFlag] = useState(false);
-
-  // const onBlur = () => setFlag(true);
 
   return (
     <Fragment>
@@ -36,13 +39,13 @@ export default function Input (props: props) {
         </InputLabel>
         <InputBase
           id={props.id}
+          ref={props.innerRef} 
           style={{ width: props.width }}
           aria-describedby={props.description}
           name={props.name}
           value={props.value}
           disabled={props.disabled}
           placeholder={props.placeholder}
-          // required={flag && !props.value}
           aria-required={props.required}
           autoComplete={props.autoComplete}
           classes={props.classes}
@@ -51,6 +54,11 @@ export default function Input (props: props) {
           error={props.error}
           onChange={props.onChange}
           onBlur={props.onBlur}
+          onClick={props.onClick}
+          onKeyDown={props.onKeyDown}
+          inputProps={props.inputProps}
+          endAdornment={props.endAdornment}
+          startAdornment={props.startAdornment}
         />
         {props.helperText && (
           <FormHelperText
