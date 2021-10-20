@@ -774,7 +774,7 @@ export function TimeIcon(props: React.SVGProps<SVGSVGElement>): JSX.Element {
         <path data-name="Rectangle 2213" fill="none" d="M0 0h20v20H0z" />
         <path
           d="M10 0A10 10 0 110 10 10 10 0 0110 0zm0 2a8 8 0 108 8 8 8 0 00-8-8zm1 2v5.632l3.759 3.76-1.414 1.414L9 10.461V4z"
-          fill={props.color || 'var(--Gray)'}
+          fill={"currentColor"}
         />
       </g>
     </svg>
