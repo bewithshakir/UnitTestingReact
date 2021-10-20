@@ -18,11 +18,9 @@ interface GridHeaderProps {
     headCells: HeadCellsOptions[];
     onRequestSort: (event: React.MouseEvent<unknown>, property: any) => void;
     isError?: any;
-
-
-    numSelected: number;
-    onSelectAllClick: (event: React.ChangeEvent<HTMLInputElement>) => void;
-    rowCount: number;
+    numSelected?: number;
+    onSelectAllClick?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    rowCount?: number;
     enableRowSelection?: boolean;
     enableRowAction?: boolean;
 }
@@ -43,7 +41,7 @@ const EnhancedGridHead: React.FC<GridHeaderProps> = (props) => {
                 <TableRow>{"No Data Received"}</TableRow>
                 :
                 <TableRow>
-                    {props.enableRowSelection ?
+                    {props.enableRowSelection && props.numSelected !== undefined && props.rowCount ?
                         <TableCell padding="checkbox" className="header-options">
                             <Checkbox
                                 name='checkbox-all'

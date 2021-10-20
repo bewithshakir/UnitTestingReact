@@ -5,7 +5,7 @@ interface checkBoxProps {
     name: string;
     checked: boolean;
     indeterminate?: boolean;
-    onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
+    onChange?: ((event: React.ChangeEvent<HTMLInputElement>, checked: boolean) => void) | undefined
     onClick?: (event: React.MouseEvent<HTMLElement>) => void
 }
 

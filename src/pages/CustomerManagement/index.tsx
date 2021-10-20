@@ -12,6 +12,7 @@ import {
   FilterIcon,
 } from "../../assets/icons";
 import GridComponent from "../../components/UIComponents/DataGird/grid.component";
+import Table from "../../components/UIComponents/DataGird/Table";
 import { useCustomers } from "./queries";
 import SearchInput from "../../components/UIComponents/SearchInput/SearchInput";
 import { Add } from "@mui/icons-material";
@@ -45,6 +46,7 @@ const Content: React.FC<ContentProps> = () => {
   const [sortOrder, setSortOrder] = React.useState<{ sortBy: string, order: string }>({ sortBy: "customerName", order: "asc" });
   const [filterData, setFilterData] = React.useState<{ [key: string]: string[] }>({});
   const [custFilterPanelVisible, setCustFilterPanelVisible] = React.useState(false);
+  const [customerId, setCustomerId] = React.useState('');
 
   const { t } = useTranslation();
   const { data, fetchNextPage, isLoading }: any = useCustomers(
@@ -123,6 +125,14 @@ const Content: React.FC<ContentProps> = () => {
                 />
               </FormControl>
             </Grid>
+            <Grid item pr={2.5}>
+              <FormControl>
+                <SortbyMenu
+                  options={sortByOptions.map((sortByItem) => t(sortByItem))}
+                  onSelect={(value) => onSortBySlected(value)}
+                />
+              </FormControl>
+            </Grid>
             <Grid item>
               <SearchInput
                 name="searchTerm"
@@ -181,6 +191,9 @@ const Content: React.FC<ContentProps> = () => {
             enableRowAction
             getPages={fetchNextPage}
             openDrawer={openDrawer}
+            searchTerm={searchTerm}
+            getCustomerId={(id:string) => setCustomerId(id)}
+            InnerTableComponent={<Table id={customerId}/>}
           />
 
           <RightInfoPanel panelType="customer-filter" open={custFilterPanelVisible} headingText={"Filters"} provideFilterParams={getFilterParams} onClose={handleCustFilterPanelClose} />

@@ -36,3 +36,24 @@ export const useCustomers = (query: string, sortOrder:{sortBy: string,order:stri
         keepPreviousData: true
     });
 };
+
+// Get Lots by CustomerId
+const getLotsByCustomerId = async ( pageParam: number, customerId: string ) => {
+    const payload: AxiosRequestConfig = {
+        method: 'get',
+        url: `/api/customer-service/lot?limit=15&offset=${pageParam}&customerId=${customerId}`
+    };
+    const { data } = await axios(payload);
+    return data;
+};
+
+export const getLots = (customerId : string) => {
+    return useInfiniteQuery(["getLotsByCustomerId", customerId], ({ pageParam = 0 }) => getLotsByCustomerId(pageParam, customerId), {
+        getNextPageParam: (lastGroup: any) => {
+            if (lastGroup.data.pagination.offset < lastGroup.data.pagination.totalCount) {
+                return lastGroup.data.pagination.offset + 15;
+            }
+        },
+        keepPreviousData: true
+    });
+};

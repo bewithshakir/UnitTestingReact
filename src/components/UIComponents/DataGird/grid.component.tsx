@@ -16,11 +16,15 @@ interface GridComponentProps {
     rows: any[],
     header: headerObj[],
     isLoading?: boolean,
+    isChildTable?: boolean,
     getPages?: any
     ref?: any
     openDrawer?: any
     enableRowSelection?: boolean,
     enableRowAction?: boolean,
+    getCustomerId?:any,
+    InnerTableComponent?:any,
+    searchTerm?:string,
 }
 
 const GridComponent: React.FC<GridComponentProps> = (props) => {
@@ -96,6 +100,7 @@ const GridComponent: React.FC<GridComponentProps> = (props) => {
                     enableRowAction={enableRowAction}
                     handleCheckChange={handleCheckChange}
                     headCells={props.header}
+                    searchTerm={props.searchTerm}
                     {...props}
                 />
             </Table>
