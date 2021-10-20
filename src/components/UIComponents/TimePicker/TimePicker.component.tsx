@@ -84,9 +84,9 @@ export const TimePicker: React.FC<TimePickerProps> = ({ label, value, onChange, 
     };
 
     const onChangeByInput = (e: any) => {
-        setInputValue(e.target.value);
-        onChange(name, e.target.value);
         const val = e.target.value;
+        setInputValue(val);
+        onChange(name, val);
         checkTimeAndPrepareTimeObj(val);
     };
 
