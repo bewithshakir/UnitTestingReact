@@ -762,7 +762,7 @@ export function SortByIcon(props: React.SVGProps<SVGSVGElement>): JSX.Element {
   );
 }
 
-export function TimeIcon(props: React.SVGProps<SVGSVGElement>) {
+export function TimeIcon(props: React.SVGProps<SVGSVGElement>): JSX.Element {
   return (
     <svg
       width="1em"
