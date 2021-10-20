@@ -1,0 +1,65 @@
+div {
+  .time-picker-container {
+    position: relative;
+    .MuiInputAdornment-root {
+      position: absolute;
+      right: 0px;
+      margin-top: 5px;
+      .calendar-icon-div {
+        font-size: 18px;
+      }
+    }
+    .custom-popper {
+      margin: 0px;
+      left: 0px;
+      top: 62px;
+      right: 0px;
+      transform: translate3d(0px, 62px, 0px);
+      z-index: 999;
+      .MuiInputBase-input {
+        font-size: 14px;
+      }
+    }
+    .time-div {
+      padding: 10px 0px;
+      .MuiPaper-root {
+        box-shadow: 6px 6px 14px #00000026;
+        border-radius: 0px;
+        .MuiGrid-container {
+          padding: 16px 22px 16px;
+          .MuiGrid-item {
+            padding: 0px;
+            .hm-box {
+              font-size: 14px;
+              padding-right: 10px;
+              height: 197px;
+              overflow-y: scroll;
+              padding-right: 20px;
+              .h-m-value-box {
+                margin-bottom: 15px;
+                cursor: pointer;
+                &.selected {
+                  color: var(--Primary);
+                  font-weight: 700;
+                }
+                &:last-child {
+                  margin-bottom: 0px;
+                }
+              }
+            }
+          }
+
+          .meridiem-div {
+            font-size: 14px;
+            .MuiButton-root {
+              margin-bottom: 15px;
+              font-size: 14px;
+              width: 50px;
+              height: 30px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
