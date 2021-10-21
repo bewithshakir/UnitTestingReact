@@ -77,9 +77,6 @@ export const TimePicker: React.FC<TimePickerProps> = ({ label, value, onChange, 
     };
 
     const handleClickAway = () => {
-        if (inputRef && inputRef.current) {
-            setAnchorEl(inputRef.current);
-        }
         setOpen(false);
     };
 

@@ -8,10 +8,17 @@ import Popper from "@material-ui/core/Popper";
 import React from "react";
 import { ActionsListIcon } from '../../../assets/icons';
 import './ActionsMenu.style.scss';
+import {
+  ExportIcon,
+  PlusIcon,
+  DeleteIcon,
+  ImportIcon,
+} from "../../../assets/icons";
 
 type ActionsMenuOption = {
+  action?: string;
   label: string;
-  icon?: React.ReactNode;
+  icon?: React.ReactNode | string;
   color?: string;
 }
 
@@ -20,7 +27,7 @@ interface ActionsMenuProps {
   menuName?: string,
   onSelect: (selectedValue: any) => void,
 }
-export default function ActionsMenu(props: ActionsMenuProps) {
+export default function ActionsMenu (props: ActionsMenuProps) {
   const [open, setOpen] = React.useState(false);
   const [selectedIndex, setSelectedIndex] = React.useState(-1);
   const anchorRef = React.useRef<HTMLButtonElement>(null);
@@ -47,8 +54,22 @@ export default function ActionsMenu(props: ActionsMenuProps) {
     setOpen(false);
   };
 
+  const renderIcons = (iconName: string) => {
+    switch (iconName) {
+      case "ExportIcon":
+        return (<ExportIcon />);
+      case "PlusIcon":
+        return (<PlusIcon />);
+      case "DeleteIcon":
+        return (<DeleteIcon />);
+      case "ImportIcon":
+        return (<ImportIcon />);
+      default:
+        return null;
+    }
+  };
 
-  function handleListKeyDown(event: React.KeyboardEvent) {
+  function handleListKeyDown (event: React.KeyboardEvent) {
     if (event.key === "Tab") {
       event.preventDefault();
       setOpen(false);
@@ -114,7 +135,9 @@ export default function ActionsMenu(props: ActionsMenuProps) {
                       onClick={(event) => handleMenuItemClick(event, index)}
                     >
                       <ListItemIcon className="menuitem-icon" >
-                        {option.icon}
+                        {
+                          typeof option.icon === "string" ? renderIcons(option.icon) : option.icon
+                        }
                       </ListItemIcon>
                       <div className="menuitem-text">
                         <Typography variant="inherit">{option.label}</Typography>
