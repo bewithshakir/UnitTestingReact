@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-
+import { headerObj } from '../components/UIComponents/DataGird/grid.component';
 
 export interface SelectProps {
     label: string,
@@ -40,7 +40,7 @@ export default class ParkingLotModel {
         this.lotLevel = false;
     }
 
-    fieldsToDisplay() {
+    fieldsToDisplay (): headerObj[] {
         return [
             { field: "deliveryLocationNm", label: "LOT NAME", type: 'text' },
             { field: "streetAddress", label: "STREET ADDRESS", type: 'text' },
@@ -62,7 +62,7 @@ export default class ParkingLotModel {
         CONTACT_DETAILS: 'contact details'
     };
 
-    rowActions() {
+    rowActions () {
         const { t } = useTranslation();
         return [
             {
@@ -90,7 +90,7 @@ export default class ParkingLotModel {
         DELETE: 'remove',
     };
 
-    massActions() {
+    massActions () {
         const { t } = useTranslation();
         return [
             {
