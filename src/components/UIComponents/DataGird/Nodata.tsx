@@ -1,6 +1,6 @@
 import { NoResultFoundIcon } from '../../../assets/icons';
 import { FormControl } from '@mui/material';
-import './gatx.scss';
+import './Nodata.scss';
 import { Fragment } from 'react';
 
 interface props{
