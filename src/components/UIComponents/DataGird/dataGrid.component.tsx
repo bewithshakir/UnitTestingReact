@@ -130,7 +130,7 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
                                                 <Button
                                                     types="accordian"
                                                     aria-label="accordian"
-                                                    className={row[key] === 0 ? 'empty' : "active"}
+                                                    className={row[key] ? "active" : 'empty'}
                                                     onClick={(e) => handleCollapaseClick(e, indexKey, row)}
                                                     startIcon={< LocationOnOutlinedIcon />}
                                                 >
