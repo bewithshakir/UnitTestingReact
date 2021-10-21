@@ -2,15 +2,11 @@ import React, { SyntheticEvent } from "react";
 import { Button } from "../../components/UIComponents/Button/Button.component";
 import "./style.scss";
 import { useTranslation } from "react-i18next";
-import SortbyMenu from "../../components/UIComponents/Menu/SortbyMenu.component";
-import ActionsMenu from "../../components/UIComponents/Menu/ActionsMenu.component";
 import {
-  ExportIcon,
-  PlusIcon,
-  DeleteIcon,
-  ImportIcon,
   FilterIcon,
 } from "../../assets/icons";
+import SortbyMenu from "../../components/UIComponents/Menu/SortbyMenu.component";
+import ActionsMenu from "../../components/UIComponents/Menu/ActionsMenu.component";
 import GridComponent from "../../components/UIComponents/DataGird/grid.component";
 import { useCustomers } from "./queries";
 import SearchInput from "../../components/UIComponents/SearchInput/SearchInput";
@@ -20,24 +16,22 @@ import { sortByOptions } from "./config";
 import { RightInfoPanel } from "../../components/UIComponents/RightInfoPanel/RightInfoPanel.component";
 import { Box, FormControl, Grid } from "@mui/material";
 import { HorizontalBarVersionState, useStore } from "../../store";
+import CustomerModel from "../../models/CustomerModel";
+import { DataGridActionsMenuOption } from "../../components/UIComponents/Menu/DataGridActionsMenu.component";
+
 interface ContentProps {
   rows?: [];
   version: string
 }
 
-const headCells = [
-  { id: "customerId", label: "ID", type: 'text' },
-  { id: "customerName", label: "CUSTOMER NAME", type: 'text' },
-  { id: "contactName", label: "CONTACT NAME", type: 'text' },
-  { id: "address", label: "ADDRESS", type: 'text' },
-  { id: "city", label: "CITY", type: 'text' },
-  { id: "state", label: "STATE", type: 'text' },
-  { id: "zipCode", label: "ZIP", type: 'text' },
-  { id: "lots", label: "LOTS", type: 'button' },
-  { id: "paymentType", label: "SETTLEMENT TYPE", type: 'text' },
-];
-
 const Content: React.FC<ContentProps> = () => {
+  const CustomerObj = new CustomerModel();
+  const headCells = CustomerObj.fieldsToDisplay();
+  const rowActionOptions = CustomerObj.rowActions();
+  const massActionOptions = CustomerObj.massActions();
+  const ACTION_TYPES = CustomerObj.ACTION_TYPES;
+  const MASS_ACTION_TYPES = CustomerObj.MASS_ACTION_TYPES;
+
   const history = useHistory();
   const [info, setInfo] = React.useState({});
   const [searchTerm, setSearchTerm] = React.useState("");
@@ -90,10 +84,42 @@ const Content: React.FC<ContentProps> = () => {
     list.push(...item.data.customers);
   });
 
-
   const handleCustFilterPanelOpen = () => {
     setDrawerOpen(false);
     setCustFilterPanelVisible(!custFilterPanelVisible);
+  };
+
+  const handleMassAction = (action: DataGridActionsMenuOption) => {
+    switch (action.action) {
+      case MASS_ACTION_TYPES.IMPORT:
+        // perform action
+        break;
+      case MASS_ACTION_TYPES.EXPORT:
+        // perform action
+        break;
+      case MASS_ACTION_TYPES.DELETE:
+        // perform action
+        break;
+      default: return;
+    }
+  };
+
+  const handleRowAction = (action: DataGridActionsMenuOption) => {
+    switch (action.action) {
+      case ACTION_TYPES.RAISE_REQ:
+        // perform action 
+        break;
+      case ACTION_TYPES.DRIVER_DETAILS:
+        // perform action
+        break;
+      case ACTION_TYPES.OTHER_DETAIL:
+        // perform action
+        break;
+      case ACTION_TYPES.CONTACT_DETAILS:
+        // perform action
+        break;
+      default: return;
+    }
   };
 
   const handleCustFilterPanelClose = () => setCustFilterPanelVisible(false);
@@ -145,27 +171,8 @@ const Content: React.FC<ContentProps> = () => {
             <Grid item>
               <FormControl>
                 <ActionsMenu
-                  options={[
-                    {
-                      label: t("menus.actions.add vehicle"),
-                      icon: <PlusIcon />,
-                    },
-                    {
-                      label: t("menus.actions.import data"),
-                      icon: <ImportIcon />,
-                    },
-                    {
-                      label: t("menus.actions.export data"),
-                      icon: <ExportIcon />,
-                    },
-                    {
-                      label: t("menus.actions.delete"),
-                      icon: <DeleteIcon />,
-                    },
-                  ]}
-                  onSelect={(value) => {
-                    return value;
-                  }}
+                  options={massActionOptions}
+                  onSelect={handleMassAction}
                 />
               </FormControl>
             </Grid>
@@ -180,6 +187,8 @@ const Content: React.FC<ContentProps> = () => {
             enableRowSelection
             enableRowAction
             getPages={fetchNextPage}
+            onRowActionSelect={handleRowAction}
+            rowActionOptions={rowActionOptions}
             openDrawer={openDrawer}
           />
 
