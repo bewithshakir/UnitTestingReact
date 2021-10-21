@@ -18,8 +18,10 @@ import moment from "moment";
 //import { useQuery } from 'react-query';
 //import { fetchQueryTodos } from '../../../hooks/todos-with-query';
 import { Box, FormControl } from '@mui/material';
+import { TimePicker } from '../TimePicker/TimePicker.component';
 import './DemoComponents.style.scss';
 import { DateRange } from '@mui/lab/DateRangePicker';
+import { boxSX } from './config';
 
 type DatePickerRange = DateRange<Date>;
 
@@ -42,7 +44,7 @@ export const DemoComponents: React.FC = () => {
         setOpen(false);
     };
     const [dateRange, setDateRange] = useState<DatePickerRange>([new Date(), new Date()]);
-    const [form, setForm] = useState({ userName: '', email: '', item: [{ label: 'Nike', value: 'Nike' }], searchTerm: '', startDate: moment().format("MM/DD/YYYY"), endDate: moment().format("MM/DD/YYYY"), address: { addressLine1: '', addressLine2: '', state: '', city: '', postalCode: '' } });
+    const [form, setForm] = useState({ userName: '', email: '', item: [{ label: 'Nike', value: 'Nike' }], searchTerm: '', startDate: moment().format("MM/DD/YYYY"), endDate: moment().format("MM/DD/YYYY"), time: '', address: { addressLine1: '', addressLine2: '', state: '', city: '', postalCode: '' } });
     const debouncedValue = useDebounce<string>(form.searchTerm, 1000);
     const items = [
         { label: 'Amazon', value: 'Amazon' },
@@ -59,8 +61,11 @@ export const DemoComponents: React.FC = () => {
     useEffect(() => {
         setTempValue(debouncedValue);
     }, [debouncedValue]);
+
     const onDateRangeChange = (name: string, newValue: DatePickerRange) => setDateRange(newValue);
     const onDateChange = (name: string, newValue: Date | string | null | moment.Moment) => setForm(x => ({ ...x, [name]: (name === "startDate" || name === "endDate") && newValue ? moment(newValue).format('MM/DD/YYYY') : null }));
+    const onTimeChange = (name: string, newValue: string | '') => setForm(x => ({ ...x, [name]: newValue }));
+
     const { t } = useTranslation();
     return (
         <div>
@@ -210,9 +215,21 @@ export const DemoComponents: React.FC = () => {
             <Footer />
 
             <div className="App" style={{ 'marginLeft': '20px' }}>
+                {/* temporary styles */}
                 <div className={'app__main'}>
-
+                    
                     <Box className={'date_box'}>
+                    <Box sx={boxSX}>
+                        {form.time}
+                        <TimePicker
+                            label='Start time'
+                            id="time-picker"
+                            name="time"
+                            value={form.time}
+                            placeholder="select time"
+                            onChange={onTimeChange} />
+                    </Box>
+
                         <DatePickerInput
                             label="DATE RANGE"
                             type="date-range"
