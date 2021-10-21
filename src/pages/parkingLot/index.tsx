@@ -1,6 +1,5 @@
 import React, { SyntheticEvent, useEffect } from "react";
 import { Button } from "../../components/UIComponents/Button/Button.component";
-import "./style.scss";
 import { useTranslation } from "react-i18next";
 import {
   FilterIcon,
