@@ -12,7 +12,7 @@ import {
   FilterIcon,
 } from "../../assets/icons";
 import GridComponent from "../../components/UIComponents/DataGird/grid.component";
-import { useCustomers } from "./queries";
+import { useGetParkingLotDetails } from "./parkingLotqueries";
 import SearchInput from "../../components/UIComponents/SearchInput/SearchInput";
 import { Add } from "@mui/icons-material";
 import { useHistory } from "react-router-dom";
@@ -31,10 +31,10 @@ const headCells = [
   { id: "cityNm", label: "CITY", type: 'text' },
   { id: "stateNm", label: "STATE", type: 'text' },
   { id: "postalCd", label: "ZIP", type: 'text' },
-  { id: "state", label: "RACK UPDATE", type: 'text' },
-  { id: "zipCode", label: "WALLET STATUS", type: 'text' },
-  { id: "lots", label: "FUEL", type: 'text' },
-  { id: "lots", label: "VEHICLES", type: 'button' },
+  { id: "rackUpdate", label: "RACK UPDATE", type: 'text' },
+  { id: "walletStatus", label: "WALLET STATUS", type: 'text' },
+  { id: "fuelStatus", label: "FUEL", type: 'text' },
+  { id: "vehicles", label: "VEHICLES", type: 'button' },
 ];
 
 const ParkingLot: React.FC<ContentProps> = () => {
@@ -48,7 +48,7 @@ const ParkingLot: React.FC<ContentProps> = () => {
   const customerId = "fc2ffe5e-7ef8-46b8-95c2-cb82cf77ed90";
 
   const { t } = useTranslation();
-  const { data, fetchNextPage, isLoading }: any = useCustomers(
+  const { data, fetchNextPage, isLoading }: any = useGetParkingLotDetails(
     searchTerm,
     sortOrder,
     filterData,

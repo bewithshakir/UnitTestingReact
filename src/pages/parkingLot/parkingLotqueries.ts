@@ -4,7 +4,7 @@ import axios from "../../infrastructure/ApiHelper";
 
 
 
-const getCustomers = async (pageParam: number, searchTerm: string, sortOrder:{sortBy: string,order:string}, filterParams:{[key: string]: string[]}, customerId: string) => {
+const getParkingLotDetails= async (pageParam: number, searchTerm: string, sortOrder:{sortBy: string,order:string}, filterParams:{[key: string]: string[]}, customerId: string) => {
     const query = new URLSearchParams();
     if (searchTerm) {
         query.append("search", searchTerm);
@@ -26,8 +26,8 @@ const getCustomers = async (pageParam: number, searchTerm: string, sortOrder:{so
     const { data } = await axios(options);
     return data;
 };
-export const useCustomers = (query: string, sortOrder:{sortBy: string,order:string}, filterParams:{[key: string]: string[]}, customerId: string) => {
-    return useInfiniteQuery(["getCustomers", query, sortOrder, filterParams, customerId], ({ pageParam = 0 }) => getCustomers(pageParam, query, sortOrder, filterParams, customerId), {
+export const useGetParkingLotDetails= (query: string, sortOrder:{sortBy: string,order:string}, filterParams:{[key: string]: string[]}, customerId: string) => {
+    return useInfiniteQuery(["getCustomers", query, sortOrder, filterParams, customerId], ({ pageParam = 0 }) => getParkingLotDetails(pageParam, query, sortOrder, filterParams, customerId), {
         getNextPageParam: (lastGroup: any) => {
           if(lastGroup.data.pagination.offset < lastGroup.data.pagination.totalCount ){
               return lastGroup.data.pagination.offset + 15;
