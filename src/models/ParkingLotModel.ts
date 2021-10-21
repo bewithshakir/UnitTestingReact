@@ -19,7 +19,7 @@ export interface ParkingLot {
     lotLevel: boolean,
 }
 
-export default class CustomerModel {
+export default class ParkingLotModel {
     // General Information
     customerId: string;
     city: string;
