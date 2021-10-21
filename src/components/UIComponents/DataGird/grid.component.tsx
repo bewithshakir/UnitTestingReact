@@ -8,7 +8,8 @@ import EnhancedGridHead from './headerGrid.component';
 export interface headerObj {
     field: string,
     label: string,
-    type: string,
+    type: 'text' | 'button' | 'icon' | 'text-array',
+    bold?: boolean
 }
 type selectedRow = string[];
 interface GridComponentProps {
@@ -21,7 +22,7 @@ interface GridComponentProps {
     ref?: any,
     openDrawer?: any,
     onRowActionSelect?: (action: DataGridActionsMenuOption, row: any) => void,
-    rowActionOptions: DataGridActionsMenuOption[],
+    rowActionOptions?: DataGridActionsMenuOption[],
     enableRowSelection?: boolean,
     enableRowAction?: boolean,
 }
@@ -111,8 +112,7 @@ const GridComponent: React.FC<GridComponentProps> = (props) => {
 GridComponent.defaultProps = {
     enableRowSelection: false,
     enableRowAction: false,
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
-    onRowActionSelect: () => { },
+    rowActionOptions: [],
 };
 
 

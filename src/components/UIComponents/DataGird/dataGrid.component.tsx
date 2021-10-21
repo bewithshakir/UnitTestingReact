@@ -19,7 +19,7 @@ interface GridBodyProps {
     openDrawer?: any;
     selectedRows: string[];
     onRowActionSelect?: (selectedValue: DataGridActionsMenuOption, row: any) => void,
-    rowActionOptions: DataGridActionsMenuOption[],
+    rowActionOptions?: DataGridActionsMenuOption[],
     handleCheckChange: (customerId: string) => void;
 }
 
@@ -115,7 +115,7 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
                                 >
                                     {
                                         props.headCells[index].type === 'text' ?
-                                            index === 0 ? <b>{row[key]}</b> : row[key]
+                                            props.headCells[index].bold ? <b>{row[key]}</b> : row[key]
                                             :
                                             props.headCells[index].type === 'button' ?
                                                 <Button
@@ -125,7 +125,9 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
                                                     onClick={(e) => handleCollapaseClick(e, indexKey)}
                                                     startIcon={< LocationOnOutlinedIcon />}
                                                 >
-                                                    {0}
+                                                    {
+                                                        row[key]
+                                                    }
                                                 </Button> : ""
                                     }
                                 </TableCell>

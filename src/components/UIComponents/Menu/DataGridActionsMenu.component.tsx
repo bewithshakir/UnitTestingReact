@@ -23,7 +23,7 @@ export type DataGridActionsMenuOption = {
 }
 
 interface DataGridActionsMenuProps {
-  options: DataGridActionsMenuOption[],
+  options?: DataGridActionsMenuOption[],
   menuName?: string,
   onSelect?: (e: React.SyntheticEvent, selectedValue: DataGridActionsMenuOption) => void,
 }
@@ -52,7 +52,7 @@ export default function DataGridActionsMenu (props: DataGridActionsMenuProps) {
   const handleMenuItemClick = (event: React.SyntheticEvent, index: number) => {
     event.stopPropagation();
     setSelectedIndex(index);
-    onSelect && onSelect(event, options[index]);
+    onSelect && options && onSelect(event, options[index]);
     setOpen(false);
   };
 
@@ -128,7 +128,7 @@ export default function DataGridActionsMenu (props: DataGridActionsMenuProps) {
                   id="datagrid-actions-menu-list"
                   onKeyDown={handleListKeyDown}
                 >
-                  {options.map((option, index) => (
+                  {options && options.map((option, index) => (
                     <MenuItem
                       key={option.label}
                       className={"menuitem"}
