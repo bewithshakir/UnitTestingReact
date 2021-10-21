@@ -1,22 +1,25 @@
 import {useState, useEffect} from 'react';
-import GridComponent from './grid.component';
-import { getLots } from '../../../pages/CustomerManagement/queries'; 
-import './Table.scss';
-import CustomerModel from '../../../models/CustomerModel';
+import GridComponent from '../../components/UIComponents/DataGird/grid.component';
+import { getLots } from './queries'; 
+import './SubTableLots.scss';
+
+
+type headCells = {
+    field: string;
+    label: string;
+    type: string;
+}
 
 interface props {
     id:string,
-    width?: string,
-    height?: string,
     rows?: any[],
     isLoading?: boolean,
     getPages?: any,
+    headCells: headCells[],
 }
 
 export default function InnerTable(props:props) {
     const [lotDetails, setLotDetails] = useState([]);
-    const Customer = new CustomerModel();
-    const headCells = Customer.fieldsToDisplayLotTable();
 
     const { data, fetchNextPage, isLoading, isFetching }: any = getLots(props.id);
     useEffect(() => {
@@ -32,7 +35,7 @@ export default function InnerTable(props:props) {
         <div className='sub-Table-Container'>
         <GridComponent
                 rows={lotDetails}
-                header={headCells}
+                header={props.headCells}
                 isLoading={isFetching || isLoading}
                 isChildTable
                 enableRowSelection={false}

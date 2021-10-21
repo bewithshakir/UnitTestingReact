@@ -9,7 +9,7 @@ import {
 import SortbyMenu from "../../components/UIComponents/Menu/SortbyMenu.component";
 import ActionsMenu from "../../components/UIComponents/Menu/ActionsMenu.component";
 import GridComponent from "../../components/UIComponents/DataGird/grid.component";
-import Table from "../../components/UIComponents/DataGird/Table";
+import Table from "./SubTableLots";
 import { useCustomers } from "./queries";
 import SearchInput from "../../components/UIComponents/SearchInput/SearchInput";
 import { Add } from "@mui/icons-material";
@@ -29,6 +29,7 @@ interface ContentProps {
 const Content: React.FC<ContentProps> = () => {
   const CustomerObj = new CustomerModel();
   const headCells = CustomerObj.fieldsToDisplay();
+  const headCellsLots = CustomerObj.fieldsToDisplayLotTable();
   const rowActionOptions = CustomerObj.rowActions();
   const massActionOptions = CustomerObj.massActions();
   const ACTION_TYPES = CustomerObj.ACTION_TYPES;
@@ -203,7 +204,7 @@ const Content: React.FC<ContentProps> = () => {
             openDrawer={openDrawer}
             searchTerm={searchTerm}
             getCustomerId={(id:string) => setCustomerId(id)}
-            InnerTableComponent={<Table id={customerId}/>}
+            InnerTableComponent={<Table id={customerId} headCells={headCellsLots}/>}
             noDataMsg='Add Customer by clicking on the " Add Customer" button.'
           />
 
