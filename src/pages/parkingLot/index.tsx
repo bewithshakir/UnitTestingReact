@@ -7,11 +7,11 @@ import {
 import SortbyMenu from "../../components/UIComponents/Menu/SortbyMenu.component";
 import ActionsMenu from "../../components/UIComponents/Menu/ActionsMenu.component";
 import GridComponent from "../../components/UIComponents/DataGird/grid.component";
-import { useGetParkingLotDetails } from "../parkingLot/queries";
+import { useGetParkingLotDetails } from "../ParkingLot/queries";
 import SearchInput from "../../components/UIComponents/SearchInput/SearchInput";
 import { Add } from "@mui/icons-material";
 import { useHistory } from "react-router-dom";
-import { sortByOptions } from "../parkingLot/config";
+import { sortByOptions } from "../ParkingLot/config";
 import { RightInfoPanel } from "../../components/UIComponents/RightInfoPanel/RightInfoPanel.component";
 import { Box, FormControl, Grid } from "@mui/material";
 import { HorizontalBarVersionState, useStore } from "../../store";
@@ -40,7 +40,7 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
   const [custFilterPanelVisible, setCustFilterPanelVisible] = React.useState(false);
   const [parkingLotlist, setCustomerList] = React.useState([]);
   const customerId = "fc2ffe5e-7ef8-46b8-95c2-cb82cf77ed90";
-  
+
   const { t } = useTranslation();
   const { data, fetchNextPage, isLoading }: any = useGetParkingLotDetails(
     searchTerm,
