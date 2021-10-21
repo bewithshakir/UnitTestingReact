@@ -15,8 +15,8 @@ interface props {
 }
 
 export default function InnerTable(props:props) {
-    const CustomerObj = new CustomerModel();
-    const headCells = CustomerObj.fieldsToDisplayLotTable();
+    const Customer = new CustomerModel();
+    const headCells = Customer.fieldsToDisplayLotTable();
     const list: any = [];
     const { data, fetchNextPage, isLoading, isFetching }: any = getLots(props.id);
     data?.pages?.map((item: any) => {

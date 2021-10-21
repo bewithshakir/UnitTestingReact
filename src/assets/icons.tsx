@@ -739,8 +739,8 @@ export function NoResultFoundIcon(props: React.SVGProps<SVGSVGElement>) {
         <path
           data-name="Path 1845"
           d="M28.937 34.448H8.268a.689.689 0 110-1.378h20.669a.689.689 0 110 1.378z"
-          fill="#595959"
-          stroke="#595959"
+          fill="currentColor"
+          stroke="currentColor"
           strokeWidth={0.5}
         />
       </g>
@@ -748,8 +748,8 @@ export function NoResultFoundIcon(props: React.SVGProps<SVGSVGElement>) {
         <path
           data-name="Path 1846"
           d="M19.291 30.314H8.268a.689.689 0 110-1.378h11.023a.689.689 0 010 1.378z"
-          fill="#595959"
-          stroke="#595959"
+          fill="currentColor"
+          stroke="currentColor"
           strokeWidth={0.5}
         />
       </g>
@@ -757,8 +757,8 @@ export function NoResultFoundIcon(props: React.SVGProps<SVGSVGElement>) {
         <path
           data-name="Path 1847"
           d="M28.937 38.582H8.268a.689.689 0 110-1.378h20.669a.689.689 0 110 1.378z"
-          fill="#595959"
-          stroke="#595959"
+          fill="currentColor"
+          stroke="currentColor"
           strokeWidth={0.5}
         />
       </g>
@@ -766,20 +766,20 @@ export function NoResultFoundIcon(props: React.SVGProps<SVGSVGElement>) {
         <path
           data-name="Path 1848"
           d="M19.587 12.489a.686.686 0 01-.467-.183 4.816 4.816 0 00-3.274-1.283.689.689 0 010-1.378 6.187 6.187 0 014.21 1.649.689.689 0 01-.468 1.195z"
-          fill="#595959"
+          fill="currentColor"
         />
       </g>
       <path
         data-name="Path 1849"
         d="M30.479 28.268l-5.847-5.847a.708.708 0 00-.974 0l-.488.488h0l-.869-.869a9.029 9.029 0 10-1.029.916l.926.926h0l-.488.488a.689.689 0 000 .974l5.845 5.846a.692.692 0 00.976 0l1.95-1.948a.688.688 0 00.2-.488.681.681 0 00-.202-.486zM8.268 15.846a7.579 7.579 0 117.579 7.579 7.587 7.587 0 01-7.579-7.579zm19.774 13.883l-4.871-4.871.974-.976 4.872 4.872z"
-        fill="#595959"
-        stroke="#595959"
+          fill="currentColor"
+          stroke="currentColor"
         strokeWidth={0.5}
       />
       <g
         data-name="Rectangle 2310"
         fill="none"
-        stroke="#595959"
+        stroke="currentColor"
         strokeWidth={2}
       >
         <path stroke="none" d="M0 0h37v45H0z" />

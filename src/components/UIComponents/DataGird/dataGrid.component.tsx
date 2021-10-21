@@ -7,7 +7,7 @@ import DataGridActionsMenu, { DataGridActionsMenuOption } from '../Menu/DataGrid
 import { Button } from './../Button/Button.component';
 import './grid.style.scss';
 import { headerObj } from './grid.component';
-import NoDataFound from './NoData';
+import NoDataFound from './gatx';
 interface GridBodyProps {
     rows?: any;
     order: string | any;
