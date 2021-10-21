@@ -1,4 +1,5 @@
-import React, { SyntheticEvent } from "react";
+/* eslint-disable no-console */
+import React, { SyntheticEvent, useEffect } from "react";
 import { Button } from "../../components/UIComponents/Button/Button.component";
 import "./style.scss";
 import { useTranslation } from "react-i18next";
@@ -41,6 +42,7 @@ const Content: React.FC<ContentProps> = () => {
   const [filterData, setFilterData] = React.useState<{ [key: string]: string[] }>({});
   const [custFilterPanelVisible, setCustFilterPanelVisible] = React.useState(false);
   const [customerId, setCustomerId] = React.useState('');
+  const [customerList, setCustomerList] = React.useState([]);
 
   const { t } = useTranslation();
   const { data, fetchNextPage, isLoading, isFetching }: any = useCustomers(
@@ -48,6 +50,17 @@ const Content: React.FC<ContentProps> = () => {
     sortOrder,
     filterData
   );
+
+  useEffect(() => {
+    if (data) {
+      const list: any = [];
+      data?.pages?.forEach((item: any) => {
+        list.push(...item.data.customers);
+      });
+      setCustomerList(list);
+    }
+  }, [data]);
+
   const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
   setVersion("NavLinks");
   const openDrawer = (row: SyntheticEvent) => {
@@ -81,10 +94,6 @@ const Content: React.FC<ContentProps> = () => {
   const onInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(event.currentTarget.value);
   };
-  const list: any = [];
-  data?.pages?.map((item: any) => {
-    list.push(...item.data.customers);
-  });
 
   const handleCustFilterPanelOpen = () => {
     setDrawerOpen(false);
@@ -183,7 +192,7 @@ const Content: React.FC<ContentProps> = () => {
         <Grid container pt={2.5} display="flex" flexGrow={1}>
 
           <GridComponent
-            rows={list}
+            rows={customerList}
             header={headCells}
             isLoading={isFetching || isLoading}
             enableRowSelection
