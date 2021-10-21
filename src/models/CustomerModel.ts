@@ -1,6 +1,7 @@
 // import LocationAddressModel from './LocationAddressModel';
 import moment from 'moment';
 import { useTranslation } from 'react-i18next';
+import { headerObj } from '../components/UIComponents/DataGird/grid.component';
 
 
 export interface SelectProps {
@@ -112,16 +113,16 @@ export default class CustomerModel {
         }];
     }
 
-    fieldsToDisplay () {
+    fieldsToDisplay (): headerObj[] {
         return [
-            { field: "customerId", label: "ID", type: 'text' },
+            { field: "customerId", label: "ID", type: 'text', bold: true },
             { field: "customerName", label: "CUSTOMER NAME", type: 'text' },
             { field: "contactName", label: "CONTACT NAME", type: 'text' },
             { field: "address", label: "ADDRESS", type: 'text' },
             { field: "city", label: "CITY", type: 'text' },
             { field: "state", label: "STATE", type: 'text' },
             { field: "zipCode", label: "ZIP", type: 'text' },
-            { field: "lots", label: "LOTS", type: 'button' },
+            { field: "totalLots", label: "LOTS", type: 'button' },
             { field: "paymentType", label: "SETTLEMENT TYPE", type: 'text' },
         ];
     }
