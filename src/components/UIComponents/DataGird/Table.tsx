@@ -23,7 +23,7 @@ export default function InnerTable(props:props) {
         if (data) {
             const list: any = [];
             data?.pages?.forEach((item: any) => {
-                list.push(...item.data.customers);
+                list.push(...item.data.lots);
             });
             setLotDetails(list);
         }
