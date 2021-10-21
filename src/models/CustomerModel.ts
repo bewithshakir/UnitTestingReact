@@ -121,7 +121,7 @@ export default class CustomerModel {
             { field: "city", label: "CITY", type: 'text' },
             { field: "state", label: "STATE", type: 'text' },
             { field: "zipCode", label: "ZIP", type: 'text' },
-            { field: "lots", label: "LOTS", type: 'button' },
+            { field: "totalLots", label: "LOTS", type: 'button' },
             { field: "paymentType", label: "SETTLEMENT TYPE", type: 'text' },
         ];
     }

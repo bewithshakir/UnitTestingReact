@@ -130,11 +130,11 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
                                                 <Button
                                                     types="accordian"
                                                     aria-label="accordian"
-                                                    className={row.totalLots === 0 ? 'empty' : "active"}
+                                                    className={row[key] === 0 ? 'empty' : "active"}
                                                     onClick={(e) => handleCollapaseClick(e, indexKey, row)}
                                                     startIcon={< LocationOnOutlinedIcon />}
                                                 >
-                                                    {row.totalLots}
+                                                    {row[key]}
                                                 </Button> : ""
                                     }
                                 </TableCell>
@@ -172,7 +172,7 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
         if(props?.rows?.length > 1) {
             return getRowsData();
         }else if (!props?.isLoading){
-            return (<TableBody className='NoData'> <NoDataFound searchTerm={props.searchTerm} msgLine2={props.noDataMsg}/> </TableBody>);
+            return (<TableBody className='no-data'> <NoDataFound searchTerm={props.searchTerm} msgLine2={props.noDataMsg}/> </TableBody>);
         }
     };
 
