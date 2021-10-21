@@ -170,8 +170,7 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
         );
     };
 
-
-    if (props?.rows?.length > 1) {
+    if (props?.rows?.length) {
         return getRowsData();
     } else if (props?.isLoading) {
         return (<Loader />);
