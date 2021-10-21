@@ -4,37 +4,31 @@ import EnhancedGridBody from './dataGrid.component';
 import './grid.style.scss';
 import EnhancedGridHead from './headerGrid.component';
 
+interface headerObj {
+    id: string,
+    label: string,
+    type: string,
+}
+type selectedRow = string[];
 interface GridComponentProps {
     width?: string,
     height?: string,
-    rows?: any[],
+    rows: any[],
+    header: headerObj[],
     isLoading?: boolean,
     getPages?: any
     ref?: any
     openDrawer?: any
+    enableRowSelection?: boolean,
+    enableRowAction?: boolean,
 }
-
-const headCells = [
-    { id: "id", label: "ID", type: 'text' },
-    { id: "customerName", label: "CUSTOMER NAME", type: 'text' },
-    { id: "contactName", label: "CONTACT NAME", type: 'text' },
-    { id: "address", label: "ADDRESS", type: 'text' },
-    { id: "city", label: "CITY", type: 'text' },
-    { id: "state", label: "STATE", type: 'text' },
-    { id: "zipCode", label: "ZIP", type: 'text' },
-    { id: "lots", label: "LOTS", type: 'button' },
-    { id: "phone", label: "PHONE", type: 'text' },
-    { id: "paymentType", label: "PAYMENT TYPE", type: 'text' },
-    { id: "country", label: "COUNTRY", type: 'text' },
-    { id: "cardAdded", label: "CARD ADDED", type: 'text' },
-    { id: "", label: "", type: 'icon' }
-];
 
 const GridComponent: React.FC<GridComponentProps> = (props) => {
     const [order, setOrder] = React.useState("asc");
     const [orderBy, setOrderBy] = React.useState("");
+    const [selected, setSelected] = React.useState<selectedRow>([]);
 
-
+    const { rows, enableRowSelection, enableRowAction } = props;
     const handleRequestSort = (event: any, property: any) => {
         const isAsc = orderBy === property && order === "asc";
         setOrder(isAsc ? "desc" : "asc");
@@ -43,9 +37,38 @@ const GridComponent: React.FC<GridComponentProps> = (props) => {
 
     const handleTableScroll = (event: any) => {
         const bottomValue = event.target.scrollHeight - event.target.scrollTop;
-        if (bottomValue - event.target.clientHeight <= 0) {
+        if ((bottomValue - event.target.clientHeight) <= 0) {
             props.getPages();
         }
+    };
+
+
+    const handleSelectAllClick = (event: React.ChangeEvent<HTMLInputElement>) => {
+        if (event.target.checked) {
+            const newSelecteds: selectedRow = rows.map((n) => n.customerId);
+            setSelected(newSelecteds);
+            return;
+        }
+        setSelected([]);
+    };
+
+    const handleCheckChange = (customerId: string) => {
+        const selectedIndex = selected.indexOf(customerId);
+        let newSelected: selectedRow = [];
+
+        if (selectedIndex === -1) {
+            newSelected = newSelected.concat(selected, customerId);
+        } else if (selectedIndex === 0) {
+            newSelected = newSelected.concat(selected.slice(1));
+        } else if (selectedIndex === selected.length - 1) {
+            newSelected = newSelected.concat(selected.slice(0, -1));
+        } else if (selectedIndex > 0) {
+            newSelected = newSelected.concat(
+                selected.slice(0, selectedIndex),
+                selected.slice(selectedIndex + 1),
+            );
+        }
+        setSelected(newSelected);
     };
 
     return (
@@ -57,14 +80,22 @@ const GridComponent: React.FC<GridComponentProps> = (props) => {
                 <EnhancedGridHead
                     order={order}
                     orderBy={orderBy}
-                    headCells={headCells}
+                    headCells={props.header}
+                    enableRowSelection={enableRowSelection}
+                    enableRowAction={enableRowAction}
                     onRequestSort={handleRequestSort}
+                    onSelectAllClick={handleSelectAllClick}
+                    numSelected={selected.length}
+                    rowCount={rows.length}
                 />
                 <EnhancedGridBody
-                    rows={props.rows}
                     order={order}
                     orderBy={orderBy}
-                    headCells={headCells}
+                    selectedRows={selected}
+                    enableRowSelection={enableRowSelection}
+                    enableRowAction={enableRowAction}
+                    handleCheckChange={handleCheckChange}
+                    headCells={props.header}
                     {...props}
                 />
             </Table>
@@ -73,4 +104,11 @@ const GridComponent: React.FC<GridComponentProps> = (props) => {
 
 };
 
+GridComponent.defaultProps = {
+    enableRowSelection: false,
+    enableRowAction: false,
+};
+
+
 export default GridComponent;
+
