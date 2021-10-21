@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Add, FileCopy } from '@material-ui/icons';
 import { Box, Container, FormControl, FormControlLabel, FormGroup, Grid, Link, Typography } from '@mui/material';
 import { FieldArray, FormikProvider, useFormik } from 'formik';
-import moment from 'moment';
 import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';
 import { Button } from '../../../components/UIComponents/Button/Button.component';
@@ -13,91 +12,13 @@ import Select from '../../../components/UIComponents/Select/SingleSelect';
 import ToastMessage from '../../../components/UIComponents/ToastMessage/ToastMessage.component';
 import { getCountryCode } from '../../../navigation/utils';
 import "./AddCustomer.style.scss";
+import CustomerModel, { AddCustomerForm, EmergencyContact } from '../../../models/CustomerModel';
 import AddCustomerValidationSchema from './validation';
 import { useCreateCustomer, useGetFrequencies, useGetPaymentTypes } from './queries';
 import DiscardChangesDialog from '../../../components/UIComponents/ConfirmationDialog/DiscardChangesDialog.component';
 import AutocompleteInput from '../../../components/UIComponents/GoogleAddressComponent/GoogleAutoCompleteAddress';
 
-interface SelectProps {
-    label: string,
-    value: string,
-}
-
-interface EmergencyContact {
-    firstName: string,
-    lastName: string,
-    email: string,
-    phoneNumber: string,
-}
-
-interface ApContact {
-    firstName: string,
-    lastName: string,
-    email: string,
-    phoneNumber: string,
-}
-
-interface AddCustomerForm {
-    // General Information
-    customerName: string,
-    customerId: string,
-    addressLine1: string,
-    addressLine2: string,
-    city: string,
-    state: string,
-    postalCode: string,
-    // Customer Contact
-    firstName: string,
-    lastName: string,
-    email: string,
-    phoneNumber: string,
-    // Payment and Wallet rules
-    paymentType: SelectProps,
-    invoiceFrequency: SelectProps,
-    startDate: moment.Moment | null,
-    endDate: moment.Moment | null,
-    paymentTerm: string,
-    lotLevel: boolean,
-    businessLevel: boolean,
-    vehicleLevel: boolean,
-    // Emergency Contact
-    emergencyContact: EmergencyContact[]
-    apContact: ApContact[],
-}
-
-const initialValues: AddCustomerForm = {
-    customerName: '',
-    customerId: '',
-    addressLine1: '',
-    addressLine2: '',
-    city: '',
-    state: '',
-    postalCode: '',
-    firstName: '',
-    lastName: '',
-    email: '',
-    phoneNumber: '',
-    paymentType: { label: '', value: '' },
-    invoiceFrequency: { label: '', value: '' },
-    startDate: moment(),
-    endDate: moment(),
-    paymentTerm: '',
-    lotLevel: false,
-    businessLevel: false,
-    vehicleLevel: false,
-    emergencyContact: [{
-        firstName: '',
-        lastName: '',
-        email: '',
-        phoneNumber: '',
-    }],
-    apContact: [{
-        firstName: '',
-        lastName: '',
-        email: '',
-        phoneNumber: '',
-    }],
-};
+const initialValues = new CustomerModel();
 
 function getTokenApplicable (Obj: any) {
     const temp: any = [];
@@ -760,7 +681,6 @@ const AddCustomer: React.FC<any> = () => {
                                 <Grid item md={12} mt={2} mb={1}>
                                     <Box className="import-file">
                                         <FileCopy />
-
                                         <Typography variant="h4" component="h4" display={"inline-flex"} className="fw-bold pl-3" mb={1}>
                                             Import Contract (Optional)
                                         </Typography>

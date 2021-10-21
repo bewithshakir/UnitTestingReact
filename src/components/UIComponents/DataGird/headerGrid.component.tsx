@@ -7,7 +7,7 @@ import { SortByIcon } from '../../../assets/icons';
 
 
 type HeadCellsOptions = {
-    id: string;
+    field: string;
     label: string;
     type: string;
 }
@@ -54,15 +54,15 @@ const EnhancedGridHead: React.FC<GridHeaderProps> = (props) => {
                         </TableCell> : null}
                     {props.headCells.map((headCell) => (
                         <TableCell
-                            key={headCell.id}
+                            key={headCell.field}
                             className="header-options"
-                            sortDirection={props.orderBy === headCell.id ? props.order : false}
+                            sortDirection={props.orderBy === headCell.field ? props.order : false}
                         >
                             <TableSortLabel
                                 IconComponent={SortByIcon}
-                                active={props.orderBy === headCell.id}
-                                direction={props.orderBy === headCell.id ? props.order : "asc"}
-                                onClick={createSortHandler(headCell.id)}
+                                active={props.orderBy === headCell.field}
+                                direction={props.orderBy === headCell.field ? props.order : "asc"}
+                                onClick={createSortHandler(headCell.field)}
                             >
 
                                 {headCell.label}

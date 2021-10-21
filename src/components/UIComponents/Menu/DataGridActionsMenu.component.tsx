@@ -8,17 +8,24 @@ import Popper from "@material-ui/core/Popper";
 import React from "react";
 import { DataGridActionIcon } from '../../../assets/icons';
 import './DataGridActionsMenu.style.scss';
+import {
+  ExportIcon,
+  PlusIcon,
+  DeleteIcon,
+  ImportIcon,
+} from "../../../assets/icons";
 
-type DataGridActionsMenuOption = {
+export type DataGridActionsMenuOption = {
+  action?: string;
   label: string;
-  icon?: React.ReactNode;
+  icon?: React.ReactNode | string;
   color?: string;
 }
 
 interface DataGridActionsMenuProps {
   options: DataGridActionsMenuOption[],
   menuName?: string,
-  onSelect: (e: React.SyntheticEvent, selectedValue: any) => void,
+  onSelect?: (e: React.SyntheticEvent, selectedValue: DataGridActionsMenuOption) => void,
 }
 export default function DataGridActionsMenu (props: DataGridActionsMenuProps) {
   const [open, setOpen] = React.useState(false);
@@ -45,7 +52,7 @@ export default function DataGridActionsMenu (props: DataGridActionsMenuProps) {
   const handleMenuItemClick = (event: React.SyntheticEvent, index: number) => {
     event.stopPropagation();
     setSelectedIndex(index);
-    onSelect(event, options[index]);
+    onSelect && onSelect(event, options[index]);
     setOpen(false);
   };
 
@@ -56,6 +63,21 @@ export default function DataGridActionsMenu (props: DataGridActionsMenuProps) {
       setOpen(false);
     }
   }
+
+  const renderIcons = (iconName: string) => {
+    switch (iconName) {
+      case "ExportIcon":
+        return (<ExportIcon />);
+      case "PlusIcon":
+        return (<PlusIcon />);
+      case "DeleteIcon":
+        return (<DeleteIcon />);
+      case "ImportIcon":
+        return (<ImportIcon />);
+      default:
+        return null;
+    }
+  };
 
   // return focus to the button when we transitioned from !open -> open
   const prevOpen = React.useRef(open);
@@ -117,7 +139,9 @@ export default function DataGridActionsMenu (props: DataGridActionsMenuProps) {
                       {
                         option.icon &&
                         <ListItemIcon className="menuitem-icon">
-                          {option.icon}
+                          {
+                            typeof option.icon === "string" ? renderIcons(option.icon) : option.icon
+                          }
                         </ListItemIcon>
                       }
                       <div className="menuitem-text">

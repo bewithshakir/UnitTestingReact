@@ -1,11 +1,12 @@
 import { Table, TableContainer } from '@mui/material';
 import * as React from "react";
+import { DataGridActionsMenuOption } from '../Menu/DataGridActionsMenu.component';
 import EnhancedGridBody from './dataGrid.component';
 import './grid.style.scss';
 import EnhancedGridHead from './headerGrid.component';
 
-interface headerObj {
-    id: string,
+export interface headerObj {
+    field: string,
     label: string,
     type: string,
 }
@@ -16,16 +17,19 @@ interface GridComponentProps {
     rows: any[],
     header: headerObj[],
     isLoading?: boolean,
+    getPages?: any,
+    ref?: any,
     isChildTable?: boolean,
-    getPages?: any
-    ref?: any
-    openDrawer?: any
+    openDrawer?: any,
+    onRowActionSelect?: (action: DataGridActionsMenuOption, row: any) => void,
+    rowActionOptions: DataGridActionsMenuOption[],
     enableRowSelection?: boolean,
     enableRowAction?: boolean,
     getCustomerId?:any,
     InnerTableComponent?:any,
     searchTerm?:string,
 }
+
 
 const GridComponent: React.FC<GridComponentProps> = (props) => {
     const [order, setOrder] = React.useState("asc");
@@ -78,6 +82,7 @@ const GridComponent: React.FC<GridComponentProps> = (props) => {
     return (
         <TableContainer className="table-container" onScroll={handleTableScroll} ref={props.ref}>
             <Table
+                sx={{ minWidth: 2000 }}
                 aria-labelledby="tableTitle"
                 stickyHeader
             >
@@ -112,6 +117,8 @@ const GridComponent: React.FC<GridComponentProps> = (props) => {
 GridComponent.defaultProps = {
     enableRowSelection: false,
     enableRowAction: false,
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    onRowActionSelect: () => { },
 };
 
 

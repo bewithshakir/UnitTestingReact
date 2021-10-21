@@ -2,25 +2,17 @@ import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined';
 import { Collapse, TableBody, TableCell, TableRow, FormControl } from '@mui/material';
 import Checkbox from '../Checkbox/Checkbox.component';
 import * as React from "react";
-import { useTranslation } from 'react-i18next';
 import { Loader } from '../Loader';
-import DataGridActionsMenu from '../Menu/DataGridActionsMenu.component';
+import DataGridActionsMenu, { DataGridActionsMenuOption } from '../Menu/DataGridActionsMenu.component';
 import { Button } from './../Button/Button.component';
 import './grid.style.scss';
+import { headerObj } from './grid.component';
 import NoDataFound from './NoData';
-
-
-type HeadCellsOptions = {
-    id: string;
-    label: string;
-    type: string;
-}
-
 interface GridBodyProps {
     rows?: any;
     order: string | any;
     orderBy: string;
-    headCells: HeadCellsOptions[];
+    headCells: headerObj[];
     isError?: string;
     isLoading?: boolean;
     isChildTable?: boolean;
@@ -32,6 +24,8 @@ interface GridBodyProps {
     InnerTableComponent?:any;
     handleCheckChange?: (customerId: string) => void;
     searchTerm?:string,
+    onRowActionSelect?: (selectedValue: DataGridActionsMenuOption, row: any) => void,
+    rowActionOptions: DataGridActionsMenuOption[],
 }
 
 
@@ -70,10 +64,9 @@ function stableSort (array: any, comparator: any) {
 
 const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
     const [selectedIndexKey, setSelectedKey] = React.useState(null);
-    const { t } = useTranslation();
 
     const getKeys = () => {
-        return props?.headCells.map((i:any)=> i.id);
+        return props?.headCells.map((i: any) => i.field);
     };
 
     const handleCollapaseClick = (e: React.MouseEvent<HTMLButtonElement>, key: any, row:any) => {
@@ -155,14 +148,8 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
                                     >
                                         <FormControl>
                                             <DataGridActionsMenu
-                                                options={[{ label: t("menus.data-grid-actions.raise a request"), },
-                                                { label: t("menus.data-grid-actions.fee & driver details"), },
-                                                { label: t("menus.data-grid-actions.other details"), },
-                                                { label: t("menus.data-grid-actions.contact details"), }
-                                                ]}
-                                                onSelect={(e: React.SyntheticEvent, value: any) => {
-                                                    return value;
-                                                }}
+                                                options={props.rowActionOptions}
+                                                onSelect={(e, value) => props.onRowActionSelect && props.onRowActionSelect(value, row)}
                                             />
                                         </FormControl>
                                     </TableCell>
