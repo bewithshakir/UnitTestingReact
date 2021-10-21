@@ -2,17 +2,13 @@ import React, { SyntheticEvent } from "react";
 import { Button } from "../../components/UIComponents/Button/Button.component";
 import "./style.scss";
 import { useTranslation } from "react-i18next";
-import SortbyMenu from "../../components/UIComponents/Menu/SortbyMenu.component";
-import ActionsMenu from "../../components/UIComponents/Menu/ActionsMenu.component";
 import {
-  ExportIcon,
-  PlusIcon,
-  DeleteIcon,
-  ImportIcon,
   FilterIcon,
 } from "../../assets/icons";
+import SortbyMenu from "../../components/UIComponents/Menu/SortbyMenu.component";
+import ActionsMenu from "../../components/UIComponents/Menu/ActionsMenu.component";
 import GridComponent from "../../components/UIComponents/DataGird/grid.component";
-import { useGetParkingLotDetails } from "./parkingLotqueries";
+import { useGetParkingLotDetails } from "./queries";
 import SearchInput from "../../components/UIComponents/SearchInput/SearchInput";
 import { Add } from "@mui/icons-material";
 import { useHistory } from "react-router-dom";
@@ -20,24 +16,22 @@ import { sortByOptions } from "./config";
 import { RightInfoPanel } from "../../components/UIComponents/RightInfoPanel/RightInfoPanel.component";
 import { Box, FormControl, Grid } from "@mui/material";
 import { HorizontalBarVersionState, useStore } from "../../store";
+import ParkingLotModel from "../../models/ParkingLotModel";
+import { DataGridActionsMenuOption } from "../../components/UIComponents/Menu/DataGridActionsMenu.component";
+
 interface ContentProps {
   rows?: [];
   version: string
 }
 
-const headCells = [
-  { id: "deliveryLocationNm", label: "LOT NAME", type: 'text' },
-  { id: "streetAddress", label: "STREET ADDRESS", type: 'text' },
-  { id: "cityNm", label: "CITY", type: 'text' },
-  { id: "stateNm", label: "STATE", type: 'text' },
-  { id: "postalCd", label: "ZIP", type: 'text' },
-  { id: "rackUpdate", label: "RACK UPDATE", type: 'text' },
-  { id: "walletStatus", label: "WALLET STATUS", type: 'text' },
-  { id: "fuelStatus", label: "FUEL", type: 'text' },
-  { id: "vehicles", label: "VEHICLES", type: 'button' },
-];
+const ParkingLotContent: React.FC<ContentProps> = () => {
+  const ParkingLotObj = new ParkingLotModel();
+  const headCells = ParkingLotObj.fieldsToDisplay();
+  const rowActionOptions = ParkingLotObj.rowActions();
+  const massActionOptions = ParkingLotObj.massActions();
+  const ACTION_TYPES = ParkingLotObj.ACTION_TYPES;
+  const MASS_ACTION_TYPES = ParkingLotObj.MASS_ACTION_TYPES;
 
-const ParkingLot: React.FC<ContentProps> = () => {
   const history = useHistory();
   const [info, setInfo] = React.useState({});
   const [searchTerm, setSearchTerm] = React.useState("");
@@ -46,7 +40,7 @@ const ParkingLot: React.FC<ContentProps> = () => {
   const [filterData, setFilterData] = React.useState<{ [key: string]: string[] }>({});
   const [custFilterPanelVisible, setCustFilterPanelVisible] = React.useState(false);
   const customerId = "fc2ffe5e-7ef8-46b8-95c2-cb82cf77ed90";
-
+  
   const { t } = useTranslation();
   const { data, fetchNextPage, isLoading }: any = useGetParkingLotDetails(
     searchTerm,
@@ -63,7 +57,9 @@ const ParkingLot: React.FC<ContentProps> = () => {
   const drawerClose = () => {
     setDrawerOpen(false);
   };
-
+  const navigateToAddCustomer = () => {
+    history.push("/customer");
+  };
   const onSortBySlected = (value: string) => {
     let sortOrder;
     switch (value) {
@@ -90,14 +86,42 @@ const ParkingLot: React.FC<ContentProps> = () => {
     list.push(...item.data.lots);
   });
 
-
   const handleCustFilterPanelOpen = () => {
     setDrawerOpen(false);
     setCustFilterPanelVisible(!custFilterPanelVisible);
   };
 
-  const onItemClick = () => {
-    history.push("/customer/parkingLots/addLot");
+  const handleMassAction = (action: DataGridActionsMenuOption) => {
+    switch (action.action) {
+      case MASS_ACTION_TYPES.IMPORT:
+        // perform action
+        break;
+      case MASS_ACTION_TYPES.EXPORT:
+        // perform action
+        break;
+      case MASS_ACTION_TYPES.DELETE:
+        // perform action
+        break;
+      default: return;
+    }
+  };
+
+  const handleRowAction = (action: DataGridActionsMenuOption) => {
+    switch (action.action) {
+      case ACTION_TYPES.RAISE_REQ:
+        // perform action 
+        break;
+      case ACTION_TYPES.DRIVER_DETAILS:
+        // perform action
+        break;
+      case ACTION_TYPES.OTHER_DETAIL:
+        // perform action
+        break;
+      case ACTION_TYPES.CONTACT_DETAILS:
+        // perform action
+        break;
+      default: return;
+    }
   };
 
   const handleCustFilterPanelClose = () => setCustFilterPanelVisible(false);
@@ -140,36 +164,17 @@ const ParkingLot: React.FC<ContentProps> = () => {
               <Button
                 types="primary"
                 aria-label="primary"
-                onClick={onItemClick}
+                onClick={navigateToAddCustomer}
                 startIcon={<Add />}
               >
-                {t("buttons.add lot")}
+                {t("buttons.add customer")}
               </Button>
             </Grid>
             <Grid item>
               <FormControl>
                 <ActionsMenu
-                  options={[
-                    {
-                      label: t("menus.actions.add vehicle"),
-                      icon: <PlusIcon />,
-                    },
-                    {
-                      label: t("menus.actions.import data"),
-                      icon: <ImportIcon />,
-                    },
-                    {
-                      label: t("menus.actions.export data"),
-                      icon: <ExportIcon />,
-                    },
-                    {
-                      label: t("menus.actions.delete"),
-                      icon: <DeleteIcon />,
-                    },
-                  ]}
-                  onSelect={(value) => {
-                    return value;
-                  }}
+                  options={massActionOptions}
+                  onSelect={handleMassAction}
                 />
               </FormControl>
             </Grid>
@@ -184,6 +189,8 @@ const ParkingLot: React.FC<ContentProps> = () => {
             enableRowSelection
             enableRowAction
             getPages={fetchNextPage}
+            onRowActionSelect={handleRowAction}
+            rowActionOptions={rowActionOptions}
             openDrawer={openDrawer}
           />
 
@@ -195,4 +202,4 @@ const ParkingLot: React.FC<ContentProps> = () => {
   );
 };
 
-export default ParkingLot;
+export default ParkingLotContent;

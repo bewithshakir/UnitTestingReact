@@ -1,0 +1,185 @@
+// import LocationAddressModel from './LocationAddressModel';
+import moment from 'moment';
+import { useTranslation } from 'react-i18next';
+
+
+export interface SelectProps {
+    label: string,
+    value: string,
+}
+
+export interface EmergencyContact {
+    firstName: string,
+    lastName: string,
+    email: string,
+    phoneNumber: string,
+}
+
+export interface ApContact {
+    firstName: string,
+    lastName: string,
+    email: string,
+    phoneNumber: string,
+}
+
+export interface AddCustomerForm {
+    // General Information
+    customerName: string,
+    customerId: string,
+    addressLine1: string,
+    addressLine2: string,
+    city: string,
+    state: string,
+    postalCode: string,
+    // Customer Contact
+    firstName: string,
+    lastName: string,
+    email: string,
+    phoneNumber: string,
+    // Payment and Wallet rules
+    paymentType: SelectProps,
+    invoiceFrequency: SelectProps,
+    startDate: moment.Moment | null,
+    endDate: moment.Moment | null,
+    paymentTerm: string,
+    lotLevel: boolean,
+    businessLevel: boolean,
+    vehicleLevel: boolean,
+    // Emergency Contact
+    emergencyContact: EmergencyContact[]
+    apContact: ApContact[],
+}
+
+export default class CustomerModel {
+    // General Information
+    customerName: string;
+    customerId: string;
+    addressLine1: string;
+    addressLine2: string;
+    city: string;
+    state: string;
+    postalCode: string;
+    // Customer Contact
+    firstName: string;
+    lastName: string;
+    email: string;
+    phoneNumber: string;
+    // Payment and Wallet rules
+    paymentType: SelectProps;
+    invoiceFrequency: SelectProps;
+    startDate: moment.Moment | null;
+    endDate: moment.Moment | null;
+    paymentTerm: string;
+    lotLevel: boolean;
+    businessLevel: boolean;
+    vehicleLevel: boolean;
+    // Emergency Contact
+    emergencyContact: EmergencyContact[]
+    apContact: ApContact[];
+
+    constructor() {
+        this.customerName = '';
+        this.customerName = '';
+        this.customerId = '';
+        this.addressLine1 = '';
+        this.addressLine2 = '';
+        this.city = '';
+        this.state = '';
+        this.postalCode = '';
+        this.firstName = '';
+        this.lastName = '';
+        this.email = '';
+        this.phoneNumber = '';
+        this.paymentType = { label: '', value: '' };
+        this.invoiceFrequency = { label: '', value: '' };
+        this.startDate = moment();
+        this.endDate = moment();
+        this.paymentTerm = '';
+        this.lotLevel = false;
+        this.businessLevel = false;
+        this.vehicleLevel = false;
+        this.emergencyContact = [{
+            firstName: '',
+            lastName: '',
+            email: '',
+            phoneNumber: '',
+        }];
+        this.apContact = [{
+            firstName: '',
+            lastName: '',
+            email: '',
+            phoneNumber: '',
+        }];
+    }
+
+    fieldsToDisplay() {
+        return [
+            { field: "deliveryLocationNm", label: "LOT NAME", type: 'text' },
+            { field: "streetAddress", label: "STREET ADDRESS", type: 'text' },
+            { field: "cityNm", label: "CITY", type: 'text' },
+            { field: "stateNm", label: "STATE", type: 'text' },
+            { field: "postalCd", label: "ZIP", type: 'text' },
+            { field: "rackUpdate", label: "RACK UPDATE", type: 'text' },
+            { field: "walletStatus", label: "WALLET STATUS", type: 'text' },
+            { field: "fuelStatus", label: "FUEL", type: 'text' },
+            { field: "vehicles", label: "VEHICLES", type: 'button' },
+
+        ];
+    }
+
+    ACTION_TYPES = {
+        RAISE_REQ: 'raise req',
+        DRIVER_DETAILS: 'driver details',
+        OTHER_DETAIL: 'other details',
+        CONTACT_DETAILS: 'contact details'
+    };
+
+    rowActions() {
+        const { t } = useTranslation();
+        return [
+            {
+                label: t("menus.data-grid-actions.raise a request"),
+                action: this.ACTION_TYPES.RAISE_REQ
+            },
+            {
+                label: t("menus.data-grid-actions.fee & driver details"),
+                action: this.ACTION_TYPES.DRIVER_DETAILS
+            },
+            {
+                label: t("menus.data-grid-actions.other details"),
+                action: this.ACTION_TYPES.OTHER_DETAIL
+            },
+            {
+                label: t("menus.data-grid-actions.contact details"),
+                action: this.ACTION_TYPES.CONTACT_DETAILS
+            }
+        ];
+    }
+
+    MASS_ACTION_TYPES = {
+        IMPORT: 'import',
+        EXPORT: 'export',
+        DELETE: 'remove',
+    };
+
+    massActions() {
+        const { t } = useTranslation();
+        return [
+            {
+                label: t("menus.actions.import data"),
+                icon: "ImportIcon",
+                action: this.MASS_ACTION_TYPES.IMPORT
+            },
+            {
+                label: t("menus.actions.export data"),
+                icon: "ExportIcon",
+                action: this.MASS_ACTION_TYPES.EXPORT
+            },
+            {
+                label: t("menus.actions.delete"),
+                icon: "DeleteIcon",
+                action: this.MASS_ACTION_TYPES.DELETE
+            },
+        ];
+    }
+}
