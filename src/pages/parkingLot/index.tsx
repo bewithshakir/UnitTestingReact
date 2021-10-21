@@ -8,11 +8,11 @@ import {
 import SortbyMenu from "../../components/UIComponents/Menu/SortbyMenu.component";
 import ActionsMenu from "../../components/UIComponents/Menu/ActionsMenu.component";
 import GridComponent from "../../components/UIComponents/DataGird/grid.component";
-import { useGetParkingLotDetails } from "./queries";
+import { useGetParkingLotDetails } from "../parkingLot/queries";
 import SearchInput from "../../components/UIComponents/SearchInput/SearchInput";
 import { Add } from "@mui/icons-material";
 import { useHistory } from "react-router-dom";
-import { sortByOptions } from "./config";
+import { sortByOptions } from "../parkingLot/config";
 import { RightInfoPanel } from "../../components/UIComponents/RightInfoPanel/RightInfoPanel.component";
 import { Box, FormControl, Grid } from "@mui/material";
 import { HorizontalBarVersionState, useStore } from "../../store";
