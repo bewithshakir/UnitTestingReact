@@ -1,7 +1,7 @@
-import { Fragment } from 'react';
 import { NoResultFoundIcon } from '../../../assets/icons';
 import { FormControl } from '@mui/material';
 import './NoData.scss';
+import { Fragment } from 'react';
 
 interface props{
     msgLine1?: string;
@@ -23,5 +23,5 @@ export default function NoDataFound(props:props){
 
 NoDataFound.defaultProps = {
     msgLine1 : 'Oops.. No Results Found',
-    msgLine2 : 'Add Customer by clicking on the "Add Customer" button.',
+    msgLine2 : '',
 };

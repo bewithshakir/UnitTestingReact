@@ -126,6 +126,19 @@ export default class CustomerModel {
         ];
     }
 
+    fieldsToDisplayLotTable() {
+        return [
+            { field: "deliveryLocationNm", label: "LOT NAME", type: 'text' },
+            { field: "streetAddress", label: "STREET ADDRESS", type: 'text' },
+            { field: "cityNm", label: "CITY", type: 'text' },
+            { field: "stateNm", label: "STATE", type: 'text' },
+            { field: "postalCd", label: "ZIP", type: 'text' },
+            { field: "walletstatus", label: "WALLET STATUS", type: 'text' },
+            { field: "vehicles", label: "VEHICLES", type: 'text' },
+            { field: "fuel", label: "FUEL", type: 'text' }
+        ];
+    }
+
     ACTION_TYPES = {
         RAISE_REQ: 'raise req',
         DRIVER_DETAILS: 'driver details',

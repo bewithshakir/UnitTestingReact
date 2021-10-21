@@ -26,6 +26,7 @@ interface GridBodyProps {
     searchTerm?:string,
     onRowActionSelect?: (selectedValue: DataGridActionsMenuOption, row: any) => void,
     rowActionOptions: DataGridActionsMenuOption[],
+    noDataMsg?:string,
 }
 
 
@@ -167,14 +168,20 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
         );
     };
 
+    const getData = () => {
+        if(props?.rows?.length > 1) {
+            return getRowsData();
+        }else if (!props?.isLoading){
+            return (<TableBody className='NoData'> <NoDataFound searchTerm={props.searchTerm} msgLine2={props.noDataMsg}/> </TableBody>);
+        }
+    };
 
-    if (props?.rows?.length > 1) {
-        return getRowsData();
-    } else if (props?.isLoading) {
-        return (<Loader />);
-    }else {
-        return (<TableBody className='NoData'> <NoDataFound searchTerm={props.searchTerm}/> </TableBody>);
-    }
+    return (
+        <React.Fragment>
+            {props?.isLoading && (<Loader />)}
+            {getData()}
+        </React.Fragment>
+    );
 
 
 };

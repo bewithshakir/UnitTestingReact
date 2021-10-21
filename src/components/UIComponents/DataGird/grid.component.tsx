@@ -28,6 +28,7 @@ interface GridComponentProps {
     getCustomerId?:any,
     InnerTableComponent?:any,
     searchTerm?:string,
+    noDataMsg?:string,
 }
 
 
@@ -82,7 +83,7 @@ const GridComponent: React.FC<GridComponentProps> = (props) => {
     return (
         <TableContainer className="table-container" onScroll={handleTableScroll} ref={props.ref}>
             <Table
-                sx={{ minWidth: 2000 }}
+                sx={{ minWidth: 1600 }}
                 aria-labelledby="tableTitle"
                 stickyHeader
             >

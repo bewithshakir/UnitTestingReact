@@ -43,7 +43,7 @@ const Content: React.FC<ContentProps> = () => {
   const [customerId, setCustomerId] = React.useState('');
 
   const { t } = useTranslation();
-  const { data, fetchNextPage, isLoading }: any = useCustomers(
+  const { data, fetchNextPage, isLoading, isFetching }: any = useCustomers(
     searchTerm,
     sortOrder,
     filterData
@@ -185,7 +185,7 @@ const Content: React.FC<ContentProps> = () => {
           <GridComponent
             rows={list}
             header={headCells}
-            isLoading={isLoading}
+            isLoading={isFetching || isLoading}
             enableRowSelection
             enableRowAction
             getPages={fetchNextPage}
@@ -195,6 +195,7 @@ const Content: React.FC<ContentProps> = () => {
             searchTerm={searchTerm}
             getCustomerId={(id:string) => setCustomerId(id)}
             InnerTableComponent={<Table id={customerId}/>}
+            noDataMsg='Add Customer by clicking on the " Add Customer" button.'
           />
 
           <RightInfoPanel panelType="customer-filter" open={custFilterPanelVisible} headingText={"Filters"} provideFilterParams={getFilterParams} onClose={handleCustFilterPanelClose} />
