@@ -1,4 +1,4 @@
-import React, { SyntheticEvent } from "react";
+import React, { SyntheticEvent, useEffect } from "react";
 import { Button } from "../../components/UIComponents/Button/Button.component";
 import "./style.scss";
 import { useTranslation } from "react-i18next";
@@ -39,6 +39,7 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
   const [sortOrder, setSortOrder] = React.useState<{ sortBy: string, order: string }>({ sortBy: "customerName", order: "asc" });
   const [filterData, setFilterData] = React.useState<{ [key: string]: string[] }>({});
   const [custFilterPanelVisible, setCustFilterPanelVisible] = React.useState(false);
+  const [parkingLotlist, setCustomerList] = React.useState([]);
   const customerId = "fc2ffe5e-7ef8-46b8-95c2-cb82cf77ed90";
   
   const { t } = useTranslation();
@@ -81,11 +82,15 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
   const onInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(event.currentTarget.value);
   };
-  const list: any = [];
-  data?.pages?.map((item: any) => {
-    list.push(...item.data.lots);
-  });
-
+  useEffect(() => {
+    if (data) {
+      const list: any = [];
+      data?.pages?.forEach((item: any) => {
+        list.push(...item.data.lots);
+      });
+      setCustomerList(list);
+    }
+  }, [data]);
   const handleCustFilterPanelOpen = () => {
     setDrawerOpen(false);
     setCustFilterPanelVisible(!custFilterPanelVisible);
@@ -183,7 +188,7 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
         <Grid container pt={2.5} display="flex" flexGrow={1}>
 
           <GridComponent
-            rows={list}
+            rows={parkingLotlist}
             header={headCells}
             isLoading={isLoading}
             enableRowSelection

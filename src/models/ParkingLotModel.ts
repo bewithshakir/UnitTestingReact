@@ -1,5 +1,3 @@
-// import LocationAddressModel from './LocationAddressModel';
-import moment from 'moment';
 import { useTranslation } from 'react-i18next';
 
 
@@ -8,108 +6,38 @@ export interface SelectProps {
     value: string,
 }
 
-export interface EmergencyContact {
-    firstName: string,
-    lastName: string,
-    email: string,
-    phoneNumber: string,
-}
 
-export interface ApContact {
-    firstName: string,
-    lastName: string,
-    email: string,
-    phoneNumber: string,
-}
-
-export interface AddCustomerForm {
+export interface ParkingLot {
     // General Information
-    customerName: string,
     customerId: string,
-    addressLine1: string,
-    addressLine2: string,
     city: string,
     state: string,
     postalCode: string,
-    // Customer Contact
-    firstName: string,
-    lastName: string,
-    email: string,
-    phoneNumber: string,
     // Payment and Wallet rules
     paymentType: SelectProps,
-    invoiceFrequency: SelectProps,
-    startDate: moment.Moment | null,
-    endDate: moment.Moment | null,
     paymentTerm: string,
     lotLevel: boolean,
-    businessLevel: boolean,
-    vehicleLevel: boolean,
-    // Emergency Contact
-    emergencyContact: EmergencyContact[]
-    apContact: ApContact[],
 }
 
 export default class CustomerModel {
     // General Information
-    customerName: string;
     customerId: string;
-    addressLine1: string;
-    addressLine2: string;
     city: string;
     state: string;
     postalCode: string;
-    // Customer Contact
-    firstName: string;
-    lastName: string;
-    email: string;
-    phoneNumber: string;
     // Payment and Wallet rules
     paymentType: SelectProps;
-    invoiceFrequency: SelectProps;
-    startDate: moment.Moment | null;
-    endDate: moment.Moment | null;
     paymentTerm: string;
     lotLevel: boolean;
-    businessLevel: boolean;
-    vehicleLevel: boolean;
-    // Emergency Contact
-    emergencyContact: EmergencyContact[]
-    apContact: ApContact[];
 
     constructor() {
-        this.customerName = '';
-        this.customerName = '';
         this.customerId = '';
-        this.addressLine1 = '';
-        this.addressLine2 = '';
         this.city = '';
         this.state = '';
         this.postalCode = '';
-        this.firstName = '';
-        this.lastName = '';
-        this.email = '';
-        this.phoneNumber = '';
         this.paymentType = { label: '', value: '' };
-        this.invoiceFrequency = { label: '', value: '' };
-        this.startDate = moment();
-        this.endDate = moment();
         this.paymentTerm = '';
         this.lotLevel = false;
-        this.businessLevel = false;
-        this.vehicleLevel = false;
-        this.emergencyContact = [{
-            firstName: '',
-            lastName: '',
-            email: '',
-            phoneNumber: '',
-        }];
-        this.apContact = [{
-            firstName: '',
-            lastName: '',
-            email: '',
-            phoneNumber: '',
-        }];
     }
 
     fieldsToDisplay() {
