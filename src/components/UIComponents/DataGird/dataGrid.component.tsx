@@ -20,7 +20,7 @@ interface GridBodyProps {
     selectedRows: string[];
     onRowActionSelect?: (selectedValue: DataGridActionsMenuOption, row: any) => void,
     rowActionOptions?: DataGridActionsMenuOption[],
-    handleCheckChange: (customerId: string) => void;
+    handleCheckChange: (primaryId: string) => void;
 }
 
 
@@ -76,7 +76,7 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
         props.openDrawer(row);
     };
 
-    const isSelected = (customerId: string) => props.selectedRows.indexOf(customerId) !== -1;
+    const isSelected = (primaryId: string) => props.selectedRows.indexOf(primaryId) !== -1;
 
 
     const getRowsData = () => {

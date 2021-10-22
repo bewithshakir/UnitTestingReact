@@ -56,12 +56,12 @@ const GridComponent: React.FC<GridComponentProps> = (props) => {
         setSelected([]);
     };
 
-    const handleCheckChange = (customerId: string) => {
-        const selectedIndex = selected.indexOf(customerId);
+    const handleCheckChange = (primaryId: string) => {
+        const selectedIndex = selected.indexOf(primaryId);
         let newSelected: selectedRow = [];
 
         if (selectedIndex === -1) {
-            newSelected = newSelected.concat(selected, customerId);
+            newSelected = newSelected.concat(selected, primaryId);
         } else if (selectedIndex === 0) {
             newSelected = newSelected.concat(selected.slice(1));
         } else if (selectedIndex === selected.length - 1) {
