@@ -72,7 +72,7 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
 
     const handleCollapaseClick = (e: React.MouseEvent<HTMLButtonElement>, indexKey: any, row:any, key:any) => {
         e.stopPropagation();
-        //if(row[key]){ 
+        if(row[key]){ 
             console.log(key);
             props.getId !== undefined && props.getId(row.customerId);
             if (indexKey === selectedIndexKey) {
@@ -80,7 +80,7 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
             } else {
                 setSelectedKey(indexKey);
             }
-       // }
+       }
     };
     const openDrawer = (row: any) => {
         props.openDrawer(row);
