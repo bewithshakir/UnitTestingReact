@@ -25,7 +25,7 @@ interface GridComponentProps {
     rowActionOptions: DataGridActionsMenuOption[],
     enableRowSelection?: boolean,
     enableRowAction?: boolean,
-    getCustomerId?:any,
+    getId?:any,
     InnerTableComponent?:any,
     searchTerm?:string,
     noDataMsg?:string,

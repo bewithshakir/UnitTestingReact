@@ -20,7 +20,7 @@ interface GridBodyProps {
     enableRowAction?: boolean;
     openDrawer?: any;
     selectedRows?: string[];
-    getCustomerId?:any;
+    getId?:any;
     InnerTableComponent?:any;
     handleCheckChange?: (customerId: string) => void;
     searchTerm?:string,
@@ -70,16 +70,17 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
         return props?.headCells.map((i: any) => i.field);
     };
 
-    const handleCollapaseClick = (e: React.MouseEvent<HTMLButtonElement>, key: any, row:any) => {
+    const handleCollapaseClick = (e: React.MouseEvent<HTMLButtonElement>, indexKey: any, row:any, key:any) => {
         e.stopPropagation();
-        if(row.totalLots){ 
-            props.getCustomerId !== undefined && props.getCustomerId(row.customerId);
-            if (key === selectedIndexKey) {
+        //if(row[key]){ 
+            console.log(key);
+            props.getId !== undefined && props.getId(row.customerId);
+            if (indexKey === selectedIndexKey) {
                 setSelectedKey(null);
             } else {
-                setSelectedKey(key);
+                setSelectedKey(indexKey);
             }
-        }
+       // }
     };
     const openDrawer = (row: any) => {
         props.openDrawer(row);
@@ -131,7 +132,7 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
                                                     types="accordian"
                                                     aria-label="accordian"
                                                     className={row[key] ? "active" : 'empty'}
-                                                    onClick={(e) => handleCollapaseClick(e, indexKey, row)}
+                                                    onClick={(e) => handleCollapaseClick(e, indexKey, row, key)}
                                                     startIcon={< LocationOnOutlinedIcon />}
                                                 >
                                                     {row[key]}
@@ -169,7 +170,7 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
     };
 
     const getData = () => {
-        if(props?.rows?.length > 1) {
+        if(props?.rows?.length) {
             return getRowsData();
         }else if (!props?.isLoading){
             return (<TableBody className='no-data'> <NoDataFound searchTerm={props.searchTerm} msgLine2={props.noDataMsg}/> </TableBody>);

@@ -203,7 +203,7 @@ const Content: React.FC<ContentProps> = () => {
             rowActionOptions={rowActionOptions}
             openDrawer={openDrawer}
             searchTerm={searchTerm}
-            getCustomerId={(id:string) => setCustomerId(id)}
+            getId={(id:string) => setCustomerId(id)}
             InnerTableComponent={<Table id={customerId} headCells={headCellsLots}/>}
             noDataMsg='Add Customer by clicking on the " Add Customer" button.'
           />
