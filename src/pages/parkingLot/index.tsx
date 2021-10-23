@@ -40,7 +40,7 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
   const [custFilterPanelVisible, setCustFilterPanelVisible] = React.useState(false);
   const [parkingLotlist, setCustomerList] = React.useState([]);
   const customerId = "fc2ffe5e-7ef8-46b8-95c2-cb82cf77ed90";
-  
+
   const { t } = useTranslation();
   const { data, fetchNextPage, isLoading }: any = useGetParkingLotDetails(
     searchTerm,
@@ -172,7 +172,7 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
                 onClick={navigateToAddCustomer}
                 startIcon={<Add />}
               >
-                {t("buttons.add customer")}
+                {t("buttons.add lot")}
               </Button>
             </Grid>
             <Grid item>

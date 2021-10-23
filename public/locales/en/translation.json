@@ -88,5 +88,12 @@
       "title": "Discard the changes ?",
       "content": "You have unsaved data which will be lost once you select discard or select cancel to save the data."
     }
+  },
+  "parkingLot": {
+    "sortBy": {
+      "paymentCompleted": "Payment Completed",
+      "paymentInProgress": "Payment In Progress",
+      "recentlyAddedLots": "Recently Added Lots"
+    }
   }
 }
