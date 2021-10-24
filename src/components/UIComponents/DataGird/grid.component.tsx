@@ -4,12 +4,16 @@ import { DataGridActionsMenuOption } from '../Menu/DataGridActionsMenu.component
 import EnhancedGridBody from './dataGrid.component';
 import './grid.style.scss';
 import EnhancedGridHead from './headerGrid.component';
+import { tableSX } from './config';
 
 export interface headerObj {
     field: string,
     label: string,
-    type: 'text' | 'button' | 'icon' | 'text-array',
-    bold?: boolean
+    type: 'text' | 'button' | 'icon' | 'icons' | 'image' | 'images',
+    icon?: React.ReactNode | string | any,
+    bold?: boolean,
+    align?: 'right' | 'left' | 'center' | 'justify',
+    sortable?: boolean
 }
 type selectedRow = string[];
 interface GridComponentProps {
@@ -78,7 +82,7 @@ const GridComponent: React.FC<GridComponentProps> = (props) => {
     return (
         <TableContainer className="table-container" onScroll={handleTableScroll} ref={props.ref}>
             <Table
-                sx={{ minWidth: 1600 }}
+                sx={tableSX}
                 aria-labelledby="tableTitle"
                 stickyHeader
             >

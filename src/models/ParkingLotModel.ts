@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { headerObj } from '../components/UIComponents/DataGird/grid.component';
+import DriveEtaOutlinedIcon from '@material-ui/icons/DriveEtaOutlined';
 
 export interface SelectProps {
     label: string,
@@ -48,10 +49,9 @@ export default class ParkingLotModel {
             { field: "stateNm", label: "STATE", type: 'text' },
             { field: "postalCd", label: "ZIP", type: 'text' },
             { field: "rackUpdate", label: "RACK UPDATE", type: 'text' },
-            { field: "walletStatus", label: "WALLET STATUS", type: 'text' },
-            { field: "fuelStatus", label: "FUEL", type: 'text' },
-            { field: "vehicles", label: "VEHICLES", type: 'button' },
-
+            { field: "walletStatus", label: "WALLET", type: 'icon', align: 'center' },
+            { field: "fuelStatus", label: "FUEL", type: 'icons', align: 'center' },
+            { field: "vehicles", label: "VEHICLES", type: 'button', icon: DriveEtaOutlinedIcon },
         ];
     }
 
@@ -96,6 +96,7 @@ export default class ParkingLotModel {
             {
                 label: t("menus.actions.import data"),
                 icon: "ImportIcon",
+
                 action: this.MASS_ACTION_TYPES.IMPORT
             },
             {

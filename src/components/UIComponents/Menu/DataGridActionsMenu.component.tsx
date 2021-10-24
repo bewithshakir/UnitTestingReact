@@ -8,17 +8,13 @@ import Popper from "@material-ui/core/Popper";
 import React from "react";
 import { DataGridActionIcon } from '../../../assets/icons';
 import './DataGridActionsMenu.style.scss';
-import {
-  ExportIcon,
-  PlusIcon,
-  DeleteIcon,
-  ImportIcon,
-} from "../../../assets/icons";
+import { Icon } from '@mui/material';
+
 
 export type DataGridActionsMenuOption = {
   action?: string;
   label: string;
-  icon?: React.ReactNode | string;
+  icon?: React.ReactNode | any;
   color?: string;
 }
 
@@ -64,21 +60,6 @@ export default function DataGridActionsMenu (props: DataGridActionsMenuProps) {
     }
   }
 
-  const renderIcons = (iconName: string) => {
-    switch (iconName) {
-      case "ExportIcon":
-        return (<ExportIcon />);
-      case "PlusIcon":
-        return (<PlusIcon />);
-      case "DeleteIcon":
-        return (<DeleteIcon />);
-      case "ImportIcon":
-        return (<ImportIcon />);
-      default:
-        return null;
-    }
-  };
-
   // return focus to the button when we transitioned from !open -> open
   const prevOpen = React.useRef(open);
   React.useEffect(() => {
@@ -88,7 +69,6 @@ export default function DataGridActionsMenu (props: DataGridActionsMenuProps) {
 
     prevOpen.current = open;
   }, [open]);
-
 
   return (
     <div>
@@ -140,7 +120,10 @@ export default function DataGridActionsMenu (props: DataGridActionsMenuProps) {
                         option.icon &&
                         <ListItemIcon className="menuitem-icon">
                           {
-                            typeof option.icon === "string" ? renderIcons(option.icon) : option.icon
+                            React.isValidElement(option.icon) ?
+                              option.icon
+                              :
+                              <Icon sx={{ height: "14px", width: "14px" }} component={option.icon} />
                           }
                         </ListItemIcon>
                       }
