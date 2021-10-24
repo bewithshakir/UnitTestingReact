@@ -7,11 +7,11 @@ import {
 import SortbyMenu from "../../components/UIComponents/Menu/SortbyMenu.component";
 import ActionsMenu from "../../components/UIComponents/Menu/ActionsMenu.component";
 import GridComponent from "../../components/UIComponents/DataGird/grid.component";
-import { useGetParkingLotDetails } from "../ParkingLot/queries";
+import { useGetParkingLotDetails } from "./queries";
 import SearchInput from "../../components/UIComponents/SearchInput/SearchInput";
 import { Add } from "@mui/icons-material";
 import { useHistory } from "react-router-dom";
-import { sortByOptions } from "../ParkingLot/config";
+import { sortByOptions } from "./config";
 import { RightInfoPanel } from "../../components/UIComponents/RightInfoPanel/RightInfoPanel.component";
 import { Box, FormControl, Grid } from "@mui/material";
 import { HorizontalBarVersionState, useStore } from "../../store";
@@ -171,7 +171,7 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
                 onClick={navigateToAddCustomer}
                 startIcon={<Add />}
               >
-                {t("buttons.add customer")}
+                {t("buttons.add lot")}
               </Button>
             </Grid>
             <Grid item>
