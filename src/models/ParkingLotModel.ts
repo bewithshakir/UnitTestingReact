@@ -50,7 +50,7 @@ export default class ParkingLotModel {
             { field: "postalCd", label: "ZIP", type: 'text' },
             { field: "rackUpdate", label: "RACK UPDATE", type: 'text' },
             { field: "walletStatus", label: "WALLET", type: 'icon', align: 'center' },
-            { field: "fuelStatus", label: "FUEL", type: 'icons', align: 'center' },
+            { field: "fuelStatus", label: "FUEL", type: 'icons' },
             { field: "vehicles", label: "VEHICLES", type: 'button', icon: DriveEtaOutlinedIcon },
         ];
     }

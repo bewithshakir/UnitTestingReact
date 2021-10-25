@@ -112,7 +112,7 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
 
     const renderIcons = (key: string, data: any, align: string | undefined) => {
         if (data?.length) {
-            return (<ImageList sx={{ ...tableImagesIconListSX, justifyContent: align }} gap={0} cols={4}>
+            return (<ImageList sx={{ ...tableImagesIconListSX, justifyContent: align }} gap={0} cols={10}>
                 {data?.map((icon: any, index: number) =>
                     <Icon key={index} sx={key === 'fuelStatus' ? tableFuelIconsSX : tableIconsSX} component={key === 'fuelStatus' ? getFuelIcon(icon) : icon} />
                 )}
@@ -122,7 +122,7 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
 
     const renderImages = (data: any) => {
         if (data?.length) {
-            return (<ImageList sx={tableImagesIconListSX} cols={4}>
+            return (<ImageList sx={tableImagesIconListSX} cols={10}>
                 {data?.map((item: any, index: number) =>
                     <Avatar key={index} sx={tableImagesSX} src={item} variant="square" />
                 )}
