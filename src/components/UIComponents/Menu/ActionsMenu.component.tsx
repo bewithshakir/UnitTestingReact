@@ -8,17 +8,13 @@ import Popper from "@material-ui/core/Popper";
 import React from "react";
 import { ActionsListIcon } from '../../../assets/icons';
 import './ActionsMenu.style.scss';
-import {
-  ExportIcon,
-  PlusIcon,
-  DeleteIcon,
-  ImportIcon,
-} from "../../../assets/icons";
+import { Icon } from '@mui/material';
+
 
 type ActionsMenuOption = {
   action?: string;
   label: string;
-  icon?: React.ReactNode | string;
+  icon?: React.ReactNode | any;
   color?: string;
 }
 
@@ -52,21 +48,6 @@ export default function ActionsMenu (props: ActionsMenuProps) {
     setSelectedIndex(index);
     onSelect(options[index]);
     setOpen(false);
-  };
-
-  const renderIcons = (iconName: string) => {
-    switch (iconName) {
-      case "ExportIcon":
-        return (<ExportIcon />);
-      case "PlusIcon":
-        return (<PlusIcon />);
-      case "DeleteIcon":
-        return (<DeleteIcon />);
-      case "ImportIcon":
-        return (<ImportIcon />);
-      default:
-        return null;
-    }
   };
 
   function handleListKeyDown (event: React.KeyboardEvent) {
@@ -134,11 +115,17 @@ export default function ActionsMenu (props: ActionsMenuProps) {
                       selected={index === selectedIndex}
                       onClick={(event) => handleMenuItemClick(event, index)}
                     >
-                      <ListItemIcon className="menuitem-icon" >
-                        {
-                          typeof option.icon === "string" ? renderIcons(option.icon) : option.icon
-                        }
-                      </ListItemIcon>
+                      {
+                        option.icon &&
+                        <ListItemIcon className="menuitem-icon">
+                          {
+                            React.isValidElement(option.icon) ?
+                              option.icon
+                              :
+                              <Icon sx={{ height: "14px", width: "14px" }} component={option.icon} />
+                          }
+                        </ListItemIcon>
+                      }
                       <div className="menuitem-text">
                         <Typography variant="inherit">{option.label}</Typography>
                       </div>

@@ -1,5 +1,4 @@
-import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined';
-import { Box, Collapse, Table, TableBody, TableCell, TableHead, TableRow, FormControl } from '@mui/material';
+import { Box, Collapse, Table, TableBody, TableCell, TableHead, TableRow, FormControl, Avatar, Icon, ImageList } from '@mui/material';
 import Checkbox from '../Checkbox/Checkbox.component';
 import * as React from "react";
 import { Loader } from '../Loader';
@@ -7,6 +6,8 @@ import DataGridActionsMenu, { DataGridActionsMenuOption } from '../Menu/DataGrid
 import { Button } from './../Button/Button.component';
 import './grid.style.scss';
 import { headerObj } from './grid.component';
+import { PositiveCricleIcon, AlertExclamationIcon, YellowFuelIcon, RedFuelIcon, GreenFuelIcon, NavyBlueFuelIcon } from '../../../assets/icons';
+import { tableImagesSX, tableAvatarSX, tableImagesIconListSX, tableIconsSX, tableFuelIconsSX } from './config';
 interface GridBodyProps {
     rows?: any;
     order: string | any;
@@ -19,8 +20,8 @@ interface GridBodyProps {
     openDrawer?: any;
     selectedRows: string[];
     onRowActionSelect?: (selectedValue: DataGridActionsMenuOption, row: any) => void,
-    rowActionOptions: DataGridActionsMenuOption[],
-    handleCheckChange: (customerId: string) => void;
+    rowActionOptions?: DataGridActionsMenuOption[],
+    handleCheckChange: (primaryId: string) => void;
 }
 
 
@@ -56,6 +57,31 @@ function stableSort (array: any, comparator: any) {
 }
 
 
+function getWalletIcon (status: string) {
+    switch (status) {
+        case "Y":
+            return PositiveCricleIcon;
+        case "N":
+            return AlertExclamationIcon;
+        default:
+            return AlertExclamationIcon;
+    }
+}
+
+function getFuelIcon (status: string) {
+    switch (status) {
+        case "Regular":
+            return YellowFuelIcon;
+        case "Premium":
+            return RedFuelIcon;
+        case "Diesel":
+            return GreenFuelIcon;
+        case "V-Power":
+            return NavyBlueFuelIcon;
+        default:
+            return YellowFuelIcon;
+    }
+}
 
 const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
     const [selectedIndexKey, setSelectedKey] = React.useState(null);
@@ -76,9 +102,33 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
         props.openDrawer(row);
     };
 
-    const isSelected = (customerId: string) => props.selectedRows.indexOf(customerId) !== -1;
+    const isSelected = (primaryId: string) => props.selectedRows.indexOf(primaryId) !== -1;
 
+    const renderIcon = (key: string, icon: any) => {
+        return (
+            <Icon sx={tableIconsSX} component={key === 'walletStatus' ? getWalletIcon(icon) : icon} />
+        );
+    };
 
+    const renderIcons = (key: string, data: any, align: string | undefined) => {
+        if (data?.length) {
+            return (<ImageList sx={{ ...tableImagesIconListSX, justifyContent: align }} gap={0} cols={10}>
+                {data?.map((icon: any, index: number) =>
+                    <Icon key={index} sx={key === 'fuelStatus' ? tableFuelIconsSX : tableIconsSX} component={key === 'fuelStatus' ? getFuelIcon(icon) : icon} />
+                )}
+            </ImageList>);
+        }
+    };
+
+    const renderImages = (data: any) => {
+        if (data?.length) {
+            return (<ImageList sx={tableImagesIconListSX} cols={10}>
+                {data?.map((item: any, index: number) =>
+                    <Avatar key={index} sx={tableImagesSX} src={item} variant="square" />
+                )}
+            </ImageList>);
+        }
+    };
     const getRowsData = () => {
         const keys = getKeys();
         return (
@@ -110,23 +160,38 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
                                     className="grid-cell-parent"
                                     component="th"
                                     scope="row"
+                                    align={props.headCells[index].align}
                                     key={row[key]}
                                     onClick={() => openDrawer(row)}
                                 >
                                     {
                                         props.headCells[index].type === 'text' ?
-                                            index === 0 ? <b>{row[key]}</b> : row[key]
+                                            props.headCells[index].bold ? <b>{row[key]}</b> : row[key]
                                             :
                                             props.headCells[index].type === 'button' ?
                                                 <Button
                                                     types="accordian"
                                                     aria-label="accordian"
-                                                    className="active"
                                                     onClick={(e) => handleCollapaseClick(e, indexKey)}
-                                                    startIcon={< LocationOnOutlinedIcon />}
+                                                    startIcon={props.headCells[index].icon ? <Icon component={props.headCells[index].icon} /> : undefined}
                                                 >
-                                                    {0}
-                                                </Button> : ""
+                                                    {
+                                                        row[key]
+                                                    }
+                                                </Button> :
+                                                props.headCells[index].type === 'icon' ?
+                                                    renderIcon(key, row[key])
+                                                    :
+                                                    props.headCells[index].type === 'icons' ?
+                                                        renderIcons(key, row[key], props.headCells[index].align)
+                                                        :
+                                                        props.headCells[index].type === 'image' ?
+                                                            <Avatar sx={tableAvatarSX} src={row[key]} variant="square" />
+                                                            :
+                                                            props.headCells[index].type === 'images' ?
+                                                                renderImages(row[key])
+                                                                :
+                                                                ""
                                     }
                                 </TableCell>
                             )}
