@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { Moment } from 'moment';
-
+import { headerObj } from '../components/UIComponents/DataGird/grid.component';
+import DriveEtaOutlinedIcon from '@material-ui/icons/DriveEtaOutlined';
 
 export interface SelectProps {
     label: string,
@@ -147,7 +148,7 @@ export default class ParkingLotModel {
         this.lotLevel = false;
     }
 
-    fieldsToDisplay() {
+    fieldsToDisplay (): headerObj[] {
         return [
             { field: "deliveryLocationNm", label: "LOT NAME", type: 'text' },
             { field: "streetAddress", label: "STREET ADDRESS", type: 'text' },
@@ -155,10 +156,9 @@ export default class ParkingLotModel {
             { field: "stateNm", label: "STATE", type: 'text' },
             { field: "postalCd", label: "ZIP", type: 'text' },
             { field: "rackUpdate", label: "RACK UPDATE", type: 'text' },
-            { field: "walletStatus", label: "WALLET STATUS", type: 'text' },
-            { field: "fuelStatus", label: "FUEL", type: 'text' },
-            { field: "vehicles", label: "VEHICLES", type: 'button' },
-
+            { field: "walletStatus", label: "WALLET", type: 'icon', align: 'center' },
+            { field: "fuelStatus", label: "FUEL", type: 'icons' },
+            { field: "vehicles", label: "VEHICLES", type: 'button', icon: DriveEtaOutlinedIcon },
         ];
     }
 
@@ -169,7 +169,7 @@ export default class ParkingLotModel {
         CONTACT_DETAILS: 'contact details'
     };
 
-    rowActions() {
+    rowActions () {
         const { t } = useTranslation();
         return [
             {
@@ -197,12 +197,13 @@ export default class ParkingLotModel {
         DELETE: 'remove',
     };
 
-    massActions() {
+    massActions () {
         const { t } = useTranslation();
         return [
             {
                 label: t("menus.actions.import data"),
                 icon: "ImportIcon",
+
                 action: this.MASS_ACTION_TYPES.IMPORT
             },
             {

@@ -1,7 +1,7 @@
 import * as React from "react";
 
 
-export function USAFlagIcon(props: React.SVGProps<SVGSVGElement>): JSX.Element {
+export function USAFlagIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -145,7 +145,7 @@ export function USAFlagIcon(props: React.SVGProps<SVGSVGElement>): JSX.Element {
   );
 }
 
-export function ActionsListIcon(props: React.SVGProps<SVGSVGElement>): JSX.Element {
+export function ActionsListIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
   return (
     <svg
       width="1em"
@@ -162,7 +162,7 @@ export function ActionsListIcon(props: React.SVGProps<SVGSVGElement>): JSX.Eleme
   );
 }
 
-export function FilterIcon(props: React.SVGProps<SVGSVGElement>): JSX.Element {
+export function FilterIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
   return (
     <svg
       width="1em"
@@ -179,7 +179,7 @@ export function FilterIcon(props: React.SVGProps<SVGSVGElement>): JSX.Element {
   );
 }
 
-export function ImportIcon(props: React.SVGProps<SVGSVGElement>): JSX.Element {
+export function ImportIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
   return (
     <svg
       width="1em"
@@ -189,7 +189,7 @@ export function ImportIcon(props: React.SVGProps<SVGSVGElement>): JSX.Element {
     >
       <path
         d="M2 16v2h16v-2h2v4H0v-4zm8-15l6.065 6.058-1.413 1.415L11 4.826v12.019H9V4.61l-4.282 3.9-1.346-1.484z"
-        fill={props.color}
+        fill={"currentColor"}
       />
       <path fill="none" d="M0 0h20v20H0z" />
     </svg>
@@ -197,7 +197,7 @@ export function ImportIcon(props: React.SVGProps<SVGSVGElement>): JSX.Element {
 }
 
 
-export function ExportIcon(props: React.SVGProps<SVGSVGElement>): JSX.Element {
+export function ExportIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
   return (
     <svg
       width="1em"
@@ -214,7 +214,7 @@ export function ExportIcon(props: React.SVGProps<SVGSVGElement>): JSX.Element {
   );
 }
 
-export function PlusIcon(props: React.SVGProps<SVGSVGElement>): JSX.Element {
+export function PlusIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
   return (
     <svg
       width="1em"
@@ -231,7 +231,7 @@ export function PlusIcon(props: React.SVGProps<SVGSVGElement>): JSX.Element {
   );
 }
 
-export function DeleteIcon(props: React.SVGProps<SVGSVGElement>): JSX.Element {
+export function DeleteIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
   return (
     <svg
       width="1em"
@@ -248,7 +248,7 @@ export function DeleteIcon(props: React.SVGProps<SVGSVGElement>): JSX.Element {
   );
 }
 
-export function DataGridActionIcon(props: React.SVGProps<SVGSVGElement>): JSX.Element {
+export function DataGridActionIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
   return (
     <svg
       width="1em"
@@ -265,7 +265,7 @@ export function DataGridActionIcon(props: React.SVGProps<SVGSVGElement>): JSX.El
   );
 }
 
-export function CustomerProfileIcon(props: React.SVGProps<SVGSVGElement>): JSX.Element {
+export function CustomerProfileIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
   return (
     <svg
       width="1em"
@@ -281,7 +281,7 @@ export function CustomerProfileIcon(props: React.SVGProps<SVGSVGElement>): JSX.E
     </svg>
   );
 }
-export function CustomerProfileIcon2(props: React.SVGProps<SVGSVGElement>): JSX.Element {
+export function CustomerProfileIcon2 (props: React.SVGProps<SVGSVGElement>): JSX.Element {
   return (
     <svg
       width="1em"
@@ -298,7 +298,7 @@ export function CustomerProfileIcon2(props: React.SVGProps<SVGSVGElement>): JSX.
   );
 }
 
-export function SettingsIcon(props: React.SVGProps<SVGSVGElement>): JSX.Element {
+export function SettingsIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
   return (
     <svg
       width="1em"
@@ -315,7 +315,7 @@ export function SettingsIcon(props: React.SVGProps<SVGSVGElement>): JSX.Element 
   );
 }
 
-export function LogoutIcon(props: React.SVGProps<SVGSVGElement>): JSX.Element {
+export function LogoutIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
   return (
     <svg
       width="1em"
@@ -332,7 +332,7 @@ export function LogoutIcon(props: React.SVGProps<SVGSVGElement>): JSX.Element {
   );
 }
 
-export function SearchIcon(props: React.SVGProps<SVGSVGElement>): JSX.Element {
+export function SearchIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
   return (
     <svg
       width="1em"
@@ -342,7 +342,6 @@ export function SearchIcon(props: React.SVGProps<SVGSVGElement>): JSX.Element {
     >
       <path
         d="M20 10a3 3 0 012.85 2.06A6 6 0 0128 18v7h2v2h-6.126a4 4 0 01-7.748 0H10v-2h2v-7a6 6 0 015.151-5.94A3 3 0 0120 10zm1.732 17h-3.464a2 2 0 003.464 0zM20 12a1 1 0 00-.907.578l-.042.107-.389 1.181-1.23.174a4 4 0 00-3.427 3.754L14 18v7h12v-7a4 4 0 00-3.23-3.926l-.2-.034-1.23-.174-.389-1.18A1 1 0 0020 12z"
-        // fill={props.color}
         fill={'currentColor'}
       />
       <path fill="none" d="M0 0h20v20H0z" />
@@ -350,7 +349,7 @@ export function SearchIcon(props: React.SVGProps<SVGSVGElement>): JSX.Element {
   );
 }
 
-export function DropSearchIcon(props: React.SVGProps<SVGSVGElement>): JSX.Element {
+export function DropSearchIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
   return (
     <svg
       width="1em"
@@ -368,7 +367,7 @@ export function DropSearchIcon(props: React.SVGProps<SVGSVGElement>): JSX.Elemen
 }
 
 
-export function Check(props: React.SVGProps<SVGSVGElement>): JSX.Element {
+export function Check (props: React.SVGProps<SVGSVGElement>): JSX.Element {
   return (
     <svg
       width="1em"
@@ -385,7 +384,7 @@ export function Check(props: React.SVGProps<SVGSVGElement>): JSX.Element {
   );
 }
 
-export function UnCheck(props: React.SVGProps<SVGSVGElement>): JSX.Element {
+export function UnCheck (props: React.SVGProps<SVGSVGElement>): JSX.Element {
   return (
     <svg
       width="1em"
@@ -402,7 +401,7 @@ export function UnCheck(props: React.SVGProps<SVGSVGElement>): JSX.Element {
   );
 }
 
-export function ArrowUp(props: React.SVGProps<SVGSVGElement>): JSX.Element {
+export function ArrowUp (props: React.SVGProps<SVGSVGElement>): JSX.Element {
   return (
     <svg
       width="1em"
@@ -419,7 +418,7 @@ export function ArrowUp(props: React.SVGProps<SVGSVGElement>): JSX.Element {
   );
 }
 
-export function BackIcon(props: React.SVGProps<SVGSVGElement>): JSX.Element {
+export function BackIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
   return (
     <svg
       width="1em"
@@ -436,7 +435,7 @@ export function BackIcon(props: React.SVGProps<SVGSVGElement>): JSX.Element {
   );
 }
 
-export function CloseIcon(props: React.SVGProps<SVGSVGElement>): JSX.Element {
+export function CloseIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
   return (
     <svg
       width="1em"
@@ -456,7 +455,7 @@ export function CloseIcon(props: React.SVGProps<SVGSVGElement>): JSX.Element {
 }
 
 
-export function ArrowDown(props: React.SVGProps<SVGSVGElement>): JSX.Element {
+export function ArrowDown (props: React.SVGProps<SVGSVGElement>): JSX.Element {
   return (
     <svg
       width="1em"
@@ -473,7 +472,7 @@ export function ArrowDown(props: React.SVGProps<SVGSVGElement>): JSX.Element {
   );
 }
 
-export function LeftArrowIcon(props: React.SVGProps<SVGSVGElement>): JSX.Element {
+export function LeftArrowIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
   return (
     <svg
       width="1em"
@@ -490,7 +489,7 @@ export function LeftArrowIcon(props: React.SVGProps<SVGSVGElement>): JSX.Element
   );
 }
 
-export function NotificationIcon(props: React.SVGProps<SVGSVGElement>): JSX.Element {
+export function NotificationIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
   return (
     <svg
       width="1em"
@@ -508,7 +507,7 @@ export function NotificationIcon(props: React.SVGProps<SVGSVGElement>): JSX.Elem
   );
 }
 
-export function DeliveryTruckIcon(props: React.SVGProps<SVGSVGElement>): JSX.Element {
+export function DeliveryTruckIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
   return (
     <svg
       width="1em"
@@ -533,7 +532,7 @@ export function DeliveryTruckIcon(props: React.SVGProps<SVGSVGElement>): JSX.Ele
   );
 }
 
-export function UncheckedCheckboxIcon(props: React.SVGProps<SVGSVGElement>): JSX.Element {
+export function UncheckedCheckboxIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
   return (
     <svg
       width="20"
@@ -548,7 +547,7 @@ export function UncheckedCheckboxIcon(props: React.SVGProps<SVGSVGElement>): JSX
   );
 }
 
-export function CheckedCheckboxIcon(props: React.SVGProps<SVGSVGElement>): JSX.Element {
+export function CheckedCheckboxIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
   return (
     <svg
       width="20"
@@ -563,7 +562,7 @@ export function CheckedCheckboxIcon(props: React.SVGProps<SVGSVGElement>): JSX.E
   );
 }
 
-export function BriefCase64Icon(props: React.SVGProps<SVGSVGElement>): JSX.Element {
+export function BriefCase64Icon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
   return (
     <svg
       width="1em"
@@ -582,7 +581,7 @@ export function BriefCase64Icon(props: React.SVGProps<SVGSVGElement>): JSX.Eleme
   );
 }
 
-export function ToggleList64Icon(props: React.SVGProps<SVGSVGElement>): JSX.Element {
+export function ToggleList64Icon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
   return (
     <svg
       width="1em"
@@ -601,7 +600,7 @@ export function ToggleList64Icon(props: React.SVGProps<SVGSVGElement>): JSX.Elem
   );
 }
 
-export function Truck64Icon(props: React.SVGProps<SVGSVGElement>): JSX.Element {
+export function Truck64Icon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
   return (
     <svg
       width="1em"
@@ -620,7 +619,7 @@ export function Truck64Icon(props: React.SVGProps<SVGSVGElement>): JSX.Element {
   );
 }
 
-export function Invoice64Icon(props: React.SVGProps<SVGSVGElement>): JSX.Element {
+export function Invoice64Icon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
   return (
     <svg
       width="1em"
@@ -639,7 +638,7 @@ export function Invoice64Icon(props: React.SVGProps<SVGSVGElement>): JSX.Element
   );
 }
 
-export function DocumentFile64Icon(props: React.SVGProps<SVGSVGElement>): JSX.Element {
+export function DocumentFile64Icon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
   return (
     <svg
       width="1em"
@@ -658,7 +657,7 @@ export function DocumentFile64Icon(props: React.SVGProps<SVGSVGElement>): JSX.El
   );
 }
 
-export function ToggleMail64Icon(props: React.SVGProps<SVGSVGElement>): JSX.Element {
+export function ToggleMail64Icon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
   return (
     <svg
       width="1em"
@@ -677,7 +676,7 @@ export function ToggleMail64Icon(props: React.SVGProps<SVGSVGElement>): JSX.Elem
   );
 }
 
-export function ChartPie64Icon(props: React.SVGProps<SVGSVGElement>): JSX.Element {
+export function ChartPie64Icon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
   return (
     <svg
       width="1em"
@@ -696,7 +695,7 @@ export function ChartPie64Icon(props: React.SVGProps<SVGSVGElement>): JSX.Elemen
   );
 }
 
-export function ErrorExclamationIcon(props: React.SVGProps<SVGSVGElement>): JSX.Element {
+export function ErrorExclamationIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
   return (
     <svg
       width="20"
@@ -711,7 +710,7 @@ export function ErrorExclamationIcon(props: React.SVGProps<SVGSVGElement>): JSX.
   );
 }
 
-export function SuccessTickIcon(props: React.SVGProps<SVGSVGElement>): JSX.Element {
+export function SuccessTickIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
   return (
     <svg
       width="20"
@@ -722,6 +721,72 @@ export function SuccessTickIcon(props: React.SVGProps<SVGSVGElement>): JSX.Eleme
       <path d="M12,2A10,10,0,1,1,2,12,10,10,0,0,1,12,2Zm3.559,5.589L9.518,13.63,7.7,11.831,6.293,13.252l3.231,3.2L16.973,9Z" transform="translate(-2 -2)"
         fill="currentColor" />
     </svg>
+  );
+}
+
+export function NoResultFoundIcon(props: React.SVGProps<SVGSVGElement>) {
+  return(
+    <svg
+      width = "1em"
+      height = "1em"
+      viewBox = "0 0 37 45"
+      { ...props }
+    >
+  <g data-name="Group 1986">
+    <g data-name="noun_data search_574729">
+      <g data-name="Group 1982">
+        <path
+          data-name="Path 1845"
+          d="M28.937 34.448H8.268a.689.689 0 110-1.378h20.669a.689.689 0 110 1.378z"
+          fill="currentColor"
+          stroke="currentColor"
+          strokeWidth={0.5}
+        />
+      </g>
+      <g data-name="Group 1983">
+        <path
+          data-name="Path 1846"
+          d="M19.291 30.314H8.268a.689.689 0 110-1.378h11.023a.689.689 0 010 1.378z"
+          fill="currentColor"
+          stroke="currentColor"
+          strokeWidth={0.5}
+        />
+      </g>
+      <g data-name="Group 1984">
+        <path
+          data-name="Path 1847"
+          d="M28.937 38.582H8.268a.689.689 0 110-1.378h20.669a.689.689 0 110 1.378z"
+          fill="currentColor"
+          stroke="currentColor"
+          strokeWidth={0.5}
+        />
+      </g>
+      <g data-name="Group 1985">
+        <path
+          data-name="Path 1848"
+          d="M19.587 12.489a.686.686 0 01-.467-.183 4.816 4.816 0 00-3.274-1.283.689.689 0 010-1.378 6.187 6.187 0 014.21 1.649.689.689 0 01-.468 1.195z"
+          fill="currentColor"
+        />
+      </g>
+      <path
+        data-name="Path 1849"
+        d="M30.479 28.268l-5.847-5.847a.708.708 0 00-.974 0l-.488.488h0l-.869-.869a9.029 9.029 0 10-1.029.916l.926.926h0l-.488.488a.689.689 0 000 .974l5.845 5.846a.692.692 0 00.976 0l1.95-1.948a.688.688 0 00.2-.488.681.681 0 00-.202-.486zM8.268 15.846a7.579 7.579 0 117.579 7.579 7.587 7.587 0 01-7.579-7.579zm19.774 13.883l-4.871-4.871.974-.976 4.872 4.872z"
+          fill="currentColor"
+          stroke="currentColor"
+        strokeWidth={0.5}
+      />
+      <g
+        data-name="Rectangle 2310"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={2}
+      >
+        <path stroke="none" d="M0 0h37v45H0z" />
+        <path d="M1 1h35v43H1z" />
+      </g>
+    </g>
+  </g>
+    </svg >
   );
 }
 
@@ -746,7 +811,7 @@ export function CalendarIcon(props: React.SVGProps<SVGSVGElement>) {
 
 
 
-export function SortByIcon(props: React.SVGProps<SVGSVGElement>): JSX.Element {
+export function SortByIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
   return (
     <svg
       width="1em"
@@ -762,7 +827,7 @@ export function SortByIcon(props: React.SVGProps<SVGSVGElement>): JSX.Element {
   );
 }
 
-export function TimeIcon(props: React.SVGProps<SVGSVGElement>): JSX.Element {
+export function TimeIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
   return (
     <svg
       width="1em"
@@ -776,6 +841,390 @@ export function TimeIcon(props: React.SVGProps<SVGSVGElement>): JSX.Element {
           d="M10 0A10 10 0 110 10 10 10 0 0110 0zm0 2a8 8 0 108 8 8 8 0 00-8-8zm1 2v5.632l3.759 3.76-1.414 1.414L9 10.461V4z"
           fill={"currentColor"}
         />
+      </g>
+    </svg>
+  );
+}
+
+export function PositiveCricleIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
+  return (
+    <svg
+      width="1em"
+      height="1em"
+      viewBox="0 0 20 20"
+      {...props}
+    >
+      <g data-name="Group 1870">
+        <path
+          d="M10 0A10 10 0 110 10 10 10 0 0110 0zm3.559 5.589L7.518 11.63 5.7 9.831l-1.407 1.421 3.231 3.2L14.973 7z"
+          fill="#008443"
+        />
+        <path data-name="Rectangle 2256" fill="none" d="M0 0h20v20H0z" />
+      </g>
+    </svg>
+  );
+}
+
+export function AlertExclamationIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
+  return (
+    <svg
+      width="1em"
+      height="1em"
+      viewBox="0 0 20 20"
+      {...props}
+    >
+      <g data-name="Group 1951">
+        <path
+          d="M20 0v20H0V0zM10 14a1 1 0 101 1 1 1 0 00-1-1zm1-10H9v8h2z"
+          fill="#dd1d21"
+        />
+        <path data-name="Rectangle 2279" fill="none" d="M0 0h20v20H0z" />
+      </g>
+    </svg>
+  );
+}
+
+
+export function YellowFuelIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
+  return (
+    <svg width="28" height="28" viewBox="0 0 28 28" {...props}>
+      <defs>
+        <clipPath id="clip-path">
+          <circle id="Ellipse_218" data-name="Ellipse 218" cx="9" cy="9" r="9" transform="translate(0 0.083)" fill="#face07" />
+        </clipPath>
+      </defs>
+      <g id="Group_1803" data-name="Group 1803" transform="translate(-119 -1162)">
+        <rect id="Rectangle_2234" data-name="Rectangle 2234" width="28" height="28" transform="translate(119 1162)" fill="none" />
+        <g id="Group_1602" data-name="Group 1602" transform="translate(-21 659)">
+          <circle id="Ellipse_217" data-name="Ellipse 217" cx="9" cy="9" r="9" transform="translate(145 508)" fill="#face07" />
+          <g id="Mask_Group_1" data-name="Mask Group 1" transform="translate(145 507.917)" clipPath="url(#clip-path)">
+            <g id="Group_1597" data-name="Group 1597" transform="translate(-4.92 -4.163)">
+              <line id="Line_281" data-name="Line 281" y1="15.894" x2="15.894" fill="none" stroke="#595959" strokeWidth="0.5" />
+              <line id="Line_282" data-name="Line 282" y1="15.894" x2="15.894" transform="translate(2.271 2.271)" fill="none" stroke="#595959" strokeWidth="0.5" />
+              <line id="Line_283" data-name="Line 283" y1="15.894" x2="15.894" transform="translate(4.163 5.298)" fill="none" stroke="#595959" strokeWidth="0.5" />
+              <line id="Line_284" data-name="Line 284" y1="15.894" x2="15.894" transform="translate(6.055 7.947)" fill="none" stroke="#595959" strokeWidth="0.5" />
+              <line id="Line_285" data-name="Line 285" y1="16" x2="16" transform="translate(7.92 11.245)" fill="none" stroke="#595959" strokeWidth="0.5" />
+              <line id="Line_286" data-name="Line 286" y1="16" x2="16" transform="translate(7.92 15.245)" fill="none" stroke="#595959" strokeWidth="0.5" />
+            </g>
+          </g>
+        </g>
+      </g>
+    </svg>
+  );
+}
+
+export function RedFuelIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
+  return (
+    <svg width="28" height="28" viewBox="0 0 28 28" {...props}>
+      <defs>
+        <clipPath id="clip-path">
+          <circle id="Ellipse_219" data-name="Ellipse 219" cx="9" cy="9" r="9" transform="translate(0.014 0.083)" fill="#face07" />
+        </clipPath>
+      </defs>
+      <g id="Group_1804" data-name="Group 1804" transform="translate(-224 -1163)">
+        <rect id="Rectangle_2235" data-name="Rectangle 2235" width="28" height="28" transform="translate(224 1163)" fill="none" />
+        <g id="Group_1603" data-name="Group 1603" transform="translate(2.728 659.728)">
+          <circle id="Ellipse_220" data-name="Ellipse 220" cx="9" cy="9" r="9" transform="translate(226 508)" fill="#dd1d21" />
+          <g id="Mask_Group_2" data-name="Mask Group 2" transform="translate(222.204 516.951) rotate(-45)" clipPath="url(#clip-path)">
+            <g id="Group_1598" data-name="Group 1598" transform="translate(-4.92 -4.163)">
+              <line id="Line_287" data-name="Line 287" y1="15.894" x2="15.894" fill="none" stroke="#fff" strokeWidth="0.5" />
+              <line id="Line_288" data-name="Line 288" y1="15.894" x2="15.894" transform="translate(2.271 2.271)" fill="none" stroke="#fff" strokeWidth="0.5" />
+              <line id="Line_289" data-name="Line 289" y1="15.894" x2="15.894" transform="translate(4.163 5.298)" fill="none" stroke="#fff" strokeWidth="0.5" />
+              <line id="Line_290" data-name="Line 290" y1="15.894" x2="15.894" transform="translate(6.055 7.947)" fill="none" stroke="#fff" strokeWidth="0.5" />
+              <line id="Line_291" data-name="Line 291" y1="16" x2="16" transform="translate(7.933 11.245)" fill="none" stroke="#fff" strokeWidth="0.5" />
+              <line id="Line_292" data-name="Line 292" y1="16" x2="16" transform="translate(7.933 15.245)" fill="none" stroke="#fff" strokeWidth="0.5" />
+            </g>
+          </g>
+        </g>
+      </g>
+    </svg>
+  );
+}
+export function GreenFuelIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
+  return (
+    <svg width="28" height="28" viewBox="0 0 28 28" {...props}>
+      <defs>
+        <clipPath id="clip-path">
+          <circle id="Ellipse_222" data-name="Ellipse 222" cx="9" cy="9" r="9" transform="translate(-0.298 0.083)" fill="#face07" />
+        </clipPath>
+      </defs>
+      <g id="Group_1805" data-name="Group 1805" transform="translate(-342 -1162)">
+        <rect id="Rectangle_2236" data-name="Rectangle 2236" width="28" height="28" transform="translate(342 1162)" fill="none" />
+        <g id="Group_1604" data-name="Group 1604" transform="translate(31.728 658.728)">
+          <ellipse id="Ellipse_221" data-name="Ellipse 221" cx="9" cy="8.5" rx="9" ry="8.5" transform="translate(315 509)" fill="#008443" />
+          <g id="Mask_Group_3" data-name="Mask Group 3" transform="translate(324.269 504.424) rotate(45)" clipPath="url(#clip-path)">
+            <g id="Group_1599" data-name="Group 1599" transform="translate(-4.92 -4.163)">
+              <line id="Line_293" data-name="Line 293" y1="15.894" x2="15.894" fill="none" stroke="#fff" strokeWidth="0.5" />
+              <line id="Line_294" data-name="Line 294" y1="15.894" x2="15.894" transform="translate(2.271 2.271)" fill="none" stroke="#fff" strokeWidth="0.5" />
+              <line id="Line_295" data-name="Line 295" y1="15.894" x2="15.894" transform="translate(4.163 5.298)" fill="none" stroke="#fff" strokeWidth="0.5" />
+              <line id="Line_296" data-name="Line 296" y1="15.894" x2="15.894" transform="translate(6.055 7.947)" fill="none" stroke="#fff" strokeWidth="0.5" />
+              <line id="Line_297" data-name="Line 297" y1="16" x2="16" transform="translate(7.622 11.245)" fill="none" stroke="#fff" strokeWidth="0.5" />
+              <line id="Line_298" data-name="Line 298" y1="16" x2="16" transform="translate(7.622 15.245)" fill="none" stroke="#fff" strokeWidth="0.5" />
+            </g>
+          </g>
+          <g id="Mask_Group_7" data-name="Mask Group 7" transform="translate(336.575 517.269) rotate(135)" clipPath="url(#clip-path)">
+            <g id="Group_1667" data-name="Group 1667" transform="translate(-4.92 -4.163)">
+              <line id="Line_317" data-name="Line 317" y1="15.894" x2="15.894" fill="none" stroke="#fff" strokeWidth="0.5" />
+              <line id="Line_318" data-name="Line 318" y1="15.894" x2="15.894" transform="translate(2.271 2.271)" fill="none" stroke="#fff" strokeWidth="0.5" />
+              <line id="Line_319" data-name="Line 319" y1="15.894" x2="15.894" transform="translate(4.163 5.298)" fill="none" stroke="#fff" strokeWidth="0.5" />
+              <line id="Line_320" data-name="Line 320" y1="15.894" x2="15.894" transform="translate(6.055 7.947)" fill="none" stroke="#fff" strokeWidth="0.5" />
+              <line id="Line_321" data-name="Line 321" y1="16" x2="16" transform="translate(7.622 11.245)" fill="none" stroke="#fff" strokeWidth="0.5" />
+              <line id="Line_322" data-name="Line 322" y1="16" x2="16" transform="translate(7.622 15.245)" fill="none" stroke="#fff" strokeWidth="0.5" />
+            </g>
+          </g>
+        </g>
+      </g >
+    </svg >
+  );
+}
+
+export function NavyBlueFuelIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
+  return (
+    <svg width="28" height="28" viewBox="0 0 28 28" {...props}>
+      <defs>
+        <clipPath id="clip-path">
+          <circle id="Ellipse_224" data-name="Ellipse 224" cx="10.708" cy="10.708" r="10.708" transform="translate(-0.445 0.083)" fill="#face07" />
+        </clipPath>
+        <clipPath id="clip-path-2">
+          <circle id="Ellipse_230" data-name="Ellipse 230" cx="9.826" cy="9.826" r="9.826" transform="translate(-0.445 0.083)" fill="#face07" />
+        </clipPath>
+      </defs>
+      <g id="Group_1806" data-name="Group 1806" transform="translate(-438 -1162)">
+        <rect id="Rectangle_2237" data-name="Rectangle 2237" width="28" height="28" transform="translate(438 1162)" fill="none" />
+        <g id="Group_1605" data-name="Group 1605" transform="translate(56.77 659.086)">
+          <ellipse id="Ellipse_223" data-name="Ellipse 223" cx="9.5" cy="9" rx="9.5" ry="9" transform="translate(386 508)" fill="#003c88" />
+          <g id="Mask_Group_4" data-name="Mask Group 4" transform="translate(384.71 527.857) rotate(-90)" clipPath="url(#clip-path)">
+            <g id="Group_1600" data-name="Group 1600" transform="translate(-5.769 -4.968)">
+              <line id="Line_299" data-name="Line 299" y1="18.91" x2="18.91" fill="none" stroke="#fff" strokeWidth="0.5" />
+              <line id="Line_300" data-name="Line 300" y1="18.91" x2="18.91" transform="translate(2.701 2.701)" fill="none" stroke="#fff" strokeWidth="0.5" />
+              <line id="Line_301" data-name="Line 301" y1="18.91" x2="18.91" transform="translate(4.953 6.303)" fill="none" stroke="#fff" strokeWidth="0.5" />
+              <line id="Line_302" data-name="Line 302" y1="18.91" x2="18.91" transform="translate(7.204 9.455)" fill="none" stroke="#fff" strokeWidth="0.5" />
+              <line id="Line_303" data-name="Line 303" y1="19.036" x2="19.036" transform="translate(8.893 13.379)" fill="none" stroke="#fff" strokeWidth="0.5" />
+              <line id="Line_304" data-name="Line 304" y1="19.036" x2="19.036" transform="translate(8.893 18.138)" fill="none" stroke="#fff" strokeWidth="0.5" />
+            </g>
+          </g>
+          <g id="Mask_Group_9" data-name="Mask Group 9" transform="matrix(0.485, 0.875, -0.875, 0.485, 399.705, 504.263)" clipPath="url(#clip-path-2)">
+            <g id="Group_1669" data-name="Group 1669" transform="translate(-5.33 -4.552)">
+              <line id="Line_329" data-name="Line 329" y1="17.353" x2="17.353" fill="none" stroke="#fff" strokeWidth="0.5" />
+              <line id="Line_330" data-name="Line 330" y1="17.353" x2="17.353" transform="translate(2.479 2.479)" fill="none" stroke="#fff" strokeWidth="0.5" />
+              <line id="Line_331" data-name="Line 331" y1="17.353" x2="17.353" transform="translate(4.545 5.784)" fill="none" stroke="#fff" strokeWidth="0.5" />
+              <line id="Line_332" data-name="Line 332" y1="17.353" x2="17.353" transform="translate(6.611 8.677)" fill="none" stroke="#fff" strokeWidth="0.5" />
+              <line id="Line_333" data-name="Line 333" y1="17.468" x2="17.468" transform="translate(8.161 12.277)" fill="none" stroke="#fff" strokeWidth="0.5" />
+              <line id="Line_334" data-name="Line 334" y1="17.468" x2="17.468" transform="translate(8.161 16.644)" fill="none" stroke="#fff" strokeWidth="0.5" />
+            </g>
+          </g>
+        </g>
+      </g>
+    </svg>
+  );
+}
+
+export function ParrotGreenFuelIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
+  return (
+    <svg width="28" height="28" viewBox="0 0 28 28" {...props}>
+      <defs>
+        <clipPath id="clip-path">
+          <circle id="Ellipse_226" data-name="Ellipse 226" cx="9" cy="9" r="9" transform="translate(0.165 0.083)" fill="#face07" />
+        </clipPath>
+      </defs>
+      <g id="Group_1807" data-name="Group 1807" transform="translate(-528 -1160)">
+        <rect id="Rectangle_2238" data-name="Rectangle 2238" width="28" height="28" transform="translate(528 1160)" fill="none" />
+        <g id="Group_1606" data-name="Group 1606" transform="translate(76 656)">
+          <circle id="Ellipse_225" data-name="Ellipse 225" cx="9" cy="9" r="9" transform="translate(457 509)" fill="#cad400" />
+          <g id="Mask_Group_5" data-name="Mask Group 5" transform="translate(456.835 508.918)" clipPath="url(#clip-path)">
+            <g id="Group_1601" data-name="Group 1601" transform="translate(-4.92 -4.163)">
+              <line id="Line_305" data-name="Line 305" y1="15.894" x2="15.894" fill="none" stroke="#595959" strokeWidth="0.5" />
+              <line id="Line_306" data-name="Line 306" y1="15.894" x2="15.894" transform="translate(2.271 2.271)" fill="none" stroke="#595959" strokeWidth="0.5" />
+              <line id="Line_307" data-name="Line 307" y1="15.894" x2="15.894" transform="translate(4.163 5.298)" fill="none" stroke="#595959" strokeWidth="0.5" />
+              <line id="Line_308" data-name="Line 308" y1="15.894" x2="15.894" transform="translate(6.055 7.947)" fill="none" stroke="#595959" strokeWidth="0.5" />
+              <line id="Line_309" data-name="Line 309" y1="16" x2="16" transform="translate(8.085 11.245)" fill="none" stroke="#595959" strokeWidth="0.5" />
+              <line id="Line_310" data-name="Line 310" y1="16" x2="16" transform="translate(8.085 15.245)" fill="none" stroke="#595959" strokeWidth="0.5" />
+            </g>
+          </g>
+          <g id="Mask_Group_6" data-name="Mask Group 6" transform="matrix(0.259, 0.966, -0.966, 0.259, 472.424, 506.819)" clipPath="url(#clip-path)">
+            <g id="Group_1666" data-name="Group 1666" transform="translate(-4.92 -4.163)">
+              <line id="Line_311" data-name="Line 311" y1="15.894" x2="15.894" fill="none" stroke="#595959" strokeWidth="0.5" />
+              <line id="Line_312" data-name="Line 312" y1="15.894" x2="15.894" transform="translate(2.271 2.271)" fill="none" stroke="#595959" strokeWidth="0.5" />
+              <line id="Line_313" data-name="Line 313" y1="15.894" x2="15.894" transform="translate(4.163 5.298)" fill="none" stroke="#595959" strokeWidth="0.5" />
+              <line id="Line_314" data-name="Line 314" y1="15.894" x2="15.894" transform="translate(6.055 7.947)" fill="none" stroke="#595959" strokeWidth="0.5" />
+              <line id="Line_315" data-name="Line 315" y1="16" x2="16" transform="translate(8.085 11.245)" fill="none" stroke="#595959" strokeWidth="0.5" />
+              <line id="Line_316" data-name="Line 316" y1="16" x2="16" transform="translate(8.085 15.245)" fill="none" stroke="#595959" strokeWidth="0.5" />
+            </g>
+          </g>
+        </g>
+      </g>
+    </svg>
+  );
+}
+
+export function PurpleFuelIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
+  return (
+    <svg width="28" height="28" viewBox="0 0 28 28" {...props}>
+      <defs>
+        <clipPath id="clip-path">
+          <circle id="Ellipse_218" data-name="Ellipse 218" cx="11" cy="11" r="11" transform="translate(-0.027 0.055)" fill="none" />
+        </clipPath>
+        <clipPath id="clip-path-2">
+          <circle id="Ellipse_231" data-name="Ellipse 231" cx="10" cy="10" r="10" transform="translate(-0.283 -0.201)" fill="none" />
+        </clipPath>
+      </defs>
+      <g id="Group_1812" data-name="Group 1812" transform="translate(-114 -1201)">
+        <rect id="Rectangle_2243" data-name="Rectangle 2243" width="28" height="28" transform="translate(114 1201)" fill="none" />
+        <g id="Group_1670" data-name="Group 1670" transform="translate(-26 698)">
+          <circle id="Ellipse_217" data-name="Ellipse 217" cx="9" cy="9" r="9" transform="translate(145 508)" fill="#751468" />
+          <g id="Mask_Group_1" data-name="Mask Group 1" transform="translate(143.027 505.945)" clipPath="url(#clip-path)">
+            <g id="Group_1597" data-name="Group 1597" transform="translate(-5.998 -5.093)">
+              <line id="Line_281" data-name="Line 281" y1="19.379" x2="19.379" fill="none" stroke="#fff" strokeWidth="0.5" />
+              <line id="Line_282" data-name="Line 282" y1="19.379" x2="19.379" transform="translate(2.768 2.768)" fill="none" stroke="#fff" strokeWidth="0.5" />
+              <line id="Line_283" data-name="Line 283" y1="19.379" x2="19.379" transform="translate(5.075 6.46)" fill="none" stroke="#fff" strokeWidth="0.5" />
+              <line id="Line_284" data-name="Line 284" y1="19.379" x2="19.379" transform="translate(7.382 9.689)" fill="none" stroke="#fff" strokeWidth="0.5" />
+              <line id="Line_285" data-name="Line 285" y1="20" x2="20" transform="translate(7.971 14.149)" fill="none" stroke="#fff" strokeWidth="0.5" />
+              <line id="Line_286" data-name="Line 286" y1="20" x2="20" transform="translate(8.971 18.149)" fill="none" stroke="#fff" strokeWidth="0.5" />
+            </g>
+          </g>
+          <g id="Mask_Group_10" data-name="Mask Group 10" transform="translate(162.717 526.799) rotate(180)" clipPath="url(#clip-path-2)">
+            <g id="Group_1671" data-name="Group 1671" transform="translate(-5.389 -4.568)">
+              <line id="Line_335" data-name="Line 335" y1="17.41" x2="17.41" fill="none" stroke="#fff" strokeWidth="0.5" />
+              <line id="Line_336" data-name="Line 336" y1="17.41" x2="17.41" transform="translate(2.487 2.487)" fill="none" stroke="#fff" strokeWidth="0.5" />
+              <line id="Line_337" data-name="Line 337" y1="17.41" x2="17.41" transform="translate(4.56 5.803)" fill="none" stroke="#fff" strokeWidth="0.5" />
+              <line id="Line_338" data-name="Line 338" y1="17.41" x2="17.41" transform="translate(6.633 8.705)" fill="none" stroke="#fff" strokeWidth="0.5" />
+              <line id="Line_339" data-name="Line 339" y1="17" x2="17" transform="translate(9.105 12.367)" fill="none" stroke="#fff" strokeWidth="0.5" />
+              <line id="Line_340" data-name="Line 340" y1="18" x2="17" transform="translate(9.105 16.367)" fill="none" stroke="#fff" strokeWidth="0.5" />
+            </g>
+          </g>
+        </g>
+      </g>
+    </svg>
+  );
+}
+
+export function BlueFuelIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
+  return (
+    <svg width="28" height="28" viewBox="0 0 28 28" {...props}>
+      <g id="Group_1811" data-name="Group 1811" transform="translate(-223 -1203)">
+        <rect id="Rectangle_2242" data-name="Rectangle 2242" width="28" height="28" transform="translate(223 1203)" fill="none" />
+        <g id="Group_1673" data-name="Group 1673" transform="translate(71 1088)">
+          <g id="Group_1672" data-name="Group 1672" transform="translate(12 -388)">
+            <circle id="Ellipse_217" data-name="Ellipse 217" cx="9" cy="9" r="9" transform="translate(145 508)" fill="#388fc2" />
+          </g>
+          <circle id="Ellipse_232" data-name="Ellipse 232" cx="1" cy="1" r="1" transform="translate(167 122)" fill="#fff" />
+          <circle id="Ellipse_242" data-name="Ellipse 242" cx="1" cy="1" r="1" transform="translate(163 122)" fill="#fff" />
+          <circle id="Ellipse_233" data-name="Ellipse 233" cx="1" cy="1" r="1" transform="translate(160 125)" fill="#fff" />
+          <circle id="Ellipse_234" data-name="Ellipse 234" cx="1" cy="1" r="1" transform="translate(159 129)" fill="#fff" />
+          <circle id="Ellipse_235" data-name="Ellipse 235" cx="1" cy="1" r="1" transform="translate(162 133)" fill="#fff" />
+          <circle id="Ellipse_236" data-name="Ellipse 236" cx="1" cy="1" r="1" transform="translate(166 134)" fill="#fff" />
+          <circle id="Ellipse_237" data-name="Ellipse 237" cx="1" cy="1" r="1" transform="translate(170 132)" fill="#fff" />
+          <circle id="Ellipse_239" data-name="Ellipse 239" cx="1" cy="1" r="1" transform="translate(163 129)" fill="#fff" />
+          <circle id="Ellipse_240" data-name="Ellipse 240" cx="1" cy="1" r="1" transform="translate(163 126)" fill="#fff" />
+          <circle id="Ellipse_241" data-name="Ellipse 241" cx="1" cy="1" r="1" transform="translate(166 130)" fill="#fff" />
+          <circle id="Ellipse_245" data-name="Ellipse 245" cx="1" cy="1" r="1" transform="translate(168 128)" fill="#fff" />
+          <circle id="Ellipse_243" data-name="Ellipse 243" cx="1" cy="1" r="1" transform="translate(166 125)" fill="#fff" />
+          <circle id="Ellipse_238" data-name="Ellipse 238" cx="1" cy="1" r="1" transform="translate(170 124)" fill="#fff" />
+          <circle id="Ellipse_244" data-name="Ellipse 244" cx="1" cy="1" r="1" transform="translate(171 128)" fill="#fff" />
+        </g>
+      </g>
+    </svg>
+  );
+}
+
+export function BrownFuelIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
+  return (
+    <svg width="28" height="28" viewBox="0 0 28 28" {...props}>
+      <defs>
+        <clipPath id="clip-path">
+          <circle id="Ellipse_246" data-name="Ellipse 246" cx="9" cy="9" r="9" transform="translate(0 0.083)" fill="none" />
+        </clipPath>
+      </defs>
+      <g id="Group_1810" data-name="Group 1810" transform="translate(-340 -1202)">
+        <rect id="Rectangle_2241" data-name="Rectangle 2241" width="28" height="28" transform="translate(340 1202)" fill="#fff" />
+        <g id="Group_1679" data-name="Group 1679" transform="translate(69.023 1087.023)">
+          <g id="Group_1674" data-name="Group 1674" transform="translate(119)">
+            <g id="Group_1672" data-name="Group 1672" transform="translate(12 -388)">
+              <circle id="Ellipse_217" data-name="Ellipse 217" cx="9" cy="9" r="9" transform="translate(145 508)" fill="#7c3e06" />
+            </g>
+          </g>
+          <g id="Mask_Group_11" data-name="Mask Group 11" transform="matrix(0.259, 0.966, -0.966, 0.259, 291.443, 117.956)" clipPath="url(#clip-path)">
+            <g id="Group_1675" data-name="Group 1675" transform="translate(-4.92 -4.163)">
+              <line id="Line_341" data-name="Line 341" y1="15.894" x2="15.894" fill="none" stroke="#fff" strokeWidth="0.5" />
+              <line id="Line_342" data-name="Line 342" y1="15.894" x2="15.894" transform="translate(2.271 2.271)" fill="none" stroke="#fff" strokeWidth="0.5" />
+              <line id="Line_343" data-name="Line 343" y1="15.894" x2="15.894" transform="translate(4.163 5.298)" fill="none" stroke="#fff" strokeWidth="0.5" />
+              <line id="Line_344" data-name="Line 344" y1="15.894" x2="15.894" transform="translate(6.055 7.947)" fill="none" stroke="#fff" strokeWidth="0.5" />
+              <line id="Line_345" data-name="Line 345" y1="16" x2="16" transform="translate(7.92 11.245)" fill="none" stroke="#fff" strokeWidth="0.5" />
+              <line id="Line_346" data-name="Line 346" y1="16" x2="16" transform="translate(7.92 15.245)" fill="none" stroke="#fff" strokeWidth="0.5" />
+            </g>
+          </g>
+        </g>
+      </g>
+    </svg>
+  );
+}
+
+export function OrangeFuelIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
+  return (
+    <svg width="28" height="28" viewBox="0 0 28 28" {...props}>
+      <defs>
+        <clipPath id="clip-path">
+          <circle id="Ellipse_248" data-name="Ellipse 248" cx="9" cy="9" r="9" transform="translate(0 0.083)" fill="none" />
+        </clipPath>
+      </defs>
+      <g id="Group_1809" data-name="Group 1809" transform="translate(-434 -1204)">
+        <rect id="Rectangle_2240" data-name="Rectangle 2240" width="28" height="28" transform="translate(434 1204)" fill="none" />
+        <g id="Group_1738" data-name="Group 1738" transform="translate(-3.319 0.728)">
+          <g id="Group_1676" data-name="Group 1676" transform="translate(285.047 1088)">
+            <g id="Group_1672" data-name="Group 1672" transform="translate(12 -388)">
+              <circle id="Ellipse_217" data-name="Ellipse 217" cx="9" cy="9" r="9" transform="translate(145 508)" fill="#f39600" />
+            </g>
+          </g>
+          <g id="Mask_Group_13" data-name="Mask Group 13" transform="translate(451.105 1204.214) rotate(45)" clipPath="url(#clip-path)">
+            <g id="Group_1678" data-name="Group 1678" transform="translate(-4.92 -4.163)">
+              <line id="Line_353" data-name="Line 353" y1="15.894" x2="15.894" transform="translate(0.707 0.707)" fill="none" stroke="#404040" strokeWidth="0.5" />
+              <line id="Line_354" data-name="Line 354" y1="15.894" x2="15.894" transform="translate(2.271 2.271)" fill="none" stroke="#404040" strokeWidth="0.5" />
+              <line id="Line_355" data-name="Line 355" y1="15.894" x2="15.894" transform="translate(4.163 5.298)" fill="none" stroke="#404040" strokeWidth="0.5" />
+              <line id="Line_356" data-name="Line 356" y1="15.894" x2="15.894" transform="translate(5.348 7.24)" fill="none" stroke="#404040" strokeWidth="0.5" />
+              <line id="Line_357" data-name="Line 357" y1="16" x2="16" transform="translate(7.213 10.538)" fill="none" stroke="#404040" strokeWidth="0.5" />
+              <line id="Line_365" data-name="Line 365" y1="16" x2="16" transform="translate(8.627 11.952)" fill="none" stroke="#404040" strokeWidth="0.5" />
+              <line id="Line_358" data-name="Line 358" y1="16" x2="16" transform="translate(7.92 15.245)" fill="none" stroke="#404040" strokeWidth="0.5" />
+            </g>
+          </g>
+        </g>
+      </g>
+    </svg>
+  );
+}
+
+export function AquaFuelIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
+  return (
+    <svg width="28" height="28" viewBox="0 0 28 28" {...props}>
+      <defs>
+        <clipPath id="clip-path">
+          <circle id="Ellipse_218" data-name="Ellipse 218" cx="9" cy="9" r="9" transform="translate(0 0.083)" fill="#face07" />
+        </clipPath>
+      </defs>
+      <g id="Group_1808" data-name="Group 1808" transform="translate(-528 -1205)">
+        <rect id="Rectangle_2239" data-name="Rectangle 2239" width="28" height="28" transform="translate(528 1205)" fill="none" />
+        <g id="Group_1681" data-name="Group 1681" transform="translate(387.728 701.728)">
+          <circle id="Ellipse_217" data-name="Ellipse 217" cx="9" cy="9" r="9" transform="translate(145 508)" fill="#8fd1e2" />
+          <g id="Mask_Group_1" data-name="Mask Group 1" transform="translate(145 507.917)" clipPath="url(#clip-path)">
+            <g id="Group_1597" data-name="Group 1597" transform="translate(-4.92 -4.163)">
+              <line id="Line_281" data-name="Line 281" y1="15.894" x2="15.894" fill="none" stroke="#595959" strokeWidth="0.5" />
+              <line id="Line_282" data-name="Line 282" y1="15.894" x2="15.894" transform="translate(2.271 2.271)" fill="none" stroke="#595959" strokeWidth="0.5" />
+              <line id="Line_283" data-name="Line 283" y1="15.894" x2="15.894" transform="translate(4.163 5.298)" fill="none" stroke="#595959" strokeWidth="0.5" />
+              <line id="Line_284" data-name="Line 284" y1="15.894" x2="15.894" transform="translate(6.055 7.947)" fill="none" stroke="#595959" strokeWidth="0.5" />
+              <line id="Line_285" data-name="Line 285" y1="16" x2="16" transform="translate(7.92 11.245)" fill="none" stroke="#595959" strokeWidth="0.5" />
+              <line id="Line_286" data-name="Line 286" y1="16" x2="16" transform="translate(7.92 15.245)" fill="none" stroke="#595959" strokeWidth="0.5" />
+            </g>
+          </g>
+          <g id="Mask_Group_15" data-name="Mask Group 15" transform="translate(166.786 517.058) rotate(135)" clipPath="url(#clip-path)">
+            <g id="Group_1682" data-name="Group 1682" transform="translate(-4.92 -4.163)">
+              <line id="Line_366" data-name="Line 366" y1="15.894" x2="15.894" fill="none" stroke="#595959" strokeWidth="0.5" />
+              <line id="Line_367" data-name="Line 367" y1="15.894" x2="15.894" transform="translate(2.271 2.271)" fill="none" stroke="#595959" strokeWidth="0.5" />
+              <line id="Line_368" data-name="Line 368" y1="15.894" x2="15.894" transform="translate(4.163 5.298)" fill="none" stroke="#595959" strokeWidth="0.5" />
+              <line id="Line_369" data-name="Line 369" y1="15.894" x2="15.894" transform="translate(6.055 7.947)" fill="none" stroke="#595959" strokeWidth="0.5" />
+              <line id="Line_370" data-name="Line 370" y1="16" x2="16" transform="translate(7.92 11.245)" fill="none" stroke="#595959" strokeWidth="0.5" />
+              <line id="Line_371" data-name="Line 371" y1="16" x2="16" transform="translate(7.92 15.245)" fill="none" stroke="#595959" strokeWidth="0.5" />
+            </g>
+          </g>
+        </g>
       </g>
     </svg>
   );

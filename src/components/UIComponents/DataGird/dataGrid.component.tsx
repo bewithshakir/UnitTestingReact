@@ -1,5 +1,4 @@
-import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined';
-import { Box, Collapse, Table, TableBody, TableCell, TableHead, TableRow, FormControl } from '@mui/material';
+import { Collapse, TableBody, TableCell, TableRow, FormControl, Avatar, Icon, ImageList } from '@mui/material';
 import Checkbox from '../Checkbox/Checkbox.component';
 import * as React from "react";
 import { Loader } from '../Loader';
@@ -7,20 +6,30 @@ import DataGridActionsMenu, { DataGridActionsMenuOption } from '../Menu/DataGrid
 import { Button } from './../Button/Button.component';
 import './grid.style.scss';
 import { headerObj } from './grid.component';
+import { PositiveCricleIcon, AlertExclamationIcon, YellowFuelIcon, RedFuelIcon, GreenFuelIcon, NavyBlueFuelIcon } from '../../../assets/icons';
+import { tableImagesSX, tableAvatarSX, tableImagesIconListSX, tableIconsSX, tableFuelIconsSX } from './config';
+import NoDataFound from './Nodata';
+
 interface GridBodyProps {
+    primaryKey:string,
     rows?: any;
     order: string | any;
     orderBy: string;
     headCells: headerObj[];
     isError?: string;
     isLoading?: boolean;
+    isChildTable?: boolean;
     enableRowSelection?: boolean;
     enableRowAction?: boolean;
     openDrawer?: any;
-    selectedRows: string[];
+    selectedRows?: string[];
+    getId?:any;
+    InnerTableComponent?:any;
+    noDataMsg?: string,
+    searchTerm?:string,
     onRowActionSelect?: (selectedValue: DataGridActionsMenuOption, row: any) => void,
-    rowActionOptions: DataGridActionsMenuOption[],
-    handleCheckChange: (customerId: string) => void;
+    rowActionOptions?: DataGridActionsMenuOption[],
+    handleCheckChange: (primaryId: string) => void;
 }
 
 
@@ -56,6 +65,31 @@ function stableSort (array: any, comparator: any) {
 }
 
 
+function getWalletIcon (status: string) {
+    switch (status) {
+        case "Y":
+            return PositiveCricleIcon;
+        case "N":
+            return AlertExclamationIcon;
+        default:
+            return AlertExclamationIcon;
+    }
+}
+
+function getFuelIcon (status: string) {
+    switch (status) {
+        case "Regular":
+            return YellowFuelIcon;
+        case "Premium":
+            return RedFuelIcon;
+        case "Diesel":
+            return GreenFuelIcon;
+        case "V-Power":
+            return NavyBlueFuelIcon;
+        default:
+            return YellowFuelIcon;
+    }
+}
 
 const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
     const [selectedIndexKey, setSelectedKey] = React.useState(null);
@@ -64,27 +98,56 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
         return props?.headCells.map((i: any) => i.field);
     };
 
-    const handleCollapaseClick = (e: React.MouseEvent<HTMLButtonElement>, key: any) => {
+    const handleCollapaseClick = (e: React.MouseEvent<HTMLButtonElement>, indexKey: any, row:any, key:any) => {
         e.stopPropagation();
-        if (key === selectedIndexKey) {
-            setSelectedKey(null);
-        } else {
-            setSelectedKey(key);
-        }
+        const { primaryKey } = props;
+        if(row[key]){ 
+            props.getId !== undefined && props.getId(row[primaryKey]);
+            if (indexKey === selectedIndexKey) {
+                setSelectedKey(null);
+            } else {
+                setSelectedKey(indexKey);
+            }
+       }
     };
     const openDrawer = (row: any) => {
         props.openDrawer(row);
     };
 
-    const isSelected = (customerId: string) => props.selectedRows.indexOf(customerId) !== -1;
+    const isSelected = (primaryId: string) => props.selectedRows && props.selectedRows.indexOf(primaryId) !== -1;
 
+    const renderIcon = (key: string, icon: any) => {
+        return (
+            <Icon sx={tableIconsSX} component={key === 'walletStatus' ? getWalletIcon(icon) : icon} />
+        );
+    };
 
+    const renderIcons = (key: string, data: any, align: string | undefined) => {
+        if (data?.length) {
+            return (<ImageList sx={{ ...tableImagesIconListSX, justifyContent: align }} gap={0} cols={10}>
+                {data?.map((icon: any, index: number) =>
+                    <Icon key={index} sx={key === 'fuelStatus' ? tableFuelIconsSX : tableIconsSX} component={key === 'fuelStatus' ? getFuelIcon(icon) : icon} />
+                )}
+            </ImageList>);
+        }
+    };
+
+    const renderImages = (data: any) => {
+        if (data?.length) {
+            return (<ImageList sx={tableImagesIconListSX} cols={10}>
+                {data?.map((item: any, index: number) =>
+                    <Avatar key={index} sx={tableImagesSX} src={item} variant="square" />
+                )}
+            </ImageList>);
+        }
+    };
     const getRowsData = () => {
         const keys = getKeys();
+        const { primaryKey } = props;
         return (
             stableSort(props.rows, getComparator(props.order, props.orderBy))
                 .map((row: any, indexKey: any) => {
-                    const isItemSelected = isSelected(row.customerId);
+                    const isItemSelected = isSelected(row[primaryKey]);
                     return (<React.Fragment key={indexKey}>
                         <TableRow key={indexKey} sx={{
                             cursor: "pointer"
@@ -95,12 +158,12 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
                                         className="grid-cell-parent"
                                         component="th"
                                         scope="row"
-                                        onClick={() => openDrawer(row)}
+                                        onClick={() => props.isChildTable ? {} : openDrawer(row)}
                                     >
                                         <Checkbox
-                                            name={`checkbox${row.customerId}`}
-                                            checked={isItemSelected}
-                                            onChange={() => props.handleCheckChange(row.customerId)}
+                                            name={`checkbox${row[primaryKey]}`}
+                                            checked={isItemSelected || false}
+                                            onChange={() => props.handleCheckChange && props.handleCheckChange(row[primaryKey])}
                                             onClick={e => e.stopPropagation()}
                                         />
                                     </TableCell>
@@ -110,23 +173,39 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
                                     className="grid-cell-parent"
                                     component="th"
                                     scope="row"
+                                    align={props.headCells[index].align}
                                     key={row[key]}
-                                    onClick={() => openDrawer(row)}
+                                    onClick={() => props.isChildTable ? {} : openDrawer(row)}
                                 >
                                     {
                                         props.headCells[index].type === 'text' ?
-                                            index === 0 ? <b>{row[key]}</b> : row[key]
+                                            props.headCells[index].bold ? <b>{row[key]}</b> : row[key]
                                             :
                                             props.headCells[index].type === 'button' ?
                                                 <Button
                                                     types="accordian"
                                                     aria-label="accordian"
-                                                    className="active"
-                                                    onClick={(e) => handleCollapaseClick(e, indexKey)}
-                                                    startIcon={< LocationOnOutlinedIcon />}
+                                                    className={row[key] ? "active" : 'empty'}
+                                                    onClick={(e) => handleCollapaseClick(e, indexKey, row, key)}
+                                                    startIcon={props.headCells[index].icon ? <Icon component={props.headCells[index].icon} /> : undefined}
                                                 >
-                                                    {0}
-                                                </Button> : ""
+                                                    {
+                                                        row[key]
+                                                    }
+                                                </Button> :
+                                                props.headCells[index].type === 'icon' ?
+                                                    renderIcon(key, row[key])
+                                                    :
+                                                    props.headCells[index].type === 'icons' ?
+                                                        renderIcons(key, row[key], props.headCells[index].align)
+                                                        :
+                                                        props.headCells[index].type === 'image' ?
+                                                            <Avatar sx={tableAvatarSX} src={row[key]} variant="square" />
+                                                            :
+                                                            props.headCells[index].type === 'images' ?
+                                                                renderImages(row[key])
+                                                                :
+                                                                ""
                                     }
                                 </TableCell>
                             )}
@@ -136,7 +215,7 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
                                         className="grid-cell-parent"
                                         component="th"
                                         scope="row"
-                                        onClick={() => openDrawer(row)}
+                                        onClick={() => props.isChildTable ? {} : openDrawer(row)}
                                     >
                                         <FormControl>
                                             <DataGridActionsMenu
@@ -150,18 +229,7 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
                         <TableRow>
                             <TableCell className="grid-cell" colSpan={12}>
                                 <Collapse in={indexKey === selectedIndexKey ? true : false} timeout="auto" unmountOnExit>
-                                    <Box sx={{ margin: 1 }}>
-                                        <Table size="small" aria-label="purchases">
-                                            <TableHead>
-                                                <TableRow>
-                                                    <h1>Show Another Table {indexKey} - {row.lots}</h1>
-                                                </TableRow>
-                                            </TableHead>
-                                            <TableBody>
-
-                                            </TableBody>
-                                        </Table>
-                                    </Box>
+                                    {props.InnerTableComponent && props.InnerTableComponent}           
                                 </Collapse>
                             </TableCell>
                         </TableRow>
@@ -170,13 +238,20 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
         );
     };
 
-    if (props?.rows?.length) {
-        return getRowsData();
-    } else if (props?.isLoading) {
-        return (<Loader />);
-    } else {
-        return (<div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100%", width: "auto" }}>{"No Data found"}</div>);
-    }
+    const getData = () => {
+        if(props?.rows?.length) {
+            return getRowsData();
+        }else if (!props?.isLoading){
+            return (<TableBody className='no-data'> <NoDataFound searchTerm={props.searchTerm} msgLine2={props.noDataMsg}/> </TableBody>);
+        }
+    };
+
+    return (
+        <React.Fragment>
+            {props?.isLoading && (<Loader />)}
+            {getData()}
+        </React.Fragment>
+    );
 
 
 };

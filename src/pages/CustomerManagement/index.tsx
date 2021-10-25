@@ -1,4 +1,4 @@
-/* eslint-disable no-console */
+
 import React, { SyntheticEvent, useEffect } from "react";
 import { Button } from "../../components/UIComponents/Button/Button.component";
 import "./style.scss";
@@ -9,6 +9,7 @@ import {
 import SortbyMenu from "../../components/UIComponents/Menu/SortbyMenu.component";
 import ActionsMenu from "../../components/UIComponents/Menu/ActionsMenu.component";
 import GridComponent from "../../components/UIComponents/DataGird/grid.component";
+import Table from "./SubTableLots";
 import { useCustomers } from "./queries";
 import SearchInput from "../../components/UIComponents/SearchInput/SearchInput";
 import { Add } from "@mui/icons-material";
@@ -28,6 +29,7 @@ interface ContentProps {
 const Content: React.FC<ContentProps> = () => {
   const CustomerObj = new CustomerModel();
   const headCells = CustomerObj.fieldsToDisplay();
+  const headCellsLots = CustomerObj.fieldsToDisplayLotTable();
   const rowActionOptions = CustomerObj.rowActions();
   const massActionOptions = CustomerObj.massActions();
   const ACTION_TYPES = CustomerObj.ACTION_TYPES;
@@ -40,10 +42,11 @@ const Content: React.FC<ContentProps> = () => {
   const [sortOrder, setSortOrder] = React.useState<{ sortBy: string, order: string }>({ sortBy: "customerName", order: "asc" });
   const [filterData, setFilterData] = React.useState<{ [key: string]: string[] }>({});
   const [custFilterPanelVisible, setCustFilterPanelVisible] = React.useState(false);
+  const [customerId, setCustomerId] = React.useState('');
   const [customerList, setCustomerList] = React.useState([]);
 
   const { t } = useTranslation();
-  const { data, fetchNextPage, isLoading }: any = useCustomers(
+  const { data, fetchNextPage, isLoading, isFetching }: any = useCustomers(
     searchTerm,
     sortOrder,
     filterData
@@ -89,8 +92,8 @@ const Content: React.FC<ContentProps> = () => {
     }
     setSortOrder(sortOrder);
   };
-  const onInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchTerm(event.currentTarget.value);
+  const onInputChange = (value: string) => {
+    setSearchTerm(value);
   };
 
   const handleCustFilterPanelOpen = () => {
@@ -162,6 +165,7 @@ const Content: React.FC<ContentProps> = () => {
               <SearchInput
                 name="searchTerm"
                 value={searchTerm}
+                delay={600}
                 onChange={onInputChange}
               />
             </Grid>
@@ -190,15 +194,20 @@ const Content: React.FC<ContentProps> = () => {
         <Grid container pt={2.5} display="flex" flexGrow={1}>
 
           <GridComponent
+            primaryKey='customerId'
             rows={customerList}
             header={headCells}
-            isLoading={isLoading}
+            isLoading={isFetching || isLoading}
             enableRowSelection
             enableRowAction
             getPages={fetchNextPage}
             onRowActionSelect={handleRowAction}
             rowActionOptions={rowActionOptions}
             openDrawer={openDrawer}
+            searchTerm={searchTerm}
+            getId={(id:string) => setCustomerId(id)}
+            InnerTableComponent={<Table primaryKey='deliveryLocationId' id={customerId} headCells={headCellsLots}/>}
+            noDataMsg='Add Customer by clicking on the " Add Customer" button.'
           />
 
           <RightInfoPanel panelType="customer-filter" open={custFilterPanelVisible} headingText={"Filters"} provideFilterParams={getFilterParams} onClose={handleCustFilterPanelClose} />

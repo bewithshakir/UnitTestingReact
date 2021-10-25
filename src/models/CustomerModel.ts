@@ -1,7 +1,8 @@
-// import LocationAddressModel from './LocationAddressModel';
 import moment from 'moment';
 import { useTranslation } from 'react-i18next';
-
+import { headerObj } from '../components/UIComponents/DataGird/grid.component';
+import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined';
+import { DeleteIcon, ExportIcon, ImportIcon } from '../assets/icons';
 
 export interface SelectProps {
     label: string,
@@ -112,17 +113,31 @@ export default class CustomerModel {
         }];
     }
 
-    fieldsToDisplay () {
+    fieldsToDisplay (): headerObj[] {
         return [
-            { field: "customerId", label: "ID", type: 'text' },
-            { field: "customerName", label: "CUSTOMER NAME", type: 'text' },
+            { field: "avatar", label: "IMAGE", type: 'image', sortable: false },
+            { field: "customerId", label: "ID", type: 'text', bold: true },
+            { field: "customerName", label: "CUSTOMER NAME", type: 'text', sortable: true },
             { field: "contactName", label: "CONTACT NAME", type: 'text' },
             { field: "address", label: "ADDRESS", type: 'text' },
             { field: "city", label: "CITY", type: 'text' },
             { field: "state", label: "STATE", type: 'text' },
             { field: "zipCode", label: "ZIP", type: 'text' },
-            { field: "lots", label: "LOTS", type: 'button' },
+            { field: "totalLots", label: "LOTS", type: 'button', icon: LocationOnOutlinedIcon },
             { field: "paymentType", label: "SETTLEMENT TYPE", type: 'text' },
+        ];
+    }
+
+    fieldsToDisplayLotTable(): headerObj[] {
+        return [
+            { field: "deliveryLocationNm", label: "LOT NAME", type: 'text' },
+            { field: "streetAddress", label: "STREET ADDRESS", type: 'text' },
+            { field: "cityNm", label: "CITY", type: 'text' },
+            { field: "stateNm", label: "STATE", type: 'text' },
+            { field: "postalCd", label: "ZIP", type: 'text' },
+            { field: "walletStatus", label: "WALLET", type: 'icon', align: 'center' },
+            { field: "fuelStatus", label: "FUEL", type: 'icons' },
+            { field: "vehicles", label: "VEHICLES", type: 'text' },
         ];
     }
 
@@ -138,7 +153,7 @@ export default class CustomerModel {
         return [
             {
                 label: t("menus.data-grid-actions.raise a request"),
-                action: this.ACTION_TYPES.RAISE_REQ
+                action: this.ACTION_TYPES.RAISE_REQ,
             },
             {
                 label: t("menus.data-grid-actions.fee & driver details"),
@@ -166,17 +181,17 @@ export default class CustomerModel {
         return [
             {
                 label: t("menus.actions.import data"),
-                icon: "ImportIcon",
+                icon: ImportIcon,
                 action: this.MASS_ACTION_TYPES.IMPORT
             },
             {
                 label: t("menus.actions.export data"),
-                icon: "ExportIcon",
+                icon: ExportIcon,
                 action: this.MASS_ACTION_TYPES.EXPORT
             },
             {
                 label: t("menus.actions.delete"),
-                icon: "DeleteIcon",
+                icon: DeleteIcon,
                 action: this.MASS_ACTION_TYPES.DELETE
             },
         ];
