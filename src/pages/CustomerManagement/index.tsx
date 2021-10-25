@@ -1,4 +1,4 @@
-/* eslint-disable no-console */
+
 import React, { SyntheticEvent, useEffect } from "react";
 import { Button } from "../../components/UIComponents/Button/Button.component";
 import "./style.scss";
