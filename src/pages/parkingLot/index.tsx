@@ -188,6 +188,7 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
         <Grid container pt={2.5} display="flex" flexGrow={1}>
 
           <GridComponent
+            primaryKey='deliveryLocationId'
             rows={parkingLotlist}
             header={headCells}
             isLoading={isLoading}

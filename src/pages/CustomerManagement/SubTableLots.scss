@@ -1,0 +1,14 @@
+.sub-Table-Container{
+    .table-container{
+        .loader{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 10%;
+            left: 75%;
+            position: relative;
+            transform: translate(250%, 0%);
+        }
+    }
+}

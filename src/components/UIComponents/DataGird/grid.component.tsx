@@ -17,6 +17,7 @@ export interface headerObj {
 }
 type selectedRow = string[];
 interface GridComponentProps {
+    primaryKey: string,
     width?: string,
     height?: string,
     rows: any[],
@@ -24,12 +25,18 @@ interface GridComponentProps {
     isLoading?: boolean,
     getPages?: any,
     ref?: any,
+    isChildTable?: boolean,
     openDrawer?: any,
     onRowActionSelect?: (action: DataGridActionsMenuOption, row: any) => void,
     rowActionOptions?: DataGridActionsMenuOption[],
     enableRowSelection?: boolean,
     enableRowAction?: boolean,
+    getId?:any,
+    InnerTableComponent?:any,
+    searchTerm?:string,
+    noDataMsg?:string,
 }
+
 
 const GridComponent: React.FC<GridComponentProps> = (props) => {
     const [order, setOrder] = React.useState("asc");
@@ -105,6 +112,7 @@ const GridComponent: React.FC<GridComponentProps> = (props) => {
                     enableRowAction={enableRowAction}
                     handleCheckChange={handleCheckChange}
                     headCells={props.header}
+                    searchTerm={props.searchTerm}
                     {...props}
                 />
             </Table>

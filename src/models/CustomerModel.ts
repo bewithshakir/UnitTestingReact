@@ -128,6 +128,19 @@ export default class CustomerModel {
         ];
     }
 
+    fieldsToDisplayLotTable(): headerObj[] {
+        return [
+            { field: "deliveryLocationNm", label: "LOT NAME", type: 'text' },
+            { field: "streetAddress", label: "STREET ADDRESS", type: 'text' },
+            { field: "cityNm", label: "CITY", type: 'text' },
+            { field: "stateNm", label: "STATE", type: 'text' },
+            { field: "postalCd", label: "ZIP", type: 'text' },
+            { field: "walletStatus", label: "WALLET", type: 'icon', align: 'center' },
+            { field: "fuelStatus", label: "FUEL", type: 'icons' },
+            { field: "vehicles", label: "VEHICLES", type: 'text' },
+        ];
+    }
+
     ACTION_TYPES = {
         RAISE_REQ: 'raise req',
         DRIVER_DETAILS: 'driver details',
