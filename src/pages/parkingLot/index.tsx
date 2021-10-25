@@ -57,9 +57,13 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
   const drawerClose = () => {
     setDrawerOpen(false);
   };
-  const navigateToAddCustomer = () => {
-    history.push("/customer");
+  // const navigateToAddCustomer = () => {
+  //   history.push("/customer");
+  // };
+  const navigateToAddLot = () => {
+    history.push("/customer/parkingLots/addLot");
   };
+
   const onSortBySlected = (value: string) => {
     let sortOrder;
     switch (value) {
@@ -168,10 +172,10 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
               <Button
                 types="primary"
                 aria-label="primary"
-                onClick={navigateToAddCustomer}
+                onClick={navigateToAddLot}
                 startIcon={<Add />}
               >
-                {t("buttons.add customer")}
+                {t("buttons.add lot")}
               </Button>
             </Grid>
             <Grid item>

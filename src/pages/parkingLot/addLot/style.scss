@@ -1,0 +1,21 @@
+div{  
+    .page-area {
+      max-height: calc(100vh - 64px);
+      overflow-y: auto;
+    }
+      .page-container{
+        margin: 0px;
+        max-width: 950px;
+        .import-file{
+          display: flex;
+          align-items: center;
+          border: 1px solid var(--Lightgray);
+          padding: .875rem 0.7rem;
+        }
+        .form-action-section{
+          display: flex;
+          justify-content: flex-end;
+        }
+      }
+  }
+  

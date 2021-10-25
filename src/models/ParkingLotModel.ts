@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+import { Moment } from 'moment';
 
 
 export interface SelectProps {
@@ -19,8 +20,90 @@ export interface ParkingLot {
     lotLevel: boolean,
 }
 
+export interface AddParkingLotForm {
+    // General Information
+    lotName: string,
+    customerId: string,
+    addressLine1: string,
+    addressLine2: string,
+    city: string,
+    state: string,
+    postalCode: string,
+
+}
+
+
+// {
+//     "customer_id": "fc2ffe5e-7ef8-46b8-95c2-cb82cf77ed90",
+//     "lot_name": "LOT006",
+//     "lot_id": "1234567890",
+//     "jurisdiction_id": "ABCDEFGHIJ116",
+//     "address_1": "Houston Court, ,Houston Ct, , ",
+//     "address_2": "",
+//     "address_3": "",
+//     "city": "Saratoga",
+//     "state": "CA",
+//     "postal_code": "95070",
+//     "country": "United States",
+//     "timezone_cd": "CDT",
+//     "location_contact": [
+//         {
+//             "location_contact_type_cd": "6e1df17a-29ba-4312-a55e-6b34e47fbb4d",
+//             "contact_first_name": "Aninda",
+//             "contact_last_name": "Kar",
+//             "contact_email": "aninda.kar@shell.com",
+//             "contact_phone": "1234567890"
+//         },
+//         {
+//             "location_contact_type_cd": "ca9fcb3a-abc1-4991-a4fd-41d0ee3f47ad",
+//             "contact_first_name": "Karthick",
+//             "contact_last_name": "Krishnan",
+//             "contact_email": "karthick.krishnan@shell.com",
+//             "contact_phone": "1234567890"
+//         },
+//         {
+//             "location_contact_type_cd": "ca9fcb3a-abc1-4991-a4fd-41d0ee3f47ad",
+//             "contact_first_name": "Karthick",
+//             "contact_last_name": "Krishnan",
+//             "contact_email": "karthick.krishnan@shell.com",
+//             "contact_phone": "1234567890"
+//         }
+//     ]
+// }
+
+
+
+export interface orderScheduleDel {
+    fromDate: moment.Moment| string | null,
+    toDate: moment.Moment| string | null,
+    startTime: string,
+    endTime: string,
+    productDelDays: string
+}
+
+export interface lotContact {
+    firstName: string,
+    lastName: string,
+    email: string,
+    phoneNumber: string,
+}
+
 export default class ParkingLotModel {
     // General Information
+    lotName:string;
+    lotId: string;
+    addressLine1: string;
+    addressLine2: string;
+    county: string;
+    timeZone:'';
+    country: '';
+    jurisdictionId: '';
+    productDelFreq: '';
+    orderScheduleDel: orderScheduleDel[];
+    locationContact: lotContact[];
+
+
+
     customerId: string;
     city: string;
     state: string;
@@ -31,6 +114,30 @@ export default class ParkingLotModel {
     lotLevel: boolean;
 
     constructor() {
+        this.lotName = '';
+        this.lotId = '';
+        this.addressLine1 = '';
+        this.addressLine2 = '';
+        this.county = '';
+        this.timeZone = '';
+        this.country = '';
+        this.jurisdictionId = '';
+        this.productDelFreq = '';
+        this.orderScheduleDel = [{
+            fromDate: '',
+            toDate: '',
+            startTime: '',
+            endTime: '',
+            productDelDays: ''
+        }];
+        this.locationContact = [{
+            firstName: '',
+            lastName: '',
+            email: '',
+            phoneNumber: '',
+        }];
+
+
         this.customerId = '';
         this.city = '';
         this.state = '';
