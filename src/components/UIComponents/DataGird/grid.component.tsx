@@ -4,11 +4,16 @@ import { DataGridActionsMenuOption } from '../Menu/DataGridActionsMenu.component
 import EnhancedGridBody from './dataGrid.component';
 import './grid.style.scss';
 import EnhancedGridHead from './headerGrid.component';
+import { tableSX } from './config';
 
 export interface headerObj {
     field: string,
     label: string,
-    type: string,
+    type: 'text' | 'button' | 'icon' | 'icons' | 'image' | 'images',
+    icon?: React.ReactNode | string | any,
+    bold?: boolean,
+    align?: 'right' | 'left' | 'center' | 'justify',
+    sortable?: boolean
 }
 type selectedRow = string[];
 interface GridComponentProps {
@@ -22,7 +27,7 @@ interface GridComponentProps {
     isChildTable?: boolean,
     openDrawer?: any,
     onRowActionSelect?: (action: DataGridActionsMenuOption, row: any) => void,
-    rowActionOptions: DataGridActionsMenuOption[],
+    rowActionOptions?: DataGridActionsMenuOption[],
     enableRowSelection?: boolean,
     enableRowAction?: boolean,
     getId?:any,
@@ -61,12 +66,12 @@ const GridComponent: React.FC<GridComponentProps> = (props) => {
         setSelected([]);
     };
 
-    const handleCheckChange = (customerId: string) => {
-        const selectedIndex = selected.indexOf(customerId);
+    const handleCheckChange = (primaryId: string) => {
+        const selectedIndex = selected.indexOf(primaryId);
         let newSelected: selectedRow = [];
 
         if (selectedIndex === -1) {
-            newSelected = newSelected.concat(selected, customerId);
+            newSelected = newSelected.concat(selected, primaryId);
         } else if (selectedIndex === 0) {
             newSelected = newSelected.concat(selected.slice(1));
         } else if (selectedIndex === selected.length - 1) {
@@ -83,7 +88,7 @@ const GridComponent: React.FC<GridComponentProps> = (props) => {
     return (
         <TableContainer className="table-container" onScroll={handleTableScroll} ref={props.ref}>
             <Table
-                sx={{ minWidth: 1600 }}
+                sx={tableSX}
                 aria-labelledby="tableTitle"
                 stickyHeader
             >
@@ -118,8 +123,7 @@ const GridComponent: React.FC<GridComponentProps> = (props) => {
 GridComponent.defaultProps = {
     enableRowSelection: false,
     enableRowAction: false,
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
-    onRowActionSelect: () => { },
+    rowActionOptions: [],
 };
 
 

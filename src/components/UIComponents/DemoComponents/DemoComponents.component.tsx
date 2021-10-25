@@ -291,7 +291,8 @@ export const DemoComponents: React.FC = () => {
                         <SearchInput
                             name='searchTerm'
                             value={form.searchTerm}
-                            onChange={handleChange}
+                            delay={200}
+                            onChange={(z:string) => setForm(x => ({ ...x, searchTerm: z }))}
                         />
                     </Box>
 

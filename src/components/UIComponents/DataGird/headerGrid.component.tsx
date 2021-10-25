@@ -3,19 +3,12 @@ import { TableSortLabel, TableRow, TableHead, TableCell } from '@mui/material';
 import Checkbox from '../Checkbox/Checkbox.component';
 import './grid.style.scss';
 import { SortByIcon } from '../../../assets/icons';
-
-
-
-type HeadCellsOptions = {
-    field: string;
-    label: string;
-    type: string;
-}
+import { headerObj } from './grid.component';
 
 interface GridHeaderProps {
     order: string | any;
     orderBy: string;
-    headCells: HeadCellsOptions[];
+    headCells: headerObj[];
     onRequestSort: (event: React.MouseEvent<unknown>, property: any) => void;
     isError?: any;
     numSelected?: number;
@@ -55,25 +48,28 @@ const EnhancedGridHead: React.FC<GridHeaderProps> = (props) => {
                     {props.headCells.map((headCell) => (
                         <TableCell
                             key={headCell.field}
+                            align={headCell.align}
                             className="header-options"
                             sortDirection={props.orderBy === headCell.field ? props.order : false}
                         >
-                            <TableSortLabel
-                                IconComponent={SortByIcon}
-                                active={props.orderBy === headCell.field}
-                                direction={props.orderBy === headCell.field ? props.order : "asc"}
-                                onClick={createSortHandler(headCell.field)}
-                            >
+                            {headCell.sortable ?
+                                < TableSortLabel
+                                    IconComponent={SortByIcon}
+                                    active={props.orderBy === headCell.field}
+                                    direction={props.orderBy === headCell.field ? props.order : "asc"}
+                                    onClick={createSortHandler(headCell.field)}
+                                >
 
-                                {headCell.label}
-                            </TableSortLabel>
+                                    {headCell.label}
+                                </TableSortLabel>
+                                :
+                                headCell.label
+                            }
                         </TableCell>
                     ))}
-                    {props.enableRowAction ? <TableCell className="header-options">
-                        <TableSortLabel>{''}</TableSortLabel>
-                    </TableCell> : null}
+                    {props.enableRowAction ? <TableCell className="header-options">{''}</TableCell> : null}
                 </TableRow>}
-        </TableHead>
+        </TableHead >
 
     );
 };

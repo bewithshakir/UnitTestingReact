@@ -1,4 +1,4 @@
-/* eslint-disable no-console */
+
 import React, { SyntheticEvent, useEffect } from "react";
 import { Button } from "../../components/UIComponents/Button/Button.component";
 import "./style.scss";
@@ -92,8 +92,8 @@ const Content: React.FC<ContentProps> = () => {
     }
     setSortOrder(sortOrder);
   };
-  const onInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchTerm(event.currentTarget.value);
+  const onInputChange = (value: string) => {
+    setSearchTerm(value);
   };
 
   const handleCustFilterPanelOpen = () => {
@@ -165,6 +165,7 @@ const Content: React.FC<ContentProps> = () => {
               <SearchInput
                 name="searchTerm"
                 value={searchTerm}
+                delay={600}
                 onChange={onInputChange}
               />
             </Grid>

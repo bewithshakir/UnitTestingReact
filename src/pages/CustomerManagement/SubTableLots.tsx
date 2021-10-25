@@ -1,21 +1,17 @@
 import {useState, useEffect} from 'react';
-import GridComponent from '../../components/UIComponents/DataGird/grid.component';
+import GridComponent, { headerObj } from '../../components/UIComponents/DataGird/grid.component';
 import { getLots } from './queries'; 
 import './SubTableLots.scss';
 
 
-type headCells = {
-    field: string;
-    label: string;
-    type: string;
-}
+
 
 interface props {
     id:string,
     rows?: any[],
     isLoading?: boolean,
     getPages?: any,
-    headCells: headCells[],
+    headCells: headerObj[],
 }
 
 export default function InnerTable(props:props) {
