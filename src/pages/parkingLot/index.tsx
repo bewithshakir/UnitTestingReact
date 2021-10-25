@@ -78,8 +78,8 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
     }
     setSortOrder(sortOrder);
   };
-  const onInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchTerm(event.currentTarget.value);
+  const onInputChange = (value:string) => {
+    setSearchTerm(value);
   };
   useEffect(() => {
     if (data) {
@@ -159,6 +159,7 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
               <SearchInput
                 name="searchTerm"
                 value={searchTerm}
+                delay={500}
                 onChange={onInputChange}
               />
             </Grid>
