@@ -5,30 +5,30 @@ export const routes = [
     path: "/",
     component: lazy(() => import("./pages/CustomerManagement")),
     sidebarName: 'Home',
-    version:"NavLinks",
+    version: "NavLinks",
     exact: true
   },
   {
     path: "/customer",
-    version:"Breadcrumbs-Single",
+    version: "Breadcrumbs-Single",
     component: lazy(() => import('./pages/CustomerOnboarding')),
     routes: [
       {
         path: "/customer/addCustomer",
         component: lazy(() => import('./pages/CustomerOnboarding/AddCustomer/AddCustomer')),
-        version:"Breadcrumbs-Single",
+        version: "Breadcrumbs-Single",
         exact: true
       },
       {
         path: "/customer/parkingLots",
         component: lazy(() => import("./pages/ParkingLot")),
-        version:"Breadcrumbs-Single",
+        version: "Breadcrumbs-Single",
         exact: true,
       }
     ]
   },
   {
-    version:"Breadcrumbs-Many",
+    version: "Breadcrumbs-Many",
     path: "/customer/parkingLots/addLot",
     component: lazy(() => import('./pages/ParkingLot/AddLot')),
     exact: false,
