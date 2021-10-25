@@ -36,10 +36,9 @@ export default function InnerTable(props:props) {
                 header={props.headCells}
                 isLoading={isFetching || isLoading}
                 isChildTable
-                enableRowSelection={false}
                 enableRowAction
                 getPages={fetchNextPage} 
-                rowActionOptions={[]}/>
+                />
         </div>
     );
 }
