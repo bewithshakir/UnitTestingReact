@@ -73,7 +73,6 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
     const handleCollapaseClick = (e: React.MouseEvent<HTMLButtonElement>, indexKey: any, row:any, key:any) => {
         e.stopPropagation();
         if(row[key]){ 
-            console.log(key);
             props.getId !== undefined && props.getId(row.customerId);
             if (indexKey === selectedIndexKey) {
                 setSelectedKey(null);
