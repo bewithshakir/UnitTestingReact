@@ -952,3 +952,214 @@ export function NavyBlueFuelIcon (props: React.SVGProps<SVGSVGElement>): JSX.Ele
     </svg>
   );
 }
+
+export function ParrotGreenFuelIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
+  return (
+    <svg width="28" height="28" viewBox="0 0 28 28" {...props}>
+      <defs>
+        <clipPath id="clip-path">
+          <circle id="Ellipse_226" data-name="Ellipse 226" cx="9" cy="9" r="9" transform="translate(0.165 0.083)" fill="#face07" />
+        </clipPath>
+      </defs>
+      <g id="Group_1807" data-name="Group 1807" transform="translate(-528 -1160)">
+        <rect id="Rectangle_2238" data-name="Rectangle 2238" width="28" height="28" transform="translate(528 1160)" fill="none" />
+        <g id="Group_1606" data-name="Group 1606" transform="translate(76 656)">
+          <circle id="Ellipse_225" data-name="Ellipse 225" cx="9" cy="9" r="9" transform="translate(457 509)" fill="#cad400" />
+          <g id="Mask_Group_5" data-name="Mask Group 5" transform="translate(456.835 508.918)" clipPath="url(#clip-path)">
+            <g id="Group_1601" data-name="Group 1601" transform="translate(-4.92 -4.163)">
+              <line id="Line_305" data-name="Line 305" y1="15.894" x2="15.894" fill="none" stroke="#595959" strokeWidth="0.5" />
+              <line id="Line_306" data-name="Line 306" y1="15.894" x2="15.894" transform="translate(2.271 2.271)" fill="none" stroke="#595959" strokeWidth="0.5" />
+              <line id="Line_307" data-name="Line 307" y1="15.894" x2="15.894" transform="translate(4.163 5.298)" fill="none" stroke="#595959" strokeWidth="0.5" />
+              <line id="Line_308" data-name="Line 308" y1="15.894" x2="15.894" transform="translate(6.055 7.947)" fill="none" stroke="#595959" strokeWidth="0.5" />
+              <line id="Line_309" data-name="Line 309" y1="16" x2="16" transform="translate(8.085 11.245)" fill="none" stroke="#595959" strokeWidth="0.5" />
+              <line id="Line_310" data-name="Line 310" y1="16" x2="16" transform="translate(8.085 15.245)" fill="none" stroke="#595959" strokeWidth="0.5" />
+            </g>
+          </g>
+          <g id="Mask_Group_6" data-name="Mask Group 6" transform="matrix(0.259, 0.966, -0.966, 0.259, 472.424, 506.819)" clipPath="url(#clip-path)">
+            <g id="Group_1666" data-name="Group 1666" transform="translate(-4.92 -4.163)">
+              <line id="Line_311" data-name="Line 311" y1="15.894" x2="15.894" fill="none" stroke="#595959" strokeWidth="0.5" />
+              <line id="Line_312" data-name="Line 312" y1="15.894" x2="15.894" transform="translate(2.271 2.271)" fill="none" stroke="#595959" strokeWidth="0.5" />
+              <line id="Line_313" data-name="Line 313" y1="15.894" x2="15.894" transform="translate(4.163 5.298)" fill="none" stroke="#595959" strokeWidth="0.5" />
+              <line id="Line_314" data-name="Line 314" y1="15.894" x2="15.894" transform="translate(6.055 7.947)" fill="none" stroke="#595959" strokeWidth="0.5" />
+              <line id="Line_315" data-name="Line 315" y1="16" x2="16" transform="translate(8.085 11.245)" fill="none" stroke="#595959" strokeWidth="0.5" />
+              <line id="Line_316" data-name="Line 316" y1="16" x2="16" transform="translate(8.085 15.245)" fill="none" stroke="#595959" strokeWidth="0.5" />
+            </g>
+          </g>
+        </g>
+      </g>
+    </svg>
+  );
+}
+
+export function PurpleFuelIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
+  return (
+    <svg width="28" height="28" viewBox="0 0 28 28" {...props}>
+      <defs>
+        <clipPath id="clip-path">
+          <circle id="Ellipse_218" data-name="Ellipse 218" cx="11" cy="11" r="11" transform="translate(-0.027 0.055)" fill="none" />
+        </clipPath>
+        <clipPath id="clip-path-2">
+          <circle id="Ellipse_231" data-name="Ellipse 231" cx="10" cy="10" r="10" transform="translate(-0.283 -0.201)" fill="none" />
+        </clipPath>
+      </defs>
+      <g id="Group_1812" data-name="Group 1812" transform="translate(-114 -1201)">
+        <rect id="Rectangle_2243" data-name="Rectangle 2243" width="28" height="28" transform="translate(114 1201)" fill="none" />
+        <g id="Group_1670" data-name="Group 1670" transform="translate(-26 698)">
+          <circle id="Ellipse_217" data-name="Ellipse 217" cx="9" cy="9" r="9" transform="translate(145 508)" fill="#751468" />
+          <g id="Mask_Group_1" data-name="Mask Group 1" transform="translate(143.027 505.945)" clipPath="url(#clip-path)">
+            <g id="Group_1597" data-name="Group 1597" transform="translate(-5.998 -5.093)">
+              <line id="Line_281" data-name="Line 281" y1="19.379" x2="19.379" fill="none" stroke="#fff" strokeWidth="0.5" />
+              <line id="Line_282" data-name="Line 282" y1="19.379" x2="19.379" transform="translate(2.768 2.768)" fill="none" stroke="#fff" strokeWidth="0.5" />
+              <line id="Line_283" data-name="Line 283" y1="19.379" x2="19.379" transform="translate(5.075 6.46)" fill="none" stroke="#fff" strokeWidth="0.5" />
+              <line id="Line_284" data-name="Line 284" y1="19.379" x2="19.379" transform="translate(7.382 9.689)" fill="none" stroke="#fff" strokeWidth="0.5" />
+              <line id="Line_285" data-name="Line 285" y1="20" x2="20" transform="translate(7.971 14.149)" fill="none" stroke="#fff" strokeWidth="0.5" />
+              <line id="Line_286" data-name="Line 286" y1="20" x2="20" transform="translate(8.971 18.149)" fill="none" stroke="#fff" strokeWidth="0.5" />
+            </g>
+          </g>
+          <g id="Mask_Group_10" data-name="Mask Group 10" transform="translate(162.717 526.799) rotate(180)" clipPath="url(#clip-path-2)">
+            <g id="Group_1671" data-name="Group 1671" transform="translate(-5.389 -4.568)">
+              <line id="Line_335" data-name="Line 335" y1="17.41" x2="17.41" fill="none" stroke="#fff" strokeWidth="0.5" />
+              <line id="Line_336" data-name="Line 336" y1="17.41" x2="17.41" transform="translate(2.487 2.487)" fill="none" stroke="#fff" strokeWidth="0.5" />
+              <line id="Line_337" data-name="Line 337" y1="17.41" x2="17.41" transform="translate(4.56 5.803)" fill="none" stroke="#fff" strokeWidth="0.5" />
+              <line id="Line_338" data-name="Line 338" y1="17.41" x2="17.41" transform="translate(6.633 8.705)" fill="none" stroke="#fff" strokeWidth="0.5" />
+              <line id="Line_339" data-name="Line 339" y1="17" x2="17" transform="translate(9.105 12.367)" fill="none" stroke="#fff" strokeWidth="0.5" />
+              <line id="Line_340" data-name="Line 340" y1="18" x2="17" transform="translate(9.105 16.367)" fill="none" stroke="#fff" strokeWidth="0.5" />
+            </g>
+          </g>
+        </g>
+      </g>
+    </svg>
+  );
+}
+
+export function BlueFuelIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
+  return (
+    <svg width="28" height="28" viewBox="0 0 28 28" {...props}>
+      <g id="Group_1811" data-name="Group 1811" transform="translate(-223 -1203)">
+        <rect id="Rectangle_2242" data-name="Rectangle 2242" width="28" height="28" transform="translate(223 1203)" fill="none" />
+        <g id="Group_1673" data-name="Group 1673" transform="translate(71 1088)">
+          <g id="Group_1672" data-name="Group 1672" transform="translate(12 -388)">
+            <circle id="Ellipse_217" data-name="Ellipse 217" cx="9" cy="9" r="9" transform="translate(145 508)" fill="#388fc2" />
+          </g>
+          <circle id="Ellipse_232" data-name="Ellipse 232" cx="1" cy="1" r="1" transform="translate(167 122)" fill="#fff" />
+          <circle id="Ellipse_242" data-name="Ellipse 242" cx="1" cy="1" r="1" transform="translate(163 122)" fill="#fff" />
+          <circle id="Ellipse_233" data-name="Ellipse 233" cx="1" cy="1" r="1" transform="translate(160 125)" fill="#fff" />
+          <circle id="Ellipse_234" data-name="Ellipse 234" cx="1" cy="1" r="1" transform="translate(159 129)" fill="#fff" />
+          <circle id="Ellipse_235" data-name="Ellipse 235" cx="1" cy="1" r="1" transform="translate(162 133)" fill="#fff" />
+          <circle id="Ellipse_236" data-name="Ellipse 236" cx="1" cy="1" r="1" transform="translate(166 134)" fill="#fff" />
+          <circle id="Ellipse_237" data-name="Ellipse 237" cx="1" cy="1" r="1" transform="translate(170 132)" fill="#fff" />
+          <circle id="Ellipse_239" data-name="Ellipse 239" cx="1" cy="1" r="1" transform="translate(163 129)" fill="#fff" />
+          <circle id="Ellipse_240" data-name="Ellipse 240" cx="1" cy="1" r="1" transform="translate(163 126)" fill="#fff" />
+          <circle id="Ellipse_241" data-name="Ellipse 241" cx="1" cy="1" r="1" transform="translate(166 130)" fill="#fff" />
+          <circle id="Ellipse_245" data-name="Ellipse 245" cx="1" cy="1" r="1" transform="translate(168 128)" fill="#fff" />
+          <circle id="Ellipse_243" data-name="Ellipse 243" cx="1" cy="1" r="1" transform="translate(166 125)" fill="#fff" />
+          <circle id="Ellipse_238" data-name="Ellipse 238" cx="1" cy="1" r="1" transform="translate(170 124)" fill="#fff" />
+          <circle id="Ellipse_244" data-name="Ellipse 244" cx="1" cy="1" r="1" transform="translate(171 128)" fill="#fff" />
+        </g>
+      </g>
+    </svg>
+  );
+}
+
+export function BrownFuelIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
+  return (
+    <svg width="28" height="28" viewBox="0 0 28 28" {...props}>
+      <defs>
+        <clipPath id="clip-path">
+          <circle id="Ellipse_246" data-name="Ellipse 246" cx="9" cy="9" r="9" transform="translate(0 0.083)" fill="none" />
+        </clipPath>
+      </defs>
+      <g id="Group_1810" data-name="Group 1810" transform="translate(-340 -1202)">
+        <rect id="Rectangle_2241" data-name="Rectangle 2241" width="28" height="28" transform="translate(340 1202)" fill="#fff" />
+        <g id="Group_1679" data-name="Group 1679" transform="translate(69.023 1087.023)">
+          <g id="Group_1674" data-name="Group 1674" transform="translate(119)">
+            <g id="Group_1672" data-name="Group 1672" transform="translate(12 -388)">
+              <circle id="Ellipse_217" data-name="Ellipse 217" cx="9" cy="9" r="9" transform="translate(145 508)" fill="#7c3e06" />
+            </g>
+          </g>
+          <g id="Mask_Group_11" data-name="Mask Group 11" transform="matrix(0.259, 0.966, -0.966, 0.259, 291.443, 117.956)" clipPath="url(#clip-path)">
+            <g id="Group_1675" data-name="Group 1675" transform="translate(-4.92 -4.163)">
+              <line id="Line_341" data-name="Line 341" y1="15.894" x2="15.894" fill="none" stroke="#fff" strokeWidth="0.5" />
+              <line id="Line_342" data-name="Line 342" y1="15.894" x2="15.894" transform="translate(2.271 2.271)" fill="none" stroke="#fff" strokeWidth="0.5" />
+              <line id="Line_343" data-name="Line 343" y1="15.894" x2="15.894" transform="translate(4.163 5.298)" fill="none" stroke="#fff" strokeWidth="0.5" />
+              <line id="Line_344" data-name="Line 344" y1="15.894" x2="15.894" transform="translate(6.055 7.947)" fill="none" stroke="#fff" strokeWidth="0.5" />
+              <line id="Line_345" data-name="Line 345" y1="16" x2="16" transform="translate(7.92 11.245)" fill="none" stroke="#fff" strokeWidth="0.5" />
+              <line id="Line_346" data-name="Line 346" y1="16" x2="16" transform="translate(7.92 15.245)" fill="none" stroke="#fff" strokeWidth="0.5" />
+            </g>
+          </g>
+        </g>
+      </g>
+    </svg>
+  );
+}
+
+export function OrangeFuelIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
+  return (
+    <svg width="28" height="28" viewBox="0 0 28 28" {...props}>
+      <defs>
+        <clipPath id="clip-path">
+          <circle id="Ellipse_248" data-name="Ellipse 248" cx="9" cy="9" r="9" transform="translate(0 0.083)" fill="none" />
+        </clipPath>
+      </defs>
+      <g id="Group_1809" data-name="Group 1809" transform="translate(-434 -1204)">
+        <rect id="Rectangle_2240" data-name="Rectangle 2240" width="28" height="28" transform="translate(434 1204)" fill="none" />
+        <g id="Group_1738" data-name="Group 1738" transform="translate(-3.319 0.728)">
+          <g id="Group_1676" data-name="Group 1676" transform="translate(285.047 1088)">
+            <g id="Group_1672" data-name="Group 1672" transform="translate(12 -388)">
+              <circle id="Ellipse_217" data-name="Ellipse 217" cx="9" cy="9" r="9" transform="translate(145 508)" fill="#f39600" />
+            </g>
+          </g>
+          <g id="Mask_Group_13" data-name="Mask Group 13" transform="translate(451.105 1204.214) rotate(45)" clipPath="url(#clip-path)">
+            <g id="Group_1678" data-name="Group 1678" transform="translate(-4.92 -4.163)">
+              <line id="Line_353" data-name="Line 353" y1="15.894" x2="15.894" transform="translate(0.707 0.707)" fill="none" stroke="#404040" strokeWidth="0.5" />
+              <line id="Line_354" data-name="Line 354" y1="15.894" x2="15.894" transform="translate(2.271 2.271)" fill="none" stroke="#404040" strokeWidth="0.5" />
+              <line id="Line_355" data-name="Line 355" y1="15.894" x2="15.894" transform="translate(4.163 5.298)" fill="none" stroke="#404040" strokeWidth="0.5" />
+              <line id="Line_356" data-name="Line 356" y1="15.894" x2="15.894" transform="translate(5.348 7.24)" fill="none" stroke="#404040" strokeWidth="0.5" />
+              <line id="Line_357" data-name="Line 357" y1="16" x2="16" transform="translate(7.213 10.538)" fill="none" stroke="#404040" strokeWidth="0.5" />
+              <line id="Line_365" data-name="Line 365" y1="16" x2="16" transform="translate(8.627 11.952)" fill="none" stroke="#404040" strokeWidth="0.5" />
+              <line id="Line_358" data-name="Line 358" y1="16" x2="16" transform="translate(7.92 15.245)" fill="none" stroke="#404040" strokeWidth="0.5" />
+            </g>
+          </g>
+        </g>
+      </g>
+    </svg>
+  );
+}
+
+export function AquaFuelIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
+  return (
+    <svg width="28" height="28" viewBox="0 0 28 28" {...props}>
+      <defs>
+        <clipPath id="clip-path">
+          <circle id="Ellipse_218" data-name="Ellipse 218" cx="9" cy="9" r="9" transform="translate(0 0.083)" fill="#face07" />
+        </clipPath>
+      </defs>
+      <g id="Group_1808" data-name="Group 1808" transform="translate(-528 -1205)">
+        <rect id="Rectangle_2239" data-name="Rectangle 2239" width="28" height="28" transform="translate(528 1205)" fill="none" />
+        <g id="Group_1681" data-name="Group 1681" transform="translate(387.728 701.728)">
+          <circle id="Ellipse_217" data-name="Ellipse 217" cx="9" cy="9" r="9" transform="translate(145 508)" fill="#8fd1e2" />
+          <g id="Mask_Group_1" data-name="Mask Group 1" transform="translate(145 507.917)" clipPath="url(#clip-path)">
+            <g id="Group_1597" data-name="Group 1597" transform="translate(-4.92 -4.163)">
+              <line id="Line_281" data-name="Line 281" y1="15.894" x2="15.894" fill="none" stroke="#595959" strokeWidth="0.5" />
+              <line id="Line_282" data-name="Line 282" y1="15.894" x2="15.894" transform="translate(2.271 2.271)" fill="none" stroke="#595959" strokeWidth="0.5" />
+              <line id="Line_283" data-name="Line 283" y1="15.894" x2="15.894" transform="translate(4.163 5.298)" fill="none" stroke="#595959" strokeWidth="0.5" />
+              <line id="Line_284" data-name="Line 284" y1="15.894" x2="15.894" transform="translate(6.055 7.947)" fill="none" stroke="#595959" strokeWidth="0.5" />
+              <line id="Line_285" data-name="Line 285" y1="16" x2="16" transform="translate(7.92 11.245)" fill="none" stroke="#595959" strokeWidth="0.5" />
+              <line id="Line_286" data-name="Line 286" y1="16" x2="16" transform="translate(7.92 15.245)" fill="none" stroke="#595959" strokeWidth="0.5" />
+            </g>
+          </g>
+          <g id="Mask_Group_15" data-name="Mask Group 15" transform="translate(166.786 517.058) rotate(135)" clipPath="url(#clip-path)">
+            <g id="Group_1682" data-name="Group 1682" transform="translate(-4.92 -4.163)">
+              <line id="Line_366" data-name="Line 366" y1="15.894" x2="15.894" fill="none" stroke="#595959" strokeWidth="0.5" />
+              <line id="Line_367" data-name="Line 367" y1="15.894" x2="15.894" transform="translate(2.271 2.271)" fill="none" stroke="#595959" strokeWidth="0.5" />
+              <line id="Line_368" data-name="Line 368" y1="15.894" x2="15.894" transform="translate(4.163 5.298)" fill="none" stroke="#595959" strokeWidth="0.5" />
+              <line id="Line_369" data-name="Line 369" y1="15.894" x2="15.894" transform="translate(6.055 7.947)" fill="none" stroke="#595959" strokeWidth="0.5" />
+              <line id="Line_370" data-name="Line 370" y1="16" x2="16" transform="translate(7.92 11.245)" fill="none" stroke="#595959" strokeWidth="0.5" />
+              <line id="Line_371" data-name="Line 371" y1="16" x2="16" transform="translate(7.92 15.245)" fill="none" stroke="#595959" strokeWidth="0.5" />
+            </g>
+          </g>
+        </g>
+      </g>
+    </svg>
+  );
+}
