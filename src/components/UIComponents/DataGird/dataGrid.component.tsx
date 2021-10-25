@@ -11,6 +11,7 @@ import { tableImagesSX, tableAvatarSX, tableImagesIconListSX, tableIconsSX, tabl
 import NoDataFound from './Nodata';
 
 interface GridBodyProps {
+    primaryKey:string,
     rows?: any;
     order: string | any;
     orderBy: string;
@@ -99,8 +100,9 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
 
     const handleCollapaseClick = (e: React.MouseEvent<HTMLButtonElement>, indexKey: any, row:any, key:any) => {
         e.stopPropagation();
+        const { primaryKey } = props;
         if(row[key]){ 
-            props.getId !== undefined && props.getId(row.customerId);
+            props.getId !== undefined && props.getId(row[primaryKey]);
             if (indexKey === selectedIndexKey) {
                 setSelectedKey(null);
             } else {
@@ -141,10 +143,11 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
     };
     const getRowsData = () => {
         const keys = getKeys();
+        const { primaryKey } = props;
         return (
             stableSort(props.rows, getComparator(props.order, props.orderBy))
                 .map((row: any, indexKey: any) => {
-                    const isItemSelected = isSelected(row.customerId);
+                    const isItemSelected = isSelected(row[primaryKey]);
                     return (<React.Fragment key={indexKey}>
                         <TableRow key={indexKey} sx={{
                             cursor: "pointer"
@@ -158,9 +161,9 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
                                         onClick={() => props.isChildTable ? {} : openDrawer(row)}
                                     >
                                         <Checkbox
-                                            name={`checkbox${row.customerId}`}
+                                            name={`checkbox${row[primaryKey]}`}
                                             checked={isItemSelected || false}
-                                            onChange={() => props.handleCheckChange && props.handleCheckChange(row.customerId)}
+                                            onChange={() => props.handleCheckChange && props.handleCheckChange(row[primaryKey])}
                                             onClick={e => e.stopPropagation()}
                                         />
                                     </TableCell>

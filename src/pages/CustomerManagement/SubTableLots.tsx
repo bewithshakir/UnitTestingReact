@@ -12,6 +12,7 @@ interface props {
     isLoading?: boolean,
     getPages?: any,
     headCells: headerObj[],
+    primaryKey: string,
 }
 
 export default function InnerTable(props:props) {
@@ -30,6 +31,7 @@ export default function InnerTable(props:props) {
     return (
         <div className='sub-Table-Container'>
         <GridComponent
+                primaryKey={props.primaryKey}
                 rows={lotDetails}
                 header={props.headCells}
                 isLoading={isFetching || isLoading}

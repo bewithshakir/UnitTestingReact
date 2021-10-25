@@ -17,6 +17,7 @@ export interface headerObj {
 }
 type selectedRow = string[];
 interface GridComponentProps {
+    primaryKey: string,
     width?: string,
     height?: string,
     rows: any[],

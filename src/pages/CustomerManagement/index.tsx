@@ -194,6 +194,7 @@ const Content: React.FC<ContentProps> = () => {
         <Grid container pt={2.5} display="flex" flexGrow={1}>
 
           <GridComponent
+            primaryKey='customerId'
             rows={customerList}
             header={headCells}
             isLoading={isFetching || isLoading}
@@ -205,7 +206,7 @@ const Content: React.FC<ContentProps> = () => {
             openDrawer={openDrawer}
             searchTerm={searchTerm}
             getId={(id:string) => setCustomerId(id)}
-            InnerTableComponent={<Table id={customerId} headCells={headCellsLots}/>}
+            InnerTableComponent={<Table primaryKey='deliveryLocationId' id={customerId} headCells={headCellsLots}/>}
             noDataMsg='Add Customer by clicking on the " Add Customer" button.'
           />
 
