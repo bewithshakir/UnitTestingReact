@@ -118,13 +118,10 @@ const Content: React.FC<ContentProps> = () => {
 
   const handleRowAction = (action: DataGridActionsMenuOption) => {
     switch (action.action) {
-      case ACTION_TYPES.RAISE_REQ:
-        // perform action 
-        break;
-      case ACTION_TYPES.DRIVER_DETAILS:
+      case ACTION_TYPES.EDIT:
         // perform action
         break;
-      case ACTION_TYPES.OTHER_DETAIL:
+      case ACTION_TYPES.DELETE:
         // perform action
         break;
       case ACTION_TYPES.CONTACT_DETAILS:
@@ -205,8 +202,8 @@ const Content: React.FC<ContentProps> = () => {
             rowActionOptions={rowActionOptions}
             openDrawer={openDrawer}
             searchTerm={searchTerm}
-            getId={(id:string) => setCustomerId(id)}
-            InnerTableComponent={<Table primaryKey='deliveryLocationId' id={customerId} headCells={headCellsLots}/>}
+            getId={(id: string) => setCustomerId(id)}
+            InnerTableComponent={<Table primaryKey='deliveryLocationId' id={customerId} headCells={headCellsLots} />}
             noDataMsg='Add Customer by clicking on the " Add Customer" button.'
           />
 

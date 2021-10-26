@@ -78,7 +78,7 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
     }
     setSortOrder(sortOrder);
   };
-  const onInputChange = (value:string) => {
+  const onInputChange = (value: string) => {
     setSearchTerm(value);
   };
   useEffect(() => {
@@ -112,16 +112,10 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
 
   const handleRowAction = (action: DataGridActionsMenuOption) => {
     switch (action.action) {
-      case ACTION_TYPES.RAISE_REQ:
+      case ACTION_TYPES.EDIT:
         // perform action 
         break;
-      case ACTION_TYPES.DRIVER_DETAILS:
-        // perform action
-        break;
-      case ACTION_TYPES.OTHER_DETAIL:
-        // perform action
-        break;
-      case ACTION_TYPES.CONTACT_DETAILS:
+      case ACTION_TYPES.DELETE:
         // perform action
         break;
       default: return;

@@ -139,10 +139,10 @@ export const DemoComponents: React.FC = () => {
                     <DataGridActionsMenu
                         options={[
                             {
-                                label: t("menus.data-grid-actions.raise a request"),
+                                label: t("menus.data-grid-actions.edit"),
                             },
                             {
-                                label: t("menus.data-grid-actions.fee & driver details"),
+                                label: t("menus.data-grid-actions.delete"),
                             },
                             {
                                 label: t("menus.data-grid-actions.other details"),
@@ -217,18 +217,18 @@ export const DemoComponents: React.FC = () => {
             <div className="App" style={{ 'marginLeft': '20px' }}>
                 {/* temporary styles */}
                 <div className={'app__main'}>
-                    
+
                     <Box className={'date_box'}>
-                    <Box sx={boxSX}>
-                        {form.time}
-                        <TimePicker
-                            label='Start time'
-                            id="time-picker"
-                            name="time"
-                            value={form.time}
-                            placeholder="select time"
-                            onChange={onTimeChange} />
-                    </Box>
+                        <Box sx={boxSX}>
+                            {form.time}
+                            <TimePicker
+                                label='Start time'
+                                id="time-picker"
+                                name="time"
+                                value={form.time}
+                                placeholder="select time"
+                                onChange={onTimeChange} />
+                        </Box>
 
                         <DatePickerInput
                             label="DATE RANGE"
@@ -292,7 +292,7 @@ export const DemoComponents: React.FC = () => {
                             name='searchTerm'
                             value={form.searchTerm}
                             delay={200}
-                            onChange={(z:string) => setForm(x => ({ ...x, searchTerm: z }))}
+                            onChange={(z: string) => setForm(x => ({ ...x, searchTerm: z }))}
                         />
                     </Box>
 

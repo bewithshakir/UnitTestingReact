@@ -40,8 +40,8 @@
       "delete": "Delete"
     },
     "data-grid-actions": {
-      "raise a request": "Raise a request",
-      "fee & driver details": "Fee & Driver details",
+      "edit": "Edit",
+      "delete": "Delete",
       "other details": "Other details",
       "contact details": "Contact details"
     },
