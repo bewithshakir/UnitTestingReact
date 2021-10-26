@@ -105,9 +105,9 @@ const AddFuelTax = memo(() => {
 
                                 <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
                                     <Select
-                                        id='paymentType'
-                                        name='paymentType'
-                                        label='PAYMENT TYPE'
+                                        id='fuelType'
+                                        name='fuelType'
+                                        label='FUEL TYPE'
                                         placeholder='Choose'
                                         items={fuelTypes}
                                         onChange={() => alert("hi")}
