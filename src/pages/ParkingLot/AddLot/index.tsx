@@ -12,9 +12,10 @@ import Select from '../../../components/UIComponents/Select/SingleSelect';
 import MultiSelect from '../../../components/UIComponents/Select/MultiSelect';
 import ToastMessage from '../../../components/UIComponents/ToastMessage/ToastMessage.component';
 import { getCountryCode } from '../../../navigation/utils';
-import { AddParkingLotForm, addLotFormInitialValues, lotContact, orderSchDel } from '../../../models/ParkingLotModel';
+// orderSchDel
+import { AddParkingLotForm, addLotFormInitialValues, lotContact } from '../../../models/ParkingLotModel';
 import AddParkingLotValidationSchema from './validation';
-import { timeZones, productDelFreq } from './queries';
+import { timeZones, productDelFreq, useCreateLot, useGetContactTypes } from './queries';
 import DiscardChangesDialog from '../../../components/UIComponents/ConfirmationDialog/DiscardChangesDialog.component';
 import AutocompleteInput from '../../../components/UIComponents/GoogleAddressComponent/GoogleAutoCompleteAddress';
 import { PlusIcon } from '../../../assets/icons';
@@ -49,39 +50,41 @@ const formStatusProps: IFormStatusProps = {
 function AddLot(): React.ReactElement {
 
     const { t } = useTranslation();
-    const [formStatus, setFormStatus] = useState<IFormStatus>({
-        message: '',
-        type: '',
-    });
-
-    // const createNewCustomer = (form: AddParkingLotForm) => {
-
-    // }
-
-    function handleGoogleAddressChange(addressObj: any) {
-        formik.setFieldValue('addressLine1', addressObj.addressLine1);
-        formik.setFieldValue('addressLine2', addressObj.addressLine2);
-        formik.setFieldValue('city', addressObj.city);
-        formik.setFieldValue('state', addressObj.state);
-        formik.setFieldValue('postalCode', addressObj.postalCode);
-    }
-
-    const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
-    setVersion("Breadcrumbs-Many");
-    const formik = useFormik({
-        initialValues: addLotFormInitialValues,
-        validationSchema: AddParkingLotValidationSchema,
-        onSubmit: (values) => {
-            // createNewCustomer(values);
-        },
-        enableReinitialize: true,
-    });
-
-    const [open, setOpen] = React.useState(false);
-
     const history = useHistory();
-
     const isFormFieldChange = () => formik.dirty;
+    const { mutate: addNewLot, isSuccess, isError } = useCreateLot();
+    const { data: contactTypeList } = useGetContactTypes();
+    const [primaryContactType, setPrimaryContactType] = useState('');
+    const [secondaryContactType, setSecondaryContactType] = useState('');
+    const [formStatus, setFormStatus] = useState<IFormStatus>({ message: '', type: '' });
+    const [open, setOpen] = React.useState(false);
+    const [apiResposneState, setAPIResponse] = useState(false);
+
+    useEffect(() => {
+        if (isSuccess) {
+            setAPIResponse(true);
+            setFormStatus(formStatusProps.success);
+        }
+        if (isError) {
+            setAPIResponse(true);
+            setFormStatus(formStatusProps.error);
+        }
+        setTimeout(() => {
+            setAPIResponse(false);
+        }, 6000);
+        formik.resetForm({});
+    }, [isSuccess, isError]);
+
+    useEffect(() => {
+        if (contactTypeList?.data.length) {
+            console.warn("contact types-->", contactTypeList.data.find((contactType:any)=> contactType.locationContactNm.toLowerCase() === 'secondary'));
+            const primaryContactObj = contactTypeList.data.find((contactType:any)=> contactType.locationContactNm.toLowerCase() === 'primary');
+            const secContactObj = contactTypeList.data.find((contactType:any)=> contactType.locationContactNm.toLowerCase() === 'secondary');
+            setPrimaryContactType(primaryContactObj?.locationContactCd);
+            setSecondaryContactType(secContactObj?.locationContactCd);
+            
+        }
+    }, [contactTypeList]);
 
     const onClickBack = () => {
         if (isFormFieldChange()) {
@@ -90,23 +93,6 @@ function AddLot(): React.ReactElement {
             history.push('/');
         }
     };
-
-    const [apiResposneState, setAPIResponse] = useState(false);
-    // useEffect(() => {
-    //     if (isSuccess) {
-    //         setAPIResponse(true);
-    //         setFormStatus(formStatusProps.success);
-    //     }
-    //     if (isError) {
-    //         setAPIResponse(true);
-    //         setFormStatus(formStatusProps.error);
-    //     }
-    //     setTimeout(() => {
-    //         setAPIResponse(false);
-    //     }, 6000);
-    //     formik.resetForm({});
-    // }, [isSuccess, isError]);
-
 
     const handleModelToggle = () => {
         setOpen(prev => !prev);
@@ -117,6 +103,106 @@ function AddLot(): React.ReactElement {
         history.push('/');
     };
 
+    const createAddLotPayload = (form: AddParkingLotForm) => {
+
+        // {
+        //     "customer_id": "fc2ffe5e-7ef8-46b8-95c2-cb82cf77ed90",
+        //     "lot_name": "LOT006",
+        //     "lot_id": "1234567890",
+        //     "jurisdiction_id": "ABCDEFGHIJ116",
+        //     "address_1": "Houston Court, ,Houston Ct, , ",
+        //     "address_2": "",
+        //     "address_3": "",
+        //     "city": "Saratoga",
+        //     "state": "CA",
+        //     "postal_code": "95070",
+        //     "country": "United States",
+        //     "timezone_cd": "CDT",
+        //     "location_contact": [
+        //         {
+        //             "location_contact_type_cd": "6e1df17a-29ba-4312-a55e-6b34e47fbb4d",
+        //             "contact_first_name": "Aninda",
+        //             "contact_last_name": "Kar",
+        //             "contact_email": "aninda.kar@shell.com",
+        //             "contact_phone": "1234567890"
+        //         },
+        //         {
+        //             "location_contact_type_cd": "ca9fcb3a-abc1-4991-a4fd-41d0ee3f47ad",
+        //             "contact_first_name": "Karthick",
+        //             "contact_last_name": "Krishnan",
+        //             "contact_email": "karthick.krishnan@shell.com",
+        //             "contact_phone": "1234567890"
+        //         },
+        //         {
+        //             "location_contact_type_cd": "ca9fcb3a-abc1-4991-a4fd-41d0ee3f47ad",
+        //             "contact_first_name": "Karthick",
+        //             "contact_last_name": "Krishnan",
+        //             "contact_email": "karthick.krishnan@shell.com",
+        //             "contact_phone": "1234567890"
+        //         }
+        //     ]
+        // }
+
+        const apiPayload = {
+            customer_id: "fc2ffe5e-7ef8-46b8-95c2-cb82cf77ed90",
+            lot_name: form.lotName,
+            lot_id: form.lotId,
+            jurisdiction_id: form.jurisdictionId,
+            address_1: form.addressLine1,
+            address_2: form.addressLine2,
+            address_3:'',
+            city: form.city,
+            state: form.state,
+            postal_code: form.postalCode,
+            timezone_cd: form.timeZone.value,
+            country: form.country,
+            location_contact: form.locationContact.map((contactObj: any, index) => ({
+                location_contact_type_cd: index === 0? primaryContactType:secondaryContactType,
+                contact_first_name: contactObj.firstName,
+                contact_last_name: contactObj.lastName,
+                contact_email: contactObj.email,
+                contact_phone: contactObj.phoneNumber
+            })),
+            county: form.county, 
+            // not in actual payload
+            // productDelFreq: form.productDelFreq.value,
+            // orderScheduleDel: form.orderScheduleDel.map((orderSchDelObj: any) => ({
+            //     fromDate: orderSchDelObj.fromDate,
+            //     toDate: orderSchDelObj.toDate,
+            //     startTime: orderSchDelObj.startTime,
+            //     endTime: orderSchDelObj.endTime,
+            //     productDelDays: orderSchDelObj.productDelDays,
+            // }))
+        };
+        return apiPayload;
+    };
+
+    const createNewLot = (form: AddParkingLotForm) => {
+        try {
+            addNewLot(createAddLotPayload(form));
+        } catch (error) {
+            setFormStatus(formStatusProps.error);
+        }
+    };
+
+    function handleGoogleAddressChange(addressObj: any) {
+        formik.setFieldValue('addressLine1', addressObj.addressLine1);
+        formik.setFieldValue('addressLine2', addressObj.addressLine2);
+        formik.setFieldValue('city', addressObj.city);
+        formik.setFieldValue('state', addressObj.state);
+        formik.setFieldValue('postalCode', addressObj.postalCode);
+    }
+
+    // const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
+    // setVersion("Breadcrumbs-Many");
+    const formik = useFormik({
+        initialValues: addLotFormInitialValues,
+        validationSchema: AddParkingLotValidationSchema,
+        onSubmit: (values) => {
+            createNewLot(values);
+        },
+        enableReinitialize: true,
+    });
 
     return (
         // <div style={{ display: "block", marginLeft:"80px" }}>{"Added lot"}</div>
@@ -294,13 +380,13 @@ function AddLot(): React.ReactElement {
                                         Order Schedule Delivery info (Max 10)
                                     </Typography>
                                 </Grid>
-                                <FieldArray
+                                {/* <FieldArray
                                     name="orderScheduleDel"
                                     render={(arrayHelpers) => (
                                         <React.Fragment>
-                                            {formik.values.orderScheduleDel.map((orderScheduleList, index) => (
+                                            {formik.values.orderScheduleDel.map((index) => (
                                                 <Grid container key={index}>
-                                        
+
                                                     <Grid item md={3} pl={2.5}>
                                                         <DatePickerInput
                                                             type="single-date"
@@ -345,7 +431,7 @@ function AddLot(): React.ReactElement {
                                                             }
                                                         />
                                                     </Grid>
-                                                    
+
                                                     <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
                                                         <MultiSelect
                                                             id={`orderScheduleDel[${index}].productDelDays`}
@@ -355,7 +441,7 @@ function AddLot(): React.ReactElement {
                                                             name={`orderScheduleDel[${index}].productDelDays`}
                                                             value={formik.values.orderScheduleDel[index].productDelDays}
                                                             onChange={formik.setFieldValue}
-                                                            onBlur={() => { formik.setFieldTouched(`orderScheduleDel[${index}].productDelDays`); formik.validateField(`orderScheduleDel[${index}].productDelDays`);}}
+                                                            onBlur={() => { formik.setFieldTouched(`orderScheduleDel[${index}].productDelDays`); formik.validateField(`orderScheduleDel[${index}].productDelDays`); }}
                                                             // helperText={
                                                             //     formik?.errors?.orderScheduleDel && formik?.touched?.orderScheduleDel &&
                                                             //         (formik.touched?.orderScheduleDel?.[index]?.productDelDays && ((formik.errors?.orderScheduleDel?.[index] as orderSchDel)?.productDelDays))
@@ -367,7 +453,7 @@ function AddLot(): React.ReactElement {
                                                                     (formik.touched?.orderScheduleDel?.[index]?.productDelDays && ((formik.errors?.orderScheduleDel?.[index] as orderSchDel)?.productDelDays))
                                                                     ? true : false
                                                             }
-                                                            
+
                                                         />
                                                     </Grid>
 
@@ -389,8 +475,8 @@ function AddLot(): React.ReactElement {
                                                                     (formik.touched?.orderScheduleDel?.[index]?.startTime && ((formik.errors?.orderScheduleDel?.[index] as orderSchDel)?.startTime))
                                                                     ? true : false
                                                             }
-                                                            // {...formik.getFieldProps(`orderScheduleDel[${index}].startTime`)}
-                                                             />
+                                                        // {...formik.getFieldProps(`orderScheduleDel[${index}].startTime`)}
+                                                        />
 
                                                     </Grid>
                                                     <Grid item md={3} pl={2.5} pr={2.5} pb={2.5}>
@@ -411,11 +497,11 @@ function AddLot(): React.ReactElement {
                                                                     (formik.touched?.orderScheduleDel?.[index]?.endTime && ((formik.errors?.orderScheduleDel?.[index] as orderSchDel)?.endTime))
                                                                     ? true : false
                                                             }
-                                                            // {...formik.getFieldProps(`orderScheduleDel[${index}].endTime`)}
-                                                             />
+                                                        // {...formik.getFieldProps(`orderScheduleDel[${index}].endTime`)}
+                                                        />
 
                                                     </Grid>
-                                                    
+
                                                 </Grid>
                                             ))}
                                             <Grid item md={12} mt={2} mb={4}>
@@ -436,7 +522,7 @@ function AddLot(): React.ReactElement {
                                             </Grid>
                                         </React.Fragment>
                                     )}
-                                />
+                                /> */}
                                 <FieldArray
                                     name="locationContact"
                                     render={(arrayHelpers) => (
@@ -528,6 +614,7 @@ function AddLot(): React.ReactElement {
                                                                     ? true : false
                                                             }
                                                             description=''
+                                                            required
                                                             {...formik.getFieldProps(`locationContact[${index}].phoneNumber`)}
                                                         />
                                                     </Grid>
@@ -573,7 +660,7 @@ function AddLot(): React.ReactElement {
                                             {t("buttons.save")}
                                         </Button>
                                     </Box>
-                                    {/* <ToastMessage isOpen={apiResposneState} messageType={formStatus.type} onClose={() => { return ''; }} message={formStatus.message} /> */}
+                                    <ToastMessage isOpen={apiResposneState} messageType={formStatus.type} onClose={() => { return ''; }} message={formStatus.message} />
                                 </Grid>
                             </Grid>
                         </form>

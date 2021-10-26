@@ -5,22 +5,20 @@ const AddParkingLotValidationSchema = Yup.object().shape({
         .min(2, 'Too Short!')
         .max(50, 'Too Long!')
         .required('Required'),
-    lotId: Yup.string().min(10, 'Too Short!')
-    .max(10, 'Too Long!').matches(/^[0-9]{8}$/, 'Invalid Lot Id.').required('Required'),
+    lotId: Yup.string().max(10, 'Lot Id should have maximum of 10 digits').matches(/^[0-9]{10}$/, 'Invalid Lot Id').required('Required'),
     addressLine1: Yup.string().required('Required'),
     addressLine2: Yup.string().required('Required'),
     city: Yup.string().required('Required'),
-    state: Yup.string().required('Required'),
-    county: Yup.string().required('Required'),
-    country:  Yup.string().required('Required'),
+    state: Yup.string().required('Required'), 
+    county: Yup.string().required('Required'), 
+    country:  Yup.string().required('Required'), 
     postalCode: Yup.string().matches(/^[0-9]{1,9}$/, 'Invalid postal code.').required('Required'),
     jurisdictionId: Yup.string()
     .min(13, 'Too Short!')
     .max(13, 'Too Long!')
     .required('Required'),
-    productDelFreq: Yup.object().shape({ label: Yup.string().required('Required'), value: Yup.string().required('Required') }).required('Required'),
-    timeZone: Yup.object().shape({ label: Yup.string().required('Required'), value: Yup.string().required('Required') }).required('Required'),
-    endDate: Yup.object().required('Required'),
+    productDelFreq: Yup.object().shape({ label: Yup.string().required('Required'), value: Yup.string().required('Required') }),
+    timeZone: Yup.object().shape({ label: Yup.string().required('Required'), value: Yup.string().required('Required') }),
     locationContact: Yup.array()
         .of(
             Yup.object().shape({
@@ -32,16 +30,16 @@ const AddParkingLotValidationSchema = Yup.object().shape({
         )
         .required('Must have emergency contact') 
         .min(1, 'Minimum of 1 emergency contact'),
-    orderScheduleDel: Yup.array()
-        .of(
-            Yup.object().shape({
-                fromDate: Yup.object().required('Required'),
-                toDate: Yup.object().required('Required'),
-                startTime: Yup.string().required('Required'),
-                endTime: Yup.string().required('Required'),
-                productDelDays: Yup.object().shape({ label: Yup.string().required('Required'), value: Yup.string().required('Required') })
-            })
-        )
+    // orderScheduleDel: Yup.array()
+    //     .of(
+    //         Yup.object().shape({
+    //             fromDate: Yup.object().required('Required'),
+    //             toDate: Yup.object().required('Required'),
+    //             startTime: Yup.string().required('Required'),
+    //             endTime: Yup.string().required('Required'),
+    //             productDelDays: Yup.object().shape({ label: Yup.string().required('Required'), value: Yup.string().required('Required') })
+    //         })
+    //     )
         // .required('Must have cp contact') 
         // .min(1, 'Minimum of 1 cp contact'),
 });

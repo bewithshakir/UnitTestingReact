@@ -72,13 +72,13 @@ export interface lotContact {
     phoneNumber: string,
 }
 
-export interface orderSchDel {
-    fromDate: moment.Moment| string | null,
-    toDate: moment.Moment| string | null,
-    startTime: string,
-    endTime: string,
-    productDelDays: Array<mutiSelectItem>
-}
+// export interface orderSchDel {
+//     fromDate: moment.Moment| string | null,
+//     toDate: moment.Moment| string | null,
+//     startTime: string,
+//     endTime: string,
+//     productDelDays: Array<mutiSelectItem>
+// }
 
 export interface AddParkingLotForm {
     lotName:string;
@@ -93,7 +93,7 @@ export interface AddParkingLotForm {
     country: string;
     jurisdictionId: string;
     productDelFreq: SelectProps;
-    orderScheduleDel: orderSchDel[];
+    // orderScheduleDel: orderSchDel[];
     locationContact: lotContact[];
 }
 
@@ -110,13 +110,13 @@ export const addLotFormInitialValues = {
         country : '',
         jurisdictionId : '',
         productDelFreq : { label: '', value: '' },
-        orderScheduleDel : [{
-            fromDate: '',
-            toDate: '',
-            startTime: '',
-            endTime: '',
-            productDelDays: []
-        }],
+        // orderScheduleDel : [{
+        //     fromDate: '',
+        //     toDate: '',
+        //     startTime: '',
+        //     endTime: '',
+        //     productDelDays: []
+        // }],
         locationContact : [{
             firstName: '',
             lastName: '',
@@ -138,7 +138,7 @@ export default class ParkingLotModel {
     country: string;
     jurisdictionId: string;
     productDelFreq: SelectProps;
-    orderScheduleDel: orderSchDel[];
+    // orderScheduleDel: orderSchDel[];
     locationContact: lotContact[];
 
 
@@ -162,13 +162,13 @@ export default class ParkingLotModel {
         this.country = '';
         this.jurisdictionId = '';
         this.productDelFreq = { label: '', value: '' };
-        this.orderScheduleDel = [{
-            fromDate: '',
-            toDate: '',
-            startTime: '',
-            endTime: '',
-            productDelDays: []
-        }];
+        // this.orderScheduleDel = [{
+        //     fromDate: '',
+        //     toDate: '',
+        //     startTime: '',
+        //     endTime: '',
+        //     productDelDays: []
+        // }];
         this.locationContact = [{
             firstName: '',
             lastName: '',

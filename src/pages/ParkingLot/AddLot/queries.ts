@@ -15,6 +15,26 @@ import axios from "../../../infrastructure/ApiHelper";
 //     return useQuery(["getTimeZone"], () => getTimeZoneFromAPI());
 // };
 
+
+const getContactTypes = async () => {
+    const options: AxiosRequestConfig = {
+        method: 'get',
+        url: '/api/customer-service/contact-type'
+    };
+    const { data } = await axios(options);
+    return data;
+};
+
+const createLot = async (payload: any) => {
+    const options: AxiosRequestConfig = {
+        method: 'post',
+        url: '/api/customer-service/lot',
+        data: payload,
+    };
+    const { data } = await axios(options);
+    return data;
+};
+
 export const timeZones = [
     { label: 'UTC (Coordinated Universal Time  -  GMT)', value: 'UTC' },
     { label: 'HST (Hawaii Standard Time  -  GMT-10:00)', value: 'HST' },
@@ -35,3 +55,10 @@ export const productDelFreq = [
     { label: 'Bi-Weekly', value: 'bi-weekly' },
 ];
 
+export const useGetContactTypes = () => {
+    return useQuery(["getContactTypes"], () => getContactTypes());
+};
+
+export const useCreateLot = () => {
+    return useMutation((payload: any) => createLot(payload));
+};
