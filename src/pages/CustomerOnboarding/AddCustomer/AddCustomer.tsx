@@ -12,13 +12,14 @@ import Input from '../../../components/UIComponents/Input/Input';
 import Select from '../../../components/UIComponents/Select/SingleSelect';
 import ToastMessage from '../../../components/UIComponents/ToastMessage/ToastMessage.component';
 import { getCountryCode } from '../../../navigation/utils';
-import "./AddCustomer.style.scss";
 import CustomerModel, { AddCustomerForm, EmergencyContact } from '../../../models/CustomerModel';
 import AddCustomerValidationSchema from './validation';
 import { useCreateCustomer, useGetFrequencies, useGetPaymentTypes } from './queries';
 import DiscardChangesDialog from '../../../components/UIComponents/ConfirmationDialog/DiscardChangesDialog.component';
 import AutocompleteInput from '../../../components/UIComponents/GoogleAddressComponent/GoogleAutoCompleteAddress';
 import axios from 'axios';
+import { EditIcon } from '../../../assets/icons';
+import "./AddCustomer.style.scss";
 
 const initialValues = new CustomerModel();
 
@@ -31,7 +32,6 @@ function getTokenApplicable(Obj: any) {
     });
     return temp;
 }
-
 interface IFormStatus {
     message: string
     type: string
@@ -43,7 +43,7 @@ interface IFormStatusProps {
 const formStatusProps: IFormStatusProps = {
     editsuccess: {
         message: 'Data updated successfully',
-        type: 'EditSuccess',
+        type: 'Success',
     },
     success: {
         message: 'Signed up successfully.',
@@ -62,12 +62,10 @@ const formStatusProps: IFormStatusProps = {
 const AddCustomer: React.FC = () => {
     const location = useLocation();
     const history = useHistory();
-    
-    
+
     useEffect(() => {
-        const selectedCustomerId = location.state; 
-        console.log(selectedCustomerId);
-        if(selectedCustomerId) {
+        const selectedCustomerId = location.pathname.split("/").pop(); 
+        if(selectedCustomerId != "addCustomer") {
             getDataForSelectedCustomer("" + selectedCustomerId);
             setDisabled(true);
         } else {
@@ -96,9 +94,16 @@ const AddCustomer: React.FC = () => {
         return TempData;
     };
 
+    const getCheckBoxData = (data: any) => {
+        const TempData: any = [];
+        data.map((obj: any) => {
+            TempData.push(obj.tokenApplicabilityOptionNm);
+        });
+        return TempData;
+    };
+
     //to populate all the data in the form fields
     const populateDataInAllFields = (dataToPopulate: any) => {
-        console.log(dataToPopulate.customer.PaymentType.paymentTypeNm + "  ::  " + dataToPopulate.customer.InvoiceFrequency.invoiceFrequencyNm );
         formik.setFieldValue('customerName', dataToPopulate.customer.companyNm);
         formik.setFieldValue('customerId', dataToPopulate.customer.customerInputId);
         formik.setFieldValue('addressLine1', dataToPopulate.customer.addressLine1);
@@ -110,17 +115,37 @@ const AddCustomer: React.FC = () => {
         formik.setFieldValue('lastName', dataToPopulate.customer.contactLastNm);
         formik.setFieldValue('email', dataToPopulate.customer.contactEmailId);
         formik.setFieldValue('phoneNumber', dataToPopulate.customer.contactPhoneNo);
-        formik.setFieldValue("paymentType", dataToPopulate.customer.PaymentType.paymentTypeNm);
-        formik.setFieldValue("invoiceFrequency", dataToPopulate.customer.invoiceFrequencyId);
+        formik.setFieldValue("paymentType", { label: '' + dataToPopulate.customer.PaymentType.paymentTypeNm, value: '' + dataToPopulate.customer.PaymentType.paymentTypeId});
+        formik.setFieldValue("invoiceFrequency", { label: '' + dataToPopulate.customer.InvoiceFrequency.invoiceFrequencyNm, value: '' + dataToPopulate.customer.InvoiceFrequency.invoiceFrequencyId });
         formik.setFieldValue("firstSettlementDt", dataToPopulate.customer.firstSettlementDt);
         formik.setFieldValue("paymentTerm", dataToPopulate.customer.paymentTerm);
         const emergenyContactList = getEmergencyContacts(dataToPopulate.customerContact);
         const APContactList = getAPContacts(dataToPopulate.customerContact);
-              console.log(emergenyContactList);
-              console.log(APContactList);
+        const checkBoxData = getCheckBoxData(dataToPopulate.tokenApplicability);
+        emergenyContactList.map((obj: any, index: number) => {
+            formik.setFieldValue(`emergencyContact[${index}].firstName`, obj.contactFirstNm);
+            formik.setFieldValue(`emergencyContact[${index}].lastName`, obj.contactLastNm);
+            formik.setFieldValue(`emergencyContact[${index}].email`, obj.contactEmailId);
+            formik.setFieldValue(`emergencyContact[${index}].phoneNumber`, obj.contactPhoneNo);
+        });
+        APContactList.map((obj: any, index: number) => {
+            formik.setFieldValue(`apContact[${index}].firstName`, obj.contactFirstNm);
+            formik.setFieldValue(`apContact[${index}].lastName`, obj.contactLastNm);
+            formik.setFieldValue(`apContact[${index}].email`, obj.contactEmailId);
+            formik.setFieldValue(`apContact[${index}].phoneNumber`, obj.contactPhoneNo);
+        });
+        formik.setFieldValue('endDate', dataToPopulate.customer.createdDtm);
+        checkBoxData.map((obj: any) => {
+            if(obj.indexOf("lot")){
+                formik.setFieldValue('lotLevel', true);
+            } else if(obj.indexOf("business")) {
+                formik.setFieldValue('businessLevel', true);
+            } else {
+                formik.setFieldValue('vehicleLevel', true);
+            }
+        });
         setDisabled(true);
     };
-
     const { t } = useTranslation();
     const [formStatus, setFormStatus] = useState<IFormStatus>({
         message: '',
@@ -129,8 +154,7 @@ const AddCustomer: React.FC = () => {
 
     const [paymentTypes, setpaymentTypes] = useState([]);
     const [initialInvoiceFrequencies, setinitialInvoiceFrequencies] = useState([]);
-
-    const { mutate: addNewCustomer, isSuccess, isError } = useCreateCustomer();
+    const { data: savedCustomerData, mutate: addNewCustomer, isSuccess, isError } = useCreateCustomer();
     const { data: frequencyList } = useGetFrequencies();
     const { data: paymentTypeList } = useGetPaymentTypes();
 
@@ -138,6 +162,8 @@ const AddCustomer: React.FC = () => {
         if (isSuccess) {
             setAPIResponse(true);
             setFormStatus(formStatusProps.success);
+            getDataForSelectedCustomer(savedCustomerData.data.customer.customerId.toString());
+            setEditShown(true);
         }
         if (isError) {
             setAPIResponse(true);
@@ -147,7 +173,7 @@ const AddCustomer: React.FC = () => {
             setAPIResponse(false);
         }, 6000);
         formik.resetForm({});
-    }, [isSuccess, isError]);
+    }, [savedCustomerData, isSuccess, isError]);
 
     useEffect(() => {
         if (frequencyList?.data.length) {
@@ -161,9 +187,7 @@ const AddCustomer: React.FC = () => {
         }
     }, [paymentTypeList]);
 
-
     const [apiResposneState, setAPIResponse] = useState(false);
-
 
     const [open, setOpen] = React.useState(false);
 
@@ -189,7 +213,8 @@ const AddCustomer: React.FC = () => {
 
     const getDataForSelectedCustomer = async (customerId: string) => {
         try {
-            axios.get(`http://52.146.63.31/api/customer-service/customers/${customerId}?countryCode=us`)
+            // axios.get(`http://52.146.63.31/api/customer-service/customers/${customerId}?countryCode=us`)
+            axios.get(`http://20.81.19.147/api/customer-service/customers/${customerId}?countryCode=us`)
                 .then(response => response.data)
                 .then(({ data }) => {
                     if (data) {
@@ -244,7 +269,8 @@ const AddCustomer: React.FC = () => {
                     lot: data.lotLevel, business: data.businessLevel, vehicle: data.vehicleLevel
                 })
             };
-            axios.put(`http://52.146.63.31/api/customer-service/customers/${location.state}`, apiPayload)
+            // axios.put(`http://52.146.63.31/api/customer-service/customers/${location.pathname.split("/").pop()}`, apiPayload)
+            axios.put(`http://20.81.19.147/api/customer-service/customers/${location.pathname.split("/").pop()}`, apiPayload)
                 .then(function (response) {
                     setAPIResponse(true);
                     if (response.data) {
@@ -315,9 +341,7 @@ const AddCustomer: React.FC = () => {
                 editCustomerData(values, actions.resetForm);
             } else {
                 createNewCustomer(values);
-                getDataForSelectedCustomer("" + location.state);
             }
-
         },
         enableReinitialize: true,
     });
@@ -346,9 +370,18 @@ const AddCustomer: React.FC = () => {
                 <Container maxWidth="lg" className="page-container">
                     <FormikProvider value={formik}>
                         <form onSubmit={formik.handleSubmit}>
-                            <Typography variant="h3" component="h3" gutterBottom className="fw-bold" mb={1}>
-                                Customer Profile
-                            </Typography>
+                            <div style={{ display: "flex" }}>
+                                <Typography variant="h3" component="h3" gutterBottom className="fw-bold" mb={1} style={{ width: "86%" }}>
+                                    Customer Profile
+                                </Typography>
+                                {isEditShown && <Button
+                                        types="edit"
+                                        aria-label="edit"
+                                        onClick={handleEditButtonClick}
+                                        startIcon={<EditIcon />}> 
+                                    {t("buttons.edit")} 
+                                </Button>}
+                            </div>
                             <Grid container mt={1}>
                                 <Grid item md={12} mt={2} mb={1}>
                                     <Typography variant="h4" component="h4" gutterBottom className="fw-bold" mb={1}>

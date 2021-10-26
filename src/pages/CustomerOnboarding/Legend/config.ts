@@ -4,7 +4,7 @@ export const config = [
         index: 1,
         label: "legend.customerProfile",
         secondaryText:false,
-        to: "/customer/addCustomer"
+        to: "/customer"
     
     },
     {

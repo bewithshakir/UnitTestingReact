@@ -1,10 +1,10 @@
+/* eslint-disable no-console */
 import { Breadcrumbs, Link, SvgIcon } from "@material-ui/core";
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import React from "react";
 import { useTranslation } from "react-i18next";
-
 import { NavLink, useHistory } from "react-router-dom";
 import { BackIcon, CustomerProfileIcon2, LogoutIcon, SettingsIcon, USAFlagIcon } from "../../../assets/icons";
 import { useStore } from "../../../store";
@@ -14,8 +14,6 @@ import ProfileMenu from '../Menu/ProfileMenu.component';
 import './HorizontalBar.style.scss';
 
 const drawerWidth = 64;
-
-
 interface HorizontalBarProps {
   version?: any,
   onBack: () => void,
@@ -34,10 +32,22 @@ export default function HorizontalBar (props: HorizontalBarProps) {
     props.onBack();
   };
 
+  // const getHeaderText = () => {
+  //   console.log(history.location.pathname);
+  //   if(history.location.pathname.includes('addCustomer')) {
+  //     console.log("In Add Flow");
+  //     return "Add Customer";
+  //   } else {
+  //     console.log("In Edit Flow");
+  //     return (history.location.pathname.split("/").pop());
+  //   }
+  // };
+
   function versionBreadcrumbsSingle () {
     return (<>
       <Breadcrumbs separator={<NavigateNextIcon />} aria-label="breadcrumb">
         <Link className="breadcrubs-title" href="#" onClick={handleClick}>
+          {/* {getHeaderText()} */}
           Add Customer
         </Link>
       </Breadcrumbs>
