@@ -884,7 +884,6 @@ export function AlertExclamationIcon (props: React.SVGProps<SVGSVGElement>): JSX
   );
 }
 
-
 export function YellowFuelIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
   return (
     <svg width="28" height="28" viewBox="0 0 28 28" {...props}>

@@ -3,10 +3,6 @@ import { Moment } from 'moment';
 import { headerObj } from '../components/UIComponents/DataGird/grid.component';
 import DriveEtaOutlinedIcon from '@material-ui/icons/DriveEtaOutlined';
 
-export interface SelectProps {
-    label: string,
-    value: string,
-}
 
 
 export interface ParkingLot {
@@ -20,19 +16,6 @@ export interface ParkingLot {
     paymentTerm: string,
     lotLevel: boolean,
 }
-
-export interface AddParkingLotForm {
-    // General Information
-    lotName: string,
-    customerId: string,
-    addressLine1: string,
-    addressLine2: string,
-    city: string,
-    state: string,
-    postalCode: string,
-
-}
-
 
 // {
 //     "customer_id": "fc2ffe5e-7ef8-46b8-95c2-cb82cf77ed90",
@@ -72,14 +55,14 @@ export interface AddParkingLotForm {
 //     ]
 // }
 
+export interface SelectProps {
+    label: string,
+    value: string,
+}
 
-
-export interface orderScheduleDel {
-    fromDate: moment.Moment| string | null,
-    toDate: moment.Moment| string | null,
-    startTime: string,
-    endTime: string,
-    productDelDays: string
+type mutiSelectItem = {
+    label: string,
+    value: string | number
 }
 
 export interface lotContact {
@@ -89,6 +72,61 @@ export interface lotContact {
     phoneNumber: string,
 }
 
+export interface orderSchDel {
+    fromDate: moment.Moment| string | null,
+    toDate: moment.Moment| string | null,
+    startTime: string,
+    endTime: string,
+    productDelDays: Array<mutiSelectItem>
+}
+
+export interface AddParkingLotForm {
+    lotName:string;
+    lotId: string;
+    addressLine1: string;
+    addressLine2: string;
+    city: string;
+    state: string;
+    postalCode: string;
+    county: string;
+    timeZone:SelectProps;
+    country: string;
+    jurisdictionId: string;
+    productDelFreq: SelectProps;
+    orderScheduleDel: orderSchDel[];
+    locationContact: lotContact[];
+}
+
+export const addLotFormInitialValues = {
+        lotName : '',
+        lotId : '',
+        addressLine1 : '',
+        addressLine2 : '',
+        city : '',
+        state : '',
+        postalCode : '',
+        county : '',
+        timeZone : { label: '', value: '' },
+        country : '',
+        jurisdictionId : '',
+        productDelFreq : { label: '', value: '' },
+        orderScheduleDel : [{
+            fromDate: '',
+            toDate: '',
+            startTime: '',
+            endTime: '',
+            productDelDays: []
+        }],
+        locationContact : [{
+            firstName: '',
+            lastName: '',
+            email: '',
+            phoneNumber: '',
+        }],
+};
+
+
+
 export default class ParkingLotModel {
     // General Information
     lotName:string;
@@ -96,11 +134,11 @@ export default class ParkingLotModel {
     addressLine1: string;
     addressLine2: string;
     county: string;
-    timeZone:'';
-    country: '';
-    jurisdictionId: '';
-    productDelFreq: '';
-    orderScheduleDel: orderScheduleDel[];
+    timeZone:SelectProps;
+    country: string;
+    jurisdictionId: string;
+    productDelFreq: SelectProps;
+    orderScheduleDel: orderSchDel[];
     locationContact: lotContact[];
 
 
@@ -120,16 +158,16 @@ export default class ParkingLotModel {
         this.addressLine1 = '';
         this.addressLine2 = '';
         this.county = '';
-        this.timeZone = '';
+        this.timeZone = { label: '', value: '' };
         this.country = '';
         this.jurisdictionId = '';
-        this.productDelFreq = '';
+        this.productDelFreq = { label: '', value: '' };
         this.orderScheduleDel = [{
             fromDate: '',
             toDate: '',
             startTime: '',
             endTime: '',
-            productDelDays: ''
+            productDelDays: []
         }];
         this.locationContact = [{
             firstName: '',

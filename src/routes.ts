@@ -34,12 +34,6 @@ export const routes = [
     ]
   },
   {
-    version: "Breadcrumbs-Many",
-    path: "/customer/parkingLots/addLot",
-    component: lazy(() => import('./pages/ParkingLot/AddLot')),
-    exact: false,
-  },
-  {
     path: "/query",
     component: lazy(() => import('./pages/QueryTest')),
     exact: false,
