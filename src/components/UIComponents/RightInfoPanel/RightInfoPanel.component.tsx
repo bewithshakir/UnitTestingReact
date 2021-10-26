@@ -39,17 +39,6 @@ export const RightInfoPanel: React.FC<InfoPanelProps> = ({ open, headingText, in
     {provideContentForPanel()}
   </Drawer >;
 
-  // const history = useHistory();
-
-  // const navigateToCustomerPage = () => {
-  //   console.log(info)
-  //   // history.push("/Customer");
-  //   history.push({
-  //     pathname: '/Customer',
-  //     state: { data: info }
-  //   })
-  // };
-
   return (
     <React.Fragment>{panelDrawer}</React.Fragment>
   );
