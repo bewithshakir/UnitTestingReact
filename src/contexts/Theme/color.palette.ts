@@ -30,4 +30,6 @@ export enum Color {
   purple = '#641964',
   shellblue = '#003C88',
   brown = '#743410',
+  lightYellow = '#FACE06',
+  lightYellow2 = '#FBCE061A'
 }

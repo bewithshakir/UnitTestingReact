@@ -25,8 +25,8 @@ const SideBarMenuoptions = [{
 {
   index: 1,
   icon: <Invoice64Icon />,
-  text: 'Dashboard',
-  route: '/dashboard'
+  text: 'Taxes',
+  route: '/taxes'
 }, {
   index: 2,
   icon: <ToggleList64Icon />,
