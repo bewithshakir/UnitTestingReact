@@ -21,8 +21,7 @@ export const PanelHeader: React.FC<InfoPanelProps> = ({ info, headingText, panel
     const history = useHistory();
     const navigateToCustomerPage = () => {
         history.push({
-            pathname: `/customer/${info.customerId}`
-            // state: info.customerId
+            pathname: `/customer/viewCustomer/${info.customerId}`
         });
     };
     

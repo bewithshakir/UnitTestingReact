@@ -20,9 +20,10 @@ export const routes = [
         exact: true
       },
       {
-        path: "/customer/:customerId",
+        path: "/customer/viewCustomer/:customerId",
         component: lazy(() => import('./pages/CustomerOnboarding/AddCustomer/AddCustomer')),
-        exact: true
+        version: "Breadcrumbs-Single",
+        exact: false
       }
     ]
   },
