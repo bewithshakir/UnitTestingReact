@@ -19,6 +19,7 @@ import { timeZones, productDelFreq, useCreateLot, useGetContactTypes } from './q
 import DiscardChangesDialog from '../../../components/UIComponents/ConfirmationDialog/DiscardChangesDialog.component';
 import AutocompleteInput from '../../../components/UIComponents/GoogleAddressComponent/GoogleAutoCompleteAddress';
 import { PlusIcon } from '../../../assets/icons';
+import { AddLotHeaderMenu } from '../../../components/UIComponents/AddLotHeaderMenu/AddLotHeaderMenu.component';
 
 
 import './style.scss';
@@ -34,12 +35,8 @@ interface IFormStatusProps {
 
 const formStatusProps: IFormStatusProps = {
     success: {
-        message: 'Signed up successfully.',
+        message: 'Lot created successfully.',
         type: 'Success',
-    },
-    duplicate: {
-        message: 'Email-id already exist. Please use different email-id.',
-        type: 'Error',
     },
     error: {
         message: 'Something went wrong. Please try again.',
@@ -61,9 +58,11 @@ function AddLot(): React.ReactElement {
     const [apiResposneState, setAPIResponse] = useState(false);
 
     useEffect(() => {
+        debugger;
         if (isSuccess) {
             setAPIResponse(true);
             setFormStatus(formStatusProps.success);
+            formik.resetForm({});
         }
         if (isError) {
             setAPIResponse(true);
@@ -72,7 +71,7 @@ function AddLot(): React.ReactElement {
         setTimeout(() => {
             setAPIResponse(false);
         }, 6000);
-        formik.resetForm({});
+        
     }, [isSuccess, isError]);
 
     useEffect(() => {
@@ -104,45 +103,6 @@ function AddLot(): React.ReactElement {
     };
 
     const createAddLotPayload = (form: AddParkingLotForm) => {
-
-        // {
-        //     "customer_id": "fc2ffe5e-7ef8-46b8-95c2-cb82cf77ed90",
-        //     "lot_name": "LOT006",
-        //     "lot_id": "1234567890",
-        //     "jurisdiction_id": "ABCDEFGHIJ116",
-        //     "address_1": "Houston Court, ,Houston Ct, , ",
-        //     "address_2": "",
-        //     "address_3": "",
-        //     "city": "Saratoga",
-        //     "state": "CA",
-        //     "postal_code": "95070",
-        //     "country": "United States",
-        //     "timezone_cd": "CDT",
-        //     "location_contact": [
-        //         {
-        //             "location_contact_type_cd": "6e1df17a-29ba-4312-a55e-6b34e47fbb4d",
-        //             "contact_first_name": "Aninda",
-        //             "contact_last_name": "Kar",
-        //             "contact_email": "aninda.kar@shell.com",
-        //             "contact_phone": "1234567890"
-        //         },
-        //         {
-        //             "location_contact_type_cd": "ca9fcb3a-abc1-4991-a4fd-41d0ee3f47ad",
-        //             "contact_first_name": "Karthick",
-        //             "contact_last_name": "Krishnan",
-        //             "contact_email": "karthick.krishnan@shell.com",
-        //             "contact_phone": "1234567890"
-        //         },
-        //         {
-        //             "location_contact_type_cd": "ca9fcb3a-abc1-4991-a4fd-41d0ee3f47ad",
-        //             "contact_first_name": "Karthick",
-        //             "contact_last_name": "Krishnan",
-        //             "contact_email": "karthick.krishnan@shell.com",
-        //             "contact_phone": "1234567890"
-        //         }
-        //     ]
-        // }
-
         const apiPayload = {
             customer_id: "fc2ffe5e-7ef8-46b8-95c2-cb82cf77ed90",
             lot_name: form.lotName,
@@ -150,7 +110,7 @@ function AddLot(): React.ReactElement {
             jurisdiction_id: form.jurisdictionId,
             address_1: form.addressLine1,
             address_2: form.addressLine2,
-            address_3:'',
+            address_3: form.county,
             city: form.city,
             state: form.state,
             postal_code: form.postalCode,
@@ -163,8 +123,6 @@ function AddLot(): React.ReactElement {
                 contact_email: contactObj.email,
                 contact_phone: contactObj.phoneNumber
             })),
-            county: form.county, 
-            // not in actual payload
             // productDelFreq: form.productDelFreq.value,
             // orderScheduleDel: form.orderScheduleDel.map((orderSchDelObj: any) => ({
             //     fromDate: orderSchDelObj.fromDate,
@@ -193,8 +151,6 @@ function AddLot(): React.ReactElement {
         formik.setFieldValue('postalCode', addressObj.postalCode);
     }
 
-    // const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
-    // setVersion("Breadcrumbs-Many");
     const formik = useFormik({
         initialValues: addLotFormInitialValues,
         validationSchema: AddParkingLotValidationSchema,
@@ -205,7 +161,6 @@ function AddLot(): React.ReactElement {
     });
 
     return (
-        // <div style={{ display: "block", marginLeft:"80px" }}>{"Added lot"}</div>
         <>
             <Grid item md={10} xs={10}>
                 <Container maxWidth="lg" className="page-container lot-container">
