@@ -5,3 +5,7 @@ package-lock.json
 yarn.lock
 build
 storybook-static
+
+dev.env
+qa.env
+prod.env

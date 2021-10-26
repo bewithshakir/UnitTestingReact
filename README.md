@@ -19,3 +19,28 @@ https://tapupglobal-webapp-dev.azurewebsites.net/
 Go to the Repository Directory:
 For single file run - npx prettier --write <File_Name_Location> (npx prettier --write src/App.tsx)
 For complete project run- npx prettier --write .
+
+
+# Step to run the project locally 
+### 1. install npm
+https://nodejs.org/en/download/ 
+### 2. install yarn 
+https://classic.yarnpkg.com/lang/en/docs/install/#mac-stable
+
+### 3. environment setup
+#### To run project with Dev environment 
+
+* create dev.env on project root level
+* copy-paste the all content from .env.local file to dev.env
+```
+yarn install
+yarn start 
+```
+#### To run project with Qa environment
+* create qa.env on project root level
+* copy-paste the all content from .env.local file to qa.env
+```
+yarn install
+yarn start-qa
+```
+
