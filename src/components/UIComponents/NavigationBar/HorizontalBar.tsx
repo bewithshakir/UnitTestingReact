@@ -32,17 +32,6 @@ export default function HorizontalBar (props: HorizontalBarProps) {
     props.onBack();
   };
 
-  // const getHeaderText = () => {
-  //   console.log(history.location.pathname);
-  //   if(history.location.pathname.includes('addCustomer')) {
-  //     console.log("In Add Flow");
-  //     return "Add Customer";
-  //   } else {
-  //     console.log("In Edit Flow");
-  //     return (history.location.pathname.split("/").pop());
-  //   }
-  // };
-
   function versionBreadcrumbsSingle () {
     return (<>
       <Breadcrumbs separator={<NavigateNextIcon />} aria-label="breadcrumb">
