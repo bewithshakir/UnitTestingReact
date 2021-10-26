@@ -1,7 +1,5 @@
-
 import React, { SyntheticEvent, useEffect } from "react";
 import { Button } from "../../components/UIComponents/Button/Button.component";
-import "./style.scss";
 import { useTranslation } from "react-i18next";
 import {
   FilterIcon,
@@ -9,8 +7,7 @@ import {
 import SortbyMenu from "../../components/UIComponents/Menu/SortbyMenu.component";
 import ActionsMenu from "../../components/UIComponents/Menu/ActionsMenu.component";
 import GridComponent from "../../components/UIComponents/DataGird/grid.component";
-import Table from "./SubTableLots";
-import { useCustomers } from "./queries";
+import { useGetParkingLotDetails } from "./queries";
 import SearchInput from "../../components/UIComponents/SearchInput/SearchInput";
 import { Add } from "@mui/icons-material";
 import { useHistory } from "react-router-dom";
@@ -18,7 +15,7 @@ import { sortByOptions } from "./config";
 import { RightInfoPanel } from "../../components/UIComponents/RightInfoPanel/RightInfoPanel.component";
 import { Box, FormControl, Grid } from "@mui/material";
 import { HorizontalBarVersionState, useStore } from "../../store";
-import CustomerModel from "../../models/CustomerModel";
+import ParkingLotModel from "../../models/ParkingLotModel";
 import { DataGridActionsMenuOption } from "../../components/UIComponents/Menu/DataGridActionsMenu.component";
 
 interface ContentProps {
@@ -26,14 +23,13 @@ interface ContentProps {
   version: string
 }
 
-const Content: React.FC<ContentProps> = () => {
-  const CustomerObj = new CustomerModel();
-  const headCells = CustomerObj.fieldsToDisplay();
-  const headCellsLots = CustomerObj.fieldsToDisplayLotTable();
-  const rowActionOptions = CustomerObj.rowActions();
-  const massActionOptions = CustomerObj.massActions();
-  const ACTION_TYPES = CustomerObj.ACTION_TYPES;
-  const MASS_ACTION_TYPES = CustomerObj.MASS_ACTION_TYPES;
+const ParkingLotContent: React.FC<ContentProps> = () => {
+  const ParkingLotObj = new ParkingLotModel();
+  const headCells = ParkingLotObj.fieldsToDisplay();
+  const rowActionOptions = ParkingLotObj.rowActions();
+  const massActionOptions = ParkingLotObj.massActions();
+  const ACTION_TYPES = ParkingLotObj.ACTION_TYPES;
+  const MASS_ACTION_TYPES = ParkingLotObj.MASS_ACTION_TYPES;
 
   const history = useHistory();
   const [info, setInfo] = React.useState({});
@@ -42,26 +38,16 @@ const Content: React.FC<ContentProps> = () => {
   const [sortOrder, setSortOrder] = React.useState<{ sortBy: string, order: string }>({ sortBy: "customerName", order: "asc" });
   const [filterData, setFilterData] = React.useState<{ [key: string]: string[] }>({});
   const [custFilterPanelVisible, setCustFilterPanelVisible] = React.useState(false);
-  const [customerId, setCustomerId] = React.useState('');
-  const [customerList, setCustomerList] = React.useState([]);
+  const [parkingLotlist, setCustomerList] = React.useState([]);
+  const customerId = "fc2ffe5e-7ef8-46b8-95c2-cb82cf77ed90";
 
   const { t } = useTranslation();
-  const { data, fetchNextPage, isLoading, isFetching }: any = useCustomers(
+  const { data, fetchNextPage, isLoading }: any = useGetParkingLotDetails(
     searchTerm,
     sortOrder,
-    filterData
+    filterData,
+    customerId
   );
-
-  useEffect(() => {
-    if (data) {
-      const list: any = [];
-      data?.pages?.forEach((item: any) => {
-        list.push(...item.data.customers);
-      });
-      setCustomerList(list);
-    }
-  }, [data]);
-
   const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
   setVersion("NavLinks");
   const openDrawer = (row: SyntheticEvent) => {
@@ -72,7 +58,7 @@ const Content: React.FC<ContentProps> = () => {
     setDrawerOpen(false);
   };
   const navigateToAddCustomer = () => {
-    history.push("/customer/addCustomer");
+    history.push("/customer");
   };
   const onSortBySlected = (value: string) => {
     let sortOrder;
@@ -92,10 +78,18 @@ const Content: React.FC<ContentProps> = () => {
     }
     setSortOrder(sortOrder);
   };
-  const onInputChange = (value: string) => {
+  const onInputChange = (value:string) => {
     setSearchTerm(value);
   };
-
+  useEffect(() => {
+    if (data) {
+      const list: any = [];
+      data?.pages?.forEach((item: any) => {
+        list.push(...item.data.lots);
+      });
+      setCustomerList(list);
+    }
+  }, [data]);
   const handleCustFilterPanelOpen = () => {
     setDrawerOpen(false);
     setCustFilterPanelVisible(!custFilterPanelVisible);
@@ -139,9 +133,9 @@ const Content: React.FC<ContentProps> = () => {
   const getFilterParams = (filterObj: { [key: string]: string[] }) => setFilterData(filterObj);
 
   return (
-    <Box display="flex" mt={8} ml={8}>
-      <Grid container pl={6.25} pr={6.25} className="main-area">
-        <Grid container pt={2.5} display="flex" flexGrow={1}>
+    <Box display="flex">
+      <Grid container pl={2.25} pr={6.25} className="main-area">
+        <Grid container display="flex" flexGrow={1}>
           <Grid item md={8} lg={9} display="flex" >
             <Grid item pr={2.5}>
               <Button
@@ -165,7 +159,7 @@ const Content: React.FC<ContentProps> = () => {
               <SearchInput
                 name="searchTerm"
                 value={searchTerm}
-                delay={600}
+                delay={500}
                 onChange={onInputChange}
               />
             </Grid>
@@ -178,7 +172,7 @@ const Content: React.FC<ContentProps> = () => {
                 onClick={navigateToAddCustomer}
                 startIcon={<Add />}
               >
-                {t("buttons.add customer")}
+                {t("buttons.add lot")}
               </Button>
             </Grid>
             <Grid item>
@@ -194,20 +188,16 @@ const Content: React.FC<ContentProps> = () => {
         <Grid container pt={2.5} display="flex" flexGrow={1}>
 
           <GridComponent
-            primaryKey='customerId'
-            rows={customerList}
+            primaryKey='deliveryLocationId'
+            rows={parkingLotlist}
             header={headCells}
-            isLoading={isFetching || isLoading}
+            isLoading={isLoading}
             enableRowSelection
             enableRowAction
             getPages={fetchNextPage}
             onRowActionSelect={handleRowAction}
             rowActionOptions={rowActionOptions}
             openDrawer={openDrawer}
-            searchTerm={searchTerm}
-            getId={(id:string) => setCustomerId(id)}
-            InnerTableComponent={<Table primaryKey='deliveryLocationId' id={customerId} headCells={headCellsLots}/>}
-            noDataMsg='Add Customer by clicking on the " Add Customer" button.'
           />
 
           <RightInfoPanel panelType="customer-filter" open={custFilterPanelVisible} headingText={"Filters"} provideFilterParams={getFilterParams} onClose={handleCustFilterPanelClose} />
@@ -218,4 +208,4 @@ const Content: React.FC<ContentProps> = () => {
   );
 };
 
-export default Content;
+export default ParkingLotContent;

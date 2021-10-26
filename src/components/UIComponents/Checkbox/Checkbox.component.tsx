@@ -6,8 +6,8 @@ interface checkBoxProps {
     checked: boolean;
     disabled?: boolean;
     indeterminate?: boolean;
-    onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
-    onClick?: (event: React.MouseEvent<HTMLElement>) => void
+    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    onClick?: (event: React.MouseEvent<HTMLElement>) => void;
 }
 
 export default function Checkboxes (props: checkBoxProps) {

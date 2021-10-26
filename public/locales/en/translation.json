@@ -27,7 +27,8 @@
     "secondary": "Secondary",
     "add customer": "Add Customer",
     "show more": "Show more",
-    "sort by": "Sort by"
+    "sort by": "Sort by",
+    "add lot": "Add Lot"
   },
   "menus": {
     "sortby": {
@@ -86,6 +87,13 @@
     "discardchangesdialog": {
       "title": "Discard the changes ?",
       "content": "You have unsaved data which will be lost once you select discard or select cancel to save the data."
+    }
+  },
+  "parkingLot": {
+    "sortBy": {
+      "paymentCompleted": "Payment Completed",
+      "paymentInProgress": "Payment In Progress",
+      "recentlyAddedLots": "Recently Added Lots"
     }
   }
 }
