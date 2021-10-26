@@ -19,23 +19,22 @@ import { timeZones, productDelFreq, useCreateLot, useGetContactTypes } from './q
 import DiscardChangesDialog from '../../../components/UIComponents/ConfirmationDialog/DiscardChangesDialog.component';
 import AutocompleteInput from '../../../components/UIComponents/GoogleAddressComponent/GoogleAutoCompleteAddress';
 import { PlusIcon } from '../../../assets/icons';
-import { AddLotHeaderMenu } from '../../../components/UIComponents/AddLotHeaderMenu/AddLotHeaderMenu.component';
+// import { AddLotHeaderMenu } from '../../../components/UIComponents/AddLotHeaderMenu/AddLotHeaderMenu.component';
 
 
 import './style.scss';
-interface IFormStatus {
+
+interface FormStatusType {
     message: string
     type: string
 }
-interface IFormStatusProps {
-    [key: string]: IFormStatus
+interface FormStatusProps {
+    [key: string]: FormStatusType
 }
 
-// const initialValues = new ParkingLotModel();
-
-const formStatusProps: IFormStatusProps = {
+const formStatusProps: FormStatusProps = {
     success: {
-        message: 'Lot created successfully.',
+        message: 'Lot Name is successfully added and Please add other details.',
         type: 'Success',
     },
     error: {
@@ -43,6 +42,8 @@ const formStatusProps: IFormStatusProps = {
         type: 'Error',
     },
 };
+
+
 
 function AddLot(): React.ReactElement {
 
@@ -53,12 +54,11 @@ function AddLot(): React.ReactElement {
     const { data: contactTypeList } = useGetContactTypes();
     const [primaryContactType, setPrimaryContactType] = useState('');
     const [secondaryContactType, setSecondaryContactType] = useState('');
-    const [formStatus, setFormStatus] = useState<IFormStatus>({ message: '', type: '' });
+    const [formStatus, setFormStatus] = useState<FormStatusType>({ message: '', type: '' });
     const [open, setOpen] = React.useState(false);
     const [apiResposneState, setAPIResponse] = useState(false);
 
     useEffect(() => {
-        debugger;
         if (isSuccess) {
             setAPIResponse(true);
             setFormStatus(formStatusProps.success);
@@ -89,7 +89,7 @@ function AddLot(): React.ReactElement {
         if (isFormFieldChange()) {
             handleModelToggle();
         } else {
-            history.push('/');
+            history.push('/customer/parkingLots');
         }
     };
 
@@ -149,6 +149,7 @@ function AddLot(): React.ReactElement {
         formik.setFieldValue('city', addressObj.city);
         formik.setFieldValue('state', addressObj.state);
         formik.setFieldValue('postalCode', addressObj.postalCode);
+        formik.setFieldValue('country',addressObj.country);
     }
 
     const formik = useFormik({

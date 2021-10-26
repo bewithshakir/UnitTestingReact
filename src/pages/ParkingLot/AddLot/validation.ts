@@ -5,7 +5,7 @@ const AddParkingLotValidationSchema = Yup.object().shape({
         .min(2, 'Too Short!')
         .max(50, 'Too Long!')
         .required('Required'),
-    lotId: Yup.string().max(10, 'Lot Id should have maximum of 10 digits').matches(/^[0-9]{10}$/, 'Invalid Lot Id').required('Required'),
+    lotId: Yup.string().max(10, 'Lot Id should have maximum of 10 digits').matches(/^\d{1,10}$/, 'Invalid Lot Id').required('Required'),
     addressLine1: Yup.string().required('Required'),
     addressLine2: Yup.string().required('Required'),
     city: Yup.string().required('Required'),
@@ -17,7 +17,7 @@ const AddParkingLotValidationSchema = Yup.object().shape({
     .min(13, 'Too Short!')
     .max(13, 'Too Long!')
     .required('Required'),
-    productDelFreq: Yup.object().shape({ label: Yup.string().required('Required'), value: Yup.string().required('Required') }),
+    productDelFreq: Yup.object().shape({ label: Yup.string(), value: Yup.string() }),
     timeZone: Yup.object().shape({ label: Yup.string().required('Required'), value: Yup.string().required('Required') }),
     locationContact: Yup.array()
         .of(
