@@ -46,7 +46,9 @@
   },
   "scripts": {
     "analyze": "source-map-explorer 'build/static/js/*.js'",
-    "start": "react-scripts start",
+    "start": "env-cmd -f dev.env react-scripts start",
+    "start-qa": "env-cmd -f qa.env react-scripts start",
+    "start-prod": "env-cmd -f prod.env react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "coverage": "react-scripts test --coverage",
@@ -139,6 +141,7 @@
     "@typescript-eslint/eslint-plugin": "^4.32.0",
     "@typescript-eslint/parser": "^4.32.0",
     "css-loader": "^5.2.7",
+    "env-cmd": "^10.1.0",
     "enzyme": "3.11.0",
     "enzyme-adapter-react-16": "1.15.6",
     "enzyme-to-json": "3.6.2",
