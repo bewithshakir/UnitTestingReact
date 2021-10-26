@@ -39,7 +39,7 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
   const [filterData, setFilterData] = React.useState<{ [key: string]: string[] }>({});
   const [custFilterPanelVisible, setCustFilterPanelVisible] = React.useState(false);
   const [parkingLotlist, setCustomerList] = React.useState([]);
-  const customerId = "fc2ffe5e-7ef8-46b8-95c2-cb82cf77ed90";
+  const customerId = "37632a0d-7ab8-4b3d-9606-ee1d6f089557";
 
   const { t } = useTranslation();
   const { data, fetchNextPage, isLoading }: any = useGetParkingLotDetails(

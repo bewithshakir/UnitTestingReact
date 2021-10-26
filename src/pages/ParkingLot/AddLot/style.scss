@@ -11,5 +11,18 @@ div{
           justify-content: flex-end;
         }
       }
+      .edit-button{
+        float:right;
+        width: 120px;
+        .MuiButton-label{
+          span{
+            margin-left: 10px;
+          }
+        }
+        
+      }
+      .left-heading{
+        margin-top: 5px;
+      }
   }
   

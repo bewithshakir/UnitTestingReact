@@ -884,6 +884,31 @@ export function AlertExclamationIcon (props: React.SVGProps<SVGSVGElement>): JSX
   );
 }
 
+export function EditIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
+  return (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 20 20"
+      {...props}
+    >
+      <g data-name="Group 1868" transform="translate(-892 -1528)">
+        <path
+          fill="currentColor"
+          d="M17.261 2.146l4.95 4.95-12.021 12.02L2.212 22l3.029-7.833zM6.786 15.713L5.66 18.627l2.968-1.073zM19.382 7.1L17.26 4.974l-9.191 9.193 2.12 2.12 5.657-5.657-2.12-2.12L15.14 7.1l2.12 2.12z"
+          transform="translate(889.788 1525.854)"
+        ></path>
+        <path
+          fill="none"
+          d="M0 0H20V20H0z"
+          data-name="Rectangle 2255"
+          transform="translate(892 1528)"
+        ></path>
+      </g>
+    </svg>
+  );
+}
+
 export function YellowFuelIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
   return (
     <svg width="28" height="28" viewBox="0 0 28 28" {...props}>

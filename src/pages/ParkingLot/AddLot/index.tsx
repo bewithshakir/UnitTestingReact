@@ -18,8 +18,10 @@ import AddParkingLotValidationSchema from './validation';
 import { timeZones, productDelFreq, useCreateLot, useGetContactTypes } from './queries';
 import DiscardChangesDialog from '../../../components/UIComponents/ConfirmationDialog/DiscardChangesDialog.component';
 import AutocompleteInput from '../../../components/UIComponents/GoogleAddressComponent/GoogleAutoCompleteAddress';
-import { PlusIcon } from '../../../assets/icons';
+import { PlusIcon, EditIcon } from '../../../assets/icons';
 // import { AddLotHeaderMenu } from '../../../components/UIComponents/AddLotHeaderMenu/AddLotHeaderMenu.component';
+
+import { useAddedCustomerIdStore } from '../../../store';
 
 
 import './style.scss';
@@ -57,6 +59,7 @@ function AddLot(): React.ReactElement {
     const [formStatus, setFormStatus] = useState<FormStatusType>({ message: '', type: '' });
     const [open, setOpen] = React.useState(false);
     const [apiResposneState, setAPIResponse] = useState(false);
+    const addedCustomerId = useAddedCustomerIdStore((state) => state.customerId);
 
     useEffect(() => {
         if (isSuccess) {
@@ -99,12 +102,12 @@ function AddLot(): React.ReactElement {
 
     const handleModelConfirm = () => {
         setOpen(prev => !prev);
-        history.push('/');
+        history.push('/customer/parkingLots');
     };
 
     const createAddLotPayload = (form: AddParkingLotForm) => {
         const apiPayload = {
-            customer_id: "fc2ffe5e-7ef8-46b8-95c2-cb82cf77ed90",
+            customer_id: addedCustomerId?addedCustomerId:"37632a0d-7ab8-4b3d-9606-ee1d6f089557",
             lot_name: form.lotName,
             lot_id: form.lotId,
             jurisdiction_id: form.jurisdictionId,
@@ -158,7 +161,7 @@ function AddLot(): React.ReactElement {
         onSubmit: (values) => {
             createNewLot(values);
         },
-        enableReinitialize: true,
+        // enableReinitialize: true,
     });
 
     return (
@@ -168,10 +171,23 @@ function AddLot(): React.ReactElement {
                     <FormikProvider value={formik}>
                         <form onSubmit={formik.handleSubmit}>
                             <Grid container mt={1}>
-                                <Grid item md={12} mt={2} mb={1}>
-                                    <Typography variant="h4" component="h4" gutterBottom className="fw-bold" mb={1}>
+                                <Grid container item md={12} mt={2} mb={1}>
+                                    <Grid item xs={6}>
+                                    <Typography variant="h4" component="h4" gutterBottom className="left-heading fw-bold" mb={1}>
                                         General Information
                                     </Typography>
+                                    </Grid>
+                                    <Grid item xs={6}>
+                                       
+                                        <Button
+                                                types="save"
+                                                aria-label="save"
+                                                className="edit-button"
+                                            >
+                                                 <EditIcon /> <span>{t("buttons.edit")}</span>
+                                            </Button>
+                                    </Grid>
+                                    
                                 </Grid>
                                 <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
                                     <Input
