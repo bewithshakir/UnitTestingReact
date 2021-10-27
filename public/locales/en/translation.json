@@ -28,7 +28,8 @@
     "add customer": "Add Customer",
     "show more": "Show more",
     "sort by": "Sort by",
-    "add lot": "Add Lot"
+    "add lot": "Add Lot",
+    "add tax": "Add Tax"
   },
   "menus": {
     "sortby": {

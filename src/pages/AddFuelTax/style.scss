@@ -1,0 +1,18 @@
+div{  
+      .page-container{
+        margin: 0px;
+        max-width: 950px;
+        .form-action-section{
+          display: flex;
+          justify-content: flex-end;
+        }
+        .info-section{
+            border: 1px solid var(--InformationMessageYellow);
+            font-size: 14px;
+            background-color: var(--InformationMessageYellow);
+            color: var(--universalGray);
+            opacity: 60%;
+        }
+      }
+  }
+  
