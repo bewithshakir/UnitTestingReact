@@ -3,26 +3,25 @@ import { FieldArray, FormikProvider, useFormik } from 'formik';
 import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';
 import { Box, Container, Grid, Link, Typography } from '@mui/material';
-import { Button } from '../../../components/UIComponents/Button/Button.component';
-import Input from '../../../components/UIComponents/Input/Input';
-import Select from '../../../components/UIComponents/Select/SingleSelect';
-import ToastMessage from '../../../components/UIComponents/ToastMessage/ToastMessage.component';
+import { Button } from '../../../../components/UIComponents/Button/Button.component';
+import Input from '../../../../components/UIComponents/Input/Input';
+import Select from '../../../../components/UIComponents/Select/SingleSelect';
+import ToastMessage from '../../../../components/UIComponents/ToastMessage/ToastMessage.component';
 // orderSchDel
-import { AddParkingLotForm, addLotFormInitialValues, lotContact } from '../../../models/ParkingLotModel';
-import AddParkingLotValidationSchema from './validation';
-import { timeZones, productDelFreq, useCreateLot, useGetContactTypes } from './queries';
-import DiscardChangesDialog from '../../../components/UIComponents/ConfirmationDialog/DiscardChangesDialog.component';
-import AutocompleteInput from '../../../components/UIComponents/GoogleAddressComponent/GoogleAutoCompleteAddress';
-import { PlusIcon, EditIcon } from '../../../assets/icons';
+import { AddParkingLotForm, addLotFormInitialValues, lotContact } from '../../../../models/ParkingLotModel';
+import AddParkingLotValidationSchema from '../validation';
+import { timeZones, productDelFreq, useCreateLot, useGetContactTypes } from '../queries';
+import DiscardChangesDialog from '../../../../components/UIComponents/ConfirmationDialog/DiscardChangesDialog.component';
+import AutocompleteInput from '../../../../components/UIComponents/GoogleAddressComponent/GoogleAutoCompleteAddress';
+import { PlusIcon, EditIcon } from '../../../../assets/icons';
 // import MultiSelect from '../../../components/UIComponents/Select/MultiSelect';
 // import { DatePickerInput } from '../../../components/UIComponents/DatePickerInput/DatePickerInput.component';
 // import { TimePicker } from '../../../components/UIComponents/TimePicker/TimePicker.component';
-// import { AddLotHeaderMenu } from '../../../components/UIComponents/AddLotHeaderMenu/AddLotHeaderMenu.component';
 
-import { useAddedCustomerIdStore } from '../../../store';
+import { useAddedCustomerIdStore } from '../../../../store';
 
 
-import './style.scss';
+import './AddLotForm.style.scss';
 
 interface FormStatusType {
     message: string
@@ -45,7 +44,7 @@ const formStatusProps: FormStatusProps = {
 
 
 
-function AddLot(): React.ReactElement {
+function AddLotForm(): React.ReactElement {
 
     const { t } = useTranslation();
     const history = useHistory();
@@ -331,6 +330,7 @@ function AddLot(): React.ReactElement {
                                         error={(formik.touched.jurisdictionId && formik.errors.jurisdictionId) ? true : false}
                                         description=''
                                         disabled={formSuccess}
+                                        required
                                         {...formik.getFieldProps('jurisdictionId')}
                                     />
                                 </Grid>
@@ -662,4 +662,4 @@ function AddLot(): React.ReactElement {
     );
 }
 
-export default AddLot;
+export default AddLotForm;

@@ -3,7 +3,8 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import './styles.scss';
+import AddLotForm from './AddLotForm/AddLotForm.component';
+import './AddLotWrapper.style.scss';
 
 
 interface TabPanelProps {
@@ -44,14 +45,8 @@ function TabPanel(props: TabPanelProps) {
     );
 }
 
-const labelEle: React.FC = () => {
-    return <React.Fragment>
-        T1 Label 1<br />
-        <span style={{ fontSize: "smaller" }}>T1 Label2</span>
-    </React.Fragment>;
-};
 
-export const AddLotHeaderMenu: React.FC<MenuProps> = (props) => {
+const AddLotWrapper: React.FC<MenuProps> = () => {
     const [value, setValue] = React.useState(0);
 
     const handleChange = (event: React.SyntheticEvent, newValue: number) => {
@@ -86,7 +81,7 @@ export const AddLotHeaderMenu: React.FC<MenuProps> = (props) => {
                 </Tabs>
             </Box>
             <TabPanel value={value} index={0}>
-                Item One
+                <AddLotForm />
             </TabPanel>
             <TabPanel value={value} index={1}>
                 Item Two
@@ -103,3 +98,5 @@ export const AddLotHeaderMenu: React.FC<MenuProps> = (props) => {
         </Box>
     );
 };
+
+export default AddLotWrapper;

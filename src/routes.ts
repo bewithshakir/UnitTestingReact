@@ -28,7 +28,7 @@ export const routes = [
       {
         version:"Breadcrumbs-Many",
         path: "/customer/parkingLots/addLot",
-        component: lazy(() => import('./pages/ParkingLot/AddLot')),
+        component: lazy(() => import('./pages/ParkingLot/AddLot/AddLotWrapper')),
         exact: false,
       }
     ]
