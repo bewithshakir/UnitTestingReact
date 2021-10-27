@@ -68,10 +68,6 @@ function AddLotForm(): React.ReactElement {
 
     }, [isSuccess, isError]);
 
-    // useEffect(() => {
-        // data: newLotData
-    // }, [newLotData]);
-
     useEffect(() => {
         if (contactTypeList?.data.length) {
             const primaryContactObj = contactTypeList.data.find((contactType: any) => contactType.locationContactNm.toLowerCase() === 'primary');
