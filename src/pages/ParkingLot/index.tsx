@@ -198,6 +198,7 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
             onRowActionSelect={handleRowAction}
             rowActionOptions={rowActionOptions}
             openDrawer={openDrawer}
+            noDataMsg='Add Parking Lot.'
           />
 
           <RightInfoPanel panelType="customer-filter" open={custFilterPanelVisible} headingText={"Filters"} provideFilterParams={getFilterParams} onClose={handleCustFilterPanelClose} />
