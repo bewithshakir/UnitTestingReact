@@ -16,7 +16,7 @@ import { Add } from "@mui/icons-material";
 import { useHistory } from "react-router-dom";
 import { sortByOptions } from "./config";
 import { RightInfoPanel } from "../../components/UIComponents/RightInfoPanel/RightInfoPanel.component";
-import { Box, FormControl, Grid } from "@mui/material";
+import { Box, FormControl, Grid, Typography } from "@mui/material";
 import { HorizontalBarVersionState, useStore } from "../../store";
 import CustomerModel from "../../models/CustomerModel";
 import { DataGridActionsMenuOption } from "../../components/UIComponents/Menu/DataGridActionsMenu.component";
@@ -166,6 +166,14 @@ const Content: React.FC<ContentProps> = () => {
                 onChange={onInputChange}
               />
             </Grid>
+            {
+              (searchTerm && !(isFetching || isLoading)) &&
+              <Grid item display="flex" alignItems="center" paddingLeft={2.5}>
+                <Typography variant="h4" component="h4" align="center" className="fw-bold">
+                  {customerList.length} results found
+                </Typography>
+              </Grid>
+            }
           </Grid>
           <Grid item md={4} lg={3} display="flex" justifyContent="flex-end">
             <Grid item pr={2.5}>
