@@ -115,20 +115,18 @@ const AddFuelTax = memo(() => {
                                 </Grid>
                                 <Grid item md={3} pl={2.5} pr={2.5} pb={2.5}>
                                     <Input
-                                        id='state'
+                                        id='startDate'
                                         label='EFFECTIVE DATE'
                                         type='text'
-                                        placeholder='Enter State Date'
-
+                                        placeholder='Enter Start Date'
                                     />
                                 </Grid>
                                 <Grid item md={3} pl={2.5}>
                                     <Input
-                                        id='postalCode'
+                                        id='endDate'
                                         label='END DATE'
                                         type='text'
-                                        placeholder='Enter State Date'
-
+                                        placeholder='Enter End Date'
                                     />
                                 </Grid>
 
