@@ -162,31 +162,21 @@ export default class ParkingLotModel {
     }
 
     ACTION_TYPES = {
-        RAISE_REQ: 'raise req',
-        DRIVER_DETAILS: 'driver details',
-        OTHER_DETAIL: 'other details',
-        CONTACT_DETAILS: 'contact details'
+        EDIT: 'edit',
+        DELETE: 'delete',
     };
 
     rowActions () {
         const { t } = useTranslation();
         return [
             {
-                label: t("menus.data-grid-actions.raise a request"),
-                action: this.ACTION_TYPES.RAISE_REQ
+                label: t("menus.data-grid-actions.edit"),
+                action: this.ACTION_TYPES.EDIT
             },
             {
-                label: t("menus.data-grid-actions.fee & driver details"),
-                action: this.ACTION_TYPES.DRIVER_DETAILS
+                label: t("menus.data-grid-actions.delete"),
+                action: this.ACTION_TYPES.DELETE
             },
-            {
-                label: t("menus.data-grid-actions.other details"),
-                action: this.ACTION_TYPES.OTHER_DETAIL
-            },
-            {
-                label: t("menus.data-grid-actions.contact details"),
-                action: this.ACTION_TYPES.CONTACT_DETAILS
-            }
         ];
     }
 

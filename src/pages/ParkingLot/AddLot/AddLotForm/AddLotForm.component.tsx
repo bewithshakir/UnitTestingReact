@@ -342,7 +342,7 @@ function AddLotForm(): React.ReactElement {
                                 </Grid> 
                                 <FieldArray
                                     name="orderScheduleDel"
-                                    render={(arrayHelpers) => (
+                                    render={() => (
                                         <React.Fragment>
                                             {formik.values.orderScheduleDel.map((orderSchObj, index) => (
                                                 <Grid container key={index}>

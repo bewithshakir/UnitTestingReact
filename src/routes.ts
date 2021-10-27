@@ -34,6 +34,11 @@ export const routes = [
     ]
   },
   {
+    path: "/taxes",
+    component: lazy(() => import("./pages/AddFuelTax")),
+    version: "Breadcrumbs-Single",
+  },
+  {
     path: "/query",
     component: lazy(() => import('./pages/QueryTest')),
     exact: false,
