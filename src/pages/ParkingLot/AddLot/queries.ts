@@ -32,7 +32,6 @@ const createLot = async (payload: any) => {
         data: payload,
     };
     const { data } = await axios(options);
-    console.warn("data-->>", data);
     return data;
 };
 

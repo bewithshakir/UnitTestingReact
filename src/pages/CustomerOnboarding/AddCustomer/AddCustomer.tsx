@@ -90,13 +90,6 @@ const AddCustomer: React.FC<any> = () => {
         formik.resetForm({});
     }, [isSuccess, isError]);
 
-    // useEffect(() => {
-    //     if (customerData) {
-    //         console.warn("customer Data->", customerData.data.customer.customerId);
-    //         setCustomerIdCreated(customerData.data.customer.customerId);
-    //     }
-    // }, [customerData]);
-
     useEffect(() => {
         if (frequencyList?.data.length) {
             setinitialInvoiceFrequencies(frequencyList.data.map((obj: any) => ({ label: obj.invoiceFrequencyNm.trim(), value: obj.invoiceFrequencyId.trim() })));

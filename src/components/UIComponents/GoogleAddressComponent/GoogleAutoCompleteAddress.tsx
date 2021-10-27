@@ -17,6 +17,7 @@ interface props {
     error?: boolean;
     helperText?: string;
     onBlur?: (...args: any[]) => void;
+    disabled?:boolean;
 }
 
 type addressValue =
@@ -78,6 +79,7 @@ export default function GoogleAutoCompleteAddress (props: props) {
             required={props.required}
             helperText={props.helperText}
             error={props.error}
+            disabled={props.disabled}
         />
     );
 }

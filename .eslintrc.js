@@ -21,7 +21,6 @@ module.exports = {
         "@typescript-eslint"
     ],
     "rules": {
-        "no-debugger":"off",
         'indent': 'off',
         "react/react-in-jsx-scope": "off",
         "linebreak-style": 0,
@@ -51,8 +50,8 @@ module.exports = {
               "allow": ["warn", "error"]
             }
         ],
-        // "no-unused-vars": "off",
-        // "@typescript-eslint/no-unused-vars": "error",
+        "no-unused-vars": "off",
+        "@typescript-eslint/no-unused-vars": "error",
         "no-useless-constructor": "off",
         "@typescript-eslint/no-useless-constructor": "error",
         "react/prop-types": 0,

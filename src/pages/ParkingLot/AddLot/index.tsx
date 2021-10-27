@@ -1,17 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { HorizontalBarVersionState, useStore } from "../../../store";
 import { FieldArray, FormikProvider, useFormik } from 'formik';
 import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';
-import { Box, Container, FormControl, FormControlLabel, FormGroup, Grid, Link, Typography } from '@mui/material';
+import { Box, Container, Grid, Link, Typography } from '@mui/material';
 import { Button } from '../../../components/UIComponents/Button/Button.component';
-import { DatePickerInput } from '../../../components/UIComponents/DatePickerInput/DatePickerInput.component';
-import { TimePicker } from '../../../components/UIComponents/TimePicker/TimePicker.component';
 import Input from '../../../components/UIComponents/Input/Input';
 import Select from '../../../components/UIComponents/Select/SingleSelect';
-import MultiSelect from '../../../components/UIComponents/Select/MultiSelect';
 import ToastMessage from '../../../components/UIComponents/ToastMessage/ToastMessage.component';
-import { getCountryCode } from '../../../navigation/utils';
 // orderSchDel
 import { AddParkingLotForm, addLotFormInitialValues, lotContact } from '../../../models/ParkingLotModel';
 import AddParkingLotValidationSchema from './validation';
@@ -19,6 +14,9 @@ import { timeZones, productDelFreq, useCreateLot, useGetContactTypes } from './q
 import DiscardChangesDialog from '../../../components/UIComponents/ConfirmationDialog/DiscardChangesDialog.component';
 import AutocompleteInput from '../../../components/UIComponents/GoogleAddressComponent/GoogleAutoCompleteAddress';
 import { PlusIcon, EditIcon } from '../../../assets/icons';
+// import MultiSelect from '../../../components/UIComponents/Select/MultiSelect';
+// import { DatePickerInput } from '../../../components/UIComponents/DatePickerInput/DatePickerInput.component';
+// import { TimePicker } from '../../../components/UIComponents/TimePicker/TimePicker.component';
 // import { AddLotHeaderMenu } from '../../../components/UIComponents/AddLotHeaderMenu/AddLotHeaderMenu.component';
 
 import { useAddedCustomerIdStore } from '../../../store';
@@ -55,6 +53,7 @@ function AddLot(): React.ReactElement {
     const { mutate: addNewLot, isSuccess, isError } = useCreateLot();
     const { data: contactTypeList } = useGetContactTypes();
     const [primaryContactType, setPrimaryContactType] = useState('');
+    const [formSuccess, setFormSuccess] = useState(false);
     const [secondaryContactType, setSecondaryContactType] = useState('');
     const [formStatus, setFormStatus] = useState<FormStatusType>({ message: '', type: '' });
     const [open, setOpen] = React.useState(false);
@@ -65,7 +64,7 @@ function AddLot(): React.ReactElement {
         if (isSuccess) {
             setAPIResponse(true);
             setFormStatus(formStatusProps.success);
-            formik.resetForm({});
+            setFormSuccess(true);
         }
         if (isError) {
             setAPIResponse(true);
@@ -74,17 +73,20 @@ function AddLot(): React.ReactElement {
         setTimeout(() => {
             setAPIResponse(false);
         }, 6000);
-        
+
     }, [isSuccess, isError]);
+
+    // useEffect(() => {
+        // data: newLotData
+    // }, [newLotData]);
 
     useEffect(() => {
         if (contactTypeList?.data.length) {
-            console.warn("contact types-->", contactTypeList.data.find((contactType:any)=> contactType.locationContactNm.toLowerCase() === 'secondary'));
-            const primaryContactObj = contactTypeList.data.find((contactType:any)=> contactType.locationContactNm.toLowerCase() === 'primary');
-            const secContactObj = contactTypeList.data.find((contactType:any)=> contactType.locationContactNm.toLowerCase() === 'secondary');
+            const primaryContactObj = contactTypeList.data.find((contactType: any) => contactType.locationContactNm.toLowerCase() === 'primary');
+            const secContactObj = contactTypeList.data.find((contactType: any) => contactType.locationContactNm.toLowerCase() === 'secondary');
             setPrimaryContactType(primaryContactObj?.locationContactCd);
             setSecondaryContactType(secContactObj?.locationContactCd);
-            
+
         }
     }, [contactTypeList]);
 
@@ -107,7 +109,7 @@ function AddLot(): React.ReactElement {
 
     const createAddLotPayload = (form: AddParkingLotForm) => {
         const apiPayload = {
-            customer_id: addedCustomerId?addedCustomerId:"37632a0d-7ab8-4b3d-9606-ee1d6f089557",
+            customer_id: addedCustomerId ? addedCustomerId : "37632a0d-7ab8-4b3d-9606-ee1d6f089557",
             lot_name: form.lotName,
             lot_id: form.lotId,
             jurisdiction_id: form.jurisdictionId,
@@ -120,7 +122,7 @@ function AddLot(): React.ReactElement {
             timezone_cd: form.timeZone.value,
             country: form.country,
             location_contact: form.locationContact.map((contactObj: any, index) => ({
-                location_contact_type_cd: index === 0? primaryContactType:secondaryContactType,
+                location_contact_type_cd: index === 0 ? primaryContactType : secondaryContactType,
                 contact_first_name: contactObj.firstName,
                 contact_last_name: contactObj.lastName,
                 contact_email: contactObj.email,
@@ -152,7 +154,7 @@ function AddLot(): React.ReactElement {
         formik.setFieldValue('city', addressObj.city);
         formik.setFieldValue('state', addressObj.state);
         formik.setFieldValue('postalCode', addressObj.postalCode);
-        formik.setFieldValue('country',addressObj.country);
+        formik.setFieldValue('country', addressObj.country);
     }
 
     const formik = useFormik({
@@ -161,7 +163,6 @@ function AddLot(): React.ReactElement {
         onSubmit: (values) => {
             createNewLot(values);
         },
-        // enableReinitialize: true,
     });
 
     return (
@@ -173,21 +174,19 @@ function AddLot(): React.ReactElement {
                             <Grid container mt={1}>
                                 <Grid container item md={12} mt={2} mb={1}>
                                     <Grid item xs={6}>
-                                    <Typography variant="h4" component="h4" gutterBottom className="left-heading fw-bold" mb={1}>
-                                        General Information
-                                    </Typography>
+                                        <Typography variant="h4" component="h4" gutterBottom className="left-heading fw-bold" mb={1}>
+                                            General Information
+                                        </Typography>
                                     </Grid>
-                                    <Grid item xs={6}>
-                                       
+                                    {formSuccess && <Grid item xs={6}>
                                         <Button
-                                                types="save"
-                                                aria-label="save"
-                                                className="edit-button"
-                                            >
-                                                 <EditIcon /> <span>{t("buttons.edit")}</span>
-                                            </Button>
-                                    </Grid>
-                                    
+                                            types="save"
+                                            aria-label="save"
+                                            className="edit-button"
+                                        >
+                                            <EditIcon /> <span>{t("buttons.edit")}</span>
+                                        </Button>
+                                    </Grid>}
                                 </Grid>
                                 <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
                                     <Input
@@ -197,6 +196,7 @@ function AddLot(): React.ReactElement {
                                         helperText={(formik.touched.lotName && formik.errors.lotName) ? formik.errors.lotName : undefined}
                                         error={(formik.touched.lotName && formik.errors.lotName) ? true : false}
                                         description=''
+                                        disabled={formSuccess}
                                         required
                                         {...formik.getFieldProps('lotName')}
                                     />
@@ -209,6 +209,7 @@ function AddLot(): React.ReactElement {
                                         helperText={(formik.touched.lotId && formik.errors.lotId) ? formik.errors.lotId : undefined}
                                         error={(formik.touched.lotId && formik.errors.lotId) ? true : false}
                                         description=''
+                                        disabled={formSuccess}
                                         required
                                         {...formik.getFieldProps('lotId')}
                                     />
@@ -223,6 +224,7 @@ function AddLot(): React.ReactElement {
                                         helperText={(formik.touched.addressLine1 && formik.errors.addressLine1) ? formik.errors.addressLine1 : undefined}
                                         error={(formik.touched.addressLine1 && formik.errors.addressLine1) ? true : false}
                                         required
+                                        disabled={formSuccess}
                                     />
 
                                 </Grid>
@@ -235,6 +237,7 @@ function AddLot(): React.ReactElement {
                                         error={(formik.touched.addressLine2 && formik.errors.addressLine2) ? true : false}
                                         description=''
                                         required
+                                        disabled={formSuccess}
                                         {...formik.getFieldProps('addressLine2')}
                                     />
                                 </Grid>
@@ -286,6 +289,7 @@ function AddLot(): React.ReactElement {
                                         error={(formik.touched.county && formik.errors.county) ? true : false}
                                         description=''
                                         required
+                                        disabled={formSuccess}
                                         {...formik.getFieldProps('county')}
                                     />
                                 </Grid>
@@ -301,6 +305,7 @@ function AddLot(): React.ReactElement {
                                         error={(formik.touched.timeZone && formik.errors.timeZone) ? true : false}
                                         onChange={formik.setFieldValue}
                                         onBlur={() => { formik.setFieldTouched("timeZone"); formik.validateField("timeZone"); }}
+                                        disabled={formSuccess}
                                         required
                                     />
                                 </Grid>
@@ -313,6 +318,7 @@ function AddLot(): React.ReactElement {
                                         error={(formik.touched.country && formik.errors.country) ? true : false}
                                         description=''
                                         required
+                                        disabled={formSuccess}
                                         {...formik.getFieldProps('country')}
                                     />
                                 </Grid>
@@ -324,6 +330,7 @@ function AddLot(): React.ReactElement {
                                         helperText={(formik.touched.jurisdictionId && formik.errors.jurisdictionId) ? formik.errors.jurisdictionId : undefined}
                                         error={(formik.touched.jurisdictionId && formik.errors.jurisdictionId) ? true : false}
                                         description=''
+                                        disabled={formSuccess}
                                         {...formik.getFieldProps('jurisdictionId')}
                                     />
                                 </Grid>
@@ -344,14 +351,15 @@ function AddLot(): React.ReactElement {
                                         helperText={(formik.touched.productDelFreq && formik.errors.productDelFreq) ? formik.errors.productDelFreq.value : undefined}
                                         error={(formik.touched.timeZone && formik.errors.timeZone) ? true : false}
                                         onChange={formik.setFieldValue}
+                                        disabled={formSuccess}
                                         onBlur={() => { formik.setFieldTouched("productDelFreq"); formik.validateField("productDelFreq"); }}
                                     />
                                 </Grid>
-                                <Grid item md={12} mt={2} mb={1}>
+                                {/* <Grid item md={12} mt={2} mb={1}>
                                     <Typography variant="h4" component="h4" gutterBottom className="fw-bold" mb={1}>
                                         Order Schedule Delivery info (Max 10)
                                     </Typography>
-                                </Grid>
+                                </Grid> */}
                                 {/* <FieldArray
                                     name="orderScheduleDel"
                                     render={(arrayHelpers) => (
@@ -511,6 +519,7 @@ function AddLot(): React.ReactElement {
                                                             id={`locationContact[${index}].firstName`}
                                                             label='First Name'
                                                             type='text'
+                                                            disabled={formSuccess}
                                                             helperText={
                                                                 formik?.errors?.locationContact && formik?.touched?.locationContact &&
                                                                     (formik.touched?.locationContact?.[index]?.firstName && ((formik.errors?.locationContact?.[index] as lotContact)?.firstName))
@@ -532,6 +541,7 @@ function AddLot(): React.ReactElement {
                                                             id={`locationContact[${index}].lastName`}
                                                             label='Last Name'
                                                             type='text'
+                                                            disabled={formSuccess}
                                                             helperText={
                                                                 formik?.errors?.locationContact && formik?.touched?.locationContact &&
                                                                     (formik.touched?.locationContact?.[index]?.lastName && ((formik.errors?.locationContact?.[index] as lotContact)?.lastName))
@@ -553,6 +563,7 @@ function AddLot(): React.ReactElement {
                                                             id={`locationContact[${index}].email`}
                                                             label='Email'
                                                             type="text"
+                                                            disabled={formSuccess}
                                                             helperText={
                                                                 formik?.errors?.locationContact && formik?.touched?.locationContact &&
                                                                     (formik.touched?.locationContact?.[index]?.email && ((formik.errors?.locationContact?.[index] as lotContact)?.email))
@@ -586,6 +597,7 @@ function AddLot(): React.ReactElement {
                                                                     ? true : false
                                                             }
                                                             description=''
+                                                            disabled={formSuccess}
                                                             required
                                                             {...formik.getFieldProps(`locationContact[${index}].phoneNumber`)}
                                                         />
@@ -627,7 +639,7 @@ function AddLot(): React.ReactElement {
                                             types="save"
                                             aria-label="save"
                                             className="ml-4"
-                                            disabled={(!formik.isValid || !formik.dirty) || formik.isSubmitting}
+                                            disabled={(!formik.isValid || !formik.dirty) || formSuccess}
                                         >
                                             {t("buttons.save")}
                                         </Button>

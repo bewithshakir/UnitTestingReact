@@ -13,10 +13,7 @@ const AddParkingLotValidationSchema = Yup.object().shape({
     county: Yup.string().required('Required'), 
     country:  Yup.string().required('Required'), 
     postalCode: Yup.string().matches(/^[0-9]{1,9}$/, 'Invalid postal code.').required('Required'),
-    jurisdictionId: Yup.string()
-    .min(13, 'Too Short!')
-    .max(13, 'Too Long!')
-    .required('Required'),
+    jurisdictionId: Yup.string().min(13, 'Should be minimum 13 characters long').required('Required'),
     productDelFreq: Yup.object().shape({ label: Yup.string(), value: Yup.string() }),
     timeZone: Yup.object().shape({ label: Yup.string().required('Required'), value: Yup.string().required('Required') }),
     locationContact: Yup.array()
@@ -25,7 +22,7 @@ const AddParkingLotValidationSchema = Yup.object().shape({
                 firstName: Yup.string().required('Required'),
                 lastName: Yup.string().required('Required'),
                 email: Yup.string().email('Invalid email').required('Required'),
-                phoneNumber: Yup.string().matches(/^(?:\+?1[-.●]?)?\(?([0-9]{3})\)?[-.●]?([0-9]{3})[-.●]?([0-9]{4})$/, 'Invalid phone number'),
+                phoneNumber: Yup.string().matches(/^(?:\+?1[-.●]?)?\(?([0-9]{3})\)?[-.●]?([0-9]{3})[-.●]?([0-9]{4})$/, 'Invalid phone number').required('Required'),
             })
         )
         .required('Must have emergency contact') 

@@ -25,6 +25,7 @@ interface props {
     description?: string;
     onChange: (...args: any[]) => void;
     onBlur?: (...args: any[]) => void;
+    disabled?:boolean;
 }
 
 export default function SingleSelect(props: props) {
@@ -60,6 +61,7 @@ export default function SingleSelect(props: props) {
                     onBlur={props.onBlur}
                     components={{ IndicatorSeparator: () => null, DropdownIndicator }}
                     isSearchable={false}
+                    isDisabled={props.disabled}
                 />
                 {props.helperText && (
                 <FormHelperText

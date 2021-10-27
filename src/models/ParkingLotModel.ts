@@ -1,5 +1,4 @@
 import { useTranslation } from 'react-i18next';
-import { Moment } from 'moment';
 import { headerObj } from '../components/UIComponents/DataGird/grid.component';
 import DriveEtaOutlinedIcon from '@material-ui/icons/DriveEtaOutlined';
 
@@ -60,10 +59,10 @@ export interface SelectProps {
     value: string,
 }
 
-type mutiSelectItem = {
-    label: string,
-    value: string | number
-}
+// type mutiSelectItem = {
+//     label: string,
+//     value: string | number
+// }
 
 export interface lotContact {
     firstName: string,
