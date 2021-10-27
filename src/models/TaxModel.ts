@@ -1,9 +1,15 @@
 import moment from 'moment';
 
+export interface SelectProps {
+    label: string,
+    value: string,
+}
+
 export default class TaxModel {
     searchInput: string;
     state: string;
     city: string;
+    countryCd: string;
     startDate: moment.Moment | null;
     endDate: moment.Moment | null;
     federalRate: string;
@@ -15,11 +21,13 @@ export default class TaxModel {
     InspFuelRate: string;
     miscLocalFuelRate: string;
     loadFuel: string;
+    fuelType: SelectProps;
 
     constructor() {
         this.searchInput = '';
         this.state = '';
         this.city = '';
+        this.countryCd = '';
         this.startDate = moment();
         this.endDate = moment();
         this.federalRate = '';
@@ -31,6 +39,7 @@ export default class TaxModel {
         this.InspFuelRate = '';
         this.miscLocalFuelRate = '';
         this.loadFuel = '';
+        this.fuelType = { label: '', value: '' };
     }
 
 }
