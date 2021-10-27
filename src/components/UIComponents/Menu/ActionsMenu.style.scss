@@ -31,14 +31,14 @@ div{
     }
     .Mui-selected{
       font-weight: bold;
-      .menuitem-text{
-        color: var(--Blue-Btn);
-      }
-      .menuitem-icon{
-        svg path:first-child {
-          fill: var(--Blue-Btn);
-        }
-      }
+      // .menuitem-text{
+      //   color: var(--Blue-Btn);
+      // }
+      // .menuitem-icon{
+      //   svg path:first-child {
+      //     fill: var(--Blue-Btn);
+      //   }
+      // }
     }
   }
 }

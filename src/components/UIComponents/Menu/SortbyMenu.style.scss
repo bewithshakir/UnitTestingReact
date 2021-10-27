@@ -19,6 +19,7 @@ div{
       letter-spacing: 0;
       min-width: 150px;
       max-width: 360px;
+      color: var(--Darkgray);
       width: -webkit-fill-available;
       white-space: normal;
     }
@@ -28,8 +29,12 @@ div{
       padding-left: 1.25rem;
     }
     .Mui-selected{
-      font-weight: bold;
-      color: var(--Blue-Btn);
+      .menuitem-text{
+        .MuiTypography-root{
+          font-weight: bold;
+          color: var(--Blue-Btn);
+        }
+      }
       .menuitem-icon{
         svg path:first-child {
           fill: var(--Blue-Btn);

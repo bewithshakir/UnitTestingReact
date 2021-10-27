@@ -115,7 +115,7 @@ export default function ProfileMenu (props: ProfileMenuProps) {
                         {option.icon}
                       </ListItemIcon>
                       <div className="menuitem-text">
-                        <Typography color="var(--Darkgray)" variant="inherit">{option.label}</Typography>
+                        <Typography color="var(--Darkgray)" variant="h4" className="fw-bold">{option.label}</Typography>
                       </div>
                     </MenuItem>
                   ))}

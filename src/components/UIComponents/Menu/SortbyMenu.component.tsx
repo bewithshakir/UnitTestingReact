@@ -114,7 +114,7 @@ export default function SortbyMenu (props: SortbyMenuProps) {
                       onClick={(event) => handleMenuItemClick(event, index)}
                     >
                       <div className="menuitem-text">
-                        <Typography color="var(--Darkgray)" variant="inherit">{option}</Typography>
+                        <Typography variant="h4">{option}</Typography>
                       </div>
                       <ListItemIcon className="menuitem-icon" >
                         {index === selectedIndex ?

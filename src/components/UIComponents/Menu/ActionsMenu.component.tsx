@@ -127,7 +127,7 @@ export default function ActionsMenu (props: ActionsMenuProps) {
                         </ListItemIcon>
                       }
                       <div className="menuitem-text">
-                        <Typography color="var(--Darkgray)" variant="inherit">{option.label}</Typography>
+                        <Typography variant="inherit">{option.label}</Typography>
                       </div>
                     </MenuItem>
                   ))}
