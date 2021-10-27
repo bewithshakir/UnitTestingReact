@@ -9,7 +9,9 @@ div{
         .info-section{
             border: 1px solid var(--InformationMessageYellow);
             font-size: 14px;
-            background-color: var(--InformationMessageBackGround);
+            background-color: var(--InformationMessageYellow);
+            color: var(--universalGray);
+            opacity: 60%;
         }
       }
   }
