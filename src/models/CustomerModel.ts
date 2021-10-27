@@ -115,8 +115,6 @@ export default class CustomerModel {
 
     fieldsToDisplay (): headerObj[] {
         return [
-            { field: "avatar", label: "IMAGE", type: 'image', sortable: false },
-            { field: "customerId", label: "ID", type: 'text', bold: true },
             { field: "customerName", label: "CUSTOMER NAME", type: 'text', sortable: true },
             { field: "contactName", label: "CONTACT NAME", type: 'text' },
             { field: "address", label: "ADDRESS", type: 'text' },
@@ -125,10 +123,11 @@ export default class CustomerModel {
             { field: "zipCode", label: "ZIP", type: 'text' },
             { field: "totalLots", label: "LOTS", type: 'button', icon: LocationOnOutlinedIcon },
             { field: "paymentType", label: "SETTLEMENT TYPE", type: 'text' },
+            { field: "createdAt", label: "Date Created", type: 'text' },
         ];
     }
 
-    fieldsToDisplayLotTable(): headerObj[] {
+    fieldsToDisplayLotTable (): headerObj[] {
         return [
             { field: "deliveryLocationNm", label: "LOT NAME", type: 'text' },
             { field: "streetAddress", label: "STREET ADDRESS", type: 'text' },
@@ -142,9 +141,8 @@ export default class CustomerModel {
     }
 
     ACTION_TYPES = {
-        RAISE_REQ: 'raise req',
-        DRIVER_DETAILS: 'driver details',
-        OTHER_DETAIL: 'other details',
+        EDIT: 'edit',
+        DELETE: 'delete',
         CONTACT_DETAILS: 'contact details'
     };
 
@@ -152,16 +150,12 @@ export default class CustomerModel {
         const { t } = useTranslation();
         return [
             {
-                label: t("menus.data-grid-actions.raise a request"),
-                action: this.ACTION_TYPES.RAISE_REQ,
+                label: t("menus.data-grid-actions.edit"),
+                action: this.ACTION_TYPES.EDIT
             },
             {
-                label: t("menus.data-grid-actions.fee & driver details"),
-                action: this.ACTION_TYPES.DRIVER_DETAILS
-            },
-            {
-                label: t("menus.data-grid-actions.other details"),
-                action: this.ACTION_TYPES.OTHER_DETAIL
+                label: t("menus.data-grid-actions.delete"),
+                action: this.ACTION_TYPES.DELETE
             },
             {
                 label: t("menus.data-grid-actions.contact details"),
