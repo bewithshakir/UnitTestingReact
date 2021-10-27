@@ -21,25 +21,24 @@ interface props {
 }
 
 type addressValue =
-    { address1: string, address2: string, city: string, state: string, zip: string, country: string }
+    { address1: string, address2: string, city: string, state: string, zip: string}
 
 
 export default function GoogleAutoCompleteAddress (props: props) {
-    const [address, setAddress] = useState({ address1: '', address2: '', city: '', state: '', zip: '', placeId: '' , country: ''});
+    const [address, setAddress] = useState({ address1: '', address2: '', city: '', state: '', zip: '', placeId: '' });
     const handleChange = (e: any) => { setAddress(x => ({ ...x, [e.target.name]: e.target.value })); };
     const debouncedValue = useDebounce(address.placeId, 10);
     const { data } = FetchFormattedAddress(debouncedValue);
 
     const onFinalChanges = (addresss: addressValue) => {
-        const { address1, address2, city, state, zip , country} = addresss;
+        const { address1, address2, city, state, zip } = addresss;
         const required = address1 && address2 && city && state && zip;
         const obj = {
             addressLine1: address1,
             addressLine2: address2,
             city,
             state,
-            postalCode: zip,
-            country
+            postalCode: zip
         };
         required && props.onChange(obj);
     };
@@ -51,15 +50,14 @@ export default function GoogleAutoCompleteAddress (props: props) {
                 const a = x.split(',');
                 return a[a.length - 1] || a[a.length - 2];
             };
-            const { address1, city, state, zip, country } = data.data;
+            const { address1, city, state, zip } = data.data;
             const obj = {
                 address1,
                 address2: getAddress2(address1),
                 city,
                 state,
                 zip,
-                placeId: '', 
-                country
+                placeId: ''
             };
             setAddress(obj);
             onFinalChanges(obj);

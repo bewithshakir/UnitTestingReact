@@ -53,6 +53,18 @@ div {
             border-color: var(--Darkgray);
           }
         }
+        .Mui-disabled{
+          background: var(--Lightgray_4) 0% 0% no-repeat padding-box;
+          color: var(--Lightergray);
+          // border: 1px solid var(--Lightgray_2);
+          input{
+            background: var(--Lightgray_4) 0% 0% no-repeat padding-box;
+            color: var(--Lightergray);
+          }
+          .MuiOutlinedInput-notchedOutline{
+            border: 1px solid var(--Lightgray_2);
+          }
+        }
   
         .css-1f2kitb-MuiDateRangePickerDay-root {
           border-top-right-radius: 0px;

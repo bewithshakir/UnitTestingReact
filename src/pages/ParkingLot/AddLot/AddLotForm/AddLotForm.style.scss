@@ -27,5 +27,15 @@ div{
       .left-heading{
         margin-top: 5px;
       }
+      .disabled-text-link{
+        text-decoration-color: var(--Secondary-Background);
+        h3{
+          color:  var(--Secondary-Background);
+        }
+      }
+      input[type="text"]:disabled {
+        background: var(--Lightgray_4) 0% 0% no-repeat padding-box;
+        color: var(--Lightergray);
+      }
   }
   

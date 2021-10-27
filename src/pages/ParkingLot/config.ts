@@ -66,3 +66,18 @@ export const productDelFreq = [
   { label: 'Monthly', value: 'monthly' },
   { label: 'Bi-Weekly', value: 'bi-weekly' },
 ];
+
+export const getCountry = () => {
+  let savedTheme = localStorage.getItem('theme');
+  if (savedTheme) {
+    savedTheme = JSON.parse(savedTheme);
+    switch (savedTheme) {
+      case "USA":
+        return "United States";
+      case "UK":
+        return "UK";
+      default:
+        return "United States";
+    }
+  }
+};

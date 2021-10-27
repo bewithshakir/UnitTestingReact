@@ -8,17 +8,17 @@ import Input from '../../../../components/UIComponents/Input/Input';
 import Select from '../../../../components/UIComponents/Select/SingleSelect';
 import ToastMessage from '../../../../components/UIComponents/ToastMessage/ToastMessage.component';
 // orderSchDel
-import { AddParkingLotForm, addLotFormInitialValues, lotContact } from '../../../../models/ParkingLotModel';
+import { AddParkingLotForm, addLotFormInitialValues, lotContact, orderSchDel } from '../../../../models/ParkingLotModel';
 import AddParkingLotValidationSchema from '../validation';
 import { useCreateLot, useGetContactTypes } from '../queries';
 import DiscardChangesDialog from '../../../../components/UIComponents/ConfirmationDialog/DiscardChangesDialog.component';
 import AutocompleteInput from '../../../../components/UIComponents/GoogleAddressComponent/GoogleAutoCompleteAddress';
 import { PlusIcon, EditIcon } from '../../../../assets/icons';
 import { useTheme } from '../../../../contexts/Theme/Theme.context';
-import { formStatusObj, timeZones, productDelFreq} from '../../config';
-// import MultiSelect from '../../../components/UIComponents/Select/MultiSelect';
-// import { DatePickerInput } from '../../../components/UIComponents/DatePickerInput/DatePickerInput.component';
-// import { TimePicker } from '../../../components/UIComponents/TimePicker/TimePicker.component';
+import { formStatusObj, timeZones, productDelFreq, getCountry} from '../../config';
+import MultiSelect from '../../../../components/UIComponents/Select/MultiSelect';
+import { DatePickerInput } from '../../../../components/UIComponents/DatePickerInput/DatePickerInput.component';
+import { TimePicker } from '../../../../components/UIComponents/TimePicker/TimePicker.component';
 
 import { useAddedCustomerIdStore } from '../../../../store';
 
@@ -112,7 +112,7 @@ function AddLotForm(): React.ReactElement {
             state: form.state,
             postal_code: form.postalCode,
             timezone_cd: form.timeZone.value,
-            country: form.country,
+            country: getCountry(),
             location_contact: form.locationContact.map((contactObj: any, index) => ({
                 location_contact_type_cd: index === 0 ? primaryContactType : secondaryContactType,
                 contact_first_name: contactObj.firstName,
@@ -301,20 +301,7 @@ function AddLotForm(): React.ReactElement {
                                         required
                                     />
                                 </Grid>
-                                <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
-                                    <Input
-                                        id='country'
-                                        label='Country'
-                                        type='text'
-                                        helperText={(formik.touched.country && formik.errors.country) ? formik.errors.country : undefined}
-                                        error={(formik.touched.country && formik.errors.country) ? true : false}
-                                        description=''
-                                        required
-                                        disabled={formSuccess}
-                                        {...formik.getFieldProps('country')}
-                                    />
-                                </Grid>
-                                <Grid item xs={12} md={6} pl={2.5} pb={2.5}>
+                                <Grid item xs={6} pr={2.5} >
                                     <Input
                                         id='jurisdictionId'
                                         label='Tax Jurisdiction'
@@ -344,11 +331,11 @@ function AddLotForm(): React.ReactElement {
                                         helperText={(formik.touched.productDelFreq && formik.errors.productDelFreq) ? formik.errors.productDelFreq.value : undefined}
                                         error={(formik.touched.timeZone && formik.errors.timeZone) ? true : false}
                                         onChange={formik.setFieldValue}
-                                        disabled={formSuccess}
+                                        disabled
                                         onBlur={() => { formik.setFieldTouched("productDelFreq"); formik.validateField("productDelFreq"); }}
                                     />
                                 </Grid>
-                                {/* <Grid item md={12} mt={2} mb={1}>
+                                <Grid item md={12} mt={2} mb={1}>
                                     <Typography variant="h4" component="h4" gutterBottom className="fw-bold" mb={1}>
                                         Order Schedule Delivery info (Max 10)
                                     </Typography>
@@ -357,29 +344,30 @@ function AddLotForm(): React.ReactElement {
                                     name="orderScheduleDel"
                                     render={(arrayHelpers) => (
                                         <React.Fragment>
-                                            {formik.values.orderScheduleDel.map((index) => (
+                                            {formik.values.orderScheduleDel.map((orderSchObj, index) => (
                                                 <Grid container key={index}>
 
-                                                    <Grid item md={3} pl={2.5}>
+                                                    <Grid item md={3} pl={2.5} pr={2.5} pb={2.5}>
                                                         <DatePickerInput
                                                             type="single-date"
                                                             label='FROM DATE'
                                                             name={`orderScheduleDel[${index}].fromDate`}
                                                             value={formik.values.orderScheduleDel[index].fromDate}
                                                             onChange={formik.setFieldValue}
+                                                            disabled
                                                             onClose={() => { formik.setFieldTouched(`orderScheduleDel[${index}].fromDate`); formik.validateField(`orderScheduleDel[${index}].fromDate`); }}
                                                             id={`orderScheduleDel[${index}].fromDate`}
-                                                            helperText={
-                                                                formik?.errors?.orderScheduleDel && formik?.touched?.orderScheduleDel &&
-                                                                    (formik.touched?.orderScheduleDel?.[index]?.fromDate && ((formik.errors?.orderScheduleDel?.[index] as orderSchDel)?.fromDate))
-                                                                    ?
-                                                                    (formik.errors.orderScheduleDel[index] as orderSchDel).fromDate : undefined
-                                                            }
-                                                            error={
-                                                                formik?.errors?.orderScheduleDel && formik?.touched?.orderScheduleDel &&
-                                                                    (formik.touched?.orderScheduleDel?.[index]?.fromDate && ((formik.errors?.orderScheduleDel?.[index] as orderSchDel)?.fromDate))
-                                                                    ? true : false
-                                                            }
+                                                            // helperText={
+                                                            //     formik?.errors?.orderScheduleDel && formik?.touched?.orderScheduleDel &&
+                                                            //         (formik.touched?.orderScheduleDel?.[index]?.fromDate && ((formik.errors?.orderScheduleDel?.[index] as orderSchDel)?.fromDate))
+                                                            //         ?
+                                                            //         (formik.errors.orderScheduleDel[index] as orderSchDel).fromDate : undefined
+                                                            // }
+                                                            // error={
+                                                            //     formik?.errors?.orderScheduleDel && formik?.touched?.orderScheduleDel &&
+                                                            //         (formik.touched?.orderScheduleDel?.[index]?.fromDate && ((formik.errors?.orderScheduleDel?.[index] as orderSchDel)?.fromDate))
+                                                            //         ? true : false
+                                                            // }
                                                         />
                                                     </Grid>
                                                     <Grid item md={3} pl={2.5} pr={2.5} pb={2.5}>
@@ -390,18 +378,19 @@ function AddLotForm(): React.ReactElement {
                                                             name={`orderScheduleDel[${index}].toDate`}
                                                             value={formik.values.orderScheduleDel[index].toDate}
                                                             onChange={formik.setFieldValue}
+                                                            disabled
                                                             onClose={() => { formik.setFieldTouched(`orderScheduleDel[${index}].toDate`); formik.validateField(`orderScheduleDel[${index}].toDate`); }}
-                                                            helperText={
-                                                                formik?.errors?.orderScheduleDel && formik?.touched?.orderScheduleDel &&
-                                                                    (formik.touched?.orderScheduleDel?.[index]?.toDate && ((formik.errors?.orderScheduleDel?.[index] as orderSchDel)?.toDate))
-                                                                    ?
-                                                                    (formik.errors.orderScheduleDel[index] as orderSchDel).toDate : undefined
-                                                            }
-                                                            error={
-                                                                formik?.errors?.orderScheduleDel && formik?.touched?.orderScheduleDel &&
-                                                                    (formik.touched?.orderScheduleDel?.[index]?.toDate && ((formik.errors?.orderScheduleDel?.[index] as orderSchDel)?.toDate))
-                                                                    ? true : false
-                                                            }
+                                                            // helperText={
+                                                            //     formik?.errors?.orderScheduleDel && formik?.touched?.orderScheduleDel &&
+                                                            //         (formik.touched?.orderScheduleDel?.[index]?.toDate && ((formik.errors?.orderScheduleDel?.[index] as orderSchDel)?.toDate))
+                                                            //         ?
+                                                            //         (formik.errors.orderScheduleDel[index] as orderSchDel).toDate : undefined
+                                                            // }
+                                                            // error={
+                                                            //     formik?.errors?.orderScheduleDel && formik?.touched?.orderScheduleDel &&
+                                                            //         (formik.touched?.orderScheduleDel?.[index]?.toDate && ((formik.errors?.orderScheduleDel?.[index] as orderSchDel)?.toDate))
+                                                            //         ? true : false
+                                                            // }
                                                         />
                                                     </Grid>
 
@@ -414,6 +403,7 @@ function AddLotForm(): React.ReactElement {
                                                             name={`orderScheduleDel[${index}].productDelDays`}
                                                             value={formik.values.orderScheduleDel[index].productDelDays}
                                                             onChange={formik.setFieldValue}
+                                                            disabled
                                                             onBlur={() => { formik.setFieldTouched(`orderScheduleDel[${index}].productDelDays`); formik.validateField(`orderScheduleDel[${index}].productDelDays`); }}
                                                             // helperText={
                                                             //     formik?.errors?.orderScheduleDel && formik?.touched?.orderScheduleDel &&
@@ -421,11 +411,11 @@ function AddLotForm(): React.ReactElement {
                                                             //         ?
                                                             //         (formik.errors.orderScheduleDel[index] as orderSchDel).productDelDays : undefined
                                                             // }
-                                                            error={
-                                                                formik?.errors?.orderScheduleDel && formik?.touched?.orderScheduleDel &&
-                                                                    (formik.touched?.orderScheduleDel?.[index]?.productDelDays && ((formik.errors?.orderScheduleDel?.[index] as orderSchDel)?.productDelDays))
-                                                                    ? true : false
-                                                            }
+                                                            // error={
+                                                            //     formik?.errors?.orderScheduleDel && formik?.touched?.orderScheduleDel &&
+                                                            //         (formik.touched?.orderScheduleDel?.[index]?.productDelDays && ((formik.errors?.orderScheduleDel?.[index] as orderSchDel)?.productDelDays))
+                                                            //         ? true : false
+                                                            // }
 
                                                         />
                                                     </Grid>
@@ -437,6 +427,7 @@ function AddLotForm(): React.ReactElement {
                                                             name={`orderScheduleDel[${index}].startTime`}
                                                             value={formik.values.orderScheduleDel[index].startTime}
                                                             onChange={formik.setFieldValue}
+                                                            disabled
                                                             helperText={
                                                                 formik?.errors?.orderScheduleDel && formik?.touched?.orderScheduleDel &&
                                                                     (formik.touched?.orderScheduleDel?.[index]?.startTime && ((formik.errors?.orderScheduleDel?.[index] as orderSchDel)?.startTime))
@@ -448,7 +439,6 @@ function AddLotForm(): React.ReactElement {
                                                                     (formik.touched?.orderScheduleDel?.[index]?.startTime && ((formik.errors?.orderScheduleDel?.[index] as orderSchDel)?.startTime))
                                                                     ? true : false
                                                             }
-                                                        // {...formik.getFieldProps(`orderScheduleDel[${index}].startTime`)}
                                                         />
 
                                                     </Grid>
@@ -459,6 +449,7 @@ function AddLotForm(): React.ReactElement {
                                                             name={`orderScheduleDel[${index}].endTime`}
                                                             value={formik.values.orderScheduleDel[index].endTime}
                                                             onChange={formik.setFieldValue}
+                                                            disabled
                                                             helperText={
                                                                 formik?.errors?.orderScheduleDel && formik?.touched?.orderScheduleDel &&
                                                                     (formik.touched?.orderScheduleDel?.[index]?.endTime && ((formik.errors?.orderScheduleDel?.[index] as orderSchDel)?.endTime))
@@ -470,7 +461,6 @@ function AddLotForm(): React.ReactElement {
                                                                     (formik.touched?.orderScheduleDel?.[index]?.endTime && ((formik.errors?.orderScheduleDel?.[index] as orderSchDel)?.endTime))
                                                                     ? true : false
                                                             }
-                                                        // {...formik.getFieldProps(`orderScheduleDel[${index}].endTime`)}
                                                         />
 
                                                     </Grid>
@@ -481,21 +471,22 @@ function AddLotForm(): React.ReactElement {
                                                 <Link
                                                     variant="body2"
                                                     sx={{ display: "flex", alignItems: "center" }}
-                                                    onClick={() => {
-                                                        if (formik.values.locationContact.length < 5) {
-                                                            arrayHelpers.push({ firstName: "", lastName: "", email: "", phoneNumber: "" });
-                                                        }
-                                                    }}
+                                                    className="disabled-text-link"
+                                                    // onClick={() => {
+                                                    //     if (formik.values.locationContact.length < 5) {
+                                                    //         arrayHelpers.push({ firstName: "", lastName: "", email: "", phoneNumber: "" });
+                                                    //     }
+                                                    // }}
                                                 >
-                                                    <PlusIcon />
-                                                    <Typography variant="h3" component="h3" className="fw-bold MuiTypography-h5-primary" mb={1}>
+                                                    <span className="add-icon-span"><PlusIcon color={theme["--Secondary-Background"]} /></span>
+                                                    <Typography variant="h3" component="h3" className="fw-bold MuiTypography-h5-primary disabled-text" mb={1}>
                                                         ADD ANOTHER SCHEDULE CONTACT
                                                     </Typography>
                                                 </Link>
                                             </Grid>
                                         </React.Fragment>
                                     )}
-                                />  */}
+                                /> 
                                 <FieldArray
                                     name="locationContact"
                                     render={(arrayHelpers) => (
