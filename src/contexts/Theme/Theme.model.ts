@@ -45,4 +45,6 @@ export interface Theme {
   '--Lightgray_5': Color;
   '--ToastMessageRed': Color;
   '--ToastMessageGreen' : Color;
+  '--InformationMessageYellow': Color;
+  '--InformationMessageBackGround': Color;
 }
