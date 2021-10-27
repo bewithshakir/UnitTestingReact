@@ -61,6 +61,10 @@ const AddFuelTax = memo(() => {
         formik.setFieldValue('state', addressObj.state);
     }
 
+    const handleFuelTypeChange = () => {
+        return 0;
+    };
+
     return (
         <>
             <Box display="flex" mt={10} ml={16}>
@@ -110,7 +114,7 @@ const AddFuelTax = memo(() => {
                                         label='FUEL TYPE'
                                         placeholder='Choose'
                                         items={fuelTypes}
-                                        onChange={() => alert("hi")}
+                                        onChange={handleFuelTypeChange}
                                     />
                                 </Grid>
                                 <Grid item md={3} pl={2.5} pr={2.5} pb={2.5}>
