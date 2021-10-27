@@ -14,7 +14,7 @@ import { useHistory } from "react-router-dom";
 import { sortByOptions } from "./config";
 import { RightInfoPanel } from "../../components/UIComponents/RightInfoPanel/RightInfoPanel.component";
 import { Box, FormControl, Grid } from "@mui/material";
-import { HorizontalBarVersionState, useStore } from "../../store";
+import { HorizontalBarVersionState, useStore , useAddedCustomerIdStore} from "../../store";
 import ParkingLotModel from "../../models/ParkingLotModel";
 import { DataGridActionsMenuOption } from "../../components/UIComponents/Menu/DataGridActionsMenu.component";
 
@@ -39,7 +39,7 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
   const [filterData, setFilterData] = React.useState<{ [key: string]: string[] }>({});
   const [custFilterPanelVisible, setCustFilterPanelVisible] = React.useState(false);
   const [parkingLotlist, setCustomerList] = React.useState([]);
-  const customerId = "37632a0d-7ab8-4b3d-9606-ee1d6f089557";
+  const customerId = useAddedCustomerIdStore((state) => state.customerId);
 
   const { t } = useTranslation();
   const { data, fetchNextPage, isLoading }: any = useGetParkingLotDetails(

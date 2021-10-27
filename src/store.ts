@@ -23,7 +23,7 @@ interface customerFilterState{
 }
 
 interface addedCustomerIdState{
-  customerId: string | null,
+  customerId: string,
   setCustomerId: (...args: any) => void,
   removeCustomerId: (...args: any) => void,
 }
@@ -48,6 +48,6 @@ export const useCustomerFilterStore  = create<customerFilterState>((set) => ({
 
 export const useAddedCustomerIdStore  = create<addedCustomerIdState>((set) => ({
   customerId: '',
-  setCustomerId: (customerId:string|null) =>set(() => ({customerId})),
+  setCustomerId: (customerId:string) =>set(() => ({customerId})),
   removeCustomerId:  () =>set(() => ({customerId:''})),
 }));

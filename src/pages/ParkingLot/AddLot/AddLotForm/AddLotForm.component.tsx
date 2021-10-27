@@ -97,7 +97,7 @@ function AddLotForm(): React.ReactElement {
 
     const createAddLotPayload = (form: AddParkingLotForm) => {
         const apiPayload = {
-            customer_id: addedCustomerId ? addedCustomerId : "37632a0d-7ab8-4b3d-9606-ee1d6f089557",
+            customer_id: addedCustomerId ? addedCustomerId : "",
             lot_name: form.lotName,
             lot_id: form.lotId,
             jurisdiction_id: form.jurisdictionId,
