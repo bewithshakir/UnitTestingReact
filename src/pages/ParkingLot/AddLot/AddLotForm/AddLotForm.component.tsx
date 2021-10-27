@@ -10,12 +10,12 @@ import ToastMessage from '../../../../components/UIComponents/ToastMessage/Toast
 // orderSchDel
 import { AddParkingLotForm, addLotFormInitialValues, lotContact } from '../../../../models/ParkingLotModel';
 import AddParkingLotValidationSchema from '../validation';
-import { timeZones, productDelFreq, useCreateLot, useGetContactTypes } from '../queries';
+import { useCreateLot, useGetContactTypes } from '../queries';
 import DiscardChangesDialog from '../../../../components/UIComponents/ConfirmationDialog/DiscardChangesDialog.component';
 import AutocompleteInput from '../../../../components/UIComponents/GoogleAddressComponent/GoogleAutoCompleteAddress';
 import { PlusIcon, EditIcon } from '../../../../assets/icons';
 import { useTheme } from '../../../../contexts/Theme/Theme.context';
-import { formStatusObj} from '../../config';
+import { formStatusObj, timeZones, productDelFreq} from '../../config';
 // import MultiSelect from '../../../components/UIComponents/Select/MultiSelect';
 // import { DatePickerInput } from '../../../components/UIComponents/DatePickerInput/DatePickerInput.component';
 // import { TimePicker } from '../../../components/UIComponents/TimePicker/TimePicker.component';
@@ -352,8 +352,8 @@ function AddLotForm(): React.ReactElement {
                                     <Typography variant="h4" component="h4" gutterBottom className="fw-bold" mb={1}>
                                         Order Schedule Delivery info (Max 10)
                                     </Typography>
-                                </Grid> */}
-                                {/* <FieldArray
+                                </Grid> 
+                                <FieldArray
                                     name="orderScheduleDel"
                                     render={(arrayHelpers) => (
                                         <React.Fragment>
@@ -495,7 +495,7 @@ function AddLotForm(): React.ReactElement {
                                             </Grid>
                                         </React.Fragment>
                                     )}
-                                /> */}
+                                />  */}
                                 <FieldArray
                                     name="locationContact"
                                     render={(arrayHelpers) => (
