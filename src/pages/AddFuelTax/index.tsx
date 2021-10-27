@@ -20,10 +20,7 @@ const AddFuelTax = memo(() => {
 
     const fuelTypes = [
         { label: "Regular", value: "Regular" },
-        { label: "Premium", value: "Premium" },
-        { label: "Diesel", value: "Diesel" },
-        { label: "Midgrade", value: "Midgrade" },
-        { label: "DEF", value: "DEF" }
+        { label: "Diesel", value: "Diesel" }
     ];
 
 
