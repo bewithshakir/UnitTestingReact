@@ -4,7 +4,7 @@ import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 import AddLotForm from './AddLotForm/AddLotForm.component';
 import './AddLotWrapper.style.scss';
-import { addLotHeaderConfig } from '../config';
+import { addLotHeaderConfig, lotHeaderBoxSx, lotHeaderInnerBoxSx, tabsSx, panelBoxSx } from '../config';
 
 
 interface TabPanelProps {
@@ -18,14 +18,14 @@ interface MenuProps {
     current?: number;
 }
 
-function a11yProps(index: number) {
+const a11yProps = (index: number) => {
     return {
         id: `simple-tab-${index}`,
         'aria-controls': `simple-tabpanel-${index}`,
     };
-}
+};
 
-function TabPanel(props: TabPanelProps) {
+const TabPanel = (props: TabPanelProps) => {
     const { children, value, index, ...other } = props;
 
     return (
@@ -43,7 +43,7 @@ function TabPanel(props: TabPanelProps) {
             )}
         </div>
     );
-}
+};
 
 
 const AddLotWrapper: React.FC<MenuProps> = () => {
@@ -54,9 +54,9 @@ const AddLotWrapper: React.FC<MenuProps> = () => {
     };
 
     return (
-        <Box sx={{ width: '100%' }}>
-            <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+        <Box className='lot-header-box' sx={lotHeaderBoxSx}>
+            <Box sx={lotHeaderInnerBoxSx}>
+                <Tabs sx={tabsSx} value={value} onChange={handleChange} aria-label="basic tabs example">
                     {addLotHeaderConfig.map((headerTab, index) =>
                         <Tab key={headerTab.index} label={<React.Fragment>
                             <div className="tab-div">
@@ -67,21 +67,23 @@ const AddLotWrapper: React.FC<MenuProps> = () => {
                     )}
                 </Tabs>
             </Box>
-            <TabPanel value={value} index={0}>
-                <AddLotForm />
-            </TabPanel>
-            <TabPanel value={value} index={1}>
+            <Box sx={panelBoxSx}>
+                <TabPanel value={value} index={0}>
+                    <AddLotForm />
+                </TabPanel>
+                <TabPanel value={value} index={1}>
 
-            </TabPanel>
-            <TabPanel value={value} index={2}>
+                </TabPanel>
+                <TabPanel value={value} index={2}>
 
-            </TabPanel>
-            <TabPanel value={value} index={3}>
+                </TabPanel>
+                <TabPanel value={value} index={3}>
 
-            </TabPanel>
-            <TabPanel value={value} index={4}>
+                </TabPanel>
+                <TabPanel value={value} index={4}>
 
-            </TabPanel>
+                </TabPanel>
+            </Box>
         </Box>
     );
 };

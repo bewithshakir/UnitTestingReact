@@ -25,18 +25,18 @@ export const routes = [
         version: "Breadcrumbs-Single",
         exact: true,
       },
-      {
-        version:"Breadcrumbs-Many",
-        path: "/customer/parkingLots/addLot",
-        component: lazy(() => import('./pages/ParkingLot/AddLot/AddLotWrapper')),
-        exact: false,
-      }
+      
     ]
   },
   {
     path: "/taxes",
     component: lazy(() => import("./pages/AddFuelTax")),
     version: "Breadcrumbs-Single",
+  },
+  {
+    path: "/customer/parkingLots/addLot",
+    component: lazy(() => import('./pages/ParkingLot/AddLot/AddLotWrapper')),
+    exact: false,
   },
   {
     path: "/query",

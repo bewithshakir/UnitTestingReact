@@ -1,18 +1,21 @@
 div {
-    .tab-div{
-        padding: 17px 20px;
-        .verticle-middle {
-            display: inline-block;
-            vertical-align: middle;
-          }
+  .lot-header-box{
+    .tab-div {
+      padding: 17px 20px;
     }
+    .MuiButtonBase-root {
+      margin-right: 20px;
+    }
+
   .MuiTab-root {
     text-transform: capitalize;
     background: var(--Lightgray_3);
     color: var(--Lightergray);
     font-size: 16px;
     font-weight: bold;
-    margin-right: 20px;
+    .MuiTabs-flexContainer {
+      margin: 0 0 0 8.5em;
+    }
     .number-box {
       width: 56px;
       height: 30px;
@@ -24,4 +27,10 @@ div {
       border-bottom: 2px solid var(--Primary);
     }
   }
+  }
+  .verticle-middle {
+    display: inline-block;
+    vertical-align: middle;
+  }
+ 
 }
