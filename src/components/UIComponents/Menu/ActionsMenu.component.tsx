@@ -1,4 +1,4 @@
-import { Button, ListItemIcon, SvgIcon, Typography } from "@material-ui/core";
+import { Button, ListItemIcon, SvgIcon } from "@material-ui/core";
 import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 import Grow from "@material-ui/core/Grow";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -8,7 +8,7 @@ import Popper from "@material-ui/core/Popper";
 import React from "react";
 import { ActionsListIcon } from '../../../assets/icons';
 import './ActionsMenu.style.scss';
-import { Icon } from '@mui/material';
+import { Icon, Typography } from '@mui/material';
 
 
 type ActionsMenuOption = {
@@ -127,7 +127,7 @@ export default function ActionsMenu (props: ActionsMenuProps) {
                         </ListItemIcon>
                       }
                       <div className="menuitem-text">
-                        <Typography variant="inherit">{option.label}</Typography>
+                        <Typography color="var(--Darkgray)" variant="inherit">{option.label}</Typography>
                       </div>
                     </MenuItem>
                   ))}

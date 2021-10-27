@@ -1,4 +1,4 @@
-import { Button, ListItemIcon, SvgIcon, Typography } from "@material-ui/core";
+import { Button, ListItemIcon, SvgIcon } from "@material-ui/core";
 import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 import Grow from "@material-ui/core/Grow";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -8,6 +8,7 @@ import Popper from "@material-ui/core/Popper";
 import React from "react";
 import { NotificationIcon } from '../../../assets/icons';
 import './NotificationsMenu.style.scss';
+import { Typography } from '@mui/material';
 
 type NotificationsMenuOption = {
   label: string;
@@ -20,7 +21,7 @@ interface NotificationsMenuProps {
   menuName?: string,
   onSelect: (selectedValue: any) => void,
 }
-export default function NotificationsMenu(props: NotificationsMenuProps) {
+export default function NotificationsMenu (props: NotificationsMenuProps) {
   const [open, setOpen] = React.useState(false);
   const [selectedIndex, setSelectedIndex] = React.useState(-1);
   const anchorRef = React.useRef<HTMLButtonElement>(null);
@@ -48,7 +49,7 @@ export default function NotificationsMenu(props: NotificationsMenuProps) {
   };
 
 
-  function handleListKeyDown(event: React.KeyboardEvent) {
+  function handleListKeyDown (event: React.KeyboardEvent) {
     if (event.key === "Tab") {
       event.preventDefault();
       setOpen(false);
@@ -115,7 +116,7 @@ export default function NotificationsMenu(props: NotificationsMenuProps) {
                         {option.icon}
                       </ListItemIcon>
                       <div className="menuitem-text">
-                        <Typography variant="inherit">{option.label}</Typography>
+                        <Typography color="var(--Darkgray)" variant="inherit">{option.label}</Typography>
                       </div>
                     </MenuItem>
                   ))}

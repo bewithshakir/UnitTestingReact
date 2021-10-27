@@ -123,7 +123,7 @@ export default class CustomerModel {
             { field: "zipCode", label: "ZIP", type: 'text' },
             { field: "totalLots", label: "LOTS", type: 'button', icon: LocationOnOutlinedIcon },
             { field: "paymentType", label: "SETTLEMENT TYPE", type: 'text' },
-            { field: "createdAt", label: "Date Created", type: 'text' },
+            { field: "createdAt", label: "Date Created", type: 'status' },
         ];
     }
 

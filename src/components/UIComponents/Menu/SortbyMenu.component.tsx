@@ -10,7 +10,8 @@ import MenuList from "@material-ui/core/MenuList";
 
 import './SortbyMenu.style.scss';
 import { useTranslation } from "react-i18next";
-import { Button, ListItemIcon, Typography } from "@material-ui/core";
+import { Button, ListItemIcon } from "@material-ui/core";
+import { Typography } from '@mui/material';
 
 
 interface SortbyMenuProps {
@@ -18,7 +19,7 @@ interface SortbyMenuProps {
   menuName?: string,
   onSelect: (selectedValue: string) => void,
 }
-export default function SortbyMenu(props: SortbyMenuProps) {
+export default function SortbyMenu (props: SortbyMenuProps) {
   const [open, setOpen] = React.useState(false);
   const [selectedIndex, setSelectedIndex] = React.useState(-1);
   const anchorRef = React.useRef<HTMLButtonElement>(null);
@@ -47,7 +48,7 @@ export default function SortbyMenu(props: SortbyMenuProps) {
   };
 
 
-  function handleListKeyDown(event: React.KeyboardEvent) {
+  function handleListKeyDown (event: React.KeyboardEvent) {
     if (event.key === "Tab") {
       event.preventDefault();
       setOpen(false);
@@ -113,7 +114,7 @@ export default function SortbyMenu(props: SortbyMenuProps) {
                       onClick={(event) => handleMenuItemClick(event, index)}
                     >
                       <div className="menuitem-text">
-                        <Typography variant="inherit">{option}</Typography>
+                        <Typography color="var(--Darkgray)" variant="inherit">{option}</Typography>
                       </div>
                       <ListItemIcon className="menuitem-icon" >
                         {index === selectedIndex ?

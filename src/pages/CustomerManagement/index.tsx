@@ -169,7 +169,7 @@ const Content: React.FC<ContentProps> = () => {
             {
               (searchTerm && !(isFetching || isLoading)) &&
               <Grid item display="flex" alignItems="center" paddingLeft={2.5}>
-                <Typography variant="h4" component="h4" align="center" className="fw-bold">
+                <Typography color="var(--Darkgray)" variant="h4" component="h4" align="center" className="fw-bold">
                   {customerList.length} results found
                 </Typography>
               </Grid>
