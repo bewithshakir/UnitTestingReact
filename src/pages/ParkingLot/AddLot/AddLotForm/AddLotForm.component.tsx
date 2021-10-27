@@ -7,7 +7,7 @@ import { Button } from '../../../../components/UIComponents/Button/Button.compon
 import Input from '../../../../components/UIComponents/Input/Input';
 import Select from '../../../../components/UIComponents/Select/SingleSelect';
 import ToastMessage from '../../../../components/UIComponents/ToastMessage/ToastMessage.component';
-// orderSchDel
+import Divider from '@mui/material/Divider';
 import { AddParkingLotForm, addLotFormInitialValues, lotContact, orderSchDel } from '../../../../models/ParkingLotModel';
 import AddParkingLotValidationSchema from '../validation';
 import { useCreateLot, useGetContactTypes } from '../queries';
@@ -315,7 +315,7 @@ function AddLotForm(): React.ReactElement {
                                     />
                                 </Grid>
 
-                                <Grid item md={12} mt={2} mb={1}>
+                                <Grid item md={12} mt={5} mb={3}>
                                     <Typography variant="h4" component="h4" gutterBottom className="fw-bold" mb={1}>
                                         Product Delivery Info
                                     </Typography>
@@ -335,19 +335,23 @@ function AddLotForm(): React.ReactElement {
                                         onBlur={() => { formik.setFieldTouched("productDelFreq"); formik.validateField("productDelFreq"); }}
                                     />
                                 </Grid>
-                                <Grid item md={12} mt={2} mb={1}>
+                                <Grid item md={12} mt={5} mb={3}>
                                     <Typography variant="h4" component="h4" gutterBottom className="fw-bold" mb={1}>
                                         Order Schedule Delivery info (Max 10)
                                     </Typography>
                                 </Grid> 
+                                <Grid item md={12} mt={1} mb={2}>
+                                    <Divider className="field-divider"/>
+                                </Grid>
+                               
                                 <FieldArray
                                     name="orderScheduleDel"
                                     render={() => (
                                         <React.Fragment>
                                             {formik.values.orderScheduleDel.map((orderSchObj, index) => (
                                                 <Grid container key={index}>
-
-                                                    <Grid item md={3} pl={2.5} pr={2.5} pb={2.5}>
+                                                     
+                                                    <Grid item md={3} pr={2.5} pb={2.5}>
                                                         <DatePickerInput
                                                             type="single-date"
                                                             label='FROM DATE'
@@ -420,7 +424,7 @@ function AddLotForm(): React.ReactElement {
                                                         />
                                                     </Grid>
 
-                                                    <Grid item md={3} pl={2.5} pr={2.5} pb={2.5}>
+                                                    <Grid item md={3} pr={2.5} pb={2.5}>
                                                         <TimePicker
                                                             label='START TIME'
                                                             id={`orderScheduleDel[${index}].startTime`}
