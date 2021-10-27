@@ -34,3 +34,14 @@ export const sortByOptions = [
       value:0
     }
 ];
+
+export const formStatusObj = {
+  success: {
+      message: 'Lot Name is successfully added and Please add other details.',
+      type: 'Success',
+  },
+  error: {
+      message: 'Something went wrong. Please try again.',
+      type: 'Error',
+  },
+};

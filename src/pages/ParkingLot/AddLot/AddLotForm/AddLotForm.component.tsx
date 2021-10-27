@@ -14,6 +14,8 @@ import { timeZones, productDelFreq, useCreateLot, useGetContactTypes } from '../
 import DiscardChangesDialog from '../../../../components/UIComponents/ConfirmationDialog/DiscardChangesDialog.component';
 import AutocompleteInput from '../../../../components/UIComponents/GoogleAddressComponent/GoogleAutoCompleteAddress';
 import { PlusIcon, EditIcon } from '../../../../assets/icons';
+import { useTheme } from '../../../../contexts/Theme/Theme.context';
+import { formStatusObj} from '../../config';
 // import MultiSelect from '../../../components/UIComponents/Select/MultiSelect';
 // import { DatePickerInput } from '../../../components/UIComponents/DatePickerInput/DatePickerInput.component';
 // import { TimePicker } from '../../../components/UIComponents/TimePicker/TimePicker.component';
@@ -31,17 +33,7 @@ interface FormStatusProps {
     [key: string]: FormStatusType
 }
 
-const formStatusProps: FormStatusProps = {
-    success: {
-        message: 'Lot Name is successfully added and Please add other details.',
-        type: 'Success',
-    },
-    error: {
-        message: 'Something went wrong. Please try again.',
-        type: 'Error',
-    },
-};
-
+const formStatusProps: FormStatusProps = formStatusObj;
 
 
 function AddLotForm(): React.ReactElement {
@@ -49,6 +41,7 @@ function AddLotForm(): React.ReactElement {
     const { t } = useTranslation();
     const history = useHistory();
     const isFormFieldChange = () => formik.dirty;
+    const { theme } = useTheme();
     const { mutate: addNewLot, isSuccess, isError } = useCreateLot();
     const { data: contactTypeList } = useGetContactTypes();
     const [primaryContactType, setPrimaryContactType] = useState('');
@@ -614,7 +607,7 @@ function AddLotForm(): React.ReactElement {
                                                         }
                                                     }}
                                                 >
-                                                    <PlusIcon />
+                                                    <span className="add-icon-span"><PlusIcon color={theme["--Primary"]} /></span>
                                                     <Typography variant="h3" component="h3" className="fw-bold MuiTypography-h5-primary" mb={1}>
                                                         Add Additional Contact
                                                     </Typography>
