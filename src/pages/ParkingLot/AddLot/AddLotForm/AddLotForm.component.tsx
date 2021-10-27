@@ -398,7 +398,7 @@ function AddLotForm(): React.ReactElement {
                                                         />
                                                     </Grid>
 
-                                                    <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
+                                                    <Grid item xs={12} md={6} pl={2.5} pr={2.5} pb={2.5}>
                                                         <MultiSelect
                                                             id={`orderScheduleDel[${index}].productDelDays`}
                                                             label='SELECT DAYS TO DELIVER PRODUCT'
@@ -484,7 +484,7 @@ function AddLotForm(): React.ReactElement {
                                                 >
                                                     <span className="add-icon-span"><PlusIcon color={theme["--Secondary-Background"]} /></span>
                                                     <Typography variant="h3" component="h3" className="fw-bold MuiTypography-h5-primary disabled-text" mb={1}>
-                                                        ADD ANOTHER SCHEDULE CONTACT
+                                                        ADD ANOTHER ORDER SCHEDULE
                                                     </Typography>
                                                 </Link>
                                             </Grid>
