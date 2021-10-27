@@ -69,7 +69,7 @@ const AddFuelTax = memo(() => {
                 <Grid item md={10} xs={10}>
                     <Container maxWidth="lg" className="page-container">
                         <form onSubmit={formik.handleSubmit}>
-                            <Typography variant="h3" component="h3" gutterBottom className="fw-bold" mb={1}>
+                            <Typography color="var(--Darkgray)" variant="h3" gutterBottom className="fw-bold" mb={1}>
                                 Fill all the Mandatory fields *
                             </Typography>
                             <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
@@ -239,7 +239,7 @@ const AddFuelTax = memo(() => {
                                 <Grid item xs={12} md={12}>
                                     <Box className="info-section" pl={2.7} pb={1.8} pt={2.0} pr={20} >
                                         *Certain markets require a combined Revenue (%) and Sales (%) Tax on the Price per Gallon with or without Adder/Discount.
-                                </Box>
+                                    </Box>
                                 </Grid>
 
                             </Grid>
