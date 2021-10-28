@@ -13,6 +13,7 @@ import AutocompleteInput from '../../components/UIComponents/GoogleAddressCompon
 import { useAddFuelTax } from './queries';
 import ToastMessage from '../../components/UIComponents/ToastMessage/ToastMessage.component';
 import { DatePickerInput } from '../../components/UIComponents/DatePickerInput/DatePickerInput.component';
+import moment from 'moment';
 
 const initialValues = new TaxModel();
 
@@ -61,21 +62,21 @@ const AddFuelTax = memo(() => {
                 "city": form.city,
                 "countryCd": form.countryCd,
                 "fuelType": form.fuelType.value,
-                "startDate": form.startDate,
-                "endDate": form.endDate,
-                "fedFuelTax": form.federalRate,
-                "revenueFuelRate": form.localRate,
-                "salesFuelRate": form.salesFuelRate,
-                "stateFuelTax": form.stateFuelRate,
-                "cityFuelTax": form.cityFuelRate,
-                "countyFuelTax": form.countryFuelRate,
-                "miscInspFuelTax": form.InspFuelRate,
-                "miscLocalFuelRate": form.miscLocalFuelRate,
-                "miscLoadFuelTax": form.loadFuel
+                "startDate": moment(form.startDate).format("MM-DD-YYYY"),
+                "endDate": moment(form.endDate).format("MM-DD-YYYY"),
+                "fedFuelTax": parseFloat(form.federalRate),
+                "revenueFuelRate": parseFloat(form.localRate),
+                "salesFuelRate": parseFloat(form.salesFuelRate),
+                "stateFuelTax": parseFloat(form.stateFuelRate),
+                "cityFuelTax": parseFloat(form.cityFuelRate),
+                "countyFuelTax": parseFloat(form.countryFuelRate),
+                "miscInspFuelTax": parseFloat(form.InspFuelRate),
+                "miscLocalFuelTax": parseFloat(form.miscLocalFuelRate),
+                "miscLoadFuelTax": parseFloat(form.loadFuel)
             };
             createNewFuelTaxData(apiPayload);
         } catch (error) {
-            alert('error');
+            setFormStatus(formStatusProps.error);
         }
     };
 
@@ -117,7 +118,13 @@ const AddFuelTax = memo(() => {
                 <Grid item md={10} xs={10}>
                     <Container maxWidth="lg" className="page-container">
                         <form onSubmit={formik.handleSubmit}>
-                            <Typography variant="h3" component="h3" gutterBottom className="fw-bold" mb={1}>
+
+                                <Grid item xs={12} md={12}>
+                                    <Box className="info-section" pl={2.7} pb={1.8} pt={2.0} pr={20} >
+                                        *Certain markets require a combined Revenue (%) and Sales (%) Tax on the Price per Gallon with or without Adder/Discount.
+                                    </Box>
+                                </Grid>
+                            <Typography variant="h3" component="h3" gutterBottom className="fw-bold" mb={1} mt={2}>
                                 Fill all the Mandatory fields *
                             </Typography>
                             <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
@@ -303,13 +310,6 @@ const AddFuelTax = memo(() => {
                                         {...formik.getFieldProps('loadFuel')}
                                     />
                                 </Grid>
-
-                                <Grid item xs={12} md={12}>
-                                    <Box className="info-section" pl={2.7} pb={1.8} pt={2.0} pr={20} >
-                                        *Certain markets require a combined Revenue (%) and Sales (%) Tax on the Price per Gallon with or without Adder/Discount.
-                                    </Box>
-                                </Grid>
-
                             </Grid>
                             <Grid item md={12} mt={2} mb={1}>
                                 <Box className="form-action-section">

@@ -7,7 +7,7 @@ const addFuelTax = async (payload: any) => {
 
     const options: AxiosRequestConfig = {
         method: 'post',
-        url: '/api/tax-service/fueltax?countryCode=us',
+        url: '/api/tax-service/fueltax',
         data: payload,
     };
     const { data } = await axios(options);
