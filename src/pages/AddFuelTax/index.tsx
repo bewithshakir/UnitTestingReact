@@ -1,5 +1,5 @@
 import { Box, Grid, Container, Typography } from '@mui/material';
-import React, { memo } from 'react';
+import React, { memo, useState, useEffect } from 'react';
 import { HorizontalBarVersionState, useStore } from '../../store';
 import Input from '../../components/UIComponents/Input/Input';
 import { Button } from '../../components/UIComponents/Button/Button.component';
@@ -10,13 +10,41 @@ import { useFormik } from 'formik';
 import TaxModel from '../../models/TaxModel';
 import AddFuelTaxValidationSchema from './validation';
 import AutocompleteInput from '../../components/UIComponents/GoogleAddressComponent/GoogleAutoCompleteAddress';
+import { useAddFuelTax } from './queries';
+import ToastMessage from '../../components/UIComponents/ToastMessage/ToastMessage.component';
+import { DatePickerInput } from '../../components/UIComponents/DatePickerInput/DatePickerInput.component';
 
 const initialValues = new TaxModel();
+
+interface IFormStatus {
+    message: string
+    type: string
+}
+interface IFormStatusProps {
+    [key: string]: IFormStatus
+}
+
+const formStatusProps: IFormStatusProps = {
+    success: {
+        message: 'Success.',
+        type: 'Success',
+    },
+    error: {
+        message: 'Something went wrong. Please try again.',
+        type: 'Error',
+    },
+};
+
 
 const AddFuelTax = memo(() => {
     const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
     setVersion("Breadcrumbs-Fuel-Tax-Single");
     const { t } = useTranslation();
+    const [apiResposneState, setAPIResponse] = useState(false);
+    const [formStatus, setFormStatus] = useState<IFormStatus>({
+        message: '',
+        type: '',
+    });
 
     const fuelTypes = [
         { label: "Regular", value: "Regular" },
@@ -24,43 +52,63 @@ const AddFuelTax = memo(() => {
     ];
 
 
-    const createNewCustomer = (form: TaxModel) => {
+    const { mutate: createNewFuelTaxData, isSuccess, isError } = useAddFuelTax();
+
+    const createNewFuelTax = (form: TaxModel) => {
         try {
             const apiPayload = {
                 "state": form.state,
                 "city": form.city,
-                "federalRate": form.federalRate,
-                "localRate": form.localRate,
+                "countryCd": form.countryCd,
+                "fuelType": form.fuelType.value,
+                "startDate": form.startDate,
+                "endDate": form.endDate,
+                "fedFuelTax": form.federalRate,
+                "revenueFuelRate": form.localRate,
                 "salesFuelRate": form.salesFuelRate,
-                "stateFuelRate": form.stateFuelRate,
-                "cityFuelRate": form.cityFuelRate,
-                "countryFuelRate": form.countryFuelRate,
-                "InspFuelRate": form.InspFuelRate,
+                "stateFuelTax": form.stateFuelRate,
+                "cityFuelTax": form.cityFuelRate,
+                "countyFuelTax": form.countryFuelRate,
+                "miscInspFuelTax": form.InspFuelRate,
                 "miscLocalFuelRate": form.miscLocalFuelRate,
-                "loadFuel": form.loadFuel,
-                "searchInput": form.searchInput
+                "miscLoadFuelTax": form.loadFuel
             };
-            alert(apiPayload);
+            createNewFuelTaxData(apiPayload);
         } catch (error) {
             alert('error');
         }
     };
 
+
+    useEffect(() => {
+        if (isSuccess) {
+            setAPIResponse(true);
+            setFormStatus(formStatusProps.success);
+        }
+        if (isError) {
+            setAPIResponse(true);
+            setFormStatus(formStatusProps.error);
+        }
+        setTimeout(() => {
+            setAPIResponse(false);
+        }, 6000);
+        formik.resetForm({});
+    }, [isSuccess, isError]);
+
+
     const formik = useFormik({
         initialValues,
         validationSchema: AddFuelTaxValidationSchema,
         onSubmit: (values) => {
-            createNewCustomer(values);
+            createNewFuelTax(values);
         }
     });
 
-    function handleGoogleAddressChange (addressObj: any) {
+    const handleGoogleAddressChange = (addressObj: any) => {
+        formik.setFieldValue('searchInput', addressObj.searchInput);
         formik.setFieldValue('city', addressObj.city);
         formik.setFieldValue('state', addressObj.state);
-    }
-
-    const handleFuelTypeChange = () => {
-        return 0;
+        formik.setFieldValue('countryCd', 'us');
     };
 
     return (
@@ -89,9 +137,11 @@ const AddFuelTax = memo(() => {
                                         id='state'
                                         label='STATE'
                                         type='text'
+                                        description=''
                                         disabled
                                         helperText={(formik.touched.state && formik.errors.state) ? formik.errors.state : undefined}
                                         error={(formik.touched.state && formik.errors.state) ? true : false}
+                                        {...formik.getFieldProps('state')}
                                     />
                                 </Grid>
                                 <Grid item xs={12} md={6} pl={2.5} pb={2.5}>
@@ -99,9 +149,11 @@ const AddFuelTax = memo(() => {
                                         id='city'
                                         label='CITY'
                                         type='text'
+                                        description=''
                                         disabled
                                         helperText={(formik.touched.city && formik.errors.city) ? formik.errors.city : undefined}
                                         error={(formik.touched.city && formik.errors.city) ? true : false}
+                                        {...formik.getFieldProps('city')}
                                     />
                                 </Grid>
 
@@ -112,23 +164,39 @@ const AddFuelTax = memo(() => {
                                         label='FUEL TYPE'
                                         placeholder='Choose'
                                         items={fuelTypes}
-                                        onChange={handleFuelTypeChange}
+                                        value={formik.values.fuelType}
+                                        onChange={formik.setFieldValue}
+                                        helperText={(formik.touched.fuelType && formik.errors.fuelType) ? formik.errors.fuelType.value : undefined}
+                                        error={(formik.touched.fuelType && formik.errors.fuelType) ? true : false}
+                                        onBlur={() => { formik.setFieldTouched("fuelType"); formik.validateField("fuelType"); }}
                                     />
                                 </Grid>
                                 <Grid item md={3} pl={2.5} pr={2.5} pb={2.5}>
-                                    <Input
-                                        id='startDate'
+                                    <DatePickerInput
+                                        type="single-date"
+                                        id="startDate"
+                                        name="startDate"
+                                        value={formik.values.startDate}
                                         label='EFFECTIVE DATE'
-                                        type='text'
-                                        placeholder='Enter Start Date'
+                                        onChange={formik.setFieldValue}
+                                        onClose={() => { formik.setFieldTouched("startDate"); formik.validateField("startDate"); }}
+                                        disableBeforeDate={formik.values.startDate}
+                                        helperText={(formik.touched.startDate && formik.errors.startDate) ? formik.errors.startDate : undefined}
+                                        error={(formik.touched.startDate && formik.errors.startDate) ? true : false}
                                     />
                                 </Grid>
                                 <Grid item md={3} pl={2.5}>
-                                    <Input
-                                        id='endDate'
-                                        label='END DATE'
-                                        type='text'
-                                        placeholder='Enter End Date'
+                                    <DatePickerInput
+                                        type="single-date"
+                                        id="endDate"
+                                        name="endDate"
+                                        value={formik.values.endDate}
+                                        label='EFFECTIVE DATE'
+                                        onChange={formik.setFieldValue}
+                                        onClose={() => { formik.setFieldTouched("endDate"); formik.validateField("endDate"); }}
+                                        disableBeforeDate={formik.values.endDate}
+                                        helperText={(formik.touched.endDate && formik.errors.endDate) ? formik.errors.endDate : undefined}
+                                        error={(formik.touched.endDate && formik.errors.endDate) ? true : false}
                                     />
                                 </Grid>
 
@@ -257,10 +325,12 @@ const AddFuelTax = memo(() => {
                                         types="save"
                                         aria-label="save"
                                         className="ml-4"
+                                        disabled={(!formik.isValid || !formik.dirty) || formik.isSubmitting}
                                     >
                                         {t("buttons.save")}
                                     </Button>
                                 </Box>
+                                <ToastMessage isOpen={apiResposneState} messageType={formStatus.type} onClose={() => { return ''; }} message={formStatus.message} />
                             </Grid>
 
                         </form>
