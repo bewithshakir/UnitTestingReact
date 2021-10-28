@@ -5,7 +5,7 @@ import Toolbar from '@mui/material/Toolbar';
 import React from "react";
 import { useTranslation } from "react-i18next";
 
-import { NavLink, useHistory } from "react-router-dom";
+import { NavLink, useHistory, useLocation } from "react-router-dom";
 import { BackIcon, CustomerProfileIcon2, LogoutIcon, SettingsIcon, USAFlagIcon } from "../../../assets/icons";
 import { useStore } from "../../../store";
 import { Button } from "../Button/Button.component";
@@ -25,13 +25,19 @@ export default function HorizontalBar (props: HorizontalBarProps) {
   const { t } = useTranslation();
   const version =  useStore((state)=>state.version);
   const  history =  useHistory();
+  const {pathname} = useLocation();
   function handleClick (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
     return event;
   }
 
   const handleBack = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     event.preventDefault();
-    props.onBack();
+    if(pathname === '/customer/parkingLots/addLot'){ 
+      //temp solution
+      history.push('/customer/parkingLots');
+    }else{
+      props.onBack();
+    }
   };
 
   function versionBreadcrumbsSingle () {

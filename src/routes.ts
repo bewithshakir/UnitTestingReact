@@ -24,19 +24,19 @@ export const routes = [
         component: lazy(() => import("./pages/ParkingLot")),
         version: "Breadcrumbs-Single",
         exact: true,
-      }
+      },
+      {
+        path: "/customer/parkingLots/addLot",
+        component: lazy(() => import('./pages/ParkingLot/AddLot/AddLotWrapper')),
+        exact: false,
+        version:'Breadcrumbs-Many'
+      },
     ]
   },
   {
     path: "/taxes",
     component: lazy(() => import("./pages/AddFuelTax")),
     version: "Breadcrumbs-Single",
-  },
-  {
-    version: "Breadcrumbs-Many",
-    path: "/customer/parkingLots/addLot",
-    component: lazy(() => import('./pages/ParkingLot/AddLot')),
-    exact: false,
   },
   {
     path: "/query",

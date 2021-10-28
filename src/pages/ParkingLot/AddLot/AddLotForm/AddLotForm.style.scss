@@ -1,0 +1,59 @@
+div{  
+    .page-area {
+      max-height: calc(100vh - 64px);
+      overflow-y: auto;
+    }
+      .page-container{
+        margin: 0px;
+        max-width: 950px;
+        .form-action-section{
+          display: flex;
+          justify-content: flex-end;
+        }
+      }
+      .edit-button{
+        float:right;
+        width: 120px;
+        .MuiButton-label{
+          span{
+            margin-left: 10px;
+          }
+        }
+        
+      }
+      .add-icon-span{
+        margin: 2px 5px 0px 0px;
+      }
+      .left-heading{
+        margin-top: 5px;
+      } 
+      .add-link{
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        text-decoration-color: var(--Primary);
+      }
+      .disabled-text-link{
+        text-decoration-color: var(--Secondary-Background);
+        cursor: default;
+        &:hover{
+          text-decoration-color: var(--Secondary-Background);
+          cursor: default;
+        }
+        h3{
+          color:  var(--Secondary-Background);
+        }
+      }
+      input[type="text"]:disabled {
+        background: var(--Lightgray_4) 0% 0% no-repeat padding-box;
+        color: var(--Lightergray);
+      }
+      .field-divider{
+        border-color: var(--Secondary-Background);
+      }
+      .MuiTypography-h3{
+        color:var(--Primary);
+     
+      }
+  }
+  

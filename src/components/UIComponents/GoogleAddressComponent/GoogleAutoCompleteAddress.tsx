@@ -17,10 +17,11 @@ interface props {
     error?: boolean;
     helperText?: string;
     onBlur?: (...args: any[]) => void;
+    disabled?:boolean;
 }
 
 type addressValue =
-    { address1: string, address2: string, city: string, state: string, zip: string }
+    { address1: string, address2: string, city: string, state: string, zip: string}
 
 
 export default function GoogleAutoCompleteAddress (props: props) {
@@ -37,7 +38,7 @@ export default function GoogleAutoCompleteAddress (props: props) {
             addressLine2: address2,
             city,
             state,
-            postalCode: zip,
+            postalCode: zip
         };
         required && props.onChange(obj);
     };
@@ -76,6 +77,7 @@ export default function GoogleAutoCompleteAddress (props: props) {
             required={props.required}
             helperText={props.helperText}
             error={props.error}
+            disabled={props.disabled}
         />
     );
 }

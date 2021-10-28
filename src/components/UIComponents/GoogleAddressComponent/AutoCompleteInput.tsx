@@ -19,6 +19,7 @@ interface props {
     error?: boolean;
     onBlur?: (...args: any[]) => void;
     description?: string;
+    disabled?:boolean
 }
 
 interface MainTextMatchedSubstrings {
@@ -87,6 +88,7 @@ export default function AutoCompleteInput (props: props) {
             placeholder={props.placeholder}
             value={value}
             optionTitle='description'
+            disabled={props.disabled}
             onChange={(event: any, newValue: prediction | null) => {
                 handleChange(newValue);
                 setValue(newValue);

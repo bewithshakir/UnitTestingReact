@@ -18,6 +18,9 @@ import { useCreateCustomer, useGetFrequencies, useGetPaymentTypes } from './quer
 import DiscardChangesDialog from '../../../components/UIComponents/ConfirmationDialog/DiscardChangesDialog.component';
 import AutocompleteInput from '../../../components/UIComponents/GoogleAddressComponent/GoogleAutoCompleteAddress';
 
+import { useAddedCustomerIdStore } from '../../../store';
+
+
 const initialValues = new CustomerModel();
 
 function getTokenApplicable (Obj: any) {
@@ -63,14 +66,19 @@ const AddCustomer: React.FC<any> = () => {
     const [paymentTypes, setpaymentTypes] = useState([]);
     const [initialInvoiceFrequencies, setinitialInvoiceFrequencies] = useState([]);
 
-    const { mutate: addNewCustomer, isSuccess, isError } = useCreateCustomer();
+    const { mutate: addNewCustomer, isSuccess, isError, data: customerData } = useCreateCustomer();
     const { data: frequencyList } = useGetFrequencies();
     const { data: paymentTypeList } = useGetPaymentTypes();
+
+    const setCustomerIdCreated = useAddedCustomerIdStore((state) => state.setCustomerId);
 
     useEffect(() => {
         if (isSuccess) {
             setAPIResponse(true);
             setFormStatus(formStatusProps.success);
+            if (customerData) {
+                setCustomerIdCreated(customerData?.data?.customer?.customerId);
+            }
         }
         if (isError) {
             setAPIResponse(true);
