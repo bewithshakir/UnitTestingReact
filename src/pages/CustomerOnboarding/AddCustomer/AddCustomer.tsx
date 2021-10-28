@@ -20,9 +20,7 @@ import AutocompleteInput from '../../../components/UIComponents/GoogleAddressCom
 import axios from 'axios';
 import { EditIcon } from '../../../assets/icons';
 import "./AddCustomer.style.scss";
-
-import { useAddedCustomerIdStore } from '../../../store';
-
+import { useAddedCustomerIdStore, useAddedCustomerNameStore } from '../../../store';
 
 const initialValues = new CustomerModel();
 
@@ -138,6 +136,7 @@ const AddCustomer: React.FC = () => {
             formik.setFieldValue(`apContact[${index}].email`, obj.contactEmailId);
             formik.setFieldValue(`apContact[${index}].phoneNumber`, obj.contactPhoneNo);
         });
+        
         formik.setFieldValue("endDate", dataToPopulate.customer.firstSettlementDt);
         checkBoxData.map((obj: any) => {
             if(obj.indexOf("lot")){
@@ -164,6 +163,7 @@ const AddCustomer: React.FC = () => {
     const { data: paymentTypeList } = useGetPaymentTypes();
 
     const setCustomerIdCreated = useAddedCustomerIdStore((state) => state.setCustomerId);
+    const setPageCustomerName = useAddedCustomerNameStore((state) => state.setCustomerName);
 
     // const { data: customerData } = useGetCustomerData();
     // const { customerId } = useParams();
@@ -177,6 +177,8 @@ const AddCustomer: React.FC = () => {
             setSaveCancelShown(false);
             if (savedCustomerData) {
                 setCustomerIdCreated(savedCustomerData?.data?.customer?.customerId);
+                setPageCustomerName(savedCustomerData?.data?.customer?.companyNm);
+
             }
         }
         if (isError) {
@@ -324,6 +326,7 @@ const AddCustomer: React.FC = () => {
                         setEditShown(true);
                         setSaveCancelShown(false);
                         setCustomerIdCreated(response.data?.data?.customer?.customerId);
+                        setPageCustomerName(response.data?.data?.customer?.companyNm);
                         setTimeout(() => {
                             setAPIResponse(false);
                         }, 6000);

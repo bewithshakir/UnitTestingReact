@@ -10,11 +10,13 @@ import "./style.scss";
 import { boxSystem, config } from './config';
 import { useTranslation } from 'react-i18next';
 import {  useHistory, useLocation } from 'react-router-dom';
+import { useAddedCustomerNameStore } from '../../../store';
 
 const Legend: React.FC = () => {
   const { t } = useTranslation();
   const { pathname } = useLocation();
   const history = useHistory();
+  const selectedCustomerName = useAddedCustomerNameStore((state) => state.customerName);
 
   const onItemClick = (to: string) => {
     history.push(to);
@@ -31,12 +33,21 @@ const Legend: React.FC = () => {
     }
   };
 
+  const getLegendHeader = () => {
+    const pathnameSegArr = pathname.split("/");
+    if (pathnameSegArr.indexOf("viewCustomer") > -1) {
+      return selectedCustomerName;
+    } else {
+      return t("legend.customerName");
+    }
+  };
+
   return (
     <Box className="legend-box" sx={boxSystem}>
       <nav >
         <List subheader={
           <ListSubheader className="subHeader">
-            {t("legend.customerName")}
+           {getLegendHeader()}
           </ListSubheader>
         }>
           {config.map((ConfigItem) => {

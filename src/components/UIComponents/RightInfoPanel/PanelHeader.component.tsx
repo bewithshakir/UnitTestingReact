@@ -19,9 +19,9 @@ export const PanelHeader: React.FC<InfoPanelProps> = ({ info, headingText, panel
     const {theme} = useTheme();
     const { t } = useTranslation();
     const history = useHistory();
+    const setPageCustomerName = useAddedCustomerNameStore((state) => state.setCustomerName);
+    setPageCustomerName(info.customerName);
     const navigateToCustomerPage = () => {
-        const setPageCustomerName = useAddedCustomerNameStore((state) => state.setCustomerName);
-        setPageCustomerName(info.customerName);
         history.push({
             pathname: `/customer/viewCustomer/${info.customerId}`
         });
