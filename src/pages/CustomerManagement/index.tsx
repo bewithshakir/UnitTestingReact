@@ -72,7 +72,7 @@ const Content: React.FC<ContentProps> = () => {
     setDrawerOpen(false);
   };
   const navigateToAddCustomer = () => {
-    history.push("/customer");
+    history.push("/customer/addCustomer");
   };
   const onSortBySlected = (value: string) => {
     let sortOrder;

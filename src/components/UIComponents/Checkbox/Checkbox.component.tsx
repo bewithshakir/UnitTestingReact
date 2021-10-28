@@ -4,6 +4,7 @@ import { UncheckedCheckboxIcon, CheckedCheckboxIcon } from '../../../assets/icon
 interface checkBoxProps {
     name: string;
     checked: boolean;
+    disabled?: boolean;
     indeterminate?: boolean;
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
     onClick?: (event: React.MouseEvent<HTMLElement>) => void;
@@ -24,6 +25,7 @@ export default function Checkboxes (props: checkBoxProps) {
             checked={props.checked}
             inputProps={{ 'aria-label': 'checkbox' }}
             name={props.name}
+            disabled={props.disabled}
         />
     );
 }

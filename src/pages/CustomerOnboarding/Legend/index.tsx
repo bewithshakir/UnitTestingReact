@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import List from '@mui/material/List';
@@ -8,34 +9,51 @@ import { ListSubheader } from '@mui/material';
 import "./style.scss";
 import { boxSystem, config } from './config';
 import { useTranslation } from 'react-i18next';
-import { useHistory, useLocation } from 'react-router-dom';
-import { useEffect } from 'react';
-
+import {  useHistory, useLocation } from 'react-router-dom';
+import { useAddedCustomerNameStore } from '../../../store';
 
 const Legend: React.FC = () => {
   const { t } = useTranslation();
   const { pathname } = useLocation();
   const history = useHistory();
-  useEffect(()=>{
-    history.push("/customer/addCustomer");
-  },[]);
+  const selectedCustomerName = useAddedCustomerNameStore((state) => state.customerName);
+
   const onItemClick = (to: string) => {
     history.push(to);
   };
-  return (
 
+  const getSelectedLegendItem = (configItem: any) => {
+    if(configItem.to == "/customer/addCustomer") {
+      const pathnameSegArr = pathname.split("/");
+      if (pathnameSegArr.indexOf("viewCustomer") > -1 || pathnameSegArr.indexOf("addCustomer") > -1 ) {
+        return true;
+      } 
+    } else {
+      return pathname.includes(configItem.to);
+    }
+  };
+
+  const getLegendHeader = () => {
+    const pathnameSegArr = pathname.split("/");
+    if (pathnameSegArr.indexOf("viewCustomer") > -1) {
+      return selectedCustomerName;
+    } else {
+      return t("legend.customerName");
+    }
+  };
+
+  return (
     <Box className="legend-box" sx={boxSystem}>
       <nav >
         <List subheader={
           <ListSubheader className="subHeader">
-            {t("legend.customerName")}
+           {getLegendHeader()}
           </ListSubheader>
         }>
           {config.map((ConfigItem) => {
-            const isLegendSelected = pathname.includes(ConfigItem.to);
             return (
               <ListItem key={ConfigItem.index} onClick={() => onItemClick(ConfigItem.to)} >
-                <ListItemButton className={"listItemButton"} selected={isLegendSelected} >
+                <ListItemButton className={"listItemButton"} selected={getSelectedLegendItem(ConfigItem)} >
                   <ListItemText className="listItemTextPrimary" primary={t(ConfigItem.label)} />
                   {ConfigItem.secondaryText && <ListItemText className="listItemTextSecondary" primary={0} />}
                 </ListItemButton>

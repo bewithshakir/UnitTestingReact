@@ -1,11 +1,9 @@
-
 export const config = [
     {
         index: 1,
         label: "legend.customerProfile",
         secondaryText:false,
-        to: "/customer/addCustomer"
-    
+        to: "/customer/addCustomer"    
     },
     {
         index: 2,
@@ -17,23 +15,19 @@ export const config = [
         index: 3,
         label: "legend.vehicles",
         secondaryText:true,
- 
         to: "/vehicles"
     },
     {
         index: 4,
         label: "legend.users",
         secondaryText:true,
-     
         to: "/users"
     },
     {
         index: 5,
         label: "legend.dsp",
         secondaryText:true,
-   
         to: "/dsp"
-
     },
     {
         index: 6,

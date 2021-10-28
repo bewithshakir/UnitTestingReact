@@ -27,6 +27,11 @@ interface addedCustomerIdState{
   setCustomerId: (...args: any) => void,
   removeCustomerId: (...args: any) => void,
 }
+interface addedCustomerNameState {
+  customerName: string,
+  setCustomerName: (...args: any) => void,
+  removeCustomerName: (...args: any) => void,
+}
 
 export const useStore  = create<HorizontalBarVersionState>((persist(
     (set) => ({
@@ -50,4 +55,10 @@ export const useAddedCustomerIdStore  = create<addedCustomerIdState>((set) => ({
   customerId: '',
   setCustomerId: (customerId:string) =>set(() => ({customerId})),
   removeCustomerId:  () =>set(() => ({customerId:''})),
+}));
+
+export const useAddedCustomerNameStore = create<addedCustomerNameState>((set) => ({
+  customerName: '',
+  setCustomerName: (customerName: string) => set(() => ({ customerName })),
+  removeCustomerName: () => set(() => ({ customerName: '' })),
 }));

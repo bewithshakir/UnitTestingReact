@@ -57,7 +57,7 @@ const AddLotWrapper: React.FC<MenuProps> = () => {
 
     return (
         <Box className='lot-header-box' sx={lotHeaderBoxSx}>
-            <Box sx={lotHeaderInnerBoxSx}>
+            <Box sx={lotHeaderInnerBoxSx} className={"lot-header-tab"}>
                 <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
                     {addLotHeaderConfig.map((headerTab, index) =>
                         <Tab key={headerTab.index} label={<React.Fragment>

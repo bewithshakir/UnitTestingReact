@@ -17,14 +17,14 @@ interface props {
     error?: boolean;
     helperText?: string;
     onBlur?: (...args: any[]) => void;
-    disabled?:boolean;
+    disabled?: boolean;
 }
 
 type addressValue =
     { address1: string, address2: string, city: string, state: string, zip: string}
 
 
-export default function GoogleAutoCompleteAddress (props: props) {
+export default function GoogleAutoCompleteAddress(props: props) {
     const [address, setAddress] = useState({ address1: '', address2: '', city: '', state: '', zip: '', placeId: '' });
     const handleChange = (e: any) => { setAddress(x => ({ ...x, [e.target.name]: e.target.value })); };
     const debouncedValue = useDebounce(address.placeId, 10);

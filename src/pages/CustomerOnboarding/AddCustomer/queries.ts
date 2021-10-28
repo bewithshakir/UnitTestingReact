@@ -14,6 +14,17 @@ const createCustomer = async (payload: any) => {
     return data;
 };
 
+const editCustomer = async (payload: any, customerId: string) => {
+
+    const options: AxiosRequestConfig = {
+        method: 'put',
+        url: `/api/customer-service/customers/${customerId}`, 
+        data: payload,
+    };
+    const { data } = await axios(options);
+    return data;
+};
+
 
 const getFrequencies = async () => {
     const options: AxiosRequestConfig = {
@@ -33,16 +44,33 @@ const getPaymentTypes = async () => {
     return data;
 };
 
+const getCustomerData = async (customerId: string) => {
+    const options: AxiosRequestConfig = {
+        method: 'get',
+        url: `/api/customer-service/customers/${customerId}?countryCode=us`
+    };
+    const { data } = await axios(options);
+    return data;
+};
+
 
 export const useGetFrequencies = () => {
     return useQuery(["getFrequencies"], () => getFrequencies());
 };
 
 export const useGetPaymentTypes = () => {
-    return useQuery(["getCustomers"], () => getPaymentTypes());
+    return useQuery(["getPaymentTypes"], () => getPaymentTypes());
 };
 
 
 export const useCreateCustomer = () => {
     return useMutation((payload: any) => createCustomer(payload));
+};
+
+export const useEditCustomer = (customerId: string) => {
+    return useMutation((payload: any) => editCustomer(payload, customerId));
+};
+
+export const useGetCustomerData = (customerId: string) => {
+    return useQuery(["getCustomer"],() => getCustomerData(customerId));
 };

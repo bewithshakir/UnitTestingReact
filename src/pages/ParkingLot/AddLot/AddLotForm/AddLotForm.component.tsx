@@ -166,7 +166,7 @@ function AddLotForm(): React.ReactElement {
                                             General Information
                                         </Typography>
                                     </Grid>
-                                    {formSuccess && <Grid item xs={6}>
+                                    {formSuccess && <Grid item xs={6} sx= {{ justifyContent: 'flex-end' }}>
                                         <Button
                                             types="save"
                                             aria-label="save"

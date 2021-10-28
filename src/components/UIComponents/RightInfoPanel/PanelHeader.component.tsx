@@ -1,11 +1,13 @@
+/* eslint-disable no-console */
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { IconButton, AppBar, Toolbar, Box } from "@mui/material";
-
+import { useAddedCustomerNameStore } from '../../../store';
 import DataGridActionsMenu from "../Menu/DataGridActionsMenu.component";
 import { CloseIcon } from "../../../assets/icons";
 import "./RightInfoPanel.style.scss";
 import { useTheme } from '../../../contexts/Theme/Theme.context';
+import { useHistory } from "react-router-dom";
 
 interface InfoPanelProps {
     headingText: string;
@@ -13,9 +15,18 @@ interface InfoPanelProps {
     info: any | null;
     onClose: (...args: any[]) => void;
 }
-export const PanelHeader: React.FC<InfoPanelProps> = ({ headingText, panelType, onClose }) => {
+export const PanelHeader: React.FC<InfoPanelProps> = ({ info, headingText, panelType, onClose }) => {
     const {theme} = useTheme();
     const { t } = useTranslation();
+    const history = useHistory();
+    const setPageCustomerName = useAddedCustomerNameStore((state) => state.setCustomerName);
+    setPageCustomerName(info.customerName);
+    const navigateToCustomerPage = () => {
+        history.push({
+            pathname: `/customer/viewCustomer/${info.customerId}`
+        });
+    };
+    
     return (<div className="right_info_panel_header">
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static">
@@ -35,9 +46,7 @@ export const PanelHeader: React.FC<InfoPanelProps> = ({ headingText, panelType, 
                                 label: t("right-info-panel.settings.view & edit details")
                             }
                         ]}
-                        onSelect={(value) => {
-                            return value;
-                        }}
+                        onSelect={navigateToCustomerPage}
                     />}
                     {panelType === "customer-filter" && <IconButton
                         edge="start"

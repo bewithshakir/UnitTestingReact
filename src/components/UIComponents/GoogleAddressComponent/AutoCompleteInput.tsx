@@ -19,7 +19,7 @@ interface props {
     error?: boolean;
     onBlur?: (...args: any[]) => void;
     description?: string;
-    disabled?:boolean
+    disabled?: boolean;
 }
 
 interface MainTextMatchedSubstrings {
@@ -45,7 +45,7 @@ interface prediction {
 
 
 
-export default function AutoCompleteInput (props: props) {
+export default function AutoCompleteInput(props: props) {
     const [value, setValue] = useState<prediction | null>(null);
     const [options, setOptions] = useState([]);
     const [inputValue, setInputValue] = useState('');
