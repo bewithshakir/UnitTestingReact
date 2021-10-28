@@ -5,7 +5,7 @@ import Box from '@mui/material/Box';
 import AddLotForm from './AddLotForm/AddLotForm.component';
 import './AddLotWrapper.style.scss';
 import { addLotHeaderConfig, lotHeaderBoxSx, lotHeaderInnerBoxSx } from '../config';
-
+import { HorizontalBarVersionState, useStore } from '../../../store';
 
 interface TabPanelProps {
     children?: React.ReactNode;
@@ -48,6 +48,8 @@ const TabPanel = (props: TabPanelProps) => {
 
 const AddLotWrapper: React.FC<MenuProps> = () => {
     const [value, setValue] = React.useState(0);
+    const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
+    setVersion("Breadcrumbs-Many");
 
     const handleChange = (event: React.SyntheticEvent, newValue: number) => {
         setValue(newValue);
