@@ -4,7 +4,7 @@ import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 import AddLotForm from './AddLotForm/AddLotForm.component';
 import './AddLotWrapper.style.scss';
-import { addLotHeaderConfig, lotHeaderBoxSx, lotHeaderInnerBoxSx, tabsSx, panelBoxSx } from '../config';
+import { addLotHeaderConfig, lotHeaderBoxSx, lotHeaderInnerBoxSx } from '../config';
 
 
 interface TabPanelProps {
@@ -56,7 +56,7 @@ const AddLotWrapper: React.FC<MenuProps> = () => {
     return (
         <Box className='lot-header-box' sx={lotHeaderBoxSx}>
             <Box sx={lotHeaderInnerBoxSx}>
-                <Tabs sx={tabsSx} value={value} onChange={handleChange} aria-label="basic tabs example">
+                <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
                     {addLotHeaderConfig.map((headerTab, index) =>
                         <Tab key={headerTab.index} label={<React.Fragment>
                             <div className="tab-div">
@@ -67,7 +67,7 @@ const AddLotWrapper: React.FC<MenuProps> = () => {
                     )}
                 </Tabs>
             </Box>
-            <Box sx={panelBoxSx}>
+            <Box>
                 <TabPanel value={value} index={0}>
                     <AddLotForm />
                 </TabPanel>

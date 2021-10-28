@@ -69,8 +69,6 @@ export const productDelFreq = [
 
 export const lotHeaderBoxSx ={ width: '100%' , marginTop: '-2.5em'};
 export const lotHeaderInnerBoxSx ={ borderBottom: 1, borderColor: 'divider' };
-export const tabsSx = { marginLeft: '8.5em' };
-export const panelBoxSx = { marginLeft: '6em' };
 
 export const getCountry = () => {
   let savedTheme = localStorage.getItem('theme');
