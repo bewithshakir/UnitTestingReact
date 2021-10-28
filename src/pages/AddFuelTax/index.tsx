@@ -124,7 +124,7 @@ const AddFuelTax = memo(() => {
                                         *Certain markets require a combined Revenue (%) and Sales (%) Tax on the Price per Gallon with or without Adder/Discount.
                                     </Box>
                                 </Grid>
-                            <Typography variant="h3" component="h3" gutterBottom className="fw-bold" mb={1} mt={2}>
+                            <Typography color="var(--Darkgray)" variant="h3" gutterBottom className="fw-bold" mb={1}>
                                 Fill all the Mandatory fields *
                             </Typography>
                             <Grid item xs={12} md={6} pr={2.5} pb={2.5}>

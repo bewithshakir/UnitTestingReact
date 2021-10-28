@@ -44,8 +44,8 @@
       "delete": "Delete"
     },
     "data-grid-actions": {
-      "raise a request": "Raise a request",
-      "fee & driver details": "Fee & Driver details",
+      "edit": "Edit",
+      "delete": "Delete",
       "other details": "Other details",
       "contact details": "Contact details"
     },
@@ -60,16 +60,16 @@
       "view & edit details": "View & Edit Details"
     }
   },
-  "customer-filter-panel":{
-    "header":{
-      "filter":"Filter"
+  "customer-filter-panel": {
+    "header": {
+      "filter": "Filter"
     },
-    "buttons":{
-      "apply":"Apply",
-      "clear all":"Clear All"
+    "buttons": {
+      "apply": "Apply",
+      "clear all": "Clear All"
     }
   },
-  "legend":{
+  "legend": {
     "customerName": "Customer Name",
     "customerProfile": "Customer Profile",
     "parkingLots": "Parking Lots",

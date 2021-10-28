@@ -9,6 +9,8 @@ import { headerObj } from './grid.component';
 import { PositiveCricleIcon, AlertExclamationIcon, YellowFuelIcon, RedFuelIcon, GreenFuelIcon, NavyBlueFuelIcon } from '../../../assets/icons';
 import { tableImagesSX, tableAvatarSX, tableImagesIconListSX, tableIconsSX, tableFuelIconsSX } from './config';
 import NoDataFound from './Nodata';
+import Select from './ProductSingleSelect';
+
 
 interface GridBodyProps {
     primaryKey:string,
@@ -66,30 +68,21 @@ function stableSort (array: any, comparator: any) {
 
 
 function getWalletIcon (status: string) {
-    switch (status) {
-        case "Y":
-            return PositiveCricleIcon;
-        case "N":
-            return AlertExclamationIcon;
-        default:
-            return AlertExclamationIcon;
-    }
+    return ({
+        "Y": PositiveCricleIcon,
+        "N": AlertExclamationIcon,
+        }[status] || AlertExclamationIcon);
 }
 
-function getFuelIcon (status: string) {
-    switch (status) {
-        case "Regular":
-            return YellowFuelIcon;
-        case "Premium":
-            return RedFuelIcon;
-        case "Diesel":
-            return GreenFuelIcon;
-        case "V-Power":
-            return NavyBlueFuelIcon;
-        default:
-            return YellowFuelIcon;
-    }
+function getFuelIcon(fuelStatus: string) {
+     return ({
+        "Regular": YellowFuelIcon,
+       "Premium": RedFuelIcon,
+        "Diesel": GreenFuelIcon,
+        "V-Power": NavyBlueFuelIcon,
+     }[fuelStatus] || YellowFuelIcon);
 }
+
 
 const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
     const [selectedIndexKey, setSelectedKey] = React.useState(null);
@@ -141,6 +134,13 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
             </ImageList>);
         }
     };
+
+    const renderSelect = () => {
+        return(
+            <Select/>
+        );
+    };
+
     const getRowsData = () => {
         const keys = getKeys();
         const { primaryKey } = props;
@@ -205,7 +205,10 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
                                                             props.headCells[index].type === 'images' ?
                                                                 renderImages(row[key])
                                                                 :
-                                                                ""
+                                                                props.headCells[index].type === 'dropdown' ?
+                                                                    renderSelect()
+                                                                    :
+                                                                    ""
                                     }
                                 </TableCell>
                             )}

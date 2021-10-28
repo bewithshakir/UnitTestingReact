@@ -26,4 +26,23 @@ div {
             height: 20px;
         }
     }
+    .tableSelect{
+        cursor: pointer;
+        width: 150px;
+    & .select .react-select-container .react-select__control {
+        height: 37px;
+        width: 175px;
+    } 
+    & .react-select__menu{
+        width: 175px;
+    }    
+    & .container_with_icon{
+        display: inline-flex;
+        align-items: center;
+    }
+    & .option_with_icon{
+        display: inline-flex;
+        align-items: center;
+    }
+}
 }

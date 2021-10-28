@@ -31,14 +31,6 @@ h5 {
 .MuiTypography-h4,
 .MuiTypography-h5 {
   font-family: Arial;
-  font-weight: normal;
-  color: var(--Darkgray);
-  &-primary{
-    color: var(--Primary);
-    &-bold{
-        font-weight: bold;
-    }
-  }
 }
 
 p {
