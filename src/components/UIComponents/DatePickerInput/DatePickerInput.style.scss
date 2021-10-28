@@ -48,7 +48,12 @@ div {
         & label.Mui-focused {
           color: var(--Darkgray);
         }
-        & .MuiOutlinedInput-root {
+        &:hover{
+          .MuiOutlinedInput-notchedOutline {
+            border-width: 2px;
+          }
+        }
+        & .MuiOutlinedInput-root {     
           &.Mui-focused fieldset {
             border-color: var(--Darkgray);
           }
@@ -56,7 +61,6 @@ div {
         .Mui-disabled{
           background: var(--Lightgray_4) 0% 0% no-repeat padding-box;
           color: var(--Lightergray);
-          // border: 1px solid var(--Lightgray_2);
           input{
             background: var(--Lightgray_4) 0% 0% no-repeat padding-box;
             color: var(--Lightergray);
@@ -124,5 +128,8 @@ div {
     .MuiIconButton-edgeEnd{
         margin-right: 0px;
     } 
+    .Mui-error .MuiOutlinedInput-notchedOutline {
+      border-width: 2px;
+    }
   }
   

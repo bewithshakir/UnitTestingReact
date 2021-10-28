@@ -19,7 +19,7 @@ div {
     .number-box {
       width: 56px;
       height: 30px;
-      border: 1px solid #707070;
+      border: 1px solid var(--Download-Btn);
       margin-left: 17px;
     }
     &.Mui-selected {

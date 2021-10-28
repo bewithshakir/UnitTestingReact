@@ -32,16 +32,12 @@ export default function HorizontalBar (props: HorizontalBarProps) {
 
   const handleBack = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     event.preventDefault();
-    console.warn(pathname);
     if(pathname === '/customer/parkingLots/addLot'){ 
       //temp solution
       history.push('/customer/parkingLots');
-
     }else{
       props.onBack();
     }
-    // props.onBack();
-    
   };
 
   function versionBreadcrumbsSingle () {

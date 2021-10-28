@@ -51,7 +51,6 @@ export interface AddParkingLotForm {
     postalCode: string;
     county: string;
     timeZone:SelectProps;
-    // country: string;
     jurisdictionId: string;
     productDelFreq: SelectProps;
     orderScheduleDel: orderSchDel[];
@@ -68,7 +67,6 @@ export const addLotFormInitialValues = {
         postalCode : '',
         county : '',
         timeZone : { label: '', value: '' },
-        // country : '',
         jurisdictionId : '',
         productDelFreq : { label: '', value: '' },
         orderScheduleDel : [{
@@ -96,7 +94,6 @@ export default class ParkingLotModel {
     addressLine2: string;
     county: string;
     timeZone:SelectProps;
-    // country: string;
     jurisdictionId: string;
     productDelFreq: SelectProps;
     orderScheduleDel: orderSchDel[];
@@ -120,7 +117,6 @@ export default class ParkingLotModel {
         this.addressLine2 = '';
         this.county = '';
         this.timeZone = { label: '', value: '' };
-        // this.country = '';
         this.jurisdictionId = '';
         this.productDelFreq = { label: '', value: '' };
         this.orderScheduleDel = [{

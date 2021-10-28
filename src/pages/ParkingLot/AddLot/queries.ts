@@ -2,20 +2,6 @@ import { useMutation, useQuery } from "react-query";
 import { AxiosRequestConfig } from "axios";
 import axios from "../../../infrastructure/ApiHelper";
 
-// const getTimeZoneFromAPI = async () => {
-//     const options: AxiosRequestConfig = {
-//         method: 'get',
-//         url: ''
-//     };
-//     const { data } = await axios(options);
-//     return data;
-// };
-
-// export const getTimeZone = () => {
-//     return useQuery(["getTimeZone"], () => getTimeZoneFromAPI());
-// };
-
-
 const getContactTypes = async () => {
     const options: AxiosRequestConfig = {
         method: 'get',

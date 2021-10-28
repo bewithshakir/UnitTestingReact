@@ -57,9 +57,7 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
   const drawerClose = () => {
     setDrawerOpen(false);
   };
-  // const navigateToAddCustomer = () => {
-  //   history.push("/customer");
-  // };
+  
   const navigateToAddLot = () => {
     history.push("/customer/parkingLots/addLot");
   };
