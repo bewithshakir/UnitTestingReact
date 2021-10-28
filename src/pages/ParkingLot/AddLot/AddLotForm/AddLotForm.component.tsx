@@ -470,8 +470,8 @@ function AddLotForm(): React.ReactElement {
                                             <Grid item md={12} mt={2} mb={4}>
                                                 <Link
                                                     variant="body2"
-                                                    sx={{ display: "flex", alignItems: "center" }}
-                                                    className="disabled-text-link"
+                                                    // sx={{ display: "flex", alignItems: "center" }}
+                                                    className="add-link disabled-text-link"
                                                     // onClick={() => {
                                                     //     if (formik.values.locationContact.length < 5) {
                                                     //         arrayHelpers.push({ firstName: "", lastName: "", email: "", phoneNumber: "" });
@@ -591,7 +591,8 @@ function AddLotForm(): React.ReactElement {
                                             <Grid item md={12} mt={2} mb={4}>
                                                 <Link
                                                     variant="body2"
-                                                    sx={{ display: "flex", alignItems: "center" }}
+                                                    // sx={{ display: "flex", alignItems: "center" }}
+                                                    className="add-link"
                                                     onClick={() => {
                                                         if (formik.values.locationContact.length < 5) {
                                                             arrayHelpers.push({ firstName: "", lastName: "", email: "", phoneNumber: "" });

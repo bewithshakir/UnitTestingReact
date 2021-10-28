@@ -26,9 +26,20 @@ div{
       }
       .left-heading{
         margin-top: 5px;
+      } 
+      .add-link{
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        text-decoration-color: var(--Primary);
       }
       .disabled-text-link{
         text-decoration-color: var(--Secondary-Background);
+        cursor: default;
+        &:hover{
+          text-decoration-color: var(--Secondary-Background);
+          cursor: default;
+        }
         h3{
           color:  var(--Secondary-Background);
         }
@@ -41,8 +52,8 @@ div{
         border-color: var(--Secondary-Background);
       }
       .MuiTypography-h3{
-        cursor: pointer;
         color:var(--Primary);
+     
       }
   }
   
