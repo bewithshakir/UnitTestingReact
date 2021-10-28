@@ -1,4 +1,4 @@
-import { Button, ListItemIcon, SvgIcon, Typography } from "@material-ui/core";
+import { Button, ListItemIcon, SvgIcon } from "@material-ui/core";
 import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 import Grow from "@material-ui/core/Grow";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -8,7 +8,7 @@ import Popper from "@material-ui/core/Popper";
 import React from "react";
 import { DataGridActionIcon } from '../../../assets/icons';
 import './DataGridActionsMenu.style.scss';
-import { Icon } from '@mui/material';
+import { Icon, Typography } from '@mui/material';
 
 
 export type DataGridActionsMenuOption = {
@@ -128,7 +128,7 @@ export default function DataGridActionsMenu (props: DataGridActionsMenuProps) {
                         </ListItemIcon>
                       }
                       <div className="menuitem-text">
-                        <Typography variant="inherit">{option.label}</Typography>
+                        <Typography color="var(--Darkgray)" variant="inherit">{option.label}</Typography>
                       </div>
                     </MenuItem>
                   ))}

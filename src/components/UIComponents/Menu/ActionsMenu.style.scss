@@ -30,9 +30,11 @@ div{
       justify-content: flex-start;
     }
     .Mui-selected{
-      font-weight: bold;
       .menuitem-text{
-        color: var(--Blue-Btn);
+        .MuiTypography-root{
+          font-weight: bold;
+          color: var(--Blue-Btn);
+        }
       }
       .menuitem-icon{
         svg path:first-child {

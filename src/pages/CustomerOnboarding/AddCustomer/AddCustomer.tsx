@@ -196,12 +196,12 @@ const AddCustomer: React.FC<any> = () => {
                 <Container maxWidth="lg" className="page-container">
                     <FormikProvider value={formik}>
                         <form onSubmit={formik.handleSubmit}>
-                            <Typography variant="h3" component="h3" gutterBottom className="fw-bold" mb={1}>
+                            <Typography color="var(--Darkgray)" variant="h3" gutterBottom className="fw-bold" mb={1}>
                                 Customer Profile
                             </Typography>
                             <Grid container mt={1}>
                                 <Grid item md={12} mt={2} mb={1}>
-                                    <Typography variant="h4" component="h4" gutterBottom className="fw-bold" mb={1}>
+                                    <Typography color="var(--Darkgray)" variant="h4" gutterBottom className="fw-bold" mb={1}>
                                         General Information
                                     </Typography>
                                 </Grid>
@@ -294,7 +294,7 @@ const AddCustomer: React.FC<any> = () => {
                                     />
                                 </Grid>
                                 <Grid item md={12} mt={2} mb={1}>
-                                    <Typography variant="h4" component="h4" gutterBottom className="fw-bold" mb={1}>
+                                    <Typography color="var(--Darkgray)" variant="h4" gutterBottom className="fw-bold" mb={1}>
                                         Customer Contact
                                     </Typography>
                                 </Grid>
@@ -346,7 +346,7 @@ const AddCustomer: React.FC<any> = () => {
                                     />
                                 </Grid>
                                 <Grid item md={12} mt={2} mb={1}>
-                                    <Typography variant="h4" component="h4" gutterBottom className="fw-bold" mb={1}>
+                                    <Typography color="var(--Darkgray)" variant="h4" gutterBottom className="fw-bold" mb={1}>
                                         Payment and Wallet rules
                                     </Typography>
                                 </Grid>
@@ -416,7 +416,7 @@ const AddCustomer: React.FC<any> = () => {
                                                     <Checkbox checked={formik.values.lotLevel} onChange={formik.handleChange} name="lotLevel" />
                                                 }
                                                 label={
-                                                    <Typography variant="h4" component="h4" className="fw-bold">
+                                                    <Typography color="var(--Darkgray)" variant="h4" className="fw-bold">
                                                         Apply at Lot level
                                                     </Typography>
                                                 }
@@ -427,7 +427,7 @@ const AddCustomer: React.FC<any> = () => {
                                                     <Checkbox checked={formik.values.businessLevel} onChange={formik.handleChange} name="businessLevel" />
                                                 }
                                                 label={
-                                                    <Typography variant="h4" component="h4" className="fw-bold">
+                                                    <Typography color="var(--Darkgray)" variant="h4" className="fw-bold">
                                                         Apply at Busines level
                                                     </Typography>
                                                 }
@@ -438,7 +438,7 @@ const AddCustomer: React.FC<any> = () => {
                                                     <Checkbox checked={formik.values.vehicleLevel} onChange={formik.handleChange} name="vehicleLevel" />
                                                 }
                                                 label={
-                                                    <Typography variant="h4" component="h4" className="fw-bold">
+                                                    <Typography color="var(--Darkgray)" variant="h4" className="fw-bold">
                                                         Apply at Vehicle level
                                                     </Typography>
                                                 }
@@ -447,7 +447,7 @@ const AddCustomer: React.FC<any> = () => {
                                     </FormControl>
                                 </Grid>
                                 <Grid item md={12} mt={2} mb={1}>
-                                    <Typography variant="h4" component="h4" gutterBottom className="fw-bold" mb={1}>
+                                    <Typography color="var(--Darkgray)" variant="h4" gutterBottom className="fw-bold" mb={1}>
                                         Emergency Contact
                                     </Typography>
                                 </Grid>
@@ -546,7 +546,7 @@ const AddCustomer: React.FC<any> = () => {
                                             <Grid item md={12} mt={2} mb={4}>
                                                 <Link
                                                     variant="body2"
-                                                    sx={{ display: "flex", alignItems: "center" }}
+                                                    sx={{ display: "flex", alignItems: "center", color: "var(--Primary)" }}
                                                     onClick={() => {
                                                         if (formik.values.emergencyContact.length < 5) {
                                                             arrayHelpers.push({ firstName: "", lastName: "", email: "", phoneNumber: "" });
@@ -554,7 +554,7 @@ const AddCustomer: React.FC<any> = () => {
                                                     }}
                                                 >
                                                     <Add />
-                                                    <Typography variant="h3" component="h3" className="fw-bold MuiTypography-h5-primary" mb={1}>
+                                                    <Typography variant="h3" className="fw-bold" mb={1}>
                                                         ADD EMERGENCY CONTACT
                                                     </Typography>
                                                 </Link>
@@ -564,7 +564,7 @@ const AddCustomer: React.FC<any> = () => {
                                 />
 
                                 <Grid item md={12} mt={2} mb={1}>
-                                    <Typography variant="h4" component="h4" gutterBottom className="fw-bold" mb={1}>
+                                    <Typography color="var(--Darkgray)" variant="h4" gutterBottom className="fw-bold" mb={1}>
                                         AP Contact
                                     </Typography>
                                 </Grid>
@@ -663,7 +663,7 @@ const AddCustomer: React.FC<any> = () => {
                                             <Grid item md={12} mt={2} mb={4}>
                                                 <Link
                                                     variant="body2"
-                                                    sx={{ display: "flex", alignItems: "center" }}
+                                                    sx={{ display: "flex", alignItems: "center", color: "var(--Primary)" }}
                                                     onClick={() => {
                                                         if (formik.values.apContact.length < 5) {
                                                             arrayHelpers.push({ firstName: "", lastName: "", email: "", phoneNumber: "" });
@@ -671,7 +671,7 @@ const AddCustomer: React.FC<any> = () => {
                                                     }}
                                                 >
                                                     <Add />
-                                                    <Typography variant="h3" component="h3" className="fw-bold MuiTypography-h5-primary" mb={1}>
+                                                    <Typography variant="h3" className="fw-bold" mb={1}>
                                                         ADD AP CONTACT
                                                     </Typography>
                                                 </Link>
@@ -682,14 +682,14 @@ const AddCustomer: React.FC<any> = () => {
                                 />
 
                                 <Grid item md={12} mt={2} mb={1}>
-                                    <Typography variant="h4" component="h4" gutterBottom className="fw-bold" mb={1}>
+                                    <Typography color="var(--Darkgray)" variant="h4" gutterBottom className="fw-bold" mb={1}>
                                         Import Contract (Optional)
                                     </Typography>
                                 </Grid>
                                 <Grid item md={12} mt={2} mb={1}>
                                     <Box className="import-file">
                                         <FileCopy />
-                                        <Typography variant="h4" component="h4" display={"inline-flex"} className="fw-bold pl-3" mb={1}>
+                                        <Typography color="var(--Darkgray)" variant="h4" display={"inline-flex"} className="fw-bold pl-3" mb={1}>
                                             Import Contract (Optional)
                                         </Typography>
                                     </Box>
