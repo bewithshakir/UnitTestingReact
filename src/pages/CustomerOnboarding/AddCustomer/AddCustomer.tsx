@@ -21,6 +21,9 @@ import axios from 'axios';
 import { EditIcon } from '../../../assets/icons';
 import "./AddCustomer.style.scss";
 
+import { useAddedCustomerIdStore } from '../../../store';
+
+
 const initialValues = new CustomerModel();
 
 function getTokenApplicable(Obj: any) {
@@ -68,8 +71,10 @@ const AddCustomer: React.FC = () => {
         if(selectedCustomerId != "addCustomer") {
             getDataForSelectedCustomer("" + selectedCustomerId);
             setDisabled(true);
+            setSaveCancelShown(false);
         } else {
             setEditShown(false);
+            setSaveCancelShown(true);
         }
     }, [location]);
 
@@ -117,7 +122,6 @@ const AddCustomer: React.FC = () => {
         formik.setFieldValue('phoneNumber', dataToPopulate.customer.contactPhoneNo);
         formik.setFieldValue("paymentType", { label: '' + dataToPopulate.customer.PaymentType.paymentTypeNm, value: '' + dataToPopulate.customer.PaymentType.paymentTypeId});
         formik.setFieldValue("invoiceFrequency", { label: '' + dataToPopulate.customer.InvoiceFrequency.invoiceFrequencyNm, value: '' + dataToPopulate.customer.InvoiceFrequency.invoiceFrequencyId });
-        formik.setFieldValue("firstSettlementDt", dataToPopulate.customer.firstSettlementDt);
         formik.setFieldValue("paymentTerm", dataToPopulate.customer.paymentTerm);
         const emergenyContactList = getEmergencyContacts(dataToPopulate.customerContact);
         const APContactList = getAPContacts(dataToPopulate.customerContact);
@@ -134,7 +138,7 @@ const AddCustomer: React.FC = () => {
             formik.setFieldValue(`apContact[${index}].email`, obj.contactEmailId);
             formik.setFieldValue(`apContact[${index}].phoneNumber`, obj.contactPhoneNo);
         });
-        formik.setFieldValue('endDate', dataToPopulate.customer.createdDtm);
+        formik.setFieldValue("endDate", dataToPopulate.customer.firstSettlementDt);
         checkBoxData.map((obj: any) => {
             if(obj.indexOf("lot")){
                 formik.setFieldValue('lotLevel', true);
@@ -155,25 +159,55 @@ const AddCustomer: React.FC = () => {
     const [paymentTypes, setpaymentTypes] = useState([]);
     const [initialInvoiceFrequencies, setinitialInvoiceFrequencies] = useState([]);
     const { data: savedCustomerData, mutate: addNewCustomer, isSuccess, isError } = useCreateCustomer();
+    // const { data: editedCustomerData, mutate: editCustomer, isEditSuccess, isEditError } = useEditCustomer(location.pathname.split("/").pop() as string);
     const { data: frequencyList } = useGetFrequencies();
     const { data: paymentTypeList } = useGetPaymentTypes();
 
+    const setCustomerIdCreated = useAddedCustomerIdStore((state) => state.setCustomerId);
+
+    // const { data: customerData } = useGetCustomerData();
+    // const { customerId } = useParams();
+ 
     useEffect(() => {
         if (isSuccess) {
             setAPIResponse(true);
             setFormStatus(formStatusProps.success);
-            getDataForSelectedCustomer(savedCustomerData.data.customer.customerId.toString());
+            getDataForSelectedCustomer(savedCustomerData?.data?.customer?.customerId?.toString());
             setEditShown(true);
+            setSaveCancelShown(false);
+            if (savedCustomerData) {
+                setCustomerIdCreated(savedCustomerData?.data?.customer?.customerId);
+            }
         }
         if (isError) {
             setAPIResponse(true);
             setFormStatus(formStatusProps.error);
+            setSaveCancelShown(false);
         }
         setTimeout(() => {
             setAPIResponse(false);
         }, 6000);
         formik.resetForm({});
     }, [savedCustomerData, isSuccess, isError]);
+
+    // useEffect(() => {
+    //     if (isEditSuccess) {
+    //         setAPIResponse(true);
+    //         setFormStatus(formStatusProps.editsuccess);
+    //         getDataForSelectedCustomer(editedCustomerData.data.customer.customerId.toString());
+    //         setEditShown(true);
+    //         setSaveCancelShown(false);
+    //     }
+    //     if (isEditError) {
+    //         setAPIResponse(true);
+    //         setFormStatus(formStatusProps.error);
+    //         setSaveCancelShown(false);
+    //     }
+    //     setTimeout(() => {
+    //         setAPIResponse(false);
+    //     }, 6000);
+    //     // formik.resetForm({});
+    // }, [editedCustomerData, isEditSuccess as boolean, isEditError as boolean]);
 
     useEffect(() => {
         if (frequencyList?.data.length) {
@@ -187,6 +221,13 @@ const AddCustomer: React.FC = () => {
         }
     }, [paymentTypeList]);
 
+    // useEffect(() => {
+    //     if (customerData?.data.length) {
+    //         // setpaymentTypes(paymentTypeList.data.map((obj: any) => ({ label: obj.paymentTypeNm.trim(), value: obj.paymentTypeId.trim() })));
+    //         populateDataInAllFields(customerData);
+    //     }
+    // }, [customerData]);
+
     const [apiResposneState, setAPIResponse] = useState(false);
 
     const [open, setOpen] = React.useState(false);
@@ -196,6 +237,8 @@ const AddCustomer: React.FC = () => {
     const [isEditMode, setEditMode] = useState(false);
 
     const [isEditShown, setEditShown] = useState(true);
+
+    const [isSavCancelShown, setSaveCancelShown] = useState(true);
 
     const handleModelToggle = () => {
         setOpen(prev => !prev);
@@ -208,7 +251,9 @@ const AddCustomer: React.FC = () => {
 
     const handleEditButtonClick = () => {
         setEditMode(true);
+        setSaveCancelShown(true);
         setDisabled(false);
+       
     };
 
     const getDataForSelectedCustomer = async (customerId: string) => {
@@ -229,7 +274,7 @@ const AddCustomer: React.FC = () => {
         }
     };
 
-    const editCustomerData = async (data: AddCustomerForm, resetForm: Function) => {
+    const editCustomerData = async (data: AddCustomerForm) => {
         try {
             const apiPayload = {
                 "customerName": data.customerName,
@@ -270,15 +315,19 @@ const AddCustomer: React.FC = () => {
                 })
             };
             // axios.put(`http://52.146.63.31/api/customer-service/customers/${location.pathname.split("/").pop()}`, apiPayload)
-            axios.put(`http://20.81.19.147/api/customer-service/customers/${location.pathname.split("/").pop()}`, apiPayload)
+            axios.put(`http://20.81.19.147/api/customer-service/customers/${location.pathname.split("/").pop()}?countryCode=us`, apiPayload)
                 .then(function (response) {
                     setAPIResponse(true);
                     if (response.data) {
                         setFormStatus(formStatusProps.editsuccess);
+                        getDataForSelectedCustomer(response.data?.data?.customer?.customerId.toString());
+                        setEditShown(true);
+                        setSaveCancelShown(false);
+                        setCustomerIdCreated(response.data?.data?.customer?.customerId);
                         setTimeout(() => {
                             setAPIResponse(false);
                         }, 6000);
-                        resetForm({});
+                        
                     }
                 })
                 .catch(function () {
@@ -287,6 +336,11 @@ const AddCustomer: React.FC = () => {
         } catch (error) {
             setFormStatus(formStatusProps.error);
         }
+
+        //     editCustomer(apiPayload);
+        // } catch (error) {
+        //     setFormStatus(formStatusProps.error);
+        // }
     };
 
     const createNewCustomer = async (form: AddCustomerForm) => {
@@ -336,9 +390,9 @@ const AddCustomer: React.FC = () => {
     const formik = useFormik({
         initialValues,
         validationSchema: AddCustomerValidationSchema,
-        onSubmit: (values, actions) => {
+        onSubmit: (values) => {
             if (isEditMode) {
-                editCustomerData(values, actions.resetForm);
+                editCustomerData(values);
             } else {
                 createNewCustomer(values);
             }
@@ -356,6 +410,14 @@ const AddCustomer: React.FC = () => {
         }
     }
 
+    const disableButton = () => {
+        if(isEditMode) {
+            return false;     
+        } else {
+            return (!formik.isValid || !formik.dirty) || formik.isSubmitting;
+        }
+    };
+
     function handleGoogleAddressChange (addressObj: any) {
         formik.setFieldValue('addressLine1', addressObj.addressLine1);
         formik.setFieldValue('addressLine2', addressObj.addressLine2);
@@ -370,10 +432,13 @@ const AddCustomer: React.FC = () => {
                 <Container maxWidth="lg" className="page-container">
                     <FormikProvider value={formik}>
                         <form onSubmit={formik.handleSubmit}>
-                            <div style={{ display: "flex" }}>
-                                <Typography variant="h3" component="h3" gutterBottom className="fw-bold" mb={1} style={{ width: "86%" }}>
+                            <Grid container xs={12}>
+                                <Grid item xs={10} md={10}>
+                                <Typography variant="h3" component="h3" gutterBottom className="fw-bold" mb={1} >
                                     Customer Profile
                                 </Typography>
+                                </Grid>
+                                <Grid item xs={2} md={2} sx={{ justifyContent:'flex-end' }}>
                                 {isEditShown && <Button
                                         types="edit"
                                         aria-label="edit"
@@ -381,10 +446,11 @@ const AddCustomer: React.FC = () => {
                                         startIcon={<EditIcon />}> 
                                     {t("buttons.edit")} 
                                 </Button>}
-                            </div>
+                                </Grid>
+                            </Grid>
                             <Grid container mt={1}>
                                 <Grid item md={12} mt={2} mb={1}>
-                                    <Typography variant="h4" component="h4" gutterBottom className="fw-bold" mb={1}>
+                                    <Typography color="var(--Darkgray)" variant="h4" gutterBottom className="fw-bold" mb={1}>
                                         General Information
                                     </Typography>
                                 </Grid>
@@ -481,7 +547,7 @@ const AddCustomer: React.FC = () => {
                                     />
                                 </Grid>
                                 <Grid item md={12} mt={2} mb={1}>
-                                    <Typography variant="h4" component="h4" gutterBottom className="fw-bold" mb={1}>
+                                    <Typography color="var(--Darkgray)" variant="h4" gutterBottom className="fw-bold" mb={1}>
                                         Customer Contact
                                     </Typography>
                                 </Grid>
@@ -537,7 +603,7 @@ const AddCustomer: React.FC = () => {
                                     />
                                 </Grid>
                                 <Grid item md={12} mt={2} mb={1}>
-                                    <Typography variant="h4" component="h4" gutterBottom className="fw-bold" mb={1}>
+                                    <Typography color="var(--Darkgray)" variant="h4" gutterBottom className="fw-bold" mb={1}>
                                         Payment and Wallet rules
                                     </Typography>
                                 </Grid>
@@ -610,7 +676,7 @@ const AddCustomer: React.FC = () => {
                                                     <Checkbox checked={formik.values.lotLevel} onChange={formik.handleChange} name="lotLevel" disabled={isDisabled} />
                                                 }
                                                 label={
-                                                    <Typography variant="h4" component="h4" className="fw-bold">
+                                                    <Typography color="var(--Darkgray)" variant="h4" className="fw-bold">
                                                         Apply at Lot level
                                                     </Typography>
                                                 }
@@ -621,7 +687,7 @@ const AddCustomer: React.FC = () => {
                                                     <Checkbox checked={formik.values.businessLevel} onChange={formik.handleChange} name="businessLevel" disabled={isDisabled} />
                                                 }
                                                 label={
-                                                    <Typography variant="h4" component="h4" className="fw-bold">
+                                                    <Typography color="var(--Darkgray)" variant="h4" className="fw-bold">
                                                         Apply at Busines level
                                                     </Typography>
                                                 }
@@ -632,7 +698,7 @@ const AddCustomer: React.FC = () => {
                                                     <Checkbox checked={formik.values.vehicleLevel} onChange={formik.handleChange} name="vehicleLevel" disabled={isDisabled} />
                                                 }
                                                 label={
-                                                    <Typography variant="h4" component="h4" className="fw-bold">
+                                                    <Typography color="var(--Darkgray)" variant="h4" className="fw-bold">
                                                         Apply at Vehicle level
                                                     </Typography>
                                                 }
@@ -641,7 +707,7 @@ const AddCustomer: React.FC = () => {
                                     </FormControl>
                                 </Grid>
                                 <Grid item md={12} mt={2} mb={1}>
-                                    <Typography variant="h4" component="h4" gutterBottom className="fw-bold" mb={1}>
+                                    <Typography color="var(--Darkgray)" variant="h4" gutterBottom className="fw-bold" mb={1}>
                                         Emergency Contact
                                     </Typography>
                                 </Grid>
@@ -744,7 +810,13 @@ const AddCustomer: React.FC = () => {
                                             <Grid item md={12} mt={2} mb={4}>
                                                 <Link
                                                     variant="body2"
-                                                    sx={{ display: "flex", alignItems: "center" }}
+                                                    sx={{
+                                                        display: "flex",
+                                                        alignItems: "center",
+                                                        color: "var(--Primary)",
+                                                        width: "fit-content",
+                                                        cursor: "pointer"
+                                                    }}
                                                     onClick={() => {
                                                         if (formik.values.emergencyContact.length < 5) {
                                                             arrayHelpers.push({ firstName: "", lastName: "", email: "", phoneNumber: "" });
@@ -752,7 +824,7 @@ const AddCustomer: React.FC = () => {
                                                     }}
                                                 >
                                                     <Add />
-                                                    <Typography variant="h3" component="h3" className="fw-bold MuiTypography-h5-primary" mb={1}>
+                                                    <Typography variant="h3" className="fw-bold" mb={1}>
                                                         ADD EMERGENCY CONTACT
                                                     </Typography>
                                                 </Link>
@@ -762,7 +834,7 @@ const AddCustomer: React.FC = () => {
                                 />
 
                                 <Grid item md={12} mt={2} mb={1}>
-                                    <Typography variant="h4" component="h4" gutterBottom className="fw-bold" mb={1}>
+                                    <Typography color="var(--Darkgray)" variant="h4" gutterBottom className="fw-bold" mb={1}>
                                         AP Contact
                                     </Typography>
                                 </Grid>
@@ -865,7 +937,13 @@ const AddCustomer: React.FC = () => {
                                             <Grid item md={12} mt={2} mb={4}>
                                                 <Link
                                                     variant="body2"
-                                                    sx={{ display: "flex", alignItems: "center" }}
+                                                    sx={{
+                                                        display: "flex",
+                                                        alignItems: "center",
+                                                        color: "var(--Primary)",
+                                                        width: "fit-content",
+                                                        cursor: "pointer"
+                                                    }}
                                                     onClick={() => {
                                                         if (formik.values.apContact.length < 5) {
                                                             arrayHelpers.push({ firstName: "", lastName: "", email: "", phoneNumber: "" });
@@ -873,7 +951,7 @@ const AddCustomer: React.FC = () => {
                                                     }}
                                                 >
                                                     <Add />
-                                                    <Typography variant="h3" component="h3" className="fw-bold MuiTypography-h5-primary" mb={1}>
+                                                    <Typography variant="h3" className="fw-bold" mb={1}>
                                                         ADD AP CONTACT
                                                     </Typography>
                                                 </Link>
@@ -884,20 +962,20 @@ const AddCustomer: React.FC = () => {
                                 />
 
                                 <Grid item md={12} mt={2} mb={1}>
-                                    <Typography variant="h4" component="h4" gutterBottom className="fw-bold" mb={1}>
+                                    <Typography color="var(--Darkgray)" variant="h4" gutterBottom className="fw-bold" mb={1}>
                                         Import Contract (Optional)
                                     </Typography>
                                 </Grid>
                                 <Grid item md={12} mt={2} mb={1}>
                                     <Box className="import-file">
                                         <FileCopy />
-                                        <Typography variant="h4" component="h4" display={"inline-flex"} className="fw-bold pl-3" mb={1}>
+                                        <Typography color="var(--Darkgray)" variant="h4" display={"inline-flex"} className="fw-bold pl-3" mb={1}>
                                             Import Contract (Optional)
                                         </Typography>
                                     </Box>
                                 </Grid>
                                 <Grid item md={12} mt={2} mb={1}>
-                                    <Box className="form-action-section">
+                                    {isSavCancelShown && <Box className="form-action-section">
                                         <Button
                                             types="cancel"
                                             aria-label="cancel"
@@ -911,11 +989,12 @@ const AddCustomer: React.FC = () => {
                                             types="save"
                                             aria-label="save"
                                             className="ml-4"
-                                            disabled={(!formik.isValid || !formik.dirty) || formik.isSubmitting}
+                                            disabled={disableButton()}
+                                            
                                         >
                                             {t("buttons.save")}
                                         </Button>
-                                    </Box>
+                                    </Box> }
                                     <ToastMessage isOpen={apiResposneState} messageType={formStatus.type} onClose={() => { return ''; }} message={formStatus.message} />
                                 </Grid>
                             </Grid>

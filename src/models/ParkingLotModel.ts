@@ -2,10 +2,6 @@ import { useTranslation } from 'react-i18next';
 import { headerObj } from '../components/UIComponents/DataGird/grid.component';
 import DriveEtaOutlinedIcon from '@material-ui/icons/DriveEtaOutlined';
 
-export interface SelectProps {
-    label: string,
-    value: string,
-}
 
 
 export interface ParkingLot {
@@ -20,8 +16,91 @@ export interface ParkingLot {
     lotLevel: boolean,
 }
 
+export interface SelectProps {
+    label: string,
+    value: string,
+}
+
+type mutiSelectItem = {
+    label: string,
+    value: string | number
+}
+
+export interface lotContact {
+    firstName: string,
+    lastName: string,
+    email: string,
+    phoneNumber: string,
+}
+
+export interface orderSchDel {
+    fromDate: moment.Moment| string | null,
+    toDate: moment.Moment| string | null,
+    startTime: string,
+    endTime: string,
+    productDelDays: Array<mutiSelectItem>
+}
+
+export interface AddParkingLotForm {
+    lotName:string;
+    lotId: string;
+    addressLine1: string;
+    addressLine2: string;
+    city: string;
+    state: string;
+    postalCode: string;
+    county: string;
+    timeZone:SelectProps;
+    jurisdictionId: string;
+    productDelFreq: SelectProps;
+    orderScheduleDel: orderSchDel[];
+    locationContact: lotContact[];
+}
+
+export const addLotFormInitialValues = {
+        lotName : '',
+        lotId : '',
+        addressLine1 : '',
+        addressLine2 : '',
+        city : '',
+        state : '',
+        postalCode : '',
+        county : '',
+        timeZone : { label: '', value: '' },
+        jurisdictionId : '',
+        productDelFreq : { label: '', value: '' },
+        orderScheduleDel : [{
+            fromDate: '',
+            toDate: '',
+            startTime: '',
+            endTime: '',
+            productDelDays: []
+        }],
+        locationContact : [{
+            firstName: '',
+            lastName: '',
+            email: '',
+            phoneNumber: '',
+        }],
+};
+
+
+
 export default class ParkingLotModel {
     // General Information
+    lotName:string;
+    lotId: string;
+    addressLine1: string;
+    addressLine2: string;
+    county: string;
+    timeZone:SelectProps;
+    jurisdictionId: string;
+    productDelFreq: SelectProps;
+    orderScheduleDel: orderSchDel[];
+    locationContact: lotContact[];
+
+
+
     customerId: string;
     city: string;
     state: string;
@@ -32,6 +111,29 @@ export default class ParkingLotModel {
     lotLevel: boolean;
 
     constructor() {
+        this.lotName = '';
+        this.lotId = '';
+        this.addressLine1 = '';
+        this.addressLine2 = '';
+        this.county = '';
+        this.timeZone = { label: '', value: '' };
+        this.jurisdictionId = '';
+        this.productDelFreq = { label: '', value: '' };
+        this.orderScheduleDel = [{
+            fromDate: '',
+            toDate: '',
+            startTime: '',
+            endTime: '',
+            productDelDays: []
+        }];
+        this.locationContact = [{
+            firstName: '',
+            lastName: '',
+            email: '',
+            phoneNumber: '',
+        }];
+
+
         this.customerId = '';
         this.city = '';
         this.state = '';
@@ -56,31 +158,21 @@ export default class ParkingLotModel {
     }
 
     ACTION_TYPES = {
-        RAISE_REQ: 'raise req',
-        DRIVER_DETAILS: 'driver details',
-        OTHER_DETAIL: 'other details',
-        CONTACT_DETAILS: 'contact details'
+        EDIT: 'edit',
+        DELETE: 'delete',
     };
 
     rowActions () {
         const { t } = useTranslation();
         return [
             {
-                label: t("menus.data-grid-actions.raise a request"),
-                action: this.ACTION_TYPES.RAISE_REQ
+                label: t("menus.data-grid-actions.edit"),
+                action: this.ACTION_TYPES.EDIT
             },
             {
-                label: t("menus.data-grid-actions.fee & driver details"),
-                action: this.ACTION_TYPES.DRIVER_DETAILS
+                label: t("menus.data-grid-actions.delete"),
+                action: this.ACTION_TYPES.DELETE
             },
-            {
-                label: t("menus.data-grid-actions.other details"),
-                action: this.ACTION_TYPES.OTHER_DETAIL
-            },
-            {
-                label: t("menus.data-grid-actions.contact details"),
-                action: this.ACTION_TYPES.CONTACT_DETAILS
-            }
         ];
     }
 

@@ -13,7 +13,7 @@ type item = {
 interface props {
     id?: string;
     name?: string;
-    label: string;
+    label?: string;
     placeholder?: string;
     value?: item | Array<item>;
     items: Array<item>;
@@ -27,6 +27,8 @@ interface props {
     description?: string;
     onChange: (...args: any[]) => void;
     onBlur?: (...args: any[]) => void;
+    disabled?:boolean;
+    components?: any;
 }
 
 export default function SingleSelect(props: props) {
@@ -47,9 +49,9 @@ export default function SingleSelect(props: props) {
     return (
         <Fragment>
             <FormControl className='select' >
-                <InputLabel shrink htmlFor={`${props.id}-label`} style={{ color: 'var(--Darkgray)' }} aria-labelledby={props.label} aria-required={props.required}>
+                {props.label && (<InputLabel shrink htmlFor={`${props.id}-label`} style={{ color: 'var(--Darkgray)' }} aria-labelledby={props.label} aria-required={props.required}>
                     <b>{props.label.toUpperCase()}{props.required && props.label && (<span className='super' >* </span>)}</b >
-                </InputLabel>
+                </InputLabel>)}
                 <Select
                     id={props.id}
                     name={props.name}
@@ -60,9 +62,10 @@ export default function SingleSelect(props: props) {
                     options={props.items}
                     onChange={handleChange}
                     onBlur={props.onBlur}
-                    components={{ IndicatorSeparator: () => null, DropdownIndicator }}
+                    components={{ IndicatorSeparator: () => null, DropdownIndicator, ...props.components }}
                     isSearchable={false}
-                    isDisabled={props.isDisabled}
+                    isDisabled={props.disabled}
+                    onKeyDown={e => e.preventDefault()}
                 />
                 {props.helperText && (
                     <FormHelperText

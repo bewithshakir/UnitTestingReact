@@ -19,8 +19,19 @@ const Legend: React.FC = () => {
   const onItemClick = (to: string) => {
     history.push(to);
   };
-  return (
 
+  const getSelectedLegendItem = (configItem: any) => {
+    if(configItem.to == "/customer/addCustomer") {
+      const pathnameSegArr = pathname.split("/");
+      if (pathnameSegArr.indexOf("viewCustomer") > -1 || pathnameSegArr.indexOf("addCustomer") > -1 ) {
+        return true;
+      } 
+    } else {
+      return pathname.includes(configItem.to);
+    }
+  };
+
+  return (
     <Box className="legend-box" sx={boxSystem}>
       <nav >
         <List subheader={
@@ -29,10 +40,9 @@ const Legend: React.FC = () => {
           </ListSubheader>
         }>
           {config.map((ConfigItem) => {
-            const isLegendSelected = pathname.includes(ConfigItem.to);
             return (
               <ListItem key={ConfigItem.index} onClick={() => onItemClick(ConfigItem.to)} >
-                <ListItemButton className={"listItemButton"} selected={isLegendSelected} >
+                <ListItemButton className={"listItemButton"} selected={getSelectedLegendItem(ConfigItem)} >
                   <ListItemText className="listItemTextPrimary" primary={t(ConfigItem.label)} />
                   {ConfigItem.secondaryText && <ListItemText className="listItemTextSecondary" primary={0} />}
                 </ListItemButton>

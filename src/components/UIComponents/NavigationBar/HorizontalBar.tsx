@@ -5,13 +5,15 @@ import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { NavLink, useHistory } from "react-router-dom";
+import { NavLink, useHistory, useLocation } from "react-router-dom";
 import { BackIcon, CustomerProfileIcon2, LogoutIcon, SettingsIcon, USAFlagIcon } from "../../../assets/icons";
 import { useStore } from "../../../store";
 import { Button } from "../Button/Button.component";
 import NotificationsMenu from '../Menu/NotificationsMenu.component';
 import ProfileMenu from '../Menu/ProfileMenu.component';
 import './HorizontalBar.style.scss';
+import { useAddedCustomerNameStore } from '../../../store';
+
 
 const drawerWidth = 64;
 interface HorizontalBarProps {
@@ -23,21 +25,37 @@ export default function HorizontalBar (props: HorizontalBarProps) {
   const { t } = useTranslation();
   const version =  useStore((state)=>state.version);
   const  history =  useHistory();
+  const {pathname} = useLocation();
+  const selectedCustomerName = useAddedCustomerNameStore((state) => state.customerName);
+
   function handleClick (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
     return event;
   }
 
   const handleBack = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     event.preventDefault();
-    props.onBack();
+    if(pathname === '/customer/parkingLots/addLot'){ 
+      //temp solution
+      history.push('/customer/parkingLots');
+    }else{
+      props.onBack();
+    }
+  };
+
+   const getHeaderText = () => {
+    if(history.location.pathname.includes('addCustomer')) {
+      return "Add Customer";
+    } else {
+      return selectedCustomerName;
+    }
   };
 
   function versionBreadcrumbsSingle () {
     return (<>
       <Breadcrumbs separator={<NavigateNextIcon />} aria-label="breadcrumb">
         <Link className="breadcrubs-title" href="#" onClick={handleClick}>
-          {/* {getHeaderText()} */}
-          Add Customer
+          {getHeaderText()}
+          {/* Add Customer */}
         </Link>
       </Breadcrumbs>
     </>);

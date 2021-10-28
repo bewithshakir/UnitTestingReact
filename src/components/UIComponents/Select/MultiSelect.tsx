@@ -27,6 +27,8 @@ interface props {
     description?: string;
     onChange: (...args: any[]) => void;
     onBlur?: (...args: any[]) => void;
+
+    disabled?:boolean
 }
 
 export default function MultiSelect(props: props) {
@@ -98,6 +100,7 @@ export default function MultiSelect(props: props) {
                     isMulti={true}
                     noOptionsMessage={() => props.noOptionsMessage || null}
                     loadingMessage={() => props.loadingMessage || null}
+                    isDisabled={props.disabled}
                 />
                 {props.helperText && (
                     <FormHelperText

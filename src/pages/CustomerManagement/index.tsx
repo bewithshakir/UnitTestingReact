@@ -16,7 +16,7 @@ import { Add } from "@mui/icons-material";
 import { useHistory } from "react-router-dom";
 import { sortByOptions } from "./config";
 import { RightInfoPanel } from "../../components/UIComponents/RightInfoPanel/RightInfoPanel.component";
-import { Box, FormControl, Grid } from "@mui/material";
+import { Box, FormControl, Grid, Typography } from "@mui/material";
 import { HorizontalBarVersionState, useStore } from "../../store";
 import CustomerModel from "../../models/CustomerModel";
 import { DataGridActionsMenuOption } from "../../components/UIComponents/Menu/DataGridActionsMenu.component";
@@ -118,13 +118,10 @@ const Content: React.FC<ContentProps> = () => {
 
   const handleRowAction = (action: DataGridActionsMenuOption) => {
     switch (action.action) {
-      case ACTION_TYPES.RAISE_REQ:
-        // perform action 
-        break;
-      case ACTION_TYPES.DRIVER_DETAILS:
+      case ACTION_TYPES.EDIT:
         // perform action
         break;
-      case ACTION_TYPES.OTHER_DETAIL:
+      case ACTION_TYPES.DELETE:
         // perform action
         break;
       case ACTION_TYPES.CONTACT_DETAILS:
@@ -169,6 +166,14 @@ const Content: React.FC<ContentProps> = () => {
                 onChange={onInputChange}
               />
             </Grid>
+            {
+              (searchTerm && !(isFetching || isLoading)) &&
+              <Grid item display="flex" alignItems="center" paddingLeft={2.5}>
+                <Typography color="var(--Darkgray)" variant="h4" align="center" className="fw-bold">
+                  {customerList.length} results found
+                </Typography>
+              </Grid>
+            }
           </Grid>
           <Grid item md={4} lg={3} display="flex" justifyContent="flex-end">
             <Grid item pr={2.5}>
@@ -205,8 +210,8 @@ const Content: React.FC<ContentProps> = () => {
             rowActionOptions={rowActionOptions}
             openDrawer={openDrawer}
             searchTerm={searchTerm}
-            getId={(id:string) => setCustomerId(id)}
-            InnerTableComponent={<Table primaryKey='deliveryLocationId' id={customerId} headCells={headCellsLots}/>}
+            getId={(id: string) => setCustomerId(id)}
+            InnerTableComponent={<Table primaryKey='deliveryLocationId' id={customerId} headCells={headCellsLots} />}
             noDataMsg='Add Customer by clicking on the " Add Customer" button.'
           />
 

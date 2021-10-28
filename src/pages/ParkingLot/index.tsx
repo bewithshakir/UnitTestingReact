@@ -14,7 +14,7 @@ import { useHistory } from "react-router-dom";
 import { sortByOptions } from "./config";
 import { RightInfoPanel } from "../../components/UIComponents/RightInfoPanel/RightInfoPanel.component";
 import { Box, FormControl, Grid } from "@mui/material";
-import { HorizontalBarVersionState, useStore } from "../../store";
+import { HorizontalBarVersionState, useStore , useAddedCustomerIdStore} from "../../store";
 import ParkingLotModel from "../../models/ParkingLotModel";
 import { DataGridActionsMenuOption } from "../../components/UIComponents/Menu/DataGridActionsMenu.component";
 
@@ -39,7 +39,7 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
   const [filterData, setFilterData] = React.useState<{ [key: string]: string[] }>({});
   const [custFilterPanelVisible, setCustFilterPanelVisible] = React.useState(false);
   const [parkingLotlist, setCustomerList] = React.useState([]);
-  const customerId = "fc2ffe5e-7ef8-46b8-95c2-cb82cf77ed90";
+  const customerId = useAddedCustomerIdStore((state) => state.customerId);
 
   const { t } = useTranslation();
   const { data, fetchNextPage, isLoading }: any = useGetParkingLotDetails(
@@ -49,7 +49,7 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
     customerId
   );
   const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
-  setVersion("NavLinks");
+  setVersion("Breadcrumbs-Single");
   const openDrawer = (row: SyntheticEvent) => {
     setInfo(row);
     setDrawerOpen(true);
@@ -57,19 +57,21 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
   const drawerClose = () => {
     setDrawerOpen(false);
   };
-  const navigateToAddCustomer = () => {
-    history.push("/customer");
+  
+  const navigateToAddLot = () => {
+    history.push("/customer/parkingLots/addLot");
   };
+
   const onSortBySlected = (value: string) => {
     let sortOrder;
     switch (value) {
-      case "Z-A":
+      case "paymentCompleted":
         sortOrder = { sortBy: "customerName", order: "desc" };
         break;
-      case "Newest to Oldest":
+      case "paymentInProgress":
         sortOrder = { sortBy: "date", order: "desc" };
         break;
-      case "Oldest to New":
+      case "recentlyAddedLots":
         sortOrder = { sortBy: "date", order: "asc" };
         break;
       default:
@@ -78,7 +80,7 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
     }
     setSortOrder(sortOrder);
   };
-  const onInputChange = (value:string) => {
+  const onInputChange = (value: string) => {
     setSearchTerm(value);
   };
   useEffect(() => {
@@ -112,16 +114,10 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
 
   const handleRowAction = (action: DataGridActionsMenuOption) => {
     switch (action.action) {
-      case ACTION_TYPES.RAISE_REQ:
+      case ACTION_TYPES.EDIT:
         // perform action 
         break;
-      case ACTION_TYPES.DRIVER_DETAILS:
-        // perform action
-        break;
-      case ACTION_TYPES.OTHER_DETAIL:
-        // perform action
-        break;
-      case ACTION_TYPES.CONTACT_DETAILS:
+      case ACTION_TYPES.DELETE:
         // perform action
         break;
       default: return;
@@ -169,7 +165,7 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
               <Button
                 types="primary"
                 aria-label="primary"
-                onClick={navigateToAddCustomer}
+                onClick={navigateToAddLot}
                 startIcon={<Add />}
               >
                 {t("buttons.add lot")}
@@ -198,6 +194,7 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
             onRowActionSelect={handleRowAction}
             rowActionOptions={rowActionOptions}
             openDrawer={openDrawer}
+            noDataMsg='Add Parking Lot.'
           />
 
           <RightInfoPanel panelType="customer-filter" open={custFilterPanelVisible} headingText={"Filters"} provideFilterParams={getFilterParams} onClose={handleCustFilterPanelClose} />
