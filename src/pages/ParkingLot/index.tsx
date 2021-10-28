@@ -49,7 +49,7 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
     customerId
   );
   const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
-  setVersion("NavLinks");
+  setVersion("Breadcrumbs-Single");
   const openDrawer = (row: SyntheticEvent) => {
     setInfo(row);
     setDrawerOpen(true);
@@ -67,13 +67,13 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
   const onSortBySlected = (value: string) => {
     let sortOrder;
     switch (value) {
-      case "Z-A":
+      case "paymentCompleted":
         sortOrder = { sortBy: "customerName", order: "desc" };
         break;
-      case "Newest to Oldest":
+      case "paymentInProgress":
         sortOrder = { sortBy: "date", order: "desc" };
         break;
-      case "Oldest to New":
+      case "recentlyAddedLots":
         sortOrder = { sortBy: "date", order: "asc" };
         break;
       default:
@@ -196,6 +196,7 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
             onRowActionSelect={handleRowAction}
             rowActionOptions={rowActionOptions}
             openDrawer={openDrawer}
+            noDataMsg='Add Parking Lot.'
           />
 
           <RightInfoPanel panelType="customer-filter" open={custFilterPanelVisible} headingText={"Filters"} provideFilterParams={getFilterParams} onClose={handleCustFilterPanelClose} />

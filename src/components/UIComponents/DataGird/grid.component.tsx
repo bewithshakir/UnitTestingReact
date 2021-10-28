@@ -9,7 +9,7 @@ import { tableSX } from './config';
 export interface headerObj {
     field: string,
     label: string,
-    type: 'text' | 'button' | 'icon' | 'icons' | 'image' | 'images',
+    type: 'text' | 'button' | 'icon' | 'icons' | 'image' | 'images' | 'dropdown',
     icon?: React.ReactNode | string | any,
     bold?: boolean,
     align?: 'right' | 'left' | 'center' | 'justify',
