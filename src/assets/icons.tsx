@@ -1253,16 +1253,3 @@ export function AquaFuelIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element
     </svg>
   );
 }
-
-export function EditIcon(props: React.SVGProps<SVGSVGElement>): JSX.Element {
-  return (
-    <svg
-      width="19.999"
-      height="19.854"
-      viewBox="0 0 19.999 19.854"
-      {...props}>
-      <path d="M17.261,2.146l4.95,4.95L10.19,19.116,2.212,22l3.029-7.833ZM6.786,15.713,5.66,18.627l2.968-1.073ZM19.382,7.1,17.26,4.974,8.069,14.167l2.12,2.12,5.657-5.657-2.12-2.12L15.14,7.1l2.12,2.12Z"
-        fill={"currentColor"} />
-        </svg>
-  );
-}
