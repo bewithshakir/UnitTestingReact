@@ -62,10 +62,44 @@ const Content: React.FC<ContentProps> = () => {
     }
   }, [data]);
 
+  const createInfoObjForRightInfoPanel = (row:any) => {
+    const infoObj = {
+      'Customer Id':row.customerInputId,
+      'Name': row.customerName,
+      'Email': row.email,
+      'Phone': row.phone,
+      'Settlement Type': row.paymentType,
+      'Card Added': row.cardAdded,
+      'Address': row.address,
+      'City': row.city,
+      'State': row.state,
+      'State': row.state,
+
+
+
+      address: "Arlington National Cemetery, Fort Myer, Memorial Ave,  Memorial Ave ",
+      cardAdded: "N",
+      city: "Arlington",
+      contactName: "ss vv",
+      country: "us",
+      customerId: "eaa463d2-9459-478f-b84c-ec052111af35",
+      customerInputId: "12345678",
+      customerName: "aabb",
+      email: "ss@b.com",
+      paymentType: "Invoice",
+      phone: "2454656777",
+      state: "VA",
+      totalLots: 0,
+      zipCode: "22211",
+    }
+    return infoObj;
+  };
+
   const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
   setVersion("NavLinks");
   const openDrawer = (row: SyntheticEvent) => {
-    setInfo(row);
+    const infoObj = createInfoObjForRightInfoPanel(row);
+    setInfo(infoObj);
     setDrawerOpen(true);
   };
   const drawerClose = () => {
