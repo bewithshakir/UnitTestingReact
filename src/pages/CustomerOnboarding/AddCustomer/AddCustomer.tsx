@@ -429,6 +429,19 @@ const AddCustomer: React.FC = () => {
         formik.setFieldValue('postalCode', addressObj.postalCode);
     }
 
+    function handleGoogleAddressBlur() {
+        formik.setFieldTouched("addressLine1");
+        formik.validateField("addressLine1");
+        formik.setFieldTouched("addressLine2");
+        formik.validateField("addressLine2");
+        formik.setFieldTouched("city");
+        formik.validateField("city");
+        formik.setFieldTouched("state");
+        formik.validateField("state");
+        formik.setFieldTouched("postalCode");
+        formik.validateField("postalCode");
+    }
+
     return (
         <>
             <Grid item md={10} xs={10}>
@@ -488,7 +501,7 @@ const AddCustomer: React.FC = () => {
                                         name='addressLine1'
                                         label='ADDRESS LINE 1'
                                         onChange={handleGoogleAddressChange}
-                                        onBlur={() => { formik.setFieldTouched("addressLine1"); formik.validateField("addressLine1"); }}
+                                        onBlur={handleGoogleAddressBlur}
                                         value={formik.values.addressLine1}
                                         helperText={(formik.touched.addressLine1 && formik.errors.addressLine1) ? formik.errors.addressLine1 : undefined}
                                         error={(formik.touched.addressLine1 && formik.errors.addressLine1) ? true : false}
