@@ -32,7 +32,7 @@ export default function GoogleAutoCompleteAddress(props: props) {
 
     const onFinalChanges = (addresss: addressValue) => {
         const { address1, address2, city, state, zip } = addresss;
-        const required = address1 && address2 && city && state && zip;
+        // const required = address1 && address2 && city && state && zip;
         const obj = {
             addressLine1: address1,
             addressLine2: address2,
@@ -40,7 +40,8 @@ export default function GoogleAutoCompleteAddress(props: props) {
             state,
             postalCode: zip
         };
-        required && props.onChange(obj);
+        // required && props.onChange(obj);
+        props.onChange(obj);
     };
 
     useEffect(() => {
