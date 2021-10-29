@@ -1,17 +1,16 @@
 tbody{
     &.no-data{
         padding: 50%;
-    .nodata{
-        z-index: 9999;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        height: 60%;
-        left: 50%;
-        transform: translate(-50%, 400%);
-        position: absolute;
-        
+    .nodata{   
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 80%;
+            height: 50%;
+            left: 52%;
+            transform: translate(-50%, 400%);
+            position: absolute;
     & svg{
         height: 50px;
         width: 50px;
@@ -19,5 +18,29 @@ tbody{
         color: var(--Gray);
     }
 }
+    }
+}
+
+.main-area{
+   & .main-area tbody{
+        &.no-data{
+            .nodata{   
+                z-index: 9999;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 74%;
+                height: 20%;
+                left: 57%;
+                position: absolute;
+        
+            & svg{
+                height: 50px;
+                width: 50px;
+                padding-bottom: 10px;
+                color: var(--Gray);
+        }
+    }
+    }
     }
 }

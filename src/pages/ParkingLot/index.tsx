@@ -13,7 +13,7 @@ import { Add } from "@mui/icons-material";
 import { useHistory } from "react-router-dom";
 import { sortByOptions } from "./config";
 import { RightInfoPanel } from "../../components/UIComponents/RightInfoPanel/RightInfoPanel.component";
-import { Box, FormControl, Grid } from "@mui/material";
+import { Box, FormControl, Grid, Typography } from "@mui/material";
 import { HorizontalBarVersionState, useStore , useAddedCustomerIdStore, useAddedCustomerNameStore} from "../../store";
 import ParkingLotModel from "../../models/ParkingLotModel";
 import { DataGridActionsMenuOption } from "../../components/UIComponents/Menu/DataGridActionsMenu.component";
@@ -42,7 +42,7 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
   const customerId = useAddedCustomerIdStore((state) => state.customerId);
 
   const { t } = useTranslation();
-  const { data, fetchNextPage, isLoading }: any = useGetParkingLotDetails(
+  const { data, fetchNextPage, isFetching, isLoading }: any = useGetParkingLotDetails(
     searchTerm,
     sortOrder,
     filterData,
@@ -165,6 +165,14 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
                 onChange={onInputChange}
               />
             </Grid>
+            {
+              (searchTerm && !(isFetching || isLoading)) &&
+              <Grid item display="flex" alignItems="center" paddingLeft={2.5}>
+                <Typography color="var(--Darkgray)" variant="h4" align="center" className="fw-bold">
+                  {parkingLotlist.length} results found
+                </Typography>
+              </Grid>
+            }
           </Grid>
           <Grid item md={4} lg={3} display="flex" justifyContent="flex-end">
             <Grid item pr={2.5}>
@@ -193,14 +201,15 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
             primaryKey='deliveryLocationId'
             rows={parkingLotlist}
             header={headCells}
-            isLoading={isLoading}
+            isLoading={isFetching|| isLoading}
             enableRowSelection
             enableRowAction
             getPages={fetchNextPage}
             onRowActionSelect={handleRowAction}
+            searchTerm={searchTerm}
             rowActionOptions={rowActionOptions}
             openDrawer={openDrawer}
-            noDataMsg='Add Parking Lot.'
+            noDataMsg='Please Add a Parking Lot.'
           />
 
           <RightInfoPanel panelType="customer-filter" open={custFilterPanelVisible} headingText={"Filters"} provideFilterParams={getFilterParams} onClose={handleCustFilterPanelClose} />
