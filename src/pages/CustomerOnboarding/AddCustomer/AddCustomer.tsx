@@ -175,11 +175,6 @@ const AddCustomer: React.FC = () => {
             getDataForSelectedCustomer(savedCustomerData?.data?.customer?.customerId?.toString());
             setEditShown(true);
             setSaveCancelShown(false);
-            if (savedCustomerData) {
-                setCustomerIdCreated(savedCustomerData?.data?.customer?.customerId);
-                setPageCustomerName(savedCustomerData?.data?.customer?.companyNm);
-
-            }
         }
         if (isError) {
             setAPIResponse(true);
@@ -266,6 +261,8 @@ const AddCustomer: React.FC = () => {
                 .then(({ data }) => {
                     if (data) {
                         populateDataInAllFields(data);
+                        setCustomerIdCreated(data?.customer?.customerId);
+                        setPageCustomerName(data?.customer?.companyNm);
                     }
                 })
                 .catch(function () {
@@ -325,8 +322,6 @@ const AddCustomer: React.FC = () => {
                         getDataForSelectedCustomer(response.data?.data?.customer?.customerId.toString());
                         setEditShown(true);
                         setSaveCancelShown(false);
-                        setCustomerIdCreated(response.data?.data?.customer?.customerId);
-                        setPageCustomerName(response.data?.data?.customer?.companyNm);
                         setTimeout(() => {
                             setAPIResponse(false);
                         }, 6000);
