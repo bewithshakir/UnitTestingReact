@@ -6,7 +6,7 @@ export interface SelectProps {
 }
 
 export default class TaxModel {
-    searchInput: string;
+    addressLine1: string;
     state: string;
     city: string;
     countryCd: string;
@@ -24,7 +24,7 @@ export default class TaxModel {
     fuelType: SelectProps;
 
     constructor() {
-        this.searchInput = '';
+        this.addressLine1 = '';
         this.state = '';
         this.city = '';
         this.countryCd = '';
