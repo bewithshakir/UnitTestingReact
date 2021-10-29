@@ -371,9 +371,17 @@ const AddCustomer: React.FC = () => {
         }
     }
 
-    const disableButton = () => {
+    const disableButton = () => {        
         if(isEditMode) {
-            return false;     
+            if (formik.touched && Object.keys(formik.touched).length === 0 && Object.getPrototypeOf(formik.touched) === Object.prototype) {
+                if (formik.dirty) {
+                    if (formik.initialValues != formik.values) {
+                        return false;
+                    }
+                }
+            } else {
+                return (!formik.isValid || !formik.dirty) || formik.isSubmitting;
+            }
         } else {
             return (!formik.isValid || !formik.dirty) || formik.isSubmitting;
         }
