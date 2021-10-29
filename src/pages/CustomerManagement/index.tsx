@@ -3,9 +3,7 @@ import React, { SyntheticEvent, useEffect } from "react";
 import { Button } from "../../components/UIComponents/Button/Button.component";
 import "./style.scss";
 import { useTranslation } from "react-i18next";
-import {
-  FilterIcon,
-} from "../../assets/icons";
+import { PositiveCricleIcon, FilterIcon} from "../../assets/icons";
 import SortbyMenu from "../../components/UIComponents/Menu/SortbyMenu.component";
 import ActionsMenu from "../../components/UIComponents/Menu/ActionsMenu.component";
 import GridComponent from "../../components/UIComponents/DataGird/grid.component";
@@ -20,6 +18,7 @@ import { Box, FormControl, Grid, Typography } from "@mui/material";
 import { HorizontalBarVersionState, useStore } from "../../store";
 import CustomerModel from "../../models/CustomerModel";
 import { DataGridActionsMenuOption } from "../../components/UIComponents/Menu/DataGridActionsMenu.component";
+import { maskPhoneNumber } from "../../utils/helperFunctions";
 
 interface ContentProps {
   rows?: [];
@@ -44,6 +43,12 @@ const Content: React.FC<ContentProps> = () => {
   const [custFilterPanelVisible, setCustFilterPanelVisible] = React.useState(false);
   const [customerId, setCustomerId] = React.useState('');
   const [customerList, setCustomerList] = React.useState([]);
+  const [infoPanelEditId, setInfoPanelEditId] = React.useState('');
+  const [infoPanelName, setInfoPanelName] = React.useState('');
+
+  
+
+
 
   const { t } = useTranslation();
   const { data, fetchNextPage, isLoading, isFetching }: any = useCustomers(
@@ -63,35 +68,20 @@ const Content: React.FC<ContentProps> = () => {
   }, [data]);
 
   const createInfoObjForRightInfoPanel = (row:any) => {
+    setInfoPanelEditId(row.customerId);
+    setInfoPanelName(row.customerName);
     const infoObj = {
-      'Customer Id':row.customerInputId,
-      'Name': row.customerName,
+      'Customer ID':row.customerInputId,
+      'Name': row.contactName,
       'Email': row.email,
-      'Phone': row.phone,
+      'Phone': maskPhoneNumber(row.phone),
       'Settlement Type': row.paymentType,
-      'Card Added': row.cardAdded,
+      'Card Added': row.cardAdded ===  "Y"? <PositiveCricleIcon/>:row.cardAdded ===  "N"? 'Not yet assigned':'',
       'Address': row.address,
       'City': row.city,
       'State': row.state,
-      'State': row.state,
-
-
-
-      address: "Arlington National Cemetery, Fort Myer, Memorial Ave,  Memorial Ave ",
-      cardAdded: "N",
-      city: "Arlington",
-      contactName: "ss vv",
-      country: "us",
-      customerId: "eaa463d2-9459-478f-b84c-ec052111af35",
-      customerInputId: "12345678",
-      customerName: "aabb",
-      email: "ss@b.com",
-      paymentType: "Invoice",
-      phone: "2454656777",
-      state: "VA",
-      totalLots: 0,
-      zipCode: "22211",
-    }
+      'Zip Code': row.zipCode,
+    };
     return infoObj;
   };
 
@@ -250,7 +240,7 @@ const Content: React.FC<ContentProps> = () => {
           />
 
           <RightInfoPanel panelType="customer-filter" open={custFilterPanelVisible} headingText={"Filters"} provideFilterParams={getFilterParams} onClose={handleCustFilterPanelClose} />
-          <RightInfoPanel panelType="info-view" open={drawerOpen} headingText={"Accurate Transportation"} info={info} onClose={drawerClose} />
+          <RightInfoPanel panelType="info-view" open={drawerOpen} headingText={infoPanelName} info={info} idStrForEdit={infoPanelEditId} nameStrForEdit={infoPanelName} onClose={drawerClose} />
         </Grid>
       </Grid>
     </Box>
