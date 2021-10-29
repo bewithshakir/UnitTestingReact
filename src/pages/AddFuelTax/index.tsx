@@ -163,13 +163,12 @@ const AddFuelTax = memo(() => {
                                 <Grid item xs={12} md={6} pl={2.5} pb={2.5}>
                                     <Input
                                         id='city'
-                                        label='City'
+                                        label='CITY'
                                         type='text'
                                         helperText={(formik.touched.city && formik.errors.city) ? formik.errors.city : undefined}
                                         error={(formik.touched.city && formik.errors.city) ? true : false}
                                         description=''
                                         disabled
-                                        required
                                         {...formik.getFieldProps('city')}
                                     />
                                 </Grid>
