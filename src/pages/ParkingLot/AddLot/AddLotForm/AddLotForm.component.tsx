@@ -142,7 +142,19 @@ function AddLotForm(): React.ReactElement {
         formik.setFieldValue('city', addressObj.city);
         formik.setFieldValue('state', addressObj.state);
         formik.setFieldValue('postalCode', addressObj.postalCode);
-        formik.setFieldValue('country', addressObj.country);
+    }
+
+    function handleGoogleAddressBlur () {
+        formik.setFieldTouched("addressLine1");
+        formik.validateField("addressLine1");
+        formik.setFieldTouched("addressLine2");
+        formik.validateField("addressLine2");
+        formik.setFieldTouched("city");
+        formik.validateField("city");
+        formik.setFieldTouched("state");
+        formik.validateField("state");
+        formik.setFieldTouched("postalCode");
+        formik.validateField("postalCode"); 
     }
 
     const formik = useFormik({
@@ -207,7 +219,7 @@ function AddLotForm(): React.ReactElement {
                                         name='addressLine1'
                                         label='ADDRESS LINE 1'
                                         onChange={handleGoogleAddressChange}
-                                        onBlur={() => { formik.setFieldTouched("addressLine1"); formik.validateField("addressLine1"); }}
+                                        onBlur={handleGoogleAddressBlur}
                                         value={formik.values.addressLine1}
                                         helperText={(formik.touched.addressLine1 && formik.errors.addressLine1) ? formik.errors.addressLine1 : undefined}
                                         error={(formik.touched.addressLine1 && formik.errors.addressLine1) ? true : false}
