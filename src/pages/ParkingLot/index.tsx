@@ -14,7 +14,7 @@ import { useHistory } from "react-router-dom";
 import { sortByOptions } from "./config";
 import { RightInfoPanel } from "../../components/UIComponents/RightInfoPanel/RightInfoPanel.component";
 import { Box, FormControl, Grid } from "@mui/material";
-import { HorizontalBarVersionState, useStore , useAddedCustomerIdStore} from "../../store";
+import { HorizontalBarVersionState, useStore , useAddedCustomerIdStore, useAddedCustomerNameStore} from "../../store";
 import ParkingLotModel from "../../models/ParkingLotModel";
 import { DataGridActionsMenuOption } from "../../components/UIComponents/Menu/DataGridActionsMenu.component";
 
@@ -50,6 +50,12 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
   );
   const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
   setVersion("Breadcrumbs-Single");
+  const setPageCustomerName = useAddedCustomerNameStore((state) => state.setCustomerName);
+
+  useEffect(()=>{
+    setPageCustomerName('Customer Name');
+  });
+
   const openDrawer = (row: SyntheticEvent) => {
     setInfo(row);
     setDrawerOpen(true);

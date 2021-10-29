@@ -39,7 +39,7 @@ const formStatusProps: IFormStatusProps = {
 
 const AddFuelTax = memo(() => {
     const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
-    setVersion("Breadcrumbs-Fuel-Tax-Single");
+    setVersion("Breadcrumbs-Single");
     const { t } = useTranslation();
     const [apiResposneState, setAPIResponse] = useState(false);
     const [formStatus, setFormStatus] = useState<IFormStatus>({
