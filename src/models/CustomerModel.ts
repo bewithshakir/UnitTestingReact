@@ -10,6 +10,7 @@ export interface SelectProps {
 }
 
 export interface EmergencyContact {
+    customerContactId?:string,
     firstName: string,
     lastName: string,
     email: string,
@@ -17,6 +18,7 @@ export interface EmergencyContact {
 }
 
 export interface ApContact {
+    customerContactId?:string,
     firstName: string,
     lastName: string,
     email: string,

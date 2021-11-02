@@ -126,12 +126,14 @@ const AddCustomer: React.FC = () => {
         const APContactList = getAPContacts(dataToPopulate?.data?.customerContact);
         const checkBoxData = getCheckBoxData(dataToPopulate?.data?.tokenApplicability);
         emergenyContactList.map((obj: any, index: number) => {
+            formik.setFieldValue(`emergencyContact[${index}].customerContactId`, obj.customerContactId);
             formik.setFieldValue(`emergencyContact[${index}].firstName`, obj.contactFirstNm);
             formik.setFieldValue(`emergencyContact[${index}].lastName`, obj.contactLastNm);
             formik.setFieldValue(`emergencyContact[${index}].email`, obj.contactEmailId);
             formik.setFieldValue(`emergencyContact[${index}].phoneNumber`, obj.contactPhoneNo);
         });
         APContactList.map((obj: any, index: number) => {
+            formik.setFieldValue(`apContact[${index}].customerContactId`, obj.customerContactId);
             formik.setFieldValue(`apContact[${index}].firstName`, obj.contactFirstNm);
             formik.setFieldValue(`apContact[${index}].lastName`, obj.contactLastNm);
             formik.setFieldValue(`apContact[${index}].email`, obj.contactEmailId);
@@ -281,14 +283,14 @@ const AddCustomer: React.FC = () => {
                 "countryCd": getCountryCode(),
                 "soldToNo": 10,
                 "emergencyContact": data.emergencyContact.map(emgcyObj => ({
-                    "customerContactId":"",
+                    ...(emgcyObj.customerContactId && {"customerContactId": emgcyObj.customerContactId}),
                     "firstNm": emgcyObj.firstName,
                     "lastNm": emgcyObj.lastName,
                     "email": emgcyObj.email,
                     "phoneNo": emgcyObj.phoneNumber
                 })),
                 "apContact": data.apContact.map(apObj => ({
-                    "customerContactId":"",
+                    ...(apObj.customerContactId && {"customerContactId": apObj.customerContactId}),
                     "firstNm": apObj.firstName,
                     "lastNm": apObj.lastName,
                     "email": apObj.email,
