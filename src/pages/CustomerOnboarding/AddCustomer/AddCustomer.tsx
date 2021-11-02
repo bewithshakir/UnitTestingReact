@@ -420,11 +420,12 @@ const AddCustomer: React.FC = () => {
                                     Customer Profile
                                 </Typography>
                                 </Grid>
-                                <Grid item xs={2} md={2} sx={{ justifyContent:'flex-end' }}>
+                                <Grid item xs={2} md={2} >
                                 {isEditShown && <Button
                                         types="edit"
                                         aria-label="edit"
                                         onClick={handleEditButtonClick}
+                                        className="right-float"
                                         startIcon={<EditIcon />}> 
                                     {t("buttons.edit")} 
                                 </Button>}
@@ -605,7 +606,22 @@ const AddCustomer: React.FC = () => {
                                         isDisabled={isDisabled}
                                     />
                                 </Grid>
-                                <Grid item xs={12} md={6} pl={2.5} pb={2.5} />
+                                <Grid item xs={12} md={6} pl={2.5} pb={2.5}>
+                                    <DatePickerInput
+                                        type="single-date"
+                                        id="endDate"
+                                        name="endDate"
+                                        value={formik.values.endDate}
+                                        label='CUSTOMER START DATE'
+                                        onChange={formik.setFieldValue}
+                                        onClose={() => { formik.setFieldTouched("endDate"); formik.validateField("endDate"); }}
+                                        disableBeforeDate={formik.values.startDate}
+                                        helperText={(formik.touched.endDate && formik.errors.endDate) ? formik.errors.endDate : undefined}
+                                        error={(formik.touched.endDate && formik.errors.endDate) ? true : false}
+                                        required
+                                        disabled={isDisabled}
+                                    />
+                                </Grid>
                                 <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
                                     <Select
                                         id='invoiceFrequency'
@@ -622,23 +638,7 @@ const AddCustomer: React.FC = () => {
                                         isDisabled={isDisabled}
                                     />
                                 </Grid>
-                                <Grid item md={3} pl={2.5} pr={2.5} pb={2.5}>
-                                    <DatePickerInput
-                                        type="single-date"
-                                        id="endDate"
-                                        name="endDate"
-                                        value={formik.values.endDate}
-                                        label='CUSTOMER START DATE'
-                                        onChange={formik.setFieldValue}
-                                        onClose={() => { formik.setFieldTouched("endDate"); formik.validateField("endDate"); }}
-                                        disableBeforeDate={formik.values.startDate}
-                                        helperText={(formik.touched.endDate && formik.errors.endDate) ? formik.errors.endDate : undefined}
-                                        error={(formik.touched.endDate && formik.errors.endDate) ? true : false}
-                                        required
-                                        disabled={isDisabled}
-                                    />
-                                </Grid>
-                                <Grid item md={3} pl={2.5}>
+                                <Grid item xs={12} md={6} pl={2.5} pb={2.5}>
                                     <Input
                                         id='paymentTerm'
                                         label='PAYMENT TERM'
@@ -654,6 +654,7 @@ const AddCustomer: React.FC = () => {
                                         <FormGroup>
                                             <FormControlLabel
                                                 sx={{ margin: "0px", marginBottom: "1rem", fontWeight: "bold" }}
+                                                className="checkbox-field"
                                                 control={
                                                     <Checkbox checked={formik.values.lotLevel} onChange={formik.handleChange} name="lotLevel" disabled={isDisabled} />
                                                 }
@@ -665,6 +666,7 @@ const AddCustomer: React.FC = () => {
                                             />
                                             <FormControlLabel
                                                 sx={{ margin: "0px", marginBottom: "1rem", fontWeight: "bold" }}
+                                                className="checkbox-field"
                                                 control={
                                                     <Checkbox checked={formik.values.businessLevel} onChange={formik.handleChange} name="businessLevel" disabled={isDisabled} />
                                                 }
@@ -676,6 +678,7 @@ const AddCustomer: React.FC = () => {
                                             />
                                             <FormControlLabel
                                                 sx={{ margin: "0px", marginBottom: "1rem", fontWeight: "bold" }}
+                                                className="checkbox-field"
                                                 control={
                                                     <Checkbox checked={formik.values.vehicleLevel} onChange={formik.handleChange} name="vehicleLevel" disabled={isDisabled} />
                                                 }
