@@ -21,6 +21,7 @@ import axios from 'axios';
 import { EditIcon } from '../../../assets/icons';
 import "./AddCustomer.style.scss";
 import { useAddedCustomerIdStore, useAddedCustomerNameStore } from '../../../store';
+import moment from 'moment';
 
 const initialValues = new CustomerModel();
 
@@ -137,7 +138,7 @@ const AddCustomer: React.FC = () => {
             formik.setFieldValue(`apContact[${index}].phoneNumber`, obj.contactPhoneNo);
         });
         
-        formik.setFieldValue("endDate", dataToPopulate.customer.firstSettlementDt);
+        formik.setFieldValue("endDate", moment(dataToPopulate.customer.firstSettlementDt));
         checkBoxData.map((obj: any) => {
             if(obj.indexOf("lot")){
                 formik.setFieldValue('lotLevel', true);
