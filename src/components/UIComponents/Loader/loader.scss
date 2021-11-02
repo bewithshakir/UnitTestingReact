@@ -4,3 +4,14 @@
     top: 50%;
     z-index: 9999;
 }
+
+.main-area{
+   & .main-area {
+       .loader{
+            position: fixed;
+            left: 57%;
+            top: 50%;
+            z-index: 9999;
+        }
+   }    
+}

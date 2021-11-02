@@ -15,9 +15,11 @@ interface InfoPanelProps {
   info?: any;
   onClose: (...args: any) => void;
   provideFilterParams?: (...args: any) => void;
+  idStrForEdit?: string,
+  nameStrForEdit?:string
 }
 
-export const RightInfoPanel: React.FC<InfoPanelProps> = ({ open, headingText, info, onClose, provideFilterParams, panelType }) => {
+export const RightInfoPanel: React.FC<InfoPanelProps> = ({ open, headingText, info, onClose, provideFilterParams, panelType , idStrForEdit, nameStrForEdit}) => {
 
   const provideContentForPanel = () => {
     if (panelType === "info-view") {
@@ -35,7 +37,7 @@ export const RightInfoPanel: React.FC<InfoPanelProps> = ({ open, headingText, in
     anchor="right"
     open={open}
   >
-    <PanelHeader onClose={onClose} headingText={headingText} info={info?info:null}  panelType={panelType}  />
+    <PanelHeader onClose={onClose} headingText={headingText} info={info?info:null} idStrForEdit={idStrForEdit} nameStrForEdit={nameStrForEdit} panelType={panelType}  />
     {provideContentForPanel()}
   </Drawer >;
 

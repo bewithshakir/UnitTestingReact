@@ -13,17 +13,19 @@ interface InfoPanelProps {
     headingText: string;
     panelType: string;
     info: any | null;
+    idStrForEdit?: string;
+    nameStrForEdit?:string;
     onClose: (...args: any[]) => void;
 }
-export const PanelHeader: React.FC<InfoPanelProps> = ({ info, headingText, panelType, onClose }) => {
+export const PanelHeader: React.FC<InfoPanelProps> = ({headingText, panelType, onClose, idStrForEdit, nameStrForEdit}) => {
     const {theme} = useTheme();
     const { t } = useTranslation();
     const history = useHistory();
     const setPageCustomerName = useAddedCustomerNameStore((state) => state.setCustomerName);
-    info && setPageCustomerName(info?.customerName);
+    setPageCustomerName(nameStrForEdit?nameStrForEdit:'');
     const navigateToCustomerPage = () => {
         history.push({
-            pathname: `/customer/viewCustomer/${info?.customerId}`
+            pathname: `/customer/viewCustomer/${idStrForEdit?idStrForEdit:''}`
         });
     };
     

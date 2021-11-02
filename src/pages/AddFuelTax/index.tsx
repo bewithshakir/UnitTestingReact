@@ -106,11 +106,20 @@ const AddFuelTax = memo(() => {
     });
 
     const handleGoogleAddressChange = (addressObj: any) => {
-        formik.setFieldValue('searchInput', addressObj.searchInput);
+        formik.setFieldValue('addressLine1', addressObj.addressLine1);
         formik.setFieldValue('city', addressObj.city);
         formik.setFieldValue('state', addressObj.state);
         formik.setFieldValue('countryCd', 'us');
     };
+
+    function handleGoogleAddressBlur() {
+        formik.setFieldTouched("addressLine1");
+        formik.validateField("addressLine1");
+        formik.setFieldTouched("city");
+        formik.validateField("city");
+        formik.setFieldTouched("state");
+        formik.validateField("state");
+    }
 
     return (
         <>
@@ -124,18 +133,18 @@ const AddFuelTax = memo(() => {
                                         *Certain markets require a combined Revenue (%) and Sales (%) Tax on the Price per Gallon with or without Adder/Discount.
                                     </Box>
                                 </Grid>
-                            <Typography color="var(--Darkgray)" variant="h3" gutterBottom className="fw-bold" mb={1}>
+                            <Typography color="var(--Darkgray)" variant="h3" gutterBottom className="fw-bold" mb={1} pt={3}>
                                 Fill all the Mandatory fields *
                             </Typography>
                             <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
                                 <AutocompleteInput
-                                    name='searchInput'
+                                    name='addressLine1'
                                     label='SEARCH LOCATION'
                                     onChange={handleGoogleAddressChange}
-                                    onBlur={() => { formik.setFieldTouched("searchInput"); formik.validateField("searchInput"); }}
-                                    value={formik.values.searchInput}
-                                    helperText={(formik.touched.searchInput && formik.errors.searchInput) ? formik.errors.searchInput : undefined}
-                                    error={(formik.touched.searchInput && formik.errors.searchInput) ? true : false}
+                                    onBlur={handleGoogleAddressBlur}
+                                    value={formik.values.addressLine1}
+                                    helperText={(formik.touched.addressLine1 && formik.errors.addressLine1) ? formik.errors.addressLine1 : undefined}
+                                    error={(formik.touched.addressLine1 && formik.errors.addressLine1) ? true : false}
                                 />
                             </Grid>
                             <Grid container mt={1}>
@@ -156,10 +165,10 @@ const AddFuelTax = memo(() => {
                                         id='city'
                                         label='CITY'
                                         type='text'
-                                        description=''
-                                        disabled
                                         helperText={(formik.touched.city && formik.errors.city) ? formik.errors.city : undefined}
                                         error={(formik.touched.city && formik.errors.city) ? true : false}
+                                        description=''
+                                        disabled
                                         {...formik.getFieldProps('city')}
                                     />
                                 </Grid>
