@@ -1,7 +1,8 @@
+/* eslint-disable no-debugger */
+/* eslint-disable no-console */
 import { useMutation, useQuery } from "react-query";
 import { AxiosRequestConfig } from "axios";
 import axios from "../../../infrastructure/ApiHelper";
-
 
 const createCustomer = async (payload: any) => {
 
@@ -18,8 +19,8 @@ const editCustomer = async (payload: any, customerId: string) => {
 
     const options: AxiosRequestConfig = {
         method: 'put',
-        url: `/api/customer-service/customers/${customerId}`, 
-        data: payload,
+        url: `/api/customer-service/customers/${customerId}?countryCode=us`,
+        data: payload
     };
     const { data } = await axios(options);
     return data;
@@ -44,7 +45,8 @@ const getPaymentTypes = async () => {
     return data;
 };
 
-const getCustomerData = async (customerId: string) => {
+const getCustomerData = async (customerId: string, isTrigger: boolean) => {
+    console.log("in get API call " + isTrigger);
     const options: AxiosRequestConfig = {
         method: 'get',
         url: `/api/customer-service/customers/${customerId}?countryCode=us`
@@ -71,6 +73,6 @@ export const useEditCustomer = (customerId: string) => {
     return useMutation((payload: any) => editCustomer(payload, customerId));
 };
 
-export const useGetCustomerData = (customerId: string) => {
-    return useQuery(["getCustomer"],() => getCustomerData(customerId));
+export const useGetCustomerData = (customerId: string, isTrigger: boolean) => {
+    return useQuery(["getCustomer", customerId, isTrigger], () => getCustomerData(customerId, isTrigger));
 };
