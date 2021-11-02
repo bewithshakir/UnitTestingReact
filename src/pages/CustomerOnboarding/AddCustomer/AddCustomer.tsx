@@ -64,6 +64,7 @@ const formStatusProps: IFormStatusProps = {
 const AddCustomer: React.FC = () => {
     const location = useLocation();
     const history = useHistory();
+    const addedCustomerId = useAddedCustomerIdStore((state) => state.customerId);
 
     useEffect(() => {
         const selectedCustomerId = location.pathname.split("/").pop(); 
@@ -77,21 +78,11 @@ const AddCustomer: React.FC = () => {
         }
     }, [location]);
 
-    //below 2 methods to segregate the list of emergency contacts and ap contacts from get api response
-    const getEmergencyContacts = (data: any) => {
+    //common function to segregate the list of emergency contacts and ap contacts from get api response
+    const segregateEmergencyAndAPContacts = (data: any, type:string) => {
         const TempData:any = [];
-        data.map((obj:any) => { 
-            if(obj.customerContactTypeNm === "emergency") {
-                TempData.push(obj);
-            }
-        });
-        return TempData;
-    };
-
-    const getAPContacts= (data: any) => {
-        const TempData: any = [];
-        data.map((obj: any) => {
-            if (obj.customerContactTypeNm === "ap_contact") {
+        data.map((obj:any) => {
+            if(obj.customerContactTypeNm === type) {
                 TempData.push(obj);
             }
         });
@@ -122,8 +113,8 @@ const AddCustomer: React.FC = () => {
         formik.setFieldValue("paymentType", { label: '' + dataToPopulate?.data?.customer?.PaymentType?.paymentTypeNm, value: '' + dataToPopulate?.data?.customer?.PaymentType?.paymentTypeId});
         formik.setFieldValue("invoiceFrequency", { label: '' + dataToPopulate?.data?.customer?.InvoiceFrequency?.invoiceFrequencyNm, value: '' + dataToPopulate?.data?.customer?.InvoiceFrequency?.invoiceFrequencyId });
         formik.setFieldValue("paymentTerm", dataToPopulate?.data?.customer?.paymentTerm);
-        const emergenyContactList = getEmergencyContacts(dataToPopulate?.data?.customerContact);
-        const APContactList = getAPContacts(dataToPopulate?.data?.customerContact);
+        const emergenyContactList = segregateEmergencyAndAPContacts(dataToPopulate?.data?.customerContact, 'emergency');
+        const APContactList = segregateEmergencyAndAPContacts(dataToPopulate?.data?.customerContact,'ap_contact');
         const checkBoxData = getCheckBoxData(dataToPopulate?.data?.tokenApplicability);
         emergenyContactList.map((obj: any, index: number) => {
             formik.setFieldValue(`emergencyContact[${index}].customerContactId`, obj.customerContactId);
@@ -161,7 +152,7 @@ const AddCustomer: React.FC = () => {
     const [paymentTypes, setpaymentTypes] = useState([]);
     const [initialInvoiceFrequencies, setinitialInvoiceFrequencies] = useState([]);
     const { data: savedCustomerData, mutate: addNewCustomer, isSuccess, isError } = useCreateCustomer();
-    const { data: editedCustomerData, mutate: editCustomer, isSuccess: isEditSuccess, isError:isEditError } = useEditCustomer(location.pathname.split("/").pop() as string);
+    const { data: editedCustomerData, mutate: editCustomer, isSuccess: isEditSuccess, isError:isEditError } = useEditCustomer(location.pathname === 'customer/viewCustomer/'?location.pathname.split("/").pop() as string:addedCustomerId as string);
     const { data: frequencyList } = useGetFrequencies();
     const { data: paymentTypeList } = useGetPaymentTypes();
     const { data: customerData, isSuccess: isGetSuccess, isError: isGetError } = useGetCustomerData(activeCustomerId, isTrigger);
