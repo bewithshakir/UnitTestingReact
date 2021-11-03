@@ -254,7 +254,7 @@ function AddLotForm(): React.ReactElement {
                                         {...formik.getFieldProps('city')}
                                     />
                                 </Grid>
-                                <Grid item md={3} pl={2.5} pr={2.5} pb={2.5}>
+                                <Grid item md={3} pl={2.5} pr={2.5} pb={2.5} className="no-wrap">
                                     <Input
                                         id='state'
                                         label='STATE / PROVINCE'
@@ -267,7 +267,7 @@ function AddLotForm(): React.ReactElement {
                                         {...formik.getFieldProps('state')}
                                     />
                                 </Grid>
-                                <Grid item md={3} pl={2.5}>
+                                <Grid item md={3} pl={2.5} className="no-wrap">
                                     <Input
                                         id='postalCode'
                                         label='POSTAL CODE'
@@ -626,6 +626,7 @@ function AddLotForm(): React.ReactElement {
                                             aria-label="cancel"
                                             className="mr-4"
                                             onClick={onClickBack}
+                                            disabled={formSuccess}
                                         >
                                             {t("buttons.cancel")}
                                         </Button>

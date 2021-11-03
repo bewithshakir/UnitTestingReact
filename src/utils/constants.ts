@@ -1,0 +1,1 @@
+export const maxContacts = 5;
