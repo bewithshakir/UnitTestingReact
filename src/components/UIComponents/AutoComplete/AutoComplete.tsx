@@ -49,7 +49,7 @@ export default function Autocomplete (props: props) {
                         <b>{props.label && props.label.toUpperCase()}{props.required && props.label && (<span className='super'>*</span>)}</b>
                     </label>
                     <div className={props.error ? "MuiInputBase-root MuiInputBase-formControl Mui-error" : "MuiInputBase-root MuiInputBase-formControl"} aria-required={props.required}>
-                        <input aria-invalid="false" id="input" disabled={props.disabled} placeholder={props.placeholder} name={props.name} type="text" className="MuiInputBase-input" value={props.value} {...getInputProps()} onBlur={props.onBlur} />
+                        <input aria-invalid="false" id="input" disabled={props.disabled} placeholder={props.placeholder} name={props.name} type="text" className="MuiInputBase-input" defaultValue={props.value} {...getInputProps()} onBlur={props.onBlur} />
                     </div>
                     {props.helperText && (
                         <FormHelperText
