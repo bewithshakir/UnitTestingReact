@@ -27,24 +27,24 @@ interface props {
     description?: string;
     onChange: (...args: any[]) => void;
     onBlur?: (...args: any[]) => void;
-    disabled?:boolean;
+    disabled?: boolean;
     components?: any;
 }
 
-export default function SingleSelect(props: props) {
+export default function SingleSelect (props: props) {
 
-   const DropdownIndicator = (props:DropdownIndicatorProps<item>) => {
-       return (
-           <components.DropdownIndicator {...props}>
-               <ArrowDown/>
-           </components.DropdownIndicator>
-       );
-   };
+    const DropdownIndicator = (props: DropdownIndicatorProps<item>) => {
+        return (
+            <components.DropdownIndicator {...props}>
+                <ArrowDown />
+            </components.DropdownIndicator>
+        );
+    };
 
-   const handleChange = (e:any ) =>{
-       const {name, onChange} = props;
-       onChange(name, e);
-   }; 
+    const handleChange = (e: any) => {
+        const { name, onChange } = props;
+        onChange(name, e);
+    };
 
     return (
         <Fragment>
@@ -64,7 +64,7 @@ export default function SingleSelect(props: props) {
                     onBlur={props.onBlur}
                     components={{ IndicatorSeparator: () => null, DropdownIndicator, ...props.components }}
                     isSearchable={false}
-                    isDisabled={props.disabled}
+                    isDisabled={props.isDisabled}
                     onKeyDown={e => e.preventDefault()}
                 />
                 {props.helperText && (

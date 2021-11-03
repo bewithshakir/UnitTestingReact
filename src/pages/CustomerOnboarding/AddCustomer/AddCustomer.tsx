@@ -21,11 +21,11 @@ import { EditIcon } from '../../../assets/icons';
 import "./AddCustomer.style.scss";
 import { useAddedCustomerIdStore, useAddedCustomerNameStore, useShowConfirmationDialogBoxStore } from '../../../store';
 import moment from 'moment';
-import {maxContacts} from '../../../utils/constants';
+import { maxContacts } from '../../../utils/constants';
 
 const initialValues = new CustomerModel();
 
-function getTokenApplicable(Obj: any) {
+function getTokenApplicable (Obj: any) {
     const temp: any = [];
     Object.entries(Obj).forEach(obj => {
         if (obj[1]) {
@@ -67,8 +67,8 @@ const AddCustomer: React.FC = () => {
     const addedCustomerId = useAddedCustomerIdStore((state) => state.customerId);
 
     useEffect(() => {
-        const selectedCustomerId = location.pathname.split("/").pop(); 
-        if(selectedCustomerId != "addCustomer") {
+        const selectedCustomerId = location.pathname.split("/").pop();
+        if (selectedCustomerId != "addCustomer") {
             setActiveCustomerId("" + selectedCustomerId);
             setDisabled(true);
             setSaveCancelShown(false);
@@ -79,10 +79,10 @@ const AddCustomer: React.FC = () => {
     }, [location]);
 
     //common function to segregate the list of emergency contacts and ap contacts from get api response
-    const segregateEmergencyAndAPContacts = (data: any, type:string) => {
-        const TempData:any = [];
-        data.map((obj:any) => {
-            if(obj.customerContactTypeNm === type) {
+    const segregateEmergencyAndAPContacts = (data: any, type: string) => {
+        const TempData: any = [];
+        data.map((obj: any) => {
+            if (obj.customerContactTypeNm === type) {
                 TempData.push(obj);
             }
         });
@@ -110,11 +110,11 @@ const AddCustomer: React.FC = () => {
         formik.setFieldValue('lastName', dataToPopulate?.data?.customer?.contactLastNm);
         formik.setFieldValue('email', dataToPopulate?.data?.customer?.contactEmailId);
         formik.setFieldValue('phoneNumber', dataToPopulate?.data?.customer?.contactPhoneNo);
-        formik.setFieldValue("paymentType", { label: '' + dataToPopulate?.data?.customer?.PaymentType?.paymentTypeNm, value: '' + dataToPopulate?.data?.customer?.PaymentType?.paymentTypeId});
+        formik.setFieldValue("paymentType", { label: '' + dataToPopulate?.data?.customer?.PaymentType?.paymentTypeNm, value: '' + dataToPopulate?.data?.customer?.PaymentType?.paymentTypeId });
         formik.setFieldValue("invoiceFrequency", { label: '' + dataToPopulate?.data?.customer?.InvoiceFrequency?.invoiceFrequencyNm, value: '' + dataToPopulate?.data?.customer?.InvoiceFrequency?.invoiceFrequencyId });
         formik.setFieldValue("paymentTerm", dataToPopulate?.data?.customer?.paymentTerm);
         const emergenyContactList = segregateEmergencyAndAPContacts(dataToPopulate?.data?.customerContact, 'emergency');
-        const APContactList = segregateEmergencyAndAPContacts(dataToPopulate?.data?.customerContact,'ap_contact');
+        const APContactList = segregateEmergencyAndAPContacts(dataToPopulate?.data?.customerContact, 'ap_contact');
         const checkBoxData = getCheckBoxData(dataToPopulate?.data?.tokenApplicability);
         emergenyContactList.map((obj: any, index: number) => {
             formik.setFieldValue(`emergencyContact[${index}].customerContactId`, obj.customerContactId);
@@ -132,9 +132,9 @@ const AddCustomer: React.FC = () => {
         });
         formik.setFieldValue("endDate", moment(dataToPopulate?.data?.customer.firstSettlementDt));
         checkBoxData.map((obj: any) => {
-            if(obj.indexOf("lot")){
+            if (obj.indexOf("lot")) {
                 formik.setFieldValue('lotLevel', true);
-            } else if(obj.indexOf("business")) {
+            } else if (obj.indexOf("business")) {
                 formik.setFieldValue('businessLevel', true);
             } else {
                 formik.setFieldValue('vehicleLevel', true);
@@ -152,13 +152,13 @@ const AddCustomer: React.FC = () => {
     const [paymentTypes, setpaymentTypes] = useState([]);
     const [initialInvoiceFrequencies, setinitialInvoiceFrequencies] = useState([]);
     const { data: savedCustomerData, mutate: addNewCustomer, isSuccess, isError } = useCreateCustomer();
-    const { data: editedCustomerData, mutate: editCustomer, isSuccess: isEditSuccess, isError:isEditError } = useEditCustomer(location.pathname === 'customer/viewCustomer/'?location.pathname.split("/").pop() as string:addedCustomerId as string);
+    const { data: editedCustomerData, mutate: editCustomer, isSuccess: isEditSuccess, isError: isEditError } = useEditCustomer(location.pathname === 'customer/viewCustomer/' ? location.pathname.split("/").pop() as string : addedCustomerId as string);
     const { data: frequencyList } = useGetFrequencies();
     const { data: paymentTypeList } = useGetPaymentTypes();
     const { data: customerData, isSuccess: isGetSuccess, isError: isGetError } = useGetCustomerData(activeCustomerId, isTrigger);
     const setCustomerIdCreated = useAddedCustomerIdStore((state) => state.setCustomerId);
     const setPageCustomerName = useAddedCustomerNameStore((state) => state.setCustomerName);
-    
+
     useEffect(() => {
         if (isSuccess) {
             setAPIResponse(true);
@@ -176,7 +176,7 @@ const AddCustomer: React.FC = () => {
             setAPIResponse(false);
         }, 6000);
         formik.resetForm({});
-        
+
     }, [savedCustomerData, isSuccess, isError]);
 
     useEffect(() => {
@@ -202,17 +202,17 @@ const AddCustomer: React.FC = () => {
         formik.resetForm({});
     }, [editedCustomerData, isEditSuccess as boolean, isEditError as boolean]);
 
-    useEffect(()=> {
-        if(isGetSuccess) { 
+    useEffect(() => {
+        if (isGetSuccess) {
             populateDataInAllFields(customerData);
             setCustomerIdCreated(customerData?.data?.customer?.customerId);
             setPageCustomerName(customerData?.data?.customer?.companyNm);
-        } 
-        if(isGetError) {
+        }
+        if (isGetError) {
             console.log("Error in getting data");
         }
     }, [customerData, isGetSuccess, isGetError]);
-        
+
     useEffect(() => {
         if (frequencyList?.data.length) {
             setinitialInvoiceFrequencies(frequencyList.data.map((obj: any) => ({ label: obj.invoiceFrequencyNm.trim(), value: obj.invoiceFrequencyId.trim() })));
@@ -265,14 +265,14 @@ const AddCustomer: React.FC = () => {
                 "countryCd": getCountryCode(),
                 "soldToNo": 10,
                 "emergencyContact": data.emergencyContact.map(emgcyObj => ({
-                    ...(emgcyObj.customerContactId && {"customerContactId": emgcyObj.customerContactId}),
+                    ...(emgcyObj.customerContactId && { "customerContactId": emgcyObj.customerContactId }),
                     "firstNm": emgcyObj.firstName,
                     "lastNm": emgcyObj.lastName,
                     "email": emgcyObj.email,
                     "phoneNo": emgcyObj.phoneNumber
                 })),
                 "apContact": data.apContact.map(apObj => ({
-                    ...(apObj.customerContactId && {"customerContactId": apObj.customerContactId}),
+                    ...(apObj.customerContactId && { "customerContactId": apObj.customerContactId }),
                     "firstNm": apObj.firstName,
                     "lastNm": apObj.lastName,
                     "email": apObj.email,
@@ -347,7 +347,7 @@ const AddCustomer: React.FC = () => {
 
     const isFormFieldChange = () => formik.dirty;
 
-    function onClickBack() {
+    function onClickBack () {
         if (isFormFieldChange()) {
             //handleModelToggle();
             showDialogBox(true);
@@ -356,8 +356,8 @@ const AddCustomer: React.FC = () => {
         }
     }
 
-    const disableButton = () => {        
-        if(isEditMode) {
+    const disableButton = () => {
+        if (isEditMode) {
             if (formik.touched && Object.keys(formik.touched).length === 0 && Object.getPrototypeOf(formik.touched) === Object.prototype) {
                 if (formik.dirty) {
                     if (formik.initialValues != formik.values) {
@@ -380,7 +380,7 @@ const AddCustomer: React.FC = () => {
         formik.setFieldValue('postalCode', addressObj.postalCode);
     }
 
-    function handleGoogleAddressBlur() {
+    function handleGoogleAddressBlur () {
         formik.setFieldTouched("addressLine1");
         formik.validateField("addressLine1");
         formik.setFieldTouched("addressLine2");
@@ -409,19 +409,19 @@ const AddCustomer: React.FC = () => {
                         <form onSubmit={formik.handleSubmit} onBlur={handleFormDataChange}>
                             <Grid container xs={12}>
                                 <Grid item xs={10} md={10}>
-                                <Typography variant="h3" component="h3" gutterBottom className="fw-bold" mb={1} >
-                                    Customer Profile
-                                </Typography>
+                                    <Typography variant="h3" component="h3" gutterBottom className="fw-bold" mb={1} >
+                                        Customer Profile
+                                    </Typography>
                                 </Grid>
                                 <Grid item xs={2} md={2} >
-                                {isEditShown && <Button
+                                    {isEditShown && <Button
                                         types="edit"
                                         aria-label="edit"
                                         onClick={handleEditButtonClick}
                                         className="right-float"
-                                        startIcon={<EditIcon />}> 
-                                    {t("buttons.edit")} 
-                                </Button>}
+                                        startIcon={<EditIcon />}>
+                                        {t("buttons.edit")}
+                                    </Button>}
                                 </Grid>
                             </Grid>
                             <Grid container mt={1}>
@@ -605,6 +605,7 @@ const AddCustomer: React.FC = () => {
                                         id="endDate"
                                         name="endDate"
                                         value={formik.values.endDate}
+                                        placeholder="Select Date"
                                         label='START DATE FOR CUSTOMER'
                                         onChange={formik.setFieldValue}
                                         onClose={() => { formik.setFieldTouched("endDate"); formik.validateField("endDate"); }}
@@ -968,11 +969,11 @@ const AddCustomer: React.FC = () => {
                                             aria-label="save"
                                             className="ml-4"
                                             disabled={disableButton()}
-                                            
+
                                         >
                                             {t("buttons.save")}
                                         </Button>
-                                    </Box> }
+                                    </Box>}
                                     <ToastMessage isOpen={apiResposneState} messageType={formStatus.type} onClose={() => { return ''; }} message={formStatus.message} />
                                 </Grid>
                             </Grid>
