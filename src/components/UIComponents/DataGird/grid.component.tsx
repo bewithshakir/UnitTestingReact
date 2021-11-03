@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { Table, TableContainer } from '@mui/material';
 import * as React from "react";
 import { DataGridActionsMenuOption } from '../Menu/DataGridActionsMenu.component';
@@ -62,9 +61,6 @@ const GridComponent: React.FC<GridComponentProps> = (props) => {
 
     const handleTableScroll = (event: any) => {
         const bottomValue = event.target.scrollHeight - event.target.scrollTop;
-        console.log("🚀 ~ file: grid.component.tsx ~ line 64 ~ handleTableScroll ~ event.target", event.target);
-        console.log("🚀 ~ file: grid.component.tsx ~ line 63 ~ handleTableScroll ~ bottomValue", bottomValue);
-        console.log("🚀 ~ file: grid.component.tsx ~ line 67 ~ handleTableScroll ~ bottomValue - event.target.clientHeight", bottomValue - event.target.clientHeight);
         if ((bottomValue - event.target.clientHeight) <= 0 && props.rows.length >= pageDataLimit) {
             props.getPages();
         }
