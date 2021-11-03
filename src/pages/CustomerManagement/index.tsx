@@ -140,10 +140,11 @@ const Content: React.FC<ContentProps> = () => {
     }
   };
 
-  const handleRowAction = (action: DataGridActionsMenuOption) => {
+  const handleRowAction = (action: DataGridActionsMenuOption, row:any) => {
     switch (action.action) {
       case ACTION_TYPES.EDIT:
         // perform action
+        history.push(`/customer/viewCustomer/${row.customerId}`);
         break;
       case ACTION_TYPES.DELETE:
         // perform action
@@ -185,6 +186,7 @@ const Content: React.FC<ContentProps> = () => {
             <Grid item>
               <SearchInput
                 name="searchTerm"
+                placeholder="Customer Name"
                 value={searchTerm}
                 delay={600}
                 onChange={onInputChange}

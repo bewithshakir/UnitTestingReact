@@ -16,5 +16,13 @@ div{
         display: flex;
         justify-content: flex-end;
       }
+      .checkbox-field{
+        .MuiCheckbox-root{
+          margin-left: -9px;
+        }
+      }
+    }
+    .right-float{
+      float:right;
     }
 }

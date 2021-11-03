@@ -10,6 +10,7 @@ export interface SelectProps {
 }
 
 export interface EmergencyContact {
+    customerContactId?:string,
     firstName: string,
     lastName: string,
     email: string,
@@ -17,6 +18,7 @@ export interface EmergencyContact {
 }
 
 export interface ApContact {
+    customerContactId?:string,
     firstName: string,
     lastName: string,
     email: string,
@@ -93,8 +95,8 @@ export default class CustomerModel {
         this.phoneNumber = '';
         this.paymentType = { label: '', value: '' };
         this.invoiceFrequency = { label: '', value: '' };
-        this.startDate = moment();
-        this.endDate = moment();
+        this.startDate = moment().subtract(1, 'days');
+        this.endDate = null;
         this.paymentTerm = '';
         this.lotLevel = false;
         this.businessLevel = false;
