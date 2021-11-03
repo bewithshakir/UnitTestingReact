@@ -72,7 +72,6 @@ export default function HorizontalBar (props: HorizontalBarProps) {
       <Breadcrumbs separator={<NavigateNextIcon />} aria-label="breadcrumb">
         <Link className="breadcrubs-title" href="#" onClick={handleClick}>
           {getHeaderText()}
-          {/* Add Customer */}
         </Link>
       </Breadcrumbs>
     </>);
