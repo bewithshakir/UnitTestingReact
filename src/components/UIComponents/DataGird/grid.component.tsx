@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { Table, TableContainer } from '@mui/material';
 import * as React from "react";
 import { DataGridActionsMenuOption } from '../Menu/DataGridActionsMenu.component';
@@ -5,15 +6,24 @@ import EnhancedGridBody from './dataGrid.component';
 import './grid.style.scss';
 import EnhancedGridHead from './headerGrid.component';
 import { tableSX } from './config';
+import { pageDataLimit } from '../../../utils/constants';
 
+export type fieldOptions = {
+    value: string;
+    displayValue?: string;
+    color?: string;
+    icon?: React.ReactNode | string | any,
+}
 export interface headerObj {
     field: string,
+    showIconLast?: boolean,
     label: string,
-    type: 'text' | 'button' | 'icon' | 'icons' | 'image' | 'images' | 'dropdown',
+    type: 'text' | 'button' | 'icon' | 'icons' | 'image' | 'images' | 'dropdown' | 'status',
     icon?: React.ReactNode | string | any,
     bold?: boolean,
     align?: 'right' | 'left' | 'center' | 'justify',
-    sortable?: boolean
+    sortable?: boolean,
+    fieldOptions?: fieldOptions[]
 }
 type selectedRow = string[];
 interface GridComponentProps {
@@ -31,10 +41,10 @@ interface GridComponentProps {
     rowActionOptions?: DataGridActionsMenuOption[],
     enableRowSelection?: boolean,
     enableRowAction?: boolean,
-    getId?:any,
-    InnerTableComponent?:any,
-    searchTerm?:string,
-    noDataMsg?:string,
+    getId?: any,
+    InnerTableComponent?: any,
+    searchTerm?: string,
+    noDataMsg?: string,
 }
 
 
@@ -52,7 +62,10 @@ const GridComponent: React.FC<GridComponentProps> = (props) => {
 
     const handleTableScroll = (event: any) => {
         const bottomValue = event.target.scrollHeight - event.target.scrollTop;
-        if ((bottomValue - event.target.clientHeight) <= 0) {
+        console.log("🚀 ~ file: grid.component.tsx ~ line 64 ~ handleTableScroll ~ event.target", event.target);
+        console.log("🚀 ~ file: grid.component.tsx ~ line 63 ~ handleTableScroll ~ bottomValue", bottomValue);
+        console.log("🚀 ~ file: grid.component.tsx ~ line 67 ~ handleTableScroll ~ bottomValue - event.target.clientHeight", bottomValue - event.target.clientHeight);
+        if ((bottomValue - event.target.clientHeight) <= 0 && props.rows.length >= pageDataLimit) {
             props.getPages();
         }
     };
