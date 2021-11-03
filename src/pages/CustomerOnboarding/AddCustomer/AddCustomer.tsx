@@ -22,6 +22,7 @@ import { EditIcon } from '../../../assets/icons';
 import "./AddCustomer.style.scss";
 import { useAddedCustomerIdStore, useAddedCustomerNameStore } from '../../../store';
 import moment from 'moment';
+import {maxContacts} from '../../../utils/constants';
 
 const initialValues = new CustomerModel();
 
@@ -176,6 +177,7 @@ const AddCustomer: React.FC = () => {
             setAPIResponse(false);
         }, 6000);
         formik.resetForm({});
+        
     }, [savedCustomerData, isSuccess, isError]);
 
     useEffect(() => {
@@ -605,7 +607,7 @@ const AddCustomer: React.FC = () => {
                                         id="endDate"
                                         name="endDate"
                                         value={formik.values.endDate}
-                                        label='CUSTOMER START DATE'
+                                        label='START DATE FOR CUSTOMER'
                                         onChange={formik.setFieldValue}
                                         onClose={() => { formik.setFieldTouched("endDate"); formik.validateField("endDate"); }}
                                         disableBeforeDate={formik.values.startDate}
@@ -686,7 +688,7 @@ const AddCustomer: React.FC = () => {
                                 </Grid>
                                 <Grid item md={12} mt={2} mb={1}>
                                     <Typography color="var(--Darkgray)" variant="h4" gutterBottom className="fw-bold" mb={1}>
-                                        Emergency Contact
+                                        Emergency Contact (Max {maxContacts})
                                     </Typography>
                                 </Grid>
                                 <FieldArray
@@ -796,7 +798,7 @@ const AddCustomer: React.FC = () => {
                                                         cursor: "pointer"
                                                     }}
                                                     onClick={() => {
-                                                        if (formik.values.emergencyContact.length < 5) {
+                                                        if (formik.values.emergencyContact.length < maxContacts) {
                                                             arrayHelpers.push({ firstName: "", lastName: "", email: "", phoneNumber: "" });
                                                         }
                                                     }}
@@ -813,7 +815,7 @@ const AddCustomer: React.FC = () => {
 
                                 <Grid item md={12} mt={2} mb={1}>
                                     <Typography color="var(--Darkgray)" variant="h4" gutterBottom className="fw-bold" mb={1}>
-                                        AP Contact
+                                        AP Contact (Max {maxContacts})
                                     </Typography>
                                 </Grid>
                                 <FieldArray
@@ -923,7 +925,7 @@ const AddCustomer: React.FC = () => {
                                                         cursor: "pointer"
                                                     }}
                                                     onClick={() => {
-                                                        if (formik.values.apContact.length < 5) {
+                                                        if (formik.values.apContact.length < maxContacts) {
                                                             arrayHelpers.push({ firstName: "", lastName: "", email: "", phoneNumber: "" });
                                                         }
                                                     }}
