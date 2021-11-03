@@ -15,12 +15,11 @@ import { getCountryCode } from '../../../navigation/utils';
 import CustomerModel, { AddCustomerForm, EmergencyContact } from '../../../models/CustomerModel';
 import AddCustomerValidationSchema from './validation';
 import { useCreateCustomer, useGetFrequencies, useGetPaymentTypes } from './queries';
-import DiscardChangesDialog from '../../../components/UIComponents/ConfirmationDialog/DiscardChangesDialog.component';
 import AutocompleteInput from '../../../components/UIComponents/GoogleAddressComponent/GoogleAutoCompleteAddress';
 import axios from 'axios';
 import { EditIcon } from '../../../assets/icons';
 import "./AddCustomer.style.scss";
-import { useAddedCustomerIdStore, useAddedCustomerNameStore } from '../../../store';
+import { useAddedCustomerIdStore, useAddedCustomerNameStore, useShowConfirmationDialogBoxStore } from '../../../store';
 
 const initialValues = new CustomerModel();
 
@@ -232,7 +231,6 @@ const AddCustomer: React.FC = () => {
 
     const [apiResposneState, setAPIResponse] = useState(false);
 
-    const [open, setOpen] = React.useState(false);
 
     const [isDisabled, setDisabled] = useState(false);
 
@@ -241,15 +239,6 @@ const AddCustomer: React.FC = () => {
     const [isEditShown, setEditShown] = useState(true);
 
     const [isSavCancelShown, setSaveCancelShown] = useState(true);
-
-    const handleModelToggle = () => {
-        setOpen(prev => !prev);
-    };
-
-    const handleModelConfirm = () => {
-        setOpen(prev => !prev);
-        history.push('/');
-    };
 
     const handleEditButtonClick = () => {
         setEditMode(true);
@@ -407,7 +396,8 @@ const AddCustomer: React.FC = () => {
 
     function onClickBack() {
         if (isFormFieldChange()) {
-            handleModelToggle();
+            //handleModelToggle();
+            showDialogBox(true);
         } else {
             history.push('/');
         }
@@ -442,12 +432,20 @@ const AddCustomer: React.FC = () => {
         formik.validateField("postalCode");
     }
 
+    const showDialogBox = useShowConfirmationDialogBoxStore((state) => state.showDialogBox);
+    const isFormValidated = useShowConfirmationDialogBoxStore((state) => state.setFormFieldValue);
+
+    const handleFormDataChange = () => {
+        if (isFormFieldChange()) {
+            isFormValidated(true);
+        }
+    };
     return (
         <>
             <Grid item md={10} xs={10}>
                 <Container maxWidth="lg" className="page-container">
                     <FormikProvider value={formik}>
-                        <form onSubmit={formik.handleSubmit}>
+                        <form onSubmit={formik.handleSubmit} onBlur={handleFormDataChange}>
                             <Grid container xs={12}>
                                 <Grid item xs={10} md={10}>
                                 <Typography variant="h3" component="h3" gutterBottom className="fw-bold" mb={1} >
@@ -1018,13 +1016,6 @@ const AddCustomer: React.FC = () => {
                     </FormikProvider>
                 </Container>
             </Grid>
-            <DiscardChangesDialog
-                title={t("customerManagement.discardchangesdialog.title")}
-                content={t("customerManagement.discardchangesdialog.content")}
-                open={open}
-                handleToggle={handleModelToggle}
-                handleConfirm={handleModelConfirm}
-            />
         </>
     );
 };
