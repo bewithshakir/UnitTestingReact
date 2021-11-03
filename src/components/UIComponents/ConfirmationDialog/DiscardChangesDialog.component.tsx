@@ -19,7 +19,7 @@ function DiscardChangesDialog (props: Props) {
             open={open}
             aria-labelledby="discard-changes-dialog-title"
             aria-describedby="discard-changes-dialog-description"
-            BackdropProps={{ style: { backgroundColor: "transparent"} }}
+            BackdropProps={{ style: { backgroundColor: "gray", opacity: 0.3} }}
         >
             <div className="discard-dialog-container">
                 <Typography color="var(--Darkgray)" variant="h2" component="h2" className="fw-bold" px={2.5} pt={2.5} >
