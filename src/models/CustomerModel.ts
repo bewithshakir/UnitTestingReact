@@ -95,7 +95,7 @@ export default class CustomerModel {
         this.phoneNumber = '';
         this.paymentType = { label: '', value: '' };
         this.invoiceFrequency = { label: '', value: '' };
-        this.startDate = null;
+        this.startDate = moment().subtract(1, 'days');
         this.endDate = null;
         this.paymentTerm = '';
         this.lotLevel = false;
