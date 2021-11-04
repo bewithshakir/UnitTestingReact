@@ -41,8 +41,9 @@ export const routes = [
   },
   {
     path: "/taxes",
-    component: lazy(() => import("./pages/AddFuelTax")),
-    version: "Breadcrumbs-Single",
+    component: lazy(() => import("./pages/Taxs")),
+    version: "TaxNavLinks",
+    exact: false
   },
   {
     path: "/query",

@@ -1,4 +1,6 @@
 import moment from 'moment';
+import { useTranslation } from 'react-i18next';
+import { DeleteIcon, ExportIcon, ImportIcon } from '../assets/icons';
 
 export interface SelectProps {
     label: string,
@@ -41,5 +43,30 @@ export default class TaxModel {
         this.loadFuel = '';
         this.fuelType = { label: '', value: '' };
     }
-
+    
+    MASS_ACTION_TYPES = {
+        IMPORT: 'import',
+        EXPORT: 'export',
+        DELETE: 'remove',
+    };
+    massActions () {
+        const { t } = useTranslation();
+        return [
+            {
+                label: t("menus.actions.import data"),
+                icon: ImportIcon,
+                action: this.MASS_ACTION_TYPES.IMPORT
+            },
+            {
+                label: t("menus.actions.export data"),
+                icon: ExportIcon,
+                action: this.MASS_ACTION_TYPES.EXPORT
+            },
+            {
+                label: t("menus.actions.delete"),
+                icon: DeleteIcon,
+                action: this.MASS_ACTION_TYPES.DELETE
+            },
+        ];
+    }
 }

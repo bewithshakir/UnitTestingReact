@@ -22,24 +22,24 @@ interface HorizontalBarProps {
   onBack: () => void,
 }
 
-export default function HorizontalBar (props: HorizontalBarProps) {
+export default function HorizontalBar(props: HorizontalBarProps) {
   const { t } = useTranslation();
-  const version =  useStore((state)=>state.version);
-  const  history =  useHistory();
-  const {pathname} = useLocation();
+  const version = useStore((state) => state.version);
+  const history = useHistory();
+  const { pathname } = useLocation();
   const selectedCustomerName = useAddedCustomerNameStore((state) => state.customerName);
   const showDialogBox = useShowConfirmationDialogBoxStore((state) => state.showDialogBox);
   const hideDialogBox = useShowConfirmationDialogBoxStore((state) => state.hideDialogBox);
   const showConfirmationDialogBox = useShowConfirmationDialogBoxStore((state) => state.showConfirmationDialogBox);
   const isFormFieldChange = useShowConfirmationDialogBoxStore((state) => state.isFormFieldChange);
 
-  function handleClick (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
+  function handleClick(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
     return event;
   }
 
   const handleBack = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     event.preventDefault();
-    {isFormFieldChange? showDialogBox(true) : handleModelConfirm();}
+    { isFormFieldChange ? showDialogBox(true) : handleModelConfirm(); }
 
   };
 
@@ -49,25 +49,25 @@ export default function HorizontalBar (props: HorizontalBarProps) {
 
   const handleModelConfirm = () => {
     hideDialogBox(false);
-    if(pathname === '/customer/parkingLots/addLot'){ 
+    if (pathname === '/customer/parkingLots/addLot') {
       //temp solution
       history.push('/customer/parkingLots');
-    }else{
+    } else {
       props.onBack();
     }
   };
 
-   const getHeaderText = () => {
-    if(history.location.pathname.includes('addCustomer')) {
+  const getHeaderText = () => {
+    if (history.location.pathname.includes('addCustomer')) {
       return "Add Customer";
-    } else if(history.location.pathname.includes('taxes')) {
+    } else if (history.location.pathname.includes('taxes')) {
       return "Add Fuel Tax";
     } else {
       return selectedCustomerName;
     }
   };
 
-  function versionBreadcrumbsSingle () {
+  function versionBreadcrumbsSingle() {
     return (<>
       <Breadcrumbs separator={<NavigateNextIcon />} aria-label="breadcrumb">
         <Link className="breadcrubs-title" href="#" onClick={handleClick}>
@@ -77,7 +77,7 @@ export default function HorizontalBar (props: HorizontalBarProps) {
     </>);
   }
 
-  function varsionNavLinks () {
+  function varsionNavLinks() {
     return (<>
       <div className="linkitem active">
         <NavLink
@@ -110,11 +110,44 @@ export default function HorizontalBar (props: HorizontalBarProps) {
     </>);
   }
 
-  const handleCustomerBack =  ()=>{
+  function varsionTaxNavLinks() {
+    return (<>
+      <div className="linkitem active">
+        <NavLink
+          className="breadcrubs-title"
+          to="/"
+          onClick={handleClick}>
+          Fuel Tax
+        </NavLink>
+      </div>
+      <div className="linkitem">
+        <NavLink className="breadcrubs-title" to="/salesTax" onClick={handleClick}>
+          Sales Tax
+        </NavLink>
+      </div>
+      <div className="linkitem">
+        <NavLink className="breadcrubs-title" to="/cities" onClick={handleClick}>
+          OPIS Cities
+        </NavLink>
+      </div>
+      <div className="linkitem">
+        <NavLink className="breadcrubs-title" to="/productManagement" onClick={handleClick}>
+          Product Management
+        </NavLink>
+      </div>
+      <div className="linkitem">
+        <NavLink className="breadcrubs-title" to="/assetManagement" onClick={handleClick}>
+          Asset Management
+        </NavLink>
+      </div>
+    </>);
+  }
+
+  const handleCustomerBack = () => {
     history.push("/customer/addCustomer");
   };
 
-  function versionBreadcrumbsMany () {
+  function versionBreadcrumbsMany() {
     return (<>
       <Breadcrumbs separator={<NavigateNextIcon />} aria-label="breadcrumb">
         <Link className="breadcrubs-title" onClick={handleCustomerBack}>
@@ -132,7 +165,7 @@ export default function HorizontalBar (props: HorizontalBarProps) {
       <div className="app__header">
         <AppBar position="fixed" className="header" sx={{ width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px` }}>
           <Toolbar className="header__toolbar">
-            {version=== "NavLinks" ? null : (<Button
+            {version === "NavLinks" || version === "TaxNavLinks" ? null : (<Button
               types="profile"
               aria-label="back button"
               onClick={handleBack}
@@ -145,9 +178,11 @@ export default function HorizontalBar (props: HorizontalBarProps) {
                 versionBreadcrumbsSingle() :
                 version === "NavLinks" ?
                   varsionNavLinks() :
-                  version === "Breadcrumbs-Many" ?
-                    versionBreadcrumbsMany() :
-                    null
+                    version === "TaxNavLinks" ?
+                      varsionTaxNavLinks() :
+                        version === "Breadcrumbs-Many" ?
+                          versionBreadcrumbsMany() :
+                          null
             }
             <div className="app__header-section" />
             <div className="app__header-right-section-desktop">
