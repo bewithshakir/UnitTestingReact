@@ -84,7 +84,6 @@ function AddLotForm(): React.ReactElement {
 
     const onClickBack = () => {
         if (isFormFieldChange()) {
-            //handleModelToggle();
             showDialogBox(true);
         } else {
             history.push('/customer/parkingLots');
