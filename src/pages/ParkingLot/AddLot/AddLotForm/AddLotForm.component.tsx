@@ -91,15 +91,6 @@ function AddLotForm(): React.ReactElement {
         }
     };
 
-    // const handleModelToggle = () => {
-    //     setOpen(prev => !prev);
-    // };
-
-    // const handleModelConfirm = () => {
-    //     setOpen(prev => !prev);
-    //     history.push('/customer/parkingLots');
-    // };
-
     const createAddLotPayload = (form: AddParkingLotForm) => {
         const apiPayload = {
             customer_id: addedCustomerId ? addedCustomerId : "",
