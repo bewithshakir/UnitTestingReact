@@ -7,12 +7,17 @@ interface props{
     msgLine1?: string;
     msgLine2?: string;
     searchTerm?:string;
+    showImg?: string;
 }
 
 export default function NoDataFound(props:props){
-    const { msgLine1, msgLine2, searchTerm } = props;
+    const { msgLine1, msgLine2, searchTerm, showImg } = props;
     return (
         <FormControl className='nodata'>
+        {showImg?<img
+                src={showImg}
+                alt="icon"
+            />:""}
            {searchTerm ? ( <Fragment><NoResultFoundIcon/>
                 <b>{msgLine1}</b> </Fragment>) :
            ( <b>{msgLine2}</b> )}
