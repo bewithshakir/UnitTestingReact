@@ -40,7 +40,7 @@ export default function HorizontalBar (props: HorizontalBarProps) {
 
   const handleBack = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     event.preventDefault();
-    { isFormFieldChange ? showDialogBox(true) : handleModelConfirm(); }
+    {isFormFieldChange? showDialogBox(true) : handleModelConfirm();}
 
   };
 
@@ -51,10 +51,10 @@ export default function HorizontalBar (props: HorizontalBarProps) {
   const handleModelConfirm = () => {
     hideDialogBox(false);
     resetFormFieldValue(false);
-    if(pathname === '/customer/parkingLots/addLot'){
+    if(pathname === '/customer/parkingLots/addLot'){ 
       //temp solution
       history.push('/customer/parkingLots');
-    } else {
+    }else{
       props.onBack();
     }
   };
