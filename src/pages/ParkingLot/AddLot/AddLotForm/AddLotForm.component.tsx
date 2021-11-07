@@ -11,7 +11,6 @@ import Divider from '@mui/material/Divider';
 import { AddParkingLotForm, addLotFormInitialValues, lotContact, orderSchDel } from '../../../../models/ParkingLotModel';
 import AddParkingLotValidationSchema from '../validation';
 import { useCreateLot, useGetContactTypes } from '../queries';
-import DiscardChangesDialog from '../../../../components/UIComponents/ConfirmationDialog/DiscardChangesDialog.component';
 import AutocompleteInput from '../../../../components/UIComponents/GoogleAddressComponent/GoogleAutoCompleteAddress';
 import { PlusIcon, EditIcon } from '../../../../assets/icons';
 import { useTheme } from '../../../../contexts/Theme/Theme.context';
@@ -20,7 +19,7 @@ import MultiSelect from '../../../../components/UIComponents/Select/MultiSelect'
 import { DatePickerInput } from '../../../../components/UIComponents/DatePickerInput/DatePickerInput.component';
 import { TimePicker } from '../../../../components/UIComponents/TimePicker/TimePicker.component';
 
-import { useAddedCustomerIdStore } from '../../../../store';
+import { useAddedCustomerIdStore, useShowConfirmationDialogBoxStore } from '../../../../store';
 
 
 import './AddLotForm.style.scss';
@@ -48,11 +47,16 @@ function AddLotForm(): React.ReactElement {
     const [formSuccess, setFormSuccess] = useState(false);
     const [secondaryContactType, setSecondaryContactType] = useState('');
     const [formStatus, setFormStatus] = useState<FormStatusType>({ message: '', type: '' });
-    const [open, setOpen] = React.useState(false);
     const [apiResposneState, setAPIResponse] = useState(false);
     const addedCustomerId = useAddedCustomerIdStore((state) => state.customerId);
+    const resetFormFieldValue = useShowConfirmationDialogBoxStore((state) => state.resetFormFieldValue);
+    const showDialogBox = useShowConfirmationDialogBoxStore((state) => state.showDialogBox);
+    const hideDialogBox = useShowConfirmationDialogBoxStore((state) => state.hideDialogBox);
+    const isFormValidated = useShowConfirmationDialogBoxStore((state) => state.setFormFieldValue);
 
     useEffect(() => {
+        resetFormFieldValue(false);
+        hideDialogBox(false);
         if (isSuccess) {
             setAPIResponse(true);
             setFormStatus(formStatusProps.success);
@@ -80,19 +84,10 @@ function AddLotForm(): React.ReactElement {
 
     const onClickBack = () => {
         if (isFormFieldChange()) {
-            handleModelToggle();
+            showDialogBox(true);
         } else {
             history.push('/customer/parkingLots');
         }
-    };
-
-    const handleModelToggle = () => {
-        setOpen(prev => !prev);
-    };
-
-    const handleModelConfirm = () => {
-        setOpen(prev => !prev);
-        history.push('/customer/parkingLots');
     };
 
     const createAddLotPayload = (form: AddParkingLotForm) => {
@@ -165,12 +160,18 @@ function AddLotForm(): React.ReactElement {
         },
     });
 
+    const handleFormDataChange = () => {
+        if (isFormFieldChange()) {
+            isFormValidated(true);
+        }
+    };
+
     return (
         <>
             <Grid item md={10} xs={10}>
                 <Container maxWidth="lg" className="page-container lot-container">
                     <FormikProvider value={formik}>
-                        <form onSubmit={formik.handleSubmit}>
+                        <form onSubmit={formik.handleSubmit} onBlur={handleFormDataChange}>
                             <Grid container mt={1}>
                                 <Grid container item md={12} mt={2} mb={1}>
                                     <Grid item xs={6}>
@@ -647,13 +648,6 @@ function AddLotForm(): React.ReactElement {
                     </FormikProvider>
                 </Container>
             </Grid>
-            <DiscardChangesDialog
-                title={t("customerManagement.discardchangesdialog.title")}
-                content={t("customerManagement.discardchangesdialog.content")}
-                open={open}
-                handleToggle={handleModelToggle}
-                handleConfirm={handleModelConfirm}
-            />
         </>
     );
 }

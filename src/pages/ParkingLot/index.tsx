@@ -14,7 +14,7 @@ import { useHistory } from "react-router-dom";
 import { sortByOptions } from "./config";
 import { RightInfoPanel } from "../../components/UIComponents/RightInfoPanel/RightInfoPanel.component";
 import { Box, FormControl, Grid, Typography } from "@mui/material";
-import { HorizontalBarVersionState, useStore , useAddedCustomerIdStore, useAddedCustomerNameStore} from "../../store";
+import { HorizontalBarVersionState, useStore , useAddedCustomerIdStore, useAddedCustomerNameStore, useShowConfirmationDialogBoxStore} from "../../store";
 import ParkingLotModel from "../../models/ParkingLotModel";
 import { DataGridActionsMenuOption } from "../../components/UIComponents/Menu/DataGridActionsMenu.component";
 
@@ -51,8 +51,10 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
   const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
   setVersion("Breadcrumbs-Single");
   const setPageCustomerName = useAddedCustomerNameStore((state) => state.setCustomerName);
+  const resetFormFieldValue = useShowConfirmationDialogBoxStore((state) => state.resetFormFieldValue);
 
   useEffect(()=>{
+    resetFormFieldValue(false);
     setPageCustomerName('Customer Name');
   });
 
