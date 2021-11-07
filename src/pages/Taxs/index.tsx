@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React, { memo, useEffect } from 'react';
 import { HorizontalBarVersionState, useStore } from '../../store';
 import { Box, Grid, FormControl } from "@mui/material";
 import { Button } from "../../components/UIComponents/Button/Button.component";
@@ -11,88 +11,69 @@ import ActionsMenu from "../../components/UIComponents/Menu/ActionsMenu.componen
 import { Add } from "@mui/icons-material";
 import { useHistory } from "react-router-dom";
 import TaxModel from '../../models/TaxModel';
+import { fuelTaxListSet } from './queries';
+import GridComponent from "../../components/UIComponents/DataGird/grid.component";
+
 
 const TaxLandingContent = memo(() => {
-    const [searchTerm, setSearchTerm] = React.useState("");
-    const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
-    setVersion("TaxNavLinks");
-    const { t } = useTranslation();
-    const history = useHistory();
-    const TaxObj = new TaxModel();
-    const massActionOptions = TaxObj.massActions();
+  const [searchTerm, setSearchTerm] = React.useState("");
+  const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
+  setVersion("TaxNavLinks");
+  const { t } = useTranslation();
+  const history = useHistory();
+  const TaxObj = new TaxModel();
+  const massActionOptions = TaxObj.massActions();
+  const [fuelTaxList, setFuelTaxList] = React.useState([]);
+  const headCells = TaxObj.fieldsToDisplay();
 
+  const onInputChange = (value: string) => {
+    setSearchTerm(value);
+  };
 
-    const onInputChange = (value: string) => {
-        setSearchTerm(value);
-    };
+  const navigateHomePage = () => {
+    history.push("/");
+  };
 
-    const navigateToAddCustomer = () => {
-        history.push("/customer/addCustomer");
-    };
+  const handleMassAction = () => {
+    return '';
+  };
 
-    const handleMassAction = () => {
-        return '';
-    };
+  const { data, fetchNextPage, isLoading, isFetching }: any = fuelTaxListSet(
+    searchTerm
+  );
 
-    return (
-        // <Box display="flex" mt={8} ml={8}>
-        //     <Grid container pl={6.25} pr={6.25} className="main-area">
-        //         <Grid container pt={2.5} display="flex" flexGrow={1}>
-        //             <Grid item md={8} lg={9} display="flex" >
-        //                 <Grid item pr={2.5}>
-        //                     <Button
-        //                         types="filter"
-        //                         aria-label="dafault"
-        //                         startIcon={<FilterIcon />}
-        //                     >
-        //                         Filter
-        //                     </Button>
-        //                 </Grid>
-        //                 <Grid item pr={2.5}>
-        //                     <SortbyMenu
-        //                         options={sortByOptions.map((sortByItem) => t(sortByItem))}
-        //                         onSelect={(value) => alert(value)}
-        //                     />
-        //                 </Grid>
-        //                 <Grid item >
-        //                     <SearchInput
-        //                         name="searchTerm"
-        //                         placeholder="Search"
-        //                         value={searchTerm}
-        //                         delay={600}
-        //                         onChange={onInputChange}
-        //                     />
-        //                 </Grid>
-        //                 <Grid item md={4} lg={3} display="flex" justifyContent="flex-end">
-        //                     <Grid item pr={2.5}>
-        //                         <Button
-        //                             types="primary"
-        //                             aria-label="primary"
-        //                             onClick={navigateToAddCustomer}
-        //                             startIcon={<Add />}
-        //                         >
-        //                             {t("buttons.add customer")}
-        //                         </Button>
-        //                     </Grid>
-        //                     <Grid item>
-        //                             <ActionsMenu
-        //                                 options={massActionOptions}
-        //                                 onSelect={handleMassAction}
-        //                             />
-        //                     </Grid>
-        //                 </Grid>
-        //             </Grid>
-                    
-        //             <Grid container pt={2.5} display="flex" flexGrow={1}>
-        //                 Grid UI
-        //             </Grid>
-        //         </Grid>
-        //     </Grid>
-        // </Box>
+  useEffect(() => {
+    if (data) {
+      const list: any = [];
+      data?.pages?.forEach((item: any) => {
+        list.push(...item.data.customers);
+      });
+      setFuelTaxList(list);
+    }
+  }, [data]);
 
+  const onSortBySlected = (value: string) => {
+    let sortOrder;
+    switch (value) {
+      case "Z-A":
+        sortOrder = { sortBy: "customerName", order: "desc" };
+        break;
+      case "Newest to Oldest":
+        sortOrder = { sortBy: "date", order: "desc" };
+        break;
+      case "Oldest to New":
+        sortOrder = { sortBy: "date", order: "asc" };
+        break;
+      default:
+        sortOrder = { sortBy: "customerName", order: "asc" };
+        break;
+    }
+    alert(sortOrder);
+  };
 
-        <Box display="flex">
-      <Grid container pl={10.25} pr={6.25} pt={10} className="main-area">
+  return (
+    <Box display="flex" mt={10} ml={8}>
+      <Grid container pl={6.25} pr={6.25} className="main-area">
         <Grid container display="flex" flexGrow={1}>
           <Grid item md={8} lg={9} display="flex" >
             <Grid item pr={2.5}>
@@ -109,7 +90,7 @@ const TaxLandingContent = memo(() => {
               <FormControl>
                 <SortbyMenu
                   options={sortByOptions.map((sortByItem) => t(sortByItem))}
-                  onSelect={(value) => alert(value)}
+                  onSelect={(value) => onSortBySlected(value)}
                 />
               </FormControl>
             </Grid>
@@ -127,10 +108,10 @@ const TaxLandingContent = memo(() => {
               <Button
                 types="primary"
                 aria-label="primary"
-                onClick={navigateToAddCustomer}
+                onClick={navigateHomePage}
                 startIcon={<Add />}
               >
-                {t("buttons.add lot")}
+                {t("buttons.add tax")}
               </Button>
             </Grid>
             <Grid item>
@@ -144,11 +125,21 @@ const TaxLandingContent = memo(() => {
           </Grid>
         </Grid>
         <Grid container pt={2.5} display="flex" flexGrow={1}>
-                Grid UI
+        <GridComponent
+            primaryKey='fuelTaxId'
+            rows={fuelTaxList}
+            header={headCells}
+            isLoading={isFetching || isLoading}
+            enableRowSelection
+            enableRowAction
+            getPages={fetchNextPage}
+            searchTerm={searchTerm}
+            noDataMsg='Add Tax.'
+          />
         </Grid>
       </Grid>
     </Box>
-    );
+  );
 });
 
 export default TaxLandingContent;
