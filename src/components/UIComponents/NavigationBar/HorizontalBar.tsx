@@ -62,7 +62,7 @@ export default function HorizontalBar (props: HorizontalBarProps) {
  const getHeaderText = () => {
     if(history.location.pathname.includes('addCustomer')) {
       return "Add Customer";
-    } else if(history.location.pathname.includes('taxes')) {
+    } else if(history.location.pathname.includes('addFuelTax')) {
       return "Add Fuel Tax";
     } else {
       return selectedCustomerName;
