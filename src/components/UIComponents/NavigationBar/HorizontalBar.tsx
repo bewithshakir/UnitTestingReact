@@ -22,7 +22,7 @@ interface HorizontalBarProps {
   onBack: () => void,
 }
 
-export default function HorizontalBar(props: HorizontalBarProps) {
+export default function HorizontalBar (props: HorizontalBarProps) {
   const { t } = useTranslation();
   const version = useStore((state) => state.version);
   const history = useHistory();
@@ -34,7 +34,7 @@ export default function HorizontalBar(props: HorizontalBarProps) {
   const isFormFieldChange = useShowConfirmationDialogBoxStore((state) => state.isFormFieldChange);
   const resetFormFieldValue = useShowConfirmationDialogBoxStore((state) => state.resetFormFieldValue);
 
-  function handleClick(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
+  function handleClick (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
     return event;
   }
 
