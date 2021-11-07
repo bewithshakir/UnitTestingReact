@@ -26,7 +26,7 @@ export default function HorizontalBar (props: HorizontalBarProps) {
   const { t } = useTranslation();
   const version = useStore((state) => state.version);
   const history = useHistory();
-  const { pathname } = useLocation();
+  const {pathname} = useLocation();
   const selectedCustomerName = useAddedCustomerNameStore((state) => state.customerName);
   const showDialogBox = useShowConfirmationDialogBoxStore((state) => state.showDialogBox);
   const hideDialogBox = useShowConfirmationDialogBoxStore((state) => state.hideDialogBox);
@@ -59,7 +59,7 @@ export default function HorizontalBar (props: HorizontalBarProps) {
     }
   };
 
-  const getHeaderText = () => {
+const getHeaderText = () => {
     if(history.location.pathname.includes('addCustomer')) {
       return "Add Customer";
     } else if(history.location.pathname.includes('taxes')) {
@@ -180,9 +180,9 @@ export default function HorizontalBar (props: HorizontalBarProps) {
             }
             {
               version === "Breadcrumbs-Single" ?
-                versionBreadcrumbsSingle () :
+                versionBreadcrumbsSingle() :
                 version === "NavLinks" ?
-                  varsionNavLinks () :
+                  varsionNavLinks() :
                     version === "TaxNavLinks" ?
                     varsionTaxNavLinks() :
                   version === "Breadcrumbs-Many" ?
