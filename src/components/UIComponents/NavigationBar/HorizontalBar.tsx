@@ -112,6 +112,40 @@ export default function HorizontalBar(props: HorizontalBarProps) {
     </>);
   }
 
+  function varsionTaxNavLinks() {
+    return (<>
+      <div className="linkitem active">
+        <NavLink
+          className="breadcrubs-title"
+          to="/"
+          onClick={handleClick}>
+          Fuel Tax
+        </NavLink>
+      </div>
+      <div className="linkitem">
+        <NavLink className="breadcrubs-title" to="/salesTax" onClick={handleClick}>
+          Sales Tax
+        </NavLink>
+      </div>
+      <div className="linkitem">
+        <NavLink className="breadcrubs-title" to="/cities" onClick={handleClick}>
+          OPIS Cities
+        </NavLink>
+      </div>
+      <div className="linkitem">
+        <NavLink className="breadcrubs-title" to="/productManagement" onClick={handleClick}>
+          Product Management
+        </NavLink>
+      </div>
+      <div className="linkitem">
+        <NavLink className="breadcrubs-title" to="/assetManagement" onClick={handleClick}>
+          Asset Management
+        </NavLink>
+      </div>
+    </>);
+  }
+
+
   const handleCustomerBack = () => {
     hideDialogBox(false);
     resetFormFieldValue(false);
@@ -136,7 +170,7 @@ export default function HorizontalBar(props: HorizontalBarProps) {
       <div className="app__header">
         <AppBar position="fixed" className="header" sx={{ width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px` }}>
           <Toolbar className="header__toolbar">
-            {version === "NavLinks" ? null : (<Button
+            {version === "NavLinks" || version === "TaxNavLinks" ? null : (<Button
               types="profile"
               aria-label="back button"
               onClick={handleBack}
@@ -149,6 +183,8 @@ export default function HorizontalBar(props: HorizontalBarProps) {
                 versionBreadcrumbsSingle() :
                 version === "NavLinks" ?
                   varsionNavLinks() :
+                    version === "TaxNavLinks" ?
+                    varsionTaxNavLinks() :
                   version === "Breadcrumbs-Many" ?
                     versionBreadcrumbsMany() :
                     null
