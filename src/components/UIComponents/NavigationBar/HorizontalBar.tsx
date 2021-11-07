@@ -60,7 +60,7 @@ export default function HorizontalBar (props: HorizontalBarProps) {
   };
 
   const getHeaderText = () => {
-    if (history.location.pathname.includes('addCustomer')) {
+    if(history.location.pathname.includes('addCustomer')) {
       return "Add Customer";
     } else if(history.location.pathname.includes('taxes')) {
       return "Add Fuel Tax";
@@ -69,7 +69,7 @@ export default function HorizontalBar (props: HorizontalBarProps) {
     }
   };
 
-  function versionBreadcrumbsSingle() {
+  function versionBreadcrumbsSingle () {
     return (<>
       <Breadcrumbs separator={<NavigateNextIcon />} aria-label="breadcrumb">
         <Link className="breadcrubs-title" href="#" onClick={handleClick}>
@@ -79,7 +79,7 @@ export default function HorizontalBar (props: HorizontalBarProps) {
     </>);
   }
 
-  function varsionNavLinks() {
+  function varsionNavLinks () {
     return (<>
       <div className="linkitem active">
         <NavLink
