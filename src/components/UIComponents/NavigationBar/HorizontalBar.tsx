@@ -33,7 +33,7 @@ export default function HorizontalBar(props: HorizontalBarProps) {
   const showConfirmationDialogBox = useShowConfirmationDialogBoxStore((state) => state.showConfirmationDialogBox);
   const isFormFieldChange = useShowConfirmationDialogBoxStore((state) => state.isFormFieldChange);
   const resetFormFieldValue = useShowConfirmationDialogBoxStore((state) => state.resetFormFieldValue);
-  
+
   function handleClick(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
     return event;
   }
@@ -112,40 +112,9 @@ export default function HorizontalBar(props: HorizontalBarProps) {
     </>);
   }
 
-  function varsionTaxNavLinks() {
-    return (<>
-      <div className="linkitem active">
-        <NavLink
-          className="breadcrubs-title"
-          to="/"
-          onClick={handleClick}>
-          Fuel Tax
-        </NavLink>
-      </div>
-      <div className="linkitem">
-        <NavLink className="breadcrubs-title" to="/salesTax" onClick={handleClick}>
-          Sales Tax
-        </NavLink>
-      </div>
-      <div className="linkitem">
-        <NavLink className="breadcrubs-title" to="/cities" onClick={handleClick}>
-          OPIS Cities
-        </NavLink>
-      </div>
-      <div className="linkitem">
-        <NavLink className="breadcrubs-title" to="/productManagement" onClick={handleClick}>
-          Product Management
-        </NavLink>
-      </div>
-      <div className="linkitem">
-        <NavLink className="breadcrubs-title" to="/assetManagement" onClick={handleClick}>
-          Asset Management
-        </NavLink>
-      </div>
-    </>);
-  }
-
   const handleCustomerBack = () => {
+    hideDialogBox(false);
+    resetFormFieldValue(false);
     history.push("/customer/addCustomer");
   };
 
@@ -167,7 +136,7 @@ export default function HorizontalBar(props: HorizontalBarProps) {
       <div className="app__header">
         <AppBar position="fixed" className="header" sx={{ width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px` }}>
           <Toolbar className="header__toolbar">
-            {version === "NavLinks" || version === "TaxNavLinks" ? null : (<Button
+            {version === "NavLinks" ? null : (<Button
               types="profile"
               aria-label="back button"
               onClick={handleBack}
@@ -180,11 +149,9 @@ export default function HorizontalBar(props: HorizontalBarProps) {
                 versionBreadcrumbsSingle() :
                 version === "NavLinks" ?
                   varsionNavLinks() :
-                    version === "TaxNavLinks" ?
-                      varsionTaxNavLinks() :
-                        version === "Breadcrumbs-Many" ?
-                          versionBreadcrumbsMany() :
-                          null
+                  version === "Breadcrumbs-Many" ?
+                    versionBreadcrumbsMany() :
+                    null
             }
             <div className="app__header-section" />
             <div className="app__header-right-section-desktop">
