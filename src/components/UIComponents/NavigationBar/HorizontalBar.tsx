@@ -51,7 +51,7 @@ export default function HorizontalBar(props: HorizontalBarProps) {
   const handleModelConfirm = () => {
     hideDialogBox(false);
     resetFormFieldValue(false);
-    if(pathname === '/customer/parkingLots/addLot'){ 
+    if (pathname === '/customer/parkingLots/addLot') {
       //temp solution
       history.push('/customer/parkingLots');
     } else {
@@ -112,7 +112,7 @@ export default function HorizontalBar(props: HorizontalBarProps) {
     </>);
   }
 
-  const handleCustomerBack =  ()=>{
+  const handleCustomerBack = () => {
     hideDialogBox(false);
     resetFormFieldValue(false);
     history.push("/customer/addCustomer");
