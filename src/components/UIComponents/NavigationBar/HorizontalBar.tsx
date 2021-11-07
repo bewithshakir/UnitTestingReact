@@ -51,7 +51,7 @@ export default function HorizontalBar(props: HorizontalBarProps) {
   const handleModelConfirm = () => {
     hideDialogBox(false);
     resetFormFieldValue(false);
-    if (pathname === '/customer/parkingLots/addLot') {
+    if(pathname === '/customer/parkingLots/addLot'){
       //temp solution
       history.push('/customer/parkingLots');
     } else {
@@ -62,7 +62,7 @@ export default function HorizontalBar(props: HorizontalBarProps) {
   const getHeaderText = () => {
     if (history.location.pathname.includes('addCustomer')) {
       return "Add Customer";
-    } else if (history.location.pathname.includes('taxes')) {
+    } else if(history.location.pathname.includes('taxes')) {
       return "Add Fuel Tax";
     } else {
       return selectedCustomerName;
@@ -152,7 +152,7 @@ export default function HorizontalBar(props: HorizontalBarProps) {
     history.push("/customer/addCustomer");
   };
 
-  function versionBreadcrumbsMany() {
+  function versionBreadcrumbsMany () {
     return (<>
       <Breadcrumbs separator={<NavigateNextIcon />} aria-label="breadcrumb">
         <Link className="breadcrubs-title" onClick={handleCustomerBack}>
@@ -180,9 +180,9 @@ export default function HorizontalBar(props: HorizontalBarProps) {
             }
             {
               version === "Breadcrumbs-Single" ?
-                versionBreadcrumbsSingle() :
+                versionBreadcrumbsSingle () :
                 version === "NavLinks" ?
-                  varsionNavLinks() :
+                  varsionNavLinks () :
                     version === "TaxNavLinks" ?
                     varsionTaxNavLinks() :
                   version === "Breadcrumbs-Many" ?
