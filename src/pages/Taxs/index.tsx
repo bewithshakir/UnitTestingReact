@@ -31,7 +31,7 @@ const TaxLandingContent = memo(() => {
   };
 
   const navigateHomePage = () => {
-    history.push("/");
+    history.push("/addFuelTax");
   };
 
   const handleMassAction = () => {

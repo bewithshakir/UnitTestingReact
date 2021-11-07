@@ -54,6 +54,9 @@ export default function HorizontalBar (props: HorizontalBarProps) {
     if(pathname === '/customer/parkingLots/addLot'){ 
       //temp solution
       history.push('/customer/parkingLots');
+    } if(pathname === '/addFuelTax'){
+       //temp solution
+       history.push('/taxes');
     }else{
       props.onBack();
     }
