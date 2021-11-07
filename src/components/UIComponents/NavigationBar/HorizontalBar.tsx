@@ -59,7 +59,7 @@ export default function HorizontalBar (props: HorizontalBarProps) {
     }
   };
 
-const getHeaderText = () => {
+ const getHeaderText = () => {
     if(history.location.pathname.includes('addCustomer')) {
       return "Add Customer";
     } else if(history.location.pathname.includes('taxes')) {
