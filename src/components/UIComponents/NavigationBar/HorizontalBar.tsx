@@ -32,7 +32,8 @@ export default function HorizontalBar(props: HorizontalBarProps) {
   const hideDialogBox = useShowConfirmationDialogBoxStore((state) => state.hideDialogBox);
   const showConfirmationDialogBox = useShowConfirmationDialogBoxStore((state) => state.showConfirmationDialogBox);
   const isFormFieldChange = useShowConfirmationDialogBoxStore((state) => state.isFormFieldChange);
-
+  const resetFormFieldValue = useShowConfirmationDialogBoxStore((state) => state.resetFormFieldValue);
+  
   function handleClick(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
     return event;
   }
@@ -49,6 +50,7 @@ export default function HorizontalBar(props: HorizontalBarProps) {
 
   const handleModelConfirm = () => {
     hideDialogBox(false);
+    resetFormFieldValue(false);
     if (pathname === '/customer/parkingLots/addLot') {
       //temp solution
       history.push('/customer/parkingLots');
