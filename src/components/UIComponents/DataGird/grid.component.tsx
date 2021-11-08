@@ -60,9 +60,11 @@ const GridComponent: React.FC<GridComponentProps> = (props) => {
     };
 
     const handleTableScroll = (event: any) => {
-        const bottomValue = event.target.scrollHeight - event.target.scrollTop;
-        if ((bottomValue - event.target.clientHeight) <= 0 && props.rows.length >= pageDataLimit) {
-            props.getPages();
+        if(props.rows.length >= pageDataLimit) {
+            const bottomValue = event.target.scrollHeight - event.target.scrollTop;
+            if ((bottomValue - event.target.clientHeight) <= 0) {
+                props.getPages();
+            }
         }
     };
 
