@@ -18,7 +18,7 @@ const getParkingLotDetails = async (pageParam: number, searchTerm: string, sortO
         }
     }
 
-    const customersEntitySet = `/api/customer-service/lot?limit=${pageDataLimit}&offset=0&customerId=${customerId}`;
+    const customersEntitySet = `/api/customer-service/lot?limit=${pageDataLimit}&offset=${pageParam}&customerId=${customerId}`;
     const url = query ? `&countryCode=us&${query.toString()}` : `&countryCode=us`;
     const options: AxiosRequestConfig = {
         method: 'get',
