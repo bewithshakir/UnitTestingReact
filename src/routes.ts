@@ -41,7 +41,7 @@ export const routes = [
   },
   {
     path: "/taxes",
-    component: lazy(() => import("./pages/Taxs")),
+    component: lazy(() => import("./pages/Tax")),
     version: "NavLinks",
     exact: false
   },

@@ -1,7 +1,7 @@
 import { useInfiniteQuery } from "react-query";
 import { AxiosRequestConfig } from "axios";
 import axios from "../../infrastructure/ApiHelper";
-
+import { pageDataLimit } from '../../utils/constants';
 
 const getFuelTaxList = async (pageParam: number, searchTerm: string) => {
     const query = new URLSearchParams();
@@ -9,7 +9,7 @@ const getFuelTaxList = async (pageParam: number, searchTerm: string) => {
         query.append("search", searchTerm);
     }
     
-    const fuelTaxListEntitySet = `/api/tax-service/fueltax?limit=15&offset=${pageParam}`;
+    const fuelTaxListEntitySet = `/api/tax-service/fueltax?limit=${pageDataLimit}&offset=${pageParam}`;
     const url = query ? `&countryCode=us` : `&countryCode=us`;
     const options: AxiosRequestConfig = {
         method: 'get',
