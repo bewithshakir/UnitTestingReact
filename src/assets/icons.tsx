@@ -1255,7 +1255,7 @@ export function AquaFuelIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element
 }
 
 
-export function ParkingLotIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
+export function ParkingLotNoDataIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
   return (
     <svg width="238.854" height="196.56" viewBox="0 0 238.854 196.56" {...props}>
   <g id="Group_1839" data-name="Group 1839" transform="translate(-963.982 -417)">

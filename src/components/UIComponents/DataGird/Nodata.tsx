@@ -7,7 +7,7 @@ interface props{
     msgLine1?: string;
     msgLine2?: string;
     searchTerm?:string;
-    showImg?: any;
+    showImg?: React.ReactNode | undefined;
 }
 
 export default function NoDataFound(props:props){
@@ -26,5 +26,4 @@ export default function NoDataFound(props:props){
 NoDataFound.defaultProps = {
     msgLine1 : 'Oops.. No Results Found',
     msgLine2 : '',
-    showImg  : true
 };

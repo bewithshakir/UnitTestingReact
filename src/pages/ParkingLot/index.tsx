@@ -17,7 +17,7 @@ import { Box, FormControl, Grid, Typography } from "@mui/material";
 import { HorizontalBarVersionState, useStore , useAddedCustomerIdStore, useAddedCustomerNameStore, useShowConfirmationDialogBoxStore} from "../../store";
 import ParkingLotModel from "../../models/ParkingLotModel";
 import { DataGridActionsMenuOption } from "../../components/UIComponents/Menu/DataGridActionsMenu.component";
-import { ParkingLotIcon } from '../../assets/icons';
+import { ParkingLotNoDataIcon } from '../../assets/icons';
 
 interface ContentProps {
   rows?: [];
@@ -213,7 +213,7 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
             rowActionOptions={rowActionOptions}
             openDrawer={openDrawer}
             noDataMsg='Add Parking lot by clicking on lot or any related sentence.'
-            showImg={<ParkingLotIcon />}
+            showImg={<ParkingLotNoDataIcon />}
           />
 
           <RightInfoPanel panelType="customer-filter" open={custFilterPanelVisible} headingText={"Filters"} provideFilterParams={getFilterParams} onClose={handleCustFilterPanelClose} />
