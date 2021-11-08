@@ -95,6 +95,13 @@
       "paymentCompleted": "Payment Completed",
       "paymentInProgress": "Payment In Progress",
       "recentlyAddedLots": "Recently Added Lots"
+    },
+    "navBar": {
+      "fuelTax": "Fuel Tax",
+      "salesTax": "Sales Tax",
+      "opisCities": "OPIS Cities",
+      "productManagement": "Product Management",
+      "assetManagement": "Asset Management"
     }
   }
 }
