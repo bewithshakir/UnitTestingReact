@@ -118,7 +118,7 @@ export default class CustomerModel {
         return data.map((obj: any) => (
             {
                 ...obj,
-                createdAt: formatDateAsMMDDYYYY(obj.createdAt)
+                createdAt: formatDateAsMMDDYYYY(obj.createdDate)
             }
         ));
     }
@@ -133,7 +133,7 @@ export default class CustomerModel {
             { field: "zipCode", label: "ZIP", type: 'text' },
             { field: "totalLots", label: "LOTS", type: 'button', icon: ParkingLotIcon },
             { field: "paymentType", label: "SETTLEMENT TYPE", type: 'text' },
-            { field: "createdAt", label: "DATE CREATED", type: 'text' },
+            { field: "createdDate", label: "DATE CREATED", type: 'text' },
         ];
     }
 
