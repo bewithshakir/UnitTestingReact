@@ -33,6 +33,15 @@ interface addedCustomerNameState {
   removeCustomerName: (...args: any) => void,
 }
 
+interface showConfirmationDialogBox {
+  showConfirmationDialogBox: any,
+  isFormFieldChange: any,
+  showDialogBox: (...args: any) => void,
+  hideDialogBox: (...args: any) => void,
+  setFormFieldValue: (...args: any) => void,
+  resetFormFieldValue: (...args: any) => void,
+}
+
 export const useStore  = create<HorizontalBarVersionState>((persist(
     (set) => ({
       version: "NavLinks",
@@ -61,4 +70,13 @@ export const useAddedCustomerNameStore = create<addedCustomerNameState>((set) =>
   customerName: '',
   setCustomerName: (customerName: string) => set(() => ({ customerName })),
   removeCustomerName: () => set(() => ({ customerName: '' })),
+}));
+
+export const useShowConfirmationDialogBoxStore = create<showConfirmationDialogBox>((set) => ({
+  showConfirmationDialogBox: false,
+  isFormFieldChange: false,
+  showDialogBox: (showConfirmationDialogBox: boolean) => set(() => ({ showConfirmationDialogBox })),
+  hideDialogBox: () => set(() => ({ showConfirmationDialogBox: false })),
+  setFormFieldValue: (isFormFieldChange: boolean) => set(() => ({ isFormFieldChange })),
+  resetFormFieldValue: () => set(() => ({ isFormFieldChange: false })),
 }));

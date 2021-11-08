@@ -2,7 +2,7 @@ import moment from 'moment';
 import { useTranslation } from 'react-i18next';
 import { headerObj } from '../components/UIComponents/DataGird/grid.component';
 import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined';
-import { DeleteIcon, ExportIcon, ImportIcon } from '../assets/icons';
+import { DeleteIcon, ExportIcon, ImportIcon, PositiveCricleIcon, AlertExclamationIcon } from '../assets/icons';
 
 export interface SelectProps {
     label: string,
@@ -10,6 +10,7 @@ export interface SelectProps {
 }
 
 export interface EmergencyContact {
+    customerContactId?: string,
     firstName: string,
     lastName: string,
     email: string,
@@ -17,6 +18,7 @@ export interface EmergencyContact {
 }
 
 export interface ApContact {
+    customerContactId?: string,
     firstName: string,
     lastName: string,
     email: string,
@@ -93,8 +95,8 @@ export default class CustomerModel {
         this.phoneNumber = '';
         this.paymentType = { label: '', value: '' };
         this.invoiceFrequency = { label: '', value: '' };
-        this.startDate = moment();
-        this.endDate = moment();
+        this.startDate = null;
+        this.endDate = null;
         this.paymentTerm = '';
         this.lotLevel = false;
         this.businessLevel = false;
@@ -123,7 +125,7 @@ export default class CustomerModel {
             { field: "zipCode", label: "ZIP", type: 'text' },
             { field: "totalLots", label: "LOTS", type: 'button', icon: LocationOnOutlinedIcon },
             { field: "paymentType", label: "SETTLEMENT TYPE", type: 'text' },
-            { field: "createdAt", label: "Date Created", type: 'text' },
+            { field: "createdAt", label: "DATE CREATED", type: 'text' },
         ];
     }
 
@@ -134,9 +136,25 @@ export default class CustomerModel {
             { field: "cityNm", label: "CITY", type: 'text' },
             { field: "stateNm", label: "STATE", type: 'text' },
             { field: "postalCd", label: "ZIP", type: 'text' },
-            { field: "walletStatus", label: "WALLET", type: 'icon', align: 'center' },
-            { field: "fuelStatus", label: "FUEL", type: 'icons' },
             { field: "vehicles", label: "VEHICLES", type: 'text' },
+            { field: "fuelStatus", label: "FUEL", type: 'icons' },
+            {
+                field: "walletStatus",
+                label: "WALLET RULE",
+                type: 'status',
+                align: 'center',
+                showIconLast: true,
+                fieldOptions: [
+                    {
+                        value: "Y",
+                        icon: PositiveCricleIcon,
+                    },
+                    {
+                        value: "N",
+                        icon: AlertExclamationIcon
+                    }
+                ]
+            },
         ];
     }
 

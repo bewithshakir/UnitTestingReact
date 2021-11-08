@@ -55,5 +55,10 @@ div{
         color:var(--Primary);
      
       }
+      .no-wrap{
+        label{
+          white-space: nowrap;
+        }
+      }
   }
   

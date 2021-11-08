@@ -1,10 +1,7 @@
 import { useEffect, useState } from 'react';
 import useDebounce from '../../../utils/useDebounce';
 import { FetchGoogleAddress } from '../../../hooks/googleAddressAutoComlete';
-import AutoComplete from '../AutoComplete/AutoComplete';
-
-
-
+import AutoComplete from '../Select/SelectAutocomplete';
 interface props {
     value: string;
     name: string;
@@ -43,31 +40,42 @@ interface prediction {
     types: Array<string>
 }
 
+type item = {
+    label: string,
+    value: string | number
+}
+
 
 
 export default function AutoCompleteInput(props: props) {
-    const [value, setValue] = useState<prediction | null>(null);
+    const [value, setValue] = useState<item | null| string>(null);
     const [options, setOptions] = useState([]);
     const [inputValue, setInputValue] = useState('');
     const debouncedValue = useDebounce<string>(inputValue, 700);
     const { data } = FetchGoogleAddress(debouncedValue);
 
-
-
     useEffect(() => {
         if (data) {
+            const searchPoints: any = [];
             const predictions = data.data.predictions;
-            setOptions(predictions);
+            predictions.forEach((element:prediction) => {
+                const point = {
+                    value: element.place_id,
+                    label: element.description
+                };
+                searchPoints.push(point);
+            });
+            setOptions(searchPoints);
         }
     }, [data]);
 
-    const handleChange = (opt1: prediction | null) => {
-        if (opt1 !== null) {
+    const handleChange = (opt: item | null) => {
+        if (opt !== null) {
             const { onChange } = props;
             const obj = {
                 target: {
                     name: 'placeId',
-                    value: opt1.place_id
+                    value: opt.value,
                 }
             };
             onChange(obj);
@@ -81,20 +89,21 @@ export default function AutoCompleteInput(props: props) {
             error={props.error}
             required={props.required}
             helperText={props.helperText}
-            freeSolo
+            //freeSolo
             onBlur={props.onBlur}
-            options={options}
+            items={options}
             label={props.label}
             placeholder={props.placeholder}
-            value={value}
-            optionTitle='description'
+            value={{label:props.value, value:props.value} || value}
+            //optionTitle='description'
             disabled={props.disabled}
-            onChange={(event: any, newValue: prediction | null) => {
+            onChange={(event: any, newValue: item | null) => {
                 handleChange(newValue);
                 setValue(newValue);
             }}
-            onInputChange={(event, newInputValue) => {
+            onInputChange={(newInputValue: string) => { 
                 setInputValue(newInputValue);
-            }} />
+            }} 
+            />
     );
 }

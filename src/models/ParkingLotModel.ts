@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { headerObj } from '../components/UIComponents/DataGird/grid.component';
 import DriveEtaOutlinedIcon from '@material-ui/icons/DriveEtaOutlined';
-
+import { PositiveCricleIcon, AlertExclamationIcon } from '../assets/icons';
 
 
 export interface ParkingLot {
@@ -34,15 +34,15 @@ export interface lotContact {
 }
 
 export interface orderSchDel {
-    fromDate: moment.Moment| string | null,
-    toDate: moment.Moment| string | null,
+    fromDate: moment.Moment | string | null,
+    toDate: moment.Moment | string | null,
     startTime: string,
     endTime: string,
     productDelDays: Array<mutiSelectItem>
 }
 
 export interface AddParkingLotForm {
-    lotName:string;
+    lotName: string;
     lotId: string;
     addressLine1: string;
     addressLine2: string;
@@ -50,7 +50,7 @@ export interface AddParkingLotForm {
     state: string;
     postalCode: string;
     county: string;
-    timeZone:SelectProps;
+    timeZone: SelectProps;
     jurisdictionId: string;
     productDelFreq: SelectProps;
     orderScheduleDel: orderSchDel[];
@@ -58,42 +58,42 @@ export interface AddParkingLotForm {
 }
 
 export const addLotFormInitialValues = {
-        lotName : '',
-        lotId : '',
-        addressLine1 : '',
-        addressLine2 : '',
-        city : '',
-        state : '',
-        postalCode : '',
-        county : '',
-        timeZone : { label: '', value: '' },
-        jurisdictionId : '',
-        productDelFreq : { label: '', value: '' },
-        orderScheduleDel : [{
-            fromDate: '',
-            toDate: '',
-            startTime: '',
-            endTime: '',
-            productDelDays: []
-        }],
-        locationContact : [{
-            firstName: '',
-            lastName: '',
-            email: '',
-            phoneNumber: '',
-        }],
+    lotName: '',
+    lotId: '',
+    addressLine1: '',
+    addressLine2: '',
+    city: '',
+    state: '',
+    postalCode: '',
+    county: '',
+    timeZone: { label: '', value: '' },
+    jurisdictionId: '',
+    productDelFreq: { label: '', value: '' },
+    orderScheduleDel: [{
+        fromDate: '',
+        toDate: '',
+        startTime: '',
+        endTime: '',
+        productDelDays: []
+    }],
+    locationContact: [{
+        firstName: '',
+        lastName: '',
+        email: '',
+        phoneNumber: '',
+    }],
 };
 
 
 
 export default class ParkingLotModel {
     // General Information
-    lotName:string;
+    lotName: string;
     lotId: string;
     addressLine1: string;
     addressLine2: string;
     county: string;
-    timeZone:SelectProps;
+    timeZone: SelectProps;
     jurisdictionId: string;
     productDelFreq: SelectProps;
     orderScheduleDel: orderSchDel[];
@@ -145,13 +145,29 @@ export default class ParkingLotModel {
 
     fieldsToDisplay (): headerObj[] {
         return [
-            { field: "deliveryLocationNm", label: "LOT NAME", type: 'text' },
+            { field: "deliveryLocationNm", label: "LOT NAME", type: 'text', sortable: true },
             { field: "streetAddress", label: "STREET ADDRESS", type: 'text' },
             { field: "cityNm", label: "CITY", type: 'text' },
             { field: "stateNm", label: "STATE", type: 'text' },
             { field: "postalCd", label: "ZIP", type: 'text' },
             { field: "rackUpdate", label: "RACK UPDATE", type: 'text' },
-            { field: "walletStatus", label: "WALLET", type: 'icon', align: 'center' },
+            {
+                field: "walletStatus",
+                label: "WALLET",
+                type: 'status',
+                align: 'center',
+                showIconLast: true,
+                fieldOptions: [
+                    {
+                        value: "Y",
+                        icon: PositiveCricleIcon,
+                    },
+                    {
+                        value: "N",
+                        icon: AlertExclamationIcon,
+                    }
+                ]
+            },
             { field: "fuelStatus", label: "FUEL", type: 'icons' },
             { field: "vehicles", label: "VEHICLES", type: 'button', icon: DriveEtaOutlinedIcon },
         ];
@@ -188,7 +204,6 @@ export default class ParkingLotModel {
             {
                 label: t("menus.actions.import data"),
                 icon: "ImportIcon",
-
                 action: this.MASS_ACTION_TYPES.IMPORT
             },
             {

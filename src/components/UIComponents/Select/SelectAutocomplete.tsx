@@ -1,22 +1,21 @@
 import { FormikErrors } from 'formik';
 import { Fragment } from 'react';
-import Select, { components, DropdownIndicatorProps } from 'react-select';
+import Select from 'react-select';
 import { FormHelperText, InputLabel, FormControl } from '@mui/material';
 import './SingleSelect.scss';
-import { ArrowDown } from '../../../assets/icons';
-
 
 type item = {
     label: string,
     value: string | number
 }
+
 interface props {
     id?: string;
     name?: string;
     label?: string;
     placeholder?: string;
-    value?: item | Array<item>;
-    items: Array<item>;
+    value: item | string | null;
+    items?: Array<item>;
 
     required?: boolean;
     error?: boolean;
@@ -27,18 +26,15 @@ interface props {
     description?: string;
     onChange: (...args: any[]) => void;
     onBlur?: (...args: any[]) => void;
+    onInputChange: (...args: any[]) => void;
     disabled?: boolean;
     components?: any;
 }
 
-export default function SingleSelect (props: props) {
+export default function SelectAutoComplete(props: props) {
 
-    const DropdownIndicator = (props: DropdownIndicatorProps<item>) => {
-        return (
-            <components.DropdownIndicator {...props}>
-                <ArrowDown />
-            </components.DropdownIndicator>
-        );
+    const handleInputChange =(keyword: string) => {
+        props.onInputChange(keyword);
     };
 
     const handleChange = (e: any) => {
@@ -61,11 +57,12 @@ export default function SingleSelect (props: props) {
                     value={props.value}
                     options={props.items}
                     onChange={handleChange}
+                    onInputChange={handleInputChange}
                     onBlur={props.onBlur}
-                    components={{ IndicatorSeparator: () => null, DropdownIndicator, ...props.components }}
-                    isSearchable={false}
-                    isDisabled={props.isDisabled}
-                    onKeyDown={e => e.preventDefault()}
+                    components={{ IndicatorSeparator: () => null, DropdownIndicator: () => null}}
+                    isSearchable={true}
+                    isDisabled={props.disabled}
+                    isMulti={false}
                 />
                 {props.helperText && (
                     <FormHelperText
@@ -81,9 +78,9 @@ export default function SingleSelect (props: props) {
 
 }
 
-SingleSelect.defaultProps = {
+SelectAutoComplete.defaultProps = {
     required: false,
     id: "select-label",
     error: false,
-    placeholder: 'Select',
+    placeholder: 'Search Location',
 };

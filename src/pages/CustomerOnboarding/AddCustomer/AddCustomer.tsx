@@ -16,15 +16,16 @@ import { getCountryCode } from '../../../navigation/utils';
 import CustomerModel, { AddCustomerForm, EmergencyContact } from '../../../models/CustomerModel';
 import AddCustomerValidationSchema from './validation';
 import { useCreateCustomer, useEditCustomer, useGetCustomerData, useGetFrequencies, useGetPaymentTypes } from './queries';
-import DiscardChangesDialog from '../../../components/UIComponents/ConfirmationDialog/DiscardChangesDialog.component';
 import AutocompleteInput from '../../../components/UIComponents/GoogleAddressComponent/GoogleAutoCompleteAddress';
 import { EditIcon } from '../../../assets/icons';
 import "./AddCustomer.style.scss";
-import { useAddedCustomerIdStore, useAddedCustomerNameStore } from '../../../store';
+import { useAddedCustomerIdStore, useAddedCustomerNameStore, useShowConfirmationDialogBoxStore } from '../../../store';
+import moment from 'moment';
+import { maxContacts } from '../../../utils/constants';
 
 const initialValues = new CustomerModel();
 
-function getTokenApplicable(Obj: any) {
+function getTokenApplicable (Obj: any) {
     const temp: any = [];
     Object.entries(Obj).forEach(obj => {
         if (obj[1]) {
@@ -63,10 +64,11 @@ const formStatusProps: IFormStatusProps = {
 const AddCustomer: React.FC = () => {
     const location = useLocation();
     const history = useHistory();
+    const addedCustomerId = useAddedCustomerIdStore((state) => state.customerId);
 
     useEffect(() => {
-        const selectedCustomerId = location.pathname.split("/").pop(); 
-        if(selectedCustomerId != "addCustomer") {
+        const selectedCustomerId = location.pathname.split("/").pop();
+        if (selectedCustomerId != "addCustomer") {
             setActiveCustomerId("" + selectedCustomerId);
             setDisabled(true);
             setSaveCancelShown(false);
@@ -76,21 +78,11 @@ const AddCustomer: React.FC = () => {
         }
     }, [location]);
 
-    //below 2 methods to segregate the list of emergency contacts and ap contacts from get api response
-    const getEmergencyContacts = (data: any) => {
-        const TempData:any = [];
-        data.map((obj:any) => { 
-            if(obj.customerContactTypeNm === "emergency") {
-                TempData.push(obj);
-            }
-        });
-        return TempData;
-    };
-
-    const getAPContacts= (data: any) => {
+    //common function to segregate the list of emergency contacts and ap contacts from get api response
+    const segregateEmergencyAndAPContacts = (data: any, type: string) => {
         const TempData: any = [];
         data.map((obj: any) => {
-            if (obj.customerContactTypeNm === "ap_contact") {
+            if (obj.customerContactTypeNm === type) {
                 TempData.push(obj);
             }
         });
@@ -118,30 +110,31 @@ const AddCustomer: React.FC = () => {
         formik.setFieldValue('lastName', dataToPopulate?.data?.customer?.contactLastNm);
         formik.setFieldValue('email', dataToPopulate?.data?.customer?.contactEmailId);
         formik.setFieldValue('phoneNumber', dataToPopulate?.data?.customer?.contactPhoneNo);
-        formik.setFieldValue("paymentType", { label: '' + dataToPopulate?.data?.customer?.PaymentType?.paymentTypeNm, value: '' + dataToPopulate?.data?.customer?.PaymentType?.paymentTypeId});
+        formik.setFieldValue("paymentType", { label: '' + dataToPopulate?.data?.customer?.PaymentType?.paymentTypeNm, value: '' + dataToPopulate?.data?.customer?.PaymentType?.paymentTypeId });
         formik.setFieldValue("invoiceFrequency", { label: '' + dataToPopulate?.data?.customer?.InvoiceFrequency?.invoiceFrequencyNm, value: '' + dataToPopulate?.data?.customer?.InvoiceFrequency?.invoiceFrequencyId });
         formik.setFieldValue("paymentTerm", dataToPopulate?.data?.customer?.paymentTerm);
-        const emergenyContactList = getEmergencyContacts(dataToPopulate?.data?.customerContact);
-        const APContactList = getAPContacts(dataToPopulate?.data?.customerContact);
+        const emergenyContactList = segregateEmergencyAndAPContacts(dataToPopulate?.data?.customerContact, 'emergency');
+        const APContactList = segregateEmergencyAndAPContacts(dataToPopulate?.data?.customerContact, 'ap_contact');
         const checkBoxData = getCheckBoxData(dataToPopulate?.data?.tokenApplicability);
         emergenyContactList.map((obj: any, index: number) => {
+            formik.setFieldValue(`emergencyContact[${index}].customerContactId`, obj.customerContactId);
             formik.setFieldValue(`emergencyContact[${index}].firstName`, obj.contactFirstNm);
             formik.setFieldValue(`emergencyContact[${index}].lastName`, obj.contactLastNm);
             formik.setFieldValue(`emergencyContact[${index}].email`, obj.contactEmailId);
             formik.setFieldValue(`emergencyContact[${index}].phoneNumber`, obj.contactPhoneNo);
         });
         APContactList.map((obj: any, index: number) => {
+            formik.setFieldValue(`apContact[${index}].customerContactId`, obj.customerContactId);
             formik.setFieldValue(`apContact[${index}].firstName`, obj.contactFirstNm);
             formik.setFieldValue(`apContact[${index}].lastName`, obj.contactLastNm);
             formik.setFieldValue(`apContact[${index}].email`, obj.contactEmailId);
             formik.setFieldValue(`apContact[${index}].phoneNumber`, obj.contactPhoneNo);
         });
-        
-        formik.setFieldValue("endDate", dataToPopulate?.data?.customer.firstSettlementDt);
+        formik.setFieldValue("endDate", moment(dataToPopulate?.data?.customer.firstSettlementDt));
         checkBoxData.map((obj: any) => {
-            if(obj.indexOf("lot")){
+            if (obj.indexOf("lot")) {
                 formik.setFieldValue('lotLevel', true);
-            } else if(obj.indexOf("business")) {
+            } else if (obj.indexOf("business")) {
                 formik.setFieldValue('businessLevel', true);
             } else {
                 formik.setFieldValue('vehicleLevel', true);
@@ -159,13 +152,13 @@ const AddCustomer: React.FC = () => {
     const [paymentTypes, setpaymentTypes] = useState([]);
     const [initialInvoiceFrequencies, setinitialInvoiceFrequencies] = useState([]);
     const { data: savedCustomerData, mutate: addNewCustomer, isSuccess, isError } = useCreateCustomer();
-    const { data: editedCustomerData, mutate: editCustomer, isSuccess: isEditSuccess, isError:isEditError } = useEditCustomer(location.pathname.split("/").pop() as string);
+    const { data: editedCustomerData, mutate: editCustomer, isSuccess: isEditSuccess, isError: isEditError } = useEditCustomer(location.pathname === 'customer/viewCustomer/' ? location.pathname.split("/").pop() as string : addedCustomerId as string);
     const { data: frequencyList } = useGetFrequencies();
     const { data: paymentTypeList } = useGetPaymentTypes();
     const { data: customerData, isSuccess: isGetSuccess, isError: isGetError } = useGetCustomerData(activeCustomerId, isTrigger);
     const setCustomerIdCreated = useAddedCustomerIdStore((state) => state.setCustomerId);
     const setPageCustomerName = useAddedCustomerNameStore((state) => state.setCustomerName);
-    
+
     useEffect(() => {
         if (isSuccess) {
             setAPIResponse(true);
@@ -183,6 +176,7 @@ const AddCustomer: React.FC = () => {
             setAPIResponse(false);
         }, 6000);
         formik.resetForm({});
+
     }, [savedCustomerData, isSuccess, isError]);
 
     useEffect(() => {
@@ -208,17 +202,17 @@ const AddCustomer: React.FC = () => {
         formik.resetForm({});
     }, [editedCustomerData, isEditSuccess as boolean, isEditError as boolean]);
 
-    useEffect(()=> {
-        if(isGetSuccess) { 
+    useEffect(() => {
+        if (isGetSuccess) {
             populateDataInAllFields(customerData);
             setCustomerIdCreated(customerData?.data?.customer?.customerId);
             setPageCustomerName(customerData?.data?.customer?.companyNm);
-        } 
-        if(isGetError) {
+        }
+        if (isGetError) {
             console.log("Error in getting data");
         }
     }, [customerData, isGetSuccess, isGetError]);
-        
+
     useEffect(() => {
         if (frequencyList?.data.length) {
             setinitialInvoiceFrequencies(frequencyList.data.map((obj: any) => ({ label: obj.invoiceFrequencyNm.trim(), value: obj.invoiceFrequencyId.trim() })));
@@ -233,7 +227,6 @@ const AddCustomer: React.FC = () => {
 
     const [apiResposneState, setAPIResponse] = useState(false);
 
-    const [open, setOpen] = React.useState(false);
 
     const [isDisabled, setDisabled] = useState(false);
 
@@ -242,15 +235,6 @@ const AddCustomer: React.FC = () => {
     const [isEditShown, setEditShown] = useState(true);
 
     const [isSavCancelShown, setSaveCancelShown] = useState(true);
-
-    const handleModelToggle = () => {
-        setOpen(prev => !prev);
-    };
-
-    const handleModelConfirm = () => {
-        setOpen(prev => !prev);
-        history.push('/');
-    };
 
     const handleEditButtonClick = () => {
         setEditMode(true);
@@ -281,14 +265,14 @@ const AddCustomer: React.FC = () => {
                 "countryCd": getCountryCode(),
                 "soldToNo": 10,
                 "emergencyContact": data.emergencyContact.map(emgcyObj => ({
-                    "customerContactId":"",
+                    ...(emgcyObj.customerContactId && { "customerContactId": emgcyObj.customerContactId }),
                     "firstNm": emgcyObj.firstName,
                     "lastNm": emgcyObj.lastName,
                     "email": emgcyObj.email,
                     "phoneNo": emgcyObj.phoneNumber
                 })),
                 "apContact": data.apContact.map(apObj => ({
-                    "customerContactId":"",
+                    ...(apObj.customerContactId && { "customerContactId": apObj.customerContactId }),
                     "firstNm": apObj.firstName,
                     "lastNm": apObj.lastName,
                     "email": apObj.email,
@@ -363,16 +347,17 @@ const AddCustomer: React.FC = () => {
 
     const isFormFieldChange = () => formik.dirty;
 
-    function onClickBack() {
+    function onClickBack () {
         if (isFormFieldChange()) {
-            handleModelToggle();
+            //handleModelToggle();
+            showDialogBox(true);
         } else {
             history.push('/');
         }
     }
 
-    const disableButton = () => {        
-        if(isEditMode) {
+    const disableButton = () => {
+        if (isEditMode) {
             if (formik.touched && Object.keys(formik.touched).length === 0 && Object.getPrototypeOf(formik.touched) === Object.prototype) {
                 if (formik.dirty) {
                     if (formik.initialValues != formik.values) {
@@ -395,7 +380,7 @@ const AddCustomer: React.FC = () => {
         formik.setFieldValue('postalCode', addressObj.postalCode);
     }
 
-    function handleGoogleAddressBlur() {
+    function handleGoogleAddressBlur () {
         formik.setFieldTouched("addressLine1");
         formik.validateField("addressLine1");
         formik.setFieldTouched("addressLine2");
@@ -408,26 +393,43 @@ const AddCustomer: React.FC = () => {
         formik.validateField("postalCode");
     }
 
+    const showDialogBox = useShowConfirmationDialogBoxStore((state) => state.showDialogBox);
+    const isFormValidated = useShowConfirmationDialogBoxStore((state) => state.setFormFieldValue);
+
+    const handleFormDataChange = () => {
+        if(isEditMode) {
+            if (formik.touched && Object.keys(formik.touched).length === 0 && Object.getPrototypeOf(formik.touched) === Object.prototype) {
+                if (formik.dirty) {
+                    if (formik.initialValues != formik.values) {
+                        isFormValidated(false);
+                    }
+                }
+            }
+        } else if (isFormFieldChange()) {
+            isFormValidated(true);
+        }
+    };
     return (
         <>
             <Grid item md={10} xs={10}>
                 <Container maxWidth="lg" className="page-container">
                     <FormikProvider value={formik}>
-                        <form onSubmit={formik.handleSubmit}>
+                        <form onSubmit={formik.handleSubmit} onBlur={handleFormDataChange}>
                             <Grid container xs={12}>
                                 <Grid item xs={10} md={10}>
-                                <Typography variant="h3" component="h3" gutterBottom className="fw-bold" mb={1} >
-                                    Customer Profile
-                                </Typography>
+                                    <Typography variant="h3" component="h3" gutterBottom className="fw-bold" mb={1} >
+                                        Customer Profile
+                                    </Typography>
                                 </Grid>
-                                <Grid item xs={2} md={2} sx={{ justifyContent:'flex-end' }}>
-                                {isEditShown && <Button
+                                <Grid item xs={2} md={2} >
+                                    {isEditShown && <Button
                                         types="edit"
                                         aria-label="edit"
                                         onClick={handleEditButtonClick}
-                                        startIcon={<EditIcon />}> 
-                                    {t("buttons.edit")} 
-                                </Button>}
+                                        className="right-float"
+                                        startIcon={<EditIcon />}>
+                                        {t("buttons.edit")}
+                                    </Button>}
                                 </Grid>
                             </Grid>
                             <Grid container mt={1}>
@@ -605,7 +607,23 @@ const AddCustomer: React.FC = () => {
                                         isDisabled={isDisabled}
                                     />
                                 </Grid>
-                                <Grid item xs={12} md={6} pl={2.5} pb={2.5} />
+                                <Grid item xs={12} md={6} pl={2.5} pb={2.5}>
+                                    <DatePickerInput
+                                        type="single-date"
+                                        id="endDate"
+                                        name="endDate"
+                                        value={formik.values.endDate}
+                                        placeholder="Select Date"
+                                        label='START DATE FOR CUSTOMER'
+                                        onChange={formik.setFieldValue}
+                                        onClose={() => { formik.setFieldTouched("endDate"); formik.validateField("endDate"); }}
+                                        disableBeforeDate={formik.values.startDate}
+                                        helperText={(formik.touched.endDate && formik.errors.endDate) ? formik.errors.endDate : undefined}
+                                        error={(formik.touched.endDate && formik.errors.endDate) ? true : false}
+                                        required
+                                        disabled={isDisabled}
+                                    />
+                                </Grid>
                                 <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
                                     <Select
                                         id='invoiceFrequency'
@@ -622,23 +640,7 @@ const AddCustomer: React.FC = () => {
                                         isDisabled={isDisabled}
                                     />
                                 </Grid>
-                                <Grid item md={3} pl={2.5} pr={2.5} pb={2.5}>
-                                    <DatePickerInput
-                                        type="single-date"
-                                        id="endDate"
-                                        name="endDate"
-                                        value={formik.values.endDate}
-                                        label='CUSTOMER START DATE'
-                                        onChange={formik.setFieldValue}
-                                        onClose={() => { formik.setFieldTouched("endDate"); formik.validateField("endDate"); }}
-                                        disableBeforeDate={formik.values.startDate}
-                                        helperText={(formik.touched.endDate && formik.errors.endDate) ? formik.errors.endDate : undefined}
-                                        error={(formik.touched.endDate && formik.errors.endDate) ? true : false}
-                                        required
-                                        disabled={isDisabled}
-                                    />
-                                </Grid>
-                                <Grid item md={3} pl={2.5}>
+                                <Grid item xs={12} md={6} pl={2.5} pb={2.5}>
                                     <Input
                                         id='paymentTerm'
                                         label='PAYMENT TERM'
@@ -654,6 +656,7 @@ const AddCustomer: React.FC = () => {
                                         <FormGroup>
                                             <FormControlLabel
                                                 sx={{ margin: "0px", marginBottom: "1rem", fontWeight: "bold" }}
+                                                className="checkbox-field"
                                                 control={
                                                     <Checkbox checked={formik.values.lotLevel} onChange={formik.handleChange} name="lotLevel" disabled={isDisabled} />
                                                 }
@@ -665,6 +668,7 @@ const AddCustomer: React.FC = () => {
                                             />
                                             <FormControlLabel
                                                 sx={{ margin: "0px", marginBottom: "1rem", fontWeight: "bold" }}
+                                                className="checkbox-field"
                                                 control={
                                                     <Checkbox checked={formik.values.businessLevel} onChange={formik.handleChange} name="businessLevel" disabled={isDisabled} />
                                                 }
@@ -676,6 +680,7 @@ const AddCustomer: React.FC = () => {
                                             />
                                             <FormControlLabel
                                                 sx={{ margin: "0px", marginBottom: "1rem", fontWeight: "bold" }}
+                                                className="checkbox-field"
                                                 control={
                                                     <Checkbox checked={formik.values.vehicleLevel} onChange={formik.handleChange} name="vehicleLevel" disabled={isDisabled} />
                                                 }
@@ -690,7 +695,7 @@ const AddCustomer: React.FC = () => {
                                 </Grid>
                                 <Grid item md={12} mt={2} mb={1}>
                                     <Typography color="var(--Darkgray)" variant="h4" gutterBottom className="fw-bold" mb={1}>
-                                        Emergency Contact
+                                        Emergency Contact (Max {maxContacts})
                                     </Typography>
                                 </Grid>
                                 <FieldArray
@@ -800,7 +805,7 @@ const AddCustomer: React.FC = () => {
                                                         cursor: "pointer"
                                                     }}
                                                     onClick={() => {
-                                                        if (formik.values.emergencyContact.length < 5) {
+                                                        if (formik.values.emergencyContact.length < maxContacts) {
                                                             arrayHelpers.push({ firstName: "", lastName: "", email: "", phoneNumber: "" });
                                                         }
                                                     }}
@@ -817,7 +822,7 @@ const AddCustomer: React.FC = () => {
 
                                 <Grid item md={12} mt={2} mb={1}>
                                     <Typography color="var(--Darkgray)" variant="h4" gutterBottom className="fw-bold" mb={1}>
-                                        AP Contact
+                                        AP Contact (Max {maxContacts})
                                     </Typography>
                                 </Grid>
                                 <FieldArray
@@ -927,7 +932,7 @@ const AddCustomer: React.FC = () => {
                                                         cursor: "pointer"
                                                     }}
                                                     onClick={() => {
-                                                        if (formik.values.apContact.length < 5) {
+                                                        if (formik.values.apContact.length < maxContacts) {
                                                             arrayHelpers.push({ firstName: "", lastName: "", email: "", phoneNumber: "" });
                                                         }
                                                     }}
@@ -972,11 +977,11 @@ const AddCustomer: React.FC = () => {
                                             aria-label="save"
                                             className="ml-4"
                                             disabled={disableButton()}
-                                            
+
                                         >
                                             {t("buttons.save")}
                                         </Button>
-                                    </Box> }
+                                    </Box>}
                                     <ToastMessage isOpen={apiResposneState} messageType={formStatus.type} onClose={() => { return ''; }} message={formStatus.message} />
                                 </Grid>
                             </Grid>
@@ -984,13 +989,6 @@ const AddCustomer: React.FC = () => {
                     </FormikProvider>
                 </Container>
             </Grid>
-            <DiscardChangesDialog
-                title={t("customerManagement.discardchangesdialog.title")}
-                content={t("customerManagement.discardchangesdialog.content")}
-                open={open}
-                handleToggle={handleModelToggle}
-                handleConfirm={handleModelConfirm}
-            />
         </>
     );
 };

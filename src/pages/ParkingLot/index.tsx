@@ -14,9 +14,10 @@ import { useHistory } from "react-router-dom";
 import { sortByOptions } from "./config";
 import { RightInfoPanel } from "../../components/UIComponents/RightInfoPanel/RightInfoPanel.component";
 import { Box, FormControl, Grid, Typography } from "@mui/material";
-import { HorizontalBarVersionState, useStore , useAddedCustomerIdStore, useAddedCustomerNameStore} from "../../store";
+import { HorizontalBarVersionState, useStore , useAddedCustomerIdStore, useAddedCustomerNameStore, useShowConfirmationDialogBoxStore} from "../../store";
 import ParkingLotModel from "../../models/ParkingLotModel";
 import { DataGridActionsMenuOption } from "../../components/UIComponents/Menu/DataGridActionsMenu.component";
+import { ParkingLotNoDataIcon } from '../../assets/icons';
 
 interface ContentProps {
   rows?: [];
@@ -51,8 +52,10 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
   const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
   setVersion("Breadcrumbs-Single");
   const setPageCustomerName = useAddedCustomerNameStore((state) => state.setCustomerName);
+  const resetFormFieldValue = useShowConfirmationDialogBoxStore((state) => state.resetFormFieldValue);
 
   useEffect(()=>{
+    resetFormFieldValue(false);
     setPageCustomerName('Customer Name');
   });
 
@@ -209,7 +212,8 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
             searchTerm={searchTerm}
             rowActionOptions={rowActionOptions}
             openDrawer={openDrawer}
-            noDataMsg='Please Add a Parking Lot.'
+            noDataMsg='Add Parking lot by clicking on lot or any related sentence.'
+            showImg={<ParkingLotNoDataIcon />}
           />
 
           <RightInfoPanel panelType="customer-filter" open={custFilterPanelVisible} headingText={"Filters"} provideFilterParams={getFilterParams} onClose={handleCustFilterPanelClose} />

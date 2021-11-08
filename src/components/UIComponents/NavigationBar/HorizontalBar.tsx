@@ -12,7 +12,8 @@ import { Button } from "../Button/Button.component";
 import NotificationsMenu from '../Menu/NotificationsMenu.component';
 import ProfileMenu from '../Menu/ProfileMenu.component';
 import './HorizontalBar.style.scss';
-import { useAddedCustomerNameStore } from '../../../store';
+import { useAddedCustomerNameStore, useShowConfirmationDialogBoxStore } from '../../../store';
+import DiscardChangesDialog from '../../../components/UIComponents/ConfirmationDialog/DiscardChangesDialog.component';
 
 
 const drawerWidth = 64;
@@ -27,6 +28,11 @@ export default function HorizontalBar (props: HorizontalBarProps) {
   const  history =  useHistory();
   const {pathname} = useLocation();
   const selectedCustomerName = useAddedCustomerNameStore((state) => state.customerName);
+  const showDialogBox = useShowConfirmationDialogBoxStore((state) => state.showDialogBox);
+  const hideDialogBox = useShowConfirmationDialogBoxStore((state) => state.hideDialogBox);
+  const showConfirmationDialogBox = useShowConfirmationDialogBoxStore((state) => state.showConfirmationDialogBox);
+  const isFormFieldChange = useShowConfirmationDialogBoxStore((state) => state.isFormFieldChange);
+  const resetFormFieldValue = useShowConfirmationDialogBoxStore((state) => state.resetFormFieldValue);
 
   function handleClick (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
     return event;
@@ -34,6 +40,17 @@ export default function HorizontalBar (props: HorizontalBarProps) {
 
   const handleBack = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     event.preventDefault();
+    {isFormFieldChange? showDialogBox(true) : handleModelConfirm();}
+
+  };
+
+  const handleModelToggle = () => {
+    hideDialogBox(false);
+  };
+
+  const handleModelConfirm = () => {
+    hideDialogBox(false);
+    resetFormFieldValue(false);
     if(pathname === '/customer/parkingLots/addLot'){ 
       //temp solution
       history.push('/customer/parkingLots');
@@ -96,6 +113,8 @@ export default function HorizontalBar (props: HorizontalBarProps) {
   }
 
   const handleCustomerBack =  ()=>{
+    hideDialogBox(false);
+    resetFormFieldValue(false);
     history.push("/customer/addCustomer");
   };
 
@@ -182,6 +201,13 @@ export default function HorizontalBar (props: HorizontalBarProps) {
             </div>
           </Toolbar>
         </AppBar>
+        <DiscardChangesDialog
+          title={t("customerManagement.discardchangesdialog.title")}
+          content={t("customerManagement.discardchangesdialog.content")}
+          open={showConfirmationDialogBox}
+          handleToggle={handleModelToggle}
+          handleConfirm={handleModelConfirm}
+        />
       </div>
     </>
   );
