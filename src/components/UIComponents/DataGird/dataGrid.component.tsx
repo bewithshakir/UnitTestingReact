@@ -29,7 +29,7 @@ interface GridBodyProps {
     InnerTableComponent?: any;
     noDataMsg?: string,
     searchTerm?: string,
-    showImg?: any,
+    showImg?: React.ReactNode | undefined,
     onRowActionSelect?: (selectedValue: DataGridActionsMenuOption, row: any) => void,
     rowActionOptions?: DataGridActionsMenuOption[],
     handleCheckChange: (primaryId: string) => void;

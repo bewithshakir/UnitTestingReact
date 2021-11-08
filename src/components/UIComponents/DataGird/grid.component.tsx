@@ -44,7 +44,7 @@ interface GridComponentProps {
     InnerTableComponent?: any,
     searchTerm?: string,
     noDataMsg?: string,
-    showImg?: any
+    showImg?: React.ReactNode | undefined,
 }
 
 
