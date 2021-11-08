@@ -26,4 +26,5 @@ export default function NoDataFound(props:props){
 NoDataFound.defaultProps = {
     msgLine1 : 'Oops.. No Results Found',
     msgLine2 : '',
+    showImg  : true
 };
