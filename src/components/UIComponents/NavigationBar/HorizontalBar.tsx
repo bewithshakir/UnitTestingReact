@@ -83,71 +83,70 @@ export default function HorizontalBar (props: HorizontalBarProps) {
   }
 
   function varsionNavLinks () {
-    return (<>
-      <div className="linkitem active">
-        <NavLink
-          className="breadcrubs-title"
-          to="/"
-          onClick={handleClick}>
-          Customer List
-        </NavLink>
-      </div>
-      <div className="linkitem">
-        <NavLink className="breadcrubs-title" to="/parkinglots" onClick={handleClick}>
-          Parking Lots
-        </NavLink>
-      </div>
-      <div className="linkitem">
-        <NavLink className="breadcrubs-title" to="/vehicles" onClick={handleClick}>
-          Vehicles
-        </NavLink>
-      </div>
-      <div className="linkitem">
-        <NavLink className="breadcrubs-title" to="/users" onClick={handleClick}>
-          Users
-        </NavLink>
-      </div>
-      <div className="linkitem">
-        <NavLink className="breadcrubs-title" to="/invoices" onClick={handleClick}>
-          Invoices
-        </NavLink>
-      </div>
-    </>);
+    if(pathname === '/taxes') {
+      return (<>
+        <div className="linkitem active">
+          <NavLink
+            className="breadcrubs-title"
+            to="/"
+            onClick={handleClick}>
+            Fuel Tax
+          </NavLink>
+        </div>
+        <div className="linkitem">
+          <NavLink className="breadcrubs-title" to="/salesTax" onClick={handleClick}>
+            Sales Tax
+          </NavLink>
+        </div>
+        <div className="linkitem">
+          <NavLink className="breadcrubs-title" to="/cities" onClick={handleClick}>
+            OPIS Cities
+          </NavLink>
+        </div>
+        <div className="linkitem">
+          <NavLink className="breadcrubs-title" to="/productManagement" onClick={handleClick}>
+            Product Management
+          </NavLink>
+        </div>
+        <div className="linkitem">
+          <NavLink className="breadcrubs-title" to="/assetManagement" onClick={handleClick}>
+            Asset Management
+          </NavLink>
+        </div>
+      </>);
+    } else {
+      return (<>
+        <div className="linkitem active">
+          <NavLink
+            className="breadcrubs-title"
+            to="/"
+            onClick={handleClick}>
+            Customer List
+          </NavLink>
+        </div>
+        <div className="linkitem">
+          <NavLink className="breadcrubs-title" to="/parkinglots" onClick={handleClick}>
+            Parking Lots
+          </NavLink>
+        </div>
+        <div className="linkitem">
+          <NavLink className="breadcrubs-title" to="/vehicles" onClick={handleClick}>
+            Vehicles
+          </NavLink>
+        </div>
+        <div className="linkitem">
+          <NavLink className="breadcrubs-title" to="/users" onClick={handleClick}>
+            Users
+          </NavLink>
+        </div>
+        <div className="linkitem">
+          <NavLink className="breadcrubs-title" to="/invoices" onClick={handleClick}>
+            Invoices
+          </NavLink>
+        </div>
+      </>);
+    }
   }
-
-  function varsionTaxNavLinks() {
-    return (<>
-      <div className="linkitem active">
-        <NavLink
-          className="breadcrubs-title"
-          to="/"
-          onClick={handleClick}>
-          Fuel Tax
-        </NavLink>
-      </div>
-      <div className="linkitem">
-        <NavLink className="breadcrubs-title" to="/salesTax" onClick={handleClick}>
-          Sales Tax
-        </NavLink>
-      </div>
-      <div className="linkitem">
-        <NavLink className="breadcrubs-title" to="/cities" onClick={handleClick}>
-          OPIS Cities
-        </NavLink>
-      </div>
-      <div className="linkitem">
-        <NavLink className="breadcrubs-title" to="/productManagement" onClick={handleClick}>
-          Product Management
-        </NavLink>
-      </div>
-      <div className="linkitem">
-        <NavLink className="breadcrubs-title" to="/assetManagement" onClick={handleClick}>
-          Asset Management
-        </NavLink>
-      </div>
-    </>);
-  }
-
 
   const handleCustomerBack = () => {
     hideDialogBox(false);
@@ -186,8 +185,6 @@ export default function HorizontalBar (props: HorizontalBarProps) {
                 versionBreadcrumbsSingle() :
                 version === "NavLinks" ?
                   varsionNavLinks() :
-                    version === "TaxNavLinks" ?
-                    varsionTaxNavLinks() :
                   version === "Breadcrumbs-Many" ?
                     versionBreadcrumbsMany() :
                     null

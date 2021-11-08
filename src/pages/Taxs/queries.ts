@@ -9,7 +9,7 @@ const getFuelTaxList = async (pageParam: number, searchTerm: string) => {
         query.append("search", searchTerm);
     }
     
-    const fuelTaxListEntitySet = `/api/tax-service/fueltax/list?limit=15&offset=${pageParam}`;
+    const fuelTaxListEntitySet = `/api/tax-service/fueltax?limit=15&offset=${pageParam}`;
     const url = query ? `&countryCode=us` : `&countryCode=us`;
     const options: AxiosRequestConfig = {
         method: 'get',

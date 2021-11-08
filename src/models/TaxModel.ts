@@ -2,21 +2,13 @@ import moment from 'moment';
 import { useTranslation } from 'react-i18next';
 import { DeleteIcon, ExportIcon, ImportIcon } from '../assets/icons';
 import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined';
+import { headerObj } from './../components/UIComponents/DataGird/grid.component';
 
 export interface SelectProps {
     label: string,
     value: string,
 }
 
-export interface headerObj {
-    field: string,
-    label: string,
-    type: 'text' | 'button' | 'icon' | 'icons' | 'image' | 'images' | 'dropdown',
-    icon?: React.ReactNode | string | any,
-    bold?: boolean,
-    align?: 'right' | 'left' | 'center' | 'justify',
-    sortable?: boolean
-}
 
 export default class TaxModel {
     addressLine1: string;
@@ -84,8 +76,8 @@ export default class TaxModel {
 
     fieldsToDisplay (): headerObj[] {
         return [
-            { field: "customerName", label: "CITY", type: 'text', align: 'left', sortable: true },
-            { field: "contactName", label: "STATE", type: 'text',  align: 'left'},
+            { field: "cityName", label: "CITY", type: 'text', align: 'left', sortable: true },
+            { field: "stateName", label: "STATE", type: 'text',  align: 'left'},
             { field: "totalLots", label: "PRODUCT", type: 'button',  align: 'left', icon: LocationOnOutlinedIcon }
         ];
     }

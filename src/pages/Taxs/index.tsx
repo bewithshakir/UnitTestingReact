@@ -18,7 +18,7 @@ import GridComponent from "../../components/UIComponents/DataGird/grid.component
 const TaxLandingContent = memo(() => {
   const [searchTerm, setSearchTerm] = React.useState("");
   const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
-  setVersion("TaxNavLinks");
+  setVersion("NavLinks");
   const { t } = useTranslation();
   const history = useHistory();
   const TaxObj = new TaxModel();
@@ -46,7 +46,7 @@ const TaxLandingContent = memo(() => {
     if (data) {
       const list: any = [];
       data?.pages?.forEach((item: any) => {
-        list.push(...item.data.customers);
+        list.push(...item.data.fuelTax);
       });
       setFuelTaxList(list);
     }
@@ -80,7 +80,6 @@ const TaxLandingContent = memo(() => {
               <Button
                 types="filter"
                 aria-label="dafault"
-                //onClick={handleCustFilterPanelOpen}
                 startIcon={<FilterIcon />}
               >
                 Filter
@@ -130,7 +129,7 @@ const TaxLandingContent = memo(() => {
             rows={fuelTaxList}
             header={headCells}
             isLoading={isFetching || isLoading}
-            enableRowSelection
+            enableRowSelection = {false}
             enableRowAction
             getPages={fetchNextPage}
             searchTerm={searchTerm}
