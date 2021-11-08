@@ -44,6 +44,7 @@ interface GridComponentProps {
     InnerTableComponent?: any,
     searchTerm?: string,
     noDataMsg?: string,
+    showImg?: React.ReactNode | undefined,
 }
 
 
@@ -124,6 +125,7 @@ const GridComponent: React.FC<GridComponentProps> = (props) => {
                     handleCheckChange={handleCheckChange}
                     headCells={props.header}
                     searchTerm={props.searchTerm}
+                    showImg={props.showImg}
                     {...props}
                 />
             </Table>

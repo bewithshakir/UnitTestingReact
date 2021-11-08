@@ -29,6 +29,7 @@ interface GridBodyProps {
     InnerTableComponent?: any;
     noDataMsg?: string,
     searchTerm?: string,
+    showImg?: React.ReactNode | undefined,
     onRowActionSelect?: (selectedValue: DataGridActionsMenuOption, row: any) => void,
     rowActionOptions?: DataGridActionsMenuOption[],
     handleCheckChange: (primaryId: string) => void;
@@ -272,7 +273,7 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
         if (props?.rows?.length) {
             return getRowsData();
         } else if (!props?.isLoading) {
-            return (<TableBody className='no-data'> <NoDataFound searchTerm={props.searchTerm} msgLine2={props.noDataMsg} /> </TableBody>);
+            return (<TableBody className='no-data'> <NoDataFound searchTerm={props.searchTerm} msgLine2={props.noDataMsg} showImg={props.showImg} /> </TableBody>);
         }
     };
 
