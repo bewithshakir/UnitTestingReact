@@ -397,7 +397,15 @@ const AddCustomer: React.FC = () => {
     const isFormValidated = useShowConfirmationDialogBoxStore((state) => state.setFormFieldValue);
 
     const handleFormDataChange = () => {
-        if (isFormFieldChange()) {
+        if(isEditMode) {
+            if (formik.touched && Object.keys(formik.touched).length === 0 && Object.getPrototypeOf(formik.touched) === Object.prototype) {
+                if (formik.dirty) {
+                    if (formik.initialValues != formik.values) {
+                        isFormValidated(false);
+                    }
+                }
+            }
+        } else if (isFormFieldChange()) {
             isFormValidated(true);
         }
     };
