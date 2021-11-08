@@ -87,7 +87,7 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
     const handleCollapaseClick = (e: React.MouseEvent<HTMLButtonElement>, indexKey: any, row: any, key: any) => {
         e.stopPropagation();
         const { primaryKey } = props;
-        if (row[key]) {
+        if (!checkCountIsZero(row[key])) {
             props.getId !== undefined && props.getId(row[primaryKey]);
             if (indexKey === selectedIndexKey) {
                 setSelectedKey(null);
@@ -166,6 +166,30 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
         }
     };
 
+    const checkCountIsZero = (value: string) => {
+        try {
+            const extractedNumbers = value.toString().match(/\d/g);
+            if (extractedNumbers) {
+                if (Number(extractedNumbers?.join("")) <= 0) {
+                    return true;
+                }
+                return false;
+            }
+            return false;
+        } catch {
+            return false;
+        }
+    };
+
+    const setAccordianButtonStatus = (value: string, indexKey: any) => {
+        if (checkCountIsZero(value)) {
+            return 'empty';
+        } else {
+            return indexKey === selectedIndexKey ? 'active' : '';
+        }
+    };
+
+
     const getRowsData = () => {
         const keys = getKeys();
         const { primaryKey } = props;
@@ -210,7 +234,7 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
                                                 <Button
                                                     types="accordian"
                                                     aria-label="accordian"
-                                                    className={row[key] ? "active" : 'empty'}
+                                                    className={setAccordianButtonStatus(row[key], indexKey)}
                                                     onClick={(e) => handleCollapaseClick(e, indexKey, row, key)}
                                                     startIcon={props.headCells[index].icon ? <Icon component={props.headCells[index].icon} /> : undefined}
                                                 >
@@ -218,25 +242,12 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
                                                         row[key]
                                                     }
                                                 </Button> :
-                                                props.headCells[index].type === 'icon' ?
-                                                    renderIcon(row[key])
-                                                    :
-                                                    props.headCells[index].type === 'icons' ?
-                                                        renderIcons(key, row[key], props.headCells[index].align)
-                                                        :
-                                                        props.headCells[index].type === 'image' ?
-                                                            <Avatar sx={tableAvatarSX} src={row[key]} variant="square" />
-                                                            :
-                                                            props.headCells[index].type === 'images' ?
-                                                                renderImages(row[key])
-                                                                :
-                                                                props.headCells[index].type === 'dropdown' ?
-                                                                    renderSelect()
-                                                                    :
-                                                                    props.headCells[index].type === 'status' ?
-                                                                        renderStatus(props.headCells[index], row[key])
-                                                                        :
-                                                                        ""
+                                                props.headCells[index].type === 'icon' ? renderIcon(row[key]) :
+                                                    props.headCells[index].type === 'icons' ? renderIcons(key, row[key], props.headCells[index].align) :
+                                                        props.headCells[index].type === 'image' ? <Avatar sx={tableAvatarSX} src={row[key]} variant="square" /> :
+                                                            props.headCells[index].type === 'images' ? renderImages(row[key]) :
+                                                                props.headCells[index].type === 'dropdown' ? renderSelect() :
+                                                                    props.headCells[index].type === 'status' ? renderStatus(props.headCells[index], row[key]) : ""
                                     }
                                 </TableCell>
                             )}
