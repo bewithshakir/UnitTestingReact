@@ -1257,7 +1257,7 @@ export function AquaFuelIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element
 
 export function ParkingLotIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="238.854" height="196.56" viewBox="0 0 238.854 196.56" {...props}>
+    <svg width="238.854" height="196.56" viewBox="0 0 238.854 196.56" {...props}>
   <g id="Group_1839" data-name="Group 1839" transform="translate(-963.982 -417)">
     <g id="Group_1837" data-name="Group 1837" transform="translate(1044.445 454.448)">
       <path id="Path_941" data-name="Path 941" d="M266.853,373.693H183.212L182.85,241.51h83.641Z" transform="translate(-175.878 -215.486)" fill="#f7f7f7"/>
