@@ -90,27 +90,27 @@ export default function HorizontalBar (props: HorizontalBarProps) {
             className="breadcrubs-title"
             to="/"
             onClick={handleClick}>
-            Fuel Tax
+              {t("parkingLot.navBar.fuelTax")}
           </NavLink>
         </div>
         <div className="linkitem">
           <NavLink className="breadcrubs-title" to="/salesTax" onClick={handleClick}>
-            Sales Tax
+            {t("parkingLot.navBar.salesTax")}
           </NavLink>
         </div>
         <div className="linkitem">
           <NavLink className="breadcrubs-title" to="/cities" onClick={handleClick}>
-            OPIS Cities
+            {t("parkingLot.navBar.opisCities")}
           </NavLink>
         </div>
         <div className="linkitem">
           <NavLink className="breadcrubs-title" to="/productManagement" onClick={handleClick}>
-            Product Management
+            {t("parkingLot.navBar.productManagement")}
           </NavLink>
         </div>
         <div className="linkitem">
           <NavLink className="breadcrubs-title" to="/assetManagement" onClick={handleClick}>
-            Asset Management
+            {t("parkingLot.navBar.assetManagement")}
           </NavLink>
         </div>
       </>);
