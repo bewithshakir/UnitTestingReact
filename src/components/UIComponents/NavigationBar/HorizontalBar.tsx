@@ -172,7 +172,7 @@ export default function HorizontalBar (props: HorizontalBarProps) {
       <div className="app__header">
         <AppBar position="fixed" className="header" sx={{ width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px` }}>
           <Toolbar className="header__toolbar">
-            {version === "NavLinks" || version === "TaxNavLinks" ? null : (<Button
+            {version === "NavLinks" ? null : (<Button
               types="profile"
               aria-label="back button"
               onClick={handleBack}
