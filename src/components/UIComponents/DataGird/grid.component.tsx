@@ -44,7 +44,7 @@ interface GridComponentProps {
     InnerTableComponent?: any,
     searchTerm?: string,
     noDataMsg?: string,
-    showImg?: string
+    showImg?: any
 }
 
 

@@ -29,7 +29,7 @@ interface GridBodyProps {
     InnerTableComponent?: any;
     noDataMsg?: string,
     searchTerm?: string,
-    showImg?: string,
+    showImg?: any,
     onRowActionSelect?: (selectedValue: DataGridActionsMenuOption, row: any) => void,
     rowActionOptions?: DataGridActionsMenuOption[],
     handleCheckChange: (primaryId: string) => void;
