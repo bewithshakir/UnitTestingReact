@@ -26,7 +26,7 @@ export default function HorizontalBar (props: HorizontalBarProps) {
   const { t } = useTranslation();
   const version = useStore((state) => state.version);
   const history = useHistory();
-  const {pathname} = useLocation();
+  const { pathname } = useLocation();
   const selectedCustomerName = useAddedCustomerNameStore((state) => state.customerName);
   const showDialogBox = useShowConfirmationDialogBoxStore((state) => state.showDialogBox);
   const hideDialogBox = useShowConfirmationDialogBoxStore((state) => state.hideDialogBox);
@@ -40,7 +40,7 @@ export default function HorizontalBar (props: HorizontalBarProps) {
 
   const handleBack = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     event.preventDefault();
-    {isFormFieldChange? showDialogBox(true) : handleModelConfirm();}
+    { isFormFieldChange ? showDialogBox(true) : handleModelConfirm(); }
 
   };
 
@@ -51,21 +51,21 @@ export default function HorizontalBar (props: HorizontalBarProps) {
   const handleModelConfirm = () => {
     hideDialogBox(false);
     resetFormFieldValue(false);
-    if(pathname === '/customer/parkingLots/addLot'){ 
+    if (pathname === '/customer/parkingLots/addLot') {
       //temp solution
       history.push('/customer/parkingLots');
-    } if(pathname === '/addFuelTax'){
-       //temp solution
-       history.push('/taxes');
-    }else{
+    } if (pathname === '/addFuelTax') {
+      //temp solution
+      history.push('/taxes');
+    } else {
       props.onBack();
     }
   };
 
- const getHeaderText = () => {
-    if(history.location.pathname.includes('addCustomer')) {
+  const getHeaderText = () => {
+    if (history.location.pathname.includes('addCustomer')) {
       return "Add Customer";
-    } else if(history.location.pathname.includes('addFuelTax')) {
+    } else if (history.location.pathname.includes('addFuelTax')) {
       return "Add Fuel Tax";
     } else {
       return selectedCustomerName;
@@ -83,14 +83,14 @@ export default function HorizontalBar (props: HorizontalBarProps) {
   }
 
   function varsionNavLinks () {
-    if(pathname === '/taxes') {
+    if (pathname === '/taxes') {
       return (<>
         <div className="linkitem active">
           <NavLink
             className="breadcrubs-title"
             to="/"
             onClick={handleClick}>
-              {t("parkingLot.navBar.fuelTax")}
+            {t("parkingLot.navBar.fuelTax")}
           </NavLink>
         </div>
         <div className="linkitem">
@@ -142,6 +142,11 @@ export default function HorizontalBar (props: HorizontalBarProps) {
         <div className="linkitem">
           <NavLink className="breadcrubs-title" to="/invoices" onClick={handleClick}>
             Invoices
+          </NavLink>
+        </div>
+        <div className="linkitem">
+          <NavLink className="breadcrubs-title" to="#" onClick={handleClick}>
+            Wallets
           </NavLink>
         </div>
       </>);
