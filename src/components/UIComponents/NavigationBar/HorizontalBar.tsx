@@ -24,8 +24,8 @@ interface HorizontalBarProps {
 
 export default function HorizontalBar (props: HorizontalBarProps) {
   const { t } = useTranslation();
-  const version =  useStore((state)=>state.version);
-  const  history =  useHistory();
+  const version = useStore((state) => state.version);
+  const history = useHistory();
   const {pathname} = useLocation();
   const selectedCustomerName = useAddedCustomerNameStore((state) => state.customerName);
   const showDialogBox = useShowConfirmationDialogBoxStore((state) => state.showDialogBox);
@@ -54,15 +54,18 @@ export default function HorizontalBar (props: HorizontalBarProps) {
     if(pathname === '/customer/parkingLots/addLot'){ 
       //temp solution
       history.push('/customer/parkingLots');
+    } if(pathname === '/addFuelTax'){
+       //temp solution
+       history.push('/taxes');
     }else{
       props.onBack();
     }
   };
 
-   const getHeaderText = () => {
+ const getHeaderText = () => {
     if(history.location.pathname.includes('addCustomer')) {
       return "Add Customer";
-    } else if(history.location.pathname.includes('taxes')) {
+    } else if(history.location.pathname.includes('addFuelTax')) {
       return "Add Fuel Tax";
     } else {
       return selectedCustomerName;
@@ -80,39 +83,72 @@ export default function HorizontalBar (props: HorizontalBarProps) {
   }
 
   function varsionNavLinks () {
-    return (<>
-      <div className="linkitem active">
-        <NavLink
-          className="breadcrubs-title"
-          to="/"
-          onClick={handleClick}>
-          Customer List
-        </NavLink>
-      </div>
-      <div className="linkitem">
-        <NavLink className="breadcrubs-title" to="/parkinglots" onClick={handleClick}>
-          Parking Lots
-        </NavLink>
-      </div>
-      <div className="linkitem">
-        <NavLink className="breadcrubs-title" to="/vehicles" onClick={handleClick}>
-          Vehicles
-        </NavLink>
-      </div>
-      <div className="linkitem">
-        <NavLink className="breadcrubs-title" to="/users" onClick={handleClick}>
-          Users
-        </NavLink>
-      </div>
-      <div className="linkitem">
-        <NavLink className="breadcrubs-title" to="/invoices" onClick={handleClick}>
-          Invoices
-        </NavLink>
-      </div>
-    </>);
+    if(pathname === '/taxes') {
+      return (<>
+        <div className="linkitem active">
+          <NavLink
+            className="breadcrubs-title"
+            to="/"
+            onClick={handleClick}>
+              {t("parkingLot.navBar.fuelTax")}
+          </NavLink>
+        </div>
+        <div className="linkitem">
+          <NavLink className="breadcrubs-title" to="/salesTax" onClick={handleClick}>
+            {t("parkingLot.navBar.salesTax")}
+          </NavLink>
+        </div>
+        <div className="linkitem">
+          <NavLink className="breadcrubs-title" to="/cities" onClick={handleClick}>
+            {t("parkingLot.navBar.opisCities")}
+          </NavLink>
+        </div>
+        <div className="linkitem">
+          <NavLink className="breadcrubs-title" to="/productManagement" onClick={handleClick}>
+            {t("parkingLot.navBar.productManagement")}
+          </NavLink>
+        </div>
+        <div className="linkitem">
+          <NavLink className="breadcrubs-title" to="/assetManagement" onClick={handleClick}>
+            {t("parkingLot.navBar.assetManagement")}
+          </NavLink>
+        </div>
+      </>);
+    } else {
+      return (<>
+        <div className="linkitem active">
+          <NavLink
+            className="breadcrubs-title"
+            to="/"
+            onClick={handleClick}>
+            Customer List
+          </NavLink>
+        </div>
+        <div className="linkitem">
+          <NavLink className="breadcrubs-title" to="/parkinglots" onClick={handleClick}>
+            Parking Lots
+          </NavLink>
+        </div>
+        <div className="linkitem">
+          <NavLink className="breadcrubs-title" to="/vehicles" onClick={handleClick}>
+            Vehicles
+          </NavLink>
+        </div>
+        <div className="linkitem">
+          <NavLink className="breadcrubs-title" to="/users" onClick={handleClick}>
+            Users
+          </NavLink>
+        </div>
+        <div className="linkitem">
+          <NavLink className="breadcrubs-title" to="/invoices" onClick={handleClick}>
+            Invoices
+          </NavLink>
+        </div>
+      </>);
+    }
   }
 
-  const handleCustomerBack =  ()=>{
+  const handleCustomerBack = () => {
     hideDialogBox(false);
     resetFormFieldValue(false);
     history.push("/customer/addCustomer");
@@ -136,7 +172,7 @@ export default function HorizontalBar (props: HorizontalBarProps) {
       <div className="app__header">
         <AppBar position="fixed" className="header" sx={{ width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px` }}>
           <Toolbar className="header__toolbar">
-            {version=== "NavLinks" ? null : (<Button
+            {version === "NavLinks" ? null : (<Button
               types="profile"
               aria-label="back button"
               onClick={handleBack}
