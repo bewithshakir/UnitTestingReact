@@ -804,10 +804,15 @@ const AddCustomer: React.FC = () => {
                                                         width: "fit-content",
                                                         cursor: "pointer"
                                                     }}
-                                                    onClick={() => {
-                                                        if (formik.values.emergencyContact.length < maxContacts) {
-                                                            arrayHelpers.push({ firstName: "", lastName: "", email: "", phoneNumber: "" });
+                                                    onClick={(event) => {
+                                                        if(isDisabled) {
+                                                            event.preventDefault();
+                                                        } else {
+                                                            if (formik.values.emergencyContact.length < maxContacts) {
+                                                                arrayHelpers.push({ firstName: "", lastName: "", email: "", phoneNumber: "" });
+                                                            }
                                                         }
+                                                        
                                                     }}
                                                 >
                                                     <Add />
@@ -931,9 +936,13 @@ const AddCustomer: React.FC = () => {
                                                         width: "fit-content",
                                                         cursor: "pointer"
                                                     }}
-                                                    onClick={() => {
-                                                        if (formik.values.apContact.length < maxContacts) {
-                                                            arrayHelpers.push({ firstName: "", lastName: "", email: "", phoneNumber: "" });
+                                                    onClick={(event) => {
+                                                        if (isDisabled) {
+                                                            event.preventDefault();
+                                                        } else {
+                                                            if (formik.values.apContact.length < maxContacts) {
+                                                                arrayHelpers.push({ firstName: "", lastName: "", email: "", phoneNumber: "" });
+                                                            }
                                                         }
                                                     }}
                                                 >
