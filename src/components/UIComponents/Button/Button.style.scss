@@ -226,6 +226,21 @@ div{
         color: var(--Lightergray);
       }
     }
+    &-browse {
+      background-color: var(--White);
+      color: var(--Darkgray);
+      height: 37px;
+      width: 89px;
+      padding: 0.375rem 1.25rem;
+      border: 1px solid var(--Lightergray);
+      .MuiButton-startIcon{
+      color: var(--Gray);
+      }
+      &:disabled{
+      background-color: var(--Lightgray_2);
+      color: var(--Lightergray);
+      }
+    }
     &-accordian {
       background-color: var(--White);
       color: var(--Darkgray);

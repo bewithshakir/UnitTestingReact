@@ -4,7 +4,7 @@ import './Button.style.scss';
 
 type ButtonType = '' | 'primary' | 'secondary' | 'filter'
   | 'save' | 'edit' | 'delete' | 'delete2' | 'download' | 'cancel'
-  | 'accordian' | 'showmore' | 'sortby' | 'listmemu' | 'profile' | 'grid-action';
+  | 'accordian' | 'showmore' | 'sortby' | 'listmemu' | 'profile' | 'grid-action' | 'browse';
 interface ButtonFieldProps extends ButtonProps {
   types?: ButtonType;
 }

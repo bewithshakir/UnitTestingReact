@@ -1315,3 +1315,14 @@ export function ParkingLotIcon (props: React.SVGProps<SVGSVGElement>) {
     </svg>
   );
 }
+
+export function FileUploadIcon(props: React.SVGProps<SVGSVGElement>): JSX.Element {
+  return (
+    <svg width="20" height="20" viewBox="0 0 20 20" {...props}>
+      <g id="Group_1781" data-name="Group 1781" transform="translate(-471 -1466)">
+        <path id="Icon-Toggle-Upload" d="M4,18v2H20V18h2v4H2V18ZM12,3l6.065,6.058-1.413,1.415L13,6.826V18.845H11V6.61l-4.282,3.9L5.372,9.026Z" transform="translate(469 1464)" fill="#595959" />
+        <rect id="Rectangle_2209" data-name="Rectangle 2209" width="20" height="20" transform="translate(471 1466)" fill="none" />
+      </g>
+    </svg>
+  );
+}
