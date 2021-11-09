@@ -10,6 +10,7 @@ import { DateRange } from '@mui/lab/DateRangePicker';
 import { Button } from "../Button/Button.component";
 import { useTheme } from '../../../contexts/Theme/Theme.context';
 import { styled } from '@mui/system';
+import { useGetPaymentTypes } from "../../../pages/CustomerOnboarding/AddCustomer/queries";
 
 type DatePickerRange = DateRange<Date>;
 
@@ -28,12 +29,6 @@ const geoData = {
         { label: "kalol", value: "kalol" },
     ]
 };
-
-const paymentTypes = [
-    { label: "Invoice", value: "Invoice" },
-    { label: "Voyager", value: "Voyager" },
-    { label: "WEX", value: "wex" }
-];
 
 interface filterParamsProps {
     [key: string]: string[] | null[] | null | DatePickerRange
@@ -70,6 +65,7 @@ const timeValidation = (str: any) => {
 
 export const FilterContent: React.FC<InfoPanelProps> = ({ provideFilterParams, onClose }) => {
     const [formValuesSaved, setFormValuesSaved] = React.useState<filterForm | null>(null);
+    const paymentTypes = useGetPaymentTypes();
     const filterFormData = useCustomerFilterStore((state) => state.filterFormData);
     const setFormData = useCustomerFilterStore((state) => state.setFormData);
     const removeFormData = useCustomerFilterStore((state) => state.removeFormData);
@@ -227,7 +223,12 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ provideFilterParams, o
                             name="paymentType"
                             label="Settlement Type"
                             placeholder=""
-                            items={paymentTypes}
+                            items={paymentTypes.status === 'success'
+                            ? paymentTypes.data.data.map((pt: any) => ({
+                                label: pt.paymentTypeNm,
+                                value: pt.paymentTypeNm,
+                              }))
+                            : []}
                             onChange={(name, val) => handleSelect(name, val)}
                             value={formik.values.paymentType}
                             helperText={(formik.touched.paymentType && formik.errors.paymentType) ? formik.errors.paymentType : undefined}
