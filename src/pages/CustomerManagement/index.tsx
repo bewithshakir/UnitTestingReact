@@ -38,7 +38,7 @@ const Content: React.FC<ContentProps> = () => {
   const [info, setInfo] = React.useState({});
   const [searchTerm, setSearchTerm] = React.useState("");
   const [drawerOpen, setDrawerOpen] = React.useState(false);
-  const [sortOrder, setSortOrder] = React.useState<{ sortBy: string, order: string }>({ sortBy: "customerName", order: "asc" });
+  const [sortOrder, setSortOrder] = React.useState<{ sortBy: string, order: string }>({ sortBy: "date", order: "desc" });
   const [filterData, setFilterData] = React.useState<{ [key: string]: string[] }>({});
   const [custFilterPanelVisible, setCustFilterPanelVisible] = React.useState(false);
   const [customerId, setCustomerId] = React.useState('');
