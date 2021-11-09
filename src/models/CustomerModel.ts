@@ -1,9 +1,8 @@
 import moment from 'moment';
 import { useTranslation } from 'react-i18next';
 import { headerObj } from '../components/UIComponents/DataGird/grid.component';
-import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined';
-import { DeleteIcon, ExportIcon, ImportIcon, PositiveCricleIcon, AlertExclamationIcon } from '../assets/icons';
-
+import { DeleteIcon, ExportIcon, ImportIcon, PositiveCricleIcon, AlertExclamationIcon, ParkingLotIcon } from '../assets/icons';
+import { formatDateAsMMDDYYYY } from '../utils/DateHelpers';
 export interface SelectProps {
     label: string,
     value: string,
@@ -115,6 +114,15 @@ export default class CustomerModel {
         }];
     }
 
+    dataModel (data: any) {
+        return data.map((obj: any) => (
+            {
+                ...obj,
+                createdAt: formatDateAsMMDDYYYY(obj.createdDate)
+            }
+        ));
+    }
+
     fieldsToDisplay (): headerObj[] {
         return [
             { field: "customerName", label: "CUSTOMER NAME", type: 'text', sortable: true },
@@ -123,9 +131,9 @@ export default class CustomerModel {
             { field: "city", label: "CITY", type: 'text' },
             { field: "state", label: "STATE", type: 'text' },
             { field: "zipCode", label: "ZIP", type: 'text' },
-            { field: "totalLots", label: "LOTS", type: 'button', icon: LocationOnOutlinedIcon },
+            { field: "totalLots", label: "LOTS", type: 'button', icon: ParkingLotIcon },
             { field: "paymentType", label: "SETTLEMENT TYPE", type: 'text' },
-            { field: "createdAt", label: "DATE CREATED", type: 'text' },
+            { field: "createdDate", label: "DATE CREATED", type: 'text' },
         ];
     }
 

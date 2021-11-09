@@ -3,7 +3,7 @@ import React, { SyntheticEvent, useEffect } from "react";
 import { Button } from "../../components/UIComponents/Button/Button.component";
 import "./style.scss";
 import { useTranslation } from "react-i18next";
-import { PositiveCricleIcon, FilterIcon} from "../../assets/icons";
+import { PositiveCricleIcon, FilterIcon } from "../../assets/icons";
 import SortbyMenu from "../../components/UIComponents/Menu/SortbyMenu.component";
 import ActionsMenu from "../../components/UIComponents/Menu/ActionsMenu.component";
 import GridComponent from "../../components/UIComponents/DataGird/grid.component";
@@ -46,7 +46,7 @@ const Content: React.FC<ContentProps> = () => {
   const [infoPanelEditId, setInfoPanelEditId] = React.useState('');
   const [infoPanelName, setInfoPanelName] = React.useState('');
 
-  
+
 
 
 
@@ -67,16 +67,16 @@ const Content: React.FC<ContentProps> = () => {
     }
   }, [data]);
 
-  const createInfoObjForRightInfoPanel = (row:any) => {
+  const createInfoObjForRightInfoPanel = (row: any) => {
     setInfoPanelEditId(row.customerId);
     setInfoPanelName(row.customerName);
     const infoObj = {
-      'Customer ID':row.customerInputId,
+      'Customer ID': row.customerInputId,
       'Name': row.contactName,
       'Email': row.email,
       'Phone': maskPhoneNumber(row.phone),
       'Settlement Type': row.paymentType,
-      'Card Added': row.cardAdded ===  "Y"? <PositiveCricleIcon/>:row.cardAdded ===  "N"? 'Not yet assigned':'',
+      'Card Added': row.cardAdded === "Y" ? <PositiveCricleIcon /> : row.cardAdded === "N" ? 'Not yet assigned' : '',
       'Address': row.address,
       'City': row.city,
       'State': row.state,
@@ -140,7 +140,7 @@ const Content: React.FC<ContentProps> = () => {
     }
   };
 
-  const handleRowAction = (action: DataGridActionsMenuOption, row:any) => {
+  const handleRowAction = (action: DataGridActionsMenuOption, row: any) => {
     switch (action.action) {
       case ACTION_TYPES.EDIT:
         // perform action
@@ -226,7 +226,7 @@ const Content: React.FC<ContentProps> = () => {
 
           <GridComponent
             primaryKey='customerId'
-            rows={customerList}
+            rows={CustomerObj.dataModel(customerList)}
             header={headCells}
             isLoading={isFetching || isLoading}
             enableRowSelection
