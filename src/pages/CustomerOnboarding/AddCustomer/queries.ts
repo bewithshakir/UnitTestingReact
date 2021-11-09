@@ -65,8 +65,13 @@ export const useGetPaymentTypes = () => {
 };
 
 
-export const useCreateCustomer = () => {
-    return useMutation((payload: any) => createCustomer(payload));
+export const useCreateCustomer = (onError: any, onSuccess: any) => {
+    return useMutation((payload: any) =>
+        createCustomer(payload), {
+        onError,
+        onSuccess,
+        retry: false,
+    });
 };
 
 export const useEditCustomer = (customerId: string) => {
@@ -74,5 +79,5 @@ export const useEditCustomer = (customerId: string) => {
 };
 
 export const useGetCustomerData = (customerId: string, isTrigger: boolean) => {
-    return useQuery(["getCustomer", customerId, isTrigger], () => getCustomerData(customerId, isTrigger));
+    return useQuery(["getCustomer", customerId, isTrigger], () => getCustomerData(customerId, isTrigger), { retry: false });
 };
