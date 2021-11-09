@@ -92,6 +92,6 @@ export const useGetCustomerData = (customerId: string, isTrigger: boolean) => {
     return useQuery(["getCustomer", customerId, isTrigger], () => getCustomerData(customerId, isTrigger));
 };
   
-export const useGetCustomerFilterData = (payload:any)=>{ 
+export const useGetCustomerFilterData = (payload?:any)=>{ 
     return useQuery(['getCustomerFilterData', payload], ()=> getCustomerFilterData(payload));
 };

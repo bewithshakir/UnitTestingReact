@@ -159,7 +159,7 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ provideFilterParams, o
         cities: [],
         paymentTypes : []
       };
-      if(filterResponse.status==='success' &&  filterResponse.data &&  filterResponse.data.data) {
+      if(filterResponse.status==='success' &&  filterResponse.data?.data) {
         const responseData = filterResponse.data.data;
         returnObj.states= responseData.states.map((s:any)=>({ label: s, value: s}));
         returnObj.cities = responseData.cities.map((c:any)=>({label: c, value: c}));
