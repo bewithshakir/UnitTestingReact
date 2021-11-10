@@ -35,7 +35,7 @@ export default function MultiSelect(props: props) {
     
 
     const MultiValue = (props:any) => {
-        const {index ,getValue } = props;
+        const {index, getValue } = props;
         const value = getValue();
         const length = value.length;
         const abLength = length - 2 ;
