@@ -55,6 +55,21 @@ const getCustomerData = async (customerId: string, isTrigger: boolean) => {
     return data;
 };
 
+const getCustomerFilterData = async (filters?: { [k: string]: any }) => {
+    const query = new URLSearchParams();
+    if (filters) {
+        for (const [key, val] of Object.entries(filters)) {
+            query.append(key, Array.isArray(val) ? JSON.stringify(val) : val);
+        }
+    }
+    const options: AxiosRequestConfig = {
+        method: 'get',
+        url: `/api/customer-service/customers/filterData?${query.toString()}`
+    };
+    const { data } = await axios(options);
+    return data;
+};
+
 
 export const useGetFrequencies = () => {
     return useQuery(["getFrequencies"], () => getFrequencies());
@@ -80,4 +95,8 @@ export const useEditCustomer = (customerId: string) => {
 
 export const useGetCustomerData = (customerId: string, isTrigger: boolean) => {
     return useQuery(["getCustomer", customerId, isTrigger], () => getCustomerData(customerId, isTrigger), { retry: false });
+};
+
+export const useGetCustomerFilterData = (payload?: any) => {
+    return useQuery(['getCustomerFilterData', payload], () => getCustomerFilterData(payload));
 };
