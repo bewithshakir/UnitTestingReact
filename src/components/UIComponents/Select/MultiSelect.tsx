@@ -1,6 +1,6 @@
 import { FormikErrors } from 'formik';
 import { Fragment } from 'react';
-import Select, { components, DropdownIndicatorProps, OptionProps, ValueContainerProps } from 'react-select';
+import Select, { components, DropdownIndicatorProps, OptionProps} from 'react-select';
 import { FormHelperText, InputLabel, FormControl } from '@mui/material';
 import './SingleSelect.scss';
 import { ArrowDown, CheckedCheckboxIcon as Check, UncheckedCheckboxIcon as UnCheck } from '../../../assets/icons';
@@ -34,21 +34,21 @@ interface props {
 export default function MultiSelect(props: props) {
     
 
-    const ValueContainer = (props:ValueContainerProps<any>) => {
-        const { getValue, hasValue, children } = props;
+    const MultiValue = (props:any) => {
+        const {index ,getValue } = props;
         const value = getValue();
         const length = value.length;
         const abLength = length - 2 ;
 
-        return(
-            <components.ValueContainer {...props}>
-                {!hasValue && null}
+        if (index > 0) return null;
+
+        return(length > 0) ?
+                <div className="option-label">
                 {length === 1 && (value[0].label)}
                 {length === 2 && ([value[0].label, 'and', value[1].label].join(' '))}
-                {length > 2 && ([`${value[0].label},`,value[1].label, 'and', abLength, 'more'].join(' '))} 
-                {children}
-            </components.ValueContainer>
-        );
+                {length > 2 && ([`${value[0].label},`, value[1].label, 'and', abLength, 'more'].join(' '))}
+                </div> : <components.MultiValue {...props} />
+        ;
     };
 
 
@@ -93,7 +93,7 @@ export default function MultiSelect(props: props) {
                     options={props.items}
                     onChange={handleChange}
                     onBlur={props.onBlur}
-                    components={{ ValueContainer, ClearIndicator: () => null, IndicatorSeparator: () => null, Option, DropdownIndicator}}
+                    components={{ ClearIndicator: () => null, IndicatorSeparator: () => null, Option, DropdownIndicator, MultiValue}}
                     isSearchable={false}
                     hideSelectedOptions={false}
                     closeMenuOnSelect={false}

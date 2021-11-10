@@ -136,7 +136,7 @@
                 border-radius: 0px;
                 font-size: 14px;
                 &--menu-is-open{
-                    & .react-select__indicator{
+                    & .multi-select__indicator{
                         padding-left: 18px;
                         transform: rotate(180deg);
                     }
