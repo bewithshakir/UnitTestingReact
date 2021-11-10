@@ -143,6 +143,8 @@ const AddCustomer: React.FC = () => {
         setDisabled(true);
     };
     const { t } = useTranslation();
+    const [isGetMethodCalled, setGetMethodCalled] = useState(false);
+
     const [formStatus, setFormStatus] = useState<IFormStatus>({
         message: '',
         type: '',
@@ -155,7 +157,7 @@ const AddCustomer: React.FC = () => {
     const { data: editedCustomerData, mutate: editCustomer, isSuccess: isEditSuccess, isError: isEditError } = useEditCustomer(location.pathname === 'customer/viewCustomer/' ? location.pathname.split("/").pop() as string : addedCustomerId as string);
     const { data: frequencyList } = useGetFrequencies();
     const { data: paymentTypeList } = useGetPaymentTypes();
-    const { data: customerData, isSuccess: isGetSuccess, isError: isGetError } = useGetCustomerData(activeCustomerId, isTrigger);
+    const { data: customerData, isSuccess: isGetSuccess, isError: isGetError } = useGetCustomerData(activeCustomerId, isTrigger, isGetMethodCalled);
     const setCustomerIdCreated = useAddedCustomerIdStore((state) => state.setCustomerId);
     const setPageCustomerName = useAddedCustomerNameStore((state) => state.setCustomerName);
 
@@ -358,9 +360,11 @@ const AddCustomer: React.FC = () => {
 
     const disableButton = () => {
         if (isEditMode) {
+            // if edit button is clicked, form is filled with values from get req and below is condition for handling save button enable and dsiable
             if (formik.touched && Object.keys(formik.touched).length === 0 && Object.getPrototypeOf(formik.touched) === Object.prototype) {
                 if (formik.dirty) {
                     if (formik.initialValues != formik.values) {
+                        setGetMethodCalled(true);
                         return false;
                     }
                 }

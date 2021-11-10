@@ -45,14 +45,17 @@ const getPaymentTypes = async () => {
     return data;
 };
 
-const getCustomerData = async (customerId: string, isTrigger: boolean) => {
-    console.log("in get API call " + isTrigger);
-    const options: AxiosRequestConfig = {
-        method: 'get',
-        url: `/api/customer-service/customers/${customerId}?countryCode=us`
-    };
-    const { data } = await axios(options);
-    return data;
+const getCustomerData = async (customerId: string, isTrigger: boolean, isGetMethodCalled: boolean) => {
+    if(customerId != "" ) {    
+        console.log("in get API call " + isTrigger);
+        console.log("in get API call " + isGetMethodCalled);
+        const options: AxiosRequestConfig = {
+            method: 'get',
+            url: `/api/customer-service/customers/${customerId}?countryCode=us`
+        };
+        const { data } = await axios(options);
+        return data;
+    }
 };
 
 
@@ -73,6 +76,6 @@ export const useEditCustomer = (customerId: string) => {
     return useMutation((payload: any) => editCustomer(payload, customerId));
 };
 
-export const useGetCustomerData = (customerId: string, isTrigger: boolean) => {
-    return useQuery(["getCustomer", customerId, isTrigger], () => getCustomerData(customerId, isTrigger));
+export const useGetCustomerData = (customerId: string, isTrigger: boolean, isGetMethodCalled: boolean) => {
+    return useQuery(["getCustomer", customerId, isTrigger, isGetMethodCalled], () => getCustomerData(customerId, isTrigger, isGetMethodCalled));
 };
