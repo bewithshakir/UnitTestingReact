@@ -1,5 +1,3 @@
-/* eslint-disable no-debugger */
-/* eslint-disable no-console */
 import React, { useState, useEffect } from 'react';
 import { Add, FileCopy } from '@material-ui/icons';
 import { Box, Container, FormControl, FormControlLabel, FormGroup, Grid, Link, Typography } from '@mui/material';
@@ -52,7 +50,7 @@ const formStatusProps: IFormStatusProps = {
         type: 'Success',
     },
     duplicate: {
-        message: 'Email-id already exist. Please use different email-id.',
+        message: 'Customer Id already exist. Please use different Customer Id.',
         type: 'Error',
     },
     error: {
@@ -149,37 +147,41 @@ const AddCustomer: React.FC = () => {
         message: '',
         type: '',
     });
+
+    const onAddCustomerError = (err: any) => {
+        const { data } = err.response;
+        setAPIResponse(true);
+        setFormStatus({ message: data?.error?.message || formStatusProps.error.message, type: 'Error' });
+        formik.setSubmitting(false);
+        setTimeout(() => {
+            setAPIResponse(false);
+        }, 6000);
+    };
+
+    const onAddCustomerSuccess = () => {
+        setAPIResponse(true);
+        isFormValidated(false);
+        setFormStatus(formStatusProps.success);
+        setEditShown(true);
+        setSaveCancelShown(false);
+        setDisabled(true);
+        setActiveCustomerId(savedCustomerData?.data?.customer?.customerId.toString());
+        setTimeout(() => {
+            setAPIResponse(false);
+        }, 6000);
+    };
+
     const [activeCustomerId, setActiveCustomerId] = React.useState("");
     const [isTrigger, setIsTrigger] = useState(false);
     const [paymentTypes, setpaymentTypes] = useState([]);
     const [initialInvoiceFrequencies, setinitialInvoiceFrequencies] = useState([]);
-    const { data: savedCustomerData, mutate: addNewCustomer, isSuccess, isError } = useCreateCustomer();
+    const { data: savedCustomerData, mutate: addNewCustomer } = useCreateCustomer(onAddCustomerError, onAddCustomerSuccess);
     const { data: editedCustomerData, mutate: editCustomer, isSuccess: isEditSuccess, isError: isEditError } = useEditCustomer(location.pathname === 'customer/viewCustomer/' ? location.pathname.split("/").pop() as string : addedCustomerId as string);
     const { data: frequencyList } = useGetFrequencies();
     const { data: paymentTypeList } = useGetPaymentTypes();
     const { data: customerData, isSuccess: isGetSuccess, isError: isGetError } = useGetCustomerData(activeCustomerId, isTrigger, isGetMethodCalled);
     const setCustomerIdCreated = useAddedCustomerIdStore((state) => state.setCustomerId);
     const setPageCustomerName = useAddedCustomerNameStore((state) => state.setCustomerName);
-
-    useEffect(() => {
-        if (isSuccess) {
-            setAPIResponse(true);
-            setFormStatus(formStatusProps.success);
-            setEditShown(true);
-            setSaveCancelShown(false);
-            setActiveCustomerId(savedCustomerData?.data?.customer?.customerId.toString());
-        }
-        if (isError) {
-            setAPIResponse(true);
-            setFormStatus(formStatusProps.error);
-            setSaveCancelShown(false);
-        }
-        setTimeout(() => {
-            setAPIResponse(false);
-        }, 6000);
-        formik.resetForm({});
-
-    }, [savedCustomerData, isSuccess, isError]);
 
     useEffect(() => {
         if (isEditSuccess) {
@@ -211,7 +213,7 @@ const AddCustomer: React.FC = () => {
             setPageCustomerName(customerData?.data?.customer?.companyNm);
         }
         if (isGetError) {
-            console.log("Error in getting data");
+            // console.log("Error in getting data");
         }
     }, [customerData, isGetSuccess, isGetError]);
 
@@ -350,8 +352,7 @@ const AddCustomer: React.FC = () => {
     const isFormFieldChange = () => formik.dirty;
 
     function onClickBack () {
-        if (isFormFieldChange()) {
-            //handleModelToggle();
+        if (isFormFieldChange() && !isEditShown) {
             showDialogBox(true);
         } else {
             history.push('/');
@@ -401,7 +402,7 @@ const AddCustomer: React.FC = () => {
     const isFormValidated = useShowConfirmationDialogBoxStore((state) => state.setFormFieldValue);
 
     const handleFormDataChange = () => {
-        if(isEditMode) {
+        if (isEditMode) {
             if (formik.touched && Object.keys(formik.touched).length === 0 && Object.getPrototypeOf(formik.touched) === Object.prototype) {
                 if (formik.dirty) {
                     if (formik.initialValues != formik.values) {
@@ -409,7 +410,7 @@ const AddCustomer: React.FC = () => {
                     }
                 }
             }
-        } else if (isFormFieldChange()) {
+        } else if (isFormFieldChange() && !isEditShown) {
             isFormValidated(true);
         }
     };
@@ -810,14 +811,14 @@ const AddCustomer: React.FC = () => {
                                                         cursor: "pointer"
                                                     }}
                                                     onClick={(event) => {
-                                                        if(isDisabled) {
+                                                        if (isDisabled) {
                                                             event.preventDefault();
                                                         } else {
                                                             if (formik.values.emergencyContact.length < maxContacts) {
                                                                 arrayHelpers.push({ firstName: "", lastName: "", email: "", phoneNumber: "" });
                                                             }
                                                         }
-                                                        
+
                                                     }}
                                                 >
                                                     <Add />

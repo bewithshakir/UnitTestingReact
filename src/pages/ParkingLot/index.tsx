@@ -14,7 +14,7 @@ import { useHistory } from "react-router-dom";
 import { sortByOptions } from "./config";
 import { RightInfoPanel } from "../../components/UIComponents/RightInfoPanel/RightInfoPanel.component";
 import { Box, FormControl, Grid, Typography } from "@mui/material";
-import { HorizontalBarVersionState, useStore , useAddedCustomerIdStore, useAddedCustomerNameStore, useShowConfirmationDialogBoxStore} from "../../store";
+import { HorizontalBarVersionState, useStore, useAddedCustomerIdStore, useAddedCustomerNameStore, useShowConfirmationDialogBoxStore } from "../../store";
 import ParkingLotModel from "../../models/ParkingLotModel";
 import { DataGridActionsMenuOption } from "../../components/UIComponents/Menu/DataGridActionsMenu.component";
 import { ParkingLotNoDataIcon } from '../../assets/icons';
@@ -54,7 +54,7 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
   const setPageCustomerName = useAddedCustomerNameStore((state) => state.setCustomerName);
   const resetFormFieldValue = useShowConfirmationDialogBoxStore((state) => state.resetFormFieldValue);
 
-  useEffect(()=>{
+  useEffect(() => {
     resetFormFieldValue(false);
     setPageCustomerName('Customer Name');
   });
@@ -66,7 +66,7 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
   const drawerClose = () => {
     setDrawerOpen(false);
   };
-  
+
   const navigateToAddLot = () => {
     history.push("/customer/parkingLots/addLot");
   };
@@ -172,7 +172,7 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
               (searchTerm && !(isFetching || isLoading)) &&
               <Grid item display="flex" alignItems="center" paddingLeft={2.5}>
                 <Typography color="var(--Darkgray)" variant="h4" align="center" className="fw-bold">
-                  {parkingLotlist.length} results found
+                  {parkingLotlist.length} {parkingLotlist.length === 1 ? 'result(s)' : 'results'} found
                 </Typography>
               </Grid>
             }
@@ -204,7 +204,7 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
             primaryKey='deliveryLocationId'
             rows={parkingLotlist}
             header={headCells}
-            isLoading={isFetching|| isLoading}
+            isLoading={isFetching || isLoading}
             enableRowSelection
             enableRowAction
             getPages={fetchNextPage}

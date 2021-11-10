@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { useCustomerFilterStore } from "../../../store";
 import moment from "moment";
@@ -10,30 +10,9 @@ import { DateRange } from '@mui/lab/DateRangePicker';
 import { Button } from "../Button/Button.component";
 import { useTheme } from '../../../contexts/Theme/Theme.context';
 import { styled } from '@mui/system';
+import { useGetCustomerFilterData } from "../../../pages/CustomerOnboarding/AddCustomer/queries";
 
 type DatePickerRange = DateRange<Date>;
-
-const geoData = {
-    states: [
-        { label: "Texas", value: "Texas" },
-        { label: "TX", value: "TX" },
-        { label: "California", value: "CA" },
-        { label: "Gujarat", value: "Gujarat" },
-        { label: "Florida", value: "Florida" }
-    ],
-    cities: [
-        { label: "Houston", value: "Houston" },
-        { label: "Hoston", value: "Hoston" },
-        { label: "Saratoga", value: "Saratoga" },
-        { label: "kalol", value: "kalol" },
-    ]
-};
-
-const paymentTypes = [
-    { label: "Invoice", value: "Invoice" },
-    { label: "Voyager", value: "Voyager" },
-    { label: "WEX", value: "wex" }
-];
 
 interface filterParamsProps {
     [key: string]: string[] | null[] | null | DatePickerRange
@@ -73,6 +52,7 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ provideFilterParams, o
     const filterFormData = useCustomerFilterStore((state) => state.filterFormData);
     const setFormData = useCustomerFilterStore((state) => state.setFormData);
     const removeFormData = useCustomerFilterStore((state) => state.removeFormData);
+    const filterResponse = useGetCustomerFilterData({countryCode:'us'});
     const { theme } = useTheme();
     const { t } = useTranslation();
 
@@ -173,6 +153,21 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ provideFilterParams, o
         onReset: (values, { resetForm }) => clearFilter(values, resetForm),
     });
 
+    const filterData = useMemo(()=>{
+      const returnObj ={
+        states: [],
+        cities: [],
+        paymentTypes : []
+      };
+      if(filterResponse.status==='success' &&  filterResponse.data?.data) {
+        const responseData = filterResponse.data.data;
+        returnObj.states= responseData.states.map((s:any)=>({ label: s, value: s}));
+        returnObj.cities = responseData.cities.map((c:any)=>({label: c, value: c}));
+        returnObj.paymentTypes= responseData.settlementType.map((st:any)=>({label: st, value: st}));
+      }
+      return returnObj;
+    },[filterResponse]);
+
     return <div className="cust_filter_panel_content">
         <FormikProvider value={formik}>
             <form onSubmit={formik.handleSubmit} onReset={formik.handleReset}>
@@ -202,7 +197,7 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ provideFilterParams, o
                             label={"State".toLowerCase()}
                             placeholder=""
                             value={formik.values.state}
-                            items={geoData.states}
+                            items={filterData.states}
                             onChange={(name, val) => handleSelect(name, val)}
                             helperText={(formik.touched.state && formik.errors.state) ? formik.errors.state : undefined}
                             error={(formik.touched.state && formik.errors.state) ? true : false}
@@ -215,7 +210,7 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ provideFilterParams, o
                             label="City"
                             placeholder=""
                             value={formik.values.city}
-                            items={geoData.cities}
+                            items={filterData.cities}
                             onChange={(name, val) => handleSelect(name, val)}
                             helperText={(formik.touched.city && formik.errors.city) ? formik.errors.city : undefined}
                             error={(formik.touched.city && formik.errors.city) ? true : false}
@@ -227,7 +222,7 @@ export const FilterContent: React.FC<InfoPanelProps> = ({ provideFilterParams, o
                             name="paymentType"
                             label="Settlement Type"
                             placeholder=""
-                            items={paymentTypes}
+                            items={filterData.paymentTypes}
                             onChange={(name, val) => handleSelect(name, val)}
                             value={formik.values.paymentType}
                             helperText={(formik.touched.paymentType && formik.errors.paymentType) ? formik.errors.paymentType : undefined}
