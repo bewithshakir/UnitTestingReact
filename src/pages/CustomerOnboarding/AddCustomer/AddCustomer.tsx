@@ -132,9 +132,9 @@ const AddCustomer: React.FC = () => {
         });
         formik.setFieldValue("endDate", moment(dataToPopulate?.data?.customer.firstSettlementDt));
         checkBoxData.map((obj: any) => {
-            if (obj.indexOf("lot")) {
+            if (obj.indexOf("lot") > -1) {
                 formik.setFieldValue('lotLevel', true);
-            } else if (obj.indexOf("business")) {
+            } else if (obj.indexOf("business") > -1) {
                 formik.setFieldValue('businessLevel', true);
             } else {
                 formik.setFieldValue('vehicleLevel', true);
@@ -604,7 +604,7 @@ const AddCustomer: React.FC = () => {
                                         onChange={formik.setFieldValue}
                                         onBlur={() => { formik.setFieldTouched("paymentType"); formik.validateField("paymentType"); }}
                                         required
-                                        isDisabled={isDisabled}
+                                        isDisabled={isEditMode ? true : isDisabled}
                                     />
                                 </Grid>
                                 <Grid item xs={12} md={6} pl={2.5} pb={2.5}>
@@ -621,7 +621,7 @@ const AddCustomer: React.FC = () => {
                                         helperText={(formik.touched.endDate && formik.errors.endDate) ? formik.errors.endDate : undefined}
                                         error={(formik.touched.endDate && formik.errors.endDate) ? true : false}
                                         required
-                                        disabled={isDisabled}
+                                        disabled={isEditMode ? true: isDisabled}
                                     />
                                 </Grid>
                                 <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
@@ -637,7 +637,7 @@ const AddCustomer: React.FC = () => {
                                         onChange={formik.setFieldValue}
                                         onBlur={() => { formik.setFieldTouched("invoiceFrequency"); formik.validateField("invoiceFrequency"); }}
                                         required
-                                        isDisabled={isDisabled}
+                                        isDisabled={isEditMode ? true : isDisabled}
                                     />
                                 </Grid>
                                 <Grid item xs={12} md={6} pl={2.5} pb={2.5}>
@@ -649,6 +649,7 @@ const AddCustomer: React.FC = () => {
                                         error={(formik.touched.paymentTerm && formik.errors.paymentTerm) ? true : false}
                                         description=''
                                         {...formik.getFieldProps('paymentTerm')}
+                                        disabled={isDisabled}
                                     />
                                 </Grid>
                                 <Grid item md={12} mt={2} mb={1}>
