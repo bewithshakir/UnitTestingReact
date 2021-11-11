@@ -88,7 +88,7 @@ export default function SideBarDrawer() {
 
   const history = useHistory();
   function onClickBack() {
-    history.goBack();
+    history.push("/");
   }
 
   const drawerWidth = 64;

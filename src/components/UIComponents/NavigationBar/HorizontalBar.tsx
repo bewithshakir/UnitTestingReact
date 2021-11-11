@@ -51,7 +51,15 @@ export default function HorizontalBar (props: HorizontalBarProps) {
   const handleModelConfirm = () => {
     hideDialogBox(false);
     resetFormFieldValue(false);
-    props.onBack();
+    if (pathname == '/customer/parkingLots/addLot') {
+      history.goBack();
+    } else if (pathname == '/addFuelTax') {
+      history.goBack();
+      //temp solution
+      //history.push('/taxes');
+    } else {
+      props.onBack();
+    }
   };
 
   const getHeaderText = () => {
