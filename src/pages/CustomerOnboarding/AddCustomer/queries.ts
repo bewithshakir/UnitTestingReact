@@ -111,6 +111,6 @@ export const useGetCustomerFilterData = (payload?: any) => {
     return useQuery(['getCustomerFilterData', payload], () => getCustomerFilterData(payload));
 };
 
-export const useUploadContractFile = (customerId:string) => {
-    return useMutation((payload: any) => uploadContractFiles(payload, customerId));
-}
+export const useUploadContractFile = (customerId:string, onError: any) => {
+    return useMutation((payload: any) => uploadContractFiles(payload, customerId), { onError });
+};
