@@ -7,11 +7,13 @@ interface Props {
     title: string;
     content: string;
     open: boolean;
+    cancelBtnTitle?: string,
+    discardBtnTitle?: string,
     handleToggle: () => void;
     handleConfirm: () => void;
 }
 function DiscardChangesDialog (props: Props) {
-    const { title, content, open, handleToggle, handleConfirm } = props;
+    const { title, content, open, handleToggle, handleConfirm, cancelBtnTitle, discardBtnTitle } = props;
 
 
     return (
@@ -19,7 +21,7 @@ function DiscardChangesDialog (props: Props) {
             open={open}
             aria-labelledby="discard-changes-dialog-title"
             aria-describedby="discard-changes-dialog-description"
-            BackdropProps={{ style: { backgroundColor: "gray", opacity: 0.3} }}
+            BackdropProps={{ style: { backgroundColor: "gray", opacity: 0.3 } }}
         >
             <div className="discard-dialog-container">
                 <Typography color="var(--Darkgray)" variant="h2" component="h2" className="fw-bold" px={2.5} pt={2.5} >
@@ -32,10 +34,10 @@ function DiscardChangesDialog (props: Props) {
                 </DialogContent>
                 <DialogActions className="dialog-actions">
                     <Button variant="outlined" onClick={handleToggle} className="action-no">
-                        No
+                        {cancelBtnTitle || 'Cancel'}
                     </Button>
                     <Button color="default" onClick={handleConfirm} className="action-yes">
-                        Yes
+                        {discardBtnTitle || 'Discard'}
                     </Button>
                 </DialogActions>
             </div>

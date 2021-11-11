@@ -87,8 +87,8 @@
       "oldestToNew": "Oldest to New"
     },
     "discardchangesdialog": {
-      "title": "Discard the changes ?",
-      "content": "You have unsaved data which will be lost once you select discard or select cancel to save the data."
+      "title": "Discard the changes?",
+      "content": "Are you sure you want to discard the changes?"
     },
     "fileuploaddialog": {
       "title": "Error in File Upload",
