@@ -1,5 +1,4 @@
-/* eslint-disable no-debugger */
-/* eslint-disable no-console */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useMutation, useQuery } from "react-query";
 import { AxiosRequestConfig } from "axios";
 import axios from "../../../infrastructure/ApiHelper";
@@ -45,10 +44,8 @@ const getPaymentTypes = async () => {
     return data;
 };
 
-const getCustomerData = async (customerId: string, isTrigger: boolean, isGetMethodCalled: boolean) => {
-    if(customerId != "" ) {    
-        console.log("in get API call " + isTrigger);
-        console.log("in get API call " + isGetMethodCalled);
+const getCustomerData = async (customerId: string, isTrigger: boolean) => {
+    if (customerId != "") {
         const options: AxiosRequestConfig = {
             method: 'get',
             url: `/api/customer-service/customers/${customerId}?countryCode=us`
@@ -92,12 +89,23 @@ export const useCreateCustomer = (onError: any, onSuccess: any) => {
     });
 };
 
-export const useEditCustomer = (customerId: string) => {
-    return useMutation((payload: any) => editCustomer(payload, customerId));
+export const useEditCustomer = (customerId: string, onSuccess: any, onError: any) => {
+    return useMutation((payload: any) =>
+        editCustomer(payload, customerId), {
+        onSuccess,
+        onError,
+        retry: false
+    });
 };
 
-export const useGetCustomerData = (customerId: string, isTrigger: boolean, isGetMethodCalled: boolean) => {
-    return useQuery(["getCustomer", customerId, isTrigger, isGetMethodCalled], () => getCustomerData(customerId, isTrigger, isGetMethodCalled));
+export const useGetCustomerData = (customerId: string, isTrigger: boolean, onSuccess: any, onError: any) => {
+    return useQuery(["getCustomer", customerId, isTrigger, onSuccess, onError],
+        () => getCustomerData(customerId, isTrigger), {
+        onSuccess,
+        onError,
+        retry: false
+    });
+};
 
 export const useGetCustomerFilterData = (payload?: any) => {
     return useQuery(['getCustomerFilterData', payload], () => getCustomerFilterData(payload));
