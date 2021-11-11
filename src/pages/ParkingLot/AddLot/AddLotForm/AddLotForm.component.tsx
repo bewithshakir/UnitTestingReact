@@ -603,15 +603,15 @@ function AddLotForm(): React.ReactElement {
                                             <Grid item md={12} mt={2} mb={4}>
                                                 <Link
                                                     variant="body2"
-                                                    className="add-link"
+                                                    className="add-link disabled-text-link"
                                                     onClick={() => {
-                                                        if (formik.values.locationContact.length < 5) {
+                                                        if (formik.values.locationContact.length < 0) {
                                                             arrayHelpers.push({ firstName: "", lastName: "", email: "", phoneNumber: "" });
                                                         }
                                                     }}
                                                 >
-                                                    <span className="add-icon-span"><PlusIcon color={theme["--Primary"]} /></span>
-                                                    <Typography variant="h3" component="h3" className="fw-bold MuiTypography-h5-primary" mb={1}>
+                                                    <span className="add-icon-span"><PlusIcon color={theme["--Secondary-Background"]} /></span>
+                                                    <Typography variant="h3" component="h3" className="fw-bold MuiTypography-h5-primary disabled-text" mb={1}>
                                                         Add Additional Contact
                                                     </Typography>
                                                 </Link>
