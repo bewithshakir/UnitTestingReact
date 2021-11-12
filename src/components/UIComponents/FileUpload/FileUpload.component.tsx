@@ -1,20 +1,15 @@
-import React from 'react';
-import { useTranslation } from 'react-i18next';
 import { useDropzone } from 'react-dropzone';
-
-import { Button } from '../../../components/UIComponents/Button/Button.component';
-
 
 interface Props {
     onDrop: any,
-    acceptedFiles : string,
-    maxFiles: number,
-    maxSizeinBytes: number
+    acceptedFiles? : string,
+    maxFiles?: number,
+    maxSizeinBytes?: number,
+    children?: React.ReactNode;
 }
 
 function FileUploadComponent(props: Props) {
-    const { onDrop, acceptedFiles, maxFiles, maxSizeinBytes } = props;
-    const { t } = useTranslation();
+    const { onDrop, acceptedFiles, maxFiles, maxSizeinBytes, children } = props;
     const {getRootProps, getInputProps,} = useDropzone({
         onDrop,
         accept:acceptedFiles,
@@ -24,16 +19,10 @@ function FileUploadComponent(props: Props) {
 
     return (
         <>
-            <Button
-                types="browse"
-                aria-label="browse"
-                className="mr-4"
-            >
-                <div {...getRootProps()}>
-                    <input {...getInputProps()} />
-                    {t("buttons.browse")}
-                </div>
-            </Button>
+            <div {...getRootProps()}>
+                <input {...getInputProps()} />
+                {children}
+            </div>
         </>
     );
 }

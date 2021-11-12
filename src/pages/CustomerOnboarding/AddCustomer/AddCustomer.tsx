@@ -177,6 +177,9 @@ const AddCustomer: React.FC = () => {
         setValidFiles([]);
         setAPIResponse(true);
         setFormStatus(formStatusProps.fileuploadsuccess);
+        setTimeout(() => {
+            setAPIResponse(false);
+        }, 6000);
     };
 
     const onAddCustomerSuccess = (data: any) => {        
@@ -1063,7 +1066,15 @@ const AddCustomer: React.FC = () => {
                                                         acceptedFiles='.pdf,.doc,.docx'
                                                         maxFiles={1}
                                                         maxSizeinBytes={25000000}
-                                                    />
+                                                    >
+                                                        <Button
+                                                            types="browse"
+                                                            aria-label="browse"
+                                                            className="mr-4"
+                                                        >
+                                                            {t("buttons.browse")}
+                                                        </Button>
+                                                    </FileUploadComponent>
                                                 )
                                             }
                                         </div>
