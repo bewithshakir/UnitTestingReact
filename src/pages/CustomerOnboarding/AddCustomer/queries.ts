@@ -25,6 +25,16 @@ const editCustomer = async (payload: any, customerId: string) => {
     const { data } = await axios(options);
     return data;
 };
+const uploadContractFiles = async (payload: any, customerId:string) => {
+    const options: AxiosRequestConfig = {
+        method: 'post',
+        url: `/api/customer-service/customers/${customerId}/upload-file`,
+        data: payload,
+    };
+
+    const {data} = await axios(options);
+    return data;
+};
 
 
 const getFrequencies = async () => {
@@ -99,4 +109,8 @@ export const useGetCustomerData = (customerId: string, isTrigger: boolean) => {
 
 export const useGetCustomerFilterData = (payload?: any) => {
     return useQuery(['getCustomerFilterData', payload], () => getCustomerFilterData(payload));
+};
+
+export const useUploadContractFile = (customerId:string, onError: any, onSuccess: any) => {
+    return useMutation((payload: any) => uploadContractFiles(payload, customerId), { onError, onSuccess });
 };

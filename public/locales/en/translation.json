@@ -29,7 +29,8 @@
     "show more": "Show more",
     "sort by": "Sort by",
     "add lot": "Add Lot",
-    "add tax": "Add Tax"
+    "add tax": "Add Tax",
+    "browse": "Browse"
   },
   "menus": {
     "sortby": {
@@ -88,6 +89,10 @@
     "discardchangesdialog": {
       "title": "Discard the changes?",
       "content": "Are you sure you want to discard the changes?"
+    },
+    "fileuploaddialog": {
+      "title": "Error in File Upload",
+      "content": "The file name you are trying to upload is already exists. Do you want to overwrite the file ?"
     }
   },
   "parkingLot": {

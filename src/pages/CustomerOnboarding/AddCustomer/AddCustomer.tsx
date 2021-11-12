@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Add, FileCopy } from '@material-ui/icons';
-import { Box, Container, FormControl, FormControlLabel, FormGroup, Grid, Link, Typography } from '@mui/material';
+import { Box, Container, FormControl, FormControlLabel, FormGroup, Grid, IconButton, Link, Typography } from '@mui/material';
 import { FieldArray, FormikProvider, useFormik } from 'formik';
 import { useTranslation } from 'react-i18next';
 import { useHistory, useLocation } from 'react-router-dom';
+import { DeleteIcon, FileUploadIcon } from '../../../assets/icons';
 import { Button } from '../../../components/UIComponents/Button/Button.component';
 import Checkbox from '../../../components/UIComponents/Checkbox/Checkbox.component';
 import { DatePickerInput } from '../../../components/UIComponents/DatePickerInput/DatePickerInput.component';
@@ -13,13 +14,16 @@ import ToastMessage from '../../../components/UIComponents/ToastMessage/ToastMes
 import { getCountryCode } from '../../../navigation/utils';
 import CustomerModel, { AddCustomerForm, EmergencyContact } from '../../../models/CustomerModel';
 import AddCustomerValidationSchema from './validation';
-import { useCreateCustomer, useEditCustomer, useGetCustomerData, useGetFrequencies, useGetPaymentTypes } from './queries';
+import { useCreateCustomer, useEditCustomer, useGetCustomerData, useGetFrequencies, useGetPaymentTypes, useUploadContractFile } from './queries';
 import AutocompleteInput from '../../../components/UIComponents/GoogleAddressComponent/GoogleAutoCompleteAddress';
 import { EditIcon } from '../../../assets/icons';
 import "./AddCustomer.style.scss";
 import { useAddedCustomerIdStore, useAddedCustomerNameStore, useShowConfirmationDialogBoxStore } from '../../../store';
 import moment from 'moment';
 import { maxContacts } from '../../../utils/constants';
+import { formatFileSizeUnit } from '../../../utils/helperFunctions';
+import FileUploadErrorDialog from '../../../components/UIComponents/ConfirmationDialog/DiscardChangesDialog.component';
+import FileUploadComponent from '../../../components/UIComponents/FileUpload/FileUpload.component';
 
 const initialValues = new CustomerModel();
 
@@ -57,6 +61,10 @@ const formStatusProps: IFormStatusProps = {
         message: 'Something went wrong. Please try again.',
         type: 'Error',
     },
+    fileuploadsuccess:{
+        message: 'File Uploaded Successfully',
+        type: 'Success'
+    }
 };
 
 const AddCustomer: React.FC = () => {
@@ -156,7 +164,25 @@ const AddCustomer: React.FC = () => {
         }, 6000);
     };
 
-    const onAddCustomerSuccess = (data: any) => {
+    const onFileUploadError = (err: any) => {
+        const { data: { error } } = err.response;
+        if (error.details[0] === 'Data already exist') {
+            setShowConfirmationDialogBox(true);
+        } else {
+            setUploadErrMsg('Error found. Please delete and reupload the file');
+        }
+    };
+
+    const onFileUploadSuccess = () => {
+        setValidFiles([]);
+        setAPIResponse(true);
+        setFormStatus(formStatusProps.fileuploadsuccess);
+        setTimeout(() => {
+            setAPIResponse(false);
+        }, 6000);
+    };
+
+    const onAddCustomerSuccess = (data: any) => {        
         setAPIResponse(true);
         isFormValidated(false);
         setFormStatus(formStatusProps.success);
@@ -167,6 +193,9 @@ const AddCustomer: React.FC = () => {
         setTimeout(() => {
             setAPIResponse(false);
         }, 6000);
+        if (validFiles.length) {
+            uploadFile(false, data?.data?.customer);
+        }
         history.push(`/customer/viewCustomer/${data?.data?.customer?.customerId.toString()}`);
     };
 
@@ -182,6 +211,21 @@ const AddCustomer: React.FC = () => {
     const setCustomerIdCreated = useAddedCustomerIdStore((state) => state.setCustomerId);
     const setPageCustomerName = useAddedCustomerNameStore((state) => state.setCustomerName);
 
+    const { mutate: uploadContractFiles } = useUploadContractFile(activeCustomerId, onFileUploadError, onFileUploadSuccess);
+    const [validFiles,setValidFiles] = useState<File[]>([]);
+    const [uploadErroMsg,setUploadErrMsg] = useState('');
+    
+    const onDrop = useCallback((acceptedFiles: File[], rejectedFiles: Array<any>) => {
+        if (acceptedFiles.length) {
+            setUploadErrMsg('');
+            setValidFiles(acceptedFiles);
+        }
+        if(rejectedFiles.length){
+            setUploadErrMsg(rejectedFiles[0].errors[0].message);
+        }
+    }, []);
+
+
     useEffect(() => {
         if (isEditSuccess) {
             setAPIResponse(true);
@@ -193,6 +237,9 @@ const AddCustomer: React.FC = () => {
             setTimeout(() => {
                 setAPIResponse(false);
             }, 6000);
+            if(validFiles.length){
+                uploadFile();
+            }            
         }
         if (isEditError) {
             setAPIResponse(true);
@@ -238,11 +285,34 @@ const AddCustomer: React.FC = () => {
     const [isEditShown, setEditShown] = useState(true);
 
     const [isSavCancelShown, setSaveCancelShown] = useState(true);
+    const [showConfirmationDialogBox, setShowConfirmationDialogBox] = useState(false);
 
     const handleEditButtonClick = () => {
         setEditMode(true);
         setSaveCancelShown(true);
         setDisabled(false);
+    };
+
+    const handleDeleteFileClick = () =>{
+        setValidFiles([]);
+        setUploadErrMsg('');
+    };
+
+    const uploadFile = (isOverwriteFile: boolean = false, savedCustomer: (CustomerModel | any) = {}) => {       
+        let customer;
+        if(isEditMode){
+            customer = customerData.data.customer;
+        }else{
+            customer = savedCustomer;
+        }
+        const formData = new FormData();
+        const fileToUpload = validFiles[0];
+        formData.append('customerFile', fileToUpload);
+        formData.append('newCustomer', isEditMode ? 'n' : 'y');
+        formData.append('countryCode', customer.countryCd);
+        formData.append('companyNm', customer.companyNm);
+        formData.append('fileOverwrite', isOverwriteFile ? 'y' : 'n');
+        uploadContractFiles(formData);                
     };
 
     const editCustomerData = async (data: AddCustomerForm) => {
@@ -347,6 +417,16 @@ const AddCustomer: React.FC = () => {
         },
         enableReinitialize: true,
     });
+
+    const handleModelToggle = () => {
+        setShowConfirmationDialogBox(false);
+        setUploadErrMsg('Error found. Please delete and reupload the file');
+    };
+
+    const handleModelConfirm = () => {
+        uploadFile(true);
+        setShowConfirmationDialogBox(false);
+    };
 
     const isFormFieldChange = () => formik.dirty;
 
@@ -960,16 +1040,45 @@ const AddCustomer: React.FC = () => {
                                 />
 
                                 <Grid item md={12} mt={2} mb={1}>
-                                    <Typography color="var(--Darkgray)" variant="h4" gutterBottom className="fw-bold" mb={1}>
-                                        Import Contract (Optional)
+                                    <Typography variant="h4" component="h4" gutterBottom className="fw-bold" mb={1}>
+                                        Import Contract (Optional) (File format:PDF or DOC/ Max File size 25MB)
                                     </Typography>
                                 </Grid>
                                 <Grid item md={12} mt={2} mb={1}>
                                     <Box className="import-file">
-                                        <FileCopy />
-                                        <Typography color="var(--Darkgray)" variant="h4" display={"inline-flex"} className="fw-bold pl-3" mb={1}>
-                                            Import Contract (Optional)
-                                        </Typography>
+                                        <div className="import-text">
+                                            <>
+                                                {validFiles.length === 0 ? <FileUploadIcon /> : <FileCopy />}
+                                                <Typography variant="h4" component="h4" display={"inline-flex"} className="fw-bold pl-3" mb={1}>
+                                                    {validFiles.length === 0 ? 'Import Contract' : `${validFiles[0].name}  ${formatFileSizeUnit(validFiles[0].size)}`}
+                                                </Typography>
+                                            </>
+                                        </div>
+                                        {uploadErroMsg ? <span className='import-error fw-bold'>{uploadErroMsg}</span> : ''}
+                                        <div>
+                                            {
+                                                validFiles.length ? (
+                                                    <IconButton onClick={handleDeleteFileClick}>
+                                                        <DeleteIcon color={'var(--ToastMessageRed)'}/>
+                                                    </IconButton>
+                                                ) : (
+                                                    <FileUploadComponent
+                                                        onDrop={onDrop}
+                                                        acceptedFiles='.pdf,.doc,.docx'
+                                                        maxFiles={1}
+                                                        maxSizeinBytes={25000000}
+                                                    >
+                                                        <Button
+                                                            types="browse"
+                                                            aria-label="browse"
+                                                            className="mr-4"
+                                                        >
+                                                            {t("buttons.browse")}
+                                                        </Button>
+                                                    </FileUploadComponent>
+                                                )
+                                            }
+                                        </div>
                                     </Box>
                                 </Grid>
                                 <Grid item md={12} mt={2} mb={1}>
@@ -1000,6 +1109,15 @@ const AddCustomer: React.FC = () => {
                     </FormikProvider>
                 </Container>
             </Grid>
+            <FileUploadErrorDialog
+                title={t("customerManagement.fileuploaddialog.title")}
+                content={t("customerManagement.fileuploaddialog.content")}
+                open={showConfirmationDialogBox}
+                handleToggle={handleModelToggle}
+                handleConfirm={handleModelConfirm}
+                cancelBtnTitle='No'
+                discardBtnTitle = 'Yes'
+            />
         </>
     );
 };
