@@ -8,9 +8,17 @@ div{
       max-width: 950px;
       .import-file{
         display: flex;
+        justify-content: space-between;
         align-items: center;
         border: 1px solid var(--Lightgray);
         padding: .875rem 0.7rem;
+      }
+      .import-text{
+        display: flex;
+        align-items: center;
+      }
+      .import-error{
+        color: var(--ToastMessageRed);
       }
       .form-action-section{
         display: flex;
