@@ -25,14 +25,14 @@ export const routes = [
         version: "Breadcrumbs-Single",
         exact: true
       },
-      { 
-        path: "/customer/parkingLots",
+      {
+        path: "/customer/:customerId/parkingLots",
         component: lazy(() => import("./pages/ParkingLot")),
         version: "Breadcrumbs-Single",
         exact: true,
       },
       {
-        path: "/customer/parkingLots/addLot",
+        path: "/customer/:customerId/parkingLots/addLot",
         component: lazy(() => import('./pages/ParkingLot/AddLot/AddLotWrapper')),
         exact: false,
         version:'Breadcrumbs-Many'

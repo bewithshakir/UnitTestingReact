@@ -11,7 +11,7 @@ const customerOnboarding = memo(() => {
     const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
     setVersion("Breadcrumbs-Single");
     const {pathname} = useLocation();
-    const dis =  pathname.includes("/customer/parkingLots/addLot") ? "none" : "block";
+    const dis =  pathname.includes("addLot") ? "none" : "block";
     return (
         <Box display="flex" mt={8} ml={8}>
             <CssBaseline />

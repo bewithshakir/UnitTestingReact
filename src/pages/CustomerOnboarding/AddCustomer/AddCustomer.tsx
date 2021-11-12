@@ -156,24 +156,25 @@ const AddCustomer: React.FC = () => {
         }, 6000);
     };
 
-    const onAddCustomerSuccess = () => {
+    const onAddCustomerSuccess = (data: any) => {
         setAPIResponse(true);
         isFormValidated(false);
         setFormStatus(formStatusProps.success);
         setEditShown(true);
         setSaveCancelShown(false);
         setDisabled(true);
-        setActiveCustomerId(savedCustomerData?.data?.customer?.customerId.toString());
+        setActiveCustomerId(data?.data?.customer?.customerId.toString());
         setTimeout(() => {
             setAPIResponse(false);
         }, 6000);
+        history.push(`/customer/viewCustomer/${data?.data?.customer?.customerId.toString()}`);
     };
 
     const [activeCustomerId, setActiveCustomerId] = React.useState("");
     const [isTrigger, setIsTrigger] = useState(false);
     const [paymentTypes, setpaymentTypes] = useState([]);
     const [initialInvoiceFrequencies, setinitialInvoiceFrequencies] = useState([]);
-    const { data: savedCustomerData, mutate: addNewCustomer } = useCreateCustomer(onAddCustomerError, onAddCustomerSuccess);
+    const { mutate: addNewCustomer } = useCreateCustomer(onAddCustomerError, onAddCustomerSuccess);
     const { data: editedCustomerData, mutate: editCustomer, isSuccess: isEditSuccess, isError: isEditError } = useEditCustomer(location.pathname === 'customer/viewCustomer/' ? location.pathname.split("/").pop() as string : addedCustomerId as string);
     const { data: frequencyList } = useGetFrequencies();
     const { data: paymentTypeList } = useGetPaymentTypes();
