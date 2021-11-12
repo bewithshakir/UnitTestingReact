@@ -196,6 +196,7 @@ const AddCustomer: React.FC = () => {
         if (validFiles.length) {
             uploadFile(false, data?.data?.customer);
         }
+        history.push(`/customer/viewCustomer/${data?.data?.customer?.customerId.toString()}`);
     };
 
     const [activeCustomerId, setActiveCustomerId] = React.useState("");

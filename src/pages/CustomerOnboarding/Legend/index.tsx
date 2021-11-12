@@ -10,16 +10,37 @@ import "./style.scss";
 import { boxSystem, config } from './config';
 import { useTranslation } from 'react-i18next';
 import {  useHistory, useLocation } from 'react-router-dom';
-import { useAddedCustomerNameStore } from '../../../store';
+import { useAddedCustomerNameStore, useAddedCustomerIdStore } from '../../../store';
 
 const Legend: React.FC = () => {
   const { t } = useTranslation();
   const { pathname } = useLocation();
   const history = useHistory();
   const selectedCustomerName = useAddedCustomerNameStore((state) => state.customerName);
+  const customerId = useAddedCustomerIdStore((state) => state.customerId);
+
+  const getPath = (x: string) => {
+  if (customerId) {
+    return {
+      'addCustomer': `/customer/viewCustomer/${customerId}`,
+      'parkingLots': `/customer/${customerId}/parkingLots`,
+    }[x];
+  }
+  };
+
+  const isDisabled = (to : string) => {
+    if (to.includes('addCustomer') && (pathname.includes('addCustomer') || pathname.includes('viewCustomer') || pathname.includes('parkingLots'))) {
+      return false;
+    } else if (to.includes('parkingLots') && (pathname.includes('viewCustomer') || pathname.includes('parkingLots'))){
+      return false;
+    } else return true;
+  };
 
   const onItemClick = (to: string) => {
-    history.push(to);
+    const pathnameSegArr = to.split("/");
+    if(!isDisabled(to)){
+    history.push(getPath(pathnameSegArr[2]) || to);
+    }
   };
 
   const getSelectedLegendItem = (configItem: any) => {
@@ -28,6 +49,11 @@ const Legend: React.FC = () => {
       if (pathnameSegArr.indexOf("viewCustomer") > -1 || pathnameSegArr.indexOf("addCustomer") > -1 ) {
         return true;
       } 
+    } else if (configItem.to == "/customer/parkingLots") {
+      const pathnameSegArr = pathname.split("/");
+      if(pathnameSegArr.indexOf('parkingLots') > 0){
+        return true;
+      }
     } else {
       return pathname.includes(configItem.to);
     }
@@ -53,7 +79,7 @@ const Legend: React.FC = () => {
           {config.map((ConfigItem) => {
             return (
               <ListItem key={ConfigItem.index} onClick={() => onItemClick(ConfigItem.to)} >
-                <ListItemButton className={"listItemButton"} selected={getSelectedLegendItem(ConfigItem)} >
+                <ListItemButton className={"listItemButton"} disabled={isDisabled(ConfigItem.to)} selected={getSelectedLegendItem(ConfigItem)} >
                   <ListItemText className="listItemTextPrimary" primary={t(ConfigItem.label)} />
                   {ConfigItem.secondaryText && <ListItemText className="listItemTextSecondary" primary={0} />}
                 </ListItemButton>

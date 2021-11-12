@@ -68,7 +68,7 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
   };
 
   const navigateToAddLot = () => {
-    history.push("/customer/parkingLots/addLot");
+    history.push(`/customer/${customerId}/parkingLots/addLot`);
   };
 
   const onSortBySlected = (value: string) => {
