@@ -73,12 +73,27 @@ export default class TaxModel {
         ];
     }
 
+    dataModel (data: any){
+        return data.map((obj: any) => ({
+            ...obj,
+            productCount: obj.products?.length || 0
+        }));
+    }
 
     fieldsToDisplay (): headerObj[] {
         return [
             { field: "cityName", label: "CITY", type: 'text', align: 'left', sortable: true },
             { field: "stateName", label: "STATE", type: 'text',  align: 'left'},
-            { field: "totalLots", label: "PRODUCT", type: 'button',  align: 'left', icon: LocationOnOutlinedIcon }
+            { field: "productCount", label: "PRODUCT", type: 'button',  align: 'left', icon: LocationOnOutlinedIcon },
+            { field: "", label: "", type: 'text',  align: 'left'},
+            { field: "", label: "", type: 'text',  align: 'left'},
+            { field: "", label: "", type: 'text',  align: 'left'},
+            { field: "", label: "", type: 'text',  align: 'left'},
+            { field: "", label: "", type: 'text',  align: 'left'},
+            { field: "", label: "", type: 'text',  align: 'left'},
+            { field: "", label: "", type: 'text',  align: 'left'},
+            { field: "", label: "", type: 'text',  align: 'left'},
+            { field: "", label: "", type: 'text',  align: 'left'},
         ];
     }
 }

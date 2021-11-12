@@ -52,6 +52,10 @@ const TaxLandingContent = memo(() => {
     }
   }, [data]);
 
+  const openDrawer = () => {
+    // TODO
+  };
+
   const onSortBySlected = (value: string) => {
     let sortOrder;
     switch (value) {
@@ -126,13 +130,14 @@ const TaxLandingContent = memo(() => {
         <Grid container pt={2.5} display="flex" flexGrow={1}>
         <GridComponent
             primaryKey='fuelTaxId'
-            rows={fuelTaxList}
+            rows={TaxObj.dataModel(fuelTaxList)}
             header={headCells}
             isLoading={isFetching || isLoading}
             enableRowSelection = {false}
             enableRowAction
             getPages={fetchNextPage}
             searchTerm={searchTerm}
+            openDrawer={openDrawer}
             noDataMsg='Add Tax.'
           />
         </Grid>
