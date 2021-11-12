@@ -173,6 +173,12 @@ const AddCustomer: React.FC = () => {
         }
     };
 
+    const onFileUploadSuccess = () => {
+        setValidFiles([]);
+        setAPIResponse(true);
+        setFormStatus(formStatusProps.fileuploadsuccess);
+    };
+
     const onAddCustomerSuccess = (data: any) => {        
         setAPIResponse(true);
         isFormValidated(false);
@@ -201,7 +207,7 @@ const AddCustomer: React.FC = () => {
     const setCustomerIdCreated = useAddedCustomerIdStore((state) => state.setCustomerId);
     const setPageCustomerName = useAddedCustomerNameStore((state) => state.setCustomerName);
 
-    const {mutate:uploadContractFiles, isSuccess:uploadSuccess } = useUploadContractFile(activeCustomerId, onFileUploadError);
+    const { mutate: uploadContractFiles } = useUploadContractFile(activeCustomerId, onFileUploadError, onFileUploadSuccess);
     const [validFiles,setValidFiles] = useState<File[]>([]);
     const [uploadErroMsg,setUploadErrMsg] = useState('');
     
@@ -215,14 +221,6 @@ const AddCustomer: React.FC = () => {
         }
     }, []);
 
-
-    useEffect(()=>{
-        if(uploadSuccess){
-            setValidFiles([]);
-            setAPIResponse(true);
-            setFormStatus(formStatusProps.fileuploadsuccess);
-        }
-    },[uploadSuccess]);      
 
     useEffect(() => {
         if (isEditSuccess) {
@@ -259,7 +257,7 @@ const AddCustomer: React.FC = () => {
         if (isGetError) {
             // console.log("Error in getting data");
         }
-    }, [customerData, isGetSuccess, isGetError]);   
+    }, [customerData, isGetSuccess, isGetError]);
 
     useEffect(() => {
         if (frequencyList?.data.length) {
