@@ -7,10 +7,12 @@ div{
       margin: 0px;
       max-width: 950px;
       .import-file{
+        height: 50px;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        border: 1px solid var(--Lightgray);
+        border: 1px solid var(--Lightergray);
+        background-color: var(--Lightgray_4);
         padding: .875rem 0.7rem;
       }
       .import-text{
