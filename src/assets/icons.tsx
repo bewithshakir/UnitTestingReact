@@ -1326,3 +1326,22 @@ export function FileUploadIcon(props: React.SVGProps<SVGSVGElement>): JSX.Elemen
     </svg>
   );
 }
+
+export function OilCanIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      width="1em"
+      height="1em"
+      viewBox="0 0 20 20"
+      {...props}
+    >
+      <g data-name="Group 1988">
+        <path data-name="Rectangle 2260" fill="none" d="M0 0h20v20H0z" />
+        <path
+          d="M5 3h6.964L12 6h-2v2h1l2 1 6-4 1 3-5 6-2 3H3v-4l-3-2V6l5 2h2V6H5zm5.525 7H4.618L2 8.955v.973l3 2V15h6.93l1.406-2.109.128-.171 3.051-3.659-3.369 2.246z"
+          fill="currentColor"
+        />
+      </g>
+    </svg>
+  );
+}
