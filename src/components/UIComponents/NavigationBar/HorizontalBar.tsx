@@ -41,7 +41,6 @@ export default function HorizontalBar (props: HorizontalBarProps) {
   const handleBack = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     event.preventDefault();
     { isFormFieldChange ? showDialogBox(true) : handleModelConfirm(); }
-
   };
 
   const handleModelToggle = () => {

@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { Add, FileCopy } from '@material-ui/icons';
+import { FileCopy } from '@material-ui/icons';
 import { Box, Container, FormControl, FormControlLabel, FormGroup, Grid, IconButton, Link, Typography } from '@mui/material';
 import { FieldArray, FormikProvider, useFormik } from 'formik';
 import { useTranslation } from 'react-i18next';
+import { useTheme } from '../../../contexts/Theme/Theme.context';
 import { useHistory, useLocation } from 'react-router-dom';
 import { DeleteIcon, FileUploadIcon } from '../../../assets/icons';
 import { Button } from '../../../components/UIComponents/Button/Button.component';
@@ -16,7 +17,7 @@ import CustomerModel, { AddCustomerForm, EmergencyContact } from '../../../model
 import AddCustomerValidationSchema from './validation';
 import { useCreateCustomer, useEditCustomer, useGetCustomerData, useGetFrequencies, useGetPaymentTypes, useUploadContractFile } from './queries';
 import AutocompleteInput from '../../../components/UIComponents/GoogleAddressComponent/GoogleAutoCompleteAddress';
-import { EditIcon } from '../../../assets/icons';
+import { EditIcon, PlusIcon } from '../../../assets/icons';
 import "./AddCustomer.style.scss";
 import { useAddedCustomerIdStore, useAddedCustomerNameStore, useShowConfirmationDialogBoxStore } from '../../../store';
 import moment from 'moment';
@@ -151,6 +152,7 @@ const AddCustomer: React.FC = () => {
         setDisabled(true);
     };
     const { t } = useTranslation();
+    const { theme } = useTheme();
 
     const [formStatus, setFormStatus] = useState<IFormStatus>({
         message: '',
@@ -158,13 +160,17 @@ const AddCustomer: React.FC = () => {
     });
 
     const onAddCustomerError = (err: any) => {
-        const { data } = err.response;
-        setAPIResponse(true);
-        setFormStatus({ message: data?.error?.message || formStatusProps.error.message, type: 'Error' });
-        formik.setSubmitting(false);
-        setTimeout(() => {
-            setAPIResponse(false);
-        }, 6000);
+        try {
+            const { data } = err.response;
+            setAPIResponse(true);
+            setFormStatus({ message: data?.error?.message || formStatusProps.error.message, type: 'Error' });
+            formik.setSubmitting(false);
+            setTimeout(() => {
+                setAPIResponse(false);
+            }, 6000);
+        } catch(error) {
+            //console.log(error);
+        }
     };
 
     const onFileUploadError = (err: any) => {
@@ -197,11 +203,15 @@ const AddCustomer: React.FC = () => {
             setAPIResponse(false);
         }, 6000);
         formik.resetForm({});
+        if (validFiles.length) {
+            uploadFile(false, data?.data?.customer);
+        }
         history.push(`/customer/viewCustomer/${data?.data?.customer?.customerId.toString()}`);
     };
 
     const onEditCustomerSuccess = (data: any) => {
         setAPIResponse(true);
+        isFormValidated(false);
         setFormStatus(formStatusProps.editsuccess);
         setActiveCustomerId(data?.data?.customer?.customerId.toString());
         setEditShown(true);
@@ -215,19 +225,24 @@ const AddCustomer: React.FC = () => {
             uploadFile(false, data?.data?.customer);
         }
         history.push(`/customer/viewCustomer/${data?.data?.customer?.customerId.toString()}`);
-        if (validFiles.length) {
-            uploadFile();
-        }
     };
 
     const onEditCustomerError = (err: any) => {
-        const { data } = err.response;
-        setAPIResponse(true);
-        isFormValidated(false);
-        setFormStatus({ message: data?.error?.message || formStatusProps.error.message, type: 'Error' });
-        formik.setSubmitting(false);
-        setEditShown(true);
-        setSaveCancelShown(false);
+        try {
+            const { data } = err.response;
+            setAPIResponse(true);
+            isFormValidated(false);
+            setFormStatus({ message: data?.error?.message || formStatusProps.error.message, type: 'Error' });
+            formik.setSubmitting(false);
+            setEditShown(true);
+            setSaveCancelShown(false);
+            setTimeout(() => {
+                setAPIResponse(false);
+            }, 6000);
+            formik.resetForm({});
+        } catch (error) {
+            // console.log(error);
+        }
     };
 
     // const [activeCustomerId, setActiveCustomerId] = React.useState("");
@@ -316,13 +331,13 @@ const AddCustomer: React.FC = () => {
         setUploadErrMsg('');
     };
 
-    const uploadFile = (isOverwriteFile: boolean = false, savedCustomer: (CustomerModel | any) = {}) => {       
-        let customer;
-        if(isEditMode){
-            customer = customerData.data.customer;
-        }else{
-            customer = savedCustomer;
-        }
+    const uploadFile = (isOverwriteFile: boolean = false, customer: (CustomerModel | any) = {}) => {
+        // let customer;
+        // if(isEditMode){
+        //     customer = customerData.data.customer;
+        // }else{
+        //     customer = savedCustomer;
+        // }
         const formData = new FormData();
         const fileToUpload = validFiles[0];
         formData.append('customerFile', fileToUpload);
@@ -449,7 +464,7 @@ const AddCustomer: React.FC = () => {
     const isFormFieldChange = () => formik.dirty;
 
     function onClickBack () {
-        if (isFormFieldChange() && !isEditShown) {
+        if ((isFormFieldChange() && !isEditShown) || (isFormFieldChange() && isEditMode)) {
             showDialogBox(true);
         } else {
             history.push('/');
@@ -506,8 +521,9 @@ const AddCustomer: React.FC = () => {
                     }
                 }
             }
-        } else if (isFormFieldChange() && !isEditShown) {
-            isFormValidated(true);
+        } 
+        if (isFormFieldChange()) {
+            isFormValidated(true); 
         }
     };
     return (
@@ -760,7 +776,7 @@ const AddCustomer: React.FC = () => {
                                                 sx={{ margin: "0px", marginBottom: "1rem", fontWeight: "bold" }}
                                                 className="checkbox-field"
                                                 control={
-                                                    <Checkbox checked={formik.values.lotLevel} onChange={formik.handleChange} name="lotLevel" disabled={isDisabled} />
+                                                    <Checkbox checked={formik.values.lotLevel} onChange={formik.handleChange} name="lotLevel" disabled = { isEditMode? true: isDisabled } />
                                                 }
                                                 label={
                                                     <Typography color="var(--Darkgray)" variant="h4" className="fw-bold">
@@ -772,7 +788,7 @@ const AddCustomer: React.FC = () => {
                                                 sx={{ margin: "0px", marginBottom: "1rem", fontWeight: "bold" }}
                                                 className="checkbox-field"
                                                 control={
-                                                    <Checkbox checked={formik.values.businessLevel} onChange={formik.handleChange} name="businessLevel" disabled={isDisabled} />
+                                                    <Checkbox checked={formik.values.businessLevel} onChange={formik.handleChange} name="businessLevel" disabled = { isEditMode? true: isDisabled } />
                                                 }
                                                 label={
                                                     <Typography color="var(--Darkgray)" variant="h4" className="fw-bold">
@@ -784,7 +800,7 @@ const AddCustomer: React.FC = () => {
                                                 sx={{ margin: "0px", marginBottom: "1rem", fontWeight: "bold" }}
                                                 className="checkbox-field"
                                                 control={
-                                                    <Checkbox checked={formik.values.vehicleLevel} onChange={formik.handleChange} name="vehicleLevel" disabled={isDisabled} />
+                                                    <Checkbox checked={formik.values.vehicleLevel} onChange={formik.handleChange} name="vehicleLevel" disabled = { isEditMode? true: isDisabled } />
                                                 }
                                                 label={
                                                     <Typography color="var(--Darkgray)" variant="h4" className="fw-bold">
@@ -899,10 +915,10 @@ const AddCustomer: React.FC = () => {
                                             <Grid item md={12} mt={2} mb={4}>
                                                 <Link
                                                     variant="body2"
+                                                    className={isDisabled ? "disabled-text-link" : "add-link" }
                                                     sx={{
                                                         display: "flex",
                                                         alignItems: "center",
-                                                        color: "var(--Primary)",
                                                         width: "fit-content",
                                                         cursor: "pointer"
                                                     }}
@@ -914,11 +930,12 @@ const AddCustomer: React.FC = () => {
                                                                 arrayHelpers.push({ firstName: "", lastName: "", email: "", phoneNumber: "" });
                                                             }
                                                         }
-
                                                     }}
                                                 >
-                                                    <Add />
-                                                    <Typography variant="h3" className="fw-bold" mb={1}>
+                                                    <span className="add-icon-span">
+                                                        <PlusIcon color={isDisabled ? theme["--Secondary-Background"] : theme["--Primary"]} />
+                                                    </span>
+                                                    <Typography variant="h3" component="h3" className="fw-bold MuiTypography-h5-primary disabled-text" mb={1}>
                                                         ADD EMERGENCY CONTACT
                                                     </Typography>
                                                 </Link>
@@ -1031,10 +1048,10 @@ const AddCustomer: React.FC = () => {
                                             <Grid item md={12} mt={2} mb={4}>
                                                 <Link
                                                     variant="body2"
+                                                    className={isDisabled ? "disabled-text-link" : "add-link"}
                                                     sx={{
                                                         display: "flex",
                                                         alignItems: "center",
-                                                        color: "var(--Primary)",
                                                         width: "fit-content",
                                                         cursor: "pointer"
                                                     }}
@@ -1048,13 +1065,14 @@ const AddCustomer: React.FC = () => {
                                                         }
                                                     }}
                                                 >
-                                                    <Add />
-                                                    <Typography variant="h3" className="fw-bold" mb={1}>
+                                                    <span className="add-icon-span">
+                                                        <PlusIcon color={isDisabled ? theme["--Secondary-Background"] : theme["--Primary"]} />
+                                                    </span>
+                                                    <Typography variant="h3" component="h3" className="fw-bold MuiTypography-h5-primary disabled-text" mb={1}>
                                                         ADD AP CONTACT
                                                     </Typography>
                                                 </Link>
                                             </Grid>
-
                                         </React.Fragment>
                                     )}
                                 />
