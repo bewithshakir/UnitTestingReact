@@ -199,14 +199,14 @@ const AddCustomer: React.FC = () => {
         setSaveCancelShown(false);
         setDisabled(true);
         setActiveCustomerId(data?.data?.customer?.customerId.toString());
-        setTimeout(() => {
-            setAPIResponse(false);
-        }, 6000);
         formik.resetForm({});
         if (validFiles.length) {
             uploadFile(false, data?.data?.customer);
         }
-        history.push(`/customer/viewCustomer/${data?.data?.customer?.customerId.toString()}`);
+        setTimeout(() => {
+            setAPIResponse(false);
+            history.push(`/customer/viewCustomer/${data?.data?.customer?.customerId.toString()}`);
+        }, 6000);
     };
 
     const onEditCustomerSuccess = (data: any) => {
