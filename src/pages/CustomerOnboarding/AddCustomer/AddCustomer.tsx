@@ -278,6 +278,7 @@ const AddCustomer: React.FC = () => {
             setActiveCustomerId(data?.data?.customer?.customerId.toString());
             setCustomerIdCreated(data?.data?.customer?.customerId);
             setPageCustomerName(data?.data?.customer?.companyNm);
+            setCustomerData(data?.data?.customer);
         }
     };
 
@@ -288,6 +289,7 @@ const AddCustomer: React.FC = () => {
 
     const [isTrigger, setIsTrigger] = useState(false);
     const [paymentTypes, setpaymentTypes] = useState([]);
+    const [customerData, setCustomerData] = useState([]);
     const [initialInvoiceFrequencies, setinitialInvoiceFrequencies] = useState([]);
     const { mutate: addNewCustomer } = useCreateCustomer(onAddCustomerError, onAddCustomerSuccess);
     const { mutate: editCustomer } = useEditCustomer(location.pathname === 'customer/viewCustomer/' ? location.pathname.split("/").pop() as string : addedCustomerId as string, onEditCustomerSuccess, onEditCustomerError);
@@ -457,7 +459,7 @@ const AddCustomer: React.FC = () => {
     };
 
     const handleModelConfirm = () => {
-        uploadFile(true);
+        uploadFile(true, customerData);
         setShowConfirmationDialogBox(false);
     };
 
