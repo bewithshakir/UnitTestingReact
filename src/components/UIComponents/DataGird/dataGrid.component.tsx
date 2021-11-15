@@ -257,6 +257,7 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
                                         className="grid-cell-parent"
                                         component="th"
                                         scope="row"
+                                        align="right"
                                         onClick={() => props.isChildTable ? {} : openDrawer(row)}
                                     >
                                         <FormControl>
