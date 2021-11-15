@@ -1,7 +1,6 @@
 import moment from 'moment';
 import { useTranslation } from 'react-i18next';
-import { DeleteIcon, ExportIcon, ImportIcon } from '../assets/icons';
-import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined';
+import { DeleteIcon, ExportIcon, ImportIcon, OilCanIcon } from '../assets/icons';
 import { headerObj } from './../components/UIComponents/DataGird/grid.component';
 
 export interface SelectProps {
@@ -84,7 +83,7 @@ export default class TaxModel {
         return [
             { field: "cityName", label: "CITY", type: 'text', align: 'left', sortable: true },
             { field: "stateName", label: "STATE", type: 'text',  align: 'left'},
-            { field: "productCount", label: "PRODUCT", type: 'button',  align: 'left', icon: LocationOnOutlinedIcon },
+            { field: "productCount", label: "PRODUCT", type: 'button',  align: 'left', icon: OilCanIcon },
             { field: "", label: "", type: 'text',  align: 'left'},
             { field: "", label: "", type: 'text',  align: 'left'},
             { field: "", label: "", type: 'text',  align: 'left'},
