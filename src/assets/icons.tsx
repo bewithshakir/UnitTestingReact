@@ -1339,7 +1339,7 @@ export function OilCanIcon(props: React.SVGProps<SVGSVGElement>) {
         <path data-name="Rectangle 2260" fill="none" d="M0 0h20v20H0z" />
         <path
           d="M5 3h6.964L12 6h-2v2h1l2 1 6-4 1 3-5 6-2 3H3v-4l-3-2V6l5 2h2V6H5zm5.525 7H4.618L2 8.955v.973l3 2V15h6.93l1.406-2.109.128-.171 3.051-3.659-3.369 2.246z"
-          fill="#595959"
+          fill="currentColor"
         />
       </g>
     </svg>
