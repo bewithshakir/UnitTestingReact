@@ -1,3 +1,4 @@
+/* eslint-disable no-empty */
 import React, { useState, useEffect, useCallback } from 'react';
 import { FileCopy } from '@material-ui/icons';
 import { Box, Container, FormControl, FormControlLabel, FormGroup, Grid, IconButton, Link, Typography } from '@mui/material';
@@ -169,7 +170,7 @@ const AddCustomer: React.FC = () => {
                 setAPIResponse(false);
             }, 6000);
         } catch(error) {
-            //console.log(error);
+            
         }
     };
 
@@ -241,21 +242,9 @@ const AddCustomer: React.FC = () => {
             }, 6000);
             formik.resetForm({});
         } catch (error) {
-            // console.log(error);
+
         }
     };
-
-    // const [activeCustomerId, setActiveCustomerId] = React.useState("");
-    // const [isTrigger, setIsTrigger] = useState(false);
-    // const [paymentTypes, setpaymentTypes] = useState([]);
-    // const [initialInvoiceFrequencies, setinitialInvoiceFrequencies] = useState([]);
-    // const { mutate: addNewCustomer } = useCreateCustomer(onAddCustomerError, onAddCustomerSuccess);
-    // const { data: editedCustomerData, mutate: editCustomer, isSuccess: isEditSuccess, isError: isEditError } = useEditCustomer(location.pathname === 'customer/viewCustomer/' ? location.pathname.split("/").pop() as string : addedCustomerId as string);
-    // const { data: frequencyList } = useGetFrequencies();
-    // const { data: paymentTypeList } = useGetPaymentTypes();
-    // const { data: customerData, isSuccess: isGetSuccess, isError: isGetError } = useGetCustomerData(activeCustomerId, isTrigger);
-    // const setCustomerIdCreated = useAddedCustomerIdStore((state) => state.setCustomerId);
-    // const setPageCustomerName = useAddedCustomerNameStore((state) => state.setCustomerName);
 
     const { mutate: uploadContractFiles } = useUploadContractFile(activeCustomerId, onFileUploadError, onFileUploadSuccess);
     const [validFiles,setValidFiles] = useState<File[]>([]);
@@ -334,12 +323,6 @@ const AddCustomer: React.FC = () => {
     };
 
     const uploadFile = (isOverwriteFile: boolean = false, customer: (CustomerModel | any) = {}) => {
-        // let customer;
-        // if(isEditMode){
-        //     customer = customerData.data.customer;
-        // }else{
-        //     customer = savedCustomer;
-        // }
         const formData = new FormData();
         const fileToUpload = validFiles[0];
         formData.append('customerFile', fileToUpload);
