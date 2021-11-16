@@ -33,4 +33,25 @@ div{
     .right-float{
       float:right;
     }
+    .add-icon-span{
+        margin: 2px 5px 0px 0px;
+      }
+    .add-link {
+      color: var(--Primary);
+    }
+    .disabled-text-link{
+      display: "flex";
+        text-decoration-color: var(--Secondary-Background);
+        cursor: default;
+        &:hover{
+          text-decoration-color: var(--Secondary-Background);
+          cursor: default;
+        }
+        h3{
+          color:  var(--Secondary-Background);
+        }
+      }
+      .MuiTypography-h3{
+        color:var(--Primary);
+      }
 }
