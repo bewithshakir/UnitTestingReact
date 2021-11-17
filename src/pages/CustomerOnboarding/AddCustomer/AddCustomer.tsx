@@ -1064,7 +1064,7 @@ const AddCustomer: React.FC = () => {
 
                                 <Grid item md={12} mt={2} mb={1}>
                                     <Typography variant="h4" component="h4" gutterBottom className="fw-bold" mb={1}>
-                                        Import Contract (Optional) (File format:PDF or DOC/ Max File size 25MB)
+                                        Import Contract (Optional) <span className="fw-normal">(File format:PDF or DOC/ Max File size 25MB)</span>
                                     </Typography>
                                 </Grid>
                                 <Grid item md={12} mt={2} mb={1}>
