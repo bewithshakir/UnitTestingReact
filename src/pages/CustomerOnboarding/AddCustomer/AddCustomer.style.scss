@@ -7,10 +7,12 @@ div{
       margin: 0px;
       max-width: 950px;
       .import-file{
+        height: 50px;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        border: 1px solid var(--Lightgray);
+        border: 1px solid var(--Lightergray);
+        background-color: var(--Lightgray_4);
         padding: .875rem 0.7rem;
       }
       .import-text{
@@ -33,4 +35,25 @@ div{
     .right-float{
       float:right;
     }
+    .add-icon-span{
+        margin: 2px 5px 0px 0px;
+      }
+    .add-link {
+      color: var(--Primary);
+    }
+    .disabled-text-link{
+      display: "flex";
+        text-decoration-color: var(--Secondary-Background);
+        cursor: default;
+        &:hover{
+          text-decoration-color: var(--Secondary-Background);
+          cursor: default;
+        }
+        h3{
+          color:  var(--Secondary-Background);
+        }
+      }
+      .MuiTypography-h3{
+        color:var(--Primary);
+      }
 }

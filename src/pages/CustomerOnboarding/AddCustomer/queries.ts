@@ -1,5 +1,4 @@
-/* eslint-disable no-debugger */
-/* eslint-disable no-console */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useMutation, useQuery } from "react-query";
 import { AxiosRequestConfig } from "axios";
 import axios from "../../../infrastructure/ApiHelper";
@@ -56,13 +55,14 @@ const getPaymentTypes = async () => {
 };
 
 const getCustomerData = async (customerId: string, isTrigger: boolean) => {
-    console.log("in get API call " + isTrigger);
-    const options: AxiosRequestConfig = {
-        method: 'get',
-        url: `/api/customer-service/customers/${customerId}?countryCode=us`
-    };
-    const { data } = await axios(options);
-    return data;
+    if (customerId != "") {
+        const options: AxiosRequestConfig = {
+            method: 'get',
+            url: `/api/customer-service/customers/${customerId}?countryCode=us`
+        };
+        const { data } = await axios(options);
+        return data;
+    }
 };
 
 const getCustomerFilterData = async (filters?: { [k: string]: any }) => {
@@ -99,12 +99,22 @@ export const useCreateCustomer = (onError: any, onSuccess: any) => {
     });
 };
 
-export const useEditCustomer = (customerId: string) => {
-    return useMutation((payload: any) => editCustomer(payload, customerId));
+export const useEditCustomer = (customerId: string, onSuccess: any, onError: any) => {
+    return useMutation((payload: any) =>
+        editCustomer(payload, customerId), {
+        onSuccess,
+        onError,
+        retry: false
+    });
 };
 
-export const useGetCustomerData = (customerId: string, isTrigger: boolean) => {
-    return useQuery(["getCustomer", customerId, isTrigger], () => getCustomerData(customerId, isTrigger), { retry: false });
+export const useGetCustomerData = (customerId: string, isTrigger: boolean, onSuccess: any, onError: any) => {
+    return useQuery(["getCustomer", customerId, isTrigger, onSuccess, onError],
+        () => getCustomerData(customerId, isTrigger), {
+        onSuccess,
+        onError,
+        retry: false
+    });
 };
 
 export const useGetCustomerFilterData = (payload?: any) => {
