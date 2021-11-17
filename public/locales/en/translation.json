@@ -100,13 +100,21 @@
       "paymentCompleted": "Payment Completed",
       "paymentInProgress": "Payment In Progress",
       "recentlyAddedLots": "Recently Added Lots"
-    },
+    }
+  },
+  "taxes": {
     "navBar": {
       "fuelTax": "Fuel Tax",
       "salesTax": "Sales Tax",
       "opisCities": "OPIS Cities",
       "productManagement": "Product Management",
       "assetManagement": "Asset Management"
+    },
+    "fuelTax": {
+      "sortBy": {
+        "cityname_atoz": "City Name A-Z",
+        "cityname_ztoa": "City Name Z-A"
+      }
     }
   }
 }

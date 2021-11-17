@@ -42,8 +42,13 @@ export default function SortbyMenu (props: SortbyMenuProps) {
   };
 
   const handleMenuItemClick = (event: React.MouseEvent<HTMLElement>, index: number) => {
-    setSelectedIndex(index);
-    onSelect(options[index]);
+    if (selectedIndex === index) {
+      setSelectedIndex(-1);
+      onSelect("");
+    } else {
+      setSelectedIndex(index);
+      onSelect(options[index]);
+    }
     setOpen(false);
   };
 

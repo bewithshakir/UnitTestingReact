@@ -1,6 +1,4 @@
 export const sortByOptions = [
-    "customerManagement.sortBy.atoz",
-    "customerManagement.sortBy.ztoa",
-    "customerManagement.sortBy.newestToOldest",
-    "customerManagement.sortBy.oldestToNew",
-  ];
+  "taxes.fuelTax.sortBy.cityname_atoz",
+  "taxes.fuelTax.sortBy.cityname_ztoa",
+];
