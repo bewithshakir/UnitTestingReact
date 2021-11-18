@@ -39,7 +39,7 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
   const [sortOrder, setSortOrder] = React.useState<{ sortBy: string, order: string }>({ sortBy: "deliveryLocationNm", order: "asc" });
   const [filterData, setFilterData] = React.useState<{ [key: string]: string[] }>({});
   const [custFilterPanelVisible, setCustFilterPanelVisible] = React.useState(false);
-  const [parkingLotlist, setCustomerList] = React.useState([]);
+  const [parkingLotlist, setParkingLotList] = React.useState([]);
   const customerId = useAddedCustomerIdStore((state) => state.customerId);
 
   const { t } = useTranslation();
@@ -98,7 +98,7 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
       data?.pages?.forEach((item: any) => {
         list.push(...item.data.lots);
       });
-      setCustomerList(list);
+      setParkingLotList(list);
     }
   }, [data]);
   const handleCustFilterPanelOpen = () => {
