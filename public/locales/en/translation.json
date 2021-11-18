@@ -68,7 +68,12 @@
     "buttons": {
       "apply": "Apply",
       "clear all": "Clear All"
-    }
+    },
+    "from date": "From Date",
+    "to date": "To Date",
+    "state": "State",
+    "city": "City",
+    "settlement type": "Settlement Type"
   },
   "legend": {
     "customerName": "Customer Name",
