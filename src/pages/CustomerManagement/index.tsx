@@ -1,4 +1,3 @@
-
 import React, { SyntheticEvent, useEffect } from "react";
 import { Button } from "../../components/UIComponents/Button/Button.component";
 import "./style.scss";
@@ -12,7 +11,7 @@ import { useCustomers } from "./queries";
 import SearchInput from "../../components/UIComponents/SearchInput/SearchInput";
 import { Add } from "@mui/icons-material";
 import { useHistory } from "react-router-dom";
-import { sortByOptions } from "./config";
+import { filterByFields, sortByOptions } from "./config";
 import { RightInfoPanel } from "../../components/UIComponents/RightInfoPanel/RightInfoPanel.component";
 import { Box, FormControl, Grid, Typography } from "@mui/material";
 import { HorizontalBarVersionState, useStore } from "../../store";
@@ -158,7 +157,9 @@ const Content: React.FC<ContentProps> = () => {
 
   const handleCustFilterPanelClose = () => setCustFilterPanelVisible(false);
 
-  const getFilterParams = (filterObj: { [key: string]: string[] }) => setFilterData(filterObj);
+  const getFilterParams = (filterObj: { [key: string]: string[] }) => {
+    setFilterData(filterObj);
+  };
 
   return (
     <Box display="flex" mt={8} ml={8}>
@@ -241,7 +242,12 @@ const Content: React.FC<ContentProps> = () => {
             noDataMsg='Add Customer by clicking on the " Add Customer" button.'
           />
 
-          <RightInfoPanel panelType="customer-filter" open={custFilterPanelVisible} headingText={"Filters"} provideFilterParams={getFilterParams} onClose={handleCustFilterPanelClose} />
+          <RightInfoPanel panelType="customer-filter"
+            open={custFilterPanelVisible} headingText={"Filters"}
+            provideFilterParams={getFilterParams} onClose={handleCustFilterPanelClose}
+            fields={filterByFields}
+            storeKey={'customerFilter'}
+          />
           <RightInfoPanel panelType="info-view" open={drawerOpen} headingText={infoPanelName} info={info} idStrForEdit={infoPanelEditId} nameStrForEdit={infoPanelName} onClose={drawerClose} />
         </Grid>
       </Grid>
