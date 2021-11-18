@@ -96,6 +96,7 @@
     }
   },
   "parkingLot": {
+    "search": "Parking Lot Name",
     "sortBy": {
       "paymentCompleted": "Payment Completed",
       "paymentInProgress": "Payment In Progress",
