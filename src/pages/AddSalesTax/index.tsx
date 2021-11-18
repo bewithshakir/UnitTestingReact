@@ -115,14 +115,15 @@ const AddSalesTax = memo(()=> {
         return null;
     };
 
-    const showDialogBox = useShowConfirmationDialogBoxStore((state) => state.showDialogBox);
-    const isFormFieldChange = () => formik.dirty;
+    // const showDialogBox = useShowConfirmationDialogBoxStore((state) => state.showDialogBox);
+    // const isFormFieldChange = () => formik.dirty;
     function onClickBack () {
-        if ((isFormFieldChange())) {
+        /* if ((isFormFieldChange())) {
             showDialogBox(true);
         } else {
             history.push('/');
-        }
+        } */
+        history.push('/');
     }
     const disableButton = () => {
         return (!formik.isValid || !formik.dirty) || formik.isSubmitting;
