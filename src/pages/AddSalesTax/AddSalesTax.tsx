@@ -13,7 +13,7 @@ import Input from '../../components/UIComponents/Input/Input';
 import { Button } from '../../components/UIComponents/Button/Button.component';
 import {useAddSalesTax} from './queries';
 import ToastMessage from '../../components/UIComponents/ToastMessage/ToastMessage.component';
-import { useShowConfirmationDialogBoxStore } from '../../store';
+// import { useShowConfirmationDialogBoxStore } from '../../store';
 
 const initialValues = new SalesTaxModel();
 
@@ -46,7 +46,7 @@ const formStatusProps: IFormStatusProps = {
 
 const AddSalesTax = memo(()=> {
     const [apiResposneState, setAPIResponse] = useState(false);
-    const [isDisabled, setDisabled] = useState(false);
+    // const [isDisabled, setDisabled] = useState(false);
     // const [isEditMode, setEditMode] = useState(false);
     const history = useHistory();
     const { t } = useTranslation();
@@ -55,9 +55,9 @@ const AddSalesTax = memo(()=> {
         message: '',
         type: '',
     });
-    const onAddSalesTaxSuccess = (data: any) => {        
+    const onAddSalesTaxSuccess = () => {        
         setAPIResponse(true);
-        setDisabled(true);
+        // setDisabled(true);
         setFormStatus(formStatusProps.success);
         setTimeout(() => {
             setAPIResponse(false);
@@ -67,14 +67,14 @@ const AddSalesTax = memo(()=> {
         try {
             const { data } = err.response;
             setAPIResponse(true);
-            setDisabled(false);
+            // setDisabled(false);
             setFormStatus({ message: data?.error?.message || formStatusProps.error.message, type: 'Error' });
             formik.setSubmitting(false);
             setTimeout(() => {
                 setAPIResponse(false);
             }, 6000);
         } catch(error) {
-            console.log(error);
+            // console.log(error);
         }
     };
 
