@@ -13,6 +13,7 @@ import { useHistory } from "react-router-dom";
 import TaxModel from '../../models/TaxModel';
 import { fuelTaxListSet } from './queries';
 import GridComponent from "../../components/UIComponents/DataGird/grid.component";
+import { DataGridActionsMenuOption } from '../../components/UIComponents/Menu/DataGridActionsMenu.component';
 
 
 const TaxLandingContent = memo(() => {
@@ -23,6 +24,7 @@ const TaxLandingContent = memo(() => {
   const history = useHistory();
   const TaxObj = new TaxModel();
   const massActionOptions = TaxObj.massActions();
+  const MASS_ACTION_TYPES = TaxObj.MASS_ACTION_TYPES;
   const [fuelTaxList, setFuelTaxList] = React.useState([]);
   const headCells = TaxObj.fieldsToDisplay();
 
@@ -34,8 +36,13 @@ const TaxLandingContent = memo(() => {
     history.push("/addFuelTax");
   };
 
-  const handleMassAction = () => {
-    return '';
+  const handleMassAction = (action: DataGridActionsMenuOption) => {
+    switch (action.action) {
+      case MASS_ACTION_TYPES.EXPORT:
+        // perform action
+        break;
+      default: return;
+    }
   };
 
   const { data, fetchNextPage, isLoading, isFetching }: any = fuelTaxListSet(
@@ -128,12 +135,12 @@ const TaxLandingContent = memo(() => {
           </Grid>
         </Grid>
         <Grid container pt={2.5} display="flex" flexGrow={1}>
-        <GridComponent
+          <GridComponent
             primaryKey='fuelTaxId'
             rows={TaxObj.dataModel(fuelTaxList)}
             header={headCells}
             isLoading={isFetching || isLoading}
-            enableRowSelection = {false}
+            enableRowSelection={false}
             enableRowAction
             getPages={fetchNextPage}
             searchTerm={searchTerm}

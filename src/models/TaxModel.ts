@@ -1,6 +1,6 @@
 import moment from 'moment';
 import { useTranslation } from 'react-i18next';
-import { DeleteIcon, ExportIcon, ImportIcon, OilCanIcon } from '../assets/icons';
+import { ExportIcon, OilCanIcon } from '../assets/icons';
 import { headerObj } from './../components/UIComponents/DataGird/grid.component';
 
 export interface SelectProps {
@@ -45,34 +45,22 @@ export default class TaxModel {
         this.loadFuel = '';
         this.fuelType = { label: '', value: '' };
     }
-    
+
     MASS_ACTION_TYPES = {
-        IMPORT: 'import',
         EXPORT: 'export',
-        DELETE: 'remove',
     };
     massActions () {
         const { t } = useTranslation();
         return [
             {
-                label: t("menus.actions.import data"),
-                icon: ImportIcon,
-                action: this.MASS_ACTION_TYPES.IMPORT
-            },
-            {
                 label: t("menus.actions.export data"),
                 icon: ExportIcon,
                 action: this.MASS_ACTION_TYPES.EXPORT
             },
-            {
-                label: t("menus.actions.delete"),
-                icon: DeleteIcon,
-                action: this.MASS_ACTION_TYPES.DELETE
-            },
         ];
     }
 
-    dataModel (data: any){
+    dataModel (data: any) {
         return data.map((obj: any) => ({
             ...obj,
             productCount: obj.products?.length || 0
@@ -82,17 +70,17 @@ export default class TaxModel {
     fieldsToDisplay (): headerObj[] {
         return [
             { field: "cityName", label: "CITY", type: 'text', align: 'left', sortable: true },
-            { field: "stateName", label: "STATE", type: 'text',  align: 'left'},
-            { field: "productCount", label: "PRODUCT", type: 'button',  align: 'left', icon: OilCanIcon },
-            { field: "", label: "", type: 'text',  align: 'left'},
-            { field: "", label: "", type: 'text',  align: 'left'},
-            { field: "", label: "", type: 'text',  align: 'left'},
-            { field: "", label: "", type: 'text',  align: 'left'},
-            { field: "", label: "", type: 'text',  align: 'left'},
-            { field: "", label: "", type: 'text',  align: 'left'},
-            { field: "", label: "", type: 'text',  align: 'left'},
-            { field: "", label: "", type: 'text',  align: 'left'},
-            { field: "", label: "", type: 'text',  align: 'left'},
+            { field: "stateName", label: "STATE", type: 'text', align: 'left' },
+            { field: "productCount", label: "PRODUCT", type: 'button', align: 'left', icon: OilCanIcon },
+            { field: "", label: "", type: 'text', align: 'left' },
+            { field: "", label: "", type: 'text', align: 'left' },
+            { field: "", label: "", type: 'text', align: 'left' },
+            { field: "", label: "", type: 'text', align: 'left' },
+            { field: "", label: "", type: 'text', align: 'left' },
+            { field: "", label: "", type: 'text', align: 'left' },
+            { field: "", label: "", type: 'text', align: 'left' },
+            { field: "", label: "", type: 'text', align: 'left' },
+            { field: "", label: "", type: 'text', align: 'left' },
         ];
     }
 }
