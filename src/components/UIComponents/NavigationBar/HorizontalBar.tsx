@@ -62,6 +62,8 @@ export default function HorizontalBar (props: HorizontalBarProps) {
       return "Add Customer";
     } else if (history.location.pathname.includes('addFuelTax')) {
       return "Add Fuel Tax";
+    } else if (history.location.pathname.includes('addSalesTax')) {
+      return "Add Sales Tax";
     } else {
       return selectedCustomerName;
     }
@@ -166,13 +168,13 @@ export default function HorizontalBar (props: HorizontalBarProps) {
       </Breadcrumbs>
     </>);
   }
-
+ 
   return (
     <>
       <div className="app__header">
         <AppBar position="fixed" className="header" sx={{ width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px` }}>
           <Toolbar className="header__toolbar">
-            {version === "NavLinks" ? null : (<Button
+            {(version === "NavLinks") ? null : (<Button
               types="profile"
               aria-label="back button"
               onClick={handleBack}
@@ -180,10 +182,19 @@ export default function HorizontalBar (props: HorizontalBarProps) {
               startIcon={<SvgIcon component={BackIcon} />}
             />)
             }
+
+            {(version === "NavLinks" && pathname.includes('addSalesTax')) && (<Button
+              types="profile"
+              aria-label="back button"
+              onClick={handleBack}
+              size="small"
+              startIcon={<SvgIcon component={BackIcon} />}
+            />)}
+            
             {
-              version === "Breadcrumbs-Single" ?
+              (version === "Breadcrumbs-Single" || pathname.includes('addSalesTax')) ?
                 versionBreadcrumbsSingle() :
-                version === "NavLinks" ?
+                (version === "NavLinks" || !pathname.includes('addSalesTax')) ?
                   varsionNavLinks() :
                   version === "Breadcrumbs-Many" ?
                     versionBreadcrumbsMany() :

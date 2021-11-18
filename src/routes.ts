@@ -60,5 +60,11 @@ export const routes = [
     path: "/demo",
     component: lazy(() => import('./pages/DemoComponents/DemoComponents')),
     exact: false,
+  },
+  {
+    path: "/addSalesTax",
+    version: "Breadcrumbs-Single",
+    component: lazy(() => import('./pages/AddSalesTax')),
+    exact: false,
   }
 ];
