@@ -1,14 +1,16 @@
 import { FormikErrors } from 'formik';
 import { Fragment } from 'react';
-import Select, { components, DropdownIndicatorProps } from 'react-select';
+import Select, { components, DropdownIndicatorProps, OptionProps } from 'react-select';
 import { FormHelperText, InputLabel, FormControl } from '@mui/material';
 import './SingleSelect.scss';
 import { ArrowDown } from '../../../assets/icons';
 
+const { SingleValue } = components;
 
 type item = {
     label: string,
-    value: string | number
+    value: string | number,
+    icon?: JSX.Element
 }
 interface props {
     id?: string;
@@ -31,7 +33,7 @@ interface props {
     components?: any;
 }
 
-export default function SingleSelect (props: props) {
+export default function SingleSelect(props: props) {
 
     const DropdownIndicator = (props: DropdownIndicatorProps<item>) => {
         return (
@@ -44,6 +46,28 @@ export default function SingleSelect (props: props) {
     const handleChange = (e: any) => {
         const { name, onChange } = props;
         onChange(name, e);
+    };
+
+    const Option = (props: OptionProps<any>) => {
+        return (
+            <components.Option {...props}>
+                <Fragment>
+                    <span className='box'>
+                    {props.data.icon && <span className="icon-svg"> {props.data.icon} </span>}  <label className="label-text" >{props.label}</label>
+                    </span>
+                </Fragment>
+            </components.Option>
+        );
+    };
+
+    const SingleValueFrag = (props: any) => {
+        return (
+            <SingleValue {...props}>
+                <span className='value-box'>
+                {props.data.icon && <span className="icon-svg"> {props.data.icon} </span>} <span className="label-text" >{props.data.label}</span>
+                </span>
+            </SingleValue>
+        );
     };
 
     return (
@@ -62,7 +86,7 @@ export default function SingleSelect (props: props) {
                     options={props.items}
                     onChange={handleChange}
                     onBlur={props.onBlur}
-                    components={{ IndicatorSeparator: () => null, DropdownIndicator, ...props.components }}
+                    components={{ IndicatorSeparator: () => null, DropdownIndicator, ...props.components, Option, SingleValue: SingleValueFrag}}
                     isSearchable={false}
                     isDisabled={props.isDisabled}
                     onKeyDown={e => e.preventDefault()}

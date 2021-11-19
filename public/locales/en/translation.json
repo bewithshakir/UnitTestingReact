@@ -112,6 +112,12 @@
       "opisCities": "OPIS Cities",
       "productManagement": "Product Management",
       "assetManagement": "Asset Management"
+    },
+    "fuelTax": {
+      "sortBy": {
+        "cityname_atoz": "City Name A-Z",
+        "cityname_ztoa": "City Name Z-A"
+      }
     }
   }
 }
