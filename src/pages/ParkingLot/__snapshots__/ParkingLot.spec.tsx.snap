@@ -75,7 +75,6 @@ exports[`Rendering of Search in Parking Lot Content Component Parking Lot Conten
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -285,7 +284,6 @@ exports[`Rendering of Search in Parking Lot Content Component Parking Lot Conten
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -791,9 +789,8 @@ exports[`Rendering of Search in Parking Lot Content Component Parking Lot Conten
                               onSelect={[Function]}
                               options={
                                 Array [
-                                  "parkingLot.sortBy.paymentCompleted",
-                                  "parkingLot.sortBy.paymentInProgress",
-                                  "parkingLot.sortBy.recentlyAddedLots",
+                                  "parkingLot.sortBy.atoz",
+                                  "parkingLot.sortBy.ztoa",
                                 ]
                               }
                             />
@@ -1050,9 +1047,8 @@ exports[`Rendering of Search in Parking Lot Content Component Parking Lot Conten
                                   onSelect={[Function]}
                                   options={
                                     Array [
-                                      "parkingLot.sortBy.paymentCompleted",
-                                      "parkingLot.sortBy.paymentInProgress",
-                                      "parkingLot.sortBy.recentlyAddedLots",
+                                      "parkingLot.sortBy.atoz",
+                                      "parkingLot.sortBy.ztoa",
                                     ]
                                   }
                                 />
@@ -1186,9 +1182,8 @@ exports[`Rendering of Search in Parking Lot Content Component Parking Lot Conten
                                       onSelect={[Function]}
                                       options={
                                         Array [
-                                          "parkingLot.sortBy.paymentCompleted",
-                                          "parkingLot.sortBy.paymentInProgress",
-                                          "parkingLot.sortBy.recentlyAddedLots",
+                                          "parkingLot.sortBy.atoz",
+                                          "parkingLot.sortBy.ztoa",
                                         ]
                                       }
                                     />
@@ -1455,9 +1450,8 @@ exports[`Rendering of Search in Parking Lot Content Component Parking Lot Conten
                                         onSelect={[Function]}
                                         options={
                                           Array [
-                                            "parkingLot.sortBy.paymentCompleted",
-                                            "parkingLot.sortBy.paymentInProgress",
-                                            "parkingLot.sortBy.recentlyAddedLots",
+                                            "parkingLot.sortBy.atoz",
+                                            "parkingLot.sortBy.ztoa",
                                           ]
                                         }
                                       />
@@ -1499,9 +1493,8 @@ exports[`Rendering of Search in Parking Lot Content Component Parking Lot Conten
                                             onSelect={[Function]}
                                             options={
                                               Array [
-                                                "parkingLot.sortBy.paymentCompleted",
-                                                "parkingLot.sortBy.paymentInProgress",
-                                                "parkingLot.sortBy.recentlyAddedLots",
+                                                "parkingLot.sortBy.atoz",
+                                                "parkingLot.sortBy.ztoa",
                                               ]
                                             }
                                           />,
@@ -1525,9 +1518,8 @@ exports[`Rendering of Search in Parking Lot Content Component Parking Lot Conten
                                           onSelect={[Function]}
                                           options={
                                             Array [
-                                              "parkingLot.sortBy.paymentCompleted",
-                                              "parkingLot.sortBy.paymentInProgress",
-                                              "parkingLot.sortBy.recentlyAddedLots",
+                                              "parkingLot.sortBy.atoz",
+                                              "parkingLot.sortBy.ztoa",
                                             ]
                                           }
                                         >
@@ -6026,10 +6018,7 @@ exports[`Rendering of Search in Parking Lot Content Component Parking Lot Conten
                                     onClose={[Function]}
                                     panelType="customer-filter"
                                   />,
-                                  <FilterContent
-                                    onClose={[Function]}
-                                    provideFilterParams={[Function]}
-                                  />,
+                                  <React.Fragment />,
                                 ],
                                 "className": "right_panel_main_class customer_filter_panel",
                                 "elevation": 16,
