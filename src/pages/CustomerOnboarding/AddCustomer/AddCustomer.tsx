@@ -496,6 +496,7 @@ const AddCustomer: React.FC = () => {
 
     const showDialogBox = useShowConfirmationDialogBoxStore((state) => state.showDialogBox);
     const isFormValidated = useShowConfirmationDialogBoxStore((state) => state.setFormFieldValue);
+    const isCheckBoxDisabled = () => (formik.values.paymentType.value === 'b40e6ddb-8119-4f9d-9d94-9f173a944111' ? false : true) || isEditMode ? true : isDisabled;
 
     const handleFormDataChange = () => {
         if (isEditMode) {
@@ -761,7 +762,7 @@ const AddCustomer: React.FC = () => {
                                                 sx={{ margin: "0px", marginBottom: "1rem", fontWeight: "bold" }}
                                                 className="checkbox-field"
                                                 control={
-                                                    <Checkbox checked={formik.values.lotLevel} onChange={formik.handleChange} name="lotLevel" disabled = { isEditMode? true: isDisabled } />
+                                                    <Checkbox checked={formik.values.lotLevel} onChange={formik.handleChange} name="lotLevel" disabled = { isCheckBoxDisabled()} />
                                                 }
                                                 label={
                                                     <Typography color="var(--Darkgray)" variant="h4" className="fw-bold">
@@ -773,7 +774,7 @@ const AddCustomer: React.FC = () => {
                                                 sx={{ margin: "0px", marginBottom: "1rem", fontWeight: "bold" }}
                                                 className="checkbox-field"
                                                 control={
-                                                    <Checkbox checked={formik.values.businessLevel} onChange={formik.handleChange} name="businessLevel" disabled = { isEditMode? true: isDisabled } />
+                                                    <Checkbox checked={formik.values.businessLevel} onChange={formik.handleChange} name="businessLevel" disabled = {isCheckBoxDisabled()} />
                                                 }
                                                 label={
                                                     <Typography color="var(--Darkgray)" variant="h4" className="fw-bold">
@@ -785,7 +786,7 @@ const AddCustomer: React.FC = () => {
                                                 sx={{ margin: "0px", marginBottom: "1rem", fontWeight: "bold" }}
                                                 className="checkbox-field"
                                                 control={
-                                                    <Checkbox checked={formik.values.vehicleLevel} onChange={formik.handleChange} name="vehicleLevel" disabled = { isEditMode? true: isDisabled } />
+                                                    <Checkbox checked={formik.values.vehicleLevel} onChange={formik.handleChange} name="vehicleLevel" disabled = {isCheckBoxDisabled()} />
                                                 }
                                                 label={
                                                     <Typography color="var(--Darkgray)" variant="h4" className="fw-bold">
