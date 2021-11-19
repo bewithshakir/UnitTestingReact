@@ -61,7 +61,6 @@ export default function SingleSelect(props: props) {
     };
 
     const SingleValueFrag = (props: any) => {
-        console.warn("props-->",props);
         return (
             <SingleValue {...props}>
                 <span className='value-box'>
