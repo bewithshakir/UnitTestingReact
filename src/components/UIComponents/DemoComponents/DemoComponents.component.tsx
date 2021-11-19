@@ -7,7 +7,7 @@ import ActionsMenu from '../Menu/ActionsMenu.component';
 import ProfileMenu from '../Menu/ProfileMenu.component';
 import { DatePickerInput } from '../DatePickerInput/DatePickerInput.component';
 import DataGridActionsMenu from '../Menu/DataGridActionsMenu.component';
-import { ExportIcon, PlusIcon, DeleteIcon, ImportIcon, SettingsIcon, LogoutIcon, CustomerProfileIcon2 } from '../../../assets/icons';
+import { ExportIcon, PlusIcon, DeleteIcon, ImportIcon, SettingsIcon, LogoutIcon, CustomerProfileIcon2, FilterIcon } from '../../../assets/icons';
 import ToastMessage from '../ToastMessage/ToastMessage.component';
 import { Footer } from '../Footer/Footer.component';
 import Input from '../Input/Input';
@@ -23,13 +23,44 @@ import { TimePicker } from '../TimePicker/TimePicker.component';
 import './DemoComponents.style.scss';
 import { DateRange } from '@mui/lab/DateRangePicker';
 import { boxSX } from './config';
+import { RightInfoPanel } from "../RightInfoPanel/RightInfoPanel.component";
+import { IDynamicFilterProps } from "../RightInfoPanel/DynamicFilterContent.component";
 
 type DatePickerRange = DateRange<Date>;
+
+
+const filterByFields: IDynamicFilterProps['fields'] = [
+    { name: 'inputText1', label: 'Enter text here', fieldType: 'text', initialValue: '' },
+    { name: 'singleDate', label: 'Single date', fieldType: 'date', initialValue: null },
+    { name: 'date', label: 'Date', fieldType: 'dateRange', initialValue: [null, null] },
+    {
+        name: 'SingleApi', label: 'Single Select State API', fieldType: 'select', singleSelect: true,
+        optionUrlKey: 'customerFilter',
+        optionAPIResponseKey: 'states', initialValue: null
+    },
+    {
+        name: 'SingleSelect1', label: 'Single Select', fieldType: 'select', singleSelect: true, options: [{ label: 'Regular', value: 'Regular', icon: <YellowFuelIcon /> },
+        { label: 'Premium', value: 'Premium', icon: <RedFuelIcon /> },
+        { label: 'Diesel', value: 'Diesel', icon: <GreenFuelIcon /> },], initialValue: null
+    },
+    {
+        name: 'withIcon', label: 'With Icon', fieldType: 'select', options: [{ label: 'Regular', value: 'Regular', icon: <YellowFuelIcon /> },
+        { label: 'Premium', value: 'Premium', icon: <RedFuelIcon /> },
+        { label: 'Diesel', value: 'Diesel', icon: <GreenFuelIcon /> },], initialValue: ['']
+    },
+    { name: 'city', label: 'customer-filter-panel.city', fieldType: 'select', optionUrlKey: 'customerFilter', optionAPIResponseKey: 'cities', initialValue: [] },
+    { name: 'paymentType', label: 'customer-filter-panel.settlement type', fieldType: 'select', optionUrlKey: 'customerFilter', optionAPIResponseKey: 'settlementType', initialValue: [] },
+    { name: 'multiselect', label: 'multi checkbox', fieldType: 'multiCheckbox', initialValue: [], options: [{ label: 'checkbox1', value: 'cb1' }, { label: 'cbbbb2', value: 'cb2' }, { label: 'cb3', value: 'cb3' }] },
+    { name: 'radiotest', label: 'radio test', fieldType: 'radio', initialValue: null, options: [{ label: 'radio1', value: 'radiooo1' }, { label: 'radio2', value: 'radiooooo2' }] }
+];
 
 export const DemoComponents: React.FC = () => {
     //const { data } = useQuery('repoData', fetchQueryTodos, { retry: false });
     const { setCurrentTheme } = useTheme();
     const { i18n } = useTranslation();
+
+    const [custFilterPanelVisible, setCustFilterPanelVisible] = React.useState(false);
+
     const changeLanguage = (language: string) => () => {
         i18n.changeLanguage(language);
     };
@@ -45,13 +76,13 @@ export const DemoComponents: React.FC = () => {
         setOpen(false);
     };
     const [dateRange, setDateRange] = useState<DatePickerRange>([new Date(), new Date()]);
-    const [form, setForm] = useState({ userName: '', email: '',itemWithIcon:[{ label: 'Diesel', value: 'Diesel', icon: <YellowFuelIcon /> }], item: [{ label: 'Nike', value: 'Nike' }], searchTerm: '', startDate: moment().format("MM/DD/YYYY"), endDate: moment().format("MM/DD/YYYY"), time: '', address: { addressLine1: '', addressLine2: '', state: '', city: '', postalCode: '' } });
-    const optionsWithIcons= [
+    const [form, setForm] = useState({ userName: '', email: '', itemWithIcon: [{ label: 'Diesel', value: 'Diesel', icon: <YellowFuelIcon /> }], item: [{ label: 'Nike', value: 'Nike' }], searchTerm: '', startDate: moment().format("MM/DD/YYYY"), endDate: moment().format("MM/DD/YYYY"), time: '', address: { addressLine1: '', addressLine2: '', state: '', city: '', postalCode: '' } });
+    const optionsWithIcons = [
         { label: 'Regular', value: 'Regular', icon: <YellowFuelIcon /> },
         { label: 'Premium', value: 'Premium', icon: <RedFuelIcon /> },
-        { label: 'Diesel', value: 'Diesel', icon:  <GreenFuelIcon /> },
+        { label: 'Diesel', value: 'Diesel', icon: <GreenFuelIcon /> },
     ];
-    
+
     const debouncedValue = useDebounce<string>(form.searchTerm, 1000);
     const items = [
         { label: 'Amazon', value: 'Amazon' },
@@ -312,7 +343,28 @@ export const DemoComponents: React.FC = () => {
                             onChange={(z: string) => setForm(x => ({ ...x, searchTerm: z }))}
                         />
                     </Box>
+                    <br />
+                    <Box className={'date_box'}>
+                        <Box sx={boxSX}>
+                            <Button
+                                types="filter"
+                                aria-label="dafault"
+                                onClick={() => { setCustFilterPanelVisible(!custFilterPanelVisible); }}
+                                startIcon={<FilterIcon />}
+                            >
+                                Dynamic Filter
+                            </Button>
 
+                            <RightInfoPanel panelType="customer-filter"
+                                open={custFilterPanelVisible} headingText={"customer-filter-panel.header.filters"}
+                                provideFilterParams={(filterObj) => {
+                                    alert(JSON.stringify(filterObj));
+                                }} onClose={() => setCustFilterPanelVisible(false)}
+                                fields={filterByFields}
+                                storeKey={'demoComponent'}
+                            />
+                        </Box>
+                    </Box>
 
                     {/* <GoogleAutoCompleteAddress name='address' onChange={handleChange} value={form.address}/> */}
 

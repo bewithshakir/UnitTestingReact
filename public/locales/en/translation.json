@@ -63,7 +63,7 @@
   },
   "customer-filter-panel": {
     "header": {
-      "filter": "Filter"
+      "filters": "Filters"
     },
     "buttons": {
       "apply": "Apply",

@@ -243,7 +243,7 @@ const Content: React.FC<ContentProps> = () => {
           />
 
           <RightInfoPanel panelType="customer-filter"
-            open={custFilterPanelVisible} headingText={"Filters"}
+            open={custFilterPanelVisible} headingText={"customer-filter-panel.header.filters"}
             provideFilterParams={getFilterParams} onClose={handleCustFilterPanelClose}
             fields={filterByFields}
             storeKey={'customerFilter'}
