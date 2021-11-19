@@ -1,14 +1,15 @@
 import moment from 'moment';
-import { useTranslation } from 'react-i18next';
-import { ExportIcon, OilCanIcon } from '../assets/icons';
 import { headerObj } from './../components/UIComponents/DataGird/grid.component';
+import { FuelTax } from '../pages/Tax/config';
+import { OilCanIcon } from '../assets/icons';
+import { useTranslation } from 'react-i18next';
 
 export interface SelectProps {
     label: string,
     value: string,
 }
 
-
+const { MassActionOptions, DataGridFields } = FuelTax.LandingPage;
 export default class TaxModel {
     addressLine1: string;
     state: string;
@@ -46,18 +47,10 @@ export default class TaxModel {
         this.fuelType = { label: '', value: '' };
     }
 
-    MASS_ACTION_TYPES = {
-        EXPORT: 'export',
-    };
+
     massActions () {
         const { t } = useTranslation();
-        return [
-            {
-                label: t("menus.actions.export data"),
-                icon: ExportIcon,
-                action: this.MASS_ACTION_TYPES.EXPORT
-            },
-        ];
+        return MassActionOptions.map(actionItem => ({ ...actionItem, label: t(actionItem.label) }));
     }
 
     dataModel (data: any) {
@@ -68,10 +61,11 @@ export default class TaxModel {
     }
 
     fieldsToDisplay (): headerObj[] {
+        const { CITY, STATE, PRODUCT } = DataGridFields;
         return [
-            { field: "cityName", label: "CITY", type: 'text', align: 'left', sortable: true },
-            { field: "stateName", label: "STATE", type: 'text', align: 'left' },
-            { field: "productCount", label: "PRODUCT", type: 'button', align: 'left', icon: OilCanIcon },
+            { field: CITY.field, label: CITY.label, type: 'text', align: 'left', sortable: true },
+            { field: STATE.field, label: STATE.label, type: 'text', align: 'left' },
+            { field: PRODUCT.field, label: PRODUCT.field, type: 'button', align: 'left', icon: OilCanIcon },
             { field: "", label: "", type: 'text', align: 'left' },
             { field: "", label: "", type: 'text', align: 'left' },
             { field: "", label: "", type: 'text', align: 'left' },
