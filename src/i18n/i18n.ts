@@ -4,6 +4,7 @@ import { languages } from "./i18n.constants";
 import HttpApi from "i18next-xhr-backend";
 import LanguageDetector from 'i18next-browser-languagedetector';
 
+
 const createI18n = (language: string): i18nInstance => {
   const i18n = i18next.createInstance().use(initReactI18next);
 

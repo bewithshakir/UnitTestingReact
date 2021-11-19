@@ -68,7 +68,12 @@
     "buttons": {
       "apply": "Apply",
       "clear all": "Clear All"
-    }
+    },
+    "from date": "From Date",
+    "to date": "To Date",
+    "state": "State",
+    "city": "City",
+    "settlement type": "Settlement Type"
   },
   "legend": {
     "customerName": "Customer Name",
@@ -96,17 +101,26 @@
     }
   },
   "parkingLot": {
+    "search": "Parking Lot Name",
     "sortBy": {
       "paymentCompleted": "Payment Completed",
       "paymentInProgress": "Payment In Progress",
       "recentlyAddedLots": "Recently Added Lots"
-    },
+    }
+  },
+  "taxes": {
     "navBar": {
       "fuelTax": "Fuel Tax",
       "salesTax": "Sales Tax",
       "opisCities": "OPIS Cities",
       "productManagement": "Product Management",
       "assetManagement": "Asset Management"
+    },
+    "fuelTax": {
+      "sortBy": {
+        "cityname_atoz": "City Name A-Z",
+        "cityname_ztoa": "City Name Z-A"
+      }
     }
   }
 }

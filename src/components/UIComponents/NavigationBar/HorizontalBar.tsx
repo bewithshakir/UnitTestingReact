@@ -52,7 +52,11 @@ export default function HorizontalBar (props: HorizontalBarProps) {
     resetFormFieldValue(false);
     if (pathname.includes('addLot') || pathname.includes('addFuelTax')) {
       history.goBack();
-    } else {
+    } 
+    else if(pathname.includes('addSalesTax')) {
+      history.push('/salesTax');
+    }
+    else {
       props.onBack();
     }
   };
@@ -80,34 +84,34 @@ export default function HorizontalBar (props: HorizontalBarProps) {
   }
 
   function varsionNavLinks () {
-    if (pathname === '/taxes') {
+    if (pathname.includes('taxes') || pathname.includes('salesTax')) {
       return (<>
-        <div className="linkitem active">
+        <div className={pathname.includes('taxes') ? 'linkitem active': 'linkitem'}>
           <NavLink
             className="breadcrubs-title"
             to="/"
             onClick={handleClick}>
-            {t("parkingLot.navBar.fuelTax")}
+            {t("taxes.navBar.fuelTax")}
           </NavLink>
         </div>
-        <div className="linkitem">
+        <div className={pathname.includes('salesTax') ? 'linkitem active' : "linkitem"}>
           <NavLink className="breadcrubs-title" to="/salesTax" onClick={handleClick}>
-            {t("parkingLot.navBar.salesTax")}
+            {t("taxes.navBar.salesTax")}
           </NavLink>
         </div>
         <div className="linkitem">
           <NavLink className="breadcrubs-title" to="/cities" onClick={handleClick}>
-            {t("parkingLot.navBar.opisCities")}
+            {t("taxes.navBar.opisCities")}
           </NavLink>
         </div>
         <div className="linkitem">
           <NavLink className="breadcrubs-title" to="/productManagement" onClick={handleClick}>
-            {t("parkingLot.navBar.productManagement")}
+            {t("taxes.navBar.productManagement")}
           </NavLink>
         </div>
         <div className="linkitem">
           <NavLink className="breadcrubs-title" to="/assetManagement" onClick={handleClick}>
-            {t("parkingLot.navBar.assetManagement")}
+            {t("taxes.navBar.assetManagement")}
           </NavLink>
         </div>
       </>);

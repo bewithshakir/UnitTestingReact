@@ -17,6 +17,7 @@ import useDebounce from '../../../utils/useDebounce';
 import moment from "moment";
 //import { useQuery } from 'react-query';
 //import { fetchQueryTodos } from '../../../hooks/todos-with-query';
+import { YellowFuelIcon, RedFuelIcon, GreenFuelIcon } from '../../../assets/icons';
 import { Box, FormControl } from '@mui/material';
 import { TimePicker } from '../TimePicker/TimePicker.component';
 import './DemoComponents.style.scss';
@@ -44,7 +45,13 @@ export const DemoComponents: React.FC = () => {
         setOpen(false);
     };
     const [dateRange, setDateRange] = useState<DatePickerRange>([new Date(), new Date()]);
-    const [form, setForm] = useState({ userName: '', email: '', item: [{ label: 'Nike', value: 'Nike' }], searchTerm: '', startDate: moment().format("MM/DD/YYYY"), endDate: moment().format("MM/DD/YYYY"), time: '', address: { addressLine1: '', addressLine2: '', state: '', city: '', postalCode: '' } });
+    const [form, setForm] = useState({ userName: '', email: '',itemWithIcon:[{ label: 'Diesel', value: 'Diesel', icon: <YellowFuelIcon /> }], item: [{ label: 'Nike', value: 'Nike' }], searchTerm: '', startDate: moment().format("MM/DD/YYYY"), endDate: moment().format("MM/DD/YYYY"), time: '', address: { addressLine1: '', addressLine2: '', state: '', city: '', postalCode: '' } });
+    const optionsWithIcons= [
+        { label: 'Regular', value: 'Regular', icon: <YellowFuelIcon /> },
+        { label: 'Premium', value: 'Premium', icon: <RedFuelIcon /> },
+        { label: 'Diesel', value: 'Diesel', icon:  <GreenFuelIcon /> },
+    ];
+    
     const debouncedValue = useDebounce<string>(form.searchTerm, 1000);
     const items = [
         { label: 'Amazon', value: 'Amazon' },
@@ -281,6 +288,16 @@ export const DemoComponents: React.FC = () => {
                             items={items}
                             onChange={handleSelect}
                         />
+
+                        <Select
+                            name='itemWithIcon'
+                            label='Select item'
+                            value={form.itemWithIcon}
+                            placeholder='Choose'
+                            items={optionsWithIcons}
+                            onChange={handleSelect}
+                        />
+
                         <Input name='email'
                             label='Email'
                             onChange={handleChange}

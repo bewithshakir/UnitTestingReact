@@ -1,227 +1,260 @@
-.select{
-    width:100%;
+.select {
+  width: 100%;
 
-    & .MuiInputLabel-outlined.MuiInputLabel-shrink {
-        transform: translate(2px, 0px) scale(0.75);
-        z-index: 0;
-    }
+  & .MuiInputLabel-outlined.MuiInputLabel-shrink {
+    transform: translate(2px, 0px) scale(0.75);
+    z-index: 0;
+  }
 
-    .react-select-container{
-        &.error {
-        border: 2px solid var(--Tertiary);
-        box-shadow: none;
-            &  .react-select{
-                &__control{
-                border: none;
-                box-shadow: none;
-                    &:hover, &:active, &--is-focused{
-                        border: none;
-                        box-shadow: none;
-                    }
-                    &--menu-is-open{
-                    & .react-select__indicator{
-                        padding-left: 18px;
-                        transform: rotate(180deg);
-                    }
-                }
-                }
+  .react-select-container {
+    &.error {
+      border: 2px solid var(--Tertiary);
+      box-shadow: none;
+      & .react-select {
+        &__control {
+          border: none;
+          box-shadow: none;
+          &:hover,
+          &:active,
+          &--is-focused {
+            border: none;
+            box-shadow: none;
+          }
+          &--menu-is-open {
+            & .react-select__indicator {
+              padding-left: 18px;
+              transform: rotate(180deg);
             }
-        }    
-
-        & .react-select{
-            &__control{
-                height: 50px;
-                border-radius: 0px;
-                font-size: 14px;
-                &--menu-is-open{
-                    & .react-select__indicator{
-                        padding-left: 18px;
-                        transform: rotate(180deg);
-                    }
-                }
-                &:hover, &:active, &--is-focused{
-                    height: 50px;
-                    border-radius: 0;
-                    border-color: var(--Darkgray);
-                    border: 2px solid var(--Darkgray);
-                    box-shadow: none;
-                }
-            }
-            &__value-container{
-                padding: 2px 10px;
-                &__placeholder{
-                    font-size: 14px;
-                    line-height: 16px;
-                }
-            }
-            &__indicator{
-                padding-right: 18px;
-            }
+          }
         }
-
+      }
     }
 
-    .react-select{
-        &__menu{
-            border-radius: 0;
-            background:var(--White);
-            box-shadow: 3px 6px 14px #00000026;
-            z-index: 999;
+    & .react-select {
+      &__control {
+        height: 50px;
+        border-radius: 0px;
+        font-size: 14px;
+        &--menu-is-open {
+          & .react-select__indicator {
+            padding-left: 18px;
+            transform: rotate(180deg);
+          }
         }
-        &__menu-list{
-            max-height: 256px;
-            overflow-y: scroll;
-        }    
-        &__option {
-            height:50px;
-            line-height: 27px;
-            font-size: 14px;  
-            padding: 10px 15px;
-            box-sizing: border-box;
-            border-bottom: 1px solid var(--White);
-            cursor: pointer;
-
-                &--is-focused{   
-                background-color: var(--Lightgray_2);
-                opacity: 1;
-                    &:active {
-                        border: 1px solid var(--White);
-                        background-color: var(--Gray);
-                        color: var(--White);
-                    } 
-                }
-                &--is-selected{
-                    border: 1px solid var(--White);
-                    background-color: var(--Gray);
-                    color: var(--White);
-                } 
-            }
-        &__menu-portal {
-            background:var(--White);
-            box-shadow: 3px 6px 14px #00000026;
-            z-index: 999;
-        }    
-    }
-
-    &.MuiFormControl-root .select-helper{
-        margin-left: 2px;
-        font-family: Arial;
-    }
-
-    .multi-select-container{
-        &.error {
-        border: 2px solid var(--Tertiary);
-        box-shadow: none;
-            &  .react-select{
-                &__control{
-                border: none;
-                box-shadow: none;
-                    &:hover, &:active, &--is-focused{
-                        border: none;
-                        box-shadow: none;
-                    }
-                    &--menu-is-open{
-                    & .react-select__indicator{
-                        padding-left: 18px;
-                        transform: rotate(180deg);
-                    }
-                }
-                }
-            }
-        }    
-
-        & .multi-select{
-            &__control{
-                height: 50px;
-                border-radius: 0px;
-                font-size: 14px;
-                &--menu-is-open{
-                    & .multi-select__indicator{
-                        padding-left: 18px;
-                        transform: rotate(180deg);
-                    }
-                }
-                &:hover, &:active, &--is-focused{
-                    height: 50px;
-                    border-radius: 0;
-                    border-color: var(--Darkgray);
-                    border: 2px solid var(--Darkgray);
-                    box-shadow: none;
-                }
-            }
-            &__value-container{
-                padding: 2px 10px;
-                &__placeholder{
-                    font-size: 14px;
-                    line-height: 16px;
-                }
-            }
-            &__indicator{
-                padding-right: 18px;
-            }
-            &__multi-value{
-                display: none;
-            }
+        &:hover,
+        &:active,
+        &--is-focused {
+          height: 50px;
+          border-radius: 0;
+          border-color: var(--Darkgray);
+          border: 2px solid var(--Darkgray);
+          box-shadow: none;
         }
-
-    }
-
-    .multi-select{
-        &__menu{
-            border-radius: 0;
-            background:var(--White);
-            box-shadow: 3px 6px 14px #00000026;
-            z-index: 999;
+      }
+      &__value-container {
+        padding: 2px 10px;
+        &__placeholder {
+          font-size: 14px;
+          line-height: 16px;
         }
-        &__menu-list{
-            max-height: 256px;
-            overflow-y: scroll;
-        }    
-        &__option {
-            height:50px;
-            line-height: 27px;
-            font-size: 14px;  
-            padding: 10px 15px;
-            box-sizing: border-box;
-            border-bottom: 1px solid var(--White);
-            cursor: pointer;
-                & .box{
-                    & svg{
-                        width: 15px;
-                        height: 15px;
-                        transform: translateY(3px);
-                        margin-left: 8px;
-                    }
-                    & label{
-                        padding-left: 10px;
-                    }
-                }
+      }
+      &__indicator {
+        padding-right: 18px;
+      }
+    }
+  }
 
-                &--is-focused{   
-                background-color: var(--Lightgray_2);
-                opacity: 1;
-                    &:active {
-                        border: 1px solid var(--White);
-                        background-color: var(--Gray);
-                        color: var(--White);
-                    } 
-                }
-                &--is-selected{
-                    border: 1px solid var(--White);
-                    background-color: var(--Gray);
-                    color: var(--White);
-                    & .box{
-                        & svg{
-                            color: var(--White);
-                        }
-                    }
-                } 
+  .react-select {
+    &__menu {
+      border-radius: 0;
+      background: var(--White);
+      box-shadow: 3px 6px 14px #00000026;
+      z-index: 999;
+    }
+    &__menu-list {
+      max-height: 256px;
+      overflow-y: scroll;
+    }
+    &__single-value {
+      & .value-box {
+        display: flex;
+        & .label-text {
+          margin: 5px 0px 0px 5px;
+        }
+      }
+    }
+    &__option {
+      height: 50px;
+      line-height: 27px;
+      font-size: 14px;
+      padding: 10px 15px;
+      box-sizing: border-box;
+      border-bottom: 1px solid var(--White);
+      cursor: pointer;
+      & .box {
+        display: flex;
+        & .icon-svg{
+            margin: 1px 0px 0px 0px;
+        }
+        & .label-text {
+          margin: 2px 0px 0px 5px;
+        }
+      }
+      &--is-focused {
+        background-color: var(--Lightgray_2);
+        opacity: 1;
+        &:active {
+          border: 1px solid var(--White);
+          background-color: var(--Gray);
+          color: var(--White);
+        }
+      }
+      &--is-selected {
+        border: 1px solid var(--White);
+        background-color: var(--Gray);
+        color: var(--White);
+      }
+    }
+    &__menu-portal {
+      background: var(--White);
+      box-shadow: 3px 6px 14px #00000026;
+      z-index: 999;
+    }
+  }
+
+  &.MuiFormControl-root .select-helper {
+    margin-left: 2px;
+    font-family: Arial;
+  }
+
+  .multi-select-container {
+    &.error {
+      border: 2px solid var(--Tertiary);
+      box-shadow: none;
+      & .react-select {
+        &__control {
+          border: none;
+          box-shadow: none;
+          &:hover,
+          &:active,
+          &--is-focused {
+            border: none;
+            box-shadow: none;
+          }
+          &--menu-is-open {
+            & .react-select__indicator {
+              padding-left: 18px;
+              transform: rotate(180deg);
             }
-        &__menu-portal {
-            background:var(--White);
-            box-shadow: 3px 6px 14px #00000026;
-            z-index: 999;
-        }    
+          }
+        }
+      }
     }
 
+    & .multi-select {
+      &__control {
+        height: 50px;
+        border-radius: 0px;
+        font-size: 14px;
+        &--menu-is-open {
+          & .multi-select__indicator {
+            padding-left: 18px;
+            transform: rotate(180deg);
+          }
+        }
+        &:hover,
+        &:active,
+        &--is-focused {
+          height: 50px;
+          border-radius: 0;
+          border-color: var(--Darkgray);
+          border: 2px solid var(--Darkgray);
+          box-shadow: none;
+        }
+      }
+      &__value-container {
+        padding: 2px 10px;
+        &__placeholder {
+          font-size: 14px;
+          line-height: 16px;
+        }
+      }
+      &__indicator {
+        padding-right: 18px;
+      }
+      &__multi-value {
+        display: none;
+      }
+    }
+  }
+
+  .multi-select {
+    &__menu {
+      border-radius: 0;
+      background: var(--White);
+      box-shadow: 3px 6px 14px #00000026;
+      z-index: 999;
+    }
+    &__menu-list {
+      max-height: 256px;
+      overflow-y: scroll;
+    }
+    &__option {
+      height: 50px;
+      line-height: 27px;
+      font-size: 14px;
+      padding: 10px 15px;
+      box-sizing: border-box;
+      border-bottom: 1px solid var(--White);
+      cursor: pointer;
+      & .box {
+        display: flex;
+        & svg {
+          width: 15px;
+          height: 15px;
+          transform: translateY(3px);
+          margin-left: 8px;
+        }
+        & .icon-svg {
+          svg {
+            width: initial;
+            height: initial;
+            margin-top: -6px;
+            margin-right: -2px;
+          }
+        }
+        & .label-text {
+          margin: -2px 0px 0px 0px;
+        }
+        & label {
+          padding-left: 10px;
+        }
+      }
+
+      &--is-focused {
+        background-color: var(--Lightgray_2);
+        opacity: 1;
+        &:active {
+          border: 1px solid var(--White);
+          background-color: var(--Gray);
+          color: var(--White);
+        }
+      }
+      &--is-selected {
+        border: 1px solid var(--White);
+        background-color: var(--Gray);
+        color: var(--White);
+        & .box {
+          & svg {
+            color: var(--White);
+          }
+        }
+      }
+    }
+    &__menu-portal {
+      background: var(--White);
+      box-shadow: 3px 6px 14px #00000026;
+      z-index: 999;
+    }
+  }
 }

@@ -1,83 +1,64 @@
 import React, { memo, useEffect } from 'react';
-import { HorizontalBarVersionState, useStore } from '../../store';
+import { HorizontalBarVersionState, useStore } from '../../../store';
 import { Box, Grid, FormControl } from "@mui/material";
-import { Button } from "../../components/UIComponents/Button/Button.component";
-import { FilterIcon } from "../../assets/icons";
-import SortbyMenu from "../../components/UIComponents/Menu/SortbyMenu.component";
+import { Button } from "../../../components/UIComponents/Button/Button.component";
+import { FilterIcon } from "../../../assets/icons";
+import SortbyMenu from "../../../components/UIComponents/Menu/SortbyMenu.component";
+import { sortByOptions } from "./config";
 import { useTranslation } from "react-i18next";
-import SearchInput from "../../components/UIComponents/SearchInput/SearchInput";
-import ActionsMenu from "../../components/UIComponents/Menu/ActionsMenu.component";
+import SearchInput from "../../../components/UIComponents/SearchInput/SearchInput";
+import ActionsMenu from "../../../components/UIComponents/Menu/ActionsMenu.component";
 import { Add } from "@mui/icons-material";
 import { useHistory } from "react-router-dom";
-import TaxModel from '../../models/TaxModel';
-import { useFuelTaxList } from './queries';
-import GridComponent from "../../components/UIComponents/DataGird/grid.component";
-import { DataGridActionsMenuOption } from '../../components/UIComponents/Menu/DataGridActionsMenu.component';
-import { FuelTax, MASS_ACTION_TYPES } from './config';
+import SalesTaxModel from '../../../models/SalesTaxModel';
+import GridComponent from "../../../components/UIComponents/DataGird/grid.component";
+import { salesTaxListSet } from './queries';
 
-
-const TaxLandingContent = memo(() => {
-  const [searchTerm, setSearchTerm] = React.useState("");
-  const [sortOrder, setSortOrder] = React.useState<{ sortBy: string, order: string }>({ sortBy: "", order: "" });
+const SalesTaxLandingContent = memo(() => {
   const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
   setVersion("NavLinks");
   const { t } = useTranslation();
   const history = useHistory();
-  const TaxObj = new TaxModel();
-  const massActionOptions = TaxObj.massActions();
-  const [fuelTaxList, setFuelTaxList] = React.useState([]);
-  const headCells = TaxObj.fieldsToDisplay();
-  const { SortByOptions } = FuelTax.LandingPage;
-  const onInputChange = (value: string) => {
-    setSearchTerm(value);
-  };
 
-  const navigateHomePage = () => {
-    history.push("/addFuelTax");
-  };
+  const salesTaxObj = new SalesTaxModel();
+  const massActionOptions = salesTaxObj.massActions();
+  const [salesTaxList, setSalesTaxList] = React.useState([]);
+  const headCells = salesTaxObj.fieldsToDisplay();
 
-  const handleMassAction = (action: DataGridActionsMenuOption) => {
-    switch (action.action) {
-      case MASS_ACTION_TYPES.EXPORT:
-        // perform action
-        break;
-      default: return;
-    }
-  };
+  const [searchTerm, setSearchTerm] = React.useState("");
 
-  const { data, fetchNextPage, isLoading, isFetching }: any = useFuelTaxList(
-    searchTerm,
-    sortOrder,
-  );
+  const { data, fetchNextPage, isLoading, isFetching }: any = salesTaxListSet(searchTerm);
 
   useEffect(() => {
     if (data) {
       const list: any = [];
       data?.pages?.forEach((item: any) => {
-        list.push(...item.data.fuelTax);
+        list.push(...item.data.salesTax);
       });
-      setFuelTaxList(list);
+      setSalesTaxList(list);
     }
-  }, [data]);
+  },[data]);
 
-  const openDrawer = () => {
-    // TODO
+  const onInputChange = (value: string) => {
+    setSearchTerm(value);
+  };
+
+  const navigateHomePage = () => {
+    // TO DO
+    history.push("/addSalesTax");
   };
 
   const onSortBySlected = (value: string) => {
-    let sortOrder;
-    switch (value) {
-      case "City Name A-Z":
-        sortOrder = { sortBy: "cityName", order: "asc" };
-        break;
-      case "City Name Z-A":
-        sortOrder = { sortBy: "cityName", order: "desc" };
-        break;
-      default:
-        sortOrder = { sortBy: "", order: "" };
-        break;
-    }
-    setSortOrder(sortOrder);
+    //TODO
+    alert(value);
+  };
+  
+  const handleMassAction = () => {
+    return '';
+  };
+
+  const openDrawer = () => {
+    // TODO
   };
 
   return (
@@ -97,7 +78,7 @@ const TaxLandingContent = memo(() => {
             <Grid item pr={2.5}>
               <FormControl>
                 <SortbyMenu
-                  options={SortByOptions.map((sortByItem) => t(sortByItem))}
+                  options={sortByOptions.map((sortByItem) => t(sortByItem))}
                   onSelect={(value) => onSortBySlected(value)}
                 />
               </FormControl>
@@ -133,12 +114,12 @@ const TaxLandingContent = memo(() => {
           </Grid>
         </Grid>
         <Grid container pt={2.5} display="flex" flexGrow={1}>
-          <GridComponent
-            primaryKey='fuelTaxId'
-            rows={TaxObj.dataModel(fuelTaxList)}
+        <GridComponent
+            primaryKey='taxJurisdictionId'
+            rows={salesTaxList}
             header={headCells}
             isLoading={isFetching || isLoading}
-            enableRowSelection={false}
+            enableRowSelection = {false}
             enableRowAction
             getPages={fetchNextPage}
             searchTerm={searchTerm}
@@ -151,4 +132,4 @@ const TaxLandingContent = memo(() => {
   );
 });
 
-export default TaxLandingContent;
+export default SalesTaxLandingContent;

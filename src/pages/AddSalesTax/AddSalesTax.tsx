@@ -123,7 +123,7 @@ const AddSalesTax = memo(()=> {
         } else {
             history.push('/');
         } */
-        history.push('/');
+        history.push('/salesTax');
     }
     const disableButton = () => {
         return (!formik.isValid || !formik.dirty) || formik.isSubmitting;
@@ -228,8 +228,7 @@ const AddSalesTax = memo(()=> {
                                         onClick={onClickBack}
                                         data-test="cancel"
                                     >
-                                        {/* {t("buttons.cancel")} */}
-                                        cancelll
+                                        {t("buttons.cancel")}
                                     </Button>
                                     <Button
                                         type="submit"
