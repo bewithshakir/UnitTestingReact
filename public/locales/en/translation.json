@@ -105,7 +105,9 @@
     "sortBy": {
       "atoz": "Lot Name A-Z",
       "ztoa": "Lot Name Z-A"
-    },
+    }
+  },
+  "taxes": {
     "navBar": {
       "fuelTax": "Fuel Tax",
       "salesTax": "Sales Tax",

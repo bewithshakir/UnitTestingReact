@@ -52,8 +52,8 @@ export default function HorizontalBar (props: HorizontalBarProps) {
     resetFormFieldValue(false);
     if (pathname.includes('addLot') || pathname.includes('addFuelTax')) {
       history.goBack();
-    } 
-    else if(pathname.includes('addSalesTax')) {
+    }
+    else if (pathname.includes('addSalesTax')) {
       history.push('/salesTax');
     }
     else {
@@ -86,7 +86,7 @@ export default function HorizontalBar (props: HorizontalBarProps) {
   function varsionNavLinks () {
     if (pathname.includes('taxes') || pathname.includes('salesTax')) {
       return (<>
-        <div className={pathname.includes('taxes') ? 'linkitem active': 'linkitem'}>
+        <div className={pathname.includes('taxes') ? 'linkitem active' : 'linkitem'}>
           <NavLink
             className="breadcrubs-title"
             to="/"
@@ -172,7 +172,7 @@ export default function HorizontalBar (props: HorizontalBarProps) {
       </Breadcrumbs>
     </>);
   }
- 
+
   return (
     <>
       <div className="app__header">
@@ -194,7 +194,7 @@ export default function HorizontalBar (props: HorizontalBarProps) {
               size="small"
               startIcon={<SvgIcon component={BackIcon} />}
             />)}
-            
+
             {
               (version === "Breadcrumbs-Single" || pathname.includes('addSalesTax')) ?
                 versionBreadcrumbsSingle() :
