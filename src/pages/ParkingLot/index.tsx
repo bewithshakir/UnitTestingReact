@@ -160,8 +160,9 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
               <SearchInput
                 name="searchTerm"
                 value={searchTerm}
-                delay={500}
+                delay={600}
                 onChange={onInputChange}
+                placeholder={t('parkingLot.search')}
               />
             </Grid>
             {

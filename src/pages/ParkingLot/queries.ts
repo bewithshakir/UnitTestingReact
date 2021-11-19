@@ -27,7 +27,7 @@ const getParkingLotDetails = async (pageParam: number, searchTerm: string, sortO
     return data;
 };
 export const useGetParkingLotDetails = (query: string, sortOrder: { sortBy: string, order: string }, filterParams: { [key: string]: string[] }, customerId: string) => {
-    return useInfiniteQuery(["getParkingLotList", query, sortOrder, filterParams, customerId], ({ pageParam = 0 }) => getParkingLotDetails(pageParam, query, sortOrder, filterParams, customerId), {
+    return useInfiniteQuery(["getParkingLots", query, sortOrder, filterParams, customerId], ({ pageParam = 0 }) => getParkingLotDetails(pageParam, query, sortOrder, filterParams, customerId), {
         getNextPageParam: (lastGroup: any) => {
             if (lastGroup.data.pagination.offset < lastGroup.data.pagination.totalCount) {
                 return lastGroup.data.pagination.offset + pageDataLimit;
