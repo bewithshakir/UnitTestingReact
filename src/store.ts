@@ -4,25 +4,31 @@ import { DateRange } from '@mui/lab/DateRangePicker';
 
 type DatePickerRange = DateRange<Date>;
 
-export interface HorizontalBarVersionState{
-    version: string
-    setVersion: (version:string)=>void
+export interface HorizontalBarVersionState {
+  version: string
+  setVersion: (version: string) => void
 }
 
 interface customerFilterFormObj {
-    state?: any[],
-    city?: any[],
-    paymentType?: any[],
-    date: DatePickerRange
+  state?: any[],
+  city?: any[],
+  paymentType?: any[],
+  date: DatePickerRange
 }
 
-interface customerFilterState{
-    filterFormData: customerFilterFormObj | null,
-    setFormData: (...args: any) => void,
-    removeFormData: (...args: any) => void,
+interface customerFilterState {
+  filterFormData: customerFilterFormObj | null,
+  setFormData: (...args: any) => void,
+  removeFormData: (...args: any) => void,
 }
 
-interface addedCustomerIdState{
+interface IFilterState {
+  filterFormData: { [k: string]: any } | null,
+  setFormData: (...args: any) => void,
+  removeFormData: (...args: any) => void,
+}
+
+interface addedCustomerIdState {
   customerId: string,
   setCustomerId: (...args: any) => void,
   removeCustomerId: (...args: any) => void,
@@ -42,28 +48,36 @@ interface showConfirmationDialogBox {
   resetFormFieldValue: (...args: any) => void,
 }
 
-export const useStore  = create<HorizontalBarVersionState>((persist(
-    (set) => ({
-      version: "NavLinks",
-      setVersion: (version:string) => set((state) => ({ ...state,version })),
-    }),
-    {
-      name: "hortizontalBarVerion"
-    }
-  ))
+export const useStore = create<HorizontalBarVersionState>((persist(
+  (set) => ({
+    version: "NavLinks",
+    setVersion: (version: string) => set((state) => ({ ...state, version })),
+  }),
+  {
+    name: "hortizontalBarVerion"
+  }
+))
 );
 
-export const useCustomerFilterStore  = create<customerFilterState>((set) => ({
-    filterFormData: null,
-    setFormData: (filterFormData:customerFilterFormObj|null) =>set(() => ({filterFormData})),
-    removeFormData:  () =>set(() => ({filterFormData:null})),
+/** @deprecated use filterStore instead */
+export const useCustomerFilterStore = create<customerFilterState>((set) => ({
+  filterFormData: null,
+  setFormData: (filterFormData: customerFilterFormObj | null) => set(() => ({ filterFormData })),
+  removeFormData: () => set(() => ({ filterFormData: null })),
 }));
 
 
-export const useAddedCustomerIdStore  = create<addedCustomerIdState>((set) => ({
+export const filterStore = create<IFilterState>((set) => ({
+  filterFormData: null,
+  setFormData: (filterFormData: { [k: string]: any } | null) => set(() => ({ filterFormData })),
+  removeFormData: () => set(() => ({ filterFormData: null })),
+}));
+
+
+export const useAddedCustomerIdStore = create<addedCustomerIdState>((set) => ({
   customerId: '',
-  setCustomerId: (customerId:string) =>set(() => ({customerId})),
-  removeCustomerId:  () =>set(() => ({customerId:''})),
+  setCustomerId: (customerId: string) => set(() => ({ customerId })),
+  removeCustomerId: () => set(() => ({ customerId: '' })),
 }));
 
 export const useAddedCustomerNameStore = create<addedCustomerNameState>((set) => ({

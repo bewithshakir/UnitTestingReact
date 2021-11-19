@@ -36,10 +36,10 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
   const [info, setInfo] = React.useState({});
   const [searchTerm, setSearchTerm] = React.useState("");
   const [drawerOpen, setDrawerOpen] = React.useState(false);
-  const [sortOrder, setSortOrder] = React.useState<{ sortBy: string, order: string }>({ sortBy: "customerName", order: "asc" });
+  const [sortOrder, setSortOrder] = React.useState<{ sortBy: string, order: string }>({ sortBy: "deliveryLocationNm", order: "asc" });
   const [filterData, setFilterData] = React.useState<{ [key: string]: string[] }>({});
   const [custFilterPanelVisible, setCustFilterPanelVisible] = React.useState(false);
-  const [parkingLotlist, setCustomerList] = React.useState([]);
+  const [parkingLotlist, setParkingLotList] = React.useState([]);
   const customerId = useAddedCustomerIdStore((state) => state.customerId);
 
   const { t } = useTranslation();
@@ -75,7 +75,7 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
     let sortOrder;
     switch (value) {
       case "paymentCompleted":
-        sortOrder = { sortBy: "customerName", order: "desc" };
+        sortOrder = { sortBy: "deliveryLocationNm", order: "desc" };
         break;
       case "paymentInProgress":
         sortOrder = { sortBy: "date", order: "desc" };
@@ -84,7 +84,7 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
         sortOrder = { sortBy: "date", order: "asc" };
         break;
       default:
-        sortOrder = { sortBy: "customerName", order: "asc" };
+        sortOrder = { sortBy: "deliveryLocationNm", order: "asc" };
         break;
     }
     setSortOrder(sortOrder);
@@ -98,7 +98,7 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
       data?.pages?.forEach((item: any) => {
         list.push(...item.data.lots);
       });
-      setCustomerList(list);
+      setParkingLotList(list);
     }
   }, [data]);
   const handleCustFilterPanelOpen = () => {
@@ -164,8 +164,9 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
               <SearchInput
                 name="searchTerm"
                 value={searchTerm}
-                delay={500}
+                delay={600}
                 onChange={onInputChange}
+                placeholder={t('parkingLot.search')}
               />
             </Grid>
             {
