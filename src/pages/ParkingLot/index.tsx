@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React, { SyntheticEvent, useEffect } from "react";
 import { Button } from "../../components/UIComponents/Button/Button.component";
 import { useTranslation } from "react-i18next";
@@ -14,7 +15,7 @@ import { useHistory } from "react-router-dom";
 import { sortByOptions } from "./config";
 import { RightInfoPanel } from "../../components/UIComponents/RightInfoPanel/RightInfoPanel.component";
 import { Box, FormControl, Grid, Typography } from "@mui/material";
-import { HorizontalBarVersionState, useStore, useAddedCustomerIdStore, useAddedCustomerNameStore, useShowConfirmationDialogBoxStore } from "../../store";
+import { HorizontalBarVersionState, useStore, useAddedCustomerIdStore, useShowConfirmationDialogBoxStore, useAddedCustomerNameStore } from "../../store";
 import ParkingLotModel from "../../models/ParkingLotModel";
 import { DataGridActionsMenuOption } from "../../components/UIComponents/Menu/DataGridActionsMenu.component";
 import { ParkingLotNoDataIcon } from '../../assets/icons';
@@ -71,17 +72,11 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
     history.push(`/customer/${customerId}/parkingLots/addLot`);
   };
 
-  const onSortBySlected = (value: string) => {
+  const onSortBySelected = (value: string) => {
     let sortOrder;
     switch (value) {
-      case "paymentCompleted":
+      case "Lot Name Z-A":
         sortOrder = { sortBy: "deliveryLocationNm", order: "desc" };
-        break;
-      case "paymentInProgress":
-        sortOrder = { sortBy: "date", order: "desc" };
-        break;
-      case "recentlyAddedLots":
-        sortOrder = { sortBy: "date", order: "asc" };
         break;
       default:
         sortOrder = { sortBy: "deliveryLocationNm", order: "asc" };
@@ -89,6 +84,7 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
     }
     setSortOrder(sortOrder);
   };
+
   const onInputChange = (value: string) => {
     setSearchTerm(value);
   };
@@ -156,7 +152,7 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
               <FormControl>
                 <SortbyMenu
                   options={sortByOptions.map((sortByItem) => t(sortByItem))}
-                  onSelect={(value) => onSortBySlected(value)}
+                  onSelect={(value) => onSortBySelected(value)}
                 />
               </FormControl>
             </Grid>

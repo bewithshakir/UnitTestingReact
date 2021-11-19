@@ -1,7 +1,6 @@
 export const sortByOptions = [
-    "parkingLot.sortBy.paymentCompleted",
-    "parkingLot.sortBy.paymentInProgress",
-    "parkingLot.sortBy.recentlyAddedLots"
+    "parkingLot.sortBy.atoz",
+    "parkingLot.sortBy.ztoa"
   ];
 
   export const addLotHeaderConfig = [
