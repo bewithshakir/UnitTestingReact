@@ -9,10 +9,7 @@ import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 
 Enzyme.configure({ adapter: new Adapter() });
 
-jest.mock("react-i18next", () => {
-    return {
-        useTranslation: jest.fn().mockReturnValue({
-            t: jest.fn()
-        }),
-    };
-});
+jest.mock("react-i18next", () => ({
+    useTranslation: () => ({ t: (key: any) => key }),
+    Trans: ({ children }) => children
+}));

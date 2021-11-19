@@ -10,7 +10,7 @@ import ActionsMenu from "../../components/UIComponents/Menu/ActionsMenu.componen
 import { Add } from "@mui/icons-material";
 import { useHistory } from "react-router-dom";
 import TaxModel from '../../models/TaxModel';
-import { fuelTaxListSet } from './queries';
+import { useFuelTaxList } from './queries';
 import GridComponent from "../../components/UIComponents/DataGird/grid.component";
 import { DataGridActionsMenuOption } from '../../components/UIComponents/Menu/DataGridActionsMenu.component';
 import { FuelTax, MASS_ACTION_TYPES } from './config';
@@ -18,6 +18,7 @@ import { FuelTax, MASS_ACTION_TYPES } from './config';
 
 const TaxLandingContent = memo(() => {
   const [searchTerm, setSearchTerm] = React.useState("");
+  const [sortOrder, setSortOrder] = React.useState<{ sortBy: string, order: string }>({ sortBy: "", order: "" });
   const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
   setVersion("NavLinks");
   const { t } = useTranslation();
@@ -44,8 +45,9 @@ const TaxLandingContent = memo(() => {
     }
   };
 
-  const { data, fetchNextPage, isLoading, isFetching }: any = fuelTaxListSet(
-    searchTerm
+  const { data, fetchNextPage, isLoading, isFetching }: any = useFuelTaxList(
+    searchTerm,
+    sortOrder,
   );
 
   useEffect(() => {
@@ -65,20 +67,17 @@ const TaxLandingContent = memo(() => {
   const onSortBySlected = (value: string) => {
     let sortOrder;
     switch (value) {
-      case "Z-A":
-        sortOrder = { sortBy: "customerName", order: "desc" };
+      case "City Name A-Z":
+        sortOrder = { sortBy: "cityName", order: "asc" };
         break;
-      case "Newest to Oldest":
-        sortOrder = { sortBy: "date", order: "desc" };
-        break;
-      case "Oldest to New":
-        sortOrder = { sortBy: "date", order: "asc" };
+      case "City Name Z-A":
+        sortOrder = { sortBy: "cityName", order: "desc" };
         break;
       default:
-        sortOrder = { sortBy: "customerName", order: "asc" };
+        sortOrder = { sortBy: "", order: "" };
         break;
     }
-    alert(sortOrder);
+    setSortOrder(sortOrder);
   };
 
   return (

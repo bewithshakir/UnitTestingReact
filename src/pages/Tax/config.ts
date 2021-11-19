@@ -1,5 +1,34 @@
 import { ExportIcon } from '../../assets/icons';
 
+export type ProductType = {
+  cityFuelTax: number
+  countyFuelTax: number
+  currencyCd: string
+  endDate: string
+  fedFuelTax: number
+  miscInspFuelTax: number
+  miscLoadFuelTax: number
+  miscLocalFuelTax: number
+  productCd: string
+  productClassCd: string
+  productGroupCd: string
+  productId: string
+  revenueFuelRate: number
+  saleableProductNm: string
+  salesFuelRate: number
+  startDate: string
+  stateFuelTax: number
+}
+export type FuelTaxType = {
+  cityName: string,
+  countryName: string,
+  stateName: string
+  taxJurisdictionId: string,
+}
+export interface FuelListData extends FuelTaxType {
+  products: ProductType[],
+}
+
 export const MASS_ACTION_TYPES = {
   EXPORT: 'export',
 };
@@ -7,10 +36,8 @@ export const MASS_ACTION_TYPES = {
 export const FuelTax = {
   LandingPage: {
     SortByOptions: [
-      "customerManagement.sortBy.atoz",
-      "customerManagement.sortBy.ztoa",
-      "customerManagement.sortBy.newestToOldest",
-      "customerManagement.sortBy.oldestToNew",
+      "taxes.fuelTax.sortBy.cityname_atoz",
+      "taxes.fuelTax.sortBy.cityname_ztoa",
     ],
     MassActionOptions: [
       {
@@ -27,7 +54,7 @@ export const FuelTax = {
         field: "stateName", label: "STATE"
       },
       "PRODUCT": {
-        field: "stateName", label: "STATE"
+        field: "productCount", label: "PRODUCT"
       }
     },
   }

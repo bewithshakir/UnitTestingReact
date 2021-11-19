@@ -1,6 +1,6 @@
 import moment from 'moment';
 import { headerObj } from './../components/UIComponents/DataGird/grid.component';
-import { FuelTax } from '../pages/Tax/config';
+import { FuelTax, FuelListData } from '../pages/Tax/config';
 import { OilCanIcon } from '../assets/icons';
 import { useTranslation } from 'react-i18next';
 
@@ -53,8 +53,8 @@ export default class TaxModel {
         return MassActionOptions.map(actionItem => ({ ...actionItem, label: t(actionItem.label) }));
     }
 
-    dataModel (data: any) {
-        return data.map((obj: any) => ({
+    dataModel (data: FuelListData[]) {
+        return data.map((obj) => ({
             ...obj,
             productCount: obj.products?.length || 0
         }));
@@ -65,7 +65,7 @@ export default class TaxModel {
         return [
             { field: CITY.field, label: CITY.label, type: 'text', align: 'left', sortable: true },
             { field: STATE.field, label: STATE.label, type: 'text', align: 'left' },
-            { field: PRODUCT.field, label: PRODUCT.field, type: 'button', align: 'left', icon: OilCanIcon },
+            { field: PRODUCT.field, label: PRODUCT.label, type: 'button', align: 'left', icon: OilCanIcon },
             { field: "", label: "", type: 'text', align: 'left' },
             { field: "", label: "", type: 'text', align: 'left' },
             { field: "", label: "", type: 'text', align: 'left' },
