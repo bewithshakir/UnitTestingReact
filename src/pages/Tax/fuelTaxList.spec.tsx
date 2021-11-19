@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import TaxModel from '../../models/TaxModel';
 import ActionsMenu from '../../components/UIComponents/Menu/ActionsMenu.component';
 import SortbyMenu from '../../components/UIComponents/Menu/SortbyMenu.component';
-import { sortByOptions } from './config';
+import { FuelTax } from './config';
 
 jest.mock("react-query", () => {
     return {
@@ -54,7 +54,6 @@ jest.mock("react-query", () => {
 describe('Given Bruger Menu on FuelTax Landing Page', () => {
     const TaxObj = new TaxModel();
     const massActionOptions = TaxObj.massActions();
-
     test('Render Bruger Menu', () => {
         const FuelTaxBurgerMenu = shallow(
             <ActionsMenu
@@ -80,10 +79,11 @@ describe('Given Bruger Menu on FuelTax Landing Page', () => {
 });
 
 describe('Given Sortby Menu on FuelTax Landing Page', () => {
+    const { SortByOptions } = FuelTax.LandingPage;
     test('Render Sortby Menu', () => {
         const FuelTaxSortbyMenu = shallow(
             <SortbyMenu
-                options={sortByOptions.map((sortByItem) => (sortByItem))}
+                options={SortByOptions.map((sortByItem) => (sortByItem))}
                 onSelect={() => jest.fn()}
             />
         );
@@ -93,7 +93,7 @@ describe('Given Sortby Menu on FuelTax Landing Page', () => {
     test('Sortby Menu Menu With Options', () => {
         const FuelTaxSortbyMenu = shallow(
             <SortbyMenu
-                options={sortByOptions.map((sortByItem) => (sortByItem))}
+                options={SortByOptions.map((sortByItem) => (sortByItem))}
                 onSelect={() => jest.fn()}
             />
         );

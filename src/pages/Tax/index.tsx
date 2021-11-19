@@ -4,7 +4,6 @@ import { Box, Grid, FormControl } from "@mui/material";
 import { Button } from "../../components/UIComponents/Button/Button.component";
 import { FilterIcon } from "../../assets/icons";
 import SortbyMenu from "../../components/UIComponents/Menu/SortbyMenu.component";
-import { sortByOptions } from "./config";
 import { useTranslation } from "react-i18next";
 import SearchInput from "../../components/UIComponents/SearchInput/SearchInput";
 import ActionsMenu from "../../components/UIComponents/Menu/ActionsMenu.component";
@@ -13,6 +12,8 @@ import { useHistory } from "react-router-dom";
 import TaxModel from '../../models/TaxModel';
 import { useFuelTaxList } from './queries';
 import GridComponent from "../../components/UIComponents/DataGird/grid.component";
+import { DataGridActionsMenuOption } from '../../components/UIComponents/Menu/DataGridActionsMenu.component';
+import { FuelTax, MASS_ACTION_TYPES } from './config';
 
 
 const TaxLandingContent = memo(() => {
@@ -26,7 +27,7 @@ const TaxLandingContent = memo(() => {
   const massActionOptions = TaxObj.massActions();
   const [fuelTaxList, setFuelTaxList] = React.useState([]);
   const headCells = TaxObj.fieldsToDisplay();
-
+  const { SortByOptions } = FuelTax.LandingPage;
   const onInputChange = (value: string) => {
     setSearchTerm(value);
   };
@@ -35,8 +36,13 @@ const TaxLandingContent = memo(() => {
     history.push("/addFuelTax");
   };
 
-  const handleMassAction = () => {
-    return '';
+  const handleMassAction = (action: DataGridActionsMenuOption) => {
+    switch (action.action) {
+      case MASS_ACTION_TYPES.EXPORT:
+        // perform action
+        break;
+      default: return;
+    }
   };
 
   const { data, fetchNextPage, isLoading, isFetching }: any = useFuelTaxList(
@@ -91,7 +97,7 @@ const TaxLandingContent = memo(() => {
             <Grid item pr={2.5}>
               <FormControl>
                 <SortbyMenu
-                  options={sortByOptions.map((sortByItem) => t(sortByItem))}
+                  options={SortByOptions.map((sortByItem) => t(sortByItem))}
                   onSelect={(value) => onSortBySlected(value)}
                 />
               </FormControl>
