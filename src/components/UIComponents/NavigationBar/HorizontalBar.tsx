@@ -78,9 +78,9 @@ export default function HorizontalBar (props: HorizontalBarProps) {
   }
 
   function varsionNavLinks () {
-    if (pathname === '/taxes') {
+    if (pathname.includes('taxes') || pathname.includes('salesTax')) {
       return (<>
-        <div className="linkitem active">
+        <div className={pathname.includes('taxes') ? 'linkitem active': 'linkitem'}>
           <NavLink
             className="breadcrubs-title"
             to="/"
@@ -88,7 +88,7 @@ export default function HorizontalBar (props: HorizontalBarProps) {
             {t("taxes.navBar.fuelTax")}
           </NavLink>
         </div>
-        <div className="linkitem">
+        <div className={pathname.includes('salesTax') ? 'linkitem active' : "linkitem"}>
           <NavLink className="breadcrubs-title" to="/salesTax" onClick={handleClick}>
             {t("taxes.navBar.salesTax")}
           </NavLink>
