@@ -15,7 +15,7 @@ import { useHistory } from "react-router-dom";
 import { sortByOptions } from "./config";
 import { RightInfoPanel } from "../../components/UIComponents/RightInfoPanel/RightInfoPanel.component";
 import { Box, FormControl, Grid, Typography } from "@mui/material";
-import { HorizontalBarVersionState, useStore, useAddedCustomerIdStore, useAddedCustomerNameStore, useShowConfirmationDialogBoxStore } from "../../store";
+import { HorizontalBarVersionState, useStore, useAddedCustomerIdStore, useShowConfirmationDialogBoxStore, useAddedCustomerNameStore } from "../../store";
 import ParkingLotModel from "../../models/ParkingLotModel";
 import { DataGridActionsMenuOption } from "../../components/UIComponents/Menu/DataGridActionsMenu.component";
 import { ParkingLotNoDataIcon } from '../../assets/icons';
@@ -75,7 +75,7 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
   const onSortBySelected = (value: string) => {
     let sortOrder;
     switch (value) {
-      case "Z-A":
+      case "Lot Name Z-A":
         sortOrder = { sortBy: "deliveryLocationNm", order: "desc" };
         break;
       default:

@@ -86,8 +86,8 @@
   },
   "customerManagement": {
     "sortBy": {
-      "atoz": "A-Z",
-      "ztoa": "Z-A",
+      "atoz": "Customer Name A-Z",
+      "ztoa": "Customer Name Z-A",
       "newestToOldest": "Newest to Oldest",
       "oldestToNew": "Oldest to New"
     },
@@ -103,8 +103,8 @@
   "parkingLot": {
     "search": "Parking Lot Name",
     "sortBy": {
-      "atoz": "A-Z",
-      "ztoa": "Z-A"
+      "atoz": "Lot Name A-Z",
+      "ztoa": "Lot Name Z-A"
     },
     "navBar": {
       "fuelTax": "Fuel Tax",
