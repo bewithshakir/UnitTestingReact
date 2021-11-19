@@ -186,19 +186,10 @@ export default function HorizontalBar (props: HorizontalBarProps) {
               startIcon={<SvgIcon component={BackIcon} />}
             />)
             }
-
-            {(version === "NavLinks" && pathname.includes('addSalesTax')) && (<Button
-              types="profile"
-              aria-label="back button"
-              onClick={handleBack}
-              size="small"
-              startIcon={<SvgIcon component={BackIcon} />}
-            />)}
-
             {
-              (version === "Breadcrumbs-Single" || pathname.includes('addSalesTax')) ?
+              (version === "Breadcrumbs-Single") ?
                 versionBreadcrumbsSingle() :
-                (version === "NavLinks" || !pathname.includes('addSalesTax')) ?
+                (version === "NavLinks") ?
                   varsionNavLinks() :
                   version === "Breadcrumbs-Many" ?
                     versionBreadcrumbsMany() :
