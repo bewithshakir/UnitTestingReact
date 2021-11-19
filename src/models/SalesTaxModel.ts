@@ -14,9 +14,13 @@ export default class SalesTaxModel {
     cityFuelRate: string;
     countryFuelRate: string;
     InspFuelRate: string;
-    miscLocalFuelRate: string;    
+    miscLocalFuelRate: string;  
+    addressLine1: string;
+    stateRate: string;
 
     constructor() {
+        this.addressLine1 = '';
+        this.stateRate = '';
         this.taxJurisdictionId = '';
         this.state = '';
         this.city = '';

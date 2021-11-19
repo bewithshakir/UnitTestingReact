@@ -45,7 +45,7 @@ const SalesTaxLandingContent = memo(() => {
 
   const navigateHomePage = () => {
     // TO DO
-    history.push("/salesTax/Add");
+    history.push("/addSalesTax");
   };
 
   const onSortBySlected = (value: string) => {

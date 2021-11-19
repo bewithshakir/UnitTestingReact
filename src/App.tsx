@@ -7,6 +7,7 @@ import {
 import { ReactQueryDevtools } from 'react-query/devtools';
 import { useTheme } from './contexts/Theme/Theme.context';
 import SideBarDrawer from './components/UIComponents/SideBarMenu/SideBarMenu.component';
+import './AppStyle.scss';
 
 
 const App = (): JSX.Element => {
@@ -21,7 +22,6 @@ const App = (): JSX.Element => {
   return (
     <QueryClientProvider client={queryClient}>
       <Router>
-
         <div style={{
           ...theme
         } as React.CSSProperties}>
