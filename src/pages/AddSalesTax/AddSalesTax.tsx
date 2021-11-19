@@ -133,7 +133,8 @@ const AddSalesTax = memo(()=> {
         <Box display="flex" className="global_main_wrapper">
             <Grid item md={10} xs={10}>
                 <Container maxWidth="lg" className="page-container">
-                    <form onSubmit={formik.handleSubmit}>
+                    <form onSubmit={formik.handleSubmit} data-test="component-AddSalesTax">
+
                         <Typography color="var(--Darkgray)" variant="h3" gutterBottom className="fw-bold" mb={1} pt={3}>
                             Fill all the Mandatory fields *
                         </Typography>
@@ -149,6 +150,7 @@ const AddSalesTax = memo(()=> {
                                         helperText={(formik.touched.addressLine1 && formik.errors.addressLine1) ? formik.errors.addressLine1 : undefined}
                                         error={(formik.touched.addressLine1 && formik.errors.addressLine1) ? true : false}
                                         required
+                                        data-test="auto-complete-input"
                                     />
                                 </Grid>
                             </Grid>
@@ -163,6 +165,7 @@ const AddSalesTax = memo(()=> {
                                         error={(formik.touched.city && formik.errors.city) ? true : false}
                                         description=''
                                         {...formik.getFieldProps('city')}
+                                        data-test="city"
                                     />
                                     
                                 </Grid>
@@ -178,6 +181,7 @@ const AddSalesTax = memo(()=> {
                                         helperText={(formik.touched.state && formik.errors.state) ? formik.errors.state : undefined}
                                         error={(formik.touched.state && formik.errors.state) ? true : false}
                                         {...formik.getFieldProps('state')}
+                                        data-test="state"
                                     />
                                 </Grid>
                             </Grid>
@@ -193,6 +197,7 @@ const AddSalesTax = memo(()=> {
                                         error={(formik.touched.stateRate && formik.errors.stateRate) ? true : false}
                                         {...formik.getFieldProps('stateRate')}
                                         required
+                                        data-test="stateRate"
                                     />
                                 </Grid>
                             </Grid>
@@ -208,6 +213,7 @@ const AddSalesTax = memo(()=> {
                                         error={(formik.touched.localRate && formik.errors.localRate) ? true : false}
                                         {...formik.getFieldProps('localRate')}
                                         required
+                                        data-test="localRate"
                                     />
                                 </Grid>
                             </Grid>
@@ -220,8 +226,10 @@ const AddSalesTax = memo(()=> {
                                         aria-label="cancel"
                                         className="mr-4"
                                         onClick={onClickBack}
+                                        data-test="cancel"
                                     >
-                                        {t("buttons.cancel")}
+                                        {/* {t("buttons.cancel")} */}
+                                        cancelll
                                     </Button>
                                     <Button
                                         type="submit"
@@ -229,6 +237,7 @@ const AddSalesTax = memo(()=> {
                                         aria-label="save"
                                         className="ml-4"
                                         disabled={disableButton()}
+                                        data-test="save"
                                     >
                                         {t("buttons.save")}
                                     </Button>

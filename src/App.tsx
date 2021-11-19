@@ -22,7 +22,6 @@ const App = (): JSX.Element => {
   return (
     <QueryClientProvider client={queryClient}>
       <Router>
-
         <div style={{
           ...theme
         } as React.CSSProperties}>
