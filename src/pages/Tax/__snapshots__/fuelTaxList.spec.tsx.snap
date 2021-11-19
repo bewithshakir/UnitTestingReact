@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Given Bruger Menu on FuelTax Landing Page Render Bruger Menu 1`] = `
+<div>
+  <WithStyles(ForwardRef(Button))
+    aria-haspopup="true"
+    aria-label="actions menu list"
+    className="btn-listmemu "
+    onClick={[Function]}
+    size="small"
+    startIcon={
+      <WithStyles(ForwardRef(SvgIcon))
+        component={[Function]}
+        viewBox="0 0 20 20"
+      />
+    }
+    variant="contained"
+  />
+  <ForwardRef(Popper)
+    anchorEl={null}
+    className="actions-popper"
+    disablePortal={true}
+    open={false}
+    placement="bottom-end"
+    transition={true}
+  >
+    <Component />
+  </ForwardRef(Popper)>
+</div>
+`;
