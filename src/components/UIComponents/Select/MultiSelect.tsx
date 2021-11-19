@@ -7,8 +7,9 @@ import { ArrowDown, CheckedCheckboxIcon as Check, UncheckedCheckboxIcon as UnChe
 
 
 type item = {
-    label: string,
-    value: string | number
+    label: string ,
+    value: string | number,
+    icon?: JSX.Element
 }
 interface props {
     id?: string;
@@ -66,7 +67,7 @@ export default function MultiSelect(props: props) {
                 <Fragment>
                     <span className='box'>
                         {props.isSelected ? <Check /> : <UnCheck />}
-                        <label>{props.label}</label>
+                        {props.data.icon && <span className="icon-svg">{props.data.icon}</span>} <label className="label-text" >{props.label} </label>
                     </span>
                 </Fragment>
             </components.Option>
