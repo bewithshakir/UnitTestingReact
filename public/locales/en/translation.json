@@ -97,9 +97,8 @@
   },
   "parkingLot": {
     "sortBy": {
-      "paymentCompleted": "Payment Completed",
-      "paymentInProgress": "Payment In Progress",
-      "recentlyAddedLots": "Recently Added Lots"
+      "atoz": "A-Z",
+      "ztoa": "Z-A"
     },
     "navBar": {
       "fuelTax": "Fuel Tax",

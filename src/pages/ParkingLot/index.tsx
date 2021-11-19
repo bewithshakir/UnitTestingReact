@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React, { SyntheticEvent, useEffect } from "react";
 import { Button } from "../../components/UIComponents/Button/Button.component";
 import { useTranslation } from "react-i18next";
@@ -36,10 +37,10 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
   const [info, setInfo] = React.useState({});
   const [searchTerm, setSearchTerm] = React.useState("");
   const [drawerOpen, setDrawerOpen] = React.useState(false);
-  const [sortOrder, setSortOrder] = React.useState<{ sortBy: string, order: string }>({ sortBy: "customerName", order: "asc" });
+  const [sortOrder, setSortOrder] = React.useState<{ sortBy: string, order: string }>({ sortBy: "deliveryLocationNm", order: "asc" });
   const [filterData, setFilterData] = React.useState<{ [key: string]: string[] }>({});
   const [custFilterPanelVisible, setCustFilterPanelVisible] = React.useState(false);
-  const [parkingLotlist, setCustomerList] = React.useState([]);
+  const [parkingLotlist, setParkingLotList] = React.useState([]);
   const customerId = useAddedCustomerIdStore((state) => state.customerId);
 
   const { t } = useTranslation();
@@ -71,24 +72,19 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
     history.push(`/customer/${customerId}/parkingLots/addLot`);
   };
 
-  const onSortBySlected = (value: string) => {
+  const onSortBySelected = (value: string) => {
     let sortOrder;
     switch (value) {
-      case "paymentCompleted":
-        sortOrder = { sortBy: "customerName", order: "desc" };
-        break;
-      case "paymentInProgress":
-        sortOrder = { sortBy: "date", order: "desc" };
-        break;
-      case "recentlyAddedLots":
-        sortOrder = { sortBy: "date", order: "asc" };
+      case "Z-A":
+        sortOrder = { sortBy: "deliveryLocationNm", order: "desc" };
         break;
       default:
-        sortOrder = { sortBy: "customerName", order: "asc" };
+        sortOrder = { sortBy: "deliveryLocationNm", order: "asc" };
         break;
     }
     setSortOrder(sortOrder);
   };
+
   const onInputChange = (value: string) => {
     setSearchTerm(value);
   };
@@ -98,7 +94,7 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
       data?.pages?.forEach((item: any) => {
         list.push(...item.data.lots);
       });
-      setCustomerList(list);
+      setParkingLotList(list);
     }
   }, [data]);
   const handleCustFilterPanelOpen = () => {
@@ -156,7 +152,7 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
               <FormControl>
                 <SortbyMenu
                   options={sortByOptions.map((sortByItem) => t(sortByItem))}
-                  onSelect={(value) => onSortBySlected(value)}
+                  onSelect={(value) => onSortBySelected(value)}
                 />
               </FormControl>
             </Grid>
