@@ -496,7 +496,7 @@ const AddCustomer: React.FC = () => {
 
     const showDialogBox = useShowConfirmationDialogBoxStore((state) => state.showDialogBox);
     const isFormValidated = useShowConfirmationDialogBoxStore((state) => state.setFormFieldValue);
-    const isCheckBoxDisabled = () => (formik.values.paymentType.value === 'b40e6ddb-8119-4f9d-9d94-9f173a944111' ? false : true) || isEditMode ? true : isDisabled;
+    const isCheckBoxDisabled = () => formik.values.paymentType.value !== 'b40e6ddb-8119-4f9d-9d94-9f173a944111' || isEditMode ? true : isDisabled;
 
     const handleFormDataChange = () => {
         if (isEditMode) {
