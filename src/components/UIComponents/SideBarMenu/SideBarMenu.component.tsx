@@ -8,7 +8,7 @@ import logoTwo from '../../../assets/images/Shell Taup logo2.svg';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import { BriefCase64Icon, Invoice64Icon, ToggleList64Icon, Truck64Icon, DocumentFile64Icon, ToggleMail64Icon, ChartPie64Icon } from '../../../assets/icons';
-import { Link, Route, Switch, useHistory } from "react-router-dom";
+import { NavLink, Route, Switch, useHistory } from "react-router-dom";
 import HorizontalBar from '../NavigationBar/HorizontalBar';
 import { Fragment, Suspense } from 'react';
 import { routes } from '../../../routes';
@@ -36,17 +36,17 @@ const SideBarMenuoptions = [{
   index: 3,
   icon: <Truck64Icon />,
   text: 'Dashboard',
-  route: 'home'
+  route: 'home1'
 }, {
   index: 4,
   icon: <ToggleMail64Icon />,
   text: 'Dashboard',
-  route: 'home'
+  route: 'home2'
 }, {
   index: 5,
   icon: <ChartPie64Icon />,
   text: 'Dashboard',
-  route: 'home'
+  route: 'home3'
 },
 {
   index: 6,
@@ -69,10 +69,10 @@ const SideBarMenuoptions = [{
 //   children?: any
 // }
 
-export default function SideBarDrawer() {
+export default function SideBarDrawer () {
   const { themeType } = useTheme();
   const logoSrc = themeType === 'UK' ? logoOne : logoTwo;
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = React.useState(-1);
 
   const onSelectOptions = (value: number) => {
     if (value == 6) {
@@ -81,13 +81,15 @@ export default function SideBarDrawer() {
   };
 
   const handleChange = (event: React.ChangeEvent<any>, newValue: number) => {
+    // eslint-disable-next-line no-console
+    console.log("🚀 ~ file: SideBarMenu.component.tsx ~ line 85 ~ handleChange ~ newValue", newValue);
     setValue(newValue);
     onSelectOptions(newValue);
   };
 
 
   const history = useHistory();
-  function onClickBack() {
+  function onClickBack () {
     history.push("/");
   }
 
@@ -95,8 +97,8 @@ export default function SideBarDrawer() {
   return (
     <Box className={'sidebar-menu'}>
       <CssBaseline />
-      {routes.map((route,index) => {
-   
+      {routes.map((route, index) => {
+
         return (
           <Fragment key={index}>
             <HorizontalBar
@@ -122,14 +124,14 @@ export default function SideBarDrawer() {
                 className={'sidebarmenu_tabs'} >
                 {SideBarMenuoptions && SideBarMenuoptions.map((item, index) => {
                   return (
-                    <Tab className={'sidebarmenu_tab'} icon={item.icon} component={Link} to={item.route} key={index} />
+                    <Tab className={'sidebarmenu_tab'} activeClassName="Mui-selected" icon={item.icon} component={NavLink} to={item.route} key={index} />
                   );
                 })}
               </Tabs>
 
             </Drawer>
             <main className="content1">
-            <Suspense fallback={<Loader />}>
+              <Suspense fallback={<Loader />}>
                 <Switch>
                   <Route key={route.path} path={route.path} exact={route.exact}>
                     <Page route={route} />

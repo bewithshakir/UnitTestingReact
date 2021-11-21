@@ -1,6 +1,6 @@
 import React, { memo, useEffect } from 'react';
 import { HorizontalBarVersionState, useStore } from '../../store';
-import { Box, Grid, FormControl } from "@mui/material";
+import { Box, Grid, FormControl, Typography } from "@mui/material";
 import { Button } from "../../components/UIComponents/Button/Button.component";
 import { FilterIcon } from "../../assets/icons";
 import SortbyMenu from "../../components/UIComponents/Menu/SortbyMenu.component";
@@ -105,11 +105,20 @@ const TaxLandingContent = memo(() => {
             <Grid item>
               <SearchInput
                 name="searchTerm"
+                placeholder="City"
                 value={searchTerm}
                 delay={500}
                 onChange={onInputChange}
               />
             </Grid>
+            {
+              (searchTerm && !(isFetching || isLoading)) &&
+              <Grid item display="flex" alignItems="center" paddingLeft={2.5}>
+                <Typography color="var(--Darkgray)" variant="h4" align="center" className="fw-bold">
+                  {fuelTaxList.length} {fuelTaxList.length === 1 ? 'result(s)' : 'results'} found
+                </Typography>
+              </Grid>
+            }
           </Grid>
           <Grid item md={4} lg={3} display="flex" justifyContent="flex-end">
             <Grid item pr={2.5}>
@@ -143,7 +152,7 @@ const TaxLandingContent = memo(() => {
             getPages={fetchNextPage}
             searchTerm={searchTerm}
             openDrawer={openDrawer}
-            noDataMsg='Add Tax.'
+            noDataMsg='Add Fuel Tax by clicking on the " Add Tax" button.'
           />
         </Grid>
       </Grid>
