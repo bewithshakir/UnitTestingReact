@@ -36,10 +36,11 @@ export interface IDynamicFilterProps {
         initialValue: any
         /** options can be used in combination of select/multiCheckbox/radio */
         options?: { label: string; value: string;[k: string]: any }[];
+        /** Used to call API and show data on dropdown. Update src/infrastructure/filterQuery.ts if needed */
         optionUrlKey?: filterURLKey
         /** default value false */
         singleSelect?: boolean
-        /** like 'states' | 'cities' | 'settlementType' */
+        /** used to pick data from response body of API call for dropdown. like 'states' | 'cities' | 'settlementType' */
         optionAPIResponseKey?: string
     }[]
 }

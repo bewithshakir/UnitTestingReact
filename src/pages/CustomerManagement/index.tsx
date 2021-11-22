@@ -239,7 +239,7 @@ const Content: React.FC<ContentProps> = () => {
             searchTerm={searchTerm}
             getId={(id: string) => setCustomerId(id)}
             InnerTableComponent={<Table primaryKey='deliveryLocationId' id={customerId} headCells={headCellsLots} />}
-            noDataMsg='Add Customer by clicking on the " Add Customer" button.'
+            noDataMsg='Add Customer by clicking on the "Add Customer" button.'
           />
 
           <RightInfoPanel panelType="customer-filter"

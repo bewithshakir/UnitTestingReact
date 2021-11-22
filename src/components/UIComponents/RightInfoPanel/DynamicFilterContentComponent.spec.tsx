@@ -10,8 +10,8 @@ const filterByFields: IDynamicFilterProps['fields'] = [
     { name: 'state', label: 'customer-filter-panel.state', fieldType: 'select', optionUrlKey: 'customerFilter', optionAPIResponseKey: 'states', initialValue: [] },
     { name: 'city', label: 'customer-filter-panel.city', fieldType: 'select', optionUrlKey: 'customerFilter', optionAPIResponseKey: 'cities', initialValue: [] },
     { name: 'paymentType', label: 'customer-filter-panel.settlement type', fieldType: 'select', optionUrlKey: 'customerFilter', optionAPIResponseKey: 'settlementType', initialValue: [] },
-    // { name: 'multiselect', label: 'multi checkbox', fieldType: 'multiCheckbox', initialValue: [], options: [{ label: 'checkbox1', value: 'cb1' }, { label: 'cbbbb2', value: 'cb2' }, { label: 'cb3', value: 'cb3' }] },
-    // { name: 'radiotest', label: 'radio test', fieldType: 'radio', initialValue: null, options: [{ label: 'radio1', value: 'radiooo1' }, { label: 'radio2', value: 'radiooooo2' }] }
+    { name: 'multiselect', label: 'multi checkbox', fieldType: 'multiCheckbox', initialValue: [], options: [{ label: 'checkbox1', value: 'cb1' }, { label: 'cbbbb2', value: 'cb2' }, { label: 'cb3', value: 'cb3' }] },
+    { name: 'radiotest', label: 'radio test', fieldType: 'radio', initialValue: null, options: [{ label: 'radio1', value: 'radiooo1' }, { label: 'radio2', value: 'radiooooo2' }] }
 ];
 describe('Rendering of Dynamic filter component', () => {
 
@@ -53,13 +53,13 @@ describe('Rendering of Dynamic filter component', () => {
         expect(component).toBeDefined();
         expect(component).toMatchSnapshot();
     });
-    // it('Dynamic filter component snapshot testing with radio', () => {
-    //     const component = shallow(<DynamicFilterContent provideFilterParams={() => jest.fn()} onClose={() => jest.fn()} fields={[
-    //         { name: 'radiotest', label: 'radio test', fieldType: 'radio', initialValue: null, options: [{ label: 'radio1', value: 'radiooo1' }, { label: 'radio2', value: 'radiooooo2' }] }
-    //     ]} storeKey={'abc'} />);
-    //     expect(component).toBeDefined();
-    //     expect(component).toMatchSnapshot();
-    // });
+    it('Dynamic filter component snapshot testing with radio', () => {
+        const component = shallow(<DynamicFilterContent provideFilterParams={() => jest.fn()} onClose={() => jest.fn()} fields={[
+            { name: 'radiotest', label: 'radio test', fieldType: 'radio', initialValue: null, options: [{ label: 'radio1', value: 'radiooo1' }, { label: 'radio2', value: 'radiooooo2' }] }
+        ]} storeKey={'abc'} />);
+        expect(component).toBeDefined();
+        expect(component).toMatchSnapshot();
+    });
     it('Dynamic filter component snapshot testing with combined inputs', () => {
         const component = shallow(<DynamicFilterContent provideFilterParams={() => jest.fn()} onClose={() => jest.fn()} fields={filterByFields} storeKey={'abc'} />);
         expect(component).toBeDefined();
