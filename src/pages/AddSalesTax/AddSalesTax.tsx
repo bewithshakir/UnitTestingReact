@@ -11,9 +11,9 @@ import AddSalesTaxValidationSchema from "./validation";
 import AutocompleteInput from '../../components/UIComponents/GoogleAddressComponent/GoogleAutoCompleteAddress';
 import Input from '../../components/UIComponents/Input/Input';
 import { Button } from '../../components/UIComponents/Button/Button.component';
-import {useAddSalesTax} from './queries';
+import { useAddSalesTax } from './queries';
 import ToastMessage from '../../components/UIComponents/ToastMessage/ToastMessage.component';
-// import { useShowConfirmationDialogBoxStore } from '../../store';
+import { HorizontalBarVersionState, useStore } from '../../store';
 
 const initialValues = new SalesTaxModel();
 
@@ -44,10 +44,12 @@ const formStatusProps: IFormStatusProps = {
     }
 };
 
-const AddSalesTax = memo(()=> {
+const AddSalesTax = memo(() => {
     const [apiResposneState, setAPIResponse] = useState(false);
     // const [isDisabled, setDisabled] = useState(false);
     // const [isEditMode, setEditMode] = useState(false);
+    const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
+    setVersion("Breadcrumbs-Single");
     const history = useHistory();
     const { t } = useTranslation();
 
@@ -55,7 +57,7 @@ const AddSalesTax = memo(()=> {
         message: '',
         type: '',
     });
-    const onAddSalesTaxSuccess = () => {        
+    const onAddSalesTaxSuccess = () => {
         setAPIResponse(true);
         // setDisabled(true);
         setFormStatus(formStatusProps.success);
@@ -63,7 +65,7 @@ const AddSalesTax = memo(()=> {
             setAPIResponse(false);
         }, 6000);
     };
-    const onAddSalesTaxError = (err: any)=> {
+    const onAddSalesTaxError = (err: any) => {
         try {
             const { data } = err.response;
             setAPIResponse(true);
@@ -73,14 +75,14 @@ const AddSalesTax = memo(()=> {
             setTimeout(() => {
                 setAPIResponse(false);
             }, 6000);
-        } catch(error) {
+        } catch (error) {
             // console.log(error);
         }
     };
 
     const { mutate: addNewSalesTax } = useAddSalesTax(onAddSalesTaxError, onAddSalesTaxSuccess);
-    
-    const createNewSalesTax = (form: SalesTaxModel)=> {
+
+    const createNewSalesTax = (form: SalesTaxModel) => {
         try {
             const apiPayload = {
                 "countryCode": form.countryCd,
@@ -111,7 +113,7 @@ const AddSalesTax = memo(()=> {
         formik.setFieldValue('countryCd', 'us');
         formik.setFieldValue('federalRate', 0);
     };
-    const handleGoogleAddressBlur = ()=>{
+    const handleGoogleAddressBlur = () => {
         return null;
     };
 
@@ -167,7 +169,7 @@ const AddSalesTax = memo(()=> {
                                         {...formik.getFieldProps('city')}
                                         data-test="city"
                                     />
-                                    
+
                                 </Grid>
                             </Grid>
                             <Grid item xs={12} md={12} pr={2.5} pb={2.5}>
@@ -241,7 +243,7 @@ const AddSalesTax = memo(()=> {
                                         {t("buttons.save")}
                                     </Button>
                                 </Box>
-                                    <ToastMessage isOpen={apiResposneState} messageType={formStatus.type} onClose={() => { return ''; }} message={formStatus.message} />
+                                <ToastMessage isOpen={apiResposneState} messageType={formStatus.type} onClose={() => { return ''; }} message={formStatus.message} />
                             </Grid>
                         </Grid>
                     </form>

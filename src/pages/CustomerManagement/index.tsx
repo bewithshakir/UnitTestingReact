@@ -100,7 +100,7 @@ const Content: React.FC<ContentProps> = () => {
   const onSortBySlected = (value: string) => {
     let sortOrder;
     switch (value) {
-      case "Z-A":
+      case "Customer Name Z-A":
         sortOrder = { sortBy: "customerName", order: "desc" };
         break;
       case "Newest to Oldest":
