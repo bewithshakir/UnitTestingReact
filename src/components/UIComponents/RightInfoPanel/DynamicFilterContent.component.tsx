@@ -2,9 +2,10 @@ import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { filterStore } from "../../../store";
 import moment from "moment";
-import { Grid, FormControlLabel, Typography } from "@mui/material";
+import { Grid, FormControlLabel, Typography, FormControl } from "@mui/material";
 import { FormikProvider, useFormik } from 'formik';
 import Select from "../Select/MultiSelect";
+import SingleSelect from "../Select/SingleSelect";
 import { DatePickerInput } from "../DatePickerInput/DatePickerInput.component";
 import { DateRange } from '@mui/lab/DateRangePicker';
 import { Button } from "../Button/Button.component";
@@ -13,8 +14,8 @@ import { styled } from '@mui/system';
 import { filterURLKey } from '../../../infrastructure/filterQuery';
 import { SelectInput } from "./SelectInput";
 import Input from '../../../components/UIComponents/Input/Input';
-import Checkbox from '../../../components/UIComponents/Checkbox/Checkbox.component';
-
+import Checkbox from '../Checkbox/Checkbox.component';
+import Radio from '../Radio/Radio.component';
 type DatePickerRange = DateRange<Date>;
 
 interface filterParamsProps {
@@ -30,12 +31,17 @@ export interface IDynamicFilterProps {
         name: string;
         /** only translation supported */
         label: string;
-        fieldType: 'text' | 'dateRange' | 'select' | 'checkbox';
+        fieldType: 'text' | 'date' | 'dateRange' | 'select' | 'checkbox' | 'multiCheckbox' | 'radio';
+        /** don't pass undefined initialValue */
         initialValue: any
-        multiCheckboxOptions?: { label: string, value: string }[]
+        /** options can be used in combination of select/multiCheckbox/radio */
         options?: { label: string; value: string;[k: string]: any }[];
+        /** Used to call API and show data on dropdown. Update src/infrastructure/filterQuery.ts if needed */
         optionUrlKey?: filterURLKey
-        optionAPIResponseKey?: 'states' | 'cities' | 'settlementType'
+        /** default value false */
+        singleSelect?: boolean
+        /** used to pick data from response body of API call for dropdown. like 'states' | 'cities' | 'settlementType' */
+        optionAPIResponseKey?: string
     }[]
 }
 
@@ -121,9 +127,26 @@ export const DynamicFilterContent: React.FC<IDynamicFilterProps> = ({ provideFil
         createDateArr(newValue, filterParams, name);
     };
 
-    function handleSelect(name: string, value: any[]) {
+    function handleSelect(name: string, value: any, singleSelect?: boolean) {
         formik.setFieldValue(name, value);
-        filterParams[name] = value.map((obj: { label: string, value: string }) => obj.value);
+
+        filterParams[name] = singleSelect ? value.value : value.map((obj: { label: string, value: string }) => obj.value);
+    }
+    function handleMultiCheckboxChange(name: string, value: any[], itemValue: string, isChecked: boolean) {
+        const valueSet = new Set(value);
+        isChecked ? valueSet.add(itemValue) : valueSet.delete(itemValue);
+        const uniqueValue = Array.from(valueSet);
+        formik.setFieldValue(name, uniqueValue);
+        filterParams[name] = uniqueValue;
+    }
+    function handleRadioChange(name: string, itemValue: any, isChecked: boolean) {
+        if (isChecked) {
+            formik.setFieldValue(name, itemValue);
+            filterParams[name] = itemValue;
+        } else {
+            formik.setFieldValue(name, null);
+            delete filterParams[name];
+        }
     }
     function handleChange(name: string, value: any) {
         formik.setFieldValue(name, value);
@@ -170,47 +193,46 @@ export const DynamicFilterContent: React.FC<IDynamicFilterProps> = ({ provideFil
                         const error = (formik.errors as any)[field.name];
                         const value = (formik.values as any)[field.name];
                         return (
-                            field.fieldType === 'dateRange' ?
+                            field.fieldType === 'date' ?
                                 <Grid key={field.name} item xs={12} columnSpacing={2} container>
                                     <Grid item xs={12} className="cust_filter_date_label_grid">
-                                        {"Period".toUpperCase()}
+                                        {t(field.label)}
                                     </Grid>
                                     <Grid container item xs={12} spacing="2">
                                         <DatePickerInput
-                                            type="date-range"
-                                            id="cust-filter-date-range"
-                                            placeholder={{ start: t("customer-filter-panel.from date"), end: t("customer-filter-panel.to date") }}
+                                            type="single-date"
+                                            id="cust-filter-date"
+                                            placeholder={t(field.label)}
                                             name={field.name}
-                                            onDateRangeChange={(name, val) => onDateRangeChange(name, val)}
+                                            value={value}
+                                            onChange={(name, val) => handleChange(name, moment(val).format("MM-DD-YYYY"))}
                                             helperText={(touched && error) ? error : undefined}
                                             error={(touched && error) ? true : false}
                                             dateRangeValue={value}
-                                            required
                                         />
                                     </Grid>
-                                </Grid> :
-                                <Grid item xs={12} key={field.name}>
-                                    {field.fieldType === 'select' ?
-                                        (field.optionUrlKey && field.optionAPIResponseKey) ?
-                                            (< SelectInput field={{
-                                                ...field,
-                                                optionUrlKey: field.optionUrlKey,
-                                                optionAPIResponseKey: field.optionAPIResponseKey,
-                                                fieldType: 'select'
-                                            }}
-                                                handleSelect={handleSelect} formik={formik} />) :
-                                            <Select
-                                                id={field.name}
+                                </Grid>
+                                : field.fieldType === 'dateRange' ?
+                                    <Grid key={field.name} item xs={12} columnSpacing={2} container>
+                                        <Grid item xs={12} className="cust_filter_date_label_grid">
+                                            {"Period".toUpperCase()}
+                                        </Grid>
+                                        <Grid container item xs={12} spacing="2">
+                                            <DatePickerInput
+                                                type="date-range"
+                                                id="cust-filter-date-range"
+                                                placeholder={{ start: t("customer-filter-panel.from date"), end: t("customer-filter-panel.to date") }}
                                                 name={field.name}
-                                                label={t(field.label)}
-                                                placeholder=""
-                                                value={value}
-                                                items={field.options || []}
-                                                onChange={(name, val) => handleSelect(name, val)}
+                                                onDateRangeChange={(name, val) => onDateRangeChange(name, val)}
                                                 helperText={(touched && error) ? error : undefined}
                                                 error={(touched && error) ? true : false}
+                                                dateRangeValue={value}
+                                                required
                                             />
-                                        : (field.fieldType === 'text') ?
+                                        </Grid>
+                                    </Grid>
+                                    : <Grid item xs={12} key={field.name}>
+                                        {(field.fieldType === 'text') ?
                                             <Input
                                                 id={field.name}
                                                 label={t(field.label)}
@@ -222,24 +244,105 @@ export const DynamicFilterContent: React.FC<IDynamicFilterProps> = ({ provideFil
                                                 onChange={(e) => {
                                                     handleChange(field.name, e.target.value);
                                                 }}
-                                            /> : (field.fieldType === 'checkbox') ?
-                                                <FormControlLabel
-                                                    sx={{ margin: "0px", marginBottom: "1rem", fontWeight: "bold" }}
-                                                    className="checkbox-field"
-                                                    control={
-                                                        <Checkbox checked={value} value={value} onChange={(e) => {
-                                                            handleChange(field.name, e.target.checked);
-                                                        }} name={field.name} />
-                                                    }
-                                                    label={
+                                            />
+                                            : field.fieldType === 'select' ?
+                                                (field.optionUrlKey && field.optionAPIResponseKey) ?
+                                                    (< SelectInput field={{
+                                                        ...field,
+                                                        optionUrlKey: field.optionUrlKey,
+                                                        optionAPIResponseKey: field.optionAPIResponseKey,
+                                                        fieldType: 'select'
+                                                    }}
+                                                        handleSelect={handleSelect} formik={formik} />) :
+                                                    field.singleSelect ?
+                                                        <SingleSelect
+                                                            id={field.name}
+                                                            name={field.name}
+                                                            label={t(field.label)}
+                                                            placeholder=""
+                                                            value={value}
+                                                            items={field.options || []}
+                                                            onChange={(name, val) => handleSelect(name, val, true)}
+                                                            helperText={(touched && error) ? error : undefined}
+                                                            error={(touched && error) ? true : false} />
+                                                        :
+                                                        <Select
+                                                            id={field.name}
+                                                            name={field.name}
+                                                            label={t(field.label)}
+                                                            placeholder=""
+                                                            value={value}
+                                                            items={field.options || []}
+                                                            onChange={(name, val) => handleSelect(name, val)}
+                                                            helperText={(touched && error) ? error : undefined}
+                                                            error={(touched && error) ? true : false}
+                                                        />
+                                                : (field.fieldType === 'multiCheckbox') ?
+                                                    <FormControl className='formInput'>
                                                         <Typography color="var(--Darkgray)" variant="h4" className="fw-bold">
                                                             {t(field.label)}
                                                         </Typography>
-                                                    }
-                                                />
-                                                : null}
+                                                        {(field.options && field.options.map(opt => {
+                                                            return (
+                                                                <FormControlLabel key={`${field.name}-${opt.label}`}
+                                                                    sx={{ margin: "0px", marginBottom: "1rem", fontWeight: "bold" }}
+                                                                    className="checkbox-field"
+                                                                    control={
+                                                                        <Checkbox checked={value.includes(opt.value)} onChange={(e) => {
+                                                                            handleMultiCheckboxChange(field.name, value, opt.value, e.target.checked);
+                                                                        }} name={field.name} />
+                                                                    }
+                                                                    label={
+                                                                        <Typography color="var(--Darkgray)" variant="h4" className="fw-bold">
+                                                                            {t(opt.label)}
+                                                                        </Typography>
+                                                                    }
+                                                                />
+                                                            );
+                                                        }))}
+                                                    </FormControl>
+                                                    : (field.fieldType === 'checkbox') ?
+                                                        <FormControlLabel
+                                                            sx={{ margin: "0px", marginBottom: "1rem", fontWeight: "bold" }}
+                                                            className="checkbox-field"
+                                                            control={
+                                                                <Checkbox checked={value} value={value} onChange={(e) => {
+                                                                    handleChange(field.name, e.target.checked);
+                                                                }} name={field.name} />
+                                                            }
+                                                            label={
+                                                                <Typography color="var(--Darkgray)" variant="h4" className="fw-bold">
+                                                                    {t(field.label)}
+                                                                </Typography>
+                                                            }
+                                                        />
+                                                        : (field.fieldType === 'radio') ?
+                                                            <FormControl className='formInput'>
+                                                                <Typography color="var(--Darkgray)" variant="h4" className="fw-bold">
+                                                                    {t(field.label)}
+                                                                </Typography>
+                                                                {(field.options && field.options.map(opt => {
+                                                                    return (
+                                                                        <FormControlLabel key={`${field.name}-${opt.label}`}
+                                                                            sx={{ margin: "0px", marginBottom: "1rem", fontWeight: "bold" }}
+                                                                            className="checkbox-field"
+                                                                            control={
+                                                                                <Radio checked={value === opt.value} onClick={() => {
+                                                                                    handleRadioChange(field.name, opt.value, opt.value !== value);
+                                                                                }} name={field.name} />
+                                                                            }
+                                                                            label={
+                                                                                <Typography color="var(--Darkgray)" variant="h4" className="fw-bold">
+                                                                                    {t(opt.label)}
+                                                                                </Typography>
+                                                                            }
+                                                                        />
+                                                                    );
+                                                                }))}
+                                                            </FormControl>
+                                                            : null}
 
-                                </Grid>
+                                    </Grid>
                         );
                     }
                     )}
