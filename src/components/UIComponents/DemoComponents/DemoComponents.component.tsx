@@ -15,47 +15,19 @@ import Select from '../Select/MultiSelect';
 import SearchInput from '../SearchInput/SearchInput';
 import useDebounce from '../../../utils/useDebounce';
 import moment from "moment";
-//import { useQuery } from 'react-query';
-//import { fetchQueryTodos } from '../../../hooks/todos-with-query';
 import { YellowFuelIcon, RedFuelIcon, GreenFuelIcon } from '../../../assets/icons';
 import { Box, FormControl } from '@mui/material';
 import { TimePicker } from '../TimePicker/TimePicker.component';
 import './DemoComponents.style.scss';
 import { DateRange } from '@mui/lab/DateRangePicker';
-import { boxSX } from './config';
+import { boxSX, filterByFields } from './config';
 import { RightInfoPanel } from "../RightInfoPanel/RightInfoPanel.component";
-import { IDynamicFilterProps } from "../RightInfoPanel/DynamicFilterContent.component";
 
 type DatePickerRange = DateRange<Date>;
 
 
-const filterByFields: IDynamicFilterProps['fields'] = [
-    { name: 'inputText1', label: 'Enter text here', fieldType: 'text', initialValue: '' },
-    { name: 'singleDate', label: 'Single date', fieldType: 'date', initialValue: null },
-    { name: 'date', label: 'Date', fieldType: 'dateRange', initialValue: [null, null] },
-    {
-        name: 'SingleApi', label: 'Single Select State API', fieldType: 'select', singleSelect: true,
-        optionUrlKey: 'customerFilter',
-        optionAPIResponseKey: 'states', initialValue: null
-    },
-    {
-        name: 'SingleSelect1', label: 'Single Select', fieldType: 'select', singleSelect: true, options: [{ label: 'Regular', value: 'Regular', icon: <YellowFuelIcon /> },
-        { label: 'Premium', value: 'Premium', icon: <RedFuelIcon /> },
-        { label: 'Diesel', value: 'Diesel', icon: <GreenFuelIcon /> },], initialValue: null
-    },
-    {
-        name: 'withIcon', label: 'With Icon', fieldType: 'select', options: [{ label: 'Regular', value: 'Regular', icon: <YellowFuelIcon /> },
-        { label: 'Premium', value: 'Premium', icon: <RedFuelIcon /> },
-        { label: 'Diesel', value: 'Diesel', icon: <GreenFuelIcon /> },], initialValue: ['']
-    },
-    { name: 'city', label: 'customer-filter-panel.city', fieldType: 'select', optionUrlKey: 'customerFilter', optionAPIResponseKey: 'cities', initialValue: [] },
-    { name: 'paymentType', label: 'customer-filter-panel.settlement type', fieldType: 'select', optionUrlKey: 'customerFilter', optionAPIResponseKey: 'settlementType', initialValue: [] },
-    { name: 'multiselect', label: 'multi checkbox', fieldType: 'multiCheckbox', initialValue: [], options: [{ label: 'checkbox1', value: 'cb1' }, { label: 'cbbbb2', value: 'cb2' }, { label: 'cb3', value: 'cb3' }] },
-    { name: 'radiotest', label: 'radio test', fieldType: 'radio', initialValue: null, options: [{ label: 'radio1', value: 'radiooo1' }, { label: 'radio2', value: 'radiooooo2' }] }
-];
 
 export const DemoComponents: React.FC = () => {
-    //const { data } = useQuery('repoData', fetchQueryTodos, { retry: false });
     const { setCurrentTheme } = useTheme();
     const { i18n } = useTranslation();
 
@@ -365,15 +337,8 @@ export const DemoComponents: React.FC = () => {
                             />
                         </Box>
                     </Box>
-
-                    {/* <GoogleAutoCompleteAddress name='address' onChange={handleChange} value={form.address}/> */}
-
-
                 </div>
-
             </div>
-
         </div >
-
     );
 };
