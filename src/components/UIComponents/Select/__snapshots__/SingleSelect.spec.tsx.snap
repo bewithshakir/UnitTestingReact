@@ -38,6 +38,7 @@ exports[`renders the Default Select component snapshot test for Default Select c
       options={
         Array [
           Object {
+            "icon": <YellowFuelIcon />,
             "label": "Label",
             "value": "Value",
           },
