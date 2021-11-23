@@ -32,7 +32,8 @@ export const HOCSetup = (props: any, route: any)=> {
     );
 };
 
-export const renderWithRouter = (renderComponent, route) => {
+
+export const renderWithRouter = (renderComponent: any, route: any) => {
     const history = createMemoryHistory();
   
     if(route){

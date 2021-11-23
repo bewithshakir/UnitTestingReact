@@ -61,6 +61,29 @@ export default class SalesTaxModel {
         ];
     }
 
+    ACTION_TYPES = {
+        EDIT: 'edit',
+        DELETE: 'delete',
+        CONTACT_DETAILS: 'contact details'
+    };
+
+    rowActions () {
+        const { t } = useTranslation();
+        return [
+            {
+                label: t("menus.data-grid-actions.edit"),
+                action: this.ACTION_TYPES.EDIT
+            },
+            {
+                label: t("menus.data-grid-actions.delete"),
+                action: this.ACTION_TYPES.DELETE
+            },
+            {
+                label: t("menus.data-grid-actions.contact details"),
+                action: this.ACTION_TYPES.CONTACT_DETAILS
+            }
+        ];
+    }
     
     fieldsToDisplay (): headerObj[] {
         return [

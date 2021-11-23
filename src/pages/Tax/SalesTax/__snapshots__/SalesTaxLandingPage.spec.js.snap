@@ -825,7 +825,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                     >
                       <GridComponent
                         enableRowAction={true}
-                        enableRowSelection={false}
+                        enableRowSelection={true}
                         getPages={[Function]}
                         header={
                           Array [
@@ -875,9 +875,25 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                         }
                         isLoading={true}
                         noDataMsg="Add Tax."
+                        onRowActionSelect={[Function]}
                         openDrawer={[Function]}
                         primaryKey="taxJurisdictionId"
-                        rowActionOptions={Array []}
+                        rowActionOptions={
+                          Array [
+                            Object {
+                              "action": "edit",
+                              "label": "menus.data-grid-actions.edit",
+                            },
+                            Object {
+                              "action": "delete",
+                              "label": "menus.data-grid-actions.delete",
+                            },
+                            Object {
+                              "action": "contact details",
+                              "label": "menus.data-grid-actions.contact details",
+                            },
+                          ]
+                        }
                         rows={Array []}
                         searchTerm=""
                       />
@@ -3771,7 +3787,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                       Object {
                         "children": <GridComponent
                           enableRowAction={true}
-                          enableRowSelection={false}
+                          enableRowSelection={true}
                           getPages={[Function]}
                           header={
                             Array [
@@ -3821,9 +3837,25 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                           }
                           isLoading={true}
                           noDataMsg="Add Tax."
+                          onRowActionSelect={[Function]}
                           openDrawer={[Function]}
                           primaryKey="taxJurisdictionId"
-                          rowActionOptions={Array []}
+                          rowActionOptions={
+                            Array [
+                              Object {
+                                "action": "edit",
+                                "label": "menus.data-grid-actions.edit",
+                              },
+                              Object {
+                                "action": "delete",
+                                "label": "menus.data-grid-actions.delete",
+                              },
+                              Object {
+                                "action": "contact details",
+                                "label": "menus.data-grid-actions.contact details",
+                              },
+                            ]
+                          }
                           rows={Array []}
                           searchTerm=""
                         />,
@@ -3860,7 +3892,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                     >
                       <GridComponent
                         enableRowAction={true}
-                        enableRowSelection={false}
+                        enableRowSelection={true}
                         getPages={[Function]}
                         header={
                           Array [
@@ -3910,9 +3942,25 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                         }
                         isLoading={true}
                         noDataMsg="Add Tax."
+                        onRowActionSelect={[Function]}
                         openDrawer={[Function]}
                         primaryKey="taxJurisdictionId"
-                        rowActionOptions={Array []}
+                        rowActionOptions={
+                          Array [
+                            Object {
+                              "action": "edit",
+                              "label": "menus.data-grid-actions.edit",
+                            },
+                            Object {
+                              "action": "delete",
+                              "label": "menus.data-grid-actions.delete",
+                            },
+                            Object {
+                              "action": "contact details",
+                              "label": "menus.data-grid-actions.contact details",
+                            },
+                          ]
+                        }
                         rows={Array []}
                         searchTerm=""
                       >
@@ -3937,7 +3985,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                 >
                                   <EnhancedGridHead
                                     enableRowAction={true}
-                                    enableRowSelection={false}
+                                    enableRowSelection={true}
                                     headCells={
                                       Array [
                                         Object {
@@ -3993,7 +4041,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                   />
                                   <EnhancedGridBody
                                     enableRowAction={true}
-                                    enableRowSelection={false}
+                                    enableRowSelection={true}
                                     getPages={[Function]}
                                     handleCheckChange={[Function]}
                                     headCells={
@@ -4090,11 +4138,27 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                     }
                                     isLoading={true}
                                     noDataMsg="Add Tax."
+                                    onRowActionSelect={[Function]}
                                     openDrawer={[Function]}
                                     order="asc"
                                     orderBy=""
                                     primaryKey="taxJurisdictionId"
-                                    rowActionOptions={Array []}
+                                    rowActionOptions={
+                                      Array [
+                                        Object {
+                                          "action": "edit",
+                                          "label": "menus.data-grid-actions.edit",
+                                        },
+                                        Object {
+                                          "action": "delete",
+                                          "label": "menus.data-grid-actions.delete",
+                                        },
+                                        Object {
+                                          "action": "contact details",
+                                          "label": "menus.data-grid-actions.contact details",
+                                        },
+                                      ]
+                                    }
                                     rows={Array []}
                                     searchTerm=""
                                     selectedRows={Array []}
@@ -4129,7 +4193,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                       "children": Array [
                                         <EnhancedGridHead
                                           enableRowAction={true}
-                                          enableRowSelection={false}
+                                          enableRowSelection={true}
                                           headCells={
                                             Array [
                                               Object {
@@ -4185,7 +4249,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                         />,
                                         <EnhancedGridBody
                                           enableRowAction={true}
-                                          enableRowSelection={false}
+                                          enableRowSelection={true}
                                           getPages={[Function]}
                                           handleCheckChange={[Function]}
                                           headCells={
@@ -4282,11 +4346,27 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                           }
                                           isLoading={true}
                                           noDataMsg="Add Tax."
+                                          onRowActionSelect={[Function]}
                                           openDrawer={[Function]}
                                           order="asc"
                                           orderBy=""
                                           primaryKey="taxJurisdictionId"
-                                          rowActionOptions={Array []}
+                                          rowActionOptions={
+                                            Array [
+                                              Object {
+                                                "action": "edit",
+                                                "label": "menus.data-grid-actions.edit",
+                                              },
+                                              Object {
+                                                "action": "delete",
+                                                "label": "menus.data-grid-actions.delete",
+                                              },
+                                              Object {
+                                                "action": "contact details",
+                                                "label": "menus.data-grid-actions.contact details",
+                                              },
+                                            ]
+                                          }
                                           rows={Array []}
                                           searchTerm=""
                                           selectedRows={Array []}
@@ -4315,7 +4395,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                   >
                                     <EnhancedGridHead
                                       enableRowAction={true}
-                                      enableRowSelection={false}
+                                      enableRowSelection={true}
                                       headCells={
                                         Array [
                                           Object {
@@ -5726,7 +5806,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                     </EnhancedGridHead>
                                     <EnhancedGridBody
                                       enableRowAction={true}
-                                      enableRowSelection={false}
+                                      enableRowSelection={true}
                                       getPages={[Function]}
                                       handleCheckChange={[Function]}
                                       headCells={
@@ -5823,11 +5903,27 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                       }
                                       isLoading={true}
                                       noDataMsg="Add Tax."
+                                      onRowActionSelect={[Function]}
                                       openDrawer={[Function]}
                                       order="asc"
                                       orderBy=""
                                       primaryKey="taxJurisdictionId"
-                                      rowActionOptions={Array []}
+                                      rowActionOptions={
+                                        Array [
+                                          Object {
+                                            "action": "edit",
+                                            "label": "menus.data-grid-actions.edit",
+                                          },
+                                          Object {
+                                            "action": "delete",
+                                            "label": "menus.data-grid-actions.delete",
+                                          },
+                                          Object {
+                                            "action": "contact details",
+                                            "label": "menus.data-grid-actions.contact details",
+                                          },
+                                        ]
+                                      }
                                       rows={Array []}
                                       searchTerm=""
                                       selectedRows={Array []}

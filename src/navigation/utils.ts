@@ -73,3 +73,21 @@ export const getCountryCode = () => {
     }
   }
 };
+
+export const getQueryStrToObj = (str: string): any=> {
+  if(str.includes('?')) {
+    const queryStrings = str.substring(1).split('&');
+
+    const payload: any = {};
+    queryStrings.forEach((key: any)=> {
+      const keyVal = key.split('=');
+      keyVal.forEach((k:string,j: any)=> {
+        if(j === 0){
+          payload[k] = keyVal[j+1];
+        }
+      });
+    });
+    return payload;
+  }
+  return {};
+};
