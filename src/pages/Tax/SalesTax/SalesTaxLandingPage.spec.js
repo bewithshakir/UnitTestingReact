@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { mount } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import SalesTaxLandingContent from './index';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
@@ -9,10 +9,14 @@ describe('Rendering of Salestax landing page Component', () => {
    
     it('Salestax landing page component Snapshot testing when', () => {
         expect(component).toMatchSnapshot();
-    });   
+    }); 
+    
+    it('Search Button Clicked', () => {
+        const component = shallow(<QueryClientProvider client={queryClient}><SalesTaxLandingContent onChange={() => jest.fn()} /></QueryClientProvider>);
+        expect(component).toBeDefined();
+        expect(component).toMatchSnapshot();
+    });
+
 });
-
-
-
 
 
