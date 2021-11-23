@@ -132,6 +132,11 @@
       "sortBy": {
         "cityname_atoz": "City Name A-Z",
         "cityname_ztoa": "City Name Z-A"
+      },
+      "filter": {
+        "state": "State",
+        "city": "City",
+        "settlement type": "Settlement Type"
       }
     }
   }

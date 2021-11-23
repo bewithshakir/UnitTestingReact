@@ -127,19 +127,19 @@ export const DynamicFilterContent: React.FC<IDynamicFilterProps> = ({ provideFil
         createDateArr(newValue, filterParams, name);
     };
 
-    function handleSelect(name: string, value: any, singleSelect?: boolean) {
+    function handleSelect (name: string, value: any, singleSelect?: boolean) {
         formik.setFieldValue(name, value);
-
         filterParams[name] = singleSelect ? value.value : value.map((obj: { label: string, value: string }) => obj.value);
     }
-    function handleMultiCheckboxChange(name: string, value: any[], itemValue: string, isChecked: boolean) {
+
+    function handleMultiCheckboxChange (name: string, value: any[], itemValue: string, isChecked: boolean) {
         const valueSet = new Set(value);
         isChecked ? valueSet.add(itemValue) : valueSet.delete(itemValue);
         const uniqueValue = Array.from(valueSet);
         formik.setFieldValue(name, uniqueValue);
         filterParams[name] = uniqueValue;
     }
-    function handleRadioChange(name: string, itemValue: any, isChecked: boolean) {
+    function handleRadioChange (name: string, itemValue: any, isChecked: boolean) {
         if (isChecked) {
             formik.setFieldValue(name, itemValue);
             filterParams[name] = itemValue;
@@ -148,7 +148,7 @@ export const DynamicFilterContent: React.FC<IDynamicFilterProps> = ({ provideFil
             delete filterParams[name];
         }
     }
-    function handleChange(name: string, value: any) {
+    function handleChange (name: string, value: any) {
         formik.setFieldValue(name, value);
         filterParams[name] = value;
     }

@@ -14,10 +14,12 @@ import { useFuelTaxList } from './queries';
 import GridComponent from "../../components/UIComponents/DataGird/grid.component";
 import { DataGridActionsMenuOption } from '../../components/UIComponents/Menu/DataGridActionsMenu.component';
 import { FuelTax, MASS_ACTION_TYPES } from './config';
-
+import { RightInfoPanel } from '../../components/UIComponents/RightInfoPanel/RightInfoPanel.component';
 
 const TaxLandingContent = memo(() => {
   const [searchTerm, setSearchTerm] = React.useState("");
+  const [filterData, setFilterData] = React.useState<{ [key: string]: string[] }>({});
+  const [isFilterPanelOpen, toggleFilterPanel] = React.useState(false);
   const [sortOrder, setSortOrder] = React.useState<{ sortBy: string, order: string }>({ sortBy: "", order: "" });
   const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
   setVersion("NavLinks");
@@ -27,7 +29,7 @@ const TaxLandingContent = memo(() => {
   const massActionOptions = TaxObj.massActions();
   const [fuelTaxList, setFuelTaxList] = React.useState([]);
   const headCells = TaxObj.fieldsToDisplay();
-  const { SortByOptions } = FuelTax.LandingPage;
+  const { SortByOptions, FilterByFields } = FuelTax.LandingPage;
   const onInputChange = (value: string) => {
     setSearchTerm(value);
   };
@@ -48,6 +50,7 @@ const TaxLandingContent = memo(() => {
   const { data, fetchNextPage, isLoading, isFetching }: any = useFuelTaxList(
     searchTerm,
     sortOrder,
+    filterData
   );
 
   useEffect(() => {
@@ -80,6 +83,14 @@ const TaxLandingContent = memo(() => {
     setSortOrder(sortOrder);
   };
 
+  const openFilterPanel = () => {
+    toggleFilterPanel(!isFilterPanelOpen);
+  };
+
+  const getFilterParams = (filterObj: { [key: string]: string[] }) => {
+    setFilterData(filterObj);
+  };
+
   return (
     <Box display="flex" mt={10} ml={8}>
       <Grid container pl={6.25} pr={6.25} className="main-area">
@@ -89,6 +100,7 @@ const TaxLandingContent = memo(() => {
               <Button
                 types="filter"
                 aria-label="dafault"
+                onClick={openFilterPanel}
                 startIcon={<FilterIcon />}
               >
                 Filter
@@ -143,8 +155,18 @@ const TaxLandingContent = memo(() => {
             getPages={fetchNextPage}
             searchTerm={searchTerm}
             openDrawer={openDrawer}
-            noDataMsg='Add Tax.'
+            noDataMsg='Add Fuel Tax by clicking on the " Add Tax" button.'
           />
+
+          <RightInfoPanel
+            panelType="customer-filter"
+            open={isFilterPanelOpen} headingText={"Filters"}
+            provideFilterParams={getFilterParams}
+            onClose={() => toggleFilterPanel(false)}
+            fields={FilterByFields}
+            storeKey={'fuelTaxFilter'}
+          />
+
         </Grid>
       </Grid>
     </Box>
