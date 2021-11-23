@@ -11,7 +11,7 @@ describe('Rendering of Salestax landing page Component', () => {
         expect(component).toMatchSnapshot();
     }); 
     
-    it('Search Button Clicked', () => {
+    it('Search Textbox Data Enter ', () => {
         const component = shallow(<QueryClientProvider client={queryClient}><SalesTaxLandingContent onChange={() => jest.fn()} /></QueryClientProvider>);
         expect(component).toBeDefined();
         expect(component).toMatchSnapshot();
