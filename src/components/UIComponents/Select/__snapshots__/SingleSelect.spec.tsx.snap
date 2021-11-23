@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders the Default Select component snapshot test for Default Select component 1`] = `
+<Fragment>
+  <ForwardRef(FormControl)
+    className="select"
+  >
+    <ForwardRef(InputLabel)
+      aria-labelledby="Input"
+      aria-required={false}
+      htmlFor="input-label"
+      shrink={true}
+      style={
+        Object {
+          "color": "var(--Darkgray)",
+        }
+      }
+    >
+      <b>
+        INPUT
+      </b>
+    </ForwardRef(InputLabel)>
+    <ForwardRef
+      className="react-select-container"
+      classNamePrefix="react-select"
+      components={
+        Object {
+          "DropdownIndicator": [Function],
+          "IndicatorSeparator": [Function],
+          "Option": [Function],
+          "SingleValue": [Function],
+        }
+      }
+      id="input"
+      isSearchable={false}
+      onChange={[Function]}
+      onKeyDown={[Function]}
+      options={
+        Array [
+          Object {
+            "label": "Label",
+            "value": "Value",
+          },
+        ]
+      }
+      placeholder="Select"
+    />
+  </ForwardRef(FormControl)>
+</Fragment>
+`;
