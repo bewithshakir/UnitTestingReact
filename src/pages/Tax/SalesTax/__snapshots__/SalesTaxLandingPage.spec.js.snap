@@ -1,5 +1,29 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Given Sortby Menu on SalesTax Landing Page Render Sortby Menu 1`] = `
+<div>
+  <WithStyles(ForwardRef(Button))
+    aria-haspopup="true"
+    aria-label="sortby menu list"
+    className="btn-sortby "
+    onClick={[Function]}
+    startIcon={<Memo />}
+  >
+    buttons.sort by
+  </WithStyles(ForwardRef(Button))>
+  <ForwardRef(Popper)
+    anchorEl={null}
+    className="sortby-popper"
+    disablePortal={true}
+    open={false}
+    placement="bottom-start"
+    transition={true}
+  >
+    <Component />
+  </ForwardRef(Popper)>
+</div>
+`;
+
 exports[`Rendering of Salestax landing page Component Salestax landing page component Snapshot testing when 1`] = `
 <QueryClientProvider
   client={
@@ -90,10 +114,14 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                   "keepPreviousData": true,
                   "optimisticResults": true,
                   "queryFn": [Function],
-                  "queryHash": "[\\"getSalesTaxList\\",\\"\\"]",
+                  "queryHash": "[\\"getSalesTaxList\\",\\"\\",{\\"order\\":\\"\\",\\"sortBy\\":\\"\\"}]",
                   "queryKey": Array [
                     "getSalesTaxList",
                     "",
+                    Object {
+                      "order": "",
+                      "sortBy": "",
+                    },
                   ],
                 },
                 "currentResultState": Object {
@@ -124,10 +152,14 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                   "keepPreviousData": true,
                   "optimisticResults": true,
                   "queryFn": [Function],
-                  "queryHash": "[\\"getSalesTaxList\\",\\"\\"]",
+                  "queryHash": "[\\"getSalesTaxList\\",\\"\\",{\\"order\\":\\"\\",\\"sortBy\\":\\"\\"}]",
                   "queryKey": Array [
                     "getSalesTaxList",
                     "",
+                    Object {
+                      "order": "",
+                      "sortBy": "",
+                    },
                   ],
                 },
                 "previousQueryResult": undefined,
@@ -148,17 +180,25 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
               "keepPreviousData": true,
               "optimisticResults": true,
               "queryFn": [Function],
-              "queryHash": "[\\"getSalesTaxList\\",\\"\\"]",
+              "queryHash": "[\\"getSalesTaxList\\",\\"\\",{\\"order\\":\\"\\",\\"sortBy\\":\\"\\"}]",
               "queryKey": Array [
                 "getSalesTaxList",
                 "",
+                Object {
+                  "order": "",
+                  "sortBy": "",
+                },
               ],
             },
             "promise": Promise {},
-            "queryHash": "[\\"getSalesTaxList\\",\\"\\"]",
+            "queryHash": "[\\"getSalesTaxList\\",\\"\\",{\\"order\\":\\"\\",\\"sortBy\\":\\"\\"}]",
             "queryKey": Array [
               "getSalesTaxList",
               "",
+              Object {
+                "order": "",
+                "sortBy": "",
+              },
             ],
             "retryer": Retryer {
               "cancel": [Function],
@@ -201,7 +241,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
           },
         ],
         "queriesMap": Object {
-          "[\\"getSalesTaxList\\",\\"\\"]": Query {
+          "[\\"getSalesTaxList\\",\\"\\",{\\"order\\":\\"\\",\\"sortBy\\":\\"\\"}]": Query {
             "cache": [Circular],
             "cacheTime": 300000,
             "defaultOptions": undefined,
@@ -275,10 +315,14 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                   "keepPreviousData": true,
                   "optimisticResults": true,
                   "queryFn": [Function],
-                  "queryHash": "[\\"getSalesTaxList\\",\\"\\"]",
+                  "queryHash": "[\\"getSalesTaxList\\",\\"\\",{\\"order\\":\\"\\",\\"sortBy\\":\\"\\"}]",
                   "queryKey": Array [
                     "getSalesTaxList",
                     "",
+                    Object {
+                      "order": "",
+                      "sortBy": "",
+                    },
                   ],
                 },
                 "currentResultState": Object {
@@ -309,10 +353,14 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                   "keepPreviousData": true,
                   "optimisticResults": true,
                   "queryFn": [Function],
-                  "queryHash": "[\\"getSalesTaxList\\",\\"\\"]",
+                  "queryHash": "[\\"getSalesTaxList\\",\\"\\",{\\"order\\":\\"\\",\\"sortBy\\":\\"\\"}]",
                   "queryKey": Array [
                     "getSalesTaxList",
                     "",
+                    Object {
+                      "order": "",
+                      "sortBy": "",
+                    },
                   ],
                 },
                 "previousQueryResult": undefined,
@@ -333,17 +381,25 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
               "keepPreviousData": true,
               "optimisticResults": true,
               "queryFn": [Function],
-              "queryHash": "[\\"getSalesTaxList\\",\\"\\"]",
+              "queryHash": "[\\"getSalesTaxList\\",\\"\\",{\\"order\\":\\"\\",\\"sortBy\\":\\"\\"}]",
               "queryKey": Array [
                 "getSalesTaxList",
                 "",
+                Object {
+                  "order": "",
+                  "sortBy": "",
+                },
               ],
             },
             "promise": Promise {},
-            "queryHash": "[\\"getSalesTaxList\\",\\"\\"]",
+            "queryHash": "[\\"getSalesTaxList\\",\\"\\",{\\"order\\":\\"\\",\\"sortBy\\":\\"\\"}]",
             "queryKey": Array [
               "getSalesTaxList",
               "",
+              Object {
+                "order": "",
+                "sortBy": "",
+              },
             ],
             "retryer": Retryer {
               "cancel": [Function],
@@ -744,10 +800,8 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                               onSelect={[Function]}
                               options={
                                 Array [
-                                  "customerManagement.sortBy.atoz",
-                                  "customerManagement.sortBy.ztoa",
-                                  "customerManagement.sortBy.newestToOldest",
-                                  "customerManagement.sortBy.oldestToNew",
+                                  "taxes.salesTax.sortBy.cityname_atoz",
+                                  "taxes.salesTax.sortBy.cityname_ztoa",
                                 ]
                               }
                             />
@@ -951,10 +1005,8 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                   onSelect={[Function]}
                                   options={
                                     Array [
-                                      "customerManagement.sortBy.atoz",
-                                      "customerManagement.sortBy.ztoa",
-                                      "customerManagement.sortBy.newestToOldest",
-                                      "customerManagement.sortBy.oldestToNew",
+                                      "taxes.salesTax.sortBy.cityname_atoz",
+                                      "taxes.salesTax.sortBy.cityname_ztoa",
                                     ]
                                   }
                                 />
@@ -1086,10 +1138,8 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                       onSelect={[Function]}
                                       options={
                                         Array [
-                                          "customerManagement.sortBy.atoz",
-                                          "customerManagement.sortBy.ztoa",
-                                          "customerManagement.sortBy.newestToOldest",
-                                          "customerManagement.sortBy.oldestToNew",
+                                          "taxes.salesTax.sortBy.cityname_atoz",
+                                          "taxes.salesTax.sortBy.cityname_ztoa",
                                         ]
                                       }
                                     />
@@ -1348,10 +1398,8 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                         onSelect={[Function]}
                                         options={
                                           Array [
-                                            "customerManagement.sortBy.atoz",
-                                            "customerManagement.sortBy.ztoa",
-                                            "customerManagement.sortBy.newestToOldest",
-                                            "customerManagement.sortBy.oldestToNew",
+                                            "taxes.salesTax.sortBy.cityname_atoz",
+                                            "taxes.salesTax.sortBy.cityname_ztoa",
                                           ]
                                         }
                                       />
@@ -1393,10 +1441,8 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                             onSelect={[Function]}
                                             options={
                                               Array [
-                                                "customerManagement.sortBy.atoz",
-                                                "customerManagement.sortBy.ztoa",
-                                                "customerManagement.sortBy.newestToOldest",
-                                                "customerManagement.sortBy.oldestToNew",
+                                                "taxes.salesTax.sortBy.cityname_atoz",
+                                                "taxes.salesTax.sortBy.cityname_ztoa",
                                               ]
                                             }
                                           />,
@@ -1420,10 +1466,8 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                           onSelect={[Function]}
                                           options={
                                             Array [
-                                              "customerManagement.sortBy.atoz",
-                                              "customerManagement.sortBy.ztoa",
-                                              "customerManagement.sortBy.newestToOldest",
-                                              "customerManagement.sortBy.oldestToNew",
+                                              "taxes.salesTax.sortBy.cityname_atoz",
+                                              "taxes.salesTax.sortBy.cityname_ztoa",
                                             ]
                                           }
                                         >
