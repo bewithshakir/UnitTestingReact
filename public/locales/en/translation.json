@@ -59,18 +59,21 @@
   "right-info-panel": {
     "settings": {
       "view & edit details": "View & Edit Details"
+    },
+    "filter": {
+      "buttons": {
+        "apply": "Apply",
+        "clear all": "Clear All"
+      },
+      "period": "PERIOD",
+      "from date": "From Date",
+      "to date": "To Date"
     }
   },
   "customer-filter-panel": {
     "header": {
-      "filter": "Filter"
+      "filters": "Filters"
     },
-    "buttons": {
-      "apply": "Apply",
-      "clear all": "Clear All"
-    },
-    "from date": "From Date",
-    "to date": "To Date",
     "state": "State",
     "city": "City",
     "settlement type": "Settlement Type"
@@ -101,11 +104,23 @@
     }
   },
   "parkingLot": {
+    "header": {
+      "filters": "Filters"
+    },
     "search": "Parking Lot Name",
     "sortBy": {
       "atoz": "Lot Name A-Z",
       "ztoa": "Lot Name Z-A"
     },
+    "filter": {
+      "state": "State",
+      "city": "City",
+      "zip": "Zip",
+      "wallet status": "Wallet Status",
+      "fuel type": "Fuel Type"
+    }
+  },
+  "taxes": {
     "navBar": {
       "fuelTax": "Fuel Tax",
       "salesTax": "Sales Tax",

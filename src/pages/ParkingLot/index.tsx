@@ -12,7 +12,7 @@ import { useGetParkingLotDetails } from "./queries";
 import SearchInput from "../../components/UIComponents/SearchInput/SearchInput";
 import { Add } from "@mui/icons-material";
 import { useHistory } from "react-router-dom";
-import { sortByOptions } from "./config";
+import { filterByFields, sortByOptions } from "./config";
 import { RightInfoPanel } from "../../components/UIComponents/RightInfoPanel/RightInfoPanel.component";
 import { Box, FormControl, Grid, Typography } from "@mui/material";
 import { HorizontalBarVersionState, useStore, useAddedCustomerIdStore, useShowConfirmationDialogBoxStore, useAddedCustomerNameStore } from "../../store";
@@ -222,7 +222,7 @@ console.log(history?.location?.state);
             showImg={<ParkingLotNoDataIcon />}
           />
 
-          <RightInfoPanel panelType="customer-filter" open={custFilterPanelVisible} headingText={"Filters"} provideFilterParams={getFilterParams} onClose={handleCustFilterPanelClose} />
+          <RightInfoPanel panelType="customer-filter" open={custFilterPanelVisible} headingText={"parkingLot.header.filters"} provideFilterParams={getFilterParams} onClose={handleCustFilterPanelClose} fields={filterByFields} storeKey='parkingLot' />
           <RightInfoPanel panelType="info-view" open={drawerOpen} headingText={"Accurate Transportation"} info={info} onClose={drawerClose} />
         </Grid>
       </Grid>

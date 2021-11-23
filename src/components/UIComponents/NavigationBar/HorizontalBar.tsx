@@ -52,7 +52,11 @@ export default function HorizontalBar (props: HorizontalBarProps) {
     resetFormFieldValue(false);
     if (pathname.includes('addLot') || pathname.includes('addFuelTax')) {
       history.goBack();
-    } else {
+    }
+    else if (pathname.includes('addSalesTax')) {
+      history.push('/salesTax');
+    }
+    else {
       props.onBack();
     }
   };
@@ -62,6 +66,8 @@ export default function HorizontalBar (props: HorizontalBarProps) {
       return "Add Customer";
     } else if (history.location.pathname.includes('addFuelTax')) {
       return "Add Fuel Tax";
+    } else if (history.location.pathname.includes('addSalesTax')) {
+      return "Add Sales Tax";
     } else {
       return selectedCustomerName;
     }
@@ -78,9 +84,9 @@ export default function HorizontalBar (props: HorizontalBarProps) {
   }
 
   function varsionNavLinks () {
-    if (pathname === '/taxes') {
+    if (pathname.includes('taxes') || pathname.includes('salesTax')) {
       return (<>
-        <div className="linkitem active">
+        <div className={pathname.includes('taxes') ? 'linkitem active' : 'linkitem'}>
           <NavLink
             className="breadcrubs-title"
             to="/"
@@ -88,7 +94,7 @@ export default function HorizontalBar (props: HorizontalBarProps) {
             {t("taxes.navBar.fuelTax")}
           </NavLink>
         </div>
-        <div className="linkitem">
+        <div className={pathname.includes('salesTax') ? 'linkitem active' : "linkitem"}>
           <NavLink className="breadcrubs-title" to="/salesTax" onClick={handleClick}>
             {t("taxes.navBar.salesTax")}
           </NavLink>
@@ -172,7 +178,7 @@ export default function HorizontalBar (props: HorizontalBarProps) {
       <div className="app__header">
         <AppBar position="fixed" className="header" sx={{ width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px` }}>
           <Toolbar className="header__toolbar">
-            {version === "NavLinks" ? null : (<Button
+            {(version === "NavLinks") ? null : (<Button
               types="profile"
               aria-label="back button"
               onClick={handleBack}
@@ -181,9 +187,9 @@ export default function HorizontalBar (props: HorizontalBarProps) {
             />)
             }
             {
-              version === "Breadcrumbs-Single" ?
+              (version === "Breadcrumbs-Single") ?
                 versionBreadcrumbsSingle() :
-                version === "NavLinks" ?
+                (version === "NavLinks") ?
                   varsionNavLinks() :
                   version === "Breadcrumbs-Many" ?
                     versionBreadcrumbsMany() :
