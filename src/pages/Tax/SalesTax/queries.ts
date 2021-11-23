@@ -11,7 +11,7 @@ const getSalesTaxList = async (pageParam: number, searchTerm: string) => {
     
     const salesTaxListEntitySet = `/api/tax-service/sales-tax/list?limit=${pageDataLimit}&offset=${pageParam}`;
 
-    const url = query ? `&countryCode=us` : `&countryCode=us`;
+    const url = query ? `&countryCode=us&${query.toString()}` : `&countryCode=us`;
     const options: AxiosRequestConfig = {
         method: 'get',
         url: salesTaxListEntitySet + url
