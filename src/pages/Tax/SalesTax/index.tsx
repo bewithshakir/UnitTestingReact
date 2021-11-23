@@ -1,10 +1,11 @@
+/* eslint-disable no-console */
 import React, { memo, useEffect } from 'react';
 import { HorizontalBarVersionState, useStore } from '../../../store';
 import { Box, Grid, FormControl } from "@mui/material";
 import { Button } from "../../../components/UIComponents/Button/Button.component";
 import { FilterIcon } from "../../../assets/icons";
 import SortbyMenu from "../../../components/UIComponents/Menu/SortbyMenu.component";
-import { sortByOptions } from "./config";
+import { filterByFields, sortByOptions } from "./config";
 import { useTranslation } from "react-i18next";
 import SearchInput from "../../../components/UIComponents/SearchInput/SearchInput";
 import ActionsMenu from "../../../components/UIComponents/Menu/ActionsMenu.component";
@@ -13,6 +14,9 @@ import { useHistory } from "react-router-dom";
 import SalesTaxModel from '../../../models/SalesTaxModel';
 import GridComponent from "../../../components/UIComponents/DataGird/grid.component";
 import { salesTaxListSet } from './queries';
+// import { SyntheticEvent } from 'react';
+import { RightInfoPanel } from "../../../components/UIComponents/RightInfoPanel/RightInfoPanel.component";
+
 
 const SalesTaxLandingContent = memo(() => {
   const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
@@ -24,6 +28,12 @@ const SalesTaxLandingContent = memo(() => {
   const massActionOptions = salesTaxObj.massActions();
   const [salesTaxList, setSalesTaxList] = React.useState([]);
   const headCells = salesTaxObj.fieldsToDisplay();
+  // const [info, setInfo] = React.useState({});
+  const [drawerOpen, setDrawerOpen] = React.useState(false);
+  const [custFilterPanelVisible, setCustFilterPanelVisible] = React.useState(false);
+  const [filterData, setFilterData] = React.useState<{ [key: string]: string[] }>({});
+  const [infoPanelName] = React.useState('Info PAnel');
+
 
   const [searchTerm, setSearchTerm] = React.useState("");
 
@@ -43,6 +53,11 @@ const SalesTaxLandingContent = memo(() => {
     setSearchTerm(value);
   };
 
+  const handleCustFilterPanelOpen = () => {
+    setDrawerOpen(false);
+    setCustFilterPanelVisible(!custFilterPanelVisible);
+  };
+
   const navigateHomePage = () => {
     // TO DO
     history.push("/addSalesTax");
@@ -58,7 +73,38 @@ const SalesTaxLandingContent = memo(() => {
   };
 
   const openDrawer = () => {
-    // TODO
+    //row: SyntheticEvent
+    // const infoObj = createInfoObjForRightInfoPanel(row);
+    // setInfo(infoObj);
+    setDrawerOpen(true);
+  };
+  const drawerClose = () => {
+    setDrawerOpen(false);
+  };
+
+  // const createInfoObjForRightInfoPanel = (row: any) => {
+  //   setInfoPanelEditId(row.customerId);
+  //   setInfoPanelName(row.customerName);
+  //   const infoObj = {
+  //     'Customer ID': row.customerInputId,
+  //     'Name': row.contactName,
+  //     'Email': row.email,
+  //     'Phone': maskPhoneNumber(row.phone),
+  //     'Settlement Type': row.paymentType,
+  //     'Card Added': row.cardAdded === "Y" ? <PositiveCricleIcon /> : row.cardAdded === "N" ? 'Not yet assigned' : '',
+  //     'Address': row.address,
+  //     'City': row.city,
+  //     'State': row.state,
+  //     'Zip Code': row.zipCode,
+  //   };
+  //   return infoObj;
+  // };
+
+  const handleCustFilterPanelClose = () => setCustFilterPanelVisible(false);
+
+  const getFilterParams = (filterObj: { [key: string]: string[] }) => {
+    setFilterData(filterObj);
+    console.log(filterData);
   };
 
   return (
@@ -70,6 +116,7 @@ const SalesTaxLandingContent = memo(() => {
               <Button
                 types="filter"
                 aria-label="dafault"
+                onClick={handleCustFilterPanelOpen}
                 startIcon={<FilterIcon />}
               >
                 Filter
@@ -126,6 +173,15 @@ const SalesTaxLandingContent = memo(() => {
             openDrawer={openDrawer}
             noDataMsg='Add Tax.'
           />
+
+          <RightInfoPanel panelType="salestax-filter"
+            open={custFilterPanelVisible} headingText={"customer-filter-panel.header.filters"}
+            provideFilterParams={getFilterParams} onClose={handleCustFilterPanelClose}
+            fields={filterByFields}
+            storeKey={'customerFilter'}
+          />
+
+          <RightInfoPanel panelType="info-view" open={drawerOpen} headingText={infoPanelName} onClose={drawerClose} />
         </Grid>
       </Grid>
     </Box>

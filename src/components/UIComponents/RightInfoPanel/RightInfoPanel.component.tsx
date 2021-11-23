@@ -6,7 +6,7 @@ import { DynamicFilterContent, IDynamicFilterProps } from "./DynamicFilterConten
 import "./RightInfoPanel.style.scss";
 
 
-type drawerVariant = "info-view" | "customer-filter";
+type drawerVariant = "info-view" | "customer-filter" | "salestax-filter";
 
 interface InfoPanelProps {
   open: boolean;
