@@ -55,10 +55,24 @@ export const routes = [
     path: "/salesTax",
     component: lazy(() => import("./pages/Tax/SalesTax")),
     version: "Breadcrumbs-Many",
-    exact: true
+    exact: true,
+    routes: [
+      // {
+      //   path: "/addSalesTax",
+      //   version: "Breadcrumbs-Single",
+      //   component: lazy(() => import('./pages/AddSalesTax/AddSalesTax')),
+      //   exact: true,
+      // }
+    ]
   },
   {
-    path: "/addSalesTax",
+    path: "/salesTax/addSalesTax",
+    version: "Breadcrumbs-Single",
+    component: lazy(() => import('./pages/AddSalesTax/AddSalesTax')),
+    exact: true,
+  },
+  {
+    path: "/salesTax/addSalesTax/:taxId",
     version: "Breadcrumbs-Single",
     component: lazy(() => import('./pages/AddSalesTax/AddSalesTax')),
     exact: true,
