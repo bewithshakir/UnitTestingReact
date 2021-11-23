@@ -86,7 +86,7 @@ const SalesTaxLandingContent = memo(() => {
             <Grid item>
               <SearchInput
                 name="searchTerm"
-                placeholder="City"
+                placeholder={t("taxes.salesTax.city")}
                 value={searchTerm}
                 delay={500}
                 onChange={onInputChange}
