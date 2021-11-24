@@ -1,59 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders the Default Select component snapshot test for Default Select component 1`] = `
-<Fragment>
-  <ForwardRef(FormControl)
-    className="select"
-  >
-    <ForwardRef(InputLabel)
-      aria-labelledby="Input"
-      aria-required={false}
-      htmlFor="select-label-label"
-      shrink={true}
-      style={
-        Object {
-          "color": "var(--Darkgray)",
-        }
-      }
-    >
-      <b>
-        INPUT
-      </b>
-    </ForwardRef(InputLabel)>
-    <ForwardRef
-      className="react-select-container"
-      classNamePrefix="react-select"
-      components={
-        Object {
-          "DropdownIndicator": [Function],
-          "IndicatorSeparator": [Function],
-          "Option": [Function],
-          "SingleValue": [Function],
-        }
-      }
-      id="select-label"
-      isSearchable={false}
-      onChange={[Function]}
-      onKeyDown={[Function]}
-      options={
-        Array [
-          Object {
-            "icon": <YellowFuelIcon />,
-            "label": "Label",
-            "value": "Value",
-          },
-        ]
-      }
-      placeholder="Select"
-    />
-  </ForwardRef(FormControl)>
-</Fragment>
-`;
-
-exports[`renders the SingleSelect component on change Should change value when onChange was called 1`] = `
-<SingleSelect
+exports[`renders the MultiSelect component on change Should change value when onChange was called 1`] = `
+<MultiSelect
   error={false}
-  id="single-select-on-change-test"
+  id="multi-select-on-change-test"
   items={
     Array [
       Object {
@@ -74,6 +24,8 @@ exports[`renders the SingleSelect component on change Should change value when o
     ]
   }
   label="Select values"
+  loadingMessage="Loading..."
+  noOptionsMessage="No Options found"
   onChange={[MockFunction]}
   placeholder="Select"
   required={false}
@@ -90,7 +42,7 @@ exports[`renders the SingleSelect component on change Should change value when o
             <ForwardRef(InputLabel)
               aria-labelledby="Select values"
               aria-required={false}
-              htmlFor="single-select-on-change-test-label"
+              htmlFor="multi-select-on-change-test-label"
               shrink={true}
               style={
                 Object {
@@ -103,20 +55,25 @@ exports[`renders the SingleSelect component on change Should change value when o
               </b>
             </ForwardRef(InputLabel)>,
             <ForwardRef
-              className="react-select-container"
-              classNamePrefix="react-select"
+              className="multi-select-container"
+              classNamePrefix="multi-select"
+              closeMenuOnSelect={false}
               components={
                 Object {
+                  "ClearIndicator": [Function],
                   "DropdownIndicator": [Function],
                   "IndicatorSeparator": [Function],
+                  "MultiValue": [Function],
                   "Option": [Function],
-                  "SingleValue": [Function],
                 }
               }
-              id="single-select-on-change-test"
+              hideSelectedOptions={false}
+              id="multi-select-on-change-test"
+              isMulti={true}
               isSearchable={false}
+              loadingMessage={[Function]}
+              noOptionsMessage={[Function]}
               onChange={[Function]}
-              onKeyDown={[Function]}
               options={
                 Array [
                   Object {
@@ -160,7 +117,7 @@ exports[`renders the SingleSelect component on change Should change value when o
         <ForwardRef(InputLabel)
           aria-labelledby="Select values"
           aria-required={false}
-          htmlFor="single-select-on-change-test-label"
+          htmlFor="multi-select-on-change-test-label"
           shrink={true}
           style={
             Object {
@@ -178,7 +135,7 @@ exports[`renders the SingleSelect component on change Should change value when o
               }
             }
             data-shrink={true}
-            htmlFor="single-select-on-change-test-label"
+            htmlFor="multi-select-on-change-test-label"
             ownerState={
               Object {
                 "aria-labelledby": "Select values",
@@ -206,7 +163,7 @@ exports[`renders the SingleSelect component on change Should change value when o
                   "size": "medium",
                   "variant": "outlined",
                 },
-                "htmlFor": "single-select-on-change-test-label",
+                "htmlFor": "multi-select-on-change-test-label",
                 "required": false,
                 "shrink": true,
                 "size": "medium",
@@ -233,7 +190,7 @@ exports[`renders the SingleSelect component on change Should change value when o
                 }
               }
               data-shrink={true}
-              htmlFor="single-select-on-change-test-label"
+              htmlFor="multi-select-on-change-test-label"
               style={
                 Object {
                   "color": "var(--Darkgray)",
@@ -252,7 +209,7 @@ exports[`renders the SingleSelect component on change Should change value when o
                   }
                 }
                 data-shrink={true}
-                htmlFor="single-select-on-change-test-label"
+                htmlFor="multi-select-on-change-test-label"
                 ownerState={
                   Object {
                     "aria-labelledby": "Select values",
@@ -272,7 +229,7 @@ exports[`renders the SingleSelect component on change Should change value when o
                     "error": false,
                     "filled": false,
                     "focused": false,
-                    "htmlFor": "single-select-on-change-test-label",
+                    "htmlFor": "multi-select-on-change-test-label",
                     "required": false,
                     "style": Object {
                       "color": "var(--Darkgray)",
@@ -290,7 +247,7 @@ exports[`renders the SingleSelect component on change Should change value when o
                   aria-required={false}
                   className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary css-1kty9di-MuiFormLabel-root-MuiInputLabel-root"
                   data-shrink={true}
-                  htmlFor="single-select-on-change-test-label"
+                  htmlFor="multi-select-on-change-test-label"
                   style={
                     Object {
                       "color": "var(--Darkgray)",
@@ -306,20 +263,25 @@ exports[`renders the SingleSelect component on change Should change value when o
           </MuiInputLabelRoot>
         </ForwardRef(InputLabel)>
         <ForwardRef
-          className="react-select-container"
-          classNamePrefix="react-select"
+          className="multi-select-container"
+          classNamePrefix="multi-select"
+          closeMenuOnSelect={false}
           components={
             Object {
+              "ClearIndicator": [Function],
               "DropdownIndicator": [Function],
               "IndicatorSeparator": [Function],
+              "MultiValue": [Function],
               "Option": [Function],
-              "SingleValue": [Function],
             }
           }
-          id="single-select-on-change-test"
+          hideSelectedOptions={false}
+          id="multi-select-on-change-test"
+          isMulti={true}
           isSearchable={false}
+          loadingMessage={[Function]}
+          noOptionsMessage={[Function]}
           onChange={[Function]}
-          onKeyDown={[Function]}
           options={
             Array [
               Object {
@@ -346,16 +308,17 @@ exports[`renders the SingleSelect component on change Should change value when o
             backspaceRemovesValue={true}
             blurInputOnSelect={true}
             captureMenuScroll={false}
-            className="react-select-container"
-            classNamePrefix="react-select"
+            className="multi-select-container"
+            classNamePrefix="multi-select"
             closeMenuOnScroll={false}
-            closeMenuOnSelect={true}
+            closeMenuOnSelect={false}
             components={
               Object {
+                "ClearIndicator": [Function],
                 "DropdownIndicator": [Function],
                 "IndicatorSeparator": [Function],
+                "MultiValue": [Function],
                 "Option": [Function],
-                "SingleValue": [Function],
               }
             }
             controlShouldRenderValue={true}
@@ -364,11 +327,12 @@ exports[`renders the SingleSelect component on change Should change value when o
             formatGroupLabel={[Function]}
             getOptionLabel={[Function]}
             getOptionValue={[Function]}
-            id="single-select-on-change-test"
+            hideSelectedOptions={false}
+            id="multi-select-on-change-test"
             inputValue=""
             isDisabled={false}
             isLoading={false}
-            isMulti={false}
+            isMulti={true}
             isOptionDisabled={[Function]}
             isRtl={false}
             isSearchable={false}
@@ -383,7 +347,6 @@ exports[`renders the SingleSelect component on change Should change value when o
             noOptionsMessage={[Function]}
             onChange={[Function]}
             onInputChange={[Function]}
-            onKeyDown={[Function]}
             onMenuClose={[Function]}
             onMenuOpen={[Function]}
             openMenuOnClick={true}
@@ -416,7 +379,7 @@ exports[`renders the SingleSelect component on change Should change value when o
             value={null}
           >
             <SelectContainer
-              className="react-select-container"
+              className="multi-select-container"
               clearValue={[Function]}
               cx={[Function]}
               getStyles={[Function]}
@@ -424,13 +387,13 @@ exports[`renders the SingleSelect component on change Should change value when o
               hasValue={false}
               innerProps={
                 Object {
-                  "id": "single-select-on-change-test",
+                  "id": "multi-select-on-change-test",
                   "onKeyDown": [Function],
                 }
               }
               isDisabled={false}
               isFocused={false}
-              isMulti={false}
+              isMulti={true}
               isRtl={false}
               options={
                 Array [
@@ -458,15 +421,16 @@ exports[`renders the SingleSelect component on change Should change value when o
                   "backspaceRemovesValue": true,
                   "blurInputOnSelect": true,
                   "captureMenuScroll": false,
-                  "className": "react-select-container",
-                  "classNamePrefix": "react-select",
+                  "className": "multi-select-container",
+                  "classNamePrefix": "multi-select",
                   "closeMenuOnScroll": false,
-                  "closeMenuOnSelect": true,
+                  "closeMenuOnSelect": false,
                   "components": Object {
+                    "ClearIndicator": [Function],
                     "DropdownIndicator": [Function],
                     "IndicatorSeparator": [Function],
+                    "MultiValue": [Function],
                     "Option": [Function],
-                    "SingleValue": [Function],
                   },
                   "controlShouldRenderValue": true,
                   "escapeClearsValue": false,
@@ -474,11 +438,12 @@ exports[`renders the SingleSelect component on change Should change value when o
                   "formatGroupLabel": [Function],
                   "getOptionLabel": [Function],
                   "getOptionValue": [Function],
-                  "id": "single-select-on-change-test",
+                  "hideSelectedOptions": false,
+                  "id": "multi-select-on-change-test",
                   "inputValue": "",
                   "isDisabled": false,
                   "isLoading": false,
-                  "isMulti": false,
+                  "isMulti": true,
                   "isOptionDisabled": [Function],
                   "isRtl": false,
                   "isSearchable": false,
@@ -495,7 +460,6 @@ exports[`renders the SingleSelect component on change Should change value when o
                   "onBlur": undefined,
                   "onChange": [Function],
                   "onInputChange": [Function],
-                  "onKeyDown": [Function],
                   "onMenuClose": [Function],
                   "onMenuOpen": [Function],
                   "openMenuOnClick": true,
@@ -560,7 +524,7 @@ exports[`renders the SingleSelect component on change Should change value when o
               <EmotionCssPropInternal
                 __EMOTION_LABEL_PLEASE_DO_NOT_USE__="SelectContainer"
                 __EMOTION_TYPE_PLEASE_DO_NOT_USE__="div"
-                className="react-select-container"
+                className="multi-select-container"
                 css={
                   Object {
                     "boxSizing": "border-box",
@@ -570,12 +534,12 @@ exports[`renders the SingleSelect component on change Should change value when o
                     "position": "relative",
                   }
                 }
-                id="single-select-on-change-test"
+                id="multi-select-on-change-test"
                 onKeyDown={[Function]}
               >
                 <div
-                  className="react-select-container css-b62m3t-container"
-                  id="single-select-on-change-test"
+                  className="multi-select-container css-b62m3t-container"
+                  id="multi-select-on-change-test"
                   onKeyDown={[Function]}
                 >
                   <LiveRegion
@@ -590,7 +554,7 @@ exports[`renders the SingleSelect component on change Should change value when o
                     hasValue={false}
                     id="react-select-2-live-region"
                     isFocused={false}
-                    isMulti={false}
+                    isMulti={true}
                     isRtl={false}
                     options={
                       Array [
@@ -618,15 +582,16 @@ exports[`renders the SingleSelect component on change Should change value when o
                         "backspaceRemovesValue": true,
                         "blurInputOnSelect": true,
                         "captureMenuScroll": false,
-                        "className": "react-select-container",
-                        "classNamePrefix": "react-select",
+                        "className": "multi-select-container",
+                        "classNamePrefix": "multi-select",
                         "closeMenuOnScroll": false,
-                        "closeMenuOnSelect": true,
+                        "closeMenuOnSelect": false,
                         "components": Object {
+                          "ClearIndicator": [Function],
                           "DropdownIndicator": [Function],
                           "IndicatorSeparator": [Function],
+                          "MultiValue": [Function],
                           "Option": [Function],
-                          "SingleValue": [Function],
                         },
                         "controlShouldRenderValue": true,
                         "escapeClearsValue": false,
@@ -634,11 +599,12 @@ exports[`renders the SingleSelect component on change Should change value when o
                         "formatGroupLabel": [Function],
                         "getOptionLabel": [Function],
                         "getOptionValue": [Function],
-                        "id": "single-select-on-change-test",
+                        "hideSelectedOptions": false,
+                        "id": "multi-select-on-change-test",
                         "inputValue": "",
                         "isDisabled": false,
                         "isLoading": false,
-                        "isMulti": false,
+                        "isMulti": true,
                         "isOptionDisabled": [Function],
                         "isRtl": false,
                         "isSearchable": false,
@@ -655,7 +621,6 @@ exports[`renders the SingleSelect component on change Should change value when o
                         "onBlur": undefined,
                         "onChange": [Function],
                         "onInputChange": [Function],
-                        "onKeyDown": [Function],
                         "onMenuClose": [Function],
                         "onMenuOpen": [Function],
                         "openMenuOnClick": true,
@@ -784,7 +749,7 @@ exports[`renders the SingleSelect component on change Should change value when o
                     innerRef={[Function]}
                     isDisabled={false}
                     isFocused={false}
-                    isMulti={false}
+                    isMulti={true}
                     isRtl={false}
                     menuIsOpen={false}
                     options={
@@ -813,15 +778,16 @@ exports[`renders the SingleSelect component on change Should change value when o
                         "backspaceRemovesValue": true,
                         "blurInputOnSelect": true,
                         "captureMenuScroll": false,
-                        "className": "react-select-container",
-                        "classNamePrefix": "react-select",
+                        "className": "multi-select-container",
+                        "classNamePrefix": "multi-select",
                         "closeMenuOnScroll": false,
-                        "closeMenuOnSelect": true,
+                        "closeMenuOnSelect": false,
                         "components": Object {
+                          "ClearIndicator": [Function],
                           "DropdownIndicator": [Function],
                           "IndicatorSeparator": [Function],
+                          "MultiValue": [Function],
                           "Option": [Function],
-                          "SingleValue": [Function],
                         },
                         "controlShouldRenderValue": true,
                         "escapeClearsValue": false,
@@ -829,11 +795,12 @@ exports[`renders the SingleSelect component on change Should change value when o
                         "formatGroupLabel": [Function],
                         "getOptionLabel": [Function],
                         "getOptionValue": [Function],
-                        "id": "single-select-on-change-test",
+                        "hideSelectedOptions": false,
+                        "id": "multi-select-on-change-test",
                         "inputValue": "",
                         "isDisabled": false,
                         "isLoading": false,
-                        "isMulti": false,
+                        "isMulti": true,
                         "isOptionDisabled": [Function],
                         "isRtl": false,
                         "isSearchable": false,
@@ -850,7 +817,6 @@ exports[`renders the SingleSelect component on change Should change value when o
                         "onBlur": undefined,
                         "onChange": [Function],
                         "onInputChange": [Function],
-                        "onKeyDown": [Function],
                         "onMenuClose": [Function],
                         "onMenuOpen": [Function],
                         "openMenuOnClick": true,
@@ -915,7 +881,7 @@ exports[`renders the SingleSelect component on change Should change value when o
                     <EmotionCssPropInternal
                       __EMOTION_LABEL_PLEASE_DO_NOT_USE__="Control"
                       __EMOTION_TYPE_PLEASE_DO_NOT_USE__="div"
-                      className="react-select__control"
+                      className="multi-select__control"
                       css={
                         Object {
                           "&:hover": Object {
@@ -944,7 +910,7 @@ exports[`renders the SingleSelect component on change Should change value when o
                       onTouchEnd={[Function]}
                     >
                       <div
-                        className="react-select__control css-1s2u09g-control"
+                        className="multi-select__control css-1s2u09g-control"
                         onMouseDown={[Function]}
                         onTouchEnd={[Function]}
                       >
@@ -955,7 +921,7 @@ exports[`renders the SingleSelect component on change Should change value when o
                           getValue={[Function]}
                           hasValue={false}
                           isDisabled={false}
-                          isMulti={false}
+                          isMulti={true}
                           isRtl={false}
                           options={
                             Array [
@@ -983,15 +949,16 @@ exports[`renders the SingleSelect component on change Should change value when o
                               "backspaceRemovesValue": true,
                               "blurInputOnSelect": true,
                               "captureMenuScroll": false,
-                              "className": "react-select-container",
-                              "classNamePrefix": "react-select",
+                              "className": "multi-select-container",
+                              "classNamePrefix": "multi-select",
                               "closeMenuOnScroll": false,
-                              "closeMenuOnSelect": true,
+                              "closeMenuOnSelect": false,
                               "components": Object {
+                                "ClearIndicator": [Function],
                                 "DropdownIndicator": [Function],
                                 "IndicatorSeparator": [Function],
+                                "MultiValue": [Function],
                                 "Option": [Function],
-                                "SingleValue": [Function],
                               },
                               "controlShouldRenderValue": true,
                               "escapeClearsValue": false,
@@ -999,11 +966,12 @@ exports[`renders the SingleSelect component on change Should change value when o
                               "formatGroupLabel": [Function],
                               "getOptionLabel": [Function],
                               "getOptionValue": [Function],
-                              "id": "single-select-on-change-test",
+                              "hideSelectedOptions": false,
+                              "id": "multi-select-on-change-test",
                               "inputValue": "",
                               "isDisabled": false,
                               "isLoading": false,
-                              "isMulti": false,
+                              "isMulti": true,
                               "isOptionDisabled": [Function],
                               "isRtl": false,
                               "isSearchable": false,
@@ -1020,7 +988,6 @@ exports[`renders the SingleSelect component on change Should change value when o
                               "onBlur": undefined,
                               "onChange": [Function],
                               "onInputChange": [Function],
-                              "onKeyDown": [Function],
                               "onMenuClose": [Function],
                               "onMenuOpen": [Function],
                               "openMenuOnClick": true,
@@ -1085,7 +1052,7 @@ exports[`renders the SingleSelect component on change Should change value when o
                           <EmotionCssPropInternal
                             __EMOTION_LABEL_PLEASE_DO_NOT_USE__="ValueContainer"
                             __EMOTION_TYPE_PLEASE_DO_NOT_USE__="div"
-                            className="react-select__value-container"
+                            className="multi-select__value-container multi-select__value-container--is-multi"
                             css={
                               Object {
                                 "WebkitOverflowScrolling": "touch",
@@ -1101,7 +1068,7 @@ exports[`renders the SingleSelect component on change Should change value when o
                             }
                           >
                             <div
-                              className="react-select__value-container css-319lph-ValueContainer"
+                              className="multi-select__value-container multi-select__value-container--is-multi css-319lph-ValueContainer"
                             >
                               <Placeholder
                                 clearValue={[Function]}
@@ -1116,7 +1083,7 @@ exports[`renders the SingleSelect component on change Should change value when o
                                 }
                                 isDisabled={false}
                                 isFocused={false}
-                                isMulti={false}
+                                isMulti={true}
                                 isRtl={false}
                                 key="placeholder"
                                 options={
@@ -1145,15 +1112,16 @@ exports[`renders the SingleSelect component on change Should change value when o
                                     "backspaceRemovesValue": true,
                                     "blurInputOnSelect": true,
                                     "captureMenuScroll": false,
-                                    "className": "react-select-container",
-                                    "classNamePrefix": "react-select",
+                                    "className": "multi-select-container",
+                                    "classNamePrefix": "multi-select",
                                     "closeMenuOnScroll": false,
-                                    "closeMenuOnSelect": true,
+                                    "closeMenuOnSelect": false,
                                     "components": Object {
+                                      "ClearIndicator": [Function],
                                       "DropdownIndicator": [Function],
                                       "IndicatorSeparator": [Function],
+                                      "MultiValue": [Function],
                                       "Option": [Function],
-                                      "SingleValue": [Function],
                                     },
                                     "controlShouldRenderValue": true,
                                     "escapeClearsValue": false,
@@ -1161,11 +1129,12 @@ exports[`renders the SingleSelect component on change Should change value when o
                                     "formatGroupLabel": [Function],
                                     "getOptionLabel": [Function],
                                     "getOptionValue": [Function],
-                                    "id": "single-select-on-change-test",
+                                    "hideSelectedOptions": false,
+                                    "id": "multi-select-on-change-test",
                                     "inputValue": "",
                                     "isDisabled": false,
                                     "isLoading": false,
-                                    "isMulti": false,
+                                    "isMulti": true,
                                     "isOptionDisabled": [Function],
                                     "isRtl": false,
                                     "isSearchable": false,
@@ -1182,7 +1151,6 @@ exports[`renders the SingleSelect component on change Should change value when o
                                     "onBlur": undefined,
                                     "onChange": [Function],
                                     "onInputChange": [Function],
-                                    "onKeyDown": [Function],
                                     "onMenuClose": [Function],
                                     "onMenuOpen": [Function],
                                     "openMenuOnClick": true,
@@ -1247,7 +1215,7 @@ exports[`renders the SingleSelect component on change Should change value when o
                                 <EmotionCssPropInternal
                                   __EMOTION_LABEL_PLEASE_DO_NOT_USE__="Placeholder"
                                   __EMOTION_TYPE_PLEASE_DO_NOT_USE__="div"
-                                  className="react-select__placeholder"
+                                  className="multi-select__placeholder"
                                   css={
                                     Object {
                                       "boxSizing": "border-box",
@@ -1261,7 +1229,7 @@ exports[`renders the SingleSelect component on change Should change value when o
                                   id="react-select-2-placeholder"
                                 >
                                   <div
-                                    className="react-select__placeholder css-14el2xx-placeholder"
+                                    className="multi-select__placeholder css-14el2xx-placeholder"
                                     id="react-select-2-placeholder"
                                   >
                                     Select
@@ -1347,7 +1315,7 @@ exports[`renders the SingleSelect component on change Should change value when o
                           getValue={[Function]}
                           hasValue={false}
                           isDisabled={false}
-                          isMulti={false}
+                          isMulti={true}
                           isRtl={false}
                           options={
                             Array [
@@ -1375,15 +1343,16 @@ exports[`renders the SingleSelect component on change Should change value when o
                               "backspaceRemovesValue": true,
                               "blurInputOnSelect": true,
                               "captureMenuScroll": false,
-                              "className": "react-select-container",
-                              "classNamePrefix": "react-select",
+                              "className": "multi-select-container",
+                              "classNamePrefix": "multi-select",
                               "closeMenuOnScroll": false,
-                              "closeMenuOnSelect": true,
+                              "closeMenuOnSelect": false,
                               "components": Object {
+                                "ClearIndicator": [Function],
                                 "DropdownIndicator": [Function],
                                 "IndicatorSeparator": [Function],
+                                "MultiValue": [Function],
                                 "Option": [Function],
-                                "SingleValue": [Function],
                               },
                               "controlShouldRenderValue": true,
                               "escapeClearsValue": false,
@@ -1391,11 +1360,12 @@ exports[`renders the SingleSelect component on change Should change value when o
                               "formatGroupLabel": [Function],
                               "getOptionLabel": [Function],
                               "getOptionValue": [Function],
-                              "id": "single-select-on-change-test",
+                              "hideSelectedOptions": false,
+                              "id": "multi-select-on-change-test",
                               "inputValue": "",
                               "isDisabled": false,
                               "isLoading": false,
-                              "isMulti": false,
+                              "isMulti": true,
                               "isOptionDisabled": [Function],
                               "isRtl": false,
                               "isSearchable": false,
@@ -1412,7 +1382,6 @@ exports[`renders the SingleSelect component on change Should change value when o
                               "onBlur": undefined,
                               "onChange": [Function],
                               "onInputChange": [Function],
-                              "onKeyDown": [Function],
                               "onMenuClose": [Function],
                               "onMenuOpen": [Function],
                               "openMenuOnClick": true,
@@ -1477,7 +1446,7 @@ exports[`renders the SingleSelect component on change Should change value when o
                           <EmotionCssPropInternal
                             __EMOTION_LABEL_PLEASE_DO_NOT_USE__="IndicatorsContainer"
                             __EMOTION_TYPE_PLEASE_DO_NOT_USE__="div"
-                            className="react-select__indicators"
+                            className="multi-select__indicators"
                             css={
                               Object {
                                 "alignItems": "center",
@@ -1489,7 +1458,7 @@ exports[`renders the SingleSelect component on change Should change value when o
                             }
                           >
                             <div
-                              className="react-select__indicators css-1hb7zxy-IndicatorsContainer"
+                              className="multi-select__indicators css-1hb7zxy-IndicatorsContainer"
                             >
                               <IndicatorSeparator
                                 clearValue={[Function]}
@@ -1499,7 +1468,7 @@ exports[`renders the SingleSelect component on change Should change value when o
                                 hasValue={false}
                                 isDisabled={false}
                                 isFocused={false}
-                                isMulti={false}
+                                isMulti={true}
                                 isRtl={false}
                                 options={
                                   Array [
@@ -1527,15 +1496,16 @@ exports[`renders the SingleSelect component on change Should change value when o
                                     "backspaceRemovesValue": true,
                                     "blurInputOnSelect": true,
                                     "captureMenuScroll": false,
-                                    "className": "react-select-container",
-                                    "classNamePrefix": "react-select",
+                                    "className": "multi-select-container",
+                                    "classNamePrefix": "multi-select",
                                     "closeMenuOnScroll": false,
-                                    "closeMenuOnSelect": true,
+                                    "closeMenuOnSelect": false,
                                     "components": Object {
+                                      "ClearIndicator": [Function],
                                       "DropdownIndicator": [Function],
                                       "IndicatorSeparator": [Function],
+                                      "MultiValue": [Function],
                                       "Option": [Function],
-                                      "SingleValue": [Function],
                                     },
                                     "controlShouldRenderValue": true,
                                     "escapeClearsValue": false,
@@ -1543,11 +1513,12 @@ exports[`renders the SingleSelect component on change Should change value when o
                                     "formatGroupLabel": [Function],
                                     "getOptionLabel": [Function],
                                     "getOptionValue": [Function],
-                                    "id": "single-select-on-change-test",
+                                    "hideSelectedOptions": false,
+                                    "id": "multi-select-on-change-test",
                                     "inputValue": "",
                                     "isDisabled": false,
                                     "isLoading": false,
-                                    "isMulti": false,
+                                    "isMulti": true,
                                     "isOptionDisabled": [Function],
                                     "isRtl": false,
                                     "isSearchable": false,
@@ -1564,7 +1535,6 @@ exports[`renders the SingleSelect component on change Should change value when o
                                     "onBlur": undefined,
                                     "onChange": [Function],
                                     "onInputChange": [Function],
-                                    "onKeyDown": [Function],
                                     "onMenuClose": [Function],
                                     "onMenuOpen": [Function],
                                     "openMenuOnClick": true,
@@ -1641,7 +1611,7 @@ exports[`renders the SingleSelect component on change Should change value when o
                                 }
                                 isDisabled={false}
                                 isFocused={false}
-                                isMulti={false}
+                                isMulti={true}
                                 isRtl={false}
                                 options={
                                   Array [
@@ -1669,15 +1639,16 @@ exports[`renders the SingleSelect component on change Should change value when o
                                     "backspaceRemovesValue": true,
                                     "blurInputOnSelect": true,
                                     "captureMenuScroll": false,
-                                    "className": "react-select-container",
-                                    "classNamePrefix": "react-select",
+                                    "className": "multi-select-container",
+                                    "classNamePrefix": "multi-select",
                                     "closeMenuOnScroll": false,
-                                    "closeMenuOnSelect": true,
+                                    "closeMenuOnSelect": false,
                                     "components": Object {
+                                      "ClearIndicator": [Function],
                                       "DropdownIndicator": [Function],
                                       "IndicatorSeparator": [Function],
+                                      "MultiValue": [Function],
                                       "Option": [Function],
-                                      "SingleValue": [Function],
                                     },
                                     "controlShouldRenderValue": true,
                                     "escapeClearsValue": false,
@@ -1685,11 +1656,12 @@ exports[`renders the SingleSelect component on change Should change value when o
                                     "formatGroupLabel": [Function],
                                     "getOptionLabel": [Function],
                                     "getOptionValue": [Function],
-                                    "id": "single-select-on-change-test",
+                                    "hideSelectedOptions": false,
+                                    "id": "multi-select-on-change-test",
                                     "inputValue": "",
                                     "isDisabled": false,
                                     "isLoading": false,
-                                    "isMulti": false,
+                                    "isMulti": true,
                                     "isOptionDisabled": [Function],
                                     "isRtl": false,
                                     "isSearchable": false,
@@ -1706,7 +1678,6 @@ exports[`renders the SingleSelect component on change Should change value when o
                                     "onBlur": undefined,
                                     "onChange": [Function],
                                     "onInputChange": [Function],
-                                    "onKeyDown": [Function],
                                     "onMenuClose": [Function],
                                     "onMenuOpen": [Function],
                                     "openMenuOnClick": true,
@@ -1783,7 +1754,7 @@ exports[`renders the SingleSelect component on change Should change value when o
                                   }
                                   isDisabled={false}
                                   isFocused={false}
-                                  isMulti={false}
+                                  isMulti={true}
                                   isRtl={false}
                                   options={
                                     Array [
@@ -1811,15 +1782,16 @@ exports[`renders the SingleSelect component on change Should change value when o
                                       "backspaceRemovesValue": true,
                                       "blurInputOnSelect": true,
                                       "captureMenuScroll": false,
-                                      "className": "react-select-container",
-                                      "classNamePrefix": "react-select",
+                                      "className": "multi-select-container",
+                                      "classNamePrefix": "multi-select",
                                       "closeMenuOnScroll": false,
-                                      "closeMenuOnSelect": true,
+                                      "closeMenuOnSelect": false,
                                       "components": Object {
+                                        "ClearIndicator": [Function],
                                         "DropdownIndicator": [Function],
                                         "IndicatorSeparator": [Function],
+                                        "MultiValue": [Function],
                                         "Option": [Function],
-                                        "SingleValue": [Function],
                                       },
                                       "controlShouldRenderValue": true,
                                       "escapeClearsValue": false,
@@ -1827,11 +1799,12 @@ exports[`renders the SingleSelect component on change Should change value when o
                                       "formatGroupLabel": [Function],
                                       "getOptionLabel": [Function],
                                       "getOptionValue": [Function],
-                                      "id": "single-select-on-change-test",
+                                      "hideSelectedOptions": false,
+                                      "id": "multi-select-on-change-test",
                                       "inputValue": "",
                                       "isDisabled": false,
                                       "isLoading": false,
-                                      "isMulti": false,
+                                      "isMulti": true,
                                       "isOptionDisabled": [Function],
                                       "isRtl": false,
                                       "isSearchable": false,
@@ -1848,7 +1821,6 @@ exports[`renders the SingleSelect component on change Should change value when o
                                       "onBlur": undefined,
                                       "onChange": [Function],
                                       "onInputChange": [Function],
-                                      "onKeyDown": [Function],
                                       "onMenuClose": [Function],
                                       "onMenuOpen": [Function],
                                       "openMenuOnClick": true,
@@ -1914,7 +1886,7 @@ exports[`renders the SingleSelect component on change Should change value when o
                                     __EMOTION_LABEL_PLEASE_DO_NOT_USE__="DropdownIndicator"
                                     __EMOTION_TYPE_PLEASE_DO_NOT_USE__="div"
                                     aria-hidden="true"
-                                    className="react-select__indicator react-select__dropdown-indicator"
+                                    className="multi-select__indicator multi-select__dropdown-indicator"
                                     css={
                                       Object {
                                         ":hover": Object {
@@ -1933,7 +1905,7 @@ exports[`renders the SingleSelect component on change Should change value when o
                                   >
                                     <div
                                       aria-hidden="true"
-                                      className="react-select__indicator react-select__dropdown-indicator css-tlfecz-indicatorContainer"
+                                      className="multi-select__indicator multi-select__dropdown-indicator css-tlfecz-indicatorContainer"
                                       onMouseDown={[Function]}
                                       onTouchEnd={[Function]}
                                     >
@@ -1971,10 +1943,10 @@ exports[`renders the SingleSelect component on change Should change value when o
       </div>
     </MuiFormControlRoot>
   </ForwardRef(FormControl)>
-</SingleSelect>
+</MultiSelect>
 `;
 
-exports[`renders the SingleSelect component with error  snapshot test for the SingleSelect component  1`] = `
+exports[`renders the MultiSelect component snapshot test for the MultiSelect component  1`] = `
 <Fragment>
   <ForwardRef(FormControl)
     className="select"
@@ -1982,7 +1954,7 @@ exports[`renders the SingleSelect component with error  snapshot test for the Si
     <ForwardRef(InputLabel)
       aria-labelledby="Input"
       aria-required={false}
-      htmlFor="select-label-label"
+      htmlFor="multi-input-label"
       shrink={true}
       style={
         Object {
@@ -1995,20 +1967,25 @@ exports[`renders the SingleSelect component with error  snapshot test for the Si
       </b>
     </ForwardRef(InputLabel)>
     <ForwardRef
-      className="react-select-container error"
-      classNamePrefix="react-select"
+      className="multi-select-container"
+      classNamePrefix="multi-select"
+      closeMenuOnSelect={false}
       components={
         Object {
+          "ClearIndicator": [Function],
           "DropdownIndicator": [Function],
           "IndicatorSeparator": [Function],
+          "MultiValue": [Function],
           "Option": [Function],
-          "SingleValue": [Function],
         }
       }
-      id="select-label"
+      hideSelectedOptions={false}
+      id="multi-input"
+      isMulti={true}
       isSearchable={false}
+      loadingMessage={[Function]}
+      noOptionsMessage={[Function]}
       onChange={[Function]}
-      onKeyDown={[Function]}
       options={
         Array [
           Object {
@@ -2029,27 +2006,20 @@ exports[`renders the SingleSelect component with error  snapshot test for the Si
         ]
       }
       placeholder="Select"
-      value={
-        Object {
-          "icon": <YellowFuelIcon />,
-          "label": "Label1",
-          "value": "Value1",
-        }
-      }
     />
   </ForwardRef(FormControl)>
 </Fragment>
 `;
 
-exports[`renders the SingleSelect component with helper text snapshot test for the SingleSelect component  1`] = `
+exports[`renders the MultiSelect component with error snapshot test for the MultiSelect component with error  1`] = `
 <Fragment>
   <ForwardRef(FormControl)
     className="select"
   >
     <ForwardRef(InputLabel)
       aria-labelledby="Input"
-      aria-required={true}
-      htmlFor="select-label-label"
+      aria-required={false}
+      htmlFor="multi-input-label"
       shrink={true}
       style={
         Object {
@@ -2059,28 +2029,28 @@ exports[`renders the SingleSelect component with helper text snapshot test for t
     >
       <b>
         INPUT
-        <span
-          className="super"
-        >
-          * 
-        </span>
       </b>
     </ForwardRef(InputLabel)>
     <ForwardRef
-      className="react-select-container"
-      classNamePrefix="react-select"
+      className="multi-select-container error"
+      classNamePrefix="multi-select"
+      closeMenuOnSelect={false}
       components={
         Object {
+          "ClearIndicator": [Function],
           "DropdownIndicator": [Function],
           "IndicatorSeparator": [Function],
+          "MultiValue": [Function],
           "Option": [Function],
-          "SingleValue": [Function],
         }
       }
-      id="select-label"
+      hideSelectedOptions={false}
+      id="multi-input"
+      isMulti={true}
       isSearchable={false}
+      loadingMessage={[Function]}
+      noOptionsMessage={[Function]}
       onChange={[Function]}
-      onKeyDown={[Function]}
       options={
         Array [
           Object {
@@ -2102,16 +2072,92 @@ exports[`renders the SingleSelect component with helper text snapshot test for t
       }
       placeholder="Select"
       value={
+        Array [
+          Object {
+            "icon": <YellowFuelIcon />,
+            "label": "Label1",
+            "value": "Value1",
+          },
+        ]
+      }
+    />
+  </ForwardRef(FormControl)>
+</Fragment>
+`;
+
+exports[`renders the MultiSelect component with helper text snapshot test for the MultiSelect component with helper text  1`] = `
+<Fragment>
+  <ForwardRef(FormControl)
+    className="select"
+  >
+    <ForwardRef(InputLabel)
+      aria-labelledby="Input"
+      aria-required={false}
+      htmlFor="multi-input-label"
+      shrink={true}
+      style={
         Object {
-          "icon": <YellowFuelIcon />,
-          "label": "Label1",
-          "value": "Value1",
+          "color": "var(--Darkgray)",
         }
+      }
+    >
+      <b>
+        INPUT
+      </b>
+    </ForwardRef(InputLabel)>
+    <ForwardRef
+      className="multi-select-container error"
+      classNamePrefix="multi-select"
+      closeMenuOnSelect={false}
+      components={
+        Object {
+          "ClearIndicator": [Function],
+          "DropdownIndicator": [Function],
+          "IndicatorSeparator": [Function],
+          "MultiValue": [Function],
+          "Option": [Function],
+        }
+      }
+      hideSelectedOptions={false}
+      id="multi-input"
+      isMulti={true}
+      isSearchable={false}
+      loadingMessage={[Function]}
+      noOptionsMessage={[Function]}
+      onChange={[Function]}
+      options={
+        Array [
+          Object {
+            "icon": <YellowFuelIcon />,
+            "label": "Label1",
+            "value": "Value1",
+          },
+          Object {
+            "icon": <YellowFuelIcon />,
+            "label": "Label2",
+            "value": "Value2",
+          },
+          Object {
+            "icon": <YellowFuelIcon />,
+            "label": "Label3",
+            "value": "Value3",
+          },
+        ]
+      }
+      placeholder="Select"
+      value={
+        Array [
+          Object {
+            "icon": <YellowFuelIcon />,
+            "label": "Label1",
+            "value": "Value1",
+          },
+        ]
       }
     />
     <ForwardRef(FormHelperText)
       className="select-helper"
-      error={false}
+      error={true}
     >
       sample error
     </ForwardRef(FormHelperText)>
@@ -2119,7 +2165,7 @@ exports[`renders the SingleSelect component with helper text snapshot test for t
 </Fragment>
 `;
 
-exports[`renders the SingleSelect component with required prop snapshot test for the SingleSelect component  1`] = `
+exports[`renders the MultiSelect component with loading snapshot test for the MultiSelect component with loading  1`] = `
 <Fragment>
   <ForwardRef(FormControl)
     className="select"
@@ -2127,7 +2173,7 @@ exports[`renders the SingleSelect component with required prop snapshot test for
     <ForwardRef(InputLabel)
       aria-labelledby="Input"
       aria-required={true}
-      htmlFor="select-label-label"
+      htmlFor="multi-input-label"
       shrink={true}
       style={
         Object {
@@ -2145,20 +2191,131 @@ exports[`renders the SingleSelect component with required prop snapshot test for
       </b>
     </ForwardRef(InputLabel)>
     <ForwardRef
-      className="react-select-container"
-      classNamePrefix="react-select"
+      className="multi-select-container"
+      classNamePrefix="multi-select"
+      closeMenuOnSelect={false}
       components={
         Object {
+          "ClearIndicator": [Function],
           "DropdownIndicator": [Function],
           "IndicatorSeparator": [Function],
+          "MultiValue": [Function],
           "Option": [Function],
-          "SingleValue": [Function],
         }
       }
-      id="select-label"
+      hideSelectedOptions={false}
+      id="multi-input"
+      isMulti={true}
       isSearchable={false}
+      loadingMessage={[Function]}
+      noOptionsMessage={[Function]}
       onChange={[Function]}
-      onKeyDown={[Function]}
+      options={null}
+      placeholder="Select"
+      value={null}
+    />
+  </ForwardRef(FormControl)>
+</Fragment>
+`;
+
+exports[`renders the MultiSelect component with no options snapshot test for the MultiSelect component with no options  1`] = `
+<Fragment>
+  <ForwardRef(FormControl)
+    className="select"
+  >
+    <ForwardRef(InputLabel)
+      aria-labelledby="Input"
+      aria-required={true}
+      htmlFor="multi-input-label"
+      shrink={true}
+      style={
+        Object {
+          "color": "var(--Darkgray)",
+        }
+      }
+    >
+      <b>
+        INPUT
+        <span
+          className="super"
+        >
+          * 
+        </span>
+      </b>
+    </ForwardRef(InputLabel)>
+    <ForwardRef
+      className="multi-select-container"
+      classNamePrefix="multi-select"
+      closeMenuOnSelect={false}
+      components={
+        Object {
+          "ClearIndicator": [Function],
+          "DropdownIndicator": [Function],
+          "IndicatorSeparator": [Function],
+          "MultiValue": [Function],
+          "Option": [Function],
+        }
+      }
+      hideSelectedOptions={false}
+      id="multi-input"
+      isMulti={true}
+      isSearchable={false}
+      loadingMessage={[Function]}
+      noOptionsMessage={[Function]}
+      onChange={[Function]}
+      options={Array []}
+      placeholder="Select"
+      value={Array []}
+    />
+  </ForwardRef(FormControl)>
+</Fragment>
+`;
+
+exports[`renders the MultiSelect component with required prop snapshot test for the MultiSelect component with required prop  1`] = `
+<Fragment>
+  <ForwardRef(FormControl)
+    className="select"
+  >
+    <ForwardRef(InputLabel)
+      aria-labelledby="Input"
+      aria-required={true}
+      htmlFor="multi-input-label"
+      shrink={true}
+      style={
+        Object {
+          "color": "var(--Darkgray)",
+        }
+      }
+    >
+      <b>
+        INPUT
+        <span
+          className="super"
+        >
+          * 
+        </span>
+      </b>
+    </ForwardRef(InputLabel)>
+    <ForwardRef
+      className="multi-select-container"
+      classNamePrefix="multi-select"
+      closeMenuOnSelect={false}
+      components={
+        Object {
+          "ClearIndicator": [Function],
+          "DropdownIndicator": [Function],
+          "IndicatorSeparator": [Function],
+          "MultiValue": [Function],
+          "Option": [Function],
+        }
+      }
+      hideSelectedOptions={false}
+      id="multi-input"
+      isMulti={true}
+      isSearchable={false}
+      loadingMessage={[Function]}
+      noOptionsMessage={[Function]}
+      onChange={[Function]}
       options={
         Array [
           Object {
@@ -2180,18 +2337,20 @@ exports[`renders the SingleSelect component with required prop snapshot test for
       }
       placeholder="Select"
       value={
-        Object {
-          "icon": <YellowFuelIcon />,
-          "label": "Label1",
-          "value": "Value1",
-        }
+        Array [
+          Object {
+            "icon": <YellowFuelIcon />,
+            "label": "Label1",
+            "value": "Value1",
+          },
+        ]
       }
     />
   </ForwardRef(FormControl)>
 </Fragment>
 `;
 
-exports[`renders the SingleSelect component with values snapshot test for the SingleSelect component  1`] = `
+exports[`renders the MultiSelect component with values snapshot test for the MultiSelect component with values  1`] = `
 <Fragment>
   <ForwardRef(FormControl)
     className="select"
@@ -2199,7 +2358,7 @@ exports[`renders the SingleSelect component with values snapshot test for the Si
     <ForwardRef(InputLabel)
       aria-labelledby="Input"
       aria-required={false}
-      htmlFor="select-label-label"
+      htmlFor="multi-input-label"
       shrink={true}
       style={
         Object {
@@ -2212,20 +2371,25 @@ exports[`renders the SingleSelect component with values snapshot test for the Si
       </b>
     </ForwardRef(InputLabel)>
     <ForwardRef
-      className="react-select-container"
-      classNamePrefix="react-select"
+      className="multi-select-container"
+      classNamePrefix="multi-select"
+      closeMenuOnSelect={false}
       components={
         Object {
+          "ClearIndicator": [Function],
           "DropdownIndicator": [Function],
           "IndicatorSeparator": [Function],
+          "MultiValue": [Function],
           "Option": [Function],
-          "SingleValue": [Function],
         }
       }
-      id="select-label"
+      hideSelectedOptions={false}
+      id="multi-input"
+      isMulti={true}
       isSearchable={false}
+      loadingMessage={[Function]}
+      noOptionsMessage={[Function]}
       onChange={[Function]}
-      onKeyDown={[Function]}
       options={
         Array [
           Object {
@@ -2246,13 +2410,7 @@ exports[`renders the SingleSelect component with values snapshot test for the Si
         ]
       }
       placeholder="Select"
-      value={
-        Object {
-          "icon": <YellowFuelIcon />,
-          "label": "Label1",
-          "value": "Value1",
-        }
-      }
+      value={Array []}
     />
   </ForwardRef(FormControl)>
 </Fragment>
