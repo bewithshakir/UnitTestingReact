@@ -235,14 +235,32 @@ const AddSalesTax: React.FC = () => {
     }
     const disableButton = () => {
         if (isEditMode) {
-            
+            console.log('formik edit', formik);
             if (Object.keys(formik.errors).length > 1) {
                 return true;
-            } else if (Object.keys(formik.touched).length) {
+            } 
+            else if ((formik.touched.stateRate && formik.errors.stateRate) ||
+            (formik.touched.localRate && formik.errors.localRate)) {
+                return true;
+            }
+            else if (Object.keys(formik.touched).length) {
                 return false;
             }
         } else {
-            return (!formik.isValid || !formik.dirty) || formik.isSubmitting;
+            if ((formik.touched.stateRate && formik.errors.stateRate) ||
+            (formik.touched.localRate && formik.errors.localRate)) {
+                return true;
+            }
+            else if (formik.values.addressLine1 && 
+                formik.values.city && 
+                formik.values.state && 
+                formik.values.stateRate &&
+                formik.values.localRate
+                ){
+                return false;
+            } else {
+                return true;
+            }
         }
     };
 
@@ -309,6 +327,7 @@ const AddSalesTax: React.FC = () => {
                                         description=''
                                         {...formik.getFieldProps('city')}
                                         data-test="city"
+                                        required
                                     />
 
                                 </Grid>
@@ -325,6 +344,7 @@ const AddSalesTax: React.FC = () => {
                                         error={(formik.touched.state && formik.errors.state) ? true : false}
                                         {...formik.getFieldProps('state')}
                                         data-test="state"
+                                        required
                                     />
                                 </Grid>
                             </Grid>

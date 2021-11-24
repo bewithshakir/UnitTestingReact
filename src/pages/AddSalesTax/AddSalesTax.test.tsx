@@ -13,11 +13,11 @@ const queryClient = new QueryClient();
  * @returns {wrapper}
  */
 
-const setup = (props={})=>  mount(<QueryClientProvider client={queryClient}>
+/* const setup = (props={})=>  mount(<QueryClientProvider client={queryClient}>
     <I18nextProvider i18n={i18n}>
         <AddSalesTax {...props}/>
     </I18nextProvider>
-</QueryClientProvider>);
+</QueryClientProvider>); */
 
 
 describe('AddSalesTax component', () => {
@@ -67,22 +67,11 @@ describe('AddSalesTax component', () => {
         expect(cancelButton.length).toBeGreaterThanOrEqual(0);
     });
 
-    
+    describe('UseQuery testing', ()=> {
 
-    /* describe('renders city with all cases', ()=> {
-        it('renders city input without error', ()=>{
-            const wrapper = setup(); 
-            const cityInput = findByTestAttr(wrapper, 'city');
-            expect(cityInput.length).toBe(1);
+        describe('while loading', ()=> {
+            it.todo('render a loader')
         });
-    }); */
-
-    // it('renders city input with `disabled` attributes', ()=>{
-    //     const wrapper = setup(); 
-    //     const cityInput = findByIdAttr(wrapper, 'city');
-    //     expect(cityInput.closest('input')).toHaveAttribute('disabled');
-    //     // console.log('city--', cityInput.closest('input'))
-    // });
-    
+    });
 
 });
