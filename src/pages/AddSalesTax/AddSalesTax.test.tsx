@@ -1,9 +1,7 @@
-import { mount, shallow } from 'enzyme';
-import { I18nextProvider } from 'react-i18next';
-import { QueryClient, QueryClientProvider, useQuery } from 'react-query';
+import { mount } from 'enzyme';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
-import {i18n} from '../../i18n/i18n';
-import { findByIdAttr, findByTestAttr } from '../../tests/testUtils';
+import { findByTestAttr } from '../../tests/testUtils';
 import AddSalesTax from './AddSalesTax';
 
 const queryClient = new QueryClient();
@@ -14,9 +12,7 @@ const queryClient = new QueryClient();
  */
 
 const setup = (props={})=>  mount(<QueryClientProvider client={queryClient}>
-    <I18nextProvider i18n={i18n}>
         <AddSalesTax {...props}/>
-    </I18nextProvider>
 </QueryClientProvider>);
 
 

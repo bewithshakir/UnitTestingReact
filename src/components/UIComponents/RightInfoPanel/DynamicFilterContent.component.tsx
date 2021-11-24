@@ -215,13 +215,13 @@ export const DynamicFilterContent: React.FC<IDynamicFilterProps> = ({ provideFil
                                 : field.fieldType === 'dateRange' ?
                                     <Grid key={field.name} item xs={12} columnSpacing={2} container>
                                         <Grid item xs={12} className="cust_filter_date_label_grid">
-                                            {"Period".toUpperCase()}
+                                            {t('right-info-panel.filter.period')}
                                         </Grid>
                                         <Grid container item xs={12} spacing="2">
                                             <DatePickerInput
                                                 type="date-range"
                                                 id="cust-filter-date-range"
-                                                placeholder={{ start: t("customer-filter-panel.from date"), end: t("customer-filter-panel.to date") }}
+                                                placeholder={{ start: t("right-info-panel.filter.from date"), end: t("right-info-panel.filter.to date") }}
                                                 name={field.name}
                                                 onDateRangeChange={(name, val) => onDateRangeChange(name, val)}
                                                 helperText={(touched && error) ? error : undefined}
@@ -349,21 +349,24 @@ export const DynamicFilterContent: React.FC<IDynamicFilterProps> = ({ provideFil
                 </Grid>
 
                 <div className="cust_filter_buttons_container">
+
                     <ClearBtn
                         type="reset"
                         types="cancel"
-                        aria-label={t("customer-filter-panel.buttons.clear all")}
+                        aria-label={t("right-info-panel.filter.buttons.clear all")}
                     >
-                        {t("customer-filter-panel.buttons.clear all")}
+                        {t("right-info-panel.filter.buttons.clear all")}
                     </ClearBtn >
+
                     <ApplyBtn
                         type="submit"
                         types="save"
                         disabled={!formik.dirty}
-                        aria-label={t("customer-filter-panel.buttons.apply")}
+                        aria-label={t("right-info-panel.filter.buttons.apply")}
                     >
-                        {t("customer-filter-panel.buttons.apply")}
+                        {t("right-info-panel.filter.buttons.apply")}
                     </ApplyBtn>
+
                 </div>
             </form>
         </FormikProvider>
