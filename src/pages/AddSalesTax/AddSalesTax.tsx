@@ -72,7 +72,6 @@ const AddSalesTax: React.FC = () => {
     
 
     const populateDataInAllFields = (formData: any)=> {
-        console.log('success', formData);
         formik.setFieldValue('addressLine1', formData.addressLine1);
         formik.setFieldValue('city', formData.city);
         formik.setFieldValue('state', formData.state);
@@ -235,7 +234,6 @@ const AddSalesTax: React.FC = () => {
     }
     const disableButton = () => {
         if (isEditMode) {
-            console.log('formik edit', formik);
             if (Object.keys(formik.errors).length > 1) {
                 return true;
             } 
