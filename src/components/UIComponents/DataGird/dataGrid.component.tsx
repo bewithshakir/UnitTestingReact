@@ -262,11 +262,7 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
                                         <FormControl>
                                             <DataGridActionsMenu
                                                 options={props.rowActionOptions}
-                                                onSelect={(e, value) => {
-
-                                                    props.onRowActionSelect && props.onRowActionSelect(value, row);
-
-                                                }}
+                                                onSelect={(e, value) => props.onRowActionSelect && props.onRowActionSelect(value, row)}
                                             />
                                         </FormControl>
                                     </TableCell>

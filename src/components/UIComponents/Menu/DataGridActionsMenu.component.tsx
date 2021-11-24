@@ -31,7 +31,6 @@ export default function DataGridActionsMenu(props: DataGridActionsMenuProps) {
   const { options, onSelect } = props;
 
   const handleToggle = () => {
-    // e.stopPropagation();
     setOpen((prevOpen) => !prevOpen);
   };
 
