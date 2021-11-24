@@ -72,7 +72,8 @@ describe('Given Sortby Menu on FuelTax Landing Page', () => {
     });
 
 });
-describe('Given Sortby Menu on FuelTax Landing Page', () => {
+
+describe('FuelTax Landing Page', () => {
     beforeEach(() => {
         when(useFuelTaxList).mockReturnValue({
             data: {
@@ -116,6 +117,59 @@ describe('Given Sortby Menu on FuelTax Landing Page', () => {
         });
     });
     test('Fuel List is rendering', () => {
+        const FuelTaxListPage = shallow(
+            <FuelTaxLandingPage />
+        );
+        expect(useFuelTaxList).toBeCalled();
+        expect(FuelTaxListPage).toMatchSnapshot();
+    });
+});
+
+
+describe('Given Search FuelTax Landing Page', () => {
+    beforeEach(() => {
+        when(useFuelTaxList).calledWith("Houstan", { sortBy: "", order: "asc" }).mockReturnValue({
+            data: {
+                pages: [
+                    {
+                        data: {
+                            fuelTax: [
+                                {
+                                    cityName: "Houstan",
+                                    countryName: "us",
+                                    stateName: "TX",
+                                    taxJurisdictionId: "f5d769c4-108f-40f0-bb57-6423d6263466",
+                                    products: [{
+                                        cityFuelTax: 10000,
+                                        countyFuelTax: 1,
+                                        currencyCd: "USD",
+                                        endDate: "12/31/2021",
+                                        fedFuelTax: 33.499,
+                                        miscInspFuelTax: 3,
+                                        miscLoadFuelTax: 0,
+                                        miscLocalFuelTax: 4,
+                                        productCd: "Diesel",
+                                        productClassCd: "Premium",
+                                        productGroupCd: "Premium",
+                                        productId: "23a8db3d-d064-4314-87fb-4800d5a94c0c",
+                                        revenueFuelRate: 33.4,
+                                        saleableProductNm: "Diesel",
+                                        salesFuelRate: 1,
+                                        startDate: "12/11/2021",
+                                        stateFuelTax: 20,
+                                    }]
+                                }
+                            ],
+                            pagination: { totalCount: 29, limit: 15, offset: 0 }
+                        }
+                    }
+                ],
+            },
+            isLoading: false,
+            isFetching: false,
+        });
+    });
+    test('Show Fuel List as per searched value', () => {
         const FuelTaxListPage = shallow(
             <FuelTaxLandingPage />
         );
