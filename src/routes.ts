@@ -66,13 +66,13 @@ export const routes = [
     ]
   },
   {
-    path: "/salesTax/addSalesTax",
+    path: "/salesTax/add",
     version: "Breadcrumbs-Single",
     component: lazy(() => import('./pages/AddSalesTax/AddSalesTax')),
     exact: true,
   },
   {
-    path: "/salesTax/addSalesTax/:taxId",
+    path: "/salesTax/edit/:taxId",
     version: "Breadcrumbs-Single",
     component: lazy(() => import('./pages/AddSalesTax/AddSalesTax')),
     exact: true,

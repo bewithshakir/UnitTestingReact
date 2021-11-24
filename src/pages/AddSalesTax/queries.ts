@@ -34,11 +34,11 @@ const fetchSaleTax = async(query: any)=> {
     return axios(options);
 };
 
-export const useGetSaleTax = (query: any, isTrigger: boolean, onSuccess: any, onError: any)=> {
+export const useGetSaleTax = (query: any, onSuccess: any, onError: any)=> {
     return useQuery(['get-sale-tax'], ()=> fetchSaleTax(query), {
         onSuccess,
         onError,
-        enabled: isTrigger,
+        enabled: !!query,
         retry: false,
     });
 };

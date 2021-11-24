@@ -77,10 +77,6 @@ export default class SalesTaxModel {
             {
                 label: t("menus.data-grid-actions.delete"),
                 action: this.ACTION_TYPES.DELETE
-            },
-            {
-                label: t("menus.data-grid-actions.contact details"),
-                action: this.ACTION_TYPES.CONTACT_DETAILS
             }
         ];
     }

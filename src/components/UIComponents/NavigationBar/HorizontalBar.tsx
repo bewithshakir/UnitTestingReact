@@ -53,7 +53,7 @@ export default function HorizontalBar (props: HorizontalBarProps) {
     if (pathname.includes('addLot') || pathname.includes('addFuelTax')) {
       history.goBack();
     }
-    else if (pathname.includes('addSalesTax')) {
+    else if (pathname.includes('salesTax/add')) {
       history.push('/salesTax');
     }
     else {
@@ -66,8 +66,8 @@ export default function HorizontalBar (props: HorizontalBarProps) {
       return "Add Customer";
     } else if (history.location.pathname.includes('addFuelTax')) {
       return "Add Fuel Tax";
-    } else if (history.location.pathname.includes('addSalesTax')) {
-      return "Add Sales Tax";
+    } else if (history.location.pathname.includes('salesTax/add')) {
+      return history.location.search ? 'Edit Sales Tax':  'Add Sales Tax';
     } else {
       return selectedCustomerName;
     }

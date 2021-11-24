@@ -47,7 +47,7 @@ const SalesTaxLandingContent = memo(() => {
   };
 
   const navigateHomePage = () => {
-    history.push("/salesTax/addSalesTax");
+    history.push("/salesTax/add");
   };
 
   const onSortBySlected = (value: string) => {
@@ -67,7 +67,7 @@ const SalesTaxLandingContent = memo(() => {
     switch (action.action) {
       case ACTION_TYPES.EDIT:
         // perform action
-        history.push(`salesTax/addSalesTax/${row.taxJurisdictionId}?city=${row.city}&state=${row.state}&countryCode=${row.countryCode}`);
+        history.push(`salesTax/add/?city=${row.city}&state=${row.state}&countryCode=${row.countryCode}`);
         
         break;
       case ACTION_TYPES.DELETE:
