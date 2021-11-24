@@ -15,6 +15,7 @@ import GridComponent from "../../components/UIComponents/DataGird/grid.component
 import { DataGridActionsMenuOption } from '../../components/UIComponents/Menu/DataGridActionsMenu.component';
 import { FuelTax, MASS_ACTION_TYPES } from './config';
 import { RightInfoPanel } from '../../components/UIComponents/RightInfoPanel/RightInfoPanel.component';
+import { getSeachedDataTotalCount } from '../../utils/helperFunctions';
 
 const TaxLandingContent = memo(() => {
   const [searchTerm, setSearchTerm] = React.useState("");
@@ -117,17 +118,17 @@ const TaxLandingContent = memo(() => {
             <Grid item>
               <SearchInput
                 name="searchTerm"
-                placeholder="City"
+                placeholder={t('taxes.fuelTax.search')}
                 value={searchTerm}
                 delay={500}
                 onChange={onInputChange}
               />
             </Grid>
             {
-              (searchTerm && !(isFetching || isLoading)) &&
+              (searchTerm && !(isFetching || isLoading) && data) &&
               <Grid item display="flex" alignItems="center" paddingLeft={2.5}>
                 <Typography color="var(--Darkgray)" variant="h4" align="center" className="fw-bold">
-                  {fuelTaxList.length} {fuelTaxList.length === 1 ? 'result(s)' : 'results'} found
+                  {getSeachedDataTotalCount(data, [t('taxes.fuelTax.result(s) found'), t('taxes.fuelTax.results found')])}
                 </Typography>
               </Grid>
             }
@@ -164,7 +165,7 @@ const TaxLandingContent = memo(() => {
             getPages={fetchNextPage}
             searchTerm={searchTerm}
             openDrawer={openDrawer}
-            noDataMsg='Add Fuel Tax by clicking on the " Add Tax" button.'
+            noDataMsg='Add Fuel Tax by clicking on the "Add Tax" button.'
           />
 
           <RightInfoPanel
