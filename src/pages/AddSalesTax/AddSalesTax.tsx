@@ -121,7 +121,7 @@ const AddSalesTax: React.FC = () => {
                 setAPIResponse(false);
             }, 6000);
         } catch (error) {
-            // console.log(error);
+            setFormStatus(formStatusProps.error);
         }
     };
 
@@ -166,7 +166,7 @@ const AddSalesTax: React.FC = () => {
                 setAPIResponse(false);
             }, 6000);
         } catch (error) {
-            // console.log(error);
+            setFormStatus(formStatusProps.error);
         }
     };
 

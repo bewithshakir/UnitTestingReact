@@ -72,7 +72,7 @@ export const routes = [
     exact: true,
   },
   {
-    path: "/salesTax/edit/:taxId",
+    path: "/salesTax/edit/",
     version: "Breadcrumbs-Single",
     component: lazy(() => import('./pages/AddSalesTax/AddSalesTax')),
     exact: true,

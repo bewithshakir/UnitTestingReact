@@ -884,10 +884,6 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                               "action": "edit",
                               "label": "menus.data-grid-actions.edit",
                             },
-                            Object {
-                              "action": "delete",
-                              "label": "menus.data-grid-actions.delete",
-                            },
                           ]
                         }
                         rows={Array []}
@@ -3842,10 +3838,6 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                 "action": "edit",
                                 "label": "menus.data-grid-actions.edit",
                               },
-                              Object {
-                                "action": "delete",
-                                "label": "menus.data-grid-actions.delete",
-                              },
                             ]
                           }
                           rows={Array []}
@@ -3942,10 +3934,6 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                             Object {
                               "action": "edit",
                               "label": "menus.data-grid-actions.edit",
-                            },
-                            Object {
-                              "action": "delete",
-                              "label": "menus.data-grid-actions.delete",
                             },
                           ]
                         }
@@ -4136,10 +4124,6 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                         Object {
                                           "action": "edit",
                                           "label": "menus.data-grid-actions.edit",
-                                        },
-                                        Object {
-                                          "action": "delete",
-                                          "label": "menus.data-grid-actions.delete",
                                         },
                                       ]
                                     }
@@ -4340,10 +4324,6 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                               Object {
                                                 "action": "edit",
                                                 "label": "menus.data-grid-actions.edit",
-                                              },
-                                              Object {
-                                                "action": "delete",
-                                                "label": "menus.data-grid-actions.delete",
                                               },
                                             ]
                                           }
@@ -5893,10 +5873,6 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                           Object {
                                             "action": "edit",
                                             "label": "menus.data-grid-actions.edit",
-                                          },
-                                          Object {
-                                            "action": "delete",
-                                            "label": "menus.data-grid-actions.delete",
                                           },
                                         ]
                                       }
