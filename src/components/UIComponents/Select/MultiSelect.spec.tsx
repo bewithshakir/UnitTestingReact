@@ -92,7 +92,7 @@ describe('renders the MultiSelect component with correct no of options', () => {
 });
 
 describe('renders the MultiSelect component with more than 2 clicked options', () => {
-    it('Should render correct text in value', () => {
+    it('Should render correct option text in value', () => {
         const options = [{ label: 'Label1', value: 'Value1' , icon: <YellowFuelIcon/>}, { label: 'Label2', value: 'Value2', icon: <YellowFuelIcon/> }, { label: 'Label3', value: 'Value3', icon: <YellowFuelIcon/> }];
         const props = {
             label: 'Select values',

@@ -77,8 +77,8 @@ describe('renders the SingleSelect component with correct no of options', () => 
 
 describe('renders the SingleSelect component with option selected', () => {
     it('Should render correct text in value', () => {
-        const randomNumber = Math.floor(Math.random() * (2 - 0 + 1)) + 0;
         const options = [{ label: 'Label1', value: 'Value1' , icon: <YellowFuelIcon/>}, { label: 'Label2', value: 'Value2', icon: <YellowFuelIcon/> }, { label: 'Label3', value: 'Value3', icon: <YellowFuelIcon/> }];
+        const randomNumber = Math.floor(Math.random() * ((options.length-1) - 0 + 1)) + 0;
         const props = {
             label: 'Select values',
             onChange: jest.fn(),
@@ -87,7 +87,7 @@ describe('renders the SingleSelect component with option selected', () => {
         }
         const wrapper = mount(<Select {...props} />);
         wrapper.find('div.react-select__dropdown-indicator').simulate('mouseDown', {button: 0 });
-        wrapper.find('div.react-select__option').at(1).simulate('click', null);
-        expect(wrapper.find('span.label-text').text()).toEqual(options[1].label);
+        wrapper.find('div.react-select__option').at(randomNumber).simulate('click', null);
+        expect(wrapper.find('span.label-text').text()).toEqual(options[randomNumber].label);
     });
 });
