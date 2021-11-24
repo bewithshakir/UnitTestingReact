@@ -75,7 +75,7 @@ describe('renders the SingleSelect component with correct no of options', () => 
     });
 });
 
-describe('renders the SingleSelect component with option selected', () => {
+describe('renders the SingleSelect component with any option selected', () => {
     it('Should render correct text in value', () => {
         const options = [{ label: 'Label1', value: 'Value1' , icon: <YellowFuelIcon/>}, { label: 'Label2', value: 'Value2', icon: <YellowFuelIcon/> }, { label: 'Label3', value: 'Value3', icon: <YellowFuelIcon/> }];
         const randomNumber = Math.floor(Math.random() * ((options.length-1) - 0 + 1)) + 0;

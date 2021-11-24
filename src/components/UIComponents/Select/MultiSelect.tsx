@@ -99,8 +99,8 @@ export default function MultiSelect(props: props) {
                     hideSelectedOptions={false}
                     closeMenuOnSelect={false}
                     isMulti={true}
-                    noOptionsMessage={() => props.noOptionsMessage || null}
-                    loadingMessage={() => props.loadingMessage || null}
+                    noOptionsMessage={() => props.noOptionsMessage}
+                    loadingMessage={() => props.loadingMessage}
                     isDisabled={props.disabled}
                 />
                 {props.helperText && (

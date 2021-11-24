@@ -43,19 +43,27 @@ describe('renders the MultiSelect component with required prop', () => {
     });
 });
 
-describe('renders the MultiSelect component with no options', () => {
-    const component = shallow(<Select label='Input' required id="multi-input" noOptionsMessage={"no data available"} value={[]} items={[]} onChange={() => jest.fn()} />);
-
+describe('renders the MultiSelect component with no options msg', () => {
+   
     it('snapshot test for the MultiSelect component with no options ', () => {
+        const component = mount(<Select label='Input' required id="multi-input" noOptionsMessage={"no data available"} value={[]} items={[]} onChange={() => jest.fn()} />);
+
+        component.find('div.multi-select__dropdown-indicator').simulate('mouseDown', {button: 0 });
         expect(component).toMatchSnapshot();
     });
+
+    it('snapshot test for the MultiSelect component without no options msg  ', () => {
+        const component = mount(<Select label='Input' required id="multi-input" value={[]} items={[]} onChange={() => jest.fn()} />);
+        component.find('div.multi-select__dropdown-indicator').simulate('mouseDown', {button: 0 });
+        expect(component).toMatchSnapshot();
+    });
+   
 });
 
 
 
 describe('renders the MultiSelect component with loading', () => {
     const component = shallow(<Select label='Input' required id="multi-input" loadingMessage={'loading..'} value={null} items={null} onChange={() => jest.fn()} />);
-
     it('snapshot test for the MultiSelect component with loading ', () => {
         expect(component).toMatchSnapshot();
     });

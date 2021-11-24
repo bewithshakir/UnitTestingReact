@@ -164,19 +164,19 @@ exports[`Rendering of Dynamic filter component Dynamic filter component snapshot
         className="cust_filter_buttons_container"
       >
         <Styled(Button)
-          aria-label="customer-filter-panel.buttons.clear all"
+          aria-label="right-info-panel.filter.buttons.clear all"
           type="reset"
           types="cancel"
         >
-          customer-filter-panel.buttons.clear all
+          right-info-panel.filter.buttons.clear all
         </Styled(Button)>
         <Styled(Button)
-          aria-label="customer-filter-panel.buttons.apply"
+          aria-label="right-info-panel.filter.buttons.apply"
           disabled={true}
           type="submit"
           types="save"
         >
-          customer-filter-panel.buttons.apply
+          right-info-panel.filter.buttons.apply
         </Styled(Button)>
       </div>
     </form>
@@ -273,7 +273,7 @@ exports[`Rendering of Dynamic filter component Dynamic filter component snapshot
             item={true}
             xs={12}
           >
-            PERIOD
+            right-info-panel.filter.period
           </ForwardRef(Grid)>
           <ForwardRef(Grid)
             container={true}
@@ -294,8 +294,8 @@ exports[`Rendering of Dynamic filter component Dynamic filter component snapshot
               onDateRangeChange={[Function]}
               placeholder={
                 Object {
-                  "end": "customer-filter-panel.to date",
-                  "start": "customer-filter-panel.from date",
+                  "end": "right-info-panel.filter.to date",
+                  "start": "right-info-panel.filter.from date",
                 }
               }
               required={true}
@@ -720,19 +720,19 @@ exports[`Rendering of Dynamic filter component Dynamic filter component snapshot
         className="cust_filter_buttons_container"
       >
         <Styled(Button)
-          aria-label="customer-filter-panel.buttons.clear all"
+          aria-label="right-info-panel.filter.buttons.clear all"
           type="reset"
           types="cancel"
         >
-          customer-filter-panel.buttons.clear all
+          right-info-panel.filter.buttons.clear all
         </Styled(Button)>
         <Styled(Button)
-          aria-label="customer-filter-panel.buttons.apply"
+          aria-label="right-info-panel.filter.buttons.apply"
           disabled={true}
           type="submit"
           types="save"
         >
-          customer-filter-panel.buttons.apply
+          right-info-panel.filter.buttons.apply
         </Styled(Button)>
       </div>
     </form>
@@ -838,19 +838,19 @@ exports[`Rendering of Dynamic filter component Dynamic filter component snapshot
         className="cust_filter_buttons_container"
       >
         <Styled(Button)
-          aria-label="customer-filter-panel.buttons.clear all"
+          aria-label="right-info-panel.filter.buttons.clear all"
           type="reset"
           types="cancel"
         >
-          customer-filter-panel.buttons.clear all
+          right-info-panel.filter.buttons.clear all
         </Styled(Button)>
         <Styled(Button)
-          aria-label="customer-filter-panel.buttons.apply"
+          aria-label="right-info-panel.filter.buttons.apply"
           disabled={true}
           type="submit"
           types="save"
         >
-          customer-filter-panel.buttons.apply
+          right-info-panel.filter.buttons.apply
         </Styled(Button)>
       </div>
     </form>
@@ -937,7 +937,7 @@ exports[`Rendering of Dynamic filter component Dynamic filter component snapshot
             item={true}
             xs={12}
           >
-            PERIOD
+            right-info-panel.filter.period
           </ForwardRef(Grid)>
           <ForwardRef(Grid)
             container={true}
@@ -958,8 +958,8 @@ exports[`Rendering of Dynamic filter component Dynamic filter component snapshot
               onDateRangeChange={[Function]}
               placeholder={
                 Object {
-                  "end": "customer-filter-panel.to date",
-                  "start": "customer-filter-panel.from date",
+                  "end": "right-info-panel.filter.to date",
+                  "start": "right-info-panel.filter.from date",
                 }
               }
               required={true}
@@ -972,19 +972,19 @@ exports[`Rendering of Dynamic filter component Dynamic filter component snapshot
         className="cust_filter_buttons_container"
       >
         <Styled(Button)
-          aria-label="customer-filter-panel.buttons.clear all"
+          aria-label="right-info-panel.filter.buttons.clear all"
           type="reset"
           types="cancel"
         >
-          customer-filter-panel.buttons.clear all
+          right-info-panel.filter.buttons.clear all
         </Styled(Button)>
         <Styled(Button)
-          aria-label="customer-filter-panel.buttons.apply"
+          aria-label="right-info-panel.filter.buttons.apply"
           disabled={true}
           type="submit"
           types="save"
         >
-          customer-filter-panel.buttons.apply
+          right-info-panel.filter.buttons.apply
         </Styled(Button)>
       </div>
     </form>
@@ -1088,19 +1088,19 @@ exports[`Rendering of Dynamic filter component Dynamic filter component snapshot
         className="cust_filter_buttons_container"
       >
         <Styled(Button)
-          aria-label="customer-filter-panel.buttons.clear all"
+          aria-label="right-info-panel.filter.buttons.clear all"
           type="reset"
           types="cancel"
         >
-          customer-filter-panel.buttons.clear all
+          right-info-panel.filter.buttons.clear all
         </Styled(Button)>
         <Styled(Button)
-          aria-label="customer-filter-panel.buttons.apply"
+          aria-label="right-info-panel.filter.buttons.apply"
           disabled={true}
           type="submit"
           types="save"
         >
-          customer-filter-panel.buttons.apply
+          right-info-panel.filter.buttons.apply
         </Styled(Button)>
       </div>
     </form>
@@ -1245,19 +1245,19 @@ exports[`Rendering of Dynamic filter component Dynamic filter component snapshot
         className="cust_filter_buttons_container"
       >
         <Styled(Button)
-          aria-label="customer-filter-panel.buttons.clear all"
+          aria-label="right-info-panel.filter.buttons.clear all"
           type="reset"
           types="cancel"
         >
-          customer-filter-panel.buttons.clear all
+          right-info-panel.filter.buttons.clear all
         </Styled(Button)>
         <Styled(Button)
-          aria-label="customer-filter-panel.buttons.apply"
+          aria-label="right-info-panel.filter.buttons.apply"
           disabled={true}
           type="submit"
           types="save"
         >
-          customer-filter-panel.buttons.apply
+          right-info-panel.filter.buttons.apply
         </Styled(Button)>
       </div>
     </form>
@@ -1363,19 +1363,19 @@ exports[`Rendering of Dynamic filter component Dynamic filter component snapshot
         className="cust_filter_buttons_container"
       >
         <Styled(Button)
-          aria-label="customer-filter-panel.buttons.clear all"
+          aria-label="right-info-panel.filter.buttons.clear all"
           type="reset"
           types="cancel"
         >
-          customer-filter-panel.buttons.clear all
+          right-info-panel.filter.buttons.clear all
         </Styled(Button)>
         <Styled(Button)
-          aria-label="customer-filter-panel.buttons.apply"
+          aria-label="right-info-panel.filter.buttons.apply"
           disabled={true}
           type="submit"
           types="save"
         >
-          customer-filter-panel.buttons.apply
+          right-info-panel.filter.buttons.apply
         </Styled(Button)>
       </div>
     </form>
@@ -1468,19 +1468,19 @@ exports[`Rendering of Dynamic filter component Dynamic filter component snapshot
         className="cust_filter_buttons_container"
       >
         <Styled(Button)
-          aria-label="customer-filter-panel.buttons.clear all"
+          aria-label="right-info-panel.filter.buttons.clear all"
           type="reset"
           types="cancel"
         >
-          customer-filter-panel.buttons.clear all
+          right-info-panel.filter.buttons.clear all
         </Styled(Button)>
         <Styled(Button)
-          aria-label="customer-filter-panel.buttons.apply"
+          aria-label="right-info-panel.filter.buttons.apply"
           disabled={true}
           type="submit"
           types="save"
         >
-          customer-filter-panel.buttons.apply
+          right-info-panel.filter.buttons.apply
         </Styled(Button)>
       </div>
     </form>
