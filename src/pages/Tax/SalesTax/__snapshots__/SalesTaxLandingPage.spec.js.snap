@@ -788,7 +788,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                             startIcon={<FilterIcon />}
                             types="filter"
                           >
-                            Filter
+                            Filters
                           </Button>
                         </ForwardRef(Grid)>
                         <ForwardRef(Grid)
@@ -815,7 +815,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                             id="SearchInput"
                             name="searchTerm"
                             onChange={[Function]}
-                            placeholder="Search"
+                            placeholder="taxes.salesTax.city"
                             type="text"
                             value=""
                           />
@@ -921,7 +921,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                             Object {
                               "align": "left",
                               "field": "totalRate",
-                              "label": "TOTAL RATE ($)",
+                              "label": "TOTAL RATE (%)",
                               "sortable": true,
                               "type": "text",
                             },
@@ -993,7 +993,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                 startIcon={<FilterIcon />}
                                 types="filter"
                               >
-                                Filter
+                                Filters
                               </Button>
                             </ForwardRef(Grid)>
                             <ForwardRef(Grid)
@@ -1020,7 +1020,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                 id="SearchInput"
                                 name="searchTerm"
                                 onChange={[Function]}
-                                placeholder="Search"
+                                placeholder="taxes.salesTax.city"
                                 type="text"
                                 value=""
                               />
@@ -1126,7 +1126,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                     startIcon={<FilterIcon />}
                                     types="filter"
                                   >
-                                    Filter
+                                    Filters
                                   </Button>
                                 </ForwardRef(Grid)>,
                                 <ForwardRef(Grid)
@@ -1153,7 +1153,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                     id="SearchInput"
                                     name="searchTerm"
                                     onChange={[Function]}
-                                    placeholder="Search"
+                                    placeholder="taxes.salesTax.city"
                                     type="text"
                                     value=""
                                   />
@@ -1200,7 +1200,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                       startIcon={<FilterIcon />}
                                       types="filter"
                                     >
-                                      Filter
+                                      Filters
                                     </Button>,
                                     "columnSpacing": 0,
                                     "columns": 12,
@@ -1345,7 +1345,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                     </svg>
                                                   </FilterIcon>
                                                 </span>
-                                                Filter
+                                                Filters
                                               </span>
                                               <WithStyles(memo)
                                                 center={false}
@@ -1669,7 +1669,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                       id="SearchInput"
                                       name="searchTerm"
                                       onChange={[Function]}
-                                      placeholder="Search"
+                                      placeholder="taxes.salesTax.city"
                                       type="text"
                                       value=""
                                     />,
@@ -1699,7 +1699,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                     id="SearchInput"
                                     name="searchTerm"
                                     onChange={[Function]}
-                                    placeholder="Search"
+                                    placeholder="taxes.salesTax.city"
                                     type="text"
                                     value=""
                                   >
@@ -1713,7 +1713,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                       }
                                       name="searchTerm"
                                       onChange={[Function]}
-                                      placeholder="Search"
+                                      placeholder="taxes.salesTax.city"
                                       startAdornment={
                                         <ForwardRef(InputAdornment)
                                           className="adornment"
@@ -1794,7 +1794,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                         multiline={false}
                                         name="searchTerm"
                                         onChange={[Function]}
-                                        placeholder="Search"
+                                        placeholder="taxes.salesTax.city"
                                         renderSuffix={[Function]}
                                         startAdornment={
                                           <ForwardRef(InputAdornment)
@@ -2225,7 +2225,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                               "name": "searchTerm",
                                               "onBlur": undefined,
                                               "onChange": [Function],
-                                              "placeholder": "Search",
+                                              "placeholder": "taxes.salesTax.city",
                                               "renderSuffix": [Function],
                                               "size": undefined,
                                               "startAdornment": <ForwardRef(InputAdornment)
@@ -2770,7 +2770,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                   "name": "searchTerm",
                                                   "onBlur": undefined,
                                                   "onChange": [Function],
-                                                  "placeholder": "Search",
+                                                  "placeholder": "taxes.salesTax.city",
                                                   "renderSuffix": [Function],
                                                   "size": undefined,
                                                   "startAdornment": <ForwardRef(InputAdornment)
@@ -2788,7 +2788,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                   "value": "",
                                                 }
                                               }
-                                              placeholder="Search"
+                                              placeholder="taxes.salesTax.city"
                                               theme={
                                                 Object {
                                                   "breakpoints": Object {
@@ -3087,7 +3087,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                 onBlur={[Function]}
                                                 onChange={[Function]}
                                                 onFocus={[Function]}
-                                                placeholder="Search"
+                                                placeholder="taxes.salesTax.city"
                                                 type="text"
                                                 value=""
                                               />
@@ -3857,7 +3857,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                               Object {
                                 "align": "left",
                                 "field": "totalRate",
-                                "label": "TOTAL RATE ($)",
+                                "label": "TOTAL RATE (%)",
                                 "sortable": true,
                                 "type": "text",
                               },
@@ -3946,7 +3946,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                             Object {
                               "align": "left",
                               "field": "totalRate",
-                              "label": "TOTAL RATE ($)",
+                              "label": "TOTAL RATE (%)",
                               "sortable": true,
                               "type": "text",
                             },
@@ -4022,7 +4022,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                         Object {
                                           "align": "left",
                                           "field": "totalRate",
-                                          "label": "TOTAL RATE ($)",
+                                          "label": "TOTAL RATE (%)",
                                           "sortable": true,
                                           "type": "text",
                                         },
@@ -4080,7 +4080,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                         Object {
                                           "align": "left",
                                           "field": "totalRate",
-                                          "label": "TOTAL RATE ($)",
+                                          "label": "TOTAL RATE (%)",
                                           "sortable": true,
                                           "type": "text",
                                         },
@@ -4126,7 +4126,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                         Object {
                                           "align": "left",
                                           "field": "totalRate",
-                                          "label": "TOTAL RATE ($)",
+                                          "label": "TOTAL RATE (%)",
                                           "sortable": true,
                                           "type": "text",
                                         },
@@ -4214,7 +4214,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                               Object {
                                                 "align": "left",
                                                 "field": "totalRate",
-                                                "label": "TOTAL RATE ($)",
+                                                "label": "TOTAL RATE (%)",
                                                 "sortable": true,
                                                 "type": "text",
                                               },
@@ -4272,7 +4272,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                               Object {
                                                 "align": "left",
                                                 "field": "totalRate",
-                                                "label": "TOTAL RATE ($)",
+                                                "label": "TOTAL RATE (%)",
                                                 "sortable": true,
                                                 "type": "text",
                                               },
@@ -4318,7 +4318,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                               Object {
                                                 "align": "left",
                                                 "field": "totalRate",
-                                                "label": "TOTAL RATE ($)",
+                                                "label": "TOTAL RATE (%)",
                                                 "sortable": true,
                                                 "type": "text",
                                               },
@@ -4400,7 +4400,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                           Object {
                                             "align": "left",
                                             "field": "totalRate",
-                                            "label": "TOTAL RATE ($)",
+                                            "label": "TOTAL RATE (%)",
                                             "sortable": true,
                                             "type": "text",
                                           },
@@ -4507,7 +4507,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                     direction="asc"
                                                     onClick={[Function]}
                                                   >
-                                                    TOTAL RATE ($)
+                                                    TOTAL RATE (%)
                                                   </ForwardRef(TableSortLabel)>
                                                 </ForwardRef(TableCell)>
                                                 <ForwardRef(TableCell)
@@ -4623,7 +4623,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                             direction="asc"
                                                             onClick={[Function]}
                                                           >
-                                                            TOTAL RATE ($)
+                                                            TOTAL RATE (%)
                                                           </ForwardRef(TableSortLabel)>
                                                         </ForwardRef(TableCell)>,
                                                       ],
@@ -5570,7 +5570,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                             direction="asc"
                                                             onClick={[Function]}
                                                           >
-                                                            TOTAL RATE ($)
+                                                            TOTAL RATE (%)
                                                           </ForwardRef(TableSortLabel)>,
                                                           "className": "header-options",
                                                           "component": "th",
@@ -5603,7 +5603,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                               Object {
                                                                 "IconComponent": [Function],
                                                                 "active": false,
-                                                                "children": "TOTAL RATE ($)",
+                                                                "children": "TOTAL RATE (%)",
                                                                 "direction": "asc",
                                                                 "hideSortIcon": false,
                                                                 "onClick": [Function],
@@ -5636,7 +5636,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                                   Object {
                                                                     "centerRipple": false,
                                                                     "children": Array [
-                                                                      "TOTAL RATE ($)",
+                                                                      "TOTAL RATE (%)",
                                                                       <MuiTableSortLabelIcon
                                                                         as={[Function]}
                                                                         className="MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc"
@@ -5644,7 +5644,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                                           Object {
                                                                             "IconComponent": [Function],
                                                                             "active": false,
-                                                                            "children": "TOTAL RATE ($)",
+                                                                            "children": "TOTAL RATE (%)",
                                                                             "direction": "asc",
                                                                             "hideSortIcon": false,
                                                                             "onClick": [Function],
@@ -5684,7 +5684,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                                   role="button"
                                                                   tabIndex={0}
                                                                 >
-                                                                  TOTAL RATE ($)
+                                                                  TOTAL RATE (%)
                                                                   <MuiTableSortLabelIcon
                                                                     as={[Function]}
                                                                     className="MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc"
@@ -5692,7 +5692,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                                       Object {
                                                                         "IconComponent": [Function],
                                                                         "active": false,
-                                                                        "children": "TOTAL RATE ($)",
+                                                                        "children": "TOTAL RATE (%)",
                                                                         "direction": "asc",
                                                                         "hideSortIcon": false,
                                                                         "onClick": [Function],
@@ -5813,7 +5813,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                           Object {
                                             "align": "left",
                                             "field": "totalRate",
-                                            "label": "TOTAL RATE ($)",
+                                            "label": "TOTAL RATE (%)",
                                             "sortable": true,
                                             "type": "text",
                                           },
@@ -5859,7 +5859,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                           Object {
                                             "align": "left",
                                             "field": "totalRate",
-                                            "label": "TOTAL RATE ($)",
+                                            "label": "TOTAL RATE (%)",
                                             "sortable": true,
                                             "type": "text",
                                           },
@@ -6282,4 +6282,438 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
     </ForwardRef(Box)>
   </Memo()>
 </QueryClientProvider>
+`;
+
+exports[`Rendering of Salestax landing page Component Search Textbox Data Enter  1`] = `
+<ContextProvider
+  value={false}
+>
+  <ContextProvider
+    value={
+      QueryClient {
+        "defaultOptions": Object {},
+        "mutationCache": MutationCache {
+          "config": Object {},
+          "listeners": Array [],
+          "mutationId": 0,
+          "mutations": Array [],
+        },
+        "mutationDefaults": Array [],
+        "queryCache": QueryCache {
+          "config": Object {},
+          "listeners": Array [],
+          "queries": Array [
+            Query {
+              "cache": [Circular],
+              "cacheTime": 300000,
+              "defaultOptions": undefined,
+              "gcTimeout": undefined,
+              "initialState": Object {
+                "data": undefined,
+                "dataUpdateCount": 0,
+                "dataUpdatedAt": 0,
+                "error": null,
+                "errorUpdateCount": 0,
+                "errorUpdatedAt": 0,
+                "fetchFailureCount": 0,
+                "fetchMeta": null,
+                "isFetching": false,
+                "isInvalidated": false,
+                "isPaused": false,
+                "status": "idle",
+              },
+              "observers": Array [
+                InfiniteQueryObserver {
+                  "client": [Circular],
+                  "currentQuery": [Circular],
+                  "currentQueryInitialState": Object {
+                    "data": undefined,
+                    "dataUpdateCount": 0,
+                    "dataUpdatedAt": 0,
+                    "error": null,
+                    "errorUpdateCount": 0,
+                    "errorUpdatedAt": 0,
+                    "fetchFailureCount": 0,
+                    "fetchMeta": null,
+                    "isFetching": false,
+                    "isInvalidated": false,
+                    "isPaused": false,
+                    "status": "idle",
+                  },
+                  "currentResult": Object {
+                    "data": undefined,
+                    "dataUpdatedAt": 0,
+                    "error": null,
+                    "errorUpdatedAt": 0,
+                    "failureCount": 0,
+                    "fetchNextPage": [Function],
+                    "fetchPreviousPage": [Function],
+                    "hasNextPage": undefined,
+                    "hasPreviousPage": undefined,
+                    "isError": false,
+                    "isFetched": false,
+                    "isFetchedAfterMount": false,
+                    "isFetching": true,
+                    "isFetchingNextPage": false,
+                    "isFetchingPreviousPage": false,
+                    "isIdle": false,
+                    "isLoading": true,
+                    "isLoadingError": false,
+                    "isPlaceholderData": false,
+                    "isPreviousData": false,
+                    "isRefetchError": false,
+                    "isStale": true,
+                    "isSuccess": false,
+                    "refetch": [Function],
+                    "remove": [Function],
+                    "status": "loading",
+                  },
+                  "currentResultOptions": Object {
+                    "_defaulted": true,
+                    "behavior": Object {
+                      "onFetch": [Function],
+                    },
+                    "getNextPageParam": [Function],
+                    "keepPreviousData": true,
+                    "optimisticResults": true,
+                    "queryFn": [Function],
+                    "queryHash": "[\\"getSalesTaxList\\",\\"\\",{\\"order\\":\\"\\",\\"sortBy\\":\\"\\"}]",
+                    "queryKey": Array [
+                      "getSalesTaxList",
+                      "",
+                      Object {
+                        "order": "",
+                        "sortBy": "",
+                      },
+                    ],
+                  },
+                  "currentResultState": Object {
+                    "data": undefined,
+                    "dataUpdateCount": 0,
+                    "dataUpdatedAt": 0,
+                    "error": null,
+                    "errorUpdateCount": 0,
+                    "errorUpdatedAt": 0,
+                    "fetchFailureCount": 0,
+                    "fetchMeta": null,
+                    "isFetching": true,
+                    "isInvalidated": false,
+                    "isPaused": false,
+                    "status": "loading",
+                  },
+                  "fetchNextPage": [Function],
+                  "fetchPreviousPage": [Function],
+                  "listeners": Array [
+                    [Function],
+                  ],
+                  "options": Object {
+                    "_defaulted": true,
+                    "behavior": Object {
+                      "onFetch": [Function],
+                    },
+                    "getNextPageParam": [Function],
+                    "keepPreviousData": true,
+                    "optimisticResults": true,
+                    "queryFn": [Function],
+                    "queryHash": "[\\"getSalesTaxList\\",\\"\\",{\\"order\\":\\"\\",\\"sortBy\\":\\"\\"}]",
+                    "queryKey": Array [
+                      "getSalesTaxList",
+                      "",
+                      Object {
+                        "order": "",
+                        "sortBy": "",
+                      },
+                    ],
+                  },
+                  "previousQueryResult": undefined,
+                  "previousSelectError": null,
+                  "refetch": [Function],
+                  "refetchIntervalId": undefined,
+                  "remove": [Function],
+                  "staleTimeoutId": undefined,
+                  "trackedProps": Array [],
+                },
+              ],
+              "options": Object {
+                "_defaulted": true,
+                "behavior": Object {
+                  "onFetch": [Function],
+                },
+                "getNextPageParam": [Function],
+                "keepPreviousData": true,
+                "optimisticResults": true,
+                "queryFn": [Function],
+                "queryHash": "[\\"getSalesTaxList\\",\\"\\",{\\"order\\":\\"\\",\\"sortBy\\":\\"\\"}]",
+                "queryKey": Array [
+                  "getSalesTaxList",
+                  "",
+                  Object {
+                    "order": "",
+                    "sortBy": "",
+                  },
+                ],
+              },
+              "promise": Promise {},
+              "queryHash": "[\\"getSalesTaxList\\",\\"\\",{\\"order\\":\\"\\",\\"sortBy\\":\\"\\"}]",
+              "queryKey": Array [
+                "getSalesTaxList",
+                "",
+                Object {
+                  "order": "",
+                  "sortBy": "",
+                },
+              ],
+              "retryer": Retryer {
+                "cancel": [Function],
+                "cancelRetry": [Function],
+                "continue": [Function],
+                "failureCount": 0,
+                "isPaused": false,
+                "isResolved": false,
+                "isTransportCancelable": true,
+                "promise": Promise {},
+              },
+              "revertState": Object {
+                "data": undefined,
+                "dataUpdateCount": 0,
+                "dataUpdatedAt": 0,
+                "error": null,
+                "errorUpdateCount": 0,
+                "errorUpdatedAt": 0,
+                "fetchFailureCount": 0,
+                "fetchMeta": null,
+                "isFetching": false,
+                "isInvalidated": false,
+                "isPaused": false,
+                "status": "idle",
+              },
+              "state": Object {
+                "data": undefined,
+                "dataUpdateCount": 0,
+                "dataUpdatedAt": 0,
+                "error": null,
+                "errorUpdateCount": 0,
+                "errorUpdatedAt": 0,
+                "fetchFailureCount": 0,
+                "fetchMeta": null,
+                "isFetching": true,
+                "isInvalidated": false,
+                "isPaused": false,
+                "status": "loading",
+              },
+            },
+          ],
+          "queriesMap": Object {
+            "[\\"getSalesTaxList\\",\\"\\",{\\"order\\":\\"\\",\\"sortBy\\":\\"\\"}]": Query {
+              "cache": [Circular],
+              "cacheTime": 300000,
+              "defaultOptions": undefined,
+              "gcTimeout": undefined,
+              "initialState": Object {
+                "data": undefined,
+                "dataUpdateCount": 0,
+                "dataUpdatedAt": 0,
+                "error": null,
+                "errorUpdateCount": 0,
+                "errorUpdatedAt": 0,
+                "fetchFailureCount": 0,
+                "fetchMeta": null,
+                "isFetching": false,
+                "isInvalidated": false,
+                "isPaused": false,
+                "status": "idle",
+              },
+              "observers": Array [
+                InfiniteQueryObserver {
+                  "client": [Circular],
+                  "currentQuery": [Circular],
+                  "currentQueryInitialState": Object {
+                    "data": undefined,
+                    "dataUpdateCount": 0,
+                    "dataUpdatedAt": 0,
+                    "error": null,
+                    "errorUpdateCount": 0,
+                    "errorUpdatedAt": 0,
+                    "fetchFailureCount": 0,
+                    "fetchMeta": null,
+                    "isFetching": false,
+                    "isInvalidated": false,
+                    "isPaused": false,
+                    "status": "idle",
+                  },
+                  "currentResult": Object {
+                    "data": undefined,
+                    "dataUpdatedAt": 0,
+                    "error": null,
+                    "errorUpdatedAt": 0,
+                    "failureCount": 0,
+                    "fetchNextPage": [Function],
+                    "fetchPreviousPage": [Function],
+                    "hasNextPage": undefined,
+                    "hasPreviousPage": undefined,
+                    "isError": false,
+                    "isFetched": false,
+                    "isFetchedAfterMount": false,
+                    "isFetching": true,
+                    "isFetchingNextPage": false,
+                    "isFetchingPreviousPage": false,
+                    "isIdle": false,
+                    "isLoading": true,
+                    "isLoadingError": false,
+                    "isPlaceholderData": false,
+                    "isPreviousData": false,
+                    "isRefetchError": false,
+                    "isStale": true,
+                    "isSuccess": false,
+                    "refetch": [Function],
+                    "remove": [Function],
+                    "status": "loading",
+                  },
+                  "currentResultOptions": Object {
+                    "_defaulted": true,
+                    "behavior": Object {
+                      "onFetch": [Function],
+                    },
+                    "getNextPageParam": [Function],
+                    "keepPreviousData": true,
+                    "optimisticResults": true,
+                    "queryFn": [Function],
+                    "queryHash": "[\\"getSalesTaxList\\",\\"\\",{\\"order\\":\\"\\",\\"sortBy\\":\\"\\"}]",
+                    "queryKey": Array [
+                      "getSalesTaxList",
+                      "",
+                      Object {
+                        "order": "",
+                        "sortBy": "",
+                      },
+                    ],
+                  },
+                  "currentResultState": Object {
+                    "data": undefined,
+                    "dataUpdateCount": 0,
+                    "dataUpdatedAt": 0,
+                    "error": null,
+                    "errorUpdateCount": 0,
+                    "errorUpdatedAt": 0,
+                    "fetchFailureCount": 0,
+                    "fetchMeta": null,
+                    "isFetching": true,
+                    "isInvalidated": false,
+                    "isPaused": false,
+                    "status": "loading",
+                  },
+                  "fetchNextPage": [Function],
+                  "fetchPreviousPage": [Function],
+                  "listeners": Array [
+                    [Function],
+                  ],
+                  "options": Object {
+                    "_defaulted": true,
+                    "behavior": Object {
+                      "onFetch": [Function],
+                    },
+                    "getNextPageParam": [Function],
+                    "keepPreviousData": true,
+                    "optimisticResults": true,
+                    "queryFn": [Function],
+                    "queryHash": "[\\"getSalesTaxList\\",\\"\\",{\\"order\\":\\"\\",\\"sortBy\\":\\"\\"}]",
+                    "queryKey": Array [
+                      "getSalesTaxList",
+                      "",
+                      Object {
+                        "order": "",
+                        "sortBy": "",
+                      },
+                    ],
+                  },
+                  "previousQueryResult": undefined,
+                  "previousSelectError": null,
+                  "refetch": [Function],
+                  "refetchIntervalId": undefined,
+                  "remove": [Function],
+                  "staleTimeoutId": undefined,
+                  "trackedProps": Array [],
+                },
+              ],
+              "options": Object {
+                "_defaulted": true,
+                "behavior": Object {
+                  "onFetch": [Function],
+                },
+                "getNextPageParam": [Function],
+                "keepPreviousData": true,
+                "optimisticResults": true,
+                "queryFn": [Function],
+                "queryHash": "[\\"getSalesTaxList\\",\\"\\",{\\"order\\":\\"\\",\\"sortBy\\":\\"\\"}]",
+                "queryKey": Array [
+                  "getSalesTaxList",
+                  "",
+                  Object {
+                    "order": "",
+                    "sortBy": "",
+                  },
+                ],
+              },
+              "promise": Promise {},
+              "queryHash": "[\\"getSalesTaxList\\",\\"\\",{\\"order\\":\\"\\",\\"sortBy\\":\\"\\"}]",
+              "queryKey": Array [
+                "getSalesTaxList",
+                "",
+                Object {
+                  "order": "",
+                  "sortBy": "",
+                },
+              ],
+              "retryer": Retryer {
+                "cancel": [Function],
+                "cancelRetry": [Function],
+                "continue": [Function],
+                "failureCount": 0,
+                "isPaused": false,
+                "isResolved": false,
+                "isTransportCancelable": true,
+                "promise": Promise {},
+              },
+              "revertState": Object {
+                "data": undefined,
+                "dataUpdateCount": 0,
+                "dataUpdatedAt": 0,
+                "error": null,
+                "errorUpdateCount": 0,
+                "errorUpdatedAt": 0,
+                "fetchFailureCount": 0,
+                "fetchMeta": null,
+                "isFetching": false,
+                "isInvalidated": false,
+                "isPaused": false,
+                "status": "idle",
+              },
+              "state": Object {
+                "data": undefined,
+                "dataUpdateCount": 0,
+                "dataUpdatedAt": 0,
+                "error": null,
+                "errorUpdateCount": 0,
+                "errorUpdatedAt": 0,
+                "fetchFailureCount": 0,
+                "fetchMeta": null,
+                "isFetching": true,
+                "isInvalidated": false,
+                "isPaused": false,
+                "status": "loading",
+              },
+            },
+          },
+        },
+        "queryDefaults": Array [],
+        "unsubscribeFocus": [Function],
+        "unsubscribeOnline": [Function],
+      }
+    }
+  >
+    <Memo()
+      onChange={[Function]}
+    />
+  </ContextProvider>
+</ContextProvider>
 `;

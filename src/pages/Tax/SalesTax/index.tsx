@@ -84,7 +84,7 @@ const onSortBySlected = (value: string) => {
                 aria-label="dafault"
                 startIcon={<FilterIcon />}
               >
-                Filter
+                Filters
               </Button>
             </Grid>
             <Grid item pr={2.5}>
