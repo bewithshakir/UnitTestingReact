@@ -223,7 +223,14 @@ console.log(history?.location?.state);
             showImg={<ParkingLotNoDataIcon />}
           />
 
-          <RightInfoPanel panelType="customer-filter" open={custFilterPanelVisible} headingText={"parkingLot.header.filters"} provideFilterParams={getFilterParams} onClose={handleCustFilterPanelClose} fields={filterByFields} storeKey='parkingLot' />
+          <RightInfoPanel 
+          panelType="customer-filter" 
+          open={custFilterPanelVisible} 
+          headingText={"parkingLot.header.filters"} 
+          provideFilterParams={getFilterParams} 
+          onClose={handleCustFilterPanelClose} 
+          fields={filterByFields} 
+          storeKey='parkingLot' />
           <RightInfoPanel panelType="info-view" open={drawerOpen} headingText={"Accurate Transportation"} info={info} onClose={drawerClose} />
         </Grid>
       </Grid>
