@@ -2,13 +2,11 @@ import { useQuery } from "react-query";
 import { AxiosRequestConfig } from "axios";
 import axios from './ApiHelper';
 
-export type filterURLKey = 'customerFilter' | 'fuelFilter' | 'parkingLotFilter'
+export type filterURLKey = 'customerFilter' | 'fuelTaxFilter' | 'parkingLotFilter'
 
 const filterApis: { [k in filterURLKey]: string } = {
     customerFilter: '/api/customer-service/customers/filterData?countryCode=us',
-
-    // TODO: need to update once backend API ready
-    fuelFilter: '/api/customer-service/customers/filterData?countryCode=us',
+    fuelTaxFilter: '/api/tax-service/fueltax/filterData?countryCode=us',
     parkingLotFilter: 'api/customer-service/lot/filter-options?countryCode=us',
 };
 
