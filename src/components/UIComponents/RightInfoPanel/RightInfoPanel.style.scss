@@ -17,14 +17,18 @@
 }
 
 .dynamicFilterGrid {
-  height: 100vh;
   .row1{
     justify-content: flex-start;
-    align-items: flex-start
+    align-items: flex-start;
+    padding-top: 30px;
   }
   .row2{
     justify-content: flex-end;
-    align-items: flex-end
+    align-items: flex-end;
+    padding-bottom: 26px;
+  }
+  .fw-bold {
+    margin-bottom: 12px;
   }
 }
 
@@ -79,7 +83,13 @@
       }
     }
     .cust_filter_panel_content {
-      padding: 45px 38px;
+      padding: 0 38px;
+      position: fixed;
+      bottom: 0;
+      top: 56px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: row;
       .cust_filter_parent_grid {
         & > .MuiGrid-item {
           padding-bottom: 12px;
