@@ -6636,6 +6636,36 @@ exports[`Rendering of Search in Parking Lot Content Component Parking Lot Conten
                                                     />
                                                   </button>
                                                 </div>
+                                                <button
+                                                  class="MuiButtonBase-root MuiIconButton-root MuiIconButton-edgeStart MuiIconButton-sizeMedium css-9sors8-MuiButtonBase-root-MuiIconButton-root"
+                                                  tabindex="0"
+                                                  type="button"
+                                                >
+                                                  <svg
+                                                    class="info_panel_close_icon"
+                                                    color="var(--White)"
+                                                    height="1em"
+                                                    viewBox="0 0 20 20"
+                                                    width="1em"
+                                                  >
+                                                    <g
+                                                      data-name="Group 1862"
+                                                    >
+                                                      <path
+                                                        d="M17 1l1.414 1.414-7.293 7.293L18.414 17 17 18.414l-7.293-7.293-7.293 7.293L1 17l7.293-7.293L1 2.414 2.414 1l7.293 7.293z"
+                                                        fill="currentColor"
+                                                      />
+                                                      <path
+                                                        d="M0 0h20v20H0z"
+                                                        data-name="Rectangle 2250"
+                                                        fill="none"
+                                                      />
+                                                    </g>
+                                                  </svg>
+                                                  <span
+                                                    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                                                  />
+                                                </button>
                                               </div>
                                             </header>
                                           </div>
@@ -7103,6 +7133,15 @@ exports[`Rendering of Search in Parking Lot Content Component Parking Lot Conten
                                                                   ]
                                                                 }
                                                               />
+                                                              <ForwardRef(IconButton)
+                                                                edge="start"
+                                                                onClick={[Function]}
+                                                              >
+                                                                <CloseIcon
+                                                                  className="info_panel_close_icon"
+                                                                  color="var(--White)"
+                                                                />
+                                                              </ForwardRef(IconButton)>
                                                             </ForwardRef(Toolbar)>,
                                                             "color": "primary",
                                                             "enableColorOnDark": false,
@@ -7158,6 +7197,15 @@ exports[`Rendering of Search in Parking Lot Content Component Parking Lot Conten
                                                                       ]
                                                                     }
                                                                   />
+                                                                  <ForwardRef(IconButton)
+                                                                    edge="start"
+                                                                    onClick={[Function]}
+                                                                  >
+                                                                    <CloseIcon
+                                                                      className="info_panel_close_icon"
+                                                                      color="var(--White)"
+                                                                    />
+                                                                  </ForwardRef(IconButton)>
                                                                 </ForwardRef(Toolbar)>,
                                                                 "className": "MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionStatic css-349cgn-MuiAppBar-root",
                                                                 "component": "header",
@@ -7212,7 +7260,15 @@ exports[`Rendering of Search in Parking Lot Content Component Parking Lot Conten
                                                                             ]
                                                                           }
                                                                         />,
-                                                                        false,
+                                                                        <ForwardRef(IconButton)
+                                                                          edge="start"
+                                                                          onClick={[Function]}
+                                                                        >
+                                                                          <CloseIcon
+                                                                            className="info_panel_close_icon"
+                                                                            color="var(--White)"
+                                                                          />
+                                                                        </ForwardRef(IconButton)>,
                                                                       ],
                                                                       "component": "div",
                                                                       "disableGutters": false,
@@ -7593,6 +7649,143 @@ exports[`Rendering of Search in Parking Lot Content Component Parking Lot Conten
                                                                         />
                                                                       </div>
                                                                     </DataGridActionsMenu>
+                                                                    <ForwardRef(IconButton)
+                                                                      edge="start"
+                                                                      onClick={[Function]}
+                                                                    >
+                                                                      <MuiIconButtonRoot
+                                                                        centerRipple={true}
+                                                                        className="MuiIconButton-root MuiIconButton-edgeStart MuiIconButton-sizeMedium"
+                                                                        disabled={false}
+                                                                        focusRipple={true}
+                                                                        onClick={[Function]}
+                                                                        ownerState={
+                                                                          Object {
+                                                                            "children": <CloseIcon
+                                                                              className="info_panel_close_icon"
+                                                                              color="var(--White)"
+                                                                            />,
+                                                                            "color": "default",
+                                                                            "disableFocusRipple": false,
+                                                                            "disabled": false,
+                                                                            "edge": "start",
+                                                                            "onClick": [Function],
+                                                                            "size": "medium",
+                                                                          }
+                                                                        }
+                                                                      >
+                                                                        <ForwardRef(ButtonBase)
+                                                                          centerRipple={true}
+                                                                          className="MuiIconButton-root MuiIconButton-edgeStart MuiIconButton-sizeMedium css-1l22h5g-MuiIconButton-root"
+                                                                          disabled={false}
+                                                                          focusRipple={true}
+                                                                          onClick={[Function]}
+                                                                        >
+                                                                          <MuiButtonBaseRoot
+                                                                            as="button"
+                                                                            className="MuiButtonBase-root MuiIconButton-root MuiIconButton-edgeStart MuiIconButton-sizeMedium css-1l22h5g-MuiIconButton-root"
+                                                                            disabled={false}
+                                                                            onBlur={[Function]}
+                                                                            onClick={[Function]}
+                                                                            onContextMenu={[Function]}
+                                                                            onDragLeave={[Function]}
+                                                                            onFocus={[Function]}
+                                                                            onKeyDown={[Function]}
+                                                                            onKeyUp={[Function]}
+                                                                            onMouseDown={[Function]}
+                                                                            onMouseLeave={[Function]}
+                                                                            onMouseUp={[Function]}
+                                                                            onTouchEnd={[Function]}
+                                                                            onTouchMove={[Function]}
+                                                                            onTouchStart={[Function]}
+                                                                            ownerState={
+                                                                              Object {
+                                                                                "centerRipple": true,
+                                                                                "children": <CloseIcon
+                                                                                  className="info_panel_close_icon"
+                                                                                  color="var(--White)"
+                                                                                />,
+                                                                                "className": "MuiIconButton-root MuiIconButton-edgeStart MuiIconButton-sizeMedium css-1l22h5g-MuiIconButton-root",
+                                                                                "component": "button",
+                                                                                "disableRipple": false,
+                                                                                "disableTouchRipple": false,
+                                                                                "disabled": false,
+                                                                                "focusRipple": true,
+                                                                                "focusVisible": false,
+                                                                                "onClick": [Function],
+                                                                                "tabIndex": 0,
+                                                                              }
+                                                                            }
+                                                                            tabIndex={0}
+                                                                            type="button"
+                                                                          >
+                                                                            <button
+                                                                              className="MuiButtonBase-root MuiIconButton-root MuiIconButton-edgeStart MuiIconButton-sizeMedium css-9sors8-MuiButtonBase-root-MuiIconButton-root"
+                                                                              disabled={false}
+                                                                              onBlur={[Function]}
+                                                                              onClick={[Function]}
+                                                                              onContextMenu={[Function]}
+                                                                              onDragLeave={[Function]}
+                                                                              onFocus={[Function]}
+                                                                              onKeyDown={[Function]}
+                                                                              onKeyUp={[Function]}
+                                                                              onMouseDown={[Function]}
+                                                                              onMouseLeave={[Function]}
+                                                                              onMouseUp={[Function]}
+                                                                              onTouchEnd={[Function]}
+                                                                              onTouchMove={[Function]}
+                                                                              onTouchStart={[Function]}
+                                                                              tabIndex={0}
+                                                                              type="button"
+                                                                            >
+                                                                              <CloseIcon
+                                                                                className="info_panel_close_icon"
+                                                                                color="var(--White)"
+                                                                              >
+                                                                                <svg
+                                                                                  className="info_panel_close_icon"
+                                                                                  color="var(--White)"
+                                                                                  height="1em"
+                                                                                  viewBox="0 0 20 20"
+                                                                                  width="1em"
+                                                                                >
+                                                                                  <g
+                                                                                    data-name="Group 1862"
+                                                                                  >
+                                                                                    <path
+                                                                                      d="M17 1l1.414 1.414-7.293 7.293L18.414 17 17 18.414l-7.293-7.293-7.293 7.293L1 17l7.293-7.293L1 2.414 2.414 1l7.293 7.293z"
+                                                                                      fill="currentColor"
+                                                                                    />
+                                                                                    <path
+                                                                                      d="M0 0h20v20H0z"
+                                                                                      data-name="Rectangle 2250"
+                                                                                      fill="none"
+                                                                                    />
+                                                                                  </g>
+                                                                                </svg>
+                                                                              </CloseIcon>
+                                                                              <ForwardRef(TouchRipple)
+                                                                                center={true}
+                                                                              >
+                                                                                <MuiTouchRippleRoot
+                                                                                  className="MuiTouchRipple-root"
+                                                                                >
+                                                                                  <span
+                                                                                    className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                                                                                  >
+                                                                                    <TransitionGroup
+                                                                                      childFactory={[Function]}
+                                                                                      component={null}
+                                                                                      exit={true}
+                                                                                    />
+                                                                                  </span>
+                                                                                </MuiTouchRippleRoot>
+                                                                              </ForwardRef(TouchRipple)>
+                                                                            </button>
+                                                                          </MuiButtonBaseRoot>
+                                                                        </ForwardRef(ButtonBase)>
+                                                                      </MuiIconButtonRoot>
+                                                                    </ForwardRef(IconButton)>
                                                                   </div>
                                                                 </MuiToolbarRoot>
                                                               </ForwardRef(Toolbar)>
