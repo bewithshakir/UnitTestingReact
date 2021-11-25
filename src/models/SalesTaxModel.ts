@@ -84,7 +84,7 @@ export default class SalesTaxModel {
             { field: "federalRate", label: "FEDERAL RATE (%)", type: 'text',  align: 'left', sortable: true },
             { field: "stateRate", label: "STATE RATE ($)", type: 'text',  align: 'left', sortable: true },
             { field: "localRate", label: "LOCAL RATE ($)", type: 'text',  align: 'left', sortable: true },
-            { field: "totalRate", label: "TOTAL RATE ($)", type: 'text',  align: 'left', sortable: true },         
+            { field: "totalRate", label: "TOTAL RATE (%)", type: 'text',  align: 'left', sortable: true },         
         ];
     }
 }

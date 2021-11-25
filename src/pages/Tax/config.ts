@@ -1,4 +1,5 @@
 import { ExportIcon } from '../../assets/icons';
+import { IDynamicFilterProps } from '../../components/UIComponents/RightInfoPanel/DynamicFilterContent.component';
 
 export type ProductType = {
   cityFuelTax: number
@@ -33,12 +34,18 @@ export const MASS_ACTION_TYPES = {
   EXPORT: 'export',
 };
 
+export const FilterByFields: IDynamicFilterProps['fields'] = [
+  { name: 'state', label: 'taxes.fuelTax.filter.state', fieldType: 'select', optionUrlKey: 'fuelTaxFilter', optionAPIResponseKey: 'states', initialValue: [] },
+  { name: 'city', label: 'taxes.fuelTax.filter.city', fieldType: 'select', optionUrlKey: 'fuelTaxFilter', optionAPIResponseKey: 'cities', initialValue: [] },
+];
+
 export const FuelTax = {
   LandingPage: {
     SortByOptions: [
       "taxes.fuelTax.sortBy.cityname_atoz",
       "taxes.fuelTax.sortBy.cityname_ztoa",
     ],
+    FilterByFields,
     MassActionOptions: [
       {
         label: "menus.actions.export data",

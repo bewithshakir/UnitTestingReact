@@ -90,10 +90,7 @@ export default function HorizontalBar (props: HorizontalBarProps) {
     if (pathname.includes('taxes') || pathname.includes('salesTax')) {
       return (<>
         <div className={pathname.includes('taxes') ? 'linkitem active' : 'linkitem'}>
-          <NavLink
-            className="breadcrubs-title"
-            to="/"
-            onClick={handleClick}>
+          <NavLink className="breadcrubs-title" to="/taxes" onClick={handleClick}>
             {t("taxes.navBar.fuelTax")}
           </NavLink>
         </div>
