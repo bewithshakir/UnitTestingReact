@@ -49,7 +49,7 @@ export const PanelHeader: React.FC<InfoPanelProps> = ({headingText, panelType, o
                         ]}
                         onSelect={navigateToCustomerPage}
                     />}
-                    {(panelType === "customer-filter" || "salestax-filter")  && <IconButton
+                    {(panelType === "customer-filter" || panelType === "salestax-filter" )  && <IconButton
                         edge="start"
                         onClick={onClose}
                     >
