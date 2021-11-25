@@ -1,60 +1,60 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Rendering of Dynamic filter component Dynamic filter component snapshot testing with checkbox 1`] = `
-<div
-  className="cust_filter_panel_content"
->
-  <ContextProvider
-    value={
-      Object {
-        "dirty": false,
-        "errors": Object {},
-        "getFieldHelpers": [Function],
-        "getFieldMeta": [Function],
-        "getFieldProps": [Function],
-        "handleBlur": [Function],
-        "handleChange": [Function],
-        "handleReset": [Function],
-        "handleSubmit": [Function],
-        "initialErrors": Object {},
-        "initialStatus": undefined,
-        "initialTouched": Object {},
-        "initialValues": Object {
-          "multiselect": Array [],
-        },
-        "isSubmitting": false,
-        "isValid": true,
-        "isValidating": false,
-        "registerField": [Function],
-        "resetForm": [Function],
-        "setErrors": [Function],
-        "setFieldError": [Function],
-        "setFieldTouched": [Function],
-        "setFieldValue": [Function],
-        "setFormikState": [Function],
-        "setStatus": [Function],
-        "setSubmitting": [Function],
-        "setTouched": [Function],
-        "setValues": [Function],
-        "status": undefined,
-        "submitCount": 0,
-        "submitForm": [Function],
-        "touched": Object {},
-        "unregisterField": [Function],
-        "validateField": [Function],
-        "validateForm": [Function],
-        "validateOnBlur": true,
-        "validateOnChange": true,
-        "validateOnMount": false,
-        "values": Object {
-          "multiselect": Array [],
-        },
-      }
+<ContextProvider
+  value={
+    Object {
+      "dirty": false,
+      "errors": Object {},
+      "getFieldHelpers": [Function],
+      "getFieldMeta": [Function],
+      "getFieldProps": [Function],
+      "handleBlur": [Function],
+      "handleChange": [Function],
+      "handleReset": [Function],
+      "handleSubmit": [Function],
+      "initialErrors": Object {},
+      "initialStatus": undefined,
+      "initialTouched": Object {},
+      "initialValues": Object {
+        "multiselect": Array [],
+      },
+      "isSubmitting": false,
+      "isValid": true,
+      "isValidating": false,
+      "registerField": [Function],
+      "resetForm": [Function],
+      "setErrors": [Function],
+      "setFieldError": [Function],
+      "setFieldTouched": [Function],
+      "setFieldValue": [Function],
+      "setFormikState": [Function],
+      "setStatus": [Function],
+      "setSubmitting": [Function],
+      "setTouched": [Function],
+      "setValues": [Function],
+      "status": undefined,
+      "submitCount": 0,
+      "submitForm": [Function],
+      "touched": Object {},
+      "unregisterField": [Function],
+      "validateField": [Function],
+      "validateForm": [Function],
+      "validateOnBlur": true,
+      "validateOnChange": true,
+      "validateOnMount": false,
+      "values": Object {
+        "multiselect": Array [],
+      },
     }
+  }
+>
+  <form
+    onReset={[Function]}
+    onSubmit={[Function]}
   >
-    <form
-      onReset={[Function]}
-      onSubmit={[Function]}
+    <div
+      className="cust_filter_panel_content"
     >
       <ForwardRef(Grid)
         className="dynamicFilterGrid"
@@ -189,82 +189,82 @@ exports[`Rendering of Dynamic filter component Dynamic filter component snapshot
           </div>
         </ForwardRef(Grid)>
       </ForwardRef(Grid)>
-    </form>
-  </ContextProvider>
-</div>
+    </div>
+  </form>
+</ContextProvider>
 `;
 
 exports[`Rendering of Dynamic filter component Dynamic filter component snapshot testing with combined inputs 1`] = `
-<div
-  className="cust_filter_panel_content"
->
-  <ContextProvider
-    value={
-      Object {
-        "dirty": false,
-        "errors": Object {},
-        "getFieldHelpers": [Function],
-        "getFieldMeta": [Function],
-        "getFieldProps": [Function],
-        "handleBlur": [Function],
-        "handleChange": [Function],
-        "handleReset": [Function],
-        "handleSubmit": [Function],
-        "initialErrors": Object {},
-        "initialStatus": undefined,
-        "initialTouched": Object {},
-        "initialValues": Object {
-          "city": Array [],
-          "date": Array [
-            null,
-            null,
-          ],
-          "multiselect": Array [],
-          "paymentType": Array [],
-          "radiotest": null,
-          "state": Array [],
-        },
-        "isSubmitting": false,
-        "isValid": true,
-        "isValidating": false,
-        "registerField": [Function],
-        "resetForm": [Function],
-        "setErrors": [Function],
-        "setFieldError": [Function],
-        "setFieldTouched": [Function],
-        "setFieldValue": [Function],
-        "setFormikState": [Function],
-        "setStatus": [Function],
-        "setSubmitting": [Function],
-        "setTouched": [Function],
-        "setValues": [Function],
-        "status": undefined,
-        "submitCount": 0,
-        "submitForm": [Function],
-        "touched": Object {},
-        "unregisterField": [Function],
-        "validateField": [Function],
-        "validateForm": [Function],
-        "validateOnBlur": true,
-        "validateOnChange": true,
-        "validateOnMount": false,
-        "values": Object {
-          "city": Array [],
-          "date": Array [
-            null,
-            null,
-          ],
-          "multiselect": Array [],
-          "paymentType": Array [],
-          "radiotest": null,
-          "state": Array [],
-        },
-      }
+<ContextProvider
+  value={
+    Object {
+      "dirty": false,
+      "errors": Object {},
+      "getFieldHelpers": [Function],
+      "getFieldMeta": [Function],
+      "getFieldProps": [Function],
+      "handleBlur": [Function],
+      "handleChange": [Function],
+      "handleReset": [Function],
+      "handleSubmit": [Function],
+      "initialErrors": Object {},
+      "initialStatus": undefined,
+      "initialTouched": Object {},
+      "initialValues": Object {
+        "city": Array [],
+        "date": Array [
+          null,
+          null,
+        ],
+        "multiselect": Array [],
+        "paymentType": Array [],
+        "radiotest": null,
+        "state": Array [],
+      },
+      "isSubmitting": false,
+      "isValid": true,
+      "isValidating": false,
+      "registerField": [Function],
+      "resetForm": [Function],
+      "setErrors": [Function],
+      "setFieldError": [Function],
+      "setFieldTouched": [Function],
+      "setFieldValue": [Function],
+      "setFormikState": [Function],
+      "setStatus": [Function],
+      "setSubmitting": [Function],
+      "setTouched": [Function],
+      "setValues": [Function],
+      "status": undefined,
+      "submitCount": 0,
+      "submitForm": [Function],
+      "touched": Object {},
+      "unregisterField": [Function],
+      "validateField": [Function],
+      "validateForm": [Function],
+      "validateOnBlur": true,
+      "validateOnChange": true,
+      "validateOnMount": false,
+      "values": Object {
+        "city": Array [],
+        "date": Array [
+          null,
+          null,
+        ],
+        "multiselect": Array [],
+        "paymentType": Array [],
+        "radiotest": null,
+        "state": Array [],
+      },
     }
+  }
+>
+  <form
+    onReset={[Function]}
+    onSubmit={[Function]}
   >
-    <form
-      onReset={[Function]}
-      onSubmit={[Function]}
+    <div
+      className="cust_filter_panel_content"
     >
       <ForwardRef(Grid)
         className="dynamicFilterGrid"
@@ -755,66 +755,66 @@ exports[`Rendering of Dynamic filter component Dynamic filter component snapshot
           </div>
         </ForwardRef(Grid)>
       </ForwardRef(Grid)>
-    </form>
-  </ContextProvider>
-</div>
+    </div>
+  </form>
+</ContextProvider>
 `;
 
 exports[`Rendering of Dynamic filter component Dynamic filter component snapshot testing with date 1`] = `
-<div
-  className="cust_filter_panel_content"
->
-  <ContextProvider
-    value={
-      Object {
-        "dirty": false,
-        "errors": Object {},
-        "getFieldHelpers": [Function],
-        "getFieldMeta": [Function],
-        "getFieldProps": [Function],
-        "handleBlur": [Function],
-        "handleChange": [Function],
-        "handleReset": [Function],
-        "handleSubmit": [Function],
-        "initialErrors": Object {},
-        "initialStatus": undefined,
-        "initialTouched": Object {},
-        "initialValues": Object {
-          "date": null,
-        },
-        "isSubmitting": false,
-        "isValid": true,
-        "isValidating": false,
-        "registerField": [Function],
-        "resetForm": [Function],
-        "setErrors": [Function],
-        "setFieldError": [Function],
-        "setFieldTouched": [Function],
-        "setFieldValue": [Function],
-        "setFormikState": [Function],
-        "setStatus": [Function],
-        "setSubmitting": [Function],
-        "setTouched": [Function],
-        "setValues": [Function],
-        "status": undefined,
-        "submitCount": 0,
-        "submitForm": [Function],
-        "touched": Object {},
-        "unregisterField": [Function],
-        "validateField": [Function],
-        "validateForm": [Function],
-        "validateOnBlur": true,
-        "validateOnChange": true,
-        "validateOnMount": false,
-        "values": Object {
-          "date": null,
-        },
-      }
+<ContextProvider
+  value={
+    Object {
+      "dirty": false,
+      "errors": Object {},
+      "getFieldHelpers": [Function],
+      "getFieldMeta": [Function],
+      "getFieldProps": [Function],
+      "handleBlur": [Function],
+      "handleChange": [Function],
+      "handleReset": [Function],
+      "handleSubmit": [Function],
+      "initialErrors": Object {},
+      "initialStatus": undefined,
+      "initialTouched": Object {},
+      "initialValues": Object {
+        "date": null,
+      },
+      "isSubmitting": false,
+      "isValid": true,
+      "isValidating": false,
+      "registerField": [Function],
+      "resetForm": [Function],
+      "setErrors": [Function],
+      "setFieldError": [Function],
+      "setFieldTouched": [Function],
+      "setFieldValue": [Function],
+      "setFormikState": [Function],
+      "setStatus": [Function],
+      "setSubmitting": [Function],
+      "setTouched": [Function],
+      "setValues": [Function],
+      "status": undefined,
+      "submitCount": 0,
+      "submitForm": [Function],
+      "touched": Object {},
+      "unregisterField": [Function],
+      "validateField": [Function],
+      "validateForm": [Function],
+      "validateOnBlur": true,
+      "validateOnChange": true,
+      "validateOnMount": false,
+      "values": Object {
+        "date": null,
+      },
     }
+  }
+>
+  <form
+    onReset={[Function]}
+    onSubmit={[Function]}
   >
-    <form
-      onReset={[Function]}
-      onSubmit={[Function]}
+    <div
+      className="cust_filter_panel_content"
     >
       <ForwardRef(Grid)
         className="dynamicFilterGrid"
@@ -883,72 +883,72 @@ exports[`Rendering of Dynamic filter component Dynamic filter component snapshot
           </div>
         </ForwardRef(Grid)>
       </ForwardRef(Grid)>
-    </form>
-  </ContextProvider>
-</div>
+    </div>
+  </form>
+</ContextProvider>
 `;
 
 exports[`Rendering of Dynamic filter component Dynamic filter component snapshot testing with daterange 1`] = `
-<div
-  className="cust_filter_panel_content"
->
-  <ContextProvider
-    value={
-      Object {
-        "dirty": false,
-        "errors": Object {},
-        "getFieldHelpers": [Function],
-        "getFieldMeta": [Function],
-        "getFieldProps": [Function],
-        "handleBlur": [Function],
-        "handleChange": [Function],
-        "handleReset": [Function],
-        "handleSubmit": [Function],
-        "initialErrors": Object {},
-        "initialStatus": undefined,
-        "initialTouched": Object {},
-        "initialValues": Object {
-          "date": Array [
-            null,
-            null,
-          ],
-        },
-        "isSubmitting": false,
-        "isValid": true,
-        "isValidating": false,
-        "registerField": [Function],
-        "resetForm": [Function],
-        "setErrors": [Function],
-        "setFieldError": [Function],
-        "setFieldTouched": [Function],
-        "setFieldValue": [Function],
-        "setFormikState": [Function],
-        "setStatus": [Function],
-        "setSubmitting": [Function],
-        "setTouched": [Function],
-        "setValues": [Function],
-        "status": undefined,
-        "submitCount": 0,
-        "submitForm": [Function],
-        "touched": Object {},
-        "unregisterField": [Function],
-        "validateField": [Function],
-        "validateForm": [Function],
-        "validateOnBlur": true,
-        "validateOnChange": true,
-        "validateOnMount": false,
-        "values": Object {
-          "date": Array [
-            null,
-            null,
-          ],
-        },
-      }
+<ContextProvider
+  value={
+    Object {
+      "dirty": false,
+      "errors": Object {},
+      "getFieldHelpers": [Function],
+      "getFieldMeta": [Function],
+      "getFieldProps": [Function],
+      "handleBlur": [Function],
+      "handleChange": [Function],
+      "handleReset": [Function],
+      "handleSubmit": [Function],
+      "initialErrors": Object {},
+      "initialStatus": undefined,
+      "initialTouched": Object {},
+      "initialValues": Object {
+        "date": Array [
+          null,
+          null,
+        ],
+      },
+      "isSubmitting": false,
+      "isValid": true,
+      "isValidating": false,
+      "registerField": [Function],
+      "resetForm": [Function],
+      "setErrors": [Function],
+      "setFieldError": [Function],
+      "setFieldTouched": [Function],
+      "setFieldValue": [Function],
+      "setFormikState": [Function],
+      "setStatus": [Function],
+      "setSubmitting": [Function],
+      "setTouched": [Function],
+      "setValues": [Function],
+      "status": undefined,
+      "submitCount": 0,
+      "submitForm": [Function],
+      "touched": Object {},
+      "unregisterField": [Function],
+      "validateField": [Function],
+      "validateForm": [Function],
+      "validateOnBlur": true,
+      "validateOnChange": true,
+      "validateOnMount": false,
+      "values": Object {
+        "date": Array [
+          null,
+          null,
+        ],
+      },
     }
+  }
+>
+  <form
+    onReset={[Function]}
+    onSubmit={[Function]}
   >
-    <form
-      onReset={[Function]}
-      onSubmit={[Function]}
+    <div
+      className="cust_filter_panel_content"
     >
       <ForwardRef(Grid)
         className="dynamicFilterGrid"
@@ -1027,66 +1027,66 @@ exports[`Rendering of Dynamic filter component Dynamic filter component snapshot
           </div>
         </ForwardRef(Grid)>
       </ForwardRef(Grid)>
-    </form>
-  </ContextProvider>
-</div>
+    </div>
+  </form>
+</ContextProvider>
 `;
 
 exports[`Rendering of Dynamic filter component Dynamic filter component snapshot testing with multi dropdown 1`] = `
-<div
-  className="cust_filter_panel_content"
->
-  <ContextProvider
-    value={
-      Object {
-        "dirty": false,
-        "errors": Object {},
-        "getFieldHelpers": [Function],
-        "getFieldMeta": [Function],
-        "getFieldProps": [Function],
-        "handleBlur": [Function],
-        "handleChange": [Function],
-        "handleReset": [Function],
-        "handleSubmit": [Function],
-        "initialErrors": Object {},
-        "initialStatus": undefined,
-        "initialTouched": Object {},
-        "initialValues": Object {
-          "testText": Array [],
-        },
-        "isSubmitting": false,
-        "isValid": true,
-        "isValidating": false,
-        "registerField": [Function],
-        "resetForm": [Function],
-        "setErrors": [Function],
-        "setFieldError": [Function],
-        "setFieldTouched": [Function],
-        "setFieldValue": [Function],
-        "setFormikState": [Function],
-        "setStatus": [Function],
-        "setSubmitting": [Function],
-        "setTouched": [Function],
-        "setValues": [Function],
-        "status": undefined,
-        "submitCount": 0,
-        "submitForm": [Function],
-        "touched": Object {},
-        "unregisterField": [Function],
-        "validateField": [Function],
-        "validateForm": [Function],
-        "validateOnBlur": true,
-        "validateOnChange": true,
-        "validateOnMount": false,
-        "values": Object {
-          "testText": Array [],
-        },
-      }
+<ContextProvider
+  value={
+    Object {
+      "dirty": false,
+      "errors": Object {},
+      "getFieldHelpers": [Function],
+      "getFieldMeta": [Function],
+      "getFieldProps": [Function],
+      "handleBlur": [Function],
+      "handleChange": [Function],
+      "handleReset": [Function],
+      "handleSubmit": [Function],
+      "initialErrors": Object {},
+      "initialStatus": undefined,
+      "initialTouched": Object {},
+      "initialValues": Object {
+        "testText": Array [],
+      },
+      "isSubmitting": false,
+      "isValid": true,
+      "isValidating": false,
+      "registerField": [Function],
+      "resetForm": [Function],
+      "setErrors": [Function],
+      "setFieldError": [Function],
+      "setFieldTouched": [Function],
+      "setFieldValue": [Function],
+      "setFormikState": [Function],
+      "setStatus": [Function],
+      "setSubmitting": [Function],
+      "setTouched": [Function],
+      "setValues": [Function],
+      "status": undefined,
+      "submitCount": 0,
+      "submitForm": [Function],
+      "touched": Object {},
+      "unregisterField": [Function],
+      "validateField": [Function],
+      "validateForm": [Function],
+      "validateOnBlur": true,
+      "validateOnChange": true,
+      "validateOnMount": false,
+      "values": Object {
+        "testText": Array [],
+      },
     }
+  }
+>
+  <form
+    onReset={[Function]}
+    onSubmit={[Function]}
   >
-    <form
-      onReset={[Function]}
-      onSubmit={[Function]}
+    <div
+      className="cust_filter_panel_content"
     >
       <ForwardRef(Grid)
         className="dynamicFilterGrid"
@@ -1153,66 +1153,66 @@ exports[`Rendering of Dynamic filter component Dynamic filter component snapshot
           </div>
         </ForwardRef(Grid)>
       </ForwardRef(Grid)>
-    </form>
-  </ContextProvider>
-</div>
+    </div>
+  </form>
+</ContextProvider>
 `;
 
 exports[`Rendering of Dynamic filter component Dynamic filter component snapshot testing with radio 1`] = `
-<div
-  className="cust_filter_panel_content"
->
-  <ContextProvider
-    value={
-      Object {
-        "dirty": false,
-        "errors": Object {},
-        "getFieldHelpers": [Function],
-        "getFieldMeta": [Function],
-        "getFieldProps": [Function],
-        "handleBlur": [Function],
-        "handleChange": [Function],
-        "handleReset": [Function],
-        "handleSubmit": [Function],
-        "initialErrors": Object {},
-        "initialStatus": undefined,
-        "initialTouched": Object {},
-        "initialValues": Object {
-          "radiotest": null,
-        },
-        "isSubmitting": false,
-        "isValid": true,
-        "isValidating": false,
-        "registerField": [Function],
-        "resetForm": [Function],
-        "setErrors": [Function],
-        "setFieldError": [Function],
-        "setFieldTouched": [Function],
-        "setFieldValue": [Function],
-        "setFormikState": [Function],
-        "setStatus": [Function],
-        "setSubmitting": [Function],
-        "setTouched": [Function],
-        "setValues": [Function],
-        "status": undefined,
-        "submitCount": 0,
-        "submitForm": [Function],
-        "touched": Object {},
-        "unregisterField": [Function],
-        "validateField": [Function],
-        "validateForm": [Function],
-        "validateOnBlur": true,
-        "validateOnChange": true,
-        "validateOnMount": false,
-        "values": Object {
-          "radiotest": null,
-        },
-      }
+<ContextProvider
+  value={
+    Object {
+      "dirty": false,
+      "errors": Object {},
+      "getFieldHelpers": [Function],
+      "getFieldMeta": [Function],
+      "getFieldProps": [Function],
+      "handleBlur": [Function],
+      "handleChange": [Function],
+      "handleReset": [Function],
+      "handleSubmit": [Function],
+      "initialErrors": Object {},
+      "initialStatus": undefined,
+      "initialTouched": Object {},
+      "initialValues": Object {
+        "radiotest": null,
+      },
+      "isSubmitting": false,
+      "isValid": true,
+      "isValidating": false,
+      "registerField": [Function],
+      "resetForm": [Function],
+      "setErrors": [Function],
+      "setFieldError": [Function],
+      "setFieldTouched": [Function],
+      "setFieldValue": [Function],
+      "setFormikState": [Function],
+      "setStatus": [Function],
+      "setSubmitting": [Function],
+      "setTouched": [Function],
+      "setValues": [Function],
+      "status": undefined,
+      "submitCount": 0,
+      "submitForm": [Function],
+      "touched": Object {},
+      "unregisterField": [Function],
+      "validateField": [Function],
+      "validateForm": [Function],
+      "validateOnBlur": true,
+      "validateOnChange": true,
+      "validateOnMount": false,
+      "values": Object {
+        "radiotest": null,
+      },
     }
+  }
+>
+  <form
+    onReset={[Function]}
+    onSubmit={[Function]}
   >
-    <form
-      onReset={[Function]}
-      onSubmit={[Function]}
+    <div
+      className="cust_filter_panel_content"
     >
       <ForwardRef(Grid)
         className="dynamicFilterGrid"
@@ -1320,66 +1320,66 @@ exports[`Rendering of Dynamic filter component Dynamic filter component snapshot
           </div>
         </ForwardRef(Grid)>
       </ForwardRef(Grid)>
-    </form>
-  </ContextProvider>
-</div>
+    </div>
+  </form>
+</ContextProvider>
 `;
 
 exports[`Rendering of Dynamic filter component Dynamic filter component snapshot testing with single dropdown 1`] = `
-<div
-  className="cust_filter_panel_content"
->
-  <ContextProvider
-    value={
-      Object {
-        "dirty": false,
-        "errors": Object {},
-        "getFieldHelpers": [Function],
-        "getFieldMeta": [Function],
-        "getFieldProps": [Function],
-        "handleBlur": [Function],
-        "handleChange": [Function],
-        "handleReset": [Function],
-        "handleSubmit": [Function],
-        "initialErrors": Object {},
-        "initialStatus": undefined,
-        "initialTouched": Object {},
-        "initialValues": Object {
-          "SingleSelect1": null,
-        },
-        "isSubmitting": false,
-        "isValid": true,
-        "isValidating": false,
-        "registerField": [Function],
-        "resetForm": [Function],
-        "setErrors": [Function],
-        "setFieldError": [Function],
-        "setFieldTouched": [Function],
-        "setFieldValue": [Function],
-        "setFormikState": [Function],
-        "setStatus": [Function],
-        "setSubmitting": [Function],
-        "setTouched": [Function],
-        "setValues": [Function],
-        "status": undefined,
-        "submitCount": 0,
-        "submitForm": [Function],
-        "touched": Object {},
-        "unregisterField": [Function],
-        "validateField": [Function],
-        "validateForm": [Function],
-        "validateOnBlur": true,
-        "validateOnChange": true,
-        "validateOnMount": false,
-        "values": Object {
-          "SingleSelect1": null,
-        },
-      }
+<ContextProvider
+  value={
+    Object {
+      "dirty": false,
+      "errors": Object {},
+      "getFieldHelpers": [Function],
+      "getFieldMeta": [Function],
+      "getFieldProps": [Function],
+      "handleBlur": [Function],
+      "handleChange": [Function],
+      "handleReset": [Function],
+      "handleSubmit": [Function],
+      "initialErrors": Object {},
+      "initialStatus": undefined,
+      "initialTouched": Object {},
+      "initialValues": Object {
+        "SingleSelect1": null,
+      },
+      "isSubmitting": false,
+      "isValid": true,
+      "isValidating": false,
+      "registerField": [Function],
+      "resetForm": [Function],
+      "setErrors": [Function],
+      "setFieldError": [Function],
+      "setFieldTouched": [Function],
+      "setFieldValue": [Function],
+      "setFormikState": [Function],
+      "setStatus": [Function],
+      "setSubmitting": [Function],
+      "setTouched": [Function],
+      "setValues": [Function],
+      "status": undefined,
+      "submitCount": 0,
+      "submitForm": [Function],
+      "touched": Object {},
+      "unregisterField": [Function],
+      "validateField": [Function],
+      "validateForm": [Function],
+      "validateOnBlur": true,
+      "validateOnChange": true,
+      "validateOnMount": false,
+      "values": Object {
+        "SingleSelect1": null,
+      },
     }
+  }
+>
+  <form
+    onReset={[Function]}
+    onSubmit={[Function]}
   >
-    <form
-      onReset={[Function]}
-      onSubmit={[Function]}
+    <div
+      className="cust_filter_panel_content"
     >
       <ForwardRef(Grid)
         className="dynamicFilterGrid"
@@ -1448,66 +1448,66 @@ exports[`Rendering of Dynamic filter component Dynamic filter component snapshot
           </div>
         </ForwardRef(Grid)>
       </ForwardRef(Grid)>
-    </form>
-  </ContextProvider>
-</div>
+    </div>
+  </form>
+</ContextProvider>
 `;
 
 exports[`Rendering of Dynamic filter component Dynamic filter component snapshot testing with textBox 1`] = `
-<div
-  className="cust_filter_panel_content"
->
-  <ContextProvider
-    value={
-      Object {
-        "dirty": false,
-        "errors": Object {},
-        "getFieldHelpers": [Function],
-        "getFieldMeta": [Function],
-        "getFieldProps": [Function],
-        "handleBlur": [Function],
-        "handleChange": [Function],
-        "handleReset": [Function],
-        "handleSubmit": [Function],
-        "initialErrors": Object {},
-        "initialStatus": undefined,
-        "initialTouched": Object {},
-        "initialValues": Object {
-          "testText": "",
-        },
-        "isSubmitting": false,
-        "isValid": true,
-        "isValidating": false,
-        "registerField": [Function],
-        "resetForm": [Function],
-        "setErrors": [Function],
-        "setFieldError": [Function],
-        "setFieldTouched": [Function],
-        "setFieldValue": [Function],
-        "setFormikState": [Function],
-        "setStatus": [Function],
-        "setSubmitting": [Function],
-        "setTouched": [Function],
-        "setValues": [Function],
-        "status": undefined,
-        "submitCount": 0,
-        "submitForm": [Function],
-        "touched": Object {},
-        "unregisterField": [Function],
-        "validateField": [Function],
-        "validateForm": [Function],
-        "validateOnBlur": true,
-        "validateOnChange": true,
-        "validateOnMount": false,
-        "values": Object {
-          "testText": "",
-        },
-      }
+<ContextProvider
+  value={
+    Object {
+      "dirty": false,
+      "errors": Object {},
+      "getFieldHelpers": [Function],
+      "getFieldMeta": [Function],
+      "getFieldProps": [Function],
+      "handleBlur": [Function],
+      "handleChange": [Function],
+      "handleReset": [Function],
+      "handleSubmit": [Function],
+      "initialErrors": Object {},
+      "initialStatus": undefined,
+      "initialTouched": Object {},
+      "initialValues": Object {
+        "testText": "",
+      },
+      "isSubmitting": false,
+      "isValid": true,
+      "isValidating": false,
+      "registerField": [Function],
+      "resetForm": [Function],
+      "setErrors": [Function],
+      "setFieldError": [Function],
+      "setFieldTouched": [Function],
+      "setFieldValue": [Function],
+      "setFormikState": [Function],
+      "setStatus": [Function],
+      "setSubmitting": [Function],
+      "setTouched": [Function],
+      "setValues": [Function],
+      "status": undefined,
+      "submitCount": 0,
+      "submitForm": [Function],
+      "touched": Object {},
+      "unregisterField": [Function],
+      "validateField": [Function],
+      "validateForm": [Function],
+      "validateOnBlur": true,
+      "validateOnChange": true,
+      "validateOnMount": false,
+      "values": Object {
+        "testText": "",
+      },
     }
+  }
+>
+  <form
+    onReset={[Function]}
+    onSubmit={[Function]}
   >
-    <form
-      onReset={[Function]}
-      onSubmit={[Function]}
+    <div
+      className="cust_filter_panel_content"
     >
       <ForwardRef(Grid)
         className="dynamicFilterGrid"
@@ -1529,7 +1529,14 @@ exports[`Rendering of Dynamic filter component Dynamic filter component snapshot
               disabled={false}
               error={false}
               id="testText"
-              label="dummy text"
+              label={
+                <ForwardRef(Typography)
+                  className="fw-bold"
+                  color="var(--Darkgray)"
+                >
+                  dummy text
+                </ForwardRef(Typography)>
+              }
               onChange={[Function]}
               required={false}
               type="text"
@@ -1563,7 +1570,7 @@ exports[`Rendering of Dynamic filter component Dynamic filter component snapshot
           </div>
         </ForwardRef(Grid)>
       </ForwardRef(Grid)>
-    </form>
-  </ContextProvider>
-</div>
+    </div>
+  </form>
+</ContextProvider>
 `;

@@ -6,7 +6,7 @@ import { DynamicFilterContent, IDynamicFilterProps } from "./DynamicFilterConten
 import "./RightInfoPanel.style.scss";
 
 
-type drawerVariant = "info-view" | "customer-filter";
+type drawerVariant = "info-view" | "customer-filter" | "salestax-filter";
 
 interface InfoPanelProps {
   open: boolean;
@@ -33,6 +33,13 @@ export const RightInfoPanel: React.FC<InfoPanelProps> = ({ open, headingText, in
         fields={fields}
         storeKey={storeKey || 'dynamicFilter'}
       />;
+    } else if (panelType === "salestax-filter" && fields) {
+      return <DynamicFilterContent
+        provideFilterParams={provideFilterParams}
+        onClose={onClose}
+        fields={fields}
+        storeKey={storeKey || 'dynamicFilter'}
+      />;
     } else {
       return <React.Fragment></React.Fragment>;
     }
@@ -40,7 +47,7 @@ export const RightInfoPanel: React.FC<InfoPanelProps> = ({ open, headingText, in
 
   const panelDrawer = <Drawer
     className={"right_panel_main_class " + (panelType === "info-view" ? "right_info_panel" : "customer_filter_panel")}
-    variant={panelType === "customer-filter" ? "temporary" : "persistent"}
+    variant={(panelType === "customer-filter" || panelType === "salestax-filter") ? "temporary" : "persistent"}
     anchor="right"
     open={open}
   >

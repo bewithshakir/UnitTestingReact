@@ -1,10 +1,11 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { memo, useEffect } from 'react';
 import { HorizontalBarVersionState, useStore } from '../../../store';
 import { Box, Grid, FormControl } from "@mui/material";
 import { Button } from "../../../components/UIComponents/Button/Button.component";
 import { FilterIcon } from "../../../assets/icons";
 import SortbyMenu from "../../../components/UIComponents/Menu/SortbyMenu.component";
-import { sortByOptions } from "./config";
+import { filterByFields, sortByOptions } from "./config";
 import { useTranslation } from "react-i18next";
 import SearchInput from "../../../components/UIComponents/SearchInput/SearchInput";
 import ActionsMenu from "../../../components/UIComponents/Menu/ActionsMenu.component";
@@ -13,6 +14,7 @@ import { useHistory } from "react-router-dom";
 import SalesTaxModel from '../../../models/SalesTaxModel';
 import GridComponent from "../../../components/UIComponents/DataGird/grid.component";
 import { salesTaxListSet } from './queries';
+import { RightInfoPanel } from "../../../components/UIComponents/RightInfoPanel/RightInfoPanel.component";
 import { DataGridActionsMenuOption } from '../../../components/UIComponents/Menu/DataGridActionsMenu.component';
 
 const SalesTaxLandingContent = memo(() => {
@@ -27,11 +29,13 @@ const SalesTaxLandingContent = memo(() => {
   const ACTION_TYPES = salesTaxObj.ACTION_TYPES;
   const [salesTaxList, setSalesTaxList] = React.useState([]);
   const headCells = salesTaxObj.fieldsToDisplay();
-
+  const [drawerOpen, setDrawerOpen] = React.useState(false);
+  const [salesTaxFilterPanelVisible, setSalesTaxPanelVisible] = React.useState(false);
+  const [filterData, setFilterData] = React.useState<{ [key: string]: string[] }>({});
   const [searchTerm, setSearchTerm] = React.useState("");
   const [sortOrder, setSortOrder] = React.useState<{ sortBy: string, order: string }>({ sortBy: "", order: "" });
 
-  const { data, fetchNextPage, isLoading, isFetching }: any = salesTaxListSet(searchTerm, sortOrder);
+  const { data, fetchNextPage, isLoading, isFetching }: any = salesTaxListSet(searchTerm, sortOrder, filterData);
 
   useEffect(() => {
     if (data) {
@@ -45,6 +49,11 @@ const SalesTaxLandingContent = memo(() => {
 
   const onInputChange = (value: string) => {
     setSearchTerm(value);
+  };
+
+  const handleCustFilterPanelOpen = () => {
+    setDrawerOpen(false);
+    setSalesTaxPanelVisible(!salesTaxFilterPanelVisible);
   };
 
   const navigateHomePage = () => {
@@ -72,7 +81,16 @@ const onSortBySlected = (value: string) => {
   };
 
   const openDrawer = () => {
-    // TODO
+    setDrawerOpen(true);
+  };
+  const drawerClose = () => {
+    setDrawerOpen(false);
+  };
+
+  const handleSalesTaxFilterPanelClose = () => setSalesTaxPanelVisible(false);
+
+  const getFilterParams = (filterObj: { [key: string]: string[] }) => {
+    setFilterData(filterObj);
   };
 
   const handleRowAction = (action: DataGridActionsMenuOption, row: any) => {
@@ -101,6 +119,7 @@ const onSortBySlected = (value: string) => {
               <Button
                 types="filter"
                 aria-label="dafault"
+                onClick={handleCustFilterPanelOpen}
                 startIcon={<FilterIcon />}
               >
                 Filters
@@ -158,7 +177,13 @@ const onSortBySlected = (value: string) => {
             rowActionOptions={rowActionOptions}
             searchTerm={searchTerm}
             openDrawer={openDrawer}
-            noDataMsg='Add Tax.'
+            noDataMsg='Add Tax by clicking on the "Add Tax" button.'
+          />
+          <RightInfoPanel panelType="salestax-filter"
+            open={salesTaxFilterPanelVisible} headingText={"customer-filter-panel.header.filters"}
+            provideFilterParams={getFilterParams} onClose={handleSalesTaxFilterPanelClose}
+            fields={filterByFields}
+            storeKey={'salestaxFilter'}
           />
         </Grid>
       </Grid>
