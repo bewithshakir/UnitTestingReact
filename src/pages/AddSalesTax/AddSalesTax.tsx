@@ -1,19 +1,20 @@
 import { Container, Grid, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import { useFormik } from 'formik';
-import React, { memo, useState } from 'react';
-import { useHistory } from 'react-router';
+import React, { useState } from 'react';
+import { useHistory, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import './style.scss';
 
 import SalesTaxModel from '../../models/SalesTaxModel';
-import AddSalesTaxValidationSchema from "./validation";
 import AutocompleteInput from '../../components/UIComponents/GoogleAddressComponent/GoogleAutoCompleteAddress';
 import Input from '../../components/UIComponents/Input/Input';
 import { Button } from '../../components/UIComponents/Button/Button.component';
-import { useAddSalesTax } from './queries';
+import {useAddSalesTax, useEditSalesTax, useGetSaleTax} from './queries';
 import ToastMessage from '../../components/UIComponents/ToastMessage/ToastMessage.component';
 import { HorizontalBarVersionState, useStore } from '../../store';
+import {AddSalesTaxValidationSchema, AddSalesTaxValidationSchemaEdit} from './validation';
+
 
 const initialValues = new SalesTaxModel();
 
@@ -25,6 +26,7 @@ interface IFormStatusProps {
     [key: string]: IFormStatus
 }
 
+
 const formStatusProps: IFormStatusProps = {
     editsuccess: {
         message: 'Data updated successfully',
@@ -32,6 +34,10 @@ const formStatusProps: IFormStatusProps = {
     },
     success: {
         message: 'Data added successfully.',
+        type: 'Success',
+    },
+    updated: {
+        message: 'Data updated successfully.',
         type: 'Success',
     },
     duplicate: {
@@ -44,23 +50,107 @@ const formStatusProps: IFormStatusProps = {
     }
 };
 
-const AddSalesTax = memo(() => {
-    const [apiResposneState, setAPIResponse] = useState(false);
-    // const [isDisabled, setDisabled] = useState(false);
-    // const [isEditMode, setEditMode] = useState(false);
+const AddSalesTax: React.FC = () => {
     const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
     setVersion("Breadcrumbs-Single");
+    const [apiResposneState, setAPIResponse] = useState(false);
+    // const [isDisabled, setDisabled] = useState(false);
+    
     const history = useHistory();
+    const location = useLocation();
     const { t } = useTranslation();
 
     const [formStatus, setFormStatus] = useState<IFormStatus>({
         message: '',
         type: '',
     });
+
+    
+
+    // edit section
+    const [isEditMode, setEditMode] = useState(false);
+    
+
+    const populateDataInAllFields = (formData: any)=> {
+        formik.setFieldValue('addressLine1', formData.addressLine1);
+        formik.setFieldValue('city', formData.city);
+        formik.setFieldValue('state', formData.state);
+        formik.setFieldValue('countryCd', 'us');
+        formik.setFieldValue('federalRate', formData.federalRate || 0);
+        formik.setFieldValue('stateRate', formData.stateRate);
+        formik.setFieldValue('localRate', formData.localRate);
+    };
+
+    const onGetSaleTaxSuccess = (response: any)=> {
+        populateDataInAllFields(response.data.data);
+        setEditMode(true);
+    };
+    const onGetSaleTaxError = (err: any)=> {
+        try {
+            const { data } = err.response;
+            setAPIResponse(true);
+            setFormStatus({ message: data?.error?.message || formStatusProps.error.message, type: 'Error' });
+            formik.setSubmitting(false);
+            setTimeout(() => {
+                setAPIResponse(false);
+            }, 6000);
+        } catch(error) {
+            setFormStatus(formStatusProps.error);
+        }
+
+    };
+    
+    useGetSaleTax(location.search, onGetSaleTaxSuccess, onGetSaleTaxError);
+    
+
+    const onEditSaleTaxSuccess = ()=> {
+        setAPIResponse(true);
+        setFormStatus(formStatusProps.updated);
+        setTimeout(() => {
+            setAPIResponse(false);
+        }, 6000);
+    };
+    const onEditSaleTaxError = (err: any)=> {
+        try {
+            const { data } = err.response;
+            setAPIResponse(true);
+            // setDisabled(false);
+            setFormStatus({ message: data?.error?.message || formStatusProps.error.message, type: 'Error' });
+            formik.setSubmitting(false);
+            setTimeout(() => {
+                setAPIResponse(false);
+            }, 6000);
+        } catch (error) {
+            setFormStatus(formStatusProps.error);
+        }
+    };
+
+    const { mutate: editSaleTax } = useEditSalesTax(onEditSaleTaxSuccess, onEditSaleTaxError);
+
+    const updateSaleTax = (form: SalesTaxModel)=> {
+        try {
+            const payload = {
+                "countryCode": form.countryCd,
+                "city": form.city,
+                "state": form.state,
+                "stateRate": parseFloat(form.stateRate),
+                "federalRate": form.federalRate ? parseFloat(form.federalRate) : 0,
+                "localRate": parseFloat(form.localRate)
+            };
+            editSaleTax(payload);
+        } catch (error) {
+            setFormStatus(formStatusProps.error);
+        }
+    };
+
+    // Edit end
+
+
     const onAddSalesTaxSuccess = () => {
         setAPIResponse(true);
         // setDisabled(true);
         setFormStatus(formStatusProps.success);
+        // formik.resetForm({});
         setTimeout(() => {
             setAPIResponse(false);
         }, 6000);
@@ -76,7 +166,7 @@ const AddSalesTax = memo(() => {
                 setAPIResponse(false);
             }, 6000);
         } catch (error) {
-            // console.log(error);
+            setFormStatus(formStatusProps.error);
         }
     };
 
@@ -89,10 +179,11 @@ const AddSalesTax = memo(() => {
                 "city": form.city,
                 "state": form.state,
                 "stateRate": parseFloat(form.stateRate),
-                "federalRate": parseFloat(form.federalRate),
+                "federalRate": form.federalRate ? parseFloat(form.federalRate): 0,
                 "localRate": parseFloat(form.localRate)
             };
             addNewSalesTax(apiPayload);
+            
         } catch (error) {
             setFormStatus(formStatusProps.error);
         }
@@ -100,43 +191,80 @@ const AddSalesTax = memo(() => {
 
     const formik = useFormik({
         initialValues,
-        validationSchema: AddSalesTaxValidationSchema,
+        validationSchema: isEditMode ? AddSalesTaxValidationSchemaEdit: AddSalesTaxValidationSchema,
         onSubmit: (values) => {
-            createNewSalesTax(values);
+            if(isEditMode) {
+                updateSaleTax(values);
+            } else {
+                createNewSalesTax(values);
+            }
         }
     });
+    
 
     const handleGoogleAddressChange = (addressObj: any) => {
         formik.setFieldValue('addressLine1', addressObj.addressLine1);
         formik.setFieldValue('city', addressObj.city);
         formik.setFieldValue('state', addressObj.state);
         formik.setFieldValue('countryCd', 'us');
-        formik.setFieldValue('federalRate', 0);
     };
     const handleGoogleAddressBlur = () => {
-        return null;
-    };
+        formik.setFieldTouched("addressLine1");
+        formik.validateField("addressLine1");
 
-    // const showDialogBox = useShowConfirmationDialogBoxStore((state) => state.showDialogBox);
-    // const isFormFieldChange = () => formik.dirty;
+        formik.setFieldTouched("city");
+        formik.validateField("city");
+
+        formik.setFieldTouched("state");
+        formik.validateField("state");
+
+        formik.setFieldTouched("stateRate");
+        formik.validateField("stateRate");
+
+        formik.validateField("localRate");
+        formik.validateField("localRate");
+    };
+    
+
     function onClickBack () {
-        /* if ((isFormFieldChange())) {
-            showDialogBox(true);
-        } else {
-            history.push('/');
-        } */
         history.push('/salesTax');
     }
     const disableButton = () => {
-        return (!formik.isValid || !formik.dirty) || formik.isSubmitting;
+        if (isEditMode) {
+            if (Object.keys(formik.errors).length > 1) {
+                return true;
+            } 
+            else if ((formik.touched.stateRate && formik.errors.stateRate) ||
+            (formik.touched.localRate && formik.errors.localRate)) {
+                return true;
+            }
+            else if (Object.keys(formik.touched).length) {
+                return false;
+            }
+        } else {
+            if ((formik.touched.stateRate && formik.errors.stateRate) ||
+            (formik.touched.localRate && formik.errors.localRate)) {
+                return true;
+            }
+            else if (formik.values.addressLine1 && 
+                formik.values.city && 
+                formik.values.state && 
+                formik.values.stateRate &&
+                formik.values.localRate
+                ){
+                return false;
+            } else {
+                return true;
+            }
+        }
     };
 
     return (
         <Box display="flex" className="global_main_wrapper">
             <Grid item md={10} xs={10}>
                 <Container maxWidth="lg" className="page-container">
-                    <form onSubmit={formik.handleSubmit} data-test="component-AddSalesTax">
-
+                   
+                    <form onSubmit={formik.handleSubmit} data-test="component-AddSalesTax" >
                         <Typography color="var(--Darkgray)" variant="h3" gutterBottom className="fw-bold" mb={1} pt={3}>
                             Fill all the Mandatory fields *
                         </Typography>
@@ -151,7 +279,7 @@ const AddSalesTax = memo(() => {
                                         value={formik.values.addressLine1}
                                         helperText={(formik.touched.addressLine1 && formik.errors.addressLine1) ? formik.errors.addressLine1 : undefined}
                                         error={(formik.touched.addressLine1 && formik.errors.addressLine1) ? true : false}
-                                        required
+                                        disabled={isEditMode}
                                         data-test="auto-complete-input"
                                     />
                                 </Grid>
@@ -168,6 +296,7 @@ const AddSalesTax = memo(() => {
                                         description=''
                                         {...formik.getFieldProps('city')}
                                         data-test="city"
+                                        required
                                     />
 
                                 </Grid>
@@ -184,6 +313,7 @@ const AddSalesTax = memo(() => {
                                         error={(formik.touched.state && formik.errors.state) ? true : false}
                                         {...formik.getFieldProps('state')}
                                         data-test="state"
+                                        required
                                     />
                                 </Grid>
                             </Grid>
@@ -237,11 +367,12 @@ const AddSalesTax = memo(() => {
                                         types="save"
                                         aria-label="save"
                                         className="ml-4"
-                                        disabled={disableButton()}
                                         data-test="save"
+                                        disabled={disableButton()}
                                     >
                                         {t("buttons.save")}
                                     </Button>
+                                    
                                 </Box>
                                 <ToastMessage isOpen={apiResposneState} messageType={formStatus.type} onClose={() => { return ''; }} message={formStatus.message} />
                             </Grid>
@@ -251,5 +382,5 @@ const AddSalesTax = memo(() => {
             </Grid>
         </Box>
     );
-});
+};
 export default AddSalesTax;

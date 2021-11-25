@@ -15,6 +15,7 @@ import SalesTaxModel from '../../../models/SalesTaxModel';
 import GridComponent from "../../../components/UIComponents/DataGird/grid.component";
 import { salesTaxListSet } from './queries';
 import { RightInfoPanel } from "../../../components/UIComponents/RightInfoPanel/RightInfoPanel.component";
+import { DataGridActionsMenuOption } from '../../../components/UIComponents/Menu/DataGridActionsMenu.component';
 
 const SalesTaxLandingContent = memo(() => {
   const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
@@ -24,6 +25,8 @@ const SalesTaxLandingContent = memo(() => {
 
   const salesTaxObj = new SalesTaxModel();
   const massActionOptions = salesTaxObj.massActions();
+  const rowActionOptions = salesTaxObj.rowActions();
+  const ACTION_TYPES = salesTaxObj.ACTION_TYPES;
   const [salesTaxList, setSalesTaxList] = React.useState([]);
   const headCells = salesTaxObj.fieldsToDisplay();
   const [drawerOpen, setDrawerOpen] = React.useState(false);
@@ -54,8 +57,7 @@ const SalesTaxLandingContent = memo(() => {
   };
 
   const navigateHomePage = () => {
-    // TO DO
-    history.push("/addSalesTax");
+    history.push("/salesTax/add");
   };
 
 const onSortBySlected = (value: string) => {
@@ -89,6 +91,23 @@ const onSortBySlected = (value: string) => {
 
   const getFilterParams = (filterObj: { [key: string]: string[] }) => {
     setFilterData(filterObj);
+  };
+
+  const handleRowAction = (action: DataGridActionsMenuOption, row: any) => {
+    switch (action.action) {
+      case ACTION_TYPES.EDIT:
+        // perform action
+        history.push(`salesTax/edit/?city=${row.city}&state=${row.state}&countryCode=${row.countryCode}`);
+        
+        break;
+      case ACTION_TYPES.DELETE:
+        // perform action
+        break;
+      case ACTION_TYPES.CONTACT_DETAILS:
+        // perform action
+        break;
+      default: return;
+    }
   };
 
   return (
@@ -151,9 +170,11 @@ const onSortBySlected = (value: string) => {
             rows={salesTaxList}
             header={headCells}
             isLoading={isFetching || isLoading}
-            enableRowSelection = {false}
+            enableRowSelection
             enableRowAction
             getPages={fetchNextPage}
+            onRowActionSelect={handleRowAction}
+            rowActionOptions={rowActionOptions}
             searchTerm={searchTerm}
             openDrawer={openDrawer}
             noDataMsg='Add Tax by clicking on the "Add Tax" button.'

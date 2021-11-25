@@ -8,7 +8,7 @@ import logoTwo from '../../../assets/images/Shell Taup logo2.svg';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import { BriefCase64Icon, Invoice64Icon, ToggleList64Icon, Truck64Icon, DocumentFile64Icon, ToggleMail64Icon, ChartPie64Icon } from '../../../assets/icons';
-import { NavLink, Route, Switch, useHistory } from "react-router-dom";
+import { Link, Route, Switch, useHistory } from "react-router-dom";
 import HorizontalBar from '../NavigationBar/HorizontalBar';
 import { Fragment, Suspense } from 'react';
 import { routes } from '../../../routes';
@@ -72,7 +72,7 @@ const SideBarMenuoptions = [{
 export default function SideBarDrawer () {
   const { themeType } = useTheme();
   const logoSrc = themeType === 'UK' ? logoOne : logoTwo;
-  const [value, setValue] = React.useState(-1);
+  const [value, setValue] = React.useState(0);
 
   const onSelectOptions = (value: number) => {
     if (value == 6) {
@@ -122,7 +122,7 @@ export default function SideBarDrawer () {
                 className={'sidebarmenu_tabs'} >
                 {SideBarMenuoptions && SideBarMenuoptions.map((item, index) => {
                   return (
-                    <Tab className={'sidebarmenu_tab'} activeClassName="Mui-selected" icon={item.icon} component={NavLink} to={item.route} key={index} />
+                    <Tab className={'sidebarmenu_tab'} icon={item.icon} component={Link} to={item.route} key={index} />
                   );
                 })}
               </Tabs>
