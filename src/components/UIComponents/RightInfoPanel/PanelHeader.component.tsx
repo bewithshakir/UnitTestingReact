@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { IconButton, AppBar, Toolbar, Box } from "@mui/material";
@@ -50,7 +49,7 @@ export const PanelHeader: React.FC<InfoPanelProps> = ({headingText, panelType, o
                         ]}
                         onSelect={navigateToCustomerPage}
                     />}
-                    {panelType === ("customer-filter" || "salestax-filter")  && <IconButton
+                    {(panelType === "customer-filter" || "salestax-filter")  && <IconButton
                         edge="start"
                         onClick={onClose}
                     >

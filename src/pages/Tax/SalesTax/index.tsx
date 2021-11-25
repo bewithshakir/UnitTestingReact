@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable no-console */
 import React, { memo, useEffect } from 'react';
 import { HorizontalBarVersionState, useStore } from '../../../store';
 import { Box, Grid, FormControl } from "@mui/material";
@@ -15,9 +14,7 @@ import { useHistory } from "react-router-dom";
 import SalesTaxModel from '../../../models/SalesTaxModel';
 import GridComponent from "../../../components/UIComponents/DataGird/grid.component";
 import { salesTaxListSet } from './queries';
-// import { SyntheticEvent } from 'react';
 import { RightInfoPanel } from "../../../components/UIComponents/RightInfoPanel/RightInfoPanel.component";
-
 
 const SalesTaxLandingContent = memo(() => {
   const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
@@ -29,13 +26,9 @@ const SalesTaxLandingContent = memo(() => {
   const massActionOptions = salesTaxObj.massActions();
   const [salesTaxList, setSalesTaxList] = React.useState([]);
   const headCells = salesTaxObj.fieldsToDisplay();
-  // const [info, setInfo] = React.useState({});
   const [drawerOpen, setDrawerOpen] = React.useState(false);
   const [salesTaxFilterPanelVisible, setSalesTaxPanelVisible] = React.useState(false);
   const [filterData, setFilterData] = React.useState<{ [key: string]: string[] }>({});
-  // const [infoPanelName] = React.useState('Info PAnel');
-
-
   const [searchTerm, setSearchTerm] = React.useState("");
   const [sortOrder, setSortOrder] = React.useState<{ sortBy: string, order: string }>({ sortBy: "", order: "" });
 
@@ -86,32 +79,11 @@ const onSortBySlected = (value: string) => {
   };
 
   const openDrawer = () => {
-    //row: SyntheticEvent
-    // const infoObj = createInfoObjForRightInfoPanel(row);
-    // setInfo(infoObj);
     setDrawerOpen(true);
   };
   const drawerClose = () => {
     setDrawerOpen(false);
   };
-
-  // const createInfoObjForRightInfoPanel = (row: any) => {
-  //   setInfoPanelEditId(row.customerId);
-  //   setInfoPanelName(row.customerName);
-  //   const infoObj = {
-  //     'Customer ID': row.customerInputId,
-  //     'Name': row.contactName,
-  //     'Email': row.email,
-  //     'Phone': maskPhoneNumber(row.phone),
-  //     'Settlement Type': row.paymentType,
-  //     'Card Added': row.cardAdded === "Y" ? <PositiveCricleIcon /> : row.cardAdded === "N" ? 'Not yet assigned' : '',
-  //     'Address': row.address,
-  //     'City': row.city,
-  //     'State': row.state,
-  //     'Zip Code': row.zipCode,
-  //   };
-  //   return infoObj;
-  // };
 
   const handleSalesTaxFilterPanelClose = () => setSalesTaxPanelVisible(false);
 
@@ -185,15 +157,12 @@ const onSortBySlected = (value: string) => {
             openDrawer={openDrawer}
             noDataMsg='Add Tax by clicking on the "Add Tax" button.'
           />
-
           <RightInfoPanel panelType="salestax-filter"
             open={salesTaxFilterPanelVisible} headingText={"customer-filter-panel.header.filters"}
             provideFilterParams={getFilterParams} onClose={handleSalesTaxFilterPanelClose}
             fields={filterByFields}
             storeKey={'salestaxFilter'}
           />
-
-          {/* <RightInfoPanel panelType="info-view" open={drawerOpen} headingText={infoPanelName} onClose={drawerClose} /> */}
         </Grid>
       </Grid>
     </Box>
