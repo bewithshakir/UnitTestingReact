@@ -53,7 +53,7 @@ export default function HorizontalBar (props: HorizontalBarProps) {
     if (pathname.includes('addLot') || pathname.includes('addFuelTax')) {
       history.goBack();
     }
-    else if (pathname.includes('addSalesTax')) {
+    else if (pathname.includes('salesTax/add') || pathname.includes('salesTax/edit')) {
       history.push('/salesTax');
     }
     else {
@@ -62,14 +62,17 @@ export default function HorizontalBar (props: HorizontalBarProps) {
   };
 
   const getHeaderText = () => {
-    if (history.location.pathname.includes('addCustomer')) {
-      return "Add Customer";
-    } else if (history.location.pathname.includes('addFuelTax')) {
-      return "Add Fuel Tax";
-    } else if (history.location.pathname.includes('addSalesTax')) {
-      return "Add Sales Tax";
-    } else {
-      return selectedCustomerName;
+    switch (true) {
+      case history.location.pathname.includes('addCustomer'):
+        return "Add Customer";
+      case history.location.pathname.includes('addFuelTax'):
+        return "Add Fuel Tax";
+      case history.location.pathname.includes('salesTax/add'):
+        return "Add Sales Tax";
+      case history.location.pathname.includes('salesTax/edit'):
+        return "Edit Sales Tax";
+      default:
+        return selectedCustomerName;
     }
   };
 
