@@ -52,6 +52,24 @@ export const routes = [
     exact: false
   },
   {
+    path: "/salesTax",
+    component: lazy(() => import("./pages/Tax/SalesTax")),
+    version: "Breadcrumbs-Many",
+    exact: true
+  },
+  {
+    path: "/salesTax/add",
+    version: "Breadcrumbs-Single",
+    component: lazy(() => import('./pages/AddSalesTax/AddSalesTax')),
+    exact: true,
+  },
+  {
+    path: "/salesTax/edit/",
+    version: "Breadcrumbs-Single",
+    component: lazy(() => import('./pages/AddSalesTax/AddSalesTax')),
+    exact: true,
+  },
+  {
     path: "/query",
     component: lazy(() => import('./pages/QueryTest')),
     exact: false,

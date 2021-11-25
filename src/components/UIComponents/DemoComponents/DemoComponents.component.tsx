@@ -7,7 +7,7 @@ import ActionsMenu from '../Menu/ActionsMenu.component';
 import ProfileMenu from '../Menu/ProfileMenu.component';
 import { DatePickerInput } from '../DatePickerInput/DatePickerInput.component';
 import DataGridActionsMenu from '../Menu/DataGridActionsMenu.component';
-import { ExportIcon, PlusIcon, DeleteIcon, ImportIcon, SettingsIcon, LogoutIcon, CustomerProfileIcon2 } from '../../../assets/icons';
+import { ExportIcon, PlusIcon, DeleteIcon, ImportIcon, SettingsIcon, LogoutIcon, CustomerProfileIcon2, FilterIcon } from '../../../assets/icons';
 import ToastMessage from '../ToastMessage/ToastMessage.component';
 import { Footer } from '../Footer/Footer.component';
 import Input from '../Input/Input';
@@ -15,20 +15,24 @@ import Select from '../Select/MultiSelect';
 import SearchInput from '../SearchInput/SearchInput';
 import useDebounce from '../../../utils/useDebounce';
 import moment from "moment";
-//import { useQuery } from 'react-query';
-//import { fetchQueryTodos } from '../../../hooks/todos-with-query';
+import { YellowFuelIcon, RedFuelIcon, GreenFuelIcon } from '../../../assets/icons';
 import { Box, FormControl } from '@mui/material';
 import { TimePicker } from '../TimePicker/TimePicker.component';
 import './DemoComponents.style.scss';
 import { DateRange } from '@mui/lab/DateRangePicker';
-import { boxSX } from './config';
+import { boxSX, filterByFields } from './config';
+import { RightInfoPanel } from "../RightInfoPanel/RightInfoPanel.component";
 
 type DatePickerRange = DateRange<Date>;
 
+
+
 export const DemoComponents: React.FC = () => {
-    //const { data } = useQuery('repoData', fetchQueryTodos, { retry: false });
     const { setCurrentTheme } = useTheme();
     const { i18n } = useTranslation();
+
+    const [custFilterPanelVisible, setCustFilterPanelVisible] = React.useState(false);
+
     const changeLanguage = (language: string) => () => {
         i18n.changeLanguage(language);
     };
@@ -44,7 +48,13 @@ export const DemoComponents: React.FC = () => {
         setOpen(false);
     };
     const [dateRange, setDateRange] = useState<DatePickerRange>([new Date(), new Date()]);
-    const [form, setForm] = useState({ userName: '', email: '', item: [{ label: 'Nike', value: 'Nike' }], searchTerm: '', startDate: moment().format("MM/DD/YYYY"), endDate: moment().format("MM/DD/YYYY"), time: '', address: { addressLine1: '', addressLine2: '', state: '', city: '', postalCode: '' } });
+    const [form, setForm] = useState({ userName: '', email: '', itemWithIcon: [{ label: 'Diesel', value: 'Diesel', icon: <YellowFuelIcon /> }], item: [{ label: 'Nike', value: 'Nike' }], searchTerm: '', startDate: moment().format("MM/DD/YYYY"), endDate: moment().format("MM/DD/YYYY"), time: '', address: { addressLine1: '', addressLine2: '', state: '', city: '', postalCode: '' } });
+    const optionsWithIcons = [
+        { label: 'Regular', value: 'Regular', icon: <YellowFuelIcon /> },
+        { label: 'Premium', value: 'Premium', icon: <RedFuelIcon /> },
+        { label: 'Diesel', value: 'Diesel', icon: <GreenFuelIcon /> },
+    ];
+
     const debouncedValue = useDebounce<string>(form.searchTerm, 1000);
     const items = [
         { label: 'Amazon', value: 'Amazon' },
@@ -281,6 +291,16 @@ export const DemoComponents: React.FC = () => {
                             items={items}
                             onChange={handleSelect}
                         />
+
+                        <Select
+                            name='itemWithIcon'
+                            label='Select item'
+                            value={form.itemWithIcon}
+                            placeholder='Choose'
+                            items={optionsWithIcons}
+                            onChange={handleSelect}
+                        />
+
                         <Input name='email'
                             label='Email'
                             onChange={handleChange}
@@ -295,16 +315,30 @@ export const DemoComponents: React.FC = () => {
                             onChange={(z: string) => setForm(x => ({ ...x, searchTerm: z }))}
                         />
                     </Box>
+                    <br />
+                    <Box className={'date_box'}>
+                        <Box sx={boxSX}>
+                            <Button
+                                types="filter"
+                                aria-label="dafault"
+                                onClick={() => { setCustFilterPanelVisible(!custFilterPanelVisible); }}
+                                startIcon={<FilterIcon />}
+                            >
+                                Dynamic Filter
+                            </Button>
 
-
-                    {/* <GoogleAutoCompleteAddress name='address' onChange={handleChange} value={form.address}/> */}
-
-
+                            <RightInfoPanel panelType="customer-filter"
+                                open={custFilterPanelVisible} headingText={"customer-filter-panel.header.filters"}
+                                provideFilterParams={(filterObj) => {
+                                    alert(JSON.stringify(filterObj));
+                                }} onClose={() => setCustFilterPanelVisible(false)}
+                                fields={filterByFields}
+                                storeKey={'demoComponent'}
+                            />
+                        </Box>
+                    </Box>
                 </div>
-
             </div>
-
         </div >
-
     );
 };

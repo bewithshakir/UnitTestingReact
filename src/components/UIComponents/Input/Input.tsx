@@ -6,7 +6,7 @@ interface props {
   name?: string;
   id?: string;
   width?: number | string;
-  label: string;
+  label: string | React.ReactNode;
   placeholder?: string;
   description?: string;
   disabled?: boolean;
@@ -20,26 +20,28 @@ interface props {
   helperText?: string
   onChange?: (...args: any[]) => void;
   onBlur?: (...args: any[]) => void;
-  onFocus?:(...args: any[]) => void;
-  onClick?:(...args: any[]) => void;
-  innerRef?:any;
-  onKeyDown?:(...args: any[]) => void;
-  inputProps?:any;
-  endAdornment?:any;
-  startAdornment?:any;
+  onFocus?: (...args: any[]) => void;
+  onClick?: (...args: any[]) => void;
+  innerRef?: any;
+  onKeyDown?: (...args: any[]) => void;
+  inputProps?: any;
+  endAdornment?: any;
+  startAdornment?: any;
 }
 
-export default function Input (props: props) {
+export default function Input(props: props) {
 
   return (
     <Fragment>
       <FormControl className='formInput'>
-        <InputLabel shrink htmlFor={props.id} style={{ color: 'var(--Darkgray)' }} aria-labelledby={props.label} aria-required={props.required}>
-          <b>{props.label.toUpperCase()}{props.required && props.label && (<span className='super'>*</span>)}</b>
-        </InputLabel>
+        {typeof props.label === "string" ? (
+          <InputLabel shrink htmlFor={props.id} style={{ color: 'var(--Darkgray)' }} aria-labelledby={props.label} aria-required={props.required}>
+            <b>{props.label.toUpperCase()}{props.required && props.label && (<span className='super'>*</span>)}</b>
+          </InputLabel>
+        ) : props.label}
         <InputBase
           id={props.id}
-          ref={props.innerRef} 
+          ref={props.innerRef}
           style={{ width: props.width }}
           aria-describedby={props.description}
           name={props.name}

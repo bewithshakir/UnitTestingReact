@@ -36,17 +36,17 @@ const SideBarMenuoptions = [{
   index: 3,
   icon: <Truck64Icon />,
   text: 'Dashboard',
-  route: 'home'
+  route: 'home1'
 }, {
   index: 4,
   icon: <ToggleMail64Icon />,
   text: 'Dashboard',
-  route: 'home'
+  route: 'home2'
 }, {
   index: 5,
   icon: <ChartPie64Icon />,
   text: 'Dashboard',
-  route: 'home'
+  route: 'home3'
 },
 {
   index: 6,
@@ -69,7 +69,7 @@ const SideBarMenuoptions = [{
 //   children?: any
 // }
 
-export default function SideBarDrawer() {
+export default function SideBarDrawer () {
   const { themeType } = useTheme();
   const logoSrc = themeType === 'UK' ? logoOne : logoTwo;
   const [value, setValue] = React.useState(0);
@@ -87,7 +87,7 @@ export default function SideBarDrawer() {
 
 
   const history = useHistory();
-  function onClickBack() {
+  function onClickBack () {
     history.push("/");
   }
 
@@ -95,8 +95,8 @@ export default function SideBarDrawer() {
   return (
     <Box className={'sidebar-menu'}>
       <CssBaseline />
-      {routes.map((route,index) => {
-   
+      {routes.map((route, index) => {
+
         return (
           <Fragment key={index}>
             <HorizontalBar
@@ -129,7 +129,7 @@ export default function SideBarDrawer() {
 
             </Drawer>
             <main className="content1">
-            <Suspense fallback={<Loader />}>
+              <Suspense fallback={<Loader />}>
                 <Switch>
                   <Route key={route.path} path={route.path} exact={route.exact}>
                     <Page route={route} />

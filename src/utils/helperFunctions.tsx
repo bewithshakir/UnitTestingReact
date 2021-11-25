@@ -1,10 +1,6 @@
-export const maskPhoneNumber = (phNumber:string) => {
-    if (typeof phNumber === 'string'){
-        const maskedPh = phNumber.match(/(\d{3})(\d{3})(\d{4})/);
-        return maskedPh ?"(" + maskedPh[1] + ") " + maskedPh[2] + "-" + maskedPh[3]:phNumber;
-    }else{
-        return phNumber;
-    }
+export const maskPhoneNumber = (phNumber: string) => {
+    const maskedPh = phNumber.match(/(\d{3})(\d{3})(\d{4})/);
+    return maskedPh ? "(" + maskedPh[1] + ") " + maskedPh[2] + "-" + maskedPh[3] : phNumber;
 };
 
 export const formatFileSizeUnit = (sizeInBytes: number, decimals = 2) => {
@@ -16,5 +12,20 @@ export const formatFileSizeUnit = (sizeInBytes: number, decimals = 2) => {
 
     const i = Math.floor(Math.log(sizeInBytes) / Math.log(k));
 
-    return parseFloat((sizeInBytes / Math.pow(k, i)).toFixed(dm)) +  sizes[i];
+    return parseFloat((sizeInBytes / Math.pow(k, i)).toFixed(dm)) + sizes[i];
+};
+
+export const getCheckBoxDisabledByPaymentType = (value: string) => {
+    return {
+        'WEX': false,
+        'Invoice': true,
+        'Internal': true,
+        'Voyager': true,
+        'default': true,
+    }[value || 'default'];
+};
+
+export const getSeachedDataTotalCount = (data: { pages: [{ data: { pagination: { totalCount: number } } }] }, msg: string[]) => {
+    const totalCount = data?.pages[0]?.data?.pagination?.totalCount || 0;
+    return (`${totalCount} ${totalCount > 1 ? msg[1] : msg[0]}`);
 };

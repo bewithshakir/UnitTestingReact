@@ -23,7 +23,7 @@ import "./AddCustomer.style.scss";
 import { useAddedCustomerIdStore, useAddedCustomerNameStore, useShowConfirmationDialogBoxStore } from '../../../store';
 import moment from 'moment';
 import { maxContacts } from '../../../utils/constants';
-import { formatFileSizeUnit } from '../../../utils/helperFunctions';
+import { formatFileSizeUnit, getCheckBoxDisabledByPaymentType } from '../../../utils/helperFunctions';
 import FileUploadErrorDialog from '../../../components/UIComponents/ConfirmationDialog/DiscardChangesDialog.component';
 import FileUploadComponent from '../../../components/UIComponents/FileUpload/FileUpload.component';
 
@@ -496,6 +496,7 @@ const AddCustomer: React.FC = () => {
 
     const showDialogBox = useShowConfirmationDialogBoxStore((state) => state.showDialogBox);
     const isFormValidated = useShowConfirmationDialogBoxStore((state) => state.setFormFieldValue);
+    const isCheckBoxDisabled = () => getCheckBoxDisabledByPaymentType(formik.values.paymentType.label) || isEditMode ? true : isDisabled;
 
     const handleFormDataChange = () => {
         if (isEditMode) {
@@ -761,10 +762,10 @@ const AddCustomer: React.FC = () => {
                                                 sx={{ margin: "0px", marginBottom: "1rem", fontWeight: "bold" }}
                                                 className="checkbox-field"
                                                 control={
-                                                    <Checkbox checked={formik.values.lotLevel} onChange={formik.handleChange} name="lotLevel" disabled = { isEditMode? true: isDisabled } />
+                                                    <Checkbox checked={formik.values.lotLevel} onChange={formik.handleChange} name="lotLevel" disabled = { isCheckBoxDisabled()} />
                                                 }
                                                 label={
-                                                    <Typography color="var(--Darkgray)" variant="h4" className="fw-bold">
+                                                    <Typography color={isCheckBoxDisabled() ? 'var(--Secondary-Background)' :"var(--Darkgray)"} variant="h4" className="fw-bold">
                                                         Apply at Lot level
                                                     </Typography>
                                                 }
@@ -773,10 +774,10 @@ const AddCustomer: React.FC = () => {
                                                 sx={{ margin: "0px", marginBottom: "1rem", fontWeight: "bold" }}
                                                 className="checkbox-field"
                                                 control={
-                                                    <Checkbox checked={formik.values.businessLevel} onChange={formik.handleChange} name="businessLevel" disabled = { isEditMode? true: isDisabled } />
+                                                    <Checkbox checked={formik.values.businessLevel} onChange={formik.handleChange} name="businessLevel" disabled = {isCheckBoxDisabled()} />
                                                 }
                                                 label={
-                                                    <Typography color="var(--Darkgray)" variant="h4" className="fw-bold">
+                                                    <Typography color={isCheckBoxDisabled() ? 'var(--Secondary-Background)' : "var(--Darkgray)"} variant="h4" className="fw-bold">
                                                         Apply at Busines level
                                                     </Typography>
                                                 }
@@ -785,10 +786,10 @@ const AddCustomer: React.FC = () => {
                                                 sx={{ margin: "0px", marginBottom: "1rem", fontWeight: "bold" }}
                                                 className="checkbox-field"
                                                 control={
-                                                    <Checkbox checked={formik.values.vehicleLevel} onChange={formik.handleChange} name="vehicleLevel" disabled = { isEditMode? true: isDisabled } />
+                                                    <Checkbox checked={formik.values.vehicleLevel} onChange={formik.handleChange} name="vehicleLevel" disabled = {isCheckBoxDisabled()} />
                                                 }
                                                 label={
-                                                    <Typography color="var(--Darkgray)" variant="h4" className="fw-bold">
+                                                    <Typography color={isCheckBoxDisabled() ? 'var(--Secondary-Background)' : "var(--Darkgray)"} variant="h4" className="fw-bold">
                                                         Apply at Vehicle level
                                                     </Typography>
                                                 }

@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React, { SyntheticEvent, useEffect } from "react";
 import { Button } from "../../components/UIComponents/Button/Button.component";
 import { useTranslation } from "react-i18next";
@@ -11,13 +12,14 @@ import { useGetParkingLotDetails } from "./queries";
 import SearchInput from "../../components/UIComponents/SearchInput/SearchInput";
 import { Add } from "@mui/icons-material";
 import { useHistory } from "react-router-dom";
-import { sortByOptions } from "./config";
+import { filterByFields, sortByOptions } from "./config";
 import { RightInfoPanel } from "../../components/UIComponents/RightInfoPanel/RightInfoPanel.component";
 import { Box, FormControl, Grid, Typography } from "@mui/material";
-import { HorizontalBarVersionState, useStore, useAddedCustomerIdStore, useAddedCustomerNameStore, useShowConfirmationDialogBoxStore } from "../../store";
+import { HorizontalBarVersionState, useStore, useAddedCustomerIdStore, useShowConfirmationDialogBoxStore, useAddedCustomerNameStore } from "../../store";
 import ParkingLotModel from "../../models/ParkingLotModel";
 import { DataGridActionsMenuOption } from "../../components/UIComponents/Menu/DataGridActionsMenu.component";
 import { ParkingLotNoDataIcon } from '../../assets/icons';
+import { getSeachedDataTotalCount } from "../../utils/helperFunctions";
 
 interface ContentProps {
   rows?: [];
@@ -33,13 +35,16 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
   const MASS_ACTION_TYPES = ParkingLotObj.MASS_ACTION_TYPES;
 
   const history = useHistory();
+  // const location = useLocation();
+  // const { state }  = history?.location;
+console.log(history?.location?.state);
   const [info, setInfo] = React.useState({});
   const [searchTerm, setSearchTerm] = React.useState("");
   const [drawerOpen, setDrawerOpen] = React.useState(false);
-  const [sortOrder, setSortOrder] = React.useState<{ sortBy: string, order: string }>({ sortBy: "customerName", order: "asc" });
+  const [sortOrder, setSortOrder] = React.useState<{ sortBy: string, order: string }>({ sortBy: "deliveryLocationNm", order: "asc" });
   const [filterData, setFilterData] = React.useState<{ [key: string]: string[] }>({});
   const [custFilterPanelVisible, setCustFilterPanelVisible] = React.useState(false);
-  const [parkingLotlist, setCustomerList] = React.useState([]);
+  const [parkingLotlist, setParkingLotList] = React.useState([]);
   const customerId = useAddedCustomerIdStore((state) => state.customerId);
 
   const { t } = useTranslation();
@@ -53,10 +58,16 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
   setVersion("Breadcrumbs-Single");
   const setPageCustomerName = useAddedCustomerNameStore((state) => state.setCustomerName);
   const resetFormFieldValue = useShowConfirmationDialogBoxStore((state) => state.resetFormFieldValue);
-
+  
   useEffect(() => {
+    const statePL = history.location.state as { customerName: string };
+
+    console.log(statePL.customerName);
     resetFormFieldValue(false);
-    setPageCustomerName('Customer Name');
+    
+    setPageCustomerName(statePL.customerName);
+    
+    
   });
 
   const openDrawer = (row: SyntheticEvent) => {
@@ -71,24 +82,19 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
     history.push(`/customer/${customerId}/parkingLots/addLot`);
   };
 
-  const onSortBySlected = (value: string) => {
+  const onSortBySelected = (value: string) => {
     let sortOrder;
     switch (value) {
-      case "paymentCompleted":
-        sortOrder = { sortBy: "customerName", order: "desc" };
-        break;
-      case "paymentInProgress":
-        sortOrder = { sortBy: "date", order: "desc" };
-        break;
-      case "recentlyAddedLots":
-        sortOrder = { sortBy: "date", order: "asc" };
+      case "Lot Name Z-A":
+        sortOrder = { sortBy: "deliveryLocationNm", order: "desc" };
         break;
       default:
-        sortOrder = { sortBy: "customerName", order: "asc" };
+        sortOrder = { sortBy: "deliveryLocationNm", order: "asc" };
         break;
     }
     setSortOrder(sortOrder);
   };
+
   const onInputChange = (value: string) => {
     setSearchTerm(value);
   };
@@ -98,7 +104,7 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
       data?.pages?.forEach((item: any) => {
         list.push(...item.data.lots);
       });
-      setCustomerList(list);
+      setParkingLotList(list);
     }
   }, [data]);
   const handleCustFilterPanelOpen = () => {
@@ -156,7 +162,7 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
               <FormControl>
                 <SortbyMenu
                   options={sortByOptions.map((sortByItem) => t(sortByItem))}
-                  onSelect={(value) => onSortBySlected(value)}
+                  onSelect={(value) => onSortBySelected(value)}
                 />
               </FormControl>
             </Grid>
@@ -164,15 +170,16 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
               <SearchInput
                 name="searchTerm"
                 value={searchTerm}
-                delay={500}
+                delay={600}
                 onChange={onInputChange}
+                placeholder={t('parkingLot.search')}
               />
             </Grid>
             {
-              (searchTerm && !(isFetching || isLoading)) &&
+              (searchTerm && !(isFetching || isLoading) && data) &&
               <Grid item display="flex" alignItems="center" paddingLeft={2.5}>
                 <Typography color="var(--Darkgray)" variant="h4" align="center" className="fw-bold">
-                  {parkingLotlist.length} {parkingLotlist.length === 1 ? 'result(s)' : 'results'} found
+                  {getSeachedDataTotalCount(data, [t('parkingLot.result(s) found'), t('parkingLot.results found')])}
                 </Typography>
               </Grid>
             }
@@ -216,7 +223,14 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
             showImg={<ParkingLotNoDataIcon />}
           />
 
-          <RightInfoPanel panelType="customer-filter" open={custFilterPanelVisible} headingText={"Filters"} provideFilterParams={getFilterParams} onClose={handleCustFilterPanelClose} />
+          <RightInfoPanel 
+          panelType="customer-filter" 
+          open={custFilterPanelVisible} 
+          headingText={"parkingLot.header.filters"} 
+          provideFilterParams={getFilterParams} 
+          onClose={handleCustFilterPanelClose} 
+          fields={filterByFields} 
+          storeKey='parkingLot' />
           <RightInfoPanel panelType="info-view" open={drawerOpen} headingText={"Accurate Transportation"} info={info} onClose={drawerClose} />
         </Grid>
       </Grid>

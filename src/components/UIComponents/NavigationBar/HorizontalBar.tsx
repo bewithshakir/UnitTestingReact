@@ -52,18 +52,27 @@ export default function HorizontalBar (props: HorizontalBarProps) {
     resetFormFieldValue(false);
     if (pathname.includes('addLot') || pathname.includes('addFuelTax')) {
       history.goBack();
-    } else {
+    }
+    else if (pathname.includes('salesTax/add') || pathname.includes('salesTax/edit')) {
+      history.push('/salesTax');
+    }
+    else {
       props.onBack();
     }
   };
 
   const getHeaderText = () => {
-    if (history.location.pathname.includes('addCustomer')) {
-      return "Add Customer";
-    } else if (history.location.pathname.includes('addFuelTax')) {
-      return "Add Fuel Tax";
-    } else {
-      return selectedCustomerName;
+    switch (true) {
+      case history.location.pathname.includes('addCustomer'):
+        return "Add Customer";
+      case history.location.pathname.includes('addFuelTax'):
+        return "Add Fuel Tax";
+      case history.location.pathname.includes('salesTax/add'):
+        return "Add Sales Tax";
+      case history.location.pathname.includes('salesTax/edit'):
+        return "Edit Sales Tax";
+      default:
+        return selectedCustomerName;
     }
   };
 
@@ -78,34 +87,31 @@ export default function HorizontalBar (props: HorizontalBarProps) {
   }
 
   function varsionNavLinks () {
-    if (pathname === '/taxes') {
+    if (pathname.includes('taxes') || pathname.includes('salesTax')) {
       return (<>
-        <div className="linkitem active">
-          <NavLink
-            className="breadcrubs-title"
-            to="/"
-            onClick={handleClick}>
-            {t("parkingLot.navBar.fuelTax")}
+        <div className={pathname.includes('taxes') ? 'linkitem active' : 'linkitem'}>
+          <NavLink className="breadcrubs-title" to="/taxes" onClick={handleClick}>
+            {t("taxes.navBar.fuelTax")}
           </NavLink>
         </div>
-        <div className="linkitem">
+        <div className={pathname.includes('salesTax') ? 'linkitem active' : "linkitem"}>
           <NavLink className="breadcrubs-title" to="/salesTax" onClick={handleClick}>
-            {t("parkingLot.navBar.salesTax")}
+            {t("taxes.navBar.salesTax")}
           </NavLink>
         </div>
         <div className="linkitem">
           <NavLink className="breadcrubs-title" to="/cities" onClick={handleClick}>
-            {t("parkingLot.navBar.opisCities")}
+            {t("taxes.navBar.opisCities")}
           </NavLink>
         </div>
         <div className="linkitem">
           <NavLink className="breadcrubs-title" to="/productManagement" onClick={handleClick}>
-            {t("parkingLot.navBar.productManagement")}
+            {t("taxes.navBar.productManagement")}
           </NavLink>
         </div>
         <div className="linkitem">
           <NavLink className="breadcrubs-title" to="/assetManagement" onClick={handleClick}>
-            {t("parkingLot.navBar.assetManagement")}
+            {t("taxes.navBar.assetManagement")}
           </NavLink>
         </div>
       </>);
@@ -172,7 +178,7 @@ export default function HorizontalBar (props: HorizontalBarProps) {
       <div className="app__header">
         <AppBar position="fixed" className="header" sx={{ width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px` }}>
           <Toolbar className="header__toolbar">
-            {version === "NavLinks" ? null : (<Button
+            {(version === "NavLinks") ? null : (<Button
               types="profile"
               aria-label="back button"
               onClick={handleBack}
@@ -181,9 +187,9 @@ export default function HorizontalBar (props: HorizontalBarProps) {
             />)
             }
             {
-              version === "Breadcrumbs-Single" ?
+              (version === "Breadcrumbs-Single") ?
                 versionBreadcrumbsSingle() :
-                version === "NavLinks" ?
+                (version === "NavLinks") ?
                   varsionNavLinks() :
                   version === "Breadcrumbs-Many" ?
                     versionBreadcrumbsMany() :
