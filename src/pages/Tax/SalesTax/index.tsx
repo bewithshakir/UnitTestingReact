@@ -29,8 +29,9 @@ const SalesTaxLandingContent = memo(() => {
   const headCells = salesTaxObj.fieldsToDisplay();
 
   const [searchTerm, setSearchTerm] = React.useState("");
+  const [sortOrder, setSortOrder] = React.useState<{ sortBy: string, order: string }>({ sortBy: "", order: "" });
 
-  const { data, fetchNextPage, isLoading, isFetching }: any = salesTaxListSet(searchTerm);
+  const { data, fetchNextPage, isLoading, isFetching }: any = salesTaxListSet(searchTerm, sortOrder);
 
   useEffect(() => {
     if (data) {
@@ -50,10 +51,21 @@ const SalesTaxLandingContent = memo(() => {
     history.push("/salesTax/add");
   };
 
-  const onSortBySlected = (value: string) => {
-    //TODO
-    alert(value);
-  };
+const onSortBySlected = (value: string) => {
+    let sortOrder;
+    switch (value) {
+        case "City Name A-Z":
+            sortOrder = { sortBy: "city", order: "asc" };
+            break;
+        case "City Name Z-A":
+            sortOrder = { sortBy: "city", order: "desc" };
+            break;
+        default:
+            sortOrder = { sortBy: "", order: "" };
+            break;
+    }
+    setSortOrder(sortOrder);
+};
   
   const handleMassAction = () => {
     return '';

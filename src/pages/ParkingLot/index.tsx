@@ -12,13 +12,14 @@ import { useGetParkingLotDetails } from "./queries";
 import SearchInput from "../../components/UIComponents/SearchInput/SearchInput";
 import { Add } from "@mui/icons-material";
 import { useHistory } from "react-router-dom";
-import { sortByOptions } from "./config";
+import { filterByFields, sortByOptions } from "./config";
 import { RightInfoPanel } from "../../components/UIComponents/RightInfoPanel/RightInfoPanel.component";
 import { Box, FormControl, Grid, Typography } from "@mui/material";
 import { HorizontalBarVersionState, useStore, useAddedCustomerIdStore, useShowConfirmationDialogBoxStore, useAddedCustomerNameStore } from "../../store";
 import ParkingLotModel from "../../models/ParkingLotModel";
 import { DataGridActionsMenuOption } from "../../components/UIComponents/Menu/DataGridActionsMenu.component";
 import { ParkingLotNoDataIcon } from '../../assets/icons';
+import { getSeachedDataTotalCount } from "../../utils/helperFunctions";
 
 interface ContentProps {
   rows?: [];
@@ -166,10 +167,10 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
               />
             </Grid>
             {
-              (searchTerm && !(isFetching || isLoading)) &&
+              (searchTerm && !(isFetching || isLoading) && data) &&
               <Grid item display="flex" alignItems="center" paddingLeft={2.5}>
                 <Typography color="var(--Darkgray)" variant="h4" align="center" className="fw-bold">
-                  {parkingLotlist.length} {parkingLotlist.length === 1 ? 'result(s)' : 'results'} found
+                  {getSeachedDataTotalCount(data, [t('parkingLot.result(s) found'), t('parkingLot.results found')])}
                 </Typography>
               </Grid>
             }
@@ -213,7 +214,7 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
             showImg={<ParkingLotNoDataIcon />}
           />
 
-          <RightInfoPanel panelType="customer-filter" open={custFilterPanelVisible} headingText={"Filters"} provideFilterParams={getFilterParams} onClose={handleCustFilterPanelClose} />
+          <RightInfoPanel panelType="customer-filter" open={custFilterPanelVisible} headingText={"parkingLot.header.filters"} provideFilterParams={getFilterParams} onClose={handleCustFilterPanelClose} fields={filterByFields} storeKey='parkingLot' />
           <RightInfoPanel panelType="info-view" open={drawerOpen} headingText={"Accurate Transportation"} info={info} onClose={drawerClose} />
         </Grid>
       </Grid>

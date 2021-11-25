@@ -1,6 +1,5 @@
-import { mount, shallow } from 'enzyme';
-import { I18nextProvider } from 'react-i18next';
-import { QueryClient, QueryClientProvider, useQuery } from 'react-query';
+import { mount } from 'enzyme';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
 import {i18n} from '../../i18n/i18n';
 import { findByIdAttr, findByTestAttr, HOCSetup } from '../../tests/testUtils';

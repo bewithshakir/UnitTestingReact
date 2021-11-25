@@ -987,11 +987,95 @@ exports[`Rendering of Search in Parking Lot Content Component Parking Lot Conten
                         showImg={<ParkingLotNoDataIcon />}
                       />
                       <RightInfoPanel
-                        headingText="Filters"
+                        fields={
+                          Array [
+                            Object {
+                              "fieldType": "dateRange",
+                              "initialValue": Array [
+                                null,
+                                null,
+                              ],
+                              "label": "Date",
+                              "name": "date",
+                            },
+                            Object {
+                              "fieldType": "select",
+                              "initialValue": Array [],
+                              "label": "parkingLot.filter.state",
+                              "name": "state",
+                              "optionAPIResponseKey": "states",
+                              "optionUrlKey": "parkingLotFilter",
+                            },
+                            Object {
+                              "fieldType": "select",
+                              "initialValue": Array [],
+                              "label": "parkingLot.filter.city",
+                              "name": "city",
+                              "optionAPIResponseKey": "cities",
+                              "optionUrlKey": "parkingLotFilter",
+                            },
+                            Object {
+                              "fieldType": "select",
+                              "initialValue": Array [],
+                              "label": "parkingLot.filter.zip",
+                              "name": "postal",
+                              "optionAPIResponseKey": "zipcode",
+                              "optionUrlKey": "parkingLotFilter",
+                            },
+                            Object {
+                              "fieldType": "select",
+                              "initialValue": Array [],
+                              "label": "parkingLot.filter.wallet status",
+                              "name": "walletStatus",
+                              "options": Array [
+                                Object {
+                                  "icon": <PositiveCricleIcon />,
+                                  "label": "Active",
+                                  "value": "Active",
+                                },
+                                Object {
+                                  "icon": <ExpireWalletIcon />,
+                                  "label": "Expire",
+                                  "value": "Expire",
+                                },
+                                Object {
+                                  "icon": <AttentionWalletIcon />,
+                                  "label": "Attention",
+                                  "value": "Attention",
+                                },
+                              ],
+                            },
+                            Object {
+                              "fieldType": "select",
+                              "initialValue": null,
+                              "label": "parkingLot.filter.fuel type",
+                              "name": "fuelType",
+                              "options": Array [
+                                Object {
+                                  "icon": <YellowFuelIcon />,
+                                  "label": "Regular",
+                                  "value": "Regular",
+                                },
+                                Object {
+                                  "icon": <RedFuelIcon />,
+                                  "label": "Premium",
+                                  "value": "Premium",
+                                },
+                                Object {
+                                  "icon": <GreenFuelIcon />,
+                                  "label": "Diesel",
+                                  "value": "Diesel",
+                                },
+                              ],
+                            },
+                          ]
+                        }
+                        headingText="parkingLot.header.filters"
                         onClose={[Function]}
                         open={false}
                         panelType="customer-filter"
                         provideFilterParams={[Function]}
+                        storeKey="parkingLot"
                       />
                       <RightInfoPanel
                         headingText="Accurate Transportation"
@@ -3986,11 +4070,95 @@ exports[`Rendering of Search in Parking Lot Content Component Parking Lot Conten
                             showImg={<ParkingLotNoDataIcon />}
                           />,
                           <RightInfoPanel
-                            headingText="Filters"
+                            fields={
+                              Array [
+                                Object {
+                                  "fieldType": "dateRange",
+                                  "initialValue": Array [
+                                    null,
+                                    null,
+                                  ],
+                                  "label": "Date",
+                                  "name": "date",
+                                },
+                                Object {
+                                  "fieldType": "select",
+                                  "initialValue": Array [],
+                                  "label": "parkingLot.filter.state",
+                                  "name": "state",
+                                  "optionAPIResponseKey": "states",
+                                  "optionUrlKey": "parkingLotFilter",
+                                },
+                                Object {
+                                  "fieldType": "select",
+                                  "initialValue": Array [],
+                                  "label": "parkingLot.filter.city",
+                                  "name": "city",
+                                  "optionAPIResponseKey": "cities",
+                                  "optionUrlKey": "parkingLotFilter",
+                                },
+                                Object {
+                                  "fieldType": "select",
+                                  "initialValue": Array [],
+                                  "label": "parkingLot.filter.zip",
+                                  "name": "postal",
+                                  "optionAPIResponseKey": "zipcode",
+                                  "optionUrlKey": "parkingLotFilter",
+                                },
+                                Object {
+                                  "fieldType": "select",
+                                  "initialValue": Array [],
+                                  "label": "parkingLot.filter.wallet status",
+                                  "name": "walletStatus",
+                                  "options": Array [
+                                    Object {
+                                      "icon": <PositiveCricleIcon />,
+                                      "label": "Active",
+                                      "value": "Active",
+                                    },
+                                    Object {
+                                      "icon": <ExpireWalletIcon />,
+                                      "label": "Expire",
+                                      "value": "Expire",
+                                    },
+                                    Object {
+                                      "icon": <AttentionWalletIcon />,
+                                      "label": "Attention",
+                                      "value": "Attention",
+                                    },
+                                  ],
+                                },
+                                Object {
+                                  "fieldType": "select",
+                                  "initialValue": null,
+                                  "label": "parkingLot.filter.fuel type",
+                                  "name": "fuelType",
+                                  "options": Array [
+                                    Object {
+                                      "icon": <YellowFuelIcon />,
+                                      "label": "Regular",
+                                      "value": "Regular",
+                                    },
+                                    Object {
+                                      "icon": <RedFuelIcon />,
+                                      "label": "Premium",
+                                      "value": "Premium",
+                                    },
+                                    Object {
+                                      "icon": <GreenFuelIcon />,
+                                      "label": "Diesel",
+                                      "value": "Diesel",
+                                    },
+                                  ],
+                                },
+                              ]
+                            }
+                            headingText="parkingLot.header.filters"
                             onClose={[Function]}
                             open={false}
                             panelType="customer-filter"
                             provideFilterParams={[Function]}
+                            storeKey="parkingLot"
                           />,
                           <RightInfoPanel
                             headingText="Accurate Transportation"
@@ -6008,11 +6176,95 @@ exports[`Rendering of Search in Parking Lot Content Component Parking Lot Conten
                         </ForwardRef(TableContainer)>
                       </GridComponent>
                       <RightInfoPanel
-                        headingText="Filters"
+                        fields={
+                          Array [
+                            Object {
+                              "fieldType": "dateRange",
+                              "initialValue": Array [
+                                null,
+                                null,
+                              ],
+                              "label": "Date",
+                              "name": "date",
+                            },
+                            Object {
+                              "fieldType": "select",
+                              "initialValue": Array [],
+                              "label": "parkingLot.filter.state",
+                              "name": "state",
+                              "optionAPIResponseKey": "states",
+                              "optionUrlKey": "parkingLotFilter",
+                            },
+                            Object {
+                              "fieldType": "select",
+                              "initialValue": Array [],
+                              "label": "parkingLot.filter.city",
+                              "name": "city",
+                              "optionAPIResponseKey": "cities",
+                              "optionUrlKey": "parkingLotFilter",
+                            },
+                            Object {
+                              "fieldType": "select",
+                              "initialValue": Array [],
+                              "label": "parkingLot.filter.zip",
+                              "name": "postal",
+                              "optionAPIResponseKey": "zipcode",
+                              "optionUrlKey": "parkingLotFilter",
+                            },
+                            Object {
+                              "fieldType": "select",
+                              "initialValue": Array [],
+                              "label": "parkingLot.filter.wallet status",
+                              "name": "walletStatus",
+                              "options": Array [
+                                Object {
+                                  "icon": <PositiveCricleIcon />,
+                                  "label": "Active",
+                                  "value": "Active",
+                                },
+                                Object {
+                                  "icon": <ExpireWalletIcon />,
+                                  "label": "Expire",
+                                  "value": "Expire",
+                                },
+                                Object {
+                                  "icon": <AttentionWalletIcon />,
+                                  "label": "Attention",
+                                  "value": "Attention",
+                                },
+                              ],
+                            },
+                            Object {
+                              "fieldType": "select",
+                              "initialValue": null,
+                              "label": "parkingLot.filter.fuel type",
+                              "name": "fuelType",
+                              "options": Array [
+                                Object {
+                                  "icon": <YellowFuelIcon />,
+                                  "label": "Regular",
+                                  "value": "Regular",
+                                },
+                                Object {
+                                  "icon": <RedFuelIcon />,
+                                  "label": "Premium",
+                                  "value": "Premium",
+                                },
+                                Object {
+                                  "icon": <GreenFuelIcon />,
+                                  "label": "Diesel",
+                                  "value": "Diesel",
+                                },
+                              ],
+                            },
+                          ]
+                        }
+                        headingText="parkingLot.header.filters"
                         onClose={[Function]}
                         open={false}
                         panelType="customer-filter"
                         provideFilterParams={[Function]}
+                        storeKey="parkingLot"
                       >
                         <ForwardRef(Drawer)
                           anchor="right"
@@ -6037,12 +6289,99 @@ exports[`Rendering of Search in Parking Lot Content Component Parking Lot Conten
                                 "anchor": "right",
                                 "children": Array [
                                   <PanelHeader
-                                    headingText="Filters"
+                                    headingText="parkingLot.header.filters"
                                     info={null}
                                     onClose={[Function]}
                                     panelType="customer-filter"
                                   />,
-                                  <React.Fragment />,
+                                  <DynamicFilterContent
+                                    fields={
+                                      Array [
+                                        Object {
+                                          "fieldType": "dateRange",
+                                          "initialValue": Array [
+                                            null,
+                                            null,
+                                          ],
+                                          "label": "Date",
+                                          "name": "date",
+                                        },
+                                        Object {
+                                          "fieldType": "select",
+                                          "initialValue": Array [],
+                                          "label": "parkingLot.filter.state",
+                                          "name": "state",
+                                          "optionAPIResponseKey": "states",
+                                          "optionUrlKey": "parkingLotFilter",
+                                        },
+                                        Object {
+                                          "fieldType": "select",
+                                          "initialValue": Array [],
+                                          "label": "parkingLot.filter.city",
+                                          "name": "city",
+                                          "optionAPIResponseKey": "cities",
+                                          "optionUrlKey": "parkingLotFilter",
+                                        },
+                                        Object {
+                                          "fieldType": "select",
+                                          "initialValue": Array [],
+                                          "label": "parkingLot.filter.zip",
+                                          "name": "postal",
+                                          "optionAPIResponseKey": "zipcode",
+                                          "optionUrlKey": "parkingLotFilter",
+                                        },
+                                        Object {
+                                          "fieldType": "select",
+                                          "initialValue": Array [],
+                                          "label": "parkingLot.filter.wallet status",
+                                          "name": "walletStatus",
+                                          "options": Array [
+                                            Object {
+                                              "icon": <PositiveCricleIcon />,
+                                              "label": "Active",
+                                              "value": "Active",
+                                            },
+                                            Object {
+                                              "icon": <ExpireWalletIcon />,
+                                              "label": "Expire",
+                                              "value": "Expire",
+                                            },
+                                            Object {
+                                              "icon": <AttentionWalletIcon />,
+                                              "label": "Attention",
+                                              "value": "Attention",
+                                            },
+                                          ],
+                                        },
+                                        Object {
+                                          "fieldType": "select",
+                                          "initialValue": null,
+                                          "label": "parkingLot.filter.fuel type",
+                                          "name": "fuelType",
+                                          "options": Array [
+                                            Object {
+                                              "icon": <YellowFuelIcon />,
+                                              "label": "Regular",
+                                              "value": "Regular",
+                                            },
+                                            Object {
+                                              "icon": <RedFuelIcon />,
+                                              "label": "Premium",
+                                              "value": "Premium",
+                                            },
+                                            Object {
+                                              "icon": <GreenFuelIcon />,
+                                              "label": "Diesel",
+                                              "value": "Diesel",
+                                            },
+                                          ],
+                                        },
+                                      ]
+                                    }
+                                    onClose={[Function]}
+                                    provideFilterParams={[Function]}
+                                    storeKey="parkingLot"
+                                  />,
                                 ],
                                 "className": "right_panel_main_class customer_filter_panel",
                                 "elevation": 16,

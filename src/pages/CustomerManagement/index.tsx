@@ -17,7 +17,7 @@ import { Box, FormControl, Grid, Typography } from "@mui/material";
 import { HorizontalBarVersionState, useStore } from "../../store";
 import CustomerModel from "../../models/CustomerModel";
 import { DataGridActionsMenuOption } from "../../components/UIComponents/Menu/DataGridActionsMenu.component";
-import { maskPhoneNumber } from "../../utils/helperFunctions";
+import { getSeachedDataTotalCount, maskPhoneNumber } from "../../utils/helperFunctions";
 
 interface ContentProps {
   rows?: [];
@@ -194,10 +194,10 @@ const Content: React.FC<ContentProps> = () => {
               />
             </Grid>
             {
-              (searchTerm && !(isFetching || isLoading)) &&
+              (searchTerm && !(isFetching || isLoading) && data) &&
               <Grid item display="flex" alignItems="center" paddingLeft={2.5}>
                 <Typography color="var(--Darkgray)" variant="h4" align="center" className="fw-bold">
-                  {customerList.length} {customerList.length === 1 ? 'result(s)' : 'results'} found
+                  {getSeachedDataTotalCount(data, [t('customerManagement.result(s) found'), t('customerManagement.results found')])}
                 </Typography>
               </Grid>
             }
@@ -239,11 +239,11 @@ const Content: React.FC<ContentProps> = () => {
             searchTerm={searchTerm}
             getId={(id: string) => setCustomerId(id)}
             InnerTableComponent={<Table primaryKey='deliveryLocationId' id={customerId} headCells={headCellsLots} />}
-            noDataMsg='Add Customer by clicking on the " Add Customer" button.'
+            noDataMsg='Add Customer by clicking on the "Add Customer" button.'
           />
 
           <RightInfoPanel panelType="customer-filter"
-            open={custFilterPanelVisible} headingText={"Filters"}
+            open={custFilterPanelVisible} headingText={"customer-filter-panel.header.filters"}
             provideFilterParams={getFilterParams} onClose={handleCustFilterPanelClose}
             fields={filterByFields}
             storeKey={'customerFilter'}
