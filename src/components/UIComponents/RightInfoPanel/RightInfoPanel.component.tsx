@@ -47,7 +47,7 @@ export const RightInfoPanel: React.FC<InfoPanelProps> = ({ open, headingText, in
 
   const panelDrawer = <Drawer
     className={"right_panel_main_class " + (panelType === "info-view" ? "right_info_panel" : "customer_filter_panel")}
-    variant={panelType === ("customer-filter" || "salestax-filter") ? "temporary" : "persistent"}
+    variant={(panelType === "customer-filter" || panelType === "salestax-filter") ? "temporary" : "persistent"}
     anchor="right"
     open={open}
   >
