@@ -98,6 +98,7 @@ const onSortBySlected = (value: string) => {
             <Grid item>
               <SearchInput
                 name="searchTerm"
+                placeholder={t("taxes.salesTax.city")}
                 value={searchTerm}
                 delay={500}
                 onChange={onInputChange}
