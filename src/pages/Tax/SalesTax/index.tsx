@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable no-console */
 import React, { memo, useEffect } from 'react';
 import { HorizontalBarVersionState, useStore } from '../../../store';
@@ -30,14 +31,14 @@ const SalesTaxLandingContent = memo(() => {
   const headCells = salesTaxObj.fieldsToDisplay();
   // const [info, setInfo] = React.useState({});
   const [drawerOpen, setDrawerOpen] = React.useState(false);
-  const [custFilterPanelVisible, setCustFilterPanelVisible] = React.useState(false);
+  const [salesTaxFilterPanelVisible, setSalesTaxPanelVisible] = React.useState(false);
   const [filterData, setFilterData] = React.useState<{ [key: string]: string[] }>({});
-  const [infoPanelName] = React.useState('Info PAnel');
+  // const [infoPanelName] = React.useState('Info PAnel');
 
 
   const [searchTerm, setSearchTerm] = React.useState("");
 
-  const { data, fetchNextPage, isLoading, isFetching }: any = salesTaxListSet(searchTerm);
+  const { data, fetchNextPage, isLoading, isFetching }: any = salesTaxListSet(searchTerm, filterData);
 
   useEffect(() => {
     if (data) {
@@ -55,7 +56,7 @@ const SalesTaxLandingContent = memo(() => {
 
   const handleCustFilterPanelOpen = () => {
     setDrawerOpen(false);
-    setCustFilterPanelVisible(!custFilterPanelVisible);
+    setSalesTaxPanelVisible(!salesTaxFilterPanelVisible);
   };
 
   const navigateHomePage = () => {
@@ -100,11 +101,10 @@ const SalesTaxLandingContent = memo(() => {
   //   return infoObj;
   // };
 
-  const handleCustFilterPanelClose = () => setCustFilterPanelVisible(false);
+  const handleSalesTaxFilterPanelClose = () => setSalesTaxPanelVisible(false);
 
   const getFilterParams = (filterObj: { [key: string]: string[] }) => {
     setFilterData(filterObj);
-    console.log(filterData);
   };
 
   return (
@@ -171,17 +171,17 @@ const SalesTaxLandingContent = memo(() => {
             getPages={fetchNextPage}
             searchTerm={searchTerm}
             openDrawer={openDrawer}
-            noDataMsg='Add Tax.'
+            noDataMsg='Add Tax by clicking on the "Add Tax" button.'
           />
 
           <RightInfoPanel panelType="salestax-filter"
-            open={custFilterPanelVisible} headingText={"customer-filter-panel.header.filters"}
-            provideFilterParams={getFilterParams} onClose={handleCustFilterPanelClose}
+            open={salesTaxFilterPanelVisible} headingText={"customer-filter-panel.header.filters"}
+            provideFilterParams={getFilterParams} onClose={handleSalesTaxFilterPanelClose}
             fields={filterByFields}
-            storeKey={'customerFilter'}
+            storeKey={'salestaxFilter'}
           />
 
-          <RightInfoPanel panelType="info-view" open={drawerOpen} headingText={infoPanelName} onClose={drawerClose} />
+          {/* <RightInfoPanel panelType="info-view" open={drawerOpen} headingText={infoPanelName} onClose={drawerClose} /> */}
         </Grid>
       </Grid>
     </Box>

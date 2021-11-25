@@ -19,7 +19,7 @@ const getCustomers = async (pageParam: number, searchTerm: string, sortOrder: { 
     }
 
     const customersEntitySet = `/api/customer-service/customers?limit=${pageDataLimit}&offset=${pageParam}`;
-    const url = query ? `&countryCode=us&${query.toString()}` : `&countryCode=us`;
+    const url = query ? `&countryCode=us&${query}` : `&countryCode=us`;
     const options: AxiosRequestConfig = {
         method: 'get',
         url: customersEntitySet + url
