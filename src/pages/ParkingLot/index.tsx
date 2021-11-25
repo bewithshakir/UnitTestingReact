@@ -19,6 +19,7 @@ import { HorizontalBarVersionState, useStore, useAddedCustomerIdStore, useShowCo
 import ParkingLotModel from "../../models/ParkingLotModel";
 import { DataGridActionsMenuOption } from "../../components/UIComponents/Menu/DataGridActionsMenu.component";
 import { ParkingLotNoDataIcon } from '../../assets/icons';
+import { getSeachedDataTotalCount } from "../../utils/helperFunctions";
 
 interface ContentProps {
   rows?: [];
@@ -175,10 +176,10 @@ console.log(history?.location?.state);
               />
             </Grid>
             {
-              (searchTerm && !(isFetching || isLoading)) &&
+              (searchTerm && !(isFetching || isLoading) && data) &&
               <Grid item display="flex" alignItems="center" paddingLeft={2.5}>
                 <Typography color="var(--Darkgray)" variant="h4" align="center" className="fw-bold">
-                  {parkingLotlist.length} {parkingLotlist.length === 1 ? 'result(s)' : 'results'} found
+                  {getSeachedDataTotalCount(data, [t('parkingLot.result(s) found'), t('parkingLot.results found')])}
                 </Typography>
               </Grid>
             }

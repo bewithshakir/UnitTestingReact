@@ -88,6 +88,8 @@
     "attachments": "Attachments"
   },
   "customerManagement": {
+    "results found": "results found",
+    "result(s) found": "result(s) found",
     "sortBy": {
       "atoz": "Customer Name A-Z",
       "ztoa": "Customer Name Z-A",
@@ -108,6 +110,8 @@
       "filters": "Filters"
     },
     "search": "Parking Lot Name",
+    "results found": "results found",
+    "result(s) found": "result(s) found",
     "sortBy": {
       "atoz": "Lot Name A-Z",
       "ztoa": "Lot Name Z-A"
@@ -129,6 +133,12 @@
       "assetManagement": "Asset Management"
     },
     "fuelTax": {
+      "sortBy": {
+        "cityname_atoz": "City Name A-Z",
+        "cityname_ztoa": "City Name Z-A"
+      }
+    },
+    "salesTax": {
       "sortBy": {
         "cityname_atoz": "City Name A-Z",
         "cityname_ztoa": "City Name Z-A"

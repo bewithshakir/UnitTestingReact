@@ -4,7 +4,7 @@ import { AxiosRequestConfig } from "axios";
 import axios from "../../../infrastructure/ApiHelper";
 import { pageDataLimit } from '../../../utils/constants';
 
-const getSalesTaxList = async (pageParam: number, searchTerm: string, filterParams: { [key: string]: string[] }) => {
+const getSalesTaxList = async (pageParam: number, searchTerm: string, sortOrder: any, filterParams: { [key: string]: string[] }) => {
     const query = new URLSearchParams();
     if (searchTerm) {
         query.append("search", searchTerm);
@@ -15,6 +15,8 @@ const getSalesTaxList = async (pageParam: number, searchTerm: string, filterPara
         }
     }
     
+    query.append("sortBy", sortOrder.sortBy);
+    query.append("order", sortOrder.order);
     const salesTaxListEntitySet = `/api/tax-service/sales-tax/list?limit=${pageDataLimit}&offset=${pageParam}`;
 
     const url = query ? `&countryCode=us&${query.toString()}` : `&countryCode=us`;
@@ -26,8 +28,8 @@ const getSalesTaxList = async (pageParam: number, searchTerm: string, filterPara
     return data;
 };
 
-export const salesTaxListSet = (query: string, filterParams: { [key: string]: string[] }) => {
-    return useInfiniteQuery(["getSalesTaxList", query, filterParams], ({ pageParam = 0 }) => getSalesTaxList(pageParam, query, filterParams), {
+export const salesTaxListSet = (query: string, sortOrder: any, filterParams: { [key: string]: string[] }) => {
+    return useInfiniteQuery(["getSalesTaxList", query, sortOrder, filterParams], ({ pageParam = 0 }) => getSalesTaxList(pageParam, query, sortOrder, filterParams), {
         getNextPageParam: (lastGroup: any) => {
           if(lastGroup.data.pagination.offset < lastGroup.data.pagination.totalCount ){
               return lastGroup.data.pagination.offset + 15;

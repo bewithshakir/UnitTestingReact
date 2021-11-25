@@ -17,6 +17,18 @@
   }
 }
 
+.dynamicFilterGrid {
+  height: 100vh;
+  .row1{
+    justify-content: flex-start;
+    align-items: flex-start
+  }
+  .row2{
+    justify-content: flex-end;
+    align-items: flex-end
+  }
+}
+
 .right_info_panel {
   .MuiDrawer-paper {
     width: 566px;
@@ -71,8 +83,8 @@
       padding: 45px 38px;
       .cust_filter_parent_grid {
         & > .MuiGrid-item {
-          padding-bottom: 44px;
-          padding-top: 14px;
+          padding-bottom: 12px;
+          padding-top: 0px;
         }
         .MuiGrid-root {
           .date-picker-container {
@@ -88,6 +100,7 @@
               position: initial;
               font-size: 16px;
               margin-bottom: 14px;
+              margin-top: 0px;
             }
           }
         }
