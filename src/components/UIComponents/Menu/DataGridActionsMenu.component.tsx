@@ -23,15 +23,14 @@ interface DataGridActionsMenuProps {
   menuName?: string,
   onSelect?: (e: React.SyntheticEvent, selectedValue: DataGridActionsMenuOption) => void,
 }
-export default function DataGridActionsMenu (props: DataGridActionsMenuProps) {
+export default function DataGridActionsMenu(props: DataGridActionsMenuProps) {
   const [open, setOpen] = React.useState(false);
   const [selectedIndex, setSelectedIndex] = React.useState(-1);
   const anchorRef = React.useRef<HTMLButtonElement>(null);
 
   const { options, onSelect } = props;
 
-  const handleToggle = (e: React.MouseEvent<EventTarget>) => {
-    e.stopPropagation();
+  const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
   };
 
@@ -53,7 +52,7 @@ export default function DataGridActionsMenu (props: DataGridActionsMenuProps) {
   };
 
 
-  function handleListKeyDown (event: React.KeyboardEvent) {
+  function handleListKeyDown(event: React.KeyboardEvent) {
     if (event.key === "Tab") {
       event.preventDefault();
       setOpen(false);

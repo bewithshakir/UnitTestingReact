@@ -29,6 +29,240 @@ exports[`Given Bruger Menu on FuelTax Landing Page Render Bruger Menu 1`] = `
 </div>
 `;
 
+exports[`Given Sortby Menu on FuelTax Landing Page Fuel List is rendering 1`] = `
+<ForwardRef(Box)
+  display="flex"
+  ml={8}
+  mt={10}
+>
+  <ForwardRef(Grid)
+    className="main-area"
+    container={true}
+    pl={6.25}
+    pr={6.25}
+  >
+    <ForwardRef(Grid)
+      container={true}
+      display="flex"
+      flexGrow={1}
+    >
+      <ForwardRef(Grid)
+        display="flex"
+        item={true}
+        lg={9}
+        md={8}
+      >
+        <ForwardRef(Grid)
+          item={true}
+          pr={2.5}
+        >
+          <Button
+            aria-label="dafault"
+            onClick={[Function]}
+            startIcon={<FilterIcon />}
+            types="filter"
+          >
+            Filter
+          </Button>
+        </ForwardRef(Grid)>
+        <ForwardRef(Grid)
+          item={true}
+          pr={2.5}
+        >
+          <ForwardRef(FormControl)>
+            <SortbyMenu
+              onSelect={[Function]}
+              options={
+                Array [
+                  "taxes.fuelTax.sortBy.cityname_atoz",
+                  "taxes.fuelTax.sortBy.cityname_ztoa",
+                ]
+              }
+            />
+          </ForwardRef(FormControl)>
+        </ForwardRef(Grid)>
+        <ForwardRef(Grid)
+          item={true}
+        >
+          <SearchInput
+            delay={500}
+            id="SearchInput"
+            name="searchTerm"
+            onChange={[Function]}
+            placeholder="Search"
+            type="text"
+            value=""
+          />
+        </ForwardRef(Grid)>
+      </ForwardRef(Grid)>
+      <ForwardRef(Grid)
+        display="flex"
+        item={true}
+        justifyContent="flex-end"
+        lg={3}
+        md={4}
+      >
+        <ForwardRef(Grid)
+          item={true}
+          pr={2.5}
+        >
+          <Button
+            aria-label="primary"
+            onClick={[Function]}
+            startIcon={<Memo />}
+            types="primary"
+          >
+            buttons.add tax
+          </Button>
+        </ForwardRef(Grid)>
+        <ForwardRef(Grid)
+          item={true}
+        >
+          <ForwardRef(FormControl)>
+            <ActionsMenu
+              onSelect={[Function]}
+              options={
+                Array [
+                  Object {
+                    "action": "export",
+                    "icon": [Function],
+                    "label": "menus.actions.export data",
+                  },
+                ]
+              }
+            />
+          </ForwardRef(FormControl)>
+        </ForwardRef(Grid)>
+      </ForwardRef(Grid)>
+    </ForwardRef(Grid)>
+    <ForwardRef(Grid)
+      container={true}
+      display="flex"
+      flexGrow={1}
+      pt={2.5}
+    >
+      <GridComponent
+        enableRowAction={true}
+        enableRowSelection={false}
+        header={
+          Array [
+            Object {
+              "align": "left",
+              "field": "cityName",
+              "label": "CITY",
+              "sortable": true,
+              "type": "text",
+            },
+            Object {
+              "align": "left",
+              "field": "stateName",
+              "label": "STATE",
+              "type": "text",
+            },
+            Object {
+              "align": "left",
+              "field": "productCount",
+              "icon": [Function],
+              "label": "PRODUCT",
+              "type": "button",
+            },
+            Object {
+              "align": "left",
+              "field": "",
+              "label": "",
+              "type": "text",
+            },
+            Object {
+              "align": "left",
+              "field": "",
+              "label": "",
+              "type": "text",
+            },
+            Object {
+              "align": "left",
+              "field": "",
+              "label": "",
+              "type": "text",
+            },
+            Object {
+              "align": "left",
+              "field": "",
+              "label": "",
+              "type": "text",
+            },
+            Object {
+              "align": "left",
+              "field": "",
+              "label": "",
+              "type": "text",
+            },
+            Object {
+              "align": "left",
+              "field": "",
+              "label": "",
+              "type": "text",
+            },
+            Object {
+              "align": "left",
+              "field": "",
+              "label": "",
+              "type": "text",
+            },
+            Object {
+              "align": "left",
+              "field": "",
+              "label": "",
+              "type": "text",
+            },
+            Object {
+              "align": "left",
+              "field": "",
+              "label": "",
+              "type": "text",
+            },
+          ]
+        }
+        isLoading={false}
+        noDataMsg="Add Tax."
+        openDrawer={[Function]}
+        primaryKey="fuelTaxId"
+        rowActionOptions={Array []}
+        rows={Array []}
+        searchTerm=""
+      />
+      <RightInfoPanel
+        fields={
+          Array [
+            Object {
+              "fieldType": "select",
+              "initialValue": Array [],
+              "label": "taxes.fuelTax.filter.state",
+              "name": "state",
+              "optionAPIResponseKey": "states",
+              "optionUrlKey": "fuelTaxFilter",
+            },
+            Object {
+              "fieldType": "select",
+              "initialValue": Array [],
+              "label": "taxes.fuelTax.filter.city",
+              "name": "city",
+              "optionAPIResponseKey": "cities",
+              "optionUrlKey": "fuelTaxFilter",
+            },
+          ]
+        }
+        headingText="Filters"
+        onClose={[Function]}
+        open={false}
+        panelType="customer-filter"
+        provideFilterParams={[Function]}
+        storeKey="fuelTaxFilter"
+      />
+    </ForwardRef(Grid)>
+  </ForwardRef(Grid)>
+</ForwardRef(Box)>
+`;
+
 exports[`Given Sortby Menu on FuelTax Landing Page Render Sortby Menu 1`] = `
 <div>
   <WithStyles(ForwardRef(Button))

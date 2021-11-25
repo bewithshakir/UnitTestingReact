@@ -11,7 +11,13 @@ describe('Rendering of Salestax landing page Component', () => {
    
     it('Salestax landing page component Snapshot testing when', () => {
         expect(component).toMatchSnapshot();
-    });   
+    }); 
+    
+    it('Search Textbox Data Enter ', () => {
+        const component = shallow(<QueryClientProvider client={queryClient}><SalesTaxLandingContent onChange={() => jest.fn()} /></QueryClientProvider>);
+        expect(component).toBeDefined();
+        expect(component).toMatchSnapshot();
+    });
 });
 
 describe('Given Sortby Menu on SalesTax Landing Page', () => {
@@ -38,8 +44,6 @@ describe('Given Sortby Menu on SalesTax Landing Page', () => {
     });
 
 });
-
-
 
 
 
