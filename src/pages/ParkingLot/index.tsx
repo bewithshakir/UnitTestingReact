@@ -35,6 +35,9 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
   const MASS_ACTION_TYPES = ParkingLotObj.MASS_ACTION_TYPES;
 
   const history = useHistory();
+  // const location = useLocation();
+  // const { state }  = history?.location;
+console.log(history?.location?.state);
   const [info, setInfo] = React.useState({});
   const [searchTerm, setSearchTerm] = React.useState("");
   const [drawerOpen, setDrawerOpen] = React.useState(false);
@@ -55,10 +58,16 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
   setVersion("Breadcrumbs-Single");
   const setPageCustomerName = useAddedCustomerNameStore((state) => state.setCustomerName);
   const resetFormFieldValue = useShowConfirmationDialogBoxStore((state) => state.resetFormFieldValue);
-
+  
   useEffect(() => {
+    const statePL = history.location.state as { customerName: string };
+
+    console.log(statePL.customerName);
     resetFormFieldValue(false);
-    setPageCustomerName('Customer Name');
+    
+    setPageCustomerName(statePL.customerName);
+    
+    
   });
 
   const openDrawer = (row: SyntheticEvent) => {
@@ -214,7 +223,14 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
             showImg={<ParkingLotNoDataIcon />}
           />
 
-          <RightInfoPanel panelType="customer-filter" open={custFilterPanelVisible} headingText={"parkingLot.header.filters"} provideFilterParams={getFilterParams} onClose={handleCustFilterPanelClose} fields={filterByFields} storeKey='parkingLot' />
+          <RightInfoPanel 
+          panelType="customer-filter" 
+          open={custFilterPanelVisible} 
+          headingText={"parkingLot.header.filters"} 
+          provideFilterParams={getFilterParams} 
+          onClose={handleCustFilterPanelClose} 
+          fields={filterByFields} 
+          storeKey='parkingLot' />
           <RightInfoPanel panelType="info-view" open={drawerOpen} headingText={"Accurate Transportation"} info={info} onClose={drawerClose} />
         </Grid>
       </Grid>

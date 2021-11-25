@@ -39,7 +39,12 @@ const Legend: React.FC = () => {
   const onItemClick = (to: string) => {
     const pathnameSegArr = to.split("/");
     if(!isDisabled(to)){
-    history.push(getPath(pathnameSegArr[2]) || to);
+    history.push({
+      pathname : getPath(pathnameSegArr[2]) || to,
+      state: {
+        customerId: customerId,
+        customerName: selectedCustomerName
+      }});
     }
   };
 
@@ -60,8 +65,7 @@ const Legend: React.FC = () => {
   };
 
   const getLegendHeader = () => {
-    const pathnameSegArr = pathname.split("/");
-    if (pathnameSegArr.indexOf("viewCustomer") > -1) {
+      if(pathname.includes("viewCustomer") || pathname.includes("parkingLots")) { 
       return selectedCustomerName;
     } else {
       return t("legend.customerName");
