@@ -62,16 +62,17 @@ export default function HorizontalBar (props: HorizontalBarProps) {
   };
 
   const getHeaderText = () => {
-    if (history.location.pathname.includes('addCustomer')) {
-      return "Add Customer";
-    } else if (history.location.pathname.includes('addFuelTax')) {
-      return "Add Fuel Tax";
-    } else if (history.location.pathname.includes('salesTax/add')) {
-      return 'Add Sales Tax';
-    } else if (history.location.pathname.includes('salesTax/edit')) {
-      return 'Edit Sales Tax';
-    } else {
-      return selectedCustomerName;
+    switch (true) {
+      case history.location.pathname.includes('addCustomer'):
+        return "Add Customer";
+      case history.location.pathname.includes('addFuelTax'):
+        return "Add Fuel Tax";
+      case history.location.pathname.includes('salesTax/add'):
+        return "Add Sales Tax";
+      case history.location.pathname.includes('salesTax/edit'):
+        return "Edit Sales Tax";
+      default:
+        return selectedCustomerName;
     }
   };
 

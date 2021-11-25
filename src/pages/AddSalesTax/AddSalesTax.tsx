@@ -95,7 +95,7 @@ const AddSalesTax: React.FC = () => {
                 setAPIResponse(false);
             }, 6000);
         } catch(error) {
-            //
+            setFormStatus(formStatusProps.error);
         }
 
     };
@@ -218,9 +218,6 @@ const AddSalesTax: React.FC = () => {
         formik.setFieldTouched("state");
         formik.validateField("state");
 
-        // formik.setFieldTouched("federalRate");
-        // formik.validateField("federalRate");
-
         formik.setFieldTouched("stateRate");
         formik.validateField("stateRate");
 
@@ -262,32 +259,6 @@ const AddSalesTax: React.FC = () => {
         }
     };
 
-    
-    /* const showDialogBox = useShowConfirmationDialogBoxStore((state) => state.showDialogBox);
-    const isFormValidated = useShowConfirmationDialogBoxStore((state) => state.setFormFieldValue);
-    const isFormFieldChange = () => formik.dirty; */
-
-    /* function onClickBack () {
-        if ((isFormFieldChange() && !isEditShown) || (isFormFieldChange() && isEditMode)) {
-            showDialogBox(true);
-        } else {
-            history.push('/salesTax');
-        }
-    } */
-    /* const handleFormDataChange = () => {
-        if (isEditMode) {
-            if (formik.touched && Object.keys(formik.touched).length === 0 && Object.getPrototypeOf(formik.touched) === Object.prototype) {
-                if (formik.dirty) {
-                    if (formik.initialValues != formik.values) {
-                        isFormValidated(false);
-                    }
-                }
-            }
-        } 
-        if (isFormFieldChange()) {
-            isFormValidated(true); 
-        }
-    }; */
     return (
         <Box display="flex" className="global_main_wrapper">
             <Grid item md={10} xs={10}>
