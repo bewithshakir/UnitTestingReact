@@ -1,9 +1,7 @@
 import { shallow } from "enzyme";
 import { createMemoryHistory } from "history";
-import { I18nextProvider } from "react-i18next";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { Router } from "react-router-dom";
-import { i18n } from "../i18n/i18n";
 
 /**
  * Returns node(s) with the given data-test attribute.
@@ -23,11 +21,9 @@ export const HOCSetup = (props: any, route: any)=> {
     }
     return (
         <QueryClientProvider client={queryClient}>
-            <I18nextProvider i18n={i18n}>
                 <Router history={history}>
                     {props.children}
                 </Router>
-            </I18nextProvider>
         </QueryClientProvider>
     );
 };
@@ -37,10 +33,10 @@ export const renderWithRouter = (renderComponent: any, route: any) => {
     const history = createMemoryHistory();
   
     if(route){
-      history.push(route)
+      history.push(route);
     }
   
     return {
       ...shallow(<Router history={history}>{renderComponent()}</Router>), history
-    }
+    };
 };
