@@ -16,22 +16,18 @@
     }
   }
 }
-
-.dynamicFilterGrid {
-  .row1{
-    justify-content: flex-start;
-    align-items: flex-start;
-    padding-top: 30px;
+.dynamicForm {
+  height: 100%;
+  .sContainer {
+    min-height: 100%;
+    .lastItem{
+      margin-top: auto;
+    }
+    .date-picker-container{
+      width: 100%;
+    }
   }
-  .row2{
-    justify-content: flex-end;
-    align-items: flex-end;
-    padding-bottom: 26px;
-  }
-  .fw-bold {
-    margin-bottom: 12px;
-  }
-}
+} 
 
 .right_info_panel {
   .MuiDrawer-paper {
