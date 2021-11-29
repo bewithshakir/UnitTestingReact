@@ -16,6 +16,7 @@
     }
   }
 }
+
 .dynamicForm {
   height: 100%;
   .sContainer {
@@ -25,6 +26,17 @@
     }
     .date-picker-container{
       width: 100%;
+    }
+    .MuiInputLabel-root{
+      transform: none;
+      position: initial;
+      font-size: 16px;
+      margin-bottom: 14px;
+      margin-top: 0px;
+      color: var(--Darkgray);
+    } 
+    .checkboxLabel{
+      margin-top: 16px;
     }
   }
 } 
@@ -66,66 +78,3 @@
   }
 }
 
-.customer_filter_panel {
-  .MuiDrawer-paper {
-    width: 615px;
-    .cust_filter_panel_header {
-      .MuiAppBar-root {
-        .MuiToolbar-root {
-          padding: 0px 20px 0px 38px;
-          .custom-toolbar {
-            background-color: var(--Blue-Btn);
-          }
-        }
-      }
-    }
-    .cust_filter_panel_content {
-      padding: 0 38px;
-      position: fixed;
-      bottom: 0;
-      top: 56px;
-      overflow-y: auto;
-      display: flex;
-      flex-direction: row;
-      .cust_filter_parent_grid {
-        & > .MuiGrid-item {
-          padding-bottom: 12px;
-          padding-top: 0px;
-        }
-        .MuiGrid-root {
-          .date-picker-container {
-            width: 100%;
-          }
-          .multi-select__control{
-            border: 1px solid var(--Lightgray_2);
-          }
-          .select {
-            width: 100%;
-            .MuiInputLabel-root {
-              transform: none;
-              position: initial;
-              font-size: 16px;
-              margin-bottom: 14px;
-              margin-top: 0px;
-            }
-          }
-        }
-        .cust_filter_date_label_grid {
-          padding-bottom: 14px;
-          font-size: 16px;
-          font-weight: 700;
-        }
-      }
-      .filter-error-box{
-        color: var(--Tertiary);
-      }
-      .cust_filter_buttons_container {
-        right: 38px;
-        bottom: 26px;
-        .MuiButton-root {
-          margin-left: 30px;
-        }
-      }
-    }
-  }
-}

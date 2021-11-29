@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { filterStore } from "../../../store";
 import moment from "moment";
-import { Grid, FormControlLabel, Typography, FormControl } from "@mui/material";
+import { Grid, FormControlLabel, FormControl, InputLabel, Typography } from "@mui/material";
 import { FormikProvider, useFormik } from 'formik';
 import Select from "../Select/MultiSelect";
 import SingleSelect from "../Select/SingleSelect";
@@ -195,10 +195,12 @@ export const DynamicFilterContent: React.FC<IDynamicFilterProps> = ({ provideFil
                         <Grid key={field.name} item m={2}>
                             {field.fieldType === 'date' ?
                                 <>
-                                    <Grid item xs={12} className="cust_filter_date_label_grid">
-                                        {t(field.label)}
+                                    <Grid item xs={12}>
+                                        <InputLabel shrink htmlFor={field.name} aria-labelledby={field.label}>
+                                            <b>{t(field.label)}</b >
+                                        </InputLabel>
                                     </Grid>
-                                    <Grid container item xs={12} spacing="2">
+                                    <Grid container item xs={12}>
                                         <DatePickerInput
                                             type="single-date"
                                             id="cust-filter-date"
@@ -214,8 +216,10 @@ export const DynamicFilterContent: React.FC<IDynamicFilterProps> = ({ provideFil
                                 </>
                                 : field.fieldType === 'dateRange' ?
                                     <>
-                                        <Grid item xs={12} className="cust_filter_date_label_grid">
-                                            {t('right-info-panel.filter.period')}
+                                        <Grid item xs={12}>
+                                            <InputLabel shrink htmlFor={field.name} aria-labelledby={field.label}>
+                                                <b>{t('right-info-panel.filter.period')}</b >
+                                            </InputLabel>
                                         </Grid>
                                         <Grid container item xs={12}>
                                             <DatePickerInput
@@ -236,9 +240,9 @@ export const DynamicFilterContent: React.FC<IDynamicFilterProps> = ({ provideFil
                                         <Input
                                             id={field.name}
                                             label={
-                                                <Typography color="var(--Darkgray)" className="fw-bold">
-                                                    {t(field.label)}
-                                                </Typography>
+                                                <InputLabel shrink htmlFor={field.name} aria-labelledby={field.label}>
+                                                    <b>{t(field.label)}</b >
+                                                </InputLabel>
                                             }
                                             type='text'
                                             helperText={(touched && error) ? error : undefined}
@@ -283,13 +287,12 @@ export const DynamicFilterContent: React.FC<IDynamicFilterProps> = ({ provideFil
                                                     />
                                             : (field.fieldType === 'multiCheckbox') ?
                                                 <FormControl className='formInput'>
-                                                    <Typography color="var(--Darkgray)" variant="h4" className="fw-bold">
-                                                        {t(field.label)}
-                                                    </Typography>
+                                                    <InputLabel shrink htmlFor={field.name} aria-labelledby={field.label}>
+                                                        <b>{t(field.label)}</b >
+                                                    </InputLabel>
                                                     {(field.options && field.options.map(opt => {
                                                         return (
                                                             <FormControlLabel key={`${field.name}-${opt.label}`}
-                                                                sx={{ margin: "0px", marginBottom: "1rem", fontWeight: "bold" }}
                                                                 className="checkbox-field"
                                                                 control={
                                                                     <Checkbox checked={value.includes(opt.value)} onChange={(e) => {
@@ -307,7 +310,6 @@ export const DynamicFilterContent: React.FC<IDynamicFilterProps> = ({ provideFil
                                                 </FormControl>
                                                 : (field.fieldType === 'checkbox') ?
                                                     <FormControlLabel
-                                                        sx={{ margin: "0px", marginBottom: "1rem", fontWeight: "bold" }}
                                                         className="checkbox-field"
                                                         control={
                                                             <Checkbox checked={value} value={value} onChange={(e) => {
@@ -315,20 +317,19 @@ export const DynamicFilterContent: React.FC<IDynamicFilterProps> = ({ provideFil
                                                             }} name={field.name} />
                                                         }
                                                         label={
-                                                            <Typography color="var(--Darkgray)" variant="h4" className="fw-bold">
-                                                                {t(field.label)}
-                                                            </Typography>
+                                                            <InputLabel shrink htmlFor={field.name} aria-labelledby={field.label} className="checkboxLabel">
+                                                                <b>{t(field.label)}</b >
+                                                            </InputLabel>
                                                         }
                                                     />
                                                     : (field.fieldType === 'radio') ?
                                                         <FormControl className='formInput'>
-                                                            <Typography color="var(--Darkgray)" variant="h4" className="fw-bold">
-                                                                {t(field.label)}
-                                                            </Typography>
+                                                            <InputLabel shrink htmlFor={field.name} aria-labelledby={field.label}>
+                                                                <b>{t(field.label)}</b >
+                                                            </InputLabel>
                                                             {(field.options && field.options.map(opt => {
                                                                 return (
                                                                     <FormControlLabel key={`${field.name}-${opt.label}`}
-                                                                        sx={{ margin: "0px", marginBottom: "1rem", fontWeight: "bold" }}
                                                                         className="checkbox-field"
                                                                         control={
                                                                             <Radio checked={value === opt.value} onClick={() => {
@@ -353,8 +354,8 @@ export const DynamicFilterContent: React.FC<IDynamicFilterProps> = ({ provideFil
                     );
                 }
                 )}
-                <Grid item className="lastItem" container direction="row" justifyContent="flex-end" pl={2}>
-                    <Grid item p={2}>
+                <Grid item className="lastItem" container direction="row" justifyContent="flex-end">
+                    <Grid item m={2}>
                         <ClearBtn
                             type="reset"
                             types="cancel"
@@ -363,7 +364,7 @@ export const DynamicFilterContent: React.FC<IDynamicFilterProps> = ({ provideFil
                             {t("right-info-panel.filter.buttons.clear all")}
                         </ClearBtn >
                     </Grid>
-                    <Grid item p={2}>
+                    <Grid item m={2}>
                         <ApplyBtn
                             type="submit"
                             types="save"
