@@ -29,7 +29,7 @@ import FileUploadComponent from '../../../components/UIComponents/FileUpload/Fil
 
 const initialValues = new CustomerModel();
 
-function getTokenApplicable (Obj: any) {
+function getTokenApplicable(Obj: any) {
     const temp: any = [];
     Object.entries(Obj).forEach(obj => {
         if (obj[1]) {
@@ -63,7 +63,7 @@ const formStatusProps: IFormStatusProps = {
         message: 'Something went wrong. Please try again.',
         type: 'Error',
     },
-    fileuploadsuccess:{
+    fileuploadsuccess: {
         message: 'File Uploaded Successfully',
         type: 'Success'
     }
@@ -169,8 +169,8 @@ const AddCustomer: React.FC = () => {
             setTimeout(() => {
                 setAPIResponse(false);
             }, 6000);
-        } catch(error) {
-            
+        } catch (error) {
+
         }
     };
 
@@ -192,7 +192,7 @@ const AddCustomer: React.FC = () => {
         }, 6000);
     };
 
-    const onAddCustomerSuccess = (data: any) => {        
+    const onAddCustomerSuccess = (data: any) => {
         setAPIResponse(true);
         isFormValidated(false);
         setFormStatus(formStatusProps.success);
@@ -247,19 +247,19 @@ const AddCustomer: React.FC = () => {
     };
 
     const { mutate: uploadContractFiles } = useUploadContractFile(activeCustomerId, onFileUploadError, onFileUploadSuccess);
-    const [validFiles,setValidFiles] = useState<File[]>([]);
-    const [uploadErroMsg,setUploadErrMsg] = useState('');
-    
+    const [validFiles, setValidFiles] = useState<File[]>([]);
+    const [uploadErroMsg, setUploadErrMsg] = useState('');
+
     const onDrop = useCallback((acceptedFiles: File[], rejectedFiles: Array<any>) => {
         if (acceptedFiles.length) {
             setUploadErrMsg('');
             setValidFiles(acceptedFiles);
         }
-        if(rejectedFiles.length){
+        if (rejectedFiles.length) {
             setUploadErrMsg(rejectedFiles[0].errors[0].message);
         }
     }, []);
-        
+
 
     const onGetCustomerSuccess = (data: any) => {
         if (data) {
@@ -317,7 +317,7 @@ const AddCustomer: React.FC = () => {
         setDisabled(false);
     };
 
-    const handleDeleteFileClick = () =>{
+    const handleDeleteFileClick = () => {
         setValidFiles([]);
         setUploadErrMsg('');
     };
@@ -330,7 +330,7 @@ const AddCustomer: React.FC = () => {
         formData.append('countryCode', customer.countryCd);
         formData.append('companyNm', customer.companyNm);
         formData.append('fileOverwrite', isOverwriteFile ? 'y' : 'n');
-        uploadContractFiles(formData);                
+        uploadContractFiles(formData);
     };
 
     const editCustomerData = async (data: AddCustomerForm) => {
@@ -448,7 +448,7 @@ const AddCustomer: React.FC = () => {
 
     const isFormFieldChange = () => formik.dirty;
 
-    function onClickBack () {
+    function onClickBack() {
         if ((isFormFieldChange() && !isEditShown) || (isFormFieldChange() && isEditMode)) {
             showDialogBox(true);
         } else {
@@ -473,7 +473,7 @@ const AddCustomer: React.FC = () => {
         }
     };
 
-    function handleGoogleAddressChange (addressObj: any) {
+    function handleGoogleAddressChange(addressObj: any) {
         formik.setFieldValue('addressLine1', addressObj.addressLine1);
         formik.setFieldValue('addressLine2', addressObj.addressLine2);
         formik.setFieldValue('city', addressObj.city);
@@ -481,7 +481,7 @@ const AddCustomer: React.FC = () => {
         formik.setFieldValue('postalCode', addressObj.postalCode);
     }
 
-    function handleGoogleAddressBlur () {
+    function handleGoogleAddressBlur() {
         formik.setFieldTouched("addressLine1");
         formik.validateField("addressLine1");
         formik.setFieldTouched("addressLine2");
@@ -507,9 +507,17 @@ const AddCustomer: React.FC = () => {
                     }
                 }
             }
-        } 
+        }
         if (isFormFieldChange()) {
-            isFormValidated(true); 
+            isFormValidated(true);
+        }
+    };
+    const handlePaymentTypeChange = (fieldName: string, value: any) => {
+        formik.setFieldValue(fieldName, value);
+        if (getCheckBoxDisabledByPaymentType(value.label)) {
+            formik.setFieldValue('lotLevel', false);
+            formik.setFieldValue('businessLevel', false);
+            formik.setFieldValue('vehicleLevel', false);
         }
     };
     return (
@@ -704,7 +712,7 @@ const AddCustomer: React.FC = () => {
                                         items={paymentTypes}
                                         helperText={(formik.touched.paymentType && formik.errors.paymentType) ? formik.errors.paymentType.value : undefined}
                                         error={(formik.touched.paymentType && formik.errors.paymentType) ? true : false}
-                                        onChange={formik.setFieldValue}
+                                        onChange={handlePaymentTypeChange}
                                         onBlur={() => { formik.setFieldTouched("paymentType"); formik.validateField("paymentType"); }}
                                         required
                                         isDisabled={isEditMode ? true : isDisabled}
@@ -724,7 +732,7 @@ const AddCustomer: React.FC = () => {
                                         helperText={(formik.touched.endDate && formik.errors.endDate) ? formik.errors.endDate : undefined}
                                         error={(formik.touched.endDate && formik.errors.endDate) ? true : false}
                                         required
-                                        disabled={isEditMode ? true: isDisabled}
+                                        disabled={isEditMode ? true : isDisabled}
                                     />
                                 </Grid>
                                 <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
@@ -762,10 +770,10 @@ const AddCustomer: React.FC = () => {
                                                 sx={{ margin: "0px", marginBottom: "1rem", fontWeight: "bold" }}
                                                 className="checkbox-field"
                                                 control={
-                                                    <Checkbox checked={formik.values.lotLevel} onChange={formik.handleChange} name="lotLevel" disabled = { isCheckBoxDisabled()} />
+                                                    <Checkbox checked={formik.values.lotLevel} onChange={formik.handleChange} name="lotLevel" disabled={isCheckBoxDisabled()} />
                                                 }
                                                 label={
-                                                    <Typography color={isCheckBoxDisabled() ? 'var(--Secondary-Background)' :"var(--Darkgray)"} variant="h4" className="fw-bold">
+                                                    <Typography color={isCheckBoxDisabled() ? 'var(--Secondary-Background)' : "var(--Darkgray)"} variant="h4" className="fw-bold">
                                                         Apply at Lot level
                                                     </Typography>
                                                 }
@@ -774,7 +782,7 @@ const AddCustomer: React.FC = () => {
                                                 sx={{ margin: "0px", marginBottom: "1rem", fontWeight: "bold" }}
                                                 className="checkbox-field"
                                                 control={
-                                                    <Checkbox checked={formik.values.businessLevel} onChange={formik.handleChange} name="businessLevel" disabled = {isCheckBoxDisabled()} />
+                                                    <Checkbox checked={formik.values.businessLevel} onChange={formik.handleChange} name="businessLevel" disabled={isCheckBoxDisabled()} />
                                                 }
                                                 label={
                                                     <Typography color={isCheckBoxDisabled() ? 'var(--Secondary-Background)' : "var(--Darkgray)"} variant="h4" className="fw-bold">
@@ -786,7 +794,7 @@ const AddCustomer: React.FC = () => {
                                                 sx={{ margin: "0px", marginBottom: "1rem", fontWeight: "bold" }}
                                                 className="checkbox-field"
                                                 control={
-                                                    <Checkbox checked={formik.values.vehicleLevel} onChange={formik.handleChange} name="vehicleLevel" disabled = {isCheckBoxDisabled()} />
+                                                    <Checkbox checked={formik.values.vehicleLevel} onChange={formik.handleChange} name="vehicleLevel" disabled={isCheckBoxDisabled()} />
                                                 }
                                                 label={
                                                     <Typography color={isCheckBoxDisabled() ? 'var(--Secondary-Background)' : "var(--Darkgray)"} variant="h4" className="fw-bold">
@@ -901,7 +909,7 @@ const AddCustomer: React.FC = () => {
                                             <Grid item md={12} mt={2} mb={4}>
                                                 <Link
                                                     variant="body2"
-                                                    className={isDisabled ? "disabled-text-link" : "add-link" }
+                                                    className={isDisabled ? "disabled-text-link" : "add-link"}
                                                     sx={{
                                                         display: "flex",
                                                         alignItems: "center",
@@ -1083,7 +1091,7 @@ const AddCustomer: React.FC = () => {
                                             {
                                                 validFiles.length ? (
                                                     <IconButton onClick={handleDeleteFileClick}>
-                                                        <DeleteIcon color={'var(--ToastMessageRed)'}/>
+                                                        <DeleteIcon color={'var(--ToastMessageRed)'} />
                                                     </IconButton>
                                                 ) : (
                                                     <FileUploadComponent
@@ -1140,7 +1148,7 @@ const AddCustomer: React.FC = () => {
                 handleToggle={handleModelToggle}
                 handleConfirm={handleModelConfirm}
                 cancelBtnTitle='No'
-                discardBtnTitle = 'Yes'
+                discardBtnTitle='Yes'
             />
         </>
     );
