@@ -28,7 +28,7 @@ interface IFilterState {
   removeFormData: (...args: any) => void,
 }
 
-interface addedCustomerIdState {
+export interface addedCustomerIdState {
   customerId: string,
   setCustomerId: (...args: any) => void,
   removeCustomerId: (...args: any) => void,
@@ -74,10 +74,13 @@ export const filterStore = create<IFilterState>((set) => ({
 }));
 
 
-export const useAddedCustomerIdStore = create<addedCustomerIdState>((set) => ({
+export const useAddedCustomerIdStore = create<addedCustomerIdState>(persist((set) => ({
   customerId: '',
   setCustomerId: (customerId: string) => set(() => ({ customerId })),
   removeCustomerId: () => set(() => ({ customerId: '' })),
+}),
+{
+  name: 'customerId'
 }));
 
 export const useAddedCustomerNameStore = create<addedCustomerNameState>((set) => ({
