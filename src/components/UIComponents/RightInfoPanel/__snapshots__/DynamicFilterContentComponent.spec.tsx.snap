@@ -50,146 +50,128 @@ exports[`Rendering of Dynamic filter component Dynamic filter component snapshot
   }
 >
   <form
+    className="dynamicForm"
     onReset={[Function]}
     onSubmit={[Function]}
   >
-    <div
-      className="cust_filter_panel_content"
+    <ForwardRef(Grid)
+      className="sContainer"
+      container={true}
+      direction="column"
     >
       <ForwardRef(Grid)
-        className="dynamicFilterGrid"
-        container={true}
+        item={true}
+        key="multiselect"
+        m={2}
       >
-        <ForwardRef(Grid)
-          className="cust_filter_parent_grid row1"
-          container={true}
-          spacing={2}
+        <ForwardRef(FormControl)
+          className="formInput"
         >
-          <ForwardRef(Grid)
-            item={true}
-            key="multiselect"
-            xs={12}
+          <ForwardRef(InputLabel)
+            aria-labelledby="multi checkbox"
+            htmlFor="multiselect"
+            shrink={true}
           >
-            <ForwardRef(FormControl)
-              className="formInput"
-            >
+            <b>
+              multi checkbox
+            </b>
+          </ForwardRef(InputLabel)>
+          <ForwardRef(FormControlLabel)
+            className="checkbox-field"
+            control={
+              <Checkboxes
+                checked={false}
+                name="multiselect"
+                onChange={[Function]}
+              />
+            }
+            key="multiselect-checkbox1"
+            label={
               <ForwardRef(Typography)
                 className="fw-bold"
                 color="var(--Darkgray)"
                 variant="h4"
               >
-                multi checkbox
+                checkbox1
               </ForwardRef(Typography)>
-              <ForwardRef(FormControlLabel)
-                className="checkbox-field"
-                control={
-                  <Checkboxes
-                    checked={false}
-                    name="multiselect"
-                    onChange={[Function]}
-                  />
-                }
-                key="multiselect-checkbox1"
-                label={
-                  <ForwardRef(Typography)
-                    className="fw-bold"
-                    color="var(--Darkgray)"
-                    variant="h4"
-                  >
-                    checkbox1
-                  </ForwardRef(Typography)>
-                }
-                sx={
-                  Object {
-                    "fontWeight": "bold",
-                    "margin": "0px",
-                    "marginBottom": "1rem",
-                  }
-                }
+            }
+          />
+          <ForwardRef(FormControlLabel)
+            className="checkbox-field"
+            control={
+              <Checkboxes
+                checked={false}
+                name="multiselect"
+                onChange={[Function]}
               />
-              <ForwardRef(FormControlLabel)
-                className="checkbox-field"
-                control={
-                  <Checkboxes
-                    checked={false}
-                    name="multiselect"
-                    onChange={[Function]}
-                  />
-                }
-                key="multiselect-cbbbb2"
-                label={
-                  <ForwardRef(Typography)
-                    className="fw-bold"
-                    color="var(--Darkgray)"
-                    variant="h4"
-                  >
-                    cbbbb2
-                  </ForwardRef(Typography)>
-                }
-                sx={
-                  Object {
-                    "fontWeight": "bold",
-                    "margin": "0px",
-                    "marginBottom": "1rem",
-                  }
-                }
+            }
+            key="multiselect-cbbbb2"
+            label={
+              <ForwardRef(Typography)
+                className="fw-bold"
+                color="var(--Darkgray)"
+                variant="h4"
+              >
+                cbbbb2
+              </ForwardRef(Typography)>
+            }
+          />
+          <ForwardRef(FormControlLabel)
+            className="checkbox-field"
+            control={
+              <Checkboxes
+                checked={false}
+                name="multiselect"
+                onChange={[Function]}
               />
-              <ForwardRef(FormControlLabel)
-                className="checkbox-field"
-                control={
-                  <Checkboxes
-                    checked={false}
-                    name="multiselect"
-                    onChange={[Function]}
-                  />
-                }
-                key="multiselect-cb3"
-                label={
-                  <ForwardRef(Typography)
-                    className="fw-bold"
-                    color="var(--Darkgray)"
-                    variant="h4"
-                  >
-                    cb3
-                  </ForwardRef(Typography)>
-                }
-                sx={
-                  Object {
-                    "fontWeight": "bold",
-                    "margin": "0px",
-                    "marginBottom": "1rem",
-                  }
-                }
-              />
-            </ForwardRef(FormControl)>
-          </ForwardRef(Grid)>
+            }
+            key="multiselect-cb3"
+            label={
+              <ForwardRef(Typography)
+                className="fw-bold"
+                color="var(--Darkgray)"
+                variant="h4"
+              >
+                cb3
+              </ForwardRef(Typography)>
+            }
+          />
+        </ForwardRef(FormControl)>
+      </ForwardRef(Grid)>
+      <ForwardRef(Grid)
+        className="lastItem"
+        container={true}
+        direction="row"
+        item={true}
+        justifyContent="flex-end"
+      >
+        <ForwardRef(Grid)
+          item={true}
+          m={2}
+        >
+          <Styled(Button)
+            aria-label="right-info-panel.filter.buttons.clear all"
+            type="reset"
+            types="cancel"
+          >
+            right-info-panel.filter.buttons.clear all
+          </Styled(Button)>
         </ForwardRef(Grid)>
         <ForwardRef(Grid)
-          className="row2"
-          container={true}
+          item={true}
+          m={2}
         >
-          <div
-            className="cust_filter_buttons_container"
+          <Styled(Button)
+            aria-label="right-info-panel.filter.buttons.apply"
+            disabled={true}
+            type="submit"
+            types="save"
           >
-            <Styled(Button)
-              aria-label="right-info-panel.filter.buttons.clear all"
-              type="reset"
-              types="cancel"
-            >
-              right-info-panel.filter.buttons.clear all
-            </Styled(Button)>
-            <Styled(Button)
-              aria-label="right-info-panel.filter.buttons.apply"
-              disabled={true}
-              type="submit"
-              types="save"
-            >
-              right-info-panel.filter.buttons.apply
-            </Styled(Button)>
-          </div>
+            right-info-panel.filter.buttons.apply
+          </Styled(Button)>
         </ForwardRef(Grid)>
       </ForwardRef(Grid)>
-    </div>
+    </ForwardRef(Grid)>
   </form>
 </ContextProvider>
 `;
@@ -260,502 +242,476 @@ exports[`Rendering of Dynamic filter component Dynamic filter component snapshot
   }
 >
   <form
+    className="dynamicForm"
     onReset={[Function]}
     onSubmit={[Function]}
   >
-    <div
-      className="cust_filter_panel_content"
+    <ForwardRef(Grid)
+      className="sContainer"
+      container={true}
+      direction="column"
     >
       <ForwardRef(Grid)
-        className="dynamicFilterGrid"
-        container={true}
+        item={true}
+        key="date"
+        m={2}
       >
         <ForwardRef(Grid)
-          className="cust_filter_parent_grid row1"
-          container={true}
-          spacing={2}
+          item={true}
+          xs={12}
         >
-          <ForwardRef(Grid)
-            columnSpacing={2}
-            container={true}
-            item={true}
-            key="date"
-            xs={12}
+          <ForwardRef(InputLabel)
+            aria-labelledby="Date"
+            htmlFor="date"
+            shrink={true}
           >
-            <ForwardRef(Grid)
-              className="cust_filter_date_label_grid"
-              item={true}
-              xs={12}
-            >
+            <b>
               right-info-panel.filter.period
-            </ForwardRef(Grid)>
-            <ForwardRef(Grid)
-              container={true}
-              item={true}
-              spacing="2"
-              xs={12}
-            >
-              <DatePickerInput
-                dateRangeValue={
-                  Array [
-                    null,
-                    null,
-                  ]
-                }
-                error={false}
-                id="cust-filter-date-range"
-                name="date"
-                onDateRangeChange={[Function]}
-                placeholder={
-                  Object {
-                    "end": "right-info-panel.filter.to date",
-                    "start": "right-info-panel.filter.from date",
-                  }
-                }
-                required={true}
-                type="date-range"
-              />
-            </ForwardRef(Grid)>
-          </ForwardRef(Grid)>
-          <ForwardRef(Grid)
-            item={true}
-            key="state"
-            xs={12}
-          >
-            <SelectInput
-              field={
-                Object {
-                  "fieldType": "select",
-                  "initialValue": Array [],
-                  "label": "customer-filter-panel.state",
-                  "name": "state",
-                  "optionAPIResponseKey": "states",
-                  "optionUrlKey": "customerFilter",
-                }
-              }
-              formik={
-                Object {
-                  "dirty": false,
-                  "errors": Object {},
-                  "getFieldHelpers": [Function],
-                  "getFieldMeta": [Function],
-                  "getFieldProps": [Function],
-                  "handleBlur": [Function],
-                  "handleChange": [Function],
-                  "handleReset": [Function],
-                  "handleSubmit": [Function],
-                  "initialErrors": Object {},
-                  "initialStatus": undefined,
-                  "initialTouched": Object {},
-                  "initialValues": Object {
-                    "city": Array [],
-                    "date": Array [
-                      null,
-                      null,
-                    ],
-                    "multiselect": Array [],
-                    "paymentType": Array [],
-                    "radiotest": null,
-                    "state": Array [],
-                  },
-                  "isSubmitting": false,
-                  "isValid": true,
-                  "isValidating": false,
-                  "registerField": [Function],
-                  "resetForm": [Function],
-                  "setErrors": [Function],
-                  "setFieldError": [Function],
-                  "setFieldTouched": [Function],
-                  "setFieldValue": [Function],
-                  "setFormikState": [Function],
-                  "setStatus": [Function],
-                  "setSubmitting": [Function],
-                  "setTouched": [Function],
-                  "setValues": [Function],
-                  "status": undefined,
-                  "submitCount": 0,
-                  "submitForm": [Function],
-                  "touched": Object {},
-                  "unregisterField": [Function],
-                  "validateField": [Function],
-                  "validateForm": [Function],
-                  "validateOnBlur": true,
-                  "validateOnChange": true,
-                  "validateOnMount": false,
-                  "values": Object {
-                    "city": Array [],
-                    "date": Array [
-                      null,
-                      null,
-                    ],
-                    "multiselect": Array [],
-                    "paymentType": Array [],
-                    "radiotest": null,
-                    "state": Array [],
-                  },
-                }
-              }
-              handleSelect={[Function]}
-            />
-          </ForwardRef(Grid)>
-          <ForwardRef(Grid)
-            item={true}
-            key="city"
-            xs={12}
-          >
-            <SelectInput
-              field={
-                Object {
-                  "fieldType": "select",
-                  "initialValue": Array [],
-                  "label": "customer-filter-panel.city",
-                  "name": "city",
-                  "optionAPIResponseKey": "cities",
-                  "optionUrlKey": "customerFilter",
-                }
-              }
-              formik={
-                Object {
-                  "dirty": false,
-                  "errors": Object {},
-                  "getFieldHelpers": [Function],
-                  "getFieldMeta": [Function],
-                  "getFieldProps": [Function],
-                  "handleBlur": [Function],
-                  "handleChange": [Function],
-                  "handleReset": [Function],
-                  "handleSubmit": [Function],
-                  "initialErrors": Object {},
-                  "initialStatus": undefined,
-                  "initialTouched": Object {},
-                  "initialValues": Object {
-                    "city": Array [],
-                    "date": Array [
-                      null,
-                      null,
-                    ],
-                    "multiselect": Array [],
-                    "paymentType": Array [],
-                    "radiotest": null,
-                    "state": Array [],
-                  },
-                  "isSubmitting": false,
-                  "isValid": true,
-                  "isValidating": false,
-                  "registerField": [Function],
-                  "resetForm": [Function],
-                  "setErrors": [Function],
-                  "setFieldError": [Function],
-                  "setFieldTouched": [Function],
-                  "setFieldValue": [Function],
-                  "setFormikState": [Function],
-                  "setStatus": [Function],
-                  "setSubmitting": [Function],
-                  "setTouched": [Function],
-                  "setValues": [Function],
-                  "status": undefined,
-                  "submitCount": 0,
-                  "submitForm": [Function],
-                  "touched": Object {},
-                  "unregisterField": [Function],
-                  "validateField": [Function],
-                  "validateForm": [Function],
-                  "validateOnBlur": true,
-                  "validateOnChange": true,
-                  "validateOnMount": false,
-                  "values": Object {
-                    "city": Array [],
-                    "date": Array [
-                      null,
-                      null,
-                    ],
-                    "multiselect": Array [],
-                    "paymentType": Array [],
-                    "radiotest": null,
-                    "state": Array [],
-                  },
-                }
-              }
-              handleSelect={[Function]}
-            />
-          </ForwardRef(Grid)>
-          <ForwardRef(Grid)
-            item={true}
-            key="paymentType"
-            xs={12}
-          >
-            <SelectInput
-              field={
-                Object {
-                  "fieldType": "select",
-                  "initialValue": Array [],
-                  "label": "customer-filter-panel.settlement type",
-                  "name": "paymentType",
-                  "optionAPIResponseKey": "settlementType",
-                  "optionUrlKey": "customerFilter",
-                }
-              }
-              formik={
-                Object {
-                  "dirty": false,
-                  "errors": Object {},
-                  "getFieldHelpers": [Function],
-                  "getFieldMeta": [Function],
-                  "getFieldProps": [Function],
-                  "handleBlur": [Function],
-                  "handleChange": [Function],
-                  "handleReset": [Function],
-                  "handleSubmit": [Function],
-                  "initialErrors": Object {},
-                  "initialStatus": undefined,
-                  "initialTouched": Object {},
-                  "initialValues": Object {
-                    "city": Array [],
-                    "date": Array [
-                      null,
-                      null,
-                    ],
-                    "multiselect": Array [],
-                    "paymentType": Array [],
-                    "radiotest": null,
-                    "state": Array [],
-                  },
-                  "isSubmitting": false,
-                  "isValid": true,
-                  "isValidating": false,
-                  "registerField": [Function],
-                  "resetForm": [Function],
-                  "setErrors": [Function],
-                  "setFieldError": [Function],
-                  "setFieldTouched": [Function],
-                  "setFieldValue": [Function],
-                  "setFormikState": [Function],
-                  "setStatus": [Function],
-                  "setSubmitting": [Function],
-                  "setTouched": [Function],
-                  "setValues": [Function],
-                  "status": undefined,
-                  "submitCount": 0,
-                  "submitForm": [Function],
-                  "touched": Object {},
-                  "unregisterField": [Function],
-                  "validateField": [Function],
-                  "validateForm": [Function],
-                  "validateOnBlur": true,
-                  "validateOnChange": true,
-                  "validateOnMount": false,
-                  "values": Object {
-                    "city": Array [],
-                    "date": Array [
-                      null,
-                      null,
-                    ],
-                    "multiselect": Array [],
-                    "paymentType": Array [],
-                    "radiotest": null,
-                    "state": Array [],
-                  },
-                }
-              }
-              handleSelect={[Function]}
-            />
-          </ForwardRef(Grid)>
-          <ForwardRef(Grid)
-            item={true}
-            key="multiselect"
-            xs={12}
-          >
-            <ForwardRef(FormControl)
-              className="formInput"
-            >
-              <ForwardRef(Typography)
-                className="fw-bold"
-                color="var(--Darkgray)"
-                variant="h4"
-              >
-                multi checkbox
-              </ForwardRef(Typography)>
-              <ForwardRef(FormControlLabel)
-                className="checkbox-field"
-                control={
-                  <Checkboxes
-                    checked={false}
-                    name="multiselect"
-                    onChange={[Function]}
-                  />
-                }
-                key="multiselect-checkbox1"
-                label={
-                  <ForwardRef(Typography)
-                    className="fw-bold"
-                    color="var(--Darkgray)"
-                    variant="h4"
-                  >
-                    checkbox1
-                  </ForwardRef(Typography)>
-                }
-                sx={
-                  Object {
-                    "fontWeight": "bold",
-                    "margin": "0px",
-                    "marginBottom": "1rem",
-                  }
-                }
-              />
-              <ForwardRef(FormControlLabel)
-                className="checkbox-field"
-                control={
-                  <Checkboxes
-                    checked={false}
-                    name="multiselect"
-                    onChange={[Function]}
-                  />
-                }
-                key="multiselect-cbbbb2"
-                label={
-                  <ForwardRef(Typography)
-                    className="fw-bold"
-                    color="var(--Darkgray)"
-                    variant="h4"
-                  >
-                    cbbbb2
-                  </ForwardRef(Typography)>
-                }
-                sx={
-                  Object {
-                    "fontWeight": "bold",
-                    "margin": "0px",
-                    "marginBottom": "1rem",
-                  }
-                }
-              />
-              <ForwardRef(FormControlLabel)
-                className="checkbox-field"
-                control={
-                  <Checkboxes
-                    checked={false}
-                    name="multiselect"
-                    onChange={[Function]}
-                  />
-                }
-                key="multiselect-cb3"
-                label={
-                  <ForwardRef(Typography)
-                    className="fw-bold"
-                    color="var(--Darkgray)"
-                    variant="h4"
-                  >
-                    cb3
-                  </ForwardRef(Typography)>
-                }
-                sx={
-                  Object {
-                    "fontWeight": "bold",
-                    "margin": "0px",
-                    "marginBottom": "1rem",
-                  }
-                }
-              />
-            </ForwardRef(FormControl)>
-          </ForwardRef(Grid)>
-          <ForwardRef(Grid)
-            item={true}
-            key="radiotest"
-            xs={12}
-          >
-            <ForwardRef(FormControl)
-              className="formInput"
-            >
-              <ForwardRef(Typography)
-                className="fw-bold"
-                color="var(--Darkgray)"
-                variant="h4"
-              >
-                radio test
-              </ForwardRef(Typography)>
-              <ForwardRef(FormControlLabel)
-                className="checkbox-field"
-                control={
-                  <Radio
-                    checked={false}
-                    name="radiotest"
-                    onClick={[Function]}
-                  />
-                }
-                key="radiotest-radio1"
-                label={
-                  <ForwardRef(Typography)
-                    className="fw-bold"
-                    color="var(--Darkgray)"
-                    variant="h4"
-                  >
-                    radio1
-                  </ForwardRef(Typography)>
-                }
-                sx={
-                  Object {
-                    "fontWeight": "bold",
-                    "margin": "0px",
-                    "marginBottom": "1rem",
-                  }
-                }
-              />
-              <ForwardRef(FormControlLabel)
-                className="checkbox-field"
-                control={
-                  <Radio
-                    checked={false}
-                    name="radiotest"
-                    onClick={[Function]}
-                  />
-                }
-                key="radiotest-radio2"
-                label={
-                  <ForwardRef(Typography)
-                    className="fw-bold"
-                    color="var(--Darkgray)"
-                    variant="h4"
-                  >
-                    radio2
-                  </ForwardRef(Typography)>
-                }
-                sx={
-                  Object {
-                    "fontWeight": "bold",
-                    "margin": "0px",
-                    "marginBottom": "1rem",
-                  }
-                }
-              />
-            </ForwardRef(FormControl)>
-          </ForwardRef(Grid)>
+            </b>
+          </ForwardRef(InputLabel)>
         </ForwardRef(Grid)>
         <ForwardRef(Grid)
-          className="row2"
           container={true}
+          item={true}
+          xs={12}
         >
-          <div
-            className="cust_filter_buttons_container"
-          >
-            <Styled(Button)
-              aria-label="right-info-panel.filter.buttons.clear all"
-              type="reset"
-              types="cancel"
-            >
-              right-info-panel.filter.buttons.clear all
-            </Styled(Button)>
-            <Styled(Button)
-              aria-label="right-info-panel.filter.buttons.apply"
-              disabled={true}
-              type="submit"
-              types="save"
-            >
-              right-info-panel.filter.buttons.apply
-            </Styled(Button)>
-          </div>
+          <DatePickerInput
+            dateRangeValue={
+              Array [
+                null,
+                null,
+              ]
+            }
+            error={false}
+            id="cust-filter-date-range"
+            name="date"
+            onDateRangeChange={[Function]}
+            placeholder={
+              Object {
+                "end": "right-info-panel.filter.to date",
+                "start": "right-info-panel.filter.from date",
+              }
+            }
+            required={true}
+            type="date-range"
+          />
         </ForwardRef(Grid)>
       </ForwardRef(Grid)>
-    </div>
+      <ForwardRef(Grid)
+        item={true}
+        key="state"
+        m={2}
+      >
+        <SelectInput
+          field={
+            Object {
+              "fieldType": "select",
+              "initialValue": Array [],
+              "label": "customer-filter-panel.state",
+              "name": "state",
+              "optionAPIResponseKey": "states",
+              "optionUrlKey": "customerFilter",
+            }
+          }
+          formik={
+            Object {
+              "dirty": false,
+              "errors": Object {},
+              "getFieldHelpers": [Function],
+              "getFieldMeta": [Function],
+              "getFieldProps": [Function],
+              "handleBlur": [Function],
+              "handleChange": [Function],
+              "handleReset": [Function],
+              "handleSubmit": [Function],
+              "initialErrors": Object {},
+              "initialStatus": undefined,
+              "initialTouched": Object {},
+              "initialValues": Object {
+                "city": Array [],
+                "date": Array [
+                  null,
+                  null,
+                ],
+                "multiselect": Array [],
+                "paymentType": Array [],
+                "radiotest": null,
+                "state": Array [],
+              },
+              "isSubmitting": false,
+              "isValid": true,
+              "isValidating": false,
+              "registerField": [Function],
+              "resetForm": [Function],
+              "setErrors": [Function],
+              "setFieldError": [Function],
+              "setFieldTouched": [Function],
+              "setFieldValue": [Function],
+              "setFormikState": [Function],
+              "setStatus": [Function],
+              "setSubmitting": [Function],
+              "setTouched": [Function],
+              "setValues": [Function],
+              "status": undefined,
+              "submitCount": 0,
+              "submitForm": [Function],
+              "touched": Object {},
+              "unregisterField": [Function],
+              "validateField": [Function],
+              "validateForm": [Function],
+              "validateOnBlur": true,
+              "validateOnChange": true,
+              "validateOnMount": false,
+              "values": Object {
+                "city": Array [],
+                "date": Array [
+                  null,
+                  null,
+                ],
+                "multiselect": Array [],
+                "paymentType": Array [],
+                "radiotest": null,
+                "state": Array [],
+              },
+            }
+          }
+          handleSelect={[Function]}
+        />
+      </ForwardRef(Grid)>
+      <ForwardRef(Grid)
+        item={true}
+        key="city"
+        m={2}
+      >
+        <SelectInput
+          field={
+            Object {
+              "fieldType": "select",
+              "initialValue": Array [],
+              "label": "customer-filter-panel.city",
+              "name": "city",
+              "optionAPIResponseKey": "cities",
+              "optionUrlKey": "customerFilter",
+            }
+          }
+          formik={
+            Object {
+              "dirty": false,
+              "errors": Object {},
+              "getFieldHelpers": [Function],
+              "getFieldMeta": [Function],
+              "getFieldProps": [Function],
+              "handleBlur": [Function],
+              "handleChange": [Function],
+              "handleReset": [Function],
+              "handleSubmit": [Function],
+              "initialErrors": Object {},
+              "initialStatus": undefined,
+              "initialTouched": Object {},
+              "initialValues": Object {
+                "city": Array [],
+                "date": Array [
+                  null,
+                  null,
+                ],
+                "multiselect": Array [],
+                "paymentType": Array [],
+                "radiotest": null,
+                "state": Array [],
+              },
+              "isSubmitting": false,
+              "isValid": true,
+              "isValidating": false,
+              "registerField": [Function],
+              "resetForm": [Function],
+              "setErrors": [Function],
+              "setFieldError": [Function],
+              "setFieldTouched": [Function],
+              "setFieldValue": [Function],
+              "setFormikState": [Function],
+              "setStatus": [Function],
+              "setSubmitting": [Function],
+              "setTouched": [Function],
+              "setValues": [Function],
+              "status": undefined,
+              "submitCount": 0,
+              "submitForm": [Function],
+              "touched": Object {},
+              "unregisterField": [Function],
+              "validateField": [Function],
+              "validateForm": [Function],
+              "validateOnBlur": true,
+              "validateOnChange": true,
+              "validateOnMount": false,
+              "values": Object {
+                "city": Array [],
+                "date": Array [
+                  null,
+                  null,
+                ],
+                "multiselect": Array [],
+                "paymentType": Array [],
+                "radiotest": null,
+                "state": Array [],
+              },
+            }
+          }
+          handleSelect={[Function]}
+        />
+      </ForwardRef(Grid)>
+      <ForwardRef(Grid)
+        item={true}
+        key="paymentType"
+        m={2}
+      >
+        <SelectInput
+          field={
+            Object {
+              "fieldType": "select",
+              "initialValue": Array [],
+              "label": "customer-filter-panel.settlement type",
+              "name": "paymentType",
+              "optionAPIResponseKey": "settlementType",
+              "optionUrlKey": "customerFilter",
+            }
+          }
+          formik={
+            Object {
+              "dirty": false,
+              "errors": Object {},
+              "getFieldHelpers": [Function],
+              "getFieldMeta": [Function],
+              "getFieldProps": [Function],
+              "handleBlur": [Function],
+              "handleChange": [Function],
+              "handleReset": [Function],
+              "handleSubmit": [Function],
+              "initialErrors": Object {},
+              "initialStatus": undefined,
+              "initialTouched": Object {},
+              "initialValues": Object {
+                "city": Array [],
+                "date": Array [
+                  null,
+                  null,
+                ],
+                "multiselect": Array [],
+                "paymentType": Array [],
+                "radiotest": null,
+                "state": Array [],
+              },
+              "isSubmitting": false,
+              "isValid": true,
+              "isValidating": false,
+              "registerField": [Function],
+              "resetForm": [Function],
+              "setErrors": [Function],
+              "setFieldError": [Function],
+              "setFieldTouched": [Function],
+              "setFieldValue": [Function],
+              "setFormikState": [Function],
+              "setStatus": [Function],
+              "setSubmitting": [Function],
+              "setTouched": [Function],
+              "setValues": [Function],
+              "status": undefined,
+              "submitCount": 0,
+              "submitForm": [Function],
+              "touched": Object {},
+              "unregisterField": [Function],
+              "validateField": [Function],
+              "validateForm": [Function],
+              "validateOnBlur": true,
+              "validateOnChange": true,
+              "validateOnMount": false,
+              "values": Object {
+                "city": Array [],
+                "date": Array [
+                  null,
+                  null,
+                ],
+                "multiselect": Array [],
+                "paymentType": Array [],
+                "radiotest": null,
+                "state": Array [],
+              },
+            }
+          }
+          handleSelect={[Function]}
+        />
+      </ForwardRef(Grid)>
+      <ForwardRef(Grid)
+        item={true}
+        key="multiselect"
+        m={2}
+      >
+        <ForwardRef(FormControl)
+          className="formInput"
+        >
+          <ForwardRef(InputLabel)
+            aria-labelledby="multi checkbox"
+            htmlFor="multiselect"
+            shrink={true}
+          >
+            <b>
+              multi checkbox
+            </b>
+          </ForwardRef(InputLabel)>
+          <ForwardRef(FormControlLabel)
+            className="checkbox-field"
+            control={
+              <Checkboxes
+                checked={false}
+                name="multiselect"
+                onChange={[Function]}
+              />
+            }
+            key="multiselect-checkbox1"
+            label={
+              <ForwardRef(Typography)
+                className="fw-bold"
+                color="var(--Darkgray)"
+                variant="h4"
+              >
+                checkbox1
+              </ForwardRef(Typography)>
+            }
+          />
+          <ForwardRef(FormControlLabel)
+            className="checkbox-field"
+            control={
+              <Checkboxes
+                checked={false}
+                name="multiselect"
+                onChange={[Function]}
+              />
+            }
+            key="multiselect-cbbbb2"
+            label={
+              <ForwardRef(Typography)
+                className="fw-bold"
+                color="var(--Darkgray)"
+                variant="h4"
+              >
+                cbbbb2
+              </ForwardRef(Typography)>
+            }
+          />
+          <ForwardRef(FormControlLabel)
+            className="checkbox-field"
+            control={
+              <Checkboxes
+                checked={false}
+                name="multiselect"
+                onChange={[Function]}
+              />
+            }
+            key="multiselect-cb3"
+            label={
+              <ForwardRef(Typography)
+                className="fw-bold"
+                color="var(--Darkgray)"
+                variant="h4"
+              >
+                cb3
+              </ForwardRef(Typography)>
+            }
+          />
+        </ForwardRef(FormControl)>
+      </ForwardRef(Grid)>
+      <ForwardRef(Grid)
+        item={true}
+        key="radiotest"
+        m={2}
+      >
+        <ForwardRef(FormControl)
+          className="formInput"
+        >
+          <ForwardRef(InputLabel)
+            aria-labelledby="radio test"
+            htmlFor="radiotest"
+            shrink={true}
+          >
+            <b>
+              radio test
+            </b>
+          </ForwardRef(InputLabel)>
+          <ForwardRef(FormControlLabel)
+            className="checkbox-field"
+            control={
+              <Radio
+                checked={false}
+                name="radiotest"
+                onClick={[Function]}
+              />
+            }
+            key="radiotest-radio1"
+            label={
+              <ForwardRef(Typography)
+                className="fw-bold"
+                color="var(--Darkgray)"
+                variant="h4"
+              >
+                radio1
+              </ForwardRef(Typography)>
+            }
+          />
+          <ForwardRef(FormControlLabel)
+            className="checkbox-field"
+            control={
+              <Radio
+                checked={false}
+                name="radiotest"
+                onClick={[Function]}
+              />
+            }
+            key="radiotest-radio2"
+            label={
+              <ForwardRef(Typography)
+                className="fw-bold"
+                color="var(--Darkgray)"
+                variant="h4"
+              >
+                radio2
+              </ForwardRef(Typography)>
+            }
+          />
+        </ForwardRef(FormControl)>
+      </ForwardRef(Grid)>
+      <ForwardRef(Grid)
+        className="lastItem"
+        container={true}
+        direction="row"
+        item={true}
+        justifyContent="flex-end"
+      >
+        <ForwardRef(Grid)
+          item={true}
+          m={2}
+        >
+          <Styled(Button)
+            aria-label="right-info-panel.filter.buttons.clear all"
+            type="reset"
+            types="cancel"
+          >
+            right-info-panel.filter.buttons.clear all
+          </Styled(Button)>
+        </ForwardRef(Grid)>
+        <ForwardRef(Grid)
+          item={true}
+          m={2}
+        >
+          <Styled(Button)
+            aria-label="right-info-panel.filter.buttons.apply"
+            disabled={true}
+            type="submit"
+            types="save"
+          >
+            right-info-panel.filter.buttons.apply
+          </Styled(Button)>
+        </ForwardRef(Grid)>
+      </ForwardRef(Grid)>
+    </ForwardRef(Grid)>
   </form>
 </ContextProvider>
 `;
@@ -810,80 +766,85 @@ exports[`Rendering of Dynamic filter component Dynamic filter component snapshot
   }
 >
   <form
+    className="dynamicForm"
     onReset={[Function]}
     onSubmit={[Function]}
   >
-    <div
-      className="cust_filter_panel_content"
+    <ForwardRef(Grid)
+      className="sContainer"
+      container={true}
+      direction="column"
     >
       <ForwardRef(Grid)
-        className="dynamicFilterGrid"
-        container={true}
+        item={true}
+        key="date"
+        m={2}
       >
         <ForwardRef(Grid)
-          className="cust_filter_parent_grid row1"
-          container={true}
-          spacing={2}
+          item={true}
+          xs={12}
         >
-          <ForwardRef(Grid)
-            columnSpacing={2}
-            container={true}
-            item={true}
-            key="date"
-            xs={12}
+          <ForwardRef(InputLabel)
+            aria-labelledby="Date"
+            htmlFor="date"
+            shrink={true}
           >
-            <ForwardRef(Grid)
-              className="cust_filter_date_label_grid"
-              item={true}
-              xs={12}
-            >
+            <b>
               Date
-            </ForwardRef(Grid)>
-            <ForwardRef(Grid)
-              container={true}
-              item={true}
-              spacing="2"
-              xs={12}
-            >
-              <DatePickerInput
-                dateRangeValue={null}
-                error={false}
-                id="cust-filter-date"
-                name="date"
-                onChange={[Function]}
-                placeholder="Date"
-                type="single-date"
-                value={null}
-              />
-            </ForwardRef(Grid)>
-          </ForwardRef(Grid)>
+            </b>
+          </ForwardRef(InputLabel)>
         </ForwardRef(Grid)>
         <ForwardRef(Grid)
-          className="row2"
           container={true}
+          item={true}
+          xs={12}
         >
-          <div
-            className="cust_filter_buttons_container"
-          >
-            <Styled(Button)
-              aria-label="right-info-panel.filter.buttons.clear all"
-              type="reset"
-              types="cancel"
-            >
-              right-info-panel.filter.buttons.clear all
-            </Styled(Button)>
-            <Styled(Button)
-              aria-label="right-info-panel.filter.buttons.apply"
-              disabled={true}
-              type="submit"
-              types="save"
-            >
-              right-info-panel.filter.buttons.apply
-            </Styled(Button)>
-          </div>
+          <DatePickerInput
+            dateRangeValue={null}
+            error={false}
+            id="cust-filter-date"
+            name="date"
+            onChange={[Function]}
+            placeholder="Date"
+            type="single-date"
+            value={null}
+          />
         </ForwardRef(Grid)>
       </ForwardRef(Grid)>
-    </div>
+      <ForwardRef(Grid)
+        className="lastItem"
+        container={true}
+        direction="row"
+        item={true}
+        justifyContent="flex-end"
+      >
+        <ForwardRef(Grid)
+          item={true}
+          m={2}
+        >
+          <Styled(Button)
+            aria-label="right-info-panel.filter.buttons.clear all"
+            type="reset"
+            types="cancel"
+          >
+            right-info-panel.filter.buttons.clear all
+          </Styled(Button)>
+        </ForwardRef(Grid)>
+        <ForwardRef(Grid)
+          item={true}
+          m={2}
+        >
+          <Styled(Button)
+            aria-label="right-info-panel.filter.buttons.apply"
+            disabled={true}
+            type="submit"
+            types="save"
+          >
+            right-info-panel.filter.buttons.apply
+          </Styled(Button)>
+        </ForwardRef(Grid)>
+      </ForwardRef(Grid)>
+    </ForwardRef(Grid)>
   </form>
 </ContextProvider>
 `;
@@ -944,90 +905,95 @@ exports[`Rendering of Dynamic filter component Dynamic filter component snapshot
   }
 >
   <form
+    className="dynamicForm"
     onReset={[Function]}
     onSubmit={[Function]}
   >
-    <div
-      className="cust_filter_panel_content"
+    <ForwardRef(Grid)
+      className="sContainer"
+      container={true}
+      direction="column"
     >
       <ForwardRef(Grid)
-        className="dynamicFilterGrid"
-        container={true}
+        item={true}
+        key="date"
+        m={2}
       >
         <ForwardRef(Grid)
-          className="cust_filter_parent_grid row1"
-          container={true}
-          spacing={2}
+          item={true}
+          xs={12}
         >
-          <ForwardRef(Grid)
-            columnSpacing={2}
-            container={true}
-            item={true}
-            key="date"
-            xs={12}
+          <ForwardRef(InputLabel)
+            aria-labelledby="Date"
+            htmlFor="date"
+            shrink={true}
           >
-            <ForwardRef(Grid)
-              className="cust_filter_date_label_grid"
-              item={true}
-              xs={12}
-            >
+            <b>
               right-info-panel.filter.period
-            </ForwardRef(Grid)>
-            <ForwardRef(Grid)
-              container={true}
-              item={true}
-              spacing="2"
-              xs={12}
-            >
-              <DatePickerInput
-                dateRangeValue={
-                  Array [
-                    null,
-                    null,
-                  ]
-                }
-                error={false}
-                id="cust-filter-date-range"
-                name="date"
-                onDateRangeChange={[Function]}
-                placeholder={
-                  Object {
-                    "end": "right-info-panel.filter.to date",
-                    "start": "right-info-panel.filter.from date",
-                  }
-                }
-                required={true}
-                type="date-range"
-              />
-            </ForwardRef(Grid)>
-          </ForwardRef(Grid)>
+            </b>
+          </ForwardRef(InputLabel)>
         </ForwardRef(Grid)>
         <ForwardRef(Grid)
-          className="row2"
           container={true}
+          item={true}
+          xs={12}
         >
-          <div
-            className="cust_filter_buttons_container"
-          >
-            <Styled(Button)
-              aria-label="right-info-panel.filter.buttons.clear all"
-              type="reset"
-              types="cancel"
-            >
-              right-info-panel.filter.buttons.clear all
-            </Styled(Button)>
-            <Styled(Button)
-              aria-label="right-info-panel.filter.buttons.apply"
-              disabled={true}
-              type="submit"
-              types="save"
-            >
-              right-info-panel.filter.buttons.apply
-            </Styled(Button)>
-          </div>
+          <DatePickerInput
+            dateRangeValue={
+              Array [
+                null,
+                null,
+              ]
+            }
+            error={false}
+            id="cust-filter-date-range"
+            name="date"
+            onDateRangeChange={[Function]}
+            placeholder={
+              Object {
+                "end": "right-info-panel.filter.to date",
+                "start": "right-info-panel.filter.from date",
+              }
+            }
+            required={true}
+            type="date-range"
+          />
         </ForwardRef(Grid)>
       </ForwardRef(Grid)>
-    </div>
+      <ForwardRef(Grid)
+        className="lastItem"
+        container={true}
+        direction="row"
+        item={true}
+        justifyContent="flex-end"
+      >
+        <ForwardRef(Grid)
+          item={true}
+          m={2}
+        >
+          <Styled(Button)
+            aria-label="right-info-panel.filter.buttons.clear all"
+            type="reset"
+            types="cancel"
+          >
+            right-info-panel.filter.buttons.clear all
+          </Styled(Button)>
+        </ForwardRef(Grid)>
+        <ForwardRef(Grid)
+          item={true}
+          m={2}
+        >
+          <Styled(Button)
+            aria-label="right-info-panel.filter.buttons.apply"
+            disabled={true}
+            type="submit"
+            types="save"
+          >
+            right-info-panel.filter.buttons.apply
+          </Styled(Button)>
+        </ForwardRef(Grid)>
+      </ForwardRef(Grid)>
+    </ForwardRef(Grid)>
   </form>
 </ContextProvider>
 `;
@@ -1082,78 +1048,79 @@ exports[`Rendering of Dynamic filter component Dynamic filter component snapshot
   }
 >
   <form
+    className="dynamicForm"
     onReset={[Function]}
     onSubmit={[Function]}
   >
-    <div
-      className="cust_filter_panel_content"
+    <ForwardRef(Grid)
+      className="sContainer"
+      container={true}
+      direction="column"
     >
       <ForwardRef(Grid)
-        className="dynamicFilterGrid"
+        item={true}
+        key="testText"
+        m={2}
+      >
+        <MultiSelect
+          error={false}
+          id="testText"
+          items={
+            Array [
+              Object {
+                "label": "option1",
+                "value": "option1",
+              },
+              Object {
+                "label": "option2",
+                "value": "option2",
+              },
+            ]
+          }
+          label="dummy text"
+          loadingMessage="Loading..."
+          name="testText"
+          noOptionsMessage="No Options found"
+          onChange={[Function]}
+          placeholder=""
+          required={false}
+          value={Array []}
+        />
+      </ForwardRef(Grid)>
+      <ForwardRef(Grid)
+        className="lastItem"
         container={true}
+        direction="row"
+        item={true}
+        justifyContent="flex-end"
       >
         <ForwardRef(Grid)
-          className="cust_filter_parent_grid row1"
-          container={true}
-          spacing={2}
+          item={true}
+          m={2}
         >
-          <ForwardRef(Grid)
-            item={true}
-            key="testText"
-            xs={12}
+          <Styled(Button)
+            aria-label="right-info-panel.filter.buttons.clear all"
+            type="reset"
+            types="cancel"
           >
-            <MultiSelect
-              error={false}
-              id="testText"
-              items={
-                Array [
-                  Object {
-                    "label": "option1",
-                    "value": "option1",
-                  },
-                  Object {
-                    "label": "option2",
-                    "value": "option2",
-                  },
-                ]
-              }
-              label="dummy text"
-              loadingMessage="Loading..."
-              name="testText"
-              noOptionsMessage="No Options found"
-              onChange={[Function]}
-              placeholder=""
-              required={false}
-              value={Array []}
-            />
-          </ForwardRef(Grid)>
+            right-info-panel.filter.buttons.clear all
+          </Styled(Button)>
         </ForwardRef(Grid)>
         <ForwardRef(Grid)
-          className="row2"
-          container={true}
+          item={true}
+          m={2}
         >
-          <div
-            className="cust_filter_buttons_container"
+          <Styled(Button)
+            aria-label="right-info-panel.filter.buttons.apply"
+            disabled={true}
+            type="submit"
+            types="save"
           >
-            <Styled(Button)
-              aria-label="right-info-panel.filter.buttons.clear all"
-              type="reset"
-              types="cancel"
-            >
-              right-info-panel.filter.buttons.clear all
-            </Styled(Button)>
-            <Styled(Button)
-              aria-label="right-info-panel.filter.buttons.apply"
-              disabled={true}
-              type="submit"
-              types="save"
-            >
-              right-info-panel.filter.buttons.apply
-            </Styled(Button)>
-          </div>
+            right-info-panel.filter.buttons.apply
+          </Styled(Button)>
         </ForwardRef(Grid)>
       </ForwardRef(Grid)>
-    </div>
+    </ForwardRef(Grid)>
   </form>
 </ContextProvider>
 `;
@@ -1208,119 +1175,108 @@ exports[`Rendering of Dynamic filter component Dynamic filter component snapshot
   }
 >
   <form
+    className="dynamicForm"
     onReset={[Function]}
     onSubmit={[Function]}
   >
-    <div
-      className="cust_filter_panel_content"
+    <ForwardRef(Grid)
+      className="sContainer"
+      container={true}
+      direction="column"
     >
       <ForwardRef(Grid)
-        className="dynamicFilterGrid"
-        container={true}
+        item={true}
+        key="radiotest"
+        m={2}
       >
-        <ForwardRef(Grid)
-          className="cust_filter_parent_grid row1"
-          container={true}
-          spacing={2}
+        <ForwardRef(FormControl)
+          className="formInput"
         >
-          <ForwardRef(Grid)
-            item={true}
-            key="radiotest"
-            xs={12}
+          <ForwardRef(InputLabel)
+            aria-labelledby="radio test"
+            htmlFor="radiotest"
+            shrink={true}
           >
-            <ForwardRef(FormControl)
-              className="formInput"
-            >
+            <b>
+              radio test
+            </b>
+          </ForwardRef(InputLabel)>
+          <ForwardRef(FormControlLabel)
+            className="checkbox-field"
+            control={
+              <Radio
+                checked={false}
+                name="radiotest"
+                onClick={[Function]}
+              />
+            }
+            key="radiotest-radio1"
+            label={
               <ForwardRef(Typography)
                 className="fw-bold"
                 color="var(--Darkgray)"
                 variant="h4"
               >
-                radio test
+                radio1
               </ForwardRef(Typography)>
-              <ForwardRef(FormControlLabel)
-                className="checkbox-field"
-                control={
-                  <Radio
-                    checked={false}
-                    name="radiotest"
-                    onClick={[Function]}
-                  />
-                }
-                key="radiotest-radio1"
-                label={
-                  <ForwardRef(Typography)
-                    className="fw-bold"
-                    color="var(--Darkgray)"
-                    variant="h4"
-                  >
-                    radio1
-                  </ForwardRef(Typography)>
-                }
-                sx={
-                  Object {
-                    "fontWeight": "bold",
-                    "margin": "0px",
-                    "marginBottom": "1rem",
-                  }
-                }
+            }
+          />
+          <ForwardRef(FormControlLabel)
+            className="checkbox-field"
+            control={
+              <Radio
+                checked={false}
+                name="radiotest"
+                onClick={[Function]}
               />
-              <ForwardRef(FormControlLabel)
-                className="checkbox-field"
-                control={
-                  <Radio
-                    checked={false}
-                    name="radiotest"
-                    onClick={[Function]}
-                  />
-                }
-                key="radiotest-radio2"
-                label={
-                  <ForwardRef(Typography)
-                    className="fw-bold"
-                    color="var(--Darkgray)"
-                    variant="h4"
-                  >
-                    radio2
-                  </ForwardRef(Typography)>
-                }
-                sx={
-                  Object {
-                    "fontWeight": "bold",
-                    "margin": "0px",
-                    "marginBottom": "1rem",
-                  }
-                }
-              />
-            </ForwardRef(FormControl)>
-          </ForwardRef(Grid)>
+            }
+            key="radiotest-radio2"
+            label={
+              <ForwardRef(Typography)
+                className="fw-bold"
+                color="var(--Darkgray)"
+                variant="h4"
+              >
+                radio2
+              </ForwardRef(Typography)>
+            }
+          />
+        </ForwardRef(FormControl)>
+      </ForwardRef(Grid)>
+      <ForwardRef(Grid)
+        className="lastItem"
+        container={true}
+        direction="row"
+        item={true}
+        justifyContent="flex-end"
+      >
+        <ForwardRef(Grid)
+          item={true}
+          m={2}
+        >
+          <Styled(Button)
+            aria-label="right-info-panel.filter.buttons.clear all"
+            type="reset"
+            types="cancel"
+          >
+            right-info-panel.filter.buttons.clear all
+          </Styled(Button)>
         </ForwardRef(Grid)>
         <ForwardRef(Grid)
-          className="row2"
-          container={true}
+          item={true}
+          m={2}
         >
-          <div
-            className="cust_filter_buttons_container"
+          <Styled(Button)
+            aria-label="right-info-panel.filter.buttons.apply"
+            disabled={true}
+            type="submit"
+            types="save"
           >
-            <Styled(Button)
-              aria-label="right-info-panel.filter.buttons.clear all"
-              type="reset"
-              types="cancel"
-            >
-              right-info-panel.filter.buttons.clear all
-            </Styled(Button)>
-            <Styled(Button)
-              aria-label="right-info-panel.filter.buttons.apply"
-              disabled={true}
-              type="submit"
-              types="save"
-            >
-              right-info-panel.filter.buttons.apply
-            </Styled(Button)>
-          </div>
+            right-info-panel.filter.buttons.apply
+          </Styled(Button)>
         </ForwardRef(Grid)>
       </ForwardRef(Grid)>
-    </div>
+    </ForwardRef(Grid)>
   </form>
 </ContextProvider>
 `;
@@ -1375,80 +1331,81 @@ exports[`Rendering of Dynamic filter component Dynamic filter component snapshot
   }
 >
   <form
+    className="dynamicForm"
     onReset={[Function]}
     onSubmit={[Function]}
   >
-    <div
-      className="cust_filter_panel_content"
+    <ForwardRef(Grid)
+      className="sContainer"
+      container={true}
+      direction="column"
     >
       <ForwardRef(Grid)
-        className="dynamicFilterGrid"
+        item={true}
+        key="SingleSelect1"
+        m={2}
+      >
+        <SingleSelect
+          error={false}
+          id="SingleSelect1"
+          items={
+            Array [
+              Object {
+                "label": "Regular",
+                "value": "Regular",
+              },
+              Object {
+                "label": "Premium",
+                "value": "Premium",
+              },
+              Object {
+                "label": "Diesel",
+                "value": "Diesel",
+              },
+            ]
+          }
+          label="Single Select"
+          name="SingleSelect1"
+          onChange={[Function]}
+          placeholder=""
+          required={false}
+          value={null}
+        />
+      </ForwardRef(Grid)>
+      <ForwardRef(Grid)
+        className="lastItem"
         container={true}
+        direction="row"
+        item={true}
+        justifyContent="flex-end"
       >
         <ForwardRef(Grid)
-          className="cust_filter_parent_grid row1"
-          container={true}
-          spacing={2}
+          item={true}
+          m={2}
         >
-          <ForwardRef(Grid)
-            item={true}
-            key="SingleSelect1"
-            xs={12}
+          <Styled(Button)
+            aria-label="right-info-panel.filter.buttons.clear all"
+            type="reset"
+            types="cancel"
           >
-            <SingleSelect
-              error={false}
-              id="SingleSelect1"
-              items={
-                Array [
-                  Object {
-                    "label": "Regular",
-                    "value": "Regular",
-                  },
-                  Object {
-                    "label": "Premium",
-                    "value": "Premium",
-                  },
-                  Object {
-                    "label": "Diesel",
-                    "value": "Diesel",
-                  },
-                ]
-              }
-              label="Single Select"
-              name="SingleSelect1"
-              onChange={[Function]}
-              placeholder=""
-              required={false}
-              value={null}
-            />
-          </ForwardRef(Grid)>
+            right-info-panel.filter.buttons.clear all
+          </Styled(Button)>
         </ForwardRef(Grid)>
         <ForwardRef(Grid)
-          className="row2"
-          container={true}
+          item={true}
+          m={2}
         >
-          <div
-            className="cust_filter_buttons_container"
+          <Styled(Button)
+            aria-label="right-info-panel.filter.buttons.apply"
+            disabled={true}
+            type="submit"
+            types="save"
           >
-            <Styled(Button)
-              aria-label="right-info-panel.filter.buttons.clear all"
-              type="reset"
-              types="cancel"
-            >
-              right-info-panel.filter.buttons.clear all
-            </Styled(Button)>
-            <Styled(Button)
-              aria-label="right-info-panel.filter.buttons.apply"
-              disabled={true}
-              type="submit"
-              types="save"
-            >
-              right-info-panel.filter.buttons.apply
-            </Styled(Button)>
-          </div>
+            right-info-panel.filter.buttons.apply
+          </Styled(Button)>
         </ForwardRef(Grid)>
       </ForwardRef(Grid)>
-    </div>
+    </ForwardRef(Grid)>
   </form>
 </ContextProvider>
 `;
@@ -1503,74 +1460,78 @@ exports[`Rendering of Dynamic filter component Dynamic filter component snapshot
   }
 >
   <form
+    className="dynamicForm"
     onReset={[Function]}
     onSubmit={[Function]}
   >
-    <div
-      className="cust_filter_panel_content"
+    <ForwardRef(Grid)
+      className="sContainer"
+      container={true}
+      direction="column"
     >
       <ForwardRef(Grid)
-        className="dynamicFilterGrid"
+        item={true}
+        key="testText"
+        m={2}
+      >
+        <Input
+          autoComplete="new-password"
+          description=""
+          disabled={false}
+          error={false}
+          id="testText"
+          label={
+            <ForwardRef(InputLabel)
+              aria-labelledby="dummy text"
+              htmlFor="testText"
+              shrink={true}
+            >
+              <b>
+                dummy text
+              </b>
+            </ForwardRef(InputLabel)>
+          }
+          onChange={[Function]}
+          required={false}
+          type="text"
+          value=""
+          width="100%"
+        />
+      </ForwardRef(Grid)>
+      <ForwardRef(Grid)
+        className="lastItem"
         container={true}
+        direction="row"
+        item={true}
+        justifyContent="flex-end"
       >
         <ForwardRef(Grid)
-          className="cust_filter_parent_grid row1"
-          container={true}
-          spacing={2}
+          item={true}
+          m={2}
         >
-          <ForwardRef(Grid)
-            item={true}
-            key="testText"
-            xs={12}
+          <Styled(Button)
+            aria-label="right-info-panel.filter.buttons.clear all"
+            type="reset"
+            types="cancel"
           >
-            <Input
-              autoComplete="new-password"
-              description=""
-              disabled={false}
-              error={false}
-              id="testText"
-              label={
-                <ForwardRef(Typography)
-                  className="fw-bold"
-                  color="var(--Darkgray)"
-                >
-                  dummy text
-                </ForwardRef(Typography)>
-              }
-              onChange={[Function]}
-              required={false}
-              type="text"
-              value=""
-              width="100%"
-            />
-          </ForwardRef(Grid)>
+            right-info-panel.filter.buttons.clear all
+          </Styled(Button)>
         </ForwardRef(Grid)>
         <ForwardRef(Grid)
-          className="row2"
-          container={true}
+          item={true}
+          m={2}
         >
-          <div
-            className="cust_filter_buttons_container"
+          <Styled(Button)
+            aria-label="right-info-panel.filter.buttons.apply"
+            disabled={true}
+            type="submit"
+            types="save"
           >
-            <Styled(Button)
-              aria-label="right-info-panel.filter.buttons.clear all"
-              type="reset"
-              types="cancel"
-            >
-              right-info-panel.filter.buttons.clear all
-            </Styled(Button)>
-            <Styled(Button)
-              aria-label="right-info-panel.filter.buttons.apply"
-              disabled={true}
-              type="submit"
-              types="save"
-            >
-              right-info-panel.filter.buttons.apply
-            </Styled(Button)>
-          </div>
+            right-info-panel.filter.buttons.apply
+          </Styled(Button)>
         </ForwardRef(Grid)>
       </ForwardRef(Grid)>
-    </div>
+    </ForwardRef(Grid)>
   </form>
 </ContextProvider>
 `;
