@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import { FormControl, FormHelperText, InputLabel, TextField, Box, Icon } from '@mui/material';
 import DateAdapter from '@mui/lab/AdapterMoment';
 import InputAdornment from '@mui/material/InputAdornment';
@@ -51,7 +51,8 @@ const  inputEndornmentProps = {
 };
 
 export const DatePickerInput: React.FC<DatePickerProps> = ({label,type, placeholder, disabled, required, error, value, dateRangeValue, helperText, onChange, onDateRangeChange, disableBeforeDate, disableAfterDate, id, name, dateRangeMiddleText}) => {
-      const disableDates = (date: moment.Moment  | null) => {
+    const [open, setOpen] = useState(false);  
+    const disableDates = (date: moment.Moment  | null) => {
 
         if (disableBeforeDate && disableAfterDate) {
           return moment(date).isBefore(moment(disableBeforeDate)) && moment(date).isAfter(moment(disableAfterDate));
@@ -65,6 +66,11 @@ export const DatePickerInput: React.FC<DatePickerProps> = ({label,type, placehol
           }
         }
       };
+
+      const setPickerStatus = (status: boolean) => {
+        setOpen(status) ;
+      };
+    
     return (
         <Fragment>
             <FormControl className="date-picker-container" >
@@ -79,6 +85,8 @@ export const DatePickerInput: React.FC<DatePickerProps> = ({label,type, placehol
                                 className="custom-date-range-picker"
                                 startText={null}
                                 endText={null}
+                                onClose={() => setPickerStatus(false)}
+                                open={open}
                                 shouldDisableDate={(val)=>disableDates(moment(val))}
                                 value={dateRangeValue ? dateRangeValue : [null, null]}
                                 onChange={(newValue) => {
@@ -94,9 +102,9 @@ export const DatePickerInput: React.FC<DatePickerProps> = ({label,type, placehol
                                         endProps.inputProps.placeholder = (typeof placeholder === 'object' && placeholder !== null) ? placeholder.end : "to";
                                     }
                                     return <React.Fragment>
-                                        <TextField {...startProps} InputProps={inputEndornmentProps} InputLabelProps={{ shrink: false }} />
+                                        <TextField {...startProps} onClick={() => setPickerStatus(true)} InputProps={inputEndornmentProps} InputLabelProps={{ shrink: false }} />
                                         <Box sx={dateRangeMiddleTextSx}> {dateRangeMiddleText?dateRangeMiddleText:""} </Box>
-                                        <TextField {...endProps} InputProps={inputEndornmentProps} InputLabelProps={{ shrink: false }} />
+                                        <TextField {...endProps} onClick={() => setPickerStatus(true)} InputProps={inputEndornmentProps} InputLabelProps={{ shrink: false }} />
                                     </React.Fragment>;
                                 }}
                             />}
