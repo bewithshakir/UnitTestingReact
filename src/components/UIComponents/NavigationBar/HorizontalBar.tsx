@@ -1,4 +1,4 @@
-/* eslint-disable no-console */
+
 import { Breadcrumbs, Link, SvgIcon } from "@material-ui/core";
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import AppBar from '@mui/material/AppBar';
@@ -164,7 +164,7 @@ export default function HorizontalBar (props: HorizontalBarProps) {
     return (<>
       <Breadcrumbs separator={<NavigateNextIcon />} aria-label="breadcrumb">
         <Link className="breadcrubs-title" onClick={handleCustomerBack}>
-          Cutomer Name
+          Customer Name
         </Link>
         <Link className="breadcrubs-title" href="#" onClick={handleClick}>
           {"Add Lot & Details"}

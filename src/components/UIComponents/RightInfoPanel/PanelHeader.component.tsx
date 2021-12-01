@@ -1,7 +1,6 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { IconButton, AppBar, Toolbar, Box } from "@mui/material";
-import { useAddedCustomerNameStore } from '../../../store';
 import DataGridActionsMenu from "../Menu/DataGridActionsMenu.component";
 import { CloseIcon } from "../../../assets/icons";
 import "./RightInfoPanel.style.scss";
@@ -20,8 +19,6 @@ export const PanelHeader: React.FC<InfoPanelProps> = ({headingText, panelType, o
     const {theme} = useTheme();
     const { t } = useTranslation();
     const history = useHistory();
-    const setPageCustomerName = useAddedCustomerNameStore((state) => state.setCustomerName);
-    setPageCustomerName(nameStrForEdit?nameStrForEdit:'');
     const navigateToCustomerPage = () => {
         history.push({
             pathname: `/customer/viewCustomer/${idStrForEdit?idStrForEdit:''}`
