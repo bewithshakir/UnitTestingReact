@@ -226,7 +226,7 @@ console.log(history?.location?.state);
           <RightInfoPanel 
           panelType="customer-filter" 
           open={custFilterPanelVisible} 
-          headingText={"parkingLot.header.filters"} 
+          headingText={"parkingLot.header.filter"} 
           provideFilterParams={getFilterParams} 
           onClose={handleCustFilterPanelClose} 
           fields={filterByFields} 

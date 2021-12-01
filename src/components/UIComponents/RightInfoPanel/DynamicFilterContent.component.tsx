@@ -354,7 +354,7 @@ export const DynamicFilterContent: React.FC<IDynamicFilterProps> = ({ provideFil
                     );
                 }
                 )}
-                <Grid item className="lastItem" container direction="row" justifyContent="flex-end"  mr={2}>
+                <Grid item className="lastItem" container direction="row" justifyContent="flex-end" >
                     <Grid item m={2} >
                         <ClearBtn
                             type="reset"
@@ -364,7 +364,7 @@ export const DynamicFilterContent: React.FC<IDynamicFilterProps> = ({ provideFil
                             {t("right-info-panel.filter.buttons.clear all")}
                         </ClearBtn >
                     </Grid>
-                    <Grid item m={2} >
+                    <Grid item m={2} mr={6}>
                         <ApplyBtn
                             type="submit"
                             types="save"

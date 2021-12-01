@@ -38,7 +38,7 @@ export const PanelHeader: React.FC<InfoPanelProps> = ({headingText, panelType, o
                     >
                         <CloseIcon className="info_panel_close_icon" color="var(--White)" />
                     </IconButton>}
-                    <h2 style={{ flexGrow: 1 }}>
+                    <h2>
                         {t(headingText)}
                     </h2>
                     {panelType === "info-view" && <DataGridActionsMenu

@@ -51,6 +51,9 @@
   .MuiDrawer-paper {
     width: 566px;
     .right_info_panel_header {
+      h2{
+        flex-grow: 1;
+      }
       .MuiAppBar-root {
         .MuiToolbar-root {
           .MuiIconButton-root {
