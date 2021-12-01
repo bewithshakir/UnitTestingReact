@@ -518,7 +518,7 @@ const AddCustomer: React.FC = () => {
                 <Container maxWidth="lg" className="page-container">
                     <FormikProvider value={formik}>
                         <form onSubmit={formik.handleSubmit} onBlur={handleFormDataChange}>
-                            <Grid container xs={12}>
+                            <Grid container>
                                 <Grid item xs={10} md={10}>
                                     <Typography variant="h3" component="h3" gutterBottom className="fw-bold" mb={1} >
                                         Customer Profile
