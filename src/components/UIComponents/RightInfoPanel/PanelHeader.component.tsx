@@ -15,7 +15,7 @@ interface InfoPanelProps {
     nameStrForEdit?:string;
     onClose: (...args: any[]) => void;
 }
-export const PanelHeader: React.FC<InfoPanelProps> = ({headingText, panelType, onClose, idStrForEdit, nameStrForEdit}) => {
+export const PanelHeader: React.FC<InfoPanelProps> = ({headingText, panelType, onClose, idStrForEdit}) => {
     const {theme} = useTheme();
     const { t } = useTranslation();
     const history = useHistory();

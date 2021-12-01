@@ -34,7 +34,6 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
   const MASS_ACTION_TYPES = ParkingLotObj.MASS_ACTION_TYPES;
 
   const history = useHistory();
-console.log(history?.location?.state);
   const [info, setInfo] = React.useState({});
   const [searchTerm, setSearchTerm] = React.useState("");
   const [drawerOpen, setDrawerOpen] = React.useState(false);
@@ -59,7 +58,6 @@ console.log(history?.location?.state);
   useEffect(() => {
     const statePL = history.location.state as { customerName: string };
 
-    console.log(statePL.customerName);
     resetFormFieldValue(false);
     
     setPageCustomerName(statePL.customerName);
