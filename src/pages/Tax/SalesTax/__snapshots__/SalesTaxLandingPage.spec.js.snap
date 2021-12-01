@@ -41,12 +41,10 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
         "listeners": Array [],
         "queries": Array [
           Query {
-            "abortSignalConsumed": false,
             "cache": [Circular],
             "cacheTime": 300000,
             "defaultOptions": undefined,
             "gcTimeout": undefined,
-            "hadObservers": true,
             "initialState": Object {
               "data": undefined,
               "dataUpdateCount": 0,
@@ -61,7 +59,6 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
               "isPaused": false,
               "status": "idle",
             },
-            "meta": undefined,
             "observers": Array [
               InfiniteQueryObserver {
                 "client": [Circular],
@@ -80,7 +77,6 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                   "isPaused": false,
                   "status": "idle",
                 },
-                "currentRefetchInterval": false,
                 "currentResult": Object {
                   "data": undefined,
                   "dataUpdatedAt": 0,
@@ -103,7 +99,6 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -210,7 +205,6 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
               Object {},
             ],
             "retryer": Retryer {
-              "abort": [Function],
               "cancel": [Function],
               "cancelRetry": [Function],
               "continue": [Function],
@@ -252,12 +246,10 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
         ],
         "queriesMap": Object {
           "[\\"getSalesTaxList\\",\\"\\",{\\"order\\":\\"\\",\\"sortBy\\":\\"\\"},{}]": Query {
-            "abortSignalConsumed": false,
             "cache": [Circular],
             "cacheTime": 300000,
             "defaultOptions": undefined,
             "gcTimeout": undefined,
-            "hadObservers": true,
             "initialState": Object {
               "data": undefined,
               "dataUpdateCount": 0,
@@ -272,7 +264,6 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
               "isPaused": false,
               "status": "idle",
             },
-            "meta": undefined,
             "observers": Array [
               InfiniteQueryObserver {
                 "client": [Circular],
@@ -291,7 +282,6 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                   "isPaused": false,
                   "status": "idle",
                 },
-                "currentRefetchInterval": false,
                 "currentResult": Object {
                   "data": undefined,
                   "dataUpdatedAt": 0,
@@ -314,7 +304,6 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -421,7 +410,6 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
               Object {},
             ],
             "retryer": Retryer {
-              "abort": [Function],
               "cancel": [Function],
               "cancelRetry": [Function],
               "continue": [Function],
@@ -605,7 +593,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                 "contrastText": "#fff",
                 "dark": "#e65100",
                 "light": "#ff9800",
-                "main": "#ed6c02",
+                "main": "#ED6C02",
               },
             },
             "shadows": Array [
@@ -773,7 +761,6 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
           }
         }
       >
-        <Noop />
         <div
           className="MuiBox-root css-1nhxsau"
         >
@@ -1022,7 +1009,6 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                 }
               }
             >
-              <Noop />
               <div
                 className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-undefined main-area css-1gehmkk-MuiGrid-root"
               >
@@ -1162,7 +1148,6 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                       }
                     }
                   >
-                    <Noop />
                     <div
                       className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-undefined css-1xg1867-MuiGrid-root"
                     >
@@ -1245,7 +1230,6 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                             }
                           }
                         >
-                          <Noop />
                           <div
                             className="MuiGrid-root MuiGrid-item MuiGrid-grid-md-8 MuiGrid-grid-lg-9 css-aqdgv4-MuiGrid-root"
                           >
@@ -1290,7 +1274,6 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                   }
                                 }
                               >
-                                <Noop />
                                 <div
                                   className="MuiGrid-root MuiGrid-item css-yf2xb9-MuiGrid-root"
                                 >
@@ -1499,7 +1482,6 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                   }
                                 }
                               >
-                                <Noop />
                                 <div
                                   className="MuiGrid-root MuiGrid-item css-yf2xb9-MuiGrid-root"
                                 >
@@ -1531,7 +1513,6 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                         }
                                       }
                                     >
-                                      <Noop />
                                       <div
                                         className="MuiFormControl-root css-1nrlq1o-MuiFormControl-root"
                                       >
@@ -1764,7 +1745,6 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                 }
                                 sx={Object {}}
                               >
-                                <Noop />
                                 <div
                                   className="MuiGrid-root MuiGrid-item css-13i4rnv-MuiGrid-root"
                                 >
@@ -2022,7 +2002,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                     "contrastText": "#fff",
                                                     "dark": "#e65100",
                                                     "light": "#ff9800",
-                                                    "main": "#ed6c02",
+                                                    "main": "#ED6C02",
                                                   },
                                                 },
                                                 "shadows": Array [
@@ -2317,8 +2297,293 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                               "value": "",
                                             }
                                           }
+                                          theme={
+                                            Object {
+                                              "breakpoints": Object {
+                                                "between": [Function],
+                                                "down": [Function],
+                                                "keys": Array [
+                                                  "xs",
+                                                  "sm",
+                                                  "md",
+                                                  "lg",
+                                                  "xl",
+                                                ],
+                                                "only": [Function],
+                                                "unit": "px",
+                                                "up": [Function],
+                                                "values": Object {
+                                                  "lg": 1200,
+                                                  "md": 900,
+                                                  "sm": 600,
+                                                  "xl": 1536,
+                                                  "xs": 0,
+                                                },
+                                              },
+                                              "components": Object {},
+                                              "direction": "ltr",
+                                              "mixins": Object {
+                                                "toolbar": Object {
+                                                  "@media (min-width:0px) and (orientation: landscape)": Object {
+                                                    "minHeight": 48,
+                                                  },
+                                                  "@media (min-width:600px)": Object {
+                                                    "minHeight": 64,
+                                                  },
+                                                  "minHeight": 56,
+                                                },
+                                              },
+                                              "palette": Object {
+                                                "action": Object {
+                                                  "activatedOpacity": 0.12,
+                                                  "active": "rgba(0, 0, 0, 0.54)",
+                                                  "disabled": "rgba(0, 0, 0, 0.26)",
+                                                  "disabledBackground": "rgba(0, 0, 0, 0.12)",
+                                                  "disabledOpacity": 0.38,
+                                                  "focus": "rgba(0, 0, 0, 0.12)",
+                                                  "focusOpacity": 0.12,
+                                                  "hover": "rgba(0, 0, 0, 0.04)",
+                                                  "hoverOpacity": 0.04,
+                                                  "selected": "rgba(0, 0, 0, 0.08)",
+                                                  "selectedOpacity": 0.08,
+                                                },
+                                                "augmentColor": [Function],
+                                                "background": Object {
+                                                  "default": "#fff",
+                                                  "paper": "#fff",
+                                                },
+                                                "common": Object {
+                                                  "black": "#000",
+                                                  "white": "#fff",
+                                                },
+                                                "contrastThreshold": 3,
+                                                "divider": "rgba(0, 0, 0, 0.12)",
+                                                "error": Object {
+                                                  "contrastText": "#fff",
+                                                  "dark": "#c62828",
+                                                  "light": "#ef5350",
+                                                  "main": "#d32f2f",
+                                                },
+                                                "getContrastText": [Function],
+                                                "grey": Object {
+                                                  "100": "#f5f5f5",
+                                                  "200": "#eeeeee",
+                                                  "300": "#e0e0e0",
+                                                  "400": "#bdbdbd",
+                                                  "50": "#fafafa",
+                                                  "500": "#9e9e9e",
+                                                  "600": "#757575",
+                                                  "700": "#616161",
+                                                  "800": "#424242",
+                                                  "900": "#212121",
+                                                  "A100": "#f5f5f5",
+                                                  "A200": "#eeeeee",
+                                                  "A400": "#bdbdbd",
+                                                  "A700": "#616161",
+                                                },
+                                                "info": Object {
+                                                  "contrastText": "#fff",
+                                                  "dark": "#01579b",
+                                                  "light": "#03a9f4",
+                                                  "main": "#0288d1",
+                                                },
+                                                "mode": "light",
+                                                "primary": Object {
+                                                  "contrastText": "#fff",
+                                                  "dark": "#1565c0",
+                                                  "light": "#42a5f5",
+                                                  "main": "#1976d2",
+                                                },
+                                                "secondary": Object {
+                                                  "contrastText": "#fff",
+                                                  "dark": "#7b1fa2",
+                                                  "light": "#ba68c8",
+                                                  "main": "#9c27b0",
+                                                },
+                                                "success": Object {
+                                                  "contrastText": "#fff",
+                                                  "dark": "#1b5e20",
+                                                  "light": "#4caf50",
+                                                  "main": "#2e7d32",
+                                                },
+                                                "text": Object {
+                                                  "disabled": "rgba(0, 0, 0, 0.38)",
+                                                  "primary": "rgba(0, 0, 0, 0.87)",
+                                                  "secondary": "rgba(0, 0, 0, 0.6)",
+                                                },
+                                                "tonalOffset": 0.2,
+                                                "warning": Object {
+                                                  "contrastText": "#fff",
+                                                  "dark": "#e65100",
+                                                  "light": "#ff9800",
+                                                  "main": "#ED6C02",
+                                                },
+                                              },
+                                              "shadows": Array [
+                                                "none",
+                                                "0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12)",
+                                                "0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12)",
+                                                "0px 3px 3px -2px rgba(0,0,0,0.2),0px 3px 4px 0px rgba(0,0,0,0.14),0px 1px 8px 0px rgba(0,0,0,0.12)",
+                                                "0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12)",
+                                                "0px 3px 5px -1px rgba(0,0,0,0.2),0px 5px 8px 0px rgba(0,0,0,0.14),0px 1px 14px 0px rgba(0,0,0,0.12)",
+                                                "0px 3px 5px -1px rgba(0,0,0,0.2),0px 6px 10px 0px rgba(0,0,0,0.14),0px 1px 18px 0px rgba(0,0,0,0.12)",
+                                                "0px 4px 5px -2px rgba(0,0,0,0.2),0px 7px 10px 1px rgba(0,0,0,0.14),0px 2px 16px 1px rgba(0,0,0,0.12)",
+                                                "0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12)",
+                                                "0px 5px 6px -3px rgba(0,0,0,0.2),0px 9px 12px 1px rgba(0,0,0,0.14),0px 3px 16px 2px rgba(0,0,0,0.12)",
+                                                "0px 6px 6px -3px rgba(0,0,0,0.2),0px 10px 14px 1px rgba(0,0,0,0.14),0px 4px 18px 3px rgba(0,0,0,0.12)",
+                                                "0px 6px 7px -4px rgba(0,0,0,0.2),0px 11px 15px 1px rgba(0,0,0,0.14),0px 4px 20px 3px rgba(0,0,0,0.12)",
+                                                "0px 7px 8px -4px rgba(0,0,0,0.2),0px 12px 17px 2px rgba(0,0,0,0.14),0px 5px 22px 4px rgba(0,0,0,0.12)",
+                                                "0px 7px 8px -4px rgba(0,0,0,0.2),0px 13px 19px 2px rgba(0,0,0,0.14),0px 5px 24px 4px rgba(0,0,0,0.12)",
+                                                "0px 7px 9px -4px rgba(0,0,0,0.2),0px 14px 21px 2px rgba(0,0,0,0.14),0px 5px 26px 4px rgba(0,0,0,0.12)",
+                                                "0px 8px 9px -5px rgba(0,0,0,0.2),0px 15px 22px 2px rgba(0,0,0,0.14),0px 6px 28px 5px rgba(0,0,0,0.12)",
+                                                "0px 8px 10px -5px rgba(0,0,0,0.2),0px 16px 24px 2px rgba(0,0,0,0.14),0px 6px 30px 5px rgba(0,0,0,0.12)",
+                                                "0px 8px 11px -5px rgba(0,0,0,0.2),0px 17px 26px 2px rgba(0,0,0,0.14),0px 6px 32px 5px rgba(0,0,0,0.12)",
+                                                "0px 9px 11px -5px rgba(0,0,0,0.2),0px 18px 28px 2px rgba(0,0,0,0.14),0px 7px 34px 6px rgba(0,0,0,0.12)",
+                                                "0px 9px 12px -6px rgba(0,0,0,0.2),0px 19px 29px 2px rgba(0,0,0,0.14),0px 7px 36px 6px rgba(0,0,0,0.12)",
+                                                "0px 10px 13px -6px rgba(0,0,0,0.2),0px 20px 31px 3px rgba(0,0,0,0.14),0px 8px 38px 7px rgba(0,0,0,0.12)",
+                                                "0px 10px 13px -6px rgba(0,0,0,0.2),0px 21px 33px 3px rgba(0,0,0,0.14),0px 8px 40px 7px rgba(0,0,0,0.12)",
+                                                "0px 10px 14px -6px rgba(0,0,0,0.2),0px 22px 35px 3px rgba(0,0,0,0.14),0px 8px 42px 7px rgba(0,0,0,0.12)",
+                                                "0px 11px 14px -7px rgba(0,0,0,0.2),0px 23px 36px 3px rgba(0,0,0,0.14),0px 9px 44px 8px rgba(0,0,0,0.12)",
+                                                "0px 11px 15px -7px rgba(0,0,0,0.2),0px 24px 38px 3px rgba(0,0,0,0.14),0px 9px 46px 8px rgba(0,0,0,0.12)",
+                                              ],
+                                              "shape": Object {
+                                                "borderRadius": 4,
+                                              },
+                                              "spacing": [Function],
+                                              "transitions": Object {
+                                                "create": [Function],
+                                                "duration": Object {
+                                                  "complex": 375,
+                                                  "enteringScreen": 225,
+                                                  "leavingScreen": 195,
+                                                  "short": 250,
+                                                  "shorter": 200,
+                                                  "shortest": 150,
+                                                  "standard": 300,
+                                                },
+                                                "easing": Object {
+                                                  "easeIn": "cubic-bezier(0.4, 0, 1, 1)",
+                                                  "easeInOut": "cubic-bezier(0.4, 0, 0.2, 1)",
+                                                  "easeOut": "cubic-bezier(0.0, 0, 0.2, 1)",
+                                                  "sharp": "cubic-bezier(0.4, 0, 0.6, 1)",
+                                                },
+                                                "getAutoHeightDuration": [Function],
+                                              },
+                                              "typography": Object {
+                                                "body1": Object {
+                                                  "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
+                                                  "fontSize": "1rem",
+                                                  "fontWeight": 400,
+                                                  "letterSpacing": "0.00938em",
+                                                  "lineHeight": 1.5,
+                                                },
+                                                "body2": Object {
+                                                  "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
+                                                  "fontSize": "0.875rem",
+                                                  "fontWeight": 400,
+                                                  "letterSpacing": "0.01071em",
+                                                  "lineHeight": 1.43,
+                                                },
+                                                "button": Object {
+                                                  "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
+                                                  "fontSize": "0.875rem",
+                                                  "fontWeight": 500,
+                                                  "letterSpacing": "0.02857em",
+                                                  "lineHeight": 1.75,
+                                                  "textTransform": "uppercase",
+                                                },
+                                                "caption": Object {
+                                                  "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
+                                                  "fontSize": "0.75rem",
+                                                  "fontWeight": 400,
+                                                  "letterSpacing": "0.03333em",
+                                                  "lineHeight": 1.66,
+                                                },
+                                                "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
+                                                "fontSize": 14,
+                                                "fontWeightBold": 700,
+                                                "fontWeightLight": 300,
+                                                "fontWeightMedium": 500,
+                                                "fontWeightRegular": 400,
+                                                "h1": Object {
+                                                  "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
+                                                  "fontSize": "6rem",
+                                                  "fontWeight": 300,
+                                                  "letterSpacing": "-0.01562em",
+                                                  "lineHeight": 1.167,
+                                                },
+                                                "h2": Object {
+                                                  "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
+                                                  "fontSize": "3.75rem",
+                                                  "fontWeight": 300,
+                                                  "letterSpacing": "-0.00833em",
+                                                  "lineHeight": 1.2,
+                                                },
+                                                "h3": Object {
+                                                  "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
+                                                  "fontSize": "3rem",
+                                                  "fontWeight": 400,
+                                                  "letterSpacing": "0em",
+                                                  "lineHeight": 1.167,
+                                                },
+                                                "h4": Object {
+                                                  "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
+                                                  "fontSize": "2.125rem",
+                                                  "fontWeight": 400,
+                                                  "letterSpacing": "0.00735em",
+                                                  "lineHeight": 1.235,
+                                                },
+                                                "h5": Object {
+                                                  "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
+                                                  "fontSize": "1.5rem",
+                                                  "fontWeight": 400,
+                                                  "letterSpacing": "0em",
+                                                  "lineHeight": 1.334,
+                                                },
+                                                "h6": Object {
+                                                  "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
+                                                  "fontSize": "1.25rem",
+                                                  "fontWeight": 500,
+                                                  "letterSpacing": "0.0075em",
+                                                  "lineHeight": 1.6,
+                                                },
+                                                "htmlFontSize": 16,
+                                                "overline": Object {
+                                                  "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
+                                                  "fontSize": "0.75rem",
+                                                  "fontWeight": 400,
+                                                  "letterSpacing": "0.08333em",
+                                                  "lineHeight": 2.66,
+                                                  "textTransform": "uppercase",
+                                                },
+                                                "pxToRem": [Function],
+                                                "subtitle1": Object {
+                                                  "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
+                                                  "fontSize": "1rem",
+                                                  "fontWeight": 400,
+                                                  "letterSpacing": "0.00938em",
+                                                  "lineHeight": 1.75,
+                                                },
+                                                "subtitle2": Object {
+                                                  "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
+                                                  "fontSize": "0.875rem",
+                                                  "fontWeight": 500,
+                                                  "letterSpacing": "0.00714em",
+                                                  "lineHeight": 1.57,
+                                                },
+                                              },
+                                              "zIndex": Object {
+                                                "appBar": 1100,
+                                                "drawer": 1200,
+                                                "mobileStepper": 1000,
+                                                "modal": 1300,
+                                                "snackbar": 1400,
+                                                "speedDial": 1050,
+                                                "tooltip": 1500,
+                                              },
+                                            }
+                                          }
                                         >
-                                          <Noop />
                                           <div
                                             className="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-adornedStart searchinput css-1q6at85-MuiInputBase-root-MuiOutlinedInput-root"
                                             onClick={[Function]}
@@ -2347,7 +2612,6 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                   }
                                                 }
                                               >
-                                                <Noop />
                                                 <div
                                                   className="MuiInputAdornment-root MuiInputAdornment-positionStart adornment css-ittuaa-MuiInputAdornment-root"
                                                 >
@@ -2381,7 +2645,6 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                         }
                                                       }
                                                     >
-                                                      <Noop />
                                                       <ForwardRef(ButtonBase)
                                                         aria-label="search"
                                                         centerRipple={true}
@@ -2424,7 +2687,6 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                           tabIndex={0}
                                                           type="button"
                                                         >
-                                                          <Noop />
                                                           <button
                                                             aria-label="search"
                                                             className="MuiButtonBase-root MuiIconButton-root MuiIconButton-edgeStart MuiIconButton-sizeMedium css-9sors8-MuiButtonBase-root-MuiIconButton-root"
@@ -2466,7 +2728,6 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                               <MuiTouchRippleRoot
                                                                 className="MuiTouchRipple-root"
                                                               >
-                                                                <Noop />
                                                                 <span
                                                                   className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
                                                                 >
@@ -2582,10 +2843,295 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                 }
                                               }
                                               placeholder="taxes.salesTax.city"
+                                              theme={
+                                                Object {
+                                                  "breakpoints": Object {
+                                                    "between": [Function],
+                                                    "down": [Function],
+                                                    "keys": Array [
+                                                      "xs",
+                                                      "sm",
+                                                      "md",
+                                                      "lg",
+                                                      "xl",
+                                                    ],
+                                                    "only": [Function],
+                                                    "unit": "px",
+                                                    "up": [Function],
+                                                    "values": Object {
+                                                      "lg": 1200,
+                                                      "md": 900,
+                                                      "sm": 600,
+                                                      "xl": 1536,
+                                                      "xs": 0,
+                                                    },
+                                                  },
+                                                  "components": Object {},
+                                                  "direction": "ltr",
+                                                  "mixins": Object {
+                                                    "toolbar": Object {
+                                                      "@media (min-width:0px) and (orientation: landscape)": Object {
+                                                        "minHeight": 48,
+                                                      },
+                                                      "@media (min-width:600px)": Object {
+                                                        "minHeight": 64,
+                                                      },
+                                                      "minHeight": 56,
+                                                    },
+                                                  },
+                                                  "palette": Object {
+                                                    "action": Object {
+                                                      "activatedOpacity": 0.12,
+                                                      "active": "rgba(0, 0, 0, 0.54)",
+                                                      "disabled": "rgba(0, 0, 0, 0.26)",
+                                                      "disabledBackground": "rgba(0, 0, 0, 0.12)",
+                                                      "disabledOpacity": 0.38,
+                                                      "focus": "rgba(0, 0, 0, 0.12)",
+                                                      "focusOpacity": 0.12,
+                                                      "hover": "rgba(0, 0, 0, 0.04)",
+                                                      "hoverOpacity": 0.04,
+                                                      "selected": "rgba(0, 0, 0, 0.08)",
+                                                      "selectedOpacity": 0.08,
+                                                    },
+                                                    "augmentColor": [Function],
+                                                    "background": Object {
+                                                      "default": "#fff",
+                                                      "paper": "#fff",
+                                                    },
+                                                    "common": Object {
+                                                      "black": "#000",
+                                                      "white": "#fff",
+                                                    },
+                                                    "contrastThreshold": 3,
+                                                    "divider": "rgba(0, 0, 0, 0.12)",
+                                                    "error": Object {
+                                                      "contrastText": "#fff",
+                                                      "dark": "#c62828",
+                                                      "light": "#ef5350",
+                                                      "main": "#d32f2f",
+                                                    },
+                                                    "getContrastText": [Function],
+                                                    "grey": Object {
+                                                      "100": "#f5f5f5",
+                                                      "200": "#eeeeee",
+                                                      "300": "#e0e0e0",
+                                                      "400": "#bdbdbd",
+                                                      "50": "#fafafa",
+                                                      "500": "#9e9e9e",
+                                                      "600": "#757575",
+                                                      "700": "#616161",
+                                                      "800": "#424242",
+                                                      "900": "#212121",
+                                                      "A100": "#f5f5f5",
+                                                      "A200": "#eeeeee",
+                                                      "A400": "#bdbdbd",
+                                                      "A700": "#616161",
+                                                    },
+                                                    "info": Object {
+                                                      "contrastText": "#fff",
+                                                      "dark": "#01579b",
+                                                      "light": "#03a9f4",
+                                                      "main": "#0288d1",
+                                                    },
+                                                    "mode": "light",
+                                                    "primary": Object {
+                                                      "contrastText": "#fff",
+                                                      "dark": "#1565c0",
+                                                      "light": "#42a5f5",
+                                                      "main": "#1976d2",
+                                                    },
+                                                    "secondary": Object {
+                                                      "contrastText": "#fff",
+                                                      "dark": "#7b1fa2",
+                                                      "light": "#ba68c8",
+                                                      "main": "#9c27b0",
+                                                    },
+                                                    "success": Object {
+                                                      "contrastText": "#fff",
+                                                      "dark": "#1b5e20",
+                                                      "light": "#4caf50",
+                                                      "main": "#2e7d32",
+                                                    },
+                                                    "text": Object {
+                                                      "disabled": "rgba(0, 0, 0, 0.38)",
+                                                      "primary": "rgba(0, 0, 0, 0.87)",
+                                                      "secondary": "rgba(0, 0, 0, 0.6)",
+                                                    },
+                                                    "tonalOffset": 0.2,
+                                                    "warning": Object {
+                                                      "contrastText": "#fff",
+                                                      "dark": "#e65100",
+                                                      "light": "#ff9800",
+                                                      "main": "#ED6C02",
+                                                    },
+                                                  },
+                                                  "shadows": Array [
+                                                    "none",
+                                                    "0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12)",
+                                                    "0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12)",
+                                                    "0px 3px 3px -2px rgba(0,0,0,0.2),0px 3px 4px 0px rgba(0,0,0,0.14),0px 1px 8px 0px rgba(0,0,0,0.12)",
+                                                    "0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12)",
+                                                    "0px 3px 5px -1px rgba(0,0,0,0.2),0px 5px 8px 0px rgba(0,0,0,0.14),0px 1px 14px 0px rgba(0,0,0,0.12)",
+                                                    "0px 3px 5px -1px rgba(0,0,0,0.2),0px 6px 10px 0px rgba(0,0,0,0.14),0px 1px 18px 0px rgba(0,0,0,0.12)",
+                                                    "0px 4px 5px -2px rgba(0,0,0,0.2),0px 7px 10px 1px rgba(0,0,0,0.14),0px 2px 16px 1px rgba(0,0,0,0.12)",
+                                                    "0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12)",
+                                                    "0px 5px 6px -3px rgba(0,0,0,0.2),0px 9px 12px 1px rgba(0,0,0,0.14),0px 3px 16px 2px rgba(0,0,0,0.12)",
+                                                    "0px 6px 6px -3px rgba(0,0,0,0.2),0px 10px 14px 1px rgba(0,0,0,0.14),0px 4px 18px 3px rgba(0,0,0,0.12)",
+                                                    "0px 6px 7px -4px rgba(0,0,0,0.2),0px 11px 15px 1px rgba(0,0,0,0.14),0px 4px 20px 3px rgba(0,0,0,0.12)",
+                                                    "0px 7px 8px -4px rgba(0,0,0,0.2),0px 12px 17px 2px rgba(0,0,0,0.14),0px 5px 22px 4px rgba(0,0,0,0.12)",
+                                                    "0px 7px 8px -4px rgba(0,0,0,0.2),0px 13px 19px 2px rgba(0,0,0,0.14),0px 5px 24px 4px rgba(0,0,0,0.12)",
+                                                    "0px 7px 9px -4px rgba(0,0,0,0.2),0px 14px 21px 2px rgba(0,0,0,0.14),0px 5px 26px 4px rgba(0,0,0,0.12)",
+                                                    "0px 8px 9px -5px rgba(0,0,0,0.2),0px 15px 22px 2px rgba(0,0,0,0.14),0px 6px 28px 5px rgba(0,0,0,0.12)",
+                                                    "0px 8px 10px -5px rgba(0,0,0,0.2),0px 16px 24px 2px rgba(0,0,0,0.14),0px 6px 30px 5px rgba(0,0,0,0.12)",
+                                                    "0px 8px 11px -5px rgba(0,0,0,0.2),0px 17px 26px 2px rgba(0,0,0,0.14),0px 6px 32px 5px rgba(0,0,0,0.12)",
+                                                    "0px 9px 11px -5px rgba(0,0,0,0.2),0px 18px 28px 2px rgba(0,0,0,0.14),0px 7px 34px 6px rgba(0,0,0,0.12)",
+                                                    "0px 9px 12px -6px rgba(0,0,0,0.2),0px 19px 29px 2px rgba(0,0,0,0.14),0px 7px 36px 6px rgba(0,0,0,0.12)",
+                                                    "0px 10px 13px -6px rgba(0,0,0,0.2),0px 20px 31px 3px rgba(0,0,0,0.14),0px 8px 38px 7px rgba(0,0,0,0.12)",
+                                                    "0px 10px 13px -6px rgba(0,0,0,0.2),0px 21px 33px 3px rgba(0,0,0,0.14),0px 8px 40px 7px rgba(0,0,0,0.12)",
+                                                    "0px 10px 14px -6px rgba(0,0,0,0.2),0px 22px 35px 3px rgba(0,0,0,0.14),0px 8px 42px 7px rgba(0,0,0,0.12)",
+                                                    "0px 11px 14px -7px rgba(0,0,0,0.2),0px 23px 36px 3px rgba(0,0,0,0.14),0px 9px 44px 8px rgba(0,0,0,0.12)",
+                                                    "0px 11px 15px -7px rgba(0,0,0,0.2),0px 24px 38px 3px rgba(0,0,0,0.14),0px 9px 46px 8px rgba(0,0,0,0.12)",
+                                                  ],
+                                                  "shape": Object {
+                                                    "borderRadius": 4,
+                                                  },
+                                                  "spacing": [Function],
+                                                  "transitions": Object {
+                                                    "create": [Function],
+                                                    "duration": Object {
+                                                      "complex": 375,
+                                                      "enteringScreen": 225,
+                                                      "leavingScreen": 195,
+                                                      "short": 250,
+                                                      "shorter": 200,
+                                                      "shortest": 150,
+                                                      "standard": 300,
+                                                    },
+                                                    "easing": Object {
+                                                      "easeIn": "cubic-bezier(0.4, 0, 1, 1)",
+                                                      "easeInOut": "cubic-bezier(0.4, 0, 0.2, 1)",
+                                                      "easeOut": "cubic-bezier(0.0, 0, 0.2, 1)",
+                                                      "sharp": "cubic-bezier(0.4, 0, 0.6, 1)",
+                                                    },
+                                                    "getAutoHeightDuration": [Function],
+                                                  },
+                                                  "typography": Object {
+                                                    "body1": Object {
+                                                      "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
+                                                      "fontSize": "1rem",
+                                                      "fontWeight": 400,
+                                                      "letterSpacing": "0.00938em",
+                                                      "lineHeight": 1.5,
+                                                    },
+                                                    "body2": Object {
+                                                      "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
+                                                      "fontSize": "0.875rem",
+                                                      "fontWeight": 400,
+                                                      "letterSpacing": "0.01071em",
+                                                      "lineHeight": 1.43,
+                                                    },
+                                                    "button": Object {
+                                                      "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
+                                                      "fontSize": "0.875rem",
+                                                      "fontWeight": 500,
+                                                      "letterSpacing": "0.02857em",
+                                                      "lineHeight": 1.75,
+                                                      "textTransform": "uppercase",
+                                                    },
+                                                    "caption": Object {
+                                                      "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
+                                                      "fontSize": "0.75rem",
+                                                      "fontWeight": 400,
+                                                      "letterSpacing": "0.03333em",
+                                                      "lineHeight": 1.66,
+                                                    },
+                                                    "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
+                                                    "fontSize": 14,
+                                                    "fontWeightBold": 700,
+                                                    "fontWeightLight": 300,
+                                                    "fontWeightMedium": 500,
+                                                    "fontWeightRegular": 400,
+                                                    "h1": Object {
+                                                      "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
+                                                      "fontSize": "6rem",
+                                                      "fontWeight": 300,
+                                                      "letterSpacing": "-0.01562em",
+                                                      "lineHeight": 1.167,
+                                                    },
+                                                    "h2": Object {
+                                                      "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
+                                                      "fontSize": "3.75rem",
+                                                      "fontWeight": 300,
+                                                      "letterSpacing": "-0.00833em",
+                                                      "lineHeight": 1.2,
+                                                    },
+                                                    "h3": Object {
+                                                      "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
+                                                      "fontSize": "3rem",
+                                                      "fontWeight": 400,
+                                                      "letterSpacing": "0em",
+                                                      "lineHeight": 1.167,
+                                                    },
+                                                    "h4": Object {
+                                                      "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
+                                                      "fontSize": "2.125rem",
+                                                      "fontWeight": 400,
+                                                      "letterSpacing": "0.00735em",
+                                                      "lineHeight": 1.235,
+                                                    },
+                                                    "h5": Object {
+                                                      "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
+                                                      "fontSize": "1.5rem",
+                                                      "fontWeight": 400,
+                                                      "letterSpacing": "0em",
+                                                      "lineHeight": 1.334,
+                                                    },
+                                                    "h6": Object {
+                                                      "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
+                                                      "fontSize": "1.25rem",
+                                                      "fontWeight": 500,
+                                                      "letterSpacing": "0.0075em",
+                                                      "lineHeight": 1.6,
+                                                    },
+                                                    "htmlFontSize": 16,
+                                                    "overline": Object {
+                                                      "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
+                                                      "fontSize": "0.75rem",
+                                                      "fontWeight": 400,
+                                                      "letterSpacing": "0.08333em",
+                                                      "lineHeight": 2.66,
+                                                      "textTransform": "uppercase",
+                                                    },
+                                                    "pxToRem": [Function],
+                                                    "subtitle1": Object {
+                                                      "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
+                                                      "fontSize": "1rem",
+                                                      "fontWeight": 400,
+                                                      "letterSpacing": "0.00938em",
+                                                      "lineHeight": 1.75,
+                                                    },
+                                                    "subtitle2": Object {
+                                                      "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
+                                                      "fontSize": "0.875rem",
+                                                      "fontWeight": 500,
+                                                      "letterSpacing": "0.00714em",
+                                                      "lineHeight": 1.57,
+                                                    },
+                                                  },
+                                                  "zIndex": Object {
+                                                    "appBar": 1100,
+                                                    "drawer": 1200,
+                                                    "mobileStepper": 1000,
+                                                    "modal": 1300,
+                                                    "snackbar": 1400,
+                                                    "speedDial": 1050,
+                                                    "tooltip": 1500,
+                                                  },
+                                                }
+                                              }
                                               type="text"
                                               value=""
                                             >
-                                              <Noop />
                                               <input
                                                 aria-label="search"
                                                 className="MuiOutlinedInput-input MuiInputBase-input MuiInputBase-inputAdornedStart css-1o9s3wi-MuiInputBase-input-MuiOutlinedInput-input"
@@ -2604,7 +3150,6 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                               className="MuiOutlinedInput-notchedOutline"
                                               notched={true}
                                             >
-                                              <Noop />
                                               <NotchedOutline
                                                 className="MuiOutlinedInput-notchedOutline css-rki20w-MuiOutlinedInput-notchedOutline"
                                                 notched={true}
@@ -2620,7 +3165,6 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                     }
                                                   }
                                                 >
-                                                  <Noop />
                                                   <fieldset
                                                     aria-hidden={true}
                                                     className="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
@@ -2634,9 +3178,8 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                         }
                                                       }
                                                     >
-                                                      <Noop />
                                                       <legend
-                                                        className="css-nnbavb"
+                                                        className="css-1a1ihhj"
                                                       >
                                                         <span
                                                           className="notranslate"
@@ -2744,7 +3287,6 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                             }
                           }
                         >
-                          <Noop />
                           <div
                             className="MuiGrid-root MuiGrid-item MuiGrid-grid-md-4 MuiGrid-grid-lg-3 css-1dpfvd9-MuiGrid-root"
                           >
@@ -2789,7 +3331,6 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                   }
                                 }
                               >
-                                <Noop />
                                 <div
                                   className="MuiGrid-root MuiGrid-item css-yf2xb9-MuiGrid-root"
                                 >
@@ -2922,7 +3463,6 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                         }
                                                         viewBox="0 0 24 24"
                                                       >
-                                                        <Noop />
                                                         <svg
                                                           aria-hidden={true}
                                                           className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
@@ -3027,7 +3567,6 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                 }
                                 sx={Object {}}
                               >
-                                <Noop />
                                 <div
                                   className="MuiGrid-root MuiGrid-item css-13i4rnv-MuiGrid-root"
                                 >
@@ -3072,7 +3611,6 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                         }
                                       }
                                     >
-                                      <Noop />
                                       <div
                                         className="MuiFormControl-root css-1nrlq1o-MuiFormControl-root"
                                       >
@@ -3453,7 +3991,6 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                       }
                     }
                   >
-                    <Noop />
                     <div
                       className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-undefined css-vx5vlp-MuiGrid-root"
                     >
@@ -3721,7 +4258,6 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                               }
                             }
                           >
-                            <Noop />
                             <div
                               className="MuiTableContainer-root table-container css-rorn0c-MuiTableContainer-root"
                               onScroll={[Function]}
@@ -3932,7 +4468,6 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                     }
                                   }
                                 >
-                                  <Noop />
                                   <table
                                     aria-labelledby="tableTitle"
                                     className="MuiTable-root MuiTable-stickyHeader css-12exmm-MuiTable-root"
@@ -4110,7 +4645,6 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                             }
                                           }
                                         >
-                                          <Noop />
                                           <thead
                                             className="MuiTableHead-root css-twrv82-MuiTableHead-root"
                                             role={null}
@@ -4224,7 +4758,6 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                 }
                                                 role={null}
                                               >
-                                                <Noop />
                                                 <tr
                                                   className="MuiTableRow-root MuiTableRow-head css-1q1u3t4-MuiTableRow-root"
                                                   role={null}
@@ -4261,7 +4794,6 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                       }
                                                       scope="col"
                                                     >
-                                                      <Noop />
                                                       <th
                                                         aria-sort={null}
                                                         className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeMedium header-options css-y8ay40-MuiTableCell-root"
@@ -4289,7 +4821,6 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                               }
                                                             }
                                                           >
-                                                            <Noop />
                                                             <ForwardRef(ButtonBase)
                                                               className="MuiTableSortLabel-root css-o11grf-MuiTableSortLabel-root"
                                                               component="span"
@@ -4346,7 +4877,6 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                                 role="button"
                                                                 tabIndex={0}
                                                               >
-                                                                <Noop />
                                                                 <span
                                                                   className="MuiButtonBase-root MuiTableSortLabel-root css-1qgma8u-MuiButtonBase-root-MuiTableSortLabel-root"
                                                                   onBlur={[Function]}
@@ -4380,7 +4910,6 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                                       }
                                                                     }
                                                                   >
-                                                                    <Noop />
                                                                     <SortByIcon
                                                                       className="MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc css-1hi7cb7-MuiTableSortLabel-icon"
                                                                     >
@@ -4446,7 +4975,6 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                       }
                                                       scope="col"
                                                     >
-                                                      <Noop />
                                                       <th
                                                         aria-sort={null}
                                                         className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeMedium header-options css-y8ay40-MuiTableCell-root"
@@ -4474,7 +5002,6 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                               }
                                                             }
                                                           >
-                                                            <Noop />
                                                             <ForwardRef(ButtonBase)
                                                               className="MuiTableSortLabel-root css-o11grf-MuiTableSortLabel-root"
                                                               component="span"
@@ -4531,7 +5058,6 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                                 role="button"
                                                                 tabIndex={0}
                                                               >
-                                                                <Noop />
                                                                 <span
                                                                   className="MuiButtonBase-root MuiTableSortLabel-root css-1qgma8u-MuiButtonBase-root-MuiTableSortLabel-root"
                                                                   onBlur={[Function]}
@@ -4565,7 +5091,6 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                                       }
                                                                     }
                                                                   >
-                                                                    <Noop />
                                                                     <SortByIcon
                                                                       className="MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc css-1hi7cb7-MuiTableSortLabel-icon"
                                                                     >
@@ -4631,7 +5156,6 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                       }
                                                       scope="col"
                                                     >
-                                                      <Noop />
                                                       <th
                                                         aria-sort={null}
                                                         className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeMedium header-options css-y8ay40-MuiTableCell-root"
@@ -4659,7 +5183,6 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                               }
                                                             }
                                                           >
-                                                            <Noop />
                                                             <ForwardRef(ButtonBase)
                                                               className="MuiTableSortLabel-root css-o11grf-MuiTableSortLabel-root"
                                                               component="span"
@@ -4716,7 +5239,6 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                                 role="button"
                                                                 tabIndex={0}
                                                               >
-                                                                <Noop />
                                                                 <span
                                                                   className="MuiButtonBase-root MuiTableSortLabel-root css-1qgma8u-MuiButtonBase-root-MuiTableSortLabel-root"
                                                                   onBlur={[Function]}
@@ -4750,7 +5272,6 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                                       }
                                                                     }
                                                                   >
-                                                                    <Noop />
                                                                     <SortByIcon
                                                                       className="MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc css-1hi7cb7-MuiTableSortLabel-icon"
                                                                     >
@@ -4816,7 +5337,6 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                       }
                                                       scope="col"
                                                     >
-                                                      <Noop />
                                                       <th
                                                         aria-sort={null}
                                                         className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeMedium header-options css-y8ay40-MuiTableCell-root"
@@ -4844,7 +5364,6 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                               }
                                                             }
                                                           >
-                                                            <Noop />
                                                             <ForwardRef(ButtonBase)
                                                               className="MuiTableSortLabel-root css-o11grf-MuiTableSortLabel-root"
                                                               component="span"
@@ -4901,7 +5420,6 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                                 role="button"
                                                                 tabIndex={0}
                                                               >
-                                                                <Noop />
                                                                 <span
                                                                   className="MuiButtonBase-root MuiTableSortLabel-root css-1qgma8u-MuiButtonBase-root-MuiTableSortLabel-root"
                                                                   onBlur={[Function]}
@@ -4935,7 +5453,6 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                                       }
                                                                     }
                                                                   >
-                                                                    <Noop />
                                                                     <SortByIcon
                                                                       className="MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc css-1hi7cb7-MuiTableSortLabel-icon"
                                                                     >
@@ -5001,7 +5518,6 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                       }
                                                       scope="col"
                                                     >
-                                                      <Noop />
                                                       <th
                                                         aria-sort={null}
                                                         className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeMedium header-options css-y8ay40-MuiTableCell-root"
@@ -5029,7 +5545,6 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                               }
                                                             }
                                                           >
-                                                            <Noop />
                                                             <ForwardRef(ButtonBase)
                                                               className="MuiTableSortLabel-root css-o11grf-MuiTableSortLabel-root"
                                                               component="span"
@@ -5086,7 +5601,6 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                                 role="button"
                                                                 tabIndex={0}
                                                               >
-                                                                <Noop />
                                                                 <span
                                                                   className="MuiButtonBase-root MuiTableSortLabel-root css-1qgma8u-MuiButtonBase-root-MuiTableSortLabel-root"
                                                                   onBlur={[Function]}
@@ -5120,7 +5634,6 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                                       }
                                                                     }
                                                                   >
-                                                                    <Noop />
                                                                     <SortByIcon
                                                                       className="MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc css-1hi7cb7-MuiTableSortLabel-icon"
                                                                     >
@@ -5186,7 +5699,6 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                       }
                                                       scope="col"
                                                     >
-                                                      <Noop />
                                                       <th
                                                         aria-sort={null}
                                                         className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeMedium header-options css-y8ay40-MuiTableCell-root"
@@ -5214,7 +5726,6 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                               }
                                                             }
                                                           >
-                                                            <Noop />
                                                             <ForwardRef(ButtonBase)
                                                               className="MuiTableSortLabel-root css-o11grf-MuiTableSortLabel-root"
                                                               component="span"
@@ -5271,7 +5782,6 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                                 role="button"
                                                                 tabIndex={0}
                                                               >
-                                                                <Noop />
                                                                 <span
                                                                   className="MuiButtonBase-root MuiTableSortLabel-root css-1qgma8u-MuiButtonBase-root-MuiTableSortLabel-root"
                                                                   onBlur={[Function]}
@@ -5305,7 +5815,6 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                                       }
                                                                     }
                                                                   >
-                                                                    <Noop />
                                                                     <SortByIcon
                                                                       className="MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc css-1hi7cb7-MuiTableSortLabel-icon"
                                                                     >
@@ -5361,7 +5870,6 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                       }
                                                       scope="col"
                                                     >
-                                                      <Noop />
                                                       <th
                                                         aria-sort={null}
                                                         className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeMedium header-options css-y8ay40-MuiTableCell-root"
@@ -5620,7 +6128,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                       "contrastText": "#fff",
                                                       "dark": "#e65100",
                                                       "light": "#ff9800",
-                                                      "main": "#ed6c02",
+                                                      "main": "#ED6C02",
                                                     },
                                                   },
                                                   "shadows": Array [
@@ -5788,7 +6296,6 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                 }
                                               }
                                             >
-                                              <Noop />
                                               <div
                                                 className="loader MuiBox-root css-0"
                                               >
@@ -5813,7 +6320,6 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                       }
                                                     }
                                                   >
-                                                    <Noop />
                                                     <span
                                                       className="MuiCircularProgress-root MuiCircularProgress-indeterminate MuiCircularProgress-colorPrimary css-18lrjg1-MuiCircularProgress-root"
                                                       role="progressbar"
@@ -5838,7 +6344,6 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                         }
                                                         viewBox="22 22 44 44"
                                                       >
-                                                        <Noop />
                                                         <svg
                                                           className="MuiCircularProgress-svg css-1idz92c-MuiCircularProgress-svg"
                                                           viewBox="22 22 44 44"
@@ -5862,7 +6367,6 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                             strokeWidth={3.6}
                                                             style={Object {}}
                                                           >
-                                                            <Noop />
                                                             <circle
                                                               className="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate css-176wh8e-MuiCircularProgress-circle"
                                                               cx={44}
@@ -5980,7 +6484,6 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                               }
                             }
                           >
-                            <Noop />
                             <ForwardRef(Modal)
                               BackdropProps={
                                 Object {
@@ -6114,12 +6617,10 @@ exports[`Rendering of Salestax landing page Component Search Textbox Data Enter 
           "listeners": Array [],
           "queries": Array [
             Query {
-              "abortSignalConsumed": false,
               "cache": [Circular],
               "cacheTime": 300000,
               "defaultOptions": undefined,
               "gcTimeout": undefined,
-              "hadObservers": true,
               "initialState": Object {
                 "data": undefined,
                 "dataUpdateCount": 0,
@@ -6134,7 +6635,6 @@ exports[`Rendering of Salestax landing page Component Search Textbox Data Enter 
                 "isPaused": false,
                 "status": "idle",
               },
-              "meta": undefined,
               "observers": Array [
                 InfiniteQueryObserver {
                   "client": [Circular],
@@ -6153,7 +6653,6 @@ exports[`Rendering of Salestax landing page Component Search Textbox Data Enter 
                     "isPaused": false,
                     "status": "idle",
                   },
-                  "currentRefetchInterval": false,
                   "currentResult": Object {
                     "data": undefined,
                     "dataUpdatedAt": 0,
@@ -6176,7 +6675,6 @@ exports[`Rendering of Salestax landing page Component Search Textbox Data Enter 
                     "isPlaceholderData": false,
                     "isPreviousData": false,
                     "isRefetchError": false,
-                    "isRefetching": false,
                     "isStale": true,
                     "isSuccess": false,
                     "refetch": [Function],
@@ -6283,7 +6781,6 @@ exports[`Rendering of Salestax landing page Component Search Textbox Data Enter 
                 Object {},
               ],
               "retryer": Retryer {
-                "abort": [Function],
                 "cancel": [Function],
                 "cancelRetry": [Function],
                 "continue": [Function],
@@ -6325,12 +6822,10 @@ exports[`Rendering of Salestax landing page Component Search Textbox Data Enter 
           ],
           "queriesMap": Object {
             "[\\"getSalesTaxList\\",\\"\\",{\\"order\\":\\"\\",\\"sortBy\\":\\"\\"},{}]": Query {
-              "abortSignalConsumed": false,
               "cache": [Circular],
               "cacheTime": 300000,
               "defaultOptions": undefined,
               "gcTimeout": undefined,
-              "hadObservers": true,
               "initialState": Object {
                 "data": undefined,
                 "dataUpdateCount": 0,
@@ -6345,7 +6840,6 @@ exports[`Rendering of Salestax landing page Component Search Textbox Data Enter 
                 "isPaused": false,
                 "status": "idle",
               },
-              "meta": undefined,
               "observers": Array [
                 InfiniteQueryObserver {
                   "client": [Circular],
@@ -6364,7 +6858,6 @@ exports[`Rendering of Salestax landing page Component Search Textbox Data Enter 
                     "isPaused": false,
                     "status": "idle",
                   },
-                  "currentRefetchInterval": false,
                   "currentResult": Object {
                     "data": undefined,
                     "dataUpdatedAt": 0,
@@ -6387,7 +6880,6 @@ exports[`Rendering of Salestax landing page Component Search Textbox Data Enter 
                     "isPlaceholderData": false,
                     "isPreviousData": false,
                     "isRefetchError": false,
-                    "isRefetching": false,
                     "isStale": true,
                     "isSuccess": false,
                     "refetch": [Function],
@@ -6494,7 +6986,6 @@ exports[`Rendering of Salestax landing page Component Search Textbox Data Enter 
                 Object {},
               ],
               "retryer": Retryer {
-                "abort": [Function],
                 "cancel": [Function],
                 "cancelRetry": [Function],
                 "continue": [Function],
