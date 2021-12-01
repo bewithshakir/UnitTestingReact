@@ -19,6 +19,7 @@
 
 .dynamicForm {
   height: 100%;
+  margin-top: 24px;
   .sContainer {
     min-height: 100%;
     .lastItem{
@@ -38,6 +39,11 @@
     .checkboxLabel{
       margin-top: 16px;
     }
+  }
+  .filter_label_item {
+    padding-bottom: 5px;
+    font-size: 16px;
+    font-weight: 700;
   }
 } 
 
