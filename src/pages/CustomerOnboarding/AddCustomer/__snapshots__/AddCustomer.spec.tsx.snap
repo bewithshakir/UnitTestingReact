@@ -17,10 +17,12 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
         "listeners": Array [],
         "queries": Array [
           Query {
+            "abortSignalConsumed": false,
             "cache": [Circular],
             "cacheTime": 300000,
             "defaultOptions": undefined,
             "gcTimeout": undefined,
+            "hadObservers": true,
             "initialState": Object {
               "data": undefined,
               "dataUpdateCount": 0,
@@ -35,6 +37,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
               "isPaused": false,
               "status": "idle",
             },
+            "meta": undefined,
             "observers": Array [
               QueryObserver {
                 "client": [Circular],
@@ -53,6 +56,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                   "isPaused": false,
                   "status": "idle",
                 },
+                "currentRefetchInterval": false,
                 "currentResult": Object {
                   "data": undefined,
                   "dataUpdatedAt": 0,
@@ -69,6 +73,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
+                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -134,6 +139,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
               "getFrequencies",
             ],
             "retryer": Retryer {
+              "abort": [Function],
               "cancel": [Function],
               "cancelRetry": [Function],
               "continue": [Function],
@@ -173,10 +179,12 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
             },
           },
           Query {
+            "abortSignalConsumed": false,
             "cache": [Circular],
             "cacheTime": 300000,
             "defaultOptions": undefined,
             "gcTimeout": undefined,
+            "hadObservers": true,
             "initialState": Object {
               "data": undefined,
               "dataUpdateCount": 0,
@@ -191,6 +199,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
               "isPaused": false,
               "status": "idle",
             },
+            "meta": undefined,
             "observers": Array [
               QueryObserver {
                 "client": [Circular],
@@ -209,6 +218,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                   "isPaused": false,
                   "status": "idle",
                 },
+                "currentRefetchInterval": false,
                 "currentResult": Object {
                   "data": undefined,
                   "dataUpdatedAt": 0,
@@ -225,6 +235,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
+                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -290,6 +301,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
               "getPaymentTypes",
             ],
             "retryer": Retryer {
+              "abort": [Function],
               "cancel": [Function],
               "cancelRetry": [Function],
               "continue": [Function],
@@ -329,10 +341,12 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
             },
           },
           Query {
+            "abortSignalConsumed": false,
             "cache": [Circular],
             "cacheTime": 300000,
             "defaultOptions": undefined,
             "gcTimeout": undefined,
+            "hadObservers": true,
             "initialState": Object {
               "data": undefined,
               "dataUpdateCount": 0,
@@ -347,6 +361,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
               "isPaused": false,
               "status": "idle",
             },
+            "meta": undefined,
             "observers": Array [
               QueryObserver {
                 "client": [Circular],
@@ -365,9 +380,10 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                   "isPaused": false,
                   "status": "idle",
                 },
+                "currentRefetchInterval": false,
                 "currentResult": Object {
                   "data": undefined,
-                  "dataUpdatedAt": 1637918172688,
+                  "dataUpdatedAt": 1638181504357,
                   "error": null,
                   "errorUpdatedAt": 0,
                   "failureCount": 0,
@@ -381,6 +397,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
+                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": true,
                   "refetch": [Function],
@@ -406,7 +423,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                 "currentResultState": Object {
                   "data": undefined,
                   "dataUpdateCount": 1,
-                  "dataUpdatedAt": 1637918172688,
+                  "dataUpdatedAt": 1638181504357,
                   "error": null,
                   "errorUpdateCount": 0,
                   "errorUpdatedAt": 0,
@@ -471,6 +488,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
               [Function],
             ],
             "retryer": Retryer {
+              "abort": [Function],
               "cancel": [Function],
               "cancelRetry": [Function],
               "continue": [Function],
@@ -497,7 +515,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
             "state": Object {
               "data": undefined,
               "dataUpdateCount": 1,
-              "dataUpdatedAt": 1637918172688,
+              "dataUpdatedAt": 1638181504357,
               "error": null,
               "errorUpdateCount": 0,
               "errorUpdatedAt": 0,
@@ -510,10 +528,12 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
             },
           },
           Query {
+            "abortSignalConsumed": false,
             "cache": [Circular],
             "cacheTime": 300000,
             "defaultOptions": undefined,
             "gcTimeout": undefined,
+            "hadObservers": true,
             "initialState": Object {
               "data": undefined,
               "dataUpdateCount": 0,
@@ -528,6 +548,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
               "isPaused": false,
               "status": "idle",
             },
+            "meta": undefined,
             "observers": Array [
               QueryObserver {
                 "client": [Circular],
@@ -546,9 +567,10 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                   "isPaused": false,
                   "status": "idle",
                 },
+                "currentRefetchInterval": false,
                 "currentResult": Object {
                   "data": undefined,
-                  "dataUpdatedAt": 1637918172688,
+                  "dataUpdatedAt": 1638181504357,
                   "error": null,
                   "errorUpdatedAt": 0,
                   "failureCount": 0,
@@ -562,6 +584,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
+                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": true,
                   "refetch": [Function],
@@ -581,7 +604,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                 "currentResultState": Object {
                   "data": undefined,
                   "dataUpdateCount": 1,
-                  "dataUpdatedAt": 1637918172688,
+                  "dataUpdatedAt": 1638181504357,
                   "error": null,
                   "errorUpdateCount": 0,
                   "errorUpdatedAt": 0,
@@ -631,6 +654,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
               "",
             ],
             "retryer": Retryer {
+              "abort": [Function],
               "cancel": [Function],
               "cancelRetry": [Function],
               "continue": [Function],
@@ -657,7 +681,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
             "state": Object {
               "data": undefined,
               "dataUpdateCount": 1,
-              "dataUpdatedAt": 1637918172688,
+              "dataUpdatedAt": 1638181504357,
               "error": null,
               "errorUpdateCount": 0,
               "errorUpdatedAt": 0,
@@ -670,10 +694,12 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
             },
           },
           Query {
+            "abortSignalConsumed": false,
             "cache": [Circular],
             "cacheTime": 300000,
             "defaultOptions": undefined,
             "gcTimeout": undefined,
+            "hadObservers": true,
             "initialState": Object {
               "data": undefined,
               "dataUpdateCount": 0,
@@ -688,6 +714,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
               "isPaused": false,
               "status": "idle",
             },
+            "meta": undefined,
             "observers": Array [
               QueryObserver {
                 "client": [Circular],
@@ -706,9 +733,10 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                   "isPaused": false,
                   "status": "idle",
                 },
+                "currentRefetchInterval": false,
                 "currentResult": Object {
                   "data": undefined,
-                  "dataUpdatedAt": 1637918172688,
+                  "dataUpdatedAt": 1638181504357,
                   "error": null,
                   "errorUpdatedAt": 0,
                   "failureCount": 0,
@@ -722,6 +750,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
+                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": true,
                   "refetch": [Function],
@@ -741,7 +770,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                 "currentResultState": Object {
                   "data": undefined,
                   "dataUpdateCount": 1,
-                  "dataUpdatedAt": 1637918172688,
+                  "dataUpdatedAt": 1638181504357,
                   "error": null,
                   "errorUpdateCount": 0,
                   "errorUpdatedAt": 0,
@@ -791,6 +820,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
               "",
             ],
             "retryer": Retryer {
+              "abort": [Function],
               "cancel": [Function],
               "cancelRetry": [Function],
               "continue": [Function],
@@ -817,7 +847,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
             "state": Object {
               "data": undefined,
               "dataUpdateCount": 1,
-              "dataUpdatedAt": 1637918172688,
+              "dataUpdatedAt": 1638181504357,
               "error": null,
               "errorUpdateCount": 0,
               "errorUpdatedAt": 0,
@@ -832,10 +862,12 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
         ],
         "queriesMap": Object {
           "[\\"formattedAddress\\",\\"\\"]": Query {
+            "abortSignalConsumed": false,
             "cache": [Circular],
             "cacheTime": 300000,
             "defaultOptions": undefined,
             "gcTimeout": undefined,
+            "hadObservers": true,
             "initialState": Object {
               "data": undefined,
               "dataUpdateCount": 0,
@@ -850,6 +882,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
               "isPaused": false,
               "status": "idle",
             },
+            "meta": undefined,
             "observers": Array [
               QueryObserver {
                 "client": [Circular],
@@ -868,9 +901,10 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                   "isPaused": false,
                   "status": "idle",
                 },
+                "currentRefetchInterval": false,
                 "currentResult": Object {
                   "data": undefined,
-                  "dataUpdatedAt": 1637918172688,
+                  "dataUpdatedAt": 1638181504357,
                   "error": null,
                   "errorUpdatedAt": 0,
                   "failureCount": 0,
@@ -884,6 +918,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
+                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": true,
                   "refetch": [Function],
@@ -903,7 +938,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                 "currentResultState": Object {
                   "data": undefined,
                   "dataUpdateCount": 1,
-                  "dataUpdatedAt": 1637918172688,
+                  "dataUpdatedAt": 1638181504357,
                   "error": null,
                   "errorUpdateCount": 0,
                   "errorUpdatedAt": 0,
@@ -953,6 +988,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
               "",
             ],
             "retryer": Retryer {
+              "abort": [Function],
               "cancel": [Function],
               "cancelRetry": [Function],
               "continue": [Function],
@@ -979,7 +1015,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
             "state": Object {
               "data": undefined,
               "dataUpdateCount": 1,
-              "dataUpdatedAt": 1637918172688,
+              "dataUpdatedAt": 1638181504357,
               "error": null,
               "errorUpdateCount": 0,
               "errorUpdatedAt": 0,
@@ -992,10 +1028,12 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
             },
           },
           "[\\"getCustomer\\",\\"\\",false,null,null]": Query {
+            "abortSignalConsumed": false,
             "cache": [Circular],
             "cacheTime": 300000,
             "defaultOptions": undefined,
             "gcTimeout": undefined,
+            "hadObservers": true,
             "initialState": Object {
               "data": undefined,
               "dataUpdateCount": 0,
@@ -1010,6 +1048,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
               "isPaused": false,
               "status": "idle",
             },
+            "meta": undefined,
             "observers": Array [
               QueryObserver {
                 "client": [Circular],
@@ -1028,9 +1067,10 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                   "isPaused": false,
                   "status": "idle",
                 },
+                "currentRefetchInterval": false,
                 "currentResult": Object {
                   "data": undefined,
-                  "dataUpdatedAt": 1637918172688,
+                  "dataUpdatedAt": 1638181504357,
                   "error": null,
                   "errorUpdatedAt": 0,
                   "failureCount": 0,
@@ -1044,6 +1084,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
+                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": true,
                   "refetch": [Function],
@@ -1069,7 +1110,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                 "currentResultState": Object {
                   "data": undefined,
                   "dataUpdateCount": 1,
-                  "dataUpdatedAt": 1637918172688,
+                  "dataUpdatedAt": 1638181504357,
                   "error": null,
                   "errorUpdateCount": 0,
                   "errorUpdatedAt": 0,
@@ -1134,6 +1175,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
               [Function],
             ],
             "retryer": Retryer {
+              "abort": [Function],
               "cancel": [Function],
               "cancelRetry": [Function],
               "continue": [Function],
@@ -1160,7 +1202,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
             "state": Object {
               "data": undefined,
               "dataUpdateCount": 1,
-              "dataUpdatedAt": 1637918172688,
+              "dataUpdatedAt": 1638181504357,
               "error": null,
               "errorUpdateCount": 0,
               "errorUpdatedAt": 0,
@@ -1173,10 +1215,12 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
             },
           },
           "[\\"getFrequencies\\"]": Query {
+            "abortSignalConsumed": false,
             "cache": [Circular],
             "cacheTime": 300000,
             "defaultOptions": undefined,
             "gcTimeout": undefined,
+            "hadObservers": true,
             "initialState": Object {
               "data": undefined,
               "dataUpdateCount": 0,
@@ -1191,6 +1235,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
               "isPaused": false,
               "status": "idle",
             },
+            "meta": undefined,
             "observers": Array [
               QueryObserver {
                 "client": [Circular],
@@ -1209,6 +1254,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                   "isPaused": false,
                   "status": "idle",
                 },
+                "currentRefetchInterval": false,
                 "currentResult": Object {
                   "data": undefined,
                   "dataUpdatedAt": 0,
@@ -1225,6 +1271,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
+                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -1290,6 +1337,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
               "getFrequencies",
             ],
             "retryer": Retryer {
+              "abort": [Function],
               "cancel": [Function],
               "cancelRetry": [Function],
               "continue": [Function],
@@ -1329,10 +1377,12 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
             },
           },
           "[\\"getPaymentTypes\\"]": Query {
+            "abortSignalConsumed": false,
             "cache": [Circular],
             "cacheTime": 300000,
             "defaultOptions": undefined,
             "gcTimeout": undefined,
+            "hadObservers": true,
             "initialState": Object {
               "data": undefined,
               "dataUpdateCount": 0,
@@ -1347,6 +1397,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
               "isPaused": false,
               "status": "idle",
             },
+            "meta": undefined,
             "observers": Array [
               QueryObserver {
                 "client": [Circular],
@@ -1365,6 +1416,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                   "isPaused": false,
                   "status": "idle",
                 },
+                "currentRefetchInterval": false,
                 "currentResult": Object {
                   "data": undefined,
                   "dataUpdatedAt": 0,
@@ -1381,6 +1433,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
+                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -1446,6 +1499,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
               "getPaymentTypes",
             ],
             "retryer": Retryer {
+              "abort": [Function],
               "cancel": [Function],
               "cancelRetry": [Function],
               "continue": [Function],
@@ -1485,10 +1539,12 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
             },
           },
           "[\\"googleAddress\\",\\"\\"]": Query {
+            "abortSignalConsumed": false,
             "cache": [Circular],
             "cacheTime": 300000,
             "defaultOptions": undefined,
             "gcTimeout": undefined,
+            "hadObservers": true,
             "initialState": Object {
               "data": undefined,
               "dataUpdateCount": 0,
@@ -1503,6 +1559,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
               "isPaused": false,
               "status": "idle",
             },
+            "meta": undefined,
             "observers": Array [
               QueryObserver {
                 "client": [Circular],
@@ -1521,9 +1578,10 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                   "isPaused": false,
                   "status": "idle",
                 },
+                "currentRefetchInterval": false,
                 "currentResult": Object {
                   "data": undefined,
-                  "dataUpdatedAt": 1637918172688,
+                  "dataUpdatedAt": 1638181504357,
                   "error": null,
                   "errorUpdatedAt": 0,
                   "failureCount": 0,
@@ -1537,6 +1595,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
+                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": true,
                   "refetch": [Function],
@@ -1556,7 +1615,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                 "currentResultState": Object {
                   "data": undefined,
                   "dataUpdateCount": 1,
-                  "dataUpdatedAt": 1637918172688,
+                  "dataUpdatedAt": 1638181504357,
                   "error": null,
                   "errorUpdateCount": 0,
                   "errorUpdatedAt": 0,
@@ -1606,6 +1665,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
               "",
             ],
             "retryer": Retryer {
+              "abort": [Function],
               "cancel": [Function],
               "cancelRetry": [Function],
               "continue": [Function],
@@ -1632,7 +1692,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
             "state": Object {
               "data": undefined,
               "dataUpdateCount": 1,
-              "dataUpdatedAt": 1637918172688,
+              "dataUpdatedAt": 1638181504357,
               "error": null,
               "errorUpdateCount": 0,
               "errorUpdatedAt": 0,
@@ -1821,7 +1881,6 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                 >
                   <ForwardRef(Grid)
                     container={true}
-                    xs={12}
                   >
                     <ForwardRef(Grid)
                       item={true}
@@ -2501,6 +2560,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
         }
         sx={Object {}}
       >
+        <Noop />
         <div
           className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-10 MuiGrid-grid-md-10 css-re6nwv-MuiGrid-root"
         >
@@ -2667,7 +2727,6 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                     >
                       <ForwardRef(Grid)
                         container={true}
-                        xs={12}
                       >
                         <ForwardRef(Grid)
                           item={true}
@@ -3336,6 +3395,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                 }
               }
             >
+              <Noop />
               <div
                 className="MuiContainer-root MuiContainer-maxWidthLg page-container css-1oqqzyl-MuiContainer-root"
               >
@@ -3345,11 +3405,10 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                 >
                   <ForwardRef(Grid)
                     container={true}
-                    xs={12}
                   >
                     <MuiGridRoot
                       as="div"
-                      className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-undefined MuiGrid-grid-xs-12"
+                      className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-undefined"
                       ownerState={
                         Object {
                           "children": Array [
@@ -3386,14 +3445,15 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                           "sx": Object {},
                           "wrap": "wrap",
                           "xl": false,
-                          "xs": 12,
+                          "xs": false,
                           "zeroMinWidth": false,
                         }
                       }
                       sx={Object {}}
                     >
+                      <Noop />
                       <div
-                        className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-undefined MuiGrid-grid-xs-12 css-13q0xv4-MuiGrid-root"
+                        className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-undefined css-11lq3yg-MuiGrid-root"
                       >
                         <ForwardRef(Grid)
                           item={true}
@@ -3432,6 +3492,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                             }
                             sx={Object {}}
                           >
+                            <Noop />
                             <div
                               className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-10 MuiGrid-grid-md-10 css-re6nwv-MuiGrid-root"
                             >
@@ -3482,6 +3543,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                     }
                                   }
                                 >
+                                  <Noop />
                                   <h3
                                     className="MuiTypography-root MuiTypography-h3 MuiTypography-gutterBottom fw-bold css-xbw4pp-MuiTypography-root"
                                   >
@@ -3521,6 +3583,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                             }
                             sx={Object {}}
                           >
+                            <Noop />
                             <div
                               className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-2 MuiGrid-grid-md-2 css-ejafie-MuiGrid-root"
                             />
@@ -4195,6 +4258,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                         }
                       }
                     >
+                      <Noop />
                       <div
                         className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-undefined css-1sthlmf-MuiGrid-root"
                       >
@@ -4244,6 +4308,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                               }
                             }
                           >
+                            <Noop />
                             <div
                               className="MuiGrid-root MuiGrid-item MuiGrid-grid-md-12 css-gkojpy-MuiGrid-root"
                             >
@@ -4294,6 +4359,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                     }
                                   }
                                 >
+                                  <Noop />
                                   <h4
                                     className="MuiTypography-root MuiTypography-h4 MuiTypography-gutterBottom fw-bold css-1t4klde-MuiTypography-root"
                                   >
@@ -4357,6 +4423,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                               }
                             }
                           >
+                            <Noop />
                             <div
                               className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-6 css-14gtbhm-MuiGrid-root"
                             >
@@ -4647,6 +4714,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                               }
                             }
                           >
+                            <Noop />
                             <div
                               className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-6 css-1cw8s8z-MuiGrid-root"
                             >
@@ -4932,6 +5000,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                               }
                             }
                           >
+                            <Noop />
                             <div
                               className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-6 css-14gtbhm-MuiGrid-root"
                             >
@@ -5046,6 +5115,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                           }
                                         }
                                       >
+                                        <Noop />
                                         <div
                                           className="MuiFormControl-root select css-1nrlq1o-MuiFormControl-root"
                                         >
@@ -5119,6 +5189,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                 }
                                               }
                                             >
+                                              <Noop />
                                               <ForwardRef(FormLabel)
                                                 aria-labelledby="ADDRESS LINE 1"
                                                 aria-required={true}
@@ -5187,6 +5258,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                     }
                                                   }
                                                 >
+                                                  <Noop />
                                                   <label
                                                     aria-labelledby="ADDRESS LINE 1"
                                                     aria-required={true}
@@ -5422,6 +5494,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                   id="select-label"
                                                   onKeyDown={[Function]}
                                                 >
+                                                  <Noop />
                                                   <div
                                                     className="react-select-container css-b62m3t-container"
                                                     id="select-label"
@@ -5555,6 +5628,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                           }
                                                           id="react-select-2-live-region"
                                                         >
+                                                          <Noop />
                                                           <span
                                                             className="css-1f43avz-a11yText-A11yText"
                                                             id="react-select-2-live-region"
@@ -5581,6 +5655,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                             }
                                                           }
                                                         >
+                                                          <Noop />
                                                           <span
                                                             aria-atomic="false"
                                                             aria-live="polite"
@@ -5730,6 +5805,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                         onMouseDown={[Function]}
                                                         onTouchEnd={[Function]}
                                                       >
+                                                        <Noop />
                                                         <div
                                                           className="react-select__control css-1s2u09g-control"
                                                           onMouseDown={[Function]}
@@ -5853,6 +5929,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                 }
                                                               }
                                                             >
+                                                              <Noop />
                                                               <div
                                                                 className="react-select__value-container react-select__value-container--has-value css-319lph-ValueContainer"
                                                               >
@@ -5981,6 +6058,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                       }
                                                                     }
                                                                   >
+                                                                    <Noop />
                                                                     <div
                                                                       className="react-select__single-value css-qc6sy-singleValue"
                                                                     />
@@ -6132,13 +6210,15 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                         "margin": 2,
                                                                         "paddingBottom": 2,
                                                                         "paddingTop": 2,
+                                                                        "transform": "",
                                                                         "visibility": "visible",
                                                                       }
                                                                     }
                                                                     data-value=""
                                                                   >
+                                                                    <Noop />
                                                                     <div
-                                                                      className="react-select__input-container css-14dclt2-Input"
+                                                                      className="react-select__input-container css-6j8wv5-Input"
                                                                       data-value=""
                                                                     >
                                                                       <input
@@ -6298,6 +6378,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                 }
                                                               }
                                                             >
+                                                              <Noop />
                                                               <div
                                                                 className="react-select__indicators css-1hb7zxy-IndicatorsContainer"
                                                               >
@@ -6588,6 +6669,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                               }
                             }
                           >
+                            <Noop />
                             <div
                               className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-6 css-1cw8s8z-MuiGrid-root"
                             >
@@ -6878,6 +6960,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                               }
                             }
                           >
+                            <Noop />
                             <div
                               className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-6 css-14gtbhm-MuiGrid-root"
                             >
@@ -7170,6 +7253,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                               }
                             }
                           >
+                            <Noop />
                             <div
                               className="MuiGrid-root MuiGrid-item MuiGrid-grid-md-3 css-9ns7zh-MuiGrid-root"
                             >
@@ -7456,6 +7540,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                               }
                             }
                           >
+                            <Noop />
                             <div
                               className="MuiGrid-root MuiGrid-item MuiGrid-grid-md-3 css-dge0wo-MuiGrid-root"
                             >
@@ -7739,6 +7824,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                               }
                             }
                           >
+                            <Noop />
                             <div
                               className="MuiGrid-root MuiGrid-item MuiGrid-grid-md-12 css-gkojpy-MuiGrid-root"
                             >
@@ -7789,6 +7875,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                     }
                                   }
                                 >
+                                  <Noop />
                                   <h4
                                     className="MuiTypography-root MuiTypography-h4 MuiTypography-gutterBottom fw-bold css-1t4klde-MuiTypography-root"
                                   >
@@ -7852,6 +7939,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                               }
                             }
                           >
+                            <Noop />
                             <div
                               className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-6 css-14gtbhm-MuiGrid-root"
                             >
@@ -8142,6 +8230,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                               }
                             }
                           >
+                            <Noop />
                             <div
                               className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-6 css-1cw8s8z-MuiGrid-root"
                             >
@@ -8431,6 +8520,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                               }
                             }
                           >
+                            <Noop />
                             <div
                               className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-6 css-14gtbhm-MuiGrid-root"
                             >
@@ -8718,6 +8808,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                               }
                             }
                           >
+                            <Noop />
                             <div
                               className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-6 css-1cw8s8z-MuiGrid-root"
                             >
@@ -9001,6 +9092,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                               }
                             }
                           >
+                            <Noop />
                             <div
                               className="MuiGrid-root MuiGrid-item MuiGrid-grid-md-12 css-gkojpy-MuiGrid-root"
                             >
@@ -9051,6 +9143,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                     }
                                   }
                                 >
+                                  <Noop />
                                   <h4
                                     className="MuiTypography-root MuiTypography-h4 MuiTypography-gutterBottom fw-bold css-1t4klde-MuiTypography-root"
                                   >
@@ -9117,6 +9210,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                               }
                             }
                           >
+                            <Noop />
                             <div
                               className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-6 css-14gtbhm-MuiGrid-root"
                             >
@@ -9210,6 +9304,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                       }
                                     }
                                   >
+                                    <Noop />
                                     <div
                                       className="MuiFormControl-root select css-1nrlq1o-MuiFormControl-root"
                                     >
@@ -9283,6 +9378,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                             }
                                           }
                                         >
+                                          <Noop />
                                           <ForwardRef(FormLabel)
                                             aria-labelledby="PAYMENT TYPE"
                                             aria-required={true}
@@ -9351,6 +9447,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                 }
                                               }
                                             >
+                                              <Noop />
                                               <label
                                                 aria-labelledby="PAYMENT TYPE"
                                                 aria-required={true}
@@ -9593,6 +9690,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                               id="paymentType"
                                               onKeyDown={[Function]}
                                             >
+                                              <Noop />
                                               <div
                                                 className="react-select-container css-b62m3t-container"
                                                 id="paymentType"
@@ -9730,6 +9828,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                       }
                                                       id="react-select-3-live-region"
                                                     >
+                                                      <Noop />
                                                       <span
                                                         className="css-1f43avz-a11yText-A11yText"
                                                         id="react-select-3-live-region"
@@ -9756,6 +9855,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                         }
                                                       }
                                                     >
+                                                      <Noop />
                                                       <span
                                                         aria-atomic="false"
                                                         aria-live="polite"
@@ -9908,6 +10008,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                     onMouseDown={[Function]}
                                                     onTouchEnd={[Function]}
                                                   >
+                                                    <Noop />
                                                     <div
                                                       className="react-select__control css-1s2u09g-control"
                                                       onMouseDown={[Function]}
@@ -10034,6 +10135,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                             }
                                                           }
                                                         >
+                                                          <Noop />
                                                           <div
                                                             className="react-select__value-container react-select__value-container--has-value css-319lph-ValueContainer"
                                                           >
@@ -10274,6 +10376,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                     }
                                                                   }
                                                                 >
+                                                                  <Noop />
                                                                   <div
                                                                     className="react-select__single-value css-qc6sy-singleValue"
                                                                   >
@@ -10335,6 +10438,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                 tabIndex={0}
                                                                 value=""
                                                               >
+                                                                <Noop />
                                                                 <input
                                                                   aria-autocomplete="list"
                                                                   aria-controls="react-select-3-listbox"
@@ -10475,6 +10579,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                             }
                                                           }
                                                         >
+                                                          <Noop />
                                                           <div
                                                             className="react-select__indicators css-1hb7zxy-IndicatorsContainer"
                                                           >
@@ -10825,6 +10930,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                   onMouseDown={[Function]}
                                                                   onTouchEnd={[Function]}
                                                                 >
+                                                                  <Noop />
                                                                   <div
                                                                     aria-hidden="true"
                                                                     className="react-select__indicator react-select__dropdown-indicator css-tlfecz-indicatorContainer"
@@ -10926,6 +11032,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                               }
                             }
                           >
+                            <Noop />
                             <div
                               className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-6 css-1cw8s8z-MuiGrid-root"
                             >
@@ -11012,6 +11119,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                       }
                                     }
                                   >
+                                    <Noop />
                                     <div
                                       className="MuiFormControl-root date-picker-container css-1nrlq1o-MuiFormControl-root"
                                     >
@@ -11088,6 +11196,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                               }
                                             }
                                           >
+                                            <Noop />
                                             <ForwardRef(FormLabel)
                                               aria-labelledby="START DATE FOR CUSTOMER"
                                               aria-required={true}
@@ -11156,6 +11265,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                   }
                                                 }
                                               >
+                                                <Noop />
                                                 <label
                                                   aria-labelledby="START DATE FOR CUSTOMER"
                                                   aria-required={true}
@@ -11377,6 +11487,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                       required={false}
                                                       variant="outlined"
                                                     >
+                                                      <Noop />
                                                       <ForwardRef(FormControl)
                                                         className="MuiTextField-root css-1xj1k15-MuiTextField-root"
                                                         color="primary"
@@ -11427,6 +11538,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                             }
                                                           }
                                                         >
+                                                          <Noop />
                                                           <div
                                                             className="MuiFormControl-root MuiTextField-root css-1u3bzj6-MuiFormControl-root-MuiTextField-root"
                                                           >
@@ -11656,7 +11768,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                             "contrastText": "#fff",
                                                                             "dark": "#e65100",
                                                                             "light": "#ff9800",
-                                                                            "main": "#ED6C02",
+                                                                            "main": "#ed6c02",
                                                                           },
                                                                         },
                                                                         "shadows": Array [
@@ -11975,293 +12087,8 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                       "value": undefined,
                                                                     }
                                                                   }
-                                                                  theme={
-                                                                    Object {
-                                                                      "breakpoints": Object {
-                                                                        "between": [Function],
-                                                                        "down": [Function],
-                                                                        "keys": Array [
-                                                                          "xs",
-                                                                          "sm",
-                                                                          "md",
-                                                                          "lg",
-                                                                          "xl",
-                                                                        ],
-                                                                        "only": [Function],
-                                                                        "unit": "px",
-                                                                        "up": [Function],
-                                                                        "values": Object {
-                                                                          "lg": 1200,
-                                                                          "md": 900,
-                                                                          "sm": 600,
-                                                                          "xl": 1536,
-                                                                          "xs": 0,
-                                                                        },
-                                                                      },
-                                                                      "components": Object {},
-                                                                      "direction": "ltr",
-                                                                      "mixins": Object {
-                                                                        "toolbar": Object {
-                                                                          "@media (min-width:0px) and (orientation: landscape)": Object {
-                                                                            "minHeight": 48,
-                                                                          },
-                                                                          "@media (min-width:600px)": Object {
-                                                                            "minHeight": 64,
-                                                                          },
-                                                                          "minHeight": 56,
-                                                                        },
-                                                                      },
-                                                                      "palette": Object {
-                                                                        "action": Object {
-                                                                          "activatedOpacity": 0.12,
-                                                                          "active": "rgba(0, 0, 0, 0.54)",
-                                                                          "disabled": "rgba(0, 0, 0, 0.26)",
-                                                                          "disabledBackground": "rgba(0, 0, 0, 0.12)",
-                                                                          "disabledOpacity": 0.38,
-                                                                          "focus": "rgba(0, 0, 0, 0.12)",
-                                                                          "focusOpacity": 0.12,
-                                                                          "hover": "rgba(0, 0, 0, 0.04)",
-                                                                          "hoverOpacity": 0.04,
-                                                                          "selected": "rgba(0, 0, 0, 0.08)",
-                                                                          "selectedOpacity": 0.08,
-                                                                        },
-                                                                        "augmentColor": [Function],
-                                                                        "background": Object {
-                                                                          "default": "#fff",
-                                                                          "paper": "#fff",
-                                                                        },
-                                                                        "common": Object {
-                                                                          "black": "#000",
-                                                                          "white": "#fff",
-                                                                        },
-                                                                        "contrastThreshold": 3,
-                                                                        "divider": "rgba(0, 0, 0, 0.12)",
-                                                                        "error": Object {
-                                                                          "contrastText": "#fff",
-                                                                          "dark": "#c62828",
-                                                                          "light": "#ef5350",
-                                                                          "main": "#d32f2f",
-                                                                        },
-                                                                        "getContrastText": [Function],
-                                                                        "grey": Object {
-                                                                          "100": "#f5f5f5",
-                                                                          "200": "#eeeeee",
-                                                                          "300": "#e0e0e0",
-                                                                          "400": "#bdbdbd",
-                                                                          "50": "#fafafa",
-                                                                          "500": "#9e9e9e",
-                                                                          "600": "#757575",
-                                                                          "700": "#616161",
-                                                                          "800": "#424242",
-                                                                          "900": "#212121",
-                                                                          "A100": "#f5f5f5",
-                                                                          "A200": "#eeeeee",
-                                                                          "A400": "#bdbdbd",
-                                                                          "A700": "#616161",
-                                                                        },
-                                                                        "info": Object {
-                                                                          "contrastText": "#fff",
-                                                                          "dark": "#01579b",
-                                                                          "light": "#03a9f4",
-                                                                          "main": "#0288d1",
-                                                                        },
-                                                                        "mode": "light",
-                                                                        "primary": Object {
-                                                                          "contrastText": "#fff",
-                                                                          "dark": "#1565c0",
-                                                                          "light": "#42a5f5",
-                                                                          "main": "#1976d2",
-                                                                        },
-                                                                        "secondary": Object {
-                                                                          "contrastText": "#fff",
-                                                                          "dark": "#7b1fa2",
-                                                                          "light": "#ba68c8",
-                                                                          "main": "#9c27b0",
-                                                                        },
-                                                                        "success": Object {
-                                                                          "contrastText": "#fff",
-                                                                          "dark": "#1b5e20",
-                                                                          "light": "#4caf50",
-                                                                          "main": "#2e7d32",
-                                                                        },
-                                                                        "text": Object {
-                                                                          "disabled": "rgba(0, 0, 0, 0.38)",
-                                                                          "primary": "rgba(0, 0, 0, 0.87)",
-                                                                          "secondary": "rgba(0, 0, 0, 0.6)",
-                                                                        },
-                                                                        "tonalOffset": 0.2,
-                                                                        "warning": Object {
-                                                                          "contrastText": "#fff",
-                                                                          "dark": "#e65100",
-                                                                          "light": "#ff9800",
-                                                                          "main": "#ED6C02",
-                                                                        },
-                                                                      },
-                                                                      "shadows": Array [
-                                                                        "none",
-                                                                        "0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12)",
-                                                                        "0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12)",
-                                                                        "0px 3px 3px -2px rgba(0,0,0,0.2),0px 3px 4px 0px rgba(0,0,0,0.14),0px 1px 8px 0px rgba(0,0,0,0.12)",
-                                                                        "0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12)",
-                                                                        "0px 3px 5px -1px rgba(0,0,0,0.2),0px 5px 8px 0px rgba(0,0,0,0.14),0px 1px 14px 0px rgba(0,0,0,0.12)",
-                                                                        "0px 3px 5px -1px rgba(0,0,0,0.2),0px 6px 10px 0px rgba(0,0,0,0.14),0px 1px 18px 0px rgba(0,0,0,0.12)",
-                                                                        "0px 4px 5px -2px rgba(0,0,0,0.2),0px 7px 10px 1px rgba(0,0,0,0.14),0px 2px 16px 1px rgba(0,0,0,0.12)",
-                                                                        "0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12)",
-                                                                        "0px 5px 6px -3px rgba(0,0,0,0.2),0px 9px 12px 1px rgba(0,0,0,0.14),0px 3px 16px 2px rgba(0,0,0,0.12)",
-                                                                        "0px 6px 6px -3px rgba(0,0,0,0.2),0px 10px 14px 1px rgba(0,0,0,0.14),0px 4px 18px 3px rgba(0,0,0,0.12)",
-                                                                        "0px 6px 7px -4px rgba(0,0,0,0.2),0px 11px 15px 1px rgba(0,0,0,0.14),0px 4px 20px 3px rgba(0,0,0,0.12)",
-                                                                        "0px 7px 8px -4px rgba(0,0,0,0.2),0px 12px 17px 2px rgba(0,0,0,0.14),0px 5px 22px 4px rgba(0,0,0,0.12)",
-                                                                        "0px 7px 8px -4px rgba(0,0,0,0.2),0px 13px 19px 2px rgba(0,0,0,0.14),0px 5px 24px 4px rgba(0,0,0,0.12)",
-                                                                        "0px 7px 9px -4px rgba(0,0,0,0.2),0px 14px 21px 2px rgba(0,0,0,0.14),0px 5px 26px 4px rgba(0,0,0,0.12)",
-                                                                        "0px 8px 9px -5px rgba(0,0,0,0.2),0px 15px 22px 2px rgba(0,0,0,0.14),0px 6px 28px 5px rgba(0,0,0,0.12)",
-                                                                        "0px 8px 10px -5px rgba(0,0,0,0.2),0px 16px 24px 2px rgba(0,0,0,0.14),0px 6px 30px 5px rgba(0,0,0,0.12)",
-                                                                        "0px 8px 11px -5px rgba(0,0,0,0.2),0px 17px 26px 2px rgba(0,0,0,0.14),0px 6px 32px 5px rgba(0,0,0,0.12)",
-                                                                        "0px 9px 11px -5px rgba(0,0,0,0.2),0px 18px 28px 2px rgba(0,0,0,0.14),0px 7px 34px 6px rgba(0,0,0,0.12)",
-                                                                        "0px 9px 12px -6px rgba(0,0,0,0.2),0px 19px 29px 2px rgba(0,0,0,0.14),0px 7px 36px 6px rgba(0,0,0,0.12)",
-                                                                        "0px 10px 13px -6px rgba(0,0,0,0.2),0px 20px 31px 3px rgba(0,0,0,0.14),0px 8px 38px 7px rgba(0,0,0,0.12)",
-                                                                        "0px 10px 13px -6px rgba(0,0,0,0.2),0px 21px 33px 3px rgba(0,0,0,0.14),0px 8px 40px 7px rgba(0,0,0,0.12)",
-                                                                        "0px 10px 14px -6px rgba(0,0,0,0.2),0px 22px 35px 3px rgba(0,0,0,0.14),0px 8px 42px 7px rgba(0,0,0,0.12)",
-                                                                        "0px 11px 14px -7px rgba(0,0,0,0.2),0px 23px 36px 3px rgba(0,0,0,0.14),0px 9px 44px 8px rgba(0,0,0,0.12)",
-                                                                        "0px 11px 15px -7px rgba(0,0,0,0.2),0px 24px 38px 3px rgba(0,0,0,0.14),0px 9px 46px 8px rgba(0,0,0,0.12)",
-                                                                      ],
-                                                                      "shape": Object {
-                                                                        "borderRadius": 4,
-                                                                      },
-                                                                      "spacing": [Function],
-                                                                      "transitions": Object {
-                                                                        "create": [Function],
-                                                                        "duration": Object {
-                                                                          "complex": 375,
-                                                                          "enteringScreen": 225,
-                                                                          "leavingScreen": 195,
-                                                                          "short": 250,
-                                                                          "shorter": 200,
-                                                                          "shortest": 150,
-                                                                          "standard": 300,
-                                                                        },
-                                                                        "easing": Object {
-                                                                          "easeIn": "cubic-bezier(0.4, 0, 1, 1)",
-                                                                          "easeInOut": "cubic-bezier(0.4, 0, 0.2, 1)",
-                                                                          "easeOut": "cubic-bezier(0.0, 0, 0.2, 1)",
-                                                                          "sharp": "cubic-bezier(0.4, 0, 0.6, 1)",
-                                                                        },
-                                                                        "getAutoHeightDuration": [Function],
-                                                                      },
-                                                                      "typography": Object {
-                                                                        "body1": Object {
-                                                                          "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
-                                                                          "fontSize": "1rem",
-                                                                          "fontWeight": 400,
-                                                                          "letterSpacing": "0.00938em",
-                                                                          "lineHeight": 1.5,
-                                                                        },
-                                                                        "body2": Object {
-                                                                          "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
-                                                                          "fontSize": "0.875rem",
-                                                                          "fontWeight": 400,
-                                                                          "letterSpacing": "0.01071em",
-                                                                          "lineHeight": 1.43,
-                                                                        },
-                                                                        "button": Object {
-                                                                          "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
-                                                                          "fontSize": "0.875rem",
-                                                                          "fontWeight": 500,
-                                                                          "letterSpacing": "0.02857em",
-                                                                          "lineHeight": 1.75,
-                                                                          "textTransform": "uppercase",
-                                                                        },
-                                                                        "caption": Object {
-                                                                          "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
-                                                                          "fontSize": "0.75rem",
-                                                                          "fontWeight": 400,
-                                                                          "letterSpacing": "0.03333em",
-                                                                          "lineHeight": 1.66,
-                                                                        },
-                                                                        "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
-                                                                        "fontSize": 14,
-                                                                        "fontWeightBold": 700,
-                                                                        "fontWeightLight": 300,
-                                                                        "fontWeightMedium": 500,
-                                                                        "fontWeightRegular": 400,
-                                                                        "h1": Object {
-                                                                          "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
-                                                                          "fontSize": "6rem",
-                                                                          "fontWeight": 300,
-                                                                          "letterSpacing": "-0.01562em",
-                                                                          "lineHeight": 1.167,
-                                                                        },
-                                                                        "h2": Object {
-                                                                          "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
-                                                                          "fontSize": "3.75rem",
-                                                                          "fontWeight": 300,
-                                                                          "letterSpacing": "-0.00833em",
-                                                                          "lineHeight": 1.2,
-                                                                        },
-                                                                        "h3": Object {
-                                                                          "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
-                                                                          "fontSize": "3rem",
-                                                                          "fontWeight": 400,
-                                                                          "letterSpacing": "0em",
-                                                                          "lineHeight": 1.167,
-                                                                        },
-                                                                        "h4": Object {
-                                                                          "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
-                                                                          "fontSize": "2.125rem",
-                                                                          "fontWeight": 400,
-                                                                          "letterSpacing": "0.00735em",
-                                                                          "lineHeight": 1.235,
-                                                                        },
-                                                                        "h5": Object {
-                                                                          "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
-                                                                          "fontSize": "1.5rem",
-                                                                          "fontWeight": 400,
-                                                                          "letterSpacing": "0em",
-                                                                          "lineHeight": 1.334,
-                                                                        },
-                                                                        "h6": Object {
-                                                                          "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
-                                                                          "fontSize": "1.25rem",
-                                                                          "fontWeight": 500,
-                                                                          "letterSpacing": "0.0075em",
-                                                                          "lineHeight": 1.6,
-                                                                        },
-                                                                        "htmlFontSize": 16,
-                                                                        "overline": Object {
-                                                                          "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
-                                                                          "fontSize": "0.75rem",
-                                                                          "fontWeight": 400,
-                                                                          "letterSpacing": "0.08333em",
-                                                                          "lineHeight": 2.66,
-                                                                          "textTransform": "uppercase",
-                                                                        },
-                                                                        "pxToRem": [Function],
-                                                                        "subtitle1": Object {
-                                                                          "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
-                                                                          "fontSize": "1rem",
-                                                                          "fontWeight": 400,
-                                                                          "letterSpacing": "0.00938em",
-                                                                          "lineHeight": 1.75,
-                                                                        },
-                                                                        "subtitle2": Object {
-                                                                          "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
-                                                                          "fontSize": "0.875rem",
-                                                                          "fontWeight": 500,
-                                                                          "letterSpacing": "0.00714em",
-                                                                          "lineHeight": 1.57,
-                                                                        },
-                                                                      },
-                                                                      "zIndex": Object {
-                                                                        "appBar": 1100,
-                                                                        "drawer": 1200,
-                                                                        "mobileStepper": 1000,
-                                                                        "modal": 1300,
-                                                                        "snackbar": 1400,
-                                                                        "speedDial": 1050,
-                                                                        "tooltip": 1500,
-                                                                      },
-                                                                    }
-                                                                  }
                                                                 >
+                                                                  <Noop />
                                                                   <div
                                                                     className="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root"
                                                                     onClick={[Function]}
@@ -12392,295 +12219,10 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                       placeholder="Select Date"
                                                                       readOnly={true}
                                                                       required={false}
-                                                                      theme={
-                                                                        Object {
-                                                                          "breakpoints": Object {
-                                                                            "between": [Function],
-                                                                            "down": [Function],
-                                                                            "keys": Array [
-                                                                              "xs",
-                                                                              "sm",
-                                                                              "md",
-                                                                              "lg",
-                                                                              "xl",
-                                                                            ],
-                                                                            "only": [Function],
-                                                                            "unit": "px",
-                                                                            "up": [Function],
-                                                                            "values": Object {
-                                                                              "lg": 1200,
-                                                                              "md": 900,
-                                                                              "sm": 600,
-                                                                              "xl": 1536,
-                                                                              "xs": 0,
-                                                                            },
-                                                                          },
-                                                                          "components": Object {},
-                                                                          "direction": "ltr",
-                                                                          "mixins": Object {
-                                                                            "toolbar": Object {
-                                                                              "@media (min-width:0px) and (orientation: landscape)": Object {
-                                                                                "minHeight": 48,
-                                                                              },
-                                                                              "@media (min-width:600px)": Object {
-                                                                                "minHeight": 64,
-                                                                              },
-                                                                              "minHeight": 56,
-                                                                            },
-                                                                          },
-                                                                          "palette": Object {
-                                                                            "action": Object {
-                                                                              "activatedOpacity": 0.12,
-                                                                              "active": "rgba(0, 0, 0, 0.54)",
-                                                                              "disabled": "rgba(0, 0, 0, 0.26)",
-                                                                              "disabledBackground": "rgba(0, 0, 0, 0.12)",
-                                                                              "disabledOpacity": 0.38,
-                                                                              "focus": "rgba(0, 0, 0, 0.12)",
-                                                                              "focusOpacity": 0.12,
-                                                                              "hover": "rgba(0, 0, 0, 0.04)",
-                                                                              "hoverOpacity": 0.04,
-                                                                              "selected": "rgba(0, 0, 0, 0.08)",
-                                                                              "selectedOpacity": 0.08,
-                                                                            },
-                                                                            "augmentColor": [Function],
-                                                                            "background": Object {
-                                                                              "default": "#fff",
-                                                                              "paper": "#fff",
-                                                                            },
-                                                                            "common": Object {
-                                                                              "black": "#000",
-                                                                              "white": "#fff",
-                                                                            },
-                                                                            "contrastThreshold": 3,
-                                                                            "divider": "rgba(0, 0, 0, 0.12)",
-                                                                            "error": Object {
-                                                                              "contrastText": "#fff",
-                                                                              "dark": "#c62828",
-                                                                              "light": "#ef5350",
-                                                                              "main": "#d32f2f",
-                                                                            },
-                                                                            "getContrastText": [Function],
-                                                                            "grey": Object {
-                                                                              "100": "#f5f5f5",
-                                                                              "200": "#eeeeee",
-                                                                              "300": "#e0e0e0",
-                                                                              "400": "#bdbdbd",
-                                                                              "50": "#fafafa",
-                                                                              "500": "#9e9e9e",
-                                                                              "600": "#757575",
-                                                                              "700": "#616161",
-                                                                              "800": "#424242",
-                                                                              "900": "#212121",
-                                                                              "A100": "#f5f5f5",
-                                                                              "A200": "#eeeeee",
-                                                                              "A400": "#bdbdbd",
-                                                                              "A700": "#616161",
-                                                                            },
-                                                                            "info": Object {
-                                                                              "contrastText": "#fff",
-                                                                              "dark": "#01579b",
-                                                                              "light": "#03a9f4",
-                                                                              "main": "#0288d1",
-                                                                            },
-                                                                            "mode": "light",
-                                                                            "primary": Object {
-                                                                              "contrastText": "#fff",
-                                                                              "dark": "#1565c0",
-                                                                              "light": "#42a5f5",
-                                                                              "main": "#1976d2",
-                                                                            },
-                                                                            "secondary": Object {
-                                                                              "contrastText": "#fff",
-                                                                              "dark": "#7b1fa2",
-                                                                              "light": "#ba68c8",
-                                                                              "main": "#9c27b0",
-                                                                            },
-                                                                            "success": Object {
-                                                                              "contrastText": "#fff",
-                                                                              "dark": "#1b5e20",
-                                                                              "light": "#4caf50",
-                                                                              "main": "#2e7d32",
-                                                                            },
-                                                                            "text": Object {
-                                                                              "disabled": "rgba(0, 0, 0, 0.38)",
-                                                                              "primary": "rgba(0, 0, 0, 0.87)",
-                                                                              "secondary": "rgba(0, 0, 0, 0.6)",
-                                                                            },
-                                                                            "tonalOffset": 0.2,
-                                                                            "warning": Object {
-                                                                              "contrastText": "#fff",
-                                                                              "dark": "#e65100",
-                                                                              "light": "#ff9800",
-                                                                              "main": "#ED6C02",
-                                                                            },
-                                                                          },
-                                                                          "shadows": Array [
-                                                                            "none",
-                                                                            "0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12)",
-                                                                            "0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12)",
-                                                                            "0px 3px 3px -2px rgba(0,0,0,0.2),0px 3px 4px 0px rgba(0,0,0,0.14),0px 1px 8px 0px rgba(0,0,0,0.12)",
-                                                                            "0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12)",
-                                                                            "0px 3px 5px -1px rgba(0,0,0,0.2),0px 5px 8px 0px rgba(0,0,0,0.14),0px 1px 14px 0px rgba(0,0,0,0.12)",
-                                                                            "0px 3px 5px -1px rgba(0,0,0,0.2),0px 6px 10px 0px rgba(0,0,0,0.14),0px 1px 18px 0px rgba(0,0,0,0.12)",
-                                                                            "0px 4px 5px -2px rgba(0,0,0,0.2),0px 7px 10px 1px rgba(0,0,0,0.14),0px 2px 16px 1px rgba(0,0,0,0.12)",
-                                                                            "0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12)",
-                                                                            "0px 5px 6px -3px rgba(0,0,0,0.2),0px 9px 12px 1px rgba(0,0,0,0.14),0px 3px 16px 2px rgba(0,0,0,0.12)",
-                                                                            "0px 6px 6px -3px rgba(0,0,0,0.2),0px 10px 14px 1px rgba(0,0,0,0.14),0px 4px 18px 3px rgba(0,0,0,0.12)",
-                                                                            "0px 6px 7px -4px rgba(0,0,0,0.2),0px 11px 15px 1px rgba(0,0,0,0.14),0px 4px 20px 3px rgba(0,0,0,0.12)",
-                                                                            "0px 7px 8px -4px rgba(0,0,0,0.2),0px 12px 17px 2px rgba(0,0,0,0.14),0px 5px 22px 4px rgba(0,0,0,0.12)",
-                                                                            "0px 7px 8px -4px rgba(0,0,0,0.2),0px 13px 19px 2px rgba(0,0,0,0.14),0px 5px 24px 4px rgba(0,0,0,0.12)",
-                                                                            "0px 7px 9px -4px rgba(0,0,0,0.2),0px 14px 21px 2px rgba(0,0,0,0.14),0px 5px 26px 4px rgba(0,0,0,0.12)",
-                                                                            "0px 8px 9px -5px rgba(0,0,0,0.2),0px 15px 22px 2px rgba(0,0,0,0.14),0px 6px 28px 5px rgba(0,0,0,0.12)",
-                                                                            "0px 8px 10px -5px rgba(0,0,0,0.2),0px 16px 24px 2px rgba(0,0,0,0.14),0px 6px 30px 5px rgba(0,0,0,0.12)",
-                                                                            "0px 8px 11px -5px rgba(0,0,0,0.2),0px 17px 26px 2px rgba(0,0,0,0.14),0px 6px 32px 5px rgba(0,0,0,0.12)",
-                                                                            "0px 9px 11px -5px rgba(0,0,0,0.2),0px 18px 28px 2px rgba(0,0,0,0.14),0px 7px 34px 6px rgba(0,0,0,0.12)",
-                                                                            "0px 9px 12px -6px rgba(0,0,0,0.2),0px 19px 29px 2px rgba(0,0,0,0.14),0px 7px 36px 6px rgba(0,0,0,0.12)",
-                                                                            "0px 10px 13px -6px rgba(0,0,0,0.2),0px 20px 31px 3px rgba(0,0,0,0.14),0px 8px 38px 7px rgba(0,0,0,0.12)",
-                                                                            "0px 10px 13px -6px rgba(0,0,0,0.2),0px 21px 33px 3px rgba(0,0,0,0.14),0px 8px 40px 7px rgba(0,0,0,0.12)",
-                                                                            "0px 10px 14px -6px rgba(0,0,0,0.2),0px 22px 35px 3px rgba(0,0,0,0.14),0px 8px 42px 7px rgba(0,0,0,0.12)",
-                                                                            "0px 11px 14px -7px rgba(0,0,0,0.2),0px 23px 36px 3px rgba(0,0,0,0.14),0px 9px 44px 8px rgba(0,0,0,0.12)",
-                                                                            "0px 11px 15px -7px rgba(0,0,0,0.2),0px 24px 38px 3px rgba(0,0,0,0.14),0px 9px 46px 8px rgba(0,0,0,0.12)",
-                                                                          ],
-                                                                          "shape": Object {
-                                                                            "borderRadius": 4,
-                                                                          },
-                                                                          "spacing": [Function],
-                                                                          "transitions": Object {
-                                                                            "create": [Function],
-                                                                            "duration": Object {
-                                                                              "complex": 375,
-                                                                              "enteringScreen": 225,
-                                                                              "leavingScreen": 195,
-                                                                              "short": 250,
-                                                                              "shorter": 200,
-                                                                              "shortest": 150,
-                                                                              "standard": 300,
-                                                                            },
-                                                                            "easing": Object {
-                                                                              "easeIn": "cubic-bezier(0.4, 0, 1, 1)",
-                                                                              "easeInOut": "cubic-bezier(0.4, 0, 0.2, 1)",
-                                                                              "easeOut": "cubic-bezier(0.0, 0, 0.2, 1)",
-                                                                              "sharp": "cubic-bezier(0.4, 0, 0.6, 1)",
-                                                                            },
-                                                                            "getAutoHeightDuration": [Function],
-                                                                          },
-                                                                          "typography": Object {
-                                                                            "body1": Object {
-                                                                              "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
-                                                                              "fontSize": "1rem",
-                                                                              "fontWeight": 400,
-                                                                              "letterSpacing": "0.00938em",
-                                                                              "lineHeight": 1.5,
-                                                                            },
-                                                                            "body2": Object {
-                                                                              "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
-                                                                              "fontSize": "0.875rem",
-                                                                              "fontWeight": 400,
-                                                                              "letterSpacing": "0.01071em",
-                                                                              "lineHeight": 1.43,
-                                                                            },
-                                                                            "button": Object {
-                                                                              "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
-                                                                              "fontSize": "0.875rem",
-                                                                              "fontWeight": 500,
-                                                                              "letterSpacing": "0.02857em",
-                                                                              "lineHeight": 1.75,
-                                                                              "textTransform": "uppercase",
-                                                                            },
-                                                                            "caption": Object {
-                                                                              "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
-                                                                              "fontSize": "0.75rem",
-                                                                              "fontWeight": 400,
-                                                                              "letterSpacing": "0.03333em",
-                                                                              "lineHeight": 1.66,
-                                                                            },
-                                                                            "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
-                                                                            "fontSize": 14,
-                                                                            "fontWeightBold": 700,
-                                                                            "fontWeightLight": 300,
-                                                                            "fontWeightMedium": 500,
-                                                                            "fontWeightRegular": 400,
-                                                                            "h1": Object {
-                                                                              "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
-                                                                              "fontSize": "6rem",
-                                                                              "fontWeight": 300,
-                                                                              "letterSpacing": "-0.01562em",
-                                                                              "lineHeight": 1.167,
-                                                                            },
-                                                                            "h2": Object {
-                                                                              "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
-                                                                              "fontSize": "3.75rem",
-                                                                              "fontWeight": 300,
-                                                                              "letterSpacing": "-0.00833em",
-                                                                              "lineHeight": 1.2,
-                                                                            },
-                                                                            "h3": Object {
-                                                                              "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
-                                                                              "fontSize": "3rem",
-                                                                              "fontWeight": 400,
-                                                                              "letterSpacing": "0em",
-                                                                              "lineHeight": 1.167,
-                                                                            },
-                                                                            "h4": Object {
-                                                                              "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
-                                                                              "fontSize": "2.125rem",
-                                                                              "fontWeight": 400,
-                                                                              "letterSpacing": "0.00735em",
-                                                                              "lineHeight": 1.235,
-                                                                            },
-                                                                            "h5": Object {
-                                                                              "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
-                                                                              "fontSize": "1.5rem",
-                                                                              "fontWeight": 400,
-                                                                              "letterSpacing": "0em",
-                                                                              "lineHeight": 1.334,
-                                                                            },
-                                                                            "h6": Object {
-                                                                              "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
-                                                                              "fontSize": "1.25rem",
-                                                                              "fontWeight": 500,
-                                                                              "letterSpacing": "0.0075em",
-                                                                              "lineHeight": 1.6,
-                                                                            },
-                                                                            "htmlFontSize": 16,
-                                                                            "overline": Object {
-                                                                              "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
-                                                                              "fontSize": "0.75rem",
-                                                                              "fontWeight": 400,
-                                                                              "letterSpacing": "0.08333em",
-                                                                              "lineHeight": 2.66,
-                                                                              "textTransform": "uppercase",
-                                                                            },
-                                                                            "pxToRem": [Function],
-                                                                            "subtitle1": Object {
-                                                                              "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
-                                                                              "fontSize": "1rem",
-                                                                              "fontWeight": 400,
-                                                                              "letterSpacing": "0.00938em",
-                                                                              "lineHeight": 1.75,
-                                                                            },
-                                                                            "subtitle2": Object {
-                                                                              "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
-                                                                              "fontSize": "0.875rem",
-                                                                              "fontWeight": 500,
-                                                                              "letterSpacing": "0.00714em",
-                                                                              "lineHeight": 1.57,
-                                                                            },
-                                                                          },
-                                                                          "zIndex": Object {
-                                                                            "appBar": 1100,
-                                                                            "drawer": 1200,
-                                                                            "mobileStepper": 1000,
-                                                                            "modal": 1300,
-                                                                            "snackbar": 1400,
-                                                                            "speedDial": 1050,
-                                                                            "tooltip": 1500,
-                                                                          },
-                                                                        }
-                                                                      }
                                                                       type="text"
                                                                       value=""
                                                                     >
+                                                                      <Noop />
                                                                       <input
                                                                         aria-invalid={false}
                                                                         aria-label="Choose date"
@@ -12705,6 +12247,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                       className="MuiOutlinedInput-notchedOutline"
                                                                       notched={false}
                                                                     >
+                                                                      <Noop />
                                                                       <NotchedOutline
                                                                         className="MuiOutlinedInput-notchedOutline css-rki20w-MuiOutlinedInput-notchedOutline"
                                                                         notched={false}
@@ -12720,6 +12263,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                             }
                                                                           }
                                                                         >
+                                                                          <Noop />
                                                                           <fieldset
                                                                             aria-hidden={true}
                                                                             className="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
@@ -12733,8 +12277,9 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                                 }
                                                                               }
                                                                             >
+                                                                              <Noop />
                                                                               <legend
-                                                                                className="css-1a1ihhj"
+                                                                                className="css-nnbavb"
                                                                               >
                                                                                 <span
                                                                                   className="notranslate"
@@ -12771,6 +12316,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                     onClose={[Function]}
                                                     open={false}
                                                   >
+                                                    <Noop />
                                                     <ForwardRef(Dialog)
                                                       className="css-1rqc0ef"
                                                       onClose={[Function]}
@@ -13002,6 +12548,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                           }
                                                         }
                                                       >
+                                                        <Noop />
                                                         <ForwardRef(Modal)
                                                           BackdropComponent={
                                                             Object {
@@ -13209,6 +12756,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                               }
                             }
                           >
+                            <Noop />
                             <div
                               className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-6 css-14gtbhm-MuiGrid-root"
                             >
@@ -13302,6 +12850,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                       }
                                     }
                                   >
+                                    <Noop />
                                     <div
                                       className="MuiFormControl-root select css-1nrlq1o-MuiFormControl-root"
                                     >
@@ -13375,6 +12924,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                             }
                                           }
                                         >
+                                          <Noop />
                                           <ForwardRef(FormLabel)
                                             aria-labelledby="INVOICE FREQUENCY"
                                             aria-required={true}
@@ -13443,6 +12993,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                 }
                                               }
                                             >
+                                              <Noop />
                                               <label
                                                 aria-labelledby="INVOICE FREQUENCY"
                                                 aria-required={true}
@@ -13685,6 +13236,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                               id="invoiceFrequency"
                                               onKeyDown={[Function]}
                                             >
+                                              <Noop />
                                               <div
                                                 className="react-select-container css-b62m3t-container"
                                                 id="invoiceFrequency"
@@ -13822,6 +13374,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                       }
                                                       id="react-select-4-live-region"
                                                     >
+                                                      <Noop />
                                                       <span
                                                         className="css-1f43avz-a11yText-A11yText"
                                                         id="react-select-4-live-region"
@@ -13848,6 +13401,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                         }
                                                       }
                                                     >
+                                                      <Noop />
                                                       <span
                                                         aria-atomic="false"
                                                         aria-live="polite"
@@ -14000,6 +13554,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                     onMouseDown={[Function]}
                                                     onTouchEnd={[Function]}
                                                   >
+                                                    <Noop />
                                                     <div
                                                       className="react-select__control css-1s2u09g-control"
                                                       onMouseDown={[Function]}
@@ -14126,6 +13681,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                             }
                                                           }
                                                         >
+                                                          <Noop />
                                                           <div
                                                             className="react-select__value-container react-select__value-container--has-value css-319lph-ValueContainer"
                                                           >
@@ -14366,6 +13922,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                     }
                                                                   }
                                                                 >
+                                                                  <Noop />
                                                                   <div
                                                                     className="react-select__single-value css-qc6sy-singleValue"
                                                                   >
@@ -14427,6 +13984,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                 tabIndex={0}
                                                                 value=""
                                                               >
+                                                                <Noop />
                                                                 <input
                                                                   aria-autocomplete="list"
                                                                   aria-controls="react-select-4-listbox"
@@ -14567,6 +14125,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                             }
                                                           }
                                                         >
+                                                          <Noop />
                                                           <div
                                                             className="react-select__indicators css-1hb7zxy-IndicatorsContainer"
                                                           >
@@ -14917,6 +14476,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                   onMouseDown={[Function]}
                                                                   onTouchEnd={[Function]}
                                                                 >
+                                                                  <Noop />
                                                                   <div
                                                                     aria-hidden="true"
                                                                     className="react-select__indicator react-select__dropdown-indicator css-tlfecz-indicatorContainer"
@@ -15019,6 +14579,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                               }
                             }
                           >
+                            <Noop />
                             <div
                               className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-6 css-1cw8s8z-MuiGrid-root"
                             >
@@ -15379,6 +14940,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                               }
                             }
                           >
+                            <Noop />
                             <div
                               className="MuiGrid-root MuiGrid-item MuiGrid-grid-md-12 css-gkojpy-MuiGrid-root"
                             >
@@ -15498,6 +15060,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                     }
                                   }
                                 >
+                                  <Noop />
                                   <div
                                     className="MuiFormControl-root css-1vgzwi7-MuiFormControl-root"
                                   >
@@ -15593,6 +15156,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                           }
                                         }
                                       >
+                                        <Noop />
                                         <div
                                           className="MuiFormGroup-root css-dmmspl-MuiFormGroup-root"
                                         >
@@ -15658,6 +15222,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                 }
                                               }
                                             >
+                                              <Noop />
                                               <label
                                                 className="MuiFormControlLabel-root Mui-disabled MuiFormControlLabel-labelPlacementEnd checkbox-field css-mq6r4d-MuiFormControlLabel-root"
                                               >
@@ -15912,6 +15477,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                       }
                                                     }
                                                   >
+                                                    <Noop />
                                                     <h4
                                                       className="MuiTypography-root MuiTypography-h4 fw-bold css-1fbcu61-MuiTypography-root"
                                                     >
@@ -15984,6 +15550,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                 }
                                               }
                                             >
+                                              <Noop />
                                               <label
                                                 className="MuiFormControlLabel-root Mui-disabled MuiFormControlLabel-labelPlacementEnd checkbox-field css-mq6r4d-MuiFormControlLabel-root"
                                               >
@@ -16238,6 +15805,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                       }
                                                     }
                                                   >
+                                                    <Noop />
                                                     <h4
                                                       className="MuiTypography-root MuiTypography-h4 fw-bold css-1fbcu61-MuiTypography-root"
                                                     >
@@ -16310,6 +15878,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                 }
                                               }
                                             >
+                                              <Noop />
                                               <label
                                                 className="MuiFormControlLabel-root Mui-disabled MuiFormControlLabel-labelPlacementEnd checkbox-field css-mq6r4d-MuiFormControlLabel-root"
                                               >
@@ -16564,6 +16133,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                       }
                                                     }
                                                   >
+                                                    <Noop />
                                                     <h4
                                                       className="MuiTypography-root MuiTypography-h4 fw-bold css-1fbcu61-MuiTypography-root"
                                                     >
@@ -16631,6 +16201,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                               }
                             }
                           >
+                            <Noop />
                             <div
                               className="MuiGrid-root MuiGrid-item MuiGrid-grid-md-12 css-gkojpy-MuiGrid-root"
                             >
@@ -16685,6 +16256,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                     }
                                   }
                                 >
+                                  <Noop />
                                   <h4
                                     className="MuiTypography-root MuiTypography-h4 MuiTypography-gutterBottom fw-bold css-1t4klde-MuiTypography-root"
                                   >
@@ -16973,6 +16545,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                 }
                                 sx={Object {}}
                               >
+                                <Noop />
                                 <div
                                   className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-undefined css-11lq3yg-MuiGrid-root"
                                 >
@@ -17029,6 +16602,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                         }
                                       }
                                     >
+                                      <Noop />
                                       <div
                                         className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-6 css-14gtbhm-MuiGrid-root"
                                       >
@@ -17319,6 +16893,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                         }
                                       }
                                     >
+                                      <Noop />
                                       <div
                                         className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-6 css-1cw8s8z-MuiGrid-root"
                                       >
@@ -17609,6 +17184,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                         }
                                       }
                                     >
+                                      <Noop />
                                       <div
                                         className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-6 css-14gtbhm-MuiGrid-root"
                                       >
@@ -17899,6 +17475,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                         }
                                       }
                                     >
+                                      <Noop />
                                       <div
                                         className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-6 css-1cw8s8z-MuiGrid-root"
                                       >
@@ -18200,6 +17777,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                   }
                                 }
                               >
+                                <Noop />
                                 <div
                                   className="MuiGrid-root MuiGrid-item MuiGrid-grid-md-12 css-5brak6-MuiGrid-root"
                                 >
@@ -18267,6 +17845,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                       }
                                       variant="body2"
                                     >
+                                      <Noop />
                                       <ForwardRef(Typography)
                                         className="MuiLink-root MuiLink-underlineAlways add-link css-1rfl7td-MuiLink-root"
                                         color="primary"
@@ -18336,6 +17915,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                             }
                                           }
                                         >
+                                          <Noop />
                                           <a
                                             className="MuiTypography-root MuiTypography-body2 MuiLink-root MuiLink-underlineAlways add-link css-1n1qjb5-MuiTypography-root-MuiLink-root"
                                             onBlur={[Function]}
@@ -18411,6 +17991,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                   }
                                                 }
                                               >
+                                                <Noop />
                                                 <h3
                                                   className="MuiTypography-root MuiTypography-h3 fw-bold MuiTypography-h5-primary disabled-text css-1t35zg5-MuiTypography-root"
                                                 >
@@ -18476,6 +18057,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                               }
                             }
                           >
+                            <Noop />
                             <div
                               className="MuiGrid-root MuiGrid-item MuiGrid-grid-md-12 css-gkojpy-MuiGrid-root"
                             >
@@ -18530,6 +18112,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                     }
                                   }
                                 >
+                                  <Noop />
                                   <h4
                                     className="MuiTypography-root MuiTypography-h4 MuiTypography-gutterBottom fw-bold css-1t4klde-MuiTypography-root"
                                   >
@@ -18818,6 +18401,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                 }
                                 sx={Object {}}
                               >
+                                <Noop />
                                 <div
                                   className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-undefined css-11lq3yg-MuiGrid-root"
                                 >
@@ -18874,6 +18458,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                         }
                                       }
                                     >
+                                      <Noop />
                                       <div
                                         className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-6 css-14gtbhm-MuiGrid-root"
                                       >
@@ -19164,6 +18749,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                         }
                                       }
                                     >
+                                      <Noop />
                                       <div
                                         className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-6 css-1cw8s8z-MuiGrid-root"
                                       >
@@ -19454,6 +19040,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                         }
                                       }
                                     >
+                                      <Noop />
                                       <div
                                         className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-6 css-14gtbhm-MuiGrid-root"
                                       >
@@ -19744,6 +19331,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                         }
                                       }
                                     >
+                                      <Noop />
                                       <div
                                         className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-6 css-1cw8s8z-MuiGrid-root"
                                       >
@@ -20045,6 +19633,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                   }
                                 }
                               >
+                                <Noop />
                                 <div
                                   className="MuiGrid-root MuiGrid-item MuiGrid-grid-md-12 css-5brak6-MuiGrid-root"
                                 >
@@ -20112,6 +19701,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                       }
                                       variant="body2"
                                     >
+                                      <Noop />
                                       <ForwardRef(Typography)
                                         className="MuiLink-root MuiLink-underlineAlways add-link css-1rfl7td-MuiLink-root"
                                         color="primary"
@@ -20181,6 +19771,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                             }
                                           }
                                         >
+                                          <Noop />
                                           <a
                                             className="MuiTypography-root MuiTypography-body2 MuiLink-root MuiLink-underlineAlways add-link css-1n1qjb5-MuiTypography-root-MuiLink-root"
                                             onBlur={[Function]}
@@ -20256,6 +19847,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                   }
                                                 }
                                               >
+                                                <Noop />
                                                 <h3
                                                   className="MuiTypography-root MuiTypography-h3 fw-bold MuiTypography-h5-primary disabled-text css-1t35zg5-MuiTypography-root"
                                                 >
@@ -20324,6 +19916,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                               }
                             }
                           >
+                            <Noop />
                             <div
                               className="MuiGrid-root MuiGrid-item MuiGrid-grid-md-12 css-gkojpy-MuiGrid-root"
                             >
@@ -20381,6 +19974,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                     }
                                   }
                                 >
+                                  <Noop />
                                   <h4
                                     className="MuiTypography-root MuiTypography-h4 MuiTypography-gutterBottom fw-bold css-1wfw9vj-MuiTypography-root"
                                   >
@@ -20470,6 +20064,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                               }
                             }
                           >
+                            <Noop />
                             <div
                               className="MuiGrid-root MuiGrid-item MuiGrid-grid-md-12 css-gkojpy-MuiGrid-root"
                             >
@@ -20599,7 +20194,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                           "contrastText": "#fff",
                                           "dark": "#e65100",
                                           "light": "#ff9800",
-                                          "main": "#ED6C02",
+                                          "main": "#ed6c02",
                                         },
                                       },
                                       "shadows": Array [
@@ -20767,6 +20362,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                     }
                                   }
                                 >
+                                  <Noop />
                                   <div
                                     className="import-file MuiBox-root css-0"
                                   >
@@ -20850,6 +20446,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                             }
                                           }
                                         >
+                                          <Noop />
                                           <h4
                                             className="MuiTypography-root MuiTypography-h4 fw-bold pl-3 css-1ufzj9p-MuiTypography-root"
                                           >
@@ -21095,6 +20692,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                               }
                             }
                           >
+                            <Noop />
                             <div
                               className="MuiGrid-root MuiGrid-item MuiGrid-grid-md-12 css-gkojpy-MuiGrid-root"
                             >
@@ -21224,7 +20822,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                           "contrastText": "#fff",
                                           "dark": "#e65100",
                                           "light": "#ff9800",
-                                          "main": "#ED6C02",
+                                          "main": "#ed6c02",
                                         },
                                       },
                                       "shadows": Array [
@@ -21392,6 +20990,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                     }
                                   }
                                 >
+                                  <Noop />
                                   <div
                                     className="form-action-section MuiBox-root css-0"
                                   >
@@ -21818,6 +21417,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
             }
           }
         >
+          <Noop />
           <ForwardRef(Modal)
             BackdropComponent={
               Object {
