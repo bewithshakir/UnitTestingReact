@@ -51,6 +51,11 @@ describe('AddSalesTax component', () => {
         expect(cityInput.length).toBe(1);
     });
 
+    it('renders federalRate input without error', ()=>{
+        const cityInput = findByTestAttr(wrapper, 'federalRate');
+        expect(cityInput.length).toBe(1);
+    });
+
     it('renders localRate input without error', ()=>{
         const cityInput = findByTestAttr(wrapper, 'localRate');
         expect(cityInput.length).toBe(1);
