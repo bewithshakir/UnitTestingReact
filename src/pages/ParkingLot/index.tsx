@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable no-console */
 import React, { SyntheticEvent, useEffect } from "react";
 import { Button } from "../../components/UIComponents/Button/Button.component";
@@ -35,9 +36,6 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
   const MASS_ACTION_TYPES = ParkingLotObj.MASS_ACTION_TYPES;
 
   const history = useHistory();
-  // const location = useLocation();
-  // const { state }  = history?.location;
-console.log(history?.location?.state);
   const [info, setInfo] = React.useState({});
   const [searchTerm, setSearchTerm] = React.useState("");
   const [drawerOpen, setDrawerOpen] = React.useState(false);
@@ -46,6 +44,9 @@ console.log(history?.location?.state);
   const [custFilterPanelVisible, setCustFilterPanelVisible] = React.useState(false);
   const [parkingLotlist, setParkingLotList] = React.useState([]);
   const customerId = useAddedCustomerIdStore((state: addedCustomerIdState) => state.customerId);
+  const [infoPanelName, setInfoPanelName] = React.useState('');
+  const [infoPanelEditId, setInfoPanelEditId] = React.useState('');
+
 
   const { t } = useTranslation();
   const { data, fetchNextPage, isFetching, isLoading }: any = useGetParkingLotDetails(
@@ -70,10 +71,36 @@ console.log(history?.location?.state);
     
   });
 
+  const createInfoObjForRightInfoPanel = (row: any) => {
+    console.log(row);
+    setInfoPanelEditId(row.deliveryLocationId);
+    setInfoPanelName(row.deliveryLocationNm);
+    const infoObj = {
+      // 'Customer ID': row.customerInputId,
+      // 'Name': row.contactName,
+      // 'Email': row.email,
+      // 'Phone': maskPhoneNumber(row.phone),
+      // 'Settlement Type': row.paymentType,
+      // 'Card Added': row.cardAdded === "Y" ? <PositiveCricleIcon /> : row.cardAdded === "N" ? 'Not yet assigned' : '',
+      // 'Address': row.address,
+      // 'City': row.city,
+      // 'State': row.state,
+      // 'Zip Code': row.zipCode,
+    };
+    return infoObj;
+  };
+
+  // const openDrawer = (row: SyntheticEvent) => {
+  //   setInfo(row);
+  //   setDrawerOpen(true);
+  // };
+
   const openDrawer = (row: SyntheticEvent) => {
+    const infoObj = createInfoObjForRightInfoPanel(row);
     setInfo(row);
     setDrawerOpen(true);
   };
+
   const drawerClose = () => {
     setDrawerOpen(false);
   };
@@ -231,7 +258,9 @@ console.log(history?.location?.state);
           onClose={handleCustFilterPanelClose} 
           fields={filterByFields} 
           storeKey='parkingLot' />
-          <RightInfoPanel panelType="info-view" open={drawerOpen} headingText={"Accurate Transportation"} info={info} onClose={drawerClose} />
+          {/* <RightInfoPanel panelType="info-view" open={drawerOpen} headingText={"Accurate Transportation"} info={info} onClose={drawerClose} /> */}
+          <RightInfoPanel panelType="info-view" open={drawerOpen} headingText={infoPanelName} info={info} idStrForEdit={infoPanelEditId} nameStrForEdit={infoPanelName} onClose={drawerClose} />
+
         </Grid>
       </Grid>
     </Box>

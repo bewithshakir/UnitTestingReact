@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable no-console */
 import React, { useState, useEffect } from 'react';
 import { FieldArray, FormikProvider, useFormik } from 'formik';
 import { useTranslation } from 'react-i18next';
@@ -18,10 +20,7 @@ import { formStatusObj, timeZones, productDelFreq, getCountry} from '../../confi
 import MultiSelect from '../../../../components/UIComponents/Select/MultiSelect';
 import { DatePickerInput } from '../../../../components/UIComponents/DatePickerInput/DatePickerInput.component';
 import { TimePicker } from '../../../../components/UIComponents/TimePicker/TimePicker.component';
-
 import { useAddedCustomerIdStore, useShowConfirmationDialogBoxStore } from '../../../../store';
-
-
 import './AddLotForm.style.scss';
 
 interface FormStatusType {
@@ -33,7 +32,6 @@ interface FormStatusProps {
 }
 
 const formStatusProps: FormStatusProps = formStatusObj;
-
 
 function AddLotForm(): React.ReactElement {
 
@@ -53,6 +51,17 @@ function AddLotForm(): React.ReactElement {
     const showDialogBox = useShowConfirmationDialogBoxStore((state) => state.showDialogBox);
     const hideDialogBox = useShowConfirmationDialogBoxStore((state) => state.hideDialogBox);
     const isFormValidated = useShowConfirmationDialogBoxStore((state) => state.setFormFieldValue);
+    // const [isTrigger, setIsTrigger] = useState(false);
+    // const setCustomerIdCreated = useAddedCustomerIdStore((state) => state.setCustomerId);
+    // const setPageCustomerName = useAddedCustomerNameStore((state) => state.setCustomerName);
+    const [isDisabled, setDisabled] = useState(false);
+
+    const [isEditMode, setEditMode] = useState(false);
+
+    const [isEditShown, setEditShown] = useState(true);
+
+    const [isSavCancelShown, setSaveCancelShown] = useState(true);
+
 
     useEffect(() => {
         resetFormFieldValue(false);
@@ -160,6 +169,12 @@ function AddLotForm(): React.ReactElement {
         },
     });
 
+    const handleEditButtonClick = () => {
+        setEditMode(true);
+        setSaveCancelShown(true);
+        setDisabled(false);
+    };
+
     const handleFormDataChange = () => {
         if (isFormFieldChange()) {
             isFormValidated(true);
@@ -179,11 +194,12 @@ function AddLotForm(): React.ReactElement {
                                             General Information
                                         </Typography>
                                     </Grid>
-                                    {formSuccess && <Grid item xs={6} sx= {{ justifyContent: 'flex-end' }}>
+                                    {isEditShown && <Grid item xs={6} sx= {{ justifyContent: 'flex-end' }}>
                                         <Button
                                             types="save"
                                             aria-label="save"
                                             className="edit-button"
+                                            onClick={handleEditButtonClick}
                                         >
                                             <EditIcon /> <span>{t("buttons.edit")}</span>
                                         </Button>
@@ -197,7 +213,7 @@ function AddLotForm(): React.ReactElement {
                                         helperText={(formik.touched.lotName && formik.errors.lotName) ? formik.errors.lotName : undefined}
                                         error={(formik.touched.lotName && formik.errors.lotName) ? true : false}
                                         description=''
-                                        disabled={formSuccess}
+                                        disabled={isDisabled}
                                         required
                                         {...formik.getFieldProps('lotName')}
                                     />
@@ -210,7 +226,7 @@ function AddLotForm(): React.ReactElement {
                                         helperText={(formik.touched.lotId && formik.errors.lotId) ? formik.errors.lotId : undefined}
                                         error={(formik.touched.lotId && formik.errors.lotId) ? true : false}
                                         description=''
-                                        disabled={formSuccess}
+                                        disabled={isDisabled}
                                         required
                                         {...formik.getFieldProps('lotId')}
                                     />
@@ -225,7 +241,7 @@ function AddLotForm(): React.ReactElement {
                                         helperText={(formik.touched.addressLine1 && formik.errors.addressLine1) ? formik.errors.addressLine1 : undefined}
                                         error={(formik.touched.addressLine1 && formik.errors.addressLine1) ? true : false}
                                         required
-                                        disabled={formSuccess}
+                                        disabled={isDisabled}
                                     />
 
                                 </Grid>
@@ -238,7 +254,7 @@ function AddLotForm(): React.ReactElement {
                                         error={(formik.touched.addressLine2 && formik.errors.addressLine2) ? true : false}
                                         description=''
                                         required
-                                        disabled={formSuccess}
+                                        disabled={isDisabled}
                                         {...formik.getFieldProps('addressLine2')}
                                     />
                                 </Grid>
@@ -290,7 +306,7 @@ function AddLotForm(): React.ReactElement {
                                         error={(formik.touched.county && formik.errors.county) ? true : false}
                                         description=''
                                         required
-                                        disabled={formSuccess}
+                                        disabled={isDisabled}
                                         {...formik.getFieldProps('county')}
                                     />
                                 </Grid>
@@ -306,7 +322,7 @@ function AddLotForm(): React.ReactElement {
                                         error={(formik.touched.timeZone && formik.errors.timeZone) ? true : false}
                                         onChange={formik.setFieldValue}
                                         onBlur={() => { formik.setFieldTouched("timeZone"); formik.validateField("timeZone"); }}
-                                        disabled={formSuccess}
+                                        disabled={isDisabled}
                                         required
                                     />
                                 </Grid>
@@ -318,7 +334,7 @@ function AddLotForm(): React.ReactElement {
                                         helperText={(formik.touched.jurisdictionId && formik.errors.jurisdictionId) ? formik.errors.jurisdictionId : undefined}
                                         error={(formik.touched.jurisdictionId && formik.errors.jurisdictionId) ? true : false}
                                         description=''
-                                        disabled={formSuccess}
+                                        disabled={isDisabled}
                                         required
                                         {...formik.getFieldProps('jurisdictionId')}
                                     />
@@ -515,7 +531,7 @@ function AddLotForm(): React.ReactElement {
                                                             id={`locationContact[${index}].firstName`}
                                                             label='First Name'
                                                             type='text'
-                                                            disabled={formSuccess}
+                                                            disabled={isDisabled}
                                                             helperText={
                                                                 formik?.errors?.locationContact && formik?.touched?.locationContact &&
                                                                     (formik.touched?.locationContact?.[index]?.firstName && ((formik.errors?.locationContact?.[index] as lotContact)?.firstName))
@@ -537,7 +553,7 @@ function AddLotForm(): React.ReactElement {
                                                             id={`locationContact[${index}].lastName`}
                                                             label='Last Name'
                                                             type='text'
-                                                            disabled={formSuccess}
+                                                            disabled={isDisabled}
                                                             helperText={
                                                                 formik?.errors?.locationContact && formik?.touched?.locationContact &&
                                                                     (formik.touched?.locationContact?.[index]?.lastName && ((formik.errors?.locationContact?.[index] as lotContact)?.lastName))
@@ -559,7 +575,7 @@ function AddLotForm(): React.ReactElement {
                                                             id={`locationContact[${index}].email`}
                                                             label='Email'
                                                             type="text"
-                                                            disabled={formSuccess}
+                                                            disabled={isDisabled}
                                                             helperText={
                                                                 formik?.errors?.locationContact && formik?.touched?.locationContact &&
                                                                     (formik.touched?.locationContact?.[index]?.email && ((formik.errors?.locationContact?.[index] as lotContact)?.email))
@@ -593,7 +609,7 @@ function AddLotForm(): React.ReactElement {
                                                                     ? true : false
                                                             }
                                                             description=''
-                                                            disabled={formSuccess}
+                                                            disabled={isDisabled}
                                                             required
                                                             {...formik.getFieldProps(`locationContact[${index}].phoneNumber`)}
                                                         />
@@ -621,7 +637,7 @@ function AddLotForm(): React.ReactElement {
                                 />
 
                                 <Grid item md={12} mt={2} mb={1}>
-                                    <Box className="form-action-section">
+                                    {isSavCancelShown && <Box className="form-action-section">
                                         <Button
                                             types="cancel"
                                             aria-label="cancel"
@@ -640,7 +656,7 @@ function AddLotForm(): React.ReactElement {
                                         >
                                             {t("buttons.save")}
                                         </Button>
-                                    </Box>
+                                    </Box> }
                                     <ToastMessage isOpen={apiResposneState} messageType={formStatus.type} onClose={() => { return ''; }} message={formStatus.message} />
                                 </Grid>
                             </Grid>

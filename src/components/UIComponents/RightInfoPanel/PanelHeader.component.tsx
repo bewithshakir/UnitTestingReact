@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { IconButton, AppBar, Toolbar, Box } from "@mui/material";
@@ -22,7 +23,9 @@ export const PanelHeader: React.FC<InfoPanelProps> = ({headingText, panelType, o
     const history = useHistory();
     const setPageCustomerName = useAddedCustomerNameStore((state) => state.setCustomerName);
     setPageCustomerName(nameStrForEdit?nameStrForEdit:'');
-    const navigateToCustomerPage = () => {
+    const navigateToViewEditPage = () => {
+        console.log(panelType);
+        console.log(idStrForEdit);
         history.push({
             pathname: `/customer/viewCustomer/${idStrForEdit?idStrForEdit:''}`
         });
@@ -47,7 +50,7 @@ export const PanelHeader: React.FC<InfoPanelProps> = ({headingText, panelType, o
                                 label: t("right-info-panel.settings.view & edit details")
                             }
                         ]}
-                        onSelect={navigateToCustomerPage}
+                        onSelect={navigateToViewEditPage}
                     />}
                     {(panelType === "customer-filter" || panelType === "salestax-filter" )  && <IconButton
                         edge="start"
