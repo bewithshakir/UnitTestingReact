@@ -132,10 +132,7 @@ export default class TaxModel {
 
     ACTION_TYPES = {
         EDIT: 'edit',
-        RAISEREQUEST: 'Raise a request',
-        FEEDETAILS: 'Fee&Driver details',
-        OTHERDETAILS: 'Other details',
-        CONTACTDETAILS: 'Contact details'
+        DELETE: 'delete'
     };
 
     rowActions () {
@@ -145,21 +142,9 @@ export default class TaxModel {
                 label: t("menus.data-grid-actions.edit"),
                 action: this.ACTION_TYPES.EDIT
             },
-            {   
-                label: t("menus.data-grid-actions.raise a request"),
-                action: this.ACTION_TYPES.RAISEREQUEST
-            },
             {
-                label: t("menus.data-grid-actions.fee details"),
-                action: this.ACTION_TYPES.FEEDETAILS
-            },
-            {   
-                label: t("menus.data-grid-actions.other details"),
-                action: this.ACTION_TYPES.OTHERDETAILS
-            },
-            {   
-                label: t("menus.data-grid-actions.contact details"),
-                action: this.ACTION_TYPES.CONTACTDETAILS
+                label: t("menus.data-grid-actions.delete"),
+                action: this.ACTION_TYPES.DELETE
             }
         ];
     }

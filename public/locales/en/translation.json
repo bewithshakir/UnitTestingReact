@@ -47,11 +47,7 @@
     "data-grid-actions": {
       "edit": "Edit",
       "delete": "Delete",
-      "other details": "Other details",
-      "contact details": "Contact details",
-      "fee details": "Fee & Driver details",
-      "raise a request": "Raise a request"
-
+      "other details": "Other details"
     },
     "profile-actions": {
       "profile": "Profile",
