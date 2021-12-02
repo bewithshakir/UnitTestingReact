@@ -54,15 +54,15 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
   setVersion("Breadcrumbs-Single");
   const setPageCustomerName = useAddedCustomerNameStore((state) => state.setCustomerName);
   const resetFormFieldValue = useShowConfirmationDialogBoxStore((state) => state.resetFormFieldValue);
-  
+
   useEffect(() => {
     const statePL = history.location.state as { customerName: string };
 
     resetFormFieldValue(false);
-    
+
     setPageCustomerName(statePL.customerName);
-    
-    
+
+
   });
 
   const openDrawer = (row: SyntheticEvent) => {
@@ -218,14 +218,14 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
             showImg={<ParkingLotNoDataIcon />}
           />
 
-          <RightInfoPanel 
-          panelType="customer-filter" 
-          open={custFilterPanelVisible} 
-          headingText={"parkingLot.header.filter"} 
-          provideFilterParams={getFilterParams} 
-          onClose={handleCustFilterPanelClose} 
-          fields={filterByFields} 
-          storeKey='parkingLot' />
+          <RightInfoPanel
+            panelType="dynamic-filter"
+            open={custFilterPanelVisible}
+            headingText={"parkingLot.header.filter"}
+            provideFilterParams={getFilterParams}
+            onClose={handleCustFilterPanelClose}
+            fields={filterByFields}
+            storeKey='parkingLot' />
           <RightInfoPanel panelType="info-view" open={drawerOpen} headingText={"Accurate Transportation"} info={info} onClose={drawerClose} />
         </Grid>
       </Grid>

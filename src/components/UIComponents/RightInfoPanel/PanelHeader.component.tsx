@@ -12,23 +12,23 @@ interface InfoPanelProps {
     panelType: string;
     info: any | null;
     idStrForEdit?: string;
-    nameStrForEdit?:string;
+    nameStrForEdit?: string;
     onClose: (...args: any[]) => void;
 }
-export const PanelHeader: React.FC<InfoPanelProps> = ({headingText, panelType, onClose, idStrForEdit}) => {
-    const {theme} = useTheme();
+export const PanelHeader: React.FC<InfoPanelProps> = ({ headingText, panelType, onClose, idStrForEdit }) => {
+    const { theme } = useTheme();
     const { t } = useTranslation();
     const history = useHistory();
     const navigateToCustomerPage = () => {
         history.push({
-            pathname: `/customer/viewCustomer/${idStrForEdit?idStrForEdit:''}`
+            pathname: `/customer/viewCustomer/${idStrForEdit ? idStrForEdit : ''}`
         });
     };
-    
+
     return (<div className="right_info_panel_header">
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static">
-                <Toolbar sx={{bgcolor:theme["--Primary"]}} variant="dense">
+                <Toolbar sx={{ bgcolor: theme["--Primary"] }} variant="dense">
                     {panelType === "info-view" && <IconButton
                         edge="start"
                         onClick={onClose}
@@ -46,7 +46,7 @@ export const PanelHeader: React.FC<InfoPanelProps> = ({headingText, panelType, o
                         ]}
                         onSelect={navigateToCustomerPage}
                     />}
-                    {(panelType === "customer-filter" || panelType === "salestax-filter" )  && <IconButton
+                    {(panelType === "dynamic-filter") && <IconButton
                         edge="start"
                         onClick={onClose}
                     >

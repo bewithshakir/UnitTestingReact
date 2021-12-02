@@ -242,7 +242,7 @@ const Content: React.FC<ContentProps> = () => {
             noDataMsg='Add Customer by clicking on the "Add Customer" button.'
           />
 
-          <RightInfoPanel panelType="customer-filter"
+          <RightInfoPanel panelType="dynamic-filter"
             open={custFilterPanelVisible} headingText={"customer-filter-panel.header.filter"}
             provideFilterParams={getFilterParams} onClose={handleCustFilterPanelClose}
             fields={filterByFields}

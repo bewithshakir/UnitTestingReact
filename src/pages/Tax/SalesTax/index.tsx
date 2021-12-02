@@ -45,7 +45,7 @@ const SalesTaxLandingContent = memo(() => {
       });
       setSalesTaxList(list);
     }
-  },[data]);
+  }, [data]);
 
   const onInputChange = (value: string) => {
     setSearchTerm(value);
@@ -60,22 +60,22 @@ const SalesTaxLandingContent = memo(() => {
     history.push("/salesTax/add");
   };
 
-const onSortBySlected = (value: string) => {
+  const onSortBySlected = (value: string) => {
     let sortOrder;
     switch (value) {
-        case "City Name A-Z":
-            sortOrder = { sortBy: "city", order: "asc" };
-            break;
-        case "City Name Z-A":
-            sortOrder = { sortBy: "city", order: "desc" };
-            break;
-        default:
-            sortOrder = { sortBy: "", order: "" };
-            break;
+      case "City Name A-Z":
+        sortOrder = { sortBy: "city", order: "asc" };
+        break;
+      case "City Name Z-A":
+        sortOrder = { sortBy: "city", order: "desc" };
+        break;
+      default:
+        sortOrder = { sortBy: "", order: "" };
+        break;
     }
     setSortOrder(sortOrder);
-};
-  
+  };
+
   const handleMassAction = () => {
     return '';
   };
@@ -98,7 +98,7 @@ const onSortBySlected = (value: string) => {
       case ACTION_TYPES.EDIT:
         // perform action
         history.push(`salesTax/edit/?city=${row.city}&state=${row.state}&countryCode=${row.countryCode}`);
-        
+
         break;
       case ACTION_TYPES.DELETE:
         // perform action
@@ -165,7 +165,7 @@ const onSortBySlected = (value: string) => {
           </Grid>
         </Grid>
         <Grid container pt={2.5} display="flex" flexGrow={1}>
-        <GridComponent
+          <GridComponent
             primaryKey='taxJurisdictionId'
             rows={salesTaxList}
             header={headCells}
@@ -179,7 +179,7 @@ const onSortBySlected = (value: string) => {
             openDrawer={openDrawer}
             noDataMsg='Add Tax by clicking on the "Add Tax" button.'
           />
-          <RightInfoPanel panelType="salestax-filter"
+          <RightInfoPanel panelType="dynamic-filter"
             open={salesTaxFilterPanelVisible} headingText={"customer-filter-panel.header.filters"}
             provideFilterParams={getFilterParams} onClose={handleSalesTaxFilterPanelClose}
             fields={filterByFields}
