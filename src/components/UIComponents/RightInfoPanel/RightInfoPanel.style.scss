@@ -1,8 +1,10 @@
 .right_panel_main_class {
+  
   .MuiDrawer-paper {
     border: 0px;
     box-shadow: -10px 0px 10px #a6a6a640;
     z-index: 10000;
+    width: 583px;
     .MuiAppBar-root {
       background-color: var(--Blue-Btn);
       box-shadow: none;
