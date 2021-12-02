@@ -25,6 +25,10 @@ export const useGetContactTypes = () => {
     return useQuery(["getContactTypes"], () => getContactTypes());
 };
 
-export const useCreateLot = () => {
-    return useMutation((payload: any) => createLot(payload));
+export const useCreateLot = (onError:any, onSuccess:any) => {
+    return useMutation((payload: any) => createLot(payload), {
+        onError,
+        onSuccess,
+        retry: false,
+    });
 };

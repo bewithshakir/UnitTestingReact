@@ -169,7 +169,7 @@ const TaxLandingContent = memo(() => {
           />
 
           <RightInfoPanel
-            panelType="customer-filter"
+            panelType="dynamic-filter"
             open={isFilterPanelOpen} headingText={"Filters"}
             provideFilterParams={getFilterParams}
             onClose={() => toggleFilterPanel(false)}
