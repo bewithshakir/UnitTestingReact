@@ -146,6 +146,7 @@ export default class CustomerModel {
             { field: "postalCd", label: "ZIP", type: 'text' },
             { field: "vehicles", label: "VEHICLES", type: 'text' },
             { field: "fuelStatus", label: "FUEL", type: 'icons' },
+            { field: 'primaryContactName', label: 'CONTACT', type: 'text'},
             {
                 field: "walletStatus",
                 label: "WALLET RULE",
