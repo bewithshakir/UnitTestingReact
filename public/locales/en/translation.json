@@ -153,5 +153,8 @@
       },
       "city": "City"
     }
+  },
+  "productManagement": {
+    "search": "Search"
   }
 }
