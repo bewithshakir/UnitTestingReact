@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { filterStore } from "../../../store";
 import moment from "moment";
@@ -52,22 +52,21 @@ const timeValidation = (str: any) => {
 };
 
 export const DynamicFilterContent: React.FC<IDynamicFilterProps> = ({ provideFilterParams, onClose, fields, storeKey }) => {
-    const [formValuesSaved, setFormValuesSaved] = React.useState<{ [k: string]: any } | null>(null);
     const filterFormData = filterStore((state) => {
-        return state.filterFormData ? state.filterFormData[storeKey] : ({} as { [k: string]: any });
+        return state.filterFormData ? state.filterFormData[storeKey] : null;
     });
     const setFormData = filterStore((state) => state.setFormData);
     const removeFormData = filterStore((state) => state.removeFormData);
     const { theme } = useTheme();
     const { t } = useTranslation();
 
-    const createDateArr = (value: any, mainObj: any, fieldName: string) => {
+    const createDateArr = useCallback((value: any, mainObj: any, fieldName: string) => {
         if (timeValidation(value[0]) && timeValidation(value[1])) {
             mainObj[fieldName] = [moment(value[0]).format("MM-DD-YYYY"), moment(value[1]).format("MM-DD-YYYY")];
         }
-    };
+    }, []);
 
-    const prepateLastFormWithPayload = () => {
+    const prepareLastFormWithPayload = useCallback(() => {
         if (filterFormData && Object.keys(filterFormData).length > 0) {
             for (const [key, value] of Object.entries(filterFormData)) {
                 formik.setFieldValue(key, value);
@@ -77,24 +76,22 @@ export const DynamicFilterContent: React.FC<IDynamicFilterProps> = ({ provideFil
                     createDateArr(value, filterParams, key);
                 } else if (Array.isArray(value)) {
                     filterParams[key] = value.length > 0 ? value.map((obj: { label: string, value: string }) => obj.value) : [];
+                } else if (fieldType === 'select') {
+                    // only for single select
+                    filterParams[key] = value ? (value as any).value : value;
                 } else {
                     filterParams[key] = value as any;
                 }
             }
         }
-    };
+    }, []);
 
     useEffect(() => {
         filterParams = {};
         if (filterFormData) {
-            setFormValuesSaved(filterFormData);
-            prepateLastFormWithPayload();
+            prepareLastFormWithPayload();
         }
     }, []);
-
-    window.onunload = function () {
-        removeFormData();
-    };
 
     const ClearBtn = styled(Button)(() => ({
         "&&": {
@@ -121,11 +118,11 @@ export const DynamicFilterContent: React.FC<IDynamicFilterProps> = ({ provideFil
         }
     }));
 
-    const onDateRangeChange = (name: string, newValue: DatePickerRange) => {
+    const onDateRangeChange = useCallback((name: string, newValue: DatePickerRange) => {
         formik.setFieldValue(name, newValue);
         delete filterParams["date"];
         createDateArr(newValue, filterParams, name);
-    };
+    }, []);
 
     function handleSelect(name: string, value: any, singleSelect?: boolean) {
         formik.setFieldValue(name, value);
@@ -152,37 +149,32 @@ export const DynamicFilterContent: React.FC<IDynamicFilterProps> = ({ provideFil
         formik.setFieldValue(name, value);
         filterParams[name] = value;
     }
-
-    const tempFilterCode = (val: any) => {
-        return val;
-    };
-
-    const applyFilter = (formData: { [k: string]: any }, resetForm: Function) => {
+    const applyFilter = (formData: { [k: string]: any }) => {
         if (provideFilterParams && Object.keys(filterParams).length > 0) {
             setFormData({ [storeKey]: formData });
             provideFilterParams(filterParams);
             onClose();
         }
-        tempFilterCode(resetForm);
     };
-
-    const clearFilter = (resetForm: Function) => {
-        setFormValuesSaved(null);
+    const handleClear = () => {
         filterParams = {};
         if (provideFilterParams) {
             provideFilterParams(filterParams);
         }
         removeFormData();
-        tempFilterCode(resetForm);
     };
-
-    const formik = useFormik({
-        initialValues: formValuesSaved ? formValuesSaved : fields.reduce((acc, field) => {
+    const initialValues = useMemo(() => {
+        return filterFormData === null || Object.keys(filterFormData).length === 0 ? fields.reduce((acc, field) => {
             acc[field.name] = field.initialValue;
             return acc;
-        }, {} as any),
-        onSubmit: (values, { resetForm }) => applyFilter(values, resetForm),
-        onReset: (values, { resetForm }) => clearFilter(resetForm),
+        }, {} as any) : filterFormData;
+
+    }, [filterFormData, fields]);
+
+    const formik = useFormik({
+        initialValues,
+        onSubmit: (values) => applyFilter(values),
+        enableReinitialize: true
     });
     return <FormikProvider value={formik}>
         <form onSubmit={formik.handleSubmit} onReset={formik.handleReset} className="dynamicForm">
@@ -227,7 +219,7 @@ export const DynamicFilterContent: React.FC<IDynamicFilterProps> = ({ provideFil
                                                 id="cust-filter-date-range"
                                                 placeholder={{ start: t("right-info-panel.filter.from date"), end: t("right-info-panel.filter.to date") }}
                                                 name={field.name}
-                                                onDateRangeChange={(name, val) => onDateRangeChange(name, val)}
+                                                onDateRangeChange={onDateRangeChange}
                                                 helperText={(touched && error) ? error : undefined}
                                                 error={(touched && error) ? true : false}
                                                 dateRangeValue={value}
@@ -360,6 +352,7 @@ export const DynamicFilterContent: React.FC<IDynamicFilterProps> = ({ provideFil
                             type="reset"
                             types="cancel"
                             aria-label={t("right-info-panel.filter.buttons.clear all")}
+                            onClick={handleClear}
                         >
                             {t("right-info-panel.filter.buttons.clear all")}
                         </ClearBtn >

@@ -66,11 +66,11 @@ describe('AddSalesTax component', () => {
         expect(cancelButton.length).toBeGreaterThanOrEqual(0);
     });
 
-    describe('UseQuery testing', ()=> {
+    // describe('UseQuery testing', ()=> {
 
-        describe('while loading', ()=> {
-            it.todo('render a loader')
-        });
-    });
+    //     describe('while loading', ()=> {
+    //         it.todo('render a loader')
+    //     });
+    // });
 
 });

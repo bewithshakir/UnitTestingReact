@@ -59,16 +59,16 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
   setVersion("Breadcrumbs-Single");
   const setPageCustomerName = useAddedCustomerNameStore((state) => state.setCustomerName);
   const resetFormFieldValue = useShowConfirmationDialogBoxStore((state) => state.resetFormFieldValue);
-  
+
   useEffect(() => {
     const statePL = history.location.state as { customerName: string };
 
     console.log(statePL.customerName);
     resetFormFieldValue(false);
-    
+
     setPageCustomerName(statePL.customerName);
-    
-    
+
+
   });
 
   const createInfoObjForRightInfoPanel = (row: any) => {
@@ -250,14 +250,14 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
             showImg={<ParkingLotNoDataIcon />}
           />
 
-          <RightInfoPanel 
-          panelType="customer-filter" 
-          open={custFilterPanelVisible} 
-          headingText={"parkingLot.header.filters"} 
-          provideFilterParams={getFilterParams} 
-          onClose={handleCustFilterPanelClose} 
-          fields={filterByFields} 
-          storeKey='parkingLot' />
+          <RightInfoPanel
+            panelType="dynamic-filter"
+            open={custFilterPanelVisible}
+            headingText={"parkingLot.header.filters"}
+            provideFilterParams={getFilterParams}
+            onClose={handleCustFilterPanelClose}
+            fields={filterByFields}
+            storeKey='parkingLot' />
           {/* <RightInfoPanel panelType="info-view" open={drawerOpen} headingText={"Accurate Transportation"} info={info} onClose={drawerClose} /> */}
           <RightInfoPanel panelType="info-view" open={drawerOpen} headingText={infoPanelName} info={info} idStrForEdit={infoPanelEditId} nameStrForEdit={infoPanelName} onClose={drawerClose} />
 
