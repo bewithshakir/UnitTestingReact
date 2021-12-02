@@ -47,7 +47,8 @@
     "data-grid-actions": {
       "edit": "Edit",
       "delete": "Delete",
-      "other details": "Other details"
+      "other details": "Other details",
+      "contact details": "Contact details"
     },
     "profile-actions": {
       "profile": "Profile",
