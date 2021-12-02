@@ -4,8 +4,6 @@ import { getProducts } from './queries';
 import './SubTableFuelProduct.scss';
 import { DataGridActionsMenuOption } from './../../components/UIComponents/Menu/DataGridActionsMenu.component';
 
-
-
 interface props {
     id:string,
     rows?: any[],
@@ -19,7 +17,6 @@ interface props {
 
 export default function InnerTable(props:props) {
     const [productDetails, setProductDetails] = useState([]);
-
     const { data, fetchNextPage, isLoading, isFetching }: any = getProducts(props.id);
     useEffect(() => {
         if (data) {
@@ -45,6 +42,3 @@ export default function InnerTable(props:props) {
         </div>
     );
 }
-
-
-
