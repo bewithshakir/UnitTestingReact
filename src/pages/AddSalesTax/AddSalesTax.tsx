@@ -1,7 +1,7 @@
 import { Container, Grid, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import { useFormik } from 'formik';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import './style.scss';
@@ -53,6 +53,8 @@ const formStatusProps: IFormStatusProps = {
 const AddSalesTax: React.FC = () => {
     const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
     const isFormValidated = useShowConfirmationDialogBoxStore((state) => state.setFormFieldValue);
+    const resetFormFieldValue = useShowConfirmationDialogBoxStore((state) => state.resetFormFieldValue);
+
     const isFormFieldChange = () => formik.dirty;
     setVersion("Breadcrumbs-Single");
     const [apiResposneState, setAPIResponse] = useState(false);
@@ -67,6 +69,9 @@ const AddSalesTax: React.FC = () => {
         type: '',
     });
 
+    useEffect(()=>{
+        resetFormFieldValue();
+    },[]);
     
 
     // edit section
@@ -205,13 +210,11 @@ const AddSalesTax: React.FC = () => {
     
     const handleFormDataChange = () => {
         if (isEditMode) {
-            if (formik.touched && Object.keys(formik.touched).length === 0 && Object.getPrototypeOf(formik.touched) === Object.prototype) {
                 if (formik.dirty) {
                     if (formik.initialValues != formik.values) {
                         isFormValidated(false);
                     }
                 }
-            }
         } 
         if (isFormFieldChange()) {
             isFormValidated(true); 
