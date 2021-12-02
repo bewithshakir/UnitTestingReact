@@ -36,3 +36,24 @@ export const useFuelTaxList = (query: string, sortOrder: { sortBy: string, order
         keepPreviousData: true
     });
 };
+
+// Get Products by Tax Jurisdiction Id
+const getProductsByTaxId = async (pageParam: number, fuelTaxProductId: string) => {
+    const payload: AxiosRequestConfig = {
+        method: 'get',
+        url: `/api/tax-service/fueltax/list/products?limit=${pageDataLimit}&offset=${pageParam}&taxJurisdictionId=${fuelTaxProductId}`
+    };
+    const { data } = await axios(payload);
+    return data;
+};
+
+export const getProducts = (fuelTaxProductId: string) => {
+    return useInfiniteQuery(["getProductsByTaxId", fuelTaxProductId], ({ pageParam = 0 }) => getProductsByTaxId(pageParam, fuelTaxProductId), {
+        getNextPageParam: (lastGroup: any) => {
+            if (lastGroup.data.pagination.offset < lastGroup.data.pagination.totalCount) {
+                return lastGroup.data.pagination.offset + pageDataLimit;
+            }
+        },
+        keepPreviousData: true
+    });
+};

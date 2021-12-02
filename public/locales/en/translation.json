@@ -48,7 +48,10 @@
       "edit": "Edit",
       "delete": "Delete",
       "other details": "Other details",
-      "contact details": "Contact details"
+      "contact details": "Contact details",
+      "fee details": "Fee & Driver details",
+      "raise a request": "Raise a request"
+
     },
     "profile-actions": {
       "profile": "Profile",
