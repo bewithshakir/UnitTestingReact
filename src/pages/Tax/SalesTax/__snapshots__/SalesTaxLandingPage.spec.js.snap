@@ -916,14 +916,14 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                             Object {
                               "align": "left",
                               "field": "stateRate",
-                              "label": "STATE RATE ($)",
+                              "label": "STATE RATE (%)",
                               "sortable": true,
                               "type": "text",
                             },
                             Object {
                               "align": "left",
                               "field": "localRate",
-                              "label": "LOCAL RATE ($)",
+                              "label": "LOCAL RATE (%)",
                               "sortable": true,
                               "type": "text",
                             },
@@ -3898,14 +3898,14 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                 Object {
                                   "align": "left",
                                   "field": "stateRate",
-                                  "label": "STATE RATE ($)",
+                                  "label": "STATE RATE (%)",
                                   "sortable": true,
                                   "type": "text",
                                 },
                                 Object {
                                   "align": "left",
                                   "field": "localRate",
-                                  "label": "LOCAL RATE ($)",
+                                  "label": "LOCAL RATE (%)",
                                   "sortable": true,
                                   "type": "text",
                                 },
@@ -4024,14 +4024,14 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                             Object {
                               "align": "left",
                               "field": "stateRate",
-                              "label": "STATE RATE ($)",
+                              "label": "STATE RATE (%)",
                               "sortable": true,
                               "type": "text",
                             },
                             Object {
                               "align": "left",
                               "field": "localRate",
-                              "label": "LOCAL RATE ($)",
+                              "label": "LOCAL RATE (%)",
                               "sortable": true,
                               "type": "text",
                             },
@@ -4108,14 +4108,14 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                         Object {
                                           "align": "left",
                                           "field": "stateRate",
-                                          "label": "STATE RATE ($)",
+                                          "label": "STATE RATE (%)",
                                           "sortable": true,
                                           "type": "text",
                                         },
                                         Object {
                                           "align": "left",
                                           "field": "localRate",
-                                          "label": "LOCAL RATE ($)",
+                                          "label": "LOCAL RATE (%)",
                                           "sortable": true,
                                           "type": "text",
                                         },
@@ -4166,14 +4166,14 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                         Object {
                                           "align": "left",
                                           "field": "stateRate",
-                                          "label": "STATE RATE ($)",
+                                          "label": "STATE RATE (%)",
                                           "sortable": true,
                                           "type": "text",
                                         },
                                         Object {
                                           "align": "left",
                                           "field": "localRate",
-                                          "label": "LOCAL RATE ($)",
+                                          "label": "LOCAL RATE (%)",
                                           "sortable": true,
                                           "type": "text",
                                         },
@@ -4212,14 +4212,14 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                         Object {
                                           "align": "left",
                                           "field": "stateRate",
-                                          "label": "STATE RATE ($)",
+                                          "label": "STATE RATE (%)",
                                           "sortable": true,
                                           "type": "text",
                                         },
                                         Object {
                                           "align": "left",
                                           "field": "localRate",
-                                          "label": "LOCAL RATE ($)",
+                                          "label": "LOCAL RATE (%)",
                                           "sortable": true,
                                           "type": "text",
                                         },
@@ -4308,14 +4308,14 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                               Object {
                                                 "align": "left",
                                                 "field": "stateRate",
-                                                "label": "STATE RATE ($)",
+                                                "label": "STATE RATE (%)",
                                                 "sortable": true,
                                                 "type": "text",
                                               },
                                               Object {
                                                 "align": "left",
                                                 "field": "localRate",
-                                                "label": "LOCAL RATE ($)",
+                                                "label": "LOCAL RATE (%)",
                                                 "sortable": true,
                                                 "type": "text",
                                               },
@@ -4366,14 +4366,14 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                               Object {
                                                 "align": "left",
                                                 "field": "stateRate",
-                                                "label": "STATE RATE ($)",
+                                                "label": "STATE RATE (%)",
                                                 "sortable": true,
                                                 "type": "text",
                                               },
                                               Object {
                                                 "align": "left",
                                                 "field": "localRate",
-                                                "label": "LOCAL RATE ($)",
+                                                "label": "LOCAL RATE (%)",
                                                 "sortable": true,
                                                 "type": "text",
                                               },
@@ -4412,14 +4412,14 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                               Object {
                                                 "align": "left",
                                                 "field": "stateRate",
-                                                "label": "STATE RATE ($)",
+                                                "label": "STATE RATE (%)",
                                                 "sortable": true,
                                                 "type": "text",
                                               },
                                               Object {
                                                 "align": "left",
                                                 "field": "localRate",
-                                                "label": "LOCAL RATE ($)",
+                                                "label": "LOCAL RATE (%)",
                                                 "sortable": true,
                                                 "type": "text",
                                               },
@@ -4502,14 +4502,14 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                           Object {
                                             "align": "left",
                                             "field": "stateRate",
-                                            "label": "STATE RATE ($)",
+                                            "label": "STATE RATE (%)",
                                             "sortable": true,
                                             "type": "text",
                                           },
                                           Object {
                                             "align": "left",
                                             "field": "localRate",
-                                            "label": "LOCAL RATE ($)",
+                                            "label": "LOCAL RATE (%)",
                                             "sortable": true,
                                             "type": "text",
                                           },
@@ -4595,7 +4595,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                     direction="asc"
                                                     onClick={[Function]}
                                                   >
-                                                    STATE RATE ($)
+                                                    STATE RATE (%)
                                                   </ForwardRef(TableSortLabel)>
                                                 </ForwardRef(TableCell)>
                                                 <ForwardRef(TableCell)
@@ -4609,7 +4609,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                     direction="asc"
                                                     onClick={[Function]}
                                                   >
-                                                    LOCAL RATE ($)
+                                                    LOCAL RATE (%)
                                                   </ForwardRef(TableSortLabel)>
                                                 </ForwardRef(TableCell)>
                                                 <ForwardRef(TableCell)
@@ -4711,7 +4711,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                             direction="asc"
                                                             onClick={[Function]}
                                                           >
-                                                            STATE RATE ($)
+                                                            STATE RATE (%)
                                                           </ForwardRef(TableSortLabel)>
                                                         </ForwardRef(TableCell)>,
                                                         <ForwardRef(TableCell)
@@ -4725,7 +4725,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                             direction="asc"
                                                             onClick={[Function]}
                                                           >
-                                                            LOCAL RATE ($)
+                                                            LOCAL RATE (%)
                                                           </ForwardRef(TableSortLabel)>
                                                         </ForwardRef(TableCell)>,
                                                         <ForwardRef(TableCell)
@@ -5324,7 +5324,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                             direction="asc"
                                                             onClick={[Function]}
                                                           >
-                                                            STATE RATE ($)
+                                                            STATE RATE (%)
                                                           </ForwardRef(TableSortLabel)>,
                                                           "className": "header-options",
                                                           "component": "th",
@@ -5357,7 +5357,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                               Object {
                                                                 "IconComponent": [Function],
                                                                 "active": false,
-                                                                "children": "STATE RATE ($)",
+                                                                "children": "STATE RATE (%)",
                                                                 "direction": "asc",
                                                                 "hideSortIcon": false,
                                                                 "onClick": [Function],
@@ -5390,7 +5390,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                                   Object {
                                                                     "centerRipple": false,
                                                                     "children": Array [
-                                                                      "STATE RATE ($)",
+                                                                      "STATE RATE (%)",
                                                                       <MuiTableSortLabelIcon
                                                                         as={[Function]}
                                                                         className="MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc"
@@ -5398,7 +5398,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                                           Object {
                                                                             "IconComponent": [Function],
                                                                             "active": false,
-                                                                            "children": "STATE RATE ($)",
+                                                                            "children": "STATE RATE (%)",
                                                                             "direction": "asc",
                                                                             "hideSortIcon": false,
                                                                             "onClick": [Function],
@@ -5438,7 +5438,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                                   role="button"
                                                                   tabIndex={0}
                                                                 >
-                                                                  STATE RATE ($)
+                                                                  STATE RATE (%)
                                                                   <MuiTableSortLabelIcon
                                                                     as={[Function]}
                                                                     className="MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc"
@@ -5446,7 +5446,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                                       Object {
                                                                         "IconComponent": [Function],
                                                                         "active": false,
-                                                                        "children": "STATE RATE ($)",
+                                                                        "children": "STATE RATE (%)",
                                                                         "direction": "asc",
                                                                         "hideSortIcon": false,
                                                                         "onClick": [Function],
@@ -5505,7 +5505,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                             direction="asc"
                                                             onClick={[Function]}
                                                           >
-                                                            LOCAL RATE ($)
+                                                            LOCAL RATE (%)
                                                           </ForwardRef(TableSortLabel)>,
                                                           "className": "header-options",
                                                           "component": "th",
@@ -5538,7 +5538,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                               Object {
                                                                 "IconComponent": [Function],
                                                                 "active": false,
-                                                                "children": "LOCAL RATE ($)",
+                                                                "children": "LOCAL RATE (%)",
                                                                 "direction": "asc",
                                                                 "hideSortIcon": false,
                                                                 "onClick": [Function],
@@ -5571,7 +5571,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                                   Object {
                                                                     "centerRipple": false,
                                                                     "children": Array [
-                                                                      "LOCAL RATE ($)",
+                                                                      "LOCAL RATE (%)",
                                                                       <MuiTableSortLabelIcon
                                                                         as={[Function]}
                                                                         className="MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc"
@@ -5579,7 +5579,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                                           Object {
                                                                             "IconComponent": [Function],
                                                                             "active": false,
-                                                                            "children": "LOCAL RATE ($)",
+                                                                            "children": "LOCAL RATE (%)",
                                                                             "direction": "asc",
                                                                             "hideSortIcon": false,
                                                                             "onClick": [Function],
@@ -5619,7 +5619,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                                   role="button"
                                                                   tabIndex={0}
                                                                 >
-                                                                  LOCAL RATE ($)
+                                                                  LOCAL RATE (%)
                                                                   <MuiTableSortLabelIcon
                                                                     as={[Function]}
                                                                     className="MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc"
@@ -5627,7 +5627,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                                       Object {
                                                                         "IconComponent": [Function],
                                                                         "active": false,
-                                                                        "children": "LOCAL RATE ($)",
+                                                                        "children": "LOCAL RATE (%)",
                                                                         "direction": "asc",
                                                                         "hideSortIcon": false,
                                                                         "onClick": [Function],
@@ -5915,14 +5915,14 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                           Object {
                                             "align": "left",
                                             "field": "stateRate",
-                                            "label": "STATE RATE ($)",
+                                            "label": "STATE RATE (%)",
                                             "sortable": true,
                                             "type": "text",
                                           },
                                           Object {
                                             "align": "left",
                                             "field": "localRate",
-                                            "label": "LOCAL RATE ($)",
+                                            "label": "LOCAL RATE (%)",
                                             "sortable": true,
                                             "type": "text",
                                           },
@@ -5961,14 +5961,14 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                           Object {
                                             "align": "left",
                                             "field": "stateRate",
-                                            "label": "STATE RATE ($)",
+                                            "label": "STATE RATE (%)",
                                             "sortable": true,
                                             "type": "text",
                                           },
                                           Object {
                                             "align": "left",
                                             "field": "localRate",
-                                            "label": "LOCAL RATE ($)",
+                                            "label": "LOCAL RATE (%)",
                                             "sortable": true,
                                             "type": "text",
                                           },
