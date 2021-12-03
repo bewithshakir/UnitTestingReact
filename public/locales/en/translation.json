@@ -49,7 +49,9 @@
       "edit": "Edit",
       "delete": "Delete",
       "other details": "Other details",
-      "contact details": "Contact details"
+      "contact details": "Contact details",
+      "raiseRequset": "Raise a request",
+      "feeDetails": "Fee & Driver details"
     },
     "profile-actions": {
       "profile": "Profile",
