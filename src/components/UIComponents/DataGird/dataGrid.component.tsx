@@ -32,6 +32,7 @@ interface GridBodyProps {
     showImg?: React.ReactNode | undefined,
     onRowActionSelect?: (selectedValue: DataGridActionsMenuOption, row: any) => void,
     rowActionOptions?: DataGridActionsMenuOption[],
+    showInnerTableMenu?: boolean,
     handleCheckChange: (primaryId: string) => void;
 }
 
@@ -263,6 +264,7 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
                                             <DataGridActionsMenu
                                                 options={props.rowActionOptions}
                                                 onSelect={(e, value) => props.onRowActionSelect && props.onRowActionSelect(value, row)}
+                                                showInnerTableMenu={props.showInnerTableMenu}
                                             />
                                         </FormControl>
                                     </TableCell>
