@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import React, { SyntheticEvent, useEffect } from "react";
 import { Button } from "../../components/UIComponents/Button/Button.component";
 import { useTranslation } from "react-i18next";
@@ -35,9 +34,6 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
   const MASS_ACTION_TYPES = ParkingLotObj.MASS_ACTION_TYPES;
 
   const history = useHistory();
-  // const location = useLocation();
-  // const { state }  = history?.location;
-  console.log(history?.location?.state);
   const [info, setInfo] = React.useState({});
   const [searchTerm, setSearchTerm] = React.useState("");
   const [drawerOpen, setDrawerOpen] = React.useState(false);
@@ -62,7 +58,6 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
   useEffect(() => {
     const statePL = history.location.state as { customerName: string };
 
-    console.log(statePL.customerName);
     resetFormFieldValue(false);
 
     setPageCustomerName(statePL.customerName);
@@ -226,7 +221,7 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
           <RightInfoPanel
             panelType="dynamic-filter"
             open={custFilterPanelVisible}
-            headingText={"parkingLot.header.filters"}
+            headingText={"parkingLot.header.filter"}
             provideFilterParams={getFilterParams}
             onClose={handleCustFilterPanelClose}
             fields={filterByFields}

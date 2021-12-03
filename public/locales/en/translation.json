@@ -72,7 +72,7 @@
   },
   "customer-filter-panel": {
     "header": {
-      "filters": "Filters"
+      "filter": "Filter"
     },
     "state": "State",
     "city": "City",
@@ -107,7 +107,7 @@
   },
   "parkingLot": {
     "header": {
-      "filters": "Filters"
+      "filter": "Filter"
     },
     "search": "Parking Lot Name",
     "results found": "results found",
