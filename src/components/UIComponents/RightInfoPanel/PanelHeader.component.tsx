@@ -8,6 +8,7 @@ import { CloseIcon } from "../../../assets/icons";
 import "./RightInfoPanel.style.scss";
 import { useTheme } from '../../../contexts/Theme/Theme.context';
 import { useHistory } from "react-router-dom";
+import { useAddedCustomerIdStore } from '../../../store';
 
 interface InfoPanelProps {
     headingText: string;
@@ -16,19 +17,33 @@ interface InfoPanelProps {
     idStrForEdit?: string;
     nameStrForEdit?: string;
     onClose: (...args: any[]) => void;
+    category?: "customer" | "lot";
 }
-export const PanelHeader: React.FC<InfoPanelProps> = ({ headingText, panelType, onClose, idStrForEdit, nameStrForEdit }) => {
+export const PanelHeader: React.FC<InfoPanelProps> = ({ headingText, panelType, onClose, idStrForEdit, nameStrForEdit, category }) => {
     const { theme } = useTheme();
     const { t } = useTranslation();
     const history = useHistory();
     const setPageCustomerName = useAddedCustomerNameStore((state) => state.setCustomerName);
     setPageCustomerName(nameStrForEdit?nameStrForEdit:'');
+    const addedCustomerId = useAddedCustomerIdStore((state) => state.customerId);
+
     const navigateToViewEditPage = () => {
-        console.log(panelType);
+        console.log(category);
         console.log(idStrForEdit);
-        history.push({
-            pathname: `/customer/viewCustomer/${idStrForEdit ? idStrForEdit : ''}`
-        });
+        switch(category) {
+            case "customer" :
+                history.push({
+                    pathname: `/customer/viewCustomer/${idStrForEdit ? idStrForEdit : ''}`
+                });
+            break;
+
+            case "lot" : 
+                history.push({
+                    pathname: `/customer/${addedCustomerId}/parkingLots/viewLot/${idStrForEdit ? idStrForEdit : ''}`
+                });
+            break;
+        }
+        
     };
 
     return (<div className="right_info_panel_header">

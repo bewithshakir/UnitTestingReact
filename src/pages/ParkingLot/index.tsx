@@ -258,8 +258,8 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
             onClose={handleCustFilterPanelClose}
             fields={filterByFields}
             storeKey='parkingLot' />
-          {/* <RightInfoPanel panelType="info-view" open={drawerOpen} headingText={"Accurate Transportation"} info={info} onClose={drawerClose} /> */}
-          <RightInfoPanel panelType="info-view" open={drawerOpen} headingText={infoPanelName} info={info} idStrForEdit={infoPanelEditId} nameStrForEdit={infoPanelName} onClose={drawerClose} />
+            
+          <RightInfoPanel panelType="info-view" category="lot" open={drawerOpen} headingText={infoPanelName} info={info} idStrForEdit={infoPanelEditId} nameStrForEdit={infoPanelName} onClose={drawerClose} />
 
         </Grid>
       </Grid>

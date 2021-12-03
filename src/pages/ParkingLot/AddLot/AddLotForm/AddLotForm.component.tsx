@@ -13,7 +13,7 @@ import ToastMessage from '../../../../components/UIComponents/ToastMessage/Toast
 import Divider from '@mui/material/Divider';
 import { AddParkingLotForm, addLotFormInitialValues, lotContact, orderSchDel } from '../../../../models/ParkingLotModel';
 import AddParkingLotValidationSchema from '../validation';
-import { useCreateLot, useGetContactTypes } from '../queries';
+import { useCreateLot, useEditParkingLot, useGetContactTypes, useGetParkingLotData } from '../queries';
 import AutocompleteInput from '../../../../components/UIComponents/GoogleAddressComponent/GoogleAutoCompleteAddress';
 import { PlusIcon, EditIcon } from '../../../../assets/icons';
 import { useTheme } from '../../../../contexts/Theme/Theme.context';
@@ -21,9 +21,8 @@ import { formStatusObj, timeZones, productDelFreq, getCountry} from '../../confi
 import MultiSelect from '../../../../components/UIComponents/Select/MultiSelect';
 import { DatePickerInput } from '../../../../components/UIComponents/DatePickerInput/DatePickerInput.component';
 import { TimePicker } from '../../../../components/UIComponents/TimePicker/TimePicker.component';
-import { useAddedCustomerIdStore, useShowConfirmationDialogBoxStore } from '../../../../store';
+import { useAddedCustomerIdStore, useAddedCustomerNameStore, useShowConfirmationDialogBoxStore } from '../../../../store';
 import './AddLotForm.style.scss';
-
 interface FormStatusType {
     message: string
     type: string
@@ -51,16 +50,14 @@ function AddLotForm(): React.ReactElement {
     const showDialogBox = useShowConfirmationDialogBoxStore((state) => state.showDialogBox);
     const hideDialogBox = useShowConfirmationDialogBoxStore((state) => state.hideDialogBox);
     const isFormValidated = useShowConfirmationDialogBoxStore((state) => state.setFormFieldValue);
-    // const [isTrigger, setIsTrigger] = useState(false);
+    const [isTrigger, setIsTrigger] = useState(false);
     // const setCustomerIdCreated = useAddedCustomerIdStore((state) => state.setCustomerId);
-    // const setPageCustomerName = useAddedCustomerNameStore((state) => state.setCustomerName);
+    const setPageCustomerName = useAddedCustomerNameStore((state) => state.setCustomerName);
     const [isDisabled, setDisabled] = useState(false);
-
     const [isEditMode, setEditMode] = useState(false);
-
     const [isEditShown, setEditShown] = useState(true);
-
     const [isSavCancelShown, setSaveCancelShown] = useState(true);
+    const [activeLotId, setActiveLotId] = React.useState("");
 
 
     const onAddLotError = (err: any) => {
@@ -89,7 +86,75 @@ function AddLotForm(): React.ReactElement {
         }, 6000);
     };
 
+    const onEditLotSuccess = (data: any) => {
+        setAPIResponse(true);
+        isFormValidated(false);
+        setFormStatus(formStatusProps.editsuccess);
+        //set active parking lot id
+        // setActiveCustomerId(data?.data?.customer?.customerId.toString());
+        setEditShown(true);
+        setSaveCancelShown(false);
+        setTimeout(() => {
+            setAPIResponse(false);
+        }, 6000);
+        setIsTrigger(!isTrigger);
+        formik.resetForm({});
+        history.push(`/customer/viewCustomer/${data?.data?.customer?.customerId.toString()}`);
+    };
+
+    const onEditLotError = (err: any) => {
+        try {
+            const { data } = err.response;
+            setAPIResponse(true);
+            isFormValidated(false);
+            setFormStatus({ message: data?.error?.message || formStatusProps.error.message, type: 'Error' });
+            formik.setSubmitting(false);
+            setEditShown(true);
+            setSaveCancelShown(false);
+            setTimeout(() => {
+                setAPIResponse(false);
+            }, 6000);
+            formik.resetForm({});
+        } catch (error) {
+
+        }
+    };
+
+    const onGetLotSuccess = (data: any) => {
+        if (data) {
+            populateDataInAllFields(data);
+             //set active parking lot id
+            setActiveLotId(data?.lot?.deliveryLocationId.toString());
+            console.log(activeLotId);
+            // setCustomerIdCreated(data?.data?.customer?.customerId);
+            // setPageCustomerName(data?.data?.customer?.companyNm);
+            // setCustomerData(data?.data?.customer);
+        }
+    };
+
+    const onGetLotError = () => {
+        setEditShown(false);
+        setSaveCancelShown(true);
+    };
+
     const { mutate: addNewLot } = useCreateLot(onAddLotError, onAddLotSuccess);
+    const { mutate: editParkingLot } = useEditParkingLot(onEditLotSuccess, onEditLotError);
+    useGetParkingLotData(activeLotId, isTrigger, onGetLotSuccess, onGetLotError);
+
+    //to populate all the data in the form fields
+    const populateDataInAllFields = (dataToPopulate: any) => {
+        //populate data in UI fields
+        console.log(dataToPopulate?.data?.lot?.deliveryLocationNm);
+        formik.setFieldValue('lotName', dataToPopulate?.data?.lot?.deliveryLocationNm);
+        formik.setFieldValue('lotId', dataToPopulate?.data?.lot?.lotId);
+        formik.setFieldValue('addressLine1', dataToPopulate?.data?.lot?.addressLine1);
+        formik.setFieldValue('addressLine2', dataToPopulate?.data?.lot?.addressLine2);
+        formik.setFieldValue('city', dataToPopulate?.data?.lot?.cityNm);
+        formik.setFieldValue('state', dataToPopulate?.data?.lot?.stateNm);
+        formik.setFieldValue('postalCode', dataToPopulate?.data?.lot?.postalCd);
+        formik.setFieldValue('county', dataToPopulate?.data?.lot?.addressLine3);
+        formik.setFieldValue('jurisdictionId', dataToPopulate?.data?.lot?.taxJurisdictionId);
+    };
 
     useEffect(() => {
         if (contactTypeList?.data.length) {
@@ -100,6 +165,19 @@ function AddLotForm(): React.ReactElement {
 
         }
     }, [contactTypeList]);
+
+    useEffect(() => {
+        const selectedLotId = location.pathname.split("/").pop();
+        if (selectedLotId != "addLot") {
+             //set active parking lot id
+            setActiveLotId("" + selectedLotId);
+            setDisabled(true);
+            setSaveCancelShown(false);
+        } else {
+            setEditShown(false);
+            setSaveCancelShown(true);
+        }
+    }, [location]);
 
     const onClickBack = () => {
         if (isFormFieldChange()) {
@@ -150,6 +228,14 @@ function AddLotForm(): React.ReactElement {
         }
     };
 
+    const editNewLot = (form: AddParkingLotForm) => {
+        try {
+            editParkingLot(createAddLotPayload(form));
+        } catch (error) {
+            setFormStatus(formStatusProps.error);
+        }
+    };
+
     function handleGoogleAddressChange(addressObj: any) {
         formik.setFieldValue('addressLine1', addressObj.addressLine1);
         formik.setFieldValue('addressLine2', addressObj.addressLine2);
@@ -175,7 +261,14 @@ function AddLotForm(): React.ReactElement {
         initialValues: addLotFormInitialValues,
         validationSchema: AddParkingLotValidationSchema,
         onSubmit: (values) => {
-            createNewLot(values);
+
+            if (isEditMode) {
+                editNewLot(values);
+            } else {
+                createNewLot(values);
+            }
+       
+            
         },
     });
 
@@ -332,7 +425,7 @@ function AddLotForm(): React.ReactElement {
                                         error={(formik.touched.timeZone && formik.errors.timeZone) ? true : false}
                                         onChange={formik.setFieldValue}
                                         onBlur={() => { formik.setFieldTouched("timeZone"); formik.validateField("timeZone"); }}
-                                        disabled={isDisabled}
+                                        isDisabled={isDisabled}
                                         required
                                     />
                                 </Grid>
@@ -366,7 +459,7 @@ function AddLotForm(): React.ReactElement {
                                         helperText={(formik.touched.productDelFreq && formik.errors.productDelFreq) ? formik.errors.productDelFreq.value : undefined}
                                         error={(formik.touched.timeZone && formik.errors.timeZone) ? true : false}
                                         onChange={formik.setFieldValue}
-                                        disabled
+                                        isDisabled={isDisabled}
                                         onBlur={() => { formik.setFieldTouched("productDelFreq"); formik.validateField("productDelFreq"); }}
                                     />
                                 </Grid>
