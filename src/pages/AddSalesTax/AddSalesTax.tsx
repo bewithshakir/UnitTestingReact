@@ -83,7 +83,7 @@ const AddSalesTax: React.FC = () => {
         formik.setFieldValue('city', formData.city);
         formik.setFieldValue('state', formData.state);
         formik.setFieldValue('countryCd', 'us');
-        formik.setFieldValue('federalRate', formData.federalRate || 0);
+        formik.setFieldValue('federalRate', formData.federalRate);
         formik.setFieldValue('stateRate', formData.stateRate);
         formik.setFieldValue('localRate', formData.localRate);
     };
@@ -140,9 +140,9 @@ const AddSalesTax: React.FC = () => {
                 "countryCode": form.countryCd,
                 "city": form.city,
                 "state": form.state,
-                "stateRate": parseFloat(form.stateRate),
+                "stateRate": form.federalRate ? parseFloat(form.stateRate): 0,
                 "federalRate": form.federalRate ? parseFloat(form.federalRate) : 0,
-                "localRate": parseFloat(form.localRate)
+                "localRate": form.federalRate ? parseFloat(form.localRate): 0
             };
             editSaleTax(payload);
         } catch (error) {
@@ -240,6 +240,9 @@ const AddSalesTax: React.FC = () => {
         formik.setFieldTouched("stateRate");
         formik.validateField("stateRate");
 
+        formik.validateField("federalRate");
+        formik.validateField("federalRate");
+
         formik.validateField("localRate");
         formik.validateField("localRate");
     };
@@ -254,6 +257,7 @@ const AddSalesTax: React.FC = () => {
                 return true;
             } 
             else if ((formik.touched.stateRate && formik.errors.stateRate) ||
+            (formik.touched.federalRate && formik.errors.federalRate) || 
             (formik.touched.localRate && formik.errors.localRate)) {
                 return true;
             }
@@ -262,6 +266,7 @@ const AddSalesTax: React.FC = () => {
             }
         } else {
             if ((formik.touched.stateRate && formik.errors.stateRate) ||
+            (formik.touched.federalRate && formik.errors.federalRate) ||
             (formik.touched.localRate && formik.errors.localRate)) {
                 return true;
             }
@@ -269,6 +274,7 @@ const AddSalesTax: React.FC = () => {
                 formik.values.city && 
                 formik.values.state && 
                 formik.values.stateRate &&
+                formik.values.federalRate &&
                 formik.values.localRate
                 ){
                 return false;
@@ -285,14 +291,14 @@ const AddSalesTax: React.FC = () => {
                    
                     <form onSubmit={formik.handleSubmit} onBlur={handleFormDataChange} data-test="component-AddSalesTax" >
                         <Typography color="var(--Darkgray)" variant="h3" gutterBottom className="fw-bold" mb={1} pt={3}>
-                            Fill all the Mandatory fields *
+                        {t("taxes.salesTax.form.title")} *
                         </Typography>
                         <Grid container mt={1}>
                             <Grid item xs={12} md={12} pr={2.5} pb={2.5}>
                                 <Grid item xs={12} md={6}>
                                     <AutocompleteInput
                                         name='addressLine1'
-                                        label='SEARCH LOCATION'
+                                        label={t("taxes.salesTax.form.labelLocation")}
                                         onChange={handleGoogleAddressChange}
                                         onBlur={handleGoogleAddressBlur}
                                         value={formik.values.addressLine1}
@@ -307,7 +313,7 @@ const AddSalesTax: React.FC = () => {
                                 <Grid item xs={12} md={6}>
                                     <Input
                                         id='city'
-                                        label='CITY'
+                                        label={t("taxes.salesTax.form.labelCity")}
                                         type='text'
                                         disabled
                                         helperText={(formik.touched.city && formik.errors.city) ? formik.errors.city : undefined}
@@ -324,7 +330,7 @@ const AddSalesTax: React.FC = () => {
                                 <Grid item xs={12} md={6}>
                                     <Input
                                         id='state'
-                                        label='STATE'
+                                        label={t("taxes.salesTax.form.labelState")}
                                         type='text'
                                         description=''
                                         disabled
@@ -341,7 +347,7 @@ const AddSalesTax: React.FC = () => {
                                 <Grid item xs={12} md={6}>
                                     <Input
                                         id='stateRate'
-                                        label='STATE RATE (%)'
+                                        label={t("taxes.salesTax.form.labelStateRate")+'%'}
                                         type='text'
                                         placeholder='State Rate'
                                         helperText={(formik.touched.stateRate && formik.errors.stateRate) ? formik.errors.stateRate : undefined}
@@ -356,8 +362,24 @@ const AddSalesTax: React.FC = () => {
                             <Grid item xs={12} md={12} pr={2.5} pb={2.5}>
                                 <Grid item xs={12} md={6}>
                                     <Input
+                                        id='federalRate'
+                                        label={t("taxes.salesTax.form.labelFederalRate")+'%'}
+                                        type='text'
+                                        placeholder='Federal Rate'
+                                        helperText={(formik.touched.federalRate && formik.errors.federalRate) ? formik.errors.federalRate : undefined}
+                                        error={(formik.touched.federalRate && formik.errors.federalRate) ? true : false}
+                                        {...formik.getFieldProps('federalRate')}
+                                        required
+                                        data-test="federalRate"
+                                    />
+                                </Grid>
+                            </Grid>
+
+                            <Grid item xs={12} md={12} pr={2.5} pb={2.5}>
+                                <Grid item xs={12} md={6}>
+                                    <Input
                                         id='localRate'
-                                        label='LOCAL RATE (%)'
+                                        label={t("taxes.salesTax.form.labelLocalRate")+'%'}
                                         type='text'
                                         placeholder='Local Rate'
                                         helperText={(formik.touched.localRate && formik.errors.localRate) ? formik.errors.localRate : undefined}
@@ -374,7 +396,7 @@ const AddSalesTax: React.FC = () => {
                                 <Box className="form-action-section">
                                     <Button
                                         types="cancel"
-                                        aria-label="cancel"
+                                        aria-label={t("buttons.cancel")}
                                         className="mr-4"
                                         onClick={onClickBack}
                                         data-test="cancel"
@@ -384,7 +406,7 @@ const AddSalesTax: React.FC = () => {
                                     <Button
                                         type="submit"
                                         types="save"
-                                        aria-label="save"
+                                        aria-label={t("buttons.save")}
                                         className="ml-4"
                                         data-test="save"
                                         disabled={disableButton()}

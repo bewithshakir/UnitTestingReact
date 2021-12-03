@@ -68,9 +68,9 @@ export default function HorizontalBar (props: HorizontalBarProps) {
       case history.location.pathname.includes('addFuelTax'):
         return "Add Fuel Tax";
       case history.location.pathname.includes('salesTax/add'):
-        return "Add Sales Tax";
+        return t("taxes.salesTax.form.titleAdd");
       case history.location.pathname.includes('salesTax/edit'):
-        return "Edit Sales Tax";
+        return t("taxes.salesTax.form.titleEdit");
       default:
         return selectedCustomerName;
     }
