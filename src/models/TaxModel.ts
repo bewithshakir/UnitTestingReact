@@ -131,20 +131,30 @@ export default class TaxModel {
     }
 
     ACTION_TYPES = {
-        EDIT: 'edit',
-        DELETE: 'delete'
+        EDIT: 'edit'
     };
 
     rowActions () {
         const { t } = useTranslation();
         return [
             {
+                label: ''
+            },
+            {
                 label: t("menus.data-grid-actions.edit"),
                 action: this.ACTION_TYPES.EDIT
             },
             {
-                label: t("menus.data-grid-actions.delete"),
-                action: this.ACTION_TYPES.DELETE
+                label: t("menus.data-grid-actions.raiseRequset"),
+            },
+            {
+                label: t("menus.data-grid-actions.feeDetails"),
+            },
+            {
+                label: t("menus.data-grid-actions.contact details"),
+            },
+            {
+                label: t("menus.data-grid-actions.other details"),
             }
         ];
     }

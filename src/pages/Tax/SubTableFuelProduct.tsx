@@ -37,7 +37,8 @@ export default function InnerTable(props:props) {
                 isChildTable
                 enableRowAction={true}
                 getPages={fetchNextPage}
-                rowActionOptions={props.rowActionOptions} 
+                rowActionOptions={props.rowActionOptions}
+                showInnerTableMenu={true} 
                 />
         </div>
     );
