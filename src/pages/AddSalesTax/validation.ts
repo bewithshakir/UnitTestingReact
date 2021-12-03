@@ -5,6 +5,7 @@ export const AddSalesTaxValidationSchema = Yup.object().shape({
     state: Yup.string().required('Required'),
     city: Yup.string().required('Required'),
     stateRate: Yup.string().matches(/^[0-9]+([.][0-9]+)?$/, 'Invalid Rate.').required('Required'),
+    federalRate: Yup.string().matches(/^[0-9]+([.][0-9]+)?$/, 'Invalid Rate.').required('Required'),
     localRate: Yup.string().matches(/^[0-9]+([.][0-9]+)?$/, 'Invalid Rate.').required('Required')
 });
 
@@ -14,5 +15,6 @@ export const AddSalesTaxValidationSchemaEdit = Yup.object().shape({
     state: Yup.string().required('Required'),
     city: Yup.string().required('Required'),
     stateRate: Yup.string().matches(/^[0-9]+([.][0-9]+)?$/, 'Invalid Rate.').required('Required'),
+    federalRate: Yup.string().matches(/^[0-9]+([.][0-9]+)?$/, 'Invalid Rate.').required('Required'),
     localRate: Yup.string().matches(/^[0-9]+([.][0-9]+)?$/, 'Invalid Rate.').required('Required')
 });

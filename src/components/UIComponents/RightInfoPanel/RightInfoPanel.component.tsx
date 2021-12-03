@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Drawer } from "@mui/material";
 import { PanelHeader } from "./PanelHeader.component";
 import { InfoViewContent } from "./InfoViewContent.component";
 import { DynamicFilterContent, IDynamicFilterProps } from "./DynamicFilterContent.component";
 import "./RightInfoPanel.style.scss";
+import { filterStore } from "../../../store";
 
 
-type drawerVariant = "info-view" | "customer-filter" | "salestax-filter";
+type drawerVariant = "info-view" | "dynamic-filter";
 
 interface InfoPanelProps {
   open: boolean;
@@ -23,17 +24,17 @@ interface InfoPanelProps {
 
 export const RightInfoPanel: React.FC<InfoPanelProps> = ({ open, headingText, info, onClose, provideFilterParams, fields, panelType, idStrForEdit, nameStrForEdit, storeKey }) => {
 
+  const removeFormData = filterStore((state) => state.removeFormData);
+  useEffect(() => {
+    return () => {
+      removeFormData();
+    };
+  }, []);
+
   const provideContentForPanel = () => {
     if (panelType === "info-view") {
       return <InfoViewContent info={info} />;
-    } else if (panelType === "customer-filter" && fields) {
-      return <DynamicFilterContent
-        provideFilterParams={provideFilterParams}
-        onClose={onClose}
-        fields={fields}
-        storeKey={storeKey || 'dynamicFilter'}
-      />;
-    } else if (panelType === "salestax-filter" && fields) {
+    } else if (panelType === "dynamic-filter" && fields) {
       return <DynamicFilterContent
         provideFilterParams={provideFilterParams}
         onClose={onClose}
@@ -47,7 +48,7 @@ export const RightInfoPanel: React.FC<InfoPanelProps> = ({ open, headingText, in
 
   const panelDrawer = <Drawer
     className={"right_panel_main_class " + (panelType === "info-view" ? "right_info_panel" : "customer_filter_panel")}
-    variant={(panelType === "customer-filter" || panelType === "salestax-filter") ? "temporary" : "persistent"}
+    variant={(panelType === "dynamic-filter") ? "temporary" : "persistent"}
     anchor="right"
     open={open}
   >
