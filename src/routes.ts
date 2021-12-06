@@ -35,7 +35,7 @@ export const routes = [
         path: "/customer/:customerId/parkingLots/addLot",
         component: lazy(() => import('./pages/ParkingLot/AddLot/AddLotWrapper')),
         exact: false,
-        version:'Breadcrumbs-Many'
+        version: 'Breadcrumbs-Many'
       },
     ]
   },
@@ -44,6 +44,13 @@ export const routes = [
     component: lazy(() => import("./pages/Tax")),
     version: "NavLinks",
     exact: false
+  },
+  {
+    // remove this (only for testing)
+    path: "/masterLayout",
+    component: lazy(() => import('./pages/ProductManagement/index')),
+    exact: true,
+    version: "NavLinks",
   },
   {
     path: "/addFuelTax",
