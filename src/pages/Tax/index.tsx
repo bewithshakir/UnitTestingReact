@@ -16,21 +16,25 @@ import { DataGridActionsMenuOption } from '../../components/UIComponents/Menu/Da
 import { FuelTax, MASS_ACTION_TYPES } from './config';
 import { RightInfoPanel } from '../../components/UIComponents/RightInfoPanel/RightInfoPanel.component';
 import { getSeachedDataTotalCount } from '../../utils/helperFunctions';
+import Table from './SubTableFuelProduct';
 
 const TaxLandingContent = memo(() => {
   const [searchTerm, setSearchTerm] = React.useState("");
   const [filterData, setFilterData] = React.useState<{ [key: string]: string[] }>({});
   const [isFilterPanelOpen, toggleFilterPanel] = React.useState(false);
-  const [sortOrder, setSortOrder] = React.useState<{ sortBy: string, order: string }>({ sortBy: "", order: "" });
+  const [sortOrder, setSortOrder] = React.useState<{ sortBy: string, order: string }>({ sortBy: "cityName", order: "desc" });
   const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
   setVersion("NavLinks");
   const { t } = useTranslation();
   const history = useHistory();
   const TaxObj = new TaxModel();
   const massActionOptions = TaxObj.massActions();
+  const headCellsLots = TaxObj.fieldsToDisplayLotTable();
+  const rowActionOptions = TaxObj.rowActions();
   const [fuelTaxList, setFuelTaxList] = React.useState([]);
   const headCells = TaxObj.fieldsToDisplay();
   const { SortByOptions, FilterByFields } = FuelTax.LandingPage;
+  const [fuelTaxProductId, setFuelTaxProductId] = React.useState('');
   const onInputChange = (value: string) => {
     setSearchTerm(value);
   };
@@ -156,20 +160,22 @@ const TaxLandingContent = memo(() => {
         </Grid>
         <Grid container pt={2.5} display="flex" flexGrow={1}>
           <GridComponent
-            primaryKey='fuelTaxId'
+            primaryKey='taxJurisdictionId'
             rows={TaxObj.dataModel(fuelTaxList)}
             header={headCells}
             isLoading={isFetching || isLoading}
             enableRowSelection={false}
-            enableRowAction
+            enableRowAction={false}
             getPages={fetchNextPage}
             searchTerm={searchTerm}
             openDrawer={openDrawer}
             noDataMsg='Add Fuel Tax by clicking on the "Add Tax" button.'
+            getId={(id: string) => setFuelTaxProductId(id)}
+            InnerTableComponent={<Table primaryKey='productTaxId' id={fuelTaxProductId} headCells={headCellsLots} enableRowAction={true} rowActionOptions={rowActionOptions} />}
           />
 
           <RightInfoPanel
-            panelType="customer-filter"
+            panelType="dynamic-filter"
             open={isFilterPanelOpen} headingText={"Filters"}
             provideFilterParams={getFilterParams}
             onClose={() => toggleFilterPanel(false)}

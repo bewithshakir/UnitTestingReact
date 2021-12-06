@@ -1,9 +1,10 @@
-import { mount } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
 import {i18n} from '../../i18n/i18n';
 import { findByIdAttr, findByTestAttr, HOCSetup } from '../../tests/testUtils';
 import AddSalesTax from './AddSalesTax';
+import DiscardDialog from '../../components/UIComponents/ConfirmationDialog/DiscardChangesDialog.component';
 
 const queryClient = new QueryClient();
 
@@ -51,6 +52,11 @@ describe('AddSalesTax component', () => {
         expect(cityInput.length).toBe(1);
     });
 
+    it('renders federalRate input without error', ()=>{
+        const cityInput = findByTestAttr(wrapper, 'federalRate');
+        expect(cityInput.length).toBe(1);
+    });
+
     it('renders localRate input without error', ()=>{
         const cityInput = findByTestAttr(wrapper, 'localRate');
         expect(cityInput.length).toBe(1);
@@ -74,3 +80,15 @@ describe('AddSalesTax component', () => {
     // });
 
 });
+
+describe('renders discard dialog properly', () => {
+    const discardDialog = shallow(
+        <DiscardDialog
+            title='Discard dialog'
+            content='content'
+            open={true}
+            handleConfirm={() => jest.fn()}
+            handleToggle={() => jest.fn()}
+        />);
+    expect(discardDialog).toMatchSnapshot();
+})

@@ -1,3 +1,4 @@
+/* eslint-disable no-empty */
 import React, { useState, useEffect } from 'react';
 import { FieldArray, FormikProvider, useFormik } from 'formik';
 import { useTranslation } from 'react-i18next';
@@ -41,7 +42,6 @@ function AddLotForm(): React.ReactElement {
     const history = useHistory();
     const isFormFieldChange = () => formik.dirty;
     const { theme } = useTheme();
-    const { mutate: addNewLot, isSuccess, isError } = useCreateLot();
     const { data: contactTypeList } = useGetContactTypes();
     const [primaryContactType, setPrimaryContactType] = useState('');
     const [formSuccess, setFormSuccess] = useState(false);
@@ -54,23 +54,33 @@ function AddLotForm(): React.ReactElement {
     const hideDialogBox = useShowConfirmationDialogBoxStore((state) => state.hideDialogBox);
     const isFormValidated = useShowConfirmationDialogBoxStore((state) => state.setFormFieldValue);
 
-    useEffect(() => {
+    const onAddLotError = (err: any) => {
         resetFormFieldValue(false);
         hideDialogBox(false);
-        if (isSuccess) {
+        try {
+            const { data } = err.response;
             setAPIResponse(true);
-            setFormStatus(formStatusProps.success);
-            setFormSuccess(true);
+            setFormStatus({ message: data?.error?.message || formStatusProps.error.message, type: 'Error' });
+            setTimeout(() => {
+                setAPIResponse(false);
+            }, 6000);
+        } catch (error) {
+           
         }
-        if (isError) {
-            setAPIResponse(true);
-            setFormStatus(formStatusProps.error);
-        }
+    };
+
+    const onAddLotSuccess = () => {
+        resetFormFieldValue(false);
+        hideDialogBox(false);
+        setAPIResponse(true);
+        setFormStatus(formStatusProps.success);
+        setFormSuccess(true);
         setTimeout(() => {
             setAPIResponse(false);
         }, 6000);
+    };
 
-    }, [isSuccess, isError]);
+    const { mutate: addNewLot } = useCreateLot(onAddLotError, onAddLotSuccess);
 
     useEffect(() => {
         if (contactTypeList?.data.length) {

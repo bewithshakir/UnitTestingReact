@@ -327,7 +327,7 @@ export const DemoComponents: React.FC = () => {
                                 Dynamic Filter
                             </Button>
 
-                            <RightInfoPanel panelType="customer-filter"
+                            <RightInfoPanel panelType="dynamic-filter"
                                 open={custFilterPanelVisible} headingText={"customer-filter-panel.header.filters"}
                                 provideFilterParams={(filterObj) => {
                                     alert(JSON.stringify(filterObj));

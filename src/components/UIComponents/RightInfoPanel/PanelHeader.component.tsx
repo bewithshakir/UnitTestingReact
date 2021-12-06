@@ -1,7 +1,6 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { IconButton, AppBar, Toolbar, Box } from "@mui/material";
-import { useAddedCustomerNameStore } from '../../../store';
 import DataGridActionsMenu from "../Menu/DataGridActionsMenu.component";
 import { CloseIcon } from "../../../assets/icons";
 import "./RightInfoPanel.style.scss";
@@ -13,32 +12,30 @@ interface InfoPanelProps {
     panelType: string;
     info: any | null;
     idStrForEdit?: string;
-    nameStrForEdit?:string;
+    nameStrForEdit?: string;
     onClose: (...args: any[]) => void;
 }
-export const PanelHeader: React.FC<InfoPanelProps> = ({headingText, panelType, onClose, idStrForEdit, nameStrForEdit}) => {
-    const {theme} = useTheme();
+export const PanelHeader: React.FC<InfoPanelProps> = ({ headingText, panelType, onClose, idStrForEdit }) => {
+    const { theme } = useTheme();
     const { t } = useTranslation();
     const history = useHistory();
-    const setPageCustomerName = useAddedCustomerNameStore((state) => state.setCustomerName);
-    setPageCustomerName(nameStrForEdit?nameStrForEdit:'');
     const navigateToCustomerPage = () => {
         history.push({
-            pathname: `/customer/viewCustomer/${idStrForEdit?idStrForEdit:''}`
+            pathname: `/customer/viewCustomer/${idStrForEdit ? idStrForEdit : ''}`
         });
     };
-    
+
     return (<div className="right_info_panel_header">
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static">
-                <Toolbar sx={{bgcolor:theme["--Primary"]}} variant="dense">
+                <Toolbar sx={{ bgcolor: theme["--Primary"] }} variant="dense">
                     {panelType === "info-view" && <IconButton
                         edge="start"
                         onClick={onClose}
                     >
                         <CloseIcon className="info_panel_close_icon" color="var(--White)" />
                     </IconButton>}
-                    <h2 style={{ flexGrow: 1 }}>
+                    <h2>
                         {t(headingText)}
                     </h2>
                     {panelType === "info-view" && <DataGridActionsMenu
@@ -49,7 +46,7 @@ export const PanelHeader: React.FC<InfoPanelProps> = ({headingText, panelType, o
                         ]}
                         onSelect={navigateToCustomerPage}
                     />}
-                    {(panelType === "customer-filter" || panelType === "salestax-filter" )  && <IconButton
+                    {(panelType === "dynamic-filter") && <IconButton
                         edge="start"
                         onClick={onClose}
                     >

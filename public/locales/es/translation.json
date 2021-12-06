@@ -25,7 +25,9 @@
     "secondary": "Secundaria",
     "add customer": "Agregar cliente",
     "show more": "Mostrar más",
-    "sort by": "Ordenar por"
+    "sort by": "Ordenar por",
+    "add tax": "Agregar impuesto",
+    "filter": "Filtre"
   },
   "menus": {
     "sortby": {
@@ -40,15 +42,56 @@
       "delete": "Delete"
     },
     "data-grid-actions": {
-      "edit": "Edit",
-      "delete": "Delete",
-      "other details": "Other details",
-      "contact details": "Contact details"
+      "edit": "Editar",
+      "delete": "Borrar",
+      "other details": "Otros detalles",
+      "contact details": "Detalles de contacto"
     },
     "profile-actions": {
       "profile": "Profile",
       "settings": "Settings",
       "logout": "Logout"
+    }
+  },
+  "taxes": {
+    "navBar": {
+      "fuelTax": "Impuesto sobre el combustible",
+      "salesTax": "Impuesto de venta",
+      "opisCities": "Ciudades OPIS",
+      "productManagement": "Gestión de productos",
+      "assetManagement": "Gestión de activos"
+    },
+    "fuelTax": {
+      "search": "Ciudad",
+      "results found": "resultados encontrados",
+      "result(s) found": "resultados encontrados",
+      "sortBy": {
+        "cityname_atoz": "Nombre de la ciudad A-Z",
+        "cityname_ztoa": "Nombre de la ciudad Z-A"
+      },
+      "filter": {
+        "state": "Estado",
+        "city": "Ciudad",
+        "settlement type": "Tipo de liquidación"
+      }
+    },
+    "salesTax": {
+      "sortBy": {
+        "cityname_atoz": "Nombre de la ciudad A-Z",
+        "cityname_ztoa": "Nombre de la ciudad Z-A"
+      },
+      "city": "Ciudad",
+      "form": {
+        "titleAdd": "Agregar impuesto sobre las ventas",
+        "titleEdit": "Editar impuesto sobre las ventas",
+        "title": "Complete todos los campos obligatorios",
+        "labelLocation": "Ubicación de búsqueda",
+        "labelCity": "Ciudad",
+        "labelState": "Estado",
+        "labelStateRate": "Tasa estatal",
+        "labelFederalRate": "Tasa federal",
+        "labelLocalRate": "Tarifa local"
+      }
     }
   }
 }
