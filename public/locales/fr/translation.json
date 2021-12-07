@@ -25,7 +25,9 @@
     "secondary": "Secondaire",
     "add customer": "Ajouter un client",
     "show more": "Montre plus",
-    "sort by": "Trier par"
+    "sort by": "Trier par",
+    "add tax": "Ajouter une taxe",
+    "filter": "Filtre"
   },
   "menus": {
     "sortby": {
@@ -40,15 +42,56 @@
       "delete": "Delete"
     },
     "data-grid-actions": {
-      "edit": "Edit",
-      "delete": "Delete",
-      "other details": "Other details",
-      "contact details": "Contact details"
+      "edit": "Éditer",
+      "delete": "Effacer",
+      "other details": "Autres détails",
+      "contact details": "Détails du contact"
     },
     "profile-actions": {
       "profile": "Profile",
       "settings": "Settings",
       "logout": "Logout"
+    }
+  },
+  "taxes": {
+    "navBar": {
+      "fuelTax": "Taxe sur les carburants",
+      "salesTax": "Taxe de vente",
+      "opisCities": "Villes OPIS",
+      "productManagement": "Gestion des produits",
+      "assetManagement": "La gestion d'actifs"
+    },
+    "fuelTax": {
+      "search": "Ville",
+      "results found": "résultats trouvés",
+      "result(s) found": "résultats trouvés",
+      "sortBy": {
+        "cityname_atoz": "Nom de la ville A-Z",
+        "cityname_ztoa": "Nom de la ville Z-A"
+      },
+      "filter": {
+        "state": "État",
+        "city": "Ville",
+        "settlement type": "Type de règlement"
+      }
+    },
+    "salesTax": {
+      "sortBy": {
+        "cityname_atoz": "Nom de la ville A-Z",
+        "cityname_ztoa": "Nom de la ville Z-A"
+      },
+      "city": "Ville",
+      "form": {
+        "titleAdd": "Ajouter la taxe de vente",
+        "titleEdit": "Modifier la taxe de vente",
+        "title": "Remplissez tous les champs obligatoires",
+        "labelLocation": "Emplacement de recherche",
+        "labelCity": "Ville",
+        "labelState": "État",
+        "labelStateRate": "Taux de l'État",
+        "labelFederalRate": "Taux fédéral",
+        "labelLocalRate": "Tarif local"
+      }
     }
   }
 }

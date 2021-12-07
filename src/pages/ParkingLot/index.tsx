@@ -63,7 +63,6 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
   useEffect(() => {
     const statePL = history.location.state as { customerName: string };
 
-    console.log(statePL.customerName);
     resetFormFieldValue(false);
 
     setPageCustomerName(statePL.customerName);
@@ -253,7 +252,7 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
           <RightInfoPanel
             panelType="dynamic-filter"
             open={custFilterPanelVisible}
-            headingText={"parkingLot.header.filters"}
+            headingText={"parkingLot.header.filter"}
             provideFilterParams={getFilterParams}
             onClose={handleCustFilterPanelClose}
             fields={filterByFields}

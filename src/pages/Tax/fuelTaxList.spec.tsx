@@ -7,7 +7,7 @@ import SortbyMenu from '../../components/UIComponents/Menu/SortbyMenu.component'
 import { FuelTax } from './config';
 import { when } from 'jest-when';
 import { useFuelTaxList } from './queries';
-
+import InnerTable from './SubTableFuelProduct';
 
 jest.mock("react-query", () => {
     return {
@@ -123,12 +123,24 @@ describe('FuelTax Landing Page', () => {
         expect(useFuelTaxList).toBeCalled();
         expect(FuelTaxListPage).toMatchSnapshot();
     });
+
+    const TaxObj = new TaxModel();
+    const headCellsLots = TaxObj.fieldsToDisplayLotTable();
+    const rowActionOptions = TaxObj.rowActions();
+    const taxJurisdictionId = '7496ff42-b425-4bb0-a2b4-b7a20a427645';
+    test('Fuel Product List is rendering', () => {
+        const FuelTaxProductListPage = shallow(
+            <InnerTable primaryKey={taxJurisdictionId} id={taxJurisdictionId} headCells={headCellsLots} enableRowAction={true} rowActionOptions={rowActionOptions}/>
+        );
+        expect(useFuelTaxList).toBeCalled();
+        expect(FuelTaxProductListPage).toMatchSnapshot();
+    });
 });
 
 
 describe('Given Search FuelTax Landing Page', () => {
     beforeEach(() => {
-        when(useFuelTaxList).calledWith("Houstan", { sortBy: "", order: "asc" }).mockReturnValue({
+        when(useFuelTaxList).calledWith("Houstan", { sortBy: "cityName", order: "desc" }).mockReturnValue({
             data: {
                 pages: [
                     {

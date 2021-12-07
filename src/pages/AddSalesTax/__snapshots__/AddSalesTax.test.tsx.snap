@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[` 1`] = `
+<ForwardRef(Dialog)
+  BackdropProps={
+    Object {
+      "style": Object {
+        "backgroundColor": "gray",
+        "opacity": 0.3,
+      },
+    }
+  }
+  aria-describedby="discard-changes-dialog-description"
+  aria-labelledby="discard-changes-dialog-title"
+  open={true}
+>
+  <div
+    className="discard-dialog-container"
+  >
+    <ForwardRef(Typography)
+      className="fw-bold"
+      color="var(--Darkgray)"
+      component="h2"
+      pt={2.5}
+      px={2.5}
+      variant="h2"
+    >
+      Discard dialog
+    </ForwardRef(Typography)>
+    <ForwardRef(DialogContent)
+      className="dialog-content"
+    >
+      <ForwardRef(DialogContentText)
+        color="var(--Darkgray)"
+        id="discard-changes-dialog-description"
+      >
+        content
+      </ForwardRef(DialogContentText)>
+    </ForwardRef(DialogContent)>
+    <ForwardRef(DialogActions)
+      className="dialog-actions"
+    >
+      <Button
+        className="action-no"
+        onClick={[Function]}
+        variant="outlined"
+      >
+        Cancel
+      </Button>
+      <Button
+        className="action-yes"
+        color="default"
+        onClick={[Function]}
+      >
+        Discard
+      </Button>
+    </ForwardRef(DialogActions)>
+  </div>
+</ForwardRef(Dialog)>
+`;

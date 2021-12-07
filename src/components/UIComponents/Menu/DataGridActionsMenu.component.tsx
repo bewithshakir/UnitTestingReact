@@ -10,7 +10,6 @@ import { DataGridActionIcon } from '../../../assets/icons';
 import './DataGridActionsMenu.style.scss';
 import { Icon, Typography } from '@mui/material';
 
-
 export type DataGridActionsMenuOption = {
   action?: string;
   label: string;
@@ -22,6 +21,7 @@ interface DataGridActionsMenuProps {
   options?: DataGridActionsMenuOption[],
   menuName?: string,
   onSelect?: (e: React.SyntheticEvent, selectedValue: DataGridActionsMenuOption) => void,
+  showInnerTableMenu?: boolean
 }
 export default function DataGridActionsMenu(props: DataGridActionsMenuProps) {
   const [open, setOpen] = React.useState(false);
@@ -50,7 +50,6 @@ export default function DataGridActionsMenu(props: DataGridActionsMenuProps) {
     onSelect && options && onSelect(event, options[index]);
     setOpen(false);
   };
-
 
   function handleListKeyDown(event: React.KeyboardEvent) {
     if (event.key === "Tab") {
@@ -88,8 +87,8 @@ export default function DataGridActionsMenu(props: DataGridActionsMenuProps) {
         role={undefined}
         transition
         className={"datagrid-actions-popper"}
-        placement="bottom-end"
-        disablePortal
+        placement={props.showInnerTableMenu?"right":"bottom-end"}
+        disablePortal={props.showInnerTableMenu?false:true}
       >
         {({ TransitionProps, placement }) => (
           <Grow
@@ -140,3 +139,7 @@ export default function DataGridActionsMenu(props: DataGridActionsMenuProps) {
     </div >
   );
 }
+
+DataGridActionsMenu.defaultProps = {
+  showInnerTableMenu: false
+};
