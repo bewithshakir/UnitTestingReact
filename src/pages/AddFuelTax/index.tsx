@@ -43,6 +43,7 @@ const AddFuelTax = memo(() => {
     setVersion("Breadcrumbs-Single");
     const history = useHistory();
     const isFormValidated = useShowConfirmationDialogBoxStore((state) => state.setFormFieldValue);
+    const showDialogBox = useShowConfirmationDialogBoxStore((state) => state.showDialogBox);
     const isFormFieldChange = () => formik.dirty;
     const { t } = useTranslation();
     const [apiResposneState, setAPIResponse] = useState(false);
@@ -256,7 +257,19 @@ const AddFuelTax = memo(() => {
 
 
     function onClickBack () {
-        history.push('/taxes');
+        if (isEditMode) {
+            if (formik.touched && Object.keys(formik.touched).length === 0 && Object.getPrototypeOf(formik.touched) === Object.prototype) {
+                if (formik.dirty) {
+                    if (formik.initialValues != formik.values) {
+                        history.push('/taxes');
+                    }
+                }
+            } else {
+                showDialogBox(true);
+            }
+        } else {
+            history.push('/taxes');
+        }
     }
 
 
