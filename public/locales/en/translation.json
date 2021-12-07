@@ -164,7 +164,8 @@
         "labelState": "State",
         "labelStateRate": "State rate",
         "labelFederalRate": "Federal rate",
-        "labelLocalRate": "Local rate"
+        "labelLocalRate": "Local rate",
+        "titleFuelEdit": "Edit Fuel Tax"
       }
     }
   }

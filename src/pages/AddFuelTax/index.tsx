@@ -169,6 +169,7 @@ const AddFuelTax = memo(() => {
         formik.setFieldValue('fuelType', { label: formData.saleableProductNm, value: formData.saleableProductNm});
         formik.setFieldValue('startDate', formData.startDate);
         formik.setFieldValue('endDate', formData.endDate);
+        formik.setFieldValue('countryCd','us');
     };
 
 
