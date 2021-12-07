@@ -140,7 +140,7 @@ export default function AddProduct() {
                             <Typography color="var(--Darkgray)" variant="h4" gutterBottom className="fw-bold" >Add New Product or select the product from the table to edit the details</Typography>
                         </Grid>
                         <Grid item md={12} mx={4} >
-                            <Typography color="var(--Darkgray)" variant="h4" gutterBottom className="fw-bold" mb={1}>General Infoemation</Typography>
+                            <Typography color="var(--Darkgray)" variant="h4" gutterBottom className="fw-bold" mb={1}>General Information</Typography>
                         </Grid>
                         <Grid item lg={12} md={12} sm={12} xs={12} mx={4}>
                             <hr></hr>
