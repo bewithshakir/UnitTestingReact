@@ -1,6 +1,6 @@
 import { Box, Grid, Container, Typography } from '@mui/material';
 import React, { memo, useState, useEffect } from 'react';
-import { HorizontalBarVersionState, useStore } from '../../store';
+import { HorizontalBarVersionState, useStore, useShowConfirmationDialogBoxStore } from '../../store';
 import Input from '../../components/UIComponents/Input/Input';
 import { Button } from '../../components/UIComponents/Button/Button.component';
 import { useTranslation } from 'react-i18next';
@@ -8,12 +8,13 @@ import './style.scss';
 import Select from '../../components/UIComponents/Select/SingleSelect';
 import { useFormik } from 'formik';
 import TaxModel from '../../models/TaxModel';
-import AddFuelTaxValidationSchema from './validation';
+import {AddFuelTaxValidationSchema, EditFuelTaxValidationSchema } from './validation';
 import AutocompleteInput from '../../components/UIComponents/GoogleAddressComponent/GoogleAutoCompleteAddress';
-import { useAddFuelTax } from './queries';
+import { useAddFuelTax, useGetFuelTax, useEditFuelTax } from './queries';
 import ToastMessage from '../../components/UIComponents/ToastMessage/ToastMessage.component';
 import { DatePickerInput } from '../../components/UIComponents/DatePickerInput/DatePickerInput.component';
 import moment from 'moment';
+import { useLocation, useHistory } from 'react-router-dom';
 
 const initialValues = new TaxModel();
 
@@ -40,6 +41,9 @@ const formStatusProps: IFormStatusProps = {
 const AddFuelTax = memo(() => {
     const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
     setVersion("Breadcrumbs-Single");
+    const history = useHistory();
+    const isFormValidated = useShowConfirmationDialogBoxStore((state) => state.setFormFieldValue);
+    const isFormFieldChange = () => formik.dirty;
     const { t } = useTranslation();
     const [apiResposneState, setAPIResponse] = useState(false);
     const [formStatus, setFormStatus] = useState<IFormStatus>({
@@ -81,6 +85,113 @@ const AddFuelTax = memo(() => {
     };
 
 
+    const onEditSaleTaxSuccess = ()=> {
+        setAPIResponse(true);
+        setFormStatus(formStatusProps.updated);
+        setTimeout(() => {
+            setAPIResponse(false);
+        }, 6000);
+    };
+    const onEditSaleTaxError = (err: any)=> {
+        try {
+            const { data } = err.response;
+            setAPIResponse(true);
+            // setDisabled(false);
+            setFormStatus({ message: data?.error?.message || formStatusProps.error.message, type: 'Error' });
+            formik.setSubmitting(false);
+            setTimeout(() => {
+                setAPIResponse(false);
+            }, 6000);
+        } catch (error) {
+            setFormStatus(formStatusProps.error);
+        }
+    };
+
+
+    const { mutate: updateFuelTaxData } = useEditFuelTax(onEditSaleTaxSuccess, onEditSaleTaxError);
+
+
+    const updateFuelTax = (form: TaxModel) => {
+        try {
+            const apiPayload = {
+                "state": form.state,
+                "city": form.city,
+                "countryCd": form.countryCd,
+                "fuelType": form.fuelType.value,
+                "startDate": moment(form.startDate).format("MM-DD-YYYY"),
+                "endDate": moment(form.endDate).format("MM-DD-YYYY"),
+                "fedFuelTax": parseFloat(form.federalRate),
+                "revenueFuelRate": parseFloat(form.localRate),
+                "salesFuelRate": parseFloat(form.salesFuelRate),
+                "stateFuelTax": parseFloat(form.stateFuelRate),
+                "cityFuelTax": parseFloat(form.cityFuelRate),
+                "countyFuelTax": parseFloat(form.countryFuelRate),
+                "miscInspFuelTax": parseFloat(form.InspFuelRate),
+                "miscLocalFuelTax": parseFloat(form.miscLocalFuelRate),
+                "miscLoadFuelTax": parseFloat(form.loadFuel)
+            };
+            updateFuelTaxData(apiPayload);
+        } catch (error) {
+            setFormStatus(formStatusProps.error);
+        }
+    };
+
+    // edit section
+    const [isDisabled, setDisabled] = useState(false);
+    const [isEditMode, setEditMode] = useState(false);
+    const location = useLocation();
+
+
+    useEffect(() => {
+        const selectedProductId = location.pathname.split("/").pop();
+        if (selectedProductId != "addFuelTax") {
+            setEditMode(true);
+            setDisabled(true);
+        } else {
+            setEditMode(false);
+            setDisabled(false);
+        }
+    }, [location]);
+
+
+    const populateDataInAllFields = (formData: any)=> {
+        formik.setFieldValue('city', formData.city);
+        formik.setFieldValue('state', formData.state);
+        formik.setFieldValue('federalRate', formData.fedFuelTax);
+        formik.setFieldValue('localRate', formData.revenueFuelRate);
+        formik.setFieldValue('salesFuelRate', formData.salesFuelRate);
+        formik.setFieldValue('stateFuelRate', formData.stateFuelTax);
+        formik.setFieldValue('cityFuelRate', formData.cityFuelTax);
+        formik.setFieldValue('countryFuelRate', formData.countyFuelTax);
+        formik.setFieldValue('InspFuelRate', formData.miscInspFuelTax);
+        formik.setFieldValue('miscLocalFuelRate', formData.miscLocalFuelTax);
+        formik.setFieldValue('loadFuel', formData.miscLoadFuelTax);
+        formik.setFieldValue('fuelType', { label: formData.saleableProductNm, value: formData.saleableProductNm});
+        formik.setFieldValue('startDate', formData.startDate);
+        formik.setFieldValue('endDate', formData.endDate);
+    };
+
+
+    const onGetSaleTaxSuccess = (response: any)=> {
+        populateDataInAllFields(response.data.data);
+        setEditMode(true);
+    };
+    const onGetSaleTaxError = (err: any)=> {
+        try {
+            const { data } = err.response;
+            setAPIResponse(true);
+            setFormStatus({ message: data?.error?.message || formStatusProps.error.message, type: 'Error' });
+            formik.setSubmitting(false);
+            setTimeout(() => {
+                setAPIResponse(false);
+            }, 6000);
+        } catch(error) {
+            setFormStatus(formStatusProps.error);
+        }
+    };
+
+    useGetFuelTax(location.search, onGetSaleTaxSuccess, onGetSaleTaxError);
+
     useEffect(() => {
         if (isSuccess) {
             setAPIResponse(true);
@@ -99,9 +210,13 @@ const AddFuelTax = memo(() => {
 
     const formik = useFormik({
         initialValues,
-        validationSchema: AddFuelTaxValidationSchema,
+        validationSchema: isEditMode?EditFuelTaxValidationSchema:AddFuelTaxValidationSchema,
         onSubmit: (values) => {
-            createNewFuelTax(values);
+            if(isEditMode) {
+                updateFuelTax(values);
+            } else {
+                createNewFuelTax(values);
+            }
         }
     });
 
@@ -121,12 +236,47 @@ const AddFuelTax = memo(() => {
         formik.validateField("state");
     }
 
+    const disableButton = () => {
+        if (isEditMode) {
+            // if edit button is clicked, form is filled with values from get req and below is condition for handling save button enable and dsiable
+            if (formik.touched && Object.keys(formik.touched).length === 0 && Object.getPrototypeOf(formik.touched) === Object.prototype) {
+                if (formik.dirty) {
+                    if (formik.initialValues != formik.values) {
+                        return false;
+                    }
+                }
+            } else {
+                return (!formik.isValid || !formik.dirty) || formik.isSubmitting;
+            }
+        } else {
+            return (!formik.isValid || !formik.dirty) || formik.isSubmitting;
+        }
+    };
+
+
+    function onClickBack () {
+        history.push('/taxes');
+    }
+
+
+    const handleFormDataChange = () => {
+        if (isEditMode) {
+                if (formik.dirty) {
+                    if (formik.initialValues != formik.values) {
+                        isFormValidated(false);
+                    }
+                }
+        } 
+        if (isFormFieldChange()) {
+            isFormValidated(true); 
+        }
+    };  
     return (
         <>
             <Box display="flex" mt={10} ml={16}>
                 <Grid item md={10} xs={10}>
                     <Container maxWidth="lg" className="page-container">
-                        <form onSubmit={formik.handleSubmit}>
+                        <form onSubmit={formik.handleSubmit} onBlur={handleFormDataChange}>
 
                                 <Grid item xs={12} md={12}>
                                     <Box className="info-section" pl={2.7} pb={1.8} pt={2.0} pr={20} >
@@ -145,6 +295,7 @@ const AddFuelTax = memo(() => {
                                     value={formik.values.addressLine1}
                                     helperText={(formik.touched.addressLine1 && formik.errors.addressLine1) ? formik.errors.addressLine1 : undefined}
                                     error={(formik.touched.addressLine1 && formik.errors.addressLine1) ? true : false}
+                                    disabled={isEditMode}
                                 />
                             </Grid>
                             <Grid container mt={1}>
@@ -185,6 +336,7 @@ const AddFuelTax = memo(() => {
                                         helperText={(formik.touched.fuelType && formik.errors.fuelType) ? formik.errors.fuelType.value : undefined}
                                         error={(formik.touched.fuelType && formik.errors.fuelType) ? true : false}
                                         onBlur={() => { formik.setFieldTouched("fuelType"); formik.validateField("fuelType"); }}
+                                        isDisabled={isEditMode ? true : isDisabled}
                                     />
                                 </Grid>
                                 <Grid item md={3} pl={2.5} pr={2.5} pb={2.5}>
@@ -326,6 +478,7 @@ const AddFuelTax = memo(() => {
                                         types="cancel"
                                         aria-label="cancel"
                                         className="mr-4"
+                                        onClick={onClickBack}
                                     >
                                         {t("buttons.cancel")}
                                     </Button>
@@ -334,10 +487,11 @@ const AddFuelTax = memo(() => {
                                         types="save"
                                         aria-label="save"
                                         className="ml-4"
-                                        disabled={(!formik.isValid || !formik.dirty) || formik.isSubmitting}
+                                        disabled={disableButton()}
                                     >
                                         {t("buttons.save")}
                                     </Button>
+
                                 </Box>
                                 <ToastMessage isOpen={apiResposneState} messageType={formStatus.type} onClose={() => { return ''; }} message={formStatus.message} />
                             </Grid>
