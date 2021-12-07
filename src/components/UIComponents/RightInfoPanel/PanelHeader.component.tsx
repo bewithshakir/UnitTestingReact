@@ -7,7 +7,7 @@ import { CloseIcon } from "../../../assets/icons";
 import "./RightInfoPanel.style.scss";
 import { useTheme } from '../../../contexts/Theme/Theme.context';
 import { useHistory } from "react-router-dom";
-import { useAddedCustomerIdStore } from '../../../store';
+import { useAddedCustomerIdStore, useAddedCustomerNameStore } from '../../../store';
 
 interface InfoPanelProps {
     headingText: string;
