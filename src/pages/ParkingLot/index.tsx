@@ -81,11 +81,14 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
   const onSortBySelected = (value: string) => {
     let sortOrder;
     switch (value) {
+      case "Lot Name A-Z":
+        sortOrder = { sortBy: "deliveryLocationNm", order: "asc" };
+        break;
       case "Lot Name Z-A":
         sortOrder = { sortBy: "deliveryLocationNm", order: "desc" };
         break;
       default:
-        sortOrder = { sortBy: "deliveryLocationNm", order: "asc" };
+        sortOrder = { sortBy: "", order: "" };
         break;
     }
     setResetTableCollaps(true);
