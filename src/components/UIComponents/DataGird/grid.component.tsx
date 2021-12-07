@@ -114,6 +114,7 @@ const GridComponent: React.FC<GridComponentProps> = (props) => {
                     enableRowAction={enableRowAction}
                     onRequestSort={handleRequestSort}
                     onSelectAllClick={handleSelectAllClick}
+                    onResetTableCollaps={props.onResetTableCollaps}
                     numSelected={selected.length}
                     rowCount={rows.length}
                 />

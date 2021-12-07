@@ -13,6 +13,7 @@ interface GridHeaderProps {
     isError?: any;
     numSelected?: number;
     onSelectAllClick?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    onResetTableCollaps?: (value: boolean) => void;
     rowCount?: number;
     enableRowSelection?: boolean;
     enableRowAction?: boolean;
@@ -20,6 +21,7 @@ interface GridHeaderProps {
 const EnhancedGridHead: React.FC<GridHeaderProps> = (props) => {
 
     const createSortHandler = (property: any) => (event: any) => {
+        props.onResetTableCollaps && props.onResetTableCollaps(true);
         props.onRequestSort(event, property);
     };
 
@@ -53,7 +55,7 @@ const EnhancedGridHead: React.FC<GridHeaderProps> = (props) => {
                             sortDirection={props.orderBy === headCell.field ? props.order : false}
                         >
                             {headCell.sortable ?
-                                < TableSortLabel
+                                <TableSortLabel
                                     IconComponent={SortByIcon}
                                     active={props.orderBy === headCell.field}
                                     direction={props.orderBy === headCell.field ? props.order : "asc"}
