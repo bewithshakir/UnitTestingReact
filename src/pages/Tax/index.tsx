@@ -169,7 +169,7 @@ const TaxLandingContent = memo(() => {
         <Grid container pt={2.5} display="flex" flexGrow={1}>
           <GridComponent
             primaryKey='taxJurisdictionId'
-            rows={TaxObj.dataModel(fuelTaxList)}
+            rows={fuelTaxList}
             header={headCells}
             isLoading={isFetching || isLoading}
             enableRowSelection={false}
