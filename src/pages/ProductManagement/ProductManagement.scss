@@ -1,6 +1,10 @@
 .product-management-container{
-    padding: 24px 0;
+    padding: 0;
 } 
+
+.product-management{
+    transform: translateX(-24px);
+}
  
 .productForm{
     height: 100vh;

@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { DeleteIcon, YellowFuelIcon, RedFuelIcon, GreenFuelIcon, NavyBlueFuelIcon, AlertExclamationIcon } from '../../assets/icons';
 import GridComponent from "../../components/UIComponents/DataGird/grid.component";
 import { headerObj } from '../../components/UIComponents/DataGird/grid.component';
-import { Box, IconButton, Grid } from "@mui/material";
+import { IconButton, Grid } from "@mui/material";
 import './ProductList.scss';
 
 
@@ -91,9 +91,8 @@ export default function ProductList() {
 
     return (
         <Fragment>
-            <Box className='product-list'>
-                <Grid container rowSpacing={3} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-                    <Grid item xs={8} md={10}>
+            <Grid container className="product-list">
+                    <Grid item xs={8} md={10} pb={3}>
                         <Search
                             name="searchTerm"
                             value={searchTerm}
@@ -102,12 +101,12 @@ export default function ProductList() {
                             placeholder={t('productManagement.search')}
                         />
                     </Grid>
-                    <Grid item xs={4} md={2}>
+                    <Grid item xs={4} md={2} pb={3}>
                         <IconButton aria-label='search' edge='end'>
                             <DeleteIcon />
                         </IconButton>
                     </Grid>
-                    <Grid item xs={12} md={12}>
+                    <Grid item xs={12} md={12} pb={5}>
                         <GridComponent
                             primaryKey='productId'
                             rows={mockData}
@@ -121,7 +120,6 @@ export default function ProductList() {
                         />
                     </Grid>
                 </Grid>
-            </Box>
         </Fragment>
     );
 }
