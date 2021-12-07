@@ -184,11 +184,11 @@ export const DynamicFilterContent: React.FC<IDynamicFilterProps> = ({ provideFil
                     const error = (formik.errors as any)[field.name];
                     const value = (formik.values as any)[field.name];
                     return (
-                        <Grid key={field.name} item m={2}>
+                        <Grid key={field.name} item mb={2} mt={2} ml={6} mr={6}>
                             {field.fieldType === 'date' ?
                                 <>
                                     <Grid item xs={12}>
-                                        <InputLabel shrink htmlFor={field.name} aria-labelledby={field.label}>
+                                        <InputLabel shrink htmlFor={field.name} aria-labelledby={field.label} className="filter_label_item">
                                             <b>{t(field.label)}</b >
                                         </InputLabel>
                                     </Grid>
@@ -209,7 +209,7 @@ export const DynamicFilterContent: React.FC<IDynamicFilterProps> = ({ provideFil
                                 : field.fieldType === 'dateRange' ?
                                     <>
                                         <Grid item xs={12}>
-                                            <InputLabel shrink htmlFor={field.name} aria-labelledby={field.label}>
+                                            <InputLabel shrink htmlFor={field.name} aria-labelledby={field.label} className="filter_label_item">
                                                 <b>{t('right-info-panel.filter.period')}</b >
                                             </InputLabel>
                                         </Grid>
@@ -346,8 +346,8 @@ export const DynamicFilterContent: React.FC<IDynamicFilterProps> = ({ provideFil
                     );
                 }
                 )}
-                <Grid item className="lastItem" container direction="row" justifyContent="flex-end">
-                    <Grid item m={2}>
+                <Grid item className="lastItem" container direction="row" justifyContent="flex-end" >
+                    <Grid item m={2} >
                         <ClearBtn
                             type="reset"
                             types="cancel"
@@ -357,7 +357,7 @@ export const DynamicFilterContent: React.FC<IDynamicFilterProps> = ({ provideFil
                             {t("right-info-panel.filter.buttons.clear all")}
                         </ClearBtn >
                     </Grid>
-                    <Grid item m={2}>
+                    <Grid item m={2} mr={6}>
                         <ApplyBtn
                             type="submit"
                             types="save"

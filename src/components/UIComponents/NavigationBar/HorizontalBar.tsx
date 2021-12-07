@@ -1,4 +1,4 @@
-/* eslint-disable no-console */
+
 import { Breadcrumbs, Link, SvgIcon } from "@material-ui/core";
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import AppBar from '@mui/material/AppBar';
@@ -68,9 +68,9 @@ export default function HorizontalBar (props: HorizontalBarProps) {
       case history.location.pathname.includes('addFuelTax'):
         return "Add Fuel Tax";
       case history.location.pathname.includes('salesTax/add'):
-        return "Add Sales Tax";
+        return t("taxes.salesTax.form.titleAdd");
       case history.location.pathname.includes('salesTax/edit'):
-        return "Edit Sales Tax";
+        return t("taxes.salesTax.form.titleEdit");
       default:
         return selectedCustomerName;
     }
@@ -164,7 +164,7 @@ export default function HorizontalBar (props: HorizontalBarProps) {
     return (<>
       <Breadcrumbs separator={<NavigateNextIcon />} aria-label="breadcrumb">
         <Link className="breadcrubs-title" onClick={handleCustomerBack}>
-          Cutomer Name
+          Customer Name
         </Link>
         <Link className="breadcrubs-title" href="#" onClick={handleClick}>
           {"Add Lot & Details"}

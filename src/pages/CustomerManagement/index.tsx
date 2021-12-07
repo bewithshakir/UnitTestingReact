@@ -243,7 +243,7 @@ const Content: React.FC<ContentProps> = () => {
           />
 
           <RightInfoPanel panelType="dynamic-filter"
-            open={custFilterPanelVisible} headingText={"customer-filter-panel.header.filters"}
+            open={custFilterPanelVisible} headingText={"customer-filter-panel.header.filter"}
             provideFilterParams={getFilterParams} onClose={handleCustFilterPanelClose}
             fields={filterByFields}
             storeKey={'customerFilter'}

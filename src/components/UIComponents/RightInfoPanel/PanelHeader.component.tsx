@@ -1,7 +1,6 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { IconButton, AppBar, Toolbar, Box } from "@mui/material";
-import { useAddedCustomerNameStore } from '../../../store';
 import DataGridActionsMenu from "../Menu/DataGridActionsMenu.component";
 import { CloseIcon } from "../../../assets/icons";
 import "./RightInfoPanel.style.scss";
@@ -16,12 +15,10 @@ interface InfoPanelProps {
     nameStrForEdit?: string;
     onClose: (...args: any[]) => void;
 }
-export const PanelHeader: React.FC<InfoPanelProps> = ({ headingText, panelType, onClose, idStrForEdit, nameStrForEdit }) => {
+export const PanelHeader: React.FC<InfoPanelProps> = ({ headingText, panelType, onClose, idStrForEdit }) => {
     const { theme } = useTheme();
     const { t } = useTranslation();
     const history = useHistory();
-    const setPageCustomerName = useAddedCustomerNameStore((state) => state.setCustomerName);
-    setPageCustomerName(nameStrForEdit ? nameStrForEdit : '');
     const navigateToCustomerPage = () => {
         history.push({
             pathname: `/customer/viewCustomer/${idStrForEdit ? idStrForEdit : ''}`
@@ -38,7 +35,7 @@ export const PanelHeader: React.FC<InfoPanelProps> = ({ headingText, panelType, 
                     >
                         <CloseIcon className="info_panel_close_icon" color="var(--White)" />
                     </IconButton>}
-                    <h2 style={{ flexGrow: 1 }}>
+                    <h2>
                         {t(headingText)}
                     </h2>
                     {panelType === "info-view" && <DataGridActionsMenu

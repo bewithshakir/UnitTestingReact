@@ -51,7 +51,8 @@ const  inputEndornmentProps = {
 };
 
 export const DatePickerInput: React.FC<DatePickerProps> = ({label,type, placeholder, disabled, required, error, value, dateRangeValue, helperText, onChange, onDateRangeChange, disableBeforeDate, disableAfterDate, id, name, dateRangeMiddleText}) => {
-    const [open, setOpen] = useState(false);  
+    const [openRangeCal, setOpenRangeCal] = useState(false);  
+    const [openSingleDateCal, setOpenSingleDateCal] = useState(false);  
     const disableDates = (date: moment.Moment  | null) => {
 
         if (disableBeforeDate && disableAfterDate) {
@@ -67,8 +68,12 @@ export const DatePickerInput: React.FC<DatePickerProps> = ({label,type, placehol
         }
       };
 
-      const setPickerStatus = (status: boolean) => {
-        setOpen(status) ;
+      const setRangePickerStatus = (status: boolean) => {
+        setOpenRangeCal(status) ;
+      };
+
+      const setSinglePickerStatus = (status: boolean) => {
+        setOpenSingleDateCal(status) ;
       };
     
     return (
@@ -85,8 +90,8 @@ export const DatePickerInput: React.FC<DatePickerProps> = ({label,type, placehol
                                 className="custom-date-range-picker"
                                 startText={null}
                                 endText={null}
-                                onClose={() => setPickerStatus(false)}
-                                open={open}
+                                onClose={() => setRangePickerStatus(false)}
+                                open={openRangeCal}
                                 shouldDisableDate={(val)=>disableDates(moment(val))}
                                 value={dateRangeValue ? dateRangeValue : [null, null]}
                                 onChange={(newValue) => {
@@ -102,9 +107,9 @@ export const DatePickerInput: React.FC<DatePickerProps> = ({label,type, placehol
                                         endProps.inputProps.placeholder = (typeof placeholder === 'object' && placeholder !== null) ? placeholder.end : "to";
                                     }
                                     return <React.Fragment>
-                                        <TextField {...startProps} onClick={() => setPickerStatus(true)} InputProps={inputEndornmentProps} InputLabelProps={{ shrink: false }} />
+                                        <TextField {...startProps} onClick={() => setRangePickerStatus(true)} InputProps={inputEndornmentProps} InputLabelProps={{ shrink: false }} />
                                         <Box sx={dateRangeMiddleTextSx}> {dateRangeMiddleText?dateRangeMiddleText:""} </Box>
-                                        <TextField {...endProps} onClick={() => setPickerStatus(true)} InputProps={inputEndornmentProps} InputLabelProps={{ shrink: false }} />
+                                        <TextField {...endProps} onClick={() => setRangePickerStatus(true)} InputProps={inputEndornmentProps} InputLabelProps={{ shrink: false }} />
                                     </React.Fragment>;
                                 }}
                             />}
@@ -114,6 +119,8 @@ export const DatePickerInput: React.FC<DatePickerProps> = ({label,type, placehol
                                 components={{ OpenPickerIcon: CalendarIconComp }}
                                 views={['year', 'month', 'day']}
                                 value={value}
+                                onClose={() => setSinglePickerStatus(false)}
+                                open={openSingleDateCal}
                                 onChange={(newValue) => {
                                     if (onChange) {
                                         onChange(name, newValue);
@@ -124,7 +131,7 @@ export const DatePickerInput: React.FC<DatePickerProps> = ({label,type, placehol
                                     if (params.inputProps) {
                                         params.inputProps.placeholder = (typeof placeholder === 'string' && placeholder !== null)? placeholder:"";
                                     }
-                                    return <TextField {...params} />;
+                                    return <TextField onClick={() => setSinglePickerStatus(true)} {...params} />;
 
                                 }}
                             />}

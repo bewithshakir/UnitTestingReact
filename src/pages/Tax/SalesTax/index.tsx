@@ -122,7 +122,7 @@ const SalesTaxLandingContent = memo(() => {
                 onClick={handleCustFilterPanelOpen}
                 startIcon={<FilterIcon />}
               >
-                Filters
+                {t("buttons.filter")}
               </Button>
             </Grid>
             <Grid item pr={2.5}>
