@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FormikProvider, useFormik } from 'formik';
 import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';
@@ -11,7 +11,8 @@ import ToastMessage from '../../components/UIComponents/ToastMessage/ToastMessag
 import Checkbox from '../../components/UIComponents/Checkbox/Checkbox.component';
 // import Divider from '@mui/material/Divider';
 // import { useTheme } from '../../contexts/Theme/Theme.context';
-import { productTypes, pricingModelOptions, stateOptions, cityOptions, cityIdOptions, supplierOptions, brandedOptions, actualProductOptions, formStatusObj, masterProducts, productOptions } from './config';
+import {  stateOptions, cityOptions, cityIdOptions, supplierOptions, brandedOptions, actualProductOptions, formStatusObj } from './config';
+import { useGetProductNames, useGetPricingModel } from './queries';
 import { useAddedCustomerIdStore, useShowConfirmationDialogBoxStore } from '../../store';
 // interface props { 
 
@@ -36,6 +37,10 @@ export default function AddProduct() {
 
     // const [editVisible, setEditVisible] = useState(false);
     // const [formSuccess, setFormSuccess] = useState(false);
+    const [pricingModelOptions, setPricingModelOptions] = useState([]);
+    const [productNames, setProductNames] = useState([]);
+    const { data: pricingModelList } = useGetPricingModel();
+    const { data: productNamesList } = useGetProductNames();
     const [formStatus, setFormStatus] = useState<FormStatusType>({ message: '', type: '' });
     const showDialogBox = useShowConfirmationDialogBoxStore((state) => state.showDialogBox);
     const isFormValidated = useShowConfirmationDialogBoxStore((state) => state.setFormFieldValue);
@@ -49,6 +54,15 @@ export default function AddProduct() {
     // const resetFormFieldValue = useShowConfirmationDialogBoxStore((state) => state.resetFormFieldValue);
     // const hideDialogBox = useShowConfirmationDialogBoxStore((state) => state.hideDialogBox);
 
+    useEffect(() => {
+        if (pricingModelList?.data.length) {
+            setPricingModelOptions(pricingModelList.data.map((obj: any) => ({ label: obj.pricingModelNm.trim(), value: obj.pricingModelCd.trim() })));
+        }
+
+        if (productNamesList?.data.length) {
+            setProductNames(productNamesList.data.map((obj: any) => ({ label: obj.productName.trim(), value: obj.productId.trim() })));
+        }
+    }, [productNamesList, pricingModelList]);
 
     // useEffect(() => {
     //     resetFormFieldValue(false);
@@ -153,8 +167,8 @@ console.log('form data:',formik.values);
                                 name='productType'
                                 label='PRODUCT TYPE'
                                 value={formik.values.productName}
-                                placeholder='Select Product Type'
-                                items={productTypes}
+                                placeholder='Select one'
+                                items={productNames}
                                 // helperText={(formik.touched.productName && formik.errors.productName) ? formik.errors.productName.value : undefined}
                                 error={(formik.touched.productName && formik.errors.productName) ? true : false}
                                 onChange={formik.setFieldValue}
@@ -170,7 +184,7 @@ console.log('form data:',formik.values);
                                 label='Master Product Name'
                                 value={formik.values.masterProductName}
                                 placeholder='Select Master Product Name'
-                                items={masterProducts}
+                                items={productNames}
                                 // helperText={(formik.touched.pricingModel && formik.errors.pricingModel) ? formik.errors.pricingModel.value : undefined}
                                 error={(formik.touched.masterProductName && formik.errors.masterProductName) ? true : false}
                                 onChange={formik.setFieldValue}
