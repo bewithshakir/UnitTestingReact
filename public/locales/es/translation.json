@@ -93,5 +93,21 @@
         "labelLocalRate": "Tarifa local"
       }
     }
+  },
+  "productManagement": {
+    "sortBy": {
+      "cityname_atoz": "Nombre de la ciudad A-Z",
+      "cityname_ztoa": "Nombre de la ciudad Z-A"
+    },
+    "form": {
+      "titleAdd": "Agregar producto",
+      "titleEdit": "Editar producto",
+      "title": "Complete todos los campos obligatorios",
+      "productName": "nombre del producto",
+      "productType": "tipo de producto",
+      "productColor": "Color del producto",
+      "status": "Estado",
+      "manualPricing": "Precios manuales"
+    }
   }
 }

@@ -167,5 +167,21 @@
         "labelLocalRate": "Local rate"
       }
     }
+  },
+  "productManagement": {
+    "sortBy": {
+      "cityname_atoz": "City Name A-Z",
+      "cityname_ztoa": "City Name Z-A"
+    },
+    "form": {
+      "titleAdd": "Add Product",
+      "titleEdit": "Edit Product",
+      "title": "Fill all the mandatory fields",
+      "productName": "Product Name",
+      "productType": "Product Type",
+      "productColor": "Product Color",
+      "status": "Status",
+      "manualPricing": "Manual Pricing"
+    }
   }
 }

@@ -57,7 +57,7 @@ export default function Select (props: props) {
 
   const onChange = () => {
     const { name, onChange } = props;
-    let obj = {
+    const obj = {
       target: {
         name: name,
         value: selectedValues
@@ -302,7 +302,7 @@ export default function Select (props: props) {
     )
   }
 
-  let selectionClassName = `selection ${selectProps.isOpen ? 'open' : ''} ${props.helperText ? 'error' : ''}`
+  const selectionClassName = `selection ${selectProps.isOpen ? 'open' : ''} ${props.helperText ? 'error' : ''}`
 
 
   return (
