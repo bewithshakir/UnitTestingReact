@@ -1,11 +1,5 @@
 .product-list {
 
-     & .deleteIcon{
-        height: 50px;
-        width: 50px;
-        background-color: var(--Lightgray_2);
-    }
-
     &  tbody{
             &.no-data{
                 .nodata{

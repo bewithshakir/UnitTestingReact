@@ -2,9 +2,10 @@ import { Fragment, useState } from 'react';
 import Search from '../../components/UIComponents/SearchInput/SearchInput';
 import { useTranslation } from "react-i18next";
 import { DeleteIcon, YellowFuelIcon, RedFuelIcon, GreenFuelIcon, NavyBlueFuelIcon, AlertExclamationIcon } from '../../assets/icons';
+import { Button } from '../../components/UIComponents/Button/Button.component';
 import GridComponent from "../../components/UIComponents/DataGird/grid.component";
 import { headerObj } from '../../components/UIComponents/DataGird/grid.component';
-import { IconButton, Grid } from "@mui/material";
+import { Grid } from "@mui/material";
 import './ProductList.scss';
 
 
@@ -102,11 +103,13 @@ export default function ProductList() {
                     />
                 </Grid>
                 <Grid item xs={4} md={2} pb={3} pl={4.75}>
-                    <div className='deleteIcon'>
-                        <IconButton aria-label='search' edge='end'>
-                            <DeleteIcon />
-                        </IconButton>
-                    </div>
+                    <Button
+                        types="delete2"
+                        aria-label="delete"
+                        //onClick={() => { }}
+                        startIcon={<DeleteIcon />}
+                    >
+                    </Button>
                 </Grid>
                 <Grid item xs={12} md={12} pb={5}>
                     <GridComponent
