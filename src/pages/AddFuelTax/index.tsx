@@ -31,6 +31,10 @@ const formStatusProps: IFormStatusProps = {
         message: 'Success.',
         type: 'Success',
     },
+    updated: {
+        message: 'Data updated successfully.',
+        type: 'Success',
+    },
     error: {
         message: 'Something went wrong. Please try again.',
         type: 'Error',
@@ -86,14 +90,15 @@ const AddFuelTax = memo(() => {
     };
 
 
-    const onEditSaleTaxSuccess = ()=> {
+    const onEditFuelTaxSuccess = ()=> {
         setAPIResponse(true);
         setFormStatus(formStatusProps.updated);
         setTimeout(() => {
             setAPIResponse(false);
-        }, 6000);
+            history.push('/taxes');
+        }, 2000);
     };
-    const onEditSaleTaxError = (err: any)=> {
+    const onEditFuelTaxError = (err: any)=> {
         try {
             const { data } = err.response;
             setAPIResponse(true);
@@ -109,7 +114,7 @@ const AddFuelTax = memo(() => {
     };
 
 
-    const { mutate: updateFuelTaxData } = useEditFuelTax(onEditSaleTaxSuccess, onEditSaleTaxError);
+    const { mutate: updateFuelTaxData } = useEditFuelTax(onEditFuelTaxSuccess, onEditFuelTaxError);
 
 
     const updateFuelTax = (form: TaxModel) => {
@@ -290,7 +295,7 @@ const AddFuelTax = memo(() => {
             <Box display="flex" mt={10} ml={16}>
                 <Grid item md={10} xs={10}>
                     <Container maxWidth="lg" className="page-container">
-                        <form onSubmit={formik.handleSubmit} onBlur={handleFormDataChange}>
+                        <form onSubmit={formik.handleSubmit} onBlur={handleFormDataChange} data-test="component-AddFuelTax">
 
                                 <Grid item xs={12} md={12}>
                                     <Box className="info-section" pl={2.7} pb={1.8} pt={2.0} pr={20} >
@@ -310,6 +315,7 @@ const AddFuelTax = memo(() => {
                                     helperText={(formik.touched.addressLine1 && formik.errors.addressLine1) ? formik.errors.addressLine1 : undefined}
                                     error={(formik.touched.addressLine1 && formik.errors.addressLine1) ? true : false}
                                     disabled={isEditMode}
+                                    data-test="auto-complete-input"
                                 />
                             </Grid>
                             <Grid container mt={1}>
@@ -323,6 +329,7 @@ const AddFuelTax = memo(() => {
                                         helperText={(formik.touched.state && formik.errors.state) ? formik.errors.state : undefined}
                                         error={(formik.touched.state && formik.errors.state) ? true : false}
                                         {...formik.getFieldProps('state')}
+                                        data-test="state"
                                     />
                                 </Grid>
                                 <Grid item xs={12} md={6} pl={2.5} pb={2.5}>
@@ -335,6 +342,7 @@ const AddFuelTax = memo(() => {
                                         description=''
                                         disabled
                                         {...formik.getFieldProps('city')}
+                                        data-test="city"
                                     />
                                 </Grid>
 
@@ -351,6 +359,7 @@ const AddFuelTax = memo(() => {
                                         error={(formik.touched.fuelType && formik.errors.fuelType) ? true : false}
                                         onBlur={() => { formik.setFieldTouched("fuelType"); formik.validateField("fuelType"); }}
                                         isDisabled={isEditMode ? true : isDisabled}
+                                        data-test="fuelType"
                                     />
                                 </Grid>
                                 <Grid item md={3} pl={2.5} pr={2.5} pb={2.5}>
@@ -365,6 +374,7 @@ const AddFuelTax = memo(() => {
                                         disableBeforeDate={formik.values.startDate}
                                         helperText={(formik.touched.startDate && formik.errors.startDate) ? formik.errors.startDate : undefined}
                                         error={(formik.touched.startDate && formik.errors.startDate) ? true : false}
+                                        data-test="startDate"
                                     />
                                 </Grid>
                                 <Grid item md={3} pl={2.5}>
@@ -379,6 +389,7 @@ const AddFuelTax = memo(() => {
                                         disableBeforeDate={formik.values.endDate}
                                         helperText={(formik.touched.endDate && formik.errors.endDate) ? formik.errors.endDate : undefined}
                                         error={(formik.touched.endDate && formik.errors.endDate) ? true : false}
+                                        data-test="endDate"
                                     />
                                 </Grid>
 
@@ -391,6 +402,7 @@ const AddFuelTax = memo(() => {
                                         helperText={(formik.touched.federalRate && formik.errors.federalRate) ? formik.errors.federalRate : undefined}
                                         error={(formik.touched.federalRate && formik.errors.federalRate) ? true : false}
                                         {...formik.getFieldProps('federalRate')}
+                                        data-test="federalRate"
                                     />
                                 </Grid>
                                 <Grid item xs={12} md={6} pl={2.5} pb={2.5}>
@@ -402,6 +414,7 @@ const AddFuelTax = memo(() => {
                                         helperText={(formik.touched.localRate && formik.errors.localRate) ? formik.errors.localRate : undefined}
                                         error={(formik.touched.localRate && formik.errors.localRate) ? true : false}
                                         {...formik.getFieldProps('localRate')}
+                                        data-test="localRate"
                                     />
                                 </Grid>
 
@@ -415,6 +428,7 @@ const AddFuelTax = memo(() => {
                                         helperText={(formik.touched.salesFuelRate && formik.errors.salesFuelRate) ? formik.errors.salesFuelRate : undefined}
                                         error={(formik.touched.salesFuelRate && formik.errors.salesFuelRate) ? true : false}
                                         {...formik.getFieldProps('salesFuelRate')}
+                                        data-test="salesFuelRate"
                                     />
                                 </Grid>
                                 <Grid item xs={12} md={6} pl={2.5} pb={2.5}>
@@ -426,6 +440,7 @@ const AddFuelTax = memo(() => {
                                         helperText={(formik.touched.stateFuelRate && formik.errors.stateFuelRate) ? formik.errors.stateFuelRate : undefined}
                                         error={(formik.touched.stateFuelRate && formik.errors.stateFuelRate) ? true : false}
                                         {...formik.getFieldProps('stateFuelRate')}
+                                        data-test="stateFuelRate"
                                     />
                                 </Grid>
 
@@ -439,6 +454,7 @@ const AddFuelTax = memo(() => {
                                         helperText={(formik.touched.cityFuelRate && formik.errors.cityFuelRate) ? formik.errors.cityFuelRate : undefined}
                                         error={(formik.touched.cityFuelRate && formik.errors.cityFuelRate) ? true : false}
                                         {...formik.getFieldProps('cityFuelRate')}
+                                        data-test="cityFuelRate"
                                     />
                                 </Grid>
                                 <Grid item xs={12} md={6} pl={2.5} pb={2.5}>
@@ -450,6 +466,7 @@ const AddFuelTax = memo(() => {
                                         helperText={(formik.touched.countryFuelRate && formik.errors.countryFuelRate) ? formik.errors.countryFuelRate : undefined}
                                         error={(formik.touched.countryFuelRate && formik.errors.countryFuelRate) ? true : false}
                                         {...formik.getFieldProps('countryFuelRate')}
+                                        data-test="countryFuelRate"
                                     />
                                 </Grid>
 
@@ -461,6 +478,7 @@ const AddFuelTax = memo(() => {
                                         helperText={(formik.touched.InspFuelRate && formik.errors.InspFuelRate) ? formik.errors.InspFuelRate : undefined}
                                         error={(formik.touched.InspFuelRate && formik.errors.InspFuelRate) ? true : false}
                                         {...formik.getFieldProps('InspFuelRate')}
+                                        data-test="InspFuelRate"
                                     />
                                 </Grid>
                                 <Grid item xs={12} md={6} pl={2.5} pb={2.5}>
@@ -472,6 +490,7 @@ const AddFuelTax = memo(() => {
                                         helperText={(formik.touched.miscLocalFuelRate && formik.errors.miscLocalFuelRate) ? formik.errors.miscLocalFuelRate : undefined}
                                         error={(formik.touched.miscLocalFuelRate && formik.errors.miscLocalFuelRate) ? true : false}
                                         {...formik.getFieldProps('miscLocalFuelRate')}
+                                        data-test="miscLocalFuelRate"
                                     />
                                 </Grid>
                                 <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
@@ -483,6 +502,7 @@ const AddFuelTax = memo(() => {
                                         helperText={(formik.touched.loadFuel && formik.errors.loadFuel) ? formik.errors.loadFuel : undefined}
                                         error={(formik.touched.loadFuel && formik.errors.loadFuel) ? true : false}
                                         {...formik.getFieldProps('loadFuel')}
+                                        data-test="loadFuel"
                                     />
                                 </Grid>
                             </Grid>

@@ -38,7 +38,7 @@ export const useGetFuelTax = (query: any, onSuccess: any, onError: any)=> {
 const editFuelTax = async (payload: any,) => {
     const options: AxiosRequestConfig = {
         method: 'put',
-        url: `/api/tax-management-service/fueltax?countryCode=us`,
+        url: `/api/tax-service/fueltax?countryCode=us`,
         data: payload
     };
     const { data } = await axios(options);
