@@ -58,7 +58,7 @@ function AddLotForm(): React.ReactElement {
     const [isEditShown, setEditShown] = useState(true);
     const [isSavCancelShown, setSaveCancelShown] = useState(true);
     const [activeLotId, setActiveLotId] = React.useState("");
-
+const [LotData, setLotData] = React.useState({});
 
     const onAddLotError = (err: any) => {
         resetFormFieldValue(false);
@@ -75,11 +75,12 @@ function AddLotForm(): React.ReactElement {
         }
     };
 
-    const onAddLotSuccess = () => {
+    const onAddLotSuccess = (data: any) => {
         resetFormFieldValue(false);
         hideDialogBox(false);
         setAPIResponse(true);
         setFormStatus(formStatusProps.success);
+        setActiveLotId(data?.lot?.deliveryLocationId.toString());
         setFormSuccess(true);
         setTimeout(() => {
             setAPIResponse(false);
@@ -91,7 +92,7 @@ function AddLotForm(): React.ReactElement {
         isFormValidated(false);
         setFormStatus(formStatusProps.editsuccess);
         //set active parking lot id
-        // setActiveCustomerId(data?.data?.customer?.customerId.toString());
+        setActiveLotId(data?.lot?.deliveryLocationId.toString());
         setEditShown(true);
         setSaveCancelShown(false);
         setTimeout(() => {
@@ -99,7 +100,7 @@ function AddLotForm(): React.ReactElement {
         }, 6000);
         setIsTrigger(!isTrigger);
         formik.resetForm({});
-        history.push(`/customer/viewCustomer/${data?.data?.customer?.customerId.toString()}`);
+        history.push(`/customer/${addedCustomerId}/parkingLots/viewLot/${activeLotId}`);
     };
 
     const onEditLotError = (err: any) => {
@@ -125,10 +126,12 @@ function AddLotForm(): React.ReactElement {
             populateDataInAllFields(data);
              //set active parking lot id
             setActiveLotId(data?.lot?.deliveryLocationId.toString());
+            setLotData(data?.lot);
+            console.log(data?.lot?.deliveryLocationId);
             console.log(activeLotId);
+            console.log(LotData);
             // setCustomerIdCreated(data?.data?.customer?.customerId);
             // setPageCustomerName(data?.data?.customer?.companyNm);
-            // setCustomerData(data?.data?.customer);
         }
     };
 
@@ -138,13 +141,12 @@ function AddLotForm(): React.ReactElement {
     };
 
     const { mutate: addNewLot } = useCreateLot(onAddLotError, onAddLotSuccess);
-    const { mutate: editParkingLot } = useEditParkingLot(onEditLotSuccess, onEditLotError);
+    const { mutate: editParkingLot } = useEditParkingLot(activeLotId, onEditLotSuccess, onEditLotError);
     useGetParkingLotData(activeLotId, isTrigger, onGetLotSuccess, onGetLotError);
 
     //to populate all the data in the form fields
     const populateDataInAllFields = (dataToPopulate: any) => {
         //populate data in UI fields
-        console.log(dataToPopulate?.data?.lot?.deliveryLocationNm);
         formik.setFieldValue('lotName', dataToPopulate?.data?.lot?.deliveryLocationNm);
         formik.setFieldValue('lotId', dataToPopulate?.data?.lot?.lotId);
         formik.setFieldValue('addressLine1', dataToPopulate?.data?.lot?.addressLine1);
@@ -154,6 +156,21 @@ function AddLotForm(): React.ReactElement {
         formik.setFieldValue('postalCode', dataToPopulate?.data?.lot?.postalCd);
         formik.setFieldValue('county', dataToPopulate?.data?.lot?.addressLine3);
         formik.setFieldValue('jurisdictionId', dataToPopulate?.data?.lot?.taxJurisdictionId);
+        dataToPopulate?.data?.lot?.deliveryLocationContact.map((obj: any, index: number) => {
+            formik.setFieldValue(`locationContact[${index}].lotContactId`, obj.locationContactId);
+            formik.setFieldValue(`locationContact[${index}].firstName`, obj.contactFirstNm);
+            formik.setFieldValue(`locationContact[${index}].lastName`, obj.contactLastNm);
+            formik.setFieldValue(`locationContact[${index}].email`, obj.contactEmailId);
+            formik.setFieldValue(`locationContact[${index}].phoneNumber`, obj.contactPhoneNo);
+        });
+        timeZones.map((obj:any, index: number) => {
+            if(obj.value === dataToPopulate?.data?.lot?.timezoneCd) {
+                formik.setFieldValue("timeZone",
+                    { label: obj.label, value: obj.value });
+            }
+        });
+        // add the same logic for del freq drop down 
+
     };
 
     useEffect(() => {
@@ -220,6 +237,40 @@ function AddLotForm(): React.ReactElement {
         return apiPayload;
     };
 
+    const createEditLotPayload = (form: AddParkingLotForm) => {
+        console.log("in createEditLotPayload");
+        const apiPayload = {
+            customer_id: addedCustomerId ? addedCustomerId : "",
+            lot_name: form.lotName,
+            lot_id: form.lotId,
+            jurisdiction_id: form.jurisdictionId,
+            address_1: form.addressLine1,
+            address_2: form.addressLine2,
+            address_3: form.county,
+            city: form.city,
+            state: form.state,
+            postal_code: form.postalCode,
+            timezone_cd: form.timeZone.value,
+            country: getCountry(),
+            location_contact: form.locationContact.map((contactObj: any, index) => ({
+                location_contact_type_cd: index === 0 ? primaryContactType : secondaryContactType,
+                contact_first_name: contactObj.firstName,
+                contact_last_name: contactObj.lastName,
+                contact_email: contactObj.email,
+                contact_phone: contactObj.phoneNumber
+            })),
+            // productDelFreq: form.productDelFreq.value,
+            // orderScheduleDel: form.orderScheduleDel.map((orderSchDelObj: any) => ({
+            //     fromDate: orderSchDelObj.fromDate,
+            //     toDate: orderSchDelObj.toDate,
+            //     startTime: orderSchDelObj.startTime,
+            //     endTime: orderSchDelObj.endTime,
+            //     productDelDays: orderSchDelObj.productDelDays,
+            // }))
+        };
+        return apiPayload;
+    };
+
     const createNewLot = (form: AddParkingLotForm) => {
         try {
             addNewLot(createAddLotPayload(form));
@@ -228,9 +279,12 @@ function AddLotForm(): React.ReactElement {
         }
     };
 
-    const editNewLot = (form: AddParkingLotForm) => {
+    const editNewLot = (form: AddParkingLotForm, LotData: any) => {
+        console.log("editNewLot");
+        console.log(activeLotId);
+        console.log(LotData);
         try {
-            editParkingLot(createAddLotPayload(form));
+            editParkingLot(createEditLotPayload(form));
         } catch (error) {
             setFormStatus(formStatusProps.error);
         }
@@ -263,7 +317,8 @@ function AddLotForm(): React.ReactElement {
         onSubmit: (values) => {
 
             if (isEditMode) {
-                editNewLot(values);
+                console.log(activeLotId);
+                editNewLot(values, LotData);
             } else {
                 createNewLot(values);
             }

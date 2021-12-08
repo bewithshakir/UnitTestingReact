@@ -23,10 +23,10 @@ const createLot = async (payload: any) => {
     return data;
 };
 
-const editParkingLot = async (payload: any) => {
+const editParkingLot = async (payload: any, parkingLotId: string) => {
     const options: AxiosRequestConfig = {
         method: 'post',
-        url: '/api/customer-service/lot',
+        url: `api/customer-service/lot/bfec5232-6abd-45f2-9b56-b118987f247c?countryCode=us`,
         data: payload,
     };
     const { data } = await axios(options);
@@ -56,8 +56,8 @@ export const useCreateLot = (onError:any, onSuccess:any) => {
     });
 };
 
-export const useEditParkingLot = (onSuccess: any, onError: any) => {
-    return useMutation((payload: any) => editParkingLot(payload), {
+export const useEditParkingLot = (parkingLotId: string, onSuccess: any, onError: any) => {
+    return useMutation((payload: any) => editParkingLot(payload, parkingLotId), {
         onSuccess,
         onError,
         retry: false,
