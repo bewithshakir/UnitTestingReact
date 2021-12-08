@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 
 import { Breadcrumbs, Link, SvgIcon } from "@material-ui/core";
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
@@ -7,7 +8,7 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { NavLink, useHistory, useLocation } from "react-router-dom";
 import { BackIcon, CustomerProfileIcon2, LogoutIcon, SettingsIcon, USAFlagIcon } from "../../../assets/icons";
-import { useStore } from "../../../store";
+import { useAddedCustomerIdStore, useStore } from "../../../store";
 import { Button } from "../Button/Button.component";
 import NotificationsMenu from '../Menu/NotificationsMenu.component';
 import ProfileMenu from '../Menu/ProfileMenu.component';
@@ -28,6 +29,7 @@ export default function HorizontalBar (props: HorizontalBarProps) {
   const history = useHistory();
   const { pathname } = useLocation();
   const selectedCustomerName = useAddedCustomerNameStore((state) => state.customerName);
+  const selectedCustomerId = useAddedCustomerIdStore((state) => state.customerId);
   const showDialogBox = useShowConfirmationDialogBoxStore((state) => state.showDialogBox);
   const hideDialogBox = useShowConfirmationDialogBoxStore((state) => state.hideDialogBox);
   const showConfirmationDialogBox = useShowConfirmationDialogBoxStore((state) => state.showConfirmationDialogBox);
@@ -50,7 +52,7 @@ export default function HorizontalBar (props: HorizontalBarProps) {
   const handleModelConfirm = () => {
     hideDialogBox(false);
     resetFormFieldValue(false);
-    if (pathname.includes('addLot') || pathname.includes('addFuelTax')) {
+    if (pathname.includes('addLot') || pathname.includes('addFuelTax') || pathname.includes('viewLot') || pathname.includes('parkingLots')) {
       history.goBack();
     }
     else if (pathname.includes('salesTax/add') || pathname.includes('salesTax/edit')) {
@@ -64,9 +66,9 @@ export default function HorizontalBar (props: HorizontalBarProps) {
   const getHeaderText = () => {
     switch (true) {
       case history.location.pathname.includes('addCustomer'):
-        return "Add Customer";
+        return t("customerManagement.form.customerTitleAdd");
       case history.location.pathname.includes('addFuelTax'):
-        return "Add Fuel Tax";
+        return t("taxes.fuelTax.form.fuelTaxTitleAdd");
       case history.location.pathname.includes('salesTax/add'):
         return t("taxes.salesTax.form.titleAdd");
       case history.location.pathname.includes('salesTax/edit'):
@@ -157,14 +159,14 @@ export default function HorizontalBar (props: HorizontalBarProps) {
   const handleCustomerBack = () => {
     hideDialogBox(false);
     resetFormFieldValue(false);
-    history.push("/customer/addCustomer");
+    history.push(`/customer/viewCustomer/${selectedCustomerId}`);
   };
 
   function versionBreadcrumbsMany () {
     return (<>
       <Breadcrumbs separator={<NavigateNextIcon />} aria-label="breadcrumb">
         <Link className="breadcrubs-title" onClick={handleCustomerBack}>
-          Customer Name
+           { selectedCustomerName }
         </Link>
         <Link className="breadcrubs-title" href="#" onClick={handleClick}>
           {"Add Lot & Details"}

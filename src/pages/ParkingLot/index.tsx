@@ -34,7 +34,6 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
   const massActionOptions = ParkingLotObj.massActions();
   const ACTION_TYPES = ParkingLotObj.ACTION_TYPES;
   const MASS_ACTION_TYPES = ParkingLotObj.MASS_ACTION_TYPES;
-
   const history = useHistory();
   const [info, setInfo] = React.useState({});
   const [searchTerm, setSearchTerm] = React.useState("");
@@ -47,7 +46,6 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
   const customerId = useAddedCustomerIdStore((state: addedCustomerIdState) => state.customerId);
   const [infoPanelName, setInfoPanelName] = React.useState('');
   const [infoPanelEditId, setInfoPanelEditId] = React.useState('');
-
 
   const { t } = useTranslation();
   const { data, fetchNextPage, isFetching, isLoading }: any = useGetParkingLotDetails(
@@ -63,16 +61,13 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
 
   useEffect(() => {
     const statePL = history.location.state as { customerName: string };
-
     resetFormFieldValue(false);
-
-    setPageCustomerName(statePL.customerName);
-
-
+    if(statePL) {
+      setPageCustomerName(statePL.customerName);
+    } 
   });
 
   const createInfoObjForRightInfoPanel = (row: any) => {
-    console.log(row);
     setInfoPanelEditId(row.deliveryLocationId);
     setInfoPanelName(row.deliveryLocationNm);
     const infoObj = {

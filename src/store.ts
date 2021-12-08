@@ -38,7 +38,7 @@ export interface addedParkingLotIdState {
   setParkingLotId: (...args: any) => void,
   removeParkingLotId: (...args: any) => void,
 }
-interface addedCustomerNameState {
+export interface addedCustomerNameState {
   customerName: string,
   setCustomerName: (...args: any) => void,
   removeCustomerName: (...args: any) => void,
