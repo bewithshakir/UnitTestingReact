@@ -6,6 +6,7 @@ import { CloseIcon } from "../../../assets/icons";
 import "./RightInfoPanel.style.scss";
 import { useTheme } from '../../../contexts/Theme/Theme.context';
 import { useHistory } from "react-router-dom";
+import { useAddedCustomerIdStore, useAddedCustomerNameStore } from '../../../store';
 
 interface InfoPanelProps {
     headingText: string;
@@ -14,15 +15,31 @@ interface InfoPanelProps {
     idStrForEdit?: string;
     nameStrForEdit?: string;
     onClose: (...args: any[]) => void;
+    category?: "customer" | "lot";
 }
-export const PanelHeader: React.FC<InfoPanelProps> = ({ headingText, panelType, onClose, idStrForEdit }) => {
+export const PanelHeader: React.FC<InfoPanelProps> = ({ headingText, panelType, onClose, idStrForEdit, nameStrForEdit, category }) => {
     const { theme } = useTheme();
     const { t } = useTranslation();
     const history = useHistory();
-    const navigateToCustomerPage = () => {
-        history.push({
-            pathname: `/customer/viewCustomer/${idStrForEdit ? idStrForEdit : ''}`
-        });
+    const setPageCustomerName = useAddedCustomerNameStore((state) => state.setCustomerName);
+    setPageCustomerName(nameStrForEdit?nameStrForEdit:'');
+    const addedCustomerId = useAddedCustomerIdStore((state) => state.customerId);
+
+    const navigateToViewEditPage = () => {
+        switch(category) {
+            case "customer" :
+                history.push({
+                    pathname: `/customer/viewCustomer/${idStrForEdit ? idStrForEdit : ''}`
+                });
+            break;
+
+            case "lot" : 
+                history.push({
+                    pathname: `/customer/${addedCustomerId}/parkingLots/viewLot/${idStrForEdit ? idStrForEdit : ''}`
+                });
+            break;
+        }
+        
     };
 
     return (<div className="right_info_panel_header">
@@ -44,7 +61,7 @@ export const PanelHeader: React.FC<InfoPanelProps> = ({ headingText, panelType, 
                                 label: t("right-info-panel.settings.view & edit details")
                             }
                         ]}
-                        onSelect={navigateToCustomerPage}
+                        onSelect={navigateToViewEditPage}
                     />}
                     {(panelType === "dynamic-filter") && <IconButton
                         edge="start"

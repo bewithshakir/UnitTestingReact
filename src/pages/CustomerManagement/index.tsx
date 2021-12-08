@@ -259,7 +259,7 @@ const Content: React.FC<ContentProps> = () => {
             fields={filterByFields}
             storeKey={'customerFilter'}
           />
-          <RightInfoPanel panelType="info-view" open={drawerOpen} headingText={infoPanelName} info={info} idStrForEdit={infoPanelEditId} nameStrForEdit={infoPanelName} onClose={drawerClose} />
+          <RightInfoPanel panelType="info-view" category="customer" open={drawerOpen} headingText={infoPanelName} info={info} idStrForEdit={infoPanelEditId} nameStrForEdit={infoPanelName} onClose={drawerClose} />
         </Grid>
       </Grid>
     </Box>
