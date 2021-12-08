@@ -57,6 +57,36 @@ describe('AddSalesTax component', () => {
         expect(cityInput.length).toBe(1);
     });
 
+    it('renders loadFuel input without error', ()=>{
+        const cityInput = findByTestAttr(wrapper, 'loadFuel');
+        expect(cityInput.length).toBe(1);
+    });
+
+    it('renders miscLocalFuelRate input without error', ()=>{
+        const cityInput = findByTestAttr(wrapper, 'miscLocalFuelRate');
+        expect(cityInput.length).toBe(1);
+    });
+
+    it('renders InspFuelRate input without error', ()=>{
+        const cityInput = findByTestAttr(wrapper, 'InspFuelRate');
+        expect(cityInput.length).toBe(1);
+    });
+
+    it('renders countryFuelRate input without error', ()=>{
+        const cityInput = findByTestAttr(wrapper, 'countryFuelRate');
+        expect(cityInput.length).toBe(1);
+    });
+
+    it('renders cityFuelRate input without error', ()=>{
+        const cityInput = findByTestAttr(wrapper, 'cityFuelRate');
+        expect(cityInput.length).toBe(1);
+    });
+
+    it('renders stateFuelRate input without error', ()=>{
+        const cityInput = findByTestAttr(wrapper, 'stateFuelRate');
+        expect(cityInput.length).toBe(1);
+    });
+
     it('renders Cancel Button without error', ()=>{
         const cancelButton = findByTestAttr(wrapper, 'cancel');
         expect(cancelButton.length).toBeGreaterThanOrEqual(0);
