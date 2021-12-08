@@ -4,17 +4,30 @@ import { AxiosRequestConfig } from "axios";
 import axios from '../../infrastructure/ApiHelper';
 
 
-const getProductNames = async () => {
+const getProductTypes = async () => {
     const options: AxiosRequestConfig = {
         method: 'get',
-        url: '/api/product-service/product/products?countryCode=us'
+        url: '/api/product-service/product/productType?countryCode=us'
     };
     const { data } = await axios(options);
     return data;
 };
 
-export const useGetProductNames = () => {
-    return useQuery(["getProductNames"], () => getProductNames());
+export const useGetProductTypes = () => {
+    return useQuery(["getProductTypes"], () => getProductTypes());
+};
+
+const getProductNames = async (productCd: string) => {
+        const options: AxiosRequestConfig = {
+            method: 'get',
+            url: `/api/product-service/product/products?countryCode=us&productClassCd=${productCd}`
+        };
+        const { data } = await axios(options);
+        return data;
+};
+
+export const useGetProductNames = (productCd: string) => {
+    return useQuery(["getProductNames", productCd], () => getProductNames(productCd));
 };
 
 const getPricingModel = async () => {

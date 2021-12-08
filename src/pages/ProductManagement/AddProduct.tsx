@@ -12,7 +12,7 @@ import Checkbox from '../../components/UIComponents/Checkbox/Checkbox.component'
 // import Divider from '@mui/material/Divider';
 // import { useTheme } from '../../contexts/Theme/Theme.context';
 import {  stateOptions, cityOptions, cityIdOptions, supplierOptions, brandedOptions, actualProductOptions, formStatusObj } from './config';
-import { useGetProductNames, useGetPricingModel } from './queries';
+import { useGetProductTypes, useGetProductNames, useGetPricingModel } from './queries';
 import { useAddedCustomerIdStore, useShowConfirmationDialogBoxStore } from '../../store';
 // interface props { 
 
@@ -30,6 +30,16 @@ const formStatusProps: FormStatusProps = formStatusObj;
 
 export default function AddProduct() {
 
+    const initialValues = {} as any;
+    const formik = useFormik({
+        initialValues,
+        // validationSchema: AddProductValidationSchema,
+        onSubmit: (values) => {
+            createNewProduct(values);
+        },
+    });
+
+
     const { t } = useTranslation();
     const history = useHistory();
     const isFormFieldChange = () => formik.dirty;
@@ -37,10 +47,12 @@ export default function AddProduct() {
 
     // const [editVisible, setEditVisible] = useState(false);
     // const [formSuccess, setFormSuccess] = useState(false);
+    const [productTypes, setProductTypes] = useState([]);
     const [pricingModelOptions, setPricingModelOptions] = useState([]);
     const [productNames, setProductNames] = useState([]);
     const { data: pricingModelList } = useGetPricingModel();
-    const { data: productNamesList } = useGetProductNames();
+    const { data: productTypeList } = useGetProductTypes();
+    const { data: productNamesList } = useGetProductNames(formik?.values?.productType?.value);
     const [formStatus, setFormStatus] = useState<FormStatusType>({ message: '', type: '' });
     const showDialogBox = useShowConfirmationDialogBoxStore((state) => state.showDialogBox);
     const isFormValidated = useShowConfirmationDialogBoxStore((state) => state.setFormFieldValue);
@@ -58,11 +70,16 @@ export default function AddProduct() {
         if (pricingModelList?.data.length) {
             setPricingModelOptions(pricingModelList.data.map((obj: any) => ({ label: obj.pricingModelNm.trim(), value: obj.pricingModelCd.trim() })));
         }
-
+        // eslint-disable-next-line no-console
+        console.log('Pr', productNamesList);
         if (productNamesList?.data.length) {
             setProductNames(productNamesList.data.map((obj: any) => ({ label: obj.productName.trim(), value: obj.productId.trim() })));
         }
-    }, [productNamesList, pricingModelList]);
+
+        if (productTypeList?.data.length) {
+            setProductTypes(productTypeList.data.map((obj: any) => ({ label: obj.productClassNm.trim(), value: obj.productClassCd.trim() })));
+        }
+    }, [productTypeList, pricingModelList, productNamesList]);
 
     // useEffect(() => {
     //     resetFormFieldValue(false);
@@ -122,15 +139,6 @@ export default function AddProduct() {
         }
     };
 
-    const initialValues = {} as any;
-    const formik = useFormik({
-        initialValues,
-        // validationSchema: AddProductValidationSchema,
-        onSubmit: (values) => {
-            createNewProduct(values);
-        },
-    });
-
     // const handleFormDataChange = () => {
     //     if (isFormFieldChange()) {
     //         isFormValidated(true);
@@ -166,13 +174,13 @@ console.log('form data:',formik.values);
                                 id='productType'
                                 name='productType'
                                 label='PRODUCT TYPE'
-                                value={formik.values.productName}
+                                value={formik.values.productType}
                                 placeholder='Select one'
-                                items={productNames}
+                                items={productTypes}
                                 // helperText={(formik.touched.productName && formik.errors.productName) ? formik.errors.productName.value : undefined}
                                 error={(formik.touched.productName && formik.errors.productName) ? true : false}
                                 onChange={formik.setFieldValue}
-                                onBlur={() => { formik.setFieldTouched("productName"); formik.validateField("productName"); }}
+                                onBlur={() => { formik.setFieldTouched("productType"); formik.validateField("productType"); }}
                                 required
                                 isDisabled={isEditMode ? true : isDisabled}
                             />
