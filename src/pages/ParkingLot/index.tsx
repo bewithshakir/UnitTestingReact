@@ -153,10 +153,11 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
     }
   };
 
-  const handleRowAction = (action: DataGridActionsMenuOption) => {
+  const handleRowAction = (action: DataGridActionsMenuOption, row: any) => {
     switch (action.action) {
       case ACTION_TYPES.EDIT:
         // perform action 
+        history.push(`/customer/${customerId}/parkingLots/viewLot/${row.deliveryLocationId}`);
         break;
       case ACTION_TYPES.DELETE:
         // perform action

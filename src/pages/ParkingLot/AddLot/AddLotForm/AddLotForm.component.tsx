@@ -58,7 +58,7 @@ function AddLotForm(): React.ReactElement {
     const [isEditShown, setEditShown] = useState(true);
     const [isSavCancelShown, setSaveCancelShown] = useState(true);
     const [activeLotId, setActiveLotId] = React.useState("");
-const [LotData, setLotData] = React.useState({});
+    const [LotData, setLotData] = React.useState({});
 
     const onAddLotError = (err: any) => {
         resetFormFieldValue(false);
