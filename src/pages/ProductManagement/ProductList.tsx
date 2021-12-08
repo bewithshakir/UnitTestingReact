@@ -1,94 +1,29 @@
-import { Fragment, useState } from 'react';
+import { Fragment } from 'react';
 import Search from '../../components/UIComponents/SearchInput/SearchInput';
 import { useTranslation } from "react-i18next";
-import { DeleteIcon, YellowFuelIcon, RedFuelIcon, GreenFuelIcon, NavyBlueFuelIcon, AlertExclamationIcon } from '../../assets/icons';
+import { DeleteIcon } from '../../assets/icons';
 import { Button } from '../../components/UIComponents/Button/Button.component';
+import ProductModel from "../../models/LotProductModel";
 import GridComponent from "../../components/UIComponents/DataGird/grid.component";
-import { headerObj } from '../../components/UIComponents/DataGird/grid.component';
 import { Grid } from "@mui/material";
 import './ProductList.scss';
 
 
-// interface props { 
-
-// }
-
-export function headerTable(): headerObj[] {
-    return [
-        { field: "productNm", label: "PRODUCT NAME", type: 'text' },
-        { field: "pricingModel", label: "PRICING MODEL", type: 'text' },
-        {
-            field: "status",
-            label: "",
-            type: 'status',
-            align: 'center',
-            showIconLast: true,
-            fieldOptions: [
-                {
-                    value: "expired",
-                    icon: AlertExclamationIcon,
-                }
-            ]
-        },
-        {
-            field: "fuelType",
-            label: "",
-            type: 'status',
-            align: 'center',
-            showIconLast: true,
-            fieldOptions: [
-                {
-                    value: "Regular",
-                    icon: YellowFuelIcon,
-                },
-                {
-                    value: "Premium",
-                    icon: RedFuelIcon,
-                },
-                {
-                    value: "Diesel",
-                    icon: GreenFuelIcon,
-                },
-                {
-                    value: "V-Power",
-                    icon: NavyBlueFuelIcon,
-                },
-            ]
-        },
-    ];
+interface props { 
+    searchTerm : string;
+    searchTermInputChange: (value: string) => void;
+    productData: any[];
+    isLoadingData: boolean;
+    loadNextPage: boolean;
 }
 
-export const mockData = [
-    { productNm: 'Product ABC', pricingModel: 'OPIS Rack', fuelType: 'Regular', status: '' },
-    { productNm: 'Product Name', pricingModel: 'OPIS Retail', fuelType: 'Premium', status: 'expired' },
-    { productNm: 'Product Custom', pricingModel: 'Custom', fuelType: 'Diesel', status: '' },
-    { productNm: 'Product XYZ', pricingModel: 'OPIS Retail', fuelType: 'V-Power', status: '' },
-    { productNm: 'Product ABC', pricingModel: 'OPIS Rack', fuelType: 'Regular', status: '' },
-    { productNm: 'Product Name', pricingModel: 'OPIS Retail', fuelType: 'Premium', status: 'expired' },
-    { productNm: 'Product Custom', pricingModel: 'Custom', fuelType: 'Diesel', status: '' },
-    { productNm: 'Product XYZ', pricingModel: 'OPIS Retail', fuelType: 'V-Power', status: '' },
-    { productNm: 'Product ABC', pricingModel: 'OPIS Rack', fuelType: 'Regular', status: '' },
-    { productNm: 'Product Name', pricingModel: 'OPIS Retail', fuelType: 'Premium', status: 'expired' },
-    { productNm: 'Product Custom', pricingModel: 'Custom', fuelType: 'Diesel', status: '' },
-    { productNm: 'Product XYZ', pricingModel: 'OPIS Retail', fuelType: 'V-Power', status: '' },
-    { productNm: 'Product ABC', pricingModel: 'OPIS Rack', fuelType: 'Regular', status: '' },
-    { productNm: 'Product Name', pricingModel: 'OPIS Retail', fuelType: 'Premium', status: 'expired' },
-    { productNm: 'Product Custom', pricingModel: 'Custom', fuelType: 'Diesel', status: '' },
-    { productNm: 'Product XYZ', pricingModel: 'OPIS Retail', fuelType: 'V-Power', status: '' },
-    { productNm: 'Product ABC', pricingModel: 'OPIS Rack', fuelType: 'Regular', status: '' },
-    { productNm: 'Product Name', pricingModel: 'OPIS Retail', fuelType: 'Premium', status: 'expired' },
-    { productNm: 'Product Custom', pricingModel: 'Custom', fuelType: 'Diesel', status: '' },
-    { productNm: 'Product XYZ', pricingModel: 'OPIS Retail', fuelType: 'V-Power', status: '' }
-];
 
-export default function ProductList() {
-    const [searchTerm, setSearchTerm] = useState("");
+export default function ProductList(props : props) {
+    const ProductObj = new ProductModel();
+    const headCells = ProductObj.fieldsToDisplay();
     const { t } = useTranslation();
-    const headCells = headerTable();
-
-    const onInputChange = (value: string) => {
-        setSearchTerm(value);
-    };
+   
+    
 
     return (
         <Fragment>
@@ -96,9 +31,9 @@ export default function ProductList() {
                 <Grid item xs={8} md={10} pb={3}>
                     <Search
                         name="searchTerm"
-                        value={searchTerm}
+                        value={props.searchTerm}
                         delay={600}
-                        onChange={onInputChange}
+                        onChange={props.searchTermInputChange}
                         placeholder={t('productManagement.search')}
                     />
                 </Grid>
@@ -114,13 +49,13 @@ export default function ProductList() {
                 <Grid item xs={12} md={12} pb={5}>
                     <GridComponent
                         primaryKey='productId'
-                        rows={[]}
+                        rows={ProductObj.dataModel(props.productData)}
                         header={headCells}
-                        isLoading={false}
+                        isLoading={props.isLoadingData}
                         isChildTable
                         enableRowSelection
-                        getPages={false}
-                        searchTerm={searchTerm}
+                        getPages={props.loadNextPage}
+                        searchTerm={props.searchTerm}
                         noDataMsg='Add Products to setup the fee details to complete the lot requirement.'
                     />
                 </Grid>
