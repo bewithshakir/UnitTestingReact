@@ -43,6 +43,10 @@ export const formStatusObj = {
     message: 'Lot Name is successfully added and Please add other details.',
     type: 'Success',
   },
+  editsuccess: {
+    message: 'Lot Data is updated successfully.',
+    type: 'Success',
+  },
   error: {
     message: 'Something went wrong. Please try again.',
     type: 'Error',
