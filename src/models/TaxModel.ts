@@ -1,6 +1,6 @@
 import moment from 'moment';
 import { headerObj } from './../components/UIComponents/DataGird/grid.component';
-import { FuelTax, FuelListData } from '../pages/Tax/config';
+import { FuelTax } from '../pages/Tax/config';
 import { OilCanIcon } from '../assets/icons';
 import { useTranslation } from 'react-i18next';
 import { YellowFuelIcon, RedFuelIcon, GreenFuelIcon, NavyBlueFuelIcon } from './../assets/icons';
@@ -54,13 +54,6 @@ export default class TaxModel {
         return MassActionOptions.map(actionItem => ({ ...actionItem, label: t(actionItem.label) }));
     }
 
-    dataModel (data: FuelListData[]) {
-        return data.map((obj) => ({
-            ...obj,
-            productCount: obj.products?.length || 0
-        }));
-    }
-
     fieldsToDisplay (): headerObj[] {
         const { CITY, STATE, PRODUCT } = DataGridFields;
         return [
@@ -81,11 +74,11 @@ export default class TaxModel {
 
     fieldsToDisplayLotTable (): headerObj[] {
         return [
-            { 
-                field: "productCd", 
-                label: "PRODUCT", 
-                type: 'status', 
-                align: 'left', 
+            {
+                field: "productCd",
+                label: "PRODUCT",
+                type: 'status',
+                align: 'left',
                 showIconLast: false,
                 fieldOptions: [
                     {
@@ -126,7 +119,7 @@ export default class TaxModel {
             { field: "miscLoadFuelTax", label: "LOAD FUEL TAX ($)", type: 'text' },
             { field: "startDate", label: "EFFECTIVE DATE", type: 'text' },
             { field: "endDate", label: "END DATE", type: 'text' },
-            
+
         ];
     }
 
