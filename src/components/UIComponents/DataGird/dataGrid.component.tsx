@@ -1,6 +1,6 @@
 import { Collapse, TableBody, TableCell, TableRow, FormControl, Avatar, Icon, ImageList, Typography, Box } from '@mui/material';
 import Checkbox from '../Checkbox/Checkbox.component';
-import * as React from "react";
+import React, { useEffect } from "react";
 import { Loader } from '../Loader';
 import DataGridActionsMenu, { DataGridActionsMenuOption } from '../Menu/DataGridActionsMenu.component';
 import { Button } from './../Button/Button.component';
@@ -26,6 +26,8 @@ interface GridBodyProps {
     openDrawer?: any;
     selectedRows?: string[];
     getId?: any;
+    resetCollaps?: boolean;
+    onResetTableCollaps?: (value: boolean) => void;
     InnerTableComponent?: any;
     noDataMsg?: string,
     searchTerm?: string,
@@ -37,7 +39,7 @@ interface GridBodyProps {
 }
 
 
-function descendingComparator(a: any, b: any, orderBy: any) {
+function descendingComparator (a: any, b: any, orderBy: any) {
     const valueA = isNaN(a[orderBy]) ? a[orderBy]?.toLowerCase() : Number(a[orderBy]);
     const valueB = isNaN(b[orderBy]) ? b[orderBy]?.toLowerCase() : Number(b[orderBy]);
     if (valueB < valueA) {
@@ -50,13 +52,13 @@ function descendingComparator(a: any, b: any, orderBy: any) {
 }
 
 
-function getComparator(order: any, orderBy: any) {
+function getComparator (order: any, orderBy: any) {
     return order === "desc"
         ? (a: any, b: any) => descendingComparator(a, b, orderBy)
         : (a: any, b: any) => -descendingComparator(a, b, orderBy);
 }
 
-function stableSort(array: any, comparator: any) {
+function stableSort (array: any, comparator: any) {
     const stabilizedThis = array.map((el: any, index: any) => [el, index]);
     stabilizedThis.sort((a: any, b: any) => {
         const order = comparator(a[0], b[0]);
@@ -68,7 +70,7 @@ function stableSort(array: any, comparator: any) {
     return stabilizedThis.map((el: any) => el[0]);
 }
 
-function getFuelIcon(fuelStatus: string) {
+function getFuelIcon (fuelStatus: string) {
     return ({
         "Regular": YellowFuelIcon,
         "Premium": RedFuelIcon,
@@ -84,6 +86,13 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
     const getKeys = () => {
         return props?.headCells.map((i: any) => i.field);
     };
+
+    useEffect(() => {
+        if (props.resetCollaps) {
+            setSelectedKey(null);
+            props.onResetTableCollaps && props.onResetTableCollaps(false);
+        }
+    }, [props.resetCollaps]);
 
     const handleCollapaseClick = (e: React.MouseEvent<HTMLButtonElement>, indexKey: any, row: any, key: any) => {
         e.stopPropagation();

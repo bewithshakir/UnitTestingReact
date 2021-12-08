@@ -36,8 +36,9 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
   const history = useHistory();
   const [info, setInfo] = React.useState({});
   const [searchTerm, setSearchTerm] = React.useState("");
+  const [resetTableCollaps, setResetTableCollaps] = React.useState(false);
   const [drawerOpen, setDrawerOpen] = React.useState(false);
-  const [sortOrder, setSortOrder] = React.useState<{ sortBy: string, order: string }>({ sortBy: "deliveryLocationNm", order: "asc" });
+  const [sortOrder, setSortOrder] = React.useState<{ sortBy: string, order: string }>({ sortBy: "", order: "" });
   const [filterData, setFilterData] = React.useState<{ [key: string]: string[] }>({});
   const [custFilterPanelVisible, setCustFilterPanelVisible] = React.useState(false);
   const [parkingLotlist, setParkingLotList] = React.useState([]);
@@ -80,17 +81,22 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
   const onSortBySelected = (value: string) => {
     let sortOrder;
     switch (value) {
+      case "Lot Name A-Z":
+        sortOrder = { sortBy: "deliveryLocationNm", order: "asc" };
+        break;
       case "Lot Name Z-A":
         sortOrder = { sortBy: "deliveryLocationNm", order: "desc" };
         break;
       default:
-        sortOrder = { sortBy: "deliveryLocationNm", order: "asc" };
+        sortOrder = { sortBy: "", order: "" };
         break;
     }
+    setResetTableCollaps(true);
     setSortOrder(sortOrder);
   };
 
   const onInputChange = (value: string) => {
+    setResetTableCollaps(true);
     setSearchTerm(value);
   };
   useEffect(() => {
@@ -120,6 +126,7 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
         break;
       default: return;
     }
+    setResetTableCollaps(true);
   };
 
   const handleRowAction = (action: DataGridActionsMenuOption) => {
@@ -136,7 +143,10 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
 
   const handleCustFilterPanelClose = () => setCustFilterPanelVisible(false);
 
-  const getFilterParams = (filterObj: { [key: string]: string[] }) => setFilterData(filterObj);
+  const getFilterParams = (filterObj: { [key: string]: string[] }) => {
+    setResetTableCollaps(true);
+    setFilterData(filterObj);
+  };
 
   return (
     <Box display="flex">
@@ -215,6 +225,8 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
             rowActionOptions={rowActionOptions}
             openDrawer={openDrawer}
             noDataMsg='Add Parking lot by clicking on lot or any related sentence.'
+            resetCollaps={resetTableCollaps}
+            onResetTableCollaps={setResetTableCollaps}
             showImg={<ParkingLotNoDataIcon />}
           />
 
