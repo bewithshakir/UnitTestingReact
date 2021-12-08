@@ -20,7 +20,7 @@ export default function ProductManagement() {
     //const just for api testing....
     const lotId = 'ff126bdb-1d00-4eca-963c-28dc5b8e2e2e';
 
-    const { data, fetchNextPage, isLoading, isFetching }: any = useProductsByLotId(lotId);
+    const { data, fetchNextPage, isLoading, isFetching }: any = useProductsByLotId(lotId, searchTerm);
 
     useEffect(() => {
         if (data) {

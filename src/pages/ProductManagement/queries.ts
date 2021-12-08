@@ -46,18 +46,26 @@ export const useGetPricingModel = () => {
     return useQuery(["getPricingModel"], () => getPricingModel());
 };
 
-const getProductsByLotId = async (pageParam: number, lotId: string) => {
+const getProductsByLotId = async (pageParam: number, lotId: string, searchTerm: string) => {
     if (lotId) {
+
+        const query = new URLSearchParams();
+        if (searchTerm) {
+            query.append("search", searchTerm);
+        }
+
+        const productEntitySet = `/api/customer-service/lot/${lotId}/product?countryCode=us&limit=${pageDataLimit}&offset=${pageParam}`;
+        const url = `${query.toString().length ? `&${query.toString()}` : ''}`;
         const payload: AxiosRequestConfig = {
             method: 'get',
-            url: `/api/customer-service/lot/${lotId}/product?countryCode=us&limit=${pageDataLimit}&offset=${pageParam}`
+            url: productEntitySet + url 
         };
         const { data } = await axios(payload);
         return data;
     }
 };
-export const useProductsByLotId = (lotId: string) => {
-    return useInfiniteQuery(["getProductsByLotId", lotId], ({ pageParam = 0 }) => getProductsByLotId(pageParam, lotId), {
+export const useProductsByLotId = (lotId: string, searchTerm: string) => {
+    return useInfiniteQuery(["getProductsByLotId", lotId, searchTerm], ({ pageParam = 0 }) => getProductsByLotId(pageParam, lotId, searchTerm), {
         getNextPageParam: (lastGroup: any) => {
             if (lastGroup.data.pagination.offset < lastGroup.data.pagination.totalCount) {
                 return lastGroup.data.pagination.offset + pageDataLimit;
