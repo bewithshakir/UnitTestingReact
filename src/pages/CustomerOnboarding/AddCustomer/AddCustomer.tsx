@@ -235,12 +235,11 @@ const AddCustomer: React.FC = () => {
             isFormValidated(false);
             setFormStatus({ message: data?.error?.message || formStatusProps.error.message, type: 'Error' });
             formik.setSubmitting(false);
-            setEditShown(true);
-            setSaveCancelShown(false);
+            setEditShown(false);
+            setSaveCancelShown(true);
             setTimeout(() => {
                 setAPIResponse(false);
             }, 6000);
-            formik.resetForm({});
         } catch (error) {
 
         }
