@@ -12,12 +12,12 @@ import ProductList from './ProductList';
 export default function ProductManagement() {
     return (
         <Fragment>
-            <Box display="flex" mt={8} ml={0} className='product-management'>
+            <Box display="flex" className='product-management'>
                 <Grid container direction="row">
                     <Grid item md={4} sm={12} xs={12}>
                       <ProductList/>
                     </Grid>
-                    <Grid item md={8} sm={12} xs={12} pl={10}>
+                    <Grid item md={8} sm={12} xs={12} pl={4}>
                         <AddProduct />
                     </Grid>
                 </Grid>

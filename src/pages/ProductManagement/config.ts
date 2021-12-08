@@ -16,10 +16,21 @@ export const productOptions = [
     { label: '', value: '' }
 ];
 
+
+export const productTypes = [
+    { label: 'Fuel', value: 'fuel' },
+    { label: 'Non- Fuel', value: 'nonFuel' },
+    { label: 'Add on Service', value: 'addon' }
+];
+
+export const masterProducts =[
+    { label: 'Regular', value: 'regular' },
+];
+
 export const pricingModelOptions = [
-    { label: '', value: '' },
-    { label: '', value: '' },
-    { label: '', value: '' }
+    { label: 'OPIS Retail', value: 'OpisRegail' },
+    { label: 'OPIS RACK', value: 'OpisRack' },
+    { label: 'Custom', value: 'Custom' }
 ];
 
 export const stateOptions = [

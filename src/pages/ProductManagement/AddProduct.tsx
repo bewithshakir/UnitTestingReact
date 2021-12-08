@@ -11,7 +11,7 @@ import ToastMessage from '../../components/UIComponents/ToastMessage/ToastMessag
 import Checkbox from '../../components/UIComponents/Checkbox/Checkbox.component';
 // import Divider from '@mui/material/Divider';
 // import { useTheme } from '../../contexts/Theme/Theme.context';
-import { productOptions, pricingModelOptions, stateOptions, cityOptions, cityIdOptions, supplierOptions, brandedOptions, actualProductOptions, formStatusObj } from './config';
+import { productTypes, pricingModelOptions, stateOptions, cityOptions, cityIdOptions, supplierOptions, brandedOptions, actualProductOptions, formStatusObj, masterProducts, productOptions } from './config';
 import { useAddedCustomerIdStore, useShowConfirmationDialogBoxStore } from '../../store';
 // interface props { 
 
@@ -128,7 +128,8 @@ export default function AddProduct() {
     //     setSaveCancelVisible(true);
     //     setDisabled(false);
     // };
-
+// eslint-disable-next-line no-console
+console.log('form data:',formik.values);
 
     return (
         <FormikProvider value={formik}>
@@ -148,16 +149,32 @@ export default function AddProduct() {
 
                         <Grid item lg={5} md={8} sm={8} xs={8} mx={4} my={1} >
                             <Select
-                                id='productName'
-                                name='productName'
-                                label='Product'
+                                id='productType'
+                                name='productType'
+                                label='PRODUCT TYPE'
                                 value={formik.values.productName}
-                                placeholder='Select one'
-                                items={productOptions}
+                                placeholder='Select Product Type'
+                                items={productTypes}
                                 // helperText={(formik.touched.productName && formik.errors.productName) ? formik.errors.productName.value : undefined}
                                 error={(formik.touched.productName && formik.errors.productName) ? true : false}
                                 onChange={formik.setFieldValue}
                                 onBlur={() => { formik.setFieldTouched("productName"); formik.validateField("productName"); }}
+                                required
+                                isDisabled={isEditMode ? true : isDisabled}
+                            />
+                        </Grid>
+                        <Grid item lg={5} md={8} sm={8} xs={8} mx={4} my={1} >
+                            <Select
+                                id='masterProductName'
+                                name='masterProductName'
+                                label='Master Product Name'
+                                value={formik.values.masterProductName}
+                                placeholder='Select Master Product Name'
+                                items={masterProducts}
+                                // helperText={(formik.touched.pricingModel && formik.errors.pricingModel) ? formik.errors.pricingModel.value : undefined}
+                                error={(formik.touched.masterProductName && formik.errors.masterProductName) ? true : false}
+                                onChange={formik.setFieldValue}
+                                onBlur={() => { formik.setFieldTouched("masterProductName"); formik.validateField("masterProductName"); }}
                                 required
                                 isDisabled={isEditMode ? true : isDisabled}
                             />
@@ -178,6 +195,105 @@ export default function AddProduct() {
                                 isDisabled={isEditMode ? true : isDisabled}
                             />
                         </Grid>
+                        <Grid item lg={12} md={12} sm={12} xs={12} mx={4}>
+                            <hr></hr>
+                        </Grid>
+                        {formik.values?.pricingModel?.value==="Custom" && (
+                            <>
+                            <Grid item lg={5} md={8} sm={8} xs={8} mx={4} my={1} >
+                            <Input
+                                id='productName' 
+                                label='Product Name'
+                                type='text'
+                                placeholder='Enter Product Name'
+                                // helperText={(formik.touched.opisName && formik.errors.opisName) ? formik.errors.opisName : undefined}
+                                error={(formik.touched.productName && formik.errors.productName) ? true : false}
+                                description=''
+                                required
+                                {...formik.getFieldProps('productName')}
+                                disabled={isDisabled}
+                            />
+                        </Grid>
+                        <Grid item lg={12} md={12} sm={12} xs={12} mx={4}>
+                            <hr></hr>
+                        </Grid>
+                        <Grid item lg={5} md={8} sm={8} xs={8} mx={4} my={1} >
+                            <Input
+                                id='pricePerGallon'
+                                label='Price Per Gallon (Including TAX)'
+                                type='text'
+                                // helperText={(formik.touched.pricePerGallon && formik.errors.pricePerGallon) ? formik.errors.pricePerGallon : undefined}
+                                error={(formik.touched.pricePerGallon && formik.errors.pricePerGallon) ? true : false}
+                                description=''
+                                required
+                                {...formik.getFieldProps('pricePerGallon')}
+                                disabled={isDisabled}
+                            />
+                        </Grid>
+                        <Grid item lg={5} md={8} sm={8} xs={8} mx={4} my={1} >
+                        </Grid>
+                        <Grid item lg={5} md={8} sm={8} xs={8} mx={4} my={1} >
+                            <Input
+                                id='addedPricePerGallon'
+                                label='Added Price Per Gallon (Optional)'
+                                type='text'
+                                // helperText={(formik.touched.addedPricePerGallon && formik.errors.addedPricePerGallon) ? formik.errors.addedPricePerGallon : undefined}
+                                error={(formik.touched.addedPricePerGallon && formik.errors.addedPricePerGallon) ? true : false}
+                                description='' 
+                                {...formik.getFieldProps('addedPricePerGallon')}
+                                disabled={isDisabled}
+                            />
+                        </Grid>
+                        <Grid item lg={5} md={8} sm={8} xs={8} mx={4} my={1} >
+                            <Input
+                                id='discountPerGallon'
+                                label='Discount Per Gallon (Optional)'
+                                type='text'
+                                // helperText={(formik.touched.discountPerGallon && formik.errors.discountPerGallon) ? formik.errors.discountPerGallon : undefined}
+                                error={(formik.touched.discountPerGallon && formik.errors.discountPerGallon) ? true : false}
+                                description=''
+                                {...formik.getFieldProps('discountPerGallon')}
+                                disabled={isDisabled}
+                            />
+                        </Grid>
+                        <Grid item lg={5} md={8} sm={8} xs={8} mx={4} my={1} >
+                            <Input
+                                id='totalPrice'
+                                label='Total Price Per Gallon (Including TAx, Adder/Discount)'
+                                type='text'
+                                // helperText={(formik.touched.discountPerGallon && formik.errors.discountPerGallon) ? formik.errors.discountPerGallon : undefined}
+                                error={(formik.touched.discountPerGallon && formik.errors.discountPerGallon) ? true : false}
+                                description=''
+                                {...formik.getFieldProps('discountPerGallon')}
+                                disabled={true}
+                            />
+                        </Grid>
+                        <Grid item lg={12} md={12} sm={12} xs={12} mx={4}>
+                            <hr></hr>
+                        </Grid>
+                        <Grid item lg={5} md={8} sm={8} xs={8} mx={4} my={1} >
+                            <Select
+                                id='timeSlot'
+                                name='timeSlot'
+                                label='Time Slot (Optional)'
+                                value={formik.values.timeSlot}
+                                placeholder='Choose Time Slot'
+                                items={[]}
+                                // helperText={(formik.touched.city && formik.errors.state) ? formik.errors.state : undefined}
+                                error={(formik.touched.timeSlot && formik.errors.timeSlot) ? true : false}
+                                onChange={formik.setFieldValue}
+                                onBlur={() => { formik.setFieldTouched("timeSlot"); formik.validateField("timeSlot"); }}
+                                required
+                                isDisabled={isEditMode ? true : isDisabled}
+                            />
+                        </Grid>
+                        <Grid item lg={12} md={12} sm={12} xs={12} mx={4}>
+                           
+                        </Grid>
+                        </>
+                        )}
+                         {formik.values?.pricingModel?.value==="OtherLogic" && (
+                             <>
                         <Grid item lg={5} md={8} sm={8} xs={8} mx={4} my={1} >
                             <Select
                                 id='state'
@@ -420,6 +536,8 @@ export default function AddProduct() {
                                 {...formik.getFieldProps('customerName')}
                             />
                         </Grid>
+                        </>
+                         )}
                     </Grid>
                     <Grid item container lg={12} md={12} sm={12} xs={12} className="lastItem" >
                         <Grid item lg={5} md={8} sm={8} xs={8} mx={4}>
