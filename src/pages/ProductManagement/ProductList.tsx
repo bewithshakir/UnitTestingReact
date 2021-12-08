@@ -58,8 +58,8 @@ export function headerTable(): headerObj[] {
 }
 
 export const mockData = [
-    { productNm: 'Product ABC', pricingModel: 'OPIS Rack', fuelType: 'Regular', status:''},
-    { productNm: 'Product Name', pricingModel: 'OPIS Retail', fuelType: 'Premium', status: 'expired'},
+    { productNm: 'Product ABC', pricingModel: 'OPIS Rack', fuelType: 'Regular', status: '' },
+    { productNm: 'Product Name', pricingModel: 'OPIS Retail', fuelType: 'Premium', status: 'expired' },
     { productNm: 'Product Custom', pricingModel: 'Custom', fuelType: 'Diesel', status: '' },
     { productNm: 'Product XYZ', pricingModel: 'OPIS Retail', fuelType: 'V-Power', status: '' },
     { productNm: 'Product ABC', pricingModel: 'OPIS Rack', fuelType: 'Regular', status: '' },
@@ -92,34 +92,36 @@ export default function ProductList() {
     return (
         <Fragment>
             <Grid container className="product-list">
-                    <Grid item xs={8} md={10} pb={3}>
-                        <Search
-                            name="searchTerm"
-                            value={searchTerm}
-                            delay={600}
-                            onChange={onInputChange}
-                            placeholder={t('productManagement.search')}
-                        />
-                    </Grid>
-                    <Grid item xs={4} md={2} pb={3}>
+                <Grid item xs={8} md={10} pb={3}>
+                    <Search
+                        name="searchTerm"
+                        value={searchTerm}
+                        delay={600}
+                        onChange={onInputChange}
+                        placeholder={t('productManagement.search')}
+                    />
+                </Grid>
+                <Grid item xs={4} md={2} pb={3} pl={4.75}>
+                    <div className='deleteIcon'>
                         <IconButton aria-label='search' edge='end'>
                             <DeleteIcon />
                         </IconButton>
-                    </Grid>
-                    <Grid item xs={12} md={12} pb={5}>
-                        <GridComponent
-                            primaryKey='productId'
-                            rows={mockData}
-                            header={headCells}
-                            isLoading={false}
-                            isChildTable
-                            enableRowSelection
-                            getPages={false}
-                            searchTerm={searchTerm}
-                            noDataMsg='Add Products to setup the fee details to complete the lot requirement.'
-                        />
-                    </Grid>
+                    </div>
                 </Grid>
+                <Grid item xs={12} md={12} pb={5}>
+                    <GridComponent
+                        primaryKey='productId'
+                        rows={[]}
+                        header={headCells}
+                        isLoading={false}
+                        isChildTable
+                        enableRowSelection
+                        getPages={false}
+                        searchTerm={searchTerm}
+                        noDataMsg='Add Products to setup the fee details to complete the lot requirement.'
+                    />
+                </Grid>
+            </Grid>
         </Fragment>
     );
 }
