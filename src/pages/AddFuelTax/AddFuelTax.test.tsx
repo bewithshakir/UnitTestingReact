@@ -20,7 +20,7 @@ const queryClient = new QueryClient();
 </QueryClientProvider>); */
 
 
-describe('AddSalesTax component', () => {
+describe('AddFuelTax component', () => {
     let wrapper;
     beforeEach(()=> {
         wrapper = mount(<HOCSetup>
