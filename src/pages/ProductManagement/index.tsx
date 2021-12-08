@@ -5,11 +5,6 @@ import "./ProductManagement.scss";
 import ProductList from './ProductList';
 import { useProductsByLotId } from './queries';
 
-
-// interface props {
-
-// }
-
 export default function ProductManagement() {
     const [productList, setProductList] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");

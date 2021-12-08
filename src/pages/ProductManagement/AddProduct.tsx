@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import { FormikProvider, useFormik } from 'formik';
 import { useTranslation } from 'react-i18next';
@@ -6,21 +5,15 @@ import { useHistory } from 'react-router-dom';
 
 import { EditIcon } from '../../assets/icons'; 
 import { Add } from "@mui/icons-material";
-import { Grid, Typography, FormControl, FormControlLabel, FormGroup } from '@mui/material';
+import { Grid, Typography} from '@mui/material';
 import { Button } from '../../components/UIComponents/Button/Button.component';
 import Input from '../../components/UIComponents/Input/Input';
 import Select from '../../components/UIComponents/Select/SingleSelect';
-import ToastMessage from '../../components/UIComponents/ToastMessage/ToastMessage.component';
-import Checkbox from '../../components/UIComponents/Checkbox/Checkbox.component';
-// import Divider from '@mui/material/Divider';
-// import { useTheme } from '../../contexts/Theme/Theme.context';
-import {  stateOptions, cityOptions, cityIdOptions, supplierOptions, brandedOptions, actualProductOptions, formStatusObj } from './config';
-import { useGetProductTypes, useGetProductNames, useGetPricingModel } from './queries';
-import { useAddedCustomerIdStore, useShowConfirmationDialogBoxStore } from '../../store';
-// interface props { 
-
-// }
-
+import ToastMessage from '../../components/UIComponents/ToastMessage/ToastMessage.component'; 
+import {  formStatusObj } from './config';
+import { useGetProductTypes, useGetProductNames, useGetPricingModel, addNewProduct } from './queries';
+import {  useShowConfirmationDialogBoxStore } from '../../store';
+import { AddProductValidationSchema } from './validation';
 interface FormStatusType {
     message: string
     type: string
@@ -33,6 +26,8 @@ const formStatusProps: FormStatusProps = formStatusObj;
 
 export default function AddProduct() {
 
+    //const just for api testing....
+    const lotId = 'ff126bdb-1d00-4eca-963c-28dc5b8e2e2e';
     const initialValues = {
         productType:{ label: "" , value: ""},
         masterProductName:{ label: "" , value: ""},
@@ -46,7 +41,7 @@ export default function AddProduct() {
     };
     const formik = useFormik({
         initialValues,
-        // validationSchema: AddProductValidationSchema,
+        validationSchema: AddProductValidationSchema,
         onSubmit: (values) => {
             createNewProduct(values);
         },
@@ -55,11 +50,7 @@ export default function AddProduct() {
 
     const { t } = useTranslation();
     const history = useHistory();
-    const isFormFieldChange = () => formik.dirty;
-    // const { theme } = useTheme();
-
-    // const [editVisible, setEditVisible] = useState(false);
-    // const [formSuccess, setFormSuccess] = useState(false);
+    const isFormFieldChange = () => formik.dirty; 
     const [productTypes, setProductTypes] = useState([]);
     const [pricingModelOptions, setPricingModelOptions] = useState([]);
     const [productNames, setProductNames] = useState([]);
@@ -67,24 +58,14 @@ export default function AddProduct() {
     const { data: productTypeList } = useGetProductTypes();
     const { data: productNamesList } = useGetProductNames(formik?.values?.productType?.value);
     const [formStatus, setFormStatus] = useState<FormStatusType>({ message: '', type: '' });
-    const showDialogBox = useShowConfirmationDialogBoxStore((state) => state.showDialogBox);
-    const isFormValidated = useShowConfirmationDialogBoxStore((state) => state.setFormFieldValue);
-    const [isDisabled, setDisabled] = useState(false);
-    const [isEditMode, setEditMode] = useState(false);
-    // const [isSavCancelVisible, setSaveCancelVisible] = useState(true);
+    const showDialogBox = useShowConfirmationDialogBoxStore((state) => state.showDialogBox); 
     const [apiResposneState] = useState(false);
-
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const addedCustomerId = useAddedCustomerIdStore((state) => state.customerId);
-    // const resetFormFieldValue = useShowConfirmationDialogBoxStore((state) => state.resetFormFieldValue);
-    // const hideDialogBox = useShowConfirmationDialogBoxStore((state) => state.hideDialogBox);
-
+    const isDisabled =false;
+    const isEditMode =false;
     useEffect(() => {
         if (pricingModelList?.data.length) {
             setPricingModelOptions(pricingModelList.data.map((obj: any) => ({ label: obj.pricingModelNm.trim(), value: obj.pricingModelCd.trim() })));
-        }
-        // eslint-disable-next-line no-console
-        console.log('Pr', productNamesList);
+        } 
         if (productNamesList?.data.length) {
             setProductNames(productNamesList.data.map((obj: any) => ({ label: obj.productName.trim(), value: obj.productId.trim() })));
         }
@@ -93,25 +74,7 @@ export default function AddProduct() {
             setProductTypes(productTypeList.data.map((obj: any) => ({ label: obj.productClassNm.trim(), value: obj.productClassCd.trim() })));
         }
     }, [productTypeList, pricingModelList, productNamesList]);
-
-    // useEffect(() => {
-    //     resetFormFieldValue(false);
-    //     hideDialogBox(false);
-    //     if (isSuccess) {
-    //         setAPIResponse(true);
-    //         setFormStatus(formStatusProps.success);
-    //         setFormSuccess(true);
-    //     }
-    //     if (isError) {
-    //         setAPIResponse(true);
-    //         setFormStatus(formStatusProps.error);
-    //     }
-    //     setTimeout(() => {
-    //         setAPIResponse(false);
-    //     }, 6000);
-
-    // }, [isSuccess, isError]);
-
+ 
     const disableSubmitBtn = () => {
         if (isEditMode) {
             if (formik.touched && Object.keys(formik.touched).length === 0 && Object.getPrototypeOf(formik.touched) === Object.prototype) {
@@ -135,36 +98,15 @@ export default function AddProduct() {
             history.push('/customer/parkingLots');
         }
     };
-
-    // const createProductPayload = (form: addProductForm) => {
-    //     const apiPayload = {
-
-    //     };
-    //     return apiPayload;
-    // };
-
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+ 
+ 
     const createNewProduct = (form: any) => {
         try {
-            // addNewProduct(createProductPayload(form));
+            addNewProduct(lotId, form);
         } catch (error) {
             setFormStatus(formStatusProps.error);
         }
     };
-
-    // const handleFormDataChange = () => {
-    //     if (isFormFieldChange()) {
-    //         isFormValidated(true);
-    //     }
-    // };
-
-    // const handleEditBtnClick = () => {
-    //     setEditMode(true);
-    //     setSaveCancelVisible(true);
-    //     setDisabled(false);
-    // };
-// eslint-disable-next-line no-console
-console.log('form data:',formik.values);
 
     return (
         <FormikProvider value={formik}>
@@ -207,7 +149,7 @@ console.log('form data:',formik.values);
                                 value={formik.values.productType}
                                 placeholder='Select one'
                                 items={productTypes}
-                                // helperText={(formik.touched.productName && formik.errors.productName) ? formik.errors.productName.value : undefined}
+                                helperText={(formik.touched.productType && formik.errors.productType) ? formik.errors.productType.value : undefined}
                                 error={(formik.touched.productName && formik.errors.productName) ? true : false}
                                 onChange={formik.setFieldValue}
                                 onBlur={() => { formik.setFieldTouched("productType"); formik.validateField("productType"); }}
@@ -223,7 +165,7 @@ console.log('form data:',formik.values);
                                 value={formik.values.masterProductName}
                                 placeholder='Select Master Product Name'
                                 items={productNames}
-                                // helperText={(formik.touched.pricingModel && formik.errors.pricingModel) ? formik.errors.pricingModel.value : undefined}
+                                helperText={(formik.touched.pricingModel && formik.errors.pricingModel) ? formik.errors.pricingModel.value : undefined}
                                 error={(formik.touched.masterProductName && formik.errors.masterProductName) ? true : false}
                                 onChange={formik.setFieldValue}
                                 onBlur={() => { formik.setFieldTouched("masterProductName"); formik.validateField("masterProductName"); }}
@@ -239,7 +181,7 @@ console.log('form data:',formik.values);
                                 value={formik.values.pricingModel}
                                 placeholder='Select one'
                                 items={pricingModelOptions}
-                                // helperText={(formik.touched.pricingModel && formik.errors.pricingModel) ? formik.errors.pricingModel.value : undefined}
+                                helperText={(formik.touched.pricingModel && formik.errors.pricingModel) ? formik.errors.pricingModel.value : undefined}
                                 error={(formik.touched.pricingModel && formik.errors.pricingModel) ? true : false}
                                 onChange={formik.setFieldValue}
                                 onBlur={() => { formik.setFieldTouched("pricingModel"); formik.validateField("pricingModel"); }}
@@ -258,7 +200,7 @@ console.log('form data:',formik.values);
                                 label='Product Name'
                                 type='text'
                                 placeholder='Enter Product Name'
-                                // helperText={(formik.touched.opisName && formik.errors.opisName) ? formik.errors.opisName : undefined}
+                                helperText={(formik.touched.productName && formik.errors.productName) ? formik.errors.productName : undefined}
                                 error={(formik.touched.productName && formik.errors.productName) ? true : false}
                                 description=''
                                 required
@@ -274,7 +216,7 @@ console.log('form data:',formik.values);
                                 id='pricePerGallon'
                                 label='Price Per Gallon (Including TAX)'
                                 type='text'
-                                // helperText={(formik.touched.pricePerGallon && formik.errors.pricePerGallon) ? formik.errors.pricePerGallon : undefined}
+                                helperText={(formik.touched.pricePerGallon && formik.errors.pricePerGallon) ? formik.errors.pricePerGallon : undefined}
                                 error={(formik.touched.pricePerGallon && formik.errors.pricePerGallon) ? true : false}
                                 description=''
                                 required
@@ -289,7 +231,7 @@ console.log('form data:',formik.values);
                                 id='addedPricePerGallon'
                                 label='Added Price Per Gallon (Optional)'
                                 type='text'
-                                // helperText={(formik.touched.addedPricePerGallon && formik.errors.addedPricePerGallon) ? formik.errors.addedPricePerGallon : undefined}
+                                helperText={(formik.touched.addedPricePerGallon && formik.errors.addedPricePerGallon) ? formik.errors.addedPricePerGallon : undefined}
                                 error={(formik.touched.addedPricePerGallon && formik.errors.addedPricePerGallon) ? true : false}
                                 description='' 
                                 {...formik.getFieldProps('addedPricePerGallon')}
@@ -301,7 +243,7 @@ console.log('form data:',formik.values);
                                 id='discountPerGallon'
                                 label='Discount Per Gallon (Optional)'
                                 type='text'
-                                // helperText={(formik.touched.discountPerGallon && formik.errors.discountPerGallon) ? formik.errors.discountPerGallon : undefined}
+                                helperText={(formik.touched.discountPerGallon && formik.errors.discountPerGallon) ? formik.errors.discountPerGallon : undefined}
                                 error={(formik.touched.discountPerGallon && formik.errors.discountPerGallon) ? true : false}
                                 description=''
                                 {...formik.getFieldProps('discountPerGallon')}
@@ -313,7 +255,7 @@ console.log('form data:',formik.values);
                                 id='totalPrice'
                                 label='Total Price Per Gallon (Including TAx, Adder/Discount)'
                                 type='text'
-                                // helperText={(formik.touched.discountPerGallon && formik.errors.discountPerGallon) ? formik.errors.discountPerGallon : undefined}
+                                helperText={(formik.touched.discountPerGallon && formik.errors.discountPerGallon) ? formik.errors.discountPerGallon : undefined}
                                 error={(formik.touched.discountPerGallon && formik.errors.discountPerGallon) ? true : false}
                                 description=''
                                 {...formik.getFieldProps('discountPerGallon')}
@@ -331,7 +273,7 @@ console.log('form data:',formik.values);
                                 value={formik.values.timeSlot}
                                 placeholder='Choose Time Slot'
                                 items={[]}
-                                // helperText={(formik.touched.city && formik.errors.state) ? formik.errors.state : undefined}
+                                helperText={(formik.touched.timeSlot && formik.errors.timeSlot) ? formik.errors.timeSlot : undefined}
                                 error={(formik.touched.timeSlot && formik.errors.timeSlot) ? true : false}
                                 onChange={formik.setFieldValue}
                                 onBlur={() => { formik.setFieldTouched("timeSlot"); formik.validateField("timeSlot"); }}
@@ -355,7 +297,6 @@ console.log('form data:',formik.values);
                             >
                                 {t("buttons.cancel")}
                             </Button>
-
                         </Grid>
                         <Grid item lg={5} md={8} sm={8} xs={8} mx={4} my={4} textAlign="right">
                             <Button
