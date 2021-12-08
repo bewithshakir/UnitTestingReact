@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { useMutation, useQuery } from "react-query";
 import { AxiosRequestConfig } from "axios";
@@ -25,8 +24,8 @@ const createLot = async (payload: any) => {
 
 const editParkingLot = async (payload: any, parkingLotId: string) => {
     const options: AxiosRequestConfig = {
-        method: 'post',
-        url: `api/customer-service/lot/bfec5232-6abd-45f2-9b56-b118987f247c?countryCode=us`,
+        method: 'put',
+        url: `api/customer-service/lot/${parkingLotId}`,
         data: payload,
     };
     const { data } = await axios(options);

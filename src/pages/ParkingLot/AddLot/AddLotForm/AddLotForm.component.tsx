@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable no-console */
 /* eslint-disable no-empty */
 import React, { useState, useEffect } from 'react';
 import { FieldArray, FormikProvider, useFormik } from 'formik';
@@ -21,7 +19,7 @@ import { formStatusObj, timeZones, productDelFreq, getCountry} from '../../confi
 import MultiSelect from '../../../../components/UIComponents/Select/MultiSelect';
 import { DatePickerInput } from '../../../../components/UIComponents/DatePickerInput/DatePickerInput.component';
 import { TimePicker } from '../../../../components/UIComponents/TimePicker/TimePicker.component';
-import { useAddedCustomerIdStore, useAddedCustomerNameStore, useShowConfirmationDialogBoxStore } from '../../../../store';
+import { useAddedCustomerIdStore, useAddedParkingLotIdStore, useShowConfirmationDialogBoxStore } from '../../../../store';
 import './AddLotForm.style.scss';
 interface FormStatusType {
     message: string
@@ -51,14 +49,13 @@ function AddLotForm(): React.ReactElement {
     const hideDialogBox = useShowConfirmationDialogBoxStore((state) => state.hideDialogBox);
     const isFormValidated = useShowConfirmationDialogBoxStore((state) => state.setFormFieldValue);
     const [isTrigger, setIsTrigger] = useState(false);
-    // const setCustomerIdCreated = useAddedCustomerIdStore((state) => state.setCustomerId);
-    const setPageCustomerName = useAddedCustomerNameStore((state) => state.setCustomerName);
+    const setParkingLotIdCreated = useAddedParkingLotIdStore((state) => state.setParkingLotId);
     const [isDisabled, setDisabled] = useState(false);
     const [isEditMode, setEditMode] = useState(false);
     const [isEditShown, setEditShown] = useState(true);
     const [isSavCancelShown, setSaveCancelShown] = useState(true);
     const [activeLotId, setActiveLotId] = React.useState("");
-const [LotData, setLotData] = React.useState({});
+    const addedLotId = useAddedParkingLotIdStore((state) => state.parkingLotId);
 
     const onAddLotError = (err: any) => {
         resetFormFieldValue(false);
@@ -87,20 +84,19 @@ const [LotData, setLotData] = React.useState({});
         }, 6000);
     };
 
-    const onEditLotSuccess = (data: any) => {
+    const onEditLotSuccess = () => {
         setAPIResponse(true);
         isFormValidated(false);
         setFormStatus(formStatusProps.editsuccess);
-        //set active parking lot id
-        setActiveLotId(data?.lot?.deliveryLocationId.toString());
         setEditShown(true);
         setSaveCancelShown(false);
-        setTimeout(() => {
-            setAPIResponse(false);
-        }, 6000);
         setIsTrigger(!isTrigger);
         formik.resetForm({});
-        history.push(`/customer/${addedCustomerId}/parkingLots/viewLot/${activeLotId}`);
+        setTimeout(() => {
+            setAPIResponse(false);
+            history.push(`/customer/${addedCustomerId}/parkingLots/viewLot/${activeLotId}`);
+        }, 6000);
+        
     };
 
     const onEditLotError = (err: any) => {
@@ -110,12 +106,11 @@ const [LotData, setLotData] = React.useState({});
             isFormValidated(false);
             setFormStatus({ message: data?.error?.message || formStatusProps.error.message, type: 'Error' });
             formik.setSubmitting(false);
-            setEditShown(true);
-            setSaveCancelShown(false);
+            setEditShown(false);
+            setSaveCancelShown(true);
             setTimeout(() => {
                 setAPIResponse(false);
             }, 6000);
-            formik.resetForm({});
         } catch (error) {
 
         }
@@ -124,14 +119,6 @@ const [LotData, setLotData] = React.useState({});
     const onGetLotSuccess = (data: any) => {
         if (data) {
             populateDataInAllFields(data);
-             //set active parking lot id
-            setActiveLotId(data?.lot?.deliveryLocationId.toString());
-            setLotData(data?.lot);
-            console.log(data?.lot?.deliveryLocationId);
-            console.log(activeLotId);
-            console.log(LotData);
-            // setCustomerIdCreated(data?.data?.customer?.customerId);
-            // setPageCustomerName(data?.data?.customer?.companyNm);
         }
     };
 
@@ -141,12 +128,11 @@ const [LotData, setLotData] = React.useState({});
     };
 
     const { mutate: addNewLot } = useCreateLot(onAddLotError, onAddLotSuccess);
-    const { mutate: editParkingLot } = useEditParkingLot(activeLotId, onEditLotSuccess, onEditLotError);
+    const { mutate: editParkingLot } = useEditParkingLot(addedLotId as string, onEditLotSuccess, onEditLotError);
     useGetParkingLotData(activeLotId, isTrigger, onGetLotSuccess, onGetLotError);
 
     //to populate all the data in the form fields
     const populateDataInAllFields = (dataToPopulate: any) => {
-        //populate data in UI fields
         formik.setFieldValue('lotName', dataToPopulate?.data?.lot?.deliveryLocationNm);
         formik.setFieldValue('lotId', dataToPopulate?.data?.lot?.lotId);
         formik.setFieldValue('addressLine1', dataToPopulate?.data?.lot?.addressLine1);
@@ -163,14 +149,13 @@ const [LotData, setLotData] = React.useState({});
             formik.setFieldValue(`locationContact[${index}].email`, obj.contactEmailId);
             formik.setFieldValue(`locationContact[${index}].phoneNumber`, obj.contactPhoneNo);
         });
-        timeZones.map((obj:any, index: number) => {
+        timeZones.map((obj:any) => {
             if(obj.value === dataToPopulate?.data?.lot?.timezoneCd) {
                 formik.setFieldValue("timeZone",
                     { label: obj.label, value: obj.value });
             }
         });
-        // add the same logic for del freq drop down 
-
+        setDisabled(true);
     };
 
     useEffect(() => {
@@ -179,7 +164,6 @@ const [LotData, setLotData] = React.useState({});
             const secContactObj = contactTypeList.data.find((contactType: any) => contactType.locationContactNm.toLowerCase() === 'secondary');
             setPrimaryContactType(primaryContactObj?.locationContactCd);
             setSecondaryContactType(secContactObj?.locationContactCd);
-
         }
     }, [contactTypeList]);
 
@@ -190,6 +174,7 @@ const [LotData, setLotData] = React.useState({});
             setActiveLotId("" + selectedLotId);
             setDisabled(true);
             setSaveCancelShown(false);
+            setParkingLotIdCreated(selectedLotId);
         } else {
             setEditShown(false);
             setSaveCancelShown(true);
@@ -238,7 +223,6 @@ const [LotData, setLotData] = React.useState({});
     };
 
     const createEditLotPayload = (form: AddParkingLotForm) => {
-        console.log("in createEditLotPayload");
         const apiPayload = {
             customer_id: addedCustomerId ? addedCustomerId : "",
             lot_name: form.lotName,
@@ -279,10 +263,7 @@ const [LotData, setLotData] = React.useState({});
         }
     };
 
-    const editNewLot = (form: AddParkingLotForm, LotData: any) => {
-        console.log("editNewLot");
-        console.log(activeLotId);
-        console.log(LotData);
+    const editNewLot = (form: AddParkingLotForm) => {
         try {
             editParkingLot(createEditLotPayload(form));
         } catch (error) {
@@ -315,15 +296,11 @@ const [LotData, setLotData] = React.useState({});
         initialValues: addLotFormInitialValues,
         validationSchema: AddParkingLotValidationSchema,
         onSubmit: (values) => {
-
             if (isEditMode) {
-                console.log(activeLotId);
-                editNewLot(values, LotData);
+                editNewLot(values);
             } else {
                 createNewLot(values);
             }
-       
-            
         },
     });
 

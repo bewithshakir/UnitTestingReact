@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { IconButton, AppBar, Toolbar, Box } from "@mui/material";
@@ -27,8 +26,6 @@ export const PanelHeader: React.FC<InfoPanelProps> = ({ headingText, panelType, 
     const addedCustomerId = useAddedCustomerIdStore((state) => state.customerId);
 
     const navigateToViewEditPage = () => {
-        console.log(category);
-        console.log(idStrForEdit);
         switch(category) {
             case "customer" :
                 history.push({

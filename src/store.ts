@@ -33,6 +33,11 @@ export interface addedCustomerIdState {
   setCustomerId: (...args: any) => void,
   removeCustomerId: (...args: any) => void,
 }
+export interface addedParkingLotIdState {
+  parkingLotId: string,
+  setParkingLotId: (...args: any) => void,
+  removeParkingLotId: (...args: any) => void,
+}
 interface addedCustomerNameState {
   customerName: string,
   setCustomerName: (...args: any) => void,
@@ -82,6 +87,15 @@ export const useAddedCustomerIdStore = create<addedCustomerIdState>(persist((set
 {
   name: 'customerId'
 }));
+
+export const useAddedParkingLotIdStore = create<addedParkingLotIdState>(persist((set) => ({
+  parkingLotId: '',
+  setParkingLotId: (parkingLotId: string) => set(() => ({ parkingLotId })),
+  removeParkingLotId: () => set(() => ({ parkingLotId: '' })),
+}),
+  {
+    name: 'parkingLotId'
+  }));
 
 export const useAddedCustomerNameStore = create<addedCustomerNameState>((set) => ({
   customerName: '',
