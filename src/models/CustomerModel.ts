@@ -133,7 +133,7 @@ export default class CustomerModel {
             { field: "zipCode", label: "ZIP", type: 'text' },
             { field: "totalLots", label: "LOTS", type: 'button', icon: ParkingLotIcon },
             { field: "paymentType", label: "SETTLEMENT TYPE", type: 'text' },
-            { field: "createdDate", label: "DATE CREATED", type: 'text' },
+            { field: "createdAt", label: "DATE CREATED", type: 'text' },
         ];
     }
 
@@ -146,7 +146,7 @@ export default class CustomerModel {
             { field: "postalCd", label: "ZIP", type: 'text' },
             { field: "vehicles", label: "VEHICLES", type: 'text' },
             { field: "fuelStatus", label: "FUEL", type: 'icons' },
-            { field: 'primaryContactName', label: 'CONTACT', type: 'text'},
+            { field: 'primaryContactName', label: 'CONTACT', type: 'text' },
             {
                 field: "walletStatus",
                 label: "WALLET RULE",
