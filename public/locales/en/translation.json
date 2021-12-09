@@ -31,7 +31,7 @@
     "add lot": "Add Lot",
     "add tax": "Add Tax",
     "browse": "Browse",
-    "filter": "Filter"
+    "filter": "Filters"
   },
   "menus": {
     "sortby": {
@@ -128,6 +128,7 @@
     }
   },
   "taxes": {
+    "filterHeader":"Filters",
     "navBar": {
       "fuelTax": "Fuel Tax",
       "salesTax": "Sales Tax",
@@ -182,6 +183,7 @@
       "productColor": "Product Color",
       "status": "Status",
       "manualPricing": "Manual Pricing"
-    }
+    },
+    "search": "Search"
   }
 }

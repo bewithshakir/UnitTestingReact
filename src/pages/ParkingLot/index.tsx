@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable no-console */
 import React, { SyntheticEvent, useEffect } from "react";
 import { Button } from "../../components/UIComponents/Button/Button.component";
 import { useTranslation } from "react-i18next";
@@ -36,12 +38,16 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
   const history = useHistory();
   const [info, setInfo] = React.useState({});
   const [searchTerm, setSearchTerm] = React.useState("");
+  const [resetTableCollaps, setResetTableCollaps] = React.useState(false);
   const [drawerOpen, setDrawerOpen] = React.useState(false);
-  const [sortOrder, setSortOrder] = React.useState<{ sortBy: string, order: string }>({ sortBy: "deliveryLocationNm", order: "asc" });
+  const [sortOrder, setSortOrder] = React.useState<{ sortBy: string, order: string }>({ sortBy: "", order: "" });
   const [filterData, setFilterData] = React.useState<{ [key: string]: string[] }>({});
   const [custFilterPanelVisible, setCustFilterPanelVisible] = React.useState(false);
   const [parkingLotlist, setParkingLotList] = React.useState([]);
   const customerId = useAddedCustomerIdStore((state: addedCustomerIdState) => state.customerId);
+  const [infoPanelName, setInfoPanelName] = React.useState('');
+  const [infoPanelEditId, setInfoPanelEditId] = React.useState('');
+
 
   const { t } = useTranslation();
   const { data, fetchNextPage, isFetching, isLoading }: any = useGetParkingLotDetails(
@@ -65,10 +71,36 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
 
   });
 
+  const createInfoObjForRightInfoPanel = (row: any) => {
+    console.log(row);
+    setInfoPanelEditId(row.deliveryLocationId);
+    setInfoPanelName(row.deliveryLocationNm);
+    const infoObj = {
+      // 'Customer ID': row.customerInputId,
+      // 'Name': row.contactName,
+      // 'Email': row.email,
+      // 'Phone': maskPhoneNumber(row.phone),
+      // 'Settlement Type': row.paymentType,
+      // 'Card Added': row.cardAdded === "Y" ? <PositiveCricleIcon /> : row.cardAdded === "N" ? 'Not yet assigned' : '',
+      // 'Address': row.address,
+      // 'City': row.city,
+      // 'State': row.state,
+      // 'Zip Code': row.zipCode,
+    };
+    return infoObj;
+  };
+
+  // const openDrawer = (row: SyntheticEvent) => {
+  //   setInfo(row);
+  //   setDrawerOpen(true);
+  // };
+
   const openDrawer = (row: SyntheticEvent) => {
+    const infoObj = createInfoObjForRightInfoPanel(row);
     setInfo(row);
     setDrawerOpen(true);
   };
+
   const drawerClose = () => {
     setDrawerOpen(false);
   };
@@ -80,17 +112,22 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
   const onSortBySelected = (value: string) => {
     let sortOrder;
     switch (value) {
+      case "Lot Name A-Z":
+        sortOrder = { sortBy: "deliveryLocationNm", order: "asc" };
+        break;
       case "Lot Name Z-A":
         sortOrder = { sortBy: "deliveryLocationNm", order: "desc" };
         break;
       default:
-        sortOrder = { sortBy: "deliveryLocationNm", order: "asc" };
+        sortOrder = { sortBy: "", order: "" };
         break;
     }
+    setResetTableCollaps(true);
     setSortOrder(sortOrder);
   };
 
   const onInputChange = (value: string) => {
+    setResetTableCollaps(true);
     setSearchTerm(value);
   };
   useEffect(() => {
@@ -120,6 +157,7 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
         break;
       default: return;
     }
+    setResetTableCollaps(true);
   };
 
   const handleRowAction = (action: DataGridActionsMenuOption) => {
@@ -136,7 +174,10 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
 
   const handleCustFilterPanelClose = () => setCustFilterPanelVisible(false);
 
-  const getFilterParams = (filterObj: { [key: string]: string[] }) => setFilterData(filterObj);
+  const getFilterParams = (filterObj: { [key: string]: string[] }) => {
+    setResetTableCollaps(true);
+    setFilterData(filterObj);
+  };
 
   return (
     <Box display="flex">
@@ -215,6 +256,8 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
             rowActionOptions={rowActionOptions}
             openDrawer={openDrawer}
             noDataMsg='Add Parking lot by clicking on lot or any related sentence.'
+            resetCollaps={resetTableCollaps}
+            onResetTableCollaps={setResetTableCollaps}
             showImg={<ParkingLotNoDataIcon />}
           />
 
@@ -226,7 +269,9 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
             onClose={handleCustFilterPanelClose}
             fields={filterByFields}
             storeKey='parkingLot' />
-          <RightInfoPanel panelType="info-view" open={drawerOpen} headingText={"Accurate Transportation"} info={info} onClose={drawerClose} />
+            
+          <RightInfoPanel panelType="info-view" category="lot" open={drawerOpen} headingText={infoPanelName} info={info} idStrForEdit={infoPanelEditId} nameStrForEdit={infoPanelName} onClose={drawerClose} />
+
         </Grid>
       </Grid>
     </Box>

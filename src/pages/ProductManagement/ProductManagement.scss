@@ -1,0 +1,18 @@
+.product-management-container{
+    padding: 0;
+} 
+
+.product-management{
+    transform: translateX(-24px);
+}
+ 
+.productForm{
+    height: 100vh;
+}
+.productContainer {
+    min-height: 100%;
+    background: var(--Lightgray_4); 
+    .lastItem{
+        margin-top: auto; 
+      } 
+  } 

@@ -1,0 +1,160 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders the Default Data Grid component snapshot test for Default Data Grid component 1`] = `
+<ForwardRef(TableContainer)
+  className="table-container"
+  onScroll={[Function]}
+>
+  <ForwardRef(Table)
+    aria-labelledby="tableTitle"
+    stickyHeader={true}
+    sx={
+      Object {
+        "minWidth": "1600px",
+      }
+    }
+  >
+    <EnhancedGridHead
+      enableRowAction={false}
+      enableRowSelection={false}
+      headCells={
+        Array [
+          Object {
+            "align": "left",
+            "field": "col1",
+            "label": "COL-1",
+            "type": "text",
+          },
+          Object {
+            "align": "left",
+            "field": "col2",
+            "label": "COL-2",
+            "type": "text",
+          },
+          Object {
+            "align": "left",
+            "field": "col3",
+            "label": "COL-3",
+            "type": "text",
+          },
+          Object {
+            "align": "left",
+            "field": "col4",
+            "label": "COL-4",
+            "type": "text",
+          },
+        ]
+      }
+      numSelected={0}
+      onRequestSort={[Function]}
+      onResetTableCollaps={[MockFunction]}
+      onSelectAllClick={[Function]}
+      order="asc"
+      orderBy=""
+      rowCount={4}
+    />
+    <EnhancedGridBody
+      enableRowAction={false}
+      enableRowSelection={false}
+      getId={[MockFunction]}
+      getPages={[MockFunction]}
+      handleCheckChange={[Function]}
+      headCells={
+        Array [
+          Object {
+            "align": "left",
+            "field": "col1",
+            "label": "COL-1",
+            "type": "text",
+          },
+          Object {
+            "align": "left",
+            "field": "col2",
+            "label": "COL-2",
+            "type": "text",
+          },
+          Object {
+            "align": "left",
+            "field": "col3",
+            "label": "COL-3",
+            "type": "text",
+          },
+          Object {
+            "align": "left",
+            "field": "col4",
+            "label": "COL-4",
+            "type": "text",
+          },
+        ]
+      }
+      header={
+        Array [
+          Object {
+            "align": "left",
+            "field": "col1",
+            "label": "COL-1",
+            "type": "text",
+          },
+          Object {
+            "align": "left",
+            "field": "col2",
+            "label": "COL-2",
+            "type": "text",
+          },
+          Object {
+            "align": "left",
+            "field": "col3",
+            "label": "COL-3",
+            "type": "text",
+          },
+          Object {
+            "align": "left",
+            "field": "col4",
+            "label": "COL-4",
+            "type": "text",
+          },
+        ]
+      }
+      isLoading={false}
+      noDataMsg="Add New Data by clicking on the \\"Add\\" button."
+      onResetTableCollaps={[MockFunction]}
+      openDrawer={[MockFunction]}
+      order="asc"
+      orderBy=""
+      primaryKey="taxJurisdictionId"
+      resetCollaps={false}
+      rowActionOptions={Array []}
+      rows={
+        Array [
+          Object {
+            "col1": "row-1-col-1",
+            "col2": "row-1-col-2",
+            "col3": "row-1-col-3",
+            "col4": "row-1-col-4",
+          },
+          Object {
+            "col1": "row-2-col-1",
+            "col2": "row-2-col-2",
+            "col3": "row-2-col-3",
+            "col4": "row-2-col-4",
+          },
+          Object {
+            "col1": "row-3-col-1",
+            "col2": "row-3-col-2",
+            "col3": "row-3-col-3",
+            "col4": "row-3-col-4",
+          },
+          Object {
+            "col1": "row-4-col-1",
+            "col2": "row-4-col-2",
+            "col3": "row-4-col-3",
+            "col4": "row-4-col-4",
+          },
+        ]
+      }
+      searchTerm=""
+      selectedRows={Array []}
+    />
+  </ForwardRef(Table)>
+</ForwardRef(TableContainer)>
+`;

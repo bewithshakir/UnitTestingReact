@@ -111,6 +111,7 @@ const AddSalesTax: React.FC = () => {
 
     const onEditSaleTaxSuccess = ()=> {
         setAPIResponse(true);
+        isFormValidated(false);
         setFormStatus(formStatusProps.updated);
         setTimeout(() => {
             setAPIResponse(false);
@@ -154,6 +155,7 @@ const AddSalesTax: React.FC = () => {
 
     const onAddSalesTaxSuccess = () => {
         setAPIResponse(true);
+        isFormValidated(false);
         // setDisabled(true);
         setFormStatus(formStatusProps.success);
         // formik.resetForm({});
@@ -215,7 +217,7 @@ const AddSalesTax: React.FC = () => {
                     }
                 }
         } 
-        if (isFormFieldChange()) {
+        if (isFormFieldChange() && !formik.isSubmitting) {
             isFormValidated(true); 
         }
     };    
