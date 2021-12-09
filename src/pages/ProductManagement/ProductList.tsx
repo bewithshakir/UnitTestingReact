@@ -7,25 +7,23 @@ import ProductModel from "../../models/LotProductModel";
 import GridComponent from "../../components/UIComponents/DataGird/grid.component";
 import { Grid } from "@mui/material";
 import './ProductList.scss';
-interface props { 
-    searchTerm : string;
+interface props {
+    searchTerm: string;
     searchTermInputChange: (value: string) => void;
-    handleRowAction: (x:any) => void;
+    handleRowAction: (x: any) => void;
     productData: any[];
     isLoadingData: boolean;
     loadNextPage: boolean;
     reloadKey?: any
 }
 
-export default function ProductList(props : props) {
+export default function ProductList(props: props) {
     const ProductObj = new ProductModel();
     const headCells = ProductObj.fieldsToDisplay();
     const { t } = useTranslation();
-    // eslint-disable-next-line no-console
-    console.log('rendered product list');
 
     const openDrawer = (row: SyntheticEvent) => {
-       props.handleRowAction(row);
+        props.handleRowAction(row);
     };
 
     return (
