@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useInfiniteQuery, useMutation, useQuery } from "react-query";
 import { AxiosRequestConfig } from "axios";
 import axios from '../../infrastructure/ApiHelper';
