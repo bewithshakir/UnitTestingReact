@@ -11,7 +11,7 @@ import Input from '../../components/UIComponents/Input/Input';
 import Select from '../../components/UIComponents/Select/SingleSelect';
 import ToastMessage from '../../components/UIComponents/ToastMessage/ToastMessage.component'; 
 import {  formStatusObj } from './config';
-import { useGetProductTypes, useGetProductNames, useGetPricingModel, useCreateProduct } from './queries';
+import { useGetProductTypes, useGetProductNames, useGetLotProductDetails, useGetPricingModel, useCreateProduct } from './queries';
 import {  useShowConfirmationDialogBoxStore } from '../../store';
 import { AddProductValidationSchema } from './validation';
 interface FormStatusType {
@@ -23,16 +23,18 @@ interface FormStatusProps {
 }
 
 interface Props{
-    lotId: string
-    reloadSibling?: any
+    lotId: string;
+    reloadSibling?: any;
+    productId : string;
 }
 const formStatusProps: FormStatusProps = formStatusObj;
 
-export default function AddProduct({lotId ,reloadSibling}: Props) { 
+export default function AddProduct({ lotId, reloadSibling, productId}: Props) {
 
     const { t } = useTranslation();
     const history = useHistory();
     const isFormFieldChange = () => formik.dirty; 
+    const [productDetails, setProductDetails] = useState([]);
     const [productTypes, setProductTypes] = useState([]);
     const [pricingModelOptions, setPricingModelOptions] = useState([]);
     const [productNames, setProductNames] = useState([]);
@@ -148,6 +150,24 @@ export default function AddProduct({lotId ,reloadSibling}: Props) {
             setFormStatus(formStatusProps.error);
         }
     };
+
+    const onGetProductSuccess = (data: any) => {
+        if (data) {
+            setProductDetails(data);
+        }
+    };
+
+    const onGetProductError = () => {
+        // eslint-disable-next-line no-console
+        console.log('Error');
+    };
+
+    // eslint-disable-next-line no-console
+    console.log('data:', productDetails);
+
+    useGetLotProductDetails(lotId, productId, onGetProductSuccess, onGetProductError);
+
+
     const totalPrice = (Number(formik.values.manualPriceAmt ) || 0 )+  (Number(formik.values.addedPriceAmt )|| 0) - (Number(formik.values.discountPriceAmt )|| 0) ;
     const showActionButton = formik.values?.pricingModel?.label==="Custom";
     return (

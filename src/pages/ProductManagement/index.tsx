@@ -24,20 +24,18 @@ export default function ProductManagement() {
         setProductId(row.applicableProductId);
     };
 
-    // eslint-disable-next-line no-console
-    console.log('PID:', productId);
-
-    const { data, fetchNextPage, isLoading, isFetching }: any = useProductsByLotId(lotId, searchTerm);
+    
+    const { data: productListData, fetchNextPage, isLoading, isFetching }: any = useProductsByLotId(lotId, searchTerm);
 
     useEffect(() => {
-        if (data) {
+        if (productListData) {
             const list: any = [];
-            data?.pages?.forEach((item: any) => {
+            productListData?.pages?.forEach((item: any) => {
                 list.push(...item.data.lotProducts);
             });
             setProductList(list);
         }
-    }, [data]);
+    }, [productListData]);
 
     return (
         <Fragment>
@@ -55,7 +53,7 @@ export default function ProductManagement() {
                       />
                     </Grid>
                     <Grid item md={8} sm={12} xs={12} pl={4}>
-                        <AddProduct lotId={lotId} reloadSibling={reloadSibling}/>
+                        <AddProduct lotId={lotId} reloadSibling={reloadSibling} productId={productId}/>
                     </Grid>
                 </Grid>
             </Box>
