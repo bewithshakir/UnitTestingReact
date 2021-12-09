@@ -101,3 +101,23 @@ export const useCreateProduct = (parkingLotId: string,  onError:any, onSuccess:a
         retry: false,
     });
 };
+
+const getLotProductDetails = async (lotId: string, productId: string) => {
+    if (lotId != "" && typeof lotId != "undefined" && productId != "" && typeof productId != "undefined") {
+        const options: AxiosRequestConfig = {
+            method: 'get',
+            url: `/api/customer-service/lot/${lotId}/product/${productId}?countryCode=us`
+        };
+        const { data } = await axios(options);
+        return data;
+    }
+};
+
+export const useGetLotProductDetails = (lotId: string, productId: string, onSuccess: any, onError: any) => {
+    return useQuery(["getLotProductDetails", lotId, productId, onSuccess, onError],
+        () => getLotProductDetails(lotId, productId), {
+        onSuccess,
+        onError,
+        retry: false
+    });
+};
