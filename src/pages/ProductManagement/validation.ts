@@ -6,10 +6,10 @@ export const AddProductValidationSchema = Yup.object(
         productType: selectOption,
         masterProductName:selectOption,
         pricingModel: selectOption,
-        productName:  Yup.string(),
-        pricePerGallon: Yup.number().min(0),
-        addedPricePerGallon: Yup.number().min(0),
-        discountPerGallon:Yup.number().min(0),
+        productNm:  Yup.string().required(),
+        manualPriceAmt: Yup.number().min(0),
+        addedPriceAmt: Yup.number().min(0),
+        discountPriceAmt:Yup.number().min(0),
         timeSlot:selectOption
     }
 );
