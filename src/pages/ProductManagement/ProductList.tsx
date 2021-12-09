@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import { Fragment, SyntheticEvent } from 'react';
 import Search from '../../components/UIComponents/SearchInput/SearchInput';
 import { useTranslation } from "react-i18next";
 import { DeleteIcon } from '../../assets/icons';
@@ -10,6 +10,7 @@ import './ProductList.scss';
 interface props { 
     searchTerm : string;
     searchTermInputChange: (value: string) => void;
+    handleRowAction: (x:any) => void;
     productData: any[];
     isLoadingData: boolean;
     loadNextPage: boolean;
@@ -20,8 +21,13 @@ export default function ProductList(props : props) {
     const ProductObj = new ProductModel();
     const headCells = ProductObj.fieldsToDisplay();
     const { t } = useTranslation();
-// eslint-disable-next-line no-console
-console.log('rendered product list');
+    // eslint-disable-next-line no-console
+    console.log('rendered product list');
+
+    const openDrawer = (row: SyntheticEvent) => {
+       props.handleRowAction(row);
+    };
+
     return (
         <Fragment>
             <Grid container className="product-list">
@@ -44,11 +50,11 @@ console.log('rendered product list');
                 </Grid>
                 <Grid item xs={12} md={12} pb={5}>
                     <GridComponent
-                        primaryKey='productId'
+                        primaryKey='applicableProductId'
                         rows={ProductObj.dataModel(props.productData)}
                         header={headCells}
                         isLoading={props.isLoadingData}
-                        isChildTable
+                        openDrawer={openDrawer}
                         enableRowSelection
                         getPages={props.loadNextPage}
                         searchTerm={props.searchTerm}
