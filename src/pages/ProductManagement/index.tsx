@@ -24,8 +24,7 @@ export default function ProductManagement() {
         setProductId(row.applicableProductId);
     };
 
-    
-    const { data: productListData, fetchNextPage, isLoading, isFetching }: any = useProductsByLotId(lotId, searchTerm);
+    const { data:productListData, fetchNextPage, isLoading, isFetching }: any = useProductsByLotId(lotId, searchTerm, reloadKey);
 
     useEffect(() => {
         if (productListData) {
