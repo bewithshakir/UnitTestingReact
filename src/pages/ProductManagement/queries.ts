@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { useInfiniteQuery, useQuery } from "react-query";
+import { useInfiniteQuery, useMutation, useQuery } from "react-query";
 import { AxiosRequestConfig } from "axios";
 import axios from '../../infrastructure/ApiHelper';
 import { pageDataLimit } from "../../utils/constants";
@@ -75,7 +75,16 @@ export const useProductsByLotId = (lotId: string, searchTerm: string) => {
     });
 };
 
-export const addNewProduct = async (parkinglotId: string, payload:any)=>{ 
+interface IAddProductBody{
+    productId:string
+    pricingModelCd: string,
+    productNm:string
+    manualPriceAmt: number
+    addedPriceAmt:number
+    discountPriceAmt: number
+}
+
+const addNewProduct = async (parkinglotId: string, payload:IAddProductBody)=>{ 
     const options: AxiosRequestConfig = {
         method: 'post',
         url:`api/customer-service/lot/${parkinglotId}/product`,
@@ -83,4 +92,12 @@ export const addNewProduct = async (parkinglotId: string, payload:any)=>{
     };
     const { data } = await axios(options);
     return data;
+};
+
+export const useCreateProduct = (parkingLotId: string,  onError:any, onSuccess:any) => {
+    return useMutation(( payload: IAddProductBody)=> addNewProduct(parkingLotId, payload), {
+        onError,
+        onSuccess,
+        retry: false,
+    });
 };

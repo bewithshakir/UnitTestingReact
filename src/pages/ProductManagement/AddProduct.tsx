@@ -11,7 +11,7 @@ import Input from '../../components/UIComponents/Input/Input';
 import Select from '../../components/UIComponents/Select/SingleSelect';
 import ToastMessage from '../../components/UIComponents/ToastMessage/ToastMessage.component'; 
 import {  formStatusObj } from './config';
-import { useGetProductTypes, useGetProductNames, useGetPricingModel, addNewProduct } from './queries';
+import { useGetProductTypes, useGetProductNames, useGetPricingModel, useCreateProduct } from './queries';
 import {  useShowConfirmationDialogBoxStore } from '../../store';
 import { AddProductValidationSchema } from './validation';
 interface FormStatusType {
@@ -22,31 +22,13 @@ interface FormStatusProps {
     [key: string]: FormStatusType
 }
 
+interface Props{
+    lotId: string
+    reloadSibling?: any
+}
 const formStatusProps: FormStatusProps = formStatusObj;
 
-export default function AddProduct() {
-
-    //const just for api testing....
-    const lotId = 'ff126bdb-1d00-4eca-963c-28dc5b8e2e2e';
-    const initialValues = {
-        productType:{ label: "" , value: ""},
-        masterProductName:{ label: "" , value: ""},
-        pricingModel: { label: "" , value: ""},
-        productName: "",
-        pricePerGallon: "",
-        addedPricePerGallon: "",
-        discountPerGallon: "",
-        timeSlot:{ label: "" , value: ""},
-
-    };
-    const formik = useFormik({
-        initialValues,
-        validationSchema: AddProductValidationSchema,
-        onSubmit: (values) => {
-            createNewProduct(values);
-        },
-    });
-
+export default function AddProduct({lotId ,reloadSibling}: Props) { 
 
     const { t } = useTranslation();
     const history = useHistory();
@@ -56,23 +38,75 @@ export default function AddProduct() {
     const [productNames, setProductNames] = useState([]);
     const { data: pricingModelList } = useGetPricingModel();
     const { data: productTypeList } = useGetProductTypes();
-    const { data: productNamesList } = useGetProductNames(formik?.values?.productType?.value);
     const [formStatus, setFormStatus] = useState<FormStatusType>({ message: '', type: '' });
     const showDialogBox = useShowConfirmationDialogBoxStore((state) => state.showDialogBox); 
-    const [apiResposneState] = useState(false);
+    const hideDialogBox = useShowConfirmationDialogBoxStore((state) => state.hideDialogBox);
+
+    const resetFormFieldValue = useShowConfirmationDialogBoxStore((state) => state.resetFormFieldValue); 
+    const [formSuccess, setFormSuccess] = useState(false);
+    const [apiResposneState ,setAPIResponse] = useState(false); 
+
     const isDisabled =false;
     const isEditMode =false;
-    useEffect(() => {
-        if (pricingModelList?.data?.length) {
-            setPricingModelOptions(pricingModelList.data.map((obj: any) => ({ label: obj.pricingModelNm.trim(), value: obj.pricingModelCd.trim() })));
-        } 
-        if (productNamesList?.data?.length) {
-            setProductNames(productNamesList.data.map((obj: any) => ({ label: obj.productName.trim(), value: obj.productId.trim() })));
-        }
 
+    const initialValues = {
+        productType:{ label: "" , value: ""},
+        masterProductName:{ label: "" , value: ""},
+        pricingModel: { label: "" , value: ""},
+        productNm: "",
+        manualPriceAmt: 0,
+        addedPriceAmt: 0,
+        discountPriceAmt: 0,
+        timeSlot:{ label: "" , value: ""},
+
+    };
+    const formik = useFormik({
+        initialValues,
+        validationSchema: AddProductValidationSchema,
+        onSubmit: (values) => {
+            createNewProduct(values);
+        },
+        enableReinitialize: true
+    });
+
+    const { data: productNamesList } = useGetProductNames(formik?.values?.productType?.value);
+
+    const onAddProductError = (err: any) => {
+        resetFormFieldValue(false);  
+        const { data } = err.response;
+        setAPIResponse(true);
+        setFormStatus({ message: data?.error?.message || formStatusProps.error.message, type: 'Error' });
+        setTimeout(() => {
+            setAPIResponse(false);
+        }, 6000);
+         
+    };
+
+    const onAddProductSuccess = () => {
+        resetFormFieldValue(false);
+        hideDialogBox(false);
+        setAPIResponse(true);
+        setFormStatus(formStatusProps.success); 
+        setFormSuccess(true);
+        reloadSibling && reloadSibling(new Date());
+        setTimeout(() => {
+            setAPIResponse(false);
+        }, 6000);
+    };
+
+    const {mutate: addNewProduct} = useCreateProduct(lotId,onAddProductError, onAddProductSuccess);
+
+    useEffect(() => { 
         if (productTypeList?.data?.length) {
             setProductTypes(productTypeList.data.map((obj: any) => ({ label: obj.productClassNm.trim(), value: obj.productClassCd.trim() })));
-        }
+             if (productNamesList?.data?.length) {
+                setProductNames(productNamesList.data.map((obj: any) => ({ label: obj.productName.trim(), value: obj.productId.trim() })));
+                if (pricingModelList?.data?.length) {
+                  setPricingModelOptions(pricingModelList.data.map((obj: any) => ({ label: obj.pricingModelNm.trim(), value: obj.pricingModelCd.trim() })));
+                } 
+             } 
+            
+        }    
     }, [productTypeList, pricingModelList, productNamesList]);
  
     const disableSubmitBtn = () => {
@@ -100,14 +134,22 @@ export default function AddProduct() {
     };
  
  
-    const createNewProduct = (form: any) => {
+    const createNewProduct = (form: any) => { 
         try {
-            addNewProduct(lotId, form);
+            addNewProduct( {
+                productNm: form.productNm,
+                addedPriceAmt: form.addedPriceAmt,
+                discountPriceAmt: form.discountPriceAmt,
+                manualPriceAmt: form.manualPriceAmt,
+                productId: form.masterProductName?.value,
+                pricingModelCd: form.pricingModel?.value
+            });
         } catch (error) {
             setFormStatus(formStatusProps.error);
         }
     };
-
+    const totalPrice = (Number(formik.values.manualPriceAmt ) || 0 )+  (Number(formik.values.addedPriceAmt )|| 0) - (Number(formik.values.discountPriceAmt )|| 0) ;
+    const showActionButton = formik.values?.pricingModel?.label==="Custom";
     return (
         <FormikProvider value={formik}>
             <form onSubmit={formik.handleSubmit} className="productForm">
@@ -150,7 +192,7 @@ export default function AddProduct() {
                                 placeholder='Select one'
                                 items={productTypes}
                                 helperText={(formik.touched.productType && formik.errors.productType) ? formik.errors.productType.value : undefined}
-                                error={(formik.touched.productName && formik.errors.productName) ? true : false}
+                                error={(formik.touched.productType && formik.errors.productType) ? true : false}
                                 onChange={formik.setFieldValue}
                                 onBlur={() => { formik.setFieldTouched("productType"); formik.validateField("productType"); }}
                                 required
@@ -196,15 +238,15 @@ export default function AddProduct() {
                             <>
                             <Grid item lg={5} md={8} sm={8} xs={8} mx={4} my={1} >
                             <Input
-                                id='productName' 
+                                id='productNm' 
                                 label='Product Name'
                                 type='text'
                                 placeholder='Enter Product Name'
-                                helperText={(formik.touched.productName && formik.errors.productName) ? formik.errors.productName : undefined}
-                                error={(formik.touched.productName && formik.errors.productName) ? true : false}
+                                helperText={(formik.touched.productNm && formik.errors.productNm) ? formik.errors.productNm : undefined}
+                                error={(formik.touched.productNm && formik.errors.productNm) ? true : false}
                                 description=''
                                 required
-                                {...formik.getFieldProps('productName')}
+                                {...formik.getFieldProps('productNm')}
                                 disabled={isDisabled}
                             />
                         </Grid>
@@ -213,14 +255,14 @@ export default function AddProduct() {
                         </Grid>
                         <Grid item lg={5} md={8} sm={8} xs={8} mx={4} my={1} >
                             <Input
-                                id='pricePerGallon'
+                                id='manualPriceAmt'
                                 label='Price Per Gallon (Including TAX)'
                                 type='text'
-                                helperText={(formik.touched.pricePerGallon && formik.errors.pricePerGallon) ? formik.errors.pricePerGallon : undefined}
-                                error={(formik.touched.pricePerGallon && formik.errors.pricePerGallon) ? true : false}
+                                helperText={(formik.touched.manualPriceAmt && formik.errors.manualPriceAmt) ? formik.errors.manualPriceAmt : undefined}
+                                error={(formik.touched.manualPriceAmt && formik.errors.manualPriceAmt) ? true : false}
                                 description=''
                                 required
-                                {...formik.getFieldProps('pricePerGallon')}
+                                {...formik.getFieldProps('manualPriceAmt')}
                                 disabled={isDisabled}
                             />
                         </Grid>
@@ -228,25 +270,25 @@ export default function AddProduct() {
                         </Grid>
                         <Grid item lg={5} md={8} sm={8} xs={8} mx={4} my={1} >
                             <Input
-                                id='addedPricePerGallon'
+                                id='addedPriceAmt'
                                 label='Added Price Per Gallon (Optional)'
                                 type='text'
-                                helperText={(formik.touched.addedPricePerGallon && formik.errors.addedPricePerGallon) ? formik.errors.addedPricePerGallon : undefined}
-                                error={(formik.touched.addedPricePerGallon && formik.errors.addedPricePerGallon) ? true : false}
+                                helperText={(formik.touched.addedPriceAmt && formik.errors.addedPriceAmt) ? formik.errors.addedPriceAmt : undefined}
+                                error={(formik.touched.addedPriceAmt && formik.errors.addedPriceAmt) ? true : false}
                                 description='' 
-                                {...formik.getFieldProps('addedPricePerGallon')}
+                                {...formik.getFieldProps('addedPriceAmt')}
                                 disabled={isDisabled}
                             />
                         </Grid>
                         <Grid item lg={5} md={8} sm={8} xs={8} mx={4} my={1} >
                             <Input
-                                id='discountPerGallon'
+                                id='discountPriceAmt'
                                 label='Discount Per Gallon (Optional)'
                                 type='text'
-                                helperText={(formik.touched.discountPerGallon && formik.errors.discountPerGallon) ? formik.errors.discountPerGallon : undefined}
-                                error={(formik.touched.discountPerGallon && formik.errors.discountPerGallon) ? true : false}
+                                helperText={(formik.touched.discountPriceAmt && formik.errors.discountPriceAmt) ? formik.errors.discountPriceAmt : undefined}
+                                error={(formik.touched.discountPriceAmt && formik.errors.discountPriceAmt) ? true : false}
                                 description=''
-                                {...formik.getFieldProps('discountPerGallon')}
+                                {...formik.getFieldProps('discountPriceAmt')}
                                 disabled={isDisabled}
                             />
                         </Grid>
@@ -255,10 +297,8 @@ export default function AddProduct() {
                                 id='totalPrice'
                                 label='Total Price Per Gallon (Including TAx, Adder/Discount)'
                                 type='text'
-                                helperText={(formik.touched.discountPerGallon && formik.errors.discountPerGallon) ? formik.errors.discountPerGallon : undefined}
-                                error={(formik.touched.discountPerGallon && formik.errors.discountPerGallon) ? true : false}
                                 description=''
-                                {...formik.getFieldProps('discountPerGallon')}
+                                value={totalPrice}
                                 disabled={true}
                             />
                         </Grid>
@@ -288,12 +328,15 @@ export default function AddProduct() {
                         )}
                     </Grid>
                     <Grid item container lg={12} md={12} sm={12} xs={12} className="lastItem" >
+                        {showActionButton && (
+                            <>
                         <Grid item lg={5} md={8} sm={8} xs={8} mx={4} textAlign="right">
                             <Button
                                 types="cancel"
                                 aria-label="cancel"
                                 className="mr-4"
                                 onClick={onClickBack}
+                                disabled={formSuccess}
                             >
                                 {t("buttons.cancel")}
                             </Button>
@@ -311,6 +354,8 @@ export default function AddProduct() {
                             </Button>
                             <ToastMessage isOpen={apiResposneState} messageType={formStatus.type} onClose={() => { return ''; }} message={formStatus.message} />
                         </Grid>
+                            </>
+                        )}
                     </Grid>
                 </Grid>
             </form>

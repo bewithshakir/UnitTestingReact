@@ -15,7 +15,7 @@ export default function ProductManagement() {
 
     const customerId = useAddedCustomerIdStore((state) => state.customerId);
     const lotId = useAddedParkingLotIdStore((state) => state.parkingLotId);
-
+    const [reloadKey, reloadSibling]= useState(null);
     // eslint-disable-next-line no-console
     console.log('CID:', customerId, 'LID:', lotId);
 
@@ -42,10 +42,11 @@ export default function ProductManagement() {
                         productData={productList}
                         isLoadingData={isLoading || isFetching}
                         loadNextPage={fetchNextPage}
+                        reloadKey={reloadKey}
                       />
                     </Grid>
                     <Grid item md={8} sm={12} xs={12} pl={4}>
-                        <AddProduct />
+                        <AddProduct lotId={lotId} reloadSibling={reloadSibling}/>
                     </Grid>
                 </Grid>
             </Box>
