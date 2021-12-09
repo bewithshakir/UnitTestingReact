@@ -64,8 +64,8 @@ const getProductsByLotId = async (pageParam: number, lotId: string, searchTerm: 
         return data;
     }
 };
-export const useProductsByLotId = (lotId: string, searchTerm: string) => {
-    return useInfiniteQuery(["getProductsByLotId", lotId, searchTerm], ({ pageParam = 0 }) => getProductsByLotId(pageParam, lotId, searchTerm), {
+export const useProductsByLotId = (lotId: string, searchTerm: string, updateKey: null | string) => {
+    return useInfiniteQuery(["getProductsByLotId", lotId, searchTerm, updateKey], ({ pageParam = 0 }) => getProductsByLotId(pageParam, lotId, searchTerm), {
         getNextPageParam: (lastGroup: any) => {
             if (lastGroup.data.pagination.offset < lastGroup.data.pagination.totalCount) {
                 return lastGroup.data.pagination.offset + pageDataLimit;

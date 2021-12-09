@@ -50,7 +50,7 @@ export default function HorizontalBar (props: HorizontalBarProps) {
   const handleModelConfirm = () => {
     hideDialogBox(false);
     resetFormFieldValue(false);
-    if (pathname.includes('addLot') || pathname.includes('addFuelTax')) {
+    if (pathname.includes('addLot') || pathname.includes('viewLot') || pathname.includes('addFuelTax')) {
       history.goBack();
     }
     else if (pathname.includes('salesTax/add') || pathname.includes('salesTax/edit')) {
