@@ -116,7 +116,7 @@ const TaxLandingContent = memo(() => {
                 onClick={openFilterPanel}
                 startIcon={<FilterIcon />}
               >
-                Filter
+                {t("buttons.filter")}
               </Button>
             </Grid>
             <Grid item pr={2.5}>
@@ -186,7 +186,7 @@ const TaxLandingContent = memo(() => {
 
           <RightInfoPanel
             panelType="dynamic-filter"
-            open={isFilterPanelOpen} headingText={"Filters"}
+            open={isFilterPanelOpen} headingText={t('taxes.filterHeader')}
             provideFilterParams={getFilterParams}
             onClose={() => toggleFilterPanel(false)}
             fields={FilterByFields}

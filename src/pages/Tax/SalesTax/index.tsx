@@ -180,7 +180,7 @@ const SalesTaxLandingContent = memo(() => {
             noDataMsg='Add Tax by clicking on the "Add Tax" button.'
           />
           <RightInfoPanel panelType="dynamic-filter"
-            open={salesTaxFilterPanelVisible} headingText={"customer-filter-panel.header.filters"}
+            open={salesTaxFilterPanelVisible} headingText={t('taxes.filterHeader')}
             provideFilterParams={getFilterParams} onClose={handleSalesTaxFilterPanelClose}
             fields={filterByFields}
             storeKey={'salestaxFilter'}
