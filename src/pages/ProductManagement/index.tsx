@@ -24,7 +24,7 @@ export default function ProductManagement() {
         setProductId(row.applicableProductId);
     };
 
-    const { data:productListData, fetchNextPage, isLoading, isFetching }: any = useProductsByLotId(lotId, searchTerm, reloadKey);
+    const { data: productListData, fetchNextPage, isLoading, isFetching }: any = useProductsByLotId(lotId, searchTerm, reloadKey);
 
     useEffect(() => {
         if (productListData) {
@@ -40,19 +40,19 @@ export default function ProductManagement() {
         <Fragment>
             <Box display="flex" className='product-management'>
                 <Grid container direction="row">
-                <Grid item md={4} sm={12} xs={12} sx={{pt:3, pr:3}}>
-                      <ProductList 
-                        searchTerm={searchTerm}
-                        searchTermInputChange={onInputChange}
-                        productData={productList}
-                        isLoadingData={isLoading || isFetching}
-                        loadNextPage={fetchNextPage}
-                        reloadKey={reloadKey}
-                        handleRowAction={getProductId}
-                      />
+                    <Grid item md={4} sm={12} xs={12} sx={{ pt: 3, pr: 3 }}>
+                        <ProductList
+                            searchTerm={searchTerm}
+                            searchTermInputChange={onInputChange}
+                            productData={productList}
+                            isLoadingData={isLoading || isFetching}
+                            loadNextPage={fetchNextPage}
+                            reloadKey={reloadKey}
+                            handleRowAction={getProductId}
+                        />
                     </Grid>
                     <Grid item md={8} sm={12} xs={12} p={3} className="masterRightLayout">
-                        <AddProduct lotId={lotId} reloadSibling={reloadSibling} productId={productId} disableAddEditButton={productList.length===0}/>
+                        <AddProduct lotId={lotId} reloadSibling={reloadSibling} productId={productId} disableAddEditButton={productList.length === 0} />
                     </Grid>
                 </Grid>
             </Box>

@@ -154,12 +154,8 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
 
     const onGetProductSuccess = (data: any) => {
         if (data) {
-            // eslint-disable-next-line no-console
-            console.log('got product', data);
             if (data?.data?.lotProduct) {
                 const lotProduct = data.data.lotProduct;
-                // eslint-disable-next-line no-console
-                console.log('got lotProduct', lotProduct);
                 formik.setFieldValue('productType', { label: lotProduct?.productType?.productClassNm, value: lotProduct?.productType?.productClassCd });
                 formik.setFieldValue('masterProductName', { label: lotProduct?.masterProduct?.productName, value: lotProduct?.masterProduct?.productId });
                 formik.setFieldValue('pricingModel', { label: lotProduct?.pricingModel?.pricingModelNm, value: lotProduct?.pricingModel?.pricingModelCd });
