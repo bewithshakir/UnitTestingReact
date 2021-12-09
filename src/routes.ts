@@ -34,13 +34,13 @@ export const routes = [
       {
         path: "/customer/:customerId/parkingLots/addLot",
         component: lazy(() => import('./pages/ParkingLot/AddLot/AddLotWrapper')),
-        exact: false,
+        exact: true,
         version: 'Breadcrumbs-Many'
       },
       {
         path: "/customer/:customerId/parkingLots/viewLot/:parkinglotId",
         component: lazy(() => import('./pages/ParkingLot/AddLot/AddLotWrapper')),
-        exact: false,
+        exact: true,
         version: 'Breadcrumbs-Many'
       }
     ]

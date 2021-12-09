@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable no-console */
 import React, { SyntheticEvent, useEffect } from "react";
 import { Button } from "../../components/UIComponents/Button/Button.component";
 import { useTranslation } from "react-i18next";
@@ -21,7 +20,6 @@ import ParkingLotModel from "../../models/ParkingLotModel";
 import { DataGridActionsMenuOption } from "../../components/UIComponents/Menu/DataGridActionsMenu.component";
 import { ParkingLotNoDataIcon } from '../../assets/icons';
 import { getSeachedDataTotalCount } from "../../utils/helperFunctions";
-
 interface ContentProps {
   rows?: [];
   version: string
@@ -34,7 +32,6 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
   const massActionOptions = ParkingLotObj.massActions();
   const ACTION_TYPES = ParkingLotObj.ACTION_TYPES;
   const MASS_ACTION_TYPES = ParkingLotObj.MASS_ACTION_TYPES;
-
   const history = useHistory();
   const [info, setInfo] = React.useState({});
   const [searchTerm, setSearchTerm] = React.useState("");
@@ -48,7 +45,6 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
   const [infoPanelName, setInfoPanelName] = React.useState('');
   const [infoPanelEditId, setInfoPanelEditId] = React.useState('');
 
-
   const { t } = useTranslation();
   const { data, fetchNextPage, isFetching, isLoading }: any = useGetParkingLotDetails(
     searchTerm,
@@ -61,18 +57,16 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
   const setPageCustomerName = useAddedCustomerNameStore((state) => state.setCustomerName);
   const resetFormFieldValue = useShowConfirmationDialogBoxStore((state) => state.resetFormFieldValue);
 
+  
   useEffect(() => {
     const statePL = history.location.state as { customerName: string };
-
     resetFormFieldValue(false);
-
-    setPageCustomerName(statePL.customerName);
-
-
+    if(statePL) {
+      setPageCustomerName(statePL.customerName);
+    } 
   });
 
   const createInfoObjForRightInfoPanel = (row: any) => {
-    console.log(row);
     setInfoPanelEditId(row.deliveryLocationId);
     setInfoPanelName(row.deliveryLocationNm);
     const infoObj = {
@@ -160,10 +154,11 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
     setResetTableCollaps(true);
   };
 
-  const handleRowAction = (action: DataGridActionsMenuOption) => {
+  const handleRowAction = (action: DataGridActionsMenuOption, row: any) => {
     switch (action.action) {
       case ACTION_TYPES.EDIT:
         // perform action 
+        history.push(`/customer/${customerId}/parkingLots/viewLot/${row.deliveryLocationId}`);
         break;
       case ACTION_TYPES.DELETE:
         // perform action

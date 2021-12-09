@@ -19,7 +19,7 @@ import { formStatusObj, timeZones, productDelFreq, getCountry} from '../../confi
 import MultiSelect from '../../../../components/UIComponents/Select/MultiSelect';
 import { DatePickerInput } from '../../../../components/UIComponents/DatePickerInput/DatePickerInput.component';
 import { TimePicker } from '../../../../components/UIComponents/TimePicker/TimePicker.component';
-import { useAddedCustomerIdStore, useAddedParkingLotIdStore, useShowConfirmationDialogBoxStore } from '../../../../store';
+import { useAddedCustomerIdStore, useAddedCustomerNameStore, useAddedParkingLotIdStore, useShowConfirmationDialogBoxStore } from '../../../../store';
 import './AddLotForm.style.scss';
 interface FormStatusType {
     message: string
@@ -56,6 +56,8 @@ function AddLotForm(): React.ReactElement {
     const [isSavCancelShown, setSaveCancelShown] = useState(true);
     const [activeLotId, setActiveLotId] = React.useState("");
     const addedLotId = useAddedParkingLotIdStore((state) => state.parkingLotId);
+    const setPageCustomerName = useAddedCustomerNameStore((state) => state.setCustomerName);
+    const selectedCustomerName = useAddedCustomerNameStore((state) => state.customerName);
 
     const onAddLotError = (err: any) => {
         resetFormFieldValue(false);
@@ -76,11 +78,16 @@ function AddLotForm(): React.ReactElement {
         resetFormFieldValue(false);
         hideDialogBox(false);
         setAPIResponse(true);
+        isFormValidated(false);
         setFormStatus(formStatusProps.success);
-        setActiveLotId(data?.lot?.deliveryLocationId.toString());
+        setEditShown(true);
+        setSaveCancelShown(false);
+        setDisabled(true);
+        setActiveLotId(data?.data?.deliveryLocationId.toString());
         setFormSuccess(true);
         setTimeout(() => {
             setAPIResponse(false);
+            history.push(`/customer/${addedCustomerId}/parkingLots/viewLot/${data?.data?.deliveryLocationId.toString()}`);
         }, 6000);
     };
 
@@ -119,6 +126,7 @@ function AddLotForm(): React.ReactElement {
     const onGetLotSuccess = (data: any) => {
         if (data) {
             populateDataInAllFields(data);
+            setPageCustomerName(data?.data?.lot?.customerName);
         }
     };
 
@@ -176,6 +184,7 @@ function AddLotForm(): React.ReactElement {
             setSaveCancelShown(false);
             setParkingLotIdCreated(selectedLotId);
         } else {
+            setPageCustomerName(selectedCustomerName);
             setEditShown(false);
             setSaveCancelShown(true);
         }
@@ -185,7 +194,13 @@ function AddLotForm(): React.ReactElement {
         if (isFormFieldChange()) {
             showDialogBox(true);
         } else {
-            history.push('/customer/parkingLots');
+            history.push({
+                pathname: `/customer/${addedCustomerId}/parkingLots`,
+                state: {
+                    customerId: addedCustomerId,
+                    customerName: selectedCustomerName
+                }
+            });
         }
     };
 

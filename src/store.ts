@@ -38,7 +38,7 @@ export interface addedParkingLotIdState {
   setParkingLotId: (...args: any) => void,
   removeParkingLotId: (...args: any) => void,
 }
-interface addedCustomerNameState {
+export interface addedCustomerNameState {
   customerName: string,
   setCustomerName: (...args: any) => void,
   removeCustomerName: (...args: any) => void,
@@ -97,10 +97,13 @@ export const useAddedParkingLotIdStore = create<addedParkingLotIdState>(persist(
     name: 'parkingLotId'
   }));
 
-export const useAddedCustomerNameStore = create<addedCustomerNameState>((set) => ({
+export const useAddedCustomerNameStore = create<addedCustomerNameState>(persist((set) => ({
   customerName: '',
   setCustomerName: (customerName: string) => set(() => ({ customerName })),
   removeCustomerName: () => set(() => ({ customerName: '' })),
+}),
+{
+  name: 'customerName'
 }));
 
 export const useShowConfirmationDialogBoxStore = create<showConfirmationDialogBox>((set) => ({
