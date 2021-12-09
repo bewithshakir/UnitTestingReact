@@ -106,6 +106,9 @@
     "fileuploaddialog": {
       "title": "Error in File Upload",
       "content": "The file name you are trying to upload is already exists. Do you want to overwrite the file ?"
+    },
+    "form": {
+      "customerTitleAdd": "Add Customer"
     }
   },
   "parkingLot": {
@@ -148,6 +151,9 @@
         "state": "State",
         "city": "City",
         "settlement type": "Settlement Type"
+      },
+      "form": {
+        "fuelTaxTitleAdd": "Add Fuel Tax"
       }
     },
     "salesTax": {
