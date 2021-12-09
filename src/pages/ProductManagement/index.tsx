@@ -6,11 +6,6 @@ import ProductList from './ProductList';
 import { useProductsByLotId } from './queries';
 import { useAddedCustomerIdStore, useAddedParkingLotIdStore } from '../../store';
 
-
-// interface props {
-
-// }
-
 export default function ProductManagement() {
     const [productList, setProductList] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");

@@ -7,8 +7,6 @@ import ProductModel from "../../models/LotProductModel";
 import GridComponent from "../../components/UIComponents/DataGird/grid.component";
 import { Grid } from "@mui/material";
 import './ProductList.scss';
-
-
 interface props { 
     searchTerm : string;
     searchTermInputChange: (value: string) => void;
@@ -17,13 +15,10 @@ interface props {
     loadNextPage: boolean;
 }
 
-
 export default function ProductList(props : props) {
     const ProductObj = new ProductModel();
     const headCells = ProductObj.fieldsToDisplay();
     const { t } = useTranslation();
-   
-    
 
     return (
         <Fragment>
@@ -41,7 +36,6 @@ export default function ProductList(props : props) {
                     <Button
                         types="delete2"
                         aria-label="delete"
-                        //onClick={() => { }}
                         startIcon={<DeleteIcon />}
                     >
                     </Button>

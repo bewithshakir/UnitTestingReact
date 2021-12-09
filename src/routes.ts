@@ -52,13 +52,6 @@ export const routes = [
     exact: false
   },
   {
-    // remove this (only for testing)
-    path: "/masterLayout",
-    component: lazy(() => import('./pages/ProductManagement/index')),
-    exact: true,
-    version: "NavLinks",
-  },
-  {
     path: "/addFuelTax",
     version: "Breadcrumbs-Single",
     component: lazy(() => import('./pages/AddFuelTax')),

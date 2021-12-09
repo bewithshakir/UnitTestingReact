@@ -74,3 +74,13 @@ export const useProductsByLotId = (lotId: string, searchTerm: string) => {
         keepPreviousData: true
     });
 };
+
+export const addNewProduct = async (parkinglotId: string, payload:any)=>{ 
+    const options: AxiosRequestConfig = {
+        method: 'post',
+        url:`api/customer-service/lot/${parkinglotId}/product`,
+        data: payload,
+    };
+    const { data } = await axios(options);
+    return data;
+};
