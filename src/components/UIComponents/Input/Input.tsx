@@ -16,7 +16,7 @@ interface props {
   multiline?: boolean;
   type?: string;
   error?: boolean;
-  value?: string;
+  value?: string | number;
   helperText?: string
   onChange?: (...args: any[]) => void;
   onBlur?: (...args: any[]) => void;

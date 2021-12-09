@@ -1,5 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import { useInfiniteQuery, useQuery } from "react-query";
+import { useInfiniteQuery, useMutation, useQuery } from "react-query";
 import { AxiosRequestConfig } from "axios";
 import axios from '../../infrastructure/ApiHelper';
 import { pageDataLimit } from "../../utils/constants";
@@ -64,8 +63,8 @@ const getProductsByLotId = async (pageParam: number, lotId: string, searchTerm: 
         return data;
     }
 };
-export const useProductsByLotId = (lotId: string, searchTerm: string) => {
-    return useInfiniteQuery(["getProductsByLotId", lotId, searchTerm], ({ pageParam = 0 }) => getProductsByLotId(pageParam, lotId, searchTerm), {
+export const useProductsByLotId = (lotId: string, searchTerm: string, updateKey: null | string) => {
+    return useInfiniteQuery(["getProductsByLotId", lotId, searchTerm, updateKey], ({ pageParam = 0 }) => getProductsByLotId(pageParam, lotId, searchTerm), {
         getNextPageParam: (lastGroup: any) => {
             if (lastGroup.data.pagination.offset < lastGroup.data.pagination.totalCount) {
                 return lastGroup.data.pagination.offset + pageDataLimit;
@@ -75,7 +74,16 @@ export const useProductsByLotId = (lotId: string, searchTerm: string) => {
     });
 };
 
-export const addNewProduct = async (parkinglotId: string, payload:any)=>{ 
+interface IAddProductBody{
+    productId:string
+    pricingModelCd: string,
+    productNm:string
+    manualPriceAmt: number
+    addedPriceAmt:number
+    discountPriceAmt: number
+}
+
+const addNewProduct = async (parkinglotId: string, payload:IAddProductBody)=>{ 
     const options: AxiosRequestConfig = {
         method: 'post',
         url:`api/customer-service/lot/${parkinglotId}/product`,
@@ -83,4 +91,32 @@ export const addNewProduct = async (parkinglotId: string, payload:any)=>{
     };
     const { data } = await axios(options);
     return data;
+};
+
+export const useCreateProduct = (parkingLotId: string,  onError:any, onSuccess:any) => {
+    return useMutation(( payload: IAddProductBody)=> addNewProduct(parkingLotId, payload), {
+        onError,
+        onSuccess,
+        retry: false,
+    });
+};
+
+const getLotProductDetails = async (lotId: string, productId: string) => {
+    if (lotId != "" && typeof lotId != "undefined" && productId != "" && typeof productId != "undefined") {
+        const options: AxiosRequestConfig = {
+            method: 'get',
+            url: `/api/customer-service/lot/${lotId}/product/${productId}?countryCode=us`
+        };
+        const { data } = await axios(options);
+        return data;
+    }
+};
+
+export const useGetLotProductDetails = (lotId: string, productId: string, onSuccess: any, onError: any) => {
+    return useQuery(["getLotProductDetails", lotId, productId, onSuccess, onError],
+        () => getLotProductDetails(lotId, productId), {
+        onSuccess,
+        onError,
+        retry: false
+    });
 };
