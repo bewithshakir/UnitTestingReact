@@ -4,6 +4,7 @@ import { Box, Grid } from '@mui/material';
 import "./ProductManagement.scss";
 import ProductList from './ProductList';
 import { useProductsByLotId } from './queries';
+import { useAddedCustomerIdStore, useAddedParkingLotIdStore } from '../../store';
 
 
 // interface props {
@@ -17,8 +18,11 @@ export default function ProductManagement() {
         setSearchTerm(value);
     };
 
-    //const just for api testing....
-    const lotId = 'ff126bdb-1d00-4eca-963c-28dc5b8e2e2e';
+    const customerId = useAddedCustomerIdStore((state) => state.customerId);
+    const lotId = useAddedParkingLotIdStore((state) => state.parkingLotId);
+
+    // eslint-disable-next-line no-console
+    console.log('CID:', customerId, 'LID:', lotId);
 
     const { data, fetchNextPage, isLoading, isFetching }: any = useProductsByLotId(lotId, searchTerm);
 

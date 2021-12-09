@@ -11,7 +11,7 @@ const customerOnboarding = memo(() => {
     const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
     setVersion("Breadcrumbs-Single");
     const { pathname } = useLocation();
-    const dis = pathname.includes("addLot");
+    const dis = pathname.includes("addLot") || pathname.includes("viewLot");
     const getRoutes = () => routes.map((route, index) => {
         const subRoutes = route?.routes;
         return subRoutes?.map(subRoute => {

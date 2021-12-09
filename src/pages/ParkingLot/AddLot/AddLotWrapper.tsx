@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useLocation } from 'react-router-dom';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
@@ -48,12 +49,16 @@ const TabPanel = (props: TabPanelProps) => {
 
 
 const AddLotWrapper: React.FC<MenuProps> = () => {
+    const { pathname } = useLocation();
+    const check = pathname.includes('viewLot');
     const [value, setValue] = React.useState(0);
     const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
     setVersion("Breadcrumbs-Many");
 
     const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+        if(check){
         setValue(newValue);
+        }
     };
 
     return (
@@ -75,7 +80,7 @@ const AddLotWrapper: React.FC<MenuProps> = () => {
                     <AddLotForm />
                 </TabPanel>
                 <TabPanel value={value} index={1}>
-                    <ProductManagement/>       
+                    {check && (<ProductManagement />  )}
                 </TabPanel>
                 <TabPanel value={value} index={2}>
 

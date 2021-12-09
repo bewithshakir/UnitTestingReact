@@ -80,16 +80,15 @@ export default function AddProduct() {
     // const hideDialogBox = useShowConfirmationDialogBoxStore((state) => state.hideDialogBox);
 
     useEffect(() => {
-        if (pricingModelList?.data.length) {
+        if (pricingModelList?.data?.length) {
             setPricingModelOptions(pricingModelList.data.map((obj: any) => ({ label: obj.pricingModelNm.trim(), value: obj.pricingModelCd.trim() })));
         }
-        // eslint-disable-next-line no-console
-        console.log('Pr', productNamesList);
-        if (productNamesList?.data.length) {
+    
+        if (productNamesList?.data?.length) {
             setProductNames(productNamesList.data.map((obj: any) => ({ label: obj.productName.trim(), value: obj.productId.trim() })));
         }
 
-        if (productTypeList?.data.length) {
+        if (productTypeList?.data?.length) {
             setProductTypes(productTypeList.data.map((obj: any) => ({ label: obj.productClassNm.trim(), value: obj.productClassCd.trim() })));
         }
     }, [productTypeList, pricingModelList, productNamesList]);
