@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable no-console */
 import React, { SyntheticEvent, useEffect } from "react";
 import { Button } from "../../components/UIComponents/Button/Button.component";
 import { useTranslation } from "react-i18next";
@@ -16,12 +15,11 @@ import { useHistory } from "react-router-dom";
 import { filterByFields, sortByOptions } from "./config";
 import { RightInfoPanel } from "../../components/UIComponents/RightInfoPanel/RightInfoPanel.component";
 import { Box, FormControl, Grid, Typography } from "@mui/material";
-import { HorizontalBarVersionState, addedCustomerIdState, useStore, useAddedCustomerIdStore, useShowConfirmationDialogBoxStore, useAddedCustomerNameStore, addedCustomerNameState } from "../../store";
+import { HorizontalBarVersionState, addedCustomerIdState, useStore, useAddedCustomerIdStore, useShowConfirmationDialogBoxStore, useAddedCustomerNameStore } from "../../store";
 import ParkingLotModel from "../../models/ParkingLotModel";
 import { DataGridActionsMenuOption } from "../../components/UIComponents/Menu/DataGridActionsMenu.component";
 import { ParkingLotNoDataIcon } from '../../assets/icons';
 import { getSeachedDataTotalCount } from "../../utils/helperFunctions";
-
 interface ContentProps {
   rows?: [];
   version: string
@@ -44,8 +42,6 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
   const [custFilterPanelVisible, setCustFilterPanelVisible] = React.useState(false);
   const [parkingLotlist, setParkingLotList] = React.useState([]);
   const customerId = useAddedCustomerIdStore((state: addedCustomerIdState) => state.customerId);
-  const selectedCustomerName = useAddedCustomerNameStore((state) => state.customerName);
-
   const [infoPanelName, setInfoPanelName] = React.useState('');
   const [infoPanelEditId, setInfoPanelEditId] = React.useState('');
 
@@ -61,6 +57,7 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
   const setPageCustomerName = useAddedCustomerNameStore((state) => state.setCustomerName);
   const resetFormFieldValue = useShowConfirmationDialogBoxStore((state) => state.resetFormFieldValue);
 
+  
   useEffect(() => {
     const statePL = history.location.state as { customerName: string };
     resetFormFieldValue(false);
@@ -104,13 +101,6 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
 
   const navigateToAddLot = () => {
     history.push(`/customer/${customerId}/parkingLots/addLot`);
-    // history.push({
-    //   pathname: `/customer/${customerId}/parkingLots/addLot`,
-    //   state: {
-    //     customerId: customerId,
-    //     customerName: selectedCustomerName
-    //   }
-    // });
   };
 
   const onSortBySelected = (value: string) => {

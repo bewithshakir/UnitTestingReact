@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 /* eslint-disable no-empty */
 import React, { useState, useEffect } from 'react';
 import { FieldArray, FormikProvider, useFormik } from 'formik';
@@ -185,7 +184,6 @@ function AddLotForm(): React.ReactElement {
             setSaveCancelShown(false);
             setParkingLotIdCreated(selectedLotId);
         } else {
-            console.log(selectedCustomerName);
             setPageCustomerName(selectedCustomerName);
             setEditShown(false);
             setSaveCancelShown(true);

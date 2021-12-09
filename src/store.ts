@@ -97,10 +97,13 @@ export const useAddedParkingLotIdStore = create<addedParkingLotIdState>(persist(
     name: 'parkingLotId'
   }));
 
-export const useAddedCustomerNameStore = create<addedCustomerNameState>((set) => ({
+export const useAddedCustomerNameStore = create<addedCustomerNameState>(persist((set) => ({
   customerName: '',
   setCustomerName: (customerName: string) => set(() => ({ customerName })),
   removeCustomerName: () => set(() => ({ customerName: '' })),
+}),
+{
+  name: 'customerName'
 }));
 
 export const useShowConfirmationDialogBoxStore = create<showConfirmationDialogBox>((set) => ({
