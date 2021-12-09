@@ -27,7 +27,7 @@ export default function ProductManagement() {
     // eslint-disable-next-line no-console
     console.log('PID:', productId);
 
-    const { data, fetchNextPage, isLoading, isFetching }: any = useProductsByLotId(lotId, searchTerm);
+    const { data, fetchNextPage, isLoading, isFetching }: any = useProductsByLotId(lotId, searchTerm, reloadKey);
 
     useEffect(() => {
         if (data) {
