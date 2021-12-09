@@ -6,6 +6,7 @@ import useDebounce from '../../../utils/useDebounce';
 interface props {
     id?: string;
     name?: string;
+    width?: number | string;
     value?: string | number;
     placeholder?: string;
     classes?: any;
@@ -33,6 +34,7 @@ export default function SearchInput(props: props) {
             className='searchinput'
             id={props.id}
             name={props.name}
+            style={{ width: props.width }}
             value={value}
             inputProps={{ 'aria-label': 'search' }}
             placeholder={props.placeholder}
@@ -52,6 +54,7 @@ export default function SearchInput(props: props) {
 }
 
 SearchInput.defaultProps = {
+    width: '100%',
     id: "SearchInput",
     placeholder: 'Search',
     type: 'text',

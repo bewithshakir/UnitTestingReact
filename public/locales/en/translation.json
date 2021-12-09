@@ -167,5 +167,8 @@
         "labelLocalRate": "Local rate"
       }
     }
+  },
+  "productManagement": {
+    "search": "Search"
   }
 }
