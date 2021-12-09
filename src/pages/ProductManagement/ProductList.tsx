@@ -21,8 +21,6 @@ export default function ProductList(props : props) {
     const ProductObj = new ProductModel();
     const headCells = ProductObj.fieldsToDisplay();
     const { t } = useTranslation();
-    // eslint-disable-next-line no-console
-    console.log('rendered product list');
 
     const openDrawer = (row: SyntheticEvent) => {
        props.handleRowAction(row);
