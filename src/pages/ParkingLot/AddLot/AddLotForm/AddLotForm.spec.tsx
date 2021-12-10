@@ -11,6 +11,7 @@ jest.mock("react-router-dom", () => ({
 }));
 
 beforeAll(() => {
+    
     jest.useFakeTimers('modern');
     jest.setSystemTime(new Date(1638338756741));
 });
