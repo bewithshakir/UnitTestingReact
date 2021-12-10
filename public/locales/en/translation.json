@@ -30,7 +30,8 @@
     "sort by": "Sort by",
     "add lot": "Add Lot",
     "add tax": "Add Tax",
-    "browse": "Browse"
+    "browse": "Browse",
+    "filter": "Filters"
   },
   "menus": {
     "sortby": {
@@ -48,7 +49,9 @@
       "edit": "Edit",
       "delete": "Delete",
       "other details": "Other details",
-      "contact details": "Contact details"
+      "contact details": "Contact details",
+      "raiseRequset": "Raise a request",
+      "feeDetails": "Fee & Driver details"
     },
     "profile-actions": {
       "profile": "Profile",
@@ -72,7 +75,7 @@
   },
   "customer-filter-panel": {
     "header": {
-      "filters": "Filters"
+      "filter": "Filter"
     },
     "state": "State",
     "city": "City",
@@ -103,11 +106,14 @@
     "fileuploaddialog": {
       "title": "Error in File Upload",
       "content": "The file name you are trying to upload is already exists. Do you want to overwrite the file ?"
+    },
+    "form": {
+      "customerTitleAdd": "Add Customer"
     }
   },
   "parkingLot": {
     "header": {
-      "filters": "Filters"
+      "filter": "Filter"
     },
     "search": "Parking Lot Name",
     "results found": "results found",
@@ -125,6 +131,7 @@
     }
   },
   "taxes": {
+    "filterHeader":"Filters",
     "navBar": {
       "fuelTax": "Fuel Tax",
       "salesTax": "Sales Tax",
@@ -144,6 +151,9 @@
         "state": "State",
         "city": "City",
         "settlement type": "Settlement Type"
+      },
+      "form": {
+        "fuelTaxTitleAdd": "Add Fuel Tax"
       }
     },
     "salesTax": {
@@ -151,7 +161,21 @@
         "cityname_atoz": "City Name A-Z",
         "cityname_ztoa": "City Name Z-A"
       },
-      "city": "City"
+      "city": "City",
+      "form": {
+        "titleAdd": "Add Sales Tax",
+        "titleEdit": "Edit Sales Tax",
+        "title": "Fill all the mandatory fields",
+        "labelLocation": "Search Location",
+        "labelCity": "City",
+        "labelState": "State",
+        "labelStateRate": "State rate",
+        "labelFederalRate": "Federal rate",
+        "labelLocalRate": "Local rate"
+      }
     }
+  },
+  "productManagement": {
+    "search": "Search"
   }
 }

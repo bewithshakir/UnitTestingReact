@@ -41,10 +41,13 @@ interface GridComponentProps {
     enableRowSelection?: boolean,
     enableRowAction?: boolean,
     getId?: any,
+    resetCollaps?: boolean,
+    onResetTableCollaps?: (value: boolean) => void;
     InnerTableComponent?: any,
     searchTerm?: string,
     noDataMsg?: string,
     showImg?: React.ReactNode | undefined,
+    showInnerTableMenu?: boolean
 }
 
 
@@ -61,10 +64,10 @@ const GridComponent: React.FC<GridComponentProps> = (props) => {
     };
 
     const handleTableScroll = (event: any) => {
-            const bottomValue = event.target.scrollHeight - event.target.scrollTop;
-            if ((bottomValue - event.target.clientHeight) <= 0 && props.rows.length >= pageDataLimit) {
-                props.getPages();
-            }
+        const bottomValue = event.target.scrollHeight - event.target.scrollTop;
+        if ((bottomValue - event.target.clientHeight) <= 0 && props.rows.length >= pageDataLimit) {
+            props.getPages();
+        }
     };
 
 
@@ -111,6 +114,7 @@ const GridComponent: React.FC<GridComponentProps> = (props) => {
                     enableRowAction={enableRowAction}
                     onRequestSort={handleRequestSort}
                     onSelectAllClick={handleSelectAllClick}
+                    onResetTableCollaps={props.onResetTableCollaps}
                     numSelected={selected.length}
                     rowCount={rows.length}
                 />

@@ -16,38 +16,30 @@ import { DataGridActionsMenuOption } from '../../components/UIComponents/Menu/Da
 import { FuelTax, MASS_ACTION_TYPES } from './config';
 import { RightInfoPanel } from '../../components/UIComponents/RightInfoPanel/RightInfoPanel.component';
 import { getSeachedDataTotalCount } from '../../utils/helperFunctions';
+import Table from './SubTableFuelProduct';
 
 const TaxLandingContent = memo(() => {
+  const TaxObj = new TaxModel();
+  const headCells = TaxObj.fieldsToDisplay();
+  const headCellsLots = TaxObj.fieldsToDisplayLotTable();
+  const massActionOptions = TaxObj.massActions();
+  const rowActionOptions = TaxObj.rowActions();
+  const { SortByOptions, FilterByFields } = FuelTax.LandingPage;
+
+  const history = useHistory();
   const [searchTerm, setSearchTerm] = React.useState("");
+  const [resetTableCollaps, setResetTableCollaps] = React.useState(false);
   const [filterData, setFilterData] = React.useState<{ [key: string]: string[] }>({});
   const [isFilterPanelOpen, toggleFilterPanel] = React.useState(false);
   const [sortOrder, setSortOrder] = React.useState<{ sortBy: string, order: string }>({ sortBy: "", order: "" });
+  const [fuelTaxList, setFuelTaxList] = React.useState([]);
+  const [fuelTaxProductId, setFuelTaxProductId] = React.useState('');
+
+
   const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
   setVersion("NavLinks");
+
   const { t } = useTranslation();
-  const history = useHistory();
-  const TaxObj = new TaxModel();
-  const massActionOptions = TaxObj.massActions();
-  const [fuelTaxList, setFuelTaxList] = React.useState([]);
-  const headCells = TaxObj.fieldsToDisplay();
-  const { SortByOptions, FilterByFields } = FuelTax.LandingPage;
-  const onInputChange = (value: string) => {
-    setSearchTerm(value);
-  };
-
-  const navigateHomePage = () => {
-    history.push("/addFuelTax");
-  };
-
-  const handleMassAction = (action: DataGridActionsMenuOption) => {
-    switch (action.action) {
-      case MASS_ACTION_TYPES.EXPORT:
-        // perform action
-        break;
-      default: return;
-    }
-  };
-
   const { data, fetchNextPage, isLoading, isFetching }: any = useFuelTaxList(
     searchTerm,
     sortOrder,
@@ -64,6 +56,24 @@ const TaxLandingContent = memo(() => {
     }
   }, [data]);
 
+  const onInputChange = (value: string) => {
+    setResetTableCollaps(true);
+    setSearchTerm(value);
+  };
+
+  const navigateHomePage = () => {
+    history.push("/addFuelTax");
+  };
+
+  const handleMassAction = (action: DataGridActionsMenuOption) => {
+    switch (action.action) {
+      case MASS_ACTION_TYPES.EXPORT:
+        // perform action
+        break;
+      default: return;
+    }
+    setResetTableCollaps(true);
+  };
   const openDrawer = () => {
     // TODO
   };
@@ -81,6 +91,7 @@ const TaxLandingContent = memo(() => {
         sortOrder = { sortBy: "", order: "" };
         break;
     }
+    setResetTableCollaps(true);
     setSortOrder(sortOrder);
   };
 
@@ -89,6 +100,7 @@ const TaxLandingContent = memo(() => {
   };
 
   const getFilterParams = (filterObj: { [key: string]: string[] }) => {
+    setResetTableCollaps(true);
     setFilterData(filterObj);
   };
 
@@ -104,7 +116,7 @@ const TaxLandingContent = memo(() => {
                 onClick={openFilterPanel}
                 startIcon={<FilterIcon />}
               >
-                Filter
+                {t("buttons.filter")}
               </Button>
             </Grid>
             <Grid item pr={2.5}>
@@ -156,21 +168,25 @@ const TaxLandingContent = memo(() => {
         </Grid>
         <Grid container pt={2.5} display="flex" flexGrow={1}>
           <GridComponent
-            primaryKey='fuelTaxId'
-            rows={TaxObj.dataModel(fuelTaxList)}
+            primaryKey='taxJurisdictionId'
+            rows={fuelTaxList}
             header={headCells}
             isLoading={isFetching || isLoading}
             enableRowSelection={false}
-            enableRowAction
+            enableRowAction={false}
             getPages={fetchNextPage}
             searchTerm={searchTerm}
             openDrawer={openDrawer}
             noDataMsg='Add Fuel Tax by clicking on the "Add Tax" button.'
+            getId={(id: string) => setFuelTaxProductId(id)}
+            resetCollaps={resetTableCollaps}
+            onResetTableCollaps={setResetTableCollaps}
+            InnerTableComponent={<Table primaryKey='productTaxId' id={fuelTaxProductId} headCells={headCellsLots} enableRowAction={true} rowActionOptions={rowActionOptions} />}
           />
 
           <RightInfoPanel
-            panelType="customer-filter"
-            open={isFilterPanelOpen} headingText={"Filters"}
+            panelType="dynamic-filter"
+            open={isFilterPanelOpen} headingText={t('taxes.filterHeader')}
             provideFilterParams={getFilterParams}
             onClose={() => toggleFilterPanel(false)}
             fields={FilterByFields}

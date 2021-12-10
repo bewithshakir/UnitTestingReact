@@ -14,7 +14,7 @@ describe('renders the Default Select component', () => {
 describe('renders the SingleSelect component with values', () => {
     const component = shallow(<Select label='Input'  value={{ label: 'Label1', value: 'Value1' , icon: <YellowFuelIcon/>}} items={[{ label: 'Label1', value: 'Value1' , icon: <YellowFuelIcon/>}, { label: 'Label2', value: 'Value2', icon: <YellowFuelIcon/> }, { label: 'Label3', value: 'Value3', icon: <YellowFuelIcon/> }]} onChange={() => jest.fn()} />);
 
-    it('snapshot test for the SingleSelect component ', () => {
+    it('Snapshot test for the SingleSelect component ', () => {
         expect(component).toMatchSnapshot();
     });
 });

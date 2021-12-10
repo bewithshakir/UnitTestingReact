@@ -63,7 +63,7 @@ describe('renders the MultiSelect component with no options msg', () => {
 
 
 describe('renders the MultiSelect component with loading', () => {
-    const component = shallow(<Select label='Input' required id="multi-input" loadingMessage={'loading..'} value={null} items={null} onChange={() => jest.fn()} />);
+    const component = shallow(<Select label='Input' required id="multi-input" loadingMessage={'loading..'} value={[]} items={[]} onChange={() => jest.fn()} />);
     it('snapshot test for the MultiSelect component with loading ', () => {
         expect(component).toMatchSnapshot();
     });

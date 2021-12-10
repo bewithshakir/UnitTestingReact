@@ -34,9 +34,15 @@ export const routes = [
       {
         path: "/customer/:customerId/parkingLots/addLot",
         component: lazy(() => import('./pages/ParkingLot/AddLot/AddLotWrapper')),
-        exact: false,
-        version:'Breadcrumbs-Many'
+        exact: true,
+        version: 'Breadcrumbs-Many'
       },
+      {
+        path: "/customer/:customerId/parkingLots/viewLot/:parkinglotId",
+        component: lazy(() => import('./pages/ParkingLot/AddLot/AddLotWrapper')),
+        exact: true,
+        version: 'Breadcrumbs-Many'
+      }
     ]
   },
   {
@@ -58,7 +64,13 @@ export const routes = [
     exact: true
   },
   {
-    path: "/addSalesTax",
+    path: "/salesTax/add",
+    version: "Breadcrumbs-Single",
+    component: lazy(() => import('./pages/AddSalesTax/AddSalesTax')),
+    exact: true,
+  },
+  {
+    path: "/salesTax/edit/",
     version: "Breadcrumbs-Single",
     component: lazy(() => import('./pages/AddSalesTax/AddSalesTax')),
     exact: true,

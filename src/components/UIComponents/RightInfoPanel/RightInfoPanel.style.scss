@@ -1,7 +1,10 @@
 .right_panel_main_class {
+  
   .MuiDrawer-paper {
     border: 0px;
     box-shadow: -10px 0px 10px #a6a6a640;
+    z-index: 10000;
+    width: 583px;
     .MuiAppBar-root {
       background-color: var(--Blue-Btn);
       box-shadow: none;
@@ -16,26 +19,43 @@
   }
 }
 
-.dynamicFilterGrid {
-  .row1{
-    justify-content: flex-start;
-    align-items: flex-start;
-    padding-top: 30px;
+.dynamicForm {
+  height: 100%;
+  margin-top: 24px;
+  .sContainer {
+    min-height: 100%;
+    .lastItem{
+      margin-top: auto;
+    }
+    .date-picker-container{
+      width: 100%;
+    }
+    .MuiInputLabel-root{
+      transform: none;
+      position: initial;
+      font-size: 16px;
+      margin-bottom: 14px;
+      margin-top: 0px;
+      color: var(--Darkgray);
+    } 
+    .checkboxLabel{
+      margin-top: 16px;
+    }
   }
-  .row2{
-    justify-content: flex-end;
-    align-items: flex-end;
-    padding-bottom: 26px;
+  .filter_label_item {
+    padding-bottom: 5px;
+    font-size: 16px;
+    font-weight: 700;
   }
-  .fw-bold {
-    margin-bottom: 12px;
-  }
-}
+} 
 
 .right_info_panel {
   .MuiDrawer-paper {
     width: 566px;
     .right_info_panel_header {
+      h2{
+        flex-grow: 1;
+      }
       .MuiAppBar-root {
         .MuiToolbar-root {
           .MuiIconButton-root {
@@ -69,66 +89,3 @@
   }
 }
 
-.customer_filter_panel {
-  .MuiDrawer-paper {
-    width: 615px;
-    .cust_filter_panel_header {
-      .MuiAppBar-root {
-        .MuiToolbar-root {
-          padding: 0px 20px 0px 38px;
-          .custom-toolbar {
-            background-color: var(--Blue-Btn);
-          }
-        }
-      }
-    }
-    .cust_filter_panel_content {
-      padding: 0 38px;
-      position: fixed;
-      bottom: 0;
-      top: 56px;
-      overflow-y: auto;
-      display: flex;
-      flex-direction: row;
-      .cust_filter_parent_grid {
-        & > .MuiGrid-item {
-          padding-bottom: 12px;
-          padding-top: 0px;
-        }
-        .MuiGrid-root {
-          .date-picker-container {
-            width: 100%;
-          }
-          .multi-select__control{
-            border: 1px solid var(--Lightgray_2);
-          }
-          .select {
-            width: 100%;
-            .MuiInputLabel-root {
-              transform: none;
-              position: initial;
-              font-size: 16px;
-              margin-bottom: 14px;
-              margin-top: 0px;
-            }
-          }
-        }
-        .cust_filter_date_label_grid {
-          padding-bottom: 14px;
-          font-size: 16px;
-          font-weight: 700;
-        }
-      }
-      .filter-error-box{
-        color: var(--Tertiary);
-      }
-      .cust_filter_buttons_container {
-        right: 38px;
-        bottom: 26px;
-        .MuiButton-root {
-          margin-left: 30px;
-        }
-      }
-    }
-  }
-}

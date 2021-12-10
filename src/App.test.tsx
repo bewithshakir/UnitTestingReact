@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import App from './App';
 import { QueryClient, QueryClientProvider, useQuery } from 'react-query';
-import { renderHook } from "@testing-library/react-hooks"
+import { renderHook } from "@testing-library/react-hooks";
 
 export function useCustomHook() {
   return useQuery('customHook', () => 'Hello');

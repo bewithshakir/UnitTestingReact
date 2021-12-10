@@ -2191,6 +2191,73 @@ exports[`renders the SingleSelect component with required prop snapshot test for
 </Fragment>
 `;
 
+exports[`renders the SingleSelect component with values Snapshot test for the SingleSelect component  1`] = `
+<Fragment>
+  <ForwardRef(FormControl)
+    className="select"
+  >
+    <ForwardRef(InputLabel)
+      aria-labelledby="Input"
+      aria-required={false}
+      htmlFor="select-label-label"
+      shrink={true}
+      style={
+        Object {
+          "color": "var(--Darkgray)",
+        }
+      }
+    >
+      <b>
+        INPUT
+      </b>
+    </ForwardRef(InputLabel)>
+    <ForwardRef
+      className="react-select-container"
+      classNamePrefix="react-select"
+      components={
+        Object {
+          "DropdownIndicator": [Function],
+          "IndicatorSeparator": [Function],
+          "Option": [Function],
+          "SingleValue": [Function],
+        }
+      }
+      id="select-label"
+      isSearchable={false}
+      onChange={[Function]}
+      onKeyDown={[Function]}
+      options={
+        Array [
+          Object {
+            "icon": <YellowFuelIcon />,
+            "label": "Label1",
+            "value": "Value1",
+          },
+          Object {
+            "icon": <YellowFuelIcon />,
+            "label": "Label2",
+            "value": "Value2",
+          },
+          Object {
+            "icon": <YellowFuelIcon />,
+            "label": "Label3",
+            "value": "Value3",
+          },
+        ]
+      }
+      placeholder="Select"
+      value={
+        Object {
+          "icon": <YellowFuelIcon />,
+          "label": "Label1",
+          "value": "Value1",
+        }
+      }
+    />
+  </ForwardRef(FormControl)>
+</Fragment>
+`;
+
 exports[`renders the SingleSelect component with values snapshot test for the SingleSelect component  1`] = `
 <Fragment>
   <ForwardRef(FormControl)

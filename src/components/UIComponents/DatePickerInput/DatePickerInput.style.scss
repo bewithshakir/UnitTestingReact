@@ -14,6 +14,9 @@ div {
         }
       }
     }
+    .MuiTypography-caption{
+      margin: 0px 2px;
+    }
     .date-picker-container {
       display: flex;
       .calendar-icon-div{
@@ -85,6 +88,7 @@ div {
             outline: 0px;
           }
           .MuiInputAdornment-root{
+            cursor: pointer;
             margin-left: 0px;
             .MuiIconButton-root{
               padding: 10px 15px;
@@ -132,4 +136,14 @@ div {
       border-width: 2px;
     }
   }
+
+  .MuiCalendarPicker-root{
+    .PrivatePickersSlideTransition-root{
+      div[role=row]{
+        justify-content: space-evenly;
+        padding: 0px 20px;
+      }
+    }
+  }
+  
   

@@ -99,6 +99,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
+                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -114,7 +115,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                   "keepPreviousData": true,
                   "optimisticResults": true,
                   "queryFn": [Function],
-                  "queryHash": "[\\"getSalesTaxList\\",\\"\\",{\\"order\\":\\"\\",\\"sortBy\\":\\"\\"}]",
+                  "queryHash": "[\\"getSalesTaxList\\",\\"\\",{\\"order\\":\\"\\",\\"sortBy\\":\\"\\"},{}]",
                   "queryKey": Array [
                     "getSalesTaxList",
                     "",
@@ -122,6 +123,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                       "order": "",
                       "sortBy": "",
                     },
+                    Object {},
                   ],
                 },
                 "currentResultState": Object {
@@ -152,7 +154,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                   "keepPreviousData": true,
                   "optimisticResults": true,
                   "queryFn": [Function],
-                  "queryHash": "[\\"getSalesTaxList\\",\\"\\",{\\"order\\":\\"\\",\\"sortBy\\":\\"\\"}]",
+                  "queryHash": "[\\"getSalesTaxList\\",\\"\\",{\\"order\\":\\"\\",\\"sortBy\\":\\"\\"},{}]",
                   "queryKey": Array [
                     "getSalesTaxList",
                     "",
@@ -160,6 +162,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                       "order": "",
                       "sortBy": "",
                     },
+                    Object {},
                   ],
                 },
                 "previousQueryResult": undefined,
@@ -180,7 +183,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
               "keepPreviousData": true,
               "optimisticResults": true,
               "queryFn": [Function],
-              "queryHash": "[\\"getSalesTaxList\\",\\"\\",{\\"order\\":\\"\\",\\"sortBy\\":\\"\\"}]",
+              "queryHash": "[\\"getSalesTaxList\\",\\"\\",{\\"order\\":\\"\\",\\"sortBy\\":\\"\\"},{}]",
               "queryKey": Array [
                 "getSalesTaxList",
                 "",
@@ -188,10 +191,11 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                   "order": "",
                   "sortBy": "",
                 },
+                Object {},
               ],
             },
             "promise": Promise {},
-            "queryHash": "[\\"getSalesTaxList\\",\\"\\",{\\"order\\":\\"\\",\\"sortBy\\":\\"\\"}]",
+            "queryHash": "[\\"getSalesTaxList\\",\\"\\",{\\"order\\":\\"\\",\\"sortBy\\":\\"\\"},{}]",
             "queryKey": Array [
               "getSalesTaxList",
               "",
@@ -199,6 +203,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                 "order": "",
                 "sortBy": "",
               },
+              Object {},
             ],
             "retryer": Retryer {
               "cancel": [Function],
@@ -241,7 +246,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
           },
         ],
         "queriesMap": Object {
-          "[\\"getSalesTaxList\\",\\"\\",{\\"order\\":\\"\\",\\"sortBy\\":\\"\\"}]": Query {
+          "[\\"getSalesTaxList\\",\\"\\",{\\"order\\":\\"\\",\\"sortBy\\":\\"\\"},{}]": Query {
             "cache": [Circular],
             "cacheTime": 300000,
             "defaultOptions": undefined,
@@ -300,6 +305,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
+                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -315,7 +321,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                   "keepPreviousData": true,
                   "optimisticResults": true,
                   "queryFn": [Function],
-                  "queryHash": "[\\"getSalesTaxList\\",\\"\\",{\\"order\\":\\"\\",\\"sortBy\\":\\"\\"}]",
+                  "queryHash": "[\\"getSalesTaxList\\",\\"\\",{\\"order\\":\\"\\",\\"sortBy\\":\\"\\"},{}]",
                   "queryKey": Array [
                     "getSalesTaxList",
                     "",
@@ -323,6 +329,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                       "order": "",
                       "sortBy": "",
                     },
+                    Object {},
                   ],
                 },
                 "currentResultState": Object {
@@ -353,7 +360,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                   "keepPreviousData": true,
                   "optimisticResults": true,
                   "queryFn": [Function],
-                  "queryHash": "[\\"getSalesTaxList\\",\\"\\",{\\"order\\":\\"\\",\\"sortBy\\":\\"\\"}]",
+                  "queryHash": "[\\"getSalesTaxList\\",\\"\\",{\\"order\\":\\"\\",\\"sortBy\\":\\"\\"},{}]",
                   "queryKey": Array [
                     "getSalesTaxList",
                     "",
@@ -361,6 +368,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                       "order": "",
                       "sortBy": "",
                     },
+                    Object {},
                   ],
                 },
                 "previousQueryResult": undefined,
@@ -381,7 +389,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
               "keepPreviousData": true,
               "optimisticResults": true,
               "queryFn": [Function],
-              "queryHash": "[\\"getSalesTaxList\\",\\"\\",{\\"order\\":\\"\\",\\"sortBy\\":\\"\\"}]",
+              "queryHash": "[\\"getSalesTaxList\\",\\"\\",{\\"order\\":\\"\\",\\"sortBy\\":\\"\\"},{}]",
               "queryKey": Array [
                 "getSalesTaxList",
                 "",
@@ -389,10 +397,11 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                   "order": "",
                   "sortBy": "",
                 },
+                Object {},
               ],
             },
             "promise": Promise {},
-            "queryHash": "[\\"getSalesTaxList\\",\\"\\",{\\"order\\":\\"\\",\\"sortBy\\":\\"\\"}]",
+            "queryHash": "[\\"getSalesTaxList\\",\\"\\",{\\"order\\":\\"\\",\\"sortBy\\":\\"\\"},{}]",
             "queryKey": Array [
               "getSalesTaxList",
               "",
@@ -400,6 +409,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                 "order": "",
                 "sortBy": "",
               },
+              Object {},
             ],
             "retryer": Retryer {
               "cancel": [Function],
@@ -785,6 +795,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                         >
                           <Button
                             aria-label="dafault"
+                            onClick={[Function]}
                             startIcon={<FilterIcon />}
                             types="filter"
                           >
@@ -879,7 +890,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                     >
                       <GridComponent
                         enableRowAction={true}
-                        enableRowSelection={false}
+                        enableRowSelection={true}
                         getPages={[Function]}
                         header={
                           Array [
@@ -907,14 +918,14 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                             Object {
                               "align": "left",
                               "field": "stateRate",
-                              "label": "STATE RATE ($)",
+                              "label": "STATE RATE (%)",
                               "sortable": true,
                               "type": "text",
                             },
                             Object {
                               "align": "left",
                               "field": "localRate",
-                              "label": "LOCAL RATE ($)",
+                              "label": "LOCAL RATE (%)",
                               "sortable": true,
                               "type": "text",
                             },
@@ -928,12 +939,48 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                           ]
                         }
                         isLoading={true}
-                        noDataMsg="Add Tax."
+                        noDataMsg="Add Tax by clicking on the \\"Add Tax\\" button."
+                        onRowActionSelect={[Function]}
                         openDrawer={[Function]}
                         primaryKey="taxJurisdictionId"
-                        rowActionOptions={Array []}
+                        rowActionOptions={
+                          Array [
+                            Object {
+                              "action": "edit",
+                              "label": "menus.data-grid-actions.edit",
+                            },
+                          ]
+                        }
                         rows={Array []}
                         searchTerm=""
+                      />
+                      <RightInfoPanel
+                        fields={
+                          Array [
+                            Object {
+                              "fieldType": "select",
+                              "initialValue": Array [],
+                              "label": "customer-filter-panel.state",
+                              "name": "state",
+                              "optionAPIResponseKey": "states",
+                              "optionUrlKey": "salesTaxFilter",
+                            },
+                            Object {
+                              "fieldType": "select",
+                              "initialValue": Array [],
+                              "label": "customer-filter-panel.city",
+                              "name": "city",
+                              "optionAPIResponseKey": "cities",
+                              "optionUrlKey": "salesTaxFilter",
+                            },
+                          ]
+                        }
+                        headingText="customer-filter-panel.header.filters"
+                        onClose={[Function]}
+                        open={false}
+                        panelType="salestax-filter"
+                        provideFilterParams={[Function]}
+                        storeKey="salestaxFilter"
                       />
                     </ForwardRef(Grid)>,
                   ],
@@ -990,6 +1037,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                             >
                               <Button
                                 aria-label="dafault"
+                                onClick={[Function]}
                                 startIcon={<FilterIcon />}
                                 types="filter"
                               >
@@ -1123,6 +1171,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                 >
                                   <Button
                                     aria-label="dafault"
+                                    onClick={[Function]}
                                     startIcon={<FilterIcon />}
                                     types="filter"
                                   >
@@ -1197,6 +1246,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                   Object {
                                     "children": <Button
                                       aria-label="dafault"
+                                      onClick={[Function]}
                                       startIcon={<FilterIcon />}
                                       types="filter"
                                     >
@@ -1231,12 +1281,14 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                 >
                                   <Button
                                     aria-label="dafault"
+                                    onClick={[Function]}
                                     startIcon={<FilterIcon />}
                                     types="filter"
                                   >
                                     <WithStyles(ForwardRef(Button))
                                       aria-label="dafault"
                                       className="btn-filter "
+                                      onClick={[Function]}
                                       startIcon={<FilterIcon />}
                                       variant="contained"
                                     >
@@ -1276,6 +1328,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                             "textSizeSmall": "MuiButton-textSizeSmall",
                                           }
                                         }
+                                        onClick={[Function]}
                                         startIcon={<FilterIcon />}
                                         variant="contained"
                                       >
@@ -1286,6 +1339,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                           disabled={false}
                                           focusRipple={true}
                                           focusVisibleClassName="Mui-focusVisible"
+                                          onClick={[Function]}
                                           type="button"
                                         >
                                           <ForwardRef(ButtonBase)
@@ -1302,6 +1356,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                             disabled={false}
                                             focusRipple={true}
                                             focusVisibleClassName="Mui-focusVisible"
+                                            onClick={[Function]}
                                             type="button"
                                           >
                                             <button
@@ -1309,6 +1364,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                               className="MuiButtonBase-root MuiButton-root MuiButton-contained btn-filter "
                                               disabled={false}
                                               onBlur={[Function]}
+                                              onClick={[Function]}
                                               onDragLeave={[Function]}
                                               onFocus={[Function]}
                                               onKeyDown={[Function]}
@@ -3813,64 +3869,102 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                     className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-undefined"
                     ownerState={
                       Object {
-                        "children": <GridComponent
-                          enableRowAction={true}
-                          enableRowSelection={false}
-                          getPages={[Function]}
-                          header={
-                            Array [
-                              Object {
-                                "align": "left",
-                                "field": "city",
-                                "label": "CITY",
-                                "sortable": true,
-                                "type": "text",
-                              },
-                              Object {
-                                "align": "left",
-                                "field": "state",
-                                "label": "STATE",
-                                "sortable": true,
-                                "type": "text",
-                              },
-                              Object {
-                                "align": "left",
-                                "field": "federalRate",
-                                "label": "FEDERAL RATE (%)",
-                                "sortable": true,
-                                "type": "text",
-                              },
-                              Object {
-                                "align": "left",
-                                "field": "stateRate",
-                                "label": "STATE RATE ($)",
-                                "sortable": true,
-                                "type": "text",
-                              },
-                              Object {
-                                "align": "left",
-                                "field": "localRate",
-                                "label": "LOCAL RATE ($)",
-                                "sortable": true,
-                                "type": "text",
-                              },
-                              Object {
-                                "align": "left",
-                                "field": "totalRate",
-                                "label": "TOTAL RATE (%)",
-                                "sortable": true,
-                                "type": "text",
-                              },
-                            ]
-                          }
-                          isLoading={true}
-                          noDataMsg="Add Tax."
-                          openDrawer={[Function]}
-                          primaryKey="taxJurisdictionId"
-                          rowActionOptions={Array []}
-                          rows={Array []}
-                          searchTerm=""
-                        />,
+                        "children": Array [
+                          <GridComponent
+                            enableRowAction={true}
+                            enableRowSelection={true}
+                            getPages={[Function]}
+                            header={
+                              Array [
+                                Object {
+                                  "align": "left",
+                                  "field": "city",
+                                  "label": "CITY",
+                                  "sortable": true,
+                                  "type": "text",
+                                },
+                                Object {
+                                  "align": "left",
+                                  "field": "state",
+                                  "label": "STATE",
+                                  "sortable": true,
+                                  "type": "text",
+                                },
+                                Object {
+                                  "align": "left",
+                                  "field": "federalRate",
+                                  "label": "FEDERAL RATE (%)",
+                                  "sortable": true,
+                                  "type": "text",
+                                },
+                                Object {
+                                  "align": "left",
+                                  "field": "stateRate",
+                                  "label": "STATE RATE (%)",
+                                  "sortable": true,
+                                  "type": "text",
+                                },
+                                Object {
+                                  "align": "left",
+                                  "field": "localRate",
+                                  "label": "LOCAL RATE (%)",
+                                  "sortable": true,
+                                  "type": "text",
+                                },
+                                Object {
+                                  "align": "left",
+                                  "field": "totalRate",
+                                  "label": "TOTAL RATE (%)",
+                                  "sortable": true,
+                                  "type": "text",
+                                },
+                              ]
+                            }
+                            isLoading={true}
+                            noDataMsg="Add Tax by clicking on the \\"Add Tax\\" button."
+                            onRowActionSelect={[Function]}
+                            openDrawer={[Function]}
+                            primaryKey="taxJurisdictionId"
+                            rowActionOptions={
+                              Array [
+                                Object {
+                                  "action": "edit",
+                                  "label": "menus.data-grid-actions.edit",
+                                },
+                              ]
+                            }
+                            rows={Array []}
+                            searchTerm=""
+                          />,
+                          <RightInfoPanel
+                            fields={
+                              Array [
+                                Object {
+                                  "fieldType": "select",
+                                  "initialValue": Array [],
+                                  "label": "customer-filter-panel.state",
+                                  "name": "state",
+                                  "optionAPIResponseKey": "states",
+                                  "optionUrlKey": "salesTaxFilter",
+                                },
+                                Object {
+                                  "fieldType": "select",
+                                  "initialValue": Array [],
+                                  "label": "customer-filter-panel.city",
+                                  "name": "city",
+                                  "optionAPIResponseKey": "cities",
+                                  "optionUrlKey": "salesTaxFilter",
+                                },
+                              ]
+                            }
+                            headingText="customer-filter-panel.header.filters"
+                            onClose={[Function]}
+                            open={false}
+                            panelType="salestax-filter"
+                            provideFilterParams={[Function]}
+                            storeKey="salestaxFilter"
+                          />,
+                        ],
                         "columnSpacing": 0,
                         "columns": 12,
                         "container": true,
@@ -3904,7 +3998,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                     >
                       <GridComponent
                         enableRowAction={true}
-                        enableRowSelection={false}
+                        enableRowSelection={true}
                         getPages={[Function]}
                         header={
                           Array [
@@ -3932,14 +4026,14 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                             Object {
                               "align": "left",
                               "field": "stateRate",
-                              "label": "STATE RATE ($)",
+                              "label": "STATE RATE (%)",
                               "sortable": true,
                               "type": "text",
                             },
                             Object {
                               "align": "left",
                               "field": "localRate",
-                              "label": "LOCAL RATE ($)",
+                              "label": "LOCAL RATE (%)",
                               "sortable": true,
                               "type": "text",
                             },
@@ -3953,10 +4047,18 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                           ]
                         }
                         isLoading={true}
-                        noDataMsg="Add Tax."
+                        noDataMsg="Add Tax by clicking on the \\"Add Tax\\" button."
+                        onRowActionSelect={[Function]}
                         openDrawer={[Function]}
                         primaryKey="taxJurisdictionId"
-                        rowActionOptions={Array []}
+                        rowActionOptions={
+                          Array [
+                            Object {
+                              "action": "edit",
+                              "label": "menus.data-grid-actions.edit",
+                            },
+                          ]
+                        }
                         rows={Array []}
                         searchTerm=""
                       >
@@ -3981,7 +4083,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                 >
                                   <EnhancedGridHead
                                     enableRowAction={true}
-                                    enableRowSelection={false}
+                                    enableRowSelection={true}
                                     headCells={
                                       Array [
                                         Object {
@@ -4008,14 +4110,14 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                         Object {
                                           "align": "left",
                                           "field": "stateRate",
-                                          "label": "STATE RATE ($)",
+                                          "label": "STATE RATE (%)",
                                           "sortable": true,
                                           "type": "text",
                                         },
                                         Object {
                                           "align": "left",
                                           "field": "localRate",
-                                          "label": "LOCAL RATE ($)",
+                                          "label": "LOCAL RATE (%)",
                                           "sortable": true,
                                           "type": "text",
                                         },
@@ -4037,7 +4139,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                   />
                                   <EnhancedGridBody
                                     enableRowAction={true}
-                                    enableRowSelection={false}
+                                    enableRowSelection={true}
                                     getPages={[Function]}
                                     handleCheckChange={[Function]}
                                     headCells={
@@ -4066,14 +4168,14 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                         Object {
                                           "align": "left",
                                           "field": "stateRate",
-                                          "label": "STATE RATE ($)",
+                                          "label": "STATE RATE (%)",
                                           "sortable": true,
                                           "type": "text",
                                         },
                                         Object {
                                           "align": "left",
                                           "field": "localRate",
-                                          "label": "LOCAL RATE ($)",
+                                          "label": "LOCAL RATE (%)",
                                           "sortable": true,
                                           "type": "text",
                                         },
@@ -4112,14 +4214,14 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                         Object {
                                           "align": "left",
                                           "field": "stateRate",
-                                          "label": "STATE RATE ($)",
+                                          "label": "STATE RATE (%)",
                                           "sortable": true,
                                           "type": "text",
                                         },
                                         Object {
                                           "align": "left",
                                           "field": "localRate",
-                                          "label": "LOCAL RATE ($)",
+                                          "label": "LOCAL RATE (%)",
                                           "sortable": true,
                                           "type": "text",
                                         },
@@ -4133,12 +4235,20 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                       ]
                                     }
                                     isLoading={true}
-                                    noDataMsg="Add Tax."
+                                    noDataMsg="Add Tax by clicking on the \\"Add Tax\\" button."
+                                    onRowActionSelect={[Function]}
                                     openDrawer={[Function]}
                                     order="asc"
                                     orderBy=""
                                     primaryKey="taxJurisdictionId"
-                                    rowActionOptions={Array []}
+                                    rowActionOptions={
+                                      Array [
+                                        Object {
+                                          "action": "edit",
+                                          "label": "menus.data-grid-actions.edit",
+                                        },
+                                      ]
+                                    }
                                     rows={Array []}
                                     searchTerm=""
                                     selectedRows={Array []}
@@ -4173,7 +4283,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                       "children": Array [
                                         <EnhancedGridHead
                                           enableRowAction={true}
-                                          enableRowSelection={false}
+                                          enableRowSelection={true}
                                           headCells={
                                             Array [
                                               Object {
@@ -4200,14 +4310,14 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                               Object {
                                                 "align": "left",
                                                 "field": "stateRate",
-                                                "label": "STATE RATE ($)",
+                                                "label": "STATE RATE (%)",
                                                 "sortable": true,
                                                 "type": "text",
                                               },
                                               Object {
                                                 "align": "left",
                                                 "field": "localRate",
-                                                "label": "LOCAL RATE ($)",
+                                                "label": "LOCAL RATE (%)",
                                                 "sortable": true,
                                                 "type": "text",
                                               },
@@ -4229,7 +4339,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                         />,
                                         <EnhancedGridBody
                                           enableRowAction={true}
-                                          enableRowSelection={false}
+                                          enableRowSelection={true}
                                           getPages={[Function]}
                                           handleCheckChange={[Function]}
                                           headCells={
@@ -4258,14 +4368,14 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                               Object {
                                                 "align": "left",
                                                 "field": "stateRate",
-                                                "label": "STATE RATE ($)",
+                                                "label": "STATE RATE (%)",
                                                 "sortable": true,
                                                 "type": "text",
                                               },
                                               Object {
                                                 "align": "left",
                                                 "field": "localRate",
-                                                "label": "LOCAL RATE ($)",
+                                                "label": "LOCAL RATE (%)",
                                                 "sortable": true,
                                                 "type": "text",
                                               },
@@ -4304,14 +4414,14 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                               Object {
                                                 "align": "left",
                                                 "field": "stateRate",
-                                                "label": "STATE RATE ($)",
+                                                "label": "STATE RATE (%)",
                                                 "sortable": true,
                                                 "type": "text",
                                               },
                                               Object {
                                                 "align": "left",
                                                 "field": "localRate",
-                                                "label": "LOCAL RATE ($)",
+                                                "label": "LOCAL RATE (%)",
                                                 "sortable": true,
                                                 "type": "text",
                                               },
@@ -4325,12 +4435,20 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                             ]
                                           }
                                           isLoading={true}
-                                          noDataMsg="Add Tax."
+                                          noDataMsg="Add Tax by clicking on the \\"Add Tax\\" button."
+                                          onRowActionSelect={[Function]}
                                           openDrawer={[Function]}
                                           order="asc"
                                           orderBy=""
                                           primaryKey="taxJurisdictionId"
-                                          rowActionOptions={Array []}
+                                          rowActionOptions={
+                                            Array [
+                                              Object {
+                                                "action": "edit",
+                                                "label": "menus.data-grid-actions.edit",
+                                              },
+                                            ]
+                                          }
                                           rows={Array []}
                                           searchTerm=""
                                           selectedRows={Array []}
@@ -4359,7 +4477,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                   >
                                     <EnhancedGridHead
                                       enableRowAction={true}
-                                      enableRowSelection={false}
+                                      enableRowSelection={true}
                                       headCells={
                                         Array [
                                           Object {
@@ -4386,14 +4504,14 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                           Object {
                                             "align": "left",
                                             "field": "stateRate",
-                                            "label": "STATE RATE ($)",
+                                            "label": "STATE RATE (%)",
                                             "sortable": true,
                                             "type": "text",
                                           },
                                           Object {
                                             "align": "left",
                                             "field": "localRate",
-                                            "label": "LOCAL RATE ($)",
+                                            "label": "LOCAL RATE (%)",
                                             "sortable": true,
                                             "type": "text",
                                           },
@@ -4479,7 +4597,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                     direction="asc"
                                                     onClick={[Function]}
                                                   >
-                                                    STATE RATE ($)
+                                                    STATE RATE (%)
                                                   </ForwardRef(TableSortLabel)>
                                                 </ForwardRef(TableCell)>
                                                 <ForwardRef(TableCell)
@@ -4493,7 +4611,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                     direction="asc"
                                                     onClick={[Function]}
                                                   >
-                                                    LOCAL RATE ($)
+                                                    LOCAL RATE (%)
                                                   </ForwardRef(TableSortLabel)>
                                                 </ForwardRef(TableCell)>
                                                 <ForwardRef(TableCell)
@@ -4595,7 +4713,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                             direction="asc"
                                                             onClick={[Function]}
                                                           >
-                                                            STATE RATE ($)
+                                                            STATE RATE (%)
                                                           </ForwardRef(TableSortLabel)>
                                                         </ForwardRef(TableCell)>,
                                                         <ForwardRef(TableCell)
@@ -4609,7 +4727,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                             direction="asc"
                                                             onClick={[Function]}
                                                           >
-                                                            LOCAL RATE ($)
+                                                            LOCAL RATE (%)
                                                           </ForwardRef(TableSortLabel)>
                                                         </ForwardRef(TableCell)>,
                                                         <ForwardRef(TableCell)
@@ -5208,7 +5326,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                             direction="asc"
                                                             onClick={[Function]}
                                                           >
-                                                            STATE RATE ($)
+                                                            STATE RATE (%)
                                                           </ForwardRef(TableSortLabel)>,
                                                           "className": "header-options",
                                                           "component": "th",
@@ -5241,7 +5359,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                               Object {
                                                                 "IconComponent": [Function],
                                                                 "active": false,
-                                                                "children": "STATE RATE ($)",
+                                                                "children": "STATE RATE (%)",
                                                                 "direction": "asc",
                                                                 "hideSortIcon": false,
                                                                 "onClick": [Function],
@@ -5274,7 +5392,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                                   Object {
                                                                     "centerRipple": false,
                                                                     "children": Array [
-                                                                      "STATE RATE ($)",
+                                                                      "STATE RATE (%)",
                                                                       <MuiTableSortLabelIcon
                                                                         as={[Function]}
                                                                         className="MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc"
@@ -5282,7 +5400,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                                           Object {
                                                                             "IconComponent": [Function],
                                                                             "active": false,
-                                                                            "children": "STATE RATE ($)",
+                                                                            "children": "STATE RATE (%)",
                                                                             "direction": "asc",
                                                                             "hideSortIcon": false,
                                                                             "onClick": [Function],
@@ -5322,7 +5440,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                                   role="button"
                                                                   tabIndex={0}
                                                                 >
-                                                                  STATE RATE ($)
+                                                                  STATE RATE (%)
                                                                   <MuiTableSortLabelIcon
                                                                     as={[Function]}
                                                                     className="MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc"
@@ -5330,7 +5448,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                                       Object {
                                                                         "IconComponent": [Function],
                                                                         "active": false,
-                                                                        "children": "STATE RATE ($)",
+                                                                        "children": "STATE RATE (%)",
                                                                         "direction": "asc",
                                                                         "hideSortIcon": false,
                                                                         "onClick": [Function],
@@ -5389,7 +5507,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                             direction="asc"
                                                             onClick={[Function]}
                                                           >
-                                                            LOCAL RATE ($)
+                                                            LOCAL RATE (%)
                                                           </ForwardRef(TableSortLabel)>,
                                                           "className": "header-options",
                                                           "component": "th",
@@ -5422,7 +5540,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                               Object {
                                                                 "IconComponent": [Function],
                                                                 "active": false,
-                                                                "children": "LOCAL RATE ($)",
+                                                                "children": "LOCAL RATE (%)",
                                                                 "direction": "asc",
                                                                 "hideSortIcon": false,
                                                                 "onClick": [Function],
@@ -5455,7 +5573,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                                   Object {
                                                                     "centerRipple": false,
                                                                     "children": Array [
-                                                                      "LOCAL RATE ($)",
+                                                                      "LOCAL RATE (%)",
                                                                       <MuiTableSortLabelIcon
                                                                         as={[Function]}
                                                                         className="MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc"
@@ -5463,7 +5581,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                                           Object {
                                                                             "IconComponent": [Function],
                                                                             "active": false,
-                                                                            "children": "LOCAL RATE ($)",
+                                                                            "children": "LOCAL RATE (%)",
                                                                             "direction": "asc",
                                                                             "hideSortIcon": false,
                                                                             "onClick": [Function],
@@ -5503,7 +5621,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                                   role="button"
                                                                   tabIndex={0}
                                                                 >
-                                                                  LOCAL RATE ($)
+                                                                  LOCAL RATE (%)
                                                                   <MuiTableSortLabelIcon
                                                                     as={[Function]}
                                                                     className="MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc"
@@ -5511,7 +5629,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                                       Object {
                                                                         "IconComponent": [Function],
                                                                         "active": false,
-                                                                        "children": "LOCAL RATE ($)",
+                                                                        "children": "LOCAL RATE (%)",
                                                                         "direction": "asc",
                                                                         "hideSortIcon": false,
                                                                         "onClick": [Function],
@@ -5770,7 +5888,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                     </EnhancedGridHead>
                                     <EnhancedGridBody
                                       enableRowAction={true}
-                                      enableRowSelection={false}
+                                      enableRowSelection={true}
                                       getPages={[Function]}
                                       handleCheckChange={[Function]}
                                       headCells={
@@ -5799,14 +5917,14 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                           Object {
                                             "align": "left",
                                             "field": "stateRate",
-                                            "label": "STATE RATE ($)",
+                                            "label": "STATE RATE (%)",
                                             "sortable": true,
                                             "type": "text",
                                           },
                                           Object {
                                             "align": "left",
                                             "field": "localRate",
-                                            "label": "LOCAL RATE ($)",
+                                            "label": "LOCAL RATE (%)",
                                             "sortable": true,
                                             "type": "text",
                                           },
@@ -5845,14 +5963,14 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                           Object {
                                             "align": "left",
                                             "field": "stateRate",
-                                            "label": "STATE RATE ($)",
+                                            "label": "STATE RATE (%)",
                                             "sortable": true,
                                             "type": "text",
                                           },
                                           Object {
                                             "align": "left",
                                             "field": "localRate",
-                                            "label": "LOCAL RATE ($)",
+                                            "label": "LOCAL RATE (%)",
                                             "sortable": true,
                                             "type": "text",
                                           },
@@ -5866,12 +5984,20 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                         ]
                                       }
                                       isLoading={true}
-                                      noDataMsg="Add Tax."
+                                      noDataMsg="Add Tax by clicking on the \\"Add Tax\\" button."
+                                      onRowActionSelect={[Function]}
                                       openDrawer={[Function]}
                                       order="asc"
                                       orderBy=""
                                       primaryKey="taxJurisdictionId"
-                                      rowActionOptions={Array []}
+                                      rowActionOptions={
+                                        Array [
+                                          Object {
+                                            "action": "edit",
+                                            "label": "menus.data-grid-actions.edit",
+                                          },
+                                        ]
+                                      }
                                       rows={Array []}
                                       searchTerm=""
                                       selectedRows={Array []}
@@ -6271,6 +6397,195 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                           </MuiTableContainerRoot>
                         </ForwardRef(TableContainer)>
                       </GridComponent>
+                      <RightInfoPanel
+                        fields={
+                          Array [
+                            Object {
+                              "fieldType": "select",
+                              "initialValue": Array [],
+                              "label": "customer-filter-panel.state",
+                              "name": "state",
+                              "optionAPIResponseKey": "states",
+                              "optionUrlKey": "salesTaxFilter",
+                            },
+                            Object {
+                              "fieldType": "select",
+                              "initialValue": Array [],
+                              "label": "customer-filter-panel.city",
+                              "name": "city",
+                              "optionAPIResponseKey": "cities",
+                              "optionUrlKey": "salesTaxFilter",
+                            },
+                          ]
+                        }
+                        headingText="customer-filter-panel.header.filters"
+                        onClose={[Function]}
+                        open={false}
+                        panelType="salestax-filter"
+                        provideFilterParams={[Function]}
+                        storeKey="salestaxFilter"
+                      >
+                        <ForwardRef(Drawer)
+                          anchor="right"
+                          className="right_panel_main_class customer_filter_panel"
+                          open={false}
+                          variant="temporary"
+                        >
+                          <MuiDrawerRoot
+                            BackdropProps={
+                              Object {
+                                "transitionDuration": Object {
+                                  "enter": 225,
+                                  "exit": 195,
+                                },
+                              }
+                            }
+                            className="MuiDrawer-root MuiDrawer-modal right_panel_main_class customer_filter_panel"
+                            hideBackdrop={false}
+                            open={false}
+                            ownerState={
+                              Object {
+                                "anchor": "right",
+                                "children": Array [
+                                  <PanelHeader
+                                    headingText="customer-filter-panel.header.filters"
+                                    info={null}
+                                    onClose={[Function]}
+                                    panelType="salestax-filter"
+                                  />,
+                                  <DynamicFilterContent
+                                    fields={
+                                      Array [
+                                        Object {
+                                          "fieldType": "select",
+                                          "initialValue": Array [],
+                                          "label": "customer-filter-panel.state",
+                                          "name": "state",
+                                          "optionAPIResponseKey": "states",
+                                          "optionUrlKey": "salesTaxFilter",
+                                        },
+                                        Object {
+                                          "fieldType": "select",
+                                          "initialValue": Array [],
+                                          "label": "customer-filter-panel.city",
+                                          "name": "city",
+                                          "optionAPIResponseKey": "cities",
+                                          "optionUrlKey": "salesTaxFilter",
+                                        },
+                                      ]
+                                    }
+                                    onClose={[Function]}
+                                    provideFilterParams={[Function]}
+                                    storeKey="salestaxFilter"
+                                  />,
+                                ],
+                                "className": "right_panel_main_class customer_filter_panel",
+                                "elevation": 16,
+                                "open": false,
+                                "variant": "temporary",
+                              }
+                            }
+                          >
+                            <ForwardRef(Modal)
+                              BackdropProps={
+                                Object {
+                                  "transitionDuration": Object {
+                                    "enter": 225,
+                                    "exit": 195,
+                                  },
+                                }
+                              }
+                              className="MuiDrawer-root MuiDrawer-modal right_panel_main_class customer_filter_panel css-j8ofbm-MuiDrawer-root"
+                              hideBackdrop={false}
+                              open={false}
+                            >
+                              <ForwardRef(ModalUnstyled)
+                                BackdropComponent={
+                                  Object {
+                                    "$$typeof": Symbol(react.forward_ref),
+                                    "__emotion_base": Object {
+                                      "$$typeof": Symbol(react.forward_ref),
+                                      "propTypes": Object {
+                                        "children": [Function],
+                                        "className": [Function],
+                                        "classes": [Function],
+                                        "components": [Function],
+                                        "componentsProps": [Function],
+                                        "invisible": [Function],
+                                        "open": [Function],
+                                        "sx": [Function],
+                                        "transitionDuration": [Function],
+                                      },
+                                      "render": [Function],
+                                    },
+                                    "__emotion_forwardProp": [Function],
+                                    "__emotion_real": [Circular],
+                                    "__emotion_styles": Array [
+                                      "label:MuiModal-backdrop;",
+                                      Object {
+                                        "zIndex": -1,
+                                      },
+                                      [Function],
+                                      [Function],
+                                    ],
+                                    "defaultProps": undefined,
+                                    "render": [Function],
+                                    "withComponent": [Function],
+                                  }
+                                }
+                                BackdropProps={
+                                  Object {
+                                    "transitionDuration": Object {
+                                      "enter": 225,
+                                      "exit": 195,
+                                    },
+                                  }
+                                }
+                                className="MuiDrawer-root MuiDrawer-modal right_panel_main_class customer_filter_panel css-j8ofbm-MuiDrawer-root"
+                                closeAfterTransition={false}
+                                components={
+                                  Object {
+                                    "Root": Object {
+                                      "$$typeof": Symbol(react.forward_ref),
+                                      "__emotion_base": "div",
+                                      "__emotion_forwardProp": [Function],
+                                      "__emotion_real": [Circular],
+                                      "__emotion_styles": Array [
+                                        "label:MuiModal-root;",
+                                        [Function],
+                                        [Function],
+                                        [Function],
+                                        [Function],
+                                      ],
+                                      "defaultProps": undefined,
+                                      "render": [Function],
+                                      "withComponent": [Function],
+                                    },
+                                  }
+                                }
+                                componentsProps={
+                                  Object {
+                                    "root": Object {
+                                      "ownerState": Object {},
+                                    },
+                                  }
+                                }
+                                disableAutoFocus={false}
+                                disableEnforceFocus={false}
+                                disableEscapeKeyDown={false}
+                                disablePortal={false}
+                                disableRestoreFocus={false}
+                                disableScrollLock={false}
+                                hideBackdrop={false}
+                                keepMounted={false}
+                                onTransitionEnter={[Function]}
+                                onTransitionExited={[Function]}
+                                open={false}
+                              />
+                            </ForwardRef(Modal)>
+                          </MuiDrawerRoot>
+                        </ForwardRef(Drawer)>
+                      </RightInfoPanel>
                     </div>
                   </MuiGridRoot>
                 </ForwardRef(Grid)>
@@ -6377,7 +6692,7 @@ exports[`Rendering of Salestax landing page Component Search Textbox Data Enter 
                     "keepPreviousData": true,
                     "optimisticResults": true,
                     "queryFn": [Function],
-                    "queryHash": "[\\"getSalesTaxList\\",\\"\\",{\\"order\\":\\"\\",\\"sortBy\\":\\"\\"}]",
+                    "queryHash": "[\\"getSalesTaxList\\",\\"\\",{\\"order\\":\\"\\",\\"sortBy\\":\\"\\"},{}]",
                     "queryKey": Array [
                       "getSalesTaxList",
                       "",
@@ -6385,6 +6700,7 @@ exports[`Rendering of Salestax landing page Component Search Textbox Data Enter 
                         "order": "",
                         "sortBy": "",
                       },
+                      Object {},
                     ],
                   },
                   "currentResultState": Object {
@@ -6415,7 +6731,7 @@ exports[`Rendering of Salestax landing page Component Search Textbox Data Enter 
                     "keepPreviousData": true,
                     "optimisticResults": true,
                     "queryFn": [Function],
-                    "queryHash": "[\\"getSalesTaxList\\",\\"\\",{\\"order\\":\\"\\",\\"sortBy\\":\\"\\"}]",
+                    "queryHash": "[\\"getSalesTaxList\\",\\"\\",{\\"order\\":\\"\\",\\"sortBy\\":\\"\\"},{}]",
                     "queryKey": Array [
                       "getSalesTaxList",
                       "",
@@ -6423,6 +6739,7 @@ exports[`Rendering of Salestax landing page Component Search Textbox Data Enter 
                         "order": "",
                         "sortBy": "",
                       },
+                      Object {},
                     ],
                   },
                   "previousQueryResult": undefined,
@@ -6443,7 +6760,7 @@ exports[`Rendering of Salestax landing page Component Search Textbox Data Enter 
                 "keepPreviousData": true,
                 "optimisticResults": true,
                 "queryFn": [Function],
-                "queryHash": "[\\"getSalesTaxList\\",\\"\\",{\\"order\\":\\"\\",\\"sortBy\\":\\"\\"}]",
+                "queryHash": "[\\"getSalesTaxList\\",\\"\\",{\\"order\\":\\"\\",\\"sortBy\\":\\"\\"},{}]",
                 "queryKey": Array [
                   "getSalesTaxList",
                   "",
@@ -6451,10 +6768,11 @@ exports[`Rendering of Salestax landing page Component Search Textbox Data Enter 
                     "order": "",
                     "sortBy": "",
                   },
+                  Object {},
                 ],
               },
               "promise": Promise {},
-              "queryHash": "[\\"getSalesTaxList\\",\\"\\",{\\"order\\":\\"\\",\\"sortBy\\":\\"\\"}]",
+              "queryHash": "[\\"getSalesTaxList\\",\\"\\",{\\"order\\":\\"\\",\\"sortBy\\":\\"\\"},{}]",
               "queryKey": Array [
                 "getSalesTaxList",
                 "",
@@ -6462,6 +6780,7 @@ exports[`Rendering of Salestax landing page Component Search Textbox Data Enter 
                   "order": "",
                   "sortBy": "",
                 },
+                Object {},
               ],
               "retryer": Retryer {
                 "cancel": [Function],
@@ -6504,7 +6823,7 @@ exports[`Rendering of Salestax landing page Component Search Textbox Data Enter 
             },
           ],
           "queriesMap": Object {
-            "[\\"getSalesTaxList\\",\\"\\",{\\"order\\":\\"\\",\\"sortBy\\":\\"\\"}]": Query {
+            "[\\"getSalesTaxList\\",\\"\\",{\\"order\\":\\"\\",\\"sortBy\\":\\"\\"},{}]": Query {
               "cache": [Circular],
               "cacheTime": 300000,
               "defaultOptions": undefined,
@@ -6578,7 +6897,7 @@ exports[`Rendering of Salestax landing page Component Search Textbox Data Enter 
                     "keepPreviousData": true,
                     "optimisticResults": true,
                     "queryFn": [Function],
-                    "queryHash": "[\\"getSalesTaxList\\",\\"\\",{\\"order\\":\\"\\",\\"sortBy\\":\\"\\"}]",
+                    "queryHash": "[\\"getSalesTaxList\\",\\"\\",{\\"order\\":\\"\\",\\"sortBy\\":\\"\\"},{}]",
                     "queryKey": Array [
                       "getSalesTaxList",
                       "",
@@ -6586,6 +6905,7 @@ exports[`Rendering of Salestax landing page Component Search Textbox Data Enter 
                         "order": "",
                         "sortBy": "",
                       },
+                      Object {},
                     ],
                   },
                   "currentResultState": Object {
@@ -6616,7 +6936,7 @@ exports[`Rendering of Salestax landing page Component Search Textbox Data Enter 
                     "keepPreviousData": true,
                     "optimisticResults": true,
                     "queryFn": [Function],
-                    "queryHash": "[\\"getSalesTaxList\\",\\"\\",{\\"order\\":\\"\\",\\"sortBy\\":\\"\\"}]",
+                    "queryHash": "[\\"getSalesTaxList\\",\\"\\",{\\"order\\":\\"\\",\\"sortBy\\":\\"\\"},{}]",
                     "queryKey": Array [
                       "getSalesTaxList",
                       "",
@@ -6624,6 +6944,7 @@ exports[`Rendering of Salestax landing page Component Search Textbox Data Enter 
                         "order": "",
                         "sortBy": "",
                       },
+                      Object {},
                     ],
                   },
                   "previousQueryResult": undefined,
@@ -6644,7 +6965,7 @@ exports[`Rendering of Salestax landing page Component Search Textbox Data Enter 
                 "keepPreviousData": true,
                 "optimisticResults": true,
                 "queryFn": [Function],
-                "queryHash": "[\\"getSalesTaxList\\",\\"\\",{\\"order\\":\\"\\",\\"sortBy\\":\\"\\"}]",
+                "queryHash": "[\\"getSalesTaxList\\",\\"\\",{\\"order\\":\\"\\",\\"sortBy\\":\\"\\"},{}]",
                 "queryKey": Array [
                   "getSalesTaxList",
                   "",
@@ -6652,10 +6973,11 @@ exports[`Rendering of Salestax landing page Component Search Textbox Data Enter 
                     "order": "",
                     "sortBy": "",
                   },
+                  Object {},
                 ],
               },
               "promise": Promise {},
-              "queryHash": "[\\"getSalesTaxList\\",\\"\\",{\\"order\\":\\"\\",\\"sortBy\\":\\"\\"}]",
+              "queryHash": "[\\"getSalesTaxList\\",\\"\\",{\\"order\\":\\"\\",\\"sortBy\\":\\"\\"},{}]",
               "queryKey": Array [
                 "getSalesTaxList",
                 "",
@@ -6663,6 +6985,7 @@ exports[`Rendering of Salestax landing page Component Search Textbox Data Enter 
                   "order": "",
                   "sortBy": "",
                 },
+                Object {},
               ],
               "retryer": Retryer {
                 "cancel": [Function],

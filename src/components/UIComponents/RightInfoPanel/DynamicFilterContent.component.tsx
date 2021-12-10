@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { filterStore } from "../../../store";
 import moment from "moment";
-import { Grid, FormControlLabel, Typography, FormControl } from "@mui/material";
+import { Grid, FormControlLabel, FormControl, InputLabel, Typography } from "@mui/material";
 import { FormikProvider, useFormik } from 'formik';
 import Select from "../Select/MultiSelect";
 import SingleSelect from "../Select/SingleSelect";
@@ -52,22 +52,21 @@ const timeValidation = (str: any) => {
 };
 
 export const DynamicFilterContent: React.FC<IDynamicFilterProps> = ({ provideFilterParams, onClose, fields, storeKey }) => {
-    const [formValuesSaved, setFormValuesSaved] = React.useState<{ [k: string]: any } | null>(null);
     const filterFormData = filterStore((state) => {
-        return state.filterFormData ? state.filterFormData[storeKey] : ({} as { [k: string]: any });
+        return state.filterFormData ? state.filterFormData[storeKey] : null;
     });
     const setFormData = filterStore((state) => state.setFormData);
     const removeFormData = filterStore((state) => state.removeFormData);
     const { theme } = useTheme();
     const { t } = useTranslation();
 
-    const createDateArr = (value: any, mainObj: any, fieldName: string) => {
+    const createDateArr = useCallback((value: any, mainObj: any, fieldName: string) => {
         if (timeValidation(value[0]) && timeValidation(value[1])) {
             mainObj[fieldName] = [moment(value[0]).format("MM-DD-YYYY"), moment(value[1]).format("MM-DD-YYYY")];
         }
-    };
+    }, []);
 
-    const prepateLastFormWithPayload = () => {
+    const prepareLastFormWithPayload = useCallback(() => {
         if (filterFormData && Object.keys(filterFormData).length > 0) {
             for (const [key, value] of Object.entries(filterFormData)) {
                 formik.setFieldValue(key, value);
@@ -77,24 +76,22 @@ export const DynamicFilterContent: React.FC<IDynamicFilterProps> = ({ provideFil
                     createDateArr(value, filterParams, key);
                 } else if (Array.isArray(value)) {
                     filterParams[key] = value.length > 0 ? value.map((obj: { label: string, value: string }) => obj.value) : [];
+                } else if (fieldType === 'select') {
+                    // only for single select
+                    filterParams[key] = value ? (value as any).value : value;
                 } else {
                     filterParams[key] = value as any;
                 }
             }
         }
-    };
+    }, []);
 
     useEffect(() => {
         filterParams = {};
         if (filterFormData) {
-            setFormValuesSaved(filterFormData);
-            prepateLastFormWithPayload();
+            prepareLastFormWithPayload();
         }
     }, []);
-
-    window.onunload = function () {
-        removeFormData();
-    };
 
     const ClearBtn = styled(Button)(() => ({
         "&&": {
@@ -121,17 +118,17 @@ export const DynamicFilterContent: React.FC<IDynamicFilterProps> = ({ provideFil
         }
     }));
 
-    const onDateRangeChange = (name: string, newValue: DatePickerRange) => {
+    const onDateRangeChange = useCallback((name: string, newValue: DatePickerRange) => {
         formik.setFieldValue(name, newValue);
         delete filterParams["date"];
         createDateArr(newValue, filterParams, name);
-    };
+    }, []);
 
     function handleSelect(name: string, value: any, singleSelect?: boolean) {
         formik.setFieldValue(name, value);
-
         filterParams[name] = singleSelect ? value.value : value.map((obj: { label: string, value: string }) => obj.value);
     }
+
     function handleMultiCheckboxChange(name: string, value: any[], itemValue: string, isChecked: boolean) {
         const valueSet = new Set(value);
         isChecked ? valueSet.add(itemValue) : valueSet.delete(itemValue);
@@ -152,145 +149,183 @@ export const DynamicFilterContent: React.FC<IDynamicFilterProps> = ({ provideFil
         formik.setFieldValue(name, value);
         filterParams[name] = value;
     }
-
-    const tempFilterCode = (val: any) => {
-        return val;
-    };
-
-    const applyFilter = (formData: { [k: string]: any }, resetForm: Function) => {
+    const applyFilter = (formData: { [k: string]: any }) => {
         if (provideFilterParams && Object.keys(filterParams).length > 0) {
             setFormData({ [storeKey]: formData });
             provideFilterParams(filterParams);
             onClose();
         }
-        tempFilterCode(resetForm);
     };
-
-    const clearFilter = (resetForm: Function) => {
-        setFormValuesSaved(null);
+    const handleClear = () => {
         filterParams = {};
         if (provideFilterParams) {
             provideFilterParams(filterParams);
         }
         removeFormData();
-        tempFilterCode(resetForm);
     };
-
-    const formik = useFormik({
-        initialValues: formValuesSaved ? formValuesSaved : fields.reduce((acc, field) => {
+    const initialValues = useMemo(() => {
+        return filterFormData === null || Object.keys(filterFormData).length === 0 ? fields.reduce((acc, field) => {
             acc[field.name] = field.initialValue;
             return acc;
-        }, {} as any),
-        onSubmit: (values, { resetForm }) => applyFilter(values, resetForm),
-        onReset: (values, { resetForm }) => clearFilter(resetForm),
+        }, {} as any) : filterFormData;
+
+    }, [filterFormData, fields]);
+
+    const formik = useFormik({
+        initialValues,
+        onSubmit: (values) => applyFilter(values),
+        enableReinitialize: true
     });
-    return <div className="cust_filter_panel_content">
-        <FormikProvider value={formik}>
-            <form onSubmit={formik.handleSubmit} onReset={formik.handleReset}>
-                <Grid container className="dynamicFilterGrid" >
-                    <Grid container spacing={2} className="cust_filter_parent_grid row1">
-                        {fields && fields.map(field => {
-                            const touched = (formik.touched as any)[field.name];
-                            const error = (formik.errors as any)[field.name];
-                            const value = (formik.values as any)[field.name];
-                            return (
-                                field.fieldType === 'date' ?
-                                    <Grid key={field.name} item xs={12} columnSpacing={2} container>
-                                        <Grid item xs={12} className="cust_filter_date_label_grid">
-                                            {t(field.label)}
+    return <FormikProvider value={formik}>
+        <form onSubmit={formik.handleSubmit} onReset={formik.handleReset} className="dynamicForm">
+            <Grid container direction="column" className="sContainer">
+                {fields && fields.map(field => {
+                    const touched = (formik.touched as any)[field.name];
+                    const error = (formik.errors as any)[field.name];
+                    const value = (formik.values as any)[field.name];
+                    return (
+                        <Grid key={field.name} item mb={2} mt={2} ml={6} mr={6}>
+                            {field.fieldType === 'date' ?
+                                <>
+                                    <Grid item xs={12}>
+                                        <InputLabel shrink htmlFor={field.name} aria-labelledby={field.label} className="filter_label_item">
+                                            <b>{t(field.label)}</b >
+                                        </InputLabel>
+                                    </Grid>
+                                    <Grid container item xs={12}>
+                                        <DatePickerInput
+                                            type="single-date"
+                                            id="cust-filter-date"
+                                            placeholder={t(field.label)}
+                                            name={field.name}
+                                            value={value}
+                                            onChange={(name, val) => handleChange(name, moment(val).format("MM-DD-YYYY"))}
+                                            helperText={(touched && error) ? error : undefined}
+                                            error={(touched && error) ? true : false}
+                                            dateRangeValue={value}
+                                        />
+                                    </Grid>
+                                </>
+                                : field.fieldType === 'dateRange' ?
+                                    <>
+                                        <Grid item xs={12}>
+                                            <InputLabel shrink htmlFor={field.name} aria-labelledby={field.label} className="filter_label_item">
+                                                <b>{t('right-info-panel.filter.period')}</b >
+                                            </InputLabel>
                                         </Grid>
-                                        <Grid container item xs={12} spacing="2">
+                                        <Grid container item xs={12}>
                                             <DatePickerInput
-                                                type="single-date"
-                                                id="cust-filter-date"
-                                                placeholder={t(field.label)}
+                                                type="date-range"
+                                                id="cust-filter-date-range"
+                                                placeholder={{ start: t("right-info-panel.filter.from date"), end: t("right-info-panel.filter.to date") }}
                                                 name={field.name}
-                                                value={value}
-                                                onChange={(name, val) => handleChange(name, moment(val).format("MM-DD-YYYY"))}
+                                                onDateRangeChange={onDateRangeChange}
                                                 helperText={(touched && error) ? error : undefined}
                                                 error={(touched && error) ? true : false}
                                                 dateRangeValue={value}
+                                                required
                                             />
                                         </Grid>
-                                    </Grid>
-                                    : field.fieldType === 'dateRange' ?
-                                        <Grid key={field.name} item xs={12} columnSpacing={2} container>
-                                            <Grid item xs={12} className="cust_filter_date_label_grid">
-                                                {t('right-info-panel.filter.period')}
-                                            </Grid>
-                                            <Grid container item xs={12} spacing="2">
-                                                <DatePickerInput
-                                                    type="date-range"
-                                                    id="cust-filter-date-range"
-                                                    placeholder={{ start: t("right-info-panel.filter.from date"), end: t("right-info-panel.filter.to date") }}
-                                                    name={field.name}
-                                                    onDateRangeChange={(name, val) => onDateRangeChange(name, val)}
-                                                    helperText={(touched && error) ? error : undefined}
-                                                    error={(touched && error) ? true : false}
-                                                    dateRangeValue={value}
-                                                    required
-                                                />
-                                            </Grid>
-                                        </Grid>
-                                        : <Grid item xs={12} key={field.name}>
-                                            {(field.fieldType === 'text') ?
-                                                <Input
-                                                    id={field.name}
-                                                    label={t(field.label)}
-                                                    type='text'
-                                                    helperText={(touched && error) ? error : undefined}
-                                                    error={(touched && error) ? true : false}
-                                                    description=''
-                                                    value={value}
-                                                    onChange={(e) => {
-                                                        handleChange(field.name, e.target.value);
-                                                    }}
-                                                />
-                                                : field.fieldType === 'select' ?
-                                                    (field.optionUrlKey && field.optionAPIResponseKey) ?
-                                                        (< SelectInput field={{
-                                                            ...field,
-                                                            optionUrlKey: field.optionUrlKey,
-                                                            optionAPIResponseKey: field.optionAPIResponseKey,
-                                                            fieldType: 'select'
-                                                        }}
-                                                            handleSelect={handleSelect} formik={formik} />) :
-                                                        field.singleSelect ?
-                                                            <SingleSelect
-                                                                id={field.name}
-                                                                name={field.name}
-                                                                label={t(field.label)}
-                                                                placeholder=""
-                                                                value={value}
-                                                                items={field.options || []}
-                                                                onChange={(name, val) => handleSelect(name, val, true)}
-                                                                helperText={(touched && error) ? error : undefined}
-                                                                error={(touched && error) ? true : false} />
-                                                            :
-                                                            <Select
-                                                                id={field.name}
-                                                                name={field.name}
-                                                                label={t(field.label)}
-                                                                placeholder=""
-                                                                value={value}
-                                                                items={field.options || []}
-                                                                onChange={(name, val) => handleSelect(name, val)}
-                                                                helperText={(touched && error) ? error : undefined}
-                                                                error={(touched && error) ? true : false}
+                                    </>
+                                    :
+                                    (field.fieldType === 'text') ?
+                                        <Input
+                                            id={field.name}
+                                            label={
+                                                <InputLabel shrink htmlFor={field.name} aria-labelledby={field.label}>
+                                                    <b>{t(field.label)}</b >
+                                                </InputLabel>
+                                            }
+                                            type='text'
+                                            helperText={(touched && error) ? error : undefined}
+                                            error={(touched && error) ? true : false}
+                                            description=''
+                                            value={value}
+                                            onChange={(e) => {
+                                                handleChange(field.name, e.target.value);
+                                            }}
+                                        />
+                                        : field.fieldType === 'select' ?
+                                            (field.optionUrlKey && field.optionAPIResponseKey) ?
+                                                (< SelectInput field={{
+                                                    ...field,
+                                                    optionUrlKey: field.optionUrlKey,
+                                                    optionAPIResponseKey: field.optionAPIResponseKey,
+                                                    fieldType: 'select'
+                                                }}
+                                                    handleSelect={handleSelect} formik={formik} />) :
+                                                field.singleSelect ?
+                                                    <SingleSelect
+                                                        id={field.name}
+                                                        name={field.name}
+                                                        label={t(field.label)}
+                                                        placeholder=""
+                                                        value={value}
+                                                        items={field.options || []}
+                                                        onChange={(name, val) => handleSelect(name, val, true)}
+                                                        helperText={(touched && error) ? error : undefined}
+                                                        error={(touched && error) ? true : false} />
+                                                    :
+                                                    <Select
+                                                        id={field.name}
+                                                        name={field.name}
+                                                        label={t(field.label)}
+                                                        placeholder=""
+                                                        value={value}
+                                                        items={field.options || []}
+                                                        onChange={(name, val) => handleSelect(name, val)}
+                                                        helperText={(touched && error) ? error : undefined}
+                                                        error={(touched && error) ? true : false}
+                                                    />
+                                            : (field.fieldType === 'multiCheckbox') ?
+                                                <FormControl className='formInput'>
+                                                    <InputLabel shrink htmlFor={field.name} aria-labelledby={field.label}>
+                                                        <b>{t(field.label)}</b >
+                                                    </InputLabel>
+                                                    {(field.options && field.options.map(opt => {
+                                                        return (
+                                                            <FormControlLabel key={`${field.name}-${opt.label}`}
+                                                                className="checkbox-field"
+                                                                control={
+                                                                    <Checkbox checked={value.includes(opt.value)} onChange={(e) => {
+                                                                        handleMultiCheckboxChange(field.name, value, opt.value, e.target.checked);
+                                                                    }} name={field.name} />
+                                                                }
+                                                                label={
+                                                                    <Typography color="var(--Darkgray)" variant="h4" className="fw-bold">
+                                                                        {t(opt.label)}
+                                                                    </Typography>
+                                                                }
                                                             />
-                                                    : (field.fieldType === 'multiCheckbox') ?
+                                                        );
+                                                    }))}
+                                                </FormControl>
+                                                : (field.fieldType === 'checkbox') ?
+                                                    <FormControlLabel
+                                                        className="checkbox-field"
+                                                        control={
+                                                            <Checkbox checked={value} value={value} onChange={(e) => {
+                                                                handleChange(field.name, e.target.checked);
+                                                            }} name={field.name} />
+                                                        }
+                                                        label={
+                                                            <InputLabel shrink htmlFor={field.name} aria-labelledby={field.label} className="checkboxLabel">
+                                                                <b>{t(field.label)}</b >
+                                                            </InputLabel>
+                                                        }
+                                                    />
+                                                    : (field.fieldType === 'radio') ?
                                                         <FormControl className='formInput'>
-                                                            <Typography color="var(--Darkgray)" variant="h4" className="fw-bold">
-                                                                {t(field.label)}
-                                                            </Typography>
+                                                            <InputLabel shrink htmlFor={field.name} aria-labelledby={field.label}>
+                                                                <b>{t(field.label)}</b >
+                                                            </InputLabel>
                                                             {(field.options && field.options.map(opt => {
                                                                 return (
                                                                     <FormControlLabel key={`${field.name}-${opt.label}`}
-                                                                        sx={{ margin: "0px", marginBottom: "1rem", fontWeight: "bold" }}
                                                                         className="checkbox-field"
                                                                         control={
-                                                                            <Checkbox checked={value.includes(opt.value)} onChange={(e) => {
-                                                                                handleMultiCheckboxChange(field.name, value, opt.value, e.target.checked);
+                                                                            <Radio checked={value === opt.value} onClick={() => {
+                                                                                handleRadioChange(field.name, opt.value, opt.value !== value);
                                                                             }} name={field.name} />
                                                                         }
                                                                         label={
@@ -302,76 +337,38 @@ export const DynamicFilterContent: React.FC<IDynamicFilterProps> = ({ provideFil
                                                                 );
                                                             }))}
                                                         </FormControl>
-                                                        : (field.fieldType === 'checkbox') ?
-                                                            <FormControlLabel
-                                                                sx={{ margin: "0px", marginBottom: "1rem", fontWeight: "bold" }}
-                                                                className="checkbox-field"
-                                                                control={
-                                                                    <Checkbox checked={value} value={value} onChange={(e) => {
-                                                                        handleChange(field.name, e.target.checked);
-                                                                    }} name={field.name} />
-                                                                }
-                                                                label={
-                                                                    <Typography color="var(--Darkgray)" variant="h4" className="fw-bold">
-                                                                        {t(field.label)}
-                                                                    </Typography>
-                                                                }
-                                                            />
-                                                            : (field.fieldType === 'radio') ?
-                                                                <FormControl className='formInput'>
-                                                                    <Typography color="var(--Darkgray)" variant="h4" className="fw-bold">
-                                                                        {t(field.label)}
-                                                                    </Typography>
-                                                                    {(field.options && field.options.map(opt => {
-                                                                        return (
-                                                                            <FormControlLabel key={`${field.name}-${opt.label}`}
-                                                                                sx={{ margin: "0px", marginBottom: "1rem", fontWeight: "bold" }}
-                                                                                className="checkbox-field"
-                                                                                control={
-                                                                                    <Radio checked={value === opt.value} onClick={() => {
-                                                                                        handleRadioChange(field.name, opt.value, opt.value !== value);
-                                                                                    }} name={field.name} />
-                                                                                }
-                                                                                label={
-                                                                                    <Typography color="var(--Darkgray)" variant="h4" className="fw-bold">
-                                                                                        {t(opt.label)}
-                                                                                    </Typography>
-                                                                                }
-                                                                            />
-                                                                        );
-                                                                    }))}
-                                                                </FormControl>
-                                                                : null}
+                                                        : null
 
-                                        </Grid>
-                            );
-                        }
-                        )}
+
+                            }
+
+                        </Grid>
+                    );
+                }
+                )}
+                <Grid item className="lastItem" container direction="row" justifyContent="flex-end" >
+                    <Grid item m={2} >
+                        <ClearBtn
+                            type="reset"
+                            types="cancel"
+                            aria-label={t("right-info-panel.filter.buttons.clear all")}
+                            onClick={handleClear}
+                        >
+                            {t("right-info-panel.filter.buttons.clear all")}
+                        </ClearBtn >
                     </Grid>
-                    <Grid container spacing={2} className="row2">
-                        <div className="cust_filter_buttons_container">
-                            <ClearBtn
-                                type="reset"
-                                types="cancel"
-                                aria-label={t("right-info-panel.filter.buttons.clear all")}
-                            >
-                                {t("right-info-panel.filter.buttons.clear all")}
-                            </ClearBtn >
-
-                            <ApplyBtn
-                                type="submit"
-                                types="save"
-                                disabled={!formik.dirty}
-                                aria-label={t("right-info-panel.filter.buttons.apply")}
-                            >
-                                {t("right-info-panel.filter.buttons.apply")}
-                            </ApplyBtn>
-
-                        </div>
+                    <Grid item m={2} mr={6}>
+                        <ApplyBtn
+                            type="submit"
+                            types="save"
+                            disabled={!formik.dirty}
+                            aria-label={t("right-info-panel.filter.buttons.apply")}
+                        >
+                            {t("right-info-panel.filter.buttons.apply")}
+                        </ApplyBtn>
                     </Grid>
                 </Grid>
-            </form>
-        </FormikProvider>
-    </div>;
+            </Grid>
+        </form>
+    </FormikProvider>;
 };
-

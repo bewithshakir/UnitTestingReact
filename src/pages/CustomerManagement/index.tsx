@@ -36,8 +36,9 @@ const Content: React.FC<ContentProps> = () => {
   const history = useHistory();
   const [info, setInfo] = React.useState({});
   const [searchTerm, setSearchTerm] = React.useState("");
+  const [resetTableCollaps, setResetTableCollaps] = React.useState(false);
   const [drawerOpen, setDrawerOpen] = React.useState(false);
-  const [sortOrder, setSortOrder] = React.useState<{ sortBy: string, order: string }>({ sortBy: "date", order: "desc" });
+  const [sortOrder, setSortOrder] = React.useState<{ sortBy: string, order: string }>({ sortBy: "", order: "" });
   const [filterData, setFilterData] = React.useState<{ [key: string]: string[] }>({});
   const [custFilterPanelVisible, setCustFilterPanelVisible] = React.useState(false);
   const [customerId, setCustomerId] = React.useState('');
@@ -100,6 +101,9 @@ const Content: React.FC<ContentProps> = () => {
   const onSortBySlected = (value: string) => {
     let sortOrder;
     switch (value) {
+      case "Customer Name A-Z":
+        sortOrder = { sortBy: "customerName", order: "asc" };
+        break;
       case "Customer Name Z-A":
         sortOrder = { sortBy: "customerName", order: "desc" };
         break;
@@ -110,12 +114,15 @@ const Content: React.FC<ContentProps> = () => {
         sortOrder = { sortBy: "date", order: "asc" };
         break;
       default:
-        sortOrder = { sortBy: "customerName", order: "asc" };
+        sortOrder = { sortBy: "", order: "" };
         break;
     }
+    setResetTableCollaps(true);
     setSortOrder(sortOrder);
   };
+
   const onInputChange = (value: string) => {
+    setResetTableCollaps(true);
     setSearchTerm(value);
   };
 
@@ -137,6 +144,7 @@ const Content: React.FC<ContentProps> = () => {
         break;
       default: return;
     }
+    setResetTableCollaps(true);
   };
 
   const handleRowAction = (action: DataGridActionsMenuOption, row: any) => {
@@ -158,6 +166,7 @@ const Content: React.FC<ContentProps> = () => {
   const handleCustFilterPanelClose = () => setCustFilterPanelVisible(false);
 
   const getFilterParams = (filterObj: { [key: string]: string[] }) => {
+    setResetTableCollaps(true);
     setFilterData(filterObj);
   };
 
@@ -238,17 +247,19 @@ const Content: React.FC<ContentProps> = () => {
             openDrawer={openDrawer}
             searchTerm={searchTerm}
             getId={(id: string) => setCustomerId(id)}
+            resetCollaps={resetTableCollaps}
+            onResetTableCollaps={setResetTableCollaps}
             InnerTableComponent={<Table primaryKey='deliveryLocationId' id={customerId} headCells={headCellsLots} />}
             noDataMsg='Add Customer by clicking on the "Add Customer" button.'
           />
 
-          <RightInfoPanel panelType="customer-filter"
-            open={custFilterPanelVisible} headingText={"customer-filter-panel.header.filters"}
+          <RightInfoPanel panelType="dynamic-filter"
+            open={custFilterPanelVisible} headingText={"customer-filter-panel.header.filter"}
             provideFilterParams={getFilterParams} onClose={handleCustFilterPanelClose}
             fields={filterByFields}
             storeKey={'customerFilter'}
           />
-          <RightInfoPanel panelType="info-view" open={drawerOpen} headingText={infoPanelName} info={info} idStrForEdit={infoPanelEditId} nameStrForEdit={infoPanelName} onClose={drawerClose} />
+          <RightInfoPanel panelType="info-view" category="customer" open={drawerOpen} headingText={infoPanelName} info={info} idStrForEdit={infoPanelEditId} nameStrForEdit={infoPanelName} onClose={drawerClose} />
         </Grid>
       </Grid>
     </Box>

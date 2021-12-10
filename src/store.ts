@@ -28,12 +28,17 @@ interface IFilterState {
   removeFormData: (...args: any) => void,
 }
 
-interface addedCustomerIdState {
+export interface addedCustomerIdState {
   customerId: string,
   setCustomerId: (...args: any) => void,
   removeCustomerId: (...args: any) => void,
 }
-interface addedCustomerNameState {
+export interface addedParkingLotIdState {
+  parkingLotId: string,
+  setParkingLotId: (...args: any) => void,
+  removeParkingLotId: (...args: any) => void,
+}
+export interface addedCustomerNameState {
   customerName: string,
   setCustomerName: (...args: any) => void,
   removeCustomerName: (...args: any) => void,
@@ -74,16 +79,31 @@ export const filterStore = create<IFilterState>((set) => ({
 }));
 
 
-export const useAddedCustomerIdStore = create<addedCustomerIdState>((set) => ({
+export const useAddedCustomerIdStore = create<addedCustomerIdState>(persist((set) => ({
   customerId: '',
   setCustomerId: (customerId: string) => set(() => ({ customerId })),
   removeCustomerId: () => set(() => ({ customerId: '' })),
+}),
+{
+  name: 'customerId'
 }));
 
-export const useAddedCustomerNameStore = create<addedCustomerNameState>((set) => ({
+export const useAddedParkingLotIdStore = create<addedParkingLotIdState>(persist((set) => ({
+  parkingLotId: '',
+  setParkingLotId: (parkingLotId: string) => set(() => ({ parkingLotId })),
+  removeParkingLotId: () => set(() => ({ parkingLotId: '' })),
+}),
+  {
+    name: 'parkingLotId'
+  }));
+
+export const useAddedCustomerNameStore = create<addedCustomerNameState>(persist((set) => ({
   customerName: '',
   setCustomerName: (customerName: string) => set(() => ({ customerName })),
   removeCustomerName: () => set(() => ({ customerName: '' })),
+}),
+{
+  name: 'customerName'
 }));
 
 export const useShowConfirmationDialogBoxStore = create<showConfirmationDialogBox>((set) => ({
