@@ -31,7 +31,7 @@
     "add lot": "Add Lot",
     "add tax": "Add Tax",
     "browse": "Browse",
-    "filter": "Filter"
+    "filter": "Filters"
   },
   "menus": {
     "sortby": {
@@ -106,6 +106,9 @@
     "fileuploaddialog": {
       "title": "Error in File Upload",
       "content": "The file name you are trying to upload is already exists. Do you want to overwrite the file ?"
+    },
+    "form": {
+      "customerTitleAdd": "Add Customer"
     }
   },
   "parkingLot": {
@@ -128,6 +131,7 @@
     }
   },
   "taxes": {
+    "filterHeader":"Filters",
     "navBar": {
       "fuelTax": "Fuel Tax",
       "salesTax": "Sales Tax",
@@ -147,6 +151,9 @@
         "state": "State",
         "city": "City",
         "settlement type": "Settlement Type"
+      },
+      "form": {
+        "fuelTaxTitleAdd": "Add Fuel Tax"
       }
     },
     "salesTax": {
@@ -167,5 +174,8 @@
         "labelLocalRate": "Local rate"
       }
     }
+  },
+  "productManagement": {
+    "search": "Search"
   }
 }

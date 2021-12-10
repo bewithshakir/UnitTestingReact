@@ -1,0 +1,26 @@
+.product-management-container{
+    padding: 0;
+}
+ 
+.productForm{
+    min-height: calc(100vh - 200px);
+    height: 100%;
+
+}
+.productContainer {
+    min-height: 100%; 
+    .lastItem{
+        margin-top: auto; 
+        .cancelButton{
+            margin-top: auto;
+            margin-bottom: 34px;
+        }
+      };
+     
+
+  } 
+
+.masterRightLayout {
+    background: var(--Lightgray_4); 
+    min-height: 100%; 
+}
