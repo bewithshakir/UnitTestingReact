@@ -199,6 +199,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
 
 
                                     <Button
+                                        className='addProductBtn'
                                         types="primary"
                                         aria-label="primary"
                                         startIcon={<Add />}
@@ -383,7 +384,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                                 type="submit"
                                 types="save"
                                 aria-label="save"
-                                className="mr-4 ml-4"
+                                className="mr-4 ml-4 saveProduct"
                                 disabled={disableSubmitBtn()}
                             >
                                 {t("buttons.save")}
