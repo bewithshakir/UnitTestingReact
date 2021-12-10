@@ -25,9 +25,7 @@ exports[`Rendering of Search in Parking Lot Content Component Parking Lot Conten
       }
     }
   >
-     
     <ProductManagement />
-     
   </ContextProvider>
 </ContextProvider>
 `;
