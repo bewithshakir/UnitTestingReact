@@ -56,6 +56,9 @@ export default function HorizontalBar (props: HorizontalBarProps) {
     else if (pathname.includes('salesTax/add') || pathname.includes('salesTax/edit')) {
       history.push('/salesTax');
     }
+    else if (pathname.includes('editFuelTax')) {
+      history.push('/taxes');
+    }
     else {
       props.onBack();
     }
@@ -71,6 +74,8 @@ export default function HorizontalBar (props: HorizontalBarProps) {
         return t("taxes.salesTax.form.titleAdd");
       case history.location.pathname.includes('salesTax/edit'):
         return t("taxes.salesTax.form.titleEdit");
+      case history.location.pathname.includes('editFuelTax'):
+        return t("taxes.salesTax.form.titleFuelEdit");
       default:
         return selectedCustomerName;
     }
