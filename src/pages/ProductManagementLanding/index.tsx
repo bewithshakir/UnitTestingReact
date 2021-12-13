@@ -33,9 +33,6 @@ const ProductManagementContent = memo(() => {
   const [filterData, setFilterData] = React.useState<{ [key: string]: string[] }>({});
   const [searchTerm, setSearchTerm] = React.useState("");
 
-  // const { data, fetchNextPage, isLoading, isFetching }: any = getProductsList(searchTerm, sortOrder, filterData);
-
-  
 
   useEffect(() => {
     const prod1 = { productName: 'Regular', productType: 'Fuel', status: 'Enabled', pricing: '3$' };
