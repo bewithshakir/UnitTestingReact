@@ -755,7 +755,7 @@ exports[`Given Search FuelTax Landing Page Show Fuel List as per searched value 
 </ForwardRef(Box)>
 `;
 
-exports[`Given Sortby Menu on FuelTax Landing Page Render Sortby Menu 1`] = `
+exports[`Given Sortby Menu on FuelTax Landing Page- Render Sortby Menu 1`] = `
 <div>
   <WithStyles(ForwardRef(Button))
     aria-haspopup="true"

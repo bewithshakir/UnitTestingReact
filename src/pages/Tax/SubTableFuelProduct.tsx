@@ -3,6 +3,8 @@ import GridComponent, { headerObj } from '../../components/UIComponents/DataGird
 import { getProducts } from './queries'; 
 import './SubTableFuelProduct.scss';
 import { DataGridActionsMenuOption } from './../../components/UIComponents/Menu/DataGridActionsMenu.component';
+import TaxModel from '../../models/TaxModel';
+import { useHistory } from "react-router-dom";
 
 interface props {
     id:string,
@@ -17,6 +19,10 @@ interface props {
 
 export default function InnerTable(props:props) {
     const [productDetails, setProductDetails] = useState([]);
+    const TaxObj = new TaxModel();
+    const ACTION_TYPES = TaxObj.ACTION_TYPES;
+    const history = useHistory();
+
     const { data, fetchNextPage, isLoading, isFetching }: any = getProducts(props.id);
     useEffect(() => {
         if (data) {
@@ -27,6 +33,17 @@ export default function InnerTable(props:props) {
             setProductDetails(list);
         }
     }, [data]);
+
+    const handleRowAction = (action: DataGridActionsMenuOption, row: any) => {
+        switch (action.action) {
+          case ACTION_TYPES.EDIT:
+            // perform action
+            history.push(`/editFuelTax/?productId=${row.productId}&taxJurisdictionId=${props.id}&countryCode=us`);
+            break;
+          default: return;
+        }
+      };
+    
     return (
         <div className='product-Sub-Table-Container'>
         <GridComponent
@@ -39,6 +56,7 @@ export default function InnerTable(props:props) {
                 getPages={fetchNextPage}
                 rowActionOptions={props.rowActionOptions}
                 showInnerTableMenu={true} 
+                onRowActionSelect={handleRowAction}
                 />
         </div>
     );
