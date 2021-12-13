@@ -14,6 +14,7 @@ import { formStatusObj } from './config';
 import { useGetProductTypes, useGetProductNames, useGetLotProductDetails, useGetPricingModel, useCreateProduct } from './queries';
 import { useShowConfirmationDialogBoxStore } from '../../store';
 import { AddProductValidationSchema } from './validation';
+import { totalPricePerGallon } from '../../utils/math.utils';
 interface FormStatusType {
     message: string
     type: string
@@ -182,7 +183,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
     useGetLotProductDetails(lotId, productId, onGetProductSuccess, onGetProductError);
 
 
-    const totalPrice = (Number(formik.values.manualPriceAmt) || 0) + (Number(formik.values.addedPriceAmt) || 0) - (Number(formik.values.discountPriceAmt) || 0);
+    const totalPrice = totalPricePerGallon(formik.values.manualPriceAmt, formik.values.addedPriceAmt, formik.values.discountPriceAmt, 4);
 
     return (
         <FormikProvider value={formik}>
