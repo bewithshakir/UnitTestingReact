@@ -153,6 +153,7 @@ const AddFuelTax = memo(() => {
         if (selectedProductId != "addFuelTax") {
             setEditMode(true);
             setDisabled(true);
+            isFormValidated(false);
         } else {
             setEditMode(false);
             setDisabled(false);
@@ -266,6 +267,7 @@ const AddFuelTax = memo(() => {
             if (formik.touched && Object.keys(formik.touched).length === 0 && Object.getPrototypeOf(formik.touched) === Object.prototype) {
                 if (formik.dirty) {
                     if (formik.initialValues != formik.values) {
+                        isFormValidated(false);
                         history.push('/taxes');
                     }
                 }
@@ -273,6 +275,7 @@ const AddFuelTax = memo(() => {
                 showDialogBox(true);
             }
         } else {
+            isFormValidated(false);
             history.push('/taxes');
         }
     }
@@ -383,7 +386,7 @@ const AddFuelTax = memo(() => {
                                         id="endDate"
                                         name="endDate"
                                         value={formik.values.endDate}
-                                        label='EFFECTIVE DATE'
+                                        label={t("taxes.fuelTax.form.endDate")}
                                         onChange={formik.setFieldValue}
                                         onClose={() => { formik.setFieldTouched("endDate"); formik.validateField("endDate"); }}
                                         disableBeforeDate={formik.values.endDate}
