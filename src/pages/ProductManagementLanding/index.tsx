@@ -60,9 +60,6 @@ const ProductManagementContent = memo(() => {
   const openDrawer = () => {
     setDrawerOpen(true);
   };
-  const drawerClose = () => {
-    setDrawerOpen(false);
-  };
 
   const handleSalesTaxFilterPanelClose = () => setSalesTaxPanelVisible(false);
 
@@ -150,7 +147,7 @@ const ProductManagementContent = memo(() => {
             rowActionOptions={rowActionOptions}
             searchTerm={searchTerm}
             openDrawer={openDrawer}
-            noDataMsg='Add Tax by clicking on the "Add Tax" button.'
+            noDataMsg='Add Product by clicking on the "Add Product" button.'
           />
           <RightInfoPanel panelType="dynamic-filter"
             open={salesTaxFilterPanelVisible} headingText={t('taxes.filterHeader')}
