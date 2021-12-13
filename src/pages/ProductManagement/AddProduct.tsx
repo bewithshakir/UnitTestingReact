@@ -14,7 +14,8 @@ import { formStatusObj } from './config';
 import { useGetProductTypes, useGetProductNames, useGetLotProductDetails, useGetPricingModel, useCreateProduct } from './queries';
 import { useShowConfirmationDialogBoxStore } from '../../store';
 import { AddProductValidationSchema } from './validation';
-import {dropdownItem} from '../../models/LotProductModel';
+import { dropdownItem } from '../../models/LotProductModel';
+import { totalPricePerGallon } from '../../utils/math.utils';
 interface FormStatusType {
     message: string
     type: string
@@ -181,7 +182,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
 
     useGetLotProductDetails(lotId, productId, onGetProductSuccess, onGetProductError);
 
-    const clearFormFieldsOnCustomPrice = (val:dropdownItem) => {
+    const clearFormFieldsOnCustomPrice = (val: dropdownItem) => {
         if (formik.values?.pricingModel?.label?.toLowerCase() !== "custom") {
             formik.setFieldValue('productNm', '');
             formik.setFieldValue('manualPriceAmt', 0);
@@ -192,11 +193,11 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
         formik.setFieldValue('pricingModel', val);
     };
 
-    const handlePricingModelChange = (val:dropdownItem) => {
+    const handlePricingModelChange = (val: dropdownItem) => {
         clearFormFieldsOnCustomPrice(val);
-    };    
+    };
 
-    const totalPrice = (Number(formik.values.manualPriceAmt) || 0) + (Number(formik.values.addedPriceAmt) || 0) - (Number(formik.values.discountPriceAmt) || 0);
+    const totalPrice = totalPricePerGallon(formik.values.manualPriceAmt, formik.values.addedPriceAmt, formik.values.discountPriceAmt, 4);
 
     return (
         <FormikProvider value={formik}>
@@ -280,7 +281,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                                 items={pricingModelOptions}
                                 helperText={(formik.touched.pricingModel && formik.errors.pricingModel) ? formik.errors.pricingModel.value : undefined}
                                 error={(formik.touched.pricingModel && formik.errors.pricingModel) ? true : false}
-                                onChange={(e,val)=>handlePricingModelChange(val)}
+                                onChange={(e, val) => handlePricingModelChange(val)}
                                 onBlur={() => { formik.setFieldTouched("pricingModel"); formik.validateField("pricingModel"); }}
                                 required
                                 isDisabled={isEditMode ? true : isDisabled}
