@@ -47,7 +47,7 @@ describe('Given Bruger Menu on FuelTax Landing Page', () => {
 
 });
 
-describe('Given Sortby Menu on FuelTax Landing Page', () => {
+describe('Given Sortby Menu on FuelTax Landing Page-', () => {
     const { SortByOptions } = FuelTax.LandingPage;
     test('Render Sortby Menu', () => {
         const FuelTaxSortbyMenu = shallow(
