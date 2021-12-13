@@ -39,7 +39,6 @@ function AddLotForm(): React.ReactElement {
     const { theme } = useTheme();
     const { data: contactTypeList } = useGetContactTypes();
     const [primaryContactType, setPrimaryContactType] = useState('');
-    const [formSuccess, setFormSuccess] = useState(false);
     const [secondaryContactType, setSecondaryContactType] = useState('');
     const [formStatus, setFormStatus] = useState<FormStatusType>({ message: '', type: '' });
     const [apiResposneState, setAPIResponse] = useState(false);
@@ -84,7 +83,7 @@ function AddLotForm(): React.ReactElement {
         setSaveCancelShown(false);
         setDisabled(true);
         setActiveLotId(data?.data?.deliveryLocationId.toString());
-        setFormSuccess(true);
+        // setFormSuccess(true);
         setTimeout(() => {
             setAPIResponse(false);
             history.push(`/customer/${addedCustomerId}/parkingLots/viewLot/${data?.data?.deliveryLocationId.toString()}`);
@@ -347,7 +346,7 @@ function AddLotForm(): React.ReactElement {
                                     {isEditShown && <Grid item xs={6} sx= {{ justifyContent: 'flex-end' }}>
                                         <Button
                                             types="save"
-                                            aria-label="save"
+                                            aria-label="edit"
                                             className="edit-button"
                                             onClick={handleEditButtonClick}
                                         >
@@ -791,9 +790,9 @@ function AddLotForm(): React.ReactElement {
                                         <Button
                                             types="cancel"
                                             aria-label="cancel"
-                                            className="mr-4"
+                                            className="mr-4 cancelBtnPL"
                                             onClick={onClickBack}
-                                            disabled={formSuccess}
+                                            disabled={isDisabled}
                                         >
                                             {t("buttons.cancel")}
                                         </Button>
@@ -801,8 +800,8 @@ function AddLotForm(): React.ReactElement {
                                             type="submit"
                                             types="save"
                                             aria-label="save"
-                                            className="ml-4"
-                                            disabled={(!formik.isValid || !formik.dirty) || formSuccess}
+                                            className="ml-4 saveBtnPL"
+                                            disabled={(!formik.isValid || !formik.dirty) || isDisabled}
                                         >
                                             {t("buttons.save")}
                                         </Button>

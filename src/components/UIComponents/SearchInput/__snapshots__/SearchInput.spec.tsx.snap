@@ -24,6 +24,11 @@ exports[`Rendering of Search Input Component Search Input Snapshot testing 1`] =
       </ForwardRef(IconButton)>
     </ForwardRef(InputAdornment)>
   }
+  style={
+    Object {
+      "width": "100%",
+    }
+  }
   type="text"
   value=""
 />

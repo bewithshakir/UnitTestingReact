@@ -69,7 +69,6 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -226,7 +225,6 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -383,7 +381,6 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -565,7 +562,6 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -726,7 +722,6 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -889,7 +884,6 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -1050,7 +1044,6 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -1232,7 +1225,6 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -1389,7 +1381,6 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -1546,7 +1537,6 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -10992,6 +10982,8 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                               }
                                               disabled={false}
                                               onChange={[Function]}
+                                              onClose={[Function]}
+                                              open={false}
                                               renderInput={[Function]}
                                               shouldDisableDate={[Function]}
                                               value={null}
@@ -11199,6 +11191,8 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                             }
                                             disabled={false}
                                             onChange={[Function]}
+                                            onClose={[Function]}
+                                            open={false}
                                             renderInput={[Function]}
                                             shouldDisableDate={[Function]}
                                             value={null}
@@ -11218,6 +11212,8 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                               }
                                               disabled={false}
                                               onChange={[Function]}
+                                              onClose={[Function]}
+                                              open={false}
                                               renderInput={[Function]}
                                               shouldDisableDate={[Function]}
                                               value={null}
@@ -11246,6 +11242,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                     "minDate": "1899-12-31T18:38:50.000Z",
                                                     "okText": undefined,
                                                     "onChange": [Function],
+                                                    "onClose": [Function],
                                                     "open": false,
                                                     "openPicker": [Function],
                                                     "openTo": "day",
@@ -11285,6 +11282,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                 minDate={"1899-12-31T18:38:50.000Z"}
                                                 onAccept={[Function]}
                                                 onClear={[Function]}
+                                                onClose={[Function]}
                                                 onDismiss={[Function]}
                                                 onSetToday={[Function]}
                                                 open={false}
@@ -11311,6 +11309,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                   maxDate={"2099-12-30T18:30:00.000Z"}
                                                   minDate={"1899-12-31T18:38:50.000Z"}
                                                   onChange={[Function]}
+                                                  onClose={[Function]}
                                                   open={false}
                                                   openPicker={[Function]}
                                                   openTo="day"
@@ -11346,6 +11345,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                         "value": "",
                                                       }
                                                     }
+                                                    onClick={[Function]}
                                                   >
                                                     <MuiTextFieldRoot
                                                       className="MuiTextField-root"
@@ -11353,6 +11353,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                       disabled={false}
                                                       error={false}
                                                       fullWidth={false}
+                                                      onClick={[Function]}
                                                       ownerState={
                                                         Object {
                                                           "InputProps": Object {
@@ -11376,6 +11377,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                           "inputRef": undefined,
                                                           "label": undefined,
                                                           "multiline": false,
+                                                          "onClick": [Function],
                                                           "required": false,
                                                           "select": false,
                                                           "variant": "outlined",
@@ -11390,12 +11392,14 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                         disabled={false}
                                                         error={false}
                                                         fullWidth={false}
+                                                        onClick={[Function]}
                                                         required={false}
                                                         variant="outlined"
                                                       >
                                                         <MuiFormControlRoot
                                                           as="div"
                                                           className="MuiFormControl-root MuiTextField-root css-1xj1k15-MuiTextField-root"
+                                                          onClick={[Function]}
                                                           ownerState={
                                                             Object {
                                                               "children": Array [
@@ -11428,6 +11432,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                               "fullWidth": false,
                                                               "hiddenLabel": false,
                                                               "margin": "none",
+                                                              "onClick": [Function],
                                                               "required": false,
                                                               "size": "medium",
                                                               "variant": "outlined",
@@ -11436,6 +11441,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                         >
                                                           <div
                                                             className="MuiFormControl-root MuiTextField-root css-1u3bzj6-MuiFormControl-root-MuiTextField-root"
+                                                            onClick={[Function]}
                                                           >
                                                             <ForwardRef(OutlinedInput)
                                                               autoFocus={false}
@@ -12852,6 +12858,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                       "minDate": "1899-12-31T18:38:50.000Z",
                                                                       "okText": undefined,
                                                                       "onChange": [Function],
+                                                                      "onClose": [Function],
                                                                       "open": false,
                                                                       "openPicker": [Function],
                                                                       "openTo": "day",
@@ -12888,7 +12895,9 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                   mask="__/__/____"
                                                                   maxDate={"2099-12-30T18:30:00.000Z"}
                                                                   minDate={"1899-12-31T18:38:50.000Z"}
+                                                                  onClose={[Function]}
                                                                   onDateChange={[Function]}
+                                                                  open={false}
                                                                   openTo="day"
                                                                   renderInput={[Function]}
                                                                   shouldDisableDate={[Function]}
@@ -12924,6 +12933,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                           "minDate": "1899-12-31T18:38:50.000Z",
                                                                           "okText": undefined,
                                                                           "onChange": [Function],
+                                                                          "onClose": [Function],
                                                                           "open": false,
                                                                           "openPicker": [Function],
                                                                           "openTo": "day",
@@ -12960,7 +12970,9 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                       mask="__/__/____"
                                                                       maxDate={"2099-12-30T18:30:00.000Z"}
                                                                       minDate={"1899-12-31T18:38:50.000Z"}
+                                                                      onClose={[Function]}
                                                                       onDateChange={[Function]}
+                                                                      open={false}
                                                                       openTo="day"
                                                                       renderInput={[Function]}
                                                                       shouldDisableDate={[Function]}
