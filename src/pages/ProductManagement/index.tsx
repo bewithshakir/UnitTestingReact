@@ -14,7 +14,8 @@ export default function ProductManagement() {
         setSearchTerm(value);
     };
 
-    const [reloadKey, reloadSibling] = useState(null);
+    const [reloadKey, editReloadKey] = useState<string | null>(null);
+    const [topButtonRowDisabled, makeTopButtonRowDisabled] = useState(true);
 
     const { pathname } = useLocation();
     const a = pathname.split('/');
@@ -22,6 +23,7 @@ export default function ProductManagement() {
 
     const getProductId = (row: any) => {
         setProductId(row.applicableProductId);
+        makeTopButtonRowDisabled(false);
     };
 
     const { data: productListData, fetchNextPage, isLoading, isFetching }: any = useProductsByLotId(lotId, searchTerm, reloadKey);
@@ -35,6 +37,11 @@ export default function ProductManagement() {
             setProductList(list);
         }
     }, [productListData]);
+
+    const reloadSibling = (timeStamp: string) => {
+        editReloadKey(timeStamp);
+        makeTopButtonRowDisabled(true);
+    };
 
     return (
         <Fragment>
@@ -52,7 +59,7 @@ export default function ProductManagement() {
                         />
                     </Grid>
                     <Grid item md={8} sm={12} xs={12} p={3} className="masterRightLayout">
-                        <AddProduct lotId={lotId} reloadSibling={reloadSibling} productId={productId} disableAddEditButton={productList.length === 0} />
+                        <AddProduct lotId={lotId} reloadSibling={reloadSibling} productId={productId} disableAddEditButton={topButtonRowDisabled} />
                     </Grid>
                 </Grid>
             </Box>
