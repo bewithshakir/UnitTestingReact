@@ -6,6 +6,7 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { NavLink, useHistory, useLocation } from "react-router-dom";
 import { BackIcon, CustomerProfileIcon2, LogoutIcon, SettingsIcon, USAFlagIcon } from "../../../assets/icons";
+// import NewReleasesIcon from '@mui/icons-material/NewReleases';
 import { useAddedCustomerIdStore, useStore } from "../../../store";
 import { Button } from "../Button/Button.component";
 import NotificationsMenu from '../Menu/NotificationsMenu.component';
@@ -169,7 +170,7 @@ export default function HorizontalBar (props: HorizontalBarProps) {
     return (<>
       <Breadcrumbs separator={<NavigateNextIcon />} aria-label="breadcrumb">
         <Link className="breadcrubs-title" onClick={handleCustomerBack}>
-           { selectedCustomerName }
+          {selectedCustomerName}
         </Link>
         <Link className="breadcrubs-title" href="#" onClick={handleClick}>
           {"Add Lot & Details"}
@@ -239,6 +240,10 @@ export default function HorizontalBar (props: HorizontalBarProps) {
                   {
                     label: t("menus.profile-actions.logout"),
                     icon: <LogoutIcon />
+                  },
+                  {
+                    label: t(process.env.REACT_APP_VERSION_NUMBER?.toString() || ""),
+                    icon: <SettingsIcon />
                   },
                 ]}
                 onSelect={(value) => {

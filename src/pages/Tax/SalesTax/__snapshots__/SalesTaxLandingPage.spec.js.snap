@@ -99,7 +99,6 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -305,7 +304,6 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -799,7 +797,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                             startIcon={<FilterIcon />}
                             types="filter"
                           >
-                            Filters
+                            buttons.filter
                           </Button>
                         </ForwardRef(Grid)>
                         <ForwardRef(Grid)
@@ -829,6 +827,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                             placeholder="taxes.salesTax.city"
                             type="text"
                             value=""
+                            width="100%"
                           />
                         </ForwardRef(Grid)>
                       </ForwardRef(Grid)>
@@ -975,10 +974,10 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                             },
                           ]
                         }
-                        headingText="customer-filter-panel.header.filters"
+                        headingText="taxes.filterHeader"
                         onClose={[Function]}
                         open={false}
-                        panelType="salestax-filter"
+                        panelType="dynamic-filter"
                         provideFilterParams={[Function]}
                         storeKey="salestaxFilter"
                       />
@@ -1041,7 +1040,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                 startIcon={<FilterIcon />}
                                 types="filter"
                               >
-                                Filters
+                                buttons.filter
                               </Button>
                             </ForwardRef(Grid)>
                             <ForwardRef(Grid)
@@ -1071,6 +1070,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                 placeholder="taxes.salesTax.city"
                                 type="text"
                                 value=""
+                                width="100%"
                               />
                             </ForwardRef(Grid)>
                           </ForwardRef(Grid)>,
@@ -1175,7 +1175,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                     startIcon={<FilterIcon />}
                                     types="filter"
                                   >
-                                    Filters
+                                    buttons.filter
                                   </Button>
                                 </ForwardRef(Grid)>,
                                 <ForwardRef(Grid)
@@ -1205,6 +1205,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                     placeholder="taxes.salesTax.city"
                                     type="text"
                                     value=""
+                                    width="100%"
                                   />
                                 </ForwardRef(Grid)>,
                               ],
@@ -1250,7 +1251,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                       startIcon={<FilterIcon />}
                                       types="filter"
                                     >
-                                      Filters
+                                      buttons.filter
                                     </Button>,
                                     "columnSpacing": 0,
                                     "columns": 12,
@@ -1401,7 +1402,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                     </svg>
                                                   </FilterIcon>
                                                 </span>
-                                                Filters
+                                                buttons.filter
                                               </span>
                                               <WithStyles(memo)
                                                 center={false}
@@ -1728,6 +1729,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                       placeholder="taxes.salesTax.city"
                                       type="text"
                                       value=""
+                                      width="100%"
                                     />,
                                     "columnSpacing": 0,
                                     "columns": 12,
@@ -1758,6 +1760,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                     placeholder="taxes.salesTax.city"
                                     type="text"
                                     value=""
+                                    width="100%"
                                   >
                                     <ForwardRef(OutlinedInput)
                                       className="searchinput"
@@ -1782,6 +1785,11 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                             <DropSearchIcon />
                                           </ForwardRef(IconButton)>
                                         </ForwardRef(InputAdornment)>
+                                      }
+                                      style={
+                                        Object {
+                                          "width": "100%",
+                                        }
                                       }
                                       type="text"
                                       value=""
@@ -1864,6 +1872,11 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                               <DropSearchIcon />
                                             </ForwardRef(IconButton)>
                                           </ForwardRef(InputAdornment)>
+                                        }
+                                        style={
+                                          Object {
+                                            "width": "100%",
+                                          }
                                         }
                                         type="text"
                                         value=""
@@ -2295,8 +2308,16 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                   <DropSearchIcon />
                                                 </ForwardRef(IconButton)>
                                               </ForwardRef(InputAdornment)>,
+                                              "style": Object {
+                                                "width": "100%",
+                                              },
                                               "type": "text",
                                               "value": "",
+                                            }
+                                          }
+                                          style={
+                                            Object {
+                                              "width": "100%",
                                             }
                                           }
                                           theme={
@@ -2589,6 +2610,11 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                           <div
                                             className="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-adornedStart searchinput css-1q6at85-MuiInputBase-root-MuiOutlinedInput-root"
                                             onClick={[Function]}
+                                            style={
+                                              Object {
+                                                "width": "100%",
+                                              }
+                                            }
                                           >
                                             <ForwardRef(InputAdornment)
                                               className="adornment"
@@ -2840,6 +2866,9 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                       <DropSearchIcon />
                                                     </ForwardRef(IconButton)>
                                                   </ForwardRef(InputAdornment)>,
+                                                  "style": Object {
+                                                    "width": "100%",
+                                                  },
                                                   "type": "text",
                                                   "value": "",
                                                 }
@@ -3957,10 +3986,10 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                 },
                               ]
                             }
-                            headingText="customer-filter-panel.header.filters"
+                            headingText="taxes.filterHeader"
                             onClose={[Function]}
                             open={false}
-                            panelType="salestax-filter"
+                            panelType="dynamic-filter"
                             provideFilterParams={[Function]}
                             storeKey="salestaxFilter"
                           />,
@@ -6418,10 +6447,10 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                             },
                           ]
                         }
-                        headingText="customer-filter-panel.header.filters"
+                        headingText="taxes.filterHeader"
                         onClose={[Function]}
                         open={false}
-                        panelType="salestax-filter"
+                        panelType="dynamic-filter"
                         provideFilterParams={[Function]}
                         storeKey="salestaxFilter"
                       >
@@ -6448,10 +6477,10 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                 "anchor": "right",
                                 "children": Array [
                                   <PanelHeader
-                                    headingText="customer-filter-panel.header.filters"
+                                    headingText="taxes.filterHeader"
                                     info={null}
                                     onClose={[Function]}
-                                    panelType="salestax-filter"
+                                    panelType="dynamic-filter"
                                   />,
                                   <DynamicFilterContent
                                     fields={
