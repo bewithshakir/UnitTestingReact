@@ -8,7 +8,6 @@ import { fetchQueryTodos } from '../hooks/todos-with-query';
 import { NavLink, useHistory } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import Input from '../components/UIComponents/Input/Input';
-import Select from '../components/UIComponents/Select/dropdown';
 import SearchInput from '../components/UIComponents/SearchInput/SearchInput';
 import useDebounce from '../utils/useDebounce';
 import HorizontalBar from '../components/UIComponents/NavigationBar/HorizontalBar';
