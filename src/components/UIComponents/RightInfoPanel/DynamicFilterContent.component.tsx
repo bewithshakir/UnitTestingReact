@@ -372,4 +372,3 @@ export const DynamicFilterContent: React.FC<IDynamicFilterProps> = ({ provideFil
         </form>
     </FormikProvider>;
 };
-

@@ -107,7 +107,6 @@ export default function ProfileMenu (props: ProfileMenuProps) {
                     <MenuItem
                       key={option.label}
                       className={"menuitem"}
-                      disabled={index === 3}
                       selected={index === selectedIndex}
                       onClick={(event) => handleMenuItemClick(event, index)}
                     >
