@@ -112,6 +112,14 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
         }
     }, [productTypeList, pricingModelList, productNamesList]);
 
+    const clearCustomRelatedFormValues = () => {
+        formik.setFieldValue('productNm', '');
+        formik.setFieldValue('manualPriceAmt', 0);
+        formik.setFieldValue('addedPriceAmt', 0);
+        formik.setFieldValue('discountPriceAmt', 0);
+        formik.setFieldValue('timeSlot', { label: "", value: "" });
+    };
+
     const disableSubmitBtn = () => {
         if (isEditMode) {
             if (formik.touched && Object.keys(formik.touched).length === 0 && Object.getPrototypeOf(formik.touched) === Object.prototype) {
@@ -184,6 +192,26 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
 
     const totalPrice = (Number(formik.values.manualPriceAmt) || 0) + (Number(formik.values.addedPriceAmt) || 0) - (Number(formik.values.discountPriceAmt) || 0);
 
+    const handleProductTypeChange = (fieldName: string, value: any) => {
+        formik.setFieldValue(fieldName, value);
+        // if the non fuel value is selected, clear values from product names and pricing model drop downs
+        if(value.label == "Non-Fuel") {
+            //clear master product name drop down
+            //clear pricing model frop down
+            formik.setFieldValue('masterProductName', { label: "", value: "" });
+            formik.setFieldValue('pricingModel', { label: "", value: "" });
+            setProductNames([]);
+            setPricingModelOptions([]);
+        }
+    };
+
+    const handlePricingModelChange = (fieldName: string, value: any) => {
+        formik.setFieldValue(fieldName, value);
+        if (value != "Custom") {
+            clearCustomRelatedFormValues();
+        }
+    };
+
     return (
         <FormikProvider value={formik}>
             <form onSubmit={formik.handleSubmit} className="productForm">
@@ -196,8 +224,6 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                                     Add New Product or select the product from the table to edit the details
                                 </Grid>
                                 <Grid item lg={4} md={6} sm={8} xs={8} mx={4} my={1} >
-
-
                                     <Button
                                         className='addProductBtn'
                                         types="primary"
@@ -236,7 +262,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                                 items={productTypes}
                                 helperText={(formik.touched.productType && formik.errors.productType) ? formik.errors.productType.value : undefined}
                                 error={(formik.touched.productType && formik.errors.productType) ? true : false}
-                                onChange={formik.setFieldValue}
+                                onChange={handleProductTypeChange}
                                 onBlur={() => { formik.setFieldTouched("productType"); formik.validateField("productType"); }}
                                 required
                                 isDisabled={isEditMode ? true : isDisabled}
@@ -268,7 +294,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                                 items={pricingModelOptions}
                                 helperText={(formik.touched.pricingModel && formik.errors.pricingModel) ? formik.errors.pricingModel.value : undefined}
                                 error={(formik.touched.pricingModel && formik.errors.pricingModel) ? true : false}
-                                onChange={formik.setFieldValue}
+                                onChange={handlePricingModelChange}
                                 onBlur={() => { formik.setFieldTouched("pricingModel"); formik.validateField("pricingModel"); }}
                                 required
                                 isDisabled={isEditMode ? true : isDisabled}
