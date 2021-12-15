@@ -35,9 +35,6 @@ const ProductManagementContent = memo(() => {
 
 
   useEffect(() => {
-    // const prod1 = { productName: 'Regular', productType: 'Fuel', status: 'Enabled', pricing: '3$' };
-    // const prod2 = { productName: 'Diesel', productType: 'Fuel', status: 'Enabled', pricing: '3$' };
-    // const prod3 = { productName: 'DEF', productType: 'Non-Fuel', status: 'Disabled', pricing: '3$' };
     setProductList([
       {
         productId: "44ae7404-ce0a-436d-80fe-5124270d1d4a",
@@ -73,7 +70,7 @@ const ProductManagementContent = memo(() => {
           activeInactiveInd: "Y"
         }
       }
-      ]);   
+    ]);
   }, []);
 
   const onInputChange = (value: string) => {
@@ -85,7 +82,7 @@ const ProductManagementContent = memo(() => {
     setSalesTaxPanelVisible(!salesTaxFilterPanelVisible);
   };
 
- const handleMassAction = () => {
+  const handleMassAction = () => {
     return '';
   };
 

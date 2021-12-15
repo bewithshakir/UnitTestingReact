@@ -1,5 +1,5 @@
 import { headerObj } from '../components/UIComponents/DataGird/grid.component';
-import { YellowFuelIcon, RedFuelIcon, PurpleFuelIcon, BlueFuelIcon, ParrotGreenFuelIcon, AquaFuelIcon, GreenFuelIcon, BrownFuelIcon, OrangeFuelIcon, NavyBlueFuelIcon, AlertExclamationIcon } from '../assets/icons';
+import { YellowFuelIcon, RedFuelIcon, PurpleFuelIcon, SkyBlueFuelIcon, ParrotGreenFuelIcon, AquaFuelIcon, GreenFuelIcon, BrownFuelIcon, OrangeFuelIcon, NavyBlueFuelIcon, AlertExclamationIcon } from '../assets/icons';
 
 export default class ProductModel {
     // General Information
@@ -8,7 +8,7 @@ export default class ProductModel {
 
     // }
 
-    fieldsToDisplay(): headerObj[] {
+    fieldsToDisplay (): headerObj[] {
         return [
             { field: "productNm", label: "PRODUCT NAME", type: 'text' },
             { field: "pricingModelNm", label: "PRICING MODEL", type: 'text' },
@@ -69,15 +69,15 @@ export default class ProductModel {
                         icon: ParrotGreenFuelIcon,
                     },
                     {
-                        value: "#009EB4", 
-                        icon: BlueFuelIcon,
+                        value: "#009EB4",
+                        icon: SkyBlueFuelIcon,
                     },
                 ]
             },
         ];
     }
 
-    dataModel(data: any) {
+    dataModel (data: any) {
         return data.map((x: any) => (
             {
                 ...x,
