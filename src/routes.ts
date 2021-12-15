@@ -46,6 +46,25 @@ export const routes = [
     ]
   },
   {
+    path: "/opisCities",
+    version: "NavLinks",
+    component: lazy(() => import('./pages/OPISCity/')),
+    routes: [
+      {
+        path: "/opisCities/add",
+        component: lazy(() => import('./pages/OPISCity/')),
+        version: "Breadcrumbs-Single",
+        exact: true
+      },
+      {
+        path: "/opisCities/edit/:opisCityId",
+        component: lazy(() => import('./pages/OPISCity/')),
+        version: "Breadcrumbs-Single",
+        exact: true
+      },
+    ]
+  },
+  {
     path: "/taxes",
     component: lazy(() => import("./pages/Tax")),
     version: "NavLinks",
