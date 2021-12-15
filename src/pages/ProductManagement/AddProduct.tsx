@@ -194,7 +194,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                         {!disableAddEditButton && (
                             <>
                                 <Grid item lg={6} md={6} sm={8} xs={8} mx={4} my={1} >
-                                    Add New Product or select the product from the table to edit the details
+                                    <b>Add New Product or select the product from the table to edit the details</b>
                                 </Grid>
                                 <Grid item lg={4} md={6} sm={8} xs={8} mx={4} my={1} >
 
@@ -223,10 +223,6 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                         <Grid item md={12} mx={4} >
                             <Typography color="var(--Darkgray)" variant="h4" gutterBottom className="fw-bold" mb={1}>General Information</Typography>
                         </Grid>
-                        <Grid item lg={12} md={12} sm={12} xs={12} mx={4}>
-                            <hr></hr>
-                        </Grid>
-
                         <Grid item lg={5} md={8} sm={8} xs={8} mx={4} my={1} >
                             <Select
                                 id='productType'
