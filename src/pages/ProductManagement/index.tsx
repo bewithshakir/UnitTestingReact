@@ -47,7 +47,7 @@ export default function ProductManagement() {
         <Fragment>
             <Box display="flex" className='product-management'>
                 <Grid container direction="row">
-                    <Grid item md={4} sm={12} xs={12} sx={{ pt: 3, pr: 3 }}>
+                    <Grid item md={3} sm={12} xs={12} sx={{ pt: 3, pr: 3 }}>
                         <ProductList
                             searchTerm={searchTerm}
                             searchTermInputChange={onInputChange}
@@ -58,7 +58,7 @@ export default function ProductManagement() {
                             handleRowAction={getProductId}
                         />
                     </Grid>
-                    <Grid item md={8} sm={12} xs={12} p={3} className="masterRightLayout">
+                    <Grid item md={9} sm={12} xs={12} p={3} className="masterRightLayout">
                         <AddProduct lotId={lotId} reloadSibling={reloadSibling} productId={productId} disableAddEditButton={topButtonRowDisabled} />
                     </Grid>
                 </Grid>
