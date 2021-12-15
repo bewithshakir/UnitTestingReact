@@ -2210,9 +2210,9 @@ exports[`renders the MultiSelect component with loading snapshot test for the Mu
       loadingMessage={[Function]}
       noOptionsMessage={[Function]}
       onChange={[Function]}
-      options={null}
+      options={Array []}
       placeholder="Select"
-      value={null}
+      value={Array []}
     />
   </ForwardRef(FormControl)>
 </Fragment>
@@ -6478,72 +6478,6 @@ exports[`renders the MultiSelect component with required prop snapshot test for 
           },
         ]
       }
-    />
-  </ForwardRef(FormControl)>
-</Fragment>
-`;
-
-exports[`renders the MultiSelect component with values Snapshot test for the MultiSelect component with values  1`] = `
-<Fragment>
-  <ForwardRef(FormControl)
-    className="select"
-  >
-    <ForwardRef(InputLabel)
-      aria-labelledby="Input"
-      aria-required={false}
-      htmlFor="multi-input-label"
-      shrink={true}
-      style={
-        Object {
-          "color": "var(--Darkgray)",
-        }
-      }
-    >
-      <b>
-        INPUT
-      </b>
-    </ForwardRef(InputLabel)>
-    <ForwardRef
-      className="multi-select-container"
-      classNamePrefix="multi-select"
-      closeMenuOnSelect={false}
-      components={
-        Object {
-          "ClearIndicator": [Function],
-          "DropdownIndicator": [Function],
-          "IndicatorSeparator": [Function],
-          "MultiValue": [Function],
-          "Option": [Function],
-        }
-      }
-      hideSelectedOptions={false}
-      id="multi-input"
-      isMulti={true}
-      isSearchable={false}
-      loadingMessage={[Function]}
-      noOptionsMessage={[Function]}
-      onChange={[Function]}
-      options={
-        Array [
-          Object {
-            "icon": <YellowFuelIcon />,
-            "label": "Label1",
-            "value": "Value1",
-          },
-          Object {
-            "icon": <YellowFuelIcon />,
-            "label": "Label2",
-            "value": "Value2",
-          },
-          Object {
-            "icon": <YellowFuelIcon />,
-            "label": "Label3",
-            "value": "Value3",
-          },
-        ]
-      }
-      placeholder="Select"
-      value={Array []}
     />
   </ForwardRef(FormControl)>
 </Fragment>

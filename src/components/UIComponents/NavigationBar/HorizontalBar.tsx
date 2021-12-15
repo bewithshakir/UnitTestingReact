@@ -77,6 +77,8 @@ export default function HorizontalBar (props: HorizontalBarProps) {
         return t("taxes.salesTax.form.titleEdit");
       case history.location.pathname.includes('editFuelTax'):
         return t("taxes.salesTax.form.titleFuelEdit");
+      case history.location.pathname.includes('productManagement/add'):
+        return t("productManagement.form.titleAdd");
       default:
         return selectedCustomerName;
     }
