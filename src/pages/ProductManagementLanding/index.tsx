@@ -35,10 +35,45 @@ const ProductManagementContent = memo(() => {
 
 
   useEffect(() => {
-    const prod1 = { productName: 'Regular', productType: 'Fuel', status: 'Enabled', pricing: '3$' };
-    const prod2 = { productName: 'Diesel', productType: 'Fuel', status: 'Enabled', pricing: '3$' };
-    const prod3 = { productName: 'DEF', productType: 'Non-Fuel', status: 'Disabled', pricing: '3$' };
-    setProductList([prod1, prod2, prod3]);   
+    // const prod1 = { productName: 'Regular', productType: 'Fuel', status: 'Enabled', pricing: '3$' };
+    // const prod2 = { productName: 'Diesel', productType: 'Fuel', status: 'Enabled', pricing: '3$' };
+    // const prod3 = { productName: 'DEF', productType: 'Non-Fuel', status: 'Disabled', pricing: '3$' };
+    setProductList([
+      {
+        productId: "44ae7404-ce0a-436d-80fe-5124270d1d4a",
+        productName: "Premium",
+        productServiceInd: "Y",
+        productClass: {
+          productClassCd: "1ceb0df7-6459-4905-962b-43302fe43cb4",
+          productClassNm: "Non-Fuel",
+          activeInactiveInd: "Y"
+        },
+        productColor: {
+          productColorCd: "2e2056eb-a95f-4161-a4fd-0f6be61740f2",
+          productColorNm: "Purple",
+          productColorCode: "#641964",
+          countryCode: "us",
+          activeInactiveInd: "Y"
+        }
+      },
+      {
+        productId: "7f2db306-c17c-49a9-a84a-ba6770737c15",
+        productName: "Premium1",
+        productServiceInd: "Y",
+        productClass: {
+          productClassCd: "1ceb0df7-6459-4905-962b-43302fe43cb4",
+          productClassNm: "Non-Fuel",
+          activeInactiveInd: "Y"
+        },
+        productColor: {
+          productColorCd: "8ee38d3d-f792-4b93-a506-b656b3523228",
+          productColorNm: "Sky Blue",
+          productColorCode: "#009EB4",
+          countryCode: "us",
+          activeInactiveInd: "Y"
+        }
+      }
+      ]);   
   }, []);
 
   const onInputChange = (value: string) => {
@@ -136,7 +171,7 @@ const ProductManagementContent = memo(() => {
         <Grid container pt={2.5} display="flex" flexGrow={1}>
           <GridComponent
             primaryKey='productId'
-            rows={productList}
+            rows={productObj.dataModel(productList)}
             header={headCells}
             enableRowSelection
             enableRowAction

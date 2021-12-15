@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+
 import { Collapse, TableBody, TableCell, TableRow, FormControl, Avatar, Icon, ImageList, Typography, Box } from '@mui/material';
 import Checkbox from '../Checkbox/Checkbox.component';
 import React, { useEffect } from "react";
@@ -157,6 +159,22 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
         );
     };
 
+    const renderProduct = (data: any) => {
+        // es-lint-next-disable no-console
+        console.log(data);
+        return (
+            <Box display="flex" alignItems="center" justifyContent={align}>
+                {(icon && !showIconLast) ? renderIcon(icon) : null}
+                {data.productName ?
+                    <Typography variant="h4" pl={(icon && !showIconLast) ? 1 : 0} pr={(icon && showIconLast) ? 1 : 0} color={color} className="fw-bold">
+                        {data.productName}
+                    </Typography> : null}
+                {(icon && showIconLast) ? renderIcon(icon) : null}
+            </Box>
+        );
+    };
+
+
     const renderStatus = (fieldOpts: headerObj, data: any) => {
         let matchedStatus: fieldOptions[] = [];
         if (fieldOpts.fieldOptions) {
@@ -257,7 +275,8 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
                                                         props.headCells[index].type === 'image' ? <Avatar sx={tableAvatarSX} src={row[key]} variant="square" /> :
                                                             props.headCells[index].type === 'images' ? renderImages(row[key]) :
                                                                 props.headCells[index].type === 'dropdown' ? renderSelect() :
-                                                                    props.headCells[index].type === 'status' ? renderStatus(props.headCells[index], row[key]) : ""
+                                                                    props.headCells[index].type === 'status' ? renderStatus(props.headCells[index], row[key]) : 
+                                                                    props.headCells[index].type === 'product' ? renderProduct(row[key]) : ""
                                     }
                                 </TableCell>
                             )}

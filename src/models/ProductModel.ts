@@ -1,6 +1,9 @@
+/* eslint-disable no-console */
+
 import { useTranslation } from 'react-i18next';
 import { headerObj } from './../components/UIComponents/DataGird/grid.component';
-import { ExportIcon, YellowFuelIcon, RedFuelIcon, GreenFuelIcon, NavyBlueFuelIcon, PositiveCricleIcon, ExpireWalletIcon } from '../assets/icons';
+// import { ExportIcon, YellowFuelIcon, RedFuelIcon, GreenFuelIcon, NavyBlueFuelIcon, PositiveCricleIcon, ExpireWalletIcon } from '../assets/icons';
+import { ExportIcon, PositiveCricleIcon, ExpireWalletIcon } from '../assets/icons';
 
 
 export default class ProductModel {
@@ -17,6 +20,23 @@ export default class ProductModel {
         this.pricing = '';
     }
     
+    dataModel (data: any) {
+        return data.map((obj: any) => {
+            
+            return ({
+                ...obj,
+                product: {
+                    productId: obj.productId,
+                    productName: obj.productName,
+                    productServiceInd: obj.productServiceInd,
+                    productColorCd: obj.productColor.productColorCd,
+                    productColorNm: obj.productColor.productColorNm,
+                    productColorCode: obj.productColor.productColorCode,
+                }
+            });
+        });
+    }
+
     MASS_ACTION_TYPES = {
         IMPORT: 'import',
         EXPORT: 'export',
@@ -52,46 +72,45 @@ export default class ProductModel {
     fieldsToDisplay (): headerObj[] {
         return [
             { 
-                field: "productName", 
+                field: "product", 
                 label: "PRODUCT NAME", 
-                type: 'status', align: 'left', sortable: true,
-                fieldOptions: [
-                    {
-                        value: "Regular",
-                        displayValue: "Regular",
-                        icon: YellowFuelIcon,
-                    },
-                    {
-                        value: "Premium",
-                        displayValue: "Premium",
-                        icon: RedFuelIcon
-                    },
-                    {
-                        value: "Diesel",
-                        displayValue: "Diesel",
-                        icon: GreenFuelIcon,
-                    },
-                    {
-                        value: "Ad Blue",
-                        displayValue: "Ad Blue",
-                        icon: NavyBlueFuelIcon
-                    },
-                    {
-                        value: "DEF",
-                        displayValue: "DEF",
-                        icon: NavyBlueFuelIcon
-                    },
-                    {
-                        value: "V-Power",
-                        displayValue: "V-Power",
-                        icon: NavyBlueFuelIcon
-                    },
-                    {
-                        value: "Petrol",
-                        displayValue: "Petrol",
-                        icon: NavyBlueFuelIcon
-                    }
-                ] 
+                type: 'product', align: 'left', sortable: true,
+                // fieldOptions: [
+                //     {
+                //         value: "Regular",
+                //         icon: YellowFuelIcon,
+                //     },
+                //     {
+                //         value: "Premium",
+                //         // displayValue: "Premium",
+                //         icon: RedFuelIcon
+                //     },
+                //     {
+                //         value: "Diesel",
+                //         // displayValue: "Diesel",
+                //         icon: GreenFuelIcon,
+                //     },
+                //     {
+                //         value: "Ad Blue",
+                //         // displayValue: "Ad Blue",
+                //         icon: NavyBlueFuelIcon
+                //     },
+                //     {
+                //         value: "DEF",
+                //         // displayValue: "DEF",
+                //         icon: NavyBlueFuelIcon
+                //     },
+                //     {
+                //         value: "V-Power",
+                //         // displayValue: "V-Power",
+                //         icon: NavyBlueFuelIcon
+                //     },
+                //     {
+                //         value: "Petrol",
+                //         // displayValue: "Petrol",
+                //         icon: NavyBlueFuelIcon
+                //     }
+                // ] 
             },
             { field: "productType", label: "PRODUCT TYPE", type: 'text',  align: 'left', sortable: true},
             { 
