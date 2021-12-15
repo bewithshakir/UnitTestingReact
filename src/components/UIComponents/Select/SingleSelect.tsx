@@ -31,6 +31,7 @@ interface props {
     onBlur?: (...args: any[]) => void;
     disabled?: boolean;
     components?: any;
+    isLoading?: boolean;
 }
 
 export default function SingleSelect(props: props) {

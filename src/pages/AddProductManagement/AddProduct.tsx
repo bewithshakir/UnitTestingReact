@@ -14,6 +14,7 @@ import Select from '../../components/UIComponents/Select/SingleSelect';
 import './AddProduct.scss';
 import { HorizontalBarVersionState, useShowConfirmationDialogBoxStore, useStore } from '../../store';
 import { getCheckBoxDisabledByPaymentType } from '../../utils/helperFunctions';
+import { useGetProductTypes } from './queries'
 
 interface IFormStatus {
     message: string
@@ -52,10 +53,11 @@ const AddProduct: React.FC = () => {
     const { t } = useTranslation();
     const history = useHistory();
     const [apiResposneState, setAPIResponse] = useState(false);
-    const [productTypes, setProductTypes] = useState([
-        { label: 'one', value: 'One' },
-        { label: 'two', value: 'Two' },
-    ]);
+    const { data: productTypes, isError, isLoading } = useGetProductTypes();
+    // const [productTypes, setProductTypes] = useState([
+    //     { label: 'one', value: 'One' },
+    //     { label: 'two', value: 'Two' },
+    // ]);
     const [productColors, setProductColors] = useState([
         { label: 'color1', value: 'Color1' },
         { label: 'color2', value: 'Color2' },
@@ -72,7 +74,6 @@ const AddProduct: React.FC = () => {
     const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
     setVersion("Breadcrumbs-Single");
 
-    
 
     const formik = useFormik({
         initialValues,
@@ -108,6 +109,7 @@ const AddProduct: React.FC = () => {
         
     };
 
+
     
     return (
         <Box display="flex" className="global_main_wrapper">
@@ -141,6 +143,7 @@ const AddProduct: React.FC = () => {
                                         label='PRODUCT TYPE'
                                         placeholder='Choose'
                                         items={productTypes}
+                                        isLoading={true}
                                         helperText={(formik.touched.productType && formik.errors.productType) ? formik.errors.productType.value : undefined}
                                         error={(formik.touched.productType && formik.errors.productType) ? true : false}
                                         onChange={formik.setFieldValue}
