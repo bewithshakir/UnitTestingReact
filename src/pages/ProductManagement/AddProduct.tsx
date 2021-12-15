@@ -48,8 +48,6 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
     const [formStatus, setFormStatus] = useState<FormStatusType>({ message: '', type: '' });
     const showDialogBox = useShowConfirmationDialogBoxStore((state) => state.showDialogBox);
     const hideDialogBox = useShowConfirmationDialogBoxStore((state) => state.hideDialogBox);
-    // const [savedPricingModel, setSavedPricingModel] = useState(0);
-    // const prevCount = usePrevious(count);
 
     const resetFormFieldValue = useShowConfirmationDialogBoxStore((state) => state.resetFormFieldValue);
     const [formSuccess, setFormSuccess] = useState(false);
@@ -143,9 +141,6 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
         }
     };
 
-
-
-
     const createNewProduct = (form: any) => {
         try {
             addNewProduct({
@@ -201,7 +196,6 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
         setFieldValue('pricingModel', val);
         disableSubmitBtn();
     };
-
 
     const totalPrice = (Number(formik.values.manualPriceAmt) || 0) + (Number(formik.values.addedPriceAmt) || 0) - (Number(formik.values.discountPriceAmt) || 0);
 
