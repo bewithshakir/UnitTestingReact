@@ -47,6 +47,7 @@ exports[`renders the Default Data Grid component snapshot test for Default Data 
       }
       numSelected={0}
       onRequestSort={[Function]}
+      onResetTableCollaps={[MockFunction]}
       onSelectAllClick={[Function]}
       order="asc"
       orderBy=""
