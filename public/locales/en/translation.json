@@ -30,6 +30,7 @@
     "sort by": "Sort by",
     "add lot": "Add Lot",
     "add tax": "Add Tax",
+    "add city": "Add City",
     "browse": "Browse",
     "filter": "Filters"
   },
@@ -174,6 +175,17 @@
         "labelFederalRate": "Federal rate",
         "labelLocalRate": "Local rate",
         "titleFuelEdit": "Edit Fuel Tax"
+      }
+    },
+    "opisCities": {
+      "form": {
+        "titleAdd": "Add OPIS City",
+        "state": "State",
+        "select state": "Select State",
+        "select city": "Select City",
+        "city": "City",
+        "city id": "City Id",
+        "fill msg": "Fill all the Mandatory fields * "
       }
     }
   },
