@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { FormikProvider, useFormik } from 'formik';
 import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';
@@ -22,7 +22,7 @@ interface FormStatusProps {
     [key: string]: FormStatusType
 }
 type dropdownItem = {
-    label: string ,
+    label: string,
     value: string | number,
     icon?: JSX.Element
 }
@@ -34,14 +34,6 @@ interface Props {
     disableAddEditButton: boolean
 }
 const formStatusProps: FormStatusProps = formStatusObj;
-
-// const usePrevious = (value:any) => {
-//     const ref = useRef();
-//     useEffect(() => {
-//       ref.current = value;
-//     });
-//     return ref.current;
-//   }
 
 export default function AddProduct({ lotId, reloadSibling, productId, disableAddEditButton }: Props) {
 
@@ -56,7 +48,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
     const [formStatus, setFormStatus] = useState<FormStatusType>({ message: '', type: '' });
     const showDialogBox = useShowConfirmationDialogBoxStore((state) => state.showDialogBox);
     const hideDialogBox = useShowConfirmationDialogBoxStore((state) => state.hideDialogBox);
-    // const [count, setCount] = useState(0);
+    // const [savedPricingModel, setSavedPricingModel] = useState(0);
     // const prevCount = usePrevious(count);
 
     const resetFormFieldValue = useShowConfirmationDialogBoxStore((state) => state.resetFormFieldValue);
@@ -151,7 +143,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
         }
     };
 
- 
+
 
 
     const createNewProduct = (form: any) => {
@@ -199,8 +191,16 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
     useGetLotProductDetails(lotId, productId, onGetProductSuccess, onGetProductError);
 
     const handlePricingModelChange = (e: React.ChangeEvent<HTMLInputElement>, val: dropdownItem, setFieldValue: ((...args: any[]) => void)) => {
+        if (formik.values?.pricingModel?.label !== "Custom" && val && val.label === 'Custom') {
+            formik.setFieldValue('productNm', '');
+            formik.setFieldValue('manualPriceAmt', 0);
+            formik.setFieldValue('addedPriceAmt', 0);
+            formik.setFieldValue('discountPriceAmt', 0);
+            formik.setFieldValue('timeSlot', { label: "", value: "" });
+        }
         setFieldValue('pricingModel', val);
-    }; 
+        disableSubmitBtn();
+    };
 
 
     const totalPrice = (Number(formik.values.manualPriceAmt) || 0) + (Number(formik.values.addedPriceAmt) || 0) - (Number(formik.values.discountPriceAmt) || 0);
@@ -289,7 +289,6 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                                 items={pricingModelOptions}
                                 helperText={(formik.touched.pricingModel && formik.errors.pricingModel) ? formik.errors.pricingModel.value : undefined}
                                 error={(formik.touched.pricingModel && formik.errors.pricingModel) ? true : false}
-                                // onChange={formik.setFieldValue}
                                 onChange={(e, val) => handlePricingModelChange(e, val, formik.setFieldValue)}
                                 onBlur={() => { formik.setFieldTouched("pricingModel"); formik.validateField("pricingModel"); }}
                                 required
