@@ -47,7 +47,6 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
     const hideDialogBox = useShowConfirmationDialogBoxStore((state) => state.hideDialogBox);
 
     const resetFormFieldValue = useShowConfirmationDialogBoxStore((state) => state.resetFormFieldValue);
-    const [formSuccess, setFormSuccess] = useState(false);
     const [apiResposneState, setAPIResponse] = useState(false);
 
     const [isDisabled, setIsDisabled] = useState(false);
@@ -91,7 +90,6 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
         hideDialogBox(false);
         setAPIResponse(true);
         setFormStatus(formStatusProps.success);
-        setFormSuccess(true);
         reloadSibling && reloadSibling(new Date());
         setTimeout(() => {
             setAPIResponse(false);
@@ -385,7 +383,6 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                                 aria-label="cancel"
                                 onClick={onClickBack}
                                 className="mr-4"
-                                disabled={formSuccess}
                             >
                                 {t("buttons.cancel")}
                             </Button>
