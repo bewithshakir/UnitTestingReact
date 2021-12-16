@@ -14,6 +14,7 @@ import { formStatusObj } from './config';
 import { useGetProductTypes, useGetProductNames, useGetLotProductDetails, useGetPricingModel, useCreateProduct } from './queries';
 import { useShowConfirmationDialogBoxStore } from '../../store';
 import { AddProductValidationSchema } from './validation';
+import {dropdownItem} from '../../models/LotProductModel';
 interface FormStatusType {
     message: string
     type: string
@@ -136,7 +137,6 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
         }
     };
 
-
     const createNewProduct = (form: any) => {
         try {
             addNewProduct({
@@ -181,6 +181,20 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
 
     useGetLotProductDetails(lotId, productId, onGetProductSuccess, onGetProductError);
 
+    const clearFormFieldsOnCustomPrice = (val:dropdownItem) => {
+        if (formik.values?.pricingModel?.label?.toLowerCase() !== "custom") {
+            formik.setFieldValue('productNm', '');
+            formik.setFieldValue('manualPriceAmt', 0);
+            formik.setFieldValue('addedPriceAmt', 0);
+            formik.setFieldValue('discountPriceAmt', 0);
+            formik.setFieldValue('timeSlot', { label: "", value: "" });
+        }
+        formik.setFieldValue('pricingModel', val);
+    };
+
+    const handlePricingModelChange = (val:dropdownItem) => {
+        clearFormFieldsOnCustomPrice(val);
+    };    
 
     const totalPrice = (Number(formik.values.manualPriceAmt) || 0) + (Number(formik.values.addedPriceAmt) || 0) - (Number(formik.values.discountPriceAmt) || 0);
 
@@ -196,8 +210,6 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                                     Add New Product or select the product from the table to edit the details
                                 </Grid>
                                 <Grid item lg={4} md={6} sm={8} xs={8} mx={4} my={1} >
-
-
                                     <Button
                                         className='addProductBtn'
                                         types="primary"
@@ -268,7 +280,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                                 items={pricingModelOptions}
                                 helperText={(formik.touched.pricingModel && formik.errors.pricingModel) ? formik.errors.pricingModel.value : undefined}
                                 error={(formik.touched.pricingModel && formik.errors.pricingModel) ? true : false}
-                                onChange={formik.setFieldValue}
+                                onChange={(e,val)=>handlePricingModelChange(val)}
                                 onBlur={() => { formik.setFieldTouched("pricingModel"); formik.validateField("pricingModel"); }}
                                 required
                                 isDisabled={isEditMode ? true : isDisabled}
