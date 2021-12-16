@@ -18,7 +18,7 @@ interface props {
     label?: string;
     placeholder?: string;
     value?: item | Array<item>;
-    items: Array<item>;
+    items: Array<item> | [];
 
     required?: boolean;
     error?: boolean;
@@ -32,6 +32,7 @@ interface props {
     disabled?: boolean;
     components?: any;
     isLoading?: boolean;
+    noOptionsMessage? : () => string
 }
 
 export default function SingleSelect(props: props) {
@@ -91,6 +92,8 @@ export default function SingleSelect(props: props) {
                     isSearchable={false}
                     isDisabled={props.isDisabled}
                     onKeyDown={e => e.preventDefault()}
+                    isLoading={props.isLoading}
+                    noOptionsMessage={props.noOptionsMessage}
                 />
                 {props.helperText && (
                     <FormHelperText

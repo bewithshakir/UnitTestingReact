@@ -1,8 +1,9 @@
-import React, { useCallback, useState } from 'react';
+import React, { memo, useCallback, useState } from 'react';
 import { Box, Container, Grid, Typography } from '@mui/material';
 import { useFormik } from 'formik';
 import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';
+import Icon from '@material-ui/core/Icon';
 
 import AutocompleteInput from '../../components/UIComponents/GoogleAddressComponent/GoogleAutoCompleteAddress';
 import Input from '../../components/UIComponents/Input/Input';
@@ -14,7 +15,9 @@ import Select from '../../components/UIComponents/Select/SingleSelect';
 import './AddProduct.scss';
 import { HorizontalBarVersionState, useShowConfirmationDialogBoxStore, useStore } from '../../store';
 import { getCheckBoxDisabledByPaymentType } from '../../utils/helperFunctions';
-import { useGetProductTypes } from './queries'
+import { useAddProductManagement, useGetProductColors, useGetProductTypes } from './queries'
+import { LoadingIcon } from '../../assets/icons';
+
 
 interface IFormStatus {
     message: string
@@ -49,23 +52,18 @@ const formStatusProps: IFormStatusProps = {
 };
 
 const initialValues = new ProductManagementModel();
-const AddProduct: React.FC = () => {
+const AddProduct: React.FC = memo(() => {
     const { t } = useTranslation();
     const history = useHistory();
     const [apiResposneState, setAPIResponse] = useState(false);
-    const { data: productTypes, isError, isLoading } = useGetProductTypes();
-    // const [productTypes, setProductTypes] = useState([
-    //     { label: 'one', value: 'One' },
-    //     { label: 'two', value: 'Two' },
-    // ]);
-    const [productColors, setProductColors] = useState([
-        { label: 'color1', value: 'Color1' },
-        { label: 'color2', value: 'Color2' },
+    const { data: productTypesList, isLoading: isLoadingTypes, } = useGetProductTypes('us');
+    const { data: productColorsList, isLoading: isLoadingColors } = useGetProductColors('us');
+    
+    const [productStatusList] = useState([
+        { label: 'Enabled', value: 'Y' },
+        { label: 'Disabled', value: 'N' },
     ]);
-    const [productStatus, setProductStatus] = useState([
-        { label: 'status1', value: 'Status1' },
-        { label: 'status2', value: 'Status2' },
-    ]);
+    
     const [formStatus, setFormStatus] = useState<IFormStatus>({
         message: '',
         type: '',
@@ -79,9 +77,43 @@ const AddProduct: React.FC = () => {
         initialValues,
         validationSchema: AddProductValidationSchema,
         onSubmit: (values) => {
-            console.log('values---', values)
+            createProductData(values);
         }
     });
+
+    const onSuccessAddProduct = ()=> {
+        setAPIResponse(true);
+        setFormStatus(formStatusProps.success);
+        setTimeout(() => {
+            setAPIResponse(false);
+        }, 6000);
+    }
+    const onErrorAddProduct = (err: any)=> {
+        const { data } = err.response;
+        setAPIResponse(true);
+        setFormStatus({ message: data?.error?.details[0] || formStatusProps.error.message, type: 'Error' });
+        setTimeout(() => {
+            setAPIResponse(false);
+        }, 6000);
+    }
+
+    const {mutate: addNewProduct, isError: isErrorAddProduct, isLoading: isLoadingAddProduct } = useAddProductManagement(onSuccessAddProduct, onErrorAddProduct);
+    const createProductData = (form: any)=> {
+        try {
+            const payload = {
+                countryCode: 'us',
+                productName: form.productName,
+                productType: form.productType.value,
+                productColor: form.productColor.value,
+                productStatus: form.productStatus.value,
+                productPricing: +form.productPricing
+            
+            }
+            addNewProduct(payload);
+        } catch (error) {
+            setFormStatus(formStatusProps.error);
+        }
+    }
     
     const showDialogBox = useShowConfirmationDialogBoxStore((state) => state.showDialogBox);
     const isFormValidated = useShowConfirmationDialogBoxStore((state) => state.setFormFieldValue);
@@ -136,20 +168,19 @@ const AddProduct: React.FC = () => {
                             </Grid>
                             <Grid item xs={12} md={12} pr={2.5} pb={2.5}>
                                 <Grid item xs={12} md={6}>
-                                    
                                     <Select
                                         id='productType'
                                         name='productType'
-                                        label='PRODUCT TYPE'
+                                        label={t("productManagement.form.productType")}
                                         placeholder='Choose'
-                                        items={productTypes}
-                                        isLoading={true}
+                                        items={productTypesList}
                                         helperText={(formik.touched.productType && formik.errors.productType) ? formik.errors.productType.value : undefined}
                                         error={(formik.touched.productType && formik.errors.productType) ? true : false}
                                         onChange={formik.setFieldValue}
                                         onBlur={() => { formik.setFieldTouched("productType"); formik.validateField("productType"); }}
                                         required
-                                        isDisabled={false}
+                                        isLoading={isLoadingTypes}
+                                        noOptionsMessage={() => "No data Found"}
                                     />
 
                                 </Grid>
@@ -159,14 +190,16 @@ const AddProduct: React.FC = () => {
                                     <Select
                                         id='productColor'
                                         name='productColor'
-                                        label='PRODUCT COLOR'
+                                        label={t("productManagement.form.productColor")}
                                         placeholder='Choose'
-                                        items={productColors}
+                                        items={productColorsList}
                                         helperText={(formik.touched.productColor && formik.errors.productColor) ? formik.errors.productColor.value : undefined}
                                         error={(formik.touched.productColor && formik.errors.productColor) ? true : false}
                                         onChange={formik.setFieldValue}
                                         onBlur={() => { formik.setFieldTouched("productColor"); formik.validateField("productColor"); }}
                                         required
+                                        isLoading={isLoadingColors}
+                                        noOptionsMessage={() => "No data Found"}
                                     />
                                 </Grid>
                             </Grid>
@@ -174,29 +207,30 @@ const AddProduct: React.FC = () => {
                             <Grid item xs={12} md={12} pr={2.5} pb={2.5}>
                                 <Grid item xs={12} md={6}>
                                     <Select
-                                        id='status'
-                                        name='status'
-                                        label='PRODUCT COLOR'
+                                        id='productStatus'
+                                        name='productStatus'
+                                        label={t("productManagement.form.productStatus")}
                                         placeholder='Choose'
-                                        items={productStatus}
-                                        helperText={(formik.touched.status && formik.errors.status) ? formik.errors.status.value : undefined}
-                                        error={(formik.touched.status && formik.errors.status) ? true : false}
+                                        items={productStatusList}
+                                        helperText={(formik.touched.productStatus && formik.errors.productStatus) ? formik.errors.productStatus.value : undefined}
+                                        error={(formik.touched.productStatus && formik.errors.productStatus) ? true : false}
                                         onChange={formik.setFieldValue}
-                                        onBlur={() => { formik.setFieldTouched("status"); formik.validateField("status"); }}
+                                        onBlur={() => { formik.setFieldTouched("productStatus"); formik.validateField("productStatus"); }}
                                         required
                                     />
                                 </Grid>
                             </Grid>
+
                             <Grid item xs={12} md={12} pr={2.5} pb={5.5}>
                                 <Grid item xs={12} md={6}>
                                     <Input
-                                        id='manualPricing'
-                                        label={t("productManagement.form.manualPricing")}
+                                        id='productPricing'
+                                        label={t("productManagement.form.productPricing")}
                                         type='text'
-                                        helperText={(formik.touched.manualPricing && formik.errors.manualPricing) ? formik.errors.manualPricing : undefined}
-                                        error={(formik.touched.manualPricing && formik.errors.manualPricing) ? true : false}
+                                        helperText={(formik.touched.productPricing && formik.errors.productPricing) ? formik.errors.productPricing : undefined}
+                                        error={(formik.touched.productPricing && formik.errors.productPricing) ? true : false}
                                         description=''
-                                        {...formik.getFieldProps('manualPricing')}
+                                        {...formik.getFieldProps('productPricing')}
                                         required
                                     />
                                 </Grid>
@@ -224,41 +258,12 @@ const AddProduct: React.FC = () => {
                                             data-test="save"
                                             disabled={disableButton()}
                                         >
-                                            {t("buttons.save")}
+                                            {t("buttons.save")} { isLoadingAddProduct && <LoadingIcon className='loading_save_icon' />}
                                         </Button>
 
                                     </Box>
                                     <ToastMessage isOpen={apiResposneState} messageType={formStatus.type} onClose={() => { return ''; }} message={formStatus.message} />
                                 </Grid>
-                            </Grid>
-
-
-                        </Grid>
-                        <Grid container mt={1} justifyContent="flex-end">
-                            <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
-                                {/* <Box className="form-action-section">
-                                    <Button
-                                        types="cancel"
-                                        aria-label={t("buttons.cancel")}
-                                        className="mr-4"
-                                        onClick={onClickBack}
-                                        data-test="cancel"
-                                    >
-                                        {t("buttons.cancel")}
-                                    </Button>
-                                    <Button
-                                        type="submit"
-                                        types="save"
-                                        aria-label={t("buttons.save")}
-                                        className="ml-4"
-                                        data-test="save"
-                                        disabled={disableButton()}
-                                    >
-                                        {t("buttons.save")}
-                                    </Button>
-                                    
-                                </Box>
-                                <ToastMessage isOpen={apiResposneState} messageType={formStatus.type} onClose={() => { return ''; }} message={formStatus.message} /> */}
                             </Grid>
                         </Grid>
                     </form>
@@ -266,6 +271,6 @@ const AddProduct: React.FC = () => {
             </Grid>
         </Box>
     )
-};
+});
 
 export default AddProduct;

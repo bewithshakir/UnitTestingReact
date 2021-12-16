@@ -189,8 +189,8 @@
       "productName": "Product Name",
       "productType": "Product Type",
       "productColor": "Product Color",
-      "status": "Status",
-      "manualPricing": "Manual Pricing"
+      "productStatus": "Status",
+      "productPricing": "Manual Pricing"
     },
     "search": "Search"
   }

@@ -3,21 +3,25 @@ import { DeleteIcon, ExportIcon, ImportIcon } from "../assets/icons";
 
 export interface SelectPropsInt {
     label: string,
-    value: string | number,
+    value: string,
 }
 export default class ProductManagementModel {
+    countryCode?: string;
     productName: string;
     productType:  SelectPropsInt;
     productColor:  SelectPropsInt;
-    status: SelectPropsInt;
+    productStatus: SelectPropsInt;
     manualPricing: string;
+    productPricing: string;
 
     constructor() {
+        this.countryCode = 'us'
         this.productName = '';
         this.productType = { label: '', value: '' };
         this.productColor = { label: '', value: '' };
-        this.status = { label: '', value: '' };
+        this.productStatus = { label: '', value: '' };
         this.manualPricing = '';
+        this.productPricing = '';
     }
     
     MASS_ACTION_TYPES = {

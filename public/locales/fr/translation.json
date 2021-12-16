@@ -106,8 +106,8 @@
       "productName": "Nom du produit",
       "productType": "type de produit",
       "productColor": "Couleur du produit",
-      "status": "Statut",
-      "manualPricing": "Tarification manuelle"
+      "productStatus": "Statut",
+      "productPricing": "Tarification manuelle"
     }
   }
 }
