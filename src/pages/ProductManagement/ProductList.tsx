@@ -38,7 +38,7 @@ export default function ProductList(props: props) {
                         placeholder={t('productManagement.search')}
                     />
                 </Grid>
-                <Grid item xs={4} md={2} pb={3} pl={4.75}>
+                <Grid item xs={4} md={2} pb={3} pl={2}>
                     <Button
                         types="delete2"
                         aria-label="delete"
