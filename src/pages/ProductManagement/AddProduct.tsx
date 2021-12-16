@@ -14,7 +14,6 @@ import { formStatusObj } from './config';
 import { useGetProductTypes, useGetProductNames, useGetLotProductDetails, useGetPricingModel, useCreateProduct } from './queries';
 import { useAddedCustomerIdStore, useAddedCustomerNameStore, useShowConfirmationDialogBoxStore } from '../../store';
 import { AddProductValidationSchema } from './validation';
-// import { dropdownItem } from '../../models/LotProductModel';
 import { totalPricePerGallon } from '../../utils/math.utils';
 interface FormStatusType {
     message: string
@@ -54,6 +53,8 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
     const isEditMode = false;
     const customerId = useAddedCustomerIdStore((state) => state.customerId);
     const customerName = useAddedCustomerNameStore((state) => state.customerName);
+
+    const Str_Custom_Text = "Custom";
 
 
     const initialValues = {
@@ -204,14 +205,11 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
 
     const handleProductTypeChange = (fieldName: string, value: any) => {
         formik.setFieldValue(fieldName, value);
+        formik.setFieldValue('masterProductName', { label: "", value: "" });
         // if the non fuel value is selected, clear values from product names and pricing model drop downs
         if(value.label == "Non-Fuel") {
             //clear master product name drop down
-            //clear pricing model frop down
-            formik.setFieldValue('masterProductName', { label: "", value: "" });
-            formik.setFieldValue('pricingModel', { label: "", value: "" });
             setProductNames([]);
-            setPricingModelOptions([]);
         } else if (value.label == "Fuel") {
             if (pricingModelList?.data?.length) {
                 setPricingModelOptions(pricingModelList.data.map((obj: any) => ({ label: obj.pricingModelNm.trim(), value: obj.pricingModelCd.trim() })));
@@ -221,7 +219,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
 
     const handlePricingModelChange = (fieldName: string, value: any) => {
         formik.setFieldValue(fieldName, value);
-        if (value != "Custom") {
+        if (value != Str_Custom_Text) {
             clearCustomRelatedFormValues();
         }
     };
