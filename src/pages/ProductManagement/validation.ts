@@ -1,9 +1,9 @@
 import * as Yup from 'yup';
-const selectOption = Yup.object({ label: Yup.string(), value: Yup.string()}).required('Required');
+const selectOption = Yup.object().shape({ label: Yup.string().required('Required'), value: Yup.string().required('Required') }).required('Required');
+const selectOptional = Yup.object().shape({ label: Yup.string(), value: Yup.string() }).required('Required');
 const priceSchema = Yup.string().matches(/^\d+(\.\d{1,2})?$/, 'Invalid Price.');
-export const AddProductValidationSchema = Yup.object(
+export const AddProductValidationSchema = Yup.object().shape(
     {
-        paymentType: selectOption, 
         productType: selectOption,
         masterProductName:selectOption,
         pricingModel: selectOption,
@@ -11,6 +11,6 @@ export const AddProductValidationSchema = Yup.object(
         manualPriceAmt: priceSchema.required('Required'),
         addedPriceAmt:priceSchema,
         discountPriceAmt:priceSchema,
-        timeSlot:selectOption
+        timeSlot:selectOptional
     }
 );

@@ -102,14 +102,14 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
     useEffect(() => {
         if (productTypeList?.data?.length) {
             setProductTypes(productTypeList.data.map((obj: any) => ({ label: obj.productClassNm.trim(), value: obj.productClassCd.trim() })));
-            if (productNamesList?.data?.length) {
-                setProductNames(productNamesList.data.map((obj: any) => ({ label: obj.productName.trim(), value: obj.productId.trim() })));
-                if (pricingModelList?.data?.length) {
-                    setPricingModelOptions(pricingModelList.data.map((obj: any) => ({ label: obj.pricingModelNm.trim(), value: obj.pricingModelCd.trim() })));
-                }
-            }
-
         }
+        if (productNamesList?.data?.length) {
+            setProductNames(productNamesList.data.map((obj: any) => ({ label: obj.productName.trim(), value: obj.productId.trim() })));
+        }
+        if (pricingModelList?.data?.length) {
+            setPricingModelOptions(pricingModelList.data.map((obj: any) => ({ label: obj.pricingModelNm.trim(), value: obj.pricingModelCd.trim() })));
+        }
+
     }, [productTypeList, pricingModelList, productNamesList]);
 
     const disableSubmitBtn = () => {
@@ -250,7 +250,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                                 value={formik.values.masterProductName}
                                 placeholder='Select Master Product Name'
                                 items={productNames}
-                                helperText={(formik.touched.pricingModel && formik.errors.pricingModel) ? formik.errors.pricingModel.value : undefined}
+                                helperText={(formik.touched.masterProductName && formik.errors.masterProductName) ? formik.errors.masterProductName.value : undefined}
                                 error={(formik.touched.masterProductName && formik.errors.masterProductName) ? true : false}
                                 onChange={formik.setFieldValue}
                                 onBlur={() => { formik.setFieldTouched("masterProductName"); formik.validateField("masterProductName"); }}
