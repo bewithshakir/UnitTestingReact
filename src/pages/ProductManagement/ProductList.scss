@@ -1,5 +1,15 @@
 .product-list {
-
+    div {
+        .header-options{
+            padding: 10px 2px;
+        }
+        .grid-cell-parent{
+            padding: 5px 2px;
+        }
+        .grid-cell-parent:last-of-type{
+            padding-right: 10px;
+        }
+    }
     &  tbody{
             &.no-data{
                 .nodata{

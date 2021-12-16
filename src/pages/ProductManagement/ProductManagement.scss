@@ -5,6 +5,9 @@
 .productForm{
     min-height: calc(100vh - 200px);
     height: 100%;
+    .MuiInputLabel-formControl{
+        font-size: 14px;
+    }
 
 }
 .productContainer {

@@ -14,7 +14,8 @@ import { formStatusObj } from './config';
 import { useGetProductTypes, useGetProductNames, useGetLotProductDetails, useGetPricingModel, useCreateProduct } from './queries';
 import { useAddedCustomerIdStore, useAddedCustomerNameStore, useShowConfirmationDialogBoxStore } from '../../store';
 import { AddProductValidationSchema } from './validation';
-
+// import { dropdownItem } from '../../models/LotProductModel';
+import { totalPricePerGallon } from '../../utils/math.utils';
 interface FormStatusType {
     message: string
     type: string
@@ -108,15 +109,13 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
         if (productTypeList?.data?.length) {
             setProductTypes(productTypeList.data.map((obj: any) => ({ label: obj.productClassNm.trim(), value: obj.productClassCd.trim() })));
         }
-            if (productNamesList?.data?.length) {
-                setProductNames(productNamesList.data.map((obj: any) => ({ label: obj.productName.trim(), value: obj.productId.trim() })));
-            }
-                if (pricingModelList?.data?.length) {
-                    setPricingModelOptions(pricingModelList.data.map((obj: any) => ({ label: obj.pricingModelNm.trim(), value: obj.pricingModelCd.trim() })));
-                }
-        
+        if (productNamesList?.data?.length) {
+            setProductNames(productNamesList.data.map((obj: any) => ({ label: obj.productName.trim(), value: obj.productId.trim() })));
+        }
+        if (pricingModelList?.data?.length) {
+            setPricingModelOptions(pricingModelList.data.map((obj: any) => ({ label: obj.pricingModelNm.trim(), value: obj.pricingModelCd.trim() })));
+        }
 
-        
     }, [productTypeList, pricingModelList, productNamesList]);
 
     const clearCustomRelatedFormValues = () => {
@@ -156,7 +155,6 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
             });
         }
     };
-
 
     const createNewProduct = (form: any) => {
         try {
@@ -202,8 +200,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
 
     useGetLotProductDetails(lotId, productId, onGetProductSuccess, onGetProductError);
 
-
-    const totalPrice = (Number(formik.values.manualPriceAmt) || 0) + (Number(formik.values.addedPriceAmt) || 0) - (Number(formik.values.discountPriceAmt) || 0);
+    const totalPrice = totalPricePerGallon(formik.values.manualPriceAmt, formik.values.addedPriceAmt, formik.values.discountPriceAmt, 4);
 
     const handleProductTypeChange = (fieldName: string, value: any) => {
         formik.setFieldValue(fieldName, value);
@@ -238,7 +235,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                         {!disableAddEditButton && (
                             <>
                                 <Grid item lg={6} md={6} sm={8} xs={8} mx={4} my={1} >
-                                    Add New Product or select the product from the table to edit the details
+                                    <b>Add New Product or select the product from the table to edit the details</b>
                                 </Grid>
                                 <Grid item lg={4} md={6} sm={8} xs={8} mx={4} my={1} >
                                     <Button
@@ -265,10 +262,6 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                         <Grid item md={12} mx={4} >
                             <Typography color="var(--Darkgray)" variant="h4" gutterBottom className="fw-bold" mb={1}>General Information</Typography>
                         </Grid>
-                        <Grid item lg={12} md={12} sm={12} xs={12} mx={4}>
-                            <hr></hr>
-                        </Grid>
-
                         <Grid item lg={5} md={8} sm={8} xs={8} mx={4} my={1} >
                             <Select
                                 id='productType'
@@ -293,7 +286,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                                 value={formik.values.masterProductName}
                                 placeholder='Select Master Product Name'
                                 items={productNames}
-                                helperText={(formik.touched.pricingModel && formik.errors.pricingModel) ? formik.errors.pricingModel.value : undefined}
+                                helperText={(formik.touched.masterProductName && formik.errors.masterProductName) ? formik.errors.masterProductName.value : undefined}
                                 error={(formik.touched.masterProductName && formik.errors.masterProductName) ? true : false}
                                 onChange={formik.setFieldValue}
                                 onBlur={() => { formik.setFieldTouched("masterProductName"); formik.validateField("masterProductName"); }}
