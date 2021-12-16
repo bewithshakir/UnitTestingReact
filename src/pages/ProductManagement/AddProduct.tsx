@@ -46,7 +46,6 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
     const hideDialogBox = useShowConfirmationDialogBoxStore((state) => state.hideDialogBox);
 
     const resetFormFieldValue = useShowConfirmationDialogBoxStore((state) => state.resetFormFieldValue);
-    const [formSuccess, setFormSuccess] = useState(false);
     const [apiResposneState, setAPIResponse] = useState(false);
 
     const [isDisabled, setIsDisabled] = useState(false);
@@ -207,7 +206,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
         formik.setFieldValue(fieldName, value);
         formik.setFieldValue('masterProductName', { label: "", value: "" });
         // if the non fuel value is selected, clear values from product names and pricing model drop downs
-        if(value.label == "Non-Fuel") {
+        if (value.label == "Non-Fuel") {
             //clear master product name drop down
             setProductNames([]);
         } else if (value.label == "Fuel") {
@@ -410,7 +409,6 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                                 aria-label="cancel"
                                 onClick={onClickBack}
                                 className="mr-4"
-                                disabled={formSuccess}
                             >
                                 {t("buttons.cancel")}
                             </Button>
