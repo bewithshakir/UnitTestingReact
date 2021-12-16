@@ -12,8 +12,9 @@ import Select from '../../components/UIComponents/Select/SingleSelect';
 import ToastMessage from '../../components/UIComponents/ToastMessage/ToastMessage.component';
 import { formStatusObj } from './config';
 import { useGetProductTypes, useGetProductNames, useGetLotProductDetails, useGetPricingModel, useCreateProduct } from './queries';
-import { useShowConfirmationDialogBoxStore } from '../../store';
+import { useAddedCustomerIdStore, useAddedCustomerNameStore, useShowConfirmationDialogBoxStore } from '../../store';
 import { AddProductValidationSchema } from './validation';
+
 interface FormStatusType {
     message: string
     type: string
@@ -50,6 +51,9 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
 
     const [isDisabled, setIsDisabled] = useState(false);
     const isEditMode = false;
+    const customerId = useAddedCustomerIdStore((state) => state.customerId);
+    const customerName = useAddedCustomerNameStore((state) => state.customerName);
+
 
     const initialValues = {
         productType: { label: "", value: "" },
@@ -90,6 +94,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
         setAPIResponse(true);
         setFormStatus(formStatusProps.success);
         setFormSuccess(true);
+        setProductNames([]);
         reloadSibling && reloadSibling(new Date());
         setTimeout(() => {
             setAPIResponse(false);
@@ -102,14 +107,16 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
     useEffect(() => {
         if (productTypeList?.data?.length) {
             setProductTypes(productTypeList.data.map((obj: any) => ({ label: obj.productClassNm.trim(), value: obj.productClassCd.trim() })));
+        }
             if (productNamesList?.data?.length) {
                 setProductNames(productNamesList.data.map((obj: any) => ({ label: obj.productName.trim(), value: obj.productId.trim() })));
+            }
                 if (pricingModelList?.data?.length) {
                     setPricingModelOptions(pricingModelList.data.map((obj: any) => ({ label: obj.pricingModelNm.trim(), value: obj.pricingModelCd.trim() })));
                 }
-            }
+        
 
-        }
+        
     }, [productTypeList, pricingModelList, productNamesList]);
 
     const clearCustomRelatedFormValues = () => {
@@ -140,7 +147,13 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
         if (isFormFieldChange()) {
             showDialogBox(true);
         } else {
-            history.push('/customer/parkingLots');
+            history.push({
+                pathname: `/customer/${customerId}/parkingLots`,
+                state: {
+                    customerId: customerId,
+                    customerName: customerName
+                }
+            });
         }
     };
 
@@ -202,6 +215,10 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
             formik.setFieldValue('pricingModel', { label: "", value: "" });
             setProductNames([]);
             setPricingModelOptions([]);
+        } else if (value.label == "Fuel") {
+            if (pricingModelList?.data?.length) {
+                setPricingModelOptions(pricingModelList.data.map((obj: any) => ({ label: obj.pricingModelNm.trim(), value: obj.pricingModelCd.trim() })));
+            }
         }
     };
 
