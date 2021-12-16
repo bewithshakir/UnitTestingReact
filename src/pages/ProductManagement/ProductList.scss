@@ -1,15 +1,4 @@
-.product-list {
-    div {
-        .header-options{
-            padding: 10px 2px;
-        }
-        .grid-cell-parent{
-            padding: 5px 2px;
-        }
-        .grid-cell-parent:last-of-type{
-            padding-right: 10px;
-        }
-    }
+.product-list { 
     &  tbody{
             &.no-data{
                 .nodata{
@@ -19,7 +8,7 @@
                     justify-content: center;
                     width: 19%;
                     height: 40%;
-                    left: 12%;
+                    left: 8%;
                     transform: translate(0, 0);
                     position: absolute;
                 }
