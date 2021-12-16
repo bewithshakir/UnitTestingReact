@@ -11,3 +11,14 @@
         fill: #013c88;
     }
 }
+
+.toaster_wrapper {
+    .MuiPaper-root{
+        &.MuiPaper-elevation {
+            align-items: center;
+            .MuiAlert-action {
+                padding-top: 0;
+            }
+        }
+    }
+}

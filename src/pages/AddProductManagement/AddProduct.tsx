@@ -55,7 +55,6 @@ const initialValues = new ProductManagementModel();
 const AddProduct: React.FC = memo(() => {
     const { t } = useTranslation();
     const history = useHistory();
-    const [apiResposneState, setAPIResponse] = useState(false);
     const { data: productTypesList, isLoading: isLoadingTypes, } = useGetProductTypes('us');
     const { data: productColorsList, isLoading: isLoadingColors } = useGetProductColors('us');
     
@@ -72,7 +71,6 @@ const AddProduct: React.FC = memo(() => {
     const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
     setVersion("Breadcrumbs-Single");
 
-
     const formik = useFormik({
         initialValues,
         validationSchema: AddProductValidationSchema,
@@ -82,22 +80,14 @@ const AddProduct: React.FC = memo(() => {
     });
 
     const onSuccessAddProduct = ()=> {
-        setAPIResponse(true);
         setFormStatus(formStatusProps.success);
-        setTimeout(() => {
-            setAPIResponse(false);
-        }, 6000);
     }
     const onErrorAddProduct = (err: any)=> {
         const { data } = err.response;
-        setAPIResponse(true);
         setFormStatus({ message: data?.error?.details[0] || formStatusProps.error.message, type: 'Error' });
-        setTimeout(() => {
-            setAPIResponse(false);
-        }, 6000);
     }
 
-    const {mutate: addNewProduct, isError: isErrorAddProduct, isLoading: isLoadingAddProduct } = useAddProductManagement(onSuccessAddProduct, onErrorAddProduct);
+    const {mutate: addNewProduct, isSuccess: isSuccessAddProduct,  isError: isErrorAddProduct, isLoading: isLoadingAddProduct } = useAddProductManagement(onSuccessAddProduct, onErrorAddProduct);
     const createProductData = (form: any)=> {
         try {
             const payload = {
@@ -141,8 +131,6 @@ const AddProduct: React.FC = memo(() => {
         
     };
 
-
-    
     return (
         <Box display="flex" className="global_main_wrapper">
             <Grid item md={7} xs={7}>
@@ -260,9 +248,8 @@ const AddProduct: React.FC = memo(() => {
                                         >
                                             {t("buttons.save")} { isLoadingAddProduct && <LoadingIcon className='loading_save_icon' />}
                                         </Button>
-
                                     </Box>
-                                    <ToastMessage isOpen={apiResposneState} messageType={formStatus.type} onClose={() => { return ''; }} message={formStatus.message} />
+                                    <ToastMessage isOpen={isErrorAddProduct || isSuccessAddProduct} messageType={formStatus.type} onClose={() => { return ''; }} message={formStatus.message} />
                                 </Grid>
                             </Grid>
                         </Grid>
