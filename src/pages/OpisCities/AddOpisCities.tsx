@@ -66,6 +66,7 @@ export default function AddOpis() {
                                 <Grid item xs={12} md={6}>
                                     <Input
                                         id='CITYID'
+                                        name='cityid'
                                         label={t("taxes.opisCities.form.city id")}
                                         type='text'
                                         placeholder={t("taxes.opisCities.form.city id")}
