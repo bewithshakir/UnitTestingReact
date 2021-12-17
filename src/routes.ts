@@ -88,6 +88,12 @@ export const routes = [
     exact: true
   },
   {
+    path: "/productManagement",
+    component: lazy(() => import("./pages/ProductManagementLanding")),
+    version: "Breadcrumbs-Many",
+    exact: true
+  },
+  {
     path: "/opisCities/add",
     version: "Breadcrumbs-Single",
     component: lazy(() => import('./pages/OpisCities/AddOpisCities')),
