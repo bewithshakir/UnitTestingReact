@@ -51,7 +51,16 @@ export default function HorizontalBar (props: HorizontalBarProps) {
   const handleModelConfirm = () => {
     hideDialogBox(false);
     resetFormFieldValue(false);
-    if (pathname.includes('addLot') || pathname.includes('addFuelTax') || pathname.includes('viewLot')) {
+    if (pathname.includes('viewLot')) {
+      history.push({
+        pathname: `/customer/${selectedCustomerId}/parkingLots`,
+        state: {
+          customerId: selectedCustomerId,
+          customerName: selectedCustomerName
+        }
+      });
+    }
+    else if (pathname.includes('addLot') || pathname.includes('addFuelTax')) {
       history.goBack();
     }
     else if (pathname.includes('salesTax/add') || pathname.includes('salesTax/edit')) {
@@ -64,6 +73,8 @@ export default function HorizontalBar (props: HorizontalBarProps) {
       props.onBack();
     }
   };
+
+
 
   const getHeaderText = () => {
     switch (true) {
