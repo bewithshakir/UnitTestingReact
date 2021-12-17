@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Snackbar from '@material-ui/core/Snackbar';
 // import MuiAlert, { AlertProps } from '@material-ui/lab/Alert';
 import { ErrorExclamationIcon, SuccessTickIcon } from '../../../assets/icons';
@@ -18,23 +18,14 @@ function Alert(props: AlertProps) {
 }
 
 export default function ToastMessage(props: ToastMessageProps) {
-    const [open, setOpen] = React.useState(false);
-    
-    useEffect(()=> {
-        setOpen(props.isOpen);
-    }, [props.isOpen]);
-    
-    const handleClose = () => {
-        setOpen(false);
-    };
     const getComponentToRender = () => {
         switch(props.messageType) {
             case 'Success' :{
                     return (
-                        <Snackbar className={'success-snackbar'} open={open} autoHideDuration={6000} onClose={handleClose}>
+                        <Snackbar className={'success-snackbar'} open={props.isOpen} autoHideDuration={6000} onClose={props.onClose}>
                             <div className={'success-snackbar-alertContainer'}>
                                 <Alert className={'messagebar-icon'}
-                                    icon={<SuccessTickIcon />} onClose={handleClose}>
+                                    icon={<SuccessTickIcon />}>
                                     <span>{props.message}</span>
                                 </Alert>
                             </div>
@@ -43,10 +34,10 @@ export default function ToastMessage(props: ToastMessageProps) {
                 }
                 case 'Error' : {
                     return (
-                        <Snackbar className={'error-snackbar'} open={open} autoHideDuration={6000} onClose={handleClose}>
+                        <Snackbar className={'error-snackbar'} open={props.isOpen} autoHideDuration={6000} onClose={props.onClose}>
                             <div className={'error-snackbar-alertContainer'}>
                                 <Alert className={'messagebar-icon'}
-                                    icon={<ErrorExclamationIcon />} onClose={handleClose}>
+                                    icon={<ErrorExclamationIcon />}>
                                     <span>{props.message}</span>
                                 </Alert>
                             </div>
@@ -55,10 +46,10 @@ export default function ToastMessage(props: ToastMessageProps) {
                 }
                 default : {
                     return (
-                        <Snackbar  open={open} autoHideDuration={6000} onClose={handleClose}>
+                        <Snackbar  open={props.isOpen} autoHideDuration={6000} onClose={props.onClose}>
                             <div style={{ 'display': 'flex' }}>
-                                <Alert className={'messagebar-icon'} onClose={handleClose} severity="success">
-                                  {props.message}
+                                <Alert className={'messagebar-icon'}>
+                                    {props.message}
                                 </Alert>
                             </div>
                         </Snackbar>
@@ -69,8 +60,6 @@ export default function ToastMessage(props: ToastMessageProps) {
     };
 
     return (
-        <div className="toaster_wrapper">
-            {getComponentToRender()}
-        </div>
+        getComponentToRender()
     );
 }

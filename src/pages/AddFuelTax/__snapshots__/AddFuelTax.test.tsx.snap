@@ -2,6 +2,14 @@
 
 exports[` 1`] = `
 <ForwardRef(Dialog)
+  BackdropProps={
+    Object {
+      "style": Object {
+        "backgroundColor": "gray",
+        "opacity": 0.3,
+      },
+    }
+  }
   aria-describedby="discard-changes-dialog-description"
   aria-labelledby="discard-changes-dialog-title"
   open={true}

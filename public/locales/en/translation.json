@@ -178,42 +178,6 @@
     }
   },
   "productManagement": {
-    "sortBy": {
-      "cityname_atoz": "City Name A-Z",
-      "cityname_ztoa": "City Name Z-A"
-    },
-    "form": {
-      "titleAdd": "Add Product",
-      "titleEdit": "Edit Product",
-      "title": "Fill all the mandatory fields",
-      "productName": "Product Name",
-      "productType": "Product Type",
-      "productColor": "Product Color",
-      "productStatus": "Status",
-      "productPricing": "Manual Pricing"
-    },
     "search": "Search"
-  },
-  "formStatusProps": {
-    "editsuccess": {
-      "message": "Data updated successfully",
-      "type": "Success"
-    },
-    "success": {
-        "message": "Data added successfully.",
-        "type": "Success"
-    },
-    "updated": {
-        "message": "Data updated successfully",
-        "type": "Success"
-    },
-    "duplicate": {
-        "message": "Customer Id already exist. Please use different Customer Id.",
-        "type": "Error"
-    },
-    "error": {
-        "message": "Something went wrong. Please try again.",
-        "type": "Error"
-    }
   }
 }
