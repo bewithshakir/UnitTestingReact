@@ -109,5 +109,27 @@
       "productStatus": "Statut",
       "productPricing": "Tarification manuelle"
     }
+  },
+  "formStatusProps": {
+    "editsuccess": {
+      "message": "Données mises à jour avec succès.",
+      "type": "Succès"
+    },
+    "success": {
+        "message": "Données ajoutées avec succès.",
+        "type": "Succès"
+    },
+    "updated": {
+        "message": "Données mises à jour avec succès.",
+        "type": "Succès"
+    },
+    "duplicate": {
+        "message": "L'ID client existe déjà. Veuillez utiliser un identifiant client différent.",
+        "type": "Erreur"
+    },
+    "error": {
+        "message": "Quelque chose s'est mal passé. Veuillez réessayer.",
+        "type": "Erreur"
+    }
   }
 }

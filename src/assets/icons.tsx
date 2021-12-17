@@ -1401,5 +1401,5 @@ export function LoadingIcon(props: React.SVGProps<SVGSVGElement>) {
       repeatCount="indefinite"/>
     </path>
   </svg>
-  )
+  );
 }

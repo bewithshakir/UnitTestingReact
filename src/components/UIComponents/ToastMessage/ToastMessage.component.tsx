@@ -22,8 +22,7 @@ export default function ToastMessage(props: ToastMessageProps) {
     
     useEffect(()=> {
         setOpen(props.isOpen);
-        console.log('did mount', props.isOpen)
-    }, [props.isOpen])
+    }, [props.isOpen]);
     
     const handleClose = () => {
         setOpen(false);

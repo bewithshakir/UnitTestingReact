@@ -15,7 +15,7 @@ export default class ProductManagementModel {
     productPricing: string;
 
     constructor() {
-        this.countryCode = 'us'
+        this.countryCode = 'us';
         this.productName = '';
         this.productType = { label: '', value: '' };
         this.productColor = { label: '', value: '' };

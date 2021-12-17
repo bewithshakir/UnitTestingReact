@@ -193,5 +193,27 @@
       "productPricing": "Manual Pricing"
     },
     "search": "Search"
+  },
+  "formStatusProps": {
+    "editsuccess": {
+      "message": "Data updated successfully",
+      "type": "Success"
+    },
+    "success": {
+        "message": "Data added successfully.",
+        "type": "Success"
+    },
+    "updated": {
+        "message": "Data updated successfully",
+        "type": "Success"
+    },
+    "duplicate": {
+        "message": "Customer Id already exist. Please use different Customer Id.",
+        "type": "Error"
+    },
+    "error": {
+        "message": "Something went wrong. Please try again.",
+        "type": "Error"
+    }
   }
 }

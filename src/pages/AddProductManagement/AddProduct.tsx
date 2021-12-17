@@ -1,21 +1,18 @@
-import React, { memo, useCallback, useState } from 'react';
+import React, { memo, useState } from 'react';
 import { Box, Container, Grid, Typography } from '@mui/material';
 import { useFormik } from 'formik';
 import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';
-import Icon from '@material-ui/core/Icon';
 
-import AutocompleteInput from '../../components/UIComponents/GoogleAddressComponent/GoogleAutoCompleteAddress';
 import Input from '../../components/UIComponents/Input/Input';
 import { Button } from '../../components/UIComponents/Button/Button.component';
 import ToastMessage from '../../components/UIComponents/ToastMessage/ToastMessage.component';
-import ProductManagementModel, { SelectPropsInt } from '../../models/ProductManagementModel';
+import ProductManagementModel from '../../models/ProductManagementModel';
 import { AddProductValidationSchema } from './validation';
 import Select from '../../components/UIComponents/Select/SingleSelect';
 import './AddProduct.scss';
 import { HorizontalBarVersionState, useShowConfirmationDialogBoxStore, useStore } from '../../store';
-import { getCheckBoxDisabledByPaymentType } from '../../utils/helperFunctions';
-import { useAddProductManagement, useGetProductColors, useGetProductTypes } from './queries'
+import { useAddProductManagement, useGetProductColors, useGetProductTypes } from './queries';
 import { LoadingIcon } from '../../assets/icons';
 
 
@@ -81,11 +78,11 @@ const AddProduct: React.FC = memo(() => {
 
     const onSuccessAddProduct = ()=> {
         setFormStatus(formStatusProps.success);
-    }
+    };
     const onErrorAddProduct = (err: any)=> {
         const { data } = err.response;
         setFormStatus({ message: data?.error?.details[0] || formStatusProps.error.message, type: 'Error' });
-    }
+    };
 
     const {mutate: addNewProduct, isSuccess: isSuccessAddProduct,  isError: isErrorAddProduct, isLoading: isLoadingAddProduct } = useAddProductManagement(onSuccessAddProduct, onErrorAddProduct);
     const createProductData = (form: any)=> {
@@ -98,12 +95,12 @@ const AddProduct: React.FC = memo(() => {
                 productStatus: form.productStatus.value,
                 productPricing: +form.productPricing
             
-            }
+            };
             addNewProduct(payload);
         } catch (error) {
             setFormStatus(formStatusProps.error);
         }
-    }
+    };
     
     const showDialogBox = useShowConfirmationDialogBoxStore((state) => state.showDialogBox);
     const isFormValidated = useShowConfirmationDialogBoxStore((state) => state.setFormFieldValue);
@@ -257,7 +254,7 @@ const AddProduct: React.FC = memo(() => {
                 </Container>
             </Grid>
         </Box>
-    )
+    );
 });
 
 export default AddProduct;
