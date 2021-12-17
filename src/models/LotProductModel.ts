@@ -1,14 +1,16 @@
 import { headerObj } from '../components/UIComponents/DataGird/grid.component';
 import { YellowFuelIcon, RedFuelIcon, PurpleFuelIcon, SkyBlueFuelIcon, ParrotGreenFuelIcon, AquaFuelIcon, GreenFuelIcon, BrownFuelIcon, OrangeFuelIcon, NavyBlueFuelIcon, AlertExclamationIcon } from '../assets/icons';
 
+
+export type dropdownItem = {
+    label: string ,
+    value: string | number,
+    icon?: JSX.Element
+}
+
 export default class ProductModel {
     // General Information
-
-    // constructor() {
-
-    // }
-
-    fieldsToDisplay (): headerObj[] {
+    fieldsToDisplay(): headerObj[] {
         return [
             { field: "productNm", label: "PRODUCT NAME", type: 'text' },
             { field: "pricingModelNm", label: "PRICING MODEL", type: 'text' },
