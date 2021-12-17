@@ -11,11 +11,11 @@ import ToastMessage from '../../../../components/UIComponents/ToastMessage/Toast
 import Divider from '@mui/material/Divider';
 import { AddParkingLotForm, addLotFormInitialValues, lotContact, orderSchDel } from '../../../../models/ParkingLotModel';
 import AddParkingLotValidationSchema from '../validation';
-import { useCreateLot, useEditParkingLot, useGetContactTypes, useGetParkingLotData } from '../queries';
+import { useCreateLot, useEditParkingLot, useGetContactTypes, useGetParkingLotData, useGetTimeZones} from '../queries';
 import AutocompleteInput from '../../../../components/UIComponents/GoogleAddressComponent/GoogleAutoCompleteAddress';
 import { PlusIcon, EditIcon } from '../../../../assets/icons';
 import { useTheme } from '../../../../contexts/Theme/Theme.context';
-import { formStatusObj, timeZones, productDelFreq, getCountry} from '../../config';
+import { formStatusObj, productDelFreq, getCountry} from '../../config';
 import MultiSelect from '../../../../components/UIComponents/Select/MultiSelect';
 import { DatePickerInput } from '../../../../components/UIComponents/DatePickerInput/DatePickerInput.component';
 import { TimePicker } from '../../../../components/UIComponents/TimePicker/TimePicker.component';
@@ -57,6 +57,8 @@ function AddLotForm(): React.ReactElement {
     const addedLotId = useAddedParkingLotIdStore((state) => state.parkingLotId);
     const setPageCustomerName = useAddedCustomerNameStore((state) => state.setCustomerName);
     const selectedCustomerName = useAddedCustomerNameStore((state) => state.customerName);
+    const [timeZones, setTimeZones] = useState([]);
+    const { data: timeZoneList } = useGetTimeZones();
 
     const onAddLotError = (err: any) => {
         resetFormFieldValue(false);
@@ -72,6 +74,12 @@ function AddLotForm(): React.ReactElement {
            
         }
     };
+    
+    useEffect(() => {
+        if (timeZoneList?.data?.length) {
+            setTimeZones(timeZoneList.data.map((obj: any) => ({ label: obj.timezoneNm, value: obj.timezoneCd })));
+        }   console.warn('list-->',timeZones);
+    }, [timeZoneList]);
 
     const onAddLotSuccess = (data: any) => {
         resetFormFieldValue(false);

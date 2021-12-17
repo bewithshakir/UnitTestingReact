@@ -1,4 +1,5 @@
 import { mount } from "enzyme";
+import Select from '../../../../components/UIComponents/Select/SingleSelect';
 import AddLotForm from './AddLotForm.component';
 import { QueryClientProvider } from 'react-query';
 import * as ReactQuery from 'react-query';
@@ -40,6 +41,7 @@ describe('Rendering of Edit Lot Component', () => {
         </QueryClientProvider>
         );
         expect(component).toMatchSnapshot();
+        expect(component.find(Select)).toHaveLength(2);
     });
     it('when land on this page, Edit button is by default shown', () => {
         const component = mount(<ReactQuery.QueryClientProvider client={queryClient}> <AddLotForm /> </ReactQuery.QueryClientProvider >);
