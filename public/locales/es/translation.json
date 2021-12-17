@@ -93,5 +93,43 @@
         "labelLocalRate": "Tarifa local"
       }
     }
+  },
+  "productManagement": {
+    "sortBy": {
+      "cityname_atoz": "Nombre de la ciudad A-Z",
+      "cityname_ztoa": "Nombre de la ciudad Z-A"
+    },
+    "form": {
+      "titleAdd": "Agregar producto",
+      "titleEdit": "Editar producto",
+      "title": "Complete todos los campos obligatorios",
+      "productName": "nombre del producto",
+      "productType": "tipo de producto",
+      "productColor": "Color del producto",
+      "productStatus": "Estado",
+      "productPricing": "Precios manuales"
+    }
+  },
+  "formStatusProps": {
+    "editsuccess": {
+      "message": "Datos actualizados con éxito",
+      "type": "Éxito"
+    },
+    "success": {
+        "message": "Datos agregados con éxito.",
+        "type": "Éxito"
+    },
+    "updated": {
+        "message": "Datos actualizados con éxito",
+        "type": "Éxito"
+    },
+    "duplicate": {
+        "message": "La identificación del cliente ya existe. Utilice un ID de cliente diferente.",
+        "type": "Error"
+    },
+    "error": {
+        "message": "Algo salió mal. Inténtalo de nuevo.",
+        "type": "Error"
+    }
   }
 }
