@@ -120,3 +120,25 @@ export const useGetLotProductDetails = (lotId: string, productId: string, onSucc
         retry: false
     });
 };
+
+const getOPISRetail = async (lotId: string, masterProductName: string) => {
+    if (lotId) {
+
+        const query = new URLSearchParams();
+        query.append("parkingLotId", lotId);
+        query.append("masterProductName", masterProductName);
+        query.append("countryCode", "us");
+
+        const opisPriceURL = `api/thirdparty-service/opis/retail-fuel-price`;
+        const queryParams = `${query.toString().length ? `&${query.toString()}` : ''}`;
+        const payload: AxiosRequestConfig = {
+            method: 'get',
+            url: opisPriceURL + queryParams 
+        };
+        const { data } = await axios(payload);
+        return data;
+    }
+};
+export const useGetOPISRetail = (lotId: string, masterProductName: string) => {
+    return useInfiniteQuery(["getOPISRetail", lotId, masterProductName], () => getOPISRetail(lotId, masterProductName));
+};
