@@ -121,7 +121,7 @@ const ProductManagementContent = memo(() => {
               <Button
                 types="primary"
                 aria-label="primary"
-                onClick={() => null}
+                onClick={() => history.push('/productManagement/add')}
                 startIcon={<Add />}
               >
                 {'ADD PRODUCT'}

@@ -69,6 +69,9 @@ export default function HorizontalBar (props: HorizontalBarProps) {
     else if (pathname.includes('editFuelTax')) {
       history.push('/taxes');
     }
+    else if (pathname.includes('productManagement/add')) {
+      history.push('/productManagement');
+    }
     else {
       props.onBack();
     }
