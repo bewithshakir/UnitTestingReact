@@ -2,3 +2,23 @@
     margin-top: 80px;
     margin-left: 128px;
 }
+
+.loading_save_icon {
+    position: absolute;
+    right: 10px;
+    width: 27px;
+    rect, path {
+        fill: #013c88;
+    }
+}
+
+.toaster_wrapper {
+    .MuiPaper-root{
+        &.MuiPaper-elevation {
+            align-items: center;
+            .MuiAlert-action {
+                padding-top: 0;
+            }
+        }
+    }
+}
