@@ -90,6 +90,8 @@ export default function HorizontalBar (props: HorizontalBarProps) {
         return t("taxes.salesTax.form.titleFuelEdit");
       case history.location.pathname.includes('opisCities/add'):
         return t("taxes.opisCities.form.titleAdd");
+      case history.location.pathname.includes('opisCities/edit'):
+        return t("taxes.opisCities.form.titleEdit");
       default:
         return selectedCustomerName;
     }

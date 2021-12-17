@@ -129,7 +129,7 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
         }
     };
     const openDrawer = (row: any) => {
-        props.openDrawer(row);
+        props.openDrawer && props.openDrawer(row);
     };
 
     const isSelected = (primaryId: string) => props.selectedRows && props.selectedRows.indexOf(primaryId) !== -1;
@@ -245,7 +245,7 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
                     const isItemSelected = isSelected(row[primaryKey]);
                     return (<React.Fragment key={indexKey}>
                         <TableRow key={indexKey} sx={{
-                            cursor: "pointer"
+                            cursor: props.openDrawer ? "pointer" : "auto"
                         }}>
                             {
                                 props.enableRowSelection ?
@@ -308,7 +308,7 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
                                     >
                                         <FormControl>
                                             <DataGridActionsMenu
-                                                options={props.rowActionOptions}
+                                                options={props.rowActionOptions || []}
                                                 onSelect={(e, value) => props.onRowActionSelect && props.onRowActionSelect(value, row)}
                                                 showInnerTableMenu={props.showInnerTableMenu}
                                             />
