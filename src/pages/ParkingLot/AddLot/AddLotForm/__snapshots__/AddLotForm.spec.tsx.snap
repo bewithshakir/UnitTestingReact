@@ -22728,28 +22728,32 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                 messageType=""
                                 onClose={[Function]}
                               >
-                                <WithStyles(ForwardRef(Snackbar))
-                                  autoHideDuration={6000}
-                                  onClose={[Function]}
-                                  open={false}
+                                <div
+                                  className="toaster_wrapper"
                                 >
-                                  <ForwardRef(Snackbar)
+                                  <WithStyles(ForwardRef(Snackbar))
                                     autoHideDuration={6000}
-                                    classes={
-                                      Object {
-                                        "anchorOriginBottomCenter": "MuiSnackbar-anchorOriginBottomCenter",
-                                        "anchorOriginBottomLeft": "MuiSnackbar-anchorOriginBottomLeft",
-                                        "anchorOriginBottomRight": "MuiSnackbar-anchorOriginBottomRight",
-                                        "anchorOriginTopCenter": "MuiSnackbar-anchorOriginTopCenter",
-                                        "anchorOriginTopLeft": "MuiSnackbar-anchorOriginTopLeft",
-                                        "anchorOriginTopRight": "MuiSnackbar-anchorOriginTopRight",
-                                        "root": "MuiSnackbar-root",
-                                      }
-                                    }
                                     onClose={[Function]}
                                     open={false}
-                                  />
-                                </WithStyles(ForwardRef(Snackbar))>
+                                  >
+                                    <ForwardRef(Snackbar)
+                                      autoHideDuration={6000}
+                                      classes={
+                                        Object {
+                                          "anchorOriginBottomCenter": "MuiSnackbar-anchorOriginBottomCenter",
+                                          "anchorOriginBottomLeft": "MuiSnackbar-anchorOriginBottomLeft",
+                                          "anchorOriginBottomRight": "MuiSnackbar-anchorOriginBottomRight",
+                                          "anchorOriginTopCenter": "MuiSnackbar-anchorOriginTopCenter",
+                                          "anchorOriginTopLeft": "MuiSnackbar-anchorOriginTopLeft",
+                                          "anchorOriginTopRight": "MuiSnackbar-anchorOriginTopRight",
+                                          "root": "MuiSnackbar-root",
+                                        }
+                                      }
+                                      onClose={[Function]}
+                                      open={false}
+                                    />
+                                  </WithStyles(ForwardRef(Snackbar))>
+                                </div>
                               </ToastMessage>
                             </div>
                           </MuiGridRoot>
@@ -46188,28 +46192,32 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                 messageType=""
                                 onClose={[Function]}
                               >
-                                <WithStyles(ForwardRef(Snackbar))
-                                  autoHideDuration={6000}
-                                  onClose={[Function]}
-                                  open={false}
+                                <div
+                                  className="toaster_wrapper"
                                 >
-                                  <ForwardRef(Snackbar)
+                                  <WithStyles(ForwardRef(Snackbar))
                                     autoHideDuration={6000}
-                                    classes={
-                                      Object {
-                                        "anchorOriginBottomCenter": "MuiSnackbar-anchorOriginBottomCenter",
-                                        "anchorOriginBottomLeft": "MuiSnackbar-anchorOriginBottomLeft",
-                                        "anchorOriginBottomRight": "MuiSnackbar-anchorOriginBottomRight",
-                                        "anchorOriginTopCenter": "MuiSnackbar-anchorOriginTopCenter",
-                                        "anchorOriginTopLeft": "MuiSnackbar-anchorOriginTopLeft",
-                                        "anchorOriginTopRight": "MuiSnackbar-anchorOriginTopRight",
-                                        "root": "MuiSnackbar-root",
-                                      }
-                                    }
                                     onClose={[Function]}
                                     open={false}
-                                  />
-                                </WithStyles(ForwardRef(Snackbar))>
+                                  >
+                                    <ForwardRef(Snackbar)
+                                      autoHideDuration={6000}
+                                      classes={
+                                        Object {
+                                          "anchorOriginBottomCenter": "MuiSnackbar-anchorOriginBottomCenter",
+                                          "anchorOriginBottomLeft": "MuiSnackbar-anchorOriginBottomLeft",
+                                          "anchorOriginBottomRight": "MuiSnackbar-anchorOriginBottomRight",
+                                          "anchorOriginTopCenter": "MuiSnackbar-anchorOriginTopCenter",
+                                          "anchorOriginTopLeft": "MuiSnackbar-anchorOriginTopLeft",
+                                          "anchorOriginTopRight": "MuiSnackbar-anchorOriginTopRight",
+                                          "root": "MuiSnackbar-root",
+                                        }
+                                      }
+                                      onClose={[Function]}
+                                      open={false}
+                                    />
+                                  </WithStyles(ForwardRef(Snackbar))>
+                                </div>
                               </ToastMessage>
                             </div>
                           </MuiGridRoot>
