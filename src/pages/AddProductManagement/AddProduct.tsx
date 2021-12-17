@@ -89,7 +89,7 @@ const AddProduct: React.FC = memo(() => {
         if (formik.dirty) {
             showDialogBox(true);
         } else {
-            history.push('/');
+            history.push('/productManagement');
         }
     };
 
