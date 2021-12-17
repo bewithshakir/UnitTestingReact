@@ -1536,7 +1536,6 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                     <Button
                       aria-label="cancel"
                       className="mr-4"
-                      disabled={false}
                       onClick={[Function]}
                       types="cancel"
                     >
@@ -7846,7 +7845,6 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                       <Button
                         aria-label="cancel"
                         className="mr-4"
-                        disabled={false}
                         onClick={[Function]}
                         types="cancel"
                       >
@@ -7917,7 +7915,6 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                             <Button
                               aria-label="cancel"
                               className="mr-4"
-                              disabled={false}
                               onClick={[Function]}
                               types="cancel"
                             >
@@ -7973,14 +7970,12 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                         <Button
                           aria-label="cancel"
                           className="mr-4"
-                          disabled={false}
                           onClick={[Function]}
                           types="cancel"
                         >
                           <WithStyles(ForwardRef(Button))
                             aria-label="cancel"
                             className="btn-cancel mr-4"
-                            disabled={false}
                             onClick={[Function]}
                             variant="contained"
                           >
@@ -8020,7 +8015,6 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                   "textSizeSmall": "MuiButton-textSizeSmall",
                                 }
                               }
-                              disabled={false}
                               onClick={[Function]}
                               variant="contained"
                             >

@@ -20,33 +20,7 @@ interface IFormStatus {
     message: string
     type: string
 }
-interface IFormStatusProps {
-    [key: string]: IFormStatus
-}
 
-
-const formStatusProps: IFormStatusProps = {
-    editsuccess: {
-        message: 'Data updated successfully',
-        type: 'Success',
-    },
-    success: {
-        message: 'Data added successfully.',
-        type: 'Success',
-    },
-    updated: {
-        message: 'Data updated successfully.',
-        type: 'Success',
-    },
-    duplicate: {
-        message: 'Customer Id already exist. Please use different Customer Id.',
-        type: 'Error',
-    },
-    error: {
-        message: 'Something went wrong. Please try again.',
-        type: 'Error',
-    }
-};
 
 const initialValues = new ProductManagementModel();
 const AddProduct: React.FC = memo(() => {
@@ -77,11 +51,11 @@ const AddProduct: React.FC = memo(() => {
     });
 
     const onSuccessAddProduct = ()=> {
-        setFormStatus(formStatusProps.success);
+        setFormStatus(t("formStatusProps.success"));
     };
     const onErrorAddProduct = (err: any)=> {
         const { data } = err.response;
-        setFormStatus({ message: data?.error?.details[0] || formStatusProps.error.message, type: 'Error' });
+        setFormStatus({ message: data?.error?.details[0] || t("formStatusProps.error.message"), type: 'Error' });
     };
 
     const {mutate: addNewProduct, isSuccess: isSuccessAddProduct,  isError: isErrorAddProduct, isLoading: isLoadingAddProduct } = useAddProductManagement(onSuccessAddProduct, onErrorAddProduct);
@@ -98,7 +72,7 @@ const AddProduct: React.FC = memo(() => {
             };
             addNewProduct(payload);
         } catch (error) {
-            setFormStatus(formStatusProps.error);
+            setFormStatus(t("formStatusProps.error"));
         }
     };
     

@@ -21717,14 +21717,6 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
       title="customerManagement.fileuploaddialog.title"
     >
       <ForwardRef(Dialog)
-        BackdropProps={
-          Object {
-            "style": Object {
-              "backgroundColor": "gray",
-              "opacity": 0.3,
-            },
-          }
-        }
         aria-describedby="discard-changes-dialog-description"
         aria-labelledby="discard-changes-dialog-title"
         open={false}
@@ -21765,10 +21757,6 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
           BackdropProps={
             Object {
               "as": undefined,
-              "style": Object {
-                "backgroundColor": "gray",
-                "opacity": 0.3,
-              },
               "transitionDuration": Object {
                 "enter": 225,
                 "exit": 195,
@@ -21782,12 +21770,6 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
           open={false}
           ownerState={
             Object {
-              "BackdropProps": Object {
-                "style": Object {
-                  "backgroundColor": "gray",
-                  "opacity": 0.3,
-                },
-              },
               "aria-describedby": "discard-changes-dialog-description",
               "aria-labelledby": "discard-changes-dialog-title",
               "children": <div
@@ -21877,10 +21859,6 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
             BackdropProps={
               Object {
                 "as": undefined,
-                "style": Object {
-                  "backgroundColor": "gray",
-                  "opacity": 0.3,
-                },
                 "transitionDuration": Object {
                   "enter": 225,
                   "exit": 195,
@@ -21929,10 +21907,6 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
               BackdropProps={
                 Object {
                   "as": undefined,
-                  "style": Object {
-                    "backgroundColor": "gray",
-                    "opacity": 0.3,
-                  },
                   "transitionDuration": Object {
                     "enter": 225,
                     "exit": 195,
