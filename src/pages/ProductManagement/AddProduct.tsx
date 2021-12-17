@@ -12,8 +12,9 @@ import Select from '../../components/UIComponents/Select/SingleSelect';
 import ToastMessage from '../../components/UIComponents/ToastMessage/ToastMessage.component';
 import { formStatusObj } from './config';
 import { useGetProductTypes, useGetProductNames, useGetLotProductDetails, useGetPricingModel, useCreateProduct } from './queries';
-import { useShowConfirmationDialogBoxStore } from '../../store';
+import { useAddedCustomerIdStore, useAddedCustomerNameStore, useShowConfirmationDialogBoxStore } from '../../store';
 import { AddProductValidationSchema } from './validation';
+import { totalPricePerGallon } from '../../utils/math.utils';
 interface FormStatusType {
     message: string
     type: string
@@ -45,11 +46,15 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
     const hideDialogBox = useShowConfirmationDialogBoxStore((state) => state.hideDialogBox);
 
     const resetFormFieldValue = useShowConfirmationDialogBoxStore((state) => state.resetFormFieldValue);
-    const [formSuccess, setFormSuccess] = useState(false);
     const [apiResposneState, setAPIResponse] = useState(false);
 
     const [isDisabled, setIsDisabled] = useState(false);
     const isEditMode = false;
+    const customerId = useAddedCustomerIdStore((state) => state.customerId);
+    const customerName = useAddedCustomerNameStore((state) => state.customerName);
+
+    const Str_Custom_Text = "Custom";
+
 
     const initialValues = {
         productType: { label: "", value: "" },
@@ -89,7 +94,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
         hideDialogBox(false);
         setAPIResponse(true);
         setFormStatus(formStatusProps.success);
-        setFormSuccess(true);
+        setProductNames([]);
         reloadSibling && reloadSibling(new Date());
         setTimeout(() => {
             setAPIResponse(false);
@@ -102,15 +107,23 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
     useEffect(() => {
         if (productTypeList?.data?.length) {
             setProductTypes(productTypeList.data.map((obj: any) => ({ label: obj.productClassNm.trim(), value: obj.productClassCd.trim() })));
-            if (productNamesList?.data?.length) {
-                setProductNames(productNamesList.data.map((obj: any) => ({ label: obj.productName.trim(), value: obj.productId.trim() })));
-                if (pricingModelList?.data?.length) {
-                    setPricingModelOptions(pricingModelList.data.map((obj: any) => ({ label: obj.pricingModelNm.trim(), value: obj.pricingModelCd.trim() })));
-                }
-            }
-
         }
+        if (productNamesList?.data?.length) {
+            setProductNames(productNamesList.data.map((obj: any) => ({ label: obj.productName.trim(), value: obj.productId.trim() })));
+        }
+        if (pricingModelList?.data?.length) {
+            setPricingModelOptions(pricingModelList.data.map((obj: any) => ({ label: obj.pricingModelNm.trim(), value: obj.pricingModelCd.trim() })));
+        }
+
     }, [productTypeList, pricingModelList, productNamesList]);
+
+    const clearCustomRelatedFormValues = () => {
+        formik.setFieldValue('productNm', '');
+        formik.setFieldValue('manualPriceAmt', 0);
+        formik.setFieldValue('addedPriceAmt', 0);
+        formik.setFieldValue('discountPriceAmt', 0);
+        formik.setFieldValue('timeSlot', { label: "", value: "" });
+    };
 
     const disableSubmitBtn = () => {
         if (isEditMode) {
@@ -132,10 +145,15 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
         if (isFormFieldChange()) {
             showDialogBox(true);
         } else {
-            history.push('/customer/parkingLots');
+            history.push({
+                pathname: `/customer/${customerId}/parkingLots`,
+                state: {
+                    customerId: customerId,
+                    customerName: customerName
+                }
+            });
         }
     };
-
 
     const createNewProduct = (form: any) => {
         try {
@@ -181,8 +199,28 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
 
     useGetLotProductDetails(lotId, productId, onGetProductSuccess, onGetProductError);
 
+    const totalPrice = totalPricePerGallon(formik.values.manualPriceAmt, formik.values.addedPriceAmt, formik.values.discountPriceAmt, 4);
 
-    const totalPrice = (Number(formik.values.manualPriceAmt) || 0) + (Number(formik.values.addedPriceAmt) || 0) - (Number(formik.values.discountPriceAmt) || 0);
+    const handleProductTypeChange = (fieldName: string, value: any) => {
+        formik.setFieldValue(fieldName, value);
+        formik.setFieldValue('masterProductName', { label: "", value: "" });
+        // if the non fuel value is selected, clear values from product names and pricing model drop downs
+        if (value.label == "Non-Fuel") {
+            //clear master product name drop down
+            setProductNames([]);
+        } else if (value.label == "Fuel") {
+            if (pricingModelList?.data?.length) {
+                setPricingModelOptions(pricingModelList.data.map((obj: any) => ({ label: obj.pricingModelNm.trim(), value: obj.pricingModelCd.trim() })));
+            }
+        }
+    };
+
+    const handlePricingModelChange = (fieldName: string, value: any) => {
+        formik.setFieldValue(fieldName, value);
+        if (value != Str_Custom_Text) {
+            clearCustomRelatedFormValues();
+        }
+    };
 
     return (
         <FormikProvider value={formik}>
@@ -193,11 +231,9 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                         {!disableAddEditButton && (
                             <>
                                 <Grid item lg={6} md={6} sm={8} xs={8} mx={4} my={1} >
-                                    Add New Product or select the product from the table to edit the details
+                                    <b>Add New Product or select the product from the table to edit the details</b>
                                 </Grid>
                                 <Grid item lg={4} md={6} sm={8} xs={8} mx={4} my={1} >
-
-
                                     <Button
                                         className='addProductBtn'
                                         types="primary"
@@ -222,10 +258,6 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                         <Grid item md={12} mx={4} >
                             <Typography color="var(--Darkgray)" variant="h4" gutterBottom className="fw-bold" mb={1}>General Information</Typography>
                         </Grid>
-                        <Grid item lg={12} md={12} sm={12} xs={12} mx={4}>
-                            <hr></hr>
-                        </Grid>
-
                         <Grid item lg={5} md={8} sm={8} xs={8} mx={4} my={1} >
                             <Select
                                 id='productType'
@@ -236,7 +268,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                                 items={productTypes}
                                 helperText={(formik.touched.productType && formik.errors.productType) ? formik.errors.productType.value : undefined}
                                 error={(formik.touched.productType && formik.errors.productType) ? true : false}
-                                onChange={formik.setFieldValue}
+                                onChange={handleProductTypeChange}
                                 onBlur={() => { formik.setFieldTouched("productType"); formik.validateField("productType"); }}
                                 required
                                 isDisabled={isEditMode ? true : isDisabled}
@@ -250,7 +282,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                                 value={formik.values.masterProductName}
                                 placeholder='Select Master Product Name'
                                 items={productNames}
-                                helperText={(formik.touched.pricingModel && formik.errors.pricingModel) ? formik.errors.pricingModel.value : undefined}
+                                helperText={(formik.touched.masterProductName && formik.errors.masterProductName) ? formik.errors.masterProductName.value : undefined}
                                 error={(formik.touched.masterProductName && formik.errors.masterProductName) ? true : false}
                                 onChange={formik.setFieldValue}
                                 onBlur={() => { formik.setFieldTouched("masterProductName"); formik.validateField("masterProductName"); }}
@@ -268,7 +300,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                                 items={pricingModelOptions}
                                 helperText={(formik.touched.pricingModel && formik.errors.pricingModel) ? formik.errors.pricingModel.value : undefined}
                                 error={(formik.touched.pricingModel && formik.errors.pricingModel) ? true : false}
-                                onChange={formik.setFieldValue}
+                                onChange={handlePricingModelChange}
                                 onBlur={() => { formik.setFieldTouched("pricingModel"); formik.validateField("pricingModel"); }}
                                 required
                                 isDisabled={isEditMode ? true : isDisabled}
@@ -376,7 +408,6 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                                 aria-label="cancel"
                                 onClick={onClickBack}
                                 className="mr-4"
-                                disabled={formSuccess}
                             >
                                 {t("buttons.cancel")}
                             </Button>

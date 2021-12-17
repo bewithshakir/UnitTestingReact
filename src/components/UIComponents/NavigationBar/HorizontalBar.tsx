@@ -51,7 +51,16 @@ export default function HorizontalBar (props: HorizontalBarProps) {
   const handleModelConfirm = () => {
     hideDialogBox(false);
     resetFormFieldValue(false);
-    if (pathname.includes('addLot') || pathname.includes('addFuelTax') || pathname.includes('viewLot')) {
+    if (pathname.includes('viewLot')) {
+      history.push({
+        pathname: `/customer/${selectedCustomerId}/parkingLots`,
+        state: {
+          customerId: selectedCustomerId,
+          customerName: selectedCustomerName
+        }
+      });
+    }
+    else if (pathname.includes('addLot') || pathname.includes('addFuelTax')) {
       history.goBack();
     }
     else if (pathname.includes('salesTax/add') || pathname.includes('salesTax/edit')) {
@@ -64,6 +73,8 @@ export default function HorizontalBar (props: HorizontalBarProps) {
       props.onBack();
     }
   };
+
+
 
   const getHeaderText = () => {
     switch (true) {
@@ -95,7 +106,7 @@ export default function HorizontalBar (props: HorizontalBarProps) {
   }
 
   function varsionNavLinks () {
-    if (pathname.includes('taxes') || pathname.includes('salesTax')) {
+    if (pathname.includes('taxes') || pathname.includes('salesTax') || pathname.includes('productManagement')) {
       return (<>
         <div className={pathname.includes('taxes') ? 'linkitem active' : 'linkitem'}>
           <NavLink className="breadcrubs-title" to="/taxes" onClick={handleClick}>
@@ -112,7 +123,7 @@ export default function HorizontalBar (props: HorizontalBarProps) {
             {t("taxes.navBar.opisCities")}
           </NavLink>
         </div>
-        <div className="linkitem">
+        <div className={pathname.includes('productManagement') ? 'linkitem active' : "linkitem"}>
           <NavLink className="breadcrubs-title" to="/productManagement" onClick={handleClick}>
             {t("taxes.navBar.productManagement")}
           </NavLink>
