@@ -94,7 +94,6 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
         hideDialogBox(false);
         setAPIResponse(true);
         setFormStatus(formStatusProps.success);
-        setFormSuccess(true);
         setProductNames([]);
         reloadSibling && reloadSibling(new Date());
         setTimeout(() => {
