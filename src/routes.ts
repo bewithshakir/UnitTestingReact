@@ -82,6 +82,12 @@ export const routes = [
     exact: true,
   },
   {
+    path: "/productManagement",
+    component: lazy(() => import("./pages/ProductManagementLanding")),
+    version: "Breadcrumbs-Many",
+    exact: true
+  },
+  {
     path: "/query",
     component: lazy(() => import('./pages/QueryTest')),
     exact: false,
