@@ -12,7 +12,7 @@ export const AddProductValidationSchema = Yup.object().shape(
         manualPriceAmt: priceSchema.required('Required'),
         addedPriceAmt: priceSchema,
         discountPriceAmt: priceSchema.label('this').when(['manualPriceAmt', 'addedPriceAmt'], (manualPriceAmt: string, addedPriceAmt: any) => {
-            return Yup.number().label('this').max(Number(manualPriceAmt) + Number(addedPriceAmt));
+            return Yup.number().typeError('Invalid Price.').label('this').min(0).max((Number(manualPriceAmt) || 0) + (Number(addedPriceAmt) || 0));
         }),
         timeSlot: selectOptional
     }
