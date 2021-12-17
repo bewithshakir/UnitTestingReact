@@ -15,6 +15,7 @@ import ProductModel from '../../models/ProductModel';
 import GridComponent from "../../components/UIComponents/DataGird/grid.component";
 import { RightInfoPanel } from "../../components/UIComponents/RightInfoPanel/RightInfoPanel.component";
 import { DataGridActionsMenuOption } from '../../components/UIComponents/Menu/DataGridActionsMenu.component';
+import { ProductsListSet } from './queries';
 
 const ProductManagementContent = memo(() => {
   const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
@@ -32,46 +33,17 @@ const ProductManagementContent = memo(() => {
   const [salesTaxFilterPanelVisible, setSalesTaxPanelVisible] = React.useState(false);
   const [filterData, setFilterData] = React.useState<{ [key: string]: string[] }>({});
   const [searchTerm, setSearchTerm] = React.useState("");
+  const [sortOrder, setSortOrder] = React.useState<{ sortBy: string, order: string }>({ sortBy: "", order: "" });
+
+  const { data, isLoading, isFetching }: any = ProductsListSet(searchTerm, sortOrder, filterData);
+
 
 
   useEffect(() => {
-    setProductList([
-      {
-        productId: "44ae7404-ce0a-436d-80fe-5124270d1d4a",
-        productName: "Premium",
-        productServiceInd: "Y",
-        productClass: {
-          productClassCd: "1ceb0df7-6459-4905-962b-43302fe43cb4",
-          productClassNm: "Non-Fuel",
-          activeInactiveInd: "Y"
-        },
-        productColor: {
-          productColorCd: "2e2056eb-a95f-4161-a4fd-0f6be61740f2",
-          productColorNm: "Purple",
-          productColorCode: "#641964",
-          countryCode: "us",
-          activeInactiveInd: "Y"
-        }
-      },
-      {
-        productId: "7f2db306-c17c-49a9-a84a-ba6770737c15",
-        productName: "Premium1",
-        productServiceInd: "Y",
-        productClass: {
-          productClassCd: "1ceb0df7-6459-4905-962b-43302fe43cb4",
-          productClassNm: "Non-Fuel",
-          activeInactiveInd: "Y"
-        },
-        productColor: {
-          productColorCd: "8ee38d3d-f792-4b93-a506-b656b3523228",
-          productColorNm: "Sky Blue",
-          productColorCode: "#009EB4",
-          countryCode: "us",
-          activeInactiveInd: "Y"
-        }
-      }
-    ]);
-  }, []);
+    if (data) {
+      setProductList(data.data);
+    }
+  }, [data]);
 
   const onInputChange = (value: string) => {
     setSearchTerm(value);
@@ -168,6 +140,7 @@ const ProductManagementContent = memo(() => {
         <Grid container pt={2.5} display="flex" flexGrow={1}>
           <GridComponent
             primaryKey='productId'
+            isLoading={isFetching || isLoading}
             rows={productObj.dataModel(productList)}
             header={headCells}
             enableRowSelection

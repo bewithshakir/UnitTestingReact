@@ -19,13 +19,14 @@ export default class ProductModel {
 
     dataModel (data: any) {
         return data.map((obj: any) => {
-
             return ({
                 ...obj,
+                productType:obj.productClass.productClassNm,
+                status: obj.productServiceInd,
+                pricing: obj.productClass.productClassNm === 'Fuel' ? '--' : `$${obj.manualPricing}`,
                 product: {
                     productId: obj.productId,
                     productName: obj.productName,
-                    productServiceInd: obj.productServiceInd,
                     productColorCd: obj.productColor.productColorCd,
                     productColorNm: obj.productColor.productColorNm,
                     productColorCode: obj.productColor.productColorCode,
@@ -81,13 +82,13 @@ export default class ProductModel {
                 field: "status", label: "STATUS", type: 'status', align: 'left', sortable: true,
                 fieldOptions: [
                     {
-                        value: "enabled",
+                        value: "y",
                         color: 'green',
                         displayValue: "Enabled",
                         icon: PositiveCricleIcon,
                     },
                     {
-                        value: "disabled",
+                        value: "n",
                         color: 'red',
                         displayValue: "Disabled",
                         icon: ExpireWalletIcon

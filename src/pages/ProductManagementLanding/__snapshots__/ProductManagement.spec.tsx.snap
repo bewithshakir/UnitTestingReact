@@ -1,243 +1,31 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Render Product management landing Page Render Product management landing Page 1`] = `
-<ForwardRef(Box)
-  display="flex"
-  ml={8}
-  mt={10}
+<ContextProvider
+  value={false}
 >
-  <ForwardRef(Grid)
-    className="main-area"
-    container={true}
-    pl={6.25}
-    pr={6.25}
+  <ContextProvider
+    value={
+      QueryClient {
+        "defaultOptions": Object {},
+        "mutationCache": MutationCache {
+          "config": Object {},
+          "listeners": Array [],
+          "mutationId": 0,
+          "mutations": Array [],
+        },
+        "mutationDefaults": Array [],
+        "queryCache": QueryCache {
+          "config": Object {},
+          "listeners": Array [],
+          "queries": Array [],
+          "queriesMap": Object {},
+        },
+        "queryDefaults": Array [],
+      }
+    }
   >
-    <ForwardRef(Grid)
-      container={true}
-      display="flex"
-      flexGrow={1}
-    >
-      <ForwardRef(Grid)
-        display="flex"
-        item={true}
-        lg={9}
-        md={8}
-      >
-        <ForwardRef(Grid)
-          item={true}
-          pr={2.5}
-        >
-          <Button
-            aria-label="dafault"
-            onClick={[Function]}
-            startIcon={<FilterIcon />}
-            types="filter"
-          >
-            buttons.filter
-          </Button>
-        </ForwardRef(Grid)>
-        <ForwardRef(Grid)
-          item={true}
-          pr={2.5}
-        >
-          <ForwardRef(FormControl)>
-            <SortbyMenu
-              onSelect={[Function]}
-              options={Array []}
-            />
-          </ForwardRef(FormControl)>
-        </ForwardRef(Grid)>
-        <ForwardRef(Grid)
-          item={true}
-        >
-          <SearchInput
-            delay={500}
-            id="SearchInput"
-            name="searchTerm"
-            onChange={[Function]}
-            placeholder="Search"
-            type="text"
-            value=""
-            width="100%"
-          />
-        </ForwardRef(Grid)>
-      </ForwardRef(Grid)>
-      <ForwardRef(Grid)
-        display="flex"
-        item={true}
-        justifyContent="flex-end"
-        lg={3}
-        md={4}
-      >
-        <ForwardRef(Grid)
-          item={true}
-          pr={2.5}
-        >
-          <Button
-            aria-label="primary"
-            onClick={[Function]}
-            startIcon={<Memo />}
-            types="primary"
-          >
-            ADD PRODUCT
-          </Button>
-        </ForwardRef(Grid)>
-        <ForwardRef(Grid)
-          item={true}
-        >
-          <ForwardRef(FormControl)>
-            <ActionsMenu
-              onSelect={[Function]}
-              options={
-                Array [
-                  Object {
-                    "action": "export",
-                    "icon": [Function],
-                    "label": "menus.actions.export data",
-                  },
-                ]
-              }
-            />
-          </ForwardRef(FormControl)>
-        </ForwardRef(Grid)>
-      </ForwardRef(Grid)>
-    </ForwardRef(Grid)>
-    <ForwardRef(Grid)
-      container={true}
-      display="flex"
-      flexGrow={1}
-      pt={2.5}
-    >
-      <GridComponent
-        enableRowAction={true}
-        enableRowSelection={true}
-        header={
-          Array [
-            Object {
-              "align": "left",
-              "field": "productName",
-              "fieldOptions": Array [
-                Object {
-                  "displayValue": "Regular",
-                  "icon": [Function],
-                  "value": "Regular",
-                },
-                Object {
-                  "displayValue": "Premium",
-                  "icon": [Function],
-                  "value": "Premium",
-                },
-                Object {
-                  "displayValue": "Diesel",
-                  "icon": [Function],
-                  "value": "Diesel",
-                },
-                Object {
-                  "displayValue": "Ad Blue",
-                  "icon": [Function],
-                  "value": "Ad Blue",
-                },
-                Object {
-                  "displayValue": "DEF",
-                  "icon": [Function],
-                  "value": "DEF",
-                },
-                Object {
-                  "displayValue": "V-Power",
-                  "icon": [Function],
-                  "value": "V-Power",
-                },
-                Object {
-                  "displayValue": "Petrol",
-                  "icon": [Function],
-                  "value": "Petrol",
-                },
-              ],
-              "label": "PRODUCT NAME",
-              "sortable": true,
-              "type": "status",
-            },
-            Object {
-              "align": "left",
-              "field": "productType",
-              "label": "PRODUCT TYPE",
-              "sortable": true,
-              "type": "text",
-            },
-            Object {
-              "align": "left",
-              "field": "status",
-              "fieldOptions": Array [
-                Object {
-                  "color": "green",
-                  "displayValue": "Enabled",
-                  "icon": [Function],
-                  "value": "enabled",
-                },
-                Object {
-                  "color": "red",
-                  "displayValue": "Disabled",
-                  "icon": [Function],
-                  "value": "disabled",
-                },
-              ],
-              "label": "STATUS",
-              "sortable": true,
-              "type": "status",
-            },
-            Object {
-              "align": "left",
-              "field": "pricing",
-              "label": "MANUAL PRICING (NON-FUEL PRODUCTS)",
-              "sortable": true,
-              "type": "text",
-            },
-          ]
-        }
-        noDataMsg="Add Tax by clicking on the \\"Add Tax\\" button."
-        onRowActionSelect={[Function]}
-        openDrawer={[Function]}
-        primaryKey="productId"
-        rowActionOptions={
-          Array [
-            Object {
-              "action": "edit",
-              "label": "menus.data-grid-actions.edit",
-            },
-          ]
-        }
-        rows={Array []}
-        searchTerm=""
-      />
-      <RightInfoPanel
-        fields={
-          Array [
-            Object {
-              "fieldType": "select",
-              "initialValue": Array [],
-              "label": "customer-filter-panel.state",
-              "name": "state",
-              "optionAPIResponseKey": "states",
-              "optionUrlKey": "salesTaxFilter",
-            },
-            Object {
-              "fieldType": "select",
-              "initialValue": Array [],
-              "label": "customer-filter-panel.city",
-              "name": "city",
-              "optionAPIResponseKey": "cities",
-              "optionUrlKey": "salesTaxFilter",
-            },
-          ]
-        }
-        headingText="taxes.filterHeader"
-        onClose={[Function]}
-        open={false}
-        panelType="dynamic-filter"
-        provideFilterParams={[Function]}
-        storeKey="salestaxFilter"
-      />
-    </ForwardRef(Grid)>
-  </ForwardRef(Grid)>
-</ForwardRef(Box)>
+    <Memo() />
+  </ContextProvider>
+</ContextProvider>
 `;
