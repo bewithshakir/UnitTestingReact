@@ -1536,6 +1536,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                     <Button
                       aria-label="cancel"
                       className="mr-4"
+                      disabled={false}
                       onClick={[Function]}
                       types="cancel"
                     >
@@ -7845,6 +7846,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                       <Button
                         aria-label="cancel"
                         className="mr-4"
+                        disabled={false}
                         onClick={[Function]}
                         types="cancel"
                       >
@@ -7915,6 +7917,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                             <Button
                               aria-label="cancel"
                               className="mr-4"
+                              disabled={false}
                               onClick={[Function]}
                               types="cancel"
                             >
@@ -7970,12 +7973,14 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                         <Button
                           aria-label="cancel"
                           className="mr-4"
+                          disabled={false}
                           onClick={[Function]}
                           types="cancel"
                         >
                           <WithStyles(ForwardRef(Button))
                             aria-label="cancel"
                             className="btn-cancel mr-4"
+                            disabled={false}
                             onClick={[Function]}
                             variant="contained"
                           >
@@ -8015,6 +8020,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                   "textSizeSmall": "MuiButton-textSizeSmall",
                                 }
                               }
+                              disabled={false}
                               onClick={[Function]}
                               variant="contained"
                             >
@@ -8217,32 +8223,28 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                           messageType=""
                           onClose={[Function]}
                         >
-                          <div
-                            className="toaster_wrapper"
+                          <WithStyles(ForwardRef(Snackbar))
+                            autoHideDuration={6000}
+                            onClose={[Function]}
+                            open={false}
                           >
-                            <WithStyles(ForwardRef(Snackbar))
+                            <ForwardRef(Snackbar)
                               autoHideDuration={6000}
+                              classes={
+                                Object {
+                                  "anchorOriginBottomCenter": "MuiSnackbar-anchorOriginBottomCenter",
+                                  "anchorOriginBottomLeft": "MuiSnackbar-anchorOriginBottomLeft",
+                                  "anchorOriginBottomRight": "MuiSnackbar-anchorOriginBottomRight",
+                                  "anchorOriginTopCenter": "MuiSnackbar-anchorOriginTopCenter",
+                                  "anchorOriginTopLeft": "MuiSnackbar-anchorOriginTopLeft",
+                                  "anchorOriginTopRight": "MuiSnackbar-anchorOriginTopRight",
+                                  "root": "MuiSnackbar-root",
+                                }
+                              }
                               onClose={[Function]}
                               open={false}
-                            >
-                              <ForwardRef(Snackbar)
-                                autoHideDuration={6000}
-                                classes={
-                                  Object {
-                                    "anchorOriginBottomCenter": "MuiSnackbar-anchorOriginBottomCenter",
-                                    "anchorOriginBottomLeft": "MuiSnackbar-anchorOriginBottomLeft",
-                                    "anchorOriginBottomRight": "MuiSnackbar-anchorOriginBottomRight",
-                                    "anchorOriginTopCenter": "MuiSnackbar-anchorOriginTopCenter",
-                                    "anchorOriginTopLeft": "MuiSnackbar-anchorOriginTopLeft",
-                                    "anchorOriginTopRight": "MuiSnackbar-anchorOriginTopRight",
-                                    "root": "MuiSnackbar-root",
-                                  }
-                                }
-                                onClose={[Function]}
-                                open={false}
-                              />
-                            </WithStyles(ForwardRef(Snackbar))>
-                          </div>
+                            />
+                          </WithStyles(ForwardRef(Snackbar))>
                         </ToastMessage>
                       </div>
                     </MuiGridRoot>

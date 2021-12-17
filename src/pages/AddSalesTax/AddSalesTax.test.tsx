@@ -1,10 +1,12 @@
 import { mount, shallow } from 'enzyme';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
 import {i18n} from '../../i18n/i18n';
 import { findByIdAttr, findByTestAttr, HOCSetup } from '../../tests/testUtils';
 import AddSalesTax from './AddSalesTax';
 import DiscardDialog from '../../components/UIComponents/ConfirmationDialog/DiscardChangesDialog.component';
 
+const queryClient = new QueryClient();
 
 /**
  * Factory function to create wrapper

@@ -128,13 +128,13 @@ describe('FuelTax Landing Page', () => {
     const headCellsLots = TaxObj.fieldsToDisplayLotTable();
     const rowActionOptions = TaxObj.rowActions();
     const taxJurisdictionId = '7496ff42-b425-4bb0-a2b4-b7a20a427645';
-    /* test('Fuel Product List is rendering', () => {
+    test('Fuel Product List is rendering', () => {
         const FuelTaxProductListPage = shallow(
             <InnerTable primaryKey={taxJurisdictionId} id={taxJurisdictionId} headCells={headCellsLots} enableRowAction={true} rowActionOptions={rowActionOptions}/>
         );
         expect(useFuelTaxList).toBeCalled();
         expect(FuelTaxProductListPage).toMatchSnapshot();
-    }); */
+    });
 });
 
 
