@@ -5,6 +5,7 @@ import { Button } from "../../components/UIComponents/Button/Button.component";
 import { FilterIcon } from "../../assets/icons";
 import SortbyMenu from "../../components/UIComponents/Menu/SortbyMenu.component";
 import { useTranslation } from "react-i18next";
+import { useHistory } from "react-router-dom";
 import SearchInput from "../../components/UIComponents/SearchInput/SearchInput";
 import ActionsMenu from "../../components/UIComponents/Menu/ActionsMenu.component";
 import { Add } from "@mui/icons-material";
@@ -33,6 +34,7 @@ const OPISCityLandingContent = memo(() => {
 
   const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
   setVersion("NavLinks");
+  const history = useHistory();
 
   const { t } = useTranslation();
   const { data, fetchNextPage, isLoading, isFetching }: any = useOPISCityList(
@@ -56,7 +58,7 @@ const OPISCityLandingContent = memo(() => {
   };
 
   const navigateHomePage = () => {
-    // perform action
+    history.push("/opisCities/add");
   };
 
   const handleMassAction = (action: DataGridActionsMenuOption) => {

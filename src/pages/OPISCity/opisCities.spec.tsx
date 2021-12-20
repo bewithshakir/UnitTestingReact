@@ -1,12 +1,12 @@
 import { mount } from 'enzyme';
-import OPISCityLendingPage from "./index";
+import OPISCityLandingPage from "./index";
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { OPISCity } from './config';
 
 const queryClient = new QueryClient();
 describe('Given OPIS Cities Landing Page', () => {
     const Page = mount(<QueryClientProvider client={queryClient}>
-        <OPISCityLendingPage />
+        <OPISCityLandingPage />
     </QueryClientProvider>
     );
     test('Page Rendered Properly', () => {

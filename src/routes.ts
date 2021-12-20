@@ -46,25 +46,6 @@ export const routes = [
     ]
   },
   {
-    path: "/opisCities",
-    version: "NavLinks",
-    component: lazy(() => import('./pages/OPISCity/')),
-    routes: [
-      {
-        path: "/opisCities/add",
-        component: lazy(() => import('./pages/OPISCity/')),
-        version: "Breadcrumbs-Single",
-        exact: true
-      },
-      {
-        path: "/opisCities/edit/:opisCityId",
-        component: lazy(() => import('./pages/OPISCity/')),
-        version: "Breadcrumbs-Single",
-        exact: true
-      },
-    ]
-  },
-  {
     path: "/taxes",
     component: lazy(() => import("./pages/Tax")),
     version: "NavLinks",
@@ -102,7 +83,7 @@ export const routes = [
   },
   {
     path: "/opisCities",
-    component: lazy(() => import("./pages/OpisCities")),
+    component: lazy(() => import("./pages/OPISCity")),
     version: "Breadcrumbs-Many",
     exact: true
   },
@@ -115,7 +96,7 @@ export const routes = [
   {
     path: "/opisCities/add",
     version: "Breadcrumbs-Single",
-    component: lazy(() => import('./pages/OpisCities/AddOpisCities')),
+    component: lazy(() => import('./pages/OPISCity/AddOpisCities')),
     exact: true,
   },
   {

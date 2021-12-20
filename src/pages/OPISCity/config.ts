@@ -1,6 +1,24 @@
 import { ExportIcon } from '../../assets/icons';
 import { IDynamicFilterProps } from '../../components/UIComponents/RightInfoPanel/DynamicFilterContent.component';
 
+export interface IAddOPISCity{
+  countryCd: string,
+  state: string,
+  city: string,
+  cityId: string
+}
+
+export const formStatusObj = {
+  success: {
+    message: 'Product is successfully added',
+    type: 'Success',
+  },
+  error: {
+    message: 'Something went wrong. Please try again.',
+    type: 'Error',
+  },
+};
+
 export const MASS_ACTION_TYPES = {
   EXPORT: 'export',
 };
