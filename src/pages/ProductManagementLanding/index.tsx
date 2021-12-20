@@ -72,6 +72,7 @@ const ProductManagementContent = memo(() => {
     switch (action.action) {
       case ACTION_TYPES.EDIT:
         // perform action
+        history.push(`productManagement/edit/${row.productId}`);
         break;
       case ACTION_TYPES.DELETE:
         // perform action
