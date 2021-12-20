@@ -99,6 +99,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
+                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -304,6 +305,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
+                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -940,7 +942,6 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                         isLoading={true}
                         noDataMsg="Add Tax by clicking on the \\"Add Tax\\" button."
                         onRowActionSelect={[Function]}
-                        openDrawer={[Function]}
                         primaryKey="taxJurisdictionId"
                         rowActionOptions={
                           Array [
@@ -3952,7 +3953,6 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                             isLoading={true}
                             noDataMsg="Add Tax by clicking on the \\"Add Tax\\" button."
                             onRowActionSelect={[Function]}
-                            openDrawer={[Function]}
                             primaryKey="taxJurisdictionId"
                             rowActionOptions={
                               Array [
@@ -4078,7 +4078,6 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                         isLoading={true}
                         noDataMsg="Add Tax by clicking on the \\"Add Tax\\" button."
                         onRowActionSelect={[Function]}
-                        openDrawer={[Function]}
                         primaryKey="taxJurisdictionId"
                         rowActionOptions={
                           Array [
@@ -4266,7 +4265,6 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                     isLoading={true}
                                     noDataMsg="Add Tax by clicking on the \\"Add Tax\\" button."
                                     onRowActionSelect={[Function]}
-                                    openDrawer={[Function]}
                                     order="asc"
                                     orderBy=""
                                     primaryKey="taxJurisdictionId"
@@ -4466,7 +4464,6 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                           isLoading={true}
                                           noDataMsg="Add Tax by clicking on the \\"Add Tax\\" button."
                                           onRowActionSelect={[Function]}
-                                          openDrawer={[Function]}
                                           order="asc"
                                           orderBy=""
                                           primaryKey="taxJurisdictionId"
@@ -6015,7 +6012,6 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                       isLoading={true}
                                       noDataMsg="Add Tax by clicking on the \\"Add Tax\\" button."
                                       onRowActionSelect={[Function]}
-                                      openDrawer={[Function]}
                                       order="asc"
                                       orderBy=""
                                       primaryKey="taxJurisdictionId"
@@ -6706,6 +6702,7 @@ exports[`Rendering of Salestax landing page Component Search Textbox Data Enter 
                     "isPlaceholderData": false,
                     "isPreviousData": false,
                     "isRefetchError": false,
+                    "isRefetching": false,
                     "isStale": true,
                     "isSuccess": false,
                     "refetch": [Function],
@@ -6911,6 +6908,7 @@ exports[`Rendering of Salestax landing page Component Search Textbox Data Enter 
                     "isPlaceholderData": false,
                     "isPreviousData": false,
                     "isRefetchError": false,
+                    "isRefetching": false,
                     "isStale": true,
                     "isSuccess": false,
                     "refetch": [Function],

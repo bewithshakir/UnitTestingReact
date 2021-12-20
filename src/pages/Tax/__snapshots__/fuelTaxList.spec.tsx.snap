@@ -323,7 +323,6 @@ exports[`FuelTax Landing Page Fuel List is rendering 1`] = `
         isLoading={false}
         noDataMsg="Add Fuel Tax by clicking on the \\"Add Tax\\" button."
         onResetTableCollaps={[Function]}
-        openDrawer={[Function]}
         primaryKey="taxJurisdictionId"
         resetCollaps={false}
         rowActionOptions={Array []}
@@ -715,7 +714,6 @@ exports[`Given Search FuelTax Landing Page Show Fuel List as per searched value 
         isLoading={false}
         noDataMsg="Add Fuel Tax by clicking on the \\"Add Tax\\" button."
         onResetTableCollaps={[Function]}
-        openDrawer={[Function]}
         primaryKey="taxJurisdictionId"
         resetCollaps={false}
         rowActionOptions={Array []}
