@@ -64,6 +64,11 @@ export default function AddOpis() {
 
     const disableSubmitBtn = () => (!formik.isValid || !formik.dirty) || formik.isSubmitting;
     const isFormFieldChange = () => formik.dirty;
+    const handleFormDataChange = () => {
+        if (isFormFieldChange() && !formik.isSubmitting) {
+            showDialogBox(true);
+        }
+    };
     const onClickBack = () => {
         if (isFormFieldChange()) {
             showDialogBox(true);
@@ -114,7 +119,7 @@ export default function AddOpis() {
     return (
         <Fragment>
             <FormikProvider value={formik}>
-                <form onSubmit={formik.handleSubmit}>
+                <form onSubmit={formik.handleSubmit} onBlur={handleFormDataChange}>
                     <Box display="flex" mt={10} ml={16}>
                         <Grid item md={8} xs={8}>
                             <Container maxWidth="lg" className="page-container">
