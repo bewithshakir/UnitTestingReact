@@ -72,6 +72,9 @@ export default function HorizontalBar (props: HorizontalBarProps) {
     else if (pathname.includes('editFuelTax')) {
       history.push('/taxes');
     }
+    else if (pathname.includes('productManagement/add')) {
+      history.push('/productManagement');
+    }
     else {
       props.onBack();
     }
@@ -95,6 +98,8 @@ export default function HorizontalBar (props: HorizontalBarProps) {
         return t("taxes.opisCities.form.titleAdd");
       case history.location.pathname.includes('opisCities/edit'):
         return t("taxes.opisCities.form.titleEdit");
+      case history.location.pathname.includes('productManagement/add'):
+        return t("productManagement.form.titleAdd");
       default:
         return selectedCustomerName;
     }
