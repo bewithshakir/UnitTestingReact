@@ -29,7 +29,6 @@ const ProductManagementContent = memo(() => {
   const ACTION_TYPES = productObj.ACTION_TYPES;
   const [productList, setProductList] = React.useState<any>([]);
   const headCells = productObj.fieldsToDisplay();
-  const [drawerOpen, setDrawerOpen] = React.useState(false);
   const [salesTaxFilterPanelVisible, setSalesTaxPanelVisible] = React.useState(false);
   const [filterData, setFilterData] = React.useState<{ [key: string]: string[] }>({});
   const [searchTerm, setSearchTerm] = React.useState("");
@@ -50,16 +49,11 @@ const ProductManagementContent = memo(() => {
   };
 
   const handleCustFilterPanelOpen = () => {
-    setDrawerOpen(false);
     setSalesTaxPanelVisible(!salesTaxFilterPanelVisible);
   };
 
   const handleMassAction = () => {
     return '';
-  };
-
-  const openDrawer = () => {
-    setDrawerOpen(true);
   };
 
   const handleSalesTaxFilterPanelClose = () => setSalesTaxPanelVisible(false);
@@ -149,7 +143,6 @@ const ProductManagementContent = memo(() => {
             onRowActionSelect={handleRowAction}
             rowActionOptions={rowActionOptions}
             searchTerm={searchTerm}
-            openDrawer={openDrawer}
             noDataMsg='Add Product by clicking on the "Add Product" button.'
           />
           <RightInfoPanel panelType="dynamic-filter"
