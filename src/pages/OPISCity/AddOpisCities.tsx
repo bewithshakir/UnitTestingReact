@@ -172,8 +172,6 @@ export default function AddOpis() {
                                                 label={t("taxes.opisCities.form.city id")}
                                                 type='text'
                                                 placeholder={t("taxes.opisCities.form.city id")}
-                                                // helperText={(formik.touched.city && formik.errors.city) ? formik.errors.city.value : undefined}
-                                                // error={(formik.touched.city && formik.errors.city) ? true : false}
                                                 description=''
                                                 value={formik?.values?.city?.value}
                                                 required
