@@ -30,6 +30,7 @@
     "sort by": "Sort by",
     "add lot": "Add Lot",
     "add tax": "Add Tax",
+    "add opis city": "ADD OPIS CITY",
     "browse": "Browse",
     "filter": "Filters"
   },
@@ -115,7 +116,7 @@
     "header": {
       "filter": "Filter"
     },
-    "search": "Parking Lot Name",
+    "search": "Lot Name",
     "results found": "results found",
     "result(s) found": "result(s) found",
     "sortBy": {
@@ -131,7 +132,7 @@
     }
   },
   "taxes": {
-    "filterHeader":"Filters",
+    "filterHeader": "Filters",
     "navBar": {
       "fuelTax": "Fuel Tax",
       "salesTax": "Sales Tax",
@@ -174,6 +175,33 @@
         "labelFederalRate": "Federal rate",
         "labelLocalRate": "Local rate",
         "titleFuelEdit": "Edit Fuel Tax"
+      }
+    },
+    "opisCities": {
+      "search": "City",
+      "results found": "results found",
+      "result(s) found": "result(s) found",
+      "sortBy": {
+        "cityname_atoz": "City Name A-Z",
+        "cityname_ztoa": "City Name Z-A"
+      },
+      "filter": {
+        "state": "State",
+        "city": "City"
+      },
+      "form": {
+        "titleAdd": "Add OPIS City",
+        "titleEdit": "Edit OPIS City",
+        "title": "Fill all the mandatory fields",
+        "labelCity": "City",
+        "labelState": "State",
+        "labelCityId": "City ID",
+        "state": "State",
+        "select state": "Select State",
+        "select city": "Select City",
+        "city": "City",
+        "city id": "City Id",
+        "fill msg": "Fill all the Mandatory fields * "
       }
     }
   },

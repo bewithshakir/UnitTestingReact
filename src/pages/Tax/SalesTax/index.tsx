@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { memo, useEffect } from 'react';
 import { HorizontalBarVersionState, useStore } from '../../../store';
 import { Box, Grid, FormControl } from "@mui/material";
@@ -29,7 +28,6 @@ const SalesTaxLandingContent = memo(() => {
   const ACTION_TYPES = salesTaxObj.ACTION_TYPES;
   const [salesTaxList, setSalesTaxList] = React.useState([]);
   const headCells = salesTaxObj.fieldsToDisplay();
-  const [drawerOpen, setDrawerOpen] = React.useState(false);
   const [salesTaxFilterPanelVisible, setSalesTaxPanelVisible] = React.useState(false);
   const [filterData, setFilterData] = React.useState<{ [key: string]: string[] }>({});
   const [searchTerm, setSearchTerm] = React.useState("");
@@ -52,7 +50,6 @@ const SalesTaxLandingContent = memo(() => {
   };
 
   const handleCustFilterPanelOpen = () => {
-    setDrawerOpen(false);
     setSalesTaxPanelVisible(!salesTaxFilterPanelVisible);
   };
 
@@ -77,14 +74,7 @@ const SalesTaxLandingContent = memo(() => {
   };
 
   const handleMassAction = () => {
-    return '';
-  };
-
-  const openDrawer = () => {
-    setDrawerOpen(true);
-  };
-  const drawerClose = () => {
-    setDrawerOpen(false);
+    // perform action
   };
 
   const handleSalesTaxFilterPanelClose = () => setSalesTaxPanelVisible(false);
@@ -98,7 +88,6 @@ const SalesTaxLandingContent = memo(() => {
       case ACTION_TYPES.EDIT:
         // perform action
         history.push(`salesTax/edit/?city=${row.city}&state=${row.state}&countryCode=${row.countryCode}`);
-
         break;
       case ACTION_TYPES.DELETE:
         // perform action
@@ -176,7 +165,6 @@ const SalesTaxLandingContent = memo(() => {
             onRowActionSelect={handleRowAction}
             rowActionOptions={rowActionOptions}
             searchTerm={searchTerm}
-            openDrawer={openDrawer}
             noDataMsg='Add Tax by clicking on the "Add Tax" button.'
           />
           <RightInfoPanel panelType="dynamic-filter"
