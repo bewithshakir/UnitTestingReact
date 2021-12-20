@@ -33,6 +33,7 @@ export default function AddOpis() {
     const [cities, setCities] = useState([]);
     const resetFormFieldValue = useShowConfirmationDialogBoxStore((state) => state.resetFormFieldValue);
     const showDialogBox = useShowConfirmationDialogBoxStore((state) => state.showDialogBox);
+    const isFormValidated = useShowConfirmationDialogBoxStore((state) => state.setFormFieldValue);
     const [apiResposneState, setAPIResponse] = useState(false);
 
     const initialValues = {
@@ -65,8 +66,8 @@ export default function AddOpis() {
     const disableSubmitBtn = () => (!formik.isValid || !formik.dirty) || formik.isSubmitting;
     const isFormFieldChange = () => formik.dirty;
     const handleFormDataChange = () => {
-        if (isFormFieldChange() && !formik.isSubmitting) {
-            showDialogBox(true);
+        if (isFormFieldChange()) {
+            isFormValidated(true);
         }
     };
     const onClickBack = () => {
