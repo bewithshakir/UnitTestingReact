@@ -34,6 +34,11 @@ export const MASS_ACTION_TYPES = {
   EXPORT: 'export',
 };
 
+export const SORTBY_TYPES = {
+  CITY_NAME_AZ: "City Name A-Z",
+  CITY_NAME_ZA: "City Name Z-A",
+};
+
 export const FilterByFields: IDynamicFilterProps['fields'] = [
   { name: 'state', label: 'taxes.fuelTax.filter.state', fieldType: 'select', optionUrlKey: 'fuelTaxFilter', optionAPIResponseKey: 'states', initialValue: [] },
   { name: 'city', label: 'taxes.fuelTax.filter.city', fieldType: 'select', optionUrlKey: 'fuelTaxFilter', optionAPIResponseKey: 'cities', initialValue: [] },

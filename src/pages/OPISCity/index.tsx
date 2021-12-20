@@ -5,42 +5,39 @@ import { Button } from "../../components/UIComponents/Button/Button.component";
 import { FilterIcon } from "../../assets/icons";
 import SortbyMenu from "../../components/UIComponents/Menu/SortbyMenu.component";
 import { useTranslation } from "react-i18next";
+import { useHistory } from "react-router-dom";
 import SearchInput from "../../components/UIComponents/SearchInput/SearchInput";
 import ActionsMenu from "../../components/UIComponents/Menu/ActionsMenu.component";
 import { Add } from "@mui/icons-material";
-import { useHistory } from "react-router-dom";
-import TaxModel from '../../models/TaxModel';
-import { useFuelTaxList } from './queries';
+import OPISCityModel from '../../models/OPISCityModel';
+import { useOPISCityList } from './queries';
 import GridComponent from "../../components/UIComponents/DataGird/grid.component";
 import { DataGridActionsMenuOption } from '../../components/UIComponents/Menu/DataGridActionsMenu.component';
-import { FuelTax, MASS_ACTION_TYPES, SORTBY_TYPES } from './config';
+import { OPISCity, MASS_ACTION_TYPES, ROW_ACTION_TYPES, SORTBY_TYPES } from './config';
 import { RightInfoPanel } from '../../components/UIComponents/RightInfoPanel/RightInfoPanel.component';
 import { getSeachedDataTotalCount } from '../../utils/helperFunctions';
-import Table from './SubTableFuelProduct';
 
-const TaxLandingContent = memo(() => {
-  const TaxObj = new TaxModel();
-  const headCells = TaxObj.fieldsToDisplay();
-  const headCellsLots = TaxObj.fieldsToDisplayLotTable();
-  const massActionOptions = TaxObj.massActions();
-  const rowActionOptions = TaxObj.rowActions();
-  const { SortByOptions, FilterByFields } = FuelTax.LandingPage;
+const OPISCityLandingContent = memo(() => {
+  const OPISCityObj = new OPISCityModel();
+  const headCells = OPISCityObj.fieldsToDisplay();
+  const massActionOptions = OPISCityObj.massActions();
+  const rowActionOptions = OPISCityObj.rowActions();
+  const { SortByOptions, FilterByFields } = OPISCity.LandingPage;
 
-  const history = useHistory();
+
   const [searchTerm, setSearchTerm] = React.useState("");
-  const [resetTableCollaps, setResetTableCollaps] = React.useState(false);
   const [filterData, setFilterData] = React.useState<{ [key: string]: string[] }>({});
   const [isFilterPanelOpen, toggleFilterPanel] = React.useState(false);
   const [sortOrder, setSortOrder] = React.useState<{ sortBy: string, order: string }>({ sortBy: "", order: "" });
   const [fuelTaxList, setFuelTaxList] = React.useState([]);
-  const [fuelTaxProductId, setFuelTaxProductId] = React.useState('');
 
 
   const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
   setVersion("NavLinks");
+  const history = useHistory();
 
   const { t } = useTranslation();
-  const { data, fetchNextPage, isLoading, isFetching }: any = useFuelTaxList(
+  const { data, fetchNextPage, isLoading, isFetching }: any = useOPISCityList(
     searchTerm,
     sortOrder,
     filterData
@@ -57,12 +54,11 @@ const TaxLandingContent = memo(() => {
   }, [data]);
 
   const onInputChange = (value: string) => {
-    setResetTableCollaps(true);
     setSearchTerm(value);
   };
 
   const navigateHomePage = () => {
-    history.push("/addFuelTax");
+    history.push("/opisCities/add");
   };
 
   const handleMassAction = (action: DataGridActionsMenuOption) => {
@@ -72,7 +68,15 @@ const TaxLandingContent = memo(() => {
         break;
       default: return;
     }
-    setResetTableCollaps(true);
+  };
+
+  const handleRowAction = (action: DataGridActionsMenuOption) => {
+    switch (action.action) {
+      case ROW_ACTION_TYPES.EDIT:
+        // perform action
+        break;
+      default: return;
+    }
   };
 
   const onSortBySlected = (value: string) => {
@@ -88,7 +92,6 @@ const TaxLandingContent = memo(() => {
         sortOrder = { sortBy: "", order: "" };
         break;
     }
-    setResetTableCollaps(true);
     setSortOrder(sortOrder);
   };
 
@@ -97,7 +100,6 @@ const TaxLandingContent = memo(() => {
   };
 
   const getFilterParams = (filterObj: { [key: string]: string[] }) => {
-    setResetTableCollaps(true);
     setFilterData(filterObj);
   };
 
@@ -127,7 +129,7 @@ const TaxLandingContent = memo(() => {
             <Grid item>
               <SearchInput
                 name="searchTerm"
-                placeholder={t('taxes.fuelTax.search')}
+                placeholder={t('taxes.opisCities.search')}
                 value={searchTerm}
                 delay={500}
                 onChange={onInputChange}
@@ -137,7 +139,7 @@ const TaxLandingContent = memo(() => {
               (searchTerm && !(isFetching || isLoading) && data) &&
               <Grid item display="flex" alignItems="center" paddingLeft={2.5}>
                 <Typography color="var(--Darkgray)" variant="h4" align="center" className="fw-bold">
-                  {getSeachedDataTotalCount(data, [t('taxes.fuelTax.result(s) found'), t('taxes.fuelTax.results found')])}
+                  {getSeachedDataTotalCount(data, [t('taxes.opisCities.result(s) found'), t('taxes.opisCities.results found')])}
                 </Typography>
               </Grid>
             }
@@ -150,7 +152,7 @@ const TaxLandingContent = memo(() => {
                 onClick={navigateHomePage}
                 startIcon={<Add />}
               >
-                {t("buttons.add tax")}
+                {t("buttons.add opis city")}
               </Button>
             </Grid>
             <Grid item>
@@ -170,14 +172,12 @@ const TaxLandingContent = memo(() => {
             header={headCells}
             isLoading={isFetching || isLoading}
             enableRowSelection={false}
-            enableRowAction={false}
+            enableRowAction
+            onRowActionSelect={handleRowAction}
+            rowActionOptions={rowActionOptions}
             getPages={fetchNextPage}
             searchTerm={searchTerm}
-            noDataMsg='Add Fuel Tax by clicking on the "Add Tax" button.'
-            getId={(id: string) => setFuelTaxProductId(id)}
-            resetCollaps={resetTableCollaps}
-            onResetTableCollaps={setResetTableCollaps}
-            InnerTableComponent={<Table primaryKey='productTaxId' id={fuelTaxProductId} headCells={headCellsLots} enableRowAction={true} rowActionOptions={rowActionOptions} />}
+            noDataMsg='Add OPIS City by clicking on the "ADD OPIS CITY" button.'
           />
 
           <RightInfoPanel
@@ -186,7 +186,7 @@ const TaxLandingContent = memo(() => {
             provideFilterParams={getFilterParams}
             onClose={() => toggleFilterPanel(false)}
             fields={FilterByFields}
-            storeKey={'fuelTaxFilter'}
+            storeKey={'opisCityFilter'}
           />
 
         </Grid>
@@ -195,4 +195,4 @@ const TaxLandingContent = memo(() => {
   );
 });
 
-export default TaxLandingContent;
+export default OPISCityLandingContent;

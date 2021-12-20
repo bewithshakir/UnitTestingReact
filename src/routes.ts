@@ -82,10 +82,22 @@ export const routes = [
     exact: true,
   },
   {
+    path: "/opisCities",
+    component: lazy(() => import("./pages/OPISCity")),
+    version: "Breadcrumbs-Many",
+    exact: true
+  },
+  {
     path: "/productManagement",
     component: lazy(() => import("./pages/ProductManagementLanding")),
     version: "Breadcrumbs-Many",
     exact: true
+  },
+  {
+    path: "/opisCities/add",
+    version: "Breadcrumbs-Single",
+    component: lazy(() => import('./pages/OPISCity/AddOpisCities')),
+    exact: true,
   },
   {
     path: "/query",
