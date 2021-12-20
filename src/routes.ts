@@ -102,5 +102,11 @@ export const routes = [
     version: "Breadcrumbs-Single",
     component: lazy(() => import('./pages/AddProductManagement/AddProduct')),
     exact: true,
+  },
+  {
+    path: "/productManagement/edit/:productId",
+    version: "Breadcrumbs-Single",
+    component: lazy(() => import('./pages/AddProductManagement/AddProduct')),
+    exact: true,
   }
 ];
