@@ -66,6 +66,9 @@ export default function HorizontalBar (props: HorizontalBarProps) {
     else if (pathname.includes('salesTax/add') || pathname.includes('salesTax/edit')) {
       history.push('/salesTax');
     }
+    else if (pathname.includes('opisCities/add')) {
+      history.push('/opisCities');
+    }
     else if (pathname.includes('editFuelTax')) {
       history.push('/taxes');
     }
