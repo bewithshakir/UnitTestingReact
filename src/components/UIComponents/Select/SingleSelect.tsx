@@ -32,10 +32,10 @@ interface props {
     disabled?: boolean;
     components?: any;
     isLoading?: boolean;
-    noOptionsMessage? : () => string
+    noOptionsMessage?: () => string
 }
 
-export default function SingleSelect(props: props) {
+export default function SingleSelect (props: props) {
 
     const DropdownIndicator = (props: DropdownIndicatorProps<item>) => {
         return (
@@ -55,7 +55,7 @@ export default function SingleSelect(props: props) {
             <components.Option {...props}>
                 <Fragment>
                     <span className='box'>
-                    {props.data.icon && <span className="icon-svg"> {props.data.icon} </span>}  <label className="label-text" >{props.label}</label>
+                        {props.data.icon && <span className="icon-svg"> {props.data.icon} </span>}  <label className="label-text" >{props.label}</label>
                     </span>
                 </Fragment>
             </components.Option>
@@ -66,7 +66,7 @@ export default function SingleSelect(props: props) {
         return (
             <SingleValue {...props}>
                 <span className='value-box'>
-                {props.data.icon && <span className="icon-svg"> {props.data.icon} </span>} <span className="label-text" >{props.data.label}</span>
+                    {props.data.icon && <span className="icon-svg"> {props.data.icon} </span>} <span className="label-text" >{props.data.label}</span>
                 </span>
             </SingleValue>
         );
@@ -88,11 +88,11 @@ export default function SingleSelect(props: props) {
                     options={props.items}
                     onChange={handleChange}
                     onBlur={props.onBlur}
-                    components={{ IndicatorSeparator: () => null, DropdownIndicator, ...props.components, Option, SingleValue: SingleValueFrag}}
+                    components={{ IndicatorSeparator: () => null, DropdownIndicator, ...props.components, Option, SingleValue: SingleValueFrag }}
                     isSearchable={false}
                     isDisabled={props.isDisabled}
                     onKeyDown={e => e.preventDefault()}
-                    isLoading={props.isLoading}
+                    isLoading={props?.isLoading}
                     noOptionsMessage={props.noOptionsMessage}
                 />
                 {props.helperText && (
