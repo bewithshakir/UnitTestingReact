@@ -25,7 +25,7 @@ export const useGetProductTypes = (countryCode: string) => {
     return useQuery(["getProductTypes"], () => fetchProductTypes(countryCode), {
         retry: false,
         select: (response) => {
-            const productTypes = response?.data.map((data: dataPropsInt)=> ({
+            const productTypes = response?.data.map((data: dataPropsInt) => ({
                 value: data.productClassCd,
                 label: data.productClassNm
             }));
@@ -48,7 +48,7 @@ export const useGetProductColors = (countryCode: string) => {
     return useQuery(["product-colors"], () => fetProductColors(countryCode), {
         retry: false,
         select: (response) => {
-            const productColors = response?.data.map((data: colorPropsInt)=> ({
+            const productColors = response?.data.map((data: colorPropsInt) => ({
                 value: data.productColorCd,
                 label: data.name
             }));
@@ -69,7 +69,7 @@ interface addProductPayloadInt {
     productPricing: number
 
 }
- const addProductManagement = async (payload: addProductPayloadInt) => {
+const addProductManagement = async (payload: addProductPayloadInt) => {
     const options: AxiosRequestConfig = {
         method: 'post',
         url: '/api/product-service/product/add',
@@ -79,11 +79,50 @@ interface addProductPayloadInt {
     return data;
 };
 
+const editProductManagement = async (payload: any, productId: string) => {
+
+    const options: AxiosRequestConfig = {
+        method: 'put',
+        url: `/api/product-service/product/edit/${productId}`,
+        data: payload
+    };
+    const { data } = await axios(options);
+    return data;
+};
+
+const getProductData = async (productId: string) => {
+    if (productId) {
+        const options: AxiosRequestConfig = {
+            method: 'get',
+            url: `/api/product-service/product/details/${productId}`
+        };
+        const { data } = await axios(options);
+        return data;
+    }
+};
 
 export const useAddProductManagement = (onSuccess: any, onError: any) => {
     return useMutation((payload: addProductPayloadInt) =>
-    addProductManagement(payload), {
+        addProductManagement(payload), {
         onError,
         onSuccess,
+    });
+};
+
+export const useEditProductManagement = (productId: string, onSuccess: any, onError: any) => {
+    return useMutation((payload: any) =>
+        editProductManagement(payload, productId), {
+        onSuccess,
+        onError,
+        retry: false
+    });
+};
+
+export const useGetProductData = (productId: string, onSuccess: any, onError: any) => {
+    return useQuery(["getProduct", productId, onSuccess, onError],
+        () => getProductData(productId), {
+        onSuccess,
+        onError,
+        retry: false
     });
 };
