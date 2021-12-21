@@ -15,7 +15,6 @@ export default class ProductManagementModel {
     productType: SelectPropsInt;
     productColor: SelectPropsInt;
     productStatus: SelectPropsInt;
-    manualPricing: string;
     productPricing: string;
 
     constructor() {
@@ -24,7 +23,6 @@ export default class ProductManagementModel {
         this.productType = { label: '', value: '' };
         this.productColor = { label: '', value: '' };
         this.productStatus = { label: '', value: '' };
-        this.manualPricing = '';
         this.productPricing = '';
     }
 
