@@ -1,3 +1,4 @@
+import { useTheme } from '../contexts/Theme/Theme.context';
 export const maskPhoneNumber = (phNumber: string) => {
     const maskedPh = phNumber.match(/(\d{3})(\d{3})(\d{4})/);
     return maskedPh ? "(" + maskedPh[1] + ") " + maskedPh[2] + "-" + maskedPh[3] : phNumber;
@@ -28,4 +29,14 @@ export const getCheckBoxDisabledByPaymentType = (value: string) => {
 export const getSeachedDataTotalCount = (data: { pages: [{ data: { pagination: { totalCount: number } } }] }, msg: string[]) => {
     const totalCount = data?.pages[0]?.data?.pagination?.totalCount || 0;
     return (`${totalCount} ${totalCount > 1 ? msg[1] : msg[0]}`);
+};
+
+
+export const getCurrentAppCountry = () => {
+    const { themeType } = useTheme();
+    return themeType;
+};
+
+export const isCurrentAppCountryUSA = () => {
+    return getCurrentAppCountry() === "USA";
 };
