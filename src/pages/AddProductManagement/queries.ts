@@ -1,6 +1,7 @@
 import { useMutation, useQuery } from "react-query";
 import { AxiosRequestConfig } from "axios";
 import axios from '../../infrastructure/ApiHelper';
+import { getProductIcon } from '../../utils/helperFunctions';
 
 interface dataPropsInt {
     activeInactiveInd: string,
@@ -27,7 +28,7 @@ export const useGetProductTypes = (countryCode: string) => {
         select: (response) => {
             const productTypes = response?.data.map((data: dataPropsInt) => ({
                 value: data.productClassCd,
-                label: data.productClassNm
+                label: data.productClassNm,
             }));
             return productTypes;
         }
@@ -50,7 +51,8 @@ export const useGetProductColors = (countryCode: string) => {
         select: (response) => {
             const productColors = response?.data.map((data: colorPropsInt) => ({
                 value: data.productColorCd,
-                label: data.name
+                label: data.name,
+                icon: getProductIcon(data.name)
             }));
             return productColors;
         }
