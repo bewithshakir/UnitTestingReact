@@ -1,17 +1,16 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { memo, useEffect } from 'react';
 import { HorizontalBarVersionState, useStore } from '../../store';
 import { Box, Grid, FormControl } from "@mui/material";
 import { Button } from "../../components/UIComponents/Button/Button.component";
 import { FilterIcon } from "../../assets/icons";
 import SortbyMenu from "../../components/UIComponents/Menu/SortbyMenu.component";
-import { filterByFields, sortByOptions } from "./config";
 import { useTranslation } from "react-i18next";
 import SearchInput from "../../components/UIComponents/SearchInput/SearchInput";
 import ActionsMenu from "../../components/UIComponents/Menu/ActionsMenu.component";
 import { Add } from "@mui/icons-material";
 import { useHistory } from "react-router-dom";
-import ProductModel from '../../models/ProductModel';
+import ProductManagementModel from '../../models/ProductManagementModel';
+import { ProductManagement, MASS_ACTION_TYPES, ROW_ACTION_TYPES, SORTBY_TYPES } from './config';
 import GridComponent from "../../components/UIComponents/DataGird/grid.component";
 import { RightInfoPanel } from "../../components/UIComponents/RightInfoPanel/RightInfoPanel.component";
 import { DataGridActionsMenuOption } from '../../components/UIComponents/Menu/DataGridActionsMenu.component';
@@ -23,12 +22,13 @@ const ProductManagementContent = memo(() => {
   const { t } = useTranslation();
   const history = useHistory();
 
-  const productObj = new ProductModel();
+  const productObj = new ProductManagementModel();
+  const headCells = productObj.fieldsToDisplay();
   const massActionOptions = productObj.massActions();
   const rowActionOptions = productObj.rowActions();
-  const ACTION_TYPES = productObj.ACTION_TYPES;
+  const { SortByOptions, FilterByFields } = ProductManagement.LandingPage;
+
   const [productList, setProductList] = React.useState<any>([]);
-  const headCells = productObj.fieldsToDisplay();
   const [salesTaxFilterPanelVisible, setSalesTaxPanelVisible] = React.useState(false);
   const [filterData, setFilterData] = React.useState<{ [key: string]: string[] }>({});
   const [searchTerm, setSearchTerm] = React.useState("");
@@ -52,8 +52,13 @@ const ProductManagementContent = memo(() => {
     setSalesTaxPanelVisible(!salesTaxFilterPanelVisible);
   };
 
-  const handleMassAction = () => {
-    return '';
+  const handleMassAction = (action: DataGridActionsMenuOption) => {
+    switch (action.action) {
+      case MASS_ACTION_TYPES.EXPORT:
+        // perform action
+        break;
+      default: return;
+    }
   };
 
   const handleSalesTaxFilterPanelClose = () => setSalesTaxPanelVisible(false);
@@ -64,19 +69,30 @@ const ProductManagementContent = memo(() => {
 
   const handleRowAction = (action: DataGridActionsMenuOption, row: any) => {
     switch (action.action) {
-      case ACTION_TYPES.EDIT:
+      case ROW_ACTION_TYPES.EDIT:
         // perform action
         history.push(`productManagement/edit/${row.productId}`);
-        break;
-      case ACTION_TYPES.DELETE:
-        // perform action
-        break;
-      case ACTION_TYPES.CONTACT_DETAILS:
-        // perform action
         break;
       default: return;
     }
   };
+
+  const onSortBySlected = (value: string) => {
+    let sortOrder;
+    switch (value) {
+      case SORTBY_TYPES.CITY_NAME_AZ:
+        sortOrder = { sortBy: "cityName", order: "asc" };
+        break;
+      case SORTBY_TYPES.CITY_NAME_ZA:
+        sortOrder = { sortBy: "cityName", order: "desc" };
+        break;
+      default:
+        sortOrder = { sortBy: "", order: "" };
+        break;
+    }
+    setSortOrder(sortOrder);
+  };
+
 
   return (
     <Box display="flex" mt={10} ml={8}>
@@ -96,8 +112,8 @@ const ProductManagementContent = memo(() => {
             <Grid item pr={2.5}>
               <FormControl>
                 <SortbyMenu
-                  options={sortByOptions.map((sortByItem) => t(sortByItem))}
-                  onSelect={(value) => value}
+                  options={SortByOptions.map((sortByItem) => t(sortByItem))}
+                  onSelect={onSortBySlected}
                 />
               </FormControl>
             </Grid>
@@ -148,7 +164,7 @@ const ProductManagementContent = memo(() => {
           <RightInfoPanel panelType="dynamic-filter"
             open={salesTaxFilterPanelVisible} headingText={t('taxes.filterHeader')}
             provideFilterParams={getFilterParams} onClose={handleSalesTaxFilterPanelClose}
-            fields={filterByFields}
+            fields={FilterByFields}
             storeKey={'salestaxFilter'}
           />
         </Grid>
