@@ -15,6 +15,7 @@ interface props {
     isLoadingData: boolean;
     loadNextPage: boolean;
     reloadKey?: any
+    makeTopButtonRowDisabled: (value: boolean) => void;
 }
 
 export default function ProductList(props: props) {
@@ -24,6 +25,9 @@ export default function ProductList(props: props) {
 
     const openDrawer = (row: SyntheticEvent) => {
         props.handleRowAction(row);
+    };
+    const onRowActionSelect = (primaryIds: string[]) => {
+        props.makeTopButtonRowDisabled(primaryIds.length !== 0);
     };
 
     return (
@@ -48,6 +52,7 @@ export default function ProductList(props: props) {
                 </Grid>
                 <Grid item xs={12} md={12} pb={5}>
                     <GridComponent
+                        handleSelect={onRowActionSelect}
                         primaryKey='applicableProductId'
                         rows={ProductObj.dataModel(props.productData)}
                         header={headCells}
