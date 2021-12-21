@@ -11,7 +11,7 @@ import Input from '../../components/UIComponents/Input/Input';
 import Select from '../../components/UIComponents/Select/SingleSelect';
 import ToastMessage from '../../components/UIComponents/ToastMessage/ToastMessage.component';
 import { formStatusObj } from './config';
-import { useGetProductTypes, useGetProductNames, useGetLotProductDetails, useGetPricingModel, useCreateProduct } from './queries';
+import { useGetProductTypes, useGetProductNames, useGetLotProductDetails, useGetPricingModel, useCreateProduct, useGetOPISRetail } from './queries';
 import { useAddedCustomerIdStore, useAddedCustomerNameStore, useShowConfirmationDialogBoxStore } from '../../store';
 import { AddProductValidationSchema } from './validation';
 import { totalPricePerGallon } from '../../utils/math.utils';
@@ -44,6 +44,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
     const [formStatus, setFormStatus] = useState<FormStatusType>({ message: '', type: '' });
     const showDialogBox = useShowConfirmationDialogBoxStore((state) => state.showDialogBox);
     const hideDialogBox = useShowConfirmationDialogBoxStore((state) => state.hideDialogBox);
+    const [fetchOPISRetail, setFetchOPISRetail] = useState(false);
 
     const resetFormFieldValue = useShowConfirmationDialogBoxStore((state) => state.resetFormFieldValue);
     const [apiResposneState, setAPIResponse] = useState(false);
@@ -103,6 +104,27 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
     };
 
     const { mutate: addNewProduct } = useCreateProduct(lotId, onAddProductError, onAddProductSuccess);
+
+
+    const onGetOPISRetailSuccess = (data: any) => {
+        if (data?.data?.fuelPrice) {
+            formik.setFieldValue('manualPriceAmt', data.data.fuelPrice);
+            setFetchOPISRetail(false);
+        }
+    };
+
+    const onGetOPISRetailError = (err: any) => {
+        const { data } = err.response;
+        setAPIResponse(false);
+        setFormStatus({ message: data?.error?.message || formStatusProps.error.message, type: 'Error' });
+        setTimeout(() => {
+            setAPIResponse(false);
+        }, 6000);
+    };
+
+
+    useGetOPISRetail(fetchOPISRetail, lotId, formik.values?.masterProductName?.label, onGetOPISRetailSuccess, onGetOPISRetailError);
+
 
     useEffect(() => {
         if (productTypeList?.data?.length) {
@@ -220,6 +242,15 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
         if (value != Str_Custom_Text) {
             clearCustomRelatedFormValues();
         }
+        if(value?.label?.toLowerCase() === "opis retail" && formik.values?.masterProductName?.label ){
+            setFetchOPISRetail(true);        }
+    };
+
+    const handleMasterProductNameChange = (fieldName: string, value: any) => {
+        formik.setFieldValue(fieldName, value);
+        if(formik.values?.pricingModel?.label?.toLowerCase() === "opis retail" ){
+            setFetchOPISRetail(true);
+        }
     };
 
     return (
@@ -284,7 +315,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                                 items={productNames}
                                 helperText={(formik.touched.masterProductName && formik.errors.masterProductName) ? formik.errors.masterProductName.value : undefined}
                                 error={(formik.touched.masterProductName && formik.errors.masterProductName) ? true : false}
-                                onChange={formik.setFieldValue}
+                                onChange={handleMasterProductNameChange}
                                 onBlur={() => { formik.setFieldTouched("masterProductName"); formik.validateField("masterProductName"); }}
                                 required
                                 isDisabled={isEditMode ? true : isDisabled}
@@ -309,7 +340,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                         <Grid item lg={12} md={12} sm={12} xs={12} mx={4}>
                             <hr></hr>
                         </Grid>
-                        {formik.values?.pricingModel?.label === "Custom" && (
+                        {(formik.values?.pricingModel?.label?.toLowerCase() === "custom"  || formik.values?.pricingModel?.label?.toLowerCase() === "opis retail") && (
                             <>
                                 <Grid item lg={5} md={8} sm={8} xs={8} mx={4} my={1} >
                                     <Input
@@ -322,7 +353,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                                         description=''
                                         required
                                         {...formik.getFieldProps('productNm')}
-                                        disabled={isDisabled}
+                                        disabled={isDisabled || (formik.values?.pricingModel?.label?.toLowerCase() === "opis retail") }
                                     />
                                 </Grid>
                                 <Grid item lg={12} md={12} sm={12} xs={12} mx={4}>
@@ -338,7 +369,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                                         description=''
                                         required
                                         {...formik.getFieldProps('manualPriceAmt')}
-                                        disabled={isDisabled}
+                                        disabled={isDisabled || (formik.values?.pricingModel?.label?.toLowerCase() === "opis retail")}
                                     />
                                 </Grid>
                                 <Grid item lg={5} md={8} sm={8} xs={8} mx={4} my={1} >
