@@ -291,7 +291,7 @@ const AddProduct: React.FC = memo(() => {
                                 </Grid>
                             </Grid>
                             <Grid item xs={12} md={12} pr={2.5} pb={2.5}>
-                                <Grid item xs={12} md={12}>
+                                <Grid item xs={12} md={6}>
                                     <Box className="form-action-section txt-right">
                                         <Button
                                             types="cancel"
