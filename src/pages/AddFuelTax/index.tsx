@@ -435,7 +435,7 @@ const AddFuelTax = memo(() => {
                                 <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
                                     <Input
                                         id='salesFuelRate'
-                                        label='SALES FUEL TAX (%)'
+                                        label='SALES FUEL RATE (%)'
                                         type='text'
                                         placeholder={t("taxes.fuelTax.form.salesFuelTax")}
                                         helperText={(formik.touched.salesFuelRate && formik.errors.salesFuelRate) ? formik.errors.salesFuelRate : undefined}
