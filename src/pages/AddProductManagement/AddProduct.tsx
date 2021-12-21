@@ -1,4 +1,4 @@
-import React, { memo, useState } from 'react';
+import React, { memo, useState, useEffect } from 'react';
 import { Box, Container, Grid, Typography } from '@mui/material';
 import { useFormik } from 'formik';
 import { useTranslation } from 'react-i18next';
@@ -14,6 +14,7 @@ import './AddProduct.scss';
 import { HorizontalBarVersionState, useShowConfirmationDialogBoxStore, useStore } from '../../store';
 import { useAddProductManagement, useGetProductColors, useGetProductTypes, useGetProductData, useEditProductManagement } from './queries';
 import { LoadingIcon } from '../../assets/icons';
+import { isCurrentAppCountryUSA, getProductIcon } from '../../utils/helperFunctions';
 
 
 interface IFormStatus {
@@ -46,6 +47,8 @@ const AddProduct: React.FC = memo(() => {
 
     // Add section starts
     const onSuccessAddProduct = () => {
+        isFormValidated(false);
+        formik.resetForm({ values: formik.values });
         setFormStatus({ message: t("formStatusProps.success.message"), type: 'Success' });
     };
     const onErrorAddProduct = (err: any) => {
@@ -75,18 +78,16 @@ const AddProduct: React.FC = memo(() => {
     const [isEditMode, setEditMode] = useState(false);
 
     const populateDataInAllFields = (responseData: any) => {
-        formik.setFieldValue('countryCode', 'us');
-        formik.setFieldValue('productName', responseData.productName);
-        formik.setFieldValue('productType', responseData.productType);
-        formik.setFieldValue('productColor', responseData.productColor);
-        formik.setFieldValue('productStatus', responseData.productStatus);
-        formik.setFieldValue('productPricing', responseData.productPricing);
+        formik.resetForm({
+            values: { ...responseData }
+        });
     };
 
     const onGetProductSuccess = (response: any) => {
         try {
             if (response?.data) {
                 const finalData = {
+                    countryCode: 'us',
                     productName: response.data.productName,
                     productType: {
                         value: response.data.productClass.productClassCd,
@@ -94,10 +95,11 @@ const AddProduct: React.FC = memo(() => {
                     },
                     productColor: {
                         value: response.data.productColor.productColorCd,
-                        label: response.data.productColor.productColorNm
+                        label: response.data.productColor.productColorNm,
+                        icon: getProductIcon(response.data.productColor.productColorNm)
                     },
                     productStatus: productStatusList.filter((pObj) => pObj.value === response.data.productServiceInd)[0],
-                    productPricing: response.data.manualPricing
+                    productPricing: response.data.manualPricing || 0
                 };
                 populateDataInAllFields(finalData);
                 setProductGroupCd(response.data.productGroupCd);
@@ -121,12 +123,13 @@ const AddProduct: React.FC = memo(() => {
     useGetProductData(match.params.productId, onGetProductSuccess, onGetProductError);
 
 
-    const onEditSaleTaxSuccess = () => {
+    const onEditProductSuccess = () => {
         isFormValidated(false);
         setFormStatus({ message: t("formStatusProps.updated.message"), type: 'Success' });
+        formik.resetForm({ values: formik.values });
     };
 
-    const onEditSaleTaxError = (err: any) => {
+    const onEditProductError = (err: any) => {
         try {
             const { data } = err.response;
             setFormStatus({ message: data?.error?.message || t("formStatusProps.error.message"), type: 'Error' });
@@ -138,8 +141,8 @@ const AddProduct: React.FC = memo(() => {
 
     const { mutate: editProduct, isSuccess: isSuccessEditProduct, isError: isErrorEditProduct, isLoading: isLoadingEditProduct } = useEditProductManagement(
         match.params.productId,
-        onEditSaleTaxSuccess,
-        onEditSaleTaxError
+        onEditProductSuccess,
+        onEditProductError
     );
 
     const updateProductData = (form: any) => {
@@ -173,58 +176,31 @@ const AddProduct: React.FC = memo(() => {
         enableReinitialize: true,
     });
 
-    const handleFormDataChange = () => {
-        if (isEditMode) {
-            if (formik.dirty) {
-                if (formik.initialValues != formik.values) {
-                    isFormValidated(false);
-                }
-            }
-        }
-        if (formik.dirty && !formik.isSubmitting) {
+    useEffect(() => {
+        if (!formik.isValid || formik.dirty) {
             isFormValidated(true);
+        } else {
+            isFormValidated(false);
         }
-    };
+    }, [formik.isValid, formik.dirty]);
 
     const onClickCancel = () => {
-        if (isEditMode) {
-            if (formik.touched && Object.keys(formik.touched).length === 0 && Object.getPrototypeOf(formik.touched) === Object.prototype) {
-                if (formik.dirty) {
-                    if (formik.initialValues != formik.values) {
-                        isFormValidated(false);
-                        history.push('/productManagement');
-                    }
-                }
-            } else {
-                showDialogBox(true);
-            }
+        if (!formik.isValid || formik.dirty) {
+            showDialogBox(true);
         } else {
-            if (formik.dirty) {
-                showDialogBox(true);
-            } else {
-                history.push('/productManagement');
-            }
+            history.push('/productManagement');
         }
     };
 
     const disableButton = () => {
-        if (isEditMode) {
-            // eslint-disable-next-line no-console
-            console.log("🚀 ~ file: AddProduct.tsx ~ line 238 ~ disableButton ~ formik", formik);
-            if (Object.keys(formik.errors).length > 1 && Object.keys(formik.touched).length > 1) {
-                return true;
-            }
-            return (!formik.isValid || !formik.dirty) || formik.isSubmitting;
-        } else {
-            return (!formik.isValid || !formik.dirty) || formik.isSubmitting;
-        }
+        return (!formik.isValid || !formik.dirty) || formik.isSubmitting;
     };
 
     return (
         <Box display="flex" className="global_main_wrapper">
             <Grid item md={7} xs={7}>
                 <Container maxWidth="lg" className="page-container">
-                    <form onSubmit={formik.handleSubmit} onBlur={handleFormDataChange}>
+                    <form onSubmit={formik.handleSubmit}>
                         <Typography color="var(--Darkgray)" variant="h3" gutterBottom className="fw-bold" mb={1} pt={3}>
                             {t("productManagement.form.title")} *
                         </Typography>
@@ -238,6 +214,7 @@ const AddProduct: React.FC = memo(() => {
                                         helperText={(formik.touched.productName && formik.errors.productName) ? formik.errors.productName : undefined}
                                         error={(formik.touched.productName && formik.errors.productName) ? true : false}
                                         description=''
+                                        placeholder='Enter Product Name'
                                         {...formik.getFieldProps('productName')}
                                         required
                                     />
@@ -282,7 +259,6 @@ const AddProduct: React.FC = memo(() => {
                                     />
                                 </Grid>
                             </Grid>
-
                             <Grid item xs={12} md={12} pr={2.5} pb={2.5}>
                                 <Grid item xs={12} md={6}>
                                     <Select
@@ -300,7 +276,6 @@ const AddProduct: React.FC = memo(() => {
                                     />
                                 </Grid>
                             </Grid>
-
                             <Grid item xs={12} md={12} pr={2.5} pb={5.5}>
                                 <Grid item xs={12} md={6}>
                                     <Input
@@ -310,15 +285,13 @@ const AddProduct: React.FC = memo(() => {
                                         helperText={(formik.touched.productPricing && formik.errors.productPricing) ? formik.errors.productPricing : undefined}
                                         error={(formik.touched.productPricing && formik.errors.productPricing) ? true : false}
                                         description=''
+                                        disabled={isCurrentAppCountryUSA()}
                                         {...formik.getFieldProps('productPricing')}
                                     />
                                 </Grid>
                             </Grid>
-
-
                             <Grid item xs={12} md={12} pr={2.5} pb={2.5}>
-                                <Grid item xs={12} md={6}>
-
+                                <Grid item xs={12} md={12}>
                                     <Box className="form-action-section txt-right">
                                         <Button
                                             types="cancel"
