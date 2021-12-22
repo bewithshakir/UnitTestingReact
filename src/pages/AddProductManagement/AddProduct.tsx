@@ -177,7 +177,11 @@ const AddProduct: React.FC = memo(() => {
     };
 
     const disableButton = () => {
-        return (!formik.isValid || !formik.dirty) || formik.isSubmitting;
+        if (formik.dirty) {
+            return !formik.isValid || formik.isSubmitting;
+        } else {
+            return true;
+        }
     };
 
     return (
