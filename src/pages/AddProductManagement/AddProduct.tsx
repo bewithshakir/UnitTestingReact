@@ -57,17 +57,9 @@ const AddProduct: React.FC = memo(() => {
     };
 
     const { mutate: addNewProduct, isSuccess: isSuccessAddProduct, isError: isErrorAddProduct, isLoading: isLoadingAddProduct } = useAddProductManagement(onSuccessAddProduct, onErrorAddProduct);
-    const createProductData = (form: any) => {
+    const createProductData = (form: ProductManagementModel) => {
         try {
-            const payload = {
-                countryCode: 'us',
-                productName: form.productName,
-                productType: form.productType.value,
-                productColor: form.productColor.value,
-                productStatus: form.productStatus.value,
-                productPricing: +form.productPricing
-            };
-            addNewProduct(payload);
+            addNewProduct(form);
         } catch (error) {
             setFormStatus({ message: t("formStatusProps.error.message"), type: 'Error' });
         }
@@ -141,22 +133,14 @@ const AddProduct: React.FC = memo(() => {
 
     const { mutate: editProduct, isSuccess: isSuccessEditProduct, isError: isErrorEditProduct, isLoading: isLoadingEditProduct } = useEditProductManagement(
         match.params.productId,
+        productGroupCd,
         onEditProductSuccess,
         onEditProductError
     );
 
-    const updateProductData = (form: any) => {
+    const updateProductData = (form: ProductManagementModel) => {
         try {
-            const payload = {
-                countryCode: form.countryCode,
-                productName: form.productName,
-                productType: form.productType.value,
-                productColor: form.productColor.value,
-                productStatus: form.productStatus.value,
-                productPricing: +form.productPricing,
-                productGroupId: productGroupCd
-            };
-            editProduct(payload);
+            editProduct(form);
         } catch (error) {
             setFormStatus({ message: t("formStatusProps.error.message"), type: 'Error' });
         }
