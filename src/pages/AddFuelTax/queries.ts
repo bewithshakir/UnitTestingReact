@@ -14,8 +14,12 @@ const addFuelTax = async (payload: any) => {
     return data;
 };
 
-export const useAddFuelTax = () => {
-    return useMutation((payload: any) => addFuelTax(payload));
+export const useAddFuelTax = (onSuccess: any, onError: any) => {
+    return useMutation((payload: any) => addFuelTax(payload),{
+        onSuccess,
+        onError,
+        retry: false
+    });
 };
 
 const fetchSaleTax = async(query: any)=> {
