@@ -253,7 +253,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
         if(value?.label?.toLowerCase() === strCustomTextRetail){
             if(formik.values?.masterProductName?.label){
                 setFetchOPISRetail(true);  
-                formik.setFieldValue('productNm', [formik.values?.masterProductName?.label + ' ' +'Retail'].join() );
+                formik.setFieldValue('productNm', [formik.values?.masterProductName?.label + ' ' +'Retail'].join('') );
             }       
         }
     };
