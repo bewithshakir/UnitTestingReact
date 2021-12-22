@@ -10,7 +10,7 @@ import { Button } from '../../components/UIComponents/Button/Button.component';
 import Input from '../../components/UIComponents/Input/Input';
 import Select from '../../components/UIComponents/Select/SingleSelect';
 import ToastMessage from '../../components/UIComponents/ToastMessage/ToastMessage.component';
-import { formStatusObj , strCustomText, strCustomTextRetail, productNameForOPISRetail} from './config';
+import { formStatusObj , strCustomText, strCustomTextRetail} from './config';
 import { useGetProductTypes, useGetProductNames, useGetLotProductDetails, useGetPricingModel, useCreateProduct, useGetOPISRetail } from './queries';
 import { useAddedCustomerIdStore, useAddedCustomerNameStore, useShowConfirmationDialogBoxStore } from '../../store';
 import { AddProductValidationSchema } from './validation';
@@ -251,9 +251,9 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
             clearCustomRelatedFormValues();
         }
         if(value?.label?.toLowerCase() === strCustomTextRetail){
-            formik.setFieldValue('productNm', productNameForOPISRetail);
             if(formik.values?.masterProductName?.label){
                 setFetchOPISRetail(true);  
+                formik.setFieldValue('productNm', [formik.values?.masterProductName?.label + ' ' +'Retail'].join() );
             }       
         }
     };
