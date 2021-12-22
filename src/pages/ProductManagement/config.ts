@@ -69,5 +69,6 @@ export const actualProductOptions = [
     { label: '', value: '' }
 ];
 
-export const strCustomText = "Custom";
+export const strCustomText = 'custom';
 export const strCustomTextRetail = 'opis retail';
+export const productNameForOPISRetail = 'Diesel Retail';

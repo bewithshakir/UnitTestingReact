@@ -10,7 +10,7 @@ import { Button } from '../../components/UIComponents/Button/Button.component';
 import Input from '../../components/UIComponents/Input/Input';
 import Select from '../../components/UIComponents/Select/SingleSelect';
 import ToastMessage from '../../components/UIComponents/ToastMessage/ToastMessage.component';
-import { formStatusObj } from './config';
+import { formStatusObj , strCustomText, strCustomTextRetail, productNameForOPISRetail} from './config';
 import { useGetProductTypes, useGetProductNames, useGetLotProductDetails, useGetPricingModel, useCreateProduct, useGetOPISRetail } from './queries';
 import { useAddedCustomerIdStore, useAddedCustomerNameStore, useShowConfirmationDialogBoxStore } from '../../store';
 import { AddProductValidationSchema } from './validation';
@@ -239,16 +239,20 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
 
     const handlePricingModelChange = (fieldName: string, value: any) => {
         formik.setFieldValue(fieldName, value);
-        if (value != Str_Custom_Text || value !=) {
+        if (value?.label?.toLowerCase() != strCustomText || value?.label?.toLowerCase() != strCustomTextRetail ) {
             clearCustomRelatedFormValues();
         }
-        if(value?.label?.toLowerCase() === "opis retail" && formik.values?.masterProductName?.label ){
-            setFetchOPISRetail(true);        }
+        if(value?.label?.toLowerCase() === strCustomTextRetail){
+            formik.setFieldValue('productNm', productNameForOPISRetail);
+            if(formik.values?.masterProductName?.label){
+                setFetchOPISRetail(true);  
+            }       
+        }
     };
 
     const handleMasterProductNameChange = (fieldName: string, value: any) => {
         formik.setFieldValue(fieldName, value);
-        if(formik.values?.pricingModel?.label?.toLowerCase() === "opis retail" ){
+        if(formik.values?.pricingModel?.label?.toLowerCase() === strCustomTextRetail ){
             setFetchOPISRetail(true);
         }
     };
@@ -340,7 +344,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                         <Grid item lg={12} md={12} sm={12} xs={12} mx={4}>
                             <hr></hr>
                         </Grid>
-                        {(formik.values?.pricingModel?.label?.toLowerCase() === "custom"  || formik.values?.pricingModel?.label?.toLowerCase() === "opis retail") && (
+                        {(formik.values?.pricingModel?.label?.toLowerCase() === strCustomText || formik.values?.pricingModel?.label?.toLowerCase() === strCustomTextRetail) && (
                             <>
                                 <Grid item lg={5} md={8} sm={8} xs={8} mx={4} my={1} >
                                     <Input
@@ -353,7 +357,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                                         description=''
                                         required
                                         {...formik.getFieldProps('productNm')}
-                                        disabled={isDisabled || (formik.values?.pricingModel?.label?.toLowerCase() === "opis retail") }
+                                        disabled={isDisabled || (formik.values?.pricingModel?.label?.toLowerCase() === strCustomTextRetail) }
                                     />
                                 </Grid>
                                 <Grid item lg={12} md={12} sm={12} xs={12} mx={4}>
@@ -369,7 +373,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                                         description=''
                                         required
                                         {...formik.getFieldProps('manualPriceAmt')}
-                                        disabled={isDisabled || (formik.values?.pricingModel?.label?.toLowerCase() === "opis retail")}
+                                        disabled={isDisabled || (formik.values?.pricingModel?.label?.toLowerCase() === strCustomTextRetail)}
                                     />
                                 </Grid>
                                 <Grid item lg={5} md={8} sm={8} xs={8} mx={4} my={1} >
