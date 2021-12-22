@@ -2,7 +2,7 @@ import * as Yup from 'yup';
 
 const AddParkingLotValidationSchema = Yup.object().shape({
     lotName: Yup.string().min(2, 'Too Short!').max(50, 'Too Long!').required('Required'),
-    lotId: Yup.string().max(10, 'Lot Id should have maximum of 10 digits').matches(/^\d{1,10}$/, 'Invalid Lot Id').required('Required'),
+    lotId: Yup.string().min(6, 'Lot Id should have minimum of 6 digits').max(10, 'Lot Id should have maximum of 10 digits').matches(/^\d{1,10}$/, 'Invalid Lot Id').required('Required'),
     addressLine1: Yup.string().required('Required'),
     addressLine2: Yup.string().required('Required'),
     city: Yup.string().required('Required'),

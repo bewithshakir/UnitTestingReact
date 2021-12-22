@@ -82,6 +82,24 @@ export const routes = [
     exact: true,
   },
   {
+    path: "/opisCities",
+    component: lazy(() => import("./pages/OPISCity")),
+    version: "Breadcrumbs-Many",
+    exact: true
+  },
+  {
+    path: "/productManagement",
+    component: lazy(() => import("./pages/ProductManagementLanding")),
+    version: "Breadcrumbs-Many",
+    exact: true
+  },
+  {
+    path: "/opisCities/add",
+    version: "Breadcrumbs-Single",
+    component: lazy(() => import('./pages/OPISCity/AddOpisCities')),
+    exact: true,
+  },
+  {
     path: "/query",
     component: lazy(() => import('./pages/QueryTest')),
     exact: false,
@@ -90,5 +108,11 @@ export const routes = [
     path: "/demo",
     component: lazy(() => import('./pages/DemoComponents/DemoComponents')),
     exact: false,
+  },
+  {
+    path: "/productManagement/add",
+    version: "Breadcrumbs-Single",
+    component: lazy(() => import('./pages/AddProductManagement/AddProduct')),
+    exact: true,
   }
 ];

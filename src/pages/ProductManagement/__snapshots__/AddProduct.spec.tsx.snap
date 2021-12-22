@@ -1379,7 +1379,9 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                       sm={8}
                       xs={8}
                     >
-                      Add New Product or select the product from the table to edit the details
+                      <b>
+                        Add New Product or select the product from the table to edit the details
+                      </b>
                     </ForwardRef(Grid)>
                     <ForwardRef(Grid)
                       item={true}
@@ -1422,16 +1424,6 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                     >
                       General Information
                     </ForwardRef(Typography)>
-                  </ForwardRef(Grid)>
-                  <ForwardRef(Grid)
-                    item={true}
-                    lg={12}
-                    md={12}
-                    mx={4}
-                    sm={12}
-                    xs={12}
-                  >
-                    <hr />
                   </ForwardRef(Grid)>
                   <ForwardRef(Grid)
                     item={true}
@@ -1552,7 +1544,6 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                     <Button
                       aria-label="cancel"
                       className="mr-4"
-                      disabled={false}
                       onClick={[Function]}
                       types="cancel"
                     >
@@ -1622,7 +1613,9 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                           sm={8}
                           xs={8}
                         >
-                          Add New Product or select the product from the table to edit the details
+                          <b>
+                            Add New Product or select the product from the table to edit the details
+                          </b>
                         </ForwardRef(Grid)>
                         <ForwardRef(Grid)
                           item={true}
@@ -1665,16 +1658,6 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                         >
                           General Information
                         </ForwardRef(Typography)>
-                      </ForwardRef(Grid)>,
-                      <ForwardRef(Grid)
-                        item={true}
-                        lg={12}
-                        md={12}
-                        mx={4}
-                        sm={12}
-                        xs={12}
-                      >
-                        <hr />
                       </ForwardRef(Grid)>,
                       <ForwardRef(Grid)
                         item={true}
@@ -1807,7 +1790,9 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                       className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-8 MuiGrid-grid-sm-8 MuiGrid-grid-md-6 MuiGrid-grid-lg-6"
                       ownerState={
                         Object {
-                          "children": "Add New Product or select the product from the table to edit the details",
+                          "children": <b>
+                            Add New Product or select the product from the table to edit the details
+                          </b>,
                           "columnSpacing": 0,
                           "columns": 12,
                           "container": false,
@@ -1837,7 +1822,9 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                       <div
                         className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-8 MuiGrid-grid-sm-8 MuiGrid-grid-md-6 MuiGrid-grid-lg-6 css-2bvao5-MuiGrid-root"
                       >
-                        Add New Product or select the product from the table to edit the details
+                        <b>
+                          Add New Product or select the product from the table to edit the details
+                        </b>
                       </div>
                     </MuiGridRoot>
                   </ForwardRef(Grid)>
@@ -2341,51 +2328,6 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                             </h4>
                           </MuiTypographyRoot>
                         </ForwardRef(Typography)>
-                      </div>
-                    </MuiGridRoot>
-                  </ForwardRef(Grid)>
-                  <ForwardRef(Grid)
-                    item={true}
-                    lg={12}
-                    md={12}
-                    mx={4}
-                    sm={12}
-                    xs={12}
-                  >
-                    <MuiGridRoot
-                      as="div"
-                      className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-12 MuiGrid-grid-md-12 MuiGrid-grid-lg-12"
-                      ownerState={
-                        Object {
-                          "children": <hr />,
-                          "columnSpacing": 0,
-                          "columns": 12,
-                          "container": false,
-                          "direction": "row",
-                          "item": true,
-                          "lg": 12,
-                          "md": 12,
-                          "rowSpacing": 0,
-                          "sm": 12,
-                          "sx": Object {
-                            "mx": 4,
-                          },
-                          "wrap": "wrap",
-                          "xl": false,
-                          "xs": 12,
-                          "zeroMinWidth": false,
-                        }
-                      }
-                      sx={
-                        Object {
-                          "mx": 4,
-                        }
-                      }
-                    >
-                      <div
-                        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-12 MuiGrid-grid-md-12 MuiGrid-grid-lg-12 css-1ylecwu-MuiGrid-root"
-                      >
-                        <hr />
                       </div>
                     </MuiGridRoot>
                   </ForwardRef(Grid)>
@@ -7911,7 +7853,6 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                       <Button
                         aria-label="cancel"
                         className="mr-4"
-                        disabled={false}
                         onClick={[Function]}
                         types="cancel"
                       >
@@ -7982,7 +7923,6 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                             <Button
                               aria-label="cancel"
                               className="mr-4"
-                              disabled={false}
                               onClick={[Function]}
                               types="cancel"
                             >
@@ -8038,14 +7978,12 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                         <Button
                           aria-label="cancel"
                           className="mr-4"
-                          disabled={false}
                           onClick={[Function]}
                           types="cancel"
                         >
                           <WithStyles(ForwardRef(Button))
                             aria-label="cancel"
                             className="btn-cancel mr-4"
-                            disabled={false}
                             onClick={[Function]}
                             variant="contained"
                           >
@@ -8085,7 +8023,6 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                   "textSizeSmall": "MuiButton-textSizeSmall",
                                 }
                               }
-                              disabled={false}
                               onClick={[Function]}
                               variant="contained"
                             >
@@ -8288,28 +8225,32 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                           messageType=""
                           onClose={[Function]}
                         >
-                          <WithStyles(ForwardRef(Snackbar))
-                            autoHideDuration={6000}
-                            onClose={[Function]}
-                            open={false}
+                          <div
+                            className="toaster_wrapper"
                           >
-                            <ForwardRef(Snackbar)
+                            <WithStyles(ForwardRef(Snackbar))
                               autoHideDuration={6000}
-                              classes={
-                                Object {
-                                  "anchorOriginBottomCenter": "MuiSnackbar-anchorOriginBottomCenter",
-                                  "anchorOriginBottomLeft": "MuiSnackbar-anchorOriginBottomLeft",
-                                  "anchorOriginBottomRight": "MuiSnackbar-anchorOriginBottomRight",
-                                  "anchorOriginTopCenter": "MuiSnackbar-anchorOriginTopCenter",
-                                  "anchorOriginTopLeft": "MuiSnackbar-anchorOriginTopLeft",
-                                  "anchorOriginTopRight": "MuiSnackbar-anchorOriginTopRight",
-                                  "root": "MuiSnackbar-root",
-                                }
-                              }
                               onClose={[Function]}
                               open={false}
-                            />
-                          </WithStyles(ForwardRef(Snackbar))>
+                            >
+                              <ForwardRef(Snackbar)
+                                autoHideDuration={6000}
+                                classes={
+                                  Object {
+                                    "anchorOriginBottomCenter": "MuiSnackbar-anchorOriginBottomCenter",
+                                    "anchorOriginBottomLeft": "MuiSnackbar-anchorOriginBottomLeft",
+                                    "anchorOriginBottomRight": "MuiSnackbar-anchorOriginBottomRight",
+                                    "anchorOriginTopCenter": "MuiSnackbar-anchorOriginTopCenter",
+                                    "anchorOriginTopLeft": "MuiSnackbar-anchorOriginTopLeft",
+                                    "anchorOriginTopRight": "MuiSnackbar-anchorOriginTopRight",
+                                    "root": "MuiSnackbar-root",
+                                  }
+                                }
+                                onClose={[Function]}
+                                open={false}
+                              />
+                            </WithStyles(ForwardRef(Snackbar))>
+                          </div>
                         </ToastMessage>
                       </div>
                     </MuiGridRoot>

@@ -69,6 +69,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
+                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -225,6 +226,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
+                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -381,6 +383,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
+                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -562,6 +565,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
+                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -722,6 +726,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
+                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -884,6 +889,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
+                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -1044,6 +1050,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
+                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -1225,6 +1232,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
+                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -1381,6 +1389,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
+                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -1537,6 +1546,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
+                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -21667,28 +21677,32 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                 messageType=""
                                 onClose={[Function]}
                               >
-                                <WithStyles(ForwardRef(Snackbar))
-                                  autoHideDuration={6000}
-                                  onClose={[Function]}
-                                  open={false}
+                                <div
+                                  className="toaster_wrapper"
                                 >
-                                  <ForwardRef(Snackbar)
+                                  <WithStyles(ForwardRef(Snackbar))
                                     autoHideDuration={6000}
-                                    classes={
-                                      Object {
-                                        "anchorOriginBottomCenter": "MuiSnackbar-anchorOriginBottomCenter",
-                                        "anchorOriginBottomLeft": "MuiSnackbar-anchorOriginBottomLeft",
-                                        "anchorOriginBottomRight": "MuiSnackbar-anchorOriginBottomRight",
-                                        "anchorOriginTopCenter": "MuiSnackbar-anchorOriginTopCenter",
-                                        "anchorOriginTopLeft": "MuiSnackbar-anchorOriginTopLeft",
-                                        "anchorOriginTopRight": "MuiSnackbar-anchorOriginTopRight",
-                                        "root": "MuiSnackbar-root",
-                                      }
-                                    }
                                     onClose={[Function]}
                                     open={false}
-                                  />
-                                </WithStyles(ForwardRef(Snackbar))>
+                                  >
+                                    <ForwardRef(Snackbar)
+                                      autoHideDuration={6000}
+                                      classes={
+                                        Object {
+                                          "anchorOriginBottomCenter": "MuiSnackbar-anchorOriginBottomCenter",
+                                          "anchorOriginBottomLeft": "MuiSnackbar-anchorOriginBottomLeft",
+                                          "anchorOriginBottomRight": "MuiSnackbar-anchorOriginBottomRight",
+                                          "anchorOriginTopCenter": "MuiSnackbar-anchorOriginTopCenter",
+                                          "anchorOriginTopLeft": "MuiSnackbar-anchorOriginTopLeft",
+                                          "anchorOriginTopRight": "MuiSnackbar-anchorOriginTopRight",
+                                          "root": "MuiSnackbar-root",
+                                        }
+                                      }
+                                      onClose={[Function]}
+                                      open={false}
+                                    />
+                                  </WithStyles(ForwardRef(Snackbar))>
+                                </div>
                               </ToastMessage>
                             </div>
                           </MuiGridRoot>
@@ -21713,14 +21727,6 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
       title="customerManagement.fileuploaddialog.title"
     >
       <ForwardRef(Dialog)
-        BackdropProps={
-          Object {
-            "style": Object {
-              "backgroundColor": "gray",
-              "opacity": 0.3,
-            },
-          }
-        }
         aria-describedby="discard-changes-dialog-description"
         aria-labelledby="discard-changes-dialog-title"
         open={false}
@@ -21761,10 +21767,6 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
           BackdropProps={
             Object {
               "as": undefined,
-              "style": Object {
-                "backgroundColor": "gray",
-                "opacity": 0.3,
-              },
               "transitionDuration": Object {
                 "enter": 225,
                 "exit": 195,
@@ -21778,12 +21780,6 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
           open={false}
           ownerState={
             Object {
-              "BackdropProps": Object {
-                "style": Object {
-                  "backgroundColor": "gray",
-                  "opacity": 0.3,
-                },
-              },
               "aria-describedby": "discard-changes-dialog-description",
               "aria-labelledby": "discard-changes-dialog-title",
               "children": <div
@@ -21873,10 +21869,6 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
             BackdropProps={
               Object {
                 "as": undefined,
-                "style": Object {
-                  "backgroundColor": "gray",
-                  "opacity": 0.3,
-                },
                 "transitionDuration": Object {
                   "enter": 225,
                   "exit": 195,
@@ -21925,10 +21917,6 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
               BackdropProps={
                 Object {
                   "as": undefined,
-                  "style": Object {
-                    "backgroundColor": "gray",
-                    "opacity": 0.3,
-                  },
                   "transitionDuration": Object {
                     "enter": 225,
                     "exit": 195,

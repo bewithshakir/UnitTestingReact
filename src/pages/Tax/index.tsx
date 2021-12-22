@@ -13,7 +13,7 @@ import TaxModel from '../../models/TaxModel';
 import { useFuelTaxList } from './queries';
 import GridComponent from "../../components/UIComponents/DataGird/grid.component";
 import { DataGridActionsMenuOption } from '../../components/UIComponents/Menu/DataGridActionsMenu.component';
-import { FuelTax, MASS_ACTION_TYPES } from './config';
+import { FuelTax, MASS_ACTION_TYPES, SORTBY_TYPES } from './config';
 import { RightInfoPanel } from '../../components/UIComponents/RightInfoPanel/RightInfoPanel.component';
 import { getSeachedDataTotalCount } from '../../utils/helperFunctions';
 import Table from './SubTableFuelProduct';
@@ -74,17 +74,14 @@ const TaxLandingContent = memo(() => {
     }
     setResetTableCollaps(true);
   };
-  const openDrawer = () => {
-    // TODO
-  };
 
   const onSortBySlected = (value: string) => {
     let sortOrder;
     switch (value) {
-      case "City Name A-Z":
+      case SORTBY_TYPES.CITY_NAME_AZ:
         sortOrder = { sortBy: "cityName", order: "asc" };
         break;
-      case "City Name Z-A":
+      case SORTBY_TYPES.CITY_NAME_ZA:
         sortOrder = { sortBy: "cityName", order: "desc" };
         break;
       default:
@@ -176,7 +173,6 @@ const TaxLandingContent = memo(() => {
             enableRowAction={false}
             getPages={fetchNextPage}
             searchTerm={searchTerm}
-            openDrawer={openDrawer}
             noDataMsg='Add Fuel Tax by clicking on the "Add Tax" button.'
             getId={(id: string) => setFuelTaxProductId(id)}
             resetCollaps={resetTableCollaps}

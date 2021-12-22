@@ -27,7 +27,8 @@ const SideBarMenuoptions = [{
   icon: <Invoice64Icon />,
   text: 'Taxes',
   route: '/taxes'
-}, {
+},
+{
   index: 2,
   icon: <ToggleList64Icon />,
   text: 'Dashboard',
@@ -95,40 +96,39 @@ export default function SideBarDrawer () {
   return (
     <Box className={'sidebar-menu'}>
       <CssBaseline />
-      {routes.map((route, index) => {
+      <HorizontalBar
+        onBack={onClickBack}
+      />
+      <Drawer className={'sidebar-drawer'}
+        sx={{
+          width: drawerWidth,
+        }}
+        variant="permanent"
+        anchor="left">
+        <div>
+          <img className="sidebarmenu_logo"
+            src={logoSrc}
+            alt="logo" />
+        </div>
 
-        return (
-          <Fragment key={index}>
-            <HorizontalBar
-              onBack={onClickBack}
-            />
-            <Drawer className={'sidebar-drawer'}
-              sx={{
-                width: drawerWidth,
-              }}
-              variant="permanent"
-              anchor="left">
-              <div>
-                <img className="sidebarmenu_logo"
-                  src={logoSrc}
-                  alt="logo" />
-              </div>
+        <Tabs
+          orientation="vertical"
+          value={value}
+          onChange={handleChange}
+          aria-label="sidebar menu"
+          className={'sidebarmenu_tabs'} >
+          {SideBarMenuoptions && SideBarMenuoptions.map((item, index) => {
+            return (
+              <Tab className={'sidebarmenu_tab'} icon={item.icon} component={Link} to={item.route} key={index} />
+            );
+          })}
+        </Tabs>
 
-              <Tabs
-                orientation="vertical"
-                value={value}
-                onChange={handleChange}
-                aria-label="sidebar menu"
-                className={'sidebarmenu_tabs'} >
-                {SideBarMenuoptions && SideBarMenuoptions.map((item, index) => {
-                  return (
-                    <Tab className={'sidebarmenu_tab'} icon={item.icon} component={Link} to={item.route} key={index} />
-                  );
-                })}
-              </Tabs>
-
-            </Drawer>
-            <main className="content1">
+      </Drawer>
+      <main className="content1">
+        {routes.map((route) => {
+          return (
+            <>
               <Suspense fallback={<Loader />}>
                 <Switch>
                   <Route key={route.path} path={route.path} exact={route.exact}>
@@ -136,10 +136,10 @@ export default function SideBarDrawer () {
                   </Route>
                 </Switch>
               </Suspense>
-            </main>
-          </Fragment>
-        );
-      })}
+            </>
+          );
+        })}
+      </main>
     </Box>
   );
 }

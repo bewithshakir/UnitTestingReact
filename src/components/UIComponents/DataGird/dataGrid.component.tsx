@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+
 import { Collapse, TableBody, TableCell, TableRow, FormControl, Avatar, Icon, ImageList, Typography, Box } from '@mui/material';
 import Checkbox from '../Checkbox/Checkbox.component';
 import React, { useEffect } from "react";
@@ -6,7 +8,10 @@ import DataGridActionsMenu, { DataGridActionsMenuOption } from '../Menu/DataGrid
 import { Button } from './../Button/Button.component';
 import './grid.style.scss';
 import { fieldOptions, headerObj } from './grid.component';
-import { YellowFuelIcon, RedFuelIcon, GreenFuelIcon, NavyBlueFuelIcon } from '../../../assets/icons';
+import {
+    YellowFuelIcon, RedFuelIcon, GreenFuelIcon, NavyBlueFuelIcon, ParrotGreenFuelIcon,
+    PurpleFuelIcon, SkyBlueFuelIcon, BrownFuelIcon, OrangeFuelIcon, AquaFuelIcon
+} from '../../../assets/icons';
 import { tableImagesSX, tableAvatarSX, tableImagesIconListSX, tableIconsSX, tableFuelIconsSX } from './config';
 import NoDataFound from './Nodata';
 import Select from './ProductSingleSelect';
@@ -40,12 +45,14 @@ interface GridBodyProps {
 
 
 function descendingComparator (a: any, b: any, orderBy: any) {
-    const valueA = isNaN(a[orderBy]) ? a[orderBy]?.toLowerCase() : Number(a[orderBy]);
-    const valueB = isNaN(b[orderBy]) ? b[orderBy]?.toLowerCase() : Number(b[orderBy]);
-    if (valueB < valueA) {
+    const valueA = orderBy === "product" ? a.productName : a[orderBy];
+    const valueB = orderBy === "product" ? b.productName : b[orderBy];
+    const finalValueA = isNaN(valueA) ? valueA?.toLowerCase() : Number(valueA);
+    const finalValueB = isNaN(valueB) ? valueB?.toLowerCase() : Number(valueB);
+    if (finalValueB < finalValueA) {
         return -1;
     }
-    if (valueB > valueA) {
+    if (finalValueB > finalValueA) {
         return 1;
     }
     return 0;
@@ -79,6 +86,21 @@ function getFuelIcon (fuelStatus: string) {
     }[fuelStatus] || YellowFuelIcon);
 }
 
+function getProductIcon (fuelStatus: string) {
+    return ({
+        "Yellow": YellowFuelIcon,
+        "Red": RedFuelIcon,
+        "Green": GreenFuelIcon,
+        "Navy Blue": NavyBlueFuelIcon,
+        "Parrot Green": ParrotGreenFuelIcon,
+        "Sky Blue": SkyBlueFuelIcon,
+        "Purple": PurpleFuelIcon,
+        "Brown": BrownFuelIcon,
+        "Orange": OrangeFuelIcon,
+        "Aqua": AquaFuelIcon,
+    }[fuelStatus] || YellowFuelIcon);
+}
+
 
 const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
     const [selectedIndexKey, setSelectedKey] = React.useState(null);
@@ -107,7 +129,7 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
         }
     };
     const openDrawer = (row: any) => {
-        props.openDrawer(row);
+        props.openDrawer && props.openDrawer(row);
     };
 
     const isSelected = (primaryId: string) => props.selectedRows && props.selectedRows.indexOf(primaryId) !== -1;
@@ -156,6 +178,20 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
             </Box>
         );
     };
+
+    const renderProduct = (fieldOpts: headerObj, data: any) => {
+        return (
+            <Box display="flex" alignItems="center" justifyContent={fieldOpts.align}>
+                {(!fieldOpts.showIconLast) ? renderIcon(getProductIcon(data.productColorNm)) : null}
+                {data.productName ?
+                    <Typography variant="h4" pl={(!fieldOpts.showIconLast) ? 1 : 0} pr={(fieldOpts.showIconLast) ? 1 : 0} color="var(--Darkgray)" className="fw-bold">
+                        {data.productName}
+                    </Typography> : null}
+                {(fieldOpts.showIconLast) ? renderIcon(getProductIcon(data.productColorNm)) : null}
+            </Box>
+        );
+    };
+
 
     const renderStatus = (fieldOpts: headerObj, data: any) => {
         let matchedStatus: fieldOptions[] = [];
@@ -209,7 +245,7 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
                     const isItemSelected = isSelected(row[primaryKey]);
                     return (<React.Fragment key={indexKey}>
                         <TableRow key={indexKey} sx={{
-                            cursor: "pointer"
+                            cursor: props.openDrawer ? "pointer" : "auto"
                         }}>
                             {
                                 props.enableRowSelection ?
@@ -257,7 +293,8 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
                                                         props.headCells[index].type === 'image' ? <Avatar sx={tableAvatarSX} src={row[key]} variant="square" /> :
                                                             props.headCells[index].type === 'images' ? renderImages(row[key]) :
                                                                 props.headCells[index].type === 'dropdown' ? renderSelect() :
-                                                                    props.headCells[index].type === 'status' ? renderStatus(props.headCells[index], row[key]) : ""
+                                                                    props.headCells[index].type === 'status' ? renderStatus(props.headCells[index], row[key]) :
+                                                                        props.headCells[index].type === 'product' ? renderProduct(props.headCells[index], row[key]) : ""
                                     }
                                 </TableCell>
                             )}
@@ -271,7 +308,7 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
                                     >
                                         <FormControl>
                                             <DataGridActionsMenu
-                                                options={props.rowActionOptions}
+                                                options={props.rowActionOptions || []}
                                                 onSelect={(e, value) => props.onRowActionSelect && props.onRowActionSelect(value, row)}
                                                 showInnerTableMenu={props.showInnerTableMenu}
                                             />

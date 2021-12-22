@@ -51,19 +51,36 @@ export default function HorizontalBar (props: HorizontalBarProps) {
   const handleModelConfirm = () => {
     hideDialogBox(false);
     resetFormFieldValue(false);
-    if (pathname.includes('addLot') || pathname.includes('addFuelTax') || pathname.includes('viewLot')) {
+    if (pathname.includes('viewLot')) {
+      history.push({
+        pathname: `/customer/${selectedCustomerId}/parkingLots`,
+        state: {
+          customerId: selectedCustomerId,
+          customerName: selectedCustomerName
+        }
+      });
+    }
+    else if (pathname.includes('addLot') || pathname.includes('addFuelTax')) {
       history.goBack();
     }
     else if (pathname.includes('salesTax/add') || pathname.includes('salesTax/edit')) {
       history.push('/salesTax');
     }
+    else if (pathname.includes('opisCities/add')) {
+      history.push('/opisCities');
+    }
     else if (pathname.includes('editFuelTax')) {
       history.push('/taxes');
+    }
+    else if (pathname.includes('productManagement/add')) {
+      history.push('/productManagement');
     }
     else {
       props.onBack();
     }
   };
+
+
 
   const getHeaderText = () => {
     switch (true) {
@@ -77,6 +94,12 @@ export default function HorizontalBar (props: HorizontalBarProps) {
         return t("taxes.salesTax.form.titleEdit");
       case history.location.pathname.includes('editFuelTax'):
         return t("taxes.salesTax.form.titleFuelEdit");
+      case history.location.pathname.includes('opisCities/add'):
+        return t("taxes.opisCities.form.titleAdd");
+      case history.location.pathname.includes('opisCities/edit'):
+        return t("taxes.opisCities.form.titleEdit");
+      case history.location.pathname.includes('productManagement/add'):
+        return t("productManagement.form.titleAdd");
       default:
         return selectedCustomerName;
     }
@@ -93,7 +116,7 @@ export default function HorizontalBar (props: HorizontalBarProps) {
   }
 
   function varsionNavLinks () {
-    if (pathname.includes('taxes') || pathname.includes('salesTax')) {
+    if (pathname.includes('taxes') || pathname.includes('salesTax') || pathname.includes('productManagement') || pathname.includes('opisCities')) {
       return (<>
         <div className={pathname.includes('taxes') ? 'linkitem active' : 'linkitem'}>
           <NavLink className="breadcrubs-title" to="/taxes" onClick={handleClick}>
@@ -105,12 +128,12 @@ export default function HorizontalBar (props: HorizontalBarProps) {
             {t("taxes.navBar.salesTax")}
           </NavLink>
         </div>
-        <div className="linkitem">
-          <NavLink className="breadcrubs-title" to="/cities" onClick={handleClick}>
+        <div className={pathname.includes('opisCities') ? 'linkitem active' : "linkitem"}>
+          <NavLink className="breadcrubs-title" to="/opisCities" onClick={handleClick}>
             {t("taxes.navBar.opisCities")}
           </NavLink>
         </div>
-        <div className="linkitem">
+        <div className={pathname.includes('productManagement') ? 'linkitem active' : "linkitem"}>
           <NavLink className="breadcrubs-title" to="/productManagement" onClick={handleClick}>
             {t("taxes.navBar.productManagement")}
           </NavLink>
