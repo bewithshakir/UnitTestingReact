@@ -1,13 +1,12 @@
 import { shallow } from 'enzyme';
 import ProductList from './ProductList';
-
 const data = [
-    { productNm: 'S P 1', pricingModel: { pricingModelNm: 'Custom' }, activeInactiveInd: 'Y', productColor: { productColorCode:'#DD1D21' }},
-    { productNm: 'S P 2', pricingModel: { pricingModelNm: 'Custom' }, activeInactiveInd: 'N', productColor: { productColorCode:'#008443' }}
+    { productNm: 'S P 1', pricingModel: { pricingModelNm: 'Custom' }, activeInactiveInd: 'Y', productColor: { productColorCode: '#DD1D21' } },
+    { productNm: 'S P 2', pricingModel: { pricingModelNm: 'Custom' }, activeInactiveInd: 'N', productColor: { productColorCode: '#008443' } }
 ];
 
 describe('Product list should be rendered', () => {
-    
+
     test('render nodata table', () => {
         const component = shallow(<ProductList
             searchTerm=''
@@ -16,6 +15,7 @@ describe('Product list should be rendered', () => {
             productData={[]}
             isLoadingData={false}
             loadNextPage={false}
+            makeTopButtonRowDisabled={jest.fn}
         />);
         expect(component.getElement()).toBeDefined();
     });
@@ -27,6 +27,7 @@ describe('Product list should be rendered', () => {
             productData={[]}
             isLoadingData={true}
             loadNextPage={false}
+            makeTopButtonRowDisabled={jest.fn}
         />);
         expect(component.getElement()).toBeDefined();
     });
@@ -38,6 +39,7 @@ describe('Product list should be rendered', () => {
             productData={[]}
             isLoadingData={false}
             loadNextPage={false}
+            makeTopButtonRowDisabled={jest.fn}
         />);
         expect(component.getElement()).toBeDefined();
     });
@@ -49,6 +51,7 @@ describe('Product list should be rendered', () => {
             productData={[]}
             isLoadingData={false}
             loadNextPage={false}
+            makeTopButtonRowDisabled={jest.fn}
         />);
         expect(component.getElement()).toBeDefined();
     });
@@ -60,6 +63,7 @@ describe('Product list should be rendered', () => {
             productData={data}
             isLoadingData={false}
             loadNextPage={false}
+            makeTopButtonRowDisabled={jest.fn}
         />);
         expect(component.getElement()).toBeDefined();
     });

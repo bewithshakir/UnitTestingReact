@@ -120,3 +120,24 @@ export const useGetLotProductDetails = (lotId: string, productId: string, onSucc
         retry: false
     });
 };
+
+const getOPISRetail = async (fetchOPISRetail: boolean, lotId: string, masterProductName: string) => {
+    if (lotId && fetchOPISRetail) {
+        const opisPriceURL = `/api/thirdparty-service/opis/retail-fuel-price?parkingLotId=${lotId}&countryCode=us&masterProductName=${masterProductName}`;
+        const payload: AxiosRequestConfig = {
+            method: 'get',
+            url: opisPriceURL
+        };
+        const { data } = await axios(payload);
+        return data;
+    }
+};
+
+export const useGetOPISRetail = (fetchOPISRetail: boolean, lotId: string, masterProductName: string, onSuccess: any, onError: any) => {
+    return useQuery(["getOPISRetail", fetchOPISRetail, lotId, masterProductName, onSuccess, onError],
+        () => getOPISRetail(fetchOPISRetail, lotId, masterProductName), {
+        onSuccess,
+        onError,
+        retry: false
+    });
+};

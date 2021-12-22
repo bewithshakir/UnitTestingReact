@@ -218,6 +218,10 @@
       "cityname_atoz": "City Name A-Z",
       "cityname_ztoa": "City Name Z-A"
     },
+    "filter": {
+      "state": "State",
+      "city": "City"
+    },
     "form": {
       "titleAdd": "Add Product",
       "titleEdit": "Edit Product",
@@ -236,20 +240,20 @@
       "type": "Success"
     },
     "success": {
-        "message": "Data added successfully.",
-        "type": "Success"
+      "message": "Data added successfully.",
+      "type": "Success"
     },
     "updated": {
-        "message": "Data updated successfully",
-        "type": "Success"
+      "message": "Data updated successfully",
+      "type": "Success"
     },
     "duplicate": {
-        "message": "Customer Id already exist. Please use different Customer Id.",
-        "type": "Error"
+      "message": "Customer Id already exist. Please use different Customer Id.",
+      "type": "Error"
     },
     "error": {
-        "message": "Something went wrong. Please try again.",
-        "type": "Error"
+      "message": "Something went wrong. Please try again.",
+      "type": "Error"
     }
   }
 }

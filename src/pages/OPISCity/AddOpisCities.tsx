@@ -117,6 +117,12 @@ export default function AddOpis() {
 
     }, [stateList, citiesList]);
 
+    const handleStateChange = (fieldName: string, value: any) => {
+        formik.setFieldValue(fieldName, value);
+        formik.setFieldValue('city', { label: "", value: "" });
+        formik.setFieldValue('cityid', "");
+    };
+
     return (
         <Fragment>
             <FormikProvider value={formik}>
@@ -139,7 +145,7 @@ export default function AddOpis() {
                                                 items={states}
                                                 helperText={(formik.touched.state && formik.errors.state) ? formik.errors.state.value : undefined}
                                                 error={(formik.touched.state && formik.errors.state) ? true : false}
-                                                onChange={formik.setFieldValue}
+                                                onChange={handleStateChange}
                                                 onBlur={() => { formik.setFieldTouched("state"); formik.validateField("state"); }}
                                                 required
                                             />
