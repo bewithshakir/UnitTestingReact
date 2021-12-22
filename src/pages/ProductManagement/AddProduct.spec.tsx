@@ -11,24 +11,28 @@ beforeAll(() => {
 
 describe('Rendering of Add product in Parking lot', () => {
     it('Add product snapshot testing', () => {
-        const component = mount(<ReactQuery.QueryClientProvider client={queryClient}> <AddProduct lotId="" productId="" disableAddEditButton={false} /> </ReactQuery.QueryClientProvider >);
+        const component = mount(<ReactQuery.QueryClientProvider client={queryClient}> <AddProduct lotId="" productId="" disableAddEditButton={false} isHiddenAddEditRow={false} /> </ReactQuery.QueryClientProvider >);
         expect(component).toBeDefined();
         expect(component).toMatchSnapshot();
     });
     it('Add product with Add Edit button', () => {
-        const component = mount(<ReactQuery.QueryClientProvider client={queryClient}> <AddProduct lotId="" productId="" disableAddEditButton={false} /> </ReactQuery.QueryClientProvider >);
+        const component = mount(<ReactQuery.QueryClientProvider client={queryClient}> <AddProduct lotId="" productId="" disableAddEditButton={false} isHiddenAddEditRow={false} /> </ReactQuery.QueryClientProvider >);
         expect(component.find('.addProductBtn').exists()).toBe(true);
     });
     it('Add product without Add Edit button', () => {
-        const component = mount(<ReactQuery.QueryClientProvider client={queryClient}> <AddProduct lotId="" productId="" disableAddEditButton={true} /> </ReactQuery.QueryClientProvider >);
+        const component = mount(<ReactQuery.QueryClientProvider client={queryClient}> <AddProduct lotId="" productId="" disableAddEditButton={true} isHiddenAddEditRow={true} /> </ReactQuery.QueryClientProvider >);
         expect(component.find('.addProductBtn').exists()).toBe(false);
     });
+    it('Add Edit button should be disabled', () => {
+        const component = mount(<ReactQuery.QueryClientProvider client={queryClient}> <AddProduct lotId="" productId="" disableAddEditButton={true} isHiddenAddEditRow={false} /> </ReactQuery.QueryClientProvider >);
+        expect(component.find('.addProductBtn').first().prop('disabled')).toBe(true);
+    });
     it('Add product button should be initally disabled', async () => {
-        const component = mount(<ReactQuery.QueryClientProvider client={queryClient}> <AddProduct lotId="" productId="" disableAddEditButton={false} /> </ReactQuery.QueryClientProvider >);
+        const component = mount(<ReactQuery.QueryClientProvider client={queryClient}> <AddProduct lotId="" productId="" disableAddEditButton={false} isHiddenAddEditRow={false} /> </ReactQuery.QueryClientProvider >);
         expect(component.find('.saveProduct').first().prop('disabled')).toBe(true);
     });
     it('check if the Product Type, Master Product Names, Pricing Model drop down exixts in the Add Product Component', async () => {
-        const component = mount(<ReactQuery.QueryClientProvider client={queryClient}> <AddProduct lotId="" productId="" disableAddEditButton={false} /> </ReactQuery.QueryClientProvider >);
+        const component = mount(<ReactQuery.QueryClientProvider client={queryClient}> <AddProduct lotId="" productId="" disableAddEditButton={false} isHiddenAddEditRow={false} /> </ReactQuery.QueryClientProvider >);
         expect(component.find(Select).exists()).toBe(true);
         expect(component.find(Select)).toHaveLength(3);
     });

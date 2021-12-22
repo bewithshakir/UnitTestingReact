@@ -28,10 +28,11 @@ interface Props {
     reloadSibling?: any;
     productId: string;
     disableAddEditButton: boolean
+    isHiddenAddEditRow: boolean
 }
 const formStatusProps: FormStatusProps = formStatusObj;
 
-export default function AddProduct({ lotId, reloadSibling, productId, disableAddEditButton }: Props) {
+export default function AddProduct({ lotId, reloadSibling, productId, disableAddEditButton, isHiddenAddEditRow }: Props) {
 
     const { t } = useTranslation();
     const history = useHistory();
@@ -43,6 +44,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
     const { data: productTypeList } = useGetProductTypes();
     const [formStatus, setFormStatus] = useState<FormStatusType>({ message: '', type: '' });
     const showDialogBox = useShowConfirmationDialogBoxStore((state) => state.showDialogBox);
+    const isFormValidated = useShowConfirmationDialogBoxStore((state) => state.setFormFieldValue);
     const hideDialogBox = useShowConfirmationDialogBoxStore((state) => state.hideDialogBox);
     const [fetchOPISRetail, setFetchOPISRetail] = useState(false);
 
@@ -163,6 +165,12 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
         }
     };
 
+    const handleFormDataChange = () => {
+        if (isFormFieldChange()) {
+            isFormValidated(true);
+        }
+    };
+
     const onClickBack = () => {
         if (isFormFieldChange()) {
             showDialogBox(true);
@@ -257,13 +265,14 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
         }
     };
 
+
     return (
         <FormikProvider value={formik}>
-            <form onSubmit={formik.handleSubmit} className="productForm">
+            <form onSubmit={formik.handleSubmit} className="productForm" onBlur={handleFormDataChange}>
                 <Grid container direction="column"
                     className="productContainer">
                     <Grid item container lg={12} md={12} sm={12} xs={12}>
-                        {!disableAddEditButton && (
+                        {!isHiddenAddEditRow && (
                             <>
                                 <Grid item lg={6} md={6} sm={8} xs={8} mx={4} my={1} >
                                     <b>Add New Product or select the product from the table to edit the details</b>
@@ -274,6 +283,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                                         types="primary"
                                         aria-label="primary"
                                         startIcon={<Add />}
+                                        disabled={disableAddEditButton}
                                     >
                                         {t("Add Product")}
                                     </Button>
@@ -282,6 +292,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                                         className="editProduct"
                                         aria-label="edit"
                                         startIcon={<EditIcon />}
+                                        disabled={disableAddEditButton}
                                     >
                                         {t("Edit")}
                                     </Button>
