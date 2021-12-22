@@ -34,11 +34,10 @@ exports[`renders the Default Select component snapshot test for Default Select c
       id="select-label"
       isSearchable={false}
       onChange={[Function]}
-      onKeyDown={[Function]}
       options={
         Array [
           Object {
-            "icon": <YellowFuelIcon />,
+            "icon": [Function],
             "label": "Label",
             "value": "Value",
           },
@@ -57,17 +56,17 @@ exports[`renders the SingleSelect component on change Should change value when o
   items={
     Array [
       Object {
-        "icon": <YellowFuelIcon />,
+        "icon": [Function],
         "label": "Label1",
         "value": "Value1",
       },
       Object {
-        "icon": <YellowFuelIcon />,
+        "icon": [Function],
         "label": "Label2",
         "value": "Value2",
       },
       Object {
-        "icon": <YellowFuelIcon />,
+        "icon": [Function],
         "label": "Label3",
         "value": "Value3",
       },
@@ -116,21 +115,20 @@ exports[`renders the SingleSelect component on change Should change value when o
               id="single-select-on-change-test"
               isSearchable={false}
               onChange={[Function]}
-              onKeyDown={[Function]}
               options={
                 Array [
                   Object {
-                    "icon": <YellowFuelIcon />,
+                    "icon": [Function],
                     "label": "Label1",
                     "value": "Value1",
                   },
                   Object {
-                    "icon": <YellowFuelIcon />,
+                    "icon": [Function],
                     "label": "Label2",
                     "value": "Value2",
                   },
                   Object {
-                    "icon": <YellowFuelIcon />,
+                    "icon": [Function],
                     "label": "Label3",
                     "value": "Value3",
                   },
@@ -319,21 +317,20 @@ exports[`renders the SingleSelect component on change Should change value when o
           id="single-select-on-change-test"
           isSearchable={false}
           onChange={[Function]}
-          onKeyDown={[Function]}
           options={
             Array [
               Object {
-                "icon": <YellowFuelIcon />,
+                "icon": [Function],
                 "label": "Label1",
                 "value": "Value1",
               },
               Object {
-                "icon": <YellowFuelIcon />,
+                "icon": [Function],
                 "label": "Label2",
                 "value": "Value2",
               },
               Object {
-                "icon": <YellowFuelIcon />,
+                "icon": [Function],
                 "label": "Label3",
                 "value": "Value3",
               },
@@ -383,7 +380,6 @@ exports[`renders the SingleSelect component on change Should change value when o
             noOptionsMessage={[Function]}
             onChange={[Function]}
             onInputChange={[Function]}
-            onKeyDown={[Function]}
             onMenuClose={[Function]}
             onMenuOpen={[Function]}
             openMenuOnClick={true}
@@ -391,17 +387,17 @@ exports[`renders the SingleSelect component on change Should change value when o
             options={
               Array [
                 Object {
-                  "icon": <YellowFuelIcon />,
+                  "icon": [Function],
                   "label": "Label1",
                   "value": "Value1",
                 },
                 Object {
-                  "icon": <YellowFuelIcon />,
+                  "icon": [Function],
                   "label": "Label2",
                   "value": "Value2",
                 },
                 Object {
-                  "icon": <YellowFuelIcon />,
+                  "icon": [Function],
                   "label": "Label3",
                   "value": "Value3",
                 },
@@ -435,17 +431,17 @@ exports[`renders the SingleSelect component on change Should change value when o
               options={
                 Array [
                   Object {
-                    "icon": <YellowFuelIcon />,
+                    "icon": [Function],
                     "label": "Label1",
                     "value": "Value1",
                   },
                   Object {
-                    "icon": <YellowFuelIcon />,
+                    "icon": [Function],
                     "label": "Label2",
                     "value": "Value2",
                   },
                   Object {
-                    "icon": <YellowFuelIcon />,
+                    "icon": [Function],
                     "label": "Label3",
                     "value": "Value3",
                   },
@@ -495,24 +491,23 @@ exports[`renders the SingleSelect component on change Should change value when o
                   "onBlur": undefined,
                   "onChange": [Function],
                   "onInputChange": [Function],
-                  "onKeyDown": [Function],
                   "onMenuClose": [Function],
                   "onMenuOpen": [Function],
                   "openMenuOnClick": true,
                   "openMenuOnFocus": false,
                   "options": Array [
                     Object {
-                      "icon": <YellowFuelIcon />,
+                      "icon": [Function],
                       "label": "Label1",
                       "value": "Value1",
                     },
                     Object {
-                      "icon": <YellowFuelIcon />,
+                      "icon": [Function],
                       "label": "Label2",
                       "value": "Value2",
                     },
                     Object {
-                      "icon": <YellowFuelIcon />,
+                      "icon": [Function],
                       "label": "Label3",
                       "value": "Value3",
                     },
@@ -595,17 +590,17 @@ exports[`renders the SingleSelect component on change Should change value when o
                     options={
                       Array [
                         Object {
-                          "icon": <YellowFuelIcon />,
+                          "icon": [Function],
                           "label": "Label1",
                           "value": "Value1",
                         },
                         Object {
-                          "icon": <YellowFuelIcon />,
+                          "icon": [Function],
                           "label": "Label2",
                           "value": "Value2",
                         },
                         Object {
-                          "icon": <YellowFuelIcon />,
+                          "icon": [Function],
                           "label": "Label3",
                           "value": "Value3",
                         },
@@ -655,24 +650,23 @@ exports[`renders the SingleSelect component on change Should change value when o
                         "onBlur": undefined,
                         "onChange": [Function],
                         "onInputChange": [Function],
-                        "onKeyDown": [Function],
                         "onMenuClose": [Function],
                         "onMenuOpen": [Function],
                         "openMenuOnClick": true,
                         "openMenuOnFocus": false,
                         "options": Array [
                           Object {
-                            "icon": <YellowFuelIcon />,
+                            "icon": [Function],
                             "label": "Label1",
                             "value": "Value1",
                           },
                           Object {
-                            "icon": <YellowFuelIcon />,
+                            "icon": [Function],
                             "label": "Label2",
                             "value": "Value2",
                           },
                           Object {
-                            "icon": <YellowFuelIcon />,
+                            "icon": [Function],
                             "label": "Label3",
                             "value": "Value3",
                           },
@@ -790,17 +784,17 @@ exports[`renders the SingleSelect component on change Should change value when o
                     options={
                       Array [
                         Object {
-                          "icon": <YellowFuelIcon />,
+                          "icon": [Function],
                           "label": "Label1",
                           "value": "Value1",
                         },
                         Object {
-                          "icon": <YellowFuelIcon />,
+                          "icon": [Function],
                           "label": "Label2",
                           "value": "Value2",
                         },
                         Object {
-                          "icon": <YellowFuelIcon />,
+                          "icon": [Function],
                           "label": "Label3",
                           "value": "Value3",
                         },
@@ -850,24 +844,23 @@ exports[`renders the SingleSelect component on change Should change value when o
                         "onBlur": undefined,
                         "onChange": [Function],
                         "onInputChange": [Function],
-                        "onKeyDown": [Function],
                         "onMenuClose": [Function],
                         "onMenuOpen": [Function],
                         "openMenuOnClick": true,
                         "openMenuOnFocus": false,
                         "options": Array [
                           Object {
-                            "icon": <YellowFuelIcon />,
+                            "icon": [Function],
                             "label": "Label1",
                             "value": "Value1",
                           },
                           Object {
-                            "icon": <YellowFuelIcon />,
+                            "icon": [Function],
                             "label": "Label2",
                             "value": "Value2",
                           },
                           Object {
-                            "icon": <YellowFuelIcon />,
+                            "icon": [Function],
                             "label": "Label3",
                             "value": "Value3",
                           },
@@ -960,17 +953,17 @@ exports[`renders the SingleSelect component on change Should change value when o
                           options={
                             Array [
                               Object {
-                                "icon": <YellowFuelIcon />,
+                                "icon": [Function],
                                 "label": "Label1",
                                 "value": "Value1",
                               },
                               Object {
-                                "icon": <YellowFuelIcon />,
+                                "icon": [Function],
                                 "label": "Label2",
                                 "value": "Value2",
                               },
                               Object {
-                                "icon": <YellowFuelIcon />,
+                                "icon": [Function],
                                 "label": "Label3",
                                 "value": "Value3",
                               },
@@ -1020,24 +1013,23 @@ exports[`renders the SingleSelect component on change Should change value when o
                               "onBlur": undefined,
                               "onChange": [Function],
                               "onInputChange": [Function],
-                              "onKeyDown": [Function],
                               "onMenuClose": [Function],
                               "onMenuOpen": [Function],
                               "openMenuOnClick": true,
                               "openMenuOnFocus": false,
                               "options": Array [
                                 Object {
-                                  "icon": <YellowFuelIcon />,
+                                  "icon": [Function],
                                   "label": "Label1",
                                   "value": "Value1",
                                 },
                                 Object {
-                                  "icon": <YellowFuelIcon />,
+                                  "icon": [Function],
                                   "label": "Label2",
                                   "value": "Value2",
                                 },
                                 Object {
-                                  "icon": <YellowFuelIcon />,
+                                  "icon": [Function],
                                   "label": "Label3",
                                   "value": "Value3",
                                 },
@@ -1122,17 +1114,17 @@ exports[`renders the SingleSelect component on change Should change value when o
                                 options={
                                   Array [
                                     Object {
-                                      "icon": <YellowFuelIcon />,
+                                      "icon": [Function],
                                       "label": "Label1",
                                       "value": "Value1",
                                     },
                                     Object {
-                                      "icon": <YellowFuelIcon />,
+                                      "icon": [Function],
                                       "label": "Label2",
                                       "value": "Value2",
                                     },
                                     Object {
-                                      "icon": <YellowFuelIcon />,
+                                      "icon": [Function],
                                       "label": "Label3",
                                       "value": "Value3",
                                     },
@@ -1182,24 +1174,23 @@ exports[`renders the SingleSelect component on change Should change value when o
                                     "onBlur": undefined,
                                     "onChange": [Function],
                                     "onInputChange": [Function],
-                                    "onKeyDown": [Function],
                                     "onMenuClose": [Function],
                                     "onMenuOpen": [Function],
                                     "openMenuOnClick": true,
                                     "openMenuOnFocus": false,
                                     "options": Array [
                                       Object {
-                                        "icon": <YellowFuelIcon />,
+                                        "icon": [Function],
                                         "label": "Label1",
                                         "value": "Value1",
                                       },
                                       Object {
-                                        "icon": <YellowFuelIcon />,
+                                        "icon": [Function],
                                         "label": "Label2",
                                         "value": "Value2",
                                       },
                                       Object {
-                                        "icon": <YellowFuelIcon />,
+                                        "icon": [Function],
                                         "label": "Label3",
                                         "value": "Value3",
                                       },
@@ -1352,17 +1343,17 @@ exports[`renders the SingleSelect component on change Should change value when o
                           options={
                             Array [
                               Object {
-                                "icon": <YellowFuelIcon />,
+                                "icon": [Function],
                                 "label": "Label1",
                                 "value": "Value1",
                               },
                               Object {
-                                "icon": <YellowFuelIcon />,
+                                "icon": [Function],
                                 "label": "Label2",
                                 "value": "Value2",
                               },
                               Object {
-                                "icon": <YellowFuelIcon />,
+                                "icon": [Function],
                                 "label": "Label3",
                                 "value": "Value3",
                               },
@@ -1412,24 +1403,23 @@ exports[`renders the SingleSelect component on change Should change value when o
                               "onBlur": undefined,
                               "onChange": [Function],
                               "onInputChange": [Function],
-                              "onKeyDown": [Function],
                               "onMenuClose": [Function],
                               "onMenuOpen": [Function],
                               "openMenuOnClick": true,
                               "openMenuOnFocus": false,
                               "options": Array [
                                 Object {
-                                  "icon": <YellowFuelIcon />,
+                                  "icon": [Function],
                                   "label": "Label1",
                                   "value": "Value1",
                                 },
                                 Object {
-                                  "icon": <YellowFuelIcon />,
+                                  "icon": [Function],
                                   "label": "Label2",
                                   "value": "Value2",
                                 },
                                 Object {
-                                  "icon": <YellowFuelIcon />,
+                                  "icon": [Function],
                                   "label": "Label3",
                                   "value": "Value3",
                                 },
@@ -1504,17 +1494,17 @@ exports[`renders the SingleSelect component on change Should change value when o
                                 options={
                                   Array [
                                     Object {
-                                      "icon": <YellowFuelIcon />,
+                                      "icon": [Function],
                                       "label": "Label1",
                                       "value": "Value1",
                                     },
                                     Object {
-                                      "icon": <YellowFuelIcon />,
+                                      "icon": [Function],
                                       "label": "Label2",
                                       "value": "Value2",
                                     },
                                     Object {
-                                      "icon": <YellowFuelIcon />,
+                                      "icon": [Function],
                                       "label": "Label3",
                                       "value": "Value3",
                                     },
@@ -1564,24 +1554,23 @@ exports[`renders the SingleSelect component on change Should change value when o
                                     "onBlur": undefined,
                                     "onChange": [Function],
                                     "onInputChange": [Function],
-                                    "onKeyDown": [Function],
                                     "onMenuClose": [Function],
                                     "onMenuOpen": [Function],
                                     "openMenuOnClick": true,
                                     "openMenuOnFocus": false,
                                     "options": Array [
                                       Object {
-                                        "icon": <YellowFuelIcon />,
+                                        "icon": [Function],
                                         "label": "Label1",
                                         "value": "Value1",
                                       },
                                       Object {
-                                        "icon": <YellowFuelIcon />,
+                                        "icon": [Function],
                                         "label": "Label2",
                                         "value": "Value2",
                                       },
                                       Object {
-                                        "icon": <YellowFuelIcon />,
+                                        "icon": [Function],
                                         "label": "Label3",
                                         "value": "Value3",
                                       },
@@ -1646,17 +1635,17 @@ exports[`renders the SingleSelect component on change Should change value when o
                                 options={
                                   Array [
                                     Object {
-                                      "icon": <YellowFuelIcon />,
+                                      "icon": [Function],
                                       "label": "Label1",
                                       "value": "Value1",
                                     },
                                     Object {
-                                      "icon": <YellowFuelIcon />,
+                                      "icon": [Function],
                                       "label": "Label2",
                                       "value": "Value2",
                                     },
                                     Object {
-                                      "icon": <YellowFuelIcon />,
+                                      "icon": [Function],
                                       "label": "Label3",
                                       "value": "Value3",
                                     },
@@ -1706,24 +1695,23 @@ exports[`renders the SingleSelect component on change Should change value when o
                                     "onBlur": undefined,
                                     "onChange": [Function],
                                     "onInputChange": [Function],
-                                    "onKeyDown": [Function],
                                     "onMenuClose": [Function],
                                     "onMenuOpen": [Function],
                                     "openMenuOnClick": true,
                                     "openMenuOnFocus": false,
                                     "options": Array [
                                       Object {
-                                        "icon": <YellowFuelIcon />,
+                                        "icon": [Function],
                                         "label": "Label1",
                                         "value": "Value1",
                                       },
                                       Object {
-                                        "icon": <YellowFuelIcon />,
+                                        "icon": [Function],
                                         "label": "Label2",
                                         "value": "Value2",
                                       },
                                       Object {
-                                        "icon": <YellowFuelIcon />,
+                                        "icon": [Function],
                                         "label": "Label3",
                                         "value": "Value3",
                                       },
@@ -1788,17 +1776,17 @@ exports[`renders the SingleSelect component on change Should change value when o
                                   options={
                                     Array [
                                       Object {
-                                        "icon": <YellowFuelIcon />,
+                                        "icon": [Function],
                                         "label": "Label1",
                                         "value": "Value1",
                                       },
                                       Object {
-                                        "icon": <YellowFuelIcon />,
+                                        "icon": [Function],
                                         "label": "Label2",
                                         "value": "Value2",
                                       },
                                       Object {
-                                        "icon": <YellowFuelIcon />,
+                                        "icon": [Function],
                                         "label": "Label3",
                                         "value": "Value3",
                                       },
@@ -1848,24 +1836,23 @@ exports[`renders the SingleSelect component on change Should change value when o
                                       "onBlur": undefined,
                                       "onChange": [Function],
                                       "onInputChange": [Function],
-                                      "onKeyDown": [Function],
                                       "onMenuClose": [Function],
                                       "onMenuOpen": [Function],
                                       "openMenuOnClick": true,
                                       "openMenuOnFocus": false,
                                       "options": Array [
                                         Object {
-                                          "icon": <YellowFuelIcon />,
+                                          "icon": [Function],
                                           "label": "Label1",
                                           "value": "Value1",
                                         },
                                         Object {
-                                          "icon": <YellowFuelIcon />,
+                                          "icon": [Function],
                                           "label": "Label2",
                                           "value": "Value2",
                                         },
                                         Object {
-                                          "icon": <YellowFuelIcon />,
+                                          "icon": [Function],
                                           "label": "Label3",
                                           "value": "Value3",
                                         },
@@ -2008,21 +1995,20 @@ exports[`renders the SingleSelect component with error  snapshot test for the Si
       id="select-label"
       isSearchable={false}
       onChange={[Function]}
-      onKeyDown={[Function]}
       options={
         Array [
           Object {
-            "icon": <YellowFuelIcon />,
+            "icon": [Function],
             "label": "Label1",
             "value": "Value1",
           },
           Object {
-            "icon": <YellowFuelIcon />,
+            "icon": [Function],
             "label": "Label2",
             "value": "Value2",
           },
           Object {
-            "icon": <YellowFuelIcon />,
+            "icon": [Function],
             "label": "Label3",
             "value": "Value3",
           },
@@ -2031,7 +2017,7 @@ exports[`renders the SingleSelect component with error  snapshot test for the Si
       placeholder="Select"
       value={
         Object {
-          "icon": <YellowFuelIcon />,
+          "icon": [Function],
           "label": "Label1",
           "value": "Value1",
         }
@@ -2080,21 +2066,20 @@ exports[`renders the SingleSelect component with helper text snapshot test for t
       id="select-label"
       isSearchable={false}
       onChange={[Function]}
-      onKeyDown={[Function]}
       options={
         Array [
           Object {
-            "icon": <YellowFuelIcon />,
+            "icon": [Function],
             "label": "Label1",
             "value": "Value1",
           },
           Object {
-            "icon": <YellowFuelIcon />,
+            "icon": [Function],
             "label": "Label2",
             "value": "Value2",
           },
           Object {
-            "icon": <YellowFuelIcon />,
+            "icon": [Function],
             "label": "Label3",
             "value": "Value3",
           },
@@ -2103,7 +2088,7 @@ exports[`renders the SingleSelect component with helper text snapshot test for t
       placeholder="Select"
       value={
         Object {
-          "icon": <YellowFuelIcon />,
+          "icon": [Function],
           "label": "Label1",
           "value": "Value1",
         }
@@ -2158,21 +2143,20 @@ exports[`renders the SingleSelect component with required prop snapshot test for
       id="select-label"
       isSearchable={false}
       onChange={[Function]}
-      onKeyDown={[Function]}
       options={
         Array [
           Object {
-            "icon": <YellowFuelIcon />,
+            "icon": [Function],
             "label": "Label1",
             "value": "Value1",
           },
           Object {
-            "icon": <YellowFuelIcon />,
+            "icon": [Function],
             "label": "Label2",
             "value": "Value2",
           },
           Object {
-            "icon": <YellowFuelIcon />,
+            "icon": [Function],
             "label": "Label3",
             "value": "Value3",
           },
@@ -2181,7 +2165,7 @@ exports[`renders the SingleSelect component with required prop snapshot test for
       placeholder="Select"
       value={
         Object {
-          "icon": <YellowFuelIcon />,
+          "icon": [Function],
           "label": "Label1",
           "value": "Value1",
         }
@@ -2225,21 +2209,20 @@ exports[`renders the SingleSelect component with values Snapshot test for the Si
       id="select-label"
       isSearchable={false}
       onChange={[Function]}
-      onKeyDown={[Function]}
       options={
         Array [
           Object {
-            "icon": <YellowFuelIcon />,
+            "icon": [Function],
             "label": "Label1",
             "value": "Value1",
           },
           Object {
-            "icon": <YellowFuelIcon />,
+            "icon": [Function],
             "label": "Label2",
             "value": "Value2",
           },
           Object {
-            "icon": <YellowFuelIcon />,
+            "icon": [Function],
             "label": "Label3",
             "value": "Value3",
           },
@@ -2248,7 +2231,7 @@ exports[`renders the SingleSelect component with values Snapshot test for the Si
       placeholder="Select"
       value={
         Object {
-          "icon": <YellowFuelIcon />,
+          "icon": [Function],
           "label": "Label1",
           "value": "Value1",
         }
