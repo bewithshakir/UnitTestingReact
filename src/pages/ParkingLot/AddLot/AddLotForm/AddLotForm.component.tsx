@@ -76,9 +76,9 @@ function AddLotForm(): React.ReactElement {
     };
     
     useEffect(() => {
-        if (timeZoneList?.data?.length) {
-            setTimeZones(timeZoneList.data.map((obj: any) => ({ label: obj.timezoneNm, value: obj.timezoneCd })));
-        }   console.warn('list-->',timeZones);
+        if (timeZoneList?.data?.timezones?.length) {
+            setTimeZones(timeZoneList.data.timezones.map((obj: any) => ({ label: obj.timezoneNm, value: obj.timezoneCd })));
+        }   
     }, [timeZoneList]);
 
     const onAddLotSuccess = (data: any) => {
@@ -166,8 +166,7 @@ function AddLotForm(): React.ReactElement {
         });
         timeZones.map((obj:any) => {
             if(obj.value === dataToPopulate?.data?.lot?.timezoneCd) {
-                formik.setFieldValue("timeZone",
-                    { label: obj.label, value: obj.value });
+                formik.setFieldValue("timeZone",{ label: obj.label, value: obj.value });
             }
         });
         setDisabled(true);
