@@ -22,6 +22,19 @@ const createLot = async (payload: any) => {
     return data;
 };
 
+const getTimeZones = async () => {
+    const options: AxiosRequestConfig = {
+        method: 'get',
+        url: 'api/config-service/timezones?countryCode=us'
+    };
+    const { data } = await axios(options);
+    return data;
+};
+
+export const useGetTimeZones = () => {
+    return useQuery(["getTimeZones"], () => getTimeZones());
+};
+
 const editParkingLot = async (payload: any, parkingLotId: string) => {
     const options: AxiosRequestConfig = {
         method: 'put',
