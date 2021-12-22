@@ -2,6 +2,7 @@ import { useMutation, useQuery } from "react-query";
 import { AxiosRequestConfig } from "axios";
 import axios from '../../infrastructure/ApiHelper';
 import { getProductIcon } from '../../utils/helperFunctions';
+import ProductManagementModel from "../../models/ProductManagementModel";
 
 interface dataPropsInt {
     activeInactiveInd: string,
@@ -62,31 +63,48 @@ export const useGetProductColors = (countryCode: string) => {
 /**
  * Add Managaement product api
  */
-interface addProductPayloadInt {
+interface addEditProductPayloadInt {
     countryCode: string,
     productName: string,
     productType: string,
     productColor: string,
     productStatus: string,
     productPricing: number
-
+    productGroupId?: string,
 }
-const addProductManagement = async (payload: addProductPayloadInt) => {
+
+const addProductManagement = async (payload: ProductManagementModel) => {
+    const finalPayload: addEditProductPayloadInt = {
+        countryCode: 'us',
+        productName: payload.productName,
+        productType: payload.productType.value,
+        productColor: payload.productColor.value,
+        productStatus: payload.productStatus.value,
+        productPricing: +payload.productPricing
+    };
     const options: AxiosRequestConfig = {
         method: 'post',
         url: '/api/product-service/product/add',
-        data: payload,
+        data: finalPayload,
     };
     const { data } = await axios(options);
     return data;
 };
 
-const editProductManagement = async (payload: any, productId: string) => {
-
+const editProductManagement = async (payload: ProductManagementModel, productGroupCd: string, productId: string) => {
+    const finalPayload: addEditProductPayloadInt = {
+        countryCode: 'us',
+        productName: payload.productName,
+        productType: payload.productType.value,
+        productColor: payload.productColor.value,
+        productStatus: payload.productStatus.value,
+        productPricing: +payload.productPricing,
+        productGroupId: productGroupCd
+    };
     const options: AxiosRequestConfig = {
         method: 'put',
         url: `/api/product-service/product/edit/${productId}`,
-        data: payload
+        data: finalPayload
     };
     const { data } = await axios(options);
     return data;
@@ -104,16 +122,16 @@ const getProductData = async (productId: string) => {
 };
 
 export const useAddProductManagement = (onSuccess: any, onError: any) => {
-    return useMutation((payload: addProductPayloadInt) =>
+    return useMutation((payload: ProductManagementModel) =>
         addProductManagement(payload), {
         onError,
         onSuccess,
     });
 };
 
-export const useEditProductManagement = (productId: string, onSuccess: any, onError: any) => {
-    return useMutation((payload: any) =>
-        editProductManagement(payload, productId), {
+export const useEditProductManagement = (productId: string, productGroupCd: string, onSuccess: any, onError: any) => {
+    return useMutation((payload: ProductManagementModel) =>
+        editProductManagement(payload, productGroupCd, productId), {
         onSuccess,
         onError,
         retry: false
