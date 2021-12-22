@@ -155,7 +155,15 @@
       },
       "form": {
         "fuelTaxTitleAdd": "Add Fuel Tax",
-        "endDate": "End Date"
+        "endDate": "End Date",
+        "revenueFuelRate": "Enter Revenue Fuel Rate",
+        "salesFuelTax": "Enter Sales Fuel Tax",
+        "stateFuelTax": "Enter State Fuel Tax",
+        "cityFuelTax": "Enter City Fuel Tax",
+        "countyFuelTax": "Enter County Fuel Tax",
+        "miscInspFuelTax": "Enter Misc Insp Fuel Tax",
+        "miscLcalFuelTax": "Enter Misc Local Fuel Tax",
+        "miscLoadFuelTax": "Enter Misc Load Fuel Tax"
       }
     },
     "salesTax": {
