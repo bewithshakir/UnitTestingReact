@@ -54,7 +54,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
     const customerId = useAddedCustomerIdStore((state) => state.customerId);
     const customerName = useAddedCustomerNameStore((state) => state.customerName);
 
-    const Str_Custom_Text = "Custom";
+   
 
 
     const initialValues = {
@@ -239,7 +239,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
 
     const handlePricingModelChange = (fieldName: string, value: any) => {
         formik.setFieldValue(fieldName, value);
-        if (value != Str_Custom_Text) {
+        if (value != Str_Custom_Text || value !=) {
             clearCustomRelatedFormValues();
         }
         if(value?.label?.toLowerCase() === "opis retail" && formik.values?.masterProductName?.label ){
