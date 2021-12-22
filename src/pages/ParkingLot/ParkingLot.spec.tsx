@@ -95,4 +95,6 @@ describe('Edit in grid Component Parking Lot view', () => {
     });
 });
 
-
+afterAll(() => {
+    jest.useRealTimers();
+});

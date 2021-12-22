@@ -62,7 +62,31 @@ const AddFuelTax = memo(() => {
     ];
 
 
-    const { mutate: createNewFuelTaxData, isSuccess, isError } = useAddFuelTax();
+
+    const onAddFuelTaxSuccess = ()=> {
+        setAPIResponse(true);
+        isFormValidated(false);
+        setFormStatus(formStatusProps.updated);
+        setTimeout(() => {
+            setAPIResponse(false);
+        }, 6000);
+    };
+    const onAddFuelTaxError = (err: any)=> {
+        try {
+            const { data } = err.response;
+            setAPIResponse(true);
+            // setDisabled(false);
+            setFormStatus({ message: data?.error?.message || formStatusProps.error.message, type: 'Error' });
+            formik.setSubmitting(false);
+            setTimeout(() => {
+                setAPIResponse(false);
+            }, 6000);
+        } catch (error) {
+            setFormStatus(formStatusProps.error);
+        }
+    };
+
+    const { mutate: createNewFuelTaxData } = useAddFuelTax(onAddFuelTaxSuccess, onAddFuelTaxError);
 
     const createNewFuelTax = (form: TaxModel) => {
         try {
@@ -200,20 +224,6 @@ const AddFuelTax = memo(() => {
 
     useGetFuelTax(location.search, onGetSaleTaxSuccess, onGetSaleTaxError);
 
-    useEffect(() => {
-        if (isSuccess) {
-            setAPIResponse(true);
-            setFormStatus(formStatusProps.success);
-        }
-        if (isError) {
-            setAPIResponse(true);
-            setFormStatus(formStatusProps.error);
-        }
-        setTimeout(() => {
-            setAPIResponse(false);
-        }, 6000);
-        formik.resetForm({});
-    }, [isSuccess, isError]);
 
 
     const formik = useFormik({
@@ -413,7 +423,7 @@ const AddFuelTax = memo(() => {
                                         id='localRate'
                                         label='REVENUE FUEL RATE (%)'
                                         type='text'
-                                        placeholder='Enter Local Rate'
+                                        placeholder={t("taxes.fuelTax.form.revenueFuelRate")}
                                         helperText={(formik.touched.localRate && formik.errors.localRate) ? formik.errors.localRate : undefined}
                                         error={(formik.touched.localRate && formik.errors.localRate) ? true : false}
                                         {...formik.getFieldProps('localRate')}
@@ -427,7 +437,7 @@ const AddFuelTax = memo(() => {
                                         id='salesFuelRate'
                                         label='SALES FUEL RATE (%)'
                                         type='text'
-                                        placeholder='Enter'
+                                        placeholder={t("taxes.fuelTax.form.salesFuelTax")}
                                         helperText={(formik.touched.salesFuelRate && formik.errors.salesFuelRate) ? formik.errors.salesFuelRate : undefined}
                                         error={(formik.touched.salesFuelRate && formik.errors.salesFuelRate) ? true : false}
                                         {...formik.getFieldProps('salesFuelRate')}
@@ -439,7 +449,7 @@ const AddFuelTax = memo(() => {
                                         id='stateFuelRate'
                                         label='STATE FUEL TAX ($)'
                                         type='text'
-                                        placeholder='Enter'
+                                        placeholder={t("taxes.fuelTax.form.stateFuelTax")}
                                         helperText={(formik.touched.stateFuelRate && formik.errors.stateFuelRate) ? formik.errors.stateFuelRate : undefined}
                                         error={(formik.touched.stateFuelRate && formik.errors.stateFuelRate) ? true : false}
                                         {...formik.getFieldProps('stateFuelRate')}
@@ -453,7 +463,7 @@ const AddFuelTax = memo(() => {
                                         id='cityFuelRate'
                                         label='CITY FUEL TAX ($)'
                                         type='text'
-                                        placeholder='Enter'
+                                        placeholder={t("taxes.fuelTax.form.cityFuelTax")}
                                         helperText={(formik.touched.cityFuelRate && formik.errors.cityFuelRate) ? formik.errors.cityFuelRate : undefined}
                                         error={(formik.touched.cityFuelRate && formik.errors.cityFuelRate) ? true : false}
                                         {...formik.getFieldProps('cityFuelRate')}
@@ -465,7 +475,7 @@ const AddFuelTax = memo(() => {
                                         id='countryFuelRate'
                                         label='COUNTY FUEL TAX ($)'
                                         type='text'
-                                        placeholder='Enter'
+                                        placeholder={t("taxes.fuelTax.form.countyFuelTax")}
                                         helperText={(formik.touched.countryFuelRate && formik.errors.countryFuelRate) ? formik.errors.countryFuelRate : undefined}
                                         error={(formik.touched.countryFuelRate && formik.errors.countryFuelRate) ? true : false}
                                         {...formik.getFieldProps('countryFuelRate')}
@@ -478,6 +488,7 @@ const AddFuelTax = memo(() => {
                                         id='InspFuelRate'
                                         label='MISC. INSP. FUEL TAX ($)'
                                         type='text'
+                                        placeholder={t("taxes.fuelTax.form.miscInspFuelTax")}
                                         helperText={(formik.touched.InspFuelRate && formik.errors.InspFuelRate) ? formik.errors.InspFuelRate : undefined}
                                         error={(formik.touched.InspFuelRate && formik.errors.InspFuelRate) ? true : false}
                                         {...formik.getFieldProps('InspFuelRate')}
@@ -489,7 +500,7 @@ const AddFuelTax = memo(() => {
                                         id='miscLocalFuelRate'
                                         label='MISC. LOCAL FUEL TAX ($)'
                                         type='text'
-                                        placeholder='Enter'
+                                        placeholder={t("taxes.fuelTax.form.miscLcalFuelTax")}
                                         helperText={(formik.touched.miscLocalFuelRate && formik.errors.miscLocalFuelRate) ? formik.errors.miscLocalFuelRate : undefined}
                                         error={(formik.touched.miscLocalFuelRate && formik.errors.miscLocalFuelRate) ? true : false}
                                         {...formik.getFieldProps('miscLocalFuelRate')}
@@ -501,7 +512,7 @@ const AddFuelTax = memo(() => {
                                         id='loadFuel'
                                         label='MISC. LOAD FUEL TAX ($))'
                                         type='text'
-                                        placeholder='Enter'
+                                        placeholder={t("taxes.fuelTax.form.miscLoadFuelTax")}
                                         helperText={(formik.touched.loadFuel && formik.errors.loadFuel) ? formik.errors.loadFuel : undefined}
                                         error={(formik.touched.loadFuel && formik.errors.loadFuel) ? true : false}
                                         {...formik.getFieldProps('loadFuel')}
