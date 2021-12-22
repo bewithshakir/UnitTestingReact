@@ -261,6 +261,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
     const handleMasterProductNameChange = (fieldName: string, value: any) => {
         formik.setFieldValue(fieldName, value);
         if(formik.values?.pricingModel?.label?.toLowerCase() === strCustomTextRetail ){
+            formik.setFieldValue('productNm', [value?.label + ' ' + 'Retail'].join('') );
             setFetchOPISRetail(true);
         }
     };
