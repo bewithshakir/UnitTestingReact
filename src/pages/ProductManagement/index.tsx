@@ -15,7 +15,8 @@ export default function ProductManagement() {
     };
 
     const [reloadKey, editReloadKey] = useState<string | null>(null);
-    const [topButtonRowDisabled, makeTopButtonRowDisabled] = useState(true);
+    const [topButtonRowDisabled, makeTopButtonRowDisabled] = useState(false);
+    const [isHiddenAddEditRow, hideAddEditRow] = useState(true);
 
     const { pathname } = useLocation();
     const a = pathname.split('/');
@@ -23,7 +24,7 @@ export default function ProductManagement() {
 
     const getProductId = (row: any) => {
         setProductId(row.applicableProductId);
-        makeTopButtonRowDisabled(false);
+        hideAddEditRow(false);
     };
 
     const { data: productListData, fetchNextPage, isLoading, isFetching }: any = useProductsByLotId(lotId, searchTerm, reloadKey);
@@ -40,9 +41,8 @@ export default function ProductManagement() {
 
     const reloadSibling = (timeStamp: string) => {
         editReloadKey(timeStamp);
-        makeTopButtonRowDisabled(true);
+        hideAddEditRow(true);
     };
-
     return (
         <Fragment>
             <Box display="flex" className='product-management'>
@@ -56,10 +56,11 @@ export default function ProductManagement() {
                             loadNextPage={fetchNextPage}
                             reloadKey={reloadKey}
                             handleRowAction={getProductId}
+                            makeTopButtonRowDisabled={makeTopButtonRowDisabled}
                         />
                     </Grid>
                     <Grid item md={9} sm={12} xs={12} p={3} className="masterRightLayout">
-                        <AddProduct lotId={lotId} reloadSibling={reloadSibling} productId={productId} disableAddEditButton={topButtonRowDisabled} />
+                        <AddProduct lotId={lotId} reloadSibling={reloadSibling} productId={productId} disableAddEditButton={topButtonRowDisabled} isHiddenAddEditRow={isHiddenAddEditRow} />
                     </Grid>
                 </Grid>
             </Box>
