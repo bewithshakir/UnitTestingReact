@@ -36,7 +36,6 @@ function AddLotForm(): React.ReactElement {
 
     const { t } = useTranslation();
     const history = useHistory();
-    //const isFormFieldChange = () => formik.dirty;
     const { theme } = useTheme();
     const { data: contactTypeList } = useGetContactTypes();
     const [primaryContactType, setPrimaryContactType] = useState('');
@@ -60,7 +59,6 @@ function AddLotForm(): React.ReactElement {
     const selectedCustomerName = useAddedCustomerNameStore((state) => state.customerName);
     const [timeZones, setTimeZones] = useState([]);
     const [init, setInit] = useState(false);
-    const [addInit, setAddInit] = useState(false);
     const [lotState, setLotState ] = useState({});
     const { data: timeZoneList } = useGetTimeZones();
 
@@ -139,11 +137,7 @@ function AddLotForm(): React.ReactElement {
             setLotState(formik.values);
             setInit(false);
         }
-        if (addInit) {
-            setLotState(formik.values);
-            setAddInit(false);
-        }
-    }, [init, addInit]);
+    }, [init]);
 
     const onGetLotSuccess = (data: any) => {
         if (data) {
@@ -206,7 +200,7 @@ function AddLotForm(): React.ReactElement {
             setSaveCancelShown(false);
             setParkingLotIdCreated(selectedLotId);
         } else {
-            setAddInit(true);
+            setInit(true);
             setPageCustomerName(selectedCustomerName);
             setEditShown(false);
             setSaveCancelShown(true);
@@ -249,6 +243,7 @@ function AddLotForm(): React.ReactElement {
                 contact_email: contactObj.email,
                 contact_phone: contactObj.phoneNumber
             })),
+            // Commented for future requirements
             // productDelFreq: form.productDelFreq.value,
             // orderScheduleDel: form.orderScheduleDel.map((orderSchDelObj: any) => ({
             //     fromDate: orderSchDelObj.fromDate,
@@ -282,6 +277,7 @@ function AddLotForm(): React.ReactElement {
                 contact_email: contactObj.email,
                 contact_phone: contactObj.phoneNumber
             })),
+            // Commented for future requirements
             // productDelFreq: form.productDelFreq.value,
             // orderScheduleDel: form.orderScheduleDel.map((orderSchDelObj: any) => ({
             //     fromDate: orderSchDelObj.fromDate,
@@ -562,17 +558,6 @@ function AddLotForm(): React.ReactElement {
                                                             disabled
                                                             onClose={() => { formik.setFieldTouched(`orderScheduleDel[${index}].fromDate`); formik.validateField(`orderScheduleDel[${index}].fromDate`); }}
                                                             id={`orderScheduleDel[${index}].fromDate`}
-                                                        // helperText={
-                                                        //     formik?.errors?.orderScheduleDel && formik?.touched?.orderScheduleDel &&
-                                                        //         (formik.touched?.orderScheduleDel?.[index]?.fromDate && ((formik.errors?.orderScheduleDel?.[index] as orderSchDel)?.fromDate))
-                                                        //         ?
-                                                        //         (formik.errors.orderScheduleDel[index] as orderSchDel).fromDate : undefined
-                                                        // }
-                                                        // error={
-                                                        //     formik?.errors?.orderScheduleDel && formik?.touched?.orderScheduleDel &&
-                                                        //         (formik.touched?.orderScheduleDel?.[index]?.fromDate && ((formik.errors?.orderScheduleDel?.[index] as orderSchDel)?.fromDate))
-                                                        //         ? true : false
-                                                        // }
                                                         />
                                                     </Grid>
                                                     <Grid item md={3} pl={2.5} pr={2.5} pb={2.5}>
@@ -585,17 +570,6 @@ function AddLotForm(): React.ReactElement {
                                                             onChange={formik.setFieldValue}
                                                             disabled
                                                             onClose={() => { formik.setFieldTouched(`orderScheduleDel[${index}].toDate`); formik.validateField(`orderScheduleDel[${index}].toDate`); }}
-                                                        // helperText={
-                                                        //     formik?.errors?.orderScheduleDel && formik?.touched?.orderScheduleDel &&
-                                                        //         (formik.touched?.orderScheduleDel?.[index]?.toDate && ((formik.errors?.orderScheduleDel?.[index] as orderSchDel)?.toDate))
-                                                        //         ?
-                                                        //         (formik.errors.orderScheduleDel[index] as orderSchDel).toDate : undefined
-                                                        // }
-                                                        // error={
-                                                        //     formik?.errors?.orderScheduleDel && formik?.touched?.orderScheduleDel &&
-                                                        //         (formik.touched?.orderScheduleDel?.[index]?.toDate && ((formik.errors?.orderScheduleDel?.[index] as orderSchDel)?.toDate))
-                                                        //         ? true : false
-                                                        // }
                                                         />
                                                     </Grid>
 
@@ -610,18 +584,6 @@ function AddLotForm(): React.ReactElement {
                                                             onChange={formik.setFieldValue}
                                                             disabled
                                                             onBlur={() => { formik.setFieldTouched(`orderScheduleDel[${index}].productDelDays`); formik.validateField(`orderScheduleDel[${index}].productDelDays`); }}
-                                                        // helperText={
-                                                        //     formik?.errors?.orderScheduleDel && formik?.touched?.orderScheduleDel &&
-                                                        //         (formik.touched?.orderScheduleDel?.[index]?.productDelDays && ((formik.errors?.orderScheduleDel?.[index] as orderSchDel)?.productDelDays))
-                                                        //         ?
-                                                        //         (formik.errors.orderScheduleDel[index] as orderSchDel).productDelDays : undefined
-                                                        // }
-                                                        // error={
-                                                        //     formik?.errors?.orderScheduleDel && formik?.touched?.orderScheduleDel &&
-                                                        //         (formik.touched?.orderScheduleDel?.[index]?.productDelDays && ((formik.errors?.orderScheduleDel?.[index] as orderSchDel)?.productDelDays))
-                                                        //         ? true : false
-                                                        // }
-
                                                         />
                                                     </Grid>
 
@@ -676,6 +638,7 @@ function AddLotForm(): React.ReactElement {
                                                 <Link
                                                     variant="body2"
                                                     className="add-link disabled-text-link"
+                                                // Temporary disabled   
                                                 // onClick={() => {
                                                 //     if (formik.values.locationContact.length < 5) {
                                                 //         arrayHelpers.push({ firstName: "", lastName: "", email: "", phoneNumber: "" });
