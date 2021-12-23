@@ -60,7 +60,7 @@ const AddProduct: React.FC = memo(() => {
     const createProductData = (form: ProductManagementModel) => {
         try {
             addNewProduct(form);
-        } catch (error) {
+        } catch {
             setFormStatus({ message: t("formStatusProps.error.message"), type: 'Error' });
         }
     };
@@ -97,7 +97,7 @@ const AddProduct: React.FC = memo(() => {
                 setProductGroupCd(response.data.productGroupCd);
                 setEditMode(true);
             }
-        } catch (error) {
+        } catch {
             setFormStatus({ message: t("formStatusProps.error.message"), type: 'Error' });
         }
     };
@@ -107,7 +107,7 @@ const AddProduct: React.FC = memo(() => {
             const { data } = err.response;
             setFormStatus({ message: data?.error?.message || t("formStatusProps.error.message"), type: 'Error' });
             formik.setSubmitting(false);
-        } catch (error) {
+        } catch (error: any) {
             setFormStatus({ message: error?.message || t("formStatusProps.error.message"), type: 'Error' });
         }
     };
@@ -126,7 +126,7 @@ const AddProduct: React.FC = memo(() => {
             const { data } = err.response;
             setFormStatus({ message: data?.error?.message || t("formStatusProps.error.message"), type: 'Error' });
             formik.setSubmitting(false);
-        } catch (error) {
+        } catch (error: any) {
             setFormStatus({ message: error?.message || t("formStatusProps.error.message"), type: 'Error' });
         }
     };
@@ -141,7 +141,7 @@ const AddProduct: React.FC = memo(() => {
     const updateProductData = (form: ProductManagementModel) => {
         try {
             editProduct(form);
-        } catch (error) {
+        } catch {
             setFormStatus({ message: t("formStatusProps.error.message"), type: 'Error' });
         }
     };
