@@ -1,5 +1,3 @@
-/* eslint-disable no-console */
-
 import { Collapse, TableBody, TableCell, TableRow, FormControl, Avatar, Icon, ImageList, Typography, Box } from '@mui/material';
 import Checkbox from '../Checkbox/Checkbox.component';
 import React, { useEffect } from "react";
