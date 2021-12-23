@@ -129,6 +129,7 @@ const ProductManagementContent = memo(() => {
                 value={searchTerm}
                 delay={500}
                 onChange={onInputChange}
+                data-test="productSearchTerm"
               />
                </Grid>
               {
