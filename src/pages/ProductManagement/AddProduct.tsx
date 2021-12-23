@@ -309,7 +309,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                             <Select
                                 id='productType'
                                 name='productType'
-                                label='PRODUCT TYPE'
+                                label={t("addProductFormLabels.producttypelabel")}
                                 value={formik.values.productType}
                                 placeholder='Select one'
                                 items={productTypes}
@@ -325,7 +325,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                             <Select
                                 id='masterProductName'
                                 name='masterProductName'
-                                label='Master Product Name'
+                                label={t("addProductFormLabels.masterproductnamelabel")}
                                 value={formik.values.masterProductName}
                                 placeholder='Select Master Product Name'
                                 items={productNames}
@@ -341,7 +341,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                             <Select
                                 id='pricingModel'
                                 name='pricingModel'
-                                label='Pricing Model'
+                                label={t("addProductFormLabels.pricingmodellabel")}
                                 value={formik.values.pricingModel}
                                 placeholder='Select one'
                                 items={pricingModelOptions}
@@ -361,7 +361,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                                 <Grid item lg={5} md={8} sm={8} xs={8} mx={4} my={1} >
                                     <Input
                                         id='productNm'
-                                        label='Product Name'
+                                        label={t("addProductFormLabels.productnamelabel")}
                                         type='text'
                                         placeholder='Enter Product Name'
                                         helperText={(formik.touched.productNm && formik.errors.productNm) ? formik.errors.productNm : undefined}
@@ -378,7 +378,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                                 <Grid item lg={5} md={8} sm={8} xs={8} mx={4} my={1} >
                                     <Input
                                         id='manualPriceAmt'
-                                        label='Price Per Gallon (Including TAX)'
+                                        label={t("addProductFormLabels.pricelabel")}
                                         type='text'
                                         helperText={(formik.touched.manualPriceAmt && formik.errors.manualPriceAmt) ? formik.errors.manualPriceAmt : undefined}
                                         error={(formik.touched.manualPriceAmt && formik.errors.manualPriceAmt) ? true : false}
@@ -393,7 +393,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                                 <Grid item lg={5} md={8} sm={8} xs={8} mx={4} my={1} >
                                     <Input
                                         id='addedPriceAmt'
-                                        label='Added Price Per Gallon (Optional)'
+                                        label={t("addProductFormLabels.adderlabel")}
                                         type='text'
                                         helperText={(formik.touched.addedPriceAmt && formik.errors.addedPriceAmt) ? formik.errors.addedPriceAmt : undefined}
                                         error={(formik.touched.addedPriceAmt && formik.errors.addedPriceAmt) ? true : false}
@@ -405,7 +405,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                                 <Grid item lg={5} md={8} sm={8} xs={8} mx={4} my={1} >
                                     <Input
                                         id='discountPriceAmt'
-                                        label='Discount Per Gallon (Optional)'
+                                        label={t("addProductFormLabels.discountlabel")}
                                         type='text'
                                         helperText={(formik.touched.discountPriceAmt && formik.errors.discountPriceAmt) ? formik.errors.discountPriceAmt : undefined}
                                         error={(formik.touched.discountPriceAmt && formik.errors.discountPriceAmt) ? true : false}
@@ -417,7 +417,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                                 <Grid item lg={5} md={8} sm={8} xs={8} mx={4} my={1} >
                                     <Input
                                         id='totalPrice'
-                                        label='Total Price Per Gallon (Including Tax, Adder/Discount)'
+                                        label={t("addProductFormLabels.totalpricelabel")}
                                         type='text'
                                         description=''
                                         value={totalPrice}
@@ -431,7 +431,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                                     <Select
                                         id='timeSlot'
                                         name='timeSlot'
-                                        label='Time Slot (Optional)'
+                                        label={t("addProductFormLabels.timeslotlabel")}
                                         value={formik.values.timeSlot}
                                         placeholder='Choose Time Slot'
                                         items={[]}

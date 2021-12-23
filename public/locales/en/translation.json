@@ -255,5 +255,16 @@
       "message": "Something went wrong. Please try again.",
       "type": "Error"
     }
+  },
+  "addProductFormLabels": {
+    "producttypelabel": "PRODUCT TYPE",
+    "masterproductnamelabel": "Master Product Name",
+    "pricingmodellabel": "Pricing Model",
+    "productnamelabel": "Product Name",
+    "pricelabel": "Price Per Gallon (Including TAX)",
+    "adderlabel": "Added Price Per Gallon (Optional)",
+    "discountlabel": "Discount Per Gallon (Optional)",
+    "totalpricelabel": "Total Price Per Gallon (Including Tax, Adder/Discount)",
+    "timeslotlabel": "Time Slot (Optional)"
   }
 }
