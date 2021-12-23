@@ -11,15 +11,16 @@ import ToastMessage from '../../../../components/UIComponents/ToastMessage/Toast
 import Divider from '@mui/material/Divider';
 import { AddParkingLotForm, addLotFormInitialValues, lotContact, orderSchDel } from '../../../../models/ParkingLotModel';
 import AddParkingLotValidationSchema from '../validation';
-import { useCreateLot, useEditParkingLot, useGetContactTypes, useGetParkingLotData, useGetTimeZones} from '../queries';
+import { useCreateLot, useEditParkingLot, useGetContactTypes, useGetParkingLotData, useGetTimeZones } from '../queries';
 import AutocompleteInput from '../../../../components/UIComponents/GoogleAddressComponent/GoogleAutoCompleteAddress';
 import { PlusIcon, EditIcon } from '../../../../assets/icons';
 import { useTheme } from '../../../../contexts/Theme/Theme.context';
-import { formStatusObj, productDelFreq, getCountry} from '../../config';
+import { formStatusObj, productDelFreq, getCountry } from '../../config';
 import MultiSelect from '../../../../components/UIComponents/Select/MultiSelect';
 import { DatePickerInput } from '../../../../components/UIComponents/DatePickerInput/DatePickerInput.component';
 import { TimePicker } from '../../../../components/UIComponents/TimePicker/TimePicker.component';
 import { useAddedCustomerIdStore, useAddedCustomerNameStore, useAddedParkingLotIdStore, useShowConfirmationDialogBoxStore } from '../../../../store';
+import { isEqual } from 'lodash';
 import './AddLotForm.style.scss';
 interface FormStatusType {
     message: string
@@ -35,7 +36,6 @@ function AddLotForm(): React.ReactElement {
 
     const { t } = useTranslation();
     const history = useHistory();
-    const isFormFieldChange = () => formik.dirty;
     const { theme } = useTheme();
     const { data: contactTypeList } = useGetContactTypes();
     const [primaryContactType, setPrimaryContactType] = useState('');
@@ -58,6 +58,8 @@ function AddLotForm(): React.ReactElement {
     const setPageCustomerName = useAddedCustomerNameStore((state) => state.setCustomerName);
     const selectedCustomerName = useAddedCustomerNameStore((state) => state.customerName);
     const [timeZones, setTimeZones] = useState([]);
+    const [init, setInit] = useState(false);
+    const [lotState, setLotState ] = useState({});
     const { data: timeZoneList } = useGetTimeZones();
 
     const onAddLotError = (err: any) => {
@@ -71,14 +73,14 @@ function AddLotForm(): React.ReactElement {
                 setAPIResponse(false);
             }, 6000);
         } catch (error) {
-           
+
         }
     };
-    
+
     useEffect(() => {
         if (timeZoneList?.data?.timezones?.length) {
             setTimeZones(timeZoneList.data.timezones.map((obj: any) => ({ label: obj.timezoneNm, value: obj.timezoneCd })));
-        }   
+        }
     }, [timeZoneList]);
 
     const onAddLotSuccess = (data: any) => {
@@ -110,7 +112,7 @@ function AddLotForm(): React.ReactElement {
             setAPIResponse(false);
             history.push(`/customer/${addedCustomerId}/parkingLots/viewLot/${activeLotId}`);
         }, 6000);
-        
+
     };
 
     const onEditLotError = (err: any) => {
@@ -130,10 +132,18 @@ function AddLotForm(): React.ReactElement {
         }
     };
 
+    useEffect(() => {
+        if (init) {
+            setLotState(formik.values);
+            setInit(false);
+        }
+    }, [init]);
+
     const onGetLotSuccess = (data: any) => {
         if (data) {
             populateDataInAllFields(data);
             setPageCustomerName(data?.data?.lot?.customerName);
+            setInit(true);
         }
     };
 
@@ -164,9 +174,9 @@ function AddLotForm(): React.ReactElement {
             formik.setFieldValue(`locationContact[${index}].email`, obj.contactEmailId);
             formik.setFieldValue(`locationContact[${index}].phoneNumber`, obj.contactPhoneNo);
         });
-        timeZones.map((obj:any) => {
-            if(obj.value === dataToPopulate?.data?.lot?.timezoneCd) {
-                formik.setFieldValue("timeZone",{ label: obj.label, value: obj.value });
+        timeZones.map((obj: any) => {
+            if (obj.value === dataToPopulate?.data?.lot?.timezoneCd) {
+                formik.setFieldValue("timeZone", { label: obj.label, value: obj.value });
             }
         });
         setDisabled(true);
@@ -184,12 +194,13 @@ function AddLotForm(): React.ReactElement {
     useEffect(() => {
         const selectedLotId = location.pathname.split("/").pop();
         if (selectedLotId != "addLot") {
-             //set active parking lot id
+            //set active parking lot id
             setActiveLotId("" + selectedLotId);
             setDisabled(true);
             setSaveCancelShown(false);
             setParkingLotIdCreated(selectedLotId);
         } else {
+            setInit(true);
             setPageCustomerName(selectedCustomerName);
             setEditShown(false);
             setSaveCancelShown(true);
@@ -197,9 +208,8 @@ function AddLotForm(): React.ReactElement {
     }, [location]);
 
     const onClickBack = () => {
-        if (isFormFieldChange()) {
-            showDialogBox(true);
-        } else {
+        if (isEqual(lotState, formik.values)) {
+            isFormValidated(false);
             history.push({
                 pathname: `/customer/${addedCustomerId}/parkingLots`,
                 state: {
@@ -207,6 +217,8 @@ function AddLotForm(): React.ReactElement {
                     customerName: selectedCustomerName
                 }
             });
+        } else {
+            showDialogBox(true);
         }
     };
 
@@ -231,6 +243,7 @@ function AddLotForm(): React.ReactElement {
                 contact_email: contactObj.email,
                 contact_phone: contactObj.phoneNumber
             })),
+            // Commented for future requirements
             // productDelFreq: form.productDelFreq.value,
             // orderScheduleDel: form.orderScheduleDel.map((orderSchDelObj: any) => ({
             //     fromDate: orderSchDelObj.fromDate,
@@ -264,6 +277,7 @@ function AddLotForm(): React.ReactElement {
                 contact_email: contactObj.email,
                 contact_phone: contactObj.phoneNumber
             })),
+            // Commented for future requirements
             // productDelFreq: form.productDelFreq.value,
             // orderScheduleDel: form.orderScheduleDel.map((orderSchDelObj: any) => ({
             //     fromDate: orderSchDelObj.fromDate,
@@ -300,7 +314,7 @@ function AddLotForm(): React.ReactElement {
         formik.setFieldValue('postalCode', addressObj.postalCode);
     }
 
-    function handleGoogleAddressBlur () {
+    function handleGoogleAddressBlur() {
         formik.setFieldTouched("addressLine1");
         formik.validateField("addressLine1");
         formik.setFieldTouched("addressLine2");
@@ -310,7 +324,7 @@ function AddLotForm(): React.ReactElement {
         formik.setFieldTouched("state");
         formik.validateField("state");
         formik.setFieldTouched("postalCode");
-        formik.validateField("postalCode"); 
+        formik.validateField("postalCode");
     }
 
     const formik = useFormik({
@@ -332,7 +346,9 @@ function AddLotForm(): React.ReactElement {
     };
 
     const handleFormDataChange = () => {
-        if (isFormFieldChange()) {
+        if (isEqual(lotState, formik.values)) {
+            isFormValidated(false);
+        } else {
             isFormValidated(true);
         }
     };
@@ -350,7 +366,7 @@ function AddLotForm(): React.ReactElement {
                                             General Information
                                         </Typography>
                                     </Grid>
-                                    {isEditShown && <Grid item xs={6} sx= {{ justifyContent: 'flex-end' }}>
+                                    {isEditShown && <Grid item xs={6} sx={{ justifyContent: 'flex-end' }}>
                                         <Button
                                             types="save"
                                             aria-label="edit"
@@ -520,18 +536,18 @@ function AddLotForm(): React.ReactElement {
                                     <Typography variant="h4" component="h4" gutterBottom className="fw-bold" mb={1}>
                                         Order Schedule Delivery info (Max 10)
                                     </Typography>
-                                </Grid> 
-                                <Grid item md={12} mt={1} mb={2}>
-                                    <Divider className="field-divider"/>
                                 </Grid>
-                               
+                                <Grid item md={12} mt={1} mb={2}>
+                                    <Divider className="field-divider" />
+                                </Grid>
+
                                 <FieldArray
                                     name="orderScheduleDel"
                                     render={() => (
                                         <React.Fragment>
                                             {formik.values.orderScheduleDel.map((orderSchObj, index) => (
                                                 <Grid container key={index}>
-                                                     
+
                                                     <Grid item md={3} pr={2.5} pb={2.5}>
                                                         <DatePickerInput
                                                             type="single-date"
@@ -542,17 +558,6 @@ function AddLotForm(): React.ReactElement {
                                                             disabled
                                                             onClose={() => { formik.setFieldTouched(`orderScheduleDel[${index}].fromDate`); formik.validateField(`orderScheduleDel[${index}].fromDate`); }}
                                                             id={`orderScheduleDel[${index}].fromDate`}
-                                                            // helperText={
-                                                            //     formik?.errors?.orderScheduleDel && formik?.touched?.orderScheduleDel &&
-                                                            //         (formik.touched?.orderScheduleDel?.[index]?.fromDate && ((formik.errors?.orderScheduleDel?.[index] as orderSchDel)?.fromDate))
-                                                            //         ?
-                                                            //         (formik.errors.orderScheduleDel[index] as orderSchDel).fromDate : undefined
-                                                            // }
-                                                            // error={
-                                                            //     formik?.errors?.orderScheduleDel && formik?.touched?.orderScheduleDel &&
-                                                            //         (formik.touched?.orderScheduleDel?.[index]?.fromDate && ((formik.errors?.orderScheduleDel?.[index] as orderSchDel)?.fromDate))
-                                                            //         ? true : false
-                                                            // }
                                                         />
                                                     </Grid>
                                                     <Grid item md={3} pl={2.5} pr={2.5} pb={2.5}>
@@ -565,17 +570,6 @@ function AddLotForm(): React.ReactElement {
                                                             onChange={formik.setFieldValue}
                                                             disabled
                                                             onClose={() => { formik.setFieldTouched(`orderScheduleDel[${index}].toDate`); formik.validateField(`orderScheduleDel[${index}].toDate`); }}
-                                                            // helperText={
-                                                            //     formik?.errors?.orderScheduleDel && formik?.touched?.orderScheduleDel &&
-                                                            //         (formik.touched?.orderScheduleDel?.[index]?.toDate && ((formik.errors?.orderScheduleDel?.[index] as orderSchDel)?.toDate))
-                                                            //         ?
-                                                            //         (formik.errors.orderScheduleDel[index] as orderSchDel).toDate : undefined
-                                                            // }
-                                                            // error={
-                                                            //     formik?.errors?.orderScheduleDel && formik?.touched?.orderScheduleDel &&
-                                                            //         (formik.touched?.orderScheduleDel?.[index]?.toDate && ((formik.errors?.orderScheduleDel?.[index] as orderSchDel)?.toDate))
-                                                            //         ? true : false
-                                                            // }
                                                         />
                                                     </Grid>
 
@@ -590,18 +584,6 @@ function AddLotForm(): React.ReactElement {
                                                             onChange={formik.setFieldValue}
                                                             disabled
                                                             onBlur={() => { formik.setFieldTouched(`orderScheduleDel[${index}].productDelDays`); formik.validateField(`orderScheduleDel[${index}].productDelDays`); }}
-                                                            // helperText={
-                                                            //     formik?.errors?.orderScheduleDel && formik?.touched?.orderScheduleDel &&
-                                                            //         (formik.touched?.orderScheduleDel?.[index]?.productDelDays && ((formik.errors?.orderScheduleDel?.[index] as orderSchDel)?.productDelDays))
-                                                            //         ?
-                                                            //         (formik.errors.orderScheduleDel[index] as orderSchDel).productDelDays : undefined
-                                                            // }
-                                                            // error={
-                                                            //     formik?.errors?.orderScheduleDel && formik?.touched?.orderScheduleDel &&
-                                                            //         (formik.touched?.orderScheduleDel?.[index]?.productDelDays && ((formik.errors?.orderScheduleDel?.[index] as orderSchDel)?.productDelDays))
-                                                            //         ? true : false
-                                                            // }
-
                                                         />
                                                     </Grid>
 
@@ -656,11 +638,12 @@ function AddLotForm(): React.ReactElement {
                                                 <Link
                                                     variant="body2"
                                                     className="add-link disabled-text-link"
-                                                    // onClick={() => {
-                                                    //     if (formik.values.locationContact.length < 5) {
-                                                    //         arrayHelpers.push({ firstName: "", lastName: "", email: "", phoneNumber: "" });
-                                                    //     }
-                                                    // }}
+                                                // Temporary disabled   
+                                                // onClick={() => {
+                                                //     if (formik.values.locationContact.length < 5) {
+                                                //         arrayHelpers.push({ firstName: "", lastName: "", email: "", phoneNumber: "" });
+                                                //     }
+                                                // }}
                                                 >
                                                     <span className="add-icon-span"><PlusIcon color={theme["--Secondary-Background"]} /></span>
                                                     <Typography variant="h3" component="h3" className="fw-bold MuiTypography-h5-primary disabled-text" mb={1}>
@@ -670,7 +653,7 @@ function AddLotForm(): React.ReactElement {
                                             </Grid>
                                         </React.Fragment>
                                     )}
-                                /> 
+                                />
                                 <FieldArray
                                     name="locationContact"
                                     render={(arrayHelpers) => (
@@ -812,7 +795,7 @@ function AddLotForm(): React.ReactElement {
                                         >
                                             {t("buttons.save")}
                                         </Button>
-                                    </Box> }
+                                    </Box>}
                                     <ToastMessage isOpen={apiResposneState} messageType={formStatus.type} onClose={() => { return ''; }} message={formStatus.message} />
                                 </Grid>
                             </Grid>
