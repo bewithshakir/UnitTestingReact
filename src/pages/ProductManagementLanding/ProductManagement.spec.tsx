@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import ProductModel from '../../models/ProductManagementModel';
-import ProductLandingPage from './index';
 import ActionsMenu from '../../components/UIComponents/Menu/ActionsMenu.component';
 import SortbyMenu from '../../components/UIComponents/Menu/SortbyMenu.component';
+import SearchInput from "../../components/UIComponents/SearchInput/SearchInput";
 import { ProductManagement } from "./config";
 
 jest.mock("react-query", () => {
@@ -71,3 +71,25 @@ describe('Given Sortby Menu on Product Landing Page', () => {
 
 });
 
+describe('Given Search Input on Product Landing Page', () => {
+    test('Render Search Input onChange', () => {
+        const searchInputItem = shallow(
+            <SearchInput
+                onChange={() => jest.fn()}
+            />
+        );
+        expect(searchInputItem).toMatchSnapshot();
+    });
+
+    test('Search Input onBlur', () => {
+        const searchInputItem = shallow(
+            <SearchInput
+                onChange={() => jest.fn()}
+                onBlur={() => jest.fn()}
+            />
+        );
+        searchInputItem.find(".searchinput").simulate('click');
+        expect(searchInputItem.find('.adornment').exists()).toBe(true);
+    });
+
+});
