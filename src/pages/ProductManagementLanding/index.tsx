@@ -1,6 +1,6 @@
 import React, { memo, useEffect } from 'react';
 import { HorizontalBarVersionState, useStore } from '../../store';
-import { Box, Grid, FormControl } from "@mui/material";
+import { Box, Grid, FormControl, Typography } from "@mui/material";
 import { Button } from "../../components/UIComponents/Button/Button.component";
 import { FilterIcon } from "../../assets/icons";
 import SortbyMenu from "../../components/UIComponents/Menu/SortbyMenu.component";
@@ -94,6 +94,11 @@ const ProductManagementContent = memo(() => {
   };
 
 
+  const getSeachedDataTotalCount = (data: any, msg: string[]) => {
+    const totalCount = data.data.length || 0;
+    return (`${totalCount} ${totalCount > 1 ? msg[1] : msg[0]}`);
+};
+
   return (
     <Box display="flex" mt={10} ml={8}>
       <Grid container pl={6.25} pr={6.25} className="main-area">
@@ -125,7 +130,16 @@ const ProductManagementContent = memo(() => {
                 delay={500}
                 onChange={onInputChange}
               />
-            </Grid>
+               </Grid>
+              {
+              (searchTerm && !(isFetching || isLoading) && data) &&
+              <Grid item display="flex" alignItems="center" paddingLeft={2.5}>
+                <Typography color="var(--Darkgray)" variant="h4" align="center" className="fw-bold">
+                  {getSeachedDataTotalCount(data, [t('productManagement.result(s) found'), t('productManagement.results found')])}
+                </Typography>
+              </Grid>
+            }
+           
           </Grid>
           <Grid item md={4} lg={3} display="flex" justifyContent="flex-end">
             <Grid item pr={2.5}>
