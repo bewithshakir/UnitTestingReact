@@ -125,7 +125,7 @@ const ProductManagementContent = memo(() => {
             <Grid item>
               <SearchInput
                 name="searchTerm"
-                placeholder={"Search"}
+                placeholder={t('productManagement.form.productName')}
                 value={searchTerm}
                 delay={500}
                 onChange={onInputChange}
