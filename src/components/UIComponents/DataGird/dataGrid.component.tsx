@@ -9,12 +9,12 @@ import { Button } from './../Button/Button.component';
 import './grid.style.scss';
 import { fieldOptions, headerObj } from './grid.component';
 import {
-    YellowFuelIcon, RedFuelIcon, GreenFuelIcon, NavyBlueFuelIcon, ParrotGreenFuelIcon,
-    PurpleFuelIcon, SkyBlueFuelIcon, BrownFuelIcon, OrangeFuelIcon, AquaFuelIcon
+    YellowFuelIcon, RedFuelIcon, GreenFuelIcon, NavyBlueFuelIcon,
 } from '../../../assets/icons';
 import { tableImagesSX, tableAvatarSX, tableImagesIconListSX, tableIconsSX, tableFuelIconsSX } from './config';
 import NoDataFound from './Nodata';
 import Select from './ProductSingleSelect';
+import { getProductIcon } from '../../../utils/helperFunctions';
 
 
 interface GridBodyProps {
@@ -85,22 +85,6 @@ function getFuelIcon (fuelStatus: string) {
         "V-Power": NavyBlueFuelIcon,
     }[fuelStatus] || YellowFuelIcon);
 }
-
-function getProductIcon (fuelStatus: string) {
-    return ({
-        "Yellow": YellowFuelIcon,
-        "Red": RedFuelIcon,
-        "Green": GreenFuelIcon,
-        "Navy Blue": NavyBlueFuelIcon,
-        "Parrot Green": ParrotGreenFuelIcon,
-        "Sky Blue": SkyBlueFuelIcon,
-        "Purple": PurpleFuelIcon,
-        "Brown": BrownFuelIcon,
-        "Orange": OrangeFuelIcon,
-        "Aqua": AquaFuelIcon,
-    }[fuelStatus] || YellowFuelIcon);
-}
-
 
 const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
     const [selectedIndexKey, setSelectedKey] = React.useState(null);

@@ -155,7 +155,15 @@
       },
       "form": {
         "fuelTaxTitleAdd": "Add Fuel Tax",
-        "endDate": "End Date"
+        "endDate": "End Date",
+        "revenueFuelRate": "Enter Revenue Fuel Rate",
+        "salesFuelTax": "Enter Sales Fuel Tax",
+        "stateFuelTax": "Enter State Fuel Tax",
+        "cityFuelTax": "Enter City Fuel Tax",
+        "countyFuelTax": "Enter County Fuel Tax",
+        "miscInspFuelTax": "Enter Misc Insp Fuel Tax",
+        "miscLcalFuelTax": "Enter Misc Local Fuel Tax",
+        "miscLoadFuelTax": "Enter Misc Load Fuel Tax"
       }
     },
     "salesTax": {
@@ -210,6 +218,10 @@
       "cityname_atoz": "City Name A-Z",
       "cityname_ztoa": "City Name Z-A"
     },
+    "filter": {
+      "state": "State",
+      "city": "City"
+    },
     "form": {
       "titleAdd": "Add Product",
       "titleEdit": "Edit Product",
@@ -228,20 +240,20 @@
       "type": "Success"
     },
     "success": {
-        "message": "Data added successfully.",
-        "type": "Success"
+      "message": "Data added successfully.",
+      "type": "Success"
     },
     "updated": {
-        "message": "Data updated successfully",
-        "type": "Success"
+      "message": "Data updated successfully",
+      "type": "Success"
     },
     "duplicate": {
-        "message": "Customer Id already exist. Please use different Customer Id.",
-        "type": "Error"
+      "message": "Customer Id already exist. Please use different Customer Id.",
+      "type": "Error"
     },
     "error": {
-        "message": "Something went wrong. Please try again.",
-        "type": "Error"
+      "message": "Something went wrong. Please try again.",
+      "type": "Error"
     }
   }
 }

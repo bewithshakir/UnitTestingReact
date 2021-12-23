@@ -68,3 +68,6 @@ export const actualProductOptions = [
     { label: '', value: '' },
     { label: '', value: '' }
 ];
+
+export const strCustomText = 'custom';
+export const strCustomTextRetail = 'opis retail';

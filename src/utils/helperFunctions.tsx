@@ -1,3 +1,9 @@
+import { useTheme } from '../contexts/Theme/Theme.context';
+import {
+    YellowFuelIcon, RedFuelIcon, GreenFuelIcon, NavyBlueFuelIcon, ParrotGreenFuelIcon,
+    PurpleFuelIcon, SkyBlueFuelIcon, BrownFuelIcon, OrangeFuelIcon, AquaFuelIcon
+} from '../assets/icons';
+
 export const maskPhoneNumber = (phNumber: string) => {
     const maskedPh = phNumber.match(/(\d{3})(\d{3})(\d{4})/);
     return maskedPh ? "(" + maskedPh[1] + ") " + maskedPh[2] + "-" + maskedPh[3] : phNumber;
@@ -29,3 +35,29 @@ export const getSeachedDataTotalCount = (data: { pages: [{ data: { pagination: {
     const totalCount = data?.pages[0]?.data?.pagination?.totalCount || 0;
     return (`${totalCount} ${totalCount > 1 ? msg[1] : msg[0]}`);
 };
+
+
+export const getCurrentAppCountry = () => {
+    const { themeType } = useTheme();
+    return themeType;
+};
+
+export const isCurrentAppCountryUSA = () => {
+    return getCurrentAppCountry() === "USA";
+};
+
+
+export function getProductIcon (fuelStatus: string) {
+    return ({
+        "Yellow": YellowFuelIcon,
+        "Red": RedFuelIcon,
+        "Green": GreenFuelIcon,
+        "Navy Blue": NavyBlueFuelIcon,
+        "Parrot Green": ParrotGreenFuelIcon,
+        "Sky Blue": SkyBlueFuelIcon,
+        "Purple": PurpleFuelIcon,
+        "Brown": BrownFuelIcon,
+        "Orange": OrangeFuelIcon,
+        "Aqua": AquaFuelIcon,
+    }[fuelStatus] || YellowFuelIcon);
+}

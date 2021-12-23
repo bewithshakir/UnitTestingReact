@@ -48,6 +48,7 @@ interface GridComponentProps {
     noDataMsg?: string,
     showImg?: React.ReactNode | undefined,
     showInnerTableMenu?: boolean
+    handleSelect?: (primaryKey: string[]) => void
 }
 
 
@@ -72,12 +73,9 @@ const GridComponent: React.FC<GridComponentProps> = (props) => {
 
 
     const handleSelectAllClick = (event: React.ChangeEvent<HTMLInputElement>) => {
-        if (event.target.checked) {
-            const newSelecteds: selectedRow = rows.map((n) => n.customerId);
-            setSelected(newSelecteds);
-            return;
-        }
-        setSelected([]);
+        const newSelected: selectedRow = event.target.checked ? rows.map((n) => n[props.primaryKey]) : [];
+        setSelected(newSelected);
+        props.handleSelect && props.handleSelect(newSelected);
     };
 
     const handleCheckChange = (primaryId: string) => {
@@ -97,6 +95,7 @@ const GridComponent: React.FC<GridComponentProps> = (props) => {
             );
         }
         setSelected(newSelected);
+        props.handleSelect && props.handleSelect(newSelected);
     };
 
     return (

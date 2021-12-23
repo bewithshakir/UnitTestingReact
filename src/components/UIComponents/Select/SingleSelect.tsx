@@ -1,16 +1,17 @@
 import { FormikErrors } from 'formik';
 import { Fragment } from 'react';
 import Select, { components, DropdownIndicatorProps, OptionProps } from 'react-select';
-import { FormHelperText, InputLabel, FormControl } from '@mui/material';
+import { FormHelperText, InputLabel, FormControl, Icon, Box, Typography } from '@mui/material';
 import './SingleSelect.scss';
 import { ArrowDown } from '../../../assets/icons';
 
 const { SingleValue } = components;
+const optionIconsSX = { width: "20px", height: "20px" };
 
 type item = {
     label: string,
     value: string | number,
-    icon?: JSX.Element
+    icon?: (props: React.SVGProps<SVGSVGElement>) => JSX.Element
 }
 interface props {
     id?: string;
@@ -32,10 +33,10 @@ interface props {
     disabled?: boolean;
     components?: any;
     isLoading?: boolean;
-    noOptionsMessage? : () => string
+    noOptionsMessage?: () => string
 }
 
-export default function SingleSelect(props: props) {
+export default function SingleSelect (props: props) {
 
     const DropdownIndicator = (props: DropdownIndicatorProps<item>) => {
         return (
@@ -53,11 +54,10 @@ export default function SingleSelect(props: props) {
     const Option = (props: OptionProps<any>) => {
         return (
             <components.Option {...props}>
-                <Fragment>
-                    <span className='box'>
-                    {props.data.icon && <span className="icon-svg"> {props.data.icon} </span>}  <label className="label-text" >{props.label}</label>
-                    </span>
-                </Fragment>
+                <Box display="flex" alignItems="center" justifyContent="start">
+                    {props.data.icon ? <Icon sx={optionIconsSX} component={props.data.icon} /> : null}
+                    {props.data.label ? <Typography variant="h4" pl={props.data.icon ? 1 : 0}>{props.data.label}</Typography> : null}
+                </Box>
             </components.Option>
         );
     };
@@ -65,11 +65,24 @@ export default function SingleSelect(props: props) {
     const SingleValueFrag = (props: any) => {
         return (
             <SingleValue {...props}>
-                <span className='value-box'>
-                {props.data.icon && <span className="icon-svg"> {props.data.icon} </span>} <span className="label-text" >{props.data.label}</span>
-                </span>
+                <Box display="flex" alignItems="center" justifyContent="start">
+                    {props.data.icon ? <Icon sx={optionIconsSX} component={props.data.icon} /> : null}
+                    {props.data.label ? <Typography variant="h4" pl={props.data.icon ? 1 : 0}>{props.data.label}</Typography> : null}
+                </Box>
             </SingleValue>
         );
+    };
+
+    const checkIsEmptyOption = (value: item | Array<item> | undefined) => {
+        if (value && !Array.isArray(value)) {
+            if (value?.label.toString().length && value?.value.toString().length) {
+                return value;
+            } else {
+                return null;
+            }
+        } else {
+            return value;
+        }
     };
 
     return (
@@ -84,15 +97,14 @@ export default function SingleSelect(props: props) {
                     placeholder={props.placeholder}
                     className={props.error ? 'react-select-container error' : 'react-select-container'}
                     classNamePrefix='react-select'
-                    value={props.value}
+                    value={checkIsEmptyOption(props.value)}
                     options={props.items}
                     onChange={handleChange}
                     onBlur={props.onBlur}
-                    components={{ IndicatorSeparator: () => null, DropdownIndicator, ...props.components, Option, SingleValue: SingleValueFrag}}
+                    components={{ IndicatorSeparator: () => null, DropdownIndicator, ...props.components, Option, SingleValue: SingleValueFrag }}
                     isSearchable={false}
                     isDisabled={props.isDisabled}
-                    onKeyDown={e => e.preventDefault()}
-                    isLoading={props.isLoading}
+                    isLoading={props?.isLoading}
                     noOptionsMessage={props.noOptionsMessage}
                 />
                 {props.helperText && (
