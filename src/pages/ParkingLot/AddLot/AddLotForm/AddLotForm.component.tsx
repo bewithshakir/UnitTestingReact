@@ -60,6 +60,8 @@ function AddLotForm(): React.ReactElement {
     const selectedCustomerName = useAddedCustomerNameStore((state) => state.customerName);
     const [timeZones, setTimeZones] = useState([]);
     const [init, setInit] = useState(false);
+    const [addInit, setAddInit] = useState(false);
+    const [lotState, setLotState ] = useState({});
     const { data: timeZoneList } = useGetTimeZones();
 
     const onAddLotError = (err: any) => {
@@ -134,10 +136,14 @@ function AddLotForm(): React.ReactElement {
 
     useEffect(() => {
         if (init) {
-            Object.assign(formik.initialValues, formik.values);
+            setLotState(formik.values);
             setInit(false);
         }
-    }, [init]);
+        if (addInit) {
+            setLotState(formik.values);
+            setAddInit(false);
+        }
+    }, [init, addInit]);
 
     const onGetLotSuccess = (data: any) => {
         if (data) {
@@ -200,6 +206,7 @@ function AddLotForm(): React.ReactElement {
             setSaveCancelShown(false);
             setParkingLotIdCreated(selectedLotId);
         } else {
+            setAddInit(true);
             setPageCustomerName(selectedCustomerName);
             setEditShown(false);
             setSaveCancelShown(true);
@@ -207,7 +214,7 @@ function AddLotForm(): React.ReactElement {
     }, [location]);
 
     const onClickBack = () => {
-        if (isEqual(formik.initialValues, formik.values)) {
+        if (isEqual(lotState, formik.values)) {
             isFormValidated(false);
             history.push({
                 pathname: `/customer/${addedCustomerId}/parkingLots`,
@@ -343,7 +350,7 @@ function AddLotForm(): React.ReactElement {
     };
 
     const handleFormDataChange = () => {
-        if (isEqual(formik.initialValues, formik.values)) {
+        if (isEqual(lotState, formik.values)) {
             isFormValidated(false);
         } else {
             isFormValidated(true);
