@@ -370,7 +370,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                                 <Grid item lg={5} md={8} sm={8} xs={8} mx={4} my={1} >
                                     <Input
                                         id='totalPrice'
-                                        label='Total Price Per Gallon (Including TAx, Adder/Discount)'
+                                        label='Total Price Per Gallon (Including Tax, Adder/Discount)'
                                         type='text'
                                         description=''
                                         value={totalPrice}
