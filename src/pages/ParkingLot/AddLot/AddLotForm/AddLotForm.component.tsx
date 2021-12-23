@@ -11,15 +11,16 @@ import ToastMessage from '../../../../components/UIComponents/ToastMessage/Toast
 import Divider from '@mui/material/Divider';
 import { AddParkingLotForm, addLotFormInitialValues, lotContact, orderSchDel } from '../../../../models/ParkingLotModel';
 import AddParkingLotValidationSchema from '../validation';
-import { useCreateLot, useEditParkingLot, useGetContactTypes, useGetParkingLotData, useGetTimeZones} from '../queries';
+import { useCreateLot, useEditParkingLot, useGetContactTypes, useGetParkingLotData, useGetTimeZones } from '../queries';
 import AutocompleteInput from '../../../../components/UIComponents/GoogleAddressComponent/GoogleAutoCompleteAddress';
 import { PlusIcon, EditIcon } from '../../../../assets/icons';
 import { useTheme } from '../../../../contexts/Theme/Theme.context';
-import { formStatusObj, productDelFreq, getCountry} from '../../config';
+import { formStatusObj, productDelFreq, getCountry } from '../../config';
 import MultiSelect from '../../../../components/UIComponents/Select/MultiSelect';
 import { DatePickerInput } from '../../../../components/UIComponents/DatePickerInput/DatePickerInput.component';
 import { TimePicker } from '../../../../components/UIComponents/TimePicker/TimePicker.component';
 import { useAddedCustomerIdStore, useAddedCustomerNameStore, useAddedParkingLotIdStore, useShowConfirmationDialogBoxStore } from '../../../../store';
+import { isEqual } from 'lodash';
 import './AddLotForm.style.scss';
 interface FormStatusType {
     message: string
@@ -35,7 +36,7 @@ function AddLotForm(): React.ReactElement {
 
     const { t } = useTranslation();
     const history = useHistory();
-    const isFormFieldChange = () => formik.dirty;
+    //const isFormFieldChange = () => formik.dirty;
     const { theme } = useTheme();
     const { data: contactTypeList } = useGetContactTypes();
     const [primaryContactType, setPrimaryContactType] = useState('');
@@ -58,6 +59,7 @@ function AddLotForm(): React.ReactElement {
     const setPageCustomerName = useAddedCustomerNameStore((state) => state.setCustomerName);
     const selectedCustomerName = useAddedCustomerNameStore((state) => state.customerName);
     const [timeZones, setTimeZones] = useState([]);
+    const [init, setInit] = useState(false);
     const { data: timeZoneList } = useGetTimeZones();
 
     const onAddLotError = (err: any) => {
@@ -74,11 +76,11 @@ function AddLotForm(): React.ReactElement {
 
         }
     };
-    
+
     useEffect(() => {
         if (timeZoneList?.data?.timezones?.length) {
             setTimeZones(timeZoneList.data.timezones.map((obj: any) => ({ label: obj.timezoneNm, value: obj.timezoneCd })));
-        }   
+        }
     }, [timeZoneList]);
 
     const onAddLotSuccess = (data: any) => {
@@ -130,10 +132,18 @@ function AddLotForm(): React.ReactElement {
         }
     };
 
+    useEffect(() => {
+        if (init) {
+            Object.assign(formik.initialValues, formik.values);
+            setInit(false);
+        }
+    }, [init]);
+
     const onGetLotSuccess = (data: any) => {
         if (data) {
             populateDataInAllFields(data);
             setPageCustomerName(data?.data?.lot?.customerName);
+            setInit(true);
         }
     };
 
@@ -164,9 +174,9 @@ function AddLotForm(): React.ReactElement {
             formik.setFieldValue(`locationContact[${index}].email`, obj.contactEmailId);
             formik.setFieldValue(`locationContact[${index}].phoneNumber`, obj.contactPhoneNo);
         });
-        timeZones.map((obj:any) => {
-            if(obj.value === dataToPopulate?.data?.lot?.timezoneCd) {
-                formik.setFieldValue("timeZone",{ label: obj.label, value: obj.value });
+        timeZones.map((obj: any) => {
+            if (obj.value === dataToPopulate?.data?.lot?.timezoneCd) {
+                formik.setFieldValue("timeZone", { label: obj.label, value: obj.value });
             }
         });
         setDisabled(true);
@@ -197,35 +207,17 @@ function AddLotForm(): React.ReactElement {
     }, [location]);
 
     const onClickBack = () => {
-        if (isEditMode) {
-            if (formik.touched && Object.keys(formik.touched).length === 0 && Object.getPrototypeOf(formik.touched) === Object.prototype) {
-                if (formik.dirty) {
-                    if (formik.initialValues != formik.values) {
-                        isFormValidated(false);
-                        history.push({
-                            pathname: `/customer/${addedCustomerId}/parkingLots`,
-                            state: {
-                                customerId: addedCustomerId,
-                                customerName: selectedCustomerName
-                            }
-                        });
-                    }
+        if (isEqual(formik.initialValues, formik.values)) {
+            isFormValidated(false);
+            history.push({
+                pathname: `/customer/${addedCustomerId}/parkingLots`,
+                state: {
+                    customerId: addedCustomerId,
+                    customerName: selectedCustomerName
                 }
-            } else {
-                showDialogBox(true);
-            }
+            });
         } else {
-            if (isFormFieldChange()) {
-                showDialogBox(true);
-            } else {
-                history.push({
-                    pathname: `/customer/${addedCustomerId}/parkingLots`,
-                    state: {
-                        customerId: addedCustomerId,
-                        customerName: selectedCustomerName
-                    }
-                });
-            }
+            showDialogBox(true);
         }
     };
 
@@ -351,7 +343,9 @@ function AddLotForm(): React.ReactElement {
     };
 
     const handleFormDataChange = () => {
-        if (isFormFieldChange()) {
+        if (isEqual(formik.initialValues, formik.values)) {
+            isFormValidated(false);
+        } else {
             isFormValidated(true);
         }
     };
