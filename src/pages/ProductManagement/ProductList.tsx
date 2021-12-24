@@ -7,6 +7,7 @@ import ProductModel from "../../models/LotProductModel";
 import GridComponent from "../../components/UIComponents/DataGird/grid.component";
 import { Grid } from "@mui/material";
 import './ProductList.scss';
+
 interface props {
     searchTerm: string;
     searchTermInputChange: (value: string) => void;

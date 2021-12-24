@@ -89,6 +89,26 @@ export default class ProductModel {
         ));
     }
 
-
+    fieldsToDisplaySupplierRack(): headerObj[] {
+        return [
+            { field: "productInd", label: "PRODUCT INDICATOR", type: 'text' },
+            { field: "productType", label: "PRODUCT TYPE", type: 'text' },
+            { field: "dateDaily", label: "DATE DAILY", type: 'text' },
+            { field: "cityId", label: "CITY ID", type: 'text' },
+            { field: "state", label: "STATE", type: 'text' },
+            { field: "city", label: "CITY", type: 'text' },
+            { field: "supplier", label: "SUPPLIER", type: 'text' },
+            { field: "brand", label: "BRAND", type: 'text' },
+            { field: "term", label: "TERM", type: 'text' },
+            { field: "netPrice", label: "NET PRICE", type: 'text' },
+            { field: "uniqueMarker", label: "UNIQUE MARKER", type: 'text' },
+            { field: "octaneLevel", label: "OCTANE LEVEL", type: 'text' },
+            { field: "actualProduct", label: "ACTUAL PRODUCT", type: 'text' },
+            { field: "rvp", label: "RVP", type: 'text' },
+            { field: "dieselBlend", label: "DIESEL BLEND", type: 'text' },
+            { field: "bioType", label: "BIO TYPE", type: 'text' },
+            
+        ];
+    }
 
 }

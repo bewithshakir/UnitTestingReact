@@ -27,3 +27,38 @@
     background: var(--Lightgray_4); 
     min-height: 100%; 
 }
+
+.supplierRack{
+    width: 100%;
+   & .css-hz1bth-MuiDialog-container{
+       width: 100%;
+       & .css-1t1j96h-MuiPaper-root-MuiDialog-paper {
+           left: 1%;
+            width: 100%;
+            max-width: 95%;
+            min-height: 80%;
+
+            & tbody.no-data .nodata {
+                z-index: 9999;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 35%;
+                left: 50%;
+                transform: translate(-50%, 50%);
+                position: absolute;
+       }
+   }
+   & .supplierRack-dialog-container{
+        width:100%;
+        & .supplierRack-content{
+            width:100%;
+        }
+        & .supplierRack-dialog-actions{
+           margin-top: 35%;
+           padding-right: 1%;
+           padding-bottom: 1%;
+        }
+    }
+  }
+}
