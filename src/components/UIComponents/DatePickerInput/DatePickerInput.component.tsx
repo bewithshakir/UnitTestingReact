@@ -50,7 +50,7 @@ const  inputEndornmentProps = {
     )
 };
 
-export const DatePickerInput: React.FC<DatePickerProps> = ({label,type, placeholder, disabled, required, error, value, dateRangeValue, helperText, onChange, onDateRangeChange, disableBeforeDate, disableAfterDate, id, name, dateRangeMiddleText}) => {
+export const DatePickerInput: React.FC<DatePickerProps> = ({label,type, placeholder, required, error, value, disabled, dateRangeValue, helperText, onChange, onDateRangeChange, disableBeforeDate, disableAfterDate, id, name, dateRangeMiddleText}) => {
     const [openRangeCal, setOpenRangeCal] = useState(false);  
     const [openSingleDateCal, setOpenSingleDateCal] = useState(false);  
     const disableDates = (date: moment.Moment  | null) => {
@@ -69,11 +69,16 @@ export const DatePickerInput: React.FC<DatePickerProps> = ({label,type, placehol
       };
 
       const setRangePickerStatus = (status: boolean) => {
-        setOpenRangeCal(status) ;
+          if(!disabled){
+            setOpenRangeCal(status) ;
+          }
+        
       };
 
       const setSinglePickerStatus = (status: boolean) => {
-        setOpenSingleDateCal(status) ;
+        if(!disabled){
+            setOpenSingleDateCal(status) ;
+        }
       };
     
     return (
@@ -92,6 +97,7 @@ export const DatePickerInput: React.FC<DatePickerProps> = ({label,type, placehol
                                 endText={null}
                                 onClose={() => setRangePickerStatus(false)}
                                 open={openRangeCal}
+                                disabled={disabled}
                                 shouldDisableDate={(val)=>disableDates(moment(val))}
                                 value={dateRangeValue ? dateRangeValue : [null, null]}
                                 onChange={(newValue) => {
