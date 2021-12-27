@@ -59,7 +59,7 @@ export default function SingleSelect (props: props) {
                 <Box display="flex" alignItems="center" justifyContent="space-between">
                     {props.data.icon ? <Icon sx={optionIconsSX} component={props.data.icon} /> : null}
                     {props.data.label ? <Typography variant="h4" width={100} pl={props.data.icon ? 1 : 0}>{props.data.label}</Typography> : null}
-                    {props.data.hex ? <Box border={1} width={80} bgcolor={props.data.hex} color={whiteColorList.includes(props.data.hex) ? '#FFFFFF' : 'black'} mx={5} px={1} py={.2}>{props.data.hex}</Box> : null}
+                    {props.data.hex ? <Box border={1} width={80} bgcolor={props.data.hex} color={whiteColorList.includes(props.data.hex) ? '#FFFFFF' : '#404040'} mx={5} px={1} py={.2}>{props.data.hex}</Box> : null}
                     {props.isSelected ? <Box ml={12}><CheckIcon /></Box> : null}
                 </Box>
             </components.Option>
