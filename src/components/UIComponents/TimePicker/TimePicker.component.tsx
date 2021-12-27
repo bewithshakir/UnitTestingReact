@@ -72,8 +72,11 @@ export const TimePicker: React.FC<TimePickerProps> = ({ label, value, onChange, 
 
 
     const handleClick = (event: any) => {
-        setAnchorEl(event.currentTarget);
-        setOpen(true);
+        if(!disabled){
+            setAnchorEl(event.currentTarget);
+            setOpen(true);
+        }
+        
     };
 
     const handleClickAway = () => {
@@ -123,7 +126,7 @@ export const TimePicker: React.FC<TimePickerProps> = ({ label, value, onChange, 
                     id={id}
                     name={name}
                     helperText={helperText ? helperText : (!validTime) ? timeErrorText : ''}
-                    error={error ? error : !validTime} disabled={disabled}
+                    error={error ? error : !validTime}
                     autoComplete='off'
                     innerRef={inputRef}
                     label={label}
@@ -132,6 +135,7 @@ export const TimePicker: React.FC<TimePickerProps> = ({ label, value, onChange, 
                     onClick={handleClick}
                     placeholder={placeholder}
                     onKeyDown={handleKeyDown}
+                    disabled={disabled}
                     endAdornment={<InputAdornment position="start"> <Icon ><TimeIconComp /></Icon></InputAdornment>}
                 />
                 <Popper
