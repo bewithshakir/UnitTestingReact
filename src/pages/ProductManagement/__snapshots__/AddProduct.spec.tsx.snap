@@ -553,6 +553,191 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                   "onSuccess": [Function],
                   "optimisticResults": true,
                   "queryFn": [Function],
+                  "queryHash": "[\\"getOPISRetail\\",false,\\"\\",\\"\\",null,null]",
+                  "queryKey": Array [
+                    "getOPISRetail",
+                    false,
+                    "",
+                    "",
+                    [Function],
+                    [Function],
+                  ],
+                  "retry": false,
+                },
+                "currentResultState": Object {
+                  "data": undefined,
+                  "dataUpdateCount": 0,
+                  "dataUpdatedAt": 0,
+                  "error": null,
+                  "errorUpdateCount": 0,
+                  "errorUpdatedAt": 0,
+                  "fetchFailureCount": 0,
+                  "fetchMeta": null,
+                  "isFetching": true,
+                  "isInvalidated": false,
+                  "isPaused": false,
+                  "status": "loading",
+                },
+                "listeners": Array [
+                  [Function],
+                ],
+                "options": Object {
+                  "_defaulted": true,
+                  "onError": [Function],
+                  "onSuccess": [Function],
+                  "optimisticResults": true,
+                  "queryFn": [Function],
+                  "queryHash": "[\\"getOPISRetail\\",false,\\"\\",\\"\\",null,null]",
+                  "queryKey": Array [
+                    "getOPISRetail",
+                    false,
+                    "",
+                    "",
+                    [Function],
+                    [Function],
+                  ],
+                  "retry": false,
+                },
+                "previousQueryResult": undefined,
+                "previousSelectError": null,
+                "refetch": [Function],
+                "refetchIntervalId": undefined,
+                "remove": [Function],
+                "staleTimeoutId": undefined,
+                "trackedProps": Array [],
+              },
+            ],
+            "options": Object {
+              "_defaulted": true,
+              "onError": [Function],
+              "onSuccess": [Function],
+              "optimisticResults": true,
+              "queryFn": [Function],
+              "queryHash": "[\\"getOPISRetail\\",false,\\"\\",\\"\\",null,null]",
+              "queryKey": Array [
+                "getOPISRetail",
+                false,
+                "",
+                "",
+                [Function],
+                [Function],
+              ],
+              "retry": false,
+            },
+            "promise": Promise {},
+            "queryHash": "[\\"getOPISRetail\\",false,\\"\\",\\"\\",null,null]",
+            "queryKey": Array [
+              "getOPISRetail",
+              false,
+              "",
+              "",
+              [Function],
+              [Function],
+            ],
+            "retryer": Retryer {
+              "cancel": [Function],
+              "cancelRetry": [Function],
+              "continue": [Function],
+              "failureCount": 0,
+              "isPaused": false,
+              "isResolved": false,
+              "isTransportCancelable": false,
+              "promise": Promise {},
+            },
+            "revertState": Object {
+              "data": undefined,
+              "dataUpdateCount": 0,
+              "dataUpdatedAt": 0,
+              "error": null,
+              "errorUpdateCount": 0,
+              "errorUpdatedAt": 0,
+              "fetchFailureCount": 0,
+              "fetchMeta": null,
+              "isFetching": false,
+              "isInvalidated": false,
+              "isPaused": false,
+              "status": "idle",
+            },
+            "state": Object {
+              "data": undefined,
+              "dataUpdateCount": 0,
+              "dataUpdatedAt": 0,
+              "error": null,
+              "errorUpdateCount": 0,
+              "errorUpdatedAt": 0,
+              "fetchFailureCount": 0,
+              "fetchMeta": null,
+              "isFetching": true,
+              "isInvalidated": false,
+              "isPaused": false,
+              "status": "loading",
+            },
+          },
+          Query {
+            "cache": [Circular],
+            "cacheTime": 300000,
+            "defaultOptions": undefined,
+            "gcTimeout": undefined,
+            "initialState": Object {
+              "data": undefined,
+              "dataUpdateCount": 0,
+              "dataUpdatedAt": 0,
+              "error": null,
+              "errorUpdateCount": 0,
+              "errorUpdatedAt": 0,
+              "fetchFailureCount": 0,
+              "fetchMeta": null,
+              "isFetching": false,
+              "isInvalidated": false,
+              "isPaused": false,
+              "status": "idle",
+            },
+            "observers": Array [
+              QueryObserver {
+                "client": [Circular],
+                "currentQuery": [Circular],
+                "currentQueryInitialState": Object {
+                  "data": undefined,
+                  "dataUpdateCount": 0,
+                  "dataUpdatedAt": 0,
+                  "error": null,
+                  "errorUpdateCount": 0,
+                  "errorUpdatedAt": 0,
+                  "fetchFailureCount": 0,
+                  "fetchMeta": null,
+                  "isFetching": false,
+                  "isInvalidated": false,
+                  "isPaused": false,
+                  "status": "idle",
+                },
+                "currentResult": Object {
+                  "data": undefined,
+                  "dataUpdatedAt": 0,
+                  "error": null,
+                  "errorUpdatedAt": 0,
+                  "failureCount": 0,
+                  "isError": false,
+                  "isFetched": false,
+                  "isFetchedAfterMount": false,
+                  "isFetching": true,
+                  "isIdle": false,
+                  "isLoading": true,
+                  "isLoadingError": false,
+                  "isPlaceholderData": false,
+                  "isPreviousData": false,
+                  "isRefetchError": false,
+                  "isStale": true,
+                  "isSuccess": false,
+                  "refetch": [Function],
+                  "remove": [Function],
+                  "status": "loading",
+                },
+                "currentResultOptions": Object {
+                  "_defaulted": true,
+                  "onError": [Function],
+                  "onSuccess": [Function],
+                  "optimisticResults": true,
+                  "queryFn": [Function],
                   "queryHash": "[\\"getLotProductDetails\\",\\"\\",\\"\\",null,null]",
                   "queryKey": Array [
                     "getLotProductDetails",
@@ -808,6 +993,191 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
             "queryHash": "[\\"getLotProductDetails\\",\\"\\",\\"\\",null,null]",
             "queryKey": Array [
               "getLotProductDetails",
+              "",
+              "",
+              [Function],
+              [Function],
+            ],
+            "retryer": Retryer {
+              "cancel": [Function],
+              "cancelRetry": [Function],
+              "continue": [Function],
+              "failureCount": 0,
+              "isPaused": false,
+              "isResolved": false,
+              "isTransportCancelable": false,
+              "promise": Promise {},
+            },
+            "revertState": Object {
+              "data": undefined,
+              "dataUpdateCount": 0,
+              "dataUpdatedAt": 0,
+              "error": null,
+              "errorUpdateCount": 0,
+              "errorUpdatedAt": 0,
+              "fetchFailureCount": 0,
+              "fetchMeta": null,
+              "isFetching": false,
+              "isInvalidated": false,
+              "isPaused": false,
+              "status": "idle",
+            },
+            "state": Object {
+              "data": undefined,
+              "dataUpdateCount": 0,
+              "dataUpdatedAt": 0,
+              "error": null,
+              "errorUpdateCount": 0,
+              "errorUpdatedAt": 0,
+              "fetchFailureCount": 0,
+              "fetchMeta": null,
+              "isFetching": true,
+              "isInvalidated": false,
+              "isPaused": false,
+              "status": "loading",
+            },
+          },
+          "[\\"getOPISRetail\\",false,\\"\\",\\"\\",null,null]": Query {
+            "cache": [Circular],
+            "cacheTime": 300000,
+            "defaultOptions": undefined,
+            "gcTimeout": undefined,
+            "initialState": Object {
+              "data": undefined,
+              "dataUpdateCount": 0,
+              "dataUpdatedAt": 0,
+              "error": null,
+              "errorUpdateCount": 0,
+              "errorUpdatedAt": 0,
+              "fetchFailureCount": 0,
+              "fetchMeta": null,
+              "isFetching": false,
+              "isInvalidated": false,
+              "isPaused": false,
+              "status": "idle",
+            },
+            "observers": Array [
+              QueryObserver {
+                "client": [Circular],
+                "currentQuery": [Circular],
+                "currentQueryInitialState": Object {
+                  "data": undefined,
+                  "dataUpdateCount": 0,
+                  "dataUpdatedAt": 0,
+                  "error": null,
+                  "errorUpdateCount": 0,
+                  "errorUpdatedAt": 0,
+                  "fetchFailureCount": 0,
+                  "fetchMeta": null,
+                  "isFetching": false,
+                  "isInvalidated": false,
+                  "isPaused": false,
+                  "status": "idle",
+                },
+                "currentResult": Object {
+                  "data": undefined,
+                  "dataUpdatedAt": 0,
+                  "error": null,
+                  "errorUpdatedAt": 0,
+                  "failureCount": 0,
+                  "isError": false,
+                  "isFetched": false,
+                  "isFetchedAfterMount": false,
+                  "isFetching": true,
+                  "isIdle": false,
+                  "isLoading": true,
+                  "isLoadingError": false,
+                  "isPlaceholderData": false,
+                  "isPreviousData": false,
+                  "isRefetchError": false,
+                  "isStale": true,
+                  "isSuccess": false,
+                  "refetch": [Function],
+                  "remove": [Function],
+                  "status": "loading",
+                },
+                "currentResultOptions": Object {
+                  "_defaulted": true,
+                  "onError": [Function],
+                  "onSuccess": [Function],
+                  "optimisticResults": true,
+                  "queryFn": [Function],
+                  "queryHash": "[\\"getOPISRetail\\",false,\\"\\",\\"\\",null,null]",
+                  "queryKey": Array [
+                    "getOPISRetail",
+                    false,
+                    "",
+                    "",
+                    [Function],
+                    [Function],
+                  ],
+                  "retry": false,
+                },
+                "currentResultState": Object {
+                  "data": undefined,
+                  "dataUpdateCount": 0,
+                  "dataUpdatedAt": 0,
+                  "error": null,
+                  "errorUpdateCount": 0,
+                  "errorUpdatedAt": 0,
+                  "fetchFailureCount": 0,
+                  "fetchMeta": null,
+                  "isFetching": true,
+                  "isInvalidated": false,
+                  "isPaused": false,
+                  "status": "loading",
+                },
+                "listeners": Array [
+                  [Function],
+                ],
+                "options": Object {
+                  "_defaulted": true,
+                  "onError": [Function],
+                  "onSuccess": [Function],
+                  "optimisticResults": true,
+                  "queryFn": [Function],
+                  "queryHash": "[\\"getOPISRetail\\",false,\\"\\",\\"\\",null,null]",
+                  "queryKey": Array [
+                    "getOPISRetail",
+                    false,
+                    "",
+                    "",
+                    [Function],
+                    [Function],
+                  ],
+                  "retry": false,
+                },
+                "previousQueryResult": undefined,
+                "previousSelectError": null,
+                "refetch": [Function],
+                "refetchIntervalId": undefined,
+                "remove": [Function],
+                "staleTimeoutId": undefined,
+                "trackedProps": Array [],
+              },
+            ],
+            "options": Object {
+              "_defaulted": true,
+              "onError": [Function],
+              "onSuccess": [Function],
+              "optimisticResults": true,
+              "queryFn": [Function],
+              "queryHash": "[\\"getOPISRetail\\",false,\\"\\",\\"\\",null,null]",
+              "queryKey": Array [
+                "getOPISRetail",
+                false,
+                "",
+                "",
+                [Function],
+                [Function],
+              ],
+              "retry": false,
+            },
+            "promise": Promise {},
+            "queryHash": "[\\"getOPISRetail\\",false,\\"\\",\\"\\",null,null]",
+            "queryKey": Array [
+              "getOPISRetail",
+              false,
               "",
               "",
               [Function],
@@ -2462,15 +2832,9 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                       name="productType"
                                       onBlur={[Function]}
                                       onChange={[Function]}
-                                      onKeyDown={[Function]}
                                       options={Array []}
                                       placeholder="Select one"
-                                      value={
-                                        Object {
-                                          "label": "",
-                                          "value": "",
-                                        }
-                                      }
+                                      value={null}
                                     />,
                                     undefined,
                                   ],
@@ -2671,15 +3035,9 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                   name="productType"
                                   onBlur={[Function]}
                                   onChange={[Function]}
-                                  onKeyDown={[Function]}
                                   options={Array []}
                                   placeholder="Select one"
-                                  value={
-                                    Object {
-                                      "label": "",
-                                      "value": "",
-                                    }
-                                  }
+                                  value={null}
                                 >
                                   <Select
                                     aria-live="polite"
@@ -2725,7 +3083,6 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                     onBlur={[Function]}
                                     onChange={[Function]}
                                     onInputChange={[Function]}
-                                    onKeyDown={[Function]}
                                     onMenuClose={[Function]}
                                     onMenuOpen={[Function]}
                                     openMenuOnClick={true}
@@ -2737,12 +3094,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                     styles={Object {}}
                                     tabIndex={0}
                                     tabSelectsValue={true}
-                                    value={
-                                      Object {
-                                        "label": "",
-                                        "value": "",
-                                      }
-                                    }
+                                    value={null}
                                   >
                                     <SelectContainer
                                       className="react-select-container"
@@ -2750,7 +3102,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                       cx={[Function]}
                                       getStyles={[Function]}
                                       getValue={[Function]}
-                                      hasValue={true}
+                                      hasValue={false}
                                       innerProps={
                                         Object {
                                           "id": "productType",
@@ -2806,7 +3158,6 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                           "onBlur": [Function],
                                           "onChange": [Function],
                                           "onInputChange": [Function],
-                                          "onKeyDown": [Function],
                                           "onMenuClose": [Function],
                                           "onMenuOpen": [Function],
                                           "openMenuOnClick": true,
@@ -2818,10 +3169,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                           "styles": Object {},
                                           "tabIndex": 0,
                                           "tabSelectsValue": true,
-                                          "value": Object {
-                                            "label": "",
-                                            "value": "",
-                                          },
+                                          "value": null,
                                         }
                                       }
                                       setValue={[Function]}
@@ -2885,7 +3233,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                             focusedValue={null}
                                             getStyles={[Function]}
                                             getValue={[Function]}
-                                            hasValue={true}
+                                            hasValue={false}
                                             id="react-select-2-live-region"
                                             isFocused={false}
                                             isMulti={false}
@@ -2935,7 +3283,6 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                 "onBlur": [Function],
                                                 "onChange": [Function],
                                                 "onInputChange": [Function],
-                                                "onKeyDown": [Function],
                                                 "onMenuClose": [Function],
                                                 "onMenuOpen": [Function],
                                                 "openMenuOnClick": true,
@@ -2947,20 +3294,10 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                 "styles": Object {},
                                                 "tabIndex": 0,
                                                 "tabSelectsValue": true,
-                                                "value": Object {
-                                                  "label": "",
-                                                  "value": "",
-                                                },
+                                                "value": null,
                                               }
                                             }
-                                            selectValue={
-                                              Array [
-                                                Object {
-                                                  "label": "",
-                                                  "value": "",
-                                                },
-                                              ]
-                                            }
+                                            selectValue={Array []}
                                             setValue={[Function]}
                                             theme={
                                               Object {
@@ -3048,7 +3385,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                             cx={[Function]}
                                             getStyles={[Function]}
                                             getValue={[Function]}
-                                            hasValue={true}
+                                            hasValue={false}
                                             innerProps={
                                               Object {
                                                 "onMouseDown": [Function],
@@ -3106,7 +3443,6 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                 "onBlur": [Function],
                                                 "onChange": [Function],
                                                 "onInputChange": [Function],
-                                                "onKeyDown": [Function],
                                                 "onMenuClose": [Function],
                                                 "onMenuOpen": [Function],
                                                 "openMenuOnClick": true,
@@ -3118,10 +3454,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                 "styles": Object {},
                                                 "tabIndex": 0,
                                                 "tabSelectsValue": true,
-                                                "value": Object {
-                                                  "label": "",
-                                                  "value": "",
-                                                },
+                                                "value": null,
                                               }
                                             }
                                             setValue={[Function]}
@@ -3196,7 +3529,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                   cx={[Function]}
                                                   getStyles={[Function]}
                                                   getValue={[Function]}
-                                                  hasValue={true}
+                                                  hasValue={false}
                                                   isDisabled={false}
                                                   isMulti={false}
                                                   isRtl={false}
@@ -3245,7 +3578,6 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                       "onBlur": [Function],
                                                       "onChange": [Function],
                                                       "onInputChange": [Function],
-                                                      "onKeyDown": [Function],
                                                       "onMenuClose": [Function],
                                                       "onMenuOpen": [Function],
                                                       "openMenuOnClick": true,
@@ -3257,10 +3589,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                       "styles": Object {},
                                                       "tabIndex": 0,
                                                       "tabSelectsValue": true,
-                                                      "value": Object {
-                                                        "label": "",
-                                                        "value": "",
-                                                      },
+                                                      "value": null,
                                                     }
                                                   }
                                                   setValue={[Function]}
@@ -3297,7 +3626,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                   <EmotionCssPropInternal
                                                     __EMOTION_LABEL_PLEASE_DO_NOT_USE__="ValueContainer"
                                                     __EMOTION_TYPE_PLEASE_DO_NOT_USE__="div"
-                                                    className="react-select__value-container react-select__value-container--has-value"
+                                                    className="react-select__value-container"
                                                     css={
                                                       Object {
                                                         "WebkitOverflowScrolling": "touch",
@@ -3313,23 +3642,24 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                     }
                                                   >
                                                     <div
-                                                      className="react-select__value-container react-select__value-container--has-value css-319lph-ValueContainer"
+                                                      className="react-select__value-container css-319lph-ValueContainer"
                                                     >
-                                                      <SingleValueFrag
+                                                      <Placeholder
                                                         clearValue={[Function]}
                                                         cx={[Function]}
-                                                        data={
-                                                          Object {
-                                                            "label": "",
-                                                            "value": "",
-                                                          }
-                                                        }
                                                         getStyles={[Function]}
                                                         getValue={[Function]}
-                                                        hasValue={true}
+                                                        hasValue={false}
+                                                        innerProps={
+                                                          Object {
+                                                            "id": "react-select-2-placeholder",
+                                                          }
+                                                        }
                                                         isDisabled={false}
+                                                        isFocused={false}
                                                         isMulti={false}
                                                         isRtl={false}
+                                                        key="placeholder"
                                                         options={Array []}
                                                         selectOption={[Function]}
                                                         selectProps={
@@ -3375,7 +3705,6 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                             "onBlur": [Function],
                                                             "onChange": [Function],
                                                             "onInputChange": [Function],
-                                                            "onKeyDown": [Function],
                                                             "onMenuClose": [Function],
                                                             "onMenuOpen": [Function],
                                                             "openMenuOnClick": true,
@@ -3387,10 +3716,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                             "styles": Object {},
                                                             "tabIndex": 0,
                                                             "tabSelectsValue": true,
-                                                            "value": Object {
-                                                              "label": "",
-                                                              "value": "",
-                                                            },
+                                                            "value": null,
                                                           }
                                                         }
                                                         setValue={[Function]}
@@ -3424,152 +3750,34 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                           }
                                                         }
                                                       >
-                                                        <SingleValue
-                                                          clearValue={[Function]}
-                                                          cx={[Function]}
-                                                          data={
+                                                        <EmotionCssPropInternal
+                                                          __EMOTION_LABEL_PLEASE_DO_NOT_USE__="Placeholder"
+                                                          __EMOTION_TYPE_PLEASE_DO_NOT_USE__="div"
+                                                          className="react-select__placeholder"
+                                                          css={
                                                             Object {
-                                                              "label": "",
-                                                              "value": "",
+                                                              "boxSizing": "border-box",
+                                                              "color": "hsl(0, 0%, 50%)",
+                                                              "gridArea": "1 / 1 / 2 / 3",
+                                                              "label": "placeholder",
+                                                              "marginLeft": 2,
+                                                              "marginRight": 2,
                                                             }
                                                           }
-                                                          getStyles={[Function]}
-                                                          getValue={[Function]}
-                                                          hasValue={true}
-                                                          isDisabled={false}
-                                                          isMulti={false}
-                                                          isRtl={false}
-                                                          options={Array []}
-                                                          selectOption={[Function]}
-                                                          selectProps={
-                                                            Object {
-                                                              "aria-live": "polite",
-                                                              "backspaceRemovesValue": true,
-                                                              "blurInputOnSelect": true,
-                                                              "captureMenuScroll": false,
-                                                              "className": "react-select-container",
-                                                              "classNamePrefix": "react-select",
-                                                              "closeMenuOnScroll": false,
-                                                              "closeMenuOnSelect": true,
-                                                              "components": Object {
-                                                                "DropdownIndicator": [Function],
-                                                                "IndicatorSeparator": [Function],
-                                                                "Option": [Function],
-                                                                "SingleValue": [Function],
-                                                              },
-                                                              "controlShouldRenderValue": true,
-                                                              "escapeClearsValue": false,
-                                                              "filterOption": [Function],
-                                                              "formatGroupLabel": [Function],
-                                                              "getOptionLabel": [Function],
-                                                              "getOptionValue": [Function],
-                                                              "id": "productType",
-                                                              "inputValue": "",
-                                                              "isDisabled": false,
-                                                              "isLoading": false,
-                                                              "isMulti": false,
-                                                              "isOptionDisabled": [Function],
-                                                              "isRtl": false,
-                                                              "isSearchable": false,
-                                                              "loadingMessage": [Function],
-                                                              "maxMenuHeight": 300,
-                                                              "menuIsOpen": false,
-                                                              "menuPlacement": "bottom",
-                                                              "menuPosition": "absolute",
-                                                              "menuShouldBlockScroll": false,
-                                                              "menuShouldScrollIntoView": true,
-                                                              "minMenuHeight": 140,
-                                                              "name": "productType",
-                                                              "noOptionsMessage": [Function],
-                                                              "onBlur": [Function],
-                                                              "onChange": [Function],
-                                                              "onInputChange": [Function],
-                                                              "onKeyDown": [Function],
-                                                              "onMenuClose": [Function],
-                                                              "onMenuOpen": [Function],
-                                                              "openMenuOnClick": true,
-                                                              "openMenuOnFocus": false,
-                                                              "options": Array [],
-                                                              "pageSize": 5,
-                                                              "placeholder": "Select one",
-                                                              "screenReaderStatus": [Function],
-                                                              "styles": Object {},
-                                                              "tabIndex": 0,
-                                                              "tabSelectsValue": true,
-                                                              "value": Object {
-                                                                "label": "",
-                                                                "value": "",
-                                                              },
-                                                            }
-                                                          }
-                                                          setValue={[Function]}
-                                                          theme={
-                                                            Object {
-                                                              "borderRadius": 4,
-                                                              "colors": Object {
-                                                                "danger": "#DE350B",
-                                                                "dangerLight": "#FFBDAD",
-                                                                "neutral0": "hsl(0, 0%, 100%)",
-                                                                "neutral10": "hsl(0, 0%, 90%)",
-                                                                "neutral20": "hsl(0, 0%, 80%)",
-                                                                "neutral30": "hsl(0, 0%, 70%)",
-                                                                "neutral40": "hsl(0, 0%, 60%)",
-                                                                "neutral5": "hsl(0, 0%, 95%)",
-                                                                "neutral50": "hsl(0, 0%, 50%)",
-                                                                "neutral60": "hsl(0, 0%, 40%)",
-                                                                "neutral70": "hsl(0, 0%, 30%)",
-                                                                "neutral80": "hsl(0, 0%, 20%)",
-                                                                "neutral90": "hsl(0, 0%, 10%)",
-                                                                "primary": "#2684FF",
-                                                                "primary25": "#DEEBFF",
-                                                                "primary50": "#B2D4FF",
-                                                                "primary75": "#4C9AFF",
-                                                              },
-                                                              "spacing": Object {
-                                                                "baseUnit": 4,
-                                                                "controlHeight": 38,
-                                                                "menuGutter": 8,
-                                                              },
-                                                            }
-                                                          }
+                                                          id="react-select-2-placeholder"
                                                         >
-                                                          <EmotionCssPropInternal
-                                                            __EMOTION_LABEL_PLEASE_DO_NOT_USE__="SingleValue"
-                                                            __EMOTION_TYPE_PLEASE_DO_NOT_USE__="div"
-                                                            className="react-select__single-value"
-                                                            css={
-                                                              Object {
-                                                                "boxSizing": "border-box",
-                                                                "color": "hsl(0, 0%, 20%)",
-                                                                "gridArea": "1 / 1 / 2 / 3",
-                                                                "label": "singleValue",
-                                                                "marginLeft": 2,
-                                                                "marginRight": 2,
-                                                                "maxWidth": "100%",
-                                                                "overflow": "hidden",
-                                                                "textOverflow": "ellipsis",
-                                                                "whiteSpace": "nowrap",
-                                                              }
-                                                            }
+                                                          <div
+                                                            className="react-select__placeholder css-14el2xx-placeholder"
+                                                            id="react-select-2-placeholder"
                                                           >
-                                                            <div
-                                                              className="react-select__single-value css-qc6sy-singleValue"
-                                                            >
-                                                              <span
-                                                                className="value-box"
-                                                              >
-                                                                 
-                                                                <span
-                                                                  className="label-text"
-                                                                />
-                                                              </span>
-                                                            </div>
-                                                          </EmotionCssPropInternal>
-                                                        </SingleValue>
-                                                      </SingleValueFrag>
+                                                            Select one
+                                                          </div>
+                                                        </EmotionCssPropInternal>
+                                                      </Placeholder>
                                                       <DummyInput
                                                         aria-autocomplete="list"
                                                         aria-controls="react-select-2-listbox"
+                                                        aria-describedby="react-select-2-placeholder"
                                                         aria-expanded={false}
                                                         aria-haspopup={true}
                                                         aria-owns="react-select-2-listbox"
@@ -3590,6 +3798,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                           __EMOTION_TYPE_PLEASE_DO_NOT_USE__="input"
                                                           aria-autocomplete="list"
                                                           aria-controls="react-select-2-listbox"
+                                                          aria-describedby="react-select-2-placeholder"
                                                           aria-expanded={false}
                                                           aria-haspopup={true}
                                                           aria-owns="react-select-2-listbox"
@@ -3616,6 +3825,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                           <input
                                                             aria-autocomplete="list"
                                                             aria-controls="react-select-2-listbox"
+                                                            aria-describedby="react-select-2-placeholder"
                                                             aria-expanded={false}
                                                             aria-haspopup={true}
                                                             aria-owns="react-select-2-listbox"
@@ -3641,7 +3851,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                   cx={[Function]}
                                                   getStyles={[Function]}
                                                   getValue={[Function]}
-                                                  hasValue={true}
+                                                  hasValue={false}
                                                   isDisabled={false}
                                                   isMulti={false}
                                                   isRtl={false}
@@ -3690,7 +3900,6 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                       "onBlur": [Function],
                                                       "onChange": [Function],
                                                       "onInputChange": [Function],
-                                                      "onKeyDown": [Function],
                                                       "onMenuClose": [Function],
                                                       "onMenuOpen": [Function],
                                                       "openMenuOnClick": true,
@@ -3702,10 +3911,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                       "styles": Object {},
                                                       "tabIndex": 0,
                                                       "tabSelectsValue": true,
-                                                      "value": Object {
-                                                        "label": "",
-                                                        "value": "",
-                                                      },
+                                                      "value": null,
                                                     }
                                                   }
                                                   setValue={[Function]}
@@ -3761,7 +3967,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                         cx={[Function]}
                                                         getStyles={[Function]}
                                                         getValue={[Function]}
-                                                        hasValue={true}
+                                                        hasValue={false}
                                                         isDisabled={false}
                                                         isFocused={false}
                                                         isMulti={false}
@@ -3811,7 +4017,6 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                             "onBlur": [Function],
                                                             "onChange": [Function],
                                                             "onInputChange": [Function],
-                                                            "onKeyDown": [Function],
                                                             "onMenuClose": [Function],
                                                             "onMenuOpen": [Function],
                                                             "openMenuOnClick": true,
@@ -3823,10 +4028,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                             "styles": Object {},
                                                             "tabIndex": 0,
                                                             "tabSelectsValue": true,
-                                                            "value": Object {
-                                                              "label": "",
-                                                              "value": "",
-                                                            },
+                                                            "value": null,
                                                           }
                                                         }
                                                         setValue={[Function]}
@@ -3865,7 +4067,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                         cx={[Function]}
                                                         getStyles={[Function]}
                                                         getValue={[Function]}
-                                                        hasValue={true}
+                                                        hasValue={false}
                                                         innerProps={
                                                           Object {
                                                             "aria-hidden": "true",
@@ -3922,7 +4124,6 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                             "onBlur": [Function],
                                                             "onChange": [Function],
                                                             "onInputChange": [Function],
-                                                            "onKeyDown": [Function],
                                                             "onMenuClose": [Function],
                                                             "onMenuOpen": [Function],
                                                             "openMenuOnClick": true,
@@ -3934,10 +4135,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                             "styles": Object {},
                                                             "tabIndex": 0,
                                                             "tabSelectsValue": true,
-                                                            "value": Object {
-                                                              "label": "",
-                                                              "value": "",
-                                                            },
+                                                            "value": null,
                                                           }
                                                         }
                                                         setValue={[Function]}
@@ -3976,7 +4174,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                           cx={[Function]}
                                                           getStyles={[Function]}
                                                           getValue={[Function]}
-                                                          hasValue={true}
+                                                          hasValue={false}
                                                           innerProps={
                                                             Object {
                                                               "aria-hidden": "true",
@@ -4033,7 +4231,6 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                               "onBlur": [Function],
                                                               "onChange": [Function],
                                                               "onInputChange": [Function],
-                                                              "onKeyDown": [Function],
                                                               "onMenuClose": [Function],
                                                               "onMenuOpen": [Function],
                                                               "openMenuOnClick": true,
@@ -4045,10 +4242,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                               "styles": Object {},
                                                               "tabIndex": 0,
                                                               "tabSelectsValue": true,
-                                                              "value": Object {
-                                                                "label": "",
-                                                                "value": "",
-                                                              },
+                                                              "value": null,
                                                             }
                                                           }
                                                           setValue={[Function]}
@@ -4277,15 +4471,9 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                       name="masterProductName"
                                       onBlur={[Function]}
                                       onChange={[Function]}
-                                      onKeyDown={[Function]}
                                       options={Array []}
                                       placeholder="Select Master Product Name"
-                                      value={
-                                        Object {
-                                          "label": "",
-                                          "value": "",
-                                        }
-                                      }
+                                      value={null}
                                     />,
                                     undefined,
                                   ],
@@ -4486,15 +4674,9 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                   name="masterProductName"
                                   onBlur={[Function]}
                                   onChange={[Function]}
-                                  onKeyDown={[Function]}
                                   options={Array []}
                                   placeholder="Select Master Product Name"
-                                  value={
-                                    Object {
-                                      "label": "",
-                                      "value": "",
-                                    }
-                                  }
+                                  value={null}
                                 >
                                   <Select
                                     aria-live="polite"
@@ -4540,7 +4722,6 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                     onBlur={[Function]}
                                     onChange={[Function]}
                                     onInputChange={[Function]}
-                                    onKeyDown={[Function]}
                                     onMenuClose={[Function]}
                                     onMenuOpen={[Function]}
                                     openMenuOnClick={true}
@@ -4552,12 +4733,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                     styles={Object {}}
                                     tabIndex={0}
                                     tabSelectsValue={true}
-                                    value={
-                                      Object {
-                                        "label": "",
-                                        "value": "",
-                                      }
-                                    }
+                                    value={null}
                                   >
                                     <SelectContainer
                                       className="react-select-container"
@@ -4565,7 +4741,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                       cx={[Function]}
                                       getStyles={[Function]}
                                       getValue={[Function]}
-                                      hasValue={true}
+                                      hasValue={false}
                                       innerProps={
                                         Object {
                                           "id": "masterProductName",
@@ -4621,7 +4797,6 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                           "onBlur": [Function],
                                           "onChange": [Function],
                                           "onInputChange": [Function],
-                                          "onKeyDown": [Function],
                                           "onMenuClose": [Function],
                                           "onMenuOpen": [Function],
                                           "openMenuOnClick": true,
@@ -4633,10 +4808,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                           "styles": Object {},
                                           "tabIndex": 0,
                                           "tabSelectsValue": true,
-                                          "value": Object {
-                                            "label": "",
-                                            "value": "",
-                                          },
+                                          "value": null,
                                         }
                                       }
                                       setValue={[Function]}
@@ -4700,7 +4872,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                             focusedValue={null}
                                             getStyles={[Function]}
                                             getValue={[Function]}
-                                            hasValue={true}
+                                            hasValue={false}
                                             id="react-select-3-live-region"
                                             isFocused={false}
                                             isMulti={false}
@@ -4750,7 +4922,6 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                 "onBlur": [Function],
                                                 "onChange": [Function],
                                                 "onInputChange": [Function],
-                                                "onKeyDown": [Function],
                                                 "onMenuClose": [Function],
                                                 "onMenuOpen": [Function],
                                                 "openMenuOnClick": true,
@@ -4762,20 +4933,10 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                 "styles": Object {},
                                                 "tabIndex": 0,
                                                 "tabSelectsValue": true,
-                                                "value": Object {
-                                                  "label": "",
-                                                  "value": "",
-                                                },
+                                                "value": null,
                                               }
                                             }
-                                            selectValue={
-                                              Array [
-                                                Object {
-                                                  "label": "",
-                                                  "value": "",
-                                                },
-                                              ]
-                                            }
+                                            selectValue={Array []}
                                             setValue={[Function]}
                                             theme={
                                               Object {
@@ -4863,7 +5024,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                             cx={[Function]}
                                             getStyles={[Function]}
                                             getValue={[Function]}
-                                            hasValue={true}
+                                            hasValue={false}
                                             innerProps={
                                               Object {
                                                 "onMouseDown": [Function],
@@ -4921,7 +5082,6 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                 "onBlur": [Function],
                                                 "onChange": [Function],
                                                 "onInputChange": [Function],
-                                                "onKeyDown": [Function],
                                                 "onMenuClose": [Function],
                                                 "onMenuOpen": [Function],
                                                 "openMenuOnClick": true,
@@ -4933,10 +5093,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                 "styles": Object {},
                                                 "tabIndex": 0,
                                                 "tabSelectsValue": true,
-                                                "value": Object {
-                                                  "label": "",
-                                                  "value": "",
-                                                },
+                                                "value": null,
                                               }
                                             }
                                             setValue={[Function]}
@@ -5011,7 +5168,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                   cx={[Function]}
                                                   getStyles={[Function]}
                                                   getValue={[Function]}
-                                                  hasValue={true}
+                                                  hasValue={false}
                                                   isDisabled={false}
                                                   isMulti={false}
                                                   isRtl={false}
@@ -5060,7 +5217,6 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                       "onBlur": [Function],
                                                       "onChange": [Function],
                                                       "onInputChange": [Function],
-                                                      "onKeyDown": [Function],
                                                       "onMenuClose": [Function],
                                                       "onMenuOpen": [Function],
                                                       "openMenuOnClick": true,
@@ -5072,10 +5228,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                       "styles": Object {},
                                                       "tabIndex": 0,
                                                       "tabSelectsValue": true,
-                                                      "value": Object {
-                                                        "label": "",
-                                                        "value": "",
-                                                      },
+                                                      "value": null,
                                                     }
                                                   }
                                                   setValue={[Function]}
@@ -5112,7 +5265,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                   <EmotionCssPropInternal
                                                     __EMOTION_LABEL_PLEASE_DO_NOT_USE__="ValueContainer"
                                                     __EMOTION_TYPE_PLEASE_DO_NOT_USE__="div"
-                                                    className="react-select__value-container react-select__value-container--has-value"
+                                                    className="react-select__value-container"
                                                     css={
                                                       Object {
                                                         "WebkitOverflowScrolling": "touch",
@@ -5128,23 +5281,24 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                     }
                                                   >
                                                     <div
-                                                      className="react-select__value-container react-select__value-container--has-value css-319lph-ValueContainer"
+                                                      className="react-select__value-container css-319lph-ValueContainer"
                                                     >
-                                                      <SingleValueFrag
+                                                      <Placeholder
                                                         clearValue={[Function]}
                                                         cx={[Function]}
-                                                        data={
-                                                          Object {
-                                                            "label": "",
-                                                            "value": "",
-                                                          }
-                                                        }
                                                         getStyles={[Function]}
                                                         getValue={[Function]}
-                                                        hasValue={true}
+                                                        hasValue={false}
+                                                        innerProps={
+                                                          Object {
+                                                            "id": "react-select-3-placeholder",
+                                                          }
+                                                        }
                                                         isDisabled={false}
+                                                        isFocused={false}
                                                         isMulti={false}
                                                         isRtl={false}
+                                                        key="placeholder"
                                                         options={Array []}
                                                         selectOption={[Function]}
                                                         selectProps={
@@ -5190,7 +5344,6 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                             "onBlur": [Function],
                                                             "onChange": [Function],
                                                             "onInputChange": [Function],
-                                                            "onKeyDown": [Function],
                                                             "onMenuClose": [Function],
                                                             "onMenuOpen": [Function],
                                                             "openMenuOnClick": true,
@@ -5202,10 +5355,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                             "styles": Object {},
                                                             "tabIndex": 0,
                                                             "tabSelectsValue": true,
-                                                            "value": Object {
-                                                              "label": "",
-                                                              "value": "",
-                                                            },
+                                                            "value": null,
                                                           }
                                                         }
                                                         setValue={[Function]}
@@ -5239,152 +5389,34 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                           }
                                                         }
                                                       >
-                                                        <SingleValue
-                                                          clearValue={[Function]}
-                                                          cx={[Function]}
-                                                          data={
+                                                        <EmotionCssPropInternal
+                                                          __EMOTION_LABEL_PLEASE_DO_NOT_USE__="Placeholder"
+                                                          __EMOTION_TYPE_PLEASE_DO_NOT_USE__="div"
+                                                          className="react-select__placeholder"
+                                                          css={
                                                             Object {
-                                                              "label": "",
-                                                              "value": "",
+                                                              "boxSizing": "border-box",
+                                                              "color": "hsl(0, 0%, 50%)",
+                                                              "gridArea": "1 / 1 / 2 / 3",
+                                                              "label": "placeholder",
+                                                              "marginLeft": 2,
+                                                              "marginRight": 2,
                                                             }
                                                           }
-                                                          getStyles={[Function]}
-                                                          getValue={[Function]}
-                                                          hasValue={true}
-                                                          isDisabled={false}
-                                                          isMulti={false}
-                                                          isRtl={false}
-                                                          options={Array []}
-                                                          selectOption={[Function]}
-                                                          selectProps={
-                                                            Object {
-                                                              "aria-live": "polite",
-                                                              "backspaceRemovesValue": true,
-                                                              "blurInputOnSelect": true,
-                                                              "captureMenuScroll": false,
-                                                              "className": "react-select-container",
-                                                              "classNamePrefix": "react-select",
-                                                              "closeMenuOnScroll": false,
-                                                              "closeMenuOnSelect": true,
-                                                              "components": Object {
-                                                                "DropdownIndicator": [Function],
-                                                                "IndicatorSeparator": [Function],
-                                                                "Option": [Function],
-                                                                "SingleValue": [Function],
-                                                              },
-                                                              "controlShouldRenderValue": true,
-                                                              "escapeClearsValue": false,
-                                                              "filterOption": [Function],
-                                                              "formatGroupLabel": [Function],
-                                                              "getOptionLabel": [Function],
-                                                              "getOptionValue": [Function],
-                                                              "id": "masterProductName",
-                                                              "inputValue": "",
-                                                              "isDisabled": false,
-                                                              "isLoading": false,
-                                                              "isMulti": false,
-                                                              "isOptionDisabled": [Function],
-                                                              "isRtl": false,
-                                                              "isSearchable": false,
-                                                              "loadingMessage": [Function],
-                                                              "maxMenuHeight": 300,
-                                                              "menuIsOpen": false,
-                                                              "menuPlacement": "bottom",
-                                                              "menuPosition": "absolute",
-                                                              "menuShouldBlockScroll": false,
-                                                              "menuShouldScrollIntoView": true,
-                                                              "minMenuHeight": 140,
-                                                              "name": "masterProductName",
-                                                              "noOptionsMessage": [Function],
-                                                              "onBlur": [Function],
-                                                              "onChange": [Function],
-                                                              "onInputChange": [Function],
-                                                              "onKeyDown": [Function],
-                                                              "onMenuClose": [Function],
-                                                              "onMenuOpen": [Function],
-                                                              "openMenuOnClick": true,
-                                                              "openMenuOnFocus": false,
-                                                              "options": Array [],
-                                                              "pageSize": 5,
-                                                              "placeholder": "Select Master Product Name",
-                                                              "screenReaderStatus": [Function],
-                                                              "styles": Object {},
-                                                              "tabIndex": 0,
-                                                              "tabSelectsValue": true,
-                                                              "value": Object {
-                                                                "label": "",
-                                                                "value": "",
-                                                              },
-                                                            }
-                                                          }
-                                                          setValue={[Function]}
-                                                          theme={
-                                                            Object {
-                                                              "borderRadius": 4,
-                                                              "colors": Object {
-                                                                "danger": "#DE350B",
-                                                                "dangerLight": "#FFBDAD",
-                                                                "neutral0": "hsl(0, 0%, 100%)",
-                                                                "neutral10": "hsl(0, 0%, 90%)",
-                                                                "neutral20": "hsl(0, 0%, 80%)",
-                                                                "neutral30": "hsl(0, 0%, 70%)",
-                                                                "neutral40": "hsl(0, 0%, 60%)",
-                                                                "neutral5": "hsl(0, 0%, 95%)",
-                                                                "neutral50": "hsl(0, 0%, 50%)",
-                                                                "neutral60": "hsl(0, 0%, 40%)",
-                                                                "neutral70": "hsl(0, 0%, 30%)",
-                                                                "neutral80": "hsl(0, 0%, 20%)",
-                                                                "neutral90": "hsl(0, 0%, 10%)",
-                                                                "primary": "#2684FF",
-                                                                "primary25": "#DEEBFF",
-                                                                "primary50": "#B2D4FF",
-                                                                "primary75": "#4C9AFF",
-                                                              },
-                                                              "spacing": Object {
-                                                                "baseUnit": 4,
-                                                                "controlHeight": 38,
-                                                                "menuGutter": 8,
-                                                              },
-                                                            }
-                                                          }
+                                                          id="react-select-3-placeholder"
                                                         >
-                                                          <EmotionCssPropInternal
-                                                            __EMOTION_LABEL_PLEASE_DO_NOT_USE__="SingleValue"
-                                                            __EMOTION_TYPE_PLEASE_DO_NOT_USE__="div"
-                                                            className="react-select__single-value"
-                                                            css={
-                                                              Object {
-                                                                "boxSizing": "border-box",
-                                                                "color": "hsl(0, 0%, 20%)",
-                                                                "gridArea": "1 / 1 / 2 / 3",
-                                                                "label": "singleValue",
-                                                                "marginLeft": 2,
-                                                                "marginRight": 2,
-                                                                "maxWidth": "100%",
-                                                                "overflow": "hidden",
-                                                                "textOverflow": "ellipsis",
-                                                                "whiteSpace": "nowrap",
-                                                              }
-                                                            }
+                                                          <div
+                                                            className="react-select__placeholder css-14el2xx-placeholder"
+                                                            id="react-select-3-placeholder"
                                                           >
-                                                            <div
-                                                              className="react-select__single-value css-qc6sy-singleValue"
-                                                            >
-                                                              <span
-                                                                className="value-box"
-                                                              >
-                                                                 
-                                                                <span
-                                                                  className="label-text"
-                                                                />
-                                                              </span>
-                                                            </div>
-                                                          </EmotionCssPropInternal>
-                                                        </SingleValue>
-                                                      </SingleValueFrag>
+                                                            Select Master Product Name
+                                                          </div>
+                                                        </EmotionCssPropInternal>
+                                                      </Placeholder>
                                                       <DummyInput
                                                         aria-autocomplete="list"
                                                         aria-controls="react-select-3-listbox"
+                                                        aria-describedby="react-select-3-placeholder"
                                                         aria-expanded={false}
                                                         aria-haspopup={true}
                                                         aria-owns="react-select-3-listbox"
@@ -5405,6 +5437,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                           __EMOTION_TYPE_PLEASE_DO_NOT_USE__="input"
                                                           aria-autocomplete="list"
                                                           aria-controls="react-select-3-listbox"
+                                                          aria-describedby="react-select-3-placeholder"
                                                           aria-expanded={false}
                                                           aria-haspopup={true}
                                                           aria-owns="react-select-3-listbox"
@@ -5431,6 +5464,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                           <input
                                                             aria-autocomplete="list"
                                                             aria-controls="react-select-3-listbox"
+                                                            aria-describedby="react-select-3-placeholder"
                                                             aria-expanded={false}
                                                             aria-haspopup={true}
                                                             aria-owns="react-select-3-listbox"
@@ -5456,7 +5490,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                   cx={[Function]}
                                                   getStyles={[Function]}
                                                   getValue={[Function]}
-                                                  hasValue={true}
+                                                  hasValue={false}
                                                   isDisabled={false}
                                                   isMulti={false}
                                                   isRtl={false}
@@ -5505,7 +5539,6 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                       "onBlur": [Function],
                                                       "onChange": [Function],
                                                       "onInputChange": [Function],
-                                                      "onKeyDown": [Function],
                                                       "onMenuClose": [Function],
                                                       "onMenuOpen": [Function],
                                                       "openMenuOnClick": true,
@@ -5517,10 +5550,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                       "styles": Object {},
                                                       "tabIndex": 0,
                                                       "tabSelectsValue": true,
-                                                      "value": Object {
-                                                        "label": "",
-                                                        "value": "",
-                                                      },
+                                                      "value": null,
                                                     }
                                                   }
                                                   setValue={[Function]}
@@ -5576,7 +5606,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                         cx={[Function]}
                                                         getStyles={[Function]}
                                                         getValue={[Function]}
-                                                        hasValue={true}
+                                                        hasValue={false}
                                                         isDisabled={false}
                                                         isFocused={false}
                                                         isMulti={false}
@@ -5626,7 +5656,6 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                             "onBlur": [Function],
                                                             "onChange": [Function],
                                                             "onInputChange": [Function],
-                                                            "onKeyDown": [Function],
                                                             "onMenuClose": [Function],
                                                             "onMenuOpen": [Function],
                                                             "openMenuOnClick": true,
@@ -5638,10 +5667,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                             "styles": Object {},
                                                             "tabIndex": 0,
                                                             "tabSelectsValue": true,
-                                                            "value": Object {
-                                                              "label": "",
-                                                              "value": "",
-                                                            },
+                                                            "value": null,
                                                           }
                                                         }
                                                         setValue={[Function]}
@@ -5680,7 +5706,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                         cx={[Function]}
                                                         getStyles={[Function]}
                                                         getValue={[Function]}
-                                                        hasValue={true}
+                                                        hasValue={false}
                                                         innerProps={
                                                           Object {
                                                             "aria-hidden": "true",
@@ -5737,7 +5763,6 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                             "onBlur": [Function],
                                                             "onChange": [Function],
                                                             "onInputChange": [Function],
-                                                            "onKeyDown": [Function],
                                                             "onMenuClose": [Function],
                                                             "onMenuOpen": [Function],
                                                             "openMenuOnClick": true,
@@ -5749,10 +5774,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                             "styles": Object {},
                                                             "tabIndex": 0,
                                                             "tabSelectsValue": true,
-                                                            "value": Object {
-                                                              "label": "",
-                                                              "value": "",
-                                                            },
+                                                            "value": null,
                                                           }
                                                         }
                                                         setValue={[Function]}
@@ -5791,7 +5813,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                           cx={[Function]}
                                                           getStyles={[Function]}
                                                           getValue={[Function]}
-                                                          hasValue={true}
+                                                          hasValue={false}
                                                           innerProps={
                                                             Object {
                                                               "aria-hidden": "true",
@@ -5848,7 +5870,6 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                               "onBlur": [Function],
                                                               "onChange": [Function],
                                                               "onInputChange": [Function],
-                                                              "onKeyDown": [Function],
                                                               "onMenuClose": [Function],
                                                               "onMenuOpen": [Function],
                                                               "openMenuOnClick": true,
@@ -5860,10 +5881,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                               "styles": Object {},
                                                               "tabIndex": 0,
                                                               "tabSelectsValue": true,
-                                                              "value": Object {
-                                                                "label": "",
-                                                                "value": "",
-                                                              },
+                                                              "value": null,
                                                             }
                                                           }
                                                           setValue={[Function]}
@@ -6092,15 +6110,9 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                       name="pricingModel"
                                       onBlur={[Function]}
                                       onChange={[Function]}
-                                      onKeyDown={[Function]}
                                       options={Array []}
                                       placeholder="Select one"
-                                      value={
-                                        Object {
-                                          "label": "",
-                                          "value": "",
-                                        }
-                                      }
+                                      value={null}
                                     />,
                                     undefined,
                                   ],
@@ -6301,15 +6313,9 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                   name="pricingModel"
                                   onBlur={[Function]}
                                   onChange={[Function]}
-                                  onKeyDown={[Function]}
                                   options={Array []}
                                   placeholder="Select one"
-                                  value={
-                                    Object {
-                                      "label": "",
-                                      "value": "",
-                                    }
-                                  }
+                                  value={null}
                                 >
                                   <Select
                                     aria-live="polite"
@@ -6355,7 +6361,6 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                     onBlur={[Function]}
                                     onChange={[Function]}
                                     onInputChange={[Function]}
-                                    onKeyDown={[Function]}
                                     onMenuClose={[Function]}
                                     onMenuOpen={[Function]}
                                     openMenuOnClick={true}
@@ -6367,12 +6372,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                     styles={Object {}}
                                     tabIndex={0}
                                     tabSelectsValue={true}
-                                    value={
-                                      Object {
-                                        "label": "",
-                                        "value": "",
-                                      }
-                                    }
+                                    value={null}
                                   >
                                     <SelectContainer
                                       className="react-select-container"
@@ -6380,7 +6380,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                       cx={[Function]}
                                       getStyles={[Function]}
                                       getValue={[Function]}
-                                      hasValue={true}
+                                      hasValue={false}
                                       innerProps={
                                         Object {
                                           "id": "pricingModel",
@@ -6436,7 +6436,6 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                           "onBlur": [Function],
                                           "onChange": [Function],
                                           "onInputChange": [Function],
-                                          "onKeyDown": [Function],
                                           "onMenuClose": [Function],
                                           "onMenuOpen": [Function],
                                           "openMenuOnClick": true,
@@ -6448,10 +6447,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                           "styles": Object {},
                                           "tabIndex": 0,
                                           "tabSelectsValue": true,
-                                          "value": Object {
-                                            "label": "",
-                                            "value": "",
-                                          },
+                                          "value": null,
                                         }
                                       }
                                       setValue={[Function]}
@@ -6515,7 +6511,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                             focusedValue={null}
                                             getStyles={[Function]}
                                             getValue={[Function]}
-                                            hasValue={true}
+                                            hasValue={false}
                                             id="react-select-4-live-region"
                                             isFocused={false}
                                             isMulti={false}
@@ -6565,7 +6561,6 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                 "onBlur": [Function],
                                                 "onChange": [Function],
                                                 "onInputChange": [Function],
-                                                "onKeyDown": [Function],
                                                 "onMenuClose": [Function],
                                                 "onMenuOpen": [Function],
                                                 "openMenuOnClick": true,
@@ -6577,20 +6572,10 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                 "styles": Object {},
                                                 "tabIndex": 0,
                                                 "tabSelectsValue": true,
-                                                "value": Object {
-                                                  "label": "",
-                                                  "value": "",
-                                                },
+                                                "value": null,
                                               }
                                             }
-                                            selectValue={
-                                              Array [
-                                                Object {
-                                                  "label": "",
-                                                  "value": "",
-                                                },
-                                              ]
-                                            }
+                                            selectValue={Array []}
                                             setValue={[Function]}
                                             theme={
                                               Object {
@@ -6678,7 +6663,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                             cx={[Function]}
                                             getStyles={[Function]}
                                             getValue={[Function]}
-                                            hasValue={true}
+                                            hasValue={false}
                                             innerProps={
                                               Object {
                                                 "onMouseDown": [Function],
@@ -6736,7 +6721,6 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                 "onBlur": [Function],
                                                 "onChange": [Function],
                                                 "onInputChange": [Function],
-                                                "onKeyDown": [Function],
                                                 "onMenuClose": [Function],
                                                 "onMenuOpen": [Function],
                                                 "openMenuOnClick": true,
@@ -6748,10 +6732,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                 "styles": Object {},
                                                 "tabIndex": 0,
                                                 "tabSelectsValue": true,
-                                                "value": Object {
-                                                  "label": "",
-                                                  "value": "",
-                                                },
+                                                "value": null,
                                               }
                                             }
                                             setValue={[Function]}
@@ -6826,7 +6807,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                   cx={[Function]}
                                                   getStyles={[Function]}
                                                   getValue={[Function]}
-                                                  hasValue={true}
+                                                  hasValue={false}
                                                   isDisabled={false}
                                                   isMulti={false}
                                                   isRtl={false}
@@ -6875,7 +6856,6 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                       "onBlur": [Function],
                                                       "onChange": [Function],
                                                       "onInputChange": [Function],
-                                                      "onKeyDown": [Function],
                                                       "onMenuClose": [Function],
                                                       "onMenuOpen": [Function],
                                                       "openMenuOnClick": true,
@@ -6887,10 +6867,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                       "styles": Object {},
                                                       "tabIndex": 0,
                                                       "tabSelectsValue": true,
-                                                      "value": Object {
-                                                        "label": "",
-                                                        "value": "",
-                                                      },
+                                                      "value": null,
                                                     }
                                                   }
                                                   setValue={[Function]}
@@ -6927,7 +6904,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                   <EmotionCssPropInternal
                                                     __EMOTION_LABEL_PLEASE_DO_NOT_USE__="ValueContainer"
                                                     __EMOTION_TYPE_PLEASE_DO_NOT_USE__="div"
-                                                    className="react-select__value-container react-select__value-container--has-value"
+                                                    className="react-select__value-container"
                                                     css={
                                                       Object {
                                                         "WebkitOverflowScrolling": "touch",
@@ -6943,23 +6920,24 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                     }
                                                   >
                                                     <div
-                                                      className="react-select__value-container react-select__value-container--has-value css-319lph-ValueContainer"
+                                                      className="react-select__value-container css-319lph-ValueContainer"
                                                     >
-                                                      <SingleValueFrag
+                                                      <Placeholder
                                                         clearValue={[Function]}
                                                         cx={[Function]}
-                                                        data={
-                                                          Object {
-                                                            "label": "",
-                                                            "value": "",
-                                                          }
-                                                        }
                                                         getStyles={[Function]}
                                                         getValue={[Function]}
-                                                        hasValue={true}
+                                                        hasValue={false}
+                                                        innerProps={
+                                                          Object {
+                                                            "id": "react-select-4-placeholder",
+                                                          }
+                                                        }
                                                         isDisabled={false}
+                                                        isFocused={false}
                                                         isMulti={false}
                                                         isRtl={false}
+                                                        key="placeholder"
                                                         options={Array []}
                                                         selectOption={[Function]}
                                                         selectProps={
@@ -7005,7 +6983,6 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                             "onBlur": [Function],
                                                             "onChange": [Function],
                                                             "onInputChange": [Function],
-                                                            "onKeyDown": [Function],
                                                             "onMenuClose": [Function],
                                                             "onMenuOpen": [Function],
                                                             "openMenuOnClick": true,
@@ -7017,10 +6994,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                             "styles": Object {},
                                                             "tabIndex": 0,
                                                             "tabSelectsValue": true,
-                                                            "value": Object {
-                                                              "label": "",
-                                                              "value": "",
-                                                            },
+                                                            "value": null,
                                                           }
                                                         }
                                                         setValue={[Function]}
@@ -7054,152 +7028,34 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                           }
                                                         }
                                                       >
-                                                        <SingleValue
-                                                          clearValue={[Function]}
-                                                          cx={[Function]}
-                                                          data={
+                                                        <EmotionCssPropInternal
+                                                          __EMOTION_LABEL_PLEASE_DO_NOT_USE__="Placeholder"
+                                                          __EMOTION_TYPE_PLEASE_DO_NOT_USE__="div"
+                                                          className="react-select__placeholder"
+                                                          css={
                                                             Object {
-                                                              "label": "",
-                                                              "value": "",
+                                                              "boxSizing": "border-box",
+                                                              "color": "hsl(0, 0%, 50%)",
+                                                              "gridArea": "1 / 1 / 2 / 3",
+                                                              "label": "placeholder",
+                                                              "marginLeft": 2,
+                                                              "marginRight": 2,
                                                             }
                                                           }
-                                                          getStyles={[Function]}
-                                                          getValue={[Function]}
-                                                          hasValue={true}
-                                                          isDisabled={false}
-                                                          isMulti={false}
-                                                          isRtl={false}
-                                                          options={Array []}
-                                                          selectOption={[Function]}
-                                                          selectProps={
-                                                            Object {
-                                                              "aria-live": "polite",
-                                                              "backspaceRemovesValue": true,
-                                                              "blurInputOnSelect": true,
-                                                              "captureMenuScroll": false,
-                                                              "className": "react-select-container",
-                                                              "classNamePrefix": "react-select",
-                                                              "closeMenuOnScroll": false,
-                                                              "closeMenuOnSelect": true,
-                                                              "components": Object {
-                                                                "DropdownIndicator": [Function],
-                                                                "IndicatorSeparator": [Function],
-                                                                "Option": [Function],
-                                                                "SingleValue": [Function],
-                                                              },
-                                                              "controlShouldRenderValue": true,
-                                                              "escapeClearsValue": false,
-                                                              "filterOption": [Function],
-                                                              "formatGroupLabel": [Function],
-                                                              "getOptionLabel": [Function],
-                                                              "getOptionValue": [Function],
-                                                              "id": "pricingModel",
-                                                              "inputValue": "",
-                                                              "isDisabled": false,
-                                                              "isLoading": false,
-                                                              "isMulti": false,
-                                                              "isOptionDisabled": [Function],
-                                                              "isRtl": false,
-                                                              "isSearchable": false,
-                                                              "loadingMessage": [Function],
-                                                              "maxMenuHeight": 300,
-                                                              "menuIsOpen": false,
-                                                              "menuPlacement": "bottom",
-                                                              "menuPosition": "absolute",
-                                                              "menuShouldBlockScroll": false,
-                                                              "menuShouldScrollIntoView": true,
-                                                              "minMenuHeight": 140,
-                                                              "name": "pricingModel",
-                                                              "noOptionsMessage": [Function],
-                                                              "onBlur": [Function],
-                                                              "onChange": [Function],
-                                                              "onInputChange": [Function],
-                                                              "onKeyDown": [Function],
-                                                              "onMenuClose": [Function],
-                                                              "onMenuOpen": [Function],
-                                                              "openMenuOnClick": true,
-                                                              "openMenuOnFocus": false,
-                                                              "options": Array [],
-                                                              "pageSize": 5,
-                                                              "placeholder": "Select one",
-                                                              "screenReaderStatus": [Function],
-                                                              "styles": Object {},
-                                                              "tabIndex": 0,
-                                                              "tabSelectsValue": true,
-                                                              "value": Object {
-                                                                "label": "",
-                                                                "value": "",
-                                                              },
-                                                            }
-                                                          }
-                                                          setValue={[Function]}
-                                                          theme={
-                                                            Object {
-                                                              "borderRadius": 4,
-                                                              "colors": Object {
-                                                                "danger": "#DE350B",
-                                                                "dangerLight": "#FFBDAD",
-                                                                "neutral0": "hsl(0, 0%, 100%)",
-                                                                "neutral10": "hsl(0, 0%, 90%)",
-                                                                "neutral20": "hsl(0, 0%, 80%)",
-                                                                "neutral30": "hsl(0, 0%, 70%)",
-                                                                "neutral40": "hsl(0, 0%, 60%)",
-                                                                "neutral5": "hsl(0, 0%, 95%)",
-                                                                "neutral50": "hsl(0, 0%, 50%)",
-                                                                "neutral60": "hsl(0, 0%, 40%)",
-                                                                "neutral70": "hsl(0, 0%, 30%)",
-                                                                "neutral80": "hsl(0, 0%, 20%)",
-                                                                "neutral90": "hsl(0, 0%, 10%)",
-                                                                "primary": "#2684FF",
-                                                                "primary25": "#DEEBFF",
-                                                                "primary50": "#B2D4FF",
-                                                                "primary75": "#4C9AFF",
-                                                              },
-                                                              "spacing": Object {
-                                                                "baseUnit": 4,
-                                                                "controlHeight": 38,
-                                                                "menuGutter": 8,
-                                                              },
-                                                            }
-                                                          }
+                                                          id="react-select-4-placeholder"
                                                         >
-                                                          <EmotionCssPropInternal
-                                                            __EMOTION_LABEL_PLEASE_DO_NOT_USE__="SingleValue"
-                                                            __EMOTION_TYPE_PLEASE_DO_NOT_USE__="div"
-                                                            className="react-select__single-value"
-                                                            css={
-                                                              Object {
-                                                                "boxSizing": "border-box",
-                                                                "color": "hsl(0, 0%, 20%)",
-                                                                "gridArea": "1 / 1 / 2 / 3",
-                                                                "label": "singleValue",
-                                                                "marginLeft": 2,
-                                                                "marginRight": 2,
-                                                                "maxWidth": "100%",
-                                                                "overflow": "hidden",
-                                                                "textOverflow": "ellipsis",
-                                                                "whiteSpace": "nowrap",
-                                                              }
-                                                            }
+                                                          <div
+                                                            className="react-select__placeholder css-14el2xx-placeholder"
+                                                            id="react-select-4-placeholder"
                                                           >
-                                                            <div
-                                                              className="react-select__single-value css-qc6sy-singleValue"
-                                                            >
-                                                              <span
-                                                                className="value-box"
-                                                              >
-                                                                 
-                                                                <span
-                                                                  className="label-text"
-                                                                />
-                                                              </span>
-                                                            </div>
-                                                          </EmotionCssPropInternal>
-                                                        </SingleValue>
-                                                      </SingleValueFrag>
+                                                            Select one
+                                                          </div>
+                                                        </EmotionCssPropInternal>
+                                                      </Placeholder>
                                                       <DummyInput
                                                         aria-autocomplete="list"
                                                         aria-controls="react-select-4-listbox"
+                                                        aria-describedby="react-select-4-placeholder"
                                                         aria-expanded={false}
                                                         aria-haspopup={true}
                                                         aria-owns="react-select-4-listbox"
@@ -7220,6 +7076,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                           __EMOTION_TYPE_PLEASE_DO_NOT_USE__="input"
                                                           aria-autocomplete="list"
                                                           aria-controls="react-select-4-listbox"
+                                                          aria-describedby="react-select-4-placeholder"
                                                           aria-expanded={false}
                                                           aria-haspopup={true}
                                                           aria-owns="react-select-4-listbox"
@@ -7246,6 +7103,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                           <input
                                                             aria-autocomplete="list"
                                                             aria-controls="react-select-4-listbox"
+                                                            aria-describedby="react-select-4-placeholder"
                                                             aria-expanded={false}
                                                             aria-haspopup={true}
                                                             aria-owns="react-select-4-listbox"
@@ -7271,7 +7129,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                   cx={[Function]}
                                                   getStyles={[Function]}
                                                   getValue={[Function]}
-                                                  hasValue={true}
+                                                  hasValue={false}
                                                   isDisabled={false}
                                                   isMulti={false}
                                                   isRtl={false}
@@ -7320,7 +7178,6 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                       "onBlur": [Function],
                                                       "onChange": [Function],
                                                       "onInputChange": [Function],
-                                                      "onKeyDown": [Function],
                                                       "onMenuClose": [Function],
                                                       "onMenuOpen": [Function],
                                                       "openMenuOnClick": true,
@@ -7332,10 +7189,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                       "styles": Object {},
                                                       "tabIndex": 0,
                                                       "tabSelectsValue": true,
-                                                      "value": Object {
-                                                        "label": "",
-                                                        "value": "",
-                                                      },
+                                                      "value": null,
                                                     }
                                                   }
                                                   setValue={[Function]}
@@ -7391,7 +7245,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                         cx={[Function]}
                                                         getStyles={[Function]}
                                                         getValue={[Function]}
-                                                        hasValue={true}
+                                                        hasValue={false}
                                                         isDisabled={false}
                                                         isFocused={false}
                                                         isMulti={false}
@@ -7441,7 +7295,6 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                             "onBlur": [Function],
                                                             "onChange": [Function],
                                                             "onInputChange": [Function],
-                                                            "onKeyDown": [Function],
                                                             "onMenuClose": [Function],
                                                             "onMenuOpen": [Function],
                                                             "openMenuOnClick": true,
@@ -7453,10 +7306,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                             "styles": Object {},
                                                             "tabIndex": 0,
                                                             "tabSelectsValue": true,
-                                                            "value": Object {
-                                                              "label": "",
-                                                              "value": "",
-                                                            },
+                                                            "value": null,
                                                           }
                                                         }
                                                         setValue={[Function]}
@@ -7495,7 +7345,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                         cx={[Function]}
                                                         getStyles={[Function]}
                                                         getValue={[Function]}
-                                                        hasValue={true}
+                                                        hasValue={false}
                                                         innerProps={
                                                           Object {
                                                             "aria-hidden": "true",
@@ -7552,7 +7402,6 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                             "onBlur": [Function],
                                                             "onChange": [Function],
                                                             "onInputChange": [Function],
-                                                            "onKeyDown": [Function],
                                                             "onMenuClose": [Function],
                                                             "onMenuOpen": [Function],
                                                             "openMenuOnClick": true,
@@ -7564,10 +7413,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                             "styles": Object {},
                                                             "tabIndex": 0,
                                                             "tabSelectsValue": true,
-                                                            "value": Object {
-                                                              "label": "",
-                                                              "value": "",
-                                                            },
+                                                            "value": null,
                                                           }
                                                         }
                                                         setValue={[Function]}
@@ -7606,7 +7452,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                           cx={[Function]}
                                                           getStyles={[Function]}
                                                           getValue={[Function]}
-                                                          hasValue={true}
+                                                          hasValue={false}
                                                           innerProps={
                                                             Object {
                                                               "aria-hidden": "true",
@@ -7663,7 +7509,6 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                               "onBlur": [Function],
                                                               "onChange": [Function],
                                                               "onInputChange": [Function],
-                                                              "onKeyDown": [Function],
                                                               "onMenuClose": [Function],
                                                               "onMenuOpen": [Function],
                                                               "openMenuOnClick": true,
@@ -7675,10 +7520,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                               "styles": Object {},
                                                               "tabIndex": 0,
                                                               "tabSelectsValue": true,
-                                                              "value": Object {
-                                                                "label": "",
-                                                                "value": "",
-                                                              },
+                                                              "value": null,
                                                             }
                                                           }
                                                           setValue={[Function]}

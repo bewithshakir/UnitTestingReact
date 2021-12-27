@@ -69,7 +69,6 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -226,7 +225,6 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -383,7 +381,6 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -565,7 +562,6 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -726,7 +722,6 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -889,7 +884,6 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -1050,7 +1044,6 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -1232,7 +1225,6 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -1389,7 +1381,6 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -1546,7 +1537,6 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -9191,15 +9181,9 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                             name="paymentType"
                                             onBlur={[Function]}
                                             onChange={[Function]}
-                                            onKeyDown={[Function]}
                                             options={Array []}
                                             placeholder="Choose"
-                                            value={
-                                              Object {
-                                                "label": "",
-                                                "value": "",
-                                              }
-                                            }
+                                            value={null}
                                           />,
                                           undefined,
                                         ],
@@ -9400,15 +9384,9 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                         name="paymentType"
                                         onBlur={[Function]}
                                         onChange={[Function]}
-                                        onKeyDown={[Function]}
                                         options={Array []}
                                         placeholder="Choose"
-                                        value={
-                                          Object {
-                                            "label": "",
-                                            "value": "",
-                                          }
-                                        }
+                                        value={null}
                                       >
                                         <Select
                                           aria-live="polite"
@@ -9454,7 +9432,6 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                           onBlur={[Function]}
                                           onChange={[Function]}
                                           onInputChange={[Function]}
-                                          onKeyDown={[Function]}
                                           onMenuClose={[Function]}
                                           onMenuOpen={[Function]}
                                           openMenuOnClick={true}
@@ -9466,12 +9443,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                           styles={Object {}}
                                           tabIndex={0}
                                           tabSelectsValue={true}
-                                          value={
-                                            Object {
-                                              "label": "",
-                                              "value": "",
-                                            }
-                                          }
+                                          value={null}
                                         >
                                           <SelectContainer
                                             className="react-select-container"
@@ -9479,7 +9451,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                             cx={[Function]}
                                             getStyles={[Function]}
                                             getValue={[Function]}
-                                            hasValue={true}
+                                            hasValue={false}
                                             innerProps={
                                               Object {
                                                 "id": "paymentType",
@@ -9535,7 +9507,6 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                 "onBlur": [Function],
                                                 "onChange": [Function],
                                                 "onInputChange": [Function],
-                                                "onKeyDown": [Function],
                                                 "onMenuClose": [Function],
                                                 "onMenuOpen": [Function],
                                                 "openMenuOnClick": true,
@@ -9547,10 +9518,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                 "styles": Object {},
                                                 "tabIndex": 0,
                                                 "tabSelectsValue": true,
-                                                "value": Object {
-                                                  "label": "",
-                                                  "value": "",
-                                                },
+                                                "value": null,
                                               }
                                             }
                                             setValue={[Function]}
@@ -9614,7 +9582,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                   focusedValue={null}
                                                   getStyles={[Function]}
                                                   getValue={[Function]}
-                                                  hasValue={true}
+                                                  hasValue={false}
                                                   id="react-select-3-live-region"
                                                   isFocused={false}
                                                   isMulti={false}
@@ -9664,7 +9632,6 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                       "onBlur": [Function],
                                                       "onChange": [Function],
                                                       "onInputChange": [Function],
-                                                      "onKeyDown": [Function],
                                                       "onMenuClose": [Function],
                                                       "onMenuOpen": [Function],
                                                       "openMenuOnClick": true,
@@ -9676,20 +9643,10 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                       "styles": Object {},
                                                       "tabIndex": 0,
                                                       "tabSelectsValue": true,
-                                                      "value": Object {
-                                                        "label": "",
-                                                        "value": "",
-                                                      },
+                                                      "value": null,
                                                     }
                                                   }
-                                                  selectValue={
-                                                    Array [
-                                                      Object {
-                                                        "label": "",
-                                                        "value": "",
-                                                      },
-                                                    ]
-                                                  }
+                                                  selectValue={Array []}
                                                   setValue={[Function]}
                                                   theme={
                                                     Object {
@@ -9777,7 +9734,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                   cx={[Function]}
                                                   getStyles={[Function]}
                                                   getValue={[Function]}
-                                                  hasValue={true}
+                                                  hasValue={false}
                                                   innerProps={
                                                     Object {
                                                       "onMouseDown": [Function],
@@ -9835,7 +9792,6 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                       "onBlur": [Function],
                                                       "onChange": [Function],
                                                       "onInputChange": [Function],
-                                                      "onKeyDown": [Function],
                                                       "onMenuClose": [Function],
                                                       "onMenuOpen": [Function],
                                                       "openMenuOnClick": true,
@@ -9847,10 +9803,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                       "styles": Object {},
                                                       "tabIndex": 0,
                                                       "tabSelectsValue": true,
-                                                      "value": Object {
-                                                        "label": "",
-                                                        "value": "",
-                                                      },
+                                                      "value": null,
                                                     }
                                                   }
                                                   setValue={[Function]}
@@ -9925,7 +9878,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                         cx={[Function]}
                                                         getStyles={[Function]}
                                                         getValue={[Function]}
-                                                        hasValue={true}
+                                                        hasValue={false}
                                                         isDisabled={false}
                                                         isMulti={false}
                                                         isRtl={false}
@@ -9974,7 +9927,6 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                             "onBlur": [Function],
                                                             "onChange": [Function],
                                                             "onInputChange": [Function],
-                                                            "onKeyDown": [Function],
                                                             "onMenuClose": [Function],
                                                             "onMenuOpen": [Function],
                                                             "openMenuOnClick": true,
@@ -9986,10 +9938,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                             "styles": Object {},
                                                             "tabIndex": 0,
                                                             "tabSelectsValue": true,
-                                                            "value": Object {
-                                                              "label": "",
-                                                              "value": "",
-                                                            },
+                                                            "value": null,
                                                           }
                                                         }
                                                         setValue={[Function]}
@@ -10026,7 +9975,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                         <EmotionCssPropInternal
                                                           __EMOTION_LABEL_PLEASE_DO_NOT_USE__="ValueContainer"
                                                           __EMOTION_TYPE_PLEASE_DO_NOT_USE__="div"
-                                                          className="react-select__value-container react-select__value-container--has-value"
+                                                          className="react-select__value-container"
                                                           css={
                                                             Object {
                                                               "WebkitOverflowScrolling": "touch",
@@ -10042,23 +9991,24 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                           }
                                                         >
                                                           <div
-                                                            className="react-select__value-container react-select__value-container--has-value css-319lph-ValueContainer"
+                                                            className="react-select__value-container css-319lph-ValueContainer"
                                                           >
-                                                            <SingleValueFrag
+                                                            <Placeholder
                                                               clearValue={[Function]}
                                                               cx={[Function]}
-                                                              data={
-                                                                Object {
-                                                                  "label": "",
-                                                                  "value": "",
-                                                                }
-                                                              }
                                                               getStyles={[Function]}
                                                               getValue={[Function]}
-                                                              hasValue={true}
+                                                              hasValue={false}
+                                                              innerProps={
+                                                                Object {
+                                                                  "id": "react-select-3-placeholder",
+                                                                }
+                                                              }
                                                               isDisabled={false}
+                                                              isFocused={false}
                                                               isMulti={false}
                                                               isRtl={false}
+                                                              key="placeholder"
                                                               options={Array []}
                                                               selectOption={[Function]}
                                                               selectProps={
@@ -10104,7 +10054,6 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                   "onBlur": [Function],
                                                                   "onChange": [Function],
                                                                   "onInputChange": [Function],
-                                                                  "onKeyDown": [Function],
                                                                   "onMenuClose": [Function],
                                                                   "onMenuOpen": [Function],
                                                                   "openMenuOnClick": true,
@@ -10116,10 +10065,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                   "styles": Object {},
                                                                   "tabIndex": 0,
                                                                   "tabSelectsValue": true,
-                                                                  "value": Object {
-                                                                    "label": "",
-                                                                    "value": "",
-                                                                  },
+                                                                  "value": null,
                                                                 }
                                                               }
                                                               setValue={[Function]}
@@ -10153,152 +10099,34 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                 }
                                                               }
                                                             >
-                                                              <SingleValue
-                                                                clearValue={[Function]}
-                                                                cx={[Function]}
-                                                                data={
+                                                              <EmotionCssPropInternal
+                                                                __EMOTION_LABEL_PLEASE_DO_NOT_USE__="Placeholder"
+                                                                __EMOTION_TYPE_PLEASE_DO_NOT_USE__="div"
+                                                                className="react-select__placeholder"
+                                                                css={
                                                                   Object {
-                                                                    "label": "",
-                                                                    "value": "",
+                                                                    "boxSizing": "border-box",
+                                                                    "color": "hsl(0, 0%, 50%)",
+                                                                    "gridArea": "1 / 1 / 2 / 3",
+                                                                    "label": "placeholder",
+                                                                    "marginLeft": 2,
+                                                                    "marginRight": 2,
                                                                   }
                                                                 }
-                                                                getStyles={[Function]}
-                                                                getValue={[Function]}
-                                                                hasValue={true}
-                                                                isDisabled={false}
-                                                                isMulti={false}
-                                                                isRtl={false}
-                                                                options={Array []}
-                                                                selectOption={[Function]}
-                                                                selectProps={
-                                                                  Object {
-                                                                    "aria-live": "polite",
-                                                                    "backspaceRemovesValue": true,
-                                                                    "blurInputOnSelect": true,
-                                                                    "captureMenuScroll": false,
-                                                                    "className": "react-select-container",
-                                                                    "classNamePrefix": "react-select",
-                                                                    "closeMenuOnScroll": false,
-                                                                    "closeMenuOnSelect": true,
-                                                                    "components": Object {
-                                                                      "DropdownIndicator": [Function],
-                                                                      "IndicatorSeparator": [Function],
-                                                                      "Option": [Function],
-                                                                      "SingleValue": [Function],
-                                                                    },
-                                                                    "controlShouldRenderValue": true,
-                                                                    "escapeClearsValue": false,
-                                                                    "filterOption": [Function],
-                                                                    "formatGroupLabel": [Function],
-                                                                    "getOptionLabel": [Function],
-                                                                    "getOptionValue": [Function],
-                                                                    "id": "paymentType",
-                                                                    "inputValue": "",
-                                                                    "isDisabled": false,
-                                                                    "isLoading": false,
-                                                                    "isMulti": false,
-                                                                    "isOptionDisabled": [Function],
-                                                                    "isRtl": false,
-                                                                    "isSearchable": false,
-                                                                    "loadingMessage": [Function],
-                                                                    "maxMenuHeight": 300,
-                                                                    "menuIsOpen": false,
-                                                                    "menuPlacement": "bottom",
-                                                                    "menuPosition": "absolute",
-                                                                    "menuShouldBlockScroll": false,
-                                                                    "menuShouldScrollIntoView": true,
-                                                                    "minMenuHeight": 140,
-                                                                    "name": "paymentType",
-                                                                    "noOptionsMessage": [Function],
-                                                                    "onBlur": [Function],
-                                                                    "onChange": [Function],
-                                                                    "onInputChange": [Function],
-                                                                    "onKeyDown": [Function],
-                                                                    "onMenuClose": [Function],
-                                                                    "onMenuOpen": [Function],
-                                                                    "openMenuOnClick": true,
-                                                                    "openMenuOnFocus": false,
-                                                                    "options": Array [],
-                                                                    "pageSize": 5,
-                                                                    "placeholder": "Choose",
-                                                                    "screenReaderStatus": [Function],
-                                                                    "styles": Object {},
-                                                                    "tabIndex": 0,
-                                                                    "tabSelectsValue": true,
-                                                                    "value": Object {
-                                                                      "label": "",
-                                                                      "value": "",
-                                                                    },
-                                                                  }
-                                                                }
-                                                                setValue={[Function]}
-                                                                theme={
-                                                                  Object {
-                                                                    "borderRadius": 4,
-                                                                    "colors": Object {
-                                                                      "danger": "#DE350B",
-                                                                      "dangerLight": "#FFBDAD",
-                                                                      "neutral0": "hsl(0, 0%, 100%)",
-                                                                      "neutral10": "hsl(0, 0%, 90%)",
-                                                                      "neutral20": "hsl(0, 0%, 80%)",
-                                                                      "neutral30": "hsl(0, 0%, 70%)",
-                                                                      "neutral40": "hsl(0, 0%, 60%)",
-                                                                      "neutral5": "hsl(0, 0%, 95%)",
-                                                                      "neutral50": "hsl(0, 0%, 50%)",
-                                                                      "neutral60": "hsl(0, 0%, 40%)",
-                                                                      "neutral70": "hsl(0, 0%, 30%)",
-                                                                      "neutral80": "hsl(0, 0%, 20%)",
-                                                                      "neutral90": "hsl(0, 0%, 10%)",
-                                                                      "primary": "#2684FF",
-                                                                      "primary25": "#DEEBFF",
-                                                                      "primary50": "#B2D4FF",
-                                                                      "primary75": "#4C9AFF",
-                                                                    },
-                                                                    "spacing": Object {
-                                                                      "baseUnit": 4,
-                                                                      "controlHeight": 38,
-                                                                      "menuGutter": 8,
-                                                                    },
-                                                                  }
-                                                                }
+                                                                id="react-select-3-placeholder"
                                                               >
-                                                                <EmotionCssPropInternal
-                                                                  __EMOTION_LABEL_PLEASE_DO_NOT_USE__="SingleValue"
-                                                                  __EMOTION_TYPE_PLEASE_DO_NOT_USE__="div"
-                                                                  className="react-select__single-value"
-                                                                  css={
-                                                                    Object {
-                                                                      "boxSizing": "border-box",
-                                                                      "color": "hsl(0, 0%, 20%)",
-                                                                      "gridArea": "1 / 1 / 2 / 3",
-                                                                      "label": "singleValue",
-                                                                      "marginLeft": 2,
-                                                                      "marginRight": 2,
-                                                                      "maxWidth": "100%",
-                                                                      "overflow": "hidden",
-                                                                      "textOverflow": "ellipsis",
-                                                                      "whiteSpace": "nowrap",
-                                                                    }
-                                                                  }
+                                                                <div
+                                                                  className="react-select__placeholder css-14el2xx-placeholder"
+                                                                  id="react-select-3-placeholder"
                                                                 >
-                                                                  <div
-                                                                    className="react-select__single-value css-qc6sy-singleValue"
-                                                                  >
-                                                                    <span
-                                                                      className="value-box"
-                                                                    >
-                                                                       
-                                                                      <span
-                                                                        className="label-text"
-                                                                      />
-                                                                    </span>
-                                                                  </div>
-                                                                </EmotionCssPropInternal>
-                                                              </SingleValue>
-                                                            </SingleValueFrag>
+                                                                  Choose
+                                                                </div>
+                                                              </EmotionCssPropInternal>
+                                                            </Placeholder>
                                                             <DummyInput
                                                               aria-autocomplete="list"
                                                               aria-controls="react-select-3-listbox"
+                                                              aria-describedby="react-select-3-placeholder"
                                                               aria-expanded={false}
                                                               aria-haspopup={true}
                                                               aria-owns="react-select-3-listbox"
@@ -10319,6 +10147,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                 __EMOTION_TYPE_PLEASE_DO_NOT_USE__="input"
                                                                 aria-autocomplete="list"
                                                                 aria-controls="react-select-3-listbox"
+                                                                aria-describedby="react-select-3-placeholder"
                                                                 aria-expanded={false}
                                                                 aria-haspopup={true}
                                                                 aria-owns="react-select-3-listbox"
@@ -10345,6 +10174,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                 <input
                                                                   aria-autocomplete="list"
                                                                   aria-controls="react-select-3-listbox"
+                                                                  aria-describedby="react-select-3-placeholder"
                                                                   aria-expanded={false}
                                                                   aria-haspopup={true}
                                                                   aria-owns="react-select-3-listbox"
@@ -10370,7 +10200,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                         cx={[Function]}
                                                         getStyles={[Function]}
                                                         getValue={[Function]}
-                                                        hasValue={true}
+                                                        hasValue={false}
                                                         isDisabled={false}
                                                         isMulti={false}
                                                         isRtl={false}
@@ -10419,7 +10249,6 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                             "onBlur": [Function],
                                                             "onChange": [Function],
                                                             "onInputChange": [Function],
-                                                            "onKeyDown": [Function],
                                                             "onMenuClose": [Function],
                                                             "onMenuOpen": [Function],
                                                             "openMenuOnClick": true,
@@ -10431,10 +10260,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                             "styles": Object {},
                                                             "tabIndex": 0,
                                                             "tabSelectsValue": true,
-                                                            "value": Object {
-                                                              "label": "",
-                                                              "value": "",
-                                                            },
+                                                            "value": null,
                                                           }
                                                         }
                                                         setValue={[Function]}
@@ -10490,7 +10316,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                               cx={[Function]}
                                                               getStyles={[Function]}
                                                               getValue={[Function]}
-                                                              hasValue={true}
+                                                              hasValue={false}
                                                               isDisabled={false}
                                                               isFocused={false}
                                                               isMulti={false}
@@ -10540,7 +10366,6 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                   "onBlur": [Function],
                                                                   "onChange": [Function],
                                                                   "onInputChange": [Function],
-                                                                  "onKeyDown": [Function],
                                                                   "onMenuClose": [Function],
                                                                   "onMenuOpen": [Function],
                                                                   "openMenuOnClick": true,
@@ -10552,10 +10377,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                   "styles": Object {},
                                                                   "tabIndex": 0,
                                                                   "tabSelectsValue": true,
-                                                                  "value": Object {
-                                                                    "label": "",
-                                                                    "value": "",
-                                                                  },
+                                                                  "value": null,
                                                                 }
                                                               }
                                                               setValue={[Function]}
@@ -10594,7 +10416,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                               cx={[Function]}
                                                               getStyles={[Function]}
                                                               getValue={[Function]}
-                                                              hasValue={true}
+                                                              hasValue={false}
                                                               innerProps={
                                                                 Object {
                                                                   "aria-hidden": "true",
@@ -10651,7 +10473,6 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                   "onBlur": [Function],
                                                                   "onChange": [Function],
                                                                   "onInputChange": [Function],
-                                                                  "onKeyDown": [Function],
                                                                   "onMenuClose": [Function],
                                                                   "onMenuOpen": [Function],
                                                                   "openMenuOnClick": true,
@@ -10663,10 +10484,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                   "styles": Object {},
                                                                   "tabIndex": 0,
                                                                   "tabSelectsValue": true,
-                                                                  "value": Object {
-                                                                    "label": "",
-                                                                    "value": "",
-                                                                  },
+                                                                  "value": null,
                                                                 }
                                                               }
                                                               setValue={[Function]}
@@ -10705,7 +10523,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                 cx={[Function]}
                                                                 getStyles={[Function]}
                                                                 getValue={[Function]}
-                                                                hasValue={true}
+                                                                hasValue={false}
                                                                 innerProps={
                                                                   Object {
                                                                     "aria-hidden": "true",
@@ -10762,7 +10580,6 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                     "onBlur": [Function],
                                                                     "onChange": [Function],
                                                                     "onInputChange": [Function],
-                                                                    "onKeyDown": [Function],
                                                                     "onMenuClose": [Function],
                                                                     "onMenuOpen": [Function],
                                                                     "openMenuOnClick": true,
@@ -10774,10 +10591,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                     "styles": Object {},
                                                                     "tabIndex": 0,
                                                                     "tabSelectsValue": true,
-                                                                    "value": Object {
-                                                                      "label": "",
-                                                                      "value": "",
-                                                                    },
+                                                                    "value": null,
                                                                   }
                                                                 }
                                                                 setValue={[Function]}
@@ -13305,15 +13119,9 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                             name="invoiceFrequency"
                                             onBlur={[Function]}
                                             onChange={[Function]}
-                                            onKeyDown={[Function]}
                                             options={Array []}
                                             placeholder="Choose"
-                                            value={
-                                              Object {
-                                                "label": "",
-                                                "value": "",
-                                              }
-                                            }
+                                            value={null}
                                           />,
                                           undefined,
                                         ],
@@ -13514,15 +13322,9 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                         name="invoiceFrequency"
                                         onBlur={[Function]}
                                         onChange={[Function]}
-                                        onKeyDown={[Function]}
                                         options={Array []}
                                         placeholder="Choose"
-                                        value={
-                                          Object {
-                                            "label": "",
-                                            "value": "",
-                                          }
-                                        }
+                                        value={null}
                                       >
                                         <Select
                                           aria-live="polite"
@@ -13568,7 +13370,6 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                           onBlur={[Function]}
                                           onChange={[Function]}
                                           onInputChange={[Function]}
-                                          onKeyDown={[Function]}
                                           onMenuClose={[Function]}
                                           onMenuOpen={[Function]}
                                           openMenuOnClick={true}
@@ -13580,12 +13381,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                           styles={Object {}}
                                           tabIndex={0}
                                           tabSelectsValue={true}
-                                          value={
-                                            Object {
-                                              "label": "",
-                                              "value": "",
-                                            }
-                                          }
+                                          value={null}
                                         >
                                           <SelectContainer
                                             className="react-select-container"
@@ -13593,7 +13389,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                             cx={[Function]}
                                             getStyles={[Function]}
                                             getValue={[Function]}
-                                            hasValue={true}
+                                            hasValue={false}
                                             innerProps={
                                               Object {
                                                 "id": "invoiceFrequency",
@@ -13649,7 +13445,6 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                 "onBlur": [Function],
                                                 "onChange": [Function],
                                                 "onInputChange": [Function],
-                                                "onKeyDown": [Function],
                                                 "onMenuClose": [Function],
                                                 "onMenuOpen": [Function],
                                                 "openMenuOnClick": true,
@@ -13661,10 +13456,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                 "styles": Object {},
                                                 "tabIndex": 0,
                                                 "tabSelectsValue": true,
-                                                "value": Object {
-                                                  "label": "",
-                                                  "value": "",
-                                                },
+                                                "value": null,
                                               }
                                             }
                                             setValue={[Function]}
@@ -13728,7 +13520,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                   focusedValue={null}
                                                   getStyles={[Function]}
                                                   getValue={[Function]}
-                                                  hasValue={true}
+                                                  hasValue={false}
                                                   id="react-select-4-live-region"
                                                   isFocused={false}
                                                   isMulti={false}
@@ -13778,7 +13570,6 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                       "onBlur": [Function],
                                                       "onChange": [Function],
                                                       "onInputChange": [Function],
-                                                      "onKeyDown": [Function],
                                                       "onMenuClose": [Function],
                                                       "onMenuOpen": [Function],
                                                       "openMenuOnClick": true,
@@ -13790,20 +13581,10 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                       "styles": Object {},
                                                       "tabIndex": 0,
                                                       "tabSelectsValue": true,
-                                                      "value": Object {
-                                                        "label": "",
-                                                        "value": "",
-                                                      },
+                                                      "value": null,
                                                     }
                                                   }
-                                                  selectValue={
-                                                    Array [
-                                                      Object {
-                                                        "label": "",
-                                                        "value": "",
-                                                      },
-                                                    ]
-                                                  }
+                                                  selectValue={Array []}
                                                   setValue={[Function]}
                                                   theme={
                                                     Object {
@@ -13891,7 +13672,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                   cx={[Function]}
                                                   getStyles={[Function]}
                                                   getValue={[Function]}
-                                                  hasValue={true}
+                                                  hasValue={false}
                                                   innerProps={
                                                     Object {
                                                       "onMouseDown": [Function],
@@ -13949,7 +13730,6 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                       "onBlur": [Function],
                                                       "onChange": [Function],
                                                       "onInputChange": [Function],
-                                                      "onKeyDown": [Function],
                                                       "onMenuClose": [Function],
                                                       "onMenuOpen": [Function],
                                                       "openMenuOnClick": true,
@@ -13961,10 +13741,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                       "styles": Object {},
                                                       "tabIndex": 0,
                                                       "tabSelectsValue": true,
-                                                      "value": Object {
-                                                        "label": "",
-                                                        "value": "",
-                                                      },
+                                                      "value": null,
                                                     }
                                                   }
                                                   setValue={[Function]}
@@ -14039,7 +13816,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                         cx={[Function]}
                                                         getStyles={[Function]}
                                                         getValue={[Function]}
-                                                        hasValue={true}
+                                                        hasValue={false}
                                                         isDisabled={false}
                                                         isMulti={false}
                                                         isRtl={false}
@@ -14088,7 +13865,6 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                             "onBlur": [Function],
                                                             "onChange": [Function],
                                                             "onInputChange": [Function],
-                                                            "onKeyDown": [Function],
                                                             "onMenuClose": [Function],
                                                             "onMenuOpen": [Function],
                                                             "openMenuOnClick": true,
@@ -14100,10 +13876,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                             "styles": Object {},
                                                             "tabIndex": 0,
                                                             "tabSelectsValue": true,
-                                                            "value": Object {
-                                                              "label": "",
-                                                              "value": "",
-                                                            },
+                                                            "value": null,
                                                           }
                                                         }
                                                         setValue={[Function]}
@@ -14140,7 +13913,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                         <EmotionCssPropInternal
                                                           __EMOTION_LABEL_PLEASE_DO_NOT_USE__="ValueContainer"
                                                           __EMOTION_TYPE_PLEASE_DO_NOT_USE__="div"
-                                                          className="react-select__value-container react-select__value-container--has-value"
+                                                          className="react-select__value-container"
                                                           css={
                                                             Object {
                                                               "WebkitOverflowScrolling": "touch",
@@ -14156,23 +13929,24 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                           }
                                                         >
                                                           <div
-                                                            className="react-select__value-container react-select__value-container--has-value css-319lph-ValueContainer"
+                                                            className="react-select__value-container css-319lph-ValueContainer"
                                                           >
-                                                            <SingleValueFrag
+                                                            <Placeholder
                                                               clearValue={[Function]}
                                                               cx={[Function]}
-                                                              data={
-                                                                Object {
-                                                                  "label": "",
-                                                                  "value": "",
-                                                                }
-                                                              }
                                                               getStyles={[Function]}
                                                               getValue={[Function]}
-                                                              hasValue={true}
+                                                              hasValue={false}
+                                                              innerProps={
+                                                                Object {
+                                                                  "id": "react-select-4-placeholder",
+                                                                }
+                                                              }
                                                               isDisabled={false}
+                                                              isFocused={false}
                                                               isMulti={false}
                                                               isRtl={false}
+                                                              key="placeholder"
                                                               options={Array []}
                                                               selectOption={[Function]}
                                                               selectProps={
@@ -14218,7 +13992,6 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                   "onBlur": [Function],
                                                                   "onChange": [Function],
                                                                   "onInputChange": [Function],
-                                                                  "onKeyDown": [Function],
                                                                   "onMenuClose": [Function],
                                                                   "onMenuOpen": [Function],
                                                                   "openMenuOnClick": true,
@@ -14230,10 +14003,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                   "styles": Object {},
                                                                   "tabIndex": 0,
                                                                   "tabSelectsValue": true,
-                                                                  "value": Object {
-                                                                    "label": "",
-                                                                    "value": "",
-                                                                  },
+                                                                  "value": null,
                                                                 }
                                                               }
                                                               setValue={[Function]}
@@ -14267,152 +14037,34 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                 }
                                                               }
                                                             >
-                                                              <SingleValue
-                                                                clearValue={[Function]}
-                                                                cx={[Function]}
-                                                                data={
+                                                              <EmotionCssPropInternal
+                                                                __EMOTION_LABEL_PLEASE_DO_NOT_USE__="Placeholder"
+                                                                __EMOTION_TYPE_PLEASE_DO_NOT_USE__="div"
+                                                                className="react-select__placeholder"
+                                                                css={
                                                                   Object {
-                                                                    "label": "",
-                                                                    "value": "",
+                                                                    "boxSizing": "border-box",
+                                                                    "color": "hsl(0, 0%, 50%)",
+                                                                    "gridArea": "1 / 1 / 2 / 3",
+                                                                    "label": "placeholder",
+                                                                    "marginLeft": 2,
+                                                                    "marginRight": 2,
                                                                   }
                                                                 }
-                                                                getStyles={[Function]}
-                                                                getValue={[Function]}
-                                                                hasValue={true}
-                                                                isDisabled={false}
-                                                                isMulti={false}
-                                                                isRtl={false}
-                                                                options={Array []}
-                                                                selectOption={[Function]}
-                                                                selectProps={
-                                                                  Object {
-                                                                    "aria-live": "polite",
-                                                                    "backspaceRemovesValue": true,
-                                                                    "blurInputOnSelect": true,
-                                                                    "captureMenuScroll": false,
-                                                                    "className": "react-select-container",
-                                                                    "classNamePrefix": "react-select",
-                                                                    "closeMenuOnScroll": false,
-                                                                    "closeMenuOnSelect": true,
-                                                                    "components": Object {
-                                                                      "DropdownIndicator": [Function],
-                                                                      "IndicatorSeparator": [Function],
-                                                                      "Option": [Function],
-                                                                      "SingleValue": [Function],
-                                                                    },
-                                                                    "controlShouldRenderValue": true,
-                                                                    "escapeClearsValue": false,
-                                                                    "filterOption": [Function],
-                                                                    "formatGroupLabel": [Function],
-                                                                    "getOptionLabel": [Function],
-                                                                    "getOptionValue": [Function],
-                                                                    "id": "invoiceFrequency",
-                                                                    "inputValue": "",
-                                                                    "isDisabled": false,
-                                                                    "isLoading": false,
-                                                                    "isMulti": false,
-                                                                    "isOptionDisabled": [Function],
-                                                                    "isRtl": false,
-                                                                    "isSearchable": false,
-                                                                    "loadingMessage": [Function],
-                                                                    "maxMenuHeight": 300,
-                                                                    "menuIsOpen": false,
-                                                                    "menuPlacement": "bottom",
-                                                                    "menuPosition": "absolute",
-                                                                    "menuShouldBlockScroll": false,
-                                                                    "menuShouldScrollIntoView": true,
-                                                                    "minMenuHeight": 140,
-                                                                    "name": "invoiceFrequency",
-                                                                    "noOptionsMessage": [Function],
-                                                                    "onBlur": [Function],
-                                                                    "onChange": [Function],
-                                                                    "onInputChange": [Function],
-                                                                    "onKeyDown": [Function],
-                                                                    "onMenuClose": [Function],
-                                                                    "onMenuOpen": [Function],
-                                                                    "openMenuOnClick": true,
-                                                                    "openMenuOnFocus": false,
-                                                                    "options": Array [],
-                                                                    "pageSize": 5,
-                                                                    "placeholder": "Choose",
-                                                                    "screenReaderStatus": [Function],
-                                                                    "styles": Object {},
-                                                                    "tabIndex": 0,
-                                                                    "tabSelectsValue": true,
-                                                                    "value": Object {
-                                                                      "label": "",
-                                                                      "value": "",
-                                                                    },
-                                                                  }
-                                                                }
-                                                                setValue={[Function]}
-                                                                theme={
-                                                                  Object {
-                                                                    "borderRadius": 4,
-                                                                    "colors": Object {
-                                                                      "danger": "#DE350B",
-                                                                      "dangerLight": "#FFBDAD",
-                                                                      "neutral0": "hsl(0, 0%, 100%)",
-                                                                      "neutral10": "hsl(0, 0%, 90%)",
-                                                                      "neutral20": "hsl(0, 0%, 80%)",
-                                                                      "neutral30": "hsl(0, 0%, 70%)",
-                                                                      "neutral40": "hsl(0, 0%, 60%)",
-                                                                      "neutral5": "hsl(0, 0%, 95%)",
-                                                                      "neutral50": "hsl(0, 0%, 50%)",
-                                                                      "neutral60": "hsl(0, 0%, 40%)",
-                                                                      "neutral70": "hsl(0, 0%, 30%)",
-                                                                      "neutral80": "hsl(0, 0%, 20%)",
-                                                                      "neutral90": "hsl(0, 0%, 10%)",
-                                                                      "primary": "#2684FF",
-                                                                      "primary25": "#DEEBFF",
-                                                                      "primary50": "#B2D4FF",
-                                                                      "primary75": "#4C9AFF",
-                                                                    },
-                                                                    "spacing": Object {
-                                                                      "baseUnit": 4,
-                                                                      "controlHeight": 38,
-                                                                      "menuGutter": 8,
-                                                                    },
-                                                                  }
-                                                                }
+                                                                id="react-select-4-placeholder"
                                                               >
-                                                                <EmotionCssPropInternal
-                                                                  __EMOTION_LABEL_PLEASE_DO_NOT_USE__="SingleValue"
-                                                                  __EMOTION_TYPE_PLEASE_DO_NOT_USE__="div"
-                                                                  className="react-select__single-value"
-                                                                  css={
-                                                                    Object {
-                                                                      "boxSizing": "border-box",
-                                                                      "color": "hsl(0, 0%, 20%)",
-                                                                      "gridArea": "1 / 1 / 2 / 3",
-                                                                      "label": "singleValue",
-                                                                      "marginLeft": 2,
-                                                                      "marginRight": 2,
-                                                                      "maxWidth": "100%",
-                                                                      "overflow": "hidden",
-                                                                      "textOverflow": "ellipsis",
-                                                                      "whiteSpace": "nowrap",
-                                                                    }
-                                                                  }
+                                                                <div
+                                                                  className="react-select__placeholder css-14el2xx-placeholder"
+                                                                  id="react-select-4-placeholder"
                                                                 >
-                                                                  <div
-                                                                    className="react-select__single-value css-qc6sy-singleValue"
-                                                                  >
-                                                                    <span
-                                                                      className="value-box"
-                                                                    >
-                                                                       
-                                                                      <span
-                                                                        className="label-text"
-                                                                      />
-                                                                    </span>
-                                                                  </div>
-                                                                </EmotionCssPropInternal>
-                                                              </SingleValue>
-                                                            </SingleValueFrag>
+                                                                  Choose
+                                                                </div>
+                                                              </EmotionCssPropInternal>
+                                                            </Placeholder>
                                                             <DummyInput
                                                               aria-autocomplete="list"
                                                               aria-controls="react-select-4-listbox"
+                                                              aria-describedby="react-select-4-placeholder"
                                                               aria-expanded={false}
                                                               aria-haspopup={true}
                                                               aria-owns="react-select-4-listbox"
@@ -14433,6 +14085,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                 __EMOTION_TYPE_PLEASE_DO_NOT_USE__="input"
                                                                 aria-autocomplete="list"
                                                                 aria-controls="react-select-4-listbox"
+                                                                aria-describedby="react-select-4-placeholder"
                                                                 aria-expanded={false}
                                                                 aria-haspopup={true}
                                                                 aria-owns="react-select-4-listbox"
@@ -14459,6 +14112,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                 <input
                                                                   aria-autocomplete="list"
                                                                   aria-controls="react-select-4-listbox"
+                                                                  aria-describedby="react-select-4-placeholder"
                                                                   aria-expanded={false}
                                                                   aria-haspopup={true}
                                                                   aria-owns="react-select-4-listbox"
@@ -14484,7 +14138,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                         cx={[Function]}
                                                         getStyles={[Function]}
                                                         getValue={[Function]}
-                                                        hasValue={true}
+                                                        hasValue={false}
                                                         isDisabled={false}
                                                         isMulti={false}
                                                         isRtl={false}
@@ -14533,7 +14187,6 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                             "onBlur": [Function],
                                                             "onChange": [Function],
                                                             "onInputChange": [Function],
-                                                            "onKeyDown": [Function],
                                                             "onMenuClose": [Function],
                                                             "onMenuOpen": [Function],
                                                             "openMenuOnClick": true,
@@ -14545,10 +14198,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                             "styles": Object {},
                                                             "tabIndex": 0,
                                                             "tabSelectsValue": true,
-                                                            "value": Object {
-                                                              "label": "",
-                                                              "value": "",
-                                                            },
+                                                            "value": null,
                                                           }
                                                         }
                                                         setValue={[Function]}
@@ -14604,7 +14254,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                               cx={[Function]}
                                                               getStyles={[Function]}
                                                               getValue={[Function]}
-                                                              hasValue={true}
+                                                              hasValue={false}
                                                               isDisabled={false}
                                                               isFocused={false}
                                                               isMulti={false}
@@ -14654,7 +14304,6 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                   "onBlur": [Function],
                                                                   "onChange": [Function],
                                                                   "onInputChange": [Function],
-                                                                  "onKeyDown": [Function],
                                                                   "onMenuClose": [Function],
                                                                   "onMenuOpen": [Function],
                                                                   "openMenuOnClick": true,
@@ -14666,10 +14315,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                   "styles": Object {},
                                                                   "tabIndex": 0,
                                                                   "tabSelectsValue": true,
-                                                                  "value": Object {
-                                                                    "label": "",
-                                                                    "value": "",
-                                                                  },
+                                                                  "value": null,
                                                                 }
                                                               }
                                                               setValue={[Function]}
@@ -14708,7 +14354,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                               cx={[Function]}
                                                               getStyles={[Function]}
                                                               getValue={[Function]}
-                                                              hasValue={true}
+                                                              hasValue={false}
                                                               innerProps={
                                                                 Object {
                                                                   "aria-hidden": "true",
@@ -14765,7 +14411,6 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                   "onBlur": [Function],
                                                                   "onChange": [Function],
                                                                   "onInputChange": [Function],
-                                                                  "onKeyDown": [Function],
                                                                   "onMenuClose": [Function],
                                                                   "onMenuOpen": [Function],
                                                                   "openMenuOnClick": true,
@@ -14777,10 +14422,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                   "styles": Object {},
                                                                   "tabIndex": 0,
                                                                   "tabSelectsValue": true,
-                                                                  "value": Object {
-                                                                    "label": "",
-                                                                    "value": "",
-                                                                  },
+                                                                  "value": null,
                                                                 }
                                                               }
                                                               setValue={[Function]}
@@ -14819,7 +14461,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                 cx={[Function]}
                                                                 getStyles={[Function]}
                                                                 getValue={[Function]}
-                                                                hasValue={true}
+                                                                hasValue={false}
                                                                 innerProps={
                                                                   Object {
                                                                     "aria-hidden": "true",
@@ -14876,7 +14518,6 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                     "onBlur": [Function],
                                                                     "onChange": [Function],
                                                                     "onInputChange": [Function],
-                                                                    "onKeyDown": [Function],
                                                                     "onMenuClose": [Function],
                                                                     "onMenuOpen": [Function],
                                                                     "openMenuOnClick": true,
@@ -14888,10 +14529,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                     "styles": Object {},
                                                                     "tabIndex": 0,
                                                                     "tabSelectsValue": true,
-                                                                    "value": Object {
-                                                                      "label": "",
-                                                                      "value": "",
-                                                                    },
+                                                                    "value": null,
                                                                   }
                                                                 }
                                                                 setValue={[Function]}
