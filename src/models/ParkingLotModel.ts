@@ -57,6 +57,14 @@ export interface AddParkingLotForm {
     locationContact: lotContact[];
 }
 
+export const orderScheduleDel = [{
+    fromDate: '',
+    toDate: '',
+    startTime: '',
+    endTime: '',
+    productDelDays: []
+}];
+
 export const addLotFormInitialValues = {
     lotName: '',
     lotId: '',
@@ -69,13 +77,7 @@ export const addLotFormInitialValues = {
     timeZone: { label: '', value: '' },
     jurisdictionId: '',
     productDelFreq: { label: '', value: '' },
-    orderScheduleDel: [{
-        fromDate: '',
-        toDate: '',
-        startTime: '',
-        endTime: '',
-        productDelDays: []
-    }],
+    orderScheduleDel: orderScheduleDel,
     locationContact: [{
         firstName: '',
         lastName: '',

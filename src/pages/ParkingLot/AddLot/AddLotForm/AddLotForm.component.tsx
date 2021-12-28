@@ -9,7 +9,7 @@ import Input from '../../../../components/UIComponents/Input/Input';
 import Select from '../../../../components/UIComponents/Select/SingleSelect';
 import ToastMessage from '../../../../components/UIComponents/ToastMessage/ToastMessage.component';
 import Divider from '@mui/material/Divider';
-import { AddParkingLotForm, addLotFormInitialValues, lotContact, orderSchDel } from '../../../../models/ParkingLotModel';
+import { AddParkingLotForm, addLotFormInitialValues, orderScheduleDel, lotContact, orderSchDel } from '../../../../models/ParkingLotModel';
 import AddParkingLotValidationSchema from '../validation';
 import { useCreateLot, useEditParkingLot, useGetContactTypes, useGetParkingLotData, useGetTimeZones } from '../queries';
 import AutocompleteInput from '../../../../components/UIComponents/GoogleAddressComponent/GoogleAutoCompleteAddress';
@@ -17,6 +17,7 @@ import { PlusIcon, EditIcon } from '../../../../assets/icons';
 import { useTheme } from '../../../../contexts/Theme/Theme.context';
 import { formStatusObj, productDelFreq, getCountry, daysToDeliver } from '../../config';
 import MultiSelect from '../../../../components/UIComponents/Select/MultiSelect';
+import SingleSelect from '../../../../components/UIComponents/Select/SingleSelect';
 import { DatePickerInput } from '../../../../components/UIComponents/DatePickerInput/DatePickerInput.component';
 import { TimePicker } from '../../../../components/UIComponents/TimePicker/TimePicker.component';
 import { useAddedCustomerIdStore, useAddedCustomerNameStore, useAddedParkingLotIdStore, useShowConfirmationDialogBoxStore } from '../../../../store';
@@ -353,6 +354,19 @@ function AddLotForm(): React.ReactElement {
         }
     };
 
+    const handleProductDelFreq = (fieldName: string, value: any) => {
+        formik.setFieldValue(fieldName, value);
+        formik.setFieldValue('orderScheduleDel', orderScheduleDel);
+    };
+
+    const isOrderScheduleDelDisabled = () => {
+        if (formik.values.productDelFreq.value && formik.values.orderScheduleDel.length < 10) {
+            return false;
+        }
+        else return true;
+    };
+
+
     return (
         <>
             <Grid item md={10} xs={10}>
@@ -527,7 +541,7 @@ function AddLotForm(): React.ReactElement {
                                         items={productDelFreq}
                                         helperText={(formik.touched.productDelFreq && formik.errors.productDelFreq) ? formik.errors.productDelFreq.value : undefined}
                                         error={(formik.touched.timeZone && formik.errors.timeZone) ? true : false}
-                                        onChange={formik.setFieldValue}
+                                        onChange={handleProductDelFreq}
                                         isDisabled={isDisabled}
                                         onBlur={() => { formik.setFieldTouched("productDelFreq"); formik.validateField("productDelFreq"); }}
                                     />
@@ -543,19 +557,18 @@ function AddLotForm(): React.ReactElement {
 
                                 <FieldArray
                                     name="orderScheduleDel"
-                                    render={() => (
+                                    render={(arr) => (
                                         <React.Fragment>
                                             {formik.values.orderScheduleDel.map((orderSchObj, index) => (
                                                 <Grid container key={index}>
-
                                                     <Grid item md={3} pr={2.5} pb={2.5}>
                                                         <DatePickerInput
                                                             type="single-date"
                                                             label='FROM DATE'
                                                             name={`orderScheduleDel[${index}].fromDate`}
                                                             value={formik.values.orderScheduleDel[index].fromDate}
+                                                            disabled={formik.values.productDelFreq.value === '' ? true : false}
                                                             onChange={formik.setFieldValue}
-                                                            disabled
                                                             onClose={() => { formik.setFieldTouched(`orderScheduleDel[${index}].fromDate`); formik.validateField(`orderScheduleDel[${index}].fromDate`); }}
                                                             id={`orderScheduleDel[${index}].fromDate`}
                                                             helperText={
@@ -578,8 +591,8 @@ function AddLotForm(): React.ReactElement {
                                                             id={`orderScheduleDel[${index}].toDate`}
                                                             name={`orderScheduleDel[${index}].toDate`}
                                                             value={formik.values.orderScheduleDel[index].toDate}
+                                                            disabled={formik.values.productDelFreq.value === '' ? true : false}
                                                             onChange={formik.setFieldValue}
-                                                            disabled
                                                             onClose={() => { formik.setFieldTouched(`orderScheduleDel[${index}].toDate`); formik.validateField(`orderScheduleDel[${index}].toDate`); }}
                                                             helperText={
                                                                 formik?.errors?.orderScheduleDel && formik?.touched?.orderScheduleDel &&
@@ -596,28 +609,51 @@ function AddLotForm(): React.ReactElement {
                                                     </Grid>
 
                                                     <Grid item xs={12} md={6} pl={2.5} pr={2.5} pb={2.5}>
-                                                        <MultiSelect
-                                                            id={`orderScheduleDel[${index}].productDelDays`}
-                                                            label='SELECT DAYS TO DELIVER PRODUCT'
-                                                            placeholder='Select Multiple Days'
-                                                            items={daysToDeliver(formik?.values?.productDelFreq?.value)}
-                                                            name={`orderScheduleDel[${index}].productDelDays`}
-                                                            value={formik.values.orderScheduleDel[index].productDelDays}
-                                                            onChange={formik.setFieldValue}
-                                                            disabled={false}
-                                                            onBlur={() => { formik.setFieldTouched(`orderScheduleDel[${index}].productDelDays`); formik.validateField(`orderScheduleDel[${index}].productDelDays`); }}
-                                                            helperText={
-                                                                formik?.errors?.orderScheduleDel && formik?.touched?.orderScheduleDel &&
-                                                                    (formik.touched?.orderScheduleDel?.[index]?.fromDate && ((formik.errors?.orderScheduleDel?.[index] as orderSchDel)?.fromDate))
-                                                                    ?
-                                                                    (formik.errors.orderScheduleDel[index] as orderSchDel).fromDate : undefined
-                                                            }
-                                                            error={
-                                                                formik?.errors?.orderScheduleDel && formik?.touched?.orderScheduleDel &&
-                                                                    (formik.touched?.orderScheduleDel?.[index]?.fromDate && ((formik.errors?.orderScheduleDel?.[index] as orderSchDel)?.fromDate))
-                                                                    ? true : false
-                                                            }
-                                                        />
+                                                        {(formik?.values?.productDelFreq?.value === 'weekly' || formik?.values?.productDelFreq?.value === 'monthly') ?
+                                                            (<SingleSelect
+                                                                id={`orderScheduleDel[${index}].productDelDays`}
+                                                                label='SELECT DAYS TO DELIVER PRODUCT'
+                                                                placeholder='Select Day'
+                                                                items={daysToDeliver(formik?.values?.productDelFreq?.value)}
+                                                                name={`orderScheduleDel[${index}].productDelDays`}
+                                                                value={formik.values.orderScheduleDel[index].productDelDays}
+                                                                onChange={formik.setFieldValue}
+                                                                onBlur={() => { formik.setFieldTouched(`orderScheduleDel[${index}].productDelDays`); formik.validateField(`orderScheduleDel[${index}].productDelDays`); }}
+                                                                helperText={
+                                                                    formik?.errors?.orderScheduleDel && formik?.touched?.orderScheduleDel &&
+                                                                        (formik.touched?.orderScheduleDel?.[index]?.fromDate && ((formik.errors?.orderScheduleDel?.[index] as orderSchDel)?.fromDate))
+                                                                        ?
+                                                                        (formik.errors.orderScheduleDel[index] as orderSchDel).fromDate : undefined
+                                                                }
+                                                                error={
+                                                                    formik?.errors?.orderScheduleDel && formik?.touched?.orderScheduleDel &&
+                                                                        (formik.touched?.orderScheduleDel?.[index]?.fromDate && ((formik.errors?.orderScheduleDel?.[index] as orderSchDel)?.fromDate))
+                                                                        ? true : false
+                                                                }
+                                                            />) : (
+                                                                <MultiSelect
+                                                                    id={`orderScheduleDel[${index}].productDelDays`}
+                                                                    label='SELECT DAYS TO DELIVER PRODUCT'
+                                                                    placeholder='Select Multiple Days'
+                                                                    items={daysToDeliver(formik?.values?.productDelFreq?.value)}
+                                                                    name={`orderScheduleDel[${index}].productDelDays`}
+                                                                    value={formik.values.orderScheduleDel[index].productDelDays}
+                                                                    disabled={formik.values.productDelFreq.value === '' ? true : false}
+                                                                    onChange={formik.setFieldValue}
+                                                                    onBlur={() => { formik.setFieldTouched(`orderScheduleDel[${index}].productDelDays`); formik.validateField(`orderScheduleDel[${index}].productDelDays`); }}
+                                                                    helperText={
+                                                                        formik?.errors?.orderScheduleDel && formik?.touched?.orderScheduleDel &&
+                                                                            (formik.touched?.orderScheduleDel?.[index]?.fromDate && ((formik.errors?.orderScheduleDel?.[index] as orderSchDel)?.fromDate))
+                                                                            ?
+                                                                            (formik.errors.orderScheduleDel[index] as orderSchDel).fromDate : undefined
+                                                                    }
+                                                                    error={
+                                                                        formik?.errors?.orderScheduleDel && formik?.touched?.orderScheduleDel &&
+                                                                            (formik.touched?.orderScheduleDel?.[index]?.fromDate && ((formik.errors?.orderScheduleDel?.[index] as orderSchDel)?.fromDate))
+                                                                            ? true : false
+                                                                    }
+                                                                />
+                                                            )}
                                                     </Grid>
 
                                                     <Grid item md={3} pr={2.5} pb={2.5}>
@@ -627,7 +663,7 @@ function AddLotForm(): React.ReactElement {
                                                             name={`orderScheduleDel[${index}].startTime`}
                                                             value={formik.values.orderScheduleDel[index].startTime}
                                                             onChange={formik.setFieldValue}
-                                                            disabled
+                                                            disabled={formik.values.productDelFreq.value === '' ? true : false}
                                                             helperText={
                                                                 formik?.errors?.orderScheduleDel && formik?.touched?.orderScheduleDel &&
                                                                     (formik.touched?.orderScheduleDel?.[index]?.startTime && ((formik.errors?.orderScheduleDel?.[index] as orderSchDel)?.startTime))
@@ -649,7 +685,7 @@ function AddLotForm(): React.ReactElement {
                                                             name={`orderScheduleDel[${index}].endTime`}
                                                             value={formik.values.orderScheduleDel[index].endTime}
                                                             onChange={formik.setFieldValue}
-                                                            disabled
+                                                            disabled={formik.values.productDelFreq.value === '' ? true : false}
                                                             helperText={
                                                                 formik?.errors?.orderScheduleDel && formik?.touched?.orderScheduleDel &&
                                                                     (formik.touched?.orderScheduleDel?.[index]?.endTime && ((formik.errors?.orderScheduleDel?.[index] as orderSchDel)?.endTime))
@@ -670,15 +706,14 @@ function AddLotForm(): React.ReactElement {
                                             <Grid item md={12} mt={2} mb={4}>
                                                 <Link
                                                     variant="body2"
-                                                    className="add-link disabled-text-link"
-                                                // Temporary disabled   
-                                                // onClick={() => {
-                                                //     if (formik.values.locationContact.length < 5) {
-                                                //         arrayHelpers.push({ firstName: "", lastName: "", email: "", phoneNumber: "" });
-                                                //     }
-                                                // }}
+                                                    className={isOrderScheduleDelDisabled() ? "add-link disabled-text-link" : "add-link"}
+                                                    onClick={() => {
+                                                        if (!isOrderScheduleDelDisabled()) {
+                                                            arr.push(orderScheduleDel);
+                                                        }
+                                                    }}
                                                 >
-                                                    <span className="add-icon-span"><PlusIcon color={theme["--Secondary-Background"]} /></span>
+                                                    <span className="add-icon-span"><PlusIcon color={isOrderScheduleDelDisabled() ? theme["--Secondary-Background"] : theme["--Primary"]} /></span>
                                                     <Typography variant="h3" component="h3" className="fw-bold MuiTypography-h5-primary disabled-text" mb={1}>
                                                         ADD ANOTHER ORDER SCHEDULE
                                                     </Typography>
