@@ -572,6 +572,7 @@ function AddLotForm(): React.ReactElement {
                                                         <DatePickerInput
                                                             type="single-date"
                                                             label='FROM DATE'
+                                                            required={formik.values.productDelFreq.value ? true : false}
                                                             name={`orderScheduleDel[${index}].fromDate`}
                                                             value={formik.values.orderScheduleDel[index].fromDate}
                                                             disabled={formik.values.productDelFreq.value === '' ? true : false}
@@ -621,10 +622,12 @@ function AddLotForm(): React.ReactElement {
                                                                 id={`orderScheduleDel[${index}].productDelDays`}
                                                                 label='SELECT DAYS TO DELIVER PRODUCT'
                                                                 placeholder='Select Day'
+                                                                required={formik.values.productDelFreq.value ? true : false}
                                                                 items={daysToDeliver(formik?.values?.productDelFreq?.value)}
                                                                 name={`orderScheduleDel[${index}].productDelDays`}
                                                                 value={formik.values.orderScheduleDel[index].productDelDays}
                                                                 onChange={formik.setFieldValue}
+
                                                                 onBlur={() => { formik.setFieldTouched(`orderScheduleDel[${index}].productDelDays`); formik.validateField(`orderScheduleDel[${index}].productDelDays`); }}
                                                                 helperText={
                                                                     formik?.errors?.orderScheduleDel && formik?.touched?.orderScheduleDel &&
@@ -642,6 +645,7 @@ function AddLotForm(): React.ReactElement {
                                                                     id={`orderScheduleDel[${index}].productDelDays`}
                                                                     label='SELECT DAYS TO DELIVER PRODUCT'
                                                                     placeholder='Select Multiple Days'
+                                                                    required={formik.values.productDelFreq.value ? true : false}
                                                                     items={daysToDeliver(formik?.values?.productDelFreq?.value)}
                                                                     name={`orderScheduleDel[${index}].productDelDays`}
                                                                     value={formik.values.orderScheduleDel[index].productDelDays}
@@ -662,16 +666,6 @@ function AddLotForm(): React.ReactElement {
                                                                 />
                                                             )}
                                                     </Grid>
-                                                    ErrorCheck1
-                                                    {formik?.errors?.orderScheduleDel ? 'true' : 'false'}
-                                                    ErrorCheck2
-                                                    {formik?.touched?.orderScheduleDel ? 'true' : 'false'}
-                                                    ErrorCheck3
-                                                    {formik.touched?.orderScheduleDel?.[index]?.fromDate ? 'true' : 'false'}
-                                                    ErrorCheck4
-                                                    {((formik.errors?.orderScheduleDel?.[index] as orderSchDel)?.fromDate) ? 'true' : 'false'}
-                                                    {/* {(formik?.errors?.orderScheduleDel && formik?.touched?.orderScheduleDel && (formik.touched?.orderScheduleDel?.[index]?.fromDate && ((formik.errors?.orderScheduleDel?.[index] as orderSchDel)?.fromDate)))?"true":'false'} */}
-                                                    ErrorCheck
                                                     <Grid item md={3} pr={2.5} pb={2.5}>
                                                         <TimePicker
                                                             label='START TIME'
@@ -679,6 +673,7 @@ function AddLotForm(): React.ReactElement {
                                                             name={`orderScheduleDel[${index}].startTime`}
                                                             value={formik.values.orderScheduleDel[index].startTime}
                                                             onChange={formik.setFieldValue}
+                                                            required={formik.values.productDelFreq.value ? true : false}
                                                             disabled={formik.values.productDelFreq.value === '' ? true : false}
                                                             helperText={
                                                                 formik?.errors?.orderScheduleDel && formik?.touched?.orderScheduleDel &&
@@ -701,6 +696,7 @@ function AddLotForm(): React.ReactElement {
                                                             name={`orderScheduleDel[${index}].endTime`}
                                                             value={formik.values.orderScheduleDel[index].endTime}
                                                             onChange={formik.setFieldValue}
+                                                            required={formik.values.productDelFreq.value ? true : false}
                                                             disabled={formik.values.productDelFreq.value === '' ? true : false}
                                                             helperText={
                                                                 formik?.errors?.orderScheduleDel && formik?.touched?.orderScheduleDel &&
