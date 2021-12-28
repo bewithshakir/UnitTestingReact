@@ -36,8 +36,8 @@ export interface lotContact {
 export interface orderSchDel {
     fromDate: moment.Moment | string | null,
     toDate: moment.Moment | string | null,
-    startTime: string,
-    endTime: string,
+    startTime: string | '',
+    endTime: string | '',
     productDelDays: Array<mutiSelectItem>
 }
 
@@ -58,8 +58,8 @@ export interface AddParkingLotForm {
 }
 
 export const orderScheduleDel = [{
-    fromDate: '',
-    toDate: '',
+    fromDate: null,
+    toDate: null,
     startTime: '',
     endTime: '',
     productDelDays: []
@@ -122,8 +122,8 @@ export default class ParkingLotModel {
         this.jurisdictionId = '';
         this.productDelFreq = { label: '', value: '' };
         this.orderScheduleDel = [{
-            fromDate: '',
-            toDate: '',
+            fromDate: null,
+            toDate: null,
             startTime: '',
             endTime: '',
             productDelDays: []
