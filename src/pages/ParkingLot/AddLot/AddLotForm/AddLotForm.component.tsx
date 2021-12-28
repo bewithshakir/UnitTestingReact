@@ -624,11 +624,15 @@ function AddLotForm(): React.ReactElement {
                                                             }
                                                         />
                                                     </Grid>
-                                                    ErrorCheck
-                                                    {formik?.errors?.orderScheduleDel?'true':false}
-                                                    {formik?.touched?.orderScheduleDel}
-                                                    {formik.touched?.orderScheduleDel?.[index]?.fromDate}
-                                                    {(formik?.errors?.orderScheduleDel && formik?.touched?.orderScheduleDel && (formik.touched?.orderScheduleDel?.[index]?.fromDate && ((formik.errors?.orderScheduleDel?.[index] as orderSchDel)?.fromDate)))?"true":'false'}
+                                                    ErrorCheck1
+                                                    {formik?.errors?.orderScheduleDel?'true':'false'}
+                                                    ErrorCheck2
+                                                    {formik?.touched?.orderScheduleDel?'true':'false'}
+                                                    ErrorCheck3
+                                                    {formik.touched?.orderScheduleDel?.[index]?.fromDate?'true':'false'}
+                                                    ErrorCheck4
+                                                    {((formik.errors?.orderScheduleDel?.[index] as orderSchDel)?.fromDate)?'true':'false'}
+                                                    {/* {(formik?.errors?.orderScheduleDel && formik?.touched?.orderScheduleDel && (formik.touched?.orderScheduleDel?.[index]?.fromDate && ((formik.errors?.orderScheduleDel?.[index] as orderSchDel)?.fromDate)))?"true":'false'} */}
                                                     ErrorCheck
                                                     <Grid item md={3} pr={2.5} pb={2.5}>
                                                         <TimePicker
