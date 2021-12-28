@@ -34,7 +34,8 @@ interface DatePickerProps {
     displayFormat?: string;
     id: string;
     name: string;
-    dateRangeMiddleText?:string 
+    dateRangeMiddleText?:string
+    onBlur?: (...args: any[]) => void; 
 }
 
 
@@ -50,7 +51,7 @@ const  inputEndornmentProps = {
     )
 };
 
-export const DatePickerInput: React.FC<DatePickerProps> = ({label,type, placeholder, required, error, value, disabled, dateRangeValue, helperText, onChange, onDateRangeChange, disableBeforeDate, disableAfterDate, id, name, dateRangeMiddleText}) => {
+export const DatePickerInput: React.FC<DatePickerProps> = ({label,type, placeholder, required, error, value, disabled, dateRangeValue, helperText, onChange, onDateRangeChange, disableBeforeDate, disableAfterDate, id, name, dateRangeMiddleText, onBlur}) => {
     const [openRangeCal, setOpenRangeCal] = useState(false);  
     const [openSingleDateCal, setOpenSingleDateCal] = useState(false);  
     const disableDates = (date: moment.Moment  | null) => {
@@ -113,9 +114,9 @@ export const DatePickerInput: React.FC<DatePickerProps> = ({label,type, placehol
                                         endProps.inputProps.placeholder = (typeof placeholder === 'object' && placeholder !== null) ? placeholder.end : "to";
                                     }
                                     return <React.Fragment>
-                                        <TextField {...startProps} onClick={() => setRangePickerStatus(true)} InputProps={inputEndornmentProps} InputLabelProps={{ shrink: false }} />
+                                        <TextField id={id} name={name}  onBlur={onBlur} {...startProps} onClick={() => setRangePickerStatus(true)} InputProps={inputEndornmentProps} InputLabelProps={{ shrink: false }} />
                                         <Box sx={dateRangeMiddleTextSx}> {dateRangeMiddleText?dateRangeMiddleText:""} </Box>
-                                        <TextField {...endProps} onClick={() => setRangePickerStatus(true)} InputProps={inputEndornmentProps} InputLabelProps={{ shrink: false }} />
+                                        <TextField  onBlur={onBlur} {...endProps} onClick={() => setRangePickerStatus(true)} InputProps={inputEndornmentProps} InputLabelProps={{ shrink: false }} />
                                     </React.Fragment>;
                                 }}
                             />}
@@ -137,7 +138,7 @@ export const DatePickerInput: React.FC<DatePickerProps> = ({label,type, placehol
                                     if (params.inputProps) {
                                         params.inputProps.placeholder = (typeof placeholder === 'string' && placeholder !== null)? placeholder:"";
                                     }
-                                    return <TextField onClick={() => setSinglePickerStatus(true)} {...params} />;
+                                    return <TextField id={id}  name={name} onBlur={onBlur} onClick={() => setSinglePickerStatus(true)} {...params} />;
 
                                 }}
                             />}
