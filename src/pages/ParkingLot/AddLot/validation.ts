@@ -23,18 +23,16 @@ const AddParkingLotValidationSchema = Yup.object().shape({
         )
         .required('Must have emergency contact') 
         .min(1, 'Minimum of 1 emergency contact'),
-    // orderScheduleDel: Yup.array()
-    //     .of(
-    //         Yup.object().shape({
-    //             fromDate: Yup.object().required('Required'),
-    //             toDate: Yup.object().required('Required'),
-    //             startTime: Yup.string().required('Required'),
-    //             endTime: Yup.string().required('Required'),
-    //             productDelDays: Yup.object().shape({ label: Yup.string().required('Required'), value: Yup.string().required('Required') })
-    //         })
-    //     )
-        // .required('Must have cp contact') 
-        // .min(1, 'Minimum of 1 cp contact'),
+    orderScheduleDel: Yup.array()
+        .of(
+            Yup.object().shape({
+                fromDate: Yup.object().required('Required'),
+                toDate: Yup.object().required('Required'),
+                startTime: Yup.string().required('Required'),
+                endTime: Yup.string().required('Required'),
+                productDelDays: Yup.object().shape({ label: Yup.string().required('Required'), value: Yup.string().required('Required') })
+            })
+        ),
 });
 
 export default AddParkingLotValidationSchema;
