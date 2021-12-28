@@ -26,8 +26,8 @@ const AddParkingLotValidationSchema = Yup.object().shape({
     orderScheduleDel: Yup.array()
         .of(
             Yup.object().shape({
-                fromDate: Yup.object().required('Required'),
-                toDate: Yup.object().required('Required'),
+                fromDate: Yup.object().nullable().required('Required'),
+                toDate: Yup.object().nullable().required('Required'),
                 startTime: Yup.string().required('Required'),
                 endTime: Yup.string().required('Required'),
                 productDelDays: Yup.object().shape({ label: Yup.string().required('Required'), value: Yup.string().required('Required') })

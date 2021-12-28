@@ -28,6 +28,7 @@ interface TimePickerProps {
     id: string;
     name: string;
     timeDiffMins?: number;
+    onBlur?: (...args: any[]) => void;
 }
 
 const timeValidation = (str: string) => {
@@ -35,7 +36,7 @@ const timeValidation = (str: string) => {
 };
 
 
-export const TimePicker: React.FC<TimePickerProps> = ({ label, value, onChange, name, required, timeDiffMins, disabled, id, helperText, error, placeholder }) => {
+export const TimePicker: React.FC<TimePickerProps> = ({ label, value, onChange, name, required, timeDiffMins, disabled, id, helperText, error, placeholder, onBlur }) => {
     const [validTime, setValidTime] = React.useState<boolean>(true);
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const [inputValue, setInputValue] = React.useState<string>('');
@@ -136,6 +137,7 @@ export const TimePicker: React.FC<TimePickerProps> = ({ label, value, onChange, 
                     placeholder={placeholder}
                     onKeyDown={handleKeyDown}
                     disabled={disabled}
+                    onBlur={onBlur}
                     endAdornment={<InputAdornment position="start"> <Icon ><TimeIconComp /></Icon></InputAdornment>}
                 />
                 <Popper
