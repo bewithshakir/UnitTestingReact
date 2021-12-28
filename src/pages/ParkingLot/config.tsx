@@ -74,6 +74,26 @@ export const productDelFreq = [
   { label: 'Bi-Weekly', value: 'bi-weekly' },
 ];
 
+export const daysToDeliver = (x:string) => {
+  const other = [
+    { label: 'Monday', value: 'monday' },
+    { label: 'Tuesday', value: 'tuesday' },
+    { label: 'Wednesday', value: 'wednesday' },
+    { label: 'Thursday', value: 'thursday' },
+    { label: 'Friday', value: 'friday' },
+    { label: 'Saturday', value: 'saturday' },
+    { label: 'Sunday', value: 'sunday' },
+  ];
+  const weekends = [
+    { label: 'Saturday', value: 'saturday' },
+    { label: 'Sunday', value: 'sunday' }
+  ];
+  return ({
+    'weekends': weekends,
+    'other': other
+  }[x] || other );
+};
+
 export const lotHeaderBoxSx = { width: '100%', marginTop: '-2.5em' };
 export const lotHeaderInnerBoxSx = { borderBottom: 1, borderColor: 'divider' };
 
