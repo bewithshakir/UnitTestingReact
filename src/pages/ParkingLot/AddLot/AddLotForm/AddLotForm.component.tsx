@@ -9,7 +9,7 @@ import Input from '../../../../components/UIComponents/Input/Input';
 import Select from '../../../../components/UIComponents/Select/SingleSelect';
 import ToastMessage from '../../../../components/UIComponents/ToastMessage/ToastMessage.component';
 import Divider from '@mui/material/Divider';
-import { AddParkingLotForm, addLotFormInitialValues, orderScheduleDel, lotContact, orderSchDel } from '../../../../models/ParkingLotModel';
+import { AddParkingLotForm, addLotFormInitialValues, lotContact, orderSchDel } from '../../../../models/ParkingLotModel';
 import AddParkingLotValidationSchema from '../validation';
 import { useCreateLot, useEditParkingLot, useGetContactTypes, useGetParkingLotData, useGetTimeZones } from '../queries';
 import AutocompleteInput from '../../../../components/UIComponents/GoogleAddressComponent/GoogleAutoCompleteAddress';
@@ -356,7 +356,15 @@ function AddLotForm(): React.ReactElement {
 
     const handleProductDelFreq = (fieldName: string, value: any) => {
         formik.setFieldValue(fieldName, value);
-        formik.setFieldValue('orderScheduleDel', orderScheduleDel);
+        formik.setFieldValue('orderScheduleDel',[{
+            fromDate: null,
+            toDate: null,
+            startTime: '',
+            endTime: '',
+            productDelDays: { label: '', value: '' },
+            productDelDaysMulti: [],
+            delFreq: value.label
+        }]);
     };
 
     const isOrderScheduleDelDisabled = () => {
@@ -671,7 +679,7 @@ function AddLotForm(): React.ReactElement {
                                                             name={`orderScheduleDel[${index}].startTime`}
                                                             value={formik.values.orderScheduleDel[index].startTime}
                                                             onChange={formik.setFieldValue}
-                                                            required={formik.values.productDelFreq?.value?true:false}
+                                                            required={formik.values.productDelFreq?.value ? true:false}
                                                             disabled={formik.values.productDelFreq.value === '' ? true : false}
                                                             onBlur={() => { formik.setFieldTouched(`orderScheduleDel[${index}].startTime`); formik.validateField(`orderScheduleDel[${index}].startTime`); }}
                                                             helperText={
@@ -695,7 +703,7 @@ function AddLotForm(): React.ReactElement {
                                                             name={`orderScheduleDel[${index}].endTime`}
                                                             value={formik.values.orderScheduleDel[index].endTime}
                                                             onChange={formik.setFieldValue}
-                                                            required={formik.values.productDelFreq?.value? true : false}
+                                                            required={formik.values.productDelFreq?.value ? true : false}
                                                             disabled={formik.values.productDelFreq.value === '' ? true : false}
                                                             onBlur={() => { formik.setFieldTouched(`orderScheduleDel[${index}].endTime`); formik.validateField(`orderScheduleDel[${index}].endTime`); }}
                                                             helperText={
@@ -727,7 +735,8 @@ function AddLotForm(): React.ReactElement {
                                                                 startTime: '',
                                                                 endTime: '',
                                                                 productDelDays: { label: '', value: '' },
-                                                                productDelDaysMulti: []
+                                                                productDelDaysMulti: [],
+                                                                delFreq: formik.values.productDelFreq.label
                                                             });
                                                             
                                                         }
