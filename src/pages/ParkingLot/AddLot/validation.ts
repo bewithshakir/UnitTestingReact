@@ -31,46 +31,26 @@ const AddParkingLotValidationSchema = Yup.object().shape({
                 startTime: Yup.string().required('Required'),
                 endTime: Yup.string().required('Required'),
                 productDelDaysMulti: Yup.array()
-                .of(
-                    Yup.object().shape({
-                        label: Yup.string().required('Required') , 
-                        value: Yup.string().required('Required') 
-                    })
-                )
-                // .required('Must have emergency contact') 
-                .when(['productDelFreq'], {
-                    is: (productDelFreq:any) => {
-                        console.log("validation test--->", productDelFreq);// eslint-disable-line no-console
-                        return (productDelFreq);
-                    },
-                    then: Yup.array().required('Required')
-                }),
-                // .when('productDelFreq', {
-                //     is: true,
-                //     then: Yup.array().required('Required'),
-                // }),
+                
+                // .when('productDelFreq', (productDelFreq, schema) => {
+                //     return productDelFreq ? schema.array().required('Must have emergency contact').min(2, 'Two days should be selected in case of Bi-weekly delivery frequency') : schema;
+                //   }),
+                .when('productDelFreq', {
+                    is: (productDelFreq:any) => productDelFreq?.label?.toLowerCase() === 'daily' || productDelFreq?.label?.toLowerCase() === 'bi-weekly',
+                    then: Yup.array()
+                    .of(
+                        Yup.object().shape({
+                            label: Yup.string().required('Required'),
+                            value: Yup.string().required('Required')
+                        })
+                    ).
+                    required('Required').min(2, 'Two days should be selected in case of Bi-weekly delivery frequency')
+                  }),
+
                 productDelDays: Yup.object().shape({ label: Yup.string().required('Required') , value: Yup.string().required('Required') }).when('productDelFreq', {
                     is: (productDelFreq:any) => productDelFreq?.label?.toLowerCase() === 'weekly' || productDelFreq?.label?.toLowerCase() === 'monthly',
                     then: Yup.object().required('Required')
-                  }),
-                // productDelDaysMulti: Yup.array().required('Required')
-                //   .when('productDelFreq', {
-                //     is: (productDelFreq:any) => productDelFreq?.label?.toLowerCase() !== 'weekly' || productDelFreq?.label?.toLowerCase() !== 'monthly',
-                //     then: Yup.array().of(
-                //         Yup.object().shape({ label: Yup.string().required('Required'), value: Yup.string().required('Required') })
-                //       ).required('Required')
-                //   }),
-                //   .when('productDelFreq', {
-                //     is: (productDelFreq:any) => productDelFreq?.label?.toLowerCase() === 'bi-weekly',
-                //     then: Yup.array().required('Required').test({
-                //         message: 'Two days should be selected in case of Bi-weekly delivery frequency',
-                //         test: arr => arr?.length === 2,
-                //       })
-                //   }).when('productDelFreq', {
-                //     is: (productDelFreq:any) => productDelFreq?.label?.toLowerCase() === 'daily',
-                //     then: Yup.array().required('Required')
-                //   })
-
+                  })
             })
         ),
 });
