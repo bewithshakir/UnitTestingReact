@@ -540,7 +540,7 @@ function AddLotForm(): React.ReactElement {
                                         placeholder='Choose'
                                         items={productDelFreq}
                                         helperText={(formik.touched.productDelFreq && formik.errors.productDelFreq) ? formik.errors.productDelFreq.value : undefined}
-                                        error={(formik.touched.timeZone && formik.errors.timeZone) ? true : false}
+                                        error={(formik.touched.productDelFreq && formik.errors.productDelFreq) ? true : false}
                                         onChange={handleProductDelFreq}
                                         isDisabled={isDisabled}
                                         required
