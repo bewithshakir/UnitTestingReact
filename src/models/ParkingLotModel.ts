@@ -40,6 +40,7 @@ export interface orderSchDel {
     endTime: string | '',
     productDelDays?: SelectProps 
     productDelDaysMulti?: Array<mutiSelectItem> 
+    delFreq: string | ''
 }
 // Array<mutiSelectItem>
 
@@ -65,7 +66,8 @@ export const orderScheduleDel = [{
     startTime: '',
     endTime: '',
     productDelDays: { label: '', value: '' },
-    productDelDaysMulti: []
+    productDelDaysMulti: [],
+    delFreq:''
 }];
 
 export const addLotFormInitialValues = {
@@ -130,7 +132,8 @@ export default class ParkingLotModel {
             startTime: '',
             endTime: '',
             productDelDays: { label: '', value: '' },
-            productDelDaysMulti: []
+            productDelDaysMulti: [],
+            delFreq: ''
         }];
         this.locationContact = [{
             firstName: '',
