@@ -10,7 +10,7 @@ import { Button } from '../../components/UIComponents/Button/Button.component';
 import Input from '../../components/UIComponents/Input/Input';
 import Select from '../../components/UIComponents/Select/SingleSelect';
 import ToastMessage from '../../components/UIComponents/ToastMessage/ToastMessage.component';
-import { formStatusObj , strCustomText, strCustomTextRetail} from './config';
+import { formStatusObj, strCustomText, strCustomTextRetail } from './config';
 import { useGetProductTypes, useGetProductNames, useGetLotProductDetails, useGetPricingModel, useCreateProduct, useGetOPISRetail } from './queries';
 import { useAddedCustomerIdStore, useAddedCustomerNameStore, useShowConfirmationDialogBoxStore } from '../../store';
 import { AddProductValidationSchema } from './validation';
@@ -52,14 +52,14 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
     const [apiResposneState, setAPIResponse] = useState(false);
 
     const [isDisabled, setIsDisabled] = useState(false);
-    const isEditMode = false;
+    const [isEditMode, setEditMode] = useState(false);
     const customerId = useAddedCustomerIdStore((state) => state.customerId);
     const customerName = useAddedCustomerNameStore((state) => state.customerName);
 
-   
 
 
-    const initialValues = {
+
+    const [initialFormikValues, setInitialFormikValues] = useState({
         productType: { label: "", value: "" },
         masterProductName: { label: "", value: "" },
         pricingModel: { label: "", value: "" },
@@ -69,9 +69,9 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
         discountPriceAmt: 0,
         timeSlot: { label: "", value: "" },
 
-    };
+    });
     const formik = useFormik({
-        initialValues,
+        initialValues: initialFormikValues,
         validationSchema: AddProductValidationSchema,
         onSubmit: (values) => {
             createNewProduct(values);
@@ -132,8 +132,8 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
         if (productTypeList?.data?.length) {
             setProductTypes(productTypeList.data.map((obj: any) => ({ label: obj.productClassNm.trim(), value: obj.productClassCd.trim() })));
         }
-        if (productNamesList?.data?.length) {
-            setProductNames(productNamesList.data.map((obj: any) => ({ label: obj.productName.trim(), value: obj.productId.trim() })));
+        if (productNamesList?.data?.products?.length) {
+            setProductNames(productNamesList.data.products.filter((product: any) => product.productServiceInd === 'Y').map((obj: any) => ({ label: obj.productName.trim(), value: obj.productId.trim() })));
         }
         if (pricingModelList?.data?.length) {
             setPricingModelOptions(pricingModelList.data.map((obj: any) => ({ label: obj.pricingModelNm.trim(), value: obj.pricingModelCd.trim() })));
@@ -150,19 +150,10 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
     };
 
     const disableSubmitBtn = () => {
-        if (isEditMode) {
-            if (formik.touched && Object.keys(formik.touched).length === 0 && Object.getPrototypeOf(formik.touched) === Object.prototype) {
-                if (formik.dirty) {
-                    if (formik.initialValues != formik.values) {
-                        return false;
-                    }
-                }
-            } else {
-                return (!formik.isValid || !formik.dirty) || formik.isSubmitting;
-            }
-        } else {
-            return (!formik.isValid || !formik.dirty) || formik.isSubmitting;
-        }
+        return (!formik.isValid || !formik.dirty) || formik.isSubmitting;
+    };
+    const disableCancelBtn = () => {
+        return !formik.dirty;
     };
 
     const handleFormDataChange = () => {
@@ -204,15 +195,18 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
         if (data) {
             if (data?.data?.lotProduct) {
                 const lotProduct = data.data.lotProduct;
-                formik.setFieldValue('productType', { label: lotProduct?.productType?.productClassNm, value: lotProduct?.productType?.productClassCd });
-                formik.setFieldValue('masterProductName', { label: lotProduct?.masterProduct?.productName, value: lotProduct?.masterProduct?.productId });
-                formik.setFieldValue('pricingModel', { label: lotProduct?.pricingModel?.pricingModelNm, value: lotProduct?.pricingModel?.pricingModelCd });
-                formik.setFieldValue('productNm', lotProduct.productNm);
-                formik.setFieldValue('manualPriceAmt', lotProduct.manualPriceAmt);
-                formik.setFieldValue('addedPriceAmt', lotProduct.addedPriceAmt);
-                formik.setFieldValue('discountPriceAmt', lotProduct.discountPriceAmt);
-                formik.setFieldValue('timeSlot', { label: "", value: "" });
+                setInitialFormikValues({
+                    productType: { label: lotProduct?.productType?.productClassNm, value: lotProduct?.productType?.productClassCd },
+                    masterProductName: { label: lotProduct?.masterProduct?.productName, value: lotProduct?.masterProduct?.productId },
+                    pricingModel: { label: lotProduct?.pricingModel?.pricingModelNm, value: lotProduct?.pricingModel?.pricingModelCd },
+                    productNm: lotProduct.productNm,
+                    manualPriceAmt: lotProduct.manualPriceAmt,
+                    addedPriceAmt: lotProduct.addedPriceAmt,
+                    discountPriceAmt: lotProduct.discountPriceAmt,
+                    timeSlot: { label: "", value: "" },
+                });
                 setIsDisabled(true);
+                setEditMode(true);
             }
         }
     };
@@ -247,25 +241,24 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
 
     const handlePricingModelChange = (fieldName: string, value: any) => {
         formik.setFieldValue(fieldName, value);
-        if (value?.label?.toLowerCase() != strCustomText || value?.label?.toLowerCase() != strCustomTextRetail ) {
+        if (value?.label?.toLowerCase() != strCustomText || value?.label?.toLowerCase() != strCustomTextRetail) {
             clearCustomRelatedFormValues();
         }
-        if(value?.label?.toLowerCase() === strCustomTextRetail){
-            if(formik.values?.masterProductName?.label){
-                setFetchOPISRetail(true);  
-                formik.setFieldValue('productNm', [formik.values?.masterProductName?.label + ' ' +'Retail'].join('') );
-            }       
+        if (value?.label?.toLowerCase() === strCustomTextRetail) {
+            if (formik.values?.masterProductName?.label) {
+                setFetchOPISRetail(true);
+                formik.setFieldValue('productNm', [formik.values?.masterProductName?.label + ' ' + 'Retail'].join(''));
+            }
         }
     };
 
     const handleMasterProductNameChange = (fieldName: string, value: any) => {
         formik.setFieldValue(fieldName, value);
-        if(formik.values?.pricingModel?.label?.toLowerCase() === strCustomTextRetail ){
-            formik.setFieldValue('productNm', [value?.label + ' ' + 'Retail'].join('') );
+        if (formik.values?.pricingModel?.label?.toLowerCase() === strCustomTextRetail) {
+            formik.setFieldValue('productNm', [value?.label + ' ' + 'Retail'].join(''));
             setFetchOPISRetail(true);
         }
     };
-
 
     return (
         <FormikProvider value={formik}>
@@ -369,7 +362,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                                         description=''
                                         required
                                         {...formik.getFieldProps('productNm')}
-                                        disabled={isDisabled || (formik.values?.pricingModel?.label?.toLowerCase() === strCustomTextRetail) }
+                                        disabled={isDisabled || (formik.values?.pricingModel?.label?.toLowerCase() === strCustomTextRetail)}
                                     />
                                 </Grid>
                                 <Grid item lg={12} md={12} sm={12} xs={12} mx={4}>
@@ -455,6 +448,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                                 aria-label="cancel"
                                 onClick={onClickBack}
                                 className="mr-4"
+                                disabled={disableCancelBtn()}
                             >
                                 {t("buttons.cancel")}
                             </Button>
