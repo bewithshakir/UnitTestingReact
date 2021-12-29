@@ -629,7 +629,7 @@ function AddLotForm(): React.ReactElement {
                                                                     formik?.errors?.orderScheduleDel && formik?.touched?.orderScheduleDel &&
                                                                         (formik.touched?.orderScheduleDel?.[index]?.productDelDays && ((formik.errors?.orderScheduleDel?.[index] as orderSchDel)?.productDelDays))
                                                                         ?
-                                                                        (formik.errors.orderScheduleDel[index] as orderSchDel).fromDate : undefined
+                                                                        (formik.errors.orderScheduleDel[index] as orderSchDel).productDelDays?.value : undefined
                                                                 }
                                                                 error={
                                                                     formik?.errors?.orderScheduleDel && formik?.touched?.orderScheduleDel &&
@@ -638,25 +638,27 @@ function AddLotForm(): React.ReactElement {
                                                                 }
                                                             />) : (
                                                                 <MultiSelect
-                                                                    id={`orderScheduleDel[${index}].productDelDays`}
+                                                                    id={`orderScheduleDel[${index}].productDelDaysMulti`}
                                                                     label='SELECT DAYS TO DELIVER PRODUCT'
                                                                     placeholder='Select Multiple Days'
                                                                     required={formik.values.productDelFreq.value?true:false}
                                                                     items={daysToDeliver(formik?.values?.productDelFreq?.value)}
-                                                                    name={`orderScheduleDel[${index}].productDelDays`}
-                                                                    value={formik.values.orderScheduleDel[index].productDelDays}
+                                                                    name={`orderScheduleDel[${index}].productDelDaysMulti`}
+                                                                    value={formik.values.orderScheduleDel[index].productDelDaysMulti}
                                                                     disabled={formik.values.productDelFreq.value === '' ?true:false}
                                                                     onChange={formik.setFieldValue}
-                                                                    onBlur={() => { formik.setFieldTouched(`orderScheduleDel[${index}].productDelDays`); formik.validateField(`orderScheduleDel[${index}].productDelDays`); }}
+                                                                    onBlur={() => { formik.setFieldTouched(`orderScheduleDel[${index}].productDelDaysMulti`); formik.validateField(`orderScheduleDel[${index}].productDelDaysMulti`); }}
                                                                     helperText={
                                                                         formik?.errors?.orderScheduleDel && formik?.touched?.orderScheduleDel &&
-                                                                            (formik.touched?.orderScheduleDel?.[index]?.productDelDays && ((formik.errors?.orderScheduleDel?.[index] as orderSchDel)?.productDelDays))
+                                                                            (formik.touched?.orderScheduleDel?.[index]?.productDelDaysMulti && ((formik.errors?.orderScheduleDel?.[index] as orderSchDel)?.productDelDaysMulti))
                                                                             ?
-                                                                            (formik.errors.orderScheduleDel[index] as orderSchDel).fromDate : undefined
+                                                                            JSON.parse(JSON.stringify((formik.errors.orderScheduleDel[index] as orderSchDel).productDelDaysMulti )): undefined
+                                                                            // ((formik.errors.orderScheduleDel[index] as orderSchDel).productDelDaysMulti as Array<mutiSelectItem> ) : undefined
+                                                                            
                                                                     }
                                                                     error={
                                                                         formik?.errors?.orderScheduleDel && formik?.touched?.orderScheduleDel &&
-                                                                            (formik.touched?.orderScheduleDel?.[index]?.productDelDays && ((formik.errors?.orderScheduleDel?.[index] as orderSchDel)?.productDelDays))
+                                                                            (formik.touched?.orderScheduleDel?.[index]?.productDelDaysMulti && ((formik.errors?.orderScheduleDel?.[index] as orderSchDel)?.productDelDaysMulti))
                                                                             ? true : false
                                                                     }
                                                                 />
@@ -724,7 +726,8 @@ function AddLotForm(): React.ReactElement {
                                                                 toDate: null,
                                                                 startTime: '',
                                                                 endTime: '',
-                                                                productDelDays: []
+                                                                productDelDays: { label: '', value: '' },
+                                                                productDelDaysMulti: []
                                                             });
                                                             
                                                         }
