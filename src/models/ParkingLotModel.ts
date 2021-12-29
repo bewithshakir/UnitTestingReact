@@ -21,7 +21,7 @@ export interface SelectProps {
     value: string,
 }
 
-type mutiSelectItem = {
+export interface mutiSelectItem  {
     label: string,
     value: string | number
 }
@@ -38,8 +38,10 @@ export interface orderSchDel {
     toDate: moment.Moment | string | null,
     startTime: string | '',
     endTime: string | '',
-    productDelDays: Array<mutiSelectItem>
+    productDelDays?: SelectProps 
+    productDelDaysMulti?: Array<mutiSelectItem> 
 }
+// Array<mutiSelectItem>
 
 export interface AddParkingLotForm {
     lotName: string;
@@ -62,7 +64,8 @@ export const orderScheduleDel = [{
     toDate: null,
     startTime: '',
     endTime: '',
-    productDelDays: []
+    productDelDays: { label: '', value: '' },
+    productDelDaysMulti: []
 }];
 
 export const addLotFormInitialValues = {
@@ -126,7 +129,8 @@ export default class ParkingLotModel {
             toDate: null,
             startTime: '',
             endTime: '',
-            productDelDays: []
+            productDelDays: { label: '', value: '' },
+            productDelDaysMulti: []
         }];
         this.locationContact = [{
             firstName: '',
