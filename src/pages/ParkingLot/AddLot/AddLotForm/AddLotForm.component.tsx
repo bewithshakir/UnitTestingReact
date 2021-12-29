@@ -1,5 +1,5 @@
 /* eslint-disable no-empty */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { FieldArray, FormikProvider, useFormik } from 'formik';
 import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';
@@ -62,6 +62,7 @@ function AddLotForm(): React.ReactElement {
     const [init, setInit] = useState(false);
     const [lotState, setLotState] = useState({});
     const { data: timeZoneList } = useGetTimeZones();
+    const timerRef = useRef<any>(null);
 
     const onAddLotError = (err: any) => {
         resetFormFieldValue(false);
@@ -70,7 +71,7 @@ function AddLotForm(): React.ReactElement {
             const { data } = err.response;
             setAPIResponse(true);
             setFormStatus({ message: data?.error?.message || formStatusProps.error.message, type: 'Error' });
-            setTimeout(() => {
+            timerRef.current = setTimeout(() => {
                 setAPIResponse(false);
             }, 6000);
         } catch (error) {
@@ -94,8 +95,7 @@ function AddLotForm(): React.ReactElement {
         setSaveCancelShown(false);
         setDisabled(true);
         setActiveLotId(data?.data?.deliveryLocationId.toString());
-        // setFormSuccess(true);
-        setTimeout(() => {
+        timerRef.current = setTimeout(() => {
             setAPIResponse(false);
             history.push(`/customer/${addedCustomerId}/parkingLots/viewLot/${data?.data?.deliveryLocationId.toString()}`);
         }, 6000);
@@ -109,9 +109,8 @@ function AddLotForm(): React.ReactElement {
         setSaveCancelShown(false);
         setIsTrigger(!isTrigger);
         formik.resetForm({});
-        setTimeout(() => {
+        timerRef.current = setTimeout(() => {
             setAPIResponse(false);
-            history.push(`/customer/${addedCustomerId}/parkingLots/viewLot/${activeLotId}`);
         }, 6000);
 
     };
@@ -125,7 +124,7 @@ function AddLotForm(): React.ReactElement {
             formik.setSubmitting(false);
             setEditShown(false);
             setSaveCancelShown(true);
-            setTimeout(() => {
+            timerRef.current = setTimeout(() => {
                 setAPIResponse(false);
             }, 6000);
         } catch (error) {
@@ -374,6 +373,14 @@ function AddLotForm(): React.ReactElement {
         else return true;
     };
 
+   
+    useEffect(() => {
+        return () => {
+            if (timerRef.current) {
+                clearTimeout(timerRef.current);
+            }
+        };
+    }, []);
     console.log("Formik->", formik); // eslint-disable-line no-console
     return (
         <>
