@@ -15,6 +15,7 @@ import GridComponent from "../../components/UIComponents/DataGird/grid.component
 import { RightInfoPanel } from "../../components/UIComponents/RightInfoPanel/RightInfoPanel.component";
 import { DataGridActionsMenuOption } from '../../components/UIComponents/Menu/DataGridActionsMenu.component';
 import { ProductsListSet } from './queries';
+import { getSeachedDataTotalCount } from '../../utils/helperFunctions';
 
 const ProductManagementContent = memo(() => {
   const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
@@ -34,13 +35,17 @@ const ProductManagementContent = memo(() => {
   const [searchTerm, setSearchTerm] = React.useState("");
   const [sortOrder, setSortOrder] = React.useState<{ sortBy: string, order: string }>({ sortBy: "", order: "" });
 
-  const { data, isLoading, isFetching }: any = ProductsListSet(searchTerm, sortOrder, filterData);
+  const { data, fetchNextPage, isLoading, isFetching }: any = ProductsListSet(searchTerm, sortOrder, filterData);
 
 
 
   useEffect(() => {
     if (data) {
-      setProductList(data.data);
+      const list: any = [];
+      data?.pages?.forEach((item: any) => {
+        list.push(...item.data.products);
+      });
+      setProductList(list);
     }
   }, [data]);
 
@@ -93,12 +98,6 @@ const ProductManagementContent = memo(() => {
     setSortOrder(sortOrder);
   };
 
-
-  const getSeachedDataTotalCount = (data: any, msg: string[]) => {
-    const totalCount = data.data.length || 0;
-    return (`${totalCount} ${totalCount > 1 ? msg[1] : msg[0]}`);
-};
-
   return (
     <Box display="flex" mt={10} ml={8}>
       <Grid container pl={6.25} pr={6.25} className="main-area">
@@ -140,7 +139,6 @@ const ProductManagementContent = memo(() => {
                 </Typography>
               </Grid>
             }
-           
           </Grid>
           <Grid item md={4} lg={3} display="flex" justifyContent="flex-end">
             <Grid item pr={2.5}>
@@ -171,6 +169,7 @@ const ProductManagementContent = memo(() => {
             header={headCells}
             enableRowSelection
             enableRowAction
+            getPages={fetchNextPage}
             onRowActionSelect={handleRowAction}
             rowActionOptions={rowActionOptions}
             searchTerm={searchTerm}
