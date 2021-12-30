@@ -8,6 +8,7 @@ exports[`renders discard dialog properly snapshot testing 1`] = `
 >
   <div
     className="discard-dialog-container"
+    id="discard-dialogue"
   >
     <ForwardRef(Typography)
       className="fw-bold"

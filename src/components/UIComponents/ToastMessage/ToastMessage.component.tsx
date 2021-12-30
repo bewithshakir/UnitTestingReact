@@ -69,7 +69,7 @@ export default function ToastMessage(props: ToastMessageProps) {
     };
 
     return (
-        <div className="toaster_wrapper">
+        <div className="toaster_wrapper" data-testid="toaster-message">
             {getComponentToRender()}
         </div>
     );
