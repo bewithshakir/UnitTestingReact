@@ -1,4 +1,4 @@
-import { useInfiniteQuery, useQuery } from "react-query";
+import { useInfiniteQuery } from "react-query";
 import { AxiosRequestConfig } from "axios";
 import axios from "../../infrastructure/ApiHelper";
 import { pageDataLimit } from "../../utils/constants";

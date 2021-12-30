@@ -1,7 +1,7 @@
 import { ExportIcon } from '../../assets/icons';
 import { IDynamicFilterProps } from '../../components/UIComponents/RightInfoPanel/DynamicFilterContent.component';
 
-export interface IAddOPISCity{
+export interface IAddOPISCity {
   countryCd: string,
   state: string,
   city: string,
@@ -62,10 +62,10 @@ export const OPISCity = {
         field: "cityId", label: "CITY ID"
       },
       "CITY": {
-        field: "cityName", label: "CITY"
+        field: "city", label: "CITY"
       },
       "STATE": {
-        field: "stateName", label: "STATE"
+        field: "state", label: "STATE"
       },
     },
   }

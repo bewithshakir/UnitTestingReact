@@ -28,9 +28,13 @@ export default class TaxModel {
     fieldsToDisplay (): headerObj[] {
         const { CITYID, CITY, STATE } = DataGridFields;
         return [
-            { field: CITYID.field, label: CITYID.label, type: 'text', align: 'left', sortable: true },
+            { field: CITYID.field, label: CITYID.label, type: 'text', align: 'left' },
             { field: CITY.field, label: CITY.label, type: 'text', align: 'left' },
             { field: STATE.field, label: STATE.label, type: 'text', align: 'left' },
+            { field: "", label: "", type: 'text', align: 'left' },
+            { field: "", label: "", type: 'text', align: 'left' },
+            { field: "", label: "", type: 'text', align: 'left' },
+            { field: "", label: "", type: 'text', align: 'left' },
             { field: "", label: "", type: 'text', align: 'left' },
             { field: "", label: "", type: 'text', align: 'left' },
             { field: "", label: "", type: 'text', align: 'left' },
