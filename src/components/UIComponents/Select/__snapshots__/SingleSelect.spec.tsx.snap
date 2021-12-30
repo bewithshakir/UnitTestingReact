@@ -8,7 +8,7 @@ exports[`renders the Default Select component snapshot test for Default Select c
     <ForwardRef(InputLabel)
       aria-labelledby="Input"
       aria-required={false}
-      htmlFor="select-label-label"
+      htmlFor="select-label"
       shrink={true}
       style={
         Object {
@@ -31,7 +31,7 @@ exports[`renders the Default Select component snapshot test for Default Select c
           "SingleValue": [Function],
         }
       }
-      id="select-label"
+      inputId="select-label"
       isSearchable={false}
       onChange={[Function]}
       options={
@@ -89,7 +89,7 @@ exports[`renders the SingleSelect component on change Should change value when o
             <ForwardRef(InputLabel)
               aria-labelledby="Select values"
               aria-required={false}
-              htmlFor="single-select-on-change-test-label"
+              htmlFor="single-select-on-change-test"
               shrink={true}
               style={
                 Object {
@@ -112,7 +112,7 @@ exports[`renders the SingleSelect component on change Should change value when o
                   "SingleValue": [Function],
                 }
               }
-              id="single-select-on-change-test"
+              inputId="single-select-on-change-test"
               isSearchable={false}
               onChange={[Function]}
               options={
@@ -158,7 +158,7 @@ exports[`renders the SingleSelect component on change Should change value when o
         <ForwardRef(InputLabel)
           aria-labelledby="Select values"
           aria-required={false}
-          htmlFor="single-select-on-change-test-label"
+          htmlFor="single-select-on-change-test"
           shrink={true}
           style={
             Object {
@@ -176,7 +176,7 @@ exports[`renders the SingleSelect component on change Should change value when o
               }
             }
             data-shrink={true}
-            htmlFor="single-select-on-change-test-label"
+            htmlFor="single-select-on-change-test"
             ownerState={
               Object {
                 "aria-labelledby": "Select values",
@@ -204,7 +204,7 @@ exports[`renders the SingleSelect component on change Should change value when o
                   "size": "medium",
                   "variant": "outlined",
                 },
-                "htmlFor": "single-select-on-change-test-label",
+                "htmlFor": "single-select-on-change-test",
                 "required": false,
                 "shrink": true,
                 "size": "medium",
@@ -231,7 +231,7 @@ exports[`renders the SingleSelect component on change Should change value when o
                 }
               }
               data-shrink={true}
-              htmlFor="single-select-on-change-test-label"
+              htmlFor="single-select-on-change-test"
               style={
                 Object {
                   "color": "var(--Darkgray)",
@@ -250,7 +250,7 @@ exports[`renders the SingleSelect component on change Should change value when o
                   }
                 }
                 data-shrink={true}
-                htmlFor="single-select-on-change-test-label"
+                htmlFor="single-select-on-change-test"
                 ownerState={
                   Object {
                     "aria-labelledby": "Select values",
@@ -270,7 +270,7 @@ exports[`renders the SingleSelect component on change Should change value when o
                     "error": false,
                     "filled": false,
                     "focused": false,
-                    "htmlFor": "single-select-on-change-test-label",
+                    "htmlFor": "single-select-on-change-test",
                     "required": false,
                     "style": Object {
                       "color": "var(--Darkgray)",
@@ -288,7 +288,7 @@ exports[`renders the SingleSelect component on change Should change value when o
                   aria-required={false}
                   className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary css-1kty9di-MuiFormLabel-root-MuiInputLabel-root"
                   data-shrink={true}
-                  htmlFor="single-select-on-change-test-label"
+                  htmlFor="single-select-on-change-test"
                   style={
                     Object {
                       "color": "var(--Darkgray)",
@@ -314,7 +314,7 @@ exports[`renders the SingleSelect component on change Should change value when o
               "SingleValue": [Function],
             }
           }
-          id="single-select-on-change-test"
+          inputId="single-select-on-change-test"
           isSearchable={false}
           onChange={[Function]}
           options={
@@ -361,7 +361,7 @@ exports[`renders the SingleSelect component on change Should change value when o
             formatGroupLabel={[Function]}
             getOptionLabel={[Function]}
             getOptionValue={[Function]}
-            id="single-select-on-change-test"
+            inputId="single-select-on-change-test"
             inputValue=""
             isDisabled={false}
             isLoading={false}
@@ -420,7 +420,7 @@ exports[`renders the SingleSelect component on change Should change value when o
               hasValue={false}
               innerProps={
                 Object {
-                  "id": "single-select-on-change-test",
+                  "id": undefined,
                   "onKeyDown": [Function],
                 }
               }
@@ -470,7 +470,7 @@ exports[`renders the SingleSelect component on change Should change value when o
                   "formatGroupLabel": [Function],
                   "getOptionLabel": [Function],
                   "getOptionValue": [Function],
-                  "id": "single-select-on-change-test",
+                  "inputId": "single-select-on-change-test",
                   "inputValue": "",
                   "isDisabled": false,
                   "isLoading": false,
@@ -565,12 +565,10 @@ exports[`renders the SingleSelect component on change Should change value when o
                     "position": "relative",
                   }
                 }
-                id="single-select-on-change-test"
                 onKeyDown={[Function]}
               >
                 <div
                   className="react-select-container css-b62m3t-container"
-                  id="single-select-on-change-test"
                   onKeyDown={[Function]}
                 >
                   <LiveRegion
@@ -629,7 +627,7 @@ exports[`renders the SingleSelect component on change Should change value when o
                         "formatGroupLabel": [Function],
                         "getOptionLabel": [Function],
                         "getOptionValue": [Function],
-                        "id": "single-select-on-change-test",
+                        "inputId": "single-select-on-change-test",
                         "inputValue": "",
                         "isDisabled": false,
                         "isLoading": false,
@@ -823,7 +821,7 @@ exports[`renders the SingleSelect component on change Should change value when o
                         "formatGroupLabel": [Function],
                         "getOptionLabel": [Function],
                         "getOptionValue": [Function],
-                        "id": "single-select-on-change-test",
+                        "inputId": "single-select-on-change-test",
                         "inputValue": "",
                         "isDisabled": false,
                         "isLoading": false,
@@ -992,7 +990,7 @@ exports[`renders the SingleSelect component on change Should change value when o
                               "formatGroupLabel": [Function],
                               "getOptionLabel": [Function],
                               "getOptionValue": [Function],
-                              "id": "single-select-on-change-test",
+                              "inputId": "single-select-on-change-test",
                               "inputValue": "",
                               "isDisabled": false,
                               "isLoading": false,
@@ -1153,7 +1151,7 @@ exports[`renders the SingleSelect component on change Should change value when o
                                     "formatGroupLabel": [Function],
                                     "getOptionLabel": [Function],
                                     "getOptionValue": [Function],
-                                    "id": "single-select-on-change-test",
+                                    "inputId": "single-select-on-change-test",
                                     "inputValue": "",
                                     "isDisabled": false,
                                     "isLoading": false,
@@ -1268,7 +1266,7 @@ exports[`renders the SingleSelect component on change Should change value when o
                                 aria-owns="react-select-2-listbox"
                                 aria-readonly={true}
                                 disabled={false}
-                                id="react-select-2-input"
+                                id="single-select-on-change-test"
                                 innerRef={[Function]}
                                 inputMode="none"
                                 onBlur={[Function]}
@@ -1298,7 +1296,7 @@ exports[`renders the SingleSelect component on change Should change value when o
                                     }
                                   }
                                   disabled={false}
-                                  id="react-select-2-input"
+                                  id="single-select-on-change-test"
                                   inputMode="none"
                                   onBlur={[Function]}
                                   onChange={[Function]}
@@ -1317,7 +1315,7 @@ exports[`renders the SingleSelect component on change Should change value when o
                                     aria-readonly={true}
                                     className="css-mohuvp-dummyInput-DummyInput"
                                     disabled={false}
-                                    id="react-select-2-input"
+                                    id="single-select-on-change-test"
                                     inputMode="none"
                                     onBlur={[Function]}
                                     onChange={[Function]}
@@ -1382,7 +1380,7 @@ exports[`renders the SingleSelect component on change Should change value when o
                               "formatGroupLabel": [Function],
                               "getOptionLabel": [Function],
                               "getOptionValue": [Function],
-                              "id": "single-select-on-change-test",
+                              "inputId": "single-select-on-change-test",
                               "inputValue": "",
                               "isDisabled": false,
                               "isLoading": false,
@@ -1533,7 +1531,7 @@ exports[`renders the SingleSelect component on change Should change value when o
                                     "formatGroupLabel": [Function],
                                     "getOptionLabel": [Function],
                                     "getOptionValue": [Function],
-                                    "id": "single-select-on-change-test",
+                                    "inputId": "single-select-on-change-test",
                                     "inputValue": "",
                                     "isDisabled": false,
                                     "isLoading": false,
@@ -1674,7 +1672,7 @@ exports[`renders the SingleSelect component on change Should change value when o
                                     "formatGroupLabel": [Function],
                                     "getOptionLabel": [Function],
                                     "getOptionValue": [Function],
-                                    "id": "single-select-on-change-test",
+                                    "inputId": "single-select-on-change-test",
                                     "inputValue": "",
                                     "isDisabled": false,
                                     "isLoading": false,
@@ -1815,7 +1813,7 @@ exports[`renders the SingleSelect component on change Should change value when o
                                       "formatGroupLabel": [Function],
                                       "getOptionLabel": [Function],
                                       "getOptionValue": [Function],
-                                      "id": "single-select-on-change-test",
+                                      "inputId": "single-select-on-change-test",
                                       "inputValue": "",
                                       "isDisabled": false,
                                       "isLoading": false,
@@ -1969,7 +1967,7 @@ exports[`renders the SingleSelect component with error  snapshot test for the Si
     <ForwardRef(InputLabel)
       aria-labelledby="Input"
       aria-required={false}
-      htmlFor="select-label-label"
+      htmlFor="select-label"
       shrink={true}
       style={
         Object {
@@ -1992,7 +1990,7 @@ exports[`renders the SingleSelect component with error  snapshot test for the Si
           "SingleValue": [Function],
         }
       }
-      id="select-label"
+      inputId="select-label"
       isSearchable={false}
       onChange={[Function]}
       options={
@@ -2035,7 +2033,7 @@ exports[`renders the SingleSelect component with helper text snapshot test for t
     <ForwardRef(InputLabel)
       aria-labelledby="Input"
       aria-required={true}
-      htmlFor="select-label-label"
+      htmlFor="select-label"
       shrink={true}
       style={
         Object {
@@ -2063,7 +2061,7 @@ exports[`renders the SingleSelect component with helper text snapshot test for t
           "SingleValue": [Function],
         }
       }
-      id="select-label"
+      inputId="select-label"
       isSearchable={false}
       onChange={[Function]}
       options={
@@ -2112,7 +2110,7 @@ exports[`renders the SingleSelect component with required prop snapshot test for
     <ForwardRef(InputLabel)
       aria-labelledby="Input"
       aria-required={true}
-      htmlFor="select-label-label"
+      htmlFor="select-label"
       shrink={true}
       style={
         Object {
@@ -2140,7 +2138,7 @@ exports[`renders the SingleSelect component with required prop snapshot test for
           "SingleValue": [Function],
         }
       }
-      id="select-label"
+      inputId="select-label"
       isSearchable={false}
       onChange={[Function]}
       options={
@@ -2183,7 +2181,7 @@ exports[`renders the SingleSelect component with values Snapshot test for the Si
     <ForwardRef(InputLabel)
       aria-labelledby="Input"
       aria-required={false}
-      htmlFor="select-label-label"
+      htmlFor="select-label"
       shrink={true}
       style={
         Object {
@@ -2206,7 +2204,7 @@ exports[`renders the SingleSelect component with values Snapshot test for the Si
           "SingleValue": [Function],
         }
       }
-      id="select-label"
+      inputId="select-label"
       isSearchable={false}
       onChange={[Function]}
       options={

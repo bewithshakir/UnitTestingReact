@@ -188,7 +188,7 @@ const AddProduct: React.FC = memo(() => {
         <Box display="flex" className="global_main_wrapper">
             <Grid item md={7} xs={7}>
                 <Container maxWidth="lg" className="page-container">
-                    <form onSubmit={formik.handleSubmit}>
+                    <form onSubmit={formik.handleSubmit} id="form">
                         <Typography color="var(--Darkgray)" variant="h3" gutterBottom className="fw-bold" mb={1} pt={3}>
                             {t("productManagement.form.title")} *
                         </Typography>
@@ -282,6 +282,7 @@ const AddProduct: React.FC = memo(() => {
                                 <Grid item xs={12} md={6}>
                                     <Box className="form-action-section txt-right">
                                         <Button
+                                            id="cancelBtn"
                                             types="cancel"
                                             aria-label={t("buttons.cancel")}
                                             className="mr-4"
@@ -291,6 +292,7 @@ const AddProduct: React.FC = memo(() => {
                                             {t("buttons.cancel")}
                                         </Button>
                                         <Button
+                                            id="saveBtn"
                                             type="submit"
                                             types="save"
                                             aria-label={t("buttons.save")}
@@ -298,7 +300,7 @@ const AddProduct: React.FC = memo(() => {
                                             data-test="save"
                                             disabled={disableButton()}
                                         >
-                                            {t("buttons.save")} {(isLoadingAddProduct || isLoadingEditProduct) && <LoadingIcon className='loading_save_icon' />}
+                                            {t("buttons.save")} {(isLoadingAddProduct || isLoadingEditProduct) && <LoadingIcon data-testid="loading-spinner" className='loading_save_icon' />}
                                         </Button>
                                     </Box>
                                     <ToastMessage

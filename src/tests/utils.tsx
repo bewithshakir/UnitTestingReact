@@ -2,20 +2,15 @@ import { render } from '@testing-library/react'
 import { rest } from 'msw'
 import * as React from 'react'
 import { QueryClient, QueryClientProvider } from 'react-query'
+import { addProductManagementHandler, editProductManagementHandler, getProductDataHandler, productColorsHandler, productTypesHandler } from '../pages/AddProductManagement/mockApi/handlerAddProduct';
 
 export const handlers = [
-    // rest.get(
-    //     '*/react-query',
-    //     (req, res, ctx) => {
-    //         return res(
-    //             ctx.status(200),
-    //             ctx.json({
-    //                 name: 'mocked-react-query'
-    //             })
-    //         )
-    //     }
-    // )
-]
+    productTypesHandler(),
+    productColorsHandler(),
+    addProductManagementHandler(),
+    getProductDataHandler(),
+    editProductManagementHandler()
+];
 
 const createTestQueryClient = () => new QueryClient({
     defaultOptions: {

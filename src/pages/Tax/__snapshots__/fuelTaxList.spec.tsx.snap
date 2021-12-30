@@ -248,7 +248,6 @@ exports[`FuelTax Landing Page Fuel List is rendering 1`] = `
               "align": "left",
               "field": "cityName",
               "label": "CITY",
-              "sortable": true,
               "type": "text",
             },
             Object {
@@ -639,7 +638,6 @@ exports[`Given Search FuelTax Landing Page Show Fuel List as per searched value 
               "align": "left",
               "field": "cityName",
               "label": "CITY",
-              "sortable": true,
               "type": "text",
             },
             Object {
