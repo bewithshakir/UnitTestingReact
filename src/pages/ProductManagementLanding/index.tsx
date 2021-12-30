@@ -135,7 +135,7 @@ const ProductManagementContent = memo(() => {
                 data-test="productSearchTerm"
               />
                </Grid>
-               {
+              {
               (searchTerm && !(isFetching || isLoading) && data) &&
               <Grid item display="flex" alignItems="center" paddingLeft={2.5}>
                 <Typography color="var(--Darkgray)" variant="h4" align="center" className="fw-bold">
