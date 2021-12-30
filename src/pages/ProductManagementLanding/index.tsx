@@ -15,6 +15,7 @@ import GridComponent from "../../components/UIComponents/DataGird/grid.component
 import { RightInfoPanel } from "../../components/UIComponents/RightInfoPanel/RightInfoPanel.component";
 import { DataGridActionsMenuOption } from '../../components/UIComponents/Menu/DataGridActionsMenu.component';
 import { ProductsListSet } from './queries';
+import { getSeachedDataTotalCount } from '../../utils/helperFunctions';
 
 const ProductManagementContent = memo(() => {
   const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
@@ -96,11 +97,6 @@ const ProductManagementContent = memo(() => {
     }
     setSortOrder(sortOrder);
   };
-
-  const getSeachedDataTotalCount = (data: any, msg: string[]) => {
-    const totalCount = data?.pages[0]?.data?.pagination?.totalCount || 0;
-    return (`${totalCount} ${totalCount > 1 ? msg[1] : msg[0]}`);
-};
 
   return (
     <Box display="flex" mt={10} ml={8}>
