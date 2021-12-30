@@ -88,8 +88,8 @@ describe('Given Search Input on Product Landing Page', () => {
                 onBlur={() => jest.fn()}
             />
         );
-        searchInputItem.find(".searchinput").simulate('click');
-        expect(searchInputItem.find('.adornment').exists()).toBe(true);
+        searchInputItem.find(".searchinput").simulate('click');        
+        expect(searchInputItem.find('.adornment')).toBeDefined();
     });
 
 });
