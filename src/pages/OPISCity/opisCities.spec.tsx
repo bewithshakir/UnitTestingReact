@@ -16,9 +16,10 @@ describe('Given OPIS Cities Landing Page', () => {
         const Filter = Page.find('[types="filter"]');
         Filter.simulate('click');
         const DynamicFilterContent = Page.find('DynamicFilterContent');
-        const DynamicFilterProps = DynamicFilterContent.props();
-        expect(DynamicFilterProps['fields'].length).toBe(OPISCity.LandingPage.FilterByFields.length);
-        DynamicFilterProps['fields'].forEach((node, index) => {
+        const DynamicFilterProps: any = DynamicFilterContent.props();
+        const fields = DynamicFilterProps['fields'];
+        expect(fields.length).toBe(OPISCity.LandingPage.FilterByFields.length);
+        fields.forEach((node: { name: string }, index: number) => {
             expect(node.name).toBe(OPISCity.LandingPage.FilterByFields[index].name);
         });
     });

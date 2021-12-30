@@ -33,7 +33,7 @@ export const salesTaxListSet = (query: string, sortOrder: any, filterParams: { [
     return useInfiniteQuery(["getSalesTaxList", query, sortOrder, filterParams], ({ pageParam = 0 }) => getSalesTaxList(pageParam, query, sortOrder, filterParams), {
         getNextPageParam: (lastGroup: any) => {
             if (lastGroup.data.pagination.offset < lastGroup.data.pagination.totalCount) {
-                return lastGroup.data.pagination.offset + 15;
+                return lastGroup.data.pagination.offset + pageDataLimit;
             }
         },
         keepPreviousData: true

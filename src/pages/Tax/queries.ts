@@ -34,7 +34,7 @@ export const useFuelTaxList = (query: string, sortOrder: { sortBy: string, order
     return useInfiniteQuery(["getFuelTaxList", query, sortOrder, filterParams], ({ pageParam = 0 }) => getFuelTaxList(pageParam, query, sortOrder, filterParams), {
         getNextPageParam: (lastGroup: any) => {
             if (lastGroup.data.pagination.offset < lastGroup.data.pagination.totalCount) {
-                return lastGroup.data.pagination.offset + 15;
+                return lastGroup.data.pagination.offset + pageDataLimit;
             }
         },
         keepPreviousData: true
