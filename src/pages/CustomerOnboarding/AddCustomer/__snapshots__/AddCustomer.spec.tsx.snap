@@ -9147,7 +9147,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                           <ForwardRef(InputLabel)
                                             aria-labelledby="PAYMENT TYPE"
                                             aria-required={true}
-                                            htmlFor="paymentType-label"
+                                            htmlFor="paymentType"
                                             shrink={true}
                                             style={
                                               Object {
@@ -9175,7 +9175,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                 "SingleValue": [Function],
                                               }
                                             }
-                                            id="paymentType"
+                                            inputId="paymentType"
                                             isDisabled={false}
                                             isSearchable={false}
                                             name="paymentType"
@@ -9207,7 +9207,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                       <ForwardRef(InputLabel)
                                         aria-labelledby="PAYMENT TYPE"
                                         aria-required={true}
-                                        htmlFor="paymentType-label"
+                                        htmlFor="paymentType"
                                         shrink={true}
                                         style={
                                           Object {
@@ -9225,7 +9225,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                             }
                                           }
                                           data-shrink={true}
-                                          htmlFor="paymentType-label"
+                                          htmlFor="paymentType"
                                           ownerState={
                                             Object {
                                               "aria-labelledby": "PAYMENT TYPE",
@@ -9258,7 +9258,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                 "size": "medium",
                                                 "variant": "outlined",
                                               },
-                                              "htmlFor": "paymentType-label",
+                                              "htmlFor": "paymentType",
                                               "required": false,
                                               "shrink": true,
                                               "size": "medium",
@@ -9285,7 +9285,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                               }
                                             }
                                             data-shrink={true}
-                                            htmlFor="paymentType-label"
+                                            htmlFor="paymentType"
                                             style={
                                               Object {
                                                 "color": "var(--Darkgray)",
@@ -9304,7 +9304,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                 }
                                               }
                                               data-shrink={true}
-                                              htmlFor="paymentType-label"
+                                              htmlFor="paymentType"
                                               ownerState={
                                                 Object {
                                                   "aria-labelledby": "PAYMENT TYPE",
@@ -9329,7 +9329,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                   "error": false,
                                                   "filled": false,
                                                   "focused": false,
-                                                  "htmlFor": "paymentType-label",
+                                                  "htmlFor": "paymentType",
                                                   "required": false,
                                                   "style": Object {
                                                     "color": "var(--Darkgray)",
@@ -9347,7 +9347,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                 aria-required={true}
                                                 className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary css-1kty9di-MuiFormLabel-root-MuiInputLabel-root"
                                                 data-shrink={true}
-                                                htmlFor="paymentType-label"
+                                                htmlFor="paymentType"
                                                 style={
                                                   Object {
                                                     "color": "var(--Darkgray)",
@@ -9378,7 +9378,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                             "SingleValue": [Function],
                                           }
                                         }
-                                        id="paymentType"
+                                        inputId="paymentType"
                                         isDisabled={false}
                                         isSearchable={false}
                                         name="paymentType"
@@ -9411,7 +9411,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                           formatGroupLabel={[Function]}
                                           getOptionLabel={[Function]}
                                           getOptionValue={[Function]}
-                                          id="paymentType"
+                                          inputId="paymentType"
                                           inputValue=""
                                           isDisabled={false}
                                           isLoading={false}
@@ -9454,7 +9454,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                             hasValue={false}
                                             innerProps={
                                               Object {
-                                                "id": "paymentType",
+                                                "id": undefined,
                                                 "onKeyDown": [Function],
                                               }
                                             }
@@ -9486,7 +9486,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                 "formatGroupLabel": [Function],
                                                 "getOptionLabel": [Function],
                                                 "getOptionValue": [Function],
-                                                "id": "paymentType",
+                                                "inputId": "paymentType",
                                                 "inputValue": "",
                                                 "isDisabled": false,
                                                 "isLoading": false,
@@ -9565,12 +9565,10 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                   "position": "relative",
                                                 }
                                               }
-                                              id="paymentType"
                                               onKeyDown={[Function]}
                                             >
                                               <div
                                                 className="react-select-container css-b62m3t-container"
-                                                id="paymentType"
                                                 onKeyDown={[Function]}
                                               >
                                                 <LiveRegion
@@ -9611,7 +9609,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                       "formatGroupLabel": [Function],
                                                       "getOptionLabel": [Function],
                                                       "getOptionValue": [Function],
-                                                      "id": "paymentType",
+                                                      "inputId": "paymentType",
                                                       "inputValue": "",
                                                       "isDisabled": false,
                                                       "isLoading": false,
@@ -9771,7 +9769,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                       "formatGroupLabel": [Function],
                                                       "getOptionLabel": [Function],
                                                       "getOptionValue": [Function],
-                                                      "id": "paymentType",
+                                                      "inputId": "paymentType",
                                                       "inputValue": "",
                                                       "isDisabled": false,
                                                       "isLoading": false,
@@ -9906,7 +9904,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                             "formatGroupLabel": [Function],
                                                             "getOptionLabel": [Function],
                                                             "getOptionValue": [Function],
-                                                            "id": "paymentType",
+                                                            "inputId": "paymentType",
                                                             "inputValue": "",
                                                             "isDisabled": false,
                                                             "isLoading": false,
@@ -10033,7 +10031,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                   "formatGroupLabel": [Function],
                                                                   "getOptionLabel": [Function],
                                                                   "getOptionValue": [Function],
-                                                                  "id": "paymentType",
+                                                                  "inputId": "paymentType",
                                                                   "inputValue": "",
                                                                   "isDisabled": false,
                                                                   "isLoading": false,
@@ -10132,7 +10130,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                               aria-owns="react-select-3-listbox"
                                                               aria-readonly={true}
                                                               disabled={false}
-                                                              id="react-select-3-input"
+                                                              id="paymentType"
                                                               innerRef={[Function]}
                                                               inputMode="none"
                                                               onBlur={[Function]}
@@ -10162,7 +10160,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                   }
                                                                 }
                                                                 disabled={false}
-                                                                id="react-select-3-input"
+                                                                id="paymentType"
                                                                 inputMode="none"
                                                                 onBlur={[Function]}
                                                                 onChange={[Function]}
@@ -10181,7 +10179,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                   aria-readonly={true}
                                                                   className="css-mohuvp-dummyInput-DummyInput"
                                                                   disabled={false}
-                                                                  id="react-select-3-input"
+                                                                  id="paymentType"
                                                                   inputMode="none"
                                                                   onBlur={[Function]}
                                                                   onChange={[Function]}
@@ -10228,7 +10226,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                             "formatGroupLabel": [Function],
                                                             "getOptionLabel": [Function],
                                                             "getOptionValue": [Function],
-                                                            "id": "paymentType",
+                                                            "inputId": "paymentType",
                                                             "inputValue": "",
                                                             "isDisabled": false,
                                                             "isLoading": false,
@@ -10345,7 +10343,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                   "formatGroupLabel": [Function],
                                                                   "getOptionLabel": [Function],
                                                                   "getOptionValue": [Function],
-                                                                  "id": "paymentType",
+                                                                  "inputId": "paymentType",
                                                                   "inputValue": "",
                                                                   "isDisabled": false,
                                                                   "isLoading": false,
@@ -10452,7 +10450,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                   "formatGroupLabel": [Function],
                                                                   "getOptionLabel": [Function],
                                                                   "getOptionValue": [Function],
-                                                                  "id": "paymentType",
+                                                                  "inputId": "paymentType",
                                                                   "inputValue": "",
                                                                   "isDisabled": false,
                                                                   "isLoading": false,
@@ -10559,7 +10557,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                     "formatGroupLabel": [Function],
                                                                     "getOptionLabel": [Function],
                                                                     "getOptionValue": [Function],
-                                                                    "id": "paymentType",
+                                                                    "inputId": "paymentType",
                                                                     "inputValue": "",
                                                                     "isDisabled": false,
                                                                     "isLoading": false,
@@ -13085,7 +13083,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                           <ForwardRef(InputLabel)
                                             aria-labelledby="INVOICE FREQUENCY"
                                             aria-required={true}
-                                            htmlFor="invoiceFrequency-label"
+                                            htmlFor="invoiceFrequency"
                                             shrink={true}
                                             style={
                                               Object {
@@ -13113,7 +13111,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                 "SingleValue": [Function],
                                               }
                                             }
-                                            id="invoiceFrequency"
+                                            inputId="invoiceFrequency"
                                             isDisabled={false}
                                             isSearchable={false}
                                             name="invoiceFrequency"
@@ -13145,7 +13143,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                       <ForwardRef(InputLabel)
                                         aria-labelledby="INVOICE FREQUENCY"
                                         aria-required={true}
-                                        htmlFor="invoiceFrequency-label"
+                                        htmlFor="invoiceFrequency"
                                         shrink={true}
                                         style={
                                           Object {
@@ -13163,7 +13161,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                             }
                                           }
                                           data-shrink={true}
-                                          htmlFor="invoiceFrequency-label"
+                                          htmlFor="invoiceFrequency"
                                           ownerState={
                                             Object {
                                               "aria-labelledby": "INVOICE FREQUENCY",
@@ -13196,7 +13194,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                 "size": "medium",
                                                 "variant": "outlined",
                                               },
-                                              "htmlFor": "invoiceFrequency-label",
+                                              "htmlFor": "invoiceFrequency",
                                               "required": false,
                                               "shrink": true,
                                               "size": "medium",
@@ -13223,7 +13221,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                               }
                                             }
                                             data-shrink={true}
-                                            htmlFor="invoiceFrequency-label"
+                                            htmlFor="invoiceFrequency"
                                             style={
                                               Object {
                                                 "color": "var(--Darkgray)",
@@ -13242,7 +13240,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                 }
                                               }
                                               data-shrink={true}
-                                              htmlFor="invoiceFrequency-label"
+                                              htmlFor="invoiceFrequency"
                                               ownerState={
                                                 Object {
                                                   "aria-labelledby": "INVOICE FREQUENCY",
@@ -13267,7 +13265,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                   "error": false,
                                                   "filled": false,
                                                   "focused": false,
-                                                  "htmlFor": "invoiceFrequency-label",
+                                                  "htmlFor": "invoiceFrequency",
                                                   "required": false,
                                                   "style": Object {
                                                     "color": "var(--Darkgray)",
@@ -13285,7 +13283,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                 aria-required={true}
                                                 className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary css-1kty9di-MuiFormLabel-root-MuiInputLabel-root"
                                                 data-shrink={true}
-                                                htmlFor="invoiceFrequency-label"
+                                                htmlFor="invoiceFrequency"
                                                 style={
                                                   Object {
                                                     "color": "var(--Darkgray)",
@@ -13316,7 +13314,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                             "SingleValue": [Function],
                                           }
                                         }
-                                        id="invoiceFrequency"
+                                        inputId="invoiceFrequency"
                                         isDisabled={false}
                                         isSearchable={false}
                                         name="invoiceFrequency"
@@ -13349,7 +13347,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                           formatGroupLabel={[Function]}
                                           getOptionLabel={[Function]}
                                           getOptionValue={[Function]}
-                                          id="invoiceFrequency"
+                                          inputId="invoiceFrequency"
                                           inputValue=""
                                           isDisabled={false}
                                           isLoading={false}
@@ -13392,7 +13390,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                             hasValue={false}
                                             innerProps={
                                               Object {
-                                                "id": "invoiceFrequency",
+                                                "id": undefined,
                                                 "onKeyDown": [Function],
                                               }
                                             }
@@ -13424,7 +13422,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                 "formatGroupLabel": [Function],
                                                 "getOptionLabel": [Function],
                                                 "getOptionValue": [Function],
-                                                "id": "invoiceFrequency",
+                                                "inputId": "invoiceFrequency",
                                                 "inputValue": "",
                                                 "isDisabled": false,
                                                 "isLoading": false,
@@ -13503,12 +13501,10 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                   "position": "relative",
                                                 }
                                               }
-                                              id="invoiceFrequency"
                                               onKeyDown={[Function]}
                                             >
                                               <div
                                                 className="react-select-container css-b62m3t-container"
-                                                id="invoiceFrequency"
                                                 onKeyDown={[Function]}
                                               >
                                                 <LiveRegion
@@ -13549,7 +13545,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                       "formatGroupLabel": [Function],
                                                       "getOptionLabel": [Function],
                                                       "getOptionValue": [Function],
-                                                      "id": "invoiceFrequency",
+                                                      "inputId": "invoiceFrequency",
                                                       "inputValue": "",
                                                       "isDisabled": false,
                                                       "isLoading": false,
@@ -13709,7 +13705,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                       "formatGroupLabel": [Function],
                                                       "getOptionLabel": [Function],
                                                       "getOptionValue": [Function],
-                                                      "id": "invoiceFrequency",
+                                                      "inputId": "invoiceFrequency",
                                                       "inputValue": "",
                                                       "isDisabled": false,
                                                       "isLoading": false,
@@ -13844,7 +13840,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                             "formatGroupLabel": [Function],
                                                             "getOptionLabel": [Function],
                                                             "getOptionValue": [Function],
-                                                            "id": "invoiceFrequency",
+                                                            "inputId": "invoiceFrequency",
                                                             "inputValue": "",
                                                             "isDisabled": false,
                                                             "isLoading": false,
@@ -13971,7 +13967,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                   "formatGroupLabel": [Function],
                                                                   "getOptionLabel": [Function],
                                                                   "getOptionValue": [Function],
-                                                                  "id": "invoiceFrequency",
+                                                                  "inputId": "invoiceFrequency",
                                                                   "inputValue": "",
                                                                   "isDisabled": false,
                                                                   "isLoading": false,
@@ -14070,7 +14066,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                               aria-owns="react-select-4-listbox"
                                                               aria-readonly={true}
                                                               disabled={false}
-                                                              id="react-select-4-input"
+                                                              id="invoiceFrequency"
                                                               innerRef={[Function]}
                                                               inputMode="none"
                                                               onBlur={[Function]}
@@ -14100,7 +14096,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                   }
                                                                 }
                                                                 disabled={false}
-                                                                id="react-select-4-input"
+                                                                id="invoiceFrequency"
                                                                 inputMode="none"
                                                                 onBlur={[Function]}
                                                                 onChange={[Function]}
@@ -14119,7 +14115,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                   aria-readonly={true}
                                                                   className="css-mohuvp-dummyInput-DummyInput"
                                                                   disabled={false}
-                                                                  id="react-select-4-input"
+                                                                  id="invoiceFrequency"
                                                                   inputMode="none"
                                                                   onBlur={[Function]}
                                                                   onChange={[Function]}
@@ -14166,7 +14162,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                             "formatGroupLabel": [Function],
                                                             "getOptionLabel": [Function],
                                                             "getOptionValue": [Function],
-                                                            "id": "invoiceFrequency",
+                                                            "inputId": "invoiceFrequency",
                                                             "inputValue": "",
                                                             "isDisabled": false,
                                                             "isLoading": false,
@@ -14283,7 +14279,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                   "formatGroupLabel": [Function],
                                                                   "getOptionLabel": [Function],
                                                                   "getOptionValue": [Function],
-                                                                  "id": "invoiceFrequency",
+                                                                  "inputId": "invoiceFrequency",
                                                                   "inputValue": "",
                                                                   "isDisabled": false,
                                                                   "isLoading": false,
@@ -14390,7 +14386,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                   "formatGroupLabel": [Function],
                                                                   "getOptionLabel": [Function],
                                                                   "getOptionValue": [Function],
-                                                                  "id": "invoiceFrequency",
+                                                                  "inputId": "invoiceFrequency",
                                                                   "inputValue": "",
                                                                   "isDisabled": false,
                                                                   "isLoading": false,
@@ -14497,7 +14493,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                     "formatGroupLabel": [Function],
                                                                     "getOptionLabel": [Function],
                                                                     "getOptionValue": [Function],
-                                                                    "id": "invoiceFrequency",
+                                                                    "inputId": "invoiceFrequency",
                                                                     "inputValue": "",
                                                                     "isDisabled": false,
                                                                     "isLoading": false,
@@ -21317,6 +21313,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                               >
                                 <div
                                   className="toaster_wrapper"
+                                  data-testid="toaster-message"
                                 >
                                   <WithStyles(ForwardRef(Snackbar))
                                     autoHideDuration={6000}
@@ -21422,6 +21419,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
               "aria-labelledby": "discard-changes-dialog-title",
               "children": <div
                 className="discard-dialog-container"
+                id="discard-dialogue"
               >
                 <ForwardRef(Typography)
                   className="fw-bold"

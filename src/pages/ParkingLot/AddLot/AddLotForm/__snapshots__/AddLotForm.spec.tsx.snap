@@ -7311,7 +7311,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                           <ForwardRef(InputLabel)
                                             aria-labelledby="Time Zone"
                                             aria-required={true}
-                                            htmlFor="timeZone-label"
+                                            htmlFor="timeZone"
                                             shrink={true}
                                             style={
                                               Object {
@@ -7339,7 +7339,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                 "SingleValue": [Function],
                                               }
                                             }
-                                            id="timeZone"
+                                            inputId="timeZone"
                                             isDisabled={true}
                                             isSearchable={false}
                                             name="timeZone"
@@ -7371,7 +7371,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                       <ForwardRef(InputLabel)
                                         aria-labelledby="Time Zone"
                                         aria-required={true}
-                                        htmlFor="timeZone-label"
+                                        htmlFor="timeZone"
                                         shrink={true}
                                         style={
                                           Object {
@@ -7389,7 +7389,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                             }
                                           }
                                           data-shrink={true}
-                                          htmlFor="timeZone-label"
+                                          htmlFor="timeZone"
                                           ownerState={
                                             Object {
                                               "aria-labelledby": "Time Zone",
@@ -7422,7 +7422,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                 "size": "medium",
                                                 "variant": "outlined",
                                               },
-                                              "htmlFor": "timeZone-label",
+                                              "htmlFor": "timeZone",
                                               "required": false,
                                               "shrink": true,
                                               "size": "medium",
@@ -7449,7 +7449,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                               }
                                             }
                                             data-shrink={true}
-                                            htmlFor="timeZone-label"
+                                            htmlFor="timeZone"
                                             style={
                                               Object {
                                                 "color": "var(--Darkgray)",
@@ -7468,7 +7468,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                 }
                                               }
                                               data-shrink={true}
-                                              htmlFor="timeZone-label"
+                                              htmlFor="timeZone"
                                               ownerState={
                                                 Object {
                                                   "aria-labelledby": "Time Zone",
@@ -7493,7 +7493,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                   "error": false,
                                                   "filled": false,
                                                   "focused": false,
-                                                  "htmlFor": "timeZone-label",
+                                                  "htmlFor": "timeZone",
                                                   "required": false,
                                                   "style": Object {
                                                     "color": "var(--Darkgray)",
@@ -7511,7 +7511,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                 aria-required={true}
                                                 className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary css-1kty9di-MuiFormLabel-root-MuiInputLabel-root"
                                                 data-shrink={true}
-                                                htmlFor="timeZone-label"
+                                                htmlFor="timeZone"
                                                 style={
                                                   Object {
                                                     "color": "var(--Darkgray)",
@@ -7542,7 +7542,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                             "SingleValue": [Function],
                                           }
                                         }
-                                        id="timeZone"
+                                        inputId="timeZone"
                                         isDisabled={true}
                                         isSearchable={false}
                                         name="timeZone"
@@ -7575,7 +7575,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                           formatGroupLabel={[Function]}
                                           getOptionLabel={[Function]}
                                           getOptionValue={[Function]}
-                                          id="timeZone"
+                                          inputId="timeZone"
                                           inputValue=""
                                           isDisabled={true}
                                           isLoading={false}
@@ -7618,7 +7618,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                             hasValue={false}
                                             innerProps={
                                               Object {
-                                                "id": "timeZone",
+                                                "id": undefined,
                                                 "onKeyDown": [Function],
                                               }
                                             }
@@ -7650,7 +7650,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                 "formatGroupLabel": [Function],
                                                 "getOptionLabel": [Function],
                                                 "getOptionValue": [Function],
-                                                "id": "timeZone",
+                                                "inputId": "timeZone",
                                                 "inputValue": "",
                                                 "isDisabled": true,
                                                 "isLoading": false,
@@ -7729,12 +7729,10 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                   "position": "relative",
                                                 }
                                               }
-                                              id="timeZone"
                                               onKeyDown={[Function]}
                                             >
                                               <div
                                                 className="react-select-container react-select--is-disabled css-3iigni-container"
-                                                id="timeZone"
                                                 onKeyDown={[Function]}
                                               >
                                                 <LiveRegion
@@ -7775,7 +7773,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                       "formatGroupLabel": [Function],
                                                       "getOptionLabel": [Function],
                                                       "getOptionValue": [Function],
-                                                      "id": "timeZone",
+                                                      "inputId": "timeZone",
                                                       "inputValue": "",
                                                       "isDisabled": true,
                                                       "isLoading": false,
@@ -7935,7 +7933,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                       "formatGroupLabel": [Function],
                                                       "getOptionLabel": [Function],
                                                       "getOptionValue": [Function],
-                                                      "id": "timeZone",
+                                                      "inputId": "timeZone",
                                                       "inputValue": "",
                                                       "isDisabled": true,
                                                       "isLoading": false,
@@ -8070,7 +8068,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                             "formatGroupLabel": [Function],
                                                             "getOptionLabel": [Function],
                                                             "getOptionValue": [Function],
-                                                            "id": "timeZone",
+                                                            "inputId": "timeZone",
                                                             "inputValue": "",
                                                             "isDisabled": true,
                                                             "isLoading": false,
@@ -8197,7 +8195,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                                   "formatGroupLabel": [Function],
                                                                   "getOptionLabel": [Function],
                                                                   "getOptionValue": [Function],
-                                                                  "id": "timeZone",
+                                                                  "inputId": "timeZone",
                                                                   "inputValue": "",
                                                                   "isDisabled": true,
                                                                   "isLoading": false,
@@ -8296,7 +8294,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                               aria-owns="react-select-3-listbox"
                                                               aria-readonly={true}
                                                               disabled={true}
-                                                              id="react-select-3-input"
+                                                              id="timeZone"
                                                               innerRef={[Function]}
                                                               inputMode="none"
                                                               onBlur={[Function]}
@@ -8326,7 +8324,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                                   }
                                                                 }
                                                                 disabled={true}
-                                                                id="react-select-3-input"
+                                                                id="timeZone"
                                                                 inputMode="none"
                                                                 onBlur={[Function]}
                                                                 onChange={[Function]}
@@ -8345,7 +8343,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                                   aria-readonly={true}
                                                                   className="css-mohuvp-dummyInput-DummyInput"
                                                                   disabled={true}
-                                                                  id="react-select-3-input"
+                                                                  id="timeZone"
                                                                   inputMode="none"
                                                                   onBlur={[Function]}
                                                                   onChange={[Function]}
@@ -8392,7 +8390,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                             "formatGroupLabel": [Function],
                                                             "getOptionLabel": [Function],
                                                             "getOptionValue": [Function],
-                                                            "id": "timeZone",
+                                                            "inputId": "timeZone",
                                                             "inputValue": "",
                                                             "isDisabled": true,
                                                             "isLoading": false,
@@ -8509,7 +8507,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                                   "formatGroupLabel": [Function],
                                                                   "getOptionLabel": [Function],
                                                                   "getOptionValue": [Function],
-                                                                  "id": "timeZone",
+                                                                  "inputId": "timeZone",
                                                                   "inputValue": "",
                                                                   "isDisabled": true,
                                                                   "isLoading": false,
@@ -8616,7 +8614,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                                   "formatGroupLabel": [Function],
                                                                   "getOptionLabel": [Function],
                                                                   "getOptionValue": [Function],
-                                                                  "id": "timeZone",
+                                                                  "inputId": "timeZone",
                                                                   "inputValue": "",
                                                                   "isDisabled": true,
                                                                   "isLoading": false,
@@ -8723,7 +8721,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                                     "formatGroupLabel": [Function],
                                                                     "getOptionLabel": [Function],
                                                                     "getOptionValue": [Function],
-                                                                    "id": "timeZone",
+                                                                    "inputId": "timeZone",
                                                                     "inputValue": "",
                                                                     "isDisabled": true,
                                                                     "isLoading": false,
@@ -9381,7 +9379,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                           <ForwardRef(InputLabel)
                                             aria-labelledby="PRODUCT DELIVERY FREQUENCY (OPTIONAL)"
                                             aria-required={false}
-                                            htmlFor="productDelFreq-label"
+                                            htmlFor="productDelFreq"
                                             shrink={true}
                                             style={
                                               Object {
@@ -9404,7 +9402,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                 "SingleValue": [Function],
                                               }
                                             }
-                                            id="productDelFreq"
+                                            inputId="productDelFreq"
                                             isDisabled={true}
                                             isSearchable={false}
                                             name="productDelFreq"
@@ -9459,7 +9457,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                       <ForwardRef(InputLabel)
                                         aria-labelledby="PRODUCT DELIVERY FREQUENCY (OPTIONAL)"
                                         aria-required={false}
-                                        htmlFor="productDelFreq-label"
+                                        htmlFor="productDelFreq"
                                         shrink={true}
                                         style={
                                           Object {
@@ -9477,7 +9475,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                             }
                                           }
                                           data-shrink={true}
-                                          htmlFor="productDelFreq-label"
+                                          htmlFor="productDelFreq"
                                           ownerState={
                                             Object {
                                               "aria-labelledby": "PRODUCT DELIVERY FREQUENCY (OPTIONAL)",
@@ -9505,7 +9503,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                 "size": "medium",
                                                 "variant": "outlined",
                                               },
-                                              "htmlFor": "productDelFreq-label",
+                                              "htmlFor": "productDelFreq",
                                               "required": false,
                                               "shrink": true,
                                               "size": "medium",
@@ -9532,7 +9530,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                               }
                                             }
                                             data-shrink={true}
-                                            htmlFor="productDelFreq-label"
+                                            htmlFor="productDelFreq"
                                             style={
                                               Object {
                                                 "color": "var(--Darkgray)",
@@ -9551,7 +9549,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                 }
                                               }
                                               data-shrink={true}
-                                              htmlFor="productDelFreq-label"
+                                              htmlFor="productDelFreq"
                                               ownerState={
                                                 Object {
                                                   "aria-labelledby": "PRODUCT DELIVERY FREQUENCY (OPTIONAL)",
@@ -9571,7 +9569,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                   "error": false,
                                                   "filled": false,
                                                   "focused": false,
-                                                  "htmlFor": "productDelFreq-label",
+                                                  "htmlFor": "productDelFreq",
                                                   "required": false,
                                                   "style": Object {
                                                     "color": "var(--Darkgray)",
@@ -9589,7 +9587,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                 aria-required={false}
                                                 className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary css-1kty9di-MuiFormLabel-root-MuiInputLabel-root"
                                                 data-shrink={true}
-                                                htmlFor="productDelFreq-label"
+                                                htmlFor="productDelFreq"
                                                 style={
                                                   Object {
                                                     "color": "var(--Darkgray)",
@@ -9615,7 +9613,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                             "SingleValue": [Function],
                                           }
                                         }
-                                        id="productDelFreq"
+                                        inputId="productDelFreq"
                                         isDisabled={true}
                                         isSearchable={false}
                                         name="productDelFreq"
@@ -9671,7 +9669,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                           formatGroupLabel={[Function]}
                                           getOptionLabel={[Function]}
                                           getOptionValue={[Function]}
-                                          id="productDelFreq"
+                                          inputId="productDelFreq"
                                           inputValue=""
                                           isDisabled={true}
                                           isLoading={false}
@@ -9737,7 +9735,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                             hasValue={false}
                                             innerProps={
                                               Object {
-                                                "id": "productDelFreq",
+                                                "id": undefined,
                                                 "onKeyDown": [Function],
                                               }
                                             }
@@ -9792,7 +9790,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                 "formatGroupLabel": [Function],
                                                 "getOptionLabel": [Function],
                                                 "getOptionValue": [Function],
-                                                "id": "productDelFreq",
+                                                "inputId": "productDelFreq",
                                                 "inputValue": "",
                                                 "isDisabled": true,
                                                 "isLoading": false,
@@ -9892,12 +9890,10 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                   "position": "relative",
                                                 }
                                               }
-                                              id="productDelFreq"
                                               onKeyDown={[Function]}
                                             >
                                               <div
                                                 className="react-select-container react-select--is-disabled css-3iigni-container"
-                                                id="productDelFreq"
                                                 onKeyDown={[Function]}
                                               >
                                                 <LiveRegion
@@ -9961,7 +9957,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                       "formatGroupLabel": [Function],
                                                       "getOptionLabel": [Function],
                                                       "getOptionValue": [Function],
-                                                      "id": "productDelFreq",
+                                                      "inputId": "productDelFreq",
                                                       "inputValue": "",
                                                       "isDisabled": true,
                                                       "isLoading": false,
@@ -10165,7 +10161,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                       "formatGroupLabel": [Function],
                                                       "getOptionLabel": [Function],
                                                       "getOptionValue": [Function],
-                                                      "id": "productDelFreq",
+                                                      "inputId": "productDelFreq",
                                                       "inputValue": "",
                                                       "isDisabled": true,
                                                       "isLoading": false,
@@ -10344,7 +10340,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                             "formatGroupLabel": [Function],
                                                             "getOptionLabel": [Function],
                                                             "getOptionValue": [Function],
-                                                            "id": "productDelFreq",
+                                                            "inputId": "productDelFreq",
                                                             "inputValue": "",
                                                             "isDisabled": true,
                                                             "isLoading": false,
@@ -10515,7 +10511,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                                   "formatGroupLabel": [Function],
                                                                   "getOptionLabel": [Function],
                                                                   "getOptionValue": [Function],
-                                                                  "id": "productDelFreq",
+                                                                  "inputId": "productDelFreq",
                                                                   "inputValue": "",
                                                                   "isDisabled": true,
                                                                   "isLoading": false,
@@ -10635,7 +10631,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                               aria-owns="react-select-4-listbox"
                                                               aria-readonly={true}
                                                               disabled={true}
-                                                              id="react-select-4-input"
+                                                              id="productDelFreq"
                                                               innerRef={[Function]}
                                                               inputMode="none"
                                                               onBlur={[Function]}
@@ -10665,7 +10661,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                                   }
                                                                 }
                                                                 disabled={true}
-                                                                id="react-select-4-input"
+                                                                id="productDelFreq"
                                                                 inputMode="none"
                                                                 onBlur={[Function]}
                                                                 onChange={[Function]}
@@ -10684,7 +10680,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                                   aria-readonly={true}
                                                                   className="css-mohuvp-dummyInput-DummyInput"
                                                                   disabled={true}
-                                                                  id="react-select-4-input"
+                                                                  id="productDelFreq"
                                                                   inputMode="none"
                                                                   onBlur={[Function]}
                                                                   onChange={[Function]}
@@ -10754,7 +10750,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                             "formatGroupLabel": [Function],
                                                             "getOptionLabel": [Function],
                                                             "getOptionValue": [Function],
-                                                            "id": "productDelFreq",
+                                                            "inputId": "productDelFreq",
                                                             "inputValue": "",
                                                             "isDisabled": true,
                                                             "isLoading": false,
@@ -10915,7 +10911,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                                   "formatGroupLabel": [Function],
                                                                   "getOptionLabel": [Function],
                                                                   "getOptionValue": [Function],
-                                                                  "id": "productDelFreq",
+                                                                  "inputId": "productDelFreq",
                                                                   "inputValue": "",
                                                                   "isDisabled": true,
                                                                   "isLoading": false,
@@ -11066,7 +11062,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                                   "formatGroupLabel": [Function],
                                                                   "getOptionLabel": [Function],
                                                                   "getOptionValue": [Function],
-                                                                  "id": "productDelFreq",
+                                                                  "inputId": "productDelFreq",
                                                                   "inputValue": "",
                                                                   "isDisabled": true,
                                                                   "isLoading": false,
@@ -11217,7 +11213,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                                     "formatGroupLabel": [Function],
                                                                     "getOptionLabel": [Function],
                                                                     "getOptionValue": [Function],
-                                                                    "id": "productDelFreq",
+                                                                    "inputId": "productDelFreq",
                                                                     "inputValue": "",
                                                                     "isDisabled": true,
                                                                     "isLoading": false,
@@ -21574,6 +21570,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                               >
                                 <div
                                   className="toaster_wrapper"
+                                  data-testid="toaster-message"
                                 >
                                   <WithStyles(ForwardRef(Snackbar))
                                     autoHideDuration={6000}
@@ -29783,7 +29780,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                           <ForwardRef(InputLabel)
                                             aria-labelledby="Time Zone"
                                             aria-required={true}
-                                            htmlFor="timeZone-label"
+                                            htmlFor="timeZone"
                                             shrink={true}
                                             style={
                                               Object {
@@ -29811,7 +29808,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                 "SingleValue": [Function],
                                               }
                                             }
-                                            id="timeZone"
+                                            inputId="timeZone"
                                             isDisabled={true}
                                             isSearchable={false}
                                             name="timeZone"
@@ -29843,7 +29840,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                       <ForwardRef(InputLabel)
                                         aria-labelledby="Time Zone"
                                         aria-required={true}
-                                        htmlFor="timeZone-label"
+                                        htmlFor="timeZone"
                                         shrink={true}
                                         style={
                                           Object {
@@ -29861,7 +29858,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                             }
                                           }
                                           data-shrink={true}
-                                          htmlFor="timeZone-label"
+                                          htmlFor="timeZone"
                                           ownerState={
                                             Object {
                                               "aria-labelledby": "Time Zone",
@@ -29894,7 +29891,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                 "size": "medium",
                                                 "variant": "outlined",
                                               },
-                                              "htmlFor": "timeZone-label",
+                                              "htmlFor": "timeZone",
                                               "required": false,
                                               "shrink": true,
                                               "size": "medium",
@@ -29921,7 +29918,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                               }
                                             }
                                             data-shrink={true}
-                                            htmlFor="timeZone-label"
+                                            htmlFor="timeZone"
                                             style={
                                               Object {
                                                 "color": "var(--Darkgray)",
@@ -29940,7 +29937,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                 }
                                               }
                                               data-shrink={true}
-                                              htmlFor="timeZone-label"
+                                              htmlFor="timeZone"
                                               ownerState={
                                                 Object {
                                                   "aria-labelledby": "Time Zone",
@@ -29965,7 +29962,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                   "error": false,
                                                   "filled": false,
                                                   "focused": false,
-                                                  "htmlFor": "timeZone-label",
+                                                  "htmlFor": "timeZone",
                                                   "required": false,
                                                   "style": Object {
                                                     "color": "var(--Darkgray)",
@@ -29983,7 +29980,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                 aria-required={true}
                                                 className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary css-1kty9di-MuiFormLabel-root-MuiInputLabel-root"
                                                 data-shrink={true}
-                                                htmlFor="timeZone-label"
+                                                htmlFor="timeZone"
                                                 style={
                                                   Object {
                                                     "color": "var(--Darkgray)",
@@ -30014,7 +30011,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                             "SingleValue": [Function],
                                           }
                                         }
-                                        id="timeZone"
+                                        inputId="timeZone"
                                         isDisabled={true}
                                         isSearchable={false}
                                         name="timeZone"
@@ -30047,7 +30044,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                           formatGroupLabel={[Function]}
                                           getOptionLabel={[Function]}
                                           getOptionValue={[Function]}
-                                          id="timeZone"
+                                          inputId="timeZone"
                                           inputValue=""
                                           isDisabled={true}
                                           isLoading={false}
@@ -30090,7 +30087,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                             hasValue={false}
                                             innerProps={
                                               Object {
-                                                "id": "timeZone",
+                                                "id": undefined,
                                                 "onKeyDown": [Function],
                                               }
                                             }
@@ -30122,7 +30119,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                 "formatGroupLabel": [Function],
                                                 "getOptionLabel": [Function],
                                                 "getOptionValue": [Function],
-                                                "id": "timeZone",
+                                                "inputId": "timeZone",
                                                 "inputValue": "",
                                                 "isDisabled": true,
                                                 "isLoading": false,
@@ -30201,12 +30198,10 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                   "position": "relative",
                                                 }
                                               }
-                                              id="timeZone"
                                               onKeyDown={[Function]}
                                             >
                                               <div
                                                 className="react-select-container react-select--is-disabled css-3iigni-container"
-                                                id="timeZone"
                                                 onKeyDown={[Function]}
                                               >
                                                 <LiveRegion
@@ -30247,7 +30242,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                       "formatGroupLabel": [Function],
                                                       "getOptionLabel": [Function],
                                                       "getOptionValue": [Function],
-                                                      "id": "timeZone",
+                                                      "inputId": "timeZone",
                                                       "inputValue": "",
                                                       "isDisabled": true,
                                                       "isLoading": false,
@@ -30407,7 +30402,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                       "formatGroupLabel": [Function],
                                                       "getOptionLabel": [Function],
                                                       "getOptionValue": [Function],
-                                                      "id": "timeZone",
+                                                      "inputId": "timeZone",
                                                       "inputValue": "",
                                                       "isDisabled": true,
                                                       "isLoading": false,
@@ -30542,7 +30537,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                             "formatGroupLabel": [Function],
                                                             "getOptionLabel": [Function],
                                                             "getOptionValue": [Function],
-                                                            "id": "timeZone",
+                                                            "inputId": "timeZone",
                                                             "inputValue": "",
                                                             "isDisabled": true,
                                                             "isLoading": false,
@@ -30669,7 +30664,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                                   "formatGroupLabel": [Function],
                                                                   "getOptionLabel": [Function],
                                                                   "getOptionValue": [Function],
-                                                                  "id": "timeZone",
+                                                                  "inputId": "timeZone",
                                                                   "inputValue": "",
                                                                   "isDisabled": true,
                                                                   "isLoading": false,
@@ -30768,7 +30763,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                               aria-owns="react-select-7-listbox"
                                                               aria-readonly={true}
                                                               disabled={true}
-                                                              id="react-select-7-input"
+                                                              id="timeZone"
                                                               innerRef={[Function]}
                                                               inputMode="none"
                                                               onBlur={[Function]}
@@ -30798,7 +30793,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                                   }
                                                                 }
                                                                 disabled={true}
-                                                                id="react-select-7-input"
+                                                                id="timeZone"
                                                                 inputMode="none"
                                                                 onBlur={[Function]}
                                                                 onChange={[Function]}
@@ -30817,7 +30812,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                                   aria-readonly={true}
                                                                   className="css-mohuvp-dummyInput-DummyInput"
                                                                   disabled={true}
-                                                                  id="react-select-7-input"
+                                                                  id="timeZone"
                                                                   inputMode="none"
                                                                   onBlur={[Function]}
                                                                   onChange={[Function]}
@@ -30864,7 +30859,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                             "formatGroupLabel": [Function],
                                                             "getOptionLabel": [Function],
                                                             "getOptionValue": [Function],
-                                                            "id": "timeZone",
+                                                            "inputId": "timeZone",
                                                             "inputValue": "",
                                                             "isDisabled": true,
                                                             "isLoading": false,
@@ -30981,7 +30976,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                                   "formatGroupLabel": [Function],
                                                                   "getOptionLabel": [Function],
                                                                   "getOptionValue": [Function],
-                                                                  "id": "timeZone",
+                                                                  "inputId": "timeZone",
                                                                   "inputValue": "",
                                                                   "isDisabled": true,
                                                                   "isLoading": false,
@@ -31088,7 +31083,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                                   "formatGroupLabel": [Function],
                                                                   "getOptionLabel": [Function],
                                                                   "getOptionValue": [Function],
-                                                                  "id": "timeZone",
+                                                                  "inputId": "timeZone",
                                                                   "inputValue": "",
                                                                   "isDisabled": true,
                                                                   "isLoading": false,
@@ -31195,7 +31190,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                                     "formatGroupLabel": [Function],
                                                                     "getOptionLabel": [Function],
                                                                     "getOptionValue": [Function],
-                                                                    "id": "timeZone",
+                                                                    "inputId": "timeZone",
                                                                     "inputValue": "",
                                                                     "isDisabled": true,
                                                                     "isLoading": false,
@@ -31853,7 +31848,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                           <ForwardRef(InputLabel)
                                             aria-labelledby="PRODUCT DELIVERY FREQUENCY (OPTIONAL)"
                                             aria-required={false}
-                                            htmlFor="productDelFreq-label"
+                                            htmlFor="productDelFreq"
                                             shrink={true}
                                             style={
                                               Object {
@@ -31876,7 +31871,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                 "SingleValue": [Function],
                                               }
                                             }
-                                            id="productDelFreq"
+                                            inputId="productDelFreq"
                                             isDisabled={true}
                                             isSearchable={false}
                                             name="productDelFreq"
@@ -31931,7 +31926,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                       <ForwardRef(InputLabel)
                                         aria-labelledby="PRODUCT DELIVERY FREQUENCY (OPTIONAL)"
                                         aria-required={false}
-                                        htmlFor="productDelFreq-label"
+                                        htmlFor="productDelFreq"
                                         shrink={true}
                                         style={
                                           Object {
@@ -31949,7 +31944,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                             }
                                           }
                                           data-shrink={true}
-                                          htmlFor="productDelFreq-label"
+                                          htmlFor="productDelFreq"
                                           ownerState={
                                             Object {
                                               "aria-labelledby": "PRODUCT DELIVERY FREQUENCY (OPTIONAL)",
@@ -31977,7 +31972,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                 "size": "medium",
                                                 "variant": "outlined",
                                               },
-                                              "htmlFor": "productDelFreq-label",
+                                              "htmlFor": "productDelFreq",
                                               "required": false,
                                               "shrink": true,
                                               "size": "medium",
@@ -32004,7 +31999,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                               }
                                             }
                                             data-shrink={true}
-                                            htmlFor="productDelFreq-label"
+                                            htmlFor="productDelFreq"
                                             style={
                                               Object {
                                                 "color": "var(--Darkgray)",
@@ -32023,7 +32018,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                 }
                                               }
                                               data-shrink={true}
-                                              htmlFor="productDelFreq-label"
+                                              htmlFor="productDelFreq"
                                               ownerState={
                                                 Object {
                                                   "aria-labelledby": "PRODUCT DELIVERY FREQUENCY (OPTIONAL)",
@@ -32043,7 +32038,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                   "error": false,
                                                   "filled": false,
                                                   "focused": false,
-                                                  "htmlFor": "productDelFreq-label",
+                                                  "htmlFor": "productDelFreq",
                                                   "required": false,
                                                   "style": Object {
                                                     "color": "var(--Darkgray)",
@@ -32061,7 +32056,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                 aria-required={false}
                                                 className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary css-1kty9di-MuiFormLabel-root-MuiInputLabel-root"
                                                 data-shrink={true}
-                                                htmlFor="productDelFreq-label"
+                                                htmlFor="productDelFreq"
                                                 style={
                                                   Object {
                                                     "color": "var(--Darkgray)",
@@ -32087,7 +32082,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                             "SingleValue": [Function],
                                           }
                                         }
-                                        id="productDelFreq"
+                                        inputId="productDelFreq"
                                         isDisabled={true}
                                         isSearchable={false}
                                         name="productDelFreq"
@@ -32143,7 +32138,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                           formatGroupLabel={[Function]}
                                           getOptionLabel={[Function]}
                                           getOptionValue={[Function]}
-                                          id="productDelFreq"
+                                          inputId="productDelFreq"
                                           inputValue=""
                                           isDisabled={true}
                                           isLoading={false}
@@ -32209,7 +32204,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                             hasValue={false}
                                             innerProps={
                                               Object {
-                                                "id": "productDelFreq",
+                                                "id": undefined,
                                                 "onKeyDown": [Function],
                                               }
                                             }
@@ -32264,7 +32259,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                 "formatGroupLabel": [Function],
                                                 "getOptionLabel": [Function],
                                                 "getOptionValue": [Function],
-                                                "id": "productDelFreq",
+                                                "inputId": "productDelFreq",
                                                 "inputValue": "",
                                                 "isDisabled": true,
                                                 "isLoading": false,
@@ -32364,12 +32359,10 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                   "position": "relative",
                                                 }
                                               }
-                                              id="productDelFreq"
                                               onKeyDown={[Function]}
                                             >
                                               <div
                                                 className="react-select-container react-select--is-disabled css-3iigni-container"
-                                                id="productDelFreq"
                                                 onKeyDown={[Function]}
                                               >
                                                 <LiveRegion
@@ -32433,7 +32426,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                       "formatGroupLabel": [Function],
                                                       "getOptionLabel": [Function],
                                                       "getOptionValue": [Function],
-                                                      "id": "productDelFreq",
+                                                      "inputId": "productDelFreq",
                                                       "inputValue": "",
                                                       "isDisabled": true,
                                                       "isLoading": false,
@@ -32637,7 +32630,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                       "formatGroupLabel": [Function],
                                                       "getOptionLabel": [Function],
                                                       "getOptionValue": [Function],
-                                                      "id": "productDelFreq",
+                                                      "inputId": "productDelFreq",
                                                       "inputValue": "",
                                                       "isDisabled": true,
                                                       "isLoading": false,
@@ -32816,7 +32809,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                             "formatGroupLabel": [Function],
                                                             "getOptionLabel": [Function],
                                                             "getOptionValue": [Function],
-                                                            "id": "productDelFreq",
+                                                            "inputId": "productDelFreq",
                                                             "inputValue": "",
                                                             "isDisabled": true,
                                                             "isLoading": false,
@@ -32987,7 +32980,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                                   "formatGroupLabel": [Function],
                                                                   "getOptionLabel": [Function],
                                                                   "getOptionValue": [Function],
-                                                                  "id": "productDelFreq",
+                                                                  "inputId": "productDelFreq",
                                                                   "inputValue": "",
                                                                   "isDisabled": true,
                                                                   "isLoading": false,
@@ -33107,7 +33100,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                               aria-owns="react-select-8-listbox"
                                                               aria-readonly={true}
                                                               disabled={true}
-                                                              id="react-select-8-input"
+                                                              id="productDelFreq"
                                                               innerRef={[Function]}
                                                               inputMode="none"
                                                               onBlur={[Function]}
@@ -33137,7 +33130,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                                   }
                                                                 }
                                                                 disabled={true}
-                                                                id="react-select-8-input"
+                                                                id="productDelFreq"
                                                                 inputMode="none"
                                                                 onBlur={[Function]}
                                                                 onChange={[Function]}
@@ -33156,7 +33149,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                                   aria-readonly={true}
                                                                   className="css-mohuvp-dummyInput-DummyInput"
                                                                   disabled={true}
-                                                                  id="react-select-8-input"
+                                                                  id="productDelFreq"
                                                                   inputMode="none"
                                                                   onBlur={[Function]}
                                                                   onChange={[Function]}
@@ -33226,7 +33219,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                             "formatGroupLabel": [Function],
                                                             "getOptionLabel": [Function],
                                                             "getOptionValue": [Function],
-                                                            "id": "productDelFreq",
+                                                            "inputId": "productDelFreq",
                                                             "inputValue": "",
                                                             "isDisabled": true,
                                                             "isLoading": false,
@@ -33387,7 +33380,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                                   "formatGroupLabel": [Function],
                                                                   "getOptionLabel": [Function],
                                                                   "getOptionValue": [Function],
-                                                                  "id": "productDelFreq",
+                                                                  "inputId": "productDelFreq",
                                                                   "inputValue": "",
                                                                   "isDisabled": true,
                                                                   "isLoading": false,
@@ -33538,7 +33531,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                                   "formatGroupLabel": [Function],
                                                                   "getOptionLabel": [Function],
                                                                   "getOptionValue": [Function],
-                                                                  "id": "productDelFreq",
+                                                                  "inputId": "productDelFreq",
                                                                   "inputValue": "",
                                                                   "isDisabled": true,
                                                                   "isLoading": false,
@@ -33689,7 +33682,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                                     "formatGroupLabel": [Function],
                                                                     "getOptionLabel": [Function],
                                                                     "getOptionValue": [Function],
-                                                                    "id": "productDelFreq",
+                                                                    "inputId": "productDelFreq",
                                                                     "inputValue": "",
                                                                     "isDisabled": true,
                                                                     "isLoading": false,
@@ -44046,6 +44039,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                               >
                                 <div
                                   className="toaster_wrapper"
+                                  data-testid="toaster-message"
                                 >
                                   <WithStyles(ForwardRef(Snackbar))
                                     autoHideDuration={6000}

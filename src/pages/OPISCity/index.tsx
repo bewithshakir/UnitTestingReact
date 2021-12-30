@@ -29,7 +29,7 @@ const OPISCityLandingContent = memo(() => {
   const [filterData, setFilterData] = React.useState<{ [key: string]: string[] }>({});
   const [isFilterPanelOpen, toggleFilterPanel] = React.useState(false);
   const [sortOrder, setSortOrder] = React.useState<{ sortBy: string, order: string }>({ sortBy: "", order: "" });
-  const [fuelTaxList, setFuelTaxList] = React.useState([]);
+  const [fuelTaxList, setOpisCityList] = React.useState([]);
 
 
   const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
@@ -47,9 +47,9 @@ const OPISCityLandingContent = memo(() => {
     if (data) {
       const list: any = [];
       data?.pages?.forEach((item: any) => {
-        list.push(...item.data.fuelTax);
+        list.push(...item.data.opisCities);
       });
-      setFuelTaxList(list);
+      setOpisCityList(list);
     }
   }, [data]);
 
@@ -112,6 +112,7 @@ const OPISCityLandingContent = memo(() => {
               <Button
                 types="filter"
                 aria-label="dafault"
+                disabled
                 onClick={openFilterPanel}
                 startIcon={<FilterIcon />}
               >

@@ -2798,7 +2798,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                     <ForwardRef(InputLabel)
                                       aria-labelledby="PRODUCT TYPE"
                                       aria-required={true}
-                                      htmlFor="productType-label"
+                                      htmlFor="productType"
                                       shrink={true}
                                       style={
                                         Object {
@@ -2826,7 +2826,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                           "SingleValue": [Function],
                                         }
                                       }
-                                      id="productType"
+                                      inputId="productType"
                                       isDisabled={false}
                                       isSearchable={false}
                                       name="productType"
@@ -2858,7 +2858,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                 <ForwardRef(InputLabel)
                                   aria-labelledby="PRODUCT TYPE"
                                   aria-required={true}
-                                  htmlFor="productType-label"
+                                  htmlFor="productType"
                                   shrink={true}
                                   style={
                                     Object {
@@ -2876,7 +2876,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                       }
                                     }
                                     data-shrink={true}
-                                    htmlFor="productType-label"
+                                    htmlFor="productType"
                                     ownerState={
                                       Object {
                                         "aria-labelledby": "PRODUCT TYPE",
@@ -2909,7 +2909,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                           "size": "medium",
                                           "variant": "outlined",
                                         },
-                                        "htmlFor": "productType-label",
+                                        "htmlFor": "productType",
                                         "required": false,
                                         "shrink": true,
                                         "size": "medium",
@@ -2936,7 +2936,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                         }
                                       }
                                       data-shrink={true}
-                                      htmlFor="productType-label"
+                                      htmlFor="productType"
                                       style={
                                         Object {
                                           "color": "var(--Darkgray)",
@@ -2955,7 +2955,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                           }
                                         }
                                         data-shrink={true}
-                                        htmlFor="productType-label"
+                                        htmlFor="productType"
                                         ownerState={
                                           Object {
                                             "aria-labelledby": "PRODUCT TYPE",
@@ -2980,7 +2980,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                             "error": false,
                                             "filled": false,
                                             "focused": false,
-                                            "htmlFor": "productType-label",
+                                            "htmlFor": "productType",
                                             "required": false,
                                             "style": Object {
                                               "color": "var(--Darkgray)",
@@ -2998,7 +2998,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                           aria-required={true}
                                           className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary css-1kty9di-MuiFormLabel-root-MuiInputLabel-root"
                                           data-shrink={true}
-                                          htmlFor="productType-label"
+                                          htmlFor="productType"
                                           style={
                                             Object {
                                               "color": "var(--Darkgray)",
@@ -3029,7 +3029,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                       "SingleValue": [Function],
                                     }
                                   }
-                                  id="productType"
+                                  inputId="productType"
                                   isDisabled={false}
                                   isSearchable={false}
                                   name="productType"
@@ -3062,7 +3062,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                     formatGroupLabel={[Function]}
                                     getOptionLabel={[Function]}
                                     getOptionValue={[Function]}
-                                    id="productType"
+                                    inputId="productType"
                                     inputValue=""
                                     isDisabled={false}
                                     isLoading={false}
@@ -3105,7 +3105,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                       hasValue={false}
                                       innerProps={
                                         Object {
-                                          "id": "productType",
+                                          "id": undefined,
                                           "onKeyDown": [Function],
                                         }
                                       }
@@ -3137,7 +3137,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                           "formatGroupLabel": [Function],
                                           "getOptionLabel": [Function],
                                           "getOptionValue": [Function],
-                                          "id": "productType",
+                                          "inputId": "productType",
                                           "inputValue": "",
                                           "isDisabled": false,
                                           "isLoading": false,
@@ -3216,12 +3216,10 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                             "position": "relative",
                                           }
                                         }
-                                        id="productType"
                                         onKeyDown={[Function]}
                                       >
                                         <div
                                           className="react-select-container css-b62m3t-container"
-                                          id="productType"
                                           onKeyDown={[Function]}
                                         >
                                           <LiveRegion
@@ -3262,7 +3260,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                 "formatGroupLabel": [Function],
                                                 "getOptionLabel": [Function],
                                                 "getOptionValue": [Function],
-                                                "id": "productType",
+                                                "inputId": "productType",
                                                 "inputValue": "",
                                                 "isDisabled": false,
                                                 "isLoading": false,
@@ -3422,7 +3420,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                 "formatGroupLabel": [Function],
                                                 "getOptionLabel": [Function],
                                                 "getOptionValue": [Function],
-                                                "id": "productType",
+                                                "inputId": "productType",
                                                 "inputValue": "",
                                                 "isDisabled": false,
                                                 "isLoading": false,
@@ -3557,7 +3555,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                       "formatGroupLabel": [Function],
                                                       "getOptionLabel": [Function],
                                                       "getOptionValue": [Function],
-                                                      "id": "productType",
+                                                      "inputId": "productType",
                                                       "inputValue": "",
                                                       "isDisabled": false,
                                                       "isLoading": false,
@@ -3684,7 +3682,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                             "formatGroupLabel": [Function],
                                                             "getOptionLabel": [Function],
                                                             "getOptionValue": [Function],
-                                                            "id": "productType",
+                                                            "inputId": "productType",
                                                             "inputValue": "",
                                                             "isDisabled": false,
                                                             "isLoading": false,
@@ -3783,7 +3781,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                         aria-owns="react-select-2-listbox"
                                                         aria-readonly={true}
                                                         disabled={false}
-                                                        id="react-select-2-input"
+                                                        id="productType"
                                                         innerRef={[Function]}
                                                         inputMode="none"
                                                         onBlur={[Function]}
@@ -3813,7 +3811,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                             }
                                                           }
                                                           disabled={false}
-                                                          id="react-select-2-input"
+                                                          id="productType"
                                                           inputMode="none"
                                                           onBlur={[Function]}
                                                           onChange={[Function]}
@@ -3832,7 +3830,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                             aria-readonly={true}
                                                             className="css-mohuvp-dummyInput-DummyInput"
                                                             disabled={false}
-                                                            id="react-select-2-input"
+                                                            id="productType"
                                                             inputMode="none"
                                                             onBlur={[Function]}
                                                             onChange={[Function]}
@@ -3879,7 +3877,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                       "formatGroupLabel": [Function],
                                                       "getOptionLabel": [Function],
                                                       "getOptionValue": [Function],
-                                                      "id": "productType",
+                                                      "inputId": "productType",
                                                       "inputValue": "",
                                                       "isDisabled": false,
                                                       "isLoading": false,
@@ -3996,7 +3994,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                             "formatGroupLabel": [Function],
                                                             "getOptionLabel": [Function],
                                                             "getOptionValue": [Function],
-                                                            "id": "productType",
+                                                            "inputId": "productType",
                                                             "inputValue": "",
                                                             "isDisabled": false,
                                                             "isLoading": false,
@@ -4103,7 +4101,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                             "formatGroupLabel": [Function],
                                                             "getOptionLabel": [Function],
                                                             "getOptionValue": [Function],
-                                                            "id": "productType",
+                                                            "inputId": "productType",
                                                             "inputValue": "",
                                                             "isDisabled": false,
                                                             "isLoading": false,
@@ -4210,7 +4208,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                               "formatGroupLabel": [Function],
                                                               "getOptionLabel": [Function],
                                                               "getOptionValue": [Function],
-                                                              "id": "productType",
+                                                              "inputId": "productType",
                                                               "inputValue": "",
                                                               "isDisabled": false,
                                                               "isLoading": false,
@@ -4437,7 +4435,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                     <ForwardRef(InputLabel)
                                       aria-labelledby="Master Product Name"
                                       aria-required={true}
-                                      htmlFor="masterProductName-label"
+                                      htmlFor="masterProductName"
                                       shrink={true}
                                       style={
                                         Object {
@@ -4465,7 +4463,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                           "SingleValue": [Function],
                                         }
                                       }
-                                      id="masterProductName"
+                                      inputId="masterProductName"
                                       isDisabled={false}
                                       isSearchable={false}
                                       name="masterProductName"
@@ -4497,7 +4495,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                 <ForwardRef(InputLabel)
                                   aria-labelledby="Master Product Name"
                                   aria-required={true}
-                                  htmlFor="masterProductName-label"
+                                  htmlFor="masterProductName"
                                   shrink={true}
                                   style={
                                     Object {
@@ -4515,7 +4513,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                       }
                                     }
                                     data-shrink={true}
-                                    htmlFor="masterProductName-label"
+                                    htmlFor="masterProductName"
                                     ownerState={
                                       Object {
                                         "aria-labelledby": "Master Product Name",
@@ -4548,7 +4546,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                           "size": "medium",
                                           "variant": "outlined",
                                         },
-                                        "htmlFor": "masterProductName-label",
+                                        "htmlFor": "masterProductName",
                                         "required": false,
                                         "shrink": true,
                                         "size": "medium",
@@ -4575,7 +4573,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                         }
                                       }
                                       data-shrink={true}
-                                      htmlFor="masterProductName-label"
+                                      htmlFor="masterProductName"
                                       style={
                                         Object {
                                           "color": "var(--Darkgray)",
@@ -4594,7 +4592,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                           }
                                         }
                                         data-shrink={true}
-                                        htmlFor="masterProductName-label"
+                                        htmlFor="masterProductName"
                                         ownerState={
                                           Object {
                                             "aria-labelledby": "Master Product Name",
@@ -4619,7 +4617,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                             "error": false,
                                             "filled": false,
                                             "focused": false,
-                                            "htmlFor": "masterProductName-label",
+                                            "htmlFor": "masterProductName",
                                             "required": false,
                                             "style": Object {
                                               "color": "var(--Darkgray)",
@@ -4637,7 +4635,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                           aria-required={true}
                                           className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary css-1kty9di-MuiFormLabel-root-MuiInputLabel-root"
                                           data-shrink={true}
-                                          htmlFor="masterProductName-label"
+                                          htmlFor="masterProductName"
                                           style={
                                             Object {
                                               "color": "var(--Darkgray)",
@@ -4668,7 +4666,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                       "SingleValue": [Function],
                                     }
                                   }
-                                  id="masterProductName"
+                                  inputId="masterProductName"
                                   isDisabled={false}
                                   isSearchable={false}
                                   name="masterProductName"
@@ -4701,7 +4699,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                     formatGroupLabel={[Function]}
                                     getOptionLabel={[Function]}
                                     getOptionValue={[Function]}
-                                    id="masterProductName"
+                                    inputId="masterProductName"
                                     inputValue=""
                                     isDisabled={false}
                                     isLoading={false}
@@ -4744,7 +4742,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                       hasValue={false}
                                       innerProps={
                                         Object {
-                                          "id": "masterProductName",
+                                          "id": undefined,
                                           "onKeyDown": [Function],
                                         }
                                       }
@@ -4776,7 +4774,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                           "formatGroupLabel": [Function],
                                           "getOptionLabel": [Function],
                                           "getOptionValue": [Function],
-                                          "id": "masterProductName",
+                                          "inputId": "masterProductName",
                                           "inputValue": "",
                                           "isDisabled": false,
                                           "isLoading": false,
@@ -4855,12 +4853,10 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                             "position": "relative",
                                           }
                                         }
-                                        id="masterProductName"
                                         onKeyDown={[Function]}
                                       >
                                         <div
                                           className="react-select-container css-b62m3t-container"
-                                          id="masterProductName"
                                           onKeyDown={[Function]}
                                         >
                                           <LiveRegion
@@ -4901,7 +4897,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                 "formatGroupLabel": [Function],
                                                 "getOptionLabel": [Function],
                                                 "getOptionValue": [Function],
-                                                "id": "masterProductName",
+                                                "inputId": "masterProductName",
                                                 "inputValue": "",
                                                 "isDisabled": false,
                                                 "isLoading": false,
@@ -5061,7 +5057,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                 "formatGroupLabel": [Function],
                                                 "getOptionLabel": [Function],
                                                 "getOptionValue": [Function],
-                                                "id": "masterProductName",
+                                                "inputId": "masterProductName",
                                                 "inputValue": "",
                                                 "isDisabled": false,
                                                 "isLoading": false,
@@ -5196,7 +5192,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                       "formatGroupLabel": [Function],
                                                       "getOptionLabel": [Function],
                                                       "getOptionValue": [Function],
-                                                      "id": "masterProductName",
+                                                      "inputId": "masterProductName",
                                                       "inputValue": "",
                                                       "isDisabled": false,
                                                       "isLoading": false,
@@ -5323,7 +5319,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                             "formatGroupLabel": [Function],
                                                             "getOptionLabel": [Function],
                                                             "getOptionValue": [Function],
-                                                            "id": "masterProductName",
+                                                            "inputId": "masterProductName",
                                                             "inputValue": "",
                                                             "isDisabled": false,
                                                             "isLoading": false,
@@ -5422,7 +5418,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                         aria-owns="react-select-3-listbox"
                                                         aria-readonly={true}
                                                         disabled={false}
-                                                        id="react-select-3-input"
+                                                        id="masterProductName"
                                                         innerRef={[Function]}
                                                         inputMode="none"
                                                         onBlur={[Function]}
@@ -5452,7 +5448,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                             }
                                                           }
                                                           disabled={false}
-                                                          id="react-select-3-input"
+                                                          id="masterProductName"
                                                           inputMode="none"
                                                           onBlur={[Function]}
                                                           onChange={[Function]}
@@ -5471,7 +5467,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                             aria-readonly={true}
                                                             className="css-mohuvp-dummyInput-DummyInput"
                                                             disabled={false}
-                                                            id="react-select-3-input"
+                                                            id="masterProductName"
                                                             inputMode="none"
                                                             onBlur={[Function]}
                                                             onChange={[Function]}
@@ -5518,7 +5514,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                       "formatGroupLabel": [Function],
                                                       "getOptionLabel": [Function],
                                                       "getOptionValue": [Function],
-                                                      "id": "masterProductName",
+                                                      "inputId": "masterProductName",
                                                       "inputValue": "",
                                                       "isDisabled": false,
                                                       "isLoading": false,
@@ -5635,7 +5631,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                             "formatGroupLabel": [Function],
                                                             "getOptionLabel": [Function],
                                                             "getOptionValue": [Function],
-                                                            "id": "masterProductName",
+                                                            "inputId": "masterProductName",
                                                             "inputValue": "",
                                                             "isDisabled": false,
                                                             "isLoading": false,
@@ -5742,7 +5738,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                             "formatGroupLabel": [Function],
                                                             "getOptionLabel": [Function],
                                                             "getOptionValue": [Function],
-                                                            "id": "masterProductName",
+                                                            "inputId": "masterProductName",
                                                             "inputValue": "",
                                                             "isDisabled": false,
                                                             "isLoading": false,
@@ -5849,7 +5845,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                               "formatGroupLabel": [Function],
                                                               "getOptionLabel": [Function],
                                                               "getOptionValue": [Function],
-                                                              "id": "masterProductName",
+                                                              "inputId": "masterProductName",
                                                               "inputValue": "",
                                                               "isDisabled": false,
                                                               "isLoading": false,
@@ -6076,7 +6072,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                     <ForwardRef(InputLabel)
                                       aria-labelledby="Pricing Model"
                                       aria-required={true}
-                                      htmlFor="pricingModel-label"
+                                      htmlFor="pricingModel"
                                       shrink={true}
                                       style={
                                         Object {
@@ -6104,7 +6100,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                           "SingleValue": [Function],
                                         }
                                       }
-                                      id="pricingModel"
+                                      inputId="pricingModel"
                                       isDisabled={false}
                                       isSearchable={false}
                                       name="pricingModel"
@@ -6136,7 +6132,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                 <ForwardRef(InputLabel)
                                   aria-labelledby="Pricing Model"
                                   aria-required={true}
-                                  htmlFor="pricingModel-label"
+                                  htmlFor="pricingModel"
                                   shrink={true}
                                   style={
                                     Object {
@@ -6154,7 +6150,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                       }
                                     }
                                     data-shrink={true}
-                                    htmlFor="pricingModel-label"
+                                    htmlFor="pricingModel"
                                     ownerState={
                                       Object {
                                         "aria-labelledby": "Pricing Model",
@@ -6187,7 +6183,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                           "size": "medium",
                                           "variant": "outlined",
                                         },
-                                        "htmlFor": "pricingModel-label",
+                                        "htmlFor": "pricingModel",
                                         "required": false,
                                         "shrink": true,
                                         "size": "medium",
@@ -6214,7 +6210,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                         }
                                       }
                                       data-shrink={true}
-                                      htmlFor="pricingModel-label"
+                                      htmlFor="pricingModel"
                                       style={
                                         Object {
                                           "color": "var(--Darkgray)",
@@ -6233,7 +6229,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                           }
                                         }
                                         data-shrink={true}
-                                        htmlFor="pricingModel-label"
+                                        htmlFor="pricingModel"
                                         ownerState={
                                           Object {
                                             "aria-labelledby": "Pricing Model",
@@ -6258,7 +6254,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                             "error": false,
                                             "filled": false,
                                             "focused": false,
-                                            "htmlFor": "pricingModel-label",
+                                            "htmlFor": "pricingModel",
                                             "required": false,
                                             "style": Object {
                                               "color": "var(--Darkgray)",
@@ -6276,7 +6272,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                           aria-required={true}
                                           className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary css-1kty9di-MuiFormLabel-root-MuiInputLabel-root"
                                           data-shrink={true}
-                                          htmlFor="pricingModel-label"
+                                          htmlFor="pricingModel"
                                           style={
                                             Object {
                                               "color": "var(--Darkgray)",
@@ -6307,7 +6303,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                       "SingleValue": [Function],
                                     }
                                   }
-                                  id="pricingModel"
+                                  inputId="pricingModel"
                                   isDisabled={false}
                                   isSearchable={false}
                                   name="pricingModel"
@@ -6340,7 +6336,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                     formatGroupLabel={[Function]}
                                     getOptionLabel={[Function]}
                                     getOptionValue={[Function]}
-                                    id="pricingModel"
+                                    inputId="pricingModel"
                                     inputValue=""
                                     isDisabled={false}
                                     isLoading={false}
@@ -6383,7 +6379,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                       hasValue={false}
                                       innerProps={
                                         Object {
-                                          "id": "pricingModel",
+                                          "id": undefined,
                                           "onKeyDown": [Function],
                                         }
                                       }
@@ -6415,7 +6411,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                           "formatGroupLabel": [Function],
                                           "getOptionLabel": [Function],
                                           "getOptionValue": [Function],
-                                          "id": "pricingModel",
+                                          "inputId": "pricingModel",
                                           "inputValue": "",
                                           "isDisabled": false,
                                           "isLoading": false,
@@ -6494,12 +6490,10 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                             "position": "relative",
                                           }
                                         }
-                                        id="pricingModel"
                                         onKeyDown={[Function]}
                                       >
                                         <div
                                           className="react-select-container css-b62m3t-container"
-                                          id="pricingModel"
                                           onKeyDown={[Function]}
                                         >
                                           <LiveRegion
@@ -6540,7 +6534,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                 "formatGroupLabel": [Function],
                                                 "getOptionLabel": [Function],
                                                 "getOptionValue": [Function],
-                                                "id": "pricingModel",
+                                                "inputId": "pricingModel",
                                                 "inputValue": "",
                                                 "isDisabled": false,
                                                 "isLoading": false,
@@ -6700,7 +6694,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                 "formatGroupLabel": [Function],
                                                 "getOptionLabel": [Function],
                                                 "getOptionValue": [Function],
-                                                "id": "pricingModel",
+                                                "inputId": "pricingModel",
                                                 "inputValue": "",
                                                 "isDisabled": false,
                                                 "isLoading": false,
@@ -6835,7 +6829,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                       "formatGroupLabel": [Function],
                                                       "getOptionLabel": [Function],
                                                       "getOptionValue": [Function],
-                                                      "id": "pricingModel",
+                                                      "inputId": "pricingModel",
                                                       "inputValue": "",
                                                       "isDisabled": false,
                                                       "isLoading": false,
@@ -6962,7 +6956,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                             "formatGroupLabel": [Function],
                                                             "getOptionLabel": [Function],
                                                             "getOptionValue": [Function],
-                                                            "id": "pricingModel",
+                                                            "inputId": "pricingModel",
                                                             "inputValue": "",
                                                             "isDisabled": false,
                                                             "isLoading": false,
@@ -7061,7 +7055,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                         aria-owns="react-select-4-listbox"
                                                         aria-readonly={true}
                                                         disabled={false}
-                                                        id="react-select-4-input"
+                                                        id="pricingModel"
                                                         innerRef={[Function]}
                                                         inputMode="none"
                                                         onBlur={[Function]}
@@ -7091,7 +7085,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                             }
                                                           }
                                                           disabled={false}
-                                                          id="react-select-4-input"
+                                                          id="pricingModel"
                                                           inputMode="none"
                                                           onBlur={[Function]}
                                                           onChange={[Function]}
@@ -7110,7 +7104,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                             aria-readonly={true}
                                                             className="css-mohuvp-dummyInput-DummyInput"
                                                             disabled={false}
-                                                            id="react-select-4-input"
+                                                            id="pricingModel"
                                                             inputMode="none"
                                                             onBlur={[Function]}
                                                             onChange={[Function]}
@@ -7157,7 +7151,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                       "formatGroupLabel": [Function],
                                                       "getOptionLabel": [Function],
                                                       "getOptionValue": [Function],
-                                                      "id": "pricingModel",
+                                                      "inputId": "pricingModel",
                                                       "inputValue": "",
                                                       "isDisabled": false,
                                                       "isLoading": false,
@@ -7274,7 +7268,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                             "formatGroupLabel": [Function],
                                                             "getOptionLabel": [Function],
                                                             "getOptionValue": [Function],
-                                                            "id": "pricingModel",
+                                                            "inputId": "pricingModel",
                                                             "inputValue": "",
                                                             "isDisabled": false,
                                                             "isLoading": false,
@@ -7381,7 +7375,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                             "formatGroupLabel": [Function],
                                                             "getOptionLabel": [Function],
                                                             "getOptionValue": [Function],
-                                                            "id": "pricingModel",
+                                                            "inputId": "pricingModel",
                                                             "inputValue": "",
                                                             "isDisabled": false,
                                                             "isLoading": false,
@@ -7488,7 +7482,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                                               "formatGroupLabel": [Function],
                                                               "getOptionLabel": [Function],
                                                               "getOptionValue": [Function],
-                                                              "id": "pricingModel",
+                                                              "inputId": "pricingModel",
                                                               "inputValue": "",
                                                               "isDisabled": false,
                                                               "isLoading": false,
@@ -8075,6 +8069,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                         >
                           <div
                             className="toaster_wrapper"
+                            data-testid="toaster-message"
                           >
                             <WithStyles(ForwardRef(Snackbar))
                               autoHideDuration={6000}
