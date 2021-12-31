@@ -30,7 +30,7 @@
       }
     }
 
-    & .react-select {
+    & .react-select, .react-select-product-color {
       &__control {
         height: 50px;
         border-radius: 0px;
@@ -161,6 +161,7 @@
         }
       }
       &--is-focused {
+        background-color: var(--Lightgray_2);
         opacity: 1;
         &:active {
           border: 1px solid var(--White);

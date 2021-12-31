@@ -5,6 +5,7 @@ import { FormHelperText, InputLabel, FormControl, Icon, Box, Typography } from '
 import CheckIcon from '@material-ui/icons/Check';
 import './SingleSelect.scss';
 import { ArrowDown } from '../../../assets/icons';
+import { useTheme } from '../../../contexts/Theme/Theme.context';
 
 const { SingleValue } = components;
 const optionIconsSX = { width: "20px", height: "20px" };
@@ -18,6 +19,7 @@ type item = {
 interface props {
     id?: string;
     name?: string;
+    dropdownType?: string;
     label?: string;
     placeholder?: string;
     value?: item | Array<item>;
@@ -39,6 +41,9 @@ interface props {
 }
 
 export default function SingleSelect (props: props) {
+    const { theme } = useTheme();
+    const { dropdownType } = props;
+    
     const whiteColorList = ['#DD1D21','#008443','#003C88','#009EB4','#641964','#743410'];
     const DropdownIndicator = (props: DropdownIndicatorProps<item>) => {
         return (
@@ -54,13 +59,17 @@ export default function SingleSelect (props: props) {
     };
 
     const Option = (props: OptionProps<any>) => {
-        return  props.selectProps.id==='productColor'? (
+        return dropdownType === 'productcolor' ? (
             <components.Option {...props}>
-                <Box display="flex" alignItems="center" justifyContent="space-between">
+                <Box display="flex" sx={{width:"100%"}} alignItems="center" >
                     {props.data.icon ? <Icon sx={optionIconsSX} component={props.data.icon} /> : null}
                     {props.data.label ? <Typography variant="h4" width={100} pl={props.data.icon ? 1 : 0}>{props.data.label}</Typography> : null}
-                    {props.data.hex ? <Box border={1} width={80} bgcolor={props.data.hex} color={whiteColorList.includes(props.data.hex) ? '#FFFFFF' : '#404040'} mx={5} px={1} py={.2}>{props.data.hex}</Box> : null}
-                    {props.isSelected ? <Box ml={12}><CheckIcon /></Box> : null}
+                    {props.data.hex ?
+                        <Box border={1} width={80} bgcolor={props.data.hex}
+                            color={whiteColorList.includes(props.data.hex) ? theme["--White"] : theme["--Darkgray"]}
+                            mx={4} px={1} py={.2}>{props.data.hex}
+                        </Box> : null}
+                    {props.isSelected ? <Box sx={{marginLeft:'auto'}}><CheckIcon /></Box> : null}
                 </Box>
             </components.Option>
         ): (
@@ -107,7 +116,7 @@ export default function SingleSelect (props: props) {
                     name={props.name}
                     placeholder={props.placeholder}
                     className={props.error ? 'react-select-container error' : 'react-select-container'}
-                    classNamePrefix={props.id ==='productColor'? 'react-select-product-color' : 'react-select'}
+                    classNamePrefix={dropdownType ==='productcolor'? 'react-select-product-color' : 'react-select'}
                     value={checkIsEmptyOption(props.value)}
                     options={props.items}
                     onChange={handleChange}

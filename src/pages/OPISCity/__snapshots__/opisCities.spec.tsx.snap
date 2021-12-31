@@ -767,6 +767,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                         >
                           <Button
                             aria-label="dafault"
+                            disabled={true}
                             onClick={[Function]}
                             startIcon={<FilterIcon />}
                             types="filter"
@@ -862,19 +863,42 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                               "align": "left",
                               "field": "cityId",
                               "label": "CITY ID",
-                              "sortable": true,
                               "type": "text",
                             },
                             Object {
                               "align": "left",
-                              "field": "cityName",
+                              "field": "city",
                               "label": "CITY",
                               "type": "text",
                             },
                             Object {
                               "align": "left",
-                              "field": "stateName",
+                              "field": "state",
                               "label": "STATE",
+                              "type": "text",
+                            },
+                            Object {
+                              "align": "left",
+                              "field": "",
+                              "label": "",
+                              "type": "text",
+                            },
+                            Object {
+                              "align": "left",
+                              "field": "",
+                              "label": "",
+                              "type": "text",
+                            },
+                            Object {
+                              "align": "left",
+                              "field": "",
+                              "label": "",
+                              "type": "text",
+                            },
+                            Object {
+                              "align": "left",
+                              "field": "",
+                              "label": "",
                               "type": "text",
                             },
                             Object {
@@ -1031,6 +1055,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                             >
                               <Button
                                 aria-label="dafault"
+                                disabled={true}
                                 onClick={[Function]}
                                 startIcon={<FilterIcon />}
                                 types="filter"
@@ -1157,6 +1182,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                 >
                                   <Button
                                     aria-label="dafault"
+                                    disabled={true}
                                     onClick={[Function]}
                                     startIcon={<FilterIcon />}
                                     types="filter"
@@ -1234,6 +1260,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                   Object {
                                     "children": <Button
                                       aria-label="dafault"
+                                      disabled={true}
                                       onClick={[Function]}
                                       startIcon={<FilterIcon />}
                                       types="filter"
@@ -1269,6 +1296,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                 >
                                   <Button
                                     aria-label="dafault"
+                                    disabled={true}
                                     onClick={[Function]}
                                     startIcon={<FilterIcon />}
                                     types="filter"
@@ -1276,6 +1304,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                     <WithStyles(ForwardRef(Button))
                                       aria-label="dafault"
                                       className="btn-filter "
+                                      disabled={true}
                                       onClick={[Function]}
                                       startIcon={<FilterIcon />}
                                       variant="contained"
@@ -1316,15 +1345,16 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                             "textSizeSmall": "MuiButton-textSizeSmall",
                                           }
                                         }
+                                        disabled={true}
                                         onClick={[Function]}
                                         startIcon={<FilterIcon />}
                                         variant="contained"
                                       >
                                         <WithStyles(ForwardRef(ButtonBase))
                                           aria-label="dafault"
-                                          className="MuiButton-root MuiButton-contained btn-filter "
+                                          className="MuiButton-root MuiButton-contained btn-filter  Mui-disabled"
                                           component="button"
-                                          disabled={false}
+                                          disabled={true}
                                           focusRipple={true}
                                           focusVisibleClassName="Mui-focusVisible"
                                           onClick={[Function]}
@@ -1332,7 +1362,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                         >
                                           <ForwardRef(ButtonBase)
                                             aria-label="dafault"
-                                            className="MuiButton-root MuiButton-contained btn-filter "
+                                            className="MuiButton-root MuiButton-contained btn-filter  Mui-disabled"
                                             classes={
                                               Object {
                                                 "disabled": "Mui-disabled",
@@ -1341,7 +1371,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                               }
                                             }
                                             component="button"
-                                            disabled={false}
+                                            disabled={true}
                                             focusRipple={true}
                                             focusVisibleClassName="Mui-focusVisible"
                                             onClick={[Function]}
@@ -1349,8 +1379,8 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                           >
                                             <button
                                               aria-label="dafault"
-                                              className="MuiButtonBase-root MuiButton-root MuiButton-contained btn-filter "
-                                              disabled={false}
+                                              className="MuiButtonBase-root MuiButton-root MuiButton-contained btn-filter  Mui-disabled Mui-disabled"
+                                              disabled={true}
                                               onBlur={[Function]}
                                               onClick={[Function]}
                                               onDragLeave={[Function]}
@@ -1363,7 +1393,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                               onTouchEnd={[Function]}
                                               onTouchMove={[Function]}
                                               onTouchStart={[Function]}
-                                              tabIndex={0}
+                                              tabIndex={-1}
                                               type="button"
                                             >
                                               <span
@@ -1391,34 +1421,6 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                 </span>
                                                 buttons.filter
                                               </span>
-                                              <WithStyles(memo)
-                                                center={false}
-                                              >
-                                                <ForwardRef(TouchRipple)
-                                                  center={false}
-                                                  classes={
-                                                    Object {
-                                                      "child": "MuiTouchRipple-child",
-                                                      "childLeaving": "MuiTouchRipple-childLeaving",
-                                                      "childPulsate": "MuiTouchRipple-childPulsate",
-                                                      "ripple": "MuiTouchRipple-ripple",
-                                                      "ripplePulsate": "MuiTouchRipple-ripplePulsate",
-                                                      "rippleVisible": "MuiTouchRipple-rippleVisible",
-                                                      "root": "MuiTouchRipple-root",
-                                                    }
-                                                  }
-                                                >
-                                                  <span
-                                                    className="MuiTouchRipple-root"
-                                                  >
-                                                    <TransitionGroup
-                                                      childFactory={[Function]}
-                                                      component={null}
-                                                      exit={true}
-                                                    />
-                                                  </span>
-                                                </ForwardRef(TouchRipple)>
-                                              </WithStyles(memo)>
                                             </button>
                                           </ForwardRef(ButtonBase)>
                                         </WithStyles(ForwardRef(ButtonBase))>
@@ -3856,19 +3858,42 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                   "align": "left",
                                   "field": "cityId",
                                   "label": "CITY ID",
-                                  "sortable": true,
                                   "type": "text",
                                 },
                                 Object {
                                   "align": "left",
-                                  "field": "cityName",
+                                  "field": "city",
                                   "label": "CITY",
                                   "type": "text",
                                 },
                                 Object {
                                   "align": "left",
-                                  "field": "stateName",
+                                  "field": "state",
                                   "label": "STATE",
+                                  "type": "text",
+                                },
+                                Object {
+                                  "align": "left",
+                                  "field": "",
+                                  "label": "",
+                                  "type": "text",
+                                },
+                                Object {
+                                  "align": "left",
+                                  "field": "",
+                                  "label": "",
+                                  "type": "text",
+                                },
+                                Object {
+                                  "align": "left",
+                                  "field": "",
+                                  "label": "",
+                                  "type": "text",
+                                },
+                                Object {
+                                  "align": "left",
+                                  "field": "",
+                                  "label": "",
                                   "type": "text",
                                 },
                                 Object {
@@ -4012,19 +4037,42 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                               "align": "left",
                               "field": "cityId",
                               "label": "CITY ID",
-                              "sortable": true,
                               "type": "text",
                             },
                             Object {
                               "align": "left",
-                              "field": "cityName",
+                              "field": "city",
                               "label": "CITY",
                               "type": "text",
                             },
                             Object {
                               "align": "left",
-                              "field": "stateName",
+                              "field": "state",
                               "label": "STATE",
+                              "type": "text",
+                            },
+                            Object {
+                              "align": "left",
+                              "field": "",
+                              "label": "",
+                              "type": "text",
+                            },
+                            Object {
+                              "align": "left",
+                              "field": "",
+                              "label": "",
+                              "type": "text",
+                            },
+                            Object {
+                              "align": "left",
+                              "field": "",
+                              "label": "",
+                              "type": "text",
+                            },
+                            Object {
+                              "align": "left",
+                              "field": "",
+                              "label": "",
                               "type": "text",
                             },
                             Object {
@@ -4126,19 +4174,42 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                           "align": "left",
                                           "field": "cityId",
                                           "label": "CITY ID",
-                                          "sortable": true,
                                           "type": "text",
                                         },
                                         Object {
                                           "align": "left",
-                                          "field": "cityName",
+                                          "field": "city",
                                           "label": "CITY",
                                           "type": "text",
                                         },
                                         Object {
                                           "align": "left",
-                                          "field": "stateName",
+                                          "field": "state",
                                           "label": "STATE",
+                                          "type": "text",
+                                        },
+                                        Object {
+                                          "align": "left",
+                                          "field": "",
+                                          "label": "",
+                                          "type": "text",
+                                        },
+                                        Object {
+                                          "align": "left",
+                                          "field": "",
+                                          "label": "",
+                                          "type": "text",
+                                        },
+                                        Object {
+                                          "align": "left",
+                                          "field": "",
+                                          "label": "",
+                                          "type": "text",
+                                        },
+                                        Object {
+                                          "align": "left",
+                                          "field": "",
+                                          "label": "",
                                           "type": "text",
                                         },
                                         Object {
@@ -4215,19 +4286,42 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                           "align": "left",
                                           "field": "cityId",
                                           "label": "CITY ID",
-                                          "sortable": true,
                                           "type": "text",
                                         },
                                         Object {
                                           "align": "left",
-                                          "field": "cityName",
+                                          "field": "city",
                                           "label": "CITY",
                                           "type": "text",
                                         },
                                         Object {
                                           "align": "left",
-                                          "field": "stateName",
+                                          "field": "state",
                                           "label": "STATE",
+                                          "type": "text",
+                                        },
+                                        Object {
+                                          "align": "left",
+                                          "field": "",
+                                          "label": "",
+                                          "type": "text",
+                                        },
+                                        Object {
+                                          "align": "left",
+                                          "field": "",
+                                          "label": "",
+                                          "type": "text",
+                                        },
+                                        Object {
+                                          "align": "left",
+                                          "field": "",
+                                          "label": "",
+                                          "type": "text",
+                                        },
+                                        Object {
+                                          "align": "left",
+                                          "field": "",
+                                          "label": "",
                                           "type": "text",
                                         },
                                         Object {
@@ -4292,19 +4386,42 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                           "align": "left",
                                           "field": "cityId",
                                           "label": "CITY ID",
-                                          "sortable": true,
                                           "type": "text",
                                         },
                                         Object {
                                           "align": "left",
-                                          "field": "cityName",
+                                          "field": "city",
                                           "label": "CITY",
                                           "type": "text",
                                         },
                                         Object {
                                           "align": "left",
-                                          "field": "stateName",
+                                          "field": "state",
                                           "label": "STATE",
+                                          "type": "text",
+                                        },
+                                        Object {
+                                          "align": "left",
+                                          "field": "",
+                                          "label": "",
+                                          "type": "text",
+                                        },
+                                        Object {
+                                          "align": "left",
+                                          "field": "",
+                                          "label": "",
+                                          "type": "text",
+                                        },
+                                        Object {
+                                          "align": "left",
+                                          "field": "",
+                                          "label": "",
+                                          "type": "text",
+                                        },
+                                        Object {
+                                          "align": "left",
+                                          "field": "",
+                                          "label": "",
                                           "type": "text",
                                         },
                                         Object {
@@ -4418,19 +4535,42 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                 "align": "left",
                                                 "field": "cityId",
                                                 "label": "CITY ID",
-                                                "sortable": true,
                                                 "type": "text",
                                               },
                                               Object {
                                                 "align": "left",
-                                                "field": "cityName",
+                                                "field": "city",
                                                 "label": "CITY",
                                                 "type": "text",
                                               },
                                               Object {
                                                 "align": "left",
-                                                "field": "stateName",
+                                                "field": "state",
                                                 "label": "STATE",
+                                                "type": "text",
+                                              },
+                                              Object {
+                                                "align": "left",
+                                                "field": "",
+                                                "label": "",
+                                                "type": "text",
+                                              },
+                                              Object {
+                                                "align": "left",
+                                                "field": "",
+                                                "label": "",
+                                                "type": "text",
+                                              },
+                                              Object {
+                                                "align": "left",
+                                                "field": "",
+                                                "label": "",
+                                                "type": "text",
+                                              },
+                                              Object {
+                                                "align": "left",
+                                                "field": "",
+                                                "label": "",
                                                 "type": "text",
                                               },
                                               Object {
@@ -4507,19 +4647,42 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                 "align": "left",
                                                 "field": "cityId",
                                                 "label": "CITY ID",
-                                                "sortable": true,
                                                 "type": "text",
                                               },
                                               Object {
                                                 "align": "left",
-                                                "field": "cityName",
+                                                "field": "city",
                                                 "label": "CITY",
                                                 "type": "text",
                                               },
                                               Object {
                                                 "align": "left",
-                                                "field": "stateName",
+                                                "field": "state",
                                                 "label": "STATE",
+                                                "type": "text",
+                                              },
+                                              Object {
+                                                "align": "left",
+                                                "field": "",
+                                                "label": "",
+                                                "type": "text",
+                                              },
+                                              Object {
+                                                "align": "left",
+                                                "field": "",
+                                                "label": "",
+                                                "type": "text",
+                                              },
+                                              Object {
+                                                "align": "left",
+                                                "field": "",
+                                                "label": "",
+                                                "type": "text",
+                                              },
+                                              Object {
+                                                "align": "left",
+                                                "field": "",
+                                                "label": "",
                                                 "type": "text",
                                               },
                                               Object {
@@ -4584,19 +4747,42 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                 "align": "left",
                                                 "field": "cityId",
                                                 "label": "CITY ID",
-                                                "sortable": true,
                                                 "type": "text",
                                               },
                                               Object {
                                                 "align": "left",
-                                                "field": "cityName",
+                                                "field": "city",
                                                 "label": "CITY",
                                                 "type": "text",
                                               },
                                               Object {
                                                 "align": "left",
-                                                "field": "stateName",
+                                                "field": "state",
                                                 "label": "STATE",
+                                                "type": "text",
+                                              },
+                                              Object {
+                                                "align": "left",
+                                                "field": "",
+                                                "label": "",
+                                                "type": "text",
+                                              },
+                                              Object {
+                                                "align": "left",
+                                                "field": "",
+                                                "label": "",
+                                                "type": "text",
+                                              },
+                                              Object {
+                                                "align": "left",
+                                                "field": "",
+                                                "label": "",
+                                                "type": "text",
+                                              },
+                                              Object {
+                                                "align": "left",
+                                                "field": "",
+                                                "label": "",
                                                 "type": "text",
                                               },
                                               Object {
@@ -4704,19 +4890,42 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                             "align": "left",
                                             "field": "cityId",
                                             "label": "CITY ID",
-                                            "sortable": true,
                                             "type": "text",
                                           },
                                           Object {
                                             "align": "left",
-                                            "field": "cityName",
+                                            "field": "city",
                                             "label": "CITY",
                                             "type": "text",
                                           },
                                           Object {
                                             "align": "left",
-                                            "field": "stateName",
+                                            "field": "state",
                                             "label": "STATE",
+                                            "type": "text",
+                                          },
+                                          Object {
+                                            "align": "left",
+                                            "field": "",
+                                            "label": "",
+                                            "type": "text",
+                                          },
+                                          Object {
+                                            "align": "left",
+                                            "field": "",
+                                            "label": "",
+                                            "type": "text",
+                                          },
+                                          Object {
+                                            "align": "left",
+                                            "field": "",
+                                            "label": "",
+                                            "type": "text",
+                                          },
+                                          Object {
+                                            "align": "left",
+                                            "field": "",
+                                            "label": "",
                                             "type": "text",
                                           },
                                           Object {
@@ -4800,14 +5009,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                   className="header-options"
                                                   sortDirection={false}
                                                 >
-                                                  <ForwardRef(TableSortLabel)
-                                                    IconComponent={[Function]}
-                                                    active={false}
-                                                    direction="asc"
-                                                    onClick={[Function]}
-                                                  >
-                                                    CITY ID
-                                                  </ForwardRef(TableSortLabel)>
+                                                  CITY ID
                                                 </ForwardRef(TableCell)>
                                                 <ForwardRef(TableCell)
                                                   align="left"
@@ -4822,6 +5024,34 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                   sortDirection={false}
                                                 >
                                                   STATE
+                                                </ForwardRef(TableCell)>
+                                                <ForwardRef(TableCell)
+                                                  align="left"
+                                                  className="header-options"
+                                                  sortDirection="asc"
+                                                >
+                                                  
+                                                </ForwardRef(TableCell)>
+                                                <ForwardRef(TableCell)
+                                                  align="left"
+                                                  className="header-options"
+                                                  sortDirection="asc"
+                                                >
+                                                  
+                                                </ForwardRef(TableCell)>
+                                                <ForwardRef(TableCell)
+                                                  align="left"
+                                                  className="header-options"
+                                                  sortDirection="asc"
+                                                >
+                                                  
+                                                </ForwardRef(TableCell)>
+                                                <ForwardRef(TableCell)
+                                                  align="left"
+                                                  className="header-options"
+                                                  sortDirection="asc"
+                                                >
+                                                  
                                                 </ForwardRef(TableCell)>
                                                 <ForwardRef(TableCell)
                                                   align="left"
@@ -4923,14 +5153,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                           className="header-options"
                                                           sortDirection={false}
                                                         >
-                                                          <ForwardRef(TableSortLabel)
-                                                            IconComponent={[Function]}
-                                                            active={false}
-                                                            direction="asc"
-                                                            onClick={[Function]}
-                                                          >
-                                                            CITY ID
-                                                          </ForwardRef(TableSortLabel)>
+                                                          CITY ID
                                                         </ForwardRef(TableCell)>,
                                                         <ForwardRef(TableCell)
                                                           align="left"
@@ -4945,6 +5168,34 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                           sortDirection={false}
                                                         >
                                                           STATE
+                                                        </ForwardRef(TableCell)>,
+                                                        <ForwardRef(TableCell)
+                                                          align="left"
+                                                          className="header-options"
+                                                          sortDirection="asc"
+                                                        >
+                                                          
+                                                        </ForwardRef(TableCell)>,
+                                                        <ForwardRef(TableCell)
+                                                          align="left"
+                                                          className="header-options"
+                                                          sortDirection="asc"
+                                                        >
+                                                          
+                                                        </ForwardRef(TableCell)>,
+                                                        <ForwardRef(TableCell)
+                                                          align="left"
+                                                          className="header-options"
+                                                          sortDirection="asc"
+                                                        >
+                                                          
+                                                        </ForwardRef(TableCell)>,
+                                                        <ForwardRef(TableCell)
+                                                          align="left"
+                                                          className="header-options"
+                                                          sortDirection="asc"
+                                                        >
+                                                          
                                                         </ForwardRef(TableCell)>,
                                                         <ForwardRef(TableCell)
                                                           align="left"
@@ -5042,14 +5293,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                       ownerState={
                                                         Object {
                                                           "align": "left",
-                                                          "children": <ForwardRef(TableSortLabel)
-                                                            IconComponent={[Function]}
-                                                            active={false}
-                                                            direction="asc"
-                                                            onClick={[Function]}
-                                                          >
-                                                            CITY ID
-                                                          </ForwardRef(TableSortLabel)>,
+                                                          "children": "CITY ID",
                                                           "className": "header-options",
                                                           "component": "th",
                                                           "padding": "normal",
@@ -5066,154 +5310,14 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                         className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeMedium header-options css-y8ay40-MuiTableCell-root"
                                                         scope="col"
                                                       >
-                                                        <ForwardRef(TableSortLabel)
-                                                          IconComponent={[Function]}
-                                                          active={false}
-                                                          direction="asc"
-                                                          onClick={[Function]}
-                                                        >
-                                                          <MuiTableSortLabelRoot
-                                                            className="MuiTableSortLabel-root"
-                                                            component="span"
-                                                            disableRipple={true}
-                                                            onClick={[Function]}
-                                                            ownerState={
-                                                              Object {
-                                                                "IconComponent": [Function],
-                                                                "active": false,
-                                                                "children": "CITY ID",
-                                                                "direction": "asc",
-                                                                "hideSortIcon": false,
-                                                                "onClick": [Function],
-                                                              }
-                                                            }
-                                                          >
-                                                            <ForwardRef(ButtonBase)
-                                                              className="MuiTableSortLabel-root css-o11grf-MuiTableSortLabel-root"
-                                                              component="span"
-                                                              disableRipple={true}
-                                                              onClick={[Function]}
-                                                            >
-                                                              <MuiButtonBaseRoot
-                                                                as="span"
-                                                                className="MuiButtonBase-root MuiTableSortLabel-root css-o11grf-MuiTableSortLabel-root"
-                                                                onBlur={[Function]}
-                                                                onClick={[Function]}
-                                                                onContextMenu={[Function]}
-                                                                onDragLeave={[Function]}
-                                                                onFocus={[Function]}
-                                                                onKeyDown={[Function]}
-                                                                onKeyUp={[Function]}
-                                                                onMouseDown={[Function]}
-                                                                onMouseLeave={[Function]}
-                                                                onMouseUp={[Function]}
-                                                                onTouchEnd={[Function]}
-                                                                onTouchMove={[Function]}
-                                                                onTouchStart={[Function]}
-                                                                ownerState={
-                                                                  Object {
-                                                                    "centerRipple": false,
-                                                                    "children": Array [
-                                                                      "CITY ID",
-                                                                      <MuiTableSortLabelIcon
-                                                                        as={[Function]}
-                                                                        className="MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc"
-                                                                        ownerState={
-                                                                          Object {
-                                                                            "IconComponent": [Function],
-                                                                            "active": false,
-                                                                            "children": "CITY ID",
-                                                                            "direction": "asc",
-                                                                            "hideSortIcon": false,
-                                                                            "onClick": [Function],
-                                                                          }
-                                                                        }
-                                                                      />,
-                                                                    ],
-                                                                    "className": "MuiTableSortLabel-root css-o11grf-MuiTableSortLabel-root",
-                                                                    "component": "span",
-                                                                    "disableRipple": true,
-                                                                    "disableTouchRipple": false,
-                                                                    "disabled": false,
-                                                                    "focusRipple": false,
-                                                                    "focusVisible": false,
-                                                                    "onClick": [Function],
-                                                                    "tabIndex": 0,
-                                                                  }
-                                                                }
-                                                                role="button"
-                                                                tabIndex={0}
-                                                              >
-                                                                <span
-                                                                  className="MuiButtonBase-root MuiTableSortLabel-root css-1qgma8u-MuiButtonBase-root-MuiTableSortLabel-root"
-                                                                  onBlur={[Function]}
-                                                                  onClick={[Function]}
-                                                                  onContextMenu={[Function]}
-                                                                  onDragLeave={[Function]}
-                                                                  onFocus={[Function]}
-                                                                  onKeyDown={[Function]}
-                                                                  onKeyUp={[Function]}
-                                                                  onMouseDown={[Function]}
-                                                                  onMouseLeave={[Function]}
-                                                                  onMouseUp={[Function]}
-                                                                  onTouchEnd={[Function]}
-                                                                  onTouchMove={[Function]}
-                                                                  onTouchStart={[Function]}
-                                                                  role="button"
-                                                                  tabIndex={0}
-                                                                >
-                                                                  CITY ID
-                                                                  <MuiTableSortLabelIcon
-                                                                    as={[Function]}
-                                                                    className="MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc"
-                                                                    ownerState={
-                                                                      Object {
-                                                                        "IconComponent": [Function],
-                                                                        "active": false,
-                                                                        "children": "CITY ID",
-                                                                        "direction": "asc",
-                                                                        "hideSortIcon": false,
-                                                                        "onClick": [Function],
-                                                                      }
-                                                                    }
-                                                                  >
-                                                                    <SortByIcon
-                                                                      className="MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc css-1hi7cb7-MuiTableSortLabel-icon"
-                                                                    >
-                                                                      <svg
-                                                                        className="MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc css-1hi7cb7-MuiTableSortLabel-icon"
-                                                                        height="1em"
-                                                                        viewBox="0 0 20 20"
-                                                                        width="1em"
-                                                                      >
-                                                                        <g
-                                                                          data-name="Group 1863"
-                                                                        >
-                                                                          <path
-                                                                            d="M14 12l-4 5-4-5zm-4-8l4 5H6z"
-                                                                            fill="currentColor"
-                                                                          />
-                                                                          <path
-                                                                            d="M0 0h20v20H0z"
-                                                                            data-name="Rectangle 2251"
-                                                                            fill="none"
-                                                                          />
-                                                                        </g>
-                                                                      </svg>
-                                                                    </SortByIcon>
-                                                                  </MuiTableSortLabelIcon>
-                                                                </span>
-                                                              </MuiButtonBaseRoot>
-                                                            </ForwardRef(ButtonBase)>
-                                                          </MuiTableSortLabelRoot>
-                                                        </ForwardRef(TableSortLabel)>
+                                                        CITY ID
                                                       </th>
                                                     </MuiTableCellRoot>
                                                   </ForwardRef(TableCell)>
                                                   <ForwardRef(TableCell)
                                                     align="left"
                                                     className="header-options"
-                                                    key="cityName"
+                                                    key="city"
                                                     sortDirection={false}
                                                   >
                                                     <MuiTableCellRoot
@@ -5247,7 +5351,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                   <ForwardRef(TableCell)
                                                     align="left"
                                                     className="header-options"
-                                                    key="stateName"
+                                                    key="state"
                                                     sortDirection={false}
                                                   >
                                                     <MuiTableCellRoot
@@ -5276,6 +5380,134 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                       >
                                                         STATE
                                                       </th>
+                                                    </MuiTableCellRoot>
+                                                  </ForwardRef(TableCell)>
+                                                  <ForwardRef(TableCell)
+                                                    align="left"
+                                                    className="header-options"
+                                                    key=""
+                                                    sortDirection="asc"
+                                                  >
+                                                    <MuiTableCellRoot
+                                                      aria-sort="ascending"
+                                                      as="th"
+                                                      className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeMedium header-options"
+                                                      ownerState={
+                                                        Object {
+                                                          "align": "left",
+                                                          "children": "",
+                                                          "className": "header-options",
+                                                          "component": "th",
+                                                          "padding": "normal",
+                                                          "size": "medium",
+                                                          "sortDirection": "asc",
+                                                          "stickyHeader": true,
+                                                          "variant": "head",
+                                                        }
+                                                      }
+                                                      scope="col"
+                                                    >
+                                                      <th
+                                                        aria-sort="ascending"
+                                                        className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeMedium header-options css-y8ay40-MuiTableCell-root"
+                                                        scope="col"
+                                                      />
+                                                    </MuiTableCellRoot>
+                                                  </ForwardRef(TableCell)>
+                                                  <ForwardRef(TableCell)
+                                                    align="left"
+                                                    className="header-options"
+                                                    key=""
+                                                    sortDirection="asc"
+                                                  >
+                                                    <MuiTableCellRoot
+                                                      aria-sort="ascending"
+                                                      as="th"
+                                                      className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeMedium header-options"
+                                                      ownerState={
+                                                        Object {
+                                                          "align": "left",
+                                                          "children": "",
+                                                          "className": "header-options",
+                                                          "component": "th",
+                                                          "padding": "normal",
+                                                          "size": "medium",
+                                                          "sortDirection": "asc",
+                                                          "stickyHeader": true,
+                                                          "variant": "head",
+                                                        }
+                                                      }
+                                                      scope="col"
+                                                    >
+                                                      <th
+                                                        aria-sort="ascending"
+                                                        className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeMedium header-options css-y8ay40-MuiTableCell-root"
+                                                        scope="col"
+                                                      />
+                                                    </MuiTableCellRoot>
+                                                  </ForwardRef(TableCell)>
+                                                  <ForwardRef(TableCell)
+                                                    align="left"
+                                                    className="header-options"
+                                                    key=""
+                                                    sortDirection="asc"
+                                                  >
+                                                    <MuiTableCellRoot
+                                                      aria-sort="ascending"
+                                                      as="th"
+                                                      className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeMedium header-options"
+                                                      ownerState={
+                                                        Object {
+                                                          "align": "left",
+                                                          "children": "",
+                                                          "className": "header-options",
+                                                          "component": "th",
+                                                          "padding": "normal",
+                                                          "size": "medium",
+                                                          "sortDirection": "asc",
+                                                          "stickyHeader": true,
+                                                          "variant": "head",
+                                                        }
+                                                      }
+                                                      scope="col"
+                                                    >
+                                                      <th
+                                                        aria-sort="ascending"
+                                                        className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeMedium header-options css-y8ay40-MuiTableCell-root"
+                                                        scope="col"
+                                                      />
+                                                    </MuiTableCellRoot>
+                                                  </ForwardRef(TableCell)>
+                                                  <ForwardRef(TableCell)
+                                                    align="left"
+                                                    className="header-options"
+                                                    key=""
+                                                    sortDirection="asc"
+                                                  >
+                                                    <MuiTableCellRoot
+                                                      aria-sort="ascending"
+                                                      as="th"
+                                                      className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeMedium header-options"
+                                                      ownerState={
+                                                        Object {
+                                                          "align": "left",
+                                                          "children": "",
+                                                          "className": "header-options",
+                                                          "component": "th",
+                                                          "padding": "normal",
+                                                          "size": "medium",
+                                                          "sortDirection": "asc",
+                                                          "stickyHeader": true,
+                                                          "variant": "head",
+                                                        }
+                                                      }
+                                                      scope="col"
+                                                    >
+                                                      <th
+                                                        aria-sort="ascending"
+                                                        className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeMedium header-options css-y8ay40-MuiTableCell-root"
+                                                        scope="col"
+                                                      />
                                                     </MuiTableCellRoot>
                                                   </ForwardRef(TableCell)>
                                                   <ForwardRef(TableCell)
@@ -5613,19 +5845,42 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                             "align": "left",
                                             "field": "cityId",
                                             "label": "CITY ID",
-                                            "sortable": true,
                                             "type": "text",
                                           },
                                           Object {
                                             "align": "left",
-                                            "field": "cityName",
+                                            "field": "city",
                                             "label": "CITY",
                                             "type": "text",
                                           },
                                           Object {
                                             "align": "left",
-                                            "field": "stateName",
+                                            "field": "state",
                                             "label": "STATE",
+                                            "type": "text",
+                                          },
+                                          Object {
+                                            "align": "left",
+                                            "field": "",
+                                            "label": "",
+                                            "type": "text",
+                                          },
+                                          Object {
+                                            "align": "left",
+                                            "field": "",
+                                            "label": "",
+                                            "type": "text",
+                                          },
+                                          Object {
+                                            "align": "left",
+                                            "field": "",
+                                            "label": "",
+                                            "type": "text",
+                                          },
+                                          Object {
+                                            "align": "left",
+                                            "field": "",
+                                            "label": "",
                                             "type": "text",
                                           },
                                           Object {
@@ -5690,19 +5945,42 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                             "align": "left",
                                             "field": "cityId",
                                             "label": "CITY ID",
-                                            "sortable": true,
                                             "type": "text",
                                           },
                                           Object {
                                             "align": "left",
-                                            "field": "cityName",
+                                            "field": "city",
                                             "label": "CITY",
                                             "type": "text",
                                           },
                                           Object {
                                             "align": "left",
-                                            "field": "stateName",
+                                            "field": "state",
                                             "label": "STATE",
+                                            "type": "text",
+                                          },
+                                          Object {
+                                            "align": "left",
+                                            "field": "",
+                                            "label": "",
+                                            "type": "text",
+                                          },
+                                          Object {
+                                            "align": "left",
+                                            "field": "",
+                                            "label": "",
+                                            "type": "text",
+                                          },
+                                          Object {
+                                            "align": "left",
+                                            "field": "",
+                                            "label": "",
+                                            "type": "text",
+                                          },
+                                          Object {
+                                            "align": "left",
+                                            "field": "",
+                                            "label": "",
                                             "type": "text",
                                           },
                                           Object {
