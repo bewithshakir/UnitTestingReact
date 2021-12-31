@@ -232,6 +232,7 @@ const AddProduct: React.FC = memo(() => {
                                 <Grid item xs={12} md={6}>
                                     <Select
                                         id='productColor'
+                                        dropdownType='productcolor'
                                         name='productColor'
                                         label={t("productManagement.form.productColor")}
                                         placeholder='Choose'

@@ -2,6 +2,8 @@ import { FormikErrors } from 'formik';
 import { Fragment } from 'react';
 import Select, { components, DropdownIndicatorProps, OptionProps } from 'react-select';
 import { FormHelperText, InputLabel, FormControl, Icon, Box, Typography } from '@mui/material';
+import CheckIcon from '@material-ui/icons/Check';
+import { getLegendFontColor } from '../../../utils/helperFunctions';
 import './SingleSelect.scss';
 import { ArrowDown } from '../../../assets/icons';
 
@@ -11,11 +13,13 @@ const optionIconsSX = { width: "20px", height: "20px" };
 type item = {
     label: string,
     value: string | number,
-    icon?: (props: React.SVGProps<SVGSVGElement>) => JSX.Element
+    icon?: (props: React.SVGProps<SVGSVGElement>) => JSX.Element,
+    hex?: string,
 }
 interface props {
     id?: string;
     name?: string;
+    dropdownType?: string;
     label?: string;
     placeholder?: string;
     value?: item | Array<item>;
@@ -37,7 +41,7 @@ interface props {
 }
 
 export default function SingleSelect (props: props) {
-
+    const { dropdownType } = props;
     const DropdownIndicator = (props: DropdownIndicatorProps<item>) => {
         return (
             <components.DropdownIndicator {...props}>
@@ -52,7 +56,20 @@ export default function SingleSelect (props: props) {
     };
 
     const Option = (props: OptionProps<any>) => {
-        return (
+        return dropdownType === 'productcolor' ? (
+            <components.Option {...props}>
+                <Box display="flex" sx={{width:"100%"}} alignItems="center" >
+                    {props.data.icon ? <Icon sx={optionIconsSX} component={props.data.icon} /> : null}
+                    {props.data.label ? <Typography variant="h4" width={100} pl={props.data.icon ? 1 : 0}>{props.data.label}</Typography> : null}
+                    {props.data.hex ?
+                        <Box border={1} width={80} bgcolor={props.data.hex}
+                            color={getLegendFontColor(props.data.label)}
+                            mx={4} px={1} py={.2}>{props.data.hex}
+                        </Box> : null}
+                    {props.isSelected ? <Box sx={{marginLeft:'auto'}}><CheckIcon /></Box> : null}
+                </Box>
+            </components.Option>
+        ): (
             <components.Option {...props}>
                 <Box display="flex" alignItems="center" justifyContent="start">
                     {props.data.icon ? <Icon sx={optionIconsSX} component={props.data.icon} /> : null}
@@ -96,7 +113,7 @@ export default function SingleSelect (props: props) {
                     name={props.name}
                     placeholder={props.placeholder}
                     className={props.error ? 'react-select-container error' : 'react-select-container'}
-                    classNamePrefix='react-select'
+                    classNamePrefix={dropdownType ==='productcolor'? 'react-select-product-color' : 'react-select'}
                     value={checkIsEmptyOption(props.value)}
                     options={props.items}
                     onChange={handleChange}

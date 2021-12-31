@@ -53,7 +53,8 @@ export const useGetProductColors = (countryCode: string) => {
             const productColors = response?.data.map((data: colorPropsInt) => ({
                 value: data.productColorCd,
                 label: data.name,
-                icon: getProductIcon(data.name)
+                icon: getProductIcon(data.name),
+                hex: data.hex
             }));
             return productColors;
         }
