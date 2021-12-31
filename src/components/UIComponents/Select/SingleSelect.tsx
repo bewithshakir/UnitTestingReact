@@ -3,9 +3,9 @@ import { Fragment } from 'react';
 import Select, { components, DropdownIndicatorProps, OptionProps } from 'react-select';
 import { FormHelperText, InputLabel, FormControl, Icon, Box, Typography } from '@mui/material';
 import CheckIcon from '@material-ui/icons/Check';
+import { getLegendFontColor } from '../../../utils/helperFunctions';
 import './SingleSelect.scss';
 import { ArrowDown } from '../../../assets/icons';
-import { useTheme } from '../../../contexts/Theme/Theme.context';
 
 const { SingleValue } = components;
 const optionIconsSX = { width: "20px", height: "20px" };
@@ -41,10 +41,7 @@ interface props {
 }
 
 export default function SingleSelect (props: props) {
-    const { theme } = useTheme();
     const { dropdownType } = props;
-    
-    const whiteColorList = ['#DD1D21','#008443','#003C88','#009EB4','#641964','#743410'];
     const DropdownIndicator = (props: DropdownIndicatorProps<item>) => {
         return (
             <components.DropdownIndicator {...props}>
@@ -66,7 +63,7 @@ export default function SingleSelect (props: props) {
                     {props.data.label ? <Typography variant="h4" width={100} pl={props.data.icon ? 1 : 0}>{props.data.label}</Typography> : null}
                     {props.data.hex ?
                         <Box border={1} width={80} bgcolor={props.data.hex}
-                            color={whiteColorList.includes(props.data.hex) ? theme["--White"] : theme["--Darkgray"]}
+                            color={getLegendFontColor(props.data.label)}
                             mx={4} px={1} py={.2}>{props.data.hex}
                         </Box> : null}
                     {props.isSelected ? <Box sx={{marginLeft:'auto'}}><CheckIcon /></Box> : null}
