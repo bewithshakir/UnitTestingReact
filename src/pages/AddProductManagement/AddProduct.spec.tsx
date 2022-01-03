@@ -1,4 +1,4 @@
-import { waitFor, render, cleanup, act} from "@testing-library/react";
+import { waitFor, render, cleanup, act } from "@testing-library/react";
 import selectEvent from 'react-select-event';
 import userEvent from '@testing-library/user-event';
 import { rest } from "msw";
@@ -11,16 +11,16 @@ import { serverMsw } from "../../setupTests";
 import DiscardChangesDialog from '../../components/UIComponents/ConfirmationDialog/DiscardChangesDialog.component';
 
 
-jest.mock('react-router-dom', ()=> ({
+jest.mock('react-router-dom', () => ({
     ...jest.requireActual("react-router-dom") as any,
     useHistory: jest.fn(),
-    useLocation: ()=> ({
+    useLocation: () => ({
         location: {
             pathname: '/productManagement/'
         },
         push: jest.fn()
     }),
-    useRouteMatch: ()=> ({
+    useRouteMatch: () => ({
         params: {
             productId: ''
         }
@@ -29,7 +29,7 @@ jest.mock('react-router-dom', ()=> ({
 
 
 
-function getAllElements(component){
+function getAllElements (component: any) {
     const productNameElem = component.container.querySelector('#productName');
     const productTypeElem = component.container.querySelector('#productType') as HTMLInputElement;
     const productColorElem = component.container.querySelector('#productColor') as HTMLInputElement;
@@ -38,49 +38,49 @@ function getAllElements(component){
     const saveBtn = component.container.querySelector('#saveBtn');
     const cancelBtn = component.container.querySelector('#cancelBtn');
     const formElem = component.container.querySelector('#form');
-    return {formElem, productNameElem, productTypeElem, productColorElem, productStatusElem, productPricingElem, saveBtn, cancelBtn};
+    return { formElem, productNameElem, productTypeElem, productColorElem, productStatusElem, productPricingElem, saveBtn, cancelBtn };
 }
 
 
 afterEach(cleanup);
-describe('AddProduct component', ()=> {
-    
-    describe('add/edit product screen render with common functionality', ()=> {
-        it('renders the addProductType with data', async()=> {
-            const result = renderWithClient(<AddProduct/>);
-            const {formElem, productTypeElem} = getAllElements(result);
-            
+describe('AddProduct component', () => {
+
+    describe('add/edit product screen render with common functionality', () => {
+        it('renders the addProductType with data', async () => {
+            const result = renderWithClient(<AddProduct />);
+            const { formElem, productTypeElem } = getAllElements(result);
+
             await selectEvent.select(productTypeElem, ["Test11 Non-Fuel"]);
             expect(formElem).toHaveFormValues({ productType: "111" });
         });
-    
-        it('renders the addProductColors with data', async()=> {
-            const result = renderWithClient(<AddProduct/>);
-            const {formElem, productColorElem} = getAllElements(result);
+
+        it('renders the addProductColors with data', async () => {
+            const result = renderWithClient(<AddProduct />);
+            const { formElem, productColorElem } = getAllElements(result);
             await selectEvent.select(productColorElem, ["red"]);
             expect(formElem).toHaveFormValues({ productColor: "12" });
         });
 
-        it('renders the disabled save button', async()=> {
-            const result = renderWithClient(<AddProduct/>);
-            const {saveBtn} = getAllElements(result);
+        it('renders the disabled save button', async () => {
+            const result = renderWithClient(<AddProduct />);
+            const { saveBtn } = getAllElements(result);
             expect(saveBtn).toBeDisabled();
         });
 
-        it('renders the enabled save button', async()=> {
-            const result = renderWithClient(<AddProduct/>);
-            const {saveBtn} = getAllElements(result);
+        it('renders the enabled save button', async () => {
+            const result = renderWithClient(<AddProduct />);
+            const { saveBtn } = getAllElements(result);
             saveBtn.removeAttribute('disabled');
             expect(saveBtn).toBeEnabled();
         });
 
     });
 
-    describe('add product screen render', ()=> {
-        it('show toaster with success message on submit form', async()=> {
-            const result = renderWithClient(<AddProduct/>);
-            await act(async ()=> {
-                const {productNameElem, productTypeElem, productColorElem, productStatusElem, productPricingElem, saveBtn} = getAllElements(result);
+    describe('add product screen render', () => {
+        it('show toaster with success message on submit form', async () => {
+            const result = renderWithClient(<AddProduct />);
+            await act(async () => {
+                const { productNameElem, productTypeElem, productColorElem, productStatusElem, productPricingElem, saveBtn } = getAllElements(result);
 
                 userEvent.type(productNameElem, 'John');
                 // Below passed mocked data ["Test11 Non-Fuel"] coming from handler.
@@ -93,13 +93,13 @@ describe('AddProduct component', ()=> {
                 /* fire events that update state */
                 userEvent.click(saveBtn);
             });
-            
-            await waitFor(()=> {
+
+            await waitFor(() => {
                 result.debug(result.getByTestId('toaster-message'));
             });
         });
 
-        it('show toaster with failure message on submit form', async()=> {
+        it('show toaster with failure message on submit form', async () => {
             serverMsw.use(
                 rest.post('*', (req, res, ctx) => {
                     return res(
@@ -110,12 +110,12 @@ describe('AddProduct component', ()=> {
                                 details: ['fail add product']
                             }
                         })
-                    )
+                    );
                 })
             );
-            let result = renderWithClient(<AddProduct />);
-            await act(async()=> {
-                const {productNameElem, productTypeElem, productColorElem, productStatusElem, productPricingElem, saveBtn} = getAllElements(result);
+            const result = renderWithClient(<AddProduct />);
+            await act(async () => {
+                const { productNameElem, productTypeElem, productColorElem, productStatusElem, productPricingElem, saveBtn } = getAllElements(result);
 
                 userEvent.type(productNameElem, 'John');
                 await selectEvent.select(productTypeElem, ["Test11 Non-Fuel"]);
@@ -124,34 +124,34 @@ describe('AddProduct component', ()=> {
                 userEvent.type(productPricingElem, '2');
                 saveBtn.removeAttribute('disabled');
                 userEvent.click(saveBtn);
-            })
-            
-            await waitFor(()=> {
+            });
+
+            await waitFor(() => {
                 // result.debug(result.getByTestId('toaster-message'))
                 // expect(result.getByTestId('toaster-message')).toBeInTheDocument()
                 expect(result.getByText(/fail add product/i)).toBeInTheDocument();
             });
-            
+
         });
     });
 
-    describe('edit product screen render', ()=> {
+    describe('edit product screen render', () => {
         beforeEach(() => {
-            jest.spyOn(routeDataDom, 'useRouteMatch').mockImplementation(()=> ({
+            jest.spyOn(routeDataDom, 'useRouteMatch').mockImplementation(() => ({
                 isExact: true,
                 params: {
                     productId: '00aad1db-d5a4-45c7-9428-ab08c8d9f6b4'
                 },
                 path: "/productManagement/edit/:productId",
                 url: "/productManagement/edit/00aad1db-d5a4-45c7-9428-ab08c8d9f6b4"
-            }))
+            }));
         });
-        
-        describe('load form data on edit mode', ()=> {
-            it('load data in form', async()=> {
-                let result = renderWithClient(<AddProduct/>);
-                await waitFor(async()=> {
-                    const {productNameElem, productPricingElem} = getAllElements(result);
+
+        describe('load form data on edit mode', () => {
+            it('load data in form', async () => {
+                const result = renderWithClient(<AddProduct />);
+                await waitFor(async () => {
+                    const { productNameElem, productPricingElem } = getAllElements(result);
                     expect(productNameElem).toHaveValue('test edit Diesel');
                     expect(result.getByText(/test edit Non-Fuel/i)).toBeInTheDocument();
                     expect(result.getByText(/test edit color Purple/i)).toBeInTheDocument();
@@ -161,8 +161,8 @@ describe('AddProduct component', ()=> {
             });
         });
 
-        describe('load toaster on edit mode', ()=> {
-            it('show toaster with failure message on submit form', async()=> {
+        describe('load toaster on edit mode', () => {
+            it('show toaster with failure message on submit form', async () => {
                 serverMsw.use(
                     rest.put('*', (req, res, ctx) => {
                         return res(
@@ -173,12 +173,12 @@ describe('AddProduct component', ()=> {
                                     message: 'fail edit mode'
                                 }
                             })
-                        )
+                        );
                     })
                 );
                 const result = renderWithClient(<AddProduct />);
-                await act(async()=> {
-                    const {productNameElem, productTypeElem, productColorElem, productStatusElem, productPricingElem, saveBtn} = getAllElements(result);
+                await act(async () => {
+                    const { productNameElem, productTypeElem, productColorElem, productStatusElem, productPricingElem, saveBtn } = getAllElements(result);
 
                     userEvent.type(productNameElem, 'test edit Diesel');
                     await selectEvent.select(productTypeElem, ["test edit Non-Fuel"]);
@@ -187,24 +187,24 @@ describe('AddProduct component', ()=> {
                     userEvent.type(productPricingElem, '3');
                     saveBtn.removeAttribute('disabled');
                     userEvent.click(saveBtn);
-                })
-                
-                await waitFor(()=> {
+                });
+
+                await waitFor(() => {
                     // result.debug(result.getByTestId('toaster-message'));
                     expect(result.getByText(/fail edit mode/i)).toBeInTheDocument();
                 });
             });
         });
 
-        describe('show dialogue of discard', ()=> {
-            
-            it('show dialogue box on back if form updated', async()=> {
+        describe('show dialogue of discard', () => {
+
+            it('show dialogue box on back if form updated', async () => {
                 const result = renderWithClient(<AddProduct />);
-                const {productNameElem, cancelBtn} = getAllElements(result);
+                const { productNameElem, cancelBtn } = getAllElements(result);
                 userEvent.type(productNameElem, 'John');
                 userEvent.click(cancelBtn);
                 let open = false;
-                await waitFor(()=> {
+                await waitFor(() => {
                     open = true;
                 });
 
@@ -214,14 +214,12 @@ describe('AddProduct component', ()=> {
                     open: open,
                     handleToggle: jest.fn(),
                     handleConfirm: jest.fn()
-                }
-                const dialogue = render(<DiscardChangesDialog {...propsPopup}/>);
-                expect( await dialogue.findByText(/Test Dialog/i)).toBeInTheDocument()
-                
+                };
+                const dialogue = render(<DiscardChangesDialog {...propsPopup} />);
+                expect(await dialogue.findByText(/Test Dialog/i)).toBeInTheDocument();
+
             });
         });
     });
-
-    
 
 });

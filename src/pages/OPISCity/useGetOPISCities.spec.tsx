@@ -1,12 +1,12 @@
 import { renderHook } from '@testing-library/react-hooks';
 import { createWrapper } from '../../tests/utils';
-import { useGetProductColors } from './queries';
+import { useOPISCityList } from './queries';
 import { serverMsw } from "../../setupTests";
 import { rest } from 'msw';
 
-describe('useGetProductColors for useQuery method ', () => {
+describe('useOPISCityList for useQuery method ', () => {
     it('successful returns data', async () => {
-        const { result, waitFor } = renderHook(() => useGetProductColors('us'), {
+        const { result, waitFor } = renderHook(() => useOPISCityList("", { sortBy: "", order: "", }, { "": [""] }), {
             wrapper: createWrapper()
         });
         await waitFor(() => {
@@ -22,7 +22,7 @@ describe('useGetProductColors for useQuery method ', () => {
             })
         );
 
-        const { result, waitFor } = renderHook(() => useGetProductColors('us'), {
+        const { result, waitFor } = renderHook(() => useOPISCityList("", { sortBy: "", order: "", }, { "": [""] }), {
             wrapper: createWrapper()
         });
 
