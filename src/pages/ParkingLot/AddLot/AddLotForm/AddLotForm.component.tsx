@@ -11,11 +11,11 @@ import ToastMessage from '../../../../components/UIComponents/ToastMessage/Toast
 import Divider from '@mui/material/Divider';
 import { AddParkingLotForm, addLotFormInitialValues, lotContact, orderSchDel } from '../../../../models/ParkingLotModel';
 import AddParkingLotValidationSchema from '../validation';
-import { useCreateLot, useEditParkingLot, useGetContactTypes, useGetParkingLotData, useGetTimeZones } from '../queries';
+import { useCreateLot, useEditParkingLot, useGetContactTypes, useGetDaysOfWeek, useGetDeliveryFrequency, useGetParkingLotData, useGetTimeZones } from '../queries';
 import AutocompleteInput from '../../../../components/UIComponents/GoogleAddressComponent/GoogleAutoCompleteAddress';
 import { PlusIcon, EditIcon } from '../../../../assets/icons';
 import { useTheme } from '../../../../contexts/Theme/Theme.context';
-import { formStatusObj, productDelFreq, getCountry, daysToDeliver } from '../../config';
+import { formStatusObj, getCountry, daysToDeliver } from '../../config';
 import MultiSelect from '../../../../components/UIComponents/Select/MultiSelect';
 import SingleSelect from '../../../../components/UIComponents/Select/SingleSelect';
 import { DatePickerInput } from '../../../../components/UIComponents/DatePickerInput/DatePickerInput.component';
@@ -62,6 +62,8 @@ function AddLotForm(): React.ReactElement {
     const [init, setInit] = useState(false);
     const [lotState, setLotState] = useState({});
     const { data: timeZoneList } = useGetTimeZones();
+    const deliveryFrequencies = useGetDeliveryFrequency();
+    const daysOfWeek = useGetDaysOfWeek();
     const timerRef = useRef<any>(null);
 
     const onAddLotError = (err: any) => {
@@ -243,6 +245,15 @@ function AddLotForm(): React.ReactElement {
                 contact_email: contactObj.email,
                 contact_phone: contactObj.phoneNumber
             })),
+            delivery_frequency_cd: form.productDelFreq?.value || "",
+            order_schedule: form.orderScheduleDel.map((orderSchedule, index) => ({
+                startDt: orderSchedule.fromDate,
+                endDt: orderSchedule.toDate,
+                startTime: orderSchedule.startTime,
+                endTime: orderSchedule.endTime,
+                dayOfWeek: orderSchedule.productDelDaysMulti && orderSchedule.productDelDaysMulti?.length > 0 ? orderSchedule.productDelDaysMulti?.map(daysMulti => daysMulti.value) : [orderSchedule.productDelDays?.value],
+                isPrimary: index === 0 ? "Y" : "N"
+            }))
             // Commented for future requirements
             // productDelFreq: form.productDelFreq.value,
             // orderScheduleDel: form.orderScheduleDel.map((orderSchDelObj: any) => ({
@@ -277,6 +288,15 @@ function AddLotForm(): React.ReactElement {
                 contact_email: contactObj.email,
                 contact_phone: contactObj.phoneNumber
             })),
+            delivery_frequency_cd: form.productDelFreq?.value || "",
+            order_schedule: form.orderScheduleDel.map((orderSchedule, index) => ({
+                startDt: orderSchedule.fromDate,
+                endDt: orderSchedule.toDate,
+                startTime: orderSchedule.startTime,
+                endTime: orderSchedule.endTime,
+                dayOfWeek: orderSchedule.productDelDaysMulti && orderSchedule.productDelDaysMulti?.length > 0 ? orderSchedule.productDelDaysMulti?.map(daysMulti => daysMulti.value) : [orderSchedule.productDelDays?.value],
+                isPrimary: index === 0 ? "Y" : "N"
+            }))
             // Commented for future requirements
             // productDelFreq: form.productDelFreq.value,
             // orderScheduleDel: form.orderScheduleDel.map((orderSchDelObj: any) => ({
@@ -380,6 +400,14 @@ function AddLotForm(): React.ReactElement {
         else return true;
     };
 
+
+    useEffect(() => {
+        return () => {
+            if (timerRef.current) {
+                clearTimeout(timerRef.current);
+            }
+        };
+    }, []);
     console.log("Formik->", formik); // eslint-disable-line no-console
     return (
         <>
@@ -552,7 +580,7 @@ function AddLotForm(): React.ReactElement {
                                         label='PRODUCT DELIVERY FREQUENCY'
                                         value={formik.values.productDelFreq}
                                         placeholder='Choose'
-                                        items={productDelFreq}
+                                        items={deliveryFrequencies?.data?.data ? deliveryFrequencies.data.data.map((delFeq: any) => ({ label: delFeq.deliveryFrequencyNm, value: delFeq.deliveryFrequencyCd })) : []}
                                         helperText={(formik.touched.productDelFreq && formik.errors.productDelFreq) ? formik.errors.productDelFreq.value : undefined}
                                         error={(formik.touched.productDelFreq && formik.errors.productDelFreq) ? true : false}
                                         onChange={handleProductDelFreq}
@@ -627,13 +655,13 @@ function AddLotForm(): React.ReactElement {
                                                     </Grid>
 
                                                     <Grid item xs={12} md={6} pl={2.5} pr={2.5} pb={2.5}>
-                                                        {(formik?.values?.productDelFreq?.value === 'weekly' || formik?.values?.productDelFreq?.value === 'monthly') ?
+                                                        {['weekly', 'monthly'].includes(String(formik?.values?.productDelFreq?.label).toLowerCase()) ?
                                                             (<SingleSelect
                                                                 id={`orderScheduleDel[${index}].productDelDays`}
                                                                 label='SELECT DAYS TO DELIVER PRODUCT'
                                                                 placeholder='Select Day'
                                                                 required={formik.values.productDelFreq.value ? true : false}
-                                                                items={daysToDeliver(formik?.values?.productDelFreq?.value)}
+                                                                items={daysToDeliver(formik?.values?.productDelFreq?.label, daysOfWeek)}
                                                                 name={`orderScheduleDel[${index}].productDelDays`}
                                                                 value={formik.values.orderScheduleDel[index].productDelDays}
                                                                 onChange={formik.setFieldValue}
@@ -656,9 +684,9 @@ function AddLotForm(): React.ReactElement {
                                                                     label='SELECT DAYS TO DELIVER PRODUCT'
                                                                     placeholder='Select Multiple Days'
                                                                     required={formik.values.productDelFreq.value ? true : false}
-                                                                    items={daysToDeliver(formik?.values?.productDelFreq?.value)}
-                                                                    name={`orderScheduleDel[${index}].productDelDays`}
-                                                                    value={formik.values.orderScheduleDel[index].productDelDays}
+                                                                    items={daysToDeliver(formik?.values?.productDelFreq?.label, daysOfWeek)}
+                                                                    name={`orderScheduleDel[${index}].productDelDaysMulti`}
+                                                                    value={formik.values.orderScheduleDel[index].productDelDaysMulti}
                                                                     disabled={formik.values.productDelFreq.value === '' ? true : false}
                                                                     onChange={formik.setFieldValue}
                                                                     onBlur={() => { formik.setFieldTouched(`orderScheduleDel[${index}].productDelDaysMulti`); formik.validateField(`orderScheduleDel[${index}].productDelDaysMulti`); }}
@@ -685,7 +713,7 @@ function AddLotForm(): React.ReactElement {
                                                             name={`orderScheduleDel[${index}].startTime`}
                                                             value={formik.values.orderScheduleDel[index].startTime}
                                                             onChange={formik.setFieldValue}
-                                                            required={formik.values.productDelFreq.value ? true : false}
+                                                            required={formik.values.productDelFreq?.value ? true : false}
                                                             disabled={formik.values.productDelFreq.value === '' ? true : false}
                                                             onBlur={() => { formik.setFieldTouched(`orderScheduleDel[${index}].startTime`); formik.validateField(`orderScheduleDel[${index}].startTime`); }}
                                                             helperText={

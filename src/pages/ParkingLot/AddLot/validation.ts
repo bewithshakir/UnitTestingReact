@@ -48,37 +48,31 @@ const AddParkingLotValidationSchema = Yup.object().shape({
   orderScheduleDel: Yup.array().of(
     Yup.object().shape({
       fromDate: Yup.object().nullable().required('Required'),
-      toDate: Yup.object().nullable().required('Required'),
+      toDate: Yup.object().nullable(),
       startTime: Yup.string().required('Required'),
       endTime: Yup.string().required('Required'),
       delFreq: Yup.string(),
       productDelDaysMulti: Yup.array()
-          .test('delFreq', function(value: any, context: any) {
-
-                if (context?.parent?.delFreq?.toLowerCase() === 'bi-weekly' && value?.length !== 2) {
-                    return this.createError({ message: 'Two days should be selected in case of Bi-weekly Delivery Frequency' });
-                } else {
-                    if ((context?.parent?.delFreq?.toLowerCase() === 'daily' || context?.parent?.delFreq?.toLowerCase() === 'weekends') && value?.length === 0) {
-                           return  this.createError({ message: 'Atleast one day should be selected'});
-                        // }   
-                    }else{
-                        return true;
-                    }
-                }
-              }),
-      productDelDays: Yup.object()
-        .test('delFreq', function(value: any, context: any) {
-            if ((context?.parent?.delFreq?.toLowerCase() === 'weekly' || context?.parent?.delFreq?.toLowerCase() === 'monthly')) {
-                if(value && !value.label){
-                    return this.createError({ message: 'Delivery Day required' });
-                }else{
-                    return this.createError({ message: 'Delivery Day required' });
-                }
-                
+        .test('delFreq', function (value: any, context: any) {
+          if (context?.parent?.delFreq?.toLowerCase() === 'bi-weekly' && value?.length !== 2) {
+            return this.createError({ message: 'Two days should be selected in case of Bi-weekly Delivery Frequency' });
+          } else {
+            if (['daily', 'weekends'].includes(String(context?.parent?.delFreq).toLowerCase()) && value?.length === 0) {
+              return this.createError({ message: 'Atleast one day should be selected' });
             } else {
-                    return true;
+              return true;
             }
-          }),
+          }
+        }),
+      productDelDays: Yup.object()
+        .test('delFreq', function (value: any, context: any) {
+          if ((['weekly', 'monthly'].includes(String(context?.parent?.delFreq).toLowerCase()))) {
+            if (value && !value.label) {
+              return this.createError({ message: 'Delivery Day required' });
+            }
+          }
+          return true;
+        }),
     })
   ),
 });
