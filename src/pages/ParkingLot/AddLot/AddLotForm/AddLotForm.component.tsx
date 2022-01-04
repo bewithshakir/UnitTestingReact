@@ -161,27 +161,32 @@ function AddLotForm(): React.ReactElement {
 
     //to populate all the data in the form fields
     const populateDataInAllFields = (dataToPopulate: any) => {
-        formik.setFieldValue('lotName', dataToPopulate?.data?.lot?.deliveryLocationNm);
-        formik.setFieldValue('lotId', dataToPopulate?.data?.lot?.lotId);
-        formik.setFieldValue('addressLine1', dataToPopulate?.data?.lot?.addressLine1);
-        formik.setFieldValue('addressLine2', dataToPopulate?.data?.lot?.addressLine2);
-        formik.setFieldValue('city', dataToPopulate?.data?.lot?.cityNm);
-        formik.setFieldValue('state', dataToPopulate?.data?.lot?.stateNm);
-        formik.setFieldValue('postalCode', dataToPopulate?.data?.lot?.postalCd);
-        formik.setFieldValue('county', dataToPopulate?.data?.lot?.addressLine3);
-        formik.setFieldValue('jurisdictionId', dataToPopulate?.data?.lot?.taxJurisdictionId);
-        dataToPopulate?.data?.lot?.deliveryLocationContact.map((obj: any, index: number) => {
-            formik.setFieldValue(`locationContact[${index}].lotContactId`, obj.locationContactId);
-            formik.setFieldValue(`locationContact[${index}].firstName`, obj.contactFirstNm);
-            formik.setFieldValue(`locationContact[${index}].lastName`, obj.contactLastNm);
-            formik.setFieldValue(`locationContact[${index}].email`, obj.contactEmailId);
-            formik.setFieldValue(`locationContact[${index}].phoneNumber`, obj.contactPhoneNo);
-        });
-        timeZones.map((obj: any) => {
-            if (obj.value === dataToPopulate?.data?.lot?.timezoneCd) {
-                formik.setFieldValue("timeZone", { label: obj.label, value: obj.value });
-            }
-        });
+        if (dataToPopulate?.data?.lot) {
+            const lot = dataToPopulate.data.lot;
+            formik.setFieldValue('lotName', lot.deliveryLocationNm);
+            formik.setFieldValue('lotId', lot.lotId);
+            formik.setFieldValue('addressLine1', lot.addressLine1);
+            formik.setFieldValue('addressLine2', lot.addressLine2);
+            formik.setFieldValue('city', lot.cityNm);
+            formik.setFieldValue('state', lot.stateNm);
+            formik.setFieldValue('postalCode', lot.postalCd);
+            formik.setFieldValue('county', lot.addressLine3);
+            formik.setFieldValue('jurisdictionId', lot.taxJurisdictionId);
+            // formik.setFieldValue('productDelFreq', { label: "sadf", value: dataToPopulate.data.lot.deliveryFrequencyCd });
+
+            lot.deliveryLocationContact.map((obj: any, index: number) => {
+                formik.setFieldValue(`locationContact[${index}].lotContactId`, obj.locationContactId);
+                formik.setFieldValue(`locationContact[${index}].firstName`, obj.contactFirstNm);
+                formik.setFieldValue(`locationContact[${index}].lastName`, obj.contactLastNm);
+                formik.setFieldValue(`locationContact[${index}].email`, obj.contactEmailId);
+                formik.setFieldValue(`locationContact[${index}].phoneNumber`, obj.contactPhoneNo);
+            });
+            timeZones.map((obj: any) => {
+                if (obj.value === lot.timezoneCd) {
+                    formik.setFieldValue("timeZone", { label: obj.label, value: obj.value });
+                }
+            });
+        }
         setDisabled(true);
     };
 
