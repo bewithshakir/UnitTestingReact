@@ -61,3 +61,19 @@ export function getProductIcon (fuelStatus: string) {
         "Aqua": AquaFuelIcon,
     }[fuelStatus] || YellowFuelIcon);
 }
+
+export function getLegendFontColor (fuelStatus: string) {
+    const { theme } = useTheme();
+    return ({
+        "Yellow": theme["--Darkgray"],
+        "Red": theme["--White"],
+        "Green": theme["--White"],
+        "Navy Blue": theme["--White"],
+        "Parrot Green": theme["--Darkgray"],
+        "Sky Blue": theme["--White"],
+        "Purple": theme["--White"],
+        "Brown": theme["--White"],
+        "Orange": theme["--Darkgray"],
+        "Aqua": theme["--Darkgray"],
+    }[fuelStatus]);
+}

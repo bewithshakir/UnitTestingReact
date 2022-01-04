@@ -767,6 +767,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                         >
                           <Button
                             aria-label="dafault"
+                            disabled={true}
                             onClick={[Function]}
                             startIcon={<FilterIcon />}
                             types="filter"
@@ -1054,6 +1055,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                             >
                               <Button
                                 aria-label="dafault"
+                                disabled={true}
                                 onClick={[Function]}
                                 startIcon={<FilterIcon />}
                                 types="filter"
@@ -1180,6 +1182,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                 >
                                   <Button
                                     aria-label="dafault"
+                                    disabled={true}
                                     onClick={[Function]}
                                     startIcon={<FilterIcon />}
                                     types="filter"
@@ -1257,6 +1260,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                   Object {
                                     "children": <Button
                                       aria-label="dafault"
+                                      disabled={true}
                                       onClick={[Function]}
                                       startIcon={<FilterIcon />}
                                       types="filter"
@@ -1292,6 +1296,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                 >
                                   <Button
                                     aria-label="dafault"
+                                    disabled={true}
                                     onClick={[Function]}
                                     startIcon={<FilterIcon />}
                                     types="filter"
@@ -1299,6 +1304,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                     <WithStyles(ForwardRef(Button))
                                       aria-label="dafault"
                                       className="btn-filter "
+                                      disabled={true}
                                       onClick={[Function]}
                                       startIcon={<FilterIcon />}
                                       variant="contained"
@@ -1339,15 +1345,16 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                             "textSizeSmall": "MuiButton-textSizeSmall",
                                           }
                                         }
+                                        disabled={true}
                                         onClick={[Function]}
                                         startIcon={<FilterIcon />}
                                         variant="contained"
                                       >
                                         <WithStyles(ForwardRef(ButtonBase))
                                           aria-label="dafault"
-                                          className="MuiButton-root MuiButton-contained btn-filter "
+                                          className="MuiButton-root MuiButton-contained btn-filter  Mui-disabled"
                                           component="button"
-                                          disabled={false}
+                                          disabled={true}
                                           focusRipple={true}
                                           focusVisibleClassName="Mui-focusVisible"
                                           onClick={[Function]}
@@ -1355,7 +1362,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                         >
                                           <ForwardRef(ButtonBase)
                                             aria-label="dafault"
-                                            className="MuiButton-root MuiButton-contained btn-filter "
+                                            className="MuiButton-root MuiButton-contained btn-filter  Mui-disabled"
                                             classes={
                                               Object {
                                                 "disabled": "Mui-disabled",
@@ -1364,7 +1371,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                               }
                                             }
                                             component="button"
-                                            disabled={false}
+                                            disabled={true}
                                             focusRipple={true}
                                             focusVisibleClassName="Mui-focusVisible"
                                             onClick={[Function]}
@@ -1372,8 +1379,8 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                           >
                                             <button
                                               aria-label="dafault"
-                                              className="MuiButtonBase-root MuiButton-root MuiButton-contained btn-filter "
-                                              disabled={false}
+                                              className="MuiButtonBase-root MuiButton-root MuiButton-contained btn-filter  Mui-disabled Mui-disabled"
+                                              disabled={true}
                                               onBlur={[Function]}
                                               onClick={[Function]}
                                               onDragLeave={[Function]}
@@ -1386,7 +1393,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                               onTouchEnd={[Function]}
                                               onTouchMove={[Function]}
                                               onTouchStart={[Function]}
-                                              tabIndex={0}
+                                              tabIndex={-1}
                                               type="button"
                                             >
                                               <span
@@ -1414,34 +1421,6 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                 </span>
                                                 buttons.filter
                                               </span>
-                                              <WithStyles(memo)
-                                                center={false}
-                                              >
-                                                <ForwardRef(TouchRipple)
-                                                  center={false}
-                                                  classes={
-                                                    Object {
-                                                      "child": "MuiTouchRipple-child",
-                                                      "childLeaving": "MuiTouchRipple-childLeaving",
-                                                      "childPulsate": "MuiTouchRipple-childPulsate",
-                                                      "ripple": "MuiTouchRipple-ripple",
-                                                      "ripplePulsate": "MuiTouchRipple-ripplePulsate",
-                                                      "rippleVisible": "MuiTouchRipple-rippleVisible",
-                                                      "root": "MuiTouchRipple-root",
-                                                    }
-                                                  }
-                                                >
-                                                  <span
-                                                    className="MuiTouchRipple-root"
-                                                  >
-                                                    <TransitionGroup
-                                                      childFactory={[Function]}
-                                                      component={null}
-                                                      exit={true}
-                                                    />
-                                                  </span>
-                                                </ForwardRef(TouchRipple)>
-                                              </WithStyles(memo)>
                                             </button>
                                           </ForwardRef(ButtonBase)>
                                         </WithStyles(ForwardRef(ButtonBase))>

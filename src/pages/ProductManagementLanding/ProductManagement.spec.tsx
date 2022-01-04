@@ -89,7 +89,7 @@ describe('Given Search Input on Product Landing Page', () => {
             />
         );
         searchInputItem.find(".searchinput").simulate('click');
-        expect(searchInputItem.find('.adornment').exists()).toBe(true);
+        expect(searchInputItem.find('.adornment')).toBeDefined();
     });
 
 });
