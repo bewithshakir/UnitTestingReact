@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Container, Grid, Typography } from "@mui/material";
 import { Button } from '../../../components/UIComponents/Button/Button.component';
 import Input from '../../../components/UIComponents/Input/Input';
+import Select from '../../../components/UIComponents/Select/SingleSelect';
 import { EditIcon } from '../../../assets/icons';
 import './FeeDetails.scss';
 
@@ -61,14 +62,16 @@ export default function FeeDetails() {
                                 />
                             </Grid>
                             <Grid item xs={12} md={6} pl={2.5}>
-                                <Input
+                                <Select
                                     id='delFee'
-                                    label='Delivery Fee'
-                                    type='text'
+                                    name='delFeeShed'
+                                    label='Delivery Fee Schedule'
                                     description=''
+                                    items={[]}
                                     placeholder='Enter Fee'
-                                    required
-                                />
+                                    onChange={() => null}
+                                    required                              
+                                    />
                             </Grid>
                         </Grid> 
                     </Grid>
