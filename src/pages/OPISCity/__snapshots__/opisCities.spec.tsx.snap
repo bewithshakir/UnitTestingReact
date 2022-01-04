@@ -796,7 +796,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                         >
                           <SearchInput
                             delay={500}
-                            id="SearchInput"
+                            id="opisCitySearch"
                             name="searchTerm"
                             onChange={[Function]}
                             placeholder="taxes.opisCities.search"
@@ -1084,7 +1084,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                             >
                               <SearchInput
                                 delay={500}
-                                id="SearchInput"
+                                id="opisCitySearch"
                                 name="searchTerm"
                                 onChange={[Function]}
                                 placeholder="taxes.opisCities.search"
@@ -1211,7 +1211,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                 >
                                   <SearchInput
                                     delay={500}
-                                    id="SearchInput"
+                                    id="opisCitySearch"
                                     name="searchTerm"
                                     onChange={[Function]}
                                     placeholder="taxes.opisCities.search"
@@ -1712,7 +1712,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                   Object {
                                     "children": <SearchInput
                                       delay={500}
-                                      id="SearchInput"
+                                      id="opisCitySearch"
                                       name="searchTerm"
                                       onChange={[Function]}
                                       placeholder="taxes.opisCities.search"
@@ -1743,7 +1743,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                 >
                                   <SearchInput
                                     delay={500}
-                                    id="SearchInput"
+                                    id="opisCitySearch"
                                     name="searchTerm"
                                     onChange={[Function]}
                                     placeholder="taxes.opisCities.search"
@@ -1753,7 +1753,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                   >
                                     <ForwardRef(OutlinedInput)
                                       className="searchinput"
-                                      id="SearchInput"
+                                      id="opisCitySearch"
                                       inputProps={
                                         Object {
                                           "aria-label": "search",
@@ -1837,7 +1837,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                           }
                                         }
                                         fullWidth={false}
-                                        id="SearchInput"
+                                        id="opisCitySearch"
                                         inputComponent="input"
                                         inputProps={
                                           Object {
@@ -2274,7 +2274,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                               "formControl": undefined,
                                               "fullWidth": false,
                                               "hiddenLabel": undefined,
-                                              "id": "SearchInput",
+                                              "id": "opisCitySearch",
                                               "inputComponent": "input",
                                               "inputProps": Object {
                                                 "aria-label": "search",
@@ -2768,7 +2768,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                               aria-label="search"
                                               as="input"
                                               className="MuiOutlinedInput-input MuiInputBase-input MuiInputBase-inputAdornedStart"
-                                              id="SearchInput"
+                                              id="opisCitySearch"
                                               name="searchTerm"
                                               onAnimationStart={[Function]}
                                               onBlur={[Function]}
@@ -2832,7 +2832,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                   "formControl": undefined,
                                                   "fullWidth": false,
                                                   "hiddenLabel": undefined,
-                                                  "id": "SearchInput",
+                                                  "id": "opisCitySearch",
                                                   "inputComponent": "input",
                                                   "inputProps": Object {
                                                     "aria-label": "search",
@@ -3155,7 +3155,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                               <input
                                                 aria-label="search"
                                                 className="MuiOutlinedInput-input MuiInputBase-input MuiInputBase-inputAdornedStart css-1o9s3wi-MuiInputBase-input-MuiOutlinedInput-input"
-                                                id="SearchInput"
+                                                id="opisCitySearch"
                                                 name="searchTerm"
                                                 onAnimationStart={[Function]}
                                                 onBlur={[Function]}
