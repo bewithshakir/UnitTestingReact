@@ -1,6 +1,6 @@
-import { rest } from "msw"
+import { rest } from "msw";
 
-export const productTypesHandler = ()=> {
+export const productTypesHandler = () => {
     return rest.get('*/api/product-service/product/productType', (req, res, ctx) => {
         return res(
             ctx.status(200),
@@ -18,11 +18,11 @@ export const productTypesHandler = ()=> {
                     }
                 ]
             })
-        )
-    })
+        );
+    });
 };
 
-export const productColorsHandler = ()=> {
+export const productColorsHandler = () => {
     return rest.get('*/api/product-service/product/productColor', (req, res, ctx) => {
         return res(
             ctx.status(200),
@@ -40,11 +40,11 @@ export const productColorsHandler = ()=> {
                     }
                 ]
             })
-        )
-    })
+        );
+    });
 };
 
-export const addProductManagementHandler = ()=> {
+export const addProductManagementHandler = () => {
     return rest.post('*/api/product-service/product/add', (req, res, ctx) => {
         return res(
             ctx.status(200),
@@ -64,11 +64,11 @@ export const addProductManagementHandler = ()=> {
                     "octaneLvl": null
                 }
             })
-        )
-    })
+        );
+    });
 };
 
-export const getProductDataHandler = ()=> {
+export const getProductDataHandler = () => {
     return rest.get('*/api/product-service/product/details/*', (req, res, ctx) => {
         return res(
             ctx.status(200),
@@ -93,11 +93,11 @@ export const getProductDataHandler = ()=> {
                 },
                 "error": null
             })
-        )
-    })
+        );
+    });
 };
 
-export const editProductManagementHandler = ()=> {
+export const editProductManagementHandler = () => {
     return rest.put('*/api/product-service/product/edit/*', (req, res, ctx) => {
         return res(
             ctx.status(200),
@@ -115,5 +115,5 @@ export const editProductManagementHandler = ()=> {
                 }
             })
         );
-    })
+    });
 };
