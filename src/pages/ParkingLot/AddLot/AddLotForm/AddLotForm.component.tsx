@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { FieldArray, FormikProvider, useFormik } from 'formik';
 import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';
+import moment from 'moment';
 import { Box, Container, Grid, Link, Typography } from '@mui/material';
 import { Button } from '../../../../components/UIComponents/Button/Button.component';
 import Input from '../../../../components/UIComponents/Input/Input';
@@ -247,8 +248,8 @@ function AddLotForm(): React.ReactElement {
             })),
             delivery_frequency_cd: form.productDelFreq?.value || "",
             order_schedule: form.orderScheduleDel.map((orderSchedule, index) => ({
-                startDt: orderSchedule.fromDate,
-                endDt: orderSchedule.toDate,
+                startDt: moment(orderSchedule.fromDate).format("YYYY-MM-DD"),
+                endDt: orderSchedule.toDate ? moment(orderSchedule.toDate).format("YYYY-MM-DD") : "",
                 startTime: orderSchedule.startTime,
                 endTime: orderSchedule.endTime,
                 dayOfWeek: orderSchedule.productDelDaysMulti && orderSchedule.productDelDaysMulti?.length > 0 ? orderSchedule.productDelDaysMulti?.map(daysMulti => daysMulti.value) : [orderSchedule.productDelDays?.value],
@@ -290,11 +291,11 @@ function AddLotForm(): React.ReactElement {
             })),
             delivery_frequency_cd: form.productDelFreq?.value || "",
             order_schedule: form.orderScheduleDel.map((orderSchedule, index) => ({
-                startDt: orderSchedule.fromDate,
-                endDt: orderSchedule.toDate,
+                startDt: moment(orderSchedule.fromDate).format("YYYY-MM-DD"),
+                endDt: orderSchedule.toDate ? moment(orderSchedule.toDate).format("YYYY-MM-DD") : "",
                 startTime: orderSchedule.startTime,
                 endTime: orderSchedule.endTime,
-                dayOfWeek: orderSchedule.productDelDaysMulti && orderSchedule.productDelDaysMulti?.length > 0 ? orderSchedule.productDelDaysMulti?.map(daysMulti => daysMulti.value) : [orderSchedule.productDelDays?.value],
+                dayOfWeek: orderSchedule.productDelDaysMulti && orderSchedule.productDelDaysMulti?.length > 0 ? orderSchedule.productDelDaysMulti?.map(daysMulti => ({ dayOfWeekCd: daysMulti.value })) : [{ dayOfWeekCd: orderSchedule.productDelDays?.value }],
                 isPrimary: index === 0 ? "Y" : "N"
             }))
             // Commented for future requirements
@@ -653,8 +654,7 @@ function AddLotForm(): React.ReactElement {
                                                             }
                                                         />
                                                     </Grid>
-
-                                                    <Grid item xs={12} md={6} pl={2.5} pr={2.5} pb={2.5}>
+                                                    <Grid item xs={12} md={6} pl={2.5} pr={2.5} pb={2.5} className='deliveryDays'>
                                                         {['weekly', 'monthly'].includes(String(formik?.values?.productDelFreq?.label).toLowerCase()) ?
                                                             (<SingleSelect
                                                                 id={`orderScheduleDel[${index}].productDelDays`}
