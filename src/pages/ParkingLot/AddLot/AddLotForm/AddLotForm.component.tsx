@@ -374,13 +374,6 @@ function AddLotForm(): React.ReactElement {
         }
     };
 
-    useEffect(() => {
-        return () => {
-            if (timerRef.current) {
-                clearTimeout(timerRef.current);
-            }
-        };
-    }, []);
     const handleProductDelFreq = (fieldName: string, value: any) => {
         formik.setFieldValue(fieldName, value);
         formik.setFieldValue('orderScheduleDel', [{
