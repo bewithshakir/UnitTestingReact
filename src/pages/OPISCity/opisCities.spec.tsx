@@ -33,6 +33,10 @@ describe('Given OPIS Cities Landing Page', () => {
         BurgerMenu.simulate('click');
         expect(BurgerMenu.find('.actions-popper').exists()).toBe(true);
     });
+    test('Search Box Rendered', () => {
+        const BurgerMenu = Page.find('SearchInput');
+        expect(BurgerMenu.find('#opisCitySearch').exists()).toBe(true);
+    });
     test('Kabab Menu Rendered With Options', () => {
         const BurgerMenu = Page.find('ActionsMenu');
         BurgerMenu.simulate('click');

@@ -14,11 +14,11 @@ export const getOPISCitiesHandler = () => {
                         "state": "CA",
                     },
                     {
-                        "city": "Houstan",
+                        "city": "Portland",
                         "cityId": 112,
                         "countryCd": "us",
                         "opisServedCityId": "19d21c52-7c89-4e81-97dc-6822e713175e",
-                        "state": "TX",
+                        "state": "ME",
                     }
                 ]
             })
