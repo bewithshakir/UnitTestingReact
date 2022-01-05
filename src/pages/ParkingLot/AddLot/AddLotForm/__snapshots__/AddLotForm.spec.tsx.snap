@@ -10319,6 +10319,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                   clearValue={[Function]}
                                                   cx={[Function]}
                                                   focusableOptions={Array []}
+                                                  focusedOption={null}
                                                   focusedValue={null}
                                                   getStyles={[Function]}
                                                   getValue={[Function]}
@@ -32761,6 +32762,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                   clearValue={[Function]}
                                                   cx={[Function]}
                                                   focusableOptions={Array []}
+                                                  focusedOption={null}
                                                   focusedValue={null}
                                                   getStyles={[Function]}
                                                   getValue={[Function]}
