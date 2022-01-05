@@ -51,6 +51,10 @@ export const formStatusObj = {
     message: 'Something went wrong. Please try again.',
     type: 'Error',
   },
+  orderScheduleError: {
+    message: 'Please provide the details for available schedule',
+    type: 'Error'
+  }
 };
 
 
