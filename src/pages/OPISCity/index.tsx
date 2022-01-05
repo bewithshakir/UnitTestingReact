@@ -122,6 +122,7 @@ const OPISCityLandingContent = memo(() => {
             <Grid item pr={2.5}>
               <FormControl>
                 <SortbyMenu
+                  id={"opisCitySort"}
                   options={SortByOptions.map((sortByItem) => t(sortByItem))}
                   onSelect={(value) => onSortBySlected(value)}
                 />
