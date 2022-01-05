@@ -98,8 +98,16 @@ div {
             }
           }
         }
+      }    
+    }
+    .date-picker-container{
+      .MuiFormControl-root{
+        .Mui-disabled{
+          .MuiInputAdornment-root{
+            cursor: default;
+          } 
+        }  
       }
-      
     }
     .MuiCalendarPicker-root{
         .MuiPickersDay-root{
