@@ -1,8 +1,9 @@
 import { Fragment } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Container, Grid, Typography } from "@mui/material";
+import { Container, FormControlLabel, Grid, Typography } from "@mui/material";
 import { Button } from '../../../components/UIComponents/Button/Button.component';
 import Input from '../../../components/UIComponents/Input/Input';
+import Checkbox from '../../../components/UIComponents/Checkbox/Checkbox.component';
 import Select from '../../../components/UIComponents/Select/SingleSelect';
 import { EditIcon } from '../../../assets/icons';
 import './FeeDetails.scss';
@@ -33,7 +34,7 @@ export default function FeeDetails() {
                                 </Button>
                             </Grid>}
                         </Grid>
-                        <Grid container item  md={12} mt={2} mb={1}>
+                        <Grid container item md={12} mt={2} mb={1}>
                             <Grid item xs={12} md={6}>
                                 <Input
                                     id='feeName'
@@ -50,7 +51,7 @@ export default function FeeDetails() {
                                 {'Delivery Fee'}
                             </Typography>
                         </Grid>
-                         <Grid container item md={12} mt={2} mb={1} pt={0.5}>
+                        <Grid container item md={12} mt={2} mb={1} pt={0.5}>
                             <Grid item xs={12} md={6}>
                                 <Input
                                     id='delFee'
@@ -70,10 +71,85 @@ export default function FeeDetails() {
                                     items={[]}
                                     placeholder='Enter Fee'
                                     onChange={() => null}
-                                    required                              
-                                    />
+                                    required
+                                />
                             </Grid>
-                        </Grid> 
+                        </Grid>
+                        <Grid item pt={2.5} md={12} mt={2} mb={1}>
+                            <FormControlLabel
+                                sx={{ margin: "0px", marginBottom: "1rem", fontWeight: "bold" }}
+                                className="checkbox-field"
+                                control={<Checkbox checked={false} name="salesTaxExcemption" />}
+                                label={<Typography variant="h3" component="h3" className="fw-bold">
+                                    {'Sales Tax Excemption'}
+                                </Typography>} />
+                        </Grid>
+                        <Grid item pt={2.5}>
+                            <Typography variant="h3" component="h3" gutterBottom className="left-heading fw-bold" mb={1}>
+                                {'Service Fee rule 1 :'}
+                            </Typography>
+                        </Grid>
+                        <Grid container item md={12} mt={2} mb={1} pt={0.5}>
+                            <Grid item xs={12} md={6}>
+                                <Input
+                                    id='serviceFeeCharge'
+                                    label='Service Fee Charge'
+                                    type='text'
+                                    description=''
+                                    placeholder='Enter Fee Charge'
+                                    required
+                                />
+                            </Grid>
+                        </Grid>    
+                        <Grid container item md={12} mt={2} mb={1} pt={0.5}>
+                            <Grid item xs={12} md={6}>
+                                <Select
+                                    id='productType'
+                                    name='productType'
+                                    label='Product Type'
+                                    description=''
+                                    items={[]}
+                                    placeholder='Select Product Type'
+                                    onChange={() => null}
+                                    required
+                                />
+                            </Grid>
+                            <Grid item xs={12} md={6} pl={2.5}>
+                                <Select
+                                    id='masterProductType'
+                                    name='masterProductType'
+                                    label='Master Product Type'
+                                    description=''
+                                    items={[]}
+                                    placeholder='Select Product Type'
+                                    onChange={() => null}
+                                    required
+                                />
+                            </Grid>
+                        </Grid>
+                        <Grid container item md={12} mt={2} mb={1} pt={0.5}>
+                            <Grid item xs={12} md={6}>
+                                <Select
+                                    id='productName'
+                                    name='productName'
+                                    label='Product Name'
+                                    description=''
+                                    items={[]}
+                                    placeholder='Select Product Name'
+                                    onChange={() => null}
+                                    required
+                                />
+                            </Grid>
+                        </Grid>
+                        <Grid item pt={2.5} md={12} mt={2} mb={1}>
+                            <FormControlLabel
+                                sx={{ margin: "0px", marginBottom: "1rem", fontWeight: "bold" }}
+                                className="checkbox-field"
+                                control={<Checkbox checked={false} name="salesTaxExcemption" />}
+                                label={<Typography variant="h4" component="h4" className="fw-bold">
+                                    {'Consider this as an asset'}
+                                </Typography>} />
+                        </Grid>
                     </Grid>
                 </Container>
             </Grid>
