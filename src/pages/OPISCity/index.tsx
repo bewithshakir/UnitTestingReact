@@ -110,6 +110,7 @@ const OPISCityLandingContent = memo(() => {
           <Grid item md={8} lg={9} display="flex" >
             <Grid item pr={2.5}>
               <Button
+                id="opisCityFilter"
                 types="filter"
                 aria-label="dafault"
                 onClick={openFilterPanel}
