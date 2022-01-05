@@ -1,12 +1,8 @@
-/* eslint-disable no-console */
 import { shallow } from 'enzyme';
 import CustomerModel from '../../models/CustomerModel';
-// import CustomerLandingPage from './index';
 import ActionsMenu from '../../components/UIComponents/Menu/ActionsMenu.component';
 import SortbyMenu from '../../components/UIComponents/Menu/SortbyMenu.component';
 import { sortByOptions } from "./config";
-// import { when } from 'jest-when';
-// import { useCustomers } from './queries';
 
 
 jest.mock("react-query", () => {

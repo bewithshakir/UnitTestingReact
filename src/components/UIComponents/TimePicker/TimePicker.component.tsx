@@ -28,6 +28,7 @@ interface TimePickerProps {
     id: string;
     name: string;
     timeDiffMins?: number;
+    onBlur?: (...args: any[]) => void;
 }
 
 const timeValidation = (str: string) => {
@@ -35,7 +36,7 @@ const timeValidation = (str: string) => {
 };
 
 
-export const TimePicker: React.FC<TimePickerProps> = ({ label, value, onChange, name, required, timeDiffMins, disabled, id, helperText, error, placeholder }) => {
+export const TimePicker: React.FC<TimePickerProps> = ({ label, value, onChange, name,required, timeDiffMins, disabled, id, helperText, error, placeholder, onBlur }) => {
     const [validTime, setValidTime] = React.useState<boolean>(true);
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const [inputValue, setInputValue] = React.useState<string>('');
@@ -60,7 +61,7 @@ export const TimePicker: React.FC<TimePickerProps> = ({ label, value, onChange, 
                 merd: AM,
                 timeStrVal: ''
             });
-            setValidTime(value ? false : !required);
+            // setValidTime(value ? false : !required); // TEMP REF
         }
     };
 
@@ -72,8 +73,11 @@ export const TimePicker: React.FC<TimePickerProps> = ({ label, value, onChange, 
 
 
     const handleClick = (event: any) => {
-        setAnchorEl(event.currentTarget);
-        setOpen(true);
+        if(!disabled){
+            setAnchorEl(event.currentTarget);
+            setOpen(true);
+        }
+        
     };
 
     const handleClickAway = () => {
@@ -122,8 +126,9 @@ export const TimePicker: React.FC<TimePickerProps> = ({ label, value, onChange, 
                 <Input
                     id={id}
                     name={name}
+                    required={required}
                     helperText={helperText ? helperText : (!validTime) ? timeErrorText : ''}
-                    error={error ? error : !validTime} disabled={disabled}
+                    error={error ? error : !validTime}
                     autoComplete='off'
                     innerRef={inputRef}
                     label={label}
@@ -132,6 +137,8 @@ export const TimePicker: React.FC<TimePickerProps> = ({ label, value, onChange, 
                     onClick={handleClick}
                     placeholder={placeholder}
                     onKeyDown={handleKeyDown}
+                    disabled={disabled}
+                    onBlur={onBlur}
                     endAdornment={<InputAdornment position="start"> <Icon ><TimeIconComp /></Icon></InputAdornment>}
                 />
                 <Popper

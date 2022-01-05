@@ -35,6 +35,32 @@ export const useGetTimeZones = () => {
     return useQuery(["getTimeZones"], () => getTimeZones());
 };
 
+const getDeliveryFrequency = async () => {
+    const options: AxiosRequestConfig = {
+        method: 'get',
+        url: 'api/customer-service/delivery-frequency?countryCode=us'
+    };
+    const { data } = await axios(options);
+    return data;
+};
+
+export const useGetDeliveryFrequency = () => {
+    return useQuery(['getDeliveryFrequency'], () => getDeliveryFrequency());
+};
+
+const getDaysOfWeek = async () => {
+    const options: AxiosRequestConfig = {
+        method: 'get',
+        url: 'api/customer-service/day-of-week?countryCode=us'
+    };
+    const { data } = await axios(options);
+    return data;
+};
+
+export const useGetDaysOfWeek = () => {
+    return useQuery(['getDaysOfWeek'], () => getDaysOfWeek());
+};
+
 const editParkingLot = async (payload: any, parkingLotId: string) => {
     const options: AxiosRequestConfig = {
         method: 'put',
@@ -60,7 +86,7 @@ export const useGetContactTypes = () => {
     return useQuery(["getContactTypes"], () => getContactTypes());
 };
 
-export const useCreateLot = (onError:any, onSuccess:any) => {
+export const useCreateLot = (onError: any, onSuccess: any) => {
     return useMutation((payload: any) => createLot(payload), {
         onError,
         onSuccess,

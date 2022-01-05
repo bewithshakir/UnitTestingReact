@@ -21,7 +21,7 @@ export interface SelectProps {
     value: string,
 }
 
-type mutiSelectItem = {
+export interface mutiSelectItem  {
     label: string,
     value: string | number
 }
@@ -36,10 +36,13 @@ export interface lotContact {
 export interface orderSchDel {
     fromDate: moment.Moment | string | null,
     toDate: moment.Moment | string | null,
-    startTime: string,
-    endTime: string,
-    productDelDays: Array<mutiSelectItem>
+    startTime: string | '',
+    endTime: string | '',
+    productDelDays?: SelectProps 
+    productDelDaysMulti?: Array<mutiSelectItem> 
+    delFreq: string | ''
 }
+// Array<mutiSelectItem>
 
 export interface AddParkingLotForm {
     lotName: string;
@@ -57,6 +60,16 @@ export interface AddParkingLotForm {
     locationContact: lotContact[];
 }
 
+export const orderScheduleDel = [{
+    fromDate: null,
+    toDate: null,
+    startTime: '',
+    endTime: '',
+    productDelDays: { label: '', value: '' },
+    productDelDaysMulti: [],
+    delFreq:''
+}];
+
 export const addLotFormInitialValues = {
     lotName: '',
     lotId: '',
@@ -69,13 +82,7 @@ export const addLotFormInitialValues = {
     timeZone: { label: '', value: '' },
     jurisdictionId: '',
     productDelFreq: { label: '', value: '' },
-    orderScheduleDel: [{
-        fromDate: '',
-        toDate: '',
-        startTime: '',
-        endTime: '',
-        productDelDays: []
-    }],
+    orderScheduleDel: orderScheduleDel,
     locationContact: [{
         firstName: '',
         lastName: '',
@@ -120,11 +127,13 @@ export default class ParkingLotModel {
         this.jurisdictionId = '';
         this.productDelFreq = { label: '', value: '' };
         this.orderScheduleDel = [{
-            fromDate: '',
-            toDate: '',
+            fromDate: null,
+            toDate: null,
             startTime: '',
             endTime: '',
-            productDelDays: []
+            productDelDays: { label: '', value: '' },
+            productDelDaysMulti: [],
+            delFreq: ''
         }];
         this.locationContact = [{
             firstName: '',
