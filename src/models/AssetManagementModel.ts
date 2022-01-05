@@ -3,7 +3,7 @@ import { DeleteIcon, ExportIcon, ImportIcon } from '../assets/icons';
 import { headerObj } from './../components/UIComponents/DataGird/grid.component';
 import { ExpireWalletIcon, PositiveCricleIcon } from './../assets/icons';
 
-export default class SalesTaxModel {
+export default class AssetManagementModel {
 
 
     MASS_ACTION_TYPES = {
