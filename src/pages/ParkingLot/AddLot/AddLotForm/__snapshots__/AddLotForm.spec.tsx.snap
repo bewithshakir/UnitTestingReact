@@ -2325,9 +2325,12 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                       "orderScheduleDel": Array [
                         Object {
                           "delFreq": "",
+                          "deliveryDayId": null,
                           "endTime": "",
                           "fromDate": null,
+                          "isPrimary": "Y",
                           "productDelDays": Object {
+                            "deliveryDayWeekId": null,
                             "label": "",
                             "value": "",
                           },
@@ -2390,9 +2393,12 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                       "orderScheduleDel": Array [
                         Object {
                           "delFreq": "",
+                          "deliveryDayId": null,
                           "endTime": "",
                           "fromDate": null,
+                          "isPrimary": "Y",
                           "productDelDays": Object {
+                            "deliveryDayWeekId": null,
                             "label": "",
                             "value": "",
                           },
@@ -2719,7 +2725,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                       <SingleSelect
                         error={false}
                         id="productDelFreq"
-                        isDisabled={true}
+                        isDisabled={false}
                         items={Array []}
                         label="PRODUCT DELIVERY FREQUENCY"
                         name="productDelFreq"
@@ -2750,16 +2756,6 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                       >
                         Order Schedule Delivery info (Max 10)
                       </ForwardRef(Typography)>
-                    </ForwardRef(Grid)>
-                    <ForwardRef(Grid)
-                      item={true}
-                      mb={2}
-                      md={12}
-                      mt={1}
-                    >
-                      <ForwardRef(Divider)
-                        className="field-divider"
-                      />
                     </ForwardRef(Grid)>
                     <FormikConnect(FieldArrayInner)
                       name="orderScheduleDel"
@@ -2850,9 +2846,12 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                           "orderScheduleDel": Array [
                             Object {
                               "delFreq": "",
+                              "deliveryDayId": null,
                               "endTime": "",
                               "fromDate": null,
+                              "isPrimary": "Y",
                               "productDelDays": Object {
+                                "deliveryDayWeekId": null,
                                 "label": "",
                                 "value": "",
                               },
@@ -2915,9 +2914,12 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                           "orderScheduleDel": Array [
                             Object {
                               "delFreq": "",
+                              "deliveryDayId": null,
                               "endTime": "",
                               "fromDate": null,
+                              "isPrimary": "Y",
                               "productDelDays": Object {
+                                "deliveryDayWeekId": null,
                                 "label": "",
                                 "value": "",
                               },
@@ -3244,7 +3246,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                           <SingleSelect
                             error={false}
                             id="productDelFreq"
-                            isDisabled={true}
+                            isDisabled={false}
                             items={Array []}
                             label="PRODUCT DELIVERY FREQUENCY"
                             name="productDelFreq"
@@ -3275,16 +3277,6 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                           >
                             Order Schedule Delivery info (Max 10)
                           </ForwardRef(Typography)>
-                        </ForwardRef(Grid)>
-                        <ForwardRef(Grid)
-                          item={true}
-                          mb={2}
-                          md={12}
-                          mt={1}
-                        >
-                          <ForwardRef(Divider)
-                            className="field-divider"
-                          />
                         </ForwardRef(Grid)>
                         <FormikConnect(FieldArrayInner)
                           name="orderScheduleDel"
@@ -3631,7 +3623,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                               <SingleSelect
                                 error={false}
                                 id="productDelFreq"
-                                isDisabled={true}
+                                isDisabled={false}
                                 items={Array []}
                                 label="PRODUCT DELIVERY FREQUENCY"
                                 name="productDelFreq"
@@ -3662,16 +3654,6 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                               >
                                 Order Schedule Delivery info (Max 10)
                               </ForwardRef(Typography)>
-                            </ForwardRef(Grid)>,
-                            <ForwardRef(Grid)
-                              item={true}
-                              mb={2}
-                              md={12}
-                              mt={1}
-                            >
-                              <ForwardRef(Divider)
-                                className="field-divider"
-                              />
                             </ForwardRef(Grid)>,
                             <FormikConnect(FieldArrayInner)
                               name="orderScheduleDel"
@@ -9834,7 +9816,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                 "children": <SingleSelect
                                   error={false}
                                   id="productDelFreq"
-                                  isDisabled={true}
+                                  isDisabled={false}
                                   items={Array []}
                                   label="PRODUCT DELIVERY FREQUENCY"
                                   name="productDelFreq"
@@ -9881,7 +9863,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                               <SingleSelect
                                 error={false}
                                 id="productDelFreq"
-                                isDisabled={true}
+                                isDisabled={false}
                                 items={Array []}
                                 label="PRODUCT DELIVERY FREQUENCY"
                                 name="productDelFreq"
@@ -9937,7 +9919,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                               }
                                             }
                                             inputId="productDelFreq"
-                                            isDisabled={true}
+                                            isDisabled={false}
                                             isSearchable={false}
                                             name="productDelFreq"
                                             onBlur={[Function]}
@@ -10140,7 +10122,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                           }
                                         }
                                         inputId="productDelFreq"
-                                        isDisabled={true}
+                                        isDisabled={false}
                                         isSearchable={false}
                                         name="productDelFreq"
                                         onBlur={[Function]}
@@ -10174,7 +10156,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                           getOptionValue={[Function]}
                                           inputId="productDelFreq"
                                           inputValue=""
-                                          isDisabled={true}
+                                          isDisabled={false}
                                           isLoading={false}
                                           isMulti={false}
                                           isOptionDisabled={[Function]}
@@ -10219,7 +10201,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                 "onKeyDown": [Function],
                                               }
                                             }
-                                            isDisabled={true}
+                                            isDisabled={false}
                                             isFocused={false}
                                             isMulti={false}
                                             isRtl={false}
@@ -10249,7 +10231,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                 "getOptionValue": [Function],
                                                 "inputId": "productDelFreq",
                                                 "inputValue": "",
-                                                "isDisabled": true,
+                                                "isDisabled": false,
                                                 "isLoading": false,
                                                 "isMulti": false,
                                                 "isOptionDisabled": [Function],
@@ -10316,20 +10298,20 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                             <EmotionCssPropInternal
                                               __EMOTION_LABEL_PLEASE_DO_NOT_USE__="SelectContainer"
                                               __EMOTION_TYPE_PLEASE_DO_NOT_USE__="div"
-                                              className="react-select-container react-select--is-disabled"
+                                              className="react-select-container"
                                               css={
                                                 Object {
                                                   "boxSizing": "border-box",
                                                   "direction": undefined,
                                                   "label": "container",
-                                                  "pointerEvents": "none",
+                                                  "pointerEvents": undefined,
                                                   "position": "relative",
                                                 }
                                               }
                                               onKeyDown={[Function]}
                                             >
                                               <div
-                                                className="react-select-container react-select--is-disabled css-3iigni-container"
+                                                className="react-select-container css-b62m3t-container"
                                                 onKeyDown={[Function]}
                                               >
                                                 <LiveRegion
@@ -10371,7 +10353,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                       "getOptionValue": [Function],
                                                       "inputId": "productDelFreq",
                                                       "inputValue": "",
-                                                      "isDisabled": true,
+                                                      "isDisabled": false,
                                                       "isLoading": false,
                                                       "isMulti": false,
                                                       "isOptionDisabled": [Function],
@@ -10500,7 +10482,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                     }
                                                   }
                                                   innerRef={[Function]}
-                                                  isDisabled={true}
+                                                  isDisabled={false}
                                                   isFocused={false}
                                                   isMulti={false}
                                                   isRtl={false}
@@ -10531,7 +10513,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                       "getOptionValue": [Function],
                                                       "inputId": "productDelFreq",
                                                       "inputValue": "",
-                                                      "isDisabled": true,
+                                                      "isDisabled": false,
                                                       "isLoading": false,
                                                       "isMulti": false,
                                                       "isOptionDisabled": [Function],
@@ -10598,15 +10580,15 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                   <EmotionCssPropInternal
                                                     __EMOTION_LABEL_PLEASE_DO_NOT_USE__="Control"
                                                     __EMOTION_TYPE_PLEASE_DO_NOT_USE__="div"
-                                                    className="react-select__control react-select__control--is-disabled"
+                                                    className="react-select__control"
                                                     css={
                                                       Object {
                                                         "&:hover": Object {
                                                           "borderColor": "hsl(0, 0%, 70%)",
                                                         },
                                                         "alignItems": "center",
-                                                        "backgroundColor": "hsl(0, 0%, 95%)",
-                                                        "borderColor": "hsl(0, 0%, 90%)",
+                                                        "backgroundColor": "hsl(0, 0%, 100%)",
+                                                        "borderColor": "hsl(0, 0%, 80%)",
                                                         "borderRadius": 4,
                                                         "borderStyle": "solid",
                                                         "borderWidth": 1,
@@ -10627,7 +10609,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                     onTouchEnd={[Function]}
                                                   >
                                                     <div
-                                                      className="react-select__control react-select__control--is-disabled css-1insrsq-control"
+                                                      className="react-select__control css-1s2u09g-control"
                                                       onMouseDown={[Function]}
                                                       onTouchEnd={[Function]}
                                                     >
@@ -10637,7 +10619,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                         getStyles={[Function]}
                                                         getValue={[Function]}
                                                         hasValue={false}
-                                                        isDisabled={true}
+                                                        isDisabled={false}
                                                         isMulti={false}
                                                         isRtl={false}
                                                         options={Array []}
@@ -10666,7 +10648,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                             "getOptionValue": [Function],
                                                             "inputId": "productDelFreq",
                                                             "inputValue": "",
-                                                            "isDisabled": true,
+                                                            "isDisabled": false,
                                                             "isLoading": false,
                                                             "isMulti": false,
                                                             "isOptionDisabled": [Function],
@@ -10762,7 +10744,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                                   "id": "react-select-4-placeholder",
                                                                 }
                                                               }
-                                                              isDisabled={true}
+                                                              isDisabled={false}
                                                               isFocused={false}
                                                               isMulti={false}
                                                               isRtl={false}
@@ -10793,7 +10775,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                                   "getOptionValue": [Function],
                                                                   "inputId": "productDelFreq",
                                                                   "inputValue": "",
-                                                                  "isDisabled": true,
+                                                                  "isDisabled": false,
                                                                   "isLoading": false,
                                                                   "isMulti": false,
                                                                   "isOptionDisabled": [Function],
@@ -10889,7 +10871,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                               aria-haspopup={true}
                                                               aria-owns="react-select-4-listbox"
                                                               aria-readonly={true}
-                                                              disabled={true}
+                                                              disabled={false}
                                                               id="productDelFreq"
                                                               innerRef={[Function]}
                                                               inputMode="none"
@@ -10919,7 +10901,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                                     "toString": [Function],
                                                                   }
                                                                 }
-                                                                disabled={true}
+                                                                disabled={false}
                                                                 id="productDelFreq"
                                                                 inputMode="none"
                                                                 onBlur={[Function]}
@@ -10938,7 +10920,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                                   aria-owns="react-select-4-listbox"
                                                                   aria-readonly={true}
                                                                   className="css-mohuvp-dummyInput-DummyInput"
-                                                                  disabled={true}
+                                                                  disabled={false}
                                                                   id="productDelFreq"
                                                                   inputMode="none"
                                                                   onBlur={[Function]}
@@ -10959,7 +10941,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                         getStyles={[Function]}
                                                         getValue={[Function]}
                                                         hasValue={false}
-                                                        isDisabled={true}
+                                                        isDisabled={false}
                                                         isMulti={false}
                                                         isRtl={false}
                                                         options={Array []}
@@ -10988,7 +10970,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                             "getOptionValue": [Function],
                                                             "inputId": "productDelFreq",
                                                             "inputValue": "",
-                                                            "isDisabled": true,
+                                                            "isDisabled": false,
                                                             "isLoading": false,
                                                             "isMulti": false,
                                                             "isOptionDisabled": [Function],
@@ -11075,7 +11057,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                               getStyles={[Function]}
                                                               getValue={[Function]}
                                                               hasValue={false}
-                                                              isDisabled={true}
+                                                              isDisabled={false}
                                                               isFocused={false}
                                                               isMulti={false}
                                                               isRtl={false}
@@ -11105,7 +11087,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                                   "getOptionValue": [Function],
                                                                   "inputId": "productDelFreq",
                                                                   "inputValue": "",
-                                                                  "isDisabled": true,
+                                                                  "isDisabled": false,
                                                                   "isLoading": false,
                                                                   "isMulti": false,
                                                                   "isOptionDisabled": [Function],
@@ -11182,7 +11164,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                                   "onTouchEnd": [Function],
                                                                 }
                                                               }
-                                                              isDisabled={true}
+                                                              isDisabled={false}
                                                               isFocused={false}
                                                               isMulti={false}
                                                               isRtl={false}
@@ -11212,7 +11194,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                                   "getOptionValue": [Function],
                                                                   "inputId": "productDelFreq",
                                                                   "inputValue": "",
-                                                                  "isDisabled": true,
+                                                                  "isDisabled": false,
                                                                   "isLoading": false,
                                                                   "isMulti": false,
                                                                   "isOptionDisabled": [Function],
@@ -11289,7 +11271,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                                     "onTouchEnd": [Function],
                                                                   }
                                                                 }
-                                                                isDisabled={true}
+                                                                isDisabled={false}
                                                                 isFocused={false}
                                                                 isMulti={false}
                                                                 isRtl={false}
@@ -11319,7 +11301,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                                     "getOptionValue": [Function],
                                                                     "inputId": "productDelFreq",
                                                                     "inputValue": "",
-                                                                    "isDisabled": true,
+                                                                    "isDisabled": false,
                                                                     "isLoading": false,
                                                                     "isMulti": false,
                                                                     "isOptionDisabled": [Function],
@@ -11436,6 +11418,11 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                     </div>
                                                   </EmotionCssPropInternal>
                                                 </Control>
+                                                <input
+                                                  name="productDelFreq"
+                                                  type="hidden"
+                                                  value=""
+                                                />
                                               </div>
                                             </EmotionCssPropInternal>
                                           </SelectContainer>
@@ -11554,77 +11541,6 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                             </div>
                           </MuiGridRoot>
                         </ForwardRef(Grid)>
-                        <ForwardRef(Grid)
-                          item={true}
-                          mb={2}
-                          md={12}
-                          mt={1}
-                        >
-                          <MuiGridRoot
-                            as="div"
-                            className="MuiGrid-root MuiGrid-item MuiGrid-grid-md-12"
-                            ownerState={
-                              Object {
-                                "children": <ForwardRef(Divider)
-                                  className="field-divider"
-                                />,
-                                "columnSpacing": 0,
-                                "columns": 12,
-                                "container": false,
-                                "direction": "row",
-                                "item": true,
-                                "lg": false,
-                                "md": 12,
-                                "rowSpacing": 0,
-                                "sm": false,
-                                "sx": Object {
-                                  "mb": 2,
-                                  "mt": 1,
-                                },
-                                "wrap": "wrap",
-                                "xl": false,
-                                "xs": false,
-                                "zeroMinWidth": false,
-                              }
-                            }
-                            sx={
-                              Object {
-                                "mb": 2,
-                                "mt": 1,
-                              }
-                            }
-                          >
-                            <div
-                              className="MuiGrid-root MuiGrid-item MuiGrid-grid-md-12 css-1jqgye0-MuiGrid-root"
-                            >
-                              <ForwardRef(Divider)
-                                className="field-divider"
-                              >
-                                <MuiDividerRoot
-                                  as="hr"
-                                  className="MuiDivider-root MuiDivider-fullWidth field-divider"
-                                  ownerState={
-                                    Object {
-                                      "absolute": false,
-                                      "className": "field-divider",
-                                      "component": "hr",
-                                      "flexItem": false,
-                                      "light": false,
-                                      "orientation": "horizontal",
-                                      "role": undefined,
-                                      "textAlign": "center",
-                                      "variant": "fullWidth",
-                                    }
-                                  }
-                                >
-                                  <hr
-                                    className="MuiDivider-root MuiDivider-fullWidth field-divider css-9mgopn-MuiDivider-root"
-                                  />
-                                </MuiDividerRoot>
-                              </ForwardRef(Divider)>
-                            </div>
-                          </MuiGridRoot>
-                        </ForwardRef(Grid)>
                         <FormikConnect(FieldArrayInner)
                           name="orderScheduleDel"
                           render={[Function]}
@@ -11663,9 +11579,12 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                   "orderScheduleDel": Array [
                                     Object {
                                       "delFreq": "",
+                                      "deliveryDayId": null,
                                       "endTime": "",
                                       "fromDate": null,
+                                      "isPrimary": "Y",
                                       "productDelDays": Object {
+                                        "deliveryDayWeekId": null,
                                         "label": "",
                                         "value": "",
                                       },
@@ -11728,9 +11647,12 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                   "orderScheduleDel": Array [
                                     Object {
                                       "delFreq": "",
+                                      "deliveryDayId": null,
                                       "endTime": "",
                                       "fromDate": null,
+                                      "isPrimary": "Y",
                                       "productDelDays": Object {
+                                        "deliveryDayWeekId": null,
                                         "label": "",
                                         "value": "",
                                       },
@@ -11756,6 +11678,77 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                             render={[Function]}
                             validateOnChange={true}
                           >
+                            <ForwardRef(Grid)
+                              item={true}
+                              mb={2}
+                              md={12}
+                              mt={1}
+                            >
+                              <MuiGridRoot
+                                as="div"
+                                className="MuiGrid-root MuiGrid-item MuiGrid-grid-md-12"
+                                ownerState={
+                                  Object {
+                                    "children": <ForwardRef(Divider)
+                                      className="field-divider"
+                                    />,
+                                    "columnSpacing": 0,
+                                    "columns": 12,
+                                    "container": false,
+                                    "direction": "row",
+                                    "item": true,
+                                    "lg": false,
+                                    "md": 12,
+                                    "rowSpacing": 0,
+                                    "sm": false,
+                                    "sx": Object {
+                                      "mb": 2,
+                                      "mt": 1,
+                                    },
+                                    "wrap": "wrap",
+                                    "xl": false,
+                                    "xs": false,
+                                    "zeroMinWidth": false,
+                                  }
+                                }
+                                sx={
+                                  Object {
+                                    "mb": 2,
+                                    "mt": 1,
+                                  }
+                                }
+                              >
+                                <div
+                                  className="MuiGrid-root MuiGrid-item MuiGrid-grid-md-12 css-1jqgye0-MuiGrid-root"
+                                >
+                                  <ForwardRef(Divider)
+                                    className="field-divider"
+                                  >
+                                    <MuiDividerRoot
+                                      as="hr"
+                                      className="MuiDivider-root MuiDivider-fullWidth field-divider"
+                                      ownerState={
+                                        Object {
+                                          "absolute": false,
+                                          "className": "field-divider",
+                                          "component": "hr",
+                                          "flexItem": false,
+                                          "light": false,
+                                          "orientation": "horizontal",
+                                          "role": undefined,
+                                          "textAlign": "center",
+                                          "variant": "fullWidth",
+                                        }
+                                      }
+                                    >
+                                      <hr
+                                        className="MuiDivider-root MuiDivider-fullWidth field-divider css-9mgopn-MuiDivider-root"
+                                      />
+                                    </MuiDividerRoot>
+                                  </ForwardRef(Divider)>
+                                </div>
+                              </MuiGridRoot>
+                            </ForwardRef(Grid)>
                             <ForwardRef(Grid)
                               container={true}
                               key="0"
@@ -16486,21 +16479,24 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                       className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-6 deliveryDays"
                                       ownerState={
                                         Object {
-                                          "children": <MultiSelect
-                                            disabled={true}
-                                            error={false}
-                                            id="orderScheduleDel[0].productDelDaysMulti"
-                                            items={Array []}
-                                            label="SELECT DAYS TO DELIVER PRODUCT"
-                                            loadingMessage="Loading..."
-                                            name="orderScheduleDel[0].productDelDaysMulti"
-                                            noOptionsMessage="No Options found"
-                                            onBlur={[Function]}
-                                            onChange={[Function]}
-                                            placeholder="Select Multiple Days"
-                                            required={false}
-                                            value={Array []}
-                                          />,
+                                          "children": Array [
+                                            <MultiSelect
+                                              disabled={true}
+                                              error={false}
+                                              id="orderScheduleDel[0].productDelDaysMulti"
+                                              items={Array []}
+                                              label="SELECT DAYS TO DELIVER PRODUCT"
+                                              loadingMessage="Loading..."
+                                              name="orderScheduleDel[0].productDelDaysMulti"
+                                              noOptionsMessage="No Options found"
+                                              onBlur={[Function]}
+                                              onChange={[Function]}
+                                              placeholder="Select Multiple Days"
+                                              required={false}
+                                              value={Array []}
+                                            />,
+                                            false,
+                                          ],
                                           "className": "deliveryDays",
                                           "columnSpacing": 0,
                                           "columns": 12,
@@ -19390,9 +19386,12 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                   "orderScheduleDel": Array [
                                     Object {
                                       "delFreq": "",
+                                      "deliveryDayId": null,
                                       "endTime": "",
                                       "fromDate": null,
+                                      "isPrimary": "Y",
                                       "productDelDays": Object {
+                                        "deliveryDayWeekId": null,
                                         "label": "",
                                         "value": "",
                                       },
@@ -19455,9 +19454,12 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                   "orderScheduleDel": Array [
                                     Object {
                                       "delFreq": "",
+                                      "deliveryDayId": null,
                                       "endTime": "",
                                       "fromDate": null,
+                                      "isPrimary": "Y",
                                       "productDelDays": Object {
+                                        "deliveryDayWeekId": null,
                                         "label": "",
                                         "value": "",
                                       },
@@ -22784,6 +22786,991 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                 },
                 "currentResult": Object {
                   "data": undefined,
+                  "dataUpdatedAt": 0,
+                  "error": null,
+                  "errorUpdatedAt": 0,
+                  "failureCount": 0,
+                  "isError": false,
+                  "isFetched": false,
+                  "isFetchedAfterMount": false,
+                  "isFetching": true,
+                  "isIdle": false,
+                  "isLoading": true,
+                  "isLoadingError": false,
+                  "isPlaceholderData": false,
+                  "isPreviousData": false,
+                  "isRefetchError": false,
+                  "isStale": true,
+                  "isSuccess": false,
+                  "refetch": [Function],
+                  "remove": [Function],
+                  "status": "loading",
+                },
+                "currentResultOptions": Object {
+                  "_defaulted": true,
+                  "optimisticResults": true,
+                  "queryFn": [Function],
+                  "queryHash": "[\\"getDeliveryFrequency\\"]",
+                  "queryKey": Array [
+                    "getDeliveryFrequency",
+                  ],
+                },
+                "currentResultState": Object {
+                  "data": undefined,
+                  "dataUpdateCount": 0,
+                  "dataUpdatedAt": 0,
+                  "error": null,
+                  "errorUpdateCount": 0,
+                  "errorUpdatedAt": 0,
+                  "fetchFailureCount": 0,
+                  "fetchMeta": null,
+                  "isFetching": true,
+                  "isInvalidated": false,
+                  "isPaused": false,
+                  "status": "loading",
+                },
+                "listeners": Array [
+                  [Function],
+                ],
+                "options": Object {
+                  "_defaulted": true,
+                  "optimisticResults": true,
+                  "queryFn": [Function],
+                  "queryHash": "[\\"getDeliveryFrequency\\"]",
+                  "queryKey": Array [
+                    "getDeliveryFrequency",
+                  ],
+                },
+                "previousQueryResult": undefined,
+                "previousSelectError": null,
+                "refetch": [Function],
+                "refetchIntervalId": undefined,
+                "remove": [Function],
+                "staleTimeoutId": undefined,
+                "trackedProps": Array [],
+              },
+              QueryObserver {
+                "client": [Circular],
+                "currentQuery": [Circular],
+                "currentQueryInitialState": Object {
+                  "data": undefined,
+                  "dataUpdateCount": 0,
+                  "dataUpdatedAt": 0,
+                  "error": null,
+                  "errorUpdateCount": 0,
+                  "errorUpdatedAt": 0,
+                  "fetchFailureCount": 0,
+                  "fetchMeta": null,
+                  "isFetching": true,
+                  "isInvalidated": false,
+                  "isPaused": false,
+                  "status": "loading",
+                },
+                "currentResult": Object {
+                  "data": undefined,
+                  "dataUpdatedAt": 0,
+                  "error": null,
+                  "errorUpdatedAt": 0,
+                  "failureCount": 0,
+                  "isError": false,
+                  "isFetched": false,
+                  "isFetchedAfterMount": false,
+                  "isFetching": true,
+                  "isIdle": false,
+                  "isLoading": true,
+                  "isLoadingError": false,
+                  "isPlaceholderData": false,
+                  "isPreviousData": false,
+                  "isRefetchError": false,
+                  "isStale": true,
+                  "isSuccess": false,
+                  "refetch": [Function],
+                  "remove": [Function],
+                  "status": "loading",
+                },
+                "currentResultOptions": Object {
+                  "_defaulted": true,
+                  "optimisticResults": true,
+                  "queryFn": [Function],
+                  "queryHash": "[\\"getDeliveryFrequency\\"]",
+                  "queryKey": Array [
+                    "getDeliveryFrequency",
+                  ],
+                },
+                "currentResultState": Object {
+                  "data": undefined,
+                  "dataUpdateCount": 0,
+                  "dataUpdatedAt": 0,
+                  "error": null,
+                  "errorUpdateCount": 0,
+                  "errorUpdatedAt": 0,
+                  "fetchFailureCount": 0,
+                  "fetchMeta": null,
+                  "isFetching": true,
+                  "isInvalidated": false,
+                  "isPaused": false,
+                  "status": "loading",
+                },
+                "listeners": Array [
+                  [Function],
+                ],
+                "options": Object {
+                  "_defaulted": true,
+                  "optimisticResults": true,
+                  "queryFn": [Function],
+                  "queryHash": "[\\"getDeliveryFrequency\\"]",
+                  "queryKey": Array [
+                    "getDeliveryFrequency",
+                  ],
+                },
+                "previousQueryResult": undefined,
+                "previousSelectError": null,
+                "refetch": [Function],
+                "refetchIntervalId": undefined,
+                "remove": [Function],
+                "staleTimeoutId": undefined,
+                "trackedProps": Array [],
+              },
+            ],
+            "options": Object {
+              "_defaulted": true,
+              "optimisticResults": true,
+              "queryFn": [Function],
+              "queryHash": "[\\"getDeliveryFrequency\\"]",
+              "queryKey": Array [
+                "getDeliveryFrequency",
+              ],
+            },
+            "promise": Promise {},
+            "queryHash": "[\\"getDeliveryFrequency\\"]",
+            "queryKey": Array [
+              "getDeliveryFrequency",
+            ],
+            "retryer": Retryer {
+              "cancel": [Function],
+              "cancelRetry": [Function],
+              "continue": [Function],
+              "failureCount": 0,
+              "isPaused": false,
+              "isResolved": false,
+              "isTransportCancelable": false,
+              "promise": Promise {},
+            },
+            "revertState": Object {
+              "data": undefined,
+              "dataUpdateCount": 0,
+              "dataUpdatedAt": 0,
+              "error": null,
+              "errorUpdateCount": 0,
+              "errorUpdatedAt": 0,
+              "fetchFailureCount": 0,
+              "fetchMeta": null,
+              "isFetching": false,
+              "isInvalidated": false,
+              "isPaused": false,
+              "status": "idle",
+            },
+            "state": Object {
+              "data": undefined,
+              "dataUpdateCount": 0,
+              "dataUpdatedAt": 0,
+              "error": null,
+              "errorUpdateCount": 0,
+              "errorUpdatedAt": 0,
+              "fetchFailureCount": 0,
+              "fetchMeta": null,
+              "isFetching": true,
+              "isInvalidated": false,
+              "isPaused": false,
+              "status": "loading",
+            },
+          },
+          Query {
+            "cache": [Circular],
+            "cacheTime": 300000,
+            "defaultOptions": undefined,
+            "gcTimeout": undefined,
+            "initialState": Object {
+              "data": undefined,
+              "dataUpdateCount": 0,
+              "dataUpdatedAt": 0,
+              "error": null,
+              "errorUpdateCount": 0,
+              "errorUpdatedAt": 0,
+              "fetchFailureCount": 0,
+              "fetchMeta": null,
+              "isFetching": false,
+              "isInvalidated": false,
+              "isPaused": false,
+              "status": "idle",
+            },
+            "observers": Array [
+              QueryObserver {
+                "client": [Circular],
+                "currentQuery": [Circular],
+                "currentQueryInitialState": Object {
+                  "data": undefined,
+                  "dataUpdateCount": 0,
+                  "dataUpdatedAt": 0,
+                  "error": null,
+                  "errorUpdateCount": 0,
+                  "errorUpdatedAt": 0,
+                  "fetchFailureCount": 0,
+                  "fetchMeta": null,
+                  "isFetching": false,
+                  "isInvalidated": false,
+                  "isPaused": false,
+                  "status": "idle",
+                },
+                "currentResult": Object {
+                  "data": undefined,
+                  "dataUpdatedAt": 0,
+                  "error": null,
+                  "errorUpdatedAt": 0,
+                  "failureCount": 0,
+                  "isError": false,
+                  "isFetched": false,
+                  "isFetchedAfterMount": false,
+                  "isFetching": true,
+                  "isIdle": false,
+                  "isLoading": true,
+                  "isLoadingError": false,
+                  "isPlaceholderData": false,
+                  "isPreviousData": false,
+                  "isRefetchError": false,
+                  "isStale": true,
+                  "isSuccess": false,
+                  "refetch": [Function],
+                  "remove": [Function],
+                  "status": "loading",
+                },
+                "currentResultOptions": Object {
+                  "_defaulted": true,
+                  "optimisticResults": true,
+                  "queryFn": [Function],
+                  "queryHash": "[\\"getDaysOfWeek\\"]",
+                  "queryKey": Array [
+                    "getDaysOfWeek",
+                  ],
+                },
+                "currentResultState": Object {
+                  "data": undefined,
+                  "dataUpdateCount": 0,
+                  "dataUpdatedAt": 0,
+                  "error": null,
+                  "errorUpdateCount": 0,
+                  "errorUpdatedAt": 0,
+                  "fetchFailureCount": 0,
+                  "fetchMeta": null,
+                  "isFetching": true,
+                  "isInvalidated": false,
+                  "isPaused": false,
+                  "status": "loading",
+                },
+                "listeners": Array [
+                  [Function],
+                ],
+                "options": Object {
+                  "_defaulted": true,
+                  "optimisticResults": true,
+                  "queryFn": [Function],
+                  "queryHash": "[\\"getDaysOfWeek\\"]",
+                  "queryKey": Array [
+                    "getDaysOfWeek",
+                  ],
+                },
+                "previousQueryResult": undefined,
+                "previousSelectError": null,
+                "refetch": [Function],
+                "refetchIntervalId": undefined,
+                "remove": [Function],
+                "staleTimeoutId": undefined,
+                "trackedProps": Array [],
+              },
+              QueryObserver {
+                "client": [Circular],
+                "currentQuery": [Circular],
+                "currentQueryInitialState": Object {
+                  "data": undefined,
+                  "dataUpdateCount": 0,
+                  "dataUpdatedAt": 0,
+                  "error": null,
+                  "errorUpdateCount": 0,
+                  "errorUpdatedAt": 0,
+                  "fetchFailureCount": 0,
+                  "fetchMeta": null,
+                  "isFetching": true,
+                  "isInvalidated": false,
+                  "isPaused": false,
+                  "status": "loading",
+                },
+                "currentResult": Object {
+                  "data": undefined,
+                  "dataUpdatedAt": 0,
+                  "error": null,
+                  "errorUpdatedAt": 0,
+                  "failureCount": 0,
+                  "isError": false,
+                  "isFetched": false,
+                  "isFetchedAfterMount": false,
+                  "isFetching": true,
+                  "isIdle": false,
+                  "isLoading": true,
+                  "isLoadingError": false,
+                  "isPlaceholderData": false,
+                  "isPreviousData": false,
+                  "isRefetchError": false,
+                  "isStale": true,
+                  "isSuccess": false,
+                  "refetch": [Function],
+                  "remove": [Function],
+                  "status": "loading",
+                },
+                "currentResultOptions": Object {
+                  "_defaulted": true,
+                  "optimisticResults": true,
+                  "queryFn": [Function],
+                  "queryHash": "[\\"getDaysOfWeek\\"]",
+                  "queryKey": Array [
+                    "getDaysOfWeek",
+                  ],
+                },
+                "currentResultState": Object {
+                  "data": undefined,
+                  "dataUpdateCount": 0,
+                  "dataUpdatedAt": 0,
+                  "error": null,
+                  "errorUpdateCount": 0,
+                  "errorUpdatedAt": 0,
+                  "fetchFailureCount": 0,
+                  "fetchMeta": null,
+                  "isFetching": true,
+                  "isInvalidated": false,
+                  "isPaused": false,
+                  "status": "loading",
+                },
+                "listeners": Array [
+                  [Function],
+                ],
+                "options": Object {
+                  "_defaulted": true,
+                  "optimisticResults": true,
+                  "queryFn": [Function],
+                  "queryHash": "[\\"getDaysOfWeek\\"]",
+                  "queryKey": Array [
+                    "getDaysOfWeek",
+                  ],
+                },
+                "previousQueryResult": undefined,
+                "previousSelectError": null,
+                "refetch": [Function],
+                "refetchIntervalId": undefined,
+                "remove": [Function],
+                "staleTimeoutId": undefined,
+                "trackedProps": Array [],
+              },
+            ],
+            "options": Object {
+              "_defaulted": true,
+              "optimisticResults": true,
+              "queryFn": [Function],
+              "queryHash": "[\\"getDaysOfWeek\\"]",
+              "queryKey": Array [
+                "getDaysOfWeek",
+              ],
+            },
+            "promise": Promise {},
+            "queryHash": "[\\"getDaysOfWeek\\"]",
+            "queryKey": Array [
+              "getDaysOfWeek",
+            ],
+            "retryer": Retryer {
+              "cancel": [Function],
+              "cancelRetry": [Function],
+              "continue": [Function],
+              "failureCount": 0,
+              "isPaused": false,
+              "isResolved": false,
+              "isTransportCancelable": false,
+              "promise": Promise {},
+            },
+            "revertState": Object {
+              "data": undefined,
+              "dataUpdateCount": 0,
+              "dataUpdatedAt": 0,
+              "error": null,
+              "errorUpdateCount": 0,
+              "errorUpdatedAt": 0,
+              "fetchFailureCount": 0,
+              "fetchMeta": null,
+              "isFetching": false,
+              "isInvalidated": false,
+              "isPaused": false,
+              "status": "idle",
+            },
+            "state": Object {
+              "data": undefined,
+              "dataUpdateCount": 0,
+              "dataUpdatedAt": 0,
+              "error": null,
+              "errorUpdateCount": 0,
+              "errorUpdatedAt": 0,
+              "fetchFailureCount": 0,
+              "fetchMeta": null,
+              "isFetching": true,
+              "isInvalidated": false,
+              "isPaused": false,
+              "status": "loading",
+            },
+          },
+          Query {
+            "cache": [Circular],
+            "cacheTime": 300000,
+            "defaultOptions": undefined,
+            "gcTimeout": undefined,
+            "initialState": Object {
+              "data": undefined,
+              "dataUpdateCount": 0,
+              "dataUpdatedAt": 0,
+              "error": null,
+              "errorUpdateCount": 0,
+              "errorUpdatedAt": 0,
+              "fetchFailureCount": 0,
+              "fetchMeta": null,
+              "isFetching": false,
+              "isInvalidated": false,
+              "isPaused": false,
+              "status": "idle",
+            },
+            "observers": Array [
+              QueryObserver {
+                "client": [Circular],
+                "currentQuery": [Circular],
+                "currentQueryInitialState": Object {
+                  "data": undefined,
+                  "dataUpdateCount": 0,
+                  "dataUpdatedAt": 0,
+                  "error": null,
+                  "errorUpdateCount": 0,
+                  "errorUpdatedAt": 0,
+                  "fetchFailureCount": 0,
+                  "fetchMeta": null,
+                  "isFetching": false,
+                  "isInvalidated": false,
+                  "isPaused": false,
+                  "status": "idle",
+                },
+                "currentResult": Object {
+                  "data": undefined,
+                  "dataUpdatedAt": 1638338756741,
+                  "error": null,
+                  "errorUpdatedAt": 0,
+                  "failureCount": 0,
+                  "isError": false,
+                  "isFetched": true,
+                  "isFetchedAfterMount": true,
+                  "isFetching": true,
+                  "isIdle": false,
+                  "isLoading": false,
+                  "isLoadingError": false,
+                  "isPlaceholderData": false,
+                  "isPreviousData": false,
+                  "isRefetchError": false,
+                  "isStale": true,
+                  "isSuccess": true,
+                  "refetch": [Function],
+                  "remove": [Function],
+                  "status": "success",
+                },
+                "currentResultOptions": Object {
+                  "_defaulted": true,
+                  "optimisticResults": true,
+                  "queryFn": [Function],
+                  "queryHash": "[\\"googleAddress\\",\\"\\"]",
+                  "queryKey": Array [
+                    "googleAddress",
+                    "",
+                  ],
+                },
+                "currentResultState": Object {
+                  "data": undefined,
+                  "dataUpdateCount": 1,
+                  "dataUpdatedAt": 1638338756741,
+                  "error": null,
+                  "errorUpdateCount": 0,
+                  "errorUpdatedAt": 0,
+                  "fetchFailureCount": 0,
+                  "fetchMeta": null,
+                  "isFetching": true,
+                  "isInvalidated": false,
+                  "isPaused": false,
+                  "status": "success",
+                },
+                "listeners": Array [
+                  [Function],
+                ],
+                "options": Object {
+                  "_defaulted": true,
+                  "optimisticResults": true,
+                  "queryFn": [Function],
+                  "queryHash": "[\\"googleAddress\\",\\"\\"]",
+                  "queryKey": Array [
+                    "googleAddress",
+                    "",
+                  ],
+                },
+                "previousQueryResult": undefined,
+                "previousSelectError": null,
+                "refetch": [Function],
+                "refetchIntervalId": undefined,
+                "remove": [Function],
+                "staleTimeoutId": undefined,
+                "trackedProps": Array [],
+              },
+              QueryObserver {
+                "client": [Circular],
+                "currentQuery": [Circular],
+                "currentQueryInitialState": Object {
+                  "data": undefined,
+                  "dataUpdateCount": 1,
+                  "dataUpdatedAt": 1638338756741,
+                  "error": null,
+                  "errorUpdateCount": 0,
+                  "errorUpdatedAt": 0,
+                  "fetchFailureCount": 0,
+                  "fetchMeta": null,
+                  "isFetching": false,
+                  "isInvalidated": false,
+                  "isPaused": false,
+                  "status": "success",
+                },
+                "currentResult": Object {
+                  "data": undefined,
+                  "dataUpdatedAt": 1638338756741,
+                  "error": null,
+                  "errorUpdatedAt": 0,
+                  "failureCount": 0,
+                  "isError": false,
+                  "isFetched": true,
+                  "isFetchedAfterMount": false,
+                  "isFetching": true,
+                  "isIdle": false,
+                  "isLoading": false,
+                  "isLoadingError": false,
+                  "isPlaceholderData": false,
+                  "isPreviousData": false,
+                  "isRefetchError": false,
+                  "isStale": true,
+                  "isSuccess": true,
+                  "refetch": [Function],
+                  "remove": [Function],
+                  "status": "success",
+                },
+                "currentResultOptions": Object {
+                  "_defaulted": true,
+                  "onError": [Function],
+                  "onSuccess": [Function],
+                  "optimisticResults": true,
+                  "queryFn": [Function],
+                  "queryHash": "[\\"getParkingLot\\",\\"\\",false,null,null]",
+                  "queryKey": Array [
+                    "getParkingLot",
+                    "",
+                    false,
+                    [Function],
+                    [Function],
+                  ],
+                  "retry": false,
+                },
+                "currentResultState": Object {
+                  "data": undefined,
+                  "dataUpdateCount": 1,
+                  "dataUpdatedAt": 1638338756741,
+                  "error": null,
+                  "errorUpdateCount": 0,
+                  "errorUpdatedAt": 0,
+                  "fetchFailureCount": 0,
+                  "fetchMeta": null,
+                  "isFetching": true,
+                  "isInvalidated": false,
+                  "isPaused": false,
+                  "status": "success",
+                },
+                "listeners": Array [
+                  [Function],
+                ],
+                "options": Object {
+                  "_defaulted": true,
+                  "onError": [Function],
+                  "onSuccess": [Function],
+                  "optimisticResults": true,
+                  "queryFn": [Function],
+                  "queryHash": "[\\"getParkingLot\\",\\"\\",false,null,null]",
+                  "queryKey": Array [
+                    "getParkingLot",
+                    "",
+                    false,
+                    [Function],
+                    [Function],
+                  ],
+                  "retry": false,
+                },
+                "previousQueryResult": undefined,
+                "previousSelectError": null,
+                "refetch": [Function],
+                "refetchIntervalId": undefined,
+                "remove": [Function],
+                "staleTimeoutId": undefined,
+                "trackedProps": Array [],
+              },
+            ],
+            "options": Object {
+              "_defaulted": true,
+              "onError": [Function],
+              "onSuccess": [Function],
+              "optimisticResults": true,
+              "queryFn": [Function],
+              "queryHash": "[\\"getParkingLot\\",\\"\\",false,null,null]",
+              "queryKey": Array [
+                "getParkingLot",
+                "",
+                false,
+                [Function],
+                [Function],
+              ],
+              "retry": false,
+            },
+            "promise": Promise {},
+            "queryHash": "[\\"getParkingLot\\",\\"\\",false,null,null]",
+            "queryKey": Array [
+              "getParkingLot",
+              "",
+              false,
+              [Function],
+              [Function],
+            ],
+            "retryer": Retryer {
+              "cancel": [Function],
+              "cancelRetry": [Function],
+              "continue": [Function],
+              "failureCount": 0,
+              "isPaused": false,
+              "isResolved": false,
+              "isTransportCancelable": false,
+              "promise": Promise {},
+            },
+            "revertState": Object {
+              "data": undefined,
+              "dataUpdateCount": 1,
+              "dataUpdatedAt": 1638338756741,
+              "error": null,
+              "errorUpdateCount": 0,
+              "errorUpdatedAt": 0,
+              "fetchFailureCount": 0,
+              "fetchMeta": null,
+              "isFetching": false,
+              "isInvalidated": false,
+              "isPaused": false,
+              "status": "success",
+            },
+            "state": Object {
+              "data": undefined,
+              "dataUpdateCount": 1,
+              "dataUpdatedAt": 1638338756741,
+              "error": null,
+              "errorUpdateCount": 0,
+              "errorUpdatedAt": 0,
+              "fetchFailureCount": 0,
+              "fetchMeta": null,
+              "isFetching": true,
+              "isInvalidated": false,
+              "isPaused": false,
+              "status": "success",
+            },
+          },
+          Query {
+            "cache": [Circular],
+            "cacheTime": 300000,
+            "defaultOptions": undefined,
+            "gcTimeout": undefined,
+            "initialState": Object {
+              "data": undefined,
+              "dataUpdateCount": 0,
+              "dataUpdatedAt": 0,
+              "error": null,
+              "errorUpdateCount": 0,
+              "errorUpdatedAt": 0,
+              "fetchFailureCount": 0,
+              "fetchMeta": null,
+              "isFetching": false,
+              "isInvalidated": false,
+              "isPaused": false,
+              "status": "idle",
+            },
+            "observers": Array [
+              QueryObserver {
+                "client": [Circular],
+                "currentQuery": [Circular],
+                "currentQueryInitialState": Object {
+                  "data": undefined,
+                  "dataUpdateCount": 0,
+                  "dataUpdatedAt": 0,
+                  "error": null,
+                  "errorUpdateCount": 0,
+                  "errorUpdatedAt": 0,
+                  "fetchFailureCount": 0,
+                  "fetchMeta": null,
+                  "isFetching": false,
+                  "isInvalidated": false,
+                  "isPaused": false,
+                  "status": "idle",
+                },
+                "currentResult": Object {
+                  "data": undefined,
+                  "dataUpdatedAt": 1638338756741,
+                  "error": null,
+                  "errorUpdatedAt": 0,
+                  "failureCount": 0,
+                  "isError": false,
+                  "isFetched": true,
+                  "isFetchedAfterMount": true,
+                  "isFetching": true,
+                  "isIdle": false,
+                  "isLoading": false,
+                  "isLoadingError": false,
+                  "isPlaceholderData": false,
+                  "isPreviousData": false,
+                  "isRefetchError": false,
+                  "isStale": true,
+                  "isSuccess": true,
+                  "refetch": [Function],
+                  "remove": [Function],
+                  "status": "success",
+                },
+                "currentResultOptions": Object {
+                  "_defaulted": true,
+                  "optimisticResults": true,
+                  "queryFn": [Function],
+                  "queryHash": "[\\"formattedAddress\\",\\"\\"]",
+                  "queryKey": Array [
+                    "formattedAddress",
+                    "",
+                  ],
+                },
+                "currentResultState": Object {
+                  "data": undefined,
+                  "dataUpdateCount": 1,
+                  "dataUpdatedAt": 1638338756741,
+                  "error": null,
+                  "errorUpdateCount": 0,
+                  "errorUpdatedAt": 0,
+                  "fetchFailureCount": 0,
+                  "fetchMeta": null,
+                  "isFetching": true,
+                  "isInvalidated": false,
+                  "isPaused": false,
+                  "status": "success",
+                },
+                "listeners": Array [
+                  [Function],
+                ],
+                "options": Object {
+                  "_defaulted": true,
+                  "optimisticResults": true,
+                  "queryFn": [Function],
+                  "queryHash": "[\\"formattedAddress\\",\\"\\"]",
+                  "queryKey": Array [
+                    "formattedAddress",
+                    "",
+                  ],
+                },
+                "previousQueryResult": undefined,
+                "previousSelectError": null,
+                "refetch": [Function],
+                "refetchIntervalId": undefined,
+                "remove": [Function],
+                "staleTimeoutId": undefined,
+                "trackedProps": Array [],
+              },
+              QueryObserver {
+                "client": [Circular],
+                "currentQuery": [Circular],
+                "currentQueryInitialState": Object {
+                  "data": undefined,
+                  "dataUpdateCount": 1,
+                  "dataUpdatedAt": 1638338756741,
+                  "error": null,
+                  "errorUpdateCount": 0,
+                  "errorUpdatedAt": 0,
+                  "fetchFailureCount": 0,
+                  "fetchMeta": null,
+                  "isFetching": false,
+                  "isInvalidated": false,
+                  "isPaused": false,
+                  "status": "success",
+                },
+                "currentResult": Object {
+                  "data": undefined,
+                  "dataUpdatedAt": 1638338756741,
+                  "error": null,
+                  "errorUpdatedAt": 0,
+                  "failureCount": 0,
+                  "isError": false,
+                  "isFetched": true,
+                  "isFetchedAfterMount": false,
+                  "isFetching": true,
+                  "isIdle": false,
+                  "isLoading": false,
+                  "isLoadingError": false,
+                  "isPlaceholderData": false,
+                  "isPreviousData": false,
+                  "isRefetchError": false,
+                  "isStale": true,
+                  "isSuccess": true,
+                  "refetch": [Function],
+                  "remove": [Function],
+                  "status": "success",
+                },
+                "currentResultOptions": Object {
+                  "_defaulted": true,
+                  "optimisticResults": true,
+                  "queryFn": [Function],
+                  "queryHash": "[\\"formattedAddress\\",\\"\\"]",
+                  "queryKey": Array [
+                    "formattedAddress",
+                    "",
+                  ],
+                },
+                "currentResultState": Object {
+                  "data": undefined,
+                  "dataUpdateCount": 1,
+                  "dataUpdatedAt": 1638338756741,
+                  "error": null,
+                  "errorUpdateCount": 0,
+                  "errorUpdatedAt": 0,
+                  "fetchFailureCount": 0,
+                  "fetchMeta": null,
+                  "isFetching": true,
+                  "isInvalidated": false,
+                  "isPaused": false,
+                  "status": "success",
+                },
+                "listeners": Array [
+                  [Function],
+                ],
+                "options": Object {
+                  "_defaulted": true,
+                  "optimisticResults": true,
+                  "queryFn": [Function],
+                  "queryHash": "[\\"formattedAddress\\",\\"\\"]",
+                  "queryKey": Array [
+                    "formattedAddress",
+                    "",
+                  ],
+                },
+                "previousQueryResult": undefined,
+                "previousSelectError": null,
+                "refetch": [Function],
+                "refetchIntervalId": undefined,
+                "remove": [Function],
+                "staleTimeoutId": undefined,
+                "trackedProps": Array [],
+              },
+            ],
+            "options": Object {
+              "_defaulted": true,
+              "optimisticResults": true,
+              "queryFn": [Function],
+              "queryHash": "[\\"formattedAddress\\",\\"\\"]",
+              "queryKey": Array [
+                "formattedAddress",
+                "",
+              ],
+            },
+            "promise": Promise {},
+            "queryHash": "[\\"formattedAddress\\",\\"\\"]",
+            "queryKey": Array [
+              "formattedAddress",
+              "",
+            ],
+            "retryer": Retryer {
+              "cancel": [Function],
+              "cancelRetry": [Function],
+              "continue": [Function],
+              "failureCount": 0,
+              "isPaused": false,
+              "isResolved": false,
+              "isTransportCancelable": false,
+              "promise": Promise {},
+            },
+            "revertState": Object {
+              "data": undefined,
+              "dataUpdateCount": 1,
+              "dataUpdatedAt": 1638338756741,
+              "error": null,
+              "errorUpdateCount": 0,
+              "errorUpdatedAt": 0,
+              "fetchFailureCount": 0,
+              "fetchMeta": null,
+              "isFetching": false,
+              "isInvalidated": false,
+              "isPaused": false,
+              "status": "success",
+            },
+            "state": Object {
+              "data": undefined,
+              "dataUpdateCount": 1,
+              "dataUpdatedAt": 1638338756741,
+              "error": null,
+              "errorUpdateCount": 0,
+              "errorUpdatedAt": 0,
+              "fetchFailureCount": 0,
+              "fetchMeta": null,
+              "isFetching": true,
+              "isInvalidated": false,
+              "isPaused": false,
+              "status": "success",
+            },
+          },
+          Query {
+            "cache": [Circular],
+            "cacheTime": 300000,
+            "defaultOptions": undefined,
+            "gcTimeout": undefined,
+            "initialState": Object {
+              "data": undefined,
+              "dataUpdateCount": 0,
+              "dataUpdatedAt": 0,
+              "error": null,
+              "errorUpdateCount": 0,
+              "errorUpdatedAt": 0,
+              "fetchFailureCount": 0,
+              "fetchMeta": null,
+              "isFetching": false,
+              "isInvalidated": false,
+              "isPaused": false,
+              "status": "idle",
+            },
+            "observers": Array [
+              QueryObserver {
+                "client": [Circular],
+                "currentQuery": [Circular],
+                "currentQueryInitialState": Object {
+                  "data": undefined,
+                  "dataUpdateCount": 0,
+                  "dataUpdatedAt": 0,
+                  "error": null,
+                  "errorUpdateCount": 0,
+                  "errorUpdatedAt": 0,
+                  "fetchFailureCount": 0,
+                  "fetchMeta": null,
+                  "isFetching": false,
+                  "isInvalidated": false,
+                  "isPaused": false,
+                  "status": "idle",
+                },
+                "currentResult": Object {
+                  "data": undefined,
                   "dataUpdatedAt": 1638338756741,
                   "error": null,
                   "errorUpdatedAt": 0,
@@ -24765,9 +25752,12 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                       "orderScheduleDel": Array [
                         Object {
                           "delFreq": "",
+                          "deliveryDayId": null,
                           "endTime": "",
                           "fromDate": null,
+                          "isPrimary": "Y",
                           "productDelDays": Object {
+                            "deliveryDayWeekId": null,
                             "label": "",
                             "value": "",
                           },
@@ -24830,9 +25820,12 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                       "orderScheduleDel": Array [
                         Object {
                           "delFreq": "",
+                          "deliveryDayId": null,
                           "endTime": "",
                           "fromDate": null,
+                          "isPrimary": "Y",
                           "productDelDays": Object {
+                            "deliveryDayWeekId": null,
                             "label": "",
                             "value": "",
                           },
@@ -25159,7 +26152,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                       <SingleSelect
                         error={false}
                         id="productDelFreq"
-                        isDisabled={true}
+                        isDisabled={false}
                         items={Array []}
                         label="PRODUCT DELIVERY FREQUENCY"
                         name="productDelFreq"
@@ -25190,16 +26183,6 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                       >
                         Order Schedule Delivery info (Max 10)
                       </ForwardRef(Typography)>
-                    </ForwardRef(Grid)>
-                    <ForwardRef(Grid)
-                      item={true}
-                      mb={2}
-                      md={12}
-                      mt={1}
-                    >
-                      <ForwardRef(Divider)
-                        className="field-divider"
-                      />
                     </ForwardRef(Grid)>
                     <FormikConnect(FieldArrayInner)
                       name="orderScheduleDel"
@@ -25290,9 +26273,12 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                           "orderScheduleDel": Array [
                             Object {
                               "delFreq": "",
+                              "deliveryDayId": null,
                               "endTime": "",
                               "fromDate": null,
+                              "isPrimary": "Y",
                               "productDelDays": Object {
+                                "deliveryDayWeekId": null,
                                 "label": "",
                                 "value": "",
                               },
@@ -25355,9 +26341,12 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                           "orderScheduleDel": Array [
                             Object {
                               "delFreq": "",
+                              "deliveryDayId": null,
                               "endTime": "",
                               "fromDate": null,
+                              "isPrimary": "Y",
                               "productDelDays": Object {
+                                "deliveryDayWeekId": null,
                                 "label": "",
                                 "value": "",
                               },
@@ -25684,7 +26673,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                           <SingleSelect
                             error={false}
                             id="productDelFreq"
-                            isDisabled={true}
+                            isDisabled={false}
                             items={Array []}
                             label="PRODUCT DELIVERY FREQUENCY"
                             name="productDelFreq"
@@ -25715,16 +26704,6 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                           >
                             Order Schedule Delivery info (Max 10)
                           </ForwardRef(Typography)>
-                        </ForwardRef(Grid)>
-                        <ForwardRef(Grid)
-                          item={true}
-                          mb={2}
-                          md={12}
-                          mt={1}
-                        >
-                          <ForwardRef(Divider)
-                            className="field-divider"
-                          />
                         </ForwardRef(Grid)>
                         <FormikConnect(FieldArrayInner)
                           name="orderScheduleDel"
@@ -26071,7 +27050,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                               <SingleSelect
                                 error={false}
                                 id="productDelFreq"
-                                isDisabled={true}
+                                isDisabled={false}
                                 items={Array []}
                                 label="PRODUCT DELIVERY FREQUENCY"
                                 name="productDelFreq"
@@ -26102,16 +27081,6 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                               >
                                 Order Schedule Delivery info (Max 10)
                               </ForwardRef(Typography)>
-                            </ForwardRef(Grid)>,
-                            <ForwardRef(Grid)
-                              item={true}
-                              mb={2}
-                              md={12}
-                              mt={1}
-                            >
-                              <ForwardRef(Divider)
-                                className="field-divider"
-                              />
                             </ForwardRef(Grid)>,
                             <FormikConnect(FieldArrayInner)
                               name="orderScheduleDel"
@@ -32274,7 +33243,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                 "children": <SingleSelect
                                   error={false}
                                   id="productDelFreq"
-                                  isDisabled={true}
+                                  isDisabled={false}
                                   items={Array []}
                                   label="PRODUCT DELIVERY FREQUENCY"
                                   name="productDelFreq"
@@ -32321,7 +33290,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                               <SingleSelect
                                 error={false}
                                 id="productDelFreq"
-                                isDisabled={true}
+                                isDisabled={false}
                                 items={Array []}
                                 label="PRODUCT DELIVERY FREQUENCY"
                                 name="productDelFreq"
@@ -32377,7 +33346,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                               }
                                             }
                                             inputId="productDelFreq"
-                                            isDisabled={true}
+                                            isDisabled={false}
                                             isSearchable={false}
                                             name="productDelFreq"
                                             onBlur={[Function]}
@@ -32580,7 +33549,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                           }
                                         }
                                         inputId="productDelFreq"
-                                        isDisabled={true}
+                                        isDisabled={false}
                                         isSearchable={false}
                                         name="productDelFreq"
                                         onBlur={[Function]}
@@ -32614,7 +33583,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                           getOptionValue={[Function]}
                                           inputId="productDelFreq"
                                           inputValue=""
-                                          isDisabled={true}
+                                          isDisabled={false}
                                           isLoading={false}
                                           isMulti={false}
                                           isOptionDisabled={[Function]}
@@ -32659,7 +33628,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                 "onKeyDown": [Function],
                                               }
                                             }
-                                            isDisabled={true}
+                                            isDisabled={false}
                                             isFocused={false}
                                             isMulti={false}
                                             isRtl={false}
@@ -32689,7 +33658,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                 "getOptionValue": [Function],
                                                 "inputId": "productDelFreq",
                                                 "inputValue": "",
-                                                "isDisabled": true,
+                                                "isDisabled": false,
                                                 "isLoading": false,
                                                 "isMulti": false,
                                                 "isOptionDisabled": [Function],
@@ -32756,20 +33725,20 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                             <EmotionCssPropInternal
                                               __EMOTION_LABEL_PLEASE_DO_NOT_USE__="SelectContainer"
                                               __EMOTION_TYPE_PLEASE_DO_NOT_USE__="div"
-                                              className="react-select-container react-select--is-disabled"
+                                              className="react-select-container"
                                               css={
                                                 Object {
                                                   "boxSizing": "border-box",
                                                   "direction": undefined,
                                                   "label": "container",
-                                                  "pointerEvents": "none",
+                                                  "pointerEvents": undefined,
                                                   "position": "relative",
                                                 }
                                               }
                                               onKeyDown={[Function]}
                                             >
                                               <div
-                                                className="react-select-container react-select--is-disabled css-3iigni-container"
+                                                className="react-select-container css-b62m3t-container"
                                                 onKeyDown={[Function]}
                                               >
                                                 <LiveRegion
@@ -32811,7 +33780,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                       "getOptionValue": [Function],
                                                       "inputId": "productDelFreq",
                                                       "inputValue": "",
-                                                      "isDisabled": true,
+                                                      "isDisabled": false,
                                                       "isLoading": false,
                                                       "isMulti": false,
                                                       "isOptionDisabled": [Function],
@@ -32940,7 +33909,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                     }
                                                   }
                                                   innerRef={[Function]}
-                                                  isDisabled={true}
+                                                  isDisabled={false}
                                                   isFocused={false}
                                                   isMulti={false}
                                                   isRtl={false}
@@ -32971,7 +33940,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                       "getOptionValue": [Function],
                                                       "inputId": "productDelFreq",
                                                       "inputValue": "",
-                                                      "isDisabled": true,
+                                                      "isDisabled": false,
                                                       "isLoading": false,
                                                       "isMulti": false,
                                                       "isOptionDisabled": [Function],
@@ -33038,15 +34007,15 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                   <EmotionCssPropInternal
                                                     __EMOTION_LABEL_PLEASE_DO_NOT_USE__="Control"
                                                     __EMOTION_TYPE_PLEASE_DO_NOT_USE__="div"
-                                                    className="react-select__control react-select__control--is-disabled"
+                                                    className="react-select__control"
                                                     css={
                                                       Object {
                                                         "&:hover": Object {
                                                           "borderColor": "hsl(0, 0%, 70%)",
                                                         },
                                                         "alignItems": "center",
-                                                        "backgroundColor": "hsl(0, 0%, 95%)",
-                                                        "borderColor": "hsl(0, 0%, 90%)",
+                                                        "backgroundColor": "hsl(0, 0%, 100%)",
+                                                        "borderColor": "hsl(0, 0%, 80%)",
                                                         "borderRadius": 4,
                                                         "borderStyle": "solid",
                                                         "borderWidth": 1,
@@ -33067,7 +34036,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                     onTouchEnd={[Function]}
                                                   >
                                                     <div
-                                                      className="react-select__control react-select__control--is-disabled css-1insrsq-control"
+                                                      className="react-select__control css-1s2u09g-control"
                                                       onMouseDown={[Function]}
                                                       onTouchEnd={[Function]}
                                                     >
@@ -33077,7 +34046,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                         getStyles={[Function]}
                                                         getValue={[Function]}
                                                         hasValue={false}
-                                                        isDisabled={true}
+                                                        isDisabled={false}
                                                         isMulti={false}
                                                         isRtl={false}
                                                         options={Array []}
@@ -33106,7 +34075,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                             "getOptionValue": [Function],
                                                             "inputId": "productDelFreq",
                                                             "inputValue": "",
-                                                            "isDisabled": true,
+                                                            "isDisabled": false,
                                                             "isLoading": false,
                                                             "isMulti": false,
                                                             "isOptionDisabled": [Function],
@@ -33202,7 +34171,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                                   "id": "react-select-8-placeholder",
                                                                 }
                                                               }
-                                                              isDisabled={true}
+                                                              isDisabled={false}
                                                               isFocused={false}
                                                               isMulti={false}
                                                               isRtl={false}
@@ -33233,7 +34202,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                                   "getOptionValue": [Function],
                                                                   "inputId": "productDelFreq",
                                                                   "inputValue": "",
-                                                                  "isDisabled": true,
+                                                                  "isDisabled": false,
                                                                   "isLoading": false,
                                                                   "isMulti": false,
                                                                   "isOptionDisabled": [Function],
@@ -33329,7 +34298,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                               aria-haspopup={true}
                                                               aria-owns="react-select-8-listbox"
                                                               aria-readonly={true}
-                                                              disabled={true}
+                                                              disabled={false}
                                                               id="productDelFreq"
                                                               innerRef={[Function]}
                                                               inputMode="none"
@@ -33359,7 +34328,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                                     "toString": [Function],
                                                                   }
                                                                 }
-                                                                disabled={true}
+                                                                disabled={false}
                                                                 id="productDelFreq"
                                                                 inputMode="none"
                                                                 onBlur={[Function]}
@@ -33378,7 +34347,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                                   aria-owns="react-select-8-listbox"
                                                                   aria-readonly={true}
                                                                   className="css-mohuvp-dummyInput-DummyInput"
-                                                                  disabled={true}
+                                                                  disabled={false}
                                                                   id="productDelFreq"
                                                                   inputMode="none"
                                                                   onBlur={[Function]}
@@ -33399,7 +34368,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                         getStyles={[Function]}
                                                         getValue={[Function]}
                                                         hasValue={false}
-                                                        isDisabled={true}
+                                                        isDisabled={false}
                                                         isMulti={false}
                                                         isRtl={false}
                                                         options={Array []}
@@ -33428,7 +34397,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                             "getOptionValue": [Function],
                                                             "inputId": "productDelFreq",
                                                             "inputValue": "",
-                                                            "isDisabled": true,
+                                                            "isDisabled": false,
                                                             "isLoading": false,
                                                             "isMulti": false,
                                                             "isOptionDisabled": [Function],
@@ -33515,7 +34484,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                               getStyles={[Function]}
                                                               getValue={[Function]}
                                                               hasValue={false}
-                                                              isDisabled={true}
+                                                              isDisabled={false}
                                                               isFocused={false}
                                                               isMulti={false}
                                                               isRtl={false}
@@ -33545,7 +34514,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                                   "getOptionValue": [Function],
                                                                   "inputId": "productDelFreq",
                                                                   "inputValue": "",
-                                                                  "isDisabled": true,
+                                                                  "isDisabled": false,
                                                                   "isLoading": false,
                                                                   "isMulti": false,
                                                                   "isOptionDisabled": [Function],
@@ -33622,7 +34591,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                                   "onTouchEnd": [Function],
                                                                 }
                                                               }
-                                                              isDisabled={true}
+                                                              isDisabled={false}
                                                               isFocused={false}
                                                               isMulti={false}
                                                               isRtl={false}
@@ -33652,7 +34621,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                                   "getOptionValue": [Function],
                                                                   "inputId": "productDelFreq",
                                                                   "inputValue": "",
-                                                                  "isDisabled": true,
+                                                                  "isDisabled": false,
                                                                   "isLoading": false,
                                                                   "isMulti": false,
                                                                   "isOptionDisabled": [Function],
@@ -33729,7 +34698,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                                     "onTouchEnd": [Function],
                                                                   }
                                                                 }
-                                                                isDisabled={true}
+                                                                isDisabled={false}
                                                                 isFocused={false}
                                                                 isMulti={false}
                                                                 isRtl={false}
@@ -33759,7 +34728,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                                     "getOptionValue": [Function],
                                                                     "inputId": "productDelFreq",
                                                                     "inputValue": "",
-                                                                    "isDisabled": true,
+                                                                    "isDisabled": false,
                                                                     "isLoading": false,
                                                                     "isMulti": false,
                                                                     "isOptionDisabled": [Function],
@@ -33876,6 +34845,11 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                     </div>
                                                   </EmotionCssPropInternal>
                                                 </Control>
+                                                <input
+                                                  name="productDelFreq"
+                                                  type="hidden"
+                                                  value=""
+                                                />
                                               </div>
                                             </EmotionCssPropInternal>
                                           </SelectContainer>
@@ -33994,77 +34968,6 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                             </div>
                           </MuiGridRoot>
                         </ForwardRef(Grid)>
-                        <ForwardRef(Grid)
-                          item={true}
-                          mb={2}
-                          md={12}
-                          mt={1}
-                        >
-                          <MuiGridRoot
-                            as="div"
-                            className="MuiGrid-root MuiGrid-item MuiGrid-grid-md-12"
-                            ownerState={
-                              Object {
-                                "children": <ForwardRef(Divider)
-                                  className="field-divider"
-                                />,
-                                "columnSpacing": 0,
-                                "columns": 12,
-                                "container": false,
-                                "direction": "row",
-                                "item": true,
-                                "lg": false,
-                                "md": 12,
-                                "rowSpacing": 0,
-                                "sm": false,
-                                "sx": Object {
-                                  "mb": 2,
-                                  "mt": 1,
-                                },
-                                "wrap": "wrap",
-                                "xl": false,
-                                "xs": false,
-                                "zeroMinWidth": false,
-                              }
-                            }
-                            sx={
-                              Object {
-                                "mb": 2,
-                                "mt": 1,
-                              }
-                            }
-                          >
-                            <div
-                              className="MuiGrid-root MuiGrid-item MuiGrid-grid-md-12 css-1jqgye0-MuiGrid-root"
-                            >
-                              <ForwardRef(Divider)
-                                className="field-divider"
-                              >
-                                <MuiDividerRoot
-                                  as="hr"
-                                  className="MuiDivider-root MuiDivider-fullWidth field-divider"
-                                  ownerState={
-                                    Object {
-                                      "absolute": false,
-                                      "className": "field-divider",
-                                      "component": "hr",
-                                      "flexItem": false,
-                                      "light": false,
-                                      "orientation": "horizontal",
-                                      "role": undefined,
-                                      "textAlign": "center",
-                                      "variant": "fullWidth",
-                                    }
-                                  }
-                                >
-                                  <hr
-                                    className="MuiDivider-root MuiDivider-fullWidth field-divider css-9mgopn-MuiDivider-root"
-                                  />
-                                </MuiDividerRoot>
-                              </ForwardRef(Divider)>
-                            </div>
-                          </MuiGridRoot>
-                        </ForwardRef(Grid)>
                         <FormikConnect(FieldArrayInner)
                           name="orderScheduleDel"
                           render={[Function]}
@@ -34103,9 +35006,12 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                   "orderScheduleDel": Array [
                                     Object {
                                       "delFreq": "",
+                                      "deliveryDayId": null,
                                       "endTime": "",
                                       "fromDate": null,
+                                      "isPrimary": "Y",
                                       "productDelDays": Object {
+                                        "deliveryDayWeekId": null,
                                         "label": "",
                                         "value": "",
                                       },
@@ -34168,9 +35074,12 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                   "orderScheduleDel": Array [
                                     Object {
                                       "delFreq": "",
+                                      "deliveryDayId": null,
                                       "endTime": "",
                                       "fromDate": null,
+                                      "isPrimary": "Y",
                                       "productDelDays": Object {
+                                        "deliveryDayWeekId": null,
                                         "label": "",
                                         "value": "",
                                       },
@@ -34196,6 +35105,77 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                             render={[Function]}
                             validateOnChange={true}
                           >
+                            <ForwardRef(Grid)
+                              item={true}
+                              mb={2}
+                              md={12}
+                              mt={1}
+                            >
+                              <MuiGridRoot
+                                as="div"
+                                className="MuiGrid-root MuiGrid-item MuiGrid-grid-md-12"
+                                ownerState={
+                                  Object {
+                                    "children": <ForwardRef(Divider)
+                                      className="field-divider"
+                                    />,
+                                    "columnSpacing": 0,
+                                    "columns": 12,
+                                    "container": false,
+                                    "direction": "row",
+                                    "item": true,
+                                    "lg": false,
+                                    "md": 12,
+                                    "rowSpacing": 0,
+                                    "sm": false,
+                                    "sx": Object {
+                                      "mb": 2,
+                                      "mt": 1,
+                                    },
+                                    "wrap": "wrap",
+                                    "xl": false,
+                                    "xs": false,
+                                    "zeroMinWidth": false,
+                                  }
+                                }
+                                sx={
+                                  Object {
+                                    "mb": 2,
+                                    "mt": 1,
+                                  }
+                                }
+                              >
+                                <div
+                                  className="MuiGrid-root MuiGrid-item MuiGrid-grid-md-12 css-1jqgye0-MuiGrid-root"
+                                >
+                                  <ForwardRef(Divider)
+                                    className="field-divider"
+                                  >
+                                    <MuiDividerRoot
+                                      as="hr"
+                                      className="MuiDivider-root MuiDivider-fullWidth field-divider"
+                                      ownerState={
+                                        Object {
+                                          "absolute": false,
+                                          "className": "field-divider",
+                                          "component": "hr",
+                                          "flexItem": false,
+                                          "light": false,
+                                          "orientation": "horizontal",
+                                          "role": undefined,
+                                          "textAlign": "center",
+                                          "variant": "fullWidth",
+                                        }
+                                      }
+                                    >
+                                      <hr
+                                        className="MuiDivider-root MuiDivider-fullWidth field-divider css-9mgopn-MuiDivider-root"
+                                      />
+                                    </MuiDividerRoot>
+                                  </ForwardRef(Divider)>
+                                </div>
+                              </MuiGridRoot>
+                            </ForwardRef(Grid)>
                             <ForwardRef(Grid)
                               container={true}
                               key="0"
@@ -38926,21 +39906,24 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                       className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-6 deliveryDays"
                                       ownerState={
                                         Object {
-                                          "children": <MultiSelect
-                                            disabled={true}
-                                            error={false}
-                                            id="orderScheduleDel[0].productDelDaysMulti"
-                                            items={Array []}
-                                            label="SELECT DAYS TO DELIVER PRODUCT"
-                                            loadingMessage="Loading..."
-                                            name="orderScheduleDel[0].productDelDaysMulti"
-                                            noOptionsMessage="No Options found"
-                                            onBlur={[Function]}
-                                            onChange={[Function]}
-                                            placeholder="Select Multiple Days"
-                                            required={false}
-                                            value={Array []}
-                                          />,
+                                          "children": Array [
+                                            <MultiSelect
+                                              disabled={true}
+                                              error={false}
+                                              id="orderScheduleDel[0].productDelDaysMulti"
+                                              items={Array []}
+                                              label="SELECT DAYS TO DELIVER PRODUCT"
+                                              loadingMessage="Loading..."
+                                              name="orderScheduleDel[0].productDelDaysMulti"
+                                              noOptionsMessage="No Options found"
+                                              onBlur={[Function]}
+                                              onChange={[Function]}
+                                              placeholder="Select Multiple Days"
+                                              required={false}
+                                              value={Array []}
+                                            />,
+                                            false,
+                                          ],
                                           "className": "deliveryDays",
                                           "columnSpacing": 0,
                                           "columns": 12,
@@ -41830,9 +42813,12 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                   "orderScheduleDel": Array [
                                     Object {
                                       "delFreq": "",
+                                      "deliveryDayId": null,
                                       "endTime": "",
                                       "fromDate": null,
+                                      "isPrimary": "Y",
                                       "productDelDays": Object {
+                                        "deliveryDayWeekId": null,
                                         "label": "",
                                         "value": "",
                                       },
@@ -41895,9 +42881,12 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                   "orderScheduleDel": Array [
                                     Object {
                                       "delFreq": "",
+                                      "deliveryDayId": null,
                                       "endTime": "",
                                       "fromDate": null,
+                                      "isPrimary": "Y",
                                       "productDelDays": Object {
+                                        "deliveryDayWeekId": null,
                                         "label": "",
                                         "value": "",
                                       },
