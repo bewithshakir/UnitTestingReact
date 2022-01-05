@@ -1,59 +1,29 @@
 import { useTranslation } from 'react-i18next';
-import { DeleteIcon, ExportIcon, ImportIcon } from '../assets/icons';
 import { headerObj } from './../components/UIComponents/DataGird/grid.component';
 import { ExpireWalletIcon, PositiveCricleIcon } from './../assets/icons';
+import { AssetManagement } from '../pages/AssetManagement/config';
+
+const { MassActionOptions, RowActionsOptions, DataGridFields } = AssetManagement.LandingPage;
 
 export default class AssetManagementModel {
 
-
-    MASS_ACTION_TYPES = {
-        IMPORT: 'import',
-        EXPORT: 'export',
-        DELETE: 'remove',
-    };
-    massActions () {
+    massActions() {
         const { t } = useTranslation();
-        return [
-            {
-                label: t("menus.actions.import data"),
-                icon: ImportIcon,
-                action: this.MASS_ACTION_TYPES.IMPORT
-            },
-            {
-                label: t("menus.actions.export data"),
-                icon: ExportIcon,
-                action: this.MASS_ACTION_TYPES.EXPORT
-            },
-            {
-                label: t("menus.actions.delete"),
-                icon: DeleteIcon,
-                action: this.MASS_ACTION_TYPES.DELETE
-            },
-        ];
+        return MassActionOptions.map(actionItem => ({ ...actionItem, label: t(actionItem.label) }));
     }
 
-    ACTION_TYPES = {
-        EDIT: 'edit',
-        DELETE: 'delete',
-        CONTACT_DETAILS: 'contact details'
-    };
-
-    rowActions () {
+    rowActions() {
         const { t } = useTranslation();
-        return [
-            {
-                label: t("menus.data-grid-actions.edit"),
-                action: this.ACTION_TYPES.EDIT
-            }
-        ];
+        return RowActionsOptions.map(actionItem => ({ ...actionItem, label: t(actionItem.label) }));
     }
 
-    fieldsToDisplay (): headerObj[] {
+    fieldsToDisplay(): headerObj[] {
+        const { ASSET_TYPE, STATUS } = DataGridFields;
         return [
-            { field: "assetNm", label: "ASSET TYPE", type: 'text', align: 'left', sortable: true },
+            { field: ASSET_TYPE.field, label: ASSET_TYPE.label, type: 'text', align: 'left', sortable: true },
             {
-                field: "activeInactiveInd",
-                label: "STATUS",
+                field: STATUS.field,
+                label: STATUS.label,
                 type: 'status',
                 align: 'left',
                 showIconLast: false,
@@ -70,11 +40,11 @@ export default class AssetManagementModel {
                     }
                 ]
             },
-            { field: "", label: "", type: 'text',  align: 'left'},
-            { field: "", label: "", type: 'text',  align: 'left'},
-            { field: "", label: "", type: 'text',  align: 'left'},
-            { field: "", label: "", type: 'text',  align: 'left'}, 
-            { field: "", label: "", type: 'text',  align: 'left'}  
+            { field: "", label: "", type: 'text', align: 'left' },
+            { field: "", label: "", type: 'text', align: 'left' },
+            { field: "", label: "", type: 'text', align: 'left' },
+            { field: "", label: "", type: 'text', align: 'left' },
+            { field: "", label: "", type: 'text', align: 'left' }
         ];
     }
-} 
+}

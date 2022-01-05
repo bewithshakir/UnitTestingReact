@@ -274,7 +274,7 @@
     "asset": "Asset Type",
     "sortBy": {
       "payment in progress": "Payment In Progress",
-      "recently added lots": "Recently Added Lots"
+      "recently added asset": "Recently Added Asset"
     }
   }
 }

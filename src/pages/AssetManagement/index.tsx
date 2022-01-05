@@ -13,7 +13,7 @@ import AssetManagementModel from '../../models/AssetManagementModel';
 import GridComponent from "../../components/UIComponents/DataGird/grid.component";
 import { assetManagementListSet } from './queries';
 import { DataGridActionsMenuOption } from '../../components/UIComponents/Menu/DataGridActionsMenu.component';
-import { sortByOptions, filterByFields } from "./config";
+import { AssetManagement, MASS_ACTION_TYPES, ROW_ACTION_TYPES, SORTBY_TYPES } from './config';
 import { RightInfoPanel } from "../../components/UIComponents/RightInfoPanel/RightInfoPanel.component";
 
 const AssetManagementLandingContent = memo(() => {
@@ -24,7 +24,6 @@ const AssetManagementLandingContent = memo(() => {
     const assetObj = new AssetManagementModel();
     const massActionOptions = assetObj.massActions();
     const rowActionOptions = assetObj.rowActions();
-    const ACTION_TYPES = assetObj.ACTION_TYPES;
     const [assetList, setAssetList] = React.useState([]);
     const headCells = assetObj.fieldsToDisplay();
     const [drawerOpen, setDrawerOpen] = React.useState(false);
@@ -32,6 +31,7 @@ const AssetManagementLandingContent = memo(() => {
     const [filterData, setFilterData] = React.useState<{ [key: string]: string[] }>({});
     const [searchTerm, setSearchTerm] = React.useState("");
     const [sortOrder, setSortOrder] = React.useState<{ sortBy: string, order: string }>({ sortBy: "", order: "" });
+    const { SortByOptions, filterByFields } = AssetManagement.LandingPage;
 
     const { data, fetchNextPage, isLoading, isFetching }: any = assetManagementListSet(searchTerm, sortOrder, filterData);
 
@@ -61,10 +61,10 @@ const AssetManagementLandingContent = memo(() => {
     const onSortBySlected = (value: string) => {
         let sortOrder;
         switch (value) {
-            case "payment in progress":
+            case SORTBY_TYPES.ASSET_PAYMENT:
                 sortOrder = { sortBy: "city", order: "asc" };
                 break;
-            case "recently added lots":
+            case SORTBY_TYPES.RECENTLY_ADDED:
                 sortOrder = { sortBy: "city", order: "desc" };
                 break;
             default:
@@ -93,13 +93,13 @@ const AssetManagementLandingContent = memo(() => {
 
     const handleRowAction = (action: DataGridActionsMenuOption, row: any) => {
         switch (action.action) {
-            case ACTION_TYPES.EDIT:
+            case ROW_ACTION_TYPES.EDIT:
                 // perform action
                 break;
-            case ACTION_TYPES.DELETE:
+            case ROW_ACTION_TYPES.DELETE:
                 // perform action
                 break;
-            case ACTION_TYPES.CONTACT_DETAILS:
+            case ROW_ACTION_TYPES.CONTACT_DETAILS:
                 // perform action
                 break;
             default: return;
@@ -124,7 +124,7 @@ const AssetManagementLandingContent = memo(() => {
                         <Grid item pr={2.5}>
                             <FormControl>
                                 <SortbyMenu
-                                    options={sortByOptions.map((sortByItem) => t(sortByItem))}
+                                    options={SortByOptions.map((sortByItem) => t(sortByItem))}
                                     onSelect={(value) => onSortBySlected(value)}
                                 />
                             </FormControl>
