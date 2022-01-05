@@ -83,6 +83,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
 
     const onAddProductError = (err: any) => {
         resetFormFieldValue(false);
+        formik.setSubmitting(false);
         const { data } = err.response;
         setAPIResponse(true);
         setFormStatus({ message: data?.error?.message || formStatusProps.error.message, type: 'Error' });
@@ -109,7 +110,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
 
 
     const onGetOPISRetailSuccess = (data: any) => {
-        if (data?.data?.fuelPrice) {
+        if (data?.data?.fuelPrice !== undefined) {
             formik.setFieldValue('manualPriceAmt', data.data.fuelPrice);
             setFetchOPISRetail(false);
         }
@@ -226,8 +227,13 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
     const totalPrice = totalPricePerGallon(formik.values.manualPriceAmt, formik.values.addedPriceAmt, formik.values.discountPriceAmt, 4);
 
     const handleProductTypeChange = (fieldName: string, value: any) => {
+        if(formik.values?.pricingModel?.label === ''){
+            formik.resetForm({});
+            formik.setFieldValue(fieldName, value);
+        } else {
         formik.setFieldValue(fieldName, value);
         formik.setFieldValue('masterProductName', { label: "", value: "" });
+        }
         // if the non fuel value is selected, clear values from product names and pricing model drop downs
         if (value.label == "Non-Fuel") {
             //clear master product name drop down

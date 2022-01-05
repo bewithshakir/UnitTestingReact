@@ -1,6 +1,7 @@
 import { FormikErrors } from 'formik';
 import { Fragment } from 'react';
 import Select, { components, DropdownIndicatorProps, OptionProps } from 'react-select';
+import { Moment } from 'moment';
 import { FormHelperText, InputLabel, FormControl } from '@mui/material';
 import './SingleSelect.scss';
 import { ArrowDown, CheckedCheckboxIcon as Check, UncheckedCheckboxIcon as UnCheck } from '../../../assets/icons';
@@ -21,7 +22,7 @@ interface props {
 
     required?: boolean;
     error?: boolean;
-    helperText?: string | string[] | FormikErrors<item> | FormikErrors<item>[] | undefined;
+    helperText?: string | string[] | FormikErrors<item> | FormikErrors<item>[] | Moment | null | undefined;
     loadingMessage?: string;
     noOptionsMessage?: string;
 

@@ -1805,7 +1805,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                       id="productType"
                       isDisabled={false}
                       items={Array []}
-                      label="PRODUCT TYPE"
+                      label="addProductFormLabels.producttypelabel"
                       name="productType"
                       onBlur={[Function]}
                       onChange={[Function]}
@@ -1833,7 +1833,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                       id="masterProductName"
                       isDisabled={false}
                       items={Array []}
-                      label="Master Product Name"
+                      label="addProductFormLabels.masterproductnamelabel"
                       name="masterProductName"
                       onBlur={[Function]}
                       onChange={[Function]}
@@ -1861,7 +1861,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                       id="pricingModel"
                       isDisabled={false}
                       items={Array []}
-                      label="Pricing Model"
+                      label="addProductFormLabels.pricingmodellabel"
                       name="pricingModel"
                       onBlur={[Function]}
                       onChange={[Function]}
@@ -1910,6 +1910,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                     <Button
                       aria-label="cancel"
                       className="mr-4"
+                      disabled={true}
                       onClick={[Function]}
                       types="cancel"
                     >
@@ -2041,7 +2042,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                           id="productType"
                           isDisabled={false}
                           items={Array []}
-                          label="PRODUCT TYPE"
+                          label="addProductFormLabels.producttypelabel"
                           name="productType"
                           onBlur={[Function]}
                           onChange={[Function]}
@@ -2069,7 +2070,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                           id="masterProductName"
                           isDisabled={false}
                           items={Array []}
-                          label="Master Product Name"
+                          label="addProductFormLabels.masterproductnamelabel"
                           name="masterProductName"
                           onBlur={[Function]}
                           onChange={[Function]}
@@ -2097,7 +2098,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                           id="pricingModel"
                           isDisabled={false}
                           items={Array []}
-                          label="Pricing Model"
+                          label="addProductFormLabels.pricingmodellabel"
                           name="pricingModel"
                           onBlur={[Function]}
                           onChange={[Function]}
@@ -2726,7 +2727,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                             id="productType"
                             isDisabled={false}
                             items={Array []}
-                            label="PRODUCT TYPE"
+                            label="addProductFormLabels.producttypelabel"
                             name="productType"
                             onBlur={[Function]}
                             onChange={[Function]}
@@ -2773,7 +2774,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                           id="productType"
                           isDisabled={false}
                           items={Array []}
-                          label="PRODUCT TYPE"
+                          label="addProductFormLabels.producttypelabel"
                           name="productType"
                           onBlur={[Function]}
                           onChange={[Function]}
@@ -2796,7 +2797,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                 Object {
                                   "children": Array [
                                     <ForwardRef(InputLabel)
-                                      aria-labelledby="PRODUCT TYPE"
+                                      aria-labelledby="addProductFormLabels.producttypelabel"
                                       aria-required={true}
                                       htmlFor="productType"
                                       shrink={true}
@@ -2807,7 +2808,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                       }
                                     >
                                       <b>
-                                        PRODUCT TYPE
+                                        ADDPRODUCTFORMLABELS.PRODUCTTYPELABEL
                                         <span
                                           className="super"
                                         >
@@ -2856,7 +2857,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                 className="MuiFormControl-root select css-1nrlq1o-MuiFormControl-root"
                               >
                                 <ForwardRef(InputLabel)
-                                  aria-labelledby="PRODUCT TYPE"
+                                  aria-labelledby="addProductFormLabels.producttypelabel"
                                   aria-required={true}
                                   htmlFor="productType"
                                   shrink={true}
@@ -2867,7 +2868,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                   }
                                 >
                                   <MuiInputLabelRoot
-                                    aria-labelledby="PRODUCT TYPE"
+                                    aria-labelledby="addProductFormLabels.producttypelabel"
                                     aria-required={true}
                                     classes={
                                       Object {
@@ -2879,10 +2880,10 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                     htmlFor="productType"
                                     ownerState={
                                       Object {
-                                        "aria-labelledby": "PRODUCT TYPE",
+                                        "aria-labelledby": "addProductFormLabels.producttypelabel",
                                         "aria-required": true,
                                         "children": <b>
-                                          PRODUCT TYPE
+                                          ADDPRODUCTFORMLABELS.PRODUCTTYPELABEL
                                           <span
                                             className="super"
                                           >
@@ -2926,7 +2927,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                     }
                                   >
                                     <ForwardRef(FormLabel)
-                                      aria-labelledby="PRODUCT TYPE"
+                                      aria-labelledby="addProductFormLabels.producttypelabel"
                                       aria-required={true}
                                       className="css-1bzvmy4-MuiInputLabel-root"
                                       classes={
@@ -2944,7 +2945,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                       }
                                     >
                                       <MuiFormLabelRoot
-                                        aria-labelledby="PRODUCT TYPE"
+                                        aria-labelledby="addProductFormLabels.producttypelabel"
                                         aria-required={true}
                                         as="label"
                                         className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary css-1bzvmy4-MuiInputLabel-root"
@@ -2958,10 +2959,10 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                         htmlFor="productType"
                                         ownerState={
                                           Object {
-                                            "aria-labelledby": "PRODUCT TYPE",
+                                            "aria-labelledby": "addProductFormLabels.producttypelabel",
                                             "aria-required": true,
                                             "children": <b>
-                                              PRODUCT TYPE
+                                              ADDPRODUCTFORMLABELS.PRODUCTTYPELABEL
                                               <span
                                                 className="super"
                                               >
@@ -2994,7 +2995,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                         }
                                       >
                                         <label
-                                          aria-labelledby="PRODUCT TYPE"
+                                          aria-labelledby="addProductFormLabels.producttypelabel"
                                           aria-required={true}
                                           className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary css-1kty9di-MuiFormLabel-root-MuiInputLabel-root"
                                           data-shrink={true}
@@ -3006,7 +3007,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                           }
                                         >
                                           <b>
-                                            PRODUCT TYPE
+                                            ADDPRODUCTFORMLABELS.PRODUCTTYPELABEL
                                             <span
                                               className="super"
                                             >
@@ -4363,7 +4364,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                             id="masterProductName"
                             isDisabled={false}
                             items={Array []}
-                            label="Master Product Name"
+                            label="addProductFormLabels.masterproductnamelabel"
                             name="masterProductName"
                             onBlur={[Function]}
                             onChange={[Function]}
@@ -4410,7 +4411,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                           id="masterProductName"
                           isDisabled={false}
                           items={Array []}
-                          label="Master Product Name"
+                          label="addProductFormLabels.masterproductnamelabel"
                           name="masterProductName"
                           onBlur={[Function]}
                           onChange={[Function]}
@@ -4433,7 +4434,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                 Object {
                                   "children": Array [
                                     <ForwardRef(InputLabel)
-                                      aria-labelledby="Master Product Name"
+                                      aria-labelledby="addProductFormLabels.masterproductnamelabel"
                                       aria-required={true}
                                       htmlFor="masterProductName"
                                       shrink={true}
@@ -4444,7 +4445,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                       }
                                     >
                                       <b>
-                                        MASTER PRODUCT NAME
+                                        ADDPRODUCTFORMLABELS.MASTERPRODUCTNAMELABEL
                                         <span
                                           className="super"
                                         >
@@ -4493,7 +4494,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                 className="MuiFormControl-root select css-1nrlq1o-MuiFormControl-root"
                               >
                                 <ForwardRef(InputLabel)
-                                  aria-labelledby="Master Product Name"
+                                  aria-labelledby="addProductFormLabels.masterproductnamelabel"
                                   aria-required={true}
                                   htmlFor="masterProductName"
                                   shrink={true}
@@ -4504,7 +4505,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                   }
                                 >
                                   <MuiInputLabelRoot
-                                    aria-labelledby="Master Product Name"
+                                    aria-labelledby="addProductFormLabels.masterproductnamelabel"
                                     aria-required={true}
                                     classes={
                                       Object {
@@ -4516,10 +4517,10 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                     htmlFor="masterProductName"
                                     ownerState={
                                       Object {
-                                        "aria-labelledby": "Master Product Name",
+                                        "aria-labelledby": "addProductFormLabels.masterproductnamelabel",
                                         "aria-required": true,
                                         "children": <b>
-                                          MASTER PRODUCT NAME
+                                          ADDPRODUCTFORMLABELS.MASTERPRODUCTNAMELABEL
                                           <span
                                             className="super"
                                           >
@@ -4563,7 +4564,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                     }
                                   >
                                     <ForwardRef(FormLabel)
-                                      aria-labelledby="Master Product Name"
+                                      aria-labelledby="addProductFormLabels.masterproductnamelabel"
                                       aria-required={true}
                                       className="css-1bzvmy4-MuiInputLabel-root"
                                       classes={
@@ -4581,7 +4582,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                       }
                                     >
                                       <MuiFormLabelRoot
-                                        aria-labelledby="Master Product Name"
+                                        aria-labelledby="addProductFormLabels.masterproductnamelabel"
                                         aria-required={true}
                                         as="label"
                                         className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary css-1bzvmy4-MuiInputLabel-root"
@@ -4595,10 +4596,10 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                         htmlFor="masterProductName"
                                         ownerState={
                                           Object {
-                                            "aria-labelledby": "Master Product Name",
+                                            "aria-labelledby": "addProductFormLabels.masterproductnamelabel",
                                             "aria-required": true,
                                             "children": <b>
-                                              MASTER PRODUCT NAME
+                                              ADDPRODUCTFORMLABELS.MASTERPRODUCTNAMELABEL
                                               <span
                                                 className="super"
                                               >
@@ -4631,7 +4632,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                         }
                                       >
                                         <label
-                                          aria-labelledby="Master Product Name"
+                                          aria-labelledby="addProductFormLabels.masterproductnamelabel"
                                           aria-required={true}
                                           className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary css-1kty9di-MuiFormLabel-root-MuiInputLabel-root"
                                           data-shrink={true}
@@ -4643,7 +4644,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                           }
                                         >
                                           <b>
-                                            MASTER PRODUCT NAME
+                                            ADDPRODUCTFORMLABELS.MASTERPRODUCTNAMELABEL
                                             <span
                                               className="super"
                                             >
@@ -6000,7 +6001,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                             id="pricingModel"
                             isDisabled={false}
                             items={Array []}
-                            label="Pricing Model"
+                            label="addProductFormLabels.pricingmodellabel"
                             name="pricingModel"
                             onBlur={[Function]}
                             onChange={[Function]}
@@ -6047,7 +6048,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                           id="pricingModel"
                           isDisabled={false}
                           items={Array []}
-                          label="Pricing Model"
+                          label="addProductFormLabels.pricingmodellabel"
                           name="pricingModel"
                           onBlur={[Function]}
                           onChange={[Function]}
@@ -6070,7 +6071,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                 Object {
                                   "children": Array [
                                     <ForwardRef(InputLabel)
-                                      aria-labelledby="Pricing Model"
+                                      aria-labelledby="addProductFormLabels.pricingmodellabel"
                                       aria-required={true}
                                       htmlFor="pricingModel"
                                       shrink={true}
@@ -6081,7 +6082,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                       }
                                     >
                                       <b>
-                                        PRICING MODEL
+                                        ADDPRODUCTFORMLABELS.PRICINGMODELLABEL
                                         <span
                                           className="super"
                                         >
@@ -6130,7 +6131,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                 className="MuiFormControl-root select css-1nrlq1o-MuiFormControl-root"
                               >
                                 <ForwardRef(InputLabel)
-                                  aria-labelledby="Pricing Model"
+                                  aria-labelledby="addProductFormLabels.pricingmodellabel"
                                   aria-required={true}
                                   htmlFor="pricingModel"
                                   shrink={true}
@@ -6141,7 +6142,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                   }
                                 >
                                   <MuiInputLabelRoot
-                                    aria-labelledby="Pricing Model"
+                                    aria-labelledby="addProductFormLabels.pricingmodellabel"
                                     aria-required={true}
                                     classes={
                                       Object {
@@ -6153,10 +6154,10 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                     htmlFor="pricingModel"
                                     ownerState={
                                       Object {
-                                        "aria-labelledby": "Pricing Model",
+                                        "aria-labelledby": "addProductFormLabels.pricingmodellabel",
                                         "aria-required": true,
                                         "children": <b>
-                                          PRICING MODEL
+                                          ADDPRODUCTFORMLABELS.PRICINGMODELLABEL
                                           <span
                                             className="super"
                                           >
@@ -6200,7 +6201,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                     }
                                   >
                                     <ForwardRef(FormLabel)
-                                      aria-labelledby="Pricing Model"
+                                      aria-labelledby="addProductFormLabels.pricingmodellabel"
                                       aria-required={true}
                                       className="css-1bzvmy4-MuiInputLabel-root"
                                       classes={
@@ -6218,7 +6219,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                       }
                                     >
                                       <MuiFormLabelRoot
-                                        aria-labelledby="Pricing Model"
+                                        aria-labelledby="addProductFormLabels.pricingmodellabel"
                                         aria-required={true}
                                         as="label"
                                         className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary css-1bzvmy4-MuiInputLabel-root"
@@ -6232,10 +6233,10 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                         htmlFor="pricingModel"
                                         ownerState={
                                           Object {
-                                            "aria-labelledby": "Pricing Model",
+                                            "aria-labelledby": "addProductFormLabels.pricingmodellabel",
                                             "aria-required": true,
                                             "children": <b>
-                                              PRICING MODEL
+                                              ADDPRODUCTFORMLABELS.PRICINGMODELLABEL
                                               <span
                                                 className="super"
                                               >
@@ -6268,7 +6269,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                         }
                                       >
                                         <label
-                                          aria-labelledby="Pricing Model"
+                                          aria-labelledby="addProductFormLabels.pricingmodellabel"
                                           aria-required={true}
                                           className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary css-1kty9di-MuiFormLabel-root-MuiInputLabel-root"
                                           data-shrink={true}
@@ -6280,7 +6281,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                           }
                                         >
                                           <b>
-                                            PRICING MODEL
+                                            ADDPRODUCTFORMLABELS.PRICINGMODELLABEL
                                             <span
                                               className="super"
                                             >
@@ -7695,6 +7696,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                       <Button
                         aria-label="cancel"
                         className="mr-4"
+                        disabled={true}
                         onClick={[Function]}
                         types="cancel"
                       >
@@ -7765,6 +7767,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                             <Button
                               aria-label="cancel"
                               className="mr-4"
+                              disabled={true}
                               onClick={[Function]}
                               types="cancel"
                             >
@@ -7820,12 +7823,14 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                         <Button
                           aria-label="cancel"
                           className="mr-4"
+                          disabled={true}
                           onClick={[Function]}
                           types="cancel"
                         >
                           <WithStyles(ForwardRef(Button))
                             aria-label="cancel"
                             className="btn-cancel mr-4"
+                            disabled={true}
                             onClick={[Function]}
                             variant="contained"
                           >
@@ -7865,14 +7870,15 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                   "textSizeSmall": "MuiButton-textSizeSmall",
                                 }
                               }
+                              disabled={true}
                               onClick={[Function]}
                               variant="contained"
                             >
                               <WithStyles(ForwardRef(ButtonBase))
                                 aria-label="cancel"
-                                className="MuiButton-root MuiButton-contained btn-cancel mr-4"
+                                className="MuiButton-root MuiButton-contained btn-cancel mr-4 Mui-disabled"
                                 component="button"
-                                disabled={false}
+                                disabled={true}
                                 focusRipple={true}
                                 focusVisibleClassName="Mui-focusVisible"
                                 onClick={[Function]}
@@ -7880,7 +7886,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                               >
                                 <ForwardRef(ButtonBase)
                                   aria-label="cancel"
-                                  className="MuiButton-root MuiButton-contained btn-cancel mr-4"
+                                  className="MuiButton-root MuiButton-contained btn-cancel mr-4 Mui-disabled"
                                   classes={
                                     Object {
                                       "disabled": "Mui-disabled",
@@ -7889,7 +7895,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                     }
                                   }
                                   component="button"
-                                  disabled={false}
+                                  disabled={true}
                                   focusRipple={true}
                                   focusVisibleClassName="Mui-focusVisible"
                                   onClick={[Function]}
@@ -7897,8 +7903,8 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                 >
                                   <button
                                     aria-label="cancel"
-                                    className="MuiButtonBase-root MuiButton-root MuiButton-contained btn-cancel mr-4"
-                                    disabled={false}
+                                    className="MuiButtonBase-root MuiButton-root MuiButton-contained btn-cancel mr-4 Mui-disabled Mui-disabled"
+                                    disabled={true}
                                     onBlur={[Function]}
                                     onClick={[Function]}
                                     onDragLeave={[Function]}
@@ -7911,7 +7917,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                     onTouchEnd={[Function]}
                                     onTouchMove={[Function]}
                                     onTouchStart={[Function]}
-                                    tabIndex={0}
+                                    tabIndex={-1}
                                     type="button"
                                   >
                                     <span
@@ -7919,34 +7925,6 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing 1`
                                     >
                                       buttons.cancel
                                     </span>
-                                    <WithStyles(memo)
-                                      center={false}
-                                    >
-                                      <ForwardRef(TouchRipple)
-                                        center={false}
-                                        classes={
-                                          Object {
-                                            "child": "MuiTouchRipple-child",
-                                            "childLeaving": "MuiTouchRipple-childLeaving",
-                                            "childPulsate": "MuiTouchRipple-childPulsate",
-                                            "ripple": "MuiTouchRipple-ripple",
-                                            "ripplePulsate": "MuiTouchRipple-ripplePulsate",
-                                            "rippleVisible": "MuiTouchRipple-rippleVisible",
-                                            "root": "MuiTouchRipple-root",
-                                          }
-                                        }
-                                      >
-                                        <span
-                                          className="MuiTouchRipple-root"
-                                        >
-                                          <TransitionGroup
-                                            childFactory={[Function]}
-                                            component={null}
-                                            exit={true}
-                                          />
-                                        </span>
-                                      </ForwardRef(TouchRipple)>
-                                    </WithStyles(memo)>
                                   </button>
                                 </ForwardRef(ButtonBase)>
                               </WithStyles(ForwardRef(ButtonBase))>

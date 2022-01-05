@@ -110,9 +110,9 @@ const OPISCityLandingContent = memo(() => {
           <Grid item md={8} lg={9} display="flex" >
             <Grid item pr={2.5}>
               <Button
+                id="opisCityFilter"
                 types="filter"
                 aria-label="dafault"
-                disabled
                 onClick={openFilterPanel}
                 startIcon={<FilterIcon />}
               >
@@ -129,6 +129,7 @@ const OPISCityLandingContent = memo(() => {
             </Grid>
             <Grid item>
               <SearchInput
+                id="opisCitySearch"
                 name="searchTerm"
                 placeholder={t('taxes.opisCities.search')}
                 value={searchTerm}
