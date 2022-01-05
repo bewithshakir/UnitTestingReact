@@ -11155,6 +11155,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                     }
                                                     disabled={false}
                                                     error={false}
+                                                    id="endDate"
                                                     inputProps={
                                                       Object {
                                                         "aria-label": "Choose date",
@@ -11167,6 +11168,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                         "value": "",
                                                       }
                                                     }
+                                                    name="endDate"
                                                     onClick={[Function]}
                                                   >
                                                     <MuiTextFieldRoot
@@ -11186,6 +11188,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                           "disabled": false,
                                                           "error": false,
                                                           "fullWidth": false,
+                                                          "id": "endDate",
                                                           "inputProps": Object {
                                                             "aria-label": "Choose date",
                                                             "aria-readonly": true,
@@ -11199,6 +11202,8 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                           "inputRef": undefined,
                                                           "label": undefined,
                                                           "multiline": false,
+                                                          "name": "endDate",
+                                                          "onBlur": undefined,
                                                           "onClick": [Function],
                                                           "required": false,
                                                           "select": false,
@@ -11229,6 +11234,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                 <ForwardRef(OutlinedInput)
                                                                   autoFocus={false}
                                                                   fullWidth={false}
+                                                                  id="endDate"
                                                                   inputProps={
                                                                     Object {
                                                                       "aria-label": "Choose date",
@@ -11242,6 +11248,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                     }
                                                                   }
                                                                   multiline={false}
+                                                                  name="endDate"
                                                                   readOnly={true}
                                                                 />,
                                                                 undefined,
@@ -11268,6 +11275,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                             <ForwardRef(OutlinedInput)
                                                               autoFocus={false}
                                                               fullWidth={false}
+                                                              id="endDate"
                                                               inputProps={
                                                                 Object {
                                                                   "aria-label": "Choose date",
@@ -11281,6 +11289,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                 }
                                                               }
                                                               multiline={false}
+                                                              name="endDate"
                                                               readOnly={true}
                                                             >
                                                               <ForwardRef(InputBase)
@@ -11337,6 +11346,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                   }
                                                                 }
                                                                 fullWidth={false}
+                                                                id="endDate"
                                                                 inputComponent="input"
                                                                 inputProps={
                                                                   Object {
@@ -11351,6 +11361,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                   }
                                                                 }
                                                                 multiline={false}
+                                                                name="endDate"
                                                                 readOnly={true}
                                                                 renderSuffix={[Function]}
                                                                 type="text"
@@ -11780,7 +11791,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                       },
                                                                       "fullWidth": false,
                                                                       "hiddenLabel": false,
-                                                                      "id": undefined,
+                                                                      "id": "endDate",
                                                                       "inputComponent": "input",
                                                                       "inputProps": Object {
                                                                         "aria-label": "Choose date",
@@ -11796,7 +11807,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                       "maxRows": undefined,
                                                                       "minRows": undefined,
                                                                       "multiline": false,
-                                                                      "name": undefined,
+                                                                      "name": "endDate",
                                                                       "onBlur": undefined,
                                                                       "onChange": undefined,
                                                                       "onFocus": undefined,
@@ -12109,6 +12120,8 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                       autoFocus={false}
                                                                       className="MuiOutlinedInput-input MuiInputBase-input"
                                                                       disabled={false}
+                                                                      id="endDate"
+                                                                      name="endDate"
                                                                       onAnimationStart={[Function]}
                                                                       onBlur={[Function]}
                                                                       onChange={[Function]}
@@ -12194,7 +12207,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                           },
                                                                           "fullWidth": false,
                                                                           "hiddenLabel": false,
-                                                                          "id": undefined,
+                                                                          "id": "endDate",
                                                                           "inputComponent": "input",
                                                                           "inputProps": Object {
                                                                             "aria-label": "Choose date",
@@ -12210,7 +12223,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                           "maxRows": undefined,
                                                                           "minRows": undefined,
                                                                           "multiline": false,
-                                                                          "name": undefined,
+                                                                          "name": "endDate",
                                                                           "onBlur": undefined,
                                                                           "onChange": undefined,
                                                                           "onFocus": undefined,
@@ -12523,6 +12536,8 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                         autoFocus={false}
                                                                         className="MuiOutlinedInput-input MuiInputBase-input css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
                                                                         disabled={false}
+                                                                        id="endDate"
+                                                                        name="endDate"
                                                                         onAnimationStart={[Function]}
                                                                         onBlur={[Function]}
                                                                         onChange={[Function]}
