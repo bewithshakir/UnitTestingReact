@@ -83,10 +83,10 @@ const OPISCityLandingContent = memo(() => {
     let sortOrder;
     switch (value) {
       case SORTBY_TYPES.CITY_NAME_AZ:
-        sortOrder = { sortBy: "cityName", order: "asc" };
+        sortOrder = { sortBy: "city", order: "asc" };
         break;
       case SORTBY_TYPES.CITY_NAME_ZA:
-        sortOrder = { sortBy: "cityName", order: "desc" };
+        sortOrder = { sortBy: "city", order: "desc" };
         break;
       default:
         sortOrder = { sortBy: "", order: "" };
