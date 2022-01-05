@@ -9,7 +9,7 @@ const filterApis: { [k in filterURLKey]: string } = {
     fuelTaxFilter: '/api/tax-service/fueltax/filterData?countryCode=us',
     salesTaxFilter: 'api/tax-service/sales-tax/filterData?countryCode=us',
     parkingLotFilter: 'api/customer-service/lot/filter-options?countryCode=us',
-    opisCityFilter: 'api/opiscity-service/opiscity/filter-options?countryCode=us',
+    opisCityFilter: 'api/product-service/opis-served-city/filterData?countryCode=us',
 };
 
 const getCustomerFilterData = async (urlKey: filterURLKey) => {
