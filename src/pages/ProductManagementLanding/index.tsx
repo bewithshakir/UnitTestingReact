@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 import SearchInput from "../../components/UIComponents/SearchInput/SearchInput";
 import ActionsMenu from "../../components/UIComponents/Menu/ActionsMenu.component";
 import { Add } from "@mui/icons-material";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import ProductManagementModel from '../../models/ProductManagementModel';
 import { MASS_ACTION_TYPES, ROW_ACTION_TYPES } from './config';
 import GridComponent from "../../components/UIComponents/DataGird/grid.component";
@@ -18,7 +18,7 @@ const ProductManagementContent = memo(() => {
   const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
   setVersion("NavLinks");
   const { t } = useTranslation();
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const productObj = new ProductManagementModel();
   const headCells = productObj.fieldsToDisplay();
@@ -64,7 +64,7 @@ const ProductManagementContent = memo(() => {
     switch (action.action) {
       case ROW_ACTION_TYPES.EDIT:
         // perform action
-        history.push(`productManagement/edit/${row.productId}`);
+        navigate(`productManagement/edit/${row.productId}`);
         break;
       default: return;
     }
@@ -99,7 +99,7 @@ const ProductManagementContent = memo(() => {
               <Button
                 types="primary"
                 aria-label="primary"
-                onClick={() => history.push('/productManagement/add')}
+                onClick={() => navigate('/productManagement/add')}
                 startIcon={<Add />}
               >
                 {'ADD PRODUCT'}

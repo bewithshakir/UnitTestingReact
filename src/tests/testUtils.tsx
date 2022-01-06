@@ -17,7 +17,7 @@ export const HOCSetup = (props: any, route: any)=> {
     const queryClient = new QueryClient();
     const history = createMemoryHistory();
     if (route) {
-        history.push(route);
+        history(route);
     }
     return (
         <QueryClientProvider client={queryClient}>
@@ -30,10 +30,10 @@ export const HOCSetup = (props: any, route: any)=> {
 
 
 export const renderWithRouter = (renderComponent: any, route: any) => {
-    const history = createMemoryHistory();
+    const navigate = createMemoryHistory();
   
     if(route){
-      history.push(route);
+        navigate(route);
     }
   
     return {

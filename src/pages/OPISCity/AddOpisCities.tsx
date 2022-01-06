@@ -2,7 +2,7 @@ import { Fragment, useState, useEffect } from 'react';
 import { Box, Grid, Container, Typography } from "@mui/material";
 import { FormikProvider, useFormik } from 'formik';
 import { useTranslation } from 'react-i18next';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Input from '../../components/UIComponents/Input/Input';
 import Select from '../../components/UIComponents/Select/SingleSelect';
 import { Button } from '../../components/UIComponents/Button/Button.component';
@@ -27,7 +27,7 @@ export default function AddOpis() {
     const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
     setVersion("Breadcrumbs-Single");
     const { t } = useTranslation();
-    const history = useHistory();
+    const navigate = useNavigate();
     const [formStatus, setFormStatus] = useState<FormStatusType>({ message: '', type: '' });
     const [states, setStates] = useState([]);
     const [cities, setCities] = useState([]);
@@ -74,7 +74,7 @@ export default function AddOpis() {
         if (isFormFieldChange()) {
             showDialogBox(true);
         } else {
-            history.push('/opisCities');
+            navigate('/opisCities');
         }
     };
 

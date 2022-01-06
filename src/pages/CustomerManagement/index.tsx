@@ -10,7 +10,7 @@ import Table from "./SubTableLots";
 import { useCustomers } from "./queries";
 import SearchInput from "../../components/UIComponents/SearchInput/SearchInput";
 import { Add } from "@mui/icons-material";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { filterByFields, sortByOptions } from "./config";
 import { RightInfoPanel } from "../../components/UIComponents/RightInfoPanel/RightInfoPanel.component";
 import { Box, FormControl, Grid, Typography } from "@mui/material";
@@ -33,7 +33,7 @@ const Content: React.FC<ContentProps> = () => {
   const ACTION_TYPES = CustomerObj.ACTION_TYPES;
   const MASS_ACTION_TYPES = CustomerObj.MASS_ACTION_TYPES;
 
-  const history = useHistory();
+  const navigate = useNavigate();
   const [info, setInfo] = React.useState({});
   const [searchTerm, setSearchTerm] = React.useState("");
   const [resetTableCollaps, setResetTableCollaps] = React.useState(false);
@@ -96,7 +96,7 @@ const Content: React.FC<ContentProps> = () => {
     setDrawerOpen(false);
   };
   const navigateToAddCustomer = () => {
-    history.push("/customer/addCustomer");
+    navigate("/customer/addCustomer");
   };
   const onSortBySlected = (value: string) => {
     let sortOrder;
@@ -151,7 +151,7 @@ const Content: React.FC<ContentProps> = () => {
     switch (action.action) {
       case ACTION_TYPES.EDIT:
         // perform action
-        history.push(`/customer/viewCustomer/${row.customerId}`);
+        navigate(`/customer/viewCustomer/${row.customerId}`);
         break;
       case ACTION_TYPES.DELETE:
         // perform action

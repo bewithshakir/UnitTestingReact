@@ -5,7 +5,7 @@ import { Box, Container, FormControl, FormControlLabel, FormGroup, Grid, IconBut
 import { FieldArray, FormikProvider, useFormik } from 'formik';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from '../../../contexts/Theme/Theme.context';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { DeleteIcon, FileUploadIcon } from '../../../assets/icons';
 import { Button } from '../../../components/UIComponents/Button/Button.component';
 import Checkbox from '../../../components/UIComponents/Checkbox/Checkbox.component';
@@ -71,7 +71,7 @@ const formStatusProps: IFormStatusProps = {
 
 const AddCustomer: React.FC = () => {
     const location = useLocation();
-    const history = useHistory();
+    const navigate = useNavigate();
     const addedCustomerId = useAddedCustomerIdStore((state) => state.customerId);
     const [activeCustomerId, setActiveCustomerId] = React.useState("");
 
@@ -206,7 +206,7 @@ const AddCustomer: React.FC = () => {
         }
         setTimeout(() => {
             setAPIResponse(false);
-            history.push(`/customer/viewCustomer/${data?.data?.customer?.customerId.toString()}`);
+            navigate(`/customer/viewCustomer/${data?.data?.customer?.customerId.toString()}`);
         }, 6000);
     };
 
@@ -225,7 +225,7 @@ const AddCustomer: React.FC = () => {
         if (validFiles.length) {
             uploadFile(false, data?.data?.customer);
         }
-        history.push(`/customer/viewCustomer/${data?.data?.customer?.customerId.toString()}`);
+        navigate(`/customer/viewCustomer/${data?.data?.customer?.customerId.toString()}`);
     };
 
     const onEditCustomerError = (err: any) => {
@@ -451,7 +451,7 @@ const AddCustomer: React.FC = () => {
         if ((isFormFieldChange() && !isEditShown) || (isFormFieldChange() && isEditMode)) {
             showDialogBox(true);
         } else {
-            history.push('/');
+            navigate('/');
         }
     }
 

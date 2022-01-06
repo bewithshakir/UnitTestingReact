@@ -13,14 +13,14 @@ import DiscardChangesDialog from '../../components/UIComponents/ConfirmationDial
 
 jest.mock('react-router-dom', () => ({
     ...jest.requireActual("react-router-dom") as any,
-    useHistory: jest.fn(),
-    useLocation: () => ({
+    useNavigate: jest.fn(),
+    useLocation: ()=> ({
         location: {
             pathname: '/productManagement/'
         },
         push: jest.fn()
     }),
-    useRouteMatch: () => ({
+    useMatch: ()=> ({
         params: {
             productId: ''
         }
@@ -137,7 +137,7 @@ describe('AddProduct component', () => {
 
     describe('edit product screen render', () => {
         beforeEach(() => {
-            jest.spyOn(routeDataDom, 'useRouteMatch').mockImplementation(() => ({
+            jest.spyOn(routeDataDom, 'useMatch').mockImplementation(()=> ({
                 isExact: true,
                 params: {
                     productId: '00aad1db-d5a4-45c7-9428-ab08c8d9f6b4'
@@ -215,9 +215,9 @@ describe('AddProduct component', () => {
                     handleToggle: jest.fn(),
                     handleConfirm: jest.fn()
                 };
-                const dialogue = render(<DiscardChangesDialog {...propsPopup} />);
-                expect(await dialogue.findByText(/Test Dialog/i)).toBeInTheDocument();
-
+                const dialogue = render(<DiscardChangesDialog {...propsPopup}/>);
+                expect( await dialogue.findByText(/Test Dialog/i)).toBeInTheDocument();
+                
             });
         });
     });

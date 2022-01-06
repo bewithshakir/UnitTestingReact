@@ -9,7 +9,7 @@ import { useTranslation } from "react-i18next";
 import SearchInput from "../../../components/UIComponents/SearchInput/SearchInput";
 import ActionsMenu from "../../../components/UIComponents/Menu/ActionsMenu.component";
 import { Add } from "@mui/icons-material";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import SalesTaxModel from '../../../models/SalesTaxModel';
 import GridComponent from "../../../components/UIComponents/DataGird/grid.component";
 import { salesTaxListSet } from './queries';
@@ -20,7 +20,7 @@ const SalesTaxLandingContent = memo(() => {
   const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
   setVersion("NavLinks");
   const { t } = useTranslation();
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const salesTaxObj = new SalesTaxModel();
   const massActionOptions = salesTaxObj.massActions();
@@ -54,7 +54,7 @@ const SalesTaxLandingContent = memo(() => {
   };
 
   const navigateHomePage = () => {
-    history.push("/salesTax/add");
+    navigate("/salesTax/add");
   };
 
   const onSortBySlected = (value: string) => {
@@ -87,7 +87,7 @@ const SalesTaxLandingContent = memo(() => {
     switch (action.action) {
       case ACTION_TYPES.EDIT:
         // perform action
-        history.push(`salesTax/edit/?city=${row.city}&state=${row.state}&countryCode=${row.countryCode}`);
+        navigate(`salesTax/edit/?city=${row.city}&state=${row.state}&countryCode=${row.countryCode}`);
         break;
       case ACTION_TYPES.DELETE:
         // perform action
