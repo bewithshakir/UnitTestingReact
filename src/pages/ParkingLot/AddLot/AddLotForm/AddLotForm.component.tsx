@@ -789,7 +789,7 @@ function AddLotForm(): React.ReactElement {
                                             <Grid item md={12} mt={2} mb={4}>
                                                 <Link
                                                     variant="body2"
-                                                    className={isAddScheduleDisabled() ? "add-link disabled-text-link" : "add-link"}
+                                                    className={`add-link add-another-schedule ${isAddScheduleDisabled() && "add-link disabled-text-link"}`}
                                                     onClick={() => addSchedule(arr)}
                                                 >
                                                     <span className="add-icon-span"><PlusIcon color={isAddScheduleDisabled() ? theme["--Secondary-Background"] : theme["--Primary"]} /></span>
