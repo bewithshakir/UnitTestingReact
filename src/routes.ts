@@ -32,6 +32,12 @@ export const routes = [
         exact: true,
       },
       {
+        path: "/customer/:customerId/dsp",
+        component: lazy(() => import("./pages/DspLanding")),
+        version: "Breadcrumbs-Single",
+        exact: true,
+      },
+      {
         path: "/customer/:customerId/parkingLots/addLot",
         component: lazy(() => import('./pages/ParkingLot/AddLot/AddLotWrapper')),
         exact: true,

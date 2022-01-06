@@ -20,7 +20,7 @@ import { useCreateCustomer, useEditCustomer, useGetCustomerData, useGetFrequenci
 import AutocompleteInput from '../../../components/UIComponents/GoogleAddressComponent/GoogleAutoCompleteAddress';
 import { EditIcon, PlusIcon } from '../../../assets/icons';
 import "./AddCustomer.style.scss";
-import { useAddedCustomerIdStore, useAddedCustomerNameStore, useShowConfirmationDialogBoxStore } from '../../../store';
+import { useAddedCustomerIdStore, useAddedCustomerNameStore, useShowConfirmationDialogBoxStore, useAddedCustomerPaymentTypeStore } from '../../../store';
 import moment from 'moment';
 import { maxContacts } from '../../../utils/constants';
 import { formatFileSizeUnit, getCheckBoxDisabledByPaymentType } from '../../../utils/helperFunctions';
@@ -266,6 +266,7 @@ const AddCustomer: React.FC = () => {
             setActiveCustomerId(data?.data?.customer?.customerId.toString());
             setCustomerIdCreated(data?.data?.customer?.customerId);
             setPageCustomerName(data?.data?.customer?.companyNm);
+            setPaymentType(data?.data?.customer?.PaymentType?.paymentTypeNm);
             setCustomerData(data?.data?.customer);
         }
     };
@@ -286,6 +287,11 @@ const AddCustomer: React.FC = () => {
     useGetCustomerData(activeCustomerId, isTrigger, onGetCustomerSuccess, onGetCustomerError);
     const setCustomerIdCreated = useAddedCustomerIdStore((state) => state.setCustomerId);
     const setPageCustomerName = useAddedCustomerNameStore((state) => state.setCustomerName);
+    const setPaymentType = useAddedCustomerPaymentTypeStore((state) => state.setCustomerPaymentType);
+
+    useEffect(()=>{
+        setPaymentType('');
+    },[]);
 
     useEffect(() => {
         if (frequencyList?.data.length) {
@@ -513,6 +519,7 @@ const AddCustomer: React.FC = () => {
     };
     const handlePaymentTypeChange = (fieldName: string, value: any) => {
         formik.setFieldValue(fieldName, value);
+        setPaymentType(value.label);
         if (getCheckBoxDisabledByPaymentType(value.label)) {
             formik.setFieldValue('lotLevel', false);
             formik.setFieldValue('businessLevel', false);
