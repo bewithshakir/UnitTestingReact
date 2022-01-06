@@ -767,6 +767,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                         >
                           <Button
                             aria-label="dafault"
+                            id="opisCityFilter"
                             onClick={[Function]}
                             startIcon={<FilterIcon />}
                             types="filter"
@@ -1054,6 +1055,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                             >
                               <Button
                                 aria-label="dafault"
+                                id="opisCityFilter"
                                 onClick={[Function]}
                                 startIcon={<FilterIcon />}
                                 types="filter"
@@ -1180,6 +1182,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                 >
                                   <Button
                                     aria-label="dafault"
+                                    id="opisCityFilter"
                                     onClick={[Function]}
                                     startIcon={<FilterIcon />}
                                     types="filter"
@@ -1257,6 +1260,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                   Object {
                                     "children": <Button
                                       aria-label="dafault"
+                                      id="opisCityFilter"
                                       onClick={[Function]}
                                       startIcon={<FilterIcon />}
                                       types="filter"
@@ -1292,6 +1296,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                 >
                                   <Button
                                     aria-label="dafault"
+                                    id="opisCityFilter"
                                     onClick={[Function]}
                                     startIcon={<FilterIcon />}
                                     types="filter"
@@ -1299,6 +1304,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                     <WithStyles(ForwardRef(Button))
                                       aria-label="dafault"
                                       className="btn-filter "
+                                      id="opisCityFilter"
                                       onClick={[Function]}
                                       startIcon={<FilterIcon />}
                                       variant="contained"
@@ -1339,6 +1345,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                             "textSizeSmall": "MuiButton-textSizeSmall",
                                           }
                                         }
+                                        id="opisCityFilter"
                                         onClick={[Function]}
                                         startIcon={<FilterIcon />}
                                         variant="contained"
@@ -1350,6 +1357,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                           disabled={false}
                                           focusRipple={true}
                                           focusVisibleClassName="Mui-focusVisible"
+                                          id="opisCityFilter"
                                           onClick={[Function]}
                                           type="button"
                                         >
@@ -1367,6 +1375,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                             disabled={false}
                                             focusRipple={true}
                                             focusVisibleClassName="Mui-focusVisible"
+                                            id="opisCityFilter"
                                             onClick={[Function]}
                                             type="button"
                                           >
@@ -1374,6 +1383,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                               aria-label="dafault"
                                               className="MuiButtonBase-root MuiButton-root MuiButton-contained btn-filter "
                                               disabled={false}
+                                              id="opisCityFilter"
                                               onBlur={[Function]}
                                               onClick={[Function]}
                                               onDragLeave={[Function]}

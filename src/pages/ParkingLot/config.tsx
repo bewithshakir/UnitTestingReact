@@ -66,13 +66,14 @@ export const timeZones = [
   { label: 'PNT (Phoenix Standard Time  -  GMT-7:00)', value: 'PNT' }
 ];
 
-export const productDelFreq = [
-  { label: 'Daily', value: 'daily' },
-  { label: 'Weekly', value: 'weekly' },
-  { label: 'Weekends', value: 'weekends' },
-  { label: 'Monthly', value: 'monthly' },
-  { label: 'Bi-Weekly', value: 'bi-weekly' },
-];
+export const daysToDeliver = (dayType: string, daysOfWeek: { data?: { data?: [] } }) => {
+  const other = (daysOfWeek?.data?.data || []).map((day: any) => ({ label: day.dayOfWeekNm, value: day.dayOfWeekCd }));
+  const weekends = other.filter(day => ['saturday', 'sunday'].includes(String(day.label).toLowerCase()));
+  return ({
+    'weekends': weekends,
+    'other': other
+  }[String(dayType).toLowerCase()] || other);
+};
 
 export const lotHeaderBoxSx = { width: '100%', marginTop: '-2.5em' };
 export const lotHeaderInnerBoxSx = { borderBottom: 1, borderColor: 'divider' };

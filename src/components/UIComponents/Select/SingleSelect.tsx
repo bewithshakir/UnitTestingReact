@@ -1,5 +1,6 @@
 import { FormikErrors } from 'formik';
 import { Fragment } from 'react';
+import { Moment } from 'moment';
 import Select, { components, DropdownIndicatorProps, OptionProps } from 'react-select';
 import { FormHelperText, InputLabel, FormControl, Icon, Box, Typography } from '@mui/material';
 import CheckIcon from '@material-ui/icons/Check';
@@ -27,7 +28,7 @@ interface props {
 
     required?: boolean;
     error?: boolean;
-    helperText?: string | FormikErrors<item> | undefined;
+    helperText?: string | FormikErrors<item> | Moment | null | undefined;
 
     isDisabled?: boolean;
 
