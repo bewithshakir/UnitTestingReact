@@ -14,6 +14,7 @@ export default function FeeDetails() {
 
     const { t } = useTranslation();
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [initialFormikValues, setInitialFormikValues] = useState({
         feeName: '',
         delFee: '',
@@ -24,15 +25,6 @@ export default function FeeDetails() {
         productName: { label: '', value: '' }
     });
 
-    setInitialFormikValues({
-        feeName: '',
-        delFee: '',
-        delFeeShed: { label: '', value: '' },
-        serviceFeeCharge: '',
-        productType: { label: '', value: '' },
-        masterProductType: { label: '', value: '' },
-        productName: { label: '', value: '' }
-    });
 
     const formik = useFormik({
         initialValues: initialFormikValues,
