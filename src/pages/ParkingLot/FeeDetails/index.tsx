@@ -103,6 +103,7 @@ export default function FeeDetails() {
                                         placeholder='Enter Fee'
                                         helperText={(formik.touched.delFeeShed && formik.errors.delFeeShed) ? formik.errors.delFeeShed.value : undefined}
                                         error={(formik.touched.delFeeShed && formik.errors.delFeeShed) ? true : false}
+                                        onBlur={() => { formik.setFieldTouched("delFeeShed"); formik.validateField("delFeeShed"); }}
                                         onChange={() => null}
                                         required
                                     />
