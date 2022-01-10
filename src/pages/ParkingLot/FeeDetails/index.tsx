@@ -22,7 +22,10 @@ export default function FeeDetails() {
         serviceFeeCharge: '',
         productType: { label: '', value: '' },
         masterProductType: { label: '', value: '' },
-        productName: { label: '', value: '' }
+        productName: { label: '', value: '' },
+        assetType: { label: '', value: '' },
+        assetTypeDesc: '',
+        vehicleType: { label: '', value: '' },
     });
 
 
@@ -195,6 +198,54 @@ export default function FeeDetails() {
                                     label={<Typography variant="h4" component="h4" className="fw-bold">
                                         {'Consider this as an asset'}
                                     </Typography>} />
+                            </Grid>
+                            <Grid container item md={12} mt={1} mb={1}>
+                                <Grid item xs={12} md={6}>
+                                    <Select
+                                        id='assetType'
+                                        name='assetType'
+                                        label='Asset Type'
+                                        description=''
+                                        items={[]}
+                                        placeholder='Select Asset Type'
+                                        onChange={() => null}
+                                        helperText={(formik.touched.assetType && formik.errors.assetType) ? formik.errors.assetType.value : undefined}
+                                        error={(formik.touched.assetType && formik.errors.assetType) ? true : false}
+                                        onBlur={() => { formik.setFieldTouched("assetType"); formik.validateField("assetType"); }}
+                                        required
+                                    />
+                                </Grid>
+                            </Grid>
+                            <Grid container item md={12} mt={2} mb={1} pt={0.5}>
+                                <Grid item xs={12} md={6}>
+                                    <Input
+                                        id='assetTypeDesc'
+                                        label=''
+                                        type='text'
+                                        placeholder='Enter Asset Description'
+                                        helperText={(formik.touched.assetTypeDesc && formik.errors.assetTypeDesc) ? formik.errors.assetTypeDesc : undefined}
+                                        error={(formik.touched.assetTypeDesc && formik.errors.assetTypeDesc) ? true : false}
+                                        description=''
+                                        required
+                                        {...formik.getFieldProps('assetTypeDesc')}
+                                    />
+                                </Grid>
+                            </Grid>
+                            <Grid container item md={12} mt={1} mb={1}>
+                                <Grid item xs={12} md={6}>
+                                    <Select
+                                        id='vehicleType'
+                                        name='vehicleType'
+                                        label='Vehicle Type'
+                                        description=''
+                                        items={[]}
+                                        placeholder='Select Vehicle Type'
+                                        onChange={() => null}
+                                        helperText={(formik.touched.vehicleType && formik.errors.vehicleType) ? formik.errors.vehicleType.value : undefined}
+                                        error={(formik.touched.vehicleType && formik.errors.vehicleType) ? true : false}
+                                        onBlur={() => { formik.setFieldTouched("vehicleType"); formik.validateField("vehicleType"); }}
+                                    />
+                                </Grid>
                             </Grid>
                         </Grid>
                     </Container>
