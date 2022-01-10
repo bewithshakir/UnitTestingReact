@@ -1,18 +1,21 @@
 import { Fragment, useState } from 'react';
 import { FormikProvider, useFormik } from 'formik';
 import { useTranslation } from 'react-i18next';
-import { Container, FormControlLabel, Grid, Typography } from "@mui/material";
+import { Container, FormControlLabel, Grid, Link, Typography, Box } from "@mui/material";
 import { Button } from '../../../components/UIComponents/Button/Button.component';
 import Input from '../../../components/UIComponents/Input/Input';
 import Checkbox from '../../../components/UIComponents/Checkbox/Checkbox.component';
+import ToastMessage from '../../../components/UIComponents/ToastMessage/ToastMessage.component';
 import Select from '../../../components/UIComponents/Select/SingleSelect';
-import { EditIcon } from '../../../assets/icons';
+import { EditIcon, PlusIcon} from '../../../assets/icons';
 import { AddFeeDetailsValidationSchema } from './validations';
+import { useTheme } from '../../../contexts/Theme/Theme.context';
 import './FeeDetails.scss';
 
 export default function FeeDetails() {
 
     const { t } = useTranslation();
+    const { theme } = useTheme();
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [initialFormikValues, setInitialFormikValues] = useState({
@@ -56,7 +59,7 @@ export default function FeeDetails() {
                                         types="save"
                                         aria-label="edit"
                                         className="edit-button"
-                                    //onClick={handleEditButtonClick}
+                                        //onClick={handleEditButtonClick}
                                     >
                                         <EditIcon /> <span>{t("buttons.edit")}</span>
                                     </Button>
@@ -246,6 +249,38 @@ export default function FeeDetails() {
                                         onBlur={() => { formik.setFieldTouched("vehicleType"); formik.validateField("vehicleType"); }}
                                     />
                                 </Grid>
+                            </Grid>
+                            <Grid item md={12} mt={2} mb={4}>
+                                <Link
+                                    variant="body2"
+                                    className={'add-link disabled-text-link'}
+                                    onClick={() => null}
+                                >
+                                    <span className="add-icon-span"><PlusIcon color={theme["--Secondary-Background"]} /></span>
+                                    <Typography variant="h3" component="h3" className="fw-bold disabled-text" mb={1}>
+                                        ADD ANOTHER SERVICE FEE
+                                    </Typography>
+                                </Link>
+                            </Grid>
+                            <Grid item md={12} mt={2} mb={1}>
+                                {<Box className="form-action-section">
+                                    <Button
+                                        types="cancel"
+                                        aria-label="cancel"
+                                        className="mr-4 cancelBtnPL"
+                                    >
+                                        {t("buttons.cancel")}
+                                    </Button>
+                                    <Button
+                                        type="submit"
+                                        types="save"
+                                        aria-label="save"
+                                        className="ml-4 saveBtnPL"
+                                    >
+                                        {t("buttons.save")}
+                                    </Button>
+                                </Box>}
+                                <ToastMessage isOpen={false} messageType={''} onClose={() => null} message={''} />
                             </Grid>
                         </Grid>
                     </Container>
