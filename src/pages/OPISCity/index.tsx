@@ -17,7 +17,12 @@ import { OPISCity, MASS_ACTION_TYPES, ROW_ACTION_TYPES, SORTBY_TYPES } from './c
 import { RightInfoPanel } from '../../components/UIComponents/RightInfoPanel/RightInfoPanel.component';
 import { getSeachedDataTotalCount } from '../../utils/helperFunctions';
 
-const OPISCityLandingContent = memo(() => {
+export interface OpisCitiesProps{
+  version:string
+}
+
+
+const OPISCityLandingContent:React.FC<OpisCitiesProps> = memo(() => {
   const OPISCityObj = new OPISCityModel();
   const headCells = OPISCityObj.fieldsToDisplay();
   const massActionOptions = OPISCityObj.massActions();

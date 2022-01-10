@@ -24,11 +24,16 @@ interface IFormStatus {
     type: string
 }
 
+export interface AddProductProps{
+    version:string
+  }
+  
+  
 
 
 
 const initialValues = new ProductManagementModel();
-const AddProduct: React.FC = memo(() => {
+const AddProduct: React.FC<AddProductProps> = memo(() => {
     const { t } = useTranslation();
     const navigate = useNavigate();
     const {pathname} = useLocation();

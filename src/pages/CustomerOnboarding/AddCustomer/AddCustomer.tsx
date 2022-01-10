@@ -46,6 +46,11 @@ interface IFormStatusProps {
     [key: string]: IFormStatus
 }
 
+export interface AddCustomerProps{
+    version:string
+  }
+  
+
 const formStatusProps: IFormStatusProps = {
     editsuccess: {
         message: 'Data updated successfully',
@@ -69,7 +74,7 @@ const formStatusProps: IFormStatusProps = {
     }
 };
 
-const AddCustomer: React.FC = () => {
+const AddCustomer: React.FC<AddCustomerProps> = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const addedCustomerId = useAddedCustomerIdStore((state) => state.customerId);

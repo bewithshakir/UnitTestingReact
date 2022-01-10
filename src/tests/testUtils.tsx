@@ -1,7 +1,7 @@
 import { shallow } from "enzyme";
 import { createMemoryHistory } from "history";
 import { QueryClient, QueryClientProvider } from "react-query";
-import { Router } from "react-router-dom";
+import { MemoryRouter, Route, Routes } from "react-router-dom";
 
 /**
  * Returns node(s) with the given data-test attribute.
@@ -17,26 +17,24 @@ export const HOCSetup = (props: any, route: any)=> {
     const queryClient = new QueryClient();
     const history = createMemoryHistory();
     if (route) {
-        history(route);
+        history.push(route);
     }
     return (
         <QueryClientProvider client={queryClient}>
-                <Router history={history}>
-                    {props.children}
-                </Router>
+                        {props.children}
         </QueryClientProvider>
     );
 };
 
 
-export const renderWithRouter = (renderComponent: any, route: any) => {
-    const navigate = createMemoryHistory();
+/* export const renderWithRouter = (renderComponent: any, route: any) => {
+    const history = createMemoryHistory();
   
     if(route){
-        navigate(route);
+      history.push(route);
     }
   
     return {
       ...shallow(<Router history={history}>{renderComponent()}</Router>), history
     };
-};
+}; */

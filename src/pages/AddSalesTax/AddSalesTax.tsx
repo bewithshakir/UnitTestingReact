@@ -17,6 +17,10 @@ import {AddSalesTaxValidationSchema, AddSalesTaxValidationSchemaEdit} from './va
 
 const initialValues = new SalesTaxModel();
 
+export interface AddSalesTaxProps{
+    version:string
+  }
+  
 interface IFormStatus {
     message: string
     type: string
@@ -49,7 +53,7 @@ const formStatusProps: IFormStatusProps = {
     }
 };
 
-const AddSalesTax: React.FC = () => {
+const AddSalesTax: React.FC<AddSalesTaxProps> = () => {
     const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
     const isFormValidated = useShowConfirmationDialogBoxStore((state) => state.setFormFieldValue);
     const resetFormFieldValue = useShowConfirmationDialogBoxStore((state) => state.resetFormFieldValue);

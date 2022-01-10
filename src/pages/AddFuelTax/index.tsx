@@ -26,6 +26,10 @@ interface IFormStatusProps {
     [key: string]: IFormStatus
 }
 
+interface AddFuelTaxProps{
+    version:string
+}
+
 const formStatusProps: IFormStatusProps = {
     success: {
         message: 'Success.',
@@ -42,7 +46,7 @@ const formStatusProps: IFormStatusProps = {
 };
 
 
-const AddFuelTax = memo(() => {
+const AddFuelTax:React.FC<AddFuelTaxProps> = memo(() => {
     const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
     setVersion("Breadcrumbs-Single");
     const navigate = useNavigate();

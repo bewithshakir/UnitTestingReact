@@ -21,6 +21,7 @@ const Query = lazy(() => import('./pages/QueryTest'));
 const DemoComponents = lazy(() => import('./pages/DemoComponents/DemoComponents'));
 const AddProductManagement = lazy(() => import('./pages/AddProductManagement/AddProduct'));
 const EditProductManagement =lazy(() => import('./pages/AddProductManagement/AddProduct'));
+const AssetManagement =lazy(() => import("./pages/AssetManagement"));
 
 export const routes : RouteObject[]  = [
   {
@@ -104,5 +105,9 @@ export const routes : RouteObject[]  = [
   {
     path: "/productManagement/edit/:productId",
     element: <EditProductManagement   version= "Breadcrumbs-Single"/>
+  },
+  {
+    path: "/assetManagement",
+    element: <AssetManagement version= "Breadcrumbs-Many"/>,
   }
 ];

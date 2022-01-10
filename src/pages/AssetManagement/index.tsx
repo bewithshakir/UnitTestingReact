@@ -16,7 +16,11 @@ import { DataGridActionsMenuOption } from '../../components/UIComponents/Menu/Da
 import { AssetManagement, MASS_ACTION_TYPES, ROW_ACTION_TYPES, SORTBY_TYPES } from './config';
 import { RightInfoPanel } from "../../components/UIComponents/RightInfoPanel/RightInfoPanel.component";
 
-const AssetManagementLandingContent = memo(() => {
+export interface AssetManagementProps{
+    version:string
+  }
+    
+const AssetManagementLandingContent:React.FC<AssetManagementProps> = memo(() => {
     const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
     setVersion("NavLinks");
     const { t } = useTranslation();

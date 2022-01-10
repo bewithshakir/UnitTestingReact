@@ -21,6 +21,7 @@ import { getSeachedDataTotalCount, maskPhoneNumber } from "../../utils/helperFun
 
 interface ContentProps {
   rows?: [];
+  sidebarName: string;
   version: string
 }
 

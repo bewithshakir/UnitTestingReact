@@ -16,7 +16,12 @@ import { salesTaxListSet } from './queries';
 import { RightInfoPanel } from "../../../components/UIComponents/RightInfoPanel/RightInfoPanel.component";
 import { DataGridActionsMenuOption } from '../../../components/UIComponents/Menu/DataGridActionsMenu.component';
 
-const SalesTaxLandingContent = memo(() => {
+export interface SalesTaxLandingContentProps{
+  version:string
+}
+
+
+const SalesTaxLandingContent:React.FC<SalesTaxLandingContentProps> = memo(() => {
   const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
   setVersion("NavLinks");
   const { t } = useTranslation();

@@ -7,7 +7,10 @@ import { Loader } from '../../components/UIComponents/Loader';
 import { HorizontalBarVersionState, useStore } from '../../store';
 import Legend from './Legend';
 
-const customerOnboarding = memo(() => {
+export interface CustomerOnboardingProps{
+  version:string
+}
+const customerOnboarding: React.FC<CustomerOnboardingProps>  = memo(() => {
   const setVersion = useStore(
     (state: HorizontalBarVersionState) => state.setVersion
   );
