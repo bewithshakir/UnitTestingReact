@@ -1,6 +1,7 @@
 import { Fragment, useState } from 'react';
 import { FormikProvider, useFormik } from 'formik';
 import { useTranslation } from 'react-i18next';
+import { useHistory } from 'react-router-dom';
 import { Container, FormControlLabel, Grid, Link, Typography, Box } from "@mui/material";
 import { Button } from '../../../components/UIComponents/Button/Button.component';
 import Input from '../../../components/UIComponents/Input/Input';
@@ -10,12 +11,28 @@ import Select from '../../../components/UIComponents/Select/SingleSelect';
 import { EditIcon, PlusIcon} from '../../../assets/icons';
 import { AddFeeDetailsValidationSchema } from './validations';
 import { useTheme } from '../../../contexts/Theme/Theme.context';
+import { useAddedCustomerNameStore, useAddedCustomerIdStore } from '../../../store';
 import './FeeDetails.scss';
 
 export default function FeeDetails() {
 
     const { t } = useTranslation();
     const { theme } = useTheme();
+    const history = useHistory();
+    const [isDisabled, setDisabled] = useState(false);
+    const [isSavCancelShown, setSaveCancelShown] = useState(true);
+    const customerName = useAddedCustomerNameStore((state) => state.customerName);
+    const customerId = useAddedCustomerIdStore((state) => state.customerId);
+
+    const onClickBack = () => {
+        history.push({
+            pathname: `/customer/${customerId}/parkingLots`,
+            state: {
+                customerId: customerId,
+                customerName: customerName
+            }
+        });
+    };
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [initialFormikValues, setInitialFormikValues] = useState({
@@ -30,6 +47,12 @@ export default function FeeDetails() {
         assetTypeDesc: '',
         vehicleType: { label: '', value: '' },
     });
+
+    const handleEditButtonClick = () => {
+        setSaveCancelShown(true);
+        setDisabled(false);
+    };
+
 
 
     const formik = useFormik({
@@ -54,12 +77,12 @@ export default function FeeDetails() {
                                         {'Add Fee Details to fulfil the requirements'}
                                     </Typography>
                                 </Grid>
-                                {true && <Grid item xs={6} sx={{ justifyContent: 'flex-end' }}>
+                                {(!isSavCancelShown) && <Grid item xs={6} sx={{ justifyContent: 'flex-end' }}>
                                     <Button
                                         types="save"
                                         aria-label="edit"
                                         className="edit-button"
-                                        //onClick={handleEditButtonClick}
+                                        onClick={handleEditButtonClick}
                                     >
                                         <EditIcon /> <span>{t("buttons.edit")}</span>
                                     </Button>
@@ -76,6 +99,7 @@ export default function FeeDetails() {
                                         error={(formik.touched.feeName && formik.errors.feeName) ? true : false}
                                         description=''
                                         required
+                                        disabled={isDisabled}
                                         {...formik.getFieldProps('feeName')}
                                     />
                                 </Grid>
@@ -95,6 +119,7 @@ export default function FeeDetails() {
                                         helperText={(formik.touched.delFee && formik.errors.delFee) ? formik.errors.delFee : undefined}
                                         error={(formik.touched.delFee && formik.errors.delFee) ? true : false}
                                         description=''
+                                        disabled={isDisabled}
                                         required
                                         {...formik.getFieldProps('delFee')}
                                     />
@@ -111,6 +136,7 @@ export default function FeeDetails() {
                                         error={(formik.touched.delFeeShed && formik.errors.delFeeShed) ? true : false}
                                         onBlur={() => { formik.setFieldTouched("delFeeShed"); formik.validateField("delFeeShed"); }}
                                         onChange={() => null}
+                                        disabled={isDisabled}
                                         required
                                     />
                                 </Grid>
@@ -140,6 +166,7 @@ export default function FeeDetails() {
                                         error={(formik.touched.serviceFeeCharge && formik.errors.serviceFeeCharge) ? true : false}
                                         description=''
                                         required
+                                        disabled={isDisabled}
                                         {...formik.getFieldProps('serviceFeeCharge')}
                                     />
                                 </Grid>
@@ -157,6 +184,7 @@ export default function FeeDetails() {
                                         error={(formik.touched.productType && formik.errors.productType) ? true : false}
                                         onChange={() => null}
                                         onBlur={() => { formik.setFieldTouched("productType"); formik.validateField("productType"); }}
+                                        disabled={isDisabled}
                                         required
                                     />
                                 </Grid>
@@ -172,6 +200,7 @@ export default function FeeDetails() {
                                         helperText={(formik.touched.masterProductType && formik.errors.masterProductType) ? formik.errors.masterProductType.value : undefined}
                                         error={(formik.touched.masterProductType && formik.errors.masterProductType) ? true : false}
                                         onBlur={() => { formik.setFieldTouched("masterProductType"); formik.validateField("masterProductType"); }}
+                                        disabled={isDisabled}
                                         required
                                     />
                                 </Grid>
@@ -189,6 +218,7 @@ export default function FeeDetails() {
                                         helperText={(formik.touched.productName && formik.errors.productName) ? formik.errors.productName.value : undefined}
                                         error={(formik.touched.productName && formik.errors.productName) ? true : false}
                                         onBlur={() => { formik.setFieldTouched("productName"); formik.validateField("productName"); }}
+                                        disabled={isDisabled}
                                         required
                                     />
                                 </Grid>
@@ -215,6 +245,7 @@ export default function FeeDetails() {
                                         helperText={(formik.touched.assetType && formik.errors.assetType) ? formik.errors.assetType.value : undefined}
                                         error={(formik.touched.assetType && formik.errors.assetType) ? true : false}
                                         onBlur={() => { formik.setFieldTouched("assetType"); formik.validateField("assetType"); }}
+                                        disabled={isDisabled}
                                         required
                                     />
                                 </Grid>
@@ -230,6 +261,7 @@ export default function FeeDetails() {
                                         error={(formik.touched.assetTypeDesc && formik.errors.assetTypeDesc) ? true : false}
                                         description=''
                                         required
+                                        disabled={isDisabled}
                                         {...formik.getFieldProps('assetTypeDesc')}
                                     />
                                 </Grid>
@@ -247,6 +279,7 @@ export default function FeeDetails() {
                                         helperText={(formik.touched.vehicleType && formik.errors.vehicleType) ? formik.errors.vehicleType.value : undefined}
                                         error={(formik.touched.vehicleType && formik.errors.vehicleType) ? true : false}
                                         onBlur={() => { formik.setFieldTouched("vehicleType"); formik.validateField("vehicleType"); }}
+                                        disabled={isDisabled}
                                     />
                                 </Grid>
                             </Grid>
@@ -263,11 +296,13 @@ export default function FeeDetails() {
                                 </Link>
                             </Grid>
                             <Grid item md={12} mt={2} mb={1}>
-                                {<Box className="form-action-section">
+                                {isSavCancelShown && <Box className="form-action-section">
                                     <Button
                                         types="cancel"
                                         aria-label="cancel"
-                                        className="mr-4 cancelBtnPL"
+                                        className="mr-4"
+                                        onClick={onClickBack}
+                                        disabled={isDisabled}
                                     >
                                         {t("buttons.cancel")}
                                     </Button>
@@ -275,7 +310,7 @@ export default function FeeDetails() {
                                         type="submit"
                                         types="save"
                                         aria-label="save"
-                                        className="ml-4 saveBtnPL"
+                                        className="ml-4"
                                     >
                                         {t("buttons.save")}
                                     </Button>
