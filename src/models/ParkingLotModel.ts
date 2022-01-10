@@ -19,11 +19,13 @@ export interface ParkingLot {
 export interface SelectProps {
     label: string,
     value: string,
+    deliveryDayWeekId?: string | null
 }
 
-type mutiSelectItem = {
+export interface mutiSelectItem {
     label: string,
     value: string | number
+    deliveryDayWeekId?: string | null
 }
 
 export interface lotContact {
@@ -34,12 +36,17 @@ export interface lotContact {
 }
 
 export interface orderSchDel {
+    deliveryDayId?: string | null
     fromDate: moment.Moment | string | null,
     toDate: moment.Moment | string | null,
-    startTime: string,
-    endTime: string,
-    productDelDays: Array<mutiSelectItem>
+    startTime: string | '',
+    endTime: string | '',
+    productDelDays?: SelectProps
+    productDelDaysMulti?: Array<mutiSelectItem>
+    isPrimary: 'N' | 'Y' | string
+    delFreq: string | ''
 }
+// Array<mutiSelectItem>
 
 export interface AddParkingLotForm {
     lotName: string;
@@ -57,6 +64,19 @@ export interface AddParkingLotForm {
     locationContact: lotContact[];
 }
 
+export const orderScheduleDel = [{
+    fromDate: null,
+    toDate: null,
+    startTime: '',
+    endTime: '',
+    productDelDays: { label: '', value: '', deliveryDayWeekId: null },
+    productDelDaysMulti: [],
+    /** internal use only */
+    deliveryDayId: null,
+    delFreq: '',
+    isPrimary: 'Y'
+}];
+
 export const addLotFormInitialValues = {
     lotName: '',
     lotId: '',
@@ -69,13 +89,7 @@ export const addLotFormInitialValues = {
     timeZone: { label: '', value: '' },
     jurisdictionId: '',
     productDelFreq: { label: '', value: '' },
-    orderScheduleDel: [{
-        fromDate: '',
-        toDate: '',
-        startTime: '',
-        endTime: '',
-        productDelDays: []
-    }],
+    orderScheduleDel: orderScheduleDel,
     locationContact: [{
         firstName: '',
         lastName: '',
@@ -120,11 +134,15 @@ export default class ParkingLotModel {
         this.jurisdictionId = '';
         this.productDelFreq = { label: '', value: '' };
         this.orderScheduleDel = [{
-            fromDate: '',
-            toDate: '',
+            deliveryDayId: null,
+            fromDate: null,
+            toDate: null,
             startTime: '',
             endTime: '',
-            productDelDays: []
+            productDelDays: { label: '', value: '', deliveryDayWeekId: null },
+            productDelDaysMulti: [],
+            delFreq: '',
+            isPrimary: 'Y'
         }];
         this.locationContact = [{
             firstName: '',
@@ -143,7 +161,7 @@ export default class ParkingLotModel {
         this.lotLevel = false;
     }
 
-    fieldsToDisplay (): headerObj[] {
+    fieldsToDisplay(): headerObj[] {
         return [
             { field: "deliveryLocationNm", label: "LOT NAME", type: 'text', sortable: true },
             { field: "streetAddress", label: "STREET ADDRESS", type: 'text' },
@@ -178,7 +196,7 @@ export default class ParkingLotModel {
         DELETE: 'delete',
     };
 
-    rowActions () {
+    rowActions() {
         const { t } = useTranslation();
         return [
             {
@@ -198,7 +216,7 @@ export default class ParkingLotModel {
         DELETE: 'remove',
     };
 
-    massActions () {
+    massActions() {
         const { t } = useTranslation();
         return [
             {

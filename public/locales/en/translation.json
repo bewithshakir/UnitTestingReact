@@ -32,7 +32,8 @@
     "add tax": "Add Tax",
     "add opis city": "ADD OPIS CITY",
     "browse": "Browse",
-    "filter": "Filters"
+    "filter": "Filters",
+    "add asset": "ADD ASSET"
   },
   "menus": {
     "sortby": {
@@ -268,5 +269,12 @@
     "discountlabel": "Discount Per Gallon (Optional)",
     "totalpricelabel": "Total Price Per Gallon (Including Tax, Adder/Discount)",
     "timeslotlabel": "Time Slot (Optional)"
+  },
+  "assetManagement": {
+    "asset": "Asset Type",
+    "sortBy": {
+      "payment in progress": "Payment In Progress",
+      "recently added asset": "Recently Added Asset"
+    }
   }
 }

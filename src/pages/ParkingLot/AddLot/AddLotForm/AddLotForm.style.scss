@@ -3,6 +3,20 @@ div{
       max-height: calc(100vh - 64px);
       overflow-y: auto;
     }
+    .lot-container{
+      .deliveryDays  {
+         .select {
+          width: 88%;
+       }
+      }
+      .deleteBtn{
+        padding: 0;
+        background: none;
+        margin-top: 44px;
+        margin-left: 20px;
+        cursor: pointer;
+      }
+    }
       .page-container{
         margin: 0px;
         max-width: 950px;
@@ -29,7 +43,7 @@ div{
       } 
       .add-link{
         cursor: pointer;
-        display: flex;
+        display: inline-flex;
         align-items: center;
         text-decoration-color: var(--Primary);
       }
