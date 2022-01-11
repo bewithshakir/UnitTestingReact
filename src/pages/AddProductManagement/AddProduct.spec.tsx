@@ -11,9 +11,12 @@ import { serverMsw } from "../../setupTests";
 import DiscardChangesDialog from '../../components/UIComponents/ConfirmationDialog/DiscardChangesDialog.component';
 
 
+const mockedNavigate = jest.fn();
+
+
 jest.mock('react-router-dom', () => ({
     ...jest.requireActual("react-router-dom") as any,
-    useNavigate: jest.fn(),
+    useNavigate: () => mockedNavigate,
     useLocation: ()=> ({
         location: {
             pathname: '/productManagement/'

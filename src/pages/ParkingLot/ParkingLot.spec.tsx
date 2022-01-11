@@ -18,6 +18,11 @@ jest.mock("react-router-dom", () => ({
                 customerName: "MockCustomer"
             }
         }
+    }),
+    useLocation: ()=>({
+        state: {
+            customerName: "MockCustomer"
+        }
     })
 }));
 

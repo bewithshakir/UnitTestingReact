@@ -147,7 +147,8 @@ export default function HorizontalBar(props: HorizontalBarProps) {
       pathname.includes('taxes') ||
       pathname.includes('salesTax') ||
       pathname.includes('productManagement') ||
-      pathname.includes('opisCities')
+      pathname.includes('opisCities') ||
+      pathname.includes('assetManagement') 
     ) {
       return (
         <>
@@ -205,7 +206,7 @@ export default function HorizontalBar(props: HorizontalBarProps) {
               {t('taxes.navBar.productManagement')}
             </NavLink>
           </div>
-          <div className='linkitem'>
+          <div className={pathname.includes('assetManagement') ? 'linkitem active' : "linkitem"}>
             <NavLink
               className='breadcrubs-title'
               to='/assetManagement'
