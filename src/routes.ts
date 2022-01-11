@@ -42,7 +42,13 @@ export const routes = [
         component: lazy(() => import('./pages/ParkingLot/AddLot/AddLotWrapper')),
         exact: true,
         version: 'Breadcrumbs-Many'
-      }
+      },
+      {
+        path: "/customer/:customerId/attachments",
+        component: lazy(() => import("./pages/Attachments")),
+        version: "Breadcrumbs-Single",
+        exact: true,
+      },
     ]
   },
   {
