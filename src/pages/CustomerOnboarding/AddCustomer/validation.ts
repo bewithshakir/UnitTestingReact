@@ -10,7 +10,7 @@ const AddCustomerValidationSchema = Yup.object().shape({
     addressLine2: Yup.string().required('Required'),
     city: Yup.string().required('Required'),
     state: Yup.string().required('Required'),
-    postalCode: Yup.string().matches(/^[0-9]{1,9}$/, 'Invalid postal code.').required('Required'),
+    postalCode: Yup.string().required('Required'),
     firstName: Yup.string().required('Required'),
     lastName: Yup.string().required('Required'),
     paymentType: Yup.object().shape({ label: Yup.string().required('Required'), value: Yup.string().required('Required') }).required('Required'),
@@ -28,7 +28,7 @@ const AddCustomerValidationSchema = Yup.object().shape({
                 phoneNumber: Yup.string().matches(/^(?:\+?1[-.●]?)?\(?([0-9]{3})\)?[-.●]?([0-9]{3})[-.●]?([0-9]{4})$/, 'Invalid phone number'),
             })
         )
-        .required('Must have emergency contact') 
+        .required('Must have emergency contact')
         .min(1, 'Minimum of 1 emergency contact'),
     apContact: Yup.array()
         .of(
@@ -39,7 +39,7 @@ const AddCustomerValidationSchema = Yup.object().shape({
                 phoneNumber: Yup.string().matches(/^(?:\+?1[-.●]?)?\(?([0-9]{3})\)?[-.●]?([0-9]{3})[-.●]?([0-9]{4})$/, 'Invalid phone number'),
             })
         )
-        .required('Must have cp contact') 
+        .required('Must have cp contact')
         .min(1, 'Minimum of 1 cp contact'),
 });
 
