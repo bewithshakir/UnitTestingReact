@@ -1960,7 +1960,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                       <Input
                         autoComplete="new-password"
                         description=""
-                        disabled={true}
+                        disabled={false}
                         error={false}
                         id="city"
                         label="City"
@@ -1983,7 +1983,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                       <Input
                         autoComplete="new-password"
                         description=""
-                        disabled={true}
+                        disabled={false}
                         error={false}
                         id="state"
                         label="STATE / PROVINCE"
@@ -2004,7 +2004,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                       <Input
                         autoComplete="new-password"
                         description=""
-                        disabled={true}
+                        disabled={false}
                         error={false}
                         id="postalCode"
                         label="POSTAL CODE"
@@ -2805,7 +2805,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                           <Input
                             autoComplete="new-password"
                             description=""
-                            disabled={true}
+                            disabled={false}
                             error={false}
                             id="city"
                             label="City"
@@ -2828,7 +2828,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                           <Input
                             autoComplete="new-password"
                             description=""
-                            disabled={true}
+                            disabled={false}
                             error={false}
                             id="state"
                             label="STATE / PROVINCE"
@@ -2849,7 +2849,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                           <Input
                             autoComplete="new-password"
                             description=""
-                            disabled={true}
+                            disabled={false}
                             error={false}
                             id="postalCode"
                             label="POSTAL CODE"
@@ -3649,7 +3649,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                               <Input
                                 autoComplete="new-password"
                                 description=""
-                                disabled={true}
+                                disabled={false}
                                 error={false}
                                 id="city"
                                 label="City"
@@ -3672,7 +3672,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                               <Input
                                 autoComplete="new-password"
                                 description=""
-                                disabled={true}
+                                disabled={false}
                                 error={false}
                                 id="state"
                                 label="STATE / PROVINCE"
@@ -3693,7 +3693,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                               <Input
                                 autoComplete="new-password"
                                 description=""
-                                disabled={true}
+                                disabled={false}
                                 error={false}
                                 id="postalCode"
                                 label="POSTAL CODE"
@@ -6837,7 +6837,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                 "children": <Input
                                   autoComplete="new-password"
                                   description=""
-                                  disabled={true}
+                                  disabled={false}
                                   error={false}
                                   id="city"
                                   label="City"
@@ -6881,7 +6881,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                               <Input
                                 autoComplete="new-password"
                                 description=""
-                                disabled={true}
+                                disabled={false}
                                 error={false}
                                 id="city"
                                 label="City"
@@ -7022,7 +7022,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                         aria-describedby=""
                                         aria-required={true}
                                         autoComplete="new-password"
-                                        disabled={true}
+                                        disabled={false}
                                         error={false}
                                         id="city"
                                         name="city"
@@ -7062,7 +7062,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                               "root": "MuiInputBase-root",
                                             }
                                           }
-                                          disabled={true}
+                                          disabled={false}
                                           error={false}
                                           id="city"
                                           name="city"
@@ -7078,7 +7078,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                         >
                                           <div
                                             aria-required={true}
-                                            className="MuiInputBase-root Mui-disabled MuiInputBase-formControl"
+                                            className="MuiInputBase-root MuiInputBase-formControl"
                                             onClick={[Function]}
                                             style={
                                               Object {
@@ -7090,8 +7090,8 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                               aria-describedby=""
                                               aria-invalid={false}
                                               autoComplete="new-password"
-                                              className="MuiInputBase-input Mui-disabled"
-                                              disabled={true}
+                                              className="MuiInputBase-input"
+                                              disabled={false}
                                               id="city"
                                               name="city"
                                               onAnimationStart={[Function]}
@@ -7127,7 +7127,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                 "children": <Input
                                   autoComplete="new-password"
                                   description=""
-                                  disabled={true}
+                                  disabled={false}
                                   error={false}
                                   id="state"
                                   label="STATE / PROVINCE"
@@ -7173,7 +7173,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                               <Input
                                 autoComplete="new-password"
                                 description=""
-                                disabled={true}
+                                disabled={false}
                                 error={false}
                                 id="state"
                                 label="STATE / PROVINCE"
@@ -7314,7 +7314,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                         aria-describedby=""
                                         aria-required={true}
                                         autoComplete="new-password"
-                                        disabled={true}
+                                        disabled={false}
                                         error={false}
                                         id="state"
                                         name="state"
@@ -7354,7 +7354,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                               "root": "MuiInputBase-root",
                                             }
                                           }
-                                          disabled={true}
+                                          disabled={false}
                                           error={false}
                                           id="state"
                                           name="state"
@@ -7370,7 +7370,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                         >
                                           <div
                                             aria-required={true}
-                                            className="MuiInputBase-root Mui-disabled MuiInputBase-formControl"
+                                            className="MuiInputBase-root MuiInputBase-formControl"
                                             onClick={[Function]}
                                             style={
                                               Object {
@@ -7382,8 +7382,8 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                               aria-describedby=""
                                               aria-invalid={false}
                                               autoComplete="new-password"
-                                              className="MuiInputBase-input Mui-disabled"
-                                              disabled={true}
+                                              className="MuiInputBase-input"
+                                              disabled={false}
                                               id="state"
                                               name="state"
                                               onAnimationStart={[Function]}
@@ -7417,7 +7417,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                 "children": <Input
                                   autoComplete="new-password"
                                   description=""
-                                  disabled={true}
+                                  disabled={false}
                                   error={false}
                                   id="postalCode"
                                   label="POSTAL CODE"
@@ -7459,7 +7459,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                               <Input
                                 autoComplete="new-password"
                                 description=""
-                                disabled={true}
+                                disabled={false}
                                 error={false}
                                 id="postalCode"
                                 label="POSTAL CODE"
@@ -7600,7 +7600,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                         aria-describedby=""
                                         aria-required={true}
                                         autoComplete="new-password"
-                                        disabled={true}
+                                        disabled={false}
                                         error={false}
                                         id="postalCode"
                                         name="postalCode"
@@ -7640,7 +7640,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                               "root": "MuiInputBase-root",
                                             }
                                           }
-                                          disabled={true}
+                                          disabled={false}
                                           error={false}
                                           id="postalCode"
                                           name="postalCode"
@@ -7656,7 +7656,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                         >
                                           <div
                                             aria-required={true}
-                                            className="MuiInputBase-root Mui-disabled MuiInputBase-formControl"
+                                            className="MuiInputBase-root MuiInputBase-formControl"
                                             onClick={[Function]}
                                             style={
                                               Object {
@@ -7668,8 +7668,8 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                               aria-describedby=""
                                               aria-invalid={false}
                                               autoComplete="new-password"
-                                              className="MuiInputBase-input Mui-disabled"
-                                              disabled={true}
+                                              className="MuiInputBase-input"
+                                              disabled={false}
                                               id="postalCode"
                                               name="postalCode"
                                               onAnimationStart={[Function]}
