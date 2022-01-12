@@ -6,11 +6,21 @@ import ActionsMenu from '../../components/UIComponents/Menu/ActionsMenu.componen
 import GridComponent from '../../components/UIComponents/DataGird/grid.component';
 import SearchInput from '../../components/UIComponents/SearchInput/SearchInput';
 import { Box, FormControl, Grid} from '@mui/material';
+import { HorizontalBarVersionState, useStore } from "../../store";
+import Model from "../../models/AttachmentModel";
 
 
 export default function LandingPage() {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const Obj = new Model();
+    const headCells = Obj.fieldsToDisplay();
     const [searchTerm, setSearchTerm] = useState('');
+    const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
+    setVersion("Breadcrumbs-Single");
+
+    const onInputChange = (value: string) => {
+        setSearchTerm(value);
+    };
+
     return(
         <Box display='flex'>
             <Grid container pl={2.25} pr={6.25} className='main-area'>
@@ -39,7 +49,7 @@ export default function LandingPage() {
                                 name='searchTerm'
                                 value={searchTerm}
                                 delay={600}
-                                onChange={() => null}
+                                onChange={onInputChange}
                                 placeholder={'Search'}
                             />
                         </Grid>
@@ -70,7 +80,7 @@ export default function LandingPage() {
                     <GridComponent
                         primaryKey=''
                         rows={[]}
-                        header={[]}
+                        header={headCells}
                         isLoading={false}
                         enableRowSelection
                         enableRowAction
