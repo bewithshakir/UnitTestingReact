@@ -2,7 +2,7 @@ import React, { memo, useState, useEffect } from 'react';
 import { Box, Container, Grid, Typography } from '@mui/material';
 import { useFormik } from 'formik';
 import { useTranslation } from 'react-i18next';
-import { useHistory, useRouteMatch } from 'react-router-dom';
+import { useLocation, useMatch, useNavigate } from 'react-router-dom';
 
 import Input from '../../components/UIComponents/Input/Input';
 import { Button } from '../../components/UIComponents/Button/Button.component';
@@ -17,17 +17,27 @@ import { LoadingIcon } from '../../assets/icons';
 import { isCurrentAppCountryUSA, getProductIcon } from '../../utils/helperFunctions';
 
 
+
+
 interface IFormStatus {
     message: string
     type: string
 }
 
+export interface AddProductProps{
+    version:string
+  }
+  
+  
+
+
 
 const initialValues = new ProductManagementModel();
-const AddProduct: React.FC = memo(() => {
+const AddProduct: React.FC<AddProductProps> = memo(() => {
     const { t } = useTranslation();
-    const history = useHistory();
-    const match = useRouteMatch<{ productId: string }>();
+    const navigate = useNavigate();
+    const {pathname} = useLocation();
+    const match:any = useMatch<string,string>(pathname);
     const { data: productTypesList, isLoading: isLoadingTypes, } = useGetProductTypes('us');
     const { data: productColorsList, isLoading: isLoadingColors } = useGetProductColors('us');
     const showDialogBox = useShowConfirmationDialogBoxStore((state) => state.showDialogBox);
@@ -172,7 +182,7 @@ const AddProduct: React.FC = memo(() => {
         if (!formik.isValid || formik.dirty) {
             showDialogBox(true);
         } else {
-            history.push('/productManagement');
+            navigate('/productManagement');
         }
     };
 

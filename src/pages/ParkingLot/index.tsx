@@ -11,7 +11,7 @@ import GridComponent from "../../components/UIComponents/DataGird/grid.component
 import { useGetParkingLotDetails } from "./queries";
 import SearchInput from "../../components/UIComponents/SearchInput/SearchInput";
 import { Add } from "@mui/icons-material";
-import { useHistory } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { filterByFields, sortByOptions } from "./config";
 import { RightInfoPanel } from "../../components/UIComponents/RightInfoPanel/RightInfoPanel.component";
 import { Box, FormControl, Grid, Typography } from "@mui/material";
@@ -32,7 +32,8 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
   const massActionOptions = ParkingLotObj.massActions();
   const ACTION_TYPES = ParkingLotObj.ACTION_TYPES;
   const MASS_ACTION_TYPES = ParkingLotObj.MASS_ACTION_TYPES;
-  const history = useHistory();
+  const navigate = useNavigate();
+  const location = useLocation();
   const [info, setInfo] = React.useState({});
   const [searchTerm, setSearchTerm] = React.useState("");
   const [resetTableCollaps, setResetTableCollaps] = React.useState(false);
@@ -59,7 +60,7 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
 
   
   useEffect(() => {
-    const statePL = history.location.state as { customerName: string };
+    const statePL = location.state as { customerName: string };
     resetFormFieldValue(false);
     if(statePL) {
       setPageCustomerName(statePL.customerName);
@@ -100,7 +101,7 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
   };
 
   const navigateToAddLot = () => {
-    history.push(`/customer/${customerId}/parkingLots/addLot`);
+    navigate(`/customer/${customerId}/parkingLots/addLot`);
   };
 
   const onSortBySelected = (value: string) => {
@@ -158,7 +159,7 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
     switch (action.action) {
       case ACTION_TYPES.EDIT:
         // perform action 
-        history.push(`/customer/${customerId}/parkingLots/viewLot/${row.deliveryLocationId}`);
+        navigate(`/customer/${customerId}/parkingLots/viewLot/${row.deliveryLocationId}`);
         break;
       case ACTION_TYPES.DELETE:
         // perform action

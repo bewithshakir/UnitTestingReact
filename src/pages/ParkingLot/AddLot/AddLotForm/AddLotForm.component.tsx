@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { FieldArray, FormikProvider, useFormik } from 'formik';
 import { useTranslation } from 'react-i18next';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import moment from 'moment';
 import { Box, Container, Grid, Link, Typography } from '@mui/material';
 import { Button } from '../../../../components/UIComponents/Button/Button.component';
@@ -35,7 +35,7 @@ const formStatusProps: FormStatusProps = formStatusObj;
 
 function AddLotForm(): React.ReactElement {
     const { t } = useTranslation();
-    const history = useHistory();
+    const navigate = useNavigate();
     const { theme } = useTheme();
     const { data: contactTypeList } = useGetContactTypes();
     const [primaryContactType, setPrimaryContactType] = useState('');
@@ -97,7 +97,7 @@ function AddLotForm(): React.ReactElement {
         setDisabled(true);
         setActiveLotId(data?.data?.deliveryLocationId.toString());
         timerRef.current = setTimeout(() => {
-            history.push(`/customer/${addedCustomerId}/parkingLots/viewLot/${data?.data?.deliveryLocationId.toString()}`);
+          navigate(`/customer/${addedCustomerId}/parkingLots/viewLot/${data?.data?.deliveryLocationId.toString()}`);
         }, 6000);
     };
 
@@ -230,8 +230,7 @@ function AddLotForm(): React.ReactElement {
     const onClickBack = () => {
         if (isEqual(lotState, formik.values)) {
             isFormValidated(false);
-            history.push({
-                pathname: `/customer/${addedCustomerId}/parkingLots`,
+            navigate(`/customer/${addedCustomerId}/parkingLots`,{
                 state: {
                     customerId: addedCustomerId,
                     customerName: selectedCustomerName

@@ -20,6 +20,14 @@ jest.mock("./queries", () => {
     };
 });
 
+const mockedUsedNavigate = jest.fn();
+
+jest.mock('react-router-dom', () => ({
+   ...jest.requireActual('react-router-dom') as any,
+  useNavigate: () => mockedUsedNavigate,
+}));
+
+
 describe('Given Bruger Menu on FuelTax Landing Page', () => {
     const TaxObj = new TaxModel();
     const massActionOptions = TaxObj.massActions();

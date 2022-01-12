@@ -8,13 +8,13 @@ import { ListSubheader } from '@mui/material';
 import "./style.scss";
 import { boxSystem, config } from './config';
 import { useTranslation } from 'react-i18next';
-import {  useHistory, useLocation } from 'react-router-dom';
+import {  useNavigate, useLocation } from 'react-router-dom';
 import { useAddedCustomerNameStore, useAddedCustomerIdStore } from '../../../store';
 
 const Legend: React.FC = () => {
   const { t } = useTranslation();
   const { pathname } = useLocation();
-  const history = useHistory();
+  const navigate = useNavigate();
   const selectedCustomerName = useAddedCustomerNameStore((state) => state.customerName);
   const customerId = useAddedCustomerIdStore((state) => state.customerId);
 
@@ -38,8 +38,7 @@ const Legend: React.FC = () => {
   const onItemClick = (to: string) => {
     const pathnameSegArr = to.split("/");
     if(!isDisabled(to)){
-    history.push({
-      pathname : getPath(pathnameSegArr[2]) || to,
+    navigate( getPath(pathnameSegArr[2]) || to,{
       state: {
         customerId: customerId,
         customerName: selectedCustomerName
