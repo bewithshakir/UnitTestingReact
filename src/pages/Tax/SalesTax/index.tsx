@@ -92,7 +92,7 @@ const SalesTaxLandingContent:React.FC<SalesTaxLandingContentProps> = memo(() => 
     switch (action.action) {
       case ACTION_TYPES.EDIT:
         // perform action
-        navigate(`salesTax/edit/?city=${row.city}&state=${row.state}&countryCode=${row.countryCode}`);
+        navigate(`/salesTax/edit/?city=${row.city}&state=${row.state}&countryCode=${row.countryCode}`);
         break;
       case ACTION_TYPES.DELETE:
         // perform action
