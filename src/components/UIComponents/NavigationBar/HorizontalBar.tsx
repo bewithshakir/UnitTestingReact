@@ -197,9 +197,12 @@ export default function HorizontalBar (props: HorizontalBarProps) {
         <Link className="breadcrubs-title" onClick={handleCustomerBack}>
           {selectedCustomerName}
         </Link>
-        <Link className="breadcrubs-title" href="#" onClick={handleClick}>
+        { (history.location.pathname.includes('addLot') || history.location.pathname.includes('viewLot') ) && <Link className="breadcrubs-title" href="#" onClick={handleClick}>
           {"Add Lot & Details"}
-        </Link>
+        </Link>}
+        { (history.location.pathname.includes('AddAttachment') &&  <Link className="breadcrubs-title" href="#" onClick={handleClick}>
+          {"Add Attachment"}
+        </Link>)}
       </Breadcrumbs>
     </>);
   }

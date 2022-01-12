@@ -1,4 +1,6 @@
-import { useState } from 'react';
+// import { useState } from 'react';
+import { useHistory } from "react-router-dom";
+import { useParams } from 'react-router';
 import { Button } from '../../components/UIComponents/Button/Button.component';
 import { FilterIcon, ImportIcon } from '../../assets/icons';
 import SortbyMenu from '../../components/UIComponents/Menu/SortbyMenu.component';
@@ -9,8 +11,15 @@ import { Box, FormControl, Grid} from '@mui/material';
 
 
 export default function LandingPage() {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const [searchTerm, setSearchTerm] = useState('');
+ // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const history = useHistory();
+    const params =  useParams();
+    // const [searchTerm, setSearchTerm] = useState('');   
+
+    const redirectToUploadPage =()=> {
+        history.push(`/customer/${(params as any)?.customerId}/AddAttachment`);
+    };
+    
     return(
         <Box display='flex'>
             <Grid container pl={2.25} pr={6.25} className='main-area'>
@@ -37,7 +46,7 @@ export default function LandingPage() {
                         <Grid item>
                             <SearchInput
                                 name='searchTerm'
-                                value={searchTerm}
+                                value={'searchTerm'}
                                 delay={600}
                                 onChange={() => null}
                                 placeholder={'Search'}
@@ -49,7 +58,7 @@ export default function LandingPage() {
                             <Button
                                 types='primary'
                                 aria-label='primary'
-                                onClick={() => null}
+                                onClick={redirectToUploadPage}
                                 startIcon={<ImportIcon/>}
                             >
                                 {'IMPORT'}
@@ -76,7 +85,7 @@ export default function LandingPage() {
                         enableRowAction
                         getPages={false}
                         onRowActionSelect={()=> null}
-                        searchTerm={searchTerm}
+                        searchTerm={'searchTerm'}
                         rowActionOptions={[]}
                         noDataMsg='Add attachments by clicking on import or any related sentence.'
                     />

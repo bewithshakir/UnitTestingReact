@@ -49,6 +49,12 @@ export const routes = [
         version: "Breadcrumbs-Single",
         exact: true,
       },
+      {
+        path: "/customer/:customerId/AddAttachment",
+        component: lazy(() => import("./pages/Attachments/AddAttachment/AddAttachment")),
+        version: "Breadcrumbs-Many",
+        exact: true,
+      },
     ]
   },
   {
