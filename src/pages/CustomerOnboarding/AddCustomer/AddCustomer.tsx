@@ -291,7 +291,7 @@ const AddCustomer: React.FC = () => {
 
     useEffect(()=>{
         setPaymentType('');
-    },[]);
+    },[activeCustomerId]);
 
     useEffect(() => {
         if (frequencyList?.data.length) {
@@ -519,7 +519,6 @@ const AddCustomer: React.FC = () => {
     };
     const handlePaymentTypeChange = (fieldName: string, value: any) => {
         formik.setFieldValue(fieldName, value);
-        setPaymentType(value.label);
         if (getCheckBoxDisabledByPaymentType(value.label)) {
             formik.setFieldValue('lotLevel', false);
             formik.setFieldValue('businessLevel', false);
