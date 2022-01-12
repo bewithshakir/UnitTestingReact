@@ -29,7 +29,7 @@ import FileUploadComponent from '../../../components/UIComponents/FileUpload/Fil
 
 const initialValues = new CustomerModel();
 
-function getTokenApplicable(Obj: any) {
+function getTokenApplicable (Obj: any) {
     const temp: any = [];
     Object.entries(Obj).forEach(obj => {
         if (obj[1]) {
@@ -453,7 +453,7 @@ const AddCustomer: React.FC = () => {
 
     const isFormFieldChange = () => formik.dirty;
 
-    function onClickBack() {
+    function onClickBack () {
         if ((isFormFieldChange() && !isEditShown) || (isFormFieldChange() && isEditMode)) {
             showDialogBox(true);
         } else {
@@ -478,7 +478,7 @@ const AddCustomer: React.FC = () => {
         }
     };
 
-    function handleGoogleAddressChange(addressObj: any) {
+    function handleGoogleAddressChange (addressObj: any) {
         formik.setFieldValue('addressLine1', addressObj.addressLine1);
         formik.setFieldValue('addressLine2', addressObj.addressLine2);
         formik.setFieldValue('city', addressObj.city);
@@ -486,7 +486,7 @@ const AddCustomer: React.FC = () => {
         formik.setFieldValue('postalCode', addressObj.postalCode);
     }
 
-    function handleGoogleAddressBlur() {
+    function handleGoogleAddressBlur () {
         formik.setFieldTouched("addressLine1");
         formik.validateField("addressLine1");
         formik.setFieldTouched("addressLine2");
@@ -616,9 +616,9 @@ const AddCustomer: React.FC = () => {
                                         helperText={(formik.touched.city && formik.errors.city) ? formik.errors.city : undefined}
                                         error={(formik.touched.city && formik.errors.city) ? true : false}
                                         description=''
-                                        disabled
                                         required
                                         {...formik.getFieldProps('city')}
+                                        disabled={isDisabled}
                                     />
                                 </Grid>
                                 <Grid item md={3} pl={2.5} pr={2.5} pb={2.5}>
@@ -629,9 +629,9 @@ const AddCustomer: React.FC = () => {
                                         helperText={(formik.touched.state && formik.errors.state) ? formik.errors.state : undefined}
                                         error={(formik.touched.state && formik.errors.state) ? true : false}
                                         description=''
-                                        disabled
                                         required
                                         {...formik.getFieldProps('state')}
+                                        disabled={isDisabled}
                                     />
                                 </Grid>
                                 <Grid item md={3} pl={2.5}>
@@ -642,9 +642,9 @@ const AddCustomer: React.FC = () => {
                                         helperText={(formik.touched.postalCode && formik.errors.postalCode) ? formik.errors.postalCode : undefined}
                                         error={(formik.touched.postalCode && formik.errors.postalCode) ? true : false}
                                         description=''
-                                        disabled
                                         required
                                         {...formik.getFieldProps('postalCode')}
+                                        disabled={isDisabled}
                                     />
                                 </Grid>
                                 <Grid item md={12} mt={2} mb={1}>

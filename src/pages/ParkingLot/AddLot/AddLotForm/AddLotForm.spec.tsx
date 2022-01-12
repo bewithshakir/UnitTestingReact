@@ -25,6 +25,13 @@ describe('Rendering of Add Lot Component', () => {
         );
         expect(component).toMatchSnapshot();
     });
+    it('ADD ANOTHER ORDER SCHEDULE should disable', () => {
+        const component = mount(<QueryClientProvider client={queryClient}>
+            <AddLotForm />
+        </QueryClientProvider>
+        );
+        expect(component.find('.add-link.disabled-text-link.add-another-schedule')).toBeDefined();
+    });
 });
 
 describe('Rendering of Edit Lot Component', () => {
@@ -54,6 +61,13 @@ describe('Rendering of Edit Lot Component', () => {
         component.find('.edit-button').at(0).simulate('click');
         expect(component.find('.cancelBtnPL').exists()).toBe(true);
         expect(component.find('.saveBtnPL').exists()).toBe(true);
+    });
+    it('ADD ANOTHER ORDER SCHEDULE should disable', () => {
+        const component = mount(<QueryClientProvider client={queryClient}>
+            <AddLotForm />
+        </QueryClientProvider>
+        );
+        expect(component.find('.add-link.disabled-text-link.add-another-schedule')).toBeDefined();
     });
 });
 

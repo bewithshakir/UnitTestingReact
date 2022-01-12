@@ -6,8 +6,15 @@ div{
     .lot-container{
       .deliveryDays  {
          .select {
-          width: inherit;
+          width: 88%;
        }
+      }
+      .deleteBtn{
+        padding: 0;
+        background: none;
+        margin-top: 44px;
+        margin-left: 20px;
+        cursor: pointer;
       }
     }
       .page-container{
@@ -36,7 +43,7 @@ div{
       } 
       .add-link{
         cursor: pointer;
-        display: flex;
+        display: inline-flex;
         align-items: center;
         text-decoration-color: var(--Primary);
       }

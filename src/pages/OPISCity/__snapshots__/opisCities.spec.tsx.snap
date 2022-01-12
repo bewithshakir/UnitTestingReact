@@ -781,6 +781,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                         >
                           <ForwardRef(FormControl)>
                             <SortbyMenu
+                              id="opisCitySort"
                               onSelect={[Function]}
                               options={
                                 Array [
@@ -1069,6 +1070,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                             >
                               <ForwardRef(FormControl)>
                                 <SortbyMenu
+                                  id="opisCitySort"
                                   onSelect={[Function]}
                                   options={
                                     Array [
@@ -1196,6 +1198,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                 >
                                   <ForwardRef(FormControl)>
                                     <SortbyMenu
+                                      id="opisCitySort"
                                       onSelect={[Function]}
                                       options={
                                         Array [
@@ -1472,6 +1475,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                   Object {
                                     "children": <ForwardRef(FormControl)>
                                       <SortbyMenu
+                                        id="opisCitySort"
                                         onSelect={[Function]}
                                         options={
                                           Array [
@@ -1515,6 +1519,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                       ownerState={
                                         Object {
                                           "children": <SortbyMenu
+                                            id="opisCitySort"
                                             onSelect={[Function]}
                                             options={
                                               Array [
@@ -1540,6 +1545,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                         className="MuiFormControl-root css-1nrlq1o-MuiFormControl-root"
                                       >
                                         <SortbyMenu
+                                          id="opisCitySort"
                                           onSelect={[Function]}
                                           options={
                                             Array [
@@ -1553,6 +1559,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                               aria-haspopup="true"
                                               aria-label="sortby menu list"
                                               className="btn-sortby "
+                                              id="opisCitySort"
                                               onClick={[Function]}
                                               startIcon={<Memo />}
                                             >
@@ -1593,6 +1600,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                     "textSizeSmall": "MuiButton-textSizeSmall",
                                                   }
                                                 }
+                                                id="opisCitySort"
                                                 onClick={[Function]}
                                                 startIcon={<Memo />}
                                               >
@@ -1604,6 +1612,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                   disabled={false}
                                                   focusRipple={true}
                                                   focusVisibleClassName="Mui-focusVisible"
+                                                  id="opisCitySort"
                                                   onClick={[Function]}
                                                   type="button"
                                                 >
@@ -1622,6 +1631,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                     disabled={false}
                                                     focusRipple={true}
                                                     focusVisibleClassName="Mui-focusVisible"
+                                                    id="opisCitySort"
                                                     onClick={[Function]}
                                                     type="button"
                                                   >
@@ -1630,6 +1640,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                       aria-label="sortby menu list"
                                                       className="MuiButtonBase-root MuiButton-root MuiButton-text btn-sortby "
                                                       disabled={false}
+                                                      id="opisCitySort"
                                                       onBlur={[Function]}
                                                       onClick={[Function]}
                                                       onDragLeave={[Function]}

@@ -13,7 +13,7 @@ jest.mock("react-router-dom", () => ({
 }));
 
 describe('Rendering of Search in Parking Lot Content Component', () => {
-    const component = shallow(<QueryClientProvider client={queryCl}><ProductManagement /></QueryClientProvider>)
+    const component = shallow(<QueryClientProvider client={queryCl}><ProductManagement /></QueryClientProvider>);
     it('Parking Lot Content component Snapshot testing when', () => {
         expect(component).toBeDefined();
         expect(component).toMatchSnapshot();

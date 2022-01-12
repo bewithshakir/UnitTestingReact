@@ -19,11 +19,13 @@ export interface ParkingLot {
 export interface SelectProps {
     label: string,
     value: string,
+    deliveryDayWeekId?: string | null
 }
 
-export interface mutiSelectItem  {
+export interface mutiSelectItem {
     label: string,
     value: string | number
+    deliveryDayWeekId?: string | null
 }
 
 export interface lotContact {
@@ -34,12 +36,14 @@ export interface lotContact {
 }
 
 export interface orderSchDel {
+    deliveryDayId?: string | null
     fromDate: moment.Moment | string | null,
     toDate: moment.Moment | string | null,
     startTime: string | '',
     endTime: string | '',
-    productDelDays?: SelectProps 
-    productDelDaysMulti?: Array<mutiSelectItem> 
+    productDelDays?: SelectProps
+    productDelDaysMulti?: Array<mutiSelectItem>
+    isPrimary: 'N' | 'Y' | string
     delFreq: string | ''
 }
 // Array<mutiSelectItem>
@@ -65,9 +69,12 @@ export const orderScheduleDel = [{
     toDate: null,
     startTime: '',
     endTime: '',
-    productDelDays: { label: '', value: '' },
+    productDelDays: { label: '', value: '', deliveryDayWeekId: null },
     productDelDaysMulti: [],
-    delFreq:''
+    /** internal use only */
+    deliveryDayId: null,
+    delFreq: '',
+    isPrimary: 'Y'
 }];
 
 export const addLotFormInitialValues = {
@@ -127,13 +134,15 @@ export default class ParkingLotModel {
         this.jurisdictionId = '';
         this.productDelFreq = { label: '', value: '' };
         this.orderScheduleDel = [{
+            deliveryDayId: null,
             fromDate: null,
             toDate: null,
             startTime: '',
             endTime: '',
-            productDelDays: { label: '', value: '' },
+            productDelDays: { label: '', value: '', deliveryDayWeekId: null },
             productDelDaysMulti: [],
-            delFreq: ''
+            delFreq: '',
+            isPrimary: 'Y'
         }];
         this.locationContact = [{
             firstName: '',
@@ -152,7 +161,7 @@ export default class ParkingLotModel {
         this.lotLevel = false;
     }
 
-    fieldsToDisplay (): headerObj[] {
+    fieldsToDisplay(): headerObj[] {
         return [
             { field: "deliveryLocationNm", label: "LOT NAME", type: 'text', sortable: true },
             { field: "streetAddress", label: "STREET ADDRESS", type: 'text' },
@@ -187,7 +196,7 @@ export default class ParkingLotModel {
         DELETE: 'delete',
     };
 
-    rowActions () {
+    rowActions() {
         const { t } = useTranslation();
         return [
             {
@@ -207,7 +216,7 @@ export default class ParkingLotModel {
         DELETE: 'remove',
     };
 
-    massActions () {
+    massActions() {
         const { t } = useTranslation();
         return [
             {

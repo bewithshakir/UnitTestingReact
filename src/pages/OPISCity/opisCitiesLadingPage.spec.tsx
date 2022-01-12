@@ -12,11 +12,13 @@ function getAllElements (component: any) {
     const cityDropdownElem = component.container.querySelector('#city') as HTMLInputElement;
     const stateDropdownElem = component.container.querySelector('#state') as HTMLInputElement;
     const searchBox = component.container.querySelector('#opisCitySearch');
+    const sortBy = component.container.querySelector('#opisCitySort');
+    const sortbyMenuList = component.container.querySelector('#sortby-menu-list');
     const applyBtn = component.container.querySelector('#applyAll');
     const clearAllBtn = component.container.querySelector('[type="reset"]');
     const filterBtn = component.container.querySelector('#opisCityFilter');
     const formElem = component.container.querySelector('[class="dynamicForm"]');
-    return { searchBox, formElem, filterBtn, cityDropdownElem, stateDropdownElem, applyBtn, clearAllBtn };
+    return { sortBy, sortbyMenuList, searchBox, formElem, filterBtn, cityDropdownElem, stateDropdownElem, applyBtn, clearAllBtn };
 }
 
 
@@ -31,7 +33,7 @@ describe('load form data on edit mode', () => {
     });
 });
 
-describe('search city name load form data on edit mode', () => {
+describe('search city name on OPIS city landing page', () => {
     it('load data in form', async () => {
         serverMsw.use(
             rest.get('*', (req, res, ctx) => {
@@ -101,6 +103,56 @@ describe('search city name load form data on edit mode', () => {
 
         await waitFor(() => {
             expect(result.getByText(/Oops.. No Results Found/i)).toBeInTheDocument();
+        });
+    });
+});
+
+describe('sortby city name on OPIS city landing page', () => {
+    it('load data in form', async () => {
+        serverMsw.use(
+            rest.get('*', (req, res, ctx) => {
+                return res(
+                    ctx.status(200),
+                    ctx.json({
+                        data: {
+                            opisCities: [
+                                {
+                                    city: "Los Angeles",
+                                    cityId: 102,
+                                    countryCd: "us",
+                                    opisServedCityId: "943846a8-3cde-4d4a-b091-64108f687025",
+                                    state: "CA",
+                                },
+                                {
+                                    city: "Austin",
+                                    cityId: 113,
+                                    countryCd: "us",
+                                    opisServedCityId: "aff055cd-234e-4f79-a119-3815cfe1b1f7",
+                                    state: "TX",
+                                },
+                            ],
+                            pagination: {
+                                limit: 15,
+                                offset: 0,
+                                totalCount: 1,
+                            }
+                        },
+                        error: null
+                    })
+                );
+            })
+        );
+        const result = renderWithClient(<OPISCityLandingPage />);
+
+        await act(() => {
+            const { sortBy } = getAllElements(result);
+            userEvent.click(sortBy);
+        });
+
+        await waitFor(() => {
+            expect(result.getByText(/102/i)).toBeInTheDocument();
+            expect(result.getByText(/Los Angeles/i)).toBeInTheDocument();
+            expect(result.getByText(/CA/i)).toBeInTheDocument();
         });
     });
 });

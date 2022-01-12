@@ -64,15 +64,10 @@ const AddParkingLotValidationSchema = Yup.object().shape({
             }
           }
         }),
-      productDelDays: Yup.object()
-        .test('delFreq', function (value: any, context: any) {
-          if ((['weekly', 'monthly'].includes(String(context?.parent?.delFreq).toLowerCase()))) {
-            if (value && !value.label) {
-              return this.createError({ message: 'Delivery Day required' });
-            }
-          }
-          return true;
-        }),
+      productDelDays: Yup.object().shape({
+        label: Yup.string(),
+        value: Yup.string(),
+      }),
     })
   ),
 });
