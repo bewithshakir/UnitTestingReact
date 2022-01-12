@@ -5,7 +5,7 @@ import { HorizontalBarVersionState, useStore } from '../../../store';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 
-const AddAttachment: React.FC = () => {
+const AddAttachment: React.FC<any> = () =>  {
     const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
     setVersion("Breadcrumbs-Many");
     return (

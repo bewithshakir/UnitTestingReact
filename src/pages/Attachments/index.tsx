@@ -1,5 +1,5 @@
 // import { useState } from 'react';
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useParams } from 'react-router';
 import { Button } from '../../components/UIComponents/Button/Button.component';
 import { FilterIcon, ImportIcon } from '../../assets/icons';
@@ -10,16 +10,16 @@ import SearchInput from '../../components/UIComponents/SearchInput/SearchInput';
 import { Box, FormControl, Grid} from '@mui/material';
 
 
-export default function LandingPage() {
+const LandingPage: React.FC<any> = () =>  {
  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const history = useHistory();
+    const navigate = useNavigate();
     const params =  useParams();
     // const [searchTerm, setSearchTerm] = useState('');   
 
     const redirectToUploadPage =()=> {
-        history.push(`/customer/${(params as any)?.customerId}/AddAttachment`);
+        navigate(`/customer/${(params as any)?.customerId}/AddAttachment`);
     };
-    
+
     return(
         <Box display='flex'>
             <Grid container pl={2.25} pr={6.25} className='main-area'>
@@ -95,4 +95,6 @@ export default function LandingPage() {
         </Box>
     );
     
-}
+};
+
+export default LandingPage;

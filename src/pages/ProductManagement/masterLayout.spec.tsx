@@ -5,8 +5,11 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 
 const queryCl = new QueryClient();
 
+const mockedUsedNavigate = jest.fn();
+
 jest.mock("react-router-dom", () => ({
     ...jest.requireActual("react-router-dom") as any,
+    useNavigate: () => mockedUsedNavigate,
     useLocation: () => ({
         pathname: "/customer/1234/parkingLots/viewLot/6789",
     })

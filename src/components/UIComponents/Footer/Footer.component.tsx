@@ -1,5 +1,5 @@
 import React from 'react';
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { SvgIcon } from '@material-ui/core';
 import Add from '@material-ui/icons/Add';
@@ -26,12 +26,12 @@ export const Footer: React.FC = () => {
   const { t } = useTranslation();
 
   
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const logoSrc = themeType === 'UK' ? logoOne : logoTwo;
 
   const navigateToAddCustomer = () => {
-    history.push("/addCustomer");
+    navigate("/addCustomer");
   };
 
   return (

@@ -5,6 +5,13 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import SortbyMenu from '../../../components/UIComponents/Menu/SortbyMenu.component';
 import { sortByOptions } from "./config";
 
+const mockedUsedNavigate = jest.fn();
+
+jest.mock('react-router-dom', () => ({
+   ...jest.requireActual('react-router-dom') as any,
+  useNavigate: () => mockedUsedNavigate,
+}));
+
 const queryClient = new QueryClient();
 describe('Rendering of Salestax landing page Component', () => {
     const component = mount(<QueryClientProvider client={queryClient}><SalesTaxLandingContent version='1' /></QueryClientProvider>);
