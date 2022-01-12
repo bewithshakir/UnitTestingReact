@@ -24,7 +24,7 @@ const Legend: React.FC = () => {
     return {
       'addCustomer': `/customer/viewCustomer/${customerId}`,
       'parkingLots': `/customer/${customerId}/parkingLots`,
-      'dsp': `/customer/${customerId}/dsp`,
+      'dsps': `/customer/${customerId}/dsps`,
     }[x];
   }
   };
@@ -34,7 +34,7 @@ const Legend: React.FC = () => {
       return false;
     } else if (to.includes('parkingLots') && (pathname.includes('viewCustomer') || pathname.includes('parkingLots') || pathname.includes('dsp'))){
       return false;
-    } else if(to.includes('dsp') && selectedPaymentType === 'Voyager'){
+    } else if(to.includes('dsps') && selectedPaymentType === 'Voyager'){
       return false;
     }else return true;
   };
