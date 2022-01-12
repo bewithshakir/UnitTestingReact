@@ -1,6 +1,6 @@
 .select {
   width: 100%;
-
+  
   & .MuiInputLabel-outlined.MuiInputLabel-shrink {
     transform: translate(2px, 0px) scale(0.75);
     z-index: 0;
@@ -315,5 +315,13 @@
       box-shadow: 3px 6px 14px #00000026;
       z-index: 999;
     }
+  }
+}
+
+.select-address-autocomplete{
+  .react-select__option{
+    line-height: normal;
+    height: fit-content;
+    padding: 15px 15px;
   }
 }
