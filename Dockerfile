@@ -1,9 +1,10 @@
 FROM node:latest
 WORKDIR /app
 COPY package.json ./
-COPY yarn.lock ./
-RUN yarn install
+#COPY yarn.lock ./
+#RUN yarn install
+RUN npm install
 COPY . .
-EXPOSE 80
+EXPOSE 3000
 ENV GENERATE_SOURCEMAP=false
-CMD [ "yarn", "build"]
+CMD [ "node", "app.js"]
