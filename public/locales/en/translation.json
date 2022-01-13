@@ -276,5 +276,30 @@
       "payment in progress": "Payment In Progress",
       "recently added asset": "Recently Added Asset"
     }
+  },
+  "FeeDetails":{
+    "head1": "Add Fee Details to fulfil the requirements",
+    "feeName":"Fee Name",
+    "feeNamePlaceholder": "Enter Fee Name",
+    "deliveryFee":"Delivery Fee",
+    "enterFee": "Enter Fee",
+    "delFeeShed":"Delivery Fee Schedule",
+    "selectFee": "Select Fee",
+    "salesTaxExcemption": "Sales Tax Excemption",
+    "serviceFeeRule": "Service Fee rule",
+    "serviceFeeCharge": "Service Fee Charge",
+    "enterFeeCharge": "Enter Fee Charge",
+    "productType": "Product Type",
+    "productTypePlaceholder": "Select Product Type",
+    "masterProductType": "Master Product Type",
+    "Product Name": "Product Name",
+    "productNamePlaceholder": "Select Product Name",
+    "considerAsset": "Consider this as an asset",
+    "assetType": "Asset Type",
+    "assetTypePlaceholder": "Select Asset Type",
+    "assetTypeDescPlaceholder": "Enter Asset Description",
+    "vehicleType": "Vehicle Type",
+    "vehicleTypePlaceholder": "Select Vehicle Type",
+    "addAnotherServiceFee": "ADD ANOTHER SERVICE FEE"
   }
 }

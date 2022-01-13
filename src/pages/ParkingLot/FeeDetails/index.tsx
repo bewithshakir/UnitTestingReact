@@ -1,7 +1,7 @@
 import { Fragment, useState } from 'react';
 import { FormikProvider, useFormik } from 'formik';
 import { useTranslation } from 'react-i18next';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Container, FormControlLabel, Grid, Link, Typography, Box } from "@mui/material";
 import { Button } from '../../../components/UIComponents/Button/Button.component';
 import Input from '../../../components/UIComponents/Input/Input';
@@ -19,7 +19,7 @@ export default function FeeDetails() {
     const { t } = useTranslation();
     const { theme } = useTheme();
     const isFormFieldChange = () => formik.dirty;
-    const history = useHistory();
+    const navigate = useNavigate();
     const [isDisabled, setDisabled] = useState(false);
     const [isSavCancelShown, setSaveCancelShown] = useState(true);
     const customerName = useAddedCustomerNameStore((state) => state.customerName);
@@ -31,8 +31,7 @@ export default function FeeDetails() {
         if (isFormFieldChange()) {
             showDialogBox(true);
         } else {
-            history.push({
-                pathname: `/customer/${customerId}/parkingLots`,
+            navigate( `/customer/${customerId}/parkingLots`, {
                 state: {
                     customerId: customerId,
                     customerName: customerName
@@ -54,7 +53,7 @@ export default function FeeDetails() {
         productType: { label: '', value: '' },
         masterProductType: { label: '', value: '' },
         productName: { label: '', value: '' },
-        salesTaxExemption: false,
+        salesTaxExcemption: false,
         considerAsset: false,
         assetType: { label: '', value: '' },
         assetTypeDesc: '',
@@ -96,7 +95,7 @@ export default function FeeDetails() {
                                 <Grid container item md={12} mt={2} mb={1}>
                                     <Grid item xs={6}>
                                         <Typography variant="h3" component="h3" gutterBottom className="left-heading fw-bold" mb={1}>
-                                            {'Add Fee Details to fulfil the requirements'}
+                                            {t("FeeDetails.head1")}
                                         </Typography>
                                     </Grid>
                                     {(!isSavCancelShown) && <Grid item xs={6} sx={{ justifyContent: 'flex-end' }}>
@@ -114,9 +113,9 @@ export default function FeeDetails() {
                                     <Grid item xs={12} md={6}>
                                         <Input
                                             id='feeName'
-                                            label='Fee Name'
+                                            label={t("FeeDetails.feeName")}
                                             type='text'
-                                            placeholder='Enter Fee Name'
+                                            placeholder={t("FeeDetails.feeNamePlaceholder")}
                                             helperText={(formik.touched.feeName && formik.errors.feeName) ? formik.errors.feeName : undefined}
                                             error={(formik.touched.feeName && formik.errors.feeName) ? true : false}
                                             description=''
@@ -128,16 +127,16 @@ export default function FeeDetails() {
                                 </Grid>
                                 <Grid item pt={2.5}>
                                     <Typography variant="h3" component="h3" gutterBottom className="left-heading fw-bold" mb={1}>
-                                        {'Delivery Fee'}
+                                        {t("FeeDetails.deliveryFee")}
                                     </Typography>
                                 </Grid>
                                 <Grid container item md={12} mt={2} mb={1} pt={0.5}>
                                     <Grid item xs={12} md={6}>
                                         <Input
                                             id='delFee'
-                                            label='Delivery Fee'
+                                            label={t("FeeDetails.deliveryFee")}
                                             type='text'
-                                            placeholder='Enter Fee'
+                                            placeholder={t("FeeDetails.enterFee")}
                                             helperText={(formik.touched.delFee && formik.errors.delFee) ? formik.errors.delFee : undefined}
                                             error={(formik.touched.delFee && formik.errors.delFee) ? true : false}
                                             description=''
@@ -148,16 +147,15 @@ export default function FeeDetails() {
                                     </Grid>
                                     <Grid item xs={12} md={6} pl={2.5}>
                                         <Select
-                                            id='delFee'
                                             name='delFeeShed'
-                                            label='Delivery Fee Schedule'
+                                            label={t("FeeDetails.delFeeShed")}
                                             description=''
                                             items={[]}
-                                            placeholder='Enter Fee'
+                                            placeholder={t("FeeDetails.selectFee")}
                                             helperText={(formik.touched.delFeeShed && formik.errors.delFeeShed) ? formik.errors.delFeeShed.value : undefined}
                                             error={(formik.touched.delFeeShed && formik.errors.delFeeShed) ? true : false}
                                             onBlur={() => { formik.setFieldTouched("delFeeShed"); formik.validateField("delFeeShed"); }}
-                                            onChange={() => null}
+                                            onChange={formik.setFieldValue}
                                             disabled={isDisabled}
                                             required
                                         />
@@ -167,23 +165,23 @@ export default function FeeDetails() {
                                     <FormControlLabel
                                         sx={{ margin: "0px", marginBottom: "1rem", fontWeight: "bold" }}
                                         className="checkbox-field"
-                                        control={<Checkbox checked={formik.values.salesTaxExemption} name="salesTaxExcemption" onChange={formik.handleChange} disabled={isDisabled}/>} 
+                                        control={<Checkbox checked={formik.values.salesTaxExcemption} name="salesTaxExcemption" onChange={formik.handleChange} disabled={isDisabled}/>}
                                         label={<Typography variant="h3" component="h3" className="fw-bold">
-                                            {'Sales Tax Excemption'}
+                                            {t("FeeDetails.salesTaxExcemption")}
                                         </Typography>} />
                                 </Grid>
                                 <Grid item pt={2.5}>
                                     <Typography variant="h3" component="h3" gutterBottom className="left-heading fw-bold" mb={1}>
-                                        {'Service Fee rule 1 :'}
+                                        {t("FeeDetails.serviceFeeRule") +' 1 :'}
                                     </Typography>
                                 </Grid>
                                 <Grid container item md={12} mt={2} mb={1} pt={0.5}>
                                     <Grid item xs={12} md={6}>
                                         <Input
                                             id='serviceFeeCharge'
-                                            label='Service Fee Charge'
+                                            label={t("FeeDetails.serviceFeeCharge")}
                                             type='text'
-                                            placeholder='Enter Fee Charge'
+                                            placeholder={t("FeeDetails.enterFeeCharge")}
                                             helperText={(formik.touched.serviceFeeCharge && formik.errors.serviceFeeCharge) ? formik.errors.serviceFeeCharge : undefined}
                                             error={(formik.touched.serviceFeeCharge && formik.errors.serviceFeeCharge) ? true : false}
                                             description=''
@@ -196,15 +194,14 @@ export default function FeeDetails() {
                                 <Grid container item md={12} mt={2} mb={1} pt={0.5}>
                                     <Grid item xs={12} md={6}>
                                         <Select
-                                            id='productType'
                                             name='productType'
-                                            label='Product Type'
+                                            label={t("FeeDetails.productType")}
                                             description=''
                                             items={[]}
-                                            placeholder='Select Product Type'
+                                            placeholder={t("FeeDetails.productTypePlaceholder")}
                                             helperText={(formik.touched.productType && formik.errors.productType) ? formik.errors.productType.value : undefined}
                                             error={(formik.touched.productType && formik.errors.productType) ? true : false}
-                                            onChange={() => null}
+                                            onChange={formik.setFieldValue}
                                             onBlur={() => { formik.setFieldTouched("productType"); formik.validateField("productType"); }}
                                             disabled={isDisabled}
                                             required
@@ -212,13 +209,12 @@ export default function FeeDetails() {
                                     </Grid>
                                     <Grid item xs={12} md={6} pl={2.5}>
                                         <Select
-                                            id='masterProductType'
                                             name='masterProductType'
-                                            label='Master Product Type'
+                                            label={t("FeeDetails.masterProductType")}
                                             description=''
                                             items={[]}
-                                            placeholder='Select Product Type'
-                                            onChange={() => null}
+                                            placeholder={t("FeeDetails.productTypePlaceholder")}
+                                            onChange={formik.setFieldValue}
                                             helperText={(formik.touched.masterProductType && formik.errors.masterProductType) ? formik.errors.masterProductType.value : undefined}
                                             error={(formik.touched.masterProductType && formik.errors.masterProductType) ? true : false}
                                             onBlur={() => { formik.setFieldTouched("masterProductType"); formik.validateField("masterProductType"); }}
@@ -230,13 +226,12 @@ export default function FeeDetails() {
                                 <Grid container item md={12} mt={2} mb={1} pt={0.5}>
                                     <Grid item xs={12} md={6}>
                                         <Select
-                                            id='productName'
                                             name='productName'
-                                            label='Product Name'
+                                            label={t("FeeDetails.productName")}
                                             description=''
                                             items={[]}
-                                            placeholder='Select Product Name'
-                                            onChange={() => null}
+                                            placeholder={t("FeeDetails.productNamePlaceholder")}
+                                            onChange={formik.setFieldValue}
                                             helperText={(formik.touched.productName && formik.errors.productName) ? formik.errors.productName.value : undefined}
                                             error={(formik.touched.productName && formik.errors.productName) ? true : false}
                                             onBlur={() => { formik.setFieldTouched("productName"); formik.validateField("productName"); }}
@@ -251,19 +246,18 @@ export default function FeeDetails() {
                                         className="checkbox-field"
                                         control={<Checkbox name="considerAsset" checked={formik.values.considerAsset} onChange={formik.handleChange} disabled={isDisabled}/>}
                                         label={<Typography variant="h4" component="h4" className="fw-bold">
-                                            {'Consider this as an asset'}
+                                            {t("FeeDetails.considerAsset")}
                                         </Typography>} />
                                 </Grid>
                                 <Grid container item md={12} mt={1} mb={1}>
                                     <Grid item xs={12} md={6}>
                                         <Select
-                                            id='assetType'
                                             name='assetType'
-                                            label='Asset Type'
+                                            label={t("FeeDetails.assetType")}
                                             description=''
                                             items={[]}
-                                            placeholder='Select Asset Type'
-                                            onChange={() => null}
+                                            placeholder={t("FeeDetails.assetTypePlaceholder")}
+                                            onChange={formik.setFieldValue}
                                             helperText={(formik.touched.assetType && formik.errors.assetType) ? formik.errors.assetType.value : undefined}
                                             error={(formik.touched.assetType && formik.errors.assetType) ? true : false}
                                             onBlur={() => { formik.setFieldTouched("assetType"); formik.validateField("assetType"); }}
@@ -278,7 +272,7 @@ export default function FeeDetails() {
                                             id='assetTypeDesc'
                                             label=''
                                             type='text'
-                                            placeholder='Enter Asset Description'
+                                            placeholder={t("FeeDetails.assetTypeDescPlaceholder")}
                                             helperText={(formik.touched.assetTypeDesc && formik.errors.assetTypeDesc) ? formik.errors.assetTypeDesc : undefined}
                                             error={(formik.touched.assetTypeDesc && formik.errors.assetTypeDesc) ? true : false}
                                             description=''
@@ -291,13 +285,12 @@ export default function FeeDetails() {
                                 <Grid container item md={12} mt={1} mb={1}>
                                     <Grid item xs={12} md={6}>
                                         <Select
-                                            id='vehicleType'
                                             name='vehicleType'
-                                            label='Vehicle Type'
+                                            label={t("FeeDetails.vehicleType")}
                                             description=''
                                             items={[]}
-                                            placeholder='Select Vehicle Type'
-                                            onChange={() => null}
+                                            placeholder={t("FeeDetails.vehicleTypePlaceholder")}
+                                            onChange={formik.setFieldValue}
                                             helperText={(formik.touched.vehicleType && formik.errors.vehicleType) ? formik.errors.vehicleType.value : undefined}
                                             error={(formik.touched.vehicleType && formik.errors.vehicleType) ? true : false}
                                             onBlur={() => { formik.setFieldTouched("vehicleType"); formik.validateField("vehicleType"); }}
@@ -313,7 +306,7 @@ export default function FeeDetails() {
                                     >
                                         <span className="add-icon-span"><PlusIcon color={theme["--Secondary-Background"]} /></span>
                                         <Typography variant="h3" component="h3" className="fw-bold disabled-text" mb={1}>
-                                            ADD ANOTHER SERVICE FEE
+                                            {t("FeeDetails.addAnotherServiceFee")}
                                         </Typography>
                                     </Link>
                                 </Grid>
