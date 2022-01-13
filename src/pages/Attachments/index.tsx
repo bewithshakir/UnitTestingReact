@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Button } from '../../components/UIComponents/Button/Button.component';
 import { FilterIcon, ImportIcon } from '../../assets/icons';
 import SortbyMenu from '../../components/UIComponents/Menu/SortbyMenu.component';
@@ -9,8 +9,11 @@ import { Box, FormControl, Grid} from '@mui/material';
 import { HorizontalBarVersionState, useStore } from "../../store";
 import Model from "../../models/AttachmentModel";
 
+interface props {
+    version : string
+}
 
-export default function LandingPage() {
+ const LandingPage: React.FC<props> = () => {
     const Obj = new Model();
     const headCells = Obj.fieldsToDisplay();
     const [searchTerm, setSearchTerm] = useState('');
@@ -96,4 +99,6 @@ export default function LandingPage() {
         </Box>
     );
     
-}
+};
+
+export default LandingPage;
