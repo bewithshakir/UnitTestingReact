@@ -15,9 +15,7 @@ const AddParkingLotValidationSchema = Yup.object().shape({
   city: Yup.string().required('Required'),
   state: Yup.string().required('Required'),
   county: Yup.string().required('Required'),
-  postalCode: Yup.string()
-    .matches(/^[0-9]{1,9}$/, 'Invalid postal code.')
-    .required('Required'),
+  postalCode: Yup.string().required('Required'),
   jurisdictionId: Yup.string()
     .min(13, 'Should be minimum 13 characters long')
     .required('Required'),

@@ -4,7 +4,7 @@ import { getProducts } from './queries';
 import './SubTableFuelProduct.scss';
 import { DataGridActionsMenuOption } from './../../components/UIComponents/Menu/DataGridActionsMenu.component';
 import TaxModel from '../../models/TaxModel';
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 interface props {
     id:string,
@@ -21,7 +21,7 @@ export default function InnerTable(props:props) {
     const [productDetails, setProductDetails] = useState([]);
     const TaxObj = new TaxModel();
     const ACTION_TYPES = TaxObj.ACTION_TYPES;
-    const history = useHistory();
+    const navigate = useNavigate();
 
     const { data, fetchNextPage, isLoading, isFetching }: any = getProducts(props.id);
     useEffect(() => {
@@ -38,7 +38,7 @@ export default function InnerTable(props:props) {
         switch (action.action) {
           case ACTION_TYPES.EDIT:
             // perform action
-            history.push(`/editFuelTax/?productId=${row.productId}&taxJurisdictionId=${props.id}&countryCode=us`);
+            navigate(`/editFuelTax/?productId=${row.productId}&taxJurisdictionId=${props.id}&countryCode=us`);
             break;
           default: return;
         }

@@ -5,6 +5,18 @@ import { findByIdAttr, findByTestAttr, HOCSetup } from '../../tests/testUtils';
 import AddSalesTax from './AddSalesTax';
 import DiscardDialog from '../../components/UIComponents/ConfirmationDialog/DiscardChangesDialog.component';
 
+const mockedUsedNavigate = jest.fn();
+
+jest.mock('react-router-dom', () => ({
+   ...jest.requireActual('react-router-dom') as any,
+  useNavigate: () => mockedUsedNavigate,
+  useLocation: ()=> ({
+    location: {
+        pathname: '/addSalesTax/'
+    },
+    push: jest.fn()
+}),
+}));
 
 /**
  * Factory function to create wrapper
