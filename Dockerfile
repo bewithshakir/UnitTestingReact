@@ -1,10 +1,10 @@
-FROM node:17-alpine
+FROM node:16-alpine
 WORKDIR /app
 COPY package.json ./
 #COPY yarn.lock ./
 #RUN yarn install
-RUN npm install
 COPY . .
+RUN npm install
 EXPOSE 3000
 ENV GENERATE_SOURCEMAP=false
-CMD [ "node", "app.js"]
+CMD [ "npm", "start"]
