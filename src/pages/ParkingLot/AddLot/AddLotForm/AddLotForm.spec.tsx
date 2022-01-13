@@ -8,7 +8,15 @@ const queryClient = new ReactQuery.QueryClient();
 beforeAll(() => {
     jest.useFakeTimers('modern');
     jest.setSystemTime(new Date(1638338756741));
-});
+});const mockedUsedNavigate = jest.fn();
+
+jest.mock('react-router-dom', () => ({
+   ...jest.requireActual('react-router-dom') as any,
+  useNavigate: () => mockedUsedNavigate,
+}));
+
+
+
 
 describe('Rendering of Add Lot Component', () => {
     jest.mock("react-router-dom", () => ({

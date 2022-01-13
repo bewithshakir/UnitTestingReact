@@ -19,6 +19,7 @@ interface TabPanelProps {
 interface MenuProps {
     config?: any;
     current?: number;
+    version:string
 }
 
 const a11yProps = (index: number) => {

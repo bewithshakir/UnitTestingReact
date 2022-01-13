@@ -7,6 +7,12 @@ import userEvent from '@testing-library/user-event';
 // import selectEvent from 'react-select-event';
 // import { RightInfoPanel } from '../../components/UIComponents/RightInfoPanel/RightInfoPanel.component';
 // import { OPISCity } from "./config";
+const mockedUsedNavigate = jest.fn();
+
+jest.mock('react-router-dom', () => ({
+   ...jest.requireActual('react-router-dom') as any,
+  useNavigate: () => mockedUsedNavigate,
+}));
 
 function getAllElements (component: any) {
     const cityDropdownElem = component.container.querySelector('#city') as HTMLInputElement;

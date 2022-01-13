@@ -1,16 +1,16 @@
 import { Box, CssBaseline } from '@mui/material';
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import HorizontalBar from '../../components/UIComponents/NavigationBar/HorizontalBar';
 import { DemoComponents } from '../../components/UIComponents/DemoComponents/DemoComponents.component';
 
 const DemoReusableComponent: React.FC<any> = (props: any) => {
    
 
-    const history = useHistory();
+    const navigate = useNavigate();
 
     function onClickBack() {
-        history.goBack();
+        navigate(-1);
     }
 
     return (

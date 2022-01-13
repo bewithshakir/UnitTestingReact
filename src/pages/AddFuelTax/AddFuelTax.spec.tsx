@@ -8,6 +8,20 @@ import DiscardDialog from '../../components/UIComponents/ConfirmationDialog/Disc
 
 const queryClient = new QueryClient();
 
+const mockedUsedNavigate = jest.fn();
+
+jest.mock('react-router-dom', () => ({
+   ...jest.requireActual('react-router-dom') as any,
+  useNavigate: () => mockedUsedNavigate,
+  useLocation: ()=> ({
+ 
+        pathname: '/addFuelTax/'
+   
+}),
+}));
+
+
+
 /**
  * Factory function to create wrapper
  * @returns {wrapper}
