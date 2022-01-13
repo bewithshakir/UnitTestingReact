@@ -1,7 +1,7 @@
 import { Fragment, useState } from 'react';
 import { FormikProvider, useFormik } from 'formik';
 import { useTranslation } from 'react-i18next';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import { Container, FormControlLabel, Grid, Link, Typography, Box } from "@mui/material";
 import { Button } from '../../../components/UIComponents/Button/Button.component';
 import Input from '../../../components/UIComponents/Input/Input';
@@ -18,20 +18,18 @@ export default function FeeDetails() {
 
     const { t } = useTranslation();
     const { theme } = useTheme();
-    const history = useHistory();
+    const navigate = useNavigate();
     const [isDisabled, setDisabled] = useState(false);
     const [isSavCancelShown, setSaveCancelShown] = useState(true);
     const customerName = useAddedCustomerNameStore((state) => state.customerName);
     const customerId = useAddedCustomerIdStore((state) => state.customerId);
 
     const onClickBack = () => {
-        history.push({
-            pathname: `/customer/${customerId}/parkingLots`,
+        navigate( `/customer/${customerId}/parkingLots` ,{
             state: {
-                customerId: customerId,
-                customerName: customerName
-            }
-        });
+              customerId: customerId,
+              customerName: customerName
+            }});
     };
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars

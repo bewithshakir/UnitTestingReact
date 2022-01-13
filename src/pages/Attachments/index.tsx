@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { useParams } from 'react-router';
 import { Button } from '../../components/UIComponents/Button/Button.component';
@@ -11,9 +11,11 @@ import { Box, FormControl, Grid} from '@mui/material';
 import { HorizontalBarVersionState, useStore } from "../../store";
 import Model from "../../models/AttachmentModel";
 
+interface props {
+    version : string
+}
 
-
-const LandingPage: React.FC<any> = () =>  {
+ const LandingPage: React.FC<props> = () => {
     const Obj = new Model();
     const headCells = Obj.fieldsToDisplay();
     const [searchTerm, setSearchTerm] = useState('');
@@ -30,7 +32,7 @@ const LandingPage: React.FC<any> = () =>  {
 
     const redirectToUploadPage =()=> {
         navigate(`/customer/${(params as any)?.customerId}/AddAttachment`);
-    }    
+    };  
 
     return(
         <Box display='flex'>
@@ -58,7 +60,7 @@ const LandingPage: React.FC<any> = () =>  {
                         <Grid item>
                             <SearchInput
                                 name='searchTerm'
-                                value={'searchTerm'}
+                                value={searchTerm}
                                 delay={600}
                                 onChange={onInputChange}
                                 placeholder={'Search'}
@@ -97,7 +99,7 @@ const LandingPage: React.FC<any> = () =>  {
                         enableRowAction
                         getPages={false}
                         onRowActionSelect={()=> null}
-                        searchTerm={'searchTerm'}
+                        searchTerm={searchTerm}
                         rowActionOptions={[]}
                         noDataMsg='Add attachments by clicking on import or any related sentence.'
                     />

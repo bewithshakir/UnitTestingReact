@@ -8,6 +8,7 @@ const ViewCustomer = lazy(() => import('./pages/CustomerOnboarding/AddCustomer/A
 const CustomerParkingLot = lazy(() => import("./pages/ParkingLot"));
 const CustomerAddParkingLot = lazy(() => import('./pages/ParkingLot/AddLot/AddLotWrapper'));
 const CustomerViewParkingLot = lazy(() => import('./pages/ParkingLot/AddLot/AddLotWrapper'));
+const CustomerAttachments = lazy(() => import("./pages/Attachments"));
 const Taxes = lazy(() => import("./pages/Tax"));
 const AddFuelTax = lazy(() => import('./pages/AddFuelTax'));
 const EditFuelTax = lazy(() => import('./pages/AddFuelTax'));
@@ -22,7 +23,6 @@ const DemoComponents = lazy(() => import('./pages/DemoComponents/DemoComponents'
 const AddProductManagement = lazy(() => import('./pages/AddProductManagement/AddProduct'));
 const EditProductManagement =lazy(() => import('./pages/AddProductManagement/AddProduct'));
 const AssetManagement =lazy(() => import("./pages/AssetManagement"));
-const Attachments = lazy(() => import("./pages/Attachments"));
 const AddAttachment = lazy(() => import("./pages/Attachments/AddAttachment/AddAttachment"));
 
 export const routes : RouteObject[]  = [
@@ -55,12 +55,12 @@ export const routes : RouteObject[]  = [
         element: <CustomerViewParkingLot version= 'Breadcrumbs-Many'/>
       },
       {
-        path: "/customer/:customerId/attachments",
-        element: <Attachments version='Breadcrumbs-Many'/>
-      },
-      {
         path: "/customer/:customerId/AddAttachment",
         element: <AddAttachment version='Breadcrumbs-Many'/>
+      },
+      { 
+        path: "/customer/:customerId/Attachments",
+        element: <CustomerAttachments version='Breadcrumbs-Single' />
       }
     ]
   },

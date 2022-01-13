@@ -22,6 +22,7 @@ const AddAttachment: React.FC<any> = () => {
         }
         if (rejectedFiles.length) {
             setUploadErrMsg(rejectedFiles[0].errors[0].message);
+            console.warn("validFiles ->", validFiles);
         }
     }, []);
 
