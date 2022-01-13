@@ -2,7 +2,7 @@ import React, { memo, useState, useEffect } from 'react';
 import { Box, Container, Grid, Typography } from '@mui/material';
 import { useFormik } from 'formik';
 import { useTranslation } from 'react-i18next';
-import { useLocation, useMatch, useNavigate } from 'react-router-dom';
+import {  useNavigate, useParams } from 'react-router-dom';
 
 import Input from '../../components/UIComponents/Input/Input';
 import { Button } from '../../components/UIComponents/Button/Button.component';
@@ -36,8 +36,8 @@ const initialValues = new ProductManagementModel();
 const AddProduct: React.FC<AddProductProps> = memo(() => {
     const { t } = useTranslation();
     const navigate = useNavigate();
-    const {pathname} = useLocation();
-    const match:any = useMatch<string,string>(pathname);
+    const {productId }: any = useParams();
+
     const { data: productTypesList, isLoading: isLoadingTypes, } = useGetProductTypes('us');
     const { data: productColorsList, isLoading: isLoadingColors } = useGetProductColors('us');
     const showDialogBox = useShowConfirmationDialogBoxStore((state) => state.showDialogBox);
@@ -122,7 +122,7 @@ const AddProduct: React.FC<AddProductProps> = memo(() => {
         }
     };
 
-    useGetProductData(match.params.productId, onGetProductSuccess, onGetProductError);
+    useGetProductData(productId, onGetProductSuccess, onGetProductError);
 
 
     const onEditProductSuccess = () => {
@@ -142,7 +142,7 @@ const AddProduct: React.FC<AddProductProps> = memo(() => {
     };
 
     const { mutate: editProduct, isSuccess: isSuccessEditProduct, isError: isErrorEditProduct, isLoading: isLoadingEditProduct } = useEditProductManagement(
-        match.params.productId,
+        productId,
         productGroupCd,
         onEditProductSuccess,
         onEditProductError

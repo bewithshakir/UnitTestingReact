@@ -1,4 +1,4 @@
-// import { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { useParams } from 'react-router';
 import { Button } from '../../components/UIComponents/Button/Button.component';
@@ -8,17 +8,29 @@ import ActionsMenu from '../../components/UIComponents/Menu/ActionsMenu.componen
 import GridComponent from '../../components/UIComponents/DataGird/grid.component';
 import SearchInput from '../../components/UIComponents/SearchInput/SearchInput';
 import { Box, FormControl, Grid} from '@mui/material';
+import { HorizontalBarVersionState, useStore } from "../../store";
+import Model from "../../models/AttachmentModel";
+
 
 
 const LandingPage: React.FC<any> = () =>  {
- // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const Obj = new Model();
+    const headCells = Obj.fieldsToDisplay();
+    const [searchTerm, setSearchTerm] = useState('');
+    const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
+    setVersion("Breadcrumbs-Single");
+
+    const onInputChange = (value: string) => {
+        setSearchTerm(value);
+    };
+
     const navigate = useNavigate();
     const params =  useParams();
     // const [searchTerm, setSearchTerm] = useState('');   
 
     const redirectToUploadPage =()=> {
         navigate(`/customer/${(params as any)?.customerId}/AddAttachment`);
-    };
+    }    
 
     return(
         <Box display='flex'>
@@ -48,7 +60,7 @@ const LandingPage: React.FC<any> = () =>  {
                                 name='searchTerm'
                                 value={'searchTerm'}
                                 delay={600}
-                                onChange={() => null}
+                                onChange={onInputChange}
                                 placeholder={'Search'}
                             />
                         </Grid>
@@ -79,7 +91,7 @@ const LandingPage: React.FC<any> = () =>  {
                     <GridComponent
                         primaryKey=''
                         rows={[]}
-                        header={[]}
+                        header={headCells}
                         isLoading={false}
                         enableRowSelection
                         enableRowAction
