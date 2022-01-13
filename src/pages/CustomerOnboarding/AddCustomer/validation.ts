@@ -25,7 +25,7 @@ const AddCustomerValidationSchema = Yup.object().shape({
                 firstName: Yup.string().required('Required'),
                 lastName: Yup.string().required('Required'),
                 email: Yup.string().email('Invalid email').required('Required'),
-                phoneNumber: Yup.string().matches(/^(?:\+?1[-.●]?)?\(?([0-9]{3})\)?[-.●]?([0-9]{3})[-.●]?([0-9]{4})$/, 'Invalid phone number'),
+                phoneNumber: Yup.string().matches(/^(?:\+?1[-.●]?)?\(?([0-9]{3})\)?[-.●]?([0-9]{3})[-.●]?([0-9]{4})$/, 'Invalid phone number').required('Required'),
             })
         )
         .required('Must have emergency contact')
@@ -36,7 +36,7 @@ const AddCustomerValidationSchema = Yup.object().shape({
                 firstName: Yup.string().required('Required'),
                 lastName: Yup.string().required('Required'),
                 email: Yup.string().email('Invalid email').required('Required'),
-                phoneNumber: Yup.string().matches(/^(?:\+?1[-.●]?)?\(?([0-9]{3})\)?[-.●]?([0-9]{3})[-.●]?([0-9]{4})$/, 'Invalid phone number'),
+                phoneNumber: Yup.string().matches(/^(?:\+?1[-.●]?)?\(?([0-9]{3})\)?[-.●]?([0-9]{3})[-.●]?([0-9]{4})$/, 'Invalid phone number').required('Required'),
             })
         )
         .required('Must have cp contact')

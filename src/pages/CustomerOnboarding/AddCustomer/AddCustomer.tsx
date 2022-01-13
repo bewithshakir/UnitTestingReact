@@ -1,4 +1,3 @@
-/* eslint-disable no-empty */
 import React, { useState, useEffect, useCallback } from 'react';
 import { FileCopy } from '@material-ui/icons';
 import { Box, Container, FormControl, FormControlLabel, FormGroup, Grid, IconButton, Link, Typography } from '@mui/material';
@@ -29,7 +28,7 @@ import FileUploadComponent from '../../../components/UIComponents/FileUpload/Fil
 
 const initialValues = new CustomerModel();
 
-function getTokenApplicable (Obj: any) {
+function getTokenApplicable(Obj: any) {
     const temp: any = [];
     Object.entries(Obj).forEach(obj => {
         if (obj[1]) {
@@ -46,10 +45,10 @@ interface IFormStatusProps {
     [key: string]: IFormStatus
 }
 
-export interface AddCustomerProps{
-    version:string
-  }
-  
+export interface AddCustomerProps {
+    version: string
+}
+
 
 const formStatusProps: IFormStatusProps = {
     editsuccess: {
@@ -166,17 +165,13 @@ const AddCustomer: React.FC<AddCustomerProps> = () => {
     });
 
     const onAddCustomerError = (err: any) => {
-        try {
-            const { data } = err.response;
-            setAPIResponse(true);
-            setFormStatus({ message: data?.error?.message || formStatusProps.error.message, type: 'Error' });
-            formik.setSubmitting(false);
-            setTimeout(() => {
-                setAPIResponse(false);
-            }, 6000);
-        } catch (error) {
-
-        }
+        const { data } = err?.response;
+        setAPIResponse(true);
+        setFormStatus({ message: data?.error?.message || formStatusProps?.error?.message, type: 'Error' });
+        formik.setSubmitting(false);
+        setTimeout(() => {
+            setAPIResponse(false);
+        }, 6000);
     };
 
     const onFileUploadError = (err: any) => {
@@ -234,20 +229,16 @@ const AddCustomer: React.FC<AddCustomerProps> = () => {
     };
 
     const onEditCustomerError = (err: any) => {
-        try {
-            const { data } = err.response;
-            setAPIResponse(true);
-            isFormValidated(false);
-            setFormStatus({ message: data?.error?.message || formStatusProps.error.message, type: 'Error' });
-            formik.setSubmitting(false);
-            setEditShown(false);
-            setSaveCancelShown(true);
-            setTimeout(() => {
-                setAPIResponse(false);
-            }, 6000);
-        } catch (error) {
-
-        }
+        const { data } = err?.response;
+        setAPIResponse(true);
+        isFormValidated(false);
+        setFormStatus({ message: data?.error?.message || formStatusProps?.error?.message, type: 'Error' });
+        formik.setSubmitting(false);
+        setEditShown(false);
+        setSaveCancelShown(true);
+        setTimeout(() => {
+            setAPIResponse(false);
+        }, 6000);
     };
 
     const { mutate: uploadContractFiles } = useUploadContractFile(activeCustomerId, onFileUploadError, onFileUploadSuccess);
@@ -452,7 +443,7 @@ const AddCustomer: React.FC<AddCustomerProps> = () => {
 
     const isFormFieldChange = () => formik.dirty;
 
-    function onClickBack () {
+    function onClickBack() {
         if ((isFormFieldChange() && !isEditShown) || (isFormFieldChange() && isEditMode)) {
             showDialogBox(true);
         } else {
@@ -477,7 +468,7 @@ const AddCustomer: React.FC<AddCustomerProps> = () => {
         }
     };
 
-    function handleGoogleAddressChange (addressObj: any) {
+    function handleGoogleAddressChange(addressObj: any) {
         formik.setFieldValue('addressLine1', addressObj.addressLine1);
         formik.setFieldValue('addressLine2', addressObj.addressLine2);
         formik.setFieldValue('city', addressObj.city);
@@ -485,7 +476,7 @@ const AddCustomer: React.FC<AddCustomerProps> = () => {
         formik.setFieldValue('postalCode', addressObj.postalCode);
     }
 
-    function handleGoogleAddressBlur () {
+    function handleGoogleAddressBlur() {
         formik.setFieldTouched("addressLine1");
         formik.validateField("addressLine1");
         formik.setFieldTouched("addressLine2");
@@ -524,6 +515,11 @@ const AddCustomer: React.FC<AddCustomerProps> = () => {
             formik.setFieldValue('vehicleLevel', false);
         }
     };
+
+    const deleteContact = (index: number, componentArr: any) => {
+        componentArr.remove(index);
+    };
+
     return (
         <>
             <Grid item md={10} xs={10}>
@@ -819,95 +815,105 @@ const AddCustomer: React.FC<AddCustomerProps> = () => {
                                     render={(arrayHelpers) => (
                                         <React.Fragment>
                                             {formik.values.emergencyContact.map((contactList, index) => (
-                                                <Grid container key={index}>
-                                                    <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
-                                                        <Input
-                                                            id={`emergencyContact[${index}].firstName`}
-                                                            label='First Name'
-                                                            type='text'
-                                                            helperText={
-                                                                formik?.errors?.emergencyContact && formik?.touched?.emergencyContact &&
-                                                                    (formik.touched?.emergencyContact?.[index]?.firstName && ((formik.errors?.emergencyContact?.[index] as EmergencyContact)?.firstName))
-                                                                    ?
-                                                                    (formik.errors.emergencyContact[index] as EmergencyContact).firstName : undefined
-                                                            }
-                                                            error={
-                                                                formik?.errors?.emergencyContact && formik?.touched?.emergencyContact &&
-                                                                    (formik.touched?.emergencyContact?.[index]?.firstName && ((formik.errors?.emergencyContact?.[index] as EmergencyContact)?.firstName))
-                                                                    ? true : false
-                                                            }
-                                                            description=''
-                                                            required
-                                                            {...formik.getFieldProps(`emergencyContact[${index}].firstName`)}
-                                                            disabled={isDisabled}
-                                                        />
+                                                <React.Fragment key={`em${index}`}>
+                                                    <Grid container item xs={11} md={11}>
+                                                        <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
+                                                            <Input
+                                                                id={`emergencyContact[${index}].firstName`}
+                                                                label='First Name'
+                                                                type='text'
+                                                                helperText={
+                                                                    formik?.errors?.emergencyContact && formik?.touched?.emergencyContact &&
+                                                                        (formik.touched?.emergencyContact?.[index]?.firstName && ((formik.errors?.emergencyContact?.[index] as EmergencyContact)?.firstName))
+                                                                        ?
+                                                                        (formik.errors.emergencyContact[index] as EmergencyContact).firstName : undefined
+                                                                }
+                                                                error={
+                                                                    formik?.errors?.emergencyContact && formik?.touched?.emergencyContact &&
+                                                                        (formik.touched?.emergencyContact?.[index]?.firstName && ((formik.errors?.emergencyContact?.[index] as EmergencyContact)?.firstName))
+                                                                        ? true : false
+                                                                }
+                                                                description=''
+                                                                required
+                                                                {...formik.getFieldProps(`emergencyContact[${index}].firstName`)}
+                                                                disabled={isDisabled}
+                                                            />
+                                                        </Grid>
+                                                        <Grid item xs={12} md={6} pl={2.5} pb={2.5}>
+                                                            <Input
+                                                                id={`emergencyContact[${index}].lastName`}
+                                                                label='Last Name'
+                                                                type='text'
+                                                                helperText={
+                                                                    formik?.errors?.emergencyContact && formik?.touched?.emergencyContact &&
+                                                                        (formik.touched?.emergencyContact?.[index]?.lastName && ((formik.errors?.emergencyContact?.[index] as EmergencyContact)?.lastName))
+                                                                        ?
+                                                                        (formik.errors.emergencyContact[index] as EmergencyContact).lastName : undefined
+                                                                }
+                                                                error={
+                                                                    formik?.errors?.emergencyContact && formik?.touched?.emergencyContact &&
+                                                                        (formik.touched?.emergencyContact?.[index]?.lastName && ((formik.errors?.emergencyContact?.[index] as EmergencyContact)?.lastName))
+                                                                        ? true : false
+                                                                }
+                                                                description=''
+                                                                required
+                                                                {...formik.getFieldProps(`emergencyContact[${index}].lastName`)}
+                                                                disabled={isDisabled}
+                                                            />
+                                                        </Grid>
+                                                        <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
+                                                            <Input
+                                                                id={`emergencyContact[${index}].email`}
+                                                                label='Email'
+                                                                type="text"
+                                                                helperText={
+                                                                    formik?.errors?.emergencyContact && formik?.touched?.emergencyContact &&
+                                                                        (formik.touched?.emergencyContact?.[index]?.email && ((formik.errors?.emergencyContact?.[index] as EmergencyContact)?.email))
+                                                                        ?
+                                                                        (formik.errors.emergencyContact[index] as EmergencyContact).email : undefined
+                                                                }
+                                                                error={
+                                                                    formik?.errors?.emergencyContact && formik?.touched?.emergencyContact &&
+                                                                        (formik.touched?.emergencyContact?.[index]?.email && ((formik.errors?.emergencyContact?.[index] as EmergencyContact)?.email))
+                                                                        ? true : false
+                                                                }
+                                                                description=''
+                                                                required
+                                                                {...formik.getFieldProps(`emergencyContact[${index}].email`)}
+                                                                disabled={isDisabled}
+                                                            />
+                                                        </Grid>
+                                                        <Grid item xs={12} md={6} pl={2.5} pb={2.5}>
+                                                            <Input
+                                                                id={`emergencyContact[${index}].phoneNumber`}
+                                                                label='Phone Number'
+                                                                type='text'
+                                                                required
+                                                                helperText={
+                                                                    formik?.errors?.emergencyContact && formik?.touched?.emergencyContact &&
+                                                                        (formik.touched?.emergencyContact?.[index]?.phoneNumber && ((formik.errors?.emergencyContact?.[index] as EmergencyContact)?.phoneNumber))
+                                                                        ?
+                                                                        (formik.errors.emergencyContact[index] as EmergencyContact).phoneNumber : undefined
+                                                                }
+                                                                error={
+                                                                    formik?.errors?.emergencyContact && formik?.touched?.emergencyContact &&
+                                                                        (formik.touched?.emergencyContact?.[index]?.phoneNumber && ((formik.errors?.emergencyContact?.[index] as EmergencyContact)?.phoneNumber))
+                                                                        ? true : false
+                                                                }
+                                                                description=''
+                                                                {...formik.getFieldProps(`emergencyContact[${index}].phoneNumber`)}
+                                                                disabled={isDisabled}
+                                                            />
+                                                        </Grid>
                                                     </Grid>
-                                                    <Grid item xs={12} md={6} pl={2.5} pb={2.5}>
-                                                        <Input
-                                                            id={`emergencyContact[${index}].lastName`}
-                                                            label='Last Name'
-                                                            type='text'
-                                                            helperText={
-                                                                formik?.errors?.emergencyContact && formik?.touched?.emergencyContact &&
-                                                                    (formik.touched?.emergencyContact?.[index]?.lastName && ((formik.errors?.emergencyContact?.[index] as EmergencyContact)?.lastName))
-                                                                    ?
-                                                                    (formik.errors.emergencyContact[index] as EmergencyContact).lastName : undefined
-                                                            }
-                                                            error={
-                                                                formik?.errors?.emergencyContact && formik?.touched?.emergencyContact &&
-                                                                    (formik.touched?.emergencyContact?.[index]?.lastName && ((formik.errors?.emergencyContact?.[index] as EmergencyContact)?.lastName))
-                                                                    ? true : false
-                                                            }
-                                                            description=''
-                                                            required
-                                                            {...formik.getFieldProps(`emergencyContact[${index}].lastName`)}
-                                                            disabled={isDisabled}
-                                                        />
+                                                    <Grid container item xs={1} md={1}>
+                                                        <div className='deleteBtn'>
+                                                            {index !== 0 && (
+                                                                <DeleteIcon color='#D7252C' height={16} onClick={() => (!formik.values.emergencyContact[index].customerContactId) && deleteContact(index, arrayHelpers)} />
+                                                            )}
+                                                        </div>
                                                     </Grid>
-                                                    <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
-                                                        <Input
-                                                            id={`emergencyContact[${index}].email`}
-                                                            label='Email'
-                                                            type="text"
-                                                            helperText={
-                                                                formik?.errors?.emergencyContact && formik?.touched?.emergencyContact &&
-                                                                    (formik.touched?.emergencyContact?.[index]?.email && ((formik.errors?.emergencyContact?.[index] as EmergencyContact)?.email))
-                                                                    ?
-                                                                    (formik.errors.emergencyContact[index] as EmergencyContact).email : undefined
-                                                            }
-                                                            error={
-                                                                formik?.errors?.emergencyContact && formik?.touched?.emergencyContact &&
-                                                                    (formik.touched?.emergencyContact?.[index]?.email && ((formik.errors?.emergencyContact?.[index] as EmergencyContact)?.email))
-                                                                    ? true : false
-                                                            }
-                                                            description=''
-                                                            required
-                                                            {...formik.getFieldProps(`emergencyContact[${index}].email`)}
-                                                            disabled={isDisabled}
-                                                        />
-                                                    </Grid>
-                                                    <Grid item xs={12} md={6} pl={2.5} pb={2.5}>
-                                                        <Input
-                                                            id={`emergencyContact[${index}].phoneNumber`}
-                                                            label='Phone Number'
-                                                            type='text'
-                                                            helperText={
-                                                                formik?.errors?.emergencyContact && formik?.touched?.emergencyContact &&
-                                                                    (formik.touched?.emergencyContact?.[index]?.phoneNumber && ((formik.errors?.emergencyContact?.[index] as EmergencyContact)?.phoneNumber))
-                                                                    ?
-                                                                    (formik.errors.emergencyContact[index] as EmergencyContact).phoneNumber : undefined
-                                                            }
-                                                            error={
-                                                                formik?.errors?.emergencyContact && formik?.touched?.emergencyContact &&
-                                                                    (formik.touched?.emergencyContact?.[index]?.phoneNumber && ((formik.errors?.emergencyContact?.[index] as EmergencyContact)?.phoneNumber))
-                                                                    ? true : false
-                                                            }
-                                                            description=''
-                                                            {...formik.getFieldProps(`emergencyContact[${index}].phoneNumber`)}
-                                                            disabled={isDisabled}
-                                                        />
-                                                    </Grid>
-                                                </Grid>
+                                                </React.Fragment>
                                             ))}
 
                                             <Grid item md={12} mt={2} mb={4}>
@@ -952,95 +958,105 @@ const AddCustomer: React.FC<AddCustomerProps> = () => {
                                     render={(arrayHelpers) => (
                                         <React.Fragment>
                                             {formik.values.apContact.map((apContactList, index) => (
-                                                <Grid container key={index}>
-                                                    <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
-                                                        <Input
-                                                            id={`apContact[${index}].firstName`}
-                                                            label='First Name'
-                                                            type='text'
-                                                            helperText={
-                                                                formik?.errors?.apContact && formik?.touched?.apContact &&
-                                                                    (formik.touched?.apContact?.[index]?.firstName && ((formik.errors?.apContact?.[index] as EmergencyContact)?.firstName))
-                                                                    ?
-                                                                    (formik.errors.apContact[index] as EmergencyContact).firstName : undefined
-                                                            }
-                                                            error={
-                                                                formik?.errors?.apContact && formik?.touched?.apContact &&
-                                                                    (formik.touched?.apContact?.[index]?.firstName && ((formik.errors?.apContact?.[index] as EmergencyContact)?.firstName))
-                                                                    ? true : false
-                                                            }
-                                                            description=''
-                                                            required
-                                                            {...formik.getFieldProps(`apContact[${index}].firstName`)}
-                                                            disabled={isDisabled}
-                                                        />
+                                                <React.Fragment key={`ap${index}`}>
+                                                    <Grid container item xs={11} md={11}>
+                                                        <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
+                                                            <Input
+                                                                id={`apContact[${index}].firstName`}
+                                                                label='First Name'
+                                                                type='text'
+                                                                helperText={
+                                                                    formik?.errors?.apContact && formik?.touched?.apContact &&
+                                                                        (formik.touched?.apContact?.[index]?.firstName && ((formik.errors?.apContact?.[index] as EmergencyContact)?.firstName))
+                                                                        ?
+                                                                        (formik.errors.apContact[index] as EmergencyContact).firstName : undefined
+                                                                }
+                                                                error={
+                                                                    formik?.errors?.apContact && formik?.touched?.apContact &&
+                                                                        (formik.touched?.apContact?.[index]?.firstName && ((formik.errors?.apContact?.[index] as EmergencyContact)?.firstName))
+                                                                        ? true : false
+                                                                }
+                                                                description=''
+                                                                required
+                                                                {...formik.getFieldProps(`apContact[${index}].firstName`)}
+                                                                disabled={isDisabled}
+                                                            />
+                                                        </Grid>
+                                                        <Grid item xs={12} md={6} pl={2.5} pb={2.5}>
+                                                            <Input
+                                                                id={`apContact[${index}].lastName`}
+                                                                label='Last Name'
+                                                                type='text'
+                                                                helperText={
+                                                                    formik?.errors?.apContact && formik?.touched?.apContact &&
+                                                                        (formik.touched?.apContact?.[index]?.lastName && ((formik.errors?.apContact?.[index] as EmergencyContact)?.lastName))
+                                                                        ?
+                                                                        (formik.errors.apContact[index] as EmergencyContact).lastName : undefined
+                                                                }
+                                                                error={
+                                                                    formik?.errors?.apContact && formik?.touched?.apContact &&
+                                                                        (formik.touched?.apContact?.[index]?.lastName && ((formik.errors?.apContact?.[index] as EmergencyContact)?.lastName))
+                                                                        ? true : false
+                                                                }
+                                                                description=''
+                                                                required
+                                                                {...formik.getFieldProps(`apContact[${index}].lastName`)}
+                                                                disabled={isDisabled}
+                                                            />
+                                                        </Grid>
+                                                        <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
+                                                            <Input
+                                                                id={`apContact[${index}].email`}
+                                                                label='Email'
+                                                                type="text"
+                                                                helperText={
+                                                                    formik?.errors?.apContact && formik?.touched?.apContact &&
+                                                                        (formik.touched?.apContact?.[index]?.email && ((formik.errors?.apContact?.[index] as EmergencyContact)?.email))
+                                                                        ?
+                                                                        (formik.errors.apContact[index] as EmergencyContact).email : undefined
+                                                                }
+                                                                error={
+                                                                    formik?.errors?.apContact && formik?.touched?.apContact &&
+                                                                        (formik.touched?.apContact?.[index]?.email && ((formik.errors?.apContact?.[index] as EmergencyContact)?.email))
+                                                                        ? true : false
+                                                                }
+                                                                description=''
+                                                                required
+                                                                {...formik.getFieldProps(`apContact[${index}].email`)}
+                                                                disabled={isDisabled}
+                                                            />
+                                                        </Grid>
+                                                        <Grid item xs={12} md={6} pl={2.5} pb={2.5}>
+                                                            <Input
+                                                                id={`apContact[${index}].phoneNumber`}
+                                                                label='Phone Number'
+                                                                type='text'
+                                                                required
+                                                                helperText={
+                                                                    formik?.errors?.apContact && formik?.touched?.apContact &&
+                                                                        (formik.touched?.apContact?.[index]?.phoneNumber && ((formik.errors?.apContact?.[index] as EmergencyContact)?.phoneNumber))
+                                                                        ?
+                                                                        (formik.errors.apContact[index] as EmergencyContact).phoneNumber : undefined
+                                                                }
+                                                                error={
+                                                                    formik?.errors?.apContact && formik?.touched?.apContact &&
+                                                                        (formik.touched?.apContact?.[index]?.phoneNumber && ((formik.errors?.apContact?.[index] as EmergencyContact)?.phoneNumber))
+                                                                        ? true : false
+                                                                }
+                                                                description=''
+                                                                {...formik.getFieldProps(`apContact[${index}].phoneNumber`)}
+                                                                disabled={isDisabled}
+                                                            />
+                                                        </Grid>
                                                     </Grid>
-                                                    <Grid item xs={12} md={6} pl={2.5} pb={2.5}>
-                                                        <Input
-                                                            id={`apContact[${index}].lastName`}
-                                                            label='Last Name'
-                                                            type='text'
-                                                            helperText={
-                                                                formik?.errors?.apContact && formik?.touched?.apContact &&
-                                                                    (formik.touched?.apContact?.[index]?.lastName && ((formik.errors?.apContact?.[index] as EmergencyContact)?.lastName))
-                                                                    ?
-                                                                    (formik.errors.apContact[index] as EmergencyContact).lastName : undefined
-                                                            }
-                                                            error={
-                                                                formik?.errors?.apContact && formik?.touched?.apContact &&
-                                                                    (formik.touched?.apContact?.[index]?.lastName && ((formik.errors?.apContact?.[index] as EmergencyContact)?.lastName))
-                                                                    ? true : false
-                                                            }
-                                                            description=''
-                                                            required
-                                                            {...formik.getFieldProps(`apContact[${index}].lastName`)}
-                                                            disabled={isDisabled}
-                                                        />
+                                                    <Grid container item xs={1} md={1}>
+                                                        <div className='deleteBtn'>
+                                                            {index !== 0 && (
+                                                                <DeleteIcon color='#D7252C' height={16} onClick={() => ((!formik.values.apContact[index].customerContactId) && deleteContact(index, arrayHelpers))} />
+                                                            )}
+                                                        </div>
                                                     </Grid>
-                                                    <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
-                                                        <Input
-                                                            id={`apContact[${index}].email`}
-                                                            label='Email'
-                                                            type="text"
-                                                            helperText={
-                                                                formik?.errors?.apContact && formik?.touched?.apContact &&
-                                                                    (formik.touched?.apContact?.[index]?.email && ((formik.errors?.apContact?.[index] as EmergencyContact)?.email))
-                                                                    ?
-                                                                    (formik.errors.apContact[index] as EmergencyContact).email : undefined
-                                                            }
-                                                            error={
-                                                                formik?.errors?.apContact && formik?.touched?.apContact &&
-                                                                    (formik.touched?.apContact?.[index]?.email && ((formik.errors?.apContact?.[index] as EmergencyContact)?.email))
-                                                                    ? true : false
-                                                            }
-                                                            description=''
-                                                            required
-                                                            {...formik.getFieldProps(`apContact[${index}].email`)}
-                                                            disabled={isDisabled}
-                                                        />
-                                                    </Grid>
-                                                    <Grid item xs={12} md={6} pl={2.5} pb={2.5}>
-                                                        <Input
-                                                            id={`apContact[${index}].phoneNumber`}
-                                                            label='Phone Number'
-                                                            type='text'
-                                                            helperText={
-                                                                formik?.errors?.apContact && formik?.touched?.apContact &&
-                                                                    (formik.touched?.apContact?.[index]?.phoneNumber && ((formik.errors?.apContact?.[index] as EmergencyContact)?.phoneNumber))
-                                                                    ?
-                                                                    (formik.errors.apContact[index] as EmergencyContact).phoneNumber : undefined
-                                                            }
-                                                            error={
-                                                                formik?.errors?.apContact && formik?.touched?.apContact &&
-                                                                    (formik.touched?.apContact?.[index]?.phoneNumber && ((formik.errors?.apContact?.[index] as EmergencyContact)?.phoneNumber))
-                                                                    ? true : false
-                                                            }
-                                                            description=''
-                                                            {...formik.getFieldProps(`apContact[${index}].phoneNumber`)}
-                                                            disabled={isDisabled}
-                                                        />
-                                                    </Grid>
-                                                </Grid>
+                                                </React.Fragment>
                                             ))}
 
                                             <Grid item md={12} mt={2} mb={4}>
