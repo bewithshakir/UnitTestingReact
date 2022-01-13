@@ -6,4 +6,4 @@ RUN yarn install
 COPY . .
 EXPOSE 3000
 ENV GENERATE_SOURCEMAP=false
-CMD [ "yarn", "build"]
+CMD [ "yarn", "start-docker"]
