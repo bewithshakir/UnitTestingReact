@@ -23,7 +23,7 @@ const queryClient = new QueryClient();
 describe('Rendering of View Customer Component', () => {
     it('Edit/View Customer component Snapshot testing when', () => {
         const component = mount(<QueryClientProvider client={queryClient}>
-            <AddCustomer />
+            <AddCustomer version="Breadcrumbs-Single" />
         </QueryClientProvider>
         );
 
