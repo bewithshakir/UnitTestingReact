@@ -1,5 +1,24 @@
 div{
     .upload-attachment-div{
         border: 1px solid var(--Gray);
+        text-align: center;
+        padding: 33px 0px;
+        .main-text{
+            color: var(--Darkgray);
+            font-weight: bold;
+            .highlighted-text{
+                color: var(--BlueHighlightedColor);
+                text-decoration: underline;
+                cursor: pointer;
+            }
+        }
+        .helper-text{
+            color: var(--Darkgray);
+            font-size: 14px;
+            margin-top: 15px;
+        }
+    }
+    .final-upload-btn{
+        float: right;
     }
 }
