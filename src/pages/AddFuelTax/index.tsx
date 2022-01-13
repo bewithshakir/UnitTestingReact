@@ -14,7 +14,7 @@ import { useAddFuelTax, useGetFuelTax, useEditFuelTax } from './queries';
 import ToastMessage from '../../components/UIComponents/ToastMessage/ToastMessage.component';
 import { DatePickerInput } from '../../components/UIComponents/DatePickerInput/DatePickerInput.component';
 import moment from 'moment';
-import { useLocation, useHistory } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const initialValues = new TaxModel();
 
@@ -24,6 +24,10 @@ interface IFormStatus {
 }
 interface IFormStatusProps {
     [key: string]: IFormStatus
+}
+
+interface AddFuelTaxProps{
+    version:string
 }
 
 const formStatusProps: IFormStatusProps = {
@@ -42,10 +46,10 @@ const formStatusProps: IFormStatusProps = {
 };
 
 
-const AddFuelTax = memo(() => {
+const AddFuelTax:React.FC<AddFuelTaxProps> = memo(() => {
     const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
     setVersion("Breadcrumbs-Single");
-    const history = useHistory();
+    const navigate = useNavigate();
     const isFormValidated = useShowConfirmationDialogBoxStore((state) => state.setFormFieldValue);
     const showDialogBox = useShowConfirmationDialogBoxStore((state) => state.showDialogBox);
     const isFormFieldChange = () => formik.dirty;
@@ -119,7 +123,7 @@ const AddFuelTax = memo(() => {
         setFormStatus(formStatusProps.updated);
         setTimeout(() => {
             setAPIResponse(false);
-            history.push('/taxes');
+            navigate('/taxes');
         }, 2000);
     };
     const onEditFuelTaxError = (err: any)=> {
@@ -278,7 +282,7 @@ const AddFuelTax = memo(() => {
                 if (formik.dirty) {
                     if (formik.initialValues != formik.values) {
                         isFormValidated(false);
-                        history.push('/taxes');
+                        navigate('/taxes');
                     }
                 }
             } else {
@@ -286,7 +290,7 @@ const AddFuelTax = memo(() => {
             }
         } else {
             isFormValidated(false);
-            history.push('/taxes');
+            navigate('/taxes');
         }
     }
 
