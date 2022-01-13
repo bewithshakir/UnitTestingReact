@@ -55,6 +55,7 @@
     "start-qa": "react-scripts start",
     "quick-test": "react-scripts test",
     "start-docker": "react-scripts --openssl-legacy-provider start",
+    "ssl-start": "export NODE_OPTIONS=--openssl-legacy-provider && react-scripts --openssl-legacy-provider start",
     "start-prod": "react-scripts start",
     "build": "react-scripts --openssl-legacy-provider build",
     "build-docker": "react-scripts --openssl-legacy-provider build",
