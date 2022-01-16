@@ -57,8 +57,7 @@ export default function FeeDetails() {
         initialValues: initialFormikValues,
         validationSchema: AddFeeDetailsValidationSchema,
         onSubmit: (values) => {
-            // eslint-disable-next-line no-console
-            console.log('values',values);
+            console.warn(values);
         },
         enableReinitialize: true
     });
