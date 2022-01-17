@@ -26,23 +26,6 @@ import './FeeDetails.scss';
 
 // const formStatusProps: FormStatusProps = formStatusObj;
 
-// export interface SelectProps {
-//     label: string,
-//     value: string,
-// }
-
-// export interface serviceFeeRule {
-//      serviceFeeRuleId?: string | null
-//     serviceFeeCharge: string,
-//     productType: SelectProps,
-//     masterProductType: SelectProps,
-//     productName: SelectProps,
-//     considerAsset: boolean,
-//     assetType: SelectProps,
-//     assetTypeDesc: string,
-//     vehicleType: SelectProps
-// }
-
 export default function FeeDetails() {
 
     const { t } = useTranslation();
@@ -95,14 +78,6 @@ export default function FeeDetails() {
             vehicleType: { label: '', value: '' },
         }
         ]
-        //         serviceFeeCharge
-        // productType
-        // masterProductType
-        // productName
-        // considerAsset
-        // assetType
-        // assetTypeDesc
-        // vehicleType
 
     });
 
@@ -132,8 +107,12 @@ export default function FeeDetails() {
     });
 
     const isAddServiceFeeRuleDisabled = () => {
-        if (formik.values.serviceFeeRules.length < 10 && !isDisabled) {
-            return false;
+        if ((formik.values.serviceFeeRules.length < 10 && !isDisabled)) {
+            if(formik?.values?.serviceFeeRules[0]?.productType?.value?.toLowerCase() === 'all' && formik?.values?.serviceFeeRules[0]?.vehicleType?.value?.toLowerCase() === 'all' && formik?.values?.serviceFeeRules[0]?.assetType?.value?.toLowerCase() === 'all'){
+                return true;
+            }else{
+                return false;
+            }
         }
         return true;
     };
@@ -253,9 +232,9 @@ export default function FeeDetails() {
                                                 <Fragment key={`em${index}`}>
                                                     <Grid item pt={2.5}>
                                                         <Typography variant="h3" component="h3" gutterBottom className="left-heading fw-bold" mb={1}>
-                                                            {t("FeeDetails.serviceFeeRule") + ' 1 :'}  
+                                                            {t("FeeDetails.serviceFeeRule") +' ' +  (index+1) +' :'}  
                                                             {index !== 0 && (
-                                                                <DeleteIcon color='#D7252C' height={16} onClick={() => (!formik.values.serviceFeeRules[index].serviceFeeRuleId) && deleteFeeRule(index, arr)}
+                                                                <DeleteIcon color="var(--Tertiary)" height={16} onClick={() => (!formik.values.serviceFeeRules[index].serviceFeeRuleId) && deleteFeeRule(index, arr)}
                                                                     className='deleteBtn' />
                                                             )}
                                                         </Typography>
@@ -264,7 +243,6 @@ export default function FeeDetails() {
                                                         <Grid item xs={12} md={6}>
                                                             <Input
                                                                 id={`serviceFeeRules[${index}].serviceFeeCharge`}
-
                                                                 label={t("FeeDetails.serviceFeeCharge")}
                                                                 type='text'
                                                                 placeholder={t("FeeDetails.enterFeeCharge")}
@@ -279,9 +257,6 @@ export default function FeeDetails() {
                                                                         (formik.touched?.serviceFeeRules?.[index]?.serviceFeeCharge && ((formik.errors?.serviceFeeRules?.[index] as any)?.serviceFeeCharge))
                                                                         ? true : false
                                                                 }
-
-                                                                // helperText={(formik.touched.serviceFeeCharge && formik.errors.serviceFeeCharge) ? formik.errors.serviceFeeCharge : undefined}
-                                                                // error={(formik.touched.serviceFeeCharge && formik.errors.serviceFeeCharge) ? true : false}
                                                                 description=''
                                                                 required
                                                                 disabled={isDisabled}
@@ -309,9 +284,6 @@ export default function FeeDetails() {
                                                                         (formik.touched?.serviceFeeRules?.[index]?.productType && ((formik.errors?.serviceFeeRules?.[index] as any)?.productType))
                                                                         ? true : false
                                                                 }
-
-                                                                // helperText={(formik.touched.productType && formik.errors.productType) ? formik.errors.productType.value : undefined}
-                                                                // error={(formik.touched.productType && formik.errors.productType) ? true : false}
                                                                 onChange={formik.setFieldValue}
                                                                 onBlur={() => { formik.setFieldTouched(`serviceFeeRules[${index}].productType`); formik.validateField(`serviceFeeRules[${index}].productType`); }}
                                                                 disabled={isDisabled}
@@ -322,13 +294,11 @@ export default function FeeDetails() {
                                                             <Select
                                                                 id={`serviceFeeRules[${index}].masterProductType`}
                                                                 name={`serviceFeeRules[${index}].masterProductType`}
-
                                                                 label={t("FeeDetails.masterProductType")}
                                                                 description=''
                                                                 items={[]}
                                                                 placeholder={t("FeeDetails.productTypePlaceholder")}
                                                                 onChange={formik.setFieldValue}
-
                                                                 helperText={
                                                                     formik?.errors?.serviceFeeRules && formik?.touched?.serviceFeeRules &&
                                                                         (formik.touched?.serviceFeeRules?.[index]?.masterProductType && ((formik.errors?.serviceFeeRules?.[index] as any)?.masterProductType))
@@ -340,11 +310,8 @@ export default function FeeDetails() {
                                                                         (formik.touched?.serviceFeeRules?.[index]?.masterProductType && ((formik.errors?.serviceFeeRules?.[index] as any)?.masterProductType))
                                                                         ? true : false
                                                                 }
-
-                                                                // helperText={(formik.touched.masterProductType && formik.errors.masterProductType) ? formik.errors.masterProductType.value : undefined}
-                                                                // error={(formik.touched.masterProductType && formik.errors.masterProductType) ? true : false}
                                                                 onBlur={() => { formik.setFieldTouched(`serviceFeeRules[${index}].masterProductType`); formik.validateField(`serviceFeeRules[${index}].masterProductType`); }}
-                                                                disabled={isDisabled}
+                                                                disabled={isDisabled || (formik?.values?.serviceFeeRules[index]?.productType?.value?.toLowerCase() === 'all')}
                                                                 required
                                                             />
                                                         </Grid>
@@ -354,14 +321,11 @@ export default function FeeDetails() {
                                                             <Select
                                                                 id={`serviceFeeRules[${index}].productName`}
                                                                 name={`serviceFeeRules[${index}].productName`}
-
-
                                                                 label={t("FeeDetails.productName")}
                                                                 description=''
                                                                 items={[]}
                                                                 placeholder={t("FeeDetails.productNamePlaceholder")}
                                                                 onChange={formik.setFieldValue}
-
                                                                 helperText={
                                                                     formik?.errors?.serviceFeeRules && formik?.touched?.serviceFeeRules &&
                                                                         (formik.touched?.serviceFeeRules?.[index]?.productName && ((formik.errors?.serviceFeeRules?.[index] as any)?.productName))
@@ -373,12 +337,8 @@ export default function FeeDetails() {
                                                                         (formik.touched?.serviceFeeRules?.[index]?.productName && ((formik.errors?.serviceFeeRules?.[index] as any)?.productName))
                                                                         ? true : false
                                                                 }
-
-                                                                // helperText={(formik.touched.productName && formik.errors.productName) ? formik.errors.productName.value : undefined}
-                                                                // error={(formik.touched.productName && formik.errors.productName) ? true : false}
-
                                                                 onBlur={() => { formik.setFieldTouched(`serviceFeeRules[${index}].productName`); formik.validateField(`serviceFeeRules[${index}].productName`); }}
-                                                                disabled={isDisabled}
+                                                                disabled={isDisabled || (formik?.values?.serviceFeeRules[index]?.productType?.value?.toLowerCase() === 'all')}
                                                                 required
                                                             />
                                                         </Grid>
@@ -387,12 +347,12 @@ export default function FeeDetails() {
                                                         <FormControlLabel
                                                             sx={{ margin: "0px", marginBottom: "1rem", fontWeight: "bold" }}
                                                             className="checkbox-field"
-                                                            control={<Checkbox name="considerAsset" checked={formik.values.serviceFeeRules[index].considerAsset} onChange={formik.handleChange} disabled={isDisabled} />}
+                                                            control={<Checkbox name={`serviceFeeRules[${index}].considerAsset`} checked={formik.values.serviceFeeRules[index].considerAsset} onChange={formik.handleChange} disabled={isDisabled} />}
                                                             label={<Typography variant="h4" component="h4" className="fw-bold">
                                                                 {t("FeeDetails.considerAsset")}
                                                             </Typography>} />
                                                     </Grid>
-                                                    <Grid container item md={12} mt={1} mb={1}>
+                                                    {formik.values.serviceFeeRules[index].considerAsset && <Grid container item md={12} mt={1} mb={1}>
                                                         <Grid item xs={12} md={6}>
                                                             <Select
                                                                 id={`serviceFeeRules[${index}].assetType`}
@@ -413,23 +373,19 @@ export default function FeeDetails() {
                                                                         (formik.touched?.serviceFeeRules?.[index]?.assetType && ((formik.errors?.serviceFeeRules?.[index] as any)?.assetType))
                                                                         ? true : false
                                                                 }
-
                                                                 onBlur={() => { formik.setFieldTouched(`serviceFeeRules[${index}].assetType`); formik.validateField(`serviceFeeRules[${index}].assetType`); }}
                                                                 disabled={isDisabled}
                                                                 required
                                                             />
                                                         </Grid>
-                                                    </Grid>
-                                                    <Grid container item md={12} mt={2} mb={1} pt={0.5}>
+                                                    </Grid>}
+                                                    {formik.values.serviceFeeRules[index].considerAsset  && <Grid container item md={12} mt={2} mb={1} pt={0.5}>
                                                         <Grid item xs={12} md={6}>
                                                             <Input
                                                                 id={`serviceFeeRules[${index}].assetTypeDesc`}
                                                                 label=''
                                                                 type='text'
                                                                 placeholder={t("FeeDetails.assetTypeDescPlaceholder")}
-
-                                                                // helperText={(formik.touched.assetTypeDesc && formik.errors.assetTypeDesc) ? formik.errors.assetTypeDesc : undefined}
-                                                                // error={(formik.touched.assetTypeDesc && formik.errors.assetTypeDesc) ? true : false}
                                                                 helperText={
                                                                     formik?.errors?.serviceFeeRules && formik?.touched?.serviceFeeRules &&
                                                                         (formik.touched?.serviceFeeRules?.[index]?.assetTypeDesc && ((formik.errors?.serviceFeeRules?.[index] as any)?.assetTypeDesc))
@@ -441,15 +397,13 @@ export default function FeeDetails() {
                                                                         (formik.touched?.serviceFeeRules?.[index]?.assetTypeDesc && ((formik.errors?.serviceFeeRules?.[index] as any)?.assetTypeDesc))
                                                                         ? true : false
                                                                 }
-
-
                                                                 description=''
                                                                 required
                                                                 disabled={isDisabled}
                                                                 {...formik.getFieldProps(`serviceFeeRules[${index}].assetTypeDesc`)}
                                                             />
                                                         </Grid>
-                                                    </Grid>
+                                                    </Grid>}
                                                     <Grid container item md={12} mt={1} mb={1}>
                                                         <Grid item xs={12} md={6}>
                                                             <Select
@@ -471,9 +425,6 @@ export default function FeeDetails() {
                                                                         (formik.touched?.serviceFeeRules?.[index]?.vehicleType && ((formik.errors?.serviceFeeRules?.[index] as any)?.vehicleType))
                                                                         ? true : false
                                                                 }
-
-                                                                // helperText={(formik.touched.vehicleType && formik.errors.vehicleType) ? formik.errors.vehicleType.value : undefined}
-                                                                // error={(formik.touched.vehicleType && formik.errors.vehicleType) ? true : false}
                                                                 onBlur={() => { formik.setFieldTouched(`serviceFeeRules[${index}].vehicleType`); formik.validateField(`serviceFeeRules[${index}].vehicleType`); }}
                                                                 disabled={isDisabled}
                                                             />
@@ -481,10 +432,8 @@ export default function FeeDetails() {
                                                     </Grid>
                                                 </Fragment>
                                             ))}
-
                                             <Grid item md={12} mt={2} mb={4}>
                                                 <Link
-
                                                     variant="body2"
                                                     className={`add-link  ${isAddServiceFeeRuleDisabled() && "add-link disabled-text-link"}`}
                                                     onClick={() => addFeeRule(arr)}
@@ -495,7 +444,6 @@ export default function FeeDetails() {
                                                     </Typography>
                                                 </Link>
                                             </Grid>
-
                                         </Fragment>)}
                                 />
 
