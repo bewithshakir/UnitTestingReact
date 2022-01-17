@@ -5,6 +5,7 @@ import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 import AddLotForm from './AddLotForm/AddLotForm.component';
 import ProductManagement from '../../ProductManagement/index';
+import FeeDetails from '../FeeDetails/index';
 import './AddLotWrapper.style.scss';
 import { addLotHeaderConfig, lotHeaderBoxSx, lotHeaderInnerBoxSx } from '../config';
 import { HorizontalBarVersionState, useStore } from '../../../store';
@@ -84,7 +85,7 @@ const AddLotWrapper: React.FC<MenuProps> = () => {
                     {check && (<ProductManagement />  )}
                 </TabPanel>
                 <TabPanel value={value} index={2}>
-
+                    <FeeDetails />       
                 </TabPanel>
                 <TabPanel value={value} index={3}>
 
