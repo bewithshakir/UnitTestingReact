@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React from "react";
+import React, { useEffect } from "react";
 import { Button } from "../../components/UIComponents/Button/Button.component";
 import { useTranslation } from "react-i18next";
 import {
@@ -10,11 +10,12 @@ import ActionsMenu from "../../components/UIComponents/Menu/ActionsMenu.componen
 import GridComponent from "../../components/UIComponents/DataGird/grid.component";
 import SearchInput from "../../components/UIComponents/SearchInput/SearchInput";
 import { Add } from "@mui/icons-material";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Box, FormControl, Grid, Typography } from "@mui/material";
 import { HorizontalBarVersionState, addedCustomerIdState, useStore, useAddedCustomerIdStore, useShowConfirmationDialogBoxStore, useAddedCustomerNameStore } from "../../store";
 import DSPModel from "../../models/DSPModel";
 import { sortByOptions, mockDSPData } from "./config";
+import { DspListSet } from './queries';
 import { DataGridActionsMenuOption } from "../../components/UIComponents/Menu/DataGridActionsMenu.component";
 interface ContentProps {
   rows?: [];
@@ -28,20 +29,32 @@ const DspLandingContent: React.FC<ContentProps> = () => {
   const massActionOptions = dspObj.massActions();
   const ACTION_TYPES = dspObj.ACTION_TYPES;
   const MASS_ACTION_TYPES = dspObj.MASS_ACTION_TYPES;
-  const history = useHistory();
+  const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = React.useState("");
   const [sortOrder, setSortOrder] = React.useState<{ sortBy: string, order: string }>({ sortBy: "", order: "" });
   const [filterData, setFilterData] = React.useState<{ [key: string]: string[] }>({});
-  const [parkingLotlist, setParkingLotList] = React.useState([...mockDSPData]);
+  const [dspList, setDspList] = React.useState([]);
   const customerId = useAddedCustomerIdStore((state: addedCustomerIdState) => state.customerId);
+
+  const { data, fetchNextPage, isLoading, isFetching }: any = DspListSet(searchTerm, sortOrder, customerId, filterData);
 
   const { t } = useTranslation();
   const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
   setVersion("Breadcrumbs-Single");
   const setPageCustomerName = useAddedCustomerNameStore((state) => state.setCustomerName);
 
+  useEffect(() => {
+    if (data) {
+      const list: any = [];
+      data?.pages?.forEach((item: any) => {
+        list.push(...item.data.dsps);
+      });
+      setDspList(list);
+    }
+  }, [data]);
+
   const navigateToAddDsp = () => {
-    history.push(`/customer/${customerId}/adddsp`);
+    navigate(`/customer/${customerId}/adddsp`);
   };
   
   const onInputChange = (value: string) => {
@@ -121,14 +134,16 @@ const DspLandingContent: React.FC<ContentProps> = () => {
         </Grid>
         <Grid container pt={2.5} display="flex" flexGrow={1}>
           <GridComponent
-            primaryKey='deliveryLocationId'
-            rows={parkingLotlist}
+            primaryKey='dspId'
+            isLoading={isFetching || isLoading}
+            rows={dspList}
             header={headCells}
             enableRowSelection
             enableRowAction
             onRowActionSelect={handleRowAction}
             searchTerm={searchTerm}
             rowActionOptions={rowActionOptions}
+            getPages={fetchNextPage}
             noDataMsg={t('dsp.nodataMsg')}
           />
         </Grid>

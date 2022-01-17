@@ -40,14 +40,14 @@ export default class DSPModel {
 
     fieldsToDisplay (): headerObj[] {
         return [
-            { field: "dspName", label: "DSP NAME", type: 'text', sortable: true },
-            { field: "contactNm", label: "CONTACT NAME", type: 'text' },
+            { field: "name", label: "DSP NAME", type: 'text', sortable: true },
+            { field: "contactName", label: "CONTACT NAME", type: 'text' },
             { field: "email", label: "EMAIL", type: 'text' },
-            { field: "streetAddress", label: "STREET ADDRES", type: 'text' },
+            { field: "address", label: "STREET ADDRES", type: 'text' },
             { field: "city", label: "CITY", type: 'text' },
             { field: "state", label: "STATE", type: 'text' },
             { field: "zip", label: "ZIP", type: 'text' },
-            { field: "lotsAssigned", label: "LOTS ASSIGNED", type: 'button', icon: ParkingLotIcon },
+            { field: "totalLotAssigned", label: "LOTS ASSIGNED", type: 'button', icon: ParkingLotIcon },
         ];
     }
 
