@@ -51,7 +51,7 @@ const index: React.FC<ParkingLotsManagementProps> = memo(() => {
         if (data) {
             const list: any = [];
             data?.pages?.forEach((item: any) => {
-                list.push(...item.data.opisCities);
+                list.push(...item.data.lots);
             });
             setAllParkingLotList(list);
         }
@@ -87,10 +87,10 @@ const index: React.FC<ParkingLotsManagementProps> = memo(() => {
         let sortOrder;
         switch (value) {
             case SORTBY_TYPES.LOT_NAME_AZ:
-                sortOrder = { sortBy: "lotName", order: "asc" };
+                sortOrder = { sortBy: "deliveryLocationNm", order: "asc" };
                 break;
             case SORTBY_TYPES.LOT_NAME_ZA:
-                sortOrder = { sortBy: "lotName", order: "desc" };
+                sortOrder = { sortBy: "deliveryLocationNm", order: "desc" };
                 break;
             default:
                 sortOrder = { sortBy: "", order: "" };

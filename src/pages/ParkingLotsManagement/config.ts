@@ -17,7 +17,7 @@ export const ROW_ACTION_TYPES = {
 export const FilterByFields: IDynamicFilterProps['fields'] = [
   { name: 'state', label: 'parkingLotManagement.filter.state', fieldType: 'select', optionUrlKey: 'parkingLotManagementFilter', optionAPIResponseKey: 'states', initialValue: [] },
   { name: 'city', label: 'parkingLotManagement.filter.city', fieldType: 'select', optionUrlKey: 'parkingLotManagementFilter', optionAPIResponseKey: 'cities', initialValue: [] },
-  { name: 'zip', label: 'parkingLotManagement.filter.zip', fieldType: 'select', optionUrlKey: 'parkingLotManagementFilter', optionAPIResponseKey: 'postalCode', initialValue: [] },
+  { name: 'zip', label: 'parkingLotManagement.filter.zip', fieldType: 'select', optionUrlKey: 'parkingLotManagementFilter', optionAPIResponseKey: 'zipcode', initialValue: [] },
   { name: 'wallet status', label: 'parkingLotManagement.filter.wallet status', fieldType: 'select', optionUrlKey: 'parkingLotManagementFilter', optionAPIResponseKey: 'walletStatus', initialValue: [] },
   { name: 'fuel type', label: 'parkingLotManagement.filter.fuel type', fieldType: 'select', optionUrlKey: 'parkingLotManagementFilter', optionAPIResponseKey: 'fuelType', initialValue: [] },
 ];
@@ -46,14 +46,14 @@ export const AllParkingLots = {
       "DELIVERYLOCATION_NM": {
         field: "deliveryLocationNm", label: "LOT NAME",
       },
-      "DELIVERYLOCATION_ID": {
-        field: "deliveryLocationId", label: "LOT ID",
+      "LOT_ID": {
+        field: "lotId", label: "LOT ID",
       },
       "CUSTOMER_NAME": {
         field: "customerName", label: "CUSTOMER NAME",
       },
       "LOT_CONTACT": {
-        field: "lotContact", label: "LOT CONTACT",
+        field: "primaryContactName", label: "LOT CONTACT",
       },
       "STREET_ADDRESS": {
         field: "streetAddress", label: "STREET ADDRESS"
@@ -71,7 +71,7 @@ export const AllParkingLots = {
         field: "rackUpdate", label: "RACK UPDATE"
       },
       "WALLET_STATUS": {
-        field: "walletStatus", label: "WALLET"
+        field: "walletStatus", label: "WALLET STATUS"
       },
       "FUEL": {
         field: "fuelStatus", label: "FUEL"

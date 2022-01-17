@@ -12,11 +12,11 @@ export default class TaxModel {
     }
 
     fieldsToDisplay (): headerObj[] {
-        const { DELIVERYLOCATION_NM, DELIVERYLOCATION_ID, CUSTOMER_NAME, LOT_CONTACT,
+        const { DELIVERYLOCATION_NM, LOT_ID, CUSTOMER_NAME, LOT_CONTACT,
             STREET_ADDRESS, CITY, STATE, ZIP, RACK_UPDATE, WALLET_STATUS, FUEL, VEHICLES } = DataGridFields;
         return [
             { field: DELIVERYLOCATION_NM.field, label: DELIVERYLOCATION_NM.label, type: 'text' },
-            { field: DELIVERYLOCATION_ID.field, label: DELIVERYLOCATION_ID.label, type: 'text' },
+            { field: LOT_ID.field, label: LOT_ID.label, type: 'text' },
             { field: CUSTOMER_NAME.field, label: CUSTOMER_NAME.label, type: 'text' },
             { field: LOT_CONTACT.field, label: LOT_CONTACT.label, type: 'text' },
             { field: STREET_ADDRESS.field, label: STREET_ADDRESS.label, type: 'text' },
@@ -27,15 +27,15 @@ export default class TaxModel {
             {
                 field: WALLET_STATUS.field, label: WALLET_STATUS.label,
                 type: 'status',
-                align: 'center',
-                showIconLast: true,
                 fieldOptions: [
                     {
                         value: "Y",
+                        displayValue: "Assigned",
                         icon: PositiveCricleIcon,
                     },
                     {
                         value: "N",
+                        displayValue: "Expiring",
                         icon: AlertExclamationIcon,
                     }
                 ]
