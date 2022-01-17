@@ -22,7 +22,7 @@ import "./AddCustomer.style.scss";
 import { useAddedCustomerIdStore, useAddedCustomerNameStore, useShowConfirmationDialogBoxStore } from '../../../store';
 import moment from 'moment';
 import { maxContacts } from '../../../utils/constants';
-import { formatFileSizeUnit, getCheckBoxDisabledByPaymentType } from '../../../utils/helperFunctions';
+import { formatFileSizeUnit, getCheckBoxDisabledByPaymentType, getUploadedBy, getUploadedIn } from '../../../utils/helperFunctions';
 import FileUploadErrorDialog from '../../../components/UIComponents/ConfirmationDialog/DiscardChangesDialog.component';
 import FileUploadComponent from '../../../components/UIComponents/FileUpload/FileUpload.component';
 
@@ -72,6 +72,8 @@ const formStatusProps: IFormStatusProps = {
         type: 'Success'
     }
 };
+
+const maxAllowedFileSizeBtyes = 25000000;
 
 const AddCustomer: React.FC<AddCustomerProps> = () => {
     const location = useLocation();
@@ -251,7 +253,9 @@ const AddCustomer: React.FC<AddCustomerProps> = () => {
             setValidFiles(acceptedFiles);
         }
         if (rejectedFiles.length) {
-            setUploadErrMsg(rejectedFiles[0].errors[0].message);
+            setUploadErrMsg(rejectedFiles[0].errors.map((err: { code: string, message: string }) => ({
+                code: err.code, message: err.code === 'file-too-large' ? `File is larger than ${maxAllowedFileSizeBtyes / 1000000} MB` : err.message
+            }))[0].message);
         }
     }, []);
 
@@ -325,6 +329,8 @@ const AddCustomer: React.FC<AddCustomerProps> = () => {
         formData.append('countryCode', customer.countryCd);
         formData.append('companyNm', customer.companyNm);
         formData.append('fileOverwrite', isOverwriteFile ? 'y' : 'n');
+        formData.append('uploadedBy', getUploadedBy());
+        formData.append('uploadedIn', getUploadedIn(location.pathname));
         uploadContractFiles(formData);
     };
 
@@ -1093,7 +1099,7 @@ const AddCustomer: React.FC<AddCustomerProps> = () => {
 
                                 <Grid item md={12} mt={2} mb={1}>
                                     <Typography variant="h4" component="h4" gutterBottom className="fw-bold" mb={1}>
-                                        Import Contract (Optional) <span className="fw-normal">(File format:PDF or DOC/ Max File size 25MB)</span>
+                                        Import Contract (Optional) <span className="fw-normal">(File format: PDF, XLSX or DOCX/ Max File size 25MB)</span>
                                     </Typography>
                                 </Grid>
                                 <Grid item md={12} mt={2} mb={1}>
@@ -1116,14 +1122,17 @@ const AddCustomer: React.FC<AddCustomerProps> = () => {
                                                 ) : (
                                                     <FileUploadComponent
                                                         onDrop={onDrop}
-                                                        acceptedFiles='.pdf,.doc,.docx'
+                                                        acceptedFiles='.pdf,.docx,.xlsx'
                                                         maxFiles={1}
-                                                        maxSizeinBytes={25000000}
+                                                        maxSizeinBytes={maxAllowedFileSizeBtyes}
+                                                        disabled={isDisabled}
+                                                        multiple={false}
                                                     >
                                                         <Button
                                                             types="browse"
                                                             aria-label="browse"
                                                             className="mr-4"
+                                                            disabled={isDisabled}
                                                         >
                                                             {t("buttons.browse")}
                                                         </Button>
