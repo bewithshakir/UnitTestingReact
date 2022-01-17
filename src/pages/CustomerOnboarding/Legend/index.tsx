@@ -31,13 +31,13 @@ const Legend: React.FC = () => {
   };
 
   const isDisabled = (to : string) => {
-    if (to.includes('addCustomer') && (pathname.includes('addCustomer') || pathname.includes('viewCustomer') || pathname.includes('parkingLots') || pathname.includes('attachments'))) {
+    if (to.includes('addCustomer') && (pathname.includes('addCustomer') || pathname.includes('viewCustomer') || pathname.includes('parkingLots') || pathname.includes('attachments') || pathname.includes('dsp'))) {
       return false;
-    } else if (to.includes('parkingLots') && (pathname.includes('viewCustomer') || pathname.includes('parkingLots') || pathname.includes('attachments'))){
+    } else if (to.includes('parkingLots') && (pathname.includes('viewCustomer') || pathname.includes('parkingLots') || pathname.includes('attachments') || pathname.includes('dsps'))){
       return false;
     } else if (to.includes('attachments') && pathname.includes('addCustomer') ){
       return true;
-    } else if (to.includes('attachments') && (pathname.includes('viewCustomer') || pathname.includes('parkingLots') || pathname.includes('attachments'))) {
+    } else if (to.includes('attachments') && (pathname.includes('viewCustomer') || pathname.includes('parkingLots') || pathname.includes('attachments') || pathname.includes('dsps'))) {
       return false;
     } else if(to.includes('dsps') && selectedPaymentType === 'Voyager'){
       return false;
@@ -66,9 +66,9 @@ const Legend: React.FC = () => {
       if(pathnameSegArr.indexOf('parkingLots') > 0){
         return true;
       }
-    } else if (configItem.to == "/customer/dsp") {
+    } else if (configItem.to == "/customer/dsps") {
       const pathnameSegArr = pathname.split("/");
-      if(pathnameSegArr.indexOf('dsp') > 0){
+      if(pathnameSegArr.indexOf('dsps') > 0){
         return true;
       }
     } else if (configItem.to == "/customer/attachments") {
