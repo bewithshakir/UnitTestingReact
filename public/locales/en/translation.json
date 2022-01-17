@@ -306,6 +306,11 @@
   "Attachments":{
     "search": "Search",
     "filterHeader": "Filters",
-    "noDataMsg": "Add attachments by clicking on import or any related sentence."
+    "noDataMsg": "Add attachments by clicking on import or any related sentence.",
+    "documentName": "DOCUMENT NAME",
+    "format": "FORMAT",
+    "dateAdded": "DATE ADDED",
+    "uploadedBy": "UPLOADED BY",
+    "uploadedIn": "UPLOADED IN"
   }
 }
