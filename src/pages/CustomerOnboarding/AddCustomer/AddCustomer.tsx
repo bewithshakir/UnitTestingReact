@@ -1126,6 +1126,7 @@ const AddCustomer: React.FC<AddCustomerProps> = () => {
                                                         maxFiles={1}
                                                         maxSizeinBytes={maxAllowedFileSizeBtyes}
                                                         disabled={isDisabled}
+                                                        multiple={false}
                                                     >
                                                         <Button
                                                             types="browse"
