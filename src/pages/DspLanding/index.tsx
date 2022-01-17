@@ -14,7 +14,7 @@ import { useNavigate } from "react-router-dom";
 import { Box, FormControl, Grid, Typography } from "@mui/material";
 import { HorizontalBarVersionState, addedCustomerIdState, useStore, useAddedCustomerIdStore, useShowConfirmationDialogBoxStore, useAddedCustomerNameStore } from "../../store";
 import DSPModel from "../../models/DSPModel";
-import { sortByOptions, mockDSPData } from "./config";
+import { sortByOptions } from "./config";
 import { DspListSet } from './queries';
 import { DataGridActionsMenuOption } from "../../components/UIComponents/Menu/DataGridActionsMenu.component";
 interface ContentProps {
