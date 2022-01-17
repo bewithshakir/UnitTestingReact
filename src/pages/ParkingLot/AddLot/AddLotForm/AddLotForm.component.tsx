@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { FieldArray, FormikProvider, useFormik } from 'formik';
 import { useTranslation } from 'react-i18next';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import moment from 'moment';
 import { Box, Container, Grid, Link, Typography } from '@mui/material';
 import { Button } from '../../../../components/UIComponents/Button/Button.component';
@@ -33,9 +33,9 @@ interface FormStatusProps {
 
 const formStatusProps: FormStatusProps = formStatusObj;
 
-function AddLotForm(): React.ReactElement {
+function AddLotForm (): React.ReactElement {
     const { t } = useTranslation();
-    const history = useHistory();
+    const navigate = useNavigate();
     const { theme } = useTheme();
     const { data: contactTypeList } = useGetContactTypes();
     const [primaryContactType, setPrimaryContactType] = useState('');
@@ -97,7 +97,7 @@ function AddLotForm(): React.ReactElement {
         setDisabled(true);
         setActiveLotId(data?.data?.deliveryLocationId.toString());
         timerRef.current = setTimeout(() => {
-            history.push(`/customer/${addedCustomerId}/parkingLots/viewLot/${data?.data?.deliveryLocationId.toString()}`);
+          navigate(`/customer/${addedCustomerId}/parkingLots/viewLot/${data?.data?.deliveryLocationId.toString()}`);
         }, 6000);
     };
 
@@ -230,8 +230,7 @@ function AddLotForm(): React.ReactElement {
     const onClickBack = () => {
         if (isEqual(lotState, formik.values)) {
             isFormValidated(false);
-            history.push({
-                pathname: `/customer/${addedCustomerId}/parkingLots`,
+            navigate(`/customer/${addedCustomerId}/parkingLots`,{
                 state: {
                     customerId: addedCustomerId,
                     customerName: selectedCustomerName
@@ -334,7 +333,7 @@ function AddLotForm(): React.ReactElement {
         }
     };
 
-    function handleGoogleAddressChange(addressObj: any) {
+    function handleGoogleAddressChange (addressObj: any) {
         formik.setFieldValue('addressLine1', addressObj.addressLine1);
         formik.setFieldValue('addressLine2', addressObj.addressLine2);
         formik.setFieldValue('city', addressObj.city);
@@ -342,7 +341,7 @@ function AddLotForm(): React.ReactElement {
         formik.setFieldValue('postalCode', addressObj.postalCode);
     }
 
-    function handleGoogleAddressBlur() {
+    function handleGoogleAddressBlur () {
         formik.setFieldTouched("addressLine1");
         formik.validateField("addressLine1");
         formik.setFieldTouched("addressLine2");
@@ -519,7 +518,7 @@ function AddLotForm(): React.ReactElement {
                                         helperText={(formik.touched.city && formik.errors.city) ? formik.errors.city : undefined}
                                         error={(formik.touched.city && formik.errors.city) ? true : false}
                                         description=''
-                                        disabled
+                                        disabled={isDisabled}
                                         required
                                         {...formik.getFieldProps('city')}
                                     />
@@ -532,7 +531,7 @@ function AddLotForm(): React.ReactElement {
                                         helperText={(formik.touched.state && formik.errors.state) ? formik.errors.state : undefined}
                                         error={(formik.touched.state && formik.errors.state) ? true : false}
                                         description=''
-                                        disabled
+                                        disabled={isDisabled}
                                         required
                                         {...formik.getFieldProps('state')}
                                     />
@@ -545,7 +544,7 @@ function AddLotForm(): React.ReactElement {
                                         helperText={(formik.touched.postalCode && formik.errors.postalCode) ? formik.errors.postalCode : undefined}
                                         error={(formik.touched.postalCode && formik.errors.postalCode) ? true : false}
                                         description=''
-                                        disabled
+                                        disabled={isDisabled}
                                         required
                                         {...formik.getFieldProps('postalCode')}
                                     />

@@ -5,7 +5,7 @@ import { Button } from "../../components/UIComponents/Button/Button.component";
 import { FilterIcon } from "../../assets/icons";
 import SortbyMenu from "../../components/UIComponents/Menu/SortbyMenu.component";
 import { useTranslation } from "react-i18next";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import SearchInput from "../../components/UIComponents/SearchInput/SearchInput";
 import ActionsMenu from "../../components/UIComponents/Menu/ActionsMenu.component";
 import { Add } from "@mui/icons-material";
@@ -17,7 +17,12 @@ import { OPISCity, MASS_ACTION_TYPES, ROW_ACTION_TYPES, SORTBY_TYPES } from './c
 import { RightInfoPanel } from '../../components/UIComponents/RightInfoPanel/RightInfoPanel.component';
 import { getSeachedDataTotalCount } from '../../utils/helperFunctions';
 
-const OPISCityLandingContent = memo(() => {
+export interface OpisCitiesProps{
+  version:string
+}
+
+
+const OPISCityLandingContent:React.FC<OpisCitiesProps> = memo(() => {
   const OPISCityObj = new OPISCityModel();
   const headCells = OPISCityObj.fieldsToDisplay();
   const massActionOptions = OPISCityObj.massActions();
@@ -34,7 +39,7 @@ const OPISCityLandingContent = memo(() => {
 
   const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
   setVersion("NavLinks");
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const { t } = useTranslation();
   const { data, fetchNextPage, isLoading, isFetching }: any = useOPISCityList(
@@ -58,7 +63,7 @@ const OPISCityLandingContent = memo(() => {
   };
 
   const navigateHomePage = () => {
-    history.push("/opisCities/add");
+    navigate("/opisCities/add");
   };
 
   const handleMassAction = (action: DataGridActionsMenuOption) => {

@@ -432,7 +432,9 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
     }
   }
 >
-  <Memo()>
+  <Memo()
+    version="NavLinks"
+  >
     <ForwardRef(Box)
       display="flex"
       ml={8}

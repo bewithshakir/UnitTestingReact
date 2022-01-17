@@ -47,7 +47,7 @@ export const isCurrentAppCountryUSA = () => {
 };
 
 
-export function getProductIcon (fuelStatus: string) {
+export function getProductIcon(fuelStatus: string) {
     return ({
         "Yellow": YellowFuelIcon,
         "Red": RedFuelIcon,
@@ -62,7 +62,7 @@ export function getProductIcon (fuelStatus: string) {
     }[fuelStatus] || YellowFuelIcon);
 }
 
-export function getLegendFontColor (fuelStatus: string) {
+export function getLegendFontColor(fuelStatus: string) {
     const { theme } = useTheme();
     return ({
         "Yellow": theme["--Darkgray"],
@@ -76,4 +76,15 @@ export function getLegendFontColor (fuelStatus: string) {
         "Orange": theme["--Darkgray"],
         "Aqua": theme["--Darkgray"],
     }[fuelStatus]);
+}
+
+export function getUploadedBy() {
+    return 'Dinesh Chakkravarthi';
+}
+
+export function getUploadedIn(url: string) {
+    if (url.includes('addCustomer') || url.includes('viewCustomer')) {
+        return 'Add Customer';
+    }
+    return 'Attachments';
 }

@@ -1,0 +1,22 @@
+.fee-details{
+    .left-heading{
+      svg{
+        margin: 0px 0px -2px 33px;
+      }
+    }
+    & .MuiTypography-h3{
+        color:var(--Darkgray);
+     
+      }
+    .add-link {  
+      & .MuiTypography-h3{
+        color:var(--Primary);
+      }
+      &.disabled-text-link {
+      & .MuiTypography-h3{
+        color:var(--Secondary-Background);
+     
+      }
+    } 
+  } 
+}

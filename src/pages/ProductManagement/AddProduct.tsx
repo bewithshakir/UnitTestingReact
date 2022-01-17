@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { FormikProvider, useFormik } from 'formik';
 import { useTranslation } from 'react-i18next';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { EditIcon } from '../../assets/icons';
 import { Add } from "@mui/icons-material";
@@ -35,7 +35,7 @@ const formStatusProps: FormStatusProps = formStatusObj;
 export default function AddProduct({ lotId, reloadSibling, productId, disableAddEditButton, isHiddenAddEditRow }: Props) {
 
     const { t } = useTranslation();
-    const history = useHistory();
+    const navigate = useNavigate();
     const isFormFieldChange = () => formik.dirty;
     const [productTypes, setProductTypes] = useState([]);
     const [pricingModelOptions, setPricingModelOptions] = useState([]);
@@ -167,8 +167,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
         if (isFormFieldChange()) {
             showDialogBox(true);
         } else {
-            history.push({
-                pathname: `/customer/${customerId}/parkingLots`,
+            navigate(`/customer/${customerId}/parkingLots`,{
                 state: {
                     customerId: customerId,
                     customerName: customerName

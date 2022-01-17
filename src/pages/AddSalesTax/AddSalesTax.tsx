@@ -1,7 +1,7 @@
 import { Box, Container, Grid, Typography } from '@mui/material';
 import { useFormik } from 'formik';
 import React, { useState, useEffect } from 'react';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import './style.scss';
 
@@ -17,6 +17,10 @@ import {AddSalesTaxValidationSchema, AddSalesTaxValidationSchemaEdit} from './va
 
 const initialValues = new SalesTaxModel();
 
+export interface AddSalesTaxProps{
+    version:string
+  }
+  
 interface IFormStatus {
     message: string
     type: string
@@ -49,7 +53,7 @@ const formStatusProps: IFormStatusProps = {
     }
 };
 
-const AddSalesTax: React.FC = () => {
+const AddSalesTax: React.FC<AddSalesTaxProps> = () => {
     const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
     const isFormValidated = useShowConfirmationDialogBoxStore((state) => state.setFormFieldValue);
     const resetFormFieldValue = useShowConfirmationDialogBoxStore((state) => state.resetFormFieldValue);
@@ -59,7 +63,7 @@ const AddSalesTax: React.FC = () => {
     const [apiResposneState, setAPIResponse] = useState(false);
     // const [isDisabled, setDisabled] = useState(false);
     
-    const history = useHistory();
+    const navigate = useNavigate();
     const location = useLocation();
     const { t } = useTranslation();
 
@@ -250,7 +254,7 @@ const AddSalesTax: React.FC = () => {
     
 
     function onClickBack () {
-        history.push('/salesTax');
+        navigate('/salesTax');
     }
     const disableButton = () => {
         if (isEditMode) {
