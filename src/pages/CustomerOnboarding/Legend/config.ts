@@ -33,7 +33,7 @@ export const config = [
         index: 6,
         label: "legend.attachments",
         secondaryText:true,
-        to: `/attachments`
+        to: '/customer/attachments'
     }
 ];
 

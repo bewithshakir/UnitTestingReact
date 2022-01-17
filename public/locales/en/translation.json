@@ -34,7 +34,8 @@
     "add opis city": "ADD OPIS CITY",
     "browse": "Browse",
     "filter": "Filters",
-    "add asset": "ADD ASSET"
+    "add asset": "ADD ASSET",
+    "import": "IMPORT"
   },
   "menus": {
     "sortby": {
@@ -307,5 +308,15 @@
     "vehicleType": "Vehicle Type",
     "vehicleTypePlaceholder": "Select Vehicle Type",
     "addAnotherServiceFee": "ADD ANOTHER SERVICE FEE"
+  },
+  "Attachments":{
+    "search": "Search",
+    "filterHeader": "Filters",
+    "noDataMsg": "Add attachments by clicking on import or any related sentence.",
+    "documentName": "DOCUMENT NAME",
+    "format": "FORMAT",
+    "dateAdded": "DATE ADDED",
+    "uploadedBy": "UPLOADED BY",
+    "uploadedIn": "UPLOADED IN"
   }
 }
