@@ -1,0 +1,57 @@
+on:
+  # Trigger analysis when creating a pull request
+  
+  push:
+    branches:
+      - master
+
+  pull_request:
+      branches: [ master ]
+      types: [opened, synchronize, reopened]
+
+name: Code Analysis
+jobs:
+  sonarqube:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '10.15'
+
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+        with:
+        # Disabling shallow clone is recommended for improving relevancy of reporting
+          fetch-depth: 0
+      
+      - name: 'yarn install'
+        run: yarn install --frozen-lockfile
+      - name: 'yarn typeScript'
+        run: yarn typescript
+      - name: 'tslint'
+        run: yarn lint
+      - name: 'unit tests'
+        run: yarn test
+      - name: Yarn Prepare
+        run: yarn lerna run prepare
+        
+      - name: SonarQube Scan
+        uses: sonarsource/sonarqube-scan-action@main
+        with:
+          args: >
+            -Dsonar.projectKey=com.shell.TapUpFrontEnd
+            -Dsonar.exclusions=**/*.java,**/docs/*
+            -Dsonar.c.file.suffixes=-
+            -Dsonar.cpp.file.suffixes=-
+            -Dsonar.objc.file.suffixes=-
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+
+      - name: SonarQube Quality Gate check
+        uses: sonarsource/sonarqube-quality-gate-action@main
+      # Force to fail step after specific time
+        timeout-minutes: 10
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }} 
