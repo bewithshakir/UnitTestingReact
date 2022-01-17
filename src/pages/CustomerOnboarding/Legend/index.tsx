@@ -23,14 +23,19 @@ const Legend: React.FC = () => {
     return {
       'addCustomer': `/customer/viewCustomer/${customerId}`,
       'parkingLots': `/customer/${customerId}/parkingLots`,
+      'attachments': `/customer/${customerId}/attachments`,
     }[x];
   }
   };
 
   const isDisabled = (to : string) => {
-    if (to.includes('addCustomer') && (pathname.includes('addCustomer') || pathname.includes('viewCustomer') || pathname.includes('parkingLots'))) {
+    if (to.includes('addCustomer') && (pathname.includes('addCustomer') || pathname.includes('viewCustomer') || pathname.includes('parkingLots') || pathname.includes('attachments'))) {
       return false;
-    } else if (to.includes('parkingLots') && (pathname.includes('viewCustomer') || pathname.includes('parkingLots'))){
+    } else if (to.includes('parkingLots') && (pathname.includes('viewCustomer') || pathname.includes('parkingLots') || pathname.includes('attachments'))){
+      return false;
+    } else if (to.includes('attachments') && pathname.includes('addCustomer') ){
+      return true;
+    } else if (to.includes('attachments') && (pathname.includes('viewCustomer') || pathname.includes('parkingLots') || pathname.includes('attachments'))) {
       return false;
     } else return true;
   };
@@ -57,13 +62,18 @@ const Legend: React.FC = () => {
       if(pathnameSegArr.indexOf('parkingLots') > 0){
         return true;
       }
+    } else if (configItem.to == "/customer/attachments") {
+      const pathnameSegArr = pathname.split("/");
+      if (pathnameSegArr.indexOf('attachments') > 0) {
+      return true;
+    }
     } else {
       return pathname.includes(configItem.to);
     }
   };
 
   const getLegendHeader = () => {
-      if(pathname.includes("viewCustomer") || pathname.includes("parkingLots")) { 
+      if(pathname.includes("viewCustomer") || pathname.includes("parkingLots") || pathname.includes('attachments')) { 
       return selectedCustomerName;
     } else {
       return t("legend.customerName");
