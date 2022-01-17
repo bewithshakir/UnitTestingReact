@@ -7,16 +7,18 @@ interface Props {
     maxSizeinBytes?: number,
     children?: React.ReactNode;
     disabled?: boolean
+    multiple?: boolean
 }
 
 function FileUploadComponent(props: Props) {
-    const { onDrop, acceptedFiles, maxFiles, maxSizeinBytes, children, disabled } = props;
+    const { onDrop, acceptedFiles, maxFiles, maxSizeinBytes, children, disabled, multiple } = props;
     const { getRootProps, getInputProps, } = useDropzone({
         onDrop,
         accept: acceptedFiles,
         maxFiles,
         maxSize: maxSizeinBytes,
-        disabled
+        disabled,
+        multiple
     });
 
     return (
