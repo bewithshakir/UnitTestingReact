@@ -30,6 +30,7 @@
     "sort by": "Sort by",
     "add lot": "Add Lot",
     "add tax": "Add Tax",
+    "add dsp": "ADD DSP",
     "add opis city": "ADD OPIS CITY",
     "browse": "Browse",
     "filter": "Filters",
@@ -132,6 +133,11 @@
       "wallet status": "Wallet Status",
       "fuel type": "Fuel Type"
     }
+  },
+  "dsp": {
+    "search": "Search",
+    "filterHeader": "Filters",
+    "nodataMsg": "Add DSP by clicking on add DSP or any related sentence."
   },
   "taxes": {
     "filterHeader": "Filters",

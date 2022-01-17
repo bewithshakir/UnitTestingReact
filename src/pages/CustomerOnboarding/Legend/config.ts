@@ -27,7 +27,7 @@ export const config = [
         index: 5,
         label: "legend.dsp",
         secondaryText:true,
-        to: "/dsp"
+        to: "/customer/dsps"
     },
     {
         index: 6,

@@ -19,7 +19,7 @@ import { useCreateCustomer, useEditCustomer, useGetCustomerData, useGetFrequenci
 import AutocompleteInput from '../../../components/UIComponents/GoogleAddressComponent/GoogleAutoCompleteAddress';
 import { EditIcon, PlusIcon } from '../../../assets/icons';
 import "./AddCustomer.style.scss";
-import { useAddedCustomerIdStore, useAddedCustomerNameStore, useShowConfirmationDialogBoxStore } from '../../../store';
+import { useAddedCustomerIdStore, useAddedCustomerNameStore, useShowConfirmationDialogBoxStore, useAddedCustomerPaymentTypeStore } from '../../../store';
 import moment from 'moment';
 import { maxContacts } from '../../../utils/constants';
 import { formatFileSizeUnit, getCheckBoxDisabledByPaymentType, getUploadedBy, getUploadedIn } from '../../../utils/helperFunctions';
@@ -266,6 +266,7 @@ const AddCustomer: React.FC<AddCustomerProps> = () => {
             setActiveCustomerId(data?.data?.customer?.customerId.toString());
             setCustomerIdCreated(data?.data?.customer?.customerId);
             setPageCustomerName(data?.data?.customer?.companyNm);
+            setPaymentType(data?.data?.customer?.PaymentType?.paymentTypeNm);
             setCustomerData(data?.data?.customer);
         }
     };
@@ -286,6 +287,11 @@ const AddCustomer: React.FC<AddCustomerProps> = () => {
     useGetCustomerData(activeCustomerId, isTrigger, onGetCustomerSuccess, onGetCustomerError);
     const setCustomerIdCreated = useAddedCustomerIdStore((state) => state.setCustomerId);
     const setPageCustomerName = useAddedCustomerNameStore((state) => state.setCustomerName);
+    const setPaymentType = useAddedCustomerPaymentTypeStore((state) => state.setCustomerPaymentType);
+
+    useEffect(()=>{
+        setPaymentType('');
+    },[activeCustomerId]);
 
     useEffect(() => {
         if (frequencyList?.data.length) {

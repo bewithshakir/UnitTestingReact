@@ -9,7 +9,7 @@ import "./style.scss";
 import { boxSystem, config } from './config';
 import { useTranslation } from 'react-i18next';
 import {  useNavigate, useLocation } from 'react-router-dom';
-import { useAddedCustomerNameStore, useAddedCustomerIdStore } from '../../../store';
+import { useAddedCustomerNameStore, useAddedCustomerIdStore, useAddedCustomerPaymentTypeStore } from '../../../store';
 
 const Legend: React.FC = () => {
   const { t } = useTranslation();
@@ -17,27 +17,31 @@ const Legend: React.FC = () => {
   const navigate = useNavigate();
   const selectedCustomerName = useAddedCustomerNameStore((state) => state.customerName);
   const customerId = useAddedCustomerIdStore((state) => state.customerId);
+  const selectedPaymentType = useAddedCustomerPaymentTypeStore((state) => state.paymentType);
 
   const getPath = (x: string) => {
   if (customerId) {
     return {
       'addCustomer': `/customer/viewCustomer/${customerId}`,
       'parkingLots': `/customer/${customerId}/parkingLots`,
+      'dsps': `/customer/${customerId}/dsps`,
       'attachments': `/customer/${customerId}/attachments`,
     }[x];
   }
   };
 
   const isDisabled = (to : string) => {
-    if (to.includes('addCustomer') && (pathname.includes('addCustomer') || pathname.includes('viewCustomer') || pathname.includes('parkingLots') || pathname.includes('attachments'))) {
+    if (to.includes('addCustomer') && (pathname.includes('addCustomer') || pathname.includes('viewCustomer') || pathname.includes('parkingLots') || pathname.includes('attachments') || pathname.includes('dsp'))) {
       return false;
-    } else if (to.includes('parkingLots') && (pathname.includes('viewCustomer') || pathname.includes('parkingLots') || pathname.includes('attachments'))){
+    } else if (to.includes('parkingLots') && (pathname.includes('viewCustomer') || pathname.includes('parkingLots') || pathname.includes('attachments') || pathname.includes('dsps'))){
       return false;
     } else if (to.includes('attachments') && pathname.includes('addCustomer') ){
       return true;
-    } else if (to.includes('attachments') && (pathname.includes('viewCustomer') || pathname.includes('parkingLots') || pathname.includes('attachments'))) {
+    } else if (to.includes('attachments') && (pathname.includes('viewCustomer') || pathname.includes('parkingLots') || pathname.includes('attachments') || pathname.includes('dsps'))) {
       return false;
-    } else return true;
+    } else if(to.includes('dsps') && selectedPaymentType === 'Voyager'){
+      return false;
+    }else return true;
   };
 
   const onItemClick = (to: string) => {
@@ -60,6 +64,11 @@ const Legend: React.FC = () => {
     } else if (configItem.to == "/customer/parkingLots") {
       const pathnameSegArr = pathname.split("/");
       if(pathnameSegArr.indexOf('parkingLots') > 0){
+        return true;
+      }
+    } else if (configItem.to == "/customer/dsps") {
+      const pathnameSegArr = pathname.split("/");
+      if(pathnameSegArr.indexOf('dsps') > 0){
         return true;
       }
     } else if (configItem.to == "/customer/attachments") {
