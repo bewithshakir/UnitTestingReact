@@ -20,16 +20,16 @@ jobs:
         # Disabling shallow clone is recommended for improving relevancy of reporting
           fetch-depth: 0
       
-      - name: 'yarn install'
-        run: yarn install --frozen-lockfile
-      - name: 'yarn typeScript'
-        run: yarn typescript
-      - name: 'tslint'
-        run: yarn lint
-      - name: 'unit tests'
-        run: yarn test
-      - name: Yarn Prepare
-        run: yarn lerna run prepare
+      # - name: 'yarn install'
+      #   run: yarn install --frozen-lockfile
+      # - name: 'yarn typeScript'
+      #   run: yarn typescript
+      # - name: 'tslint'
+      #   run: yarn lint
+      # - name: 'unit tests'
+      #   run: yarn test
+      # - name: Yarn Prepare
+      #   run: yarn lerna run prepare
         
       - name: SonarQube Scan
         uses: sonarsource/sonarqube-scan-action@master
