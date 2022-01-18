@@ -15,7 +15,6 @@ exports[`Rendering of File Upload Component File Upload component Snapshot testi
   >
     <input
       autoComplete="off"
-      multiple={true}
       onChange={[Function]}
       onClick={[Function]}
       style={

@@ -963,7 +963,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                         isLoading={true}
                         noDataMsg="Add OPIS City by clicking on the \\"ADD OPIS CITY\\" button."
                         onRowActionSelect={[Function]}
-                        primaryKey="taxJurisdictionId"
+                        primaryKey="opisServedCityId"
                         rowActionOptions={
                           Array [
                             Object {
@@ -3999,7 +3999,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                             isLoading={true}
                             noDataMsg="Add OPIS City by clicking on the \\"ADD OPIS CITY\\" button."
                             onRowActionSelect={[Function]}
-                            primaryKey="taxJurisdictionId"
+                            primaryKey="opisServedCityId"
                             rowActionOptions={
                               Array [
                                 Object {
@@ -4178,7 +4178,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                         isLoading={true}
                         noDataMsg="Add OPIS City by clicking on the \\"ADD OPIS CITY\\" button."
                         onRowActionSelect={[Function]}
-                        primaryKey="taxJurisdictionId"
+                        primaryKey="opisServedCityId"
                         rowActionOptions={
                           Array [
                             Object {
@@ -4529,7 +4529,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                     onRowActionSelect={[Function]}
                                     order="asc"
                                     orderBy=""
-                                    primaryKey="taxJurisdictionId"
+                                    primaryKey="opisServedCityId"
                                     rowActionOptions={
                                       Array [
                                         Object {
@@ -4890,7 +4890,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                           onRowActionSelect={[Function]}
                                           order="asc"
                                           orderBy=""
-                                          primaryKey="taxJurisdictionId"
+                                          primaryKey="opisServedCityId"
                                           rowActionOptions={
                                             Array [
                                               Object {
@@ -6088,7 +6088,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                       onRowActionSelect={[Function]}
                                       order="asc"
                                       orderBy=""
-                                      primaryKey="taxJurisdictionId"
+                                      primaryKey="opisServedCityId"
                                       rowActionOptions={
                                         Array [
                                           Object {

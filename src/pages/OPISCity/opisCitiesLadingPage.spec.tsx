@@ -10,8 +10,8 @@ import userEvent from '@testing-library/user-event';
 const mockedUsedNavigate = jest.fn();
 
 jest.mock('react-router-dom', () => ({
-   ...jest.requireActual('react-router-dom') as any,
-  useNavigate: () => mockedUsedNavigate,
+    ...jest.requireActual('react-router-dom') as any,
+    useNavigate: () => mockedUsedNavigate,
 }));
 
 function getAllElements (component: any) {
@@ -30,7 +30,33 @@ function getAllElements (component: any) {
 
 describe('load form data on edit mode', () => {
     it('load data in form', async () => {
-        const result = renderWithClient(<OPISCityLandingPage />);
+        serverMsw.use(
+            rest.get('*', (req, res, ctx) => {
+                return res(
+                    ctx.status(200),
+                    ctx.json({
+                        data: {
+                            opisCities: [
+                                {
+                                    cityId: 102,
+                                    city: "Los Angeles",
+                                    countryCd: "us",
+                                    opisServedCityId: "943846a8-3cde-4d4a-b091-64108f687025",
+                                    state: "CA",
+                                },
+                            ],
+                            pagination: {
+                                limit: 15,
+                                offset: 0,
+                                totalCount: 1,
+                            }
+                        },
+                        error: null
+                    })
+                );
+            })
+        );
+        const result = renderWithClient(<OPISCityLandingPage version="Breadcrumbs-Many" />);
         await waitFor(() => {
             expect(result.getByText(/102/i)).toBeInTheDocument();
             expect(result.getByText(/Los Angeles/i)).toBeInTheDocument();
@@ -67,7 +93,7 @@ describe('search city name on OPIS city landing page', () => {
                 );
             })
         );
-        const result = renderWithClient(<OPISCityLandingPage />);
+        const result = renderWithClient(<OPISCityLandingPage version="Breadcrumbs-Many" />);
 
         await act(() => {
             const { searchBox } = getAllElements(result);
@@ -100,7 +126,7 @@ describe('search city name on OPIS city landing page', () => {
                 );
             })
         );
-        const result = renderWithClient(<OPISCityLandingPage />);
+        const result = renderWithClient(<OPISCityLandingPage version="Breadcrumbs-Many" />);
 
         await act(() => {
             const { searchBox } = getAllElements(result);
@@ -148,7 +174,7 @@ describe('sortby city name on OPIS city landing page', () => {
                 );
             })
         );
-        const result = renderWithClient(<OPISCityLandingPage />);
+        const result = renderWithClient(<OPISCityLandingPage version="Breadcrumbs-Many" />);
 
         await act(() => {
             const { sortBy } = getAllElements(result);
@@ -191,7 +217,7 @@ describe('OPIS city screen render with common filter functionality', () => {
                 );
             })
         );
-        const result = renderWithClient(<OPISCityLandingPage />);
+        const result = renderWithClient(<OPISCityLandingPage version="Breadcrumbs-Many" />);
 
         await waitFor(() => {
             expect(result.getByText(/Portland/i)).toBeInTheDocument();
