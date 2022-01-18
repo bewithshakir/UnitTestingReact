@@ -114,7 +114,7 @@ export const DatePickerInput: React.FC<DatePickerProps> = ({ label, type, placeh
                                         endProps.inputProps.placeholder = (typeof placeholder === 'object' && placeholder !== null) ? placeholder.end : "to";
                                     }
                                     return <React.Fragment>
-                                        <TextField id={id} name={name} onBlur={onBlur} {...startProps} onClick={() => setRangePickerStatus(true)} InputProps={inputEndornmentProps} InputLabelProps={{ shrink: false }} />
+                                        <TextField id={id} name={name}  onBlur={onBlur}  {...startProps} onClick={() => setRangePickerStatus(true)} InputProps={inputEndornmentProps} InputLabelProps={{ shrink: false }} />
                                         <Box sx={dateRangeMiddleTextSx}> {dateRangeMiddleText ? dateRangeMiddleText : ""} </Box>
                                         <TextField onBlur={onBlur} {...endProps} onClick={() => setRangePickerStatus(true)} InputProps={inputEndornmentProps} InputLabelProps={{ shrink: false }} />
                                     </React.Fragment>;

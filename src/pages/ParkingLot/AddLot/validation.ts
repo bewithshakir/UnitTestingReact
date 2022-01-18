@@ -1,4 +1,5 @@
 import * as Yup from 'yup';
+import moment from 'moment';
 
 const AddParkingLotValidationSchema = Yup.object().shape({
   lotName: Yup.string()
@@ -45,8 +46,15 @@ const AddParkingLotValidationSchema = Yup.object().shape({
     .min(1, 'Minimum of 1 emergency contact'),
   orderScheduleDel: Yup.array().of(
     Yup.object().shape({
-      fromDate: Yup.object().nullable().required('Required'),
-      toDate: Yup.object().nullable(),
+      fromDate: Yup.date().nullable().required('Required'),
+      toDate: Yup.date().nullable().test('fromDate', function (value: any, context: any) {
+        // debugger;// eslint-disable-line no-debugger
+        if (context?.parent?.fromDate && moment(context?.parent?.fromDate) >  moment(value)) {
+          return this.createError({ message: "End date can not be before Start date" });
+        } else {
+            return true;
+        }
+      }),
       startTime: Yup.string().required('Required'),
       endTime: Yup.string().required('Required'),
       delFreq: Yup.string(),
