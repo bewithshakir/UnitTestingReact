@@ -127,7 +127,7 @@ export default class CustomerModel {
         return [
             { field: "customerName", label: "CUSTOMER NAME", type: 'text', sortable: true },
             { field: "contactName", label: "CONTACT NAME", type: 'text' },
-            { field: "address", label: "ADDRESS", type: 'text' },
+            { field: "address", label: "ADDRESS", type: 'text', width: "150px" },
             { field: "city", label: "CITY", type: 'text' },
             { field: "state", label: "STATE", type: 'text' },
             { field: "zipCode", label: "ZIP", type: 'text' },
