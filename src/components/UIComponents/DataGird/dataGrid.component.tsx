@@ -256,7 +256,19 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
                                 >
                                     {
                                         props.headCells[index].type === 'text' ?
-                                            props.headCells[index].bold ? <b>{row[key]}</b> : row[key]
+                                            props.headCells[index].width ? (
+                                                <div
+                                                    title={row[key]}
+                                                    className="ellipses_column"
+                                                    style={{
+                                                        width: props.headCells[index].width,
+                                                    }}>
+                                                    {props.headCells[index].bold ? <b>{row[key]}</b> : row[key]}
+                                                </div>
+
+                                            ) : (
+                                                props.headCells[index].bold ? <b>{row[key]}</b> : row[key]
+                                            )
                                             :
                                             props.headCells[index].type === 'button' ?
                                                 <Button
