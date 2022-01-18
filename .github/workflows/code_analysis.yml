@@ -1,12 +1,7 @@
 on:
   # Trigger analysis when creating a pull request
-  
-  push:
-    branches:
-      - master
-
   pull_request:
-      branches: [ master ]
+      branches: [ main ]
       types: [opened, synchronize, reopened]
 
 name: Code Analysis
