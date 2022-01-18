@@ -269,7 +269,7 @@ function AddLotForm (): React.ReactElement {
                 startTime: orderSchedule.startTime,
                 endTime: orderSchedule.endTime,
                 dayOfWeek: ['weekly', 'monthly'].includes(String(form.productDelFreq?.label).toLowerCase())
-                    ? [orderSchedule.productDelDays?.value]
+                    ? (!orderSchedule?.productDelDays?.value ? []: [orderSchedule.productDelDays?.value] )
                     : orderSchedule.productDelDaysMulti?.map(daysMulti => daysMulti.value),
                 isPrimary: index === 0 ? "Y" : "N"
             }))
