@@ -1,7 +1,7 @@
 import { rest } from "msw";
 
 export const getOPISCitiesHandler = () => {
-    return rest.get('*/api/product-service/opis-served-city/*', (req, res, ctx) => {
+    return rest.get('*/api/opiscity-service/opiscity/list/cities/*', (req, res, ctx) => {
         return res(
             ctx.status(200),
             ctx.json({
