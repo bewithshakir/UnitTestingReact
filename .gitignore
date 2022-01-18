@@ -9,3 +9,4 @@ storybook-static
 dev.env
 qa.env
 prod.env
+.env
