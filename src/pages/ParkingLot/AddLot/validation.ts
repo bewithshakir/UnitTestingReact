@@ -48,9 +48,8 @@ const AddParkingLotValidationSchema = Yup.object().shape({
     Yup.object().shape({
       fromDate: Yup.date().nullable().required('Required'),
       toDate: Yup.date().nullable().test('fromDate', function (value: any, context: any) {
-        // debugger;// eslint-disable-line no-debugger
         if (context?.parent?.fromDate && moment(context?.parent?.fromDate) >  moment(value)) {
-          return this.createError({ message: "End date can not be before Start date" });
+          return this.createError({ message: "To Date can not be before From Date" });
         } else {
             return true;
         }
