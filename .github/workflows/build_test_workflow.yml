@@ -1,0 +1,33 @@
+# This is a basic workflow to help you get started with Actions
+
+name: tapupfrontend_test
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  pull_request:
+    branches: [ main ]
+jobs:
+  build_test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-versions: [12.x,14.x,15.x]
+
+    #steps represet sequence of tasks that will be executed as part of the job    
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+      - name: using Node.js ${{ matrix.node-version}}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{matrix.node-version}}
+      - name: npm ci, build and test
+        run: |
+          npm ci
+          npm run build --if-present
+          npm test
+
+
+      
+        
