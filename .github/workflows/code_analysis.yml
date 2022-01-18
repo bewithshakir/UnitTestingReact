@@ -1,5 +1,8 @@
 on:
   # Trigger analysis when creating a pull request
+  push:
+    branches:
+      - master
   pull_request:
       branches: [ main ]
       types: [opened, synchronize, reopened]
@@ -20,8 +23,8 @@ jobs:
         # Disabling shallow clone is recommended for improving relevancy of reporting
           fetch-depth: 0
       
-      # - name: 'yarn install'
-      #   run: yarn install --frozen-lockfile
+      - name: 'yarn install'
+        run: yarn install --frozen-lockfile
       # - name: 'yarn typeScript'
       #   run: yarn typescript
       # - name: 'tslint'
