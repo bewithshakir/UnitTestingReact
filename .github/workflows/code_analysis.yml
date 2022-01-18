@@ -2,7 +2,7 @@ on:
   # Trigger analysis when creating a pull request
   push:
     branches:
-      - master
+      - main
   pull_request:
       branches: [ main ]
       types: [opened, synchronize, reopened]
