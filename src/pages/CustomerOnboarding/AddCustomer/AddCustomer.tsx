@@ -743,6 +743,7 @@ const AddCustomer: React.FC<AddCustomerProps> = () => {
                                         disableBeforeDate={formik.values.startDate}
                                         helperText={(formik.touched.endDate && formik.errors.endDate) ? formik.errors.endDate : undefined}
                                         error={(formik.touched.endDate && formik.errors.endDate) ? true : false}
+                                        onBlur={() => { formik.setFieldTouched("endDate"); formik.validateField("endDate"); }}
                                         required
                                         disabled={isEditMode ? true : isDisabled}
                                     />
