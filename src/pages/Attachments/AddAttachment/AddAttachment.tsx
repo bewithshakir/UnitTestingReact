@@ -1,5 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import { FileCopy } from '@material-ui/icons';
+import { useTranslation } from "react-i18next";
 import './AddAttachment.style.scss';
 import { HorizontalBarVersionState, useStore } from '../../../store';
 import { IconButton } from '@mui/material';
@@ -17,6 +18,7 @@ const AddAttachment: React.FC<any> = () => {
     const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
     const [validFiles, setValidFiles] = useState<File[]>([]);
     const [uploadErroMsg, setUploadErrMsg] = useState('');
+    const { t } = useTranslation();
 
     setVersion("Breadcrumbs-Many");
 
@@ -103,16 +105,16 @@ const AddAttachment: React.FC<any> = () => {
                             maxSizeinBytes={25000000}
                         >
                             <div className='main-text'>
-                                Drag & drop the file or <span className='highlighted-text'>Choose</span>
+                            {t("UploadAttachments.uploadInitialText")} <span className='highlighted-text'>{t("UploadAttachments.Choose")}</span>
                             </div>
                             <div className='helper-text'>
-                                Max file size : 25MB | File format : PDF or DOC
+                            {t("UploadAttachments.FileFormatSize")} 
                             </div>
                         </FileUploadComponent>
                     </div>
                 }
             </Box>
-            <Button disabled={(validFiles.length == 0 || !!uploadErroMsg)} className='final-upload-btn' types='primary' aria-label='primary'> <ImportIcon /> Upload File</Button>
+            <Button disabled={(validFiles.length == 0 || !!uploadErroMsg)} className='final-upload-btn' types='primary' aria-label='primary'> <ImportIcon /> {t("UploadAttachments.UploadFile")} </Button>
         </div>
     );
 };

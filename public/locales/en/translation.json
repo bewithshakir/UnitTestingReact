@@ -318,5 +318,11 @@
     "dateAdded": "DATE ADDED",
     "uploadedBy": "UPLOADED BY",
     "uploadedIn": "UPLOADED IN"
+  },
+  "UploadAttachments":{
+    "uploadInitialText": "Drag & drop the file or",
+    "Choose":"Choose",
+    "FileFormatSize":"Max file size : 25MB | File format : PDF or DOC",
+    "UploadFile":"Upload File"
   }
 }
