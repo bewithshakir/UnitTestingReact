@@ -178,7 +178,8 @@ const AddCustomer: React.FC<AddCustomerProps> = () => {
 
     const onFileUploadError = (err: any) => {
         const { data: { error } } = err.response;
-        if (error.details[0] === 'Data already exist') {
+        
+        if (error?.httpCode === 409) {
             setShowConfirmationDialogBox(true);
         } else {
             setUploadErrMsg('Error found. Please delete and reupload the file');

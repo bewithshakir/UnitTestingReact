@@ -55,8 +55,12 @@ div{
     .final-upload-btn{
         float: right;
         svg{
-            color: var(--White);
             margin-right: 11px;
+        }
+        &.Mui-disabled{
+            svg{
+                color: var(--Lightergray);
+            }       
         }
     }
 }

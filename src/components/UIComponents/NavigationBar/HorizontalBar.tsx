@@ -12,7 +12,6 @@ import {
   SettingsIcon,
   USAFlagIcon,
 } from '../../../assets/icons';
-// import NewReleasesIcon from '@mui/icons-material/NewReleases';
 import { useAddedCustomerIdStore, useStore } from '../../../store';
 import { Button } from '../Button/Button.component';
 import NotificationsMenu from '../Menu/NotificationsMenu.component';
@@ -100,7 +99,11 @@ export default function HorizontalBar(props: HorizontalBarProps) {
       pathname.includes('productManagement/edit')
     ) {
       navigate('/productManagement');
-    } else {
+    } else if (
+      pathname.includes('AddAttachment') 
+    ) {
+      navigate(-1);
+    }else {
       props.onBack();
     }
   };

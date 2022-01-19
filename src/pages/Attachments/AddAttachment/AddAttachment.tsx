@@ -1,121 +1,178 @@
 import React, { useCallback, useState } from 'react';
-import { FileCopy } from '@material-ui/icons';
+import { FileCopy } from '@mui/icons-material';
+import { IconButton , Box, Paper} from '@mui/material';
 import { useTranslation } from "react-i18next";
-import './AddAttachment.style.scss';
-import { HorizontalBarVersionState, useStore } from '../../../store';
-import { IconButton } from '@mui/material';
-import Paper from '@mui/material/Paper';
-import { DeleteIcon, ImportIcon } from '../../../assets/icons';
-import { formatFileSizeUnit } from '../../../utils/helperFunctions';
 
-import Box from '@mui/material/Box';
+import { config } from '../config';
+import { DeleteIcon, ImportIcon } from '../../../assets/icons';
+import { HorizontalBarVersionState, useStore } from '../../../store';
+import { getCountryCode } from '../../../navigation/utils';
+import { formatFileSizeUnit, getUploadedBy, getUploadedIn } from '../../../utils/helperFunctions';
 import { Button } from '../../../components/UIComponents/Button/Button.component';
 import FileUploadComponent from '../../../components/UIComponents/FileUpload/FileUpload.component';
+import ToastMessage from '../../../components/UIComponents/ToastMessage/ToastMessage.component';
+import FileUploadErrorDialog from '../../../components/UIComponents/ConfirmationDialog/DiscardChangesDialog.component';
+import { useUploadAttachment } from '../queries';
+import { useAddedCustomerIdStore, useAddedCustomerNameStore} from '../../../store';
+import './AddAttachment.style.scss';
 
+interface IFormStatus {
+    message: string
+    type: string
+}
 
+interface IFormStatusProps {
+    [key: string]: IFormStatus
+}
+
+const formStatusProps: IFormStatusProps = {
+    fileuploadsuccess: {
+        message: 'File Uploaded Successfully',
+        type: 'Success'
+    },
+    error: {
+        message: 'Something went wrong. Please try again.',
+        type: 'Error',
+    }
+};
 
 const AddAttachment: React.FC<any> = () => {
     const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
+    const addedCustomerId = useAddedCustomerIdStore((state) => state.customerId);
+    const addedCustomerName = useAddedCustomerNameStore((state) => state.customerName);
+    const [apiResposneState, setAPIResponse] = useState(false);
+    const [formStatus, setFormStatus] = useState<IFormStatus>({ message: '', type: ''});
+    const [showConfirmationDialogBox, setShowConfirmationDialogBox] = useState(false);
     const [validFiles, setValidFiles] = useState<File[]>([]);
-    const [uploadErroMsg, setUploadErrMsg] = useState('');
+    const [failureFiles, setFailureFiles] = useState<Array<any>>([]);
+    const [uploadErrorMsg, setUploadErrMsg] = useState('');
     const { t } = useTranslation();
 
     setVersion("Breadcrumbs-Many");
 
-    const onDrop = useCallback((acceptedFiles: File[], rejectedFiles: Array<any>) => {
+    const onDropCallBack = useCallback((acceptedFiles: File[], rejectedFiles: Array<any>) => {
         if (acceptedFiles.length) {
             setUploadErrMsg('');
             setValidFiles(acceptedFiles);
-            setUploadErrMsg('');
         }
         if (rejectedFiles.length) {
-            setUploadErrMsg(rejectedFiles[0].errors[0].message);
+            setFailureFiles(rejectedFiles);
+            setUploadErrMsg(rejectedFiles[0].errors.map((err: { code: string, message: string }) => ({
+                code: err.code, message: err.code === 'file-too-large' ? `${t("UploadAttachments.largeFileError")}  ${config.maxAllowedFileSizeBtyes / 1000000} ${t("UploadAttachments.mb")}` : err.message
+            }))[0].message);
         }
     }, []);
 
-    const handleDeleteFileClick = () => {
+    const onFileUploadSuccess = () => {
         setValidFiles([]);
+        setFailureFiles([]);
+        setAPIResponse(true);
+        setFormStatus(formStatusProps.fileuploadsuccess);
+        setTimeout(() => {
+            setAPIResponse(false);
+        }, 6000);
+    };
+
+    const onFileUploadError = (err: any) => {
+        const { data: { error } } = err.response;
+        if (error?.httpCode === 409) {
+            setShowConfirmationDialogBox(true);
+        } else {
+            setUploadErrMsg(`${t("UploadAttachments.uploadGenericError")}`);
+        }
+    };
+
+    const handleFileDelete = () => {
+        setValidFiles([]);
+        setFailureFiles([]);
         setUploadErrMsg('');
     };
 
-    // const {acceptedFiles, getRootProps, getInputProps} = useDropzone();
+    const uploadFile = (isOverwriteFile: boolean = false) => {
+        const countryCd = getCountryCode();
+        const formData = new FormData();
+        const fileToUpload = validFiles[0];
+        formData.append('customerFile', fileToUpload);
+        formData.append('newCustomer', 'n' );
+        formData.append('countryCode', countryCd as string);
+        formData.append('companyNm', addedCustomerName);
+        formData.append('fileOverwrite', isOverwriteFile ? 'y' : 'n');
+        formData.append('uploadedBy', getUploadedBy());
+        formData.append('uploadedIn', getUploadedIn(location.pathname));
+        uploadAttachment(formData);
+    };
 
-    // const files = acceptedFiles.map(file => (
-    //   <li key={(file as any).path}>
-    //     {(file as any).path} - {file.size} bytes
-    //   </li>
-    // ));
+    const { mutate: uploadAttachment } = useUploadAttachment(addedCustomerId, onFileUploadError, onFileUploadSuccess);
 
+    const handleModelToggle = () => {
+        setShowConfirmationDialogBox(false);
+    };
 
-    // const uploadFile = (isOverwriteFile: boolean = false, customer: (CustomerModel | any) = {}) => {
-    //     const formData = new FormData();
-    //     const fileToUpload = validFiles[0];
-    //     formData.append('customerFile', fileToUpload);
-    //     formData.append('newCustomer', isEditMode ? 'n' : 'y');
-    //     formData.append('countryCode', customer.countryCd);
-    //     formData.append('companyNm', customer.companyNm);
-    //     formData.append('fileOverwrite', isOverwriteFile ? 'y' : 'n');
-    //     uploadContractFiles(formData);
-    // };
+    const handleModelConfirm = () => {
+        uploadFile(true);
+        setShowConfirmationDialogBox(false);
+    };
+
+    const uploadAttachedFile = () =>{
+        uploadFile();
+    };
 
     return (
-        <div>
+        <React.Fragment>
             <Box className='upload-attachment-main-container'>
-                {validFiles.length ?
-                    <Box
-                    className='file-box'
-                        // sx={{
-                        //     display: 'flex',
-                        //     flexWrap: 'wrap',
-                        //     '& > :not(style)': {
-                        //         m: 1,
-                        //         width: '100%',
-                        //         padding: '22px 28px'
-                        //     },
-                        // }}
-                    >
+                {(validFiles.length ||  failureFiles.length) ?
+                    <Box className='file-box'>
                         <Paper elevation={2} className="filename-paper" >
                             <div>
                                 <FileCopy />
                             </div>
                             <div className='filename-div'>
-                                {validFiles[0].name}
+                                {validFiles?.length > 0 && validFiles[0].name}
+                                {failureFiles?.length > 0 && failureFiles[0]?.file?.name}
                             </div>
                             <div>
-                                {formatFileSizeUnit(validFiles[0].size)}
+                                {validFiles?.length > 0 && formatFileSizeUnit(validFiles[0].size)}
+                                {failureFiles?.length > 0 && formatFileSizeUnit(failureFiles[0]?.file?.size)}
                             </div>
-                            {uploadErroMsg ? <div className='file-error'>
-                                {uploadErroMsg}
-                            </div> : ''}
+                            {uploadErrorMsg && <div className='file-error'>
+                                {uploadErrorMsg}
+                            </div> }
                             <div className='delete-div'>
-                                <IconButton onClick={handleDeleteFileClick}>
+                                <IconButton onClick={handleFileDelete}>
                                     <DeleteIcon color={'var(--ToastMessageRed)'} />
                                 </IconButton>
                             </div>
                         </Paper>
-
-                    </Box>
-
-                    :
+                    </Box> :
                     <div className='upload-box'>
                         <FileUploadComponent
-                            onDrop={onDrop}
-                            acceptedFiles='.pdf,.doc,.docx,.xls'
-                            maxFiles={1}
-                            maxSizeinBytes={25000000}
-                        >
+                            onDrop={onDropCallBack}
+                            acceptedFiles={config.acceptedFiles}
+                            maxFiles={config.noOfFilesLimit}
+                            maxSizeinBytes={config.maxAllowedFileSizeBtyes}
+                            multiple={config.multipleAllowed}>
                             <div className='main-text'>
-                            {t("UploadAttachments.uploadInitialText")} <span className='highlighted-text'>{t("UploadAttachments.Choose")}</span>
+                                {t("UploadAttachments.uploadInitialText")} <span className='highlighted-text'>{t("UploadAttachments.choose")}</span>
                             </div>
                             <div className='helper-text'>
-                            {t("UploadAttachments.FileFormatSize")} 
+                                {t("UploadAttachments.fileFormatSize")}
                             </div>
                         </FileUploadComponent>
                     </div>
                 }
+                <ToastMessage isOpen={apiResposneState} messageType={formStatus.type} onClose={() => { return ''; }} message={formStatus.message} />
             </Box>
-            <Button disabled={(validFiles.length == 0 || !!uploadErroMsg)} className='final-upload-btn' types='primary' aria-label='primary'> <ImportIcon /> {t("UploadAttachments.UploadFile")} </Button>
-        </div>
+            <Button disabled={(validFiles.length == 0 || !!uploadErrorMsg)} className='final-upload-btn' types='primary' aria-label='primary' onClick={uploadAttachedFile}> <ImportIcon /> {t("UploadAttachments.uploadFile")} </Button>
+            <FileUploadErrorDialog
+                title={t("UploadAttachments.fileuploaddialog.title")}
+                content={t("UploadAttachments.fileuploaddialog.content")}
+                open={showConfirmationDialogBox}
+                handleToggle={handleModelToggle}
+                handleConfirm={handleModelConfirm}
+                cancelBtnTitle={t("UploadAttachments.no")}
+                discardBtnTitle={t("UploadAttachments.yes")}
+            />
+        </React.Fragment>
     );
 };
 
