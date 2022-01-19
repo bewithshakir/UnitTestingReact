@@ -5,7 +5,7 @@ import DriveEtaOutlinedIcon from '@material-ui/icons/DriveEtaOutlined';
 import { PositiveCricleIcon, AlertExclamationIcon } from '../assets/icons';
 
 const { MassActionOptions, RowActionsOptions, DataGridFields } = AllParkingLots.LandingPage;
-export default class TaxModel {
+export default class ParkingLotsManagementModel {
     massActions () {
         const { t } = useTranslation();
         return MassActionOptions.map(actionItem => ({ ...actionItem, label: t(actionItem.label) }));
