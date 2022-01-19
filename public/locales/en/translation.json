@@ -328,8 +328,6 @@
       "title": "Error in File Upload",
       "content": "The file name you are trying to upload is already exists. Do you want to overwrite the file ?"
     },
-    "largeFileError":"File is larger than",
-    "mb":"MB",
     "uploadGenericError":"Error found. Please delete and re-upload the file",
     "no":"No",
     "yes":"Yes"
