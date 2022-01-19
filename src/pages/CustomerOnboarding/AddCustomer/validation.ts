@@ -28,7 +28,7 @@ const AddCustomerValidationSchema = Yup.object().shape({
     invoiceFrequency: dropDownSchema,
     email: Yup.string().email('Invalid email').required('Required'),
     phoneNumber: phoneNumberSchema,
-    endDate: Yup.object().required('Required'),
+    endDate: Yup.object().nullable().required('Required'),
     paymentTerm: Yup.string().matches(/^[0-9]{1,2}$/, 'Invalid payment term.'),
     emergencyContact: Yup.array()
         .of(contactSchema)
