@@ -28,34 +28,8 @@ function getAllElements (component: any) {
 }
 
 
-describe('load form data on edit mode', () => {
+describe('load OPIScity landing page', () => {
     it('load data in form', async () => {
-        serverMsw.use(
-            rest.get('*', (req, res, ctx) => {
-                return res(
-                    ctx.status(200),
-                    ctx.json({
-                        data: {
-                            opisCities: [
-                                {
-                                    cityId: 102,
-                                    city: "Los Angeles",
-                                    countryCd: "us",
-                                    opisServedCityId: "943846a8-3cde-4d4a-b091-64108f687025",
-                                    state: "CA",
-                                },
-                            ],
-                            pagination: {
-                                limit: 15,
-                                offset: 0,
-                                totalCount: 1,
-                            }
-                        },
-                        error: null
-                    })
-                );
-            })
-        );
         const result = renderWithClient(<OPISCityLandingPage version="Breadcrumbs-Many" />);
         await waitFor(() => {
             expect(result.getByText(/102/i)).toBeInTheDocument();
@@ -67,34 +41,7 @@ describe('load form data on edit mode', () => {
 
 describe('search city name on OPIS city landing page', () => {
     it('load data in form', async () => {
-        serverMsw.use(
-            rest.get('*', (req, res, ctx) => {
-                return res(
-                    ctx.status(200),
-                    ctx.json({
-                        data: {
-                            opisCities: [
-                                {
-                                    city: "Los Angeles",
-                                    cityId: 102,
-                                    countryCd: "us",
-                                    opisServedCityId: "943846a8-3cde-4d4a-b091-64108f687025",
-                                    state: "CA",
-                                },
-                            ],
-                            pagination: {
-                                limit: 15,
-                                offset: 0,
-                                totalCount: 1,
-                            }
-                        },
-                        error: null
-                    })
-                );
-            })
-        );
         const result = renderWithClient(<OPISCityLandingPage version="Breadcrumbs-Many" />);
-
         await act(() => {
             const { searchBox } = getAllElements(result);
             userEvent.type(searchBox, 'Los Angeles');
@@ -141,39 +88,6 @@ describe('search city name on OPIS city landing page', () => {
 
 describe('sortby city name on OPIS city landing page', () => {
     it('load data in form', async () => {
-        serverMsw.use(
-            rest.get('*', (req, res, ctx) => {
-                return res(
-                    ctx.status(200),
-                    ctx.json({
-                        data: {
-                            opisCities: [
-                                {
-                                    city: "Los Angeles",
-                                    cityId: 102,
-                                    countryCd: "us",
-                                    opisServedCityId: "943846a8-3cde-4d4a-b091-64108f687025",
-                                    state: "CA",
-                                },
-                                {
-                                    city: "Austin",
-                                    cityId: 113,
-                                    countryCd: "us",
-                                    opisServedCityId: "aff055cd-234e-4f79-a119-3815cfe1b1f7",
-                                    state: "TX",
-                                },
-                            ],
-                            pagination: {
-                                limit: 15,
-                                offset: 0,
-                                totalCount: 1,
-                            }
-                        },
-                        error: null
-                    })
-                );
-            })
-        );
         const result = renderWithClient(<OPISCityLandingPage version="Breadcrumbs-Many" />);
 
         await act(() => {

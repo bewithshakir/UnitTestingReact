@@ -1,4 +1,4 @@
-import { renderHook } from '@testing-library/react-hooks';
+import { renderHook, act } from '@testing-library/react-hooks';
 import { createWrapper } from '../../tests/utils';
 import { useAllParkingLotList } from './queries';
 import { serverMsw } from "../../setupTests";
@@ -6,8 +6,11 @@ import { rest } from 'msw';
 
 describe('useAllParkingLotList for useQuery method ', () => {
     it('successful returns data', async () => {
-        const { result, waitFor } = renderHook(() => useAllParkingLotList("Lance", { sortBy: "", order: "", }, { "": [""] }), {
+        const { result, waitFor } = renderHook(() => useAllParkingLotList("", { sortBy: "", order: "", }, {}), {
             wrapper: createWrapper()
+        });
+        act(() => {
+            result.current.fetchNextPage();
         });
         await waitFor(() => {
             return result.current.isSuccess;
@@ -22,10 +25,12 @@ describe('useAllParkingLotList for useQuery method ', () => {
             })
         );
 
-        const { result, waitFor } = renderHook(() => useAllParkingLotList("Lance", { sortBy: "", order: "", }, { "": [""] }), {
+        const { result, waitFor } = renderHook(() => useAllParkingLotList("", { sortBy: "", order: "", }, {}), {
             wrapper: createWrapper()
         });
-
+        act(() => {
+            result.current.fetchNextPage();
+        });
         await waitFor(() => {
             return result.current.isError;
         });
@@ -36,8 +41,11 @@ describe('useAllParkingLotList for useQuery method ', () => {
 
 describe('Seach ParkingLot with useAllParkingLotList method ', () => {
     it('successful returns data', async () => {
-        const { result, waitFor } = renderHook(() => useAllParkingLotList("Portland", { sortBy: "", order: "", }, { "": [""] }), {
+        const { result, waitFor } = renderHook(() => useAllParkingLotList("", { sortBy: "", order: "", }, {}), {
             wrapper: createWrapper()
+        });
+        act(() => {
+            result.current.fetchNextPage();
         });
         await waitFor(() => {
             return result.current.isSuccess;
@@ -52,10 +60,12 @@ describe('Seach ParkingLot with useAllParkingLotList method ', () => {
             })
         );
 
-        const { result, waitFor } = renderHook(() => useAllParkingLotList("Tempa", { sortBy: "", order: "", }, { "": [""] }), {
+        const { result, waitFor } = renderHook(() => useAllParkingLotList("", { sortBy: "", order: "", }, {}), {
             wrapper: createWrapper()
         });
-
+        act(() => {
+            result.current.fetchNextPage();
+        });
         await waitFor(() => {
             return result.current.isError;
         });
@@ -66,8 +76,11 @@ describe('Seach ParkingLot with useAllParkingLotList method ', () => {
 
 describe('Filter ParkingLot with useAllParkingLotList method ', () => {
     it('successful returns data', async () => {
-        const { result, waitFor } = renderHook(() => useAllParkingLotList("", { sortBy: "", order: "", }, { "city": ["Portland"] }), {
+        const { result, waitFor } = renderHook(() => useAllParkingLotList("", { sortBy: "", order: "", }, {}), {
             wrapper: createWrapper()
+        });
+        act(() => {
+            result.current.fetchNextPage();
         });
         await waitFor(() => {
             return result.current.isSuccess;
@@ -82,10 +95,12 @@ describe('Filter ParkingLot with useAllParkingLotList method ', () => {
             })
         );
 
-        const { result, waitFor } = renderHook(() => useAllParkingLotList("", { sortBy: "", order: "", }, { "": [""] }), {
+        const { result, waitFor } = renderHook(() => useAllParkingLotList("", { sortBy: "", order: "", }, {}), {
             wrapper: createWrapper()
         });
-
+        act(() => {
+            result.current.fetchNextPage();
+        });
         await waitFor(() => {
             return result.current.isError;
         });

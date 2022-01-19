@@ -23,7 +23,7 @@ jest.mock('react-router-dom', () => ({
         },
         push: jest.fn()
     }),
-    useMatch: () => ({
+    useParams: () => ({
         params: {
             productId: ''
         }
@@ -140,13 +140,8 @@ describe('AddProduct component', () => {
 
     describe('edit product screen render', () => {
         beforeEach(() => {
-            jest.spyOn(routeDataDom, 'useMatch').mockImplementation(() => ({
-                isExact: true,
-                params: {
-                    productId: '00aad1db-d5a4-45c7-9428-ab08c8d9f6b4'
-                },
-                path: "/productManagement/edit/:productId",
-                url: "/productManagement/edit/00aad1db-d5a4-45c7-9428-ab08c8d9f6b4"
+            jest.spyOn(routeDataDom, 'useParams').mockImplementation(() => ({
+                productId: '00aad1db-d5a4-45c7-9428-ab08c8d9f6b4'
             }));
         });
 
