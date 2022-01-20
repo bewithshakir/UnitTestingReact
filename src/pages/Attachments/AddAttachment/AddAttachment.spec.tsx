@@ -23,7 +23,7 @@ beforeAll(() => {
 const queryClient = new QueryClient();
 
 describe('Rendering of Add Attachment Component', () => {
-    it('Upload Attachment Component component Snapshot testing when', () => {
+    it('Upload Attachment Component Snapshot testing when', () => {
         const component = mount(<QueryClientProvider client={queryClient}>
             <AddAttachment version="Breadcrumbs-Many" />
         </QueryClientProvider>
@@ -91,10 +91,6 @@ describe('Rendering of Add Attachment Component', () => {
         expect(container.querySelector('.file-error')?.textContent).toBe('File is larger than 25 MB');
     });
 });
-
-// afterAll(() => {
-//     jest.useRealTimers();
-// });
 
 
 async function flushPromises(rerender: any, ui: any) {

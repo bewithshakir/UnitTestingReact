@@ -294,9 +294,9 @@ export default function HorizontalBar (props: HorizontalBarProps) {
           <Link className='breadcrubs-title' onClick={handleCustomerBack}>
             {selectedCustomerName}
           </Link>
-          <Link className='breadcrubs-title' href='#' onClick={handleClick}>
+          { (pathname.includes('addLot') || pathname.includes('viewLot') ) && <Link className='breadcrubs-title' href='#' onClick={handleClick}>
             {'Add Lot & Details'}
-          </Link>
+          </Link>}
           { (pathname.includes('AddAttachment') &&  <Link className="breadcrubs-title" href="#" onClick={handleClick}>
           {"Add Attachment"}
         </Link>)}
