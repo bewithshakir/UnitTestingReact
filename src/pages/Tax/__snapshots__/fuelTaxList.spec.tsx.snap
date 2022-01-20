@@ -186,6 +186,11 @@ exports[`FuelTax Landing Page Fuel List is rendering 1`] = `
                   "type": "text",
                 },
                 Object {
+                  "field": "ppdSalesTax",
+                  "label": "PPD SALES TAX (PREPAID) ($)",
+                  "type": "text",
+                },
+                Object {
                   "field": "miscInspFuelTax",
                   "label": "MISP INSP FUEL TAX ($)",
                   "type": "text",
@@ -573,6 +578,11 @@ exports[`Given Search FuelTax Landing Page Show Fuel List as per searched value 
                 Object {
                   "field": "countyFuelTax",
                   "label": "COUNTY TAX ($)",
+                  "type": "text",
+                },
+                Object {
+                  "field": "ppdSalesTax",
+                  "label": "PPD SALES TAX (PREPAID) ($)",
                   "type": "text",
                 },
                 Object {

@@ -531,7 +531,7 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
                 },
                 "currentResult": Object {
                   "data": undefined,
-                  "dataUpdatedAt": 1638338756741,
+                  "dataUpdatedAt": 1642504074456,
                   "error": null,
                   "errorUpdatedAt": 0,
                   "failureCount": 0,
@@ -569,8 +569,8 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
                 },
                 "currentResultState": Object {
                   "data": undefined,
-                  "dataUpdateCount": 2,
-                  "dataUpdatedAt": 1638338756741,
+                  "dataUpdateCount": 6,
+                  "dataUpdatedAt": 1642504074456,
                   "error": null,
                   "errorUpdateCount": 0,
                   "errorUpdatedAt": 0,
@@ -613,13 +613,15 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
                 "currentQuery": [Circular],
                 "currentQueryInitialState": Object {
                   "data": undefined,
-                  "dataUpdateCount": 2,
-                  "dataUpdatedAt": 1638338756741,
+                  "dataUpdateCount": 6,
+                  "dataUpdatedAt": 1642504074456,
                   "error": null,
                   "errorUpdateCount": 0,
                   "errorUpdatedAt": 0,
                   "fetchFailureCount": 0,
-                  "fetchMeta": null,
+                  "fetchMeta": Object {
+                    "refetchPage": undefined,
+                  },
                   "isFetching": false,
                   "isInvalidated": false,
                   "isPaused": false,
@@ -627,7 +629,7 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
                 },
                 "currentResult": Object {
                   "data": undefined,
-                  "dataUpdatedAt": 1638338756741,
+                  "dataUpdatedAt": 1642504074456,
                   "error": null,
                   "errorUpdatedAt": 0,
                   "failureCount": 0,
@@ -665,8 +667,8 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
                 },
                 "currentResultState": Object {
                   "data": undefined,
-                  "dataUpdateCount": 2,
-                  "dataUpdatedAt": 1638338756741,
+                  "dataUpdateCount": 6,
+                  "dataUpdatedAt": 1642504074456,
                   "error": null,
                   "errorUpdateCount": 0,
                   "errorUpdatedAt": 0,
@@ -742,13 +744,15 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
             },
             "revertState": Object {
               "data": undefined,
-              "dataUpdateCount": 2,
-              "dataUpdatedAt": 1638338756741,
+              "dataUpdateCount": 6,
+              "dataUpdatedAt": 1642504074456,
               "error": null,
               "errorUpdateCount": 0,
               "errorUpdatedAt": 0,
               "fetchFailureCount": 0,
-              "fetchMeta": null,
+              "fetchMeta": Object {
+                "refetchPage": undefined,
+              },
               "isFetching": false,
               "isInvalidated": false,
               "isPaused": false,
@@ -756,8 +760,8 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
             },
             "state": Object {
               "data": undefined,
-              "dataUpdateCount": 2,
-              "dataUpdatedAt": 1638338756741,
+              "dataUpdateCount": 6,
+              "dataUpdatedAt": 1642504074456,
               "error": null,
               "errorUpdateCount": 0,
               "errorUpdatedAt": 0,
@@ -808,7 +812,7 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
                 },
                 "currentResult": Object {
                   "data": undefined,
-                  "dataUpdatedAt": 1638338756741,
+                  "dataUpdatedAt": 1642504074456,
                   "error": null,
                   "errorUpdatedAt": 0,
                   "failureCount": 0,
@@ -840,8 +844,8 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
                 },
                 "currentResultState": Object {
                   "data": undefined,
-                  "dataUpdateCount": 2,
-                  "dataUpdatedAt": 1638338756741,
+                  "dataUpdateCount": 6,
+                  "dataUpdatedAt": 1642504074456,
                   "error": null,
                   "errorUpdateCount": 0,
                   "errorUpdatedAt": 0,
@@ -878,13 +882,15 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
                 "currentQuery": [Circular],
                 "currentQueryInitialState": Object {
                   "data": undefined,
-                  "dataUpdateCount": 2,
-                  "dataUpdatedAt": 1638338756741,
+                  "dataUpdateCount": 6,
+                  "dataUpdatedAt": 1642504074456,
                   "error": null,
                   "errorUpdateCount": 0,
                   "errorUpdatedAt": 0,
                   "fetchFailureCount": 0,
-                  "fetchMeta": null,
+                  "fetchMeta": Object {
+                    "refetchPage": undefined,
+                  },
                   "isFetching": false,
                   "isInvalidated": false,
                   "isPaused": false,
@@ -892,7 +898,7 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
                 },
                 "currentResult": Object {
                   "data": undefined,
-                  "dataUpdatedAt": 1638338756741,
+                  "dataUpdatedAt": 1642504074456,
                   "error": null,
                   "errorUpdatedAt": 0,
                   "failureCount": 0,
@@ -924,8 +930,8 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
                 },
                 "currentResultState": Object {
                   "data": undefined,
-                  "dataUpdateCount": 2,
-                  "dataUpdatedAt": 1638338756741,
+                  "dataUpdateCount": 6,
+                  "dataUpdatedAt": 1642504074456,
                   "error": null,
                   "errorUpdateCount": 0,
                   "errorUpdatedAt": 0,
@@ -986,13 +992,15 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
             },
             "revertState": Object {
               "data": undefined,
-              "dataUpdateCount": 2,
-              "dataUpdatedAt": 1638338756741,
+              "dataUpdateCount": 6,
+              "dataUpdatedAt": 1642504074456,
               "error": null,
               "errorUpdateCount": 0,
               "errorUpdatedAt": 0,
               "fetchFailureCount": 0,
-              "fetchMeta": null,
+              "fetchMeta": Object {
+                "refetchPage": undefined,
+              },
               "isFetching": false,
               "isInvalidated": false,
               "isPaused": false,
@@ -1000,8 +1008,8 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
             },
             "state": Object {
               "data": undefined,
-              "dataUpdateCount": 2,
-              "dataUpdatedAt": 1638338756741,
+              "dataUpdateCount": 6,
+              "dataUpdatedAt": 1642504074456,
               "error": null,
               "errorUpdateCount": 0,
               "errorUpdatedAt": 0,
@@ -1052,7 +1060,7 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
                 },
                 "currentResult": Object {
                   "data": undefined,
-                  "dataUpdatedAt": 1638338756741,
+                  "dataUpdatedAt": 1642504074456,
                   "error": null,
                   "errorUpdatedAt": 0,
                   "failureCount": 0,
@@ -1084,8 +1092,8 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
                 },
                 "currentResultState": Object {
                   "data": undefined,
-                  "dataUpdateCount": 2,
-                  "dataUpdatedAt": 1638338756741,
+                  "dataUpdateCount": 6,
+                  "dataUpdatedAt": 1642504074456,
                   "error": null,
                   "errorUpdateCount": 0,
                   "errorUpdatedAt": 0,
@@ -1122,13 +1130,15 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
                 "currentQuery": [Circular],
                 "currentQueryInitialState": Object {
                   "data": undefined,
-                  "dataUpdateCount": 2,
-                  "dataUpdatedAt": 1638338756741,
+                  "dataUpdateCount": 6,
+                  "dataUpdatedAt": 1642504074456,
                   "error": null,
                   "errorUpdateCount": 0,
                   "errorUpdatedAt": 0,
                   "fetchFailureCount": 0,
-                  "fetchMeta": null,
+                  "fetchMeta": Object {
+                    "refetchPage": undefined,
+                  },
                   "isFetching": false,
                   "isInvalidated": false,
                   "isPaused": false,
@@ -1136,7 +1146,7 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
                 },
                 "currentResult": Object {
                   "data": undefined,
-                  "dataUpdatedAt": 1638338756741,
+                  "dataUpdatedAt": 1642504074456,
                   "error": null,
                   "errorUpdatedAt": 0,
                   "failureCount": 0,
@@ -1168,8 +1178,8 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
                 },
                 "currentResultState": Object {
                   "data": undefined,
-                  "dataUpdateCount": 2,
-                  "dataUpdatedAt": 1638338756741,
+                  "dataUpdateCount": 6,
+                  "dataUpdatedAt": 1642504074456,
                   "error": null,
                   "errorUpdateCount": 0,
                   "errorUpdatedAt": 0,
@@ -1230,13 +1240,15 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
             },
             "revertState": Object {
               "data": undefined,
-              "dataUpdateCount": 2,
-              "dataUpdatedAt": 1638338756741,
+              "dataUpdateCount": 6,
+              "dataUpdatedAt": 1642504074456,
               "error": null,
               "errorUpdateCount": 0,
               "errorUpdatedAt": 0,
               "fetchFailureCount": 0,
-              "fetchMeta": null,
+              "fetchMeta": Object {
+                "refetchPage": undefined,
+              },
               "isFetching": false,
               "isInvalidated": false,
               "isPaused": false,
@@ -1244,8 +1256,8 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
             },
             "state": Object {
               "data": undefined,
-              "dataUpdateCount": 2,
-              "dataUpdatedAt": 1638338756741,
+              "dataUpdateCount": 6,
+              "dataUpdatedAt": 1642504074456,
               "error": null,
               "errorUpdateCount": 0,
               "errorUpdatedAt": 0,
@@ -1298,7 +1310,7 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
                 },
                 "currentResult": Object {
                   "data": undefined,
-                  "dataUpdatedAt": 1638338756741,
+                  "dataUpdatedAt": 1642504074456,
                   "error": null,
                   "errorUpdatedAt": 0,
                   "failureCount": 0,
@@ -1330,8 +1342,8 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
                 },
                 "currentResultState": Object {
                   "data": undefined,
-                  "dataUpdateCount": 2,
-                  "dataUpdatedAt": 1638338756741,
+                  "dataUpdateCount": 6,
+                  "dataUpdatedAt": 1642504074456,
                   "error": null,
                   "errorUpdateCount": 0,
                   "errorUpdatedAt": 0,
@@ -1368,13 +1380,15 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
                 "currentQuery": [Circular],
                 "currentQueryInitialState": Object {
                   "data": undefined,
-                  "dataUpdateCount": 2,
-                  "dataUpdatedAt": 1638338756741,
+                  "dataUpdateCount": 6,
+                  "dataUpdatedAt": 1642504074456,
                   "error": null,
                   "errorUpdateCount": 0,
                   "errorUpdatedAt": 0,
                   "fetchFailureCount": 0,
-                  "fetchMeta": null,
+                  "fetchMeta": Object {
+                    "refetchPage": undefined,
+                  },
                   "isFetching": false,
                   "isInvalidated": false,
                   "isPaused": false,
@@ -1382,7 +1396,7 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
                 },
                 "currentResult": Object {
                   "data": undefined,
-                  "dataUpdatedAt": 1638338756741,
+                  "dataUpdatedAt": 1642504074456,
                   "error": null,
                   "errorUpdatedAt": 0,
                   "failureCount": 0,
@@ -1414,8 +1428,8 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
                 },
                 "currentResultState": Object {
                   "data": undefined,
-                  "dataUpdateCount": 2,
-                  "dataUpdatedAt": 1638338756741,
+                  "dataUpdateCount": 6,
+                  "dataUpdatedAt": 1642504074456,
                   "error": null,
                   "errorUpdateCount": 0,
                   "errorUpdatedAt": 0,
@@ -1476,13 +1490,15 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
             },
             "revertState": Object {
               "data": undefined,
-              "dataUpdateCount": 2,
-              "dataUpdatedAt": 1638338756741,
+              "dataUpdateCount": 6,
+              "dataUpdatedAt": 1642504074456,
               "error": null,
               "errorUpdateCount": 0,
               "errorUpdatedAt": 0,
               "fetchFailureCount": 0,
-              "fetchMeta": null,
+              "fetchMeta": Object {
+                "refetchPage": undefined,
+              },
               "isFetching": false,
               "isInvalidated": false,
               "isPaused": false,
@@ -1490,8 +1506,8 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
             },
             "state": Object {
               "data": undefined,
-              "dataUpdateCount": 2,
-              "dataUpdatedAt": 1638338756741,
+              "dataUpdateCount": 6,
+              "dataUpdatedAt": 1642504074456,
               "error": null,
               "errorUpdateCount": 0,
               "errorUpdatedAt": 0,
@@ -1542,7 +1558,7 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
                 },
                 "currentResult": Object {
                   "data": undefined,
-                  "dataUpdatedAt": 1638338756741,
+                  "dataUpdatedAt": 1642504074456,
                   "error": null,
                   "errorUpdatedAt": 0,
                   "failureCount": 0,
@@ -1580,8 +1596,8 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
                 },
                 "currentResultState": Object {
                   "data": undefined,
-                  "dataUpdateCount": 2,
-                  "dataUpdatedAt": 1638338756741,
+                  "dataUpdateCount": 6,
+                  "dataUpdatedAt": 1642504074456,
                   "error": null,
                   "errorUpdateCount": 0,
                   "errorUpdatedAt": 0,
@@ -1624,13 +1640,15 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
                 "currentQuery": [Circular],
                 "currentQueryInitialState": Object {
                   "data": undefined,
-                  "dataUpdateCount": 2,
-                  "dataUpdatedAt": 1638338756741,
+                  "dataUpdateCount": 6,
+                  "dataUpdatedAt": 1642504074456,
                   "error": null,
                   "errorUpdateCount": 0,
                   "errorUpdatedAt": 0,
                   "fetchFailureCount": 0,
-                  "fetchMeta": null,
+                  "fetchMeta": Object {
+                    "refetchPage": undefined,
+                  },
                   "isFetching": false,
                   "isInvalidated": false,
                   "isPaused": false,
@@ -1638,7 +1656,7 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
                 },
                 "currentResult": Object {
                   "data": undefined,
-                  "dataUpdatedAt": 1638338756741,
+                  "dataUpdatedAt": 1642504074456,
                   "error": null,
                   "errorUpdatedAt": 0,
                   "failureCount": 0,
@@ -1676,8 +1694,8 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
                 },
                 "currentResultState": Object {
                   "data": undefined,
-                  "dataUpdateCount": 2,
-                  "dataUpdatedAt": 1638338756741,
+                  "dataUpdateCount": 6,
+                  "dataUpdatedAt": 1642504074456,
                   "error": null,
                   "errorUpdateCount": 0,
                   "errorUpdatedAt": 0,
@@ -1753,13 +1771,15 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
             },
             "revertState": Object {
               "data": undefined,
-              "dataUpdateCount": 2,
-              "dataUpdatedAt": 1638338756741,
+              "dataUpdateCount": 6,
+              "dataUpdatedAt": 1642504074456,
               "error": null,
               "errorUpdateCount": 0,
               "errorUpdatedAt": 0,
               "fetchFailureCount": 0,
-              "fetchMeta": null,
+              "fetchMeta": Object {
+                "refetchPage": undefined,
+              },
               "isFetching": false,
               "isInvalidated": false,
               "isPaused": false,
@@ -1767,8 +1787,8 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
             },
             "state": Object {
               "data": undefined,
-              "dataUpdateCount": 2,
-              "dataUpdatedAt": 1638338756741,
+              "dataUpdateCount": 6,
+              "dataUpdatedAt": 1642504074456,
               "error": null,
               "errorUpdateCount": 0,
               "errorUpdatedAt": 0,
@@ -2295,7 +2315,7 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
                 },
                 "currentResult": Object {
                   "data": undefined,
-                  "dataUpdatedAt": 1638338756741,
+                  "dataUpdatedAt": 1642504074456,
                   "error": null,
                   "errorUpdatedAt": 0,
                   "failureCount": 0,
@@ -2327,8 +2347,8 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
                 },
                 "currentResultState": Object {
                   "data": undefined,
-                  "dataUpdateCount": 2,
-                  "dataUpdatedAt": 1638338756741,
+                  "dataUpdateCount": 6,
+                  "dataUpdatedAt": 1642504074456,
                   "error": null,
                   "errorUpdateCount": 0,
                   "errorUpdatedAt": 0,
@@ -2365,13 +2385,15 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
                 "currentQuery": [Circular],
                 "currentQueryInitialState": Object {
                   "data": undefined,
-                  "dataUpdateCount": 2,
-                  "dataUpdatedAt": 1638338756741,
+                  "dataUpdateCount": 6,
+                  "dataUpdatedAt": 1642504074456,
                   "error": null,
                   "errorUpdateCount": 0,
                   "errorUpdatedAt": 0,
                   "fetchFailureCount": 0,
-                  "fetchMeta": null,
+                  "fetchMeta": Object {
+                    "refetchPage": undefined,
+                  },
                   "isFetching": false,
                   "isInvalidated": false,
                   "isPaused": false,
@@ -2379,7 +2401,7 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
                 },
                 "currentResult": Object {
                   "data": undefined,
-                  "dataUpdatedAt": 1638338756741,
+                  "dataUpdatedAt": 1642504074456,
                   "error": null,
                   "errorUpdatedAt": 0,
                   "failureCount": 0,
@@ -2411,8 +2433,8 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
                 },
                 "currentResultState": Object {
                   "data": undefined,
-                  "dataUpdateCount": 2,
-                  "dataUpdatedAt": 1638338756741,
+                  "dataUpdateCount": 6,
+                  "dataUpdatedAt": 1642504074456,
                   "error": null,
                   "errorUpdateCount": 0,
                   "errorUpdatedAt": 0,
@@ -2473,13 +2495,15 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
             },
             "revertState": Object {
               "data": undefined,
-              "dataUpdateCount": 2,
-              "dataUpdatedAt": 1638338756741,
+              "dataUpdateCount": 6,
+              "dataUpdatedAt": 1642504074456,
               "error": null,
               "errorUpdateCount": 0,
               "errorUpdatedAt": 0,
               "fetchFailureCount": 0,
-              "fetchMeta": null,
+              "fetchMeta": Object {
+                "refetchPage": undefined,
+              },
               "isFetching": false,
               "isInvalidated": false,
               "isPaused": false,
@@ -2487,8 +2511,8 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
             },
             "state": Object {
               "data": undefined,
-              "dataUpdateCount": 2,
-              "dataUpdatedAt": 1638338756741,
+              "dataUpdateCount": 6,
+              "dataUpdatedAt": 1642504074456,
               "error": null,
               "errorUpdateCount": 0,
               "errorUpdatedAt": 0,
@@ -3038,6 +3062,7 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
                         id="endDate"
                         label="START DATE FOR CUSTOMER"
                         name="endDate"
+                        onBlur={[Function]}
                         onChange={[Function]}
                         onClose={[Function]}
                         placeholder="Select Date"
@@ -3886,6 +3911,7 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
                             id="endDate"
                             label="START DATE FOR CUSTOMER"
                             name="endDate"
+                            onBlur={[Function]}
                             onChange={[Function]}
                             onClose={[Function]}
                             placeholder="Select Date"
@@ -4733,6 +4759,7 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
                                 id="endDate"
                                 label="START DATE FOR CUSTOMER"
                                 name="endDate"
+                                onBlur={[Function]}
                                 onChange={[Function]}
                                 onClose={[Function]}
                                 placeholder="Select Date"
@@ -6300,7 +6327,7 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
                                                       getStyles={[Function]}
                                                       getValue={[Function]}
                                                       hasValue={true}
-                                                      id="react-select-8-live-region"
+                                                      id="react-select-14-live-region"
                                                       isFocused={false}
                                                       isMulti={false}
                                                       isRtl={false}
@@ -6404,7 +6431,7 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
                                                       }
                                                     >
                                                       <A11yText
-                                                        id="react-select-8-live-region"
+                                                        id="react-select-14-live-region"
                                                       >
                                                         <EmotionCssPropInternal
                                                           __EMOTION_LABEL_PLEASE_DO_NOT_USE__="A11yText"
@@ -6417,11 +6444,11 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
                                                               "toString": [Function],
                                                             }
                                                           }
-                                                          id="react-select-8-live-region"
+                                                          id="react-select-14-live-region"
                                                         >
                                                           <span
                                                             className="css-1f43avz-a11yText-A11yText"
-                                                            id="react-select-8-live-region"
+                                                            id="react-select-14-live-region"
                                                           />
                                                         </EmotionCssPropInternal>
                                                       </A11yText>
@@ -6852,10 +6879,10 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
                                                                 </SingleValue>
                                                                 <Input
                                                                   aria-autocomplete="list"
-                                                                  aria-controls="react-select-8-listbox"
+                                                                  aria-controls="react-select-14-listbox"
                                                                   aria-expanded={false}
                                                                   aria-haspopup={true}
-                                                                  aria-owns="react-select-8-listbox"
+                                                                  aria-owns="react-select-14-listbox"
                                                                   autoCapitalize="none"
                                                                   autoComplete="off"
                                                                   autoCorrect="off"
@@ -6864,7 +6891,7 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
                                                                   getStyles={[Function]}
                                                                   getValue={[Function]}
                                                                   hasValue={true}
-                                                                  id="react-select-8-input"
+                                                                  id="react-select-14-input"
                                                                   innerRef={[Function]}
                                                                   isDisabled={false}
                                                                   isHidden={false}
@@ -7007,16 +7034,16 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
                                                                     >
                                                                       <input
                                                                         aria-autocomplete="list"
-                                                                        aria-controls="react-select-8-listbox"
+                                                                        aria-controls="react-select-14-listbox"
                                                                         aria-expanded={false}
                                                                         aria-haspopup={true}
-                                                                        aria-owns="react-select-8-listbox"
+                                                                        aria-owns="react-select-14-listbox"
                                                                         autoCapitalize="none"
                                                                         autoComplete="off"
                                                                         autoCorrect="off"
                                                                         className="react-select__input"
                                                                         disabled={false}
-                                                                        id="react-select-8-input"
+                                                                        id="react-select-14-input"
                                                                         onBlur={[Function]}
                                                                         onChange={[Function]}
                                                                         onFocus={[Function]}
@@ -10448,7 +10475,7 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
                                                   getStyles={[Function]}
                                                   getValue={[Function]}
                                                   hasValue={false}
-                                                  id="react-select-9-live-region"
+                                                  id="react-select-15-live-region"
                                                   isFocused={false}
                                                   isMulti={false}
                                                   isRtl={false}
@@ -10544,7 +10571,7 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
                                                   }
                                                 >
                                                   <A11yText
-                                                    id="react-select-9-live-region"
+                                                    id="react-select-15-live-region"
                                                   >
                                                     <EmotionCssPropInternal
                                                       __EMOTION_LABEL_PLEASE_DO_NOT_USE__="A11yText"
@@ -10557,11 +10584,11 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
                                                           "toString": [Function],
                                                         }
                                                       }
-                                                      id="react-select-9-live-region"
+                                                      id="react-select-15-live-region"
                                                     >
                                                       <span
                                                         className="css-1f43avz-a11yText-A11yText"
-                                                        id="react-select-9-live-region"
+                                                        id="react-select-15-live-region"
                                                       />
                                                     </EmotionCssPropInternal>
                                                   </A11yText>
@@ -10866,7 +10893,7 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
                                                               hasValue={false}
                                                               innerProps={
                                                                 Object {
-                                                                  "id": "react-select-9-placeholder",
+                                                                  "id": "react-select-15-placeholder",
                                                                 }
                                                               }
                                                               isDisabled={false}
@@ -10978,11 +11005,11 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
                                                                     "marginRight": 2,
                                                                   }
                                                                 }
-                                                                id="react-select-9-placeholder"
+                                                                id="react-select-15-placeholder"
                                                               >
                                                                 <div
                                                                   className="react-select__placeholder css-14el2xx-placeholder"
-                                                                  id="react-select-9-placeholder"
+                                                                  id="react-select-15-placeholder"
                                                                 >
                                                                   Choose
                                                                 </div>
@@ -10990,11 +11017,11 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
                                                             </Placeholder>
                                                             <DummyInput
                                                               aria-autocomplete="list"
-                                                              aria-controls="react-select-9-listbox"
-                                                              aria-describedby="react-select-9-placeholder"
+                                                              aria-controls="react-select-15-listbox"
+                                                              aria-describedby="react-select-15-placeholder"
                                                               aria-expanded={false}
                                                               aria-haspopup={true}
-                                                              aria-owns="react-select-9-listbox"
+                                                              aria-owns="react-select-15-listbox"
                                                               aria-readonly={true}
                                                               disabled={false}
                                                               id="paymentType"
@@ -11011,11 +11038,11 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
                                                                 __EMOTION_LABEL_PLEASE_DO_NOT_USE__="DummyInput"
                                                                 __EMOTION_TYPE_PLEASE_DO_NOT_USE__="input"
                                                                 aria-autocomplete="list"
-                                                                aria-controls="react-select-9-listbox"
-                                                                aria-describedby="react-select-9-placeholder"
+                                                                aria-controls="react-select-15-listbox"
+                                                                aria-describedby="react-select-15-placeholder"
                                                                 aria-expanded={false}
                                                                 aria-haspopup={true}
-                                                                aria-owns="react-select-9-listbox"
+                                                                aria-owns="react-select-15-listbox"
                                                                 aria-readonly={true}
                                                                 css={
                                                                   Object {
@@ -11038,11 +11065,11 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
                                                               >
                                                                 <input
                                                                   aria-autocomplete="list"
-                                                                  aria-controls="react-select-9-listbox"
-                                                                  aria-describedby="react-select-9-placeholder"
+                                                                  aria-controls="react-select-15-listbox"
+                                                                  aria-describedby="react-select-15-placeholder"
                                                                   aria-expanded={false}
                                                                   aria-haspopup={true}
-                                                                  aria-owns="react-select-9-listbox"
+                                                                  aria-owns="react-select-15-listbox"
                                                                   aria-readonly={true}
                                                                   className="css-mohuvp-dummyInput-DummyInput"
                                                                   disabled={false}
@@ -11579,6 +11606,7 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
                                   id="endDate"
                                   label="START DATE FOR CUSTOMER"
                                   name="endDate"
+                                  onBlur={[Function]}
                                   onChange={[Function]}
                                   onClose={[Function]}
                                   placeholder="Select Date"
@@ -11622,6 +11650,7 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
                                 id="endDate"
                                 label="START DATE FOR CUSTOMER"
                                 name="endDate"
+                                onBlur={[Function]}
                                 onChange={[Function]}
                                 onClose={[Function]}
                                 placeholder="Select Date"
@@ -12036,6 +12065,7 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
                                                       }
                                                     }
                                                     name="endDate"
+                                                    onBlur={[Function]}
                                                     onClick={[Function]}
                                                   >
                                                     <MuiTextFieldRoot
@@ -12070,7 +12100,7 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
                                                           "label": undefined,
                                                           "multiline": false,
                                                           "name": "endDate",
-                                                          "onBlur": undefined,
+                                                          "onBlur": [Function],
                                                           "onClick": [Function],
                                                           "required": false,
                                                           "select": false,
@@ -12116,6 +12146,7 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
                                                                   }
                                                                   multiline={false}
                                                                   name="endDate"
+                                                                  onBlur={[Function]}
                                                                   readOnly={true}
                                                                 />,
                                                                 undefined,
@@ -12157,6 +12188,7 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
                                                               }
                                                               multiline={false}
                                                               name="endDate"
+                                                              onBlur={[Function]}
                                                               readOnly={true}
                                                             >
                                                               <ForwardRef(InputBase)
@@ -12229,6 +12261,7 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
                                                                 }
                                                                 multiline={false}
                                                                 name="endDate"
+                                                                onBlur={[Function]}
                                                                 readOnly={true}
                                                                 renderSuffix={[Function]}
                                                                 type="text"
@@ -12675,7 +12708,7 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
                                                                       "minRows": undefined,
                                                                       "multiline": false,
                                                                       "name": "endDate",
-                                                                      "onBlur": undefined,
+                                                                      "onBlur": [Function],
                                                                       "onChange": undefined,
                                                                       "onFocus": undefined,
                                                                       "placeholder": undefined,
@@ -13091,7 +13124,7 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
                                                                           "minRows": undefined,
                                                                           "multiline": false,
                                                                           "name": "endDate",
-                                                                          "onBlur": undefined,
+                                                                          "onBlur": [Function],
                                                                           "onChange": undefined,
                                                                           "onFocus": undefined,
                                                                           "placeholder": undefined,
@@ -14399,7 +14432,7 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
                                                   getStyles={[Function]}
                                                   getValue={[Function]}
                                                   hasValue={false}
-                                                  id="react-select-10-live-region"
+                                                  id="react-select-16-live-region"
                                                   isFocused={false}
                                                   isMulti={false}
                                                   isRtl={false}
@@ -14495,7 +14528,7 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
                                                   }
                                                 >
                                                   <A11yText
-                                                    id="react-select-10-live-region"
+                                                    id="react-select-16-live-region"
                                                   >
                                                     <EmotionCssPropInternal
                                                       __EMOTION_LABEL_PLEASE_DO_NOT_USE__="A11yText"
@@ -14508,11 +14541,11 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
                                                           "toString": [Function],
                                                         }
                                                       }
-                                                      id="react-select-10-live-region"
+                                                      id="react-select-16-live-region"
                                                     >
                                                       <span
                                                         className="css-1f43avz-a11yText-A11yText"
-                                                        id="react-select-10-live-region"
+                                                        id="react-select-16-live-region"
                                                       />
                                                     </EmotionCssPropInternal>
                                                   </A11yText>
@@ -14817,7 +14850,7 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
                                                               hasValue={false}
                                                               innerProps={
                                                                 Object {
-                                                                  "id": "react-select-10-placeholder",
+                                                                  "id": "react-select-16-placeholder",
                                                                 }
                                                               }
                                                               isDisabled={false}
@@ -14929,11 +14962,11 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
                                                                     "marginRight": 2,
                                                                   }
                                                                 }
-                                                                id="react-select-10-placeholder"
+                                                                id="react-select-16-placeholder"
                                                               >
                                                                 <div
                                                                   className="react-select__placeholder css-14el2xx-placeholder"
-                                                                  id="react-select-10-placeholder"
+                                                                  id="react-select-16-placeholder"
                                                                 >
                                                                   Choose
                                                                 </div>
@@ -14941,11 +14974,11 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
                                                             </Placeholder>
                                                             <DummyInput
                                                               aria-autocomplete="list"
-                                                              aria-controls="react-select-10-listbox"
-                                                              aria-describedby="react-select-10-placeholder"
+                                                              aria-controls="react-select-16-listbox"
+                                                              aria-describedby="react-select-16-placeholder"
                                                               aria-expanded={false}
                                                               aria-haspopup={true}
-                                                              aria-owns="react-select-10-listbox"
+                                                              aria-owns="react-select-16-listbox"
                                                               aria-readonly={true}
                                                               disabled={false}
                                                               id="invoiceFrequency"
@@ -14962,11 +14995,11 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
                                                                 __EMOTION_LABEL_PLEASE_DO_NOT_USE__="DummyInput"
                                                                 __EMOTION_TYPE_PLEASE_DO_NOT_USE__="input"
                                                                 aria-autocomplete="list"
-                                                                aria-controls="react-select-10-listbox"
-                                                                aria-describedby="react-select-10-placeholder"
+                                                                aria-controls="react-select-16-listbox"
+                                                                aria-describedby="react-select-16-placeholder"
                                                                 aria-expanded={false}
                                                                 aria-haspopup={true}
-                                                                aria-owns="react-select-10-listbox"
+                                                                aria-owns="react-select-16-listbox"
                                                                 aria-readonly={true}
                                                                 css={
                                                                   Object {
@@ -14989,11 +15022,11 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
                                                               >
                                                                 <input
                                                                   aria-autocomplete="list"
-                                                                  aria-controls="react-select-10-listbox"
-                                                                  aria-describedby="react-select-10-placeholder"
+                                                                  aria-controls="react-select-16-listbox"
+                                                                  aria-describedby="react-select-16-placeholder"
                                                                   aria-expanded={false}
                                                                   aria-haspopup={true}
-                                                                  aria-owns="react-select-10-listbox"
+                                                                  aria-owns="react-select-16-listbox"
                                                                   aria-readonly={true}
                                                                   className="css-mohuvp-dummyInput-DummyInput"
                                                                   disabled={false}
@@ -24777,6 +24810,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                         id="endDate"
                         label="START DATE FOR CUSTOMER"
                         name="endDate"
+                        onBlur={[Function]}
                         onChange={[Function]}
                         onClose={[Function]}
                         placeholder="Select Date"
@@ -25625,6 +25659,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                             id="endDate"
                             label="START DATE FOR CUSTOMER"
                             name="endDate"
+                            onBlur={[Function]}
                             onChange={[Function]}
                             onClose={[Function]}
                             placeholder="Select Date"
@@ -26472,6 +26507,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                 id="endDate"
                                 label="START DATE FOR CUSTOMER"
                                 name="endDate"
+                                onBlur={[Function]}
                                 onChange={[Function]}
                                 onClose={[Function]}
                                 placeholder="Select Date"
@@ -33318,6 +33354,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                   id="endDate"
                                   label="START DATE FOR CUSTOMER"
                                   name="endDate"
+                                  onBlur={[Function]}
                                   onChange={[Function]}
                                   onClose={[Function]}
                                   placeholder="Select Date"
@@ -33361,6 +33398,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                 id="endDate"
                                 label="START DATE FOR CUSTOMER"
                                 name="endDate"
+                                onBlur={[Function]}
                                 onChange={[Function]}
                                 onClose={[Function]}
                                 placeholder="Select Date"
@@ -33775,6 +33813,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                       }
                                                     }
                                                     name="endDate"
+                                                    onBlur={[Function]}
                                                     onClick={[Function]}
                                                   >
                                                     <MuiTextFieldRoot
@@ -33809,7 +33848,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                           "label": undefined,
                                                           "multiline": false,
                                                           "name": "endDate",
-                                                          "onBlur": undefined,
+                                                          "onBlur": [Function],
                                                           "onClick": [Function],
                                                           "required": false,
                                                           "select": false,
@@ -33855,6 +33894,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                   }
                                                                   multiline={false}
                                                                   name="endDate"
+                                                                  onBlur={[Function]}
                                                                   readOnly={true}
                                                                 />,
                                                                 undefined,
@@ -33896,6 +33936,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                               }
                                                               multiline={false}
                                                               name="endDate"
+                                                              onBlur={[Function]}
                                                               readOnly={true}
                                                             >
                                                               <ForwardRef(InputBase)
@@ -33968,6 +34009,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                 }
                                                                 multiline={false}
                                                                 name="endDate"
+                                                                onBlur={[Function]}
                                                                 readOnly={true}
                                                                 renderSuffix={[Function]}
                                                                 type="text"
@@ -34414,7 +34456,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                       "minRows": undefined,
                                                                       "multiline": false,
                                                                       "name": "endDate",
-                                                                      "onBlur": undefined,
+                                                                      "onBlur": [Function],
                                                                       "onChange": undefined,
                                                                       "onFocus": undefined,
                                                                       "placeholder": undefined,
@@ -34830,7 +34872,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                           "minRows": undefined,
                                                                           "multiline": false,
                                                                           "name": "endDate",
-                                                                          "onBlur": undefined,
+                                                                          "onBlur": [Function],
                                                                           "onChange": undefined,
                                                                           "onFocus": undefined,
                                                                           "placeholder": undefined,

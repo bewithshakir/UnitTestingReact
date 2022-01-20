@@ -109,7 +109,8 @@ const AddFuelTax:React.FC<AddFuelTaxProps> = memo(() => {
                 "countyFuelTax": parseFloat(form.countryFuelRate),
                 "miscInspFuelTax": parseFloat(form.InspFuelRate),
                 "miscLocalFuelTax": parseFloat(form.miscLocalFuelRate),
-                "miscLoadFuelTax": parseFloat(form.loadFuel)
+                "miscLoadFuelTax": parseFloat(form.loadFuel),
+                "ppdSalesTax": parseFloat(form.ppdSalesTax),
             };
             createNewFuelTaxData(apiPayload);
         } catch (error) {
@@ -162,7 +163,8 @@ const AddFuelTax:React.FC<AddFuelTaxProps> = memo(() => {
                 "countyFuelTax": parseFloat(form.countryFuelRate),
                 "miscInspFuelTax": parseFloat(form.InspFuelRate),
                 "miscLocalFuelTax": parseFloat(form.miscLocalFuelRate),
-                "miscLoadFuelTax": parseFloat(form.loadFuel)
+                "miscLoadFuelTax": parseFloat(form.loadFuel),
+                "ppdSalesTax": parseFloat(form.ppdSalesTax),
             };
             updateFuelTaxData(apiPayload);
         } catch (error) {
@@ -205,6 +207,7 @@ const AddFuelTax:React.FC<AddFuelTaxProps> = memo(() => {
         formik.setFieldValue('startDate', formData.startDate);
         formik.setFieldValue('endDate', formData.endDate);
         formik.setFieldValue('countryCd','us');
+        formik.setFieldValue('ppdSalesTax', formData.ppdSalesTax);
     };
 
 
@@ -514,13 +517,25 @@ const AddFuelTax:React.FC<AddFuelTaxProps> = memo(() => {
                                 <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
                                     <Input
                                         id='loadFuel'
-                                        label='MISC. LOAD FUEL TAX ($))'
+                                        label='MISC. LOAD FUEL TAX ($)'
                                         type='text'
                                         placeholder={t("taxes.fuelTax.form.miscLoadFuelTax")}
                                         helperText={(formik.touched.loadFuel && formik.errors.loadFuel) ? formik.errors.loadFuel : undefined}
                                         error={(formik.touched.loadFuel && formik.errors.loadFuel) ? true : false}
                                         {...formik.getFieldProps('loadFuel')}
                                         data-test="loadFuel"
+                                    />
+                                </Grid>
+                                <Grid item xs={12} md={6} pl={2.5} pb={2.5}>
+                                    <Input
+                                        id='ppdSalesTax'
+                                        label='PPD SALES TAX (PREPAID) ($)'
+                                        type='text'
+                                        placeholder={t("taxes.fuelTax.form.ppdSalesTax")}
+                                        helperText={(formik.touched.ppdSalesTax && formik.errors.ppdSalesTax) ? formik.errors.ppdSalesTax : undefined}
+                                        error={(formik.touched.ppdSalesTax && formik.errors.ppdSalesTax) ? true : false}
+                                        {...formik.getFieldProps('ppdSalesTax')}
+                                        data-test="ppdsalestax"
                                     />
                                 </Grid>
                             </Grid>

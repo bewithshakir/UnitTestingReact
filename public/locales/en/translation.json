@@ -115,6 +115,23 @@
       "customerTitleAdd": "Add Customer"
     }
   },
+  "parkingLotManagement": {
+    "filterHeader": "Filters",
+    "search": "Lot Name",
+    "results found": "results found",
+    "result(s) found": "result(s) found",
+    "sortBy": {
+      "lotname_atoz": "Lot Name A-Z",
+      "lotname_ztoa": "Lot Name Z-A"
+    },
+    "filter": {
+      "state": "State",
+      "city": "City",
+      "zip": "Zip",
+      "wallet status": "Wallet Status",
+      "fuel type": "Fuel Type"
+    }
+  },
   "parkingLot": {
     "header": {
       "filter": "Filter"
@@ -171,7 +188,8 @@
         "countyFuelTax": "Enter County Fuel Tax",
         "miscInspFuelTax": "Enter Misc Insp Fuel Tax",
         "miscLcalFuelTax": "Enter Misc Local Fuel Tax",
-        "miscLoadFuelTax": "Enter Misc Load Fuel Tax"
+        "miscLoadFuelTax": "Enter Misc Load Fuel Tax",
+        "ppdSalesTax": "Enter PPD Sales Tax"
       }
     },
     "salesTax": {

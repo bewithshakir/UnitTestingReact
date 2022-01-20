@@ -11793,6 +11793,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                           id="orderScheduleDel[0].toDate"
                                           label="TO DATE(OPTIONAL)"
                                           name="orderScheduleDel[0].toDate"
+                                          onBlur={[Function]}
                                           onChange={[Function]}
                                           onClose={[Function]}
                                           type="single-date"
@@ -14198,6 +14199,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                             id="orderScheduleDel[0].toDate"
                                             label="TO DATE(OPTIONAL)"
                                             name="orderScheduleDel[0].toDate"
+                                            onBlur={[Function]}
                                             onChange={[Function]}
                                             onClose={[Function]}
                                             type="single-date"
@@ -14240,6 +14242,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                           id="orderScheduleDel[0].toDate"
                                           label="TO DATE(OPTIONAL)"
                                           name="orderScheduleDel[0].toDate"
+                                          onBlur={[Function]}
                                           onChange={[Function]}
                                           onClose={[Function]}
                                           type="single-date"
@@ -14626,6 +14629,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                                 }
                                                               }
                                                               name="orderScheduleDel[0].toDate"
+                                                              onBlur={[Function]}
                                                               onClick={[Function]}
                                                             >
                                                               <MuiTextFieldRoot
@@ -14660,7 +14664,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                                     "label": undefined,
                                                                     "multiline": false,
                                                                     "name": "orderScheduleDel[0].toDate",
-                                                                    "onBlur": undefined,
+                                                                    "onBlur": [Function],
                                                                     "onClick": [Function],
                                                                     "required": false,
                                                                     "select": false,
@@ -14706,6 +14710,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                                             }
                                                                             multiline={false}
                                                                             name="orderScheduleDel[0].toDate"
+                                                                            onBlur={[Function]}
                                                                             readOnly={true}
                                                                           />,
                                                                           undefined,
@@ -14747,6 +14752,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                                         }
                                                                         multiline={false}
                                                                         name="orderScheduleDel[0].toDate"
+                                                                        onBlur={[Function]}
                                                                         readOnly={true}
                                                                       >
                                                                         <ForwardRef(InputBase)
@@ -14819,6 +14825,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                                           }
                                                                           multiline={false}
                                                                           name="orderScheduleDel[0].toDate"
+                                                                          onBlur={[Function]}
                                                                           readOnly={true}
                                                                           renderSuffix={[Function]}
                                                                           type="text"
@@ -15265,7 +15272,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                                                 "minRows": undefined,
                                                                                 "multiline": false,
                                                                                 "name": "orderScheduleDel[0].toDate",
-                                                                                "onBlur": undefined,
+                                                                                "onBlur": [Function],
                                                                                 "onChange": undefined,
                                                                                 "onFocus": undefined,
                                                                                 "placeholder": undefined,
@@ -15681,7 +15688,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                                                     "minRows": undefined,
                                                                                     "multiline": false,
                                                                                     "name": "orderScheduleDel[0].toDate",
-                                                                                    "onBlur": undefined,
+                                                                                    "onBlur": [Function],
                                                                                     "onChange": undefined,
                                                                                     "onFocus": undefined,
                                                                                     "placeholder": undefined,
@@ -35420,6 +35427,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                           id="orderScheduleDel[0].toDate"
                                           label="TO DATE(OPTIONAL)"
                                           name="orderScheduleDel[0].toDate"
+                                          onBlur={[Function]}
                                           onChange={[Function]}
                                           onClose={[Function]}
                                           type="single-date"
@@ -37825,6 +37833,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                             id="orderScheduleDel[0].toDate"
                                             label="TO DATE(OPTIONAL)"
                                             name="orderScheduleDel[0].toDate"
+                                            onBlur={[Function]}
                                             onChange={[Function]}
                                             onClose={[Function]}
                                             type="single-date"
@@ -37867,6 +37876,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                           id="orderScheduleDel[0].toDate"
                                           label="TO DATE(OPTIONAL)"
                                           name="orderScheduleDel[0].toDate"
+                                          onBlur={[Function]}
                                           onChange={[Function]}
                                           onClose={[Function]}
                                           type="single-date"
@@ -38253,6 +38263,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                                 }
                                                               }
                                                               name="orderScheduleDel[0].toDate"
+                                                              onBlur={[Function]}
                                                               onClick={[Function]}
                                                             >
                                                               <MuiTextFieldRoot
@@ -38287,7 +38298,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                                     "label": undefined,
                                                                     "multiline": false,
                                                                     "name": "orderScheduleDel[0].toDate",
-                                                                    "onBlur": undefined,
+                                                                    "onBlur": [Function],
                                                                     "onClick": [Function],
                                                                     "required": false,
                                                                     "select": false,
@@ -38333,6 +38344,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                                             }
                                                                             multiline={false}
                                                                             name="orderScheduleDel[0].toDate"
+                                                                            onBlur={[Function]}
                                                                             readOnly={true}
                                                                           />,
                                                                           undefined,
@@ -38374,6 +38386,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                                         }
                                                                         multiline={false}
                                                                         name="orderScheduleDel[0].toDate"
+                                                                        onBlur={[Function]}
                                                                         readOnly={true}
                                                                       >
                                                                         <ForwardRef(InputBase)
@@ -38446,6 +38459,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                                           }
                                                                           multiline={false}
                                                                           name="orderScheduleDel[0].toDate"
+                                                                          onBlur={[Function]}
                                                                           readOnly={true}
                                                                           renderSuffix={[Function]}
                                                                           type="text"
@@ -38892,7 +38906,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                                                 "minRows": undefined,
                                                                                 "multiline": false,
                                                                                 "name": "orderScheduleDel[0].toDate",
-                                                                                "onBlur": undefined,
+                                                                                "onBlur": [Function],
                                                                                 "onChange": undefined,
                                                                                 "onFocus": undefined,
                                                                                 "placeholder": undefined,
@@ -39308,7 +39322,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                                                     "minRows": undefined,
                                                                                     "multiline": false,
                                                                                     "name": "orderScheduleDel[0].toDate",
-                                                                                    "onBlur": undefined,
+                                                                                    "onBlur": [Function],
                                                                                     "onChange": undefined,
                                                                                     "onFocus": undefined,
                                                                                     "placeholder": undefined,
