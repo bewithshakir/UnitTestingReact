@@ -4,6 +4,12 @@ import { serverMsw } from '../../setupTests';
 import { rest } from "msw";
 import LandingPage from './index';
 
+const mockedUsedNavigate = jest.fn();
+jest.mock('react-router-dom', () => ({
+   ...jest.requireActual('react-router-dom'),
+  useNavigate: () => mockedUsedNavigate,
+}));
+
 describe('get data on load in Landing Page', () => {
     it('load data', async () => {
         serverMsw.use(
