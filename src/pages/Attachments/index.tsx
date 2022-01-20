@@ -54,8 +54,7 @@ interface props {
     };
 
     const navigate = useNavigate();
-    const params =  useParams();
-    // const [searchTerm, setSearchTerm] = useState('');   
+    const params =  useParams(); 
 
     const redirectToUploadPage =()=> {
         navigate(`/customer/${(params as any)?.customerId}/AddAttachment`);
