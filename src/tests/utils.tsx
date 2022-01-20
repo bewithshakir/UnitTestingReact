@@ -4,6 +4,7 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import { addProductManagementHandler, editProductManagementHandler, getProductDataHandler, productColorsHandler, productTypesHandler } from '../pages/AddProductManagement/mockApi/handlerAddProduct';
 import { getOPISCitiesHandler } from '../pages/OPISCity/mockApi/handlerOPISCityLandingPage';
 import { getAttachmentListHandler } from '../pages/Attachments/mockApi/AttachmentLandingPageHandler';
+import { getProductByLotHandler } from '../pages/ProductManagement/mockApi/handler';
 
 export const handlers = [
     productTypesHandler(),
@@ -13,6 +14,7 @@ export const handlers = [
     editProductManagementHandler(),
     getOPISCitiesHandler(),
     getAttachmentListHandler(),
+    getProductByLotHandler(),
 ];
 
 const createTestQueryClient = () => new QueryClient({
