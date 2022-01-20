@@ -171,7 +171,8 @@
         "countyFuelTax": "Enter County Fuel Tax",
         "miscInspFuelTax": "Enter Misc Insp Fuel Tax",
         "miscLcalFuelTax": "Enter Misc Local Fuel Tax",
-        "miscLoadFuelTax": "Enter Misc Load Fuel Tax"
+        "miscLoadFuelTax": "Enter Misc Load Fuel Tax",
+        "ppdSalesTax": "Enter PPD Sales Tax"
       }
     },
     "salesTax": {

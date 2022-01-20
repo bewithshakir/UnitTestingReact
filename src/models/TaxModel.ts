@@ -28,6 +28,7 @@ export default class TaxModel {
     miscLocalFuelRate: string;
     loadFuel: string;
     fuelType: SelectProps;
+    ppdSalesTax: string;
 
     constructor() {
         this.addressLine1 = '';
@@ -46,6 +47,7 @@ export default class TaxModel {
         this.miscLocalFuelRate = '';
         this.loadFuel = '';
         this.fuelType = { label: '', value: '' };
+        this.ppdSalesTax = '';
     }
 
 
@@ -114,6 +116,7 @@ export default class TaxModel {
             { field: "stateFuelTax", label: "STATE TAX ($)", type: 'text' },
             { field: "cityFuelTax", label: "CITY TAX ($)", type: 'text' },
             { field: "countyFuelTax", label: "COUNTY TAX ($)", type: 'text' },
+            { field: "ppdSalesTax", label: "PPD SALES TAX (PREPAID) ($)", type: 'text' },
             { field: "miscInspFuelTax", label: "MISP INSP FUEL TAX ($)", type: 'text' },
             { field: "miscLocalFuelTax", label: "LOCAL TAX ($)", type: 'text' },
             { field: "miscLoadFuelTax", label: "LOAD FUEL TAX ($)", type: 'text' },
