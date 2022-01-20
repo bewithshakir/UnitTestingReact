@@ -17,13 +17,13 @@ const mockedNavigate = jest.fn();
 jest.mock('react-router-dom', () => ({
     ...jest.requireActual("react-router-dom") as any,
     useNavigate: () => mockedNavigate,
-    useLocation: ()=> ({
+    useLocation: () => ({
         location: {
             pathname: '/productManagement/'
         },
         push: jest.fn()
     }),
-    useMatch: ()=> ({
+    useParams: () => ({
         params: {
             productId: ''
         }
@@ -50,7 +50,7 @@ describe('AddProduct component', () => {
 
     describe('add/edit product screen render with common functionality', () => {
         it('renders the addProductType with data', async () => {
-            const result = renderWithClient(<AddProduct />);
+            const result = renderWithClient(<AddProduct version="Breadcrumbs-Single" />);
             const { formElem, productTypeElem } = getAllElements(result);
 
             await selectEvent.select(productTypeElem, ["Test11 Non-Fuel"]);
@@ -58,20 +58,20 @@ describe('AddProduct component', () => {
         });
 
         it('renders the addProductColors with data', async () => {
-            const result = renderWithClient(<AddProduct />);
+            const result = renderWithClient(<AddProduct version="Breadcrumbs-Single" />);
             const { formElem, productColorElem } = getAllElements(result);
             await selectEvent.select(productColorElem, ["red"]);
             expect(formElem).toHaveFormValues({ productColor: "12" });
         });
 
         it('renders the disabled save button', async () => {
-            const result = renderWithClient(<AddProduct />);
+            const result = renderWithClient(<AddProduct version="Breadcrumbs-Single" />);
             const { saveBtn } = getAllElements(result);
             expect(saveBtn).toBeDisabled();
         });
 
         it('renders the enabled save button', async () => {
-            const result = renderWithClient(<AddProduct />);
+            const result = renderWithClient(<AddProduct version="Breadcrumbs-Single" />);
             const { saveBtn } = getAllElements(result);
             saveBtn.removeAttribute('disabled');
             expect(saveBtn).toBeEnabled();
@@ -81,7 +81,7 @@ describe('AddProduct component', () => {
 
     describe('add product screen render', () => {
         it('show toaster with success message on submit form', async () => {
-            const result = renderWithClient(<AddProduct />);
+            const result = renderWithClient(<AddProduct version="Breadcrumbs-Single" />);
             await act(async () => {
                 const { productNameElem, productTypeElem, productColorElem, productStatusElem, productPricingElem, saveBtn } = getAllElements(result);
 
@@ -116,7 +116,7 @@ describe('AddProduct component', () => {
                     );
                 })
             );
-            const result = renderWithClient(<AddProduct />);
+            const result = renderWithClient(<AddProduct version="Breadcrumbs-Single" />);
             await act(async () => {
                 const { productNameElem, productTypeElem, productColorElem, productStatusElem, productPricingElem, saveBtn } = getAllElements(result);
 
@@ -140,19 +140,14 @@ describe('AddProduct component', () => {
 
     describe('edit product screen render', () => {
         beforeEach(() => {
-            jest.spyOn(routeDataDom, 'useMatch').mockImplementation(()=> ({
-                isExact: true,
-                params: {
-                    productId: '00aad1db-d5a4-45c7-9428-ab08c8d9f6b4'
-                },
-                path: "/productManagement/edit/:productId",
-                url: "/productManagement/edit/00aad1db-d5a4-45c7-9428-ab08c8d9f6b4"
+            jest.spyOn(routeDataDom, 'useParams').mockImplementation(() => ({
+                productId: '00aad1db-d5a4-45c7-9428-ab08c8d9f6b4'
             }));
         });
 
         describe('load form data on edit mode', () => {
             it('load data in form', async () => {
-                const result = renderWithClient(<AddProduct />);
+                const result = renderWithClient(<AddProduct version="Breadcrumbs-Single" />);
                 await waitFor(async () => {
                     const { productNameElem, productPricingElem } = getAllElements(result);
                     expect(productNameElem).toHaveValue('test edit Diesel');
@@ -179,7 +174,7 @@ describe('AddProduct component', () => {
                         );
                     })
                 );
-                const result = renderWithClient(<AddProduct />);
+                const result = renderWithClient(<AddProduct version="Breadcrumbs-Single" />);
                 await act(async () => {
                     const { productNameElem, productTypeElem, productColorElem, productStatusElem, productPricingElem, saveBtn } = getAllElements(result);
 
@@ -202,7 +197,7 @@ describe('AddProduct component', () => {
         describe('show dialogue of discard', () => {
 
             it('show dialogue box on back if form updated', async () => {
-                const result = renderWithClient(<AddProduct />);
+                const result = renderWithClient(<AddProduct version="Breadcrumbs-Single" />);
                 const { productNameElem, cancelBtn } = getAllElements(result);
                 userEvent.type(productNameElem, 'John');
                 userEvent.click(cancelBtn);
@@ -218,9 +213,9 @@ describe('AddProduct component', () => {
                     handleToggle: jest.fn(),
                     handleConfirm: jest.fn()
                 };
-                const dialogue = render(<DiscardChangesDialog {...propsPopup}/>);
-                expect( await dialogue.findByText(/Test Dialog/i)).toBeInTheDocument();
-                
+                const dialogue = render(<DiscardChangesDialog {...propsPopup} />);
+                expect(await dialogue.findByText(/Test Dialog/i)).toBeInTheDocument();
+
             });
         });
     });

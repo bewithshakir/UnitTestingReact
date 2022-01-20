@@ -9,14 +9,14 @@ const queryClient = new QueryClient();
 const mockedUsedNavigate = jest.fn();
 
 jest.mock('react-router-dom', () => ({
-   ...jest.requireActual('react-router-dom') as any,
-  useNavigate: () => mockedUsedNavigate,
+    ...jest.requireActual('react-router-dom') as any,
+    useNavigate: () => mockedUsedNavigate,
 }));
 
 
 describe('Given OPIS Add Page', () => {
     const Page = mount(<QueryClientProvider client={queryClient}>
-        <Add />
+        <Add version="Breadcrumbs-Single" />
     </QueryClientProvider>
     );
     it('Page contain  2-Select, 1-Input, 2-Button elements', () => {

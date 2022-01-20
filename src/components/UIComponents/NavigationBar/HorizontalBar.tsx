@@ -12,7 +12,6 @@ import {
   SettingsIcon,
   USAFlagIcon,
 } from '../../../assets/icons';
-// import NewReleasesIcon from '@mui/icons-material/NewReleases';
 import { useAddedCustomerIdStore, useStore } from '../../../store';
 import { Button } from '../Button/Button.component';
 import NotificationsMenu from '../Menu/NotificationsMenu.component';
@@ -23,6 +22,7 @@ import {
   useShowConfirmationDialogBoxStore,
 } from '../../../store';
 import DiscardChangesDialog from '../../../components/UIComponents/ConfirmationDialog/DiscardChangesDialog.component';
+import { ParkingLot_SearchParam } from "../../../utils/constants";
 
 const drawerWidth = 64;
 interface HorizontalBarProps {
@@ -30,11 +30,11 @@ interface HorizontalBarProps {
   onBack: () => void;
 }
 
-export default function HorizontalBar(props: HorizontalBarProps) {
+export default function HorizontalBar (props: HorizontalBarProps) {
   const { t } = useTranslation();
   const version = useStore((state) => state.version);
   const navigate = useNavigate();
-  const { pathname } = useLocation();
+  const { pathname, search } = useLocation();
   const selectedCustomerName = useAddedCustomerNameStore(
     (state) => state.customerName
   );
@@ -57,28 +57,34 @@ export default function HorizontalBar(props: HorizontalBarProps) {
     (state) => state.resetFormFieldValue
   );
 
-  function handleClick(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
+  function handleClick (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
     return event;
   }
 
-  const handleBack = (
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  ) => {
-    event.preventDefault();
-    {
-      isFormFieldChange ? showDialogBox(true) : handleModelConfirm();
-    }
+  const handleBack = () => {
+    { isFormFieldChange ? showDialogBox(true) : handleModelConfirm(); }
   };
 
   const handleModelToggle = () => {
     hideDialogBox(false);
   };
 
+
+  const backToParkingLot = () => {
+    const searchParams = new URLSearchParams(search);
+    const fromParkingLotLanding = searchParams.get('backTo') === ParkingLot_SearchParam;
+    if (fromParkingLotLanding) {
+      return '/parkinglots';
+    } else {
+      return `/customer/${selectedCustomerId}/parkingLots`;
+    }
+  };
+
   const handleModelConfirm = () => {
     hideDialogBox(false);
     resetFormFieldValue(false);
     if (pathname.includes('viewLot')) {
-      navigate(`/customer/${selectedCustomerId}/parkingLots`, {
+      navigate(backToParkingLot(), {
         state: {
           customerId: selectedCustomerId,
           customerName: selectedCustomerName,
@@ -130,7 +136,7 @@ export default function HorizontalBar(props: HorizontalBarProps) {
     }
   };
 
-  function versionBreadcrumbsSingle() {
+  function versionBreadcrumbsSingle () {
     return (
       <>
         <Breadcrumbs separator={<NavigateNextIcon />} aria-label='breadcrumb'>
@@ -142,13 +148,13 @@ export default function HorizontalBar(props: HorizontalBarProps) {
     );
   }
 
-  function varsionNavLinks() {
+  function varsionNavLinks () {
     if (
       pathname.includes('taxes') ||
       pathname.includes('salesTax') ||
       pathname.includes('productManagement') ||
       pathname.includes('opisCities') ||
-      pathname.includes('assetManagement') 
+      pathname.includes('assetManagement')
     ) {
       return (
         <>
@@ -220,12 +226,12 @@ export default function HorizontalBar(props: HorizontalBarProps) {
     } else {
       return (
         <>
-          <div className='linkitem active'>
+          <div className={pathname === '/' ? 'linkitem active' : 'linkitem'}>
             <NavLink className='breadcrubs-title' to='/' onClick={handleClick}>
               Customer List
             </NavLink>
           </div>
-          <div className='linkitem'>
+          <div className={pathname.includes('parkinglots') ? 'linkitem active' : 'linkitem'}>
             <NavLink
               className='breadcrubs-title'
               to='/parkinglots'
@@ -277,7 +283,7 @@ export default function HorizontalBar(props: HorizontalBarProps) {
     navigate(`/customer/viewCustomer/${selectedCustomerId}`);
   };
 
-  function versionBreadcrumbsMany() {
+  function versionBreadcrumbsMany () {
     return (
       <>
         <Breadcrumbs separator={<NavigateNextIcon />} aria-label='breadcrumb'>
@@ -316,10 +322,10 @@ export default function HorizontalBar(props: HorizontalBarProps) {
             {version === 'Breadcrumbs-Single'
               ? versionBreadcrumbsSingle()
               : version === 'NavLinks'
-              ? varsionNavLinks()
-              : version === 'Breadcrumbs-Many'
-              ? versionBreadcrumbsMany()
-              : null}
+                ? varsionNavLinks()
+                : version === 'Breadcrumbs-Many'
+                  ? versionBreadcrumbsMany()
+                  : null}
             <div className='app__header-section' />
             <div className='app__header-right-section-desktop'>
               <div className='header__country-selector'>
