@@ -54,7 +54,7 @@ const DspLandingContent: React.FC<ContentProps> = () => {
   }, [data]);
 
   const navigateToAddDsp = () => {
-    navigate(`/customer/${customerId}/adddsp`);
+    navigate(`/customer/${customerId}/dsps/addDsp`);
   };
   
   const onInputChange = (value: string) => {

@@ -26,6 +26,7 @@ const AddProductManagement = lazy(() => import('./pages/AddProductManagement/Add
 const EditProductManagement = lazy(() => import('./pages/AddProductManagement/AddProduct'));
 const AssetManagement = lazy(() => import("./pages/AssetManagement"));
 const AddAttachment = lazy(() => import("./pages/Attachments/AddAttachment/AddAttachment"));
+const AddDSP = lazy(() => import("./pages/DspLanding/AddDSP"));
 
 export const routes: RouteObject[] = [
   {
@@ -59,6 +60,10 @@ export const routes: RouteObject[] = [
       { 
         path: "/customer/:customerId/dsps",
         element: <DspLandingContent version='Breadcrumbs-Single' />
+      },
+      {
+        path: "/customer/:customerId/dsps/addDsp",
+        element: <AddDSP version='Breadcrumbs-Many'/>
       },
       {
         path: "/customer/:customerId/Attachments",

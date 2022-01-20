@@ -131,5 +131,45 @@
         "message": "Quelque chose s'est mal passé. Veuillez réessayer.",
         "type": "Erreur"
     }
+  },
+  "parkingLot": {
+    "header": {
+      "filter": "Filtre"
+    },
+    "search": "Nom du lot",
+    "results found": "résultats trouvés",
+    "result(s) found": "résultats trouvés",
+    "sortBy": {
+      "atoz": "Nom du lot A-Z",
+      "ztoa": "Nom du lot Z-A"
+    },
+    "filter": {
+      "state": "État",
+      "city": "Ville",
+      "zip": "Zipper",
+      "wallet status": "État du portefeuille",
+      "fuel type": "Type de carburant"
+    },
+    "addLot": {
+      "title": "Ajouter un lot et des détails"
+    }
+  },
+  "addDSP": {
+    "title": "Ajouter DSP",
+    "form": {
+      "title": "Remplissez tous les champs obligatoires",
+      "dspName": "Nom du DSP",
+      "contactForm": {
+        "title": "Détails du contact",
+        "contactNm": "Nom",
+        "email": "Identifiant de messagerie",
+        "phone": "Numéro de téléphone",
+        "addressLine1": "Ligne d'adresse 1",
+        "addressLine2": "Ligne d'adresse 2",
+        "city": "Ville",
+        "state": "État / Province",
+        "postalCode": "code postal"
+      }
+    }
   }
 }

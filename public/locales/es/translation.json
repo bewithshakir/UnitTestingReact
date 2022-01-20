@@ -131,5 +131,45 @@
         "message": "Algo salió mal. Inténtalo de nuevo.",
         "type": "Error"
     }
+  },
+  "parkingLot": {
+    "header": {
+      "filter": "Filtrar"
+    },
+    "search": "Nombre del lote",
+    "results found": "resultados encontrados",
+    "result(s) found": "resultados(s) encontrados",
+    "sortBy": {
+      "atoz": "Nombre del lote A-Z",
+      "ztoa": "Nombre del lote Z-A"
+    },
+    "filter": {
+      "state": "Expresar",
+      "city": "Ciudad",
+      "zip": "Cremallera",
+      "wallet status": "Estado de la billetera",
+      "fuel type": "Tipo de combustible"
+    },
+    "addLot": {
+      "title": "Agregar lote y detalles"
+    }
+  },
+  "addDSP": {
+    "title": "Añadir DSP",
+    "form": {
+      "title": "Rellena todos los campos obligatorios",
+      "dspName": "Nombre DSP",
+      "contactForm": {
+        "title": "Detalles de contacto",
+        "contactNm": "Nombre",
+        "email": "Identificación de correo",
+        "phone": "Número de teléfono",
+        "addressLine1": "Dirección Línea 1",
+        "addressLine2": "Dirección Línea 2",
+        "city": "Ciudad",
+        "state": "Expresar / Provincia",
+        "postalCode": "Código postal"
+      }
+    }
   }
 }
