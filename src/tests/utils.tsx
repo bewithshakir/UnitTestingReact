@@ -3,6 +3,7 @@ import * as React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { addProductManagementHandler, editProductManagementHandler, getProductDataHandler, productColorsHandler, productTypesHandler } from '../pages/AddProductManagement/mockApi/handlerAddProduct';
 import { getOPISCitiesHandler } from '../pages/OPISCity/mockApi/handlerOPISCityLandingPage';
+import { getAllParkingLotsHandler } from '../pages/ParkingLotsManagement/mockApi/handlerAllParkingLotsLandingPage';
 import { getAttachmentListHandler } from '../pages/Attachments/mockApi/AttachmentLandingPageHandler';
 import { getProductByLotHandler } from '../pages/ProductManagement/mockApi/handler';
 
@@ -15,6 +16,7 @@ export const handlers = [
     getOPISCitiesHandler(),
     getAttachmentListHandler(),
     getProductByLotHandler(),
+    getAllParkingLotsHandler(),
 ];
 
 const createTestQueryClient = () => new QueryClient({

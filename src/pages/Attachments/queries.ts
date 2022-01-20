@@ -1,4 +1,4 @@
-import { useInfiniteQuery } from "react-query";
+import { useInfiniteQuery, useMutation } from "react-query";
 import { AxiosRequestConfig } from "axios";
 import axios from "../../infrastructure/ApiHelper";
 import { pageDataLimit } from '../../utils/constants';
@@ -40,4 +40,20 @@ export const useAttachmentList = (query: string, sortOrder: { sortBy: string, or
         },
         keepPreviousData: true
     });
+};
+
+
+const uploadAttachment = async (payload: any, customerId:string) => {
+    const options: AxiosRequestConfig = {
+        method: 'post',
+        url: `/api/customer-service/customers/${customerId}/upload-file`,
+        data: payload,
+    };
+
+    const {data} = await axios(options);
+    return data;
+};
+
+export const useUploadAttachment = (customerId:string, onError: any, onSuccess: any) => {
+    return useMutation((payload: any) => uploadAttachment(payload, customerId), { onError, onSuccess });
 };

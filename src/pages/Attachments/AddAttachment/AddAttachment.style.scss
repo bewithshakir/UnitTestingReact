@@ -1,0 +1,66 @@
+div{
+    .upload-attachment-main-container{
+        border: 1px solid var(--Gray);
+        margin-bottom: 25px;
+        .file-box{
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .filename-paper{
+            margin: 26px 30px;
+            width: 100%;
+            padding: 22px 28px;
+            div{
+                color: var(--Darkgray);
+                display: inline-block;
+                vertical-align: middle;
+                margin-right: 19px;
+                svg{
+                    width: 18px;
+                    height: 20px;
+                    margin-bottom: -3px;
+                }
+            }
+            .filename-div{
+                font-weight: bold;
+            }
+            .delete-div{
+                float: right;
+                margin-right: 0px;;
+            }
+            .file-error{
+                font-size: 14px;
+                color: var(--Tertiary);
+            }
+        }
+        .upload-box{
+            text-align: center;
+            padding: 26px 30px;
+        }
+        .main-text{
+            color: var(--Darkgray);
+            font-weight: bold;
+            .highlighted-text{
+                color: var(--BlueHighlightedColor);
+                text-decoration: underline;
+                cursor: pointer;
+            }
+        }
+        .helper-text{
+            color: var(--Darkgray);
+            font-size: 14px;
+            margin-top: 15px;
+        }
+    }
+    .final-upload-btn{
+        float: right;
+        svg{
+            margin-right: 11px;
+        }
+        &.Mui-disabled{
+            svg{
+                color: var(--Lightergray);
+            }       
+        }
+    }
+}
