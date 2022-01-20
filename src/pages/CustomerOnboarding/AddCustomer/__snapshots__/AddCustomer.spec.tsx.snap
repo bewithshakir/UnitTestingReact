@@ -3038,6 +3038,7 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
                         id="endDate"
                         label="START DATE FOR CUSTOMER"
                         name="endDate"
+                        onBlur={[Function]}
                         onChange={[Function]}
                         onClose={[Function]}
                         placeholder="Select Date"
@@ -3886,6 +3887,7 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
                             id="endDate"
                             label="START DATE FOR CUSTOMER"
                             name="endDate"
+                            onBlur={[Function]}
                             onChange={[Function]}
                             onClose={[Function]}
                             placeholder="Select Date"
@@ -4733,6 +4735,7 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
                                 id="endDate"
                                 label="START DATE FOR CUSTOMER"
                                 name="endDate"
+                                onBlur={[Function]}
                                 onChange={[Function]}
                                 onClose={[Function]}
                                 placeholder="Select Date"
@@ -11579,6 +11582,7 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
                                   id="endDate"
                                   label="START DATE FOR CUSTOMER"
                                   name="endDate"
+                                  onBlur={[Function]}
                                   onChange={[Function]}
                                   onClose={[Function]}
                                   placeholder="Select Date"
@@ -11622,6 +11626,7 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
                                 id="endDate"
                                 label="START DATE FOR CUSTOMER"
                                 name="endDate"
+                                onBlur={[Function]}
                                 onChange={[Function]}
                                 onClose={[Function]}
                                 placeholder="Select Date"
@@ -12036,6 +12041,7 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
                                                       }
                                                     }
                                                     name="endDate"
+                                                    onBlur={[Function]}
                                                     onClick={[Function]}
                                                   >
                                                     <MuiTextFieldRoot
@@ -12070,7 +12076,7 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
                                                           "label": undefined,
                                                           "multiline": false,
                                                           "name": "endDate",
-                                                          "onBlur": undefined,
+                                                          "onBlur": [Function],
                                                           "onClick": [Function],
                                                           "required": false,
                                                           "select": false,
@@ -12116,6 +12122,7 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
                                                                   }
                                                                   multiline={false}
                                                                   name="endDate"
+                                                                  onBlur={[Function]}
                                                                   readOnly={true}
                                                                 />,
                                                                 undefined,
@@ -12157,6 +12164,7 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
                                                               }
                                                               multiline={false}
                                                               name="endDate"
+                                                              onBlur={[Function]}
                                                               readOnly={true}
                                                             >
                                                               <ForwardRef(InputBase)
@@ -12229,6 +12237,7 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
                                                                 }
                                                                 multiline={false}
                                                                 name="endDate"
+                                                                onBlur={[Function]}
                                                                 readOnly={true}
                                                                 renderSuffix={[Function]}
                                                                 type="text"
@@ -12675,7 +12684,7 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
                                                                       "minRows": undefined,
                                                                       "multiline": false,
                                                                       "name": "endDate",
-                                                                      "onBlur": undefined,
+                                                                      "onBlur": [Function],
                                                                       "onChange": undefined,
                                                                       "onFocus": undefined,
                                                                       "placeholder": undefined,
@@ -13091,7 +13100,7 @@ exports[`Rendering of Edit Lot Component Edit/View Customer component Snapshot t
                                                                           "minRows": undefined,
                                                                           "multiline": false,
                                                                           "name": "endDate",
-                                                                          "onBlur": undefined,
+                                                                          "onBlur": [Function],
                                                                           "onChange": undefined,
                                                                           "onFocus": undefined,
                                                                           "placeholder": undefined,
@@ -24777,6 +24786,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                         id="endDate"
                         label="START DATE FOR CUSTOMER"
                         name="endDate"
+                        onBlur={[Function]}
                         onChange={[Function]}
                         onClose={[Function]}
                         placeholder="Select Date"
@@ -25625,6 +25635,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                             id="endDate"
                             label="START DATE FOR CUSTOMER"
                             name="endDate"
+                            onBlur={[Function]}
                             onChange={[Function]}
                             onClose={[Function]}
                             placeholder="Select Date"
@@ -26472,6 +26483,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                 id="endDate"
                                 label="START DATE FOR CUSTOMER"
                                 name="endDate"
+                                onBlur={[Function]}
                                 onChange={[Function]}
                                 onClose={[Function]}
                                 placeholder="Select Date"
@@ -33318,6 +33330,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                   id="endDate"
                                   label="START DATE FOR CUSTOMER"
                                   name="endDate"
+                                  onBlur={[Function]}
                                   onChange={[Function]}
                                   onClose={[Function]}
                                   placeholder="Select Date"
@@ -33361,6 +33374,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                 id="endDate"
                                 label="START DATE FOR CUSTOMER"
                                 name="endDate"
+                                onBlur={[Function]}
                                 onChange={[Function]}
                                 onClose={[Function]}
                                 placeholder="Select Date"
@@ -33775,6 +33789,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                       }
                                                     }
                                                     name="endDate"
+                                                    onBlur={[Function]}
                                                     onClick={[Function]}
                                                   >
                                                     <MuiTextFieldRoot
@@ -33809,7 +33824,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                           "label": undefined,
                                                           "multiline": false,
                                                           "name": "endDate",
-                                                          "onBlur": undefined,
+                                                          "onBlur": [Function],
                                                           "onClick": [Function],
                                                           "required": false,
                                                           "select": false,
@@ -33855,6 +33870,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                   }
                                                                   multiline={false}
                                                                   name="endDate"
+                                                                  onBlur={[Function]}
                                                                   readOnly={true}
                                                                 />,
                                                                 undefined,
@@ -33896,6 +33912,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                               }
                                                               multiline={false}
                                                               name="endDate"
+                                                              onBlur={[Function]}
                                                               readOnly={true}
                                                             >
                                                               <ForwardRef(InputBase)
@@ -33968,6 +33985,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                 }
                                                                 multiline={false}
                                                                 name="endDate"
+                                                                onBlur={[Function]}
                                                                 readOnly={true}
                                                                 renderSuffix={[Function]}
                                                                 type="text"
@@ -34414,7 +34432,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                       "minRows": undefined,
                                                                       "multiline": false,
                                                                       "name": "endDate",
-                                                                      "onBlur": undefined,
+                                                                      "onBlur": [Function],
                                                                       "onChange": undefined,
                                                                       "onFocus": undefined,
                                                                       "placeholder": undefined,
@@ -34830,7 +34848,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                           "minRows": undefined,
                                                                           "multiline": false,
                                                                           "name": "endDate",
-                                                                          "onBlur": undefined,
+                                                                          "onBlur": [Function],
                                                                           "onChange": undefined,
                                                                           "onFocus": undefined,
                                                                           "placeholder": undefined,
