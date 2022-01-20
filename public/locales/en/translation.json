@@ -336,5 +336,18 @@
     "dateAdded": "DATE ADDED",
     "uploadedBy": "UPLOADED BY",
     "uploadedIn": "UPLOADED IN"
+  },
+  "UploadAttachments":{
+    "uploadInitialText": "Drag & drop the file or",
+    "choose":"Choose",
+    "fileFormatSize":"Max file size : 25MB | File format : PDF, XLSX or DOCX",
+    "uploadFile":"Upload File",
+    "fileuploaddialog": {
+      "title": "Error in File Upload",
+      "content": "The file name you are trying to upload is already exists. Do you want to overwrite the file ?"
+    },
+    "uploadGenericError":"Error found. Please delete and re-upload the file",
+    "no":"No",
+    "yes":"Yes"
   }
 }

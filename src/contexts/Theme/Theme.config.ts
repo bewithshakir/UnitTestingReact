@@ -46,7 +46,8 @@ export const THEMES: Record<ThemeType, Theme> = {
     '--ToastMessageRed': Color.shellred,
     '--ToastMessageGreen' : Color.green,
     '--InformationMessageYellow' : Color.shellyellow,
-    '--InformationMessageBackGround' : Color.shellyellow
+    '--InformationMessageBackGround' : Color.shellyellow,
+    '--BlueHighlightedColor' : Color.shellblue
   },
   UK: {
     //  Main Colors
@@ -94,6 +95,7 @@ export const THEMES: Record<ThemeType, Theme> = {
     '--ToastMessageRed': Color.shellred,
     '--ToastMessageGreen': Color.green,
     '--InformationMessageYellow' : Color.shellyellow,
-    '--InformationMessageBackGround' : Color.shellyellow
+    '--InformationMessageBackGround' : Color.shellyellow,
+    '--BlueHighlightedColor' : Color.shellblue
   }
 };

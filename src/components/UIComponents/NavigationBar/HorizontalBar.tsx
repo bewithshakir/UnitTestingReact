@@ -106,7 +106,11 @@ export default function HorizontalBar (props: HorizontalBarProps) {
       pathname.includes('productManagement/edit')
     ) {
       navigate('/productManagement');
-    } else {
+    } else if (
+      pathname.includes('AddAttachment') 
+    ) {
+      navigate(-1);
+    }else {
       props.onBack();
     }
   };
@@ -290,9 +294,12 @@ export default function HorizontalBar (props: HorizontalBarProps) {
           <Link className='breadcrubs-title' onClick={handleCustomerBack}>
             {selectedCustomerName}
           </Link>
-          <Link className='breadcrubs-title' href='#' onClick={handleClick}>
+          { (pathname.includes('addLot') || pathname.includes('viewLot') ) && <Link className='breadcrubs-title' href='#' onClick={handleClick}>
             {'Add Lot & Details'}
-          </Link>
+          </Link>}
+          { (pathname.includes('AddAttachment') &&  <Link className="breadcrubs-title" href="#" onClick={handleClick}>
+          {"Add Attachment"}
+        </Link>)}
         </Breadcrumbs>
       </>
     );
