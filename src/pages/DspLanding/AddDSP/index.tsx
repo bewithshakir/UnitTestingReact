@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Box, Container, Grid, Typography } from '@mui/material';
 import { useFormik } from 'formik';
 import { useTranslation } from 'react-i18next';
@@ -10,12 +10,19 @@ import Input from '../../../components/UIComponents/Input/Input';
 import { Button } from '../../../components/UIComponents/Button/Button.component';
 import { lotHeaderBoxSx } from '../../ParkingLot/config';
 import AutocompleteInput from '../../../components/UIComponents/GoogleAddressComponent/GoogleAutoCompleteAddress';
-import "./style.scss";
 import { HorizontalBarVersionState, useAddedCustomerIdStore, useShowConfirmationDialogBoxStore, useStore } from '../../../store';
+import ToastMessage from '../../../components/UIComponents/ToastMessage/ToastMessage.component';
+import { useAddDsp } from './queries';
+import "./style.scss";
+import { LoadingIcon } from '../../../assets/icons';
 
 const initialValues = new DSPModel();
 interface AddDSPProps {
     version: string
+}
+interface IFormStatus {
+    message: string
+    type: string
 }
 const AddDSP: React.FC<AddDSPProps> = () => {
 
@@ -25,16 +32,43 @@ const AddDSP: React.FC<AddDSPProps> = () => {
     const showDialogBox = useShowConfirmationDialogBoxStore((state) => state.showDialogBox);
     const isFormValidated = useShowConfirmationDialogBoxStore((state) => state.setFormFieldValue);
     const addedCustomerId = useAddedCustomerIdStore((state) => state.customerId);
+    const [formStatus, setFormStatus] = useState<IFormStatus>({ message: '', type: '' });
+    const [isEditMode] = useState(false);
 
     useEffect(()=> {
         setVersion("Breadcrumbs-Many");
     }, []);
 
+    // Add DSP
+    const onSuccessAddDsp = () => {
+        isFormValidated(false);
+        formik.resetForm({ values: formik.values });
+        setFormStatus({ message: t("formStatusProps.success.message"), type: 'Success' });
+    };
+    const onErrorAddDsp = (err: any) => {
+        const { data } = err.response;
+        formik.resetForm({ values: formik.values });
+        setFormStatus({ message: data?.error?.details[0] || t("formStatusProps.error.message"), type: 'Error' });
+    };
+    const { mutate: addNewDsp, isSuccess: isSuccessAddDsp, isError: isErrorAddDsp, isLoading: isLoadingAddDsp } = useAddDsp(onSuccessAddDsp, onErrorAddDsp);
+    const createDspData = (form: DSPModel) => {
+        try {
+            addNewDsp(form);
+        } catch (error) {
+            setFormStatus({ message: t("formStatusProps.error.message"), type: 'Error' });
+        }
+    };
+
     const formik = useFormik({
         initialValues,
         validationSchema: AddDSPSchema,
-        onSubmit: () => {
-            // to do
+        onSubmit: (values: DSPModel) => {
+            const updatedValues = {...values, customerId: addedCustomerId} as DSPModel;
+            if (isEditMode) {
+                // updateProductData(values);
+            } else {
+                createDspData(updatedValues);
+            }
         },
         enableReinitialize: true,
     });
@@ -74,7 +108,6 @@ const AddDSP: React.FC<AddDSPProps> = () => {
         } else {
             navigate(`/customer/${addedCustomerId}/dsps`);
         }
-        
     };
     const disableButton = () => {
         if (formik.dirty) {
@@ -247,9 +280,16 @@ const AddDSP: React.FC<AddDSPProps> = () => {
                                     data-test="save"
                                     disabled={disableButton()}
                                 >
-                                    {t("buttons.save")}
+                                    {t("buttons.save")} {(isLoadingAddDsp) && <LoadingIcon data-testid="loading-spinner" className='loading_save_icon' />}
                                 </Button>
                             </Box>
+                            <ToastMessage
+                                isOpen={
+                                    isErrorAddDsp || isSuccessAddDsp
+                                }
+                                messageType={formStatus.type}
+                                onClose={() => { return ''; }}
+                                message={formStatus.message} />
                         </Grid>
 
 
