@@ -125,7 +125,7 @@ describe('AddProduct component', () => {
                 await selectEvent.select(productColorElem, ["red"]);
                 await selectEvent.select(productStatusElem, ["Enabled"]);
                 userEvent.type(productPricingElem, '2');
-                saveBtn.removeAttribute('disabled');
+                // saveBtn.removeAttribute('disabled');
                 userEvent.click(saveBtn);
             });
 

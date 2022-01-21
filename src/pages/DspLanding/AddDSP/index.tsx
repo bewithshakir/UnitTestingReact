@@ -119,7 +119,7 @@ const AddDSP: React.FC<AddDSPProps> = () => {
     return (
         <Grid item md={9} xs={9} sx={lotHeaderBoxSx}>
             <Container maxWidth="lg" className="page-container lot-container">
-                <form onSubmit={formik.handleSubmit}>
+                <form onSubmit={formik.handleSubmit} id='form'>
                     <Grid container mt={1}>
                         <Grid container item md={12} mt={2} mb={1}>
                             <Grid item xs={6}>
@@ -173,7 +173,7 @@ const AddDSP: React.FC<AddDSPProps> = () => {
                                 required
                             />
                         </Grid>
-                        <Grid container xs={12} md={12}>
+                        <Grid item xs={12} md={12}>
                             <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
                                 <Input
                                     id='phone'
@@ -191,6 +191,7 @@ const AddDSP: React.FC<AddDSPProps> = () => {
 
                         <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
                             <AutocompleteInput
+                                id="addressLine1"
                                 name='addressLine1'
                                 label={t("addDSP.form.contactForm.addressLine1")}
                                 onChange={handleGoogleAddressChange}
