@@ -125,13 +125,13 @@ describe('AddProduct component', () => {
                 await selectEvent.select(productColorElem, ["red"]);
                 await selectEvent.select(productStatusElem, ["Enabled"]);
                 userEvent.type(productPricingElem, '2');
-                // saveBtn.removeAttribute('disabled');
+                saveBtn.removeAttribute('disabled');
                 userEvent.click(saveBtn);
             });
 
             await waitFor(() => {
                 // result.debug(result.getByTestId('toaster-message'))
-                // expect(result.getByTestId('toaster-message')).toBeInTheDocument()
+                // expect(result.getByTestId('toaster-message')).toBeInTheDocument();
                 expect(result.getByText(/fail add product/i)).toBeInTheDocument();
             });
 

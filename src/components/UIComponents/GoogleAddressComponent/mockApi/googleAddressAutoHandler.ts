@@ -6,14 +6,15 @@ export const FetchFormattedAddressHandler = () => {
             ctx.status(200),
             ctx.json({
                 data: {
-                    address1: "Test1 Elkton",
+                    address1: "Elkton Test",
                     address2: "",
-                    city: "Test1 Elkton",
+                    city: "Elkton",
                     country: "United States",
-                    state: "Test1 VA",
+                    state: "VA",
                     state_detail: "Virginia",
                     zip: "22827"
-                }
+                },
+                error: null
             })
         );
     });
@@ -67,9 +68,9 @@ export const FetchGoogleAddressHandler = () => {
                             ]
                         }
                     ],
-                    "status": "OK"
+                    status: "OK"
                 },
-                "error": null
+                error: null
             })
         );
     });

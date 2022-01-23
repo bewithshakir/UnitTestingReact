@@ -278,7 +278,7 @@ const AddDSP: React.FC<AddDSPProps> = () => {
                                     types="save"
                                     aria-label={t("buttons.save")}
                                     className="ml-4"
-                                    data-test="save"
+                                    data-testid="save"
                                     disabled={disableButton()}
                                 >
                                     {t("buttons.save")} {(isLoadingAddDsp) && <LoadingIcon data-testid="loading-spinner" className='loading_save_icon' />}
