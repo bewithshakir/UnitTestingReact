@@ -478,9 +478,15 @@ const AddCustomer: React.FC<AddCustomerProps> = () => {
             buttonEnable = true;
         }
 
-        if (validFiles.length > 0 && formik.isValid) {
+        if (validFiles.length > 0
+            && (
+                (isEditMode && formik.isValid)
+                || (formik.dirty && formik.isValid)
+            )
+        ) {
             buttonEnable = true;
         }
+
 
         if (uploadErroMsg) {
             buttonEnable = false;
