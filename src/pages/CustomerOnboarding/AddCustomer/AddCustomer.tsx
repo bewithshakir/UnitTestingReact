@@ -75,10 +75,27 @@ const formStatusProps: IFormStatusProps = {
 
 const maxAllowedFileSizeBtyes = 25000000;
 
+
+const deleteContact = (index: number, componentArr: any) => {
+    componentArr.remove(index);
+};
+
+
+//common function to segregate the list of emergency contacts and ap contacts from get api response
+const segregateEmergencyAndAPContacts = (data: any[], type: string) => {
+    return data?.filter(obj => obj.customerContactTypeNm === type) || [];
+};
+
+//function to segragate checkbox data, from get api response, as per UI requirements
+const getCheckBoxData = (data: any) => {
+    return data?.map((obj: any) => obj.tokenApplicabilityOptionNm) || [];
+};
+
 const AddCustomer: React.FC<AddCustomerProps> = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const addedCustomerId = useAddedCustomerIdStore((state) => state.customerId);
+    const [initialFormikValue, setInitialFormikValue] = useState(initialValues);
     const [activeCustomerId, setActiveCustomerId] = React.useState("");
 
     useEffect(() => {
@@ -93,68 +110,54 @@ const AddCustomer: React.FC<AddCustomerProps> = () => {
         }
     }, [location]);
 
-    //common function to segregate the list of emergency contacts and ap contacts from get api response
-    const segregateEmergencyAndAPContacts = (data: any, type: string) => {
-        const TempData: any = [];
-        data && data.map((obj: any) => {
-            if (obj.customerContactTypeNm === type) {
-                TempData.push(obj);
-            }
-        });
-        return TempData;
-    };
-
-    //function to segragate checkbox data, from get api response, as per UI requirements
-    const getCheckBoxData = (data: any) => {
-        const TempData: any = [];
-        data && data.map((obj: any) => {
-            TempData.push(obj.tokenApplicabilityOptionNm);
-        });
-        return TempData;
-    };
-
     //to populate all the data in the form fields
     const populateDataInAllFields = (dataToPopulate: any) => {
-        formik.setFieldValue('customerName', dataToPopulate?.data?.customer?.companyNm);
-        formik.setFieldValue('customerId', dataToPopulate?.data?.customer?.customerInputId);
-        formik.setFieldValue('addressLine1', dataToPopulate?.data?.customer?.addressLine1);
-        formik.setFieldValue('addressLine2', dataToPopulate?.data?.customer?.addressLine2);
-        formik.setFieldValue('city', dataToPopulate?.data?.customer?.cityNm);
-        formik.setFieldValue('state', dataToPopulate?.data?.customer?.stateNm);
-        formik.setFieldValue('postalCode', dataToPopulate?.data?.customer?.postalCd);
-        formik.setFieldValue('firstName', dataToPopulate?.data?.customer?.contactFirstNm);
-        formik.setFieldValue('lastName', dataToPopulate?.data?.customer?.contactLastNm);
-        formik.setFieldValue('email', dataToPopulate?.data?.customer?.contactEmailId);
-        formik.setFieldValue('phoneNumber', dataToPopulate?.data?.customer?.contactPhoneNo);
-        formik.setFieldValue("paymentType", { label: '' + dataToPopulate?.data?.customer?.PaymentType?.paymentTypeNm, value: '' + dataToPopulate?.data?.customer?.PaymentType?.paymentTypeId });
-        formik.setFieldValue("invoiceFrequency", { label: '' + dataToPopulate?.data?.customer?.InvoiceFrequency?.invoiceFrequencyNm, value: '' + dataToPopulate?.data?.customer?.InvoiceFrequency?.invoiceFrequencyId });
-        formik.setFieldValue("paymentTerm", dataToPopulate?.data?.customer?.paymentTerm);
+        const customer = dataToPopulate?.data?.customer;
         const emergenyContactList = segregateEmergencyAndAPContacts(dataToPopulate?.data?.customerContact, 'emergency');
         const APContactList = segregateEmergencyAndAPContacts(dataToPopulate?.data?.customerContact, 'ap_contact');
         const checkBoxData = getCheckBoxData(dataToPopulate?.data?.tokenApplicability);
-        emergenyContactList.map((obj: any, index: number) => {
-            formik.setFieldValue(`emergencyContact[${index}].customerContactId`, obj.customerContactId);
-            formik.setFieldValue(`emergencyContact[${index}].firstName`, obj.contactFirstNm);
-            formik.setFieldValue(`emergencyContact[${index}].lastName`, obj.contactLastNm);
-            formik.setFieldValue(`emergencyContact[${index}].email`, obj.contactEmailId);
-            formik.setFieldValue(`emergencyContact[${index}].phoneNumber`, obj.contactPhoneNo);
-        });
-        APContactList.map((obj: any, index: number) => {
-            formik.setFieldValue(`apContact[${index}].customerContactId`, obj.customerContactId);
-            formik.setFieldValue(`apContact[${index}].firstName`, obj.contactFirstNm);
-            formik.setFieldValue(`apContact[${index}].lastName`, obj.contactLastNm);
-            formik.setFieldValue(`apContact[${index}].email`, obj.contactEmailId);
-            formik.setFieldValue(`apContact[${index}].phoneNumber`, obj.contactPhoneNo);
-        });
-        formik.setFieldValue("endDate", moment(dataToPopulate?.data?.customer.firstSettlementDt));
-        checkBoxData.map((obj: any) => {
-            if (obj.indexOf("lot") > -1) {
-                formik.setFieldValue('lotLevel', true);
-            } else if (obj.indexOf("business") > -1) {
-                formik.setFieldValue('businessLevel', true);
-            } else {
-                formik.setFieldValue('vehicleLevel', true);
-            }
+
+        setInitialFormikValue({
+            customerName: customer?.companyNm,
+            customerId: customer?.customerInputId,
+            addressLine1: customer?.addressLine1,
+            addressLine2: customer?.addressLine2,
+            city: customer?.cityNm,
+            state: customer?.stateNm,
+            postalCode: customer?.postalCd,
+            firstName: customer?.contactFirstNm,
+            lastName: customer?.contactLastNm,
+            email: customer?.contactEmailId,
+            phoneNumber: customer?.contactPhoneNo,
+            paymentType: { label: '' + customer?.PaymentType?.paymentTypeNm, value: '' + customer?.PaymentType?.paymentTypeId },
+
+            invoiceFrequency: { label: '' + customer?.InvoiceFrequency?.invoiceFrequencyNm, value: '' + customer?.InvoiceFrequency?.invoiceFrequencyId },
+
+            paymentTerm: customer?.paymentTerm,
+            endDate: moment(dataToPopulate?.data?.customer.firstSettlementDt),
+            emergencyContact: emergenyContactList.map(obj => ({
+                customerContactId: obj.customerContactId,
+                firstName: obj.contactFirstNm,
+                lastName: obj.contactLastNm,
+                email: obj.contactEmailId,
+                phoneNumber: obj.contactPhoneNo,
+            })),
+            apContact: APContactList.map(obj => ({
+                customerContactId: obj.customerContactId,
+                firstName: obj.contactFirstNm,
+                lastName: obj.contactLastNm,
+                email: obj.contactEmailId,
+                phoneNumber: obj.contactPhoneNo,
+            })),
+            ...(checkBoxData.map((obj: any) => {
+                if (obj.indexOf("lot") > -1) {
+                    return { lotLevel: true };
+                } else if (obj.indexOf("business") > -1) {
+                    return { businessLevel: true };
+                } else {
+                    return { vehicleLevel: true };
+                }
+            })),
         });
         setDisabled(true);
     };
@@ -178,7 +181,7 @@ const AddCustomer: React.FC<AddCustomerProps> = () => {
 
     const onFileUploadError = (err: any) => {
         const { data: { error } } = err.response;
-        
+
         if (error?.httpCode === 409) {
             setShowConfirmationDialogBox(true);
         } else {
@@ -290,9 +293,9 @@ const AddCustomer: React.FC<AddCustomerProps> = () => {
     const setPageCustomerName = useAddedCustomerNameStore((state) => state.setCustomerName);
     const setPaymentType = useAddedCustomerPaymentTypeStore((state) => state.setCustomerPaymentType);
 
-    useEffect(()=>{
+    useEffect(() => {
         setPaymentType('');
-    },[activeCustomerId]);
+    }, [activeCustomerId]);
 
     useEffect(() => {
         if (frequencyList?.data.length) {
@@ -432,8 +435,9 @@ const AddCustomer: React.FC<AddCustomerProps> = () => {
     };
 
     const formik = useFormik({
-        initialValues,
+        initialValues: initialFormikValue,
         validationSchema: AddCustomerValidationSchema,
+        enableReinitialize: true,
         onSubmit: (values) => {
             if (isEditMode) {
                 editCustomerData(values);
@@ -441,7 +445,6 @@ const AddCustomer: React.FC<AddCustomerProps> = () => {
                 createNewCustomer(values);
             }
         },
-        enableReinitialize: true,
     });
 
     const handleModelToggle = () => {
@@ -454,7 +457,7 @@ const AddCustomer: React.FC<AddCustomerProps> = () => {
         setShowConfirmationDialogBox(false);
     };
 
-    const isFormFieldChange = () => formik.dirty;
+    const isFormFieldChange = () => formik.dirty || validFiles.length > 0 || uploadErroMsg !== "";
 
     function onClickBack() {
         if ((isFormFieldChange() && !isEditShown) || (isFormFieldChange() && isEditMode)) {
@@ -464,21 +467,25 @@ const AddCustomer: React.FC<AddCustomerProps> = () => {
         }
     }
 
-    const disableButton = () => {
-        if (isEditMode) {
-            // if edit button is clicked, form is filled with values from get req and below is condition for handling save button enable and dsiable
-            if (formik.touched && Object.keys(formik.touched).length === 0 && Object.getPrototypeOf(formik.touched) === Object.prototype) {
-                if (formik.dirty) {
-                    if (formik.initialValues != formik.values) {
-                        return false;
-                    }
-                }
-            } else {
-                return (!formik.isValid || !formik.dirty) || formik.isSubmitting;
-            }
-        } else {
-            return (!formik.isValid || !formik.dirty) || formik.isSubmitting;
+    const isCancelEnable = () => {
+        return formik.dirty || validFiles.length > 0 || uploadErroMsg !== "";
+    };
+
+    const isSubmitDisabled = () => {
+        let buttonEnable = false;
+
+        if (formik.dirty && formik.isValid && !formik.isSubmitting) {
+            buttonEnable = true;
         }
+
+        if (validFiles.length > 0 && formik.isValid) {
+            buttonEnable = true;
+        }
+
+        if (uploadErroMsg) {
+            buttonEnable = false;
+        }
+        return buttonEnable === false;
     };
 
     function handleGoogleAddressChange(addressObj: any) {
@@ -507,15 +514,6 @@ const AddCustomer: React.FC<AddCustomerProps> = () => {
     const isCheckBoxDisabled = () => getCheckBoxDisabledByPaymentType(formik.values.paymentType.label) || isEditMode ? true : isDisabled;
 
     const handleFormDataChange = () => {
-        if (isEditMode) {
-            if (formik.touched && Object.keys(formik.touched).length === 0 && Object.getPrototypeOf(formik.touched) === Object.prototype) {
-                if (formik.dirty) {
-                    if (formik.initialValues != formik.values) {
-                        isFormValidated(false);
-                    }
-                }
-            }
-        }
         if (isFormFieldChange()) {
             isFormValidated(true);
         }
@@ -527,10 +525,6 @@ const AddCustomer: React.FC<AddCustomerProps> = () => {
             formik.setFieldValue('businessLevel', false);
             formik.setFieldValue('vehicleLevel', false);
         }
-    };
-
-    const deleteContact = (index: number, componentArr: any) => {
-        componentArr.remove(index);
     };
 
     return (
@@ -1157,6 +1151,7 @@ const AddCustomer: React.FC<AddCustomerProps> = () => {
                                             aria-label="cancel"
                                             className="mr-4"
                                             onClick={onClickBack}
+                                            disabled={!isCancelEnable()}
                                         >
                                             {t("buttons.cancel")}
                                         </Button>
@@ -1165,8 +1160,7 @@ const AddCustomer: React.FC<AddCustomerProps> = () => {
                                             types="save"
                                             aria-label="save"
                                             className="ml-4"
-                                            disabled={disableButton()}
-
+                                            disabled={isSubmitDisabled()}
                                         >
                                             {t("buttons.save")}
                                         </Button>
