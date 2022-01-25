@@ -152,6 +152,10 @@
     },
     "addLot": {
       "title": "Ajouter un lot et des détails"
+    },
+    "form": {
+      "titleAdd": "Ajouter un lot et des détails",
+      "titleEdit": "Modifier le lot et les détails"
     }
   },
   "addDSP": {
