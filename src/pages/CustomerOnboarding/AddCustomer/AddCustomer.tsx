@@ -239,7 +239,6 @@ const AddCustomer: React.FC<AddCustomerProps> = () => {
             setSaveCancelShown(false);
             setIsSubmitting(false);
         }
-        // navigate(`/customer/viewCustomer/${data?.data?.customer?.customerId.toString()}`);
     };
 
     const onEditCustomerError = (err: any) => {
