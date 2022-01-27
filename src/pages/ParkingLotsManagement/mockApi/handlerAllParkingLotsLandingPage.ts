@@ -1,7 +1,7 @@
 import { rest } from "msw";
 
 export const getAllParkingLotsHandler = () => {
-    return rest.get('*/api/customer-service/lot*', (req, res, ctx) => {
+    return rest.get('*/api/customer-service/lots*', (req, res, ctx) => {
         return res(
             ctx.status(200),
             ctx.json({

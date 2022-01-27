@@ -1,7 +1,7 @@
 import { rest } from "msw";
 
 export const productTypesHandler = () => {
-    return rest.get('*/api/product-service/product/productType', (req, res, ctx) => {
+    return rest.get('*/api/product-service/products/productType', (req, res, ctx) => {
         return res(
             ctx.status(200),
             ctx.json({
@@ -23,7 +23,7 @@ export const productTypesHandler = () => {
 };
 
 export const productColorsHandler = () => {
-    return rest.get('*/api/product-service/product/productColor', (req, res, ctx) => {
+    return rest.get('*/api/product-service/products/productColor', (req, res, ctx) => {
         return res(
             ctx.status(200),
             ctx.json({
@@ -45,7 +45,7 @@ export const productColorsHandler = () => {
 };
 
 export const addProductManagementHandler = () => {
-    return rest.post('*/api/product-service/product/add', (req, res, ctx) => {
+    return rest.post('*/api/product-service/products/add', (req, res, ctx) => {
         return res(
             ctx.status(200),
             ctx.json({
@@ -69,7 +69,7 @@ export const addProductManagementHandler = () => {
 };
 
 export const getProductDataHandler = () => {
-    return rest.get('*/api/product-service/product/details/*', (req, res, ctx) => {
+    return rest.get('*/api/product-service/products/details/*', (req, res, ctx) => {
         return res(
             ctx.status(200),
             ctx.json({
@@ -98,7 +98,7 @@ export const getProductDataHandler = () => {
 };
 
 export const editProductManagementHandler = () => {
-    return rest.put('*/api/product-service/product/edit/*', (req, res, ctx) => {
+    return rest.put('*/api/product-service/products/edit/*', (req, res, ctx) => {
         return res(
             ctx.status(200),
             ctx.json({
