@@ -17,7 +17,7 @@ import CustomerModel, { AddCustomerForm, EmergencyContact } from '../../../model
 import AddCustomerValidationSchema from './validation';
 import { useCreateCustomer, useEditCustomer, useGetCustomerData, useGetFrequencies, useGetPaymentTypes, useUploadContractFile } from './queries';
 import AutocompleteInput from '../../../components/UIComponents/GoogleAddressComponent/GoogleAutoCompleteAddress';
-import { EditIcon, PlusIcon } from '../../../assets/icons';
+import { EditIcon, PlusIcon, LoadingIcon } from '../../../assets/icons';
 import "./AddCustomer.style.scss";
 import { useAddedCustomerIdStore, useAddedCustomerNameStore, useShowConfirmationDialogBoxStore, useAddedCustomerPaymentTypeStore } from '../../../store';
 import moment from 'moment';
@@ -97,6 +97,7 @@ const AddCustomer: React.FC<AddCustomerProps> = () => {
     const addedCustomerId = useAddedCustomerIdStore((state) => state.customerId);
     const [initialFormikValue, setInitialFormikValue] = useState(initialValues);
     const [activeCustomerId, setActiveCustomerId] = React.useState("");
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     useEffect(() => {
         const selectedCustomerId = location.pathname.split("/").pop();
@@ -180,6 +181,7 @@ const AddCustomer: React.FC<AddCustomerProps> = () => {
     };
 
     const onFileUploadError = (err: any) => {
+        setIsSubmitting(false);
         const { data: { error } } = err.response;
 
         if (error?.httpCode === 409) {
@@ -192,7 +194,9 @@ const AddCustomer: React.FC<AddCustomerProps> = () => {
     const onFileUploadSuccess = () => {
         setValidFiles([]);
         setAPIResponse(true);
+        setSaveCancelShown(false);
         setFormStatus(formStatusProps.fileuploadsuccess);
+        setIsSubmitting(false);
         setTimeout(() => {
             setAPIResponse(false);
         }, 6000);
@@ -203,12 +207,14 @@ const AddCustomer: React.FC<AddCustomerProps> = () => {
         isFormValidated(false);
         setFormStatus(formStatusProps.success);
         setEditShown(true);
-        setSaveCancelShown(false);
         setDisabled(true);
         setActiveCustomerId(data?.data?.customer?.customerId.toString());
         formik.resetForm({});
         if (validFiles.length) {
             uploadFile(false, data?.data?.customer);
+        } else {
+            setSaveCancelShown(false);
+            setIsSubmitting(false);
         }
         setTimeout(() => {
             setAPIResponse(false);
@@ -222,7 +228,6 @@ const AddCustomer: React.FC<AddCustomerProps> = () => {
         setFormStatus(formStatusProps.editsuccess);
         setActiveCustomerId(data?.data?.customer?.customerId.toString());
         setEditShown(true);
-        setSaveCancelShown(false);
         setTimeout(() => {
             setAPIResponse(false);
         }, 6000);
@@ -230,8 +235,10 @@ const AddCustomer: React.FC<AddCustomerProps> = () => {
         formik.resetForm({});
         if (validFiles.length) {
             uploadFile(false, data?.data?.customer);
+        } else {
+            setSaveCancelShown(false);
+            setIsSubmitting(false);
         }
-        navigate(`/customer/viewCustomer/${data?.data?.customer?.customerId.toString()}`);
     };
 
     const onEditCustomerError = (err: any) => {
@@ -332,6 +339,7 @@ const AddCustomer: React.FC<AddCustomerProps> = () => {
     };
 
     const uploadFile = (isOverwriteFile: boolean = false, customer: (CustomerModel | any) = {}) => {
+        setIsSubmitting(true);
         const formData = new FormData();
         const fileToUpload = validFiles[0];
         formData.append('customerFile', fileToUpload);
@@ -439,6 +447,7 @@ const AddCustomer: React.FC<AddCustomerProps> = () => {
         validationSchema: AddCustomerValidationSchema,
         enableReinitialize: true,
         onSubmit: (values) => {
+            setIsSubmitting(true);
             if (isEditMode) {
                 editCustomerData(values);
             } else {
@@ -1157,7 +1166,7 @@ const AddCustomer: React.FC<AddCustomerProps> = () => {
                                             aria-label="cancel"
                                             className="mr-4"
                                             onClick={onClickBack}
-                                            disabled={!isCancelEnable()}
+                                            disabled={!isCancelEnable() || isSubmitting}
                                         >
                                             {t("buttons.cancel")}
                                         </Button>
@@ -1166,9 +1175,9 @@ const AddCustomer: React.FC<AddCustomerProps> = () => {
                                             types="save"
                                             aria-label="save"
                                             className="ml-4"
-                                            disabled={isSubmitDisabled()}
+                                            disabled={isSubmitDisabled() || isSubmitting}
                                         >
-                                            {t("buttons.save")}
+                                            {t("buttons.save")} {isSubmitting && <LoadingIcon data-testid="loading-spinner" className='loading_save_icon' />}
                                         </Button>
                                     </Box>}
                                     <ToastMessage isOpen={apiResposneState} messageType={formStatus.type} onClose={() => { return ''; }} message={formStatus.message} />
