@@ -17,12 +17,12 @@ import { OPISCity, MASS_ACTION_TYPES, ROW_ACTION_TYPES, SORTBY_TYPES } from './c
 import { RightInfoPanel } from '../../components/UIComponents/RightInfoPanel/RightInfoPanel.component';
 import { getSeachedDataTotalCount } from '../../utils/helperFunctions';
 
-export interface OpisCitiesProps{
-  version:string
+export interface OpisCitiesProps {
+  version: string
 }
 
 
-const OPISCityLandingContent:React.FC<OpisCitiesProps> = memo(() => {
+const OPISCityLandingContent: React.FC<OpisCitiesProps> = memo(() => {
   const OPISCityObj = new OPISCityModel();
   const headCells = OPISCityObj.fieldsToDisplay();
   const massActionOptions = OPISCityObj.massActions();
@@ -175,7 +175,7 @@ const OPISCityLandingContent:React.FC<OpisCitiesProps> = memo(() => {
         </Grid>
         <Grid container pt={2.5} display="flex" flexGrow={1}>
           <GridComponent
-            primaryKey='taxJurisdictionId'
+            primaryKey='opisServedCityId'
             rows={fuelTaxList}
             header={headCells}
             isLoading={isFetching || isLoading}

@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from "react-router-dom";
+import { useParams } from 'react-router';
 import { useTranslation } from "react-i18next";
 import { Button } from '../../components/UIComponents/Button/Button.component';
 import { FilterIcon, ImportIcon } from '../../assets/icons';
@@ -51,6 +53,12 @@ interface props {
         setSearchTerm(value);
     };
 
+    const navigate = useNavigate();
+    const params =  useParams(); 
+
+    const redirectToUploadPage =()=> {
+        navigate(`/customer/${(params as any)?.customerId}/AddAttachment`);
+    };  
     const onSortBySlected = (value: string) => {
          let sortOrder;
          switch (value) {
@@ -108,7 +116,7 @@ interface props {
                             <Button
                                 types='primary'
                                 aria-label='primary'
-                                onClick={() => null}
+                                onClick={redirectToUploadPage}
                                 startIcon={<ImportIcon/>}
                             >
                                 {t('buttons.import')}

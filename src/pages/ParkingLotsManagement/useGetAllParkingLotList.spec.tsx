@@ -1,12 +1,12 @@
 import { renderHook, act } from '@testing-library/react-hooks';
 import { createWrapper } from '../../tests/utils';
-import { useOPISCityList } from './queries';
+import { useAllParkingLotList } from './queries';
 import { serverMsw } from "../../setupTests";
 import { rest } from 'msw';
 
-describe('useOPISCityList for useQuery method ', () => {
+describe('useAllParkingLotList for useQuery method ', () => {
     it('successful returns data', async () => {
-        const { result, waitFor } = renderHook(() => useOPISCityList("", { sortBy: "", order: "", }, {}), {
+        const { result, waitFor } = renderHook(() => useAllParkingLotList("", { sortBy: "", order: "", }, {}), {
             wrapper: createWrapper()
         });
         act(() => {
@@ -25,7 +25,7 @@ describe('useOPISCityList for useQuery method ', () => {
             })
         );
 
-        const { result, waitFor } = renderHook(() => useOPISCityList("", { sortBy: "", order: "", }, {}), {
+        const { result, waitFor } = renderHook(() => useAllParkingLotList("", { sortBy: "", order: "", }, {}), {
             wrapper: createWrapper()
         });
         act(() => {
@@ -39,9 +39,9 @@ describe('useOPISCityList for useQuery method ', () => {
     });
 });
 
-describe('Seach OPISCity with useOPISCityList method ', () => {
+describe('Seach ParkingLot with useAllParkingLotList method ', () => {
     it('successful returns data', async () => {
-        const { result, waitFor } = renderHook(() => useOPISCityList("", { sortBy: "", order: "", }, {}), {
+        const { result, waitFor } = renderHook(() => useAllParkingLotList("", { sortBy: "", order: "", }, {}), {
             wrapper: createWrapper()
         });
         act(() => {
@@ -60,7 +60,7 @@ describe('Seach OPISCity with useOPISCityList method ', () => {
             })
         );
 
-        const { result, waitFor } = renderHook(() => useOPISCityList("", { sortBy: "", order: "", }, {}), {
+        const { result, waitFor } = renderHook(() => useAllParkingLotList("", { sortBy: "", order: "", }, {}), {
             wrapper: createWrapper()
         });
         act(() => {
@@ -74,9 +74,9 @@ describe('Seach OPISCity with useOPISCityList method ', () => {
     });
 });
 
-describe('Filter OPISCity with useOPISCityList method ', () => {
+describe('Filter ParkingLot with useAllParkingLotList method ', () => {
     it('successful returns data', async () => {
-        const { result, waitFor } = renderHook(() => useOPISCityList("", { sortBy: "", order: "", }, {}), {
+        const { result, waitFor } = renderHook(() => useAllParkingLotList("", { sortBy: "", order: "", }, {}), {
             wrapper: createWrapper()
         });
         act(() => {
@@ -95,7 +95,7 @@ describe('Filter OPISCity with useOPISCityList method ', () => {
             })
         );
 
-        const { result, waitFor } = renderHook(() => useOPISCityList("", { sortBy: "", order: "", }, {}), {
+        const { result, waitFor } = renderHook(() => useAllParkingLotList("", { sortBy: "", order: "", }, {}), {
             wrapper: createWrapper()
         });
         act(() => {

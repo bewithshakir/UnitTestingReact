@@ -115,6 +115,23 @@
       "customerTitleAdd": "Add Customer"
     }
   },
+  "parkingLotManagement": {
+    "filterHeader": "Filters",
+    "search": "Lot Name",
+    "results found": "results found",
+    "result(s) found": "result(s) found",
+    "sortBy": {
+      "lotname_atoz": "Lot Name A-Z",
+      "lotname_ztoa": "Lot Name Z-A"
+    },
+    "filter": {
+      "state": "State",
+      "city": "City",
+      "zip": "Zip",
+      "wallet status": "Wallet Status",
+      "fuel type": "Fuel Type"
+    }
+  },
   "parkingLot": {
     "header": {
       "filter": "Filter"
@@ -171,7 +188,8 @@
         "countyFuelTax": "Enter County Fuel Tax",
         "miscInspFuelTax": "Enter Misc Insp Fuel Tax",
         "miscLcalFuelTax": "Enter Misc Local Fuel Tax",
-        "miscLoadFuelTax": "Enter Misc Load Fuel Tax"
+        "miscLoadFuelTax": "Enter Misc Load Fuel Tax",
+        "ppdSalesTax": "Enter PPD Sales Tax"
       }
     },
     "salesTax": {
@@ -318,5 +336,18 @@
     "dateAdded": "DATE ADDED",
     "uploadedBy": "UPLOADED BY",
     "uploadedIn": "UPLOADED IN"
+  },
+  "UploadAttachments":{
+    "uploadInitialText": "Drag & drop the file or",
+    "choose":"Choose",
+    "fileFormatSize":"Max file size : 25MB | File format : PDF, XLSX or DOCX",
+    "uploadFile":"Upload File",
+    "fileuploaddialog": {
+      "title": "Error in File Upload",
+      "content": "The file name you are trying to upload is already exists. Do you want to overwrite the file ?"
+    },
+    "uploadGenericError":"Error found. Please delete and re-upload the file",
+    "no":"No",
+    "yes":"Yes"
   }
 }

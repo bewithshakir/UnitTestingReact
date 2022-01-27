@@ -22,6 +22,7 @@ export interface headerObj {
     bold?: boolean,
     align?: 'right' | 'left' | 'center' | 'justify',
     sortable?: boolean,
+    width?: string,
     fieldOptions?: fieldOptions[]
 }
 type selectedRow = string[];

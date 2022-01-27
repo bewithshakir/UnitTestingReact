@@ -47,4 +47,5 @@ export interface Theme {
   '--ToastMessageGreen' : Color;
   '--InformationMessageYellow': Color;
   '--InformationMessageBackGround': Color;
+  '--BlueHighlightedColor':Color;
 }
