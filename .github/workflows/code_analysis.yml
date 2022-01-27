@@ -1,5 +1,5 @@
 on:
-  # Trigger analysis when creating a pull request
+  # Trigger analysis when creating a pull request and push
   push:
     branches:
       - main
