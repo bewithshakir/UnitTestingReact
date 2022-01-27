@@ -6,7 +6,7 @@ import axios from "../../infrastructure/ApiHelper";
 const addSalesTax = async (payload: any) => {
     const options: AxiosRequestConfig = {
         method: 'post',
-        url: 'api/tax-service/sales-tax',
+        url: 'api/tax-service/sales-taxes',
         data: payload,
     };
     const { data } = await axios(options);
@@ -16,7 +16,7 @@ const addSalesTax = async (payload: any) => {
 
 export const useAddSalesTax = (onError: any, onSuccess: any) => {
     return useMutation((payload: any) =>
-    addSalesTax(payload), {
+        addSalesTax(payload), {
         onError,
         onSuccess,
         retry: false,
@@ -26,16 +26,16 @@ export const useAddSalesTax = (onError: any, onSuccess: any) => {
 // interface PayloadProps {
 
 // }
-const fetchSaleTax = async(query: any)=> {
+const fetchSaleTax = async (query: any) => {
     const options: AxiosRequestConfig = {
         method: 'get',
-        url: `api/tax-service/sales-tax${query}`
+        url: `api/tax-service/sales-taxes${query}`
     };
     return axios(options);
 };
 
-export const useGetSaleTax = (query: any, onSuccess: any, onError: any)=> {
-    return useQuery(['get-sale-tax'], ()=> fetchSaleTax(query), {
+export const useGetSaleTax = (query: any, onSuccess: any, onError: any) => {
+    return useQuery(['get-sale-tax'], () => fetchSaleTax(query), {
         onSuccess,
         onError,
         enabled: !!query,
@@ -46,7 +46,7 @@ export const useGetSaleTax = (query: any, onSuccess: any, onError: any)=> {
 const editSaleTax = async (payload: any,) => {
     const options: AxiosRequestConfig = {
         method: 'put',
-        url: `/api/tax-service/sales-tax`,
+        url: `/api/tax-service/sales-taxes`,
         data: payload
     };
     const { data } = await axios(options);

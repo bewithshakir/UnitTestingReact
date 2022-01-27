@@ -7,7 +7,7 @@ import { pageDataLimit } from "../../utils/constants";
 const getProductTypes = async () => {
     const options: AxiosRequestConfig = {
         method: 'get',
-        url: '/api/product-service/product/productType?countryCode=us'
+        url: '/api/product-service/products/productType?countryCode=us'
     };
     const { data } = await axios(options);
     return data;
@@ -21,7 +21,7 @@ const getProductNames = async (productCd: string) => {
     if (productCd) {
         const options: AxiosRequestConfig = {
             method: 'get',
-            url: `/api/product-service/product/products?countryCode=us&productClassCd=${productCd}`
+            url: `/api/product-service/products?countryCode=us&productClassCd=${productCd}`
         };
         const { data } = await axios(options);
         return data;
@@ -35,7 +35,7 @@ export const useGetProductNames = (productCd: string) => {
 const getPricingModel = async () => {
     const options: AxiosRequestConfig = {
         method: 'get',
-        url: '/api/customer-service/pricing-model?countryCode=us'
+        url: '/api/customer-service/pricing-models?countryCode=us'
     };
     const { data } = await axios(options);
     return data;
@@ -53,11 +53,11 @@ const getProductsByLotId = async (pageParam: number, lotId: string, searchTerm: 
             query.append("search", searchTerm);
         }
 
-        const productEntitySet = `/api/customer-service/lot/${lotId}/product?countryCode=us&limit=${pageDataLimit}&offset=${pageParam}`;
+        const productEntitySet = `/api/customer-service/lots/${lotId}/products?countryCode=us&limit=${pageDataLimit}&offset=${pageParam}`;
         const url = `${query.toString().length ? `&${query.toString()}` : ''}`;
         const payload: AxiosRequestConfig = {
             method: 'get',
-            url: productEntitySet + url 
+            url: productEntitySet + url
         };
         const { data } = await axios(payload);
         return data;
@@ -74,27 +74,27 @@ export const useProductsByLotId = (lotId: string, searchTerm: string, updateKey:
     });
 };
 
-interface IAddProductBody{
-    productId:string
+interface IAddProductBody {
+    productId: string
     pricingModelCd: string,
-    productNm:string
+    productNm: string
     manualPriceAmt: number
-    addedPriceAmt:number
+    addedPriceAmt: number
     discountPriceAmt: number
 }
 
-const addNewProduct = async (parkinglotId: string, payload:IAddProductBody)=>{ 
+const addNewProduct = async (parkinglotId: string, payload: IAddProductBody) => {
     const options: AxiosRequestConfig = {
         method: 'post',
-        url:`api/customer-service/lot/${parkinglotId}/product`,
+        url: `api/customer-service/lots/${parkinglotId}/products`,
         data: payload,
     };
     const { data } = await axios(options);
     return data;
 };
 
-export const useCreateProduct = (parkingLotId: string,  onError:any, onSuccess:any) => {
-    return useMutation(( payload: IAddProductBody)=> addNewProduct(parkingLotId, payload), {
+export const useCreateProduct = (parkingLotId: string, onError: any, onSuccess: any) => {
+    return useMutation((payload: IAddProductBody) => addNewProduct(parkingLotId, payload), {
         onError,
         onSuccess,
         retry: false,
@@ -105,7 +105,7 @@ const getLotProductDetails = async (lotId: string, productId: string) => {
     if (lotId != "" && typeof lotId != "undefined" && productId != "" && typeof productId != "undefined") {
         const options: AxiosRequestConfig = {
             method: 'get',
-            url: `/api/customer-service/lot/${lotId}/product/${productId}?countryCode=us`
+            url: `/api/customer-service/lots/${lotId}/products/${productId}?countryCode=us`
         };
         const { data } = await axios(options);
         return data;

@@ -7,7 +7,7 @@ const createCustomer = async (payload: any) => {
 
     const options: AxiosRequestConfig = {
         method: 'post',
-        url: '/api/customer-service/customers?countryCode=us',
+        url: '/api/customer-service/customers',
         data: payload,
     };
     const { data } = await axios(options);
@@ -18,20 +18,20 @@ const editCustomer = async (payload: any, customerId: string) => {
 
     const options: AxiosRequestConfig = {
         method: 'put',
-        url: `/api/customer-service/customers/${customerId}?countryCode=us`,
+        url: `/api/customer-service/customers/${customerId}`,
         data: payload
     };
     const { data } = await axios(options);
     return data;
 };
-const uploadContractFiles = async (payload: any, customerId:string) => {
+const uploadContractFiles = async (payload: any, customerId: string) => {
     const options: AxiosRequestConfig = {
         method: 'post',
-        url: `/api/customer-service/customers/${customerId}/upload-file`,
+        url: `/api/customer-service/customers/${customerId}/files`,
         data: payload,
     };
 
-    const {data} = await axios(options);
+    const { data } = await axios(options);
     return data;
 };
 
@@ -39,7 +39,7 @@ const uploadContractFiles = async (payload: any, customerId:string) => {
 const getFrequencies = async () => {
     const options: AxiosRequestConfig = {
         method: 'get',
-        url: '/api/customer-service/customers/invoiceFrequency?countryCode=us'
+        url: '/api/config-service/customers/invoice-frequencies?countryCode=us'
     };
     const { data } = await axios(options);
     return data;
@@ -48,7 +48,7 @@ const getFrequencies = async () => {
 const getPaymentTypes = async () => {
     const options: AxiosRequestConfig = {
         method: 'get',
-        url: '/api/customer-service/customers/paymentType?countryCode=us'
+        url: '/api/config-service/customers/payment-types?countryCode=us'
     };
     const { data } = await axios(options);
     return data;
@@ -64,22 +64,6 @@ const getCustomerData = async (customerId: string, isTrigger: boolean) => {
         return data;
     }
 };
-
-const getCustomerFilterData = async (filters?: { [k: string]: any }) => {
-    const query = new URLSearchParams();
-    if (filters) {
-        for (const [key, val] of Object.entries(filters)) {
-            query.append(key, Array.isArray(val) ? JSON.stringify(val) : val);
-        }
-    }
-    const options: AxiosRequestConfig = {
-        method: 'get',
-        url: `/api/customer-service/customers/filterData?${query.toString()}`
-    };
-    const { data } = await axios(options);
-    return data;
-};
-
 
 export const useGetFrequencies = () => {
     return useQuery(["getFrequencies"], () => getFrequencies());
@@ -117,10 +101,6 @@ export const useGetCustomerData = (customerId: string, isTrigger: boolean, onSuc
     });
 };
 
-export const useGetCustomerFilterData = (payload?: any) => {
-    return useQuery(['getCustomerFilterData', payload], () => getCustomerFilterData(payload));
-};
-
-export const useUploadContractFile = (customerId:string, onError: any, onSuccess: any) => {
+export const useUploadContractFile = (customerId: string, onError: any, onSuccess: any) => {
     return useMutation((payload: any) => uploadContractFiles(payload, customerId), { onError, onSuccess });
 };
