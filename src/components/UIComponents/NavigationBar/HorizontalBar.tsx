@@ -107,10 +107,10 @@ export default function HorizontalBar (props: HorizontalBarProps) {
     ) {
       navigate('/productManagement');
     } else if (
-      pathname.includes('AddAttachment') 
+      pathname.includes('AddAttachment')
     ) {
       navigate(-1);
-    }else {
+    } else {
       props.onBack();
     }
   };
@@ -294,12 +294,12 @@ export default function HorizontalBar (props: HorizontalBarProps) {
           <Link className='breadcrubs-title' onClick={handleCustomerBack}>
             {selectedCustomerName}
           </Link>
-          { (pathname.includes('addLot') || pathname.includes('viewLot') ) && <Link className='breadcrubs-title' href='#' onClick={handleClick}>
+          {(pathname.includes('addLot') || pathname.includes('viewLot')) && <Link className='breadcrubs-title' href='#' onClick={handleClick}>
             {'Add Lot & Details'}
           </Link>}
-          { (pathname.includes('AddAttachment') &&  <Link className="breadcrubs-title" href="#" onClick={handleClick}>
-          {"Add Attachment"}
-        </Link>)}
+          {(pathname.includes('AddAttachment') && <Link className="breadcrubs-title" href="#" onClick={handleClick}>
+            {"Add Attachment"}
+          </Link>)}
         </Breadcrumbs>
       </>
     );
@@ -316,16 +316,18 @@ export default function HorizontalBar (props: HorizontalBarProps) {
             ml: `${drawerWidth}px`,
           }}
         >
-          <Toolbar className='header__toolbar'>
-            {version === 'NavLinks' ? null : (
-              <Button
-                types='profile'
-                aria-label='back button'
-                onClick={handleBack}
-                size='small'
-                startIcon={<SvgIcon component={BackIcon} />}
-              />
-            )}
+          <Toolbar className={version === 'NavLinks' ? 'header__navlinks_toolbar' : 'header__breadcrumbs_toolbar'} >
+            {version !== 'NavLinks' &&
+              (
+                <Button
+                  variant="contained"
+                  className="btn-profile"
+                  aria-label='back button'
+                  onClick={handleBack}
+                  size='small'
+                  startIcon={<SvgIcon component={BackIcon} />}
+                />
+              )}
             {version === 'Breadcrumbs-Single'
               ? versionBreadcrumbsSingle()
               : version === 'NavLinks'
