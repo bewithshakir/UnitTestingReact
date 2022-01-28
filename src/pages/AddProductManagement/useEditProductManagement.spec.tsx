@@ -13,7 +13,7 @@ describe('useEditProductManagement for useMutation', ()=> {
         "productColor": "2",
         "productStatus": "Y",
         "productPricing": 0
-    }
+    };
 
     
     it('succesfull add data using useEditProductManagement', async()=> {
@@ -42,9 +42,9 @@ describe('useEditProductManagement for useMutation', ()=> {
         });
         act(()=> {
             result.current.mutate(payload as any);
-        })
+        });
         
         await waitFor(() => result.current.isError);
-        expect(result.current.error).toBeDefined()
+        expect(result.current.error).toBeDefined();
     });
 });
