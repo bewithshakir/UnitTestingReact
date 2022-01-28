@@ -21,7 +21,7 @@ div{
         }
         &__toolbar{
             .linkitem {
-                padding: 16px 30px;
+                padding: 18px 30px;
                 border-bottom: 4px solid  var(--White);
                 :hover{
                     color: var(--Primary);
@@ -37,9 +37,14 @@ div{
             .breadcrubs-title {
                 text-decoration: none;
                 font-family: "Arial";
-                font-size: 18px;
+                font-size: 16px;
                 font-weight: bold;
                 color: var(--Darkgray);
+            }
+            .MuiBreadcrumbs-li:last-of-type {
+                .breadcrubs-title{
+                    color: var(--Primary);
+                }
             }
         }
         .vl {
