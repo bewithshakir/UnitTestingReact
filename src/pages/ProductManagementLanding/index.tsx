@@ -14,12 +14,12 @@ import { DataGridActionsMenuOption } from '../../components/UIComponents/Menu/Da
 import { ProductsListSet } from './queries';
 import { getSeachedDataTotalCount } from '../../utils/helperFunctions';
 
-export interface ProductManagementContentProps{
-  version:string
+export interface ProductManagementContentProps {
+  version: string
 }
 
 
-const ProductManagementContent:React.FC<ProductManagementContentProps> = memo(() => {
+const ProductManagementContent: React.FC<ProductManagementContentProps> = memo(() => {
   const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
   setVersion("NavLinks");
   const { t } = useTranslation();
@@ -77,7 +77,7 @@ const ProductManagementContent:React.FC<ProductManagementContentProps> = memo(()
 
   return (
     <Box display="flex" mt={10} ml={8}>
-      <Grid container pl={6.25} pr={6.25} className="main-area">
+      <Grid container pl={8} pr={8} className="main-area">
         <Grid container display="flex" flexGrow={1}>
           <Grid item md={8} lg={9} display="flex" >
             <Grid item>

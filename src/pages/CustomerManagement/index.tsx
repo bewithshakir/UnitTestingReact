@@ -173,7 +173,7 @@ const Content: React.FC<ContentProps> = () => {
 
   return (
     <Box display="flex" mt={8} ml={8}>
-      <Grid container pl={6.25} pr={6.25} className="main-area">
+      <Grid container pl={8} pr={8} className="main-area">
         <Grid container pt={2.5} display="flex" flexGrow={1}>
           <Grid item md={8} lg={9} display="flex" >
             <Grid item pr={2.5}>
