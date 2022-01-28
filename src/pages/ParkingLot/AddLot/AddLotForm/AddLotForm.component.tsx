@@ -97,7 +97,7 @@ function AddLotForm (): React.ReactElement {
         setDisabled(true);
         setActiveLotId(data?.data?.deliveryLocationId.toString());
         timerRef.current = setTimeout(() => {
-          navigate(`/customer/${addedCustomerId}/parkingLots/viewLot/${data?.data?.deliveryLocationId.toString()}`);
+            navigate(`/customer/${addedCustomerId}/parkingLots/viewLot/${data?.data?.deliveryLocationId.toString()}`);
         }, 6000);
     };
 
@@ -230,7 +230,7 @@ function AddLotForm (): React.ReactElement {
     const onClickBack = () => {
         if (isEqual(lotState, formik.values)) {
             isFormValidated(false);
-            navigate(`/customer/${addedCustomerId}/parkingLots`,{
+            navigate(`/customer/${addedCustomerId}/parkingLots`, {
                 state: {
                     customerId: addedCustomerId,
                     customerName: selectedCustomerName
@@ -269,7 +269,7 @@ function AddLotForm (): React.ReactElement {
                 startTime: orderSchedule.startTime,
                 endTime: orderSchedule.endTime,
                 dayOfWeek: ['weekly', 'monthly'].includes(String(form.productDelFreq?.label).toLowerCase())
-                    ? (!orderSchedule?.productDelDays?.value ? []: [orderSchedule.productDelDays?.value] )
+                    ? (!orderSchedule?.productDelDays?.value ? [] : [orderSchedule.productDelDays?.value])
                     : orderSchedule.productDelDaysMulti?.map(daysMulti => daysMulti.value),
                 isPrimary: index === 0 ? "Y" : "N"
             }))
@@ -654,7 +654,7 @@ function AddLotForm (): React.ReactElement {
                                                                 }
                                                             />
                                                         </Grid>
-    
+
                                                         <Grid item md={3} pl={2.5} pr={2.5} pb={2.5}>
                                                             <DatePickerInput
                                                                 type="single-date"
@@ -923,7 +923,7 @@ function AddLotForm (): React.ReactElement {
                                     )}
                                 />
 
-                                <Grid item md={12} mt={2} mb={1}>
+                                <Grid item md={12} mt={2} mb={4}>
                                     {isSavCancelShown && <Box className="form-action-section">
                                         <Button
                                             types="cancel"

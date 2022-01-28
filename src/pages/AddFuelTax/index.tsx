@@ -8,7 +8,7 @@ import './style.scss';
 import Select from '../../components/UIComponents/Select/SingleSelect';
 import { useFormik } from 'formik';
 import TaxModel from '../../models/TaxModel';
-import {AddFuelTaxValidationSchema, EditFuelTaxValidationSchema } from './validation';
+import { AddFuelTaxValidationSchema, EditFuelTaxValidationSchema } from './validation';
 import AutocompleteInput from '../../components/UIComponents/GoogleAddressComponent/GoogleAutoCompleteAddress';
 import { useAddFuelTax, useGetFuelTax, useEditFuelTax } from './queries';
 import ToastMessage from '../../components/UIComponents/ToastMessage/ToastMessage.component';
@@ -26,8 +26,8 @@ interface IFormStatusProps {
     [key: string]: IFormStatus
 }
 
-interface AddFuelTaxProps{
-    version:string
+interface AddFuelTaxProps {
+    version: string
 }
 
 const formStatusProps: IFormStatusProps = {
@@ -46,7 +46,7 @@ const formStatusProps: IFormStatusProps = {
 };
 
 
-const AddFuelTax:React.FC<AddFuelTaxProps> = memo(() => {
+const AddFuelTax: React.FC<AddFuelTaxProps> = memo(() => {
     const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
     setVersion("Breadcrumbs-Single");
     const navigate = useNavigate();
@@ -67,7 +67,7 @@ const AddFuelTax:React.FC<AddFuelTaxProps> = memo(() => {
 
 
 
-    const onAddFuelTaxSuccess = ()=> {
+    const onAddFuelTaxSuccess = () => {
         setAPIResponse(true);
         isFormValidated(false);
         setFormStatus(formStatusProps.updated);
@@ -75,7 +75,7 @@ const AddFuelTax:React.FC<AddFuelTaxProps> = memo(() => {
             setAPIResponse(false);
         }, 6000);
     };
-    const onAddFuelTaxError = (err: any)=> {
+    const onAddFuelTaxError = (err: any) => {
         try {
             const { data } = err.response;
             setAPIResponse(true);
@@ -119,7 +119,7 @@ const AddFuelTax:React.FC<AddFuelTaxProps> = memo(() => {
     };
 
 
-    const onEditFuelTaxSuccess = ()=> {
+    const onEditFuelTaxSuccess = () => {
         setAPIResponse(true);
         setFormStatus(formStatusProps.updated);
         setTimeout(() => {
@@ -127,7 +127,7 @@ const AddFuelTax:React.FC<AddFuelTaxProps> = memo(() => {
             navigate('/taxes');
         }, 2000);
     };
-    const onEditFuelTaxError = (err: any)=> {
+    const onEditFuelTaxError = (err: any) => {
         try {
             const { data } = err.response;
             setAPIResponse(true);
@@ -191,7 +191,7 @@ const AddFuelTax:React.FC<AddFuelTaxProps> = memo(() => {
     }, [location]);
 
 
-    const populateDataInAllFields = (formData: any)=> {
+    const populateDataInAllFields = (formData: any) => {
         formik.setFieldValue('city', formData.city);
         formik.setFieldValue('state', formData.state);
         formik.setFieldValue('federalRate', formData.fedFuelTax);
@@ -203,19 +203,19 @@ const AddFuelTax:React.FC<AddFuelTaxProps> = memo(() => {
         formik.setFieldValue('InspFuelRate', formData.miscInspFuelTax);
         formik.setFieldValue('miscLocalFuelRate', formData.miscLocalFuelTax);
         formik.setFieldValue('loadFuel', formData.miscLoadFuelTax);
-        formik.setFieldValue('fuelType', { label: formData.saleableProductNm, value: formData.saleableProductNm});
+        formik.setFieldValue('fuelType', { label: formData.saleableProductNm, value: formData.saleableProductNm });
         formik.setFieldValue('startDate', formData.startDate);
         formik.setFieldValue('endDate', formData.endDate);
-        formik.setFieldValue('countryCd','us');
+        formik.setFieldValue('countryCd', 'us');
         formik.setFieldValue('ppdSalesTax', formData.ppdSalesTax);
     };
 
 
-    const onGetSaleTaxSuccess = (response: any)=> {
+    const onGetSaleTaxSuccess = (response: any) => {
         populateDataInAllFields(response.data.data);
         setEditMode(true);
     };
-    const onGetSaleTaxError = (err: any)=> {
+    const onGetSaleTaxError = (err: any) => {
         try {
             const { data } = err.response;
             setAPIResponse(true);
@@ -224,7 +224,7 @@ const AddFuelTax:React.FC<AddFuelTaxProps> = memo(() => {
             setTimeout(() => {
                 setAPIResponse(false);
             }, 6000);
-        } catch(error) {
+        } catch (error) {
             setFormStatus(formStatusProps.error);
         }
     };
@@ -235,9 +235,9 @@ const AddFuelTax:React.FC<AddFuelTaxProps> = memo(() => {
 
     const formik = useFormik({
         initialValues,
-        validationSchema: isEditMode?EditFuelTaxValidationSchema:AddFuelTaxValidationSchema,
+        validationSchema: isEditMode ? EditFuelTaxValidationSchema : AddFuelTaxValidationSchema,
         onSubmit: (values) => {
-            if(isEditMode) {
+            if (isEditMode) {
                 updateFuelTax(values);
             } else {
                 createNewFuelTax(values);
@@ -252,7 +252,7 @@ const AddFuelTax:React.FC<AddFuelTaxProps> = memo(() => {
         formik.setFieldValue('countryCd', 'us');
     };
 
-    function handleGoogleAddressBlur() {
+    function handleGoogleAddressBlur () {
         formik.setFieldTouched("addressLine1");
         formik.validateField("addressLine1");
         formik.setFieldTouched("city");
@@ -300,16 +300,16 @@ const AddFuelTax:React.FC<AddFuelTaxProps> = memo(() => {
 
     const handleFormDataChange = () => {
         if (isEditMode) {
-                if (formik.dirty) {
-                    if (formik.initialValues != formik.values) {
-                        isFormValidated(false);
-                    }
+            if (formik.dirty) {
+                if (formik.initialValues != formik.values) {
+                    isFormValidated(false);
                 }
-        } 
-        if (isFormFieldChange()) {
-            isFormValidated(true); 
+            }
         }
-    };  
+        if (isFormFieldChange()) {
+            isFormValidated(true);
+        }
+    };
     return (
         <>
             <Box display="flex" mt={10} ml={16}>
@@ -317,11 +317,11 @@ const AddFuelTax:React.FC<AddFuelTaxProps> = memo(() => {
                     <Container maxWidth="lg" className="page-container">
                         <form onSubmit={formik.handleSubmit} onBlur={handleFormDataChange} data-test="component-AddFuelTax">
 
-                                <Grid item xs={12} md={12}>
-                                    <Box className="info-section" pl={2.7} pb={1.8} pt={2.0} pr={20} >
-                                        *Certain markets require a combined Revenue (%) and Sales (%) Tax on the Price per Gallon with or without Adder/Discount.
-                                    </Box>
-                                </Grid>
+                            <Grid item xs={12} md={12}>
+                                <Box className="info-section" pl={2.7} pb={1.8} pt={2.0} pr={20} >
+                                    *Certain markets require a combined Revenue (%) and Sales (%) Tax on the Price per Gallon with or without Adder/Discount.
+                                </Box>
+                            </Grid>
                             <Typography color="var(--Darkgray)" variant="h3" gutterBottom className="fw-bold" mb={1} pt={3}>
                                 Fill all the Mandatory fields *
                             </Typography>
@@ -539,7 +539,7 @@ const AddFuelTax:React.FC<AddFuelTaxProps> = memo(() => {
                                     />
                                 </Grid>
                             </Grid>
-                            <Grid item md={12} mt={2} mb={1}>
+                            <Grid item md={12} mt={2} mb={4}>
                                 <Box className="form-action-section">
                                     <Button
                                         types="cancel"

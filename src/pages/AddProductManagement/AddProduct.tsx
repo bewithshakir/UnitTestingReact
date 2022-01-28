@@ -2,7 +2,7 @@ import React, { memo, useState, useEffect } from 'react';
 import { Box, Container, Grid, Typography } from '@mui/material';
 import { useFormik } from 'formik';
 import { useTranslation } from 'react-i18next';
-import {  useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import Input from '../../components/UIComponents/Input/Input';
 import { Button } from '../../components/UIComponents/Button/Button.component';
@@ -24,11 +24,11 @@ interface IFormStatus {
     type: string
 }
 
-export interface AddProductProps{
-    version:string
-  }
-  
-  
+export interface AddProductProps {
+    version: string
+}
+
+
 
 
 
@@ -36,7 +36,7 @@ const initialValues = new ProductManagementModel();
 const AddProduct: React.FC<AddProductProps> = memo(() => {
     const { t } = useTranslation();
     const navigate = useNavigate();
-    const {productId }: any = useParams();
+    const { productId }: any = useParams();
 
     const { data: productTypesList, isLoading: isLoadingTypes, } = useGetProductTypes('us');
     const { data: productColorsList, isLoading: isLoadingColors } = useGetProductColors('us');
@@ -275,7 +275,7 @@ const AddProduct: React.FC<AddProductProps> = memo(() => {
                                     />
                                 </Grid>
                             </Grid>
-                            <Grid item xs={12} md={12} pr={2.5} pb={5.5}>
+                            <Grid item xs={12} md={12} pr={2.5} pb={2.5}>
                                 <Grid item xs={12} md={6}>
                                     <Input
                                         id='productPricing'
@@ -289,9 +289,9 @@ const AddProduct: React.FC<AddProductProps> = memo(() => {
                                     />
                                 </Grid>
                             </Grid>
-                            <Grid item xs={12} md={12} pr={2.5} pb={2.5}>
+                            <Grid item xs={12} md={12} pr={2.5} mt={4} mb={4}>
                                 <Grid item xs={12} md={6}>
-                                    <Box className="form-action-section txt-right">
+                                    <Box className="form-action-section">
                                         <Button
                                             id="cancelBtn"
                                             types="cancel"
