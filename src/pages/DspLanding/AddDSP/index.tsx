@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Box, Container, Grid, Typography } from '@mui/material';
 import { useFormik } from 'formik';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import DSPModel from "../../../models/DSPModel";
 import { AddDSPSchema } from "./validation";
@@ -12,7 +12,7 @@ import { lotHeaderBoxSx } from '../../ParkingLot/config';
 import AutocompleteInput from '../../../components/UIComponents/GoogleAddressComponent/GoogleAutoCompleteAddress';
 import { HorizontalBarVersionState, useAddedCustomerIdStore, useShowConfirmationDialogBoxStore, useStore } from '../../../store';
 import ToastMessage from '../../../components/UIComponents/ToastMessage/ToastMessage.component';
-import { useAddDsp } from './queries';
+import { useAddDsp, useEditDspData, useUpdateDspData } from './queries';
 import "./style.scss";
 import { LoadingIcon } from '../../../assets/icons';
 
@@ -28,12 +28,14 @@ const AddDSP: React.FC<AddDSPProps> = () => {
 
     const { t } = useTranslation();
     const navigate = useNavigate();
+    const {dspId} = useParams();
     const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
     const showDialogBox = useShowConfirmationDialogBoxStore((state) => state.showDialogBox);
     const isFormValidated = useShowConfirmationDialogBoxStore((state) => state.setFormFieldValue);
     const addedCustomerId = useAddedCustomerIdStore((state) => state.customerId);
     const [formStatus, setFormStatus] = useState<IFormStatus>({ message: '', type: '' });
-    const [isEditMode] = useState(false);
+    const [isEditMode, setEditMode] = useState(false);
+    
 
     useEffect(()=> {
         setVersion("Breadcrumbs-Many");
@@ -59,13 +61,47 @@ const AddDSP: React.FC<AddDSPProps> = () => {
         }
     };
 
+    // Add DSP End
+
+    // Edit DSP
+
+    const populateDataInAllFields = (formData: any)=> {
+        formik.resetForm({
+            values: { ...formData }
+        });
+    };
+
+    const onSuccessDspDetail = (responseData: DSPModel)=> {
+        setEditMode(true);
+        populateDataInAllFields(responseData);
+    };
+    const onErrorDspDetail = (error: any)=> {
+        setEditMode(true);
+        setFormStatus({ message: error?.response.data.error?.details[0] || t("formStatusProps.error.message"), type: 'Error' });
+    };
+    const { isError: isErrorDspData } = useEditDspData(dspId, onSuccessDspDetail, onErrorDspDetail);
+
+    const onSuccessUpdateDsp = () => {
+        isFormValidated(false);
+        formik.resetForm({ values: formik.values });
+        setFormStatus({ message: t("formStatusProps.success.message"), type: 'Success' });
+    };
+
+    const onErrorUpdateDsp = (error: any) => {
+        const { data } = error.response;
+        formik.resetForm({ values: formik.values });
+        setFormStatus({ message: data?.error?.details[0] || t("formStatusProps.error.message"), type: 'Error' });
+    };
+    const { mutate: updateDsp, isSuccess: isSuccessUpdateDsp, isError: isErrorUpdateDsp, isLoading: isLoadingUpdateDsp } = useUpdateDspData(dspId, onSuccessUpdateDsp, onErrorUpdateDsp);
+    
+    // Edit DSP End
     const formik = useFormik({
         initialValues,
         validationSchema: AddDSPSchema,
         onSubmit: (values: DSPModel) => {
             const updatedValues = {...values, customerId: addedCustomerId} as DSPModel;
             if (isEditMode) {
-                // updateProductData(values);
+                updateDsp(updatedValues);
             } else {
                 createDspData(updatedValues);
             }
@@ -281,12 +317,15 @@ const AddDSP: React.FC<AddDSPProps> = () => {
                                     data-testid="save"
                                     disabled={disableButton()}
                                 >
-                                    {t("buttons.save")} {(isLoadingAddDsp) && <LoadingIcon data-testid="loading-spinner" className='loading_save_icon' />}
+                                    {t("buttons.save")} 
+                                    {(isLoadingAddDsp || isLoadingUpdateDsp) && <LoadingIcon data-testid="loading-spinner" className='loading_save_icon' />}
                                 </Button>
                             </Box>
                             <ToastMessage
                                 isOpen={
-                                    isErrorAddDsp || isSuccessAddDsp
+                                    isErrorAddDsp || isSuccessAddDsp ||
+                                    isErrorUpdateDsp|| isSuccessUpdateDsp ||
+                                    isErrorDspData
                                 }
                                 messageType={formStatus.type}
                                 onClose={() => { return ''; }}

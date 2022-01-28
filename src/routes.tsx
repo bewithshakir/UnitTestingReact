@@ -66,6 +66,10 @@ export const routes: RouteObject[] = [
         element: <AddDSP version='Breadcrumbs-Many'/>
       },
       {
+        path: "/customer/:customerId/dsps/edit/:dspId",
+        element: <AddDSP version='Breadcrumbs-Many'/>
+      },
+      {
         path: "/customer/:customerId/Attachments",
         element: <CustomerAttachments version='Breadcrumbs-Single' />
       },

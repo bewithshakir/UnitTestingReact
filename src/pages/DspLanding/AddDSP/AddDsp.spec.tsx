@@ -21,6 +21,8 @@ jest.mock('react-router-dom', () => ({
         })
     }),
     useParams: () => ({
+        customerId: '111add',
+        dspId: '',
         params: {
             addedCustomerId: '123'
         }
@@ -106,7 +108,7 @@ describe('renders AddDSP component for add/edit mode', () => {
                 userEvent.tab();
                 expect(saveBtn).toBeEnabled();
             });
-        });
+        }, 8000);
 
         it('show loader on save button clicked and remove after success', async()=> {
             await waitFor(()=> {
@@ -122,7 +124,7 @@ describe('renders AddDSP component for add/edit mode', () => {
             await waitFor(()=> {
                 expect(result.getByText('formStatusProps.success.message')).toBeInTheDocument();
             });
-        });
+        }, 6000);
 
         it('show toaster with error message on save button clicked', async()=> { 
             serverMsw.use(

@@ -5,7 +5,7 @@ import { addProductManagementHandler, editProductManagementHandler, getProductDa
 import { getOPISCitiesHandler } from '../pages/OPISCity/mockApi/handlerOPISCityLandingPage';
 import { getAllParkingLotsHandler } from '../pages/ParkingLotsManagement/mockApi/handlerAllParkingLotsLandingPage';
 import { getAttachmentListHandler } from '../pages/Attachments/mockApi/AttachmentLandingPageHandler';
-import { addDspHandler } from "../pages/DspLanding/AddDSP/mockApi/handlerAddDsp";
+import { addDspHandler, getDspDataHandler, editDspHandler } from "../pages/DspLanding/AddDSP/mockApi/handlerAddDsp";
 import { FetchFormattedAddressHandler, FetchGoogleAddressHandler } from "../components/UIComponents/GoogleAddressComponent/mockApi/googleAddressAutoHandler";
 
 export const handlers = [
@@ -17,9 +17,11 @@ export const handlers = [
     getOPISCitiesHandler(),
     getAttachmentListHandler(),
     getAllParkingLotsHandler(),
-    addDspHandler(),
     FetchFormattedAddressHandler(),
-    FetchGoogleAddressHandler()
+    FetchGoogleAddressHandler(),
+    addDspHandler(),
+    getDspDataHandler(),
+    editDspHandler()
 ];
 
 const createTestQueryClient = () => new QueryClient({
