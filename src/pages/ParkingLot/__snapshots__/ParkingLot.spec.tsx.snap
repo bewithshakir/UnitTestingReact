@@ -999,7 +999,6 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
           <ForwardRef(Grid)
             className="main-area"
             container={true}
-            pl={2.25}
             pr={6.25}
           >
             <MuiGridRoot
@@ -1331,7 +1330,6 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                   "rowSpacing": 0,
                   "sm": false,
                   "sx": Object {
-                    "pl": 2.25,
                     "pr": 6.25,
                   },
                   "wrap": "wrap",
@@ -1342,13 +1340,12 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
               }
               sx={
                 Object {
-                  "pl": 2.25,
                   "pr": 6.25,
                 }
               }
             >
               <div
-                className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-undefined main-area css-r367qr-MuiGrid-root"
+                className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-undefined main-area css-1rqvrp7-MuiGrid-root"
               >
                 <ForwardRef(Grid)
                   container={true}

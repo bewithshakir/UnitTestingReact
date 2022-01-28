@@ -9,8 +9,8 @@ exports[`FuelTax Landing Page Fuel List is rendering 1`] = `
   <ForwardRef(Grid)
     className="main-area"
     container={true}
-    pl={6.25}
-    pr={6.25}
+    pl={8}
+    pr={8}
   >
     <ForwardRef(Grid)
       container={true}
@@ -404,8 +404,8 @@ exports[`Given Search FuelTax Landing Page Show Fuel List as per searched value 
   <ForwardRef(Grid)
     className="main-area"
     container={true}
-    pl={6.25}
-    pr={6.25}
+    pl={8}
+    pr={8}
   >
     <ForwardRef(Grid)
       container={true}

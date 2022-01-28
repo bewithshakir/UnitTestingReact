@@ -767,8 +767,8 @@ exports[`Rendering of Asset Management landing page Component Asset Management l
           <ForwardRef(Grid)
             className="main-area"
             container={true}
-            pl={6.25}
-            pr={6.25}
+            pl={8}
+            pr={8}
           >
             <MuiGridRoot
               as="div"
@@ -1008,8 +1008,8 @@ exports[`Rendering of Asset Management landing page Component Asset Management l
                   "rowSpacing": 0,
                   "sm": false,
                   "sx": Object {
-                    "pl": 6.25,
-                    "pr": 6.25,
+                    "pl": 8,
+                    "pr": 8,
                   },
                   "wrap": "wrap",
                   "xl": false,
@@ -1019,13 +1019,13 @@ exports[`Rendering of Asset Management landing page Component Asset Management l
               }
               sx={
                 Object {
-                  "pl": 6.25,
-                  "pr": 6.25,
+                  "pl": 8,
+                  "pr": 8,
                 }
               }
             >
               <div
-                className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-undefined main-area css-1gehmkk-MuiGrid-root"
+                className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-undefined main-area css-n8sxft-MuiGrid-root"
               >
                 <ForwardRef(Grid)
                   container={true}

@@ -2767,7 +2767,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                     />
                     <ForwardRef(Grid)
                       item={true}
-                      mb={1}
+                      mb={4}
                       md={12}
                       mt={2}
                     >
@@ -3288,7 +3288,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                         />
                         <ForwardRef(Grid)
                           item={true}
-                          mb={1}
+                          mb={4}
                           md={12}
                           mt={2}
                         >
@@ -3665,7 +3665,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                             />,
                             <ForwardRef(Grid)
                               item={true}
-                              mb={1}
+                              mb={4}
                               md={12}
                               mt={2}
                             >
@@ -21168,7 +21168,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                         </FormikConnect(FieldArrayInner)>
                         <ForwardRef(Grid)
                           item={true}
-                          mb={1}
+                          mb={4}
                           md={12}
                           mt={2}
                         >
@@ -21196,7 +21196,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                 "rowSpacing": 0,
                                 "sm": false,
                                 "sx": Object {
-                                  "mb": 1,
+                                  "mb": 4,
                                   "mt": 2,
                                 },
                                 "wrap": "wrap",
@@ -21207,13 +21207,13 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                             }
                             sx={
                               Object {
-                                "mb": 1,
+                                "mb": 4,
                                 "mt": 2,
                               }
                             }
                           >
                             <div
-                              className="MuiGrid-root MuiGrid-item MuiGrid-grid-md-12 css-gkojpy-MuiGrid-root"
+                              className="MuiGrid-root MuiGrid-item MuiGrid-grid-md-12 css-5brak6-MuiGrid-root"
                             >
                               <ToastMessage
                                 isOpen={false}
@@ -26401,7 +26401,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                     />
                     <ForwardRef(Grid)
                       item={true}
-                      mb={1}
+                      mb={4}
                       md={12}
                       mt={2}
                     >
@@ -26922,7 +26922,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                         />
                         <ForwardRef(Grid)
                           item={true}
-                          mb={1}
+                          mb={4}
                           md={12}
                           mt={2}
                         >
@@ -27299,7 +27299,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                             />,
                             <ForwardRef(Grid)
                               item={true}
-                              mb={1}
+                              mb={4}
                               md={12}
                               mt={2}
                             >
@@ -44802,7 +44802,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                         </FormikConnect(FieldArrayInner)>
                         <ForwardRef(Grid)
                           item={true}
-                          mb={1}
+                          mb={4}
                           md={12}
                           mt={2}
                         >
@@ -44830,7 +44830,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                 "rowSpacing": 0,
                                 "sm": false,
                                 "sx": Object {
-                                  "mb": 1,
+                                  "mb": 4,
                                   "mt": 2,
                                 },
                                 "wrap": "wrap",
@@ -44841,13 +44841,13 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                             }
                             sx={
                               Object {
-                                "mb": 1,
+                                "mb": 4,
                                 "mt": 2,
                               }
                             }
                           >
                             <div
-                              className="MuiGrid-root MuiGrid-item MuiGrid-grid-md-12 css-gkojpy-MuiGrid-root"
+                              className="MuiGrid-root MuiGrid-item MuiGrid-grid-md-12 css-5brak6-MuiGrid-root"
                             >
                               <ToastMessage
                                 isOpen={false}
