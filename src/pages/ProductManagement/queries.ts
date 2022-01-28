@@ -7,7 +7,7 @@ import { pageDataLimit } from "../../utils/constants";
 const getProductTypes = async () => {
     const options: AxiosRequestConfig = {
         method: 'get',
-        url: '/api/product-service/products/productType?countryCode=us'
+        url: '/api/product-service/products/product-groups?countryCode=us'
     };
     const { data } = await axios(options);
     return data;
@@ -21,7 +21,7 @@ const getProductNames = async (productCd: string) => {
     if (productCd) {
         const options: AxiosRequestConfig = {
             method: 'get',
-            url: `/api/product-service/products?countryCode=us&productClassCd=${productCd}`
+            url: `/api/product-service/products?countryCode=us&productGroupCd=${productCd}`
         };
         const { data } = await axios(options);
         return data;

@@ -5,6 +5,7 @@ import { addProductManagementHandler, editProductManagementHandler, getProductDa
 import { getOPISCitiesHandler } from '../pages/OPISCity/mockApi/handlerOPISCityLandingPage';
 import { getAllParkingLotsHandler } from '../pages/ParkingLotsManagement/mockApi/handlerAllParkingLotsLandingPage';
 import { getAttachmentListHandler } from '../pages/Attachments/mockApi/AttachmentLandingPageHandler';
+import { getProductByLotHandler } from '../pages/ProductManagement/mockApi/handler';
 
 export const handlers = [
     productTypesHandler(),
@@ -14,6 +15,7 @@ export const handlers = [
     editProductManagementHandler(),
     getOPISCitiesHandler(),
     getAttachmentListHandler(),
+    getProductByLotHandler(),
     getAllParkingLotsHandler(),
 ];
 
