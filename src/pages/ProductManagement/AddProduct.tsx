@@ -47,6 +47,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
     const isFormValidated = useShowConfirmationDialogBoxStore((state) => state.setFormFieldValue);
     const hideDialogBox = useShowConfirmationDialogBoxStore((state) => state.hideDialogBox);
     const [fetchOPISRetail, setFetchOPISRetail] = useState(false);
+    // const [isSavCancelShown, setSaveCancelShown] = useState(true);
 
     const resetFormFieldValue = useShowConfirmationDialogBoxStore((state) => state.resetFormFieldValue);
     const [apiResposneState, setAPIResponse] = useState(false);
@@ -265,6 +266,13 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
         }
     };
 
+    const handleEditButtonClick = () => {
+        // setEditMode(true);
+        setIsDisabled(false);
+        // setSaveCancelShown(true);
+        // setDisabled(false);
+    };
+
     return (
         <FormikProvider value={formik}>
             <form onSubmit={formik.handleSubmit} className="productForm" onBlur={handleFormDataChange}>
@@ -292,6 +300,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                                         aria-label="edit"
                                         startIcon={<EditIcon />}
                                         disabled={disableAddEditButton}
+                                        onClick={handleEditButtonClick}
                                     >
                                         {t("Edit")}
                                     </Button>
@@ -448,6 +457,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                     </Grid>
                     <Grid item container lg={12} md={12} sm={12} xs={12} px={4} py={4} className="lastItem" >
                         <Grid item lg={12} md={12} sm={12} xs={12} px={4} py={4} textAlign="right">
+                        {/* {isSavCancelShown && <div> */}
                             <Button
                                 types="cancel"
                                 aria-label="cancel"
@@ -466,6 +476,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                             >
                                 {t("buttons.save")}
                             </Button>
+                            {/* </div>} */}
                             <ToastMessage isOpen={apiResposneState} messageType={formStatus.type} onClose={() => { return ''; }} message={formStatus.message} />
                         </Grid>
                     </Grid>
