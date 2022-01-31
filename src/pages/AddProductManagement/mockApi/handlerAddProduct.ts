@@ -7,13 +7,13 @@ export const productTypesHandler = () => {
             ctx.json({
                 data: [
                     {
-                        "productClassCd": "111",
-                        "productClassNm": "Test11 Non-Fuel",
+                        "productGroupCd": "111",
+                        "productGroupNm": "Test11 Non-Fuel",
                         "activeInactiveInd": "Y"
                     },
                     {
-                        "productClassCd": "222",
-                        "productClassNm": "Fuel",
+                        "productGroupCd": "222",
+                        "productGroupNm": "Fuel",
                         "activeInactiveInd": "Y"
                     }
                 ]
@@ -29,14 +29,14 @@ export const productColorsHandler = () => {
             ctx.json({
                 data: [
                     {
-                        "productColorCd": "12",
+                        "productIconCd": "12",
                         "name": "red",
-                        "activeInactiveInd": "Y"
+                        "hex": "Y"
                     },
                     {
                         "productColorCd": "13",
                         "name": "blue",
-                        "activeInactiveInd": "Y"
+                        "hex": "Y"
                     }
                 ]
             })
@@ -73,26 +73,26 @@ export const getProductDataHandler = () => {
         return res(
             ctx.status(200),
             ctx.json({
-                data: {
-                    "productId": "1",
-                    "productName": "test edit Diesel",
-                    "productServiceInd": "Y",
-                    "manualPricing": 3,
-                    "productClass": {
-                        "productClassCd": "12",
-                        "productClassNm": "test edit Non-Fuel",
-                        "activeInactiveInd": "Y"
+                    "data": {
+                        "productCd": "5bfb42d3-be1f-4fd5-8d31-3cf0259ebc45",
+                        "productNm": "test edit Diesel",
+                        "activeInactiveInd": "Y",
+                        "manualPricing": 3,
+                        "countryCode": "us",
+                        "productGroup": {
+                            "productGroupCd": "85ba2673-6c56-440f-8478-0630ebeddab6",
+                            "productGroupNm": "test edit Non-Fuel",
+                            "activeInactiveInd": "Y"
+                        },
+                        "productIcon": {
+                            "productIconCd": "35410964-01a7-44ed-aa28-8f9d9d981861",
+                            "productIconNm": "test edit color Purple",
+                            "productIconHexCode": "#EB8705",
+                            "activeInactiveInd": "Y"
+                        }
                     },
-                    "productColor": {
-                        "productColorCd": "2",
-                        "productColorNm": "test edit color Purple",
-                        "productColorCode": "#641964",
-                        "activeInactiveInd": "Y"
-                    },
-                    "productGroupCd": "3"
-                },
-                "error": null
-            })
+                    "error": null
+                })
         );
     });
 };
