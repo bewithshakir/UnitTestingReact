@@ -177,7 +177,7 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
 
   return (
     <Box display="flex">
-      <Grid container pr={6.25} className="main-area">
+      <Grid container pr={8}>
         <Grid container display="flex" flexGrow={1}>
           <Grid item md={8} lg={9} display="flex" >
             <Grid item pr={2.5}>

@@ -32,7 +32,7 @@ const customerOnboarding: React.FC<CustomerOnboardingProps> = memo(() => {
           >
             <Legend />
           </Grid>
-          <Grid item pl={dis ? 0 : 4} md={10} pt={5} xs={10} className='page-area'>
+          <Grid item pt={5} pl={dis ? 0 : 4} md={dis ? 12 : 10} xs={dis ? 12 : 10} className='page-area'>
             <Suspense fallback={<Loader />}>
               <Outlet />
             </Suspense>
