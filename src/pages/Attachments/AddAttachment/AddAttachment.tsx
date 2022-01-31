@@ -59,7 +59,7 @@ const AddAttachment: React.FC<any> = () => {
         if (rejectedFiles.length) {
             setFailureFiles(rejectedFiles);
             setUploadErrMsg(rejectedFiles[0].errors.map((err: { code: string, message: string }) => ({
-                code: err.code, message: err.code === 'file-too-large' ? `File is larger than ${config.maxAllowedFileSizeBtyes / 1000000} MB` : err.message
+                code: err.code, message: err.code === 'file-too-large' ? `File is larger than ${config.maxAllowedFileSizeMB} MB` : err.message
             }))[0].message);
         }
     }, []);

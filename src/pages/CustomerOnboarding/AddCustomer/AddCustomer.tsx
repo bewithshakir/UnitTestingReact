@@ -74,6 +74,7 @@ const formStatusProps: IFormStatusProps = {
 };
 
 const maxAllowedFileSizeBtyes = 25000000;
+const maxAllowedFileSizeMB = 25;
 
 
 const deleteContact = (index: number, componentArr: any) => {
@@ -265,7 +266,7 @@ const AddCustomer: React.FC<AddCustomerProps> = () => {
         }
         if (rejectedFiles.length) {
             setUploadErrMsg(rejectedFiles[0].errors.map((err: { code: string, message: string }) => ({
-                code: err.code, message: err.code === 'file-too-large' ? `File is larger than ${maxAllowedFileSizeBtyes / 1000000} MB` : err.message
+                code: err.code, message: err.code === 'file-too-large' ? `File is larger than ${maxAllowedFileSizeMB} MB` : err.message
             }))[0].message);
         }
     }, []);

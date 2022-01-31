@@ -9,19 +9,8 @@ export const maskPhoneNumber = (phNumber: string) => {
     return maskedPh ? "(" + maskedPh[1] + ") " + maskedPh[2] + "-" + maskedPh[3] : phNumber;
 };
 
-export const formatFileSizeUnit = (sizeInBytes: number, decimals = 2) => {
-    if (sizeInBytes === 0) return '0 Bytes';
-
-    const k = 1024;
-    const dm = decimals < 0 ? 0 : decimals;
-    const sizeNames = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
-
-    const i = Math.floor(Math.log(sizeInBytes) / Math.log(k));
-    let size:number|string = parseFloat((sizeInBytes / Math.pow(k, i)).toFixed(dm));
-    if(size>=24.5 && size<25){
-        size = size.toFixed(0);
-    }
-    return size + sizeNames[i];
+export const formatFileSizeUnit = (sizeInBytes: number) => {
+    return Math.ceil(sizeInBytes/(1000*1000)) + ' MB';
 };
 
 export const getCheckBoxDisabledByPaymentType = (value: string) => {
