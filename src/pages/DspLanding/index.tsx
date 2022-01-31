@@ -74,6 +74,7 @@ const DspLandingContent: React.FC<ContentProps> = () => {
     switch (action.action) {
       case ACTION_TYPES.EDIT:
         // perform action 
+        navigate(`/customer/${customerId}/dsps/edit/${row.id}`);
         break;
       default: return;
     }

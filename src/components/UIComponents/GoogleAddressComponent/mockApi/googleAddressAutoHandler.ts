@@ -1,6 +1,6 @@
 import { rest } from "msw";
 
-export const FetchFormattedAddressHandler = () => {
+export const getFormattedAddressHandler = () => {
     return rest.get('*/api/customer-service/address/place-detail*', (req, res, ctx) => {
         return res(
             ctx.status(200),
@@ -20,7 +20,7 @@ export const FetchFormattedAddressHandler = () => {
     });
 };
 
-export const FetchGoogleAddressHandler = () => {
+export const getGoogleAddressHandler = () => {
     return rest.get('*/api/customer-service/address/auto-complete*', (req, res, ctx) => {
         return res(
             ctx.status(200),

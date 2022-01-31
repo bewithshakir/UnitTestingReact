@@ -102,14 +102,16 @@ export default function HorizontalBar (props: HorizontalBarProps) {
       navigate('/productManagement');
     } else if (pathname.includes('AddAttachment')) {
       navigate(-1);
-    } else if (pathname.includes('dsps/addDsp')) {
+    }
+    else if (pathname.includes('dsps/addDsp') || pathname.includes('dsps/edit')) {
       navigate(`/customer/${selectedCustomerId}/dsps`, {
         state: {
           customerId: selectedCustomerId,
           customerName: selectedCustomerName
         }
       });
-    } else {
+    }
+    else {
       props.onBack();
     }
   };
@@ -136,6 +138,8 @@ export default function HorizontalBar (props: HorizontalBarProps) {
         return t('productManagement.form.titleEdit');
       case pathname.includes('dsps/addDsp'):
         return t("addDSP.title");
+      case pathname.includes('dsps/edit'):
+        return t("addDSP.form.titleEdit");
       case (pathname.includes('addLot')):
         return t('parkingLot.form.titleAdd');
       case (pathname.includes('viewLot')):
