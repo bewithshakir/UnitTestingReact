@@ -281,12 +281,6 @@ export default function HorizontalBar (props: HorizontalBarProps) {
     }
   }
 
-  // const handleCustomerBack = () => {
-  //   hideDialogBox(false);
-  //   resetFormFieldValue(false);
-  //   navigate(`/customer/viewCustomer/${selectedCustomerId}`);
-  // };
-
   function versionBreadcrumbsMany () {
     return (
       <>
@@ -298,7 +292,7 @@ export default function HorizontalBar (props: HorizontalBarProps) {
             {'Add Lot & Details'}
           </Link>}
           { (pathname.includes('AddAttachment') &&  <span className="breadcrubs-title" >
-          {"Add Attachment"}
+          {"Import Attachment"}
         </span>)}
         </Breadcrumbs>
       </>
