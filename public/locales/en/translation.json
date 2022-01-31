@@ -166,6 +166,7 @@
   "addDSP": {
     "title": "Add DSP",
     "form": {
+      "titleEdit": "Edit DSP",
       "title": "Fill all the mandatory fields",
       "dspName": "DSP Name",
       "contactForm": {

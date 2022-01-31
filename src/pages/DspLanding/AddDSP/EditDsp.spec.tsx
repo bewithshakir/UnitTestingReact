@@ -11,17 +11,18 @@ import { serverMsw } from "../../../setupTests";
 import DiscardChangesDialog from '../../../components/UIComponents/ConfirmationDialog/DiscardChangesDialog.component';
 import AddDSP from "./index";
 
+const mockedNavigate = jest.fn();
 
 jest.mock('react-router-dom', () => ({
     ...jest.requireActual("react-router-dom") as any,
     useNavigate: () => ({
         navigate: ()=> ({
-            to: '/customer/123/dsps/addDsp'
+            to: '/customer/111edit/dsps/edit/222'
         })
     }),
     useParams: () => ({
-        customerId: '111add',
-        dspId: '',
+        customerId: '111edit',
+        dspId: '222',
         params: {
             addedCustomerId: '123'
         }
@@ -50,114 +51,96 @@ function getAllElements (component: any) {
 
 afterEach(cleanup);
 describe('renders AddDSP component for add/edit mode', () => {
+    
     let result: RenderResult;
-    let formElem: HTMLFormElement;
-    let dspNameElem: HTMLInputElement;
-    let contactNmElem: HTMLInputElement;
-    let emailElem: HTMLInputElement;
-    let phoneElem: HTMLInputElement;
-    let addressLine1Elem: HTMLInputElement;
-    let addressLine2Elem: HTMLInputElement;
-    let cityElem: HTMLInputElement;
-    let stateElem: HTMLInputElement;
-    let postalCodeElem: HTMLInputElement;
-    let saveBtn: HTMLButtonElement;
-    let cancelBtn: HTMLButtonElement;
-
     beforeEach(()=> {
         result = renderWithClient(<AddDSP version="Breadcrumbs-Many" />);
-        formElem = getAllElements(result).formElem;
-        dspNameElem = getAllElements(result).dspNameElem;
-        contactNmElem = getAllElements(result).contactNmElem;
-        emailElem = getAllElements(result).emailElem;
-        phoneElem = getAllElements(result).phoneElem;
-        addressLine1Elem = getAllElements(result).addressLine1Elem;
-        addressLine2Elem = getAllElements(result).addressLine2Elem;
-        cityElem = getAllElements(result).cityElem;
-        stateElem = getAllElements(result).stateElem;
-        postalCodeElem = getAllElements(result).postalCodeElem;
-        saveBtn = getAllElements(result).saveBtn;
-        cancelBtn = getAllElements(result).cancelBtn;
     });
 
-    it('renders all mendatory fields with blank value on add mode', ()=> {
-        expect(formElem).toBeInTheDocument();
-        expect(saveBtn).toBeDisabled();
+    it('renders form with data on EDIT mode', async()=> {
+        const {formElem, saveBtn} = getAllElements(result);
+        await waitFor(()=> {
+            expect(formElem).toHaveFormValues({
+                dspName: 'dsp updated1 test'
+            });
+            expect(saveBtn).toBeDisabled();
+        });
     });
+    
 
-    describe('AddDSP screen on add mode', () => {
-        
-        beforeEach(async()=> {
+    describe('AddDSP screen on EDIT mode', () => {
+        it('enable save button when all mendatory fields are filled', async()=> { 
+            const {dspNameElem, saveBtn} = getAllElements(result);
             fireEvent.change(dspNameElem, {target: {value: 'John'}});
-            fireEvent.change(contactNmElem, {target: {value: 'John'}});
-            fireEvent.change(emailElem, {target: {value: 'John@gmail.com'}});
-            fireEvent.change(phoneElem, {target: {value: '1234567890'}});
-
-            fireEvent.change(addressLine1Elem, {target: {value: 'E'}});
-            await selectEvent.select(addressLine1Elem, ["Elkton Test"]);
+            await waitFor(()=> {
+                expect(saveBtn).toBeEnabled();
+            });
         });
 
-        it('enable save button when all mendatory fields are filled', async()=> { 
+        it('show toaster with success message on save button click', async()=> {
+            const {formElem, dspNameElem, saveBtn} = getAllElements(result);
+            
             await waitFor(()=> {
-                expect(addressLine2Elem).toHaveValue('Elkton Test');
-                expect(cityElem).toHaveValue('Elkton');
-                expect(stateElem).toHaveValue('VA');
-                expect(postalCodeElem).toHaveValue('22827');
-
-                userEvent.tab();
-                expect(saveBtn).toBeEnabled();
+                expect(formElem).toHaveFormValues({
+                    dspName: 'dsp updated1 test',
+                    contactNm: 'steve',
+                    email: 'newcustomer@gmail.com',
+                    phone: '8939785301',
+                    addressLine1: 'Houston Court',
+                    addressLine2: 'Houston Ct',
+                    city: 'Saratoga',
+                    state: 'CA',
+                    postalCode: "95070"
+                });
             });
-        }, 8000);
-
-        it('show loader on save button clicked and remove after success', async()=> {
-            await waitFor(()=> {
-                expect(addressLine2Elem).toHaveValue('Elkton Test');
-                expect(cityElem).toHaveValue('Elkton');
-                expect(stateElem).toHaveValue('VA');
-                expect(postalCodeElem).toHaveValue('22827');
-
-                userEvent.tab();
-                expect(saveBtn).toBeEnabled();
-                userEvent.click(saveBtn);
-            });
+            fireEvent.change(dspNameElem, {target: {value: 'John'}});
+            userEvent.click(saveBtn);
             await waitFor(()=> {
                 expect(result.getByText('formStatusProps.success.message')).toBeInTheDocument();
             });
-        }, 6000);
+        });
 
-        it('show toaster with error message on save button clicked', async()=> { 
+        it('show toaster with error message on save button click', async()=> { 
             serverMsw.use(
-                rest.post('*', (req, res, ctx) => {
+                rest.put('*', (req, res, ctx) => {
                     return res(
                         ctx.status(500),
                         ctx.json({
                             data: null,
                             error: {
-                                details: ['fail add dsp']
+                                details: ['fail edit dsp']
                             }
                         })
                     );
                 })
             );
+            
+            const {formElem, dspNameElem, saveBtn} = getAllElements(result);
             await waitFor(()=> {
-                expect(addressLine2Elem).toHaveValue('Elkton Test');
-                expect(cityElem).toHaveValue('Elkton');
-                expect(stateElem).toHaveValue('VA');
-                expect(postalCodeElem).toHaveValue('22827');
-
-                userEvent.tab();
-                expect(saveBtn).toBeEnabled();
-                userEvent.click(saveBtn);
+                expect(formElem).toHaveFormValues({
+                    dspName: 'dsp updated1 test',
+                    contactNm: 'steve',
+                    email: 'newcustomer@gmail.com',
+                    phone: '8939785301',
+                    addressLine1: 'Houston Court',
+                    addressLine2: 'Houston Ct',
+                    city: 'Saratoga',
+                    state: 'CA',
+                    postalCode: "95070"
+                });
             });
+            fireEvent.change(dspNameElem, {target: {value: 'John'}});
+            userEvent.click(saveBtn);
+            
             await waitFor(()=> {
-                expect(result.getByText(/fail add dsp/i)).toBeInTheDocument();
-                expect(saveBtn).toBeDisabled();
+                expect(result.getByText(/fail edit dsp/i)).toBeInTheDocument();
             });
         });
     });
 
     describe('show dialogue of discard', () => {
         it('render discard popup when form is changed', async()=> {
+            const {dspNameElem, cancelBtn} = getAllElements(result);
             fireEvent.change(dspNameElem, {target: {value: 'John'}});
             userEvent.click(cancelBtn);
             let open = false;
