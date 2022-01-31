@@ -131,7 +131,7 @@ describe('AddProduct component', () => {
 
             await waitFor(() => {
                 // result.debug(result.getByTestId('toaster-message'))
-                // expect(result.getByTestId('toaster-message')).toBeInTheDocument()
+                // expect(result.getByTestId('toaster-message')).toBeInTheDocument();
                 expect(result.getByText(/fail add product/i)).toBeInTheDocument();
             });
 

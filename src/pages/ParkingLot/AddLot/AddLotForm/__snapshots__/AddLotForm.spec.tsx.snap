@@ -4784,7 +4784,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                               <ForwardRef(InputLabel)
                                                 aria-labelledby="ADDRESS LINE 1"
                                                 aria-required={true}
-                                                htmlFor="select-label-label"
+                                                htmlFor="select-label"
                                                 shrink={true}
                                                 style={
                                                   Object {
@@ -4810,7 +4810,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                     "IndicatorSeparator": [Function],
                                                   }
                                                 }
-                                                id="select-label"
+                                                inputId="select-label"
                                                 isDisabled={true}
                                                 isMulti={false}
                                                 isSearchable={true}
@@ -4849,7 +4849,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                           <ForwardRef(InputLabel)
                                             aria-labelledby="ADDRESS LINE 1"
                                             aria-required={true}
-                                            htmlFor="select-label-label"
+                                            htmlFor="select-label"
                                             shrink={true}
                                             style={
                                               Object {
@@ -4867,7 +4867,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                 }
                                               }
                                               data-shrink={true}
-                                              htmlFor="select-label-label"
+                                              htmlFor="select-label"
                                               ownerState={
                                                 Object {
                                                   "aria-labelledby": "ADDRESS LINE 1",
@@ -4900,7 +4900,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                     "size": "medium",
                                                     "variant": "outlined",
                                                   },
-                                                  "htmlFor": "select-label-label",
+                                                  "htmlFor": "select-label",
                                                   "required": false,
                                                   "shrink": true,
                                                   "size": "medium",
@@ -4927,7 +4927,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                   }
                                                 }
                                                 data-shrink={true}
-                                                htmlFor="select-label-label"
+                                                htmlFor="select-label"
                                                 style={
                                                   Object {
                                                     "color": "var(--Darkgray)",
@@ -4946,7 +4946,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                     }
                                                   }
                                                   data-shrink={true}
-                                                  htmlFor="select-label-label"
+                                                  htmlFor="select-label"
                                                   ownerState={
                                                     Object {
                                                       "aria-labelledby": "ADDRESS LINE 1",
@@ -4971,7 +4971,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                       "error": false,
                                                       "filled": false,
                                                       "focused": false,
-                                                      "htmlFor": "select-label-label",
+                                                      "htmlFor": "select-label",
                                                       "required": false,
                                                       "style": Object {
                                                         "color": "var(--Darkgray)",
@@ -4989,7 +4989,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                     aria-required={true}
                                                     className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary css-1kty9di-MuiFormLabel-root-MuiInputLabel-root"
                                                     data-shrink={true}
-                                                    htmlFor="select-label-label"
+                                                    htmlFor="select-label"
                                                     style={
                                                       Object {
                                                         "color": "var(--Darkgray)",
@@ -5018,7 +5018,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                 "IndicatorSeparator": [Function],
                                               }
                                             }
-                                            id="select-label"
+                                            inputId="select-label"
                                             isDisabled={true}
                                             isMulti={false}
                                             isSearchable={true}
@@ -5056,7 +5056,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                               formatGroupLabel={[Function]}
                                               getOptionLabel={[Function]}
                                               getOptionValue={[Function]}
-                                              id="select-label"
+                                              inputId="select-label"
                                               inputValue=""
                                               isDisabled={true}
                                               isLoading={false}
@@ -5104,7 +5104,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                 hasValue={true}
                                                 innerProps={
                                                   Object {
-                                                    "id": "select-label",
+                                                    "id": undefined,
                                                     "onKeyDown": [Function],
                                                   }
                                                 }
@@ -5134,7 +5134,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                     "formatGroupLabel": [Function],
                                                     "getOptionLabel": [Function],
                                                     "getOptionValue": [Function],
-                                                    "id": "select-label",
+                                                    "inputId": "select-label",
                                                     "inputValue": "",
                                                     "isDisabled": true,
                                                     "isLoading": false,
@@ -5216,12 +5216,10 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                       "position": "relative",
                                                     }
                                                   }
-                                                  id="select-label"
                                                   onKeyDown={[Function]}
                                                 >
                                                   <div
                                                     className="react-select-container react-select--is-disabled css-3iigni-container"
-                                                    id="select-label"
                                                     onKeyDown={[Function]}
                                                   >
                                                     <LiveRegion
@@ -5259,7 +5257,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                           "formatGroupLabel": [Function],
                                                           "getOptionLabel": [Function],
                                                           "getOptionValue": [Function],
-                                                          "id": "select-label",
+                                                          "inputId": "select-label",
                                                           "inputValue": "",
                                                           "isDisabled": true,
                                                           "isLoading": false,
@@ -5427,7 +5425,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                           "formatGroupLabel": [Function],
                                                           "getOptionLabel": [Function],
                                                           "getOptionValue": [Function],
-                                                          "id": "select-label",
+                                                          "inputId": "select-label",
                                                           "inputValue": "",
                                                           "isDisabled": true,
                                                           "isLoading": false,
@@ -5563,7 +5561,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                                 "formatGroupLabel": [Function],
                                                                 "getOptionLabel": [Function],
                                                                 "getOptionValue": [Function],
-                                                                "id": "select-label",
+                                                                "inputId": "select-label",
                                                                 "inputValue": "",
                                                                 "isDisabled": true,
                                                                 "isLoading": false,
@@ -5690,7 +5688,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                                       "formatGroupLabel": [Function],
                                                                       "getOptionLabel": [Function],
                                                                       "getOptionValue": [Function],
-                                                                      "id": "select-label",
+                                                                      "inputId": "select-label",
                                                                       "inputValue": "",
                                                                       "isDisabled": true,
                                                                       "isLoading": false,
@@ -5797,7 +5795,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                                   getStyles={[Function]}
                                                                   getValue={[Function]}
                                                                   hasValue={true}
-                                                                  id="react-select-2-input"
+                                                                  id="select-label"
                                                                   innerRef={[Function]}
                                                                   isDisabled={true}
                                                                   isHidden={false}
@@ -5829,7 +5827,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                                       "formatGroupLabel": [Function],
                                                                       "getOptionLabel": [Function],
                                                                       "getOptionValue": [Function],
-                                                                      "id": "select-label",
+                                                                      "inputId": "select-label",
                                                                       "inputValue": "",
                                                                       "isDisabled": true,
                                                                       "isLoading": false,
@@ -5949,7 +5947,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                                         autoCorrect="off"
                                                                         className="react-select__input"
                                                                         disabled={true}
-                                                                        id="react-select-2-input"
+                                                                        id="select-label"
                                                                         onBlur={[Function]}
                                                                         onChange={[Function]}
                                                                         onFocus={[Function]}
@@ -6012,7 +6010,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                                 "formatGroupLabel": [Function],
                                                                 "getOptionLabel": [Function],
                                                                 "getOptionValue": [Function],
-                                                                "id": "select-label",
+                                                                "inputId": "select-label",
                                                                 "inputValue": "",
                                                                 "isDisabled": true,
                                                                 "isLoading": false,
@@ -6130,7 +6128,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                                       "formatGroupLabel": [Function],
                                                                       "getOptionLabel": [Function],
                                                                       "getOptionValue": [Function],
-                                                                      "id": "select-label",
+                                                                      "inputId": "select-label",
                                                                       "inputValue": "",
                                                                       "isDisabled": true,
                                                                       "isLoading": false,
@@ -6238,7 +6236,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                                       "formatGroupLabel": [Function],
                                                                       "getOptionLabel": [Function],
                                                                       "getOptionValue": [Function],
-                                                                      "id": "select-label",
+                                                                      "inputId": "select-label",
                                                                       "inputValue": "",
                                                                       "isDisabled": true,
                                                                       "isLoading": false,
@@ -28418,7 +28416,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                               <ForwardRef(InputLabel)
                                                 aria-labelledby="ADDRESS LINE 1"
                                                 aria-required={true}
-                                                htmlFor="select-label-label"
+                                                htmlFor="select-label"
                                                 shrink={true}
                                                 style={
                                                   Object {
@@ -28444,7 +28442,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                     "IndicatorSeparator": [Function],
                                                   }
                                                 }
-                                                id="select-label"
+                                                inputId="select-label"
                                                 isDisabled={true}
                                                 isMulti={false}
                                                 isSearchable={true}
@@ -28483,7 +28481,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                           <ForwardRef(InputLabel)
                                             aria-labelledby="ADDRESS LINE 1"
                                             aria-required={true}
-                                            htmlFor="select-label-label"
+                                            htmlFor="select-label"
                                             shrink={true}
                                             style={
                                               Object {
@@ -28501,7 +28499,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                 }
                                               }
                                               data-shrink={true}
-                                              htmlFor="select-label-label"
+                                              htmlFor="select-label"
                                               ownerState={
                                                 Object {
                                                   "aria-labelledby": "ADDRESS LINE 1",
@@ -28534,7 +28532,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                     "size": "medium",
                                                     "variant": "outlined",
                                                   },
-                                                  "htmlFor": "select-label-label",
+                                                  "htmlFor": "select-label",
                                                   "required": false,
                                                   "shrink": true,
                                                   "size": "medium",
@@ -28561,7 +28559,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                   }
                                                 }
                                                 data-shrink={true}
-                                                htmlFor="select-label-label"
+                                                htmlFor="select-label"
                                                 style={
                                                   Object {
                                                     "color": "var(--Darkgray)",
@@ -28580,7 +28578,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                     }
                                                   }
                                                   data-shrink={true}
-                                                  htmlFor="select-label-label"
+                                                  htmlFor="select-label"
                                                   ownerState={
                                                     Object {
                                                       "aria-labelledby": "ADDRESS LINE 1",
@@ -28605,7 +28603,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                       "error": false,
                                                       "filled": false,
                                                       "focused": false,
-                                                      "htmlFor": "select-label-label",
+                                                      "htmlFor": "select-label",
                                                       "required": false,
                                                       "style": Object {
                                                         "color": "var(--Darkgray)",
@@ -28623,7 +28621,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                     aria-required={true}
                                                     className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary css-1kty9di-MuiFormLabel-root-MuiInputLabel-root"
                                                     data-shrink={true}
-                                                    htmlFor="select-label-label"
+                                                    htmlFor="select-label"
                                                     style={
                                                       Object {
                                                         "color": "var(--Darkgray)",
@@ -28652,7 +28650,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                 "IndicatorSeparator": [Function],
                                               }
                                             }
-                                            id="select-label"
+                                            inputId="select-label"
                                             isDisabled={true}
                                             isMulti={false}
                                             isSearchable={true}
@@ -28690,7 +28688,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                               formatGroupLabel={[Function]}
                                               getOptionLabel={[Function]}
                                               getOptionValue={[Function]}
-                                              id="select-label"
+                                              inputId="select-label"
                                               inputValue=""
                                               isDisabled={true}
                                               isLoading={false}
@@ -28738,7 +28736,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                 hasValue={true}
                                                 innerProps={
                                                   Object {
-                                                    "id": "select-label",
+                                                    "id": undefined,
                                                     "onKeyDown": [Function],
                                                   }
                                                 }
@@ -28768,7 +28766,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                     "formatGroupLabel": [Function],
                                                     "getOptionLabel": [Function],
                                                     "getOptionValue": [Function],
-                                                    "id": "select-label",
+                                                    "inputId": "select-label",
                                                     "inputValue": "",
                                                     "isDisabled": true,
                                                     "isLoading": false,
@@ -28850,12 +28848,10 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                       "position": "relative",
                                                     }
                                                   }
-                                                  id="select-label"
                                                   onKeyDown={[Function]}
                                                 >
                                                   <div
                                                     className="react-select-container react-select--is-disabled css-3iigni-container"
-                                                    id="select-label"
                                                     onKeyDown={[Function]}
                                                   >
                                                     <LiveRegion
@@ -28893,7 +28889,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                           "formatGroupLabel": [Function],
                                                           "getOptionLabel": [Function],
                                                           "getOptionValue": [Function],
-                                                          "id": "select-label",
+                                                          "inputId": "select-label",
                                                           "inputValue": "",
                                                           "isDisabled": true,
                                                           "isLoading": false,
@@ -29061,7 +29057,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                           "formatGroupLabel": [Function],
                                                           "getOptionLabel": [Function],
                                                           "getOptionValue": [Function],
-                                                          "id": "select-label",
+                                                          "inputId": "select-label",
                                                           "inputValue": "",
                                                           "isDisabled": true,
                                                           "isLoading": false,
@@ -29197,7 +29193,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                                 "formatGroupLabel": [Function],
                                                                 "getOptionLabel": [Function],
                                                                 "getOptionValue": [Function],
-                                                                "id": "select-label",
+                                                                "inputId": "select-label",
                                                                 "inputValue": "",
                                                                 "isDisabled": true,
                                                                 "isLoading": false,
@@ -29324,7 +29320,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                                       "formatGroupLabel": [Function],
                                                                       "getOptionLabel": [Function],
                                                                       "getOptionValue": [Function],
-                                                                      "id": "select-label",
+                                                                      "inputId": "select-label",
                                                                       "inputValue": "",
                                                                       "isDisabled": true,
                                                                       "isLoading": false,
@@ -29431,7 +29427,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                                   getStyles={[Function]}
                                                                   getValue={[Function]}
                                                                   hasValue={true}
-                                                                  id="react-select-10-input"
+                                                                  id="select-label"
                                                                   innerRef={[Function]}
                                                                   isDisabled={true}
                                                                   isHidden={false}
@@ -29463,7 +29459,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                                       "formatGroupLabel": [Function],
                                                                       "getOptionLabel": [Function],
                                                                       "getOptionValue": [Function],
-                                                                      "id": "select-label",
+                                                                      "inputId": "select-label",
                                                                       "inputValue": "",
                                                                       "isDisabled": true,
                                                                       "isLoading": false,
@@ -29583,7 +29579,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                                         autoCorrect="off"
                                                                         className="react-select__input"
                                                                         disabled={true}
-                                                                        id="react-select-10-input"
+                                                                        id="select-label"
                                                                         onBlur={[Function]}
                                                                         onChange={[Function]}
                                                                         onFocus={[Function]}
@@ -29646,7 +29642,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                                 "formatGroupLabel": [Function],
                                                                 "getOptionLabel": [Function],
                                                                 "getOptionValue": [Function],
-                                                                "id": "select-label",
+                                                                "inputId": "select-label",
                                                                 "inputValue": "",
                                                                 "isDisabled": true,
                                                                 "isLoading": false,
@@ -29764,7 +29760,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                                       "formatGroupLabel": [Function],
                                                                       "getOptionLabel": [Function],
                                                                       "getOptionValue": [Function],
-                                                                      "id": "select-label",
+                                                                      "inputId": "select-label",
                                                                       "inputValue": "",
                                                                       "isDisabled": true,
                                                                       "isLoading": false,
@@ -29872,7 +29868,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                                       "formatGroupLabel": [Function],
                                                                       "getOptionLabel": [Function],
                                                                       "getOptionValue": [Function],
-                                                                      "id": "select-label",
+                                                                      "inputId": "select-label",
                                                                       "inputValue": "",
                                                                       "isDisabled": true,
                                                                       "isLoading": false,
