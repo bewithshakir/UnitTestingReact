@@ -70,8 +70,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
         productNm: "",
         manualPriceAmt: 0,
         addedPriceAmt: 0,
-        discountPriceAmt: 0,
-        timeSlot: { label: "", value: "" },
+        discountPriceAmt: 0
 
     });
     const formik = useFormik({
@@ -97,11 +96,33 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
 
     };
 
-    const onAddProductSuccess = () => {
+    const onAddProductSuccess = (data:any) => {
+        if(editMode){
+            if (data?.data) {
+                const lotProduct = data.data[0];
+                setApplicableProductId(lotProduct?.applicableProductId);
+                setInitialFormikValues({
+                    productType: initialFormikValues.productType,
+                    masterProductName: initialFormikValues.masterProductName,
+                    pricingModel: initialFormikValues.pricingModel,
+                    productNm: lotProduct.productNm,
+                    manualPriceAmt: lotProduct.manualPriceAmt,
+                    addedPriceAmt: lotProduct.addedPriceAmt,
+                    discountPriceAmt: lotProduct.discountPriceAmt
+                });
+            }
+            setIsDisabled(true);
+            setSaveCancelShown(false);
+        }
 
         hideDialogBox(false);
         setAPIResponse(true);
-        setFormStatus(formStatusProps.success);
+        if(editMode){
+            setFormStatus(formStatusProps.editSuccess);
+        }else{
+            setFormStatus(formStatusProps.success);
+        }
+        
         setProductNames([]);
         reloadSibling && reloadSibling(new Date());
         setTimeout(() => {
@@ -153,7 +174,6 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
         formik.setFieldValue('manualPriceAmt', 0);
         formik.setFieldValue('addedPriceAmt', 0);
         formik.setFieldValue('discountPriceAmt', 0);
-        formik.setFieldValue('timeSlot', { label: "", value: "" });
     };
 
     const disableSubmitBtn = () => {
@@ -205,7 +225,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
     const onGetProductSuccess = (data: any) => {
         if (data) {
             if (data?.data?.lotProduct) {
-                const lotProduct = data.data.lotProduct;
+                const lotProduct = data.data.lotProduct;                
                 setInitialFormikValues({
                     productType: { label: lotProduct?.productType?.productGroupNm, value: lotProduct?.productType?.productGroupCd },
                     masterProductName: { label: lotProduct?.masterProduct?.productName, value: lotProduct?.masterProduct?.productId },
@@ -213,8 +233,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                     productNm: lotProduct.productNm,
                     manualPriceAmt: lotProduct.manualPriceAmt,
                     addedPriceAmt: lotProduct.addedPriceAmt,
-                    discountPriceAmt: lotProduct.discountPriceAmt,
-                    timeSlot: { label: "", value: "" },
+                    discountPriceAmt: lotProduct.discountPriceAmt
                 });
                 setApplicableProductId(lotProduct?.applicableProductId);
                 setIsDisabled(true);
@@ -296,9 +315,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
             productNm: "",
             manualPriceAmt: 0,
             addedPriceAmt: 0,
-            discountPriceAmt: 0,
-            timeSlot: { label: "", value: "" },
-
+            discountPriceAmt: 0
         });
     };
 
@@ -460,27 +477,6 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                                         value={totalPrice}
                                         disabled={true}
                                     />
-                                </Grid>
-                                <Grid item lg={12} md={12} sm={12} xs={12} mx={4}>
-                                    <hr></hr>
-                                </Grid>
-                                <Grid item lg={5} md={8} sm={8} xs={8} mx={4} my={1} >
-                                    <Select
-                                        id='timeSlot'
-                                        name='timeSlot'
-                                        label={t("addProductFormLabels.timeslotlabel")}
-                                        value={formik.values.timeSlot}
-                                        placeholder='Choose Time Slot'
-                                        items={[]}
-                                        helperText={(formik.touched.timeSlot && formik.errors.timeSlot) ? formik.errors.timeSlot : undefined}
-                                        error={(formik.touched.timeSlot && formik.errors.timeSlot) ? true : false}
-                                        onChange={formik.setFieldValue}
-                                        onBlur={() => { formik.setFieldTouched("timeSlot"); formik.validateField("timeSlot"); }}
-                                        isDisabled={isDisabled}
-                                    />
-                                </Grid>
-                                <Grid item lg={12} md={12} sm={12} xs={12} mx={4}>
-
                                 </Grid>
                             </>
                         )}
