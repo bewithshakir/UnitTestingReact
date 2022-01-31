@@ -4,12 +4,7 @@ import TaxModel from '../../models/TaxModel';
 import ActionsMenu from '../../components/UIComponents/Menu/ActionsMenu.component';
 import SortbyMenu from '../../components/UIComponents/Menu/SortbyMenu.component';
 import { FuelTax } from './config';
-import { act, renderHook } from "@testing-library/react-hooks";
-import { rest } from "msw";
-import { serverMsw } from "../../setupTests";
-import { createWrapper } from "../../tests/utils";
-// import FuelTaxList from './index';
-import { useFuelTaxList } from './queries';
+
 
 
 jest.mock("react-query", () => {
@@ -82,35 +77,5 @@ describe('Given Sortby Menu on FuelTax Landing Page-', () => {
         expect(FuelTaxSortbyMenu.find('.sortby-popper').exists()).toBe(true);
     });
 
-});
-
-describe('GetFuelTaxList', () => {
-    it('Success returns data', async () => {
-        const { result, waitFor } = renderHook(() => useFuelTaxList('', { sortBy: "", order: "" }, {}), {
-            wrapper: createWrapper()
-        });
-        act(() => {
-            result.current.fetchNextPage();
-        });
-        await waitFor(() => {
-            return result.current.isSuccess;
-        });
-        expect(result.current.status).toBe('success');
-    });
-
-    it('fail to get data', async () => {
-        serverMsw.use(
-            rest.get('*', (req, res, ctx) => res(ctx.status(500)))
-        );
-        const { result, waitFor } = renderHook(() => useFuelTaxList('9999', { sortBy: "", order: "" }, {}), {
-            wrapper: createWrapper()
-        });
-        act(() => {
-            result.current.fetchNextPage();
-        });
-
-        await waitFor(() => result.current.isError);
-        expect(result.current.error).toBeDefined();
-    });
 });
 
