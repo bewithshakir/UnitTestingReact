@@ -14,11 +14,14 @@ export const formatFileSizeUnit = (sizeInBytes: number, decimals = 2) => {
 
     const k = 1024;
     const dm = decimals < 0 ? 0 : decimals;
-    const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+    const sizeNames = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
 
     const i = Math.floor(Math.log(sizeInBytes) / Math.log(k));
-
-    return parseFloat((sizeInBytes / Math.pow(k, i)).toFixed(dm)) + sizes[i];
+    let size:number|string = parseFloat((sizeInBytes / Math.pow(k, i)).toFixed(dm));
+    if(size>=24.5 && size<25){
+        size = size.toFixed(0);
+    }
+    return size + sizeNames[i];
 };
 
 export const getCheckBoxDisabledByPaymentType = (value: string) => {
