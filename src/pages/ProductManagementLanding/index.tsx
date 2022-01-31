@@ -69,7 +69,7 @@ const ProductManagementContent: React.FC<ProductManagementContentProps> = memo((
     switch (action.action) {
       case ROW_ACTION_TYPES.EDIT:
         // perform action
-        navigate(`/productManagement/edit/${row.productId}`);
+        navigate(`/productManagement/edit/${row.productCd}`);
         break;
       default: return;
     }

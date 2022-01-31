@@ -1,5 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+<<<<<<< HEAD
 exports[`FuelTax Landing Page Fuel List is rendering 1`] = `
 <ForwardRef(Box)
   display="flex"
@@ -366,6 +367,8 @@ exports[`FuelTax Landing Page Fuel List is rendering 1`] = `
 </ForwardRef(Box)>
 `;
 
+=======
+>>>>>>> 82a9d486b88534a162b0e8440b50c80f36cecd87
 exports[`Given Bruger Menu on FuelTax Landing Page Render Bruger Menu 1`] = `
 <div>
   <WithStyles(ForwardRef(Button))
@@ -395,6 +398,7 @@ exports[`Given Bruger Menu on FuelTax Landing Page Render Bruger Menu 1`] = `
 </div>
 `;
 
+<<<<<<< HEAD
 exports[`Given Search FuelTax Landing Page Show Fuel List as per searched value 1`] = `
 <ForwardRef(Box)
   display="flex"
@@ -761,6 +765,8 @@ exports[`Given Search FuelTax Landing Page Show Fuel List as per searched value 
 </ForwardRef(Box)>
 `;
 
+=======
+>>>>>>> 82a9d486b88534a162b0e8440b50c80f36cecd87
 exports[`Given Sortby Menu on FuelTax Landing Page- Render Sortby Menu 1`] = `
 <div>
   <WithStyles(ForwardRef(Button))

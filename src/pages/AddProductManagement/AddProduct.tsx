@@ -90,21 +90,21 @@ const AddProduct: React.FC<AddProductProps> = memo(() => {
             if (response?.data) {
                 const finalData = {
                     countryCode: 'us',
-                    productName: response.data.productName,
+                    productName: response.data.productNm,
                     productType: {
-                        value: response.data.productClass.productClassCd,
-                        label: response.data.productClass.productClassNm
+                        value: response.data.productGroup.productGroupCd,
+                        label: response.data.productGroup.productGroupNm
                     },
                     productColor: {
-                        value: response.data.productColor.productColorCd,
-                        label: response.data.productColor.productColorNm,
-                        icon: getProductIcon(response.data.productColor.productColorNm)
+                        value: response.data.productIcon.productIconCd,
+                        label: response.data.productIcon.productIconNm,
+                        icon: getProductIcon(response.data.productIcon.productIconNm)
                     },
-                    productStatus: productStatusList.filter((pObj) => pObj.value === response.data.productServiceInd)[0],
+                    productStatus: productStatusList.filter((pObj) => pObj.value === response.data.activeInactiveInd)[0],
                     productPricing: response.data.manualPricing || 0
                 };
                 populateDataInAllFields(finalData);
-                setProductGroupCd(response.data.productGroupCd);
+                setProductGroupCd(response.data.productCd);
                 setEditMode(true);
             }
         } catch {

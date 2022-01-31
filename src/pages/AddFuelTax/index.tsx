@@ -203,7 +203,7 @@ const AddFuelTax: React.FC<AddFuelTaxProps> = memo(() => {
         formik.setFieldValue('InspFuelRate', formData.miscInspFuelTax);
         formik.setFieldValue('miscLocalFuelRate', formData.miscLocalFuelTax);
         formik.setFieldValue('loadFuel', formData.miscLoadFuelTax);
-        formik.setFieldValue('fuelType', { label: formData.saleableProductNm, value: formData.saleableProductNm });
+        formik.setFieldValue('fuelType', { label: formData.productNm, value: formData.productNm });
         formik.setFieldValue('startDate', formData.startDate);
         formik.setFieldValue('endDate', formData.endDate);
         formik.setFieldValue('countryCd', 'us');
