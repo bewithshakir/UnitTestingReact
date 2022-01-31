@@ -11,7 +11,6 @@ import { serverMsw } from "../../../setupTests";
 import DiscardChangesDialog from '../../../components/UIComponents/ConfirmationDialog/DiscardChangesDialog.component';
 import AddDSP from "./index";
 
-const mockedNavigate = jest.fn();
 
 jest.mock('react-router-dom', () => ({
     ...jest.requireActual("react-router-dom") as any,

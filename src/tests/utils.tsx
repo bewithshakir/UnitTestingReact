@@ -6,7 +6,7 @@ import { getOPISCitiesHandler } from '../pages/OPISCity/mockApi/handlerOPISCityL
 import { getAllParkingLotsHandler } from '../pages/ParkingLotsManagement/mockApi/handlerAllParkingLotsLandingPage';
 import { getAttachmentListHandler } from '../pages/Attachments/mockApi/AttachmentLandingPageHandler';
 import { addDspHandler, getDspDataHandler, editDspHandler } from "../pages/DspLanding/AddDSP/mockApi/handlerAddDsp";
-import { FetchFormattedAddressHandler, FetchGoogleAddressHandler } from "../components/UIComponents/GoogleAddressComponent/mockApi/googleAddressAutoHandler";
+import { getFormattedAddressHandler, getGoogleAddressHandler } from "../components/UIComponents/GoogleAddressComponent/mockApi/googleAddressAutoHandler";
 import { getProductByLotHandler } from '../pages/ProductManagement/mockApi/handler';
 
 export const handlers = [
@@ -19,8 +19,8 @@ export const handlers = [
     getAttachmentListHandler(),
     getProductByLotHandler(),
     getAllParkingLotsHandler(),
-    FetchFormattedAddressHandler(),
-    FetchGoogleAddressHandler(),
+    getFormattedAddressHandler(),
+    getGoogleAddressHandler(),
     addDspHandler(),
     getDspDataHandler(),
     editDspHandler()
