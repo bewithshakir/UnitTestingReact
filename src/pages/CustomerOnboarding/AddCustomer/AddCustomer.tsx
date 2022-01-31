@@ -28,7 +28,7 @@ import FileUploadComponent from '../../../components/UIComponents/FileUpload/Fil
 
 const initialValues = new CustomerModel();
 
-function getTokenApplicable(Obj: any) {
+function getTokenApplicable (Obj: any) {
     const temp: any = [];
     Object.entries(Obj).forEach(obj => {
         if (obj[1]) {
@@ -469,7 +469,7 @@ const AddCustomer: React.FC<AddCustomerProps> = () => {
 
     const isFormFieldChange = () => formik.dirty || validFiles.length > 0 || uploadErroMsg !== "";
 
-    function onClickBack() {
+    function onClickBack () {
         if ((isFormFieldChange() && !isEditShown) || (isFormFieldChange() && isEditMode)) {
             showDialogBox(true);
         } else {
@@ -504,7 +504,7 @@ const AddCustomer: React.FC<AddCustomerProps> = () => {
         return buttonEnable === false;
     };
 
-    function handleGoogleAddressChange(addressObj: any) {
+    function handleGoogleAddressChange (addressObj: any) {
         formik.setFieldValue('addressLine1', addressObj.addressLine1);
         formik.setFieldValue('addressLine2', addressObj.addressLine2);
         formik.setFieldValue('city', addressObj.city);
@@ -512,7 +512,7 @@ const AddCustomer: React.FC<AddCustomerProps> = () => {
         formik.setFieldValue('postalCode', addressObj.postalCode);
     }
 
-    function handleGoogleAddressBlur() {
+    function handleGoogleAddressBlur () {
         formik.setFieldTouched("addressLine1");
         formik.validateField("addressLine1");
         formik.setFieldTouched("addressLine2");
@@ -1160,7 +1160,7 @@ const AddCustomer: React.FC<AddCustomerProps> = () => {
                                         </div>
                                     </Box>
                                 </Grid>
-                                <Grid item md={12} mt={2} mb={1}>
+                                <Grid item md={12} mt={2} mb={4}>
                                     {isSavCancelShown && <Box className="form-action-section">
                                         <Button
                                             types="cancel"

@@ -75,7 +75,6 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -281,7 +280,6 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -745,8 +743,8 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
           <ForwardRef(Grid)
             className="main-area"
             container={true}
-            pl={6.25}
-            pr={6.25}
+            pl={8}
+            pr={8}
           >
             <MuiGridRoot
               as="div"
@@ -1033,8 +1031,8 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                   "rowSpacing": 0,
                   "sm": false,
                   "sx": Object {
-                    "pl": 6.25,
-                    "pr": 6.25,
+                    "pl": 8,
+                    "pr": 8,
                   },
                   "wrap": "wrap",
                   "xl": false,
@@ -1044,13 +1042,13 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
               }
               sx={
                 Object {
-                  "pl": 6.25,
-                  "pr": 6.25,
+                  "pl": 8,
+                  "pr": 8,
                 }
               }
             >
               <div
-                className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-undefined main-area css-1gehmkk-MuiGrid-root"
+                className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-undefined main-area css-n8sxft-MuiGrid-root"
               >
                 <ForwardRef(Grid)
                   container={true}
@@ -4228,7 +4226,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                   stickyHeader={true}
                                   sx={
                                     Object {
-                                      "minWidth": "1600px",
+                                      "minWidth": "1200px",
                                     }
                                   }
                                 >
@@ -4552,7 +4550,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                 stickyHeader={true}
                                 sx={
                                   Object {
-                                    "minWidth": "1600px",
+                                    "minWidth": "1200px",
                                   }
                                 }
                               >
@@ -4874,20 +4872,20 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                       "size": "medium",
                                       "stickyHeader": true,
                                       "sx": Object {
-                                        "minWidth": "1600px",
+                                        "minWidth": "1200px",
                                       },
                                     }
                                   }
                                   role={null}
                                   sx={
                                     Object {
-                                      "minWidth": "1600px",
+                                      "minWidth": "1200px",
                                     }
                                   }
                                 >
                                   <table
                                     aria-labelledby="tableTitle"
-                                    className="MuiTable-root MuiTable-stickyHeader css-12exmm-MuiTable-root"
+                                    className="MuiTable-root MuiTable-stickyHeader css-1dzs180-MuiTable-root"
                                     role={null}
                                   >
                                     <EnhancedGridHead
@@ -5005,30 +5003,35 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                               "children": <ForwardRef(TableRow)>
                                                 <ForwardRef(TableCell)
                                                   className="header-options"
+                                                  size="small"
                                                   sortDirection={false}
                                                 >
                                                   LOT NAME
                                                 </ForwardRef(TableCell)>
                                                 <ForwardRef(TableCell)
                                                   className="header-options"
+                                                  size="small"
                                                   sortDirection={false}
                                                 >
                                                   LOT ID
                                                 </ForwardRef(TableCell)>
                                                 <ForwardRef(TableCell)
                                                   className="header-options"
+                                                  size="small"
                                                   sortDirection={false}
                                                 >
                                                   CUSTOMER NAME
                                                 </ForwardRef(TableCell)>
                                                 <ForwardRef(TableCell)
                                                   className="header-options"
+                                                  size="small"
                                                   sortDirection={false}
                                                 >
                                                   LOT CONTACT
                                                 </ForwardRef(TableCell)>
                                                 <ForwardRef(TableCell)
                                                   className="header-options"
+                                                  size="small"
                                                   sortDirection={false}
                                                 >
                                                   STREET ADDRESS
@@ -5036,6 +5039,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                 <ForwardRef(TableCell)
                                                   align="left"
                                                   className="header-options"
+                                                  size="small"
                                                   sortDirection={false}
                                                 >
                                                   CITY
@@ -5043,36 +5047,42 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                 <ForwardRef(TableCell)
                                                   align="left"
                                                   className="header-options"
+                                                  size="small"
                                                   sortDirection={false}
                                                 >
                                                   STATE
                                                 </ForwardRef(TableCell)>
                                                 <ForwardRef(TableCell)
                                                   className="header-options"
+                                                  size="small"
                                                   sortDirection={false}
                                                 >
                                                   ZIP
                                                 </ForwardRef(TableCell)>
                                                 <ForwardRef(TableCell)
                                                   className="header-options"
+                                                  size="small"
                                                   sortDirection={false}
                                                 >
                                                   RACK UPDATE
                                                 </ForwardRef(TableCell)>
                                                 <ForwardRef(TableCell)
                                                   className="header-options"
+                                                  size="small"
                                                   sortDirection={false}
                                                 >
                                                   WALLET STATUS
                                                 </ForwardRef(TableCell)>
                                                 <ForwardRef(TableCell)
                                                   className="header-options"
+                                                  size="small"
                                                   sortDirection={false}
                                                 >
                                                   FUEL
                                                 </ForwardRef(TableCell)>
                                                 <ForwardRef(TableCell)
                                                   className="header-options"
+                                                  size="small"
                                                   sortDirection={false}
                                                 >
                                                   VEHICLES
@@ -5111,30 +5121,35 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                       Array [
                                                         <ForwardRef(TableCell)
                                                           className="header-options"
+                                                          size="small"
                                                           sortDirection={false}
                                                         >
                                                           LOT NAME
                                                         </ForwardRef(TableCell)>,
                                                         <ForwardRef(TableCell)
                                                           className="header-options"
+                                                          size="small"
                                                           sortDirection={false}
                                                         >
                                                           LOT ID
                                                         </ForwardRef(TableCell)>,
                                                         <ForwardRef(TableCell)
                                                           className="header-options"
+                                                          size="small"
                                                           sortDirection={false}
                                                         >
                                                           CUSTOMER NAME
                                                         </ForwardRef(TableCell)>,
                                                         <ForwardRef(TableCell)
                                                           className="header-options"
+                                                          size="small"
                                                           sortDirection={false}
                                                         >
                                                           LOT CONTACT
                                                         </ForwardRef(TableCell)>,
                                                         <ForwardRef(TableCell)
                                                           className="header-options"
+                                                          size="small"
                                                           sortDirection={false}
                                                         >
                                                           STREET ADDRESS
@@ -5142,6 +5157,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                         <ForwardRef(TableCell)
                                                           align="left"
                                                           className="header-options"
+                                                          size="small"
                                                           sortDirection={false}
                                                         >
                                                           CITY
@@ -5149,36 +5165,42 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                         <ForwardRef(TableCell)
                                                           align="left"
                                                           className="header-options"
+                                                          size="small"
                                                           sortDirection={false}
                                                         >
                                                           STATE
                                                         </ForwardRef(TableCell)>,
                                                         <ForwardRef(TableCell)
                                                           className="header-options"
+                                                          size="small"
                                                           sortDirection={false}
                                                         >
                                                           ZIP
                                                         </ForwardRef(TableCell)>,
                                                         <ForwardRef(TableCell)
                                                           className="header-options"
+                                                          size="small"
                                                           sortDirection={false}
                                                         >
                                                           RACK UPDATE
                                                         </ForwardRef(TableCell)>,
                                                         <ForwardRef(TableCell)
                                                           className="header-options"
+                                                          size="small"
                                                           sortDirection={false}
                                                         >
                                                           WALLET STATUS
                                                         </ForwardRef(TableCell)>,
                                                         <ForwardRef(TableCell)
                                                           className="header-options"
+                                                          size="small"
                                                           sortDirection={false}
                                                         >
                                                           FUEL
                                                         </ForwardRef(TableCell)>,
                                                         <ForwardRef(TableCell)
                                                           className="header-options"
+                                                          size="small"
                                                           sortDirection={false}
                                                         >
                                                           VEHICLES
@@ -5206,12 +5228,13 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                   <ForwardRef(TableCell)
                                                     className="header-options"
                                                     key="deliveryLocationNm"
+                                                    size="small"
                                                     sortDirection={false}
                                                   >
                                                     <MuiTableCellRoot
                                                       aria-sort={null}
                                                       as="th"
-                                                      className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeMedium header-options"
+                                                      className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeSmall header-options"
                                                       ownerState={
                                                         Object {
                                                           "align": "inherit",
@@ -5219,7 +5242,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                           "className": "header-options",
                                                           "component": "th",
                                                           "padding": "normal",
-                                                          "size": "medium",
+                                                          "size": "small",
                                                           "sortDirection": false,
                                                           "stickyHeader": true,
                                                           "variant": "head",
@@ -5229,7 +5252,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                     >
                                                       <th
                                                         aria-sort={null}
-                                                        className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeMedium header-options css-y8ay40-MuiTableCell-root"
+                                                        className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeSmall header-options css-1h37f49-MuiTableCell-root"
                                                         scope="col"
                                                       >
                                                         LOT NAME
@@ -5239,12 +5262,13 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                   <ForwardRef(TableCell)
                                                     className="header-options"
                                                     key="lotId"
+                                                    size="small"
                                                     sortDirection={false}
                                                   >
                                                     <MuiTableCellRoot
                                                       aria-sort={null}
                                                       as="th"
-                                                      className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeMedium header-options"
+                                                      className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeSmall header-options"
                                                       ownerState={
                                                         Object {
                                                           "align": "inherit",
@@ -5252,7 +5276,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                           "className": "header-options",
                                                           "component": "th",
                                                           "padding": "normal",
-                                                          "size": "medium",
+                                                          "size": "small",
                                                           "sortDirection": false,
                                                           "stickyHeader": true,
                                                           "variant": "head",
@@ -5262,7 +5286,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                     >
                                                       <th
                                                         aria-sort={null}
-                                                        className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeMedium header-options css-y8ay40-MuiTableCell-root"
+                                                        className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeSmall header-options css-1h37f49-MuiTableCell-root"
                                                         scope="col"
                                                       >
                                                         LOT ID
@@ -5272,12 +5296,13 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                   <ForwardRef(TableCell)
                                                     className="header-options"
                                                     key="customerName"
+                                                    size="small"
                                                     sortDirection={false}
                                                   >
                                                     <MuiTableCellRoot
                                                       aria-sort={null}
                                                       as="th"
-                                                      className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeMedium header-options"
+                                                      className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeSmall header-options"
                                                       ownerState={
                                                         Object {
                                                           "align": "inherit",
@@ -5285,7 +5310,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                           "className": "header-options",
                                                           "component": "th",
                                                           "padding": "normal",
-                                                          "size": "medium",
+                                                          "size": "small",
                                                           "sortDirection": false,
                                                           "stickyHeader": true,
                                                           "variant": "head",
@@ -5295,7 +5320,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                     >
                                                       <th
                                                         aria-sort={null}
-                                                        className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeMedium header-options css-y8ay40-MuiTableCell-root"
+                                                        className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeSmall header-options css-1h37f49-MuiTableCell-root"
                                                         scope="col"
                                                       >
                                                         CUSTOMER NAME
@@ -5305,12 +5330,13 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                   <ForwardRef(TableCell)
                                                     className="header-options"
                                                     key="primaryContactName"
+                                                    size="small"
                                                     sortDirection={false}
                                                   >
                                                     <MuiTableCellRoot
                                                       aria-sort={null}
                                                       as="th"
-                                                      className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeMedium header-options"
+                                                      className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeSmall header-options"
                                                       ownerState={
                                                         Object {
                                                           "align": "inherit",
@@ -5318,7 +5344,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                           "className": "header-options",
                                                           "component": "th",
                                                           "padding": "normal",
-                                                          "size": "medium",
+                                                          "size": "small",
                                                           "sortDirection": false,
                                                           "stickyHeader": true,
                                                           "variant": "head",
@@ -5328,7 +5354,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                     >
                                                       <th
                                                         aria-sort={null}
-                                                        className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeMedium header-options css-y8ay40-MuiTableCell-root"
+                                                        className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeSmall header-options css-1h37f49-MuiTableCell-root"
                                                         scope="col"
                                                       >
                                                         LOT CONTACT
@@ -5338,12 +5364,13 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                   <ForwardRef(TableCell)
                                                     className="header-options"
                                                     key="streetAddress"
+                                                    size="small"
                                                     sortDirection={false}
                                                   >
                                                     <MuiTableCellRoot
                                                       aria-sort={null}
                                                       as="th"
-                                                      className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeMedium header-options"
+                                                      className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeSmall header-options"
                                                       ownerState={
                                                         Object {
                                                           "align": "inherit",
@@ -5351,7 +5378,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                           "className": "header-options",
                                                           "component": "th",
                                                           "padding": "normal",
-                                                          "size": "medium",
+                                                          "size": "small",
                                                           "sortDirection": false,
                                                           "stickyHeader": true,
                                                           "variant": "head",
@@ -5361,7 +5388,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                     >
                                                       <th
                                                         aria-sort={null}
-                                                        className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeMedium header-options css-y8ay40-MuiTableCell-root"
+                                                        className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeSmall header-options css-1h37f49-MuiTableCell-root"
                                                         scope="col"
                                                       >
                                                         STREET ADDRESS
@@ -5372,12 +5399,13 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                     align="left"
                                                     className="header-options"
                                                     key="cityNm"
+                                                    size="small"
                                                     sortDirection={false}
                                                   >
                                                     <MuiTableCellRoot
                                                       aria-sort={null}
                                                       as="th"
-                                                      className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeMedium header-options"
+                                                      className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall header-options"
                                                       ownerState={
                                                         Object {
                                                           "align": "left",
@@ -5385,7 +5413,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                           "className": "header-options",
                                                           "component": "th",
                                                           "padding": "normal",
-                                                          "size": "medium",
+                                                          "size": "small",
                                                           "sortDirection": false,
                                                           "stickyHeader": true,
                                                           "variant": "head",
@@ -5395,7 +5423,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                     >
                                                       <th
                                                         aria-sort={null}
-                                                        className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeMedium header-options css-y8ay40-MuiTableCell-root"
+                                                        className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall header-options css-1h37f49-MuiTableCell-root"
                                                         scope="col"
                                                       >
                                                         CITY
@@ -5406,12 +5434,13 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                     align="left"
                                                     className="header-options"
                                                     key="stateNm"
+                                                    size="small"
                                                     sortDirection={false}
                                                   >
                                                     <MuiTableCellRoot
                                                       aria-sort={null}
                                                       as="th"
-                                                      className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeMedium header-options"
+                                                      className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall header-options"
                                                       ownerState={
                                                         Object {
                                                           "align": "left",
@@ -5419,7 +5448,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                           "className": "header-options",
                                                           "component": "th",
                                                           "padding": "normal",
-                                                          "size": "medium",
+                                                          "size": "small",
                                                           "sortDirection": false,
                                                           "stickyHeader": true,
                                                           "variant": "head",
@@ -5429,7 +5458,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                     >
                                                       <th
                                                         aria-sort={null}
-                                                        className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeMedium header-options css-y8ay40-MuiTableCell-root"
+                                                        className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall header-options css-1h37f49-MuiTableCell-root"
                                                         scope="col"
                                                       >
                                                         STATE
@@ -5439,12 +5468,13 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                   <ForwardRef(TableCell)
                                                     className="header-options"
                                                     key="postalCd"
+                                                    size="small"
                                                     sortDirection={false}
                                                   >
                                                     <MuiTableCellRoot
                                                       aria-sort={null}
                                                       as="th"
-                                                      className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeMedium header-options"
+                                                      className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeSmall header-options"
                                                       ownerState={
                                                         Object {
                                                           "align": "inherit",
@@ -5452,7 +5482,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                           "className": "header-options",
                                                           "component": "th",
                                                           "padding": "normal",
-                                                          "size": "medium",
+                                                          "size": "small",
                                                           "sortDirection": false,
                                                           "stickyHeader": true,
                                                           "variant": "head",
@@ -5462,7 +5492,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                     >
                                                       <th
                                                         aria-sort={null}
-                                                        className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeMedium header-options css-y8ay40-MuiTableCell-root"
+                                                        className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeSmall header-options css-1h37f49-MuiTableCell-root"
                                                         scope="col"
                                                       >
                                                         ZIP
@@ -5472,12 +5502,13 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                   <ForwardRef(TableCell)
                                                     className="header-options"
                                                     key="rackUpdate"
+                                                    size="small"
                                                     sortDirection={false}
                                                   >
                                                     <MuiTableCellRoot
                                                       aria-sort={null}
                                                       as="th"
-                                                      className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeMedium header-options"
+                                                      className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeSmall header-options"
                                                       ownerState={
                                                         Object {
                                                           "align": "inherit",
@@ -5485,7 +5516,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                           "className": "header-options",
                                                           "component": "th",
                                                           "padding": "normal",
-                                                          "size": "medium",
+                                                          "size": "small",
                                                           "sortDirection": false,
                                                           "stickyHeader": true,
                                                           "variant": "head",
@@ -5495,7 +5526,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                     >
                                                       <th
                                                         aria-sort={null}
-                                                        className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeMedium header-options css-y8ay40-MuiTableCell-root"
+                                                        className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeSmall header-options css-1h37f49-MuiTableCell-root"
                                                         scope="col"
                                                       >
                                                         RACK UPDATE
@@ -5505,12 +5536,13 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                   <ForwardRef(TableCell)
                                                     className="header-options"
                                                     key="walletStatus"
+                                                    size="small"
                                                     sortDirection={false}
                                                   >
                                                     <MuiTableCellRoot
                                                       aria-sort={null}
                                                       as="th"
-                                                      className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeMedium header-options"
+                                                      className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeSmall header-options"
                                                       ownerState={
                                                         Object {
                                                           "align": "inherit",
@@ -5518,7 +5550,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                           "className": "header-options",
                                                           "component": "th",
                                                           "padding": "normal",
-                                                          "size": "medium",
+                                                          "size": "small",
                                                           "sortDirection": false,
                                                           "stickyHeader": true,
                                                           "variant": "head",
@@ -5528,7 +5560,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                     >
                                                       <th
                                                         aria-sort={null}
-                                                        className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeMedium header-options css-y8ay40-MuiTableCell-root"
+                                                        className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeSmall header-options css-1h37f49-MuiTableCell-root"
                                                         scope="col"
                                                       >
                                                         WALLET STATUS
@@ -5538,12 +5570,13 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                   <ForwardRef(TableCell)
                                                     className="header-options"
                                                     key="fuelStatus"
+                                                    size="small"
                                                     sortDirection={false}
                                                   >
                                                     <MuiTableCellRoot
                                                       aria-sort={null}
                                                       as="th"
-                                                      className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeMedium header-options"
+                                                      className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeSmall header-options"
                                                       ownerState={
                                                         Object {
                                                           "align": "inherit",
@@ -5551,7 +5584,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                           "className": "header-options",
                                                           "component": "th",
                                                           "padding": "normal",
-                                                          "size": "medium",
+                                                          "size": "small",
                                                           "sortDirection": false,
                                                           "stickyHeader": true,
                                                           "variant": "head",
@@ -5561,7 +5594,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                     >
                                                       <th
                                                         aria-sort={null}
-                                                        className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeMedium header-options css-y8ay40-MuiTableCell-root"
+                                                        className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeSmall header-options css-1h37f49-MuiTableCell-root"
                                                         scope="col"
                                                       >
                                                         FUEL
@@ -5571,12 +5604,13 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                   <ForwardRef(TableCell)
                                                     className="header-options"
                                                     key="vehicles"
+                                                    size="small"
                                                     sortDirection={false}
                                                   >
                                                     <MuiTableCellRoot
                                                       aria-sort={null}
                                                       as="th"
-                                                      className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeMedium header-options"
+                                                      className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeSmall header-options"
                                                       ownerState={
                                                         Object {
                                                           "align": "inherit",
@@ -5584,7 +5618,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                           "className": "header-options",
                                                           "component": "th",
                                                           "padding": "normal",
-                                                          "size": "medium",
+                                                          "size": "small",
                                                           "sortDirection": false,
                                                           "stickyHeader": true,
                                                           "variant": "head",
@@ -5594,7 +5628,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                     >
                                                       <th
                                                         aria-sort={null}
-                                                        className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeMedium header-options css-y8ay40-MuiTableCell-root"
+                                                        className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeSmall header-options css-1h37f49-MuiTableCell-root"
                                                         scope="col"
                                                       >
                                                         VEHICLES

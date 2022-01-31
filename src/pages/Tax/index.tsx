@@ -18,12 +18,12 @@ import { RightInfoPanel } from '../../components/UIComponents/RightInfoPanel/Rig
 import { getSeachedDataTotalCount } from '../../utils/helperFunctions';
 import Table from './SubTableFuelProduct';
 
-export interface TaxLandingContentProps{
-  version:string
+export interface TaxLandingContentProps {
+  version: string
 }
 
 
-const TaxLandingContent:React.FC<TaxLandingContentProps> = memo(() => {
+const TaxLandingContent: React.FC<TaxLandingContentProps> = memo(() => {
   const TaxObj = new TaxModel();
   const headCells = TaxObj.fieldsToDisplay();
   const headCellsLots = TaxObj.fieldsToDisplayLotTable();
@@ -108,7 +108,7 @@ const TaxLandingContent:React.FC<TaxLandingContentProps> = memo(() => {
 
   return (
     <Box display="flex" mt={10} ml={8}>
-      <Grid container pl={6.25} pr={6.25} className="main-area">
+      <Grid container pl={8} pr={8} className="main-area">
         <Grid container display="flex" flexGrow={1}>
           <Grid item md={8} lg={9} display="flex" >
             <Grid item pr={2.5}>

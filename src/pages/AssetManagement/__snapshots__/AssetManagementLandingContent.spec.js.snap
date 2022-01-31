@@ -99,7 +99,6 @@ exports[`Rendering of Asset Management landing page Component Asset Management l
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -305,7 +304,6 @@ exports[`Rendering of Asset Management landing page Component Asset Management l
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -769,8 +767,8 @@ exports[`Rendering of Asset Management landing page Component Asset Management l
           <ForwardRef(Grid)
             className="main-area"
             container={true}
-            pl={6.25}
-            pr={6.25}
+            pl={8}
+            pr={8}
           >
             <MuiGridRoot
               as="div"
@@ -1010,8 +1008,8 @@ exports[`Rendering of Asset Management landing page Component Asset Management l
                   "rowSpacing": 0,
                   "sm": false,
                   "sx": Object {
-                    "pl": 6.25,
-                    "pr": 6.25,
+                    "pl": 8,
+                    "pr": 8,
                   },
                   "wrap": "wrap",
                   "xl": false,
@@ -1021,13 +1019,13 @@ exports[`Rendering of Asset Management landing page Component Asset Management l
               }
               sx={
                 Object {
-                  "pl": 6.25,
-                  "pr": 6.25,
+                  "pl": 8,
+                  "pr": 8,
                 }
               }
             >
               <div
-                className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-undefined main-area css-1gehmkk-MuiGrid-root"
+                className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-undefined main-area css-n8sxft-MuiGrid-root"
               >
                 <ForwardRef(Grid)
                   container={true}
@@ -4150,7 +4148,7 @@ exports[`Rendering of Asset Management landing page Component Asset Management l
                                   stickyHeader={true}
                                   sx={
                                     Object {
-                                      "minWidth": "1600px",
+                                      "minWidth": "1200px",
                                     }
                                   }
                                 >
@@ -4384,7 +4382,7 @@ exports[`Rendering of Asset Management landing page Component Asset Management l
                                 stickyHeader={true}
                                 sx={
                                   Object {
-                                    "minWidth": "1600px",
+                                    "minWidth": "1200px",
                                   }
                                 }
                               >
@@ -4616,20 +4614,20 @@ exports[`Rendering of Asset Management landing page Component Asset Management l
                                       "size": "medium",
                                       "stickyHeader": true,
                                       "sx": Object {
-                                        "minWidth": "1600px",
+                                        "minWidth": "1200px",
                                       },
                                     }
                                   }
                                   role={null}
                                   sx={
                                     Object {
-                                      "minWidth": "1600px",
+                                      "minWidth": "1200px",
                                     }
                                   }
                                 >
                                   <table
                                     aria-labelledby="tableTitle"
-                                    className="MuiTable-root MuiTable-stickyHeader css-12exmm-MuiTable-root"
+                                    className="MuiTable-root MuiTable-stickyHeader css-1dzs180-MuiTable-root"
                                     role={null}
                                   >
                                     <EnhancedGridHead
@@ -4718,6 +4716,7 @@ exports[`Rendering of Asset Management landing page Component Asset Management l
                                                 <ForwardRef(TableCell)
                                                   align="left"
                                                   className="header-options"
+                                                  size="small"
                                                   sortDirection={false}
                                                 >
                                                   <ForwardRef(TableSortLabel)
@@ -4732,6 +4731,7 @@ exports[`Rendering of Asset Management landing page Component Asset Management l
                                                 <ForwardRef(TableCell)
                                                   align="left"
                                                   className="header-options"
+                                                  size="small"
                                                   sortDirection={false}
                                                 >
                                                   STATUS
@@ -4739,6 +4739,7 @@ exports[`Rendering of Asset Management landing page Component Asset Management l
                                                 <ForwardRef(TableCell)
                                                   align="left"
                                                   className="header-options"
+                                                  size="small"
                                                   sortDirection="asc"
                                                 >
                                                   
@@ -4746,6 +4747,7 @@ exports[`Rendering of Asset Management landing page Component Asset Management l
                                                 <ForwardRef(TableCell)
                                                   align="left"
                                                   className="header-options"
+                                                  size="small"
                                                   sortDirection="asc"
                                                 >
                                                   
@@ -4753,6 +4755,7 @@ exports[`Rendering of Asset Management landing page Component Asset Management l
                                                 <ForwardRef(TableCell)
                                                   align="left"
                                                   className="header-options"
+                                                  size="small"
                                                   sortDirection="asc"
                                                 >
                                                   
@@ -4760,6 +4763,7 @@ exports[`Rendering of Asset Management landing page Component Asset Management l
                                                 <ForwardRef(TableCell)
                                                   align="left"
                                                   className="header-options"
+                                                  size="small"
                                                   sortDirection="asc"
                                                 >
                                                   
@@ -4767,6 +4771,7 @@ exports[`Rendering of Asset Management landing page Component Asset Management l
                                                 <ForwardRef(TableCell)
                                                   align="left"
                                                   className="header-options"
+                                                  size="small"
                                                   sortDirection="asc"
                                                 >
                                                   
@@ -4806,6 +4811,7 @@ exports[`Rendering of Asset Management landing page Component Asset Management l
                                                         <ForwardRef(TableCell)
                                                           align="left"
                                                           className="header-options"
+                                                          size="small"
                                                           sortDirection={false}
                                                         >
                                                           <ForwardRef(TableSortLabel)
@@ -4820,6 +4826,7 @@ exports[`Rendering of Asset Management landing page Component Asset Management l
                                                         <ForwardRef(TableCell)
                                                           align="left"
                                                           className="header-options"
+                                                          size="small"
                                                           sortDirection={false}
                                                         >
                                                           STATUS
@@ -4827,6 +4834,7 @@ exports[`Rendering of Asset Management landing page Component Asset Management l
                                                         <ForwardRef(TableCell)
                                                           align="left"
                                                           className="header-options"
+                                                          size="small"
                                                           sortDirection="asc"
                                                         >
                                                           
@@ -4834,6 +4842,7 @@ exports[`Rendering of Asset Management landing page Component Asset Management l
                                                         <ForwardRef(TableCell)
                                                           align="left"
                                                           className="header-options"
+                                                          size="small"
                                                           sortDirection="asc"
                                                         >
                                                           
@@ -4841,6 +4850,7 @@ exports[`Rendering of Asset Management landing page Component Asset Management l
                                                         <ForwardRef(TableCell)
                                                           align="left"
                                                           className="header-options"
+                                                          size="small"
                                                           sortDirection="asc"
                                                         >
                                                           
@@ -4848,6 +4858,7 @@ exports[`Rendering of Asset Management landing page Component Asset Management l
                                                         <ForwardRef(TableCell)
                                                           align="left"
                                                           className="header-options"
+                                                          size="small"
                                                           sortDirection="asc"
                                                         >
                                                           
@@ -4855,6 +4866,7 @@ exports[`Rendering of Asset Management landing page Component Asset Management l
                                                         <ForwardRef(TableCell)
                                                           align="left"
                                                           className="header-options"
+                                                          size="small"
                                                           sortDirection="asc"
                                                         >
                                                           
@@ -4883,12 +4895,13 @@ exports[`Rendering of Asset Management landing page Component Asset Management l
                                                     align="left"
                                                     className="header-options"
                                                     key="assetNm"
+                                                    size="small"
                                                     sortDirection={false}
                                                   >
                                                     <MuiTableCellRoot
                                                       aria-sort={null}
                                                       as="th"
-                                                      className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeMedium header-options"
+                                                      className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall header-options"
                                                       ownerState={
                                                         Object {
                                                           "align": "left",
@@ -4903,7 +4916,7 @@ exports[`Rendering of Asset Management landing page Component Asset Management l
                                                           "className": "header-options",
                                                           "component": "th",
                                                           "padding": "normal",
-                                                          "size": "medium",
+                                                          "size": "small",
                                                           "sortDirection": false,
                                                           "stickyHeader": true,
                                                           "variant": "head",
@@ -4913,7 +4926,7 @@ exports[`Rendering of Asset Management landing page Component Asset Management l
                                                     >
                                                       <th
                                                         aria-sort={null}
-                                                        className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeMedium header-options css-y8ay40-MuiTableCell-root"
+                                                        className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall header-options css-1h37f49-MuiTableCell-root"
                                                         scope="col"
                                                       >
                                                         <ForwardRef(TableSortLabel)
@@ -5064,12 +5077,13 @@ exports[`Rendering of Asset Management landing page Component Asset Management l
                                                     align="left"
                                                     className="header-options"
                                                     key="activeInactiveInd"
+                                                    size="small"
                                                     sortDirection={false}
                                                   >
                                                     <MuiTableCellRoot
                                                       aria-sort={null}
                                                       as="th"
-                                                      className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeMedium header-options"
+                                                      className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall header-options"
                                                       ownerState={
                                                         Object {
                                                           "align": "left",
@@ -5077,7 +5091,7 @@ exports[`Rendering of Asset Management landing page Component Asset Management l
                                                           "className": "header-options",
                                                           "component": "th",
                                                           "padding": "normal",
-                                                          "size": "medium",
+                                                          "size": "small",
                                                           "sortDirection": false,
                                                           "stickyHeader": true,
                                                           "variant": "head",
@@ -5087,7 +5101,7 @@ exports[`Rendering of Asset Management landing page Component Asset Management l
                                                     >
                                                       <th
                                                         aria-sort={null}
-                                                        className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeMedium header-options css-y8ay40-MuiTableCell-root"
+                                                        className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall header-options css-1h37f49-MuiTableCell-root"
                                                         scope="col"
                                                       >
                                                         STATUS
@@ -5098,12 +5112,13 @@ exports[`Rendering of Asset Management landing page Component Asset Management l
                                                     align="left"
                                                     className="header-options"
                                                     key=""
+                                                    size="small"
                                                     sortDirection="asc"
                                                   >
                                                     <MuiTableCellRoot
                                                       aria-sort="ascending"
                                                       as="th"
-                                                      className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeMedium header-options"
+                                                      className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall header-options"
                                                       ownerState={
                                                         Object {
                                                           "align": "left",
@@ -5111,7 +5126,7 @@ exports[`Rendering of Asset Management landing page Component Asset Management l
                                                           "className": "header-options",
                                                           "component": "th",
                                                           "padding": "normal",
-                                                          "size": "medium",
+                                                          "size": "small",
                                                           "sortDirection": "asc",
                                                           "stickyHeader": true,
                                                           "variant": "head",
@@ -5121,7 +5136,7 @@ exports[`Rendering of Asset Management landing page Component Asset Management l
                                                     >
                                                       <th
                                                         aria-sort="ascending"
-                                                        className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeMedium header-options css-y8ay40-MuiTableCell-root"
+                                                        className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall header-options css-1h37f49-MuiTableCell-root"
                                                         scope="col"
                                                       />
                                                     </MuiTableCellRoot>
@@ -5130,12 +5145,13 @@ exports[`Rendering of Asset Management landing page Component Asset Management l
                                                     align="left"
                                                     className="header-options"
                                                     key=""
+                                                    size="small"
                                                     sortDirection="asc"
                                                   >
                                                     <MuiTableCellRoot
                                                       aria-sort="ascending"
                                                       as="th"
-                                                      className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeMedium header-options"
+                                                      className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall header-options"
                                                       ownerState={
                                                         Object {
                                                           "align": "left",
@@ -5143,7 +5159,7 @@ exports[`Rendering of Asset Management landing page Component Asset Management l
                                                           "className": "header-options",
                                                           "component": "th",
                                                           "padding": "normal",
-                                                          "size": "medium",
+                                                          "size": "small",
                                                           "sortDirection": "asc",
                                                           "stickyHeader": true,
                                                           "variant": "head",
@@ -5153,7 +5169,7 @@ exports[`Rendering of Asset Management landing page Component Asset Management l
                                                     >
                                                       <th
                                                         aria-sort="ascending"
-                                                        className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeMedium header-options css-y8ay40-MuiTableCell-root"
+                                                        className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall header-options css-1h37f49-MuiTableCell-root"
                                                         scope="col"
                                                       />
                                                     </MuiTableCellRoot>
@@ -5162,12 +5178,13 @@ exports[`Rendering of Asset Management landing page Component Asset Management l
                                                     align="left"
                                                     className="header-options"
                                                     key=""
+                                                    size="small"
                                                     sortDirection="asc"
                                                   >
                                                     <MuiTableCellRoot
                                                       aria-sort="ascending"
                                                       as="th"
-                                                      className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeMedium header-options"
+                                                      className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall header-options"
                                                       ownerState={
                                                         Object {
                                                           "align": "left",
@@ -5175,7 +5192,7 @@ exports[`Rendering of Asset Management landing page Component Asset Management l
                                                           "className": "header-options",
                                                           "component": "th",
                                                           "padding": "normal",
-                                                          "size": "medium",
+                                                          "size": "small",
                                                           "sortDirection": "asc",
                                                           "stickyHeader": true,
                                                           "variant": "head",
@@ -5185,7 +5202,7 @@ exports[`Rendering of Asset Management landing page Component Asset Management l
                                                     >
                                                       <th
                                                         aria-sort="ascending"
-                                                        className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeMedium header-options css-y8ay40-MuiTableCell-root"
+                                                        className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall header-options css-1h37f49-MuiTableCell-root"
                                                         scope="col"
                                                       />
                                                     </MuiTableCellRoot>
@@ -5194,12 +5211,13 @@ exports[`Rendering of Asset Management landing page Component Asset Management l
                                                     align="left"
                                                     className="header-options"
                                                     key=""
+                                                    size="small"
                                                     sortDirection="asc"
                                                   >
                                                     <MuiTableCellRoot
                                                       aria-sort="ascending"
                                                       as="th"
-                                                      className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeMedium header-options"
+                                                      className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall header-options"
                                                       ownerState={
                                                         Object {
                                                           "align": "left",
@@ -5207,7 +5225,7 @@ exports[`Rendering of Asset Management landing page Component Asset Management l
                                                           "className": "header-options",
                                                           "component": "th",
                                                           "padding": "normal",
-                                                          "size": "medium",
+                                                          "size": "small",
                                                           "sortDirection": "asc",
                                                           "stickyHeader": true,
                                                           "variant": "head",
@@ -5217,7 +5235,7 @@ exports[`Rendering of Asset Management landing page Component Asset Management l
                                                     >
                                                       <th
                                                         aria-sort="ascending"
-                                                        className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeMedium header-options css-y8ay40-MuiTableCell-root"
+                                                        className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall header-options css-1h37f49-MuiTableCell-root"
                                                         scope="col"
                                                       />
                                                     </MuiTableCellRoot>
@@ -5226,12 +5244,13 @@ exports[`Rendering of Asset Management landing page Component Asset Management l
                                                     align="left"
                                                     className="header-options"
                                                     key=""
+                                                    size="small"
                                                     sortDirection="asc"
                                                   >
                                                     <MuiTableCellRoot
                                                       aria-sort="ascending"
                                                       as="th"
-                                                      className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeMedium header-options"
+                                                      className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall header-options"
                                                       ownerState={
                                                         Object {
                                                           "align": "left",
@@ -5239,7 +5258,7 @@ exports[`Rendering of Asset Management landing page Component Asset Management l
                                                           "className": "header-options",
                                                           "component": "th",
                                                           "padding": "normal",
-                                                          "size": "medium",
+                                                          "size": "small",
                                                           "sortDirection": "asc",
                                                           "stickyHeader": true,
                                                           "variant": "head",
@@ -5249,7 +5268,7 @@ exports[`Rendering of Asset Management landing page Component Asset Management l
                                                     >
                                                       <th
                                                         aria-sort="ascending"
-                                                        className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeMedium header-options css-y8ay40-MuiTableCell-root"
+                                                        className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall header-options css-1h37f49-MuiTableCell-root"
                                                         scope="col"
                                                       />
                                                     </MuiTableCellRoot>
@@ -6109,7 +6128,6 @@ exports[`Rendering of Asset Management landing page Component Search Textbox Dat
                     "isPlaceholderData": false,
                     "isPreviousData": false,
                     "isRefetchError": false,
-                    "isRefetching": false,
                     "isStale": true,
                     "isSuccess": false,
                     "refetch": [Function],
@@ -6315,7 +6333,6 @@ exports[`Rendering of Asset Management landing page Component Search Textbox Dat
                     "isPlaceholderData": false,
                     "isPreviousData": false,
                     "isRefetchError": false,
-                    "isRefetching": false,
                     "isStale": true,
                     "isSuccess": false,
                     "refetch": [Function],
