@@ -7,7 +7,7 @@ import { pageDataLimit } from "../../utils/constants";
 const getProductTypes = async () => {
     const options: AxiosRequestConfig = {
         method: 'get',
-        url: '/api/product-service/product/productType?countryCode=us'
+        url: '/api/product-service/product/productGroups?countryCode=us'
     };
     const { data } = await axios(options);
     return data;
@@ -21,7 +21,7 @@ const getProductNames = async (productCd: string) => {
     if (productCd) {
         const options: AxiosRequestConfig = {
             method: 'get',
-            url: `/api/product-service/product/products?countryCode=us&productClassCd=${productCd}`
+            url: `/api/product-service/products?countryCode=us&productGroupCd=${productCd}`
         };
         const { data } = await axios(options);
         return data;
@@ -95,6 +95,24 @@ const addNewProduct = async (parkinglotId: string, payload:IAddProductBody)=>{
 
 export const useCreateProduct = (parkingLotId: string,  onError:any, onSuccess:any) => {
     return useMutation(( payload: IAddProductBody)=> addNewProduct(parkingLotId, payload), {
+        onError,
+        onSuccess,
+        retry: false,
+    });
+};
+
+const editCustomProduct = async (parkinglotId: string, applicableProductId: string, payload:IAddProductBody)=>{ 
+    const options: AxiosRequestConfig = {
+        method: 'PUT',
+        url:`api/customer-service/lot/${parkinglotId}/product/${applicableProductId}?countryCode=us`,
+        data: payload,
+    };
+    const { data } = await axios(options);
+    return data;
+};
+
+export const useEditCustomProduct = (lotId: string, applicableProductId: string, onSuccess: any, onError: any)  => {
+    return useMutation(( payload: IAddProductBody)=> editCustomProduct(lotId, applicableProductId, payload ), {
         onError,
         onSuccess,
         retry: false,

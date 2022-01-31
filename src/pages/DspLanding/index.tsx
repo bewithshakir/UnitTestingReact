@@ -54,7 +54,7 @@ const DspLandingContent: React.FC<ContentProps> = () => {
   }, [data]);
 
   const navigateToAddDsp = () => {
-    navigate(`/customer/${customerId}/adddsp`);
+    navigate(`/customer/${customerId}/dsps/addDsp`);
   };
   
   const onInputChange = (value: string) => {
@@ -74,6 +74,7 @@ const DspLandingContent: React.FC<ContentProps> = () => {
     switch (action.action) {
       case ACTION_TYPES.EDIT:
         // perform action 
+        navigate(`/customer/${customerId}/dsps/edit/${row.id}`);
         break;
       default: return;
     }

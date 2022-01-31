@@ -246,38 +246,38 @@ const AddOpis: React.FC<AddOpisProps> = () => {
                       />
                     </Grid>
                   </Grid>
-                </Grid>
-                <Grid container mt={1} justifyContent='flex-start'>
-                  <Grid item xs={6} md={8} pr={2.5} pt={2.5}>
-                    <Box className='form-action-section'>
-                      <Button
-                        types='cancel'
-                        aria-label={t('buttons.cancel')}
-                        className='mr-4'
-                        onClick={onClickBack}
-                        data-test='cancel'
-                      >
-                        {t('buttons.cancel')}
-                      </Button>
-                      <Button
-                        type='submit'
-                        types='save'
-                        aria-label={t('buttons.save')}
-                        className='ml-4'
-                        data-test='save'
-                        disabled={disableSubmitBtn()}
-                      >
-                        {t('buttons.save')}
-                      </Button>
-                    </Box>
-                    <ToastMessage
-                      isOpen={apiResposneState}
-                      messageType={formStatus.type}
-                      onClose={() => {
-                        return '';
-                      }}
-                      message={formStatus.message}
-                    />
+                  <Grid item xs={8} md={10} pr={2.5} mt={4} mb={4}>
+                    <Grid item xs={12} md={6}>
+                      <Box className='form-action-section'>
+                        <Button
+                          types='cancel'
+                          aria-label={t('buttons.cancel')}
+                          className='mr-4'
+                          onClick={onClickBack}
+                          data-test='cancel'
+                        >
+                          {t('buttons.cancel')}
+                        </Button>
+                        <Button
+                          type='submit'
+                          types='save'
+                          aria-label={t('buttons.save')}
+                          className='ml-4'
+                          data-test='save'
+                          disabled={disableSubmitBtn()}
+                        >
+                          {t('buttons.save')}
+                        </Button>
+                      </Box>
+                      <ToastMessage
+                        isOpen={apiResposneState}
+                        messageType={formStatus.type}
+                        onClose={() => {
+                          return '';
+                        }}
+                        message={formStatus.message}
+                      />
+                    </Grid>
                   </Grid>
                 </Grid>
               </Container>

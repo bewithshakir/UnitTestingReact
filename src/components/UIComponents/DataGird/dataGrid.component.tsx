@@ -232,6 +232,7 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
                             {
                                 props.enableRowSelection ?
                                     <TableCell
+                                        padding="checkbox"
                                         className="grid-cell-parent"
                                         component="th"
                                         scope="row"
@@ -250,6 +251,7 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
                                     className="grid-cell-parent"
                                     component="th"
                                     scope="row"
+                                    size="small"
                                     align={props.headCells[index].align}
                                     key={(indexKey.toString() + index.toString())}
                                     onClick={() => props.isChildTable ? {} : openDrawer(row)}
@@ -299,6 +301,7 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
                                         component="th"
                                         scope="row"
                                         align="right"
+                                        size="small"
                                     >
                                         <FormControl>
                                             <DataGridActionsMenu

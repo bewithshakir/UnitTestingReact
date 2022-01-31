@@ -111,7 +111,6 @@ export default function ActionsMenu (props: ActionsMenuProps) {
                     <MenuItem
                       key={option.label}
                       className={"menuitem"}
-                      disabled={index === 3}
                       selected={index === selectedIndex}
                       onClick={(event) => handleMenuItemClick(event, index)}
                     >

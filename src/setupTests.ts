@@ -32,7 +32,10 @@ setLogger({
 });
 
 jest.mock("react-i18next", () => ({
-    useTranslation: () => ({ t: (key: any) => key }),
+    useTranslation: () => ({ 
+        t: (key: any) => key,
+        i18n: { changeLanguage: jest.fn() }
+    }),
     Trans: ({ children }: any) => children
 }));
 
