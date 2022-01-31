@@ -7,6 +7,7 @@ import { getAllParkingLotsHandler } from '../pages/ParkingLotsManagement/mockApi
 import { getAttachmentListHandler } from '../pages/Attachments/mockApi/AttachmentLandingPageHandler';
 import { addDspHandler, getDspDataHandler, editDspHandler } from "../pages/DspLanding/AddDSP/mockApi/handlerAddDsp";
 import { FetchFormattedAddressHandler, FetchGoogleAddressHandler } from "../components/UIComponents/GoogleAddressComponent/mockApi/googleAddressAutoHandler";
+import { getProductByLotHandler } from '../pages/ProductManagement/mockApi/handler';
 
 export const handlers = [
     productTypesHandler(),
@@ -16,6 +17,7 @@ export const handlers = [
     editProductManagementHandler(),
     getOPISCitiesHandler(),
     getAttachmentListHandler(),
+    getProductByLotHandler(),
     getAllParkingLotsHandler(),
     FetchFormattedAddressHandler(),
     FetchGoogleAddressHandler(),

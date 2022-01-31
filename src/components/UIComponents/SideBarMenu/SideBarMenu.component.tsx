@@ -84,7 +84,7 @@ const SideBarMenuoptions = [
 //   children?: any
 // }
 
-export default function SideBarDrawer() {
+export default function SideBarDrawer () {
   const { themeType } = useTheme();
   const logoSrc = themeType === 'UK' ? logoOne : logoTwo;
   const [value, setValue] = React.useState(0);
@@ -102,7 +102,7 @@ export default function SideBarDrawer() {
   };
 
   const navigate = useNavigate();
-  function onClickBack() {
+  function onClickBack () {
     navigate('/');
   }
 
@@ -119,10 +119,7 @@ export default function SideBarDrawer() {
         variant='permanent'
         anchor='left'
       >
-        <div>
-          <img className='sidebarmenu_logo' src={logoSrc} alt='logo' />
-        </div>
-
+        <img className='sidebarmenu_logo' src={logoSrc} alt='logo' />
         <Tabs
           orientation='vertical'
           value={value}
@@ -145,8 +142,8 @@ export default function SideBarDrawer() {
         </Tabs>
       </Drawer>
       <main className='content1'>
-      <Suspense fallback={<Loader />}>
-        {element}
+        <Suspense fallback={<Loader />}>
+          {element}
         </Suspense>
       </main>
     </Box>
