@@ -997,13 +997,12 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
           className="MuiBox-root css-k008qs"
         >
           <ForwardRef(Grid)
-            className="main-area"
             container={true}
-            pr={6.25}
+            pr={8}
           >
             <MuiGridRoot
               as="div"
-              className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-undefined main-area"
+              className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-undefined"
               ownerState={
                 Object {
                   "children": Array [
@@ -1319,7 +1318,6 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                       />
                     </ForwardRef(Grid)>,
                   ],
-                  "className": "main-area",
                   "columnSpacing": 0,
                   "columns": 12,
                   "container": true,
@@ -1330,7 +1328,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                   "rowSpacing": 0,
                   "sm": false,
                   "sx": Object {
-                    "pr": 6.25,
+                    "pr": 8,
                   },
                   "wrap": "wrap",
                   "xl": false,
@@ -1340,12 +1338,12 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
               }
               sx={
                 Object {
-                  "pr": 6.25,
+                  "pr": 8,
                 }
               }
             >
               <div
-                className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-undefined main-area css-1rqvrp7-MuiGrid-root"
+                className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-undefined css-vffa1e-MuiGrid-root"
               >
                 <ForwardRef(Grid)
                   container={true}

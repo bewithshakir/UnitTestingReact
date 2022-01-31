@@ -18106,7 +18106,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                 >
                                                   <path
                                                     d="M11 2v7h7v2h-7v7H9v-7H2V9h7V2z"
-                                                    fill="#003C88"
+                                                    fill="currentColor"
                                                   />
                                                   <path
                                                     d="M0 0h20v20H0z"
@@ -19999,7 +19999,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                 >
                                                   <path
                                                     d="M11 2v7h7v2h-7v7H9v-7H2V9h7V2z"
-                                                    fill="#003C88"
+                                                    fill="currentColor"
                                                   />
                                                   <path
                                                     d="M0 0h20v20H0z"

@@ -19282,7 +19282,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                 >
                                                   <path
                                                     d="M11 2v7h7v2h-7v7H9v-7H2V9h7V2z"
-                                                    fill="#A6A6A6"
+                                                    fill="currentColor"
                                                   />
                                                   <path
                                                     d="M0 0h20v20H0z"
@@ -21092,7 +21092,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                 >
                                                   <path
                                                     d="M11 2v7h7v2h-7v7H9v-7H2V9h7V2z"
-                                                    fill="#A6A6A6"
+                                                    fill="currentColor"
                                                   />
                                                   <path
                                                     d="M0 0h20v20H0z"
@@ -42914,7 +42914,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                 >
                                                   <path
                                                     d="M11 2v7h7v2h-7v7H9v-7H2V9h7V2z"
-                                                    fill="#A6A6A6"
+                                                    fill="currentColor"
                                                   />
                                                   <path
                                                     d="M0 0h20v20H0z"
@@ -44724,7 +44724,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                 >
                                                   <path
                                                     d="M11 2v7h7v2h-7v7H9v-7H2V9h7V2z"
-                                                    fill="#A6A6A6"
+                                                    fill="currentColor"
                                                   />
                                                   <path
                                                     d="M0 0h20v20H0z"
