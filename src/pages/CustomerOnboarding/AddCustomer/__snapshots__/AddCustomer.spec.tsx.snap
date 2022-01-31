@@ -5004,7 +5004,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                               <ForwardRef(InputLabel)
                                                 aria-labelledby="ADDRESS LINE 1"
                                                 aria-required={true}
-                                                htmlFor="select-label-label"
+                                                htmlFor="select-label"
                                                 shrink={true}
                                                 style={
                                                   Object {
@@ -5030,7 +5030,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                     "IndicatorSeparator": [Function],
                                                   }
                                                 }
-                                                id="select-label"
+                                                inputId="select-label"
                                                 isDisabled={false}
                                                 isMulti={false}
                                                 isSearchable={true}
@@ -5069,7 +5069,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                           <ForwardRef(InputLabel)
                                             aria-labelledby="ADDRESS LINE 1"
                                             aria-required={true}
-                                            htmlFor="select-label-label"
+                                            htmlFor="select-label"
                                             shrink={true}
                                             style={
                                               Object {
@@ -5087,7 +5087,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                 }
                                               }
                                               data-shrink={true}
-                                              htmlFor="select-label-label"
+                                              htmlFor="select-label"
                                               ownerState={
                                                 Object {
                                                   "aria-labelledby": "ADDRESS LINE 1",
@@ -5120,7 +5120,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                     "size": "medium",
                                                     "variant": "outlined",
                                                   },
-                                                  "htmlFor": "select-label-label",
+                                                  "htmlFor": "select-label",
                                                   "required": false,
                                                   "shrink": true,
                                                   "size": "medium",
@@ -5147,7 +5147,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                   }
                                                 }
                                                 data-shrink={true}
-                                                htmlFor="select-label-label"
+                                                htmlFor="select-label"
                                                 style={
                                                   Object {
                                                     "color": "var(--Darkgray)",
@@ -5166,7 +5166,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                     }
                                                   }
                                                   data-shrink={true}
-                                                  htmlFor="select-label-label"
+                                                  htmlFor="select-label"
                                                   ownerState={
                                                     Object {
                                                       "aria-labelledby": "ADDRESS LINE 1",
@@ -5191,7 +5191,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                       "error": false,
                                                       "filled": false,
                                                       "focused": false,
-                                                      "htmlFor": "select-label-label",
+                                                      "htmlFor": "select-label",
                                                       "required": false,
                                                       "style": Object {
                                                         "color": "var(--Darkgray)",
@@ -5209,7 +5209,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                     aria-required={true}
                                                     className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary css-1kty9di-MuiFormLabel-root-MuiInputLabel-root"
                                                     data-shrink={true}
-                                                    htmlFor="select-label-label"
+                                                    htmlFor="select-label"
                                                     style={
                                                       Object {
                                                         "color": "var(--Darkgray)",
@@ -5238,7 +5238,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                 "IndicatorSeparator": [Function],
                                               }
                                             }
-                                            id="select-label"
+                                            inputId="select-label"
                                             isDisabled={false}
                                             isMulti={false}
                                             isSearchable={true}
@@ -5276,7 +5276,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                               formatGroupLabel={[Function]}
                                               getOptionLabel={[Function]}
                                               getOptionValue={[Function]}
-                                              id="select-label"
+                                              inputId="select-label"
                                               inputValue=""
                                               isDisabled={false}
                                               isLoading={false}
@@ -5324,7 +5324,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                 hasValue={true}
                                                 innerProps={
                                                   Object {
-                                                    "id": "select-label",
+                                                    "id": undefined,
                                                     "onKeyDown": [Function],
                                                   }
                                                 }
@@ -5354,7 +5354,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                     "formatGroupLabel": [Function],
                                                     "getOptionLabel": [Function],
                                                     "getOptionValue": [Function],
-                                                    "id": "select-label",
+                                                    "inputId": "select-label",
                                                     "inputValue": "",
                                                     "isDisabled": false,
                                                     "isLoading": false,
@@ -5436,12 +5436,10 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                       "position": "relative",
                                                     }
                                                   }
-                                                  id="select-label"
                                                   onKeyDown={[Function]}
                                                 >
                                                   <div
                                                     className="react-select-container css-b62m3t-container"
-                                                    id="select-label"
                                                     onKeyDown={[Function]}
                                                   >
                                                     <LiveRegion
@@ -5479,7 +5477,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                           "formatGroupLabel": [Function],
                                                           "getOptionLabel": [Function],
                                                           "getOptionValue": [Function],
-                                                          "id": "select-label",
+                                                          "inputId": "select-label",
                                                           "inputValue": "",
                                                           "isDisabled": false,
                                                           "isLoading": false,
@@ -5647,7 +5645,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                           "formatGroupLabel": [Function],
                                                           "getOptionLabel": [Function],
                                                           "getOptionValue": [Function],
-                                                          "id": "select-label",
+                                                          "inputId": "select-label",
                                                           "inputValue": "",
                                                           "isDisabled": false,
                                                           "isLoading": false,
@@ -5783,7 +5781,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                 "formatGroupLabel": [Function],
                                                                 "getOptionLabel": [Function],
                                                                 "getOptionValue": [Function],
-                                                                "id": "select-label",
+                                                                "inputId": "select-label",
                                                                 "inputValue": "",
                                                                 "isDisabled": false,
                                                                 "isLoading": false,
@@ -5910,7 +5908,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                       "formatGroupLabel": [Function],
                                                                       "getOptionLabel": [Function],
                                                                       "getOptionValue": [Function],
-                                                                      "id": "select-label",
+                                                                      "inputId": "select-label",
                                                                       "inputValue": "",
                                                                       "isDisabled": false,
                                                                       "isLoading": false,
@@ -6017,7 +6015,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                   getStyles={[Function]}
                                                                   getValue={[Function]}
                                                                   hasValue={true}
-                                                                  id="react-select-2-input"
+                                                                  id="select-label"
                                                                   innerRef={[Function]}
                                                                   isDisabled={false}
                                                                   isHidden={false}
@@ -6049,7 +6047,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                       "formatGroupLabel": [Function],
                                                                       "getOptionLabel": [Function],
                                                                       "getOptionValue": [Function],
-                                                                      "id": "select-label",
+                                                                      "inputId": "select-label",
                                                                       "inputValue": "",
                                                                       "isDisabled": false,
                                                                       "isLoading": false,
@@ -6169,7 +6167,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                         autoCorrect="off"
                                                                         className="react-select__input"
                                                                         disabled={false}
-                                                                        id="react-select-2-input"
+                                                                        id="select-label"
                                                                         onBlur={[Function]}
                                                                         onChange={[Function]}
                                                                         onFocus={[Function]}
@@ -6232,7 +6230,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                 "formatGroupLabel": [Function],
                                                                 "getOptionLabel": [Function],
                                                                 "getOptionValue": [Function],
-                                                                "id": "select-label",
+                                                                "inputId": "select-label",
                                                                 "inputValue": "",
                                                                 "isDisabled": false,
                                                                 "isLoading": false,
@@ -6350,7 +6348,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                       "formatGroupLabel": [Function],
                                                                       "getOptionLabel": [Function],
                                                                       "getOptionValue": [Function],
-                                                                      "id": "select-label",
+                                                                      "inputId": "select-label",
                                                                       "inputValue": "",
                                                                       "isDisabled": false,
                                                                       "isLoading": false,
@@ -6458,7 +6456,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                       "formatGroupLabel": [Function],
                                                                       "getOptionLabel": [Function],
                                                                       "getOptionValue": [Function],
-                                                                      "id": "select-label",
+                                                                      "inputId": "select-label",
                                                                       "inputValue": "",
                                                                       "isDisabled": false,
                                                                       "isLoading": false,

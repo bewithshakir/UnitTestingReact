@@ -13,11 +13,9 @@ export default class DSPModel {
     dspName: string;
     contactNm: string;
     email: string;
+    phone: string;
     addressLine1: string;
     addressLine2: string;
-
-
-
     customerId: string;
     city: string;
     state: string;
@@ -28,9 +26,9 @@ export default class DSPModel {
         this.dspName = '';
         this.contactNm = '';
         this.email = '';
+        this.phone =  '';
         this.addressLine1 = '';
         this.addressLine2 = '';
-
         this.customerId = '';
         this.city = '';
         this.state = '';

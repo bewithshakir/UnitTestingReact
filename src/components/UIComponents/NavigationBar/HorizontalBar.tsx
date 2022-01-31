@@ -92,24 +92,23 @@ export default function HorizontalBar (props: HorizontalBarProps) {
       });
     } else if (pathname.includes('addLot') || pathname.includes('addFuelTax')) {
       navigate(-1);
-    } else if (
-      pathname.includes('salesTax/add') ||
-      pathname.includes('salesTax/edit')
-    ) {
+    } else if (pathname.includes('salesTax/add') || pathname.includes('salesTax/edit')) {
       navigate('/salesTax');
     } else if (pathname.includes('opisCities/add')) {
       navigate('/opisCities');
     } else if (pathname.includes('editFuelTax')) {
       navigate('/taxes');
-    } else if (
-      pathname.includes('productManagement/add') ||
-      pathname.includes('productManagement/edit')
-    ) {
+    } else if (pathname.includes('productManagement/add') || pathname.includes('productManagement/edit')) {
       navigate('/productManagement');
-    } else if (
-      pathname.includes('AddAttachment')
-    ) {
+    } else if (pathname.includes('AddAttachment')) {
       navigate(-1);
+    } else if (pathname.includes('dsps/addDsp')) {
+      navigate(`/customer/${selectedCustomerId}/dsps`, {
+        state: {
+          customerId: selectedCustomerId,
+          customerName: selectedCustomerName
+        }
+      });
     } else {
       props.onBack();
     }
@@ -135,6 +134,14 @@ export default function HorizontalBar (props: HorizontalBarProps) {
         return t('productManagement.form.titleAdd');
       case pathname.includes('productManagement/edit'):
         return t('productManagement.form.titleEdit');
+      case pathname.includes('dsps/addDsp'):
+        return t("addDSP.title");
+      case (pathname.includes('addLot')):
+        return t('parkingLot.form.titleAdd');
+      case (pathname.includes('viewLot')):
+        return t('parkingLot.form.titleEdit');
+      case pathname.includes('AddAttachment'):
+        return t("Add Attachment");
       default:
         return selectedCustomerName;
     }
@@ -294,12 +301,9 @@ export default function HorizontalBar (props: HorizontalBarProps) {
           <Link className='breadcrubs-title' onClick={handleCustomerBack}>
             {selectedCustomerName}
           </Link>
-          {(pathname.includes('addLot') || pathname.includes('viewLot')) && <Link className='breadcrubs-title' href='#' onClick={handleClick}>
-            {'Add Lot & Details'}
-          </Link>}
-          {(pathname.includes('AddAttachment') && <Link className="breadcrubs-title" href="#" onClick={handleClick}>
-            {"Add Attachment"}
-          </Link>)}
+          <Link className="breadcrubs-title" href="#" onClick={handleClick}>
+            {getHeaderText()}
+          </Link>
         </Breadcrumbs>
       </>
     );
