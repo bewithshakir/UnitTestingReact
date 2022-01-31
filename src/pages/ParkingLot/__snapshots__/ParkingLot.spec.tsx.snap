@@ -1134,6 +1134,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                               "field": "streetAddress",
                               "label": "STREET ADDRESS",
                               "type": "text",
+                              "width": "150px",
                             },
                             Object {
                               "field": "cityNm",
@@ -4316,6 +4317,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                   "field": "streetAddress",
                                   "label": "STREET ADDRESS",
                                   "type": "text",
+                                  "width": "150px",
                                 },
                                 Object {
                                   "field": "cityNm",
@@ -4546,6 +4548,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                               "field": "streetAddress",
                               "label": "STREET ADDRESS",
                               "type": "text",
+                              "width": "150px",
                             },
                             Object {
                               "field": "cityNm",
@@ -4642,7 +4645,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                   stickyHeader={true}
                                   sx={
                                     Object {
-                                      "minWidth": "1600px",
+                                      "minWidth": "1200px",
                                     }
                                   }
                                 >
@@ -4661,6 +4664,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                           "field": "streetAddress",
                                           "label": "STREET ADDRESS",
                                           "type": "text",
+                                          "width": "150px",
                                         },
                                         Object {
                                           "field": "cityNm",
@@ -4744,6 +4748,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                           "field": "streetAddress",
                                           "label": "STREET ADDRESS",
                                           "type": "text",
+                                          "width": "150px",
                                         },
                                         Object {
                                           "field": "cityNm",
@@ -4814,6 +4819,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                           "field": "streetAddress",
                                           "label": "STREET ADDRESS",
                                           "type": "text",
+                                          "width": "150px",
                                         },
                                         Object {
                                           "field": "cityNm",
@@ -4914,7 +4920,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                 stickyHeader={true}
                                 sx={
                                   Object {
-                                    "minWidth": "1600px",
+                                    "minWidth": "1200px",
                                   }
                                 }
                               >
@@ -4941,6 +4947,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                                 "field": "streetAddress",
                                                 "label": "STREET ADDRESS",
                                                 "type": "text",
+                                                "width": "150px",
                                               },
                                               Object {
                                                 "field": "cityNm",
@@ -5024,6 +5031,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                                 "field": "streetAddress",
                                                 "label": "STREET ADDRESS",
                                                 "type": "text",
+                                                "width": "150px",
                                               },
                                               Object {
                                                 "field": "cityNm",
@@ -5094,6 +5102,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                                 "field": "streetAddress",
                                                 "label": "STREET ADDRESS",
                                                 "type": "text",
+                                                "width": "150px",
                                               },
                                               Object {
                                                 "field": "cityNm",
@@ -5184,20 +5193,20 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                       "size": "medium",
                                       "stickyHeader": true,
                                       "sx": Object {
-                                        "minWidth": "1600px",
+                                        "minWidth": "1200px",
                                       },
                                     }
                                   }
                                   role={null}
                                   sx={
                                     Object {
-                                      "minWidth": "1600px",
+                                      "minWidth": "1200px",
                                     }
                                   }
                                 >
                                   <table
                                     aria-labelledby="tableTitle"
-                                    className="MuiTable-root MuiTable-stickyHeader css-12exmm-MuiTable-root"
+                                    className="MuiTable-root MuiTable-stickyHeader css-1dzs180-MuiTable-root"
                                     role={null}
                                   >
                                     <EnhancedGridHead
@@ -5215,6 +5224,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                             "field": "streetAddress",
                                             "label": "STREET ADDRESS",
                                             "type": "text",
+                                            "width": "150px",
                                           },
                                           Object {
                                             "field": "cityNm",
@@ -5296,6 +5306,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                               "children": <ForwardRef(TableRow)>
                                                 <ForwardRef(TableCell)
                                                   className="header-options"
+                                                  size="small"
                                                   sortDirection={false}
                                                 >
                                                   <ForwardRef(TableSortLabel)
@@ -5309,30 +5320,35 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                                 </ForwardRef(TableCell)>
                                                 <ForwardRef(TableCell)
                                                   className="header-options"
+                                                  size="small"
                                                   sortDirection={false}
                                                 >
                                                   STREET ADDRESS
                                                 </ForwardRef(TableCell)>
                                                 <ForwardRef(TableCell)
                                                   className="header-options"
+                                                  size="small"
                                                   sortDirection={false}
                                                 >
                                                   CITY
                                                 </ForwardRef(TableCell)>
                                                 <ForwardRef(TableCell)
                                                   className="header-options"
+                                                  size="small"
                                                   sortDirection={false}
                                                 >
                                                   STATE
                                                 </ForwardRef(TableCell)>
                                                 <ForwardRef(TableCell)
                                                   className="header-options"
+                                                  size="small"
                                                   sortDirection={false}
                                                 >
                                                   ZIP
                                                 </ForwardRef(TableCell)>
                                                 <ForwardRef(TableCell)
                                                   className="header-options"
+                                                  size="small"
                                                   sortDirection={false}
                                                 >
                                                   RACK UPDATE
@@ -5340,18 +5356,21 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                                 <ForwardRef(TableCell)
                                                   align="center"
                                                   className="header-options"
+                                                  size="small"
                                                   sortDirection={false}
                                                 >
                                                   WALLET
                                                 </ForwardRef(TableCell)>
                                                 <ForwardRef(TableCell)
                                                   className="header-options"
+                                                  size="small"
                                                   sortDirection={false}
                                                 >
                                                   FUEL
                                                 </ForwardRef(TableCell)>
                                                 <ForwardRef(TableCell)
                                                   className="header-options"
+                                                  size="small"
                                                   sortDirection={false}
                                                 >
                                                   VEHICLES
@@ -5390,6 +5409,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                                       Array [
                                                         <ForwardRef(TableCell)
                                                           className="header-options"
+                                                          size="small"
                                                           sortDirection={false}
                                                         >
                                                           <ForwardRef(TableSortLabel)
@@ -5403,30 +5423,35 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                                         </ForwardRef(TableCell)>,
                                                         <ForwardRef(TableCell)
                                                           className="header-options"
+                                                          size="small"
                                                           sortDirection={false}
                                                         >
                                                           STREET ADDRESS
                                                         </ForwardRef(TableCell)>,
                                                         <ForwardRef(TableCell)
                                                           className="header-options"
+                                                          size="small"
                                                           sortDirection={false}
                                                         >
                                                           CITY
                                                         </ForwardRef(TableCell)>,
                                                         <ForwardRef(TableCell)
                                                           className="header-options"
+                                                          size="small"
                                                           sortDirection={false}
                                                         >
                                                           STATE
                                                         </ForwardRef(TableCell)>,
                                                         <ForwardRef(TableCell)
                                                           className="header-options"
+                                                          size="small"
                                                           sortDirection={false}
                                                         >
                                                           ZIP
                                                         </ForwardRef(TableCell)>,
                                                         <ForwardRef(TableCell)
                                                           className="header-options"
+                                                          size="small"
                                                           sortDirection={false}
                                                         >
                                                           RACK UPDATE
@@ -5434,18 +5459,21 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                                         <ForwardRef(TableCell)
                                                           align="center"
                                                           className="header-options"
+                                                          size="small"
                                                           sortDirection={false}
                                                         >
                                                           WALLET
                                                         </ForwardRef(TableCell)>,
                                                         <ForwardRef(TableCell)
                                                           className="header-options"
+                                                          size="small"
                                                           sortDirection={false}
                                                         >
                                                           FUEL
                                                         </ForwardRef(TableCell)>,
                                                         <ForwardRef(TableCell)
                                                           className="header-options"
+                                                          size="small"
                                                           sortDirection={false}
                                                         >
                                                           VEHICLES
@@ -5473,12 +5501,13 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                                   <ForwardRef(TableCell)
                                                     className="header-options"
                                                     key="deliveryLocationNm"
+                                                    size="small"
                                                     sortDirection={false}
                                                   >
                                                     <MuiTableCellRoot
                                                       aria-sort={null}
                                                       as="th"
-                                                      className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeMedium header-options"
+                                                      className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeSmall header-options"
                                                       ownerState={
                                                         Object {
                                                           "align": "inherit",
@@ -5493,7 +5522,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                                           "className": "header-options",
                                                           "component": "th",
                                                           "padding": "normal",
-                                                          "size": "medium",
+                                                          "size": "small",
                                                           "sortDirection": false,
                                                           "stickyHeader": true,
                                                           "variant": "head",
@@ -5503,7 +5532,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                                     >
                                                       <th
                                                         aria-sort={null}
-                                                        className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeMedium header-options css-y8ay40-MuiTableCell-root"
+                                                        className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeSmall header-options css-1h37f49-MuiTableCell-root"
                                                         scope="col"
                                                       >
                                                         <ForwardRef(TableSortLabel)
@@ -5653,12 +5682,13 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                                   <ForwardRef(TableCell)
                                                     className="header-options"
                                                     key="streetAddress"
+                                                    size="small"
                                                     sortDirection={false}
                                                   >
                                                     <MuiTableCellRoot
                                                       aria-sort={null}
                                                       as="th"
-                                                      className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeMedium header-options"
+                                                      className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeSmall header-options"
                                                       ownerState={
                                                         Object {
                                                           "align": "inherit",
@@ -5666,7 +5696,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                                           "className": "header-options",
                                                           "component": "th",
                                                           "padding": "normal",
-                                                          "size": "medium",
+                                                          "size": "small",
                                                           "sortDirection": false,
                                                           "stickyHeader": true,
                                                           "variant": "head",
@@ -5676,7 +5706,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                                     >
                                                       <th
                                                         aria-sort={null}
-                                                        className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeMedium header-options css-y8ay40-MuiTableCell-root"
+                                                        className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeSmall header-options css-1h37f49-MuiTableCell-root"
                                                         scope="col"
                                                       >
                                                         STREET ADDRESS
@@ -5686,12 +5716,13 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                                   <ForwardRef(TableCell)
                                                     className="header-options"
                                                     key="cityNm"
+                                                    size="small"
                                                     sortDirection={false}
                                                   >
                                                     <MuiTableCellRoot
                                                       aria-sort={null}
                                                       as="th"
-                                                      className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeMedium header-options"
+                                                      className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeSmall header-options"
                                                       ownerState={
                                                         Object {
                                                           "align": "inherit",
@@ -5699,7 +5730,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                                           "className": "header-options",
                                                           "component": "th",
                                                           "padding": "normal",
-                                                          "size": "medium",
+                                                          "size": "small",
                                                           "sortDirection": false,
                                                           "stickyHeader": true,
                                                           "variant": "head",
@@ -5709,7 +5740,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                                     >
                                                       <th
                                                         aria-sort={null}
-                                                        className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeMedium header-options css-y8ay40-MuiTableCell-root"
+                                                        className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeSmall header-options css-1h37f49-MuiTableCell-root"
                                                         scope="col"
                                                       >
                                                         CITY
@@ -5719,12 +5750,13 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                                   <ForwardRef(TableCell)
                                                     className="header-options"
                                                     key="stateNm"
+                                                    size="small"
                                                     sortDirection={false}
                                                   >
                                                     <MuiTableCellRoot
                                                       aria-sort={null}
                                                       as="th"
-                                                      className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeMedium header-options"
+                                                      className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeSmall header-options"
                                                       ownerState={
                                                         Object {
                                                           "align": "inherit",
@@ -5732,7 +5764,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                                           "className": "header-options",
                                                           "component": "th",
                                                           "padding": "normal",
-                                                          "size": "medium",
+                                                          "size": "small",
                                                           "sortDirection": false,
                                                           "stickyHeader": true,
                                                           "variant": "head",
@@ -5742,7 +5774,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                                     >
                                                       <th
                                                         aria-sort={null}
-                                                        className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeMedium header-options css-y8ay40-MuiTableCell-root"
+                                                        className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeSmall header-options css-1h37f49-MuiTableCell-root"
                                                         scope="col"
                                                       >
                                                         STATE
@@ -5752,12 +5784,13 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                                   <ForwardRef(TableCell)
                                                     className="header-options"
                                                     key="postalCd"
+                                                    size="small"
                                                     sortDirection={false}
                                                   >
                                                     <MuiTableCellRoot
                                                       aria-sort={null}
                                                       as="th"
-                                                      className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeMedium header-options"
+                                                      className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeSmall header-options"
                                                       ownerState={
                                                         Object {
                                                           "align": "inherit",
@@ -5765,7 +5798,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                                           "className": "header-options",
                                                           "component": "th",
                                                           "padding": "normal",
-                                                          "size": "medium",
+                                                          "size": "small",
                                                           "sortDirection": false,
                                                           "stickyHeader": true,
                                                           "variant": "head",
@@ -5775,7 +5808,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                                     >
                                                       <th
                                                         aria-sort={null}
-                                                        className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeMedium header-options css-y8ay40-MuiTableCell-root"
+                                                        className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeSmall header-options css-1h37f49-MuiTableCell-root"
                                                         scope="col"
                                                       >
                                                         ZIP
@@ -5785,12 +5818,13 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                                   <ForwardRef(TableCell)
                                                     className="header-options"
                                                     key="rackUpdate"
+                                                    size="small"
                                                     sortDirection={false}
                                                   >
                                                     <MuiTableCellRoot
                                                       aria-sort={null}
                                                       as="th"
-                                                      className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeMedium header-options"
+                                                      className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeSmall header-options"
                                                       ownerState={
                                                         Object {
                                                           "align": "inherit",
@@ -5798,7 +5832,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                                           "className": "header-options",
                                                           "component": "th",
                                                           "padding": "normal",
-                                                          "size": "medium",
+                                                          "size": "small",
                                                           "sortDirection": false,
                                                           "stickyHeader": true,
                                                           "variant": "head",
@@ -5808,7 +5842,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                                     >
                                                       <th
                                                         aria-sort={null}
-                                                        className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeMedium header-options css-y8ay40-MuiTableCell-root"
+                                                        className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeSmall header-options css-1h37f49-MuiTableCell-root"
                                                         scope="col"
                                                       >
                                                         RACK UPDATE
@@ -5819,12 +5853,13 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                                     align="center"
                                                     className="header-options"
                                                     key="walletStatus"
+                                                    size="small"
                                                     sortDirection={false}
                                                   >
                                                     <MuiTableCellRoot
                                                       aria-sort={null}
                                                       as="th"
-                                                      className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignCenter MuiTableCell-sizeMedium header-options"
+                                                      className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignCenter MuiTableCell-sizeSmall header-options"
                                                       ownerState={
                                                         Object {
                                                           "align": "center",
@@ -5832,7 +5867,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                                           "className": "header-options",
                                                           "component": "th",
                                                           "padding": "normal",
-                                                          "size": "medium",
+                                                          "size": "small",
                                                           "sortDirection": false,
                                                           "stickyHeader": true,
                                                           "variant": "head",
@@ -5842,7 +5877,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                                     >
                                                       <th
                                                         aria-sort={null}
-                                                        className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignCenter MuiTableCell-sizeMedium header-options css-dwuj3p-MuiTableCell-root"
+                                                        className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignCenter MuiTableCell-sizeSmall header-options css-nc6t7a-MuiTableCell-root"
                                                         scope="col"
                                                       >
                                                         WALLET
@@ -5852,12 +5887,13 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                                   <ForwardRef(TableCell)
                                                     className="header-options"
                                                     key="fuelStatus"
+                                                    size="small"
                                                     sortDirection={false}
                                                   >
                                                     <MuiTableCellRoot
                                                       aria-sort={null}
                                                       as="th"
-                                                      className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeMedium header-options"
+                                                      className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeSmall header-options"
                                                       ownerState={
                                                         Object {
                                                           "align": "inherit",
@@ -5865,7 +5901,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                                           "className": "header-options",
                                                           "component": "th",
                                                           "padding": "normal",
-                                                          "size": "medium",
+                                                          "size": "small",
                                                           "sortDirection": false,
                                                           "stickyHeader": true,
                                                           "variant": "head",
@@ -5875,7 +5911,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                                     >
                                                       <th
                                                         aria-sort={null}
-                                                        className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeMedium header-options css-y8ay40-MuiTableCell-root"
+                                                        className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeSmall header-options css-1h37f49-MuiTableCell-root"
                                                         scope="col"
                                                       >
                                                         FUEL
@@ -5885,12 +5921,13 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                                   <ForwardRef(TableCell)
                                                     className="header-options"
                                                     key="vehicles"
+                                                    size="small"
                                                     sortDirection={false}
                                                   >
                                                     <MuiTableCellRoot
                                                       aria-sort={null}
                                                       as="th"
-                                                      className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeMedium header-options"
+                                                      className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeSmall header-options"
                                                       ownerState={
                                                         Object {
                                                           "align": "inherit",
@@ -5898,7 +5935,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                                           "className": "header-options",
                                                           "component": "th",
                                                           "padding": "normal",
-                                                          "size": "medium",
+                                                          "size": "small",
                                                           "sortDirection": false,
                                                           "stickyHeader": true,
                                                           "variant": "head",
@@ -5908,7 +5945,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                                     >
                                                       <th
                                                         aria-sort={null}
-                                                        className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeMedium header-options css-y8ay40-MuiTableCell-root"
+                                                        className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeSmall header-options css-1h37f49-MuiTableCell-root"
                                                         scope="col"
                                                       >
                                                         VEHICLES
@@ -5968,6 +6005,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                             "field": "streetAddress",
                                             "label": "STREET ADDRESS",
                                             "type": "text",
+                                            "width": "150px",
                                           },
                                           Object {
                                             "field": "cityNm",
@@ -6038,6 +6076,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                             "field": "streetAddress",
                                             "label": "STREET ADDRESS",
                                             "type": "text",
+                                            "width": "150px",
                                           },
                                           Object {
                                             "field": "cityNm",
