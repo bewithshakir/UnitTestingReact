@@ -45,11 +45,11 @@ export default function SelectAutoComplete(props: props) {
     return (
         <Fragment>
             <FormControl className='select select-address-autocomplete' >
-                {props.label && (<InputLabel shrink htmlFor={`${props.id}-label`} style={{ color: 'var(--Darkgray)' }} aria-labelledby={props.label} aria-required={props.required}>
+                {props.label && (<InputLabel shrink htmlFor={`${props.id}`} style={{ color: 'var(--Darkgray)' }} aria-labelledby={props.label} aria-required={props.required}>
                     <b>{props.label.toUpperCase()}{props.required && props.label && (<span className='super' >* </span>)}</b >
                 </InputLabel>)}
                 <Select
-                    id={props.id}
+                    inputId={props.id}
                     name={props.name}
                     placeholder={props.placeholder}
                     className={props.error ? 'react-select-container error' : 'react-select-container'}
