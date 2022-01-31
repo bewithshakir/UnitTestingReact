@@ -6,6 +6,7 @@ import { getOPISCitiesHandler } from '../pages/OPISCity/mockApi/handlerOPISCityL
 import { getAllParkingLotsHandler } from '../pages/ParkingLotsManagement/mockApi/handlerAllParkingLotsLandingPage';
 import { getAttachmentListHandler } from '../pages/Attachments/mockApi/AttachmentLandingPageHandler';
 import { getProductByLotHandler } from '../pages/ProductManagement/mockApi/handler';
+import { editProductHandler } from '../pages/ProductManagement/mockApi/handler';
 
 export const handlers = [
     productTypesHandler(),
@@ -17,6 +18,7 @@ export const handlers = [
     getAttachmentListHandler(),
     getProductByLotHandler(),
     getAllParkingLotsHandler(),
+    editProductHandler()
 ];
 
 const createTestQueryClient = () => new QueryClient({
