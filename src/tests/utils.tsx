@@ -9,7 +9,7 @@ import { addDspHandler, getDspDataHandler, editDspHandler } from "../pages/DspLa
 import { getFormattedAddressHandler, getGoogleAddressHandler } from "../components/UIComponents/GoogleAddressComponent/mockApi/googleAddressAutoHandler";
 import { getProductByLotHandler } from '../pages/ProductManagement/mockApi/handler';
 import { editProductHandler } from '../pages/ProductManagement/mockApi/handler';
-import { getFuelTaxList } from '../pages/Tax/mockApi/handler';
+import { getFuelTaxList, getFuelTaxProductsList } from '../pages/Tax/mockApi/handler';
 
 export const handlers = [
     productTypesHandler(),
@@ -27,7 +27,8 @@ export const handlers = [
     getDspDataHandler(),
     editDspHandler(),
     editProductHandler(),
-    getFuelTaxList()
+    getFuelTaxList(),
+    getFuelTaxProductsList()
 ];
 
 const createTestQueryClient = () => new QueryClient({
