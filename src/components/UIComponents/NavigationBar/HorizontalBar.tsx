@@ -281,25 +281,25 @@ export default function HorizontalBar (props: HorizontalBarProps) {
     }
   }
 
-  const handleCustomerBack = () => {
-    hideDialogBox(false);
-    resetFormFieldValue(false);
-    navigate(`/customer/viewCustomer/${selectedCustomerId}`);
-  };
+  // const handleCustomerBack = () => {
+  //   hideDialogBox(false);
+  //   resetFormFieldValue(false);
+  //   navigate(`/customer/viewCustomer/${selectedCustomerId}`);
+  // };
 
   function versionBreadcrumbsMany () {
     return (
       <>
         <Breadcrumbs separator={<NavigateNextIcon />} aria-label='breadcrumb'>
-          <Link className='breadcrubs-title' onClick={handleCustomerBack}>
+          <Link className='breadcrubs-title'>
             {selectedCustomerName}
           </Link>
-          { (pathname.includes('addLot') || pathname.includes('viewLot') ) && <Link className='breadcrubs-title' href='#' onClick={handleClick}>
+          { (pathname.includes('addLot') || pathname.includes('viewLot') ) && <Link className='breadcrubs-title' href='#'>
             {'Add Lot & Details'}
           </Link>}
-          { (pathname.includes('AddAttachment') &&  <Link className="breadcrubs-title" href="#" onClick={handleClick}>
+          { (pathname.includes('AddAttachment') &&  <span className="breadcrubs-title" >
           {"Add Attachment"}
-        </Link>)}
+        </span>)}
         </Breadcrumbs>
       </>
     );
