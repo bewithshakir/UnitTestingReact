@@ -364,6 +364,7 @@
     "uploadedIn": "UPLOADED IN"
   },
   "UploadAttachments":{
+    "breadCrumbText": "Import Attachment",
     "uploadInitialText": "Drag & drop the file or",
     "choose":"Choose",
     "fileFormatSize":"Max file size : 25MB | File format : PDF, XLSX or DOCX",

@@ -145,7 +145,7 @@ export default function HorizontalBar (props: HorizontalBarProps) {
       case (pathname.includes('viewLot')):
         return t('parkingLot.form.titleEdit');
       case pathname.includes('AddAttachment'):
-        return t("Add Attachment");
+        return t('UploadAttachments.breadCrumbText');
       default:
         return selectedCustomerName;
     }
@@ -292,20 +292,14 @@ export default function HorizontalBar (props: HorizontalBarProps) {
     }
   }
 
-  const handleCustomerBack = () => {
-    hideDialogBox(false);
-    resetFormFieldValue(false);
-    navigate(`/customer/viewCustomer/${selectedCustomerId}`);
-  };
-
   function versionBreadcrumbsMany () {
     return (
       <>
         <Breadcrumbs separator={<NavigateNextIcon />} aria-label='breadcrumb'>
-          <Link className='breadcrubs-title' onClick={handleCustomerBack}>
+          <Link className='breadcrubs-title'>
             {selectedCustomerName}
           </Link>
-          <Link className="breadcrubs-title" href="#" onClick={handleClick}>
+          <Link className="breadcrubs-title" href="#" onClick={ (event) => event.preventDefault() } >
             {getHeaderText()}
           </Link>
         </Breadcrumbs>
