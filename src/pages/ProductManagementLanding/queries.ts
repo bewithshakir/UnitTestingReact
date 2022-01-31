@@ -20,7 +20,7 @@ const getProductsList = async (pageParam: number, searchTerm: string, sortOrder:
         }
     }
 
-    const opisCityListEntitySet = `/api/product-service/product/products?limit=${pageDataLimit}&offset=${pageParam}`;
+    const opisCityListEntitySet = `/api/product-service/products?limit=${pageDataLimit}&offset=${pageParam}`;
     const url = query ? `&countryCode=us${query.toString().length ? `&${query.toString()}` : ''}` : `&countryCode=us`;
     const options: AxiosRequestConfig = {
         method: 'get',
