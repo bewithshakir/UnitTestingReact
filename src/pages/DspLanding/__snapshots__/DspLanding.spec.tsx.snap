@@ -75,7 +75,6 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -285,7 +284,6 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -3927,7 +3925,7 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                                   stickyHeader={true}
                                   sx={
                                     Object {
-                                      "minWidth": "1600px",
+                                      "minWidth": "1200px",
                                     }
                                   }
                                 >
@@ -4118,7 +4116,7 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                                 stickyHeader={true}
                                 sx={
                                   Object {
-                                    "minWidth": "1600px",
+                                    "minWidth": "1200px",
                                   }
                                 }
                               >
@@ -4307,20 +4305,20 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                                       "size": "medium",
                                       "stickyHeader": true,
                                       "sx": Object {
-                                        "minWidth": "1600px",
+                                        "minWidth": "1200px",
                                       },
                                     }
                                   }
                                   role={null}
                                   sx={
                                     Object {
-                                      "minWidth": "1600px",
+                                      "minWidth": "1200px",
                                     }
                                   }
                                 >
                                   <table
                                     aria-labelledby="tableTitle"
-                                    className="MuiTable-root MuiTable-stickyHeader css-12exmm-MuiTable-root"
+                                    className="MuiTable-root MuiTable-stickyHeader css-1dzs180-MuiTable-root"
                                     role={null}
                                   >
                                     <EnhancedGridHead
@@ -4394,6 +4392,7 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                                               "children": <ForwardRef(TableRow)>
                                                 <ForwardRef(TableCell)
                                                   className="header-options"
+                                                  size="small"
                                                   sortDirection={false}
                                                 >
                                                   <ForwardRef(TableSortLabel)
@@ -4407,42 +4406,49 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                                                 </ForwardRef(TableCell)>
                                                 <ForwardRef(TableCell)
                                                   className="header-options"
+                                                  size="small"
                                                   sortDirection={false}
                                                 >
                                                   CONTACT NAME
                                                 </ForwardRef(TableCell)>
                                                 <ForwardRef(TableCell)
                                                   className="header-options"
+                                                  size="small"
                                                   sortDirection={false}
                                                 >
                                                   EMAIL
                                                 </ForwardRef(TableCell)>
                                                 <ForwardRef(TableCell)
                                                   className="header-options"
+                                                  size="small"
                                                   sortDirection={false}
                                                 >
                                                   STREET ADDRES
                                                 </ForwardRef(TableCell)>
                                                 <ForwardRef(TableCell)
                                                   className="header-options"
+                                                  size="small"
                                                   sortDirection={false}
                                                 >
                                                   CITY
                                                 </ForwardRef(TableCell)>
                                                 <ForwardRef(TableCell)
                                                   className="header-options"
+                                                  size="small"
                                                   sortDirection={false}
                                                 >
                                                   STATE
                                                 </ForwardRef(TableCell)>
                                                 <ForwardRef(TableCell)
                                                   className="header-options"
+                                                  size="small"
                                                   sortDirection={false}
                                                 >
                                                   ZIP
                                                 </ForwardRef(TableCell)>
                                                 <ForwardRef(TableCell)
                                                   className="header-options"
+                                                  size="small"
                                                   sortDirection={false}
                                                 >
                                                   LOTS ASSIGNED
@@ -4481,6 +4487,7 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                                                       Array [
                                                         <ForwardRef(TableCell)
                                                           className="header-options"
+                                                          size="small"
                                                           sortDirection={false}
                                                         >
                                                           <ForwardRef(TableSortLabel)
@@ -4494,42 +4501,49 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                                                         </ForwardRef(TableCell)>,
                                                         <ForwardRef(TableCell)
                                                           className="header-options"
+                                                          size="small"
                                                           sortDirection={false}
                                                         >
                                                           CONTACT NAME
                                                         </ForwardRef(TableCell)>,
                                                         <ForwardRef(TableCell)
                                                           className="header-options"
+                                                          size="small"
                                                           sortDirection={false}
                                                         >
                                                           EMAIL
                                                         </ForwardRef(TableCell)>,
                                                         <ForwardRef(TableCell)
                                                           className="header-options"
+                                                          size="small"
                                                           sortDirection={false}
                                                         >
                                                           STREET ADDRES
                                                         </ForwardRef(TableCell)>,
                                                         <ForwardRef(TableCell)
                                                           className="header-options"
+                                                          size="small"
                                                           sortDirection={false}
                                                         >
                                                           CITY
                                                         </ForwardRef(TableCell)>,
                                                         <ForwardRef(TableCell)
                                                           className="header-options"
+                                                          size="small"
                                                           sortDirection={false}
                                                         >
                                                           STATE
                                                         </ForwardRef(TableCell)>,
                                                         <ForwardRef(TableCell)
                                                           className="header-options"
+                                                          size="small"
                                                           sortDirection={false}
                                                         >
                                                           ZIP
                                                         </ForwardRef(TableCell)>,
                                                         <ForwardRef(TableCell)
                                                           className="header-options"
+                                                          size="small"
                                                           sortDirection={false}
                                                         >
                                                           LOTS ASSIGNED
@@ -4557,12 +4571,13 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                                                   <ForwardRef(TableCell)
                                                     className="header-options"
                                                     key="name"
+                                                    size="small"
                                                     sortDirection={false}
                                                   >
                                                     <MuiTableCellRoot
                                                       aria-sort={null}
                                                       as="th"
-                                                      className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeMedium header-options"
+                                                      className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeSmall header-options"
                                                       ownerState={
                                                         Object {
                                                           "align": "inherit",
@@ -4577,7 +4592,7 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                                                           "className": "header-options",
                                                           "component": "th",
                                                           "padding": "normal",
-                                                          "size": "medium",
+                                                          "size": "small",
                                                           "sortDirection": false,
                                                           "stickyHeader": true,
                                                           "variant": "head",
@@ -4587,7 +4602,7 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                                                     >
                                                       <th
                                                         aria-sort={null}
-                                                        className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeMedium header-options css-y8ay40-MuiTableCell-root"
+                                                        className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeSmall header-options css-1h37f49-MuiTableCell-root"
                                                         scope="col"
                                                       >
                                                         <ForwardRef(TableSortLabel)
@@ -4737,12 +4752,13 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                                                   <ForwardRef(TableCell)
                                                     className="header-options"
                                                     key="contactName"
+                                                    size="small"
                                                     sortDirection={false}
                                                   >
                                                     <MuiTableCellRoot
                                                       aria-sort={null}
                                                       as="th"
-                                                      className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeMedium header-options"
+                                                      className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeSmall header-options"
                                                       ownerState={
                                                         Object {
                                                           "align": "inherit",
@@ -4750,7 +4766,7 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                                                           "className": "header-options",
                                                           "component": "th",
                                                           "padding": "normal",
-                                                          "size": "medium",
+                                                          "size": "small",
                                                           "sortDirection": false,
                                                           "stickyHeader": true,
                                                           "variant": "head",
@@ -4760,7 +4776,7 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                                                     >
                                                       <th
                                                         aria-sort={null}
-                                                        className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeMedium header-options css-y8ay40-MuiTableCell-root"
+                                                        className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeSmall header-options css-1h37f49-MuiTableCell-root"
                                                         scope="col"
                                                       >
                                                         CONTACT NAME
@@ -4770,12 +4786,13 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                                                   <ForwardRef(TableCell)
                                                     className="header-options"
                                                     key="email"
+                                                    size="small"
                                                     sortDirection={false}
                                                   >
                                                     <MuiTableCellRoot
                                                       aria-sort={null}
                                                       as="th"
-                                                      className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeMedium header-options"
+                                                      className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeSmall header-options"
                                                       ownerState={
                                                         Object {
                                                           "align": "inherit",
@@ -4783,7 +4800,7 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                                                           "className": "header-options",
                                                           "component": "th",
                                                           "padding": "normal",
-                                                          "size": "medium",
+                                                          "size": "small",
                                                           "sortDirection": false,
                                                           "stickyHeader": true,
                                                           "variant": "head",
@@ -4793,7 +4810,7 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                                                     >
                                                       <th
                                                         aria-sort={null}
-                                                        className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeMedium header-options css-y8ay40-MuiTableCell-root"
+                                                        className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeSmall header-options css-1h37f49-MuiTableCell-root"
                                                         scope="col"
                                                       >
                                                         EMAIL
@@ -4803,12 +4820,13 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                                                   <ForwardRef(TableCell)
                                                     className="header-options"
                                                     key="address"
+                                                    size="small"
                                                     sortDirection={false}
                                                   >
                                                     <MuiTableCellRoot
                                                       aria-sort={null}
                                                       as="th"
-                                                      className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeMedium header-options"
+                                                      className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeSmall header-options"
                                                       ownerState={
                                                         Object {
                                                           "align": "inherit",
@@ -4816,7 +4834,7 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                                                           "className": "header-options",
                                                           "component": "th",
                                                           "padding": "normal",
-                                                          "size": "medium",
+                                                          "size": "small",
                                                           "sortDirection": false,
                                                           "stickyHeader": true,
                                                           "variant": "head",
@@ -4826,7 +4844,7 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                                                     >
                                                       <th
                                                         aria-sort={null}
-                                                        className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeMedium header-options css-y8ay40-MuiTableCell-root"
+                                                        className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeSmall header-options css-1h37f49-MuiTableCell-root"
                                                         scope="col"
                                                       >
                                                         STREET ADDRES
@@ -4836,12 +4854,13 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                                                   <ForwardRef(TableCell)
                                                     className="header-options"
                                                     key="city"
+                                                    size="small"
                                                     sortDirection={false}
                                                   >
                                                     <MuiTableCellRoot
                                                       aria-sort={null}
                                                       as="th"
-                                                      className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeMedium header-options"
+                                                      className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeSmall header-options"
                                                       ownerState={
                                                         Object {
                                                           "align": "inherit",
@@ -4849,7 +4868,7 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                                                           "className": "header-options",
                                                           "component": "th",
                                                           "padding": "normal",
-                                                          "size": "medium",
+                                                          "size": "small",
                                                           "sortDirection": false,
                                                           "stickyHeader": true,
                                                           "variant": "head",
@@ -4859,7 +4878,7 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                                                     >
                                                       <th
                                                         aria-sort={null}
-                                                        className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeMedium header-options css-y8ay40-MuiTableCell-root"
+                                                        className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeSmall header-options css-1h37f49-MuiTableCell-root"
                                                         scope="col"
                                                       >
                                                         CITY
@@ -4869,12 +4888,13 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                                                   <ForwardRef(TableCell)
                                                     className="header-options"
                                                     key="state"
+                                                    size="small"
                                                     sortDirection={false}
                                                   >
                                                     <MuiTableCellRoot
                                                       aria-sort={null}
                                                       as="th"
-                                                      className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeMedium header-options"
+                                                      className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeSmall header-options"
                                                       ownerState={
                                                         Object {
                                                           "align": "inherit",
@@ -4882,7 +4902,7 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                                                           "className": "header-options",
                                                           "component": "th",
                                                           "padding": "normal",
-                                                          "size": "medium",
+                                                          "size": "small",
                                                           "sortDirection": false,
                                                           "stickyHeader": true,
                                                           "variant": "head",
@@ -4892,7 +4912,7 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                                                     >
                                                       <th
                                                         aria-sort={null}
-                                                        className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeMedium header-options css-y8ay40-MuiTableCell-root"
+                                                        className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeSmall header-options css-1h37f49-MuiTableCell-root"
                                                         scope="col"
                                                       >
                                                         STATE
@@ -4902,12 +4922,13 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                                                   <ForwardRef(TableCell)
                                                     className="header-options"
                                                     key="zip"
+                                                    size="small"
                                                     sortDirection={false}
                                                   >
                                                     <MuiTableCellRoot
                                                       aria-sort={null}
                                                       as="th"
-                                                      className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeMedium header-options"
+                                                      className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeSmall header-options"
                                                       ownerState={
                                                         Object {
                                                           "align": "inherit",
@@ -4915,7 +4936,7 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                                                           "className": "header-options",
                                                           "component": "th",
                                                           "padding": "normal",
-                                                          "size": "medium",
+                                                          "size": "small",
                                                           "sortDirection": false,
                                                           "stickyHeader": true,
                                                           "variant": "head",
@@ -4925,7 +4946,7 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                                                     >
                                                       <th
                                                         aria-sort={null}
-                                                        className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeMedium header-options css-y8ay40-MuiTableCell-root"
+                                                        className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeSmall header-options css-1h37f49-MuiTableCell-root"
                                                         scope="col"
                                                       >
                                                         ZIP
@@ -4935,12 +4956,13 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                                                   <ForwardRef(TableCell)
                                                     className="header-options"
                                                     key="totalLotAssigned"
+                                                    size="small"
                                                     sortDirection={false}
                                                   >
                                                     <MuiTableCellRoot
                                                       aria-sort={null}
                                                       as="th"
-                                                      className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeMedium header-options"
+                                                      className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeSmall header-options"
                                                       ownerState={
                                                         Object {
                                                           "align": "inherit",
@@ -4948,7 +4970,7 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                                                           "className": "header-options",
                                                           "component": "th",
                                                           "padding": "normal",
-                                                          "size": "medium",
+                                                          "size": "small",
                                                           "sortDirection": false,
                                                           "stickyHeader": true,
                                                           "variant": "head",
@@ -4958,7 +4980,7 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                                                     >
                                                       <th
                                                         aria-sort={null}
-                                                        className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeMedium header-options css-y8ay40-MuiTableCell-root"
+                                                        className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeSmall header-options css-1h37f49-MuiTableCell-root"
                                                         scope="col"
                                                       >
                                                         LOTS ASSIGNED

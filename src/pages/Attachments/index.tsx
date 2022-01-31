@@ -9,17 +9,17 @@ import ActionsMenu from '../../components/UIComponents/Menu/ActionsMenu.componen
 import GridComponent from '../../components/UIComponents/DataGird/grid.component';
 import SearchInput from '../../components/UIComponents/SearchInput/SearchInput';
 import { RightInfoPanel } from '../../components/UIComponents/RightInfoPanel/RightInfoPanel.component';
-import { Box, FormControl, Grid} from '@mui/material';
+import { Box, FormControl, Grid } from '@mui/material';
 import { useAttachmentList } from './queries';
 import { HorizontalBarVersionState, useStore, addedCustomerIdState, useAddedCustomerIdStore } from "../../store";
 import Model from "../../models/AttachmentModel";
 import './style.scss';
 
 interface props {
-    version : string
+    version: string
 }
 
- const LandingPage: React.FC<props> = () => {
+const LandingPage: React.FC<props> = () => {
     const Obj = new Model();
     const headCells = Obj.fieldsToDisplay();
     const [searchTerm, setSearchTerm] = useState('');
@@ -32,55 +32,55 @@ interface props {
     const [filterData, setFilterData] = React.useState<{ [key: string]: string[] }>({});
     const [isFilterPanelOpen, toggleFilterPanel] = React.useState(false);
 
-     const { data, fetchNextPage, isLoading, isFetching }: any = useAttachmentList(
-         searchTerm,
-         sortOrder,
-         filterData,
-         customerId
-     );
+    const { data, fetchNextPage, isLoading, isFetching }: any = useAttachmentList(
+        searchTerm,
+        sortOrder,
+        filterData,
+        customerId
+    );
 
-     useEffect(() => {
-         if (data) {
-             const list: any = [];
-             data?.pages?.forEach((item: any) => {
-                 list.push(...item.data.customerDocuments);
-             });
-             setAttachmentList(list);
-         }
-     }, [data]);
+    useEffect(() => {
+        if (data) {
+            const list: any = [];
+            data?.pages?.forEach((item: any) => {
+                list.push(...item.data.customerDocuments);
+            });
+            setAttachmentList(list);
+        }
+    }, [data]);
 
     const onInputChange = (value: string) => {
         setSearchTerm(value);
     };
 
     const navigate = useNavigate();
-    const params =  useParams(); 
+    const params = useParams();
 
-    const redirectToUploadPage =()=> {
+    const redirectToUploadPage = () => {
         navigate(`/customer/${(params as any)?.customerId}/AddAttachment`);
-    };  
+    };
     const onSortBySlected = (value: string) => {
-         let sortOrder;
-         switch (value) {
+        let sortOrder;
+        switch (value) {
             default:
-                 sortOrder = { sortBy: "", order: "" };
-                 break;
-         }
-         setSortOrder(sortOrder);
+                sortOrder = { sortBy: "", order: "" };
+                break;
+        }
+        setSortOrder(sortOrder);
     };
 
-     const openFilterPanel = () => {
-         toggleFilterPanel(!isFilterPanelOpen);
-     };
+    const openFilterPanel = () => {
+        toggleFilterPanel(!isFilterPanelOpen);
+    };
 
-     const getFilterParams = (filterObj: { [key: string]: string[] }) => {
-         setFilterData(filterObj);
-     };
+    const getFilterParams = (filterObj: { [key: string]: string[] }) => {
+        setFilterData(filterObj);
+    };
 
 
-    return(
+    return (
         <Box display='flex' className='attachments'>
-            <Grid container pl={2.25} pr={6.25} className='main-area'>
+            <Grid container pr={8} className='main-area'>
                 <Grid container display='flex' flexGrow={1}>
                     <Grid item md={8} lg={9} display='flex' >
                         <Grid item pr={2.5}>
@@ -117,7 +117,7 @@ interface props {
                                 types='primary'
                                 aria-label='primary'
                                 onClick={redirectToUploadPage}
-                                startIcon={<ImportIcon/>}
+                                startIcon={<ImportIcon />}
                             >
                                 {t('buttons.import')}
                             </Button>
@@ -142,7 +142,7 @@ interface props {
                         enableRowSelection
                         enableRowAction
                         getPages={fetchNextPage}
-                        onRowActionSelect={()=> null}
+                        onRowActionSelect={() => null}
                         searchTerm={searchTerm}
                         rowActionOptions={[]}
                         noDataMsg={t('Attachments.noDataMsg')}
@@ -161,7 +161,7 @@ interface props {
             </Grid>
         </Box>
     );
-    
+
 };
 
 export default LandingPage;
