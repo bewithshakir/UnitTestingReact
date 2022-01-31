@@ -110,7 +110,16 @@ export default function HorizontalBar (props: HorizontalBarProps) {
       pathname.includes('AddAttachment') 
     ) {
       navigate(-1);
-    }else {
+    }
+    else if (pathname.includes('dsps/addDsp') || pathname.includes('dsps/edit')) {
+      navigate(`/customer/${selectedCustomerId}/dsps`, { 
+        state: {
+          customerId: selectedCustomerId,
+          customerName: selectedCustomerName
+        }
+      });
+    }
+    else {
       props.onBack();
     }
   };
@@ -135,6 +144,16 @@ export default function HorizontalBar (props: HorizontalBarProps) {
         return t('productManagement.form.titleAdd');
       case pathname.includes('productManagement/edit'):
         return t('productManagement.form.titleEdit');
+      case pathname.includes('dsps/addDsp'):
+        return t("addDSP.title");
+      case pathname.includes('dsps/edit'):
+        return t("addDSP.form.titleEdit");
+      case (pathname.includes('addLot') ) :
+          return t('parkingLot.form.titleAdd');
+      case (pathname.includes('viewLot') ) :
+          return t('parkingLot.form.titleEdit');
+      case pathname.includes('AddAttachment'):
+        return t("Add Attachment");
       default:
         return selectedCustomerName;
     }
@@ -294,12 +313,9 @@ export default function HorizontalBar (props: HorizontalBarProps) {
           <Link className='breadcrubs-title' onClick={handleCustomerBack}>
             {selectedCustomerName}
           </Link>
-          { (pathname.includes('addLot') || pathname.includes('viewLot') ) && <Link className='breadcrubs-title' href='#' onClick={handleClick}>
-            {'Add Lot & Details'}
-          </Link>}
-          { (pathname.includes('AddAttachment') &&  <Link className="breadcrubs-title" href="#" onClick={handleClick}>
-          {"Add Attachment"}
-        </Link>)}
+          <Link className="breadcrubs-title" href="#" onClick={handleClick}>
+            {getHeaderText()}
+          </Link>
         </Breadcrumbs>
       </>
     );

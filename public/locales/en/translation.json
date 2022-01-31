@@ -149,12 +149,38 @@
       "zip": "Zip",
       "wallet status": "Wallet Status",
       "fuel type": "Fuel Type"
+    },
+    "addLot": {
+      "title": "Add Lot & Details"
+    },
+    "form": {
+      "titleAdd": "Add Lot & Details",
+      "titleEdit": "Edit Lot & Details"
     }
   },
   "dsp": {
     "search": "Search",
     "filterHeader": "Filters",
     "nodataMsg": "Add DSP by clicking on add DSP or any related sentence."
+  },
+  "addDSP": {
+    "title": "Add DSP",
+    "form": {
+      "titleEdit": "Edit DSP",
+      "title": "Fill all the mandatory fields",
+      "dspName": "DSP Name",
+      "contactForm": {
+        "title": "Contact Details",
+        "contactNm": "Name",
+        "email": "Email ID",
+        "phone": "Phone Number",
+        "addressLine1": "Address Line 1",
+        "addressLine2": "Address Line 2",
+        "city": "City",
+        "state": "State / Province",
+        "postalCode": "Postal Code"
+      }
+    }
   },
   "taxes": {
     "filterHeader": "Filters",

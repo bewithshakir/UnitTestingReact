@@ -16,7 +16,7 @@ const customerOnboarding: React.FC<CustomerOnboardingProps>  = memo(() => {
   );
   setVersion('Breadcrumbs-Single');
   const { pathname } = useLocation();
-  const dis = pathname.includes('addLot') || pathname.includes('viewLot') || pathname.includes('AddAttachment')  ;
+  const dis = pathname.includes('addLot') || pathname.includes('viewLot') || pathname.includes('AddAttachment') || pathname.includes('addDsp') || pathname.includes('dsps/edit') ;
   return (
     <Box display='flex' mt={8} ml={8}>
       <CssBaseline />
