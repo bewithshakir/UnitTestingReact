@@ -246,7 +246,53 @@ export default function HorizontalBar (props: HorizontalBarProps) {
           </div>
         </>
       );
-    } else {
+    } 
+    else if(pathname.includes('truckParkingLot')) {
+      return (
+        <>
+          <div
+            className={
+              pathname.includes('taxes') ? 'linkitem active' : 'linkitem'
+            }
+          >
+            <NavLink
+              className='breadcrubs-title'
+              to='/taxes'
+              onClick={handleClick}
+            >
+              Overview
+            </NavLink>
+          </div>
+          <div
+            className={
+              pathname.includes('salesTax') ? 'linkitem active' : 'linkitem'
+            }
+          >
+            <NavLink
+              className='breadcrubs-title'
+              to='/salesTax'
+              onClick={handleClick}
+            >
+              Live Map
+            </NavLink>
+          </div>
+          <div
+            className={
+              pathname.includes('opisCities') ? 'linkitem active' : 'linkitem'
+            }
+          >
+            <NavLink
+              className='breadcrubs-title'
+              to='/opisCities'
+              onClick={handleClick}
+            >
+              Truck Parking Lot
+            </NavLink>
+          </div>
+        </>
+      );
+    }
+    else {
       return (
         <>
           <div className={pathname === '/' ? 'linkitem active' : 'linkitem'}>
@@ -351,6 +397,9 @@ export default function HorizontalBar (props: HorizontalBarProps) {
                   : null}
             <div className='app__header-section' />
             <div className='app__header-right-section-desktop'>
+              <div>
+                
+              </div>
               <div className='header__country-selector'>
                 <SvgIcon component={USAFlagIcon} />
                 <span className='country-title'>United States</span>
