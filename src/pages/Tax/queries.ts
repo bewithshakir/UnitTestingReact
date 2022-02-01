@@ -45,7 +45,7 @@ export const useFuelTaxList = (query: string, sortOrder: { sortBy: string, order
 const getProductsByTaxId = async (pageParam: number, fuelTaxProductId: string) => {
     const payload: AxiosRequestConfig = {
         method: 'get',
-        url: `/api/tax-service/fuel-taxes/products?limit=${pageDataLimit}&offset=${pageParam}&taxJurisdictionId=${fuelTaxProductId}`
+        url: `/api/tax-service/fuel-taxes/products?limit=${pageDataLimit}&offset=${pageParam}&taxJurisdictionId=${fuelTaxProductId}&countryCode=us`
     };
     const { data } = await axios(payload);
     return data;

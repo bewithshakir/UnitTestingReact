@@ -104,7 +104,7 @@ export const useCreateProduct = (parkingLotId: string, onError: any, onSuccess: 
 const editCustomProduct = async (parkinglotId: string, applicableProductId: string, payload: IAddProductBody) => {
     const options: AxiosRequestConfig = {
         method: 'PUT',
-        url: `api/customer-service/lot/${parkinglotId}/product/${applicableProductId}?countryCode=us`,
+        url: `api/customer-service/lots/${parkinglotId}/products/${applicableProductId}?countryCode=us`,
         data: payload,
     };
     const { data } = await axios(options);
