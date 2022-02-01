@@ -29,7 +29,7 @@ export const useAddSalesTax = (onError: any, onSuccess: any) => {
 const fetchSaleTax = async (query: any) => {
     const options: AxiosRequestConfig = {
         method: 'get',
-        url: `api/tax-service/sales-taxes${query}`
+        url: `api/tax-service/sales-taxes/cities${query}`
     };
     return axios(options);
 };

@@ -25,7 +25,7 @@ export const useAddFuelTax = (onSuccess: any, onError: any) => {
 const fetchSaleTax = async (query: any) => {
     const options: AxiosRequestConfig = {
         method: 'get',
-        url: `api/tax-service/fuel-taxes${query}`
+        url: `api/tax-service/fuel-taxes/cities${query}`
     };
     return axios(options);
 };
