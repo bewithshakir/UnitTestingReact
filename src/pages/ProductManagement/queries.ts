@@ -35,7 +35,7 @@ export const useGetProductNames = (productCd: string) => {
 const getPricingModel = async () => {
     const options: AxiosRequestConfig = {
         method: 'get',
-        url: '/api/customer-service/pricing-models?countryCode=us'
+        url: '/api/config-service/pricing-models?countryCode=us'
     };
     const { data } = await axios(options);
     return data;
@@ -101,18 +101,18 @@ export const useCreateProduct = (parkingLotId: string, onError: any, onSuccess: 
     });
 };
 
-const editCustomProduct = async (parkinglotId: string, applicableProductId: string, payload:IAddProductBody)=>{ 
+const editCustomProduct = async (parkinglotId: string, applicableProductId: string, payload: IAddProductBody) => {
     const options: AxiosRequestConfig = {
         method: 'PUT',
-        url:`api/customer-service/lot/${parkinglotId}/product/${applicableProductId}?countryCode=us`,
+        url: `api/customer-service/lot/${parkinglotId}/product/${applicableProductId}?countryCode=us`,
         data: payload,
     };
     const { data } = await axios(options);
     return data;
 };
 
-export const useEditCustomProduct = (lotId: string, applicableProductId: string, onSuccess: any, onError: any)  => {
-    return useMutation(( payload: IAddProductBody)=> editCustomProduct(lotId, applicableProductId, payload ), {
+export const useEditCustomProduct = (lotId: string, applicableProductId: string, onSuccess: any, onError: any) => {
+    return useMutation((payload: IAddProductBody) => editCustomProduct(lotId, applicableProductId, payload), {
         onError,
         onSuccess,
         retry: false,
