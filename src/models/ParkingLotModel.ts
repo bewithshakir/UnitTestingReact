@@ -161,10 +161,10 @@ export default class ParkingLotModel {
         this.lotLevel = false;
     }
 
-    fieldsToDisplay(): headerObj[] {
+    fieldsToDisplay (): headerObj[] {
         return [
             { field: "deliveryLocationNm", label: "LOT NAME", type: 'text', sortable: true },
-            { field: "streetAddress", label: "STREET ADDRESS", type: 'text' },
+            { field: "streetAddress", label: "STREET ADDRESS", type: 'text', width: "150px" },
             { field: "cityNm", label: "CITY", type: 'text' },
             { field: "stateNm", label: "STATE", type: 'text' },
             { field: "postalCd", label: "ZIP", type: 'text' },
@@ -196,7 +196,7 @@ export default class ParkingLotModel {
         DELETE: 'delete',
     };
 
-    rowActions() {
+    rowActions () {
         const { t } = useTranslation();
         return [
             {
@@ -216,7 +216,7 @@ export default class ParkingLotModel {
         DELETE: 'remove',
     };
 
-    massActions() {
+    massActions () {
         const { t } = useTranslation();
         return [
             {

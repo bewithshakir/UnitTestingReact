@@ -5,7 +5,11 @@ import { addProductManagementHandler, editProductManagementHandler, getProductDa
 import { getOPISCitiesHandler } from '../pages/OPISCity/mockApi/handlerOPISCityLandingPage';
 import { getAllParkingLotsHandler } from '../pages/ParkingLotsManagement/mockApi/handlerAllParkingLotsLandingPage';
 import { getAttachmentListHandler } from '../pages/Attachments/mockApi/AttachmentLandingPageHandler';
+import { addDspHandler, getDspDataHandler, editDspHandler } from "../pages/DspLanding/AddDSP/mockApi/handlerAddDsp";
+import { getFormattedAddressHandler, getGoogleAddressHandler } from "../components/UIComponents/GoogleAddressComponent/mockApi/googleAddressAutoHandler";
 import { getProductByLotHandler } from '../pages/ProductManagement/mockApi/handler';
+import { editProductHandler } from '../pages/ProductManagement/mockApi/handler';
+import { getFuelTaxList, getFuelTaxProductsList } from '../pages/Tax/mockApi/handler';
 
 export const handlers = [
     productTypesHandler(),
@@ -17,6 +21,14 @@ export const handlers = [
     getAttachmentListHandler(),
     getProductByLotHandler(),
     getAllParkingLotsHandler(),
+    getFormattedAddressHandler(),
+    getGoogleAddressHandler(),
+    addDspHandler(),
+    getDspDataHandler(),
+    editDspHandler(),
+    editProductHandler(),
+    getFuelTaxList(),
+    getFuelTaxProductsList()
 ];
 
 const createTestQueryClient = () => new QueryClient({

@@ -101,6 +101,24 @@ export const useCreateProduct = (parkingLotId: string, onError: any, onSuccess: 
     });
 };
 
+const editCustomProduct = async (parkinglotId: string, applicableProductId: string, payload:IAddProductBody)=>{ 
+    const options: AxiosRequestConfig = {
+        method: 'PUT',
+        url:`api/customer-service/lot/${parkinglotId}/product/${applicableProductId}?countryCode=us`,
+        data: payload,
+    };
+    const { data } = await axios(options);
+    return data;
+};
+
+export const useEditCustomProduct = (lotId: string, applicableProductId: string, onSuccess: any, onError: any)  => {
+    return useMutation(( payload: IAddProductBody)=> editCustomProduct(lotId, applicableProductId, payload ), {
+        onError,
+        onSuccess,
+        retry: false,
+    });
+};
+
 const getLotProductDetails = async (lotId: string, productId: string) => {
     if (lotId != "" && typeof lotId != "undefined" && productId != "" && typeof productId != "undefined") {
         const options: AxiosRequestConfig = {

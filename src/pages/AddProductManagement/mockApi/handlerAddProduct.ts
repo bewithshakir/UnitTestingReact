@@ -1,19 +1,19 @@
 import { rest } from "msw";
 
 export const productTypesHandler = () => {
-    return rest.get('*/api/product-service/products/productType', (req, res, ctx) => {
+    return rest.get('*/api/product-service/products/product-groups', (req, res, ctx) => {
         return res(
             ctx.status(200),
             ctx.json({
                 data: [
                     {
-                        "productClassCd": "111",
-                        "productClassNm": "Test11 Non-Fuel",
+                        "productGroupCd": "111",
+                        "productGroupNm": "Test11 Non-Fuel",
                         "activeInactiveInd": "Y"
                     },
                     {
-                        "productClassCd": "222",
-                        "productClassNm": "Fuel",
+                        "productGroupCd": "222",
+                        "productGroupNm": "Fuel",
                         "activeInactiveInd": "Y"
                     }
                 ]
@@ -23,20 +23,20 @@ export const productTypesHandler = () => {
 };
 
 export const productColorsHandler = () => {
-    return rest.get('*/api/product-service/products/productColor', (req, res, ctx) => {
+    return rest.get('*/api/product-service/products/product-icons', (req, res, ctx) => {
         return res(
             ctx.status(200),
             ctx.json({
                 data: [
                     {
-                        "productColorCd": "12",
+                        "productIconCd": "12",
                         "name": "red",
-                        "activeInactiveInd": "Y"
+                        "hex": "Y"
                     },
                     {
                         "productColorCd": "13",
                         "name": "blue",
-                        "activeInactiveInd": "Y"
+                        "hex": "Y"
                     }
                 ]
             })
@@ -45,7 +45,7 @@ export const productColorsHandler = () => {
 };
 
 export const addProductManagementHandler = () => {
-    return rest.post('*/api/product-service/products/add', (req, res, ctx) => {
+    return rest.post('*/api/product-service/products', (req, res, ctx) => {
         return res(
             ctx.status(200),
             ctx.json({
@@ -69,27 +69,27 @@ export const addProductManagementHandler = () => {
 };
 
 export const getProductDataHandler = () => {
-    return rest.get('*/api/product-service/products/details/*', (req, res, ctx) => {
+    return rest.get('*/api/product-service/products/*', (req, res, ctx) => {
         return res(
             ctx.status(200),
             ctx.json({
-                data: {
-                    "productId": "1",
-                    "productName": "test edit Diesel",
-                    "productServiceInd": "Y",
+                "data": {
+                    "productCd": "5bfb42d3-be1f-4fd5-8d31-3cf0259ebc45",
+                    "productNm": "test edit Diesel",
+                    "activeInactiveInd": "Y",
                     "manualPricing": 3,
-                    "productClass": {
-                        "productClassCd": "12",
-                        "productClassNm": "test edit Non-Fuel",
+                    "countryCode": "us",
+                    "productGroup": {
+                        "productGroupCd": "85ba2673-6c56-440f-8478-0630ebeddab6",
+                        "productGroupNm": "test edit Non-Fuel",
                         "activeInactiveInd": "Y"
                     },
-                    "productColor": {
-                        "productColorCd": "2",
-                        "productColorNm": "test edit color Purple",
-                        "productColorCode": "#641964",
+                    "productIcon": {
+                        "productIconCd": "35410964-01a7-44ed-aa28-8f9d9d981861",
+                        "productIconNm": "test edit color Purple",
+                        "productIconHexCode": "#EB8705",
                         "activeInactiveInd": "Y"
-                    },
-                    "productGroupCd": "3"
+                    }
                 },
                 "error": null
             })
@@ -98,7 +98,7 @@ export const getProductDataHandler = () => {
 };
 
 export const editProductManagementHandler = () => {
-    return rest.put('*/api/product-service/products/edit/*', (req, res, ctx) => {
+    return rest.put('*/api/product-service/products/*', (req, res, ctx) => {
         return res(
             ctx.status(200),
             ctx.json({

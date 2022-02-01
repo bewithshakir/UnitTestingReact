@@ -77,7 +77,7 @@ export default class TaxModel {
     fieldsToDisplayLotTable (): headerObj[] {
         return [
             {
-                field: "productCd",
+                field: "productNm",
                 label: "PRODUCT",
                 type: 'status',
                 align: 'left',

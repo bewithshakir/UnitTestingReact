@@ -9,9 +9,7 @@ div{
     }
     .legend-box{
         background-color: var(--Lightgray_5);
-        // margin-top:100px;
         border-color:var(--Lightgray_2);
-        // margin-left:100px ;
     }
     .listItemTextPrimary{
        .MuiTypography-body1 {
@@ -36,8 +34,8 @@ div{
       }
      }
     .listItemButton{
-        width:240px;
-        height:32px;
+        width: 240px;
+        height: 40px;
         &.MuiButtonBase-root.MuiListItemButton-root.Mui-selected{
             background-color:var(--Primary);
             color: var(--White);
@@ -55,7 +53,7 @@ div{
         }
         &:hover {
             background-color: var(--Lightgray_2);
-            color: var(--White);
+            color: var(--Darkgray);
             & .MuiListItemIcon-root{
                 color: var(--White),
             }

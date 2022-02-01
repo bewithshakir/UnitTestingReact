@@ -84,6 +84,7 @@ export default function AutoCompleteInput(props: props) {
 
     return (
         <AutoComplete
+            id={props.id}
             name={props.name}
             description={props.description}
             error={props.error}

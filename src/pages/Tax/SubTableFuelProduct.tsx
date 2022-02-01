@@ -38,7 +38,7 @@ export default function InnerTable(props:props) {
         switch (action.action) {
           case ACTION_TYPES.EDIT:
             // perform action
-            navigate(`/editFuelTax/?productId=${row.productId}&taxJurisdictionId=${props.id}&countryCode=us`);
+            navigate(`/editFuelTax/?productId=${row.productCd}&taxJurisdictionId=${props.id}&countryCode=us`);
             break;
           default: return;
         }

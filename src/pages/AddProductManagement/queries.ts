@@ -6,18 +6,18 @@ import ProductManagementModel from "../../models/ProductManagementModel";
 
 interface dataPropsInt {
     activeInactiveInd: string,
-    productClassCd: string,
-    productClassNm: string
+    productGroupCd: string,
+    productGroupNm: string
 }
 interface colorPropsInt {
-    productColorCd: string,
+    productIconCd: string,
     name: string,
     hex: string
 }
 const fetchProductTypes = async (countryCode: string) => {
     const options: AxiosRequestConfig = {
         method: 'get',
-        url: `/api/product-service/products/productType?countryCode=${countryCode}`
+        url: `/api/product-service/products/product-groups?countryCode=${countryCode}`
     };
     const { data } = await axios(options);
     return data;
@@ -28,8 +28,8 @@ export const useGetProductTypes = (countryCode: string) => {
         retry: false,
         select: (response) => {
             const productTypes = response?.data.map((data: dataPropsInt) => ({
-                value: data.productClassCd,
-                label: data.productClassNm,
+                value: data.productGroupCd,
+                label: data.productGroupNm,
             }));
             return productTypes;
         }
@@ -40,7 +40,7 @@ export const useGetProductTypes = (countryCode: string) => {
 const fetProductColors = async (countryCode: string) => {
     const options: AxiosRequestConfig = {
         method: 'get',
-        url: `/api/product-service/products/productColor?countryCode=${countryCode}`
+        url: `/api/product-service/products/product-icons?countryCode=${countryCode}`
     };
     const { data } = await axios(options);
     return data;
@@ -51,7 +51,7 @@ export const useGetProductColors = (countryCode: string) => {
         retry: false,
         select: (response) => {
             const productColors = response?.data.map((data: colorPropsInt) => ({
-                value: data.productColorCd,
+                value: data.productIconCd,
                 label: data.name,
                 icon: getProductIcon(data.name),
                 hex: data.hex
@@ -66,26 +66,26 @@ export const useGetProductColors = (countryCode: string) => {
  */
 interface addEditProductPayloadInt {
     countryCode: string,
-    productName: string,
-    productType: string,
-    productColor: string,
-    productStatus: string,
-    productPricing: number
+    productNm: string,
+    productGroupCd: string,
+    productIconCd: string,
+    activeInactiveInd: string,
+    manualPricing: number
     productGroupId?: string,
 }
 
 const addProductManagement = async (payload: ProductManagementModel) => {
     const finalPayload: addEditProductPayloadInt = {
         countryCode: 'us',
-        productName: payload.productName,
-        productType: payload.productType.value,
-        productColor: payload.productColor.value,
-        productStatus: payload.productStatus.value,
-        productPricing: +payload.productPricing
+        productNm: payload.productName,
+        productGroupCd: payload.productType.value,
+        productIconCd: payload.productColor.value,
+        activeInactiveInd: payload.productStatus.value,
+        manualPricing: +payload.productPricing
     };
     const options: AxiosRequestConfig = {
         method: 'post',
-        url: '/api/product-service/products/add',
+        url: '/api/product-service/products',
         data: finalPayload,
     };
     const { data } = await axios(options);
@@ -95,16 +95,16 @@ const addProductManagement = async (payload: ProductManagementModel) => {
 const editProductManagement = async (payload: ProductManagementModel, productGroupCd: string, productId: string) => {
     const finalPayload: addEditProductPayloadInt = {
         countryCode: 'us',
-        productName: payload.productName,
-        productType: payload.productType.value,
-        productColor: payload.productColor.value,
-        productStatus: payload.productStatus.value,
-        productPricing: +payload.productPricing,
+        productNm: payload.productName,
+        productGroupCd: payload.productType.value,
+        productIconCd: payload.productColor.value,
+        activeInactiveInd: payload.productStatus.value,
+        manualPricing: +payload.productPricing,
         productGroupId: productGroupCd
     };
     const options: AxiosRequestConfig = {
         method: 'put',
-        url: `/api/product-service/products/edit/${productId}`,
+        url: `/api/product-service/products/${productId}`,
         data: finalPayload
     };
     const { data } = await axios(options);
@@ -115,7 +115,7 @@ const getProductData = async (productId: string) => {
     if (productId) {
         const options: AxiosRequestConfig = {
             method: 'get',
-            url: `/api/product-service/products/details/${productId}`
+            url: `/api/product-service/products/${productId}`
         };
         const { data } = await axios(options);
         return data;

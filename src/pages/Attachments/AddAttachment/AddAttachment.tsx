@@ -2,7 +2,7 @@ import React, { useCallback, useState } from 'react';
 import { FileCopy } from '@mui/icons-material';
 import { IconButton , Box, Paper} from '@mui/material';
 import { useTranslation } from "react-i18next";
-
+import { LoadingIcon } from '../../../assets/icons';
 import { config } from '../config';
 import { DeleteIcon, ImportIcon } from '../../../assets/icons';
 import { HorizontalBarVersionState, useStore } from '../../../store';
@@ -46,6 +46,7 @@ const AddAttachment: React.FC<any> = () => {
     const [validFiles, setValidFiles] = useState<File[]>([]);
     const [failureFiles, setFailureFiles] = useState<Array<any>>([]);
     const [uploadErrorMsg, setUploadErrMsg] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
     const { t } = useTranslation();
 
     setVersion("Breadcrumbs-Many");
@@ -64,6 +65,7 @@ const AddAttachment: React.FC<any> = () => {
     }, []);
 
     const onFileUploadSuccess = () => {
+        setIsLoading(false);
         setValidFiles([]);
         setFailureFiles([]);
         setAPIResponse(true);
@@ -74,6 +76,7 @@ const AddAttachment: React.FC<any> = () => {
     };
 
     const onFileUploadError = (err: any) => {
+        setIsLoading(false);
         const { data: { error } } = err.response;
         if (error?.httpCode === 409) {
             setShowConfirmationDialogBox(true);
@@ -99,6 +102,7 @@ const AddAttachment: React.FC<any> = () => {
         formData.append('fileOverwrite', isOverwriteFile ? 'y' : 'n');
         formData.append('uploadedBy', getUploadedBy());
         formData.append('uploadedIn', getUploadedIn(location.pathname));
+        setIsLoading(true);
         uploadAttachment(formData);
     };
 
@@ -162,7 +166,7 @@ const AddAttachment: React.FC<any> = () => {
                 }
                 <ToastMessage isOpen={apiResposneState} messageType={formStatus.type} onClose={() => { return ''; }} message={formStatus.message} />
             </Box>
-            <Button disabled={(validFiles.length == 0 || !!uploadErrorMsg)} className='final-upload-btn' types='primary' aria-label='primary' onClick={uploadAttachedFile}> <ImportIcon /> {t("UploadAttachments.uploadFile")} </Button>
+            <Button disabled={(validFiles.length == 0 || !!uploadErrorMsg || isLoading)} className='final-upload-btn' types='primary' aria-label='primary' onClick={uploadAttachedFile}>  {isLoading ? <LoadingIcon data-testid="loading-spinner" className='loadingIcon' /> : <ImportIcon />} {t("UploadAttachments.uploadFile")} </Button>
             <FileUploadErrorDialog
                 title={t("UploadAttachments.fileuploaddialog.title")}
                 content={t("UploadAttachments.fileuploaddialog.content")}
