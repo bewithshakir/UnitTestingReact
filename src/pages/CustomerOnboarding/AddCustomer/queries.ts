@@ -39,7 +39,7 @@ const uploadContractFiles = async (payload: any, customerId: string) => {
 const getFrequencies = async () => {
     const options: AxiosRequestConfig = {
         method: 'get',
-        url: '/api/config-service/customers/invoice-frequencies?countryCode=us'
+        url: '/api/config-service/invoice-frequencies?countryCode=us'
     };
     const { data } = await axios(options);
     return data;
@@ -48,7 +48,7 @@ const getFrequencies = async () => {
 const getPaymentTypes = async () => {
     const options: AxiosRequestConfig = {
         method: 'get',
-        url: '/api/config-service/customers/payment-types?countryCode=us'
+        url: '/api/config-service/payment-types?countryCode=us'
     };
     const { data } = await axios(options);
     return data;
