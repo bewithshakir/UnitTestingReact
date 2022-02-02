@@ -46,7 +46,7 @@ export const useCustomers = (query: string, sortOrder: { sortBy: string, order: 
 const getLotsByCustomerId = async (pageParam: number, customerId: string) => {
     const payload: AxiosRequestConfig = {
         method: 'get',
-        url: `/api/customer-service/${customerId}/lots?limit=${pageDataLimit}&offset=${pageParam}&countryCode=us`
+        url: `/api/customer-service/lots?limit=${pageDataLimit}&offset=${pageParam}&customerId=${customerId}&countryCode=us`
     };
     const { data } = await axios(payload);
     return data;
