@@ -1,4 +1,5 @@
-import { Fragment, useState } from 'react';
+import { Fragment, useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { FieldArray, FormikProvider, useFormik } from 'formik';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
@@ -13,6 +14,7 @@ import { AddFeeDetailsValidationSchema } from './validations';
 import { useTheme } from '../../../contexts/Theme/Theme.context';
 // import { formStatusObj } from '../config';
 import { useAddedCustomerNameStore, useAddedCustomerIdStore, useShowConfirmationDialogBoxStore } from '../../../store';
+import { useGetLotProductTypes } from './queries';
 import './FeeDetails.scss';
 
 // interface FormStatusType {
@@ -30,6 +32,9 @@ export default function FeeDetails() {
 
     const { t } = useTranslation();
     const { theme } = useTheme();
+    const { pathname } = useLocation();
+    const a = pathname.split('/');
+    const lotId = a[5];
     // const [formStatus, setFormStatus] = useState<FormStatusType>({ message: '', type: '' });
     // const [apiResposneState, setAPIResponse] = useState(false);
     const isFormFieldChange = () => formik.dirty;
@@ -41,7 +46,17 @@ export default function FeeDetails() {
     const isFormValidated = useShowConfirmationDialogBoxStore((state) => state.setFormFieldValue);
     const showDialogBox = useShowConfirmationDialogBoxStore((state) => state.showDialogBox);
 
+    const [productTypes, setProductTypes] = useState([]);
+    const { data: productTypeList } = useGetLotProductTypes(lotId);
 
+
+    useEffect(() => {
+        // eslint-disable-next-line no-console
+        console.log('Jai Balayya', productTypeList);
+        if (productTypeList?.data?.lotProductTypes?.length) {
+            setProductTypes(productTypeList.data.lotProductTypes.map((obj: any) => ({ label: obj.productGroupNm.trim(), value: obj.productGroupCd.trim() })));
+        }
+    }, [productTypeList]);
 
     const onClickBack = () => {
         if (isFormFieldChange()) {
@@ -270,7 +285,7 @@ export default function FeeDetails() {
                                                                 name={`serviceFeeRules[${index}].productType`}
                                                                 label={t("FeeDetails.productType")}
                                                                 description=''
-                                                                items={[]}
+                                                                items={productTypes}
                                                                 placeholder={t("FeeDetails.productTypePlaceholder")}
                                                                 helperText={
                                                                     formik?.errors?.serviceFeeRules && formik?.touched?.serviceFeeRules &&

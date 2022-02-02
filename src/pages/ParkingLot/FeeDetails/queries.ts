@@ -17,17 +17,19 @@ export const useGetDelivaryFeeSchd = () => {
 };
 
 //Product Types
-const getLotProductTypes = async () => {
+const getLotProductTypes = async (lotId: string) => {
+    if(lotId) {
     const options: AxiosRequestConfig = {
         method: 'get',
-        url: ''
+        url: `api/customer-service/lots/${lotId}/productTypes?countryCode=us`
     };
     const { data } = await axios(options);
     return data;
+    }
 };
 
-export const useGetLotProductTypes = () => {
-    return useQuery(["getLotProductTypes"], () => getLotProductTypes());
+export const useGetLotProductTypes = (lotId: string) => {
+    return useQuery(["getLotProductTypes", lotId], () => getLotProductTypes(lotId));
 };
 
 //Master Product Name
