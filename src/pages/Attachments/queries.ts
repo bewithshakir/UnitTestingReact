@@ -31,7 +31,7 @@ const getAttachmentList = async (pageParam: number, searchTerm: string, sortOrde
     return data;
 };
 
-export const useAttachmentList = (query: string, sortOrder: { sortBy: string, order: string }, filterParams: { [key: string]: string[] }, customerId:string) => {
+export const useAttachmentList = (query: string, sortOrder: { sortBy: string, order: string }, filterParams: { [key: string]: string[] }, customerId: string) => {
     return useInfiniteQuery(["getAttachmentList", query, sortOrder, filterParams], ({ pageParam = 0 }) => getAttachmentList(pageParam, query, sortOrder, filterParams, customerId), {
         getNextPageParam: (lastGroup: any) => {
             if (lastGroup.data.pagination.offset < lastGroup.data.pagination.totalCount) {
@@ -43,17 +43,17 @@ export const useAttachmentList = (query: string, sortOrder: { sortBy: string, or
 };
 
 
-const uploadAttachment = async (payload: any, customerId:string) => {
+const uploadAttachment = async (payload: any, customerId: string) => {
     const options: AxiosRequestConfig = {
         method: 'post',
-        url: `/api/customer-service/customers/${customerId}/upload-file`,
+        url: `/api/customer-service/customers/${customerId}/files`,
         data: payload,
     };
 
-    const {data} = await axios(options);
+    const { data } = await axios(options);
     return data;
 };
 
-export const useUploadAttachment = (customerId:string, onError: any, onSuccess: any) => {
+export const useUploadAttachment = (customerId: string, onError: any, onSuccess: any) => {
     return useMutation((payload: any) => uploadAttachment(payload, customerId), { onError, onSuccess });
 };

@@ -1,7 +1,7 @@
 import { rest } from "msw";
 
 export const getFuelTaxList = () => {
-    return rest.get('*/api/tax-service/fueltax/list*', (req, res, ctx) => {
+    return rest.get('*/api/tax-service/fuel-taxes*', (req, res, ctx) => {
         return res(
             ctx.status(200),
             ctx.json({
@@ -35,7 +35,7 @@ export const getFuelTaxList = () => {
 };
 
 export const getFuelTaxProductsList = () => {
-    return rest.get('*/api/tax-service/fueltax/list/products?countryCode=us&limit=15&offset=0&taxJurisdictionId=99zz', (req, res, ctx) => {
+    return rest.get('*/api/tax-service/fuel-taxes/products*', (req, res, ctx) => {
         return res(
             ctx.status(200),
             ctx.json({

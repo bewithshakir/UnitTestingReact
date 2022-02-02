@@ -19,7 +19,7 @@ const getAssetManagementList = async (pageParam: number, searchTerm: string, sor
             query.append(key, JSON.stringify(filterParams[key]));
         }
     }
-    const assetManagementListEntitySet = `/api/product-service/asset?limit=${pageDataLimit}&offset=${pageParam}`;
+    const assetManagementListEntitySet = `/api/product-service/assets?limit=${pageDataLimit}&offset=${pageParam}`;
     const url = query ? `&countryCode=us${query.toString().length ? `&${query.toString()}` : ''}` : `&countryCode=us`;
     const options: AxiosRequestConfig = {
         method: 'get',

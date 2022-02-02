@@ -19,7 +19,7 @@ const getSalesTaxList = async (pageParam: number, searchTerm: string, sortOrder:
             query.append(key, JSON.stringify(filterParams[key]));
         }
     }
-    const salesTaxListEntitySet = `/api/tax-service/sales-tax/list?limit=${pageDataLimit}&offset=${pageParam}`;
+    const salesTaxListEntitySet = `/api/tax-service/sales-taxes?limit=${pageDataLimit}&offset=${pageParam}`;
     const url = query ? `&countryCode=us${query.toString().length ? `&${query.toString()}` : ''}` : `&countryCode=us`;
     const options: AxiosRequestConfig = {
         method: 'get',
