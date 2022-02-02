@@ -216,7 +216,6 @@ const TruckParkingLot: React.FC<ContentProps> = () => {
             truckParkingLotData?.pages?.forEach((item: any) => {
                 list.push(...item.data.parkingLocations);
             });
-            console.log('list parkingLocations--', list)
             setTruckParkingLotList(list);
         }
     }, [truckParkingLotData]);
@@ -257,14 +256,7 @@ const TruckParkingLot: React.FC<ContentProps> = () => {
                                 onChange={onInputChange}
                             />
                         </Grid>
-                        {/* {
-                            (searchTerm && !(isFetching || isLoading) && data) &&
-                            <Grid item display="flex" alignItems="center" paddingLeft={2.5}>
-                                <Typography color="var(--Darkgray)" variant="h4" align="center" className="fw-bold">
-                                    {getSeachedDataTotalCount(data, [t('customerManagement.result(s) found'), t('customerManagement.results found')])}
-                                </Typography>
-                            </Grid>
-                        } */}
+                        
                     </Grid>
                     <Grid item md={4} lg={3} display="flex" justifyContent="flex-end">
                         <Grid item pr={2.5}>
@@ -289,8 +281,6 @@ const TruckParkingLot: React.FC<ContentProps> = () => {
                     </Grid>
                 </Grid>
                 <Grid container pt={2.5} display="flex" flexGrow={1} data-testid="data-grid">
-                
-
                     <GridComponent
                         primaryKey='customerId'
                         rows={truckParkingLotList}
@@ -305,13 +295,6 @@ const TruckParkingLot: React.FC<ContentProps> = () => {
                         noDataMsg='Add Truck parking lot by clicking on the "Add Truck Parking Lot" button.'
                     />
 
-                    {/* <RightInfoPanel panelType="dynamic-filter"
-                        open={custFilterPanelVisible} headingText={"customer-filter-panel.header.filter"}
-                        provideFilterParams={getFilterParams} onClose={handleCustFilterPanelClose}
-                        fields={filterByFields}
-                        storeKey={'customerFilter'}
-                    />
-                    <RightInfoPanel panelType="info-view" category="customer" open={drawerOpen} headingText={infoPanelName} info={info} idStrForEdit={infoPanelEditId} nameStrForEdit={infoPanelName} onClose={drawerClose} /> */}
                 </Grid>
             </Grid>
         </Box>

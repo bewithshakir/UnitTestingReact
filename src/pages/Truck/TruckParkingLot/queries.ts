@@ -32,7 +32,7 @@ const fetchTruckParkingLotList = async (pageParam: number, searchTerm: string, s
     return data;
 };
 export const useGetTruckParkingLotList = (query: string, sortOrder: { sortBy: string, order: string }, filterParams?: { [key: string]: string[] }) => {
-    return useInfiniteQuery(["getFuelTaxList", query, sortOrder, filterParams], ({ pageParam = 0 }) => fetchTruckParkingLotList(pageParam, query, sortOrder, filterParams), {
+    return useInfiniteQuery(["getTruckParkingLotList", query, sortOrder, filterParams], ({ pageParam = 0 }) => fetchTruckParkingLotList(pageParam, query, sortOrder, filterParams), {
         getNextPageParam: (lastGroup: any) => {
             if (lastGroup.data.pagination.offset < lastGroup.data.pagination.totalCount) {
                 return lastGroup.data.pagination.offset + pageDataLimit;

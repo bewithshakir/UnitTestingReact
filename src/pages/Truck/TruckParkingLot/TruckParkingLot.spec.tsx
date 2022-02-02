@@ -45,7 +45,7 @@ describe('render TruckParkingLot component', ()=> {
         const result = renderWithClient(<TruckParkingLot version="Breadcrumbs-Single" />);
 
         await waitFor(()=> {
-            expect(result.getByText(/Packing Location 16/i)).toBeInTheDocument();
+            expect(result.getByText(/Testing1/i)).toBeInTheDocument();
         })
         
         jest.runAllTimers();
