@@ -27,7 +27,8 @@
     "show more": "Mostrar más",
     "sort by": "Ordenar por",
     "add tax": "Agregar impuesto",
-    "filter": "Filtre"
+    "filter": "Filtre",
+    "filterText": "Filtrar"
   },
   "menus": {
     "sortby": {

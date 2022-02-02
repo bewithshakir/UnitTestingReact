@@ -53,6 +53,7 @@ const EnhancedGridHead: React.FC<GridHeaderProps> = (props) => {
                             align={headCell.align}
                             className="header-options"
                             sortDirection={props.orderBy === headCell.field ? props.order : false}
+                            width={headCell.width || 'auto'}
                         >
                             {headCell.sortable ?
                                 <TableSortLabel

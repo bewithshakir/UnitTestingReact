@@ -35,7 +35,8 @@
     "browse": "Browse",
     "filter": "Filters",
     "add asset": "ADD ASSET",
-    "import": "IMPORT"
+    "import": "IMPORT",
+    "filterText": "Filter"
   },
   "menus": {
     "sortby": {

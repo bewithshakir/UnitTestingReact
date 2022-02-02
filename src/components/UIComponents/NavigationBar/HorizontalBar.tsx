@@ -257,7 +257,7 @@ export default function HorizontalBar (props: HorizontalBarProps) {
           >
             <NavLink
               className='breadcrubs-title'
-              to='/taxes'
+              to='/'
               onClick={handleClick}
             >
               Overview
@@ -270,7 +270,7 @@ export default function HorizontalBar (props: HorizontalBarProps) {
           >
             <NavLink
               className='breadcrubs-title'
-              to='/salesTax'
+              to='/'
               onClick={handleClick}
             >
               Live Map
@@ -278,12 +278,12 @@ export default function HorizontalBar (props: HorizontalBarProps) {
           </div>
           <div
             className={
-              pathname.includes('opisCities') ? 'linkitem active' : 'linkitem'
+              pathname.includes('truckParkingLot') ? 'linkitem active' : 'linkitem'
             }
           >
             <NavLink
               className='breadcrubs-title'
-              to='/opisCities'
+              to='/truckParkingLot'
               onClick={handleClick}
             >
               Truck Parking Lot
@@ -397,9 +397,6 @@ export default function HorizontalBar (props: HorizontalBarProps) {
                   : null}
             <div className='app__header-section' />
             <div className='app__header-right-section-desktop'>
-              <div>
-                
-              </div>
               <div className='header__country-selector'>
                 <SvgIcon component={USAFlagIcon} />
                 <span className='country-title'>United States</span>

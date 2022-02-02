@@ -1,23 +1,6 @@
 import { useTranslation } from 'react-i18next';
+import { headerObj } from '../components/UIComponents/DataGird/grid.component';
 
-type fieldOptions = {
-    value: string;
-    displayValue?: string;
-    color?: string;
-    icon?: React.ReactNode | string | any,
-}
-interface headerObj {
-    field: string,
-    showIconLast?: boolean,
-    label: string,
-    type: 'text' | 'button' | 'icon' | 'icons' | 'image' | 'images' | 'dropdown' | 'status' | 'product',
-    icon?: React.ReactNode | string | any,
-    bold?: boolean,
-    align?: 'right' | 'left' | 'center' | 'justify',
-    sortable?: boolean,
-    width?: string,
-    fieldOptions?: fieldOptions[]
-}
 
 const DataGridFields = {
     "CITY": {
@@ -32,21 +15,20 @@ const DataGridFields = {
   }
 export default class TruckParkingLotModel {
 
+    // "id": "a3f54ade-ff65-4055-a968-7f3cb06bffb1",
+    //             "name": "Packing Location 16",
+    //             "address": "Address 1   Address 2",
+    //             "city": "Silchar",
+    //             "state": "Assam",
+    //             "postalCode": "788003"
+
     fieldsToDisplay (): headerObj[] {
-        const { CITY, STATE, PRODUCT } = DataGridFields;
         return [
-            { field: CITY.field, label: CITY.label, type: 'text', align: 'left' },
-            { field: STATE.field, label: STATE.label, type: 'text', align: 'left' },
-            { field: PRODUCT.field, label: PRODUCT.label, type: 'button', align: 'left', icon: '' },
-            { field: "", label: "", type: 'text', align: 'left' },
-            { field: "", label: "", type: 'text', align: 'left' },
-            { field: "", label: "", type: 'text', align: 'left' },
-            { field: "", label: "", type: 'text', align: 'left' },
-            { field: "", label: "", type: 'text', align: 'left' },
-            { field: "", label: "", type: 'text', align: 'left' },
-            { field: "", label: "", type: 'text', align: 'left' },
-            { field: "", label: "", type: 'text', align: 'left' },
-            { field: "", label: "", type: 'text', align: 'left' },
+            { field: "name", label: "TRUCK PARKING LOT NAME", type: 'text', width: '350px' },
+            { field: "address", label: "ADDRESS", type: 'text'},
+            { field: "state", label: "STATE", type: 'text'},
+            { field: "city", label: "CITY", type: 'text'},
+            { field: "postalCode", label: "POSTAL CODE", type: 'text'}
         ];
     }
 
