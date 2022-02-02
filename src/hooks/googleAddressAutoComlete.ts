@@ -7,7 +7,7 @@ const getAddresses = async (searchQuery: string) => {
     if (searchQuery) {
         const payload: AxiosRequestConfig = {
             method: 'get',
-            url: `/api/customer-service/address/auto-complete?address=${searchQuery}`
+            url: `/api/thirdparty-service/addresses/auto-complete?address=${searchQuery}`
         };
         const { data } = await axios(payload);
         return data;
@@ -22,7 +22,7 @@ const getAddress = async (placeId: string) => {
     if (placeId) {
         const payload: AxiosRequestConfig = {
             method: 'get',
-            url: `/api/customer-service/address/place-detail?placeId=${placeId}`
+            url: `/api/thirdparty-service/addresses/details?placeId=${placeId}`
         };
         const { data } = await axios(payload);
         return data;

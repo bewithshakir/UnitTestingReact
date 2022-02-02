@@ -1,7 +1,7 @@
 import { rest } from "msw";
 
 export const getFormattedAddressHandler = () => {
-    return rest.get('*/api/customer-service/address/place-detail*', (req, res, ctx) => {
+    return rest.get('*/api/thirdparty-service/addresses/details*', (req, res, ctx) => {
         return res(
             ctx.status(200),
             ctx.json({
@@ -21,7 +21,7 @@ export const getFormattedAddressHandler = () => {
 };
 
 export const getGoogleAddressHandler = () => {
-    return rest.get('*/api/customer-service/address/auto-complete*', (req, res, ctx) => {
+    return rest.get('*/api/thirdparty-service/addresses/auto-complete*', (req, res, ctx) => {
         return res(
             ctx.status(200),
             ctx.json({

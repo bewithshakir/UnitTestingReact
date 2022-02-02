@@ -20,11 +20,11 @@ const getAllParkingLotList = async (pageParam: number, searchTerm: string, sortO
         }
     }
 
-    const opisCityListEntitySet = `api/customer-service/lot?limit=${pageDataLimit}&offset=${pageParam}`;
+    const allParkingLotListEntitySet = `api/customer-service/lots?limit=${pageDataLimit}&offset=${pageParam}`;
     const url = query ? `&countryCode=us${query.toString().length ? `&${query.toString()}` : ''}` : `&countryCode=us`;
     const options: AxiosRequestConfig = {
         method: 'get',
-        url: opisCityListEntitySet + url
+        url: allParkingLotListEntitySet + url
     };
     const { data } = await axios(options);
     return data;

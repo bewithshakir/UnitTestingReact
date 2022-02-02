@@ -17,7 +17,7 @@ interface colorPropsInt {
 const fetchProductTypes = async (countryCode: string) => {
     const options: AxiosRequestConfig = {
         method: 'get',
-        url: `/api/product-service/product/productGroups?countryCode=${countryCode}`
+        url: `/api/product-service/products/product-groups?countryCode=${countryCode}`
     };
     const { data } = await axios(options);
     return data;
@@ -40,7 +40,7 @@ export const useGetProductTypes = (countryCode: string) => {
 const fetProductColors = async (countryCode: string) => {
     const options: AxiosRequestConfig = {
         method: 'get',
-        url: `/api/product-service/product/productIcons?countryCode=${countryCode}`
+        url: `/api/product-service/products/product-icons?countryCode=${countryCode}`
     };
     const { data } = await axios(options);
     return data;
@@ -85,7 +85,7 @@ const addProductManagement = async (payload: ProductManagementModel) => {
     };
     const options: AxiosRequestConfig = {
         method: 'post',
-        url: '/api/product-service/product',
+        url: '/api/product-service/products',
         data: finalPayload,
     };
     const { data } = await axios(options);
@@ -104,7 +104,7 @@ const editProductManagement = async (payload: ProductManagementModel, productGro
     };
     const options: AxiosRequestConfig = {
         method: 'put',
-        url: `/api/product-service/product/${productId}`,
+        url: `/api/product-service/products/${productId}`,
         data: finalPayload
     };
     const { data } = await axios(options);
@@ -115,7 +115,7 @@ const getProductData = async (productId: string) => {
     if (productId) {
         const options: AxiosRequestConfig = {
             method: 'get',
-            url: `/api/product-service/product/${productId}`
+            url: `/api/product-service/products/${productId}`
         };
         const { data } = await axios(options);
         return data;
