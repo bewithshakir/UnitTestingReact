@@ -4,6 +4,10 @@ export const formStatusObj = {
         message: 'Product is successfully added',
         type: 'Success',
     },
+    editSuccess: {
+        message: 'Product is successfully edited',
+        type: 'Success',
+    },
     error: {
         message: 'Something went wrong. Please try again.',
         type: 'Error',

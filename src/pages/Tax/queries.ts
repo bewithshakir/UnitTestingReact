@@ -20,7 +20,7 @@ const getFuelTaxList = async (pageParam: number, searchTerm: string, sortOrder: 
         }
     }
 
-    const fuelTaxListEntitySet = `/api/tax-service/fueltax/list?limit=${pageDataLimit}&offset=${pageParam}`;
+    const fuelTaxListEntitySet = `/api/tax-service/fuel-taxes?limit=${pageDataLimit}&offset=${pageParam}`;
     const url = query ? `&countryCode=us${query.toString().length ? `&${query.toString()}` : ''}` : `&countryCode=us`;
     const options: AxiosRequestConfig = {
         method: 'get',
@@ -45,7 +45,7 @@ export const useFuelTaxList = (query: string, sortOrder: { sortBy: string, order
 const getProductsByTaxId = async (pageParam: number, fuelTaxProductId: string) => {
     const payload: AxiosRequestConfig = {
         method: 'get',
-        url: `/api/tax-service/fueltax/list/products?limit=${pageDataLimit}&offset=${pageParam}&taxJurisdictionId=${fuelTaxProductId}`
+        url: `/api/tax-service/fuel-taxes/products?limit=${pageDataLimit}&offset=${pageParam}&taxJurisdictionId=${fuelTaxProductId}&countryCode=us`
     };
     const { data } = await axios(payload);
     return data;

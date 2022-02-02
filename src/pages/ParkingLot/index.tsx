@@ -58,13 +58,13 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
   const setPageCustomerName = useAddedCustomerNameStore((state) => state.setCustomerName);
   const resetFormFieldValue = useShowConfirmationDialogBoxStore((state) => state.resetFormFieldValue);
 
-  
+
   useEffect(() => {
     const statePL = location.state as { customerName: string };
     resetFormFieldValue(false);
-    if(statePL) {
+    if (statePL) {
       setPageCustomerName(statePL.customerName);
-    } 
+    }
   });
 
   const createInfoObjForRightInfoPanel = (row: any) => {
@@ -177,7 +177,7 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
 
   return (
     <Box display="flex">
-      <Grid container pl={2.25} pr={6.25} className="main-area">
+      <Grid container pr={8}>
         <Grid container display="flex" flexGrow={1}>
           <Grid item md={8} lg={9} display="flex" >
             <Grid item pr={2.5}>
@@ -265,7 +265,7 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
             onClose={handleCustFilterPanelClose}
             fields={filterByFields}
             storeKey='parkingLot' />
-            
+
           <RightInfoPanel panelType="info-view" category="lot" open={drawerOpen} headingText={infoPanelName} info={info} idStrForEdit={infoPanelEditId} nameStrForEdit={infoPanelName} onClose={drawerClose} />
 
         </Grid>

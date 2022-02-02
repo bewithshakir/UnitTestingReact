@@ -49,13 +49,17 @@ div{
         .helper-text{
             color: var(--Darkgray);
             font-size: 14px;
-            margin-top: 15px;
+            margin: 0px 10px 0px -10px
         }
     }
     .final-upload-btn{
         float: right;
+        .loadingIcon{
+            position: inital; 
+            width: 28px;
+        }
         svg{
-            margin-right: 11px;
+            margin-right: 11px; 
         }
         &.Mui-disabled{
             svg{

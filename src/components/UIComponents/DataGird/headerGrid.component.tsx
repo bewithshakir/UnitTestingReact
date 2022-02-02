@@ -37,7 +37,7 @@ const EnhancedGridHead: React.FC<GridHeaderProps> = (props) => {
                 :
                 <TableRow>
                     {props.enableRowSelection && props.numSelected !== undefined && props.rowCount ?
-                        <TableCell padding="checkbox" className="header-options">
+                        <TableCell padding="checkbox" className="header-options" >
                             <Checkbox
                                 name='checkbox-all'
                                 indeterminate={props.numSelected > 0 && props.numSelected < props.rowCount}
@@ -52,6 +52,7 @@ const EnhancedGridHead: React.FC<GridHeaderProps> = (props) => {
                             key={headCell.field}
                             align={headCell.align}
                             className="header-options"
+                            size="small"
                             sortDirection={props.orderBy === headCell.field ? props.order : false}
                             width={headCell.width || 'auto'}
                         >

@@ -2,7 +2,7 @@ import React, { memo, useState, useEffect } from 'react';
 import { Box, Container, Grid, Typography } from '@mui/material';
 import { useFormik } from 'formik';
 import { useTranslation } from 'react-i18next';
-import {  useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import Input from '../../components/UIComponents/Input/Input';
 import { Button } from '../../components/UIComponents/Button/Button.component';
@@ -24,11 +24,11 @@ interface IFormStatus {
     type: string
 }
 
-export interface AddProductProps{
-    version:string
-  }
-  
-  
+export interface AddProductProps {
+    version: string
+}
+
+
 
 
 
@@ -36,7 +36,7 @@ const initialValues = new ProductManagementModel();
 const AddProduct: React.FC<AddProductProps> = memo(() => {
     const { t } = useTranslation();
     const navigate = useNavigate();
-    const {productId }: any = useParams();
+    const { productId }: any = useParams();
 
     const { data: productTypesList, isLoading: isLoadingTypes, } = useGetProductTypes('us');
     const { data: productColorsList, isLoading: isLoadingColors } = useGetProductColors('us');
@@ -90,21 +90,21 @@ const AddProduct: React.FC<AddProductProps> = memo(() => {
             if (response?.data) {
                 const finalData = {
                     countryCode: 'us',
-                    productName: response.data.productName,
+                    productName: response.data.productNm,
                     productType: {
-                        value: response.data.productClass.productClassCd,
-                        label: response.data.productClass.productClassNm
+                        value: response.data.productGroup.productGroupCd,
+                        label: response.data.productGroup.productGroupNm
                     },
                     productColor: {
-                        value: response.data.productColor.productColorCd,
-                        label: response.data.productColor.productColorNm,
-                        icon: getProductIcon(response.data.productColor.productColorNm)
+                        value: response.data.productIcon.productIconCd,
+                        label: response.data.productIcon.productIconNm,
+                        icon: getProductIcon(response.data.productIcon.productIconNm)
                     },
-                    productStatus: productStatusList.filter((pObj) => pObj.value === response.data.productServiceInd)[0],
+                    productStatus: productStatusList.filter((pObj) => pObj.value === response.data.activeInactiveInd)[0],
                     productPricing: response.data.manualPricing || 0
                 };
                 populateDataInAllFields(finalData);
-                setProductGroupCd(response.data.productGroupCd);
+                setProductGroupCd(response.data.productCd);
                 setEditMode(true);
             }
         } catch {
@@ -275,7 +275,7 @@ const AddProduct: React.FC<AddProductProps> = memo(() => {
                                     />
                                 </Grid>
                             </Grid>
-                            <Grid item xs={12} md={12} pr={2.5} pb={5.5}>
+                            <Grid item xs={12} md={12} pr={2.5} pb={2.5}>
                                 <Grid item xs={12} md={6}>
                                     <Input
                                         id='productPricing'
@@ -289,9 +289,9 @@ const AddProduct: React.FC<AddProductProps> = memo(() => {
                                     />
                                 </Grid>
                             </Grid>
-                            <Grid item xs={12} md={12} pr={2.5} pb={2.5}>
+                            <Grid item xs={12} md={12} pr={2.5} mt={4} mb={4}>
                                 <Grid item xs={12} md={6}>
-                                    <Box className="form-action-section txt-right">
+                                    <Box className="form-action-section">
                                         <Button
                                             id="cancelBtn"
                                             types="cancel"

@@ -518,7 +518,7 @@ exports[`Rendering of Add Attachment Component Upload Attachment Component Snaps
                 <span
                   className="MuiButton-label"
                 >
-                   
+                    
                   <ImportIcon>
                     <svg
                       height="1em"

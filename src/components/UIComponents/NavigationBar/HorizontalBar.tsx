@@ -92,27 +92,19 @@ export default function HorizontalBar (props: HorizontalBarProps) {
       });
     } else if (pathname.includes('addLot') || pathname.includes('addFuelTax')) {
       navigate(-1);
-    } else if (
-      pathname.includes('salesTax/add') ||
-      pathname.includes('salesTax/edit')
-    ) {
+    } else if (pathname.includes('salesTax/add') || pathname.includes('salesTax/edit')) {
       navigate('/salesTax');
     } else if (pathname.includes('opisCities/add')) {
       navigate('/opisCities');
     } else if (pathname.includes('editFuelTax')) {
       navigate('/taxes');
-    } else if (
-      pathname.includes('productManagement/add') ||
-      pathname.includes('productManagement/edit')
-    ) {
+    } else if (pathname.includes('productManagement/add') || pathname.includes('productManagement/edit')) {
       navigate('/productManagement');
-    } else if (
-      pathname.includes('AddAttachment') 
-    ) {
+    } else if (pathname.includes('AddAttachment')) {
       navigate(-1);
     }
     else if (pathname.includes('dsps/addDsp') || pathname.includes('dsps/edit')) {
-      navigate(`/customer/${selectedCustomerId}/dsps`, { 
+      navigate(`/customer/${selectedCustomerId}/dsps`, {
         state: {
           customerId: selectedCustomerId,
           customerName: selectedCustomerName
@@ -148,12 +140,12 @@ export default function HorizontalBar (props: HorizontalBarProps) {
         return t("addDSP.title");
       case pathname.includes('dsps/edit'):
         return t("addDSP.form.titleEdit");
-      case (pathname.includes('addLot') ) :
-          return t('parkingLot.form.titleAdd');
-      case (pathname.includes('viewLot') ) :
-          return t('parkingLot.form.titleEdit');
+      case (pathname.includes('addLot')):
+        return t('parkingLot.form.titleAdd');
+      case (pathname.includes('viewLot')):
+        return t('parkingLot.form.titleEdit');
       case pathname.includes('AddAttachment'):
-        return t("Add Attachment");
+        return t('UploadAttachments.breadCrumbText');
       default:
         return selectedCustomerName;
     }
@@ -346,20 +338,14 @@ export default function HorizontalBar (props: HorizontalBarProps) {
     }
   }
 
-  const handleCustomerBack = () => {
-    hideDialogBox(false);
-    resetFormFieldValue(false);
-    navigate(`/customer/viewCustomer/${selectedCustomerId}`);
-  };
-
   function versionBreadcrumbsMany () {
     return (
       <>
         <Breadcrumbs separator={<NavigateNextIcon />} aria-label='breadcrumb'>
-          <Link className='breadcrubs-title' onClick={handleCustomerBack}>
+          <Link className='breadcrubs-title'>
             {selectedCustomerName}
           </Link>
-          <Link className="breadcrubs-title" href="#" onClick={handleClick}>
+          <Link className="breadcrubs-title" href="#" onClick={ (event) => event.preventDefault() } >
             {getHeaderText()}
           </Link>
         </Breadcrumbs>
@@ -378,16 +364,18 @@ export default function HorizontalBar (props: HorizontalBarProps) {
             ml: `${drawerWidth}px`,
           }}
         >
-          <Toolbar className='header__toolbar'>
-            {version === 'NavLinks' ? null : (
-              <Button
-                types='profile'
-                aria-label='back button'
-                onClick={handleBack}
-                size='small'
-                startIcon={<SvgIcon component={BackIcon} />}
-              />
-            )}
+          <Toolbar className={version === 'NavLinks' ? 'header__navlinks_toolbar' : 'header__breadcrumbs_toolbar'} >
+            {version !== 'NavLinks' &&
+              (
+                <Button
+                  variant="contained"
+                  className="btn-profile"
+                  aria-label='back button'
+                  onClick={handleBack}
+                  size='small'
+                  startIcon={<SvgIcon component={BackIcon} />}
+                />
+              )}
             {version === 'Breadcrumbs-Single'
               ? versionBreadcrumbsSingle()
               : version === 'NavLinks'

@@ -13,15 +13,16 @@ div {
             min-width: 0;
              opacity: 1;
             &:hover{
-                background: var(--Primary);
-                opacity: .5;
+                background: var(--White);
+                color: var(--Primary);
+                opacity: .8;
             }
         }
         .MuiTab-textColorInherit.Mui-selected {
             opacity: 1;
             background: var(--Secondary);
             min-width: 0;
-            color: var(--Gray);
+            color: var(--Darkgray);
         }
         .sidebar-drawer {
             flex-shrink: 0;
@@ -32,6 +33,7 @@ div {
             }
             &.MuiPaper-root,.MuiDrawer-paper{
                 background:  var(--Primary);
+                border: none;
             }
         }
        
@@ -41,6 +43,7 @@ div {
             color: var(--White);
             height: 64px;
             width: 64px;
+            opacity: 1;
         }
         .MuiTabs-indicator{
             display:none;

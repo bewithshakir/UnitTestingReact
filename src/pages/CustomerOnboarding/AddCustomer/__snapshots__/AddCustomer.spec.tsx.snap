@@ -2452,7 +2452,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                     </ForwardRef(Grid)>
                     <ForwardRef(Grid)
                       item={true}
-                      mb={1}
+                      mb={4}
                       md={12}
                       mt={2}
                     >
@@ -3303,7 +3303,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                         </ForwardRef(Grid)>
                         <ForwardRef(Grid)
                           item={true}
-                          mb={1}
+                          mb={4}
                           md={12}
                           mt={2}
                         >
@@ -4153,7 +4153,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                             </ForwardRef(Grid)>,
                             <ForwardRef(Grid)
                               item={true}
-                              mb={1}
+                              mb={4}
                               md={12}
                               mt={2}
                             >
@@ -18106,7 +18106,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                 >
                                                   <path
                                                     d="M11 2v7h7v2h-7v7H9v-7H2V9h7V2z"
-                                                    fill="#003C88"
+                                                    fill="currentColor"
                                                   />
                                                   <path
                                                     d="M0 0h20v20H0z"
@@ -19999,7 +19999,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                 >
                                                   <path
                                                     d="M11 2v7h7v2h-7v7H9v-7H2V9h7V2z"
-                                                    fill="#003C88"
+                                                    fill="currentColor"
                                                   />
                                                   <path
                                                     d="M0 0h20v20H0z"
@@ -20837,7 +20837,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                         </ForwardRef(Grid)>
                         <ForwardRef(Grid)
                           item={true}
-                          mb={1}
+                          mb={4}
                           md={12}
                           mt={2}
                         >
@@ -20887,7 +20887,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                 "rowSpacing": 0,
                                 "sm": false,
                                 "sx": Object {
-                                  "mb": 1,
+                                  "mb": 4,
                                   "mt": 2,
                                 },
                                 "wrap": "wrap",
@@ -20898,13 +20898,13 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                             }
                             sx={
                               Object {
-                                "mb": 1,
+                                "mb": 4,
                                 "mt": 2,
                               }
                             }
                           >
                             <div
-                              className="MuiGrid-root MuiGrid-item MuiGrid-grid-md-12 css-gkojpy-MuiGrid-root"
+                              className="MuiGrid-root MuiGrid-item MuiGrid-grid-md-12 css-5brak6-MuiGrid-root"
                             >
                               <ForwardRef(Box)
                                 className="form-action-section"
