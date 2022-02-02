@@ -6,7 +6,7 @@ import axios from '../../../infrastructure/ApiHelper';
 const getDeliveryFeeSchd = async () => {
     const options: AxiosRequestConfig = {
         method: 'get',
-        url: ''
+        url: 'api/pricing-fee-service/fees/frequencies'
     };
     const { data } = await axios(options);
     return data;
@@ -66,17 +66,29 @@ export const useGetLotProductNames = (productCd: string) => {
 
 
 //Vehicle Type Dropdown 
-const getLotVehicleTypes = async (lotId: string) => {
-    if (lotId) {
+const getLotVehicleTypes = async () => {
         const options: AxiosRequestConfig = {
             method: 'get',
-            url: ``
+            url: 'api/vehicle-service/vehicle-types'
         };
         const { data } = await axios(options);
         return data;
-    }
 };
 
-export const useGetLotVehicleTypes = (lotId: string) => {
-    return useQuery(["getLotVehicleTypes", lotId], () => getLotVehicleTypes(lotId));
+export const useGetLotVehicleTypes = () => {
+    return useQuery(["getLotVehicleTypes"], () => getLotVehicleTypes());
+};
+
+//Asset Type Dropdown 
+const getLotAssetTypes = async () => {
+        const options: AxiosRequestConfig = {
+            method: 'get',
+            url: 'api/product-service/assets?countryCode=us&skipPagination=true'
+        };
+        const { data } = await axios(options);
+        return data;
+};
+
+export const useGetLotAsserTypes = () => {
+    return useQuery(["getLotAssetTypes"], () => getLotAssetTypes());
 };
