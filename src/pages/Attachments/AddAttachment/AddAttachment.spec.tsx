@@ -79,7 +79,7 @@ describe('Rendering of Add Attachment Component', () => {
 
         const file = new File(['sample'], 'sample.pdf', { type: 'text/application/pdf' });
         Object.defineProperty(file, 'size', {
-            get() {
+            get () {
                 return 30000000;
             }
         });
@@ -87,12 +87,12 @@ describe('Rendering of Add Attachment Component', () => {
         userEvent.upload(fileInput, file);
         await flushPromises(rerender, component);
         expect(fileInput.files[0]).toStrictEqual(file);
-        console.debug("test------->",container.querySelector('.file-error'));
+        // console.debug("test------->",container.querySelector('.file-error'));
         expect(container.querySelector('.file-error')?.textContent).toBe('File is larger than 25 MB');
     });
 });
 
 
-async function flushPromises(rerender: any, ui: any) {
+async function flushPromises (rerender: any, ui: any) {
     await act(() => waitFor(() => rerender(ui)));
 }

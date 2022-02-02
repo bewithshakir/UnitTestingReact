@@ -49,7 +49,7 @@ const getOPISCityList = async (pageParam: number, searchTerm: string, sortOrder:
         }
     }
 
-    const opisCityListEntitySet = `/api/product-service/opis-served-city?limit=${pageDataLimit}&offset=${pageParam}`;
+    const opisCityListEntitySet = `/api/product-service/opis/served-cities?limit=${pageDataLimit}&offset=${pageParam}`;
     const url = query ? `&countryCode=us${query.toString().length ? `&${query.toString()}` : ''}` : `&countryCode=us`;
     const options: AxiosRequestConfig = {
         method: 'get',
@@ -94,7 +94,7 @@ export const getProducts = (OPISCityId: string) => {
 const addNewCity = async (payload: IAddOPISCity) => {
     const options: AxiosRequestConfig = {
         method: 'post',
-        url: '/api/product-service/opis-served-city',
+        url: '/api/product-service/opis/served-cities',
         data: payload,
     };
     const { data } = await axios(options);
