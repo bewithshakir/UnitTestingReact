@@ -51,9 +51,8 @@ export default function FeeDetails() {
 
 
     useEffect(() => {
-        // eslint-disable-next-line no-console
-        console.log('Jai Balayya', productTypeList);
         if (productTypeList?.data?.lotProductTypes?.length) {
+            productTypeList.data.lotProductTypes.unshift({ productGroupNm: 'ALL', productGroupCd: 'ALL' });
             setProductTypes(productTypeList.data.lotProductTypes.map((obj: any) => ({ label: obj.productGroupNm.trim(), value: obj.productGroupCd.trim() })));
         }
     }, [productTypeList]);
