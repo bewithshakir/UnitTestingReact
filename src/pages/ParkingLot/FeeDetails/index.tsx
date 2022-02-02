@@ -296,7 +296,7 @@ export default function FeeDetails() {
                                                                 label={t("FeeDetails.masterProductType")}
                                                                 description=''
                                                                 items={[]}
-                                                                placeholder={t("FeeDetails.productTypePlaceholder")}
+                                                                placeholder={t("FeeDetails.masterProductTypePlaceholder")}
                                                                 onChange={formik.setFieldValue}
                                                                 helperText={
                                                                     formik?.errors?.serviceFeeRules && formik?.touched?.serviceFeeRules &&
