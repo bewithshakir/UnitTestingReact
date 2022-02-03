@@ -32,7 +32,7 @@ function getAllElements (component: any) {
     const addressLine2Elem = component.container.querySelector('#addressLine2');
     const cityElem = component.container.querySelector('#cityNm') as HTMLInputElement;
     const stateElem = component.container.querySelector('#stateNm') as HTMLInputElement;
-    const postalCodeElem = component.container.querySelector('#postalCd') as HTMLInputElement;
+    const postalCodeElem = component.container.querySelector('#postalCode') as HTMLInputElement;
     const cancelBtn = component.container.querySelector('#cancelBtn');
     const saveBtn = component.container.querySelector('#saveBtn');
     const formElem = component.container.querySelector('#form');
@@ -85,6 +85,7 @@ describe('renders AddDSP component for add/edit mode', () => {
                 expect(addressLine2Elem).toHaveValue('Elkton Test');
                 expect(cityElem).toHaveValue('Elkton');
                 expect(stateElem).toHaveValue('VA');
+                result.debug(postalCodeElem);
                 expect(postalCodeElem).toHaveValue('22827');
 
                 userEvent.tab();
