@@ -14,7 +14,7 @@ import { AddFeeDetailsValidationSchema } from './validations';
 import { useTheme } from '../../../contexts/Theme/Theme.context';
 // import { formStatusObj } from '../config';
 import { useAddedCustomerNameStore, useAddedCustomerIdStore, useShowConfirmationDialogBoxStore } from '../../../store';
-import { useGetDeliveryFeeSchd } from './queries';
+import { useGetDeliveryFeeSchd , useAddFeeDetails} from './queries';
 import ServiceRule from './serviceRule';
 import './FeeDetails.scss';
 
@@ -69,10 +69,32 @@ export default function FeeDetails() {
         }
     };
 
-    const handleSave = () => {
+    const onAddFeeError = (err:any) => {
+        console.warn('add fee api error');
+        // resetFormFieldValue(false);
+        // hideDialogBox(false);
+        // const { data } = err.response;
+        // setAPIResponse(true);
+        // setFormStatus({ message: data?.error?.message || formStatusProps.error.message, type: 'Error' });
+    };
+
+    const onAddFeeSuccess = () => {
+        // resetFormFieldValue(false);
+        // hideDialogBox(false);
+        // setAPIResponse(true);
+        // isFormValidated(false);
+        // setFormStatus(formStatusProps.success);
+        // setEditShown(true);
         setSaveCancelShown(false);
         setDisabled(true);
     };
+
+    const { mutate: addFeeDetails } = useAddFeeDetails(onAddFeeSuccess, onAddFeeError);
+
+    // const handleSave = () => {
+    //     setSaveCancelShown(false);
+    //     setDisabled(true);
+    // };
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [initialFormikValues, setInitialFormikValues] = useState({
         feeName: '',
@@ -109,19 +131,40 @@ export default function FeeDetails() {
         return (!formik.isValid || !formik.dirty) || formik.isSubmitting;
     };
 
-    const addFeeDetails = (values: any) => {
+    const saveFeeDetails = (formValues: any) => {
         try {
             const apiPayload = {
                 parkingLotId: lotId,
-                feeName: values.feeName,
+                feeName: formValues.feeName,
                 deliveryFee: {
-                    fee: values.delFee,
-                    feeSchedule: values.delFeeShed.value,
-                    salesTaxExemption: values.salesTaxExcemption ? 'Y' : 'N',
+                    fee: formValues.delFee,
+                    feeSchedule: formValues.delFeeShed.value,
+                    salesTaxExemption: formValues.salesTaxExcemption ? 'Y' : 'N'
                 },
-                serviceFee: []
+                serviceFee: [] as any
             };
+
+            formValues.serviceFeeRules.forEach((rule: any) => {
+                apiPayload.serviceFee.push({
+                    misc: {
+                        isAllProductType: rule?.productType?.value?.toLowerCase() === 'all' ? 'Y' : 'N',
+                        isAllMasterProduct: rule?.masterProductType?.value?.toLowerCase() === 'all' ? 'Y' : 'N',
+                        isAllVehicleType: rule?.vehicleType?.value?.toLowerCase() === 'all' ? 'Y' : 'N',
+                        isAllAssetType: rule?.assetType?.value?.toLowerCase() === 'all' ? 'Y' : 'N',
+                        productNameId: []
+                    },
+                    fee: rule.serviceFeeCharge,
+                    applicableProduct: rule?.productName?.value,
+                    isAsset: rule?.considerAsset ? 'Y' : 'N',
+                    asseType: rule?.assetType?.value,
+                    assetInput: rule?.assetTypeDesc,
+                    vehicleType: rule?.vehicleType?.value
+                });
+            });
+            addFeeDetails(apiPayload);
+            
         } catch (error) {
+            console.warn("apiPayload serviceFeeRule apiPayload2- Error- >", error);
             // setFormStatus(formStatusProps.error);
         }
     };
@@ -130,8 +173,7 @@ export default function FeeDetails() {
         initialValues: initialFormikValues,
         validationSchema: AddFeeDetailsValidationSchema,
         onSubmit: (values) => {
-            console.warn(values);
-            addFeeDetails(values);
+            saveFeeDetails(values);
         },
         enableReinitialize: true
     });
@@ -168,6 +210,8 @@ export default function FeeDetails() {
     const deleteFeeRule = (index: number, componentArr: any) => {
         componentArr.remove(index);
     };
+
+    console.warn(" FORMIKKKK-- >", formik);
 
     return (
         <Fragment>
@@ -303,7 +347,6 @@ export default function FeeDetails() {
                                             types="save"
                                             aria-label="save"
                                             className="ml-4"
-                                            onClick={handleSave}
                                             disabled={disableSubmitBtn()}
                                         >
                                             {t("buttons.save")}
