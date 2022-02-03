@@ -27,6 +27,7 @@ const EditProductManagement = lazy(() => import('./pages/AddProductManagement/Ad
 const AssetManagement = lazy(() => import("./pages/AssetManagement"));
 const AddAttachment = lazy(() => import("./pages/Attachments/AddAttachment/AddAttachment"));
 const AddDSP = lazy(() => import("./pages/DspLanding/AddDSP"));
+const AddTruckParkingLot = lazy(() => import("./pages/Truck/TruckParkingLot/AddLot"));
 
 export const routes: RouteObject[] = [
   {
@@ -138,5 +139,9 @@ export const routes: RouteObject[] = [
   {
     path: "/assetManagement",
     element: <AssetManagement version="Breadcrumbs-Many" />,
+  },
+  {
+    path: "/truckParkingLot/Add",
+    element: <AddTruckParkingLot version="Breadcrumbs-Many"/>,
   }
 ];

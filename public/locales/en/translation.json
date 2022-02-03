@@ -265,6 +265,18 @@
       }
     }
   },
+  "addTruckParkingLot": {
+    "title": "Add Truck Parking lot",
+    "form": {
+      "parkingLocationNm": "TRUCK PARKING LOT NAME",
+      "title": "Fill all the mandatory * fields",
+      "addressLine1": "ADDRESS LINE 1",
+      "addressLine2": "ADDRESS LINE 2",
+      "city": "CITY",
+      "state": "STATE",
+      "postalCode": "POSTAL CODE"
+    }
+  },
   "productManagement": {
     "results found": "results found",
     "result(s) found": "result(s) found",
