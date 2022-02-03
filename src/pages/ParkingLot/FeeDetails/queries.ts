@@ -37,7 +37,7 @@ const getLotMasterProductNames = async (productCd: string) => {
     if (productCd) {
         const options: AxiosRequestConfig = {
             method: 'get',
-            url: `&productGroupCd=${productCd}`
+            url: `/api/product-service/products?countryCode=us&productGroupCd=${productCd}`
         };
         const { data } = await axios(options);
         return data;
@@ -89,6 +89,6 @@ const getLotAssetTypes = async () => {
         return data;
 };
 
-export const useGetLotAsserTypes = () => {
+export const useGetLotAssetTypes = () => {
     return useQuery(["getLotAssetTypes"], () => getLotAssetTypes());
 };

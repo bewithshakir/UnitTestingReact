@@ -14,7 +14,7 @@ import { AddFeeDetailsValidationSchema } from './validations';
 import { useTheme } from '../../../contexts/Theme/Theme.context';
 // import { formStatusObj } from '../config';
 import { useAddedCustomerNameStore, useAddedCustomerIdStore, useShowConfirmationDialogBoxStore } from '../../../store';
-import { useGetDeliveryFeeSchd, useGetLotProductTypes, useGetLotProductNames } from './queries';
+import { useGetDeliveryFeeSchd, useGetLotProductTypes, useGetLotProductNames, useGetLotVehicleTypes, useGetLotAssetTypes } from './queries';
 import './FeeDetails.scss';
 
 // interface FormStatusType {
@@ -49,6 +49,12 @@ export default function FeeDetails() {
     const [feeShed, setFeeShed] = useState([]);
     const { data: delFeeShedList } = useGetDeliveryFeeSchd();
 
+    const [vehicleTypes, setVehicleTypes] = useState([]);
+    const { data: vehicleTypeList } = useGetLotVehicleTypes();
+
+    const [assetTypes, setAssetTypes] = useState([]);
+    const { data: assetTypeList } = useGetLotAssetTypes();
+
     const [productTypes, setProductTypes] = useState([]);
     const { data: productTypeList } = useGetLotProductTypes(lotId);
     // setProductCd should be set in onChange method
@@ -61,6 +67,12 @@ export default function FeeDetails() {
         if (delFeeShedList?.data?.length) {
             setFeeShed(delFeeShedList.data.map((obj: any) => ({ label: obj.feeFrequencyNm.trim(), value: obj.feeFrequencyCd.trim() })));
         }
+        if (vehicleTypeList?.data?.length) {
+            setVehicleTypes(vehicleTypeList.data.map((obj: any) => ({ label: obj.vehicleTypeNm.trim(), value: obj.vehicleTypeCd.trim() })));
+        }
+        if (assetTypeList?.data?.length) {
+            setAssetTypes(assetTypeList.data.map((obj: any) => ({ label: obj.assetNm.trim(), value: obj.assetId.trim() })));
+        }
         if (productTypeList?.data?.lotProductTypes?.length) {
             productTypeList.data.lotProductTypes.unshift({ productGroupNm: 'ALL', productGroupCd: 'ALL' });
             setProductTypes(productTypeList.data.lotProductTypes.map((obj: any) => ({ label: obj.productGroupNm.trim(), value: obj.productGroupCd.trim() })));
@@ -68,7 +80,7 @@ export default function FeeDetails() {
         if (productNameList?.data?.lotProducts?.length) {
             setProductNames(productTypeList.data.lotProducts.map((obj: any) => ({ label: obj.productNm.trim(), value: obj.productId.trim() })));
         }
-    }, [delFeeShedList, productTypeList, productNameList]);
+    }, [delFeeShedList, vehicleTypeList, assetTypeList, productTypeList, productNameList]);
 
     const onClickBack = () => {
         if (isFormFieldChange()) {
@@ -385,7 +397,7 @@ export default function FeeDetails() {
                                                                 name={`serviceFeeRules[${index}].assetType`}
                                                                 label={t("FeeDetails.assetType")}
                                                                 description=''
-                                                                items={[]}
+                                                                items={assetTypes}
                                                                 placeholder={t("FeeDetails.assetTypePlaceholder")}
                                                                 onChange={formik.setFieldValue}
                                                                 helperText={
@@ -437,7 +449,7 @@ export default function FeeDetails() {
                                                                 name={`serviceFeeRules[${index}].vehicleType`}
                                                                 label={t("FeeDetails.vehicleType")}
                                                                 description=''
-                                                                items={[]}
+                                                                items={vehicleTypes}
                                                                 placeholder={t("FeeDetails.vehicleTypePlaceholder")}
                                                                 onChange={formik.setFieldValue}
                                                                 helperText={
