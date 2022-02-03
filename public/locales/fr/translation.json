@@ -177,5 +177,12 @@
         "postalCode": "code postal"
       }
     }
+  },
+  "truck": {
+    "navBar": {
+      "overview": "Aperçu",
+      "liveMap": "Carte en direct",
+      "truckPlot": "Parking pour camions"
+    }
   }
 }

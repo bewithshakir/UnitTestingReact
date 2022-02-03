@@ -177,5 +177,12 @@
         "postalCode": "Código postal"
       }
     }
+  },
+  "truck": {
+    "navBar": {
+      "overview": "Descripción general",
+      "liveMap": "Mapa en vivo",
+      "truckPlot": "Estacionamiento de camiones"
+    }
   }
 }

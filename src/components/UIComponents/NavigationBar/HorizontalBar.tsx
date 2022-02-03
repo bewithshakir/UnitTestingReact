@@ -252,7 +252,7 @@ export default function HorizontalBar (props: HorizontalBarProps) {
               to='/'
               onClick={handleClick}
             >
-              Overview
+              {t('truck.navBar.overview')}
             </NavLink>
           </div>
           <div
@@ -265,7 +265,7 @@ export default function HorizontalBar (props: HorizontalBarProps) {
               to='/'
               onClick={handleClick}
             >
-              Live Map
+              {t('truck.navBar.liveMap')}
             </NavLink>
           </div>
           <div
@@ -278,7 +278,7 @@ export default function HorizontalBar (props: HorizontalBarProps) {
               to='/truckParkingLot'
               onClick={handleClick}
             >
-              Truck Parking Lot
+              {t('truck.navBar.truckPlot')}
             </NavLink>
           </div>
         </>
