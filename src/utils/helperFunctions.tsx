@@ -4,13 +4,28 @@ import {
     PurpleFuelIcon, SkyBlueFuelIcon, BrownFuelIcon, OrangeFuelIcon, AquaFuelIcon
 } from '../assets/icons';
 
+type fileFormatSize = 'Bytes'|'KB'|'MB';
 export const maskPhoneNumber = (phNumber: string) => {
     const maskedPh = phNumber.match(/(\d{3})(\d{3})(\d{4})/);
     return maskedPh ? "(" + maskedPh[1] + ") " + maskedPh[2] + "-" + maskedPh[3] : phNumber;
 };
 
-export const formatFileSizeUnit = (sizeInBytes: number) => {
-    return Math.ceil(sizeInBytes/(1000*1000)) + ' MB';
+export const formatFileSizeUnit = (sizeInBytes: number, fileSizeUnit: fileFormatSize = 'MB') => {
+    let coversionParam = null ; 
+    switch(fileSizeUnit) {
+        case 'Bytes' :
+            coversionParam = 1;
+          break;
+        case 'KB':
+            coversionParam = 1000;
+          break;
+          case 'MB':
+            coversionParam = 1000*1000;
+          break;
+        default:
+            coversionParam = 1;
+      }
+    return Math.ceil(sizeInBytes/(coversionParam)) + ` ${fileSizeUnit}`;
 };
 
 export const getCheckBoxDisabledByPaymentType = (value: string) => {
