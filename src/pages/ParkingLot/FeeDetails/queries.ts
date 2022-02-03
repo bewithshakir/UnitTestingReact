@@ -34,7 +34,7 @@ export const useGetLotProductTypes = (lotId: string) => {
 
 //Master Product Name
 const getLotMasterProductNames = async (productCd: string) => {
-    if (productCd) {
+    if (productCd && productCd.toLowerCase() !== 'all') {
         const options: AxiosRequestConfig = {
             method: 'get',
             url: `/api/product-service/products?countryCode=us&productGroupCd=${productCd}`

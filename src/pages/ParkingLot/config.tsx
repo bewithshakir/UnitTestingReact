@@ -7,7 +7,7 @@ export const sortByOptions = [
   "parkingLot.sortBy.ztoa"
 ];
 
-export const all = { label: 'ALL', value: 'ALL' };
+export const all = { label: 'All', value: 'all' };
 
 export const addLotHeaderConfig = [
   {
