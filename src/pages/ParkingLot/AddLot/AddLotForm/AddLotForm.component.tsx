@@ -67,11 +67,13 @@ function AddLotForm (): React.ReactElement {
     const [lotData, setLotData] = useState<any>(null);
     const daysOfWeek = useGetDaysOfWeek();
     const timerRef = useRef<any>(null);
+
     const onAddLotError = (err: any) => {
         resetFormFieldValue(false);
         hideDialogBox(false);
         const { data } = err.response;
         setAPIResponse(true);
+        formik.setSubmitting(false);
         setFormStatus({ message: data?.error?.message || formStatusProps.error.message, type: 'Error' });
     };
     useEffect(() => {

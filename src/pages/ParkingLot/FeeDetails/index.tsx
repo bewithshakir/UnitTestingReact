@@ -73,11 +73,15 @@ export default function FeeDetails() {
 
     const onAddFeeError = (err:any) => {
         console.warn('add fee api error');
-        resetFormFieldValue(false);
-        hideDialogBox(false);
         const { data } = err.response;
+        resetFormFieldValue(false);
+        isFormValidated(false);
+        hideDialogBox(false);
         setAPIResponse(true);
         setFormStatus({ message: data?.error?.message || formStatusProps.error.message, type: 'Error' });
+        formik.setSubmitting(false);
+        setDisabled(false);
+        setSaveCancelShown(true);
     };
 
     const onAddFeeSuccess = () => {
@@ -89,12 +93,10 @@ export default function FeeDetails() {
         setSaveCancelShown(false);
         setDisabled(true);
         setSaveCancelShown(false);
-        setDisabled(true);
     };
 
     const { mutate: addFeeDetails } = useAddFeeDetails(onAddFeeSuccess, onAddFeeError);
 
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [initialFormikValues, setInitialFormikValues] = useState({
         feeName: '',
         delFee: '',
