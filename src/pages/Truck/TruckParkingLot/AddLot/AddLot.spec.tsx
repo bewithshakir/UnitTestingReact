@@ -2,7 +2,6 @@ import { waitFor, render, cleanup, act, fireEvent, waitForElementToBeRemoved, Re
 import selectEvent from 'react-select-event';
 import userEvent from '@testing-library/user-event';
 import { rest } from "msw";
-
 import { renderWithClient } from '../../../../tests/utils';
 import { serverMsw } from "../../../../setupTests";
 import AddLot from './index';

@@ -1151,7 +1151,7 @@ exports[`Rendering of Add Truck Parking lot Add truck parking lot snapshot testi
                             description=""
                             disabled={false}
                             error={false}
-                            id="postalCd"
+                            id="postalCode"
                             label="addTruckParkingLot.form.postalCode"
                             name="postalCd"
                             onBlur={[Function]}
@@ -1393,7 +1393,7 @@ exports[`Rendering of Add Truck Parking lot Add truck parking lot snapshot testi
                                 description=""
                                 disabled={false}
                                 error={false}
-                                id="postalCd"
+                                id="postalCode"
                                 label="addTruckParkingLot.form.postalCode"
                                 name="postalCd"
                                 onBlur={[Function]}
@@ -4532,7 +4532,7 @@ exports[`Rendering of Add Truck Parking lot Add truck parking lot snapshot testi
                                     description=""
                                     disabled={false}
                                     error={false}
-                                    id="postalCd"
+                                    id="postalCode"
                                     label="addTruckParkingLot.form.postalCode"
                                     name="postalCd"
                                     onBlur={[Function]}
@@ -4589,7 +4589,7 @@ exports[`Rendering of Add Truck Parking lot Add truck parking lot snapshot testi
                                         description=""
                                         disabled={false}
                                         error={false}
-                                        id="postalCd"
+                                        id="postalCode"
                                         label="addTruckParkingLot.form.postalCode"
                                         name="postalCd"
                                         onBlur={[Function]}
@@ -4635,7 +4635,7 @@ exports[`Rendering of Add Truck Parking lot Add truck parking lot snapshot testi
                                       description=""
                                       disabled={false}
                                       error={false}
-                                      id="postalCd"
+                                      id="postalCode"
                                       label="addTruckParkingLot.form.postalCode"
                                       name="postalCd"
                                       onBlur={[Function]}
@@ -4666,7 +4666,7 @@ exports[`Rendering of Add Truck Parking lot Add truck parking lot snapshot testi
                                             <WithStyles(ForwardRef(InputLabel))
                                               aria-labelledby="addTruckParkingLot.form.postalCode"
                                               aria-required={false}
-                                              htmlFor="postalCd"
+                                              htmlFor="postalCode"
                                               shrink={true}
                                               style={
                                                 Object {
@@ -4693,7 +4693,7 @@ exports[`Rendering of Add Truck Parking lot Add truck parking lot snapshot testi
                                                     "shrink": "MuiInputLabel-shrink",
                                                   }
                                                 }
-                                                htmlFor="postalCd"
+                                                htmlFor="postalCode"
                                                 shrink={true}
                                                 style={
                                                   Object {
@@ -4715,7 +4715,7 @@ exports[`Rendering of Add Truck Parking lot Add truck parking lot snapshot testi
                                                     }
                                                   }
                                                   data-shrink={true}
-                                                  htmlFor="postalCd"
+                                                  htmlFor="postalCode"
                                                   style={
                                                     Object {
                                                       "color": "var(--Darkgray)",
@@ -4739,7 +4739,7 @@ exports[`Rendering of Add Truck Parking lot Add truck parking lot snapshot testi
                                                       }
                                                     }
                                                     data-shrink={true}
-                                                    htmlFor="postalCd"
+                                                    htmlFor="postalCode"
                                                     style={
                                                       Object {
                                                         "color": "var(--Darkgray)",
@@ -4751,7 +4751,7 @@ exports[`Rendering of Add Truck Parking lot Add truck parking lot snapshot testi
                                                       aria-required={false}
                                                       className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink"
                                                       data-shrink={true}
-                                                      htmlFor="postalCd"
+                                                      htmlFor="postalCode"
                                                       style={
                                                         Object {
                                                           "color": "var(--Darkgray)",
@@ -4772,7 +4772,7 @@ exports[`Rendering of Add Truck Parking lot Add truck parking lot snapshot testi
                                               autoComplete="new-password"
                                               disabled={false}
                                               error={false}
-                                              id="postalCd"
+                                              id="postalCode"
                                               name="postalCd"
                                               onBlur={[Function]}
                                               onChange={[Function]}
@@ -4813,7 +4813,7 @@ exports[`Rendering of Add Truck Parking lot Add truck parking lot snapshot testi
                                                 }
                                                 disabled={false}
                                                 error={false}
-                                                id="postalCd"
+                                                id="postalCode"
                                                 name="postalCd"
                                                 onBlur={[Function]}
                                                 onChange={[Function]}
@@ -4842,7 +4842,7 @@ exports[`Rendering of Add Truck Parking lot Add truck parking lot snapshot testi
                                                     autoComplete="new-password"
                                                     className="MuiInputBase-input"
                                                     disabled={false}
-                                                    id="postalCd"
+                                                    id="postalCode"
                                                     name="postalCd"
                                                     onAnimationStart={[Function]}
                                                     onBlur={[Function]}

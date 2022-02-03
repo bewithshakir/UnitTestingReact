@@ -8,7 +8,7 @@ import { useTranslation } from 'react-i18next';
 import './style.scss';
 import { useFormik } from 'formik';
 import TruckLotModel from '../../../../models/TruckLotModel';
-import { AddFuelTaxValidationSchema } from './validation';
+import { AddTruckParkingLotValidationSchema } from './validation';
 import AutocompleteInput from '../../../../components/UIComponents/GoogleAddressComponent/GoogleAutoCompleteAddress';
 import { useAddTruckParkingLot } from './queries';
 import ToastMessage from '../../../../components/UIComponents/ToastMessage/ToastMessage.component';
@@ -24,7 +24,7 @@ interface IFormStatusProps {
     [key: string]: IFormStatus
 }
 
-interface AddFuelTaxProps {
+interface AddTruckParkingLotProps {
     version: string
 }
 
@@ -44,7 +44,7 @@ const formStatusProps: IFormStatusProps = {
 };
 
 
-const AddLot: React.FC<AddFuelTaxProps> = () => {
+const AddLot: React.FC<AddTruckParkingLotProps> = memo(() => {
     const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
     setVersion("Breadcrumbs-Single");
     const navigate = useNavigate();
@@ -88,7 +88,7 @@ const AddLot: React.FC<AddFuelTaxProps> = () => {
 
     const formik = useFormik({
         initialValues,
-        validationSchema: AddFuelTaxValidationSchema,
+        validationSchema: AddTruckParkingLotValidationSchema,
         onSubmit: (values) => {
             createNewTruckLot(values);
         },
@@ -224,7 +224,7 @@ const AddLot: React.FC<AddFuelTaxProps> = () => {
                             <Grid container mt={1}>
                                 <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
                                     <Input
-                                        id='postalCd'
+                                        id='postalCode'
                                         label={t('addTruckParkingLot.form.postalCode')}
                                         type='text'
                                         helperText={(formik.touched.postalCd && formik.errors.postalCd) ? formik.errors.postalCd : undefined}
