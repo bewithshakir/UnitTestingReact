@@ -51,7 +51,7 @@ export default function ServiceRule({index, isDisabled, formik, lotId}: props) {
             setMasterProductNames([all, ...arr]);
         }
         if (productNameList?.data?.lotProducts?.length) {
-            setProductNames(productTypeList.data.lotProducts.map((obj: any) => ({ label: obj.productNm.trim(), value: obj.productId.trim() })));
+            setProductNames(productNameList.data.lotProducts.map((obj: any) => ({ label: obj.productNm.trim(), value: obj.productId.trim() })));
         }
     }, [ vehicleTypeList, assetTypeList, productTypeList, productNameList, masterProductNamesList]);
 
