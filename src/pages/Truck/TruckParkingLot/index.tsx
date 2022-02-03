@@ -43,7 +43,7 @@ const TruckParkingLot: React.FC<ContentProps> = () => {
         // TODO
     };
     const navigateToAddParkingLot = () => {
-        navigate(`/truckParkingLot/addLot`);
+        navigate(`/truckParkingLot/add`);
     };
     const onInputChange = (value: string) => {
         setResetTableCollaps(true);
