@@ -4,10 +4,9 @@ import * as ReactQuery from 'react-query';
 import selectEvent from 'react-select-event';
 import userEvent from '@testing-library/user-event';
 import { rest } from "msw";
-
+import { renderWithClient } from '../../../../tests/utils';
+import { serverMsw } from "../../../../setupTests";
 import AddLot from './index';
-import { renderWithClient } from '../../../tests/utils';
-import { serverMsw } from "../../../setupTests";
 
 const queryClient = new ReactQuery.QueryClient();
 
