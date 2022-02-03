@@ -70,8 +70,8 @@ export default function FeeDetails() {
         if (vehicleTypeList?.data?.length) {
             setVehicleTypes(vehicleTypeList.data.map((obj: any) => ({ label: obj.vehicleTypeNm.trim(), value: obj.vehicleTypeCd.trim() })));
         }
-        if (assetTypeList?.data?.length) {
-            setAssetTypes(assetTypeList.data.map((obj: any) => ({ label: obj.assetNm.trim(), value: obj.assetId.trim() })));
+        if (assetTypeList?.data?.assets?.length) {
+            setAssetTypes(assetTypeList.data.assets.map((obj: any) => ({ label: obj.assetNm.trim(), value: obj.assetId.trim() })));
         }
         if (productTypeList?.data?.lotProductTypes?.length) {
             productTypeList.data.lotProductTypes.unshift({ productGroupNm: 'ALL', productGroupCd: 'ALL' });
