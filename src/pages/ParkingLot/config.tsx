@@ -59,6 +59,21 @@ export const formStatusObj = {
   }
 };
 
+export const formStatusObjFeeDetails = {
+  success: {
+    message: 'Fee details are successfully added',
+    type: 'Success',
+  },
+  editsuccess: {
+    message: 'Fee details are updated successfully.',
+    type: 'Success',
+  },
+  error: {
+    message: 'Something went wrong. Please try again.',
+    type: 'Error',
+  }
+};
+
 export const daysToDeliver = (dayType: string, daysOfWeek: { data?: { data?: [] } }) => {
   const other = (daysOfWeek?.data?.data || []).map((day: any) => ({ label: day.dayOfWeekNm, value: day.dayOfWeekCd }));
   const weekends = other.filter(day => ['saturday', 'sunday'].includes(String(day.label).toLowerCase()));

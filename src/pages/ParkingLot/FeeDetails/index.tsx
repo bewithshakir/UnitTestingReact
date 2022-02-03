@@ -12,22 +12,22 @@ import Select from '../../../components/UIComponents/Select/SingleSelect';
 import { EditIcon, PlusIcon, DeleteIcon } from '../../../assets/icons';
 import { AddFeeDetailsValidationSchema } from './validations';
 import { useTheme } from '../../../contexts/Theme/Theme.context';
-// import { formStatusObj } from '../config';
+import { formStatusObjFeeDetails } from '../config';
 import { useAddedCustomerNameStore, useAddedCustomerIdStore, useShowConfirmationDialogBoxStore } from '../../../store';
 import { useGetDeliveryFeeSchd , useAddFeeDetails} from './queries';
 import ServiceRule from './serviceRule';
 import './FeeDetails.scss';
 
-// interface FormStatusType {
-//     message: string
-//     type: string
-// }
+interface FormStatusType {
+    message: string
+    type: string
+}
 
-// interface FormStatusProps {
-//     [key: string]: FormStatusType
-// }
+interface FormStatusProps {
+    [key: string]: FormStatusType
+}
 
-// const formStatusProps: FormStatusProps = formStatusObj;
+const formStatusProps: FormStatusProps = formStatusObjFeeDetails;
 
 export default function FeeDetails() {
 
@@ -36,8 +36,8 @@ export default function FeeDetails() {
     const { pathname } = useLocation();
     const a = pathname.split('/');
     const lotId = a[5];
-    // const [formStatus, setFormStatus] = useState<FormStatusType>({ message: '', type: '' });
-    // const [apiResposneState, setAPIResponse] = useState(false);
+    const [formStatus, setFormStatus] = useState<FormStatusType>({ message: '', type: '' });
+    const [apiResposneState, setAPIResponse] = useState(false);
     const isFormFieldChange = () => formik.dirty;
     const navigate = useNavigate();
     const [isDisabled, setDisabled] = useState(false);
@@ -46,6 +46,8 @@ export default function FeeDetails() {
     const customerId = useAddedCustomerIdStore((state) => state.customerId);
     const isFormValidated = useShowConfirmationDialogBoxStore((state) => state.setFormFieldValue);
     const showDialogBox = useShowConfirmationDialogBoxStore((state) => state.showDialogBox);
+    const hideDialogBox = useShowConfirmationDialogBoxStore((state) => state.hideDialogBox);
+    const resetFormFieldValue = useShowConfirmationDialogBoxStore((state) => state.resetFormFieldValue);
 
     const [feeShed, setFeeShed] = useState([]);
     const { data: delFeeShedList } = useGetDeliveryFeeSchd();
@@ -71,30 +73,27 @@ export default function FeeDetails() {
 
     const onAddFeeError = (err:any) => {
         console.warn('add fee api error');
-        // resetFormFieldValue(false);
-        // hideDialogBox(false);
-        // const { data } = err.response;
-        // setAPIResponse(true);
-        // setFormStatus({ message: data?.error?.message || formStatusProps.error.message, type: 'Error' });
+        resetFormFieldValue(false);
+        hideDialogBox(false);
+        const { data } = err.response;
+        setAPIResponse(true);
+        setFormStatus({ message: data?.error?.message || formStatusProps.error.message, type: 'Error' });
     };
 
     const onAddFeeSuccess = () => {
-        // resetFormFieldValue(false);
-        // hideDialogBox(false);
-        // setAPIResponse(true);
-        // isFormValidated(false);
-        // setFormStatus(formStatusProps.success);
-        // setEditShown(true);
+        resetFormFieldValue(false);
+        hideDialogBox(false);
+        setAPIResponse(true);
+        isFormValidated(false);
+        setFormStatus(formStatusProps.success);
+        setSaveCancelShown(false);
+        setDisabled(true);
         setSaveCancelShown(false);
         setDisabled(true);
     };
 
     const { mutate: addFeeDetails } = useAddFeeDetails(onAddFeeSuccess, onAddFeeError);
 
-    // const handleSave = () => {
-    //     setSaveCancelShown(false);
-    //     setDisabled(true);
-    // };
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [initialFormikValues, setInitialFormikValues] = useState({
         feeName: '',
@@ -165,7 +164,7 @@ export default function FeeDetails() {
             
         } catch (error) {
             console.warn("apiPayload serviceFeeRule apiPayload2- Error- >", error);
-            // setFormStatus(formStatusProps.error);
+            setFormStatus(formStatusProps.error);
         }
     };
 
@@ -191,8 +190,8 @@ export default function FeeDetails() {
 
     const addFeeRule = (fieldArr: any) => {
         if (formik.errors.serviceFeeRules && formik.errors.serviceFeeRules.length > 0) {
-            // setFormStatus(formStatusProps.orderScheduleError);
-            // setAPIResponse(true);
+            setFormStatus(formStatusProps.orderScheduleError);
+            setAPIResponse(true);
         } else if (!isAddServiceFeeRuleDisabled()) {
             fieldArr.push({
                 serviceFeeCharge: '',
@@ -352,7 +351,7 @@ export default function FeeDetails() {
                                             {t("buttons.save")}
                                         </Button>
                                     </Box>}
-                                    <ToastMessage isOpen={false} messageType={''} onClose={() => null} message={''} />
+                                    <ToastMessage isOpen={apiResposneState} messageType={formStatus.type} onClose={() => setAPIResponse(false)} message={formStatus.message} />
                                 </Grid>
                             </Grid>
                         </Container>
