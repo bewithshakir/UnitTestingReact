@@ -1,4 +1,4 @@
-import {  useQuery } from "react-query";
+import { useMutation, useQuery } from "react-query";
 import { AxiosRequestConfig } from "axios";
 import axios from '../../../infrastructure/ApiHelper';
 
@@ -91,4 +91,24 @@ const getLotAssetTypes = async () => {
 
 export const useGetLotAssetTypes = () => {
     return useQuery(["getLotAssetTypes"], () => getLotAssetTypes());
+};
+
+
+// Save Fee Details API
+const addFeeDetails = async (payload: any) => {
+    const options: AxiosRequestConfig = {
+        method: 'post',
+        url: 'api/pricing-fee-service/fees',
+        data: payload,
+    };
+    const { data } = await axios(options);
+    return data;
+};
+
+export const useAddFeeDetails = (onSuccess: any, onError: any) => {
+    return useMutation((payload: any) =>
+        addFeeDetails(payload), {
+        onError,
+        onSuccess,
+    });
 };
