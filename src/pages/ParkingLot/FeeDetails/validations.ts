@@ -16,4 +16,31 @@ export const AddFeeDetailsValidationSchema = Yup.object().shape({
     assetType: selectOption,
     assetTypeDesc: stringInput,
     vehicleType: selectOptional,
+    serviceFeeRules: Yup.array().of(
+        Yup.object().shape({
+            serviceFeeCharge: Yup.string().nullable().required('Required'),
+            productType:  Yup.object().shape({
+                label: Yup.string(),
+                value: Yup.string(),
+              }).nullable().required('Required'),
+              masterProductType:  Yup.object().shape({
+                label: Yup.string(),
+                value: Yup.string(),
+              }).nullable().required('Required'),
+              productName: Yup.object().shape({
+                label: Yup.string(),
+                value: Yup.string(),
+              }).nullable().required('Required'),
+              considerAsset: Yup.boolean().required('Required'),
+              assetType: Yup.object().shape({
+                label: Yup.string(),
+                value: Yup.string(),
+              }).nullable().required('Required'),
+              assetTypeDesc: Yup.string().nullable().required('Required'),
+              vehicleType: Yup.object().shape({
+                label: Yup.string(),
+                value: Yup.string(),
+              }).nullable().required('Required')
+        })
+      ),
 });
