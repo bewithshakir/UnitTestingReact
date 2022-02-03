@@ -2,25 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { headerObj } from '../components/UIComponents/DataGird/grid.component';
 
 
-const DataGridFields = {
-    "CITY": {
-      field: "cityName", label: "CITY"
-    },
-    "STATE": {
-      field: "stateName", label: "STATE"
-    },
-    "PRODUCT": {
-      field: "productsCount", label: "PRODUCT"
-    }
-  }
 export default class TruckParkingLotModel {
-
-    // "id": "a3f54ade-ff65-4055-a968-7f3cb06bffb1",
-    //             "name": "Packing Location 16",
-    //             "address": "Address 1   Address 2",
-    //             "city": "Silchar",
-    //             "state": "Assam",
-    //             "postalCode": "788003"
 
     fieldsToDisplay (): headerObj[] {
         return [

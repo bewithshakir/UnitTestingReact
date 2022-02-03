@@ -19,15 +19,7 @@ jest.mock('react-router-dom', () => ({
     })
 }));
 
-
-
-
 describe('render TruckParkingLot component', ()=> {
-    // let result;
-    // beforeEach(()=> {
-    //     result = renderWithClient(<TruckParkingLot version="Breadcrumbs-Single" />);
-        
-    // })
     it('renders component success with mendatory actions', ()=> {
         const result = renderWithClient(<TruckParkingLot version="Breadcrumbs-Single" />);
         const filterBtn = result.getByTestId('filter');
@@ -41,14 +33,10 @@ describe('render TruckParkingLot component', ()=> {
         expect(addBtn).toBeInTheDocument();
     });
     it('render data on success response', async()=> {
-        jest.useFakeTimers();
         const result = renderWithClient(<TruckParkingLot version="Breadcrumbs-Single" />);
-
         await waitFor(()=> {
             expect(result.getByText(/Testing1/i)).toBeInTheDocument();
-        })
-        
-        jest.runAllTimers();
+        });
         
     });
 });
