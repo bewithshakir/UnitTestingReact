@@ -68,6 +68,7 @@ export default function FeeDetails() {
             setFeeShed(delFeeShedList.data.map((obj: any) => ({ label: obj.feeFrequencyNm.trim(), value: obj.feeFrequencyCd.trim() })));
         }
         if (vehicleTypeList?.data?.length) {
+            vehicleTypeList.data.unshift({ vehicleTypeNm: 'ALL', vehicleTypeCd: 'ALL'});
             setVehicleTypes(vehicleTypeList.data.map((obj: any) => ({ label: obj.vehicleTypeNm.trim(), value: obj.vehicleTypeCd.trim() })));
         }
         if (assetTypeList?.data?.assets?.length) {
