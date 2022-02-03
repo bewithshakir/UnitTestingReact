@@ -49,19 +49,19 @@ export const useGetLotMasterProductNames = (productCd: string) => {
 };
 
 //Product Name (Custom) 
-const getLotProductNames = async (productCd: string) => {
-    if (productCd) {
+const getLotProductNames = async (lotId: string, productCd: string) => {
+    if (lotId && productCd) {
         const options: AxiosRequestConfig = {
             method: 'get',
-            url: `&productGroupCd=${productCd}`
+            url: `/api/customer-service/lots/${lotId}/products?countryCode=us&productCd=${productCd}&skipPagination=false`
         };
         const { data } = await axios(options);
         return data;
     }
 };
 
-export const useGetLotProductNames = (productCd: string) => {
-    return useQuery(["getLotProductNames", productCd], () => getLotProductNames(productCd));
+export const useGetLotProductNames = (lotId: string, productCd: string) => {
+    return useQuery(["getLotProductNames", lotId, productCd], () => getLotProductNames(lotId, productCd));
 };
 
 
