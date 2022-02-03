@@ -14,7 +14,7 @@ import { AddFeeDetailsValidationSchema } from './validations';
 import { useTheme } from '../../../contexts/Theme/Theme.context';
 // import { formStatusObj } from '../config';
 import { useAddedCustomerNameStore, useAddedCustomerIdStore, useShowConfirmationDialogBoxStore } from '../../../store';
-import { useGetDeliveryFeeSchd, useGetLotProductTypes } from './queries';
+import { useGetDeliveryFeeSchd, useGetLotProductTypes, useGetLotProductNames } from './queries';
 import './FeeDetails.scss';
 
 // interface FormStatusType {
@@ -51,7 +51,11 @@ export default function FeeDetails() {
 
     const [productTypes, setProductTypes] = useState([]);
     const { data: productTypeList } = useGetLotProductTypes(lotId);
-
+    // setProductCd should be set in onChange method
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const [productCd, setProductCd] = useState('');
+    const [productNames, setProductNames] = useState([]);
+    const { data: productNameList } = useGetLotProductNames(lotId, productCd);
 
     useEffect(() => {
         if (delFeeShedList?.data?.length) {
@@ -61,7 +65,10 @@ export default function FeeDetails() {
             productTypeList.data.lotProductTypes.unshift({ productGroupNm: 'ALL', productGroupCd: 'ALL' });
             setProductTypes(productTypeList.data.lotProductTypes.map((obj: any) => ({ label: obj.productGroupNm.trim(), value: obj.productGroupCd.trim() })));
         }
-    }, [delFeeShedList, productTypeList]);
+        if (productNameList?.data?.lotProducts?.length) {
+            setProductNames(productTypeList.data.lotProducts.map((obj: any) => ({ label: obj.productNm.trim(), value: obj.productId.trim() })));
+        }
+    }, [delFeeShedList, productTypeList, productNameList]);
 
     const onClickBack = () => {
         if (isFormFieldChange()) {
@@ -342,7 +349,7 @@ export default function FeeDetails() {
                                                                 name={`serviceFeeRules[${index}].productName`}
                                                                 label={t("FeeDetails.productName")}
                                                                 description=''
-                                                                items={[]}
+                                                                items={productNames}
                                                                 placeholder={t("FeeDetails.productNamePlaceholder")}
                                                                 onChange={formik.setFieldValue}
                                                                 helperText={
