@@ -44,7 +44,7 @@ const formStatusProps: IFormStatusProps = {
 };
 
 
-const AddLot: React.FC<AddTruckParkingLotProps> = memo(() => {
+const AddLot: React.FC<AddTruckParkingLotProps> = () => {
     const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
     setVersion("Breadcrumbs-Single");
     const navigate = useNavigate();
