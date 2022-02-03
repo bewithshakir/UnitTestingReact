@@ -203,15 +203,15 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
     };
 
     const saveProduct = (form: any) => {
-        const payloadObj = {
-            productNm: form.productNm,
-            addedPriceAmt: form.addedPriceAmt,
-            discountPriceAmt: form.discountPriceAmt,
-            manualPriceAmt: form.manualPriceAmt,
-            productId: form.masterProductName?.value,
-            pricingModelCd: form.pricingModel?.value
-        };
         try {
+            const payloadObj = {
+                productNm: form.productNm,
+                addedPriceAmt: form.addedPriceAmt,
+                discountPriceAmt: form.discountPriceAmt,
+                manualPriceAmt: form.manualPriceAmt,
+                productId: form.masterProductName?.value,
+                pricingModelCd: form.pricingModel?.value
+            };
             if (editMode) {
                 editCustomProduct(payloadObj);
             } else {

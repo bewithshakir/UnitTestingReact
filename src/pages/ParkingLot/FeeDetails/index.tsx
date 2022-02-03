@@ -49,7 +49,7 @@ export default function FeeDetails() {
 
     const [feeShed, setFeeShed] = useState([]);
     const { data: delFeeShedList } = useGetDeliveryFeeSchd();
-    
+
     useEffect(() => {
         if (delFeeShedList?.data?.length) {
             setFeeShed(delFeeShedList.data.map((obj: any) => ({ label: obj.feeFrequencyNm.trim(), value: obj.feeFrequencyCd.trim() })));
@@ -109,20 +109,38 @@ export default function FeeDetails() {
         return (!formik.isValid || !formik.dirty) || formik.isSubmitting;
     };
 
+    const addFeeDetails = (values: any) => {
+        try {
+            const apiPayload = {
+                parkingLotId: lotId,
+                feeName: values.feeName,
+                deliveryFee: {
+                    fee: values.delFee,
+                    feeSchedule: values.delFeeShed.value,
+                    salesTaxExemption: values.salesTaxExcemption ? 'Y' : 'N',
+                },
+                serviceFee: []
+            };
+        } catch (error) {
+            // setFormStatus(formStatusProps.error);
+        }
+    };
+
     const formik = useFormik({
         initialValues: initialFormikValues,
         validationSchema: AddFeeDetailsValidationSchema,
         onSubmit: (values) => {
             console.warn(values);
+            addFeeDetails(values);
         },
         enableReinitialize: true
     });
 
     const isAddServiceFeeRuleDisabled = () => {
         if ((formik.values.serviceFeeRules.length < 10 && !isDisabled)) {
-            if(formik?.values?.serviceFeeRules[0]?.productType?.value?.toLowerCase() === 'all' && formik?.values?.serviceFeeRules[0]?.vehicleType?.value?.toLowerCase() === 'all' && formik?.values?.serviceFeeRules[0]?.assetType?.value?.toLowerCase() === 'all'){
+            if (formik?.values?.serviceFeeRules[0]?.productType?.value?.toLowerCase() === 'all' && formik?.values?.serviceFeeRules[0]?.vehicleType?.value?.toLowerCase() === 'all' && formik?.values?.serviceFeeRules[0]?.assetType?.value?.toLowerCase() === 'all') {
                 return true;
-            }else{
+            } else {
                 return false;
             }
         }
@@ -244,14 +262,14 @@ export default function FeeDetails() {
                                                 <Fragment key={`em${index}`}>
                                                     <Grid item pt={2.5}>
                                                         <Typography variant="h3" component="h3" gutterBottom className="left-heading fw-bold" mb={1}>
-                                                            {t("FeeDetails.serviceFeeRule") +' ' +  (index+1) +' :'}  
+                                                            {t("FeeDetails.serviceFeeRule") + ' ' + (index + 1) + ' :'}
                                                             {index !== 0 && (
                                                                 <DeleteIcon color="var(--Tertiary)" height={16} onClick={() => (!formik.values.serviceFeeRules[index].serviceFeeRuleId) && deleteFeeRule(index, arr)}
                                                                     className='deleteBtn' />
                                                             )}
                                                         </Typography>
                                                     </Grid>
-                                                    <ServiceRule index={index} isDisabled={isDisabled} formik={formik} lotId={lotId}/>
+                                                    <ServiceRule index={index} isDisabled={isDisabled} formik={formik} lotId={lotId} />
                                                 </Fragment>
                                             ))}
                                             <Grid item md={12} mt={2} mb={4}>
