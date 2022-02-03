@@ -12,7 +12,7 @@ const getDeliveryFeeSchd = async () => {
     return data;
 };
 
-export const useGetDelivaryFeeSchd = () => {
+export const useGetDeliveryFeeSchd = () => {
     return useQuery(["getDeliveryFeeSchd"], () => getDeliveryFeeSchd());
 };
 

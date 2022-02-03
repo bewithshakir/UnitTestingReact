@@ -14,7 +14,7 @@ import { AddFeeDetailsValidationSchema } from './validations';
 import { useTheme } from '../../../contexts/Theme/Theme.context';
 // import { formStatusObj } from '../config';
 import { useAddedCustomerNameStore, useAddedCustomerIdStore, useShowConfirmationDialogBoxStore } from '../../../store';
-import { useGetLotProductTypes } from './queries';
+import { useGetDeliveryFeeSchd, useGetLotProductTypes } from './queries';
 import './FeeDetails.scss';
 
 // interface FormStatusType {
@@ -46,16 +46,22 @@ export default function FeeDetails() {
     const isFormValidated = useShowConfirmationDialogBoxStore((state) => state.setFormFieldValue);
     const showDialogBox = useShowConfirmationDialogBoxStore((state) => state.showDialogBox);
 
+    const [feeShed, setFeeShed] = useState([]);
+    const { data: delFeeShedList } = useGetDeliveryFeeSchd();
+
     const [productTypes, setProductTypes] = useState([]);
     const { data: productTypeList } = useGetLotProductTypes(lotId);
 
 
     useEffect(() => {
+        if (delFeeShedList?.data?.length) {
+            setFeeShed(delFeeShedList.data.map((obj: any) => ({ label: obj.feeFrequencyNm.trim(), value: obj.feeFrequencyCd.trim() })));
+        }
         if (productTypeList?.data?.lotProductTypes?.length) {
             productTypeList.data.lotProductTypes.unshift({ productGroupNm: 'ALL', productGroupCd: 'ALL' });
             setProductTypes(productTypeList.data.lotProductTypes.map((obj: any) => ({ label: obj.productGroupNm.trim(), value: obj.productGroupCd.trim() })));
         }
-    }, [productTypeList]);
+    }, [delFeeShedList, productTypeList]);
 
     const onClickBack = () => {
         if (isFormFieldChange()) {
@@ -217,7 +223,7 @@ export default function FeeDetails() {
                                             name='delFeeShed'
                                             label={t("FeeDetails.delFeeShed")}
                                             description=''
-                                            items={[]}
+                                            items={feeShed}
                                             placeholder={t("FeeDetails.selectFee")}
                                             helperText={(formik.touched.delFeeShed && formik.errors.delFeeShed) ? formik.errors.delFeeShed.value : undefined}
                                             error={(formik.touched.delFeeShed && formik.errors.delFeeShed) ? true : false}
