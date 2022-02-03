@@ -1,8 +1,8 @@
 import { act, renderHook } from "@testing-library/react-hooks";
 import { rest } from "msw";
-import { serverMsw } from "../../../setupTests";
+import { serverMsw } from "../../../../setupTests";
 
-import { createWrapper } from "../../../tests/utils";
+import { createWrapper } from "../../../../tests/utils";
 import { useAddTruckParkingLot } from "./queries";
 
 describe('useAddTruckParkingLot for useMutation', ()=> {

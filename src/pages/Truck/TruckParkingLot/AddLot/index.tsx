@@ -44,7 +44,7 @@ const formStatusProps: IFormStatusProps = {
 };
 
 
-const AddFuelTax: React.FC<AddFuelTaxProps> = memo(() => {
+const AddLot: React.FC<AddFuelTaxProps> = () => {
     const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
     setVersion("Breadcrumbs-Single");
     const navigate = useNavigate();
@@ -95,6 +95,7 @@ const AddFuelTax: React.FC<AddFuelTaxProps> = memo(() => {
     });
 
     const handleGoogleAddressChange = (addressObj: any) => {
+        console.log('now changed--');
         formik.setFieldValue('addressLine1', addressObj.addressLine1);
         formik.setFieldValue('addressLine2', addressObj.addressLine2);
         formik.setFieldValue('cityNm', addressObj.city);
@@ -163,7 +164,8 @@ const AddFuelTax: React.FC<AddFuelTaxProps> = memo(() => {
                                 />
                             </Grid>
                             <Grid container mt={1}>
-                                <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
+                                <Grid item xs={12} md={6} pr={2.5} pb={2.5} data-testid="testaddress">
+
                                     <AutocompleteInput
                                         id="addressLine1"
                                         name='addressLine1'
@@ -174,6 +176,8 @@ const AddFuelTax: React.FC<AddFuelTaxProps> = memo(() => {
                                         helperText={(formik.touched.addressLine1 && formik.errors.addressLine1) ? formik.errors.addressLine1 : undefined}
                                         error={(formik.touched.addressLine1 && formik.errors.addressLine1) ? true : false}
                                         data-testid="addressLine1"
+                                        required
+                                        disabled={false}
                                     />
                                 </Grid>
                                 <Grid item xs={12} md={6} pl={2.5} pb={2.5}>
@@ -261,6 +265,6 @@ const AddFuelTax: React.FC<AddFuelTaxProps> = memo(() => {
             </Box>
         </>
     );
-});
+};
 
-export default AddFuelTax;
+export default AddLot;

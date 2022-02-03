@@ -1035,6 +1035,7 @@ exports[`Rendering of Add Truck Parking lot Add truck parking lot snapshot testi
                         mt={1}
                       >
                         <ForwardRef(Grid)
+                          data-testid="testaddress"
                           item={true}
                           md={6}
                           pb={2.5}
@@ -1049,6 +1050,7 @@ exports[`Rendering of Add Truck Parking lot Add truck parking lot snapshot testi
                             name="addressLine1"
                             onBlur={[Function]}
                             onChange={[Function]}
+                            required={true}
                             value=""
                           />
                         </ForwardRef(Grid)>
@@ -1275,6 +1277,7 @@ exports[`Rendering of Add Truck Parking lot Add truck parking lot snapshot testi
                             mt={1}
                           >
                             <ForwardRef(Grid)
+                              data-testid="testaddress"
                               item={true}
                               md={6}
                               pb={2.5}
@@ -1289,6 +1292,7 @@ exports[`Rendering of Add Truck Parking lot Add truck parking lot snapshot testi
                                 name="addressLine1"
                                 onBlur={[Function]}
                                 onChange={[Function]}
+                                required={true}
                                 value=""
                               />
                             </ForwardRef(Grid)>
@@ -1817,6 +1821,7 @@ exports[`Rendering of Add Truck Parking lot Add truck parking lot snapshot testi
                               Object {
                                 "children": Array [
                                   <ForwardRef(Grid)
+                                    data-testid="testaddress"
                                     item={true}
                                     md={6}
                                     pb={2.5}
@@ -1831,6 +1836,7 @@ exports[`Rendering of Add Truck Parking lot Add truck parking lot snapshot testi
                                       name="addressLine1"
                                       onBlur={[Function]}
                                       onChange={[Function]}
+                                      required={true}
                                       value=""
                                     />
                                   </ForwardRef(Grid)>,
@@ -1887,6 +1893,7 @@ exports[`Rendering of Add Truck Parking lot Add truck parking lot snapshot testi
                               className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-undefined css-1sthlmf-MuiGrid-root"
                             >
                               <ForwardRef(Grid)
+                                data-testid="testaddress"
                                 item={true}
                                 md={6}
                                 pb={2.5}
@@ -1896,6 +1903,7 @@ exports[`Rendering of Add Truck Parking lot Add truck parking lot snapshot testi
                                 <MuiGridRoot
                                   as="div"
                                   className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-6"
+                                  data-testid="testaddress"
                                   ownerState={
                                     Object {
                                       "children": <GoogleAutoCompleteAddress
@@ -1906,11 +1914,13 @@ exports[`Rendering of Add Truck Parking lot Add truck parking lot snapshot testi
                                         name="addressLine1"
                                         onBlur={[Function]}
                                         onChange={[Function]}
+                                        required={true}
                                         value=""
                                       />,
                                       "columnSpacing": 0,
                                       "columns": 12,
                                       "container": false,
+                                      "data-testid": "testaddress",
                                       "direction": "row",
                                       "item": true,
                                       "lg": false,
@@ -1936,6 +1946,7 @@ exports[`Rendering of Add Truck Parking lot Add truck parking lot snapshot testi
                                 >
                                   <div
                                     className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-6 css-14gtbhm-MuiGrid-root"
+                                    data-testid="testaddress"
                                   >
                                     <GoogleAutoCompleteAddress
                                       data-testid="addressLine1"
@@ -1945,6 +1956,7 @@ exports[`Rendering of Add Truck Parking lot Add truck parking lot snapshot testi
                                       name="addressLine1"
                                       onBlur={[Function]}
                                       onChange={[Function]}
+                                      required={true}
                                       value=""
                                     >
                                       <AutoCompleteInput
@@ -1954,6 +1966,7 @@ exports[`Rendering of Add Truck Parking lot Add truck parking lot snapshot testi
                                         name="addressLine1"
                                         onBlur={[Function]}
                                         onChange={[Function]}
+                                        required={true}
                                         type="text"
                                         value=""
                                       >
@@ -1967,7 +1980,7 @@ exports[`Rendering of Add Truck Parking lot Add truck parking lot snapshot testi
                                           onChange={[Function]}
                                           onInputChange={[Function]}
                                           placeholder="Search Location"
-                                          required={false}
+                                          required={true}
                                           value={
                                             Object {
                                               "label": "",
@@ -1986,7 +1999,7 @@ exports[`Rendering of Add Truck Parking lot Add truck parking lot snapshot testi
                                                   "children": Array [
                                                     <ForwardRef(InputLabel)
                                                       aria-labelledby="addTruckParkingLot.form.addressLine1"
-                                                      aria-required={false}
+                                                      aria-required={true}
                                                       htmlFor="addressLine1"
                                                       shrink={true}
                                                       style={
@@ -1997,6 +2010,11 @@ exports[`Rendering of Add Truck Parking lot Add truck parking lot snapshot testi
                                                     >
                                                       <b>
                                                         ADDTRUCKPARKINGLOT.FORM.ADDRESSLINE1
+                                                        <span
+                                                          className="super"
+                                                        >
+                                                          * 
+                                                        </span>
                                                       </b>
                                                     </ForwardRef(InputLabel)>,
                                                     <ForwardRef
@@ -2045,7 +2063,7 @@ exports[`Rendering of Add Truck Parking lot Add truck parking lot snapshot testi
                                               >
                                                 <ForwardRef(InputLabel)
                                                   aria-labelledby="addTruckParkingLot.form.addressLine1"
-                                                  aria-required={false}
+                                                  aria-required={true}
                                                   htmlFor="addressLine1"
                                                   shrink={true}
                                                   style={
@@ -2056,7 +2074,7 @@ exports[`Rendering of Add Truck Parking lot Add truck parking lot snapshot testi
                                                 >
                                                   <MuiInputLabelRoot
                                                     aria-labelledby="addTruckParkingLot.form.addressLine1"
-                                                    aria-required={false}
+                                                    aria-required={true}
                                                     classes={
                                                       Object {
                                                         "asterisk": "",
@@ -2068,9 +2086,14 @@ exports[`Rendering of Add Truck Parking lot Add truck parking lot snapshot testi
                                                     ownerState={
                                                       Object {
                                                         "aria-labelledby": "addTruckParkingLot.form.addressLine1",
-                                                        "aria-required": false,
+                                                        "aria-required": true,
                                                         "children": <b>
                                                           ADDTRUCKPARKINGLOT.FORM.ADDRESSLINE1
+                                                          <span
+                                                            className="super"
+                                                          >
+                                                            * 
+                                                          </span>
                                                         </b>,
                                                         "disableAnimation": false,
                                                         "formControl": Object {
@@ -2110,7 +2133,7 @@ exports[`Rendering of Add Truck Parking lot Add truck parking lot snapshot testi
                                                   >
                                                     <ForwardRef(FormLabel)
                                                       aria-labelledby="addTruckParkingLot.form.addressLine1"
-                                                      aria-required={false}
+                                                      aria-required={true}
                                                       className="css-1bzvmy4-MuiInputLabel-root"
                                                       classes={
                                                         Object {
@@ -2128,7 +2151,7 @@ exports[`Rendering of Add Truck Parking lot Add truck parking lot snapshot testi
                                                     >
                                                       <MuiFormLabelRoot
                                                         aria-labelledby="addTruckParkingLot.form.addressLine1"
-                                                        aria-required={false}
+                                                        aria-required={true}
                                                         as="label"
                                                         className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary css-1bzvmy4-MuiInputLabel-root"
                                                         classes={
@@ -2142,9 +2165,14 @@ exports[`Rendering of Add Truck Parking lot Add truck parking lot snapshot testi
                                                         ownerState={
                                                           Object {
                                                             "aria-labelledby": "addTruckParkingLot.form.addressLine1",
-                                                            "aria-required": false,
+                                                            "aria-required": true,
                                                             "children": <b>
                                                               ADDTRUCKPARKINGLOT.FORM.ADDRESSLINE1
+                                                              <span
+                                                                className="super"
+                                                              >
+                                                                * 
+                                                              </span>
                                                             </b>,
                                                             "className": "css-1bzvmy4-MuiInputLabel-root",
                                                             "classes": Object {
@@ -2173,7 +2201,7 @@ exports[`Rendering of Add Truck Parking lot Add truck parking lot snapshot testi
                                                       >
                                                         <label
                                                           aria-labelledby="addTruckParkingLot.form.addressLine1"
-                                                          aria-required={false}
+                                                          aria-required={true}
                                                           className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary css-1kty9di-MuiFormLabel-root-MuiInputLabel-root"
                                                           data-shrink={true}
                                                           htmlFor="addressLine1"
@@ -2185,6 +2213,11 @@ exports[`Rendering of Add Truck Parking lot Add truck parking lot snapshot testi
                                                         >
                                                           <b>
                                                             ADDTRUCKPARKINGLOT.FORM.ADDRESSLINE1
+                                                            <span
+                                                              className="super"
+                                                            >
+                                                              * 
+                                                            </span>
                                                           </b>
                                                         </label>
                                                       </MuiFormLabelRoot>
