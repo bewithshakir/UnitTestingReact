@@ -45,17 +45,17 @@ describe('Rendering of Add Truck Parking lot', () => {
 });
 
 describe('renders Add Truck Parkinglot component for add mode', () => {
-    let result: RenderResult;
-    let formElem: HTMLFormElement;
-    let addressLine1Elem: HTMLInputElement;
-    let addressLine2Elem: HTMLInputElement;
-    let cityElem: HTMLInputElement;
-    let stateElem: HTMLInputElement;
-    let postalCodeElem: HTMLInputElement;
-    let saveBtn: HTMLButtonElement;
-    let cancelBtn: HTMLButtonElement;
+    // let result: RenderResult;
+    // let formElem: HTMLFormElement;
+    // let addressLine1Elem: HTMLInputElement;
+    // let addressLine2Elem: HTMLInputElement;
+    // let cityElem: HTMLInputElement;
+    // let stateElem: HTMLInputElement;
+    // let postalCodeElem: HTMLInputElement;
+    // let saveBtn: HTMLButtonElement;
+    // let cancelBtn: HTMLButtonElement;
 
-    // beforeEach(()=> {
+    // beforeAll(()=> {
     //     result = renderWithClient(<AddLot version="Breadcrumbs-Many" />);
     //     formElem = getAllElements(result).formElem;
     //     addressLine1Elem = getAllElements(result).addressLine1Elem;
@@ -67,6 +67,14 @@ describe('renders Add Truck Parkinglot component for add mode', () => {
     //     cancelBtn = getAllElements(result).cancelBtn;
     // });
 
+    // beforeEach(()=>{
+    //     fireEvent.change(addressLine1Elem, {target: {value: 'Elkton Test'}});
+    //     fireEvent.change(addressLine2Elem, {target: {value: 'Elkton Test'}});
+    //     fireEvent.change(cityElem, {target: {value: 'Elkton'}});
+    //     fireEvent.change(stateElem, {target: {value: 'VA'}});
+    //     fireEvent.change(postalCodeElem, {target: {value: '22827'}});
+    // })
+
     afterEach(cleanup);
 
     it('renders all mendatory fields with blank value on add mode', ()=> {
@@ -75,78 +83,102 @@ describe('renders Add Truck Parkinglot component for add mode', () => {
         expect(formElem).toBeInTheDocument();
         expect(saveBtn).toBeDisabled();
     });
-    
-    describe('Add Truck parking lot screen on add mode', () => {
-        
-        // beforeEach(async()=> {
-        //     fireEvent.change(addressLine1Elem, {target: {value: 'E'}});
-        //     await selectEvent.select(addressLine1Elem, ["Elkton Test"]);
-        // });
+    it('enable save button when all mendatory fields are filled', async()=> {
+        const result = renderWithClient(<AddLot version="Breadcrumbs-Many" />);
+        const {addressLine1Elem, addressLine2Elem, cityElem, stateElem, postalCodeElem, saveBtn} = getAllElements(result);
+        fireEvent.change(addressLine1Elem, {target: {value: 'Elkton Test'}});
+        fireEvent.change(addressLine2Elem, {target: {value: 'Elkton Test'}});
+        fireEvent.change(cityElem, {target: {value: 'Elkton'}});
+        fireEvent.change(stateElem, {target: {value: 'VA'}});
+        fireEvent.change(postalCodeElem, {target: {value: '22827'}});
+        await waitFor(()=> {
 
-        it('enable save button when all mendatory fields are filled', async()=> {
-            const result = renderWithClient(<AddLot version="Breadcrumbs-Many" />);
-            const {addressLine1Elem, addressLine2Elem, saveBtn} = getAllElements(result);
-            fireEvent.change(addressLine1Elem, {target: {value: 'E'}});
-            await act(async()=>{
-                 await selectEvent.select(addressLine1Elem, ["Elkton Test"]);
-            })
-            // result.debug(await result.findByTestId('testaddress'));
-            await waitFor(()=> {
-                expect(addressLine2Elem).toHaveValue('Elkton Test');
-                expect(cityElem).toHaveValue('Elkton');
-                expect(stateElem).toHaveValue('VA');
-                expect(postalCodeElem).toHaveValue('22827');
-
-                userEvent.tab();
-                expect(saveBtn).toBeEnabled();
-            });
+            userEvent.tab();
+            expect(saveBtn).toBeEnabled();
         });
-
-        // it('show loader on save button clicked and remove after success', async()=> {
-        //     await waitFor(()=> {
-        //         expect(addressLine2Elem).toHaveValue('Elkton Test');
-        //         expect(cityElem).toHaveValue('Elkton');
-        //         expect(stateElem).toHaveValue('VA');
-        //         expect(postalCodeElem).toHaveValue('22827');
-
-        //         userEvent.tab();
-        //         expect(saveBtn).toBeEnabled();
-        //         userEvent.click(saveBtn);
-        //     });
-        //     await waitFor(()=> {
-        //         expect(result.getByText('formStatusProps.success.message')).toBeInTheDocument();
-        //     });
-        // }, 6000);
-
-        // it('show toaster with error message on save button clicked', async()=> { 
-        //     serverMsw.use(
-        //         rest.post('*', (req, res, ctx) => {
-        //             return res(
-        //                 ctx.status(500),
-        //                 ctx.json({
-        //                     data: null,
-        //                     error: {
-        //                         details: ['fail add dsp']
-        //                     }
-        //                 })
-        //             );
-        //         })
-        //     );
-        //     await waitFor(()=> {
-        //         expect(addressLine2Elem).toHaveValue('Elkton Test');
-        //         expect(cityElem).toHaveValue('Elkton');
-        //         expect(stateElem).toHaveValue('VA');
-        //         expect(postalCodeElem).toHaveValue('22827');
-
-        //         userEvent.tab();
-        //         expect(saveBtn).toBeEnabled();
-        //         userEvent.click(saveBtn);
-        //     });
-        //     await waitFor(()=> {
-        //         expect(result.getByText(/fail add dsp/i)).toBeInTheDocument();
-        //         expect(saveBtn).toBeDisabled();
-        //     });
-        // });
     });
-        
+    it('show loader on save button clicked and remove after success', async()=> {
+        const result = renderWithClient(<AddLot version="Breadcrumbs-Many" />);
+        const {addressLine1Elem, addressLine2Elem, cityElem, stateElem, postalCodeElem, saveBtn} = getAllElements(result);
+        fireEvent.change(addressLine1Elem, {target: {value: 'Elkton Test'}});
+        fireEvent.change(addressLine2Elem, {target: {value: 'Elkton Test'}});
+        fireEvent.change(cityElem, {target: {value: 'Elkton'}});
+        fireEvent.change(stateElem, {target: {value: 'VA'}});
+        fireEvent.change(postalCodeElem, {target: {value: '22827'}});
+        await waitFor(()=> {
+
+            userEvent.tab();
+            expect(saveBtn).toBeEnabled();
+            userEvent.click(saveBtn);
+        });
+        await waitFor(()=> {
+            expect(result.getByText('formStatusProps.success.message')).toBeInTheDocument();
+        });
+    }, 6000);
+       
 });
+
+// describe('Add Truck parking lot screen on add mode', () => {
+
+
+//     it('enable save button when all mendatory fields are filled', async()=> {
+//         const result = renderWithClient(<AddLot version="Breadcrumbs-Many" />);
+//         const {addressLine1Elem, addressLine2Elem, cityElem, stateElem, postalCodeElem, saveBtn} = getAllElements(result);
+//         fireEvent.change(addressLine1Elem, {target: {value: 'Elkton Test'}});
+//         fireEvent.change(addressLine2Elem, {target: {value: 'Elkton Test'}});
+//         fireEvent.change(cityElem, {target: {value: 'Elkton'}});
+//         fireEvent.change(stateElem, {target: {value: 'VA'}});
+//         fireEvent.change(postalCodeElem, {target: {value: '22827'}});
+//         await waitFor(()=> {
+
+//             userEvent.tab();
+//             expect(saveBtn).toBeEnabled();
+//         });
+//     });
+
+    // it('show loader on save button clicked and remove after success', async()=> {
+    //     await waitFor(()=> {
+    //         expect(addressLine2Elem).toHaveValue('Elkton Test');
+    //         expect(cityElem).toHaveValue('Elkton');
+    //         expect(stateElem).toHaveValue('VA');
+    //         expect(postalCodeElem).toHaveValue('22827');
+
+    //         userEvent.tab();
+    //         expect(saveBtn).toBeEnabled();
+    //         userEvent.click(saveBtn);
+    //     });
+    //     await waitFor(()=> {
+    //         expect(result.getByText('formStatusProps.success.message')).toBeInTheDocument();
+    //     });
+    // }, 6000);
+
+    // it('show toaster with error message on save button clicked', async()=> { 
+    //     serverMsw.use(
+    //         rest.post('*', (req, res, ctx) => {
+    //             return res(
+    //                 ctx.status(500),
+    //                 ctx.json({
+    //                     data: null,
+    //                     error: {
+    //                         details: ['fail add dsp']
+    //                     }
+    //                 })
+    //             );
+    //         })
+    //     );
+    //     await waitFor(()=> {
+    //         expect(addressLine2Elem).toHaveValue('Elkton Test');
+    //         expect(cityElem).toHaveValue('Elkton');
+    //         expect(stateElem).toHaveValue('VA');
+    //         expect(postalCodeElem).toHaveValue('22827');
+
+    //         userEvent.tab();
+    //         expect(saveBtn).toBeEnabled();
+    //         userEvent.click(saveBtn);
+    //     });
+    //     await waitFor(()=> {
+    //         expect(result.getByText(/fail add dsp/i)).toBeInTheDocument();
+    //         expect(saveBtn).toBeDisabled();
+    //     });
+    // });
+// });
