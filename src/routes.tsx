@@ -141,7 +141,7 @@ export const routes: RouteObject[] = [
     element: <AssetManagement version="Breadcrumbs-Many" />,
   },
   {
-    path: "/truckParkingLot/Add",
+    path: "/truckParkingLot/add",
     element: <AddTruckParkingLot version="Breadcrumbs-Many"/>,
   }
 ];
