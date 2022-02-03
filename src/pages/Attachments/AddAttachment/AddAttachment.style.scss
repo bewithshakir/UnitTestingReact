@@ -1,70 +1,75 @@
 div{
     .upload-attachment-main-container{
-        border: 1px solid var(--Gray);
-        margin-bottom: 25px;
-        .file-box{
-            display: flex;
-            flex-wrap: wrap;
-        }
-        .filename-paper{
-            margin: 26px 30px;
-            width: 100%;
-            padding: 22px 28px;
-            div{
-                color: var(--Darkgray);
-                display: inline-block;
-                vertical-align: middle;
-                margin-right: 19px;
-                svg{
-                    width: 18px;
-                    height: 20px;
-                    margin-bottom: -3px;
+        margin: 0px 65px 0px 0px;
+        .upload-inner-container{
+            border: 1px solid var(--Gray);
+            margin-bottom: 25px;
+            .file-box{
+                display: flex;
+                flex-wrap: wrap;
+            }
+            .filename-paper{
+                margin: 26px 30px;
+                width: 100%;
+                padding: 22px 28px;
+                div{
+                    color: var(--Darkgray);
+                    display: inline-block;
+                    vertical-align: middle;
+                    margin-right: 19px;
+                    svg{
+                        width: 18px;
+                        height: 20px;
+                        margin-bottom: -3px;
+                    }
+                }
+                .filename-div{
+                    font-weight: bold;
+                }
+                .delete-div{
+                    float: right;
+                    margin-right: 0px;;
+                }
+                .file-error{
+                    font-size: 14px;
+                    color: var(--Tertiary);
                 }
             }
-            .filename-div{
+            .upload-box{
+                text-align: center;
+                padding: 26px 30px;
+            }
+            .main-text{
+                color: var(--Darkgray);
                 font-weight: bold;
+                .highlighted-text{
+                    color: var(--BlueHighlightedColor);
+                    text-decoration: underline;
+                    cursor: pointer;
+                }
             }
-            .delete-div{
-                float: right;
-                margin-right: 0px;;
-            }
-            .file-error{
+            .helper-text{
+                color: var(--Darkgray);
                 font-size: 14px;
-                color: var(--Tertiary);
+                margin: 0px 10px 0px -10px
             }
         }
-        .upload-box{
-            text-align: center;
-            padding: 26px 30px;
-        }
-        .main-text{
-            color: var(--Darkgray);
-            font-weight: bold;
-            .highlighted-text{
-                color: var(--BlueHighlightedColor);
-                text-decoration: underline;
-                cursor: pointer;
+        .final-upload-btn{
+            float: right;
+            .loadingIcon{
+                position: inital; 
+                width: 28px;
             }
-        }
-        .helper-text{
-            color: var(--Darkgray);
-            font-size: 14px;
-            margin: 0px 10px 0px -10px
-        }
-    }
-    .final-upload-btn{
-        float: right;
-        .loadingIcon{
-            position: inital; 
-            width: 28px;
-        }
-        svg{
-            margin-right: 11px; 
-        }
-        &.Mui-disabled{
             svg{
-                color: var(--Lightergray);
-            }       
+                margin-right: 11px; 
+            }
+            &.Mui-disabled{
+                svg{
+                    color: var(--Lightergray);
+                }       
+            }
         }
     }
+    
+    
 }
