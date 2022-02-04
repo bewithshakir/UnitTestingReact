@@ -238,7 +238,53 @@ export default function HorizontalBar (props: HorizontalBarProps) {
           </div>
         </>
       );
-    } else {
+    } 
+    else if(pathname.includes('truckParkingLot')) {
+      return (
+        <>
+          <div
+            className={
+              pathname.includes('taxes') ? 'linkitem active' : 'linkitem'
+            }
+          >
+            <NavLink
+              className='breadcrubs-title'
+              to='/'
+              onClick={handleClick}
+            >
+              {t('truck.navBar.overview')}
+            </NavLink>
+          </div>
+          <div
+            className={
+              pathname.includes('salesTax') ? 'linkitem active' : 'linkitem'
+            }
+          >
+            <NavLink
+              className='breadcrubs-title'
+              to='/'
+              onClick={handleClick}
+            >
+              {t('truck.navBar.liveMap')}
+            </NavLink>
+          </div>
+          <div
+            className={
+              pathname.includes('truckParkingLot') ? 'linkitem active' : 'linkitem'
+            }
+          >
+            <NavLink
+              className='breadcrubs-title'
+              to='/truckParkingLot'
+              onClick={handleClick}
+            >
+              {t('truck.navBar.truckPlot')}
+            </NavLink>
+          </div>
+        </>
+      );
+    }
+    else {
       return (
         <>
           <div className={pathname === '/' ? 'linkitem active' : 'linkitem'}>

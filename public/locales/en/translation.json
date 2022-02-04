@@ -35,7 +35,8 @@
     "browse": "Browse",
     "filter": "Filters",
     "add asset": "ADD ASSET",
-    "import": "IMPORT"
+    "import": "IMPORT",
+    "filterText": "Filter"
   },
   "menus": {
     "sortby": {
@@ -376,5 +377,12 @@
     "uploadGenericError":"Error found. Please delete and re-upload the file",
     "no":"No",
     "yes":"Yes"
+  },
+  "truck": {
+    "navBar": {
+      "overview": "Overview",
+      "liveMap": "Live Map",
+      "truckPlot": "Truck Parking Lot"
+    }
   }
 }
