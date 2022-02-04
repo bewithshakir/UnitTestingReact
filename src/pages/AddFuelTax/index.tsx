@@ -10,7 +10,7 @@ import { useFormik } from 'formik';
 import TaxModel from '../../models/TaxModel';
 import { AddFuelTaxValidationSchema, EditFuelTaxValidationSchema } from './validation';
 import AutocompleteInput from '../../components/UIComponents/GoogleAddressComponent/GoogleAutoCompleteAddress';
-import { useAddFuelTax, useGetFuelTax, useEditFuelTax } from './queries';
+import { useAddFuelTax, useGetFuelTax, useEditFuelTax, useGetFuelTypeList } from './queries';
 import ToastMessage from '../../components/UIComponents/ToastMessage/ToastMessage.component';
 import { DatePickerInput } from '../../components/UIComponents/DatePickerInput/DatePickerInput.component';
 import moment from 'moment';
@@ -59,13 +59,6 @@ const AddFuelTax: React.FC<AddFuelTaxProps> = memo(() => {
         message: '',
         type: '',
     });
-
-    const fuelTypes = [
-        { label: "Regular", value: "Regular" },
-        { label: "Diesel", value: "Diesel" }
-    ];
-
-
 
     const onAddFuelTaxSuccess = () => {
         setAPIResponse(true);
@@ -176,7 +169,7 @@ const AddFuelTax: React.FC<AddFuelTaxProps> = memo(() => {
     const [isDisabled, setDisabled] = useState(false);
     const [isEditMode, setEditMode] = useState(false);
     const location = useLocation();
-
+    const { data: fuelTypes } = useGetFuelTypeList();
 
     useEffect(() => {
         const selectedProductId = location.pathname.split("/").pop();
@@ -203,7 +196,7 @@ const AddFuelTax: React.FC<AddFuelTaxProps> = memo(() => {
         formik.setFieldValue('InspFuelRate', formData.miscInspFuelTax);
         formik.setFieldValue('miscLocalFuelRate', formData.miscLocalFuelTax);
         formik.setFieldValue('loadFuel', formData.miscLoadFuelTax);
-        formik.setFieldValue('fuelType', { label: formData.productNm, value: formData.productNm });
+        formik.setFieldValue('fuelType', { label: formData.productNm, value: formData.productCd });
         formik.setFieldValue('startDate', formData.startDate);
         formik.setFieldValue('endDate', formData.endDate);
         formik.setFieldValue('countryCd', 'us');
@@ -310,12 +303,15 @@ const AddFuelTax: React.FC<AddFuelTaxProps> = memo(() => {
             isFormValidated(true);
         }
     };
+
+    // eslint-disable-next-line no-console
+    console.log("🚀 ~ file: index.tsx ~ line 307 ~ constAddFuelTax:React.FC<AddFuelTaxProps>=memo ~ formik.initialValues", formik);
     return (
         <>
             <Box display="flex" mt={10} ml={16}>
                 <Grid item md={10} xs={10}>
                     <Container maxWidth="lg" className="page-container">
-                        <form onSubmit={formik.handleSubmit} onBlur={handleFormDataChange} data-test="component-AddFuelTax">
+                        <form id="addFuelTaxForm" onSubmit={formik.handleSubmit} onBlur={handleFormDataChange} data-test="component-AddFuelTax">
 
                             <Grid item xs={12} md={12}>
                                 <Box className="info-section" pl={2.7} pb={1.8} pt={2.0} pr={20} >
@@ -366,7 +362,7 @@ const AddFuelTax: React.FC<AddFuelTaxProps> = memo(() => {
                                     />
                                 </Grid>
 
-                                <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
+                                <Grid item xs={12} md={6} pr={2.5} pb={2.5} data-testid="temp">
                                     <Select
                                         id='fuelType'
                                         name='fuelType'
