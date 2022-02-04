@@ -352,7 +352,7 @@ export default function FeeDetails() {
                                                         onClick={(event: any) => addFeeRule(event, arr)}
                                                     >
                                                         <span className="add-icon-span"><PlusIcon color={isAddServiceFeeRuleDisabled() ? theme["--Secondary-Background"] : theme["--Primary"]} /></span>
-                                                        <Typography variant="h3" component="h3" className="fw-bold disabled-text" mb={1}>
+                                                        <Typography variant="h3" component="h3" className="fw-bold" mb={1}>
                                                             {t("FeeDetails.addAnotherServiceFee")}
                                                         </Typography>
                                                     </Link>
