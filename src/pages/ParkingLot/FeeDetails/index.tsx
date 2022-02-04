@@ -170,11 +170,16 @@ export default function FeeDetails() {
                         productNameId: rule?.productType?.value?.toLowerCase() === 'all' ? productIds :[]
                     },
                     fee: rule.serviceFeeCharge,
-                    applicableProduct: rule?.productType?.value?.toLowerCase() === 'all' ? null : rule?.productName?.value,
+                    ...(rule?.productType?.value?.toLowerCase()  !== 'all' && {applicableProduct: rule?.productName?.value}),
+                    ...(rule?.assetType?.value?.toLowerCase() !== 'all' && {asseType: rule?.assetType?.value}),
+                    ...(rule?.assetTypeDesc?.value?.toLowerCase() !== 'all' && {assetInput: rule?.assetTypeDesc?.value}),
+                    ...(rule?.vehicleType?.value?.toLowerCase() !== 'all' && {vehicleType: rule?.vehicleType?.value}),
+                    
+                    // applicableProduct: rule?.productType?.value?.toLowerCase() === 'all' ? '' : rule?.productName?.value,
                     isAsset: rule?.considerAsset ? 'Y' : 'N',
-                    asseType: rule?.assetType?.value?.toLowerCase() === 'all' ? null : rule?.assetType?.value,
-                    assetInput: rule?.assetTypeDesc,
-                    vehicleType: rule?.vehicleType?.value?.toLowerCase() === 'all' ? null : rule?.vehicleType?.value
+                    // asseType: rule?.assetType?.value?.toLowerCase() === 'all' ? '' : rule?.assetType?.value,
+                    // assetInput: rule?.assetTypeDesc,
+                    // vehicleType: rule?.vehicleType?.value?.toLowerCase() === 'all' ? '' : rule?.vehicleType?.value
                 });
             });
             addFeeDetails(apiPayload);

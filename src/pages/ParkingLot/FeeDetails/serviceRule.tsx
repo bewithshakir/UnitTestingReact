@@ -220,7 +220,6 @@ export default function ServiceRule({index, isDisabled, formik, lotId}: props) {
                                     ? true : false
                             }
                             description=''
-                            required
                             disabled={isDisabled}
                             {...formik.getFieldProps(`serviceFeeRules[${index}].assetTypeDesc`)}
                         />
