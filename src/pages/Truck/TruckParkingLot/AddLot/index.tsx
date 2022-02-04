@@ -13,6 +13,7 @@ import AutocompleteInput from '../../../../components/UIComponents/GoogleAddress
 import { useAddTruckParkingLot } from './queries';
 import ToastMessage from '../../../../components/UIComponents/ToastMessage/ToastMessage.component';
 import { useNavigate } from 'react-router-dom';
+import { LoadingIcon } from '../../../../assets/icons';
 
 const initialValues = new TruckLotModel();
 
@@ -67,7 +68,7 @@ const AddLot: React.FC<AddTruckParkingLotProps> = () => {
         setFormStatus({ message: data?.error?.details[0] || t("formStatusProps.error.message"), type: 'Error' });
     };
 
-    const { mutate: createNewTruckParkingLot, isSuccess: isSuccessAddLot, isError: isErrorAddLot, } = useAddTruckParkingLot(onAddTruckLotSuccess, onAddTruckLotError);
+    const { mutate: createNewTruckParkingLot, isSuccess: isSuccessAddLot, isError: isErrorAddLot, isLoading: isLoadingAddLot } = useAddTruckParkingLot(onAddTruckLotSuccess, onAddTruckLotError);
 
     const createNewTruckLot = (form: TruckLotModel) => {
         try {
@@ -254,6 +255,7 @@ const AddLot: React.FC<AddTruckParkingLotProps> = () => {
                                         disabled={disableButton()}
                                     >
                                         {t("buttons.save")}
+                                        {isLoadingAddLot && <LoadingIcon data-testid="loading-spinner" className='loading_save_icon' />}
                                     </Button>
                                 </Box>
                                 <ToastMessage isOpen={isErrorAddLot || isSuccessAddLot} messageType={formStatus.type} onClose={() => { return ''; }} message={formStatus.message} />

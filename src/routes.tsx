@@ -147,6 +147,6 @@ export const routes: RouteObject[] = [
   },
   {
     path: "/truckParkingLot/add",
-    element: <AddTruckParkingLot version="Breadcrumbs-Many"/>,
+    element: <AddTruckParkingLot version="Breadcrumbs-Single"/>,
   }
 ];
