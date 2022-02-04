@@ -1,10 +1,7 @@
 import { mount, shallow } from 'enzyme';
-import selectEvent from 'react-select-event';
 import DiscardDialog from '../../components/UIComponents/ConfirmationDialog/DiscardChangesDialog.component';
 import { findByTestAttr, HOCSetup } from '../../tests/testUtils';
-import { renderWithClient } from '../../tests/utils';
 import AddFuelTax from './index';
-import { act, waitFor } from '@testing-library/react';
 
 const mockedUsedNavigate = jest.fn();
 
@@ -21,13 +18,6 @@ jest.mock('react-router-dom', () => ({
  * Factory function to create wrapper
  * @returns {wrapper}
  */
-
-
-function getAllElements (component: any) {
-    const fuelTypeElem = component.container.querySelector('#fuelType') as HTMLInputElement;
-    const formElem = component.container.querySelector('#addFuelTaxForm');
-    return { formElem, fuelTypeElem, };
-}
 
 describe('AddFuelTax component', () => {
     let wrapper: any;
@@ -104,18 +94,6 @@ describe('AddFuelTax component', () => {
     it('renders Save Button without error', () => {
         const cancelButton = findByTestAttr(wrapper, 'save');
         expect(cancelButton.length).toBeGreaterThanOrEqual(0);
-    });
-
-    it('renders the addProductType with data', async () => {
-        const result = renderWithClient(<AddFuelTax version="Breadcrumbs-Single" />);
-        const { formElem, fuelTypeElem } = getAllElements(result);
-
-        selectEvent.select(fuelTypeElem, ["Diesel"]);
-        await waitFor(() => {
-            // eslint-disable-next-line no-console
-            console.log("🚀 ~ file: AddFuelTax.spec.tsx ~ line 109 ~ awaitwaitFor ~ formElem.value", formElem);
-            // expect(formElem).toHaveFormValues({ fuelType: "123" });
-        });
     });
 });
 

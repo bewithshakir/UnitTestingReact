@@ -1,6 +1,6 @@
 import { rest } from "msw";
 
-export const productTypesHandler = () => {
+export const getProductTypesDropdownHandler = () => {
     return rest.get('*/api/product-service/products?countryCode=us&skipPagination=true&productGroups=["Fuel", "Non-Fuel"]', (req, res, ctx) => {
         return res(
             ctx.status(200),

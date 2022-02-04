@@ -304,8 +304,6 @@ const AddFuelTax: React.FC<AddFuelTaxProps> = memo(() => {
         }
     };
 
-    // eslint-disable-next-line no-console
-    console.log("🚀 ~ file: index.tsx ~ line 307 ~ constAddFuelTax:React.FC<AddFuelTaxProps>=memo ~ formik.initialValues", formik);
     return (
         <>
             <Box display="flex" mt={10} ml={16}>

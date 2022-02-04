@@ -10,8 +10,10 @@ import { getFormattedAddressHandler, getGoogleAddressHandler } from "../componen
 import { getProductByLotHandler } from '../pages/ProductManagement/mockApi/handler';
 import { editProductHandler } from '../pages/ProductManagement/mockApi/handler';
 import { getFuelTaxList, getFuelTaxProductsList } from '../pages/Tax/mockApi/handler';
+import { getProductTypesDropdownHandler } from '../pages/AddFuelTax/mockApi/handlerAddFuelTax';
 
 export const handlers = [
+    getProductTypesDropdownHandler(),
     productTypesHandler(),
     productColorsHandler(),
     addProductManagementHandler(),
