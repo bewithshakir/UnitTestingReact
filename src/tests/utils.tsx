@@ -10,8 +10,11 @@ import { getFormattedAddressHandler, getGoogleAddressHandler } from "../componen
 import { getProductByLotHandler } from '../pages/ProductManagement/mockApi/handler';
 import { editProductHandler } from '../pages/ProductManagement/mockApi/handler';
 import { getFuelTaxList, getFuelTaxProductsList } from '../pages/Tax/mockApi/handler';
+import { getProductTypesDropdownHandler } from '../pages/AddFuelTax/mockApi/handlerAddFuelTax';
+import { getTruckParkingLotList } from '../pages/Truck/TruckParkingLot/mockApi/handlerTruckParkingLot';
 
 export const handlers = [
+    getProductTypesDropdownHandler(),
     productTypesHandler(),
     productColorsHandler(),
     addProductManagementHandler(),
@@ -28,7 +31,8 @@ export const handlers = [
     editDspHandler(),
     editProductHandler(),
     getFuelTaxList(),
-    getFuelTaxProductsList()
+    getFuelTaxProductsList(),
+    getTruckParkingLotList()
 ];
 
 const createTestQueryClient = () => new QueryClient({

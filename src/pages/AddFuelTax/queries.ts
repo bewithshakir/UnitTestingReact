@@ -2,6 +2,34 @@ import { useMutation, useQuery } from "react-query";
 import { AxiosRequestConfig } from "axios";
 import axios from "../../infrastructure/ApiHelper";
 
+const fetchFuelTypeList = async () => {
+    const options: AxiosRequestConfig = {
+        method: 'get',
+        url: '/api/product-service/products?countryCode=us&skipPagination=true&productGroups=["Fuel", "Non-Fuel"]'
+    };
+    const { data } = await axios(options);
+    return data;
+};
+
+interface FuelType {
+    productNm: string
+    productCd: string
+    activeInactiveInd: string
+}
+
+export const useGetFuelTypeList = () => {
+    return useQuery(['fetchFuelTypeList'], () => fetchFuelTypeList(), {
+        retry: false,
+        select: (response) => {
+            const fuelTypeList = response?.data.filter((obj: FuelType) => obj.activeInactiveInd === "Y")
+                .map((data: FuelType) => ({
+                    value: data.productCd.trim(),
+                    label: data.productNm.trim(),
+                }));
+            return fuelTypeList;
+        }
+    });
+};
 
 const addFuelTax = async (payload: any) => {
 
