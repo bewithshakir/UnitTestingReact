@@ -110,6 +110,8 @@ export default function HorizontalBar (props: HorizontalBarProps) {
           customerName: selectedCustomerName
         }
       });
+    } else if(pathname.includes('/truckParkingLot/add')){
+      navigate('/truckParkingLot');
     }
     else {
       props.onBack();
@@ -146,6 +148,8 @@ export default function HorizontalBar (props: HorizontalBarProps) {
         return t('parkingLot.form.titleEdit');
       case pathname.includes('AddAttachment'):
         return t('UploadAttachments.breadCrumbText');
+      case pathname.includes('truckParkingLot/add'):
+        return t('addTruckParkingLot.title');
       default:
         return selectedCustomerName;
     }

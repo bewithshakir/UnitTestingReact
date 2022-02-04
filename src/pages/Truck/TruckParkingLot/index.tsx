@@ -12,6 +12,8 @@ import { sortByOptions } from "./config";
 import SearchInput from "../../../components/UIComponents/SearchInput/SearchInput";
 import ActionsMenu from "../../../components/UIComponents/Menu/ActionsMenu.component";
 import TruckParkingLotModel from '../../../models/TruckParkingLotModel';
+import { HorizontalBarVersionState, useStore } from '../../../store';
+
 import { useGetTruckParkingLotList } from "./queries";
 
 interface ContentProps {
@@ -23,6 +25,7 @@ const TruckParkingLot: React.FC<ContentProps> = () => {
     const headCells = truckParkingLotObj.fieldsToDisplay();
     const massActionOptions = truckParkingLotObj.massActions();
     const rowActionOptions = truckParkingLotObj.rowActions();
+    const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
 
     const { t } = useTranslation();
     const navigate = useNavigate();
@@ -34,6 +37,10 @@ const TruckParkingLot: React.FC<ContentProps> = () => {
     const [truckParkingLotList, setTruckParkingLotList] = React.useState<any[]>([]);
     const [resetTableCollaps, setResetTableCollaps] = React.useState(false);
     const [searchTerm] = React.useState("");
+
+    useEffect(()=>{
+        setVersion("NavLinks");
+    },[]);
 
     const handleCustFilterPanelOpen = () => {
         // TODO
