@@ -14,8 +14,11 @@ import { AddFeeDetailsValidationSchema } from './validations';
 import { useTheme } from '../../../contexts/Theme/Theme.context';
 import { formStatusObjFeeDetails } from '../config';
 import { useAddedCustomerNameStore, useAddedCustomerIdStore, useShowConfirmationDialogBoxStore } from '../../../store';
-import { useGetDeliveryFeeSchd , useAddFeeDetails} from './queries';
+import { useGetDeliveryFeeSchd, useAddFeeDetails, useProductsDetailsByLotId } from './queries';
 import ServiceRule from './serviceRule';
+import { pageDataLimit } from '../../../utils/constants';
+import NoDataFound from '../../../components/UIComponents/DataGird/Nodata';
+import { Loader } from '../../../components/UIComponents/Loader';
 import './FeeDetails.scss';
 
 interface FormStatusType {
@@ -36,6 +39,8 @@ export default function FeeDetails() {
     const { pathname } = useLocation();
     const a = pathname.split('/');
     const lotId = a[5];
+    const { data: productListData, isLoading }: any = useProductsDetailsByLotId(lotId, pageDataLimit);
+    const [productCount, setProductCount] = useState(0);
     const [formStatus, setFormStatus] = useState<FormStatusType>({ message: '', type: '' });
     const [apiResposneState, setAPIResponse] = useState(false);
     const isFormFieldChange = () => formik.dirty;
@@ -56,7 +61,10 @@ export default function FeeDetails() {
         if (delFeeShedList?.data?.length) {
             setFeeShed(delFeeShedList.data.map((obj: any) => ({ label: obj.feeFrequencyNm.trim(), value: obj.feeFrequencyCd.trim() })));
         }
-    }, [delFeeShedList]);
+        if (productListData) {
+            setProductCount(productListData.data?.pagination?.totalCount);
+        }
+    }, [delFeeShedList, productListData]);
 
     const onClickBack = () => {
         if (isFormFieldChange()) {
@@ -71,7 +79,7 @@ export default function FeeDetails() {
         }
     };
 
-    const onAddFeeError = (err:any) => {
+    const onAddFeeError = (err: any) => {
         console.warn('add fee api error');
         const { data } = err.response;
         resetFormFieldValue(false);
@@ -163,7 +171,7 @@ export default function FeeDetails() {
                 });
             });
             addFeeDetails(apiPayload);
-            
+
         } catch (error) {
             console.warn("apiPayload serviceFeeRule apiPayload2- Error- >", error);
             setFormStatus(formStatusProps.error);
@@ -216,150 +224,159 @@ export default function FeeDetails() {
 
     return (
         <Fragment>
-            <FormikProvider value={formik}>
-                <form onSubmit={formik.handleSubmit} onBlur={handleFormDataChange} >
-                    <Grid item md={12} xs={12}>
-                        <Container maxWidth="lg" className="page-container fee-details">
-                            <Grid container mt={1}>
-                                <Grid container item md={12} mt={2} mb={1}>
-                                    <Grid item xs={6}>
+            {isLoading && <Loader/>}
+            {!isLoading && productCount === 0 ? (<Grid item md={12} xs={12}>
+                <Container maxWidth="lg" className="page-container fee-details">
+                    <Grid container mt={1}>
+                        <NoDataFound msgLine2='Add Products first before setting up fees'/>
+                    </Grid>
+                </Container>
+            </Grid> ) : (
+                <FormikProvider value={formik}>
+                    <form onSubmit={formik.handleSubmit} onBlur={handleFormDataChange} >
+                        <Grid item md={12} xs={12}>
+                            <Container maxWidth="lg" className="page-container fee-details">
+                                <Grid container mt={1}>
+                                    <Grid container item md={12} mt={2} mb={1}>
+                                        <Grid item xs={6}>
+                                            <Typography variant="h3" component="h3" gutterBottom className="left-heading fw-bold" mb={1}>
+                                                {t("FeeDetails.head1")}
+                                            </Typography>
+                                        </Grid>
+                                        {(!isSavCancelShown) && <Grid item xs={6} sx={{ justifyContent: 'flex-end' }}>
+                                            <Button
+                                                types="save"
+                                                aria-label="edit"
+                                                className="edit-button"
+                                                onClick={handleEditButtonClick}
+                                            >
+                                                <EditIcon /> <span>{t("buttons.edit")}</span>
+                                            </Button>
+                                        </Grid>}
+                                    </Grid>
+                                    <Grid container item md={12} mt={2} mb={1}>
+                                        <Grid item xs={12} md={6}>
+                                            <Input
+                                                id='feeName'
+                                                label={t("FeeDetails.feeName")}
+                                                type='text'
+                                                placeholder={t("FeeDetails.feeNamePlaceholder")}
+                                                helperText={(formik.touched.feeName && formik.errors.feeName) ? formik.errors.feeName : undefined}
+                                                error={(formik.touched.feeName && formik.errors.feeName) ? true : false}
+                                                description=''
+                                                required
+                                                disabled={isDisabled}
+                                                {...formik.getFieldProps('feeName')}
+                                            />
+                                        </Grid>
+                                    </Grid>
+                                    <Grid item pt={2.5}>
                                         <Typography variant="h3" component="h3" gutterBottom className="left-heading fw-bold" mb={1}>
-                                            {t("FeeDetails.head1")}
+                                            {t("FeeDetails.deliveryFee")}
                                         </Typography>
                                     </Grid>
-                                    {(!isSavCancelShown) && <Grid item xs={6} sx={{ justifyContent: 'flex-end' }}>
-                                        <Button
-                                            types="save"
-                                            aria-label="edit"
-                                            className="edit-button"
-                                            onClick={handleEditButtonClick}
-                                        >
-                                            <EditIcon /> <span>{t("buttons.edit")}</span>
-                                        </Button>
-                                    </Grid>}
-                                </Grid>
-                                <Grid container item md={12} mt={2} mb={1}>
-                                    <Grid item xs={12} md={6}>
-                                        <Input
-                                            id='feeName'
-                                            label={t("FeeDetails.feeName")}
-                                            type='text'
-                                            placeholder={t("FeeDetails.feeNamePlaceholder")}
-                                            helperText={(formik.touched.feeName && formik.errors.feeName) ? formik.errors.feeName : undefined}
-                                            error={(formik.touched.feeName && formik.errors.feeName) ? true : false}
-                                            description=''
-                                            required
-                                            disabled={isDisabled}
-                                            {...formik.getFieldProps('feeName')}
-                                        />
+                                    <Grid container item md={12} mt={2} mb={1} pt={0.5}>
+                                        <Grid item xs={12} md={6}>
+                                            <Input
+                                                id='delFee'
+                                                label={t("FeeDetails.deliveryFee")}
+                                                type='text'
+                                                placeholder={t("FeeDetails.enterFee")}
+                                                helperText={(formik.touched.delFee && formik.errors.delFee) ? formik.errors.delFee : undefined}
+                                                error={(formik.touched.delFee && formik.errors.delFee) ? true : false}
+                                                description=''
+                                                disabled={isDisabled}
+                                                required
+                                                {...formik.getFieldProps('delFee')}
+                                            />
+                                        </Grid>
+                                        <Grid item xs={12} md={6} pl={2.5}>
+                                            <Select
+                                                name='delFeeShed'
+                                                label={t("FeeDetails.delFeeShed")}
+                                                description=''
+                                                items={feeShed}
+                                                placeholder={t("FeeDetails.selectFee")}
+                                                helperText={(formik.touched.delFeeShed && formik.errors.delFeeShed) ? formik.errors.delFeeShed.value : undefined}
+                                                error={(formik.touched.delFeeShed && formik.errors.delFeeShed) ? true : false}
+                                                onBlur={() => { formik.setFieldTouched("delFeeShed"); formik.validateField("delFeeShed"); }}
+                                                onChange={formik.setFieldValue}
+                                                isDisabled={isDisabled}
+                                                required
+                                            />
+                                        </Grid>
                                     </Grid>
-                                </Grid>
-                                <Grid item pt={2.5}>
-                                    <Typography variant="h3" component="h3" gutterBottom className="left-heading fw-bold" mb={1}>
-                                        {t("FeeDetails.deliveryFee")}
-                                    </Typography>
-                                </Grid>
-                                <Grid container item md={12} mt={2} mb={1} pt={0.5}>
-                                    <Grid item xs={12} md={6}>
-                                        <Input
-                                            id='delFee'
-                                            label={t("FeeDetails.deliveryFee")}
-                                            type='text'
-                                            placeholder={t("FeeDetails.enterFee")}
-                                            helperText={(formik.touched.delFee && formik.errors.delFee) ? formik.errors.delFee : undefined}
-                                            error={(formik.touched.delFee && formik.errors.delFee) ? true : false}
-                                            description=''
-                                            disabled={isDisabled}
-                                            required
-                                            {...formik.getFieldProps('delFee')}
-                                        />
+                                    <Grid item pt={2.5} md={12} mt={2} mb={1}>
+                                        <FormControlLabel
+                                            sx={{ margin: "0px", marginBottom: "1rem", fontWeight: "bold" }}
+                                            className="checkbox-field"
+                                            control={<Checkbox checked={formik.values.salesTaxExcemption} name="salesTaxExcemption" onChange={formik.handleChange} disabled={isDisabled} />}
+                                            label={<Typography variant="h3" component="h3" className="fw-bold">
+                                                {t("FeeDetails.salesTaxExcemption")}
+                                            </Typography>} />
                                     </Grid>
-                                    <Grid item xs={12} md={6} pl={2.5}>
-                                        <Select
-                                            name='delFeeShed'
-                                            label={t("FeeDetails.delFeeShed")}
-                                            description=''
-                                            items={feeShed}
-                                            placeholder={t("FeeDetails.selectFee")}
-                                            helperText={(formik.touched.delFeeShed && formik.errors.delFeeShed) ? formik.errors.delFeeShed.value : undefined}
-                                            error={(formik.touched.delFeeShed && formik.errors.delFeeShed) ? true : false}
-                                            onBlur={() => { formik.setFieldTouched("delFeeShed"); formik.validateField("delFeeShed"); }}
-                                            onChange={formik.setFieldValue}
-                                            disabled={isDisabled}
-                                            required
-                                        />
-                                    </Grid>
-                                </Grid>
-                                <Grid item pt={2.5} md={12} mt={2} mb={1}>
-                                    <FormControlLabel
-                                        sx={{ margin: "0px", marginBottom: "1rem", fontWeight: "bold" }}
-                                        className="checkbox-field"
-                                        control={<Checkbox checked={formik.values.salesTaxExcemption} name="salesTaxExcemption" onChange={formik.handleChange} disabled={isDisabled} />}
-                                        label={<Typography variant="h3" component="h3" className="fw-bold">
-                                            {t("FeeDetails.salesTaxExcemption")}
-                                        </Typography>} />
-                                </Grid>
-                                <FieldArray
-                                    name="serviceFeeRules"
-                                    render={(arr) => (
-                                        <Fragment>
-                                            {formik.values.serviceFeeRules.map((feeRule, index) => (
-                                                <Fragment key={`em${index}`}>
-                                                    <Grid item pt={2.5}>
-                                                        <Typography variant="h3" component="h3" gutterBottom className="left-heading fw-bold" mb={1}>
-                                                            {t("FeeDetails.serviceFeeRule") + ' ' + (index + 1) + ' :'}
-                                                            {index !== 0 && (
-                                                                <DeleteIcon color="var(--Tertiary)" height={16} onClick={() => (!formik.values.serviceFeeRules[index].serviceFeeRuleId) && deleteFeeRule(index, arr)}
-                                                                    className='deleteBtn' />
-                                                            )}
+                                    <FieldArray
+                                        name="serviceFeeRules"
+                                        render={(arr) => (
+                                            <Fragment>
+                                                {formik.values.serviceFeeRules.map((feeRule, index) => (
+                                                    <Fragment key={`em${index}`}>
+                                                        <Grid item pt={2.5}>
+                                                            <Typography variant="h3" component="h3" gutterBottom className="left-heading fw-bold" mb={1}>
+                                                                {t("FeeDetails.serviceFeeRule") + ' ' + (index + 1) + ' :'}
+                                                                {index !== 0 && (
+                                                                    <DeleteIcon color="var(--Tertiary)" height={16} onClick={() => (!formik.values.serviceFeeRules[index].serviceFeeRuleId) && deleteFeeRule(index, arr)}
+                                                                        className='deleteBtn' />
+                                                                )}
+                                                            </Typography>
+                                                        </Grid>
+                                                        <ServiceRule index={index} isDisabled={isDisabled} formik={formik} lotId={lotId} />
+                                                    </Fragment>
+                                                ))}
+                                                <Grid item md={12} mt={2} mb={4}>
+                                                    <Link
+                                                        variant="body2"
+                                                        className={`add-link  ${isAddServiceFeeRuleDisabled() && "add-link disabled-text-link"}`}
+                                                        onClick={() => addFeeRule(arr)}
+                                                    >
+                                                        <span className="add-icon-span"><PlusIcon color={isAddServiceFeeRuleDisabled() ? theme["--Secondary-Background"] : theme["--Primary"]} /></span>
+                                                        <Typography variant="h3" component="h3" className="fw-bold disabled-text" mb={1}>
+                                                            {t("FeeDetails.addAnotherServiceFee")}
                                                         </Typography>
-                                                    </Grid>
-                                                    <ServiceRule index={index} isDisabled={isDisabled} formik={formik} lotId={lotId} />
-                                                </Fragment>
-                                            ))}
-                                            <Grid item md={12} mt={2} mb={4}>
-                                                <Link
-                                                    variant="body2"
-                                                    className={`add-link  ${isAddServiceFeeRuleDisabled() && "add-link disabled-text-link"}`}
-                                                    onClick={() => addFeeRule(arr)}
-                                                >
-                                                    <span className="add-icon-span"><PlusIcon color={isAddServiceFeeRuleDisabled() ? theme["--Secondary-Background"] : theme["--Primary"]} /></span>
-                                                    <Typography variant="h3" component="h3" className="fw-bold disabled-text" mb={1}>
-                                                        {t("FeeDetails.addAnotherServiceFee")}
-                                                    </Typography>
-                                                </Link>
-                                            </Grid>
-                                        </Fragment>)}
-                                />
+                                                    </Link>
+                                                </Grid>
+                                            </Fragment>)}
+                                    />
 
-                                <Grid item md={12} mt={2} mb={1}>
-                                    {isSavCancelShown && <Box className="form-action-section">
-                                        <Button
-                                            types="cancel"
-                                            aria-label="cancel"
-                                            className="mr-4"
-                                            onClick={onClickBack}
-                                            disabled={isDisabled}
-                                        >
-                                            {t("buttons.cancel")}
-                                        </Button>
-                                        <Button
-                                            type="submit"
-                                            types="save"
-                                            aria-label="save"
-                                            className="ml-4"
-                                            disabled={disableSubmitBtn()}
-                                        >
-                                            {t("buttons.save")}
-                                        </Button>
-                                    </Box>}
-                                    <ToastMessage isOpen={apiResposneState} messageType={formStatus.type} onClose={() => setAPIResponse(false)} message={formStatus.message} />
+                                    <Grid item md={12} mt={2} mb={1}>
+                                        {isSavCancelShown && <Box className="form-action-section">
+                                            <Button
+                                                types="cancel"
+                                                aria-label="cancel"
+                                                className="mr-4"
+                                                onClick={onClickBack}
+                                                disabled={isDisabled}
+                                            >
+                                                {t("buttons.cancel")}
+                                            </Button>
+                                            <Button
+                                                type="submit"
+                                                types="save"
+                                                aria-label="save"
+                                                className="ml-4"
+                                                disabled={disableSubmitBtn()}
+                                            >
+                                                {t("buttons.save")}
+                                            </Button>
+                                        </Box>}
+                                        <ToastMessage isOpen={apiResposneState} messageType={formStatus.type} onClose={() => setAPIResponse(false)} message={formStatus.message} />
+                                    </Grid>
                                 </Grid>
-                            </Grid>
-                        </Container>
-                    </Grid>
-                </form>
-            </FormikProvider>
+                            </Container>
+                        </Grid>
+                    </form>
+                </FormikProvider>
+            )}
         </Fragment >
     );
 }

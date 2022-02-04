@@ -2,6 +2,7 @@ import { useMutation, useQuery } from "react-query";
 import { AxiosRequestConfig } from "axios";
 import axios from '../../../infrastructure/ApiHelper';
 
+
 //Delivery Fee
 const getDeliveryFeeSchd = async () => {
     const options: AxiosRequestConfig = {
@@ -111,4 +112,22 @@ export const useAddFeeDetails = (onSuccess: any, onError: any) => {
         onError,
         onSuccess,
     });
+};
+
+//Get Products By LotId
+const getProductsDetailsByLotId = async (lotId: string, pageParam: number) => {
+    if (lotId) {
+        const query = new URLSearchParams();
+        const productEntitySet = `/api/customer-service/lots/${lotId}/products?countryCode=us&limit=${pageParam}&offset=0`;
+        const url = `${query.toString().length ? `&${query.toString()}` : ''}`;
+        const payload: AxiosRequestConfig = {
+            method: 'get',
+            url: productEntitySet + url
+        };
+        const { data } = await axios(payload);
+        return data;
+    }
+};
+export const useProductsDetailsByLotId = (lotId: string, pageParam:number) => {
+    return useQuery(["getProductsDetailsByLotId", lotId, pageParam], () => getProductsDetailsByLotId(lotId, pageParam));
 };
