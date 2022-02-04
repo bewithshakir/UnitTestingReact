@@ -87,8 +87,14 @@ export default function DataGridActionsMenu(props: DataGridActionsMenuProps) {
         role={undefined}
         transition
         className={"datagrid-actions-popper"}
-        placement={props.showInnerTableMenu?"right":"bottom-end"}
-        disablePortal={props.showInnerTableMenu?false:true}
+        placement={"bottom-end"}
+        disablePortal={true}
+        modifiers={{
+          preventOverflow: {
+            enabled: true,
+            boundariesElement: 'viewport',
+          },
+        }}
       >
         {({ TransitionProps, placement }) => (
           <Grow

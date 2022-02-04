@@ -50,12 +50,12 @@ export default class TaxModel {
     }
 
 
-    massActions () {
+    massActions() {
         const { t } = useTranslation();
         return MassActionOptions.map(actionItem => ({ ...actionItem, label: t(actionItem.label) }));
     }
 
-    fieldsToDisplay (): headerObj[] {
+    fieldsToDisplay(): headerObj[] {
         const { CITY, STATE, PRODUCT } = DataGridFields;
         return [
             { field: CITY.field, label: CITY.label, type: 'text', align: 'left' },
@@ -73,7 +73,7 @@ export default class TaxModel {
         ];
     }
 
-    displayProductdataModel (data: any) {
+    displayProductdataModel(data: any) {
         return data.map((obj: any) => {
             return ({
                 ...obj,
@@ -88,7 +88,7 @@ export default class TaxModel {
         });
     }
 
-    fieldsToDisplayLotTable (): headerObj[] {
+    fieldsToDisplayLotTable(): headerObj[] {
         return [
             { field: "product", label: "PRODUCT", type: 'product', align: 'left' },
             { field: "fedFuelTax", label: "FEDERAL TAX ($)", type: 'text', align: 'left' },
@@ -111,12 +111,9 @@ export default class TaxModel {
         EDIT: 'edit'
     };
 
-    rowActions () {
+    rowActions() {
         const { t } = useTranslation();
         return [
-            {
-                label: ''
-            },
             {
                 label: t("menus.data-grid-actions.edit"),
                 action: this.ACTION_TYPES.EDIT
