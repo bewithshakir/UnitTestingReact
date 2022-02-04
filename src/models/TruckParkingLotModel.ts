@@ -3,6 +3,23 @@ import { headerObj } from '../components/UIComponents/DataGird/grid.component';
 
 
 export default class TruckParkingLotModel {
+    parkingLocationNm: string;
+    addressLine1: string;
+    addressLine2: string;
+    stateNm: string;
+    cityNm: string;
+    postalCd: string;
+    countryCode: string;
+
+    constructor() {
+        this.parkingLocationNm = '';
+        this.addressLine1 = '';
+        this.addressLine2 = '';
+        this.stateNm = '';
+        this.cityNm = '';
+        this.postalCd = '';
+        this.countryCode= '';
+    }  
 
     fieldsToDisplay (): headerObj[] {
         return [

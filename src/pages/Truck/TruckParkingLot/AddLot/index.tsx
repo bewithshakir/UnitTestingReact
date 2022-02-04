@@ -7,7 +7,7 @@ import { Button } from '../../../../components/UIComponents/Button/Button.compon
 import { useTranslation } from 'react-i18next';
 import './style.scss';
 import { useFormik } from 'formik';
-import TruckLotModel from '../../../../models/TruckLotModel';
+import TruckLotModel from '../../../../models/TruckParkingLotModel';
 import { AddTruckParkingLotValidationSchema } from './validation';
 import AutocompleteInput from '../../../../components/UIComponents/GoogleAddressComponent/GoogleAutoCompleteAddress';
 import { useAddTruckParkingLot } from './queries';
