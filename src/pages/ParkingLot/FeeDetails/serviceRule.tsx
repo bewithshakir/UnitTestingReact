@@ -236,6 +236,7 @@ export default function ServiceRule({index, isDisabled, formik, lotId}: props) {
                         items={vehicleTypes}
                         placeholder={t("FeeDetails.vehicleTypePlaceholder")}
                         onChange={formik.setFieldValue}
+                        required
                         helperText={
                             formik?.errors?.serviceFeeRules && formik?.touched?.serviceFeeRules &&
                                 (formik.touched?.serviceFeeRules?.[index]?.vehicleType && ((formik.errors?.serviceFeeRules?.[index] as any)?.vehicleType))

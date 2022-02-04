@@ -199,11 +199,8 @@ export default function FeeDetails() {
         return true;
     };
 
-    const addFeeRule = (fieldArr: any) => {
-        if (formik.errors.serviceFeeRules && formik.errors.serviceFeeRules.length > 0) {
-            setFormStatus(formStatusProps.orderScheduleError);
-            setAPIResponse(true);
-        } else if (!isAddServiceFeeRuleDisabled()) {
+    const addFeeRule = (event:any, fieldArr: any) => {
+        if (!isAddServiceFeeRuleDisabled()) {
             fieldArr.push({
                 serviceFeeCharge: '',
                 productType: { label: '', value: '' },
@@ -214,6 +211,8 @@ export default function FeeDetails() {
                 assetTypeDesc: '',
                 vehicleType: { label: '', value: '' },
             });
+        }else{
+            event.preventDefault();
         }
     };
 
@@ -337,8 +336,9 @@ export default function FeeDetails() {
                                                 <Grid item md={12} mt={2} mb={4}>
                                                     <Link
                                                         variant="body2"
+                                                        
                                                         className={`add-link  ${isAddServiceFeeRuleDisabled() && "add-link disabled-text-link"}`}
-                                                        onClick={() => addFeeRule(arr)}
+                                                        onClick={(event: any) => addFeeRule(event, arr)}
                                                     >
                                                         <span className="add-icon-span"><PlusIcon color={isAddServiceFeeRuleDisabled() ? theme["--Secondary-Background"] : theme["--Primary"]} /></span>
                                                         <Typography variant="h3" component="h3" className="fw-bold disabled-text" mb={1}>
