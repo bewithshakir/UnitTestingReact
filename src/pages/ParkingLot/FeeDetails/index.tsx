@@ -172,7 +172,7 @@ export default function FeeDetails() {
                     fee: rule.serviceFeeCharge,
                     ...(rule?.productType?.value?.toLowerCase()  !== 'all' && {applicableProduct: rule?.productName?.value}),
                     ...(rule?.assetType?.value?.toLowerCase() !== 'all' && {asseType: rule?.assetType?.value}),
-                    ...(rule?.assetTypeDesc?.value?.toLowerCase() !== 'all' && {assetInput: rule?.assetTypeDesc?.value}),
+                    ...(rule?.assetTypeDesc && {assetInput: rule?.assetTypeDesc}),
                     ...(rule?.vehicleType?.value?.toLowerCase() !== 'all' && {vehicleType: rule?.vehicleType?.value}),
                     
                     // applicableProduct: rule?.productType?.value?.toLowerCase() === 'all' ? '' : rule?.productName?.value,
