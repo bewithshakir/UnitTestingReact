@@ -67,11 +67,13 @@ function AddLotForm (): React.ReactElement {
     const [lotData, setLotData] = useState<any>(null);
     const daysOfWeek = useGetDaysOfWeek();
     const timerRef = useRef<any>(null);
+
     const onAddLotError = (err: any) => {
         resetFormFieldValue(false);
         hideDialogBox(false);
         const { data } = err.response;
         setAPIResponse(true);
+        formik.setSubmitting(false);
         setFormStatus({ message: data?.error?.message || formStatusProps.error.message, type: 'Error' });
     };
     useEffect(() => {
@@ -400,6 +402,13 @@ function AddLotForm (): React.ReactElement {
         }
         return true;
     };
+    const isLocationContactDisabled = () => {
+        if (formik.values.locationContact && formik.values.locationContact.length < 5 && !isDisabled) {
+            return false;
+        }
+        return true;
+    };
+
     const isOrderInputsDisabled = (index: number) => {
         return formik.values.productDelFreq.value === '' || isDisabled || typeof formik.values.orderScheduleDel[index].deliveryDayId === 'string';
     };
@@ -408,11 +417,8 @@ function AddLotForm (): React.ReactElement {
         componentArr.remove(index);
     };
 
-    const addSchedule = (fieldArr: any) => {
-        if (formik.errors.orderScheduleDel && formik.errors.orderScheduleDel.length > 0) {
-            setFormStatus(formStatusProps.orderScheduleError);
-            setAPIResponse(true);
-        } else if (!isAddScheduleDisabled()) {
+    const addSchedule = (e:any ,fieldArr: any) => {
+        if (!isAddScheduleDisabled()) {
             fieldArr.push({
                 fromDate: null,
                 toDate: null,
@@ -422,6 +428,8 @@ function AddLotForm (): React.ReactElement {
                 productDelDaysMulti: [],
                 delFreq: formik.values.productDelFreq.label
             });
+        }else{
+            e.preventDefault();
         }
     };
 
@@ -791,7 +799,7 @@ function AddLotForm (): React.ReactElement {
                                                 <Link
                                                     variant="body2"
                                                     className={`add-link add-another-schedule ${isAddScheduleDisabled() && "add-link disabled-text-link"}`}
-                                                    onClick={() => addSchedule(arr)}
+                                                    onClick={(e:any) => addSchedule(e, arr)}
                                                 >
                                                     <span className="add-icon-span"><PlusIcon color={isAddScheduleDisabled() ? theme["--Secondary-Background"] : theme["--Primary"]} /></span>
                                                     <Typography variant="h3" component="h3" className="fw-bold MuiTypography-h5-primary disabled-text" mb={1}>
@@ -906,15 +914,21 @@ function AddLotForm (): React.ReactElement {
                                             <Grid item md={12} mt={2} mb={4}>
                                                 <Link
                                                     variant="body2"
-                                                    className="add-link disabled-text-link"
-                                                    onClick={() => {
-                                                        if (formik.values.locationContact.length < 0) {
-                                                            arrayHelpers.push({ firstName: "", lastName: "", email: "", phoneNumber: "" });
+                                                    className={`add-link add-another-schedule ${isLocationContactDisabled() && "add-link disabled-text-link"}`}
+                                                    onClick={(event:any) => {
+                                                        if (isLocationContactDisabled()) {
+                                                            event.preventDefault();
+                                                        } else {
+                                                            if (formik.values.locationContact.length < 5) {
+                                                                arrayHelpers.push({ firstName: "", lastName: "", email: "", phoneNumber: "" });
+                                                            }
                                                         }
                                                     }}
                                                 >
-                                                    <span className="add-icon-span"><PlusIcon color={theme["--Secondary-Background"]} /></span>
-                                                    <Typography variant="h3" component="h3" className="fw-bold MuiTypography-h5-primary disabled-text" mb={1}>
+                                                    <span className="add-icon-span">
+                                                        <PlusIcon color={isLocationContactDisabled() ? theme["--Secondary-Background"] : theme["--Primary"]} />
+                                                    </span>
+                                                    <Typography variant="h3" component="h3" className={"fw-bold MuiTypography-h5-primary"} mb={1}>
                                                         Add Additional Contact
                                                     </Typography>
                                                 </Link>

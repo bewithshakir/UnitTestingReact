@@ -7,6 +7,8 @@ export const sortByOptions = [
   "parkingLot.sortBy.ztoa"
 ];
 
+export const all = { label: 'All', value: 'all' };
+
 export const addLotHeaderConfig = [
   {
     label: "Lot Details",
@@ -54,6 +56,21 @@ export const formStatusObj = {
   orderScheduleError: {
     message: 'Please provide the details for available schedule',
     type: 'Error'
+  }
+};
+
+export const formStatusObjFeeDetails = {
+  success: {
+    message: 'Fee details are successfully added',
+    type: 'Success',
+  },
+  editsuccess: {
+    message: 'Fee details are updated successfully.',
+    type: 'Success',
+  },
+  error: {
+    message: 'Something went wrong. Please try again.',
+    type: 'Error',
   }
 };
 

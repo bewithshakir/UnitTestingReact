@@ -1,19 +1,50 @@
 import * as Yup from 'yup';
 
-const stringInput = Yup.string().required('Required');
-const selectOption = Yup.object().shape({ label: Yup.string().required('Required'), value: Yup.string().required('Required') }).required('Required');
-const selectOptional = Yup.object().shape({ label: Yup.string(), value: Yup.string() }).required('Required');
-
+const stringInput = Yup.string().nullable().required('Required');
+const selectOption = Yup.object()
+  .shape({
+    label: Yup.string().required('Required'),
+    value: Yup.string().required('Required'),
+  })
+  .nullable().required('Required');
+// const selectOptional = Yup.object().shape({ label: Yup.string(), value: Yup.string() }).nullable().required('Required');
 
 export const AddFeeDetailsValidationSchema = Yup.object().shape({
-    feeName: stringInput,
-    delFee: stringInput,
-    delFeeShed: selectOption,
-    serviceFeeCharge: stringInput,
-    productType: selectOption,
-    masterProductType: selectOption,
-    productName: selectOption,
-    assetType: selectOption,
-    assetTypeDesc: stringInput,
-    vehicleType: selectOptional,
+  feeName: stringInput,
+  delFee: stringInput,
+  delFeeShed: selectOption,
+  serviceFeeRules: Yup.array().of(
+    Yup.object().shape({
+      serviceFeeCharge: stringInput,
+      productType: selectOption,
+    //   masterProductType: selectOption,
+        masterProductType: Yup.object().nullable().test('productType', function (value: any, context: any) {
+            if (context?.parent?.productType?.value?.toLowerCase() ===  'all') {
+              return true;
+            } else {
+                if (!value || !value.value) {
+                    return this.createError({ message: {label: 'Required', value: 'Required'} });
+                }else{
+                    return true;
+                }
+            }
+          }),
+    //   productName: selectOption,
+    productName: Yup.object().nullable().test('productType', function (value: any, context: any) {
+        if (context?.parent?.productType?.value?.toLowerCase() ===  'all') {
+          return true;
+        } else {
+            if (!value || !value.value) {
+                return this.createError({ message: {label: 'Required', value: 'Required'} });
+            }else{
+                return true;
+            }
+        }
+      }),
+      considerAsset: Yup.boolean(),
+      assetType: selectOption,
+      assetTypeDesc: Yup.string().nullable(),
+      vehicleType: selectOption,
+    })
+  ),
 });

@@ -355,7 +355,8 @@
     "enterFeeCharge": "Enter Fee Charge",
     "productType": "Product Type",
     "productTypePlaceholder": "Select Product Type",
-    "masterProductType": "Master Product Type",
+    "masterProductTypePlaceholder": "Select Master Product Name",
+    "masterProductType": "Master Product Name",
     "productName": "Product Name",
     "productNamePlaceholder": "Select Product Name",
     "considerAsset": "Consider this as an asset",
@@ -364,7 +365,8 @@
     "assetTypeDescPlaceholder": "Enter Asset Description",
     "vehicleType": "Vehicle Type",
     "vehicleTypePlaceholder": "Select Vehicle Type",
-    "addAnotherServiceFee": "ADD ANOTHER SERVICE FEE"
+    "addAnotherServiceFee": "ADD ANOTHER SERVICE FEE",
+    "noDataMsg": "Add Products first before setting up fees"
   },
   "Attachments":{
     "search": "Search",
