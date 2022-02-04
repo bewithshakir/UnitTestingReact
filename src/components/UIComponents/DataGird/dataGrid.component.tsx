@@ -164,12 +164,12 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
     const renderProduct = (fieldOpts: headerObj, data: any) => {
         return (
             <Box display="flex" alignItems="center" justifyContent={fieldOpts.align}>
-                {(!fieldOpts.showIconLast) ? renderIcon(getProductIcon(data.productColorNm)) : null}
-                {data.productName ?
+                {(!fieldOpts.showIconLast) ? renderIcon(getProductIcon(data?.productColorNm)) : null}
+                {data?.productName ?
                     <Typography variant="h4" pl={(!fieldOpts.showIconLast) ? 1 : 0} pr={(fieldOpts.showIconLast) ? 1 : 0} color="var(--Darkgray)" className="fw-bold">
-                        {data.productName}
+                        {data?.productName}
                     </Typography> : null}
-                {(fieldOpts.showIconLast) ? renderIcon(getProductIcon(data.productColorNm)) : null}
+                {(fieldOpts.showIconLast) ? renderIcon(getProductIcon(data?.productColorNm)) : null}
             </Box>
         );
     };
