@@ -97,7 +97,7 @@ export default function FeeDetails() {
 
     const { mutate: addFeeDetails } = useAddFeeDetails(onAddFeeSuccess, onAddFeeError);
 
-    const [initialFormikValues, setInitialFormikValues] = useState({
+    const [initialFormikValues] = useState({
         feeName: '',
         delFee: '',
         delFeeShed: { label: '', value: '' },

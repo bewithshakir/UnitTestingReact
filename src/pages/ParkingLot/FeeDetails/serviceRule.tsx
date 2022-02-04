@@ -129,7 +129,7 @@ export default function ServiceRule({index, isDisabled, formik, lotId}: props) {
                                 ? true : false
                         }
                         onBlur={() => { formik.setFieldTouched(`serviceFeeRules[${index}].masterProductType`); formik.validateField(`serviceFeeRules[${index}].masterProductType`); }}
-                        disabled={isDisabled || (formik?.values?.serviceFeeRules[index]?.productType?.value?.toLowerCase() === 'all')}
+                        disabled={(formik?.values?.serviceFeeRules?.[index]?.productType?.value?.toLowerCase() === 'all')?true:isDisabled}
                         required
                     />
                 </Grid>
