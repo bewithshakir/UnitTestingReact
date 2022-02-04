@@ -50,6 +50,12 @@
           border: 2px solid var(--Darkgray);
           box-shadow: none;
         }
+        &--is-disabled {
+          background: var(--Lightgray_4) 0% 0% no-repeat padding-box;
+          color: var(--Lightergray);
+          border: 1px solid var(--Lightgray_2);
+          opacity: 1;
+        }
       }
       &__value-container {
         padding: 2px 10px;

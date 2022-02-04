@@ -4,24 +4,28 @@ import {
     PurpleFuelIcon, SkyBlueFuelIcon, BrownFuelIcon, OrangeFuelIcon, AquaFuelIcon
 } from '../assets/icons';
 
+type fileFormatSize = 'Bytes'|'KB'|'MB';
 export const maskPhoneNumber = (phNumber: string) => {
     const maskedPh = phNumber.match(/(\d{3})(\d{3})(\d{4})/);
     return maskedPh ? "(" + maskedPh[1] + ") " + maskedPh[2] + "-" + maskedPh[3] : phNumber;
 };
 
-export const formatFileSizeUnit = (sizeInBytes: number, decimals = 2) => {
-    if (sizeInBytes === 0) return '0 Bytes';
-
-    const k = 1024;
-    const dm = decimals < 0 ? 0 : decimals;
-    const sizeNames = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
-
-    const i = Math.floor(Math.log(sizeInBytes) / Math.log(k));
-    let size:number|string = parseFloat((sizeInBytes / Math.pow(k, i)).toFixed(dm));
-    if(size>=24.5 && size<25){
-        size = size.toFixed(0);
-    }
-    return size + sizeNames[i];
+export const formatFileSizeUnit = (sizeInBytes: number, fileSizeUnit: fileFormatSize = 'MB') => {
+    let coversionParam = null ; 
+    switch(fileSizeUnit) {
+        case 'Bytes' :
+            coversionParam = 1;
+          break;
+        case 'KB':
+            coversionParam = 1000;
+          break;
+          case 'MB':
+            coversionParam = 1000*1000;
+          break;
+        default:
+            coversionParam = 1;
+      }
+    return Math.ceil(sizeInBytes/(coversionParam)) + ` ${fileSizeUnit}`;
 };
 
 export const getCheckBoxDisabledByPaymentType = (value: string) => {
