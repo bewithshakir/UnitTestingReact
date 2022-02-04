@@ -352,7 +352,8 @@
     "assetTypeDescPlaceholder": "Enter Asset Description",
     "vehicleType": "Vehicle Type",
     "vehicleTypePlaceholder": "Select Vehicle Type",
-    "addAnotherServiceFee": "ADD ANOTHER SERVICE FEE"
+    "addAnotherServiceFee": "ADD ANOTHER SERVICE FEE",
+    "noDataMsg": "Add Products first before setting up fees"
   },
   "Attachments":{
     "search": "Search",

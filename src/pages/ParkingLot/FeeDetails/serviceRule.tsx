@@ -22,7 +22,7 @@ export default function ServiceRule({index, isDisabled, formik, lotId}: props) {
     const [vehicleTypes, setVehicleTypes] = useState<any>([]);
     const { data: vehicleTypeList } = useGetLotVehicleTypes();
 
-    const [assetTypes, setAssetTypes] = useState([]);
+    const [assetTypes, setAssetTypes] = useState<any>([]);
     const { data: assetTypeList } = useGetLotAssetTypes();
 
     const [productTypes, setProductTypes] = useState<any>([]);
@@ -40,7 +40,8 @@ export default function ServiceRule({index, isDisabled, formik, lotId}: props) {
             setVehicleTypes([all, ...arr]);
         }
         if (assetTypeList?.data?.assets?.length) {
-            setAssetTypes(assetTypeList.data.assets.map((obj: any) => ({ label: obj.assetNm.trim(), value: obj.assetId.trim() })));
+            const arr = assetTypeList.data.assets.map((obj: any) => ({ label: obj.assetNm.trim(), value: obj.assetId.trim() }));
+            setAssetTypes([all, ...arr]);
         }
         if (productTypeList?.data?.lotProductTypes?.length) {
             const arr = productTypeList.data.lotProductTypes.map((obj: any) => ({ label: obj.productGroupNm.trim(), value: obj.productGroupCd.trim() }));

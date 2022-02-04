@@ -56,6 +56,9 @@ export default function FeeDetails() {
 
     const [feeShed, setFeeShed] = useState([]);
     const { data: delFeeShedList } = useGetDeliveryFeeSchd();
+    const [productIds, setProductIds] = useState([]);
+    const { data: productData }: any = useProductsDetailsByLotId(lotId, productCount);
+   
 
     useEffect(() => {
         if (delFeeShedList?.data?.length) {
@@ -64,7 +67,10 @@ export default function FeeDetails() {
         if (productListData) {
             setProductCount(productListData.data?.pagination?.totalCount);
         }
-    }, [delFeeShedList, productListData]);
+        if (productData?.data?.lotProducts?.length) {
+            setProductIds(productData.data.lotProducts.map((obj: any) => obj.applicableProductId));
+        }
+    }, [delFeeShedList, productListData, productData]);
 
     const onClickBack = () => {
         if (isFormFieldChange()) {
@@ -161,14 +167,14 @@ export default function FeeDetails() {
                         isAllMasterProduct: rule?.masterProductType?.value?.toLowerCase() === 'all' ? 'Y' : 'N',
                         isAllVehicleType: rule?.vehicleType?.value?.toLowerCase() === 'all' ? 'Y' : 'N',
                         isAllAssetType: rule?.assetType?.value?.toLowerCase() === 'all' ? 'Y' : 'N',
-                        productNameId: []
+                        productNameId: rule?.productType?.value?.toLowerCase() === 'all' ? productIds :[]
                     },
                     fee: rule.serviceFeeCharge,
-                    applicableProduct: rule?.productName?.value,
+                    applicableProduct: rule?.productType?.value?.toLowerCase() === 'all' ? null : rule?.productName?.value,
                     isAsset: rule?.considerAsset ? 'Y' : 'N',
-                    asseType: rule?.assetType?.value,
+                    asseType: rule?.assetType?.value?.toLowerCase() === 'all' ? null : rule?.assetType?.value,
                     assetInput: rule?.assetTypeDesc,
-                    vehicleType: rule?.vehicleType?.value
+                    vehicleType: rule?.vehicleType?.value?.toLowerCase() === 'all' ? null : rule?.vehicleType?.value
                 });
             });
             addFeeDetails(apiPayload);
@@ -226,10 +232,10 @@ export default function FeeDetails() {
     return (
         <Fragment>
             {isLoading && <Loader/>}
-            {!isLoading && productCount === 0 ? (<Grid item md={12} xs={12}>
+            {!isLoading && ( productCount === 0 ? (<Grid item md={12} xs={12}>
                 <Container maxWidth="lg" className="page-container fee-details">
                     <Grid container mt={1}>
-                        <NoDataFound msgLine2='Add Products first before setting up fees'/>
+                        <NoDataFound msgLine2={t("FeeDetails.noDataMsg")}/>
                     </Grid>
                 </Container>
             </Grid> ) : (
@@ -377,7 +383,7 @@ export default function FeeDetails() {
                         </Grid>
                     </form>
                 </FormikProvider>
-            )}
+            ))}
         </Fragment >
     );
 }
