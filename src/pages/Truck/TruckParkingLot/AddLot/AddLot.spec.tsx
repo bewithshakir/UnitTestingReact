@@ -80,7 +80,7 @@ describe('renders AddDSP component for add/edit mode', () => {
             await selectEvent.select(addressLine1Elem, ["Elkton Test"]);
         });
 
-        it('enable save button when all mendatory fields are filled', async()=> { 
+        it('Test save button is enabled when all mandatory fields are filled', async()=> { 
             await waitFor(()=> {
                 expect(addressLine2Elem).toHaveValue('Elkton Test');
                 expect(cityElem).toHaveValue('Elkton');
@@ -91,7 +91,50 @@ describe('renders AddDSP component for add/edit mode', () => {
                 userEvent.tab();
                 expect(saveBtn).toBeEnabled();
             });
-            console.log('222---')
+        });
+        it('Test show loader on save button clicked and remove after success', async()=> {
+            await waitFor(()=> {
+                expect(addressLine2Elem).toHaveValue('Elkton Test');
+                expect(cityElem).toHaveValue('Elkton');
+                expect(stateElem).toHaveValue('VA');
+                expect(postalCodeElem).toHaveValue('22827');
+
+                userEvent.tab();
+                expect(saveBtn).toBeEnabled();
+                userEvent.click(saveBtn);
+            });
+            await waitFor(()=> {
+                expect(result.getByText('formStatusProps.success.message')).toBeInTheDocument();
+            });
+        });
+        it('Test show toaster with error message on save button clicked', async()=> {
+            serverMsw.use(
+                rest.post('*', (req, res, ctx) => {
+                    return res(
+                        ctx.status(500),
+                        ctx.json({
+                            data: null,
+                            error: {
+                                details: ['fail to add truck parking lot']
+                            }
+                        })
+                    );
+                })
+            );
+            await waitFor(()=> {
+                expect(addressLine2Elem).toHaveValue('Elkton Test');
+                expect(cityElem).toHaveValue('Elkton');
+                expect(stateElem).toHaveValue('VA');
+                expect(postalCodeElem).toHaveValue('22827');
+
+                userEvent.tab();
+                expect(saveBtn).toBeEnabled();
+                userEvent.click(saveBtn);
+            });
+            await waitFor(()=> {
+                expect(result.getByText(/fail to add truck parking lot/i)).toBeInTheDocument();
+                expect(saveBtn).toBeDisabled();
+            });
         });
 
     });

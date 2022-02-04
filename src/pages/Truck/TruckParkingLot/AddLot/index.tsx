@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Box, Grid, Container, Typography } from '@mui/material';
 
 import { HorizontalBarVersionState, useStore, useShowConfirmationDialogBoxStore } from '../../../../store';
@@ -95,7 +95,6 @@ const AddLot: React.FC<AddTruckParkingLotProps> = () => {
     });
 
     const handleGoogleAddressChange = (addressObj: any) => {
-        console.log('now changed--');
         formik.setFieldValue('addressLine1', addressObj.addressLine1);
         formik.setFieldValue('addressLine2', addressObj.addressLine2);
         formik.setFieldValue('cityNm', addressObj.city);
