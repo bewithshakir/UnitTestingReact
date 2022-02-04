@@ -5053,6 +5053,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                   className="header-options"
                                                   size="small"
                                                   sortDirection={false}
+                                                  width="auto"
                                                 >
                                                   CITY ID
                                                 </ForwardRef(TableCell)>
@@ -5061,6 +5062,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                   className="header-options"
                                                   size="small"
                                                   sortDirection={false}
+                                                  width="auto"
                                                 >
                                                   CITY
                                                 </ForwardRef(TableCell)>
@@ -5069,6 +5071,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                   className="header-options"
                                                   size="small"
                                                   sortDirection={false}
+                                                  width="auto"
                                                 >
                                                   STATE
                                                 </ForwardRef(TableCell)>
@@ -5077,6 +5080,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                   className="header-options"
                                                   size="small"
                                                   sortDirection="asc"
+                                                  width="auto"
                                                 >
                                                   
                                                 </ForwardRef(TableCell)>
@@ -5085,6 +5089,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                   className="header-options"
                                                   size="small"
                                                   sortDirection="asc"
+                                                  width="auto"
                                                 >
                                                   
                                                 </ForwardRef(TableCell)>
@@ -5093,6 +5098,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                   className="header-options"
                                                   size="small"
                                                   sortDirection="asc"
+                                                  width="auto"
                                                 >
                                                   
                                                 </ForwardRef(TableCell)>
@@ -5101,6 +5107,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                   className="header-options"
                                                   size="small"
                                                   sortDirection="asc"
+                                                  width="auto"
                                                 >
                                                   
                                                 </ForwardRef(TableCell)>
@@ -5109,6 +5116,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                   className="header-options"
                                                   size="small"
                                                   sortDirection="asc"
+                                                  width="auto"
                                                 >
                                                   
                                                 </ForwardRef(TableCell)>
@@ -5117,6 +5125,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                   className="header-options"
                                                   size="small"
                                                   sortDirection="asc"
+                                                  width="auto"
                                                 >
                                                   
                                                 </ForwardRef(TableCell)>
@@ -5125,6 +5134,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                   className="header-options"
                                                   size="small"
                                                   sortDirection="asc"
+                                                  width="auto"
                                                 >
                                                   
                                                 </ForwardRef(TableCell)>
@@ -5133,6 +5143,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                   className="header-options"
                                                   size="small"
                                                   sortDirection="asc"
+                                                  width="auto"
                                                 >
                                                   
                                                 </ForwardRef(TableCell)>
@@ -5141,6 +5152,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                   className="header-options"
                                                   size="small"
                                                   sortDirection="asc"
+                                                  width="auto"
                                                 >
                                                   
                                                 </ForwardRef(TableCell)>
@@ -5149,6 +5161,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                   className="header-options"
                                                   size="small"
                                                   sortDirection="asc"
+                                                  width="auto"
                                                 >
                                                   
                                                 </ForwardRef(TableCell)>
@@ -5157,6 +5170,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                   className="header-options"
                                                   size="small"
                                                   sortDirection="asc"
+                                                  width="auto"
                                                 >
                                                   
                                                 </ForwardRef(TableCell)>
@@ -5165,6 +5179,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                   className="header-options"
                                                   size="small"
                                                   sortDirection="asc"
+                                                  width="auto"
                                                 >
                                                   
                                                 </ForwardRef(TableCell)>
@@ -5173,6 +5188,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                   className="header-options"
                                                   size="small"
                                                   sortDirection="asc"
+                                                  width="auto"
                                                 >
                                                   
                                                 </ForwardRef(TableCell)>
@@ -5213,6 +5229,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                           className="header-options"
                                                           size="small"
                                                           sortDirection={false}
+                                                          width="auto"
                                                         >
                                                           CITY ID
                                                         </ForwardRef(TableCell)>,
@@ -5221,6 +5238,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                           className="header-options"
                                                           size="small"
                                                           sortDirection={false}
+                                                          width="auto"
                                                         >
                                                           CITY
                                                         </ForwardRef(TableCell)>,
@@ -5229,6 +5247,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                           className="header-options"
                                                           size="small"
                                                           sortDirection={false}
+                                                          width="auto"
                                                         >
                                                           STATE
                                                         </ForwardRef(TableCell)>,
@@ -5237,6 +5256,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                           className="header-options"
                                                           size="small"
                                                           sortDirection="asc"
+                                                          width="auto"
                                                         >
                                                           
                                                         </ForwardRef(TableCell)>,
@@ -5245,6 +5265,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                           className="header-options"
                                                           size="small"
                                                           sortDirection="asc"
+                                                          width="auto"
                                                         >
                                                           
                                                         </ForwardRef(TableCell)>,
@@ -5253,6 +5274,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                           className="header-options"
                                                           size="small"
                                                           sortDirection="asc"
+                                                          width="auto"
                                                         >
                                                           
                                                         </ForwardRef(TableCell)>,
@@ -5261,6 +5283,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                           className="header-options"
                                                           size="small"
                                                           sortDirection="asc"
+                                                          width="auto"
                                                         >
                                                           
                                                         </ForwardRef(TableCell)>,
@@ -5269,6 +5292,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                           className="header-options"
                                                           size="small"
                                                           sortDirection="asc"
+                                                          width="auto"
                                                         >
                                                           
                                                         </ForwardRef(TableCell)>,
@@ -5277,6 +5301,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                           className="header-options"
                                                           size="small"
                                                           sortDirection="asc"
+                                                          width="auto"
                                                         >
                                                           
                                                         </ForwardRef(TableCell)>,
@@ -5285,6 +5310,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                           className="header-options"
                                                           size="small"
                                                           sortDirection="asc"
+                                                          width="auto"
                                                         >
                                                           
                                                         </ForwardRef(TableCell)>,
@@ -5293,6 +5319,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                           className="header-options"
                                                           size="small"
                                                           sortDirection="asc"
+                                                          width="auto"
                                                         >
                                                           
                                                         </ForwardRef(TableCell)>,
@@ -5301,6 +5328,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                           className="header-options"
                                                           size="small"
                                                           sortDirection="asc"
+                                                          width="auto"
                                                         >
                                                           
                                                         </ForwardRef(TableCell)>,
@@ -5309,6 +5337,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                           className="header-options"
                                                           size="small"
                                                           sortDirection="asc"
+                                                          width="auto"
                                                         >
                                                           
                                                         </ForwardRef(TableCell)>,
@@ -5317,6 +5346,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                           className="header-options"
                                                           size="small"
                                                           sortDirection="asc"
+                                                          width="auto"
                                                         >
                                                           
                                                         </ForwardRef(TableCell)>,
@@ -5325,6 +5355,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                           className="header-options"
                                                           size="small"
                                                           sortDirection="asc"
+                                                          width="auto"
                                                         >
                                                           
                                                         </ForwardRef(TableCell)>,
@@ -5333,6 +5364,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                           className="header-options"
                                                           size="small"
                                                           sortDirection="asc"
+                                                          width="auto"
                                                         >
                                                           
                                                         </ForwardRef(TableCell)>,
@@ -5362,6 +5394,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                     key="cityId"
                                                     size="small"
                                                     sortDirection={false}
+                                                    width="auto"
                                                   >
                                                     <MuiTableCellRoot
                                                       aria-sort={null}
@@ -5378,14 +5411,17 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                           "sortDirection": false,
                                                           "stickyHeader": true,
                                                           "variant": "head",
+                                                          "width": "auto",
                                                         }
                                                       }
                                                       scope="col"
+                                                      width="auto"
                                                     >
                                                       <th
                                                         aria-sort={null}
                                                         className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall header-options css-1h37f49-MuiTableCell-root"
                                                         scope="col"
+                                                        width="auto"
                                                       >
                                                         CITY ID
                                                       </th>
@@ -5397,6 +5433,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                     key="city"
                                                     size="small"
                                                     sortDirection={false}
+                                                    width="auto"
                                                   >
                                                     <MuiTableCellRoot
                                                       aria-sort={null}
@@ -5413,14 +5450,17 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                           "sortDirection": false,
                                                           "stickyHeader": true,
                                                           "variant": "head",
+                                                          "width": "auto",
                                                         }
                                                       }
                                                       scope="col"
+                                                      width="auto"
                                                     >
                                                       <th
                                                         aria-sort={null}
                                                         className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall header-options css-1h37f49-MuiTableCell-root"
                                                         scope="col"
+                                                        width="auto"
                                                       >
                                                         CITY
                                                       </th>
@@ -5432,6 +5472,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                     key="state"
                                                     size="small"
                                                     sortDirection={false}
+                                                    width="auto"
                                                   >
                                                     <MuiTableCellRoot
                                                       aria-sort={null}
@@ -5448,14 +5489,17 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                           "sortDirection": false,
                                                           "stickyHeader": true,
                                                           "variant": "head",
+                                                          "width": "auto",
                                                         }
                                                       }
                                                       scope="col"
+                                                      width="auto"
                                                     >
                                                       <th
                                                         aria-sort={null}
                                                         className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall header-options css-1h37f49-MuiTableCell-root"
                                                         scope="col"
+                                                        width="auto"
                                                       >
                                                         STATE
                                                       </th>
@@ -5467,6 +5511,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                     key=""
                                                     size="small"
                                                     sortDirection="asc"
+                                                    width="auto"
                                                   >
                                                     <MuiTableCellRoot
                                                       aria-sort="ascending"
@@ -5483,14 +5528,17 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                           "sortDirection": "asc",
                                                           "stickyHeader": true,
                                                           "variant": "head",
+                                                          "width": "auto",
                                                         }
                                                       }
                                                       scope="col"
+                                                      width="auto"
                                                     >
                                                       <th
                                                         aria-sort="ascending"
                                                         className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall header-options css-1h37f49-MuiTableCell-root"
                                                         scope="col"
+                                                        width="auto"
                                                       />
                                                     </MuiTableCellRoot>
                                                   </ForwardRef(TableCell)>
@@ -5500,6 +5548,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                     key=""
                                                     size="small"
                                                     sortDirection="asc"
+                                                    width="auto"
                                                   >
                                                     <MuiTableCellRoot
                                                       aria-sort="ascending"
@@ -5516,14 +5565,17 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                           "sortDirection": "asc",
                                                           "stickyHeader": true,
                                                           "variant": "head",
+                                                          "width": "auto",
                                                         }
                                                       }
                                                       scope="col"
+                                                      width="auto"
                                                     >
                                                       <th
                                                         aria-sort="ascending"
                                                         className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall header-options css-1h37f49-MuiTableCell-root"
                                                         scope="col"
+                                                        width="auto"
                                                       />
                                                     </MuiTableCellRoot>
                                                   </ForwardRef(TableCell)>
@@ -5533,6 +5585,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                     key=""
                                                     size="small"
                                                     sortDirection="asc"
+                                                    width="auto"
                                                   >
                                                     <MuiTableCellRoot
                                                       aria-sort="ascending"
@@ -5549,14 +5602,17 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                           "sortDirection": "asc",
                                                           "stickyHeader": true,
                                                           "variant": "head",
+                                                          "width": "auto",
                                                         }
                                                       }
                                                       scope="col"
+                                                      width="auto"
                                                     >
                                                       <th
                                                         aria-sort="ascending"
                                                         className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall header-options css-1h37f49-MuiTableCell-root"
                                                         scope="col"
+                                                        width="auto"
                                                       />
                                                     </MuiTableCellRoot>
                                                   </ForwardRef(TableCell)>
@@ -5566,6 +5622,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                     key=""
                                                     size="small"
                                                     sortDirection="asc"
+                                                    width="auto"
                                                   >
                                                     <MuiTableCellRoot
                                                       aria-sort="ascending"
@@ -5582,14 +5639,17 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                           "sortDirection": "asc",
                                                           "stickyHeader": true,
                                                           "variant": "head",
+                                                          "width": "auto",
                                                         }
                                                       }
                                                       scope="col"
+                                                      width="auto"
                                                     >
                                                       <th
                                                         aria-sort="ascending"
                                                         className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall header-options css-1h37f49-MuiTableCell-root"
                                                         scope="col"
+                                                        width="auto"
                                                       />
                                                     </MuiTableCellRoot>
                                                   </ForwardRef(TableCell)>
@@ -5599,6 +5659,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                     key=""
                                                     size="small"
                                                     sortDirection="asc"
+                                                    width="auto"
                                                   >
                                                     <MuiTableCellRoot
                                                       aria-sort="ascending"
@@ -5615,14 +5676,17 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                           "sortDirection": "asc",
                                                           "stickyHeader": true,
                                                           "variant": "head",
+                                                          "width": "auto",
                                                         }
                                                       }
                                                       scope="col"
+                                                      width="auto"
                                                     >
                                                       <th
                                                         aria-sort="ascending"
                                                         className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall header-options css-1h37f49-MuiTableCell-root"
                                                         scope="col"
+                                                        width="auto"
                                                       />
                                                     </MuiTableCellRoot>
                                                   </ForwardRef(TableCell)>
@@ -5632,6 +5696,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                     key=""
                                                     size="small"
                                                     sortDirection="asc"
+                                                    width="auto"
                                                   >
                                                     <MuiTableCellRoot
                                                       aria-sort="ascending"
@@ -5648,14 +5713,17 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                           "sortDirection": "asc",
                                                           "stickyHeader": true,
                                                           "variant": "head",
+                                                          "width": "auto",
                                                         }
                                                       }
                                                       scope="col"
+                                                      width="auto"
                                                     >
                                                       <th
                                                         aria-sort="ascending"
                                                         className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall header-options css-1h37f49-MuiTableCell-root"
                                                         scope="col"
+                                                        width="auto"
                                                       />
                                                     </MuiTableCellRoot>
                                                   </ForwardRef(TableCell)>
@@ -5665,6 +5733,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                     key=""
                                                     size="small"
                                                     sortDirection="asc"
+                                                    width="auto"
                                                   >
                                                     <MuiTableCellRoot
                                                       aria-sort="ascending"
@@ -5681,14 +5750,17 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                           "sortDirection": "asc",
                                                           "stickyHeader": true,
                                                           "variant": "head",
+                                                          "width": "auto",
                                                         }
                                                       }
                                                       scope="col"
+                                                      width="auto"
                                                     >
                                                       <th
                                                         aria-sort="ascending"
                                                         className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall header-options css-1h37f49-MuiTableCell-root"
                                                         scope="col"
+                                                        width="auto"
                                                       />
                                                     </MuiTableCellRoot>
                                                   </ForwardRef(TableCell)>
@@ -5698,6 +5770,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                     key=""
                                                     size="small"
                                                     sortDirection="asc"
+                                                    width="auto"
                                                   >
                                                     <MuiTableCellRoot
                                                       aria-sort="ascending"
@@ -5714,14 +5787,17 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                           "sortDirection": "asc",
                                                           "stickyHeader": true,
                                                           "variant": "head",
+                                                          "width": "auto",
                                                         }
                                                       }
                                                       scope="col"
+                                                      width="auto"
                                                     >
                                                       <th
                                                         aria-sort="ascending"
                                                         className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall header-options css-1h37f49-MuiTableCell-root"
                                                         scope="col"
+                                                        width="auto"
                                                       />
                                                     </MuiTableCellRoot>
                                                   </ForwardRef(TableCell)>
@@ -5731,6 +5807,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                     key=""
                                                     size="small"
                                                     sortDirection="asc"
+                                                    width="auto"
                                                   >
                                                     <MuiTableCellRoot
                                                       aria-sort="ascending"
@@ -5747,14 +5824,17 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                           "sortDirection": "asc",
                                                           "stickyHeader": true,
                                                           "variant": "head",
+                                                          "width": "auto",
                                                         }
                                                       }
                                                       scope="col"
+                                                      width="auto"
                                                     >
                                                       <th
                                                         aria-sort="ascending"
                                                         className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall header-options css-1h37f49-MuiTableCell-root"
                                                         scope="col"
+                                                        width="auto"
                                                       />
                                                     </MuiTableCellRoot>
                                                   </ForwardRef(TableCell)>
@@ -5764,6 +5844,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                     key=""
                                                     size="small"
                                                     sortDirection="asc"
+                                                    width="auto"
                                                   >
                                                     <MuiTableCellRoot
                                                       aria-sort="ascending"
@@ -5780,14 +5861,17 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                           "sortDirection": "asc",
                                                           "stickyHeader": true,
                                                           "variant": "head",
+                                                          "width": "auto",
                                                         }
                                                       }
                                                       scope="col"
+                                                      width="auto"
                                                     >
                                                       <th
                                                         aria-sort="ascending"
                                                         className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall header-options css-1h37f49-MuiTableCell-root"
                                                         scope="col"
+                                                        width="auto"
                                                       />
                                                     </MuiTableCellRoot>
                                                   </ForwardRef(TableCell)>
@@ -5797,6 +5881,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                     key=""
                                                     size="small"
                                                     sortDirection="asc"
+                                                    width="auto"
                                                   >
                                                     <MuiTableCellRoot
                                                       aria-sort="ascending"
@@ -5813,14 +5898,17 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                           "sortDirection": "asc",
                                                           "stickyHeader": true,
                                                           "variant": "head",
+                                                          "width": "auto",
                                                         }
                                                       }
                                                       scope="col"
+                                                      width="auto"
                                                     >
                                                       <th
                                                         aria-sort="ascending"
                                                         className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall header-options css-1h37f49-MuiTableCell-root"
                                                         scope="col"
+                                                        width="auto"
                                                       />
                                                     </MuiTableCellRoot>
                                                   </ForwardRef(TableCell)>
@@ -5830,6 +5918,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                     key=""
                                                     size="small"
                                                     sortDirection="asc"
+                                                    width="auto"
                                                   >
                                                     <MuiTableCellRoot
                                                       aria-sort="ascending"
@@ -5846,14 +5935,17 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                           "sortDirection": "asc",
                                                           "stickyHeader": true,
                                                           "variant": "head",
+                                                          "width": "auto",
                                                         }
                                                       }
                                                       scope="col"
+                                                      width="auto"
                                                     >
                                                       <th
                                                         aria-sort="ascending"
                                                         className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall header-options css-1h37f49-MuiTableCell-root"
                                                         scope="col"
+                                                        width="auto"
                                                       />
                                                     </MuiTableCellRoot>
                                                   </ForwardRef(TableCell)>
@@ -5863,6 +5955,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                     key=""
                                                     size="small"
                                                     sortDirection="asc"
+                                                    width="auto"
                                                   >
                                                     <MuiTableCellRoot
                                                       aria-sort="ascending"
@@ -5879,14 +5972,17 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                           "sortDirection": "asc",
                                                           "stickyHeader": true,
                                                           "variant": "head",
+                                                          "width": "auto",
                                                         }
                                                       }
                                                       scope="col"
+                                                      width="auto"
                                                     >
                                                       <th
                                                         aria-sort="ascending"
                                                         className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall header-options css-1h37f49-MuiTableCell-root"
                                                         scope="col"
+                                                        width="auto"
                                                       />
                                                     </MuiTableCellRoot>
                                                   </ForwardRef(TableCell)>

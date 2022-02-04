@@ -27,7 +27,8 @@
     "show more": "Mostrar más",
     "sort by": "Ordenar por",
     "add tax": "Agregar impuesto",
-    "filter": "Filtre"
+    "filter": "Filtre",
+    "filterText": "Filtrar"
   },
   "menus": {
     "sortby": {
@@ -175,6 +176,13 @@
         "state": "Expresar / Provincia",
         "postalCode": "Código postal"
       }
+    }
+  },
+  "truck": {
+    "navBar": {
+      "overview": "Descripción general",
+      "liveMap": "Mapa en vivo",
+      "truckPlot": "Estacionamiento de camiones"
     }
   }
 }

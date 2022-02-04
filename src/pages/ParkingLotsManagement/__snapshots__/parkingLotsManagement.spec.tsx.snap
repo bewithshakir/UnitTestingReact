@@ -5005,6 +5005,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                   className="header-options"
                                                   size="small"
                                                   sortDirection={false}
+                                                  width="100px"
                                                 >
                                                   LOT NAME
                                                 </ForwardRef(TableCell)>
@@ -5012,6 +5013,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                   className="header-options"
                                                   size="small"
                                                   sortDirection={false}
+                                                  width="auto"
                                                 >
                                                   LOT ID
                                                 </ForwardRef(TableCell)>
@@ -5019,6 +5021,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                   className="header-options"
                                                   size="small"
                                                   sortDirection={false}
+                                                  width="100px"
                                                 >
                                                   CUSTOMER NAME
                                                 </ForwardRef(TableCell)>
@@ -5026,6 +5029,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                   className="header-options"
                                                   size="small"
                                                   sortDirection={false}
+                                                  width="auto"
                                                 >
                                                   LOT CONTACT
                                                 </ForwardRef(TableCell)>
@@ -5033,6 +5037,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                   className="header-options"
                                                   size="small"
                                                   sortDirection={false}
+                                                  width="150px"
                                                 >
                                                   STREET ADDRESS
                                                 </ForwardRef(TableCell)>
@@ -5041,6 +5046,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                   className="header-options"
                                                   size="small"
                                                   sortDirection={false}
+                                                  width="auto"
                                                 >
                                                   CITY
                                                 </ForwardRef(TableCell)>
@@ -5049,6 +5055,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                   className="header-options"
                                                   size="small"
                                                   sortDirection={false}
+                                                  width="auto"
                                                 >
                                                   STATE
                                                 </ForwardRef(TableCell)>
@@ -5056,6 +5063,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                   className="header-options"
                                                   size="small"
                                                   sortDirection={false}
+                                                  width="auto"
                                                 >
                                                   ZIP
                                                 </ForwardRef(TableCell)>
@@ -5063,6 +5071,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                   className="header-options"
                                                   size="small"
                                                   sortDirection={false}
+                                                  width="150px"
                                                 >
                                                   RACK UPDATE
                                                 </ForwardRef(TableCell)>
@@ -5070,6 +5079,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                   className="header-options"
                                                   size="small"
                                                   sortDirection={false}
+                                                  width="auto"
                                                 >
                                                   WALLET STATUS
                                                 </ForwardRef(TableCell)>
@@ -5077,6 +5087,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                   className="header-options"
                                                   size="small"
                                                   sortDirection={false}
+                                                  width="auto"
                                                 >
                                                   FUEL
                                                 </ForwardRef(TableCell)>
@@ -5084,6 +5095,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                   className="header-options"
                                                   size="small"
                                                   sortDirection={false}
+                                                  width="auto"
                                                 >
                                                   VEHICLES
                                                 </ForwardRef(TableCell)>
@@ -5123,6 +5135,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                           className="header-options"
                                                           size="small"
                                                           sortDirection={false}
+                                                          width="100px"
                                                         >
                                                           LOT NAME
                                                         </ForwardRef(TableCell)>,
@@ -5130,6 +5143,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                           className="header-options"
                                                           size="small"
                                                           sortDirection={false}
+                                                          width="auto"
                                                         >
                                                           LOT ID
                                                         </ForwardRef(TableCell)>,
@@ -5137,6 +5151,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                           className="header-options"
                                                           size="small"
                                                           sortDirection={false}
+                                                          width="100px"
                                                         >
                                                           CUSTOMER NAME
                                                         </ForwardRef(TableCell)>,
@@ -5144,6 +5159,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                           className="header-options"
                                                           size="small"
                                                           sortDirection={false}
+                                                          width="auto"
                                                         >
                                                           LOT CONTACT
                                                         </ForwardRef(TableCell)>,
@@ -5151,6 +5167,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                           className="header-options"
                                                           size="small"
                                                           sortDirection={false}
+                                                          width="150px"
                                                         >
                                                           STREET ADDRESS
                                                         </ForwardRef(TableCell)>,
@@ -5159,6 +5176,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                           className="header-options"
                                                           size="small"
                                                           sortDirection={false}
+                                                          width="auto"
                                                         >
                                                           CITY
                                                         </ForwardRef(TableCell)>,
@@ -5167,6 +5185,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                           className="header-options"
                                                           size="small"
                                                           sortDirection={false}
+                                                          width="auto"
                                                         >
                                                           STATE
                                                         </ForwardRef(TableCell)>,
@@ -5174,6 +5193,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                           className="header-options"
                                                           size="small"
                                                           sortDirection={false}
+                                                          width="auto"
                                                         >
                                                           ZIP
                                                         </ForwardRef(TableCell)>,
@@ -5181,6 +5201,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                           className="header-options"
                                                           size="small"
                                                           sortDirection={false}
+                                                          width="150px"
                                                         >
                                                           RACK UPDATE
                                                         </ForwardRef(TableCell)>,
@@ -5188,6 +5209,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                           className="header-options"
                                                           size="small"
                                                           sortDirection={false}
+                                                          width="auto"
                                                         >
                                                           WALLET STATUS
                                                         </ForwardRef(TableCell)>,
@@ -5195,6 +5217,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                           className="header-options"
                                                           size="small"
                                                           sortDirection={false}
+                                                          width="auto"
                                                         >
                                                           FUEL
                                                         </ForwardRef(TableCell)>,
@@ -5202,6 +5225,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                           className="header-options"
                                                           size="small"
                                                           sortDirection={false}
+                                                          width="auto"
                                                         >
                                                           VEHICLES
                                                         </ForwardRef(TableCell)>,
@@ -5230,6 +5254,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                     key="deliveryLocationNm"
                                                     size="small"
                                                     sortDirection={false}
+                                                    width="100px"
                                                   >
                                                     <MuiTableCellRoot
                                                       aria-sort={null}
@@ -5246,14 +5271,17 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                           "sortDirection": false,
                                                           "stickyHeader": true,
                                                           "variant": "head",
+                                                          "width": "100px",
                                                         }
                                                       }
                                                       scope="col"
+                                                      width="100px"
                                                     >
                                                       <th
                                                         aria-sort={null}
                                                         className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeSmall header-options css-1h37f49-MuiTableCell-root"
                                                         scope="col"
+                                                        width="100px"
                                                       >
                                                         LOT NAME
                                                       </th>
@@ -5264,6 +5292,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                     key="lotId"
                                                     size="small"
                                                     sortDirection={false}
+                                                    width="auto"
                                                   >
                                                     <MuiTableCellRoot
                                                       aria-sort={null}
@@ -5280,14 +5309,17 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                           "sortDirection": false,
                                                           "stickyHeader": true,
                                                           "variant": "head",
+                                                          "width": "auto",
                                                         }
                                                       }
                                                       scope="col"
+                                                      width="auto"
                                                     >
                                                       <th
                                                         aria-sort={null}
                                                         className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeSmall header-options css-1h37f49-MuiTableCell-root"
                                                         scope="col"
+                                                        width="auto"
                                                       >
                                                         LOT ID
                                                       </th>
@@ -5298,6 +5330,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                     key="customerName"
                                                     size="small"
                                                     sortDirection={false}
+                                                    width="100px"
                                                   >
                                                     <MuiTableCellRoot
                                                       aria-sort={null}
@@ -5314,14 +5347,17 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                           "sortDirection": false,
                                                           "stickyHeader": true,
                                                           "variant": "head",
+                                                          "width": "100px",
                                                         }
                                                       }
                                                       scope="col"
+                                                      width="100px"
                                                     >
                                                       <th
                                                         aria-sort={null}
                                                         className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeSmall header-options css-1h37f49-MuiTableCell-root"
                                                         scope="col"
+                                                        width="100px"
                                                       >
                                                         CUSTOMER NAME
                                                       </th>
@@ -5332,6 +5368,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                     key="primaryContactName"
                                                     size="small"
                                                     sortDirection={false}
+                                                    width="auto"
                                                   >
                                                     <MuiTableCellRoot
                                                       aria-sort={null}
@@ -5348,14 +5385,17 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                           "sortDirection": false,
                                                           "stickyHeader": true,
                                                           "variant": "head",
+                                                          "width": "auto",
                                                         }
                                                       }
                                                       scope="col"
+                                                      width="auto"
                                                     >
                                                       <th
                                                         aria-sort={null}
                                                         className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeSmall header-options css-1h37f49-MuiTableCell-root"
                                                         scope="col"
+                                                        width="auto"
                                                       >
                                                         LOT CONTACT
                                                       </th>
@@ -5366,6 +5406,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                     key="streetAddress"
                                                     size="small"
                                                     sortDirection={false}
+                                                    width="150px"
                                                   >
                                                     <MuiTableCellRoot
                                                       aria-sort={null}
@@ -5382,14 +5423,17 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                           "sortDirection": false,
                                                           "stickyHeader": true,
                                                           "variant": "head",
+                                                          "width": "150px",
                                                         }
                                                       }
                                                       scope="col"
+                                                      width="150px"
                                                     >
                                                       <th
                                                         aria-sort={null}
                                                         className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeSmall header-options css-1h37f49-MuiTableCell-root"
                                                         scope="col"
+                                                        width="150px"
                                                       >
                                                         STREET ADDRESS
                                                       </th>
@@ -5401,6 +5445,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                     key="cityNm"
                                                     size="small"
                                                     sortDirection={false}
+                                                    width="auto"
                                                   >
                                                     <MuiTableCellRoot
                                                       aria-sort={null}
@@ -5417,14 +5462,17 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                           "sortDirection": false,
                                                           "stickyHeader": true,
                                                           "variant": "head",
+                                                          "width": "auto",
                                                         }
                                                       }
                                                       scope="col"
+                                                      width="auto"
                                                     >
                                                       <th
                                                         aria-sort={null}
                                                         className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall header-options css-1h37f49-MuiTableCell-root"
                                                         scope="col"
+                                                        width="auto"
                                                       >
                                                         CITY
                                                       </th>
@@ -5436,6 +5484,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                     key="stateNm"
                                                     size="small"
                                                     sortDirection={false}
+                                                    width="auto"
                                                   >
                                                     <MuiTableCellRoot
                                                       aria-sort={null}
@@ -5452,14 +5501,17 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                           "sortDirection": false,
                                                           "stickyHeader": true,
                                                           "variant": "head",
+                                                          "width": "auto",
                                                         }
                                                       }
                                                       scope="col"
+                                                      width="auto"
                                                     >
                                                       <th
                                                         aria-sort={null}
                                                         className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall header-options css-1h37f49-MuiTableCell-root"
                                                         scope="col"
+                                                        width="auto"
                                                       >
                                                         STATE
                                                       </th>
@@ -5470,6 +5522,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                     key="postalCd"
                                                     size="small"
                                                     sortDirection={false}
+                                                    width="auto"
                                                   >
                                                     <MuiTableCellRoot
                                                       aria-sort={null}
@@ -5486,14 +5539,17 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                           "sortDirection": false,
                                                           "stickyHeader": true,
                                                           "variant": "head",
+                                                          "width": "auto",
                                                         }
                                                       }
                                                       scope="col"
+                                                      width="auto"
                                                     >
                                                       <th
                                                         aria-sort={null}
                                                         className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeSmall header-options css-1h37f49-MuiTableCell-root"
                                                         scope="col"
+                                                        width="auto"
                                                       >
                                                         ZIP
                                                       </th>
@@ -5504,6 +5560,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                     key="rackUpdate"
                                                     size="small"
                                                     sortDirection={false}
+                                                    width="150px"
                                                   >
                                                     <MuiTableCellRoot
                                                       aria-sort={null}
@@ -5520,14 +5577,17 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                           "sortDirection": false,
                                                           "stickyHeader": true,
                                                           "variant": "head",
+                                                          "width": "150px",
                                                         }
                                                       }
                                                       scope="col"
+                                                      width="150px"
                                                     >
                                                       <th
                                                         aria-sort={null}
                                                         className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeSmall header-options css-1h37f49-MuiTableCell-root"
                                                         scope="col"
+                                                        width="150px"
                                                       >
                                                         RACK UPDATE
                                                       </th>
@@ -5538,6 +5598,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                     key="walletStatus"
                                                     size="small"
                                                     sortDirection={false}
+                                                    width="auto"
                                                   >
                                                     <MuiTableCellRoot
                                                       aria-sort={null}
@@ -5554,14 +5615,17 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                           "sortDirection": false,
                                                           "stickyHeader": true,
                                                           "variant": "head",
+                                                          "width": "auto",
                                                         }
                                                       }
                                                       scope="col"
+                                                      width="auto"
                                                     >
                                                       <th
                                                         aria-sort={null}
                                                         className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeSmall header-options css-1h37f49-MuiTableCell-root"
                                                         scope="col"
+                                                        width="auto"
                                                       >
                                                         WALLET STATUS
                                                       </th>
@@ -5572,6 +5636,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                     key="fuelStatus"
                                                     size="small"
                                                     sortDirection={false}
+                                                    width="auto"
                                                   >
                                                     <MuiTableCellRoot
                                                       aria-sort={null}
@@ -5588,14 +5653,17 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                           "sortDirection": false,
                                                           "stickyHeader": true,
                                                           "variant": "head",
+                                                          "width": "auto",
                                                         }
                                                       }
                                                       scope="col"
+                                                      width="auto"
                                                     >
                                                       <th
                                                         aria-sort={null}
                                                         className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeSmall header-options css-1h37f49-MuiTableCell-root"
                                                         scope="col"
+                                                        width="auto"
                                                       >
                                                         FUEL
                                                       </th>
@@ -5606,6 +5674,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                     key="vehicles"
                                                     size="small"
                                                     sortDirection={false}
+                                                    width="auto"
                                                   >
                                                     <MuiTableCellRoot
                                                       aria-sort={null}
@@ -5622,14 +5691,17 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                           "sortDirection": false,
                                                           "stickyHeader": true,
                                                           "variant": "head",
+                                                          "width": "auto",
                                                         }
                                                       }
                                                       scope="col"
+                                                      width="auto"
                                                     >
                                                       <th
                                                         aria-sort={null}
                                                         className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeSmall header-options css-1h37f49-MuiTableCell-root"
                                                         scope="col"
+                                                        width="auto"
                                                       >
                                                         VEHICLES
                                                       </th>
