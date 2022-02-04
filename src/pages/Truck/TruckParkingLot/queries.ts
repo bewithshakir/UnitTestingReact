@@ -23,7 +23,7 @@ const fetchTruckParkingLotList = async (pageParam: number, searchTerm: string, s
         }
     }
 
-    const fuelTaxListEntitySet = `/api/truck-service/parking-locations/?countryCode=us&limit=${pageDataLimit}&offset=${pageParam}`;
+    const fuelTaxListEntitySet = `/api/truck-service/parking-locations?countryCode=us&limit=${pageDataLimit}&offset=${pageParam}`;
     const options: AxiosRequestConfig = {
         method: 'get',
         url: fuelTaxListEntitySet

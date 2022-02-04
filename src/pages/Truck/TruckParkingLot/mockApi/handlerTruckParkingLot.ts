@@ -1,7 +1,7 @@
 import { rest } from "msw";
 
 export const getTruckParkingLotList = () => {
-    return rest.get('*/api/truck-service/parking-locations/*', (req, res, ctx) => {
+    return rest.get('*/api/truck-service/parking-locations*', (req, res, ctx) => {
         return res(
             ctx.status(200),
             ctx.json({
