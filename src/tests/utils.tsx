@@ -11,6 +11,7 @@ import { getProductByLotHandler } from '../pages/ProductManagement/mockApi/handl
 import { editProductHandler } from '../pages/ProductManagement/mockApi/handler';
 import { getFuelTaxList, getFuelTaxProductsList } from '../pages/Tax/mockApi/handler';
 import { getProductTypesDropdownHandler } from '../pages/AddFuelTax/mockApi/handlerAddFuelTax';
+import { getTruckParkingLotList } from '../pages/Truck/TruckParkingLot/mockApi/handlerTruckParkingLot';
 
 export const handlers = [
     getProductTypesDropdownHandler(),
@@ -30,7 +31,8 @@ export const handlers = [
     editDspHandler(),
     editProductHandler(),
     getFuelTaxList(),
-    getFuelTaxProductsList()
+    getFuelTaxProductsList(),
+    getTruckParkingLotList()
 ];
 
 const createTestQueryClient = () => new QueryClient({

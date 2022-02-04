@@ -4573,6 +4573,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                   className="header-options"
                                                   size="small"
                                                   sortDirection={false}
+                                                  width="auto"
                                                 >
                                                   <ForwardRef(TableSortLabel)
                                                     IconComponent={[Function]}
@@ -4588,6 +4589,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                   className="header-options"
                                                   size="small"
                                                   sortDirection={false}
+                                                  width="auto"
                                                 >
                                                   <ForwardRef(TableSortLabel)
                                                     IconComponent={[Function]}
@@ -4603,6 +4605,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                   className="header-options"
                                                   size="small"
                                                   sortDirection={false}
+                                                  width="auto"
                                                 >
                                                   <ForwardRef(TableSortLabel)
                                                     IconComponent={[Function]}
@@ -4618,6 +4621,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                   className="header-options"
                                                   size="small"
                                                   sortDirection={false}
+                                                  width="auto"
                                                 >
                                                   <ForwardRef(TableSortLabel)
                                                     IconComponent={[Function]}
@@ -4633,6 +4637,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                   className="header-options"
                                                   size="small"
                                                   sortDirection={false}
+                                                  width="auto"
                                                 >
                                                   <ForwardRef(TableSortLabel)
                                                     IconComponent={[Function]}
@@ -4648,6 +4653,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                   className="header-options"
                                                   size="small"
                                                   sortDirection={false}
+                                                  width="auto"
                                                 >
                                                   <ForwardRef(TableSortLabel)
                                                     IconComponent={[Function]}
@@ -4695,6 +4701,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                           className="header-options"
                                                           size="small"
                                                           sortDirection={false}
+                                                          width="auto"
                                                         >
                                                           <ForwardRef(TableSortLabel)
                                                             IconComponent={[Function]}
@@ -4710,6 +4717,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                           className="header-options"
                                                           size="small"
                                                           sortDirection={false}
+                                                          width="auto"
                                                         >
                                                           <ForwardRef(TableSortLabel)
                                                             IconComponent={[Function]}
@@ -4725,6 +4733,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                           className="header-options"
                                                           size="small"
                                                           sortDirection={false}
+                                                          width="auto"
                                                         >
                                                           <ForwardRef(TableSortLabel)
                                                             IconComponent={[Function]}
@@ -4740,6 +4749,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                           className="header-options"
                                                           size="small"
                                                           sortDirection={false}
+                                                          width="auto"
                                                         >
                                                           <ForwardRef(TableSortLabel)
                                                             IconComponent={[Function]}
@@ -4755,6 +4765,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                           className="header-options"
                                                           size="small"
                                                           sortDirection={false}
+                                                          width="auto"
                                                         >
                                                           <ForwardRef(TableSortLabel)
                                                             IconComponent={[Function]}
@@ -4770,6 +4781,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                           className="header-options"
                                                           size="small"
                                                           sortDirection={false}
+                                                          width="auto"
                                                         >
                                                           <ForwardRef(TableSortLabel)
                                                             IconComponent={[Function]}
@@ -4806,6 +4818,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                     key="city"
                                                     size="small"
                                                     sortDirection={false}
+                                                    width="auto"
                                                   >
                                                     <MuiTableCellRoot
                                                       aria-sort={null}
@@ -4829,14 +4842,17 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                           "sortDirection": false,
                                                           "stickyHeader": true,
                                                           "variant": "head",
+                                                          "width": "auto",
                                                         }
                                                       }
                                                       scope="col"
+                                                      width="auto"
                                                     >
                                                       <th
                                                         aria-sort={null}
                                                         className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall header-options css-1h37f49-MuiTableCell-root"
                                                         scope="col"
+                                                        width="auto"
                                                       >
                                                         <ForwardRef(TableSortLabel)
                                                           IconComponent={[Function]}
@@ -4988,6 +5004,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                     key="state"
                                                     size="small"
                                                     sortDirection={false}
+                                                    width="auto"
                                                   >
                                                     <MuiTableCellRoot
                                                       aria-sort={null}
@@ -5011,14 +5028,17 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                           "sortDirection": false,
                                                           "stickyHeader": true,
                                                           "variant": "head",
+                                                          "width": "auto",
                                                         }
                                                       }
                                                       scope="col"
+                                                      width="auto"
                                                     >
                                                       <th
                                                         aria-sort={null}
                                                         className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall header-options css-1h37f49-MuiTableCell-root"
                                                         scope="col"
+                                                        width="auto"
                                                       >
                                                         <ForwardRef(TableSortLabel)
                                                           IconComponent={[Function]}
@@ -5170,6 +5190,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                     key="federalRate"
                                                     size="small"
                                                     sortDirection={false}
+                                                    width="auto"
                                                   >
                                                     <MuiTableCellRoot
                                                       aria-sort={null}
@@ -5193,14 +5214,17 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                           "sortDirection": false,
                                                           "stickyHeader": true,
                                                           "variant": "head",
+                                                          "width": "auto",
                                                         }
                                                       }
                                                       scope="col"
+                                                      width="auto"
                                                     >
                                                       <th
                                                         aria-sort={null}
                                                         className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall header-options css-1h37f49-MuiTableCell-root"
                                                         scope="col"
+                                                        width="auto"
                                                       >
                                                         <ForwardRef(TableSortLabel)
                                                           IconComponent={[Function]}
@@ -5352,6 +5376,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                     key="stateRate"
                                                     size="small"
                                                     sortDirection={false}
+                                                    width="auto"
                                                   >
                                                     <MuiTableCellRoot
                                                       aria-sort={null}
@@ -5375,14 +5400,17 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                           "sortDirection": false,
                                                           "stickyHeader": true,
                                                           "variant": "head",
+                                                          "width": "auto",
                                                         }
                                                       }
                                                       scope="col"
+                                                      width="auto"
                                                     >
                                                       <th
                                                         aria-sort={null}
                                                         className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall header-options css-1h37f49-MuiTableCell-root"
                                                         scope="col"
+                                                        width="auto"
                                                       >
                                                         <ForwardRef(TableSortLabel)
                                                           IconComponent={[Function]}
@@ -5534,6 +5562,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                     key="localRate"
                                                     size="small"
                                                     sortDirection={false}
+                                                    width="auto"
                                                   >
                                                     <MuiTableCellRoot
                                                       aria-sort={null}
@@ -5557,14 +5586,17 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                           "sortDirection": false,
                                                           "stickyHeader": true,
                                                           "variant": "head",
+                                                          "width": "auto",
                                                         }
                                                       }
                                                       scope="col"
+                                                      width="auto"
                                                     >
                                                       <th
                                                         aria-sort={null}
                                                         className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall header-options css-1h37f49-MuiTableCell-root"
                                                         scope="col"
+                                                        width="auto"
                                                       >
                                                         <ForwardRef(TableSortLabel)
                                                           IconComponent={[Function]}
@@ -5716,6 +5748,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                     key="totalRate"
                                                     size="small"
                                                     sortDirection={false}
+                                                    width="auto"
                                                   >
                                                     <MuiTableCellRoot
                                                       aria-sort={null}
@@ -5739,14 +5772,17 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                           "sortDirection": false,
                                                           "stickyHeader": true,
                                                           "variant": "head",
+                                                          "width": "auto",
                                                         }
                                                       }
                                                       scope="col"
+                                                      width="auto"
                                                     >
                                                       <th
                                                         aria-sort={null}
                                                         className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall header-options css-1h37f49-MuiTableCell-root"
                                                         scope="col"
+                                                        width="auto"
                                                       >
                                                         <ForwardRef(TableSortLabel)
                                                           IconComponent={[Function]}
