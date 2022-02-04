@@ -126,8 +126,9 @@ export default function FeeDetails() {
     });
 
     const handleEditButtonClick = () => {
-        setSaveCancelShown(true);
-        setDisabled(false);
+        // Edit story will take this 
+        // setSaveCancelShown(true);
+        // setDisabled(false);
     };
 
     const handleFormDataChange = () => {
