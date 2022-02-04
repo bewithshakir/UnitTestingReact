@@ -151,7 +151,7 @@ export default function ServiceRule({index, isDisabled, formik, lotId}: props) {
                         }
                         onBlur={() => { formik.setFieldTouched(`serviceFeeRules[${index}].masterProductType`); formik.validateField(`serviceFeeRules[${index}].masterProductType`); }}
                         isDisabled={(formik?.values?.serviceFeeRules?.[index]?.productType?.value?.toLowerCase() === 'all')? true : isDisabled}
-                        required
+                        required={(formik?.values?.serviceFeeRules?.[index]?.productType?.value?.toLowerCase() === 'all') ? false : true}
                     />
                 </Grid>
             </Grid>
@@ -178,7 +178,7 @@ export default function ServiceRule({index, isDisabled, formik, lotId}: props) {
                         }
                         onBlur={() => { formik.setFieldTouched(`serviceFeeRules[${index}].productName`); formik.validateField(`serviceFeeRules[${index}].productName`); }}
                         isDisabled={(formik?.values?.serviceFeeRules?.[index]?.productType?.value?.toLowerCase() === 'all') ? true : isDisabled}
-                        required
+                        required={(formik?.values?.serviceFeeRules?.[index]?.productType?.value?.toLowerCase() === 'all') ? false : true}
                     />
                 </Grid>
             </Grid>
