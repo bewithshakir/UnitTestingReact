@@ -138,7 +138,7 @@ export const DatePickerInput: React.FC<DatePickerProps> = ({ label, type, placeh
                                     if (params.inputProps) {
                                         params.inputProps.placeholder = (typeof placeholder === 'string' && placeholder !== null) ? placeholder : "";
                                     }
-                                    return <TextField id={id} name={name} onBlur={onBlur} onClick={() => setSinglePickerStatus(true)} {...params} />;
+                                    return <TextField id={id} name={name} onMouseDown={onBlur} onClick={() => setSinglePickerStatus(true)} {...params} />;
 
                                 }}
                             />}

@@ -35,7 +35,8 @@
     "browse": "Browse",
     "filter": "Filters",
     "add asset": "ADD ASSET",
-    "import": "IMPORT"
+    "import": "IMPORT",
+    "filterText": "Filter"
   },
   "menus": {
     "sortby": {
@@ -265,6 +266,18 @@
       }
     }
   },
+  "addTruckParkingLot": {
+    "title": "Add Truck Parking lot",
+    "form": {
+      "parkingLocationNm": "TRUCK PARKING LOT NAME",
+      "title": "Fill all the mandatory * fields",
+      "addressLine1": "ADDRESS LINE 1",
+      "addressLine2": "ADDRESS LINE 2",
+      "city": "CITY",
+      "state": "STATE",
+      "postalCode": "POSTAL CODE"
+    }
+  },
   "productManagement": {
     "results found": "results found",
     "result(s) found": "result(s) found",
@@ -378,5 +391,12 @@
     "uploadGenericError":"Error found. Please delete and re-upload the file",
     "no":"No",
     "yes":"Yes"
+  },
+  "truck": {
+    "navBar": {
+      "overview": "Overview",
+      "liveMap": "Live Map",
+      "truckPlot": "Truck Parking Lot"
+    }
   }
 }

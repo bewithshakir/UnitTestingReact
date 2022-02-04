@@ -3,7 +3,6 @@ import { headerObj } from './../components/UIComponents/DataGird/grid.component'
 import { FuelTax } from '../pages/Tax/config';
 import { OilCanIcon } from '../assets/icons';
 import { useTranslation } from 'react-i18next';
-import { YellowFuelIcon, RedFuelIcon, GreenFuelIcon, NavyBlueFuelIcon } from './../assets/icons';
 
 export interface SelectProps {
     label: string,
@@ -51,12 +50,12 @@ export default class TaxModel {
     }
 
 
-    massActions () {
+    massActions() {
         const { t } = useTranslation();
         return MassActionOptions.map(actionItem => ({ ...actionItem, label: t(actionItem.label) }));
     }
 
-    fieldsToDisplay (): headerObj[] {
+    fieldsToDisplay(): headerObj[] {
         const { CITY, STATE, PRODUCT } = DataGridFields;
         return [
             { field: CITY.field, label: CITY.label, type: 'text', align: 'left' },
@@ -74,42 +73,24 @@ export default class TaxModel {
         ];
     }
 
-    fieldsToDisplayLotTable (): headerObj[] {
+    displayProductdataModel(data: any) {
+        return data.map((obj: any) => {
+            return ({
+                ...obj,
+                product: {
+                    productId: obj?.productCd || '',
+                    productName: obj?.productNm || '',
+                    productColorCd: obj?.productIcon?.productIconCd || '',
+                    productColorNm: obj?.productIcon?.productIconNm || '',
+                    productColorCode: obj?.productIcon?.productIconHexCode || '',
+                }
+            });
+        });
+    }
+
+    fieldsToDisplayLotTable(): headerObj[] {
         return [
-            {
-                field: "productNm",
-                label: "PRODUCT",
-                type: 'status',
-                align: 'left',
-                showIconLast: false,
-                fieldOptions: [
-                    {
-                        value: "Regular",
-                        displayValue: "Regular",
-                        icon: YellowFuelIcon,
-                    },
-                    {
-                        value: "Premium",
-                        displayValue: "Premium",
-                        icon: RedFuelIcon
-                    },
-                    {
-                        value: "Diesel",
-                        displayValue: "Diesel",
-                        icon: GreenFuelIcon,
-                    },
-                    {
-                        value: "V-Power",
-                        displayValue: "V-Power",
-                        icon: NavyBlueFuelIcon
-                    },
-                    {
-                        value: "Petrol",
-                        displayValue: "Petrol",
-                        icon: NavyBlueFuelIcon
-                    }
-                ]
-            },
+            { field: "product", label: "PRODUCT", type: 'product', align: 'left' },
             { field: "fedFuelTax", label: "FEDERAL TAX ($)", type: 'text', align: 'left' },
             { field: "revenueFuelRate", label: "REVENUE RATE (%)", type: 'text', align: 'left' },
             { field: "salesFuelRate", label: "SALES FUEL RATE (%)", type: 'text' },
@@ -130,12 +111,9 @@ export default class TaxModel {
         EDIT: 'edit'
     };
 
-    rowActions () {
+    rowActions() {
         const { t } = useTranslation();
         return [
-            {
-                label: ''
-            },
             {
                 label: t("menus.data-grid-actions.edit"),
                 action: this.ACTION_TYPES.EDIT

@@ -110,6 +110,8 @@ export default function HorizontalBar (props: HorizontalBarProps) {
           customerName: selectedCustomerName
         }
       });
+    } else if(pathname.includes('/truckParkingLot/add')){
+      navigate('/truckParkingLot');
     }
     else {
       props.onBack();
@@ -146,6 +148,8 @@ export default function HorizontalBar (props: HorizontalBarProps) {
         return t('parkingLot.form.titleEdit');
       case pathname.includes('AddAttachment'):
         return t('UploadAttachments.breadCrumbText');
+      case pathname.includes('truckParkingLot/add'):
+        return t('addTruckParkingLot.title');
       default:
         return selectedCustomerName;
     }
@@ -238,7 +242,53 @@ export default function HorizontalBar (props: HorizontalBarProps) {
           </div>
         </>
       );
-    } else {
+    } 
+    else if(pathname.includes('truckParkingLot')) {
+      return (
+        <>
+          <div
+            className={
+              pathname.includes('taxes') ? 'linkitem active' : 'linkitem'
+            }
+          >
+            <NavLink
+              className='breadcrubs-title'
+              to='/'
+              onClick={handleClick}
+            >
+              {t('truck.navBar.overview')}
+            </NavLink>
+          </div>
+          <div
+            className={
+              pathname.includes('salesTax') ? 'linkitem active' : 'linkitem'
+            }
+          >
+            <NavLink
+              className='breadcrubs-title'
+              to='/'
+              onClick={handleClick}
+            >
+              {t('truck.navBar.liveMap')}
+            </NavLink>
+          </div>
+          <div
+            className={
+              pathname.includes('truckParkingLot') ? 'linkitem active' : 'linkitem'
+            }
+          >
+            <NavLink
+              className='breadcrubs-title'
+              to='/truckParkingLot'
+              onClick={handleClick}
+            >
+              {t('truck.navBar.truckPlot')}
+            </NavLink>
+          </div>
+        </>
+      );
+    }
+    else {
       return (
         <>
           <div className={pathname === '/' ? 'linkitem active' : 'linkitem'}>

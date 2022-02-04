@@ -1,67 +1,74 @@
-div{  
+div {
   .page-area {
     max-height: calc(100vh - 64px);
     overflow-y: auto;
   }
-    .page-container{
-      margin: 0px;
-      padding: 0px;
-      max-width: 950px;
-      .import-file{
-        height: 50px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        border: 1px solid var(--Lightergray);
-        background-color: var(--Lightgray_4);
-        padding: .875rem 0.7rem;
-      }
-      .import-text{
-        display: flex;
-        align-items: center;
-      }
-      .import-error{
-        color: var(--ToastMessageRed);
-      }
-      .form-action-section{
-        display: flex;
-        justify-content: flex-end;
-      }
-      .checkbox-field{
-        .MuiCheckbox-root{
-          margin-left: -9px;
-        }
-      }
-      .deleteBtn{
-        margin-top: 44px; 
-        margin-left: 22px;
-        svg{
-         cursor: pointer; 
-        } 
+  .page-container {
+    margin: 0px;
+    padding: 0px;
+    max-width: 950px;
+    .import-file {
+      height: 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border: 1px solid var(--Lightergray);
+      background-color: var(--Lightgray_4);
+      padding: 0.875rem 0.7rem;
+    }
+    .import-text {
+      display: flex;
+      align-items: center;
+    }
+    .import-error {
+      color: var(--ToastMessageRed);
+    }
+    .form-action-section {
+      display: flex;
+      justify-content: flex-end;
+    }
+    .checkbox-field {
+      .MuiCheckbox-root {
+        margin-left: -9px;
       }
     }
-    .right-float{
-      float:right;
+    .deleteBtn {
+      margin-top: 44px;
+      margin-left: 22px;
+      svg {
+        cursor: pointer;
+      }
     }
-    .add-icon-span{
-        margin: 2px 5px 0px 0px;
-      }
-    .add-link {
-      color: var(--Primary);
+    .loadingIcon{
+      position: inital; 
+      width: 28px;
     }
-    .disabled-text-link{
-      display: "flex";
-        text-decoration-color: var(--Secondary-Background);
-        cursor: default;
-        &:hover{
-          text-decoration-color: var(--Secondary-Background);
-          cursor: default;
-        }
-        h3{
-          color:  var(--Secondary-Background);
-        }
-      }
-      .MuiTypography-h3{
-        color:var(--Primary);
-      }
+    svg{
+        margin-right: 11px; 
+    }
+  }
+  .right-float {
+    float: right;
+  }
+  .add-icon-span {
+    margin: 2px 5px 0px 0px;
+  }
+  .add-link {
+    color: var(--Primary);
+  }
+  .disabled-text-link {
+    display: 'flex';
+    text-decoration-color: var(--Secondary-Background);
+    cursor: default;
+    &:hover {
+      text-decoration-color: var(--Secondary-Background);
+      cursor: default;
+    }
+    h3 {
+      color: var(--Secondary-Background);
+    }
+  }
+  .MuiTypography-h3 {
+    color: var(--Primary);
+  }
 }
