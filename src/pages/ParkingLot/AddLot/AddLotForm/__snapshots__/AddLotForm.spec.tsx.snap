@@ -69,7 +69,6 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -226,7 +225,6 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -383,7 +381,6 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -540,7 +537,6 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -697,7 +693,6 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -879,7 +874,6 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -1040,7 +1034,6 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -1203,7 +1196,6 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -1364,7 +1356,6 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -1521,7 +1512,6 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -1678,7 +1668,6 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -1835,7 +1824,6 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -2017,7 +2005,6 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -2174,7 +2161,6 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -20926,7 +20912,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                 ownerState={
                                   Object {
                                     "children": <ForwardRef(Link)
-                                      className="add-link disabled-text-link"
+                                      className="add-link add-another-schedule add-link disabled-text-link"
                                       onClick={[Function]}
                                       variant="body2"
                                     >
@@ -20938,7 +20924,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                         />
                                       </span>
                                       <ForwardRef(Typography)
-                                        className="fw-bold MuiTypography-h5-primary disabled-text"
+                                        className="fw-bold MuiTypography-h5-primary"
                                         component="h3"
                                         mb={1}
                                         variant="h3"
@@ -20976,12 +20962,12 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                   className="MuiGrid-root MuiGrid-item MuiGrid-grid-md-12 css-5brak6-MuiGrid-root"
                                 >
                                   <ForwardRef(Link)
-                                    className="add-link disabled-text-link"
+                                    className="add-link add-another-schedule add-link disabled-text-link"
                                     onClick={[Function]}
                                     variant="body2"
                                   >
                                     <MuiLinkRoot
-                                      className="MuiLink-root MuiLink-underlineAlways add-link disabled-text-link"
+                                      className="MuiLink-root MuiLink-underlineAlways add-link add-another-schedule add-link disabled-text-link"
                                       color="primary"
                                       component="a"
                                       onBlur={[Function]}
@@ -20998,7 +20984,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                               />
                                             </span>,
                                             <ForwardRef(Typography)
-                                              className="fw-bold MuiTypography-h5-primary disabled-text"
+                                              className="fw-bold MuiTypography-h5-primary"
                                               component="h3"
                                               mb={1}
                                               variant="h3"
@@ -21006,7 +20992,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                               Add Additional Contact
                                             </ForwardRef(Typography)>,
                                           ],
-                                          "className": "add-link disabled-text-link",
+                                          "className": "add-link add-another-schedule add-link disabled-text-link",
                                           "color": "primary",
                                           "component": "a",
                                           "focusVisible": false,
@@ -21018,7 +21004,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                       variant="body2"
                                     >
                                       <ForwardRef(Typography)
-                                        className="MuiLink-root MuiLink-underlineAlways add-link disabled-text-link css-okiaqn-MuiLink-root"
+                                        className="MuiLink-root MuiLink-underlineAlways add-link add-another-schedule add-link disabled-text-link css-okiaqn-MuiLink-root"
                                         color="primary"
                                         component="a"
                                         onBlur={[Function]}
@@ -21028,7 +21014,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                       >
                                         <MuiTypographyRoot
                                           as="a"
-                                          className="MuiTypography-root MuiTypography-body2 MuiLink-root MuiLink-underlineAlways add-link disabled-text-link css-okiaqn-MuiLink-root"
+                                          className="MuiTypography-root MuiTypography-body2 MuiLink-root MuiLink-underlineAlways add-link add-another-schedule add-link disabled-text-link css-okiaqn-MuiLink-root"
                                           onBlur={[Function]}
                                           onClick={[Function]}
                                           onFocus={[Function]}
@@ -21044,7 +21030,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                   />
                                                 </span>,
                                                 <ForwardRef(Typography)
-                                                  className="fw-bold MuiTypography-h5-primary disabled-text"
+                                                  className="fw-bold MuiTypography-h5-primary"
                                                   component="h3"
                                                   mb={1}
                                                   variant="h3"
@@ -21052,7 +21038,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                   Add Additional Contact
                                                 </ForwardRef(Typography)>,
                                               ],
-                                              "className": "MuiLink-root MuiLink-underlineAlways add-link disabled-text-link css-okiaqn-MuiLink-root",
+                                              "className": "MuiLink-root MuiLink-underlineAlways add-link add-another-schedule add-link disabled-text-link css-okiaqn-MuiLink-root",
                                               "color": "primary.main",
                                               "component": "a",
                                               "gutterBottom": false,
@@ -21087,7 +21073,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                           }
                                         >
                                           <a
-                                            className="MuiTypography-root MuiTypography-body2 MuiLink-root MuiLink-underlineAlways add-link disabled-text-link css-wpssva-MuiTypography-root-MuiLink-root"
+                                            className="MuiTypography-root MuiTypography-body2 MuiLink-root MuiLink-underlineAlways add-link add-another-schedule add-link disabled-text-link css-wpssva-MuiTypography-root-MuiLink-root"
                                             onBlur={[Function]}
                                             onClick={[Function]}
                                             onFocus={[Function]}
@@ -21116,19 +21102,19 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                               </PlusIcon>
                                             </span>
                                             <ForwardRef(Typography)
-                                              className="fw-bold MuiTypography-h5-primary disabled-text"
+                                              className="fw-bold MuiTypography-h5-primary"
                                               component="h3"
                                               mb={1}
                                               variant="h3"
                                             >
                                               <MuiTypographyRoot
                                                 as="h3"
-                                                className="MuiTypography-root MuiTypography-h3 fw-bold MuiTypography-h5-primary disabled-text"
+                                                className="MuiTypography-root MuiTypography-h3 fw-bold MuiTypography-h5-primary"
                                                 ownerState={
                                                   Object {
                                                     "align": "inherit",
                                                     "children": "Add Additional Contact",
-                                                    "className": "fw-bold MuiTypography-h5-primary disabled-text",
+                                                    "className": "fw-bold MuiTypography-h5-primary",
                                                     "color": undefined,
                                                     "component": "h3",
                                                     "gutterBottom": false,
@@ -21162,7 +21148,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                 }
                                               >
                                                 <h3
-                                                  className="MuiTypography-root MuiTypography-h3 fw-bold MuiTypography-h5-primary disabled-text css-1t35zg5-MuiTypography-root"
+                                                  className="MuiTypography-root MuiTypography-h3 fw-bold MuiTypography-h5-primary css-1t35zg5-MuiTypography-root"
                                                 >
                                                   Add Additional Contact
                                                 </h3>
@@ -21347,7 +21333,6 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -21430,7 +21415,6 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -21513,7 +21497,6 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -21670,7 +21653,6 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -21753,7 +21735,6 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -21836,7 +21817,6 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -21993,7 +21973,6 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -22076,7 +22055,6 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -22159,7 +22137,6 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -22316,7 +22293,6 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -22399,7 +22375,6 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -22482,7 +22457,6 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -22639,7 +22613,6 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": true,
                   "isStale": true,
                   "isSuccess": true,
                   "refetch": [Function],
@@ -22736,7 +22709,6 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": true,
                   "isStale": true,
                   "isSuccess": true,
                   "refetch": [Function],
@@ -22833,7 +22805,6 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": true,
                   "isStale": true,
                   "isSuccess": true,
                   "refetch": [Function],
@@ -23015,7 +22986,6 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": true,
                   "isStale": true,
                   "isSuccess": true,
                   "refetch": [Function],
@@ -23100,7 +23070,6 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": true,
                   "isStale": true,
                   "isSuccess": true,
                   "refetch": [Function],
@@ -23185,7 +23154,6 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": true,
                   "isStale": true,
                   "isSuccess": true,
                   "refetch": [Function],
@@ -23346,7 +23314,6 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": true,
                   "isStale": true,
                   "isSuccess": true,
                   "refetch": [Function],
@@ -23431,7 +23398,6 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": true,
                   "isStale": true,
                   "isSuccess": true,
                   "refetch": [Function],
@@ -23516,7 +23482,6 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": true,
                   "isStale": true,
                   "isSuccess": true,
                   "refetch": [Function],
@@ -23679,7 +23644,6 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": true,
                   "isStale": true,
                   "isSuccess": true,
                   "refetch": [Function],
@@ -23764,7 +23728,6 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": true,
                   "isStale": true,
                   "isSuccess": true,
                   "refetch": [Function],
@@ -23849,7 +23812,6 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": true,
                   "isStale": true,
                   "isSuccess": true,
                   "refetch": [Function],
@@ -24010,7 +23972,6 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -24093,7 +24054,6 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -24176,7 +24136,6 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -24333,7 +24292,6 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -24416,7 +24374,6 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -24499,7 +24456,6 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -24656,7 +24612,6 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -24739,7 +24694,6 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -24822,7 +24776,6 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -24979,7 +24932,6 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": true,
                   "isStale": true,
                   "isSuccess": true,
                   "refetch": [Function],
@@ -25076,7 +25028,6 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": true,
                   "isStale": true,
                   "isSuccess": true,
                   "refetch": [Function],
@@ -25173,7 +25124,6 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": true,
                   "isStale": true,
                   "isSuccess": true,
                   "refetch": [Function],
@@ -25355,7 +25305,6 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -25438,7 +25387,6 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -25521,7 +25469,6 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -25678,7 +25625,6 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": true,
                   "isStale": true,
                   "isSuccess": true,
                   "refetch": [Function],
@@ -25763,7 +25709,6 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": true,
                   "isStale": true,
                   "isSuccess": true,
                   "refetch": [Function],
@@ -25848,7 +25793,6 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": true,
                   "isStale": true,
                   "isSuccess": true,
                   "refetch": [Function],
@@ -44600,7 +44544,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                 ownerState={
                                   Object {
                                     "children": <ForwardRef(Link)
-                                      className="add-link disabled-text-link"
+                                      className="add-link add-another-schedule add-link disabled-text-link"
                                       onClick={[Function]}
                                       variant="body2"
                                     >
@@ -44612,7 +44556,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                         />
                                       </span>
                                       <ForwardRef(Typography)
-                                        className="fw-bold MuiTypography-h5-primary disabled-text"
+                                        className="fw-bold MuiTypography-h5-primary"
                                         component="h3"
                                         mb={1}
                                         variant="h3"
@@ -44650,12 +44594,12 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                   className="MuiGrid-root MuiGrid-item MuiGrid-grid-md-12 css-5brak6-MuiGrid-root"
                                 >
                                   <ForwardRef(Link)
-                                    className="add-link disabled-text-link"
+                                    className="add-link add-another-schedule add-link disabled-text-link"
                                     onClick={[Function]}
                                     variant="body2"
                                   >
                                     <MuiLinkRoot
-                                      className="MuiLink-root MuiLink-underlineAlways add-link disabled-text-link"
+                                      className="MuiLink-root MuiLink-underlineAlways add-link add-another-schedule add-link disabled-text-link"
                                       color="primary"
                                       component="a"
                                       onBlur={[Function]}
@@ -44672,7 +44616,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                               />
                                             </span>,
                                             <ForwardRef(Typography)
-                                              className="fw-bold MuiTypography-h5-primary disabled-text"
+                                              className="fw-bold MuiTypography-h5-primary"
                                               component="h3"
                                               mb={1}
                                               variant="h3"
@@ -44680,7 +44624,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                               Add Additional Contact
                                             </ForwardRef(Typography)>,
                                           ],
-                                          "className": "add-link disabled-text-link",
+                                          "className": "add-link add-another-schedule add-link disabled-text-link",
                                           "color": "primary",
                                           "component": "a",
                                           "focusVisible": false,
@@ -44692,7 +44636,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                       variant="body2"
                                     >
                                       <ForwardRef(Typography)
-                                        className="MuiLink-root MuiLink-underlineAlways add-link disabled-text-link css-okiaqn-MuiLink-root"
+                                        className="MuiLink-root MuiLink-underlineAlways add-link add-another-schedule add-link disabled-text-link css-okiaqn-MuiLink-root"
                                         color="primary"
                                         component="a"
                                         onBlur={[Function]}
@@ -44702,7 +44646,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                       >
                                         <MuiTypographyRoot
                                           as="a"
-                                          className="MuiTypography-root MuiTypography-body2 MuiLink-root MuiLink-underlineAlways add-link disabled-text-link css-okiaqn-MuiLink-root"
+                                          className="MuiTypography-root MuiTypography-body2 MuiLink-root MuiLink-underlineAlways add-link add-another-schedule add-link disabled-text-link css-okiaqn-MuiLink-root"
                                           onBlur={[Function]}
                                           onClick={[Function]}
                                           onFocus={[Function]}
@@ -44718,7 +44662,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                   />
                                                 </span>,
                                                 <ForwardRef(Typography)
-                                                  className="fw-bold MuiTypography-h5-primary disabled-text"
+                                                  className="fw-bold MuiTypography-h5-primary"
                                                   component="h3"
                                                   mb={1}
                                                   variant="h3"
@@ -44726,7 +44670,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                   Add Additional Contact
                                                 </ForwardRef(Typography)>,
                                               ],
-                                              "className": "MuiLink-root MuiLink-underlineAlways add-link disabled-text-link css-okiaqn-MuiLink-root",
+                                              "className": "MuiLink-root MuiLink-underlineAlways add-link add-another-schedule add-link disabled-text-link css-okiaqn-MuiLink-root",
                                               "color": "primary.main",
                                               "component": "a",
                                               "gutterBottom": false,
@@ -44761,7 +44705,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                           }
                                         >
                                           <a
-                                            className="MuiTypography-root MuiTypography-body2 MuiLink-root MuiLink-underlineAlways add-link disabled-text-link css-wpssva-MuiTypography-root-MuiLink-root"
+                                            className="MuiTypography-root MuiTypography-body2 MuiLink-root MuiLink-underlineAlways add-link add-another-schedule add-link disabled-text-link css-wpssva-MuiTypography-root-MuiLink-root"
                                             onBlur={[Function]}
                                             onClick={[Function]}
                                             onFocus={[Function]}
@@ -44790,19 +44734,19 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                               </PlusIcon>
                                             </span>
                                             <ForwardRef(Typography)
-                                              className="fw-bold MuiTypography-h5-primary disabled-text"
+                                              className="fw-bold MuiTypography-h5-primary"
                                               component="h3"
                                               mb={1}
                                               variant="h3"
                                             >
                                               <MuiTypographyRoot
                                                 as="h3"
-                                                className="MuiTypography-root MuiTypography-h3 fw-bold MuiTypography-h5-primary disabled-text"
+                                                className="MuiTypography-root MuiTypography-h3 fw-bold MuiTypography-h5-primary"
                                                 ownerState={
                                                   Object {
                                                     "align": "inherit",
                                                     "children": "Add Additional Contact",
-                                                    "className": "fw-bold MuiTypography-h5-primary disabled-text",
+                                                    "className": "fw-bold MuiTypography-h5-primary",
                                                     "color": undefined,
                                                     "component": "h3",
                                                     "gutterBottom": false,
@@ -44836,7 +44780,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                 }
                                               >
                                                 <h3
-                                                  className="MuiTypography-root MuiTypography-h3 fw-bold MuiTypography-h5-primary disabled-text css-1t35zg5-MuiTypography-root"
+                                                  className="MuiTypography-root MuiTypography-h3 fw-bold MuiTypography-h5-primary css-1t35zg5-MuiTypography-root"
                                                 >
                                                   Add Additional Contact
                                                 </h3>

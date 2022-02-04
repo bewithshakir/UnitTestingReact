@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { Fragment, useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { FieldArray, FormikProvider, useFormik } from 'formik';
@@ -37,7 +38,11 @@ export default function FeeDetails() {
     const { t } = useTranslation();
     const { theme } = useTheme();
     const { pathname } = useLocation();
+    console.log("&&&&");
+    console.log(useLocation());
+    console.log(useLocation() +  "   ::::    " + pathname);
     const a = pathname.split('/');
+   
     const lotId = a[5];
     const { data: productListData, isLoading }: any = useProductsDetailsByLotId(lotId, pageDataLimit);
     const [productCount, setProductCount] = useState(0);
@@ -236,7 +241,7 @@ export default function FeeDetails() {
                 </Container>
             </Grid> ) : (
                 <FormikProvider value={formik}>
-                    <form onSubmit={formik.handleSubmit} onBlur={handleFormDataChange} >
+                    <form onSubmit={formik.handleSubmit} onBlur={handleFormDataChange} id="form">
                         <Grid item md={12} xs={12}>
                             <Container maxWidth="lg" className="page-container fee-details">
                                 <Grid container mt={1}>
@@ -295,6 +300,7 @@ export default function FeeDetails() {
                                         </Grid>
                                         <Grid item xs={12} md={6} pl={2.5}>
                                             <Select
+                                                id='delFeeShed'
                                                 name='delFeeShed'
                                                 label={t("FeeDetails.delFeeShed")}
                                                 description=''
@@ -355,6 +361,7 @@ export default function FeeDetails() {
                                     <Grid item md={12} mt={2} mb={1}>
                                         {isSavCancelShown && <Box className="form-action-section">
                                             <Button
+                                                id="cancelBtn"
                                                 types="cancel"
                                                 aria-label="cancel"
                                                 className="mr-4"
@@ -364,6 +371,7 @@ export default function FeeDetails() {
                                                 {t("buttons.cancel")}
                                             </Button>
                                             <Button
+                                                id="saveBtn"
                                                 type="submit"
                                                 types="save"
                                                 aria-label="save"
