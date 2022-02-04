@@ -7,7 +7,7 @@ export const getTruckParkingLotList = () => {
             ctx.json({
                 data: {
                     pagination: {
-                        "totalCount": 18,
+                        "totalCount": 1,
                         "limit": 15,
                         "offset": 0
                     },
