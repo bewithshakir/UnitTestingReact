@@ -129,7 +129,7 @@ const TruckParkingLot: React.FC<ContentProps> = () => {
                 </Grid>
                 <Grid container pt={2.5} display="flex" flexGrow={1} data-testid="data-grid">
                     <GridComponent
-                        primaryKey='customerId'
+                        primaryKey='id'
                         rows={truckParkingLotList}
                         header={headCells}
                         isLoading={isFetching || isLoading}
