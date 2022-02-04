@@ -136,7 +136,7 @@ const AddLot: React.FC<AddTruckParkingLotProps> = () => {
         if (!formik.isValid || formik.dirty) {
             showDialogBox(true);
         } else {
-            navigate(`/TruckParkingLot`);
+            navigate(`/truckParkingLot`);
         }
     };
     

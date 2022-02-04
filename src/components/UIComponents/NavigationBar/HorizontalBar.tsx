@@ -111,7 +111,7 @@ export default function HorizontalBar (props: HorizontalBarProps) {
         }
       });
     } else if(pathname.includes('/truckParkingLot/add')){
-      navigate('/truckParkingLot/add');
+      navigate('/truckParkingLot');
     }
     else {
       props.onBack();
