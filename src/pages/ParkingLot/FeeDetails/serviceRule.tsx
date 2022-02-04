@@ -56,6 +56,26 @@ export default function ServiceRule({index, isDisabled, formik, lotId}: props) {
         }
     }, [ vehicleTypeList, assetTypeList, productTypeList, productNameList, masterProductNamesList]);
 
+    const handleProductTypeChange = (fieldName: string, value: any) => {
+
+        console.warn('Jai:', `serviceFeeRules[${index}]`,'Formik', formik);
+        
+        formik.setFieldValue(`serviceFeeRules[${index}].masterProductType`, { label: "", value: "" });
+        
+        formik.setFieldValue(`serviceFeeRules[${index}].productName`, { label: "", value: "" });
+        
+        formik.setFieldValue(fieldName, value);
+        
+        };
+        
+        const handleMasterProductTypeChange = (fieldName: string, value: any) => {
+        
+        formik.setFieldValue(`serviceFeeRules[${index}].productName`, { label: "", value: "" });
+        
+        formik.setFieldValue(fieldName, value);
+        
+        };
+
     return (
         <Fragment>
             <Grid container item md={12} mt={2} mb={1} pt={0.5}>
@@ -103,7 +123,7 @@ export default function ServiceRule({index, isDisabled, formik, lotId}: props) {
                                 (formik.touched?.serviceFeeRules?.[index]?.productType && ((formik.errors?.serviceFeeRules?.[index] as any)?.productType))
                                 ? true : false
                         }
-                        onChange={formik.setFieldValue}
+                        onChange={handleProductTypeChange}
                         onBlur={() => { formik.setFieldTouched(`serviceFeeRules[${index}].productType`); formik.validateField(`serviceFeeRules[${index}].productType`); }}
                         isDisabled={isDisabled}
                         required
@@ -117,7 +137,7 @@ export default function ServiceRule({index, isDisabled, formik, lotId}: props) {
                         description=''
                         items={masterProductNames}
                         placeholder={t("FeeDetails.masterProductTypePlaceholder")}
-                        onChange={formik.setFieldValue}
+                        onChange={handleMasterProductTypeChange}
                         helperText={
                             formik?.errors?.serviceFeeRules && formik?.touched?.serviceFeeRules &&
                                 (formik.touched?.serviceFeeRules?.[index]?.masterProductType && ((formik.errors?.serviceFeeRules?.[index] as any)?.masterProductType))
