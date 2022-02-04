@@ -86,7 +86,6 @@ export default function FeeDetails() {
     };
 
     const onAddFeeError = (err: any) => {
-        console.warn('add fee api error');
         const { data } = err.response;
         resetFormFieldValue(false);
         isFormValidated(false);
@@ -175,17 +174,12 @@ export default function FeeDetails() {
                     ...(rule?.assetTypeDesc && {assetInput: rule?.assetTypeDesc}),
                     ...(rule?.vehicleType?.value?.toLowerCase() !== 'all' && {vehicleType: rule?.vehicleType?.value}),
                     
-                    // applicableProduct: rule?.productType?.value?.toLowerCase() === 'all' ? '' : rule?.productName?.value,
                     isAsset: rule?.considerAsset ? 'Y' : 'N',
-                    // asseType: rule?.assetType?.value?.toLowerCase() === 'all' ? '' : rule?.assetType?.value,
-                    // assetInput: rule?.assetTypeDesc,
-                    // vehicleType: rule?.vehicleType?.value?.toLowerCase() === 'all' ? '' : rule?.vehicleType?.value
                 });
             });
             addFeeDetails(apiPayload);
 
         } catch (error) {
-            console.warn("apiPayload serviceFeeRule apiPayload2- Error- >", error);
             setFormStatus(formStatusProps.error);
         }
     };
@@ -230,8 +224,6 @@ export default function FeeDetails() {
     const deleteFeeRule = (index: number, componentArr: any) => {
         componentArr.remove(index);
     };
-
-    console.warn(" FORMIKKKK-- >", formik);
 
     return (
         <Fragment>
@@ -352,7 +344,7 @@ export default function FeeDetails() {
                                                         onClick={(event: any) => addFeeRule(event, arr)}
                                                     >
                                                         <span className="add-icon-span"><PlusIcon color={isAddServiceFeeRuleDisabled() ? theme["--Secondary-Background"] : theme["--Primary"]} /></span>
-                                                        <Typography variant="h3" component="h3" className="fw-bold disabled-text" mb={1}>
+                                                        <Typography variant="h3" component="h3" className="fw-bold" mb={1}>
                                                             {t("FeeDetails.addAnotherServiceFee")}
                                                         </Typography>
                                                     </Link>
