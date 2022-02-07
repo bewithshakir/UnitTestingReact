@@ -67,6 +67,12 @@ export const FuelTax = {
       },
       "PRODUCT": {
         field: "productsCount", label: "PRODUCT"
+      },
+      "PRODUCT2": {
+        field: "productsCount", label: "PRODUCT2"
+      },
+      "PRODUCT3": {
+        field: "productsCount", label: "PRODUCT3"
       }
     },
   }

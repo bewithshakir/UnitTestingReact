@@ -50,17 +50,19 @@ export default class TaxModel {
     }
 
 
-    massActions() {
+    massActions () {
         const { t } = useTranslation();
         return MassActionOptions.map(actionItem => ({ ...actionItem, label: t(actionItem.label) }));
     }
 
-    fieldsToDisplay(): headerObj[] {
-        const { CITY, STATE, PRODUCT } = DataGridFields;
+    fieldsToDisplay (): headerObj[] {
+        const { CITY, STATE, PRODUCT, PRODUCT2, PRODUCT3 } = DataGridFields;
         return [
             { field: CITY.field, label: CITY.label, type: 'text', align: 'left' },
             { field: STATE.field, label: STATE.label, type: 'text', align: 'left' },
             { field: PRODUCT.field, label: PRODUCT.label, type: 'button', align: 'left', icon: OilCanIcon },
+            { field: PRODUCT2.field, label: PRODUCT2.label, type: 'button', align: 'left', icon: OilCanIcon },
+            { field: PRODUCT3.field, label: PRODUCT3.label, type: 'button', align: 'left', icon: OilCanIcon },
             { field: "", label: "", type: 'text', align: 'left' },
             { field: "", label: "", type: 'text', align: 'left' },
             { field: "", label: "", type: 'text', align: 'left' },
@@ -73,7 +75,7 @@ export default class TaxModel {
         ];
     }
 
-    displayProductdataModel(data: any) {
+    displayProductdataModel (data: any) {
         return data.map((obj: any) => {
             return ({
                 ...obj,
@@ -88,7 +90,7 @@ export default class TaxModel {
         });
     }
 
-    fieldsToDisplayLotTable(): headerObj[] {
+    fieldsToDisplayLotTable (): headerObj[] {
         return [
             { field: "product", label: "PRODUCT", type: 'product', align: 'left' },
             { field: "fedFuelTax", label: "FEDERAL TAX ($)", type: 'text', align: 'left' },
@@ -111,7 +113,7 @@ export default class TaxModel {
         EDIT: 'edit'
     };
 
-    rowActions() {
+    rowActions () {
         const { t } = useTranslation();
         return [
             {
