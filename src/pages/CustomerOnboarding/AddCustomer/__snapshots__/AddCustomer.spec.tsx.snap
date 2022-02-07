@@ -1685,16 +1685,6 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                     "initialStatus": undefined,
                     "initialTouched": Object {},
                     "initialValues": CustomerModel {
-                      "ACTION_TYPES": Object {
-                        "CONTACT_DETAILS": "contact details",
-                        "DELETE": "delete",
-                        "EDIT": "edit",
-                      },
-                      "MASS_ACTION_TYPES": Object {
-                        "DELETE": "remove",
-                        "EXPORT": "export",
-                        "IMPORT": "import",
-                      },
                       "addressLine1": "",
                       "addressLine2": "",
                       "apContact": Array [
@@ -1762,16 +1752,6 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                     "validateOnChange": true,
                     "validateOnMount": false,
                     "values": CustomerModel {
-                      "ACTION_TYPES": Object {
-                        "CONTACT_DETAILS": "contact details",
-                        "DELETE": "delete",
-                        "EDIT": "edit",
-                      },
-                      "MASS_ACTION_TYPES": Object {
-                        "DELETE": "remove",
-                        "EXPORT": "export",
-                        "IMPORT": "import",
-                      },
                       "addressLine1": "",
                       "addressLine2": "",
                       "apContact": Array [
@@ -2475,8 +2455,8 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                           type="submit"
                           types="save"
                         >
-                          buttons.save
                            
+                          buttons.save
                         </Button>
                       </ForwardRef(Box)>
                       <ToastMessage
@@ -2536,16 +2516,6 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                         "initialStatus": undefined,
                         "initialTouched": Object {},
                         "initialValues": CustomerModel {
-                          "ACTION_TYPES": Object {
-                            "CONTACT_DETAILS": "contact details",
-                            "DELETE": "delete",
-                            "EDIT": "edit",
-                          },
-                          "MASS_ACTION_TYPES": Object {
-                            "DELETE": "remove",
-                            "EXPORT": "export",
-                            "IMPORT": "import",
-                          },
                           "addressLine1": "",
                           "addressLine2": "",
                           "apContact": Array [
@@ -2613,16 +2583,6 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                         "validateOnChange": true,
                         "validateOnMount": false,
                         "values": CustomerModel {
-                          "ACTION_TYPES": Object {
-                            "CONTACT_DETAILS": "contact details",
-                            "DELETE": "delete",
-                            "EDIT": "edit",
-                          },
-                          "MASS_ACTION_TYPES": Object {
-                            "DELETE": "remove",
-                            "EXPORT": "export",
-                            "IMPORT": "import",
-                          },
                           "addressLine1": "",
                           "addressLine2": "",
                           "apContact": Array [
@@ -3326,8 +3286,8 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                               type="submit"
                               types="save"
                             >
-                              buttons.save
                                
+                              buttons.save
                             </Button>
                           </ForwardRef(Box)>
                           <ToastMessage
@@ -4176,8 +4136,8 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                   type="submit"
                                   types="save"
                                 >
-                                  buttons.save
                                    
+                                  buttons.save
                                 </Button>
                               </ForwardRef(Box)>
                               <ToastMessage
@@ -11189,8 +11149,8 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                       }
                                                     }
                                                     name="endDate"
-                                                    onBlur={[Function]}
                                                     onClick={[Function]}
+                                                    onMouseDown={[Function]}
                                                   >
                                                     <MuiTextFieldRoot
                                                       className="MuiTextField-root"
@@ -11199,6 +11159,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                       error={false}
                                                       fullWidth={false}
                                                       onClick={[Function]}
+                                                      onMouseDown={[Function]}
                                                       ownerState={
                                                         Object {
                                                           "InputProps": Object {
@@ -11224,8 +11185,8 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                           "label": undefined,
                                                           "multiline": false,
                                                           "name": "endDate",
-                                                          "onBlur": [Function],
                                                           "onClick": [Function],
+                                                          "onMouseDown": [Function],
                                                           "required": false,
                                                           "select": false,
                                                           "variant": "outlined",
@@ -11241,6 +11202,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                         error={false}
                                                         fullWidth={false}
                                                         onClick={[Function]}
+                                                        onMouseDown={[Function]}
                                                         required={false}
                                                         variant="outlined"
                                                       >
@@ -11248,6 +11210,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                           as="div"
                                                           className="MuiFormControl-root MuiTextField-root css-1xj1k15-MuiTextField-root"
                                                           onClick={[Function]}
+                                                          onMouseDown={[Function]}
                                                           ownerState={
                                                             Object {
                                                               "children": Array [
@@ -11270,7 +11233,6 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                   }
                                                                   multiline={false}
                                                                   name="endDate"
-                                                                  onBlur={[Function]}
                                                                   readOnly={true}
                                                                 />,
                                                                 undefined,
@@ -11284,6 +11246,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                               "hiddenLabel": false,
                                                               "margin": "none",
                                                               "onClick": [Function],
+                                                              "onMouseDown": [Function],
                                                               "required": false,
                                                               "size": "medium",
                                                               "variant": "outlined",
@@ -11293,6 +11256,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                           <div
                                                             className="MuiFormControl-root MuiTextField-root css-1u3bzj6-MuiFormControl-root-MuiTextField-root"
                                                             onClick={[Function]}
+                                                            onMouseDown={[Function]}
                                                           >
                                                             <ForwardRef(OutlinedInput)
                                                               autoFocus={false}
@@ -11312,7 +11276,6 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                               }
                                                               multiline={false}
                                                               name="endDate"
-                                                              onBlur={[Function]}
                                                               readOnly={true}
                                                             >
                                                               <ForwardRef(InputBase)
@@ -11385,7 +11348,6 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                 }
                                                                 multiline={false}
                                                                 name="endDate"
-                                                                onBlur={[Function]}
                                                                 readOnly={true}
                                                                 renderSuffix={[Function]}
                                                                 type="text"
@@ -11832,7 +11794,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                       "minRows": undefined,
                                                                       "multiline": false,
                                                                       "name": "endDate",
-                                                                      "onBlur": [Function],
+                                                                      "onBlur": undefined,
                                                                       "onChange": undefined,
                                                                       "onFocus": undefined,
                                                                       "placeholder": undefined,
@@ -12248,7 +12210,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                                           "minRows": undefined,
                                                                           "multiline": false,
                                                                           "name": "endDate",
-                                                                          "onBlur": [Function],
+                                                                          "onBlur": undefined,
                                                                           "onChange": undefined,
                                                                           "onFocus": undefined,
                                                                           "placeholder": undefined,
@@ -16419,16 +16381,6 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                 "initialStatus": undefined,
                                 "initialTouched": Object {},
                                 "initialValues": CustomerModel {
-                                  "ACTION_TYPES": Object {
-                                    "CONTACT_DETAILS": "contact details",
-                                    "DELETE": "delete",
-                                    "EDIT": "edit",
-                                  },
-                                  "MASS_ACTION_TYPES": Object {
-                                    "DELETE": "remove",
-                                    "EXPORT": "export",
-                                    "IMPORT": "import",
-                                  },
                                   "addressLine1": "",
                                   "addressLine2": "",
                                   "apContact": Array [
@@ -16496,16 +16448,6 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                 "validateOnChange": true,
                                 "validateOnMount": false,
                                 "values": CustomerModel {
-                                  "ACTION_TYPES": Object {
-                                    "CONTACT_DETAILS": "contact details",
-                                    "DELETE": "delete",
-                                    "EDIT": "edit",
-                                  },
-                                  "MASS_ACTION_TYPES": Object {
-                                    "DELETE": "remove",
-                                    "EXPORT": "export",
-                                    "IMPORT": "import",
-                                  },
                                   "addressLine1": "",
                                   "addressLine2": "",
                                   "apContact": Array [
@@ -18312,16 +18254,6 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                 "initialStatus": undefined,
                                 "initialTouched": Object {},
                                 "initialValues": CustomerModel {
-                                  "ACTION_TYPES": Object {
-                                    "CONTACT_DETAILS": "contact details",
-                                    "DELETE": "delete",
-                                    "EDIT": "edit",
-                                  },
-                                  "MASS_ACTION_TYPES": Object {
-                                    "DELETE": "remove",
-                                    "EXPORT": "export",
-                                    "IMPORT": "import",
-                                  },
                                   "addressLine1": "",
                                   "addressLine2": "",
                                   "apContact": Array [
@@ -18389,16 +18321,6 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                 "validateOnChange": true,
                                 "validateOnMount": false,
                                 "values": CustomerModel {
-                                  "ACTION_TYPES": Object {
-                                    "CONTACT_DETAILS": "contact details",
-                                    "DELETE": "delete",
-                                    "EDIT": "edit",
-                                  },
-                                  "MASS_ACTION_TYPES": Object {
-                                    "DELETE": "remove",
-                                    "EXPORT": "export",
-                                    "IMPORT": "import",
-                                  },
                                   "addressLine1": "",
                                   "addressLine2": "",
                                   "apContact": Array [
@@ -20866,8 +20788,8 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                       type="submit"
                                       types="save"
                                     >
-                                      buttons.save
                                        
+                                      buttons.save
                                     </Button>
                                   </ForwardRef(Box)>,
                                   <ToastMessage
@@ -21414,8 +21336,8 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                 <span
                                                   className="MuiButton-label"
                                                 >
-                                                  buttons.save
                                                    
+                                                  buttons.save
                                                 </span>
                                               </button>
                                             </ForwardRef(ButtonBase)>
