@@ -26,7 +26,7 @@ export default class TaxModel {
     InspFuelRate: string;
     miscLocalFuelRate: string;
     loadFuel: string;
-    fuelType: SelectProps;
+    productType: SelectProps;
     ppdSalesTax: string;
 
     constructor() {
@@ -45,17 +45,17 @@ export default class TaxModel {
         this.InspFuelRate = '';
         this.miscLocalFuelRate = '';
         this.loadFuel = '';
-        this.fuelType = { label: '', value: '' };
+        this.productType = { label: '', value: '' };
         this.ppdSalesTax = '';
     }
 
 
-    massActions() {
+    massActions () {
         const { t } = useTranslation();
         return MassActionOptions.map(actionItem => ({ ...actionItem, label: t(actionItem.label) }));
     }
 
-    fieldsToDisplay(): headerObj[] {
+    fieldsToDisplay (): headerObj[] {
         const { CITY, STATE, PRODUCT } = DataGridFields;
         return [
             { field: CITY.field, label: CITY.label, type: 'text', align: 'left' },
@@ -73,7 +73,7 @@ export default class TaxModel {
         ];
     }
 
-    displayProductdataModel(data: any) {
+    displayProductdataModel (data: any) {
         return data.map((obj: any) => {
             return ({
                 ...obj,
@@ -88,7 +88,7 @@ export default class TaxModel {
         });
     }
 
-    fieldsToDisplayLotTable(): headerObj[] {
+    fieldsToDisplayLotTable (): headerObj[] {
         return [
             { field: "product", label: "PRODUCT", type: 'product', align: 'left' },
             { field: "fedFuelTax", label: "FEDERAL TAX ($)", type: 'text', align: 'left' },
@@ -111,7 +111,7 @@ export default class TaxModel {
         EDIT: 'edit'
     };
 
-    rowActions() {
+    rowActions () {
         const { t } = useTranslation();
         return [
             {

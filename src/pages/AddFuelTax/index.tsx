@@ -59,8 +59,8 @@ const AddFuelTax: React.FC<AddFuelTaxProps> = memo(() => {
     });
 
 
-      // Add section starts
-      const onAddFuelTaxSuccess = () => {
+    // Add section starts
+    const onAddFuelTaxSuccess = () => {
         isFormValidated(false);
         formik.resetForm({ values: formik.values });
         setFormStatus(formStatusProps.updated);
@@ -79,7 +79,7 @@ const AddFuelTax: React.FC<AddFuelTaxProps> = memo(() => {
                 "state": form.state,
                 "city": form.city,
                 "countryCd": form.countryCd,
-                "fuelType": form.fuelType.value,
+                "fuelType": form.productType.value,
                 "startDate": moment(form.startDate).format("MM-DD-YYYY"),
                 "endDate": moment(form.endDate).format("MM-DD-YYYY"),
                 "fedFuelTax": parseFloat(form.federalRate),
@@ -125,7 +125,7 @@ const AddFuelTax: React.FC<AddFuelTaxProps> = memo(() => {
                 "state": form.state,
                 "city": form.city,
                 "countryCd": form.countryCd,
-                "fuelType": form.fuelType.value,
+                "fuelType": form.productType.value,
                 "startDate": moment(form.startDate).format("MM-DD-YYYY"),
                 "endDate": moment(form.endDate).format("MM-DD-YYYY"),
                 "fedFuelTax": parseFloat(form.federalRate),
@@ -164,7 +164,7 @@ const AddFuelTax: React.FC<AddFuelTaxProps> = memo(() => {
         try {
             if (response?.data) {
                 const finalData = {
-                    city:  response.data.data.city,
+                    city: response.data.data.city,
                     state: response.data.data.state,
                     federalRate: response.data.data.fedFuelTax,
                     localRate: response.data.data.revenueFuelRate,
@@ -175,15 +175,15 @@ const AddFuelTax: React.FC<AddFuelTaxProps> = memo(() => {
                     InspFuelRate: response.data.data.miscInspFuelTax,
                     miscLocalFuelRate: response.data.data.miscLocalFuelTax,
                     loadFuel: response.data.data.miscLoadFuelTax,
-                    fuelType: { label: response.data.data.productNm, value: response.data.data.productCd },
+                    productType: { label: response.data.data.productNm, value: response.data.data.productCd },
                     startDate: response.data.data.startDate,
-                    endDate:  response.data.data.endDate,
+                    endDate: response.data.data.endDate,
                     countryCd: 'us',
                     ppdSalesTax: response.data.data.ppdSalesTax
                 };
-                
-        populateDataInAllFields(finalData);
-        setEditMode(true);
+
+                populateDataInAllFields(finalData);
+                setEditMode(true);
             }
         } catch {
             setFormStatus({ message: t("formStatusProps.error.message"), type: 'Error' });
@@ -315,18 +315,18 @@ const AddFuelTax: React.FC<AddFuelTaxProps> = memo(() => {
 
                                 <Grid item xs={12} md={6} pr={2.5} pb={2.5} data-testid="temp">
                                     <Select
-                                        id='fuelType'
-                                        name='fuelType'
-                                        label='FUEL TYPE'
+                                        id='productType'
+                                        name='productType'
+                                        label='PRODUCT NAME'
                                         placeholder='Choose'
                                         items={fuelTypes}
-                                        value={formik.values.fuelType}
+                                        value={formik.values.productType}
                                         onChange={formik.setFieldValue}
-                                        helperText={(formik.touched.fuelType && formik.errors.fuelType) ? formik.errors.fuelType.value : undefined}
-                                        error={(formik.touched.fuelType && formik.errors.fuelType) ? true : false}
-                                        onBlur={() => { formik.setFieldTouched("fuelType"); formik.validateField("fuelType"); }}
+                                        helperText={(formik.touched.productType && formik.errors.productType) ? formik.errors.productType.value : undefined}
+                                        error={(formik.touched.productType && formik.errors.productType) ? true : false}
+                                        onBlur={() => { formik.setFieldTouched("productType"); formik.validateField("productType"); }}
                                         isDisabled={isEditMode ? true : false}
-                                        data-test="fuelType"
+                                        data-test="productType"
                                     />
                                 </Grid>
                                 <Grid item md={3} pl={2.5} pr={2.5} pb={2.5}>
@@ -508,12 +508,12 @@ const AddFuelTax: React.FC<AddFuelTaxProps> = memo(() => {
 
                                 </Box>
                                 <ToastMessage
-                                        isOpen={
-                                            isErrorAddTax || isSuccessAddTax || isSuccessEditTax || isErrorEditTax
-                                        }
-                                        messageType={formStatus.type}
-                                        onClose={() => { return ''; }}
-                                        message={formStatus.message} />
+                                    isOpen={
+                                        isErrorAddTax || isSuccessAddTax || isSuccessEditTax || isErrorEditTax
+                                    }
+                                    messageType={formStatus.type}
+                                    onClose={() => { return ''; }}
+                                    message={formStatus.message} />
                             </Grid>
 
                         </form>
