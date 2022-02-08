@@ -12335,8 +12335,8 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                                 }
                                                               }
                                                               name="orderScheduleDel[0].fromDate"
-                                                              onBlur={[Function]}
                                                               onClick={[Function]}
+                                                              onMouseDown={[Function]}
                                                             >
                                                               <MuiTextFieldRoot
                                                                 className="MuiTextField-root"
@@ -12345,6 +12345,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                                 error={false}
                                                                 fullWidth={false}
                                                                 onClick={[Function]}
+                                                                onMouseDown={[Function]}
                                                                 ownerState={
                                                                   Object {
                                                                     "InputProps": Object {
@@ -12370,8 +12371,8 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                                     "label": undefined,
                                                                     "multiline": false,
                                                                     "name": "orderScheduleDel[0].fromDate",
-                                                                    "onBlur": [Function],
                                                                     "onClick": [Function],
+                                                                    "onMouseDown": [Function],
                                                                     "required": false,
                                                                     "select": false,
                                                                     "variant": "outlined",
@@ -12387,6 +12388,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                                   error={false}
                                                                   fullWidth={false}
                                                                   onClick={[Function]}
+                                                                  onMouseDown={[Function]}
                                                                   required={false}
                                                                   variant="outlined"
                                                                 >
@@ -12394,6 +12396,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                                     as="div"
                                                                     className="MuiFormControl-root MuiTextField-root css-1xj1k15-MuiTextField-root"
                                                                     onClick={[Function]}
+                                                                    onMouseDown={[Function]}
                                                                     ownerState={
                                                                       Object {
                                                                         "children": Array [
@@ -12416,7 +12419,6 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                                             }
                                                                             multiline={false}
                                                                             name="orderScheduleDel[0].fromDate"
-                                                                            onBlur={[Function]}
                                                                             readOnly={true}
                                                                           />,
                                                                           undefined,
@@ -12430,6 +12432,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                                         "hiddenLabel": false,
                                                                         "margin": "none",
                                                                         "onClick": [Function],
+                                                                        "onMouseDown": [Function],
                                                                         "required": false,
                                                                         "size": "medium",
                                                                         "variant": "outlined",
@@ -12439,6 +12442,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                                     <div
                                                                       className="MuiFormControl-root MuiTextField-root css-1u3bzj6-MuiFormControl-root-MuiTextField-root"
                                                                       onClick={[Function]}
+                                                                      onMouseDown={[Function]}
                                                                     >
                                                                       <ForwardRef(OutlinedInput)
                                                                         autoFocus={false}
@@ -12458,7 +12462,6 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                                         }
                                                                         multiline={false}
                                                                         name="orderScheduleDel[0].fromDate"
-                                                                        onBlur={[Function]}
                                                                         readOnly={true}
                                                                       >
                                                                         <ForwardRef(InputBase)
@@ -12531,7 +12534,6 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                                           }
                                                                           multiline={false}
                                                                           name="orderScheduleDel[0].fromDate"
-                                                                          onBlur={[Function]}
                                                                           readOnly={true}
                                                                           renderSuffix={[Function]}
                                                                           type="text"
@@ -12978,7 +12980,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                                                 "minRows": undefined,
                                                                                 "multiline": false,
                                                                                 "name": "orderScheduleDel[0].fromDate",
-                                                                                "onBlur": [Function],
+                                                                                "onBlur": undefined,
                                                                                 "onChange": undefined,
                                                                                 "onFocus": undefined,
                                                                                 "placeholder": undefined,
@@ -13394,7 +13396,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                                                     "minRows": undefined,
                                                                                     "multiline": false,
                                                                                     "name": "orderScheduleDel[0].fromDate",
-                                                                                    "onBlur": [Function],
+                                                                                    "onBlur": undefined,
                                                                                     "onChange": undefined,
                                                                                     "onFocus": undefined,
                                                                                     "placeholder": undefined,
@@ -14627,8 +14629,8 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                                 }
                                                               }
                                                               name="orderScheduleDel[0].toDate"
-                                                              onBlur={[Function]}
                                                               onClick={[Function]}
+                                                              onMouseDown={[Function]}
                                                             >
                                                               <MuiTextFieldRoot
                                                                 className="MuiTextField-root"
@@ -14637,6 +14639,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                                 error={false}
                                                                 fullWidth={false}
                                                                 onClick={[Function]}
+                                                                onMouseDown={[Function]}
                                                                 ownerState={
                                                                   Object {
                                                                     "InputProps": Object {
@@ -14662,8 +14665,8 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                                     "label": undefined,
                                                                     "multiline": false,
                                                                     "name": "orderScheduleDel[0].toDate",
-                                                                    "onBlur": [Function],
                                                                     "onClick": [Function],
+                                                                    "onMouseDown": [Function],
                                                                     "required": false,
                                                                     "select": false,
                                                                     "variant": "outlined",
@@ -14679,6 +14682,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                                   error={false}
                                                                   fullWidth={false}
                                                                   onClick={[Function]}
+                                                                  onMouseDown={[Function]}
                                                                   required={false}
                                                                   variant="outlined"
                                                                 >
@@ -14686,6 +14690,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                                     as="div"
                                                                     className="MuiFormControl-root MuiTextField-root css-1xj1k15-MuiTextField-root"
                                                                     onClick={[Function]}
+                                                                    onMouseDown={[Function]}
                                                                     ownerState={
                                                                       Object {
                                                                         "children": Array [
@@ -14708,7 +14713,6 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                                             }
                                                                             multiline={false}
                                                                             name="orderScheduleDel[0].toDate"
-                                                                            onBlur={[Function]}
                                                                             readOnly={true}
                                                                           />,
                                                                           undefined,
@@ -14722,6 +14726,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                                         "hiddenLabel": false,
                                                                         "margin": "none",
                                                                         "onClick": [Function],
+                                                                        "onMouseDown": [Function],
                                                                         "required": false,
                                                                         "size": "medium",
                                                                         "variant": "outlined",
@@ -14731,6 +14736,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                                     <div
                                                                       className="MuiFormControl-root MuiTextField-root css-1u3bzj6-MuiFormControl-root-MuiTextField-root"
                                                                       onClick={[Function]}
+                                                                      onMouseDown={[Function]}
                                                                     >
                                                                       <ForwardRef(OutlinedInput)
                                                                         autoFocus={false}
@@ -14750,7 +14756,6 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                                         }
                                                                         multiline={false}
                                                                         name="orderScheduleDel[0].toDate"
-                                                                        onBlur={[Function]}
                                                                         readOnly={true}
                                                                       >
                                                                         <ForwardRef(InputBase)
@@ -14823,7 +14828,6 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                                           }
                                                                           multiline={false}
                                                                           name="orderScheduleDel[0].toDate"
-                                                                          onBlur={[Function]}
                                                                           readOnly={true}
                                                                           renderSuffix={[Function]}
                                                                           type="text"
@@ -15270,7 +15274,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                                                 "minRows": undefined,
                                                                                 "multiline": false,
                                                                                 "name": "orderScheduleDel[0].toDate",
-                                                                                "onBlur": [Function],
+                                                                                "onBlur": undefined,
                                                                                 "onChange": undefined,
                                                                                 "onFocus": undefined,
                                                                                 "placeholder": undefined,
@@ -15686,7 +15690,7 @@ exports[`Rendering of Add Lot Component Add Lot component Snapshot testing 1`] =
                                                                                     "minRows": undefined,
                                                                                     "multiline": false,
                                                                                     "name": "orderScheduleDel[0].toDate",
-                                                                                    "onBlur": [Function],
+                                                                                    "onBlur": undefined,
                                                                                     "onChange": undefined,
                                                                                     "onFocus": undefined,
                                                                                     "placeholder": undefined,
@@ -35967,8 +35971,8 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                                 }
                                                               }
                                                               name="orderScheduleDel[0].fromDate"
-                                                              onBlur={[Function]}
                                                               onClick={[Function]}
+                                                              onMouseDown={[Function]}
                                                             >
                                                               <MuiTextFieldRoot
                                                                 className="MuiTextField-root"
@@ -35977,6 +35981,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                                 error={false}
                                                                 fullWidth={false}
                                                                 onClick={[Function]}
+                                                                onMouseDown={[Function]}
                                                                 ownerState={
                                                                   Object {
                                                                     "InputProps": Object {
@@ -36002,8 +36007,8 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                                     "label": undefined,
                                                                     "multiline": false,
                                                                     "name": "orderScheduleDel[0].fromDate",
-                                                                    "onBlur": [Function],
                                                                     "onClick": [Function],
+                                                                    "onMouseDown": [Function],
                                                                     "required": false,
                                                                     "select": false,
                                                                     "variant": "outlined",
@@ -36019,6 +36024,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                                   error={false}
                                                                   fullWidth={false}
                                                                   onClick={[Function]}
+                                                                  onMouseDown={[Function]}
                                                                   required={false}
                                                                   variant="outlined"
                                                                 >
@@ -36026,6 +36032,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                                     as="div"
                                                                     className="MuiFormControl-root MuiTextField-root css-1xj1k15-MuiTextField-root"
                                                                     onClick={[Function]}
+                                                                    onMouseDown={[Function]}
                                                                     ownerState={
                                                                       Object {
                                                                         "children": Array [
@@ -36048,7 +36055,6 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                                             }
                                                                             multiline={false}
                                                                             name="orderScheduleDel[0].fromDate"
-                                                                            onBlur={[Function]}
                                                                             readOnly={true}
                                                                           />,
                                                                           undefined,
@@ -36062,6 +36068,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                                         "hiddenLabel": false,
                                                                         "margin": "none",
                                                                         "onClick": [Function],
+                                                                        "onMouseDown": [Function],
                                                                         "required": false,
                                                                         "size": "medium",
                                                                         "variant": "outlined",
@@ -36071,6 +36078,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                                     <div
                                                                       className="MuiFormControl-root MuiTextField-root css-1u3bzj6-MuiFormControl-root-MuiTextField-root"
                                                                       onClick={[Function]}
+                                                                      onMouseDown={[Function]}
                                                                     >
                                                                       <ForwardRef(OutlinedInput)
                                                                         autoFocus={false}
@@ -36090,7 +36098,6 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                                         }
                                                                         multiline={false}
                                                                         name="orderScheduleDel[0].fromDate"
-                                                                        onBlur={[Function]}
                                                                         readOnly={true}
                                                                       >
                                                                         <ForwardRef(InputBase)
@@ -36163,7 +36170,6 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                                           }
                                                                           multiline={false}
                                                                           name="orderScheduleDel[0].fromDate"
-                                                                          onBlur={[Function]}
                                                                           readOnly={true}
                                                                           renderSuffix={[Function]}
                                                                           type="text"
@@ -36610,7 +36616,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                                                 "minRows": undefined,
                                                                                 "multiline": false,
                                                                                 "name": "orderScheduleDel[0].fromDate",
-                                                                                "onBlur": [Function],
+                                                                                "onBlur": undefined,
                                                                                 "onChange": undefined,
                                                                                 "onFocus": undefined,
                                                                                 "placeholder": undefined,
@@ -37026,7 +37032,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                                                     "minRows": undefined,
                                                                                     "multiline": false,
                                                                                     "name": "orderScheduleDel[0].fromDate",
-                                                                                    "onBlur": [Function],
+                                                                                    "onBlur": undefined,
                                                                                     "onChange": undefined,
                                                                                     "onFocus": undefined,
                                                                                     "placeholder": undefined,
@@ -38259,8 +38265,8 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                                 }
                                                               }
                                                               name="orderScheduleDel[0].toDate"
-                                                              onBlur={[Function]}
                                                               onClick={[Function]}
+                                                              onMouseDown={[Function]}
                                                             >
                                                               <MuiTextFieldRoot
                                                                 className="MuiTextField-root"
@@ -38269,6 +38275,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                                 error={false}
                                                                 fullWidth={false}
                                                                 onClick={[Function]}
+                                                                onMouseDown={[Function]}
                                                                 ownerState={
                                                                   Object {
                                                                     "InputProps": Object {
@@ -38294,8 +38301,8 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                                     "label": undefined,
                                                                     "multiline": false,
                                                                     "name": "orderScheduleDel[0].toDate",
-                                                                    "onBlur": [Function],
                                                                     "onClick": [Function],
+                                                                    "onMouseDown": [Function],
                                                                     "required": false,
                                                                     "select": false,
                                                                     "variant": "outlined",
@@ -38311,6 +38318,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                                   error={false}
                                                                   fullWidth={false}
                                                                   onClick={[Function]}
+                                                                  onMouseDown={[Function]}
                                                                   required={false}
                                                                   variant="outlined"
                                                                 >
@@ -38318,6 +38326,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                                     as="div"
                                                                     className="MuiFormControl-root MuiTextField-root css-1xj1k15-MuiTextField-root"
                                                                     onClick={[Function]}
+                                                                    onMouseDown={[Function]}
                                                                     ownerState={
                                                                       Object {
                                                                         "children": Array [
@@ -38340,7 +38349,6 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                                             }
                                                                             multiline={false}
                                                                             name="orderScheduleDel[0].toDate"
-                                                                            onBlur={[Function]}
                                                                             readOnly={true}
                                                                           />,
                                                                           undefined,
@@ -38354,6 +38362,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                                         "hiddenLabel": false,
                                                                         "margin": "none",
                                                                         "onClick": [Function],
+                                                                        "onMouseDown": [Function],
                                                                         "required": false,
                                                                         "size": "medium",
                                                                         "variant": "outlined",
@@ -38363,6 +38372,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                                     <div
                                                                       className="MuiFormControl-root MuiTextField-root css-1u3bzj6-MuiFormControl-root-MuiTextField-root"
                                                                       onClick={[Function]}
+                                                                      onMouseDown={[Function]}
                                                                     >
                                                                       <ForwardRef(OutlinedInput)
                                                                         autoFocus={false}
@@ -38382,7 +38392,6 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                                         }
                                                                         multiline={false}
                                                                         name="orderScheduleDel[0].toDate"
-                                                                        onBlur={[Function]}
                                                                         readOnly={true}
                                                                       >
                                                                         <ForwardRef(InputBase)
@@ -38455,7 +38464,6 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                                           }
                                                                           multiline={false}
                                                                           name="orderScheduleDel[0].toDate"
-                                                                          onBlur={[Function]}
                                                                           readOnly={true}
                                                                           renderSuffix={[Function]}
                                                                           type="text"
@@ -38902,7 +38910,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                                                 "minRows": undefined,
                                                                                 "multiline": false,
                                                                                 "name": "orderScheduleDel[0].toDate",
-                                                                                "onBlur": [Function],
+                                                                                "onBlur": undefined,
                                                                                 "onChange": undefined,
                                                                                 "onFocus": undefined,
                                                                                 "placeholder": undefined,
@@ -39318,7 +39326,7 @@ exports[`Rendering of Edit Lot Component Edit/View Lot component Snapshot testin
                                                                                     "minRows": undefined,
                                                                                     "multiline": false,
                                                                                     "name": "orderScheduleDel[0].toDate",
-                                                                                    "onBlur": [Function],
+                                                                                    "onBlur": undefined,
                                                                                     "onChange": undefined,
                                                                                     "onFocus": undefined,
                                                                                     "placeholder": undefined,
