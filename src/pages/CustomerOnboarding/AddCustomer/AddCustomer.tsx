@@ -477,9 +477,10 @@ const AddCustomer: React.FC<AddCustomerProps> = () => {
         }
     }
 
-    const isCancelEnable = () => {
-        return formik.dirty || validFiles.length > 0 || uploadErroMsg !== "";
-    };
+    // Enabling Cancel button 
+    // const isCancelEnable = () => {
+    //     return formik.dirty || validFiles.length > 0 || uploadErroMsg !== "";
+    // };
 
     const isSubmitDisabled = () => {
         let buttonEnable = false;
@@ -1167,7 +1168,7 @@ const AddCustomer: React.FC<AddCustomerProps> = () => {
                                             aria-label="cancel"
                                             className="mr-4"
                                             onClick={onClickBack}
-                                            disabled={!isCancelEnable() || isSubmitting}
+                                            //disabled={!isCancelEnable() || isSubmitting}
                                         >
                                             {t("buttons.cancel")}
                                         </Button>
