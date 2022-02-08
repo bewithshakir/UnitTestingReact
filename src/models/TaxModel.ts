@@ -26,7 +26,7 @@ export default class TaxModel {
     InspFuelRate: string;
     miscLocalFuelRate: string;
     loadFuel: string;
-    fuelType: SelectProps;
+    productType: SelectProps;
     ppdSalesTax: string;
 
     constructor() {
@@ -45,7 +45,7 @@ export default class TaxModel {
         this.InspFuelRate = '';
         this.miscLocalFuelRate = '';
         this.loadFuel = '';
-        this.fuelType = { label: '', value: '' };
+        this.productType = { label: '', value: '' };
         this.ppdSalesTax = '';
     }
 
