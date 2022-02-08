@@ -198,7 +198,6 @@ const TaxLandingContent: React.FC<TaxLandingContentProps> = memo(() => {
               {
                 [DataGridFields.PRODUCT.label]: <Table primaryKey='productTaxId' id={fuelTaxProductId} headCells={headCellsLots} enableRowAction={true} rowActionOptions={rowActionOptions} />,
                 [DataGridFields.PRODUCT2.label]: <SubTableLots primaryKey='deliveryLocationId' id={customerId} headCells={headCellsLotsCus} />,
-                [DataGridFields.PRODUCT3.label]: <Table primaryKey='productTaxId' id={fuelTaxProductId} headCells={headCellsLots} enableRowAction={true} rowActionOptions={rowActionOptions} />
               }
             }
           />
