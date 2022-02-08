@@ -1168,7 +1168,7 @@ const AddCustomer: React.FC<AddCustomerProps> = () => {
                                             aria-label="cancel"
                                             className="mr-4"
                                             onClick={onClickBack}
-                                            //disabled={!isCancelEnable() || isSubmitting}
+                                            disabled={isSubmitting}
                                         >
                                             {t("buttons.cancel")}
                                         </Button>
@@ -1179,7 +1179,7 @@ const AddCustomer: React.FC<AddCustomerProps> = () => {
                                             className="ml-4"
                                             disabled={isSubmitDisabled() || isSubmitting}
                                         >
-                                            {isSubmitting && <LoadingIcon data-testid="loading-spinner" className='oading_save_icon' />} {t("buttons.save")}  
+                                            {isSubmitting && <LoadingIcon data-testid="loading-spinner" className='loading_save_icon' />} {t("buttons.save")}  
                                         </Button>
                                     </Box>}
                                     <ToastMessage isOpen={apiResposneState} messageType={formStatus.type} onClose={() => { return ''; }} message={formStatus.message} />
