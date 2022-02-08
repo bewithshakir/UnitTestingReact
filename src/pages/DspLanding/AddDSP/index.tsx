@@ -79,7 +79,7 @@ const AddDSP: React.FC<AddDSPProps> = () => {
         setEditMode(true);
         setFormStatus({ message: error?.response.data.error?.details[0] || t("formStatusProps.error.message"), type: 'Error' });
     };
-    const { isError: isErrorDspData } = useEditDspData(dspId, onSuccessDspDetail, onErrorDspDetail);
+    const { isError: isErrorDspData } = useEditDspData(addedCustomerId, dspId,  onSuccessDspDetail, onErrorDspDetail);
 
     const onSuccessUpdateDsp = () => {
         isFormValidated(false);

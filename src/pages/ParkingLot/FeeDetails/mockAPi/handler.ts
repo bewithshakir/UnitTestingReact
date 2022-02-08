@@ -1,7 +1,7 @@
 import { rest } from "msw";
 
 export const getDelFeeSchduleHandler = () => {
-    return rest.get('*api/pricing-fee-service/fees/frequencies*', (req, res, ctx) => {
+    return rest.get('*/api/pricing-fee-service/fees/frequencies*', (req, res, ctx) => {
         return res(
             ctx.status(200),
             ctx.json({
@@ -34,7 +34,7 @@ export const getDelFeeSchduleHandler = () => {
 };
 
 export const getProductTypeHandler = () => {
-    return rest.get('*api/customer-service/lots/1234abc/productTypes?countryCode=us*', (req, res, ctx) => {
+    return rest.get('*/api/customer-service/lots/*', (req, res, ctx) => {
         return res(
             ctx.status(200),
             ctx.json({
@@ -54,7 +54,7 @@ export const getProductTypeHandler = () => {
 };
 
 export const getVehicleTypeHandler = () => {
-    return rest.get('*api/vehicle-service/vehicle-types*', (req, res, ctx) => {
+    return rest.get('*/api/vehicle-service/vehicle-types*', (req, res, ctx) => {
         return res(
             ctx.status(200),
             ctx.json({
@@ -82,7 +82,7 @@ export const getVehicleTypeHandler = () => {
 };
 
 export const getAssetTypeHandler = () => {
-    return rest.get('*api/product-service/assets?countryCode=us&skipPagination=true*', (req, res, ctx) => {
+    return rest.get('*/api/product-service/assets*', (req, res, ctx) => {
         return res(
             ctx.status(200),
             ctx.json({
@@ -187,7 +187,7 @@ export const getAssetTypeHandler = () => {
 };
 
 export const getLotMasterProductNamesHandler = () => {
-    return rest.get('*/api/product-service/products?countryCode=us&productGroupCd=456abc*', (req, res, ctx) => {
+    return rest.get('*/api/product-service/products*', (req, res, ctx) => {
         return res(
             ctx.status(200),
             ctx.json({
@@ -260,7 +260,7 @@ export const getLotMasterProductNamesHandler = () => {
 };
 
 export const getLotProductNamesHandler = () => {
-    return rest.get('*/api/customer-service/lots/7889/products?countryCode=us&productCd=190abb&skipPagination=false*', (req, res, ctx) => {
+    return rest.get('*/api/customer-service/lots/*', (req, res, ctx) => {
         return res(
             ctx.status(200),
             ctx.json({

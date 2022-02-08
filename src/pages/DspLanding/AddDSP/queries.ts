@@ -33,7 +33,7 @@ const addDsp = async (payload: DSPModel) => {
     };
     const options: AxiosRequestConfig = {
         method: 'post',
-        url: 'api/customer-service/dsp',
+        url: `api/customer-service/customers/${payload.customerId}/dsps`,
         data: finalPayload,
     };
     const { data } = await axios(options);
@@ -50,16 +50,16 @@ export const useAddDsp = (onSuccess: any, onError: any) => {
     });
 };
 
-const fetchDspDetail = (query: any)=> {
+const fetchDspDetail = (customerId: string|undefined, query: string|undefined, )=> {
     const options: AxiosRequestConfig = {
         method: 'get',
-        url: `api/customer-service/dsp/${query}`
+        url: `api/customer-service/customers/${customerId}/dsps/${query}`
     };
     return axios(options);
 };
 
-export const useEditDspData = (query: string | undefined, onSuccess: any, onError: any) => {
-    return useQuery(['edit-dsp-detail', query], ()=> fetchDspDetail(query), {
+export const useEditDspData = (customerId:string | undefined, query: string | undefined,   onSuccess: any, onError: any) => {
+    return useQuery(['edit-dsp-detail', query], ()=> fetchDspDetail(customerId, query), {
         onSuccess,
         onError,
         enabled: !!query,
@@ -96,7 +96,7 @@ const updateDspData = async (payload: DSPModel, dspId: string | undefined) => {
     };
     const options: AxiosRequestConfig = {
         method: 'put',
-        url: `/api/customer-service/dsp/${dspId}`,
+        url: `/api/customer-service/customers/${payload.customerId}/dsps/${dspId}`,
         data: finalPayload
     };
     const { data } = await axios(options);
