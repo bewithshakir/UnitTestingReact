@@ -91,7 +91,7 @@ const AddFuelTax: React.FC<AddFuelTaxProps> = memo(() => {
                 "state": form.state,
                 "city": form.city,
                 "countryCd": form.countryCd,
-                "fuelType": form.fuelType.value,
+                "productType": form.productType.value,
                 "startDate": moment(form.startDate).format("MM-DD-YYYY"),
                 "endDate": moment(form.endDate).format("MM-DD-YYYY"),
                 "fedFuelTax": parseFloat(form.federalRate),
@@ -145,7 +145,7 @@ const AddFuelTax: React.FC<AddFuelTaxProps> = memo(() => {
                 "state": form.state,
                 "city": form.city,
                 "countryCd": form.countryCd,
-                "fuelType": form.fuelType.value,
+                "productType": form.productType.value,
                 "startDate": moment(form.startDate).format("MM-DD-YYYY"),
                 "endDate": moment(form.endDate).format("MM-DD-YYYY"),
                 "fedFuelTax": parseFloat(form.federalRate),
@@ -196,7 +196,7 @@ const AddFuelTax: React.FC<AddFuelTaxProps> = memo(() => {
         formik.setFieldValue('InspFuelRate', formData.miscInspFuelTax);
         formik.setFieldValue('miscLocalFuelRate', formData.miscLocalFuelTax);
         formik.setFieldValue('loadFuel', formData.miscLoadFuelTax);
-        formik.setFieldValue('fuelType', { label: formData.productNm, value: formData.productCd });
+        formik.setFieldValue('productType', { label: formData.productNm, value: formData.productCd });
         formik.setFieldValue('startDate', formData.startDate);
         formik.setFieldValue('endDate', formData.endDate);
         formik.setFieldValue('countryCd', 'us');
@@ -362,18 +362,18 @@ const AddFuelTax: React.FC<AddFuelTaxProps> = memo(() => {
 
                                 <Grid item xs={12} md={6} pr={2.5} pb={2.5} data-testid="temp">
                                     <Select
-                                        id='fuelType'
-                                        name='fuelType'
-                                        label='FUEL TYPE'
+                                        id='productType'
+                                        name='productType'
+                                        label='PRODUCT NAME'
                                         placeholder='Choose'
                                         items={fuelTypes}
-                                        value={formik.values.fuelType}
+                                        value={formik.values.productType}
                                         onChange={formik.setFieldValue}
-                                        helperText={(formik.touched.fuelType && formik.errors.fuelType) ? formik.errors.fuelType.value : undefined}
-                                        error={(formik.touched.fuelType && formik.errors.fuelType) ? true : false}
-                                        onBlur={() => { formik.setFieldTouched("fuelType"); formik.validateField("fuelType"); }}
+                                        helperText={(formik.touched.productType && formik.errors.productType) ? formik.errors.productType.value : undefined}
+                                        error={(formik.touched.productType && formik.errors.productType) ? true : false}
+                                        onBlur={() => { formik.setFieldTouched("productType"); formik.validateField("productType"); }}
                                         isDisabled={isEditMode ? true : isDisabled}
-                                        data-test="fuelType"
+                                        data-test="productType"
                                     />
                                 </Grid>
                                 <Grid item md={3} pl={2.5} pr={2.5} pb={2.5}>
