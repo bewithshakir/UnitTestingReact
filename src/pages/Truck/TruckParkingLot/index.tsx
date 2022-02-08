@@ -15,6 +15,7 @@ import TruckParkingLotModel from '../../../models/TruckParkingLotModel';
 import { HorizontalBarVersionState, useStore } from '../../../store';
 
 import { useGetTruckParkingLotList } from "./queries";
+import { DataGridActionsMenuOption } from "../../../components/UIComponents/Menu/DataGridActionsMenu.component";
 
 interface ContentProps {
     version: string
@@ -25,6 +26,7 @@ const TruckParkingLot: React.FC<ContentProps> = () => {
     const headCells = truckParkingLotObj.fieldsToDisplay();
     const massActionOptions = truckParkingLotObj.massActions();
     const rowActionOptions = truckParkingLotObj.rowActions();
+    const ACTION_TYPES = truckParkingLotObj.ACTION_TYPES;
     const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
 
     const { t } = useTranslation();
@@ -75,6 +77,16 @@ const TruckParkingLot: React.FC<ContentProps> = () => {
             setTruckParkingLotList(list);
         }
     }, [truckParkingLotData]);
+
+    const handleRowAction = (action: DataGridActionsMenuOption,row: any) => {
+        switch (action.action) {
+          case ACTION_TYPES.EDIT:
+            // perform action 
+            navigate(`/truckParkingLot/edit/${row.id}`);
+            break;
+          default: return;
+        }
+      };
 
     return (
         <Box display="flex" mt={8} ml={8}>
@@ -142,6 +154,7 @@ const TruckParkingLot: React.FC<ContentProps> = () => {
                         isLoading={isFetching || isLoading}
                         enableRowAction
                         getPages={fetchNextPage}
+                        onRowActionSelect={handleRowAction}
                         rowActionOptions={rowActionOptions}
                         searchTerm={searchInput}
                         resetCollaps={resetTableCollaps}
