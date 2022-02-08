@@ -20,7 +20,7 @@ const getDspList = async (pageParam: number, searchTerm: string, sortOrder: { so
         }
     }
 
-    const opisCityListEntitySet = `/api/customer-service/${customerId}/dsps?limit=${pageDataLimit}&offset=${pageParam}`;
+    const opisCityListEntitySet = `/api/customer-service/customers/${customerId}/dsps?limit=${pageDataLimit}&offset=${pageParam}`;
     const url = query ? `&countryCode=us${query.toString().length ? `&${query.toString()}` : ''}` : `&countryCode=us`;
     const options: AxiosRequestConfig = {
         method: 'get',
