@@ -17,8 +17,6 @@ import { FuelTax, MASS_ACTION_TYPES, SORTBY_TYPES } from './config';
 import { RightInfoPanel } from '../../components/UIComponents/RightInfoPanel/RightInfoPanel.component';
 import { getSeachedDataTotalCount } from '../../utils/helperFunctions';
 import Table from './SubTableFuelProduct';
-import SubTableLots from "../CustomerManagement/SubTableLots";
-import CustomerModel from '../../models/CustomerModel';
 
 export interface TaxLandingContentProps {
   version: string
@@ -26,9 +24,6 @@ export interface TaxLandingContentProps {
 
 
 const TaxLandingContent: React.FC<TaxLandingContentProps> = memo(() => {
-
-  const CustomerObj = new CustomerModel();
-  const headCellsLotsCus = CustomerObj.fieldsToDisplayLotTable();
 
   const TaxObj = new TaxModel();
   const headCells = TaxObj.fieldsToDisplay();
@@ -45,8 +40,6 @@ const TaxLandingContent: React.FC<TaxLandingContentProps> = memo(() => {
   const [sortOrder, setSortOrder] = React.useState<{ sortBy: string, order: string }>({ sortBy: "", order: "" });
   const [fuelTaxList, setFuelTaxList] = React.useState([]);
   const [fuelTaxProductId, setFuelTaxProductId] = React.useState('');
-  const [customerId, setCustomerId] = React.useState('');
-
 
   const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
   setVersion("NavLinks");
@@ -115,7 +108,6 @@ const TaxLandingContent: React.FC<TaxLandingContentProps> = memo(() => {
 
   const setSelectedRow = (fuelTaxProductId: string) => {
     setFuelTaxProductId(fuelTaxProductId);
-    setCustomerId("c8d2fb7a-40d3-4a5a-9c0f-e67046e56297");
   };
 
   return (
@@ -197,7 +189,6 @@ const TaxLandingContent: React.FC<TaxLandingContentProps> = memo(() => {
             InnerTableComponent={
               {
                 [DataGridFields.PRODUCT.label]: <Table primaryKey='productTaxId' id={fuelTaxProductId} headCells={headCellsLots} enableRowAction={true} rowActionOptions={rowActionOptions} />,
-                [DataGridFields.PRODUCT2.label]: <SubTableLots primaryKey='deliveryLocationId' id={customerId} headCells={headCellsLotsCus} />,
               }
             }
           />
