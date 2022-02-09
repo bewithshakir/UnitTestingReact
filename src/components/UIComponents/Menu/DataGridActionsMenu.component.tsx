@@ -1,14 +1,8 @@
 import { Button, ListItemIcon, SvgIcon } from "@material-ui/core";
-import ClickAwayListener from "@material-ui/core/ClickAwayListener";
-import Grow from "@material-ui/core/Grow";
-import MenuItem from "@material-ui/core/MenuItem";
-import MenuList from "@material-ui/core/MenuList";
-import Paper from "@material-ui/core/Paper";
-import Popper from "@material-ui/core/Popper";
 import React from "react";
 import { DataGridActionIcon } from '../../../assets/icons';
 import './DataGridActionsMenu.style.scss';
-import { Icon, Typography } from '@mui/material';
+import { Icon, Typography, Grow, MenuItem, MenuList, Paper, Popper, ClickAwayListener } from '@mui/material';
 
 export type DataGridActionsMenuOption = {
   action?: string;
@@ -23,7 +17,7 @@ interface DataGridActionsMenuProps {
   onSelect?: (e: React.SyntheticEvent, selectedValue: DataGridActionsMenuOption) => void,
   showInnerTableMenu?: boolean
 }
-export default function DataGridActionsMenu(props: DataGridActionsMenuProps) {
+export default function DataGridActionsMenu (props: DataGridActionsMenuProps) {
   const [open, setOpen] = React.useState(false);
   const [selectedIndex, setSelectedIndex] = React.useState(-1);
   const anchorRef = React.useRef<HTMLButtonElement>(null);
@@ -34,7 +28,7 @@ export default function DataGridActionsMenu(props: DataGridActionsMenuProps) {
     setOpen((prevOpen) => !prevOpen);
   };
 
-  const handleClose = (event: React.MouseEvent<EventTarget>) => {
+  const handleClose = (event: Event | React.SyntheticEvent) => {
     if (
       anchorRef.current &&
       anchorRef.current.contains(event.target as HTMLElement)
@@ -51,7 +45,7 @@ export default function DataGridActionsMenu(props: DataGridActionsMenuProps) {
     setOpen(false);
   };
 
-  function handleListKeyDown(event: React.KeyboardEvent) {
+  function handleListKeyDown (event: React.KeyboardEvent) {
     if (event.key === "Tab") {
       event.preventDefault();
       setOpen(false);
@@ -88,13 +82,27 @@ export default function DataGridActionsMenu(props: DataGridActionsMenuProps) {
         transition
         className={"datagrid-actions-popper"}
         placement={"bottom-end"}
-        disablePortal={true}
-        modifiers={{
-          preventOverflow: {
-            enabled: true,
-            boundariesElement: 'viewport',
-          },
-        }}
+        modifiers={
+          [
+            {
+              name: 'flip',
+              enabled: true,
+              options: {
+                altBoundary: true,
+                rootBoundary: 'viewport',
+              },
+            },
+            {
+              name: 'preventOverflow',
+              enabled: true,
+              options: {
+                altAxis: true,
+                altBoundary: true,
+                rootBoundary: 'viewport',
+              },
+            }
+          ]
+        }
       >
         {({ TransitionProps, placement }) => (
           <Grow
@@ -116,7 +124,6 @@ export default function DataGridActionsMenu(props: DataGridActionsMenuProps) {
                     <MenuItem
                       key={option.label}
                       className={"menuitem"}
-                      // disabled={index === 3}
                       selected={index === selectedIndex}
                       onClick={(event) => handleMenuItemClick(event, index)}
                     >
