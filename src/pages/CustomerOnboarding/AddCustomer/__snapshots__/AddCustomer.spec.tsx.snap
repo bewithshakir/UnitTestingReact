@@ -2442,7 +2442,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                         <Button
                           aria-label="cancel"
                           className="mr-4"
-                          disabled={true}
+                          disabled={false}
                           onClick={[Function]}
                           types="cancel"
                         >
@@ -3273,7 +3273,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                             <Button
                               aria-label="cancel"
                               className="mr-4"
-                              disabled={true}
+                              disabled={false}
                               onClick={[Function]}
                               types="cancel"
                             >
@@ -4123,7 +4123,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                 <Button
                                   aria-label="cancel"
                                   className="mr-4"
-                                  disabled={true}
+                                  disabled={false}
                                   onClick={[Function]}
                                   types="cancel"
                                 >
@@ -20775,7 +20775,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                     <Button
                                       aria-label="cancel"
                                       className="mr-4"
-                                      disabled={true}
+                                      disabled={false}
                                       onClick={[Function]}
                                       types="cancel"
                                     >
@@ -21128,14 +21128,14 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                     <Button
                                       aria-label="cancel"
                                       className="mr-4"
-                                      disabled={true}
+                                      disabled={false}
                                       onClick={[Function]}
                                       types="cancel"
                                     >
                                       <WithStyles(ForwardRef(Button))
                                         aria-label="cancel"
                                         className="btn-cancel mr-4"
-                                        disabled={true}
+                                        disabled={false}
                                         onClick={[Function]}
                                         variant="contained"
                                       >
@@ -21175,15 +21175,15 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                               "textSizeSmall": "MuiButton-textSizeSmall",
                                             }
                                           }
-                                          disabled={true}
+                                          disabled={false}
                                           onClick={[Function]}
                                           variant="contained"
                                         >
                                           <WithStyles(ForwardRef(ButtonBase))
                                             aria-label="cancel"
-                                            className="MuiButton-root MuiButton-contained btn-cancel mr-4 Mui-disabled"
+                                            className="MuiButton-root MuiButton-contained btn-cancel mr-4"
                                             component="button"
-                                            disabled={true}
+                                            disabled={false}
                                             focusRipple={true}
                                             focusVisibleClassName="Mui-focusVisible"
                                             onClick={[Function]}
@@ -21191,7 +21191,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                           >
                                             <ForwardRef(ButtonBase)
                                               aria-label="cancel"
-                                              className="MuiButton-root MuiButton-contained btn-cancel mr-4 Mui-disabled"
+                                              className="MuiButton-root MuiButton-contained btn-cancel mr-4"
                                               classes={
                                                 Object {
                                                   "disabled": "Mui-disabled",
@@ -21200,7 +21200,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                 }
                                               }
                                               component="button"
-                                              disabled={true}
+                                              disabled={false}
                                               focusRipple={true}
                                               focusVisibleClassName="Mui-focusVisible"
                                               onClick={[Function]}
@@ -21208,8 +21208,8 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                             >
                                               <button
                                                 aria-label="cancel"
-                                                className="MuiButtonBase-root MuiButton-root MuiButton-contained btn-cancel mr-4 Mui-disabled Mui-disabled"
-                                                disabled={true}
+                                                className="MuiButtonBase-root MuiButton-root MuiButton-contained btn-cancel mr-4"
+                                                disabled={false}
                                                 onBlur={[Function]}
                                                 onClick={[Function]}
                                                 onDragLeave={[Function]}
@@ -21222,7 +21222,7 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                 onTouchEnd={[Function]}
                                                 onTouchMove={[Function]}
                                                 onTouchStart={[Function]}
-                                                tabIndex={-1}
+                                                tabIndex={0}
                                                 type="button"
                                               >
                                                 <span
@@ -21230,6 +21230,34 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                                 >
                                                   buttons.cancel
                                                 </span>
+                                                <WithStyles(memo)
+                                                  center={false}
+                                                >
+                                                  <ForwardRef(TouchRipple)
+                                                    center={false}
+                                                    classes={
+                                                      Object {
+                                                        "child": "MuiTouchRipple-child",
+                                                        "childLeaving": "MuiTouchRipple-childLeaving",
+                                                        "childPulsate": "MuiTouchRipple-childPulsate",
+                                                        "ripple": "MuiTouchRipple-ripple",
+                                                        "ripplePulsate": "MuiTouchRipple-ripplePulsate",
+                                                        "rippleVisible": "MuiTouchRipple-rippleVisible",
+                                                        "root": "MuiTouchRipple-root",
+                                                      }
+                                                    }
+                                                  >
+                                                    <span
+                                                      className="MuiTouchRipple-root"
+                                                    >
+                                                      <TransitionGroup
+                                                        childFactory={[Function]}
+                                                        component={null}
+                                                        exit={true}
+                                                      />
+                                                    </span>
+                                                  </ForwardRef(TouchRipple)>
+                                                </WithStyles(memo)>
                                               </button>
                                             </ForwardRef(ButtonBase)>
                                           </WithStyles(ForwardRef(ButtonBase))>
