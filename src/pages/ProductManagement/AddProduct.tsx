@@ -106,9 +106,9 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                     masterProductName: initialFormikValues.masterProductName,
                     pricingModel: initialFormikValues.pricingModel,
                     productNm: lotProduct.productNm,
-                    manualPriceAmt: lotProduct.manualPriceAmt,
-                    addedPriceAmt: lotProduct.addedPriceAmt,
-                    discountPriceAmt: lotProduct.discountPriceAmt
+                    manualPriceAmt: lotProduct.manualPriceAmt ? lotProduct.manualPriceAmt : 0,
+                    addedPriceAmt: lotProduct.addedPriceAmt ? lotProduct.addedPriceAmt : 0,
+                    discountPriceAmt: lotProduct.discountPriceAmt ? lotProduct.discountPriceAmt : 0
                 });
             }
             setIsDisabled(true);
@@ -232,9 +232,9 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                     masterProductName: { label: lotProduct?.masterProduct?.productName, value: lotProduct?.masterProduct?.productId },
                     pricingModel: { label: lotProduct?.pricingModel?.pricingModelNm, value: lotProduct?.pricingModel?.pricingModelCd },
                     productNm: lotProduct.productNm,
-                    manualPriceAmt: lotProduct.manualPriceAmt,
-                    addedPriceAmt: lotProduct.addedPriceAmt,
-                    discountPriceAmt: lotProduct.discountPriceAmt
+                    manualPriceAmt: lotProduct.manualPriceAmt ? lotProduct.manualPriceAmt : 0,
+                    addedPriceAmt: lotProduct.addedPriceAmt ? lotProduct.addedPriceAmt : 0,
+                    discountPriceAmt: lotProduct.discountPriceAmt ? lotProduct.discountPriceAmt : 0
                 });
                 setApplicableProductId(lotProduct?.applicableProductId);
                 setIsDisabled(true);

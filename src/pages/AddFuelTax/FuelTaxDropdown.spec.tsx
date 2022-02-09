@@ -15,7 +15,7 @@ jest.mock('react-router-dom', () => ({
 }));
 
 function getAllElements (component: any) {
-    const fuelTypeElem = component.container.querySelector('#fuelType') as HTMLInputElement;
+    const fuelTypeElem = component.container.querySelector('#productType') as HTMLInputElement;
     const formElem = component.container.querySelector('#addFuelTaxForm');
     return { formElem, fuelTypeElem, };
 }
@@ -26,6 +26,6 @@ describe('FuelTaxDropdown component', () => {
         const result = renderWithClient(<AddFuelTax version="Breadcrumbs-Single" />);
         const { formElem, fuelTypeElem } = getAllElements(result);
         await selectEvent.select(fuelTypeElem, ["Regular"]);
-        expect(formElem).toHaveFormValues({ fuelType: "456" });
+        expect(formElem).toHaveFormValues({ productType: "456" });
     });
 });

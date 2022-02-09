@@ -1,7 +1,7 @@
 import { rest } from "msw";
 
 export const addDspHandler = () => {
-    return rest.post('*/api/customer-service/dsp', (req, res, ctx) => {
+    return rest.post('*/api/customer-service/customers/*', (req, res, ctx) => {
         return res(
             ctx.status(200),
             ctx.json({
@@ -29,7 +29,7 @@ export const addDspHandler = () => {
 };
 
 export const getDspDataHandler = () => {
-    return rest.get('*/api/customer-service/dsp/*', (req, res, ctx) => {
+    return rest.get('*/api/customer-service/customers/*', (req, res, ctx) => {
         return res(
             ctx.status(200),
             ctx.json({
@@ -57,7 +57,7 @@ export const getDspDataHandler = () => {
 };
 
 export const editDspHandler = () => {
-    return rest.put('*/api/customer-service/dsp/*', (req, res, ctx) => {
+    return rest.put('*/api/customer-service/customers/*', (req, res, ctx) => {
         return res(
             ctx.status(200),
             ctx.json({
