@@ -56,12 +56,11 @@ export default class TaxModel {
     }
 
     fieldsToDisplay (): headerObj[] {
-        const { CITY, STATE, PRODUCT, PRODUCT2 } = DataGridFields;
+        const { CITY, STATE, PRODUCT } = DataGridFields;
         return [
             { field: CITY.field, label: CITY.label, type: 'text', align: 'left', width: "250px" },
             { field: STATE.field, label: STATE.label, type: 'text', align: 'left', width: "250px" },
             { field: PRODUCT.field, label: PRODUCT.label, type: 'button', align: 'left', icon: OilCanIcon, width: "250px" },
-            { field: PRODUCT2.field, label: PRODUCT2.label, type: 'button', align: 'left', icon: OilCanIcon, width: "750px" },
         ];
     }
 
