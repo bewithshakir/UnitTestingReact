@@ -19,7 +19,7 @@ const getSalesTaxList = async (pageParam: number, searchTerm: string, sortOrder:
             query.append(key, JSON.stringify(filterParams[key]));
         }
     }
-    const salesTaxListEntitySet = `/api/tax-service/sales-tax/list?limit=${pageDataLimit}&offset=${pageParam}`;
+    const salesTaxListEntitySet = `/api/tax-service/sales-taxes?limit=${pageDataLimit}&offset=${pageParam}`;
     const url = query ? `&countryCode=us${query.toString().length ? `&${query.toString()}` : ''}` : `&countryCode=us`;
     const options: AxiosRequestConfig = {
         method: 'get',
@@ -33,7 +33,7 @@ export const salesTaxListSet = (query: string, sortOrder: any, filterParams: { [
     return useInfiniteQuery(["getSalesTaxList", query, sortOrder, filterParams], ({ pageParam = 0 }) => getSalesTaxList(pageParam, query, sortOrder, filterParams), {
         getNextPageParam: (lastGroup: any) => {
             if (lastGroup.data.pagination.offset < lastGroup.data.pagination.totalCount) {
-                return lastGroup.data.pagination.offset + 15;
+                return lastGroup.data.pagination.offset + pageDataLimit;
             }
         },
         keepPreviousData: true

@@ -1,0 +1,14 @@
+version: "2"
+services:
+  tapup-frontend:
+    container_name: tapupfrontend
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/app
+      - '/app/node_modules'
+    ports:
+      - 80:80
+    environment:
+      NODE_ENV: production

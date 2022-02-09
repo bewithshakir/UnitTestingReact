@@ -224,7 +224,7 @@ export function PlusIcon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
     >
       <path
         d="M11 2v7h7v2h-7v7H9v-7H2V9h7V2z"
-        fill={props.color}
+        fill={"currentColor"}
       />
       <path fill="none" d="M0 0h20v20H0z" />
     </svg>
@@ -652,6 +652,21 @@ export function DocumentFile64Icon (props: React.SVGProps<SVGSVGElement>): JSX.E
           fill="currentColor"
         />
         <path data-name="Rectangle 2281" fill="none" d="M0 0h64v64H0z" />
+      </g>
+    </svg>
+  );
+}
+
+
+export function MultipleDocumentFile64Icon (props: React.SVGProps<SVGSVGElement>): JSX.Element {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" {...props}>
+      <g data-name="Group 1873">
+        <path
+          d="m13 3 6 6v11H4V3Zm-1-3v2H3v16H1V0Zm-1 5H6v13h11v-7h-6Zm5.17 4L13 5.829V9Z"
+          fill="#595959"
+        />
+        <path data-name="Rectangle 2260" fill="none" d="M0 0h20v20H0z" />
       </g>
     </svg>
   );

@@ -33,6 +33,11 @@ export interface addedCustomerIdState {
   setCustomerId: (...args: any) => void,
   removeCustomerId: (...args: any) => void,
 }
+export interface addedCustomerPaymentTypeState {
+  paymentType: string,
+  setCustomerPaymentType: (...args: any) => void,
+  removePaymentType: (...args: any) => void,
+}
 export interface addedParkingLotIdState {
   parkingLotId: string,
   setParkingLotId: (...args: any) => void,
@@ -86,6 +91,15 @@ export const useAddedCustomerIdStore = create<addedCustomerIdState>(persist((set
 }),
 {
   name: 'customerId'
+}));
+
+export const useAddedCustomerPaymentTypeStore = create<addedCustomerPaymentTypeState>(persist((set) => ({
+  paymentType: '',
+  setCustomerPaymentType: (paymentType: string) => set(() => ({ paymentType })),
+  removePaymentType: () => set(() => ({ paymentType: '' })),
+}),
+{
+  name: 'paymentType'
 }));
 
 export const useAddedParkingLotIdStore = create<addedParkingLotIdState>(persist((set) => ({

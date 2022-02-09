@@ -3,7 +3,6 @@ import { headerObj } from './../components/UIComponents/DataGird/grid.component'
 import { FuelTax } from '../pages/Tax/config';
 import { OilCanIcon } from '../assets/icons';
 import { useTranslation } from 'react-i18next';
-import { YellowFuelIcon, RedFuelIcon, GreenFuelIcon, NavyBlueFuelIcon } from './../assets/icons';
 
 export interface SelectProps {
     label: string,
@@ -27,7 +26,8 @@ export default class TaxModel {
     InspFuelRate: string;
     miscLocalFuelRate: string;
     loadFuel: string;
-    fuelType: SelectProps;
+    productType: SelectProps;
+    ppdSalesTax: string;
 
     constructor() {
         this.addressLine1 = '';
@@ -45,7 +45,8 @@ export default class TaxModel {
         this.InspFuelRate = '';
         this.miscLocalFuelRate = '';
         this.loadFuel = '';
-        this.fuelType = { label: '', value: '' };
+        this.productType = { label: '', value: '' };
+        this.ppdSalesTax = '';
     }
 
 
@@ -72,48 +73,31 @@ export default class TaxModel {
         ];
     }
 
+    displayProductdataModel (data: any) {
+        return data.map((obj: any) => {
+            return ({
+                ...obj,
+                product: {
+                    productId: obj?.productCd || '',
+                    productName: obj?.productNm || '',
+                    productColorCd: obj?.productIcon?.productIconCd || '',
+                    productColorNm: obj?.productIcon?.productIconNm || '',
+                    productColorCode: obj?.productIcon?.productIconHexCode || '',
+                }
+            });
+        });
+    }
+
     fieldsToDisplayLotTable (): headerObj[] {
         return [
-            {
-                field: "productCd",
-                label: "PRODUCT",
-                type: 'status',
-                align: 'left',
-                showIconLast: false,
-                fieldOptions: [
-                    {
-                        value: "Regular",
-                        displayValue: "Regular",
-                        icon: YellowFuelIcon,
-                    },
-                    {
-                        value: "Premium",
-                        displayValue: "Premium",
-                        icon: RedFuelIcon
-                    },
-                    {
-                        value: "Diesel",
-                        displayValue: "Diesel",
-                        icon: GreenFuelIcon,
-                    },
-                    {
-                        value: "V-Power",
-                        displayValue: "V-Power",
-                        icon: NavyBlueFuelIcon
-                    },
-                    {
-                        value: "Petrol",
-                        displayValue: "Petrol",
-                        icon: NavyBlueFuelIcon
-                    }
-                ]
-            },
+            { field: "product", label: "PRODUCT", type: 'product', align: 'left' },
             { field: "fedFuelTax", label: "FEDERAL TAX ($)", type: 'text', align: 'left' },
             { field: "revenueFuelRate", label: "REVENUE RATE (%)", type: 'text', align: 'left' },
             { field: "salesFuelRate", label: "SALES FUEL RATE (%)", type: 'text' },
             { field: "stateFuelTax", label: "STATE TAX ($)", type: 'text' },
             { field: "cityFuelTax", label: "CITY TAX ($)", type: 'text' },
             { field: "countyFuelTax", label: "COUNTY TAX ($)", type: 'text' },
+            { field: "ppdSalesTax", label: "PPD SALES TAX (PREPAID) ($)", type: 'text' },
             { field: "miscInspFuelTax", label: "MISP INSP FUEL TAX ($)", type: 'text' },
             { field: "miscLocalFuelTax", label: "LOCAL TAX ($)", type: 'text' },
             { field: "miscLoadFuelTax", label: "LOAD FUEL TAX ($)", type: 'text' },
@@ -130,9 +114,6 @@ export default class TaxModel {
     rowActions () {
         const { t } = useTranslation();
         return [
-            {
-                label: ''
-            },
             {
                 label: t("menus.data-grid-actions.edit"),
                 action: this.ACTION_TYPES.EDIT

@@ -1,13 +1,13 @@
-import {useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import GridComponent, { headerObj } from '../../components/UIComponents/DataGird/grid.component';
-import { getProducts } from './queries'; 
+import { getProducts } from './queries';
 import './SubTableFuelProduct.scss';
 import { DataGridActionsMenuOption } from './../../components/UIComponents/Menu/DataGridActionsMenu.component';
 import TaxModel from '../../models/TaxModel';
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 interface props {
-    id:string,
+    id: string,
     rows?: any[],
     isLoading?: boolean,
     getPages?: any,
@@ -17,11 +17,11 @@ interface props {
     rowActionOptions?: DataGridActionsMenuOption[],
 }
 
-export default function InnerTable(props:props) {
+export default function InnerTable (props: props) {
     const [productDetails, setProductDetails] = useState([]);
     const TaxObj = new TaxModel();
     const ACTION_TYPES = TaxObj.ACTION_TYPES;
-    const history = useHistory();
+    const navigate = useNavigate();
 
     const { data, fetchNextPage, isLoading, isFetching }: any = getProducts(props.id);
     useEffect(() => {
@@ -36,28 +36,28 @@ export default function InnerTable(props:props) {
 
     const handleRowAction = (action: DataGridActionsMenuOption, row: any) => {
         switch (action.action) {
-          case ACTION_TYPES.EDIT:
-            // perform action
-            history.push(`/editFuelTax/?productId=${row.productId}&taxJurisdictionId=${props.id}&countryCode=us`);
-            break;
-          default: return;
+            case ACTION_TYPES.EDIT:
+                // perform action
+                navigate(`/editFuelTax/?productId=${row.productCd}&taxJurisdictionId=${props.id}&countryCode=us`);
+                break;
+            default: return;
         }
-      };
-    
+    };
+
     return (
         <div className='product-Sub-Table-Container'>
-        <GridComponent
+            <GridComponent
                 primaryKey={props.primaryKey}
-                rows={productDetails}
+                rows={TaxObj.displayProductdataModel(productDetails)}
                 header={props.headCells}
                 isLoading={isFetching || isLoading}
                 isChildTable
                 enableRowAction={true}
                 getPages={fetchNextPage}
                 rowActionOptions={props.rowActionOptions}
-                showInnerTableMenu={true} 
+                showInnerTableMenu={true}
                 onRowActionSelect={handleRowAction}
-                />
+            />
         </div>
     );
 }

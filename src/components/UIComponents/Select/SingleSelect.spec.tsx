@@ -1,6 +1,4 @@
-/* eslint-disable no-console */
 import Select from './SingleSelect';
-// import { YellowFuelIcon } from '../../../assets/icons';
 import { shallow, mount } from 'enzyme';
 import { getProductIcon } from '../../../utils/helperFunctions';
 

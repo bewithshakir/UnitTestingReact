@@ -2,7 +2,7 @@ import React, { memo, useState, useEffect } from 'react';
 import { Box, Container, Grid, Typography } from '@mui/material';
 import { useFormik } from 'formik';
 import { useTranslation } from 'react-i18next';
-import { useHistory, useRouteMatch } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import Input from '../../components/UIComponents/Input/Input';
 import { Button } from '../../components/UIComponents/Button/Button.component';
@@ -17,17 +17,27 @@ import { LoadingIcon } from '../../assets/icons';
 import { isCurrentAppCountryUSA, getProductIcon } from '../../utils/helperFunctions';
 
 
+
+
 interface IFormStatus {
     message: string
     type: string
 }
 
+export interface AddProductProps {
+    version: string
+}
+
+
+
+
 
 const initialValues = new ProductManagementModel();
-const AddProduct: React.FC = memo(() => {
+const AddProduct: React.FC<AddProductProps> = memo(() => {
     const { t } = useTranslation();
-    const history = useHistory();
-    const match = useRouteMatch<{ productId: string }>();
+    const navigate = useNavigate();
+    const { productId }: any = useParams();
+
     const { data: productTypesList, isLoading: isLoadingTypes, } = useGetProductTypes('us');
     const { data: productColorsList, isLoading: isLoadingColors } = useGetProductColors('us');
     const showDialogBox = useShowConfirmationDialogBoxStore((state) => state.showDialogBox);
@@ -80,21 +90,21 @@ const AddProduct: React.FC = memo(() => {
             if (response?.data) {
                 const finalData = {
                     countryCode: 'us',
-                    productName: response.data.productName,
+                    productName: response.data.productNm,
                     productType: {
-                        value: response.data.productClass.productClassCd,
-                        label: response.data.productClass.productClassNm
+                        value: response.data.productGroup.productGroupCd,
+                        label: response.data.productGroup.productGroupNm
                     },
                     productColor: {
-                        value: response.data.productColor.productColorCd,
-                        label: response.data.productColor.productColorNm,
-                        icon: getProductIcon(response.data.productColor.productColorNm)
+                        value: response.data.productIcon.productIconCd,
+                        label: response.data.productIcon.productIconNm,
+                        icon: getProductIcon(response.data.productIcon.productIconNm)
                     },
-                    productStatus: productStatusList.filter((pObj) => pObj.value === response.data.productServiceInd)[0],
+                    productStatus: productStatusList.filter((pObj) => pObj.value === response.data.activeInactiveInd)[0],
                     productPricing: response.data.manualPricing || 0
                 };
                 populateDataInAllFields(finalData);
-                setProductGroupCd(response.data.productGroupCd);
+                setProductGroupCd(response.data.productCd);
                 setEditMode(true);
             }
         } catch {
@@ -112,7 +122,7 @@ const AddProduct: React.FC = memo(() => {
         }
     };
 
-    useGetProductData(match.params.productId, onGetProductSuccess, onGetProductError);
+    useGetProductData(productId, onGetProductSuccess, onGetProductError);
 
 
     const onEditProductSuccess = () => {
@@ -132,7 +142,7 @@ const AddProduct: React.FC = memo(() => {
     };
 
     const { mutate: editProduct, isSuccess: isSuccessEditProduct, isError: isErrorEditProduct, isLoading: isLoadingEditProduct } = useEditProductManagement(
-        match.params.productId,
+        productId,
         productGroupCd,
         onEditProductSuccess,
         onEditProductError
@@ -172,7 +182,7 @@ const AddProduct: React.FC = memo(() => {
         if (!formik.isValid || formik.dirty) {
             showDialogBox(true);
         } else {
-            history.push('/productManagement');
+            navigate('/productManagement');
         }
     };
 
@@ -188,7 +198,7 @@ const AddProduct: React.FC = memo(() => {
         <Box display="flex" className="global_main_wrapper">
             <Grid item md={7} xs={7}>
                 <Container maxWidth="lg" className="page-container">
-                    <form onSubmit={formik.handleSubmit}>
+                    <form onSubmit={formik.handleSubmit} id="form">
                         <Typography color="var(--Darkgray)" variant="h3" gutterBottom className="fw-bold" mb={1} pt={3}>
                             {t("productManagement.form.title")} *
                         </Typography>
@@ -232,6 +242,7 @@ const AddProduct: React.FC = memo(() => {
                                 <Grid item xs={12} md={6}>
                                     <Select
                                         id='productColor'
+                                        dropdownType='productcolor'
                                         name='productColor'
                                         label={t("productManagement.form.productColor")}
                                         placeholder='Choose'
@@ -264,7 +275,7 @@ const AddProduct: React.FC = memo(() => {
                                     />
                                 </Grid>
                             </Grid>
-                            <Grid item xs={12} md={12} pr={2.5} pb={5.5}>
+                            <Grid item xs={12} md={12} pr={2.5} pb={2.5}>
                                 <Grid item xs={12} md={6}>
                                     <Input
                                         id='productPricing'
@@ -278,10 +289,11 @@ const AddProduct: React.FC = memo(() => {
                                     />
                                 </Grid>
                             </Grid>
-                            <Grid item xs={12} md={12} pr={2.5} pb={2.5}>
+                            <Grid item xs={12} md={12} pr={2.5} mt={4} mb={4}>
                                 <Grid item xs={12} md={6}>
-                                    <Box className="form-action-section txt-right">
+                                    <Box className="form-action-section">
                                         <Button
+                                            id="cancelBtn"
                                             types="cancel"
                                             aria-label={t("buttons.cancel")}
                                             className="mr-4"
@@ -291,6 +303,7 @@ const AddProduct: React.FC = memo(() => {
                                             {t("buttons.cancel")}
                                         </Button>
                                         <Button
+                                            id="saveBtn"
                                             type="submit"
                                             types="save"
                                             aria-label={t("buttons.save")}
@@ -298,7 +311,7 @@ const AddProduct: React.FC = memo(() => {
                                             data-test="save"
                                             disabled={disableButton()}
                                         >
-                                            {t("buttons.save")} {(isLoadingAddProduct || isLoadingEditProduct) && <LoadingIcon className='loading_save_icon' />}
+                                            {t("buttons.save")} {(isLoadingAddProduct || isLoadingEditProduct) && <LoadingIcon data-testid="loading-spinner" className='loading_save_icon' />}
                                         </Button>
                                     </Box>
                                     <ToastMessage

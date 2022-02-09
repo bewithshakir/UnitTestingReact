@@ -8,7 +8,7 @@ import { useTranslation } from "react-i18next";
 import SearchInput from "../../components/UIComponents/SearchInput/SearchInput";
 import ActionsMenu from "../../components/UIComponents/Menu/ActionsMenu.component";
 import { Add } from "@mui/icons-material";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import TaxModel from '../../models/TaxModel';
 import { useFuelTaxList } from './queries';
 import GridComponent from "../../components/UIComponents/DataGird/grid.component";
@@ -18,7 +18,12 @@ import { RightInfoPanel } from '../../components/UIComponents/RightInfoPanel/Rig
 import { getSeachedDataTotalCount } from '../../utils/helperFunctions';
 import Table from './SubTableFuelProduct';
 
-const TaxLandingContent = memo(() => {
+export interface TaxLandingContentProps {
+  version: string
+}
+
+
+const TaxLandingContent: React.FC<TaxLandingContentProps> = memo(() => {
   const TaxObj = new TaxModel();
   const headCells = TaxObj.fieldsToDisplay();
   const headCellsLots = TaxObj.fieldsToDisplayLotTable();
@@ -26,7 +31,7 @@ const TaxLandingContent = memo(() => {
   const rowActionOptions = TaxObj.rowActions();
   const { SortByOptions, FilterByFields } = FuelTax.LandingPage;
 
-  const history = useHistory();
+  const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = React.useState("");
   const [resetTableCollaps, setResetTableCollaps] = React.useState(false);
   const [filterData, setFilterData] = React.useState<{ [key: string]: string[] }>({});
@@ -62,7 +67,7 @@ const TaxLandingContent = memo(() => {
   };
 
   const navigateHomePage = () => {
-    history.push("/addFuelTax");
+    navigate("/addFuelTax");
   };
 
   const handleMassAction = (action: DataGridActionsMenuOption) => {
@@ -103,7 +108,7 @@ const TaxLandingContent = memo(() => {
 
   return (
     <Box display="flex" mt={10} ml={8}>
-      <Grid container pl={6.25} pr={6.25} className="main-area">
+      <Grid container pl={8} pr={8} className="main-area">
         <Grid container display="flex" flexGrow={1}>
           <Grid item md={8} lg={9} display="flex" >
             <Grid item pr={2.5}>

@@ -125,9 +125,9 @@ export default class CustomerModel {
 
     fieldsToDisplay (): headerObj[] {
         return [
-            { field: "customerName", label: "CUSTOMER NAME", type: 'text', sortable: true },
+            { field: "customerName", label: "CUSTOMER NAME", type: 'text', sortable: true, width: "150px" },
             { field: "contactName", label: "CONTACT NAME", type: 'text' },
-            { field: "address", label: "ADDRESS", type: 'text' },
+            { field: "address", label: "ADDRESS", type: 'text', width: "150px" },
             { field: "city", label: "CITY", type: 'text' },
             { field: "state", label: "STATE", type: 'text' },
             { field: "zipCode", label: "ZIP", type: 'text' },
@@ -140,7 +140,7 @@ export default class CustomerModel {
     fieldsToDisplayLotTable (): headerObj[] {
         return [
             { field: "deliveryLocationNm", label: "LOT NAME", type: 'text' },
-            { field: "streetAddress", label: "STREET ADDRESS", type: 'text' },
+            { field: "streetAddress", label: "STREET ADDRESS", type: 'text', width: "150px" },
             { field: "cityNm", label: "CITY", type: 'text' },
             { field: "stateNm", label: "STATE", type: 'text' },
             { field: "postalCd", label: "ZIP", type: 'text' },

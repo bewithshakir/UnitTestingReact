@@ -17,6 +17,7 @@ import { Typography } from '@mui/material';
 interface SortbyMenuProps {
   options: string[],
   menuName?: string,
+  id?: string,
   onSelect: (selectedValue: string) => void,
 }
 export default function SortbyMenu (props: SortbyMenuProps) {
@@ -25,7 +26,7 @@ export default function SortbyMenu (props: SortbyMenuProps) {
   const anchorRef = React.useRef<HTMLButtonElement>(null);
 
   const { t } = useTranslation();
-  const { menuName, options, onSelect } = props;
+  const { id, menuName, options, onSelect } = props;
 
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
@@ -74,6 +75,7 @@ export default function SortbyMenu (props: SortbyMenuProps) {
   return (
     <div>
       <Button
+        id={id}
         ref={anchorRef}
         color={undefined}
         className={`btn-sortby ${open ? 'active' : ''}`}

@@ -19,57 +19,58 @@ function Alert(props: AlertProps) {
 
 export default function ToastMessage(props: ToastMessageProps) {
     const [open, setOpen] = React.useState(false);
-    
-    useEffect(()=> {
+
+    useEffect(() => {
         setOpen(props.isOpen);
     }, [props.isOpen]);
-    
+
     const handleClose = () => {
+        props.onClose && props.onClose();
         setOpen(false);
     };
     const getComponentToRender = () => {
-        switch(props.messageType) {
-            case 'Success' :{
-                    return (
-                        <Snackbar className={'success-snackbar'} open={open} autoHideDuration={6000} onClose={handleClose}>
-                            <div className={'success-snackbar-alertContainer'}>
-                                <Alert className={'messagebar-icon'}
-                                    icon={<SuccessTickIcon />} onClose={handleClose}>
-                                    <span>{props.message}</span>
-                                </Alert>
-                            </div>
-                        </Snackbar>
-                    );
-                }
-                case 'Error' : {
-                    return (
-                        <Snackbar className={'error-snackbar'} open={open} autoHideDuration={6000} onClose={handleClose}>
-                            <div className={'error-snackbar-alertContainer'}>
-                                <Alert className={'messagebar-icon'}
-                                    icon={<ErrorExclamationIcon />} onClose={handleClose}>
-                                    <span>{props.message}</span>
-                                </Alert>
-                            </div>
-                        </Snackbar>
-                    );
-                }
-                default : {
-                    return (
-                        <Snackbar  open={open} autoHideDuration={6000} onClose={handleClose}>
-                            <div style={{ 'display': 'flex' }}>
-                                <Alert className={'messagebar-icon'} onClose={handleClose} severity="success">
-                                  {props.message}
-                                </Alert>
-                            </div>
-                        </Snackbar>
-                    );
-                }
+        switch (props.messageType) {
+            case 'Success': {
+                return (
+                    <Snackbar className={'success-snackbar'} open={open} autoHideDuration={6000} onClose={handleClose}>
+                        <div className={'success-snackbar-alertContainer'}>
+                            <Alert className={'messagebar-icon'}
+                                icon={<SuccessTickIcon />} onClose={handleClose}>
+                                <span>{props.message}</span>
+                            </Alert>
+                        </div>
+                    </Snackbar>
+                );
+            }
+            case 'Error': {
+                return (
+                    <Snackbar className={'error-snackbar'} open={open} autoHideDuration={6000} onClose={handleClose}>
+                        <div className={'error-snackbar-alertContainer'}>
+                            <Alert className={'messagebar-icon'}
+                                icon={<ErrorExclamationIcon />} onClose={handleClose}>
+                                <span>{props.message}</span>
+                            </Alert>
+                        </div>
+                    </Snackbar>
+                );
+            }
+            default: {
+                return (
+                    <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+                        <div style={{ 'display': 'flex' }}>
+                            <Alert className={'messagebar-icon'} onClose={handleClose} severity="success">
+                                {props.message}
+                            </Alert>
+                        </div>
+                    </Snackbar>
+                );
+            }
         }
-        
+
     };
 
     return (
-        <div className="toaster_wrapper">
+        <div className="toaster_wrapper" data-testid="toaster-message">
             {getComponentToRender()}
         </div>
     );

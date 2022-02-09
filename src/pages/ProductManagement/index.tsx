@@ -41,8 +41,12 @@ export default function ProductManagement() {
 
     const reloadSibling = (timeStamp: string) => {
         editReloadKey(timeStamp);
+    };
+
+    const hideTopRow = () => {
         hideAddEditRow(true);
     };
+
     return (
         <Fragment>
             <Box display="flex" className='product-management'>
@@ -60,7 +64,7 @@ export default function ProductManagement() {
                         />
                     </Grid>
                     <Grid item md={9} sm={12} xs={12} p={3} className="masterRightLayout">
-                        <AddProduct lotId={lotId} reloadSibling={reloadSibling} productId={productId} disableAddEditButton={topButtonRowDisabled} isHiddenAddEditRow={isHiddenAddEditRow} />
+                        <AddProduct lotId={lotId} reloadSibling={reloadSibling} productId={productId}  disableAddEditButton={topButtonRowDisabled} isHiddenAddEditRow={isHiddenAddEditRow} hideAddEditRow={hideTopRow} />
                     </Grid>
                 </Grid>
             </Box>

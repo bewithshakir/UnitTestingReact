@@ -30,9 +30,13 @@
     "sort by": "Sort by",
     "add lot": "Add Lot",
     "add tax": "Add Tax",
+    "add dsp": "ADD DSP",
     "add opis city": "ADD OPIS CITY",
     "browse": "Browse",
-    "filter": "Filters"
+    "filter": "Filters",
+    "add asset": "ADD ASSET",
+    "import": "IMPORT",
+    "filterText": "Filter"
   },
   "menus": {
     "sortby": {
@@ -112,6 +116,23 @@
       "customerTitleAdd": "Add Customer"
     }
   },
+  "parkingLotManagement": {
+    "filterHeader": "Filters",
+    "search": "Lot Name",
+    "results found": "results found",
+    "result(s) found": "result(s) found",
+    "sortBy": {
+      "lotname_atoz": "Lot Name A-Z",
+      "lotname_ztoa": "Lot Name Z-A"
+    },
+    "filter": {
+      "state": "State",
+      "city": "City",
+      "zip": "Zip",
+      "wallet status": "Wallet Status",
+      "fuel type": "Fuel Type"
+    }
+  },
   "parkingLot": {
     "header": {
       "filter": "Filter"
@@ -129,6 +150,37 @@
       "zip": "Zip",
       "wallet status": "Wallet Status",
       "fuel type": "Fuel Type"
+    },
+    "addLot": {
+      "title": "Add Lot & Details"
+    },
+    "form": {
+      "titleAdd": "Add Lot & Details",
+      "titleEdit": "Edit Lot & Details"
+    }
+  },
+  "dsp": {
+    "search": "Search",
+    "filterHeader": "Filters",
+    "nodataMsg": "Add DSP by clicking on add DSP or any related sentence."
+  },
+  "addDSP": {
+    "title": "Add DSP",
+    "form": {
+      "titleEdit": "Edit DSP",
+      "title": "Fill all the mandatory fields",
+      "dspName": "DSP Name",
+      "contactForm": {
+        "title": "Contact Details",
+        "contactNm": "Name",
+        "email": "Email ID",
+        "phone": "Phone Number",
+        "addressLine1": "Address Line 1",
+        "addressLine2": "Address Line 2",
+        "city": "City",
+        "state": "State / Province",
+        "postalCode": "Postal Code"
+      }
     }
   },
   "taxes": {
@@ -163,7 +215,8 @@
         "countyFuelTax": "Enter County Fuel Tax",
         "miscInspFuelTax": "Enter Misc Insp Fuel Tax",
         "miscLcalFuelTax": "Enter Misc Local Fuel Tax",
-        "miscLoadFuelTax": "Enter Misc Load Fuel Tax"
+        "miscLoadFuelTax": "Enter Misc Load Fuel Tax",
+        "ppdSalesTax": "Enter PPD Sales Tax"
       }
     },
     "salesTax": {
@@ -213,6 +266,18 @@
       }
     }
   },
+  "addTruckParkingLot": {
+    "title": "Add Truck Parking lot",
+    "form": {
+      "parkingLocationNm": "TRUCK PARKING LOT NAME",
+      "title": "Fill all the mandatory * fields",
+      "addressLine1": "ADDRESS LINE 1",
+      "addressLine2": "ADDRESS LINE 2",
+      "city": "CITY",
+      "state": "STATE",
+      "postalCode": "POSTAL CODE"
+    }
+  },
   "productManagement": {
     "results found": "results found",
     "result(s) found": "result(s) found",
@@ -256,6 +321,82 @@
     "error": {
       "message": "Something went wrong. Please try again.",
       "type": "Error"
+    }
+  },
+  "addProductFormLabels": {
+    "producttypelabel": "PRODUCT TYPE",
+    "masterproductnamelabel": "Master Product Name",
+    "pricingmodellabel": "Pricing Model",
+    "productnamelabel": "Product Name",
+    "pricelabel": "Price Per Gallon (Including TAX)",
+    "adderlabel": "Added Price Per Gallon (Optional)",
+    "discountlabel": "Discount Per Gallon (Optional)",
+    "totalpricelabel": "Total Price Per Gallon (Including Tax, Adder/Discount)",
+    "timeslotlabel": "Time Slot (Optional)"
+  },
+  "assetManagement": {
+    "asset": "Asset Type",
+    "sortBy": {
+      "payment in progress": "Payment In Progress",
+      "recently added asset": "Recently Added Asset"
+    }
+  },
+  "FeeDetails":{
+    "head1": "Add Fee Details to fulfil the requirements",
+    "feeName":"Fee Name",
+    "feeNamePlaceholder": "Enter Fee Name",
+    "deliveryFee":"Delivery Fee",
+    "enterFee": "Enter Fee",
+    "delFeeShed":"Delivery Fee Schedule",
+    "selectFee": "Select Fee",
+    "salesTaxExcemption": "Sales Tax Excemption",
+    "serviceFeeRule": "Service Fee rule",
+    "serviceFeeCharge": "Service Fee Charge",
+    "enterFeeCharge": "Enter Fee Charge",
+    "productType": "Product Type",
+    "productTypePlaceholder": "Select Product Type",
+    "masterProductTypePlaceholder": "Select Master Product Name",
+    "masterProductType": "Master Product Name",
+    "productName": "Product Name",
+    "productNamePlaceholder": "Select Product Name",
+    "considerAsset": "Consider this as an asset",
+    "assetType": "Asset Type",
+    "assetTypePlaceholder": "Select Asset Type",
+    "assetTypeDescPlaceholder": "Enter Asset Description",
+    "vehicleType": "Vehicle Type",
+    "vehicleTypePlaceholder": "Select Vehicle Type",
+    "addAnotherServiceFee": "ADD ANOTHER SERVICE FEE",
+    "noDataMsg": "Add Products first before setting up fees"
+  },
+  "Attachments":{
+    "search": "Search",
+    "filterHeader": "Filters",
+    "noDataMsg": "Add attachments by clicking on import or any related sentence.",
+    "documentName": "DOCUMENT NAME",
+    "format": "FORMAT",
+    "dateAdded": "DATE ADDED",
+    "uploadedBy": "UPLOADED BY",
+    "uploadedIn": "UPLOADED IN"
+  },
+  "UploadAttachments":{
+    "breadCrumbText": "Import Attachment",
+    "uploadInitialText": "Drag & drop the file or",
+    "choose":"Choose",
+    "fileFormatSize":"Max file size : 25MB | File format : PDF, XLSX or DOCX",
+    "uploadFile":"Upload File",
+    "fileuploaddialog": {
+      "title": "Error in File Upload",
+      "content": "The file name you are trying to upload is already exists. Do you want to overwrite the file ?"
+    },
+    "uploadGenericError":"Error found. Please delete and re-upload the file",
+    "no":"No",
+    "yes":"Yes"
+  },
+  "truck": {
+    "navBar": {
+      "overview": "Overview",
+      "liveMap": "Live Map",
+      "truckPlot": "Truck Parking Lot"
     }
   }
 }

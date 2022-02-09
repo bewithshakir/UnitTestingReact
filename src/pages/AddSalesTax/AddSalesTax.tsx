@@ -1,7 +1,7 @@
 import { Box, Container, Grid, Typography } from '@mui/material';
 import { useFormik } from 'formik';
 import React, { useState, useEffect } from 'react';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import './style.scss';
 
@@ -9,13 +9,17 @@ import SalesTaxModel from '../../models/SalesTaxModel';
 import AutocompleteInput from '../../components/UIComponents/GoogleAddressComponent/GoogleAutoCompleteAddress';
 import Input from '../../components/UIComponents/Input/Input';
 import { Button } from '../../components/UIComponents/Button/Button.component';
-import {useAddSalesTax, useEditSalesTax, useGetSaleTax} from './queries';
+import { useAddSalesTax, useEditSalesTax, useGetSaleTax } from './queries';
 import ToastMessage from '../../components/UIComponents/ToastMessage/ToastMessage.component';
 import { HorizontalBarVersionState, useStore, useShowConfirmationDialogBoxStore } from '../../store';
-import {AddSalesTaxValidationSchema, AddSalesTaxValidationSchemaEdit} from './validation';
+import { AddSalesTaxValidationSchema, AddSalesTaxValidationSchemaEdit } from './validation';
 
 
 const initialValues = new SalesTaxModel();
+
+export interface AddSalesTaxProps {
+    version: string
+}
 
 interface IFormStatus {
     message: string
@@ -49,7 +53,7 @@ const formStatusProps: IFormStatusProps = {
     }
 };
 
-const AddSalesTax: React.FC = () => {
+const AddSalesTax: React.FC<AddSalesTaxProps> = () => {
     const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
     const isFormValidated = useShowConfirmationDialogBoxStore((state) => state.setFormFieldValue);
     const resetFormFieldValue = useShowConfirmationDialogBoxStore((state) => state.resetFormFieldValue);
@@ -58,8 +62,8 @@ const AddSalesTax: React.FC = () => {
     setVersion("Breadcrumbs-Single");
     const [apiResposneState, setAPIResponse] = useState(false);
     // const [isDisabled, setDisabled] = useState(false);
-    
-    const history = useHistory();
+
+    const navigate = useNavigate();
     const location = useLocation();
     const { t } = useTranslation();
 
@@ -68,16 +72,16 @@ const AddSalesTax: React.FC = () => {
         type: '',
     });
 
-    useEffect(()=>{
+    useEffect(() => {
         resetFormFieldValue();
-    },[]);
-    
+    }, []);
+
 
     // edit section
     const [isEditMode, setEditMode] = useState(false);
-    
 
-    const populateDataInAllFields = (formData: any)=> {
+
+    const populateDataInAllFields = (formData: any) => {
         formik.setFieldValue('addressLine1', formData.addressLine1);
         formik.setFieldValue('city', formData.city);
         formik.setFieldValue('state', formData.state);
@@ -87,11 +91,11 @@ const AddSalesTax: React.FC = () => {
         formik.setFieldValue('localRate', formData.localRate);
     };
 
-    const onGetSaleTaxSuccess = (response: any)=> {
+    const onGetSaleTaxSuccess = (response: any) => {
         populateDataInAllFields(response.data.data);
         setEditMode(true);
     };
-    const onGetSaleTaxError = (err: any)=> {
+    const onGetSaleTaxError = (err: any) => {
         try {
             const { data } = err.response;
             setAPIResponse(true);
@@ -100,16 +104,16 @@ const AddSalesTax: React.FC = () => {
             setTimeout(() => {
                 setAPIResponse(false);
             }, 6000);
-        } catch(error) {
+        } catch (error) {
             setFormStatus(formStatusProps.error);
         }
 
     };
-    
-    useGetSaleTax(location.search, onGetSaleTaxSuccess, onGetSaleTaxError);
-    
 
-    const onEditSaleTaxSuccess = ()=> {
+    useGetSaleTax(location.search, onGetSaleTaxSuccess, onGetSaleTaxError);
+
+
+    const onEditSaleTaxSuccess = () => {
         setAPIResponse(true);
         isFormValidated(false);
         setFormStatus(formStatusProps.updated);
@@ -117,7 +121,7 @@ const AddSalesTax: React.FC = () => {
             setAPIResponse(false);
         }, 6000);
     };
-    const onEditSaleTaxError = (err: any)=> {
+    const onEditSaleTaxError = (err: any) => {
         try {
             const { data } = err.response;
             setAPIResponse(true);
@@ -134,15 +138,15 @@ const AddSalesTax: React.FC = () => {
 
     const { mutate: editSaleTax } = useEditSalesTax(onEditSaleTaxSuccess, onEditSaleTaxError);
 
-    const updateSaleTax = (form: SalesTaxModel)=> {
+    const updateSaleTax = (form: SalesTaxModel) => {
         try {
             const payload = {
                 "countryCode": form.countryCd,
                 "city": form.city,
                 "state": form.state,
-                "stateRate": form.federalRate ? parseFloat(form.stateRate): 0,
+                "stateRate": form.federalRate ? parseFloat(form.stateRate) : 0,
                 "federalRate": form.federalRate ? parseFloat(form.federalRate) : 0,
-                "localRate": form.federalRate ? parseFloat(form.localRate): 0
+                "localRate": form.federalRate ? parseFloat(form.localRate) : 0
             };
             editSaleTax(payload);
         } catch (error) {
@@ -187,11 +191,11 @@ const AddSalesTax: React.FC = () => {
                 "city": form.city,
                 "state": form.state,
                 "stateRate": parseFloat(form.stateRate),
-                "federalRate": form.federalRate ? parseFloat(form.federalRate): 0,
+                "federalRate": form.federalRate ? parseFloat(form.federalRate) : 0,
                 "localRate": parseFloat(form.localRate)
             };
             addNewSalesTax(apiPayload);
-            
+
         } catch (error) {
             setFormStatus(formStatusProps.error);
         }
@@ -199,28 +203,28 @@ const AddSalesTax: React.FC = () => {
 
     const formik = useFormik({
         initialValues,
-        validationSchema: isEditMode ? AddSalesTaxValidationSchemaEdit: AddSalesTaxValidationSchema,
+        validationSchema: isEditMode ? AddSalesTaxValidationSchemaEdit : AddSalesTaxValidationSchema,
         onSubmit: (values) => {
-            if(isEditMode) {
+            if (isEditMode) {
                 updateSaleTax(values);
             } else {
                 createNewSalesTax(values);
             }
         }
     });
-    
+
     const handleFormDataChange = () => {
         if (isEditMode) {
-                if (formik.dirty) {
-                    if (formik.initialValues != formik.values) {
-                        isFormValidated(false);
-                    }
+            if (formik.dirty) {
+                if (formik.initialValues != formik.values) {
+                    isFormValidated(false);
                 }
-        } 
-        if (isFormFieldChange() && !formik.isSubmitting) {
-            isFormValidated(true); 
+            }
         }
-    };    
+        if (isFormFieldChange() && !formik.isSubmitting) {
+            isFormValidated(true);
+        }
+    };
 
     const handleGoogleAddressChange = (addressObj: any) => {
         formik.setFieldValue('addressLine1', addressObj.addressLine1);
@@ -247,19 +251,19 @@ const AddSalesTax: React.FC = () => {
         formik.validateField("localRate");
         formik.validateField("localRate");
     };
-    
+
 
     function onClickBack () {
-        history.push('/salesTax');
+        navigate('/salesTax');
     }
     const disableButton = () => {
         if (isEditMode) {
             if (Object.keys(formik.errors).length > 1) {
                 return true;
-            } 
+            }
             else if ((formik.touched.stateRate && formik.errors.stateRate) ||
-            (formik.touched.federalRate && formik.errors.federalRate) || 
-            (formik.touched.localRate && formik.errors.localRate)) {
+                (formik.touched.federalRate && formik.errors.federalRate) ||
+                (formik.touched.localRate && formik.errors.localRate)) {
                 return true;
             }
             else if (Object.keys(formik.touched).length) {
@@ -267,17 +271,17 @@ const AddSalesTax: React.FC = () => {
             }
         } else {
             if ((formik.touched.stateRate && formik.errors.stateRate) ||
-            (formik.touched.federalRate && formik.errors.federalRate) ||
-            (formik.touched.localRate && formik.errors.localRate)) {
+                (formik.touched.federalRate && formik.errors.federalRate) ||
+                (formik.touched.localRate && formik.errors.localRate)) {
                 return true;
             }
-            else if (formik.values.addressLine1 && 
-                formik.values.city && 
-                formik.values.state && 
+            else if (formik.values.addressLine1 &&
+                formik.values.city &&
+                formik.values.state &&
                 formik.values.stateRate &&
                 formik.values.federalRate &&
                 formik.values.localRate
-                ){
+            ) {
                 return false;
             } else {
                 return true;
@@ -289,10 +293,10 @@ const AddSalesTax: React.FC = () => {
         <Box display="flex" className="global_main_wrapper">
             <Grid item md={10} xs={10}>
                 <Container maxWidth="lg" className="page-container">
-                   
+
                     <form onSubmit={formik.handleSubmit} onBlur={handleFormDataChange} data-test="component-AddSalesTax" >
                         <Typography color="var(--Darkgray)" variant="h3" gutterBottom className="fw-bold" mb={1} pt={3}>
-                        {t("taxes.salesTax.form.title")} *
+                            {t("taxes.salesTax.form.title")} *
                         </Typography>
                         <Grid container mt={1}>
                             <Grid item xs={12} md={12} pr={2.5} pb={2.5}>
@@ -348,7 +352,7 @@ const AddSalesTax: React.FC = () => {
                                 <Grid item xs={12} md={6}>
                                     <Input
                                         id='stateRate'
-                                        label={t("taxes.salesTax.form.labelStateRate")+'%'}
+                                        label={t("taxes.salesTax.form.labelStateRate") + '%'}
                                         type='text'
                                         placeholder='State Rate'
                                         helperText={(formik.touched.stateRate && formik.errors.stateRate) ? formik.errors.stateRate : undefined}
@@ -364,7 +368,7 @@ const AddSalesTax: React.FC = () => {
                                 <Grid item xs={12} md={6}>
                                     <Input
                                         id='federalRate'
-                                        label={t("taxes.salesTax.form.labelFederalRate")+'%'}
+                                        label={t("taxes.salesTax.form.labelFederalRate") + '%'}
                                         type='text'
                                         placeholder='Federal Rate'
                                         helperText={(formik.touched.federalRate && formik.errors.federalRate) ? formik.errors.federalRate : undefined}
@@ -380,7 +384,7 @@ const AddSalesTax: React.FC = () => {
                                 <Grid item xs={12} md={6}>
                                     <Input
                                         id='localRate'
-                                        label={t("taxes.salesTax.form.labelLocalRate")+'%'}
+                                        label={t("taxes.salesTax.form.labelLocalRate") + '%'}
                                         type='text'
                                         placeholder='Local Rate'
                                         helperText={(formik.touched.localRate && formik.errors.localRate) ? formik.errors.localRate : undefined}
@@ -391,32 +395,32 @@ const AddSalesTax: React.FC = () => {
                                     />
                                 </Grid>
                             </Grid>
-                        </Grid>
-                        <Grid container mt={1} justifyContent="flex-end">
-                            <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
-                                <Box className="form-action-section">
-                                    <Button
-                                        types="cancel"
-                                        aria-label={t("buttons.cancel")}
-                                        className="mr-4"
-                                        onClick={onClickBack}
-                                        data-test="cancel"
-                                    >
-                                        {t("buttons.cancel")}
-                                    </Button>
-                                    <Button
-                                        type="submit"
-                                        types="save"
-                                        aria-label={t("buttons.save")}
-                                        className="ml-4"
-                                        data-test="save"
-                                        disabled={disableButton()}
-                                    >
-                                        {t("buttons.save")}
-                                    </Button>
-                                    
-                                </Box>
-                                <ToastMessage isOpen={apiResposneState} messageType={formStatus.type} onClose={() => { return ''; }} message={formStatus.message} />
+                            <Grid item xs={12} md={12} pr={2.5} mt={4} mb={4}>
+                                <Grid item xs={12} md={6}>
+                                    <Box className="form-action-section">
+                                        <Button
+                                            types="cancel"
+                                            aria-label={t("buttons.cancel")}
+                                            className="mr-4"
+                                            onClick={onClickBack}
+                                            data-test="cancel"
+                                        >
+                                            {t("buttons.cancel")}
+                                        </Button>
+                                        <Button
+                                            type="submit"
+                                            types="save"
+                                            aria-label={t("buttons.save")}
+                                            className="ml-4"
+                                            data-test="save"
+                                            disabled={disableButton()}
+                                        >
+                                            {t("buttons.save")}
+                                        </Button>
+
+                                    </Box>
+                                    <ToastMessage isOpen={apiResposneState} messageType={formStatus.type} onClose={() => { return ''; }} message={formStatus.message} />
+                                </Grid>
                             </Grid>
                         </Grid>
                     </form>

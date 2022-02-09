@@ -2,14 +2,16 @@ import { useQuery } from "react-query";
 import { AxiosRequestConfig } from "axios";
 import axios from './ApiHelper';
 
-export type filterURLKey = 'customerFilter' | 'fuelTaxFilter' | 'parkingLotFilter' | 'salesTaxFilter' | 'opisCityFilter'
+export type filterURLKey = 'customerFilter' | 'fuelTaxFilter' | 'parkingLotFilter' | 'salesTaxFilter' | 'opisCityFilter' | 'assetFilter' | 'parkingLotManagementFilter'
 
 const filterApis: { [k in filterURLKey]: string } = {
-    customerFilter: '/api/customer-service/customers/filterData?countryCode=us',
-    fuelTaxFilter: '/api/tax-service/fueltax/filterData?countryCode=us',
-    salesTaxFilter: 'api/tax-service/sales-tax/filterData?countryCode=us',
-    parkingLotFilter: 'api/customer-service/lot/filter-options?countryCode=us',
-    opisCityFilter: 'api/opiscity-service/opiscity/filter-options?countryCode=us',
+    customerFilter: '/api/customer-service/customers/filter-options?countryCode=us',
+    fuelTaxFilter: '/api/tax-service/fuel-taxes/filter-options?countryCode=us',
+    salesTaxFilter: 'api/tax-service/sales-taxes/filter-options?countryCode=us',
+    parkingLotFilter: 'api/customer-service/lots/filter-options?countryCode=us',
+    opisCityFilter: 'api/product-service/opis/served-cities/filter-options?countryCode=us',
+    assetFilter: 'api/customer-service/lots/filter-options?countryCode=us',
+    parkingLotManagementFilter: 'api/customer-service/lots/filter-options?countryCode=us',
 };
 
 const getCustomerFilterData = async (urlKey: filterURLKey) => {

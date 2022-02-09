@@ -11,8 +11,8 @@ export const AddProductValidationSchema = Yup.object().shape(
         productNm: Yup.string().required('Required'),
         manualPriceAmt: priceSchema.required('Required'),
         addedPriceAmt: priceSchema,
-        discountPriceAmt: priceSchema.label('this').when(['manualPriceAmt', 'addedPriceAmt'], (manualPriceAmt: string, addedPriceAmt: any) => {
-            return Yup.number().typeError('Invalid Price.').label('this').min(0).max((Number(manualPriceAmt) || 0) + (Number(addedPriceAmt) || 0));
+        discountPriceAmt: priceSchema.label('This').when(['manualPriceAmt', 'addedPriceAmt'], (manualPriceAmt: string, addedPriceAmt: any) => {
+            return Yup.number().typeError('Invalid Price.').label('This').min(0).max((Number(manualPriceAmt) || 0) + (Number(addedPriceAmt) || 0));
         }),
         timeSlot: selectOptional
     }

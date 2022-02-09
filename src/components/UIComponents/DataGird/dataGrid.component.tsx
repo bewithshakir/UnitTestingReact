@@ -164,12 +164,12 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
     const renderProduct = (fieldOpts: headerObj, data: any) => {
         return (
             <Box display="flex" alignItems="center" justifyContent={fieldOpts.align}>
-                {(!fieldOpts.showIconLast) ? renderIcon(getProductIcon(data.productColorNm)) : null}
-                {data.productName ?
+                {(!fieldOpts.showIconLast) ? renderIcon(getProductIcon(data?.productColorNm)) : null}
+                {data?.productName ?
                     <Typography variant="h4" pl={(!fieldOpts.showIconLast) ? 1 : 0} pr={(fieldOpts.showIconLast) ? 1 : 0} color="var(--Darkgray)" className="fw-bold">
-                        {data.productName}
+                        {data?.productName}
                     </Typography> : null}
-                {(fieldOpts.showIconLast) ? renderIcon(getProductIcon(data.productColorNm)) : null}
+                {(fieldOpts.showIconLast) ? renderIcon(getProductIcon(data?.productColorNm)) : null}
             </Box>
         );
     };
@@ -232,6 +232,7 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
                             {
                                 props.enableRowSelection ?
                                     <TableCell
+                                        padding="checkbox"
                                         className="grid-cell-parent"
                                         component="th"
                                         scope="row"
@@ -250,13 +251,26 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
                                     className="grid-cell-parent"
                                     component="th"
                                     scope="row"
+                                    size="small"
                                     align={props.headCells[index].align}
                                     key={(indexKey.toString() + index.toString())}
                                     onClick={() => props.isChildTable ? {} : openDrawer(row)}
                                 >
                                     {
                                         props.headCells[index].type === 'text' ?
-                                            props.headCells[index].bold ? <b>{row[key]}</b> : row[key]
+                                            props.headCells[index].width ? (
+                                                <div
+                                                    title={row[key]}
+                                                    className="ellipses_column"
+                                                    style={{
+                                                        width: props.headCells[index].width,
+                                                    }}>
+                                                    {props.headCells[index].bold ? <b>{row[key]}</b> : row[key]}
+                                                </div>
+
+                                            ) : (
+                                                props.headCells[index].bold ? <b>{row[key]}</b> : row[key]
+                                            )
                                             :
                                             props.headCells[index].type === 'button' ?
                                                 <Button
@@ -287,6 +301,7 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
                                         component="th"
                                         scope="row"
                                         align="right"
+                                        size="small"
                                     >
                                         <FormControl>
                                             <DataGridActionsMenu

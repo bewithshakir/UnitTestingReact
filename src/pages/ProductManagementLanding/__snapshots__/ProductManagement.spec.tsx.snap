@@ -86,33 +86,3 @@ exports[`Given Sortby Menu on Product Landing Page Render Sortby Menu 1`] = `
   </ForwardRef(Popper)>
 </div>
 `;
-
-exports[`Render Product management landing Page Render Product management landing Page 1`] = `
-<ContextProvider
-  value={false}
->
-  <ContextProvider
-    value={
-      QueryClient {
-        "defaultOptions": Object {},
-        "mutationCache": MutationCache {
-          "config": Object {},
-          "listeners": Array [],
-          "mutationId": 0,
-          "mutations": Array [],
-        },
-        "mutationDefaults": Array [],
-        "queryCache": QueryCache {
-          "config": Object {},
-          "listeners": Array [],
-          "queries": Array [],
-          "queriesMap": Object {},
-        },
-        "queryDefaults": Array [],
-      }
-    }
-  >
-    <Memo() />
-  </ContextProvider>
-</ContextProvider>
-`;

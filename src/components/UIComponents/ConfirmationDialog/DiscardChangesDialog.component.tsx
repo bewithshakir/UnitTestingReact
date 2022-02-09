@@ -22,7 +22,7 @@ function DiscardChangesDialog (props: Props) {
             aria-labelledby="discard-changes-dialog-title"
             aria-describedby="discard-changes-dialog-description"
         >
-            <div className="discard-dialog-container">
+            <div className="discard-dialog-container" id="discard-dialogue">
                 <Typography color="var(--Darkgray)" variant="h2" component="h2" className="fw-bold" px={2.5} pt={2.5} >
                     {title}
                 </Typography>

@@ -4,21 +4,28 @@ import {
     PurpleFuelIcon, SkyBlueFuelIcon, BrownFuelIcon, OrangeFuelIcon, AquaFuelIcon
 } from '../assets/icons';
 
+type fileFormatSize = 'Bytes'|'KB'|'MB';
 export const maskPhoneNumber = (phNumber: string) => {
     const maskedPh = phNumber.match(/(\d{3})(\d{3})(\d{4})/);
     return maskedPh ? "(" + maskedPh[1] + ") " + maskedPh[2] + "-" + maskedPh[3] : phNumber;
 };
 
-export const formatFileSizeUnit = (sizeInBytes: number, decimals = 2) => {
-    if (sizeInBytes === 0) return '0 Bytes';
-
-    const k = 1024;
-    const dm = decimals < 0 ? 0 : decimals;
-    const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
-
-    const i = Math.floor(Math.log(sizeInBytes) / Math.log(k));
-
-    return parseFloat((sizeInBytes / Math.pow(k, i)).toFixed(dm)) + sizes[i];
+export const formatFileSizeUnit = (sizeInBytes: number, fileSizeUnit: fileFormatSize = 'MB') => {
+    let coversionParam = null ; 
+    switch(fileSizeUnit) {
+        case 'Bytes' :
+            coversionParam = 1;
+          break;
+        case 'KB':
+            coversionParam = 1000;
+          break;
+          case 'MB':
+            coversionParam = 1000*1000;
+          break;
+        default:
+            coversionParam = 1;
+      }
+    return Math.ceil(sizeInBytes/(coversionParam)) + ` ${fileSizeUnit}`;
 };
 
 export const getCheckBoxDisabledByPaymentType = (value: string) => {
@@ -47,7 +54,7 @@ export const isCurrentAppCountryUSA = () => {
 };
 
 
-export function getProductIcon (fuelStatus: string) {
+export function getProductIcon(fuelStatus: string) {
     return ({
         "Yellow": YellowFuelIcon,
         "Red": RedFuelIcon,
@@ -60,4 +67,31 @@ export function getProductIcon (fuelStatus: string) {
         "Orange": OrangeFuelIcon,
         "Aqua": AquaFuelIcon,
     }[fuelStatus] || YellowFuelIcon);
+}
+
+export function getLegendFontColor(fuelStatus: string) {
+    const { theme } = useTheme();
+    return ({
+        "Yellow": theme["--Darkgray"],
+        "Red": theme["--White"],
+        "Green": theme["--White"],
+        "Navy Blue": theme["--White"],
+        "Parrot Green": theme["--Darkgray"],
+        "Sky Blue": theme["--White"],
+        "Purple": theme["--White"],
+        "Brown": theme["--White"],
+        "Orange": theme["--Darkgray"],
+        "Aqua": theme["--Darkgray"],
+    }[fuelStatus]);
+}
+
+export function getUploadedBy() {
+    return 'Dinesh Chakkravarthi';
+}
+
+export function getUploadedIn(url: string) {
+    if (url.includes('addCustomer') || url.includes('viewCustomer')) {
+        return 'Add Customer';
+    }
+    return 'Attachments';
 }

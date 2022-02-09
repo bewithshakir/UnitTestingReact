@@ -10,7 +10,7 @@ import Table from "./SubTableLots";
 import { useCustomers } from "./queries";
 import SearchInput from "../../components/UIComponents/SearchInput/SearchInput";
 import { Add } from "@mui/icons-material";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { filterByFields, sortByOptions } from "./config";
 import { RightInfoPanel } from "../../components/UIComponents/RightInfoPanel/RightInfoPanel.component";
 import { Box, FormControl, Grid, Typography } from "@mui/material";
@@ -21,6 +21,7 @@ import { getSeachedDataTotalCount, maskPhoneNumber } from "../../utils/helperFun
 
 interface ContentProps {
   rows?: [];
+  sidebarName: string;
   version: string
 }
 
@@ -33,7 +34,7 @@ const Content: React.FC<ContentProps> = () => {
   const ACTION_TYPES = CustomerObj.ACTION_TYPES;
   const MASS_ACTION_TYPES = CustomerObj.MASS_ACTION_TYPES;
 
-  const history = useHistory();
+  const navigate = useNavigate();
   const [info, setInfo] = React.useState({});
   const [searchTerm, setSearchTerm] = React.useState("");
   const [resetTableCollaps, setResetTableCollaps] = React.useState(false);
@@ -96,7 +97,7 @@ const Content: React.FC<ContentProps> = () => {
     setDrawerOpen(false);
   };
   const navigateToAddCustomer = () => {
-    history.push("/customer/addCustomer");
+    navigate("/customer/addCustomer");
   };
   const onSortBySlected = (value: string) => {
     let sortOrder;
@@ -151,7 +152,7 @@ const Content: React.FC<ContentProps> = () => {
     switch (action.action) {
       case ACTION_TYPES.EDIT:
         // perform action
-        history.push(`/customer/viewCustomer/${row.customerId}`);
+        navigate(`/customer/viewCustomer/${row.customerId}`);
         break;
       case ACTION_TYPES.DELETE:
         // perform action
@@ -172,7 +173,7 @@ const Content: React.FC<ContentProps> = () => {
 
   return (
     <Box display="flex" mt={8} ml={8}>
-      <Grid container pl={6.25} pr={6.25} className="main-area">
+      <Grid container pl={8} pr={8} className="main-area">
         <Grid container pt={2.5} display="flex" flexGrow={1}>
           <Grid item md={8} lg={9} display="flex" >
             <Grid item pr={2.5}>

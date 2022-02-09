@@ -1,6 +1,6 @@
 .select {
   width: 100%;
-
+  
   & .MuiInputLabel-outlined.MuiInputLabel-shrink {
     transform: translate(2px, 0px) scale(0.75);
     z-index: 0;
@@ -30,7 +30,7 @@
       }
     }
 
-    & .react-select {
+    & .react-select, .react-select-product-color {
       &__control {
         height: 50px;
         border-radius: 0px;
@@ -49,6 +49,12 @@
           border-color: var(--Darkgray);
           border: 2px solid var(--Darkgray);
           box-shadow: none;
+        }
+        &--is-disabled {
+          background: var(--Lightgray_4) 0% 0% no-repeat padding-box;
+          color: var(--Lightergray);
+          border: 1px solid var(--Lightgray_2);
+          opacity: 1;
         }
       }
       &__value-container {
@@ -114,6 +120,64 @@
         border: 1px solid var(--White);
         background-color: var(--Gray);
         color: var(--White);
+      }
+    }
+    &__menu-portal {
+      background: var(--White);
+      box-shadow: 3px 6px 14px #00000026;
+      z-index: 999;
+    }
+  }
+
+  .react-select-product-color {
+    &__menu {
+      border-radius: 0;
+      background: var(--White);
+      box-shadow: 3px 6px 14px #00000026;
+      z-index: 999;
+    }
+    &__menu-list {
+      max-height: 256px;
+      overflow-y: scroll;
+    }
+    &__single-value {
+      & .value-box {
+        display: flex;
+        & .label-text {
+          margin: 5px 0px 0px 5px;
+        }
+      }
+    }
+    &__option {
+      height: 50px;
+      line-height: 27px;
+      font-size: 14px;
+      padding: 10px 15px;
+      box-sizing: border-box;
+      border-bottom: 1px solid var(--White);
+      cursor: pointer;
+      display: flex;
+      & .box {
+        display: flex;
+        & .icon-svg{
+            margin: 1px 0px 0px 0px;
+        }
+        & .label-text {
+          margin: 2px 0px 0px 5px;
+        }
+      }
+      &--is-focused {
+        background-color: var(--Lightgray_2);
+        opacity: 1;
+        &:active {
+          border: 1px solid var(--White);
+          background-color: var(--White);
+        }
+      }
+      &--is-selected {
+        border: 1px solid var(--White);
+        background-color: var(--White);
+        color: var(--Gray);
       }
     }
     &__menu-portal {
@@ -257,5 +321,13 @@
       box-shadow: 3px 6px 14px #00000026;
       z-index: 999;
     }
+  }
+}
+
+.select-address-autocomplete{
+  .react-select__option{
+    line-height: normal;
+    height: fit-content;
+    padding: 15px 15px;
   }
 }

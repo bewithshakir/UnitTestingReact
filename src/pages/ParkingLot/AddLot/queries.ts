@@ -6,7 +6,7 @@ import axios from "../../../infrastructure/ApiHelper";
 const getContactTypes = async () => {
     const options: AxiosRequestConfig = {
         method: 'get',
-        url: '/api/customer-service/contact-type'
+        url: '/api/customer-service/contact-types'
     };
     const { data } = await axios(options);
     return data;
@@ -15,7 +15,7 @@ const getContactTypes = async () => {
 const createLot = async (payload: any) => {
     const options: AxiosRequestConfig = {
         method: 'post',
-        url: '/api/customer-service/lot',
+        url: '/api/customer-service/lots',
         data: payload,
     };
     const { data } = await axios(options);
@@ -25,7 +25,7 @@ const createLot = async (payload: any) => {
 const getTimeZones = async () => {
     const options: AxiosRequestConfig = {
         method: 'get',
-        url: 'api/config-service/timezones?countryCode=us'
+        url: 'api/config-service/time-zones?countryCode=us'
     };
     const { data } = await axios(options);
     return data;
@@ -35,10 +35,36 @@ export const useGetTimeZones = () => {
     return useQuery(["getTimeZones"], () => getTimeZones());
 };
 
+const getDeliveryFrequency = async () => {
+    const options: AxiosRequestConfig = {
+        method: 'get',
+        url: 'api/config-service/delivery-frequencies?countryCode=us'
+    };
+    const { data } = await axios(options);
+    return data;
+};
+
+export const useGetDeliveryFrequency = () => {
+    return useQuery(['getDeliveryFrequency'], () => getDeliveryFrequency());
+};
+
+const getDaysOfWeek = async () => {
+    const options: AxiosRequestConfig = {
+        method: 'get',
+        url: 'api/config-service/days?countryCode=us'
+    };
+    const { data } = await axios(options);
+    return data;
+};
+
+export const useGetDaysOfWeek = () => {
+    return useQuery(['getDaysOfWeek'], () => getDaysOfWeek());
+};
+
 const editParkingLot = async (payload: any, parkingLotId: string) => {
     const options: AxiosRequestConfig = {
         method: 'put',
-        url: `api/customer-service/lot/${parkingLotId}`,
+        url: `api/customer-service/lots/${parkingLotId}`,
         data: payload,
     };
     const { data } = await axios(options);
@@ -49,7 +75,7 @@ const getParkingLotData = async (lotId: string, isTrigger: boolean) => {
     if (lotId != "" && typeof lotId != "undefined") {
         const options: AxiosRequestConfig = {
             method: 'get',
-            url: `/api/customer-service/lot/${lotId}?countryCode=us`
+            url: `/api/customer-service/lots/${lotId}?countryCode=us`
         };
         const { data } = await axios(options);
         return data;
@@ -60,7 +86,7 @@ export const useGetContactTypes = () => {
     return useQuery(["getContactTypes"], () => getContactTypes());
 };
 
-export const useCreateLot = (onError:any, onSuccess:any) => {
+export const useCreateLot = (onError: any, onSuccess: any) => {
     return useMutation((payload: any) => createLot(payload), {
         onError,
         onSuccess,

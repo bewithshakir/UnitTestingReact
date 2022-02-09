@@ -8,13 +8,13 @@ import './style.scss';
 import Select from '../../components/UIComponents/Select/SingleSelect';
 import { useFormik } from 'formik';
 import TaxModel from '../../models/TaxModel';
-import {AddFuelTaxValidationSchema, EditFuelTaxValidationSchema } from './validation';
+import { AddFuelTaxValidationSchema, EditFuelTaxValidationSchema } from './validation';
 import AutocompleteInput from '../../components/UIComponents/GoogleAddressComponent/GoogleAutoCompleteAddress';
-import { useAddFuelTax, useGetFuelTax, useEditFuelTax } from './queries';
+import { useAddFuelTax, useGetFuelTax, useEditFuelTax, useGetFuelTypeList } from './queries';
 import ToastMessage from '../../components/UIComponents/ToastMessage/ToastMessage.component';
 import { DatePickerInput } from '../../components/UIComponents/DatePickerInput/DatePickerInput.component';
 import moment from 'moment';
-import { useLocation, useHistory } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const initialValues = new TaxModel();
 
@@ -24,6 +24,10 @@ interface IFormStatus {
 }
 interface IFormStatusProps {
     [key: string]: IFormStatus
+}
+
+interface AddFuelTaxProps {
+    version: string
 }
 
 const formStatusProps: IFormStatusProps = {
@@ -42,51 +46,32 @@ const formStatusProps: IFormStatusProps = {
 };
 
 
-const AddFuelTax = memo(() => {
+const AddFuelTax: React.FC<AddFuelTaxProps> = memo(() => {
     const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
     setVersion("Breadcrumbs-Single");
-    const history = useHistory();
+    const navigate = useNavigate();
     const isFormValidated = useShowConfirmationDialogBoxStore((state) => state.setFormFieldValue);
     const showDialogBox = useShowConfirmationDialogBoxStore((state) => state.showDialogBox);
-    const isFormFieldChange = () => formik.dirty;
     const { t } = useTranslation();
-    const [apiResposneState, setAPIResponse] = useState(false);
     const [formStatus, setFormStatus] = useState<IFormStatus>({
         message: '',
         type: '',
     });
 
-    const fuelTypes = [
-        { label: "Regular", value: "Regular" },
-        { label: "Diesel", value: "Diesel" }
-    ];
 
-
-
-    const onAddFuelTaxSuccess = ()=> {
-        setAPIResponse(true);
+    // Add section starts
+    const onAddFuelTaxSuccess = () => {
         isFormValidated(false);
+        formik.resetForm({ values: formik.values });
         setFormStatus(formStatusProps.updated);
-        setTimeout(() => {
-            setAPIResponse(false);
-        }, 6000);
     };
-    const onAddFuelTaxError = (err: any)=> {
-        try {
-            const { data } = err.response;
-            setAPIResponse(true);
-            // setDisabled(false);
-            setFormStatus({ message: data?.error?.message || formStatusProps.error.message, type: 'Error' });
-            formik.setSubmitting(false);
-            setTimeout(() => {
-                setAPIResponse(false);
-            }, 6000);
-        } catch (error) {
-            setFormStatus(formStatusProps.error);
-        }
+    const onAddFuelTaxError = (err: any) => {
+        const { data } = err.response;
+        setFormStatus({ message: data?.error?.message || formStatusProps.error.message, type: 'Error' });
+        formik.setSubmitting(false);
     };
 
-    const { mutate: createNewFuelTaxData } = useAddFuelTax(onAddFuelTaxSuccess, onAddFuelTaxError);
+    const { mutate: createNewFuelTaxData, isSuccess: isSuccessAddTax, isError: isErrorAddTax } = useAddFuelTax(onAddFuelTaxSuccess, onAddFuelTaxError);
 
     const createNewFuelTax = (form: TaxModel) => {
         try {
@@ -94,7 +79,7 @@ const AddFuelTax = memo(() => {
                 "state": form.state,
                 "city": form.city,
                 "countryCd": form.countryCd,
-                "fuelType": form.fuelType.value,
+                "fuelType": form.productType.value,
                 "startDate": moment(form.startDate).format("MM-DD-YYYY"),
                 "endDate": moment(form.endDate).format("MM-DD-YYYY"),
                 "fedFuelTax": parseFloat(form.federalRate),
@@ -105,7 +90,8 @@ const AddFuelTax = memo(() => {
                 "countyFuelTax": parseFloat(form.countryFuelRate),
                 "miscInspFuelTax": parseFloat(form.InspFuelRate),
                 "miscLocalFuelTax": parseFloat(form.miscLocalFuelRate),
-                "miscLoadFuelTax": parseFloat(form.loadFuel)
+                "miscLoadFuelTax": parseFloat(form.loadFuel),
+                "ppdSalesTax": parseFloat(form.ppdSalesTax),
             };
             createNewFuelTaxData(apiPayload);
         } catch (error) {
@@ -114,31 +100,23 @@ const AddFuelTax = memo(() => {
     };
 
 
-    const onEditFuelTaxSuccess = ()=> {
-        setAPIResponse(true);
+    const onEditFuelTaxSuccess = () => {
+        isFormValidated(false);
         setFormStatus(formStatusProps.updated);
-        setTimeout(() => {
-            setAPIResponse(false);
-            history.push('/taxes');
-        }, 2000);
+        formik.resetForm({ values: formik.values });
     };
-    const onEditFuelTaxError = (err: any)=> {
+    const onEditFuelTaxError = (err: any) => {
         try {
             const { data } = err.response;
-            setAPIResponse(true);
-            // setDisabled(false);
             setFormStatus({ message: data?.error?.message || formStatusProps.error.message, type: 'Error' });
             formik.setSubmitting(false);
-            setTimeout(() => {
-                setAPIResponse(false);
-            }, 6000);
         } catch (error) {
             setFormStatus(formStatusProps.error);
         }
     };
 
 
-    const { mutate: updateFuelTaxData } = useEditFuelTax(onEditFuelTaxSuccess, onEditFuelTaxError);
+    const { mutate: updateFuelTaxData, isSuccess: isSuccessEditTax, isError: isErrorEditTax } = useEditFuelTax(onEditFuelTaxSuccess, onEditFuelTaxError);
 
 
     const updateFuelTax = (form: TaxModel) => {
@@ -147,7 +125,7 @@ const AddFuelTax = memo(() => {
                 "state": form.state,
                 "city": form.city,
                 "countryCd": form.countryCd,
-                "fuelType": form.fuelType.value,
+                "fuelType": form.productType.value,
                 "startDate": moment(form.startDate).format("MM-DD-YYYY"),
                 "endDate": moment(form.endDate).format("MM-DD-YYYY"),
                 "fedFuelTax": parseFloat(form.federalRate),
@@ -158,7 +136,8 @@ const AddFuelTax = memo(() => {
                 "countyFuelTax": parseFloat(form.countryFuelRate),
                 "miscInspFuelTax": parseFloat(form.InspFuelRate),
                 "miscLocalFuelTax": parseFloat(form.miscLocalFuelRate),
-                "miscLoadFuelTax": parseFloat(form.loadFuel)
+                "miscLoadFuelTax": parseFloat(form.loadFuel),
+                "ppdSalesTax": parseFloat(form.ppdSalesTax),
             };
             updateFuelTaxData(apiPayload);
         } catch (error) {
@@ -167,76 +146,61 @@ const AddFuelTax = memo(() => {
     };
 
     // edit section
-    const [isDisabled, setDisabled] = useState(false);
     const [isEditMode, setEditMode] = useState(false);
     const location = useLocation();
+    const { data: fuelTypes } = useGetFuelTypeList();
 
 
-    useEffect(() => {
-        const selectedProductId = location.pathname.split("/").pop();
-        if (selectedProductId != "addFuelTax") {
-            setEditMode(true);
-            setDisabled(true);
-            isFormValidated(false);
-        } else {
-            setEditMode(false);
-            setDisabled(false);
+
+    const populateDataInAllFields = (responseData: any) => {
+        formik.resetForm({
+            values: { ...responseData }
+        });
+    };
+
+
+    const onGetSaleTaxSuccess = (response: any) => {
+
+        try {
+            if (response?.data) {
+                const finalData = {
+                    city: response.data.data.city,
+                    state: response.data.data.state,
+                    federalRate: response.data.data.fedFuelTax,
+                    localRate: response.data.data.revenueFuelRate,
+                    salesFuelRate: response.data.data.salesFuelRate,
+                    stateFuelRate: response.data.data.stateFuelTax,
+                    cityFuelRate: response.data.data.cityFuelTax,
+                    countryFuelRate: response.data.data.countyFuelTax,
+                    InspFuelRate: response.data.data.miscInspFuelTax,
+                    miscLocalFuelRate: response.data.data.miscLocalFuelTax,
+                    loadFuel: response.data.data.miscLoadFuelTax,
+                    productType: { label: response.data.data.productNm, value: response.data.data.productCd },
+                    startDate: response.data.data.startDate,
+                    endDate: response.data.data.endDate,
+                    countryCd: 'us',
+                    ppdSalesTax: response.data.data.ppdSalesTax
+                };
+
+                populateDataInAllFields(finalData);
+                setEditMode(true);
+            }
+        } catch {
+            setFormStatus({ message: t("formStatusProps.error.message"), type: 'Error' });
         }
-    }, [location]);
-
-
-    const populateDataInAllFields = (formData: any)=> {
-        formik.setFieldValue('city', formData.city);
-        formik.setFieldValue('state', formData.state);
-        formik.setFieldValue('federalRate', formData.fedFuelTax);
-        formik.setFieldValue('localRate', formData.revenueFuelRate);
-        formik.setFieldValue('salesFuelRate', formData.salesFuelRate);
-        formik.setFieldValue('stateFuelRate', formData.stateFuelTax);
-        formik.setFieldValue('cityFuelRate', formData.cityFuelTax);
-        formik.setFieldValue('countryFuelRate', formData.countyFuelTax);
-        formik.setFieldValue('InspFuelRate', formData.miscInspFuelTax);
-        formik.setFieldValue('miscLocalFuelRate', formData.miscLocalFuelTax);
-        formik.setFieldValue('loadFuel', formData.miscLoadFuelTax);
-        formik.setFieldValue('fuelType', { label: formData.saleableProductNm, value: formData.saleableProductNm});
-        formik.setFieldValue('startDate', formData.startDate);
-        formik.setFieldValue('endDate', formData.endDate);
-        formik.setFieldValue('countryCd','us');
     };
-
-
-    const onGetSaleTaxSuccess = (response: any)=> {
-        populateDataInAllFields(response.data.data);
-        setEditMode(true);
-    };
-    const onGetSaleTaxError = (err: any)=> {
+    const onGetSaleTaxError = (err: any) => {
         try {
             const { data } = err.response;
-            setAPIResponse(true);
             setFormStatus({ message: data?.error?.message || formStatusProps.error.message, type: 'Error' });
             formik.setSubmitting(false);
-            setTimeout(() => {
-                setAPIResponse(false);
-            }, 6000);
-        } catch(error) {
+        } catch (error) {
             setFormStatus(formStatusProps.error);
         }
     };
 
     useGetFuelTax(location.search, onGetSaleTaxSuccess, onGetSaleTaxError);
 
-
-
-    const formik = useFormik({
-        initialValues,
-        validationSchema: isEditMode?EditFuelTaxValidationSchema:AddFuelTaxValidationSchema,
-        onSubmit: (values) => {
-            if(isEditMode) {
-                updateFuelTax(values);
-            } else {
-                createNewFuelTax(values);
-            }
-        }
-    });
 
     const handleGoogleAddressChange = (addressObj: any) => {
         formik.setFieldValue('addressLine1', addressObj.addressLine1);
@@ -245,7 +209,7 @@ const AddFuelTax = memo(() => {
         formik.setFieldValue('countryCd', 'us');
     };
 
-    function handleGoogleAddressBlur() {
+    function handleGoogleAddressBlur () {
         formik.setFieldTouched("addressLine1");
         formik.validateField("addressLine1");
         formik.setFieldTouched("city");
@@ -254,67 +218,57 @@ const AddFuelTax = memo(() => {
         formik.validateField("state");
     }
 
-    const disableButton = () => {
-        if (isEditMode) {
-            // if edit button is clicked, form is filled with values from get req and below is condition for handling save button enable and dsiable
-            if (formik.touched && Object.keys(formik.touched).length === 0 && Object.getPrototypeOf(formik.touched) === Object.prototype) {
-                if (formik.dirty) {
-                    if (formik.initialValues != formik.values) {
-                        return false;
-                    }
-                }
+    const formik = useFormik({
+        initialValues,
+        validationSchema: isEditMode ? EditFuelTaxValidationSchema : AddFuelTaxValidationSchema,
+        onSubmit: (values) => {
+            if (isEditMode) {
+                updateFuelTax(values);
             } else {
-                return (!formik.isValid || !formik.dirty) || formik.isSubmitting;
+                createNewFuelTax(values);
             }
+        },
+        enableReinitialize: true,
+    });
+
+    useEffect(() => {
+        if (!formik.isValid || formik.dirty) {
+            isFormValidated(true);
         } else {
-            return (!formik.isValid || !formik.dirty) || formik.isSubmitting;
+            isFormValidated(false);
+        }
+    }, [formik.isValid, formik.dirty]);
+
+
+    const onClickBack = () => {
+        if (!formik.isValid || formik.dirty) {
+            showDialogBox(true);
+        } else {
+            navigate('/taxes');
+        }
+    };
+
+    const disableButton = () => {
+        if (formik.dirty) {
+            return !formik.isValid || formik.isSubmitting;
+        } else {
+            return true;
         }
     };
 
 
-    function onClickBack () {
-        if (isEditMode) {
-            if (formik.touched && Object.keys(formik.touched).length === 0 && Object.getPrototypeOf(formik.touched) === Object.prototype) {
-                if (formik.dirty) {
-                    if (formik.initialValues != formik.values) {
-                        isFormValidated(false);
-                        history.push('/taxes');
-                    }
-                }
-            } else {
-                showDialogBox(true);
-            }
-        } else {
-            isFormValidated(false);
-            history.push('/taxes');
-        }
-    }
-
-
-    const handleFormDataChange = () => {
-        if (isEditMode) {
-                if (formik.dirty) {
-                    if (formik.initialValues != formik.values) {
-                        isFormValidated(false);
-                    }
-                }
-        } 
-        if (isFormFieldChange()) {
-            isFormValidated(true); 
-        }
-    };  
     return (
         <>
             <Box display="flex" mt={10} ml={16}>
                 <Grid item md={10} xs={10}>
                     <Container maxWidth="lg" className="page-container">
-                        <form onSubmit={formik.handleSubmit} onBlur={handleFormDataChange} data-test="component-AddFuelTax">
+                        <form id="addFuelTaxForm" onSubmit={formik.handleSubmit} data-test="component-AddFuelTax">
 
-                                <Grid item xs={12} md={12}>
-                                    <Box className="info-section" pl={2.7} pb={1.8} pt={2.0} pr={20} >
-                                        *Certain markets require a combined Revenue (%) and Sales (%) Tax on the Price per Gallon with or without Adder/Discount.
-                                    </Box>
-                                </Grid>
+                            <Grid item xs={12} md={12}>
+                                <Box className="info-section" pl={2.7} pb={1.8} pt={2.0} pr={20} >
+                                    *Certain markets require a combined Revenue (%) and Sales (%) Tax on the Price per Gallon with or without Adder/Discount.
+                                </Box>
+                            </Grid>
                             <Typography color="var(--Darkgray)" variant="h3" gutterBottom className="fw-bold" mb={1} pt={3}>
                                 Fill all the Mandatory fields *
                             </Typography>
@@ -359,20 +313,20 @@ const AddFuelTax = memo(() => {
                                     />
                                 </Grid>
 
-                                <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
+                                <Grid item xs={12} md={6} pr={2.5} pb={2.5} data-testid="temp">
                                     <Select
-                                        id='fuelType'
-                                        name='fuelType'
-                                        label='FUEL TYPE'
+                                        id='productType'
+                                        name='productType'
+                                        label='PRODUCT NAME'
                                         placeholder='Choose'
                                         items={fuelTypes}
-                                        value={formik.values.fuelType}
+                                        value={formik.values.productType}
                                         onChange={formik.setFieldValue}
-                                        helperText={(formik.touched.fuelType && formik.errors.fuelType) ? formik.errors.fuelType.value : undefined}
-                                        error={(formik.touched.fuelType && formik.errors.fuelType) ? true : false}
-                                        onBlur={() => { formik.setFieldTouched("fuelType"); formik.validateField("fuelType"); }}
-                                        isDisabled={isEditMode ? true : isDisabled}
-                                        data-test="fuelType"
+                                        helperText={(formik.touched.productType && formik.errors.productType) ? formik.errors.productType.value : undefined}
+                                        error={(formik.touched.productType && formik.errors.productType) ? true : false}
+                                        onBlur={() => { formik.setFieldTouched("productType"); formik.validateField("productType"); }}
+                                        isDisabled={isEditMode ? true : false}
+                                        data-test="productType"
                                     />
                                 </Grid>
                                 <Grid item md={3} pl={2.5} pr={2.5} pb={2.5}>
@@ -510,7 +464,7 @@ const AddFuelTax = memo(() => {
                                 <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
                                     <Input
                                         id='loadFuel'
-                                        label='MISC. LOAD FUEL TAX ($))'
+                                        label='MISC. LOAD FUEL TAX ($)'
                                         type='text'
                                         placeholder={t("taxes.fuelTax.form.miscLoadFuelTax")}
                                         helperText={(formik.touched.loadFuel && formik.errors.loadFuel) ? formik.errors.loadFuel : undefined}
@@ -519,8 +473,20 @@ const AddFuelTax = memo(() => {
                                         data-test="loadFuel"
                                     />
                                 </Grid>
+                                <Grid item xs={12} md={6} pl={2.5} pb={2.5}>
+                                    <Input
+                                        id='ppdSalesTax'
+                                        label='PPD SALES TAX (PREPAID) ($)'
+                                        type='text'
+                                        placeholder={t("taxes.fuelTax.form.ppdSalesTax")}
+                                        helperText={(formik.touched.ppdSalesTax && formik.errors.ppdSalesTax) ? formik.errors.ppdSalesTax : undefined}
+                                        error={(formik.touched.ppdSalesTax && formik.errors.ppdSalesTax) ? true : false}
+                                        {...formik.getFieldProps('ppdSalesTax')}
+                                        data-test="ppdsalestax"
+                                    />
+                                </Grid>
                             </Grid>
-                            <Grid item md={12} mt={2} mb={1}>
+                            <Grid item md={12} mt={2} mb={4}>
                                 <Box className="form-action-section">
                                     <Button
                                         types="cancel"
@@ -541,7 +507,13 @@ const AddFuelTax = memo(() => {
                                     </Button>
 
                                 </Box>
-                                <ToastMessage isOpen={apiResposneState} messageType={formStatus.type} onClose={() => { return ''; }} message={formStatus.message} />
+                                <ToastMessage
+                                    isOpen={
+                                        isErrorAddTax || isSuccessAddTax || isSuccessEditTax || isErrorEditTax
+                                    }
+                                    messageType={formStatus.type}
+                                    onClose={() => { return ''; }}
+                                    message={formStatus.message} />
                             </Grid>
 
                         </form>

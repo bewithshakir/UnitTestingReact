@@ -30,15 +30,15 @@ export default class ProductManagementModel {
         return data.map((obj: any) => {
             return ({
                 ...obj,
-                productType: obj.productClass.productClassNm,
-                status: obj.productServiceInd,
-                pricing: obj.productClass.productClassNm === 'Fuel' ? '--' : `$${obj.manualPricing}`,
+                productType: obj.ProductGroup.productGroupNm,
+                status: obj.activeInactiveInd,
+                pricing: obj.ProductGroup.productGroupNm === 'Fuel' ? '--' : `$${obj.manualPricing}`,
                 product: {
-                    productId: obj.productId,
-                    productName: obj.productName,
-                    productColorCd: obj.productColor.productColorCd,
-                    productColorNm: obj.productColor.productColorNm,
-                    productColorCode: obj.productColor.productColorCode,
+                    productId: obj.productCd,
+                    productName: obj.productNm,
+                    productColorCd: obj.ProductIcon.productIconCd,
+                    productColorNm: obj.ProductIcon.productIconNm,
+                    productColorCode: obj.ProductIcon.productIconHexCode,
                 }
             });
         });

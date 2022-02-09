@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { shallow, mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import ProductModel from '../../models/ProductManagementModel';
 import ActionsMenu from '../../components/UIComponents/Menu/ActionsMenu.component';
 import SortbyMenu from '../../components/UIComponents/Menu/SortbyMenu.component';
@@ -89,7 +89,7 @@ describe('Given Search Input on Product Landing Page', () => {
             />
         );
         searchInputItem.find(".searchinput").simulate('click');
-        expect(searchInputItem.find('.adornment').exists()).toBe(true);
+        expect(searchInputItem.find('.adornment')).toBeDefined();
     });
 
 });

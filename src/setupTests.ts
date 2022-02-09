@@ -12,24 +12,30 @@ import { setLogger } from 'react-query';
 
 Enzyme.configure({ adapter: new Adapter() });
 
-export const server = setupServer(...handlers);
+export const serverMsw = setupServer(...handlers);
 
-// // Establish API mocking before all tests.
-// beforeAll(() => server.listen());
-// // Reset any request handlers that we may add during the tests,
-// // so they don't affect other tests.
-// afterEach(() => server.resetHandlers());
-// // Clean up after the tests are finished.
-// afterAll(() => server.close());
+// Establish API mocking before all tests.
+beforeAll(() => serverMsw.listen());
+// Reset any request handlers that we may add during the tests,
+// so they don't affect other tests.
+afterEach(() => serverMsw.resetHandlers());
+// Clean up after the tests are finished.
+afterAll(() => serverMsw.close());
 
-// // silence react-query errors
-// setLogger({
-//     log: console.log,
-//     warn: console.warn,
-//     error: () => {},
-// });
+// Turn off network error logging. 
+// When testing we want to suppress network errors being logged to the console.
+// silence react-query errors
+setLogger({
+    log: console.log,
+    warn: console.warn,
+    error: () => {},
+});
 
 jest.mock("react-i18next", () => ({
-    useTranslation: () => ({ t: (key: any) => key }),
+    useTranslation: () => ({ 
+        t: (key: any) => key,
+        i18n: { changeLanguage: jest.fn() }
+    }),
     Trans: ({ children }: any) => children
 }));
+

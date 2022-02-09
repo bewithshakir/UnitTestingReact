@@ -30,17 +30,7 @@ div{
       justify-content: flex-start;
     }
     .Mui-selected{
-      .menuitem-text{
-        .MuiTypography-root{
-          font-weight: bold;
-          color: var(--Blue-Btn);
-        }
-      }
-      .menuitem-icon{
-        svg path:first-child {
-          fill: var(--Blue-Btn);
-        }
-      }
+      background-color: inherit;
     }
   }
 }
