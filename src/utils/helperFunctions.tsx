@@ -25,7 +25,7 @@ export const formatFileSizeUnit = (sizeInBytes: number, fileSizeUnit: fileFormat
         default:
             coversionParam = 1;
       }
-    return Math.ceil(sizeInBytes/(coversionParam)) + ` ${fileSizeUnit}`;
+      return parseFloat((sizeInBytes/(coversionParam)).toFixed(2)) + ` ${fileSizeUnit}`;
 };
 
 export const getCheckBoxDisabledByPaymentType = (value: string) => {
