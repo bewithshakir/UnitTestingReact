@@ -24,12 +24,13 @@ export interface TaxLandingContentProps {
 
 
 const TaxLandingContent: React.FC<TaxLandingContentProps> = memo(() => {
+
   const TaxObj = new TaxModel();
   const headCells = TaxObj.fieldsToDisplay();
   const headCellsLots = TaxObj.fieldsToDisplayLotTable();
   const massActionOptions = TaxObj.massActions();
   const rowActionOptions = TaxObj.rowActions();
-  const { SortByOptions, FilterByFields } = FuelTax.LandingPage;
+  const { SortByOptions, FilterByFields, DataGridFields } = FuelTax.LandingPage;
 
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = React.useState("");
@@ -39,7 +40,6 @@ const TaxLandingContent: React.FC<TaxLandingContentProps> = memo(() => {
   const [sortOrder, setSortOrder] = React.useState<{ sortBy: string, order: string }>({ sortBy: "", order: "" });
   const [fuelTaxList, setFuelTaxList] = React.useState([]);
   const [fuelTaxProductId, setFuelTaxProductId] = React.useState('');
-
 
   const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
   setVersion("NavLinks");
@@ -104,6 +104,10 @@ const TaxLandingContent: React.FC<TaxLandingContentProps> = memo(() => {
   const getFilterParams = (filterObj: { [key: string]: string[] }) => {
     setResetTableCollaps(true);
     setFilterData(filterObj);
+  };
+
+  const setSelectedRow = (fuelTaxProductId: string) => {
+    setFuelTaxProductId(fuelTaxProductId);
   };
 
   return (
@@ -179,10 +183,14 @@ const TaxLandingContent: React.FC<TaxLandingContentProps> = memo(() => {
             getPages={fetchNextPage}
             searchTerm={searchTerm}
             noDataMsg='Add Fuel Tax by clicking on the "Add Tax" button.'
-            getId={(id: string) => setFuelTaxProductId(id)}
+            getId={setSelectedRow}
             resetCollaps={resetTableCollaps}
             onResetTableCollaps={setResetTableCollaps}
-            InnerTableComponent={<Table primaryKey='productTaxId' id={fuelTaxProductId} headCells={headCellsLots} enableRowAction={true} rowActionOptions={rowActionOptions} />}
+            InnerTableComponent={
+              {
+                [DataGridFields.PRODUCT.label]: <Table primaryKey='productTaxId' id={fuelTaxProductId} headCells={headCellsLots} enableRowAction={true} rowActionOptions={rowActionOptions} />,
+              }
+            }
           />
 
           <RightInfoPanel

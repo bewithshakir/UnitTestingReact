@@ -58,18 +58,9 @@ export default class TaxModel {
     fieldsToDisplay (): headerObj[] {
         const { CITY, STATE, PRODUCT } = DataGridFields;
         return [
-            { field: CITY.field, label: CITY.label, type: 'text', align: 'left' },
-            { field: STATE.field, label: STATE.label, type: 'text', align: 'left' },
-            { field: PRODUCT.field, label: PRODUCT.label, type: 'button', align: 'left', icon: OilCanIcon },
-            { field: "", label: "", type: 'text', align: 'left' },
-            { field: "", label: "", type: 'text', align: 'left' },
-            { field: "", label: "", type: 'text', align: 'left' },
-            { field: "", label: "", type: 'text', align: 'left' },
-            { field: "", label: "", type: 'text', align: 'left' },
-            { field: "", label: "", type: 'text', align: 'left' },
-            { field: "", label: "", type: 'text', align: 'left' },
-            { field: "", label: "", type: 'text', align: 'left' },
-            { field: "", label: "", type: 'text', align: 'left' },
+            { field: CITY.field, label: CITY.label, type: 'text', align: 'left', width: "200px" },
+            { field: STATE.field, label: STATE.label, type: 'text', align: 'left', width: "200px" },
+            { field: PRODUCT.field, label: PRODUCT.label, type: 'button', align: 'left', icon: OilCanIcon, width: "750px" },
         ];
     }
 
