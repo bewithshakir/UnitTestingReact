@@ -2,21 +2,7 @@
     &  tbody{
             &.no-data{
                 .nodata{
-                    z-index: 9999;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    width: 19%;
-                    height: 40%;
-                    left: 8%;
-                    transform: translate(0, 0);
-                    position: absolute;
-                }
-                & svg{    
-                    height: 15%;
-                    width: 15%;
-                    padding-bottom: 10px;
-                    color: var(--Gray);
+                   padding: 40% 0% 0% 0%;
                 }
             }
         }   

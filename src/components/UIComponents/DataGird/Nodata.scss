@@ -1,46 +1,23 @@
 tbody{
     &.no-data{
-        padding: 50%;
-    .nodata{   
-            z-index: 9999;
-            display: flex;
+        .nodata{   
             align-items: center;
             justify-content: center;
-            width: 80%;
-            height: 50%;
-            left: 52%;
-            transform: translate(-50%, 400%);
-            position: absolute;
-    & svg{
-        height: 200px;
-        width: 250px;
-        padding-bottom: 10px;
-        color: var(--Gray);
-    }
-}
-    }
-}
-
-.main-area{
-   & .main-area tbody{
-        &.no-data{
-            .nodata{   
-                z-index: 9999;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                width: 74%;
-                height: 20%;
-                left: 57%;
-                position: absolute;
-        
-            & svg{
+            display: flex;
+            position: relative;
+            padding: 16% 0% 0% 0%;  
+            .PLNoDataSVG {
                 height: 200px;
-                width: 250px;
+                width: 240px;
                 padding-bottom: 10px;
                 color: var(--Gray);
+            }
+            & svg{
+                height: 100px;
+                width: 150px;
+                padding-bottom: 10px;
+                color: var(--Gray);
+            }
         }
-    }
-    }
     }
 }

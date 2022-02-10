@@ -325,11 +325,24 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
         );
     };
 
+    const getGridNumberOfColumns = () => {
+       
+        if (props.enableRowSelection ) {
+            if (props.enableRowAction) {
+                return props.headCells.length + 2;
+            } else {
+                return props.headCells.length + 1;
+            }
+        } else {
+            return props.headCells.length;
+        }
+    };
+
     const getData = () => {
         if (props?.rows?.length) {
             return getRowsData();
         } else if (!props?.isLoading) {
-            return (<TableBody className='no-data'> <NoDataFound searchTerm={props.searchTerm} msgLine2={props.noDataMsg} showImg={props.showImg} /> </TableBody>);
+            return (<TableBody className='no-data'><TableRow><TableCell colSpan={getGridNumberOfColumns()} sx={{border:'none'}}><NoDataFound searchTerm={props.searchTerm} msgLine2={props.noDataMsg} showImg={props.showImg} /> </TableCell></TableRow></TableBody>);
         }
     };
 
