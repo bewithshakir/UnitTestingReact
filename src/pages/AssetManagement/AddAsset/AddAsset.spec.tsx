@@ -50,7 +50,6 @@ describe('renders AddAsset component for add mode', () => {
     });
 
     it('renders all mendatory fields with blank value on add mode', ()=> {
-        // const result = renderWithClient(<AddAsset version="Breadcrumbs-Single" />);
         const { formElem, saveBtn} =  getAllElements(result);
         expect(formElem).toBeInTheDocument();
         expect(saveBtn).toBeDisabled();
@@ -64,7 +63,7 @@ describe('renders AddAsset component for add mode', () => {
             const { assetTypeElem, assetStatusElem,  saveBtn} =  getAllElements(result);
             fireEvent.change(assetTypeElem, {target: {value: 'John'}});
 
-            // { label: 'Enabled', value: 'Y', }
+            // for reference: { label: 'Enabled', value: 'Y', }
             await selectEvent.select(assetStatusElem, ["Enabled"]);
             await waitFor(()=> {
                 userEvent.tab();
@@ -121,7 +120,6 @@ describe('renders AddAsset component for add mode', () => {
 
     describe('show dialogue of discard', () => {
         it('render discard popup when form is changed', async()=> {
-            // const result = renderWithClient(<AddAsset version="Breadcrumbs-Single" />);
             const { assetTypeElem, assetStatusElem, cancelBtn} =  getAllElements(result);
 
             fireEvent.change(assetTypeElem, {target: {value: 'John'}});
