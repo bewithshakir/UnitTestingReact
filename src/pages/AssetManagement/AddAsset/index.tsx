@@ -36,7 +36,7 @@ const AddAsset: React.FC<PropsInt> = () => {
     const showDialogBox = useShowConfirmationDialogBoxStore((state) => state.showDialogBox);
     const isFormValidated = useShowConfirmationDialogBoxStore((state) => state.setFormFieldValue);
     const [formStatus, setFormStatus] = useState<IFormStatus>({ message: '', type: '' });
-    const [isEditMode, setEditMode] = useState(false);
+    const [isEditMode] = useState(false);
 
     useEffect(()=> {
         setVersion("Breadcrumbs-Single");
@@ -101,7 +101,7 @@ const AddAsset: React.FC<PropsInt> = () => {
             return true;
         }
     };
-
+    
     return (
         <Box display="flex" className="global_main_wrapper">
             <Grid item md={7} xs={7}>

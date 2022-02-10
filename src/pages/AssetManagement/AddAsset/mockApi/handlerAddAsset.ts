@@ -1,16 +1,12 @@
 import { rest } from "msw";
 
 export const addAssetHandler = () => {
-    return rest.post('https://jsonplaceholder.typicode.com/posts', (req, res, ctx) => {
+    return rest.post('http://52.226.196.74/api/product-service/assets', (req, res, ctx) => {
         return res(
             ctx.status(200),
             ctx.json({
-                data: {
-                    "title": "foo2 Test",
-                    "body": "bar2",
-                    "userId": 2,
-                    "id": 101
-                }
+                data: "Asset saved successfully.",
+                "error": null
             })
         );
     });

@@ -7,9 +7,9 @@ import { useAddAsset } from "./queries";
 
 describe('useAddAsset for useMutation', ()=> {
     const payload = {
-        title: 'foo2',
-        body: 'bar2',
-        userId: 2,
+        countryCode: "us",
+        assetNm: "Test",
+        activeInactiveInd: "Y"
     }
 
     
