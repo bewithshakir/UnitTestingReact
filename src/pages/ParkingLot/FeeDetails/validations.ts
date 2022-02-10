@@ -41,8 +41,14 @@ export const AddFeeDetailsValidationSchema = Yup.object().shape({
             }
         }
       }),
-      considerAsset: Yup.boolean(),
-      assetType: selectOption,
+      considerAsset: Yup.boolean().nullable(),
+      assetType: Yup.object().nullable().test('considerAsset', function (value: any, context: any) {
+        if (context?.parent?.considerAsset) {
+          return this.createError({ message: { label: 'Required', value: 'Required' } });
+        } else {
+          return true;
+        }
+      }),
       assetTypeDesc: Yup.string().nullable(),
       vehicleType: selectOption,
     })
