@@ -79,6 +79,7 @@ export default function DataGridActionsMenu (props: DataGridActionsMenuProps) {
         open={open}
         anchorEl={anchorRef.current}
         role={undefined}
+        onMouseLeave={handleClose}
         transition
         className={"datagrid-actions-popper"}
         placement={"bottom-end"}
