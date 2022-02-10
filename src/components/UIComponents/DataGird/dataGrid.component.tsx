@@ -85,7 +85,8 @@ function getFuelIcon (fuelStatus: string) {
 }
 
 const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
-    const [selectedIndexKey, setSelectedKey] = React.useState(null);
+    const [selectedRowIndex, setSelectedRowIndex] = React.useState(-1);
+    const [selectedColIndex, setSelectedColIndex] = React.useState(-1);
 
     const getKeys = () => {
         return props?.headCells.map((i: any) => i.field);
@@ -93,20 +94,21 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
 
     useEffect(() => {
         if (props.resetCollaps) {
-            setSelectedKey(null);
+            setSelectedRowIndex(-1);
             props.onResetTableCollaps && props.onResetTableCollaps(false);
         }
     }, [props.resetCollaps]);
 
-    const handleCollapaseClick = (e: React.MouseEvent<HTMLButtonElement>, indexKey: any, row: any, key: any) => {
+    const handleCollapaseClick = (e: React.MouseEvent<HTMLButtonElement>, rowIndex: any, colIndex: any, row: any, key: any) => {
         e.stopPropagation();
         const { primaryKey } = props;
         if (!checkCountIsZero(row[key])) {
-            props.getId !== undefined && props.getId(row[primaryKey]);
-            if (indexKey === selectedIndexKey) {
-                setSelectedKey(null);
+            props.getId !== undefined && props.getId(row[primaryKey], row);
+            if (rowIndex === selectedRowIndex && colIndex === selectedColIndex) {
+                setSelectedRowIndex(-1);
             } else {
-                setSelectedKey(indexKey);
+                setSelectedRowIndex(rowIndex);
+                setSelectedColIndex(colIndex);
             }
         }
     };
@@ -209,24 +211,23 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
         }
     };
 
-    const setAccordianButtonStatus = (value: string, indexKey: any) => {
+    const setAccordianButtonStatus = (value: string, rowIndex: any, colIndex: any) => {
         if (checkCountIsZero(value)) {
             return 'empty';
         } else {
-            return indexKey === selectedIndexKey ? 'active' : '';
+            return (rowIndex === selectedRowIndex && selectedColIndex === colIndex) ? 'active' : '';
         }
     };
-
 
     const getRowsData = () => {
         const keys = getKeys();
         const { primaryKey } = props;
         return (
             stableSort(props.rows, getComparator(props.order, props.orderBy))
-                .map((row: any, indexKey: any) => {
+                .map((row: any, rowIndex: any) => {
                     const isItemSelected = isSelected(row[primaryKey]);
-                    return (<React.Fragment key={indexKey}>
-                        <TableRow key={indexKey} sx={{
+                    return (<React.Fragment key={rowIndex}>
+                        <TableRow key={rowIndex} sx={{
                             cursor: props.openDrawer ? "pointer" : "auto"
                         }}>
                             {
@@ -246,51 +247,51 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
                                         />
                                     </TableCell>
                                     : null}
-                            {keys.map((key: any, index: any) =>
+                            {keys.map((key: any, colIndex: any) =>
                                 <TableCell
                                     className="grid-cell-parent"
                                     component="th"
                                     scope="row"
                                     size="small"
-                                    align={props.headCells[index].align}
-                                    key={(indexKey.toString() + index.toString())}
+                                    align={props.headCells[colIndex].align}
+                                    key={(rowIndex.toString() + colIndex.toString())}
                                     onClick={() => props.isChildTable ? {} : openDrawer(row)}
                                 >
                                     {
-                                        props.headCells[index].type === 'text' ?
-                                            props.headCells[index].width ? (
+                                        props.headCells[colIndex].type === 'text' ?
+                                            props.headCells[colIndex].width ? (
                                                 <div
                                                     title={row[key]}
                                                     className="ellipses_column"
                                                     style={{
-                                                        width: props.headCells[index].width,
+                                                        width: props.headCells[colIndex].width,
                                                     }}>
-                                                    {props.headCells[index].bold ? <b>{row[key]}</b> : row[key]}
+                                                    {props.headCells[colIndex].bold ? <b>{row[key]}</b> : row[key]}
                                                 </div>
 
                                             ) : (
-                                                props.headCells[index].bold ? <b>{row[key]}</b> : row[key]
+                                                props.headCells[colIndex].bold ? <b>{row[key]}</b> : row[key]
                                             )
                                             :
-                                            props.headCells[index].type === 'button' ?
+                                            props.headCells[colIndex].type === 'button' ?
                                                 <Button
                                                     types="accordian"
                                                     aria-label="accordian"
-                                                    className={setAccordianButtonStatus(row[key], indexKey)}
-                                                    onClick={(e) => handleCollapaseClick(e, indexKey, row, key)}
-                                                    startIcon={props.headCells[index].icon ? <Icon component={props.headCells[index].icon} /> : undefined}
+                                                    className={setAccordianButtonStatus(row[key], rowIndex, colIndex)}
+                                                    onClick={(e) => handleCollapaseClick(e, rowIndex, colIndex, row, key)}
+                                                    startIcon={props.headCells[colIndex].icon ? <Icon component={props.headCells[colIndex].icon} /> : undefined}
                                                 >
                                                     {
                                                         row[key]
                                                     }
                                                 </Button> :
-                                                props.headCells[index].type === 'icon' ? renderIcon(row[key]) :
-                                                    props.headCells[index].type === 'icons' ? renderIcons(key, row[key], props.headCells[index].align) :
-                                                        props.headCells[index].type === 'image' ? <Avatar sx={tableAvatarSX} src={row[key]} variant="square" /> :
-                                                            props.headCells[index].type === 'images' ? renderImages(row[key]) :
-                                                                props.headCells[index].type === 'dropdown' ? renderSelect() :
-                                                                    props.headCells[index].type === 'status' ? renderStatus(props.headCells[index], row[key]) :
-                                                                        props.headCells[index].type === 'product' ? renderProduct(props.headCells[index], row[key]) : ""
+                                                props.headCells[colIndex].type === 'icon' ? renderIcon(row[key]) :
+                                                    props.headCells[colIndex].type === 'icons' ? renderIcons(key, row[key], props.headCells[colIndex].align) :
+                                                        props.headCells[colIndex].type === 'image' ? <Avatar sx={tableAvatarSX} src={row[key]} variant="square" /> :
+                                                            props.headCells[colIndex].type === 'images' ? renderImages(row[key]) :
+                                                                props.headCells[colIndex].type === 'dropdown' ? renderSelect() :
+                                                                    props.headCells[colIndex].type === 'status' ? renderStatus(props.headCells[colIndex], row[key]) :
+                                                                        props.headCells[colIndex].type === 'product' ? renderProduct(props.headCells[colIndex], row[key]) : ""
                                     }
                                 </TableCell>
                             )}
@@ -315,12 +316,12 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
                         </TableRow>
                         <TableRow>
                             <TableCell className="grid-cell" colSpan={12}>
-                                <Collapse in={indexKey === selectedIndexKey ? true : false} timeout="auto" unmountOnExit>
-                                    {props.InnerTableComponent && props.InnerTableComponent}
+                                <Collapse in={(rowIndex === selectedRowIndex) && selectedColIndex >= 0 ? true : false} timeout="auto" unmountOnExit>
+                                    {(props.InnerTableComponent && selectedColIndex >= 0) && props.InnerTableComponent[props.headCells[selectedColIndex].label]}
                                 </Collapse>
                             </TableCell>
                         </TableRow>
-                    </React.Fragment>);
+                    </React.Fragment >);
                 })
         );
     };

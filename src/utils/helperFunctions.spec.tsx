@@ -28,11 +28,11 @@ describe('maskPhoneNumber', () => {
 });
 
 describe('formatFileSizeUnit', () => {
-    it('0 Bytes', () => {
-        expect(formatFileSizeUnit(0)).toBe('0 Bytes');
+    it('0 MB', () => {
+        expect(formatFileSizeUnit(0)).toBe('0 MB');
     });
-    it('10 Bytes', () => {
-        expect(formatFileSizeUnit(10)).toBe('10Bytes');
+    it('1 MB', () => {
+        expect(formatFileSizeUnit(10)).toBe('1 MB');
     });
 });
 
