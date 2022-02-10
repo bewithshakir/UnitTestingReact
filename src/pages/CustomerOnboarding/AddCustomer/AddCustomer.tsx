@@ -28,7 +28,7 @@ import FileUploadComponent from '../../../components/UIComponents/FileUpload/Fil
 
 const initialValues = new CustomerModel();
 
-function getTokenApplicable (Obj: any) {
+function getTokenApplicable(Obj: any) {
     const temp: any = [];
     Object.entries(Obj).forEach(obj => {
         if (obj[1]) {
@@ -174,6 +174,7 @@ const AddCustomer: React.FC<AddCustomerProps> = () => {
     const onAddCustomerError = (err: any) => {
         const { data } = err?.response;
         setAPIResponse(true);
+        setIsSubmitting(false);
         setFormStatus({ message: data?.error?.message || formStatusProps?.error?.message, type: 'Error' });
         formik.setSubmitting(false);
         setTimeout(() => {
@@ -245,6 +246,7 @@ const AddCustomer: React.FC<AddCustomerProps> = () => {
     const onEditCustomerError = (err: any) => {
         const { data } = err?.response;
         setAPIResponse(true);
+        setIsSubmitting(false);
         isFormValidated(false);
         setFormStatus({ message: data?.error?.message || formStatusProps?.error?.message, type: 'Error' });
         formik.setSubmitting(false);
@@ -469,7 +471,7 @@ const AddCustomer: React.FC<AddCustomerProps> = () => {
 
     const isFormFieldChange = () => formik.dirty || validFiles.length > 0 || uploadErroMsg !== "";
 
-    function onClickBack () {
+    function onClickBack() {
         if ((isFormFieldChange() && !isEditShown) || (isFormFieldChange() && isEditMode)) {
             showDialogBox(true);
         } else {
@@ -505,7 +507,7 @@ const AddCustomer: React.FC<AddCustomerProps> = () => {
         return buttonEnable === false;
     };
 
-    function handleGoogleAddressChange (addressObj: any) {
+    function handleGoogleAddressChange(addressObj: any) {
         formik.setFieldValue('addressLine1', addressObj.addressLine1);
         formik.setFieldValue('addressLine2', addressObj.addressLine2);
         formik.setFieldValue('city', addressObj.city);
@@ -513,7 +515,7 @@ const AddCustomer: React.FC<AddCustomerProps> = () => {
         formik.setFieldValue('postalCode', addressObj.postalCode);
     }
 
-    function handleGoogleAddressBlur () {
+    function handleGoogleAddressBlur() {
         formik.setFieldTouched("addressLine1");
         formik.validateField("addressLine1");
         formik.setFieldTouched("addressLine2");
@@ -1179,7 +1181,7 @@ const AddCustomer: React.FC<AddCustomerProps> = () => {
                                             className="ml-4"
                                             disabled={isSubmitDisabled() || isSubmitting}
                                         >
-                                            {isSubmitting && <LoadingIcon data-testid="loading-spinner" className='loading_save_icon' />} {t("buttons.save")}  
+                                            {isSubmitting && <LoadingIcon data-testid="loading-spinner" className='loading_save_icon' />} {t("buttons.save")}
                                         </Button>
                                     </Box>}
                                     <ToastMessage isOpen={apiResposneState} messageType={formStatus.type} onClose={() => { return ''; }} message={formStatus.message} />
