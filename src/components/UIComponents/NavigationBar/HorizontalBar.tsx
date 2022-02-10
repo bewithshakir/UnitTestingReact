@@ -113,6 +113,9 @@ export default function HorizontalBar (props: HorizontalBarProps) {
     } else if(pathname.includes('/truckParkingLot/add')){
       navigate('/truckParkingLot');
     }
+    else if(pathname.includes('/assetManagement/add')){
+      navigate('/assetManagement');
+    }
     else {
       props.onBack();
     }
@@ -150,6 +153,8 @@ export default function HorizontalBar (props: HorizontalBarProps) {
         return t('UploadAttachments.breadCrumbText');
       case pathname.includes('truckParkingLot/add'):
         return t('addTruckParkingLot.title');
+      case pathname.includes('assetManagement/add'):
+        return t('assetManagement.form.addTitle');
       default:
         return selectedCustomerName;
     }
