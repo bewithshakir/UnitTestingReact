@@ -38,9 +38,6 @@ export default function FeeDetails() {
     const { t } = useTranslation();
     const { theme } = useTheme();
     const { pathname } = useLocation();
-    console.log("&&&&");
-    console.log(useLocation());
-    console.log(useLocation() +  "   ::::    " + pathname);
     const a = pathname.split('/');
    
     const lotId = a[5];
