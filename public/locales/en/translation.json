@@ -275,7 +275,8 @@
       "addressLine2": "ADDRESS LINE 2",
       "city": "CITY",
       "state": "STATE",
-      "postalCode": "POSTAL CODE"
+      "postalCode": "POSTAL CODE",
+      "editTitle": "Edit Truck Parking lot"
     }
   },
   "productManagement": {
