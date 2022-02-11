@@ -16,6 +16,7 @@ type props = {
 }
 
 export default function ServiceRule({index, isDisabled, formik, lotId}: props) {
+    console.warn('======>', formik);
 
     const { t } = useTranslation();
 
@@ -165,7 +166,7 @@ export default function ServiceRule({index, isDisabled, formik, lotId}: props) {
                                 ? true : false
                         }
                         onBlur={() => { formik.setFieldTouched(`serviceFeeRules[${index}].productName`); formik.validateField(`serviceFeeRules[${index}].productName`); }}
-                        isDisabled={(formik?.values?.serviceFeeRules?.[index]?.productType?.value?.toLowerCase() === 'all') ? true : isDisabled}
+                        isDisabled={(formik?.values?.serviceFeeRules?.[index]?.productType?.value?.toLowerCase() === 'all') || (formik?.values?.serviceFeeRules?.[index]?.masterProductType?.value?.toLowerCase() === 'all') ? true : isDisabled}
                         required={(formik?.values?.serviceFeeRules?.[index]?.productType?.value?.toLowerCase() === 'all') ? false : true}
                     />
                 </Grid>
@@ -234,7 +235,7 @@ export default function ServiceRule({index, isDisabled, formik, lotId}: props) {
                     </Grid>
                 </Grid>
             }
-            <Grid container item md={12} mt={1} mb={1}>
+            {!(formik.values.serviceFeeRules[index].considerAsset) && <Grid container item md={12} mt={1} mb={1}>
                 <Grid item xs={12} md={6}>
                     <Select
                         id={`serviceFeeRules[${index}].vehicleType`}
@@ -261,6 +262,7 @@ export default function ServiceRule({index, isDisabled, formik, lotId}: props) {
                     />
                 </Grid>
             </Grid>
+            }
         </Fragment>
     );
 }
