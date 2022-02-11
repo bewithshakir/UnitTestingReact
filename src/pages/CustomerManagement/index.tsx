@@ -11,7 +11,7 @@ import { useCustomers } from "./queries";
 import SearchInput from "../../components/UIComponents/SearchInput/SearchInput";
 import { Add } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
-import { filterByFields, sortByOptions } from "./config";
+import { Customer, MASS_ACTION_TYPES, ROW_ACTION_TYPES, SORTBY_TYPES } from './config';
 import { RightInfoPanel } from "../../components/UIComponents/RightInfoPanel/RightInfoPanel.component";
 import { Box, FormControl, Grid, Typography } from "@mui/material";
 import { HorizontalBarVersionState, useStore } from "../../store";
@@ -31,8 +31,7 @@ const Content: React.FC<ContentProps> = () => {
   const headCellsLots = CustomerObj.fieldsToDisplayLotTable();
   const rowActionOptions = CustomerObj.rowActions();
   const massActionOptions = CustomerObj.massActions();
-  const ACTION_TYPES = CustomerObj.ACTION_TYPES;
-  const MASS_ACTION_TYPES = CustomerObj.MASS_ACTION_TYPES;
+  const { SortByOptions, FilterByFields, Customer_DataGridFields } = Customer.LandingPage;
 
   const navigate = useNavigate();
   const [info, setInfo] = React.useState({});
@@ -102,16 +101,16 @@ const Content: React.FC<ContentProps> = () => {
   const onSortBySlected = (value: string) => {
     let sortOrder;
     switch (value) {
-      case "Customer Name A-Z":
+      case SORTBY_TYPES.CUSTOMER_NAME_AZ:
         sortOrder = { sortBy: "customerName", order: "asc" };
         break;
-      case "Customer Name Z-A":
+      case SORTBY_TYPES.CUSTOMER_NAME_ZA:
         sortOrder = { sortBy: "customerName", order: "desc" };
         break;
-      case "Newest to Oldest":
+      case SORTBY_TYPES.NEWEST_TO_OLDEST:
         sortOrder = { sortBy: "date", order: "desc" };
         break;
-      case "Oldest to New":
+      case SORTBY_TYPES.OLDEST_TO_NEW:
         sortOrder = { sortBy: "date", order: "asc" };
         break;
       default:
@@ -150,14 +149,14 @@ const Content: React.FC<ContentProps> = () => {
 
   const handleRowAction = (action: DataGridActionsMenuOption, row: any) => {
     switch (action.action) {
-      case ACTION_TYPES.EDIT:
+      case ROW_ACTION_TYPES.EDIT:
         // perform action
         navigate(`/customer/viewCustomer/${row.customerId}`);
         break;
-      case ACTION_TYPES.DELETE:
+      case ROW_ACTION_TYPES.DELETE:
         // perform action
         break;
-      case ACTION_TYPES.CONTACT_DETAILS:
+      case ROW_ACTION_TYPES.CONTACT_DETAILS:
         // perform action
         break;
       default: return;
@@ -189,7 +188,7 @@ const Content: React.FC<ContentProps> = () => {
             <Grid item pr={2.5}>
               <FormControl>
                 <SortbyMenu
-                  options={sortByOptions.map((sortByItem) => t(sortByItem))}
+                  options={SortByOptions.map((sortByItem) => t(sortByItem))}
                   onSelect={(value) => onSortBySlected(value)}
                 />
               </FormControl>
@@ -250,14 +249,16 @@ const Content: React.FC<ContentProps> = () => {
             getId={(id: string) => setCustomerId(id)}
             resetCollaps={resetTableCollaps}
             onResetTableCollaps={setResetTableCollaps}
-            InnerTableComponent={<Table primaryKey='deliveryLocationId' id={customerId} headCells={headCellsLots} />}
+            InnerTableComponent={{
+              [Customer_DataGridFields.LOTS.label]: <Table primaryKey='deliveryLocationId' id={customerId} headCells={headCellsLots} />
+            }}
             noDataMsg='Add Customer by clicking on the "Add Customer" button.'
           />
 
           <RightInfoPanel panelType="dynamic-filter"
             open={custFilterPanelVisible} headingText={"customer-filter-panel.header.filter"}
             provideFilterParams={getFilterParams} onClose={handleCustFilterPanelClose}
-            fields={filterByFields}
+            fields={FilterByFields}
             storeKey={'customerFilter'}
           />
           <RightInfoPanel panelType="info-view" category="customer" open={drawerOpen} headingText={infoPanelName} info={info} idStrForEdit={infoPanelEditId} nameStrForEdit={infoPanelName} onClose={drawerClose} />

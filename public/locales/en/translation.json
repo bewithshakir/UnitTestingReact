@@ -340,6 +340,13 @@
     "sortBy": {
       "payment in progress": "Payment In Progress",
       "recently added asset": "Recently Added Asset"
+    },
+    "form": {
+      "title": "Fill all the mandatory fields",
+      "editTitle": "Edit Asset",
+      "addTitle": "Add Asset",
+      "assetType": "Asset Type",
+      "assetStatus": "Status"
     }
   },
   "FeeDetails":{
