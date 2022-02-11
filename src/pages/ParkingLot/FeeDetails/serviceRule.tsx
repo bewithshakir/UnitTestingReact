@@ -54,7 +54,7 @@ export default function ServiceRule({index, isDisabled, formik, lotId}: props) {
         if (productNameList?.data?.lotProducts?.length) {
             setProductNames(productNameList.data.lotProducts.map((obj: any) => ({ label: obj.productNm.trim(), value: obj.applicableProductId.trim() })));
         }
-    }, [ vehicleTypeList, assetTypeList, productTypeList, productNameList, masterProductNamesList]);
+    }, [ vehicleTypeList, assetTypeList, productTypeList, productNameList, masterProductNamesList ]);
 
     const handleProductTypeChange = (fieldName: string, value: any) => {
         formik.setFieldValue(fieldName, value);

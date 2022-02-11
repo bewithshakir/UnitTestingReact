@@ -397,8 +397,8 @@ function AddLotForm (): React.ReactElement {
     };
 
     const isAddScheduleDisabled = () => {
-        if (formik.values.productDelFreq.value && formik.values.orderScheduleDel.length < 10 && !isDisabled) {
-            if(isOrderScheduleDelInfoEmpty(formik.values.orderScheduleDel)) {
+        if (formik?.values?.productDelFreq?.value && formik?.values?.orderScheduleDel?.length < 10 && !isDisabled) {
+            if(isOrderScheduleDelInfoEmpty(formik?.values?.orderScheduleDel)) {
                 return false;
             } 
         }
