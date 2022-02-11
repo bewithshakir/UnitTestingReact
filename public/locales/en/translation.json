@@ -352,6 +352,7 @@
     "head1": "Add Fee Details to fulfil the requirements",
     "feeName":"Fee Name",
     "feeNamePlaceholder": "Enter Fee Name",
+    "deliveryFeehead": "Delivery Fee",
     "deliveryFee":"Delivery Fee ($)",
     "enterFee": "Enter Fee",
     "delFeeShed":"Delivery Fee Schedule",
