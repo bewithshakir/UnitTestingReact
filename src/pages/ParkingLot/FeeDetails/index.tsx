@@ -200,7 +200,8 @@ export default function FeeDetails() {
 
     const isAddServiceFeeRuleDisabled = () => {
         if ((formik.values.serviceFeeRules.length < 10 && !isDisabled)) {
-            if (formik?.values?.serviceFeeRules[0]?.productType?.value?.toLowerCase() === 'all' && formik?.values?.serviceFeeRules[0]?.vehicleType?.value?.toLowerCase() === 'all' && formik?.values?.serviceFeeRules[0]?.assetType?.value?.toLowerCase() === 'all') {
+            if (formik?.values?.serviceFeeRules[0]?.productType?.value?.toLowerCase() === 'all' 
+            && formik?.values?.serviceFeeRules[0]?.vehicleType?.value?.toLowerCase() === 'all') {
                 return true;
             } else {
                 return false;
