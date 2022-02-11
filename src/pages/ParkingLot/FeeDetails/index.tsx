@@ -277,7 +277,7 @@ export default function FeeDetails() {
                                     </Grid>
                                     <Grid item pt={2.5}>
                                         <Typography variant="h3" component="h3" gutterBottom className="left-heading fw-bold" mb={1}>
-                                            {t("FeeDetails.deliveryFee")}
+                                                {t("FeeDetails.deliveryFeehead")}
                                         </Typography>
                                     </Grid>
                                     <Grid container item md={12} mt={2} mb={1} pt={0.5}>
