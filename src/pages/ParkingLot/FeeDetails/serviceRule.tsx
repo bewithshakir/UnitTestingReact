@@ -16,7 +16,6 @@ type props = {
 }
 
 export default function ServiceRule({index, isDisabled, formik, lotId}: props) {
-    console.warn('======>', formik);
 
     const { t } = useTranslation();
 
