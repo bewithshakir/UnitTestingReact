@@ -10,9 +10,9 @@ import { useFormik } from 'formik';
 import TruckLotModel from '../../../../models/TruckParkingLotModel';
 import { AddTruckParkingLotValidationSchema } from './validation';
 import AutocompleteInput from '../../../../components/UIComponents/GoogleAddressComponent/GoogleAutoCompleteAddress';
-import { useAddTruckParkingLot } from './queries';
+import { useAddTruckParkingLot, useGetTruckParkingLotData, useEditTruckParkingLot } from './queries';
 import ToastMessage from '../../../../components/UIComponents/ToastMessage/ToastMessage.component';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { LoadingIcon } from '../../../../assets/icons';
 
 const initialValues = new TruckLotModel();
@@ -49,6 +49,7 @@ const AddLot: React.FC<AddTruckParkingLotProps> = () => {
     const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
     setVersion("Breadcrumbs-Single");
     const navigate = useNavigate();
+    const { truckParkingId }: any = useParams();
     const isFormValidated = useShowConfirmationDialogBoxStore((state) => state.setFormFieldValue);
     const showDialogBox = useShowConfirmationDialogBoxStore((state) => state.showDialogBox);
     const { t } = useTranslation();
@@ -87,11 +88,92 @@ const AddLot: React.FC<AddTruckParkingLotProps> = () => {
         }
     };
 
+      // Edit section starts
+      const [isEditMode, setEditMode] = useState(false);
+
+      const populateDataInAllFields = (responseData: any) => {
+          formik.resetForm({
+              values: { ...responseData }
+          });
+      };
+
+    const onGetTruckParkingLotSuccess = (response: any) => {
+        try {
+            if (response?.data) {
+                const finalData = {
+                    parkingLocationNm: response.data.parkingLocationNm,
+                    addressLine1: response.data.addressLine1 ,
+                    addressLine2: response.data.addressLine2,
+                    stateNm: response.data.stateNm,
+                    cityNm: response.data.cityNm,
+                    postalCd: response.data.postalCd,
+                    countryCode: response.data.countryCode || 'us',
+                  
+                };
+                populateDataInAllFields(finalData);
+                setEditMode(true);
+            }
+        } catch {
+            setFormStatus({ message: t("formStatusProps.error.message"), type: 'Error' });
+        }
+    };
+
+
+    const onGetTruckParkingLotError = (err: any) => {
+        try {
+            const { data } = err.response;
+            setFormStatus({ message: data?.error?.message || t("formStatusProps.error.message"), type: 'Error' });
+            formik.setSubmitting(false);
+        } catch (error: any) {
+            setFormStatus({ message: error?.message || t("formStatusProps.error.message"), type: 'Error' });
+        }
+    };
+
+
+    useGetTruckParkingLotData(truckParkingId, onGetTruckParkingLotSuccess, onGetTruckParkingLotError);
+
+
+    const onEditTruckParkingLotSuccess = () => {
+        isFormValidated(false);
+        setFormStatus({ message: t("formStatusProps.updated.message"), type: 'Success' });
+        formik.resetForm({ values: formik.values });
+    };
+
+    const onEditTruckParkingLotError = (err: any) => {
+        try {
+            const { data } = err.response;
+            setFormStatus({ message: data?.error?.message || t("formStatusProps.error.message"), type: 'Error' });
+            formik.setSubmitting(false);
+        } catch (error: any) {
+            setFormStatus({ message: error?.message || t("formStatusProps.error.message"), type: 'Error' });
+        }
+    };
+
+
+    const { mutate: editTruckParkingLot, isSuccess: isSuccessEditTruckLot, isError: isErrorEditTruckLot } = useEditTruckParkingLot(
+        truckParkingId,
+        onEditTruckParkingLotSuccess,
+        onEditTruckParkingLotError
+    );
+
+
+    const updateTruckParkingLotData = (form: TruckLotModel) => {
+        try {
+            editTruckParkingLot(form);
+        } catch {
+            setFormStatus({ message: t("formStatusProps.error.message"), type: 'Error' });
+        }
+    };
+
     const formik = useFormik({
         initialValues,
         validationSchema: AddTruckParkingLotValidationSchema,
         onSubmit: (values) => {
-            createNewTruckLot(values);
+            if(isEditMode) {
+                updateTruckParkingLotData(values);
+            } else {
+                createNewTruckLot(values);
+            }
         },
     });
 
@@ -258,7 +340,7 @@ const AddLot: React.FC<AddTruckParkingLotProps> = () => {
                                         {isLoadingAddLot && <LoadingIcon data-testid="loading-spinner" className='loading_save_icon' />}
                                     </Button>
                                 </Box>
-                                <ToastMessage isOpen={isErrorAddLot || isSuccessAddLot} messageType={formStatus.type} onClose={() => { return ''; }} message={formStatus.message} />
+                                <ToastMessage isOpen={isErrorAddLot || isSuccessAddLot ||  isSuccessEditTruckLot || isErrorEditTruckLot} messageType={formStatus.type} onClose={() => { return ''; }} message={formStatus.message} />
                             </Grid>
                         </form>
                     </Container>

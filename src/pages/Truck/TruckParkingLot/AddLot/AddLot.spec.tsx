@@ -139,4 +139,75 @@ describe('renders AddDSP component for add/edit mode', () => {
 
     });
 
+
+
+
+    describe('Edit Lot screen on edit mode', () => {
+        
+        beforeEach(async()=> {
+            fireEvent.change(parkingLocationNmElem, {target: {value: 'John'}});
+
+            fireEvent.change(addressLine1Elem, {target: {value: 'E'}});
+            await selectEvent.select(addressLine1Elem, ["Elkton Test"]);
+        });
+
+        it('Test save button is enabled when all mandatory fields are filled', async()=> { 
+            await waitFor(()=> {
+                expect(addressLine2Elem).toHaveValue('Elkton Test');
+                expect(cityElem).toHaveValue('Elkton');
+                expect(stateElem).toHaveValue('VA');
+                result.debug(postalCodeElem);
+                expect(postalCodeElem).toHaveValue('22827');
+
+                userEvent.tab();
+                expect(saveBtn).toBeEnabled();
+            });
+        });
+        it('Test show loader on save button clicked and remove after success', async()=> {
+            await waitFor(()=> {
+                expect(addressLine2Elem).toHaveValue('Elkton Test');
+                expect(cityElem).toHaveValue('Elkton');
+                expect(stateElem).toHaveValue('VA');
+                expect(postalCodeElem).toHaveValue('22827');
+
+                userEvent.tab();
+                expect(saveBtn).toBeEnabled();
+                userEvent.click(saveBtn);
+            });
+            await waitFor(()=> {
+                expect(result.getByText('formStatusProps.success.message')).toBeInTheDocument();
+            });
+        });
+        it('Test show toaster with error message on save button clicked', async()=> {
+            serverMsw.use(
+                rest.post('*', (req, res, ctx) => {
+                    return res(
+                        ctx.status(500),
+                        ctx.json({
+                            data: null,
+                            error: {
+                                details: ['fail to edit truck parking lot']
+                            }
+                        })
+                    );
+                })
+            );
+            await waitFor(()=> {
+                expect(addressLine2Elem).toHaveValue('Elkton Test');
+                expect(cityElem).toHaveValue('Elkton');
+                expect(stateElem).toHaveValue('VA');
+                expect(postalCodeElem).toHaveValue('22827');
+
+                userEvent.tab();
+                expect(saveBtn).toBeEnabled();
+                userEvent.click(saveBtn);
+            });
+            await waitFor(()=> {
+                expect(result.getByText(/fail to edit truck parking lot/i)).toBeInTheDocument();
+                expect(saveBtn).toBeDisabled();
+            });
+        });
+
+    });
+    
 });
