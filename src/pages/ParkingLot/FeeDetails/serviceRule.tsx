@@ -57,12 +57,24 @@ export default function ServiceRule({index, isDisabled, formik, lotId}: props) {
     }, [ vehicleTypeList, assetTypeList, productTypeList, productNameList, masterProductNamesList ]);
 
     const handleProductTypeChange = (fieldName: string, value: any) => {
-        formik.setFieldValue(fieldName, value);
-    };
+
+        console.warn('Jai:', `serviceFeeRules[${index}]`,'Formik', formik);
         
-    const handleMasterProductTypeChange = (fieldName: string, value: any) => {
-        formik.setFieldValue(fieldName, value); 
-    };
+        formik.setFieldValue(`serviceFeeRules[${index}].masterProductType`, { label: "", value: "" });
+        
+        formik.setFieldValue(`serviceFeeRules[${index}].productName`, { label: "", value: "" });
+        
+        formik.setFieldValue(fieldName, value);
+        
+        };
+        
+        const handleMasterProductTypeChange = (fieldName: string, value: any) => {
+        
+        formik.setFieldValue(`serviceFeeRules[${index}].productName`, { label: "", value: "" });
+        
+        formik.setFieldValue(fieldName, value);
+        
+        };
 
     return (
         <Fragment>
