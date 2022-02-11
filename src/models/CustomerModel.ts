@@ -1,8 +1,9 @@
 import moment from 'moment';
 import { useTranslation } from 'react-i18next';
 import { headerObj } from '../components/UIComponents/DataGird/grid.component';
-import { DeleteIcon, ExportIcon, ImportIcon, PositiveCricleIcon, AlertExclamationIcon, ParkingLotIcon } from '../assets/icons';
+import { PositiveCricleIcon, AlertExclamationIcon, ParkingLotIcon } from '../assets/icons';
 import { formatDateAsMMDDYYYY } from '../utils/DateHelpers';
+import { Customer } from '../pages/CustomerManagement/config';
 export interface SelectProps {
     label: string,
     value: string,
@@ -24,6 +25,7 @@ export interface ApContact {
     phoneNumber: string,
 }
 
+const { MassActionOptions, RowActionsOptions, Customer_DataGridFields, LOT_DataGridFields } = Customer.LandingPage;
 export interface AddCustomerForm {
     // General Information
     customerName: string,
@@ -124,32 +126,34 @@ export default class CustomerModel {
     }
 
     fieldsToDisplay (): headerObj[] {
+        const { CUSTOMER_NAME, CONTACT_NAME, ADDRESS, CITY, STATE, ZIP, LOTS, SETTLEMENT_TYPE, DATE_CREATED } = Customer_DataGridFields;
         return [
-            { field: "customerName", label: "CUSTOMER NAME", type: 'text', sortable: true, width: "150px" },
-            { field: "contactName", label: "CONTACT NAME", type: 'text' },
-            { field: "address", label: "ADDRESS", type: 'text', width: "150px" },
-            { field: "city", label: "CITY", type: 'text' },
-            { field: "state", label: "STATE", type: 'text' },
-            { field: "zipCode", label: "ZIP", type: 'text' },
-            { field: "totalLots", label: "LOTS", type: 'button', icon: ParkingLotIcon },
-            { field: "paymentType", label: "SETTLEMENT TYPE", type: 'text' },
-            { field: "createdAt", label: "DATE CREATED", type: 'text' },
+            { field: CUSTOMER_NAME.field, label: CUSTOMER_NAME.label, type: 'text', sortable: true, width: "150px" },
+            { field: CONTACT_NAME.field, label: CUSTOMER_NAME.label, type: 'text' },
+            { field: ADDRESS.field, label: ADDRESS.label, type: 'text', width: "150px" },
+            { field: CITY.field, label: CITY.label, type: 'text' },
+            { field: STATE.field, label: STATE.label, type: 'text' },
+            { field: ZIP.field, label: ZIP.label, type: 'text' },
+            { field: LOTS.field, label: LOTS.label, type: 'button', icon: ParkingLotIcon },
+            { field: SETTLEMENT_TYPE.field, label: SETTLEMENT_TYPE.label, type: 'text' },
+            { field: DATE_CREATED.field, label: DATE_CREATED.label, type: 'text' },
         ];
     }
 
     fieldsToDisplayLotTable (): headerObj[] {
+        const { LOT_NAME, STREET_ADDRESS, ZIP, CITY, STATE, VEHICLES, FUEL, CONTACT, WALLET_RULE } = LOT_DataGridFields;
         return [
-            { field: "deliveryLocationNm", label: "LOT NAME", type: 'text' },
-            { field: "streetAddress", label: "STREET ADDRESS", type: 'text', width: "150px" },
-            { field: "cityNm", label: "CITY", type: 'text' },
-            { field: "stateNm", label: "STATE", type: 'text' },
-            { field: "postalCd", label: "ZIP", type: 'text' },
-            { field: "vehicles", label: "VEHICLES", type: 'text' },
-            { field: "fuelStatus", label: "FUEL", type: 'icons' },
-            { field: 'primaryContactName', label: 'CONTACT', type: 'text' },
+            { field: LOT_NAME.field, label: LOT_NAME.label, type: 'text', width: "150px" },
+            { field: STREET_ADDRESS.field, label: STREET_ADDRESS.label, type: 'text', width: "250px" },
+            { field: CITY.field, label: CITY.label, type: 'text' },
+            { field: STATE.field, label: STATE.label, type: 'text' },
+            { field: ZIP.field, label: ZIP.label, type: 'text' },
+            { field: VEHICLES.field, label: VEHICLES.label, type: 'text' },
+            { field: FUEL.field, label: FUEL.label, type: 'icons' },
+            { field: CONTACT.field, label: CONTACT.label, type: 'text' },
             {
-                field: "walletStatus",
-                label: "WALLET RULE",
+                field: WALLET_RULE.field,
+                label: WALLET_RULE.label,
                 type: 'status',
                 align: 'center',
                 showIconLast: true,
@@ -167,54 +171,13 @@ export default class CustomerModel {
         ];
     }
 
-    ACTION_TYPES = {
-        EDIT: 'edit',
-        DELETE: 'delete',
-        CONTACT_DETAILS: 'contact details'
-    };
-
     rowActions () {
         const { t } = useTranslation();
-        return [
-            {
-                label: t("menus.data-grid-actions.edit"),
-                action: this.ACTION_TYPES.EDIT
-            },
-            {
-                label: t("menus.data-grid-actions.delete"),
-                action: this.ACTION_TYPES.DELETE
-            },
-            {
-                label: t("menus.data-grid-actions.contact details"),
-                action: this.ACTION_TYPES.CONTACT_DETAILS
-            }
-        ];
+        return RowActionsOptions.map(actionItem => ({ ...actionItem, label: t(actionItem.label) }));
     }
-
-    MASS_ACTION_TYPES = {
-        IMPORT: 'import',
-        EXPORT: 'export',
-        DELETE: 'remove',
-    };
 
     massActions () {
         const { t } = useTranslation();
-        return [
-            {
-                label: t("menus.actions.import data"),
-                icon: ImportIcon,
-                action: this.MASS_ACTION_TYPES.IMPORT
-            },
-            {
-                label: t("menus.actions.export data"),
-                icon: ExportIcon,
-                action: this.MASS_ACTION_TYPES.EXPORT
-            },
-            {
-                label: t("menus.actions.delete"),
-                icon: DeleteIcon,
-                action: this.MASS_ACTION_TYPES.DELETE
-            },
-        ];
+        return MassActionOptions.map(actionItem => ({ ...actionItem, label: t(actionItem.label) }));
     }
 }

@@ -1695,16 +1695,6 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                     "initialStatus": undefined,
                     "initialTouched": Object {},
                     "initialValues": CustomerModel {
-                      "ACTION_TYPES": Object {
-                        "CONTACT_DETAILS": "contact details",
-                        "DELETE": "delete",
-                        "EDIT": "edit",
-                      },
-                      "MASS_ACTION_TYPES": Object {
-                        "DELETE": "remove",
-                        "EXPORT": "export",
-                        "IMPORT": "import",
-                      },
                       "addressLine1": "",
                       "addressLine2": "",
                       "apContact": Array [
@@ -1772,16 +1762,6 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                     "validateOnChange": true,
                     "validateOnMount": false,
                     "values": CustomerModel {
-                      "ACTION_TYPES": Object {
-                        "CONTACT_DETAILS": "contact details",
-                        "DELETE": "delete",
-                        "EDIT": "edit",
-                      },
-                      "MASS_ACTION_TYPES": Object {
-                        "DELETE": "remove",
-                        "EXPORT": "export",
-                        "IMPORT": "import",
-                      },
                       "addressLine1": "",
                       "addressLine2": "",
                       "apContact": Array [
@@ -2546,16 +2526,6 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                         "initialStatus": undefined,
                         "initialTouched": Object {},
                         "initialValues": CustomerModel {
-                          "ACTION_TYPES": Object {
-                            "CONTACT_DETAILS": "contact details",
-                            "DELETE": "delete",
-                            "EDIT": "edit",
-                          },
-                          "MASS_ACTION_TYPES": Object {
-                            "DELETE": "remove",
-                            "EXPORT": "export",
-                            "IMPORT": "import",
-                          },
                           "addressLine1": "",
                           "addressLine2": "",
                           "apContact": Array [
@@ -2623,16 +2593,6 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                         "validateOnChange": true,
                         "validateOnMount": false,
                         "values": CustomerModel {
-                          "ACTION_TYPES": Object {
-                            "CONTACT_DETAILS": "contact details",
-                            "DELETE": "delete",
-                            "EDIT": "edit",
-                          },
-                          "MASS_ACTION_TYPES": Object {
-                            "DELETE": "remove",
-                            "EXPORT": "export",
-                            "IMPORT": "import",
-                          },
                           "addressLine1": "",
                           "addressLine2": "",
                           "apContact": Array [
@@ -16431,16 +16391,6 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                 "initialStatus": undefined,
                                 "initialTouched": Object {},
                                 "initialValues": CustomerModel {
-                                  "ACTION_TYPES": Object {
-                                    "CONTACT_DETAILS": "contact details",
-                                    "DELETE": "delete",
-                                    "EDIT": "edit",
-                                  },
-                                  "MASS_ACTION_TYPES": Object {
-                                    "DELETE": "remove",
-                                    "EXPORT": "export",
-                                    "IMPORT": "import",
-                                  },
                                   "addressLine1": "",
                                   "addressLine2": "",
                                   "apContact": Array [
@@ -16508,16 +16458,6 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                 "validateOnChange": true,
                                 "validateOnMount": false,
                                 "values": CustomerModel {
-                                  "ACTION_TYPES": Object {
-                                    "CONTACT_DETAILS": "contact details",
-                                    "DELETE": "delete",
-                                    "EDIT": "edit",
-                                  },
-                                  "MASS_ACTION_TYPES": Object {
-                                    "DELETE": "remove",
-                                    "EXPORT": "export",
-                                    "IMPORT": "import",
-                                  },
                                   "addressLine1": "",
                                   "addressLine2": "",
                                   "apContact": Array [
@@ -18324,16 +18264,6 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                 "initialStatus": undefined,
                                 "initialTouched": Object {},
                                 "initialValues": CustomerModel {
-                                  "ACTION_TYPES": Object {
-                                    "CONTACT_DETAILS": "contact details",
-                                    "DELETE": "delete",
-                                    "EDIT": "edit",
-                                  },
-                                  "MASS_ACTION_TYPES": Object {
-                                    "DELETE": "remove",
-                                    "EXPORT": "export",
-                                    "IMPORT": "import",
-                                  },
                                   "addressLine1": "",
                                   "addressLine2": "",
                                   "apContact": Array [
@@ -18401,16 +18331,6 @@ exports[`Rendering of View Customer Component Edit/View Customer component Snaps
                                 "validateOnChange": true,
                                 "validateOnMount": false,
                                 "values": CustomerModel {
-                                  "ACTION_TYPES": Object {
-                                    "CONTACT_DETAILS": "contact details",
-                                    "DELETE": "delete",
-                                    "EDIT": "edit",
-                                  },
-                                  "MASS_ACTION_TYPES": Object {
-                                    "DELETE": "remove",
-                                    "EXPORT": "export",
-                                    "IMPORT": "import",
-                                  },
                                   "addressLine1": "",
                                   "addressLine2": "",
                                   "apContact": Array [

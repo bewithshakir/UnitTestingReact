@@ -13,6 +13,10 @@ export type fieldOptions = {
     color?: string;
     icon?: React.ReactNode | string | any,
 }
+
+export type InnerTableType = {
+    [key: string]: JSX.Element;
+}
 export interface headerObj {
     field: string,
     showIconLast?: boolean,
@@ -44,7 +48,7 @@ interface GridComponentProps {
     getId?: any,
     resetCollaps?: boolean,
     onResetTableCollaps?: (value: boolean) => void;
-    InnerTableComponent?: any,
+    InnerTableComponent?: InnerTableType,
     searchTerm?: string,
     noDataMsg?: string,
     showImg?: React.ReactNode | undefined,
