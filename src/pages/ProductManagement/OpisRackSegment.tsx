@@ -1,32 +1,21 @@
-import React, { Fragment, useState, useEffect } from 'react';
+import { Fragment } from 'react';
 import Input from '../../components/UIComponents/Input/Input';
-import Checkbox from '../../components/UIComponents/Checkbox/Checkbox.component';
-import { FormControlLabel, Grid, Typography, FormControl, FormGroup } from "@mui/material";
+import {Grid, FormControl } from "@mui/material";
 import { useTranslation } from 'react-i18next';
 import { totalPricePerGallon } from '../../utils/math.utils';
-import { OPISRackFormFields } from './config';
 import OpisRackCity from './OpisRackCity';
+import CheckboxSegment from './CheckboxSegement';
 
 
 type props = {
     isDisabled: boolean,
     formik: any,
     editMode: boolean,
-    OPISRackFormFieldsInit: OPISRackFormFields
 }
 
-// fuelTaxExemptions
-export default function OpisRackSegment({ isDisabled, formik, editMode, OPISRackFormFieldsInit }: props) {
+export default function OpisRackSegment({ isDisabled, formik, editMode }: props) {
 
     const { t } = useTranslation();
-
-    useEffect(() => {
-        console.warn(isDisabled);
-        console.warn(formik);
-        console.warn(t, useState);
-    }, []);
-
-
 
     return (
         <Fragment>
@@ -71,42 +60,8 @@ export default function OpisRackSegment({ isDisabled, formik, editMode, OPISRack
                 />
             </Grid>
             <Grid item lg={5} md={8} sm={8} xs={8} mx={4} my={1}>
-                <FormControl sx={{ m: 3 }}>
-                    <FormGroup>
-                        {OPISRackFormFieldsInit?.fuelTaxExemptions.map((exemptionObj, index) => (
-                            <React.Fragment key={index}>
-                                <FormControlLabel
-                                    sx={{ margin: "0px", marginBottom: "1rem", fontWeight: "bold" }}
-                                    className="checkbox-field"
-                                    control={
-                                        <Checkbox checked={exemptionObj.value} onChange={formik.handleChange} name={`${exemptionObj.label}`} disabled={isDisabled} />
-                                    }
-                                    label={
-                                        <Typography color={isDisabled ? 'var(--Secondary-Background)' : "var(--Darkgray)"} variant="h4" className="fw-bold">
-                                            {exemptionObj.label}
-                                        </Typography>
-                                    }
-                                />
-                            </React.Fragment>
-                        ))}
-
-                        {/* {formik.values.fuelTaxExemptions?.map((exemptionObj:any, index: number)=>(
-                        <React.Fragment key={index}>
-                            <FormControlLabel
-                            sx={{ margin: "0px", marginBottom: "1rem", fontWeight: "bold" }}
-                            className="checkbox-field"
-                            control={
-                                <Checkbox checked={exemptionObj[index].value} onChange={formik.handleChange} name={`${exemptionObj.label}`} disabled={isDisabled} />
-                            }
-                            label={
-                                <Typography color={isDisabled ? 'var(--Secondary-Background)' : "var(--Darkgray)"} variant="h4" className="fw-bold">
-                                    {exemptionObj.label}
-                                </Typography>
-                            }
-                    />
-                    </React.Fragment>
-                    ))}      */}
-                    </FormGroup>
+                <FormControl className='checkboxlist-wrapper' sx={{ m: 3 }}>
+                    <CheckboxSegment formik={formik} isDisabled={isDisabled}/>
                 </FormControl>
             </Grid>
             <Grid item lg={5} md={8} sm={8} xs={8} mx={4} my={1} >
