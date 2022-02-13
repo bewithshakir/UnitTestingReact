@@ -28,6 +28,22 @@
     min-height: 100%; 
 }
 
+.checkbox-heading{
+    font-size: 14px;
+    color: var(--Darkgray);
+    margin-bottom: 15px;
+    font-weight: normal;
+}
+
+.checkboxlist-wrapper{
+    .MuiFormControlLabel-root{
+        margin-bottom: 5px;
+        .PrivateSwitchBase-root-5{
+            padding-left: 0px;
+        }
+    }
+}
+
 .supplierRack{
     width: 100%;
    & .css-hz1bth-MuiDialog-container{

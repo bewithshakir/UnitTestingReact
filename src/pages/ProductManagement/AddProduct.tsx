@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { FormikProvider, useFormik } from 'formik';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-
 import { EditIcon } from '../../assets/icons';
 import { Add } from "@mui/icons-material";
 import { Grid, Typography } from '@mui/material';
@@ -11,7 +10,7 @@ import Input from '../../components/UIComponents/Input/Input';
 import Select from '../../components/UIComponents/Select/SingleSelect';
 import ToastMessage from '../../components/UIComponents/ToastMessage/ToastMessage.component';
 import OpisRackSegment from './OpisRackSegment';
-import { formStatusObj, strCustomText, strCustomTextRetail, initFormValues, OPISRackFormFieldsInit } from './config';
+import { formStatusObj, strCustomText, strCustomTextRetail, initFormValues, productFormFields } from './config';
 import { useGetProductTypes, useGetProductNames, useGetLotProductDetails, useGetPricingModel, useCreateProduct, useGetOPISRetail, useEditCustomProduct } from './queries';
 import { useAddedCustomerIdStore, useAddedCustomerNameStore, useShowConfirmationDialogBoxStore } from '../../store';
 import { AddProductValidationSchema } from './validation';
@@ -61,65 +60,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
     const customerId = useAddedCustomerIdStore((state) => state.customerId);
     const customerName = useAddedCustomerNameStore((state) => state.customerName);
 
-    // interface SelectProps {
-    //     label: string,
-    //     value: string,
-    // }
-
-    // interface fuelTaxExemptions {
-    //     field: string,
-    //     label: string,
-    //     value: boolean
-    // }
-    
-    // const initFormValues= {
-    //     productType: { label: "", value: "" },
-    //     masterProductName: { label: "", value: "" },
-    //     pricingModel: { label: "", value: "" },
-    //     productNm: "",
-    //     manualPriceAmt: 0,
-    //     addedPriceAmt: 0,
-    //     discountPriceAmt: 0
-    // };
-
-    // interface OPISRackFormFields {
-    //     city: string;
-    //     cityId: string;
-    //     state: string;
-    //     supplier: Array<SelectProps>,
-    //     branded: Array<SelectProps>,
-    //     actualProduct: Array<SelectProps>,
-    //     supplierPrice: number,
-    //     opisName: string,
-    //     fuelTaxExemptions: Array<fuelTaxExemptions>
-    // }
-    
-    // const OPISRackFormFieldsInit = {
-    //     city: '',
-    //     cityId: '',
-    //     state: '',
-    //     supplier: [],
-    //     branded: [],
-    //     actualProduct: [],
-    //     supplierPrice: 0,
-    //     opisName: '',
-    //     fuelTaxExemptions: [
-    //         { field: "all", label: "Select ALL", value: false },
-    //         { field: "stateFuelTax", label: "State Fuel Tax", value: false },
-    //         { field: "stateFuelRate", label: "State Fuel Rate", value: false },
-    //         { field: "cityFuelTax", label: "City Fuel Tax", value: false },
-    //         { field: "countyFuelTax", label: "County Fuel Tax", value: false },
-    //         { field: "fedFuelTax", label: "Federal Fuel Tax", value: false },
-    //         { field: "revenueFuelRate", label: "Revenue Fuel Rate", value: false },
-    //         { field: "miscLocalFuelTax", label: "Misc. Local Fuel Tax", value: false },
-    //         { field: "miscInspFuelTax", label: "Misc. Insp. Fuel Tax", value: false },
-    //         { field: "miscLoadFuelTax", label: "Misc. Load Fuel Tax", value: false },
-    //         { field: "ppdSalesTax", label: "PPD Sales Tax(Prepaid)", value: false }
-    //     ]
-    // };
-
-
-    const [initialFormikValues, setInitialFormikValues] = useState(initFormValues);
+    const [initialFormikValues, setInitialFormikValues] = useState<productFormFields>(initFormValues);
 
     const formik = useFormik({
         initialValues: initialFormikValues,
@@ -144,8 +85,8 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
 
     };
 
-    const onAddProductSuccess = (data:any) => {
-        if(editMode){
+    const onAddProductSuccess = (data: any) => {
+        if (editMode) {
             if (data?.data) {
                 const lotProduct = data.data[0];
                 setApplicableProductId(lotProduct?.applicableProductId);
@@ -156,7 +97,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                     productNm: lotProduct.productNm,
                     manualPriceAmt: lotProduct.manualPriceAmt ? lotProduct.manualPriceAmt : 0,
                     addedPriceAmt: lotProduct.addedPriceAmt ? lotProduct.addedPriceAmt : 0,
-                    discountPriceAmt: lotProduct.discountPriceAmt ? lotProduct.discountPriceAmt : 0
+                    discountPriceAmt: lotProduct.discountPriceAmt ? lotProduct.discountPriceAmt : 0,
                 });
             }
             setIsDisabled(true);
@@ -165,12 +106,12 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
 
         hideDialogBox(false);
         setAPIResponse(true);
-        if(editMode){
+        if (editMode) {
             setFormStatus(formStatusProps.editSuccess);
-        }else{
+        } else {
             setFormStatus(formStatusProps.success);
         }
-        
+
         setProductNames([]);
         reloadSibling && reloadSibling(new Date());
         setTimeout(() => {
@@ -251,7 +192,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
     };
 
     const saveProduct = (form: any) => {
-        
+
         try {
             const payloadObj = {
                 ...(form && form.addedPriceAmt && { addedPriceAmt: form.addedPriceAmt }),
@@ -274,7 +215,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
     const onGetProductSuccess = (data: any) => {
         if (data) {
             if (data?.data?.lotProduct) {
-                const lotProduct = data.data.lotProduct;                
+                const lotProduct = data.data.lotProduct;
                 setInitialFormikValues({
                     productType: { label: lotProduct?.productType?.productGroupNm, value: lotProduct?.productType?.productGroupCd },
                     masterProductName: { label: lotProduct?.masterProduct?.productName, value: lotProduct?.masterProduct?.productId },
@@ -282,7 +223,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                     productNm: lotProduct.productNm,
                     manualPriceAmt: lotProduct.manualPriceAmt ? lotProduct.manualPriceAmt : 0,
                     addedPriceAmt: lotProduct.addedPriceAmt ? lotProduct.addedPriceAmt : 0,
-                    discountPriceAmt: lotProduct.discountPriceAmt ? lotProduct.discountPriceAmt : 0
+                    discountPriceAmt: lotProduct.discountPriceAmt ? lotProduct.discountPriceAmt : 0,
                 });
                 setApplicableProductId(lotProduct?.applicableProductId);
                 setIsDisabled(true);
@@ -326,6 +267,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
 
     const handlePricingModelChange = (fieldName: string, value: any) => {
         formik.setFieldValue(fieldName, value);
+
         if (value?.label?.toLowerCase() != strCustomText || value?.label?.toLowerCase() != strCustomTextRetail) {
             clearCustomRelatedFormValues();
         }
@@ -335,11 +277,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                 formik.setFieldValue('productNm', [formik.values?.masterProductName?.label + ' ' + 'Retail'].join(''));
             }
         }
-        if(value?.label?.toLowerCase() === 'opis rack'){
-            setInitialFormikValues({...initialFormikValues, ...OPISRackFormFieldsInit});   
-        }else{
-            // delete opis rack keys in initFrmValues
-        }
+
     };
 
     const handleMasterProductNameChange = (fieldName: string, value: any) => {
@@ -529,7 +467,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                             </>
                         )}
                         {(formik.values?.pricingModel?.label?.toLowerCase() === 'opis rack') && 
-                            <OpisRackSegment isDisabled={isDisabled} formik={formik} editMode={editMode} OPISRackFormFieldsInit={OPISRackFormFieldsInit} />
+                            <OpisRackSegment isDisabled={isDisabled} formik={formik} editMode={editMode} /> 
                         }
 
                     </Grid>
