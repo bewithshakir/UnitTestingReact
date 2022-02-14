@@ -11,9 +11,10 @@ import { getProductByLotHandler } from '../pages/ProductManagement/mockApi/handl
 import { editProductHandler } from '../pages/ProductManagement/mockApi/handler';
 import { getFuelTaxList, getFuelTaxProductsList } from '../pages/Tax/mockApi/handler';
 import { getDelFeeSchduleHandler, getProductTypeHandler, getVehicleTypeHandler, getAssetTypeHandler, getLotMasterProductNamesHandler, getLotProductNamesHandler, addFeeDetailsHandler } from '../pages/ParkingLot/FeeDetails/mockAPi/handler';
-import { addTruckParkingLotHandler } from '../pages/Truck/TruckParkingLot/AddLot/mockApi/handlerAddTruckParkingLot';
+import { addTruckParkingLotHandler, editTruckParkingLotHandler } from '../pages/Truck/TruckParkingLot/AddLot/mockApi/handlerAddTruckParkingLot';
 import { getProductTypesDropdownHandler } from '../pages/AddFuelTax/mockApi/handlerAddFuelTax';
 import { getTruckParkingLotList } from '../pages/Truck/TruckParkingLot/mockApi/handlerTruckParkingLot';
+import { addAssetHandler } from '../pages/AssetManagement/AddAsset/mockApi/handlerAddAsset';
 
 export const handlers = [
     getProductTypesDropdownHandler(),
@@ -42,7 +43,9 @@ export const handlers = [
     getLotProductNamesHandler(),
     addFeeDetailsHandler(),
     addTruckParkingLotHandler(),
-    getTruckParkingLotList()
+    getTruckParkingLotList(),
+    editTruckParkingLotHandler(),
+    addAssetHandler()
 ];
 
 const createTestQueryClient = () => new QueryClient({

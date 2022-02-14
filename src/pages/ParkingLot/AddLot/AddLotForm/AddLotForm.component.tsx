@@ -397,11 +397,24 @@ function AddLotForm (): React.ReactElement {
     };
 
     const isAddScheduleDisabled = () => {
-        if (formik.values.productDelFreq.value && formik.values.orderScheduleDel.length < 10 && !isDisabled) {
-            return false;
+        if (formik?.values?.productDelFreq?.value && formik?.values?.orderScheduleDel?.length < 10 && !isDisabled) {
+            if(isOrderScheduleDelInfoEmpty(formik?.values?.orderScheduleDel)) {
+                return false;
+            } 
         }
         return true;
     };
+
+    const isOrderScheduleDelInfoEmpty = (fieldArr: any) => {
+        if (fieldArr[(fieldArr.length - 1)].fromDate != null
+            && fieldArr[(fieldArr.length - 1)].startTime != null
+            && fieldArr[(fieldArr.length - 1)].endTime != null) {
+                return true;
+            } else {
+                return false;
+            }
+    };
+
     const isLocationContactDisabled = () => {
         if (formik.values.locationContact && formik.values.locationContact.length < 5 && !isDisabled) {
             return false;
@@ -418,18 +431,20 @@ function AddLotForm (): React.ReactElement {
     };
 
     const addSchedule = (e:any ,fieldArr: any) => {
-        if (!isAddScheduleDisabled()) {
-            fieldArr.push({
-                fromDate: null,
-                toDate: null,
-                startTime: '',
-                endTime: '',
-                productDelDays: { label: '', value: '' },
-                productDelDaysMulti: [],
-                delFreq: formik.values.productDelFreq.label
-            });
-        }else{
-            e.preventDefault();
+        if (isOrderScheduleDelInfoEmpty(fieldArr.form.values.orderScheduleDel)) {
+            if (!isAddScheduleDisabled()) {
+                fieldArr.push({
+                    fromDate: null,
+                    toDate: null,
+                    startTime: '',
+                    endTime: '',
+                    productDelDays: { label: '', value: '' },
+                    productDelDaysMulti: [],
+                    delFreq: formik.values.productDelFreq.label
+                });
+            } else {
+                e.preventDefault();
+            }
         }
     };
 

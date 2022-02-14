@@ -1,7 +1,9 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { memo, useEffect } from 'react';
-import { HorizontalBarVersionState, useStore } from '../../store';
+import { useNavigate } from 'react-router-dom';
 import { Box, Grid, FormControl } from "@mui/material";
+
+import { HorizontalBarVersionState, useStore } from '../../store';
 import { Button } from "../../components/UIComponents/Button/Button.component";
 import { FilterIcon } from "../../assets/icons";
 import SortbyMenu from "../../components/UIComponents/Menu/SortbyMenu.component";
@@ -23,7 +25,9 @@ export interface AssetManagementProps {
 const AssetManagementLandingContent: React.FC<AssetManagementProps> = memo(() => {
     const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
     setVersion("NavLinks");
+    const navigate = useNavigate();
     const { t } = useTranslation();
+
 
     const assetObj = new AssetManagementModel();
     const massActionOptions = assetObj.massActions();
@@ -58,8 +62,8 @@ const AssetManagementLandingContent: React.FC<AssetManagementProps> = memo(() =>
         setAssetPanelVisible(!assetFilterPanelVisible);
     };
 
-    const navigateHomePage = () => {
-        return 0;
+    const navigateAddPage = () => {
+        navigate('/assetManagement/add');
     };
 
     const onSortBySlected = (value: string) => {
@@ -148,7 +152,7 @@ const AssetManagementLandingContent: React.FC<AssetManagementProps> = memo(() =>
                             <Button
                                 types="primary"
                                 aria-label="primary"
-                                onClick={navigateHomePage}
+                                onClick={navigateAddPage}
                                 startIcon={<Add />}
                             >
                                 {t("buttons.add asset")}

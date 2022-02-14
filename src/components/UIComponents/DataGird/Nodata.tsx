@@ -14,13 +14,11 @@ export default function NoDataFound(props:props){
     const { msgLine1, msgLine2, searchTerm, showImg } = props;
     return (
         <FormControl className='nodata'>
-            <div>{showImg || ""}</div>
-           {searchTerm ? ( <Fragment><NoResultFoundIcon/>
+           {searchTerm ? ( <Fragment><NoResultFoundIcon className='noDataSVG'/>
                 <b>{msgLine1}</b> </Fragment>) :
-           ( <b>{msgLine2}</b> )}
+                ( <><div>{showImg || ""}</div> <b>{msgLine2}</b> </>)}
         </FormControl>
     );
-
 } 
 
 NoDataFound.defaultProps = {
