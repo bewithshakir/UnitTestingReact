@@ -132,7 +132,7 @@ export default function OpisRackCity({ isDisabled, formik, editMode, }: Props) {
         <Grid item lg={5} md={8} sm={8} xs={8} mx={4} my={1} >
         </Grid>
         <Grid item lg={5} md={8} sm={8} xs={8} mx={4} my={1} >
-            <SupplierRack />
+            <SupplierRack  formik={formik} isDisabled={isDisabled}/>
             {/* <Input
                 id='supplierPrice'
                 name='supplierPrice'
