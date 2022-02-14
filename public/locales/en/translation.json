@@ -275,7 +275,8 @@
       "addressLine2": "ADDRESS LINE 2",
       "city": "CITY",
       "state": "STATE",
-      "postalCode": "POSTAL CODE"
+      "postalCode": "POSTAL CODE",
+      "editTitle": "Edit Truck Parking lot"
     }
   },
   "productManagement": {
@@ -339,19 +340,27 @@
     "sortBy": {
       "payment in progress": "Payment In Progress",
       "recently added asset": "Recently Added Asset"
+    },
+    "form": {
+      "title": "Fill all the mandatory fields",
+      "editTitle": "Edit Asset",
+      "addTitle": "Add Asset",
+      "assetType": "Asset Type",
+      "assetStatus": "Status"
     }
   },
   "FeeDetails":{
     "head1": "Add Fee Details to fulfil the requirements",
     "feeName":"Fee Name",
     "feeNamePlaceholder": "Enter Fee Name",
-    "deliveryFee":"Delivery Fee",
+    "deliveryFeehead": "Delivery Fee",
+    "deliveryFee":"Delivery Fee ($)",
     "enterFee": "Enter Fee",
     "delFeeShed":"Delivery Fee Schedule",
     "selectFee": "Select Fee",
     "salesTaxExcemption": "Sales Tax Excemption",
     "serviceFeeRule": "Service Fee rule",
-    "serviceFeeCharge": "Service Fee Charge",
+    "serviceFeeCharge": "Service Fee Charge ($)",
     "enterFeeCharge": "Enter Fee Charge",
     "productType": "Product Type",
     "productTypePlaceholder": "Select Product Type",

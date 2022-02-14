@@ -184,5 +184,19 @@
       "liveMap": "Carte en direct",
       "truckPlot": "Parking pour camions"
     }
+  },
+  "assetManagement": {
+    "asset": "Type d'actif",
+    "sortBy": {
+      "payment in progress": "Paiement en cours",
+      "recently added asset": "Actif récemment ajouté"
+    },
+    "form": {
+      "title": "Fill all the mandatory fields",
+      "editTitle": "Modifier l'actif",
+      "addTitle": "Ajouter un actif",
+      "assetType": "Type d'actif",
+      "assetStatus": "Statut"
+    }
   }
 }

@@ -2,7 +2,7 @@ import { shallow } from 'enzyme';
 import CustomerModel from '../../models/CustomerModel';
 import ActionsMenu from '../../components/UIComponents/Menu/ActionsMenu.component';
 import SortbyMenu from '../../components/UIComponents/Menu/SortbyMenu.component';
-import { sortByOptions } from "./config";
+import { Customer } from "./config";
 
 
 jest.mock("react-query", () => {
@@ -45,10 +45,11 @@ describe('Given Bruger Menu on Customer Landing Page', () => {
 });
 
 describe('Given Sortby Menu on Customer Landing Page', () => {
+    const { SortByOptions } = Customer.LandingPage;
     test('Render Sortby Menu', () => {
         const CSortbyMenu = shallow(
             <SortbyMenu
-                options={sortByOptions.map((sortByItem) => (sortByItem))}
+                options={SortByOptions.map((sortByItem) => (sortByItem))}
                 onSelect={() => jest.fn()}
             />
         );
@@ -58,7 +59,7 @@ describe('Given Sortby Menu on Customer Landing Page', () => {
     test('Sortby Menu Menu With Options', () => {
         const CSortbyMenu = shallow(
             <SortbyMenu
-                options={sortByOptions.map((sortByItem) => (sortByItem))}
+                options={SortByOptions.map((sortByItem) => (sortByItem))}
                 onSelect={() => jest.fn()}
             />
         );

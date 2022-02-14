@@ -184,5 +184,19 @@
       "liveMap": "Mapa en vivo",
       "truckPlot": "Estacionamiento de camiones"
     }
+  },
+  "assetManagement": {
+    "asset": "Tipo de activo",
+    "sortBy": {
+      "payment in progress": "Pago en curso",
+      "recently added asset": "Activo agregado recientemente"
+    },
+    "form": {
+      "title": "Remplissez tous les champs obligatoires",
+      "editTitle": "Editar activo",
+      "addTitle": "Agregar activo",
+      "assetType": "Tipo de activo",
+      "assetStatus": "Estado"
+    }
   }
 }

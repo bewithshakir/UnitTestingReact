@@ -38,9 +38,6 @@ export default function FeeDetails() {
     const { t } = useTranslation();
     const { theme } = useTheme();
     const { pathname } = useLocation();
-    console.log("&&&&");
-    console.log(useLocation());
-    console.log(useLocation() +  "   ::::    " + pathname);
     const a = pathname.split('/');
    
     const lotId = a[5];
@@ -171,13 +168,13 @@ export default function FeeDetails() {
                         isAllMasterProduct: rule?.masterProductType?.value?.toLowerCase() === 'all' ? 'Y' : 'N',
                         isAllVehicleType: rule?.vehicleType?.value?.toLowerCase() === 'all' ? 'Y' : 'N',
                         isAllAssetType: rule?.assetType?.value?.toLowerCase() === 'all' ? 'Y' : 'N',
-                        productNameId: rule?.productType?.value?.toLowerCase() === 'all' ? productIds :[]
+                        productNameId: (rule?.productType?.value?.toLowerCase() === 'all' || rule?.masterProductType?.value?.toLowerCase() === 'all') ? productIds :[]
                     },
                     fee: rule.serviceFeeCharge,
-                    ...(rule?.productType?.value?.toLowerCase()  !== 'all' && {applicableProduct: rule?.productName?.value}),
-                    ...(rule?.assetType?.value?.toLowerCase() !== 'all' && {asseType: rule?.assetType?.value}),
+                    ...(((rule?.masterProductType?.value?.toLowerCase() !== 'all') && (rule?.productType?.value?.toLowerCase()  !== 'all')) ? {applicableProduct: rule?.productName?.value} : null),
+                    ...(rule?.assetType?.value && rule?.assetType?.value?.toLowerCase() !== 'all' && {asseType: rule?.assetType?.value}),
                     ...(rule?.assetTypeDesc && {assetInput: rule?.assetTypeDesc}),
-                    ...(rule?.vehicleType?.value?.toLowerCase() !== 'all' && {vehicleType: rule?.vehicleType?.value}),
+                    ...(rule?.vehicleType?.value && rule?.vehicleType?.value?.toLowerCase() !== 'all' && {vehicleType: rule?.vehicleType?.value}),
                     
                     isAsset: rule?.considerAsset ? 'Y' : 'N',
                 });
@@ -200,7 +197,8 @@ export default function FeeDetails() {
 
     const isAddServiceFeeRuleDisabled = () => {
         if ((formik.values.serviceFeeRules.length < 10 && !isDisabled)) {
-            if (formik?.values?.serviceFeeRules[0]?.productType?.value?.toLowerCase() === 'all' && formik?.values?.serviceFeeRules[0]?.vehicleType?.value?.toLowerCase() === 'all' && formik?.values?.serviceFeeRules[0]?.assetType?.value?.toLowerCase() === 'all') {
+            if (formik?.values?.serviceFeeRules[0]?.productType?.value?.toLowerCase() === 'all' 
+            && formik?.values?.serviceFeeRules[0]?.vehicleType?.value?.toLowerCase() === 'all') {
                 return true;
             } else {
                 return false;
@@ -280,7 +278,7 @@ export default function FeeDetails() {
                                     </Grid>
                                     <Grid item pt={2.5}>
                                         <Typography variant="h3" component="h3" gutterBottom className="left-heading fw-bold" mb={1}>
-                                            {t("FeeDetails.deliveryFee")}
+                                                {t("FeeDetails.deliveryFeehead")}
                                         </Typography>
                                     </Grid>
                                     <Grid container item md={12} mt={2} mb={1} pt={0.5}>

@@ -3,10 +3,21 @@ import { headerObj } from './../components/UIComponents/DataGird/grid.component'
 import { ExpireWalletIcon, PositiveCricleIcon } from './../assets/icons';
 import { AssetManagement } from '../pages/AssetManagement/config';
 
+
+export interface AssetStatusInt {
+    label: string,
+    value: string,
+}
 const { MassActionOptions, RowActionsOptions, DataGridFields } = AssetManagement.LandingPage;
 
-export default class AssetManagementModel {
 
+export default class AssetManagementModel {
+    assetType: string;
+    assetStatus: AssetStatusInt;
+    constructor(){
+        this.assetType = '';
+        this.assetStatus = { label: '', value: '' };
+    }
     massActions() {
         const { t } = useTranslation();
         return MassActionOptions.map(actionItem => ({ ...actionItem, label: t(actionItem.label) }));

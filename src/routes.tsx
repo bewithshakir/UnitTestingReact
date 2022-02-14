@@ -29,6 +29,8 @@ const AddAttachment = lazy(() => import("./pages/Attachments/AddAttachment/AddAt
 const AddDSP = lazy(() => import("./pages/DspLanding/AddDSP"));
 const AddTruckParkingLot = lazy(() => import("./pages/Truck/TruckParkingLot/AddLot"));
 const TruckParkingLot = lazy(() => import("./pages/Truck/TruckParkingLot"));
+const EditTruckParkingLot = lazy(() => import("./pages/Truck/TruckParkingLot/AddLot"));
+const AddAsset = lazy(() => import("./pages/AssetManagement/AddAsset"));
 
 export const routes: RouteObject[] = [
   {
@@ -142,11 +144,19 @@ export const routes: RouteObject[] = [
     element: <AssetManagement version="Breadcrumbs-Many" />,
   },
   {
+    path: "/assetManagement/add",
+    element: <AddAsset version="Breadcrumbs-Single"/>,
+  },
+  {
     path: "/truckParkingLot",
     element: <TruckParkingLot version="Breadcrumbs-Single" />,    
   },
   {
     path: "/truckParkingLot/add",
     element: <AddTruckParkingLot version="Breadcrumbs-Single"/>,
+  },
+  {
+    path: "/truckParkingLot/edit/:truckParkingId",
+    element: <EditTruckParkingLot version="Breadcrumbs-Single" />
   }
 ];

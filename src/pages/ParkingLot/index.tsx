@@ -254,7 +254,7 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
             noDataMsg='Add Parking lot by clicking on lot or any related sentence.'
             resetCollaps={resetTableCollaps}
             onResetTableCollaps={setResetTableCollaps}
-            showImg={<ParkingLotNoDataIcon />}
+            showImg={<ParkingLotNoDataIcon className='PLNoDataSVG'/>}
           />
 
           <RightInfoPanel
