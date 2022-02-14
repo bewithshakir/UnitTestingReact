@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Button } from '../../components/UIComponents/Button/Button.component';
 import { Dialog, DialogContent, DialogActions, Grid, Typography } from '@mui/material';
 import GridComponent from '../../components/UIComponents/DataGird/grid.component';
@@ -18,8 +18,9 @@ export default function SupplierRack() {
     };
 
     return (
-        <div>
-            <Button variant="outlined" onClick={handleClickOpen}>
+        <React.Fragment>
+            <h4 className='checkbox-heading'> SUPPLIER PRICE * (Fill all the Mandatory fields to select the price from the filtered list) </h4>
+            <Button variant="outlined" onClick={handleClickOpen} className='supplier-modal-btn'>
                {'Choose the supplier price'}
             </Button>
             <Dialog
@@ -60,6 +61,6 @@ export default function SupplierRack() {
                     </DialogActions>
                 </div>
             </Dialog>
-        </div>
+        </React.Fragment>
     );
 }

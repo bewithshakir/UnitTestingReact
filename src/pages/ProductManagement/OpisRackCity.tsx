@@ -3,6 +3,7 @@ import Select from '../../components/UIComponents/Select/SingleSelect';
 import MultiSelect from '../../components/UIComponents/Select/MultiSelect';
 import Input from '../../components/UIComponents/Input/Input';
 import { useTranslation } from 'react-i18next';
+import SupplierRack from './SupplerRackPrice';
 
 import { Grid } from "@mui/material";
 
@@ -131,7 +132,8 @@ export default function OpisRackCity({ isDisabled, formik, editMode, }: Props) {
         <Grid item lg={5} md={8} sm={8} xs={8} mx={4} my={1} >
         </Grid>
         <Grid item lg={5} md={8} sm={8} xs={8} mx={4} my={1} >
-            <Input
+            <SupplierRack />
+            {/* <Input
                 id='supplierPrice'
                 name='supplierPrice'
                 label={'SUPPLIER PRICE * (Fill all the Mandatory fields to select the price from the filtered list)'}
@@ -140,7 +142,7 @@ export default function OpisRackCity({ isDisabled, formik, editMode, }: Props) {
                 description=''
                 {...formik.getFieldProps('state')}
                 disabled={isDisabled}
-            />
+            /> */}
         </Grid>
         <Grid item lg={5} md={8} sm={8} xs={8} mx={4} my={1} >
         </Grid>
@@ -175,5 +177,6 @@ export default function OpisRackCity({ isDisabled, formik, editMode, }: Props) {
         <Grid item lg={12} md={12} sm={12} xs={12} mx={4}>
             <hr></hr>
         </Grid>
+        
     </Fragment>);
 }
