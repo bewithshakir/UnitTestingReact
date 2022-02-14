@@ -28,7 +28,7 @@ export default function SupplierRack({ isDisabled, formik }: props) {
 
     return (
         <React.Fragment>
-            <h4 className='checkbox-heading'> SUPPLIER PRICE * (Fill all the Mandatory fields to select the price from the filtered list) </h4>
+            <h4 className='checkbox-heading price-heading'> SUPPLIER PRICE * (Fill all the Mandatory fields to select the price from the filtered list) </h4>
             {/* disabled={!(formik.values.cityId && formik.values.branded && formik.values.supplier && formik.values.actualProduct && !isDisabled)} */}
             <Button variant="outlined" onClick={handleClickOpen} className='supplier-modal-btn' disabled={isDisabled}>
                {'Choose the supplier price'}
