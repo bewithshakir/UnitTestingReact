@@ -28,11 +28,22 @@
     min-height: 100%; 
 }
 
+.supplier-modal-btn{
+    width: 100%;
+    margin-top: 2px;
+    background-color: var(--Darkgray);
+    span{
+        justify-content: left;
+        color: var(--White);
+        font-size: 14px;
+    }
+}
+
 .checkbox-heading{
-    font-size: 14px;
+    font-size: 11px;
     color: var(--Darkgray);
-    margin-bottom: 15px;
-    font-weight: normal;
+    margin-bottom: 5px;
+    font-weight: bold;
 }
 
 .checkboxlist-wrapper{
