@@ -37,6 +37,10 @@
         color: var(--White);
         font-size: 14px;
     }
+    &:hover{
+        background-color: var(--Darkgray);
+        color: var(--White);
+    }
 }
 
 .checkbox-heading{
@@ -50,7 +54,7 @@
     .MuiFormControlLabel-root{
         margin-bottom: 5px;
         .PrivateSwitchBase-root-5{
-            padding-left: 0px;
+            margin-left: -8px;
         }
     }
 }

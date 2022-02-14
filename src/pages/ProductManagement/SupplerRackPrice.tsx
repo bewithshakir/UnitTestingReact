@@ -4,7 +4,14 @@ import { Dialog, DialogContent, DialogActions, Grid, Typography } from '@mui/mat
 import GridComponent from '../../components/UIComponents/DataGird/grid.component';
 import ProductModel from "../../models/LotProductModel";
 
-export default function SupplierRack() {
+type props = {
+    isDisabled: boolean,
+    formik: any,
+}
+
+
+export default function SupplierRack({ isDisabled, formik }: props) {
+
     const [open, setOpen] = useState(false);
     const ProductObj = new ProductModel();
     const headCells = ProductObj.fieldsToDisplaySupplierRack();
@@ -15,12 +22,15 @@ export default function SupplierRack() {
 
     const handleClose = () => {
         setOpen(false);
+        console.warn(formik);
     };
+
 
     return (
         <React.Fragment>
             <h4 className='checkbox-heading'> SUPPLIER PRICE * (Fill all the Mandatory fields to select the price from the filtered list) </h4>
-            <Button variant="outlined" onClick={handleClickOpen} className='supplier-modal-btn'>
+            {/* disabled={!(formik.values.cityId && formik.values.branded && formik.values.supplier && formik.values.actualProduct && !isDisabled)} */}
+            <Button variant="outlined" onClick={handleClickOpen} className='supplier-modal-btn' disabled={isDisabled}>
                {'Choose the supplier price'}
             </Button>
             <Dialog
