@@ -1,21 +1,23 @@
+/* eslint-disable no-console */
 import { Fragment, useState, useEffect } from 'react';
 import Input from '../../../components/UIComponents/Input/Input';
 import Checkbox from '../../../components/UIComponents/Checkbox/Checkbox.component';
 import Select from '../../../components/UIComponents/Select/SingleSelect';
 import { FormControlLabel, Grid, Typography } from "@mui/material";
 import { useTranslation } from 'react-i18next';
-import {useGetLotProductTypes, useGetLotProductNames, useGetLotVehicleTypes, useGetLotAssetTypes, useGetLotMasterProductNames } from './queries';
+import { useGetLotProductTypes, useGetLotProductNames, useGetLotVehicleTypes, useGetLotAssetTypes, useGetLotMasterProductNames } from './queries';
 import { all } from '../config';
+// import { isEqual } from 'lodash';
 
 
 type props = {
-    index : number,
+    index: number,
     isDisabled: boolean,
     formik: any,
     lotId: string
 }
 
-export default function ServiceRule({index, isDisabled, formik, lotId}: props) {
+export default function ServiceRule({ index, isDisabled, formik, lotId }: props) {
 
     const { t } = useTranslation();
 
@@ -33,6 +35,7 @@ export default function ServiceRule({index, isDisabled, formik, lotId}: props) {
 
     const [productNames, setProductNames] = useState([]);
     const { data: productNameList } = useGetLotProductNames(lotId, formik?.values?.serviceFeeRules?.[index]?.masterProductType?.value);
+    // const [formState, SetFormState] = useState(formik?.values?.serviceFeeRules?.[index]);
 
     useEffect(() => {
         if (vehicleTypeList?.data?.length) {
@@ -54,14 +57,30 @@ export default function ServiceRule({index, isDisabled, formik, lotId}: props) {
         if (productNameList?.data?.lotProducts?.length) {
             setProductNames(productNameList.data.lotProducts.map((obj: any) => ({ label: obj.productNm.trim(), value: obj.applicableProductId.trim() })));
         }
-    }, [ vehicleTypeList, assetTypeList, productTypeList, productNameList, masterProductNamesList ]);
+    }, [vehicleTypeList, assetTypeList, productTypeList, productNameList, masterProductNamesList]);
+
+
+
+    // useEffect(() => {
+    //     if (isEqual(formState, formik.values)) { 
+
+    //     }
+
+    // }, [formik.values);
 
     const handleProductTypeChange = (fieldName: string, value: any) => {
+        console.log("" + `serviceFeeRules[${index}].masterProductType`);
         formik.setFieldValue(fieldName, value);
+        if (value.value == "all") {
+            formik.setFieldValue("" + `serviceFeeRules[${index}].masterProductType`, { label: "All", value: "all" });
+
+            formik.setFieldValue("" + `serviceFeeRules[${index}].productName`, { label: "All", value: "all" });
+        }
+
     };
-        
+
     const handleMasterProductTypeChange = (fieldName: string, value: any) => {
-        formik.setFieldValue(fieldName, value); 
+        formik.setFieldValue(fieldName, value);
     };
 
     return (
@@ -138,7 +157,7 @@ export default function ServiceRule({index, isDisabled, formik, lotId}: props) {
                                 ? true : false
                         }
                         onBlur={() => { formik.setFieldTouched(`serviceFeeRules[${index}].masterProductType`); formik.validateField(`serviceFeeRules[${index}].masterProductType`); }}
-                        isDisabled={(formik?.values?.serviceFeeRules?.[index]?.productType?.value?.toLowerCase() === 'all')? true : isDisabled}
+                        isDisabled={(formik?.values?.serviceFeeRules?.[index]?.productType?.value?.toLowerCase() === 'all') ? true : isDisabled}
                         required={(formik?.values?.serviceFeeRules?.[index]?.productType?.value?.toLowerCase() === 'all') ? false : true}
                     />
                 </Grid>
