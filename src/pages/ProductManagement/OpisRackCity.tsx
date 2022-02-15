@@ -6,20 +6,43 @@ import { useTranslation } from 'react-i18next';
 import SupplierRack from './SupplerRackPrice';
 
 import { Grid } from "@mui/material";
+import { useGetServedCities, useGetSupplierBrandProducts } from "./queries";
 
 type Props = {
     isDisabled: boolean,
     formik: any,
     editMode: boolean,
 }
+interface ServedCity {
+    city?: string
+    cityId?: number
+    countryCd?: string
+    opisServedCityId?: string
+    state?: string
+}
+interface ServedCityOptions extends ServedCity {
+    label: string
+    value: string
+}
+interface GeneralOptions {
+    label: string
+    value: string
+}
+
+const getOptions = (dataArr?: string[]) => {
+    return dataArr?.map(item => ({ label: item, value: item })) || [];
+};
 
 export default function OpisRackCity({ isDisabled, formik, editMode, }: Props) {
 
     const { t } = useTranslation();
-    const [cities, setCities] = useState<any[]>([]);
-    const [suppliers, setSuppliers] = useState([]);
-    const [brandedList, setbrandedList] = useState([]);
-    const [actualProductList, setActualProductList] = useState([]);
+    const [cities, setCities] = useState<ServedCityOptions[]>([]);
+    const [suppliers, setSuppliers] = useState<GeneralOptions[]>([]);
+    const [brandedList, setbrandedList] = useState<GeneralOptions[]>([]);
+    const [actualProductList, setActualProductList] = useState<GeneralOptions[]>([]);
+    const { data: servedCities } = useGetServedCities();
+    const { data: spplierBrandProducts } = useGetSupplierBrandProducts(formik?.values?.city?.cityId || '');
+
 
     useEffect(() => {
         console.warn(isDisabled);
@@ -28,8 +51,21 @@ export default function OpisRackCity({ isDisabled, formik, editMode, }: Props) {
         console.warn(setSuppliers);
         console.warn(setbrandedList);
         console.warn(setActualProductList);
-        setCities([{label: 'Houston', value:  'Houston' }]);
     }, []);
+
+    useEffect(() => {
+        setSuppliers(getOptions(spplierBrandProducts?.data?.actualProduct));
+        setbrandedList(getOptions(spplierBrandProducts?.data?.brand));
+        setActualProductList(getOptions(spplierBrandProducts?.data?.supplier));
+    }, [spplierBrandProducts]);
+
+    useEffect(() => {
+        setCities(servedCities?.data?.opisCities?.map((c: ServedCity) => ({
+            ...c,
+            label: c.city,
+            value: c.cityId
+        })) || []);
+    }, [servedCities]);
 
     const handleCityChange = (field: any, value: any) => {
         formik.setFieldValue(field, value);
@@ -65,6 +101,7 @@ export default function OpisRackCity({ isDisabled, formik, editMode, }: Props) {
                 error={(formik.touched.state && formik.errors.state) ? true : false}
                 description=''
                 {...formik.getFieldProps('state')}
+                value={formik.values?.city?.state}
                 disabled
             />
         </Grid>
@@ -77,6 +114,7 @@ export default function OpisRackCity({ isDisabled, formik, editMode, }: Props) {
                 error={(formik.touched.cityId && formik.errors.cityId) ? true : false}
                 description=''
                 {...formik.getFieldProps('cityId')}
+                value={formik.values?.city?.cityId}
                 disabled
             />
         </Grid>
@@ -133,7 +171,7 @@ export default function OpisRackCity({ isDisabled, formik, editMode, }: Props) {
         <Grid item lg={5} md={8} sm={8} xs={8} mx={4} my={1} >
         </Grid>
         <Grid item lg={5} md={8} sm={8} xs={8} mx={4} my={1} >
-            <SupplierRack  formik={formik} isDisabled={isDisabled}/>
+            <SupplierRack formik={formik} isDisabled={isDisabled} />
             {/* <Input
                 id='supplierPrice'
                 name='supplierPrice'
@@ -178,6 +216,6 @@ export default function OpisRackCity({ isDisabled, formik, editMode, }: Props) {
         <Grid item lg={12} md={12} sm={12} xs={12} mx={4}>
             <hr></hr>
         </Grid>
-        
+
     </Fragment>);
 }

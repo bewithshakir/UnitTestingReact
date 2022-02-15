@@ -239,8 +239,8 @@ const getTaxRates = async (
   if (productCd && cityNm && fetchTaxList) {
     const options: AxiosRequestConfig = {
       method: 'get',
-        url: `/api/tax-service/fuel-taxes/types?countryCode=us&city=${cityNm}&productCd=${productCd}`,
-    //   url: 'api/tax-service/fuel-taxes/types?countryCode=us&city=Houston&productCd=15a7d749-f8c7-49b4-90f4-8ffe2ff93a21',
+      url: `/api/tax-service/fuel-taxes/types?countryCode=us&city=${cityNm}&productCd=${productCd}`,
+      //   url: 'api/tax-service/fuel-taxes/types?countryCode=us&city=Houston&productCd=15a7d749-f8c7-49b4-90f4-8ffe2ff93a21',
     };
     const { data } = await axios(options);
     return data;
@@ -263,4 +263,67 @@ export const useGetTaxRates = (
       retry: false,
     }
   );
+};
+
+const getServedCities = async () => {
+  const options: AxiosRequestConfig = {
+    method: 'get',
+    url: '/api/product-service/opis/served-cities?countryCode=us&skipPagination=true'
+  };
+
+  const { data } = await axios(options);
+  return data;
+};
+
+export const useGetServedCities = () => {
+  return useQuery('getServedCities', () => getServedCities());
+};
+
+const getSupplierBrandProducts = async (cityId: string) => {
+  if (!cityId) {
+    return null;
+  }
+  const options: AxiosRequestConfig = {
+    method: 'get',
+    url: `/api/product-service/opis/supplier-brand-products?countryCode=us&cityId=${cityId}`
+  };
+
+  const { data }: {
+    data?: {
+      data?: {
+        actualProduct?: string[]
+        brand?: string[]
+        supplier?: string[]
+      }
+    }
+  } = await axios(options);
+  return data;
+};
+
+export const useGetSupplierBrandProducts = (cityId: string) => {
+  return useQuery(['getSupplierBrandProducts', cityId], () => getSupplierBrandProducts(cityId));
+};
+
+interface QueryOptions {
+  cityId?: string
+  supplier?: string[]
+  brandIndicator?: string[]
+  actualProduct?: string[]
+}
+
+const getSupplierPrices = async (query: QueryOptions) => {
+  if (!query || !query.cityId || !query.supplier || !query.brandIndicator || !query.actualProduct) {
+    return [];
+  }
+  const options: AxiosRequestConfig = {
+    method: 'get',
+    url: `/api/product-service/opis/rack-prices?cityId=${query.cityId}&supplier=${query.supplier.join(',')}&brandIndicator=${query.brandIndicator.join(',')}&actualProduct=${query.actualProduct.join(',')}`
+  };
+  const { data } = await axios(options);
+  return data;
+};
+
+export const useGetSupplierPrices = (qery: QueryOptions) => {
+  return useQuery(['getSupplierPrices', qery], () => getSupplierPrices(qery));
+
 };
