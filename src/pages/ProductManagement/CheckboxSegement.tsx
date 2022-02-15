@@ -87,6 +87,7 @@ export default function CheckBoxSegment({ isDisabled, formik }: props) {
 
         <React.Fragment>
             <h4 className='checkbox-heading'> Fuel Tax Exemptions ($) </h4>
+           {taxExemptionList.length>0 && <React.Fragment>
             <FormControlLabel
                 sx={checkboxConfig}
                 className="checkbox-field"
@@ -96,7 +97,7 @@ export default function CheckBoxSegment({ isDisabled, formik }: props) {
                     Select All
                 </Typography>} />
 
-            {taxExemptionList.length>0 && taxExemptionList.map((checkBoxObj: any, index: number) => (
+            { taxExemptionList.map((checkBoxObj: any, index: number) => (
                 <FormControlLabel
                     sx={checkboxConfig}
                     key={checkBoxObj.taxRateId}
@@ -107,6 +108,7 @@ export default function CheckBoxSegment({ isDisabled, formik }: props) {
                         {checkBoxObj.label}
                     </Typography>} />
             ))}
+            </React.Fragment>}
         </React.Fragment>
     );
 }
