@@ -16,7 +16,7 @@ type Props = {
 export default function OpisRackCity({ isDisabled, formik, editMode, }: Props) {
 
     const { t } = useTranslation();
-    const [cities, setCities] = useState([]);
+    const [cities, setCities] = useState<any[]>([]);
     const [suppliers, setSuppliers] = useState([]);
     const [brandedList, setbrandedList] = useState([]);
     const [actualProductList, setActualProductList] = useState([]);
@@ -28,10 +28,11 @@ export default function OpisRackCity({ isDisabled, formik, editMode, }: Props) {
         console.warn(setSuppliers);
         console.warn(setbrandedList);
         console.warn(setActualProductList);
+        setCities([{label: 'Houston', value:  'Houston' }]);
     }, []);
 
     const handleCityChange = (field: any, value: any) => {
-        console.warn(field, value);
+        formik.setFieldValue(field, value);
     };
 
     return (<Fragment>
