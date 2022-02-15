@@ -237,12 +237,10 @@ const getTaxRates = async (
   cityNm: string
 ) => {
   if (productCd && cityNm && fetchTaxList) {
-    console.warn(productCd);
-    console.warn(cityNm);
     const options: AxiosRequestConfig = {
       method: 'get',
-      url: `/api/tax-service/fuel-taxes/types?countryCode=us&city=${cityNm}&productCd=${productCd}`,
-      // url: 'api/tax-service/fuel-taxes/types?countryCode=us&city=Houston&productCd=15a7d749-f8c7-49b4-90f4-8ffe2ff93a21'
+        url: `/api/tax-service/fuel-taxes/types?countryCode=us&city=${cityNm}&productCd=${productCd}`,
+    //   url: 'api/tax-service/fuel-taxes/types?countryCode=us&city=Houston&productCd=15a7d749-f8c7-49b4-90f4-8ffe2ff93a21',
     };
     const { data } = await axios(options);
     return data;
