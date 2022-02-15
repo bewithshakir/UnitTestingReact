@@ -271,6 +271,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
 
     const handlePricingModelChange = (fieldName: string, value: any) => {
         formik.setFieldValue(fieldName, value);
+        setFuelTaxError('');
 
         if (value?.label?.toLowerCase() != strCustomText || value?.label?.toLowerCase() != strCustomTextRetail) {
             clearCustomRelatedFormValues();
@@ -282,16 +283,23 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
             }
         }
         if(value?.label?.toLowerCase() === 'opis rack'){
-            updateFetchTaxList(true);
+            if (formik.values?.masterProductName?.label) {
+                updateFetchTaxList(true);
+            }
+            
         }
 
     };
 
     const handleMasterProductNameChange = (fieldName: string, value: any) => {
         formik.setFieldValue(fieldName, value);
+        setFuelTaxError('');
         if (formik.values?.pricingModel?.label?.toLowerCase() === strCustomTextRetail) {
             formik.setFieldValue('productNm', [value?.label + ' ' + 'Retail'].join(''));
             setFetchOPISRetail(true);
+        }
+        if (formik.values?.pricingModel?.label?.toLowerCase() === 'opis rack') {
+            updateFetchTaxList(true);
         }
     };
 

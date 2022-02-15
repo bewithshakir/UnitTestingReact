@@ -26,25 +26,27 @@ export default function CheckBoxSegment({ isDisabled, formik, showFuelTaxError, 
     const parkingLotCityNm = useAddedParkingLotCityNmStore((state) => state.parkingLotCityNm);
 
     const onTaxExsError = (err: any) => {
-        // debugger; // eslint-disable-line no-debugger
-        console.warn('error', err);
-        showFuelTaxError(true);
-        setFetchTaxList(false);
+        const { data: { error } } = err.response;
+        if (error?.httpCode === 404) {
+            showFuelTaxError(true);
+        }
     };
 
     const onTaxExsSuccess = (data: any) => {
-        console.warn('success', data);
         if(data && data.data && data.data.length>0){
+            const arr:Array<any> = [];
             showFuelTaxError(false);
             setFetchTaxList(false);
-            data.data.map((checkBoxObj: any) => (
-                formik.setFieldValue(`${checkBoxObj.taxRateId}`, false)
-            ));
+            data.data.forEach((checkBoxObj: any) => {
+                const exmptnListObj = {...checkBoxObj, label: capitalizeFirstLetter(checkBoxObj.taxRateTypeNm.replace(/-/g, ' ')), value:false};
+                arr.push(exmptnListObj);
+                formik.setFieldValue(`${checkBoxObj.taxRateId}`, false);
+            });
+            updateTaxExemptionList(arr);
         }
-
     };
 
-    const { data: fuelTaxExemptionsList } = useGetTaxRates(fetchTaxList, formik?.values?.productType?.value, parkingLotCityNm, onTaxExsSuccess, onTaxExsError);
+    useGetTaxRates(fetchTaxList, formik?.values?.masterProductName?.value, parkingLotCityNm, onTaxExsSuccess, onTaxExsError);
 
     const selectAllCheckboxes = (val: boolean) => {
         if(val){
@@ -68,7 +70,6 @@ export default function CheckBoxSegment({ isDisabled, formik, showFuelTaxError, 
     const onCheckBoxChange = (index: number, e: any) => {
         const checked = e.target.checked;
         const name = e.target.name;
-        console.warn('e.target.name', e.target.name);
         formik.setFieldValue(name, e.target.checked);
         if (checked) {
             formik.setFieldValue('taxExemption', [...formik.values.taxExemption, name]);
@@ -82,15 +83,10 @@ export default function CheckBoxSegment({ isDisabled, formik, showFuelTaxError, 
     };
 
     useEffect(() => {
-        // console.warn('test-->', updateTaxExemptionList, capitalizeFirstLetter);
         if (formik.values.taxExemption.length > 0 && formik.values.taxExemption.length === taxExemptionList.length) {
             setSelectAll(true);
         }
-        // console.warn("check***********-->",fuelTaxExemptionsList);
-        if(fuelTaxExemptionsList && fuelTaxExemptionsList.data){
-            updateTaxExemptionList(fuelTaxExemptionsList.data.map((obj: any) => ({ ...obj, label: capitalizeFirstLetter(obj.taxRateTypeNm.replace(/-/g, ' ')), value:false  })));
-        }
-    }, [formik.values, fuelTaxExemptionsList]);
+    }, [formik.values]);
 
 
     return (
