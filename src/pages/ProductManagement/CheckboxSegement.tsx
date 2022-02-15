@@ -5,28 +5,38 @@ import { FormControlLabel, Typography } from "@mui/material";
 // import { useTranslation } from 'react-i18next';
 import { checkboxConfig } from './config';
 import { useGetTaxRates } from './queries';
+import { useAddedParkingLotCityNmStore} from '../../store';
 
 
 type props = {
     isDisabled: boolean,
-    formik: any
+    formik: any,
+    showFuelTaxError:  (...args: any[]) => void,
+    fetchTaxList: boolean,
+    setFetchTaxList:  (...args: any[]) => void; 
 }
 
 
-export default function CheckBoxSegment({ isDisabled, formik }: props) {
+export default function CheckBoxSegment({ isDisabled, formik, showFuelTaxError, fetchTaxList , setFetchTaxList}: props) {
 
     // const { t } = useTranslation();
 
     const [selectAll, setSelectAll] = useState(false);
     const [taxExemptionList, updateTaxExemptionList] = useState<Array<any>>([]);
+    const parkingLotCityNm = useAddedParkingLotCityNmStore((state) => state.parkingLotCityNm);
 
     const onTaxExsError = (err: any) => {
+        // debugger; // eslint-disable-line no-debugger
         console.warn('error', err);
+        showFuelTaxError(true);
+        setFetchTaxList(false);
     };
 
     const onTaxExsSuccess = (data: any) => {
         console.warn('success', data);
-        if(data?.data){
+        if(data && data.data && data.data.length>0){
+            showFuelTaxError(false);
+            setFetchTaxList(false);
             data.data.map((checkBoxObj: any) => (
                 formik.setFieldValue(`${checkBoxObj.taxRateId}`, false)
             ));
@@ -34,7 +44,7 @@ export default function CheckBoxSegment({ isDisabled, formik }: props) {
 
     };
 
-    const { data: fuelTaxExemptionsList } = useGetTaxRates(formik?.values?.productType?.value, formik?.values?.city?.value, onTaxExsSuccess, onTaxExsError);
+    const { data: fuelTaxExemptionsList } = useGetTaxRates(fetchTaxList, formik?.values?.productType?.value, parkingLotCityNm, onTaxExsSuccess, onTaxExsError);
 
     const selectAllCheckboxes = (val: boolean) => {
         if(val){
@@ -76,7 +86,7 @@ export default function CheckBoxSegment({ isDisabled, formik }: props) {
         if (formik.values.taxExemption.length > 0 && formik.values.taxExemption.length === taxExemptionList.length) {
             setSelectAll(true);
         }
-        console.warn("check***********-->",fuelTaxExemptionsList);
+        // console.warn("check***********-->",fuelTaxExemptionsList);
         if(fuelTaxExemptionsList && fuelTaxExemptionsList.data){
             updateTaxExemptionList(fuelTaxExemptionsList.data.map((obj: any) => ({ ...obj, label: capitalizeFirstLetter(obj.taxRateTypeNm.replace(/-/g, ' ')), value:false  })));
         }
