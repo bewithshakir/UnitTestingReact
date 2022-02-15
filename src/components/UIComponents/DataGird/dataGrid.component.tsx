@@ -1,8 +1,8 @@
 import { Collapse, TableBody, TableCell, TableRow, FormControl, Avatar, Icon, ImageList, Typography, Box } from '@mui/material';
 import Checkbox from '../Checkbox/Checkbox.component';
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { Loader } from '../Loader';
-import DataGridActionsMenu, { DataGridActionsMenuOption } from '../Menu/DataGridActionsMenu.component';
+import DataGridActionsMenu, { DataGridActionsMenuOption, RowActionHanddlerRef } from '../Menu/DataGridActionsMenu.component';
 import { Button } from './../Button/Button.component';
 import './grid.style.scss';
 import { fieldOptions, headerObj } from './grid.component';
@@ -87,6 +87,7 @@ function getFuelIcon (fuelStatus: string) {
 const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
     const [selectedRowIndex, setSelectedRowIndex] = React.useState(-1);
     const [selectedColIndex, setSelectedColIndex] = React.useState(-1);
+    const dataGridRowActionRef = useRef<RowActionHanddlerRef>(null);
 
     const getKeys = () => {
         return props?.headCells.map((i: any) => i.field);
@@ -111,6 +112,7 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
                 setSelectedColIndex(colIndex);
             }
         }
+        dataGridRowActionRef.current?.closeMenu();
     };
     const openDrawer = (row: any) => {
         props.openDrawer && props.openDrawer(row);
@@ -219,6 +221,13 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
         }
     };
 
+    const onCheckChange = (selectedRow: any) => {
+        if (props.handleCheckChange) {
+            props.handleCheckChange(selectedRow);
+        }
+        dataGridRowActionRef.current?.closeMenu();
+    };
+
     const getRowsData = () => {
         const keys = getKeys();
         const { primaryKey } = props;
@@ -242,7 +251,7 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
                                         <Checkbox
                                             name={`checkbox${row[primaryKey]}`}
                                             checked={isItemSelected || false}
-                                            onChange={() => props.handleCheckChange && props.handleCheckChange(row[primaryKey])}
+                                            onChange={() => onCheckChange(row[primaryKey])}
                                             onClick={e => e.stopPropagation()}
                                         />
                                     </TableCell>
@@ -306,6 +315,7 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
                                     >
                                         <FormControl>
                                             <DataGridActionsMenu
+                                                ref={dataGridRowActionRef}
                                                 options={props.rowActionOptions || []}
                                                 onSelect={(e, value) => props.onRowActionSelect && props.onRowActionSelect(value, row)}
                                                 showInnerTableMenu={props.showInnerTableMenu}

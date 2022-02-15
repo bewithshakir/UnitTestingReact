@@ -1,5 +1,5 @@
 import { Button, ListItemIcon, SvgIcon } from "@material-ui/core";
-import React from "react";
+import React, { forwardRef, useImperativeHandle } from "react";
 import { DataGridActionIcon } from '../../../assets/icons';
 import './DataGridActionsMenu.style.scss';
 import { Icon, Typography, Grow, MenuItem, MenuList, Paper, Popper, ClickAwayListener } from '@mui/material';
@@ -11,18 +11,31 @@ export type DataGridActionsMenuOption = {
   color?: string;
 }
 
-interface DataGridActionsMenuProps {
+type DataGridActionsMenuProps = {
   options?: DataGridActionsMenuOption[],
   menuName?: string,
   onSelect?: (e: React.SyntheticEvent, selectedValue: DataGridActionsMenuOption) => void,
   showInnerTableMenu?: boolean
 }
-export default function DataGridActionsMenu (props: DataGridActionsMenuProps) {
+
+export type RowActionHanddlerRef = {
+  closeMenu: () => void,
+};
+
+const DataGridActionsMenu = forwardRef<RowActionHanddlerRef, DataGridActionsMenuProps>((props, parentRef) => {
   const [open, setOpen] = React.useState(false);
   const [selectedIndex, setSelectedIndex] = React.useState(-1);
   const anchorRef = React.useRef<HTMLButtonElement>(null);
 
   const { options, onSelect } = props;
+
+  useImperativeHandle(parentRef, () => ({
+    closeMenu () {
+      if (open) {
+        setOpen(false);
+      }
+    },
+  }));
 
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
@@ -151,8 +164,10 @@ export default function DataGridActionsMenu (props: DataGridActionsMenuProps) {
       </Popper>
     </div >
   );
-}
+});
 
 DataGridActionsMenu.defaultProps = {
   showInnerTableMenu: false
 };
+
+export default DataGridActionsMenu;

@@ -7557,7 +7557,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                                               <h2>
                                                                 
                                                               </h2>
-                                                              <DataGridActionsMenu
+                                                              <ForwardRef
                                                                 onSelect={[Function]}
                                                                 options={
                                                                   Array [
@@ -7607,7 +7607,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                                                   <h2>
                                                                     
                                                                   </h2>
-                                                                  <DataGridActionsMenu
+                                                                  <ForwardRef
                                                                     onSelect={[Function]}
                                                                     options={
                                                                       Array [
@@ -7656,7 +7656,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                                                         <h2>
                                                                           
                                                                         </h2>,
-                                                                        <DataGridActionsMenu
+                                                                        <ForwardRef
                                                                           onSelect={[Function]}
                                                                           options={
                                                                             Array [
@@ -7824,7 +7824,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                                                       </MuiIconButtonRoot>
                                                                     </ForwardRef(IconButton)>
                                                                     <h2 />
-                                                                    <DataGridActionsMenu
+                                                                    <ForwardRef
                                                                       onSelect={[Function]}
                                                                       options={
                                                                         Array [
@@ -8096,7 +8096,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                                                           transition={true}
                                                                         />
                                                                       </div>
-                                                                    </DataGridActionsMenu>
+                                                                    </ForwardRef>
                                                                   </div>
                                                                 </MuiToolbarRoot>
                                                               </ForwardRef(Toolbar)>
