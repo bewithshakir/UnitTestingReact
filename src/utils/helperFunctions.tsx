@@ -95,3 +95,7 @@ export function getUploadedIn(url: string) {
     }
     return 'Attachments';
 }
+
+export function capitalizeFirstLetter(str: string) {
+    return str && str.charAt(0).toUpperCase() + str.substring(1);
+}

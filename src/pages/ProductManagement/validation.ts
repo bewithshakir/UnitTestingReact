@@ -16,7 +16,7 @@ export const AddProductValidationSchema = Yup.object().shape(
         discountPriceAmt: priceSchema.label('This').when(['manualPriceAmt', 'addedPriceAmt'], (manualPriceAmt: string, addedPriceAmt: any) => {
             return Yup.number().typeError('Invalid Price.').label('This').min(0).max((Number(manualPriceAmt) || 0) + (Number(addedPriceAmt) || 0));
         }),
-        city: inputStrSchema,
+        city: selectOption,
         cityId: inputStrSchema,
         state: inputStrSchema,
         supplier: Yup.array(),

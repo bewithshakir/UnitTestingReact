@@ -159,3 +159,24 @@ export const useGetOPISRetail = (fetchOPISRetail: boolean, lotId: string, master
         retry: false
     });
 };
+
+const getTaxRates = async (productCd: string, cityNm: string) => {
+    if (productCd && cityNm) {
+        console.warn(productCd);
+        console.warn(cityNm);
+        const options: AxiosRequestConfig = {
+            method: 'get',
+            // url: `/api/tax-service/fuel-taxes/types?countryCode=us&city=${cityNm}&productCd=${productCd}`
+            url: 'api/tax-service/fuel-taxes/types?countryCode=us&city=Houston&productCd=15a7d749-f8c7-49b4-90f4-8ffe2ff93a21'
+        };
+        const { data } = await axios(options);
+        return data;
+    }
+};
+
+export const useGetTaxRates = (productCd: string, cityNm: string, onSuccess: any, onError: any) => {
+    return useQuery(["getTaxRates", productCd, cityNm, onSuccess, onError], () => getTaxRates(productCd, cityNm), {
+                onSuccess,
+                onError
+            });
+};

@@ -77,11 +77,11 @@ export interface SelectProps {
   value: string;
 }
 
-export interface fuelTaxExemptionsFormat {
-  field: string;
-  label: string;
-  value: boolean;
-}
+// export interface fuelTaxExemptionsFormat {
+//   field: string;
+//   label: string;
+//   value: boolean;
+// }
 
 export const checkBoxList = [
     { field: 'stateFuelTax', label: 'State Fuel Tax', value: false },
@@ -112,17 +112,19 @@ export interface productFormFields{
     actualProduct?: Array<SelectProps>;
     supplierPrice?: number;
     opisName?: string;
-    stateFuelTax?:boolean,
-    stateFuelRate?: boolean,
-    cityFuelTax?: boolean,
-    countyFuelTax?: boolean, 
-    fedFuelTax?: boolean,
-    revenueFuelRate?: boolean,  
-    miscLocalFuelTax?: boolean, 
-    miscInspFuelTax?: boolean, 
-    miscLoadFuelTax?: boolean, 
-    ppdSalesTax?: boolean,
-    fuelTaxExemptions?: Array<fuelTaxExemptionsFormat>;
+    // stateFuelTax?:boolean,
+    // stateFuelRate?: boolean,
+    // cityFuelTax?: boolean,
+    // countyFuelTax?: boolean, 
+    // fedFuelTax?: boolean,
+    // revenueFuelRate?: boolean,  
+    // miscLocalFuelTax?: boolean, 
+    // miscInspFuelTax?: boolean, 
+    // miscLoadFuelTax?: boolean, 
+    // ppdSalesTax?: boolean,
+    // fuelTaxExemptions?: Array<fuelTaxExemptionsFormat>,
+    taxExemption?:Array<any>
+    TaxExObj?:any
 }  
 
 export const initFormValues = {
@@ -141,16 +143,8 @@ export const initFormValues = {
     actualProduct: [],
     supplierPrice: 0,
     opisName: '',
-    stateFuelTax:false,
-    stateFuelRate: false,
-    cityFuelTax: false,
-    countyFuelTax: false, 
-    fedFuelTax: false,
-    revenueFuelRate: false,  
-    miscLocalFuelTax: false, 
-    miscInspFuelTax: false, 
-    miscLoadFuelTax: false, 
-    ppdSalesTax: true
+    taxExemption:[],
+    TaxExObj: {}
   };
 
  export const checkboxConfig =  { margin: "0px", marginBottom: "1rem", fontWeight: "bold" };

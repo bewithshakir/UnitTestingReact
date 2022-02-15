@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import Checkbox from '../../components/UIComponents/Checkbox/Checkbox.component';
+import {capitalizeFirstLetter} from '../../utils/helperFunctions';
 import { FormControlLabel, Typography } from "@mui/material";
 // import { useTranslation } from 'react-i18next';
-import { checkboxConfig, checkBoxList } from './config';
+import { checkboxConfig } from './config';
+import { useGetTaxRates } from './queries';
 
 
 type props = {
@@ -16,20 +18,41 @@ export default function CheckBoxSegment({ isDisabled, formik }: props) {
     // const { t } = useTranslation();
 
     const [selectAll, setSelectAll] = useState(false);
-    const [selectedCBs, updateSelectedCBs] = useState<Array<string>>([]);
+    const [taxExemptionList, updateTaxExemptionList] = useState<Array<any>>([]);
+
+    const onTaxExsError = (err: any) => {
+        console.warn('error', err);
+    };
+
+    const onTaxExsSuccess = (data: any) => {
+        console.warn('success', data);
+        if(data?.data){
+            data.data.map((checkBoxObj: any) => (
+                formik.setFieldValue(`${checkBoxObj.taxRateId}`, false)
+            ));
+        }
+
+    };
+
+    const { data: fuelTaxExemptionsList } = useGetTaxRates(formik?.values?.productType?.value, formik?.values?.city?.value, onTaxExsSuccess, onTaxExsError);
 
     const selectAllCheckboxes = (val: boolean) => {
-
-        checkBoxList.map((checkBoxObj: any) => (
-            formik.setFieldValue(`${checkBoxObj.field}`, val)
-        ));
-
-        formik.setFieldValue('fuelTaxExemptions[0].stateFuelTax', val);
+        if(val){
+            const arr:Array<any> = [];
+            taxExemptionList.forEach((checkBoxObj: any) => {
+                formik.setFieldValue(`${checkBoxObj.taxRateId}`, val);
+                arr.push(checkBoxObj.taxRateId);
+            });
+            formik.setFieldValue('taxExemption', arr);
+        }else{
+            formik.setFieldValue(`taxExemption`, []);
+        }
     };
 
     const handleSelectAll = (e: any) => {
-        setSelectAll(e.target.checked);
-        selectAllCheckboxes(!selectAll);
+        const checked = e.target.checked;
+        setSelectAll(checked);
+        selectAllCheckboxes(checked);
     };
 
     const onCheckBoxChange = (index: number, e: any) => {
@@ -38,21 +61,26 @@ export default function CheckBoxSegment({ isDisabled, formik }: props) {
         console.warn('e.target.name', e.target.name);
         formik.setFieldValue(name, e.target.checked);
         if (checked) {
-            updateSelectedCBs(selectedCBs => [...selectedCBs, name]);
+            formik.setFieldValue('taxExemption', [...formik.values.taxExemption, name]);
         } else {
             if (selectAll) {
                 setSelectAll(false);
             }
-            updateSelectedCBs(selectedCBs.filter(item => item !== name));
+            formik.setFieldValue('taxExemption', formik.values.taxExemption.filter((item:any) => item !== name));
         }
 
     };
 
     useEffect(() => {
-        if (selectedCBs.length === checkBoxList.length) {
+        // console.warn('test-->', updateTaxExemptionList, capitalizeFirstLetter);
+        if (formik.values.taxExemption.length > 0 && formik.values.taxExemption.length === taxExemptionList.length) {
             setSelectAll(true);
         }
-    }, [formik.values, selectedCBs]);
+        console.warn("check***********-->",fuelTaxExemptionsList);
+        if(fuelTaxExemptionsList && fuelTaxExemptionsList.data){
+            updateTaxExemptionList(fuelTaxExemptionsList.data.map((obj: any) => ({ ...obj, label: capitalizeFirstLetter(obj.taxRateTypeNm.replace(/-/g, ' ')), value:false  })));
+        }
+    }, [formik.values, fuelTaxExemptionsList]);
 
 
     return (
@@ -68,13 +96,13 @@ export default function CheckBoxSegment({ isDisabled, formik }: props) {
                     Select All
                 </Typography>} />
 
-            {checkBoxList.map((checkBoxObj: any, index: number) => (
+            {taxExemptionList.length>0 && taxExemptionList.map((checkBoxObj: any, index: number) => (
                 <FormControlLabel
                     sx={checkboxConfig}
-                    key={checkBoxObj.field}
+                    key={checkBoxObj.taxRateId}
                     disabled={isDisabled}
                     className="checkbox-field"
-                    control={<Checkbox checked={formik.values[checkBoxObj.field]} name={`${checkBoxObj.field}`} onChange={(e: any) => onCheckBoxChange(index, e)} disabled={isDisabled} />}
+                    control={<Checkbox checked={formik.values[checkBoxObj.taxRateId]} name={`${checkBoxObj.taxRateId}`} onChange={(e: any) => onCheckBoxChange(index, e)} disabled={isDisabled} />}
                     label={<Typography color={isDisabled ? 'var(--Secondary-Background)' : "var(--Darkgray)"} variant="h4" >
                         {checkBoxObj.label}
                     </Typography>} />
