@@ -11,9 +11,12 @@ type props = {
     isDisabled: boolean,
     formik: any,
     editMode: boolean,
+    fetchTaxList: boolean,
+    showFuelTaxError:  (...args: any[]) => void;
+    setFetchTaxList:  (...args: any[]) => void; 
 }
 
-export default function OpisRackSegment({ isDisabled, formik, editMode }: props) {
+export default function OpisRackSegment({ isDisabled, formik, editMode, showFuelTaxError, fetchTaxList , setFetchTaxList}: props) {
 
     const { t } = useTranslation();
 
@@ -61,7 +64,7 @@ export default function OpisRackSegment({ isDisabled, formik, editMode }: props)
             </Grid>
             <Grid item lg={5} md={8} sm={8} xs={8} mx={4} my={1}>
                 <FormControl className='checkboxlist-wrapper' sx={{ m: 3 }}>
-                    <CheckboxSegment formik={formik} isDisabled={isDisabled}/>
+                    <CheckboxSegment formik={formik} isDisabled={isDisabled}   showFuelTaxError={showFuelTaxError} fetchTaxList={fetchTaxList} setFetchTaxList={setFetchTaxList}/>
                 </FormControl>
             </Grid>
             <Grid item lg={5} md={8} sm={8} xs={8} mx={4} my={1} >

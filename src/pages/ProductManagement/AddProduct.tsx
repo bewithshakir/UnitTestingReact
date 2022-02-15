@@ -12,7 +12,7 @@ import ToastMessage from '../../components/UIComponents/ToastMessage/ToastMessag
 import OpisRackSegment from './OpisRackSegment';
 import { formStatusObj, strCustomText, strCustomTextRetail, initFormValues, productFormFields } from './config';
 import { useGetProductTypes, useGetProductNames, useGetLotProductDetails, useGetPricingModel, useCreateProduct, useGetOPISRetail, useEditCustomProduct } from './queries';
-import { useAddedCustomerIdStore, useAddedCustomerNameStore, useShowConfirmationDialogBoxStore } from '../../store';
+import { useAddedCustomerIdStore, useAddedCustomerNameStore, useShowConfirmationDialogBoxStore, useAddedParkingLotCityNmStore } from '../../store';
 import { AddProductValidationSchema } from './validation';
 import { totalPricePerGallon } from '../../utils/math.utils';
 
@@ -48,6 +48,10 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
     const showDialogBox = useShowConfirmationDialogBoxStore((state) => state.showDialogBox);
     const isFormValidated = useShowConfirmationDialogBoxStore((state) => state.setFormFieldValue);
     const hideDialogBox = useShowConfirmationDialogBoxStore((state) => state.hideDialogBox);
+    const parkingLotCityNm = useAddedParkingLotCityNmStore((state) => state.parkingLotCityNm);
+    const [fuelTaxError,setFuelTaxError ] = useState('');
+    const [fetchTaxList, updateFetchTaxList] = useState(false);
+
     const [fetchOPISRetail, setFetchOPISRetail] = useState(false);
     const [isSaveCancelShown, setSaveCancelShown] = useState(true);
     const [editMode, setEditMode] = useState(false);
@@ -277,6 +281,9 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                 formik.setFieldValue('productNm', [formik.values?.masterProductName?.label + ' ' + 'Retail'].join(''));
             }
         }
+        if(value?.label?.toLowerCase() === 'opis rack'){
+            updateFetchTaxList(true);
+        }
 
     };
 
@@ -301,6 +308,18 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
         setIsDisabled(false);
         setSaveCancelShown(true);
         setInitialFormikValues(initFormValues);
+    };
+
+    const showFuelTaxError = (val: boolean) =>{
+        if(val){
+            setFuelTaxError( `Please configure the tax components for ${parkingLotCityNm}`);
+        }else{
+            setFuelTaxError('');
+        }
+    };
+
+    const setFetchTaxList = (val: boolean) => {
+        updateFetchTaxList(val);
     };
 
     console.warn('formik--->', formik);
@@ -466,10 +485,12 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                                 </Grid>
                             </>
                         )}
-                        {(formik.values?.pricingModel?.label?.toLowerCase() === 'opis rack') && 
-                            <OpisRackSegment isDisabled={isDisabled} formik={formik} editMode={editMode} /> 
+                        {(formik.values?.pricingModel?.label?.toLowerCase() === 'opis rack') && !fuelTaxError && 
+                            <OpisRackSegment isDisabled={isDisabled} formik={formik} editMode={editMode} fetchTaxList={fetchTaxList} showFuelTaxError={showFuelTaxError} setFetchTaxList={setFetchTaxList}/> 
                         }
-
+                        {(formik.values?.pricingModel?.label?.toLowerCase() === 'opis rack')  && fuelTaxError &&
+                        <Grid item lg={12} md={12} sm={12} xs={12} mx={4}>
+                        {fuelTaxError}</Grid>}
                     </Grid>
                     <Grid item container lg={12} md={12} sm={12} xs={12} px={4} py={4} className="lastItem" >
                         <Grid item lg={12} md={12} sm={12} xs={12} px={4} py={4} textAlign="right">
