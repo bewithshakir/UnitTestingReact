@@ -11,9 +11,8 @@
             position: relative;
             transform: translate(250%, 0%);
         }
-
-        .datagrid-actions-menu .menuitem {
-            width: 200px;
+        .header-options{
+            z-index: auto;
         }
     }
 }

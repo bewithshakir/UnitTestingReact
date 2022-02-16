@@ -99,7 +99,6 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -214,7 +213,6 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -424,7 +422,6 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -539,7 +536,6 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -1218,7 +1214,11 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                         }
                         rows={Array []}
                         searchTerm=""
-                        showImg={<ParkingLotNoDataIcon />}
+                        showImg={
+                          <ParkingLotNoDataIcon
+                            className="PLNoDataSVG"
+                          />
+                        }
                       />
                       <RightInfoPanel
                         fields={
@@ -4401,7 +4401,11 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                             }
                             rows={Array []}
                             searchTerm=""
-                            showImg={<ParkingLotNoDataIcon />}
+                            showImg={
+                              <ParkingLotNoDataIcon
+                                className="PLNoDataSVG"
+                              />
+                            }
                           />,
                           <RightInfoPanel
                             fields={
@@ -4632,7 +4636,11 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                         }
                         rows={Array []}
                         searchTerm=""
-                        showImg={<ParkingLotNoDataIcon />}
+                        showImg={
+                          <ParkingLotNoDataIcon
+                            className="PLNoDataSVG"
+                          />
+                        }
                       >
                         <ForwardRef(TableContainer)
                           className="table-container"
@@ -4906,7 +4914,11 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                     rows={Array []}
                                     searchTerm=""
                                     selectedRows={Array []}
-                                    showImg={<ParkingLotNoDataIcon />}
+                                    showImg={
+                                      <ParkingLotNoDataIcon
+                                        className="PLNoDataSVG"
+                                      />
+                                    }
                                   />
                                 </ForwardRef(Table)>,
                                 "className": "table-container",
@@ -5189,7 +5201,11 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                           rows={Array []}
                                           searchTerm=""
                                           selectedRows={Array []}
-                                          showImg={<ParkingLotNoDataIcon />}
+                                          showImg={
+                                            <ParkingLotNoDataIcon
+                                              className="PLNoDataSVG"
+                                            />
+                                          }
                                         />,
                                       ],
                                       "component": "table",
@@ -6217,7 +6233,11 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                       rows={Array []}
                                       searchTerm=""
                                       selectedRows={Array []}
-                                      showImg={<ParkingLotNoDataIcon />}
+                                      showImg={
+                                        <ParkingLotNoDataIcon
+                                          className="PLNoDataSVG"
+                                        />
+                                      }
                                     >
                                       <Loader>
                                         <div>
@@ -7537,7 +7557,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                                               <h2>
                                                                 
                                                               </h2>
-                                                              <DataGridActionsMenu
+                                                              <ForwardRef
                                                                 onSelect={[Function]}
                                                                 options={
                                                                   Array [
@@ -7587,7 +7607,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                                                   <h2>
                                                                     
                                                                   </h2>
-                                                                  <DataGridActionsMenu
+                                                                  <ForwardRef
                                                                     onSelect={[Function]}
                                                                     options={
                                                                       Array [
@@ -7636,7 +7656,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                                                         <h2>
                                                                           
                                                                         </h2>,
-                                                                        <DataGridActionsMenu
+                                                                        <ForwardRef
                                                                           onSelect={[Function]}
                                                                           options={
                                                                             Array [
@@ -7804,7 +7824,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                                                       </MuiIconButtonRoot>
                                                                     </ForwardRef(IconButton)>
                                                                     <h2 />
-                                                                    <DataGridActionsMenu
+                                                                    <ForwardRef
                                                                       onSelect={[Function]}
                                                                       options={
                                                                         Array [
@@ -8050,21 +8070,33 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                                                             </button>
                                                                           }
                                                                           className="datagrid-actions-popper"
-                                                                          disablePortal={true}
                                                                           modifiers={
-                                                                            Object {
-                                                                              "preventOverflow": Object {
-                                                                                "boundariesElement": "viewport",
+                                                                            Array [
+                                                                              Object {
                                                                                 "enabled": true,
+                                                                                "name": "flip",
+                                                                                "options": Object {
+                                                                                  "altBoundary": true,
+                                                                                  "rootBoundary": "viewport",
+                                                                                },
                                                                               },
-                                                                            }
+                                                                              Object {
+                                                                                "enabled": true,
+                                                                                "name": "preventOverflow",
+                                                                                "options": Object {
+                                                                                  "altAxis": true,
+                                                                                  "altBoundary": true,
+                                                                                  "rootBoundary": "viewport",
+                                                                                },
+                                                                              },
+                                                                            ]
                                                                           }
                                                                           open={false}
                                                                           placement="bottom-end"
                                                                           transition={true}
                                                                         />
                                                                       </div>
-                                                                    </DataGridActionsMenu>
+                                                                    </ForwardRef>
                                                                   </div>
                                                                 </MuiToolbarRoot>
                                                               </ForwardRef(Toolbar)>
