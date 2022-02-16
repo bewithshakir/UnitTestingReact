@@ -48,7 +48,7 @@ export const handlers = [
     editTruckParkingLotHandler(),
     addAssetHandler(),
     addTruckColorHandler(),
-    addTruckFuelHandler
+    addTruckFuelHandler()
 ];
 
 const createTestQueryClient = () => new QueryClient({
