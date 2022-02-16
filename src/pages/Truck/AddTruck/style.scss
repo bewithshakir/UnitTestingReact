@@ -1,0 +1,61 @@
+
+div {
+    .page-area {
+      max-height: calc(100vh - 64px);
+      overflow-y: auto;
+    }
+    .page-container {
+      margin: 0px;
+      padding: 0px;
+      max-width: 950px;
+      margin-left: 100px;
+      .form-action-section {
+        display: flex;
+        justify-content: flex-end;
+      }
+      .checkbox-field {
+        .MuiCheckbox-root {
+          margin-left: -9px;
+        }
+      }
+      .deleteBtn {
+        margin-top: 44px;
+        margin-left: 22px;
+        svg {
+          cursor: pointer;
+        }
+      }
+      .loadingIcon{
+        position: inital; 
+        width: 28px;
+      }
+      svg{
+          margin-right: 11px; 
+      }
+    }
+    .right-float {
+      float: right;
+    }
+    .add-icon-span {
+      margin: 2px 5px 0px 0px;
+    }
+    .add-link {
+      color: var(--Primary);
+    }
+    .disabled-text-link {
+      display: 'flex';
+      text-decoration-color: var(--Secondary-Background);
+      cursor: default;
+      &:hover {
+        text-decoration-color: var(--Secondary-Background);
+        cursor: default;
+      }
+      h3 {
+        color: var(--Secondary-Background);
+      }
+    }
+    .MuiTypography-h3 {
+      color: var(--Primary);
+    }
+  }
+  
