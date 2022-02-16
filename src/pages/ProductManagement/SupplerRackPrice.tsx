@@ -37,9 +37,9 @@ export default function SupplierRack({ isDisabled, formik }: props) {
         setOpen(false);
     };
 
-    useEffect(() => {
-        console.warn('supplierPrices', supplierPrices);
-    }, [supplierPrices]);
+    // useEffect(() => {
+    //     console.warn('supplierPrices', supplierPrices);
+    // }, [supplierPrices]);
     const handleDone = () => {
         const supplierPrice = supplierData?.data?.supplierPrices.find(sd => (sd.productKey === selectedRows[0]));
         // eslint-disable-next-line no-console
