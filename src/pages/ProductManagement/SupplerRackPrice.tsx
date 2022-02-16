@@ -29,8 +29,8 @@ export default function SupplierRack({ isDisabled, formik }: props) {
 
     const handleClose = () => {
         setOpen(false);
-        console.warn(formik);
     };
+    
     useEffect(() => {
         console.warn('supplierPrices', supplierPrices);
     }, [supplierPrices]);
