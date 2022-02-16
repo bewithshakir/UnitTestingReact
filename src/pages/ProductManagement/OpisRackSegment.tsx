@@ -1,11 +1,11 @@
-import { Fragment, useEffect, useState } from 'react';
+import { Fragment } from 'react';
 import Input from '../../components/UIComponents/Input/Input';
 import { Grid, FormControl } from "@mui/material";
 import { useTranslation } from 'react-i18next';
 import { totalPricePerGallon } from '../../utils/math.utils';
 import OpisRackCity from './OpisRackCity';
 import CheckboxSegment from './CheckboxSegement';
-import { SupplierPrice } from './queries';
+
 
 
 type props = {
@@ -15,13 +15,11 @@ type props = {
     fetchTaxList: boolean,
     showFuelTaxError: (...args: any[]) => void;
     setFetchTaxList: (...args: any[]) => void;
+    setSupplierPrice: (value: any) => any;
 }
 
-export default function OpisRackSegment({ isDisabled, formik, editMode, showFuelTaxError, fetchTaxList, setFetchTaxList }: props) {
-    const [supplierPrice, setSupplierPrice] = useState<null | SupplierPrice>(null);
-    useEffect(() => {
-        console.warn('supplierPrice: ', supplierPrice);
-    }, [supplierPrice]);
+export default function OpisRackSegment({ isDisabled, formik, editMode, showFuelTaxError, fetchTaxList, setFetchTaxList, setSupplierPrice }: props) {
+    
     const { t } = useTranslation();
 
     return (

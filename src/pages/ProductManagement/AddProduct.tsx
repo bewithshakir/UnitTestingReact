@@ -11,7 +11,7 @@ import Select from '../../components/UIComponents/Select/SingleSelect';
 import ToastMessage from '../../components/UIComponents/ToastMessage/ToastMessage.component';
 import OpisRackSegment from './OpisRackSegment';
 import { formStatusObj, strCustomText, strCustomTextRetail, initFormValues, productFormFields } from './config';
-import { useGetProductTypes, useGetProductNames, useGetLotProductDetails, useGetPricingModel, useCreateProduct, useGetOPISRetail, useEditCustomProduct } from './queries';
+import { useGetProductTypes, useGetProductNames, useGetLotProductDetails, useGetPricingModel, useCreateProduct, useGetOPISRetail, useEditCustomProduct, SupplierPrice } from './queries';
 import { useAddedCustomerIdStore, useAddedCustomerNameStore, useShowConfirmationDialogBoxStore, useAddedParkingLotCityNmStore } from '../../store';
 import { AddProductValidationSchema } from './validation';
 import { totalPricePerGallon } from '../../utils/math.utils';
@@ -51,6 +51,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
     const parkingLotCityNm = useAddedParkingLotCityNmStore((state) => state.parkingLotCityNm);
     const [fuelTaxError,setFuelTaxError ] = useState('');
     const [fetchTaxList, updateFetchTaxList] = useState(false);
+    const [supplierPriceRowObj, setSupplierPriceRowObj] = useState<null | SupplierPrice>(null);
 
     const [fetchOPISRetail, setFetchOPISRetail] = useState(false);
     const [isSaveCancelShown, setSaveCancelShown] = useState(true);
@@ -206,6 +207,15 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                 productId: form.masterProductName?.value,
                 pricingModelCd: form.pricingModel?.value
             };
+            
+            if(form.pricingModel?.label.toLowerCase() === 'opis rack'){
+                payloadObj.pricingCityId = supplierPriceRowObj?.cityId;
+                payloadObj.pricingProductKey = supplierPriceRowObj?.productKey;
+                if( form.taxExemption && form.taxExemption.length>0){
+                    payloadObj.taxExemption = [...form.taxExemption];
+                }
+            }
+
             if (editMode) {
                 editCustomProduct(payloadObj);
             } else {
@@ -329,6 +339,8 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
     const setFetchTaxList = (val: boolean) => {
         updateFetchTaxList(val);
     };
+
+    console.warn('formik-->>', formik);
 
     return (
         <FormikProvider value={formik}>
@@ -492,7 +504,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                             </>
                         )}
                         {(formik.values?.pricingModel?.label?.toLowerCase() === 'opis rack') && !fuelTaxError && 
-                            <OpisRackSegment isDisabled={isDisabled} formik={formik} editMode={editMode} fetchTaxList={fetchTaxList} showFuelTaxError={showFuelTaxError} setFetchTaxList={setFetchTaxList}/> 
+                            <OpisRackSegment isDisabled={isDisabled} formik={formik} editMode={editMode} fetchTaxList={fetchTaxList} showFuelTaxError={showFuelTaxError} setFetchTaxList={setFetchTaxList} setSupplierPrice={setSupplierPriceRowObj}/> 
                         }
                         {(formik.values?.pricingModel?.label?.toLowerCase() === 'opis rack')  && fuelTaxError &&
                         <Grid item lg={12} md={12} sm={12} xs={12} mx={4}>
