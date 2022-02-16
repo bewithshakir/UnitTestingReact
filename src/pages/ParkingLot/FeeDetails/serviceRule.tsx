@@ -7,7 +7,7 @@ import { FormControlLabel, Grid, Typography } from "@mui/material";
 import { useTranslation } from 'react-i18next';
 import { useGetLotProductTypes, useGetLotProductNames, useGetLotVehicleTypes, useGetLotAssetTypes, useGetLotMasterProductNames } from './queries';
 import { all } from '../config';
-// import { isEqual } from 'lodash';
+import { isEqual } from 'lodash';
 
 
 type props = {
@@ -35,7 +35,8 @@ export default function ServiceRule({ index, isDisabled, formik, lotId }: props)
 
     const [productNames, setProductNames] = useState([]);
     const { data: productNameList } = useGetLotProductNames(lotId, formik?.values?.serviceFeeRules?.[index]?.masterProductType?.value);
-    // const [formState, SetFormState] = useState(formik?.values?.serviceFeeRules?.[index]);
+    const [formState, setFormState] = useState(formik?.values?.serviceFeeRules?.[index]);
+    const [init, setInit] = useState(false);
 
     useEffect(() => {
         if (vehicleTypeList?.data?.length) {
@@ -57,18 +58,27 @@ export default function ServiceRule({ index, isDisabled, formik, lotId }: props)
         if (productNameList?.data?.lotProducts?.length) {
             setProductNames(productNameList.data.lotProducts.map((obj: any) => ({ label: obj.productNm.trim(), value: obj.applicableProductId.trim() })));
         }
+        setInit(true);
     }, [vehicleTypeList, assetTypeList, productTypeList, productNameList, masterProductNamesList]);
 
+    useEffect(() => {
+        if (init) {
+            setFormState(formik.values);
+            setInit(false);
+        }
+    }, [init]);
 
+    useEffect(() => {
+        if (isEqual(formState, formik.values)) { 
+            console.log(formState);
+            console.log(formik.values);
+        }
 
-    // useEffect(() => {
-    //     if (isEqual(formState, formik.values)) { 
-
-    //     }
-
-    // }, [formik.values);
+    }, [formik.values]);
 
     const handleProductTypeChange = (fieldName: string, value: any) => {
+        
+        // if (isEqual(formState, formik.values)) {
         console.log("" + `serviceFeeRules[${index}].masterProductType`);
         formik.setFieldValue(fieldName, value);
         if (value.value == "all") {
@@ -76,7 +86,9 @@ export default function ServiceRule({ index, isDisabled, formik, lotId }: props)
 
             formik.setFieldValue("" + `serviceFeeRules[${index}].productName`, { label: "All", value: "all" });
         }
-
+    // }
+        console.log(formState);
+        console.log(formik);
     };
 
     const handleMasterProductTypeChange = (fieldName: string, value: any) => {

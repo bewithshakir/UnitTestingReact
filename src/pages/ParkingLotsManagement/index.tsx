@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React, { memo, useEffect } from 'react';
 import { HorizontalBarVersionState, useStore } from '../../store';
 import { Box, Grid, FormControl, Typography } from "@mui/material";
@@ -53,6 +54,7 @@ const index: React.FC<ParkingLotsManagementProps> = memo(() => {
             data?.pages?.forEach((item: any) => {
                 list.push(...item.data.lots);
             });
+            console.log(list);
             setAllParkingLotList(list);
         }
     }, [data]);

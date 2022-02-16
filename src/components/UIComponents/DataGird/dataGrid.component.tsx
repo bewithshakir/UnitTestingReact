@@ -1,4 +1,4 @@
-import { Collapse, TableBody, TableCell, TableRow, FormControl, Avatar, Icon, ImageList, Typography, Box } from '@mui/material';
+import { Collapse, TableBody, TableCell, TableRow, FormControl, Avatar, Icon, ImageList, Typography, Box, ImageListItem } from '@mui/material';
 import Checkbox from '../Checkbox/Checkbox.component';
 import React, { useEffect } from "react";
 import { Loader } from '../Loader';
@@ -6,9 +6,6 @@ import DataGridActionsMenu, { DataGridActionsMenuOption } from '../Menu/DataGrid
 import { Button } from './../Button/Button.component';
 import './grid.style.scss';
 import { fieldOptions, headerObj } from './grid.component';
-import {
-    YellowFuelIcon, RedFuelIcon, GreenFuelIcon, NavyBlueFuelIcon,
-} from '../../../assets/icons';
 import { tableImagesSX, tableAvatarSX, tableImagesIconListSX, tableIconsSX, tableFuelIconsSX } from './config';
 import NoDataFound from './Nodata';
 import Select from './ProductSingleSelect';
@@ -75,15 +72,6 @@ function stableSort (array: any, comparator: any) {
     return stabilizedThis.map((el: any) => el[0]);
 }
 
-function getFuelIcon (fuelStatus: string) {
-    return ({
-        "Regular": YellowFuelIcon,
-        "Premium": RedFuelIcon,
-        "Diesel": GreenFuelIcon,
-        "V-Power": NavyBlueFuelIcon,
-    }[fuelStatus] || YellowFuelIcon);
-}
-
 const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
     const [selectedRowIndex, setSelectedRowIndex] = React.useState(-1);
     const [selectedColIndex, setSelectedColIndex] = React.useState(-1);
@@ -124,13 +112,39 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
         );
     };
 
+    const dataToRenderFirstRow = (data: any, key: string) => {
+        const tempData: any = [];
+            data?.map((icon: any, index: number) => {
+                tempData.push(
+                    <ImageListItem key={index}>
+                        <Icon sx={key === 'fuelStatus' ? tableFuelIconsSX : tableIconsSX} component={key === 'fuelStatus' ? getProductIcon(icon?.productIcon?.productIconNm) : icon} />
+                    </ImageListItem>
+                );
+            }
+        );
+        return tempData;
+    };
+
     const renderIcons = (key: string, data: any, align: string | undefined) => {
         if (data?.length) {
-            return (<ImageList sx={{ ...tableImagesIconListSX, justifyContent: align }} gap={0} cols={10}>
-                {data?.map((icon: any, index: number) =>
-                    <Icon key={index} sx={key === 'fuelStatus' ? tableFuelIconsSX : tableIconsSX} component={key === 'fuelStatus' ? getFuelIcon(icon) : icon} />
-                )}
-            </ImageList>);
+            if (data?.length <= 5) {
+                return (<ImageList sx={{ ...tableImagesIconListSX, justifyContent: align }} gap={0} cols={5}>
+                            { dataToRenderFirstRow(data?.slice(0,6), key) }
+                </ImageList>);
+            }
+            else if (data?.length > 5 && data?.length <= 10) {
+                return (<ImageList sx={{ ...tableImagesIconListSX, justifyContent: align }} gap={0} cols={5}>
+                            { dataToRenderFirstRow(data?.slice(0, 6), key) }
+                            { dataToRenderFirstRow(data.slice(6, 11), key) }
+                </ImageList >);
+            }
+            else {
+                return (<ImageList sx={{ ...tableImagesIconListSX, justifyContent: align }} gap={0} cols={5}>
+                            { dataToRenderFirstRow(data.slice(0,6), key) }
+                            { dataToRenderFirstRow(data.slice(6,11), key) }
+                            { dataToRenderFirstRow(data.slice(11), key) }
+                </ImageList>);
+            }
         }
     };
 
@@ -286,12 +300,12 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
                                                     }
                                                 </Button> :
                                                 props.headCells[colIndex].type === 'icon' ? renderIcon(row[key]) :
-                                                    props.headCells[colIndex].type === 'icons' ? renderIcons(key, row[key], props.headCells[colIndex].align) :
-                                                        props.headCells[colIndex].type === 'image' ? <Avatar sx={tableAvatarSX} src={row[key]} variant="square" /> :
-                                                            props.headCells[colIndex].type === 'images' ? renderImages(row[key]) :
-                                                                props.headCells[colIndex].type === 'dropdown' ? renderSelect() :
-                                                                    props.headCells[colIndex].type === 'status' ? renderStatus(props.headCells[colIndex], row[key]) :
-                                                                        props.headCells[colIndex].type === 'product' ? renderProduct(props.headCells[colIndex], row[key]) : ""
+                                                props.headCells[colIndex].type === 'icons' ? renderIcons(key, row[key], props.headCells[colIndex].align) :
+                                                props.headCells[colIndex].type === 'image' ? <Avatar sx={tableAvatarSX} src={row[key]} variant="square" /> :
+                                                props.headCells[colIndex].type === 'images' ? renderImages(row[key]) :
+                                                props.headCells[colIndex].type === 'dropdown' ? renderSelect() :
+                                                props.headCells[colIndex].type === 'status' ? renderStatus(props.headCells[colIndex], row[key]) :
+                                                props.headCells[colIndex].type === 'product' ? renderProduct(props.headCells[colIndex], row[key]) : ""
                                     }
                                 </TableCell>
                             )}
