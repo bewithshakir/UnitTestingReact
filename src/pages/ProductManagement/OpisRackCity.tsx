@@ -43,16 +43,6 @@ export default function OpisRackCity({ isDisabled, formik, editMode, }: Props) {
     const { data: servedCities } = useGetServedCities();
     const { data: spplierBrandProducts } = useGetSupplierBrandProducts(formik?.values?.city?.cityId || '');
 
-
-    useEffect(() => {
-        console.warn(isDisabled);
-        console.warn(formik);
-        console.warn(setCities);
-        console.warn(setSuppliers);
-        console.warn(setbrandedList);
-        console.warn(setActualProductList);
-    }, []);
-
     useEffect(() => {
         setSuppliers(getOptions(spplierBrandProducts?.data?.actualProduct));
         setbrandedList(getOptions(spplierBrandProducts?.data?.brand));
