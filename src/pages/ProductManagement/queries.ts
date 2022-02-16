@@ -311,19 +311,61 @@ interface QueryOptions {
   actualProduct?: string[]
 }
 
+export interface SupplierPrice {
+  productKey: string
+  opisServedCityId: string | null
+  countryCd: string
+  cityId: number
+  productCategoryId: string | null
+  generatedProductName: string
+  productIndicator: string
+  productType: string
+  supplier: string
+  state: string
+  city: string
+  brandIndicator: string
+  grossPrice: number
+  octaneValue: number
+  actualProduct: string
+  rvp: string
+  priceDate: string
+  addedDate: string
+  lastUpdatedDate: string
+  terms: string
+  opisProductName: string
+  dieselBlend: string
+  bioType: string
+}
+
 const getSupplierPrices = async (query: QueryOptions) => {
   if (!query || !query.cityId || !query.supplier || !query.brandIndicator || !query.actualProduct) {
-    return [];
+    return {
+      data: {
+        supplierPrices: [],
+        error: null
+      }
+    };
   }
+  const queryParam = new URLSearchParams();
+  queryParam.append('cityId', query.cityId);
+  queryParam.append('supplier', JSON.stringify(query.supplier));
+  queryParam.append('brandIndicator', JSON.stringify(query.brandIndicator));
+  queryParam.append('actualProduct', JSON.stringify(query.actualProduct));
   const options: AxiosRequestConfig = {
     method: 'get',
-    url: `/api/product-service/opis/rack-prices?cityId=${query.cityId}&supplier=${query.supplier.join(',')}&brandIndicator=${query.brandIndicator.join(',')}&actualProduct=${query.actualProduct.join(',')}`
+    url: `/api/product-service/opis/rack-prices?${queryParam.toString()}`
   };
-  const { data } = await axios(options);
+  const { data }: {
+    data?: {
+      data?: {
+        supplierPrices: SupplierPrice[]
+        error: null
+      }
+    }
+  } = await axios(options);
   return data;
 };
 
 export const useGetSupplierPrices = (qery: QueryOptions) => {
   return useQuery(['getSupplierPrices', qery], () => getSupplierPrices(qery));
-
 };

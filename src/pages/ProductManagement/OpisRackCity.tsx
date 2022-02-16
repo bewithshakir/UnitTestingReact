@@ -12,6 +12,7 @@ type Props = {
     isDisabled: boolean,
     formik: any,
     editMode: boolean,
+    setSupplierPrice: (value: any) => any
 }
 interface ServedCity {
     city?: string
@@ -40,13 +41,14 @@ export default function OpisRackCity({ isDisabled, formik, editMode, }: Props) {
     const [suppliers, setSuppliers] = useState<GeneralOptions[]>([]);
     const [brandedList, setbrandedList] = useState<GeneralOptions[]>([]);
     const [actualProductList, setActualProductList] = useState<GeneralOptions[]>([]);
+
     const { data: servedCities } = useGetServedCities();
     const { data: spplierBrandProducts } = useGetSupplierBrandProducts(formik?.values?.city?.cityId || '');
 
     useEffect(() => {
-        setSuppliers(getOptions(spplierBrandProducts?.data?.actualProduct));
+        setSuppliers(getOptions(spplierBrandProducts?.data?.supplier));
         setbrandedList(getOptions(spplierBrandProducts?.data?.brand));
-        setActualProductList(getOptions(spplierBrandProducts?.data?.supplier));
+        setActualProductList(getOptions(spplierBrandProducts?.data?.actualProduct));
     }, [spplierBrandProducts]);
 
     useEffect(() => {
@@ -162,16 +164,6 @@ export default function OpisRackCity({ isDisabled, formik, editMode, }: Props) {
         </Grid>
         <Grid item lg={5} md={8} sm={8} xs={8} mx={4} my={1} >
             <SupplierRack formik={formik} isDisabled={isDisabled} />
-            {/* <Input
-                id='supplierPrice'
-                name='supplierPrice'
-                label={'SUPPLIER PRICE * (Fill all the Mandatory fields to select the price from the filtered list)'}
-                type='text'
-                onClick={(e) => e.preventDefault()}
-                description=''
-                {...formik.getFieldProps('state')}
-                disabled={isDisabled}
-            /> */}
         </Grid>
         <Grid item lg={5} md={8} sm={8} xs={8} mx={4} my={1} >
         </Grid>

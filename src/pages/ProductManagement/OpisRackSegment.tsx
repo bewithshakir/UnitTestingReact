@@ -1,10 +1,11 @@
-import { Fragment } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import Input from '../../components/UIComponents/Input/Input';
-import {Grid, FormControl } from "@mui/material";
+import { Grid, FormControl } from "@mui/material";
 import { useTranslation } from 'react-i18next';
 import { totalPricePerGallon } from '../../utils/math.utils';
 import OpisRackCity from './OpisRackCity';
 import CheckboxSegment from './CheckboxSegement';
+import { SupplierPrice } from './queries';
 
 
 type props = {
@@ -12,17 +13,20 @@ type props = {
     formik: any,
     editMode: boolean,
     fetchTaxList: boolean,
-    showFuelTaxError:  (...args: any[]) => void;
-    setFetchTaxList:  (...args: any[]) => void; 
+    showFuelTaxError: (...args: any[]) => void;
+    setFetchTaxList: (...args: any[]) => void;
 }
 
-export default function OpisRackSegment({ isDisabled, formik, editMode, showFuelTaxError, fetchTaxList , setFetchTaxList}: props) {
-
+export default function OpisRackSegment({ isDisabled, formik, editMode, showFuelTaxError, fetchTaxList, setFetchTaxList }: props) {
+    const [supplierPrice, setSupplierPrice] = useState<null | SupplierPrice>(null);
+    useEffect(() => {
+        console.warn('supplierPrice: ', supplierPrice);
+    }, [supplierPrice]);
     const { t } = useTranslation();
 
     return (
         <Fragment>
-            <OpisRackCity formik={formik} isDisabled={isDisabled} editMode={editMode} />
+            <OpisRackCity formik={formik} isDisabled={isDisabled} editMode={editMode} setSupplierPrice={setSupplierPrice} />
             <Grid item lg={5} md={8} sm={8} xs={8} mx={4} my={1} >
                 <Input
                     id='manualPriceAmt'
@@ -64,7 +68,7 @@ export default function OpisRackSegment({ isDisabled, formik, editMode, showFuel
             </Grid>
             <Grid item lg={5} md={8} sm={8} xs={8} mx={4} my={1}>
                 <FormControl className='checkboxlist-wrapper' sx={{ m: 3 }}>
-                    <CheckboxSegment formik={formik} isDisabled={isDisabled}   showFuelTaxError={showFuelTaxError} fetchTaxList={fetchTaxList} setFetchTaxList={setFetchTaxList}/>
+                    <CheckboxSegment formik={formik} isDisabled={isDisabled} showFuelTaxError={showFuelTaxError} fetchTaxList={fetchTaxList} setFetchTaxList={setFetchTaxList} />
                 </FormControl>
             </Grid>
             <Grid item lg={5} md={8} sm={8} xs={8} mx={4} my={1} >

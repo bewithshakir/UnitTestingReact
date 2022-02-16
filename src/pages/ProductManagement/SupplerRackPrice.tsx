@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Button } from '../../components/UIComponents/Button/Button.component';
 import { Dialog, DialogContent, DialogActions, Grid, Typography } from '@mui/material';
 import GridComponent from '../../components/UIComponents/DataGird/grid.component';
@@ -10,17 +10,23 @@ type props = {
     formik: any,
 }
 
+interface GeneralOptions {
+    label: string
+    value: string
+}
+
 
 export default function SupplierRack({ isDisabled, formik }: props) {
 
     const [open, setOpen] = useState(false);
     const ProductObj = new ProductModel();
     const headCells = ProductObj.fieldsToDisplaySupplierRack();
-    const { data: supplierPrices } = useGetSupplierPrices({
+    const [selectedRows, setSelectedRows] = useState<string[]>([]);
+    const { data: supplierData } = useGetSupplierPrices({
         cityId: formik.values?.city?.cityId,
-        supplier: formik.values?.supplier,
-        brandIndicator: formik.values?.branded,
-        actualProduct: formik.values?.actualProduct
+        supplier: formik.values?.supplier.map((s: GeneralOptions) => s.value),
+        brandIndicator: formik.values?.branded.map((v: GeneralOptions) => v.value),
+        actualProduct: formik.values?.actualProduct.map((a: GeneralOptions) => a.value),
     });
 
     const handleClickOpen = () => {
@@ -30,17 +36,32 @@ export default function SupplierRack({ isDisabled, formik }: props) {
     const handleClose = () => {
         setOpen(false);
     };
-    
+
     useEffect(() => {
         console.warn('supplierPrices', supplierPrices);
     }, [supplierPrices]);
+    const handleDone = () => {
+        const supplierPrice = supplierData?.data?.supplierPrices.find(sd => (sd.productKey === selectedRows[0]));
+        // eslint-disable-next-line no-console
+        console.log('supplierPrice:', supplierPrice);
+        if (supplierPrice) {
+            /** convert gross price from cent to dollar and assign */
+            formik.setFieldValue('supplierPrice', supplierPrice.grossPrice * .01);
+            formik.setFieldValue('opisName', supplierPrice.opisProductName);
 
+        }
+        setOpen(false);
+    };
+
+    const onRowActionSelect = (selectedIds: string[]) => {
+        setSelectedRows(selectedIds);
+    };
 
     return (
         <React.Fragment>
             <h4 className='checkbox-heading price-heading'> SUPPLIER PRICE * (Fill all the Mandatory fields to select the price from the filtered list) </h4>
             <Button variant="outlined" onClick={handleClickOpen} className='supplier-modal-btn' disabled={!(formik.values.city && formik.values.supplier?.length && formik.values.branded?.length && formik.values.actualProduct?.length) || isDisabled}>
-                {'Choose the supplier price'}
+                {selectedRows.length === 0 ? "Choose the supplier price" : `Supplier price $${formik.values.supplierPrice}`}
             </Button>
             <Dialog
                 open={open}
@@ -56,16 +77,17 @@ export default function SupplierRack({ isDisabled, formik }: props) {
                         <Grid container>
                             <Grid item xs={12} md={12} pb={5}>
                                 <GridComponent
-                                    //handleSelect={onRowActionSelect}
-                                    primaryKey='applicableProductId'
-                                    rows={supplierPrices?.data?.supplierPrices || []}
+                                    handleSelect={onRowActionSelect}
+                                    primaryKey='productKey'
+                                    rows={supplierData?.data?.supplierPrices || []}
                                     header={headCells}
                                     isLoading={false}
                                     //openDrawer={openDrawer}
                                     enableRowSelection
+                                    singleRowSelection
                                     getPages={false}
                                     searchTerm={''}
-                                    noDataMsg='Add Products to setup the fee details to complete the lot requirement.'
+                                    noDataMsg='Prices are not available. Please contact the support team.'
                                 />
                             </Grid>
                         </Grid>
@@ -74,7 +96,7 @@ export default function SupplierRack({ isDisabled, formik }: props) {
                         <Button types="cancel" aria-label="cancel" className="mr-4" onClick={handleClose}>
                             {'Cancel'}
                         </Button>
-                        <Button types="cancel" aria-label="cancel" className="mr-4" onClick={handleClose}>
+                        <Button types="cancel" aria-label="cancel" className="mr-4" onClick={handleDone} disabled={selectedRows.length === 0}>
                             {'Done'}
                         </Button>
                     </DialogActions>

@@ -3,7 +3,7 @@ import { YellowFuelIcon, RedFuelIcon, PurpleFuelIcon, SkyBlueFuelIcon, ParrotGre
 
 
 export type dropdownItem = {
-    label: string ,
+    label: string,
     value: string | number,
     icon?: JSX.Element
 }
@@ -79,7 +79,7 @@ export default class ProductModel {
         ];
     }
 
-    dataModel (data: any) {
+    dataModel(data: any) {
         return data.map((x: any) => (
             {
                 ...x,
@@ -91,24 +91,49 @@ export default class ProductModel {
 
     fieldsToDisplaySupplierRack(): headerObj[] {
         return [
-            { field: "productInd", label: "PRODUCT INDICATOR", type: 'text' },
+            { field: "productIndicator", label: "PRODUCT INDICATOR", type: 'text' },
             { field: "productType", label: "PRODUCT TYPE", type: 'text' },
-            { field: "dateDaily", label: "DATE DAILY", type: 'text' },
+            { field: "priceDate", label: "DATE DAILY", type: 'text' },
             { field: "cityId", label: "CITY ID", type: 'text' },
             { field: "state", label: "STATE", type: 'text' },
             { field: "city", label: "CITY", type: 'text' },
             { field: "supplier", label: "SUPPLIER", type: 'text' },
-            { field: "brand", label: "BRAND", type: 'text' },
-            { field: "term", label: "TERM", type: 'text' },
-            { field: "netPrice", label: "NET PRICE", type: 'text' },
+            { field: "brandIndicator", label: "BRAND", type: 'text' },
+            { field: "terms", label: "TERM", type: 'text' },
+            { field: "grossPrice", label: "NET PRICE", type: 'text' },
             { field: "uniqueMarker", label: "UNIQUE MARKER", type: 'text' },
-            { field: "octaneLevel", label: "OCTANE LEVEL", type: 'text' },
+            { field: "octaneValue", label: "OCTANE LEVEL", type: 'text' },
             { field: "actualProduct", label: "ACTUAL PRODUCT", type: 'text' },
             { field: "rvp", label: "RVP", type: 'text' },
             { field: "dieselBlend", label: "DIESEL BLEND", type: 'text' },
             { field: "bioType", label: "BIO TYPE", type: 'text' },
-            
+            { field: 'lastUpdatedDate', label: 'Last Updated Date', type: 'text' }
         ];
     }
 
 }
+
+
+// actualProduct: "NO2"
+// addedDate: "2022-02-16T10:51:58.644Z"
+// bioType: "MULT      "
+// brandIndicator: "u"
+// city: "Colton"
+// cityId: 870
+// countryCd: "us"
+// dieselBlend: "CULSD"
+// generatedProductName: "sxuno20"
+// grossPrice: 333.5
+// lastUpdatedDate: "2022-02-16T13:02:25.557Z"
+// octaneValue: 0
+// opisProductName: "Biodiesel B0-5 MULT Carb ULS Dye"
+// opisServedCityId: "f3584b2f-6682-4230-aaff-58d9abf206b1"
+// priceDate: "2022-02-15T00:00:00.000Z"
+// productCategoryId: null
+// productIndicator: "S"
+// productKey: "biodieselb0-5multcarbulsdyesx870marathonwithcar0uno2n-10cacoltonmult"
+// productType: "x"
+// rvp: "0.00"
+// state: "CA"
+// supplier: "Marathon With CAR"
+// terms: " N-10"
