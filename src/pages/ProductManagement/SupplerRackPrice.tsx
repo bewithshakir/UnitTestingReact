@@ -8,6 +8,7 @@ import { useGetSupplierPrices } from './queries';
 type props = {
     isDisabled: boolean,
     formik: any,
+    setSupplierPrice: (value: any) => any
 }
 
 interface GeneralOptions {
@@ -16,7 +17,7 @@ interface GeneralOptions {
 }
 
 
-export default function SupplierRack({ isDisabled, formik }: props) {
+export default function SupplierRack({ isDisabled, formik, setSupplierPrice }: props) {
 
     const [open, setOpen] = useState(false);
     const ProductObj = new ProductModel();
@@ -37,18 +38,16 @@ export default function SupplierRack({ isDisabled, formik }: props) {
         setOpen(false);
     };
 
-    // useEffect(() => {
-    //     console.warn('supplierPrices', supplierPrices);
-    // }, [supplierPrices]);
     const handleDone = () => {
         const supplierPrice = supplierData?.data?.supplierPrices.find(sd => (sd.productKey === selectedRows[0]));
-        // eslint-disable-next-line no-console
-        console.log('supplierPrice:', supplierPrice);
         if (supplierPrice) {
             /** convert gross price from cent to dollar and assign */
             formik.setFieldValue('supplierPrice', supplierPrice.grossPrice * .01);
+            formik.setFieldValue('manualPriceAmt', supplierPrice.grossPrice * .01);
             formik.setFieldValue('opisName', supplierPrice.opisProductName);
-
+            setSupplierPrice(supplierPrice);
+        } else {
+            setSupplierPrice(null);
         }
         setOpen(false);
     };
