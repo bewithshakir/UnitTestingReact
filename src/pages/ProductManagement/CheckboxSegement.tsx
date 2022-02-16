@@ -49,14 +49,17 @@ export default function CheckBoxSegment({ isDisabled, formik, showFuelTaxError, 
     useGetTaxRates(fetchTaxList, formik?.values?.masterProductName?.value, parkingLotCityNm, onTaxExsSuccess, onTaxExsError);
 
     const selectAllCheckboxes = (val: boolean) => {
+        const arr:Array<any> = [];
         if(val){
-            const arr:Array<any> = [];
             taxExemptionList.forEach((checkBoxObj: any) => {
                 formik.setFieldValue(`${checkBoxObj.taxRateId}`, val);
                 arr.push(checkBoxObj.taxRateId);
             });
             formik.setFieldValue('taxExemption', arr);
         }else{
+            taxExemptionList.forEach((checkBoxObj: any) => {
+                formik.setFieldValue(`${checkBoxObj.taxRateId}`, val);
+            });
             formik.setFieldValue(`taxExemption`, []);
         }
     };
@@ -79,14 +82,13 @@ export default function CheckBoxSegment({ isDisabled, formik, showFuelTaxError, 
             }
             formik.setFieldValue('taxExemption', formik.values.taxExemption.filter((item:any) => item !== name));
         }
-
     };
 
     useEffect(() => {
         if (formik.values.taxExemption.length > 0 && formik.values.taxExemption.length === taxExemptionList.length) {
             setSelectAll(true);
         }
-    }, [formik.values]);
+    }, [formik.values.taxExemption]);
 
 
     return (
