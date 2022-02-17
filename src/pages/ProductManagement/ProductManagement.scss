@@ -38,7 +38,7 @@
         font-size: 14px;
     }
     &:hover{
-        background-color: var(--Darkgray);
+        background-color: var(--Black);
         color: var(--White);
     } 
     .MuiButton-endIcon{
@@ -95,8 +95,7 @@
             padding-left: 0;
             padding-right: 0;
         }
-        & .supplierRack-dialog-actions{
-         
+        & .supplierRack-dialog-actions{ 
            padding-right: 1%;
            padding-bottom: 1%;
         }

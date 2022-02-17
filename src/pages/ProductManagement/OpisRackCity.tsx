@@ -72,6 +72,10 @@ export default function OpisRackCity({ isDisabled, formik, editMode, setSupplier
         formik.setFieldValue('cityId', value?.cityId);
         setResetSupplierValue(Date.now());
     };
+    const handleSupplierBrandProductChange = (field: string, value: any) => {
+        formik.setFieldValue(field, value);
+        setResetSupplierValue(Date.now());
+    };
 
     return (<Fragment>
         <Grid item lg={5} md={8} sm={8} xs={8} mx={4} my={1} >
@@ -131,7 +135,7 @@ export default function OpisRackCity({ isDisabled, formik, editMode, setSupplier
                 name={'supplier'}
                 value={formik.values.supplier}
                 disabled={isDisabled}
-                onChange={formik.setFieldValue}
+                onChange={handleSupplierBrandProductChange}
                 onBlur={() => { formik.setFieldTouched('supplier'); formik.validateField('supplier'); }}
                 helperText={(formik.touched.supplier && formik.errors.supplier) ? JSON.parse(JSON.stringify(formik.errors.supplier)) : undefined}
                 error={(formik.touched.supplier && formik.errors.supplier) ? true : false}
@@ -147,7 +151,7 @@ export default function OpisRackCity({ isDisabled, formik, editMode, setSupplier
                 name={'branded'}
                 value={formik.values.branded}
                 disabled={isDisabled}
-                onChange={formik.setFieldValue}
+                onChange={handleSupplierBrandProductChange}
                 onBlur={() => { formik.setFieldTouched('branded'); formik.validateField('branded'); }}
                 helperText={(formik.touched.branded && formik.errors.branded) ? JSON.parse(JSON.stringify(formik.errors.branded)) : undefined}
                 error={(formik.touched.branded && formik.errors.branded) ? true : false}
@@ -164,7 +168,7 @@ export default function OpisRackCity({ isDisabled, formik, editMode, setSupplier
                 name={'actualProduct'}
                 value={formik.values.actualProduct}
                 disabled={isDisabled}
-                onChange={formik.setFieldValue}
+                onChange={handleSupplierBrandProductChange}
                 onBlur={() => { formik.setFieldTouched('actualProduct'); formik.validateField('actualProduct'); }}
                 helperText={(formik.touched.actualProduct && formik.errors.actualProduct) ? JSON.parse(JSON.stringify(formik.errors.actualProduct)) : undefined}
                 error={(formik.touched.actualProduct && formik.errors.actualProduct) ? true : false}

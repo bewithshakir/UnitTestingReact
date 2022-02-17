@@ -1,3 +1,6 @@
+import { formatDateAsMMDDYYYY } from "../../utils/DateHelpers";
+import { SupplierPrice } from "./queries";
+
 export const formStatusObj = {
   success: {
     message: 'Product is successfully added',
@@ -78,55 +81,66 @@ export interface SelectProps {
 }
 
 export const checkBoxList = [
-    { field: 'stateFuelTax', label: 'State Fuel Tax', value: false },
-    { field: 'stateFuelRate', label: 'State Fuel Rate', value: false },
-    { field: 'cityFuelTax', label: 'City Fuel Tax', value: false },
-    { field: 'countyFuelTax', label: 'County Fuel Tax', value: false },
-    { field: 'fedFuelTax', label: 'Federal Fuel Tax', value: false },
-    { field: 'revenueFuelRate', label: 'Revenue Fuel Rate', value: false },
-    { field: 'miscLocalFuelTax', label: 'Misc. Local Fuel Tax', value: false },
-    { field: 'miscInspFuelTax', label: 'Misc. Insp. Fuel Tax', value: false },
-    { field: 'miscLoadFuelTax', label: 'Misc. Load Fuel Tax', value: false },
-    { field: 'ppdSalesTax', label: 'PPD Sales Tax(Prepaid)', value: false },
-  ];
+  { field: 'stateFuelTax', label: 'State Fuel Tax', value: false },
+  { field: 'stateFuelRate', label: 'State Fuel Rate', value: false },
+  { field: 'cityFuelTax', label: 'City Fuel Tax', value: false },
+  { field: 'countyFuelTax', label: 'County Fuel Tax', value: false },
+  { field: 'fedFuelTax', label: 'Federal Fuel Tax', value: false },
+  { field: 'revenueFuelRate', label: 'Revenue Fuel Rate', value: false },
+  { field: 'miscLocalFuelTax', label: 'Misc. Local Fuel Tax', value: false },
+  { field: 'miscInspFuelTax', label: 'Misc. Insp. Fuel Tax', value: false },
+  { field: 'miscLoadFuelTax', label: 'Misc. Load Fuel Tax', value: false },
+  { field: 'ppdSalesTax', label: 'PPD Sales Tax(Prepaid)', value: false },
+];
 
-export interface productFormFields{
-    productType: SelectProps,
-    masterProductName: SelectProps,
-    pricingModel: SelectProps,
-    productNm: string,
-    manualPriceAmt: number,
-    addedPriceAmt: number,
-    discountPriceAmt: number,
-    city?: string;
-    cityId?: string;
-    state?: string;
-    supplier?: Array<SelectProps>;
-    branded?: Array<SelectProps>;
-    actualProduct?: Array<SelectProps>;
-    supplierPrice?: number;
-    opisName?: string;
-    taxExemption?:Array<any>;
-}  
+export interface productFormFields {
+  productType: SelectProps,
+  masterProductName: SelectProps,
+  pricingModel: SelectProps,
+  productNm: string,
+  manualPriceAmt: number,
+  addedPriceAmt: number,
+  discountPriceAmt: number,
+  city?: string;
+  cityId?: string;
+  state?: string;
+  supplier?: Array<SelectProps>;
+  branded?: Array<SelectProps>;
+  actualProduct?: Array<SelectProps>;
+  supplierPrice?: number;
+  opisName?: string;
+  taxExemption?: Array<any>;
+}
 
 export const initFormValues = {
-    productType: { label: '', value: '' },
-    masterProductName: { label: '', value: '' },
-    pricingModel: { label: '', value: '' },
-    productNm: '',
-    manualPriceAmt: 0,
-    addedPriceAmt: 0,
-    discountPriceAmt: 0,
-    city: '',
-    cityId: '',
-    state: '',
-    supplier: [],
-    branded: [],
-    actualProduct: [],
-    supplierPrice: 0,
-    opisName: '',
-    taxExemption:[]
-  };
+  productType: { label: '', value: '' },
+  masterProductName: { label: '', value: '' },
+  pricingModel: { label: '', value: '' },
+  productNm: '',
+  manualPriceAmt: 0,
+  addedPriceAmt: 0,
+  discountPriceAmt: 0,
+  city: '',
+  cityId: '',
+  state: '',
+  supplier: [],
+  branded: [],
+  actualProduct: [],
+  supplierPrice: 0,
+  opisName: '',
+  taxExemption: []
+};
 
- export const checkboxConfig =  { margin: "0px", marginBottom: "1rem", fontWeight: "bold" };
-  
+export const checkboxConfig = { margin: "0px", marginBottom: "1rem", fontWeight: "bold" };
+
+
+export const formatSupplierPriceData = (supplierPrices: SupplierPrice[]) => {
+  return supplierPrices.map(sp => (
+    {
+      ...sp,
+      priceDate: formatDateAsMMDDYYYY(sp.priceDate),
+      addedDate: formatDateAsMMDDYYYY(sp.addedDate),
+      lastUpdatedDate: formatDateAsMMDDYYYY(sp.lastUpdatedDate),
+    }
+  ));
+};
