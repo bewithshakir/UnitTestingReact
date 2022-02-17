@@ -36,7 +36,8 @@
     "filter": "Filters",
     "add asset": "ADD ASSET",
     "import": "IMPORT",
-    "filterText": "Filter"
+    "filterText": "Filter",
+    "add truck": "ADD TRUCK"
   },
   "menus": {
     "sortby": {
@@ -265,6 +266,11 @@
         "fill msg": "Fill all the Mandatory fields * "
       }
     }
+  },
+  "truckLanding": {
+    "addTruck": "ADD TRUCK",
+    "search": "Search",
+    "noTrucksMsg": "Add Truck by clicking on the  Add Truck button."
   },
   "addTruckParkingLot": {
     "title": "Add Truck Parking lot",

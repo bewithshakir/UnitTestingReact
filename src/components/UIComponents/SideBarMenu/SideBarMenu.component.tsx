@@ -48,7 +48,7 @@ const SideBarMenuoptions = [
     index: 3,
     icon: <Truck64Icon />,
     text: 'Truck Parking Lot',
-    route: '/truckParkingLot',
+    route: '/trucks',
   },
   {
     index: 4,
