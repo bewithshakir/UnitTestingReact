@@ -103,11 +103,16 @@ export function capitalizeFirstLetter(str: string) {
 }
 
 export function calculateProductTotalPriceWithTaxes(manualPriceAmt: number, addedPriceAmt: number, discountPriceAmt: number, finalRate: number, finalCPGAmount: number){
-    const rateQuotient = finalRate ? finalRate : 1;
     const precision = 4;
-    const x = new Decimal(Number(manualPriceAmt) || 0);
-    const result = x.plus(Number(addedPriceAmt) || 0).minus(Number(discountPriceAmt) || 0);
-    let finalResult = new Decimal(Number(result)*Number(rateQuotient));
-    finalResult = finalResult.plus(Number(finalCPGAmount) || 0);
-    return finalResult.toFixed(precision, Decimal.ROUND_DOWN);
+    if(manualPriceAmt){
+        const rateQuotient = finalRate ? finalRate : 1;
+        const x = new Decimal(Number(manualPriceAmt) || 0);
+        const result = x.plus(Number(addedPriceAmt) || 0).minus(Number(discountPriceAmt) || 0);
+        let finalResult = new Decimal(Number(result)*Number(rateQuotient));
+        finalResult = finalResult.plus(Number(finalCPGAmount) || 0);
+        return finalResult.toFixed(precision, Decimal.ROUND_DOWN);
+    }else{
+        return 0.0000;
+    }
+  
 }
