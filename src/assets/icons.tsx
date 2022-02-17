@@ -1418,3 +1418,43 @@ export function LoadingIcon (props: React.SVGProps<SVGSVGElement>) {
     </svg>
   );
 }
+
+export function ParkingLocationIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" {...props}>
+    <g data-name="Group 1865">
+      <path
+        d="m12.993.004 7 4.012v15.017l-7-3.987-5.99 3.987-7-3.066V.004l6.985 4h.026ZM1.999 3.45v11.208l3.989 1.746V5.736Zm9.989-.371-4 2.679v10.215l4-2.662Zm2-.2V13.31l4.01 2.283V5.171Z"
+        fill="currentColor"
+      />
+      <path data-name="Rectangle 2252" fill="none" d="M0 0h20v20H0z" />
+    </g>
+  </svg>
+  );  
+}
+
+export function OilTankIcon(props: React.SVGProps<SVGSVGElement>){
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" {...props}>
+    <g data-name="Group 1802">
+      <path
+        d="M15 5h-1V3h5v2h-1v1h2v11H0V6h15ZM4 8H2v7h2Zm4 6H6v1h2Zm10-6h-8v7h8ZM8 12H6v1h2Zm0-2H6v1h2Zm0-2H6v1h2Z"
+        fill="currentColor"
+      />
+      <path data-name="Rectangle 2233" fill="none" d="M0 0h20v20H0z" />
+    </g>
+  </svg>
+  );
+}
+
+export const OrderIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" {...props}>
+    <g data-name="Group 1785">
+      <path
+        d="M20.014 0 20 18.011A1.983 1.983 0 0 1 18 20H2a1.847 1.847 0 0 1-1.983-1.989L0 14h3l.015-14Zm-2 2h-13L5 16H2v2l11.995.023L14 16H5v-2h11v4h2l.012-16ZM7.005 10.014l9 .013v2l-9-.013Zm0-2.992 9 .013v2l-9-.013Zm4-3v2H7v-2Zm1-.013 4 .013-.006 2L12 6Z"
+        fill="currentColor"
+      />
+      <path data-name="Rectangle 2213" fill="none" d="M0 0h20v20H0z" />
+    </g>
+  </svg>
+);

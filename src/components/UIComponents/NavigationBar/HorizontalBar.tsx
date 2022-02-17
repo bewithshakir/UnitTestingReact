@@ -250,17 +250,17 @@ export default function HorizontalBar (props: HorizontalBarProps) {
         </>
       );
     } 
-    else if(pathname.includes('truckParkingLot')) {
+    else if(pathname.includes('trucks') || pathname.includes('truckParkingLot')) {
       return (
         <>
           <div
             className={
-              pathname.includes('taxes') ? 'linkitem active' : 'linkitem'
+              pathname.includes('trucks') ? 'linkitem active' : 'linkitem'
             }
           >
             <NavLink
               className='breadcrubs-title'
-              to='/'
+              to='/trucks'
               onClick={handleClick}
             >
               {t('truck.navBar.overview')}
