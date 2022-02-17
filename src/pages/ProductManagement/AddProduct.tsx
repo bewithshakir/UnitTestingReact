@@ -340,8 +340,6 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
         updateFetchTaxList(val);
     };
 
-    console.warn('formik-->>', formik);
-
     return (
         <FormikProvider value={formik}>
             <form onSubmit={formik.handleSubmit} className="productForm" onBlur={handleFormDataChange}>
