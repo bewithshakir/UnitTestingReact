@@ -32,6 +32,7 @@ const TruckParkingLot = lazy(() => import("./pages/Truck/TruckParkingLot"));
 const EditTruckParkingLot = lazy(() => import("./pages/Truck/TruckParkingLot/AddLot"));
 const AddAsset = lazy(() => import("./pages/AssetManagement/AddAsset"));
 const TruckLanding = lazy(() => import("./pages/Truck"));
+const AddTruck = lazy(() => import('./pages/Truck/AddTruck'));
 
 export const routes: RouteObject[] = [
   {
@@ -163,5 +164,9 @@ export const routes: RouteObject[] = [
   {
     path: "/truckParkingLot/edit/:truckParkingId",
     element: <EditTruckParkingLot version="Breadcrumbs-Single" />
+  },
+  {
+    path: "/trucks/addTruck",
+    element: <AddTruck version="Breadcrumbs-Single" />
   }
 ];
