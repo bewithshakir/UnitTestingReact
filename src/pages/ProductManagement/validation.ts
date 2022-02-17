@@ -1,12 +1,10 @@
 import * as Yup from 'yup';
-// const selectOption = Yup.object().shape({ label: Yup.string().required('Required'), value: Yup.string().required('Required') });
+
 const selectOption = Yup.object().shape({
   label: Yup.string(),
   value: Yup.string(),
 });
 const priceSchema = Yup.string().matches(/^\d+(\.\d+)?$/, 'Invalid Price.');
-// const inputStrSchema = Yup.string().nullable();
-// const checkboxSchema = Yup.boolean();
 
 export const AddProductValidationSchema = Yup.object().shape({
   productType: selectOption,
@@ -30,7 +28,7 @@ export const AddProductValidationSchema = Yup.object().shape({
   city: Yup.object()
     .nullable()
     .test('pricingModel', function (value: any, context: any) {
-      if (context?.pricingModel?.value?.toLowerCase() === 'opis rack') {
+      if (context?.parent?.pricingModel?.label?.toLowerCase() === 'opis rack') {
         if (!value || !value.value) {
           return this.createError({
             message: { label: 'Required', value: 'Required' },
@@ -44,8 +42,8 @@ export const AddProductValidationSchema = Yup.object().shape({
     }),
   cityId: Yup.string().nullable()
   .test('pricingModel', function (value: any, context: any) {
-    if (context?.pricingModel?.value?.toLowerCase() === 'opis rack') {
-      if (!value || !value.value) {
+    if (context?.parent?.pricingModel?.label?.toLowerCase() === 'opis rack') {
+      if (!value) {
         return this.createError({
           message: { label: 'Required', value: 'Required' },
         });
@@ -58,8 +56,8 @@ export const AddProductValidationSchema = Yup.object().shape({
   }),
   state: Yup.string().nullable()
   .test('pricingModel', function (value: any, context: any) {
-    if (context?.pricingModel?.value?.toLowerCase() === 'opis rack') {
-      if (!value || !value.value) {
+    if (context?.parent?.pricingModel?.label?.toLowerCase() === 'opis rack') {
+      if (!value) {
         return this.createError({
           message: { label: 'Required', value: 'Required' },
         });
@@ -72,10 +70,10 @@ export const AddProductValidationSchema = Yup.object().shape({
   }),
   supplier: Yup.array()
   .test('pricingModel', function (value: any, context: any) {
-    if (context?.pricingModel?.toLowerCase()  === 'opis rack') {
+    if (context?.parent?.pricingModel?.label?.toLowerCase()  === 'opis rack') {
         if (!value || (value && value.length === 0)) {
             return this.createError({
-              message: { label: 'Required', value: 'Required' },
+              message: 'Required',
             });
           } else {
             return true;
@@ -86,10 +84,10 @@ export const AddProductValidationSchema = Yup.object().shape({
   }),
   branded: Yup.array()
   .test('pricingModel', function (value: any, context: any) {
-    if (context?.pricingModel?.toLowerCase()  === 'opis rack') {
+    if (context?.parent?.pricingModel?.label?.toLowerCase()  === 'opis rack') {
         if (!value || (value && value.length === 0)) {
             return this.createError({
-              message: { label: 'Required', value: 'Required' },
+              message: 'Required',
             });
           } else {
             return true;
@@ -100,10 +98,10 @@ export const AddProductValidationSchema = Yup.object().shape({
   }),
   actualProduct:Yup.array()
   .test('pricingModel', function (value: any, context: any) {
-    if (context?.pricingModel?.toLowerCase()  === 'opis rack') {
+    if (context?.parent?.pricingModel?.label?.toLowerCase()  === 'opis rack') {
         if (!value || (value && value.length === 0)) {
             return this.createError({
-              message: { label: 'Required', value: 'Required' },
+              message: 'Required',
             });
           } else {
             return true;
@@ -112,10 +110,10 @@ export const AddProductValidationSchema = Yup.object().shape({
         return true;
       }
   }),
-  supplierPrice: Yup.string().nullable()
+  supplierPrice: Yup.number().nullable()
   .test('pricingModel', function (value: any, context: any) {
-    if (context?.pricingModel?.value?.toLowerCase() === 'opis rack') {
-      if (!value || !value.value) {
+    if (context?.parent?.pricingModel?.label?.toLowerCase() === 'opis rack') {
+      if (value === null) {
         return this.createError({
           message: { label: 'Required', value: 'Required' },
         });
@@ -128,8 +126,8 @@ export const AddProductValidationSchema = Yup.object().shape({
   }),
   opisName:  Yup.string().nullable()
   .test('pricingModel', function (value: any, context: any) {
-    if (context?.pricingModel?.value?.toLowerCase() === 'opis rack') {
-      if (!value || !value.value) {
+    if (context?.parent?.pricingModel?.label?.toLowerCase() === 'opis rack') {
+      if (!value) {
         return this.createError({
           message: { label: 'Required', value: 'Required' },
         });
@@ -142,8 +140,8 @@ export const AddProductValidationSchema = Yup.object().shape({
   }),
   taxExemption: Yup.array()
   .test('pricingModel', function (value: any, context: any) {
-    if (context?.pricingModel?.toLowerCase()  === 'opis rack') {
-        if (!value || (value && value.length === 0)) {
+    if (context?.parent?.pricingModel?.label?.toLowerCase()  === 'opis rack') {
+        if (!value) {
             return this.createError({
               message: { label: 'Required', value: 'Required' },
             });

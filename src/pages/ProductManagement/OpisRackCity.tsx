@@ -68,6 +68,8 @@ export default function OpisRackCity({ isDisabled, formik, editMode, setSupplier
         formik.setFieldValue('supplierPrice', 0);
         formik.setFieldValue('manualPriceAmt', 0);
         formik.setFieldValue('opisName', '');
+        formik.setFieldValue('state', value?.state);
+        formik.setFieldValue('cityId', value?.cityId);
         setResetSupplierValue(Date.now());
     };
 
@@ -101,8 +103,8 @@ export default function OpisRackCity({ isDisabled, formik, editMode, setSupplier
                 error={(formik.touched.state && formik.errors.state) ? true : false}
                 description=''
                 {...formik.getFieldProps('state')}
-                value={formik.values?.city?.state}
                 disabled
+                required
             />
         </Grid>
         <Grid item lg={5} md={8} sm={8} xs={8} mx={4} my={1} >
@@ -114,8 +116,8 @@ export default function OpisRackCity({ isDisabled, formik, editMode, setSupplier
                 error={(formik.touched.cityId && formik.errors.cityId) ? true : false}
                 description=''
                 {...formik.getFieldProps('cityId')}
-                value={formik.values?.city?.cityId}
                 disabled
+                required
             />
         </Grid>
 
@@ -164,7 +166,7 @@ export default function OpisRackCity({ isDisabled, formik, editMode, setSupplier
                 disabled={isDisabled}
                 onChange={formik.setFieldValue}
                 onBlur={() => { formik.setFieldTouched('actualProduct'); formik.validateField('actualProduct'); }}
-                helperText={(formik.touched.suppactualProductlier && formik.errors.actualProduct) ? JSON.parse(JSON.stringify(formik.errors.actualProduct)) : undefined}
+                helperText={(formik.touched.actualProduct && formik.errors.actualProduct) ? JSON.parse(JSON.stringify(formik.errors.actualProduct)) : undefined}
                 error={(formik.touched.actualProduct && formik.errors.actualProduct) ? true : false}
             />
         </Grid>
