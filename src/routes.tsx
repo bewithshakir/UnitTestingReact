@@ -31,6 +31,7 @@ const AddTruckParkingLot = lazy(() => import("./pages/Truck/TruckParkingLot/AddL
 const TruckParkingLot = lazy(() => import("./pages/Truck/TruckParkingLot"));
 const EditTruckParkingLot = lazy(() => import("./pages/Truck/TruckParkingLot/AddLot"));
 const AddAsset = lazy(() => import("./pages/AssetManagement/AddAsset"));
+const TruckLanding = lazy(() => import("./pages/Truck"));
 const AddTruck = lazy(() => import('./pages/Truck/AddTruck'));
 
 export const routes: RouteObject[] = [
@@ -147,6 +148,10 @@ export const routes: RouteObject[] = [
   {
     path: "/assetManagement/add",
     element: <AddAsset version="Breadcrumbs-Single"/>,
+  },
+  {
+    path: "/trucks",
+    element: <TruckLanding version="Breadcrumbs-Single" />,    
   },
   {
     path: "/truckParkingLot",
