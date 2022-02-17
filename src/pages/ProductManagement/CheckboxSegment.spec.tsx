@@ -1,13 +1,12 @@
 import { mount } from 'enzyme';
 import * as ReactQuery from 'react-query';
-import OpisRackSegment from './OpisRackSegment';
+import CheckBoxSegment from './CheckBoxSegement';
 const queryClient = new ReactQuery.QueryClient();
 
 beforeAll(() => {
     jest.useFakeTimers('modern');
     jest.setSystemTime(new Date(1638338756741));
 });
-
 
 describe('Rendering of opis rack segment', () => {
     it('should render snapshot for opis rack segment', () => {
@@ -38,7 +37,7 @@ describe('Rendering of opis rack segment', () => {
               getFieldProps:jest.fn(),
               setFieldValue: jest.fn()
             };
-        const component = mount(<ReactQuery.QueryClientProvider client={queryClient}> <OpisRackSegment isDisabled={false} formik={mockFormik} editMode={false} fetchTaxList={false} showFuelTaxError={jest.fn()} setFetchTaxList={jest.fn()} setSupplierPrice={jest.fn()} /> </ReactQuery.QueryClientProvider >);
+        const component = mount(<ReactQuery.QueryClientProvider client={queryClient}> <CheckBoxSegment formik={mockFormik} isDisabled={false} showFuelTaxError={jest.fn()} fetchTaxList={false} setFetchTaxList={jest.fn()} revertFinalRateAndAmount={jest.fn()}  /> </ReactQuery.QueryClientProvider >);
         expect(component).toBeDefined();
         expect(component).toMatchSnapshot();
     });
