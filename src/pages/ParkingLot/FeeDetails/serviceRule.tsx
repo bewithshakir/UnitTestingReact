@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { Fragment, useState, useEffect } from 'react';
 import Input from '../../../components/UIComponents/Input/Input';
 import Checkbox from '../../../components/UIComponents/Checkbox/Checkbox.component';
@@ -7,8 +6,6 @@ import { FormControlLabel, Grid, Typography } from "@mui/material";
 import { useTranslation } from 'react-i18next';
 import { useGetLotProductTypes, useGetLotProductNames, useGetLotVehicleTypes, useGetLotAssetTypes, useGetLotMasterProductNames } from './queries';
 import { all } from '../config';
-import { isEqual } from 'lodash';
-
 
 type props = {
     index: number,
@@ -35,8 +32,6 @@ export default function ServiceRule({ index, isDisabled, formik, lotId }: props)
 
     const [productNames, setProductNames] = useState([]);
     const { data: productNameList } = useGetLotProductNames(lotId, formik?.values?.serviceFeeRules?.[index]?.masterProductType?.value);
-    const [formState, setFormState] = useState(formik?.values?.serviceFeeRules?.[index]);
-    const [init, setInit] = useState(false);
 
     useEffect(() => {
         if (vehicleTypeList?.data?.length) {
@@ -58,49 +53,17 @@ export default function ServiceRule({ index, isDisabled, formik, lotId }: props)
         if (productNameList?.data?.lotProducts?.length) {
             setProductNames(productNameList.data.lotProducts.map((obj: any) => ({ label: obj.productNm.trim(), value: obj.applicableProductId.trim() })));
         }
-        setInit(true);
     }, [vehicleTypeList, assetTypeList, productTypeList, productNameList, masterProductNamesList]);
 
-    useEffect(() => {
-        if (init) {
-            setFormState(formik.values);
-            setInit(false);
-        }
-    }, [init]);
-
-    useEffect(() => {
-        console.log(formState);
-        console.log(formik.values);
-        if (!isEqual(formState, formik.values)) {
-            console.log("1") ;
-            if (formik.values.serviceFeeRules[0].productType.value == "all") {
-                console.log("2");
-                formik.setFieldValue("" + `serviceFeeRules[${index}].masterProductType`, { label: "All", value: "all" });
-
-                formik.setFieldValue("" + `serviceFeeRules[${index}].productName`, { label: "All", value: "all" });
-            }
-            console.log(formState);
-            console.log(formik.values);
-        }
-
-    }, [formik.values]);
-
     const handleProductTypeChange = (fieldName: string, value: any) => {
-        
-        // if (isEqual(formState, formik.values)) {
-        console.log("" + `serviceFeeRules[${index}].masterProductType`);
         formik.setFieldValue(fieldName, value);
+        formik.setFieldValue("" + `serviceFeeRules[${index}].masterProductType`, { label: "", value: "" });
+        formik.setFieldValue("" + `serviceFeeRules[${index}].productName`, { label: "", value: "" });
         if (value.value == "all") {
             formik.setFieldValue("" + `serviceFeeRules[${index}].masterProductType`, { label: "All", value: "all" });
-
             formik.setFieldValue("" + `serviceFeeRules[${index}].productName`, { label: "All", value: "all" });
         }
-    // }
-        console.log(formState);
-        
     };
-
-    console.log(formik);
 
     const handleMasterProductTypeChange = (fieldName: string, value: any) => {
         formik.setFieldValue(fieldName, value);
@@ -130,6 +93,7 @@ export default function ServiceRule({ index, isDisabled, formik, lotId }: props)
                         required
                         disabled={isDisabled}
                         {...formik.getFieldProps(`serviceFeeRules[${index}].serviceFeeCharge`)}
+                        value={formik.values.serviceFeeRules[index].serviceFeeCharge}
                     />
                 </Grid>
             </Grid>
@@ -157,6 +121,7 @@ export default function ServiceRule({ index, isDisabled, formik, lotId }: props)
                         onBlur={() => { formik.setFieldTouched(`serviceFeeRules[${index}].productType`); formik.validateField(`serviceFeeRules[${index}].productType`); }}
                         isDisabled={isDisabled}
                         required
+                        value={formik.values.serviceFeeRules[index].productType}
                     />
                 </Grid>
                 <Grid item xs={12} md={6} pl={2.5}>
@@ -182,6 +147,7 @@ export default function ServiceRule({ index, isDisabled, formik, lotId }: props)
                         onBlur={() => { formik.setFieldTouched(`serviceFeeRules[${index}].masterProductType`); formik.validateField(`serviceFeeRules[${index}].masterProductType`); }}
                         isDisabled={(formik?.values?.serviceFeeRules?.[index]?.productType?.value?.toLowerCase() === 'all') ? true : isDisabled}
                         required={(formik?.values?.serviceFeeRules?.[index]?.productType?.value?.toLowerCase() === 'all') ? false : true}
+                        value={formik.values.serviceFeeRules[index].masterProductType}
                     />
                 </Grid>
             </Grid>
@@ -209,6 +175,7 @@ export default function ServiceRule({ index, isDisabled, formik, lotId }: props)
                         onBlur={() => { formik.setFieldTouched(`serviceFeeRules[${index}].productName`); formik.validateField(`serviceFeeRules[${index}].productName`); }}
                         isDisabled={(formik?.values?.serviceFeeRules?.[index]?.productType?.value?.toLowerCase() === 'all') || (formik?.values?.serviceFeeRules?.[index]?.masterProductType?.value?.toLowerCase() === 'all') ? true : isDisabled}
                         required={(formik?.values?.serviceFeeRules?.[index]?.productType?.value?.toLowerCase() === 'all') ? false : true}
+                        value={formik.values.serviceFeeRules[index].productName}
                     />
                 </Grid>
             </Grid>
@@ -246,6 +213,7 @@ export default function ServiceRule({ index, isDisabled, formik, lotId }: props)
                             onBlur={() => { formik.setFieldTouched(`serviceFeeRules[${index}].assetType`); formik.validateField(`serviceFeeRules[${index}].assetType`); }}
                             isDisabled={isDisabled}
                             required
+                            value={formik.values.serviceFeeRules[index].assetType}
                         />
                     </Grid>
                 </Grid>
@@ -272,6 +240,7 @@ export default function ServiceRule({ index, isDisabled, formik, lotId }: props)
                             description=''
                             disabled={isDisabled}
                             {...formik.getFieldProps(`serviceFeeRules[${index}].assetTypeDesc`)}
+                            value={formik.values.serviceFeeRules[index].assetTypeDesc}
                         />
                     </Grid>
                 </Grid>
@@ -300,6 +269,7 @@ export default function ServiceRule({ index, isDisabled, formik, lotId }: props)
                         }
                         onBlur={() => { formik.setFieldTouched(`serviceFeeRules[${index}].vehicleType`); formik.validateField(`serviceFeeRules[${index}].vehicleType`); }}
                         isDisabled={isDisabled}
+                        value={formik.values.serviceFeeRules[index].vehicleType}
                     />
                 </Grid>
             </Grid>

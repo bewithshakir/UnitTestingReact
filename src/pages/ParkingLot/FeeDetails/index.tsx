@@ -273,6 +273,7 @@ export default function FeeDetails() {
                                                 required
                                                 disabled={isDisabled}
                                                 {...formik.getFieldProps('feeName')}
+                                                value={formik.values.feeName}
                                             />
                                         </Grid>
                                     </Grid>
@@ -294,6 +295,7 @@ export default function FeeDetails() {
                                                 disabled={isDisabled}
                                                 required
                                                 {...formik.getFieldProps('delFee')}
+                                                    value={formik.values.delFee}
                                             />
                                         </Grid>
                                         <Grid item xs={12} md={6} pl={2.5}>
@@ -310,6 +312,7 @@ export default function FeeDetails() {
                                                 onChange={formik.setFieldValue}
                                                 isDisabled={isDisabled}
                                                 required
+                                                value={formik.values.delFeeShed}
                                             />
                                         </Grid>
                                     </Grid>
