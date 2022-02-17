@@ -1,6 +1,6 @@
 import { mount } from 'enzyme';
 import * as ReactQuery from 'react-query';
-import SupplierRack from './SupplerRackPrice';
+import SupplierRackPrice from './SupplierRackPrice';
 const queryClient = new ReactQuery.QueryClient();
 
 beforeAll(() => {
@@ -11,12 +11,12 @@ beforeAll(() => {
 describe('Rendering of opis rack segment', () => {
     it('should render snapshot for opis rack segment', () => {
         const mockFormik = {
-              touched: false,
-              error: "",
-              initialError: "",
-              initialTouched: false,
-              initialValue: "",
-              values: {
+            touched: false,
+            error: "",
+            initialError: "",
+            initialTouched: false,
+            initialValue: "",
+            values: {
                 productType: { label: '', value: '' },
                 masterProductName: { label: '', value: '' },
                 pricingModel: { label: '', value: '' },
@@ -33,11 +33,11 @@ describe('Rendering of opis rack segment', () => {
                 supplierPrice: 0,
                 opisName: '',
                 taxExemption: []
-              },
-              getFieldProps:jest.fn(),
-              setFieldValue: jest.fn()
-            };
-        const component = mount(<ReactQuery.QueryClientProvider client={queryClient}> <SupplierRack formik={mockFormik} isDisabled={false} setSupplierPrice={jest.fn()} resetSupplierValue={1}  /> </ReactQuery.QueryClientProvider >);
+            },
+            getFieldProps: jest.fn(),
+            setFieldValue: jest.fn()
+        };
+        const component = mount(<ReactQuery.QueryClientProvider client={queryClient}> <SupplierRackPrice formik={mockFormik} isDisabled={false} setSupplierPrice={jest.fn()} resetSupplierValue={1} /> </ReactQuery.QueryClientProvider >);
         expect(component).toBeDefined();
         expect(component).toMatchSnapshot();
     });

@@ -3,7 +3,7 @@ import Select from '../../components/UIComponents/Select/SingleSelect';
 import MultiSelect from '../../components/UIComponents/Select/MultiSelect';
 import Input from '../../components/UIComponents/Input/Input';
 import { useTranslation } from 'react-i18next';
-import SupplierRack from './SupplerRackPrice';
+import SupplierRack from './SupplierRackPrice';
 
 import { Grid } from "@mui/material";
 import { useGetServedCities, useGetSupplierBrandProducts } from "./queries";
