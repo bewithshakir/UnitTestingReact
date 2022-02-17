@@ -407,5 +407,24 @@
       "liveMap": "Live Map",
       "truckPlot": "Truck Parking Lot"
     }
+  },
+  "addTruckFormLabels": {
+    "addTruckTitle": "Add Truck",
+    "truckName": "TRUCK NAME",
+    "license": "LICENSE",
+    "vin": "VIN",
+    "makeModel": "MAKE/MODEL",
+    "color": "COLOR",
+    "year": "YEAR",
+    "status": "STATUS",
+    "truckParkingLot": "TRUCK PARKING LOT",
+    "tankTcsId": "TANK TCS REGISTER ID",
+    "tankFuelType": "TANK FUEL TYPE",
+    "tankMinCapacity": "TANK MIN CAPACITY",
+    "tankMaxCapacity": "TANK MAX CAPACITY",
+    "addAdditionalTank": "Add Additional Tank",
+    "tank": "Tank",
+    "tankDetails": "Tank Details",
+    "fillDetailsTitle": "Fill all the Mandatory * fields"
   }
 }
