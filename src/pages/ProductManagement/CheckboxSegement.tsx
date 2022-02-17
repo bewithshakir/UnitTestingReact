@@ -42,6 +42,8 @@ export default function CheckBoxSegment({ isDisabled, formik, showFuelTaxError, 
     const onTaxExsSuccess = (data: any) => {
         if (data && data.data && data.data.length > 0) {
             const arr: Array<any> = [];
+            let ppdTaxAm = 0;
+            let ppdTaxId = '';
             showFuelTaxError(false);
             setFetchTaxList(false);
             let totalRateCalc = 0;
@@ -51,7 +53,7 @@ export default function CheckBoxSegment({ isDisabled, formik, showFuelTaxError, 
                 arr.push(exmptnListObj);
                 formik.setFieldValue(`${checkBoxObj.taxRateId}`, false);
                 if (checkBoxObj?.moneyPctIndicator?.toLowerCase() === 'p') {
-                    // new Decimal(Number(manualPriceAmt) 
+
                     const rateQ = Number((new Decimal(Number(checkBoxObj.taxRateAmt))).dividedBy(100));
                     const totalVal = new Decimal(Number(totalRateCalc));
                     totalRateCalc = Number(totalVal.plus(rateQ));
@@ -60,13 +62,20 @@ export default function CheckBoxSegment({ isDisabled, formik, showFuelTaxError, 
                     const totalVal = new Decimal(Number(totalCPGCalc));
                     totalCPGCalc = Number(totalVal.plus(cpgQ));
                 }
+                if((checkBoxObj.taxRateTypeNm?.toLowerCase() ===  "ppd-sales-tax")){
+                    ppdTaxAm = checkBoxObj.taxRateAmt;
+                    ppdTaxId = checkBoxObj.taxRateId;
+                }
             });
-            //Total Rate and CPG without exemptions
+             
+            formik.setFieldValue(`${ppdTaxId}`, true);
+            const CPGCalcAfterPPDEx = Number((new Decimal(totalCPGCalc)).minus(Number(ppdTaxAm)));
+
             updateTotalRate(totalRateCalc);
             updateTotalCPG(totalCPGCalc);
-            //initial Rate and CPG without exemptions
+
             updateFinalRate(totalRateCalc);
-            updateFinalCPG(totalCPGCalc);
+            updateFinalCPG(CPGCalcAfterPPDEx);
 
             updateTaxExemptionList(arr);
         }

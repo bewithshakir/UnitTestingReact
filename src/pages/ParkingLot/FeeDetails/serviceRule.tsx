@@ -57,8 +57,6 @@ export default function ServiceRule({index, isDisabled, formik, lotId}: props) {
     }, [ vehicleTypeList, assetTypeList, productTypeList, productNameList, masterProductNamesList ]);
 
     const handleProductTypeChange = (fieldName: string, value: any) => {
-
-        console.warn('Jai:', `serviceFeeRules[${index}]`,'Formik', formik);
         
         formik.setFieldValue(`serviceFeeRules[${index}].masterProductType`, { label: "", value: "" });
         
