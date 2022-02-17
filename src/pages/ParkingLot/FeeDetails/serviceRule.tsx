@@ -93,7 +93,6 @@ export default function ServiceRule({ index, isDisabled, formik, lotId }: props)
                         required
                         disabled={isDisabled}
                         {...formik.getFieldProps(`serviceFeeRules[${index}].serviceFeeCharge`)}
-                        value={formik.values.serviceFeeRules[index].serviceFeeCharge}
                     />
                 </Grid>
             </Grid>
@@ -240,7 +239,6 @@ export default function ServiceRule({ index, isDisabled, formik, lotId }: props)
                             description=''
                             disabled={isDisabled}
                             {...formik.getFieldProps(`serviceFeeRules[${index}].assetTypeDesc`)}
-                            value={formik.values.serviceFeeRules[index].assetTypeDesc}
                         />
                     </Grid>
                 </Grid>
