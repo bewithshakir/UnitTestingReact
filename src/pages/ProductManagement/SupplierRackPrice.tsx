@@ -136,7 +136,7 @@ export default function SupplierRack({ isDisabled, formik, setSupplierPrice, res
                         </Button>
                         <Button
                             types="primary"
-                            aria-label="primary" className="mr-4" onClick={handleDone} disabled={selectedRows.length === 0}>
+                            aria-label="primary" className="mr-4 supplierRackBtn" onClick={handleDone} disabled={selectedRows.length === 0}>
                             {'Done'}
                         </Button>
                     </DialogActions>
