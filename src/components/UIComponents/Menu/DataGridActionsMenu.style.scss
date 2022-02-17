@@ -9,17 +9,19 @@ div{
   .datagrid-actions-menu{
     padding: unset;
     .menuitem{
+      display: flex;
       font-family: Arial;
       padding: .907rem 1.25rem;
       font-size: 14px;
-     
+      width: max-content;
     }
     .menuitem-text{
-      letter-spacing: 0;
-      min-width: 131px;
-      max-width: 360px;
-      width: -webkit-fill-available;
-      white-space: normal;
+     letter-spacing: 0;
+     min-width: 131px;
+     max-width: 360px;
+     width: -webkit-fill-available;
+     white-space: normal;
+     text-align: left;
     }
     .menuitem-icon {
       min-width: 20px;
