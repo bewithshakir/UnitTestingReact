@@ -69,7 +69,6 @@ export default function CheckBoxSegment({ isDisabled, formik, showFuelTaxError, 
             updateFinalCPG(totalCPGCalc);
 
             updateTaxExemptionList(arr);
-            revertFinalRateAndAmount(totalRateCalc, totalCPGCalc);
         }
     };
 
@@ -93,7 +92,7 @@ export default function CheckBoxSegment({ isDisabled, formik, showFuelTaxError, 
             updateFinalRate(totalRate);
             updateFinalCPG(totalCPG);
         }
-        revertFinalRateAndAmount(finalRate, finalCPG);
+
     };
 
     const handleSelectAll = (e: any) => {
@@ -111,11 +110,11 @@ export default function CheckBoxSegment({ isDisabled, formik, showFuelTaxError, 
             if(taxExemptionList[index]?.moneyPctIndicator?.toLowerCase() === 'p'){
                 const rateQ = Number((new Decimal(Number(taxExemptionList[index].taxRateAmt))).dividedBy(100));
                 updateFinalRate(prevState => Number((new Decimal(Number(prevState))).minus(rateQ)));
-                // updateFinalRate(prevState => (prevState - (taxExemptionList[index].taxRateAmt / 100)));
+
             }else  if(taxExemptionList[index]?.moneyPctIndicator?.toLowerCase() === 'm'){
                 const cpgQ = Number(taxExemptionList[index].taxRateAmt);
                 updateFinalCPG(prevState => Number((new Decimal(Number(prevState))).minus(cpgQ)));
-                // updateFinalCPG(prevState => (prevState - taxExemptionList[index].taxRateAmt));
+
             }    
             
         } else {
@@ -125,16 +124,12 @@ export default function CheckBoxSegment({ isDisabled, formik, showFuelTaxError, 
             if(taxExemptionList[index]?.moneyPctIndicator?.toLowerCase() === 'p'){
                 const rateQ = Number((new Decimal(Number(taxExemptionList[index].taxRateAmt))).dividedBy(100));
                 updateFinalRate(prevState => Number((new Decimal(Number(prevState))).plus(rateQ)));
-                // updateFinalRate(prevState => (prevState + (taxExemptionList[index].taxRateAmt / 100)));
             }else  if(taxExemptionList[index]?.moneyPctIndicator?.toLowerCase() === 'm'){
                 const cpgQ = Number(taxExemptionList[index].taxRateAmt);
                 updateFinalCPG(prevState => Number((new Decimal(Number(prevState))).plus(cpgQ)));
-
-                // updateFinalCPG(prevState => (prevState + taxExemptionList[index].taxRateAmt));
             }   
             formik.setFieldValue('taxExemption', formik.values.taxExemption.filter((item:any) => item !== name));
         }
-        revertFinalRateAndAmount(finalRate, finalCPG);
     };
 
     useEffect(() => {
@@ -143,15 +138,15 @@ export default function CheckBoxSegment({ isDisabled, formik, showFuelTaxError, 
         }
     }, [formik.values.taxExemption]);
 
+    useEffect(() => {
+        revertFinalRateAndAmount(finalRate, finalCPG);
+    }, [finalRate, finalCPG]);
 
-    // console.warn('totalRate--->',totalRate);
-    // console.warn('totalCPG--->',totalCPG);
-    console.warn('finalRate--->',finalRate);
-    console.warn('finalCPG--->',finalCPG);
     return (
 
         <React.Fragment>
             <h4 className='checkbox-heading'> Fuel Tax Exemptions ($) </h4>
+            {/* Inside CheckboxSegment finalRate{finalRate}  finalCPG{finalCPG} */}
            {taxExemptionList.length>0 && <React.Fragment>
             <FormControlLabel
                 sx={checkboxConfig}

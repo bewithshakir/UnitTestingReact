@@ -27,8 +27,6 @@ export default function OpisRackSegment({ isDisabled, formik, editMode, showFuel
 
 
     const calculateFinalPrice = (finalRate: number, finalCPGAmount: number) => {
-        console.warn('rate --->', finalRate);
-        console.warn('amount --->', finalCPGAmount);
         updateFinalRateValue(finalRate);
         updateFinalCPGValue(finalCPGAmount);
     };
@@ -37,6 +35,7 @@ export default function OpisRackSegment({ isDisabled, formik, editMode, showFuel
         <Fragment>
             <OpisRackCity formik={formik} isDisabled={isDisabled} editMode={editMode} setSupplierPrice={setSupplierPrice} />
             <Grid item lg={5} md={8} sm={8} xs={8} mx={4} my={1} >
+            {/* Inside OpisRackSegment finalRate{finalRateValue}  finalCPG{finalCPGValue} */}
                 <Input
                     id='manualPriceAmt'
                     label={t("addProductFormLabels.pricelabel")}
