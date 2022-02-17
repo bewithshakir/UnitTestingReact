@@ -16,6 +16,8 @@ interface GridHeaderProps {
     onResetTableCollaps?: (value: boolean) => void;
     rowCount?: number;
     enableRowSelection?: boolean;
+    /** Will work only if enableRowSelection is true, It will add radio button instead of checkbox  */
+    singleRowSelection?: boolean;
     enableRowAction?: boolean;
 }
 const EnhancedGridHead: React.FC<GridHeaderProps> = (props) => {
@@ -38,15 +40,19 @@ const EnhancedGridHead: React.FC<GridHeaderProps> = (props) => {
                 <TableRow>
                     {props.enableRowSelection && props.numSelected !== undefined && props.rowCount ?
                         <TableCell padding="checkbox" className="header-options" >
-                            <Checkbox
-                                name='checkbox-all'
-                                indeterminate={props.numSelected > 0 && props.numSelected < props.rowCount}
-                                checked={props.rowCount > 0 && props.numSelected === props.rowCount}
-                                onChange={props.onSelectAllClick}
+                            {!props.singleRowSelection ? (
+                                <Checkbox
+                                    name='checkbox-all'
+                                    indeterminate={props.numSelected > 0 && props.numSelected < props.rowCount}
+                                    checked={props.rowCount > 0 && props.numSelected === props.rowCount}
+                                    onChange={props.onSelectAllClick}
 
-                                onClick={e => e.stopPropagation()}
-                            />
-                        </TableCell> : null}
+                                    onClick={e => e.stopPropagation()}
+                                />
+                            ) : ("")}
+
+                        </TableCell>
+                        : null}
                     {props.headCells.map((headCell) => (
                         <TableCell
                             key={headCell.field}

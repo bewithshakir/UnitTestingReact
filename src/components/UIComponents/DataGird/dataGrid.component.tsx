@@ -1,6 +1,7 @@
+import React, { useEffect, useRef } from "react";
 import { Collapse, TableBody, TableCell, TableRow, FormControl, Avatar, Icon, ImageList, Typography, Box, ImageListItem } from '@mui/material';
 import Checkbox from '../Checkbox/Checkbox.component';
-import React, { useEffect, useRef } from "react";
+import Radio from '../Radio/Radio.component';
 import { Loader } from '../Loader';
 import DataGridActionsMenu, { DataGridActionsMenuOption, RowActionHanddlerRef } from '../Menu/DataGridActionsMenu.component';
 import { Button } from './../Button/Button.component';
@@ -22,6 +23,8 @@ interface GridBodyProps {
     isLoading?: boolean;
     isChildTable?: boolean;
     enableRowSelection?: boolean;
+    /** Will work only if enableRowSelection is true, It will add radio button instead of checkbox  */
+    singleRowSelection?: boolean;
     enableRowAction?: boolean;
     openDrawer?: any;
     selectedRows?: string[];
@@ -39,7 +42,7 @@ interface GridBodyProps {
 }
 
 
-function descendingComparator (a: any, b: any, orderBy: any) {
+function descendingComparator(a: any, b: any, orderBy: any) {
     const valueA = orderBy === "product" ? a.productName : a[orderBy];
     const valueB = orderBy === "product" ? b.productName : b[orderBy];
     const finalValueA = isNaN(valueA) ? valueA?.toLowerCase() : Number(valueA);
@@ -54,13 +57,13 @@ function descendingComparator (a: any, b: any, orderBy: any) {
 }
 
 
-function getComparator (order: any, orderBy: any) {
+function getComparator(order: any, orderBy: any) {
     return order === "desc"
         ? (a: any, b: any) => descendingComparator(a, b, orderBy)
         : (a: any, b: any) => -descendingComparator(a, b, orderBy);
 }
 
-function stableSort (array: any, comparator: any) {
+function stableSort(array: any, comparator: any) {
     const stabilizedThis = array.map((el: any, index: any) => [el, index]);
     stabilizedThis.sort((a: any, b: any) => {
         const order = comparator(a[0], b[0]);
@@ -268,12 +271,20 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
                                         scope="row"
                                         onClick={() => props.isChildTable ? {} : openDrawer(row)}
                                     >
-                                        <Checkbox
+                                        {props.singleRowSelection ? (
+                                            <Radio
+                                                name={`checkboxOnGrid`}
+                                                checked={isItemSelected || false}
+                                                onChange={() => props.handleCheckChange && props.handleCheckChange(row[primaryKey])}
+                                                onClick={e => e.stopPropagation()}
+                                            />
+                                        ) : <Checkbox
                                             name={`checkbox${row[primaryKey]}`}
                                             checked={isItemSelected || false}
                                             onChange={() => onCheckChange(row[primaryKey])}
                                             onClick={e => e.stopPropagation()}
                                         />
+                                        }
                                     </TableCell>
                                     : null}
                             {keys.map((key: any, colIndex: any) =>

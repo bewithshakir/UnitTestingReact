@@ -27,3 +27,81 @@
     background: var(--Lightgray_4); 
     min-height: 100%; 
 }
+
+.supplier-modal-btn{
+    width: 100%;
+    margin-top: 2px;
+    background-color: var(--Darkgray);
+    span{
+        justify-content: left;
+        color: var(--White);
+        font-size: 14px;
+    }
+    &:hover{
+        background-color: var(--Black);
+        color: var(--White);
+    } 
+    .MuiButton-endIcon{
+        right: 18px;
+        position: absolute;
+    }
+
+}
+
+.checkbox-heading{
+    font-size: 12px;
+    color: var(--Darkgray);
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+.price-heading{
+    font-size: 11px;
+}
+
+.checkboxlist-wrapper{
+    .MuiFormControlLabel-root{
+        margin-bottom: 5px;
+        .PrivateSwitchBase-root-5{
+            margin-left: -8px;
+        }
+    }
+}
+
+.supplierRack{
+    width: 100%;
+   & .css-hz1bth-MuiDialog-container{
+       width: 100%;
+       & .css-1t1j96h-MuiPaper-root-MuiDialog-paper {
+           left: 1%;
+            width: 100%;
+            max-width: 95%;
+            min-height: 80%;
+
+            & tbody.no-data .nodata {
+                z-index: 9999;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 35%;
+                left: 50%;
+                transform: translate(-50%, 50%);
+                position: absolute;
+       }
+   }
+   & .supplierRack-dialog-container{
+        width:100%;
+        & .supplierRack-content{
+            width:100%;
+            padding-left: 0;
+            padding-right: 0;
+        }
+        & .supplierRack-dialog-actions{ 
+           padding-right: 1%;
+           padding-bottom: 1%;
+           position: absolute;
+           bottom: 10px; 
+           width: 100%;
+        }
+    }
+  }
+}

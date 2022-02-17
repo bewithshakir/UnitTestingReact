@@ -67,6 +67,7 @@ export default function ServiceRule({ index, isDisabled, formik, lotId }: props)
 
     const handleMasterProductTypeChange = (fieldName: string, value: any) => {
         formik.setFieldValue(fieldName, value);
+        formik.setFieldValue("" + `serviceFeeRules[${index}].productName`, { label: "", value: "" });
     };
 
     return (

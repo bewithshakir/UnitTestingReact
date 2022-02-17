@@ -1,4 +1,4 @@
-import { Fragment, SyntheticEvent } from 'react';
+import { Fragment } from 'react';
 import Search from '../../components/UIComponents/SearchInput/SearchInput';
 import { useTranslation } from "react-i18next";
 import { DeleteIcon } from '../../assets/icons';
@@ -7,6 +7,7 @@ import ProductModel from "../../models/LotProductModel";
 import GridComponent from "../../components/UIComponents/DataGird/grid.component";
 import { Grid } from "@mui/material";
 import './ProductList.scss';
+
 interface props {
     searchTerm: string;
     searchTermInputChange: (value: string) => void;
@@ -23,8 +24,10 @@ export default function ProductList(props: props) {
     const headCells = ProductObj.fieldsToDisplay();
     const { t } = useTranslation();
 
-    const openDrawer = (row: SyntheticEvent) => {
-        props.handleRowAction(row);
+    const openDrawer = (row: any) => {
+        if (!(row?.pricingModelNm.toLowerCase() == "opis rack")) {        
+            props.handleRowAction(row);
+        }
     };
     const onRowActionSelect = (primaryIds: string[]) => {
         props.makeTopButtonRowDisabled(primaryIds.length !== 0);

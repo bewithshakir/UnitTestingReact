@@ -7,8 +7,7 @@ import { getAllParkingLotsHandler } from '../pages/ParkingLotsManagement/mockApi
 import { getAttachmentListHandler } from '../pages/Attachments/mockApi/AttachmentLandingPageHandler';
 import { addDspHandler, getDspDataHandler, editDspHandler } from "../pages/DspLanding/AddDSP/mockApi/handlerAddDsp";
 import { getFormattedAddressHandler, getGoogleAddressHandler } from "../components/UIComponents/GoogleAddressComponent/mockApi/googleAddressAutoHandler";
-import { getProductByLotHandler } from '../pages/ProductManagement/mockApi/handler';
-import { editProductHandler } from '../pages/ProductManagement/mockApi/handler';
+import { getProductByLotHandler, editProductHandler , getTaxExemptionsListHandler, getServedCitiesHandler, getSupplierPricesHandler, getSupplierBrandProductsHandler} from '../pages/ProductManagement/mockApi/handler';
 import { getFuelTaxList, getFuelTaxProductsList } from '../pages/Tax/mockApi/handler';
 import { getDelFeeSchduleHandler, getProductTypeHandler, getVehicleTypeHandler, getAssetTypeHandler, getLotMasterProductNamesHandler, getLotProductNamesHandler, addFeeDetailsHandler } from '../pages/ParkingLot/FeeDetails/mockAPi/handler';
 import { addTruckParkingLotHandler, editTruckParkingLotHandler } from '../pages/Truck/TruckParkingLot/AddLot/mockApi/handlerAddTruckParkingLot';
@@ -48,6 +47,10 @@ export const handlers = [
     getTruckParkingLotList(),
     editTruckParkingLotHandler(),
     addAssetHandler(),
+    getTaxExemptionsListHandler(),
+    getServedCitiesHandler(),
+    getSupplierBrandProductsHandler(),
+    getSupplierPricesHandler(),
     getTrucksList(),
     addTruckColorHandler(),
     addTruckFuelHandler()

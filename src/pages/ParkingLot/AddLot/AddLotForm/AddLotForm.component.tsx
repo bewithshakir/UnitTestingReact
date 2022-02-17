@@ -20,7 +20,7 @@ import MultiSelect from '../../../../components/UIComponents/Select/MultiSelect'
 import SingleSelect from '../../../../components/UIComponents/Select/SingleSelect';
 import { DatePickerInput } from '../../../../components/UIComponents/DatePickerInput/DatePickerInput.component';
 import { TimePicker } from '../../../../components/UIComponents/TimePicker/TimePicker.component';
-import { useAddedCustomerIdStore, useAddedCustomerNameStore, useAddedParkingLotIdStore, useShowConfirmationDialogBoxStore } from '../../../../store';
+import { useAddedCustomerIdStore, useAddedCustomerNameStore, useAddedParkingLotIdStore, useShowConfirmationDialogBoxStore, useAddedParkingLotCityNmStore } from '../../../../store';
 import { isEqual } from 'lodash';
 import './AddLotForm.style.scss';
 interface FormStatusType {
@@ -49,6 +49,7 @@ function AddLotForm (): React.ReactElement {
     const isFormValidated = useShowConfirmationDialogBoxStore((state) => state.setFormFieldValue);
     const [isTrigger, setIsTrigger] = useState(false);
     const setParkingLotIdCreated = useAddedParkingLotIdStore((state) => state.setParkingLotId);
+    const setParkingLotCityNmCreated = useAddedParkingLotCityNmStore((state) => state.setParkingLotCityNm);
     const [isDisabled, setDisabled] = useState(false);
     const [isEditMode, setEditMode] = useState(false);
     const [isEditShown, setEditShown] = useState(true);
@@ -135,6 +136,7 @@ function AddLotForm (): React.ReactElement {
         if (data) {
             populateDataInAllFields(data);
             setPageCustomerName(data?.data?.lot?.customerName);
+            setParkingLotCityNmCreated(data?.data?.lot?.cityNm);
             setInit(true);
         }
     };
