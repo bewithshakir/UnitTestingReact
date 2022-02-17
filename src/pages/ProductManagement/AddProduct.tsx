@@ -49,7 +49,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
     const isFormValidated = useShowConfirmationDialogBoxStore((state) => state.setFormFieldValue);
     const hideDialogBox = useShowConfirmationDialogBoxStore((state) => state.hideDialogBox);
     const parkingLotCityNm = useAddedParkingLotCityNmStore((state) => state.parkingLotCityNm);
-    const [fuelTaxError,setFuelTaxError ] = useState('');
+    const [fuelTaxError, setFuelTaxError] = useState('');
     const [fetchTaxList, updateFetchTaxList] = useState(false);
     const [supplierPriceRowObj, setSupplierPriceRowObj] = useState<null | SupplierPrice>(null);
 
@@ -207,11 +207,11 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                 productId: form.masterProductName?.value,
                 pricingModelCd: form.pricingModel?.value
             };
-            
-            if(form.pricingModel?.label.toLowerCase() === 'opis rack'){
+
+            if (form.pricingModel?.label.toLowerCase() === 'opis rack') {
                 payloadObj.pricingCityId = supplierPriceRowObj?.cityId;
                 payloadObj.pricingProductKey = supplierPriceRowObj?.productKey;
-                if( form.taxExemption && form.taxExemption.length>0){
+                if (form.taxExemption && form.taxExemption.length > 0) {
                     payloadObj.taxExemption = [...form.taxExemption];
                 }
             }
@@ -292,11 +292,11 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                 formik.setFieldValue('productNm', [formik.values?.masterProductName?.label + ' ' + 'Retail'].join(''));
             }
         }
-        if(value?.label?.toLowerCase() === 'opis rack'){
+        if (value?.label?.toLowerCase() === 'opis rack') {
             if (formik.values?.masterProductName?.label) {
                 updateFetchTaxList(true);
             }
-            
+
         }
 
     };
@@ -328,10 +328,10 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
         setInitialFormikValues(initFormValues);
     };
 
-    const showFuelTaxError = (val: boolean) =>{
-        if(val){
-            setFuelTaxError( `Please configure the tax components for ${parkingLotCityNm}`);
-        }else{
+    const showFuelTaxError = (val: boolean) => {
+        if (val) {
+            setFuelTaxError(`Please configure the tax components for ${parkingLotCityNm}`);
+        } else {
             setFuelTaxError('');
         }
     };
@@ -503,12 +503,12 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                                 </Grid>
                             </>
                         )}
-                        {(formik.values?.pricingModel?.label?.toLowerCase() === 'opis rack') && !fuelTaxError && 
-                            <OpisRackSegment isDisabled={isDisabled} formik={formik} editMode={editMode} fetchTaxList={fetchTaxList} showFuelTaxError={showFuelTaxError} setFetchTaxList={setFetchTaxList} setSupplierPrice={setSupplierPriceRowObj}/> 
+                        {(formik.values?.pricingModel?.label?.toLowerCase() === 'opis rack') && !fuelTaxError && formik.values?.masterProductName?.label &&
+                            <OpisRackSegment isDisabled={isDisabled} formik={formik} editMode={editMode} fetchTaxList={fetchTaxList} showFuelTaxError={showFuelTaxError} setFetchTaxList={setFetchTaxList} setSupplierPrice={setSupplierPriceRowObj} />
                         }
-                        {(formik.values?.pricingModel?.label?.toLowerCase() === 'opis rack')  && fuelTaxError &&
-                        <Grid item lg={12} md={12} sm={12} xs={12} mx={4}>
-                        {fuelTaxError}</Grid>}
+                        {(formik.values?.pricingModel?.label?.toLowerCase() === 'opis rack') && fuelTaxError &&
+                            <Grid item lg={12} md={12} sm={12} xs={12} mx={4}>
+                                {fuelTaxError}</Grid>}
                     </Grid>
                     <Grid item container lg={12} md={12} sm={12} xs={12} px={4} py={4} className="lastItem" >
                         <Grid item lg={12} md={12} sm={12} xs={12} px={4} py={4} textAlign="right">

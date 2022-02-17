@@ -4,7 +4,7 @@ import { Grid, FormControl } from "@mui/material";
 import { useTranslation } from 'react-i18next';
 import OpisRackCity from './OpisRackCity';
 import CheckboxSegment from './CheckboxSegement';
-import {calculateProductTotalPriceWithTaxes} from  '../../utils/helperFunctions';
+import { calculateProductTotalPriceWithTaxes } from '../../utils/helperFunctions';
 
 
 
@@ -19,7 +19,7 @@ type props = {
 }
 
 export default function OpisRackSegment({ isDisabled, formik, editMode, showFuelTaxError, fetchTaxList, setFetchTaxList, setSupplierPrice }: props) {
-    
+
     const { t } = useTranslation();
 
     const [finalRateValue, updateFinalRateValue] = useState<any>(0);
@@ -35,7 +35,6 @@ export default function OpisRackSegment({ isDisabled, formik, editMode, showFuel
         <Fragment>
             <OpisRackCity formik={formik} isDisabled={isDisabled} editMode={editMode} setSupplierPrice={setSupplierPrice} />
             <Grid item lg={5} md={8} sm={8} xs={8} mx={4} my={1} >
-            {/* Inside OpisRackSegment finalRate{finalRateValue}  finalCPG{finalCPGValue} */}
                 <Input
                     id='manualPriceAmt'
                     label={t("addProductFormLabels.pricelabel")}
@@ -45,7 +44,7 @@ export default function OpisRackSegment({ isDisabled, formik, editMode, showFuel
                     description=''
                     required
                     {...formik.getFieldProps('manualPriceAmt')}
-                    disabled={isDisabled}
+                    disabled={true}
                 />
             </Grid>
             <Grid item lg={5} md={8} sm={8} xs={8} mx={4} my={1} >
@@ -87,7 +86,7 @@ export default function OpisRackSegment({ isDisabled, formik, editMode, showFuel
                     label={'TOTAL PRICE PER GALLON (INCLUDING TAX)'}
                     type='text'
                     description=''
-                    value={calculateProductTotalPriceWithTaxes(formik.values.manualPriceAmt, formik.values.addedPriceAmt, formik.values.discountPriceAmt, finalRateValue,finalCPGValue )}
+                    value={calculateProductTotalPriceWithTaxes(formik.values.manualPriceAmt, formik.values.addedPriceAmt, formik.values.discountPriceAmt, finalRateValue, finalCPGValue)}
                     disabled={true}
                 />
             </Grid>
