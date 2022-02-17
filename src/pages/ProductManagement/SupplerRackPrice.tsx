@@ -5,6 +5,7 @@ import GridComponent from '../../components/UIComponents/DataGird/grid.component
 import ProductModel from "../../models/LotProductModel";
 import { useGetSupplierPrices } from './queries';
 import { CloseIcon } from '../../assets/icons';
+import { formatSupplierPriceData } from './config';
 
 type props = {
     isDisabled: boolean,
@@ -51,7 +52,10 @@ export default function SupplierRack({ isDisabled, formik, setSupplierPrice, res
         }
     };
 
-    const handleClose = () => {
+    const handleClose = (event?: any, reason?: any) => {
+        if (reason && reason == "backdropClick") {
+            return;
+        }
         setOpen(false);
     };
 
@@ -87,6 +91,7 @@ export default function SupplierRack({ isDisabled, formik, setSupplierPrice, res
                 onClose={handleClose}
                 aria-labelledby="supplier-rack-dialog"
                 className='supplierRack'
+                disableEscapeKeyDown
             >
                 <div className="supplierRack-dialog-container">
 
@@ -111,10 +116,9 @@ export default function SupplierRack({ isDisabled, formik, setSupplierPrice, res
                                 <GridComponent
                                     handleSelect={onRowActionSelect}
                                     primaryKey='productKey'
-                                    rows={supplierData?.data?.supplierPrices || []}
+                                    rows={formatSupplierPriceData(supplierData?.data?.supplierPrices || [])}
                                     header={headCells}
                                     isLoading={false}
-                                    //openDrawer={openDrawer}
                                     enableRowSelection
                                     singleRowSelection
                                     getPages={() => null}
@@ -128,7 +132,9 @@ export default function SupplierRack({ isDisabled, formik, setSupplierPrice, res
                         <Button types="cancel" aria-label="cancel" className="mr-4" onClick={handleClose}>
                             {'Cancel'}
                         </Button>
-                        <Button types="save" aria-label="save" className="mr-4" onClick={handleDone} disabled={selectedRows.length === 0}>
+                        <Button
+                            types="primary"
+                            aria-label="primary" className="mr-4" onClick={handleDone} disabled={selectedRows.length === 0}>
                             {'Done'}
                         </Button>
                     </DialogActions>
