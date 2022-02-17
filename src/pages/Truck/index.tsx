@@ -87,7 +87,7 @@ const handleMassAction = () => {
             <Grid item>
               <SearchInput
                 name="searchTerm"
-                placeholder={t('taxes.fuelTax.search')}
+                placeholder={t('truckLanding.search')}
                 value={searchTerm}
                 delay={500}
                 onChange={onInputChange}
@@ -123,10 +123,10 @@ const handleMassAction = () => {
             header={headCells}
             isLoading={isFetching || isLoading}
             enableRowSelection={false}
-            enableRowAction={false}
+            enableRowAction
             getPages={fetchNextPage}
             searchTerm={searchTerm}
-            noDataMsg='Add Truck by clicking on the  "Add Truck" button.'
+            noDataMsg={t("truckLanding.noTrucksMsg")}
           />
         </Grid>
       </Grid>

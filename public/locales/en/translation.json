@@ -268,7 +268,9 @@
     }
   },
   "truckLanding": {
-    "addTruck": "ADD TRUCK"
+    "addTruck": "ADD TRUCK",
+    "search": "Search",
+    "noTrucksMsg": "Add Truck by clicking on the  Add Truck button."
   },
   "addTruckParkingLot": {
     "title": "Add Truck Parking lot",
