@@ -341,6 +341,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
     };
 
     console.warn('formik-->>', formik);
+    console.warn('supplier price row obj-->>', supplierPriceRowObj);
 
     return (
         <FormikProvider value={formik}>

@@ -1,10 +1,10 @@
-import { Fragment } from 'react';
+import { Fragment, useState } from 'react';
 import Input from '../../components/UIComponents/Input/Input';
 import { Grid, FormControl } from "@mui/material";
 import { useTranslation } from 'react-i18next';
-import { totalPricePerGallon } from '../../utils/math.utils';
 import OpisRackCity from './OpisRackCity';
 import CheckboxSegment from './CheckboxSegement';
+import {calculateProductTotalPriceWithTaxes} from  '../../utils/helperFunctions';
 
 
 
@@ -21,6 +21,17 @@ type props = {
 export default function OpisRackSegment({ isDisabled, formik, editMode, showFuelTaxError, fetchTaxList, setFetchTaxList, setSupplierPrice }: props) {
     
     const { t } = useTranslation();
+
+    const [finalRateValue, updateFinalRateValue] = useState<any>(0);
+    const [finalCPGValue, updateFinalCPGValue] = useState<any>(0);
+
+
+    const calculateFinalPrice = (finalRate: number, finalCPGAmount: number) => {
+        console.warn('rate --->', finalRate);
+        console.warn('amount --->', finalCPGAmount);
+        updateFinalRateValue(finalRate);
+        updateFinalCPGValue(finalCPGAmount);
+    };
 
     return (
         <Fragment>
@@ -66,7 +77,7 @@ export default function OpisRackSegment({ isDisabled, formik, editMode, showFuel
             </Grid>
             <Grid item lg={5} md={8} sm={8} xs={8} mx={4} my={1}>
                 <FormControl className='checkboxlist-wrapper' sx={{ m: 3 }}>
-                    <CheckboxSegment formik={formik} isDisabled={isDisabled} showFuelTaxError={showFuelTaxError} fetchTaxList={fetchTaxList} setFetchTaxList={setFetchTaxList} />
+                    <CheckboxSegment formik={formik} isDisabled={isDisabled} showFuelTaxError={showFuelTaxError} fetchTaxList={fetchTaxList} setFetchTaxList={setFetchTaxList} revertFinalRateAndAmount={calculateFinalPrice} />
                 </FormControl>
             </Grid>
             <Grid item lg={5} md={8} sm={8} xs={8} mx={4} my={1} >
@@ -77,7 +88,7 @@ export default function OpisRackSegment({ isDisabled, formik, editMode, showFuel
                     label={'TOTAL PRICE PER GALLON (INCLUDING TAX)'}
                     type='text'
                     description=''
-                    value={totalPricePerGallon(formik.values.manualPriceAmt, formik.values.addedPriceAmt, formik.values.discountPriceAmt, 4)}
+                    value={calculateProductTotalPriceWithTaxes(formik.values.manualPriceAmt, formik.values.addedPriceAmt, formik.values.discountPriceAmt, finalRateValue,finalCPGValue )}
                     disabled={true}
                 />
             </Grid>
