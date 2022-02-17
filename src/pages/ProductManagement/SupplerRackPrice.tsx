@@ -1,14 +1,16 @@
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Button } from '../../components/UIComponents/Button/Button.component';
-import { Dialog, DialogContent, DialogActions, Grid, Typography } from '@mui/material';
+import { Dialog, DialogContent, DialogActions, Grid, Typography, IconButton } from '@mui/material';
 import GridComponent from '../../components/UIComponents/DataGird/grid.component';
 import ProductModel from "../../models/LotProductModel";
 import { useGetSupplierPrices } from './queries';
+import { CloseIcon } from '../../assets/icons';
 
 type props = {
     isDisabled: boolean,
     formik: any,
     setSupplierPrice: (value: any) => any
+    resetSupplierValue?: any
 }
 
 interface GeneralOptions {
@@ -17,7 +19,7 @@ interface GeneralOptions {
 }
 
 
-export default function SupplierRack({ isDisabled, formik, setSupplierPrice }: props) {
+export default function SupplierRack({ isDisabled, formik, setSupplierPrice, resetSupplierValue }: props) {
 
     const [open, setOpen] = useState(false);
     const ProductObj = new ProductModel();
@@ -29,9 +31,24 @@ export default function SupplierRack({ isDisabled, formik, setSupplierPrice }: p
         brandIndicator: formik.values?.branded.map((v: GeneralOptions) => v.value),
         actualProduct: formik.values?.actualProduct.map((a: GeneralOptions) => a.value),
     });
+    const resetSupplierSelection = useCallback(() => {
+        setSupplierPrice(null);
+        formik.setFieldValue('supplierPrice', 0);
+        formik.setFieldValue('manualPriceAmt', 0);
+        formik.setFieldValue('opisName', '');
+        setSelectedRows([]);
+    }, [formik]);
+
+    useEffect(() => {
+        resetSupplierSelection();
+    }, [resetSupplierValue]);
 
     const handleClickOpen = () => {
-        setOpen(true);
+        if (formik.values.opisName) {
+            resetSupplierSelection();
+        } else {
+            setOpen(true);
+        }
     };
 
     const handleClose = () => {
@@ -55,12 +72,15 @@ export default function SupplierRack({ isDisabled, formik, setSupplierPrice }: p
     const onRowActionSelect = (selectedIds: string[]) => {
         setSelectedRows(selectedIds);
     };
-
+    const endIcon = formik.values.opisName ? {
+        endIcon: <CloseIcon key={'dummyKey1'} className='info_panel_close_icon' color='var(--White)'
+        />
+    } : {};
     return (
         <React.Fragment>
             <h4 className='checkbox-heading price-heading'> SUPPLIER PRICE * (Fill all the Mandatory fields to select the price from the filtered list) </h4>
-            <Button variant="outlined" onClick={handleClickOpen} className='supplier-modal-btn' disabled={!(formik.values.city && formik.values.supplier?.length && formik.values.branded?.length && formik.values.actualProduct?.length) || isDisabled}>
-                {selectedRows.length === 0 ? "Choose the supplier price" : `Supplier price $${formik.values.supplierPrice}`}
+            <Button variant="outlined" onClick={handleClickOpen} className='supplier-modal-btn' disabled={!(formik.values.city && formik.values.supplier?.length && formik.values.branded?.length && formik.values.actualProduct?.length) || isDisabled} {...endIcon} >
+                {formik.values.opisName ? `Supplier price $${formik.values.supplierPrice}` : "Choose the supplier price"}
             </Button>
             <Dialog
                 open={open}
@@ -69,9 +89,22 @@ export default function SupplierRack({ isDisabled, formik, setSupplierPrice }: p
                 className='supplierRack'
             >
                 <div className="supplierRack-dialog-container">
-                    <Typography color="var(--Darkgray)" variant="h2" component="h2" className="fw-bold" id="supplier-rack-dialog-title" pl={4.5} pt={2.5} >
-                        {"Choose Supplier Price from the list"}
-                    </Typography>
+
+                    <Grid container>
+                        <Grid item xs={10} md={10}>
+                            <Typography color="var(--Darkgray)" variant="h2" component="h2" className="fw-bold" id="supplier-rack-dialog-title" pl={4.5} pt={2.5} >
+                                {"Choose Supplier Price from below list"}
+                            </Typography>
+                        </Grid>
+                        <Grid item xs={2} md={2} textAlign={'right'}>
+                            <IconButton edge='start' onClick={handleClose}>
+                                <CloseIcon
+                                    className='info_panel_close_icon'
+                                />
+                            </IconButton>
+                        </Grid>
+                    </Grid>
+
                     <DialogContent className="supplierRack-content">
                         <Grid container>
                             <Grid item xs={12} md={12} pb={5}>
@@ -84,7 +117,7 @@ export default function SupplierRack({ isDisabled, formik, setSupplierPrice }: p
                                     //openDrawer={openDrawer}
                                     enableRowSelection
                                     singleRowSelection
-                                    getPages={false}
+                                    getPages={() => null}
                                     searchTerm={''}
                                     noDataMsg='Prices are not available. Please contact the support team.'
                                 />
@@ -95,12 +128,12 @@ export default function SupplierRack({ isDisabled, formik, setSupplierPrice }: p
                         <Button types="cancel" aria-label="cancel" className="mr-4" onClick={handleClose}>
                             {'Cancel'}
                         </Button>
-                        <Button types="cancel" aria-label="cancel" className="mr-4" onClick={handleDone} disabled={selectedRows.length === 0}>
+                        <Button types="save" aria-label="save" className="mr-4" onClick={handleDone} disabled={selectedRows.length === 0}>
                             {'Done'}
                         </Button>
                     </DialogActions>
                 </div>
             </Dialog>
-        </React.Fragment>
+        </React.Fragment >
     );
 }

@@ -338,7 +338,7 @@ export interface SupplierPrice {
 }
 
 const getSupplierPrices = async (query: QueryOptions) => {
-  if (!query || !query.cityId || !query.supplier || !query.brandIndicator || !query.actualProduct) {
+  if (!query || !query.cityId || !query.supplier?.length || !query.brandIndicator?.length || !query.actualProduct?.length) {
     return {
       data: {
         supplierPrices: [],

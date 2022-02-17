@@ -107,7 +107,7 @@ export default class ProductModel {
             { field: "rvp", label: "RVP", type: 'text' },
             { field: "dieselBlend", label: "DIESEL BLEND", type: 'text' },
             { field: "bioType", label: "BIO TYPE", type: 'text' },
-            { field: 'lastUpdatedDate', label: 'Last Updated Date', type: 'text' }
+            { field: 'lastUpdatedDate', label: 'LAST UPDATED DATE', type: 'text' }
         ];
     }
 

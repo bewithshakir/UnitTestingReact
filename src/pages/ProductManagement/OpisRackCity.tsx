@@ -41,6 +41,7 @@ export default function OpisRackCity({ isDisabled, formik, editMode, setSupplier
     const [suppliers, setSuppliers] = useState<GeneralOptions[]>([]);
     const [brandedList, setbrandedList] = useState<GeneralOptions[]>([]);
     const [actualProductList, setActualProductList] = useState<GeneralOptions[]>([]);
+    const [resetSupplierValue, setResetSupplierValue] = useState<number | null>(null);
 
     const { data: servedCities } = useGetServedCities();
     const { data: spplierBrandProducts } = useGetSupplierBrandProducts(formik?.values?.city?.cityId || '');
@@ -61,6 +62,13 @@ export default function OpisRackCity({ isDisabled, formik, editMode, setSupplier
 
     const handleCityChange = (field: any, value: any) => {
         formik.setFieldValue(field, value);
+        formik.setFieldValue('supplier', []);
+        formik.setFieldValue('branded', []);
+        formik.setFieldValue('actualProduct', []);
+        formik.setFieldValue('supplierPrice', 0);
+        formik.setFieldValue('manualPriceAmt', 0);
+        formik.setFieldValue('opisName', '');
+        setResetSupplierValue(Date.now());
     };
 
     return (<Fragment>
@@ -163,7 +171,7 @@ export default function OpisRackCity({ isDisabled, formik, editMode, setSupplier
         <Grid item lg={5} md={8} sm={8} xs={8} mx={4} my={1} >
         </Grid>
         <Grid item lg={5} md={8} sm={8} xs={8} mx={4} my={1} >
-            <SupplierRack formik={formik} isDisabled={isDisabled} setSupplierPrice={setSupplierPrice} />
+            <SupplierRack formik={formik} isDisabled={isDisabled} setSupplierPrice={setSupplierPrice} resetSupplierValue={resetSupplierValue} />
         </Grid>
         <Grid item lg={5} md={8} sm={8} xs={8} mx={4} my={1} >
         </Grid>

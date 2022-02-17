@@ -40,7 +40,12 @@
     &:hover{
         background-color: var(--Darkgray);
         color: var(--White);
+    } 
+    .MuiButton-endIcon{
+        right: 18px;
+        position: absolute;
     }
+
 }
 
 .checkbox-heading{
@@ -87,9 +92,11 @@
         width:100%;
         & .supplierRack-content{
             width:100%;
+            padding-left: 0;
+            padding-right: 0;
         }
         & .supplierRack-dialog-actions{
-           margin-top: 35%;
+         
            padding-right: 1%;
            padding-bottom: 1%;
         }
