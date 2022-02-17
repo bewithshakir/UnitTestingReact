@@ -256,11 +256,13 @@ const AddTruck: React.FC<AddCustomerProps> = () => {
                                         id='truckParkingLot'
                                         name='truckParkingLot'
                                         label={t("addTruckFormLabels.truckParkingLot")}
-                                        //value={form.itemWithIcon}
+                                        value={formik.values.truckParkingLot}
                                         placeholder='Select Multiple lots'
                                         items={truckParkingLotList}
                                         onChange={formik.setFieldValue}
                                         required
+                                        helperText={(formik.touched.truckParkingLot && formik.errors.truckParkingLot) ? formik.errors.truckParkingLot : undefined}
+                                        error={(formik.touched.truckParkingLot && formik.errors.truckParkingLot) ? true : false}
                                         onBlur={() => { formik.setFieldTouched(`truckParkingLot`); formik.validateField(`truckParkingLot`); }}
                                     />
 

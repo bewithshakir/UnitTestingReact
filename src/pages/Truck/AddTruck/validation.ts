@@ -19,13 +19,12 @@ const AddTruckValidationSchema = Yup.object().shape({
     color: dropDownSchema,
     year:Yup.string().matches(/^[0-9]+([.][0-9]+)?$/, 'Invalid Year.'),
     status:statusDropDownSchema,
-    truckParkingLot: Yup.array().test('delFreq', function (value: any, context: any) {
-        if(value && context ) {
-            return true;
+    truckParkingLot: Yup.array().test('', function (value: any) {
+        if(value.length === 0) {
+            return this.createError({ message: 'Atleast one parkinglot should be selected' });
         } else {
-            return false;
+            return true;
         }
-
     }),
     opexFuelType: dropDownSchema,
     tankDetails: Yup.array()
