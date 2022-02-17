@@ -1,11 +1,10 @@
-import { useTranslation } from 'react-i18next';
 import { headerObj } from '../components/UIComponents/DataGird/grid.component'; 
 import { PositiveCricleIcon, ExpireWalletIcon, OilTankIcon, OrderIcon } from '../assets/icons';
 
 import { ParkingLocationIcon } from '../assets/icons';
 
 
-export default class TruckParkingLotModel {
+export default class TruckModel {
     deliveryVehicleId: string;
     deliveryVehicleNm: string;
     licenceNo: string;
@@ -73,51 +72,5 @@ export default class TruckParkingLotModel {
                 colorNm: obj.color.colorNm,
             });
         });
-    }
-
-    rowActions() {
-        const { t } = useTranslation();
-        return [
-            {
-                label: t("menus.data-grid-actions.edit"),
-                action: this.ACTION_TYPES.EDIT
-            },
-            {
-                label: t("menus.data-grid-actions.delete"),
-                action: this.ACTION_TYPES.DELETE
-            },
-        ];
-    }
-
-    ACTION_TYPES = {
-        EDIT: 'edit',
-        DELETE: 'delete',
-    };
-
-    MASS_ACTION_TYPES = {
-        IMPORT: 'import',
-        EXPORT: 'export',
-        DELETE: 'remove',
-    };
-
-    massActions() {
-        const { t } = useTranslation();
-        return [
-            {
-                label: t("menus.actions.import data"),
-                icon: "ImportIcon",
-                action: this.MASS_ACTION_TYPES.IMPORT
-            },
-            {
-                label: t("menus.actions.export data"),
-                icon: "ExportIcon",
-                action: this.MASS_ACTION_TYPES.EXPORT
-            },
-            {
-                label: t("menus.actions.delete"),
-                icon: "DeleteIcon",
-                action: this.MASS_ACTION_TYPES.DELETE
-            },
-        ];
     }
 }

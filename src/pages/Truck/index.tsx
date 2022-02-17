@@ -21,7 +21,6 @@ export interface TruckLandingContentProps {
 const TruckLandingContent: React.FC<TruckLandingContentProps> = memo(() => {
   const truckObj = new TruckModel();
   const headCells = truckObj.fieldsToDisplay();
-  const massActionOptions = truckObj.massActions();
 
   const navigate = useNavigate();
   const [searchTerm] = React.useState("");
@@ -110,7 +109,7 @@ const handleMassAction = () => {
             <Grid item>
               <FormControl>
                 <ActionsMenu
-                  options={massActionOptions}
+                  options={[]}
                   onSelect={handleMassAction}
                 />
               </FormControl>
