@@ -333,7 +333,23 @@
     "adderlabel": "Added Price Per Gallon (Optional)",
     "discountlabel": "Discount Per Gallon (Optional)",
     "totalpricelabel": "Total Price Per Gallon (Including Tax, Adder/Discount)",
-    "timeslotlabel": "Time Slot (Optional)"
+    "timeslotlabel": "Time Slot (Optional)",
+    "addproductcheckboxseg": "Fuel Tax Exemptions ($)",
+    "addproductselectall": "Select All",
+    "addproductopisname": "OPIS Name",
+    "productnameplaceholder": "Enter Product Name",
+    "actualproductlabel": "Actual Product",
+    "actualproductplaceholder": "Choose Actual Product",
+    "brandedlabel": "Branded",
+    "brandedplaceholder": "Choose Branded",
+    "supplierlabel": "Supplier",
+    "supplierplaceholder": "Choose Suppliers",
+    "cityidlabel": "City Id",
+    "statelabel": "State",
+    "citylabel": "City",
+    "supplierrackheading": "SUPPLIER PRICE * (Fill all the Mandatory fields to select the price from the filtered list)",
+    "supplierpriceheading": "Choose Supplier Price from below list",
+    "supplierpricenodatamsg": "Prices are not available. Please contact the support team."
   },
   "assetManagement": {
     "asset": "Asset Type",
@@ -349,14 +365,14 @@
       "assetStatus": "Status"
     }
   },
-  "FeeDetails":{
+  "FeeDetails": {
     "head1": "Add Fee Details to fulfil the requirements",
-    "feeName":"Fee Name",
+    "feeName": "Fee Name",
     "feeNamePlaceholder": "Enter Fee Name",
     "deliveryFeehead": "Delivery Fee",
-    "deliveryFee":"Delivery Fee ($)",
+    "deliveryFee": "Delivery Fee ($)",
     "enterFee": "Enter Fee",
-    "delFeeShed":"Delivery Fee Schedule",
+    "delFeeShed": "Delivery Fee Schedule",
     "selectFee": "Select Fee",
     "salesTaxExcemption": "Sales Tax Excemption",
     "serviceFeeRule": "Service Fee rule",
@@ -377,7 +393,7 @@
     "addAnotherServiceFee": "ADD ANOTHER SERVICE FEE",
     "noDataMsg": "Add Products first before setting up fees"
   },
-  "Attachments":{
+  "Attachments": {
     "search": "Search",
     "filterHeader": "Filters",
     "noDataMsg": "Add attachments by clicking on import or any related sentence.",
@@ -387,19 +403,19 @@
     "uploadedBy": "UPLOADED BY",
     "uploadedIn": "UPLOADED IN"
   },
-  "UploadAttachments":{
+  "UploadAttachments": {
     "breadCrumbText": "Import Attachment",
     "uploadInitialText": "Drag & drop the file or",
-    "choose":"Choose",
-    "fileFormatSize":"Max file size : 25MB | File format : PDF, XLSX or DOCX",
-    "uploadFile":"Upload File",
+    "choose": "Choose",
+    "fileFormatSize": "Max file size : 25MB | File format : PDF, XLSX or DOCX",
+    "uploadFile": "Upload File",
     "fileuploaddialog": {
       "title": "Error in File Upload",
       "content": "The file name you are trying to upload is already exists. Do you want to overwrite the file ?"
     },
-    "uploadGenericError":"Error found. Please delete and re-upload the file",
-    "no":"No",
-    "yes":"Yes"
+    "uploadGenericError": "Error found. Please delete and re-upload the file",
+    "no": "No",
+    "yes": "Yes"
   },
   "truck": {
     "navBar": {

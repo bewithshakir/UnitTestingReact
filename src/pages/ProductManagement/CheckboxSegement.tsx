@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Checkbox from '../../components/UIComponents/Checkbox/Checkbox.component';
 import { capitalizeFirstLetter } from '../../utils/helperFunctions';
 import { FormControlLabel, Typography } from "@mui/material";
-// import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import { checkboxConfig } from './config';
 import { useGetTaxRates } from './queries';
 import { useAddedParkingLotCityNmStore } from '../../store';
@@ -21,7 +21,7 @@ type props = {
 
 export default function CheckBoxSegment({ isDisabled, formik, showFuelTaxError, fetchTaxList, setFetchTaxList, revertFinalRateAndAmount }: props) {
 
-    // const { t } = useTranslation();
+    const { t } = useTranslation();
 
     const [selectAll, setSelectAll] = useState(false);
     const [taxExemptionList, updateTaxExemptionList] = useState<Array<any>>([]);
@@ -145,7 +145,7 @@ export default function CheckBoxSegment({ isDisabled, formik, showFuelTaxError, 
     return (
 
         <React.Fragment>
-            <h4 className='checkbox-heading'> Fuel Tax Exemptions ($) </h4>
+            <h4 className='checkbox-heading'> {t("addProductFormLabels.addproductcheckboxseg")} </h4>
             {taxExemptionList.length > 0 && <React.Fragment>
                 <FormControlLabel
                     sx={checkboxConfig}
@@ -153,7 +153,7 @@ export default function CheckBoxSegment({ isDisabled, formik, showFuelTaxError, 
                     disabled={isDisabled}
                     control={<Checkbox checked={selectAll} name="selectAll" onChange={handleSelectAll} disabled={isDisabled} />}
                     label={<Typography color={isDisabled ? 'var(--Secondary-Background)' : "var(--Darkgray)"} variant="h4" >
-                        Select All
+                        {t("addProductFormLabels.addproductselectall")}
                     </Typography>} />
 
                 {taxExemptionList.map((checkBoxObj: any, index: number) => (

@@ -6,6 +6,7 @@ import ProductModel from "../../models/LotProductModel";
 import { useGetSupplierPrices } from './queries';
 import { CloseIcon } from '../../assets/icons';
 import { formatSupplierPriceData } from './config';
+import { useTranslation } from 'react-i18next';
 
 type props = {
     isDisabled: boolean,
@@ -22,6 +23,7 @@ interface GeneralOptions {
 
 export default function SupplierRack({ isDisabled, formik, setSupplierPrice, resetSupplierValue }: props) {
 
+    const { t } = useTranslation();
     const [open, setOpen] = useState(false);
     const ProductObj = new ProductModel();
     const headCells = ProductObj.fieldsToDisplaySupplierRack();
@@ -82,7 +84,7 @@ export default function SupplierRack({ isDisabled, formik, setSupplierPrice, res
     } : {};
     return (
         <React.Fragment>
-            <h4 className='checkbox-heading price-heading'> SUPPLIER PRICE * (Fill all the Mandatory fields to select the price from the filtered list) </h4>
+            <h4 className='checkbox-heading price-heading'> {t("addProductFormLabels.supplierrackheading")} </h4>
             <Button variant="outlined" onClick={handleClickOpen} className='supplier-modal-btn' disabled={!(formik.values.city && formik.values.supplier?.length && formik.values.branded?.length && formik.values.actualProduct?.length) || isDisabled} {...endIcon} >
                 {formik.values.opisName ? `Supplier price $${formik.values.supplierPrice}` : "Choose the supplier price"}
             </Button>
@@ -98,7 +100,7 @@ export default function SupplierRack({ isDisabled, formik, setSupplierPrice, res
                     <Grid container>
                         <Grid item xs={10} md={10}>
                             <Typography color="var(--Darkgray)" variant="h2" component="h2" className="fw-bold" id="supplier-rack-dialog-title" pl={4.5} pt={2.5} >
-                                {"Choose Supplier Price from below list"}
+                                {t("addProductFormLabels.supplierpriceheading")}
                             </Typography>
                         </Grid>
                         <Grid item xs={2} md={2} textAlign={'right'}>
@@ -123,7 +125,7 @@ export default function SupplierRack({ isDisabled, formik, setSupplierPrice, res
                                     singleRowSelection
                                     getPages={() => null}
                                     searchTerm={''}
-                                    noDataMsg='Prices are not available. Please contact the support team.'
+                                    noDataMsg={t("addProductFormLabels.supplierpricenodatamsg")}
                                 />
                             </Grid>
                         </Grid>

@@ -82,7 +82,7 @@ export default function OpisRackCity({ isDisabled, formik, editMode, setSupplier
             <Select
                 id='city'
                 name='city'
-                label={'City'}
+                label={t("addProductFormLabels.citylabel")}
                 value={formik.values.city}
                 placeholder='Select one'
                 items={cities}
@@ -100,7 +100,7 @@ export default function OpisRackCity({ isDisabled, formik, editMode, setSupplier
             <Input
                 id='state'
                 name='state'
-                label={'State'}
+                label={t("addProductFormLabels.statelabel")}
                 type='text'
                 onClick={(e) => e.preventDefault()}
                 helperText={(formik.touched.state && formik.errors.state) ? formik.errors.state : undefined}
@@ -114,7 +114,7 @@ export default function OpisRackCity({ isDisabled, formik, editMode, setSupplier
         <Grid item lg={5} md={8} sm={8} xs={8} mx={4} my={1} >
             <Input
                 id='cityId'
-                label={'City Id'}
+                label={t("addProductFormLabels.cityidlabel")}
                 type='text'
                 helperText={(formik.touched.cityId && formik.errors.cityId) ? formik.errors.cityId : undefined}
                 error={(formik.touched.cityId && formik.errors.cityId) ? true : false}
@@ -128,8 +128,8 @@ export default function OpisRackCity({ isDisabled, formik, editMode, setSupplier
         <Grid item lg={5} md={8} sm={8} xs={8} mx={4} my={1} >
             <MultiSelect
                 id={'supplier'}
-                label='Supplier'
-                placeholder='Choose Suppliers'
+                label={t("addProductFormLabels.supplierlabel")}
+                placeholder={t("addProductFormLabels.supplierplaceholder")}
                 required
                 items={suppliers}
                 name={'supplier'}
@@ -144,8 +144,8 @@ export default function OpisRackCity({ isDisabled, formik, editMode, setSupplier
         <Grid item lg={5} md={8} sm={8} xs={8} mx={4} my={1} >
             <MultiSelect
                 id={'branded'}
-                label='Branded'
-                placeholder='Choose Branded'
+                label={t("addProductFormLabels.brandedlabel")}
+                placeholder={t("addProductFormLabels.brandedplaceholder")}
                 required
                 items={brandedList}
                 name={'branded'}
@@ -161,8 +161,8 @@ export default function OpisRackCity({ isDisabled, formik, editMode, setSupplier
         <Grid item lg={5} md={8} sm={8} xs={8} mx={4} my={1} >
             <MultiSelect
                 id={'actualProduct'}
-                label='Actual Product'
-                placeholder='Choose Actual Product'
+                label={t("addProductFormLabels.actualproductlabel")}
+                placeholder={t("addProductFormLabels.actualproductplaceholder")}
                 required
                 items={actualProductList}
                 name={'actualProduct'}
@@ -185,7 +185,7 @@ export default function OpisRackCity({ isDisabled, formik, editMode, setSupplier
             <Input
                 id='opisName'
                 name='opisName'
-                label={'OPIS Name'}
+                label={t("addProductFormLabels.addproductopisname")}
                 type='text'
                 onClick={(e) => e.preventDefault()}
                 helperText={(formik.touched.opisName && formik.errors.opisName) ? formik.errors.opisName : undefined}
@@ -200,7 +200,7 @@ export default function OpisRackCity({ isDisabled, formik, editMode, setSupplier
                 id='productNm'
                 label={t("addProductFormLabels.productnamelabel")}
                 type='text'
-                placeholder='Enter Product Name'
+                placeholder={t("addProductFormLabels.productnameplaceholder")}
                 helperText={(formik.touched.productNm && formik.errors.productNm) ? formik.errors.productNm : undefined}
                 error={(formik.touched.productNm && formik.errors.productNm) ? true : false}
                 description=''
