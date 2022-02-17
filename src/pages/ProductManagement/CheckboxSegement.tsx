@@ -58,7 +58,7 @@ export default function CheckBoxSegment({ isDisabled, formik, showFuelTaxError, 
                 }else if(checkBoxObj?.moneyPctIndicator?.toLowerCase() === 'm'){
                     const cpgQ = Number(checkBoxObj.taxRateAmt);
                     const totalVal =  new Decimal(Number(totalCPGCalc)) ;
-                    totalRateCalc = Number(totalVal.plus(cpgQ));
+                    totalCPGCalc = Number(totalVal.plus(cpgQ));
                 }
             });
             //Total Rate and CPG without exemptions
@@ -110,11 +110,12 @@ export default function CheckBoxSegment({ isDisabled, formik, showFuelTaxError, 
             formik.setFieldValue('taxExemption', [...formik.values.taxExemption, name]);
             if(taxExemptionList[index]?.moneyPctIndicator?.toLowerCase() === 'p'){
                 const rateQ = Number((new Decimal(Number(taxExemptionList[index].taxRateAmt))).dividedBy(100));
-
                 updateFinalRate(prevState => Number((new Decimal(Number(prevState))).minus(rateQ)));
                 // updateFinalRate(prevState => (prevState - (taxExemptionList[index].taxRateAmt / 100)));
             }else  if(taxExemptionList[index]?.moneyPctIndicator?.toLowerCase() === 'm'){
-                updateFinalCPG(prevState => (prevState - taxExemptionList[index].taxRateAmt));
+                const cpgQ = Number(taxExemptionList[index].taxRateAmt);
+                updateFinalCPG(prevState => Number((new Decimal(Number(prevState))).minus(cpgQ)));
+                // updateFinalCPG(prevState => (prevState - taxExemptionList[index].taxRateAmt));
             }    
             
         } else {
@@ -122,9 +123,14 @@ export default function CheckBoxSegment({ isDisabled, formik, showFuelTaxError, 
                 setSelectAll(false);
             }
             if(taxExemptionList[index]?.moneyPctIndicator?.toLowerCase() === 'p'){
-                updateFinalRate(prevState => (prevState + (taxExemptionList[index].taxRateAmt / 100)));
+                const rateQ = Number((new Decimal(Number(taxExemptionList[index].taxRateAmt))).dividedBy(100));
+                updateFinalRate(prevState => Number((new Decimal(Number(prevState))).plus(rateQ)));
+                // updateFinalRate(prevState => (prevState + (taxExemptionList[index].taxRateAmt / 100)));
             }else  if(taxExemptionList[index]?.moneyPctIndicator?.toLowerCase() === 'm'){
-                updateFinalCPG(prevState => (prevState + taxExemptionList[index].taxRateAmt));
+                const cpgQ = Number(taxExemptionList[index].taxRateAmt);
+                updateFinalCPG(prevState => Number((new Decimal(Number(prevState))).plus(cpgQ)));
+
+                // updateFinalCPG(prevState => (prevState + taxExemptionList[index].taxRateAmt));
             }   
             formik.setFieldValue('taxExemption', formik.values.taxExemption.filter((item:any) => item !== name));
         }
