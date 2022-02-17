@@ -129,21 +129,27 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
         if (data?.length) {
             if (data?.length <= 5) {
                 return (<ImageList sx={{ ...tableImagesIconListSX, justifyContent: align }} gap={0} cols={5}>
-                            { dataToRenderFirstRow(data?.slice(0,6), key) }
+                            { dataToRenderFirstRow(data?.slice(0,5), key) }
                 </ImageList>);
             }
             else if (data?.length > 5 && data?.length <= 10) {
-                return (<ImageList sx={{ ...tableImagesIconListSX, justifyContent: align }} gap={0} cols={5}>
-                            { dataToRenderFirstRow(data?.slice(0, 6), key) }
-                            { dataToRenderFirstRow(data.slice(6, 11), key) }
-                </ImageList >);
+                return (<><ImageList sx={{ ...tableImagesIconListSX, justifyContent: align }} gap={0} cols={5}>
+                            { dataToRenderFirstRow(data?.slice(0, 5), key) }
+                </ImageList >
+                <ImageList sx={{ ...tableImagesIconListSX, justifyContent: align }} gap={0} cols={5}>
+                            { dataToRenderFirstRow(data?.slice(5, 10), key) }
+                </ImageList ></>);
             }
             else {
-                return (<ImageList sx={{ ...tableImagesIconListSX, justifyContent: align }} gap={0} cols={5}>
-                            { dataToRenderFirstRow(data.slice(0,6), key) }
-                            { dataToRenderFirstRow(data.slice(6,11), key) }
-                            { dataToRenderFirstRow(data.slice(11), key) }
-                </ImageList>);
+                return (<><ImageList sx={{ ...tableImagesIconListSX, justifyContent: align }} gap={0} cols={5}>
+                            { dataToRenderFirstRow(data?.slice(0,5), key) }
+                </ImageList>
+                <ImageList sx={{ ...tableImagesIconListSX, justifyContent: align }} gap={0} cols={5}>
+                            { dataToRenderFirstRow(data?.slice(5,10), key) }
+                </ImageList>
+                <ImageList sx={{ ...tableImagesIconListSX, justifyContent: align }} gap={0} cols={5}>
+                            { dataToRenderFirstRow(data?.slice(10), key) }
+                </ImageList></>);
             }
         }
     };

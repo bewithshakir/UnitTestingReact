@@ -69,7 +69,16 @@ export default function ServiceRule({ index, isDisabled, formik, lotId }: props)
     }, [init]);
 
     useEffect(() => {
-        if (isEqual(formState, formik.values)) { 
+        console.log(formState);
+        console.log(formik.values);
+        if (!isEqual(formState, formik.values)) {
+            console.log("1") ;
+            if (formik.values.serviceFeeRules[0].productType.value == "all") {
+                console.log("2");
+                formik.setFieldValue("" + `serviceFeeRules[${index}].masterProductType`, { label: "All", value: "all" });
+
+                formik.setFieldValue("" + `serviceFeeRules[${index}].productName`, { label: "All", value: "all" });
+            }
             console.log(formState);
             console.log(formik.values);
         }
@@ -88,8 +97,10 @@ export default function ServiceRule({ index, isDisabled, formik, lotId }: props)
         }
     // }
         console.log(formState);
-        console.log(formik);
+        
     };
+
+    console.log(formik);
 
     const handleMasterProductTypeChange = (fieldName: string, value: any) => {
         formik.setFieldValue(fieldName, value);
