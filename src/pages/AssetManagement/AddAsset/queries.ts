@@ -65,7 +65,7 @@ const getAssetDetails = async (assetId: string) => {
     if (assetId) {
         const options: AxiosRequestConfig = {
             method: 'get',
-            url: `/api/product-service/assets/${assetId}`
+            url: `/api/product-service/assets/${assetId}?countryCode=us`
         };
         const { data } = await axios(options);
         return data;
