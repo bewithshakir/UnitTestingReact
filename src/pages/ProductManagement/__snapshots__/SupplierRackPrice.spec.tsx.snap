@@ -1,0 +1,1026 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Rendering of supplier rack price should render snapshot for supplier rack price 1`] = `
+<QueryClientProvider
+  client={
+    QueryClient {
+      "defaultOptions": Object {},
+      "mutationCache": MutationCache {
+        "config": Object {},
+        "listeners": Array [],
+        "mutationId": 0,
+        "mutations": Array [],
+      },
+      "mutationDefaults": Array [],
+      "queryCache": QueryCache {
+        "config": Object {},
+        "listeners": Array [],
+        "queries": Array [
+          Query {
+            "cache": [Circular],
+            "cacheTime": 300000,
+            "defaultOptions": undefined,
+            "gcTimeout": undefined,
+            "initialState": Object {
+              "data": undefined,
+              "dataUpdateCount": 0,
+              "dataUpdatedAt": 0,
+              "error": null,
+              "errorUpdateCount": 0,
+              "errorUpdatedAt": 0,
+              "fetchFailureCount": 0,
+              "fetchMeta": null,
+              "isFetching": false,
+              "isInvalidated": false,
+              "isPaused": false,
+              "status": "idle",
+            },
+            "observers": Array [
+              QueryObserver {
+                "client": [Circular],
+                "currentQuery": [Circular],
+                "currentQueryInitialState": Object {
+                  "data": undefined,
+                  "dataUpdateCount": 0,
+                  "dataUpdatedAt": 0,
+                  "error": null,
+                  "errorUpdateCount": 0,
+                  "errorUpdatedAt": 0,
+                  "fetchFailureCount": 0,
+                  "fetchMeta": null,
+                  "isFetching": false,
+                  "isInvalidated": false,
+                  "isPaused": false,
+                  "status": "idle",
+                },
+                "currentResult": Object {
+                  "data": undefined,
+                  "dataUpdatedAt": 0,
+                  "error": null,
+                  "errorUpdatedAt": 0,
+                  "failureCount": 0,
+                  "isError": false,
+                  "isFetched": false,
+                  "isFetchedAfterMount": false,
+                  "isFetching": true,
+                  "isIdle": false,
+                  "isLoading": true,
+                  "isLoadingError": false,
+                  "isPlaceholderData": false,
+                  "isPreviousData": false,
+                  "isRefetchError": false,
+                  "isStale": true,
+                  "isSuccess": false,
+                  "refetch": [Function],
+                  "remove": [Function],
+                  "status": "loading",
+                },
+                "currentResultOptions": Object {
+                  "_defaulted": true,
+                  "optimisticResults": true,
+                  "queryFn": [Function],
+                  "queryHash": "[\\"getSupplierPrices\\",{\\"actualProduct\\":[],\\"brandIndicator\\":[],\\"supplier\\":[]}]",
+                  "queryKey": Array [
+                    "getSupplierPrices",
+                    Object {
+                      "actualProduct": Array [],
+                      "brandIndicator": Array [],
+                      "cityId": undefined,
+                      "supplier": Array [],
+                    },
+                  ],
+                },
+                "currentResultState": Object {
+                  "data": undefined,
+                  "dataUpdateCount": 0,
+                  "dataUpdatedAt": 0,
+                  "error": null,
+                  "errorUpdateCount": 0,
+                  "errorUpdatedAt": 0,
+                  "fetchFailureCount": 0,
+                  "fetchMeta": null,
+                  "isFetching": true,
+                  "isInvalidated": false,
+                  "isPaused": false,
+                  "status": "loading",
+                },
+                "listeners": Array [
+                  [Function],
+                ],
+                "options": Object {
+                  "_defaulted": true,
+                  "optimisticResults": true,
+                  "queryFn": [Function],
+                  "queryHash": "[\\"getSupplierPrices\\",{\\"actualProduct\\":[],\\"brandIndicator\\":[],\\"supplier\\":[]}]",
+                  "queryKey": Array [
+                    "getSupplierPrices",
+                    Object {
+                      "actualProduct": Array [],
+                      "brandIndicator": Array [],
+                      "cityId": undefined,
+                      "supplier": Array [],
+                    },
+                  ],
+                },
+                "previousQueryResult": undefined,
+                "previousSelectError": null,
+                "refetch": [Function],
+                "refetchIntervalId": undefined,
+                "remove": [Function],
+                "staleTimeoutId": undefined,
+                "trackedProps": Array [],
+              },
+            ],
+            "options": Object {
+              "_defaulted": true,
+              "optimisticResults": true,
+              "queryFn": [Function],
+              "queryHash": "[\\"getSupplierPrices\\",{\\"actualProduct\\":[],\\"brandIndicator\\":[],\\"supplier\\":[]}]",
+              "queryKey": Array [
+                "getSupplierPrices",
+                Object {
+                  "actualProduct": Array [],
+                  "brandIndicator": Array [],
+                  "cityId": undefined,
+                  "supplier": Array [],
+                },
+              ],
+            },
+            "promise": Promise {},
+            "queryHash": "[\\"getSupplierPrices\\",{\\"actualProduct\\":[],\\"brandIndicator\\":[],\\"supplier\\":[]}]",
+            "queryKey": Array [
+              "getSupplierPrices",
+              Object {
+                "actualProduct": Array [],
+                "brandIndicator": Array [],
+                "cityId": undefined,
+                "supplier": Array [],
+              },
+            ],
+            "retryer": Retryer {
+              "cancel": [Function],
+              "cancelRetry": [Function],
+              "continue": [Function],
+              "failureCount": 0,
+              "isPaused": false,
+              "isResolved": false,
+              "isTransportCancelable": false,
+              "promise": Promise {},
+            },
+            "revertState": Object {
+              "data": undefined,
+              "dataUpdateCount": 0,
+              "dataUpdatedAt": 0,
+              "error": null,
+              "errorUpdateCount": 0,
+              "errorUpdatedAt": 0,
+              "fetchFailureCount": 0,
+              "fetchMeta": null,
+              "isFetching": false,
+              "isInvalidated": false,
+              "isPaused": false,
+              "status": "idle",
+            },
+            "state": Object {
+              "data": undefined,
+              "dataUpdateCount": 0,
+              "dataUpdatedAt": 0,
+              "error": null,
+              "errorUpdateCount": 0,
+              "errorUpdatedAt": 0,
+              "fetchFailureCount": 0,
+              "fetchMeta": null,
+              "isFetching": true,
+              "isInvalidated": false,
+              "isPaused": false,
+              "status": "loading",
+            },
+          },
+        ],
+        "queriesMap": Object {
+          "[\\"getSupplierPrices\\",{\\"actualProduct\\":[],\\"brandIndicator\\":[],\\"supplier\\":[]}]": Query {
+            "cache": [Circular],
+            "cacheTime": 300000,
+            "defaultOptions": undefined,
+            "gcTimeout": undefined,
+            "initialState": Object {
+              "data": undefined,
+              "dataUpdateCount": 0,
+              "dataUpdatedAt": 0,
+              "error": null,
+              "errorUpdateCount": 0,
+              "errorUpdatedAt": 0,
+              "fetchFailureCount": 0,
+              "fetchMeta": null,
+              "isFetching": false,
+              "isInvalidated": false,
+              "isPaused": false,
+              "status": "idle",
+            },
+            "observers": Array [
+              QueryObserver {
+                "client": [Circular],
+                "currentQuery": [Circular],
+                "currentQueryInitialState": Object {
+                  "data": undefined,
+                  "dataUpdateCount": 0,
+                  "dataUpdatedAt": 0,
+                  "error": null,
+                  "errorUpdateCount": 0,
+                  "errorUpdatedAt": 0,
+                  "fetchFailureCount": 0,
+                  "fetchMeta": null,
+                  "isFetching": false,
+                  "isInvalidated": false,
+                  "isPaused": false,
+                  "status": "idle",
+                },
+                "currentResult": Object {
+                  "data": undefined,
+                  "dataUpdatedAt": 0,
+                  "error": null,
+                  "errorUpdatedAt": 0,
+                  "failureCount": 0,
+                  "isError": false,
+                  "isFetched": false,
+                  "isFetchedAfterMount": false,
+                  "isFetching": true,
+                  "isIdle": false,
+                  "isLoading": true,
+                  "isLoadingError": false,
+                  "isPlaceholderData": false,
+                  "isPreviousData": false,
+                  "isRefetchError": false,
+                  "isStale": true,
+                  "isSuccess": false,
+                  "refetch": [Function],
+                  "remove": [Function],
+                  "status": "loading",
+                },
+                "currentResultOptions": Object {
+                  "_defaulted": true,
+                  "optimisticResults": true,
+                  "queryFn": [Function],
+                  "queryHash": "[\\"getSupplierPrices\\",{\\"actualProduct\\":[],\\"brandIndicator\\":[],\\"supplier\\":[]}]",
+                  "queryKey": Array [
+                    "getSupplierPrices",
+                    Object {
+                      "actualProduct": Array [],
+                      "brandIndicator": Array [],
+                      "cityId": undefined,
+                      "supplier": Array [],
+                    },
+                  ],
+                },
+                "currentResultState": Object {
+                  "data": undefined,
+                  "dataUpdateCount": 0,
+                  "dataUpdatedAt": 0,
+                  "error": null,
+                  "errorUpdateCount": 0,
+                  "errorUpdatedAt": 0,
+                  "fetchFailureCount": 0,
+                  "fetchMeta": null,
+                  "isFetching": true,
+                  "isInvalidated": false,
+                  "isPaused": false,
+                  "status": "loading",
+                },
+                "listeners": Array [
+                  [Function],
+                ],
+                "options": Object {
+                  "_defaulted": true,
+                  "optimisticResults": true,
+                  "queryFn": [Function],
+                  "queryHash": "[\\"getSupplierPrices\\",{\\"actualProduct\\":[],\\"brandIndicator\\":[],\\"supplier\\":[]}]",
+                  "queryKey": Array [
+                    "getSupplierPrices",
+                    Object {
+                      "actualProduct": Array [],
+                      "brandIndicator": Array [],
+                      "cityId": undefined,
+                      "supplier": Array [],
+                    },
+                  ],
+                },
+                "previousQueryResult": undefined,
+                "previousSelectError": null,
+                "refetch": [Function],
+                "refetchIntervalId": undefined,
+                "remove": [Function],
+                "staleTimeoutId": undefined,
+                "trackedProps": Array [],
+              },
+            ],
+            "options": Object {
+              "_defaulted": true,
+              "optimisticResults": true,
+              "queryFn": [Function],
+              "queryHash": "[\\"getSupplierPrices\\",{\\"actualProduct\\":[],\\"brandIndicator\\":[],\\"supplier\\":[]}]",
+              "queryKey": Array [
+                "getSupplierPrices",
+                Object {
+                  "actualProduct": Array [],
+                  "brandIndicator": Array [],
+                  "cityId": undefined,
+                  "supplier": Array [],
+                },
+              ],
+            },
+            "promise": Promise {},
+            "queryHash": "[\\"getSupplierPrices\\",{\\"actualProduct\\":[],\\"brandIndicator\\":[],\\"supplier\\":[]}]",
+            "queryKey": Array [
+              "getSupplierPrices",
+              Object {
+                "actualProduct": Array [],
+                "brandIndicator": Array [],
+                "cityId": undefined,
+                "supplier": Array [],
+              },
+            ],
+            "retryer": Retryer {
+              "cancel": [Function],
+              "cancelRetry": [Function],
+              "continue": [Function],
+              "failureCount": 0,
+              "isPaused": false,
+              "isResolved": false,
+              "isTransportCancelable": false,
+              "promise": Promise {},
+            },
+            "revertState": Object {
+              "data": undefined,
+              "dataUpdateCount": 0,
+              "dataUpdatedAt": 0,
+              "error": null,
+              "errorUpdateCount": 0,
+              "errorUpdatedAt": 0,
+              "fetchFailureCount": 0,
+              "fetchMeta": null,
+              "isFetching": false,
+              "isInvalidated": false,
+              "isPaused": false,
+              "status": "idle",
+            },
+            "state": Object {
+              "data": undefined,
+              "dataUpdateCount": 0,
+              "dataUpdatedAt": 0,
+              "error": null,
+              "errorUpdateCount": 0,
+              "errorUpdatedAt": 0,
+              "fetchFailureCount": 0,
+              "fetchMeta": null,
+              "isFetching": true,
+              "isInvalidated": false,
+              "isPaused": false,
+              "status": "loading",
+            },
+          },
+        },
+      },
+      "queryDefaults": Array [],
+      "unsubscribeFocus": [Function],
+      "unsubscribeOnline": [Function],
+    }
+  }
+>
+   
+  <SupplierRack
+    formik={
+      Object {
+        "error": "",
+        "errors": Object {},
+        "getFieldProps": [MockFunction],
+        "initialError": "",
+        "initialTouched": false,
+        "initialValue": "",
+        "setFieldValue": [MockFunction] {
+          "calls": Array [
+            Array [
+              "supplierPrice",
+              0,
+            ],
+            Array [
+              "manualPriceAmt",
+              0,
+            ],
+            Array [
+              "opisName",
+              "",
+            ],
+          ],
+          "results": Array [
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+          ],
+        },
+        "touched": Object {},
+        "values": Object {
+          "actualProduct": Array [],
+          "addedPriceAmt": 0,
+          "branded": Array [],
+          "city": "",
+          "cityId": "",
+          "discountPriceAmt": 0,
+          "manualPriceAmt": 0,
+          "masterProductName": Object {
+            "label": "",
+            "value": "",
+          },
+          "opisName": "abc",
+          "pricingModel": Object {
+            "label": "",
+            "value": "",
+          },
+          "productNm": "",
+          "productType": Object {
+            "label": "",
+            "value": "",
+          },
+          "state": "",
+          "supplier": Array [],
+          "supplierPrice": 0,
+          "taxExemption": Array [],
+        },
+      }
+    }
+    isDisabled={false}
+    setSupplierPrice={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            null,
+          ],
+        ],
+        "results": Array [
+          Object {
+            "type": "return",
+            "value": undefined,
+          },
+        ],
+      }
+    }
+  >
+    <h4
+      className="checkbox-heading price-heading"
+    >
+       
+      addProductFormLabels.supplierrackheading
+       
+    </h4>
+    <Button
+      className="supplier-modal-btn"
+      disabled={true}
+      endIcon={
+        <CloseIcon
+          className="info_panel_close_icon"
+          color="var(--White)"
+        />
+      }
+      onClick={[Function]}
+      variant="outlined"
+    >
+      <WithStyles(ForwardRef(Button))
+        className="supplier-modal-btn"
+        color="default"
+        disabled={true}
+        endIcon={
+          <CloseIcon
+            className="info_panel_close_icon"
+            color="var(--White)"
+          />
+        }
+        onClick={[Function]}
+        variant="outlined"
+      >
+        <ForwardRef(Button)
+          className="supplier-modal-btn"
+          classes={
+            Object {
+              "colorInherit": "MuiButton-colorInherit",
+              "contained": "MuiButton-contained",
+              "containedPrimary": "MuiButton-containedPrimary",
+              "containedSecondary": "MuiButton-containedSecondary",
+              "containedSizeLarge": "MuiButton-containedSizeLarge",
+              "containedSizeSmall": "MuiButton-containedSizeSmall",
+              "disableElevation": "MuiButton-disableElevation",
+              "disabled": "Mui-disabled",
+              "endIcon": "MuiButton-endIcon",
+              "focusVisible": "Mui-focusVisible",
+              "fullWidth": "MuiButton-fullWidth",
+              "iconSizeLarge": "MuiButton-iconSizeLarge",
+              "iconSizeMedium": "MuiButton-iconSizeMedium",
+              "iconSizeSmall": "MuiButton-iconSizeSmall",
+              "label": "MuiButton-label",
+              "outlined": "MuiButton-outlined",
+              "outlinedPrimary": "MuiButton-outlinedPrimary",
+              "outlinedSecondary": "MuiButton-outlinedSecondary",
+              "outlinedSizeLarge": "MuiButton-outlinedSizeLarge",
+              "outlinedSizeSmall": "MuiButton-outlinedSizeSmall",
+              "root": "MuiButton-root",
+              "sizeLarge": "MuiButton-sizeLarge",
+              "sizeSmall": "MuiButton-sizeSmall",
+              "startIcon": "MuiButton-startIcon",
+              "text": "MuiButton-text",
+              "textPrimary": "MuiButton-textPrimary",
+              "textSecondary": "MuiButton-textSecondary",
+              "textSizeLarge": "MuiButton-textSizeLarge",
+              "textSizeSmall": "MuiButton-textSizeSmall",
+            }
+          }
+          color="default"
+          disabled={true}
+          endIcon={
+            <CloseIcon
+              className="info_panel_close_icon"
+              color="var(--White)"
+            />
+          }
+          onClick={[Function]}
+          variant="outlined"
+        >
+          <WithStyles(ForwardRef(ButtonBase))
+            className="MuiButton-root MuiButton-outlined supplier-modal-btn Mui-disabled"
+            component="button"
+            disabled={true}
+            focusRipple={true}
+            focusVisibleClassName="Mui-focusVisible"
+            onClick={[Function]}
+            type="button"
+          >
+            <ForwardRef(ButtonBase)
+              className="MuiButton-root MuiButton-outlined supplier-modal-btn Mui-disabled"
+              classes={
+                Object {
+                  "disabled": "Mui-disabled",
+                  "focusVisible": "Mui-focusVisible",
+                  "root": "MuiButtonBase-root",
+                }
+              }
+              component="button"
+              disabled={true}
+              focusRipple={true}
+              focusVisibleClassName="Mui-focusVisible"
+              onClick={[Function]}
+              type="button"
+            >
+              <button
+                className="MuiButtonBase-root MuiButton-root MuiButton-outlined supplier-modal-btn Mui-disabled Mui-disabled"
+                disabled={true}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onDragLeave={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex={-1}
+                type="button"
+              >
+                <span
+                  className="MuiButton-label"
+                >
+                  Supplier price $0
+                  <span
+                    className="MuiButton-endIcon MuiButton-iconSizeMedium"
+                  >
+                    <CloseIcon
+                      className="info_panel_close_icon"
+                      color="var(--White)"
+                      key="dummyKey1"
+                    >
+                      <svg
+                        className="info_panel_close_icon"
+                        color="var(--White)"
+                        height="1em"
+                        viewBox="0 0 20 20"
+                        width="1em"
+                      >
+                        <g
+                          data-name="Group 1862"
+                        >
+                          <path
+                            d="M17 1l1.414 1.414-7.293 7.293L18.414 17 17 18.414l-7.293-7.293-7.293 7.293L1 17l7.293-7.293L1 2.414 2.414 1l7.293 7.293z"
+                            fill="currentColor"
+                          />
+                          <path
+                            d="M0 0h20v20H0z"
+                            data-name="Rectangle 2250"
+                            fill="none"
+                          />
+                        </g>
+                      </svg>
+                    </CloseIcon>
+                  </span>
+                </span>
+              </button>
+            </ForwardRef(ButtonBase)>
+          </WithStyles(ForwardRef(ButtonBase))>
+        </ForwardRef(Button)>
+      </WithStyles(ForwardRef(Button))>
+    </Button>
+    <ForwardRef(Dialog)
+      aria-labelledby="supplier-rack-dialog"
+      className="supplierRack"
+      disableEscapeKeyDown={true}
+      onClose={[Function]}
+      open={false}
+    >
+      <MuiDialogRoot
+        BackdropComponent={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "__emotion_base": Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "propTypes": Object {
+                "children": [Function],
+                "className": [Function],
+                "classes": [Function],
+                "components": [Function],
+                "componentsProps": [Function],
+                "invisible": [Function],
+                "open": [Function],
+                "sx": [Function],
+                "transitionDuration": [Function],
+              },
+              "render": [Function],
+            },
+            "__emotion_forwardProp": [Function],
+            "__emotion_real": [Circular],
+            "__emotion_styles": Array [
+              "label:MuiDialog-backdrop;",
+              Object {
+                "zIndex": -1,
+              },
+              [Function],
+            ],
+            "defaultProps": undefined,
+            "render": [Function],
+            "withComponent": [Function],
+          }
+        }
+        BackdropProps={
+          Object {
+            "as": undefined,
+            "transitionDuration": Object {
+              "enter": 225,
+              "exit": 195,
+            },
+          }
+        }
+        className="MuiDialog-root supplierRack"
+        closeAfterTransition={true}
+        disableEscapeKeyDown={true}
+        onClick={[Function]}
+        onClose={[Function]}
+        open={false}
+        ownerState={
+          Object {
+            "aria-labelledby": "supplier-rack-dialog",
+            "children": <div
+              className="supplierRack-dialog-container"
+            >
+              <ForwardRef(Grid)
+                container={true}
+              >
+                <ForwardRef(Grid)
+                  item={true}
+                  md={10}
+                  xs={10}
+                >
+                  <ForwardRef(Typography)
+                    className="fw-bold"
+                    color="var(--Darkgray)"
+                    component="h2"
+                    id="supplier-rack-dialog-title"
+                    pl={4.5}
+                    pt={2.5}
+                    variant="h2"
+                  >
+                    addProductFormLabels.supplierpriceheading
+                  </ForwardRef(Typography)>
+                </ForwardRef(Grid)>
+                <ForwardRef(Grid)
+                  item={true}
+                  md={2}
+                  textAlign="right"
+                  xs={2}
+                >
+                  <ForwardRef(IconButton)
+                    edge="start"
+                    onClick={[Function]}
+                  >
+                    <CloseIcon
+                      className="info_panel_close_icon"
+                    />
+                  </ForwardRef(IconButton)>
+                </ForwardRef(Grid)>
+              </ForwardRef(Grid)>
+              <ForwardRef(DialogContent)
+                className="supplierRack-content"
+              >
+                <ForwardRef(Grid)
+                  container={true}
+                >
+                  <ForwardRef(Grid)
+                    item={true}
+                    md={12}
+                    pb={5}
+                    xs={12}
+                  >
+                    <GridComponent
+                      enableRowAction={false}
+                      enableRowSelection={true}
+                      getPages={[Function]}
+                      handleSelect={[Function]}
+                      header={
+                        Array [
+                          Object {
+                            "field": "productIndicator",
+                            "label": "PRODUCT INDICATOR",
+                            "type": "text",
+                          },
+                          Object {
+                            "field": "productType",
+                            "label": "PRODUCT TYPE",
+                            "type": "text",
+                          },
+                          Object {
+                            "field": "priceDate",
+                            "label": "DATE DAILY",
+                            "type": "text",
+                          },
+                          Object {
+                            "field": "cityId",
+                            "label": "CITY ID",
+                            "type": "text",
+                          },
+                          Object {
+                            "field": "state",
+                            "label": "STATE",
+                            "type": "text",
+                          },
+                          Object {
+                            "field": "city",
+                            "label": "CITY",
+                            "type": "text",
+                          },
+                          Object {
+                            "field": "supplier",
+                            "label": "SUPPLIER",
+                            "type": "text",
+                          },
+                          Object {
+                            "field": "brandIndicator",
+                            "label": "BRAND",
+                            "type": "text",
+                          },
+                          Object {
+                            "field": "terms",
+                            "label": "TERM",
+                            "type": "text",
+                          },
+                          Object {
+                            "field": "grossPrice",
+                            "label": "NET PRICE",
+                            "type": "text",
+                          },
+                          Object {
+                            "field": "uniqueMarker",
+                            "label": "UNIQUE MARKER",
+                            "type": "text",
+                          },
+                          Object {
+                            "field": "octaneValue",
+                            "label": "OCTANE LEVEL",
+                            "type": "text",
+                          },
+                          Object {
+                            "field": "actualProduct",
+                            "label": "ACTUAL PRODUCT",
+                            "type": "text",
+                          },
+                          Object {
+                            "field": "rvp",
+                            "label": "RVP",
+                            "type": "text",
+                          },
+                          Object {
+                            "field": "dieselBlend",
+                            "label": "DIESEL BLEND",
+                            "type": "text",
+                          },
+                          Object {
+                            "field": "bioType",
+                            "label": "BIO TYPE",
+                            "type": "text",
+                          },
+                          Object {
+                            "field": "lastUpdatedDate",
+                            "label": "LAST UPDATED DATE",
+                            "type": "text",
+                          },
+                        ]
+                      }
+                      isLoading={false}
+                      noDataMsg="addProductFormLabels.supplierpricenodatamsg"
+                      primaryKey="productKey"
+                      rowActionOptions={Array []}
+                      rows={Array []}
+                      searchTerm=""
+                      singleRowSelection={true}
+                    />
+                  </ForwardRef(Grid)>
+                </ForwardRef(Grid)>
+              </ForwardRef(DialogContent)>
+              <ForwardRef(DialogActions)
+                className="supplierRack-dialog-actions"
+              >
+                <Button
+                  aria-label="cancel"
+                  className="mr-4"
+                  onClick={[Function]}
+                  types="cancel"
+                >
+                  Cancel
+                </Button>
+                <Button
+                  aria-label="primary"
+                  className="mr-4 supplierRackBtn"
+                  disabled={true}
+                  onClick={[Function]}
+                  types="primary"
+                >
+                  Done
+                </Button>
+              </ForwardRef(DialogActions)>
+            </div>,
+            "className": "supplierRack",
+            "disableEscapeKeyDown": true,
+            "fullScreen": false,
+            "fullWidth": false,
+            "maxWidth": "sm",
+            "onClose": [Function],
+            "open": false,
+            "scroll": "paper",
+          }
+        }
+      >
+        <ForwardRef(Modal)
+          BackdropComponent={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "__emotion_base": Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "propTypes": Object {
+                  "children": [Function],
+                  "className": [Function],
+                  "classes": [Function],
+                  "components": [Function],
+                  "componentsProps": [Function],
+                  "invisible": [Function],
+                  "open": [Function],
+                  "sx": [Function],
+                  "transitionDuration": [Function],
+                },
+                "render": [Function],
+              },
+              "__emotion_forwardProp": [Function],
+              "__emotion_real": [Circular],
+              "__emotion_styles": Array [
+                "label:MuiDialog-backdrop;",
+                Object {
+                  "zIndex": -1,
+                },
+                [Function],
+              ],
+              "defaultProps": undefined,
+              "render": [Function],
+              "withComponent": [Function],
+            }
+          }
+          BackdropProps={
+            Object {
+              "as": undefined,
+              "transitionDuration": Object {
+                "enter": 225,
+                "exit": 195,
+              },
+            }
+          }
+          className="MuiDialog-root supplierRack css-1h8td7x-MuiDialog-root"
+          closeAfterTransition={true}
+          disableEscapeKeyDown={true}
+          onClick={[Function]}
+          onClose={[Function]}
+          open={false}
+        >
+          <ForwardRef(ModalUnstyled)
+            BackdropComponent={
+              Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "__emotion_base": Object {
+                  "$$typeof": Symbol(react.forward_ref),
+                  "propTypes": Object {
+                    "children": [Function],
+                    "className": [Function],
+                    "classes": [Function],
+                    "components": [Function],
+                    "componentsProps": [Function],
+                    "invisible": [Function],
+                    "open": [Function],
+                    "sx": [Function],
+                    "transitionDuration": [Function],
+                  },
+                  "render": [Function],
+                },
+                "__emotion_forwardProp": [Function],
+                "__emotion_real": [Circular],
+                "__emotion_styles": Array [
+                  "label:MuiDialog-backdrop;",
+                  Object {
+                    "zIndex": -1,
+                  },
+                  [Function],
+                ],
+                "defaultProps": undefined,
+                "render": [Function],
+                "withComponent": [Function],
+              }
+            }
+            BackdropProps={
+              Object {
+                "as": undefined,
+                "transitionDuration": Object {
+                  "enter": 225,
+                  "exit": 195,
+                },
+              }
+            }
+            className="MuiDialog-root supplierRack css-1h8td7x-MuiDialog-root"
+            closeAfterTransition={true}
+            components={
+              Object {
+                "Root": Object {
+                  "$$typeof": Symbol(react.forward_ref),
+                  "__emotion_base": "div",
+                  "__emotion_forwardProp": [Function],
+                  "__emotion_real": [Circular],
+                  "__emotion_styles": Array [
+                    "label:MuiModal-root;",
+                    [Function],
+                    [Function],
+                    [Function],
+                    [Function],
+                  ],
+                  "defaultProps": undefined,
+                  "render": [Function],
+                  "withComponent": [Function],
+                },
+              }
+            }
+            componentsProps={
+              Object {
+                "root": Object {
+                  "ownerState": Object {},
+                },
+              }
+            }
+            disableAutoFocus={false}
+            disableEnforceFocus={false}
+            disableEscapeKeyDown={true}
+            disablePortal={false}
+            disableRestoreFocus={false}
+            disableScrollLock={false}
+            hideBackdrop={false}
+            keepMounted={false}
+            onClick={[Function]}
+            onClose={[Function]}
+            onTransitionEnter={[Function]}
+            onTransitionExited={[Function]}
+            open={false}
+          />
+        </ForwardRef(Modal)>
+      </MuiDialogRoot>
+    </ForwardRef(Dialog)>
+  </SupplierRack>
+   
+</QueryClientProvider>
+`;
