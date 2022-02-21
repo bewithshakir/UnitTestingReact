@@ -51,8 +51,7 @@ describe('edit Asset screen render', () => {
         it('load data in form', async () => {
             const result = renderWithClient(<AddAsset version="Breadcrumbs-Single" />);
             await waitFor(async () => {
-                const { assetTypeElem, assetStatusElem } = getAllElements(result);
-                result.debug(assetStatusElem);
+                const { assetTypeElem } = getAllElements(result);
                 expect(assetTypeElem).toHaveValue('Asset One');
                 expect(result.getByText(/Enabled/i)).toBeInTheDocument();
             });
