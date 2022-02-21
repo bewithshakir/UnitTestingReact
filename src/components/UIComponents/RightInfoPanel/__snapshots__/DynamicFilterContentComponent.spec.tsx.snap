@@ -206,7 +206,7 @@ exports[`Rendering of Dynamic filter component Dynamic filter component snapshot
           null,
         ],
         "multiselect": Array [],
-        "paymentType": Array [],
+        "paymentType111": Array [],
         "radiotest": null,
         "state": Array [],
       },
@@ -241,7 +241,7 @@ exports[`Rendering of Dynamic filter component Dynamic filter component snapshot
           null,
         ],
         "multiselect": Array [],
-        "paymentType": Array [],
+        "paymentType111": Array [],
         "radiotest": null,
         "state": Array [],
       },
@@ -348,7 +348,7 @@ exports[`Rendering of Dynamic filter component Dynamic filter component snapshot
                   null,
                 ],
                 "multiselect": Array [],
-                "paymentType": Array [],
+                "paymentType111": Array [],
                 "radiotest": null,
                 "state": Array [],
               },
@@ -383,7 +383,7 @@ exports[`Rendering of Dynamic filter component Dynamic filter component snapshot
                   null,
                 ],
                 "multiselect": Array [],
-                "paymentType": Array [],
+                "paymentType111": Array [],
                 "radiotest": null,
                 "state": Array [],
               },
@@ -432,7 +432,7 @@ exports[`Rendering of Dynamic filter component Dynamic filter component snapshot
                   null,
                 ],
                 "multiselect": Array [],
-                "paymentType": Array [],
+                "paymentType111": Array [],
                 "radiotest": null,
                 "state": Array [],
               },
@@ -467,7 +467,7 @@ exports[`Rendering of Dynamic filter component Dynamic filter component snapshot
                   null,
                 ],
                 "multiselect": Array [],
-                "paymentType": Array [],
+                "paymentType111": Array [],
                 "radiotest": null,
                 "state": Array [],
               },
@@ -478,86 +478,35 @@ exports[`Rendering of Dynamic filter component Dynamic filter component snapshot
       </ForwardRef(Grid)>
       <ForwardRef(Grid)
         item={true}
-        key="paymentType"
+        key="paymentType111"
         mb={2}
         ml={6}
         mr={6}
         mt={2}
       >
-        <SelectInput
-          field={
-            Object {
-              "fieldType": "select",
-              "initialValue": Array [],
-              "label": "customer-filter-panel.settlement type",
-              "name": "paymentType",
-              "optionAPIResponseKey": "settlementType",
-              "optionUrlKey": "customerFilter",
-            }
-          }
-          formik={
-            Object {
-              "dirty": false,
-              "errors": Object {},
-              "getFieldHelpers": [Function],
-              "getFieldMeta": [Function],
-              "getFieldProps": [Function],
-              "handleBlur": [Function],
-              "handleChange": [Function],
-              "handleReset": [Function],
-              "handleSubmit": [Function],
-              "initialErrors": Object {},
-              "initialStatus": undefined,
-              "initialTouched": Object {},
-              "initialValues": Object {
-                "city": Array [],
-                "date": Array [
-                  null,
-                  null,
-                ],
-                "multiselect": Array [],
-                "paymentType": Array [],
-                "radiotest": null,
-                "state": Array [],
+        <MultiSelect
+          error={false}
+          id="paymentType111"
+          items={
+            Array [
+              Object {
+                "label": "paymentType111",
+                "value": "paymentType111",
               },
-              "isSubmitting": false,
-              "isValid": true,
-              "isValidating": false,
-              "registerField": [Function],
-              "resetForm": [Function],
-              "setErrors": [Function],
-              "setFieldError": [Function],
-              "setFieldTouched": [Function],
-              "setFieldValue": [Function],
-              "setFormikState": [Function],
-              "setStatus": [Function],
-              "setSubmitting": [Function],
-              "setTouched": [Function],
-              "setValues": [Function],
-              "status": undefined,
-              "submitCount": 0,
-              "submitForm": [Function],
-              "touched": Object {},
-              "unregisterField": [Function],
-              "validateField": [Function],
-              "validateForm": [Function],
-              "validateOnBlur": true,
-              "validateOnChange": true,
-              "validateOnMount": false,
-              "values": Object {
-                "city": Array [],
-                "date": Array [
-                  null,
-                  null,
-                ],
-                "multiselect": Array [],
-                "paymentType": Array [],
-                "radiotest": null,
-                "state": Array [],
+              Object {
+                "label": "paymentType222",
+                "value": "paymentType222",
               },
-            }
+            ]
           }
-          handleSelect={[Function]}
+          label="customer-filter-panel.settlement type"
+          loadingMessage="Loading..."
+          name="paymentType111"
+          noOptionsMessage="No Options found"
+          onChange={[Function]}
+          placeholder=""
+          required={false}
+          value={Array []}
         />
       </ForwardRef(Grid)>
       <ForwardRef(Grid)
