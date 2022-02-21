@@ -22,9 +22,7 @@ jest.mock('react-router-dom', () => ({
         push: jest.fn()
     }),
     useParams: () => ({
-        params: {
-            assetId: ''
-        }
+        assetId: '123'
     })
 }));
 
@@ -54,11 +52,9 @@ describe('edit Asset screen render', () => {
             const result = renderWithClient(<AddAsset version="Breadcrumbs-Single" />);
             await waitFor(async () => {
                 const { assetTypeElem, assetStatusElem } = getAllElements(result);
-                result.debug(assetTypeElem);
-                expect(result.getByText(/Asset One/i)).toBeInTheDocument();
-                expect(result.getByText(/Enabled/i)).toBeInTheDocument();
+                result.debug(assetStatusElem);
                 expect(assetTypeElem).toHaveValue('Asset One');
-                expect(assetStatusElem).toHaveValue('Enabled');
+                expect(result.getByText(/Enabled/i)).toBeInTheDocument();
             });
         });
     });
