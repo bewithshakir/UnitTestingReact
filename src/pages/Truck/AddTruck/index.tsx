@@ -100,7 +100,7 @@ const AddTruck: React.FC<AddCustomerProps> = () => {
                 "deliveryVehicleNm": form.truckName,
                 "makeAndModelNm": form.makeModel,
                 "vinNo": form.vin,
-                "registrationYr": form.year,
+                "registrationYr": form.year === ""?0:parseInt(form.year),
                 "registrationStateNm": 'us',
                 "licenceNo": form.license,
                 "productCd": form.opexFuelType.value,
