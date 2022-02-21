@@ -1,7 +1,12 @@
-import { cleanup, waitFor } from "@testing-library/react";
+import { act, cleanup, waitFor, render } from "@testing-library/react";
 import routeDataDom from 'react-router-dom';
 import { renderWithClient } from '../../../tests/utils';
 import AddAsset from "./index";
+import { serverMsw } from '../../../setupTests';
+import { rest } from 'msw';
+import selectEvent from 'react-select-event';
+import userEvent from '@testing-library/user-event';
+import DiscardChangesDialog from '../../../components/UIComponents/ConfirmationDialog/DiscardChangesDialog.component';
 
 
 const mockedNavigate = jest.fn();
@@ -58,63 +63,59 @@ describe('edit Asset screen render', () => {
         });
     });
 
-    // describe('load toaster on edit mode', () => {
-    //     it('show toaster with failure message on submit form', async () => {
-    //         serverMsw.use(
-    //             rest.put('*', (req, res, ctx) => {
-    //                 return res(
-    //                     ctx.status(500),
-    //                     ctx.json({
-    //                         data: null,
-    //                         error: {
-    //                             message: 'fail edit mode'
-    //                         }
-    //                     })
-    //                 );
-    //             })
-    //         );
-    //         const result = renderWithClient(<AddAsset version="Breadcrumbs-Single" />);
-    //         await act(async () => {
-    //             const { productNameElem, productTypeElem, productColorElem, productStatusElem, productPricingElem, saveBtn } = getAllElements(result);
+    describe('load toaster on edit mode', () => {
+        it('show toaster with failure message on submit form', async () => {
+            serverMsw.use(
+                rest.put('*', (req, res, ctx) => {
+                    return res(
+                        ctx.status(500),
+                        ctx.json({
+                            data: null,
+                            error: {
+                                message: 'fail edit mode'
+                            }
+                        })
+                    );
+                })
+            );
+            const result = renderWithClient(<AddAsset version="Breadcrumbs-Single" />);
+            await act(async () => {
+                const { assetTypeElem, assetStatusElem, saveBtn } = getAllElements(result);
 
-    //             userEvent.type(productNameElem, 'test edit Diesel');
-    //             await selectEvent.select(productTypeElem, ["test edit Non-Fuel"]);
-    //             await selectEvent.select(productColorElem, ["test edit color Purple"]);
-    //             await selectEvent.select(productStatusElem, ["Enabled"]);
-    //             userEvent.type(productPricingElem, '3');
-    //             saveBtn.removeAttribute('disabled');
-    //             userEvent.click(saveBtn);
-    //         });
+                userEvent.type(assetTypeElem, 'Asset Two');
+                await selectEvent.select(assetStatusElem, ["Enabled"]);
+                saveBtn.removeAttribute('disabled');
+                userEvent.click(saveBtn);
+            });
 
-    //         await waitFor(() => {
-    //             // result.debug(result.getByTestId('toaster-message'));
-    //             expect(result.getByText(/fail edit mode/i)).toBeInTheDocument();
-    //         });
-    //     });
-    // });
+            await waitFor(() => {
+                expect(result.getByText(/fail edit mode/i)).toBeInTheDocument();
+            });
+        });
+    });
 
-    // describe('show dialogue of discard', () => {
+    describe('show dialogue of discard', () => {
 
-    //     it('show dialogue box on back if form updated', async () => {
-    //         const result = renderWithClient(<AddAsset version="Breadcrumbs-Single" />);
-    //         const { productNameElem, cancelBtn } = getAllElements(result);
-    //         userEvent.type(productNameElem, 'John');
-    //         userEvent.click(cancelBtn);
-    //         let open = false;
-    //         await waitFor(() => {
-    //             open = true;
-    //         });
+        it('show dialogue box on back if form updated', async () => {
+            const result = renderWithClient(<AddAsset version="Breadcrumbs-Single" />);
+            const { assetTypeElem, cancelBtn } = getAllElements(result);
+            userEvent.type(assetTypeElem, 'Asset Two');
+            userEvent.click(cancelBtn);
+            let open = false;
+            await waitFor(() => {
+                open = true;
+            });
 
-    //         const propsPopup = {
-    //             title: 'Test Dialog',
-    //             content: '',
-    //             open: open,
-    //             handleToggle: jest.fn(),
-    //             handleConfirm: jest.fn()
-    //         };
-    //         const dialogue = render(<DiscardChangesDialog {...propsPopup} />);
-    //         expect(await dialogue.findByText(/Test Dialog/i)).toBeInTheDocument();
+            const propsPopup = {
+                title: 'Test Dialog',
+                content: '',
+                open: open,
+                handleToggle: jest.fn(),
+                handleConfirm: jest.fn()
+            };
+            const dialogue = render(<DiscardChangesDialog {...propsPopup} />);
+            expect(await dialogue.findByText(/Test Dialog/i)).toBeInTheDocument();
 
-    //     });
-    // });
+        });
+    });
 });

@@ -40,3 +40,19 @@ export const getAssetDeatilsHandler = () => {
         );
     });
 };
+
+
+export const editAssetHandler = () => {
+    return rest.put('*/api/product-service/assets/*', (req, res, ctx) => {
+        return res(
+            ctx.status(200),
+            ctx.json({
+                data: {
+                    "assetNm": "Asset One",
+                    "activeInactiveInd": "Y",
+                    "countryCode": "us",
+                }
+            })
+        );
+    });
+};
