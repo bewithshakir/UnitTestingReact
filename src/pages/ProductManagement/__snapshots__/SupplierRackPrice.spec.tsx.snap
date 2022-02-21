@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Rendering of opis rack segment should render snapshot for opis rack segment 1`] = `
+exports[`Rendering of supplier rack price should render snapshot for supplier rack price 1`] = `
 <QueryClientProvider
   client={
     QueryClient {
@@ -391,6 +391,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
     formik={
       Object {
         "error": "",
+        "errors": Object {},
         "getFieldProps": [MockFunction],
         "initialError": "",
         "initialTouched": false,
@@ -425,7 +426,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
             },
           ],
         },
-        "touched": false,
+        "touched": Object {},
         "values": Object {
           "actualProduct": Array [],
           "addedPriceAmt": 0,
@@ -438,7 +439,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
             "label": "",
             "value": "",
           },
-          "opisName": "",
+          "opisName": "abc",
           "pricingModel": Object {
             "label": "",
             "value": "",
@@ -456,7 +457,6 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
       }
     }
     isDisabled={false}
-    resetSupplierValue={1}
     setSupplierPrice={
       [MockFunction] {
         "calls": Array [
@@ -483,6 +483,12 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
     <Button
       className="supplier-modal-btn"
       disabled={true}
+      endIcon={
+        <CloseIcon
+          className="info_panel_close_icon"
+          color="var(--White)"
+        />
+      }
       onClick={[Function]}
       variant="outlined"
     >
@@ -490,6 +496,12 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
         className="supplier-modal-btn"
         color="default"
         disabled={true}
+        endIcon={
+          <CloseIcon
+            className="info_panel_close_icon"
+            color="var(--White)"
+          />
+        }
         onClick={[Function]}
         variant="outlined"
       >
@@ -530,6 +542,12 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
           }
           color="default"
           disabled={true}
+          endIcon={
+            <CloseIcon
+              className="info_panel_close_icon"
+              color="var(--White)"
+            />
+          }
           onClick={[Function]}
           variant="outlined"
         >
@@ -579,7 +597,38 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                 <span
                   className="MuiButton-label"
                 >
-                  Choose the supplier price
+                  Supplier price $0
+                  <span
+                    className="MuiButton-endIcon MuiButton-iconSizeMedium"
+                  >
+                    <CloseIcon
+                      className="info_panel_close_icon"
+                      color="var(--White)"
+                      key="dummyKey1"
+                    >
+                      <svg
+                        className="info_panel_close_icon"
+                        color="var(--White)"
+                        height="1em"
+                        viewBox="0 0 20 20"
+                        width="1em"
+                      >
+                        <g
+                          data-name="Group 1862"
+                        >
+                          <path
+                            d="M17 1l1.414 1.414-7.293 7.293L18.414 17 17 18.414l-7.293-7.293-7.293 7.293L1 17l7.293-7.293L1 2.414 2.414 1l7.293 7.293z"
+                            fill="currentColor"
+                          />
+                          <path
+                            d="M0 0h20v20H0z"
+                            data-name="Rectangle 2250"
+                            fill="none"
+                          />
+                        </g>
+                      </svg>
+                    </CloseIcon>
+                  </span>
                 </span>
               </button>
             </ForwardRef(ButtonBase)>
