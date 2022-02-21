@@ -19,13 +19,19 @@ describe('useGetAssetDetails for useMutation', () => {
 
     it('fail to get data using useGetAssetDetails', async () => {
         serverMsw.use(
-            rest.get('*', (req, res, ctx) => res(ctx.status(400)))
+            rest.get('*', (req, res, ctx) => {
+                return res(ctx.status(500));
+            })
         );
-        const { result, waitFor } = renderHook(() => useGetAssetDetails("123", jest.fn(), jest.fn()), {
+
+        const { result, waitFor } = renderHook(() => useGetAssetDetails("", jest.fn(), jest.fn()), {
             wrapper: createWrapper()
         });
 
-        await waitFor(() => result.current.isError);
+        await waitFor(() => {
+            return result.current.isError;
+        });
+
         expect(result.current.error).toBeDefined();
     });
 });
