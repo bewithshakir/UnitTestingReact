@@ -24,9 +24,7 @@ jest.mock('react-router-dom', () => ({
         push: jest.fn()
     }),
     useParams: () => ({
-        params: {
-            productId: ''
-        }
+        productId: '00aad1db-d5a4-45c7-9428-ab08c8d9f6b4'
     })
 }));
 
@@ -110,7 +108,10 @@ describe('AddProduct component', () => {
                         ctx.json({
                             data: null,
                             error: {
-                                details: ['fail add product']
+                                businessCode: 102,
+                                details: ['fail add product'],
+                                httpCode: 500,
+                                message: "fail add product"
                             }
                         })
                     );
@@ -128,6 +129,8 @@ describe('AddProduct component', () => {
                 saveBtn.removeAttribute('disabled');
                 userEvent.click(saveBtn);
             });
+
+            result.debug(await result.findAllByTestId('toaster-message'));
 
             await waitFor(() => {
                 // result.debug(result.getByTestId('toaster-message'))
