@@ -187,8 +187,8 @@ const AddAsset: React.FC<PropsInt> = () => {
                         {t("assetManagement.form.title")} *
                     </Typography>
                     <Grid container mt={2}>
-                        <Grid item xs={12} md={7} pr={2.5}>
-                            <Grid item xs={12} md={6} pb={2.5}>
+                        <Grid item xs={12} md={4} pr={2.5}>
+                            <Grid item pb={2.5}>
                                 <Input
                                     id='assetType'
                                     label={t("assetManagement.form.assetType")}
@@ -202,7 +202,7 @@ const AddAsset: React.FC<PropsInt> = () => {
                                 />
                             </Grid>
 
-                            <Grid item xs={12} md={6} pb={2.5} data-testid="test">
+                            <Grid item pb={2.5} data-testid="test">
                                 <Select
                                     id='assetStatus'
                                     name='assetStatus'
@@ -218,7 +218,7 @@ const AddAsset: React.FC<PropsInt> = () => {
                                 />
                             </Grid>
 
-                            <Grid item xs={12} md={6} mt={4}>
+                            <Grid item mt={4}>
                                 <Box className="form-action-section">
                                     <Button
                                         id="cancelBtn"
