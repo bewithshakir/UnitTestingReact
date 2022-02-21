@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Box, Container, Grid, Typography } from '@mui/material';
+import { Box, Grid, Typography } from '@mui/material';
 import { useFormik } from 'formik';
 import { useTranslation } from 'react-i18next';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -42,8 +42,6 @@ const AddAsset: React.FC<PropsInt> = () => {
     useEffect(() => {
         setVersion("Breadcrumbs-Single");
     }, []);
-
-
 
     // GET Asset Detail Start --------------
     const populateDataInAllFields = (responseData: any) => {
@@ -94,7 +92,7 @@ const AddAsset: React.FC<PropsInt> = () => {
     const onErrorAddAsset = (err: any) => {
         const { data } = err.response;
         formik.resetForm({ values: formik.values });
-        setFormStatus({ message: data?.error?.details[0] || t("formStatusProps.error.message"), type: 'Error' });
+        setFormStatus({ message: data?.error?.message || t("formStatusProps.error.message"), type: 'Error' });
     };
 
     const { mutate: addNewAsset, isSuccess: isSuccessAddAsset, isError: isErrorAddAsset, isLoading: isLoadingAddAsset } = useAddAsset(onSuccessAddAsset, onErrorAddAsset);
@@ -102,6 +100,7 @@ const AddAsset: React.FC<PropsInt> = () => {
     const createAssetData = (form: AssetManagementModel) => {
         try {
             addNewAsset(form);
+
         } catch (error) {
             setFormStatus({ message: t("formStatusProps.error.message"), type: 'Error' });
         }
@@ -181,84 +180,80 @@ const AddAsset: React.FC<PropsInt> = () => {
     };
 
     return (
-        <Box display="flex" className="global_main_wrapper">
-            <Grid item md={7} xs={7}>
-                <Container maxWidth="lg" className="page-container">
-                    <form onSubmit={formik.handleSubmit} id="form">
-                        <Typography color="var(--Darkgray)" variant="h3" gutterBottom className="fw-bold" mb={1} pt={3}>
-                            {t("assetManagement.form.title")} *
-                        </Typography>
-                        <Grid container mt={2}>
-                            <Grid item xs={12} md={12} pr={2.5} pb={2.5}>
-                                <Grid item xs={12} md={6}>
-                                    <Input
-                                        id='assetType'
-                                        label={t("assetManagement.form.assetType")}
-                                        type='text'
-                                        helperText={(formik.touched.assetType && formik.errors.assetType) ? formik.errors.assetType : undefined}
-                                        error={(formik.touched.assetType && formik.errors.assetType) ? true : false}
-                                        description=''
-                                        placeholder='Enter Asset Type'
-                                        {...formik.getFieldProps('assetType')}
-                                        required
-                                    />
-                                </Grid>
+        <Box mt={10} ml={8}>
+            <Grid pl={8} pr={8} className="main-area">
+                <form onSubmit={formik.handleSubmit} id="form">
+                    <Typography color="var(--Darkgray)" variant="h3" gutterBottom className="fw-bold" mb={1} pt={3}>
+                        {t("assetManagement.form.title")} *
+                    </Typography>
+                    <Grid container mt={2}>
+                        <Grid item xs={12} md={7} pr={2.5}>
+                            <Grid item xs={12} md={6} pb={2.5}>
+                                <Input
+                                    id='assetType'
+                                    label={t("assetManagement.form.assetType")}
+                                    type='text'
+                                    helperText={(formik.touched.assetType && formik.errors.assetType) ? formik.errors.assetType : undefined}
+                                    error={(formik.touched.assetType && formik.errors.assetType) ? true : false}
+                                    description=''
+                                    placeholder='Enter Asset Type'
+                                    {...formik.getFieldProps('assetType')}
+                                    required
+                                />
                             </Grid>
-                            <Grid item xs={12} md={12} pr={2.5} pb={2.5}>
-                                <Grid item xs={12} md={6} data-testid="test">
-                                    <Select
-                                        id='assetStatus'
-                                        name='assetStatus'
-                                        label={t("assetManagement.form.assetStatus")}
-                                        placeholder='Choose'
-                                        value={formik.values.assetStatus}
-                                        items={assetStatusList}
-                                        helperText={(formik.touched.assetStatus && formik.errors.assetStatus) ? formik.errors.assetStatus.value : undefined}
-                                        error={(formik.touched.assetStatus && formik.errors.assetStatus) ? true : false}
-                                        onChange={formik.setFieldValue}
-                                        onBlur={() => { formik.setFieldTouched("assetStatus"); formik.validateField("assetStatus"); }}
-                                        required
-                                    />
-                                </Grid>
+
+                            <Grid item xs={12} md={6} pb={2.5} data-testid="test">
+                                <Select
+                                    id='assetStatus'
+                                    name='assetStatus'
+                                    label={t("assetManagement.form.assetStatus")}
+                                    placeholder='Choose'
+                                    value={formik.values.assetStatus}
+                                    items={assetStatusList}
+                                    helperText={(formik.touched.assetStatus && formik.errors.assetStatus) ? formik.errors.assetStatus.value : undefined}
+                                    error={(formik.touched.assetStatus && formik.errors.assetStatus) ? true : false}
+                                    onChange={formik.setFieldValue}
+                                    onBlur={() => { formik.setFieldTouched("assetStatus"); formik.validateField("assetStatus"); }}
+                                    required
+                                />
                             </Grid>
-                            <Grid item xs={12} md={12} pr={2.5} mt={4} mb={4}>
-                                <Grid item xs={12} md={6}>
-                                    <Box className="form-action-section" sx={{ textAlign: 'right' }}>
-                                        <Button
-                                            id="cancelBtn"
-                                            types="cancel"
-                                            aria-label={t("buttons.cancel")}
-                                            className="mr-4"
-                                            onClick={onClickCancel}
-                                            data-test="cancel"
-                                        >
-                                            {t("buttons.cancel")}
-                                        </Button>
-                                        <Button
-                                            id="saveBtn"
-                                            type="submit"
-                                            types="save"
-                                            aria-label={t("buttons.save")}
-                                            className="ml-4"
-                                            data-testid="save"
-                                            disabled={disableButton()}
-                                        >
-                                            {t("buttons.save")}
-                                            {(isLoadingAddAsset || isLoadingEditAsset) && <LoadingIcon data-testid="loading-spinner" className='loading_save_icon' />}
-                                        </Button>
-                                    </Box>
-                                    <ToastMessage
-                                        isOpen={
-                                            isErrorAddAsset || isSuccessAddAsset || isErrorEditAsset || isSuccessEditAsset || isErrorGetAsset
-                                        }
-                                        messageType={formStatus.type}
-                                        onClose={() => { return ''; }}
-                                        message={formStatus.message} />
-                                </Grid>
+
+                            <Grid item xs={12} md={6} mt={4}>
+                                <Box className="form-action-section">
+                                    <Button
+                                        id="cancelBtn"
+                                        types="cancel"
+                                        aria-label={t("buttons.cancel")}
+                                        className="mr-4"
+                                        onClick={onClickCancel}
+                                        data-test="cancel"
+                                    >
+                                        {t("buttons.cancel")}
+                                    </Button>
+                                    <Button
+                                        id="saveBtn"
+                                        type="submit"
+                                        types="save"
+                                        aria-label={t("buttons.save")}
+                                        className="ml-4"
+                                        data-test="save"
+                                        disabled={disableButton()}
+                                    >
+                                        {t("buttons.save")}
+                                        {(isLoadingAddAsset || isLoadingEditAsset) && <LoadingIcon data-testid="loading-spinner" className='loading_save_icon' />}
+                                    </Button>
+                                </Box>
+                                <ToastMessage
+                                    isOpen={
+                                        isErrorAddAsset || isSuccessAddAsset || isErrorEditAsset || isSuccessEditAsset || isErrorGetAsset
+                                    }
+                                    messageType={formStatus.type}
+                                    onClose={() => { return ''; }}
+                                    message={formStatus.message} />
                             </Grid>
                         </Grid>
-                    </form>
-                </Container>
+                    </Grid>
+                </form>
             </Grid>
         </Box>
     );
