@@ -41,14 +41,9 @@ function getAllElements (component: any) {
 
 afterEach(cleanup);
 describe('edit Asset screen render', () => {
-    /* let result: RenderResult;
-    beforeEach(()=> {
-        result = renderWithClient(<AddAsset version="Breadcrumbs-Single" />);
-    }); */
-
     describe('load form data on edit mode', () => {
         it('load data in form', async () => {
-           let result = renderWithClient(<AddAsset version="Breadcrumbs-Single" />);
+            const result = renderWithClient(<AddAsset version="Breadcrumbs-Single" />);
             await waitFor(async () => {
                 const { assetTypeElem } = getAllElements(result);
                 expect(assetTypeElem).toHaveValue('Asset One');
@@ -64,9 +59,9 @@ describe('edit Asset screen render', () => {
             }));
         });
         it('show toaster with success message on submit form', async () => {
-            let result = renderWithClient(<AddAsset version="Breadcrumbs-Single" />);
-            const { assetTypeElem, assetStatusElem,  saveBtn} =  getAllElements(result);
-            fireEvent.change(assetTypeElem, {target: {value: 'John'}});
+            const result = renderWithClient(<AddAsset version="Breadcrumbs-Single" />);
+            const { assetTypeElem, assetStatusElem, saveBtn } = getAllElements(result);
+            fireEvent.change(assetTypeElem, { target: { value: 'John' } });
             // for reference: { label: 'Enabled', value: 'Y', }
             await selectEvent.select(assetStatusElem, ["Enabled"]);
             userEvent.click(saveBtn);
@@ -91,10 +86,10 @@ describe('edit Asset screen render', () => {
                     );
                 })
             );
-            let result = renderWithClient(<AddAsset version="Breadcrumbs-Single" />);
-            const { assetTypeElem, assetStatusElem,  saveBtn} =  getAllElements(result);
-            await act(async()=> {
-                fireEvent.change(assetTypeElem, {target: {value: 'Asset three'}});
+            const result = renderWithClient(<AddAsset version="Breadcrumbs-Single" />);
+            const { assetTypeElem, assetStatusElem, saveBtn } = getAllElements(result);
+            await act(async () => {
+                fireEvent.change(assetTypeElem, { target: { value: 'Asset three' } });
                 // for reference: { label: 'Enabled', value: 'Y', }
                 await selectEvent.select(assetStatusElem, ["Disabled"]);
                 userEvent.click(saveBtn);
@@ -103,7 +98,7 @@ describe('edit Asset screen render', () => {
             await waitFor(() => {
                 expect(result.getByTestId('toaster-message')).toBeInTheDocument();
             });
-            
+
         });
     });
 
@@ -117,7 +112,7 @@ describe('edit Asset screen render', () => {
             const result = renderWithClient(<AddAsset version="Breadcrumbs-Single" />);
             const { assetTypeElem, cancelBtn } = getAllElements(result);
 
-            fireEvent.change(assetTypeElem, {target: {value: 'Asset three'}});
+            fireEvent.change(assetTypeElem, { target: { value: 'Asset three' } });
             userEvent.click(cancelBtn);
 
             let open = false;
