@@ -1,4 +1,5 @@
 import { waitFor } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { renderWithClient } from '../../../tests/utils';
 import TruckParkingLot from './index';
 
@@ -38,5 +39,15 @@ describe('render TruckParkingLot component', ()=> {
             expect(result.getByText(/Testing1/i)).toBeInTheDocument();
         });
         
+    });
+    it('show filter Drawer on "Filter" button clicked', async()=> {
+        const result = renderWithClient(<TruckParkingLot version="Breadcrumbs-Single" />);
+        const filterBtn = result.getByTestId('filter');
+        userEvent.click(filterBtn);
+
+        await waitFor(()=> {
+            expect(result.getByTestId('right-drawer')).toBeInTheDocument();
+        })
+        // result.debug(result.getByTestId('right-drawer'));
     });
 });

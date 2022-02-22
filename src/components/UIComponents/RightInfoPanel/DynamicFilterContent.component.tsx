@@ -266,6 +266,7 @@ export const DynamicFilterContent: React.FC<IDynamicFilterProps> = ({ provideFil
                                                         onChange={(name, val) => handleSelect(name, val, true)}
                                                         helperText={(touched && error) ? error : undefined}
                                                         error={(touched && error) ? true : false} />
+                                                        
                                                     :
                                                     <Select
                                                         id={field.name}

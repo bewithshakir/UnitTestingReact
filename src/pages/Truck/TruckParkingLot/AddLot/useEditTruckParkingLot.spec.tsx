@@ -34,7 +34,7 @@ describe('useEditTruckParkingLot for useMutation', ()=> {
 
     it('fail to edit data using useEditTruckParkingLot', async()=> {
         serverMsw.use(
-            rest.post('*', (req, res, ctx)=> res(ctx.status(500)))
+            rest.put('*', (req, res, ctx)=> res(ctx.status(500)))
         );
         const { result, waitFor } = renderHook(()=> useEditTruckParkingLot('123',jest.fn(), jest.fn()), {
             wrapper: createWrapper()
@@ -43,7 +43,9 @@ describe('useEditTruckParkingLot for useMutation', ()=> {
             result.current.mutate(payload as any);
         })
         
-        await waitFor(() => result.current.isError);
+        await waitFor(() => {
+            return result.current.isError
+        });
         expect(result.current.error).toBeDefined()
     });
 });

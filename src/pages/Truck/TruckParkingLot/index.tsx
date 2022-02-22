@@ -16,6 +16,7 @@ import { HorizontalBarVersionState, useStore } from '../../../store';
 
 import { useGetTruckParkingLotList } from "./queries";
 import { DataGridActionsMenuOption } from "../../../components/UIComponents/Menu/DataGridActionsMenu.component";
+import { RightInfoPanel } from '../../../components/UIComponents/RightInfoPanel/RightInfoPanel.component';
 
 interface ContentProps {
     version: string
@@ -28,25 +29,33 @@ const TruckParkingLot: React.FC<ContentProps> = () => {
     const rowActionOptions = truckParkingLotObj.rowActions();
     const ACTION_TYPES = truckParkingLotObj.ACTION_TYPES;
     const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
-
     const { t } = useTranslation();
     const navigate = useNavigate();
 
 
     const [searchInput, setSearchInput] = React.useState("");
     const [sortOrder] = React.useState<{ sortBy: string, order: string }>({ sortBy: "", order: "" });
-    const [filterData] = React.useState<{ [key: string]: string[] }>({});
     const [truckParkingLotList, setTruckParkingLotList] = React.useState<any[]>([]);
     const [resetTableCollaps, setResetTableCollaps] = React.useState(false);
     const [searchTerm] = React.useState("");
 
-    useEffect(()=>{
+    const [drawerOpen, setDrawerOpen] = React.useState(false);
+    const [custFilterPanelVisible, setCustFilterPanelVisible] = React.useState(false);
+    const [filterData, setFilterData] = React.useState<{ [key: string]: string[] }>({});
+
+    useEffect(() => {
         setVersion("NavLinks");
-    },[]);
+    }, []);
 
     const handleCustFilterPanelOpen = () => {
-        // TODO
+        setDrawerOpen(false);
+        setCustFilterPanelVisible(!custFilterPanelVisible);
     };
+    const getFilterParams = (filterObj: { [key: string]: string[] }) => {
+        setResetTableCollaps(true);
+        setFilterData(filterObj);
+    };
+    const handleCustFilterPanelClose = () => setCustFilterPanelVisible(false);
 
     const onSortBySlected = () => {
         // TODO
@@ -78,15 +87,15 @@ const TruckParkingLot: React.FC<ContentProps> = () => {
         }
     }, [truckParkingLotData]);
 
-    const handleRowAction = (action: DataGridActionsMenuOption,row: any) => {
+    const handleRowAction = (action: DataGridActionsMenuOption, row: any) => {
         switch (action.action) {
-          case ACTION_TYPES.EDIT:
-            // perform action 
-            navigate(`/truckParkingLot/edit/${row.id}`);
-            break;
-          default: return;
+            case ACTION_TYPES.EDIT:
+                // perform action 
+                navigate(`/truckParkingLot/edit/${row.id}`);
+                break;
+            default: return;
         }
-      };
+    };
 
     return (
         <Box display="flex" mt={8} ml={8}>
@@ -122,7 +131,7 @@ const TruckParkingLot: React.FC<ContentProps> = () => {
                                 onChange={onInputChange}
                             />
                         </Grid>
-                        
+
                     </Grid>
                     <Grid item md={4} lg={3} display="flex" justifyContent="flex-end">
                         <Grid item pr={2.5}>
@@ -161,7 +170,12 @@ const TruckParkingLot: React.FC<ContentProps> = () => {
                         onResetTableCollaps={setResetTableCollaps}
                         noDataMsg='Add Truck parking lot by clicking on the "Add Truck Parking Lot" button.'
                     />
-
+                    <RightInfoPanel panelType="dynamic-filter"
+                        open={custFilterPanelVisible} headingText={"customer-filter-panel.header.filter"}
+                        provideFilterParams={getFilterParams} onClose={handleCustFilterPanelClose}
+                        fields={truckParkingLotObj.FilterByFields()}
+                        storeKey={'customerFilter'}
+                    />
                 </Grid>
             </Grid>
         </Box>
