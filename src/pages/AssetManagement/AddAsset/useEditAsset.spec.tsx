@@ -29,7 +29,7 @@ describe('useEditAsset for useMutation', () => {
 
     it('fail to add data using useEditAsset', async () => {
         serverMsw.use(
-            rest.put('*', (req, res, ctx) => res(ctx.status(500)))
+            rest.put('*', (req, res, ctx) => res(ctx.status(409)))
         );
         const { result, waitFor } = renderHook(() => useEditAsset('123', jest.fn(), jest.fn()), {
             wrapper: createWrapper()

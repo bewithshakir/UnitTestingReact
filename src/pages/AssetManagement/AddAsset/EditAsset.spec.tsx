@@ -1,4 +1,4 @@
-import { act, cleanup, waitFor, render } from "@testing-library/react";
+import { act, cleanup, waitFor, render, RenderResult, fireEvent } from "@testing-library/react";
 import routeDataDom from 'react-router-dom';
 import { renderWithClient } from '../../../tests/utils';
 import AddAsset from "./index";
@@ -41,15 +41,14 @@ function getAllElements (component: any) {
 
 afterEach(cleanup);
 describe('edit Asset screen render', () => {
-    beforeEach(() => {
-        jest.spyOn(routeDataDom, 'useParams').mockImplementation(() => ({
-            assetId: '123'
-        }));
-    });
+    /* let result: RenderResult;
+    beforeEach(()=> {
+        result = renderWithClient(<AddAsset version="Breadcrumbs-Single" />);
+    }); */
 
     describe('load form data on edit mode', () => {
         it('load data in form', async () => {
-            const result = renderWithClient(<AddAsset version="Breadcrumbs-Single" />);
+           let result = renderWithClient(<AddAsset version="Breadcrumbs-Single" />);
             await waitFor(async () => {
                 const { assetTypeElem } = getAllElements(result);
                 expect(assetTypeElem).toHaveValue('Asset One');
@@ -59,43 +58,68 @@ describe('edit Asset screen render', () => {
     });
 
     describe('load toaster on edit mode', () => {
+        beforeEach(() => {
+            jest.spyOn(routeDataDom, 'useParams').mockImplementation(() => ({
+                productId: '123'
+            }));
+        });
+        it('show toaster with success message on submit form', async () => {
+            let result = renderWithClient(<AddAsset version="Breadcrumbs-Single" />);
+            const { assetTypeElem, assetStatusElem,  saveBtn} =  getAllElements(result);
+            fireEvent.change(assetTypeElem, {target: {value: 'John'}});
+            // for reference: { label: 'Enabled', value: 'Y', }
+            await selectEvent.select(assetStatusElem, ["Enabled"]);
+            userEvent.click(saveBtn);
+            await waitFor(() => {
+                expect(result.getByText('formStatusProps.success.message')).toBeInTheDocument();
+            });
+        });
         it('show toaster with failure message on submit form', async () => {
             serverMsw.use(
                 rest.put('*', (req, res, ctx) => {
                     return res(
-                        ctx.status(500),
+                        ctx.status(409),
                         ctx.json({
                             data: null,
                             error: {
-                                message: 'fail edit mode'
+                                businessCode: 111,
+                                details: null,
+                                httpCode: 409,
+                                message: "edit mode"
                             }
                         })
                     );
                 })
             );
-            const result = renderWithClient(<AddAsset version="Breadcrumbs-Single" />);
-            await act(async () => {
-                const { assetTypeElem, assetStatusElem, saveBtn } = getAllElements(result);
-
-                userEvent.type(assetTypeElem, 'Asset Two');
-                await selectEvent.select(assetStatusElem, ["Enabled"]);
-                saveBtn.removeAttribute('disabled');
+            let result = renderWithClient(<AddAsset version="Breadcrumbs-Single" />);
+            const { assetTypeElem, assetStatusElem,  saveBtn} =  getAllElements(result);
+            await act(async()=> {
+                fireEvent.change(assetTypeElem, {target: {value: 'Asset three'}});
+                // for reference: { label: 'Enabled', value: 'Y', }
+                await selectEvent.select(assetStatusElem, ["Disabled"]);
                 userEvent.click(saveBtn);
             });
 
             await waitFor(() => {
-                expect(result.getByText(/fail edit mode/i)).toBeInTheDocument();
+                expect(result.getByTestId('toaster-message')).toBeInTheDocument();
             });
+            
         });
     });
 
     describe('show dialogue of discard', () => {
-
+        beforeEach(() => {
+            jest.spyOn(routeDataDom, 'useParams').mockImplementation(() => ({
+                productId: '123'
+            }));
+        });
         it('show dialogue box on back if form updated', async () => {
             const result = renderWithClient(<AddAsset version="Breadcrumbs-Single" />);
             const { assetTypeElem, cancelBtn } = getAllElements(result);
-            userEvent.type(assetTypeElem, 'Asset Two');
+
+            fireEvent.change(assetTypeElem, {target: {value: 'Asset three'}});
             userEvent.click(cancelBtn);
+
             let open = false;
             await waitFor(() => {
                 open = true;

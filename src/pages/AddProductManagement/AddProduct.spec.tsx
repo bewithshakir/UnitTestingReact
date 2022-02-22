@@ -24,7 +24,7 @@ jest.mock('react-router-dom', () => ({
         push: jest.fn()
     }),
     useParams: () => ({
-        productId: '00aad1db-d5a4-45c7-9428-ab08c8d9f6b4'
+        productId: ''
     })
 }));
 
@@ -129,8 +129,6 @@ describe('AddProduct component', () => {
                 saveBtn.removeAttribute('disabled');
                 userEvent.click(saveBtn);
             });
-
-            result.debug(await result.findAllByTestId('toaster-message'));
 
             await waitFor(() => {
                 // result.debug(result.getByTestId('toaster-message'))
