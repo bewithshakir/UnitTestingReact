@@ -110,13 +110,13 @@ export default function HorizontalBar (props: HorizontalBarProps) {
           customerName: selectedCustomerName
         }
       });
-    } else if(pathname.includes('/truckParkingLot/add')){
+    } else if (pathname.includes('/truckParkingLot/add')) {
       navigate('/truckParkingLot');
-    } else if(pathname.includes('/truckParkingLot/edit')){
+    } else if (pathname.includes('/truckParkingLot/edit')) {
       navigate('/truckParkingLot');
-    } else if(pathname.includes('/assetManagement/add')){
+    } else if (pathname.includes('/assetManagement/add') || pathname.includes('/assetManagement/edit')) {
       navigate('/assetManagement');
-    } else if(pathname.includes('/trucks/addTruck')){
+    } else if (pathname.includes('/trucks/addTruck')) {
       navigate('/trucks');
     } else {
       props.onBack();
@@ -159,8 +159,10 @@ export default function HorizontalBar (props: HorizontalBarProps) {
         return t('addTruckParkingLot.form.editTitle');
       case pathname.includes('assetManagement/add'):
         return t('assetManagement.form.addTitle');
+      case pathname.includes('assetManagement/edit'):
+        return t('assetManagement.form.editTitle');
       case pathname.includes('trucks/addTruck'):
-        return t('addTruckFormLabels.addTruckTitle');  
+        return t('addTruckFormLabels.addTruckTitle');
       default:
         return selectedCustomerName;
     }
@@ -253,8 +255,8 @@ export default function HorizontalBar (props: HorizontalBarProps) {
           </div>
         </>
       );
-    } 
-    else if(pathname.includes('trucks') || pathname.includes('truckParkingLot')) {
+    }
+    else if (pathname.includes('trucks') || pathname.includes('truckParkingLot')) {
       return (
         <>
           <div
@@ -360,7 +362,7 @@ export default function HorizontalBar (props: HorizontalBarProps) {
           <Link className='breadcrubs-title'>
             {selectedCustomerName}
           </Link>
-          <Link className="breadcrubs-title" href="#" onClick={ (event) => event.preventDefault() } >
+          <Link className="breadcrubs-title" href="#" onClick={(event) => event.preventDefault()} >
             {getHeaderText()}
           </Link>
         </Breadcrumbs>

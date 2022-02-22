@@ -14,24 +14,24 @@ const { MassActionOptions, RowActionsOptions, DataGridFields } = AssetManagement
 export default class AssetManagementModel {
     assetType: string;
     assetStatus: AssetStatusInt;
-    constructor(){
+    constructor() {
         this.assetType = '';
         this.assetStatus = { label: '', value: '' };
     }
-    massActions() {
+    massActions () {
         const { t } = useTranslation();
         return MassActionOptions.map(actionItem => ({ ...actionItem, label: t(actionItem.label) }));
     }
 
-    rowActions() {
+    rowActions () {
         const { t } = useTranslation();
         return RowActionsOptions.map(actionItem => ({ ...actionItem, label: t(actionItem.label) }));
     }
 
-    fieldsToDisplay(): headerObj[] {
+    fieldsToDisplay (): headerObj[] {
         const { ASSET_TYPE, STATUS } = DataGridFields;
         return [
-            { field: ASSET_TYPE.field, label: ASSET_TYPE.label, type: 'text', align: 'left', sortable: true },
+            { field: ASSET_TYPE.field, label: ASSET_TYPE.label, type: 'text', align: 'left' },
             {
                 field: STATUS.field,
                 label: STATUS.label,

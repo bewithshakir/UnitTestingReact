@@ -3,19 +3,17 @@ import { rest } from "msw";
 import { serverMsw } from "../../../setupTests";
 
 import { createWrapper } from "../../../tests/utils";
-import { useAddAsset } from "./queries";
+import { useEditAsset } from "./queries";
 
-describe('useAddAsset for useMutation', () => {
+describe('useEditAsset for useMutation', () => {
     const payload = {
         countryCode: "us",
-        assetNm: "Test",
-        activeInactiveInd: "Y"
+        assetNm: "Asset One",
+        activeInactiveInd: "N"
     };
 
-
-    it('succesfull add data using useAddAsset', async () => {
-
-        const { result, waitFor } = renderHook(() => useAddAsset(jest.fn(), jest.fn()), {
+    it('succesfull add data using useEditAsset', async () => {
+        const { result, waitFor } = renderHook(() => useEditAsset('123', jest.fn(), jest.fn()), {
             wrapper: createWrapper()
         });
 
@@ -27,14 +25,13 @@ describe('useAddAsset for useMutation', () => {
             return result.current.isSuccess;
         });
         expect(result.current.status).toBe('success');
-
     });
 
-    it('fail to add data using useAddAsset', async () => {
+    it('fail to add data using useEditAsset', async () => {
         serverMsw.use(
-            rest.post('*', (req, res, ctx) => res(ctx.status(500)))
+            rest.put('*', (req, res, ctx) => res(ctx.status(409)))
         );
-        const { result, waitFor } = renderHook(() => useAddAsset(jest.fn(), jest.fn()), {
+        const { result, waitFor } = renderHook(() => useEditAsset('123', jest.fn(), jest.fn()), {
             wrapper: createWrapper()
         });
         act(() => {

@@ -24,9 +24,7 @@ jest.mock('react-router-dom', () => ({
         push: jest.fn()
     }),
     useParams: () => ({
-        params: {
-            productId: ''
-        }
+        productId: ''
     })
 }));
 
@@ -98,7 +96,7 @@ describe('AddProduct component', () => {
             });
 
             await waitFor(() => {
-                result.debug(result.getByTestId('toaster-message'));
+                expect(result.getByTestId('toaster-message')).toBeInTheDocument();
             });
         });
 
@@ -110,7 +108,10 @@ describe('AddProduct component', () => {
                         ctx.json({
                             data: null,
                             error: {
-                                details: ['fail add product']
+                                businessCode: 102,
+                                details: ['fail add product'],
+                                httpCode: 500,
+                                message: "fail add product"
                             }
                         })
                     );
@@ -130,8 +131,6 @@ describe('AddProduct component', () => {
             });
 
             await waitFor(() => {
-                // result.debug(result.getByTestId('toaster-message'))
-                // expect(result.getByTestId('toaster-message')).toBeInTheDocument();
                 expect(result.getByText(/fail add product/i)).toBeInTheDocument();
             });
 
@@ -188,7 +187,6 @@ describe('AddProduct component', () => {
                 });
 
                 await waitFor(() => {
-                    // result.debug(result.getByTestId('toaster-message'));
                     expect(result.getByText(/fail edit mode/i)).toBeInTheDocument();
                 });
             });
