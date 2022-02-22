@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { Box, Container, Grid, Typography } from '@mui/material';
+import { Box, Grid, Typography } from '@mui/material';
 import { useFormik } from 'formik';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import { useStore, HorizontalBarVersionState, useShowConfirmationDialogBoxStore } from '../../../store';
 import AssetManagementModel from '../../../models/AssetManagementModel';
@@ -11,7 +11,7 @@ import Input from '../../../components/UIComponents/Input/Input';
 import { Button } from '../../../components/UIComponents/Button/Button.component';
 import ToastMessage from '../../../components/UIComponents/ToastMessage/ToastMessage.component';
 import Select from '../../../components/UIComponents/Select/SingleSelect';
-import { useAddAsset } from './queries';
+import { useAddAsset, useEditAsset, useGetAssetDetails } from './queries';
 import { LoadingIcon } from '../../../assets/icons';
 
 interface PropsInt {
@@ -36,26 +36,66 @@ const AddAsset: React.FC<PropsInt> = () => {
     const showDialogBox = useShowConfirmationDialogBoxStore((state) => state.showDialogBox);
     const isFormValidated = useShowConfirmationDialogBoxStore((state) => state.setFormFieldValue);
     const [formStatus, setFormStatus] = useState<IFormStatus>({ message: '', type: '' });
-    const [isEditMode] = useState(false);
+    const [isEditMode, setEditMode] = useState(false);
+    const { assetId }: any = useParams();
 
     useEffect(() => {
         setVersion("Breadcrumbs-Single");
     }, []);
 
+    // GET Asset Detail Start --------------
+    const populateDataInAllFields = (responseData: any) => {
+        formik.resetForm({
+            values: { ...responseData }
+        });
+    };
 
-    // ADD Asset
+    const onGetAssetSuccess = (response: any) => {
+        try {
+            if (response?.data) {
+                const finalData = {
+                    countryCode: 'us',
+                    assetType: response.data.assetNm,
+                    assetStatus: assetStatusList.filter((aObj) => aObj.value === response.data.activeInactiveInd)[0],
+                };
+                populateDataInAllFields(finalData);
+                setEditMode(true);
+            }
+        } catch {
+            setFormStatus({ message: t("formStatusProps.error.message"), type: 'Error' });
+        }
+    };
+
+    const onGetAssetError = (err: any) => {
+        try {
+            const { data } = err.response;
+            setFormStatus({ message: data?.error?.message || t("formStatusProps.error.message"), type: 'Error' });
+            formik.setSubmitting(false);
+        } catch (error: any) {
+            setFormStatus({ message: error?.message || t("formStatusProps.error.message"), type: 'Error' });
+        }
+    };
+
+    const { isError: isErrorGetAsset } = useGetAssetDetails(assetId, onGetAssetSuccess, onGetAssetError);
+    // -------------- GET Asset Detail End
+
+
+
+    // ADD Asset Start -------------- 
     const onSuccessAddAsset = () => {
         isFormValidated(false);
         formik.resetForm({ values: formik.values });
         setFormStatus({ message: t("formStatusProps.success.message"), type: 'Success' });
 
     };
+
     const onErrorAddAsset = (err: any) => {
         const { data } = err.response;
         formik.resetForm({ values: formik.values });
         setFormStatus({ message: data?.error?.message || t("formStatusProps.error.message"), type: 'Error' });
     };
-    const { mutate: addNewAsset, isSuccess: isSuccessAddAsset, isError: isErrorAddAsset, isLoading: isLoadingAddAsset} = useAddAsset(onSuccessAddAsset, onErrorAddAsset);
+
+    const { mutate: addNewAsset, isSuccess: isSuccessAddAsset, isError: isErrorAddAsset, isLoading: isLoadingAddAsset } = useAddAsset(onSuccessAddAsset, onErrorAddAsset);
 
     const createAssetData = (form: AssetManagementModel) => {
         try {
@@ -65,15 +105,51 @@ const AddAsset: React.FC<PropsInt> = () => {
             setFormStatus({ message: t("formStatusProps.error.message"), type: 'Error' });
         }
     };
-    // ADD Asset end
+    // -------------- ADD Asset End
+
+
+
+    // Edit Asset Start -------------- 
+    const onEditAssetSuccess = () => {
+        isFormValidated(false);
+        setFormStatus({ message: t("formStatusProps.updated.message"), type: 'Success' });
+        formik.resetForm({ values: formik.values });
+    };
+
+    const onEditAssetError = (err: any) => {
+        try {
+            const { data } = err.response;
+            setFormStatus({ message: data?.error?.message || t("formStatusProps.error.message"), type: 'Error' });
+            formik.setSubmitting(false);
+        } catch (error: any) {
+            setFormStatus({ message: error?.message || t("formStatusProps.error.message"), type: 'Error' });
+        }
+    };
+
+    const { mutate: editProduct, isSuccess: isSuccessEditAsset, isError: isErrorEditAsset, isLoading: isLoadingEditAsset } = useEditAsset(
+        assetId,
+        onEditAssetSuccess,
+        onEditAssetError
+    );
+
+    const updateAssetData = (form: AssetManagementModel) => {
+        try {
+            editProduct(form);
+        } catch {
+            setFormStatus({ message: t("formStatusProps.error.message"), type: 'Error' });
+        }
+    };
+    // --------------  Edit Asset End
 
     const formik = useFormik({
         initialValues,
         validationSchema: AddAssetSchema,
         onSubmit: (values: AssetManagementModel) => {
             if (isEditMode) {
-                // TODO Edit
+                //  Edit Asset
+                updateAssetData(values);
             } else {
+                // Add Asset
                 createAssetData(values);
             }
         },
@@ -102,7 +178,7 @@ const AddAsset: React.FC<PropsInt> = () => {
             return true;
         }
     };
-    
+
     return (
         <Box mt={10} ml={8}>
             <Grid pl={8} pr={8} className="main-area">
@@ -112,7 +188,7 @@ const AddAsset: React.FC<PropsInt> = () => {
                     </Typography>
                     <Grid container mt={2}>
                         <Grid item xs={12} md={4} pr={2.5}>
-                            <Grid item xs={12} md={12} pb={2.5}>
+                            <Grid item pb={2.5}>
                                 <Input
                                     id='assetType'
                                     label={t("assetManagement.form.assetType")}
@@ -126,7 +202,7 @@ const AddAsset: React.FC<PropsInt> = () => {
                                 />
                             </Grid>
 
-                            <Grid item xs={12} md={12} pb={2.5} data-testid="test">
+                            <Grid item pb={2.5} data-testid="test">
                                 <Select
                                     id='assetStatus'
                                     name='assetStatus'
@@ -142,7 +218,7 @@ const AddAsset: React.FC<PropsInt> = () => {
                                 />
                             </Grid>
 
-                            <Grid item xs={12} md={12} mt={4}>
+                            <Grid item mt={4}>
                                 <Box className="form-action-section">
                                     <Button
                                         id="cancelBtn"
@@ -164,12 +240,12 @@ const AddAsset: React.FC<PropsInt> = () => {
                                         disabled={disableButton()}
                                     >
                                         {t("buttons.save")}
-                                        {(isLoadingAddAsset) && <LoadingIcon data-testid="loading-spinner" className='loading_save_icon' />}
+                                        {(isLoadingAddAsset || isLoadingEditAsset) && <LoadingIcon data-testid="loading-spinner" className='loading_save_icon' />}
                                     </Button>
                                 </Box>
                                 <ToastMessage
                                     isOpen={
-                                        isErrorAddAsset || isSuccessAddAsset
+                                        isErrorAddAsset || isSuccessAddAsset || isErrorEditAsset || isSuccessEditAsset || isErrorGetAsset
                                     }
                                     messageType={formStatus.type}
                                     onClose={() => { return ''; }}

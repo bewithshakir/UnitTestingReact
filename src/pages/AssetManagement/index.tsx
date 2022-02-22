@@ -103,6 +103,7 @@ const AssetManagementLandingContent: React.FC<AssetManagementProps> = memo(() =>
         switch (action.action) {
             case ROW_ACTION_TYPES.EDIT:
                 // perform action
+                navigate(`/assetManagement/edit/${row.assetId}`);
                 break;
             case ROW_ACTION_TYPES.DELETE:
                 // perform action
