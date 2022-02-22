@@ -7,7 +7,7 @@ import { useGetAssetDetails } from "./queries";
 
 describe('useGetAssetDetails for useMutation', () => {
     it('succesfull get data using useGetAssetDetails', async () => {
-        const { result, waitFor } = renderHook(() => useGetAssetDetails("", jest.fn(), jest.fn()), {
+        const { result, waitFor } = renderHook(() => useGetAssetDetails("123", jest.fn(), jest.fn()), {
             wrapper: createWrapper()
         });
         await waitFor(() => {
@@ -24,7 +24,7 @@ describe('useGetAssetDetails for useMutation', () => {
             })
         );
 
-        const { result, waitFor } = renderHook(() => useGetAssetDetails("", jest.fn(), jest.fn()), {
+        const { result, waitFor } = renderHook(() => useGetAssetDetails("123", jest.fn(), jest.fn()), {
             wrapper: createWrapper()
         });
 
