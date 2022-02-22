@@ -87,7 +87,6 @@ describe('Rendering of Add Attachment Component', () => {
         userEvent.upload(fileInput, file);
         await flushPromises(rerender, component);
         expect(fileInput.files[0]).toStrictEqual(file);
-        // console.debug("test------->",container.querySelector('.file-error'));
         expect(container.querySelector('.file-error')?.textContent).toBe('File is larger than 25 MB');
     });
 });

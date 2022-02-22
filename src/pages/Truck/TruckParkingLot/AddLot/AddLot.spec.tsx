@@ -10,7 +10,7 @@ import AddLot from './index';
 jest.mock('react-router-dom', () => ({
     ...jest.requireActual("react-router-dom") as any,
     useNavigate: () => ({
-        navigate: ()=> ({
+        navigate: () => ({
             to: '/truckParkingLot/add'
         })
     }),
@@ -36,7 +36,7 @@ function getAllElements (component: any) {
     const cancelBtn = component.container.querySelector('#cancelBtn');
     const saveBtn = component.container.querySelector('#saveBtn');
     const formElem = component.container.querySelector('#form');
-    return { parkingLocationNmElem, addressLine1Elem, addressLine2Elem, cityElem, stateElem, postalCodeElem, cancelBtn, saveBtn, formElem  };
+    return { parkingLocationNmElem, addressLine1Elem, addressLine2Elem, cityElem, stateElem, postalCodeElem, cancelBtn, saveBtn, formElem };
 }
 
 
@@ -53,7 +53,7 @@ describe('renders AddDSP component for add/edit mode', () => {
     let saveBtn: HTMLButtonElement;
     let cancelBtn: HTMLButtonElement;
 
-    beforeEach(()=> {
+    beforeEach(() => {
         result = renderWithClient(<AddLot version="Breadcrumbs-Many" />);
         formElem = getAllElements(result).formElem;
         parkingLocationNmElem = getAllElements(result).parkingLocationNmElem;
@@ -66,34 +66,33 @@ describe('renders AddDSP component for add/edit mode', () => {
         cancelBtn = getAllElements(result).cancelBtn;
     });
 
-    it('renders all mendatory fields with blank value on add mode', ()=> {
+    it('renders all mendatory fields with blank value on add mode', () => {
         expect(formElem).toBeInTheDocument();
         expect(saveBtn).toBeDisabled();
     });
 
     describe('AddDSP screen on add mode', () => {
-        
-        beforeEach(async()=> {
-            fireEvent.change(parkingLocationNmElem, {target: {value: 'John'}});
 
-            fireEvent.change(addressLine1Elem, {target: {value: 'E'}});
+        beforeEach(async () => {
+            fireEvent.change(parkingLocationNmElem, { target: { value: 'John' } });
+
+            fireEvent.change(addressLine1Elem, { target: { value: 'E' } });
             await selectEvent.select(addressLine1Elem, ["Elkton Test"]);
         });
 
-        it('Test save button is enabled when all mandatory fields are filled', async()=> { 
-            await waitFor(()=> {
+        it('Test save button is enabled when all mandatory fields are filled', async () => {
+            await waitFor(() => {
                 expect(addressLine2Elem).toHaveValue('Elkton Test');
                 expect(cityElem).toHaveValue('Elkton');
                 expect(stateElem).toHaveValue('VA');
-                result.debug(postalCodeElem);
                 expect(postalCodeElem).toHaveValue('22827');
 
                 userEvent.tab();
                 expect(saveBtn).toBeEnabled();
             });
         });
-        it('Test show loader on save button clicked and remove after success', async()=> {
-            await waitFor(()=> {
+        it('Test show loader on save button clicked and remove after success', async () => {
+            await waitFor(() => {
                 expect(addressLine2Elem).toHaveValue('Elkton Test');
                 expect(cityElem).toHaveValue('Elkton');
                 expect(stateElem).toHaveValue('VA');
@@ -103,11 +102,11 @@ describe('renders AddDSP component for add/edit mode', () => {
                 expect(saveBtn).toBeEnabled();
                 userEvent.click(saveBtn);
             });
-            await waitFor(()=> {
+            await waitFor(() => {
                 expect(result.getByText('formStatusProps.success.message')).toBeInTheDocument();
             });
         });
-        it('Test show toaster with error message on save button clicked', async()=> {
+        it('Test show toaster with error message on save button clicked', async () => {
             serverMsw.use(
                 rest.post('*', (req, res, ctx) => {
                     return res(
@@ -121,7 +120,7 @@ describe('renders AddDSP component for add/edit mode', () => {
                     );
                 })
             );
-            await waitFor(()=> {
+            await waitFor(() => {
                 expect(addressLine2Elem).toHaveValue('Elkton Test');
                 expect(cityElem).toHaveValue('Elkton');
                 expect(stateElem).toHaveValue('VA');
@@ -131,7 +130,7 @@ describe('renders AddDSP component for add/edit mode', () => {
                 expect(saveBtn).toBeEnabled();
                 userEvent.click(saveBtn);
             });
-            await waitFor(()=> {
+            await waitFor(() => {
                 expect(result.getByText(/fail to add truck parking lot/i)).toBeInTheDocument();
                 expect(saveBtn).toBeDisabled();
             });
@@ -143,28 +142,27 @@ describe('renders AddDSP component for add/edit mode', () => {
 
 
     describe('Edit Lot screen on edit mode', () => {
-        
-        beforeEach(async()=> {
-            fireEvent.change(parkingLocationNmElem, {target: {value: 'John'}});
 
-            fireEvent.change(addressLine1Elem, {target: {value: 'E'}});
+        beforeEach(async () => {
+            fireEvent.change(parkingLocationNmElem, { target: { value: 'John' } });
+
+            fireEvent.change(addressLine1Elem, { target: { value: 'E' } });
             await selectEvent.select(addressLine1Elem, ["Elkton Test"]);
         });
 
-        it('Test save button is enabled when all mandatory fields are filled', async()=> { 
-            await waitFor(()=> {
+        it('Test save button is enabled when all mandatory fields are filled', async () => {
+            await waitFor(() => {
                 expect(addressLine2Elem).toHaveValue('Elkton Test');
                 expect(cityElem).toHaveValue('Elkton');
                 expect(stateElem).toHaveValue('VA');
-                result.debug(postalCodeElem);
                 expect(postalCodeElem).toHaveValue('22827');
 
                 userEvent.tab();
                 expect(saveBtn).toBeEnabled();
             });
         });
-        it('Test show loader on save button clicked and remove after success', async()=> {
-            await waitFor(()=> {
+        it('Test show loader on save button clicked and remove after success', async () => {
+            await waitFor(() => {
                 expect(addressLine2Elem).toHaveValue('Elkton Test');
                 expect(cityElem).toHaveValue('Elkton');
                 expect(stateElem).toHaveValue('VA');
@@ -174,11 +172,11 @@ describe('renders AddDSP component for add/edit mode', () => {
                 expect(saveBtn).toBeEnabled();
                 userEvent.click(saveBtn);
             });
-            await waitFor(()=> {
+            await waitFor(() => {
                 expect(result.getByText('formStatusProps.success.message')).toBeInTheDocument();
             });
         });
-        it('Test show toaster with error message on save button clicked', async()=> {
+        it('Test show toaster with error message on save button clicked', async () => {
             serverMsw.use(
                 rest.post('*', (req, res, ctx) => {
                     return res(
@@ -192,7 +190,7 @@ describe('renders AddDSP component for add/edit mode', () => {
                     );
                 })
             );
-            await waitFor(()=> {
+            await waitFor(() => {
                 expect(addressLine2Elem).toHaveValue('Elkton Test');
                 expect(cityElem).toHaveValue('Elkton');
                 expect(stateElem).toHaveValue('VA');
@@ -202,12 +200,12 @@ describe('renders AddDSP component for add/edit mode', () => {
                 expect(saveBtn).toBeEnabled();
                 userEvent.click(saveBtn);
             });
-            await waitFor(()=> {
+            await waitFor(() => {
                 expect(result.getByText(/fail to edit truck parking lot/i)).toBeInTheDocument();
                 expect(saveBtn).toBeDisabled();
             });
         });
 
     });
-    
+
 });

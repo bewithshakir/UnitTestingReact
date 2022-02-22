@@ -96,7 +96,7 @@ describe('AddProduct component', () => {
             });
 
             await waitFor(() => {
-                result.debug(result.getByTestId('toaster-message'));
+                expect(result.getByTestId('toaster-message')).toBeInTheDocument();
             });
         });
 
@@ -131,8 +131,6 @@ describe('AddProduct component', () => {
             });
 
             await waitFor(() => {
-                // result.debug(result.getByTestId('toaster-message'))
-                // expect(result.getByTestId('toaster-message')).toBeInTheDocument();
                 expect(result.getByText(/fail add product/i)).toBeInTheDocument();
             });
 
@@ -189,7 +187,6 @@ describe('AddProduct component', () => {
                 });
 
                 await waitFor(() => {
-                    // result.debug(result.getByTestId('toaster-message'));
                     expect(result.getByText(/fail edit mode/i)).toBeInTheDocument();
                 });
             });
