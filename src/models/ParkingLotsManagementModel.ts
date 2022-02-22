@@ -40,7 +40,7 @@ export default class ParkingLotsManagementModel {
                     }
                 ]
             },
-            { field: FUEL.field, label: FUEL.label, type: 'icons' },
+            { field: FUEL.field, label: FUEL.label, type: 'icons', width: "210px" },
             { field: VEHICLES.field, label: VEHICLES.label, type: 'button', icon: DriveEtaOutlinedIcon },
         ];
     }
