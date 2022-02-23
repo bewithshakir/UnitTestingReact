@@ -460,7 +460,9 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
     <h4
       className="checkbox-heading"
     >
-       Fuel Tax Exemptions ($) 
+       
+      addProductFormLabels.addproductcheckboxseg
+       
     </h4>
   </CheckBoxSegment>
    

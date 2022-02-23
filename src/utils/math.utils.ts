@@ -1,7 +1,9 @@
-import Decimal from 'decimal.js';
 
-export function totalPricePerGallon(manualPriceAmt: number | string, addedPriceAmt: number | string, discountPriceAmt: number | string, precision: number) {
-    const x = new Decimal(Number(manualPriceAmt) || 0);
-    const result = x.plus(Number(addedPriceAmt) || 0).minus(Number(discountPriceAmt) || 0);
-    return result.toFixed(precision, Decimal.ROUND_DOWN);
+export function truncateDecimals(num: number, decimalPlace: number) {
+  const numS = num.toString();
+  const decPos = numS.indexOf('.');
+  const substrLength = decPos == -1 ? numS.length : 1 + decPos + decimalPlace;
+  const trimmedResult = Number(numS.substr(0, substrLength));
+  const finalResult = isNaN(trimmedResult) ? 0 : trimmedResult;
+  return finalResult;
 }
