@@ -355,7 +355,9 @@
     "citylabel": "City",
     "supplierrackheading": "SUPPLIER PRICE * (Fill all the Mandatory fields to select the price from the filtered list)",
     "supplierpriceheading": "Choose Supplier Price from below list",
-    "supplierpricenodatamsg": "Prices are not available. Please contact the support team."
+    "supplierpricenodatamsg": "Prices are not available. Please contact the support team.",
+    "addproductactiontext": "Add New Product or select the product from the table to edit the details",
+    "addproductopistext": "Fuel prices for Retail and Rack-based products are provided by the Oil Price Information Service (OPIS) are not fixed and are subject to change daily."
   },
   "assetManagement": {
     "asset": "Asset Type",
