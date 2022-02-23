@@ -115,6 +115,7 @@ const TruckParkingLot: React.FC<ContentProps> = () => {
                         <Grid item>
                             <SearchInput
                                 name="searchInput"
+                                id="trucklotSearch"
                                 placeholder={t('truckParkingLot.search')}
                                 value={searchTerm}
                                 delay={600}
