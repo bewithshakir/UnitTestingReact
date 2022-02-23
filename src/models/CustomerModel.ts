@@ -149,7 +149,7 @@ export default class CustomerModel {
             { field: STATE.field, label: STATE.label, type: 'text' },
             { field: ZIP.field, label: ZIP.label, type: 'text' },
             { field: VEHICLES.field, label: VEHICLES.label, type: 'text' },
-            { field: FUEL.field, label: FUEL.label, type: 'icons' },
+            { field: FUEL.field, label: FUEL.label, type: 'icons', width: "210px" },
             { field: CONTACT.field, label: CONTACT.label, type: 'text' },
             {
                 field: WALLET_RULE.field,
