@@ -37,7 +37,7 @@ export default function OpisRackSegment({ isDisabled, formik, editMode, showFuel
             <Grid item lg={5} md={8} sm={8} xs={8} mx={4} my={1} >
                 <Input
                     id='manualPriceAmt'
-                    label={t("addProductFormLabels.pricelabel")}
+                    label={t("addProductFormLabels.rackpricelabel")}
                     type='text'
                     helperText={(formik.touched.manualPriceAmt && formik.errors.manualPriceAmt) ? formik.errors.manualPriceAmt : undefined}
                     error={(formik.touched.manualPriceAmt && formik.errors.manualPriceAmt) ? true : false}
