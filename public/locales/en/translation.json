@@ -341,6 +341,7 @@
     "pricingmodellabel": "Pricing Model",
     "productnamelabel": "Product Name",
     "pricelabel": "Price Per Gallon (Including TAX)",
+    "rackpricelabel": "Price Per Gallon (Without TAX)",
     "adderlabel": "Added Price Per Gallon (Optional)",
     "discountlabel": "Discount Per Gallon (Optional)",
     "totalpricelabel": "Total Price Per Gallon (Including Tax, Adder/Discount)",
