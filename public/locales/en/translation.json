@@ -272,17 +272,22 @@
     "search": "Search",
     "noTrucksMsg": "Add Truck by clicking on the  Add Truck button."
   },
-  "addTruckParkingLot": {
-    "title": "Add Truck Parking lot",
-    "form": {
-      "parkingLocationNm": "TRUCK PARKING LOT NAME",
-      "title": "Fill all the mandatory * fields",
-      "addressLine1": "ADDRESS LINE 1",
-      "addressLine2": "ADDRESS LINE 2",
-      "city": "CITY",
-      "state": "STATE",
-      "postalCode": "POSTAL CODE",
-      "editTitle": "Edit Truck Parking lot"
+  "truckParkingLot": {
+    "search": "Truck Parking Lot Name",
+    "results found": "results found",
+    "result(s) found": "result(s) found",
+    "addTruckParkingLot": {
+      "title": "Add Truck Parking lot",
+      "form": {
+        "parkingLocationNm": "TRUCK PARKING LOT NAME",
+        "title": "Fill all the mandatory * fields",
+        "addressLine1": "ADDRESS LINE 1",
+        "addressLine2": "ADDRESS LINE 2",
+        "city": "CITY",
+        "state": "STATE",
+        "postalCode": "POSTAL CODE",
+        "editTitle": "Edit Truck Parking lot"
+      }
     }
   },
   "productManagement": {
