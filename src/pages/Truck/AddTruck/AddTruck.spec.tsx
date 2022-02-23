@@ -1,4 +1,4 @@
-import { waitFor, render, cleanup, act, getByLabelText} from "@testing-library/react";
+import { waitFor, render, cleanup, act, getByLabelText } from "@testing-library/react";
 import selectEvent from 'react-select-event';
 import userEvent from '@testing-library/user-event';
 import { rest } from "msw";
@@ -23,7 +23,7 @@ jest.mock('react-router-dom', () => ({
 }));
 
 
-function getAllElements(component: any) {
+function getAllElements (component: any) {
     const truckNameElem = component.container.querySelector('#truckName');
     const licenseElem = component.container.querySelector('#license');
     const vinElem = component.container.querySelector('#vin');
@@ -49,9 +49,9 @@ describe('AddTruck component', () => {
         it('renders the add truck colors with data', async () => {
             const result = renderWithClient(<AddTruck version="Breadcrumbs-Single" />);
             const { formElem, colorNm } = getAllElements(result);
-            expect(formElem).toHaveFormValues({color: ''});
+            expect(formElem).toHaveFormValues({ color: '' });
         });
-        
+
 
         it('renders the add truck fuel with data', async () => {
             const result = renderWithClient(<AddTruck version="Breadcrumbs-Single" />);
@@ -95,7 +95,7 @@ describe('AddTruck component', () => {
             });
 
             await waitFor(() => {
-                result.debug(result.getByTestId('toaster-message'));
+                expect(result.getByTestId('toaster-message')).toBeInTheDocument();
             });
         });
 
@@ -128,7 +128,7 @@ describe('AddTruck component', () => {
                 saveBtn.removeAttribute('disabled');
                 userEvent.click(saveBtn);
             });
-            
+
         });
     });
 

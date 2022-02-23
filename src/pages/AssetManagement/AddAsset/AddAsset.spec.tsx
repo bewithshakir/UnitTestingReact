@@ -95,7 +95,10 @@ describe('renders AddAsset component for add mode', () => {
                         ctx.json({
                             data: null,
                             error: {
-                                details: ['fail add asset']
+                                businessCode: 111,
+                                details: null,
+                                httpCode: 409,
+                                message: "fail add asset"
                             }
                         })
                     );

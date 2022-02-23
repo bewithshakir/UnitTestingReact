@@ -82,7 +82,7 @@ export const getVehicleTypeHandler = () => {
 };
 
 export const getAssetTypeHandler = () => {
-    return rest.get('*/api/product-service/assets*', (req, res, ctx) => {
+    return rest.get('*/api/product-service/assets', (req, res, ctx) => {
         return res(
             ctx.status(200),
             ctx.json({

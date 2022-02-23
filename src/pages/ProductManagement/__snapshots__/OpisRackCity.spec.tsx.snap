@@ -9096,7 +9096,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                         </Button>
                         <Button
                           aria-label="primary"
-                          className="mr-4"
+                          className="mr-4 supplierRackBtn"
                           disabled={true}
                           onClick={[Function]}
                           types="primary"

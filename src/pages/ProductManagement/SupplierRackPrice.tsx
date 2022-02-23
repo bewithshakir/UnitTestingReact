@@ -7,6 +7,7 @@ import { useGetSupplierPrices } from './queries';
 import { CloseIcon } from '../../assets/icons';
 import { formatSupplierPriceData } from './config';
 import { useTranslation } from 'react-i18next';
+import { truncateDecimals } from '../../utils/math.utils';
 
 type props = {
     isDisabled: boolean,
@@ -65,8 +66,8 @@ export default function SupplierRack({ isDisabled, formik, setSupplierPrice, res
         const supplierPrice = supplierData?.data?.supplierPrices.find(sd => (sd.productKey === selectedRows[0]));
         if (supplierPrice) {
             /** convert gross price from cent to dollar and assign */
-            formik.setFieldValue('supplierPrice', supplierPrice.grossPrice * .01);
-            formik.setFieldValue('manualPriceAmt', supplierPrice.grossPrice * .01);
+            formik.setFieldValue('supplierPrice', truncateDecimals((supplierPrice.grossPrice * .01), 4));
+            formik.setFieldValue('manualPriceAmt', truncateDecimals((supplierPrice.grossPrice * .01), 4));
             formik.setFieldValue('opisName', supplierPrice.opisProductName);
             setSupplierPrice(supplierPrice);
         } else {
@@ -136,7 +137,7 @@ export default function SupplierRack({ isDisabled, formik, setSupplierPrice, res
                         </Button>
                         <Button
                             types="primary"
-                            aria-label="primary" className="mr-4" onClick={handleDone} disabled={selectedRows.length === 0}>
+                            aria-label="primary" className="mr-4 supplierRackBtn" onClick={handleDone} disabled={selectedRows.length === 0}>
                             {'Done'}
                         </Button>
                     </DialogActions>
