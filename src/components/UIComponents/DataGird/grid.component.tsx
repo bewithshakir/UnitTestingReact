@@ -44,6 +44,8 @@ interface GridComponentProps {
     onRowActionSelect?: (action: DataGridActionsMenuOption, row: any) => void,
     rowActionOptions?: DataGridActionsMenuOption[],
     enableRowSelection?: boolean,
+    /** Will work only if enableRowSelection is true, It will add radio button instead of checkbox  */
+    singleRowSelection?: boolean
     enableRowAction?: boolean,
     getId?: any,
     resetCollaps?: boolean,
@@ -62,7 +64,7 @@ const GridComponent: React.FC<GridComponentProps> = (props) => {
     const [orderBy, setOrderBy] = React.useState("");
     const [selected, setSelected] = React.useState<selectedRow>([]);
 
-    const { rows, enableRowSelection, enableRowAction } = props;
+    const { rows, enableRowSelection, enableRowAction, singleRowSelection } = props;
     const handleRequestSort = (event: any, property: any) => {
         const isAsc = orderBy === property && order === "asc";
         setOrder(isAsc ? "desc" : "asc");
@@ -84,6 +86,13 @@ const GridComponent: React.FC<GridComponentProps> = (props) => {
     };
 
     const handleCheckChange = (primaryId: string) => {
+        if (props.singleRowSelection) {
+            setSelected([primaryId]);
+
+            props.handleSelect && props.handleSelect([primaryId]);
+            return;
+        }
+
         const selectedIndex = selected.indexOf(primaryId);
         let newSelected: selectedRow = [];
 
@@ -115,6 +124,7 @@ const GridComponent: React.FC<GridComponentProps> = (props) => {
                     orderBy={orderBy}
                     headCells={props.header}
                     enableRowSelection={enableRowSelection}
+                    singleRowSelection={singleRowSelection}
                     enableRowAction={enableRowAction}
                     onRequestSort={handleRequestSort}
                     onSelectAllClick={handleSelectAllClick}
@@ -127,6 +137,7 @@ const GridComponent: React.FC<GridComponentProps> = (props) => {
                     orderBy={orderBy}
                     selectedRows={selected}
                     enableRowSelection={enableRowSelection}
+                    singleRowSelection={singleRowSelection}
                     enableRowAction={enableRowAction}
                     handleCheckChange={handleCheckChange}
                     headCells={props.header}

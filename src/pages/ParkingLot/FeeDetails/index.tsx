@@ -310,6 +310,7 @@ export default function FeeDetails() {
                                                 onChange={formik.setFieldValue}
                                                 isDisabled={isDisabled}
                                                 required
+                                                value={formik.values.delFeeShed}
                                             />
                                         </Grid>
                                     </Grid>

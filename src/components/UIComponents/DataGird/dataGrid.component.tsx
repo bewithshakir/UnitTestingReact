@@ -1,14 +1,12 @@
-import { Collapse, TableBody, TableCell, TableRow, FormControl, Avatar, Icon, ImageList, Typography, Box } from '@mui/material';
-import Checkbox from '../Checkbox/Checkbox.component';
 import React, { useEffect, useRef } from "react";
+import { Collapse, TableBody, TableCell, TableRow, FormControl, Avatar, Icon, ImageList, Typography, Box, ImageListItem } from '@mui/material';
+import Checkbox from '../Checkbox/Checkbox.component';
+import Radio from '../Radio/Radio.component';
 import { Loader } from '../Loader';
 import DataGridActionsMenu, { DataGridActionsMenuOption, RowActionHanddlerRef } from '../Menu/DataGridActionsMenu.component';
 import { Button } from './../Button/Button.component';
 import './grid.style.scss';
 import { fieldOptions, headerObj } from './grid.component';
-import {
-    YellowFuelIcon, RedFuelIcon, GreenFuelIcon, NavyBlueFuelIcon,
-} from '../../../assets/icons';
 import { tableImagesSX, tableAvatarSX, tableImagesIconListSX, tableIconsSX, tableFuelIconsSX } from './config';
 import NoDataFound from './Nodata';
 import Select from './ProductSingleSelect';
@@ -25,6 +23,8 @@ interface GridBodyProps {
     isLoading?: boolean;
     isChildTable?: boolean;
     enableRowSelection?: boolean;
+    /** Will work only if enableRowSelection is true, It will add radio button instead of checkbox  */
+    singleRowSelection?: boolean;
     enableRowAction?: boolean;
     openDrawer?: any;
     selectedRows?: string[];
@@ -42,7 +42,7 @@ interface GridBodyProps {
 }
 
 
-function descendingComparator (a: any, b: any, orderBy: any) {
+function descendingComparator(a: any, b: any, orderBy: any) {
     const valueA = orderBy === "product" ? a.productName : a[orderBy];
     const valueB = orderBy === "product" ? b.productName : b[orderBy];
     const finalValueA = isNaN(valueA) ? valueA?.toLowerCase() : Number(valueA);
@@ -57,13 +57,13 @@ function descendingComparator (a: any, b: any, orderBy: any) {
 }
 
 
-function getComparator (order: any, orderBy: any) {
+function getComparator(order: any, orderBy: any) {
     return order === "desc"
         ? (a: any, b: any) => descendingComparator(a, b, orderBy)
         : (a: any, b: any) => -descendingComparator(a, b, orderBy);
 }
 
-function stableSort (array: any, comparator: any) {
+function stableSort(array: any, comparator: any) {
     const stabilizedThis = array.map((el: any, index: any) => [el, index]);
     stabilizedThis.sort((a: any, b: any) => {
         const order = comparator(a[0], b[0]);
@@ -73,15 +73,6 @@ function stableSort (array: any, comparator: any) {
         return a[1] - b[1];
     });
     return stabilizedThis.map((el: any) => el[0]);
-}
-
-function getFuelIcon (fuelStatus: string) {
-    return ({
-        "Regular": YellowFuelIcon,
-        "Premium": RedFuelIcon,
-        "Diesel": GreenFuelIcon,
-        "V-Power": NavyBlueFuelIcon,
-    }[fuelStatus] || YellowFuelIcon);
 }
 
 const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
@@ -126,13 +117,45 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
         );
     };
 
+    const dataToRenderRow = (data: any, key: string) => {
+        const tempData: any = [];
+            data?.map((icon: any, index: number) => {
+                tempData.push(
+                    <ImageListItem key={index}>
+                        <Icon sx={key === 'fuelStatus' ? tableFuelIconsSX : tableIconsSX} component={key === 'fuelStatus' ? getProductIcon(icon?.productIcon?.productIconNm) : icon} />
+                    </ImageListItem>
+                );
+            }
+        );
+        return tempData;
+    };
+
     const renderIcons = (key: string, data: any, align: string | undefined) => {
         if (data?.length) {
-            return (<ImageList sx={{ ...tableImagesIconListSX, justifyContent: align }} gap={0} cols={10}>
-                {data?.map((icon: any, index: number) =>
-                    <Icon key={index} sx={key === 'fuelStatus' ? tableFuelIconsSX : tableIconsSX} component={key === 'fuelStatus' ? getFuelIcon(icon) : icon} />
-                )}
-            </ImageList>);
+            if (data?.length <= 5) {
+                return (<ImageList sx={{ ...tableImagesIconListSX, justifyContent: align }} gap={0} cols={5}>
+                            {dataToRenderRow(data?.slice(0,5), key) }
+                </ImageList>);
+            }
+            else if (data?.length > 5 && data?.length <= 10) {
+                return (<><ImageList sx={{ ...tableImagesIconListSX, justifyContent: align }} gap={0} cols={5}>
+                            {dataToRenderRow(data?.slice(0, 5), key) }
+                </ImageList >
+                <ImageList sx={{ ...tableImagesIconListSX, justifyContent: align }} gap={0} cols={5}>
+                            {dataToRenderRow(data?.slice(5, 10), key) }
+                </ImageList ></>);
+            }
+            else {
+                return (<><ImageList sx={{ ...tableImagesIconListSX, justifyContent: align }} gap={0} cols={5}>
+                            {dataToRenderRow(data?.slice(0,5), key) }
+                </ImageList>
+                <ImageList sx={{ ...tableImagesIconListSX, justifyContent: align }} gap={0} cols={5}>
+                            {dataToRenderRow(data?.slice(5,10), key) }
+                </ImageList>
+                <ImageList sx={{ ...tableImagesIconListSX, justifyContent: align }} gap={0} cols={5}>
+                            {dataToRenderRow(data?.slice(10), key) }
+                </ImageList></>);
+            }
         }
     };
 
@@ -248,12 +271,20 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
                                         scope="row"
                                         onClick={() => props.isChildTable ? {} : openDrawer(row)}
                                     >
-                                        <Checkbox
+                                        {props.singleRowSelection ? (
+                                            <Radio
+                                                name={`checkboxOnGrid`}
+                                                checked={isItemSelected || false}
+                                                onChange={() => props.handleCheckChange && props.handleCheckChange(row[primaryKey])}
+                                                onClick={e => e.stopPropagation()}
+                                            />
+                                        ) : <Checkbox
                                             name={`checkbox${row[primaryKey]}`}
                                             checked={isItemSelected || false}
                                             onChange={() => onCheckChange(row[primaryKey])}
                                             onClick={e => e.stopPropagation()}
                                         />
+                                        }
                                     </TableCell>
                                     : null}
                             {keys.map((key: any, colIndex: any) =>
@@ -295,12 +326,12 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
                                                     }
                                                 </Button> :
                                                 props.headCells[colIndex].type === 'icon' ? renderIcon(row[key]) :
-                                                    props.headCells[colIndex].type === 'icons' ? renderIcons(key, row[key], props.headCells[colIndex].align) :
-                                                        props.headCells[colIndex].type === 'image' ? <Avatar sx={tableAvatarSX} src={row[key]} variant="square" /> :
-                                                            props.headCells[colIndex].type === 'images' ? renderImages(row[key]) :
-                                                                props.headCells[colIndex].type === 'dropdown' ? renderSelect() :
-                                                                    props.headCells[colIndex].type === 'status' ? renderStatus(props.headCells[colIndex], row[key]) :
-                                                                        props.headCells[colIndex].type === 'product' ? renderProduct(props.headCells[colIndex], row[key]) : ""
+                                                props.headCells[colIndex].type === 'icons' ? renderIcons(key, row[key], props.headCells[colIndex].align) :
+                                                props.headCells[colIndex].type === 'image' ? <Avatar sx={tableAvatarSX} src={row[key]} variant="square" /> :
+                                                props.headCells[colIndex].type === 'images' ? renderImages(row[key]) :
+                                                props.headCells[colIndex].type === 'dropdown' ? renderSelect() :
+                                                props.headCells[colIndex].type === 'status' ? renderStatus(props.headCells[colIndex], row[key]) :
+                                                props.headCells[colIndex].type === 'product' ? renderProduct(props.headCells[colIndex], row[key]) : ""
                                     }
                                 </TableCell>
                             )}

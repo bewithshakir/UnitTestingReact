@@ -1,4 +1,6 @@
 import { useTheme } from '../contexts/Theme/Theme.context';
+import Decimal from 'decimal.js';
+
 import {
     YellowFuelIcon, RedFuelIcon, GreenFuelIcon, NavyBlueFuelIcon, ParrotGreenFuelIcon,
     PurpleFuelIcon, SkyBlueFuelIcon, BrownFuelIcon, OrangeFuelIcon, AquaFuelIcon
@@ -94,4 +96,27 @@ export function getUploadedIn(url: string) {
         return 'Add Customer';
     }
     return 'Attachments';
+}
+
+export function capitalizeFirstLetter(str: string) {
+    return str && str.charAt(0).toUpperCase() + str.substring(1);
+}
+
+export function calculateOPISTotalPriceWithTaxes(basePriceAmt: number, addedPriceAmt: number, discountPriceAmt: number, finalRate: number, finalCPGAmount: number){
+    const precision = 4;
+    if(basePriceAmt){
+      const basePriceFinal = new Decimal(Number(basePriceAmt) || 0);
+       const sellingPrice = new Decimal(Number(basePriceFinal.plus(Number(addedPriceAmt) || 0).minus(Number(discountPriceAmt) || 0)));
+       const rateComponentFinal = sellingPrice.mul(Number(finalRate));
+       const totalPrice = sellingPrice.plus(Number(rateComponentFinal) || 0).plus(Number(finalCPGAmount) || 0);
+       return totalPrice.toFixed(precision, Decimal.ROUND_DOWN);
+    }else{
+        return 0.0000;
+    }
+}
+
+export function totalPricePerGallon(manualPriceAmt: number | string, addedPriceAmt: number | string, discountPriceAmt: number | string, precision: number) {
+    const x = new Decimal(Number(manualPriceAmt)||0);
+    const result = x.plus(Number(addedPriceAmt)||0).minus(Number(discountPriceAmt)||0);
+    return result.toFixed(precision, Decimal.ROUND_DOWN);
 }
