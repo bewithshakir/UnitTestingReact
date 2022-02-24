@@ -174,7 +174,9 @@ export const DynamicFilterContent: React.FC<IDynamicFilterProps> = ({ provideFil
 
     const formik = useFormik({
         initialValues,
-        onSubmit: (values) => applyFilter(values),
+        onSubmit: (values) => {
+            applyFilter(values);
+        },
         enableReinitialize: true
     });
     return <FormikProvider value={formik}>
@@ -362,6 +364,7 @@ export const DynamicFilterContent: React.FC<IDynamicFilterProps> = ({ provideFil
                     </Grid>
                     <Grid item m={2} mr={6}>
                         <ApplyBtn
+                            data-testid="applyAll"
                             id="applyAll"
                             type="submit"
                             types="save"

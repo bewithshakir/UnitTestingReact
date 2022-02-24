@@ -40,14 +40,15 @@ describe('render TruckParkingLot component', ()=> {
         });
         
     });
-    it('show filter Drawer on "Filter" button clicked', async()=> {
-        const result = renderWithClient(<TruckParkingLot version="Breadcrumbs-Single" />);
-        const filterBtn = result.getByTestId('filter');
-        userEvent.click(filterBtn);
 
-        await waitFor(()=> {
-            expect(result.getByTestId('right-drawer')).toBeInTheDocument();
-        })
-        // result.debug(result.getByTestId('right-drawer'));
+    describe('render drawer on filter click', ()=> {
+        it('show filter Drawer on "Filter" button clicked', async()=> {
+            const result = renderWithClient(<TruckParkingLot version="Breadcrumbs-Single" />);
+            const filterBtn = result.getByTestId('filter');
+            userEvent.click(filterBtn);
+            await waitFor(()=> {
+                expect(result.getByTestId('right-drawer')).toBeInTheDocument();
+            });
+        });
     });
 });
