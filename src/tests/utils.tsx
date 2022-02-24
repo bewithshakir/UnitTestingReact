@@ -17,6 +17,7 @@ import { getTruckParkingLotList } from '../pages/Truck/TruckParkingLot/mockApi/h
 import { getTrucksList } from '../pages/Truck/mockApi/handlerTruckList';
 import { addAssetHandler } from '../pages/AssetManagement/AddAsset/mockApi/handlerAddAsset';
 import { addTruckColorHandler,addTruckFuelHandler } from '../pages/Truck/AddTruck/mockApi/handleAddTruck';
+import { getLocationsList } from '../pages/Truck/mockApi/handlerLocations';
 
 export const handlers = [
     getProductTypesDropdownHandler(),
@@ -48,6 +49,7 @@ export const handlers = [
     getTruckParkingLotList(),
     editTruckParkingLotHandler(),
     addAssetHandler(),
+    getLocationsList(),
     getTrucksList(),
     addTruckColorHandler(),
     addTruckFuelHandler()

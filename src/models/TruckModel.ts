@@ -65,6 +65,16 @@ export default class TruckModel {
         ];
     }
 
+    parkingLocationTableFields(): headerObj[] {
+        return [
+            { field: "name", label: "TRUCK PARKING LOT NAME", type: 'text' },
+            { field: "address", label: "ADDRESS", type: 'text' },
+            { field: "state", label: "STATE", type: 'text' },
+            { field: "city", label: "CITY", type: 'text' },
+            { field: "postalCode", label: "POSTAL CODE", type: 'text' },
+        ];
+    }
+
     dataModel (data: any) {
         return data.map((obj: any) => {
             return ({

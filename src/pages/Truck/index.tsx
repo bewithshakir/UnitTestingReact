@@ -12,6 +12,7 @@ import { useNavigate } from "react-router-dom";
 import TruckModel from '../../models/TruckModel';
 import { useTruckList } from './queries';
 import GridComponent from "../../components/UIComponents/DataGird/grid.component";
+import Table from "./SubTableLocations";
 
 export interface TruckLandingContentProps {
   version: string
@@ -21,12 +22,17 @@ export interface TruckLandingContentProps {
 const TruckLandingContent: React.FC<TruckLandingContentProps> = memo(() => {
   const truckObj = new TruckModel();
   const headCells = truckObj.fieldsToDisplay();
+  const headCellsLots = truckObj.parkingLocationTableFields();
 
   const navigate = useNavigate();
   const [searchTerm] = React.useState("");
   const [sortOrder] = React.useState<{ sortBy: string, order: string }>({ sortBy: "", order: "" });
   const [truckList, setTruckList] = React.useState([]);
   const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
+  const [deliveryVehicleId, setDeliveryVehicleId] = React.useState('');
+  // const [resetTableCollaps, setResetTableCollaps] = React.useState(false);
+
+
   setVersion("NavLinks");
 
   const { t } = useTranslation();
@@ -60,6 +66,10 @@ const handleMassAction = () => {
     const navigateAddtruck = () => {
         navigate(`/trucks/addTruck`);
     };
+
+  const setSelectedRow = (deliveryVehicleId: string) => {
+    setDeliveryVehicleId(deliveryVehicleId);
+  };
 
   return (
     <Box display="flex" mt={10} ml={8}>
@@ -124,9 +134,17 @@ const handleMassAction = () => {
             isLoading={isFetching || isLoading}
             enableRowSelection={false}
             enableRowAction
+            getId={setSelectedRow}
             getPages={fetchNextPage}
             searchTerm={searchTerm}
             noDataMsg={t("truckLanding.noTrucksMsg")}
+            // resetCollaps={resetTableCollaps}
+            // onResetTableCollaps={setResetTableCollaps}
+            InnerTableComponent={
+              {
+                ['LOCATIONS']: <Table primaryKey='id' id={deliveryVehicleId} headCells={headCellsLots} />,
+              }
+            }
           />
         </Grid>
       </Grid>

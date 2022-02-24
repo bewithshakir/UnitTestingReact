@@ -40,3 +40,23 @@ export const useTruckList = (query: string, sortOrder: { sortBy: string, order: 
         keepPreviousData: true
     });
 };
+
+const getLocationsbyID = async (pageParam: number, deliveryVehicleId: string) => {
+    const payload: AxiosRequestConfig = {
+        method: 'get',
+        url: `/api/truck-service/delivery-vehicles/${deliveryVehicleId}/parking-locations?limit=${pageDataLimit}&offset=${pageParam}&countryCode=us`
+    };
+    const { data } = await axios(payload);
+    return data;
+};
+
+export const useGetLocations = (deliveryVehicleId: string) => {
+    return useInfiniteQuery(["getLocationsbyID", deliveryVehicleId], ({ pageParam = 0 }) => getLocationsbyID(pageParam, deliveryVehicleId), {
+        getNextPageParam: (lastGroup: any) => {
+            if (lastGroup.data.pagination.offset < lastGroup.data.pagination.totalCount) {
+                return lastGroup.data.pagination.offset + pageDataLimit;
+            }
+        },
+        keepPreviousData: true
+    });
+};
