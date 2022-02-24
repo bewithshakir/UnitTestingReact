@@ -76,4 +76,11 @@ export default class TruckParkingLotModel {
             },
         ];
     }
+
+    getSortByOptions () {
+        return [
+            "truck.sortBy.atoz",
+            "truck.sortBy.ztoa",
+        ];
+    }
 }
