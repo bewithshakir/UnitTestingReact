@@ -67,7 +67,7 @@ export default class TruckModel {
 
     parkingLocationTableFields(): headerObj[] {
         return [
-            { field: "name", label: "TRUCK PARKING LOT NAME", type: 'text' },
+            { field: "name", label: "TRUCK PARKING LOT NAME", type: 'text', width:'300' },
             { field: "address", label: "ADDRESS", type: 'text' },
             { field: "state", label: "STATE", type: 'text' },
             { field: "city", label: "CITY", type: 'text' },
