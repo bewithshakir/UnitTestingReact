@@ -30,7 +30,7 @@ const TruckLandingContent: React.FC<TruckLandingContentProps> = memo(() => {
   const [truckList, setTruckList] = React.useState([]);
   const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
   const [deliveryVehicleId, setDeliveryVehicleId] = React.useState('');
-  // const [resetTableCollaps, setResetTableCollaps] = React.useState(false);
+  const [resetTableCollaps, setResetTableCollaps] = React.useState(false);
 
 
   setVersion("NavLinks");
@@ -138,8 +138,8 @@ const handleMassAction = () => {
             getPages={fetchNextPage}
             searchTerm={searchTerm}
             noDataMsg={t("truckLanding.noTrucksMsg")}
-            // resetCollaps={resetTableCollaps}
-            // onResetTableCollaps={setResetTableCollaps}
+            resetCollaps={resetTableCollaps}
+            onResetTableCollaps={setResetTableCollaps}
             InnerTableComponent={
               {
                 ['LOCATIONS']: <Table primaryKey='id' id={deliveryVehicleId} headCells={headCellsLots} />,
