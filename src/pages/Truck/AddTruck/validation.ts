@@ -5,10 +5,10 @@ const dropDownSchema = Yup.object().shape({ label: Yup.string().required('Requir
 const statusDropDownSchema = Yup.object().shape({ label: Yup.string(), value: Yup.string() });
 
 const contactSchema = Yup.object().shape({
-    tankTcsId: Yup.string().matches(/^[0-9]+([.][0-9]+)?$/, 'Invalid ID.').required('Required'),
+    tcsRegisterId: Yup.string().matches(/^[0-9]+([.][0-9]+)?$/, 'Invalid ID.').required('Required'),
     tankFuelType: dropDownSchema,
-    tankMinCapacity: Yup.string().matches(/^[0-9]+([.][0-9]+)?$/, 'Invalid Min Capacity.').required('Required'),
-    tankMaxCapacity: Yup.string().matches(/^[0-9]+([.][0-9]+)?$/, 'Invalid Max Capacity.').required('Required')
+    minCapacityVol: Yup.string().matches(/^[0-9]+([.][0-9]+)?$/, 'Invalid Min Capacity.').required('Required'),
+    maxCapacityVol: Yup.string().matches(/^[0-9]+([.][0-9]+)?$/, 'Invalid Max Capacity.').required('Required')
 });
 
 const AddTruckValidationSchema = Yup.object().shape({

@@ -2,7 +2,10 @@ import { headerObj } from '../components/UIComponents/DataGird/grid.component';
 import { PositiveCricleIcon, ExpireWalletIcon, OilTankIcon, OrderIcon } from '../assets/icons';
 
 import { ParkingLocationIcon } from '../assets/icons';
+import { useTranslation } from 'react-i18next';
+import { TruckManagement } from '../pages/Truck/config';
 
+const { RowActionsOptions } = TruckManagement.LandingPage;
 
 export default class TruckModel {
     deliveryVehicleId: string;
@@ -73,4 +76,10 @@ export default class TruckModel {
             });
         });
     }
+
+    rowActions() {
+        const { t } = useTranslation();
+        return RowActionsOptions.map(actionItem => ({ ...actionItem, label: t(actionItem.label) }));
+    }
+
 }

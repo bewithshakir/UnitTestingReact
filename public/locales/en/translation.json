@@ -272,17 +272,22 @@
     "search": "Search",
     "noTrucksMsg": "Add Truck by clicking on the  Add Truck button."
   },
-  "addTruckParkingLot": {
-    "title": "Add Truck Parking lot",
-    "form": {
-      "parkingLocationNm": "TRUCK PARKING LOT NAME",
-      "title": "Fill all the mandatory * fields",
-      "addressLine1": "ADDRESS LINE 1",
-      "addressLine2": "ADDRESS LINE 2",
-      "city": "CITY",
-      "state": "STATE",
-      "postalCode": "POSTAL CODE",
-      "editTitle": "Edit Truck Parking lot"
+  "truckParkingLot": {
+    "search": "Truck Parking Lot Name",
+    "results found": "results found",
+    "result(s) found": "result(s) found",
+    "addTruckParkingLot": {
+      "title": "Add Truck Parking lot",
+      "form": {
+        "parkingLocationNm": "TRUCK PARKING LOT NAME",
+        "title": "Fill all the mandatory * fields",
+        "addressLine1": "ADDRESS LINE 1",
+        "addressLine2": "ADDRESS LINE 2",
+        "city": "CITY",
+        "state": "STATE",
+        "postalCode": "POSTAL CODE",
+        "editTitle": "Edit Truck Parking lot"
+      }
     }
   },
   "productManagement": {
@@ -356,7 +361,9 @@
     "citylabel": "City",
     "supplierrackheading": "SUPPLIER PRICE * (Fill all the Mandatory fields to select the price from the filtered list)",
     "supplierpriceheading": "Choose Supplier Price from below list",
-    "supplierpricenodatamsg": "Prices are not available. Please contact the support team."
+    "supplierpricenodatamsg": "Prices are not available. Please contact the support team.",
+    "addproductactiontext": "Add New Product or select the product from the table to edit the details",
+    "addproductopistext": "Fuel prices for Retail and Rack-based products are provided by the Oil Price Information Service (OPIS) are not fixed and are subject to change daily."
   },
   "assetManagement": {
     "asset": "Asset Type",
@@ -452,6 +459,7 @@
     "addAdditionalTank": "Add Additional Tank",
     "tank": "Tank",
     "tankDetails": "Tank Details",
-    "fillDetailsTitle": "Fill all the Mandatory * fields"
+    "fillDetailsTitle": "Fill all the Mandatory * fields",
+    "editTruck": "Edit Truck"
   }
 }
