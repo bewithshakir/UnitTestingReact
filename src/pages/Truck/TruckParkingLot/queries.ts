@@ -22,11 +22,12 @@ const fetchTruckParkingLotList = async (pageParam: number, searchTerm: string, s
             query.append(key, JSON.stringify(filterParams[key]));
         }
     }
+    const fuelTaxListEntitySet = `/api/truck-service/parking-locations?limit=${pageDataLimit}&offset=${pageParam}`;
+    const url = query ? `&countryCode=us${query.toString().length ? `&${query.toString()}` : ''}` : `&countryCode=us`;
 
-    const fuelTaxListEntitySet = `/api/truck-service/parking-locations?countryCode=us&limit=${pageDataLimit}&offset=${pageParam}`;
     const options: AxiosRequestConfig = {
         method: 'get',
-        url: fuelTaxListEntitySet
+        url: fuelTaxListEntitySet + url
     };
     const { data } = await axios(options);
     return data;

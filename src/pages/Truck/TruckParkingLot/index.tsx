@@ -39,7 +39,7 @@ const TruckParkingLot: React.FC<ContentProps> = () => {
     const [resetTableCollaps, setResetTableCollaps] = React.useState(false);
     const [searchTerm] = React.useState("");
 
-    const [drawerOpen, setDrawerOpen] = React.useState(false);
+    // const [drawerOpen, setDrawerOpen] = React.useState(false);
     const [custFilterPanelVisible, setCustFilterPanelVisible] = React.useState(false);
     const [filterData, setFilterData] = React.useState<{ [key: string]: string[] }>({});
 
@@ -48,14 +48,16 @@ const TruckParkingLot: React.FC<ContentProps> = () => {
     }, []);
 
     const handleCustFilterPanelOpen = () => {
-        setDrawerOpen(false);
+        // setDrawerOpen(false);
         setCustFilterPanelVisible(!custFilterPanelVisible);
     };
     const getFilterParams = (filterObj: { [key: string]: string[] }) => {
         setResetTableCollaps(true);
         setFilterData(filterObj);
     };
-    const handleCustFilterPanelClose = () => setCustFilterPanelVisible(false);
+    const handleCustFilterPanelClose = () => {
+        setCustFilterPanelVisible(false)
+    };
 
     const onSortBySlected = () => {
         // TODO
@@ -174,7 +176,7 @@ const TruckParkingLot: React.FC<ContentProps> = () => {
                         open={custFilterPanelVisible} headingText={"customer-filter-panel.header.filter"}
                         provideFilterParams={getFilterParams} onClose={handleCustFilterPanelClose}
                         fields={truckParkingLotObj.FilterByFields()}
-                        storeKey={'customerFilter'}
+                        storeKey={'truckParkingLotFilter'}
                     />
                 </Grid>
             </Grid>
