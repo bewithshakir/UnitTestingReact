@@ -63,17 +63,17 @@ export const routes: RouteObject[] = [
         path: "/customer/:customerId/parkingLots/viewLot/:parkinglotId",
         element: <CustomerViewParkingLot version='Breadcrumbs-Many' />
       },
-      { 
+      {
         path: "/customer/:customerId/dsps",
         element: <DspLandingContent version='Breadcrumbs-Single' />
       },
       {
         path: "/customer/:customerId/dsps/addDsp",
-        element: <AddDSP version='Breadcrumbs-Many'/>
+        element: <AddDSP version='Breadcrumbs-Many' />
       },
       {
         path: "/customer/:customerId/dsps/edit/:dspId",
-        element: <AddDSP version='Breadcrumbs-Many'/>
+        element: <AddDSP version='Breadcrumbs-Many' />
       },
       {
         path: "/customer/:customerId/Attachments",
@@ -81,7 +81,7 @@ export const routes: RouteObject[] = [
       },
       {
         path: "/customer/:customerId/AddAttachment",
-        element: <AddAttachment version='Breadcrumbs-Many'/>
+        element: <AddAttachment version='Breadcrumbs-Many' />
       }
     ]
   },
@@ -147,7 +147,11 @@ export const routes: RouteObject[] = [
   },
   {
     path: "/assetManagement/add",
-    element: <AddAsset version="Breadcrumbs-Single"/>,
+    element: <AddAsset version="Breadcrumbs-Single" />,
+  },
+  {
+    path: "/assetManagement/edit/:assetId",
+    element: <AddAsset version="Breadcrumbs-Single" />,
   },
   {
     path: "/trucks",
@@ -155,11 +159,11 @@ export const routes: RouteObject[] = [
   },
   {
     path: "/truckParkingLot",
-    element: <TruckParkingLot version="Breadcrumbs-Single" />,    
+    element: <TruckParkingLot version="Breadcrumbs-Single" />,
   },
   {
     path: "/truckParkingLot/add",
-    element: <AddTruckParkingLot version="Breadcrumbs-Single"/>,
+    element: <AddTruckParkingLot version="Breadcrumbs-Single" />,
   },
   {
     path: "/truckParkingLot/edit/:truckParkingId",

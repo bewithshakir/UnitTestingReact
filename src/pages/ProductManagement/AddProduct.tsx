@@ -14,7 +14,7 @@ import { formStatusObj, strCustomText, strCustomTextRetail, initFormValues, prod
 import { useGetProductTypes, useGetProductNames, useGetLotProductDetails, useGetPricingModel, useCreateProduct, useGetOPISRetail, useEditCustomProduct, SupplierPrice } from './queries';
 import { useAddedCustomerIdStore, useAddedCustomerNameStore, useShowConfirmationDialogBoxStore, useAddedParkingLotCityNmStore } from '../../store';
 import { AddProductValidationSchema } from './validation';
-import { totalPricePerGallon } from '../../utils/math.utils';
+import { totalPricePerGallon } from '../../utils/helperFunctions';
 
 interface FormStatusType {
     message: string
@@ -258,8 +258,6 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
 
     useGetLotProductDetails(lotId, productId, onGetProductSuccess, onGetProductError);
 
-    const totalPrice = totalPricePerGallon(formik.values.manualPriceAmt, formik.values.addedPriceAmt, formik.values.discountPriceAmt, 4);
-
     const handleProductTypeChange = (fieldName: string, value: any) => {
         if (formik.values?.pricingModel?.label === '') {
             formik.resetForm({});
@@ -495,7 +493,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                                         label={t("addProductFormLabels.totalpricelabel")}
                                         type='text'
                                         description=''
-                                        value={totalPrice}
+                                        value={totalPricePerGallon(formik.values.manualPriceAmt, formik.values.addedPriceAmt, formik.values.discountPriceAmt, 4)}
                                         disabled={true}
                                     />
                                 </Grid>

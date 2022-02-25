@@ -13,8 +13,6 @@ exports[`Given Bruger Menu on Product Landing Page Render Bruger Menu 1`] = `
         component={[Function]}
         viewBox="0 0 20 20"
       />
-<<<<<<< HEAD
-=======
     }
     variant="contained"
   />
@@ -82,46 +80,6 @@ exports[`Given Sortby Menu on Product Landing Page Render Sortby Menu 1`] = `
     disablePortal={true}
     open={false}
     placement="bottom-start"
-    transition={true}
-  >
-    <Component />
-  </ForwardRef(Popper)>
-</div>
-`;
-
-exports[`Render Product management landing Page Render Product management landing Page 1`] = `
-<ContextProvider
-  value={false}
->
-  <ContextProvider
-    value={
-      QueryClient {
-        "defaultOptions": Object {},
-        "mutationCache": MutationCache {
-          "config": Object {},
-          "listeners": Array [],
-          "mutationId": 0,
-          "mutations": Array [],
-        },
-        "mutationDefaults": Array [],
-        "queryCache": QueryCache {
-          "config": Object {},
-          "listeners": Array [],
-          "queries": Array [],
-          "queriesMap": Object {},
-        },
-        "queryDefaults": Array [],
-      }
->>>>>>> 8024f55 (supplier price popup)
-    }
-    variant="contained"
-  />
-  <ForwardRef(Popper)
-    anchorEl={null}
-    className="actions-popper"
-    disablePortal={true}
-    open={false}
-    placement="bottom-end"
     transition={true}
   >
     <Component />
