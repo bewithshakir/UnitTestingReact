@@ -4,7 +4,7 @@ import { Grid, FormControl } from "@mui/material";
 import { useTranslation } from 'react-i18next';
 import OpisRackCity from './OpisRackCity';
 import CheckboxSegment from './CheckboxSegement';
-import { calculateProductTotalPriceWithTaxes } from '../../utils/helperFunctions';
+import { calculateOPISTotalPriceWithTaxes } from '../../utils/helperFunctions';
 
 
 
@@ -37,7 +37,7 @@ export default function OpisRackSegment({ isDisabled, formik, editMode, showFuel
             <Grid item lg={5} md={8} sm={8} xs={8} mx={4} my={1} >
                 <Input
                     id='manualPriceAmt'
-                    label={t("addProductFormLabels.pricelabel")}
+                    label={t("addProductFormLabels.rackpricelabel")}
                     type='text'
                     helperText={(formik.touched.manualPriceAmt && formik.errors.manualPriceAmt) ? formik.errors.manualPriceAmt : undefined}
                     error={(formik.touched.manualPriceAmt && formik.errors.manualPriceAmt) ? true : false}
@@ -86,7 +86,7 @@ export default function OpisRackSegment({ isDisabled, formik, editMode, showFuel
                     label={'TOTAL PRICE PER GALLON (INCLUDING TAX)'}
                     type='text'
                     description=''
-                    value={calculateProductTotalPriceWithTaxes(formik.values.manualPriceAmt, formik.values.addedPriceAmt, formik.values.discountPriceAmt, finalRateValue, finalCPGValue)}
+                    value={calculateOPISTotalPriceWithTaxes(formik.values.manualPriceAmt, formik.values.addedPriceAmt, formik.values.discountPriceAmt, finalRateValue, finalCPGValue)}
                     disabled={true}
                 />
             </Grid>

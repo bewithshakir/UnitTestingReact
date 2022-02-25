@@ -9,7 +9,12 @@
         font-size: 14px;
     }
 
+    .opis-rack-info-text {
+        border: 1px solid #fbce06;
+        background: #FBCE061A 0% 0% no-repeat padding-box;
+    }
 }
+
 .productContainer {
     min-height: 100%; 
     .lastItem{
@@ -72,9 +77,9 @@
 
 .supplierRack{
     width: 100%;
-   & .css-hz1bth-MuiDialog-container{
+   & .MuiDialog-container.MuiDialog-scrollPaper{
        width: 100%;
-       & .css-1t1j96h-MuiPaper-root-MuiDialog-paper {
+       & .MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation24.MuiDialog-paper.MuiDialog-paperScrollPaper.MuiDialog-paperWidthSm {
            left: 1%;
             width: 100%;
             max-width: 95%;

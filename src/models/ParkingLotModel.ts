@@ -186,7 +186,7 @@ export default class ParkingLotModel {
                     }
                 ]
             },
-            { field: "fuelStatus", label: "FUEL", type: 'icons' },
+            { field: "fuelStatus", label: "FUEL", type: 'icons', width: "200px" },
             { field: "vehicles", label: "VEHICLES", type: 'button', icon: DriveEtaOutlinedIcon },
         ];
     }

@@ -116,3 +116,41 @@ export const useTruckColor = () => {
     });
 };
 
+
+
+const fetchTruckDetails = async (query: any) => {
+    const options: AxiosRequestConfig = {
+        method: 'get',
+        url: `/api/truck-service/delivery-vehicles/${query}`
+    };
+    return axios(options);
+};
+
+export const useGetEditTruckDetails = (query: any, onSuccess: any, onError: any) => {
+    return useQuery(['fetchTruckDetails'], () => fetchTruckDetails(query), {
+        onSuccess,
+        onError,
+        enabled: !!query,
+        retry: false,
+    });
+};
+
+const editTruck = async (payload: any,deliveryVehicleId: string) => {
+
+    const options: AxiosRequestConfig = {
+        method: 'put',
+        url: `/api/truck-service/delivery-vehicles/${deliveryVehicleId}`,
+        data: payload,
+    };
+    const { data } = await axios(options);
+    return data;
+};
+
+export const useEditTruckDetails = (deliveryVehicleId: string, onSuccess: any, onError: any) => {
+    return useMutation((payload: any) =>
+        editTruck(payload,deliveryVehicleId), {
+        onSuccess,
+        onError,
+        retry: false,
+    });
+};
