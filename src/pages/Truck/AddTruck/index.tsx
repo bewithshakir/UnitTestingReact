@@ -119,7 +119,6 @@ const AddTruck: React.FC<AddCustomerProps> = () => {
     //Edit OnPage Load
 
     const [isEditMode, setEditMode] = useState(false);
-    //const { data: fuelTypes } = useGetFuelTypeList();
 
     const populateDataInAllFields = (responseData: any) => {
         formik.resetForm({
