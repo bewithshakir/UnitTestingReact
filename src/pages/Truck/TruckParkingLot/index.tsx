@@ -180,7 +180,7 @@ const TruckParkingLot: React.FC<ContentProps> = () => {
                         noDataMsg='Add Truck parking lot by clicking on the "Add Truck Parking Lot" button.'
                     />
                     <RightInfoPanel panelType="dynamic-filter"
-                        open={custFilterPanelVisible} headingText={"customer-filter-panel.header.filter"}
+                        open={filterPanelVisible} headingText={"customer-filter-panel.header.filter"}
                         provideFilterParams={getFilterParams} onClose={handleTruckFilterClose}
                         fields={truckParkingLotObj.FilterByFields()}
                         storeKey={'truckParkingLotFilter'}
