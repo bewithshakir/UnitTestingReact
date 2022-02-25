@@ -40,23 +40,22 @@ const TruckParkingLot: React.FC<ContentProps> = () => {
     const [resetTableCollaps, setResetTableCollaps] = React.useState(false);
 
     // const [drawerOpen, setDrawerOpen] = React.useState(false);
-    const [custFilterPanelVisible, setCustFilterPanelVisible] = React.useState(false);
+    const [custFilterPanelVisible, setFilterPanelVisible] = React.useState(false);
     const [filterData, setFilterData] = React.useState<{ [key: string]: string[] }>({});
 
     useEffect(() => {
         setVersion("NavLinks");
     }, []);
 
-    const handleCustFilterPanelOpen = () => {
-        // setDrawerOpen(false);
-        setCustFilterPanelVisible(!custFilterPanelVisible);
+    const handleTruckFilterOpen = () => {
+        setFilterPanelVisible(!custFilterPanelVisible);
     };
     const getFilterParams = (filterObj: { [key: string]: string[] }) => {
         setResetTableCollaps(true);
         setFilterData(filterObj);
     };
-    const handleCustFilterPanelClose = () => {
-        setCustFilterPanelVisible(false);
+    const handleTruckFilterClose = () => {
+        setFilterPanelVisible(false);
     };
 
     const onSortBySlected = () => {
@@ -109,7 +108,7 @@ const TruckParkingLot: React.FC<ContentProps> = () => {
                                 data-testid="filter"
                                 types="filter"
                                 aria-label="dafault"
-                                onClick={handleCustFilterPanelOpen}
+                                onClick={handleTruckFilterOpen}
                                 startIcon={<FilterIcon />}
                             >
                                 {t("buttons.filterText")}
@@ -182,7 +181,7 @@ const TruckParkingLot: React.FC<ContentProps> = () => {
                     />
                     <RightInfoPanel panelType="dynamic-filter"
                         open={custFilterPanelVisible} headingText={"customer-filter-panel.header.filter"}
-                        provideFilterParams={getFilterParams} onClose={handleCustFilterPanelClose}
+                        provideFilterParams={getFilterParams} onClose={handleTruckFilterClose}
                         fields={truckParkingLotObj.FilterByFields()}
                         storeKey={'truckParkingLotFilter'}
                     />
