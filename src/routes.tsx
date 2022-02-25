@@ -168,5 +168,9 @@ export const routes: RouteObject[] = [
   {
     path: "/trucks/addTruck",
     element: <AddTruck version="Breadcrumbs-Single" />
+  },
+  {
+    path: "/trucks/editTruck/:deliveryVehicleId",
+    element: <AddTruck version="Breadcrumbs-Single" />
   }
 ];

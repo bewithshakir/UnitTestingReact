@@ -118,6 +118,8 @@ export default function HorizontalBar (props: HorizontalBarProps) {
       navigate('/assetManagement');
     } else if(pathname.includes('/trucks/addTruck')){
       navigate('/trucks');
+    } else if(pathname.includes('/trucks/editTruck')){
+      navigate('/trucks'); 
     } else {
       props.onBack();
     }
@@ -160,7 +162,9 @@ export default function HorizontalBar (props: HorizontalBarProps) {
       case pathname.includes('assetManagement/add'):
         return t('assetManagement.form.addTitle');
       case pathname.includes('trucks/addTruck'):
-        return t('addTruckFormLabels.addTruckTitle');  
+        return t('addTruckFormLabels.addTruckTitle'); 
+        case pathname.includes('trucks/editTruck'):
+          return t('addTruckFormLabels.editTruck');  
       default:
         return selectedCustomerName;
     }
