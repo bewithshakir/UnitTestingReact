@@ -40,7 +40,7 @@ const TruckParkingLot: React.FC<ContentProps> = () => {
     const [resetTableCollaps, setResetTableCollaps] = React.useState(false);
 
     // const [drawerOpen, setDrawerOpen] = React.useState(false);
-    const [custFilterPanelVisible, setFilterPanelVisible] = React.useState(false);
+    const [filterPanelVisible, setFilterPanelVisible] = React.useState(false);
     const [filterData, setFilterData] = React.useState<{ [key: string]: string[] }>({});
 
     useEffect(() => {
@@ -48,7 +48,7 @@ const TruckParkingLot: React.FC<ContentProps> = () => {
     }, []);
 
     const handleTruckFilterOpen = () => {
-        setFilterPanelVisible(!custFilterPanelVisible);
+        setFilterPanelVisible(true);
     };
     const getFilterParams = (filterObj: { [key: string]: string[] }) => {
         setResetTableCollaps(true);
