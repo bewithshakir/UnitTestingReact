@@ -183,6 +183,10 @@
       "overview": "Descripción general",
       "liveMap": "Mapa en vivo",
       "truckPlot": "Estacionamiento de camiones"
+    },
+    "filterForm": {
+      "state": "Estado",
+      "city": "Ciudad"
     }
   },
   "assetManagement": {

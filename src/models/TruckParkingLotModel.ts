@@ -81,8 +81,8 @@ export default class TruckParkingLotModel {
     FilterByFields(): IDynamicFilterProps['fields'] {
         return (
             [
-                { name: 'city', label: 'customer-filter-panel.city', fieldType: 'select', optionUrlKey: 'truckParkingLotFilter', optionAPIResponseKey: 'cities', initialValue: [] },
-                { name: 'state', label: 'customer-filter-panel.state', fieldType: 'select', optionUrlKey: 'truckParkingLotFilter', optionAPIResponseKey: 'states', initialValue: [] },
+                { name: 'city', label: 'truck.filterForm.city', fieldType: 'select', optionUrlKey: 'truckParkingLotFilter', optionAPIResponseKey: 'cities', initialValue: [] },
+                { name: 'state', label: 'truck.filterForm..state', fieldType: 'select', optionUrlKey: 'truckParkingLotFilter', optionAPIResponseKey: 'states', initialValue: [] },
             ]
         );
     }

@@ -56,7 +56,7 @@ const TruckParkingLot: React.FC<ContentProps> = () => {
         setFilterData(filterObj);
     };
     const handleCustFilterPanelClose = () => {
-        setCustFilterPanelVisible(false)
+        setCustFilterPanelVisible(false);
     };
 
     const onSortBySlected = () => {
