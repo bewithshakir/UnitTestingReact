@@ -455,6 +455,7 @@
     "addAdditionalTank": "Add Additional Tank",
     "tank": "Tank",
     "tankDetails": "Tank Details",
-    "fillDetailsTitle": "Fill all the Mandatory * fields"
+    "fillDetailsTitle": "Fill all the Mandatory * fields",
+    "editTruck": "Edit Truck"
   }
 }
