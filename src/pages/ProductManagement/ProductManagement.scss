@@ -35,10 +35,31 @@
     width: 100%;
     margin-top: 2px;
     background-color: var(--Darkgray);
+    padding: 0px;
     span{
         justify-content: left;
         color: var(--White);
         font-size: 14px;
+        width: 100%;
+    text-align: left;
+    .price-span{
+        height: 42px;
+        width: 100%;
+        padding: 8px 0px 0px 12px;
+        display: inline-block;
+        vertical-align: middle;
+    }
+    .clear-price-cross{
+        text-align: right;
+
+        display: inline-block;
+        vertical-align: middle;
+        .MuiIconButton-root{
+            color: var(--White);
+            width: 42px;
+            height: 42px;
+        }
+    }
     }
     &:hover{
         background-color: var(--Black);
@@ -76,8 +97,7 @@
        width: 100%;
        & .css-1t1j96h-MuiPaper-root-MuiDialog-paper {
            left: 1%;
-            width: 100%;
-            max-width: 95%;
+            max-width: 90%;
             min-height: 80%;
 
             & tbody.no-data .nodata {
@@ -102,6 +122,7 @@
            padding-right: 1%;
            padding-bottom: 1%;
            position: absolute;
+           background-color: var(--White);
            bottom: 10px; 
            width: 100%;
         }
