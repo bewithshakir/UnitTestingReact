@@ -12,6 +12,8 @@ import { useNavigate } from "react-router-dom";
 import TruckModel from '../../models/TruckModel';
 import { useTruckList } from './queries';
 import GridComponent from "../../components/UIComponents/DataGird/grid.component";
+import { DataGridActionsMenuOption } from '../../components/UIComponents/Menu/DataGridActionsMenu.component';
+import { ROW_ACTION_TYPES } from './config';
 
 export interface TruckLandingContentProps {
   version: string
@@ -21,6 +23,7 @@ export interface TruckLandingContentProps {
 const TruckLandingContent: React.FC<TruckLandingContentProps> = memo(() => {
   const truckObj = new TruckModel();
   const headCells = truckObj.fieldsToDisplay();
+  const rowActionOptions = truckObj.rowActions();
 
   const navigate = useNavigate();
   const [searchTerm] = React.useState("");
@@ -60,6 +63,15 @@ const handleMassAction = () => {
     const navigateAddtruck = () => {
         navigate(`/trucks/addTruck`);
     };
+
+    const handleRowAction = (action: DataGridActionsMenuOption, row: any) => {
+      switch (action.action) {
+          case ROW_ACTION_TYPES.EDIT:
+              navigate(`/trucks/editTruck/${row.deliveryVehicleId}`);
+              break;
+          default: return;
+      }
+  };
 
   return (
     <Box display="flex" mt={10} ml={8}>
@@ -122,11 +134,13 @@ const handleMassAction = () => {
             rows={truckObj.dataModel(truckList)}
             header={headCells}
             isLoading={isFetching || isLoading}
-            enableRowSelection={false}
+            enableRowSelection
             enableRowAction
             getPages={fetchNextPage}
             searchTerm={searchTerm}
             noDataMsg={t("truckLanding.noTrucksMsg")}
+            onRowActionSelect={handleRowAction}
+            rowActionOptions={rowActionOptions}
           />
         </Grid>
       </Grid>

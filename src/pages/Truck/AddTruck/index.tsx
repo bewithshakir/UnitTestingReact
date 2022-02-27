@@ -1,10 +1,9 @@
-
 import React, { useState } from 'react';
 import { Box, Container, Grid, Link, Typography } from '@mui/material';
 import { FieldArray, FormikProvider, useFormik } from 'formik';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from '../../../contexts/Theme/Theme.context';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { DeleteIcon } from '../../../assets/icons';
 import { Button } from '../../../components/UIComponents/Button/Button.component';
 import Input from '../../../components/UIComponents/Input/Input';
@@ -13,7 +12,7 @@ import MultiSelect from '../../../components/UIComponents/Select/MultiSelect';
 import ToastMessage from '../../../components/UIComponents/ToastMessage/ToastMessage.component';
 import AddTruckModel, { AddCustomerForm, TankDetails } from '../../../models/AddTruckModel';
 import AddTruckValidationSchema from './validation';
-import { useCreateTruck, useGetFuelTypeList, useGetTruckParkingList, useTruckColor } from './queries';
+import { useCreateTruck, useGetFuelTypeList, useGetTruckParkingList, useTruckColor, useGetEditTruckDetails, useEditTruckDetails } from './queries';
 import { PlusIcon } from '../../../assets/icons';
 import "./style.scss";
 import { maxTanks } from '../../../utils/constants';
@@ -73,7 +72,7 @@ const AddTruck: React.FC<AddCustomerProps> = () => {
     const { theme } = useTheme();
     const [formStatus, setFormStatus] = useState<IFormStatus>({message: '',type: ''});
     const addTruckStatusList = [{ label: 'Enabled', value: 'Y', },{ label: 'Disabled', value: 'N' }];
-
+    const { deliveryVehicleId }: any = useParams();
 
     const onAddTruckError = (err: any) => {
         const { data } = err.response;
@@ -105,10 +104,10 @@ const AddTruck: React.FC<AddCustomerProps> = () => {
                 "licenceNo": form.license,
                 "productCd": form.opexFuelType.value,
                 "deliveryVehicleTanks": form.tankDetails.map(tankObj => ({
-                    "tcsRegisterId": tankObj.tankTcsId,
+                    "tcsRegisterId": tankObj.tcsRegisterId,
                     "productCd": tankObj.tankFuelType.value,
-                    "minCapacityVol": tankObj.tankMinCapacity,
-                    "maxCapacityVol": tankObj.tankMaxCapacity
+                    "minCapacityVol": tankObj.minCapacityVol,
+                    "maxCapacityVol": tankObj.maxCapacityVol
                 })),
             };
             addNewTruck(apiPayload);
@@ -117,12 +116,132 @@ const AddTruck: React.FC<AddCustomerProps> = () => {
         }
     };
 
+    //Edit OnPage Load
+
+    const [isEditMode, setEditMode] = useState(false);
+
+    const populateDataInAllFields = (responseData: any) => {
+        formik.resetForm({
+            values: { ...responseData }
+        });
+    };
+
+
+    const onGetTruckDetailsSuccess = (response: any) => {
+
+        try {
+            if (response?.data) {
+                const finalData = {
+                    truckName: response.data.data.deliveryVehicleNm,
+                    license: response.data.data.licenceNo,
+                    vin: response.data.data.vinNo,
+                    makeModel: response.data.data.makeAndModelNm,
+                    color: truckColorList.find((item:any)=>{
+                        return item.value === response.data.data.colorCd?item:"";
+                    }),
+                   year: response.data.data.registrationYr,
+                   status: addTruckStatusList.find((item:any)=>{
+                    return item.value === response.data.data.activeInactiveInd?item:"";
+                    }),
+                    truckParkingLot: response.data.data.parkingLocations.map((item:any) => {
+                        return truckParkingLotList.find((locationItem:any) => {
+                            return locationItem.value === item.parkingLocationId? locationItem:"";
+                        });
+                    }),
+                    opexFuelType: fuelProductsList.find((item:any)=>{
+                        return item.value === response.data.data.productCd?item:"";
+                    }),
+                    tankDetails: response.data.data.deliveryVehicleTanks.map(function(item:any) {
+                        return {
+                            tcsRegisterId: item.tcsRegisterId,
+                            tankFuelType: fuelProductsList.find((data:any)=>{ return data.value === item.productCd?item:"" ;}),
+                            minCapacityVol: item.minCapacityVol,
+                            maxCapacityVol: item.maxCapacityVol,
+                        }; 
+                      })
+                };
+
+                populateDataInAllFields(finalData);
+                setEditMode(true);
+            }
+        } catch {
+            setFormStatus({ message: t("formStatusProps.error.message"), type: 'Error' });
+        }
+    };
+    const onGetTruckDetailsError = (err: any) => {
+        try {
+            const { data } = err.response;
+            setFormStatus({ message: data?.error?.message || formStatusProps.error.message, type: 'Error' });
+            formik.setSubmitting(false);
+        } catch (error) {
+            setFormStatus(formStatusProps.error);
+        }
+    };
+
+    useGetEditTruckDetails(deliveryVehicleId, onGetTruckDetailsSuccess, onGetTruckDetailsError);
+
+
+    const onSuccessEditTruck = () => {
+        isFormValidated(false);
+        setFormStatus({ message: t("formStatusProps.updated.message"), type: 'Success' });
+        formik.resetForm({ values: formik.values });
+    };
+
+    const onErrorEditTruck = (err: any) => {
+        try {
+            const { data } = err.response;
+            setFormStatus({ message: data?.error?.message || t("formStatusProps.error.message"), type: 'Error' });
+            formik.setSubmitting(false);
+        } catch (error: any) {
+            setFormStatus({ message: error?.message || t("formStatusProps.error.message"), type: 'Error' });
+        }
+    };
+
+    const { mutate: editTruck, isSuccess: isSuccessEditTruck, isError: isErrorEditTruck } = useEditTruckDetails(
+        deliveryVehicleId,
+        onSuccessEditTruck,
+        onErrorEditTruck
+    );
+
+
+    const updateTruckData = (form: AddTruckModel) => {
+        try {
+            const apiPayload = {
+                "colorCd": form.color.value,
+                "activeInactiveInd": form.status.value,
+                "parkingLocationIds": form.truckParkingLot.map((id) => {
+                    return id.value;
+                }),
+                "deliveryVehicleNm": form.truckName,
+                "makeAndModelNm": form.makeModel,
+                "vinNo": form.vin,
+                "registrationYr": form.year === ""?0:parseInt(form.year),
+                "registrationStateNm": 'us',
+                "licenceNo": form.license,
+                "productCd": form.opexFuelType.value,
+                "deliveryVehicleTanks": form.tankDetails.map(tankObj => ({
+                    "tcsRegisterId": tankObj.tcsRegisterId,
+                    "productCd": tankObj.tankFuelType.value,
+                    "minCapacityVol": tankObj.minCapacityVol,
+                    "maxCapacityVol": tankObj.maxCapacityVol
+                })),
+            };
+            editTruck(apiPayload);
+        } catch {
+            setFormStatus({ message: t("formStatusProps.error.message"), type: 'Error' });
+        }
+    };
+
     const formik = useFormik({
         initialValues: initialFormikValue,
         validationSchema: AddTruckValidationSchema,
         enableReinitialize: true,
         onSubmit: (values) => {
+            if (isEditMode) {
+                updateTruckData(values);
+            } else {
                 createNewTruck(values);
+            }
         },
     });
 
@@ -302,23 +421,23 @@ const AddTruck: React.FC<AddCustomerProps> = () => {
                                                 <Grid container item xs={11} md={11}>
                                                     <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
                                                         <Input
-                                                            id={`tankDetails[${index}].tankTcsId`}
+                                                            id={`tankDetails[${index}].tcsRegisterId`}
                                                             label={t("addTruckFormLabels.tankTcsId")}
                                                             type='text'
                                                             helperText={
                                                                 formik?.errors?.tankDetails && formik?.touched?.tankDetails &&
-                                                                    (formik.touched?.tankDetails?.[index]?.tankTcsId && ((formik.errors?.tankDetails?.[index] as TankDetails)?.tankTcsId))
+                                                                    (formik.touched?.tankDetails?.[index]?.tcsRegisterId && ((formik.errors?.tankDetails?.[index] as TankDetails)?.tcsRegisterId))
                                                                     ?
-                                                                    (formik.errors.tankDetails[index] as TankDetails).tankTcsId : undefined
+                                                                    (formik.errors.tankDetails[index] as TankDetails).tcsRegisterId : undefined
                                                             }
                                                             error={
                                                                 formik?.errors?.tankDetails && formik?.touched?.tankDetails &&
-                                                                    (formik.touched?.tankDetails?.[index]?.tankTcsId && ((formik.errors?.tankDetails?.[index] as TankDetails)?.tankTcsId))
+                                                                    (formik.touched?.tankDetails?.[index]?.tcsRegisterId && ((formik.errors?.tankDetails?.[index] as TankDetails)?.tcsRegisterId))
                                                                     ? true : false
                                                             }
                                                             description=''
                                                             required
-                                                            {...formik.getFieldProps(`tankDetails[${index}].tankTcsId`)}
+                                                            {...formik.getFieldProps(`tankDetails[${index}].tcsRegisterId`)}
                                                             
                                                         />
                                                     </Grid>
@@ -358,45 +477,45 @@ const AddTruck: React.FC<AddCustomerProps> = () => {
                                                     </Grid>
                                                     <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
                                                         <Input
-                                                            id={`tankDetails[${index}].tankMinCapacity`}
+                                                            id={`tankDetails[${index}].minCapacityVol`}
                                                             label={t("addTruckFormLabels.tankMinCapacity")}
                                                             type="text"
                                                             helperText={
                                                                 formik?.errors?.tankDetails && formik?.touched?.tankDetails &&
-                                                                    (formik.touched?.tankDetails?.[index]?.tankMinCapacity && ((formik.errors?.tankDetails?.[index] as TankDetails)?.tankMinCapacity))
+                                                                    (formik.touched?.tankDetails?.[index]?.minCapacityVol && ((formik.errors?.tankDetails?.[index] as TankDetails)?.minCapacityVol))
                                                                     ?
-                                                                    (formik.errors.tankDetails[index] as TankDetails).tankMinCapacity : undefined
+                                                                    (formik.errors.tankDetails[index] as TankDetails).minCapacityVol : undefined
                                                             }
                                                             error={
                                                                 formik?.errors?.tankDetails && formik?.touched?.tankDetails &&
-                                                                    (formik.touched?.tankDetails?.[index]?.tankMinCapacity && ((formik.errors?.tankDetails?.[index] as TankDetails)?.tankMinCapacity))
+                                                                    (formik.touched?.tankDetails?.[index]?.minCapacityVol && ((formik.errors?.tankDetails?.[index] as TankDetails)?.minCapacityVol))
                                                                     ? true : false
                                                             }
                                                             description=''
                                                             required
-                                                            {...formik.getFieldProps(`tankDetails[${index}].tankMinCapacity`)}
+                                                            {...formik.getFieldProps(`tankDetails[${index}].minCapacityVol`)}
                                                             
                                                         />
                                                     </Grid>
                                                     <Grid item xs={12} md={6} pl={2.5} pb={2.5}>
                                                         <Input
-                                                            id={`tankDetails[${index}].tankMaxCapacity`}
+                                                            id={`tankDetails[${index}].maxCapacityVol`}
                                                             label={t("addTruckFormLabels.tankMaxCapacity")}
                                                             type='text'
                                                             required
                                                             helperText={
                                                                 formik?.errors?.tankDetails && formik?.touched?.tankDetails &&
-                                                                    (formik.touched?.tankDetails?.[index]?.tankMaxCapacity && ((formik.errors?.tankDetails?.[index] as TankDetails)?.tankMaxCapacity))
+                                                                    (formik.touched?.tankDetails?.[index]?.maxCapacityVol && ((formik.errors?.tankDetails?.[index] as TankDetails)?.maxCapacityVol))
                                                                     ?
-                                                                    (formik.errors.tankDetails[index] as TankDetails).tankMaxCapacity : undefined
+                                                                    (formik.errors.tankDetails[index] as TankDetails).maxCapacityVol : undefined
                                                             }
                                                             error={
                                                                 formik?.errors?.tankDetails && formik?.touched?.tankDetails &&
-                                                                    (formik.touched?.tankDetails?.[index]?.tankMaxCapacity && ((formik.errors?.tankDetails?.[index] as TankDetails)?.tankMaxCapacity))
+                                                                    (formik.touched?.tankDetails?.[index]?.maxCapacityVol && ((formik.errors?.tankDetails?.[index] as TankDetails)?.maxCapacityVol))
                                                                     ? true : false
                                                             }
                                                             description=''
-                                                            {...formik.getFieldProps(`tankDetails[${index}].tankMaxCapacity`)}
+                                                            {...formik.getFieldProps(`tankDetails[${index}].maxCapacityVol`)}
                                                             
                                                         />
                                                     </Grid>
@@ -467,7 +586,8 @@ const AddTruck: React.FC<AddCustomerProps> = () => {
                                 </Box>
                                 <ToastMessage
                                     isOpen={
-                                        isSuccessAddTruck || isErrorAddTruck
+                                        isSuccessAddTruck || isErrorAddTruck ||
+                                        isSuccessEditTruck || isErrorEditTruck
                                     }
                                     data-testid="toaster-message"
                                     messageType={formStatus.type}

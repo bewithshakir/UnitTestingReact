@@ -51,7 +51,7 @@ const index: React.FC<ParkingLotsManagementProps> = memo(() => {
         if (data) {
             const list: any = [];
             data?.pages?.forEach((item: any) => {
-                list.push(...item.data.lots);
+                list.push(...item?.data?.lots);
             });
             setAllParkingLotList(list);
         }

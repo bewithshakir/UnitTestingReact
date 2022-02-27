@@ -4,10 +4,10 @@ export interface SelectProps {
 }
 
 export interface TankDetails {
-    tankTcsId: string,
+    tcsRegisterId: string,
     tankFuelType: SelectProps,
-    tankMinCapacity: string,
-    tankMaxCapacity: string
+    minCapacityVol: string,
+    maxCapacityVol: string
 }
 
 
@@ -56,10 +56,10 @@ export default class AddTruckModel {
         this.truckParkingLot = [];
         this.opexFuelType = { label: '', value: '' };
         this.tankDetails = [{
-            tankTcsId: '',
+            tcsRegisterId: '',
             tankFuelType: { label: '', value: '' },
-            tankMinCapacity: '',
-            tankMaxCapacity: '',
+            minCapacityVol: '',
+            maxCapacityVol: '',
         }];
     }
 

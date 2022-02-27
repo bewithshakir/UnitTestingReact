@@ -14,6 +14,7 @@ import { formStatusObj, strCustomText, strCustomTextRetail, initFormValues, prod
 import { useGetProductTypes, useGetProductNames, useGetLotProductDetails, useGetPricingModel, useCreateProduct, useGetOPISRetail, useEditCustomProduct, SupplierPrice } from './queries';
 import { useAddedCustomerIdStore, useAddedCustomerNameStore, useShowConfirmationDialogBoxStore, useAddedParkingLotCityNmStore } from '../../store';
 import { AddProductValidationSchema } from './validation';
+import './ProductManagement.scss';
 import { totalPricePerGallon } from '../../utils/helperFunctions';
 
 interface FormStatusType {
@@ -344,11 +345,24 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                 <Grid container direction="column"
                     className="productContainer">
                     <Grid item container lg={12} md={12} sm={12} xs={12}>
-                        {!isHiddenAddEditRow && (
-                            <>
-                                <Grid item lg={6} md={6} sm={8} xs={8} mx={4} my={1} >
-                                    <b>Add New Product or select the product from the table to edit the details</b>
+                        <>
+                           
+                                <Grid item lg={12} md={6} sm={8} xs={8} mx={4} my={1} >
+                                <b>{t("addProductFormLabels.addproductactiontext")}</b>
                                 </Grid>
+                                 
+                            <Grid item lg={12} md={6} sm={8} xs={8} mx={4} my={1} mb={3} >
+                                <Typography color="#000000DE" variant="h5" px={1} pt={1} pb={1} pl={2} className="opis-rack-info-text">
+                                    {t("addProductFormLabels.addproductopistext")}
+                                </Typography>
+                            </Grid>
+                                </>
+                        {!isHiddenAddEditRow && (
+                                <>
+                                <Grid item lg={6} md={6} sm={8} xs={8} mx={4} my={1} >
+                                    
+                                </Grid>
+
                                 <Grid item lg={4} md={6} sm={8} xs={8} mx={4} my={1} >
                                     <Button
                                         className='addProductBtn'
@@ -372,7 +386,8 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                                     </Button>
 
                                 </Grid>
-                            </>
+                                </>
+                           
                         )}
 
                         <Grid item md={12} mx={4} >
