@@ -37,27 +37,27 @@ describe('renders TruckLanding page component', ()=> {
     });
 });
 
-describe('Given Sortby Menu on FuelTax Landing Page-', () => {
+describe('Given Sortby Menu on Truck List Landing Page-', () => {
     const { SortByOptions } = TruckManagement.LandingPage;
     test('Render Sortby Menu', () => {
-        const FuelTaxSortbyMenu = shallow(
+        const TruckListSortbyMenu = shallow(
             <SortbyMenu
                 options={SortByOptions.map((sortByItem) => (sortByItem))}
                 onSelect={() => jest.fn()}
             />
         );
-        expect(FuelTaxSortbyMenu).toMatchSnapshot();
+        expect(TruckListSortbyMenu).toMatchSnapshot();
     });
 
     test('Sortby Menu Menu With Options', () => {
-        const FuelTaxSortbyMenu = shallow(
+        const TruckListSortbyMenu = shallow(
             <SortbyMenu
                 options={SortByOptions.map((sortByItem) => (sortByItem))}
                 onSelect={() => jest.fn()}
             />
         );
-        FuelTaxSortbyMenu.find(".btn-sortby").simulate('click');
-        expect(FuelTaxSortbyMenu.find(".btn-sortby").hasClass('active')).toBe(true);
-        expect(FuelTaxSortbyMenu.find('.sortby-popper').exists()).toBe(true);
+        TruckListSortbyMenu.find(".btn-sortby").simulate('click');
+        expect(TruckListSortbyMenu.find(".btn-sortby").hasClass('active')).toBe(true);
+        expect(TruckListSortbyMenu.find('.sortby-popper').exists()).toBe(true);
     });
 });
