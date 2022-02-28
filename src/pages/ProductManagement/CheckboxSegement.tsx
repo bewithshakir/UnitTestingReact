@@ -40,9 +40,25 @@ export default function CheckBoxSegment({ isDisabled, formik, showFuelTaxError, 
         }
     };
 
-    // const includeExemptionsFromGetProductDetails = () => {
+    const includeExemptionsFromGetProductDetails = (arr: Array<any>, rateCalcModified: number, CPGCalcModified: number) => {
+        let rcm = rateCalcModified;
+        let cpgcm = CPGCalcModified;
+        const taxArrEditProduct = arr.filter((obj: any) => formik?.values?.taxExemption.some((exStr: any) => obj.taxRateId === exStr));
+        taxArrEditProduct.forEach((obj: any) => {
+            formik.setFieldValue(`${obj.taxRateId}`, true);
+            let rQ = 0;
+            let cQ = 0;
 
-    // }
+            if (obj?.moneyPctIndicator?.toLowerCase() === 'p') {
+                rQ = Number((new Decimal(Number(obj.taxRateAmt))).dividedBy(100));
+                rcm = Number((new Decimal(rcm)).minus(Number(rQ)));
+            } else if (obj?.moneyPctIndicator?.toLowerCase() === 'm') {
+                cQ = Number(obj.taxRateAmt);
+                cpgcm = Number((new Decimal(cpgcm)).minus(Number(cQ)));
+            }
+        });
+        return { rateCalcModified: rcm, CPGCalcModified: cpgcm };
+    };
 
     const onTaxExsSuccess = (data: any) => {
         if (data && data.data && data.data.length > 0) {
@@ -67,42 +83,32 @@ export default function CheckBoxSegment({ isDisabled, formik, showFuelTaxError, 
                     const totalVal = new Decimal(Number(totalCPGCalc));
                     totalCPGCalc = Number(totalVal.plus(cpgQ));
                 }
-                if(isSaveCancelShown && checkBoxObj.taxRateTypeNm?.toLowerCase() ===  "ppd-sales-tax"){
+                if (isSaveCancelShown && checkBoxObj.taxRateTypeNm?.toLowerCase() === "ppd-sales-tax") {
                     ppdTaxAm = checkBoxObj.taxRateAmt;
                     ppdTaxId = checkBoxObj.taxRateId;
                 }
-                
+
             });
             let CPGCalcModified = totalCPGCalc;
-             
-            if(isSaveCancelShown && ppdTaxId){
+            let rateCalcModified = totalRateCalc;
+
+            if (isSaveCancelShown && ppdTaxId) {
                 formik.setFieldValue(`${ppdTaxId}`, true);
                 formik.setFieldValue('taxExemption', [ppdTaxId]);
                 CPGCalcModified = Number((new Decimal(totalCPGCalc)).minus(Number(ppdTaxAm)));
-            } 
+            }
 
-            if( formik?.values?.taxExemption && formik?.values?.taxExemption.length>0 ){
-                const taxArrEditProduct =  arr.filter((obj:any) => formik?.values?.taxExemption.some((exStr:any) => obj.taxRateId === exStr));  
-                taxArrEditProduct.forEach((obj:any)=>{
-                    formik.setFieldValue(`${obj.taxRateId}`, true);
-                    
-                    if (obj?.moneyPctIndicator?.toLowerCase() === 'p') {
-                        const rq = Number((new Decimal(Number(obj.taxRateAmt))).dividedBy(100));
-                        CPGCalcModified = Number((new Decimal(CPGCalcModified)).minus(Number(rq)));
-        
-                    } else if (obj?.moneyPctIndicator?.toLowerCase() === 'm') {
-                        const cQ = Number(obj.taxRateAmt);
-                        CPGCalcModified = Number((new Decimal(CPGCalcModified)).minus(Number(cQ)));
-        
-                    }
-                });
+            if (!isSaveCancelShown && isDisabled && formik?.values?.taxExemption && formik?.values?.taxExemption.length > 0) {
+                const exmptionsObjModified = includeExemptionsFromGetProductDetails(arr, rateCalcModified, CPGCalcModified);
+                rateCalcModified = exmptionsObjModified.rateCalcModified;
+                CPGCalcModified = exmptionsObjModified.CPGCalcModified;
 
             }
 
             updateTotalRate(totalRateCalc);
             updateTotalCPG(totalCPGCalc);
 
-            updateFinalRate(totalRateCalc);
+            updateFinalRate(rateCalcModified);
             updateFinalCPG(CPGCalcModified);
 
             updateTaxExemptionList(arr);

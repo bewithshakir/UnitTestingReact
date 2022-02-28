@@ -1,115 +1,128 @@
-.product-management-container{
-    padding: 0;
+.product-management-container {
+  padding: 0;
 }
- 
-.productForm{
-    min-height: calc(100vh - 200px);
-    height: 100%;
-    .MuiInputLabel-formControl{
-        font-size: 14px;
-    }
 
-    .opis-rack-info-text {
-        border: 1px solid #fbce06;
-        background: #FBCE061A 0% 0% no-repeat padding-box;
-    }
+.productForm {
+  min-height: calc(100vh - 200px);
+  height: 100%;
+  .MuiInputLabel-formControl {
+    font-size: 14px;
+  }
+
+  .opis-rack-info-text {
+    border: 1px solid #fbce06;
+    background: #fbce061a 0% 0% no-repeat padding-box;
+  }
+
+  .multi-select__control--is-disabled {
+    background: var(--Lightgray_4) 0% 0% no-repeat padding-box;
+    color: var(--Lightergray);
+    border: 1px solid var(--Lightgray_2);
+    opacity: 1;
+  }
+
+ 
 }
 
 .productContainer {
-    min-height: 100%; 
-    .lastItem{
-        margin-top: auto; 
-        .cancelButton{
-            margin-top: auto;
-            margin-bottom: 34px;
-        }
-      };
-     
-
-  } 
-  .supplierRackBtn {
-      width: 200px;
+  min-height: 100%;
+  .lastItem {
+    margin-top: auto;
+    .cancelButton {
+      margin-top: auto;
+      margin-bottom: 34px;
+    }
   }
+}
+.supplierRackBtn {
+  width: 200px;
+}
 
 .masterRightLayout {
-    background: var(--Lightgray_4); 
-    min-height: 100%; 
+  background: var(--Lightgray_4);
+  min-height: 100%;
 }
 
-.supplier-modal-btn{
-    width: 100%;
-    margin-top: 2px;
-    background-color: var(--Darkgray);
-    span{
-        justify-content: left;
-        color: var(--White);
-        font-size: 14px;
-    }
-    &:hover{
-        background-color: var(--Black);
-        color: var(--White);
-    } 
-    .MuiButton-endIcon{
-        right: 18px;
-        position: absolute;
-    }
-
+.supplier-modal-btn {
+  width: 100%;
+  margin-top: 2px;
+  background-color: var(--Darkgray);
+  span {
+    justify-content: left;
+    color: var(--White);
+    font-size: 14px;
+  }
+  &:hover {
+    background-color: var(--Black);
+    color: var(--White);
+  }
+  .MuiButton-endIcon {
+    right: 18px;
+    position: absolute;
+  }
 }
 
-.checkbox-heading{
-    font-size: 12px;
-    color: var(--Darkgray);
+.modal-btn-viewmode{
+    background: var(--Lightgray_4) 0% 0% no-repeat padding-box;
+    border: 1px solid var(--Lightgray_2);
+    opacity: 1;
+}
+
+.checkbox-heading {
+  font-size: 12px;
+  color: var(--Darkgray);
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+.price-heading {
+  font-size: 11px;
+}
+
+.checkboxlist-wrapper {
+  .MuiFormControlLabel-root {
     margin-bottom: 5px;
-    font-weight: bold;
-}
-.price-heading{
-    font-size: 11px;
-}
-
-.checkboxlist-wrapper{
-    .MuiFormControlLabel-root{
-        margin-bottom: 5px;
-        .PrivateSwitchBase-root-5{
-            margin-left: -8px;
-        }
+    .PrivateSwitchBase-root-5 {
+      margin-left: -8px;
     }
+  }
 }
 
-.supplierRack{
+.supplierRack {
+  width: 100%;
+  & .MuiDialog-container.MuiDialog-scrollPaper {
     width: 100%;
-   & .MuiDialog-container.MuiDialog-scrollPaper{
-       width: 100%;
-       & .MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation24.MuiDialog-paper.MuiDialog-paperScrollPaper.MuiDialog-paperWidthSm {
-           left: 1%;
-            width: 100%;
-            max-width: 95%;
-            min-height: 80%;
+    &
+      .MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation24.MuiDialog-paper.MuiDialog-paperScrollPaper.MuiDialog-paperWidthSm {
+      left: 1%;
+      width: 100%;
+      max-width: 95%;
+      min-height: 80%;
 
-            & tbody.no-data .nodata {
-                z-index: 9999;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                height: 35%;
-                left: 50%;
-                transform: translate(-50%, 50%);
-                position: absolute;
-       }
-   }
-   & .supplierRack-dialog-container{
-        width:100%;
-        & .supplierRack-content{
-            width:100%;
-            padding-left: 0;
-            padding-right: 0;
-        }
-        & .supplierRack-dialog-actions{ 
-           padding-right: 1%;
-           padding-bottom: 1%;
-           position: absolute;
-           bottom: 10px; 
-           width: 100%;
-        }
+      & tbody.no-data .nodata {
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 35%;
+        left: 50%;
+        transform: translate(-50%, 50%);
+        position: absolute;
+      }
+    }
+    & .supplierRack-dialog-container {
+      width: 100%;
+      & .supplierRack-content {
+        width: 100%;
+        padding-left: 0;
+        padding-right: 0;
+      }
+      & .supplierRack-dialog-actions {
+        padding-right: 1%;
+        padding-bottom: 1%;
+        position: absolute;
+        bottom: 10px;
+        width: 100%;
+      }
     }
   }
 }
