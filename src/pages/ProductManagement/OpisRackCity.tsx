@@ -186,7 +186,7 @@ export default function OpisRackCity({ isDisabled, formik, editMode, setSupplier
         <Grid item lg={5} md={8} sm={8} xs={8} mx={4} my={1} >
         </Grid>
         <Grid item lg={5} md={8} sm={8} xs={8} mx={4} my={1} >
-            <SupplierRack formik={formik} isDisabled={isDisabled} setSupplierPrice={setSupplierPrice} resetSupplierValue={resetSupplierValue} />
+            <SupplierRack formik={formik} isDisabled={isDisabled} setSupplierPrice={setSupplierPrice} resetSupplierValue={resetSupplierValue} isSaveCancelShown={isSaveCancelShown} />
         </Grid>
         <Grid item lg={5} md={8} sm={8} xs={8} mx={4} my={1} >
         </Grid>

@@ -76,7 +76,7 @@ export default function OpisRackSegment({ isDisabled, formik, editMode, showFuel
             </Grid>
             <Grid item lg={5} md={8} sm={8} xs={8} mx={4} my={1}>
                 <FormControl className='checkboxlist-wrapper' sx={{ m: 3 }}>
-                    <CheckboxSegment formik={formik} isDisabled={isDisabled} showFuelTaxError={showFuelTaxError} fetchTaxList={fetchTaxList} setFetchTaxList={setFetchTaxList} revertFinalRateAndAmount={calculateFinalPrice} />
+                    <CheckboxSegment formik={formik} isDisabled={isDisabled} showFuelTaxError={showFuelTaxError} fetchTaxList={fetchTaxList} setFetchTaxList={setFetchTaxList} revertFinalRateAndAmount={calculateFinalPrice} isSaveCancelShown={isSaveCancelShown} />
                 </FormControl>
             </Grid>
             <Grid item lg={5} md={8} sm={8} xs={8} mx={4} my={1} >

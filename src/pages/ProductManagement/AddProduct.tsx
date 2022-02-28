@@ -16,6 +16,7 @@ import { useAddedCustomerIdStore, useAddedCustomerNameStore, useShowConfirmation
 import { AddProductValidationSchema } from './validation';
 import './ProductManagement.scss';
 import { totalPricePerGallon } from '../../utils/helperFunctions';
+import { truncateDecimals } from '../../utils/math.utils';
 
 interface FormStatusType {
     message: string
@@ -247,10 +248,10 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                     obj.branded =   [{ label: lotProduct?.opisRackInfo?.brand, value: lotProduct?.opisRackInfo?.brand }];
                     obj.actualProduct =   [{ label: lotProduct?.opisRackInfo?.actualProduct, value: lotProduct?.opisRackInfo?.actualProduct }];
                     obj.taxExemption = JSON.parse(JSON.stringify(lotProduct?.opisRackInfo?.taxExemption));
-                    obj.opisName = lotProduct?.productNm;
-                    obj.supplierPrice = lotProduct?.opisRackInfo?.grossPrice;
+                    obj.supplierPrice =  truncateDecimals((lotProduct?.opisRackInfo?.grossPrice * .01), 4);
+                    obj.manualPriceAmt = truncateDecimals((lotProduct?.opisRackInfo?.grossPrice * .01), 4);
+                    obj.opisName = lotProduct?.opisRackInfo?.opisProductName;
                 }
-                
                 setInitialFormikValues(obj);
                 setApplicableProductId(lotProduct?.applicableProductId);
                 setIsDisabled(true);

@@ -13,7 +13,8 @@ type props = {
     isDisabled: boolean,
     formik: any,
     setSupplierPrice: (value: any) => any
-    resetSupplierValue?: any
+    resetSupplierValue?: any,
+    isSaveCancelShown: boolean
 }
 
 interface GeneralOptions {
@@ -22,7 +23,7 @@ interface GeneralOptions {
 }
 
 
-export default function SupplierRack({ isDisabled, formik, setSupplierPrice, resetSupplierValue }: props) {
+export default function SupplierRack({ isDisabled, formik, setSupplierPrice, resetSupplierValue, isSaveCancelShown }: props) {
 
     const { t } = useTranslation();
     const [open, setOpen] = useState(false);
@@ -44,7 +45,10 @@ export default function SupplierRack({ isDisabled, formik, setSupplierPrice, res
     }, [formik]);
 
     useEffect(() => {
-        resetSupplierSelection();
+        if(isSaveCancelShown){
+            resetSupplierSelection();
+        }
+        
     }, [resetSupplierValue]);
 
     const handleClickOpen = () => {
@@ -83,6 +87,7 @@ export default function SupplierRack({ isDisabled, formik, setSupplierPrice, res
         endIcon: <CloseIcon key={'dummyKey1'} className='info_panel_close_icon' color='var(--White)'
         />
     } : {};
+
     return (
         <React.Fragment>
             <h4 className='checkbox-heading price-heading'> {t("addProductFormLabels.supplierrackheading")} </h4>
