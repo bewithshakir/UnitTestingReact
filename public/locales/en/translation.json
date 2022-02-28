@@ -460,6 +460,10 @@
     "tank": "Tank",
     "tankDetails": "Tank Details",
     "fillDetailsTitle": "Fill all the Mandatory * fields",
-    "editTruck": "Edit Truck"
+    "editTruck": "Edit Truck",
+    "sortBy": {
+      "truckname_atoz": "Truck Name A-Z",
+      "truckname_ztoa": "Truck Name Z-A"
+    } 
   }
 }
