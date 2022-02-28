@@ -1591,6 +1591,7 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                                             <ForwardRef(Popper)
                                               anchorEl={null}
                                               className="sortby-popper"
+                                              data-testid="sortby-dropdown"
                                               disablePortal={true}
                                               open={false}
                                               placement="bottom-start"

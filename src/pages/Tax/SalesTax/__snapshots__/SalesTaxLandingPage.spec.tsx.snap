@@ -14,6 +14,7 @@ exports[`Given Sortby Menu on SalesTax Landing Page Render Sortby Menu 1`] = `
   <ForwardRef(Popper)
     anchorEl={null}
     className="sortby-popper"
+    data-testid="sortby-dropdown"
     disablePortal={true}
     open={false}
     placement="bottom-start"
@@ -1699,6 +1700,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                             <ForwardRef(Popper)
                                               anchorEl={null}
                                               className="sortby-popper"
+                                              data-testid="sortby-dropdown"
                                               disablePortal={true}
                                               open={false}
                                               placement="bottom-start"
@@ -6505,6 +6507,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                         <ForwardRef(Drawer)
                           anchor="right"
                           className="right_panel_main_class customer_filter_panel"
+                          data-testid="right-drawer"
                           open={false}
                           variant="temporary"
                         >
@@ -6518,6 +6521,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                               }
                             }
                             className="MuiDrawer-root MuiDrawer-modal right_panel_main_class customer_filter_panel"
+                            data-testid="right-drawer"
                             hideBackdrop={false}
                             open={false}
                             ownerState={
@@ -6557,6 +6561,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                   />,
                                 ],
                                 "className": "right_panel_main_class customer_filter_panel",
+                                "data-testid": "right-drawer",
                                 "elevation": 16,
                                 "open": false,
                                 "variant": "temporary",
@@ -6573,6 +6578,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                 }
                               }
                               className="MuiDrawer-root MuiDrawer-modal right_panel_main_class customer_filter_panel css-j8ofbm-MuiDrawer-root"
+                              data-testid="right-drawer"
                               hideBackdrop={false}
                               open={false}
                             >
@@ -6647,6 +6653,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                     },
                                   }
                                 }
+                                data-testid="right-drawer"
                                 disableAutoFocus={false}
                                 disableEnforceFocus={false}
                                 disableEscapeKeyDown={false}

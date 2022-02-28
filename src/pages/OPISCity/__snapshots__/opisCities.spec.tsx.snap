@@ -1733,6 +1733,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                             <ForwardRef(Popper)
                                               anchorEl={null}
                                               className="sortby-popper"
+                                              data-testid="sortby-dropdown"
                                               disablePortal={true}
                                               open={false}
                                               placement="bottom-start"
@@ -6671,6 +6672,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                         <ForwardRef(Drawer)
                           anchor="right"
                           className="right_panel_main_class customer_filter_panel"
+                          data-testid="right-drawer"
                           open={false}
                           variant="temporary"
                         >
@@ -6684,6 +6686,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                               }
                             }
                             className="MuiDrawer-root MuiDrawer-modal right_panel_main_class customer_filter_panel"
+                            data-testid="right-drawer"
                             hideBackdrop={false}
                             open={false}
                             ownerState={
@@ -6723,6 +6726,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                   />,
                                 ],
                                 "className": "right_panel_main_class customer_filter_panel",
+                                "data-testid": "right-drawer",
                                 "elevation": 16,
                                 "open": false,
                                 "variant": "temporary",
@@ -6739,6 +6743,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                 }
                               }
                               className="MuiDrawer-root MuiDrawer-modal right_panel_main_class customer_filter_panel css-j8ofbm-MuiDrawer-root"
+                              data-testid="right-drawer"
                               hideBackdrop={false}
                               open={false}
                             >
@@ -6813,6 +6818,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                     },
                                   }
                                 }
+                                data-testid="right-drawer"
                                 disableAutoFocus={false}
                                 disableEnforceFocus={false}
                                 disableEscapeKeyDown={false}
