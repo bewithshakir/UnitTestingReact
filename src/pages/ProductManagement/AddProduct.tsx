@@ -176,7 +176,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
         return (!formik.isValid || !formik.dirty) || formik.isSubmitting;
     };
     const disableCancelBtn = () => {
-        return !formik.dirty;
+        return !editMode ;
     };
 
     const handleFormDataChange = () => {
@@ -251,7 +251,9 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                     obj.supplierPrice =  truncateDecimals((lotProduct?.opisRackInfo?.grossPrice * .01), 4);
                     obj.manualPriceAmt = truncateDecimals((lotProduct?.opisRackInfo?.grossPrice * .01), 4);
                     obj.opisName = lotProduct?.opisRackInfo?.opisProductName;
+                    setFuelTaxError('');
                 }
+
                 setInitialFormikValues(obj);
                 setApplicableProductId(lotProduct?.applicableProductId);
                 setIsDisabled(true);
