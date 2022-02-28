@@ -117,45 +117,15 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
         );
     };
 
-    const dataToRenderRow = (data: any, key: string) => {
-        const tempData: any = [];
-            data?.map((icon: any, index: number) => {
-                tempData.push(
-                    <ImageListItem key={index}>
-                        <Icon sx={key === 'fuelStatus' ? tableFuelIconsSX : tableIconsSX} component={key === 'fuelStatus' ? getProductIcon(icon?.productIcon?.productIconNm) : icon} />
-                    </ImageListItem>
-                );
-            }
-        );
-        return tempData;
-    };
-
     const renderIcons = (key: string, data: any, align: string | undefined) => {
         if (data?.length) {
-            if (data?.length <= 5) {
-                return (<ImageList sx={{ ...tableImagesIconListSX, justifyContent: align }} gap={0} cols={5}>
-                            {dataToRenderRow(data?.slice(0,5), key) }
-                </ImageList>);
-            }
-            else if (data?.length > 5 && data?.length <= 10) {
-                return (<><ImageList sx={{ ...tableImagesIconListSX, justifyContent: align }} gap={0} cols={5}>
-                            {dataToRenderRow(data?.slice(0, 5), key) }
-                </ImageList >
-                <ImageList sx={{ ...tableImagesIconListSX, justifyContent: align }} gap={0} cols={5}>
-                            {dataToRenderRow(data?.slice(5, 10), key) }
-                </ImageList ></>);
-            }
-            else {
-                return (<><ImageList sx={{ ...tableImagesIconListSX, justifyContent: align }} gap={0} cols={5}>
-                            {dataToRenderRow(data?.slice(0,5), key) }
-                </ImageList>
-                <ImageList sx={{ ...tableImagesIconListSX, justifyContent: align }} gap={0} cols={5}>
-                            {dataToRenderRow(data?.slice(5,10), key) }
-                </ImageList>
-                <ImageList sx={{ ...tableImagesIconListSX, justifyContent: align }} gap={0} cols={5}>
-                            {dataToRenderRow(data?.slice(10), key) }
-                </ImageList></>);
-            }
+            return (<ImageList sx={{ ...tableImagesIconListSX, justifyContent: align }} gap={0} cols={5}>
+                { data?.map((icon: any, index: number) => 
+                    <ImageListItem key={index} >
+                        <Icon sx={key === 'fuelStatus' ? tableFuelIconsSX : tableIconsSX} component={key === 'fuelStatus' ? getProductIcon(icon?.productIcon?.productIconNm) : icon} />
+                    </ImageListItem>
+                )}
+            </ImageList>);
         }
     };
 
@@ -357,7 +327,7 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
                         </TableRow>
                         <TableRow>
                             <TableCell className="grid-cell" colSpan={12}>
-                                <Collapse in={(rowIndex === selectedRowIndex) && selectedColIndex >= 0 ? true : false} timeout="auto" unmountOnExit>
+                                <Collapse in={(rowIndex === selectedRowIndex) && selectedColIndex >= 0 ? true : false} timeout="auto" unmountOnExit style={{ position: "sticky"}}>
                                     {(props.InnerTableComponent && selectedColIndex >= 0) && props.InnerTableComponent[props.headCells[selectedColIndex].label]}
                                 </Collapse>
                             </TableCell>

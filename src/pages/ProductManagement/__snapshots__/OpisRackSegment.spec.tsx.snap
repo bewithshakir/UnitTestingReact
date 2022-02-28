@@ -10529,7 +10529,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
               disabled={true}
               error={false}
               id="manualPriceAmt"
-              label="addProductFormLabels.pricelabel"
+              label="addProductFormLabels.rackpricelabel"
               required={true}
               type="text"
               width="100%"
@@ -10569,7 +10569,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
             disabled={true}
             error={false}
             id="manualPriceAmt"
-            label="addProductFormLabels.pricelabel"
+            label="addProductFormLabels.rackpricelabel"
             required={true}
             type="text"
             width="100%"
@@ -10592,7 +10592,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                   className="MuiFormControl-root formInput"
                 >
                   <WithStyles(ForwardRef(InputLabel))
-                    aria-labelledby="addProductFormLabels.pricelabel"
+                    aria-labelledby="addProductFormLabels.rackpricelabel"
                     aria-required={true}
                     htmlFor="manualPriceAmt"
                     shrink={true}
@@ -10603,7 +10603,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                     }
                   >
                     <ForwardRef(InputLabel)
-                      aria-labelledby="addProductFormLabels.pricelabel"
+                      aria-labelledby="addProductFormLabels.rackpricelabel"
                       aria-required={true}
                       classes={
                         Object {
@@ -10630,7 +10630,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                       }
                     >
                       <WithStyles(ForwardRef(FormLabel))
-                        aria-labelledby="addProductFormLabels.pricelabel"
+                        aria-labelledby="addProductFormLabels.rackpricelabel"
                         aria-required={true}
                         className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink"
                         classes={
@@ -10651,7 +10651,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                         }
                       >
                         <ForwardRef(FormLabel)
-                          aria-labelledby="addProductFormLabels.pricelabel"
+                          aria-labelledby="addProductFormLabels.rackpricelabel"
                           aria-required={true}
                           className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink"
                           classes={
@@ -10675,7 +10675,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                           }
                         >
                           <label
-                            aria-labelledby="addProductFormLabels.pricelabel"
+                            aria-labelledby="addProductFormLabels.rackpricelabel"
                             aria-required={true}
                             className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink"
                             data-shrink={true}
@@ -10687,7 +10687,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                             }
                           >
                             <b>
-                              ADDPRODUCTFORMLABELS.PRICELABEL
+                              ADDPRODUCTFORMLABELS.RACKPRICELABEL
                               <span
                                 className="super"
                               >

@@ -1177,6 +1177,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                               "field": "fuelStatus",
                               "label": "FUEL",
                               "type": "icons",
+                              "width": "200px",
                             },
                             Object {
                               "field": "vehicles",
@@ -4364,6 +4365,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                   "field": "fuelStatus",
                                   "label": "FUEL",
                                   "type": "icons",
+                                  "width": "200px",
                                 },
                                 Object {
                                   "field": "vehicles",
@@ -4599,6 +4601,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                               "field": "fuelStatus",
                               "label": "FUEL",
                               "type": "icons",
+                              "width": "200px",
                             },
                             Object {
                               "field": "vehicles",
@@ -4719,6 +4722,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                           "field": "fuelStatus",
                                           "label": "FUEL",
                                           "type": "icons",
+                                          "width": "200px",
                                         },
                                         Object {
                                           "field": "vehicles",
@@ -4803,6 +4807,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                           "field": "fuelStatus",
                                           "label": "FUEL",
                                           "type": "icons",
+                                          "width": "200px",
                                         },
                                         Object {
                                           "field": "vehicles",
@@ -4874,6 +4879,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                           "field": "fuelStatus",
                                           "label": "FUEL",
                                           "type": "icons",
+                                          "width": "200px",
                                         },
                                         Object {
                                           "field": "vehicles",
@@ -5006,6 +5012,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                                 "field": "fuelStatus",
                                                 "label": "FUEL",
                                                 "type": "icons",
+                                                "width": "200px",
                                               },
                                               Object {
                                                 "field": "vehicles",
@@ -5090,6 +5097,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                                 "field": "fuelStatus",
                                                 "label": "FUEL",
                                                 "type": "icons",
+                                                "width": "200px",
                                               },
                                               Object {
                                                 "field": "vehicles",
@@ -5161,6 +5169,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                                 "field": "fuelStatus",
                                                 "label": "FUEL",
                                                 "type": "icons",
+                                                "width": "200px",
                                               },
                                               Object {
                                                 "field": "vehicles",
@@ -5287,6 +5296,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                             "field": "fuelStatus",
                                             "label": "FUEL",
                                             "type": "icons",
+                                            "width": "200px",
                                           },
                                           Object {
                                             "field": "vehicles",
@@ -5392,7 +5402,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                                   className="header-options"
                                                   size="small"
                                                   sortDirection={false}
-                                                  width="auto"
+                                                  width="200px"
                                                 >
                                                   FUEL
                                                 </ForwardRef(TableCell)>
@@ -5504,7 +5514,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                                           className="header-options"
                                                           size="small"
                                                           sortDirection={false}
-                                                          width="auto"
+                                                          width="200px"
                                                         >
                                                           FUEL
                                                         </ForwardRef(TableCell)>,
@@ -5955,7 +5965,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                                     key="fuelStatus"
                                                     size="small"
                                                     sortDirection={false}
-                                                    width="auto"
+                                                    width="200px"
                                                   >
                                                     <MuiTableCellRoot
                                                       aria-sort={null}
@@ -5972,17 +5982,17 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                                           "sortDirection": false,
                                                           "stickyHeader": true,
                                                           "variant": "head",
-                                                          "width": "auto",
+                                                          "width": "200px",
                                                         }
                                                       }
                                                       scope="col"
-                                                      width="auto"
+                                                      width="200px"
                                                     >
                                                       <th
                                                         aria-sort={null}
                                                         className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeSmall header-options css-1h37f49-MuiTableCell-root"
                                                         scope="col"
-                                                        width="auto"
+                                                        width="200px"
                                                       >
                                                         FUEL
                                                       </th>
@@ -6122,6 +6132,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                             "field": "fuelStatus",
                                             "label": "FUEL",
                                             "type": "icons",
+                                            "width": "200px",
                                           },
                                           Object {
                                             "field": "vehicles",
@@ -6193,6 +6204,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                             "field": "fuelStatus",
                                             "label": "FUEL",
                                             "type": "icons",
+                                            "width": "200px",
                                           },
                                           Object {
                                             "field": "vehicles",

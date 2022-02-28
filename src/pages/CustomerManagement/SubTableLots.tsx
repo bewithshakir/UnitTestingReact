@@ -38,6 +38,7 @@ export default function InnerTable(props:props) {
                 isChildTable
                 enableRowAction
                 getPages={fetchNextPage} 
+                rowActionOptions={[{ label: "Edit" }, { label: "View" }]}
                 />
         </div>
     );

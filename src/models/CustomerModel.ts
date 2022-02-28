@@ -129,7 +129,7 @@ export default class CustomerModel {
         const { CUSTOMER_NAME, CONTACT_NAME, ADDRESS, CITY, STATE, ZIP, LOTS, SETTLEMENT_TYPE, DATE_CREATED } = Customer_DataGridFields;
         return [
             { field: CUSTOMER_NAME.field, label: CUSTOMER_NAME.label, type: 'text', sortable: true, width: "150px" },
-            { field: CONTACT_NAME.field, label: CUSTOMER_NAME.label, type: 'text' },
+            { field: CONTACT_NAME.field, label: CONTACT_NAME.label, type: 'text' },
             { field: ADDRESS.field, label: ADDRESS.label, type: 'text', width: "150px" },
             { field: CITY.field, label: CITY.label, type: 'text' },
             { field: STATE.field, label: STATE.label, type: 'text' },
@@ -149,7 +149,7 @@ export default class CustomerModel {
             { field: STATE.field, label: STATE.label, type: 'text' },
             { field: ZIP.field, label: ZIP.label, type: 'text' },
             { field: VEHICLES.field, label: VEHICLES.label, type: 'text' },
-            { field: FUEL.field, label: FUEL.label, type: 'icons' },
+            { field: FUEL.field, label: FUEL.label, type: 'icons', width: "210px" },
             { field: CONTACT.field, label: CONTACT.label, type: 'text' },
             {
                 field: WALLET_RULE.field,
