@@ -48,6 +48,7 @@ export const RightInfoPanel: React.FC<InfoPanelProps> = ({ open, headingText, in
   };
 
   const panelDrawer = <Drawer
+    data-testid="right-drawer"
     className={"right_panel_main_class " + (panelType === "info-view" ? "right_info_panel" : "customer_filter_panel")}
     variant={(panelType === "dynamic-filter") ? "temporary" : "persistent"}
     anchor="right"

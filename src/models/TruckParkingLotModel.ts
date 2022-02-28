@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { headerObj } from '../components/UIComponents/DataGird/grid.component';
+import { IDynamicFilterProps } from '../components/UIComponents/RightInfoPanel/DynamicFilterContent.component';
 
 
 export default class TruckParkingLotModel {
@@ -82,5 +83,13 @@ export default class TruckParkingLotModel {
             "truck.sortBy.atoz",
             "truck.sortBy.ztoa",
         ];
+    }
+    FilterByFields(): IDynamicFilterProps['fields'] {
+        return (
+            [
+                { name: 'city', label: 'truck.filterForm.city', fieldType: 'select', optionUrlKey: 'truckParkingLotFilter', optionAPIResponseKey: 'cities', initialValue: [] },
+                { name: 'state', label: 'truck.filterForm..state', fieldType: 'select', optionUrlKey: 'truckParkingLotFilter', optionAPIResponseKey: 'states', initialValue: [] },
+            ]
+        );
     }
 }

@@ -440,6 +440,10 @@
       "overview": "Overview",
       "liveMap": "Live Map",
       "truckPlot": "Truck Parking Lot"
+    },
+    "filterForm": {
+      "state": "State",
+      "city": "City"
     }
   },
   "addTruckFormLabels": {
