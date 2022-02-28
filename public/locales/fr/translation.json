@@ -183,6 +183,10 @@
       "overview": "Aperçu",
       "liveMap": "Carte en direct",
       "truckPlot": "Parking pour camions"
+    },
+    "filterForm": {
+      "state": "État",
+      "city": "Ville"
     }
   },
   "assetManagement": {
