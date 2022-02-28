@@ -16,9 +16,10 @@ type props = {
     showFuelTaxError: (...args: any[]) => void;
     setFetchTaxList: (...args: any[]) => void;
     setSupplierPrice: (value: any) => any;
+    isSaveCancelShown: boolean;
 }
 
-export default function OpisRackSegment({ isDisabled, formik, editMode, showFuelTaxError, fetchTaxList, setFetchTaxList, setSupplierPrice }: props) {
+export default function OpisRackSegment({ isDisabled, formik, editMode, showFuelTaxError, fetchTaxList, setFetchTaxList, setSupplierPrice, isSaveCancelShown }: props) {
 
     const { t } = useTranslation();
 
@@ -33,7 +34,7 @@ export default function OpisRackSegment({ isDisabled, formik, editMode, showFuel
 
     return (
         <Fragment>
-            <OpisRackCity formik={formik} isDisabled={isDisabled} editMode={editMode} setSupplierPrice={setSupplierPrice} />
+            <OpisRackCity formik={formik} isDisabled={isDisabled} editMode={editMode} setSupplierPrice={setSupplierPrice} isSaveCancelShown={isSaveCancelShown}/>
             <Grid item lg={5} md={8} sm={8} xs={8} mx={4} my={1} >
                 <Input
                     id='manualPriceAmt'

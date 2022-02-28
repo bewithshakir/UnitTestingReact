@@ -12,7 +12,8 @@ type Props = {
     isDisabled: boolean,
     formik: any,
     editMode: boolean,
-    setSupplierPrice: (value: any) => any
+    setSupplierPrice: (value: any) => any,
+    isSaveCancelShown: boolean
 }
 interface ServedCity {
     city?: string
@@ -34,7 +35,7 @@ const getOptions = (dataArr?: string[]) => {
     return dataArr?.map(item => ({ label: item, value: item })) || [];
 };
 
-export default function OpisRackCity({ isDisabled, formik, editMode, setSupplierPrice }: Props) {
+export default function OpisRackCity({ isDisabled, formik, editMode, setSupplierPrice, isSaveCancelShown }: Props) {
 
     const { t } = useTranslation();
     const [cities, setCities] = useState<ServedCityOptions[]>([]);
@@ -59,6 +60,14 @@ export default function OpisRackCity({ isDisabled, formik, editMode, setSupplier
             value: c.cityId
         })) || []);
     }, [servedCities]);
+
+    useEffect(() => {
+        if(cities && cities.length>0 && !isSaveCancelShown && isDisabled && formik.values.cityId){
+            const city = cities.find(c => (c.cityId === formik.values.cityId));
+            formik.setFieldValue('city', {label: city?.city , value: city?.cityId});
+            formik.setFieldValue('state', city?.state);
+        }
+    }, [cities]);
 
     const handleCityChange = (field: any, value: any) => {
         formik.setFieldValue(field, value);

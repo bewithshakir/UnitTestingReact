@@ -25,10 +25,9 @@ export default function ProductList(props: props) {
     const { t } = useTranslation();
 
     const openDrawer = (row: any) => {
-        if (!(row?.pricingModelNm.toLowerCase() == "opis rack")) {        
-            props.handleRowAction(row);
-        }
+        props.handleRowAction(row);
     };
+
     const onRowActionSelect = (primaryIds: string[]) => {
         props.makeTopButtonRowDisabled(primaryIds.length !== 0);
     };
