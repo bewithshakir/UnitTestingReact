@@ -68,6 +68,29 @@ export default class TruckModel {
         ];
     }
 
+    parkingLocationTableFields(): headerObj[] {
+        return [
+            { field: "name", label: "TRUCK PARKING LOT NAME", type: 'text', width:'300' },
+            { field: "address", label: "ADDRESS", type: 'text' },
+            { field: "state", label: "STATE", type: 'text' },
+            { field: "city", label: "CITY", type: 'text' },
+            { field: "postalCode", label: "POSTAL CODE", type: 'text' },
+        ];
+    }
+
+    tanksTableFields(): headerObj[] {
+        return [
+            { field: "tcsRegisterId", label: "TANK REGISTER ID", type: 'text', width:'300' },
+            { field: "fuelStatus", label: "FUEL TYPE", type: 'icons' },
+            { field: "maxCapacityVol", label: "MAX CAPACITY", type: 'text' },
+            { field: "lastRefuelDatetime", label: "LAST REFUEL ON", type: 'text' },
+            { field: "currentWetstock", label: "CURRENT WETSTOCK", type: 'text' },
+            { field: "lastTransactionDatetime", label: "LAST TRANSACTION ON", type: 'text' },
+            { field: "volumeDispensed", label: "SUM OF VOLUME DISPENSED", type: 'text' },
+            { field: "billNumber", label: "BILL OF LEADING NUMBER", type: 'text' },
+        ];
+    }
+
     dataModel (data: any) {
         return data.map((obj: any) => {
             return ({
@@ -82,4 +105,19 @@ export default class TruckModel {
         return RowActionsOptions.map(actionItem => ({ ...actionItem, label: t(actionItem.label) }));
     }
 
+    tanksDataModel(data: any) {
+        return data.map((obj: any) => {
+            return ({
+                ...obj,
+                maxCapacityVol: obj.maxCapacityVol + ' gal',
+                fuelStatus: [
+                    {
+                        productCd: obj.productCd,
+                        productIcon: { ...obj.productIcon },
+                        productNm: obj.productNm,
+                    },
+                ],
+            });
+        });
+    }
 }
