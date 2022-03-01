@@ -1,4 +1,4 @@
-import React, { memo, useEffect } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import { HorizontalBarVersionState, useStore } from '../../store';
 import { Box, Grid, FormControl } from "@mui/material";
 import { Button } from "../../components/UIComponents/Button/Button.component";
@@ -25,13 +25,13 @@ const TruckLandingContent: React.FC<TruckLandingContentProps> = memo(() => {
   const headCells = truckObj.fieldsToDisplay();
   const rowActionOptions = truckObj.rowActions();
   const navigate = useNavigate();
-  const [searchTerm,setSearchTerm] = React.useState("");
-  const [sortOrder, setSortOrder] = React.useState<{ sortBy: string, order: string }>({ sortBy: "", order: "" });
-  const [truckList, setTruckList] = React.useState([]);
+  const [searchTerm,setSearchTerm] = useState("");
+  const [sortOrder, setSortOrder] = useState<{ sortBy: string, order: string }>({ sortBy: "", order: "" });
+  const [truckList, setTruckList] = useState([]);
   const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
   setVersion("NavLinks");
   const { SortByOptions } = TruckManagement.LandingPage;
-  const [resetTableCollaps, setResetTableCollaps] = React.useState(false);
+  const [resetTableCollaps, setResetTableCollaps] = useState(false);
   const { t } = useTranslation();
   const { data, fetchNextPage, isLoading, isFetching }: any = useTruckList(
     searchTerm,
