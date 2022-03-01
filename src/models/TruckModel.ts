@@ -81,7 +81,7 @@ export default class TruckModel {
     tanksTableFields(): headerObj[] {
         return [
             { field: "tcsRegisterId", label: "TANK REGISTER ID", type: 'text', width:'300' },
-            { field: "product", label: "FUEL TYPE", type: 'product' },
+            { field: "fuelStatus", label: "FUEL TYPE", type: 'icons' },
             { field: "maxCapacityVol", label: "MAX CAPACITY", type: 'text' },
             { field: "lastRefuelDatetime", label: "LAST REFUEL ON", type: 'text' },
             { field: "currentWetstock", label: "CURRENT WETSTOCK", type: 'text' },
@@ -110,12 +110,13 @@ export default class TruckModel {
             return ({
                 ...obj,
                 maxCapacityVol: obj.maxCapacityVol + ' gal',
-                product: {
-                    productId: obj.productCd,
-                    productColorCd: obj.productIcon.productIconCd,
-                    productColorNm: obj.productIcon.productIconNm,
-                    productColorCode: obj.productIcon.productIconHexCode,
-                }
+                fuelStatus: [
+                    {
+                        productCd: obj.productCd,
+                        productIcon: { ...obj.productIcon },
+                        productNm: obj.productNm,
+                    },
+                ],
             });
         });
     }
