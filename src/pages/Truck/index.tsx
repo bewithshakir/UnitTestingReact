@@ -12,8 +12,10 @@ import { useNavigate } from "react-router-dom";
 import TruckModel from '../../models/TruckModel';
 import { useTruckList } from './queries';
 import GridComponent from "../../components/UIComponents/DataGird/grid.component";
+import Table from "./SubTableLocations";
 import { DataGridActionsMenuOption } from '../../components/UIComponents/Menu/DataGridActionsMenu.component';
 import { TruckManagement, ROW_ACTION_TYPES, SORTBY_TYPES } from './config';
+import SubTableTanks from "./SubTableTanks";
 
 export interface TruckLandingContentProps {
   version: string
@@ -23,12 +25,18 @@ export interface TruckLandingContentProps {
 const TruckLandingContent: React.FC<TruckLandingContentProps> = memo(() => {
   const truckObj = new TruckModel();
   const headCells = truckObj.fieldsToDisplay();
+  const headCellsLots = truckObj.parkingLocationTableFields();
+  const tanksTableCells = truckObj.tanksTableFields();
+
   const rowActionOptions = truckObj.rowActions();
   const navigate = useNavigate();
   const [searchTerm] = React.useState("");
   const [sortOrder, setSortOrder] = React.useState<{ sortBy: string, order: string }>({ sortBy: "", order: "" });
   const [truckList, setTruckList] = React.useState([]);
   const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
+  const [deliveryVehicleId, setDeliveryVehicleId] = React.useState('');
+
+
   setVersion("NavLinks");
   const { SortByOptions } = TruckManagement.LandingPage;
   const [resetTableCollaps, setResetTableCollaps] = React.useState(false);
@@ -78,13 +86,17 @@ const onSortBySlected = (value: string) => {
         navigate(`/trucks/addTruck`);
     };
 
-    const handleRowAction = (action: DataGridActionsMenuOption, row: any) => {
-      switch (action.action) {
-          case ROW_ACTION_TYPES.EDIT:
-              navigate(`/trucks/editTruck/${row.deliveryVehicleId}`);
-              break;
-          default: return;
-      }
+  const setSelectedRow = (deliveryVehicleId: string) => {
+    setDeliveryVehicleId(deliveryVehicleId);
+  };
+
+  const handleRowAction = (action: DataGridActionsMenuOption, row: any) => {
+    switch (action.action) {
+      case ROW_ACTION_TYPES.EDIT:
+        navigate(`/trucks/editTruck/${row.deliveryVehicleId}`);
+        break;
+      default: return;
+    }
   };
 
   return (
@@ -150,9 +162,17 @@ const onSortBySlected = (value: string) => {
             isLoading={isFetching || isLoading}
             enableRowSelection
             enableRowAction
+            getId={setSelectedRow}
             getPages={fetchNextPage}
             searchTerm={searchTerm}
             noDataMsg={t("truckLanding.noTrucksMsg")}
+            onResetTableCollaps={setResetTableCollaps}
+            InnerTableComponent={
+              {
+                ['LOCATIONS']: <Table primaryKey='id' id={deliveryVehicleId} headCells={headCellsLots} />,
+                ['TANKS']: <SubTableTanks tanksDataModel={truckObj.tanksDataModel} primaryKey='id' id={deliveryVehicleId} headCells={tanksTableCells} />,
+              }
+            }
             onRowActionSelect={handleRowAction}
             rowActionOptions={rowActionOptions}
             resetCollaps={resetTableCollaps}
