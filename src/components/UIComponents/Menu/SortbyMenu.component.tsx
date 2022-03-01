@@ -96,6 +96,7 @@ export default function SortbyMenu (props: SortbyMenuProps) {
         className={"sortby-popper"}
         placement="bottom-start"
         disablePortal
+        data-testid="sortby-dropdown"
       >
         {({ TransitionProps, placement }) => (
           <Grow

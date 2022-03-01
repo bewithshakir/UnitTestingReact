@@ -432,6 +432,10 @@
     "yes": "Yes"
   },
   "truck": {
+    "sortBy": {
+      "atoz": "Lot Name A-Z",
+      "ztoa": "Lot Name Z-A"
+    },
     "navBar": {
       "overview": "Overview",
       "liveMap": "Live Map",

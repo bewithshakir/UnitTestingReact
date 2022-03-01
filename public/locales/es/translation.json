@@ -179,6 +179,10 @@
     }
   },
   "truck": {
+    "sortBy": {
+      "atoz": "Nombre de lote A-Z",
+      "ztoa": "Nombre de lote Z-A"
+    },
     "navBar": {
       "overview": "Descripción general",
       "liveMap": "Mapa en vivo",

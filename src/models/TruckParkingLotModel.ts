@@ -78,6 +78,12 @@ export default class TruckParkingLotModel {
         ];
     }
 
+    getSortByOptions () {
+        return [
+            "truck.sortBy.atoz",
+            "truck.sortBy.ztoa",
+        ];
+    }
     FilterByFields(): IDynamicFilterProps['fields'] {
         return (
             [

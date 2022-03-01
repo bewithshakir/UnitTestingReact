@@ -8,7 +8,6 @@ import { Button } from "../../../components/UIComponents/Button/Button.component
 import GridComponent from "../../../components/UIComponents/DataGird/grid.component";
 import { FilterIcon } from "../../../assets/icons";
 import SortbyMenu from "../../../components/UIComponents/Menu/SortbyMenu.component";
-import { sortByOptions } from "./config";
 import SearchInput from "../../../components/UIComponents/SearchInput/SearchInput";
 import ActionsMenu from "../../../components/UIComponents/Menu/ActionsMenu.component";
 import TruckParkingLotModel from '../../../models/TruckParkingLotModel';
@@ -35,7 +34,7 @@ const TruckParkingLot: React.FC<ContentProps> = () => {
 
 
     const [searchTerm, setSearchTerm] = React.useState("");
-    const [sortOrder] = React.useState<{ sortBy: string, order: string }>({ sortBy: "", order: "" });
+    const [sortOrder, setSortOrder] = React.useState<{ sortBy: string, order: string }>({ sortBy: "", order: "" });
     const [truckParkingLotList, setTruckParkingLotList] = React.useState<any[]>([]);
     const [resetTableCollaps, setResetTableCollaps] = React.useState(false);
 
@@ -58,8 +57,21 @@ const TruckParkingLot: React.FC<ContentProps> = () => {
         setFilterPanelVisible(false);
     };
 
-    const onSortBySlected = () => {
-        // TODO
+    const onSortBySlected = (value: string) => {
+        let sortOrder;
+        switch (value) {
+          case t('truck.sortBy.atoz'):
+            sortOrder = { sortBy: "parkingLocationNm", order: "asc" };
+            break;
+          case t('truck.sortBy.ztoa'):
+            sortOrder = { sortBy: "parkingLocationNm", order: "desc" };
+            break;
+          default:
+            sortOrder = { sortBy: "", order: "" };
+            break;
+        }
+        setResetTableCollaps(true);
+        setSortOrder(sortOrder);
     };
     const navigateToAddParkingLot = () => {
         navigate(`/truckParkingLot/add`);
@@ -117,9 +129,10 @@ const TruckParkingLot: React.FC<ContentProps> = () => {
                         <Grid item pr={2.5}>
                             <FormControl>
                                 <SortbyMenu
+                                    data-testid="sortByMenu"
                                     id="sortByMenu"
-                                    options={sortByOptions.map((sortByItem) => t(sortByItem))}
-                                    onSelect={() => onSortBySlected()}
+                                    options={truckParkingLotObj.getSortByOptions().map((sortByItem) => t(sortByItem))}
+                                    onSelect={(value) => onSortBySlected(value)}
                                 />
                             </FormControl>
                         </Grid>
