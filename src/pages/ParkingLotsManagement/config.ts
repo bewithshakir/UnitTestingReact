@@ -15,11 +15,14 @@ export const ROW_ACTION_TYPES = {
 };
 
 export const FilterByFields: IDynamicFilterProps['fields'] = [
+  { name: 'date', label: 'Date', fieldType: 'dateRange', initialValue: [null, null] },
+  { name: 'filterCustomer', label: 'parkingLotManagement.filter.customername', fieldType: 'select', optionUrlKey: 'parkingLotManagementFilter', optionAPIResponseKey: 'customernames', initialValue: [] },
   { name: 'state', label: 'parkingLotManagement.filter.state', fieldType: 'select', optionUrlKey: 'parkingLotManagementFilter', optionAPIResponseKey: 'states', initialValue: [] },
   { name: 'city', label: 'parkingLotManagement.filter.city', fieldType: 'select', optionUrlKey: 'parkingLotManagementFilter', optionAPIResponseKey: 'cities', initialValue: [] },
-  { name: 'zip', label: 'parkingLotManagement.filter.zip', fieldType: 'select', optionUrlKey: 'parkingLotManagementFilter', optionAPIResponseKey: 'zipcode', initialValue: [] },
-  { name: 'wallet status', label: 'parkingLotManagement.filter.wallet status', fieldType: 'select', optionUrlKey: 'parkingLotManagementFilter', optionAPIResponseKey: 'walletStatus', initialValue: [] },
-  { name: 'fuel type', label: 'parkingLotManagement.filter.fuel type', fieldType: 'select', optionUrlKey: 'parkingLotManagementFilter', optionAPIResponseKey: 'fuelType', initialValue: [] },
+  { name: 'postal', label: 'parkingLotManagement.filter.zip', fieldType: 'select', optionUrlKey: 'parkingLotManagementFilter', optionAPIResponseKey: 'zipcode', initialValue: [] },
+  { name: 'walletStatus', label: 'parkingLotManagement.filter.wallet status', fieldType: 'select', optionUrlKey: 'parkingLotManagementFilter', optionAPIResponseKey: 'walletStatus', initialValue: [] },
+  { name: 'filterProduct', label: 'parkingLotManagement.filter.fuel type', fieldType: 'select', optionUrlKey: 'parkingLotManagementFilter', optionAPIResponseKey: 'fuelType', initialValue: [] },
+
 ];
 
 export const AllParkingLots = {
