@@ -37,13 +37,13 @@ const mockFormik = {
 };
 describe('Rendering of supplier rack price', () => {
     it('should render snapshot for supplier rack price', () => {
-        const component = mount(<ReactQuery.QueryClientProvider client={queryClient}> <SupplierRackPrice formik={mockFormik} isDisabled={false} setSupplierPrice={jest.fn()} /> </ReactQuery.QueryClientProvider >);
+        const component = mount(<ReactQuery.QueryClientProvider client={queryClient}> <SupplierRackPrice formik={mockFormik} isDisabled={false} setSupplierPrice={jest.fn()} resetSupplierValue={'xyz'} isSaveCancelShown={false} /> </ReactQuery.QueryClientProvider >);
         expect(component).toBeDefined();
         expect(component).toMatchSnapshot();
     });
 
     it('should open popup on supplier rack price', () => {
-        const component = mount(<ReactQuery.QueryClientProvider client={queryClient}> <SupplierRackPrice formik={mockFormik} isDisabled={false} setSupplierPrice={jest.fn()} /> </ReactQuery.QueryClientProvider >);
+        const component = mount(<ReactQuery.QueryClientProvider client={queryClient}> <SupplierRackPrice formik={mockFormik} isDisabled={false} setSupplierPrice={jest.fn()}  resetSupplierValue={'xyz'} isSaveCancelShown={false}/> </ReactQuery.QueryClientProvider >);
         expect(component).toBeDefined();
         component.find('.supplier-modal-btn').last().simulate('click');
     });
