@@ -24,7 +24,6 @@ const getCustomerFilterData = async (urlKey: filterURLKey) => {
     return data;
 };
 
-
 export const useGetFilterData = (urlKey: filterURLKey) => {
     return useQuery([urlKey], () => getCustomerFilterData(urlKey));
 };
