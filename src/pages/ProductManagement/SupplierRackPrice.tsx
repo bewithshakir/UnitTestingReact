@@ -85,10 +85,6 @@ export default function SupplierRack({ isDisabled, formik, setSupplierPrice, res
     const onRowActionSelect = (selectedIds: string[]) => {
         setSelectedRows(selectedIds);
     };
-    const endIcon = formik.values.opisName ? {
-        endIcon: <CloseIcon key={'dummyKey1'} className='info_panel_close_icon' color='var(--White)'
-        />
-    } : {};
 
     return (
         <React.Fragment>
