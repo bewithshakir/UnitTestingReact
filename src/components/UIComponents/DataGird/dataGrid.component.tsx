@@ -171,6 +171,13 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
         );
     };
 
+    const renderComponent = (fieldOpts: headerObj, data: any) => {
+        return (
+            <Box display="flex" alignItems="center" justifyContent={fieldOpts.align}>
+              {data}
+            </Box>
+        );
+    };
 
     const renderStatus = (fieldOpts: headerObj, data: any) => {
         let matchedStatus: fieldOptions[] = [];
@@ -301,7 +308,8 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
                                                 props.headCells[colIndex].type === 'images' ? renderImages(row[key]) :
                                                 props.headCells[colIndex].type === 'dropdown' ? renderSelect() :
                                                 props.headCells[colIndex].type === 'status' ? renderStatus(props.headCells[colIndex], row[key]) :
-                                                props.headCells[colIndex].type === 'product' ? renderProduct(props.headCells[colIndex], row[key]) : ""
+                                                props.headCells[colIndex].type === 'product' ? renderProduct(props.headCells[colIndex], row[key]) : 
+                                                props.headCells[colIndex].type === 'component' ? renderComponent(props.headCells[colIndex], row[key]) : ""
                                     }
                                 </TableCell>
                             )}

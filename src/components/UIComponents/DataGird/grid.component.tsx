@@ -21,7 +21,7 @@ export interface headerObj {
     field: string,
     showIconLast?: boolean,
     label: string,
-    type: 'text' | 'button' | 'icon' | 'icons' | 'image' | 'images' | 'dropdown' | 'status' | 'product',
+    type: 'text' | 'button' | 'icon' | 'icons' | 'image' | 'images' | 'dropdown' | 'status' | 'product' | 'component',
     icon?: React.ReactNode | string | any,
     bold?: boolean,
     align?: 'right' | 'left' | 'center' | 'justify',

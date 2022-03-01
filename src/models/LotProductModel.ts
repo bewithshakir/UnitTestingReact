@@ -13,7 +13,7 @@ export default class ProductModel {
     fieldsToDisplay(): headerObj[] {
         return [
             { field: "productNm", label: "PRODUCT NAME", type: 'text' },
-            { field: "pricingModelNm", label: "PRICING MODEL", type: 'text' },
+            { field: "opisRackAvail", label: "PRICING MODEL", type: 'component' },
             {
                 field: "activeInactiveInd",
                 label: "",
@@ -85,6 +85,8 @@ export default class ProductModel {
                 ...x,
                 pricingModelNm: x.pricingModel.pricingModelNm,
                 productColorCode: x.productColor.productColorCode,
+                opisRackAvail: x.opisRackAvail,
+
             }
         ));
     }

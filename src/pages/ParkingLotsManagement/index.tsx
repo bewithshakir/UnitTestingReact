@@ -80,10 +80,10 @@ const index: React.FC<ParkingLotsManagementProps> = memo(() => {
         }
     };
 
-    const handleRowAction = (action: DataGridActionsMenuOption) => {
+    const handleRowAction = (action: DataGridActionsMenuOption, row: any) => {
         switch (action.action) {
             case ROW_ACTION_TYPES.EDIT:
-                navigate("/customer/:customerId/parkingLots/viewLot/:parkinglotId");
+                navigate(`/customer/${row.customerId}/parkingLots/viewLot/${row.deliveryLocationId}?backTo=parkinglotlanding`);
                 break;
             default: return;
         }

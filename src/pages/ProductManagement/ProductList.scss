@@ -5,6 +5,7 @@
                    padding: 40% 0% 0% 0%;
                 }
             }
+           
         }   
     
     & .MuiTable-root{
@@ -13,4 +14,19 @@
 }
 .editProduct {
     margin-left: 12px;
+}
+.opisr-grid-item{
+    display: flex;
+    .grid-itm-pn{
+        width: max-content;
+        margin-right: 7px;
+    }
+    .grid-item-icn{
+        width: 15px;
+        margin-top: 2px;
+        svg{
+            width: 15px;
+            height: 15px;
+        }
+    }
 }

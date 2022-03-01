@@ -1,49 +1,77 @@
-.product-management-container{
-    padding: 0;
+.product-management-container {
+  padding: 0;
 }
- 
-.productForm{
-    min-height: calc(100vh - 200px);
-    height: 100%;
-    .MuiInputLabel-formControl{
-        font-size: 14px;
-    }
 
-    .opis-rack-info-text {
-        border: 1px solid #fbce06;
-        background: #FBCE061A 0% 0% no-repeat padding-box;
-    }
+.productForm {
+  min-height: calc(100vh - 200px);
+  height: 100%;
+  .MuiInputLabel-formControl {
+    font-size: 14px;
+  }
+
+  .opis-rack-info-text {
+    border: 1px solid #fbce06;
+    background: #fbce061a 0% 0% no-repeat padding-box;
+  }
+
+  .multi-select__control--is-disabled {
+    background: var(--Lightgray_4) 0% 0% no-repeat padding-box;
+    color: var(--Lightergray);
+    border: 1px solid var(--Lightgray_2);
+    opacity: 1;
+  }
+
+ 
 }
 
 .productContainer {
-    min-height: 100%; 
-    .lastItem{
-        margin-top: auto; 
-        .cancelButton{
-            margin-top: auto;
-            margin-bottom: 34px;
-        }
-      };
-     
-
-  } 
-  .supplierRackBtn {
-      width: 200px;
+  min-height: 100%;
+  .lastItem {
+    margin-top: auto;
+    .cancelButton {
+      margin-top: auto;
+      margin-bottom: 34px;
+    }
   }
+}
+.supplierRackBtn {
+  width: 200px;
+}
 
 .masterRightLayout {
-    background: var(--Lightgray_4); 
-    min-height: 100%; 
+  background: var(--Lightgray_4);
+  min-height: 100%;
 }
 
 .supplier-modal-btn{
     width: 100%;
     margin-top: 2px;
     background-color: var(--Darkgray);
+    padding: 0px;
     span{
         justify-content: left;
         color: var(--White);
         font-size: 14px;
+        width: 100%;
+    text-align: left;
+    .price-div{
+        height: 42px;
+        width: 100%;
+        padding: 8px 0px 0px 12px;
+        display: inline-block;
+        vertical-align: middle;
+    }
+    .clear-price-cross{
+        text-align: right;
+
+        display: inline-block;
+        vertical-align: middle;
+        .MuiIconButton-root{
+            color: var(--White);
+            width: 42px;
+            height: 42px;
+        }
+    }
     }
     &:hover{
         background-color: var(--Black);
@@ -53,36 +81,51 @@
         right: 18px;
         position: absolute;
     }
-
 }
-
-.checkbox-heading{
-    font-size: 12px;
-    color: var(--Darkgray);
-    margin-bottom: 5px;
-    font-weight: bold;
-}
-.price-heading{
-    font-size: 11px;
-}
-
-.checkboxlist-wrapper{
-    .MuiFormControlLabel-root{
-        margin-bottom: 5px;
-        .PrivateSwitchBase-root-5{
-            margin-left: -8px;
-        }
+.modal-btn-viewmode{
+    background: var(--Lightgray_4) 0% 0% no-repeat padding-box;
+    border: 1px solid var(--Lightgray_2);
+    opacity: 1;
+    .price-div{
+        color: var(--Lightergray);
+        font-weight: 500;
     }
 }
 
-.supplierRack{
-    width: 100%;
+
+.modal-btn-viewmode{
+    background: var(--Lightgray_4) 0% 0% no-repeat padding-box;
+    border: 1px solid var(--Lightgray_2);
+    opacity: 1;
+}
+
+.checkbox-heading {
+  font-size: 12px;
+  color: var(--Darkgray);
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+.price-heading {
+  font-size: 11px;
+}
+
+.checkboxlist-wrapper {
+  .MuiFormControlLabel-root {
+    margin-bottom: 5px;
+    .PrivateSwitchBase-root-5 {
+      margin-left: -8px;
+    }
+  }
+}
+
+.supplierRack {
+  width: 100%;
+
    & .MuiDialog-container.MuiDialog-scrollPaper{
        width: 100%;
        & .MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation24.MuiDialog-paper.MuiDialog-paperScrollPaper.MuiDialog-paperWidthSm {
            left: 1%;
-            width: 100%;
-            max-width: 95%;
+            max-width: 90%;
             min-height: 80%;
 
             & tbody.no-data .nodata {
@@ -107,6 +150,7 @@
            padding-right: 1%;
            padding-bottom: 1%;
            position: absolute;
+           background-color: var(--White);
            bottom: 10px; 
            width: 100%;
         }

@@ -7,7 +7,7 @@ import { getAllParkingLotsHandler } from '../pages/ParkingLotsManagement/mockApi
 import { getAttachmentListHandler } from '../pages/Attachments/mockApi/AttachmentLandingPageHandler';
 import { addDspHandler, getDspDataHandler, editDspHandler } from "../pages/DspLanding/AddDSP/mockApi/handlerAddDsp";
 import { getFormattedAddressHandler, getGoogleAddressHandler } from "../components/UIComponents/GoogleAddressComponent/mockApi/googleAddressAutoHandler";
-import { getProductByLotHandler, editProductHandler, getTaxExemptionsListHandler, getServedCitiesHandler, getSupplierPricesHandler, getSupplierBrandProductsHandler } from '../pages/ProductManagement/mockApi/handler';
+import { getProductByLotHandler, editProductHandler, getTaxExemptionsListHandler, getServedCitiesHandler, getSupplierPricesHandler, getSupplierBrandProductsHandler, getOpisRackProductDetailsHandler , getProductsHandler} from '../pages/ProductManagement/mockApi/handler';
 import { getFuelTaxList, getFuelTaxProductsList } from '../pages/Tax/mockApi/handler';
 import { getDelFeeSchduleHandler, getProductTypeHandler, getVehicleTypeHandler, getAssetTypeHandler, getLotMasterProductNamesHandler, getLotProductNamesHandler, addFeeDetailsHandler, getFeeDetailsHandler, editFeeDetailsHandler } from '../pages/ParkingLot/FeeDetails/mockAPi/handler';
 import { addTruckParkingLotHandler, editTruckParkingLotHandler } from '../pages/Truck/TruckParkingLot/AddLot/mockApi/handlerAddTruckParkingLot';
@@ -63,7 +63,9 @@ export const handlers = [
     addTruckColorHandler(),
     addTruckFuelHandler(),
     addEditTruckHandler(),
-    useGetEditTruckDetails()
+    useGetEditTruckDetails(),
+    getOpisRackProductDetailsHandler(),
+    getProductsHandler()
 ];
 
 const createTestQueryClient = () => new QueryClient({
