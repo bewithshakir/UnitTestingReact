@@ -1073,36 +1073,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
         "initialError": "",
         "initialTouched": false,
         "initialValue": "",
-        "setFieldValue": [MockFunction] {
-          "calls": Array [
-            Array [
-              "supplierPrice",
-              0,
-            ],
-            Array [
-              "manualPriceAmt",
-              0,
-            ],
-            Array [
-              "opisName",
-              "",
-            ],
-          ],
-          "results": Array [
-            Object {
-              "type": "return",
-              "value": undefined,
-            },
-            Object {
-              "type": "return",
-              "value": undefined,
-            },
-            Object {
-              "type": "return",
-              "value": undefined,
-            },
-          ],
-        },
+        "setFieldValue": [MockFunction],
         "touched": false,
         "values": Object {
           "actualProduct": Array [],
@@ -1134,21 +1105,8 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
       }
     }
     isDisabled={false}
-    setSupplierPrice={
-      [MockFunction] {
-        "calls": Array [
-          Array [
-            null,
-          ],
-        ],
-        "results": Array [
-          Object {
-            "type": "return",
-            "value": undefined,
-          },
-        ],
-      }
-    }
+    isSaveCancelShown={false}
+    setSupplierPrice={[MockFunction]}
   >
     <ForwardRef(Grid)
       item={true}
@@ -8501,36 +8459,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                   "initialError": "",
                   "initialTouched": false,
                   "initialValue": "",
-                  "setFieldValue": [MockFunction] {
-                    "calls": Array [
-                      Array [
-                        "supplierPrice",
-                        0,
-                      ],
-                      Array [
-                        "manualPriceAmt",
-                        0,
-                      ],
-                      Array [
-                        "opisName",
-                        "",
-                      ],
-                    ],
-                    "results": Array [
-                      Object {
-                        "type": "return",
-                        "value": undefined,
-                      },
-                      Object {
-                        "type": "return",
-                        "value": undefined,
-                      },
-                      Object {
-                        "type": "return",
-                        "value": undefined,
-                      },
-                    ],
-                  },
+                  "setFieldValue": [MockFunction],
                   "touched": false,
                   "values": Object {
                     "actualProduct": Array [],
@@ -8562,22 +8491,9 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                 }
               }
               isDisabled={false}
+              isSaveCancelShown={false}
               resetSupplierValue={null}
-              setSupplierPrice={
-                [MockFunction] {
-                  "calls": Array [
-                    Array [
-                      null,
-                    ],
-                  ],
-                  "results": Array [
-                    Object {
-                      "type": "return",
-                      "value": undefined,
-                    },
-                  ],
-                }
-              }
+              setSupplierPrice={[MockFunction]}
             />,
             "columnSpacing": 0,
             "columns": 12,
@@ -8677,36 +8593,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                 "initialError": "",
                 "initialTouched": false,
                 "initialValue": "",
-                "setFieldValue": [MockFunction] {
-                  "calls": Array [
-                    Array [
-                      "supplierPrice",
-                      0,
-                    ],
-                    Array [
-                      "manualPriceAmt",
-                      0,
-                    ],
-                    Array [
-                      "opisName",
-                      "",
-                    ],
-                  ],
-                  "results": Array [
-                    Object {
-                      "type": "return",
-                      "value": undefined,
-                    },
-                    Object {
-                      "type": "return",
-                      "value": undefined,
-                    },
-                    Object {
-                      "type": "return",
-                      "value": undefined,
-                    },
-                  ],
-                },
+                "setFieldValue": [MockFunction],
                 "touched": false,
                 "values": Object {
                   "actualProduct": Array [],
@@ -8738,22 +8625,9 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
               }
             }
             isDisabled={false}
+            isSaveCancelShown={false}
             resetSupplierValue={null}
-            setSupplierPrice={
-              [MockFunction] {
-                "calls": Array [
-                  Array [
-                    null,
-                  ],
-                ],
-                "results": Array [
-                  Object {
-                    "type": "return",
-                    "value": undefined,
-                  },
-                ],
-              }
-            }
+            setSupplierPrice={[MockFunction]}
           >
             <h4
               className="checkbox-heading price-heading"
@@ -8763,20 +8637,18 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                
             </h4>
             <Button
-              className="supplier-modal-btn"
+              className="supplier-modal-btn "
               disabled={true}
-              onClick={[Function]}
               variant="outlined"
             >
               <WithStyles(ForwardRef(Button))
-                className="supplier-modal-btn"
+                className="supplier-modal-btn "
                 color="default"
                 disabled={true}
-                onClick={[Function]}
                 variant="outlined"
               >
                 <ForwardRef(Button)
-                  className="supplier-modal-btn"
+                  className="supplier-modal-btn "
                   classes={
                     Object {
                       "colorInherit": "MuiButton-colorInherit",
@@ -8812,20 +8684,18 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                   }
                   color="default"
                   disabled={true}
-                  onClick={[Function]}
                   variant="outlined"
                 >
                   <WithStyles(ForwardRef(ButtonBase))
-                    className="MuiButton-root MuiButton-outlined supplier-modal-btn Mui-disabled"
+                    className="MuiButton-root MuiButton-outlined supplier-modal-btn  Mui-disabled"
                     component="button"
                     disabled={true}
                     focusRipple={true}
                     focusVisibleClassName="Mui-focusVisible"
-                    onClick={[Function]}
                     type="button"
                   >
                     <ForwardRef(ButtonBase)
-                      className="MuiButton-root MuiButton-outlined supplier-modal-btn Mui-disabled"
+                      className="MuiButton-root MuiButton-outlined supplier-modal-btn  Mui-disabled"
                       classes={
                         Object {
                           "disabled": "Mui-disabled",
@@ -8837,14 +8707,12 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                       disabled={true}
                       focusRipple={true}
                       focusVisibleClassName="Mui-focusVisible"
-                      onClick={[Function]}
                       type="button"
                     >
                       <button
-                        className="MuiButtonBase-root MuiButton-root MuiButton-outlined supplier-modal-btn Mui-disabled Mui-disabled"
+                        className="MuiButtonBase-root MuiButton-root MuiButton-outlined supplier-modal-btn  Mui-disabled Mui-disabled"
                         disabled={true}
                         onBlur={[Function]}
-                        onClick={[Function]}
                         onDragLeave={[Function]}
                         onFocus={[Function]}
                         onKeyDown={[Function]}
@@ -8861,7 +8729,15 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                         <span
                           className="MuiButton-label"
                         >
-                          Choose the supplier price
+                          <div
+                            className="price-div"
+                            onClick={[Function]}
+                          >
+                             
+                            Choose the supplier price
+                             
+                          </div>
+                           
                         </span>
                       </button>
                     </ForwardRef(ButtonBase)>
@@ -9082,28 +8958,28 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                             />
                           </ForwardRef(Grid)>
                         </ForwardRef(Grid)>
+                        <ForwardRef(DialogActions)
+                          className="supplierRack-dialog-actions"
+                        >
+                          <Button
+                            aria-label="cancel"
+                            className="mr-4"
+                            onClick={[Function]}
+                            types="cancel"
+                          >
+                            Cancel
+                          </Button>
+                          <Button
+                            aria-label="primary"
+                            className="mr-4 supplierRackBtn"
+                            disabled={true}
+                            onClick={[Function]}
+                            types="primary"
+                          >
+                            Done
+                          </Button>
+                        </ForwardRef(DialogActions)>
                       </ForwardRef(DialogContent)>
-                      <ForwardRef(DialogActions)
-                        className="supplierRack-dialog-actions"
-                      >
-                        <Button
-                          aria-label="cancel"
-                          className="mr-4"
-                          onClick={[Function]}
-                          types="cancel"
-                        >
-                          Cancel
-                        </Button>
-                        <Button
-                          aria-label="primary"
-                          className="mr-4 supplierRackBtn"
-                          disabled={true}
-                          onClick={[Function]}
-                          types="primary"
-                        >
-                          Done
-                        </Button>
-                      </ForwardRef(DialogActions)>
                     </div>,
                     "className": "supplierRack",
                     "disableEscapeKeyDown": true,

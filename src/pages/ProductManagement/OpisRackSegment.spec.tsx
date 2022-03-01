@@ -38,7 +38,7 @@ describe('Rendering of opis rack segment', () => {
               getFieldProps:jest.fn(),
               setFieldValue: jest.fn()
             };
-        const component = mount(<ReactQuery.QueryClientProvider client={queryClient}> <OpisRackSegment isDisabled={false} formik={mockFormik} editMode={false} fetchTaxList={false} showFuelTaxError={jest.fn()} setFetchTaxList={jest.fn()} setSupplierPrice={jest.fn()} /> </ReactQuery.QueryClientProvider >);
+        const component = mount(<ReactQuery.QueryClientProvider client={queryClient}> <OpisRackSegment isDisabled={false} formik={mockFormik} editMode={false} fetchTaxList={false} showFuelTaxError={jest.fn()} setFetchTaxList={jest.fn()} setSupplierPrice={jest.fn()}  isSaveCancelShown={false}/> </ReactQuery.QueryClientProvider >);
         expect(component).toBeDefined();
         expect(component).toMatchSnapshot();
     });
