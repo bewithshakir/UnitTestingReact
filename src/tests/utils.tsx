@@ -14,6 +14,7 @@ import { addTruckParkingLotHandler, editTruckParkingLotHandler } from '../pages/
 import { getProductTypesDropdownHandler } from '../pages/AddFuelTax/mockApi/handlerAddFuelTax';
 import { getTruckParkingLotList } from '../pages/Truck/TruckParkingLot/mockApi/handlerTruckParkingLot';
 import { getTrucksList } from '../pages/Truck/mockApi/handlerTruckList';
+import { getTanksList } from '../pages/Truck/mockApi/handlerTanksList';
 import { getLocationsList } from '../pages/Truck/mockApi/handlerLocations';
 import { addAssetHandler, getAssetDeatilsHandler, editAssetHandler } from '../pages/AssetManagement/AddAsset/mockApi/handlerAddAsset';
 import { addTruckColorHandler, addTruckFuelHandler, addEditTruckHandler, useGetEditTruckDetails } from '../pages/Truck/AddTruck/mockApi/handleAddTruck';
@@ -48,6 +49,7 @@ export const handlers = [
     getTruckParkingLotList(),
     editTruckParkingLotHandler(),
     addAssetHandler(),
+    getTanksList(),
     getLocationsList(),
     getAssetDeatilsHandler(),
     editAssetHandler(),

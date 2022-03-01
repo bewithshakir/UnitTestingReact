@@ -60,3 +60,23 @@ export const useGetLocations = (deliveryVehicleId: string) => {
         keepPreviousData: true
     });
 };
+
+const getTanksDetailsbyID = async (pageParam: number, deliveryVehicleId: string) => {
+    const payload: AxiosRequestConfig = {
+        method: 'get',
+        url: `/api/truck-service/delivery-vehicles/${deliveryVehicleId}/tanks?limit=${pageDataLimit}&offset=${pageParam}`
+    };
+    const { data } = await axios(payload);
+    return data;
+};
+
+export const useGetTanksList = (deliveryVehicleId: string) => {
+    return useInfiniteQuery(["getTanksDetailsbyID", deliveryVehicleId], ({ pageParam = 0 }) => getTanksDetailsbyID(pageParam, deliveryVehicleId), {
+        getNextPageParam: (lastGroup: any) => {
+            if (lastGroup.data.pagination.offset < lastGroup.data.pagination.totalCount) {
+                return lastGroup.data.pagination.offset + pageDataLimit;
+            }
+        },
+        keepPreviousData: true
+    });
+};

@@ -15,6 +15,7 @@ import GridComponent from "../../components/UIComponents/DataGird/grid.component
 import Table from "./SubTableLocations";
 import { DataGridActionsMenuOption } from '../../components/UIComponents/Menu/DataGridActionsMenu.component';
 import { TruckManagement, ROW_ACTION_TYPES, SORTBY_TYPES } from './config';
+import SubTableTanks from "./SubTableTanks";
 
 export interface TruckLandingContentProps {
   version: string
@@ -25,6 +26,7 @@ const TruckLandingContent: React.FC<TruckLandingContentProps> = memo(() => {
   const truckObj = new TruckModel();
   const headCells = truckObj.fieldsToDisplay();
   const headCellsLots = truckObj.parkingLocationTableFields();
+  const tanksTableCells = truckObj.tanksTableFields();
 
   const rowActionOptions = truckObj.rowActions();
   const navigate = useNavigate();
@@ -168,6 +170,7 @@ const onSortBySlected = (value: string) => {
             InnerTableComponent={
               {
                 ['LOCATIONS']: <Table primaryKey='id' id={deliveryVehicleId} headCells={headCellsLots} />,
+                ['TANKS']: <SubTableTanks tanksDataModel={truckObj.tanksDataModel} primaryKey='id' id={deliveryVehicleId} headCells={tanksTableCells} />,
               }
             }
             onRowActionSelect={handleRowAction}
