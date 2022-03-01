@@ -13,6 +13,8 @@ import TruckModel from '../../models/TruckModel';
 import { useTruckList } from './queries';
 import GridComponent from "../../components/UIComponents/DataGird/grid.component";
 import Table from "./SubTableLocations";
+import { RightInfoPanel } from '../../components/UIComponents/RightInfoPanel/RightInfoPanel.component';
+import TruckDetail from './TruckDetail';
 import { DataGridActionsMenuOption } from '../../components/UIComponents/Menu/DataGridActionsMenu.component';
 import { TruckManagement, ROW_ACTION_TYPES, SORTBY_TYPES } from './config';
 import SubTableTanks from "./SubTableTanks";
@@ -30,6 +32,14 @@ const TruckLandingContent: React.FC<TruckLandingContentProps> = memo(() => {
 
   const rowActionOptions = truckObj.rowActions();
   const navigate = useNavigate();
+
+  // Truck detail panel state
+  const [info, setInfo] = React.useState({});
+  const [editURL, setEditURL] = React.useState('');
+  const [infoPanelName, setInfoPanelName] = React.useState('');
+  const [drawerOpen, setDrawerOpen] = React.useState(false);
+
+
   const [searchTerm] = React.useState("");
   const [sortOrder, setSortOrder] = React.useState<{ sortBy: string, order: string }>({ sortBy: "", order: "" });
   const [truckList, setTruckList] = React.useState([]);
@@ -52,39 +62,49 @@ const TruckLandingContent: React.FC<TruckLandingContentProps> = memo(() => {
       data?.pages?.forEach((item: any) => {
         list.push(...item.data.deliveryVehicles);
       });
-      setTruckList(list);      
+      setTruckList(list);
     }
   }, [data]);
 
-const onInputChange = () => {
+  const drawerClose = () => {
+    setDrawerOpen(false);
+  };
+
+  const openDrawer = (row: any) => {
+    setInfo(row);
+    setInfoPanelName("Truck Info");
+    setEditURL(`/trucks/editTruck/${row?.deliveryVehicleId}`);
+    setDrawerOpen(true);
+  };
+
+  const onInputChange = () => {
     // TODO
-};  
+  };
 
-const handleMassAction = () => {
+  const handleMassAction = () => {
     // TO DO
-};
+  };
 
-const onSortBySlected = (value: string) => {
-  let sortOrder;
-  switch (value) {
-    case SORTBY_TYPES.TRUCK_NAME_AZ:
-      sortOrder = { sortBy: "deliveryVehicleNm", order: "asc" };
-      break;
-    case SORTBY_TYPES.TRUCK_NAME_ZA:
-      sortOrder = { sortBy: "deliveryVehicleNm", order: "desc" };
-      break;
-    default:
-      sortOrder = { sortBy: "", order: "" };
-      break;
-  }
-  setResetTableCollaps(true);
-  setSortOrder(sortOrder);
-};
+  const onSortBySlected = (value: string) => {
+    let sortOrder;
+    switch (value) {
+      case SORTBY_TYPES.TRUCK_NAME_AZ:
+        sortOrder = { sortBy: "deliveryVehicleNm", order: "asc" };
+        break;
+      case SORTBY_TYPES.TRUCK_NAME_ZA:
+        sortOrder = { sortBy: "deliveryVehicleNm", order: "desc" };
+        break;
+      default:
+        sortOrder = { sortBy: "", order: "" };
+        break;
+    }
+    setResetTableCollaps(true);
+    setSortOrder(sortOrder);
+  };
 
-
-    const navigateAddtruck = () => {
-        navigate(`/trucks/addTruck`);
-    };
+  const navigateAddtruck = () => {
+    navigate(`/trucks/addTruck`);
+  };
 
   const setSelectedRow = (deliveryVehicleId: string) => {
     setDeliveryVehicleId(deliveryVehicleId);
@@ -160,7 +180,7 @@ const onSortBySlected = (value: string) => {
             rows={truckObj.dataModel(truckList)}
             header={headCells}
             isLoading={isFetching || isLoading}
-            enableRowSelection
+            openDrawer={openDrawer}
             enableRowAction
             getId={setSelectedRow}
             getPages={fetchNextPage}
@@ -177,6 +197,19 @@ const onSortBySlected = (value: string) => {
             rowActionOptions={rowActionOptions}
             resetCollaps={resetTableCollaps}
           />
+
+          <RightInfoPanel
+            panelType="info-view"
+            open={drawerOpen}
+            onClose={drawerClose}
+            headingText={infoPanelName}
+            editURL={editURL}
+          >
+            {Object.keys(info).length &&
+              <TruckDetail info={info} drawerOpen={drawerOpen} />
+            }
+          </RightInfoPanel>
+
         </Grid>
       </Grid>
     </Box>
