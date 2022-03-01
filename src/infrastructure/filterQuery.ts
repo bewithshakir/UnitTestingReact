@@ -23,6 +23,19 @@ const getCustomerFilterData = async (urlKey: filterURLKey) => {
     return data;
 };
 
+const getCustomerNameData = async () => {
+    const options: AxiosRequestConfig = {
+        method: 'get',
+        url: '/api/customer-service/customers?limit=15&offset=0&countryCode=us&sortBy=customerName&order=desc&'
+    };
+    const { data } = await axios(options);
+    return data;
+};
+
+export const useGetCustomerNameData = () => {
+    return useQuery([], () => getCustomerNameData());
+};
+
 
 export const useGetFilterData = (urlKey: filterURLKey) => {
     return useQuery([urlKey], () => getCustomerFilterData(urlKey));
