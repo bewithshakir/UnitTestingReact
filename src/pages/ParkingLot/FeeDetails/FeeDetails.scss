@@ -26,4 +26,7 @@
             transform: translate(-50%, 650%);
             position: absolute;
     } 
+  .deleteBtn.enabled {
+    cursor: pointer;
+  }
 }
