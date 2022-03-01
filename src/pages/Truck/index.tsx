@@ -25,7 +25,7 @@ const TruckLandingContent: React.FC<TruckLandingContentProps> = memo(() => {
   const headCells = truckObj.fieldsToDisplay();
   const rowActionOptions = truckObj.rowActions();
   const navigate = useNavigate();
-  const [searchTerm] = React.useState("");
+  const [searchTerm,setSearchTerm] = React.useState("");
   const [sortOrder, setSortOrder] = React.useState<{ sortBy: string, order: string }>({ sortBy: "", order: "" });
   const [truckList, setTruckList] = React.useState([]);
   const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
@@ -48,8 +48,9 @@ const TruckLandingContent: React.FC<TruckLandingContentProps> = memo(() => {
     }
   }, [data]);
 
-const onInputChange = () => {
-    // TODO
+const onInputChange = (value: string) => {
+  setResetTableCollaps(true);
+  setSearchTerm(value);
 };  
 
 const handleMassAction = () => {
@@ -117,6 +118,7 @@ const onSortBySlected = (value: string) => {
                 value={searchTerm}
                 delay={500}
                 onChange={onInputChange}
+                width={"110%"}
               />
             </Grid>
           </Grid>

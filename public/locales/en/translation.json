@@ -269,7 +269,7 @@
   },
   "truckLanding": {
     "addTruck": "ADD TRUCK",
-    "search": "Search",
+    "search": "Truck Name/License/VIN",
     "noTrucksMsg": "Add Truck by clicking on the  Add Truck button."
   },
   "truckParkingLot": {

@@ -4,6 +4,7 @@ import TruckLandingContent from './index';
 import { TruckManagement } from './config';
 import SortbyMenu from '../../components/UIComponents/Menu/SortbyMenu.component';
 import { shallow } from 'enzyme';
+import SearchInput from "../../components/UIComponents/SearchInput/SearchInput";
 
 jest.mock('react-router-dom', () => ({
     ...jest.requireActual("react-router-dom") as any,
@@ -60,4 +61,27 @@ describe('Given Sortby Menu on Truck List Landing Page-', () => {
         expect(TruckListSortbyMenu.find(".btn-sortby").hasClass('active')).toBe(true);
         expect(TruckListSortbyMenu.find('.sortby-popper').exists()).toBe(true);
     });
+});
+
+describe('Given Search Input on Truck Overview Page', () => {
+    test('Render Search Input onChange', () => {
+        const searchInputItem = shallow(
+            <SearchInput
+                onChange={() => jest.fn()}
+            />
+        );
+        expect(searchInputItem).toMatchSnapshot();
+    });
+
+    test('Search Input onBlur', () => {
+        const searchInputItem = shallow(
+            <SearchInput
+                onChange={() => jest.fn()}
+                onBlur={() => jest.fn()}
+            />
+        );
+        searchInputItem.find(".searchinput").simulate('click');
+        expect(searchInputItem.find('.adornment')).toBeDefined();
+    });
+
 });
