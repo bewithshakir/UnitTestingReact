@@ -8,18 +8,17 @@ import { shallow } from 'enzyme';
 jest.mock('react-router-dom', () => ({
     ...jest.requireActual("react-router-dom") as any,
     useNavigate: () => ({
-        navigate: ()=> ({
-        to: '/trucks'
+        navigate: () => ({
+            to: '/trucks'
         })
     }),
 }));
 
-
-describe('renders TruckLanding page component', ()=> {
-    it('renders  TruckLanding page component with all ui components', ()=> {
+describe('renders TruckLanding page component', () => {
+    it('renders  TruckLanding page component with all ui components', () => {
         const result = renderWithClient(<TruckLandingContent version="Breadcrumbs-Single" />);
         const filterBtn = result.getByTestId('filter');
-        const sortBtv = result.getByRole('button', {name: /sortby menu list/i});
+        const sortBtv = result.getByRole('button', { name: /sortby menu list/i });
         const searchInput = result.getByRole('textbox', { name: /search/i });
         const addBtn = result.getByTestId('addBtn');
 
@@ -28,12 +27,12 @@ describe('renders TruckLanding page component', ()=> {
         expect(searchInput).toBeInTheDocument();
         expect(addBtn).toBeInTheDocument();
     });
-    it('render data on success response', async ()=> {
+    it('render data on success response', async () => {
         const result = renderWithClient(<TruckLandingContent version="Breadcrumbs-Single" />);
-        await waitFor(()=> {
+        await waitFor(() => {
             expect(result.getByText(/John/i)).toBeInTheDocument();
         });
-        
+
     });
 });
 

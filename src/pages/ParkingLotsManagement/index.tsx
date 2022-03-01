@@ -214,7 +214,7 @@ const index: React.FC<ParkingLotsManagementProps> = memo(() => {
                         fields={FilterByFields}
                         storeKey={'customerFilter'}
                     />
-                    <RightInfoPanel panelType="info-view" category="customer" open={drawerOpen} headingText={""} info={"info"} idStrForEdit={"infoPanelEditId"} nameStrForEdit={"infoPanelName"} onClose={drawerClose} />
+                    <RightInfoPanel panelType="info-view" open={drawerOpen} headingText={""} info={"info"} onClose={drawerClose} />
 
                 </Grid>
             </Grid>

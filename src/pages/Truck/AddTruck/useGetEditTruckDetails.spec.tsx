@@ -6,7 +6,7 @@ import { rest } from 'msw';
 
 describe('useGetEditTruckDetails for useQuery method ', () => {
     it('successful edit returns data', async () => {
-        const { result, waitFor } = renderHook(() => useGetEditTruckDetails('642d894c-0ea1-4423-9fde-3cde5c946744',jest.fn(),jest.fn()), {
+        const { result, waitFor } = renderHook(() => useGetEditTruckDetails('999', jest.fn(), jest.fn()), {
             wrapper: createWrapper()
         });
         await waitFor(() => {
@@ -22,7 +22,7 @@ describe('useGetEditTruckDetails for useQuery method ', () => {
             })
         );
 
-        const { result, waitFor } = renderHook(() => useGetEditTruckDetails('642d894c-0ea1-4423-9fde-3cde5c946744',jest.fn(),jest.fn()), {
+        const { result, waitFor } = renderHook(() => useGetEditTruckDetails('999', jest.fn(), jest.fn()), {
             wrapper: createWrapper()
         });
 

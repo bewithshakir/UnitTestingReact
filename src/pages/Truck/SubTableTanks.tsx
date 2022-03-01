@@ -12,7 +12,7 @@ interface props {
     tanksDataModel: any,
 }
 
-export default function InnerTable(props: props) {
+export default function InnerTable (props: props) {
     const [tanksList, setTanksList] = useState([]);
 
     const { data, fetchNextPage, isLoading, isFetching }: any = useGetTanksList(props.id);

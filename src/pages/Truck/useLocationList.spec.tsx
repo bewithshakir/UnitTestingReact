@@ -6,7 +6,7 @@ import { rest } from 'msw';
 
 describe('useGetTruckParkingLotList for useInfiniteQuery method ', () => {
     it('successful returns data', async () => {
-        const { result, waitFor } = renderHook(() => useGetLocations('a8898131-5add-4b76-aa92-8c7521bcb829'), {
+        const { result, waitFor } = renderHook(() => useGetLocations('456'), {
             wrapper: createWrapper()
         });
         act(() => {

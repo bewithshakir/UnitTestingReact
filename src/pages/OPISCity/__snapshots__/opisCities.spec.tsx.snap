@@ -462,7 +462,6 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                 "lg",
                 "xl",
               ],
-              "not": [Function],
               "only": [Function],
               "unit": "px",
               "up": [Function],
@@ -1945,7 +1944,6 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                     "lg",
                                                     "xl",
                                                   ],
-                                                  "not": [Function],
                                                   "only": [Function],
                                                   "unit": "px",
                                                   "up": [Function],
@@ -2368,7 +2366,6 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                   "lg",
                                                   "xl",
                                                 ],
-                                                "not": [Function],
                                                 "only": [Function],
                                                 "unit": "px",
                                                 "up": [Function],
@@ -2923,7 +2920,6 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                       "lg",
                                                       "xl",
                                                     ],
-                                                    "not": [Function],
                                                     "only": [Function],
                                                     "unit": "px",
                                                     "up": [Function],
@@ -6271,7 +6267,6 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                                       "lg",
                                                       "xl",
                                                     ],
-                                                    "not": [Function],
                                                     "only": [Function],
                                                     "unit": "px",
                                                     "up": [Function],
@@ -6700,7 +6695,6 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                 "children": Array [
                                   <PanelHeader
                                     headingText="taxes.filterHeader"
-                                    info={null}
                                     onClose={[Function]}
                                     panelType="dynamic-filter"
                                   />,
