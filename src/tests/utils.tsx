@@ -9,7 +9,7 @@ import { addDspHandler, getDspDataHandler, editDspHandler } from "../pages/DspLa
 import { getFormattedAddressHandler, getGoogleAddressHandler } from "../components/UIComponents/GoogleAddressComponent/mockApi/googleAddressAutoHandler";
 import { getProductByLotHandler, editProductHandler, getTaxExemptionsListHandler, getServedCitiesHandler, getSupplierPricesHandler, getSupplierBrandProductsHandler } from '../pages/ProductManagement/mockApi/handler';
 import { getFuelTaxList, getFuelTaxProductsList } from '../pages/Tax/mockApi/handler';
-import { getDelFeeSchduleHandler, getProductTypeHandler, getVehicleTypeHandler, getAssetTypeHandler, getLotMasterProductNamesHandler, getLotProductNamesHandler, addFeeDetailsHandler } from '../pages/ParkingLot/FeeDetails/mockAPi/handler';
+import { getDelFeeSchduleHandler, getProductTypeHandler, getVehicleTypeHandler, getAssetTypeHandler, getLotMasterProductNamesHandler, getLotProductNamesHandler, addFeeDetailsHandler, getFeeDetailsHandler, editFeeDetailsHandler } from '../pages/ParkingLot/FeeDetails/mockAPi/handler';
 import { addTruckParkingLotHandler, editTruckParkingLotHandler } from '../pages/Truck/TruckParkingLot/AddLot/mockApi/handlerAddTruckParkingLot';
 import { getProductTypesDropdownHandler } from '../pages/AddFuelTax/mockApi/handlerAddFuelTax';
 import { getTruckParkingLotList } from '../pages/Truck/TruckParkingLot/mockApi/handlerTruckParkingLot';
@@ -45,6 +45,8 @@ export const handlers = [
     getLotMasterProductNamesHandler(),
     getLotProductNamesHandler(),
     addFeeDetailsHandler(),
+    getFeeDetailsHandler(),
+    editFeeDetailsHandler(),
     addTruckParkingLotHandler(),
     getTruckParkingLotList(),
     editTruckParkingLotHandler(),
@@ -72,7 +74,7 @@ const createTestQueryClient = () => new QueryClient({
     },
 });
 
-export function renderWithClient (ui: React.ReactElement) {
+export function renderWithClient(ui: React.ReactElement) {
     const testQueryClient = createTestQueryClient();
     const { rerender, ...result } = render(
         <QueryClientProvider client={testQueryClient}>{ui}</QueryClientProvider>
@@ -86,7 +88,7 @@ export function renderWithClient (ui: React.ReactElement) {
     };
 }
 
-export function createWrapper () {
+export function createWrapper() {
     const testQueryClient = createTestQueryClient();
     return ({ children }: { children: React.ReactNode }) => (
         <QueryClientProvider client={testQueryClient}>{children}</QueryClientProvider>
