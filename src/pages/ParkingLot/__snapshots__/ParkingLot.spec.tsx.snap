@@ -14,6 +14,7 @@ exports[`Given Sortby Menu on ParkingLot Landing Page Render Sortby Menu 1`] = `
   <ForwardRef(Popper)
     anchorEl={null}
     className="sortby-popper"
+    data-testid="sortby-dropdown"
     disablePortal={true}
     open={false}
     placement="bottom-start"
@@ -2071,6 +2072,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                                 </button>
                                               }
                                               className="sortby-popper"
+                                              data-testid="sortby-dropdown"
                                               disablePortal={true}
                                               open={false}
                                               placement="bottom-start"
@@ -6740,6 +6742,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                         <ForwardRef(Drawer)
                           anchor="right"
                           className="right_panel_main_class customer_filter_panel"
+                          data-testid="right-drawer"
                           open={false}
                           variant="temporary"
                         >
@@ -6753,6 +6756,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                               }
                             }
                             className="MuiDrawer-root MuiDrawer-modal right_panel_main_class customer_filter_panel"
+                            data-testid="right-drawer"
                             hideBackdrop={false}
                             open={false}
                             ownerState={
@@ -6855,6 +6859,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                   />,
                                 ],
                                 "className": "right_panel_main_class customer_filter_panel",
+                                "data-testid": "right-drawer",
                                 "elevation": 16,
                                 "open": false,
                                 "variant": "temporary",
@@ -6871,6 +6876,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                 }
                               }
                               className="MuiDrawer-root MuiDrawer-modal right_panel_main_class customer_filter_panel css-j8ofbm-MuiDrawer-root"
+                              data-testid="right-drawer"
                               hideBackdrop={false}
                               open={false}
                             >
@@ -6945,6 +6951,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                     },
                                   }
                                 }
+                                data-testid="right-drawer"
                                 disableAutoFocus={false}
                                 disableEnforceFocus={false}
                                 disableEscapeKeyDown={false}
@@ -6974,11 +6981,13 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                         <ForwardRef(Drawer)
                           anchor="right"
                           className="right_panel_main_class right_info_panel"
+                          data-testid="right-drawer"
                           open={false}
                           variant="persistent"
                         >
                           <MuiDrawerDocked
                             className="MuiDrawer-root MuiDrawer-docked right_panel_main_class right_info_panel"
+                            data-testid="right-drawer"
                             ownerState={
                               Object {
                                 "anchor": "right",
@@ -6997,6 +7006,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                   />,
                                 ],
                                 "className": "right_panel_main_class right_info_panel",
+                                "data-testid": "right-drawer",
                                 "elevation": 16,
                                 "open": false,
                                 "variant": "persistent",
@@ -7005,6 +7015,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                           >
                             <div
                               className="MuiDrawer-root MuiDrawer-docked right_panel_main_class right_info_panel css-7ik032-MuiDrawer-docked"
+                              data-testid="right-drawer"
                             >
                               <ForwardRef(Slide)
                                 appear={true}
@@ -7158,6 +7169,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                           />,
                                         ],
                                         "className": "right_panel_main_class right_info_panel",
+                                        "data-testid": "right-drawer",
                                         "elevation": 16,
                                         "open": false,
                                         "variant": "persistent",

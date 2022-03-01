@@ -78,7 +78,7 @@ export const PanelHeader: React.FC<InfoPanelProps> = ({
               />
             )}
             {panelType === 'dynamic-filter' && (
-              <IconButton edge='start' onClick={onClose}>
+              <IconButton edge='start' onClick={onClose} data-testid="closeIcon">
                 <CloseIcon
                   className='info_panel_close_icon'
                   color='var(--White)'

@@ -1,4 +1,5 @@
-import { waitFor } from '@testing-library/react';
+import { waitFor, act, waitForElementToBeRemoved } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { renderWithClient } from '../../../tests/utils';
 import TruckParkingLot from './index';
 import { fireEvent } from '@testing-library/react';
@@ -61,6 +62,30 @@ describe('render TruckParkingLot component', () => {
 
         await waitFor(() => {
             expect(result.getByText(/No Results Found/i)).toBeInTheDocument();
+        });
+    });
+
+    describe('render drawer on filter click', ()=> {
+        it('show filter Drawer on "Filter" button clicked', async()=> {
+            const result = renderWithClient(<TruckParkingLot version="Breadcrumbs-Single" />);
+            const filterBtn = result.getByTestId('filter');
+            userEvent.click(filterBtn);
+            await waitFor(()=> {
+                expect(result.getByTestId('right-drawer')).toBeInTheDocument();
+            });
+        });
+
+        it('show filter Drawer on "Filter" button clicked', async()=> {
+            const result = renderWithClient(<TruckParkingLot version="Breadcrumbs-Single" />);
+            const filterBtn = result.getByTestId('filter');
+            userEvent.click(filterBtn);
+
+            const closeBtn = result.getByTestId('closeIcon');
+            userEvent.click(closeBtn);
+        
+            await waitForElementToBeRemoved(()=> {
+                return result.getByTestId('right-drawer');
+            });
         });
     });
 });

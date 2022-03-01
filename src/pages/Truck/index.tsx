@@ -13,7 +13,7 @@ import TruckModel from '../../models/TruckModel';
 import { useTruckList } from './queries';
 import GridComponent from "../../components/UIComponents/DataGird/grid.component";
 import { DataGridActionsMenuOption } from '../../components/UIComponents/Menu/DataGridActionsMenu.component';
-import { ROW_ACTION_TYPES } from './config';
+import { TruckManagement, ROW_ACTION_TYPES, SORTBY_TYPES } from './config';
 
 export interface TruckLandingContentProps {
   version: string
@@ -24,14 +24,14 @@ const TruckLandingContent: React.FC<TruckLandingContentProps> = memo(() => {
   const truckObj = new TruckModel();
   const headCells = truckObj.fieldsToDisplay();
   const rowActionOptions = truckObj.rowActions();
-
   const navigate = useNavigate();
   const [searchTerm] = React.useState("");
-  const [sortOrder] = React.useState<{ sortBy: string, order: string }>({ sortBy: "", order: "" });
+  const [sortOrder, setSortOrder] = React.useState<{ sortBy: string, order: string }>({ sortBy: "", order: "" });
   const [truckList, setTruckList] = React.useState([]);
   const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
   setVersion("NavLinks");
-
+  const { SortByOptions } = TruckManagement.LandingPage;
+  const [resetTableCollaps, setResetTableCollaps] = React.useState(false);
   const { t } = useTranslation();
   const { data, fetchNextPage, isLoading, isFetching }: any = useTruckList(
     searchTerm,
@@ -56,9 +56,23 @@ const handleMassAction = () => {
     // TO DO
 };
 
-  const onSortBySlected = () => {
-      //TODO
-  };
+const onSortBySlected = (value: string) => {
+  let sortOrder;
+  switch (value) {
+    case SORTBY_TYPES.TRUCK_NAME_AZ:
+      sortOrder = { sortBy: "deliveryVehicleNm", order: "asc" };
+      break;
+    case SORTBY_TYPES.TRUCK_NAME_ZA:
+      sortOrder = { sortBy: "deliveryVehicleNm", order: "desc" };
+      break;
+    default:
+      sortOrder = { sortBy: "", order: "" };
+      break;
+  }
+  setResetTableCollaps(true);
+  setSortOrder(sortOrder);
+};
+
 
     const navigateAddtruck = () => {
         navigate(`/trucks/addTruck`);
@@ -91,8 +105,8 @@ const handleMassAction = () => {
             <Grid item pr={2.5}>
               <FormControl>
                 <SortbyMenu
-                  options={[]}
-                  onSelect={() => onSortBySlected()}
+                  options={SortByOptions.map((sortByItem) => t(sortByItem))}
+                  onSelect={(value) => onSortBySlected(value)}
                 />
               </FormControl>
             </Grid>
@@ -141,6 +155,7 @@ const handleMassAction = () => {
             noDataMsg={t("truckLanding.noTrucksMsg")}
             onRowActionSelect={handleRowAction}
             rowActionOptions={rowActionOptions}
+            resetCollaps={resetTableCollaps}
           />
         </Grid>
       </Grid>
