@@ -174,7 +174,9 @@ export const DynamicFilterContent: React.FC<IDynamicFilterProps> = ({ provideFil
 
     const formik = useFormik({
         initialValues,
-        onSubmit: (values) => applyFilter(values),
+        onSubmit: (values) => {
+            applyFilter(values);
+        },
         enableReinitialize: true
     });
 
@@ -269,6 +271,7 @@ export const DynamicFilterContent: React.FC<IDynamicFilterProps> = ({ provideFil
                                                         onChange={(name, val) => handleSelect(name, val, true)}
                                                         helperText={(touched && error) ? error : undefined}
                                                         error={(touched && error) ? true : false} />
+                                                        
                                                     :
                                                     <Select
                                                         id={field.name}
@@ -365,6 +368,7 @@ export const DynamicFilterContent: React.FC<IDynamicFilterProps> = ({ provideFil
                     </Grid>
                     <Grid item m={2} mr={6}>
                         <ApplyBtn
+                            data-testid="applyAll"
                             id="applyAll"
                             type="submit"
                             types="save"

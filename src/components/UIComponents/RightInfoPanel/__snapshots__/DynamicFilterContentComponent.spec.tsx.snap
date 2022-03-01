@@ -169,6 +169,7 @@ exports[`Rendering of Dynamic filter component Dynamic filter component snapshot
         >
           <Styled(Button)
             aria-label="right-info-panel.filter.buttons.apply"
+            data-testid="applyAll"
             disabled={true}
             id="applyAll"
             type="submit"
@@ -681,6 +682,7 @@ exports[`Rendering of Dynamic filter component Dynamic filter component snapshot
         >
           <Styled(Button)
             aria-label="right-info-panel.filter.buttons.apply"
+            data-testid="applyAll"
             disabled={true}
             id="applyAll"
             type="submit"
@@ -822,6 +824,7 @@ exports[`Rendering of Dynamic filter component Dynamic filter component snapshot
         >
           <Styled(Button)
             aria-label="right-info-panel.filter.buttons.apply"
+            data-testid="applyAll"
             disabled={true}
             id="applyAll"
             type="submit"
@@ -979,6 +982,7 @@ exports[`Rendering of Dynamic filter component Dynamic filter component snapshot
         >
           <Styled(Button)
             aria-label="right-info-panel.filter.buttons.apply"
+            data-testid="applyAll"
             disabled={true}
             id="applyAll"
             type="submit"
@@ -1113,6 +1117,7 @@ exports[`Rendering of Dynamic filter component Dynamic filter component snapshot
         >
           <Styled(Button)
             aria-label="right-info-panel.filter.buttons.apply"
+            data-testid="applyAll"
             disabled={true}
             id="applyAll"
             type="submit"
@@ -1276,6 +1281,7 @@ exports[`Rendering of Dynamic filter component Dynamic filter component snapshot
         >
           <Styled(Button)
             aria-label="right-info-panel.filter.buttons.apply"
+            data-testid="applyAll"
             disabled={true}
             id="applyAll"
             type="submit"
@@ -1412,6 +1418,7 @@ exports[`Rendering of Dynamic filter component Dynamic filter component snapshot
         >
           <Styled(Button)
             aria-label="right-info-panel.filter.buttons.apply"
+            data-testid="applyAll"
             disabled={true}
             id="applyAll"
             type="submit"
@@ -1545,6 +1552,7 @@ exports[`Rendering of Dynamic filter component Dynamic filter component snapshot
         >
           <Styled(Button)
             aria-label="right-info-panel.filter.buttons.apply"
+            data-testid="applyAll"
             disabled={true}
             id="applyAll"
             type="submit"

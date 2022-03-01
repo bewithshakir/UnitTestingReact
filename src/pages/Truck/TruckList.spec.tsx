@@ -1,7 +1,9 @@
 import { waitFor } from '@testing-library/react';
 import { renderWithClient } from '../../tests/utils';
 import TruckLandingContent from './index';
-
+import { TruckManagement } from './config';
+import SortbyMenu from '../../components/UIComponents/Menu/SortbyMenu.component';
+import { shallow } from 'enzyme';
 
 jest.mock('react-router-dom', () => ({
     ...jest.requireActual("react-router-dom") as any,
@@ -32,5 +34,30 @@ describe('renders TruckLanding page component', ()=> {
             expect(result.getByText(/John/i)).toBeInTheDocument();
         });
         
+    });
+});
+
+describe('Given Sortby Menu on Truck List Landing Page-', () => {
+    const { SortByOptions } = TruckManagement.LandingPage;
+    test('Render Sortby Menu', () => {
+        const TruckListSortbyMenu = shallow(
+            <SortbyMenu
+                options={SortByOptions.map((sortByItem) => (sortByItem))}
+                onSelect={() => jest.fn()}
+            />
+        );
+        expect(TruckListSortbyMenu).toMatchSnapshot();
+    });
+
+    test('Sortby Menu Menu With Options', () => {
+        const TruckListSortbyMenu = shallow(
+            <SortbyMenu
+                options={SortByOptions.map((sortByItem) => (sortByItem))}
+                onSelect={() => jest.fn()}
+            />
+        );
+        TruckListSortbyMenu.find(".btn-sortby").simulate('click');
+        expect(TruckListSortbyMenu.find(".btn-sortby").hasClass('active')).toBe(true);
+        expect(TruckListSortbyMenu.find('.sortby-popper').exists()).toBe(true);
     });
 });

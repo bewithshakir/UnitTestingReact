@@ -12,6 +12,10 @@ import { useNavigate } from "react-router-dom";
 import TruckModel from '../../models/TruckModel';
 import { useTruckList } from './queries';
 import GridComponent from "../../components/UIComponents/DataGird/grid.component";
+import Table from "./SubTableLocations";
+import { DataGridActionsMenuOption } from '../../components/UIComponents/Menu/DataGridActionsMenu.component';
+import { TruckManagement, ROW_ACTION_TYPES, SORTBY_TYPES } from './config';
+import SubTableTanks from "./SubTableTanks";
 
 export interface TruckLandingContentProps {
   version: string
@@ -21,14 +25,21 @@ export interface TruckLandingContentProps {
 const TruckLandingContent: React.FC<TruckLandingContentProps> = memo(() => {
   const truckObj = new TruckModel();
   const headCells = truckObj.fieldsToDisplay();
+  const headCellsLots = truckObj.parkingLocationTableFields();
+  const tanksTableCells = truckObj.tanksTableFields();
 
+  const rowActionOptions = truckObj.rowActions();
   const navigate = useNavigate();
   const [searchTerm] = React.useState("");
-  const [sortOrder] = React.useState<{ sortBy: string, order: string }>({ sortBy: "", order: "" });
+  const [sortOrder, setSortOrder] = React.useState<{ sortBy: string, order: string }>({ sortBy: "", order: "" });
   const [truckList, setTruckList] = React.useState([]);
   const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
-  setVersion("NavLinks");
+  const [deliveryVehicleId, setDeliveryVehicleId] = React.useState('');
 
+
+  setVersion("NavLinks");
+  const { SortByOptions } = TruckManagement.LandingPage;
+  const [resetTableCollaps, setResetTableCollaps] = React.useState(false);
   const { t } = useTranslation();
   const { data, fetchNextPage, isLoading, isFetching }: any = useTruckList(
     searchTerm,
@@ -53,13 +64,40 @@ const handleMassAction = () => {
     // TO DO
 };
 
-  const onSortBySlected = () => {
-      //TODO
-  };
+const onSortBySlected = (value: string) => {
+  let sortOrder;
+  switch (value) {
+    case SORTBY_TYPES.TRUCK_NAME_AZ:
+      sortOrder = { sortBy: "deliveryVehicleNm", order: "asc" };
+      break;
+    case SORTBY_TYPES.TRUCK_NAME_ZA:
+      sortOrder = { sortBy: "deliveryVehicleNm", order: "desc" };
+      break;
+    default:
+      sortOrder = { sortBy: "", order: "" };
+      break;
+  }
+  setResetTableCollaps(true);
+  setSortOrder(sortOrder);
+};
+
 
     const navigateAddtruck = () => {
         navigate(`/trucks/addTruck`);
     };
+
+  const setSelectedRow = (deliveryVehicleId: string) => {
+    setDeliveryVehicleId(deliveryVehicleId);
+  };
+
+  const handleRowAction = (action: DataGridActionsMenuOption, row: any) => {
+    switch (action.action) {
+      case ROW_ACTION_TYPES.EDIT:
+        navigate(`/trucks/editTruck/${row.deliveryVehicleId}`);
+        break;
+      default: return;
+    }
+  };
 
   return (
     <Box display="flex" mt={10} ml={8}>
@@ -79,8 +117,8 @@ const handleMassAction = () => {
             <Grid item pr={2.5}>
               <FormControl>
                 <SortbyMenu
-                  options={[]}
-                  onSelect={() => onSortBySlected()}
+                  options={SortByOptions.map((sortByItem) => t(sortByItem))}
+                  onSelect={(value) => onSortBySlected(value)}
                 />
               </FormControl>
             </Grid>
@@ -122,11 +160,22 @@ const handleMassAction = () => {
             rows={truckObj.dataModel(truckList)}
             header={headCells}
             isLoading={isFetching || isLoading}
-            enableRowSelection={false}
+            enableRowSelection
             enableRowAction
+            getId={setSelectedRow}
             getPages={fetchNextPage}
             searchTerm={searchTerm}
             noDataMsg={t("truckLanding.noTrucksMsg")}
+            onResetTableCollaps={setResetTableCollaps}
+            InnerTableComponent={
+              {
+                ['LOCATIONS']: <Table primaryKey='id' id={deliveryVehicleId} headCells={headCellsLots} />,
+                ['TANKS']: <SubTableTanks tanksDataModel={truckObj.tanksDataModel} primaryKey='id' id={deliveryVehicleId} headCells={tanksTableCells} />,
+              }
+            }
+            onRowActionSelect={handleRowAction}
+            rowActionOptions={rowActionOptions}
+            resetCollaps={resetTableCollaps}
           />
         </Grid>
       </Grid>

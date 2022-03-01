@@ -14,6 +14,7 @@ exports[`Given Sortby Menu on Asset Management landing Page Render Sortby Menu 1
   <ForwardRef(Popper)
     anchorEl={null}
     className="sortby-popper"
+    data-testid="sortby-dropdown"
     disablePortal={true}
     open={false}
     placement="bottom-start"
@@ -99,7 +100,6 @@ exports[`Rendering of Asset Management landing page Component Asset Management l
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -305,7 +305,6 @@ exports[`Rendering of Asset Management landing page Component Asset Management l
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
-                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -899,7 +898,6 @@ exports[`Rendering of Asset Management landing page Component Asset Management l
                               "align": "left",
                               "field": "assetNm",
                               "label": "ASSET TYPE",
-                              "sortable": true,
                               "type": "text",
                             },
                             Object {
@@ -1716,6 +1714,7 @@ exports[`Rendering of Asset Management landing page Component Asset Management l
                                             <ForwardRef(Popper)
                                               anchorEl={null}
                                               className="sortby-popper"
+                                              data-testid="sortby-dropdown"
                                               disablePortal={true}
                                               open={false}
                                               placement="bottom-start"
@@ -3925,7 +3924,6 @@ exports[`Rendering of Asset Management landing page Component Asset Management l
                                   "align": "left",
                                   "field": "assetNm",
                                   "label": "ASSET TYPE",
-                                  "sortable": true,
                                   "type": "text",
                                 },
                                 Object {
@@ -4065,7 +4063,6 @@ exports[`Rendering of Asset Management landing page Component Asset Management l
                               "align": "left",
                               "field": "assetNm",
                               "label": "ASSET TYPE",
-                              "sortable": true,
                               "type": "text",
                             },
                             Object {
@@ -4163,7 +4160,6 @@ exports[`Rendering of Asset Management landing page Component Asset Management l
                                           "align": "left",
                                           "field": "assetNm",
                                           "label": "ASSET TYPE",
-                                          "sortable": true,
                                           "type": "text",
                                         },
                                         Object {
@@ -4235,7 +4231,6 @@ exports[`Rendering of Asset Management landing page Component Asset Management l
                                           "align": "left",
                                           "field": "assetNm",
                                           "label": "ASSET TYPE",
-                                          "sortable": true,
                                           "type": "text",
                                         },
                                         Object {
@@ -4295,7 +4290,6 @@ exports[`Rendering of Asset Management landing page Component Asset Management l
                                           "align": "left",
                                           "field": "assetNm",
                                           "label": "ASSET TYPE",
-                                          "sortable": true,
                                           "type": "text",
                                         },
                                         Object {
@@ -4405,7 +4399,6 @@ exports[`Rendering of Asset Management landing page Component Asset Management l
                                                 "align": "left",
                                                 "field": "assetNm",
                                                 "label": "ASSET TYPE",
-                                                "sortable": true,
                                                 "type": "text",
                                               },
                                               Object {
@@ -4477,7 +4470,6 @@ exports[`Rendering of Asset Management landing page Component Asset Management l
                                                 "align": "left",
                                                 "field": "assetNm",
                                                 "label": "ASSET TYPE",
-                                                "sortable": true,
                                                 "type": "text",
                                               },
                                               Object {
@@ -4537,7 +4529,6 @@ exports[`Rendering of Asset Management landing page Component Asset Management l
                                                 "align": "left",
                                                 "field": "assetNm",
                                                 "label": "ASSET TYPE",
-                                                "sortable": true,
                                                 "type": "text",
                                               },
                                               Object {
@@ -4641,7 +4632,6 @@ exports[`Rendering of Asset Management landing page Component Asset Management l
                                             "align": "left",
                                             "field": "assetNm",
                                             "label": "ASSET TYPE",
-                                            "sortable": true,
                                             "type": "text",
                                           },
                                           Object {
@@ -4722,14 +4712,7 @@ exports[`Rendering of Asset Management landing page Component Asset Management l
                                                   sortDirection={false}
                                                   width="auto"
                                                 >
-                                                  <ForwardRef(TableSortLabel)
-                                                    IconComponent={[Function]}
-                                                    active={false}
-                                                    direction="asc"
-                                                    onClick={[Function]}
-                                                  >
-                                                    ASSET TYPE
-                                                  </ForwardRef(TableSortLabel)>
+                                                  ASSET TYPE
                                                 </ForwardRef(TableCell)>
                                                 <ForwardRef(TableCell)
                                                   align="left"
@@ -4824,14 +4807,7 @@ exports[`Rendering of Asset Management landing page Component Asset Management l
                                                           sortDirection={false}
                                                           width="auto"
                                                         >
-                                                          <ForwardRef(TableSortLabel)
-                                                            IconComponent={[Function]}
-                                                            active={false}
-                                                            direction="asc"
-                                                            onClick={[Function]}
-                                                          >
-                                                            ASSET TYPE
-                                                          </ForwardRef(TableSortLabel)>
+                                                          ASSET TYPE
                                                         </ForwardRef(TableCell)>,
                                                         <ForwardRef(TableCell)
                                                           align="left"
@@ -4922,14 +4898,7 @@ exports[`Rendering of Asset Management landing page Component Asset Management l
                                                       ownerState={
                                                         Object {
                                                           "align": "left",
-                                                          "children": <ForwardRef(TableSortLabel)
-                                                            IconComponent={[Function]}
-                                                            active={false}
-                                                            direction="asc"
-                                                            onClick={[Function]}
-                                                          >
-                                                            ASSET TYPE
-                                                          </ForwardRef(TableSortLabel)>,
+                                                          "children": "ASSET TYPE",
                                                           "className": "header-options",
                                                           "component": "th",
                                                           "padding": "normal",
@@ -4949,147 +4918,7 @@ exports[`Rendering of Asset Management landing page Component Asset Management l
                                                         scope="col"
                                                         width="auto"
                                                       >
-                                                        <ForwardRef(TableSortLabel)
-                                                          IconComponent={[Function]}
-                                                          active={false}
-                                                          direction="asc"
-                                                          onClick={[Function]}
-                                                        >
-                                                          <MuiTableSortLabelRoot
-                                                            className="MuiTableSortLabel-root"
-                                                            component="span"
-                                                            disableRipple={true}
-                                                            onClick={[Function]}
-                                                            ownerState={
-                                                              Object {
-                                                                "IconComponent": [Function],
-                                                                "active": false,
-                                                                "children": "ASSET TYPE",
-                                                                "direction": "asc",
-                                                                "hideSortIcon": false,
-                                                                "onClick": [Function],
-                                                              }
-                                                            }
-                                                          >
-                                                            <ForwardRef(ButtonBase)
-                                                              className="MuiTableSortLabel-root css-o11grf-MuiTableSortLabel-root"
-                                                              component="span"
-                                                              disableRipple={true}
-                                                              onClick={[Function]}
-                                                            >
-                                                              <MuiButtonBaseRoot
-                                                                as="span"
-                                                                className="MuiButtonBase-root MuiTableSortLabel-root css-o11grf-MuiTableSortLabel-root"
-                                                                onBlur={[Function]}
-                                                                onClick={[Function]}
-                                                                onContextMenu={[Function]}
-                                                                onDragLeave={[Function]}
-                                                                onFocus={[Function]}
-                                                                onKeyDown={[Function]}
-                                                                onKeyUp={[Function]}
-                                                                onMouseDown={[Function]}
-                                                                onMouseLeave={[Function]}
-                                                                onMouseUp={[Function]}
-                                                                onTouchEnd={[Function]}
-                                                                onTouchMove={[Function]}
-                                                                onTouchStart={[Function]}
-                                                                ownerState={
-                                                                  Object {
-                                                                    "centerRipple": false,
-                                                                    "children": Array [
-                                                                      "ASSET TYPE",
-                                                                      <MuiTableSortLabelIcon
-                                                                        as={[Function]}
-                                                                        className="MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc"
-                                                                        ownerState={
-                                                                          Object {
-                                                                            "IconComponent": [Function],
-                                                                            "active": false,
-                                                                            "children": "ASSET TYPE",
-                                                                            "direction": "asc",
-                                                                            "hideSortIcon": false,
-                                                                            "onClick": [Function],
-                                                                          }
-                                                                        }
-                                                                      />,
-                                                                    ],
-                                                                    "className": "MuiTableSortLabel-root css-o11grf-MuiTableSortLabel-root",
-                                                                    "component": "span",
-                                                                    "disableRipple": true,
-                                                                    "disableTouchRipple": false,
-                                                                    "disabled": false,
-                                                                    "focusRipple": false,
-                                                                    "focusVisible": false,
-                                                                    "onClick": [Function],
-                                                                    "tabIndex": 0,
-                                                                  }
-                                                                }
-                                                                role="button"
-                                                                tabIndex={0}
-                                                              >
-                                                                <span
-                                                                  className="MuiButtonBase-root MuiTableSortLabel-root css-1qgma8u-MuiButtonBase-root-MuiTableSortLabel-root"
-                                                                  onBlur={[Function]}
-                                                                  onClick={[Function]}
-                                                                  onContextMenu={[Function]}
-                                                                  onDragLeave={[Function]}
-                                                                  onFocus={[Function]}
-                                                                  onKeyDown={[Function]}
-                                                                  onKeyUp={[Function]}
-                                                                  onMouseDown={[Function]}
-                                                                  onMouseLeave={[Function]}
-                                                                  onMouseUp={[Function]}
-                                                                  onTouchEnd={[Function]}
-                                                                  onTouchMove={[Function]}
-                                                                  onTouchStart={[Function]}
-                                                                  role="button"
-                                                                  tabIndex={0}
-                                                                >
-                                                                  ASSET TYPE
-                                                                  <MuiTableSortLabelIcon
-                                                                    as={[Function]}
-                                                                    className="MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc"
-                                                                    ownerState={
-                                                                      Object {
-                                                                        "IconComponent": [Function],
-                                                                        "active": false,
-                                                                        "children": "ASSET TYPE",
-                                                                        "direction": "asc",
-                                                                        "hideSortIcon": false,
-                                                                        "onClick": [Function],
-                                                                      }
-                                                                    }
-                                                                  >
-                                                                    <SortByIcon
-                                                                      className="MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc css-1hi7cb7-MuiTableSortLabel-icon"
-                                                                    >
-                                                                      <svg
-                                                                        className="MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc css-1hi7cb7-MuiTableSortLabel-icon"
-                                                                        height="1em"
-                                                                        viewBox="0 0 20 20"
-                                                                        width="1em"
-                                                                      >
-                                                                        <g
-                                                                          data-name="Group 1863"
-                                                                        >
-                                                                          <path
-                                                                            d="M14 12l-4 5-4-5zm-4-8l4 5H6z"
-                                                                            fill="currentColor"
-                                                                          />
-                                                                          <path
-                                                                            d="M0 0h20v20H0z"
-                                                                            data-name="Rectangle 2251"
-                                                                            fill="none"
-                                                                          />
-                                                                        </g>
-                                                                      </svg>
-                                                                    </SortByIcon>
-                                                                  </MuiTableSortLabelIcon>
-                                                                </span>
-                                                              </MuiButtonBaseRoot>
-                                                            </ForwardRef(ButtonBase)>
-                                                          </MuiTableSortLabelRoot>
-                                                        </ForwardRef(TableSortLabel)>
+                                                        ASSET TYPE
                                                       </th>
                                                     </MuiTableCellRoot>
                                                   </ForwardRef(TableCell)>
@@ -5364,7 +5193,6 @@ exports[`Rendering of Asset Management landing page Component Asset Management l
                                             "align": "left",
                                             "field": "assetNm",
                                             "label": "ASSET TYPE",
-                                            "sortable": true,
                                             "type": "text",
                                           },
                                           Object {
@@ -5424,7 +5252,6 @@ exports[`Rendering of Asset Management landing page Component Asset Management l
                                             "align": "left",
                                             "field": "assetNm",
                                             "label": "ASSET TYPE",
-                                            "sortable": true,
                                             "type": "text",
                                           },
                                           Object {
@@ -5923,6 +5750,7 @@ exports[`Rendering of Asset Management landing page Component Asset Management l
                         <ForwardRef(Drawer)
                           anchor="right"
                           className="right_panel_main_class customer_filter_panel"
+                          data-testid="right-drawer"
                           open={false}
                           variant="temporary"
                         >
@@ -5936,6 +5764,7 @@ exports[`Rendering of Asset Management landing page Component Asset Management l
                               }
                             }
                             className="MuiDrawer-root MuiDrawer-modal right_panel_main_class customer_filter_panel"
+                            data-testid="right-drawer"
                             hideBackdrop={false}
                             open={false}
                             ownerState={
@@ -5975,6 +5804,7 @@ exports[`Rendering of Asset Management landing page Component Asset Management l
                                   />,
                                 ],
                                 "className": "right_panel_main_class customer_filter_panel",
+                                "data-testid": "right-drawer",
                                 "elevation": 16,
                                 "open": false,
                                 "variant": "temporary",
@@ -5991,6 +5821,7 @@ exports[`Rendering of Asset Management landing page Component Asset Management l
                                 }
                               }
                               className="MuiDrawer-root MuiDrawer-modal right_panel_main_class customer_filter_panel css-j8ofbm-MuiDrawer-root"
+                              data-testid="right-drawer"
                               hideBackdrop={false}
                               open={false}
                             >
@@ -6065,6 +5896,7 @@ exports[`Rendering of Asset Management landing page Component Asset Management l
                                     },
                                   }
                                 }
+                                data-testid="right-drawer"
                                 disableAutoFocus={false}
                                 disableEnforceFocus={false}
                                 disableEscapeKeyDown={false}
@@ -6172,7 +6004,6 @@ exports[`Rendering of Asset Management landing page Component Search Textbox Dat
                     "isPlaceholderData": false,
                     "isPreviousData": false,
                     "isRefetchError": false,
-                    "isRefetching": false,
                     "isStale": true,
                     "isSuccess": false,
                     "refetch": [Function],
@@ -6378,7 +6209,6 @@ exports[`Rendering of Asset Management landing page Component Search Textbox Dat
                     "isPlaceholderData": false,
                     "isPreviousData": false,
                     "isRefetchError": false,
-                    "isRefetching": false,
                     "isStale": true,
                     "isSuccess": false,
                     "refetch": [Function],
