@@ -1,6 +1,6 @@
 import { mount } from 'enzyme';
 import * as ReactQuery from 'react-query';
-import CheckBoxSegment from './CheckBoxSegement';
+import CheckBoxSegment from './CheckboxSegement';
 const queryClient = new ReactQuery.QueryClient();
 
 beforeAll(() => {
@@ -37,7 +37,7 @@ describe('Rendering of opis rack segment', () => {
               getFieldProps:jest.fn(),
               setFieldValue: jest.fn()
             };
-        const component = mount(<ReactQuery.QueryClientProvider client={queryClient}> <CheckBoxSegment formik={mockFormik} isDisabled={false} showFuelTaxError={jest.fn()} fetchTaxList={false} setFetchTaxList={jest.fn()} revertFinalRateAndAmount={jest.fn()}  /> </ReactQuery.QueryClientProvider >);
+        const component = mount(<ReactQuery.QueryClientProvider client={queryClient}> <CheckBoxSegment formik={mockFormik} isDisabled={false} showFuelTaxError={jest.fn()} fetchTaxList={false} setFetchTaxList={jest.fn()} revertFinalRateAndAmount={jest.fn()} isSaveCancelShown={false} /> </ReactQuery.QueryClientProvider >);
         expect(component).toBeDefined();
         expect(component).toMatchSnapshot();
     });

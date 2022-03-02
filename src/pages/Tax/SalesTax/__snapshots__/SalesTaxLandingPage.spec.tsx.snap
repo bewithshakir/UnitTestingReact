@@ -6530,7 +6530,6 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                 "children": Array [
                                   <PanelHeader
                                     headingText="taxes.filterHeader"
-                                    info={null}
                                     onClose={[Function]}
                                     panelType="dynamic-filter"
                                   />,

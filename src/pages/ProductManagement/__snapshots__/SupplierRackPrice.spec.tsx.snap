@@ -396,36 +396,7 @@ exports[`Rendering of supplier rack price should render snapshot for supplier ra
         "initialError": "",
         "initialTouched": false,
         "initialValue": "",
-        "setFieldValue": [MockFunction] {
-          "calls": Array [
-            Array [
-              "supplierPrice",
-              0,
-            ],
-            Array [
-              "manualPriceAmt",
-              0,
-            ],
-            Array [
-              "opisName",
-              "",
-            ],
-          ],
-          "results": Array [
-            Object {
-              "type": "return",
-              "value": undefined,
-            },
-            Object {
-              "type": "return",
-              "value": undefined,
-            },
-            Object {
-              "type": "return",
-              "value": undefined,
-            },
-          ],
-        },
+        "setFieldValue": [MockFunction],
         "touched": Object {},
         "values": Object {
           "actualProduct": Array [],
@@ -457,21 +428,9 @@ exports[`Rendering of supplier rack price should render snapshot for supplier ra
       }
     }
     isDisabled={false}
-    setSupplierPrice={
-      [MockFunction] {
-        "calls": Array [
-          Array [
-            null,
-          ],
-        ],
-        "results": Array [
-          Object {
-            "type": "return",
-            "value": undefined,
-          },
-        ],
-      }
-    }
+    isSaveCancelShown={false}
+    resetSupplierValue="xyz"
+    setSupplierPrice={[MockFunction]}
   >
     <h4
       className="checkbox-heading price-heading"
@@ -481,32 +440,18 @@ exports[`Rendering of supplier rack price should render snapshot for supplier ra
        
     </h4>
     <Button
-      className="supplier-modal-btn"
+      className="supplier-modal-btn "
       disabled={true}
-      endIcon={
-        <CloseIcon
-          className="info_panel_close_icon"
-          color="var(--White)"
-        />
-      }
-      onClick={[Function]}
       variant="outlined"
     >
       <WithStyles(ForwardRef(Button))
-        className="supplier-modal-btn"
+        className="supplier-modal-btn "
         color="default"
         disabled={true}
-        endIcon={
-          <CloseIcon
-            className="info_panel_close_icon"
-            color="var(--White)"
-          />
-        }
-        onClick={[Function]}
         variant="outlined"
       >
         <ForwardRef(Button)
-          className="supplier-modal-btn"
+          className="supplier-modal-btn "
           classes={
             Object {
               "colorInherit": "MuiButton-colorInherit",
@@ -542,26 +487,18 @@ exports[`Rendering of supplier rack price should render snapshot for supplier ra
           }
           color="default"
           disabled={true}
-          endIcon={
-            <CloseIcon
-              className="info_panel_close_icon"
-              color="var(--White)"
-            />
-          }
-          onClick={[Function]}
           variant="outlined"
         >
           <WithStyles(ForwardRef(ButtonBase))
-            className="MuiButton-root MuiButton-outlined supplier-modal-btn Mui-disabled"
+            className="MuiButton-root MuiButton-outlined supplier-modal-btn  Mui-disabled"
             component="button"
             disabled={true}
             focusRipple={true}
             focusVisibleClassName="Mui-focusVisible"
-            onClick={[Function]}
             type="button"
           >
             <ForwardRef(ButtonBase)
-              className="MuiButton-root MuiButton-outlined supplier-modal-btn Mui-disabled"
+              className="MuiButton-root MuiButton-outlined supplier-modal-btn  Mui-disabled"
               classes={
                 Object {
                   "disabled": "Mui-disabled",
@@ -573,14 +510,12 @@ exports[`Rendering of supplier rack price should render snapshot for supplier ra
               disabled={true}
               focusRipple={true}
               focusVisibleClassName="Mui-focusVisible"
-              onClick={[Function]}
               type="button"
             >
               <button
-                className="MuiButtonBase-root MuiButton-root MuiButton-outlined supplier-modal-btn Mui-disabled Mui-disabled"
+                className="MuiButtonBase-root MuiButton-root MuiButton-outlined supplier-modal-btn  Mui-disabled Mui-disabled"
                 disabled={true}
                 onBlur={[Function]}
-                onClick={[Function]}
                 onDragLeave={[Function]}
                 onFocus={[Function]}
                 onKeyDown={[Function]}
@@ -597,38 +532,15 @@ exports[`Rendering of supplier rack price should render snapshot for supplier ra
                 <span
                   className="MuiButton-label"
                 >
-                  Supplier price $0
-                  <span
-                    className="MuiButton-endIcon MuiButton-iconSizeMedium"
+                  <div
+                    className="price-div"
+                    onClick={[Function]}
                   >
-                    <CloseIcon
-                      className="info_panel_close_icon"
-                      color="var(--White)"
-                      key="dummyKey1"
-                    >
-                      <svg
-                        className="info_panel_close_icon"
-                        color="var(--White)"
-                        height="1em"
-                        viewBox="0 0 20 20"
-                        width="1em"
-                      >
-                        <g
-                          data-name="Group 1862"
-                        >
-                          <path
-                            d="M17 1l1.414 1.414-7.293 7.293L18.414 17 17 18.414l-7.293-7.293-7.293 7.293L1 17l7.293-7.293L1 2.414 2.414 1l7.293 7.293z"
-                            fill="currentColor"
-                          />
-                          <path
-                            d="M0 0h20v20H0z"
-                            data-name="Rectangle 2250"
-                            fill="none"
-                          />
-                        </g>
-                      </svg>
-                    </CloseIcon>
-                  </span>
+                     
+                    Supplier price $0
+                     
+                  </div>
+                   
                 </span>
               </button>
             </ForwardRef(ButtonBase)>
@@ -849,28 +761,28 @@ exports[`Rendering of supplier rack price should render snapshot for supplier ra
                     />
                   </ForwardRef(Grid)>
                 </ForwardRef(Grid)>
+                <ForwardRef(DialogActions)
+                  className="supplierRack-dialog-actions"
+                >
+                  <Button
+                    aria-label="cancel"
+                    className="mr-4"
+                    onClick={[Function]}
+                    types="cancel"
+                  >
+                    Cancel
+                  </Button>
+                  <Button
+                    aria-label="primary"
+                    className="mr-4 supplierRackBtn"
+                    disabled={true}
+                    onClick={[Function]}
+                    types="primary"
+                  >
+                    Done
+                  </Button>
+                </ForwardRef(DialogActions)>
               </ForwardRef(DialogContent)>
-              <ForwardRef(DialogActions)
-                className="supplierRack-dialog-actions"
-              >
-                <Button
-                  aria-label="cancel"
-                  className="mr-4"
-                  onClick={[Function]}
-                  types="cancel"
-                >
-                  Cancel
-                </Button>
-                <Button
-                  aria-label="primary"
-                  className="mr-4 supplierRackBtn"
-                  disabled={true}
-                  onClick={[Function]}
-                  types="primary"
-                >
-                  Done
-                </Button>
-              </ForwardRef(DialogActions)>
             </div>,
             "className": "supplierRack",
             "disableEscapeKeyDown": true,

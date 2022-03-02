@@ -127,6 +127,7 @@
       "lotname_ztoa": "Lot Name Z-A"
     },
     "filter": {
+      "customername": "Customer Name",
       "state": "State",
       "city": "City",
       "zip": "Zip",

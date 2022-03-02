@@ -126,8 +126,8 @@ const fetchTruckDetails = async (query: any) => {
     return axios(options);
 };
 
-export const useGetEditTruckDetails = (query: any, onSuccess: any, onError: any) => {
-    return useQuery(['fetchTruckDetails'], () => fetchTruckDetails(query), {
+export const useGetEditTruckDetails = (query: any, onSuccess?: any, onError?: any) => {
+    return useQuery(['fetchTruckDetails', query], () => fetchTruckDetails(query), {
         onSuccess,
         onError,
         enabled: !!query,
@@ -135,7 +135,7 @@ export const useGetEditTruckDetails = (query: any, onSuccess: any, onError: any)
     });
 };
 
-const editTruck = async (payload: any,deliveryVehicleId: string) => {
+const editTruck = async (payload: any, deliveryVehicleId: string) => {
 
     const options: AxiosRequestConfig = {
         method: 'put',
@@ -148,7 +148,7 @@ const editTruck = async (payload: any,deliveryVehicleId: string) => {
 
 export const useEditTruckDetails = (deliveryVehicleId: string, onSuccess: any, onError: any) => {
     return useMutation((payload: any) =>
-        editTruck(payload,deliveryVehicleId), {
+        editTruck(payload, deliveryVehicleId), {
         onSuccess,
         onError,
         retry: false,

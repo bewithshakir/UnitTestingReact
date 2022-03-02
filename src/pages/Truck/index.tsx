@@ -12,8 +12,12 @@ import { useNavigate } from "react-router-dom";
 import TruckModel from '../../models/TruckModel';
 import { useTruckList } from './queries';
 import GridComponent from "../../components/UIComponents/DataGird/grid.component";
+import Table from "./SubTableLocations";
+import { RightInfoPanel } from '../../components/UIComponents/RightInfoPanel/RightInfoPanel.component';
+import TruckDetail from './TruckDetail';
 import { DataGridActionsMenuOption } from '../../components/UIComponents/Menu/DataGridActionsMenu.component';
 import { TruckManagement, ROW_ACTION_TYPES, SORTBY_TYPES } from './config';
+import SubTableTanks from "./SubTableTanks";
 
 export interface TruckLandingContentProps {
   version: string
@@ -23,12 +27,24 @@ export interface TruckLandingContentProps {
 const TruckLandingContent: React.FC<TruckLandingContentProps> = memo(() => {
   const truckObj = new TruckModel();
   const headCells = truckObj.fieldsToDisplay();
+  const headCellsLots = truckObj.parkingLocationTableFields();
+  const tanksTableCells = truckObj.tanksTableFields();
+
   const rowActionOptions = truckObj.rowActions();
   const navigate = useNavigate();
   const [searchTerm,setSearchTerm] = useState("");
   const [sortOrder, setSortOrder] = useState<{ sortBy: string, order: string }>({ sortBy: "", order: "" });
   const [truckList, setTruckList] = useState([]);
+
+  // Truck detail panel state
+  const [info, setInfo] = React.useState({});
+  const [editURL, setEditURL] = React.useState('');
+  const [infoPanelName, setInfoPanelName] = React.useState('');
+  const [drawerOpen, setDrawerOpen] = React.useState(false);
   const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
+  const [deliveryVehicleId, setDeliveryVehicleId] = React.useState('');
+
+
   setVersion("NavLinks");
   const { SortByOptions } = TruckManagement.LandingPage;
   const [resetTableCollaps, setResetTableCollaps] = useState(false);
@@ -44,48 +60,62 @@ const TruckLandingContent: React.FC<TruckLandingContentProps> = memo(() => {
       data?.pages?.forEach((item: any) => {
         list.push(...item.data.deliveryVehicles);
       });
-      setTruckList(list);      
+      setTruckList(list);
     }
   }, [data]);
+
 
 const onInputChange = (value: string) => {
   setResetTableCollaps(true);
   setSearchTerm(value);
 };  
+  const drawerClose = () => {
+    setDrawerOpen(false);
+  };
 
-const handleMassAction = () => {
+  const openDrawer = (row: any) => {
+    setInfo(row);
+    setInfoPanelName("Truck Info");
+    setEditURL(`/trucks/editTruck/${row?.deliveryVehicleId}`);
+    setDrawerOpen(true);
+  };
+
+  const handleMassAction = () => {
     // TO DO
-};
+  };
 
-const onSortBySlected = (value: string) => {
-  let sortOrder;
-  switch (value) {
-    case SORTBY_TYPES.TRUCK_NAME_AZ:
-      sortOrder = { sortBy: "deliveryVehicleNm", order: "asc" };
-      break;
-    case SORTBY_TYPES.TRUCK_NAME_ZA:
-      sortOrder = { sortBy: "deliveryVehicleNm", order: "desc" };
-      break;
-    default:
-      sortOrder = { sortBy: "", order: "" };
-      break;
-  }
-  setResetTableCollaps(true);
-  setSortOrder(sortOrder);
-};
+  const onSortBySlected = (value: string) => {
+    let sortOrder;
+    switch (value) {
+      case SORTBY_TYPES.TRUCK_NAME_AZ:
+        sortOrder = { sortBy: "deliveryVehicleNm", order: "asc" };
+        break;
+      case SORTBY_TYPES.TRUCK_NAME_ZA:
+        sortOrder = { sortBy: "deliveryVehicleNm", order: "desc" };
+        break;
+      default:
+        sortOrder = { sortBy: "", order: "" };
+        break;
+    }
+    setResetTableCollaps(true);
+    setSortOrder(sortOrder);
+  };
 
+  const navigateAddtruck = () => {
+    navigate(`/trucks/addTruck`);
+  };
 
-    const navigateAddtruck = () => {
-        navigate(`/trucks/addTruck`);
-    };
+  const setSelectedRow = (deliveryVehicleId: string) => {
+    setDeliveryVehicleId(deliveryVehicleId);
+  };
 
-    const handleRowAction = (action: DataGridActionsMenuOption, row: any) => {
-      switch (action.action) {
-          case ROW_ACTION_TYPES.EDIT:
-              navigate(`/trucks/editTruck/${row.deliveryVehicleId}`);
-              break;
-          default: return;
-      }
+  const handleRowAction = (action: DataGridActionsMenuOption, row: any) => {
+    switch (action.action) {
+      case ROW_ACTION_TYPES.EDIT:
+        navigate(`/trucks/editTruck/${row.deliveryVehicleId}`);
+        break;
+      default: return;
+    }
   };
 
   return (
@@ -151,15 +181,36 @@ const onSortBySlected = (value: string) => {
             rows={truckObj.dataModel(truckList)}
             header={headCells}
             isLoading={isFetching || isLoading}
-            enableRowSelection
+            openDrawer={openDrawer}
             enableRowAction
+            getId={setSelectedRow}
             getPages={fetchNextPage}
             searchTerm={searchTerm}
             noDataMsg={t("truckLanding.noTrucksMsg")}
+            onResetTableCollaps={setResetTableCollaps}
+            InnerTableComponent={
+              {
+                ['LOCATIONS']: <Table primaryKey='id' id={deliveryVehicleId} headCells={headCellsLots} />,
+                ['TANKS']: <SubTableTanks tanksDataModel={truckObj.tanksDataModel} primaryKey='id' id={deliveryVehicleId} headCells={tanksTableCells} />,
+              }
+            }
             onRowActionSelect={handleRowAction}
             rowActionOptions={rowActionOptions}
             resetCollaps={resetTableCollaps}
           />
+
+          <RightInfoPanel
+            panelType="info-view"
+            open={drawerOpen}
+            onClose={drawerClose}
+            headingText={infoPanelName}
+            editURL={editURL}
+          >
+            {Object.keys(info).length &&
+              <TruckDetail info={info} drawerOpen={drawerOpen} />
+            }
+          </RightInfoPanel>
+
         </Grid>
       </Grid>
     </Box>

@@ -14,6 +14,7 @@ export type DataGridActionsMenuOption = {
 type DataGridActionsMenuProps = {
   options?: DataGridActionsMenuOption[],
   menuName?: string,
+  disablePortal?: boolean,
   onSelect?: (e: React.SyntheticEvent, selectedValue: DataGridActionsMenuOption) => void,
   showInnerTableMenu?: boolean
 }
@@ -95,6 +96,7 @@ const DataGridActionsMenu = forwardRef<RowActionHanddlerRef, DataGridActionsMenu
         transition
         className={"datagrid-actions-popper"}
         placement={"bottom-end"}
+        disablePortal={props.disablePortal}
         modifiers={
           [
             {

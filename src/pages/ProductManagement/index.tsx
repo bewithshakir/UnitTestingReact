@@ -5,6 +5,8 @@ import { Box, Grid } from '@mui/material';
 import "./ProductManagement.scss";
 import ProductList from './ProductList';
 import { useProductsByLotId } from './queries';
+import { AlertExclamationIcon } from '../../assets/icons';
+
 
 export default function ProductManagement() {
     const [productList, setProductList] = useState([]);
@@ -27,13 +29,28 @@ export default function ProductManagement() {
         hideAddEditRow(false);
     };
 
+    const getProductStr = (str: string) => {
+       return <div className='opisr-grid-item'> <div className='grid-itm-pn'>{str}</div> <div className='grid-item-icn'><AlertExclamationIcon /></div></div>;
+    };
+
     const { data: productListData, fetchNextPage, isLoading, isFetching }: any = useProductsByLotId(lotId, searchTerm, reloadKey);
 
     useEffect(() => {
         if (productListData) {
             const list: any = [];
             productListData?.pages?.forEach((item: any) => {
-                list.push(...item.data.lotProducts);
+                const arr = item.data.lotProducts.map((productObj: any)=>{
+                    let str = productObj.pricingModel?.pricingModelNm;
+                    if(productObj.pricingModel?.pricingModelNm?.toLowerCase() === 'opis rack'){
+                        if(productObj.opisProductKey){
+                            if(productObj.opisRackStatus?.toUpperCase() === 'N'){
+                                str = getProductStr(str);
+                            } 
+                        }
+                    }
+                    return  {...productObj, opisRackAvail: str };
+                });
+                list.push(...arr);
             });
             setProductList(list);
         }

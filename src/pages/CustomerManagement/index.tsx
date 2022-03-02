@@ -1,4 +1,4 @@
-import React, { SyntheticEvent, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Button } from "../../components/UIComponents/Button/Button.component";
 import "./style.scss";
 import { useTranslation } from "react-i18next";
@@ -14,11 +14,10 @@ import { useNavigate } from "react-router-dom";
 import { Customer, MASS_ACTION_TYPES, ROW_ACTION_TYPES, SORTBY_TYPES } from './config';
 import { RightInfoPanel } from "../../components/UIComponents/RightInfoPanel/RightInfoPanel.component";
 import { Box, FormControl, Grid, Typography } from "@mui/material";
-import { HorizontalBarVersionState, useStore } from "../../store";
+import { HorizontalBarVersionState, useAddedCustomerNameStore, useStore } from "../../store";
 import CustomerModel from "../../models/CustomerModel";
 import { DataGridActionsMenuOption } from "../../components/UIComponents/Menu/DataGridActionsMenu.component";
 import { getSeachedDataTotalCount, maskPhoneNumber } from "../../utils/helperFunctions";
-
 interface ContentProps {
   rows?: [];
   sidebarName: string;
@@ -34,19 +33,24 @@ const Content: React.FC<ContentProps> = () => {
   const { SortByOptions, FilterByFields, Customer_DataGridFields } = Customer.LandingPage;
 
   const navigate = useNavigate();
+
+  // Customer detail panel state
   const [info, setInfo] = React.useState({});
+  const [editURL, setEditURL] = React.useState('');
+  const [infoPanelName, setInfoPanelName] = React.useState('');
+  const [drawerOpen, setDrawerOpen] = React.useState(false);
+  const setPageCustomerName = useAddedCustomerNameStore((state) => state.setCustomerName);
+
+  // Customer list table state
   const [searchTerm, setSearchTerm] = React.useState("");
   const [resetTableCollaps, setResetTableCollaps] = React.useState(false);
-  const [drawerOpen, setDrawerOpen] = React.useState(false);
   const [sortOrder, setSortOrder] = React.useState<{ sortBy: string, order: string }>({ sortBy: "", order: "" });
+  const [customerList, setCustomerList] = React.useState([]);
+
+  // Customer filter state
   const [filterData, setFilterData] = React.useState<{ [key: string]: string[] }>({});
   const [custFilterPanelVisible, setCustFilterPanelVisible] = React.useState(false);
   const [customerId, setCustomerId] = React.useState('');
-  const [customerList, setCustomerList] = React.useState([]);
-  const [infoPanelEditId, setInfoPanelEditId] = React.useState('');
-  const [infoPanelName, setInfoPanelName] = React.useState('');
-
-
 
 
 
@@ -68,8 +72,6 @@ const Content: React.FC<ContentProps> = () => {
   }, [data]);
 
   const createInfoObjForRightInfoPanel = (row: any) => {
-    setInfoPanelEditId(row.customerId);
-    setInfoPanelName(row.customerName);
     const infoObj = {
       'Customer ID': row.customerInputId,
       'Name': row.contactName,
@@ -87,17 +89,24 @@ const Content: React.FC<ContentProps> = () => {
 
   const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
   setVersion("NavLinks");
-  const openDrawer = (row: SyntheticEvent) => {
+
+  const openDrawer = (row: any) => {
     const infoObj = createInfoObjForRightInfoPanel(row);
     setInfo(infoObj);
+    setInfoPanelName(row.customerName);
+    setEditURL(`/customer/viewCustomer/${row.customerId}`);
+    setPageCustomerName(row.customerName ? row.customerName : '');
     setDrawerOpen(true);
   };
+
   const drawerClose = () => {
     setDrawerOpen(false);
   };
+
   const navigateToAddCustomer = () => {
     navigate("/customer/addCustomer");
   };
+
   const onSortBySlected = (value: string) => {
     let sortOrder;
     switch (value) {
@@ -128,7 +137,7 @@ const Content: React.FC<ContentProps> = () => {
 
   const handleCustFilterPanelOpen = () => {
     setDrawerOpen(false);
-    setCustFilterPanelVisible(!custFilterPanelVisible);
+    setCustFilterPanelVisible(true);
   };
 
   const handleMassAction = (action: DataGridActionsMenuOption) => {
@@ -261,7 +270,14 @@ const Content: React.FC<ContentProps> = () => {
             fields={FilterByFields}
             storeKey={'customerFilter'}
           />
-          <RightInfoPanel panelType="info-view" category="customer" open={drawerOpen} headingText={infoPanelName} info={info} idStrForEdit={infoPanelEditId} nameStrForEdit={infoPanelName} onClose={drawerClose} />
+          <RightInfoPanel
+            panelType="info-view"
+            open={drawerOpen}
+            info={info}
+            onClose={drawerClose}
+            headingText={infoPanelName}
+            editURL={editURL}
+          />
         </Grid>
       </Grid>
     </Box>

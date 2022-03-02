@@ -39,7 +39,7 @@ export const getTrucksList = () => {
                     }
                 })
             );       
-        } else {   
+        } else if (req.params[1] !== '/999') {   
             return res(
             ctx.status(200),
             ctx.json({

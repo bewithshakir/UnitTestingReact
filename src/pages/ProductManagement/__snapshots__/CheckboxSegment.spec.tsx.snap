@@ -438,6 +438,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
       }
     }
     isDisabled={false}
+    isSaveCancelShown={false}
     revertFinalRateAndAmount={
       [MockFunction] {
         "calls": Array [

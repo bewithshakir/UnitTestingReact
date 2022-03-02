@@ -1314,11 +1314,9 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                         storeKey="parkingLot"
                       />
                       <RightInfoPanel
-                        category="lot"
+                        editURL=""
                         headingText=""
-                        idStrForEdit=""
                         info={Object {}}
-                        nameStrForEdit=""
                         onClose={[Function]}
                         open={false}
                         panelType="info-view"
@@ -4503,11 +4501,9 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                             storeKey="parkingLot"
                           />,
                           <RightInfoPanel
-                            category="lot"
+                            editURL=""
                             headingText=""
-                            idStrForEdit=""
                             info={Object {}}
-                            nameStrForEdit=""
                             onClose={[Function]}
                             open={false}
                             panelType="info-view"
@@ -6765,7 +6761,6 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                 "children": Array [
                                   <PanelHeader
                                     headingText="parkingLot.header.filter"
-                                    info={null}
                                     onClose={[Function]}
                                     panelType="dynamic-filter"
                                   />,
@@ -6969,11 +6964,9 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                         </ForwardRef(Drawer)>
                       </RightInfoPanel>
                       <RightInfoPanel
-                        category="lot"
+                        editURL=""
                         headingText=""
-                        idStrForEdit=""
                         info={Object {}}
-                        nameStrForEdit=""
                         onClose={[Function]}
                         open={false}
                         panelType="info-view"
@@ -6993,11 +6986,8 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                 "anchor": "right",
                                 "children": Array [
                                   <PanelHeader
-                                    category="lot"
+                                    editURL=""
                                     headingText=""
-                                    idStrForEdit=""
-                                    info={Object {}}
-                                    nameStrForEdit=""
                                     onClose={[Function]}
                                     panelType="info-view"
                                   />,
@@ -7156,11 +7146,8 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                         "anchor": "right",
                                         "children": Array [
                                           <PanelHeader
-                                            category="lot"
+                                            editURL=""
                                             headingText=""
-                                            idStrForEdit=""
-                                            info={Object {}}
-                                            nameStrForEdit=""
                                             onClose={[Function]}
                                             panelType="info-view"
                                           />,
@@ -7199,11 +7186,8 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                           Object {
                                             "children": Array [
                                               <PanelHeader
-                                                category="lot"
+                                                editURL=""
                                                 headingText=""
-                                                idStrForEdit=""
-                                                info={Object {}}
-                                                nameStrForEdit=""
                                                 onClose={[Function]}
                                                 panelType="info-view"
                                               />,
@@ -7236,11 +7220,8 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                           }
                                         >
                                           <PanelHeader
-                                            category="lot"
+                                            editURL=""
                                             headingText=""
-                                            idStrForEdit=""
-                                            info={Object {}}
-                                            nameStrForEdit=""
                                             onClose={[Function]}
                                             panelType="info-view"
                                           >
@@ -7582,6 +7563,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                                                 
                                                               </h2>
                                                               <ForwardRef
+                                                                disablePortal={true}
                                                                 onSelect={[Function]}
                                                                 options={
                                                                   Array [
@@ -7632,6 +7614,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                                                     
                                                                   </h2>
                                                                   <ForwardRef
+                                                                    disablePortal={true}
                                                                     onSelect={[Function]}
                                                                     options={
                                                                       Array [
@@ -7681,6 +7664,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                                                           
                                                                         </h2>,
                                                                         <ForwardRef
+                                                                          disablePortal={true}
                                                                           onSelect={[Function]}
                                                                           options={
                                                                             Array [
@@ -7849,6 +7833,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                                                     </ForwardRef(IconButton)>
                                                                     <h2 />
                                                                     <ForwardRef
+                                                                      disablePortal={true}
                                                                       onSelect={[Function]}
                                                                       options={
                                                                         Array [
@@ -8094,6 +8079,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                                                             </button>
                                                                           }
                                                                           className="datagrid-actions-popper"
+                                                                          disablePortal={true}
                                                                           modifiers={
                                                                             Array [
                                                                               Object {

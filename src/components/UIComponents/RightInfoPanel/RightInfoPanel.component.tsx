@@ -17,13 +17,11 @@ interface InfoPanelProps {
   onClose: (...args: any) => void;
   provideFilterParams?: (...args: any) => void;
   fields?: IDynamicFilterProps['fields']
-  idStrForEdit?: string,
-  nameStrForEdit?: string,
   storeKey?: string,
-  category?: "customer" | "lot"
+  editURL?: string,
 }
 
-export const RightInfoPanel: React.FC<InfoPanelProps> = ({ open, headingText, info, onClose, provideFilterParams, fields, panelType, idStrForEdit, nameStrForEdit, storeKey, category }) => {
+export const RightInfoPanel: React.FC<InfoPanelProps> = ({ children, open, headingText, info, onClose, provideFilterParams, fields, panelType, storeKey, editURL }) => {
 
   const removeFormData = filterStore((state) => state.removeFormData);
   useEffect(() => {
@@ -34,7 +32,7 @@ export const RightInfoPanel: React.FC<InfoPanelProps> = ({ open, headingText, in
 
   const provideContentForPanel = () => {
     if (panelType === "info-view") {
-      return <InfoViewContent info={info} />;
+      return <InfoViewContent info={info} >{children}</InfoViewContent>;
     } else if (panelType === "dynamic-filter" && fields) {
       return <DynamicFilterContent
         provideFilterParams={provideFilterParams}
@@ -54,7 +52,7 @@ export const RightInfoPanel: React.FC<InfoPanelProps> = ({ open, headingText, in
     anchor="right"
     open={open}
   >
-    <PanelHeader onClose={onClose} category={category} headingText={headingText} info={info ? info : null} idStrForEdit={idStrForEdit} nameStrForEdit={nameStrForEdit} panelType={panelType} />
+    <PanelHeader onClose={onClose} editURL={editURL} headingText={headingText} panelType={panelType} />
     {provideContentForPanel()}
   </Drawer >;
 
