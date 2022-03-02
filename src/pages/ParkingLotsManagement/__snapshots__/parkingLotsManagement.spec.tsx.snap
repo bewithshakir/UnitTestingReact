@@ -462,7 +462,6 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                 "lg",
                 "xl",
               ],
-              "not": [Function],
               "only": [Function],
               "unit": "px",
               "up": [Function],
@@ -1038,11 +1037,8 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                         storeKey="customerFilter"
                       />
                       <RightInfoPanel
-                        category="customer"
                         headingText=""
-                        idStrForEdit="infoPanelEditId"
                         info="info"
-                        nameStrForEdit="infoPanelName"
                         onClose={[Function]}
                         open={false}
                         panelType="info-view"
@@ -1988,7 +1984,6 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                     "lg",
                                                     "xl",
                                                   ],
-                                                  "not": [Function],
                                                   "only": [Function],
                                                   "unit": "px",
                                                   "up": [Function],
@@ -2411,7 +2406,6 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                   "lg",
                                                   "xl",
                                                 ],
-                                                "not": [Function],
                                                 "only": [Function],
                                                 "unit": "px",
                                                 "up": [Function],
@@ -2966,7 +2960,6 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                       "lg",
                                                       "xl",
                                                     ],
-                                                    "not": [Function],
                                                     "only": [Function],
                                                     "unit": "px",
                                                     "up": [Function],
@@ -4121,11 +4114,8 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                             storeKey="customerFilter"
                           />,
                           <RightInfoPanel
-                            category="customer"
                             headingText=""
-                            idStrForEdit="infoPanelEditId"
                             info="info"
-                            nameStrForEdit="infoPanelName"
                             onClose={[Function]}
                             open={false}
                             panelType="info-view"
@@ -6039,7 +6029,6 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                       "lg",
                                                       "xl",
                                                     ],
-                                                    "not": [Function],
                                                     "only": [Function],
                                                     "unit": "px",
                                                     "up": [Function],
@@ -6509,7 +6498,6 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                 "children": Array [
                                   <PanelHeader
                                     headingText="customer-filter-panel.header.filter"
-                                    info={null}
                                     onClose={[Function]}
                                     panelType="dynamic-filter"
                                   />,
@@ -6691,11 +6679,8 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                         </ForwardRef(Drawer)>
                       </RightInfoPanel>
                       <RightInfoPanel
-                        category="customer"
                         headingText=""
-                        idStrForEdit="infoPanelEditId"
                         info="info"
-                        nameStrForEdit="infoPanelName"
                         onClose={[Function]}
                         open={false}
                         panelType="info-view"
@@ -6703,21 +6688,19 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                         <ForwardRef(Drawer)
                           anchor="right"
                           className="right_panel_main_class right_info_panel"
+                          data-testid="right-drawer"
                           open={false}
                           variant="persistent"
                         >
                           <MuiDrawerDocked
                             className="MuiDrawer-root MuiDrawer-docked right_panel_main_class right_info_panel"
+                            data-testid="right-drawer"
                             ownerState={
                               Object {
                                 "anchor": "right",
                                 "children": Array [
                                   <PanelHeader
-                                    category="customer"
                                     headingText=""
-                                    idStrForEdit="infoPanelEditId"
-                                    info="info"
-                                    nameStrForEdit="infoPanelName"
                                     onClose={[Function]}
                                     panelType="info-view"
                                   />,
@@ -6726,6 +6709,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                   />,
                                 ],
                                 "className": "right_panel_main_class right_info_panel",
+                                "data-testid": "right-drawer",
                                 "elevation": 16,
                                 "open": false,
                                 "variant": "persistent",
@@ -6734,6 +6718,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                           >
                             <div
                               className="MuiDrawer-root MuiDrawer-docked right_panel_main_class right_info_panel css-7ik032-MuiDrawer-docked"
+                              data-testid="right-drawer"
                             >
                               <ForwardRef(Slide)
                                 appear={false}
@@ -6943,11 +6928,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                         "anchor": "right",
                                         "children": Array [
                                           <PanelHeader
-                                            category="customer"
                                             headingText=""
-                                            idStrForEdit="infoPanelEditId"
-                                            info="info"
-                                            nameStrForEdit="infoPanelName"
                                             onClose={[Function]}
                                             panelType="info-view"
                                           />,
@@ -6956,6 +6937,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                           />,
                                         ],
                                         "className": "right_panel_main_class right_info_panel",
+                                        "data-testid": "right-drawer",
                                         "elevation": 16,
                                         "open": false,
                                         "variant": "persistent",
@@ -6985,11 +6967,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                           Object {
                                             "children": Array [
                                               <PanelHeader
-                                                category="customer"
                                                 headingText=""
-                                                idStrForEdit="infoPanelEditId"
-                                                info="info"
-                                                nameStrForEdit="infoPanelName"
                                                 onClose={[Function]}
                                                 panelType="info-view"
                                               />,
@@ -7022,11 +7000,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                           }
                                         >
                                           <PanelHeader
-                                            category="customer"
                                             headingText=""
-                                            idStrForEdit="infoPanelEditId"
-                                            info="info"
-                                            nameStrForEdit="infoPanelName"
                                             onClose={[Function]}
                                             panelType="info-view"
                                           >
@@ -7060,7 +7034,6 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                           "lg",
                                                           "xl",
                                                         ],
-                                                        "not": [Function],
                                                         "only": [Function],
                                                         "unit": "px",
                                                         "up": [Function],
@@ -7369,6 +7342,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                                 
                                                               </h2>
                                                               <ForwardRef
+                                                                disablePortal={true}
                                                                 onSelect={[Function]}
                                                                 options={
                                                                   Array [
@@ -7419,6 +7393,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                                     
                                                                   </h2>
                                                                   <ForwardRef
+                                                                    disablePortal={true}
                                                                     onSelect={[Function]}
                                                                     options={
                                                                       Array [
@@ -7468,6 +7443,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                                           
                                                                         </h2>,
                                                                         <ForwardRef
+                                                                          disablePortal={true}
                                                                           onSelect={[Function]}
                                                                           options={
                                                                             Array [
@@ -7636,6 +7612,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                                     </ForwardRef(IconButton)>
                                                                     <h2 />
                                                                     <ForwardRef
+                                                                      disablePortal={true}
                                                                       onSelect={[Function]}
                                                                       options={
                                                                         Array [
@@ -7845,6 +7822,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                                         <ForwardRef(Popper)
                                                                           anchorEl={null}
                                                                           className="datagrid-actions-popper"
+                                                                          disablePortal={true}
                                                                           modifiers={
                                                                             Array [
                                                                               Object {

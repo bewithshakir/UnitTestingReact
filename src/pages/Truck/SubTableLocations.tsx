@@ -11,7 +11,7 @@ interface props {
     primaryKey: string,
 }
 
-export default function InnerTable(props: props) {
+export default function InnerTable (props: props) {
     const [locations, setLocations] = useState([]);
 
     const { data, fetchNextPage, isLoading, isFetching }: any = useGetLocations(props.id);

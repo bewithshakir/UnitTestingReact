@@ -58,7 +58,7 @@ const AddLot: React.FC<AddTruckParkingLotProps> = () => {
         type: '',
     });
 
-    const onAddTruckLotSuccess = () => {        
+    const onAddTruckLotSuccess = () => {
         isFormValidated(false);
         formik.resetForm({ values: formik.values });
         setFormStatus({ message: t("formStatusProps.success.message"), type: 'Success' });
@@ -88,27 +88,27 @@ const AddLot: React.FC<AddTruckParkingLotProps> = () => {
         }
     };
 
-      // Edit section starts
-      const [isEditMode, setEditMode] = useState(false);
+    // Edit section starts
+    const [isEditMode, setEditMode] = useState(false);
 
-      const populateDataInAllFields = (responseData: any) => {
-          formik.resetForm({
-              values: { ...responseData }
-          });
-      };
+    const populateDataInAllFields = (responseData: any) => {
+        formik.resetForm({
+            values: { ...responseData }
+        });
+    };
 
     const onGetTruckParkingLotSuccess = (response: any) => {
         try {
             if (response?.data) {
                 const finalData = {
                     parkingLocationNm: response.data.parkingLocationNm,
-                    addressLine1: response.data.addressLine1 ,
+                    addressLine1: response.data.addressLine1,
                     addressLine2: response.data.addressLine2,
                     stateNm: response.data.stateNm,
                     cityNm: response.data.cityNm,
                     postalCd: response.data.postalCd,
                     countryCode: response.data.countryCode || 'us',
-                  
+
                 };
                 populateDataInAllFields(finalData);
                 setEditMode(true);
@@ -169,7 +169,7 @@ const AddLot: React.FC<AddTruckParkingLotProps> = () => {
         initialValues,
         validationSchema: AddTruckParkingLotValidationSchema,
         onSubmit: (values) => {
-            if(isEditMode) {
+            if (isEditMode) {
                 updateTruckParkingLotData(values);
             } else {
                 createNewTruckLot(values);
@@ -186,7 +186,7 @@ const AddLot: React.FC<AddTruckParkingLotProps> = () => {
         formik.setFieldValue('countryCode', 'us');
     };
 
-    function handleGoogleAddressBlur() {
+    function handleGoogleAddressBlur () {
         formik.setFieldTouched("addressLine1");
         formik.validateField("addressLine1");
         formik.setFieldTouched("addressLine2");
@@ -222,7 +222,7 @@ const AddLot: React.FC<AddTruckParkingLotProps> = () => {
             navigate(`/truckParkingLot`);
         }
     };
-    
+
     return (
         <>
             <Box display="flex" mt={10} ml={16}>
@@ -230,12 +230,12 @@ const AddLot: React.FC<AddTruckParkingLotProps> = () => {
                     <Container maxWidth="lg" className="page-container">
                         <form id="form" onSubmit={formik.handleSubmit} data-testid="component-AddFuelTax">
                             <Typography color="var(--Darkgray)" variant="h3" gutterBottom className="fw-bold" mb={2} pt={3}>
-                                {t('addTruckParkingLot.form.title')}
+                                {t('truckParkingLot.addTruckParkingLot.form.title')}
                             </Typography>
                             <Grid item xs={12} md={6} pr={2.5} pb={2.5} mt={3}>
                                 <Input
                                     id='parkingLocationNm'
-                                    label={t('addTruckParkingLot.form.parkingLocationNm')}
+                                    label={t('truckParkingLot.addTruckParkingLot.form.parkingLocationNm')}
                                     type='text'
                                     description=''
                                     placeholder='Type here'
@@ -251,7 +251,7 @@ const AddLot: React.FC<AddTruckParkingLotProps> = () => {
                                     <AutocompleteInput
                                         id="addressLine1"
                                         name='addressLine1'
-                                        label={t('addTruckParkingLot.form.addressLine1')}
+                                        label={t('truckParkingLot.addTruckParkingLot.form.addressLine1')}
                                         onChange={handleGoogleAddressChange}
                                         onBlur={handleGoogleAddressBlur}
                                         value={formik.values.addressLine1}
@@ -265,7 +265,7 @@ const AddLot: React.FC<AddTruckParkingLotProps> = () => {
                                 <Grid item xs={12} md={6} pl={2.5} pb={2.5}>
                                     <Input
                                         id='addressLine2'
-                                        label={t('addTruckParkingLot.form.addressLine2')}
+                                        label={t('truckParkingLot.addTruckParkingLot.form.addressLine2')}
                                         type='text'
                                         helperText={(formik.touched.addressLine2 && formik.errors.addressLine2) ? formik.errors.addressLine2 : undefined}
                                         error={(formik.touched.addressLine2 && formik.errors.addressLine2) ? true : false}
@@ -279,7 +279,7 @@ const AddLot: React.FC<AddTruckParkingLotProps> = () => {
                                 <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
                                     <Input
                                         id='stateNm'
-                                        label={t('addTruckParkingLot.form.state')}
+                                        label={t('truckParkingLot.addTruckParkingLot.form.state')}
                                         type='text'
                                         helperText={(formik.touched.stateNm && formik.errors.stateNm) ? formik.errors.stateNm : undefined}
                                         error={(formik.touched.stateNm && formik.errors.stateNm) ? true : false}
@@ -292,7 +292,7 @@ const AddLot: React.FC<AddTruckParkingLotProps> = () => {
                                 <Grid item xs={12} md={6} pl={2.5} pb={2.5}>
                                     <Input
                                         id='cityNm'
-                                        label={t('addTruckParkingLot.form.city')}
+                                        label={t('truckParkingLot.addTruckParkingLot.form.city')}
                                         type='text'
                                         helperText={(formik.touched.cityNm && formik.errors.cityNm) ? formik.errors.cityNm : undefined}
                                         error={(formik.touched.cityNm && formik.errors.cityNm) ? true : false}
@@ -307,7 +307,7 @@ const AddLot: React.FC<AddTruckParkingLotProps> = () => {
                                 <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
                                     <Input
                                         id='postalCode'
-                                        label={t('addTruckParkingLot.form.postalCode')}
+                                        label={t('truckParkingLot.addTruckParkingLot.form.postalCode')}
                                         type='text'
                                         helperText={(formik.touched.postalCd && formik.errors.postalCd) ? formik.errors.postalCd : undefined}
                                         error={(formik.touched.postalCd && formik.errors.postalCd) ? true : false}
@@ -340,7 +340,7 @@ const AddLot: React.FC<AddTruckParkingLotProps> = () => {
                                         {isLoadingAddLot && <LoadingIcon data-testid="loading-spinner" className='loading_save_icon' />}
                                     </Button>
                                 </Box>
-                                <ToastMessage isOpen={isErrorAddLot || isSuccessAddLot ||  isSuccessEditTruckLot || isErrorEditTruckLot} messageType={formStatus.type} onClose={() => { return ''; }} message={formStatus.message} />
+                                <ToastMessage isOpen={isErrorAddLot || isSuccessAddLot || isSuccessEditTruckLot || isErrorEditTruckLot} messageType={formStatus.type} onClose={() => { return ''; }} message={formStatus.message} />
                             </Grid>
                         </form>
                     </Container>
