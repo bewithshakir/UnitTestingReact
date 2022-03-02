@@ -1,4 +1,4 @@
-import React, { memo, useEffect } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import { HorizontalBarVersionState, useStore } from '../../store';
 import { Box, Grid, FormControl } from "@mui/material";
 import { Button } from "../../components/UIComponents/Button/Button.component";
@@ -32,24 +32,22 @@ const TruckLandingContent: React.FC<TruckLandingContentProps> = memo(() => {
 
   const rowActionOptions = truckObj.rowActions();
   const navigate = useNavigate();
+  const [searchTerm,setSearchTerm] = useState("");
+  const [sortOrder, setSortOrder] = useState<{ sortBy: string, order: string }>({ sortBy: "", order: "" });
+  const [truckList, setTruckList] = useState([]);
 
   // Truck detail panel state
   const [info, setInfo] = React.useState({});
   const [editURL, setEditURL] = React.useState('');
   const [infoPanelName, setInfoPanelName] = React.useState('');
   const [drawerOpen, setDrawerOpen] = React.useState(false);
-
-
-  const [searchTerm] = React.useState("");
-  const [sortOrder, setSortOrder] = React.useState<{ sortBy: string, order: string }>({ sortBy: "", order: "" });
-  const [truckList, setTruckList] = React.useState([]);
   const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
   const [deliveryVehicleId, setDeliveryVehicleId] = React.useState('');
 
 
   setVersion("NavLinks");
   const { SortByOptions } = TruckManagement.LandingPage;
-  const [resetTableCollaps, setResetTableCollaps] = React.useState(false);
+  const [resetTableCollaps, setResetTableCollaps] = useState(false);
   const { t } = useTranslation();
   const { data, fetchNextPage, isLoading, isFetching }: any = useTruckList(
     searchTerm,
@@ -66,6 +64,11 @@ const TruckLandingContent: React.FC<TruckLandingContentProps> = memo(() => {
     }
   }, [data]);
 
+
+const onInputChange = (value: string) => {
+  setResetTableCollaps(true);
+  setSearchTerm(value);
+};  
   const drawerClose = () => {
     setDrawerOpen(false);
   };
@@ -75,10 +78,6 @@ const TruckLandingContent: React.FC<TruckLandingContentProps> = memo(() => {
     setInfoPanelName("Truck Info");
     setEditURL(`/trucks/editTruck/${row?.deliveryVehicleId}`);
     setDrawerOpen(true);
-  };
-
-  const onInputChange = () => {
-    // TODO
   };
 
   const handleMassAction = () => {
@@ -145,10 +144,12 @@ const TruckLandingContent: React.FC<TruckLandingContentProps> = memo(() => {
             <Grid item>
               <SearchInput
                 name="searchTerm"
+                id="searchTerm"
                 placeholder={t('truckLanding.search')}
                 value={searchTerm}
                 delay={500}
                 onChange={onInputChange}
+                width={"110%"}
               />
             </Grid>
           </Grid>

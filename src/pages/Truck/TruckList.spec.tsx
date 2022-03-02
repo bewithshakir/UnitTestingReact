@@ -4,6 +4,8 @@ import TruckLandingContent from './index';
 import { TruckManagement } from './config';
 import SortbyMenu from '../../components/UIComponents/Menu/SortbyMenu.component';
 import { shallow } from 'enzyme';
+import SearchInput from "../../components/UIComponents/SearchInput/SearchInput";
+import { fireEvent } from '@testing-library/react';
 
 jest.mock('react-router-dom', () => ({
     ...jest.requireActual("react-router-dom") as any,
@@ -13,6 +15,13 @@ jest.mock('react-router-dom', () => ({
         })
     }),
 }));
+
+
+function getAllElements (component: any) {
+    const searchElem = component.container.querySelector('#searchTerm') as HTMLInputElement;
+    return { searchElem };
+}
+
 
 describe('renders TruckLanding page component', () => {
     it('renders  TruckLanding page component with all ui components', () => {
@@ -29,11 +38,32 @@ describe('renders TruckLanding page component', () => {
     });
     it('render data on success response', async () => {
         const result = renderWithClient(<TruckLandingContent version="Breadcrumbs-Single" />);
-        await waitFor(() => {
-            expect(result.getByText(/John/i)).toBeInTheDocument();
+        await waitFor(()=> {
+            expect(result.getByText(/MG/i)).toBeInTheDocument();
         });
 
     });
+
+    it('search truck parking lot with success', async () => {
+        const result = renderWithClient(<TruckLandingContent version="Breadcrumbs-Single" />);
+        const { searchElem } = getAllElements(result);
+        fireEvent.change(searchElem, { target: { value: 'Test Add Truck 4' } });
+
+        await waitFor(() => {
+            expect(result.getByText(/Test Add Truck 4/i)).toBeInTheDocument();
+        });
+    });
+
+    it('search truck parking lot with no data found', async () => {
+        const result = renderWithClient(<TruckLandingContent version="Breadcrumbs-Single" />);
+        const { searchElem } = getAllElements(result);
+        fireEvent.change(searchElem, { target: { value: 'XYZ Parking Lot' } });
+
+        await waitFor(() => {
+            expect(result.getByText(/No Results Found/i)).toBeInTheDocument();
+        });
+    });
+
 });
 
 describe('Given Sortby Menu on Truck List Landing Page-', () => {
@@ -59,4 +89,27 @@ describe('Given Sortby Menu on Truck List Landing Page-', () => {
         expect(TruckListSortbyMenu.find(".btn-sortby").hasClass('active')).toBe(true);
         expect(TruckListSortbyMenu.find('.sortby-popper').exists()).toBe(true);
     });
+});
+
+describe('Given Search Input on Truck Overview Page', () => {
+    test('Render Search Input onChange', () => {
+        const searchInputItem = shallow(
+            <SearchInput
+                onChange={() => jest.fn()}
+            />
+        );
+        expect(searchInputItem).toMatchSnapshot();
+    });
+
+    test('Search Input onBlur', () => {
+        const searchInputItem = shallow(
+            <SearchInput
+                onChange={() => jest.fn()}
+                onBlur={() => jest.fn()}
+            />
+        );
+        searchInputItem.find(".searchinput").simulate('click');
+        expect(searchInputItem.find('.adornment')).toBeDefined();
+    });
+
 });
