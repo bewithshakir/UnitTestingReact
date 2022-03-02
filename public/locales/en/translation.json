@@ -162,7 +162,9 @@
     }
   },
   "dsp": {
-    "search": "Search",
+    "search": "DSP Name",
+    "results found": "results found",
+    "result(s) found": "result(s) found",
     "filterHeader": "Filters",
     "nodataMsg": "Add DSP by clicking on add DSP or any related sentence."
   },
@@ -469,6 +471,6 @@
     "sortBy": {
       "truckname_atoz": "Truck Name A-Z",
       "truckname_ztoa": "Truck Name Z-A"
-    } 
+    }
   }
 }

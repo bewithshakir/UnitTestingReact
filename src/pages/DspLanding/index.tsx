@@ -17,6 +17,7 @@ import DSPModel from "../../models/DSPModel";
 import { sortByOptions } from "./config";
 import { DspListSet } from './queries';
 import { DataGridActionsMenuOption } from "../../components/UIComponents/Menu/DataGridActionsMenu.component";
+import { getSeachedDataTotalCount } from "../../utils/helperFunctions";
 interface ContentProps {
   rows?: [];
   version: string
@@ -31,6 +32,7 @@ const DspLandingContent: React.FC<ContentProps> = () => {
   const MASS_ACTION_TYPES = dspObj.MASS_ACTION_TYPES;
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = React.useState("");
+  const [resetTableCollaps, setResetTableCollaps] = React.useState(false);
   const [sortOrder, setSortOrder] = React.useState<{ sortBy: string, order: string }>({ sortBy: "", order: "" });
   const [filterData, setFilterData] = React.useState<{ [key: string]: string[] }>({});
   const [dspList, setDspList] = React.useState([]);
@@ -56,18 +58,20 @@ const DspLandingContent: React.FC<ContentProps> = () => {
   const navigateToAddDsp = () => {
     navigate(`/customer/${customerId}/dsps/addDsp`);
   };
-  
+
   const onInputChange = (value: string) => {
+    setResetTableCollaps(true);
     setSearchTerm(value);
   };
 
   const handleMassAction = (action: DataGridActionsMenuOption) => {
-    switch (action.action) {      
+    switch (action.action) {
       case MASS_ACTION_TYPES.EXPORT:
         // perform action
         break;
       default: return;
     }
+    setResetTableCollaps(true);
   };
 
   const handleRowAction = (action: DataGridActionsMenuOption, row: any) => {
@@ -105,12 +109,21 @@ const DspLandingContent: React.FC<ContentProps> = () => {
             <Grid item>
               <SearchInput
                 name="searchTerm"
+                id="dspSearch"
                 value={searchTerm}
                 delay={600}
                 onChange={onInputChange}
                 placeholder={t('dsp.search')}
               />
             </Grid>
+            {
+              (searchTerm && !(isFetching || isLoading) && data) &&
+              <Grid item display="flex" alignItems="center" paddingLeft={2.5}>
+                <Typography color="var(--Darkgray)" variant="h4" align="center" className="fw-bold">
+                  {getSeachedDataTotalCount(data, [t('dsp.result(s) found'), t('dsp.results found')])}
+                </Typography>
+              </Grid>
+            }
           </Grid>
           <Grid item md={4} lg={3} display="flex" justifyContent="flex-end">
             <Grid item pr={2.5}>
@@ -142,6 +155,8 @@ const DspLandingContent: React.FC<ContentProps> = () => {
             enableRowSelection
             enableRowAction
             onRowActionSelect={handleRowAction}
+            resetCollaps={resetTableCollaps}
+            onResetTableCollaps={setResetTableCollaps}
             searchTerm={searchTerm}
             rowActionOptions={rowActionOptions}
             getPages={fetchNextPage}

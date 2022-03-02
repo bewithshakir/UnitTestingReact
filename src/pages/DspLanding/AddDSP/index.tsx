@@ -28,16 +28,16 @@ const AddDSP: React.FC<AddDSPProps> = () => {
 
     const { t } = useTranslation();
     const navigate = useNavigate();
-    const {dspId} = useParams();
+    const { dspId } = useParams();
     const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
     const showDialogBox = useShowConfirmationDialogBoxStore((state) => state.showDialogBox);
     const isFormValidated = useShowConfirmationDialogBoxStore((state) => state.setFormFieldValue);
     const addedCustomerId = useAddedCustomerIdStore((state) => state.customerId);
     const [formStatus, setFormStatus] = useState<IFormStatus>({ message: '', type: '' });
     const [isEditMode, setEditMode] = useState(false);
-    
 
-    useEffect(()=> {
+
+    useEffect(() => {
         setVersion("Breadcrumbs-Many");
     }, []);
 
@@ -65,21 +65,27 @@ const AddDSP: React.FC<AddDSPProps> = () => {
 
     // Edit DSP
 
-    const populateDataInAllFields = (formData: any)=> {
+    const populateDataInAllFields = (formData: any) => {
         formik.resetForm({
             values: { ...formData }
         });
     };
 
-    const onSuccessDspDetail = (responseData: DSPModel)=> {
+    const onSuccessDspDetail = (responseData: DSPModel) => {
+        // eslint-disable-next-line no-console
+        console.log("🚀 ~ file: index.tsx ~ line 75 ~ onSuccessDspDetail ~ responseData", responseData);
         setEditMode(true);
         populateDataInAllFields(responseData);
     };
-    const onErrorDspDetail = (error: any)=> {
+    const onErrorDspDetail = (error: any) => {
         setEditMode(true);
         setFormStatus({ message: error?.response.data.error?.details[0] || t("formStatusProps.error.message"), type: 'Error' });
     };
-    const { isError: isErrorDspData } = useEditDspData(addedCustomerId, dspId,  onSuccessDspDetail, onErrorDspDetail);
+    const { isError: isErrorDspData } = useEditDspData(addedCustomerId, dspId, onSuccessDspDetail, onErrorDspDetail);
+    // eslint-disable-next-line no-console
+    console.log("🚀 ~ file: index.tsx ~ line 83 ~ dspId", dspId);
+    // eslint-disable-next-line no-console
+    console.log("🚀 ~ file: index.tsx ~ line 83 ~ addedCustomerId", addedCustomerId);
 
     const onSuccessUpdateDsp = () => {
         isFormValidated(false);
@@ -93,13 +99,13 @@ const AddDSP: React.FC<AddDSPProps> = () => {
         setFormStatus({ message: data?.error?.details[0] || t("formStatusProps.error.message"), type: 'Error' });
     };
     const { mutate: updateDsp, isSuccess: isSuccessUpdateDsp, isError: isErrorUpdateDsp, isLoading: isLoadingUpdateDsp } = useUpdateDspData(dspId, onSuccessUpdateDsp, onErrorUpdateDsp);
-    
+
     // Edit DSP End
     const formik = useFormik({
         initialValues,
         validationSchema: AddDSPSchema,
         onSubmit: (values: DSPModel) => {
-            const updatedValues = {...values, customerId: addedCustomerId} as DSPModel;
+            const updatedValues = { ...values, customerId: addedCustomerId } as DSPModel;
             if (isEditMode) {
                 updateDsp(updatedValues);
             } else {
@@ -109,7 +115,7 @@ const AddDSP: React.FC<AddDSPProps> = () => {
         enableReinitialize: true,
     });
 
-    function handleGoogleAddressChange(addressObj: any) {
+    function handleGoogleAddressChange (addressObj: any) {
         formik.setFieldValue('addressLine1', addressObj.addressLine1);
         formik.setFieldValue('addressLine2', addressObj.addressLine2);
         formik.setFieldValue('city', addressObj.city);
@@ -117,7 +123,7 @@ const AddDSP: React.FC<AddDSPProps> = () => {
         formik.setFieldValue('postalCode', addressObj.postalCode);
     }
 
-    function handleGoogleAddressBlur() {
+    function handleGoogleAddressBlur () {
         formik.setFieldTouched("addressLine1");
         formik.validateField("addressLine1");
         formik.setFieldTouched("addressLine2");
@@ -163,7 +169,7 @@ const AddDSP: React.FC<AddDSPProps> = () => {
                                     {t("addDSP.form.title")} *
                                 </Typography>
                             </Grid>
-                            
+
                         </Grid>
                         <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
                             <Input
@@ -295,7 +301,7 @@ const AddDSP: React.FC<AddDSPProps> = () => {
                             />
                         </Grid>
 
-                        <Grid item xs={12} md={6}/>
+                        <Grid item xs={12} md={6} />
                         <Grid item xs={12} md={6} pr={2.5} pb={2.5} mt={4}>
                             <Box className="form-action-section txt-right">
                                 <Button
@@ -317,14 +323,14 @@ const AddDSP: React.FC<AddDSPProps> = () => {
                                     data-testid="save"
                                     disabled={disableButton()}
                                 >
-                                    {t("buttons.save")} 
+                                    {t("buttons.save")}
                                     {(isLoadingAddDsp || isLoadingUpdateDsp) && <LoadingIcon data-testid="loading-spinner" className='loading_save_icon' />}
                                 </Button>
                             </Box>
                             <ToastMessage
                                 isOpen={
                                     isErrorAddDsp || isSuccessAddDsp ||
-                                    isErrorUpdateDsp|| isSuccessUpdateDsp ||
+                                    isErrorUpdateDsp || isSuccessUpdateDsp ||
                                     isErrorDspData
                                 }
                                 messageType={formStatus.type}

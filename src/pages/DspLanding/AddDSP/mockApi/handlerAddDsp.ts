@@ -1,7 +1,9 @@
 import { rest } from "msw";
 
 export const addDspHandler = () => {
-    return rest.post('*/api/customer-service/customers/*', (req, res, ctx) => {
+    return rest.post('*/api/customer-service/customers/*/dsps', (req, res, ctx) => {
+        // eslint-disable-next-line no-console
+        console.log("🚀 ~1 ========>", req);
         return res(
             ctx.status(200),
             ctx.json({
@@ -29,7 +31,9 @@ export const addDspHandler = () => {
 };
 
 export const getDspDataHandler = () => {
-    return rest.get('*/api/customer-service/customers/*', (req, res, ctx) => {
+    return rest.get('*/api/customer-service/customers/*/dsps/*', (req, res, ctx) => {
+        // eslint-disable-next-line no-console
+        console.log("🚀 ~ 2========>", req);
         return res(
             ctx.status(200),
             ctx.json({
@@ -57,7 +61,9 @@ export const getDspDataHandler = () => {
 };
 
 export const editDspHandler = () => {
-    return rest.put('*/api/customer-service/customers/*', (req, res, ctx) => {
+    return rest.put('*/api/customer-service/customers/*/dsps/*', (req, res, ctx) => {
+        // eslint-disable-next-line no-console
+        console.log("🚀 ~3 ========>", req);
         return res(
             ctx.status(200),
             ctx.json({
