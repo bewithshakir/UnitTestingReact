@@ -102,9 +102,9 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                     masterProductName: initialFormikValues.masterProductName,
                     pricingModel: initialFormikValues.pricingModel,
                     productNm: lotProduct.productNm,
-                    manualPriceAmt: lotProduct.manualPriceAmt ? lotProduct.manualPriceAmt : 0,
-                    addedPriceAmt: lotProduct.addedPriceAmt ? lotProduct.addedPriceAmt : 0,
-                    discountPriceAmt: lotProduct.discountPriceAmt ? lotProduct.discountPriceAmt : 0,
+                    manualPriceAmt: lotProduct.manualPriceAmt,
+                    addedPriceAmt: lotProduct.addedPriceAmt,
+                    discountPriceAmt: lotProduct.discountPriceAmt,
                 });
             }
             setIsDisabled(true);
