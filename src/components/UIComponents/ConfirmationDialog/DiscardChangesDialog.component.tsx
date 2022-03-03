@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { Button } from '../Button/Button.component';
 import { Dialog, DialogContent, DialogContentText, DialogActions, Typography } from '@mui/material';
 import './DiscardChangesDialog.style.scss';

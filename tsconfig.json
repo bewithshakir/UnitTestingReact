@@ -19,8 +19,7 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "importHelpers": true,
-    "noUnusedLocals": true
+    "importHelpers": true
   },
   "include": ["src"],
   "exclude": ["node_modules", "build", "src/**/*.test.*", "src/**/*.stories.*"]
