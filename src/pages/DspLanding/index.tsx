@@ -1,22 +1,22 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useEffect } from "react";
-import { Button } from "../../components/UIComponents/Button/Button.component";
-import { useTranslation } from "react-i18next";
-import {
-  FilterIcon,
-} from "../../assets/icons";
-import SortbyMenu from "../../components/UIComponents/Menu/SortbyMenu.component";
-import ActionsMenu from "../../components/UIComponents/Menu/ActionsMenu.component";
-import GridComponent from "../../components/UIComponents/DataGird/grid.component";
-import SearchInput from "../../components/UIComponents/SearchInput/SearchInput";
 import { Add } from "@mui/icons-material";
-import { useNavigate } from "react-router-dom";
 import { Box, FormControl, Grid, Typography } from "@mui/material";
-import { HorizontalBarVersionState, addedCustomerIdState, useStore, useAddedCustomerIdStore, useShowConfirmationDialogBoxStore, useAddedCustomerNameStore } from "../../store";
+import React, { useEffect } from "react";
+import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
+import {
+  FilterIcon
+} from "../../assets/icons";
+import { Button } from "../../components/UIComponents/Button/Button.component";
+import GridComponent from "../../components/UIComponents/DataGird/grid.component";
+import ActionsMenu from "../../components/UIComponents/Menu/ActionsMenu.component";
+import { DataGridActionsMenuOption } from "../../components/UIComponents/Menu/DataGridActionsMenu.component";
+import SortbyMenu from "../../components/UIComponents/Menu/SortbyMenu.component";
+import SearchInput from "../../components/UIComponents/SearchInput/SearchInput";
 import DSPModel from "../../models/DSPModel";
+import { addedCustomerIdState, HorizontalBarVersionState, useAddedCustomerIdStore, useStore } from "../../store";
+import { getSeachedDataTotalCount } from "../../utils/helperFunctions";
 import { sortByOptions } from "./config";
 import { DspListSet } from './queries';
-import { DataGridActionsMenuOption } from "../../components/UIComponents/Menu/DataGridActionsMenu.component";
 interface ContentProps {
   rows?: [];
   version: string
@@ -31,17 +31,15 @@ const DspLandingContent: React.FC<ContentProps> = () => {
   const MASS_ACTION_TYPES = dspObj.MASS_ACTION_TYPES;
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = React.useState("");
-  const [sortOrder, setSortOrder] = React.useState<{ sortBy: string, order: string }>({ sortBy: "", order: "" });
-  const [filterData, setFilterData] = React.useState<{ [key: string]: string[] }>({});
+  const [resetTableCollaps, setResetTableCollaps] = React.useState(false);
   const [dspList, setDspList] = React.useState([]);
   const customerId = useAddedCustomerIdStore((state: addedCustomerIdState) => state.customerId);
 
-  const { data, fetchNextPage, isLoading, isFetching }: any = DspListSet(searchTerm, sortOrder, customerId, filterData);
+  const { data, fetchNextPage, isLoading, isFetching }: any = DspListSet(searchTerm, { sortBy: "", order: "" }, customerId, {});
 
   const { t } = useTranslation();
   const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
   setVersion("Breadcrumbs-Single");
-  const setPageCustomerName = useAddedCustomerNameStore((state) => state.setCustomerName);
 
   useEffect(() => {
     if (data) {
@@ -56,22 +54,24 @@ const DspLandingContent: React.FC<ContentProps> = () => {
   const navigateToAddDsp = () => {
     navigate(`/customer/${customerId}/dsps/addDsp`);
   };
-  
+
   const onInputChange = (value: string) => {
+    setResetTableCollaps(true);
     setSearchTerm(value);
   };
 
-  const handleMassAction = (action: DataGridActionsMenuOption) => {
-    switch (action.action) {      
+  const handleMassAction = (actions: DataGridActionsMenuOption) => {
+    switch (actions.action) {
       case MASS_ACTION_TYPES.EXPORT:
         // perform action
         break;
       default: return;
     }
+    setResetTableCollaps(true);
   };
 
-  const handleRowAction = (action: DataGridActionsMenuOption, row: any) => {
-    switch (action.action) {
+  const handleRowAction = (actions: DataGridActionsMenuOption, row: any) => {
+    switch (actions.action) {
       case ACTION_TYPES.EDIT:
         // perform action 
         navigate(`/customer/${customerId}/dsps/edit/${row.id}`);
@@ -105,12 +105,21 @@ const DspLandingContent: React.FC<ContentProps> = () => {
             <Grid item>
               <SearchInput
                 name="searchTerm"
+                id="dspSearch"
                 value={searchTerm}
                 delay={600}
                 onChange={onInputChange}
                 placeholder={t('dsp.search')}
               />
             </Grid>
+            {
+              (searchTerm && !(isFetching || isLoading) && data) &&
+              <Grid item display="flex" alignItems="center" paddingLeft={2.5}>
+                <Typography color="var(--Darkgray)" variant="h4" align="center" className="fw-bold">
+                  {getSeachedDataTotalCount(data, [t('dsp.result(s) found'), t('dsp.results found')])}
+                </Typography>
+              </Grid>
+            }
           </Grid>
           <Grid item md={4} lg={3} display="flex" justifyContent="flex-end">
             <Grid item pr={2.5}>
@@ -142,6 +151,8 @@ const DspLandingContent: React.FC<ContentProps> = () => {
             enableRowSelection
             enableRowAction
             onRowActionSelect={handleRowAction}
+            resetCollaps={resetTableCollaps}
+            onResetTableCollaps={setResetTableCollaps}
             searchTerm={searchTerm}
             rowActionOptions={rowActionOptions}
             getPages={fetchNextPage}
