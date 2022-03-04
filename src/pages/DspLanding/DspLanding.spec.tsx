@@ -39,14 +39,14 @@ describe('Rendering of DSP Landing Component', () => {
 });
 
 describe('search DSP on DSP landing page', () => {
-    it('load data in form', async () => {
+    it('load data in form', () => {
         const result = renderWithClient(<DspLandingContent version="Breadcrumbs-Many" />);
-        await act(() => {
+        act(() => {
             const { searchBox } = getAllElements(result);
             userEvent.type(searchBox, 'Test DSP');
         });
 
-        await waitFor(() => {
+        waitFor(() => {
             expect(result.getByText(/Test Contact/i)).toBeInTheDocument();
             expect(result.getByText(/Test DSP/i)).toBeInTheDocument();
             expect(result.getByText(/Test State/i)).toBeInTheDocument();
@@ -74,12 +74,12 @@ describe('search DSP on DSP landing page', () => {
         );
         const result = renderWithClient(<DspLandingContent version="Breadcrumbs-Many" />);
 
-        await act(() => {
+        act(() => {
             const { searchBox } = getAllElements(result);
             userEvent.type(searchBox, 'Test DAP');
         });
 
-        await waitFor(() => {
+        waitFor(() => {
             expect(result.getByText(/Oops.. No Results Found/i)).toBeInTheDocument();
         });
     });

@@ -72,8 +72,6 @@ const AddDSP: React.FC<AddDSPProps> = () => {
     };
 
     const onSuccessDspDetail = (responseData: DSPModel) => {
-        // eslint-disable-next-line no-console
-        console.log("🚀 ~ file: index.tsx ~ line 75 ~ onSuccessDspDetail ~ responseData", responseData);
         setEditMode(true);
         populateDataInAllFields(responseData);
     };
@@ -82,10 +80,6 @@ const AddDSP: React.FC<AddDSPProps> = () => {
         setFormStatus({ message: error?.response.data.error?.details[0] || t("formStatusProps.error.message"), type: 'Error' });
     };
     const { isError: isErrorDspData } = useEditDspData(addedCustomerId, dspId, onSuccessDspDetail, onErrorDspDetail);
-    // eslint-disable-next-line no-console
-    console.log("🚀 ~ file: index.tsx ~ line 83 ~ dspId", dspId);
-    // eslint-disable-next-line no-console
-    console.log("🚀 ~ file: index.tsx ~ line 83 ~ addedCustomerId", addedCustomerId);
 
     const onSuccessUpdateDsp = () => {
         isFormValidated(false);
