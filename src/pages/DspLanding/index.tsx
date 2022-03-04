@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useEffect } from "react";
 import { Button } from "../../components/UIComponents/Button/Button.component";
 import { useTranslation } from "react-i18next";
@@ -11,12 +10,14 @@ import GridComponent from "../../components/UIComponents/DataGird/grid.component
 import SearchInput from "../../components/UIComponents/SearchInput/SearchInput";
 import { Add } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
-import { Box, FormControl, Grid, Typography } from "@mui/material";
-import { HorizontalBarVersionState, addedCustomerIdState, useStore, useAddedCustomerIdStore, useShowConfirmationDialogBoxStore, useAddedCustomerNameStore } from "../../store";
+import { Box, FormControl, Grid } from "@mui/material";
+import { HorizontalBarVersionState, addedCustomerIdState, useStore, useAddedCustomerIdStore } from "../../store";
 import DSPModel from "../../models/DSPModel";
 import { sortByOptions } from "./config";
 import { DspListSet } from './queries';
 import { DataGridActionsMenuOption } from "../../components/UIComponents/Menu/DataGridActionsMenu.component";
+import { RightInfoPanel } from '../../components/UIComponents/RightInfoPanel/RightInfoPanel.component';
+
 interface ContentProps {
   rows?: [];
   version: string
@@ -31,17 +32,19 @@ const DspLandingContent: React.FC<ContentProps> = () => {
   const MASS_ACTION_TYPES = dspObj.MASS_ACTION_TYPES;
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = React.useState("");
-  const [sortOrder, setSortOrder] = React.useState<{ sortBy: string, order: string }>({ sortBy: "", order: "" });
+  const [sortOrder] = React.useState<{ sortBy: string, order: string }>({ sortBy: "", order: "" });
   const [filterData, setFilterData] = React.useState<{ [key: string]: string[] }>({});
   const [dspList, setDspList] = React.useState([]);
   const customerId = useAddedCustomerIdStore((state: addedCustomerIdState) => state.customerId);
+
+  const [filterPanelVisible, setFilterPanelVisible] = React.useState(false);
 
   const { data, fetchNextPage, isLoading, isFetching }: any = DspListSet(searchTerm, sortOrder, customerId, filterData);
 
   const { t } = useTranslation();
   const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
   setVersion("Breadcrumbs-Single");
-  const setPageCustomerName = useAddedCustomerNameStore((state) => state.setCustomerName);
+  
 
   useEffect(() => {
     if (data) {
@@ -70,6 +73,9 @@ const DspLandingContent: React.FC<ContentProps> = () => {
     }
   };
 
+  const getFilterParams = (filterObj: { [key: string]: string[] }) => {
+    setFilterData(filterObj);
+  };
   const handleRowAction = (action: DataGridActionsMenuOption, row: any) => {
     switch (action.action) {
       case ACTION_TYPES.EDIT:
@@ -80,6 +86,21 @@ const DspLandingContent: React.FC<ContentProps> = () => {
     }
   };
 
+  const handleFilterOpen = () => {
+    setFilterPanelVisible(true);
+  };
+
+  const handleFilterClose = () => {
+    setFilterPanelVisible(false);
+  };
+
+  const getFields = ()=> {
+    const fields = dspObj.FilterByFields().map(item=> {
+      return {...item, customerId: customerId};
+    });
+    return fields;
+  };
+  
   return (
     <Box display="flex">
       <Grid container pl={2.25} pr={6.25} className="main-area">
@@ -87,8 +108,10 @@ const DspLandingContent: React.FC<ContentProps> = () => {
           <Grid item md={8} lg={9} display="flex" >
             <Grid item pr={2.5}>
               <Button
+                data-testid="filter"
                 types="filter"
                 aria-label="default"
+                onClick={handleFilterOpen}
                 startIcon={<FilterIcon />}
               >
                 {t('dsp.filterHeader')}
@@ -146,6 +169,13 @@ const DspLandingContent: React.FC<ContentProps> = () => {
             rowActionOptions={rowActionOptions}
             getPages={fetchNextPage}
             noDataMsg={t('dsp.nodataMsg')}
+          />
+
+          <RightInfoPanel panelType="dynamic-filter"
+              open={filterPanelVisible} headingText={"customer-filter-panel.header.filter"}
+              provideFilterParams={getFilterParams} onClose={handleFilterClose}
+              fields={getFields()}
+              storeKey={'dspFilter'}
           />
         </Grid>
       </Grid>

@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { headerObj } from '../components/UIComponents/DataGird/grid.component';
 import { ParkingLotIcon } from '../assets/icons';
+import { IDynamicFilterProps } from '../components/UIComponents/RightInfoPanel/DynamicFilterContent.component';
 
 
 export interface SelectProps {
@@ -76,5 +77,15 @@ export default class DSPModel {
                 action: this.MASS_ACTION_TYPES.EXPORT
             },
         ];
+    }
+
+    FilterByFields(): IDynamicFilterProps['fields'] {
+        return (
+            [
+                { name: 'city', label: 'filterForm.city', fieldType: 'select', optionUrlKey: 'dspFilter', optionAPIResponseKey: 'cities', initialValue: [] },
+                { name: 'state', label: 'filterForm.state', fieldType: 'select', optionUrlKey: 'dspFilter', optionAPIResponseKey: 'states', initialValue: [] },
+                { name: 'zip', label: 'filterForm.zip', fieldType: 'select', optionUrlKey: 'dspFilter', optionAPIResponseKey: 'zipCodes', initialValue: [] },
+            ]
+        );
     }
 }

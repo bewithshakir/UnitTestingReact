@@ -13,13 +13,14 @@ interface ISelectInput {
         initialValue?: string | string[] | number | boolean
         optionUrlKey: filterURLKey
         /** like 'states' | 'cities' | 'settlementType' */
-        optionAPIResponseKey: string
+        optionAPIResponseKey: string;
+        customerId?: string
     },
     handleSelect: (name: string, value: string[], singleSelect?: boolean) => void;
     formik: any
 }
 export const SelectInput: React.FC<ISelectInput> = ({ field, handleSelect, formik }) => {
-    const filterResponse = useGetFilterData(field.optionUrlKey);
+    const filterResponse = useGetFilterData(field.optionUrlKey, field.customerId);
     const customerNameData: any = useCustomers(
         "",
         { sortBy: "", order: "" },

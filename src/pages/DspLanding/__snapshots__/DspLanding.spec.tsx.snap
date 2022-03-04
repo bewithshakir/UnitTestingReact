@@ -90,7 +90,7 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                   "keepPreviousData": true,
                   "optimisticResults": true,
                   "queryFn": [Function],
-                  "queryHash": "[\\"getDspList\\",\\"\\",{\\"order\\":\\"\\",\\"sortBy\\":\\"\\"},{},\\"\\"]",
+                  "queryHash": "[\\"getDspList\\",\\"\\",{\\"order\\":\\"\\",\\"sortBy\\":\\"\\"},{},\\"11\\"]",
                   "queryKey": Array [
                     "getDspList",
                     "",
@@ -99,7 +99,7 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                       "sortBy": "",
                     },
                     Object {},
-                    "",
+                    "11",
                   ],
                 },
                 "currentResultState": Object {
@@ -130,7 +130,7 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                   "keepPreviousData": true,
                   "optimisticResults": true,
                   "queryFn": [Function],
-                  "queryHash": "[\\"getDspList\\",\\"\\",{\\"order\\":\\"\\",\\"sortBy\\":\\"\\"},{},\\"\\"]",
+                  "queryHash": "[\\"getDspList\\",\\"\\",{\\"order\\":\\"\\",\\"sortBy\\":\\"\\"},{},\\"11\\"]",
                   "queryKey": Array [
                     "getDspList",
                     "",
@@ -139,7 +139,7 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                       "sortBy": "",
                     },
                     Object {},
-                    "",
+                    "11",
                   ],
                 },
                 "previousQueryResult": undefined,
@@ -160,7 +160,7 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
               "keepPreviousData": true,
               "optimisticResults": true,
               "queryFn": [Function],
-              "queryHash": "[\\"getDspList\\",\\"\\",{\\"order\\":\\"\\",\\"sortBy\\":\\"\\"},{},\\"\\"]",
+              "queryHash": "[\\"getDspList\\",\\"\\",{\\"order\\":\\"\\",\\"sortBy\\":\\"\\"},{},\\"11\\"]",
               "queryKey": Array [
                 "getDspList",
                 "",
@@ -169,11 +169,11 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                   "sortBy": "",
                 },
                 Object {},
-                "",
+                "11",
               ],
             },
             "promise": Promise {},
-            "queryHash": "[\\"getDspList\\",\\"\\",{\\"order\\":\\"\\",\\"sortBy\\":\\"\\"},{},\\"\\"]",
+            "queryHash": "[\\"getDspList\\",\\"\\",{\\"order\\":\\"\\",\\"sortBy\\":\\"\\"},{},\\"11\\"]",
             "queryKey": Array [
               "getDspList",
               "",
@@ -182,7 +182,7 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                 "sortBy": "",
               },
               Object {},
-              "",
+              "11",
             ],
             "retryer": Retryer {
               "cancel": [Function],
@@ -225,7 +225,7 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
           },
         ],
         "queriesMap": Object {
-          "[\\"getDspList\\",\\"\\",{\\"order\\":\\"\\",\\"sortBy\\":\\"\\"},{},\\"\\"]": Query {
+          "[\\"getDspList\\",\\"\\",{\\"order\\":\\"\\",\\"sortBy\\":\\"\\"},{},\\"11\\"]": Query {
             "cache": [Circular],
             "cacheTime": 300000,
             "defaultOptions": undefined,
@@ -299,7 +299,7 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                   "keepPreviousData": true,
                   "optimisticResults": true,
                   "queryFn": [Function],
-                  "queryHash": "[\\"getDspList\\",\\"\\",{\\"order\\":\\"\\",\\"sortBy\\":\\"\\"},{},\\"\\"]",
+                  "queryHash": "[\\"getDspList\\",\\"\\",{\\"order\\":\\"\\",\\"sortBy\\":\\"\\"},{},\\"11\\"]",
                   "queryKey": Array [
                     "getDspList",
                     "",
@@ -308,7 +308,7 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                       "sortBy": "",
                     },
                     Object {},
-                    "",
+                    "11",
                   ],
                 },
                 "currentResultState": Object {
@@ -339,7 +339,7 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                   "keepPreviousData": true,
                   "optimisticResults": true,
                   "queryFn": [Function],
-                  "queryHash": "[\\"getDspList\\",\\"\\",{\\"order\\":\\"\\",\\"sortBy\\":\\"\\"},{},\\"\\"]",
+                  "queryHash": "[\\"getDspList\\",\\"\\",{\\"order\\":\\"\\",\\"sortBy\\":\\"\\"},{},\\"11\\"]",
                   "queryKey": Array [
                     "getDspList",
                     "",
@@ -348,7 +348,7 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                       "sortBy": "",
                     },
                     Object {},
-                    "",
+                    "11",
                   ],
                 },
                 "previousQueryResult": undefined,
@@ -369,7 +369,7 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
               "keepPreviousData": true,
               "optimisticResults": true,
               "queryFn": [Function],
-              "queryHash": "[\\"getDspList\\",\\"\\",{\\"order\\":\\"\\",\\"sortBy\\":\\"\\"},{},\\"\\"]",
+              "queryHash": "[\\"getDspList\\",\\"\\",{\\"order\\":\\"\\",\\"sortBy\\":\\"\\"},{},\\"11\\"]",
               "queryKey": Array [
                 "getDspList",
                 "",
@@ -378,11 +378,11 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                   "sortBy": "",
                 },
                 Object {},
-                "",
+                "11",
               ],
             },
             "promise": Promise {},
-            "queryHash": "[\\"getDspList\\",\\"\\",{\\"order\\":\\"\\",\\"sortBy\\":\\"\\"},{},\\"\\"]",
+            "queryHash": "[\\"getDspList\\",\\"\\",{\\"order\\":\\"\\",\\"sortBy\\":\\"\\"},{},\\"11\\"]",
             "queryKey": Array [
               "getDspList",
               "",
@@ -391,7 +391,7 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                 "sortBy": "",
               },
               Object {},
-              "",
+              "11",
             ],
             "retryer": Retryer {
               "cancel": [Function],
@@ -773,6 +773,8 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                         >
                           <Button
                             aria-label="default"
+                            data-testid="filter"
+                            onClick={[Function]}
                             startIcon={<FilterIcon />}
                             types="filter"
                           >
@@ -916,6 +918,45 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                         rows={Array []}
                         searchTerm=""
                       />
+                      <RightInfoPanel
+                        fields={
+                          Array [
+                            Object {
+                              "customerId": "11",
+                              "fieldType": "select",
+                              "initialValue": Array [],
+                              "label": "filterForm.city",
+                              "name": "city",
+                              "optionAPIResponseKey": "cities",
+                              "optionUrlKey": "dspFilter",
+                            },
+                            Object {
+                              "customerId": "11",
+                              "fieldType": "select",
+                              "initialValue": Array [],
+                              "label": "filterForm.state",
+                              "name": "state",
+                              "optionAPIResponseKey": "states",
+                              "optionUrlKey": "dspFilter",
+                            },
+                            Object {
+                              "customerId": "11",
+                              "fieldType": "select",
+                              "initialValue": Array [],
+                              "label": "filterForm.zip",
+                              "name": "zip",
+                              "optionAPIResponseKey": "zipCodes",
+                              "optionUrlKey": "dspFilter",
+                            },
+                          ]
+                        }
+                        headingText="customer-filter-panel.header.filter"
+                        onClose={[Function]}
+                        open={false}
+                        panelType="dynamic-filter"
+                        provideFilterParams={[Function]}
+                        storeKey="dspFilter"
+                      />
                     </ForwardRef(Grid)>,
                   ],
                   "className": "main-area",
@@ -971,6 +1012,8 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                             >
                               <Button
                                 aria-label="default"
+                                data-testid="filter"
+                                onClick={[Function]}
                                 startIcon={<FilterIcon />}
                                 types="filter"
                               >
@@ -1090,6 +1133,8 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                                 >
                                   <Button
                                     aria-label="default"
+                                    data-testid="filter"
+                                    onClick={[Function]}
                                     startIcon={<FilterIcon />}
                                     types="filter"
                                   >
@@ -1160,6 +1205,8 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                                   Object {
                                     "children": <Button
                                       aria-label="default"
+                                      data-testid="filter"
+                                      onClick={[Function]}
                                       startIcon={<FilterIcon />}
                                       types="filter"
                                     >
@@ -1194,12 +1241,16 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                                 >
                                   <Button
                                     aria-label="default"
+                                    data-testid="filter"
+                                    onClick={[Function]}
                                     startIcon={<FilterIcon />}
                                     types="filter"
                                   >
                                     <WithStyles(ForwardRef(Button))
                                       aria-label="default"
                                       className="btn-filter "
+                                      data-testid="filter"
+                                      onClick={[Function]}
                                       startIcon={<FilterIcon />}
                                       variant="contained"
                                     >
@@ -1239,6 +1290,8 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                                             "textSizeSmall": "MuiButton-textSizeSmall",
                                           }
                                         }
+                                        data-testid="filter"
+                                        onClick={[Function]}
                                         startIcon={<FilterIcon />}
                                         variant="contained"
                                       >
@@ -1246,9 +1299,11 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                                           aria-label="default"
                                           className="MuiButton-root MuiButton-contained btn-filter "
                                           component="button"
+                                          data-testid="filter"
                                           disabled={false}
                                           focusRipple={true}
                                           focusVisibleClassName="Mui-focusVisible"
+                                          onClick={[Function]}
                                           type="button"
                                         >
                                           <ForwardRef(ButtonBase)
@@ -1262,16 +1317,20 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                                               }
                                             }
                                             component="button"
+                                            data-testid="filter"
                                             disabled={false}
                                             focusRipple={true}
                                             focusVisibleClassName="Mui-focusVisible"
+                                            onClick={[Function]}
                                             type="button"
                                           >
                                             <button
                                               aria-label="default"
                                               className="MuiButtonBase-root MuiButton-root MuiButton-contained btn-filter "
+                                              data-testid="filter"
                                               disabled={false}
                                               onBlur={[Function]}
+                                              onClick={[Function]}
                                               onDragLeave={[Function]}
                                               onFocus={[Function]}
                                               onKeyDown={[Function]}
@@ -3750,71 +3809,112 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                     className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-undefined"
                     ownerState={
                       Object {
-                        "children": <GridComponent
-                          enableRowAction={true}
-                          enableRowSelection={true}
-                          getPages={[Function]}
-                          header={
-                            Array [
-                              Object {
-                                "field": "name",
-                                "label": "DSP NAME",
-                                "sortable": true,
-                                "type": "text",
-                              },
-                              Object {
-                                "field": "contactName",
-                                "label": "CONTACT NAME",
-                                "type": "text",
-                              },
-                              Object {
-                                "field": "email",
-                                "label": "EMAIL",
-                                "type": "text",
-                              },
-                              Object {
-                                "field": "address",
-                                "label": "STREET ADDRES",
-                                "type": "text",
-                              },
-                              Object {
-                                "field": "city",
-                                "label": "CITY",
-                                "type": "text",
-                              },
-                              Object {
-                                "field": "state",
-                                "label": "STATE",
-                                "type": "text",
-                              },
-                              Object {
-                                "field": "zip",
-                                "label": "ZIP",
-                                "type": "text",
-                              },
-                              Object {
-                                "field": "totalLotAssigned",
-                                "icon": [Function],
-                                "label": "LOTS ASSIGNED",
-                                "type": "button",
-                              },
-                            ]
-                          }
-                          isLoading={true}
-                          noDataMsg="dsp.nodataMsg"
-                          onRowActionSelect={[Function]}
-                          primaryKey="dspId"
-                          rowActionOptions={
-                            Array [
-                              Object {
-                                "action": "edit",
-                                "label": "menus.data-grid-actions.edit",
-                              },
-                            ]
-                          }
-                          rows={Array []}
-                          searchTerm=""
-                        />,
+                        "children": Array [
+                          <GridComponent
+                            enableRowAction={true}
+                            enableRowSelection={true}
+                            getPages={[Function]}
+                            header={
+                              Array [
+                                Object {
+                                  "field": "name",
+                                  "label": "DSP NAME",
+                                  "sortable": true,
+                                  "type": "text",
+                                },
+                                Object {
+                                  "field": "contactName",
+                                  "label": "CONTACT NAME",
+                                  "type": "text",
+                                },
+                                Object {
+                                  "field": "email",
+                                  "label": "EMAIL",
+                                  "type": "text",
+                                },
+                                Object {
+                                  "field": "address",
+                                  "label": "STREET ADDRES",
+                                  "type": "text",
+                                },
+                                Object {
+                                  "field": "city",
+                                  "label": "CITY",
+                                  "type": "text",
+                                },
+                                Object {
+                                  "field": "state",
+                                  "label": "STATE",
+                                  "type": "text",
+                                },
+                                Object {
+                                  "field": "zip",
+                                  "label": "ZIP",
+                                  "type": "text",
+                                },
+                                Object {
+                                  "field": "totalLotAssigned",
+                                  "icon": [Function],
+                                  "label": "LOTS ASSIGNED",
+                                  "type": "button",
+                                },
+                              ]
+                            }
+                            isLoading={true}
+                            noDataMsg="dsp.nodataMsg"
+                            onRowActionSelect={[Function]}
+                            primaryKey="dspId"
+                            rowActionOptions={
+                              Array [
+                                Object {
+                                  "action": "edit",
+                                  "label": "menus.data-grid-actions.edit",
+                                },
+                              ]
+                            }
+                            rows={Array []}
+                            searchTerm=""
+                          />,
+                          <RightInfoPanel
+                            fields={
+                              Array [
+                                Object {
+                                  "customerId": "11",
+                                  "fieldType": "select",
+                                  "initialValue": Array [],
+                                  "label": "filterForm.city",
+                                  "name": "city",
+                                  "optionAPIResponseKey": "cities",
+                                  "optionUrlKey": "dspFilter",
+                                },
+                                Object {
+                                  "customerId": "11",
+                                  "fieldType": "select",
+                                  "initialValue": Array [],
+                                  "label": "filterForm.state",
+                                  "name": "state",
+                                  "optionAPIResponseKey": "states",
+                                  "optionUrlKey": "dspFilter",
+                                },
+                                Object {
+                                  "customerId": "11",
+                                  "fieldType": "select",
+                                  "initialValue": Array [],
+                                  "label": "filterForm.zip",
+                                  "name": "zip",
+                                  "optionAPIResponseKey": "zipCodes",
+                                  "optionUrlKey": "dspFilter",
+                                },
+                              ]
+                            }
+                            headingText="customer-filter-panel.header.filter"
+                            onClose={[Function]}
+                            open={false}
+                            panelType="dynamic-filter"
+                            provideFilterParams={[Function]}
+                            storeKey="dspFilter"
+                          />,
+                        ],
                         "columnSpacing": 0,
                         "columns": 12,
                         "container": true,
@@ -5582,6 +5682,221 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                           </MuiTableContainerRoot>
                         </ForwardRef(TableContainer)>
                       </GridComponent>
+                      <RightInfoPanel
+                        fields={
+                          Array [
+                            Object {
+                              "customerId": "11",
+                              "fieldType": "select",
+                              "initialValue": Array [],
+                              "label": "filterForm.city",
+                              "name": "city",
+                              "optionAPIResponseKey": "cities",
+                              "optionUrlKey": "dspFilter",
+                            },
+                            Object {
+                              "customerId": "11",
+                              "fieldType": "select",
+                              "initialValue": Array [],
+                              "label": "filterForm.state",
+                              "name": "state",
+                              "optionAPIResponseKey": "states",
+                              "optionUrlKey": "dspFilter",
+                            },
+                            Object {
+                              "customerId": "11",
+                              "fieldType": "select",
+                              "initialValue": Array [],
+                              "label": "filterForm.zip",
+                              "name": "zip",
+                              "optionAPIResponseKey": "zipCodes",
+                              "optionUrlKey": "dspFilter",
+                            },
+                          ]
+                        }
+                        headingText="customer-filter-panel.header.filter"
+                        onClose={[Function]}
+                        open={false}
+                        panelType="dynamic-filter"
+                        provideFilterParams={[Function]}
+                        storeKey="dspFilter"
+                      >
+                        <ForwardRef(Drawer)
+                          anchor="right"
+                          className="right_panel_main_class customer_filter_panel"
+                          data-testid="right-drawer"
+                          open={false}
+                          variant="temporary"
+                        >
+                          <MuiDrawerRoot
+                            BackdropProps={
+                              Object {
+                                "transitionDuration": Object {
+                                  "enter": 225,
+                                  "exit": 195,
+                                },
+                              }
+                            }
+                            className="MuiDrawer-root MuiDrawer-modal right_panel_main_class customer_filter_panel"
+                            data-testid="right-drawer"
+                            hideBackdrop={false}
+                            open={false}
+                            ownerState={
+                              Object {
+                                "anchor": "right",
+                                "children": Array [
+                                  <PanelHeader
+                                    headingText="customer-filter-panel.header.filter"
+                                    onClose={[Function]}
+                                    panelType="dynamic-filter"
+                                  />,
+                                  <DynamicFilterContent
+                                    fields={
+                                      Array [
+                                        Object {
+                                          "customerId": "11",
+                                          "fieldType": "select",
+                                          "initialValue": Array [],
+                                          "label": "filterForm.city",
+                                          "name": "city",
+                                          "optionAPIResponseKey": "cities",
+                                          "optionUrlKey": "dspFilter",
+                                        },
+                                        Object {
+                                          "customerId": "11",
+                                          "fieldType": "select",
+                                          "initialValue": Array [],
+                                          "label": "filterForm.state",
+                                          "name": "state",
+                                          "optionAPIResponseKey": "states",
+                                          "optionUrlKey": "dspFilter",
+                                        },
+                                        Object {
+                                          "customerId": "11",
+                                          "fieldType": "select",
+                                          "initialValue": Array [],
+                                          "label": "filterForm.zip",
+                                          "name": "zip",
+                                          "optionAPIResponseKey": "zipCodes",
+                                          "optionUrlKey": "dspFilter",
+                                        },
+                                      ]
+                                    }
+                                    onClose={[Function]}
+                                    provideFilterParams={[Function]}
+                                    storeKey="dspFilter"
+                                  />,
+                                ],
+                                "className": "right_panel_main_class customer_filter_panel",
+                                "data-testid": "right-drawer",
+                                "elevation": 16,
+                                "open": false,
+                                "variant": "temporary",
+                              }
+                            }
+                          >
+                            <ForwardRef(Modal)
+                              BackdropProps={
+                                Object {
+                                  "transitionDuration": Object {
+                                    "enter": 225,
+                                    "exit": 195,
+                                  },
+                                }
+                              }
+                              className="MuiDrawer-root MuiDrawer-modal right_panel_main_class customer_filter_panel css-j8ofbm-MuiDrawer-root"
+                              data-testid="right-drawer"
+                              hideBackdrop={false}
+                              open={false}
+                            >
+                              <ForwardRef(ModalUnstyled)
+                                BackdropComponent={
+                                  Object {
+                                    "$$typeof": Symbol(react.forward_ref),
+                                    "__emotion_base": Object {
+                                      "$$typeof": Symbol(react.forward_ref),
+                                      "propTypes": Object {
+                                        "children": [Function],
+                                        "className": [Function],
+                                        "classes": [Function],
+                                        "components": [Function],
+                                        "componentsProps": [Function],
+                                        "invisible": [Function],
+                                        "open": [Function],
+                                        "sx": [Function],
+                                        "transitionDuration": [Function],
+                                      },
+                                      "render": [Function],
+                                    },
+                                    "__emotion_forwardProp": [Function],
+                                    "__emotion_real": [Circular],
+                                    "__emotion_styles": Array [
+                                      "label:MuiModal-backdrop;",
+                                      Object {
+                                        "zIndex": -1,
+                                      },
+                                      [Function],
+                                      [Function],
+                                    ],
+                                    "defaultProps": undefined,
+                                    "render": [Function],
+                                    "withComponent": [Function],
+                                  }
+                                }
+                                BackdropProps={
+                                  Object {
+                                    "transitionDuration": Object {
+                                      "enter": 225,
+                                      "exit": 195,
+                                    },
+                                  }
+                                }
+                                className="MuiDrawer-root MuiDrawer-modal right_panel_main_class customer_filter_panel css-j8ofbm-MuiDrawer-root"
+                                closeAfterTransition={false}
+                                components={
+                                  Object {
+                                    "Root": Object {
+                                      "$$typeof": Symbol(react.forward_ref),
+                                      "__emotion_base": "div",
+                                      "__emotion_forwardProp": [Function],
+                                      "__emotion_real": [Circular],
+                                      "__emotion_styles": Array [
+                                        "label:MuiModal-root;",
+                                        [Function],
+                                        [Function],
+                                        [Function],
+                                        [Function],
+                                      ],
+                                      "defaultProps": undefined,
+                                      "render": [Function],
+                                      "withComponent": [Function],
+                                    },
+                                  }
+                                }
+                                componentsProps={
+                                  Object {
+                                    "root": Object {
+                                      "ownerState": Object {},
+                                    },
+                                  }
+                                }
+                                data-testid="right-drawer"
+                                disableAutoFocus={false}
+                                disableEnforceFocus={false}
+                                disableEscapeKeyDown={false}
+                                disablePortal={false}
+                                disableRestoreFocus={false}
+                                disableScrollLock={false}
+                                hideBackdrop={false}
+                                keepMounted={false}
+                                onTransitionEnter={[Function]}
+                                onTransitionExited={[Function]}
+                                open={false}
+                              />
+                            </ForwardRef(Modal)>
+                          </MuiDrawerRoot>
+                        </ForwardRef(Drawer)>
+                      </RightInfoPanel>
                     </div>
                   </MuiGridRoot>
                 </ForwardRef(Grid)>
