@@ -225,12 +225,12 @@ export default function FeeDetails() {
                     }
                 }
 
-                if (!serviceFee.misc.isAllAssetType && serviceFee.assetInd === "Y") {
+                if (serviceFee.misc?.isAllAssetType === "N" && serviceFee.assetInd === "Y") {
                     assetType.value = serviceFee.assetTypeCd || "";
                     assetType.label = (assetTypeList?.data?.assets?.find((asset: any) => asset.assetId === serviceFee.assetTypeCd)?.assetNm || "").trim();
                 }
 
-                if (!serviceFee.misc.isAllVehicleType && serviceFee.assetInd !== "Y") {
+                if (serviceFee.misc?.isAllVehicleType === "N" && serviceFee.assetInd !== "Y") {
                     vehicleType.value = serviceFee.vehicleTypeCd || "";
                     vehicleType.label = (vehicleTypeList?.data?.find((vehicle: any) => vehicle.vehicleTypeCd === serviceFee.vehicleTypeCd)?.vehicleTypeNm || "").trim();
                 }

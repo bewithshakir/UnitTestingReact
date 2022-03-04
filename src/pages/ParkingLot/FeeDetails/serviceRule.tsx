@@ -1,4 +1,4 @@
-import { Fragment, useState, useEffect } from 'react';
+import { Fragment, useState, useEffect, ChangeEvent } from 'react';
 import Input from '../../../components/UIComponents/Input/Input';
 import Checkbox from '../../../components/UIComponents/Checkbox/Checkbox.component';
 import Select from '../../../components/UIComponents/Select/SingleSelect';
@@ -34,23 +34,23 @@ export default function ServiceRule({ index, isDisabled, formik, lotId }: props)
     const { data: productNameList } = useGetLotProductNames(lotId, formik?.values?.serviceFeeRules?.[index]?.masterProductType?.value);
 
     useEffect(() => {
-        if (vehicleTypeList?.data?.length) {
+        if (vehicleTypeList?.data) {
             const arr = vehicleTypeList.data.map((obj: any) => ({ label: obj.vehicleTypeNm.trim(), value: obj.vehicleTypeCd.trim() }));
             setVehicleTypes([all, ...arr]);
         }
-        if (assetTypeList?.data?.assets?.length) {
+        if (assetTypeList?.data?.assets) {
             const arr = assetTypeList.data.assets.map((obj: any) => ({ label: obj.assetNm.trim(), value: obj.assetId.trim() }));
             setAssetTypes([all, ...arr]);
         }
-        if (productTypeList?.data?.lotProductTypes?.length) {
+        if (productTypeList?.data?.lotProductTypes) {
             const arr = productTypeList.data.lotProductTypes.map((obj: any) => ({ label: obj.productGroupNm.trim(), value: obj.productGroupCd.trim() }));
             setProductTypes([all, ...arr]);
         }
-        if (masterProductNamesList?.data?.products?.length) {
+        if (masterProductNamesList?.data?.products) {
             const arr = masterProductNamesList.data.products.map((obj: any) => ({ label: obj.productNm.trim(), value: obj.productCd.trim() }));
             setMasterProductNames([all, ...arr]);
         }
-        if (productNameList?.data?.lotProducts?.length) {
+        if (productNameList?.data?.lotProducts) {
             setProductNames(productNameList.data.lotProducts.map((obj: any) => ({ label: obj.productNm.trim(), value: obj.applicableProductId.trim() })));
         }
     }, [vehicleTypeList, assetTypeList, productTypeList, productNameList, masterProductNamesList]);
@@ -68,6 +68,17 @@ export default function ServiceRule({ index, isDisabled, formik, lotId }: props)
     const handleMasterProductTypeChange = (fieldName: string, value: any) => {
         formik.setFieldValue(fieldName, value);
         formik.setFieldValue("" + `serviceFeeRules[${index}].productName`, { label: "", value: "" });
+        if (value.value === 'all') {
+            formik.setFieldValue("" + `serviceFeeRules[${index}].productName`, { ...all });
+        }
+
+    };
+
+    const handleIsAssetChange = (event: ChangeEvent<HTMLInputElement>) => {
+        formik.setFieldValue(`serviceFeeRules[${index}].considerAsset`, event.target.checked);
+        formik.setFieldValue(`serviceFeeRules[${index}].vehicleType`, { label: "", value: "" });
+        formik.setFieldValue(`serviceFeeRules[${index}].assetType`, { label: "", value: "" });
+        formik.setFieldValue(`serviceFeeRules[${index}].assetTypeDesc`, "");
     };
 
     return (
@@ -183,66 +194,67 @@ export default function ServiceRule({ index, isDisabled, formik, lotId }: props)
                 <FormControlLabel
                     sx={{ margin: "0px", marginBottom: "1rem", fontWeight: "bold" }}
                     className="checkbox-field"
-                    control={<Checkbox name={`serviceFeeRules[${index}].considerAsset`} checked={formik.values.serviceFeeRules[index].considerAsset} onChange={formik.handleChange} disabled={isDisabled} />}
+                    control={<Checkbox name={`serviceFeeRules[${index}].considerAsset`} checked={formik.values.serviceFeeRules[index].considerAsset} onChange={handleIsAssetChange} disabled={isDisabled} />}
                     label={<Typography variant="h4" component="h4" className="fw-bold">
                         {t("FeeDetails.considerAsset")}
                     </Typography>} />
             </Grid>
             {
-                formik.values.serviceFeeRules[index].considerAsset && <Grid container item md={12} mt={1} mb={1}>
-                    <Grid item xs={12} md={6}>
-                        <Select
-                            id={`serviceFeeRules[${index}].assetType`}
-                            name={`serviceFeeRules[${index}].assetType`}
-                            label={t("FeeDetails.assetType")}
-                            description=''
-                            items={assetTypes}
-                            placeholder={t("FeeDetails.assetTypePlaceholder")}
-                            onChange={formik.setFieldValue}
-                            helperText={
-                                formik?.errors?.serviceFeeRules && formik?.touched?.serviceFeeRules &&
-                                    (formik.touched?.serviceFeeRules?.[index]?.assetType && ((formik.errors?.serviceFeeRules?.[index] as any)?.assetType))
-                                    ?
-                                    (formik.errors.serviceFeeRules[index] as any).assetType.value : undefined
-                            }
-                            error={
-                                formik?.errors?.serviceFeeRules && formik?.touched?.serviceFeeRules &&
-                                    (formik.touched?.serviceFeeRules?.[index]?.assetType && ((formik.errors?.serviceFeeRules?.[index] as any)?.assetType))
-                                    ? true : false
-                            }
-                            onBlur={() => { formik.setFieldTouched(`serviceFeeRules[${index}].assetType`); formik.validateField(`serviceFeeRules[${index}].assetType`); }}
-                            isDisabled={isDisabled}
-                            required
-                            value={formik.values.serviceFeeRules[index].assetType}
-                        />
+                formik.values.serviceFeeRules[index].considerAsset &&
+                <>
+                    <Grid container item md={12} mt={1} mb={1}>
+                        <Grid item xs={12} md={6}>
+                            <Select
+                                id={`serviceFeeRules[${index}].assetType`}
+                                name={`serviceFeeRules[${index}].assetType`}
+                                label={t("FeeDetails.assetType")}
+                                description=''
+                                items={assetTypes}
+                                placeholder={t("FeeDetails.assetTypePlaceholder")}
+                                onChange={formik.setFieldValue}
+                                helperText={
+                                    formik?.errors?.serviceFeeRules && formik?.touched?.serviceFeeRules &&
+                                        (formik.touched?.serviceFeeRules?.[index]?.assetType && ((formik.errors?.serviceFeeRules?.[index] as any)?.assetType))
+                                        ?
+                                        (formik.errors.serviceFeeRules[index] as any).assetType.value : undefined
+                                }
+                                error={
+                                    formik?.errors?.serviceFeeRules && formik?.touched?.serviceFeeRules &&
+                                        (formik.touched?.serviceFeeRules?.[index]?.assetType && ((formik.errors?.serviceFeeRules?.[index] as any)?.assetType))
+                                        ? true : false
+                                }
+                                onBlur={() => { formik.setFieldTouched(`serviceFeeRules[${index}].assetType`); formik.validateField(`serviceFeeRules[${index}].assetType`); }}
+                                isDisabled={isDisabled}
+                                required
+                                value={formik.values.serviceFeeRules[index].assetType}
+                            />
+                        </Grid>
                     </Grid>
-                </Grid>
-            }
-            {
-                formik.values.serviceFeeRules[index].considerAsset && <Grid container item md={12} mt={2} mb={1} pt={0.5}>
-                    <Grid item xs={12} md={6}>
-                        <Input
-                            id={`serviceFeeRules[${index}].assetTypeDesc`}
-                            label=''
-                            type='text'
-                            placeholder={t("FeeDetails.assetTypeDescPlaceholder")}
-                            helperText={
-                                formik?.errors?.serviceFeeRules && formik?.touched?.serviceFeeRules &&
-                                    (formik.touched?.serviceFeeRules?.[index]?.assetTypeDesc && ((formik.errors?.serviceFeeRules?.[index] as any)?.assetTypeDesc))
-                                    ?
-                                    (formik.errors.serviceFeeRules[index] as any).assetTypeDesc : undefined
-                            }
-                            error={
-                                formik?.errors?.serviceFeeRules && formik?.touched?.serviceFeeRules &&
-                                    (formik.touched?.serviceFeeRules?.[index]?.assetTypeDesc && ((formik.errors?.serviceFeeRules?.[index] as any)?.assetTypeDesc))
-                                    ? true : false
-                            }
-                            description=''
-                            disabled={isDisabled}
-                            {...formik.getFieldProps(`serviceFeeRules[${index}].assetTypeDesc`)}
-                        />
+                    <Grid container item md={12} mt={2} mb={1} pt={0.5}>
+                        <Grid item xs={12} md={6}>
+                            <Input
+                                id={`serviceFeeRules[${index}].assetTypeDesc`}
+                                label=''
+                                type='text'
+                                placeholder={t("FeeDetails.assetTypeDescPlaceholder")}
+                                helperText={
+                                    formik?.errors?.serviceFeeRules && formik?.touched?.serviceFeeRules &&
+                                        (formik.touched?.serviceFeeRules?.[index]?.assetTypeDesc && ((formik.errors?.serviceFeeRules?.[index] as any)?.assetTypeDesc))
+                                        ?
+                                        (formik.errors.serviceFeeRules[index] as any).assetTypeDesc : undefined
+                                }
+                                error={
+                                    formik?.errors?.serviceFeeRules && formik?.touched?.serviceFeeRules &&
+                                        (formik.touched?.serviceFeeRules?.[index]?.assetTypeDesc && ((formik.errors?.serviceFeeRules?.[index] as any)?.assetTypeDesc))
+                                        ? true : false
+                                }
+                                description=''
+                                disabled={isDisabled}
+                                {...formik.getFieldProps(`serviceFeeRules[${index}].assetTypeDesc`)}
+                            />
+                        </Grid>
                     </Grid>
-                </Grid>
+                </>
             }
             {!(formik.values.serviceFeeRules[index].considerAsset) && <Grid container item md={12} mt={1} mb={1}>
                 <Grid item xs={12} md={6}>
