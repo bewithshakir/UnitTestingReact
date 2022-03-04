@@ -121,13 +121,13 @@ export default function FeeDetails() {
 
 
     useEffect(() => {
-        if (delFeeShedList?.data?.length) {
+        if (delFeeShedList?.data) {
             setFeeShed(delFeeShedList.data.map((obj: any) => ({ label: obj.feeFrequencyNm.trim(), value: obj.feeFrequencyCd.trim() })));
         }
         if (productListData) {
             setProductCount(productListData.data?.pagination?.totalCount);
         }
-        if (productData?.data?.lotProducts?.length) {
+        if (productData?.data?.lotProducts) {
             setProductIds(productData.data.lotProducts.map((obj: any) => obj.applicableProductId));
         }
     }, [delFeeShedList, productListData, productData]);
