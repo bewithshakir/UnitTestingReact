@@ -33,8 +33,6 @@ describe('useEditProductManagement for useMutation', () => {
             return result.current.isSuccess;
         });
         expect(result.current.status).toBe('success');
-        // expect(result.current.data?.data.saleableProductNm).toBe('test Premium')
-
     });
 
     it('fail to add data using useEditProductManagement', async () => {

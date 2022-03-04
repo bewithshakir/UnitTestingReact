@@ -4,8 +4,6 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import { renderWithClient } from '../../tests/utils';
 import DspLandingContent from './index';
 import userEvent from '@testing-library/user-event';
-import { serverMsw } from '../../setupTests';
-import { rest } from 'msw';
 
 const queryClient = new QueryClient();
 
@@ -39,10 +37,10 @@ describe('Rendering of DSP Landing Component', () => {
 });
 
 describe('search DSP on DSP landing page', () => {
+    const result = renderWithClient(<DspLandingContent version="Breadcrumbs-Many" />);
+    const { searchBox } = getAllElements(result);
     it('load data in form', () => {
-        const result = renderWithClient(<DspLandingContent version="Breadcrumbs-Many" />);
         act(() => {
-            const { searchBox } = getAllElements(result);
             userEvent.type(searchBox, 'Test DSP');
         });
 
@@ -54,28 +52,7 @@ describe('search DSP on DSP landing page', () => {
     });
 
     it('when search result not found', async () => {
-        serverMsw.use(
-            rest.get('*', (req, res, ctx) => {
-                return res(
-                    ctx.status(200),
-                    ctx.json({
-                        data: {
-                            dsps: [],
-                            pagination: {
-                                limit: 15,
-                                offset: 0,
-                                totalCount: 0,
-                            }
-                        },
-                        error: null
-                    })
-                );
-            })
-        );
-        const result = renderWithClient(<DspLandingContent version="Breadcrumbs-Many" />);
-
         act(() => {
-            const { searchBox } = getAllElements(result);
             userEvent.type(searchBox, 'Test DAP');
         });
 

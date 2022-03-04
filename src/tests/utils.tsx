@@ -5,7 +5,7 @@ import { addProductManagementHandler, editProductManagementHandler, getProductDa
 import { getOPISCitiesHandler } from '../pages/OPISCity/mockApi/handlerOPISCityLandingPage';
 import { getAllParkingLotsHandler } from '../pages/ParkingLotsManagement/mockApi/handlerAllParkingLotsLandingPage';
 import { getAttachmentListHandler } from '../pages/Attachments/mockApi/AttachmentLandingPageHandler';
-import { addDspHandler, getDspDataHandler, editDspHandler } from "../pages/DspLanding/AddDSP/mockApi/handlerAddDsp";
+import { addDspHandler, editDspHandler } from "../pages/DspLanding/AddDSP/mockApi/handlerAddDsp";
 import { getFormattedAddressHandler, getGoogleAddressHandler } from "../components/UIComponents/GoogleAddressComponent/mockApi/googleAddressAutoHandler";
 import { getProductByLotHandler, editProductHandler, getTaxExemptionsListHandler, getServedCitiesHandler, getSupplierPricesHandler, getSupplierBrandProductsHandler, getOpisRackProductDetailsHandler, getProductsHandler } from '../pages/ProductManagement/mockApi/handler';
 import { getFuelTaxList, getFuelTaxProductsList } from '../pages/Tax/mockApi/handler';
@@ -18,7 +18,7 @@ import { getTanksList } from '../pages/Truck/mockApi/handlerTanksList';
 import { getLocationsList } from '../pages/Truck/mockApi/handlerLocations';
 import { addAssetHandler, getAssetDeatilsHandler, editAssetHandler } from '../pages/AssetManagement/AddAsset/mockApi/handlerAddAsset';
 import { addTruckColorHandler, addTruckFuelHandler, addEditTruckHandler, useGetEditTruckDetails } from '../pages/Truck/AddTruck/mockApi/handleAddTruck';
-import { getDSPList } from '../pages/DspLanding/mockApi/handlerDSPList';
+import { getDspDataHandler } from '../pages/DspLanding/mockApi/handlerDSPData';
 
 export const handlers = [
     getProductTypesDropdownHandler(),
@@ -34,7 +34,6 @@ export const handlers = [
     getFormattedAddressHandler(),
     getGoogleAddressHandler(),
     addDspHandler(),
-    getDSPList(),
     getDspDataHandler(),
     editDspHandler(),
     editProductHandler(),

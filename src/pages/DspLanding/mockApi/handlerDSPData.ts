@@ -1,9 +1,9 @@
 import { rest } from "msw";
 
-export const getDSPList = () => {
+export const getDspDataHandler = () => {
     return rest.get('*/api/customer-service/customers/*/dsps*', (req, res, ctx) => {
         const search = req.url.searchParams.get('search');
-        const params = req.params;
+        const limit = req.url.searchParams.get('limit');
         return (search?.trim()) ?
             search === "Test DSP" ?
                 res(
@@ -47,7 +47,7 @@ export const getDSPList = () => {
                     })
                 )
             :
-            (params[2] !== '/222') ?
+            limit ?
                 res(
                     ctx.status(200),
                     ctx.json({
@@ -79,15 +79,24 @@ export const getDSPList = () => {
                     ctx.status(200),
                     ctx.json({
                         data: {
-                            pagination: {
-                                "totalCount": 0,
-                                "limit": 15,
-                                "offset": 0
-                            },
-                            dsps: []
-                        }
+                            "dspId": "111",
+                            "dspName": "dsp updated1 test",
+                            "customerId": "222",
+                            "contactName": "steve",
+                            "contactEmailId": "newcustomer@gmail.com",
+                            "contactPhoneNumber": "8939785301",
+                            "createdDtm": "2022-01-27T09:03:55.931Z",
+                            "lastUpdatedDtm": "2022-01-27T17:51:29.712Z",
+                            "deletedDtm": null,
+                            "addressLine1": "Houston Court",
+                            "addressLine2": "Houston Ct",
+                            "cityNm": "Saratoga",
+                            "stateNm": "CA",
+                            "postalCd": "95070",
+                            "activeInactiveInd": "Y"
+                        },
+                        error: null
                     })
                 );
-
     });
 };
