@@ -1736,7 +1736,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing ov
                   <React.Fragment>
                     <ForwardRef(Grid)
                       item={true}
-                      lg={6}
+                      lg={12}
                       md={6}
                       mx={4}
                       my={1}
@@ -1744,9 +1744,42 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing ov
                       xs={8}
                     >
                       <b>
-                        Add New Product or select the product from the table to edit the details
+                        addProductFormLabels.addproductactiontext
                       </b>
                     </ForwardRef(Grid)>
+                    <ForwardRef(Grid)
+                      item={true}
+                      lg={12}
+                      mb={3}
+                      md={6}
+                      mx={4}
+                      my={1}
+                      sm={8}
+                      xs={8}
+                    >
+                      <ForwardRef(Typography)
+                        className="opis-rack-info-text"
+                        color="#000000DE"
+                        pb={1}
+                        pl={2}
+                        pt={1}
+                        px={1}
+                        variant="h5"
+                      >
+                        addProductFormLabels.addproductopistext
+                      </ForwardRef(Typography)>
+                    </ForwardRef(Grid)>
+                  </React.Fragment>
+                  <React.Fragment>
+                    <ForwardRef(Grid)
+                      item={true}
+                      lg={6}
+                      md={6}
+                      mx={4}
+                      my={1}
+                      sm={8}
+                      xs={8}
+                    />
                     <ForwardRef(Grid)
                       item={true}
                       lg={4}
@@ -1977,7 +2010,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing ov
                       <React.Fragment>
                         <ForwardRef(Grid)
                           item={true}
-                          lg={6}
+                          lg={12}
                           md={6}
                           mx={4}
                           my={1}
@@ -1985,9 +2018,42 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing ov
                           xs={8}
                         >
                           <b>
-                            Add New Product or select the product from the table to edit the details
+                            addProductFormLabels.addproductactiontext
                           </b>
                         </ForwardRef(Grid)>
+                        <ForwardRef(Grid)
+                          item={true}
+                          lg={12}
+                          mb={3}
+                          md={6}
+                          mx={4}
+                          my={1}
+                          sm={8}
+                          xs={8}
+                        >
+                          <ForwardRef(Typography)
+                            className="opis-rack-info-text"
+                            color="#000000DE"
+                            pb={1}
+                            pl={2}
+                            pt={1}
+                            px={1}
+                            variant="h5"
+                          >
+                            addProductFormLabels.addproductopistext
+                          </ForwardRef(Typography)>
+                        </ForwardRef(Grid)>
+                      </React.Fragment>,
+                      <React.Fragment>
+                        <ForwardRef(Grid)
+                          item={true}
+                          lg={6}
+                          md={6}
+                          mx={4}
+                          my={1}
+                          sm={8}
+                          xs={8}
+                        />
                         <ForwardRef(Grid)
                           item={true}
                           lg={4}
@@ -2155,6 +2221,180 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing ov
                 >
                   <ForwardRef(Grid)
                     item={true}
+                    lg={12}
+                    md={6}
+                    mx={4}
+                    my={1}
+                    sm={8}
+                    xs={8}
+                  >
+                    <MuiGridRoot
+                      as="div"
+                      className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-8 MuiGrid-grid-sm-8 MuiGrid-grid-md-6 MuiGrid-grid-lg-12"
+                      ownerState={
+                        Object {
+                          "children": <b>
+                            addProductFormLabels.addproductactiontext
+                          </b>,
+                          "columnSpacing": 0,
+                          "columns": 12,
+                          "container": false,
+                          "direction": "row",
+                          "item": true,
+                          "lg": 12,
+                          "md": 6,
+                          "rowSpacing": 0,
+                          "sm": 8,
+                          "sx": Object {
+                            "mx": 4,
+                            "my": 1,
+                          },
+                          "wrap": "wrap",
+                          "xl": false,
+                          "xs": 8,
+                          "zeroMinWidth": false,
+                        }
+                      }
+                      sx={
+                        Object {
+                          "mx": 4,
+                          "my": 1,
+                        }
+                      }
+                    >
+                      <div
+                        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-8 MuiGrid-grid-sm-8 MuiGrid-grid-md-6 MuiGrid-grid-lg-12 css-sdbgdt-MuiGrid-root"
+                      >
+                        <b>
+                          addProductFormLabels.addproductactiontext
+                        </b>
+                      </div>
+                    </MuiGridRoot>
+                  </ForwardRef(Grid)>
+                  <ForwardRef(Grid)
+                    item={true}
+                    lg={12}
+                    mb={3}
+                    md={6}
+                    mx={4}
+                    my={1}
+                    sm={8}
+                    xs={8}
+                  >
+                    <MuiGridRoot
+                      as="div"
+                      className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-8 MuiGrid-grid-sm-8 MuiGrid-grid-md-6 MuiGrid-grid-lg-12"
+                      ownerState={
+                        Object {
+                          "children": <ForwardRef(Typography)
+                            className="opis-rack-info-text"
+                            color="#000000DE"
+                            pb={1}
+                            pl={2}
+                            pt={1}
+                            px={1}
+                            variant="h5"
+                          >
+                            addProductFormLabels.addproductopistext
+                          </ForwardRef(Typography)>,
+                          "columnSpacing": 0,
+                          "columns": 12,
+                          "container": false,
+                          "direction": "row",
+                          "item": true,
+                          "lg": 12,
+                          "md": 6,
+                          "rowSpacing": 0,
+                          "sm": 8,
+                          "sx": Object {
+                            "mb": 3,
+                            "mx": 4,
+                            "my": 1,
+                          },
+                          "wrap": "wrap",
+                          "xl": false,
+                          "xs": 8,
+                          "zeroMinWidth": false,
+                        }
+                      }
+                      sx={
+                        Object {
+                          "mb": 3,
+                          "mx": 4,
+                          "my": 1,
+                        }
+                      }
+                    >
+                      <div
+                        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-8 MuiGrid-grid-sm-8 MuiGrid-grid-md-6 MuiGrid-grid-lg-12 css-mz80vw-MuiGrid-root"
+                      >
+                        <ForwardRef(Typography)
+                          className="opis-rack-info-text"
+                          color="#000000DE"
+                          pb={1}
+                          pl={2}
+                          pt={1}
+                          px={1}
+                          variant="h5"
+                        >
+                          <MuiTypographyRoot
+                            as="h5"
+                            className="MuiTypography-root MuiTypography-h5 opis-rack-info-text"
+                            ownerState={
+                              Object {
+                                "align": "inherit",
+                                "children": "addProductFormLabels.addproductopistext",
+                                "className": "opis-rack-info-text",
+                                "color": "#000000DE",
+                                "component": undefined,
+                                "gutterBottom": false,
+                                "noWrap": false,
+                                "paragraph": false,
+                                "sx": Object {
+                                  "color": "#000000DE",
+                                  "pb": 1,
+                                  "pl": 2,
+                                  "pt": 1,
+                                  "px": 1,
+                                },
+                                "variant": "h5",
+                                "variantMapping": Object {
+                                  "body1": "p",
+                                  "body2": "p",
+                                  "h1": "h1",
+                                  "h2": "h2",
+                                  "h3": "h3",
+                                  "h4": "h4",
+                                  "h5": "h5",
+                                  "h6": "h6",
+                                  "inherit": "p",
+                                  "subtitle1": "h6",
+                                  "subtitle2": "h6",
+                                },
+                              }
+                            }
+                            sx={
+                              Object {
+                                "color": "#000000DE",
+                                "pb": 1,
+                                "pl": 2,
+                                "pt": 1,
+                                "px": 1,
+                              }
+                            }
+                          >
+                            <h5
+                              className="MuiTypography-root MuiTypography-h5 opis-rack-info-text css-17261w9-MuiTypography-root"
+                            >
+                              addProductFormLabels.addproductopistext
+                            </h5>
+                          </MuiTypographyRoot>
+                        </ForwardRef(Typography)>
+                      </div>
+                    </MuiGridRoot>
+                  </ForwardRef(Grid)>
+                  <ForwardRef(Grid)
+                    item={true}
                     lg={6}
                     md={6}
                     mx={4}
@@ -2167,9 +2407,6 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing ov
                       className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-8 MuiGrid-grid-sm-8 MuiGrid-grid-md-6 MuiGrid-grid-lg-6"
                       ownerState={
                         Object {
-                          "children": <b>
-                            Add New Product or select the product from the table to edit the details
-                          </b>,
                           "columnSpacing": 0,
                           "columns": 12,
                           "container": false,
@@ -2198,11 +2435,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing ov
                     >
                       <div
                         className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-8 MuiGrid-grid-sm-8 MuiGrid-grid-md-6 MuiGrid-grid-lg-6 css-2bvao5-MuiGrid-root"
-                      >
-                        <b>
-                          Add New Product or select the product from the table to edit the details
-                        </b>
-                      </div>
+                      />
                     </MuiGridRoot>
                   </ForwardRef(Grid)>
                   <ForwardRef(Grid)

@@ -201,6 +201,114 @@ export const getSupplierPricesHandler = () => {
     });
 };
 
+export const getOpisRackProductDetailsHandler = () => {
+    return rest.get('*/api/customer-service/lots/*/products/*', (req, res, ctx) => {
+        return res(
+            ctx.status(200),
+            ctx.json({
+                "data": {
+                  "lotProduct": {
+                    "applicableProductId": "66baa5ec-b9f0-4081-bb01-e6775f4e0922",
+                    "productNm": "p15",
+                    "manualPriceAmt": 2.923,
+                    "addedPriceAmt": null,
+                    "discountPriceAmt": null,
+                    "totalPricePerGallon": 2.923,
+                    "masterProduct": {
+                      "productId": "684c58ab-d23c-4591-b9fd-41296c7a394e",
+                      "productName": "Diesel "
+                    },
+                    "productType": {
+                      "productGroupCd": "acad56a6-1e77-4f38-92e5-30a656e786fb",
+                      "productGroupNm": "Fuel",
+                      "activeInactiveInd": "Y"
+                    },
+                    "productColor": {
+                      "productIconCd": "cdc00914-dbef-4603-89c5-9f18e4af3ccc",
+                      "productIconNm": "Parrot Green",
+                      "productIconHexCode": "#BED50F",
+                      "activeInactiveInd": "Y"
+                    },
+                    "pricingModel": {
+                      "pricingModelCd": "7f5411c8-ae32-43f6-a05e-146b4d866206",
+                      "pricingModelNm": "OPIS Rack",
+                      "countryCd": "us",
+                      "activeInactiveIndicator": "Y"
+                    },
+                    "opisRackInfo": {
+                      "cityId": 270,
+                      "supplier": "Apex",
+                      "brand": "u",
+                      "productKey": "ulsdwinterred#2dg270apex0uno2n-10iabettendorf",
+                      "actualProduct": "NO2",
+                      "grossPrice": 292.32,
+                      "taxExemption": [
+                        "36b5334a-22eb-45ec-8352-8c151c171b64"
+                      ],
+                      "opisProductName": "ULSD Winter Red #2"
+                    }
+                  }
+                },
+                "error": null
+              })
+        );
+    });
+};
+
+export const getProductsHandler = () => {
+  return rest.get('*/api/customer-service/lots/*/products*', (req, res, ctx) => {
+      return res(
+          ctx.status(200),
+          ctx.json({
+              "data": {
+                "lotProduct": {
+                  "applicableProductId": "66baa5ec-b9f0-4081-bb01-e6775f4e0922",
+                  "productNm": "p15",
+                  "manualPriceAmt": 2.923,
+                  "addedPriceAmt": null,
+                  "discountPriceAmt": null,
+                  "totalPricePerGallon": 2.923,
+                  "masterProduct": {
+                    "productId": "684c58ab-d23c-4591-b9fd-41296c7a394e",
+                    "productName": "Diesel "
+                  },
+                  "productType": {
+                    "productGroupCd": "acad56a6-1e77-4f38-92e5-30a656e786fb",
+                    "productGroupNm": "Fuel",
+                    "activeInactiveInd": "Y"
+                  },
+                  "productColor": {
+                    "productIconCd": "cdc00914-dbef-4603-89c5-9f18e4af3ccc",
+                    "productIconNm": "Parrot Green",
+                    "productIconHexCode": "#BED50F",
+                    "activeInactiveInd": "Y"
+                  },
+                  "pricingModel": {
+                    "pricingModelCd": "7f5411c8-ae32-43f6-a05e-146b4d866206",
+                    "pricingModelNm": "OPIS Rack",
+                    "countryCd": "us",
+                    "activeInactiveIndicator": "Y"
+                  },
+                  "opisRackInfo": {
+                    "cityId": 270,
+                    "supplier": "Apex",
+                    "brand": "u",
+                    "productKey": "ulsdwinterred#2dg270apex0uno2n-10iabettendorf",
+                    "actualProduct": "NO2",
+                    "grossPrice": 292.32,
+                    "taxExemption": [
+                      "36b5334a-22eb-45ec-8352-8c151c171b64"
+                    ],
+                    "opisProductName": "ULSD Winter Red #2"
+                  }
+                }
+              },
+              "error": null
+            })
+      );
+  });
+};
+
 export const getTaxExemptionsListHandler = () => {
     return rest.get('*/api/tax-service/fuel-taxes/types*', (req, res, ctx) => {
         return res(

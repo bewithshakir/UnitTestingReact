@@ -174,9 +174,12 @@ export const DynamicFilterContent: React.FC<IDynamicFilterProps> = ({ provideFil
 
     const formik = useFormik({
         initialValues,
-        onSubmit: (values) => applyFilter(values),
+        onSubmit: (values) => {
+            applyFilter(values);
+        },
         enableReinitialize: true
     });
+
     return <FormikProvider value={formik}>
         <form onSubmit={formik.handleSubmit} onReset={formik.handleReset} className="dynamicForm">
             <Grid container direction="column" className="sContainer">
@@ -247,7 +250,9 @@ export const DynamicFilterContent: React.FC<IDynamicFilterProps> = ({ provideFil
                                             }}
                                         />
                                         : field.fieldType === 'select' ?
+                                        
                                             (field.optionUrlKey && field.optionAPIResponseKey) ?
+                                               
                                                 (< SelectInput field={{
                                                     ...field,
                                                     optionUrlKey: field.optionUrlKey,
@@ -266,6 +271,7 @@ export const DynamicFilterContent: React.FC<IDynamicFilterProps> = ({ provideFil
                                                         onChange={(name, val) => handleSelect(name, val, true)}
                                                         helperText={(touched && error) ? error : undefined}
                                                         error={(touched && error) ? true : false} />
+                                                        
                                                     :
                                                     <Select
                                                         id={field.name}
@@ -284,6 +290,7 @@ export const DynamicFilterContent: React.FC<IDynamicFilterProps> = ({ provideFil
                                                         <b>{t(field.label)}</b >
                                                     </InputLabel>
                                                     {(field.options && field.options.map(opt => {
+                                                        
                                                         return (
                                                             <FormControlLabel key={`${field.name}-${opt.label}`}
                                                                 className="checkbox-field"
@@ -361,6 +368,7 @@ export const DynamicFilterContent: React.FC<IDynamicFilterProps> = ({ provideFil
                     </Grid>
                     <Grid item m={2} mr={6}>
                         <ApplyBtn
+                            data-testid="applyAll"
                             id="applyAll"
                             type="submit"
                             types="save"

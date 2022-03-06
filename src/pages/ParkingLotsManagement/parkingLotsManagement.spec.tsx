@@ -4,11 +4,14 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import { AllParkingLots } from './config';
 
 const queryClient = new QueryClient();
-const mockedNavigate = jest.fn();
+jest.mock("react-router-dom", () => ({
 
-jest.mock('react-router-dom', () => ({
-  ...jest.requireActual('react-router-dom'),
-  useNavigate: () => mockedNavigate,
+  ...jest.requireActual("react-router-dom") as any,
+  useNavigate: () => ({
+    location: {
+      pathname: "/parkingLots"
+    }
+  })
 }));
 
 describe('Given All ParkingLots Landing Page', () => {

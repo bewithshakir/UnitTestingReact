@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { Fragment, useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { FieldArray, FormikProvider, useFormik } from 'formik';
@@ -13,9 +12,9 @@ import Select from '../../../components/UIComponents/Select/SingleSelect';
 import { EditIcon, PlusIcon, DeleteIcon } from '../../../assets/icons';
 import { AddFeeDetailsValidationSchema } from './validations';
 import { useTheme } from '../../../contexts/Theme/Theme.context';
-import { formStatusObjFeeDetails } from '../config';
+import { all, formStatusObjFeeDetails } from '../config';
 import { useAddedCustomerNameStore, useAddedCustomerIdStore, useShowConfirmationDialogBoxStore } from '../../../store';
-import { useGetDeliveryFeeSchd, useAddFeeDetails, useProductsDetailsByLotId } from './queries';
+import { useGetDeliveryFeeSchd, useAddFeeDetails, useProductsDetailsByLotId, useGetFeeDetailsByLotid, useGetLotVehicleTypes, useGetLotAssetTypes, useEditFeeDetails } from './queries';
 import ServiceRule from './serviceRule';
 import { pageDataLimit } from '../../../utils/constants';
 import NoDataFound from '../../../components/UIComponents/DataGird/Nodata';
@@ -27,11 +26,65 @@ interface FormStatusType {
     type: string
 }
 
-interface FormStatusProps {
-    [key: string]: FormStatusType
+interface FeeDetailsFormik {
+    feeName: string
+    delFeeRuleId?: string
+    delFee: number | string
+    delFeeShed: { label: string; value: string }
+    salesTaxExcemption: boolean
+    serviceFeeRules: {
+        misc?: { applicableFeeMiscId?: string },
+        serviceFeeRuleId: string | null
+        serviceFeeCharge: string | number
+        productType: { label: string; value: string }
+        masterProductType: { label: string, value: string }
+        productName: { label: string; value: string }
+        considerAsset: boolean
+        assetType: { label: string; value: string }
+        assetTypeDesc: string
+        vehicleType: { label: string; value: string }
+    }[]
 }
 
-const formStatusProps: FormStatusProps = formStatusObjFeeDetails;
+
+const getApiPayload = (formValues: FeeDetailsFormik, lotId: string, productIds: string[]) => {
+    const apiPayload = {
+        parkingLotId: lotId,
+        feeName: formValues.feeName,
+        deliveryFee: {
+            ...(formValues.delFeeRuleId ? { applicableFeeId: formValues.delFeeRuleId } : {}),
+            fee: formValues.delFee,
+            feeSchedule: formValues.delFeeShed.value,
+            salesTaxExemption: formValues.salesTaxExcemption ? 'Y' : 'N'
+        },
+        serviceFee: [] as any
+    };
+
+    formValues.serviceFeeRules.forEach((rule) => {
+        apiPayload.serviceFee.push({
+            ...(rule.serviceFeeRuleId ? { applicableFeeId: rule.serviceFeeRuleId } : {}),
+            misc: {
+                ...(rule.misc?.applicableFeeMiscId ? { applicableFeeMiscId: rule.misc.applicableFeeMiscId } : {}),
+
+                isAllProductType: rule?.productType?.value?.toLowerCase() === 'all' ? 'Y' : 'N',
+                isAllMasterProduct: rule?.masterProductType?.value?.toLowerCase() === 'all' ? 'Y' : 'N',
+                isAllVehicleType: rule?.vehicleType?.value?.toLowerCase() === 'all' ? 'Y' : 'N',
+                isAllAssetType: rule?.assetType?.value?.toLowerCase() === 'all' ? 'Y' : 'N',
+                productNameId: (rule?.productType?.value?.toLowerCase() === 'all' || rule?.masterProductType?.value?.toLowerCase() === 'all') ? productIds : []
+            },
+            fee: rule.serviceFeeCharge,
+            ...(((rule?.masterProductType?.value?.toLowerCase() !== 'all') && (rule?.productType?.value?.toLowerCase() !== 'all')) ? { applicableProduct: rule?.productName?.value } : null),
+            ...(rule?.assetType?.value && rule?.assetType?.value?.toLowerCase() !== 'all' && { asseType: rule?.assetType?.value }),
+            ...(rule?.assetTypeDesc && { assetInput: rule?.assetTypeDesc }),
+            ...(rule?.vehicleType?.value && rule?.vehicleType?.value?.toLowerCase() !== 'all' && { vehicleType: rule?.vehicleType?.value }),
+
+            isAsset: rule?.considerAsset ? 'Y' : 'N',
+        });
+    });
+    return apiPayload;
+
+};
+
 
 export default function FeeDetails() {
 
@@ -39,9 +92,14 @@ export default function FeeDetails() {
     const { theme } = useTheme();
     const { pathname } = useLocation();
     const a = pathname.split('/');
-   
+
     const lotId = a[5];
     const { data: productListData, isLoading }: any = useProductsDetailsByLotId(lotId, pageDataLimit);
+    const { data: feeDetails } = useGetFeeDetailsByLotid(lotId);
+
+    const { data: vehicleTypeList } = useGetLotVehicleTypes();
+    const { data: assetTypeList } = useGetLotAssetTypes();
+
     const [productCount, setProductCount] = useState(0);
     const [formStatus, setFormStatus] = useState<FormStatusType>({ message: '', type: '' });
     const [apiResposneState, setAPIResponse] = useState(false);
@@ -60,16 +118,16 @@ export default function FeeDetails() {
     const { data: delFeeShedList } = useGetDeliveryFeeSchd();
     const [productIds, setProductIds] = useState([]);
     const { data: productData }: any = useProductsDetailsByLotId(lotId, productCount);
-   
+
 
     useEffect(() => {
-        if (delFeeShedList?.data?.length) {
+        if (delFeeShedList?.data) {
             setFeeShed(delFeeShedList.data.map((obj: any) => ({ label: obj.feeFrequencyNm.trim(), value: obj.feeFrequencyCd.trim() })));
         }
         if (productListData) {
             setProductCount(productListData.data?.pagination?.totalCount);
         }
-        if (productData?.data?.lotProducts?.length) {
+        if (productData?.data?.lotProducts) {
             setProductIds(productData.data.lotProducts.map((obj: any) => obj.applicableProductId));
         }
     }, [delFeeShedList, productListData, productData]);
@@ -87,13 +145,13 @@ export default function FeeDetails() {
         }
     };
 
-    const onAddFeeError = (err: any) => {
+    const onAddEditFeeError = (err: any) => {
         const { data } = err.response;
         resetFormFieldValue(false);
         isFormValidated(false);
         hideDialogBox(false);
         setAPIResponse(true);
-        setFormStatus({ message: data?.error?.message || formStatusProps.error.message, type: 'Error' });
+        setFormStatus({ message: data?.error?.message || formStatusObjFeeDetails.error.message, type: 'Error' });
         formik.setSubmitting(false);
         setDisabled(false);
         setSaveCancelShown(true);
@@ -104,15 +162,26 @@ export default function FeeDetails() {
         hideDialogBox(false);
         setAPIResponse(true);
         isFormValidated(false);
-        setFormStatus(formStatusProps.success);
+        setFormStatus(formStatusObjFeeDetails.success);
         setSaveCancelShown(false);
         setDisabled(true);
+        formik.setSubmitting(false);
+    };
+    const onEditFeeSuccess = () => {
+        resetFormFieldValue(false);
+        hideDialogBox(false);
+        setAPIResponse(true);
+        isFormValidated(false);
+        setFormStatus(formStatusObjFeeDetails.editsuccess);
         setSaveCancelShown(false);
+        setDisabled(true);
+        formik.setSubmitting(false);
     };
 
-    const { mutate: addFeeDetails } = useAddFeeDetails(onAddFeeSuccess, onAddFeeError);
+    const { mutate: addFeeDetails } = useAddFeeDetails(onAddFeeSuccess, onAddEditFeeError);
+    const { mutate: editFeeDetails } = useEditFeeDetails(onEditFeeSuccess, onAddEditFeeError);
 
-    const [initialFormikValues] = useState({
+    const [initialFormikValues, setInitialFormikValue] = useState<FeeDetailsFormik>({
         feeName: '',
         delFee: '',
         delFeeShed: { label: '', value: '' },
@@ -127,15 +196,74 @@ export default function FeeDetails() {
             assetType: { label: '', value: '' },
             assetTypeDesc: '',
             vehicleType: { label: '', value: '' },
-        }
-        ]
-
+        }]
     });
 
+    useEffect(() => {
+        if (feeDetails && feeDetails.data) {
+            setSaveCancelShown(false);
+            setDisabled(true);
+            const feeDetailsData = feeDetails.data;
+            const serviceFeeRules = [];
+            for (const serviceFee of feeDetailsData.serviceFee) {
+                // Here distructure is required in {...all} 
+                const assetType = serviceFee.assetInd === "Y" ? { ...all } : { label: "", value: "" };
+                const vehicleType = serviceFee.assetInd !== "Y" ? { ...all } : { label: "", value: "" };
+
+                const productType = { ...all };
+                const masterProductType = { ...all };
+                const productName = { ...all };
+                if (serviceFee.misc.isAllProductType === "N") {
+                    productType.label = serviceFee.misc?.lotProduct?.productType?.productGroupNm;
+                    productType.value = serviceFee.misc?.lotProduct?.productType?.productGroupCd;
+
+                    if (serviceFee.misc.isAllMasterProduct === "N") {
+                        masterProductType.label = serviceFee.misc?.lotProduct?.masterProduct?.productName;
+                        masterProductType.value = serviceFee.misc?.lotProduct?.masterProduct?.productId;
+                        productName.label = serviceFee.misc?.lotProduct?.productNm;
+                        productName.value = serviceFee.misc?.lotProduct?.applicableProductId;
+                    }
+                }
+
+                if (serviceFee.misc?.isAllAssetType === "N" && serviceFee.assetInd === "Y") {
+                    assetType.value = serviceFee.assetTypeCd || "";
+                    assetType.label = (assetTypeList?.data?.assets?.find((asset: any) => asset.assetId === serviceFee.assetTypeCd)?.assetNm || "").trim();
+                }
+
+                if (serviceFee.misc?.isAllVehicleType === "N" && serviceFee.assetInd !== "Y") {
+                    vehicleType.value = serviceFee.vehicleTypeCd || "";
+                    vehicleType.label = (vehicleTypeList?.data?.find((vehicle: any) => vehicle.vehicleTypeCd === serviceFee.vehicleTypeCd)?.vehicleTypeNm || "").trim();
+                }
+                serviceFeeRules.push({
+                    misc: { applicableFeeMiscId: serviceFee.misc.applicableFeeMiscId },
+                    serviceFeeRuleId: serviceFee.applicableFeeId,
+                    serviceFeeCharge: serviceFee.feeAmt,
+
+                    productType,
+                    masterProductType,
+                    productName,
+
+                    assetTypeDesc: serviceFee.assetTypeOtherText,
+                    considerAsset: serviceFee.assetInd === "Y",
+                    assetType,
+                    vehicleType
+                });
+            }
+            setInitialFormikValue({
+                feeName: feeDetailsData.feeName,
+                delFeeRuleId: feeDetailsData.deliveryFee.applicableFeeId,
+                delFee: feeDetailsData.deliveryFee.feeAmt,
+                delFeeShed: { label: feeDetailsData.deliveryFee.feeFrequency.feeFrequencyNm, value: feeDetailsData.deliveryFee.feeFrequency.feeFrequencyCd },
+                salesTaxExcemption: feeDetailsData.deliveryFee.salesTaxExemptInd === 'Y',
+                serviceFeeRules
+            });
+        }
+    }, [feeDetails, vehicleTypeList, assetTypeList]);
+
     const handleEditButtonClick = () => {
-        // Edit story will take this 
-        // setSaveCancelShown(true);
-        // setDisabled(false);
+        // For Edit only
+        setSaveCancelShown(true);
+        setDisabled(false);
     };
 
     const handleFormDataChange = () => {
@@ -150,39 +278,13 @@ export default function FeeDetails() {
 
     const saveFeeDetails = (formValues: any) => {
         try {
-            const apiPayload = {
-                parkingLotId: lotId,
-                feeName: formValues.feeName,
-                deliveryFee: {
-                    fee: formValues.delFee,
-                    feeSchedule: formValues.delFeeShed.value,
-                    salesTaxExemption: formValues.salesTaxExcemption ? 'Y' : 'N'
-                },
-                serviceFee: [] as any
-            };
-
-            formValues.serviceFeeRules.forEach((rule: any) => {
-                apiPayload.serviceFee.push({
-                    misc: {
-                        isAllProductType: rule?.productType?.value?.toLowerCase() === 'all' ? 'Y' : 'N',
-                        isAllMasterProduct: rule?.masterProductType?.value?.toLowerCase() === 'all' ? 'Y' : 'N',
-                        isAllVehicleType: rule?.vehicleType?.value?.toLowerCase() === 'all' ? 'Y' : 'N',
-                        isAllAssetType: rule?.assetType?.value?.toLowerCase() === 'all' ? 'Y' : 'N',
-                        productNameId: (rule?.productType?.value?.toLowerCase() === 'all' || rule?.masterProductType?.value?.toLowerCase() === 'all') ? productIds :[]
-                    },
-                    fee: rule.serviceFeeCharge,
-                    ...(((rule?.masterProductType?.value?.toLowerCase() !== 'all') && (rule?.productType?.value?.toLowerCase()  !== 'all')) ? {applicableProduct: rule?.productName?.value} : null),
-                    ...(rule?.assetType?.value && rule?.assetType?.value?.toLowerCase() !== 'all' && {asseType: rule?.assetType?.value}),
-                    ...(rule?.assetTypeDesc && {assetInput: rule?.assetTypeDesc}),
-                    ...(rule?.vehicleType?.value && rule?.vehicleType?.value?.toLowerCase() !== 'all' && {vehicleType: rule?.vehicleType?.value}),
-                    
-                    isAsset: rule?.considerAsset ? 'Y' : 'N',
-                });
-            });
-            addFeeDetails(apiPayload);
-
+            if (feeDetails && feeDetails.data) {
+                editFeeDetails(getApiPayload(formValues, lotId, productIds));
+            } else {
+                addFeeDetails(getApiPayload(formValues, lotId, productIds));
+            }
         } catch (error) {
-            setFormStatus(formStatusProps.error);
+            setFormStatus(formStatusObjFeeDetails.error);
         }
     };
 
@@ -197,8 +299,8 @@ export default function FeeDetails() {
 
     const isAddServiceFeeRuleDisabled = () => {
         if ((formik.values.serviceFeeRules.length < 10 && !isDisabled)) {
-            if (formik?.values?.serviceFeeRules[0]?.productType?.value?.toLowerCase() === 'all' 
-            && formik?.values?.serviceFeeRules[0]?.vehicleType?.value?.toLowerCase() === 'all') {
+            if (formik?.values?.serviceFeeRules[0]?.productType?.value?.toLowerCase() === 'all'
+                && formik?.values?.serviceFeeRules[0]?.vehicleType?.value?.toLowerCase() === 'all') {
                 return true;
             } else {
                 return false;
@@ -207,7 +309,7 @@ export default function FeeDetails() {
         return true;
     };
 
-    const addFeeRule = (event:any, fieldArr: any) => {
+    const addFeeRule = (event: any, fieldArr: any) => {
         if (!isAddServiceFeeRuleDisabled()) {
             fieldArr.push({
                 serviceFeeCharge: '',
@@ -219,7 +321,7 @@ export default function FeeDetails() {
                 assetTypeDesc: '',
                 vehicleType: { label: '', value: '' },
             });
-        }else{
+        } else {
             event.preventDefault();
         }
     };
@@ -230,14 +332,14 @@ export default function FeeDetails() {
 
     return (
         <Fragment>
-            {isLoading && <Loader/>}
-            {!isLoading && ( productCount === 0 ? (<Grid item md={12} xs={12}>
+            {isLoading && <Loader />}
+            {!isLoading && (productCount === 0 ? (<Grid item md={12} xs={12}>
                 <Container maxWidth="lg" className="page-container fee-details">
                     <Grid container mt={1}>
-                        <NoDataFound msgLine2={t("FeeDetails.noDataMsg")}/>
+                        <NoDataFound msgLine2={t("FeeDetails.noDataMsg")} />
                     </Grid>
                 </Container>
-            </Grid> ) : (
+            </Grid>) : (
                 <FormikProvider value={formik}>
                     <form onSubmit={formik.handleSubmit} onBlur={handleFormDataChange} id="form">
                         <Grid item md={12} xs={12}>
@@ -278,7 +380,7 @@ export default function FeeDetails() {
                                     </Grid>
                                     <Grid item pt={2.5}>
                                         <Typography variant="h3" component="h3" gutterBottom className="left-heading fw-bold" mb={1}>
-                                                {t("FeeDetails.deliveryFeehead")}
+                                            {t("FeeDetails.deliveryFeehead")}
                                         </Typography>
                                     </Grid>
                                     <Grid container item md={12} mt={2} mb={1} pt={0.5}>
@@ -333,8 +435,7 @@ export default function FeeDetails() {
                                                             <Typography variant="h3" component="h3" gutterBottom className="left-heading fw-bold" mb={1}>
                                                                 {t("FeeDetails.serviceFeeRule") + ' ' + (index + 1) + ' :'}
                                                                 {index !== 0 && (
-                                                                    <DeleteIcon color="var(--Tertiary)" height={16} onClick={() => (!formik.values.serviceFeeRules[index].serviceFeeRuleId) && deleteFeeRule(index, arr)}
-                                                                        className='deleteBtn' />
+                                                                    <DeleteIcon color="var(--Tertiary)" height={16} onClick={() => (!formik.values.serviceFeeRules[index].serviceFeeRuleId) && deleteFeeRule(index, arr)} className={`deleteBtn${isDisabled ? "" : " enabled"}`} />
                                                                 )}
                                                             </Typography>
                                                         </Grid>
@@ -344,7 +445,7 @@ export default function FeeDetails() {
                                                 <Grid item md={12} mt={2} mb={4}>
                                                     <Link
                                                         variant="body2"
-                                                        
+
                                                         className={`add-link  ${isAddServiceFeeRuleDisabled() && "add-link disabled-text-link"}`}
                                                         onClick={(event: any) => addFeeRule(event, arr)}
                                                     >

@@ -6,50 +6,27 @@ import { CloseIcon } from '../../../assets/icons';
 import './RightInfoPanel.style.scss';
 import { useTheme } from '../../../contexts/Theme/Theme.context';
 import { useNavigate } from 'react-router-dom';
-import {
-  useAddedCustomerIdStore,
-  useAddedCustomerNameStore,
-} from '../../../store';
 
 interface InfoPanelProps {
   headingText: string;
   panelType: string;
-  info: any | null;
-  idStrForEdit?: string;
+  editURL?: string;
   nameStrForEdit?: string;
   onClose: (...args: any[]) => void;
-  category?: 'customer' | 'lot';
 }
 export const PanelHeader: React.FC<InfoPanelProps> = ({
   headingText,
   panelType,
   onClose,
-  idStrForEdit,
-  nameStrForEdit,
-  category,
+  editURL,
 }) => {
   const { theme } = useTheme();
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const setPageCustomerName = useAddedCustomerNameStore(
-    (state) => state.setCustomerName
-  );
-  setPageCustomerName(nameStrForEdit ? nameStrForEdit : '');
-  const addedCustomerId = useAddedCustomerIdStore((state) => state.customerId);
 
   const navigateToViewEditPage = () => {
-    switch (category) {
-      case 'customer':
-        navigate(`/customer/viewCustomer/${idStrForEdit ? idStrForEdit : ''}`);
-        break;
-
-      case 'lot':
-        navigate(
-          `/customer/${addedCustomerId}/parkingLots/viewLot/${
-            idStrForEdit ? idStrForEdit : ''
-          }`
-        );
-        break;
+    if (editURL) {
+      navigate(editURL);
     }
   };
 
@@ -69,6 +46,7 @@ export const PanelHeader: React.FC<InfoPanelProps> = ({
             <h2>{t(headingText)}</h2>
             {panelType === 'info-view' && (
               <DataGridActionsMenu
+                disablePortal
                 options={[
                   {
                     label: t('right-info-panel.settings.view & edit details'),
@@ -78,7 +56,7 @@ export const PanelHeader: React.FC<InfoPanelProps> = ({
               />
             )}
             {panelType === 'dynamic-filter' && (
-              <IconButton edge='start' onClick={onClose}>
+              <IconButton edge='start' onClick={onClose} data-testid="closeIcon">
                 <CloseIcon
                   className='info_panel_close_icon'
                   color='var(--White)'

@@ -14,6 +14,7 @@ exports[`Given Sortby Menu on ParkingLot Landing Page Render Sortby Menu 1`] = `
   <ForwardRef(Popper)
     anchorEl={null}
     className="sortby-popper"
+    data-testid="sortby-dropdown"
     disablePortal={true}
     open={false}
     placement="bottom-start"
@@ -1177,6 +1178,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                               "field": "fuelStatus",
                               "label": "FUEL",
                               "type": "icons",
+                              "width": "200px",
                             },
                             Object {
                               "field": "vehicles",
@@ -1312,11 +1314,9 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                         storeKey="parkingLot"
                       />
                       <RightInfoPanel
-                        category="lot"
+                        editURL=""
                         headingText=""
-                        idStrForEdit=""
                         info={Object {}}
-                        nameStrForEdit=""
                         onClose={[Function]}
                         open={false}
                         panelType="info-view"
@@ -2070,6 +2070,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                                 </button>
                                               }
                                               className="sortby-popper"
+                                              data-testid="sortby-dropdown"
                                               disablePortal={true}
                                               open={false}
                                               placement="bottom-start"
@@ -4364,6 +4365,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                   "field": "fuelStatus",
                                   "label": "FUEL",
                                   "type": "icons",
+                                  "width": "200px",
                                 },
                                 Object {
                                   "field": "vehicles",
@@ -4499,11 +4501,9 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                             storeKey="parkingLot"
                           />,
                           <RightInfoPanel
-                            category="lot"
+                            editURL=""
                             headingText=""
-                            idStrForEdit=""
                             info={Object {}}
-                            nameStrForEdit=""
                             onClose={[Function]}
                             open={false}
                             panelType="info-view"
@@ -4599,6 +4599,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                               "field": "fuelStatus",
                               "label": "FUEL",
                               "type": "icons",
+                              "width": "200px",
                             },
                             Object {
                               "field": "vehicles",
@@ -4719,6 +4720,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                           "field": "fuelStatus",
                                           "label": "FUEL",
                                           "type": "icons",
+                                          "width": "200px",
                                         },
                                         Object {
                                           "field": "vehicles",
@@ -4803,6 +4805,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                           "field": "fuelStatus",
                                           "label": "FUEL",
                                           "type": "icons",
+                                          "width": "200px",
                                         },
                                         Object {
                                           "field": "vehicles",
@@ -4874,6 +4877,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                           "field": "fuelStatus",
                                           "label": "FUEL",
                                           "type": "icons",
+                                          "width": "200px",
                                         },
                                         Object {
                                           "field": "vehicles",
@@ -5006,6 +5010,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                                 "field": "fuelStatus",
                                                 "label": "FUEL",
                                                 "type": "icons",
+                                                "width": "200px",
                                               },
                                               Object {
                                                 "field": "vehicles",
@@ -5090,6 +5095,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                                 "field": "fuelStatus",
                                                 "label": "FUEL",
                                                 "type": "icons",
+                                                "width": "200px",
                                               },
                                               Object {
                                                 "field": "vehicles",
@@ -5161,6 +5167,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                                 "field": "fuelStatus",
                                                 "label": "FUEL",
                                                 "type": "icons",
+                                                "width": "200px",
                                               },
                                               Object {
                                                 "field": "vehicles",
@@ -5287,6 +5294,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                             "field": "fuelStatus",
                                             "label": "FUEL",
                                             "type": "icons",
+                                            "width": "200px",
                                           },
                                           Object {
                                             "field": "vehicles",
@@ -5392,7 +5400,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                                   className="header-options"
                                                   size="small"
                                                   sortDirection={false}
-                                                  width="auto"
+                                                  width="200px"
                                                 >
                                                   FUEL
                                                 </ForwardRef(TableCell)>
@@ -5504,7 +5512,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                                           className="header-options"
                                                           size="small"
                                                           sortDirection={false}
-                                                          width="auto"
+                                                          width="200px"
                                                         >
                                                           FUEL
                                                         </ForwardRef(TableCell)>,
@@ -5955,7 +5963,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                                     key="fuelStatus"
                                                     size="small"
                                                     sortDirection={false}
-                                                    width="auto"
+                                                    width="200px"
                                                   >
                                                     <MuiTableCellRoot
                                                       aria-sort={null}
@@ -5972,17 +5980,17 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                                           "sortDirection": false,
                                                           "stickyHeader": true,
                                                           "variant": "head",
-                                                          "width": "auto",
+                                                          "width": "200px",
                                                         }
                                                       }
                                                       scope="col"
-                                                      width="auto"
+                                                      width="200px"
                                                     >
                                                       <th
                                                         aria-sort={null}
                                                         className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeSmall header-options css-1h37f49-MuiTableCell-root"
                                                         scope="col"
-                                                        width="auto"
+                                                        width="200px"
                                                       >
                                                         FUEL
                                                       </th>
@@ -6122,6 +6130,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                             "field": "fuelStatus",
                                             "label": "FUEL",
                                             "type": "icons",
+                                            "width": "200px",
                                           },
                                           Object {
                                             "field": "vehicles",
@@ -6193,6 +6202,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                             "field": "fuelStatus",
                                             "label": "FUEL",
                                             "type": "icons",
+                                            "width": "200px",
                                           },
                                           Object {
                                             "field": "vehicles",
@@ -6728,6 +6738,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                         <ForwardRef(Drawer)
                           anchor="right"
                           className="right_panel_main_class customer_filter_panel"
+                          data-testid="right-drawer"
                           open={false}
                           variant="temporary"
                         >
@@ -6741,6 +6752,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                               }
                             }
                             className="MuiDrawer-root MuiDrawer-modal right_panel_main_class customer_filter_panel"
+                            data-testid="right-drawer"
                             hideBackdrop={false}
                             open={false}
                             ownerState={
@@ -6749,7 +6761,6 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                 "children": Array [
                                   <PanelHeader
                                     headingText="parkingLot.header.filter"
-                                    info={null}
                                     onClose={[Function]}
                                     panelType="dynamic-filter"
                                   />,
@@ -6843,6 +6854,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                   />,
                                 ],
                                 "className": "right_panel_main_class customer_filter_panel",
+                                "data-testid": "right-drawer",
                                 "elevation": 16,
                                 "open": false,
                                 "variant": "temporary",
@@ -6859,6 +6871,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                 }
                               }
                               className="MuiDrawer-root MuiDrawer-modal right_panel_main_class customer_filter_panel css-j8ofbm-MuiDrawer-root"
+                              data-testid="right-drawer"
                               hideBackdrop={false}
                               open={false}
                             >
@@ -6933,6 +6946,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                     },
                                   }
                                 }
+                                data-testid="right-drawer"
                                 disableAutoFocus={false}
                                 disableEnforceFocus={false}
                                 disableEscapeKeyDown={false}
@@ -6950,11 +6964,9 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                         </ForwardRef(Drawer)>
                       </RightInfoPanel>
                       <RightInfoPanel
-                        category="lot"
+                        editURL=""
                         headingText=""
-                        idStrForEdit=""
                         info={Object {}}
-                        nameStrForEdit=""
                         onClose={[Function]}
                         open={false}
                         panelType="info-view"
@@ -6962,21 +6974,20 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                         <ForwardRef(Drawer)
                           anchor="right"
                           className="right_panel_main_class right_info_panel"
+                          data-testid="right-drawer"
                           open={false}
                           variant="persistent"
                         >
                           <MuiDrawerDocked
                             className="MuiDrawer-root MuiDrawer-docked right_panel_main_class right_info_panel"
+                            data-testid="right-drawer"
                             ownerState={
                               Object {
                                 "anchor": "right",
                                 "children": Array [
                                   <PanelHeader
-                                    category="lot"
+                                    editURL=""
                                     headingText=""
-                                    idStrForEdit=""
-                                    info={Object {}}
-                                    nameStrForEdit=""
                                     onClose={[Function]}
                                     panelType="info-view"
                                   />,
@@ -6985,6 +6996,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                   />,
                                 ],
                                 "className": "right_panel_main_class right_info_panel",
+                                "data-testid": "right-drawer",
                                 "elevation": 16,
                                 "open": false,
                                 "variant": "persistent",
@@ -6993,6 +7005,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                           >
                             <div
                               className="MuiDrawer-root MuiDrawer-docked right_panel_main_class right_info_panel css-7ik032-MuiDrawer-docked"
+                              data-testid="right-drawer"
                             >
                               <ForwardRef(Slide)
                                 appear={true}
@@ -7133,11 +7146,8 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                         "anchor": "right",
                                         "children": Array [
                                           <PanelHeader
-                                            category="lot"
+                                            editURL=""
                                             headingText=""
-                                            idStrForEdit=""
-                                            info={Object {}}
-                                            nameStrForEdit=""
                                             onClose={[Function]}
                                             panelType="info-view"
                                           />,
@@ -7146,6 +7156,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                           />,
                                         ],
                                         "className": "right_panel_main_class right_info_panel",
+                                        "data-testid": "right-drawer",
                                         "elevation": 16,
                                         "open": false,
                                         "variant": "persistent",
@@ -7175,11 +7186,8 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                           Object {
                                             "children": Array [
                                               <PanelHeader
-                                                category="lot"
+                                                editURL=""
                                                 headingText=""
-                                                idStrForEdit=""
-                                                info={Object {}}
-                                                nameStrForEdit=""
                                                 onClose={[Function]}
                                                 panelType="info-view"
                                               />,
@@ -7212,11 +7220,8 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                           }
                                         >
                                           <PanelHeader
-                                            category="lot"
+                                            editURL=""
                                             headingText=""
-                                            idStrForEdit=""
-                                            info={Object {}}
-                                            nameStrForEdit=""
                                             onClose={[Function]}
                                             panelType="info-view"
                                           >
@@ -7558,6 +7563,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                                                 
                                                               </h2>
                                                               <ForwardRef
+                                                                disablePortal={true}
                                                                 onSelect={[Function]}
                                                                 options={
                                                                   Array [
@@ -7608,6 +7614,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                                                     
                                                                   </h2>
                                                                   <ForwardRef
+                                                                    disablePortal={true}
                                                                     onSelect={[Function]}
                                                                     options={
                                                                       Array [
@@ -7657,6 +7664,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                                                           
                                                                         </h2>,
                                                                         <ForwardRef
+                                                                          disablePortal={true}
                                                                           onSelect={[Function]}
                                                                           options={
                                                                             Array [
@@ -7825,6 +7833,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                                                     </ForwardRef(IconButton)>
                                                                     <h2 />
                                                                     <ForwardRef
+                                                                      disablePortal={true}
                                                                       onSelect={[Function]}
                                                                       options={
                                                                         Array [
@@ -8070,6 +8079,7 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                                                             </button>
                                                                           }
                                                                           className="datagrid-actions-popper"
+                                                                          disablePortal={true}
                                                                           modifiers={
                                                                             Array [
                                                                               Object {

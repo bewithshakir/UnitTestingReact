@@ -127,6 +127,7 @@
       "lotname_ztoa": "Lot Name Z-A"
     },
     "filter": {
+      "customername": "Customer Name",
       "state": "State",
       "city": "City",
       "zip": "Zip",
@@ -161,7 +162,9 @@
     }
   },
   "dsp": {
-    "search": "Search",
+    "search": "DSP Name",
+    "results found": "results found",
+    "result(s) found": "result(s) found",
     "filterHeader": "Filters",
     "nodataMsg": "Add DSP by clicking on add DSP or any related sentence."
   },
@@ -269,20 +272,25 @@
   },
   "truckLanding": {
     "addTruck": "ADD TRUCK",
-    "search": "Search",
+    "search": "Truck Name/License/VIN",
     "noTrucksMsg": "Add Truck by clicking on the  Add Truck button."
   },
-  "addTruckParkingLot": {
-    "title": "Add Truck Parking lot",
-    "form": {
-      "parkingLocationNm": "TRUCK PARKING LOT NAME",
-      "title": "Fill all the mandatory * fields",
-      "addressLine1": "ADDRESS LINE 1",
-      "addressLine2": "ADDRESS LINE 2",
-      "city": "CITY",
-      "state": "STATE",
-      "postalCode": "POSTAL CODE",
-      "editTitle": "Edit Truck Parking lot"
+  "truckParkingLot": {
+    "search": "Truck Parking Lot Name",
+    "results found": "results found",
+    "result(s) found": "result(s) found",
+    "addTruckParkingLot": {
+      "title": "Add Truck Parking lot",
+      "form": {
+        "parkingLocationNm": "TRUCK PARKING LOT NAME",
+        "title": "Fill all the mandatory * fields",
+        "addressLine1": "ADDRESS LINE 1",
+        "addressLine2": "ADDRESS LINE 2",
+        "city": "CITY",
+        "state": "STATE",
+        "postalCode": "POSTAL CODE",
+        "editTitle": "Edit Truck Parking lot"
+      }
     }
   },
   "productManagement": {
@@ -356,7 +364,9 @@
     "citylabel": "City",
     "supplierrackheading": "SUPPLIER PRICE * (Fill all the Mandatory fields to select the price from the filtered list)",
     "supplierpriceheading": "Choose Supplier Price from below list",
-    "supplierpricenodatamsg": "Prices are not available. Please contact the support team."
+    "supplierpricenodatamsg": "Prices are not available. Please contact the support team.",
+    "addproductactiontext": "Add New Product or select the product from the table to edit the details",
+    "addproductopistext": "Fuel prices for Retail and Rack-based products are provided by the Oil Price Information Service (OPIS) are not fixed and are subject to change daily."
   },
   "assetManagement": {
     "asset": "Asset Type",
@@ -425,10 +435,18 @@
     "yes": "Yes"
   },
   "truck": {
+    "sortBy": {
+      "atoz": "Lot Name A-Z",
+      "ztoa": "Lot Name Z-A"
+    },
     "navBar": {
       "overview": "Overview",
       "liveMap": "Live Map",
       "truckPlot": "Truck Parking Lot"
+    },
+    "filterForm": {
+      "state": "State",
+      "city": "City"
     }
   },
   "addTruckFormLabels": {
@@ -448,6 +466,11 @@
     "addAdditionalTank": "Add Additional Tank",
     "tank": "Tank",
     "tankDetails": "Tank Details",
-    "fillDetailsTitle": "Fill all the Mandatory * fields"
+    "fillDetailsTitle": "Fill all the Mandatory * fields",
+    "editTruck": "Edit Truck",
+    "sortBy": {
+      "truckname_atoz": "Truck Name A-Z",
+      "truckname_ztoa": "Truck Name Z-A"
+    }
   }
 }

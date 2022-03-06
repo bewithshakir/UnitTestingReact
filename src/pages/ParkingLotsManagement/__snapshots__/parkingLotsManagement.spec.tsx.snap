@@ -934,6 +934,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                               "field": "fuelStatus",
                               "label": "FUEL",
                               "type": "icons",
+                              "width": "210px",
                             },
                             Object {
                               "field": "vehicles",
@@ -970,6 +971,23 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                         fields={
                           Array [
                             Object {
+                              "fieldType": "dateRange",
+                              "initialValue": Array [
+                                null,
+                                null,
+                              ],
+                              "label": "Date",
+                              "name": "date",
+                            },
+                            Object {
+                              "fieldType": "select",
+                              "initialValue": Array [],
+                              "label": "parkingLotManagement.filter.customername",
+                              "name": "filterCustomer",
+                              "optionAPIResponseKey": "customernames",
+                              "optionUrlKey": "parkingLotManagementFilter",
+                            },
+                            Object {
                               "fieldType": "select",
                               "initialValue": Array [],
                               "label": "parkingLotManagement.filter.state",
@@ -989,7 +1007,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                               "fieldType": "select",
                               "initialValue": Array [],
                               "label": "parkingLotManagement.filter.zip",
-                              "name": "zip",
+                              "name": "postal",
                               "optionAPIResponseKey": "zipcode",
                               "optionUrlKey": "parkingLotManagementFilter",
                             },
@@ -997,7 +1015,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                               "fieldType": "select",
                               "initialValue": Array [],
                               "label": "parkingLotManagement.filter.wallet status",
-                              "name": "wallet status",
+                              "name": "walletStatus",
                               "optionAPIResponseKey": "walletStatus",
                               "optionUrlKey": "parkingLotManagementFilter",
                             },
@@ -1005,18 +1023,25 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                               "fieldType": "select",
                               "initialValue": Array [],
                               "label": "parkingLotManagement.filter.fuel type",
-                              "name": "fuel type",
+                              "name": "filterProduct",
                               "optionAPIResponseKey": "fuelType",
                               "optionUrlKey": "parkingLotManagementFilter",
                             },
                           ]
                         }
-                        headingText="parkingLotManagement.filterHeader"
+                        headingText="customer-filter-panel.header.filter"
                         onClose={[Function]}
                         open={false}
                         panelType="dynamic-filter"
                         provideFilterParams={[Function]}
-                        storeKey="parkingLotManagementFilter"
+                        storeKey="customerFilter"
+                      />
+                      <RightInfoPanel
+                        headingText=""
+                        info="info"
+                        onClose={[Function]}
+                        open={false}
+                        panelType="info-view"
                       />
                     </ForwardRef(Grid)>,
                   ],
@@ -1748,6 +1773,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                             <ForwardRef(Popper)
                                               anchorEl={null}
                                               className="sortby-popper"
+                                              data-testid="sortby-dropdown"
                                               disablePortal={true}
                                               open={false}
                                               placement="bottom-start"
@@ -3985,6 +4011,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                   "field": "fuelStatus",
                                   "label": "FUEL",
                                   "type": "icons",
+                                  "width": "210px",
                                 },
                                 Object {
                                   "field": "vehicles",
@@ -4021,6 +4048,23 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                             fields={
                               Array [
                                 Object {
+                                  "fieldType": "dateRange",
+                                  "initialValue": Array [
+                                    null,
+                                    null,
+                                  ],
+                                  "label": "Date",
+                                  "name": "date",
+                                },
+                                Object {
+                                  "fieldType": "select",
+                                  "initialValue": Array [],
+                                  "label": "parkingLotManagement.filter.customername",
+                                  "name": "filterCustomer",
+                                  "optionAPIResponseKey": "customernames",
+                                  "optionUrlKey": "parkingLotManagementFilter",
+                                },
+                                Object {
                                   "fieldType": "select",
                                   "initialValue": Array [],
                                   "label": "parkingLotManagement.filter.state",
@@ -4040,7 +4084,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                   "fieldType": "select",
                                   "initialValue": Array [],
                                   "label": "parkingLotManagement.filter.zip",
-                                  "name": "zip",
+                                  "name": "postal",
                                   "optionAPIResponseKey": "zipcode",
                                   "optionUrlKey": "parkingLotManagementFilter",
                                 },
@@ -4048,7 +4092,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                   "fieldType": "select",
                                   "initialValue": Array [],
                                   "label": "parkingLotManagement.filter.wallet status",
-                                  "name": "wallet status",
+                                  "name": "walletStatus",
                                   "optionAPIResponseKey": "walletStatus",
                                   "optionUrlKey": "parkingLotManagementFilter",
                                 },
@@ -4056,18 +4100,25 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                   "fieldType": "select",
                                   "initialValue": Array [],
                                   "label": "parkingLotManagement.filter.fuel type",
-                                  "name": "fuel type",
+                                  "name": "filterProduct",
                                   "optionAPIResponseKey": "fuelType",
                                   "optionUrlKey": "parkingLotManagementFilter",
                                 },
                               ]
                             }
-                            headingText="parkingLotManagement.filterHeader"
+                            headingText="customer-filter-panel.header.filter"
                             onClose={[Function]}
                             open={false}
                             panelType="dynamic-filter"
                             provideFilterParams={[Function]}
-                            storeKey="parkingLotManagementFilter"
+                            storeKey="customerFilter"
+                          />,
+                          <RightInfoPanel
+                            headingText=""
+                            info="info"
+                            onClose={[Function]}
+                            open={false}
+                            panelType="info-view"
                           />,
                         ],
                         "columnSpacing": 0,
@@ -4179,6 +4230,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                               "field": "fuelStatus",
                               "label": "FUEL",
                               "type": "icons",
+                              "width": "210px",
                             },
                             Object {
                               "field": "vehicles",
@@ -4307,6 +4359,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                           "field": "fuelStatus",
                                           "label": "FUEL",
                                           "type": "icons",
+                                          "width": "210px",
                                         },
                                         Object {
                                           "field": "vehicles",
@@ -4409,6 +4462,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                           "field": "fuelStatus",
                                           "label": "FUEL",
                                           "type": "icons",
+                                          "width": "210px",
                                         },
                                         Object {
                                           "field": "vehicles",
@@ -4499,6 +4553,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                           "field": "fuelStatus",
                                           "label": "FUEL",
                                           "type": "icons",
+                                          "width": "210px",
                                         },
                                         Object {
                                           "field": "vehicles",
@@ -4639,6 +4694,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                 "field": "fuelStatus",
                                                 "label": "FUEL",
                                                 "type": "icons",
+                                                "width": "210px",
                                               },
                                               Object {
                                                 "field": "vehicles",
@@ -4741,6 +4797,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                 "field": "fuelStatus",
                                                 "label": "FUEL",
                                                 "type": "icons",
+                                                "width": "210px",
                                               },
                                               Object {
                                                 "field": "vehicles",
@@ -4831,6 +4888,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                 "field": "fuelStatus",
                                                 "label": "FUEL",
                                                 "type": "icons",
+                                                "width": "210px",
                                               },
                                               Object {
                                                 "field": "vehicles",
@@ -4965,6 +5023,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                             "field": "fuelStatus",
                                             "label": "FUEL",
                                             "type": "icons",
+                                            "width": "210px",
                                           },
                                           Object {
                                             "field": "vehicles",
@@ -5087,7 +5146,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                   className="header-options"
                                                   size="small"
                                                   sortDirection={false}
-                                                  width="auto"
+                                                  width="210px"
                                                 >
                                                   FUEL
                                                 </ForwardRef(TableCell)>
@@ -5217,7 +5276,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                           className="header-options"
                                                           size="small"
                                                           sortDirection={false}
-                                                          width="auto"
+                                                          width="210px"
                                                         >
                                                           FUEL
                                                         </ForwardRef(TableCell)>,
@@ -5636,7 +5695,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                     key="fuelStatus"
                                                     size="small"
                                                     sortDirection={false}
-                                                    width="auto"
+                                                    width="210px"
                                                   >
                                                     <MuiTableCellRoot
                                                       aria-sort={null}
@@ -5653,17 +5712,17 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                           "sortDirection": false,
                                                           "stickyHeader": true,
                                                           "variant": "head",
-                                                          "width": "auto",
+                                                          "width": "210px",
                                                         }
                                                       }
                                                       scope="col"
-                                                      width="auto"
+                                                      width="210px"
                                                     >
                                                       <th
                                                         aria-sort={null}
                                                         className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeSmall header-options css-1h37f49-MuiTableCell-root"
                                                         scope="col"
-                                                        width="auto"
+                                                        width="210px"
                                                       >
                                                         FUEL
                                                       </th>
@@ -5822,6 +5881,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                             "field": "fuelStatus",
                                             "label": "FUEL",
                                             "type": "icons",
+                                            "width": "210px",
                                           },
                                           Object {
                                             "field": "vehicles",
@@ -5912,6 +5972,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                             "field": "fuelStatus",
                                             "label": "FUEL",
                                             "type": "icons",
+                                            "width": "210px",
                                           },
                                           Object {
                                             "field": "vehicles",
@@ -6346,6 +6407,23 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                         fields={
                           Array [
                             Object {
+                              "fieldType": "dateRange",
+                              "initialValue": Array [
+                                null,
+                                null,
+                              ],
+                              "label": "Date",
+                              "name": "date",
+                            },
+                            Object {
+                              "fieldType": "select",
+                              "initialValue": Array [],
+                              "label": "parkingLotManagement.filter.customername",
+                              "name": "filterCustomer",
+                              "optionAPIResponseKey": "customernames",
+                              "optionUrlKey": "parkingLotManagementFilter",
+                            },
+                            Object {
                               "fieldType": "select",
                               "initialValue": Array [],
                               "label": "parkingLotManagement.filter.state",
@@ -6365,7 +6443,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                               "fieldType": "select",
                               "initialValue": Array [],
                               "label": "parkingLotManagement.filter.zip",
-                              "name": "zip",
+                              "name": "postal",
                               "optionAPIResponseKey": "zipcode",
                               "optionUrlKey": "parkingLotManagementFilter",
                             },
@@ -6373,7 +6451,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                               "fieldType": "select",
                               "initialValue": Array [],
                               "label": "parkingLotManagement.filter.wallet status",
-                              "name": "wallet status",
+                              "name": "walletStatus",
                               "optionAPIResponseKey": "walletStatus",
                               "optionUrlKey": "parkingLotManagementFilter",
                             },
@@ -6381,22 +6459,23 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                               "fieldType": "select",
                               "initialValue": Array [],
                               "label": "parkingLotManagement.filter.fuel type",
-                              "name": "fuel type",
+                              "name": "filterProduct",
                               "optionAPIResponseKey": "fuelType",
                               "optionUrlKey": "parkingLotManagementFilter",
                             },
                           ]
                         }
-                        headingText="parkingLotManagement.filterHeader"
+                        headingText="customer-filter-panel.header.filter"
                         onClose={[Function]}
                         open={false}
                         panelType="dynamic-filter"
                         provideFilterParams={[Function]}
-                        storeKey="parkingLotManagementFilter"
+                        storeKey="customerFilter"
                       >
                         <ForwardRef(Drawer)
                           anchor="right"
                           className="right_panel_main_class customer_filter_panel"
+                          data-testid="right-drawer"
                           open={false}
                           variant="temporary"
                         >
@@ -6410,6 +6489,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                               }
                             }
                             className="MuiDrawer-root MuiDrawer-modal right_panel_main_class customer_filter_panel"
+                            data-testid="right-drawer"
                             hideBackdrop={false}
                             open={false}
                             ownerState={
@@ -6417,14 +6497,30 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                 "anchor": "right",
                                 "children": Array [
                                   <PanelHeader
-                                    headingText="parkingLotManagement.filterHeader"
-                                    info={null}
+                                    headingText="customer-filter-panel.header.filter"
                                     onClose={[Function]}
                                     panelType="dynamic-filter"
                                   />,
                                   <DynamicFilterContent
                                     fields={
                                       Array [
+                                        Object {
+                                          "fieldType": "dateRange",
+                                          "initialValue": Array [
+                                            null,
+                                            null,
+                                          ],
+                                          "label": "Date",
+                                          "name": "date",
+                                        },
+                                        Object {
+                                          "fieldType": "select",
+                                          "initialValue": Array [],
+                                          "label": "parkingLotManagement.filter.customername",
+                                          "name": "filterCustomer",
+                                          "optionAPIResponseKey": "customernames",
+                                          "optionUrlKey": "parkingLotManagementFilter",
+                                        },
                                         Object {
                                           "fieldType": "select",
                                           "initialValue": Array [],
@@ -6445,7 +6541,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                           "fieldType": "select",
                                           "initialValue": Array [],
                                           "label": "parkingLotManagement.filter.zip",
-                                          "name": "zip",
+                                          "name": "postal",
                                           "optionAPIResponseKey": "zipcode",
                                           "optionUrlKey": "parkingLotManagementFilter",
                                         },
@@ -6453,7 +6549,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                           "fieldType": "select",
                                           "initialValue": Array [],
                                           "label": "parkingLotManagement.filter.wallet status",
-                                          "name": "wallet status",
+                                          "name": "walletStatus",
                                           "optionAPIResponseKey": "walletStatus",
                                           "optionUrlKey": "parkingLotManagementFilter",
                                         },
@@ -6461,7 +6557,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                           "fieldType": "select",
                                           "initialValue": Array [],
                                           "label": "parkingLotManagement.filter.fuel type",
-                                          "name": "fuel type",
+                                          "name": "filterProduct",
                                           "optionAPIResponseKey": "fuelType",
                                           "optionUrlKey": "parkingLotManagementFilter",
                                         },
@@ -6469,10 +6565,11 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                     }
                                     onClose={[Function]}
                                     provideFilterParams={[Function]}
-                                    storeKey="parkingLotManagementFilter"
+                                    storeKey="customerFilter"
                                   />,
                                 ],
                                 "className": "right_panel_main_class customer_filter_panel",
+                                "data-testid": "right-drawer",
                                 "elevation": 16,
                                 "open": false,
                                 "variant": "temporary",
@@ -6489,6 +6586,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                 }
                               }
                               className="MuiDrawer-root MuiDrawer-modal right_panel_main_class customer_filter_panel css-j8ofbm-MuiDrawer-root"
+                              data-testid="right-drawer"
                               hideBackdrop={false}
                               open={false}
                             >
@@ -6563,6 +6661,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                     },
                                   }
                                 }
+                                data-testid="right-drawer"
                                 disableAutoFocus={false}
                                 disableEnforceFocus={false}
                                 disableEscapeKeyDown={false}
@@ -6577,6 +6676,1981 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                               />
                             </ForwardRef(Modal)>
                           </MuiDrawerRoot>
+                        </ForwardRef(Drawer)>
+                      </RightInfoPanel>
+                      <RightInfoPanel
+                        headingText=""
+                        info="info"
+                        onClose={[Function]}
+                        open={false}
+                        panelType="info-view"
+                      >
+                        <ForwardRef(Drawer)
+                          anchor="right"
+                          className="right_panel_main_class right_info_panel"
+                          data-testid="right-drawer"
+                          open={false}
+                          variant="persistent"
+                        >
+                          <MuiDrawerDocked
+                            className="MuiDrawer-root MuiDrawer-docked right_panel_main_class right_info_panel"
+                            data-testid="right-drawer"
+                            ownerState={
+                              Object {
+                                "anchor": "right",
+                                "children": Array [
+                                  <PanelHeader
+                                    headingText=""
+                                    onClose={[Function]}
+                                    panelType="info-view"
+                                  />,
+                                  <InfoViewContent
+                                    info="info"
+                                  />,
+                                ],
+                                "className": "right_panel_main_class right_info_panel",
+                                "data-testid": "right-drawer",
+                                "elevation": 16,
+                                "open": false,
+                                "variant": "persistent",
+                              }
+                            }
+                          >
+                            <div
+                              className="MuiDrawer-root MuiDrawer-docked right_panel_main_class right_info_panel css-7ik032-MuiDrawer-docked"
+                              data-testid="right-drawer"
+                            >
+                              <ForwardRef(Slide)
+                                appear={false}
+                                direction="left"
+                                in={false}
+                                timeout={
+                                  Object {
+                                    "enter": 225,
+                                    "exit": 195,
+                                  }
+                                }
+                              >
+                                <Transition
+                                  appear={false}
+                                  enter={true}
+                                  exit={true}
+                                  in={false}
+                                  mountOnEnter={false}
+                                  nodeRef={
+                                    Object {
+                                      "current": <div
+                                        class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation0 MuiDrawer-paper MuiDrawer-paperAnchorRight MuiDrawer-paperAnchorDockedRight css-18sg6k4-MuiPaper-root-MuiDrawer-paper"
+                                        style="visibility: hidden; webkit-transform: translateX(1024px); transform: translateX(1024px);"
+                                      >
+                                        <div
+                                          class="right_info_panel_header"
+                                        >
+                                          <div
+                                            class="MuiBox-root css-i9gxme"
+                                          >
+                                            <header
+                                              class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionStatic css-hip9hq-MuiPaper-root-MuiAppBar-root"
+                                            >
+                                              <div
+                                                class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-dense css-1h6g46b-MuiToolbar-root"
+                                              >
+                                                <button
+                                                  class="MuiButtonBase-root MuiIconButton-root MuiIconButton-edgeStart MuiIconButton-sizeMedium css-9sors8-MuiButtonBase-root-MuiIconButton-root"
+                                                  tabindex="0"
+                                                  type="button"
+                                                >
+                                                  <svg
+                                                    class="info_panel_close_icon"
+                                                    color="var(--White)"
+                                                    height="1em"
+                                                    viewBox="0 0 20 20"
+                                                    width="1em"
+                                                  >
+                                                    <g
+                                                      data-name="Group 1862"
+                                                    >
+                                                      <path
+                                                        d="M17 1l1.414 1.414-7.293 7.293L18.414 17 17 18.414l-7.293-7.293-7.293 7.293L1 17l7.293-7.293L1 2.414 2.414 1l7.293 7.293z"
+                                                        fill="currentColor"
+                                                      />
+                                                      <path
+                                                        d="M0 0h20v20H0z"
+                                                        data-name="Rectangle 2250"
+                                                        fill="none"
+                                                      />
+                                                    </g>
+                                                  </svg>
+                                                  <span
+                                                    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                                                  />
+                                                </button>
+                                                <h2 />
+                                                <div>
+                                                  <button
+                                                    aria-haspopup="true"
+                                                    aria-label="datagrid actions menu list"
+                                                    class="MuiButtonBase-root MuiButton-root MuiButton-contained btn-grid-action "
+                                                    tabindex="0"
+                                                    type="button"
+                                                  >
+                                                    <span
+                                                      class="MuiButton-label"
+                                                    >
+                                                      <span
+                                                        class="MuiButton-startIcon MuiButton-iconSizeMedium"
+                                                      >
+                                                        <svg
+                                                          aria-hidden="true"
+                                                          class="MuiSvgIcon-root"
+                                                          focusable="false"
+                                                          height="1em"
+                                                          viewBox="0 0 40 40"
+                                                          width="1em"
+                                                        >
+                                                          <path
+                                                            d="M18 27.778A2.222 2.222 0 1120.222 30 2.222 2.222 0 0118 27.778zm0-15.556a2.222 2.222 0 112.222 2.222A2.222 2.222 0 0118 12.222zM18 20a2.222 2.222 0 112.222 2.222A2.222 2.222 0 0118 20z"
+                                                          />
+                                                          <path
+                                                            d="M0 0h40v40H0z"
+                                                            fill="none"
+                                                          />
+                                                        </svg>
+                                                      </span>
+                                                    </span>
+                                                    <span
+                                                      class="MuiTouchRipple-root"
+                                                    />
+                                                  </button>
+                                                </div>
+                                              </div>
+                                            </header>
+                                          </div>
+                                        </div>
+                                        <div
+                                          class="right_info_panel_content"
+                                        >
+                                          <div
+                                            class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-4 css-480o17-MuiGrid-root"
+                                          >
+                                            <div
+                                              class="MuiGrid-root MuiGrid-container MuiGrid-item MuiGrid-spacing-xs-2 MuiGrid-grid-xs-12 css-1yyroxi-MuiGrid-root"
+                                            >
+                                              <div
+                                                class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6 right_info_panel_content_label css-ayy8wd-MuiGrid-root"
+                                              >
+                                                0
+                                              </div>
+                                              <div
+                                                class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6 right_info_panel_content_value css-ayy8wd-MuiGrid-root"
+                                              >
+                                                i
+                                              </div>
+                                            </div>
+                                            <hr
+                                              class="MuiDivider-root MuiDivider-fullWidth right_info_panel_content_item_divider css-9mgopn-MuiDivider-root"
+                                            />
+                                            <div
+                                              class="MuiGrid-root MuiGrid-container MuiGrid-item MuiGrid-spacing-xs-2 MuiGrid-grid-xs-12 css-1yyroxi-MuiGrid-root"
+                                            >
+                                              <div
+                                                class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6 right_info_panel_content_label css-ayy8wd-MuiGrid-root"
+                                              >
+                                                1
+                                              </div>
+                                              <div
+                                                class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6 right_info_panel_content_value css-ayy8wd-MuiGrid-root"
+                                              >
+                                                n
+                                              </div>
+                                            </div>
+                                            <hr
+                                              class="MuiDivider-root MuiDivider-fullWidth right_info_panel_content_item_divider css-9mgopn-MuiDivider-root"
+                                            />
+                                            <div
+                                              class="MuiGrid-root MuiGrid-container MuiGrid-item MuiGrid-spacing-xs-2 MuiGrid-grid-xs-12 css-1yyroxi-MuiGrid-root"
+                                            >
+                                              <div
+                                                class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6 right_info_panel_content_label css-ayy8wd-MuiGrid-root"
+                                              >
+                                                2
+                                              </div>
+                                              <div
+                                                class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6 right_info_panel_content_value css-ayy8wd-MuiGrid-root"
+                                              >
+                                                f
+                                              </div>
+                                            </div>
+                                            <hr
+                                              class="MuiDivider-root MuiDivider-fullWidth right_info_panel_content_item_divider css-9mgopn-MuiDivider-root"
+                                            />
+                                            <div
+                                              class="MuiGrid-root MuiGrid-container MuiGrid-item MuiGrid-spacing-xs-2 MuiGrid-grid-xs-12 css-1yyroxi-MuiGrid-root"
+                                            >
+                                              <div
+                                                class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6 right_info_panel_content_label css-ayy8wd-MuiGrid-root"
+                                              >
+                                                3
+                                              </div>
+                                              <div
+                                                class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6 right_info_panel_content_value css-ayy8wd-MuiGrid-root"
+                                              >
+                                                o
+                                              </div>
+                                            </div>
+                                            <hr
+                                              class="MuiDivider-root MuiDivider-fullWidth right_info_panel_content_item_divider css-9mgopn-MuiDivider-root"
+                                            />
+                                          </div>
+                                        </div>
+                                      </div>,
+                                    }
+                                  }
+                                  onEnter={[Function]}
+                                  onEntered={[Function]}
+                                  onEntering={[Function]}
+                                  onExit={[Function]}
+                                  onExited={[Function]}
+                                  onExiting={[Function]}
+                                  timeout={
+                                    Object {
+                                      "enter": 225,
+                                      "exit": 195,
+                                    }
+                                  }
+                                  unmountOnExit={false}
+                                >
+                                  <MuiDrawerPaper
+                                    className="MuiDrawer-paper MuiDrawer-paperAnchorRight MuiDrawer-paperAnchorDockedRight"
+                                    elevation={0}
+                                    ownerState={
+                                      Object {
+                                        "anchor": "right",
+                                        "children": Array [
+                                          <PanelHeader
+                                            headingText=""
+                                            onClose={[Function]}
+                                            panelType="info-view"
+                                          />,
+                                          <InfoViewContent
+                                            info="info"
+                                          />,
+                                        ],
+                                        "className": "right_panel_main_class right_info_panel",
+                                        "data-testid": "right-drawer",
+                                        "elevation": 16,
+                                        "open": false,
+                                        "variant": "persistent",
+                                      }
+                                    }
+                                    square={true}
+                                    style={
+                                      Object {
+                                        "visibility": "hidden",
+                                      }
+                                    }
+                                  >
+                                    <ForwardRef(Paper)
+                                      className="MuiDrawer-paper MuiDrawer-paperAnchorRight MuiDrawer-paperAnchorDockedRight css-nrxa1x-MuiDrawer-paper"
+                                      elevation={0}
+                                      square={true}
+                                      style={
+                                        Object {
+                                          "visibility": "hidden",
+                                        }
+                                      }
+                                    >
+                                      <MuiPaperRoot
+                                        as="div"
+                                        className="MuiPaper-root MuiPaper-elevation MuiPaper-elevation0 MuiDrawer-paper MuiDrawer-paperAnchorRight MuiDrawer-paperAnchorDockedRight css-nrxa1x-MuiDrawer-paper"
+                                        ownerState={
+                                          Object {
+                                            "children": Array [
+                                              <PanelHeader
+                                                headingText=""
+                                                onClose={[Function]}
+                                                panelType="info-view"
+                                              />,
+                                              <InfoViewContent
+                                                info="info"
+                                              />,
+                                            ],
+                                            "className": "MuiDrawer-paper MuiDrawer-paperAnchorRight MuiDrawer-paperAnchorDockedRight css-nrxa1x-MuiDrawer-paper",
+                                            "component": "div",
+                                            "elevation": 0,
+                                            "square": true,
+                                            "style": Object {
+                                              "visibility": "hidden",
+                                            },
+                                            "variant": "elevation",
+                                          }
+                                        }
+                                        style={
+                                          Object {
+                                            "visibility": "hidden",
+                                          }
+                                        }
+                                      >
+                                        <div
+                                          className="MuiPaper-root MuiPaper-elevation MuiPaper-elevation0 MuiDrawer-paper MuiDrawer-paperAnchorRight MuiDrawer-paperAnchorDockedRight css-18sg6k4-MuiPaper-root-MuiDrawer-paper"
+                                          style={
+                                            Object {
+                                              "visibility": "hidden",
+                                            }
+                                          }
+                                        >
+                                          <PanelHeader
+                                            headingText=""
+                                            onClose={[Function]}
+                                            panelType="info-view"
+                                          >
+                                            <div
+                                              className="right_info_panel_header"
+                                            >
+                                              <ForwardRef(Box)
+                                                sx={
+                                                  Object {
+                                                    "flexGrow": 1,
+                                                  }
+                                                }
+                                              >
+                                                <Styled(div)
+                                                  as="div"
+                                                  className="MuiBox-root"
+                                                  sx={
+                                                    Object {
+                                                      "flexGrow": 1,
+                                                    }
+                                                  }
+                                                  theme={
+                                                    Object {
+                                                      "breakpoints": Object {
+                                                        "between": [Function],
+                                                        "down": [Function],
+                                                        "keys": Array [
+                                                          "xs",
+                                                          "sm",
+                                                          "md",
+                                                          "lg",
+                                                          "xl",
+                                                        ],
+                                                        "only": [Function],
+                                                        "unit": "px",
+                                                        "up": [Function],
+                                                        "values": Object {
+                                                          "lg": 1200,
+                                                          "md": 900,
+                                                          "sm": 600,
+                                                          "xl": 1536,
+                                                          "xs": 0,
+                                                        },
+                                                      },
+                                                      "components": Object {},
+                                                      "direction": "ltr",
+                                                      "mixins": Object {
+                                                        "toolbar": Object {
+                                                          "@media (min-width:0px) and (orientation: landscape)": Object {
+                                                            "minHeight": 48,
+                                                          },
+                                                          "@media (min-width:600px)": Object {
+                                                            "minHeight": 64,
+                                                          },
+                                                          "minHeight": 56,
+                                                        },
+                                                      },
+                                                      "palette": Object {
+                                                        "action": Object {
+                                                          "activatedOpacity": 0.12,
+                                                          "active": "rgba(0, 0, 0, 0.54)",
+                                                          "disabled": "rgba(0, 0, 0, 0.26)",
+                                                          "disabledBackground": "rgba(0, 0, 0, 0.12)",
+                                                          "disabledOpacity": 0.38,
+                                                          "focus": "rgba(0, 0, 0, 0.12)",
+                                                          "focusOpacity": 0.12,
+                                                          "hover": "rgba(0, 0, 0, 0.04)",
+                                                          "hoverOpacity": 0.04,
+                                                          "selected": "rgba(0, 0, 0, 0.08)",
+                                                          "selectedOpacity": 0.08,
+                                                        },
+                                                        "augmentColor": [Function],
+                                                        "background": Object {
+                                                          "default": "#fff",
+                                                          "paper": "#fff",
+                                                        },
+                                                        "common": Object {
+                                                          "black": "#000",
+                                                          "white": "#fff",
+                                                        },
+                                                        "contrastThreshold": 3,
+                                                        "divider": "rgba(0, 0, 0, 0.12)",
+                                                        "error": Object {
+                                                          "contrastText": "#fff",
+                                                          "dark": "#c62828",
+                                                          "light": "#ef5350",
+                                                          "main": "#d32f2f",
+                                                        },
+                                                        "getContrastText": [Function],
+                                                        "grey": Object {
+                                                          "100": "#f5f5f5",
+                                                          "200": "#eeeeee",
+                                                          "300": "#e0e0e0",
+                                                          "400": "#bdbdbd",
+                                                          "50": "#fafafa",
+                                                          "500": "#9e9e9e",
+                                                          "600": "#757575",
+                                                          "700": "#616161",
+                                                          "800": "#424242",
+                                                          "900": "#212121",
+                                                          "A100": "#f5f5f5",
+                                                          "A200": "#eeeeee",
+                                                          "A400": "#bdbdbd",
+                                                          "A700": "#616161",
+                                                        },
+                                                        "info": Object {
+                                                          "contrastText": "#fff",
+                                                          "dark": "#01579b",
+                                                          "light": "#03a9f4",
+                                                          "main": "#0288d1",
+                                                        },
+                                                        "mode": "light",
+                                                        "primary": Object {
+                                                          "contrastText": "#fff",
+                                                          "dark": "#1565c0",
+                                                          "light": "#42a5f5",
+                                                          "main": "#1976d2",
+                                                        },
+                                                        "secondary": Object {
+                                                          "contrastText": "#fff",
+                                                          "dark": "#7b1fa2",
+                                                          "light": "#ba68c8",
+                                                          "main": "#9c27b0",
+                                                        },
+                                                        "success": Object {
+                                                          "contrastText": "#fff",
+                                                          "dark": "#1b5e20",
+                                                          "light": "#4caf50",
+                                                          "main": "#2e7d32",
+                                                        },
+                                                        "text": Object {
+                                                          "disabled": "rgba(0, 0, 0, 0.38)",
+                                                          "primary": "rgba(0, 0, 0, 0.87)",
+                                                          "secondary": "rgba(0, 0, 0, 0.6)",
+                                                        },
+                                                        "tonalOffset": 0.2,
+                                                        "warning": Object {
+                                                          "contrastText": "#fff",
+                                                          "dark": "#e65100",
+                                                          "light": "#ff9800",
+                                                          "main": "#ED6C02",
+                                                        },
+                                                      },
+                                                      "shadows": Array [
+                                                        "none",
+                                                        "0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12)",
+                                                        "0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12)",
+                                                        "0px 3px 3px -2px rgba(0,0,0,0.2),0px 3px 4px 0px rgba(0,0,0,0.14),0px 1px 8px 0px rgba(0,0,0,0.12)",
+                                                        "0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12)",
+                                                        "0px 3px 5px -1px rgba(0,0,0,0.2),0px 5px 8px 0px rgba(0,0,0,0.14),0px 1px 14px 0px rgba(0,0,0,0.12)",
+                                                        "0px 3px 5px -1px rgba(0,0,0,0.2),0px 6px 10px 0px rgba(0,0,0,0.14),0px 1px 18px 0px rgba(0,0,0,0.12)",
+                                                        "0px 4px 5px -2px rgba(0,0,0,0.2),0px 7px 10px 1px rgba(0,0,0,0.14),0px 2px 16px 1px rgba(0,0,0,0.12)",
+                                                        "0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12)",
+                                                        "0px 5px 6px -3px rgba(0,0,0,0.2),0px 9px 12px 1px rgba(0,0,0,0.14),0px 3px 16px 2px rgba(0,0,0,0.12)",
+                                                        "0px 6px 6px -3px rgba(0,0,0,0.2),0px 10px 14px 1px rgba(0,0,0,0.14),0px 4px 18px 3px rgba(0,0,0,0.12)",
+                                                        "0px 6px 7px -4px rgba(0,0,0,0.2),0px 11px 15px 1px rgba(0,0,0,0.14),0px 4px 20px 3px rgba(0,0,0,0.12)",
+                                                        "0px 7px 8px -4px rgba(0,0,0,0.2),0px 12px 17px 2px rgba(0,0,0,0.14),0px 5px 22px 4px rgba(0,0,0,0.12)",
+                                                        "0px 7px 8px -4px rgba(0,0,0,0.2),0px 13px 19px 2px rgba(0,0,0,0.14),0px 5px 24px 4px rgba(0,0,0,0.12)",
+                                                        "0px 7px 9px -4px rgba(0,0,0,0.2),0px 14px 21px 2px rgba(0,0,0,0.14),0px 5px 26px 4px rgba(0,0,0,0.12)",
+                                                        "0px 8px 9px -5px rgba(0,0,0,0.2),0px 15px 22px 2px rgba(0,0,0,0.14),0px 6px 28px 5px rgba(0,0,0,0.12)",
+                                                        "0px 8px 10px -5px rgba(0,0,0,0.2),0px 16px 24px 2px rgba(0,0,0,0.14),0px 6px 30px 5px rgba(0,0,0,0.12)",
+                                                        "0px 8px 11px -5px rgba(0,0,0,0.2),0px 17px 26px 2px rgba(0,0,0,0.14),0px 6px 32px 5px rgba(0,0,0,0.12)",
+                                                        "0px 9px 11px -5px rgba(0,0,0,0.2),0px 18px 28px 2px rgba(0,0,0,0.14),0px 7px 34px 6px rgba(0,0,0,0.12)",
+                                                        "0px 9px 12px -6px rgba(0,0,0,0.2),0px 19px 29px 2px rgba(0,0,0,0.14),0px 7px 36px 6px rgba(0,0,0,0.12)",
+                                                        "0px 10px 13px -6px rgba(0,0,0,0.2),0px 20px 31px 3px rgba(0,0,0,0.14),0px 8px 38px 7px rgba(0,0,0,0.12)",
+                                                        "0px 10px 13px -6px rgba(0,0,0,0.2),0px 21px 33px 3px rgba(0,0,0,0.14),0px 8px 40px 7px rgba(0,0,0,0.12)",
+                                                        "0px 10px 14px -6px rgba(0,0,0,0.2),0px 22px 35px 3px rgba(0,0,0,0.14),0px 8px 42px 7px rgba(0,0,0,0.12)",
+                                                        "0px 11px 14px -7px rgba(0,0,0,0.2),0px 23px 36px 3px rgba(0,0,0,0.14),0px 9px 44px 8px rgba(0,0,0,0.12)",
+                                                        "0px 11px 15px -7px rgba(0,0,0,0.2),0px 24px 38px 3px rgba(0,0,0,0.14),0px 9px 46px 8px rgba(0,0,0,0.12)",
+                                                      ],
+                                                      "shape": Object {
+                                                        "borderRadius": 4,
+                                                      },
+                                                      "spacing": [Function],
+                                                      "transitions": Object {
+                                                        "create": [Function],
+                                                        "duration": Object {
+                                                          "complex": 375,
+                                                          "enteringScreen": 225,
+                                                          "leavingScreen": 195,
+                                                          "short": 250,
+                                                          "shorter": 200,
+                                                          "shortest": 150,
+                                                          "standard": 300,
+                                                        },
+                                                        "easing": Object {
+                                                          "easeIn": "cubic-bezier(0.4, 0, 1, 1)",
+                                                          "easeInOut": "cubic-bezier(0.4, 0, 0.2, 1)",
+                                                          "easeOut": "cubic-bezier(0.0, 0, 0.2, 1)",
+                                                          "sharp": "cubic-bezier(0.4, 0, 0.6, 1)",
+                                                        },
+                                                        "getAutoHeightDuration": [Function],
+                                                      },
+                                                      "typography": Object {
+                                                        "body1": Object {
+                                                          "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
+                                                          "fontSize": "1rem",
+                                                          "fontWeight": 400,
+                                                          "letterSpacing": "0.00938em",
+                                                          "lineHeight": 1.5,
+                                                        },
+                                                        "body2": Object {
+                                                          "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
+                                                          "fontSize": "0.875rem",
+                                                          "fontWeight": 400,
+                                                          "letterSpacing": "0.01071em",
+                                                          "lineHeight": 1.43,
+                                                        },
+                                                        "button": Object {
+                                                          "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
+                                                          "fontSize": "0.875rem",
+                                                          "fontWeight": 500,
+                                                          "letterSpacing": "0.02857em",
+                                                          "lineHeight": 1.75,
+                                                          "textTransform": "uppercase",
+                                                        },
+                                                        "caption": Object {
+                                                          "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
+                                                          "fontSize": "0.75rem",
+                                                          "fontWeight": 400,
+                                                          "letterSpacing": "0.03333em",
+                                                          "lineHeight": 1.66,
+                                                        },
+                                                        "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
+                                                        "fontSize": 14,
+                                                        "fontWeightBold": 700,
+                                                        "fontWeightLight": 300,
+                                                        "fontWeightMedium": 500,
+                                                        "fontWeightRegular": 400,
+                                                        "h1": Object {
+                                                          "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
+                                                          "fontSize": "6rem",
+                                                          "fontWeight": 300,
+                                                          "letterSpacing": "-0.01562em",
+                                                          "lineHeight": 1.167,
+                                                        },
+                                                        "h2": Object {
+                                                          "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
+                                                          "fontSize": "3.75rem",
+                                                          "fontWeight": 300,
+                                                          "letterSpacing": "-0.00833em",
+                                                          "lineHeight": 1.2,
+                                                        },
+                                                        "h3": Object {
+                                                          "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
+                                                          "fontSize": "3rem",
+                                                          "fontWeight": 400,
+                                                          "letterSpacing": "0em",
+                                                          "lineHeight": 1.167,
+                                                        },
+                                                        "h4": Object {
+                                                          "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
+                                                          "fontSize": "2.125rem",
+                                                          "fontWeight": 400,
+                                                          "letterSpacing": "0.00735em",
+                                                          "lineHeight": 1.235,
+                                                        },
+                                                        "h5": Object {
+                                                          "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
+                                                          "fontSize": "1.5rem",
+                                                          "fontWeight": 400,
+                                                          "letterSpacing": "0em",
+                                                          "lineHeight": 1.334,
+                                                        },
+                                                        "h6": Object {
+                                                          "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
+                                                          "fontSize": "1.25rem",
+                                                          "fontWeight": 500,
+                                                          "letterSpacing": "0.0075em",
+                                                          "lineHeight": 1.6,
+                                                        },
+                                                        "htmlFontSize": 16,
+                                                        "overline": Object {
+                                                          "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
+                                                          "fontSize": "0.75rem",
+                                                          "fontWeight": 400,
+                                                          "letterSpacing": "0.08333em",
+                                                          "lineHeight": 2.66,
+                                                          "textTransform": "uppercase",
+                                                        },
+                                                        "pxToRem": [Function],
+                                                        "subtitle1": Object {
+                                                          "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
+                                                          "fontSize": "1rem",
+                                                          "fontWeight": 400,
+                                                          "letterSpacing": "0.00938em",
+                                                          "lineHeight": 1.75,
+                                                        },
+                                                        "subtitle2": Object {
+                                                          "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
+                                                          "fontSize": "0.875rem",
+                                                          "fontWeight": 500,
+                                                          "letterSpacing": "0.00714em",
+                                                          "lineHeight": 1.57,
+                                                        },
+                                                      },
+                                                      "zIndex": Object {
+                                                        "appBar": 1100,
+                                                        "drawer": 1200,
+                                                        "mobileStepper": 1000,
+                                                        "modal": 1300,
+                                                        "snackbar": 1400,
+                                                        "speedDial": 1050,
+                                                        "tooltip": 1500,
+                                                      },
+                                                    }
+                                                  }
+                                                >
+                                                  <div
+                                                    className="MuiBox-root css-i9gxme"
+                                                  >
+                                                    <ForwardRef(AppBar)
+                                                      position="static"
+                                                    >
+                                                      <MuiAppBarRoot
+                                                        className="MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionStatic"
+                                                        component="header"
+                                                        elevation={4}
+                                                        ownerState={
+                                                          Object {
+                                                            "children": <ForwardRef(Toolbar)
+                                                              sx={
+                                                                Object {
+                                                                  "bgcolor": "#003C88",
+                                                                }
+                                                              }
+                                                              variant="dense"
+                                                            >
+                                                              <ForwardRef(IconButton)
+                                                                edge="start"
+                                                                onClick={[Function]}
+                                                              >
+                                                                <CloseIcon
+                                                                  className="info_panel_close_icon"
+                                                                  color="var(--White)"
+                                                                />
+                                                              </ForwardRef(IconButton)>
+                                                              <h2>
+                                                                
+                                                              </h2>
+                                                              <ForwardRef
+                                                                disablePortal={true}
+                                                                onSelect={[Function]}
+                                                                options={
+                                                                  Array [
+                                                                    Object {
+                                                                      "label": "right-info-panel.settings.view & edit details",
+                                                                    },
+                                                                  ]
+                                                                }
+                                                                showInnerTableMenu={false}
+                                                              />
+                                                            </ForwardRef(Toolbar)>,
+                                                            "color": "primary",
+                                                            "enableColorOnDark": false,
+                                                            "position": "static",
+                                                          }
+                                                        }
+                                                        square={true}
+                                                      >
+                                                        <ForwardRef(Paper)
+                                                          className="MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionStatic css-349cgn-MuiAppBar-root"
+                                                          component="header"
+                                                          elevation={4}
+                                                          square={true}
+                                                        >
+                                                          <MuiPaperRoot
+                                                            as="header"
+                                                            className="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionStatic css-349cgn-MuiAppBar-root"
+                                                            ownerState={
+                                                              Object {
+                                                                "children": <ForwardRef(Toolbar)
+                                                                  sx={
+                                                                    Object {
+                                                                      "bgcolor": "#003C88",
+                                                                    }
+                                                                  }
+                                                                  variant="dense"
+                                                                >
+                                                                  <ForwardRef(IconButton)
+                                                                    edge="start"
+                                                                    onClick={[Function]}
+                                                                  >
+                                                                    <CloseIcon
+                                                                      className="info_panel_close_icon"
+                                                                      color="var(--White)"
+                                                                    />
+                                                                  </ForwardRef(IconButton)>
+                                                                  <h2>
+                                                                    
+                                                                  </h2>
+                                                                  <ForwardRef
+                                                                    disablePortal={true}
+                                                                    onSelect={[Function]}
+                                                                    options={
+                                                                      Array [
+                                                                        Object {
+                                                                          "label": "right-info-panel.settings.view & edit details",
+                                                                        },
+                                                                      ]
+                                                                    }
+                                                                    showInnerTableMenu={false}
+                                                                  />
+                                                                </ForwardRef(Toolbar)>,
+                                                                "className": "MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionStatic css-349cgn-MuiAppBar-root",
+                                                                "component": "header",
+                                                                "elevation": 4,
+                                                                "square": true,
+                                                                "variant": "elevation",
+                                                              }
+                                                            }
+                                                          >
+                                                            <header
+                                                              className="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionStatic css-hip9hq-MuiPaper-root-MuiAppBar-root"
+                                                            >
+                                                              <ForwardRef(Toolbar)
+                                                                sx={
+                                                                  Object {
+                                                                    "bgcolor": "#003C88",
+                                                                  }
+                                                                }
+                                                                variant="dense"
+                                                              >
+                                                                <MuiToolbarRoot
+                                                                  as="div"
+                                                                  className="MuiToolbar-root MuiToolbar-gutters MuiToolbar-dense"
+                                                                  ownerState={
+                                                                    Object {
+                                                                      "children": Array [
+                                                                        <ForwardRef(IconButton)
+                                                                          edge="start"
+                                                                          onClick={[Function]}
+                                                                        >
+                                                                          <CloseIcon
+                                                                            className="info_panel_close_icon"
+                                                                            color="var(--White)"
+                                                                          />
+                                                                        </ForwardRef(IconButton)>,
+                                                                        <h2>
+                                                                          
+                                                                        </h2>,
+                                                                        <ForwardRef
+                                                                          disablePortal={true}
+                                                                          onSelect={[Function]}
+                                                                          options={
+                                                                            Array [
+                                                                              Object {
+                                                                                "label": "right-info-panel.settings.view & edit details",
+                                                                              },
+                                                                            ]
+                                                                          }
+                                                                          showInnerTableMenu={false}
+                                                                        />,
+                                                                        false,
+                                                                      ],
+                                                                      "component": "div",
+                                                                      "disableGutters": false,
+                                                                      "sx": Object {
+                                                                        "bgcolor": "#003C88",
+                                                                      },
+                                                                      "variant": "dense",
+                                                                    }
+                                                                  }
+                                                                  sx={
+                                                                    Object {
+                                                                      "bgcolor": "#003C88",
+                                                                    }
+                                                                  }
+                                                                >
+                                                                  <div
+                                                                    className="MuiToolbar-root MuiToolbar-gutters MuiToolbar-dense css-1h6g46b-MuiToolbar-root"
+                                                                  >
+                                                                    <ForwardRef(IconButton)
+                                                                      edge="start"
+                                                                      onClick={[Function]}
+                                                                    >
+                                                                      <MuiIconButtonRoot
+                                                                        centerRipple={true}
+                                                                        className="MuiIconButton-root MuiIconButton-edgeStart MuiIconButton-sizeMedium"
+                                                                        disabled={false}
+                                                                        focusRipple={true}
+                                                                        onClick={[Function]}
+                                                                        ownerState={
+                                                                          Object {
+                                                                            "children": <CloseIcon
+                                                                              className="info_panel_close_icon"
+                                                                              color="var(--White)"
+                                                                            />,
+                                                                            "color": "default",
+                                                                            "disableFocusRipple": false,
+                                                                            "disabled": false,
+                                                                            "edge": "start",
+                                                                            "onClick": [Function],
+                                                                            "size": "medium",
+                                                                          }
+                                                                        }
+                                                                      >
+                                                                        <ForwardRef(ButtonBase)
+                                                                          centerRipple={true}
+                                                                          className="MuiIconButton-root MuiIconButton-edgeStart MuiIconButton-sizeMedium css-1l22h5g-MuiIconButton-root"
+                                                                          disabled={false}
+                                                                          focusRipple={true}
+                                                                          onClick={[Function]}
+                                                                        >
+                                                                          <MuiButtonBaseRoot
+                                                                            as="button"
+                                                                            className="MuiButtonBase-root MuiIconButton-root MuiIconButton-edgeStart MuiIconButton-sizeMedium css-1l22h5g-MuiIconButton-root"
+                                                                            disabled={false}
+                                                                            onBlur={[Function]}
+                                                                            onClick={[Function]}
+                                                                            onContextMenu={[Function]}
+                                                                            onDragLeave={[Function]}
+                                                                            onFocus={[Function]}
+                                                                            onKeyDown={[Function]}
+                                                                            onKeyUp={[Function]}
+                                                                            onMouseDown={[Function]}
+                                                                            onMouseLeave={[Function]}
+                                                                            onMouseUp={[Function]}
+                                                                            onTouchEnd={[Function]}
+                                                                            onTouchMove={[Function]}
+                                                                            onTouchStart={[Function]}
+                                                                            ownerState={
+                                                                              Object {
+                                                                                "centerRipple": true,
+                                                                                "children": <CloseIcon
+                                                                                  className="info_panel_close_icon"
+                                                                                  color="var(--White)"
+                                                                                />,
+                                                                                "className": "MuiIconButton-root MuiIconButton-edgeStart MuiIconButton-sizeMedium css-1l22h5g-MuiIconButton-root",
+                                                                                "component": "button",
+                                                                                "disableRipple": false,
+                                                                                "disableTouchRipple": false,
+                                                                                "disabled": false,
+                                                                                "focusRipple": true,
+                                                                                "focusVisible": false,
+                                                                                "onClick": [Function],
+                                                                                "tabIndex": 0,
+                                                                              }
+                                                                            }
+                                                                            tabIndex={0}
+                                                                            type="button"
+                                                                          >
+                                                                            <button
+                                                                              className="MuiButtonBase-root MuiIconButton-root MuiIconButton-edgeStart MuiIconButton-sizeMedium css-9sors8-MuiButtonBase-root-MuiIconButton-root"
+                                                                              disabled={false}
+                                                                              onBlur={[Function]}
+                                                                              onClick={[Function]}
+                                                                              onContextMenu={[Function]}
+                                                                              onDragLeave={[Function]}
+                                                                              onFocus={[Function]}
+                                                                              onKeyDown={[Function]}
+                                                                              onKeyUp={[Function]}
+                                                                              onMouseDown={[Function]}
+                                                                              onMouseLeave={[Function]}
+                                                                              onMouseUp={[Function]}
+                                                                              onTouchEnd={[Function]}
+                                                                              onTouchMove={[Function]}
+                                                                              onTouchStart={[Function]}
+                                                                              tabIndex={0}
+                                                                              type="button"
+                                                                            >
+                                                                              <CloseIcon
+                                                                                className="info_panel_close_icon"
+                                                                                color="var(--White)"
+                                                                              >
+                                                                                <svg
+                                                                                  className="info_panel_close_icon"
+                                                                                  color="var(--White)"
+                                                                                  height="1em"
+                                                                                  viewBox="0 0 20 20"
+                                                                                  width="1em"
+                                                                                >
+                                                                                  <g
+                                                                                    data-name="Group 1862"
+                                                                                  >
+                                                                                    <path
+                                                                                      d="M17 1l1.414 1.414-7.293 7.293L18.414 17 17 18.414l-7.293-7.293-7.293 7.293L1 17l7.293-7.293L1 2.414 2.414 1l7.293 7.293z"
+                                                                                      fill="currentColor"
+                                                                                    />
+                                                                                    <path
+                                                                                      d="M0 0h20v20H0z"
+                                                                                      data-name="Rectangle 2250"
+                                                                                      fill="none"
+                                                                                    />
+                                                                                  </g>
+                                                                                </svg>
+                                                                              </CloseIcon>
+                                                                              <ForwardRef(TouchRipple)
+                                                                                center={true}
+                                                                              >
+                                                                                <MuiTouchRippleRoot
+                                                                                  className="MuiTouchRipple-root"
+                                                                                >
+                                                                                  <span
+                                                                                    className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                                                                                  >
+                                                                                    <TransitionGroup
+                                                                                      childFactory={[Function]}
+                                                                                      component={null}
+                                                                                      exit={true}
+                                                                                    />
+                                                                                  </span>
+                                                                                </MuiTouchRippleRoot>
+                                                                              </ForwardRef(TouchRipple)>
+                                                                            </button>
+                                                                          </MuiButtonBaseRoot>
+                                                                        </ForwardRef(ButtonBase)>
+                                                                      </MuiIconButtonRoot>
+                                                                    </ForwardRef(IconButton)>
+                                                                    <h2 />
+                                                                    <ForwardRef
+                                                                      disablePortal={true}
+                                                                      onSelect={[Function]}
+                                                                      options={
+                                                                        Array [
+                                                                          Object {
+                                                                            "label": "right-info-panel.settings.view & edit details",
+                                                                          },
+                                                                        ]
+                                                                      }
+                                                                      showInnerTableMenu={false}
+                                                                    >
+                                                                      <div>
+                                                                        <WithStyles(ForwardRef(Button))
+                                                                          aria-haspopup="true"
+                                                                          aria-label="datagrid actions menu list"
+                                                                          className="btn-grid-action "
+                                                                          onClick={[Function]}
+                                                                          startIcon={
+                                                                            <WithStyles(ForwardRef(SvgIcon))
+                                                                              component={[Function]}
+                                                                              viewBox="0 0 40 40"
+                                                                            />
+                                                                          }
+                                                                          variant="contained"
+                                                                        >
+                                                                          <ForwardRef(Button)
+                                                                            aria-haspopup="true"
+                                                                            aria-label="datagrid actions menu list"
+                                                                            className="btn-grid-action "
+                                                                            classes={
+                                                                              Object {
+                                                                                "colorInherit": "MuiButton-colorInherit",
+                                                                                "contained": "MuiButton-contained",
+                                                                                "containedPrimary": "MuiButton-containedPrimary",
+                                                                                "containedSecondary": "MuiButton-containedSecondary",
+                                                                                "containedSizeLarge": "MuiButton-containedSizeLarge",
+                                                                                "containedSizeSmall": "MuiButton-containedSizeSmall",
+                                                                                "disableElevation": "MuiButton-disableElevation",
+                                                                                "disabled": "Mui-disabled",
+                                                                                "endIcon": "MuiButton-endIcon",
+                                                                                "focusVisible": "Mui-focusVisible",
+                                                                                "fullWidth": "MuiButton-fullWidth",
+                                                                                "iconSizeLarge": "MuiButton-iconSizeLarge",
+                                                                                "iconSizeMedium": "MuiButton-iconSizeMedium",
+                                                                                "iconSizeSmall": "MuiButton-iconSizeSmall",
+                                                                                "label": "MuiButton-label",
+                                                                                "outlined": "MuiButton-outlined",
+                                                                                "outlinedPrimary": "MuiButton-outlinedPrimary",
+                                                                                "outlinedSecondary": "MuiButton-outlinedSecondary",
+                                                                                "outlinedSizeLarge": "MuiButton-outlinedSizeLarge",
+                                                                                "outlinedSizeSmall": "MuiButton-outlinedSizeSmall",
+                                                                                "root": "MuiButton-root",
+                                                                                "sizeLarge": "MuiButton-sizeLarge",
+                                                                                "sizeSmall": "MuiButton-sizeSmall",
+                                                                                "startIcon": "MuiButton-startIcon",
+                                                                                "text": "MuiButton-text",
+                                                                                "textPrimary": "MuiButton-textPrimary",
+                                                                                "textSecondary": "MuiButton-textSecondary",
+                                                                                "textSizeLarge": "MuiButton-textSizeLarge",
+                                                                                "textSizeSmall": "MuiButton-textSizeSmall",
+                                                                              }
+                                                                            }
+                                                                            onClick={[Function]}
+                                                                            startIcon={
+                                                                              <WithStyles(ForwardRef(SvgIcon))
+                                                                                component={[Function]}
+                                                                                viewBox="0 0 40 40"
+                                                                              />
+                                                                            }
+                                                                            variant="contained"
+                                                                          >
+                                                                            <WithStyles(ForwardRef(ButtonBase))
+                                                                              aria-haspopup="true"
+                                                                              aria-label="datagrid actions menu list"
+                                                                              className="MuiButton-root MuiButton-contained btn-grid-action "
+                                                                              component="button"
+                                                                              disabled={false}
+                                                                              focusRipple={true}
+                                                                              focusVisibleClassName="Mui-focusVisible"
+                                                                              onClick={[Function]}
+                                                                              type="button"
+                                                                            >
+                                                                              <ForwardRef(ButtonBase)
+                                                                                aria-haspopup="true"
+                                                                                aria-label="datagrid actions menu list"
+                                                                                className="MuiButton-root MuiButton-contained btn-grid-action "
+                                                                                classes={
+                                                                                  Object {
+                                                                                    "disabled": "Mui-disabled",
+                                                                                    "focusVisible": "Mui-focusVisible",
+                                                                                    "root": "MuiButtonBase-root",
+                                                                                  }
+                                                                                }
+                                                                                component="button"
+                                                                                disabled={false}
+                                                                                focusRipple={true}
+                                                                                focusVisibleClassName="Mui-focusVisible"
+                                                                                onClick={[Function]}
+                                                                                type="button"
+                                                                              >
+                                                                                <button
+                                                                                  aria-haspopup="true"
+                                                                                  aria-label="datagrid actions menu list"
+                                                                                  className="MuiButtonBase-root MuiButton-root MuiButton-contained btn-grid-action "
+                                                                                  disabled={false}
+                                                                                  onBlur={[Function]}
+                                                                                  onClick={[Function]}
+                                                                                  onDragLeave={[Function]}
+                                                                                  onFocus={[Function]}
+                                                                                  onKeyDown={[Function]}
+                                                                                  onKeyUp={[Function]}
+                                                                                  onMouseDown={[Function]}
+                                                                                  onMouseLeave={[Function]}
+                                                                                  onMouseUp={[Function]}
+                                                                                  onTouchEnd={[Function]}
+                                                                                  onTouchMove={[Function]}
+                                                                                  onTouchStart={[Function]}
+                                                                                  tabIndex={0}
+                                                                                  type="button"
+                                                                                >
+                                                                                  <span
+                                                                                    className="MuiButton-label"
+                                                                                  >
+                                                                                    <span
+                                                                                      className="MuiButton-startIcon MuiButton-iconSizeMedium"
+                                                                                    >
+                                                                                      <WithStyles(ForwardRef(SvgIcon))
+                                                                                        component={[Function]}
+                                                                                        viewBox="0 0 40 40"
+                                                                                      >
+                                                                                        <ForwardRef(SvgIcon)
+                                                                                          classes={
+                                                                                            Object {
+                                                                                              "colorAction": "MuiSvgIcon-colorAction",
+                                                                                              "colorDisabled": "MuiSvgIcon-colorDisabled",
+                                                                                              "colorError": "MuiSvgIcon-colorError",
+                                                                                              "colorPrimary": "MuiSvgIcon-colorPrimary",
+                                                                                              "colorSecondary": "MuiSvgIcon-colorSecondary",
+                                                                                              "fontSizeInherit": "MuiSvgIcon-fontSizeInherit",
+                                                                                              "fontSizeLarge": "MuiSvgIcon-fontSizeLarge",
+                                                                                              "fontSizeSmall": "MuiSvgIcon-fontSizeSmall",
+                                                                                              "root": "MuiSvgIcon-root",
+                                                                                            }
+                                                                                          }
+                                                                                          component={[Function]}
+                                                                                          viewBox="0 0 40 40"
+                                                                                        >
+                                                                                          <DataGridActionIcon
+                                                                                            aria-hidden={true}
+                                                                                            className="MuiSvgIcon-root"
+                                                                                            focusable="false"
+                                                                                            viewBox="0 0 40 40"
+                                                                                          >
+                                                                                            <svg
+                                                                                              aria-hidden={true}
+                                                                                              className="MuiSvgIcon-root"
+                                                                                              focusable="false"
+                                                                                              height="1em"
+                                                                                              viewBox="0 0 40 40"
+                                                                                              width="1em"
+                                                                                            >
+                                                                                              <path
+                                                                                                d="M18 27.778A2.222 2.222 0 1120.222 30 2.222 2.222 0 0118 27.778zm0-15.556a2.222 2.222 0 112.222 2.222A2.222 2.222 0 0118 12.222zM18 20a2.222 2.222 0 112.222 2.222A2.222 2.222 0 0118 20z"
+                                                                                              />
+                                                                                              <path
+                                                                                                d="M0 0h40v40H0z"
+                                                                                                fill="none"
+                                                                                              />
+                                                                                            </svg>
+                                                                                          </DataGridActionIcon>
+                                                                                        </ForwardRef(SvgIcon)>
+                                                                                      </WithStyles(ForwardRef(SvgIcon))>
+                                                                                    </span>
+                                                                                  </span>
+                                                                                  <WithStyles(memo)
+                                                                                    center={false}
+                                                                                  >
+                                                                                    <ForwardRef(TouchRipple)
+                                                                                      center={false}
+                                                                                      classes={
+                                                                                        Object {
+                                                                                          "child": "MuiTouchRipple-child",
+                                                                                          "childLeaving": "MuiTouchRipple-childLeaving",
+                                                                                          "childPulsate": "MuiTouchRipple-childPulsate",
+                                                                                          "ripple": "MuiTouchRipple-ripple",
+                                                                                          "ripplePulsate": "MuiTouchRipple-ripplePulsate",
+                                                                                          "rippleVisible": "MuiTouchRipple-rippleVisible",
+                                                                                          "root": "MuiTouchRipple-root",
+                                                                                        }
+                                                                                      }
+                                                                                    >
+                                                                                      <span
+                                                                                        className="MuiTouchRipple-root"
+                                                                                      >
+                                                                                        <TransitionGroup
+                                                                                          childFactory={[Function]}
+                                                                                          component={null}
+                                                                                          exit={true}
+                                                                                        />
+                                                                                      </span>
+                                                                                    </ForwardRef(TouchRipple)>
+                                                                                  </WithStyles(memo)>
+                                                                                </button>
+                                                                              </ForwardRef(ButtonBase)>
+                                                                            </WithStyles(ForwardRef(ButtonBase))>
+                                                                          </ForwardRef(Button)>
+                                                                        </WithStyles(ForwardRef(Button))>
+                                                                        <ForwardRef(Popper)
+                                                                          anchorEl={null}
+                                                                          className="datagrid-actions-popper"
+                                                                          disablePortal={true}
+                                                                          modifiers={
+                                                                            Array [
+                                                                              Object {
+                                                                                "enabled": true,
+                                                                                "name": "flip",
+                                                                                "options": Object {
+                                                                                  "altBoundary": true,
+                                                                                  "rootBoundary": "viewport",
+                                                                                },
+                                                                              },
+                                                                              Object {
+                                                                                "enabled": true,
+                                                                                "name": "preventOverflow",
+                                                                                "options": Object {
+                                                                                  "altAxis": true,
+                                                                                  "altBoundary": true,
+                                                                                  "rootBoundary": "viewport",
+                                                                                },
+                                                                              },
+                                                                            ]
+                                                                          }
+                                                                          open={false}
+                                                                          placement="bottom-end"
+                                                                          transition={true}
+                                                                        />
+                                                                      </div>
+                                                                    </ForwardRef>
+                                                                  </div>
+                                                                </MuiToolbarRoot>
+                                                              </ForwardRef(Toolbar)>
+                                                            </header>
+                                                          </MuiPaperRoot>
+                                                        </ForwardRef(Paper)>
+                                                      </MuiAppBarRoot>
+                                                    </ForwardRef(AppBar)>
+                                                  </div>
+                                                </Styled(div)>
+                                              </ForwardRef(Box)>
+                                            </div>
+                                          </PanelHeader>
+                                          <InfoViewContent
+                                            info="info"
+                                          >
+                                            <div
+                                              className="right_info_panel_content"
+                                            >
+                                              <ForwardRef(Grid)
+                                                container={true}
+                                                spacing={4}
+                                              >
+                                                <MuiGridRoot
+                                                  as="div"
+                                                  className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-4"
+                                                  ownerState={
+                                                    Object {
+                                                      "children": Array [
+                                                        <React.Fragment>
+                                                          <ForwardRef(Grid)
+                                                            container={true}
+                                                            item={true}
+                                                            spacing={2}
+                                                            xs={12}
+                                                          >
+                                                            <ForwardRef(Grid)
+                                                              className="right_info_panel_content_label"
+                                                              item={true}
+                                                              xs={6}
+                                                            >
+                                                              0
+                                                            </ForwardRef(Grid)>
+                                                            <ForwardRef(Grid)
+                                                              className="right_info_panel_content_value"
+                                                              item={true}
+                                                              xs={6}
+                                                            >
+                                                              <React.Fragment>
+                                                                i
+                                                              </React.Fragment>
+                                                            </ForwardRef(Grid)>
+                                                          </ForwardRef(Grid)>
+                                                          <ForwardRef(Divider)
+                                                            className="right_info_panel_content_item_divider"
+                                                          />
+                                                        </React.Fragment>,
+                                                        <React.Fragment>
+                                                          <ForwardRef(Grid)
+                                                            container={true}
+                                                            item={true}
+                                                            spacing={2}
+                                                            xs={12}
+                                                          >
+                                                            <ForwardRef(Grid)
+                                                              className="right_info_panel_content_label"
+                                                              item={true}
+                                                              xs={6}
+                                                            >
+                                                              1
+                                                            </ForwardRef(Grid)>
+                                                            <ForwardRef(Grid)
+                                                              className="right_info_panel_content_value"
+                                                              item={true}
+                                                              xs={6}
+                                                            >
+                                                              <React.Fragment>
+                                                                n
+                                                              </React.Fragment>
+                                                            </ForwardRef(Grid)>
+                                                          </ForwardRef(Grid)>
+                                                          <ForwardRef(Divider)
+                                                            className="right_info_panel_content_item_divider"
+                                                          />
+                                                        </React.Fragment>,
+                                                        <React.Fragment>
+                                                          <ForwardRef(Grid)
+                                                            container={true}
+                                                            item={true}
+                                                            spacing={2}
+                                                            xs={12}
+                                                          >
+                                                            <ForwardRef(Grid)
+                                                              className="right_info_panel_content_label"
+                                                              item={true}
+                                                              xs={6}
+                                                            >
+                                                              2
+                                                            </ForwardRef(Grid)>
+                                                            <ForwardRef(Grid)
+                                                              className="right_info_panel_content_value"
+                                                              item={true}
+                                                              xs={6}
+                                                            >
+                                                              <React.Fragment>
+                                                                f
+                                                              </React.Fragment>
+                                                            </ForwardRef(Grid)>
+                                                          </ForwardRef(Grid)>
+                                                          <ForwardRef(Divider)
+                                                            className="right_info_panel_content_item_divider"
+                                                          />
+                                                        </React.Fragment>,
+                                                        <React.Fragment>
+                                                          <ForwardRef(Grid)
+                                                            container={true}
+                                                            item={true}
+                                                            spacing={2}
+                                                            xs={12}
+                                                          >
+                                                            <ForwardRef(Grid)
+                                                              className="right_info_panel_content_label"
+                                                              item={true}
+                                                              xs={6}
+                                                            >
+                                                              3
+                                                            </ForwardRef(Grid)>
+                                                            <ForwardRef(Grid)
+                                                              className="right_info_panel_content_value"
+                                                              item={true}
+                                                              xs={6}
+                                                            >
+                                                              <React.Fragment>
+                                                                o
+                                                              </React.Fragment>
+                                                            </ForwardRef(Grid)>
+                                                          </ForwardRef(Grid)>
+                                                          <ForwardRef(Divider)
+                                                            className="right_info_panel_content_item_divider"
+                                                          />
+                                                        </React.Fragment>,
+                                                      ],
+                                                      "columnSpacing": 4,
+                                                      "columns": 12,
+                                                      "container": true,
+                                                      "direction": "row",
+                                                      "item": false,
+                                                      "lg": false,
+                                                      "md": false,
+                                                      "rowSpacing": 4,
+                                                      "sm": false,
+                                                      "spacing": 4,
+                                                      "sx": Object {},
+                                                      "wrap": "wrap",
+                                                      "xl": false,
+                                                      "xs": false,
+                                                      "zeroMinWidth": false,
+                                                    }
+                                                  }
+                                                  sx={Object {}}
+                                                >
+                                                  <div
+                                                    className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-4 css-480o17-MuiGrid-root"
+                                                  >
+                                                    <ForwardRef(Grid)
+                                                      container={true}
+                                                      item={true}
+                                                      key="0"
+                                                      spacing={2}
+                                                      xs={12}
+                                                    >
+                                                      <MuiGridRoot
+                                                        as="div"
+                                                        className="MuiGrid-root MuiGrid-container MuiGrid-item MuiGrid-spacing-xs-2 MuiGrid-grid-xs-12"
+                                                        ownerState={
+                                                          Object {
+                                                            "children": Array [
+                                                              <ForwardRef(Grid)
+                                                                className="right_info_panel_content_label"
+                                                                item={true}
+                                                                xs={6}
+                                                              >
+                                                                0
+                                                              </ForwardRef(Grid)>,
+                                                              <ForwardRef(Grid)
+                                                                className="right_info_panel_content_value"
+                                                                item={true}
+                                                                xs={6}
+                                                              >
+                                                                <React.Fragment>
+                                                                  i
+                                                                </React.Fragment>
+                                                              </ForwardRef(Grid)>,
+                                                            ],
+                                                            "columnSpacing": 2,
+                                                            "columns": 12,
+                                                            "container": true,
+                                                            "direction": "row",
+                                                            "item": true,
+                                                            "lg": false,
+                                                            "md": false,
+                                                            "rowSpacing": 2,
+                                                            "sm": false,
+                                                            "spacing": 2,
+                                                            "sx": Object {},
+                                                            "wrap": "wrap",
+                                                            "xl": false,
+                                                            "xs": 12,
+                                                            "zeroMinWidth": false,
+                                                          }
+                                                        }
+                                                        sx={Object {}}
+                                                      >
+                                                        <div
+                                                          className="MuiGrid-root MuiGrid-container MuiGrid-item MuiGrid-spacing-xs-2 MuiGrid-grid-xs-12 css-1yyroxi-MuiGrid-root"
+                                                        >
+                                                          <ForwardRef(Grid)
+                                                            className="right_info_panel_content_label"
+                                                            item={true}
+                                                            xs={6}
+                                                          >
+                                                            <MuiGridRoot
+                                                              as="div"
+                                                              className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6 right_info_panel_content_label"
+                                                              ownerState={
+                                                                Object {
+                                                                  "children": "0",
+                                                                  "className": "right_info_panel_content_label",
+                                                                  "columnSpacing": 0,
+                                                                  "columns": 12,
+                                                                  "container": false,
+                                                                  "direction": "row",
+                                                                  "item": true,
+                                                                  "lg": false,
+                                                                  "md": false,
+                                                                  "rowSpacing": 0,
+                                                                  "sm": false,
+                                                                  "sx": Object {},
+                                                                  "wrap": "wrap",
+                                                                  "xl": false,
+                                                                  "xs": 6,
+                                                                  "zeroMinWidth": false,
+                                                                }
+                                                              }
+                                                              sx={Object {}}
+                                                            >
+                                                              <div
+                                                                className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6 right_info_panel_content_label css-ayy8wd-MuiGrid-root"
+                                                              >
+                                                                0
+                                                              </div>
+                                                            </MuiGridRoot>
+                                                          </ForwardRef(Grid)>
+                                                          <ForwardRef(Grid)
+                                                            className="right_info_panel_content_value"
+                                                            item={true}
+                                                            xs={6}
+                                                          >
+                                                            <MuiGridRoot
+                                                              as="div"
+                                                              className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6 right_info_panel_content_value"
+                                                              ownerState={
+                                                                Object {
+                                                                  "children": <React.Fragment>
+                                                                    i
+                                                                  </React.Fragment>,
+                                                                  "className": "right_info_panel_content_value",
+                                                                  "columnSpacing": 0,
+                                                                  "columns": 12,
+                                                                  "container": false,
+                                                                  "direction": "row",
+                                                                  "item": true,
+                                                                  "lg": false,
+                                                                  "md": false,
+                                                                  "rowSpacing": 0,
+                                                                  "sm": false,
+                                                                  "sx": Object {},
+                                                                  "wrap": "wrap",
+                                                                  "xl": false,
+                                                                  "xs": 6,
+                                                                  "zeroMinWidth": false,
+                                                                }
+                                                              }
+                                                              sx={Object {}}
+                                                            >
+                                                              <div
+                                                                className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6 right_info_panel_content_value css-ayy8wd-MuiGrid-root"
+                                                              >
+                                                                i
+                                                              </div>
+                                                            </MuiGridRoot>
+                                                          </ForwardRef(Grid)>
+                                                        </div>
+                                                      </MuiGridRoot>
+                                                    </ForwardRef(Grid)>
+                                                    <ForwardRef(Divider)
+                                                      className="right_info_panel_content_item_divider"
+                                                    >
+                                                      <MuiDividerRoot
+                                                        as="hr"
+                                                        className="MuiDivider-root MuiDivider-fullWidth right_info_panel_content_item_divider"
+                                                        ownerState={
+                                                          Object {
+                                                            "absolute": false,
+                                                            "className": "right_info_panel_content_item_divider",
+                                                            "component": "hr",
+                                                            "flexItem": false,
+                                                            "light": false,
+                                                            "orientation": "horizontal",
+                                                            "role": undefined,
+                                                            "textAlign": "center",
+                                                            "variant": "fullWidth",
+                                                          }
+                                                        }
+                                                      >
+                                                        <hr
+                                                          className="MuiDivider-root MuiDivider-fullWidth right_info_panel_content_item_divider css-9mgopn-MuiDivider-root"
+                                                        />
+                                                      </MuiDividerRoot>
+                                                    </ForwardRef(Divider)>
+                                                    <ForwardRef(Grid)
+                                                      container={true}
+                                                      item={true}
+                                                      key="1"
+                                                      spacing={2}
+                                                      xs={12}
+                                                    >
+                                                      <MuiGridRoot
+                                                        as="div"
+                                                        className="MuiGrid-root MuiGrid-container MuiGrid-item MuiGrid-spacing-xs-2 MuiGrid-grid-xs-12"
+                                                        ownerState={
+                                                          Object {
+                                                            "children": Array [
+                                                              <ForwardRef(Grid)
+                                                                className="right_info_panel_content_label"
+                                                                item={true}
+                                                                xs={6}
+                                                              >
+                                                                1
+                                                              </ForwardRef(Grid)>,
+                                                              <ForwardRef(Grid)
+                                                                className="right_info_panel_content_value"
+                                                                item={true}
+                                                                xs={6}
+                                                              >
+                                                                <React.Fragment>
+                                                                  n
+                                                                </React.Fragment>
+                                                              </ForwardRef(Grid)>,
+                                                            ],
+                                                            "columnSpacing": 2,
+                                                            "columns": 12,
+                                                            "container": true,
+                                                            "direction": "row",
+                                                            "item": true,
+                                                            "lg": false,
+                                                            "md": false,
+                                                            "rowSpacing": 2,
+                                                            "sm": false,
+                                                            "spacing": 2,
+                                                            "sx": Object {},
+                                                            "wrap": "wrap",
+                                                            "xl": false,
+                                                            "xs": 12,
+                                                            "zeroMinWidth": false,
+                                                          }
+                                                        }
+                                                        sx={Object {}}
+                                                      >
+                                                        <div
+                                                          className="MuiGrid-root MuiGrid-container MuiGrid-item MuiGrid-spacing-xs-2 MuiGrid-grid-xs-12 css-1yyroxi-MuiGrid-root"
+                                                        >
+                                                          <ForwardRef(Grid)
+                                                            className="right_info_panel_content_label"
+                                                            item={true}
+                                                            xs={6}
+                                                          >
+                                                            <MuiGridRoot
+                                                              as="div"
+                                                              className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6 right_info_panel_content_label"
+                                                              ownerState={
+                                                                Object {
+                                                                  "children": "1",
+                                                                  "className": "right_info_panel_content_label",
+                                                                  "columnSpacing": 0,
+                                                                  "columns": 12,
+                                                                  "container": false,
+                                                                  "direction": "row",
+                                                                  "item": true,
+                                                                  "lg": false,
+                                                                  "md": false,
+                                                                  "rowSpacing": 0,
+                                                                  "sm": false,
+                                                                  "sx": Object {},
+                                                                  "wrap": "wrap",
+                                                                  "xl": false,
+                                                                  "xs": 6,
+                                                                  "zeroMinWidth": false,
+                                                                }
+                                                              }
+                                                              sx={Object {}}
+                                                            >
+                                                              <div
+                                                                className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6 right_info_panel_content_label css-ayy8wd-MuiGrid-root"
+                                                              >
+                                                                1
+                                                              </div>
+                                                            </MuiGridRoot>
+                                                          </ForwardRef(Grid)>
+                                                          <ForwardRef(Grid)
+                                                            className="right_info_panel_content_value"
+                                                            item={true}
+                                                            xs={6}
+                                                          >
+                                                            <MuiGridRoot
+                                                              as="div"
+                                                              className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6 right_info_panel_content_value"
+                                                              ownerState={
+                                                                Object {
+                                                                  "children": <React.Fragment>
+                                                                    n
+                                                                  </React.Fragment>,
+                                                                  "className": "right_info_panel_content_value",
+                                                                  "columnSpacing": 0,
+                                                                  "columns": 12,
+                                                                  "container": false,
+                                                                  "direction": "row",
+                                                                  "item": true,
+                                                                  "lg": false,
+                                                                  "md": false,
+                                                                  "rowSpacing": 0,
+                                                                  "sm": false,
+                                                                  "sx": Object {},
+                                                                  "wrap": "wrap",
+                                                                  "xl": false,
+                                                                  "xs": 6,
+                                                                  "zeroMinWidth": false,
+                                                                }
+                                                              }
+                                                              sx={Object {}}
+                                                            >
+                                                              <div
+                                                                className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6 right_info_panel_content_value css-ayy8wd-MuiGrid-root"
+                                                              >
+                                                                n
+                                                              </div>
+                                                            </MuiGridRoot>
+                                                          </ForwardRef(Grid)>
+                                                        </div>
+                                                      </MuiGridRoot>
+                                                    </ForwardRef(Grid)>
+                                                    <ForwardRef(Divider)
+                                                      className="right_info_panel_content_item_divider"
+                                                    >
+                                                      <MuiDividerRoot
+                                                        as="hr"
+                                                        className="MuiDivider-root MuiDivider-fullWidth right_info_panel_content_item_divider"
+                                                        ownerState={
+                                                          Object {
+                                                            "absolute": false,
+                                                            "className": "right_info_panel_content_item_divider",
+                                                            "component": "hr",
+                                                            "flexItem": false,
+                                                            "light": false,
+                                                            "orientation": "horizontal",
+                                                            "role": undefined,
+                                                            "textAlign": "center",
+                                                            "variant": "fullWidth",
+                                                          }
+                                                        }
+                                                      >
+                                                        <hr
+                                                          className="MuiDivider-root MuiDivider-fullWidth right_info_panel_content_item_divider css-9mgopn-MuiDivider-root"
+                                                        />
+                                                      </MuiDividerRoot>
+                                                    </ForwardRef(Divider)>
+                                                    <ForwardRef(Grid)
+                                                      container={true}
+                                                      item={true}
+                                                      key="2"
+                                                      spacing={2}
+                                                      xs={12}
+                                                    >
+                                                      <MuiGridRoot
+                                                        as="div"
+                                                        className="MuiGrid-root MuiGrid-container MuiGrid-item MuiGrid-spacing-xs-2 MuiGrid-grid-xs-12"
+                                                        ownerState={
+                                                          Object {
+                                                            "children": Array [
+                                                              <ForwardRef(Grid)
+                                                                className="right_info_panel_content_label"
+                                                                item={true}
+                                                                xs={6}
+                                                              >
+                                                                2
+                                                              </ForwardRef(Grid)>,
+                                                              <ForwardRef(Grid)
+                                                                className="right_info_panel_content_value"
+                                                                item={true}
+                                                                xs={6}
+                                                              >
+                                                                <React.Fragment>
+                                                                  f
+                                                                </React.Fragment>
+                                                              </ForwardRef(Grid)>,
+                                                            ],
+                                                            "columnSpacing": 2,
+                                                            "columns": 12,
+                                                            "container": true,
+                                                            "direction": "row",
+                                                            "item": true,
+                                                            "lg": false,
+                                                            "md": false,
+                                                            "rowSpacing": 2,
+                                                            "sm": false,
+                                                            "spacing": 2,
+                                                            "sx": Object {},
+                                                            "wrap": "wrap",
+                                                            "xl": false,
+                                                            "xs": 12,
+                                                            "zeroMinWidth": false,
+                                                          }
+                                                        }
+                                                        sx={Object {}}
+                                                      >
+                                                        <div
+                                                          className="MuiGrid-root MuiGrid-container MuiGrid-item MuiGrid-spacing-xs-2 MuiGrid-grid-xs-12 css-1yyroxi-MuiGrid-root"
+                                                        >
+                                                          <ForwardRef(Grid)
+                                                            className="right_info_panel_content_label"
+                                                            item={true}
+                                                            xs={6}
+                                                          >
+                                                            <MuiGridRoot
+                                                              as="div"
+                                                              className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6 right_info_panel_content_label"
+                                                              ownerState={
+                                                                Object {
+                                                                  "children": "2",
+                                                                  "className": "right_info_panel_content_label",
+                                                                  "columnSpacing": 0,
+                                                                  "columns": 12,
+                                                                  "container": false,
+                                                                  "direction": "row",
+                                                                  "item": true,
+                                                                  "lg": false,
+                                                                  "md": false,
+                                                                  "rowSpacing": 0,
+                                                                  "sm": false,
+                                                                  "sx": Object {},
+                                                                  "wrap": "wrap",
+                                                                  "xl": false,
+                                                                  "xs": 6,
+                                                                  "zeroMinWidth": false,
+                                                                }
+                                                              }
+                                                              sx={Object {}}
+                                                            >
+                                                              <div
+                                                                className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6 right_info_panel_content_label css-ayy8wd-MuiGrid-root"
+                                                              >
+                                                                2
+                                                              </div>
+                                                            </MuiGridRoot>
+                                                          </ForwardRef(Grid)>
+                                                          <ForwardRef(Grid)
+                                                            className="right_info_panel_content_value"
+                                                            item={true}
+                                                            xs={6}
+                                                          >
+                                                            <MuiGridRoot
+                                                              as="div"
+                                                              className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6 right_info_panel_content_value"
+                                                              ownerState={
+                                                                Object {
+                                                                  "children": <React.Fragment>
+                                                                    f
+                                                                  </React.Fragment>,
+                                                                  "className": "right_info_panel_content_value",
+                                                                  "columnSpacing": 0,
+                                                                  "columns": 12,
+                                                                  "container": false,
+                                                                  "direction": "row",
+                                                                  "item": true,
+                                                                  "lg": false,
+                                                                  "md": false,
+                                                                  "rowSpacing": 0,
+                                                                  "sm": false,
+                                                                  "sx": Object {},
+                                                                  "wrap": "wrap",
+                                                                  "xl": false,
+                                                                  "xs": 6,
+                                                                  "zeroMinWidth": false,
+                                                                }
+                                                              }
+                                                              sx={Object {}}
+                                                            >
+                                                              <div
+                                                                className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6 right_info_panel_content_value css-ayy8wd-MuiGrid-root"
+                                                              >
+                                                                f
+                                                              </div>
+                                                            </MuiGridRoot>
+                                                          </ForwardRef(Grid)>
+                                                        </div>
+                                                      </MuiGridRoot>
+                                                    </ForwardRef(Grid)>
+                                                    <ForwardRef(Divider)
+                                                      className="right_info_panel_content_item_divider"
+                                                    >
+                                                      <MuiDividerRoot
+                                                        as="hr"
+                                                        className="MuiDivider-root MuiDivider-fullWidth right_info_panel_content_item_divider"
+                                                        ownerState={
+                                                          Object {
+                                                            "absolute": false,
+                                                            "className": "right_info_panel_content_item_divider",
+                                                            "component": "hr",
+                                                            "flexItem": false,
+                                                            "light": false,
+                                                            "orientation": "horizontal",
+                                                            "role": undefined,
+                                                            "textAlign": "center",
+                                                            "variant": "fullWidth",
+                                                          }
+                                                        }
+                                                      >
+                                                        <hr
+                                                          className="MuiDivider-root MuiDivider-fullWidth right_info_panel_content_item_divider css-9mgopn-MuiDivider-root"
+                                                        />
+                                                      </MuiDividerRoot>
+                                                    </ForwardRef(Divider)>
+                                                    <ForwardRef(Grid)
+                                                      container={true}
+                                                      item={true}
+                                                      key="3"
+                                                      spacing={2}
+                                                      xs={12}
+                                                    >
+                                                      <MuiGridRoot
+                                                        as="div"
+                                                        className="MuiGrid-root MuiGrid-container MuiGrid-item MuiGrid-spacing-xs-2 MuiGrid-grid-xs-12"
+                                                        ownerState={
+                                                          Object {
+                                                            "children": Array [
+                                                              <ForwardRef(Grid)
+                                                                className="right_info_panel_content_label"
+                                                                item={true}
+                                                                xs={6}
+                                                              >
+                                                                3
+                                                              </ForwardRef(Grid)>,
+                                                              <ForwardRef(Grid)
+                                                                className="right_info_panel_content_value"
+                                                                item={true}
+                                                                xs={6}
+                                                              >
+                                                                <React.Fragment>
+                                                                  o
+                                                                </React.Fragment>
+                                                              </ForwardRef(Grid)>,
+                                                            ],
+                                                            "columnSpacing": 2,
+                                                            "columns": 12,
+                                                            "container": true,
+                                                            "direction": "row",
+                                                            "item": true,
+                                                            "lg": false,
+                                                            "md": false,
+                                                            "rowSpacing": 2,
+                                                            "sm": false,
+                                                            "spacing": 2,
+                                                            "sx": Object {},
+                                                            "wrap": "wrap",
+                                                            "xl": false,
+                                                            "xs": 12,
+                                                            "zeroMinWidth": false,
+                                                          }
+                                                        }
+                                                        sx={Object {}}
+                                                      >
+                                                        <div
+                                                          className="MuiGrid-root MuiGrid-container MuiGrid-item MuiGrid-spacing-xs-2 MuiGrid-grid-xs-12 css-1yyroxi-MuiGrid-root"
+                                                        >
+                                                          <ForwardRef(Grid)
+                                                            className="right_info_panel_content_label"
+                                                            item={true}
+                                                            xs={6}
+                                                          >
+                                                            <MuiGridRoot
+                                                              as="div"
+                                                              className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6 right_info_panel_content_label"
+                                                              ownerState={
+                                                                Object {
+                                                                  "children": "3",
+                                                                  "className": "right_info_panel_content_label",
+                                                                  "columnSpacing": 0,
+                                                                  "columns": 12,
+                                                                  "container": false,
+                                                                  "direction": "row",
+                                                                  "item": true,
+                                                                  "lg": false,
+                                                                  "md": false,
+                                                                  "rowSpacing": 0,
+                                                                  "sm": false,
+                                                                  "sx": Object {},
+                                                                  "wrap": "wrap",
+                                                                  "xl": false,
+                                                                  "xs": 6,
+                                                                  "zeroMinWidth": false,
+                                                                }
+                                                              }
+                                                              sx={Object {}}
+                                                            >
+                                                              <div
+                                                                className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6 right_info_panel_content_label css-ayy8wd-MuiGrid-root"
+                                                              >
+                                                                3
+                                                              </div>
+                                                            </MuiGridRoot>
+                                                          </ForwardRef(Grid)>
+                                                          <ForwardRef(Grid)
+                                                            className="right_info_panel_content_value"
+                                                            item={true}
+                                                            xs={6}
+                                                          >
+                                                            <MuiGridRoot
+                                                              as="div"
+                                                              className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6 right_info_panel_content_value"
+                                                              ownerState={
+                                                                Object {
+                                                                  "children": <React.Fragment>
+                                                                    o
+                                                                  </React.Fragment>,
+                                                                  "className": "right_info_panel_content_value",
+                                                                  "columnSpacing": 0,
+                                                                  "columns": 12,
+                                                                  "container": false,
+                                                                  "direction": "row",
+                                                                  "item": true,
+                                                                  "lg": false,
+                                                                  "md": false,
+                                                                  "rowSpacing": 0,
+                                                                  "sm": false,
+                                                                  "sx": Object {},
+                                                                  "wrap": "wrap",
+                                                                  "xl": false,
+                                                                  "xs": 6,
+                                                                  "zeroMinWidth": false,
+                                                                }
+                                                              }
+                                                              sx={Object {}}
+                                                            >
+                                                              <div
+                                                                className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6 right_info_panel_content_value css-ayy8wd-MuiGrid-root"
+                                                              >
+                                                                o
+                                                              </div>
+                                                            </MuiGridRoot>
+                                                          </ForwardRef(Grid)>
+                                                        </div>
+                                                      </MuiGridRoot>
+                                                    </ForwardRef(Grid)>
+                                                    <ForwardRef(Divider)
+                                                      className="right_info_panel_content_item_divider"
+                                                    >
+                                                      <MuiDividerRoot
+                                                        as="hr"
+                                                        className="MuiDivider-root MuiDivider-fullWidth right_info_panel_content_item_divider"
+                                                        ownerState={
+                                                          Object {
+                                                            "absolute": false,
+                                                            "className": "right_info_panel_content_item_divider",
+                                                            "component": "hr",
+                                                            "flexItem": false,
+                                                            "light": false,
+                                                            "orientation": "horizontal",
+                                                            "role": undefined,
+                                                            "textAlign": "center",
+                                                            "variant": "fullWidth",
+                                                          }
+                                                        }
+                                                      >
+                                                        <hr
+                                                          className="MuiDivider-root MuiDivider-fullWidth right_info_panel_content_item_divider css-9mgopn-MuiDivider-root"
+                                                        />
+                                                      </MuiDividerRoot>
+                                                    </ForwardRef(Divider)>
+                                                  </div>
+                                                </MuiGridRoot>
+                                              </ForwardRef(Grid)>
+                                            </div>
+                                          </InfoViewContent>
+                                        </div>
+                                      </MuiPaperRoot>
+                                    </ForwardRef(Paper)>
+                                  </MuiDrawerPaper>
+                                </Transition>
+                              </ForwardRef(Slide)>
+                            </div>
+                          </MuiDrawerDocked>
                         </ForwardRef(Drawer)>
                       </RightInfoPanel>
                     </div>

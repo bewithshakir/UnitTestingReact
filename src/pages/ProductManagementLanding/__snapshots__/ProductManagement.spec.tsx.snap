@@ -77,6 +77,7 @@ exports[`Given Sortby Menu on Product Landing Page Render Sortby Menu 1`] = `
   <ForwardRef(Popper)
     anchorEl={null}
     className="sortby-popper"
+    data-testid="sortby-dropdown"
     disablePortal={true}
     open={false}
     placement="bottom-start"

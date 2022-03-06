@@ -35,9 +35,7 @@ export default function HorizontalBar (props: HorizontalBarProps) {
   const version = useStore((state) => state.version);
   const navigate = useNavigate();
   const { pathname, search } = useLocation();
-  const selectedCustomerName = useAddedCustomerNameStore(
-    (state) => state.customerName
-  );
+  const selectedCustomerName = useAddedCustomerNameStore((state) => state.customerName);
   const selectedCustomerId = useAddedCustomerIdStore(
     (state) => state.customerId
   );
@@ -118,6 +116,8 @@ export default function HorizontalBar (props: HorizontalBarProps) {
       navigate('/assetManagement');
     } else if (pathname.includes('/trucks/addTruck')) {
       navigate('/trucks');
+    } else if(pathname.includes('/trucks/editTruck')){
+      navigate('/trucks'); 
     } else {
       props.onBack();
     }
@@ -154,15 +154,17 @@ export default function HorizontalBar (props: HorizontalBarProps) {
       case pathname.includes('AddAttachment'):
         return t('UploadAttachments.breadCrumbText');
       case pathname.includes('truckParkingLot/add'):
-        return t('addTruckParkingLot.title');
+        return t('truckParkingLot.addTruckParkingLot.title');
       case pathname.includes('truckParkingLot/edit'):
-        return t('addTruckParkingLot.form.editTitle');
+        return t('truckParkingLot.addTruckParkingLot.form.editTitle');
       case pathname.includes('assetManagement/add'):
         return t('assetManagement.form.addTitle');
       case pathname.includes('assetManagement/edit'):
         return t('assetManagement.form.editTitle');
       case pathname.includes('trucks/addTruck'):
-        return t('addTruckFormLabels.addTruckTitle');
+        return t('addTruckFormLabels.addTruckTitle'); 
+      case pathname.includes('trucks/editTruck'):
+          return t('addTruckFormLabels.editTruck');  
       default:
         return selectedCustomerName;
     }

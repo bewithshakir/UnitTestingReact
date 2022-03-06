@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Given Search Input on Truck Overview Page Render Search Input onChange 1`] = `
+<ForwardRef(OutlinedInput)
+  className="searchinput"
+  id="SearchInput"
+  inputProps={
+    Object {
+      "aria-label": "search",
+    }
+  }
+  onChange={[Function]}
+  placeholder="Search"
+  startAdornment={
+    <ForwardRef(InputAdornment)
+      className="adornment"
+      position="start"
+    >
+      <ForwardRef(IconButton)
+        aria-label="search"
+        edge="start"
+      >
+        <DropSearchIcon />
+      </ForwardRef(IconButton)>
+    </ForwardRef(InputAdornment)>
+  }
+  style={
+    Object {
+      "width": "100%",
+    }
+  }
+  type="text"
+  value=""
+/>
+`;
+
+exports[`Given Sortby Menu on Truck List Landing Page- Render Sortby Menu 1`] = `
+<div>
+  <WithStyles(ForwardRef(Button))
+    aria-haspopup="true"
+    aria-label="sortby menu list"
+    className="btn-sortby "
+    onClick={[Function]}
+    startIcon={<Memo />}
+  >
+    buttons.sort by
+  </WithStyles(ForwardRef(Button))>
+  <ForwardRef(Popper)
+    anchorEl={null}
+    className="sortby-popper"
+    data-testid="sortby-dropdown"
+    disablePortal={true}
+    open={false}
+    placement="bottom-start"
+    transition={true}
+  >
+    <Component />
+  </ForwardRef(Popper)>
+</div>
+`;

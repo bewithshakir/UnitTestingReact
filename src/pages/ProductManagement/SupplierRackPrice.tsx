@@ -13,7 +13,8 @@ type props = {
     isDisabled: boolean,
     formik: any,
     setSupplierPrice: (value: any) => any
-    resetSupplierValue?: any
+    resetSupplierValue?: any,
+    isSaveCancelShown: boolean
 }
 
 interface GeneralOptions {
@@ -22,7 +23,7 @@ interface GeneralOptions {
 }
 
 
-export default function SupplierRack({ isDisabled, formik, setSupplierPrice, resetSupplierValue }: props) {
+export default function SupplierRack({ isDisabled, formik, setSupplierPrice, resetSupplierValue, isSaveCancelShown }: props) {
 
     const { t } = useTranslation();
     const [open, setOpen] = useState(false);
@@ -44,14 +45,19 @@ export default function SupplierRack({ isDisabled, formik, setSupplierPrice, res
     }, [formik]);
 
     useEffect(() => {
-        resetSupplierSelection();
+        if(isSaveCancelShown){
+            resetSupplierSelection();
+        }
+        
     }, [resetSupplierValue]);
 
     const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const clearPriceOnBtn = () => {
         if (formik.values.opisName) {
             resetSupplierSelection();
-        } else {
-            setOpen(true);
         }
     };
 
@@ -79,15 +85,13 @@ export default function SupplierRack({ isDisabled, formik, setSupplierPrice, res
     const onRowActionSelect = (selectedIds: string[]) => {
         setSelectedRows(selectedIds);
     };
-    const endIcon = formik.values.opisName ? {
-        endIcon: <CloseIcon key={'dummyKey1'} className='info_panel_close_icon' color='var(--White)'
-        />
-    } : {};
+
     return (
         <React.Fragment>
             <h4 className='checkbox-heading price-heading'> {t("addProductFormLabels.supplierrackheading")} </h4>
-            <Button variant="outlined" onClick={handleClickOpen} className='supplier-modal-btn' disabled={!(formik.values.city && formik.values.supplier?.length && formik.values.branded?.length && formik.values.actualProduct?.length) || isDisabled} {...endIcon} >
-                {formik.values.opisName ? `Supplier price $${formik.values.supplierPrice}` : "Choose the supplier price"}
+            <Button variant="outlined" className={'supplier-modal-btn '+ (!isSaveCancelShown && isDisabled ? 'modal-btn-viewmode':'')}  disabled={!(formik.values.city && formik.values.supplier?.length && formik.values.branded?.length && formik.values.actualProduct?.length) || isDisabled} >
+                <div className='price-div' onClick={handleClickOpen}> {formik.values.opisName ? `Supplier price $${formik.values.supplierPrice}` : "Choose the supplier price"} </div> {formik.values.opisName && isSaveCancelShown && <div className='clear-price-cross' onClick={clearPriceOnBtn}><IconButton edge='start'  >
+                    <CloseIcon /> </IconButton> </div>}
             </Button>
             <Dialog
                 open={open}
@@ -130,17 +134,18 @@ export default function SupplierRack({ isDisabled, formik, setSupplierPrice, res
                                 />
                             </Grid>
                         </Grid>
+                        <DialogActions className="supplierRack-dialog-actions">
+                            <Button types="cancel" aria-label="cancel" className="mr-4" onClick={handleClose}>
+                                {'Cancel'}
+                            </Button>
+                            <Button
+                                types="primary"
+                                aria-label="primary" className="mr-4 supplierRackBtn" onClick={handleDone} disabled={selectedRows.length === 0}>
+                                {'Done'}
+                            </Button>
+                        </DialogActions>
                     </DialogContent>
-                    <DialogActions className="supplierRack-dialog-actions">
-                        <Button types="cancel" aria-label="cancel" className="mr-4" onClick={handleClose}>
-                            {'Cancel'}
-                        </Button>
-                        <Button
-                            types="primary"
-                            aria-label="primary" className="mr-4 supplierRackBtn" onClick={handleDone} disabled={selectedRows.length === 0}>
-                            {'Done'}
-                        </Button>
-                    </DialogActions>
+
                 </div>
             </Dialog>
         </React.Fragment >

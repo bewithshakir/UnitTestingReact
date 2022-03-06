@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React, { memo, useEffect } from 'react';
 import { HorizontalBarVersionState, useStore } from '../../store';
 import { Box, Grid, FormControl, Typography } from "@mui/material";
@@ -14,7 +15,7 @@ import { useAllParkingLotList } from './queries';
 import GridComponent from "../../components/UIComponents/DataGird/grid.component";
 import { DataGridActionsMenuOption } from '../../components/UIComponents/Menu/DataGridActionsMenu.component';
 import { AllParkingLots, MASS_ACTION_TYPES, ROW_ACTION_TYPES, SORTBY_TYPES } from './config';
-import { RightInfoPanel } from '../../components/UIComponents/RightInfoPanel/RightInfoPanel.component';
+import { RightInfoPanel } from "../../components/UIComponents/RightInfoPanel/RightInfoPanel.component";
 import { getSeachedDataTotalCount } from '../../utils/helperFunctions';
 export interface ParkingLotsManagementProps {
     version: string
@@ -27,6 +28,7 @@ const index: React.FC<ParkingLotsManagementProps> = memo(() => {
     const massActionOptions = ParkingLotObj.massActions();
     const rowActionOptions = ParkingLotObj.rowActions();
     const { SortByOptions, FilterByFields } = AllParkingLots.LandingPage;
+    const [drawerOpen, setDrawerOpen] = React.useState(false);
 
 
     const [searchTerm, setSearchTerm] = React.useState("");
@@ -51,11 +53,15 @@ const index: React.FC<ParkingLotsManagementProps> = memo(() => {
         if (data) {
             const list: any = [];
             data?.pages?.forEach((item: any) => {
-                list.push(...item.data.lots);
+                list.push(...item?.data?.lots);
             });
             setAllParkingLotList(list);
         }
     }, [data]);
+
+    const drawerClose = () => {
+        setDrawerOpen(false);
+    };
 
     const onInputChange = (value: string) => {
         setSearchTerm(value);
@@ -74,10 +80,10 @@ const index: React.FC<ParkingLotsManagementProps> = memo(() => {
         }
     };
 
-    const handleRowAction = (action: DataGridActionsMenuOption) => {
+    const handleRowAction = (action: DataGridActionsMenuOption, row: any) => {
         switch (action.action) {
             case ROW_ACTION_TYPES.EDIT:
-                navigate("/customer/:customerId/parkingLots/viewLot/:parkinglotId");
+                navigate(`/customer/${row.customerId}/parkingLots/viewLot/${row.deliveryLocationId}?backTo=parkinglotlanding`);
                 break;
             default: return;
         }
@@ -99,7 +105,11 @@ const index: React.FC<ParkingLotsManagementProps> = memo(() => {
         setSortOrder(sortOrder);
     };
 
-    const openFilterPanel = () => {
+    const handleLotFilterPanelClose = () => toggleFilterPanel(!isFilterPanelOpen);
+
+
+    const handleLotFilterPanelOpen = () => {
+        setDrawerOpen(false);
         toggleFilterPanel(!isFilterPanelOpen);
     };
 
@@ -117,7 +127,7 @@ const index: React.FC<ParkingLotsManagementProps> = memo(() => {
                                 id="parkingLotFilter"
                                 types="filter"
                                 aria-label="dafault"
-                                onClick={openFilterPanel}
+                                onClick={handleLotFilterPanelOpen}
                                 startIcon={<FilterIcon />}
                             >
                                 {t("buttons.filter")}
@@ -188,14 +198,22 @@ const index: React.FC<ParkingLotsManagementProps> = memo(() => {
                         showImg={<ParkingLotNoDataIcon />}
                     />
 
-                    <RightInfoPanel
+                    {/* <RightInfoPanel
                         panelType="dynamic-filter"
                         open={isFilterPanelOpen} headingText={t('parkingLotManagement.filterHeader')}
                         provideFilterParams={getFilterParams}
                         onClose={() => toggleFilterPanel(false)}
                         fields={FilterByFields}
                         storeKey={'parkingLotManagementFilter'}
+                    /> */}
+
+                    <RightInfoPanel panelType="dynamic-filter"
+                        open={isFilterPanelOpen} headingText={"customer-filter-panel.header.filter"}
+                        provideFilterParams={getFilterParams} onClose={handleLotFilterPanelClose}
+                        fields={FilterByFields}
+                        storeKey={'customerFilter'}
                     />
+                    <RightInfoPanel panelType="info-view" open={drawerOpen} headingText={""} info={"info"} onClose={drawerClose} />
 
                 </Grid>
             </Grid>
