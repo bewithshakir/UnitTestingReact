@@ -174,13 +174,6 @@
     "style-loader": "^2.0.0",
     "ts-jest": "27.0.5"
   },
-  "lint-staged": {
-    "**/*.{js,jsx,ts,tsx}": [
-      "yarn eslint",
-      "yarn prettier --write",
-      "yarn test --watchAll=false --findRelatedTests --bail"
-    ]
-  },
   "husky":{
     "hooks": {
        "pre-commit": "yarn test"
