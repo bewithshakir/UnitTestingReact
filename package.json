@@ -59,7 +59,8 @@
     "start-prod": "react-scripts start",
     "build": "export NODE_OPTIONS=--openssl-legacy-provider && react-scripts --openssl-legacy-provider build",
     "build-docker": "react-scripts --openssl-legacy-provider build",
-    "test": "cross-env  react-scripts test --passWithNoTests",
+    "test": "react-scripts test",
+    "test:watch": "set CI=true react-scripts test",
     "coverage": "react-scripts test --coverage",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
@@ -181,11 +182,11 @@
       "yarn test --watchAll=false --findRelatedTests --bail"
     ]
   },
-  "husky":{
+  "husky": {
     "hooks": {
-       "pre-commit": "lint-staged"
+      "pre-commit": "lint-staged"
     }
-  } ,
+  },
   "resolutions": {
     "babel-loader": "8.1.0"
   }
