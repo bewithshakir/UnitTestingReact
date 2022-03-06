@@ -181,6 +181,11 @@
       "yarn test --watchAll=false --findRelatedTests --bail"
     ]
   },
+  "husky":{
+    "hooks": {
+       "pre-commit": "yarn test"
+    }
+  } ,
   "resolutions": {
     "babel-loader": "8.1.0"
   }
