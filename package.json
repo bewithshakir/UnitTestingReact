@@ -59,7 +59,7 @@
     "start-prod": "react-scripts start",
     "build": "export NODE_OPTIONS=--openssl-legacy-provider && react-scripts --openssl-legacy-provider build",
     "build-docker": "react-scripts --openssl-legacy-provider build",
-    "test": "react-scripts test --watchAll=false",
+    "test": "react-scripts test --watchAll=false --onlyChanged --bail",
     "test:watch": "set CI=true react-scripts test",
     "coverage": "react-scripts test --coverage",
     "eject": "react-scripts eject",
@@ -174,11 +174,6 @@
     "sass-loader": "^10.1.1",
     "style-loader": "^2.0.0",
     "ts-jest": "27.0.5"
-  },
-  "lint-staged": {
-    "**/*.{js,jsx,ts,tsx}": [
-      "yarn test --watchAll=false --findRelatedTests --bail"
-    ]
   },
   "resolutions": {
     "babel-loader": "8.1.0"
