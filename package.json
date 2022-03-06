@@ -59,7 +59,7 @@
     "start-prod": "react-scripts start",
     "build": "export NODE_OPTIONS=--openssl-legacy-provider && react-scripts --openssl-legacy-provider build",
     "build-docker": "react-scripts --openssl-legacy-provider build",
-    "test": "set CI=true react-scripts test",
+    "test": "react-scripts test --watchAll=false",
     "test:watch": "set CI=true react-scripts test",
     "coverage": "react-scripts test --coverage",
     "eject": "react-scripts eject",
@@ -177,15 +177,8 @@
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx}": [
-      "yarn eslint",
-      "yarn prettier --write",
       "yarn test --watchAll=false --findRelatedTests --bail"
     ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
   },
   "resolutions": {
     "babel-loader": "8.1.0"
