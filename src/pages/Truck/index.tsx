@@ -46,7 +46,7 @@ const TruckLandingContent: React.FC<TruckLandingContentProps> = memo(() => {
 
 
   setVersion("NavLinks");
-  const { SortByOptions } = TruckManagement.LandingPage;
+  const { SortByOptions, DataGridFields } = TruckManagement.LandingPage;
   const [resetTableCollaps, setResetTableCollaps] = useState(false);
   const { t } = useTranslation();
   const { data, fetchNextPage, isLoading, isFetching }: any = useTruckList(
@@ -190,8 +190,8 @@ const onInputChange = (value: string) => {
             onResetTableCollaps={setResetTableCollaps}
             InnerTableComponent={
               {
-                ['LOCATIONS']: <Table primaryKey='id' id={deliveryVehicleId} headCells={headCellsLots} />,
-                ['TANKS']: <SubTableTanks tanksDataModel={truckObj.tanksDataModel} primaryKey='id' id={deliveryVehicleId} headCells={tanksTableCells} />,
+                [DataGridFields.LOCATIONS.label]: <Table primaryKey='id' id={deliveryVehicleId} headCells={headCellsLots} />,
+                [DataGridFields.TANKS.label]: <SubTableTanks tanksDataModel={truckObj.tanksDataModel} primaryKey='id' id={deliveryVehicleId} headCells={tanksTableCells} />,
               }
             }
             onRowActionSelect={handleRowAction}
