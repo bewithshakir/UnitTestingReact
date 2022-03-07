@@ -180,6 +180,7 @@ const AssetManagementLandingContent: React.FC<AssetManagementProps> = memo(() =>
                         onRowActionSelect={handleRowAction}
                         rowActionOptions={rowActionOptions}
                         searchTerm={searchTerm}
+                        filterData={filterData}
                         openDrawer={openDrawer}
                         noDataMsg='Add Asset by clicking on the "Add Asset" button.'
                     />

@@ -194,6 +194,7 @@ const index: React.FC<ParkingLotsManagementProps> = memo(() => {
                         rowActionOptions={rowActionOptions}
                         getPages={fetchNextPage}
                         searchTerm={searchTerm}
+                        filterData={filterData}
                         noDataMsg='Add Parking Lot by clicking on the "ADD LOT" button.'
                         showImg={<ParkingLotNoDataIcon />}
                     />

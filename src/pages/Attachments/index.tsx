@@ -144,6 +144,7 @@ const LandingPage: React.FC<props> = () => {
                         getPages={fetchNextPage}
                         onRowActionSelect={() => null}
                         searchTerm={searchTerm}
+                        filterData={filterData}
                         rowActionOptions={[]}
                         noDataMsg={t('Attachments.noDataMsg')}
                     />
