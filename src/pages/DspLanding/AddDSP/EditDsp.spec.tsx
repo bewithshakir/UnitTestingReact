@@ -1,10 +1,6 @@
-import { waitFor, render, cleanup, act, fireEvent, waitForElementToBeRemoved, RenderResult } from "@testing-library/react";
-import selectEvent from 'react-select-event';
+import { waitFor, render, cleanup, fireEvent, RenderResult } from "@testing-library/react";
 import userEvent from '@testing-library/user-event';
 import { rest } from "msw";
-import routeDataDom from 'react-router-dom';
-
-
 
 import { renderWithClient } from '../../../tests/utils';
 import { serverMsw } from "../../../setupTests";
@@ -22,14 +18,14 @@ jest.mock('react-router-dom', () => ({
     }),
     useParams: () => ({
         customerId: '111edit',
-        dspId: '222',
-        params: {
-            addedCustomerId: '123'
-        }
+        dspId: '222'
     })
 }));
 
-
+jest.mock('../../../store', () => ({
+    ...jest.requireActual('../../../store') as any,
+    useAddedCustomerIdStore: ()=> '111edit'
+}));
 
 
 function getAllElements (component: any) {

@@ -3421,7 +3421,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                       <ForwardRef(InputLabel)
                         aria-labelledby="addProductFormLabels.supplierlabel"
                         aria-required={true}
-                        htmlFor="supplier-label"
+                        htmlFor="supplier"
                         shrink={true}
                         style={
                           Object {
@@ -3452,7 +3452,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                           }
                         }
                         hideSelectedOptions={false}
-                        id="supplier"
+                        inputId="supplier"
                         isDisabled={false}
                         isMulti={true}
                         isSearchable={false}
@@ -3487,7 +3487,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                   <ForwardRef(InputLabel)
                     aria-labelledby="addProductFormLabels.supplierlabel"
                     aria-required={true}
-                    htmlFor="supplier-label"
+                    htmlFor="supplier"
                     shrink={true}
                     style={
                       Object {
@@ -3505,7 +3505,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                         }
                       }
                       data-shrink={true}
-                      htmlFor="supplier-label"
+                      htmlFor="supplier"
                       ownerState={
                         Object {
                           "aria-labelledby": "addProductFormLabels.supplierlabel",
@@ -3538,7 +3538,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                             "size": "medium",
                             "variant": "outlined",
                           },
-                          "htmlFor": "supplier-label",
+                          "htmlFor": "supplier",
                           "required": false,
                           "shrink": true,
                           "size": "medium",
@@ -3565,7 +3565,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                           }
                         }
                         data-shrink={true}
-                        htmlFor="supplier-label"
+                        htmlFor="supplier"
                         style={
                           Object {
                             "color": "var(--Darkgray)",
@@ -3584,7 +3584,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                             }
                           }
                           data-shrink={true}
-                          htmlFor="supplier-label"
+                          htmlFor="supplier"
                           ownerState={
                             Object {
                               "aria-labelledby": "addProductFormLabels.supplierlabel",
@@ -3609,7 +3609,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                               "error": false,
                               "filled": false,
                               "focused": false,
-                              "htmlFor": "supplier-label",
+                              "htmlFor": "supplier",
                               "required": false,
                               "style": Object {
                                 "color": "var(--Darkgray)",
@@ -3627,7 +3627,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                             aria-required={true}
                             className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary css-1kty9di-MuiFormLabel-root-MuiInputLabel-root"
                             data-shrink={true}
-                            htmlFor="supplier-label"
+                            htmlFor="supplier"
                             style={
                               Object {
                                 "color": "var(--Darkgray)",
@@ -3661,7 +3661,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                       }
                     }
                     hideSelectedOptions={false}
-                    id="supplier"
+                    inputId="supplier"
                     isDisabled={false}
                     isMulti={true}
                     isSearchable={false}
@@ -3699,7 +3699,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                       getOptionLabel={[Function]}
                       getOptionValue={[Function]}
                       hideSelectedOptions={false}
-                      id="supplier"
+                      inputId="supplier"
                       inputValue=""
                       isDisabled={false}
                       isLoading={false}
@@ -3742,7 +3742,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                         hasValue={false}
                         innerProps={
                           Object {
-                            "id": "supplier",
+                            "id": undefined,
                             "onKeyDown": [Function],
                           }
                         }
@@ -3776,7 +3776,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                             "getOptionLabel": [Function],
                             "getOptionValue": [Function],
                             "hideSelectedOptions": false,
-                            "id": "supplier",
+                            "inputId": "supplier",
                             "inputValue": "",
                             "isDisabled": false,
                             "isLoading": false,
@@ -3855,12 +3855,10 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                               "position": "relative",
                             }
                           }
-                          id="supplier"
                           onKeyDown={[Function]}
                         >
                           <div
                             className="multi-select-container css-b62m3t-container"
-                            id="supplier"
                             onKeyDown={[Function]}
                           >
                             <LiveRegion
@@ -3902,7 +3900,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                                   "getOptionLabel": [Function],
                                   "getOptionValue": [Function],
                                   "hideSelectedOptions": false,
-                                  "id": "supplier",
+                                  "inputId": "supplier",
                                   "inputValue": "",
                                   "isDisabled": false,
                                   "isLoading": false,
@@ -4064,7 +4062,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                                   "getOptionLabel": [Function],
                                   "getOptionValue": [Function],
                                   "hideSelectedOptions": false,
-                                  "id": "supplier",
+                                  "inputId": "supplier",
                                   "inputValue": "",
                                   "isDisabled": false,
                                   "isLoading": false,
@@ -4201,7 +4199,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                                         "getOptionLabel": [Function],
                                         "getOptionValue": [Function],
                                         "hideSelectedOptions": false,
-                                        "id": "supplier",
+                                        "inputId": "supplier",
                                         "inputValue": "",
                                         "isDisabled": false,
                                         "isLoading": false,
@@ -4330,7 +4328,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                                               "getOptionLabel": [Function],
                                               "getOptionValue": [Function],
                                               "hideSelectedOptions": false,
-                                              "id": "supplier",
+                                              "inputId": "supplier",
                                               "inputValue": "",
                                               "isDisabled": false,
                                               "isLoading": false,
@@ -4429,7 +4427,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                                           aria-owns="react-select-3-listbox"
                                           aria-readonly={true}
                                           disabled={false}
-                                          id="react-select-3-input"
+                                          id="supplier"
                                           innerRef={[Function]}
                                           inputMode="none"
                                           onBlur={[Function]}
@@ -4459,7 +4457,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                                               }
                                             }
                                             disabled={false}
-                                            id="react-select-3-input"
+                                            id="supplier"
                                             inputMode="none"
                                             onBlur={[Function]}
                                             onChange={[Function]}
@@ -4478,7 +4476,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                                               aria-readonly={true}
                                               className="css-mohuvp-dummyInput-DummyInput"
                                               disabled={false}
-                                              id="react-select-3-input"
+                                              id="supplier"
                                               inputMode="none"
                                               onBlur={[Function]}
                                               onChange={[Function]}
@@ -4527,7 +4525,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                                         "getOptionLabel": [Function],
                                         "getOptionValue": [Function],
                                         "hideSelectedOptions": false,
-                                        "id": "supplier",
+                                        "inputId": "supplier",
                                         "inputValue": "",
                                         "isDisabled": false,
                                         "isLoading": false,
@@ -4646,7 +4644,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                                               "getOptionLabel": [Function],
                                               "getOptionValue": [Function],
                                               "hideSelectedOptions": false,
-                                              "id": "supplier",
+                                              "inputId": "supplier",
                                               "inputValue": "",
                                               "isDisabled": false,
                                               "isLoading": false,
@@ -4755,7 +4753,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                                               "getOptionLabel": [Function],
                                               "getOptionValue": [Function],
                                               "hideSelectedOptions": false,
-                                              "id": "supplier",
+                                              "inputId": "supplier",
                                               "inputValue": "",
                                               "isDisabled": false,
                                               "isLoading": false,
@@ -4864,7 +4862,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                                                 "getOptionLabel": [Function],
                                                 "getOptionValue": [Function],
                                                 "hideSelectedOptions": false,
-                                                "id": "supplier",
+                                                "inputId": "supplier",
                                                 "inputValue": "",
                                                 "isDisabled": false,
                                                 "isLoading": false,
@@ -5086,7 +5084,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                       <ForwardRef(InputLabel)
                         aria-labelledby="addProductFormLabels.brandedlabel"
                         aria-required={true}
-                        htmlFor="branded-label"
+                        htmlFor="branded"
                         shrink={true}
                         style={
                           Object {
@@ -5117,7 +5115,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                           }
                         }
                         hideSelectedOptions={false}
-                        id="branded"
+                        inputId="branded"
                         isDisabled={false}
                         isMulti={true}
                         isSearchable={false}
@@ -5152,7 +5150,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                   <ForwardRef(InputLabel)
                     aria-labelledby="addProductFormLabels.brandedlabel"
                     aria-required={true}
-                    htmlFor="branded-label"
+                    htmlFor="branded"
                     shrink={true}
                     style={
                       Object {
@@ -5170,7 +5168,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                         }
                       }
                       data-shrink={true}
-                      htmlFor="branded-label"
+                      htmlFor="branded"
                       ownerState={
                         Object {
                           "aria-labelledby": "addProductFormLabels.brandedlabel",
@@ -5203,7 +5201,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                             "size": "medium",
                             "variant": "outlined",
                           },
-                          "htmlFor": "branded-label",
+                          "htmlFor": "branded",
                           "required": false,
                           "shrink": true,
                           "size": "medium",
@@ -5230,7 +5228,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                           }
                         }
                         data-shrink={true}
-                        htmlFor="branded-label"
+                        htmlFor="branded"
                         style={
                           Object {
                             "color": "var(--Darkgray)",
@@ -5249,7 +5247,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                             }
                           }
                           data-shrink={true}
-                          htmlFor="branded-label"
+                          htmlFor="branded"
                           ownerState={
                             Object {
                               "aria-labelledby": "addProductFormLabels.brandedlabel",
@@ -5274,7 +5272,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                               "error": false,
                               "filled": false,
                               "focused": false,
-                              "htmlFor": "branded-label",
+                              "htmlFor": "branded",
                               "required": false,
                               "style": Object {
                                 "color": "var(--Darkgray)",
@@ -5292,7 +5290,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                             aria-required={true}
                             className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary css-1kty9di-MuiFormLabel-root-MuiInputLabel-root"
                             data-shrink={true}
-                            htmlFor="branded-label"
+                            htmlFor="branded"
                             style={
                               Object {
                                 "color": "var(--Darkgray)",
@@ -5326,7 +5324,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                       }
                     }
                     hideSelectedOptions={false}
-                    id="branded"
+                    inputId="branded"
                     isDisabled={false}
                     isMulti={true}
                     isSearchable={false}
@@ -5364,7 +5362,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                       getOptionLabel={[Function]}
                       getOptionValue={[Function]}
                       hideSelectedOptions={false}
-                      id="branded"
+                      inputId="branded"
                       inputValue=""
                       isDisabled={false}
                       isLoading={false}
@@ -5407,7 +5405,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                         hasValue={false}
                         innerProps={
                           Object {
-                            "id": "branded",
+                            "id": undefined,
                             "onKeyDown": [Function],
                           }
                         }
@@ -5441,7 +5439,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                             "getOptionLabel": [Function],
                             "getOptionValue": [Function],
                             "hideSelectedOptions": false,
-                            "id": "branded",
+                            "inputId": "branded",
                             "inputValue": "",
                             "isDisabled": false,
                             "isLoading": false,
@@ -5520,12 +5518,10 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                               "position": "relative",
                             }
                           }
-                          id="branded"
                           onKeyDown={[Function]}
                         >
                           <div
                             className="multi-select-container css-b62m3t-container"
-                            id="branded"
                             onKeyDown={[Function]}
                           >
                             <LiveRegion
@@ -5567,7 +5563,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                                   "getOptionLabel": [Function],
                                   "getOptionValue": [Function],
                                   "hideSelectedOptions": false,
-                                  "id": "branded",
+                                  "inputId": "branded",
                                   "inputValue": "",
                                   "isDisabled": false,
                                   "isLoading": false,
@@ -5729,7 +5725,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                                   "getOptionLabel": [Function],
                                   "getOptionValue": [Function],
                                   "hideSelectedOptions": false,
-                                  "id": "branded",
+                                  "inputId": "branded",
                                   "inputValue": "",
                                   "isDisabled": false,
                                   "isLoading": false,
@@ -5866,7 +5862,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                                         "getOptionLabel": [Function],
                                         "getOptionValue": [Function],
                                         "hideSelectedOptions": false,
-                                        "id": "branded",
+                                        "inputId": "branded",
                                         "inputValue": "",
                                         "isDisabled": false,
                                         "isLoading": false,
@@ -5995,7 +5991,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                                               "getOptionLabel": [Function],
                                               "getOptionValue": [Function],
                                               "hideSelectedOptions": false,
-                                              "id": "branded",
+                                              "inputId": "branded",
                                               "inputValue": "",
                                               "isDisabled": false,
                                               "isLoading": false,
@@ -6094,7 +6090,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                                           aria-owns="react-select-4-listbox"
                                           aria-readonly={true}
                                           disabled={false}
-                                          id="react-select-4-input"
+                                          id="branded"
                                           innerRef={[Function]}
                                           inputMode="none"
                                           onBlur={[Function]}
@@ -6124,7 +6120,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                                               }
                                             }
                                             disabled={false}
-                                            id="react-select-4-input"
+                                            id="branded"
                                             inputMode="none"
                                             onBlur={[Function]}
                                             onChange={[Function]}
@@ -6143,7 +6139,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                                               aria-readonly={true}
                                               className="css-mohuvp-dummyInput-DummyInput"
                                               disabled={false}
-                                              id="react-select-4-input"
+                                              id="branded"
                                               inputMode="none"
                                               onBlur={[Function]}
                                               onChange={[Function]}
@@ -6192,7 +6188,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                                         "getOptionLabel": [Function],
                                         "getOptionValue": [Function],
                                         "hideSelectedOptions": false,
-                                        "id": "branded",
+                                        "inputId": "branded",
                                         "inputValue": "",
                                         "isDisabled": false,
                                         "isLoading": false,
@@ -6311,7 +6307,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                                               "getOptionLabel": [Function],
                                               "getOptionValue": [Function],
                                               "hideSelectedOptions": false,
-                                              "id": "branded",
+                                              "inputId": "branded",
                                               "inputValue": "",
                                               "isDisabled": false,
                                               "isLoading": false,
@@ -6420,7 +6416,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                                               "getOptionLabel": [Function],
                                               "getOptionValue": [Function],
                                               "hideSelectedOptions": false,
-                                              "id": "branded",
+                                              "inputId": "branded",
                                               "inputValue": "",
                                               "isDisabled": false,
                                               "isLoading": false,
@@ -6529,7 +6525,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                                                 "getOptionLabel": [Function],
                                                 "getOptionValue": [Function],
                                                 "hideSelectedOptions": false,
-                                                "id": "branded",
+                                                "inputId": "branded",
                                                 "inputValue": "",
                                                 "isDisabled": false,
                                                 "isLoading": false,
@@ -6751,7 +6747,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                       <ForwardRef(InputLabel)
                         aria-labelledby="addProductFormLabels.actualproductlabel"
                         aria-required={true}
-                        htmlFor="actualProduct-label"
+                        htmlFor="actualProduct"
                         shrink={true}
                         style={
                           Object {
@@ -6782,7 +6778,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                           }
                         }
                         hideSelectedOptions={false}
-                        id="actualProduct"
+                        inputId="actualProduct"
                         isDisabled={false}
                         isMulti={true}
                         isSearchable={false}
@@ -6817,7 +6813,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                   <ForwardRef(InputLabel)
                     aria-labelledby="addProductFormLabels.actualproductlabel"
                     aria-required={true}
-                    htmlFor="actualProduct-label"
+                    htmlFor="actualProduct"
                     shrink={true}
                     style={
                       Object {
@@ -6835,7 +6831,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                         }
                       }
                       data-shrink={true}
-                      htmlFor="actualProduct-label"
+                      htmlFor="actualProduct"
                       ownerState={
                         Object {
                           "aria-labelledby": "addProductFormLabels.actualproductlabel",
@@ -6868,7 +6864,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                             "size": "medium",
                             "variant": "outlined",
                           },
-                          "htmlFor": "actualProduct-label",
+                          "htmlFor": "actualProduct",
                           "required": false,
                           "shrink": true,
                           "size": "medium",
@@ -6895,7 +6891,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                           }
                         }
                         data-shrink={true}
-                        htmlFor="actualProduct-label"
+                        htmlFor="actualProduct"
                         style={
                           Object {
                             "color": "var(--Darkgray)",
@@ -6914,7 +6910,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                             }
                           }
                           data-shrink={true}
-                          htmlFor="actualProduct-label"
+                          htmlFor="actualProduct"
                           ownerState={
                             Object {
                               "aria-labelledby": "addProductFormLabels.actualproductlabel",
@@ -6939,7 +6935,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                               "error": false,
                               "filled": false,
                               "focused": false,
-                              "htmlFor": "actualProduct-label",
+                              "htmlFor": "actualProduct",
                               "required": false,
                               "style": Object {
                                 "color": "var(--Darkgray)",
@@ -6957,7 +6953,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                             aria-required={true}
                             className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary css-1kty9di-MuiFormLabel-root-MuiInputLabel-root"
                             data-shrink={true}
-                            htmlFor="actualProduct-label"
+                            htmlFor="actualProduct"
                             style={
                               Object {
                                 "color": "var(--Darkgray)",
@@ -6991,7 +6987,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                       }
                     }
                     hideSelectedOptions={false}
-                    id="actualProduct"
+                    inputId="actualProduct"
                     isDisabled={false}
                     isMulti={true}
                     isSearchable={false}
@@ -7029,7 +7025,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                       getOptionLabel={[Function]}
                       getOptionValue={[Function]}
                       hideSelectedOptions={false}
-                      id="actualProduct"
+                      inputId="actualProduct"
                       inputValue=""
                       isDisabled={false}
                       isLoading={false}
@@ -7072,7 +7068,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                         hasValue={false}
                         innerProps={
                           Object {
-                            "id": "actualProduct",
+                            "id": undefined,
                             "onKeyDown": [Function],
                           }
                         }
@@ -7106,7 +7102,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                             "getOptionLabel": [Function],
                             "getOptionValue": [Function],
                             "hideSelectedOptions": false,
-                            "id": "actualProduct",
+                            "inputId": "actualProduct",
                             "inputValue": "",
                             "isDisabled": false,
                             "isLoading": false,
@@ -7185,12 +7181,10 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                               "position": "relative",
                             }
                           }
-                          id="actualProduct"
                           onKeyDown={[Function]}
                         >
                           <div
                             className="multi-select-container css-b62m3t-container"
-                            id="actualProduct"
                             onKeyDown={[Function]}
                           >
                             <LiveRegion
@@ -7232,7 +7226,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                                   "getOptionLabel": [Function],
                                   "getOptionValue": [Function],
                                   "hideSelectedOptions": false,
-                                  "id": "actualProduct",
+                                  "inputId": "actualProduct",
                                   "inputValue": "",
                                   "isDisabled": false,
                                   "isLoading": false,
@@ -7394,7 +7388,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                                   "getOptionLabel": [Function],
                                   "getOptionValue": [Function],
                                   "hideSelectedOptions": false,
-                                  "id": "actualProduct",
+                                  "inputId": "actualProduct",
                                   "inputValue": "",
                                   "isDisabled": false,
                                   "isLoading": false,
@@ -7531,7 +7525,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                                         "getOptionLabel": [Function],
                                         "getOptionValue": [Function],
                                         "hideSelectedOptions": false,
-                                        "id": "actualProduct",
+                                        "inputId": "actualProduct",
                                         "inputValue": "",
                                         "isDisabled": false,
                                         "isLoading": false,
@@ -7660,7 +7654,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                                               "getOptionLabel": [Function],
                                               "getOptionValue": [Function],
                                               "hideSelectedOptions": false,
-                                              "id": "actualProduct",
+                                              "inputId": "actualProduct",
                                               "inputValue": "",
                                               "isDisabled": false,
                                               "isLoading": false,
@@ -7759,7 +7753,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                                           aria-owns="react-select-5-listbox"
                                           aria-readonly={true}
                                           disabled={false}
-                                          id="react-select-5-input"
+                                          id="actualProduct"
                                           innerRef={[Function]}
                                           inputMode="none"
                                           onBlur={[Function]}
@@ -7789,7 +7783,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                                               }
                                             }
                                             disabled={false}
-                                            id="react-select-5-input"
+                                            id="actualProduct"
                                             inputMode="none"
                                             onBlur={[Function]}
                                             onChange={[Function]}
@@ -7808,7 +7802,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                                               aria-readonly={true}
                                               className="css-mohuvp-dummyInput-DummyInput"
                                               disabled={false}
-                                              id="react-select-5-input"
+                                              id="actualProduct"
                                               inputMode="none"
                                               onBlur={[Function]}
                                               onChange={[Function]}
@@ -7857,7 +7851,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                                         "getOptionLabel": [Function],
                                         "getOptionValue": [Function],
                                         "hideSelectedOptions": false,
-                                        "id": "actualProduct",
+                                        "inputId": "actualProduct",
                                         "inputValue": "",
                                         "isDisabled": false,
                                         "isLoading": false,
@@ -7976,7 +7970,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                                               "getOptionLabel": [Function],
                                               "getOptionValue": [Function],
                                               "hideSelectedOptions": false,
-                                              "id": "actualProduct",
+                                              "inputId": "actualProduct",
                                               "inputValue": "",
                                               "isDisabled": false,
                                               "isLoading": false,
@@ -8085,7 +8079,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                                               "getOptionLabel": [Function],
                                               "getOptionValue": [Function],
                                               "hideSelectedOptions": false,
-                                              "id": "actualProduct",
+                                              "inputId": "actualProduct",
                                               "inputValue": "",
                                               "isDisabled": false,
                                               "isLoading": false,
@@ -8194,7 +8188,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                                                 "getOptionLabel": [Function],
                                                 "getOptionValue": [Function],
                                                 "hideSelectedOptions": false,
-                                                "id": "actualProduct",
+                                                "inputId": "actualProduct",
                                                 "inputValue": "",
                                                 "isDisabled": false,
                                                 "isLoading": false,

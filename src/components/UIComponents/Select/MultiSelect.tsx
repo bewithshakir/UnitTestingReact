@@ -82,11 +82,11 @@ export default function MultiSelect(props: props) {
     return (
         <Fragment>
             <FormControl className='select' >
-                <InputLabel shrink htmlFor={`${props.id}-label`} style={{ color: 'var(--Darkgray)' }} aria-labelledby={props.label} aria-required={props.required}>
+                <InputLabel shrink htmlFor={`${props.id}`} style={{ color: 'var(--Darkgray)' }} aria-labelledby={props.label} aria-required={props.required}>
                     <b>{props.label.toUpperCase()}{props.required && props.label && (<span className='super' >* </span>)}</b >
                 </InputLabel>
                 <Select
-                    id={props.id}
+                    inputId={props.id}
                     name={props.name}
                     placeholder={props.placeholder}
                     className={props.error ? 'multi-select-container error' : 'multi-select-container'}
