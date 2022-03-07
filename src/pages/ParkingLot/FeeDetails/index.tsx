@@ -121,13 +121,13 @@ export default function FeeDetails() {
 
 
     useEffect(() => {
-        if (delFeeShedList?.data?.length) {
+        if (delFeeShedList?.data) {
             setFeeShed(delFeeShedList.data.map((obj: any) => ({ label: obj.feeFrequencyNm.trim(), value: obj.feeFrequencyCd.trim() })));
         }
         if (productListData) {
             setProductCount(productListData.data?.pagination?.totalCount);
         }
-        if (productData?.data?.lotProducts?.length) {
+        if (productData?.data?.lotProducts) {
             setProductIds(productData.data.lotProducts.map((obj: any) => obj.applicableProductId));
         }
     }, [delFeeShedList, productListData, productData]);
@@ -225,12 +225,12 @@ export default function FeeDetails() {
                     }
                 }
 
-                if (!serviceFee.misc.isAllAssetType && serviceFee.assetInd === "Y") {
+                if (serviceFee.misc?.isAllAssetType === "N" && serviceFee.assetInd === "Y") {
                     assetType.value = serviceFee.assetTypeCd || "";
                     assetType.label = (assetTypeList?.data?.assets?.find((asset: any) => asset.assetId === serviceFee.assetTypeCd)?.assetNm || "").trim();
                 }
 
-                if (!serviceFee.misc.isAllVehicleType && serviceFee.assetInd !== "Y") {
+                if (serviceFee.misc?.isAllVehicleType === "N" && serviceFee.assetInd !== "Y") {
                     vehicleType.value = serviceFee.vehicleTypeCd || "";
                     vehicleType.label = (vehicleTypeList?.data?.find((vehicle: any) => vehicle.vehicleTypeCd === serviceFee.vehicleTypeCd)?.vehicleTypeNm || "").trim();
                 }

@@ -1,6 +1,6 @@
 import { mount } from 'enzyme';
 import userEvent from '@testing-library/user-event';
-import { waitFor, waitForElementToBeRemoved } from '@testing-library/react';
+import { act, waitFor, waitForElementToBeRemoved } from '@testing-library/react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
 import DspLandingContent from './index';
@@ -14,7 +14,7 @@ const mockedUsedNavigate = jest.fn();
 
 jest.mock('react-router-dom', () => ({
     ...jest.requireActual('react-router-dom') as any,
-   useNavigate: () => mockedUsedNavigate,
+    useNavigate: () => mockedUsedNavigate,
 }));
 
 
@@ -23,6 +23,10 @@ jest.mock('../../store', () => ({
     useAddedCustomerIdStore: ()=> '111edit'
 }));
 
+function getAllElements (component: any) {
+    const searchBox = component.container.querySelector('#dspSearch');
+    return { searchBox };
+}
 
 describe('Rendering of DSP Landing Component', () => {
         const component = mount(<QueryClientProvider client={queryClient}><DspLandingContent version='1' /></QueryClientProvider>);
@@ -87,6 +91,32 @@ describe('Rendering of DSP Landing Component', () => {
             await waitForElementToBeRemoved(()=> {
                 return result.getByTestId('right-drawer');
             });
+        });
+    });
+});
+
+describe('search DSP on DSP landing page', () => {
+    const result = renderWithClient(<DspLandingContent version="Breadcrumbs-Many" />);
+    const { searchBox } = getAllElements(result);
+    it('load data in form', () => {
+        act(() => {
+            userEvent.type(searchBox, 'Test DSP');
+        });
+
+        waitFor(() => {
+            expect(result.getByText(/Test Contact/i)).toBeInTheDocument();
+            expect(result.getByText(/Test DSP/i)).toBeInTheDocument();
+            expect(result.getByText(/Test State/i)).toBeInTheDocument();
+        });
+    });
+
+    it('when search result not found', async () => {
+        act(() => {
+            userEvent.type(searchBox, 'Test DAP');
+        });
+
+        waitFor(() => {
+            expect(result.getByText(/Oops.. No Results Found/i)).toBeInTheDocument();
         });
     });
 });

@@ -45,7 +45,7 @@ export default class DSPModel {
             { field: "address", label: "STREET ADDRES", type: 'text' },
             { field: "city", label: "CITY", type: 'text' },
             { field: "state", label: "STATE", type: 'text' },
-            { field: "zip", label: "ZIP", type: 'text' },
+            { field: "postalCode", label: "ZIP", type: 'text' },
             { field: "totalLotAssigned", label: "LOTS ASSIGNED", type: 'button', icon: ParkingLotIcon },
         ];
     }

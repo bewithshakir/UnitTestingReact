@@ -114,7 +114,6 @@ const index: React.FC<ParkingLotsManagementProps> = memo(() => {
     };
 
     const getFilterParams = (filterObj: { [key: string]: string[] }) => {
-        console.log(filterObj);
         setFilterData(filterObj);
     };
 

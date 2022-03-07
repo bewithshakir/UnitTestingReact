@@ -21,6 +21,7 @@ import { addTruckColorHandler, addTruckFuelHandler, addEditTruckHandler, useGetE
 import { getDspList } from '../pages/DspLanding/mockApi/handlerDspLanding';
 import { getCustomerList } from '../pages/CustomerManagement/mockApi/handlerCustomer';
 import { rightInfoFilterHandler } from '../components/UIComponents/RightInfoPanel/mockApi/handleRightInfoPanel';
+// import { getDspDataHandler } from '../pages/DspLanding/mockApi/handlerDSPData';
 
 export const handlers = [
     

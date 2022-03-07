@@ -31,8 +31,8 @@ describe('formatFileSizeUnit', () => {
     it('0 MB', () => {
         expect(formatFileSizeUnit(0)).toBe('0 MB');
     });
-    it('0 MB', () => {
-        expect(formatFileSizeUnit(10)).toBe('0 MB');
+    it('1 MB', () => {
+        expect(formatFileSizeUnit(1000000,"MB")).toBe('1 MB');
     });
 });
 

@@ -1,19 +1,16 @@
-import { waitFor, render, cleanup, fireEvent, RenderResult } from "@testing-library/react";
+import { cleanup, fireEvent, render, RenderResult, waitFor } from "@testing-library/react";
 import userEvent from '@testing-library/user-event';
 import { rest } from "msw";
-
-import { renderWithClient } from '../../../tests/utils';
-import { serverMsw } from "../../../setupTests";
 import DiscardChangesDialog from '../../../components/UIComponents/ConfirmationDialog/DiscardChangesDialog.component';
+import { serverMsw } from "../../../setupTests";
+import { renderWithClient } from '../../../tests/utils';
 import AddDSP from "./index";
-
-const mockedNavigate = jest.fn();
 
 jest.mock('react-router-dom', () => ({
     ...jest.requireActual("react-router-dom") as any,
     useNavigate: () => ({
-        navigate: ()=> ({
-            to: '/customer/111edit/dsps/edit/222'
+        navigate: () => ({
+            to: '/customer/*/dsps/edit/*'
         })
     }),
     useParams: () => ({
@@ -41,42 +38,42 @@ function getAllElements (component: any) {
     const cancelBtn = component.container.querySelector('#cancelBtn');
     const saveBtn = component.container.querySelector('#saveBtn');
     const formElem = component.container.querySelector('#form');
-    return { dspNameElem, contactNmElem, emailElem, phoneElem, addressLine1Elem, addressLine2Elem, cityElem, stateElem, postalCodeElem, cancelBtn, saveBtn, formElem  };
+    return { dspNameElem, contactNmElem, emailElem, phoneElem, addressLine1Elem, addressLine2Elem, cityElem, stateElem, postalCodeElem, cancelBtn, saveBtn, formElem };
 }
 
 
 afterEach(cleanup);
 describe('renders AddDSP component for add/edit mode', () => {
-    
+
     let result: RenderResult;
-    beforeEach(()=> {
+    beforeEach(() => {
         result = renderWithClient(<AddDSP version="Breadcrumbs-Many" />);
     });
 
-    it('renders form with data on EDIT mode', async()=> {
-        const {formElem, saveBtn} = getAllElements(result);
-        await waitFor(()=> {
+    it('renders form with data on EDIT mode', async () => {
+        const { formElem, saveBtn } = getAllElements(result);
+        await waitFor(() => {
             expect(formElem).toHaveFormValues({
                 dspName: 'dsp updated1 test'
             });
             expect(saveBtn).toBeDisabled();
         });
     });
-    
+
 
     describe('AddDSP screen on EDIT mode', () => {
-        it('enable save button when all mendatory fields are filled', async()=> { 
-            const {dspNameElem, saveBtn} = getAllElements(result);
-            fireEvent.change(dspNameElem, {target: {value: 'John'}});
-            await waitFor(()=> {
+        it('enable save button when all mendatory fields are filled', async () => {
+            const { dspNameElem, saveBtn } = getAllElements(result);
+            fireEvent.change(dspNameElem, { target: { value: 'John' } });
+            await waitFor(() => {
                 expect(saveBtn).toBeEnabled();
             });
         });
 
-        it('show toaster with success message on save button click', async()=> {
-            const {formElem, dspNameElem, saveBtn} = getAllElements(result);
-            
-            await waitFor(()=> {
+        it('show toaster with success message on save button click', async () => {
+            const { formElem, dspNameElem, saveBtn } = getAllElements(result);
+
+            await waitFor(() => {
                 expect(formElem).toHaveFormValues({
                     dspName: 'dsp updated1 test',
                     contactNm: 'steve',
@@ -89,14 +86,14 @@ describe('renders AddDSP component for add/edit mode', () => {
                     postalCode: "95070"
                 });
             });
-            fireEvent.change(dspNameElem, {target: {value: 'John'}});
+            fireEvent.change(dspNameElem, { target: { value: 'John' } });
             userEvent.click(saveBtn);
-            await waitFor(()=> {
+            await waitFor(() => {
                 expect(result.getByText('formStatusProps.success.message')).toBeInTheDocument();
             });
         });
 
-        it('show toaster with error message on save button click', async()=> { 
+        it('show toaster with error message on save button click', async () => {
             serverMsw.use(
                 rest.put('*', (req, res, ctx) => {
                     return res(
@@ -110,9 +107,8 @@ describe('renders AddDSP component for add/edit mode', () => {
                     );
                 })
             );
-            
-            const {formElem, dspNameElem, saveBtn} = getAllElements(result);
-            await waitFor(()=> {
+            const { formElem, dspNameElem, saveBtn } = getAllElements(result);
+            await waitFor(() => {
                 expect(formElem).toHaveFormValues({
                     dspName: 'dsp updated1 test',
                     contactNm: 'steve',
@@ -125,19 +121,20 @@ describe('renders AddDSP component for add/edit mode', () => {
                     postalCode: "95070"
                 });
             });
-            fireEvent.change(dspNameElem, {target: {value: 'John'}});
+
+            fireEvent.change(dspNameElem, { target: { value: 'John' } });
             userEvent.click(saveBtn);
-            
-            await waitFor(()=> {
+
+            await waitFor(() => {
                 expect(result.getByText(/fail edit dsp/i)).toBeInTheDocument();
             });
         });
     });
 
     describe('show dialogue of discard', () => {
-        it('render discard popup when form is changed', async()=> {
-            const {dspNameElem, cancelBtn} = getAllElements(result);
-            fireEvent.change(dspNameElem, {target: {value: 'John'}});
+        it('render discard popup when form is changed', async () => {
+            const { dspNameElem, cancelBtn } = getAllElements(result);
+            fireEvent.change(dspNameElem, { target: { value: 'John' } });
             userEvent.click(cancelBtn);
             let open = false;
             await waitFor(() => {
@@ -153,7 +150,7 @@ describe('renders AddDSP component for add/edit mode', () => {
             };
             const dialogue = render(<DiscardChangesDialog {...propsPopup} />);
             expect(await dialogue.findByText(/Test Dialog/i)).toBeInTheDocument();
-            
+
         });
     });
 
