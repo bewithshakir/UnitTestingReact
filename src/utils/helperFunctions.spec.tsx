@@ -1,4 +1,4 @@
-import { getCheckBoxDisabledByPaymentType, maskPhoneNumber, formatFileSizeUnit, getSeachedDataTotalCount } from './helperFunctions';
+import { getCheckBoxDisabledByPaymentType, maskPhoneNumber, formatFileSizeUnit, getSeachedDataTotalCount, getInputHelperText, getInputError } from './helperFunctions';
 
 describe('getCheckBoxDisabledByPaymentType', () => {
     it('default', () => {
@@ -44,5 +44,27 @@ describe('getSeachedDataTotalCount', () => {
         expect(getSeachedDataTotalCount({ pages: [{ data: { pagination: { totalCount: 2 } } }] }, ['result(s) found', 'results found'])).toBe('2 results found');
     });
 });
+
+
+
+describe('getInputHelperText', () => {
+    it('helper text should be undefined', () => {
+        expect(getInputHelperText({ touched: {}, errors: {} }, 'abc')).toBeUndefined();
+    });
+    const errorText = 'Field is Required';
+    it(`helper text should be "${errorText}"`, () => {
+        expect(getInputHelperText({ touched: { abc: true }, errors: { abc: { value: errorText } } }, 'abc')).toBe(errorText);
+    });
+});
+
+describe('getInputError', () => {
+    it('error sould be false', () => {
+        expect(getInputError({ touched: {}, errors: {} }, 'abc')).toBe(false);
+    });
+    it('error sould be true', () => {
+        expect(getInputError({ touched: { abc: true }, errors: { abc: { value: "Invalid" } } }, 'abc')).toBe(true);
+    });
+});
+
 
 
