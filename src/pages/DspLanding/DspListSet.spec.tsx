@@ -13,7 +13,6 @@ describe('DspListSet for useInfiniteQuery method ', () => {
             result.current.fetchNextPage();
         });
         await waitFor(() => {
-            console.log('result--', result.current.data)
             return result.current.isSuccess;
         });
         expect(result.current.status).toBe('success');
