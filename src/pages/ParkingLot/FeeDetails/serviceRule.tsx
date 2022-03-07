@@ -57,19 +57,19 @@ export default function ServiceRule({ index, isDisabled, formik, lotId }: props)
 
     const handleProductTypeChange = (fieldName: string, value: any) => {
         formik.setFieldValue(fieldName, value);
-        formik.setFieldValue("" + `serviceFeeRules[${index}].masterProductType`, { label: "", value: "" });
-        formik.setFieldValue("" + `serviceFeeRules[${index}].productName`, { label: "", value: "" });
+        formik.setFieldValue(`serviceFeeRules[${index}].masterProductType`, { label: "", value: "" });
+        formik.setFieldValue(`serviceFeeRules[${index}].productName`, { label: "", value: "" });
         if (value.value == "all") {
-            formik.setFieldValue("" + `serviceFeeRules[${index}].masterProductType`, { label: "All", value: "all" });
-            formik.setFieldValue("" + `serviceFeeRules[${index}].productName`, { label: "All", value: "all" });
+            formik.setFieldValue(`serviceFeeRules[${index}].masterProductType`, { label: "All", value: "all" });
+            formik.setFieldValue(`serviceFeeRules[${index}].productName`, { label: "All", value: "all" });
         }
     };
 
     const handleMasterProductTypeChange = (fieldName: string, value: any) => {
         formik.setFieldValue(fieldName, value);
-        formik.setFieldValue("" + `serviceFeeRules[${index}].productName`, { label: "", value: "" });
+        formik.setFieldValue(`serviceFeeRules[${index}].productName`, { label: "", value: "" });
         if (value.value === 'all') {
-            formik.setFieldValue("" + `serviceFeeRules[${index}].productName`, { ...all });
+            formik.setFieldValue(`serviceFeeRules[${index}].productName`, { ...all });
         }
 
     };
@@ -92,13 +92,14 @@ export default function ServiceRule({ index, isDisabled, formik, lotId }: props)
                         placeholder={t("FeeDetails.enterFeeCharge")}
                         helperText={
                             formik?.errors?.serviceFeeRules && formik?.touched?.serviceFeeRules &&
-                                (formik.touched?.serviceFeeRules?.[index]?.serviceFeeCharge && ((formik.errors?.serviceFeeRules?.[index] as any)?.serviceFeeCharge))
-                                ?
-                                (formik.errors.serviceFeeRules[index] as any).serviceFeeCharge : undefined
+                                (formik.touched?.serviceFeeRules?.[index]?.serviceFeeCharge
+                                    && ((formik.errors?.serviceFeeRules?.[index])?.serviceFeeCharge))
+                                ? (formik.errors.serviceFeeRules[index]).serviceFeeCharge : undefined
                         }
                         error={
                             formik?.errors?.serviceFeeRules && formik?.touched?.serviceFeeRules &&
-                                (formik.touched?.serviceFeeRules?.[index]?.serviceFeeCharge && ((formik.errors?.serviceFeeRules?.[index] as any)?.serviceFeeCharge))
+                                (formik.touched?.serviceFeeRules?.[index]?.serviceFeeCharge
+                                    && ((formik.errors?.serviceFeeRules?.[index])?.serviceFeeCharge))
                                 ? true : false
                         }
                         description=''
@@ -119,17 +120,21 @@ export default function ServiceRule({ index, isDisabled, formik, lotId }: props)
                         placeholder={t("FeeDetails.productTypePlaceholder")}
                         helperText={
                             formik?.errors?.serviceFeeRules && formik?.touched?.serviceFeeRules &&
-                                (formik.touched?.serviceFeeRules?.[index]?.productType && ((formik.errors?.serviceFeeRules?.[index] as any)?.productType))
-                                ?
-                                (formik.errors.serviceFeeRules[index] as any).productType.value : undefined
+                                (formik.touched?.serviceFeeRules?.[index]?.productType
+                                    && ((formik.errors?.serviceFeeRules?.[index])?.productType))
+                                ? (formik.errors.serviceFeeRules[index]).productType.value : undefined
                         }
                         error={
                             formik?.errors?.serviceFeeRules && formik?.touched?.serviceFeeRules &&
-                                (formik.touched?.serviceFeeRules?.[index]?.productType && ((formik.errors?.serviceFeeRules?.[index] as any)?.productType))
+                                (formik.touched?.serviceFeeRules?.[index]?.productType
+                                    && ((formik.errors?.serviceFeeRules?.[index])?.productType))
                                 ? true : false
                         }
                         onChange={handleProductTypeChange}
-                        onBlur={() => { formik.setFieldTouched(`serviceFeeRules[${index}].productType`); formik.validateField(`serviceFeeRules[${index}].productType`); }}
+                        onBlur={() => {
+                            formik.setFieldTouched(`serviceFeeRules[${index}].productType`);
+                            formik.validateField(`serviceFeeRules[${index}].productType`);
+                        }}
                         isDisabled={isDisabled}
                         required
                         value={formik.values.serviceFeeRules[index].productType}
@@ -146,16 +151,21 @@ export default function ServiceRule({ index, isDisabled, formik, lotId }: props)
                         onChange={handleMasterProductTypeChange}
                         helperText={
                             formik?.errors?.serviceFeeRules && formik?.touched?.serviceFeeRules &&
-                                (formik.touched?.serviceFeeRules?.[index]?.masterProductType && ((formik.errors?.serviceFeeRules?.[index] as any)?.masterProductType))
+                                (formik.touched?.serviceFeeRules?.[index]?.masterProductType
+                                    && ((formik.errors?.serviceFeeRules?.[index])?.masterProductType))
                                 ?
-                                (formik.errors.serviceFeeRules[index] as any).masterProductType.value : undefined
+                                (formik.errors.serviceFeeRules[index]).masterProductType.value : undefined
                         }
                         error={
                             formik?.errors?.serviceFeeRules && formik?.touched?.serviceFeeRules &&
-                                (formik.touched?.serviceFeeRules?.[index]?.masterProductType && ((formik.errors?.serviceFeeRules?.[index] as any)?.masterProductType))
+                                (formik.touched?.serviceFeeRules?.[index]?.masterProductType
+                                    && ((formik.errors?.serviceFeeRules?.[index])?.masterProductType))
                                 ? true : false
                         }
-                        onBlur={() => { formik.setFieldTouched(`serviceFeeRules[${index}].masterProductType`); formik.validateField(`serviceFeeRules[${index}].masterProductType`); }}
+                        onBlur={() => {
+                            formik.setFieldTouched(`serviceFeeRules[${index}].masterProductType`);
+                            formik.validateField(`serviceFeeRules[${index}].masterProductType`);
+                        }}
                         isDisabled={(formik?.values?.serviceFeeRules?.[index]?.productType?.value?.toLowerCase() === 'all') ? true : isDisabled}
                         required={(formik?.values?.serviceFeeRules?.[index]?.productType?.value?.toLowerCase() === 'all') ? false : true}
                         value={formik.values.serviceFeeRules[index].masterProductType}
@@ -173,17 +183,25 @@ export default function ServiceRule({ index, isDisabled, formik, lotId }: props)
                         placeholder={t("FeeDetails.productNamePlaceholder")}
                         onChange={formik.setFieldValue}
                         helperText={
-                            formik?.errors?.serviceFeeRules && formik?.touched?.serviceFeeRules &&
-                                (formik.touched?.serviceFeeRules?.[index]?.productName && ((formik.errors?.serviceFeeRules?.[index] as any)?.productName))
-                                ?
-                                (formik.errors.serviceFeeRules[index] as any).productName.value : undefined
+                            formik?.errors?.serviceFeeRules
+                                && formik?.touched?.serviceFeeRules
+                                && (formik.touched?.serviceFeeRules?.[index]?.productName
+                                    && ((formik.errors?.serviceFeeRules?.[index])?.productName))
+                                ? (formik.errors.serviceFeeRules[index]).productName.value
+                                : undefined
                         }
                         error={
-                            formik?.errors?.serviceFeeRules && formik?.touched?.serviceFeeRules &&
-                                (formik.touched?.serviceFeeRules?.[index]?.productName && ((formik.errors?.serviceFeeRules?.[index] as any)?.productName))
-                                ? true : false
+                            formik?.errors?.serviceFeeRules
+                                && formik?.touched?.serviceFeeRules
+                                && (formik.touched?.serviceFeeRules?.[index]?.productName
+                                    && ((formik.errors?.serviceFeeRules?.[index])?.productName))
+                                ? true
+                                : false
                         }
-                        onBlur={() => { formik.setFieldTouched(`serviceFeeRules[${index}].productName`); formik.validateField(`serviceFeeRules[${index}].productName`); }}
+                        onBlur={() => {
+                            formik.setFieldTouched(`serviceFeeRules[${index}].productName`);
+                            formik.validateField(`serviceFeeRules[${index}].productName`);
+                        }}
                         isDisabled={(formik?.values?.serviceFeeRules?.[index]?.productType?.value?.toLowerCase() === 'all') || (formik?.values?.serviceFeeRules?.[index]?.masterProductType?.value?.toLowerCase() === 'all') ? true : isDisabled}
                         required={(formik?.values?.serviceFeeRules?.[index]?.productType?.value?.toLowerCase() === 'all') ? false : true}
                         value={formik.values.serviceFeeRules[index].productName}
@@ -194,7 +212,11 @@ export default function ServiceRule({ index, isDisabled, formik, lotId }: props)
                 <FormControlLabel
                     sx={{ margin: "0px", marginBottom: "1rem", fontWeight: "bold" }}
                     className="checkbox-field"
-                    control={<Checkbox name={`serviceFeeRules[${index}].considerAsset`} checked={formik.values.serviceFeeRules[index].considerAsset} onChange={handleIsAssetChange} disabled={isDisabled} />}
+                    control={
+                        <Checkbox name={`serviceFeeRules[${index}].considerAsset`}
+                            checked={formik.values.serviceFeeRules[index].considerAsset}
+                            onChange={handleIsAssetChange} disabled={isDisabled}
+                        />}
                     label={<Typography variant="h4" component="h4" className="fw-bold">
                         {t("FeeDetails.considerAsset")}
                     </Typography>} />
@@ -214,16 +236,19 @@ export default function ServiceRule({ index, isDisabled, formik, lotId }: props)
                                 onChange={formik.setFieldValue}
                                 helperText={
                                     formik?.errors?.serviceFeeRules && formik?.touched?.serviceFeeRules &&
-                                        (formik.touched?.serviceFeeRules?.[index]?.assetType && ((formik.errors?.serviceFeeRules?.[index] as any)?.assetType))
-                                        ?
-                                        (formik.errors.serviceFeeRules[index] as any).assetType.value : undefined
+                                        (formik.touched?.serviceFeeRules?.[index]?.assetType && ((formik.errors?.serviceFeeRules?.[index])?.assetType))
+                                        ? (formik.errors.serviceFeeRules[index]).assetType.value : undefined
                                 }
                                 error={
                                     formik?.errors?.serviceFeeRules && formik?.touched?.serviceFeeRules &&
-                                        (formik.touched?.serviceFeeRules?.[index]?.assetType && ((formik.errors?.serviceFeeRules?.[index] as any)?.assetType))
+                                        (formik.touched?.serviceFeeRules?.[index]?.assetType
+                                            && ((formik.errors?.serviceFeeRules?.[index])?.assetType))
                                         ? true : false
                                 }
-                                onBlur={() => { formik.setFieldTouched(`serviceFeeRules[${index}].assetType`); formik.validateField(`serviceFeeRules[${index}].assetType`); }}
+                                onBlur={() => {
+                                    formik.setFieldTouched(`serviceFeeRules[${index}].assetType`);
+                                    formik.validateField(`serviceFeeRules[${index}].assetType`);
+                                }}
                                 isDisabled={isDisabled}
                                 required
                                 value={formik.values.serviceFeeRules[index].assetType}
@@ -239,13 +264,14 @@ export default function ServiceRule({ index, isDisabled, formik, lotId }: props)
                                 placeholder={t("FeeDetails.assetTypeDescPlaceholder")}
                                 helperText={
                                     formik?.errors?.serviceFeeRules && formik?.touched?.serviceFeeRules &&
-                                        (formik.touched?.serviceFeeRules?.[index]?.assetTypeDesc && ((formik.errors?.serviceFeeRules?.[index] as any)?.assetTypeDesc))
-                                        ?
-                                        (formik.errors.serviceFeeRules[index] as any).assetTypeDesc : undefined
+                                        (formik.touched?.serviceFeeRules?.[index]?.assetTypeDesc
+                                            && ((formik.errors?.serviceFeeRules?.[index])?.assetTypeDesc))
+                                        ? (formik.errors.serviceFeeRules[index]).assetTypeDesc : undefined
                                 }
                                 error={
                                     formik?.errors?.serviceFeeRules && formik?.touched?.serviceFeeRules &&
-                                        (formik.touched?.serviceFeeRules?.[index]?.assetTypeDesc && ((formik.errors?.serviceFeeRules?.[index] as any)?.assetTypeDesc))
+                                        (formik.touched?.serviceFeeRules?.[index]?.assetTypeDesc
+                                            && ((formik.errors?.serviceFeeRules?.[index])?.assetTypeDesc))
                                         ? true : false
                                 }
                                 description=''
@@ -269,16 +295,20 @@ export default function ServiceRule({ index, isDisabled, formik, lotId }: props)
                         required
                         helperText={
                             formik?.errors?.serviceFeeRules && formik?.touched?.serviceFeeRules &&
-                                (formik.touched?.serviceFeeRules?.[index]?.vehicleType && ((formik.errors?.serviceFeeRules?.[index] as any)?.vehicleType))
-                                ?
-                                (formik.errors.serviceFeeRules[index] as any).vehicleType.value : undefined
+                                (formik.touched?.serviceFeeRules?.[index]?.vehicleType
+                                    && ((formik.errors?.serviceFeeRules?.[index])?.vehicleType))
+                                ? (formik.errors.serviceFeeRules[index]).vehicleType.value : undefined
                         }
                         error={
                             formik?.errors?.serviceFeeRules && formik?.touched?.serviceFeeRules &&
-                                (formik.touched?.serviceFeeRules?.[index]?.vehicleType && ((formik.errors?.serviceFeeRules?.[index] as any)?.vehicleType))
+                                (formik.touched?.serviceFeeRules?.[index]?.vehicleType
+                                    && ((formik.errors?.serviceFeeRules?.[index])?.vehicleType))
                                 ? true : false
                         }
-                        onBlur={() => { formik.setFieldTouched(`serviceFeeRules[${index}].vehicleType`); formik.validateField(`serviceFeeRules[${index}].vehicleType`); }}
+                        onBlur={() => {
+                            formik.setFieldTouched(`serviceFeeRules[${index}].vehicleType`);
+                            formik.validateField(`serviceFeeRules[${index}].vehicleType`);
+                        }}
                         isDisabled={isDisabled}
                         value={formik.values.serviceFeeRules[index].vehicleType}
                     />
