@@ -891,6 +891,7 @@ exports[`Rendering of Asset Management landing page Component Asset Management l
                       <GridComponent
                         enableRowAction={true}
                         enableRowSelection={false}
+                        filterData={Object {}}
                         getPages={[Function]}
                         header={
                           Array [
@@ -3917,6 +3918,7 @@ exports[`Rendering of Asset Management landing page Component Asset Management l
                           <GridComponent
                             enableRowAction={true}
                             enableRowSelection={false}
+                            filterData={Object {}}
                             getPages={[Function]}
                             header={
                               Array [
@@ -4056,6 +4058,7 @@ exports[`Rendering of Asset Management landing page Component Asset Management l
                       <GridComponent
                         enableRowAction={true}
                         enableRowSelection={false}
+                        filterData={Object {}}
                         getPages={[Function]}
                         header={
                           Array [
@@ -4223,6 +4226,7 @@ exports[`Rendering of Asset Management landing page Component Asset Management l
                                   <EnhancedGridBody
                                     enableRowAction={true}
                                     enableRowSelection={false}
+                                    filterData={Object {}}
                                     getPages={[Function]}
                                     handleCheckChange={[Function]}
                                     headCells={
@@ -4462,6 +4466,7 @@ exports[`Rendering of Asset Management landing page Component Asset Management l
                                         <EnhancedGridBody
                                           enableRowAction={true}
                                           enableRowSelection={false}
+                                          filterData={Object {}}
                                           getPages={[Function]}
                                           handleCheckChange={[Function]}
                                           headCells={
@@ -5185,6 +5190,7 @@ exports[`Rendering of Asset Management landing page Component Asset Management l
                                     <EnhancedGridBody
                                       enableRowAction={true}
                                       enableRowSelection={false}
+                                      filterData={Object {}}
                                       getPages={[Function]}
                                       handleCheckChange={[Function]}
                                       headCells={

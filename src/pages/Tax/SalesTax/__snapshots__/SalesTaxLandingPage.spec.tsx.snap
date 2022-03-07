@@ -891,6 +891,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                       <GridComponent
                         enableRowAction={true}
                         enableRowSelection={true}
+                        filterData={Object {}}
                         getPages={[Function]}
                         header={
                           Array [
@@ -3903,6 +3904,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                           <GridComponent
                             enableRowAction={true}
                             enableRowSelection={true}
+                            filterData={Object {}}
                             getPages={[Function]}
                             header={
                               Array [
@@ -4028,6 +4030,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                       <GridComponent
                         enableRowAction={true}
                         enableRowSelection={true}
+                        filterData={Object {}}
                         getPages={[Function]}
                         header={
                           Array [
@@ -4168,6 +4171,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                   <EnhancedGridBody
                                     enableRowAction={true}
                                     enableRowSelection={true}
+                                    filterData={Object {}}
                                     getPages={[Function]}
                                     handleCheckChange={[Function]}
                                     headCells={
@@ -4367,6 +4371,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                         <EnhancedGridBody
                                           enableRowAction={true}
                                           enableRowSelection={true}
+                                          filterData={Object {}}
                                           getPages={[Function]}
                                           handleCheckChange={[Function]}
                                           headCells={
@@ -5969,6 +5974,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                     <EnhancedGridBody
                                       enableRowAction={true}
                                       enableRowSelection={true}
+                                      filterData={Object {}}
                                       getPages={[Function]}
                                       handleCheckChange={[Function]}
                                       headCells={

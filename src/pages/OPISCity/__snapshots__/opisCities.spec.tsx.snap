@@ -859,6 +859,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                       <GridComponent
                         enableRowAction={true}
                         enableRowSelection={false}
+                        filterData={Object {}}
                         getPages={[Function]}
                         header={
                           Array [
@@ -3896,6 +3897,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                           <GridComponent
                             enableRowAction={true}
                             enableRowSelection={false}
+                            filterData={Object {}}
                             getPages={[Function]}
                             header={
                               Array [
@@ -4075,6 +4077,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                       <GridComponent
                         enableRowAction={true}
                         enableRowSelection={false}
+                        filterData={Object {}}
                         getPages={[Function]}
                         header={
                           Array [
@@ -4323,6 +4326,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                   <EnhancedGridBody
                                     enableRowAction={true}
                                     enableRowSelection={false}
+                                    filterData={Object {}}
                                     getPages={[Function]}
                                     handleCheckChange={[Function]}
                                     headCells={
@@ -4684,6 +4688,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                         <EnhancedGridBody
                                           enableRowAction={true}
                                           enableRowSelection={false}
+                                          filterData={Object {}}
                                           getPages={[Function]}
                                           handleCheckChange={[Function]}
                                           headCells={
@@ -6026,6 +6031,7 @@ exports[`Given OPIS Cities Landing Page Page Rendered Properly 1`] = `
                                     <EnhancedGridBody
                                       enableRowAction={true}
                                       enableRowSelection={false}
+                                      filterData={Object {}}
                                       getPages={[Function]}
                                       handleCheckChange={[Function]}
                                       headCells={
