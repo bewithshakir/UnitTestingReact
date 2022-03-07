@@ -5,7 +5,7 @@ import DSPModel from "../../../models/DSPModel";
 
 export interface PayloadAddDspInt {
     customerId: string,
-    dspName : string,
+    dspName: string,
     contactName: string,
     contactEmailId: string,
     contactPhoneNumber: string,
@@ -21,7 +21,7 @@ export interface PayloadAddDspInt {
 const addDsp = async (payload: DSPModel) => {
     const finalPayload: PayloadAddDspInt = {
         customerId: payload.customerId,
-        dspName : payload.dspName,
+        dspName: payload.dspName,
         contactName: payload.contactNm,
         contactEmailId: payload.email,
         contactPhoneNumber: payload.phone,
@@ -43,14 +43,14 @@ const addDsp = async (payload: DSPModel) => {
 
 export const useAddDsp = (onSuccess: any, onError: any) => {
     return useMutation((payload: DSPModel) =>
-    addDsp(payload), {
+        addDsp(payload), {
         onError,
         onSuccess,
         retry: false,
     });
 };
 
-const fetchDspDetail = (customerId: string|undefined, query: string|undefined, )=> {
+const fetchDspDetail = (customerId: string | undefined, query: string | undefined,) => {
     const options: AxiosRequestConfig = {
         method: 'get',
         url: `api/customer-service/customers/${customerId}/dsps/${query}`
@@ -58,12 +58,12 @@ const fetchDspDetail = (customerId: string|undefined, query: string|undefined, )
     return axios(options);
 };
 
-export const useEditDspData = (customerId:string | undefined, query: string | undefined,   onSuccess: any, onError: any) => {
-    return useQuery(['edit-dsp-detail', query], ()=> fetchDspDetail(customerId, query), {
+export const useEditDspData = (customerId: string | undefined, query: string | undefined, onSuccess: any, onError: any) => {
+    return useQuery(['edit-dsp-detail', customerId, query], () => fetchDspDetail(customerId, query), {
         onSuccess,
         onError,
         enabled: !!query,
-        select: (response: AxiosResponse)=> {
+        select: (response: AxiosResponse) => {
             const { data } = response.data;
             return {
                 dspName: data.dspName,
@@ -84,7 +84,7 @@ export const useEditDspData = (customerId:string | undefined, query: string | un
 const updateDspData = async (payload: DSPModel, dspId: string | undefined) => {
     const finalPayload: PayloadAddDspInt = {
         customerId: payload.customerId,
-        dspName : payload.dspName,
+        dspName: payload.dspName,
         contactName: payload.contactNm,
         contactEmailId: payload.email,
         contactPhoneNumber: payload.phone,
