@@ -890,7 +890,7 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                               "type": "text",
                             },
                             Object {
-                              "field": "zip",
+                              "field": "postalCode",
                               "label": "ZIP",
                               "type": "text",
                             },
@@ -3860,7 +3860,7 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                                 "type": "text",
                               },
                               Object {
-                                "field": "zip",
+                                "field": "postalCode",
                                 "label": "ZIP",
                                 "type": "text",
                               },
@@ -3958,7 +3958,7 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                               "type": "text",
                             },
                             Object {
-                              "field": "zip",
+                              "field": "postalCode",
                               "label": "ZIP",
                               "type": "text",
                             },
@@ -4043,7 +4043,7 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                                           "type": "text",
                                         },
                                         Object {
-                                          "field": "zip",
+                                          "field": "postalCode",
                                           "label": "ZIP",
                                           "type": "text",
                                         },
@@ -4102,7 +4102,7 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                                           "type": "text",
                                         },
                                         Object {
-                                          "field": "zip",
+                                          "field": "postalCode",
                                           "label": "ZIP",
                                           "type": "text",
                                         },
@@ -4148,7 +4148,7 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                                           "type": "text",
                                         },
                                         Object {
-                                          "field": "zip",
+                                          "field": "postalCode",
                                           "label": "ZIP",
                                           "type": "text",
                                         },
@@ -4245,7 +4245,7 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                                                 "type": "text",
                                               },
                                               Object {
-                                                "field": "zip",
+                                                "field": "postalCode",
                                                 "label": "ZIP",
                                                 "type": "text",
                                               },
@@ -4304,7 +4304,7 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                                                 "type": "text",
                                               },
                                               Object {
-                                                "field": "zip",
+                                                "field": "postalCode",
                                                 "label": "ZIP",
                                                 "type": "text",
                                               },
@@ -4350,7 +4350,7 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                                                 "type": "text",
                                               },
                                               Object {
-                                                "field": "zip",
+                                                "field": "postalCode",
                                                 "label": "ZIP",
                                                 "type": "text",
                                               },
@@ -4441,7 +4441,7 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                                             "type": "text",
                                           },
                                           Object {
-                                            "field": "zip",
+                                            "field": "postalCode",
                                             "label": "ZIP",
                                             "type": "text",
                                           },
@@ -5045,7 +5045,7 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                                                   </ForwardRef(TableCell)>
                                                   <ForwardRef(TableCell)
                                                     className="header-options"
-                                                    key="zip"
+                                                    key="postalCode"
                                                     size="small"
                                                     sortDirection={false}
                                                     width="auto"
@@ -5194,7 +5194,7 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                                             "type": "text",
                                           },
                                           Object {
-                                            "field": "zip",
+                                            "field": "postalCode",
                                             "label": "ZIP",
                                             "type": "text",
                                           },
@@ -5240,7 +5240,7 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                                             "type": "text",
                                           },
                                           Object {
-                                            "field": "zip",
+                                            "field": "postalCode",
                                             "label": "ZIP",
                                             "type": "text",
                                           },
