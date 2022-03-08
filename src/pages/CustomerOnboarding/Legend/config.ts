@@ -19,15 +19,15 @@ export const config = [
     },
     {
         index: 4,
-        label: "legend.users",
-        secondaryText: true,
-        to: "/users"
-    },
-    {
-        index: 5,
         label: "legend.dsp",
         secondaryText: true,
         to: "/customer/dsps"
+    },
+    {
+        index: 5,
+        label: "legend.users",
+        secondaryText: true,
+        to: "/users"
     },
     {
         index: 6,
