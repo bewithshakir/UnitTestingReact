@@ -37,7 +37,6 @@ const DspLandingContent: React.FC<ContentProps> = () => {
   const customerId = useAddedCustomerIdStore((state: addedCustomerIdState) => state.customerId);
   const [sortOrder,setSortOrder] = React.useState<{ sortBy: string, order: string }>({ sortBy: "", order: "" });
   const [filterData, setFilterData] = React.useState<{ [key: string]: string[] }>({});
-  //const { SortByOptions } = DSPLanding.LandingPage;
   const [filterPanelVisible, setFilterPanelVisible] = React.useState(false);
 
   const { data, fetchNextPage, isLoading, isFetching }: any = DspListSet(searchTerm, sortOrder, customerId, filterData);
