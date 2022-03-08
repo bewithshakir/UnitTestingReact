@@ -14,6 +14,8 @@ export type fieldOptions = {
     icon?: React.ReactNode | string | any,
 }
 
+export type filterObjType = { [key: string]: string[] };
+
 export type InnerTableType = {
     [key: string]: JSX.Element;
 }
@@ -52,8 +54,9 @@ interface GridComponentProps {
     onResetTableCollaps?: (value: boolean) => void;
     InnerTableComponent?: InnerTableType,
     searchTerm?: string,
+    filterData?: { [key: string]: string[] },
     noDataMsg?: string,
-    showImg?: React.ReactNode | undefined,
+    showImg?: React.ReactNode,
     showInnerTableMenu?: boolean
     handleSelect?: (primaryKey: string[]) => void
 }
