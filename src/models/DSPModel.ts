@@ -88,4 +88,11 @@ export default class DSPModel {
             ]
         );
     }
+
+    getSortByOptions () {
+        return [
+            "dsp.sortBy.dspname_atoz",
+            "dsp.sortBy.dspname_ztoa",
+        ];
+    }
 }

@@ -14,7 +14,6 @@ import SearchInput from "../../components/UIComponents/SearchInput/SearchInput";
 import DSPModel from "../../models/DSPModel";
 import { addedCustomerIdState, HorizontalBarVersionState, useAddedCustomerIdStore, useStore } from "../../store";
 import { getSeachedDataTotalCount } from "../../utils/helperFunctions";
-import { DSPLanding, SORTBY_TYPES } from "./config";
 import { DspListSet } from './queries';
 import { DataGridActionsMenuOption } from "../../components/UIComponents/Menu/DataGridActionsMenu.component";
 import { RightInfoPanel } from '../../components/UIComponents/RightInfoPanel/RightInfoPanel.component';
@@ -38,7 +37,7 @@ const DspLandingContent: React.FC<ContentProps> = () => {
   const customerId = useAddedCustomerIdStore((state: addedCustomerIdState) => state.customerId);
   const [sortOrder,setSortOrder] = React.useState<{ sortBy: string, order: string }>({ sortBy: "", order: "" });
   const [filterData, setFilterData] = React.useState<{ [key: string]: string[] }>({});
-  const { SortByOptions } = DSPLanding.LandingPage;
+  //const { SortByOptions } = DSPLanding.LandingPage;
   const [filterPanelVisible, setFilterPanelVisible] = React.useState(false);
 
   const { data, fetchNextPage, isLoading, isFetching }: any = DspListSet(searchTerm, sortOrder, customerId, filterData);
@@ -107,10 +106,10 @@ const DspLandingContent: React.FC<ContentProps> = () => {
   const onSortBySlected = (value: string) => {
     let sortOrder;
     switch (value) {
-      case SORTBY_TYPES.DSP_NAME_AZ:
+      case t('dsp.sortBy.dspname_atoz'):
         sortOrder = { sortBy: "dspName", order: "asc" };
         break;
-      case SORTBY_TYPES.DSP_NAME_ZA:
+      case t('dsp.sortBy.dspname_ztoa'):
         sortOrder = { sortBy: "dspName", order: "desc" };
         break;
       default:
@@ -119,7 +118,7 @@ const DspLandingContent: React.FC<ContentProps> = () => {
     }
     setResetTableCollaps(true);
     setSortOrder(sortOrder);
-  };
+};
 
   return (
     <Box display="flex">
@@ -139,11 +138,10 @@ const DspLandingContent: React.FC<ContentProps> = () => {
             </Grid>
             <Grid item pr={2.5}>
               <FormControl>
-                <SortbyMenu
-                    id={"dspSort"}
-                    options={SortByOptions.map((sortByItem) => t(sortByItem))}
+                <SortbyMenu                  
+                    id="dspSort"
+                    options={dspObj.getSortByOptions().map((sortByItem) => t(sortByItem))}
                     onSelect={(value) => onSortBySlected(value)}
-                  
                 />
               </FormControl>
             </Grid>
