@@ -1,6 +1,5 @@
 import { Box, CssBaseline, Grid } from '@mui/material';
-import { Suspense } from 'react';
-import { Fragment, memo, } from 'react';
+import { Suspense, Fragment, memo } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import { Loader } from '../../components/UIComponents/Loader';
 
@@ -16,7 +15,7 @@ const customerOnboarding: React.FC<CustomerOnboardingProps> = memo(() => {
   );
   setVersion('Breadcrumbs-Single');
   const { pathname } = useLocation();
-  const dis = pathname.includes('addLot') || pathname.includes('viewLot') || pathname.includes('AddAttachment') || pathname.includes('addDsp') || pathname.includes('dsps/edit');
+  const dis = pathname.includes('addLot') || pathname.includes('viewLot') || pathname.includes('AddAttachment') || pathname.includes('addDsp') || pathname.includes('dsps/edit') || pathname.includes('addUser') || pathname.includes('users/editUser');
   return (
     <Box display='flex' mt={8} ml={8}>
       <CssBaseline />

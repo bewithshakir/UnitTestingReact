@@ -3,30 +3,29 @@ import { Box, Grid, Typography } from '@mui/material';
 import { useFormik } from 'formik';
 import { useTranslation } from 'react-i18next';
 import { useNavigate, useParams } from 'react-router-dom';
-import DSPModel from "../../../models/DSPModel";
-import { AddDSPSchema } from "./validation";
+import UserModel from "../../../models/UserModel";
+import { AddUserSchema } from "./validation";
 import Input from '../../../components/UIComponents/Input/Input';
 import { Button } from '../../../components/UIComponents/Button/Button.component';
 import AutocompleteInput from '../../../components/UIComponents/GoogleAddressComponent/GoogleAutoCompleteAddress';
 import { HorizontalBarVersionState, useAddedCustomerIdStore, useShowConfirmationDialogBoxStore, useStore } from '../../../store';
 import ToastMessage from '../../../components/UIComponents/ToastMessage/ToastMessage.component';
-import { useAddDsp, useEditDspData, useUpdateDspData } from './queries';
+import { useAddUser, useEditUserData, useUpdateUserData } from './queries';
 import "./style.scss";
 import { LoadingIcon } from '../../../assets/icons';
 
-const initialValues = new DSPModel();
-interface AddDSPProps {
+const initialValues = new UserModel();
+interface AddUserProps {
     version: string
 }
 interface IFormStatus {
     message: string
     type: string
 }
-const AddDSP: React.FC<AddDSPProps> = () => {
-
+const AddUser: React.FC<AddUserProps> = () => {
     const { t } = useTranslation();
     const navigate = useNavigate();
-    const { dspId } = useParams();
+    const { userId } = useParams();
     const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
     const showDialogBox = useShowConfirmationDialogBoxStore((state) => state.showDialogBox);
     const isFormValidated = useShowConfirmationDialogBoxStore((state) => state.setFormFieldValue);
@@ -39,69 +38,68 @@ const AddDSP: React.FC<AddDSPProps> = () => {
         setVersion("Breadcrumbs-Many");
     }, []);
 
-    // Add DSP
-    const onSuccessAddDsp = () => {
+    // Add User
+    const onSuccessAddUser = () => {
         isFormValidated(false);
         formik.resetForm({ values: formik.values });
         setFormStatus({ message: t("formStatusProps.success.message"), type: 'Success' });
     };
-    const onErrorAddDsp = (err: any) => {
+    const onErrorAddUser = (err: any) => {
         const { data } = err.response;
         formik.resetForm({ values: formik.values });
         setFormStatus({ message: data?.error?.details[0] || t("formStatusProps.error.message"), type: 'Error' });
     };
-    const { mutate: addNewDsp, isSuccess: isSuccessAddDsp, isError: isErrorAddDsp, isLoading: isLoadingAddDsp } = useAddDsp(onSuccessAddDsp, onErrorAddDsp);
-    const createDspData = (form: DSPModel) => {
+    const { mutate: addNewUser, isSuccess: isSuccessAddUser, isError: isErrorAddUser, isLoading: isLoadingAddUser } = useAddUser(onSuccessAddUser, onErrorAddUser);
+    const createUserData = (form: UserModel) => {
         try {
-            addNewDsp(form);
+            addNewUser(form);
         } catch (error) {
             setFormStatus({ message: t("formStatusProps.error.message"), type: 'Error' });
         }
     };
 
-    // Add DSP End
+    // Add User End
 
-    // Edit DSP
-
+    // Edit User
     const populateDataInAllFields = (formData: any) => {
         formik.resetForm({
             values: { ...formData }
         });
     };
 
-    const onSuccessDspDetail = (responseData: DSPModel) => {
+    const onSuccessUserDetail = (responseData: UserModel) => {
         setEditMode(true);
         populateDataInAllFields(responseData);
     };
-    const onErrorDspDetail = (error: any) => {
+    const onErrorUserDetail = (error: any) => {
         setEditMode(true);
         setFormStatus({ message: error?.response.data.error?.details[0] || t("formStatusProps.error.message"), type: 'Error' });
     };
-    const { isError: isErrorDspData } = useEditDspData(addedCustomerId, dspId, onSuccessDspDetail, onErrorDspDetail);
+    const { isError: isErrorUserData } = useEditUserData(addedCustomerId, userId, onSuccessUserDetail, onErrorUserDetail);
 
-    const onSuccessUpdateDsp = () => {
+    const onSuccessUpdateUser = () => {
         isFormValidated(false);
         formik.resetForm({ values: formik.values });
         setFormStatus({ message: t("formStatusProps.success.message"), type: 'Success' });
     };
 
-    const onErrorUpdateDsp = (error: any) => {
+    const onErrorUpdateUser = (error: any) => {
         const { data } = error.response;
         formik.resetForm({ values: formik.values });
         setFormStatus({ message: data?.error?.details[0] || t("formStatusProps.error.message"), type: 'Error' });
     };
-    const { mutate: updateDsp, isSuccess: isSuccessUpdateDsp, isError: isErrorUpdateDsp, isLoading: isLoadingUpdateDsp } = useUpdateDspData(dspId, onSuccessUpdateDsp, onErrorUpdateDsp);
+    const { mutate: updateUser, isSuccess: isSuccessUpdateUser, isError: isErrorUpdateUser, isLoading: isLoadingUpdateUser } = useUpdateUserData(userId, onSuccessUpdateUser, onErrorUpdateUser);
 
-    // Edit DSP End
+    // Edit User End
     const formik = useFormik({
         initialValues,
-        validationSchema: AddDSPSchema,
-        onSubmit: (values: DSPModel) => {
-            const updatedValues = { ...values, customerId: addedCustomerId } as DSPModel;
+        validationSchema: AddUserSchema,
+        onSubmit: (values: UserModel) => {
+            const updatedValues = { ...values, customerId: addedCustomerId } as UserModel;
             if (isEditMode) {
-                updateDsp(updatedValues);
+                updateUser(updatedValues);
             } else {
-                createDspData(updatedValues);
+                createUserData(updatedValues);
             }
         },
         enableReinitialize: true,
@@ -140,7 +138,7 @@ const AddDSP: React.FC<AddDSPProps> = () => {
         if (!formik.isValid || formik.dirty) {
             showDialogBox(true);
         } else {
-            navigate(`/customer/${addedCustomerId}/dsps`);
+            navigate(`/customer/${addedCustomerId}/users`);
         }
     };
     const disableButton = () => {
@@ -157,32 +155,32 @@ const AddDSP: React.FC<AddDSPProps> = () => {
                     <Grid container item md={12} mb={2}>
                         <Grid item xs={6}>
                             <Typography color="var(--Darkgray)" variant="h3" gutterBottom className="fw-bold">
-                                {t("addDSP.form.title")} *
+                                {t("addUser.form.title")} *
                             </Typography>
                         </Grid>
                     </Grid>
                     <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
                         <Input
-                            id='dspName'
-                            label={t("addDSP.form.dspName")}
+                            id='userName'
+                            label={t("addUser.form.userName")}
                             type='text'
-                            helperText={(formik.touched.dspName && formik.errors.dspName) ? formik.errors.dspName : undefined}
-                            error={(formik.touched.dspName && formik.errors.dspName) ? true : false}
+                            helperText={(formik.touched.userName && formik.errors.userName) ? formik.errors.userName : undefined}
+                            error={(formik.touched.userName && formik.errors.userName) ? true : false}
                             description=''
                             placeholder='Enter'
-                            {...formik.getFieldProps('dspName')}
+                            {...formik.getFieldProps('userName')}
                             required
                         />
                     </Grid>
                     <Grid item md={12} mb={1}>
                         <Typography color="var(--Darkgray)" variant="h3" gutterBottom className="fw-bold" mb={1} pt={2}>
-                            {t("addDSP.form.contactForm.title")} :
+                            {t("addUser.form.contactForm.title")} :
                         </Typography>
                     </Grid>
                     <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
                         <Input
                             id='contactNm'
-                            label={t("addDSP.form.contactForm.contactNm")}
+                            label={t("addUser.form.contactForm.contactNm")}
                             type='text'
                             helperText={(formik.touched.contactNm && formik.errors.contactNm) ? formik.errors.contactNm : undefined}
                             error={(formik.touched.contactNm && formik.errors.contactNm) ? true : false}
@@ -195,7 +193,7 @@ const AddDSP: React.FC<AddDSPProps> = () => {
                     <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
                         <Input
                             id='email'
-                            label={t("addDSP.form.contactForm.email")}
+                            label={t("addUser.form.contactForm.email")}
                             type='text'
                             helperText={(formik.touched.email && formik.errors.email) ? formik.errors.email : undefined}
                             error={(formik.touched.email && formik.errors.email) ? true : false}
@@ -209,7 +207,7 @@ const AddDSP: React.FC<AddDSPProps> = () => {
                         <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
                             <Input
                                 id='phone'
-                                label={t("addDSP.form.contactForm.phone")}
+                                label={t("addUser.form.contactForm.phone")}
                                 type='text'
                                 helperText={(formik.touched.phone && formik.errors.phone) ? formik.errors.phone : undefined}
                                 error={(formik.touched.phone && formik.errors.phone) ? true : false}
@@ -225,7 +223,7 @@ const AddDSP: React.FC<AddDSPProps> = () => {
                         <AutocompleteInput
                             id="addressLine1"
                             name='addressLine1'
-                            label={t("addDSP.form.contactForm.addressLine1")}
+                            label={t("addUser.form.contactForm.addressLine1")}
                             onChange={handleGoogleAddressChange}
                             onBlur={handleGoogleAddressBlur}
                             value={formik.values.addressLine1}
@@ -239,7 +237,7 @@ const AddDSP: React.FC<AddDSPProps> = () => {
                     <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
                         <Input
                             id='addressLine2'
-                            label={t("addDSP.form.contactForm.addressLine2")}
+                            label={t("addUser.form.contactForm.addressLine2")}
                             type='text'
                             helperText={(formik.touched.addressLine2 && formik.errors.addressLine2) ? formik.errors.addressLine2 : undefined}
                             error={(formik.touched.addressLine2 && formik.errors.addressLine2) ? true : false}
@@ -253,7 +251,7 @@ const AddDSP: React.FC<AddDSPProps> = () => {
                     <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
                         <Input
                             id='city'
-                            label={t("addDSP.form.contactForm.city")}
+                            label={t("addUser.form.contactForm.city")}
                             type='text'
                             helperText={(formik.touched.city && formik.errors.city) ? formik.errors.city : undefined}
                             error={(formik.touched.city && formik.errors.city) ? true : false}
@@ -268,7 +266,7 @@ const AddDSP: React.FC<AddDSPProps> = () => {
                     <Grid item xs={12} md={3} pr={2.5} pb={2.5}>
                         <Input
                             id='state'
-                            label={t("addDSP.form.contactForm.state")}
+                            label={t("addUser.form.contactForm.state")}
                             type='text'
                             helperText={(formik.touched.state && formik.errors.state) ? formik.errors.state : undefined}
                             error={(formik.touched.state && formik.errors.state) ? true : false}
@@ -281,7 +279,7 @@ const AddDSP: React.FC<AddDSPProps> = () => {
                     <Grid item xs={12} md={3} pr={2.5} pb={2.5}>
                         <Input
                             id='postalCode'
-                            label={t("addDSP.form.contactForm.postalCode")}
+                            label={t("addUser.form.contactForm.postalCode")}
                             type='text'
                             helperText={(formik.touched.postalCode && formik.errors.postalCode) ? formik.errors.postalCode : undefined}
                             error={(formik.touched.postalCode && formik.errors.postalCode) ? true : false}
@@ -314,14 +312,14 @@ const AddDSP: React.FC<AddDSPProps> = () => {
                                 disabled={disableButton()}
                             >
                                 {t("buttons.save")}
-                                {(isLoadingAddDsp || isLoadingUpdateDsp) && <LoadingIcon data-testid="loading-spinner" className='loading_save_icon' />}
+                                {(isLoadingAddUser || isLoadingUpdateUser) && <LoadingIcon data-testid="loading-spinner" className='loading_save_icon' />}
                             </Button>
                         </Box>
                         <ToastMessage
                             isOpen={
-                                isErrorAddDsp || isSuccessAddDsp ||
-                                isErrorUpdateDsp || isSuccessUpdateDsp ||
-                                isErrorDspData
+                                isErrorAddUser || isSuccessAddUser ||
+                                isErrorUpdateUser || isSuccessUpdateUser ||
+                                isErrorUserData
                             }
                             messageType={formStatus.type}
                             onClose={() => { return ''; }}
@@ -334,4 +332,4 @@ const AddDSP: React.FC<AddDSPProps> = () => {
         </Grid>
     );
 };
-export default AddDSP;
+export default AddUser;
