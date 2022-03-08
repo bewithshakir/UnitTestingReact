@@ -7,10 +7,11 @@ interface checkBoxProps {
     indeterminate?: boolean;
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
     onClick?: (event: React.MouseEvent<HTMLElement>) => void;
-    value?: any
+    value?: any,
+    style?: any,
 }
 
-export default function Radio(props: checkBoxProps) {
+export default function Radio (props: checkBoxProps) {
 
     return (
         <RadioButton
@@ -22,6 +23,7 @@ export default function Radio(props: checkBoxProps) {
             inputProps={{ 'aria-label': 'checkbox' }}
             name={props.name}
             disabled={props.disabled}
+            style={props.style}
         />
     );
 }

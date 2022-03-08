@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import { Box, Grid, Typography } from '@mui/material';
+import { Box, FormControl, FormControlLabel, FormGroup, Grid, Link, Typography } from '@mui/material';
 import { useFormik } from 'formik';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate, useParams } from 'react-router-dom';
-import UserModel from "../../../models/UserModel";
-import { AddUserSchema } from "./validation";
-import Input from '../../../components/UIComponents/Input/Input';
+import { LoadingIcon } from '../../../assets/icons';
 import { Button } from '../../../components/UIComponents/Button/Button.component';
-import AutocompleteInput from '../../../components/UIComponents/GoogleAddressComponent/GoogleAutoCompleteAddress';
-import { HorizontalBarVersionState, useAddedCustomerIdStore, useShowConfirmationDialogBoxStore, useStore } from '../../../store';
+import Input from '../../../components/UIComponents/Input/Input';
 import ToastMessage from '../../../components/UIComponents/ToastMessage/ToastMessage.component';
+import UserModel from "../../../models/UserModel";
+import Radio from '../../../components/UIComponents/Radio/Radio.component';
+import { HorizontalBarVersionState, useAddedCustomerIdStore, useShowConfirmationDialogBoxStore, useStore } from '../../../store';
 import { useAddUser, useEditUserData, useUpdateUserData } from './queries';
 import "./style.scss";
-import { LoadingIcon } from '../../../assets/icons';
+import { AddUserSchema } from "./validation";
 
 const initialValues = new UserModel();
 interface AddUserProps {
@@ -105,27 +105,6 @@ const AddUser: React.FC<AddUserProps> = () => {
         enableReinitialize: true,
     });
 
-    function handleGoogleAddressChange (addressObj: any) {
-        formik.setFieldValue('addressLine1', addressObj.addressLine1);
-        formik.setFieldValue('addressLine2', addressObj.addressLine2);
-        formik.setFieldValue('city', addressObj.city);
-        formik.setFieldValue('state', addressObj.state);
-        formik.setFieldValue('postalCode', addressObj.postalCode);
-    }
-
-    function handleGoogleAddressBlur () {
-        formik.setFieldTouched("addressLine1");
-        formik.validateField("addressLine1");
-        formik.setFieldTouched("addressLine2");
-        formik.validateField("addressLine2");
-        formik.setFieldTouched("city");
-        formik.validateField("city");
-        formik.setFieldTouched("state");
-        formik.validateField("state");
-        formik.setFieldTouched("postalCode");
-        formik.validateField("postalCode");
-    }
-
     useEffect(() => {
         if (!formik.isValid || formik.dirty) {
             isFormValidated(true);
@@ -155,10 +134,50 @@ const AddUser: React.FC<AddUserProps> = () => {
                     <Grid container item md={12} mb={2}>
                         <Grid item xs={6}>
                             <Typography color="var(--Darkgray)" variant="h3" gutterBottom className="fw-bold">
-                                {t("addUser.form.title")} *
+                                {t("addUser.form.title")}
                             </Typography>
                         </Grid>
                     </Grid>
+                    <Grid item xs={12} md={12}>
+                        <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
+                            <Input
+                                id='userName'
+                                label={t("addUser.form.userName")}
+                                type='text'
+                                helperText={(formik.touched.userName && formik.errors.userName) ? formik.errors.userName : undefined}
+                                error={(formik.touched.userName && formik.errors.userName) ? true : false}
+                                description=''
+                                placeholder='Enter'
+                                {...formik.getFieldProps('userName')}
+                                required
+                            />
+                        </Grid>
+                    </Grid>
+                    <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
+                        <Input
+                            id='email'
+                            label={t("addUser.form.userGroupAccessLevel.email")}
+                            type='text'
+                            helperText={(formik.touched.email && formik.errors.email) ? formik.errors.email : undefined}
+                            error={(formik.touched.email && formik.errors.email) ? true : false}
+                            description=''
+                            placeholder='Enter Email'
+                            {...formik.getFieldProps('email')}
+                            required
+                        />
+                    </Grid>
+                    <Grid item xs={12} md={6} pr={2.5} pb={2.5} pt={2.5} display="flex" alignItems="center">
+                        <Link
+                            variant="body2"
+                            className="add-link"
+                            sx={{ cursor: "pointer", color: "var(--Primary)" }}
+                        >
+                            <Typography variant="h4" color="var(--Primary)" className="fw-bold" mb={1}>
+                                Verify
+                            </Typography>
+                        </Link>
+                    </Grid>
+
                     <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
                         <Input
                             id='userName'
@@ -167,131 +186,68 @@ const AddUser: React.FC<AddUserProps> = () => {
                             helperText={(formik.touched.userName && formik.errors.userName) ? formik.errors.userName : undefined}
                             error={(formik.touched.userName && formik.errors.userName) ? true : false}
                             description=''
-                            placeholder='Enter'
+                            placeholder='User Name'
                             {...formik.getFieldProps('userName')}
+                            disabled={true}
                             required
                         />
                     </Grid>
-                    <Grid item md={12} mb={1}>
-                        <Typography color="var(--Darkgray)" variant="h3" gutterBottom className="fw-bold" mb={1} pt={2}>
-                            {t("addUser.form.contactForm.title")} :
+                    <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
+                        <Input
+                            id='phone'
+                            label={t("addUser.form.userGroupAccessLevel.phone")}
+                            type='text'
+                            helperText={(formik.touched.phone && formik.errors.phone) ? formik.errors.phone : undefined}
+                            error={(formik.touched.phone && formik.errors.phone) ? true : false}
+                            description=''
+                            placeholder='Phone Number Ex: 787 XXXX XXX'
+                            disabled={true}
+                            {...formik.getFieldProps('phone')}
+                        />
+                    </Grid>
+                    <Grid item md={12} mt={2} mb={2}>
+                        <Typography color="var(--Darkgray)" variant="h4" gutterBottom className="fw-bold">
+                            {t("addUser.form.userGroupAccessLevel.title")}
                         </Typography>
                     </Grid>
                     <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
-                        <Input
-                            id='contactNm'
-                            label={t("addUser.form.contactForm.contactNm")}
-                            type='text'
-                            helperText={(formik.touched.contactNm && formik.errors.contactNm) ? formik.errors.contactNm : undefined}
-                            error={(formik.touched.contactNm && formik.errors.contactNm) ? true : false}
-                            description=''
-                            placeholder='Enter'
-                            {...formik.getFieldProps('contactNm')}
-                            required
-                        />
-                    </Grid>
-                    <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
-                        <Input
-                            id='email'
-                            label={t("addUser.form.contactForm.email")}
-                            type='text'
-                            helperText={(formik.touched.email && formik.errors.email) ? formik.errors.email : undefined}
-                            error={(formik.touched.email && formik.errors.email) ? true : false}
-                            description=''
-                            placeholder='Enter Email ID'
-                            {...formik.getFieldProps('email')}
-                            required
-                        />
-                    </Grid>
-                    <Grid item xs={12} md={12}>
-                        <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
-                            <Input
-                                id='phone'
-                                label={t("addUser.form.contactForm.phone")}
-                                type='text'
-                                helperText={(formik.touched.phone && formik.errors.phone) ? formik.errors.phone : undefined}
-                                error={(formik.touched.phone && formik.errors.phone) ? true : false}
-                                description=''
-                                placeholder='Enter phone number Ex: 787 XXXX XXX'
-                                {...formik.getFieldProps('phone')}
-                                required
-                            />
-                        </Grid>
-                    </Grid>
-
-                    <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
-                        <AutocompleteInput
-                            id="addressLine1"
-                            name='addressLine1'
-                            label={t("addUser.form.contactForm.addressLine1")}
-                            onChange={handleGoogleAddressChange}
-                            onBlur={handleGoogleAddressBlur}
-                            value={formik.values.addressLine1}
-                            helperText={(formik.touched.addressLine1 && formik.errors.addressLine1) ? formik.errors.addressLine1 : undefined}
-                            error={(formik.touched.addressLine1 && formik.errors.addressLine1) ? true : false}
-                            required
-                            disabled={false}
-                        />
-                    </Grid>
-
-                    <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
-                        <Input
-                            id='addressLine2'
-                            label={t("addUser.form.contactForm.addressLine2")}
-                            type='text'
-                            helperText={(formik.touched.addressLine2 && formik.errors.addressLine2) ? formik.errors.addressLine2 : undefined}
-                            error={(formik.touched.addressLine2 && formik.errors.addressLine2) ? true : false}
-                            description=''
-                            placeholder='Type here'
-                            {...formik.getFieldProps('addressLine2')}
-                            required
-                            disabled={false}
-                        />
-                    </Grid>
-                    <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
-                        <Input
-                            id='city'
-                            label={t("addUser.form.contactForm.city")}
-                            type='text'
-                            helperText={(formik.touched.city && formik.errors.city) ? formik.errors.city : undefined}
-                            error={(formik.touched.city && formik.errors.city) ? true : false}
-                            description=''
-                            placeholder='City name'
-                            {...formik.getFieldProps('city')}
-                            required
-                            disabled={false}
-                        />
-                    </Grid>
-
-                    <Grid item xs={12} md={3} pr={2.5} pb={2.5}>
-                        <Input
-                            id='state'
-                            label={t("addUser.form.contactForm.state")}
-                            type='text'
-                            helperText={(formik.touched.state && formik.errors.state) ? formik.errors.state : undefined}
-                            error={(formik.touched.state && formik.errors.state) ? true : false}
-                            description=''
-                            required
-                            {...formik.getFieldProps('state')}
-                        />
-                    </Grid>
-
-                    <Grid item xs={12} md={3} pr={2.5} pb={2.5}>
-                        <Input
-                            id='postalCode'
-                            label={t("addUser.form.contactForm.postalCode")}
-                            type='text'
-                            helperText={(formik.touched.postalCode && formik.errors.postalCode) ? formik.errors.postalCode : undefined}
-                            error={(formik.touched.postalCode && formik.errors.postalCode) ? true : false}
-                            description=''
-                            required
-                            {...formik.getFieldProps('postalCode')}
-                        />
+                        <FormControl sx={{ m: 3 }}>
+                            <FormGroup>
+                                <FormControlLabel
+                                    sx={{
+                                        margin: "0px",
+                                        marginBottom: "1rem",
+                                        fontWeight: "bold",
+                                    }}
+                                    className="checkbox-field"
+                                    control={
+                                        <Radio style={{ paddingLeft: "0px" }} checked={formik.values.lotLevel} onChange={formik.handleChange} name="lotLevel" />
+                                    }
+                                    label={
+                                        <Typography color="var(--Darkgray)" variant="h4" className="fw-bold">
+                                            Apply at Lot level
+                                        </Typography>
+                                    }
+                                />
+                                <FormControlLabel
+                                    sx={{ margin: "0px", marginBottom: "1rem", fontWeight: "bold" }}
+                                    className="checkbox-field"
+                                    control={
+                                        <Radio style={{ paddingLeft: "0px" }} checked={formik.values.businessLevel} onChange={formik.handleChange} name="businessLevel" />
+                                    }
+                                    label={
+                                        <Typography color="var(--Darkgray)" variant="h4" className="fw-bold">
+                                            Apply at Busines level
+                                        </Typography>
+                                    }
+                                />
+                            </FormGroup>
+                        </FormControl>
                     </Grid>
 
                     <Grid item xs={12} md={6} />
-                    <Grid item xs={12} md={6} pr={2.5} pb={2.5} mt={4}>
-                        <Box className="form-action-section txt-right">
+                    <Grid item md={12} pr={2.5} pb={2.5} mt={4}>
+                        <Box className="form-action-section" alignItems="end">
                             <Button
                                 id="cancelBtn"
                                 types="cancel"
@@ -325,7 +281,6 @@ const AddUser: React.FC<AddUserProps> = () => {
                             onClose={() => { return ''; }}
                             message={formStatus.message} />
                     </Grid>
-
 
                 </Grid>
             </form>

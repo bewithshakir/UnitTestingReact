@@ -22,7 +22,8 @@ export default class UserModel {
     state: string;
     postalCode: string;
     lotsAssigned: string;
-
+    lotLevel: boolean;
+    businessLevel: boolean;
     constructor() {
         this.userName = '';
         this.contactNm = '';
@@ -35,6 +36,8 @@ export default class UserModel {
         this.state = '';
         this.postalCode = '';
         this.lotsAssigned = '';
+        this.lotLevel = false;
+        this.businessLevel = false;
     }
 
     fieldsToDisplay (): headerObj[] {

@@ -174,11 +174,11 @@
     "form": {
       "titleEdit": "Edit User",
       "title": "User Details",
-      "dspName": "User Name",
-      "contactForm": {
-        "title": "Contact Details",
+      "userName": "User Name",
+      "userGroupAccessLevel": {
+        "title": "USER GROUP ACCESS LEVEL *",
         "contactNm": "Name",
-        "email": "Email ID",
+        "email": "Email",
         "phone": "Phone Number",
         "addressLine1": "Address Line 1",
         "addressLine2": "Address Line 2",

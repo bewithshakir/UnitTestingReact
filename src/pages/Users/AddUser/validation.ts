@@ -4,11 +4,10 @@ export const AddUserSchema = Yup.object().shape({
     userName: Yup.string().required('Required'),
     contactNm: Yup.string().required('Required'),
     email: Yup.string().email('Invalid email').required('Required'),
-    phone: Yup.string()
-        .matches(
-            /^(?:\+?1[-.●]?)?\(?([0-9]{3})\)?[-.●]?([0-9]{3})[-.●]?([0-9]{4})$/,
-            'Invalid phone number'
-        ).required('Required'),
+    phone: Yup.string().matches(
+        /^(?:\+?1[-.●]?)?\(?([0-9]{3})\)?[-.●]?([0-9]{3})[-.●]?([0-9]{4})$/,
+        'Invalid phone number'
+    ),
     addressLine1: Yup.string().required('Required'),
     addressLine2: Yup.string().required('Required'),
     city: Yup.string().required('Required'),
