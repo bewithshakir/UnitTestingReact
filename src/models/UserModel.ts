@@ -10,34 +10,23 @@ export interface SelectProps {
 }
 
 export default class UserModel {
-    // General Information
-    userName: string;
-    contactNm: string;
+    userGroup: SelectProps;
     email: string;
+    // jenrin user's fetched data
+    userId: string;
+    userName: string;
     phone: string;
-    addressLine1: string;
-    addressLine2: string;
     customerId: string;
-    city: string;
-    state: string;
-    postalCode: string;
-    lotsAssigned: string;
-    lotLevel: boolean;
-    businessLevel: boolean;
+    userAccessLevel: string;
     constructor() {
-        this.userName = '';
-        this.contactNm = '';
+        this.userGroup = { label: '', value: '' };
         this.email = '';
+
+        this.userId = '';
+        this.userName = '';
         this.phone = '';
-        this.addressLine1 = '';
-        this.addressLine2 = '';
         this.customerId = '';
-        this.city = '';
-        this.state = '';
-        this.postalCode = '';
-        this.lotsAssigned = '';
-        this.lotLevel = false;
-        this.businessLevel = false;
+        this.userAccessLevel = '';
     }
 
     fieldsToDisplay (): headerObj[] {

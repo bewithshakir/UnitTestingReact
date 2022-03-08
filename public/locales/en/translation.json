@@ -174,17 +174,12 @@
     "form": {
       "titleEdit": "Edit User",
       "title": "User Details",
-      "userName": "User Name",
+      "userGroup": "User Group",
+      "email": "Email",
       "userGroupAccessLevel": {
         "title": "USER GROUP ACCESS LEVEL *",
-        "contactNm": "Name",
-        "email": "Email",
-        "phone": "Phone Number",
-        "addressLine1": "Address Line 1",
-        "addressLine2": "Address Line 2",
-        "city": "City",
-        "state": "State / Province",
-        "postalCode": "Postal Code"
+        "userName": "User Name",
+        "phone": "Phone Number"
       }
     }
   },

@@ -1,4 +1,4 @@
-import { Box, FormControl, FormControlLabel, FormGroup, Grid, Link, Typography } from '@mui/material';
+import { Box, FormControl, FormControlLabel, Grid, Link, RadioGroup, Typography, Radio } from '@mui/material';
 import { useFormik } from 'formik';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -8,13 +8,18 @@ import { Button } from '../../../components/UIComponents/Button/Button.component
 import Input from '../../../components/UIComponents/Input/Input';
 import ToastMessage from '../../../components/UIComponents/ToastMessage/ToastMessage.component';
 import UserModel from "../../../models/UserModel";
-import Radio from '../../../components/UIComponents/Radio/Radio.component';
 import { HorizontalBarVersionState, useAddedCustomerIdStore, useShowConfirmationDialogBoxStore, useStore } from '../../../store';
 import { useAddUser, useEditUserData, useUpdateUserData } from './queries';
+import Select from '../../../components/UIComponents/Select/SingleSelect';
 import "./style.scss";
 import { AddUserSchema } from "./validation";
 
 const initialValues = new UserModel();
+
+const userGroupList = [
+    { label: 'Customer', value: 'Customer', },
+    { label: 'DSP', value: 'DSP' },
+];
 interface AddUserProps {
     version: string
 }
@@ -127,6 +132,10 @@ const AddUser: React.FC<AddUserProps> = () => {
             return true;
         }
     };
+
+    // eslint-disable-next-line no-console
+    console.log('formik.values.userAccessLevel', formik.values);
+
     return (
         <Grid item xl={7} lg={8}>
             <form onSubmit={formik.handleSubmit} id='form'>
@@ -138,17 +147,20 @@ const AddUser: React.FC<AddUserProps> = () => {
                             </Typography>
                         </Grid>
                     </Grid>
+
                     <Grid item xs={12} md={12}>
                         <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
-                            <Input
-                                id='userName'
-                                label={t("addUser.form.userName")}
-                                type='text'
-                                helperText={(formik.touched.userName && formik.errors.userName) ? formik.errors.userName : undefined}
-                                error={(formik.touched.userName && formik.errors.userName) ? true : false}
-                                description=''
-                                placeholder='Enter'
-                                {...formik.getFieldProps('userName')}
+                            <Select
+                                id='userGroup'
+                                name='userGroup'
+                                label={t("addUser.form.userGroup")}
+                                placeholder='Choose'
+                                value={formik.values.userGroup}
+                                items={userGroupList}
+                                helperText={(formik.touched.userGroup && formik.errors.userGroup) ? formik.errors.userGroup.value : undefined}
+                                error={(formik.touched.userGroup && formik.errors.userGroup) ? true : false}
+                                onChange={formik.setFieldValue}
+                                onBlur={() => { formik.setFieldTouched("userGroup"); formik.validateField("userGroup"); }}
                                 required
                             />
                         </Grid>
@@ -156,7 +168,7 @@ const AddUser: React.FC<AddUserProps> = () => {
                     <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
                         <Input
                             id='email'
-                            label={t("addUser.form.userGroupAccessLevel.email")}
+                            label={t("addUser.form.email")}
                             type='text'
                             helperText={(formik.touched.email && formik.errors.email) ? formik.errors.email : undefined}
                             error={(formik.touched.email && formik.errors.email) ? true : false}
@@ -181,7 +193,7 @@ const AddUser: React.FC<AddUserProps> = () => {
                     <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
                         <Input
                             id='userName'
-                            label={t("addUser.form.userName")}
+                            label={t("addUser.form.userGroupAccessLevel.userName")}
                             type='text'
                             helperText={(formik.touched.userName && formik.errors.userName) ? formik.errors.userName : undefined}
                             error={(formik.touched.userName && formik.errors.userName) ? true : false}
@@ -205,43 +217,24 @@ const AddUser: React.FC<AddUserProps> = () => {
                             {...formik.getFieldProps('phone')}
                         />
                     </Grid>
+
                     <Grid item md={12} mt={2} mb={2}>
                         <Typography color="var(--Darkgray)" variant="h4" gutterBottom className="fw-bold">
                             {t("addUser.form.userGroupAccessLevel.title")}
                         </Typography>
                     </Grid>
                     <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
-                        <FormControl sx={{ m: 3 }}>
-                            <FormGroup>
-                                <FormControlLabel
-                                    sx={{
-                                        margin: "0px",
-                                        marginBottom: "1rem",
-                                        fontWeight: "bold",
-                                    }}
-                                    className="checkbox-field"
-                                    control={
-                                        <Radio style={{ paddingLeft: "0px" }} checked={formik.values.lotLevel} onChange={formik.handleChange} name="lotLevel" />
-                                    }
-                                    label={
-                                        <Typography color="var(--Darkgray)" variant="h4" className="fw-bold">
-                                            Apply at Lot level
-                                        </Typography>
-                                    }
-                                />
-                                <FormControlLabel
-                                    sx={{ margin: "0px", marginBottom: "1rem", fontWeight: "bold" }}
-                                    className="checkbox-field"
-                                    control={
-                                        <Radio style={{ paddingLeft: "0px" }} checked={formik.values.businessLevel} onChange={formik.handleChange} name="businessLevel" />
-                                    }
-                                    label={
-                                        <Typography color="var(--Darkgray)" variant="h4" className="fw-bold">
-                                            Apply at Busines level
-                                        </Typography>
-                                    }
-                                />
-                            </FormGroup>
+                        <FormControl component="fieldset">
+                            <RadioGroup
+                                aria-label="gender"
+                                defaultValue="female"
+                                name="userAccessLevel"
+                                value={formik.values.userAccessLevel}
+                                onChange={formik.handleChange}
+                            >
+                                <FormControlLabel value="View & Edit" sx={{ margin: 0 }} control={<Radio />} label="View & Edit" />
+                                <FormControlLabel value="View only" sx={{ marginLeft: 0 }} control={<Radio />} label="View only" />
+                            </RadioGroup>
                         </FormControl>
                     </Grid>
 
