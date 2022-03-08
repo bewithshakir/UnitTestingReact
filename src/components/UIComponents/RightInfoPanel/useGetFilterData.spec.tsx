@@ -1,16 +1,13 @@
-import { renderHook, act } from '@testing-library/react-hooks';
-import { createWrapper } from '../../tests/utils';
-import { DspListSet } from './queries';
-import { serverMsw } from "../../setupTests";
+import { renderHook } from '@testing-library/react-hooks';
+import { createWrapper } from '../../../tests/utils';
+import { useGetFilterData } from '../../../infrastructure/filterQuery';
+import { serverMsw } from "../../../setupTests";
 import { rest } from 'msw';
 
-describe('useSearchDSP for useInfiniteQuery method ', () => {
+describe('useGetFilterData for useQuery method ', () => {
     it('successful returns data', async () => {
-        const { result, waitFor } = renderHook(() => DspListSet("Test DSP", { sortBy: "", order: "", }, "111edit", {}), {
+        const { result, waitFor } = renderHook(() => useGetFilterData('dspFilter', '12'), {
             wrapper: createWrapper()
-        });
-        act(() => {
-            result.current.fetchNextPage();
         });
         await waitFor(() => {
             return result.current.isSuccess;
@@ -25,12 +22,10 @@ describe('useSearchDSP for useInfiniteQuery method ', () => {
             })
         );
 
-        const { result, waitFor } = renderHook(() => DspListSet("", { sortBy: "", order: "", }, "111edit", {}), {
+        const { result, waitFor } = renderHook(() => useGetFilterData('dspFilter', '12'), {
             wrapper: createWrapper()
         });
-        act(() => {
-            result.current.fetchNextPage();
-        });
+
         await waitFor(() => {
             return result.current.isError;
         });

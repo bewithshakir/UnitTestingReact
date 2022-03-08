@@ -6,7 +6,7 @@ import { rest } from 'msw';
 
 describe('useGetProductTypes for useQuery method ', () => {
     it('successful returns data', async () => {
-        const { result, waitFor } = renderHook(() => useEditDspData('111', '222', jest.fn(), jest.fn()), {
+        const { result, waitFor } = renderHook(() => useEditDspData('111edit', '22', jest.fn(), jest.fn()), {
             wrapper: createWrapper()
         });
         await waitFor(() => {
@@ -22,7 +22,7 @@ describe('useGetProductTypes for useQuery method ', () => {
             })
         );
 
-        const { result, waitFor } = renderHook(() => useEditDspData('111', '222', jest.fn(), jest.fn()), {
+        const { result, waitFor } = renderHook(() => useEditDspData('111edit', '22', jest.fn(), jest.fn()), {
             wrapper: createWrapper()
         });
 

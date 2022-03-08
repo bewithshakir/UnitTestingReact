@@ -4,9 +4,9 @@ import { DspListSet } from './queries';
 import { serverMsw } from "../../setupTests";
 import { rest } from 'msw';
 
-describe('useSearchDSP for useInfiniteQuery method ', () => {
+describe('DspListSet for useInfiniteQuery method ', () => {
     it('successful returns data', async () => {
-        const { result, waitFor } = renderHook(() => DspListSet("Test DSP", { sortBy: "", order: "", }, "111edit", {}), {
+        const { result, waitFor } = renderHook(() => DspListSet("", { sortBy: "", order: "", }, '111edit', {}), {
             wrapper: createWrapper()
         });
         act(() => {
@@ -25,7 +25,7 @@ describe('useSearchDSP for useInfiniteQuery method ', () => {
             })
         );
 
-        const { result, waitFor } = renderHook(() => DspListSet("", { sortBy: "", order: "", }, "111edit", {}), {
+        const { result, waitFor } = renderHook(() => DspListSet("", { sortBy: "", order: "", }, '111edit', {}), {
             wrapper: createWrapper()
         });
         act(() => {

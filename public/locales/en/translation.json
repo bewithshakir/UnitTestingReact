@@ -449,6 +449,11 @@
       "city": "City"
     }
   },
+  "filterForm": {
+    "state": "State",
+    "city": "City",
+    "zip": "Zip"
+  },
   "addTruckFormLabels": {
     "addTruckTitle": "Add Truck",
     "truckName": "TRUCK NAME",

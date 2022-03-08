@@ -14,14 +14,16 @@ jest.mock('react-router-dom', () => ({
         })
     }),
     useParams: () => ({
-        dspId: '222',
-    }),
+        customerId: '111edit',
+        dspId: '222'
+    })
 }));
 
 jest.mock('../../../store', () => ({
-    ...jest.requireActual("../../../store") as any,
-    useAddedCustomerIdStore: () => '111'
+    ...jest.requireActual('../../../store') as any,
+    useAddedCustomerIdStore: ()=> '111edit'
 }));
+
 
 function getAllElements (component: any) {
     const dspNameElem = component.container.querySelector('#dspName');

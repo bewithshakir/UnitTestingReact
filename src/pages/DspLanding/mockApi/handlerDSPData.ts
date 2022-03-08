@@ -2,6 +2,7 @@ import { rest } from "msw";
 
 export const getDspDataHandler = () => {
     return rest.get('*/api/customer-service/customers/*/dsps*', (req, res, ctx) => {
+        console.log('req--', req.url.pathname)
         const search = req.url.searchParams.get('search');
         const limit = req.url.searchParams.get('limit');
         return res(
