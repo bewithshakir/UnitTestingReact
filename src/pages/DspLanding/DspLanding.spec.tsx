@@ -126,10 +126,8 @@ describe('sortby dsp name on dsp landing page', () => {
     it('load data in form', async () => {
         const result = renderWithClient(<DspLandingContent version="Breadcrumbs-Many" />);
 
-        await act(() => {
-            const { sortBy } = getAllElements(result);
-            userEvent.click(sortBy);
-        });
+        const { sortBy } = getAllElements(result);
+        userEvent.click(sortBy);
 
         await waitFor(() => {
             expect(result.getByText(/dspname_atoz/i)).toBeInTheDocument();

@@ -1,4 +1,7 @@
-
+export const sortByOptions = [
+    "dsp.sortBy.dspname_atoz",
+    "dsp.sortBy.dspname_ztoa"
+];
 
 export const filterByFields = [];
 
@@ -9,7 +12,7 @@ export const SORTBY_TYPES = {
     DSP_NAME_ZA: "DSP Name Z-A",
   };
 
-export const DSPLanding = {
+  export const DSPLanding = {
     LandingPage: {
       SortByOptions: [
         "dsp.sortBy.dspname_atoz",
