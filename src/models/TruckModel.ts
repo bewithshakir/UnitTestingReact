@@ -5,7 +5,7 @@ import { ParkingLocationIcon } from '../assets/icons';
 import { useTranslation } from 'react-i18next';
 import { TruckManagement } from '../pages/Truck/config';
 
-const { RowActionsOptions } = TruckManagement.LandingPage;
+const { RowActionsOptions, DataGridFields } = TruckManagement.LandingPage;
 
 export default class TruckModel {
     deliveryVehicleId: string;
@@ -38,14 +38,14 @@ export default class TruckModel {
 
     fieldsToDisplay (): headerObj[] {
         return [
-            { field: "deliveryVehicleNm", label: "TRUCK NAME", type: 'text' },
-            { field: "licenceNo", label: "LICENSE", type: 'text' },
-            { field: "vinNo", label: "VIN", type: 'text' },
-            { field: "makeAndModelNm", label: "MAKE/MODEL", type: 'text' },
-            { field: "colorNm", label: "COLOR", type: 'text' },
-            { field: "registrationYr", label: "YEAR", type: 'text' },
+            { field: DataGridFields.TRUCKNAME.field, label: DataGridFields.TRUCKNAME.label, type: 'text' },
+            { field: DataGridFields.LICENSE.field, label: DataGridFields.LICENSE.label, type: 'text' },
+            { field: DataGridFields.VIN.field, label: DataGridFields.VIN.label, type: 'text' },
+            { field: DataGridFields.MAKEORMODEL.field, label: DataGridFields.MAKEORMODEL.label, type: 'text' },
+            { field: DataGridFields.COLOR.field, label: DataGridFields.COLOR.label, type: 'text' },
+            { field: DataGridFields.YEAR.field, label: DataGridFields.YEAR.label, type: 'text' },
             { 
-                field: "activeInactiveInd", label: "STATUS", type: 'status',
+                field: DataGridFields.STATUS.field, label: DataGridFields.STATUS.label, type: 'status',
                 fieldOptions: [
                     {
                         value: "y",
@@ -61,10 +61,10 @@ export default class TruckModel {
                     },
                 ] 
             },
-            { field: "drivers", label: "DRIVERS", type: 'text' },
-            { field: "parkingLocationCount", label: "LOCATIONS", type: 'button', icon: ParkingLocationIcon },
-            { field: "tankCount", label: "TANKS", type: 'button', icon: OilTankIcon },
-            { field: "orderCount", label: "ORDERS", type: 'button', icon: OrderIcon },
+            { field: DataGridFields.DRIVERS.field, label: DataGridFields.DRIVERS.label, type: 'text' },
+            { field: DataGridFields.LOCATIONS.field, label: DataGridFields.LOCATIONS.label, type: 'button', icon: ParkingLocationIcon },
+            { field: DataGridFields.TANKS.field, label: DataGridFields.TANKS.label, type: 'button', icon: OilTankIcon },
+            { field: DataGridFields.ORDERS.field, label: DataGridFields.ORDERS.label, type: 'button', icon: OrderIcon },
         ];
     }
 

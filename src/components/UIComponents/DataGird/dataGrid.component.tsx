@@ -6,7 +6,7 @@ import { Loader } from '../Loader';
 import DataGridActionsMenu, { DataGridActionsMenuOption, RowActionHanddlerRef } from '../Menu/DataGridActionsMenu.component';
 import { Button } from './../Button/Button.component';
 import './grid.style.scss';
-import { fieldOptions, headerObj } from './grid.component';
+import { fieldOptions, filterObjType, headerObj } from './grid.component';
 import { tableImagesSX, tableAvatarSX, tableImagesIconListSX, tableIconsSX, tableFuelIconsSX } from './config';
 import NoDataFound from './Nodata';
 import Select from './ProductSingleSelect';
@@ -34,7 +34,8 @@ interface GridBodyProps {
     InnerTableComponent?: any;
     noDataMsg?: string,
     searchTerm?: string,
-    showImg?: React.ReactNode | undefined,
+    filterData?: filterObjType,
+    showImg?: React.ReactNode,
     onRowActionSelect?: (selectedValue: DataGridActionsMenuOption, row: any) => void,
     rowActionOptions?: DataGridActionsMenuOption[],
     showInnerTableMenu?: boolean,
@@ -42,7 +43,7 @@ interface GridBodyProps {
 }
 
 
-function descendingComparator(a: any, b: any, orderBy: any) {
+function descendingComparator (a: any, b: any, orderBy: any) {
     const valueA = orderBy === "product" ? a.productName : a[orderBy];
     const valueB = orderBy === "product" ? b.productName : b[orderBy];
     const finalValueA = isNaN(valueA) ? valueA?.toLowerCase() : Number(valueA);
@@ -57,13 +58,13 @@ function descendingComparator(a: any, b: any, orderBy: any) {
 }
 
 
-function getComparator(order: any, orderBy: any) {
+function getComparator (order: any, orderBy: any) {
     return order === "desc"
         ? (a: any, b: any) => descendingComparator(a, b, orderBy)
         : (a: any, b: any) => -descendingComparator(a, b, orderBy);
 }
 
-function stableSort(array: any, comparator: any) {
+function stableSort (array: any, comparator: any) {
     const stabilizedThis = array.map((el: any, index: any) => [el, index]);
     stabilizedThis.sort((a: any, b: any) => {
         const order = comparator(a[0], b[0]);
@@ -117,10 +118,16 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
         );
     };
 
+    const renderProductIcon = (icon: any) => {
+        return (
+            <Icon sx={tableFuelIconsSX} component={icon} />
+        );
+    };
+
     const renderIcons = (key: string, data: any, align: string | undefined) => {
         if (data?.length) {
             return (<ImageList sx={{ ...tableImagesIconListSX, justifyContent: align }} gap={0} cols={5}>
-                { data?.map((icon: any, index: number) => 
+                {data?.map((icon: any, index: number) =>
                     <ImageListItem key={index} >
                         <Icon sx={key === 'fuelStatus' ? tableFuelIconsSX : tableIconsSX} component={key === 'fuelStatus' ? getProductIcon(icon?.productIcon?.productIconNm) : icon} />
                     </ImageListItem>
@@ -145,28 +152,45 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
         );
     };
 
+    const shouldDisplayLastIcon = (icon: any, showIconLast: boolean) => {
+        return (icon && showIconLast);
+    };
+
     const setStatusCol = (showIconLast: boolean, align: string, value: string, color: string, icon: any) => {
+        const leftPadding = shouldDisplayLastIcon(icon, !showIconLast) ? 1 : 0;
+        const rightPadding = shouldDisplayLastIcon(icon, showIconLast) ? 1 : 0;
         return (
             <Box display="flex" alignItems="center" justifyContent={align}>
-                {(icon && !showIconLast) ? renderIcon(icon) : null}
+                {shouldDisplayLastIcon(icon, !showIconLast) ? renderIcon(icon) : null}
                 {value ?
-                    <Typography variant="h4" pl={(icon && !showIconLast) ? 1 : 0} pr={(icon && showIconLast) ? 1 : 0} color={color} className="fw-bold">
+                    <Typography
+                        variant="h4"
+                        pl={leftPadding}
+                        pr={rightPadding}
+                        color={color} className="fw-bold">
                         {value}
                     </Typography> : null}
-                {(icon && showIconLast) ? renderIcon(icon) : null}
+                {shouldDisplayLastIcon(icon, showIconLast) ? renderIcon(icon) : null}
             </Box>
         );
     };
 
     const renderProduct = (fieldOpts: headerObj, data: any) => {
+        const leftPadding = (!fieldOpts.showIconLast) ? 1 : 0;
+        const rightPadding = (fieldOpts.showIconLast) ? 1 : 0;
         return (
             <Box display="flex" alignItems="center" justifyContent={fieldOpts.align}>
-                {(!fieldOpts.showIconLast) ? renderIcon(getProductIcon(data?.productColorNm)) : null}
+                {(!fieldOpts.showIconLast) ? renderProductIcon(getProductIcon(data?.productColorNm)) : null}
                 {data?.productName ?
-                    <Typography variant="h4" pl={(!fieldOpts.showIconLast) ? 1 : 0} pr={(fieldOpts.showIconLast) ? 1 : 0} color="var(--Darkgray)" className="fw-bold">
+                    <Typography
+                        variant="h4"
+                        pl={leftPadding}
+                        pr={rightPadding}
+                        color="var(--Darkgray)"
+                        className="fw-bold">
                         {data?.productName}
                     </Typography> : null}
-                {(fieldOpts.showIconLast) ? renderIcon(getProductIcon(data?.productColorNm)) : null}
+                {(fieldOpts.showIconLast) ? renderProductIcon(getProductIcon(data?.productColorNm)) : null}
             </Box>
         );
     };
@@ -174,7 +198,7 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
     const renderComponent = (fieldOpts: headerObj, data: any) => {
         return (
             <Box display="flex" alignItems="center" justifyContent={fieldOpts.align}>
-              {data}
+                {data}
             </Box>
         );
     };
@@ -227,7 +251,92 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
         }
         dataGridRowActionRef.current?.closeMenu();
     };
+    const renderRowSelection = (rowData: any, rowPrimaryId: any, singleRowSelection?: boolean, isItemSelected?: boolean) => (
+        <TableCell
+            padding="checkbox"
+            className="grid-cell-parent"
+            component="th"
+            scope="row"
+            onClick={() => props.isChildTable ? {} : openDrawer(rowData)}
+        >
+            {singleRowSelection ? (
+                <Radio
+                    name={`checkboxOnGrid`}
+                    checked={isItemSelected || false}
+                    onChange={() => props.handleCheckChange && props.handleCheckChange(rowPrimaryId)}
+                    onClick={e => e.stopPropagation()}
+                />
+            ) : (<Checkbox
+                name={`checkbox${rowPrimaryId}`}
+                checked={isItemSelected || false}
+                onChange={() => onCheckChange(rowPrimaryId)}
+                onClick={e => e.stopPropagation()}
+            />
+            )}
+        </TableCell>
+    );
 
+    const renderBoldDataCell = (data: any, isBold: boolean) => isBold ? <b>{data}</b> : data;
+
+    const renderGridCell = (headCells: any, rowIndex: any, colIndex: any, row: any, key: any) => {
+        switch (headCells[colIndex].type) {
+            case 'text':
+                return headCells[colIndex].width ? (
+                    <div title={row[key]} className="ellipses_column" style={{ width: headCells[colIndex].width }}>
+                        {renderBoldDataCell(row[key], headCells[colIndex].bold)}
+                    </div>
+                ) : renderBoldDataCell(row[key], headCells[colIndex].bold);
+            case 'button':
+                return (
+                    <Button
+                        types="accordian"
+                        aria-label="accordian"
+                        className={setAccordianButtonStatus(row[key], rowIndex, colIndex)}
+                        onClick={(e) => handleCollapaseClick(e, rowIndex, colIndex, row, key)}
+                        startIcon={props.headCells[colIndex].icon ? <Icon component={props.headCells[colIndex].icon} /> : undefined}
+                    >
+                        {row[key]}
+                    </Button>
+                );
+            case 'icon':
+                return renderIcon(row[key]);
+            case 'icons':
+                return renderIcons(key, row[key], props.headCells[colIndex].align);
+            case 'image':
+                return <Avatar sx={tableAvatarSX} src={row[key]} variant="square" />;
+            case 'images':
+                return renderImages(row[key]);
+            case 'dropdown':
+                return renderSelect();
+            case 'status':
+                return renderStatus(props.headCells[colIndex], row[key]);
+            case 'product':
+                return renderProduct(props.headCells[colIndex], row[key]);
+            case 'component':
+                return renderComponent(props.headCells[colIndex], row[key]);
+            default:
+                return "";
+        }
+    };
+
+    const renderRowAction = (rowData: any) => (
+        <TableCell
+            className="grid-cell-parent"
+            component="th"
+            scope="row"
+            align="right"
+            size="small"
+        >
+            <FormControl>
+                <DataGridActionsMenu
+                    ref={dataGridRowActionRef}
+                    options={props.rowActionOptions || []}
+                    onSelect={(e, value) => props.onRowActionSelect && props.onRowActionSelect(value, rowData)}
+                    showInnerTableMenu={props.showInnerTableMenu}
+                />
+            </FormControl>
+        </TableCell>
+    );
     const getRowsData = () => {
         const keys = getKeys();
         const { primaryKey } = props;
@@ -236,34 +345,10 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
                 .map((row: any, rowIndex: any) => {
                     const isItemSelected = isSelected(row[primaryKey]);
                     return (<React.Fragment key={rowIndex}>
-                        <TableRow key={rowIndex} sx={{
-                            cursor: props.openDrawer ? "pointer" : "auto"
-                        }}>
-                            {
-                                props.enableRowSelection ?
-                                    <TableCell
-                                        padding="checkbox"
-                                        className="grid-cell-parent"
-                                        component="th"
-                                        scope="row"
-                                        onClick={() => props.isChildTable ? {} : openDrawer(row)}
-                                    >
-                                        {props.singleRowSelection ? (
-                                            <Radio
-                                                name={`checkboxOnGrid`}
-                                                checked={isItemSelected || false}
-                                                onChange={() => props.handleCheckChange && props.handleCheckChange(row[primaryKey])}
-                                                onClick={e => e.stopPropagation()}
-                                            />
-                                        ) : <Checkbox
-                                            name={`checkbox${row[primaryKey]}`}
-                                            checked={isItemSelected || false}
-                                            onChange={() => onCheckChange(row[primaryKey])}
-                                            onClick={e => e.stopPropagation()}
-                                        />
-                                        }
-                                    </TableCell>
-                                    : null}
+                        <TableRow key={rowIndex} sx={{ cursor: props.openDrawer ? "pointer" : "auto" }}>
+                            {props.enableRowSelection ?
+                                renderRowSelection(row, row[primaryKey], props.singleRowSelection, isItemSelected) : null
+                            }
                             {keys.map((key: any, colIndex: any) =>
                                 <TableCell
                                     className="grid-cell-parent"
@@ -274,68 +359,15 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
                                     key={(rowIndex.toString() + colIndex.toString())}
                                     onClick={() => props.isChildTable ? {} : openDrawer(row)}
                                 >
-                                    {
-                                        props.headCells[colIndex].type === 'text' ?
-                                            props.headCells[colIndex].width ? (
-                                                <div
-                                                    title={row[key]}
-                                                    className="ellipses_column"
-                                                    style={{
-                                                        width: props.headCells[colIndex].width,
-                                                    }}>
-                                                    {props.headCells[colIndex].bold ? <b>{row[key]}</b> : row[key]}
-                                                </div>
-
-                                            ) : (
-                                                props.headCells[colIndex].bold ? <b>{row[key]}</b> : row[key]
-                                            )
-                                            :
-                                            props.headCells[colIndex].type === 'button' ?
-                                                <Button
-                                                    types="accordian"
-                                                    aria-label="accordian"
-                                                    className={setAccordianButtonStatus(row[key], rowIndex, colIndex)}
-                                                    onClick={(e) => handleCollapaseClick(e, rowIndex, colIndex, row, key)}
-                                                    startIcon={props.headCells[colIndex].icon ? <Icon component={props.headCells[colIndex].icon} /> : undefined}
-                                                >
-                                                    {
-                                                        row[key]
-                                                    }
-                                                </Button> :
-                                                props.headCells[colIndex].type === 'icon' ? renderIcon(row[key]) :
-                                                props.headCells[colIndex].type === 'icons' ? renderIcons(key, row[key], props.headCells[colIndex].align) :
-                                                props.headCells[colIndex].type === 'image' ? <Avatar sx={tableAvatarSX} src={row[key]} variant="square" /> :
-                                                props.headCells[colIndex].type === 'images' ? renderImages(row[key]) :
-                                                props.headCells[colIndex].type === 'dropdown' ? renderSelect() :
-                                                props.headCells[colIndex].type === 'status' ? renderStatus(props.headCells[colIndex], row[key]) :
-                                                props.headCells[colIndex].type === 'product' ? renderProduct(props.headCells[colIndex], row[key]) : 
-                                                props.headCells[colIndex].type === 'component' ? renderComponent(props.headCells[colIndex], row[key]) : ""
-                                    }
+                                    {renderGridCell(props.headCells, rowIndex, colIndex, row, key)}
                                 </TableCell>
                             )}
-                            {
-                                props.enableRowAction ?
-                                    <TableCell
-                                        className="grid-cell-parent"
-                                        component="th"
-                                        scope="row"
-                                        align="right"
-                                        size="small"
-                                    >
-                                        <FormControl>
-                                            <DataGridActionsMenu
-                                                ref={dataGridRowActionRef}
-                                                options={props.rowActionOptions || []}
-                                                onSelect={(e, value) => props.onRowActionSelect && props.onRowActionSelect(value, row)}
-                                                showInnerTableMenu={props.showInnerTableMenu}
-                                            />
-                                        </FormControl>
-                                    </TableCell>
-                                    : null}
+                            {props.enableRowAction ?
+                                renderRowAction(row) : null}
                         </TableRow>
                         <TableRow>
                             <TableCell className="grid-cell" colSpan={12}>
-                                <Collapse in={(rowIndex === selectedRowIndex) && selectedColIndex >= 0 ? true : false} timeout="auto" unmountOnExit style={{ position: "sticky"}}>
+                                <Collapse in={(rowIndex === selectedRowIndex) && selectedColIndex >= 0 ? true : false} timeout="auto" unmountOnExit style={{ position: "sticky" }}>
                                     {(props.InnerTableComponent && selectedColIndex >= 0) && props.InnerTableComponent[props.headCells[selectedColIndex].label]}
                                 </Collapse>
                             </TableCell>
@@ -361,7 +393,7 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
         if (props?.rows?.length) {
             return getRowsData();
         } else if (!props?.isLoading) {
-            return (<TableBody className='no-data'><TableRow><TableCell colSpan={getGridNumberOfColumns()} sx={{ border: 'none' }}><NoDataFound searchTerm={props.searchTerm} msgLine2={props.noDataMsg} showImg={props.showImg} /> </TableCell></TableRow></TableBody>);
+            return (<TableBody className='no-data'><TableRow><TableCell colSpan={getGridNumberOfColumns()} sx={{ border: 'none' }}><NoDataFound searchTerm={props.searchTerm} filterData={props.filterData} msgLine2={props.noDataMsg} showImg={props.showImg} /> </TableCell></TableRow></TableBody>);
         }
     };
 

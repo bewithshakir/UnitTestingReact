@@ -114,7 +114,6 @@ const index: React.FC<ParkingLotsManagementProps> = memo(() => {
     };
 
     const getFilterParams = (filterObj: { [key: string]: string[] }) => {
-        console.log(filterObj);
         setFilterData(filterObj);
     };
 
@@ -195,6 +194,7 @@ const index: React.FC<ParkingLotsManagementProps> = memo(() => {
                         rowActionOptions={rowActionOptions}
                         getPages={fetchNextPage}
                         searchTerm={searchTerm}
+                        filterData={filterData}
                         noDataMsg='Add Parking Lot by clicking on the "ADD LOT" button.'
                         showImg={<ParkingLotNoDataIcon />}
                     />

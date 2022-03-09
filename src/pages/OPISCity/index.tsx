@@ -85,19 +85,19 @@ const OPISCityLandingContent: React.FC<OpisCitiesProps> = memo(() => {
   };
 
   const onSortBySlected = (value: string) => {
-    let sortOrder;
+    let sortByOrder;
     switch (value) {
       case SORTBY_TYPES.CITY_NAME_AZ:
-        sortOrder = { sortBy: "city", order: "asc" };
+        sortByOrder = { sortBy: "city", order: "asc" };
         break;
       case SORTBY_TYPES.CITY_NAME_ZA:
-        sortOrder = { sortBy: "city", order: "desc" };
+        sortByOrder = { sortBy: "city", order: "desc" };
         break;
       default:
-        sortOrder = { sortBy: "", order: "" };
+        sortByOrder = { sortBy: "", order: "" };
         break;
     }
-    setSortOrder(sortOrder);
+    setSortOrder(sortByOrder);
   };
 
   const openFilterPanel = () => {
@@ -185,6 +185,7 @@ const OPISCityLandingContent: React.FC<OpisCitiesProps> = memo(() => {
             rowActionOptions={rowActionOptions}
             getPages={fetchNextPage}
             searchTerm={searchTerm}
+            filterData={filterData}
             noDataMsg='Add OPIS City by clicking on the "ADD OPIS CITY" button.'
           />
 

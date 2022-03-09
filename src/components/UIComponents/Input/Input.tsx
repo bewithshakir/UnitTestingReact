@@ -2,7 +2,7 @@ import { Fragment } from 'react';
 import { InputLabel, InputBase, FormControl, FormHelperText } from '@material-ui/core';
 import './Input.scss';
 
-interface props {
+export interface InputProps {
   name?: string;
   id?: string;
   width?: number | string;
@@ -29,7 +29,7 @@ interface props {
   startAdornment?: any;
 }
 
-export default function Input(props: props) {
+export default function Input(props: InputProps) {
 
   return (
     <Fragment>

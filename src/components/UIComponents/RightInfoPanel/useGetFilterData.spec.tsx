@@ -1,12 +1,12 @@
 import { renderHook } from '@testing-library/react-hooks';
 import { createWrapper } from '../../../tests/utils';
-import { useEditDspData } from './queries';
+import { useGetFilterData } from '../../../infrastructure/filterQuery';
 import { serverMsw } from "../../../setupTests";
 import { rest } from 'msw';
 
-describe('useGetProductTypes for useQuery method ', () => {
+describe('useGetFilterData for useQuery method ', () => {
     it('successful returns data', async () => {
-        const { result, waitFor } = renderHook(() => useEditDspData('111edit', '22', jest.fn(), jest.fn()), {
+        const { result, waitFor } = renderHook(() => useGetFilterData('dspFilter', '12'), {
             wrapper: createWrapper()
         });
         await waitFor(() => {
@@ -22,7 +22,7 @@ describe('useGetProductTypes for useQuery method ', () => {
             })
         );
 
-        const { result, waitFor } = renderHook(() => useEditDspData('111edit', '22', jest.fn(), jest.fn()), {
+        const { result, waitFor } = renderHook(() => useGetFilterData('dspFilter', '12'), {
             wrapper: createWrapper()
         });
 

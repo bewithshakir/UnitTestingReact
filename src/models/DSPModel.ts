@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { headerObj } from '../components/UIComponents/DataGird/grid.component';
 import { ParkingLotIcon } from '../assets/icons';
+import { IDynamicFilterProps } from '../components/UIComponents/RightInfoPanel/DynamicFilterContent.component';
 
 
 export interface SelectProps {
@@ -44,7 +45,7 @@ export default class DSPModel {
             { field: "address", label: "STREET ADDRES", type: 'text' },
             { field: "city", label: "CITY", type: 'text' },
             { field: "state", label: "STATE", type: 'text' },
-            { field: "zip", label: "ZIP", type: 'text' },
+            { field: "postalCode", label: "ZIP", type: 'text' },
             { field: "totalLotAssigned", label: "LOTS ASSIGNED", type: 'button', icon: ParkingLotIcon },
         ];
     }
@@ -75,6 +76,23 @@ export default class DSPModel {
                 icon: "ExportIcon",
                 action: this.MASS_ACTION_TYPES.EXPORT
             },
+        ];
+    }
+
+    FilterByFields(): IDynamicFilterProps['fields'] {
+        return (
+            [
+                { name: 'city', label: 'filterForm.city', fieldType: 'select', optionUrlKey: 'dspFilter', optionAPIResponseKey: 'cities', initialValue: [] },
+                { name: 'state', label: 'filterForm.state', fieldType: 'select', optionUrlKey: 'dspFilter', optionAPIResponseKey: 'states', initialValue: [] },
+                { name: 'zip', label: 'filterForm.zip', fieldType: 'select', optionUrlKey: 'dspFilter', optionAPIResponseKey: 'zipCodes', initialValue: [] },
+            ]
+        );
+    }
+
+    getSortByOptions () {
+        return [
+            "dsp.sortBy.dspname_atoz",
+            "dsp.sortBy.dspname_ztoa",
         ];
     }
 }
