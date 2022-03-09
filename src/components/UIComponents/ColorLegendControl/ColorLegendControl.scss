@@ -1,0 +1,25 @@
+.legend_wrapper {
+    color: black;
+    .react-select-product-color__control {
+        background-color: #efefef;
+        border: none;
+        .react-select-product-color__placeholder {
+            font-size: 16px;
+            color: #000000;
+        }
+    }
+    .react-select-product-color__menu {
+        width: 200px;
+        .react-select-product-color__option--is-focused {
+            background-color: inherit;
+        }
+        .react-select-product-color__option--is-disabled {
+            color: #000000;
+            cursor: default;
+            h4 {
+                flex: 1;
+            }
+        }
+
+    }
+}
