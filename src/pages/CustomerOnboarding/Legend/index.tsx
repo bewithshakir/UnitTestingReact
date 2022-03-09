@@ -24,6 +24,7 @@ const Legend: React.FC = () => {
     return {
       'addCustomer': `/customer/viewCustomer/${customerId}`,
       'parkingLots': `/customer/${customerId}/parkingLots`,
+      'vehicles': `/customer/${customerId}/vehicles`,
       'dsps': `/customer/${customerId}/dsps`,
       'attachments': `/customer/${customerId}/attachments`,
     }[x];
@@ -31,17 +32,19 @@ const Legend: React.FC = () => {
   };
 
   const isDisabled = (to : string) => {
-    if (to.includes('addCustomer') && (pathname.includes('addCustomer') || pathname.includes('viewCustomer') || pathname.includes('parkingLots') || pathname.includes('attachments') || pathname.includes('dsp'))) {
+    if (to.includes('addCustomer') && (pathname.includes('addCustomer') || pathname.includes('viewCustomer') || pathname.includes('parkingLots') || pathname.includes('attachments') || pathname.includes('dsp') || pathname.includes('vehicles'))) {
       return false;
-    } else if (to.includes('parkingLots') && (pathname.includes('viewCustomer') || pathname.includes('parkingLots') || pathname.includes('attachments') || pathname.includes('dsps'))){
+    } else if (to.includes('parkingLots') && (pathname.includes('viewCustomer') || pathname.includes('parkingLots') || pathname.includes('attachments') || pathname.includes('dsps') || pathname.includes('vehicles'))){
       return false;
-    } else if (to.includes('attachments') && pathname.includes('addCustomer') ){
+    } else if (to.includes('attachments') && pathname.includes('addCustomer')){
       return true;
-    } else if (to.includes('attachments') && (pathname.includes('viewCustomer') || pathname.includes('parkingLots') || pathname.includes('attachments') || pathname.includes('dsps'))) {
+    } else if (to.includes('attachments') && (pathname.includes('viewCustomer') || pathname.includes('parkingLots') || pathname.includes('attachments') || pathname.includes('dsps') || pathname.includes('vehicles'))) {
       return false;
     } else if(to.includes('dsps') && selectedPaymentType === 'Voyager'){
       return false;
-    }else return true;
+    } else if (to.includes('vehicles') &&  (pathname.includes('viewCustomer') || pathname.includes('parkingLots') || pathname.includes('attachments') || pathname.includes('dsps') || pathname.includes('vehicles'))) {
+      return false;
+    } else return true;
   };
 
   const onItemClick = (to: string) => {
@@ -76,13 +79,18 @@ const Legend: React.FC = () => {
       if (pathnameSegArr.indexOf('attachments') > 0) {
       return true;
     }
+    } else if (configItem.to == "/customer/vehicles") {
+      const pathnameSegArr = pathname.split("/");
+      if (pathnameSegArr.indexOf('vehicles') > 0) {
+        return true;
+      }
     } else {
       return pathname.includes(configItem.to);
     }
   };
 
   const getLegendHeader = () => {
-      if(pathname.includes("viewCustomer") || pathname.includes("parkingLots") || pathname.includes('attachments')) { 
+    if (pathname.includes("viewCustomer") || pathname.includes("parkingLots") || pathname.includes('attachments') || pathname.includes('vehicles')) {
       return selectedCustomerName;
     } else {
       return t("legend.customerName");

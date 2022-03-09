@@ -6,6 +6,7 @@ const CustomerOnboarding = lazy(() => import('./pages/CustomerOnboarding'));
 const AddCustomer = lazy(() => import('./pages/CustomerOnboarding/AddCustomer/AddCustomer'));
 const ViewCustomer = lazy(() => import('./pages/CustomerOnboarding/AddCustomer/AddCustomer'));
 const CustomerParkingLot = lazy(() => import("./pages/ParkingLot"));
+const CustomerVehicles = lazy(() => import("./pages/Vehicle"));
 const ParkingLotLandingPage = lazy(() => import("./pages/ParkingLotsManagement"));
 const CustomerAddParkingLot = lazy(() => import('./pages/ParkingLot/AddLot/AddLotWrapper'));
 const CustomerViewParkingLot = lazy(() => import('./pages/ParkingLot/AddLot/AddLotWrapper'));
@@ -62,6 +63,10 @@ export const routes: RouteObject[] = [
       {
         path: "/customer/:customerId/parkingLots/viewLot/:parkinglotId",
         element: <CustomerViewParkingLot version='Breadcrumbs-Many' />
+      },
+      {
+        path: "/customer/:customerId/vehicles/",
+        element: <CustomerVehicles version='Breadcrumbs-Single' />
       },
       {
         path: "/customer/:customerId/dsps",

@@ -37,7 +37,8 @@
     "add asset": "ADD ASSET",
     "import": "IMPORT",
     "filterText": "Filter",
-    "add truck": "ADD TRUCK"
+    "add truck": "ADD TRUCK",
+    "add vehicle": "Add Vehicle"
   },
   "menus": {
     "sortby": {
@@ -160,6 +161,14 @@
       "titleAdd": "Add Lot & Details",
       "titleEdit": "Edit Lot & Details"
     }
+  },
+  "vehicle": {
+    "header": {
+      "filter": "Filter"
+    },
+    "search": "Vehicle License Plate",
+    "results found": "results found",
+    "result(s) found": "result(s) found"
   },
   "dsp": {
     "search": "Search",
@@ -469,6 +478,6 @@
     "sortBy": {
       "truckname_atoz": "Truck Name A-Z",
       "truckname_ztoa": "Truck Name Z-A"
-    } 
+    }
   }
 }
