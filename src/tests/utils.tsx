@@ -24,7 +24,7 @@ import { rightInfoFilterHandler } from '../components/UIComponents/RightInfoPane
 import { getProductMngList } from '../pages/ProductManagementLanding/mockApi/handleProductMng';
 
 export const handlers = [
-    getProductMngList(),
+    getProductMngList('productMngLanding'),
     getProductTypesDropdownHandler(),
     productTypesHandler(),
     productColorsHandler(),
