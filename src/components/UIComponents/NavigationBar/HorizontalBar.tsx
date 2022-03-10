@@ -108,6 +108,13 @@ export default function HorizontalBar (props: HorizontalBarProps) {
           customerName: selectedCustomerName
         }
       });
+    } else if (pathname.includes('users/addUser') || pathname.includes('users/editUser')) {
+      navigate(`/customer/${selectedCustomerId}/users`, {
+        state: {
+          customerId: selectedCustomerId,
+          customerName: selectedCustomerName
+        }
+      });
     } else if (pathname.includes('/truckParkingLot/add')) {
       navigate('/truckParkingLot');
     } else if (pathname.includes('/truckParkingLot/edit')) {
@@ -116,8 +123,8 @@ export default function HorizontalBar (props: HorizontalBarProps) {
       navigate('/assetManagement');
     } else if (pathname.includes('/trucks/addTruck')) {
       navigate('/trucks');
-    } else if(pathname.includes('/trucks/editTruck')){
-      navigate('/trucks'); 
+    } else if (pathname.includes('/trucks/editTruck')) {
+      navigate('/trucks');
     } else {
       props.onBack();
     }
@@ -147,6 +154,10 @@ export default function HorizontalBar (props: HorizontalBarProps) {
         return t("addDSP.title");
       case pathname.includes('dsps/edit'):
         return t("addDSP.form.titleEdit");
+      case pathname.includes('users/addUser'):
+        return t("addUser.title");
+      case pathname.includes('users/editUser'):
+        return t("addUser.form.titleEdit");
       case (pathname.includes('addLot')):
         return t('parkingLot.form.titleAdd');
       case (pathname.includes('viewLot')):
@@ -162,9 +173,9 @@ export default function HorizontalBar (props: HorizontalBarProps) {
       case pathname.includes('assetManagement/edit'):
         return t('assetManagement.form.editTitle');
       case pathname.includes('trucks/addTruck'):
-        return t('addTruckFormLabels.addTruckTitle'); 
+        return t('addTruckFormLabels.addTruckTitle');
       case pathname.includes('trucks/editTruck'):
-          return t('addTruckFormLabels.editTruck');  
+        return t('addTruckFormLabels.editTruck');
       default:
         return selectedCustomerName;
     }

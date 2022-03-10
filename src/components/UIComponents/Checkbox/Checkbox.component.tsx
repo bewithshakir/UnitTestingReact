@@ -9,9 +9,10 @@ interface checkBoxProps {
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
     onClick?: (event: React.MouseEvent<HTMLElement>) => void;
     value?: any
+    style?: any
 }
 
-export default function Checkboxes(props: checkBoxProps) {
+export default function Checkboxes (props: checkBoxProps) {
 
     return (
         <Checkbox
@@ -26,6 +27,7 @@ export default function Checkboxes(props: checkBoxProps) {
             checked={props.checked}
             inputProps={{ 'aria-label': 'checkbox' }}
             name={props.name}
+            style={props.style}
             disabled={props.disabled}
         />
     );

@@ -8,7 +8,7 @@ import { ListSubheader } from '@mui/material';
 import "./style.scss";
 import { boxSystem, config } from './config';
 import { useTranslation } from 'react-i18next';
-import {  useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useAddedCustomerNameStore, useAddedCustomerIdStore, useAddedCustomerPaymentTypeStore } from '../../../store';
 
 const Legend: React.FC = () => {
@@ -20,69 +20,76 @@ const Legend: React.FC = () => {
   const selectedPaymentType = useAddedCustomerPaymentTypeStore((state) => state.paymentType);
 
   const getPath = (x: string) => {
-  if (customerId) {
-    return {
-      'addCustomer': `/customer/viewCustomer/${customerId}`,
-      'parkingLots': `/customer/${customerId}/parkingLots`,
-      'dsps': `/customer/${customerId}/dsps`,
-      'attachments': `/customer/${customerId}/attachments`,
-    }[x];
-  }
+    if (customerId) {
+      return {
+        'addCustomer': `/customer/viewCustomer/${customerId}`,
+        'parkingLots': `/customer/${customerId}/parkingLots`,
+        'users': `/customer/${customerId}/users`,
+        'dsps': `/customer/${customerId}/dsps`,
+        'attachments': `/customer/${customerId}/attachments`,
+      }[x];
+    }
   };
 
-  const isDisabled = (to : string) => {
-    if (to.includes('addCustomer') && (pathname.includes('addCustomer') || pathname.includes('viewCustomer') || pathname.includes('parkingLots') || pathname.includes('attachments') || pathname.includes('dsp'))) {
+  const isDisabled = (to: string) => {
+    if (to.includes('addCustomer') && (pathname.includes('addCustomer') || pathname.includes('viewCustomer') || pathname.includes('parkingLots') || pathname.includes('attachments') || pathname.includes('dsps') || pathname.includes('users'))) {
       return false;
-    } else if (to.includes('parkingLots') && (pathname.includes('viewCustomer') || pathname.includes('parkingLots') || pathname.includes('attachments') || pathname.includes('dsps'))){
+    } else if (to.includes('parkingLots') && (pathname.includes('viewCustomer') || pathname.includes('parkingLots') || pathname.includes('attachments') || pathname.includes('dsps') || pathname.includes('users'))) {
       return false;
-    } else if (to.includes('attachments') && pathname.includes('addCustomer') ){
+    } else if (to.includes('attachments') && pathname.includes('addCustomer')) {
       return true;
-    } else if (to.includes('attachments') && (pathname.includes('viewCustomer') || pathname.includes('parkingLots') || pathname.includes('attachments') || pathname.includes('dsps'))) {
+    } else if (to.includes('attachments') && (pathname.includes('viewCustomer') || pathname.includes('parkingLots') || pathname.includes('attachments') || pathname.includes('dsps') || pathname.includes('users'))) {
       return false;
-    } else if(to.includes('dsps') && selectedPaymentType === 'Voyager'){
+    } else if ((to.includes('dsps') || to.includes('users')) && selectedPaymentType === 'Voyager') {
       return false;
-    }else return true;
+    } else return true;
   };
 
   const onItemClick = (to: string) => {
     const pathnameSegArr = to.split("/");
-    if(!isDisabled(to)){
-    navigate( getPath(pathnameSegArr[2]) || to,{
-      state: {
-        customerId: customerId,
-        customerName: selectedCustomerName
-      }});
+    if (!isDisabled(to)) {
+      navigate(getPath(pathnameSegArr[2]) || to, {
+        state: {
+          customerId: customerId,
+          customerName: selectedCustomerName
+        }
+      });
     }
   };
 
   const getSelectedLegendItem = (configItem: any) => {
-    if(configItem.to == "/customer/addCustomer") {
+    if (configItem.to == "/customer/addCustomer") {
       const pathnameSegArr = pathname.split("/");
-      if (pathnameSegArr.indexOf("viewCustomer") > -1 || pathnameSegArr.indexOf("addCustomer") > -1 ) {
+      if (pathnameSegArr.indexOf("viewCustomer") > -1 || pathnameSegArr.indexOf("addCustomer") > -1) {
         return true;
-      } 
+      }
     } else if (configItem.to == "/customer/parkingLots") {
       const pathnameSegArr = pathname.split("/");
-      if(pathnameSegArr.indexOf('parkingLots') > 0){
+      if (pathnameSegArr.indexOf('parkingLots') > 0) {
         return true;
       }
     } else if (configItem.to == "/customer/dsps") {
       const pathnameSegArr = pathname.split("/");
-      if(pathnameSegArr.indexOf('dsps') > 0){
+      if (pathnameSegArr.indexOf('dsps') > 0) {
+        return true;
+      }
+    } else if (configItem.to == "/customer/users") {
+      const pathnameSegArr = pathname.split("/");
+      if (pathnameSegArr.indexOf('users') > 0) {
         return true;
       }
     } else if (configItem.to == "/customer/attachments") {
       const pathnameSegArr = pathname.split("/");
       if (pathnameSegArr.indexOf('attachments') > 0) {
-      return true;
-    }
+        return true;
+      }
     } else {
       return pathname.includes(configItem.to);
     }
   };
 
   const getLegendHeader = () => {
-      if(pathname.includes("viewCustomer") || pathname.includes("parkingLots") || pathname.includes('attachments')) { 
+    if (pathname.includes("viewCustomer") || pathname.includes("parkingLots") || pathname.includes('attachments')) {
       return selectedCustomerName;
     } else {
       return t("legend.customerName");
@@ -94,7 +101,7 @@ const Legend: React.FC = () => {
       <nav >
         <List subheader={
           <ListSubheader className="subHeader">
-           {getLegendHeader()}
+            {getLegendHeader()}
           </ListSubheader>
         }>
           {config.map((ConfigItem) => {

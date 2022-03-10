@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { Box, Container, Grid, Typography } from '@mui/material';
+import { Box, Grid, Typography } from '@mui/material';
 import { useFormik } from 'formik';
 import { useTranslation } from 'react-i18next';
 import { useNavigate, useParams } from 'react-router-dom';
-
 import DSPModel from "../../../models/DSPModel";
 import { AddDSPSchema } from "./validation";
 import Input from '../../../components/UIComponents/Input/Input';
 import { Button } from '../../../components/UIComponents/Button/Button.component';
-import { lotHeaderBoxSx } from '../../ParkingLot/config';
 import AutocompleteInput from '../../../components/UIComponents/GoogleAddressComponent/GoogleAutoCompleteAddress';
 import { HorizontalBarVersionState, useAddedCustomerIdStore, useShowConfirmationDialogBoxStore, useStore } from '../../../store';
 import ToastMessage from '../../../components/UIComponents/ToastMessage/ToastMessage.component';
@@ -153,189 +151,186 @@ const AddDSP: React.FC<AddDSPProps> = () => {
         }
     };
     return (
-        <Grid item md={9} xs={9} sx={lotHeaderBoxSx}>
-            <Container maxWidth="lg" className="page-container lot-container">
-                <form onSubmit={formik.handleSubmit} id='form'>
-                    <Grid container mt={1}>
-                        <Grid container item md={12} mt={2} mb={1}>
-                            <Grid item xs={6}>
-                                <Typography color="var(--Darkgray)" variant="h3" gutterBottom className="fw-bold" mb={1} pt={3}>
-                                    {t("addDSP.form.title")} *
-                                </Typography>
-                            </Grid>
-
-                        </Grid>
-                        <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
-                            <Input
-                                id='dspName'
-                                label={t("addDSP.form.dspName")}
-                                type='text'
-                                helperText={(formik.touched.dspName && formik.errors.dspName) ? formik.errors.dspName : undefined}
-                                error={(formik.touched.dspName && formik.errors.dspName) ? true : false}
-                                description=''
-                                placeholder='Enter'
-                                {...formik.getFieldProps('dspName')}
-                                required
-                            />
-                        </Grid>
-                        <Grid item md={12} mb={1}>
-                            <Typography color="var(--Darkgray)" variant="h3" gutterBottom className="fw-bold" mb={1} pt={2}>
-                                {t("addDSP.form.contactForm.title")} :
+        <Grid item xl={7} lg={8}>
+            <form onSubmit={formik.handleSubmit} id='form'>
+                <Grid container>
+                    <Grid container item md={12} mb={2}>
+                        <Grid item xs={6}>
+                            <Typography color="var(--Darkgray)" variant="h3" gutterBottom className="fw-bold">
+                                {t("addDSP.form.title")} *
                             </Typography>
                         </Grid>
-                        <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
-                            <Input
-                                id='contactNm'
-                                label={t("addDSP.form.contactForm.contactNm")}
-                                type='text'
-                                helperText={(formik.touched.contactNm && formik.errors.contactNm) ? formik.errors.contactNm : undefined}
-                                error={(formik.touched.contactNm && formik.errors.contactNm) ? true : false}
-                                description=''
-                                placeholder='Enter'
-                                {...formik.getFieldProps('contactNm')}
-                                required
-                            />
-                        </Grid>
-                        <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
-                            <Input
-                                id='email'
-                                label={t("addDSP.form.contactForm.email")}
-                                type='text'
-                                helperText={(formik.touched.email && formik.errors.email) ? formik.errors.email : undefined}
-                                error={(formik.touched.email && formik.errors.email) ? true : false}
-                                description=''
-                                placeholder='Enter Email ID'
-                                {...formik.getFieldProps('email')}
-                                required
-                            />
-                        </Grid>
-                        <Grid item xs={12} md={12}>
-                            <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
-                                <Input
-                                    id='phone'
-                                    label={t("addDSP.form.contactForm.phone")}
-                                    type='text'
-                                    helperText={(formik.touched.phone && formik.errors.phone) ? formik.errors.phone : undefined}
-                                    error={(formik.touched.phone && formik.errors.phone) ? true : false}
-                                    description=''
-                                    placeholder='Enter phone number Ex: 787 XXXX XXX'
-                                    {...formik.getFieldProps('phone')}
-                                    required
-                                />
-                            </Grid>
-                        </Grid>
-
-                        <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
-                            <AutocompleteInput
-                                id="addressLine1"
-                                name='addressLine1'
-                                label={t("addDSP.form.contactForm.addressLine1")}
-                                onChange={handleGoogleAddressChange}
-                                onBlur={handleGoogleAddressBlur}
-                                value={formik.values.addressLine1}
-                                helperText={(formik.touched.addressLine1 && formik.errors.addressLine1) ? formik.errors.addressLine1 : undefined}
-                                error={(formik.touched.addressLine1 && formik.errors.addressLine1) ? true : false}
-                                required
-                                disabled={false}
-                            />
-                        </Grid>
-
-                        <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
-                            <Input
-                                id='addressLine2'
-                                label={t("addDSP.form.contactForm.addressLine2")}
-                                type='text'
-                                helperText={(formik.touched.addressLine2 && formik.errors.addressLine2) ? formik.errors.addressLine2 : undefined}
-                                error={(formik.touched.addressLine2 && formik.errors.addressLine2) ? true : false}
-                                description=''
-                                placeholder='Type here'
-                                {...formik.getFieldProps('addressLine2')}
-                                required
-                                disabled={false}
-                            />
-                        </Grid>
-                        <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
-                            <Input
-                                id='city'
-                                label={t("addDSP.form.contactForm.city")}
-                                type='text'
-                                helperText={(formik.touched.city && formik.errors.city) ? formik.errors.city : undefined}
-                                error={(formik.touched.city && formik.errors.city) ? true : false}
-                                description=''
-                                placeholder='City name'
-                                {...formik.getFieldProps('city')}
-                                required
-                                disabled={false}
-                            />
-                        </Grid>
-
-                        <Grid item xs={12} md={3} pr={2.5} pb={2.5}>
-                            <Input
-                                id='state'
-                                label={t("addDSP.form.contactForm.state")}
-                                type='text'
-                                helperText={(formik.touched.state && formik.errors.state) ? formik.errors.state : undefined}
-                                error={(formik.touched.state && formik.errors.state) ? true : false}
-                                description=''
-                                required
-                                {...formik.getFieldProps('state')}
-                            />
-                        </Grid>
-
-                        <Grid item xs={12} md={3} pr={2.5} pb={2.5}>
-                            <Input
-                                id='postalCode'
-                                label={t("addDSP.form.contactForm.postalCode")}
-                                type='text'
-                                helperText={(formik.touched.postalCode && formik.errors.postalCode) ? formik.errors.postalCode : undefined}
-                                error={(formik.touched.postalCode && formik.errors.postalCode) ? true : false}
-                                description=''
-                                required
-                                {...formik.getFieldProps('postalCode')}
-                            />
-                        </Grid>
-
-                        <Grid item xs={12} md={6} />
-                        <Grid item xs={12} md={6} pr={2.5} pb={2.5} mt={4}>
-                            <Box className="form-action-section txt-right">
-                                <Button
-                                    id="cancelBtn"
-                                    types="cancel"
-                                    aria-label={t("buttons.cancel")}
-                                    className="mr-4"
-                                    onClick={onClickCancel}
-                                    data-test="cancel"
-                                >
-                                    {t("buttons.cancel")}
-                                </Button>
-                                <Button
-                                    id="saveBtn"
-                                    type="submit"
-                                    types="save"
-                                    aria-label={t("buttons.save")}
-                                    className="ml-4"
-                                    data-testid="save"
-                                    disabled={disableButton()}
-                                >
-                                    {t("buttons.save")}
-                                    {(isLoadingAddDsp || isLoadingUpdateDsp) && <LoadingIcon data-testid="loading-spinner" className='loading_save_icon' />}
-                                </Button>
-                            </Box>
-                            <ToastMessage
-                                isOpen={
-                                    isErrorAddDsp || isSuccessAddDsp ||
-                                    isErrorUpdateDsp || isSuccessUpdateDsp ||
-                                    isErrorDspData
-                                }
-                                messageType={formStatus.type}
-                                onClose={() => { return ''; }}
-                                message={formStatus.message} />
-                        </Grid>
-
-
                     </Grid>
-                </form>
-            </Container>
+                    <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
+                        <Input
+                            id='dspName'
+                            label={t("addDSP.form.dspName")}
+                            type='text'
+                            helperText={(formik.touched.dspName && formik.errors.dspName) ? formik.errors.dspName : undefined}
+                            error={(formik.touched.dspName && formik.errors.dspName) ? true : false}
+                            description=''
+                            placeholder='Enter'
+                            {...formik.getFieldProps('dspName')}
+                            required
+                        />
+                    </Grid>
+                    <Grid item md={12} mb={1}>
+                        <Typography color="var(--Darkgray)" variant="h3" gutterBottom className="fw-bold" mb={1} pt={2}>
+                            {t("addDSP.form.contactForm.title")} :
+                        </Typography>
+                    </Grid>
+                    <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
+                        <Input
+                            id='contactNm'
+                            label={t("addDSP.form.contactForm.contactNm")}
+                            type='text'
+                            helperText={(formik.touched.contactNm && formik.errors.contactNm) ? formik.errors.contactNm : undefined}
+                            error={(formik.touched.contactNm && formik.errors.contactNm) ? true : false}
+                            description=''
+                            placeholder='Enter'
+                            {...formik.getFieldProps('contactNm')}
+                            required
+                        />
+                    </Grid>
+                    <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
+                        <Input
+                            id='email'
+                            label={t("addDSP.form.contactForm.email")}
+                            type='text'
+                            helperText={(formik.touched.email && formik.errors.email) ? formik.errors.email : undefined}
+                            error={(formik.touched.email && formik.errors.email) ? true : false}
+                            description=''
+                            placeholder='Enter Email ID'
+                            {...formik.getFieldProps('email')}
+                            required
+                        />
+                    </Grid>
+                    <Grid item xs={12} md={12}>
+                        <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
+                            <Input
+                                id='phone'
+                                label={t("addDSP.form.contactForm.phone")}
+                                type='text'
+                                helperText={(formik.touched.phone && formik.errors.phone) ? formik.errors.phone : undefined}
+                                error={(formik.touched.phone && formik.errors.phone) ? true : false}
+                                description=''
+                                placeholder='Enter phone number Ex: 787 XXXX XXX'
+                                {...formik.getFieldProps('phone')}
+                                required
+                            />
+                        </Grid>
+                    </Grid>
+
+                    <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
+                        <AutocompleteInput
+                            id="addressLine1"
+                            name='addressLine1'
+                            label={t("addDSP.form.contactForm.addressLine1")}
+                            onChange={handleGoogleAddressChange}
+                            onBlur={handleGoogleAddressBlur}
+                            value={formik.values.addressLine1}
+                            helperText={(formik.touched.addressLine1 && formik.errors.addressLine1) ? formik.errors.addressLine1 : undefined}
+                            error={(formik.touched.addressLine1 && formik.errors.addressLine1) ? true : false}
+                            required
+                            disabled={false}
+                        />
+                    </Grid>
+
+                    <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
+                        <Input
+                            id='addressLine2'
+                            label={t("addDSP.form.contactForm.addressLine2")}
+                            type='text'
+                            helperText={(formik.touched.addressLine2 && formik.errors.addressLine2) ? formik.errors.addressLine2 : undefined}
+                            error={(formik.touched.addressLine2 && formik.errors.addressLine2) ? true : false}
+                            description=''
+                            placeholder='Type here'
+                            {...formik.getFieldProps('addressLine2')}
+                            required
+                            disabled={false}
+                        />
+                    </Grid>
+                    <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
+                        <Input
+                            id='city'
+                            label={t("addDSP.form.contactForm.city")}
+                            type='text'
+                            helperText={(formik.touched.city && formik.errors.city) ? formik.errors.city : undefined}
+                            error={(formik.touched.city && formik.errors.city) ? true : false}
+                            description=''
+                            placeholder='City name'
+                            {...formik.getFieldProps('city')}
+                            required
+                            disabled={false}
+                        />
+                    </Grid>
+
+                    <Grid item xs={12} md={3} pr={2.5} pb={2.5}>
+                        <Input
+                            id='state'
+                            label={t("addDSP.form.contactForm.state")}
+                            type='text'
+                            helperText={(formik.touched.state && formik.errors.state) ? formik.errors.state : undefined}
+                            error={(formik.touched.state && formik.errors.state) ? true : false}
+                            description=''
+                            required
+                            {...formik.getFieldProps('state')}
+                        />
+                    </Grid>
+
+                    <Grid item xs={12} md={3} pr={2.5} pb={2.5}>
+                        <Input
+                            id='postalCode'
+                            label={t("addDSP.form.contactForm.postalCode")}
+                            type='text'
+                            helperText={(formik.touched.postalCode && formik.errors.postalCode) ? formik.errors.postalCode : undefined}
+                            error={(formik.touched.postalCode && formik.errors.postalCode) ? true : false}
+                            description=''
+                            required
+                            {...formik.getFieldProps('postalCode')}
+                        />
+                    </Grid>
+
+                    <Grid item xs={12} md={6} />
+                    <Grid item xs={12} md={6} pr={2.5} pb={2.5} mt={4}>
+                        <Box className="form-action-section txt-right">
+                            <Button
+                                id="cancelBtn"
+                                types="cancel"
+                                aria-label={t("buttons.cancel")}
+                                className="mr-4"
+                                onClick={onClickCancel}
+                                data-test="cancel"
+                            >
+                                {t("buttons.cancel")}
+                            </Button>
+                            <Button
+                                id="saveBtn"
+                                type="submit"
+                                types="save"
+                                aria-label={t("buttons.save")}
+                                className="ml-4"
+                                data-testid="save"
+                                disabled={disableButton()}
+                            >
+                                {t("buttons.save")}
+                                {(isLoadingAddDsp || isLoadingUpdateDsp) && <LoadingIcon data-testid="loading-spinner" className='loading_save_icon' />}
+                            </Button>
+                        </Box>
+                        <ToastMessage
+                            isOpen={
+                                isErrorAddDsp || isSuccessAddDsp ||
+                                isErrorUpdateDsp || isSuccessUpdateDsp ||
+                                isErrorDspData
+                            }
+                            messageType={formStatus.type}
+                            onClose={() => { return ''; }}
+                            message={formStatus.message} />
+                    </Grid>
+
+
+                </Grid>
+            </form>
         </Grid>
     );
 };
