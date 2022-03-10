@@ -176,6 +176,7 @@
       "title": "User Details",
       "userGroup": "User Group",
       "email": "Email",
+      "dsp": "DSP Name",
       "userGroupAccessLevel": {
         "title": "USER GROUP ACCESS LEVEL *",
         "userName": "User Name",

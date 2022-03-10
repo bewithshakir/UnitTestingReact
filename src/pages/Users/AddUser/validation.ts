@@ -4,6 +4,9 @@ export const AddUserSchema = Yup.object().shape({
     userGroup: Yup.object().shape({
         label: Yup.string().required('Required'), value: Yup.string().required('Required')
     }).required('Required'),
+    dsp: Yup.object().shape({
+        label: Yup.string().required('Required'), value: Yup.string().required('Required')
+    }).required('Required'),
     email: Yup.string().email('Invalid email').required('Required'),
     userName: Yup.string().required('Required'),
     phone: Yup.string().matches(

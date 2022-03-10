@@ -2,38 +2,133 @@ import { useMutation, useQuery } from "react-query";
 import { AxiosRequestConfig, AxiosResponse } from "axios";
 import axios from "../../../infrastructure/ApiHelper";
 import UserModel from "../../../models/UserModel";
+import { SettlementTypes, userGroupStr } from '../config';
 
-export interface PayloadAddDspInt {
+export interface PayloadAddUserInt {
+    shellDigitalAccountId: string,
     customerId: string,
-    userName: string,
-    contactName: string,
-    contactEmailId: string,
-    contactPhoneNumber: string,
-    addressLine1: string,
-    addressLine2: string,
-    cityNm: string,
-    stateNm: string,
-    postalCd: number
+    dspId: string,
+    firstNm: string,
+    lastNm: string,
+    email: string,
+    phone: string,
+    permissionTypeCd: string,
+    userGroupCd: string
+}
+export interface UserGoupsInt {
+    activeInactiveInd: string,
+    userGroupCd: string,
+    userGroupNm: string,
+    type: string,
+}
+export interface UserPermissionInt {
+    activeInactiveInd: string,
+    permissionTypeCd: string,
+    permissionTypeNm: string,
 }
 
 
+const fetchUserPermissionList = async (countryCode: string) => {
+    const options: AxiosRequestConfig = {
+        method: 'get',
+        url: `api/user-service/users/permission-types?countryCode=${countryCode}`
+    };
+    const { data } = await axios(options);
+    return data;
+};
 
-const addDsp = async (payload: UserModel) => {
-    const finalPayload: PayloadAddDspInt = {
+export const useGetUserPermissionList = (countryCode: string) => {
+    return useQuery(["fetchUserPermissionList", countryCode], () => fetchUserPermissionList(countryCode), {
+        retry: false,
+        select: (response) => {
+            return response?.data.map((data: UserPermissionInt) => ({
+                value: data.permissionTypeCd,
+                label: data.permissionTypeNm,
+                activeInactiveInd: data.activeInactiveInd,
+            }));
+        }
+    });
+};
+
+const fetchUserGroupTypes = async (countryCode: string) => {
+    const options: AxiosRequestConfig = {
+        method: 'get',
+        url: `/api/user-service/users/user-groups?countryCode=${countryCode}`
+    };
+    const { data } = await axios(options);
+    return data;
+};
+
+export const useGetUserGroupTypes = (countryCode: string) => {
+    return useQuery(["fetchUserGroupTypes", countryCode], () => fetchUserGroupTypes(countryCode), {
+        retry: false,
+        select: (response) => {
+            return response?.data.map((data: UserGoupsInt) => ({
+                value: data.userGroupCd,
+                label: data.userGroupNm,
+                activeInactiveInd: data.activeInactiveInd,
+                type: data.userGroupNm === userGroupStr ? SettlementTypes.Voyager : "",
+            }));
+        }
+    });
+};
+
+const fetchUserDSPList = async (customerId: string, countryCode: string) => {
+    if (customerId) {
+        const options: AxiosRequestConfig = {
+            method: 'get',
+            url: `/api/user-service/users/dsp-groups?countryCode=${countryCode}`
+        };
+        const { data } = await axios(options);
+        return data;
+    }
+};
+
+export const userGetUserDSPList = (customerId: string, countryCode: string) => {
+    return useQuery(["fetchUserDSPList", customerId, countryCode], () => fetchUserDSPList(customerId, countryCode), {
+        retry: false,
+        select: (response) =>
+            response?.data.map((data: UserGoupsInt) => ({
+                value: data.userGroupCd,
+                label: data.userGroupNm,
+                activeInactiveInd: data.activeInactiveInd,
+                type: data.userGroupNm === userGroupStr ? SettlementTypes.Voyager : "",
+            })),
+    });
+};
+
+const fetchUserDetailsFromJenrin = async (email: string) => {
+    if (email) {
+        const options: AxiosRequestConfig = {
+            method: 'get',
+            url: `/api/user-service/users/verification/janrain?email=${email}`
+        };
+        const { data } = await axios(options);
+        return data;
+    }
+};
+
+export const useVarifyUser = (email: string) => {
+    return useQuery(["fetchUserDetailsFromJenrin", email], () => fetchUserDetailsFromJenrin(email), {
+        retry: false,
+    });
+};
+
+const addUser = async (payload: UserModel, jenrinUserData: any) => {
+    const finalPayload: PayloadAddUserInt = {
+        shellDigitalAccountId: jenrinUserData.shellDigitalAccountId,
         customerId: payload.customerId,
-        userName: payload.userName,
-        contactName: payload.contactNm,
-        contactEmailId: payload.email,
-        contactPhoneNumber: payload.phone,
-        addressLine1: payload.addressLine1,
-        addressLine2: payload.addressLine2,
-        cityNm: payload.city,
-        stateNm: payload.state,
-        postalCd: +payload.postalCode
+        dspId: payload.dsp.value,
+        firstNm: payload.userName.split(' ')[0],
+        lastNm: payload.userName.split(' ')[1],
+        email: payload.email,
+        phone: payload.phone,
+        permissionTypeCd: payload.userAccessLevel,
+        userGroupCd: payload.userGroup.value
     };
     const options: AxiosRequestConfig = {
         method: 'post',
-        url: `api/customer-service/customers/${payload.customerId}/dsps`,
+        url: `/api/user-service/users`,
         data: finalPayload,
     };
     const { data } = await axios(options);
@@ -41,25 +136,25 @@ const addDsp = async (payload: UserModel) => {
 };
 
 
-export const useAddUser = (onSuccess: any, onError: any) => {
+export const useAddUser = (jenrinUserData: any, onSuccess: any, onError: any) => {
     return useMutation((payload: UserModel) =>
-        addDsp(payload), {
+        addUser(payload, jenrinUserData), {
         onError,
         onSuccess,
         retry: false,
     });
 };
 
-const fetchDspDetail = (customerId: string | undefined, query: string | undefined,) => {
+const fetchUserDetail = (customerId: string | undefined, query: string | undefined,) => {
     const options: AxiosRequestConfig = {
         method: 'get',
-        url: `api/customer-service/customers/${customerId}/dsps/${query}`
+        url: `/api/user-service/${customerId}/users/${query}`
     };
     return axios(options);
 };
 
 export const useEditUserData = (customerId: string | undefined, query: string | undefined, onSuccess: any, onError: any) => {
-    return useQuery(['edit-dsp-detail', customerId, query], () => fetchDspDetail(customerId, query), {
+    return useQuery(['fetchUserDetail', customerId, query], () => fetchUserDetail(customerId, query), {
         onSuccess,
         onError,
         enabled: !!query,
@@ -70,42 +165,36 @@ export const useEditUserData = (customerId: string | undefined, query: string | 
                 contactNm: data.contactName,
                 email: data.contactEmailId,
                 phone: data.contactPhoneNumber,
-                addressLine1: data.addressLine1,
-                addressLine2: data.addressLine2,
-                city: data.cityNm,
-                state: data.stateNm,
-                postalCode: data.postalCd
             };
         },
         retry: false,
     });
 };
 
-const updateDspData = async (payload: UserModel, dspId: string | undefined) => {
-    const finalPayload: PayloadAddDspInt = {
+const updateUserData = async (payload: UserModel, userId: string) => {
+    const finalPayload: PayloadAddUserInt = {
+        shellDigitalAccountId: userId,
         customerId: payload.customerId,
-        userName: payload.userName,
-        contactName: payload.contactNm,
-        contactEmailId: payload.email,
-        contactPhoneNumber: payload.phone,
-        addressLine1: payload.addressLine1,
-        addressLine2: payload.addressLine2,
-        cityNm: payload.city,
-        stateNm: payload.state,
-        postalCd: +payload.postalCode
+        dspId: payload.dsp.value,
+        firstNm: payload.userName.split(' ')[0],
+        lastNm: payload.userName.split(' ')[1],
+        email: payload.email,
+        phone: payload.phone,
+        permissionTypeCd: payload.userAccessLevel,
+        userGroupCd: payload.userGroup.value
     };
     const options: AxiosRequestConfig = {
         method: 'put',
-        url: `/api/customer-service/customers/${payload.customerId}/dsps/${dspId}`,
+        url: `/api/user-service/users/${userId}`,
         data: finalPayload
     };
     const { data } = await axios(options);
     return data;
 };
 
-export const useUpdateUserData = (dspId: string | undefined, onSuccess: any, onError: any) => {
+export const useUpdateUserData = (userId: string, onSuccess: any, onError: any) => {
     return useMutation((payload: UserModel) =>
-        updateDspData(payload, dspId), {
+        updateUserData(payload, userId), {
         onSuccess,
         onError,
         retry: false,

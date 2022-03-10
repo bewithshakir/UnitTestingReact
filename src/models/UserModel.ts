@@ -17,6 +17,7 @@ export default class UserModel {
     userName: string;
     phone: string;
     customerId: string;
+    dsp: SelectProps;
     userAccessLevel: string;
     constructor() {
         this.userGroup = { label: '', value: '' };
@@ -26,6 +27,7 @@ export default class UserModel {
         this.userName = '';
         this.phone = '';
         this.customerId = '';
+        this.dsp = { label: '', value: '' };
         this.userAccessLevel = '';
     }
 
