@@ -40,3 +40,4 @@ export const config = [
 export const boxSystem = {
     border: 1
 };
+
