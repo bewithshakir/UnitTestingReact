@@ -1,5 +1,7 @@
 .legend_wrapper {
-    color: black;
+    .react-select__placeholder {
+        color: black;
+    }
     .react-select-product-color__control {
         background-color: #efefef;
         border: none;
@@ -8,12 +10,12 @@
             color: #000000;
         }
     }
-    .react-select-product-color__menu {
+    .react-select__menu {
         width: 200px;
-        .react-select-product-color__option--is-focused {
+        .react-select__option--is-disabled {
             background-color: inherit;
         }
-        .react-select-product-color__option--is-disabled {
+        .react-select__option {
             color: #000000;
             cursor: default;
             h4 {
