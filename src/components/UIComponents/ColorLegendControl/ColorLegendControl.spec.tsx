@@ -16,7 +16,6 @@ describe('ColorLegendControl renders', ()=> {
         
         await waitFor(()=> {
             const dropdownElem = result.container.querySelector('.react-select__menu');
-            result.debug()
             expect(dropdownElem).toBeInTheDocument();
         });
 
