@@ -1,6 +1,6 @@
-import { rest } from "msw";
+import { DefaultRequestBody, MockedRequest, rest, RestHandler } from "msw";
 
-export const getProductMngList = (productMngLanding: string) => {
+export const getProductMngList = (productMngLanding: string):  RestHandler<MockedRequest<DefaultRequestBody>> | undefined => {
     if (productMngLanding) {
         return rest.get('*/api/product-service/products*', (req, res, ctx) => {
             if (req.url.href.includes('products?limit=15')) {
