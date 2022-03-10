@@ -23,7 +23,7 @@ export default class UserModel {
     email: string;
     userId: string;
     userName: string;
-    phone: string;
+    phone?: string;
     customerId: string;
     dsp: SelectProps;
     userAccessLevel: string;

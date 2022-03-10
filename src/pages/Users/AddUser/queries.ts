@@ -7,11 +7,11 @@ import { SettlementTypes, userGroupStr } from '../config';
 export interface PayloadAddUserInt {
     shellDigitalAccountId: string,
     customerId: string,
-    dspId: string,
+    dspId?: string,
     firstNm: string,
     lastNm: string,
     email: string,
-    // phone: string,
+    phone?: string,
     permissionTypeCd: string,
     userGroupCd: string
     countryCd: string
@@ -120,15 +120,19 @@ const addUser = async (payload: UserModel) => {
     const finalPayload: PayloadAddUserInt = {
         shellDigitalAccountId: payload.userId,
         customerId: payload.customerId,
-        dspId: payload.dsp.value,
         firstNm: payload.userName.split(' ')[0],
         lastNm: payload.userName.split(' ')[1],
         email: payload.email,
-        // phone: payload.phone,
         permissionTypeCd: payload.userAccessLevel,
         userGroupCd: payload.userGroup.value,
         countryCd: payload.countryCd
     };
+    if (payload?.dsp?.value) {
+        finalPayload.dspId = payload?.dsp?.value;
+    }
+    if (payload?.phone) {
+        finalPayload.phone = payload?.phone;
+    }
     const options: AxiosRequestConfig = {
         method: 'post',
         url: `/api/user-service/users`,
@@ -178,15 +182,19 @@ const updateUserData = async (payload: UserModel, userId: string) => {
     const finalPayload: PayloadAddUserInt = {
         shellDigitalAccountId: userId,
         customerId: payload.customerId,
-        dspId: payload.dsp.value,
         firstNm: payload.userName.split(' ')[0],
         lastNm: payload.userName.split(' ')[1],
         email: payload.email,
-        // phone: payload.phone,
         permissionTypeCd: payload.userAccessLevel,
         userGroupCd: payload.userGroup.value,
         countryCd: payload.countryCd
     };
+    if (payload?.dsp?.value) {
+        finalPayload.dspId = payload?.dsp?.value;
+    }
+    if (payload?.phone) {
+        finalPayload.phone = payload?.phone;
+    }
     const options: AxiosRequestConfig = {
         method: 'put',
         url: `/api/user-service/users/${userId}`,
