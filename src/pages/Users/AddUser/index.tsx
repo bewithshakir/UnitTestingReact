@@ -13,6 +13,7 @@ import { useAddUser, useEditUserData, useUpdateUserData, useGetUserGroupTypes, U
 import Select from '../../../components/UIComponents/Select/SingleSelect';
 import { AddUserSchema } from "./validation";
 import { userAccessLevelSX, userGroupStr } from '../config';
+import { getCountryCode } from '../../../navigation/utils';
 
 const initialValues = new UserModel();
 interface AddUserProps {
@@ -41,8 +42,23 @@ const AddUser: React.FC<AddUserProps> = () => {
     const { data: dspList } = userGetUserDSPList(addedCustomerId, 'us');
     const { data: userPermissionList } = useGetUserPermissionList('us');
 
-    const { data: verifiedUserData, refetch: reVerifyUser,
-        isLoading: userVerificationLoading, isError: verifyUserError } = useVarifyUser(userEmail);
+    // Verify User
+    const onSuccessVerfyUser = (response: any) => {
+        if (response) {
+            const { data } = response;
+            if (data?.verifiedUser) {
+                formik.setFieldValue('countryCd', getCountryCode());
+                formik.setFieldValue('customerId', addedCustomerId);
+                formik.setFieldValue('userId', data?.userProfile.uuid);
+                formik.setFieldValue('email', data?.userProfile.email);
+                formik.setFieldValue('phone', data?.userProfile.mobile || '');
+                formik.setFieldValue('userName', `${data?.userProfile.firstName} ${data?.userProfile.lastName}`);
+            }
+        }
+    };
+
+    const { data: verifiedUserData,
+        isLoading: userVerificationLoading, isError: verifyUserError } = useVarifyUser(userEmail, onSuccessVerfyUser);
 
     useEffect(() => {
         setVersion("Breadcrumbs-Many");
@@ -58,7 +74,6 @@ const AddUser: React.FC<AddUserProps> = () => {
         if (formik.values.email && !formik.errors.email) {
             setVerifyUserClicked(false);
             setUserEmail(formik.values.email);
-            reVerifyUser();
         }
     };
 
@@ -73,7 +88,7 @@ const AddUser: React.FC<AddUserProps> = () => {
         formik.resetForm({ values: formik.values });
         setFormStatus({ message: data?.error?.details[0] || t("formStatusProps.error.message"), type: 'Error' });
     };
-    const { mutate: addNewUser, isSuccess: isSuccessAddUser, isError: isErrorAddUser, isLoading: isLoadingAddUser } = useAddUser(verifiedUserData, onSuccessAddUser, onErrorAddUser);
+    const { mutate: addNewUser, isSuccess: isSuccessAddUser, isError: isErrorAddUser, isLoading: isLoadingAddUser } = useAddUser(onSuccessAddUser, onErrorAddUser);
     const createUserData = (form: UserModel) => {
         try {
             addNewUser(form);
@@ -126,7 +141,7 @@ const AddUser: React.FC<AddUserProps> = () => {
         initialValues,
         validationSchema: AddUserSchema,
         onSubmit: (values: UserModel) => {
-            const updatedValues = { ...values, customerId: addedCustomerId } as UserModel;
+            const updatedValues = { ...values, customerId: addedCustomerId, countryCd: 'us' } as UserModel;
             if (isEditMode) {
                 updateUser(updatedValues);
             } else {
@@ -159,8 +174,6 @@ const AddUser: React.FC<AddUserProps> = () => {
         }
     };
 
-    // eslint-disable-next-line no-console
-    console.log("verifiedUserData", verifiedUserData);
 
     return (
         <Grid item xl={7} lg={8}>
@@ -182,7 +195,7 @@ const AddUser: React.FC<AddUserProps> = () => {
                                 label={t("addUser.form.userGroup")}
                                 placeholder='Choose'
                                 value={formik.values.userGroup}
-                                items={userGroupList?.filter((usrGrpObj: UserGoupsInt) => usrGrpObj.type !== selectedPaymentType) || []}
+                                items={userGroupList?.filter((usrGrpObj: UserGoupsInt) => usrGrpObj.type.includes(selectedPaymentType)) || []}
                                 helperText={(formik.touched.userGroup && formik.errors.userGroup) ? formik.errors.userGroup.value : undefined}
                                 error={(formik.touched.userGroup && formik.errors.userGroup) ? true : false}
                                 onChange={formik.setFieldValue}
@@ -206,13 +219,13 @@ const AddUser: React.FC<AddUserProps> = () => {
                             required
                         />
                     </Grid>
-                    <Grid item xs={12} md={6} pr={2.5} pb={2.5} pt={2.5} display="flex" alignItems="center">
+                    <Grid item xs={12} md={6} pr={2.5} pt={formik.errors.email ? 0 : 3.5} pb={2.5} display="flex" alignItems="center">
                         {
                             (!showVerifyLink && (verifiedUserData || userVerificationLoading || verifyUserError)) ?
-                                <Box display="flex" alignItems="center">
+                                <Box>
                                     {userVerificationLoading && <LoadingIcon data-testid="loading-spinner" style={{ position: "unset" }} className='loading_save_icon' />}
-                                    {verifiedUserData && <Icon component={PositiveCricleIcon} />}
-                                    {verifyUserError && <Icon component={ExpireWalletIcon} />}
+                                    {!userVerificationLoading && verifiedUserData?.data?.verifiedUser && <Icon component={PositiveCricleIcon} />}
+                                    {((!userVerificationLoading && !verifiedUserData?.data?.verifiedUser) || verifyUserError) && <Icon component={ExpireWalletIcon} />}
                                 </Box>
                                 :
                                 <Link
@@ -227,7 +240,6 @@ const AddUser: React.FC<AddUserProps> = () => {
                                 </Link>
                         }
                     </Grid>
-
                     <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
                         <Input
                             id='userName'
@@ -255,7 +267,7 @@ const AddUser: React.FC<AddUserProps> = () => {
                             {...formik.getFieldProps('phone')}
                         />
                     </Grid>
-                    {(formik.values?.userGroup?.label?.toLowerCase() === userGroupStr) && (
+                    {(formik.values?.userGroup?.label?.toLowerCase() === userGroupStr.toLowerCase()) && (
                         <Grid item xs={12} md={12}>
                             <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
                                 <Select
