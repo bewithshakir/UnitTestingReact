@@ -53,14 +53,14 @@ export const getProductHandler = () => {
                         {
                             ProductGroup: {
                                 activeInactiveInd: "Y",
-                                productGroupCd: "0f117f3d-02a8-4d5e-9a97-eb67a66509cf",
+                                productGroupCd: "11",
                                 productGroupNm: "Non-Fuel"
                             },
-                            productGroupCd: "0f117f3d-02a8-4d5e-9a97-eb67a66509cf",
+                            productGroupCd: "22",
                             productGroupNm: "Non-Fuel",
                             ProductIcon: {
                                 activeInactiveInd: "Y",
-                                productIconCd: "2488eb63-2306-4c92-922c-9a527300024b",
+                                productIconCd: "248",
                                 productIconHexCode: "#DD1D21",
                                 productIconNm: "Red"
                             },
@@ -73,14 +73,14 @@ export const getProductHandler = () => {
                         {
                             ProductGroup: {
                                 activeInactiveInd: "Y",
-                                productGroupCd: "0f117f3d-02a8-4d5e-9a97-eb67a66509cf",
+                                productGroupCd: "1FuelTax",
                                 productGroupNm: "Non-Fuel"
                             },
-                            productGroupCd: "0f117f3d-02a8-4d5e-9a97-eb67a66509cf",
+                            productGroupCd: "21FuelTax",
                             productGroupNm: "Non-Fuel",
                             ProductIcon: {
                                 activeInactiveInd: "Y",
-                                productIconCd: "2488eb63-2306-4c92-922c-9a527300024b",
+                                productIconCd: "249",
                                 productIconHexCode: "#DD1D21",
                                 productIconNm: "Yellow"
                             },
@@ -104,8 +104,8 @@ export const getProductHandler = () => {
                         "pagination": {},
                         "lotProducts": [
                             {
-                                "applicableProductId": "cede7489-0258-4e33-b6c7-78e4a1c7e43d",
-                                "deliveryLocationId": "39ac4e30-4119-4b31-b1fd-ae31a0e0eccc",
+                                "applicableProductId": "1feeDetails",
+                                "deliveryLocationId": "39ac4e30",
                                 "productId": "8493c923-8bc5-4f9e-889a-1bc35303e797",
                                 "productNm": "regular-Custom_6",
                                 "productColor": {
@@ -115,7 +115,7 @@ export const getProductHandler = () => {
                                     "activeInactiveInd": "Y"
                                 },
                                 "pricingModel": {
-                                    "pricingModelCd": "d3e2659d-0b4b-403a-9ccb-9a35649d4957",
+                                    "pricingModelCd": "0b4b",
                                     "pricingModelNm": "Custom",
                                     "countryCd": "us",
                                     "activeInactiveIndicator": "Y"
@@ -124,7 +124,7 @@ export const getProductHandler = () => {
                             },
                             {
                                 "applicableProductId": "75fdf205-d9b7-4fc7-a3ae-517c133249e3",
-                                "deliveryLocationId": "39ac4e30-4119-4b31-b1fd-ae31a0e0eccc",
+                                "deliveryLocationId": "4119",
                                 "productId": "8493c923-8bc5-4f9e-889a-1bc35303e797",
                                 "productNm": "regular-Custom_8",
                                 "productColor": {
@@ -134,7 +134,7 @@ export const getProductHandler = () => {
                                     "activeInactiveInd": "Y"
                                 },
                                 "pricingModel": {
-                                    "pricingModelCd": "d3e2659d-0b4b-403a-9ccb-9a35649d4957",
+                                    "pricingModelCd": "403a",
                                     "pricingModelNm": "Custom",
                                     "countryCd": "us",
                                     "activeInactiveIndicator": "Y"
@@ -143,7 +143,7 @@ export const getProductHandler = () => {
                             },
                             {
                                 "applicableProductId": "d1c5c7b0-19eb-4db4-85ff-7481a5e1a4c5",
-                                "deliveryLocationId": "39ac4e30-4119-4b31-b1fd-ae31a0e0eccc",
+                                "deliveryLocationId": "b1fd-ae31a0e0eccc",
                                 "productId": "8493c923-8bc5-4f9e-889a-1bc35303e797",
                                 "productNm": "regular-Custom_9",
                                 "productColor": {
@@ -153,7 +153,7 @@ export const getProductHandler = () => {
                                     "activeInactiveInd": "Y"
                                 },
                                 "pricingModel": {
-                                    "pricingModelCd": "d3e2659d-0b4b-403a-9ccb-9a35649d4957",
+                                    "pricingModelCd": "9a35649d4957",
                                     "pricingModelNm": "Custom",
                                     "countryCd": "us",
                                     "activeInactiveIndicator": "Y"
