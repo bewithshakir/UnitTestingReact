@@ -1,4 +1,4 @@
-import { DefaultRequestBody, MockedRequest, rest, RestHandler } from "msw";
+import { rest } from "msw";
 
 export const getProductMngList = () => {
     return rest.get('*/api/product-service/products*', (req, res, ctx) => {

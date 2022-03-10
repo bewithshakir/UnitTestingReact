@@ -21,16 +21,21 @@ import { addTruckColorHandler, addTruckFuelHandler, addEditTruckHandler, useGetE
 import { getDspList } from '../pages/DspLanding/mockApi/handlerDspLanding';
 import { getCustomerList } from '../pages/CustomerManagement/mockApi/handlerCustomer';
 import { rightInfoFilterHandler } from '../components/UIComponents/RightInfoPanel/mockApi/handleRightInfoPanel';
-import { getProductMngList } from '../pages/ProductManagementLanding/mockApi/handleProductMng';
+// import { getProductMngList } from '../pages/ProductManagementLanding/mockApi/handleProductMng';
+import { getProductHandler } from '../mockAPI/productService/GET';
+import { postProductHandler } from '../mockAPI/productService/POST';
+import { putProductHandler } from '../mockAPI/productService/PUT';
 
 export const handlers = [
-    getProductMngList(),
-    getProductTypesDropdownHandler(),
-    productTypesHandler(),
-    productColorsHandler(),
-    addProductManagementHandler(),
-    getProductDataHandler(),
-    editProductManagementHandler(),
+    getProductHandler(),
+    postProductHandler(),
+    putProductHandler(),
+    // getProductTypesDropdownHandler(),
+    // productTypesHandler(),
+    // productColorsHandler(),
+    // addProductManagementHandler(),
+    // getProductDataHandler(),
+    // editProductManagementHandler(),
     getOPISCitiesHandler(),
     getAttachmentListHandler(),
     getProductByLotHandler(),
@@ -51,7 +56,7 @@ export const handlers = [
     getProductTypeHandler(),
     getVehicleTypeHandler(),
     getAssetTypeHandler(),
-    getLotMasterProductNamesHandler(),
+    // getLotMasterProductNamesHandler(),
     getLotProductNamesHandler(),
     addFeeDetailsHandler(),
     getFeeDetailsHandler(),
@@ -70,7 +75,7 @@ export const handlers = [
     getSupplierPricesHandler(),
     getTrucksList(),
     addTruckColorHandler(),
-    addTruckFuelHandler(),
+    // addTruckFuelHandler(),
     addEditTruckHandler(),
     useGetEditTruckDetails(),
     getOpisRackProductDetailsHandler(),

@@ -189,6 +189,7 @@ export const getAssetTypeHandler = () => {
 
 export const getLotMasterProductNamesHandler = () => {
     return rest.get('*/api/product-service/products*', (req, res, ctx) => {
+        console.log('getLotMasterProductNamesHandler---', req.url.href)
         return res(
             ctx.status(200),
             ctx.json({

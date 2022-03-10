@@ -140,7 +140,7 @@ describe('AddProduct component', () => {
     describe('edit product screen render', () => {
         beforeEach(() => {
             jest.spyOn(routeDataDom, 'useParams').mockImplementation(() => ({
-                productId: '00aad1db-d5a4-45c7-9428-ab08c8d9f6b4'
+                productId: 'editproduct'
             }));
         });
 
