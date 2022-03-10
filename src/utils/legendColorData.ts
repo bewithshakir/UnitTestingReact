@@ -2,7 +2,6 @@ import { filter } from 'lodash';
 
 import { getProductIcon } from "./helperFunctions";
 
-
 export const formatLegendsData = (data: any)=> {
     const filteredData = filter(data?.pages[0].data.products, {  activeInactiveInd: 'Y' });
 

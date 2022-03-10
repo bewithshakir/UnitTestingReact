@@ -1,11 +1,9 @@
 import { memo } from "react";
 
 import { ProductsListSet } from "../../../pages/ProductManagementLanding/queries";
-
 import Select from '../Select/SingleSelect';
-
-import './ColorLegendControl.scss';
 import { formatLegendsData } from "../../../utils/legendColorData";
+import './ColorLegendControl.scss';
 
 const ColorLegendControl = memo(() => {
     
@@ -16,11 +14,11 @@ const ColorLegendControl = memo(() => {
     return (
         <div className="legend_wrapper">
             <Select
-                id='productColor'
-                name='productColor'
-                dropdownType='productcolor'
+                id='productLegends'
+                name='productLegends'
+                dropdownType='productLegends'
                 label=""
-                placeholder='Choose'
+                placeholder='Products'
                 items={formatLegendsData(data)}
                 onChange={onChaneFn}
             />

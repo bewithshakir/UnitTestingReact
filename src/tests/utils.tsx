@@ -21,10 +21,10 @@ import { addTruckColorHandler, addTruckFuelHandler, addEditTruckHandler, useGetE
 import { getDspList } from '../pages/DspLanding/mockApi/handlerDspLanding';
 import { getCustomerList } from '../pages/CustomerManagement/mockApi/handlerCustomer';
 import { rightInfoFilterHandler } from '../components/UIComponents/RightInfoPanel/mockApi/handleRightInfoPanel';
-// import { getDspDataHandler } from '../pages/DspLanding/mockApi/handlerDSPData';
+import { getProductMngList } from '../pages/ProductManagementLanding/mockApi/handleProductMng';
 
 export const handlers = [
-    
+    getProductMngList(),
     getProductTypesDropdownHandler(),
     productTypesHandler(),
     productColorsHandler(),
