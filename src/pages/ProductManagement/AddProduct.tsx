@@ -54,15 +54,13 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
     const [fuelTaxError, setFuelTaxError] = useState('');
     const [fetchTaxList, updateFetchTaxList] = useState(false);
     const [supplierPriceRowObj, setSupplierPriceRowObj] = useState<null | SupplierPrice>(null);
-
+    const [getProductKey, saveGetProductKey] = useState('');
     const [fetchOPISRetail, setFetchOPISRetail] = useState(false);
     const [isSaveCancelShown, setSaveCancelShown] = useState(true);
     const [editMode, setEditMode] = useState(false);
     const [applicableProductId, setApplicableProductId] = useState('');
-
     const resetFormFieldValue = useShowConfirmationDialogBoxStore((state) => state.resetFormFieldValue);
     const [apiResposneState, setAPIResponse] = useState(false);
-
     const [isDisabled, setIsDisabled] = useState(false);
     const customerId = useAddedCustomerIdStore((state) => state.customerId);
     const customerName = useAddedCustomerNameStore((state) => state.customerName);
@@ -95,9 +93,9 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
     const onAddProductSuccess = (data: any) => {
         if (editMode) {
             if (data?.data) {
-                const lotProduct = data.data[0];
+                const lotProduct = data.data;
                 setApplicableProductId(lotProduct?.applicableProductId);
-                setInitialFormikValues({
+                const obj: productFormFields =  {
                     productType: initialFormikValues.productType,
                     masterProductName: initialFormikValues.masterProductName,
                     pricingModel: initialFormikValues.pricingModel,
@@ -105,7 +103,22 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                     manualPriceAmt: lotProduct.manualPriceAmt ? lotProduct.manualPriceAmt : 0,
                     addedPriceAmt: lotProduct.addedPriceAmt ? lotProduct.addedPriceAmt : 0,
                     discountPriceAmt: lotProduct.discountPriceAmt ? lotProduct.discountPriceAmt : 0,
-                });
+                };
+               
+                if (formik.values.pricingModel?.label.toLowerCase() === 'opis rack') {
+                    obj.cityId =  formik.values.cityId;
+                    obj.city =  formik.values.city;
+                    obj.state =   formik.values.state;
+                    obj.supplier =  formik.values.supplier;
+                    obj.branded =   formik.values.branded;
+                    obj.actualProduct =    formik.values.actualProduct;
+                    obj.taxExemption = formik.values.taxExemption;
+                    obj.supplierPrice =  formik.values.supplierPrice;
+                    obj.manualPriceAmt = formik.values.manualPriceAmt;
+                    obj.opisName =  formik.values.opisName;
+
+                }
+                setInitialFormikValues(obj);
             }
             setIsDisabled(true);
             setSaveCancelShown(false);
@@ -199,7 +212,6 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
     };
 
     const saveProduct = (form: any) => {
-
         try {
             const payloadObj = {
                 ...(form && form.addedPriceAmt && { addedPriceAmt: form.addedPriceAmt }),
@@ -211,8 +223,8 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
             };
 
             if (form.pricingModel?.label.toLowerCase() === 'opis rack') {
-                payloadObj.pricingCityId = supplierPriceRowObj?.cityId;
-                payloadObj.pricingProductKey = supplierPriceRowObj?.productKey;
+                payloadObj.pricingCityId = supplierPriceRowObj?.cityId ? supplierPriceRowObj?.cityId : formik.values.cityId ;
+                payloadObj.pricingProductKey = supplierPriceRowObj?.productKey ? supplierPriceRowObj?.productKey :  getProductKey;
                 if (form.taxExemption && form.taxExemption.length > 0) {
                     payloadObj.taxExemption = [...form.taxExemption];
                 }
@@ -243,6 +255,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                 };
                 if(lotProduct?.pricingModel?.pricingModelNm?.toLowerCase() === 'opis rack'){
                     obj.cityId =  lotProduct?.opisRackInfo?.cityId;
+                    // obj.city =  [{ label: lotProduct?.opisRackInfo?.supplier, value: lotProduct?.opisRackInfo?.supplier }];
                     obj.state =   lotProduct?.opisRackInfo?.state;
                     obj.supplier =   [{ label: lotProduct?.opisRackInfo?.supplier, value: lotProduct?.opisRackInfo?.supplier }];
                     obj.branded =   [{ label: lotProduct?.opisRackInfo?.brand, value: lotProduct?.opisRackInfo?.brand }];
@@ -251,6 +264,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                     obj.supplierPrice =  truncateDecimals((lotProduct?.opisRackInfo?.grossPrice * .01), 4);
                     obj.manualPriceAmt = truncateDecimals((lotProduct?.opisRackInfo?.grossPrice * .01), 4);
                     obj.opisName = lotProduct?.opisRackInfo?.opisProductName;
+                    saveGetProductKey(lotProduct?.opisRackInfo?.productKey);
                     setFuelTaxError('');
                 }
 
@@ -283,9 +297,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
             formik.setFieldValue(fieldName, value);
             formik.setFieldValue('masterProductName', { label: "", value: "" });
         }
-        // if the non fuel value is selected, clear values from product names and pricing model drop downs
         if (value.label == "Non-Fuel") {
-            //clear master product name drop down
             setProductNames([]);
         } else if (value.label == "Fuel") {
             if (pricingModelList?.data?.length) {
@@ -357,7 +369,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
 
     return (
         <FormikProvider value={formik}>
-            <form onSubmit={formik.handleSubmit} className="productForm" onBlur={handleFormDataChange}>
+            <form onSubmit={formik.handleSubmit} className="productForm" id='saveProductFrom' onBlur={handleFormDataChange}>
                 <Grid container direction="column"
                     className="productContainer">
                     <Grid item container lg={12} md={12} sm={12} xs={12}>
@@ -531,7 +543,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                             </>
                         )}
                         {(formik.values?.pricingModel?.label?.toLowerCase() === 'opis rack') && !fuelTaxError && formik.values?.masterProductName?.label &&
-                            <OpisRackSegment isDisabled={isDisabled} isSaveCancelShown={isSaveCancelShown} formik={formik} editMode={editMode} fetchTaxList={fetchTaxList} showFuelTaxError={showFuelTaxError} setFetchTaxList={setFetchTaxList} setSupplierPrice={setSupplierPriceRowObj} />
+                            <OpisRackSegment isDisabled={isDisabled} isSaveCancelShown={isSaveCancelShown} formik={formik} editMode={editMode} fetchTaxList={fetchTaxList} showFuelTaxError={showFuelTaxError} setFetchTaxList={setFetchTaxList} setSupplierPrice={setSupplierPriceRowObj} productId={productId}  />
                         }
                         {(formik.values?.pricingModel?.label?.toLowerCase() === 'opis rack') && fuelTaxError &&
                             <Grid item lg={12} md={12} sm={12} xs={12} mx={4}>
@@ -545,6 +557,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                                     aria-label="cancel"
                                     onClick={onClickBack}
                                     className="mr-4"
+                                    id="cancel-btn"
                                     disabled={disableCancelBtn()}
                                 >
                                     {t("buttons.cancel")}
@@ -555,6 +568,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                                     aria-label="save"
                                     className="mr-4 ml-4 saveProduct"
                                     disabled={disableSubmitBtn()}
+                                    id="save-btn"
                                 >
                                     {t("buttons.save")}
                                 </Button>

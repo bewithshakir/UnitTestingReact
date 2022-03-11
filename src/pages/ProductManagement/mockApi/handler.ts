@@ -5,92 +5,184 @@ export const getProductByLotHandler = () => {
         return res(
             ctx.status(200),
             ctx.json({
-                data: {
-                    pagination: {
-                        "totalCount": 4,
-                        "limit": 15,
-                        "offset": 0
-                    },
-                    lotProducts: [
-                        {
-                            "applicableProductId": "458b8e0b-a305-4a34-bbca-985703dbf56b",
-                            "deliveryLocationId": "3916b833-4c0c-4e9f-bd16-39c327dae66e",
-                            "productId": "35c92ec4-83db-401e-b43e-587668022764",
-                            "productNm": "regular-custom",
-                            "productColor": {
-                                "productIconCd": "012711bf-dd95-4458-a6ec-9a3f30207022",
-                                "productIconNm": "Orange",
-                                "productIconHexCode": "#EB8705",
-                                "activeInactiveInd": "Y"
-                            },
-                            "pricingModel": {
-                                "pricingModelCd": "34cb0599-a8e4-4023-afed-4d705ac1375c",
-                                "pricingModelNm": "Custom",
-                                "countryCd": "us",
-                                "activeInactiveIndicator": "Y"
-                            },
-                            "activeInactiveInd": "Y"
-                        },
-                        {
-                            "applicableProductId": "e0ebcabd-5c97-4fd9-be5b-21ec5b3a7b98",
-                            "deliveryLocationId": "3916b833-4c0c-4e9f-bd16-39c327dae66e",
-                            "productId": "35c92ec4-83db-401e-b43e-587668022764",
-                            "productNm": "regular-custom2",
-                            "productColor": {
-                                "productIconCd": "012711bf-dd95-4458-a6ec-9a3f30207022",
-                                "productIconNm": "Orange",
-                                "productIconHexCode": "#EB8705",
-                                "activeInactiveInd": "Y"
-                            },
-                            "pricingModel": {
-                                "pricingModelCd": "34cb0599-a8e4-4023-afed-4d705ac1375c",
-                                "pricingModelNm": "Custom",
-                                "countryCd": "us",
-                                "activeInactiveIndicator": "Y"
-                            },
-                            "activeInactiveInd": "Y"
-                        },
-                        {
-                            "applicableProductId": "16300452-7c3d-4ad7-baca-d307fac6e921",
-                            "deliveryLocationId": "3916b833-4c0c-4e9f-bd16-39c327dae66e",
-                            "productId": "35c92ec4-83db-401e-b43e-587668022764",
-                            "productNm": "regular-custom3",
-                            "productColor": {
-                                "productIconCd": "012711bf-dd95-4458-a6ec-9a3f30207022",
-                                "productIconNm": "Orange",
-                                "productIconHexCode": "#EB8705",
-                                "activeInactiveInd": "Y"
-                            },
-                            "pricingModel": {
-                                "pricingModelCd": "34cb0599-a8e4-4023-afed-4d705ac1375c",
-                                "pricingModelNm": "Custom",
-                                "countryCd": "us",
-                                "activeInactiveIndicator": "Y"
-                            },
-                            "activeInactiveInd": "Y"
-                        },
-                        {
-                            "applicableProductId": "06a74424-d20c-464e-a76c-4e6858481557",
-                            "deliveryLocationId": "3916b833-4c0c-4e9f-bd16-39c327dae66e",
-                            "productId": "35c92ec4-83db-401e-b43e-587668022764",
-                            "productNm": "regular-custom4",
-                            "productColor": {
-                                "productIconCd": "012711bf-dd95-4458-a6ec-9a3f30207022",
-                                "productIconNm": "Orange",
-                                "productIconHexCode": "#EB8705",
-                                "activeInactiveInd": "Y"
-                            },
-                            "pricingModel": {
-                                "pricingModelCd": "34cb0599-a8e4-4023-afed-4d705ac1375c",
-                                "pricingModelNm": "Custom",
-                                "countryCd": "us",
-                                "activeInactiveIndicator": "Y"
-                            },
-                            "activeInactiveInd": "Y"
-                        }
-                    ]
+              "data": {
+                "pagination": {
+                  "totalCount": 8,
+                  "limit": 15,
+                  "offset": 0
                 },
-                error: null
+                "lotProducts": [
+                  {
+                    "applicableProductId": "155f1447-23d4-4e1f-a3de-1fdd30170083",
+                    "deliveryLocationId": "fe193659-fa71-481c-b30f-4d6c82b25e5b",
+                    "productId": "9fa85e21-fab8-48d2-af36-85c7686e7666",
+                    "productNm": "1 Purple Product Retail",
+                    "productColor": {
+                      "productIconCd": "a59eac7d-d7fe-4635-805a-dc8e38bfa750",
+                      "productIconNm": "Green",
+                      "productIconHexCode": "#008443",
+                      "activeInactiveInd": "Y"
+                    },
+                    "pricingModel": {
+                      "pricingModelCd": "945d3d8b-57bb-42c8-88a5-2dae9cd230f0",
+                      "pricingModelNm": "OPIS Retail",
+                      "countryCd": "us",
+                      "activeInactiveIndicator": "Y"
+                    },
+                    "activeInactiveInd": "Y",
+                    "opisRackStatus": "Y",
+                    "opisProductKey": null
+                  },
+                  {
+                    "applicableProductId": "75593724-17ae-4fa2-876b-4dfb4e82c9b6",
+                    "deliveryLocationId": "fe193659-fa71-481c-b30f-4d6c82b25e5b",
+                    "productId": "684c58ab-d23c-4591-b9fd-41296c7a394e",
+                    "productNm": "Diesel Retail",
+                    "productColor": {
+                      "productIconCd": "cdc00914-dbef-4603-89c5-9f18e4af3ccc",
+                      "productIconNm": "Parrot Green",
+                      "productIconHexCode": "#BED50F",
+                      "activeInactiveInd": "Y"
+                    },
+                    "pricingModel": {
+                      "pricingModelCd": "945d3d8b-57bb-42c8-88a5-2dae9cd230f0",
+                      "pricingModelNm": "OPIS Retail",
+                      "countryCd": "us",
+                      "activeInactiveIndicator": "Y"
+                    },
+                    "activeInactiveInd": "Y",
+                    "opisRackStatus": "Y",
+                    "opisProductKey": null
+                  },
+                  {
+                    "applicableProductId": "480bb3a3-7475-448d-89ad-0eeabaa80a0d",
+                    "deliveryLocationId": "fe193659-fa71-481c-b30f-4d6c82b25e5b",
+                    "productId": "21f72366-d691-4a5e-b6b7-44089d699f5a",
+                    "productNm": "Prod one Retail",
+                    "productColor": {
+                      "productIconCd": "eb87bb2a-cec7-4b06-b47a-36af04d71a7a",
+                      "productIconNm": "Orange",
+                      "productIconHexCode": "#EB8705",
+                      "activeInactiveInd": "Y"
+                    },
+                    "pricingModel": {
+                      "pricingModelCd": "945d3d8b-57bb-42c8-88a5-2dae9cd230f0",
+                      "pricingModelNm": "OPIS Retail",
+                      "countryCd": "us",
+                      "activeInactiveIndicator": "Y"
+                    },
+                    "activeInactiveInd": "Y",
+                    "opisRackStatus": "Y",
+                    "opisProductKey": null
+                  },
+                  {
+                    "applicableProductId": "6ed4ff41-9f3c-4260-83f4-8709c0949068",
+                    "deliveryLocationId": "fe193659-fa71-481c-b30f-4d6c82b25e5b",
+                    "productId": "684c58ab-d23c-4591-b9fd-41296c7a394e",
+                    "productNm": "Product 1",
+                    "productColor": {
+                      "productIconCd": "cdc00914-dbef-4603-89c5-9f18e4af3ccc",
+                      "productIconNm": "Parrot Green",
+                      "productIconHexCode": "#BED50F",
+                      "activeInactiveInd": "Y"
+                    },
+                    "pricingModel": {
+                      "pricingModelCd": "7c12da5b-3902-4aa6-bcba-dd3c3519afa1",
+                      "pricingModelNm": "Custom",
+                      "countryCd": "us",
+                      "activeInactiveIndicator": "Y"
+                    },
+                    "activeInactiveInd": "Y",
+                    "opisRackStatus": "Y",
+                    "opisProductKey": null
+                  },
+                  {
+                    "applicableProductId": "f7732a85-b920-4d2c-8644-4c4ed522132d",
+                    "deliveryLocationId": "fe193659-fa71-481c-b30f-4d6c82b25e5b",
+                    "productId": "684c58ab-d23c-4591-b9fd-41296c7a394e",
+                    "productNm": "Product1",
+                    "productColor": {
+                      "productIconCd": "cdc00914-dbef-4603-89c5-9f18e4af3ccc",
+                      "productIconNm": "Parrot Green",
+                      "productIconHexCode": "#BED50F",
+                      "activeInactiveInd": "Y"
+                    },
+                    "pricingModel": {
+                      "pricingModelCd": "7f5411c8-ae32-43f6-a05e-146b4d866206",
+                      "pricingModelNm": "OPIS Rack",
+                      "countryCd": "us",
+                      "activeInactiveIndicator": "Y"
+                    },
+                    "activeInactiveInd": "Y",
+                    "opisRackStatus": "N",
+                    "opisProductKey": "biodieselb10smeultralowsulno2sr935carson0uno2n-10orportlandsmed"
+                  },
+                  {
+                    "applicableProductId": "b0170ed7-0fb3-4b3d-9e48-3f87715b84af",
+                    "deliveryLocationId": "fe193659-fa71-481c-b30f-4d6c82b25e5b",
+                    "productId": "8ee38e73-f9dd-40ca-a53c-49327eab1487",
+                    "productNm": "Regular Retail",
+                    "productColor": {
+                      "productIconCd": "1bcfe6f1-0fae-4473-a686-82084c8a5030",
+                      "productIconNm": "Aqua",
+                      "productIconHexCode": "#89CFDC",
+                      "activeInactiveInd": "Y"
+                    },
+                    "pricingModel": {
+                      "pricingModelCd": "945d3d8b-57bb-42c8-88a5-2dae9cd230f0",
+                      "pricingModelNm": "OPIS Retail",
+                      "countryCd": "us",
+                      "activeInactiveIndicator": "Y"
+                    },
+                    "activeInactiveInd": "Y",
+                    "opisRackStatus": "Y",
+                    "opisProductKey": null
+                  },
+                  {
+                    "applicableProductId": "d783d7f6-7778-4cd3-a2d6-540e33a2c57e",
+                    "deliveryLocationId": "fe193659-fa71-481c-b30f-4d6c82b25e5b",
+                    "productId": "9986b9d3-fe75-45a4-b131-9e7e4f1ecfc9",
+                    "productNm": "Test Data Model 1 Retail",
+                    "productColor": {
+                      "productIconCd": "7381a575-7e35-405b-87e5-bbe833010743",
+                      "productIconNm": "Yellow",
+                      "productIconHexCode": "#FBCE07",
+                      "activeInactiveInd": "Y"
+                    },
+                    "pricingModel": {
+                      "pricingModelCd": "945d3d8b-57bb-42c8-88a5-2dae9cd230f0",
+                      "pricingModelNm": "OPIS Retail",
+                      "countryCd": "us",
+                      "activeInactiveIndicator": "Y"
+                    },
+                    "activeInactiveInd": "Y",
+                    "opisRackStatus": "Y",
+                    "opisProductKey": null
+                  },
+                  {
+                    "applicableProductId": "a7d76e92-ad4e-48d6-bdff-d2ce15113a0a",
+                    "deliveryLocationId": "fe193659-fa71-481c-b30f-4d6c82b25e5b",
+                    "productId": "3384bfc4-3c54-45d1-928e-6ba8f584fc3d",
+                    "productNm": "Test product 2 Retail",
+                    "productColor": {
+                      "productIconCd": "2488eb63-2306-4c92-922c-9a527300024b",
+                      "productIconNm": "Red",
+                      "productIconHexCode": "#DD1D21",
+                      "activeInactiveInd": "Y"
+                    },
+                    "pricingModel": {
+                      "pricingModelCd": "945d3d8b-57bb-42c8-88a5-2dae9cd230f0",
+                      "pricingModelNm": "OPIS Retail",
+                      "countryCd": "us",
+                      "activeInactiveIndicator": "Y"
+                    },
+                    "activeInactiveInd": "Y",
+                    "opisRackStatus": "Y",
+                    "opisProductKey": null
+                  }
+                ]
+              },
+              "error": null
             })
         );
     });
@@ -135,11 +227,12 @@ export const getServedCitiesHandler = () => {
                 "data": {
                   "opisCities": [
                     {
-                      "opisServedCityId": "0b3ab3eb-8bac-43cc-83f1-213206c79e92",
-                      "city": "Fairbanks",
-                      "state": "AK",
-                      "cityId": 886,
-                      "countryCd": "us"      }
+                      "opisServedCityId": "264c5922-f3a9-4883-b109-964df7e4eefe",
+                      "city": "Portland",
+                      "state": "OR",
+                      "cityId": 935,
+                      "countryCd": "us"
+                    }
                   ]
                 },
                 "error": null})
@@ -206,71 +299,17 @@ export const getOpisRackProductDetailsHandler = () => {
         return res(
             ctx.status(200),
             ctx.json({
-                "data": {
-                  "lotProduct": {
-                    "applicableProductId": "66baa5ec-b9f0-4081-bb01-e6775f4e0922",
-                    "productNm": "p15",
-                    "manualPriceAmt": 2.923,
-                    "addedPriceAmt": null,
-                    "discountPriceAmt": null,
-                    "totalPricePerGallon": 2.923,
-                    "masterProduct": {
-                      "productId": "684c58ab-d23c-4591-b9fd-41296c7a394e",
-                      "productName": "Diesel "
-                    },
-                    "productType": {
-                      "productGroupCd": "acad56a6-1e77-4f38-92e5-30a656e786fb",
-                      "productGroupNm": "Fuel",
-                      "activeInactiveInd": "Y"
-                    },
-                    "productColor": {
-                      "productIconCd": "cdc00914-dbef-4603-89c5-9f18e4af3ccc",
-                      "productIconNm": "Parrot Green",
-                      "productIconHexCode": "#BED50F",
-                      "activeInactiveInd": "Y"
-                    },
-                    "pricingModel": {
-                      "pricingModelCd": "7f5411c8-ae32-43f6-a05e-146b4d866206",
-                      "pricingModelNm": "OPIS Rack",
-                      "countryCd": "us",
-                      "activeInactiveIndicator": "Y"
-                    },
-                    "opisRackInfo": {
-                      "cityId": 270,
-                      "supplier": "Apex",
-                      "brand": "u",
-                      "productKey": "ulsdwinterred#2dg270apex0uno2n-10iabettendorf",
-                      "actualProduct": "NO2",
-                      "grossPrice": 292.32,
-                      "taxExemption": [
-                        "36b5334a-22eb-45ec-8352-8c151c171b64"
-                      ],
-                      "opisProductName": "ULSD Winter Red #2"
-                    }
-                  }
-                },
-                "error": null
-              })
-        );
-    });
-};
-
-export const getProductsHandler = () => {
-  return rest.get('*/api/customer-service/lots/*/products*', (req, res, ctx) => {
-      return res(
-          ctx.status(200),
-          ctx.json({
               "data": {
                 "lotProduct": {
-                  "applicableProductId": "66baa5ec-b9f0-4081-bb01-e6775f4e0922",
-                  "productNm": "p15",
-                  "manualPriceAmt": 2.923,
+                  "applicableProductId": "f7732a85-b920-4d2c-8644-4c4ed522132d",
+                  "productNm": "Product1",
+                  "manualPriceAmt": 3.241,
                   "addedPriceAmt": null,
                   "discountPriceAmt": null,
-                  "totalPricePerGallon": 2.923,
+                  "totalPricePerGallon": 3.241,
                   "masterProduct": {
                     "productId": "684c58ab-d23c-4591-b9fd-41296c7a394e",
-                    "productName": "Diesel "
+                    "productName": "A Diesel "
                   },
                   "productType": {
                     "productGroupCd": "acad56a6-1e77-4f38-92e5-30a656e786fb",
@@ -290,23 +329,21 @@ export const getProductsHandler = () => {
                     "activeInactiveIndicator": "Y"
                   },
                   "opisRackInfo": {
-                    "cityId": 270,
-                    "supplier": "Apex",
+                    "cityId": 935,
+                    "supplier": "Carson",
                     "brand": "u",
-                    "productKey": "ulsdwinterred#2dg270apex0uno2n-10iabettendorf",
+                    "productKey": "biodieselb10smeultralowsulno2sr935carson0uno2n-10orportlandsmed",
                     "actualProduct": "NO2",
-                    "grossPrice": 292.32,
-                    "taxExemption": [
-                      "36b5334a-22eb-45ec-8352-8c151c171b64"
-                    ],
-                    "opisProductName": "ULSD Winter Red #2"
+                    "grossPrice": 324.1,
+                    "taxExemption": [],
+                    "opisProductName": "Biodiesel B10 SME Ultra Low Sul No2"
                   }
                 }
               },
               "error": null
             })
-      );
-  });
+        );
+    });
 };
 
 export const getTaxExemptionsListHandler = () => {

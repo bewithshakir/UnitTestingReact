@@ -13,7 +13,8 @@ type Props = {
     formik: any,
     editMode: boolean,
     setSupplierPrice: (value: any) => any,
-    isSaveCancelShown: boolean
+    isSaveCancelShown: boolean,
+    productId?:string
 }
 interface ServedCity {
     city?: string
@@ -35,12 +36,13 @@ const getOptions = (dataArr?: string[]) => {
     return dataArr?.map(item => ({ label: item, value: item })) || [];
 };
 
-export default function OpisRackCity({ isDisabled, formik, editMode, setSupplierPrice, isSaveCancelShown }: Props) {
+export default function OpisRackCity({ isDisabled, formik, editMode, setSupplierPrice, isSaveCancelShown , productId}: Props) {
 
     const { t } = useTranslation();
     const [cities, setCities] = useState<ServedCityOptions[]>([]);
     const [suppliers, setSuppliers] = useState<GeneralOptions[]>([]);
     const [brandedList, setbrandedList] = useState<GeneralOptions[]>([]);
+    const [viewProductCity, setViewProductCity] = useState<any>(null);
     const [actualProductList, setActualProductList] = useState<GeneralOptions[]>([]);
     const [resetSupplierValue, setResetSupplierValue] = useState<number | null>(null);
 
@@ -51,6 +53,9 @@ export default function OpisRackCity({ isDisabled, formik, editMode, setSupplier
         setSuppliers(getOptions(spplierBrandProducts?.data?.supplier));
         setbrandedList(getOptions(spplierBrandProducts?.data?.brand));
         setActualProductList(getOptions(spplierBrandProducts?.data?.actualProduct));
+        if(!isSaveCancelShown && isDisabled){
+            formik.setFieldValue('city',viewProductCity);
+        }
     }, [spplierBrandProducts]);
 
     useEffect(() => {
@@ -61,13 +66,25 @@ export default function OpisRackCity({ isDisabled, formik, editMode, setSupplier
         })) || []);
     }, [servedCities]);
 
-    useEffect(() => {
+    const setCityState = () => {
         if(cities && cities.length>0 && !isSaveCancelShown && isDisabled && formik.values.cityId){
             const city = cities.find(c => (c.cityId === formik.values.cityId));
-            formik.setFieldValue('city', {label: city?.city , value: city?.cityId});
+            formik.setFieldValue('city', {label: city?.city , value: city?.cityId, cityId: city?.cityId});
             formik.setFieldValue('state', city?.state);
+            setViewProductCity( {label: city?.city , value: city?.cityId, cityId: city?.cityId});
         }
+    };
+
+    useEffect(() => {
+        setCityState();
     }, [cities]);
+
+    useEffect(() => {
+        if(productId){
+            setCityState();
+        }
+    }, [productId]);
+
 
     const handleCityChange = (field: any, value: any) => {
         formik.setFieldValue(field, value);
@@ -86,8 +103,14 @@ export default function OpisRackCity({ isDisabled, formik, editMode, setSupplier
         setResetSupplierValue(Date.now());
     };
 
+   
+    
     return (<Fragment>
         <Grid item lg={5} md={8} sm={8} xs={8} mx={4} my={1} >
+            <div>
+            disabled {JSON.stringify(isDisabled)}
+        editMode {JSON.stringify(editMode)}
+                </div>
             <Select
                 id='city'
                 name='city'
@@ -100,7 +123,7 @@ export default function OpisRackCity({ isDisabled, formik, editMode, setSupplier
                 onChange={handleCityChange}
                 onBlur={() => { formik.setFieldTouched("city"); formik.validateField("city"); }}
                 required
-                isDisabled={isDisabled || editMode}
+                isDisabled={isDisabled}
             />
         </Grid>
         <Grid item lg={5} md={8} sm={8} xs={8} mx={4} my={1} >
