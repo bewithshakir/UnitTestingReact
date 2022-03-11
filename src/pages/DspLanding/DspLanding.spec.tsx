@@ -25,7 +25,8 @@ jest.mock('../../store', () => ({
 
 function getAllElements (component: any) {
     const searchBox = component.container.querySelector('#dspSearch');
-    return { searchBox };
+    const sortBy = component.container.querySelector('#dspSort');
+    return { searchBox, sortBy };
 }
 
 describe('Rendering of DSP Landing Component', () => {
@@ -117,6 +118,22 @@ describe('search DSP on DSP landing page', () => {
 
         waitFor(() => {
             expect(result.getByText(/Oops.. No Results Found/i)).toBeInTheDocument();
+        });
+    });
+});
+
+describe('sortby dsp name on dsp landing page', () => {
+    it('load data in form', async () => {
+        const result = renderWithClient(<DspLandingContent version="Breadcrumbs-Many" />);
+
+        const { sortBy } = getAllElements(result);
+        userEvent.click(sortBy);
+
+        await waitFor(() => {
+            expect(result.getByText(/dspname_atoz/i)).toBeInTheDocument();
+            expect(result.getByText(/dspname_ztoa/i)).toBeInTheDocument();
+            expect(result.getByText(/VA/i)).toBeInTheDocument();
+            expect(result.getByText(/DSP Test/i)).toBeInTheDocument();
         });
     });
 });

@@ -159,6 +159,17 @@
       "titleEdit": "Editar lote y detalles"
     }
   },
+  "dsp": {
+    "search": "Nombre DSP", 
+    "results found": "resultados encontrados",
+    "result(s) found": "resultados encontrados",
+    "filterHeader": "filtros",
+    "nodataMsg": "Agregue DSP haciendo clic en agregar DSP o cualquier oración relacionada.",
+    "sortBy": {
+      "dspname_atoz": "Nombre DSP A-Z",
+      "dspname_ztoa": "Nombre DSP Z-A"
+    }
+  },
   "addDSP": {
     "title": "Añadir DSP",
     "form": {
