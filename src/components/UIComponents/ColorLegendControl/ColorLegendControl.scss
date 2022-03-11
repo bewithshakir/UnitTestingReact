@@ -11,17 +11,18 @@
         }
     }
     .react-select__menu {
-        width: 200px;
+        width: auto;
         .react-select__option--is-disabled {
             background-color: inherit;
         }
         .react-select__option {
             color: #000000;
             cursor: default;
+            height: 35px;
             h4 {
                 flex: 1;
+                white-space: nowrap;
             }
         }
-
     }
 }
