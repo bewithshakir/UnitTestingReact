@@ -1106,6 +1106,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
     }
     isDisabled={false}
     isSaveCancelShown={false}
+    productId="abc"
     setSupplierPrice={[MockFunction]}
   >
     <ForwardRef(Grid)
@@ -1122,19 +1123,27 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
         className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-8 MuiGrid-grid-sm-8 MuiGrid-grid-md-8 MuiGrid-grid-lg-5"
         ownerState={
           Object {
-            "children": <SingleSelect
-              error={false}
-              id="city"
-              isDisabled={false}
-              items={Array []}
-              label="addProductFormLabels.citylabel"
-              name="city"
-              onBlur={[Function]}
-              onChange={[Function]}
-              placeholder="Select one"
-              required={true}
-              value=""
-            />,
+            "children": Array [
+              <div>
+                disabled 
+                false
+                editMode 
+                false
+              </div>,
+              <SingleSelect
+                error={false}
+                id="city"
+                isDisabled={false}
+                items={Array []}
+                label="addProductFormLabels.citylabel"
+                name="city"
+                onBlur={[Function]}
+                onChange={[Function]}
+                placeholder="Select one"
+                required={true}
+                value=""
+              />,
+            ],
             "columnSpacing": 0,
             "columns": 12,
             "container": false,
@@ -1164,6 +1173,12 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
         <div
           className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-8 MuiGrid-grid-sm-8 MuiGrid-grid-md-8 MuiGrid-grid-lg-5 css-16sj7k7-MuiGrid-root"
         >
+          <div>
+            disabled 
+            false
+            editMode 
+            false
+          </div>
           <SingleSelect
             error={false}
             id="city"

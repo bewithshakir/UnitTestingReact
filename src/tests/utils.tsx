@@ -7,7 +7,7 @@ import { getAllParkingLotsHandler } from '../pages/ParkingLotsManagement/mockApi
 import { getAttachmentListHandler } from '../pages/Attachments/mockApi/AttachmentLandingPageHandler';
 import { addDspHandler, editDspHandler } from "../pages/DspLanding/AddDSP/mockApi/handlerAddDsp";
 import { getFormattedAddressHandler, getGoogleAddressHandler } from "../components/UIComponents/GoogleAddressComponent/mockApi/googleAddressAutoHandler";
-import { getProductByLotHandler, editProductHandler, getTaxExemptionsListHandler, getServedCitiesHandler, getSupplierPricesHandler, getSupplierBrandProductsHandler, getOpisRackProductDetailsHandler , getProductsHandler} from '../pages/ProductManagement/mockApi/handler';
+import { getProductByLotHandler, editProductHandler, getTaxExemptionsListHandler, getServedCitiesHandler, getSupplierPricesHandler, getSupplierBrandProductsHandler, getOpisRackProductDetailsHandler } from '../pages/ProductManagement/mockApi/handler';
 import { getFuelTaxList, getFuelTaxProductsList } from '../pages/Tax/mockApi/handler';
 import { getDelFeeSchduleHandler, getProductTypeHandler, getVehicleTypeHandler, getAssetTypeHandler, getLotMasterProductNamesHandler, getLotProductNamesHandler, addFeeDetailsHandler, getFeeDetailsHandler, editFeeDetailsHandler } from '../pages/ParkingLot/FeeDetails/mockAPi/handler';
 import { addTruckParkingLotHandler, editTruckParkingLotHandler } from '../pages/Truck/TruckParkingLot/AddLot/mockApi/handlerAddTruckParkingLot';
@@ -24,7 +24,7 @@ import { rightInfoFilterHandler } from '../components/UIComponents/RightInfoPane
 // import { getDspDataHandler } from '../pages/DspLanding/mockApi/handlerDSPData';
 
 export const handlers = [
-    
+
     getProductTypesDropdownHandler(),
     productTypesHandler(),
     productColorsHandler(),
@@ -42,7 +42,7 @@ export const handlers = [
     getCustomerList(),
     addDspHandler(),
     getDspList(),
-    
+
     editDspHandler(),
     editProductHandler(),
     getFuelTaxList(),
@@ -73,9 +73,7 @@ export const handlers = [
     addTruckFuelHandler(),
     addEditTruckHandler(),
     useGetEditTruckDetails(),
-    getOpisRackProductDetailsHandler(),
-    getProductsHandler(),
-    
+    getOpisRackProductDetailsHandler()
 ];
 
 const createTestQueryClient = () => new QueryClient({
