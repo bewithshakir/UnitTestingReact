@@ -255,7 +255,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                 };
                 if (lotProduct?.pricingModel?.pricingModelNm?.toLowerCase() === 'opis rack') {
                     obj.cityId = lotProduct?.opisRackInfo?.cityId;
-                    // obj.city =  [{ label: lotProduct?.opisRackInfo?.supplier, value: lotProduct?.opisRackInfo?.supplier }];
+                    // obj.city =   [{ label: lotProduct?.opisRackInfo?.supplier, value: lotProduct?.opisRackInfo?.supplier }];
                     obj.state = lotProduct?.opisRackInfo?.state;
                     obj.supplier = [{ label: lotProduct?.opisRackInfo?.supplier, value: lotProduct?.opisRackInfo?.supplier }];
                     obj.branded = [{ label: lotProduct?.opisRackInfo?.brand, value: lotProduct?.opisRackInfo?.brand }];
