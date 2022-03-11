@@ -11,7 +11,7 @@ import GridComponent from "../../components/UIComponents/DataGird/grid.component
 import ActionsMenu from "../../components/UIComponents/Menu/ActionsMenu.component";
 import SortbyMenu from "../../components/UIComponents/Menu/SortbyMenu.component";
 import SearchInput from "../../components/UIComponents/SearchInput/SearchInput";
-import UserModel from "../../models/UserModel";
+import UserModel, { ACTION_TYPES, MASS_ACTION_TYPES } from "../../models/UserModel";
 import { addedCustomerIdState, HorizontalBarVersionState, useAddedCustomerIdStore, useStore } from "../../store";
 import { getSeachedDataTotalCount } from "../../utils/helperFunctions";
 import { sortByOptions } from "./config";
@@ -29,8 +29,6 @@ const UsersLadingContent: React.FC<ContentProps> = () => {
     const headCells = dspObj.fieldsToDisplay();
     const rowActionOptions = dspObj.rowActions();
     const massActionOptions = dspObj.massActions();
-    const ACTION_TYPES = dspObj.ACTION_TYPES;
-    const MASS_ACTION_TYPES = dspObj.MASS_ACTION_TYPES;
     const navigate = useNavigate();
     const [searchTerm, setSearchTerm] = React.useState("");
     const [resetTableCollaps, setResetTableCollaps] = React.useState(false);

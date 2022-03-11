@@ -176,6 +176,20 @@ const AddUser: React.FC<AddUserProps> = () => {
 
     // eslint-disable-next-line no-console
     // console.log("-----", formik);
+    // eslint-disable-next-line no-console
+    // console.log("🚀 ~ file: index.tsx ~ line 393 ~ userGroupList", userGroupList);
+    // eslint-disable-next-line no-console
+    // console.log("🚀 ~ file: index.tsx ~ line 393 ~ dspList", dspList);
+    // eslint-disable-next-line no-console
+    // console.log("🚀 ~ file: index.tsx ~ line 393 ~ verifiedUserData", verifiedUserData);
+    // eslint-disable-next-line no-console
+    // console.log("🚀 ~ file: index.tsx ~ line 393 ~ userPermissionList", userPermissionList);
+
+    // eslint-disable-next-line no-console
+    // console.log("🚀 ~ file: index.tsx ~ line 387 ~ addedCustomerId", addedCustomerId);
+    // eslint-disable-next-line no-console
+    // console.log("🚀 ~ file: index.tsx ~ line 387 ~ selectedPaymentType", selectedPaymentType);
+
     return (
         <Grid item xl={7} lg={8}>
             <form onSubmit={formik.handleSubmit} id='form'>
@@ -231,7 +245,7 @@ const AddUser: React.FC<AddUserProps> = () => {
                                             <Box display="flex" alignItems="center">
                                                 <Icon sx={{ width: "20px", height: "20px", marginRight: 2 }} component={AlertExclamationIcon} />
                                                 <Typography variant="h4" color="var(--Tertiary)" className="fw-bold">
-                                                    Invalid Email ID cannot fetch the data Invalid Email ID cannot fetch the data
+                                                    Janrain account doesn&apos;t exist for this email.
                                                 </Typography>
                                             </Box>
                                         )
@@ -240,6 +254,7 @@ const AddUser: React.FC<AddUserProps> = () => {
                                 :
                                 <Link
                                     variant="body2"
+                                    id="verify-user-link"
                                     className="add-link"
                                     onClick={onClickVerifyUser}
                                     sx={{ cursor: "pointer", color: "var(--Primary)" }}
@@ -279,7 +294,7 @@ const AddUser: React.FC<AddUserProps> = () => {
                     </Grid>
                     {(formik.values?.userGroup?.label?.toLowerCase() === userGroupStr.toLowerCase()) && (
                         <Grid item xs={12} md={12}>
-                            <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
+                            <Grid item xs={12} md={6} pr={2.5} pb={2.5} data-testid="abc">
                                 <Select
                                     id='dsp'
                                     name='dsp'
@@ -310,12 +325,14 @@ const AddUser: React.FC<AddUserProps> = () => {
                                     <RadioGroup
                                         aria-label="user-access-permission"
                                         defaultValue=""
+                                        id="userAccessLevel"
                                         name="userAccessLevel"
                                         value={formik.values.userAccessLevel}
                                         onChange={formik.handleChange}
                                     >
-                                        {userPermissionList?.map((perObj: any) => (
+                                        {userPermissionList?.map((perObj: any, index: any) => (
                                             <FormControlLabel
+                                                id={`userAccessLevel-${index}`}
                                                 key={perObj.value}
                                                 value={perObj.value}
                                                 sx={{ ...userAccessLevelSX }}

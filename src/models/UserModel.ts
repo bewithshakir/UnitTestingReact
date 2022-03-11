@@ -9,12 +9,12 @@ export interface SelectProps {
     value: string,
 }
 
-const ACTION_TYPES = {
+export const ACTION_TYPES = {
     EDIT: 'edit',
 };
 
 
-const MASS_ACTION_TYPES = {
+export const MASS_ACTION_TYPES = {
     EXPORT: 'export',
 };
 
