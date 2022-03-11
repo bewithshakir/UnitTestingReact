@@ -3,7 +3,7 @@ import { useFormik } from 'formik';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate, useParams } from 'react-router-dom';
-import { ExpireWalletIcon, LoadingIcon, PositiveCricleIcon } from '../../../assets/icons';
+import { AlertExclamationIcon, LoadingIcon, PositiveCricleIcon } from '../../../assets/icons';
 import { Button } from '../../../components/UIComponents/Button/Button.component';
 import Input from '../../../components/UIComponents/Input/Input';
 import ToastMessage from '../../../components/UIComponents/ToastMessage/ToastMessage.component';
@@ -174,7 +174,8 @@ const AddUser: React.FC<AddUserProps> = () => {
         }
     };
 
-
+    // eslint-disable-next-line no-console
+    // console.log("-----", formik);
     return (
         <Grid item xl={7} lg={8}>
             <form onSubmit={formik.handleSubmit} id='form'>
@@ -225,7 +226,16 @@ const AddUser: React.FC<AddUserProps> = () => {
                                 <Box>
                                     {userVerificationLoading && <LoadingIcon data-testid="loading-spinner" style={{ position: "unset" }} className='loading_save_icon' />}
                                     {!userVerificationLoading && verifiedUserData?.data?.verifiedUser && <Icon component={PositiveCricleIcon} />}
-                                    {((!userVerificationLoading && !verifiedUserData?.data?.verifiedUser) || verifyUserError) && <Icon component={ExpireWalletIcon} />}
+                                    {((!userVerificationLoading && !verifiedUserData?.data?.verifiedUser) || verifyUserError) &&
+                                        (
+                                            <Box display="flex" alignItems="center">
+                                                <Icon sx={{ width: "20px", height: "20px", marginRight: 2 }} component={AlertExclamationIcon} />
+                                                <Typography variant="h4" color="var(--Tertiary)" className="fw-bold">
+                                                    Invalid Email ID cannot fetch the data Invalid Email ID cannot fetch the data
+                                                </Typography>
+                                            </Box>
+                                        )
+                                    }
                                 </Box>
                                 :
                                 <Link
@@ -281,6 +291,7 @@ const AddUser: React.FC<AddUserProps> = () => {
                                     error={(formik.touched.dsp && formik.errors.dsp) ? true : false}
                                     onChange={formik.setFieldValue}
                                     onBlur={() => { formik.setFieldTouched("dsp"); formik.validateField("dsp"); }}
+                                    noOptionsMessage={() => "No data available Please create/add the DSP first to create/add a user"}
                                     required
                                 />
                             </Grid>
