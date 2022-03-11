@@ -5,7 +5,7 @@ import selectEvent from 'react-select-event';
 // import { serverMsw } from "../../../setupTests";
 import { renderWithClient } from '../../../tests/utils';
 import AddUser from "./index";
-import * as Formik from 'formik';
+// import * as Formik from 'formik';
 
 
 jest.mock('react-router-dom', () => ({
@@ -20,26 +20,26 @@ jest.mock('react-router-dom', () => ({
 }));
 
 
-jest.mock('formik', () => ({
-    ...jest.requireActual('formik') as any,
-    useFormik: () => ({
-        setFieldValue: jest.fn(),
-        getFieldProps: jest.fn(),
-        isValid: true,
-        dirty: false,
-        values: {
-            userGroup: {
-                label: '', value: ''
-            }
-        },
-        touched: {
-            userGroup: {}
-        },
-        errors: {
-            userGroup: {}
-        }
-    })
-}));
+// jest.mock('formik', () => ({
+//     ...jest.requireActual('formik') as any,
+//     // useFormik: () => ({
+//     //     setFieldValue: jest.fn(),
+//     //     getFieldProps: jest.fn(),
+//     //     isValid: true,
+//     //     dirty: false,
+//     //     values: {
+//     //         userGroup: {
+//     //             label: '', value: ''
+//     //         }
+//     //     },
+//     //     touched: {
+//     //         userGroup: {}
+//     //     },
+//     //     errors: {
+//     //         userGroup: {}
+//     //     }
+//     // })
+// }));
 
 jest.mock('../../../store', () => ({
     ...jest.requireActual('../../../store') as any,
@@ -67,7 +67,7 @@ describe('renders AddUser component for add mode', () => {
     let result: RenderResult;
     // const useFormik = jest.spyOn(Formik, 'useFormik');
     // eslint-disable-next-line no-console
-    console.log("Formik", Formik);
+    // console.log("Formik", Formik);
 
     beforeEach(() => {
         result = renderWithClient(<AddUser version="Breadcrumbs-Single" />);
@@ -88,15 +88,16 @@ describe('renders AddUser component for add mode', () => {
 
         it('enable save button when all mendatory fields are filled', async () => {
 
-            const { userGroupElem, userEmailElem, userDSP } = getAllElements(result);
-            //  verifyUserLink, saveBtn, userAccessLevel, userDSP
+            const { userEmailElem, userGroupElem } = getAllElements(result);
+            //  verifyUserLink, saveBtn, userAccessLevel, userDSP,userDSP
             await selectEvent.select(userGroupElem, ["DSP"]);
             fireEvent.change(userEmailElem, { target: { value: 'xyz@gmail.com' } });
             // eslint-disable-next-line no-console
             // console.log("Formik", Formik);
 
+            result.debug(await result.findByTestId("abc"));
 
-            await selectEvent.select(userDSP, ["KrrishTest"]);
+            // await selectEvent.select(userDSP, ["KrrishTest"]);
             // eslint-disable-next-line no-console
             // console.log("🚀 ~ fi============================");
             // await waitFor(() => {
