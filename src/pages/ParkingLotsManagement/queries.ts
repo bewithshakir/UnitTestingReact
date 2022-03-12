@@ -26,8 +26,9 @@ const getAllParkingLotList = async (
   }
 
   const allParkingLotListEntitySet = `api/customer-service/lots?limit=${pageDataLimit}&offset=${pageParam}`;
+  const queryStr = query && query.toString().length ? `&${query.toString()}` : '';
   const url = query
-    ? `&countryCode=us${query.toString().length ? ('&'+query.toString()) : ''}`
+    ? `&countryCode=us${queryStr}`
     : `&countryCode=us`;
   const options: AxiosRequestConfig = {
     method: 'get',
