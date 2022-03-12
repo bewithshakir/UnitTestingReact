@@ -1,10 +1,11 @@
 import { Fragment, useState } from 'react';
-import { Grid, Typography } from "@mui/material";
+import { Grid } from "@mui/material";
 import { useTranslation } from 'react-i18next';
 import TwoColSection from "./TwoColSection.component";
 import TripleColSection from "./TripleColSection.component";
 import { useGetProductsByLotId } from '../queries';
 import { maskPhoneNumber } from "../../../utils/helperFunctions";
+import DisclaimerTextBox from "../../../components/UIComponents/DisclaimerTextBox/DisclaimerTextBox.component";
 import './InfoViewUI.scss';
 
 type props = {
@@ -23,7 +24,7 @@ export default function InfoViewUI({ lotData, rowLotId }: props) {
             let productDataObj: any = null;
             if (lotProductData?.length) {
                 productDataObj = {};
-                lotProductData.forEach((product: any, index: number) => {
+                lotProductData.forEach((product: any) => {
                     productDataObj[product.productNm] = {
                         key: product.productNm,
                         subKey: '(Custom name)',
@@ -50,6 +51,7 @@ export default function InfoViewUI({ lotData, rowLotId }: props) {
                     type: '2-col',
                     data: {
                         'Lot Name': lotData?.deliveryLocationNm,
+                        'Name': lotData?.customerName,
                         'Address': lotData?.streetAddress,
                         'City': lotData?.cityNm,
                         'State': lotData?.stateNm,
@@ -65,9 +67,10 @@ export default function InfoViewUI({ lotData, rowLotId }: props) {
                     heading: t("parkingLotManagement.infoView.lotContact"),
                     type: '2-col',
                     data: {
-                        "Primary Contact Name": lotData?.primaryContactName,
-                        "Primary Contact Number": maskPhoneNumber(lotData?.primaryContactNumber),
-                        "Primary Contact Email": lotData?.primaryContactEmail,
+                        "Name": lotData?.primaryContactName,
+                        "Email": lotData?.primaryContactEmail,
+                        "Phone": maskPhoneNumber(lotData?.primaryContactNumber),
+                        
                     }
                 }
             }
@@ -78,10 +81,8 @@ export default function InfoViewUI({ lotData, rowLotId }: props) {
     return (
         <Fragment>
             <div className="infoPanelUI">
-                <Typography color="#000000DE" variant="h5" px={1} pt={1} pb={1} pl={2} className="opis-rack-info-text">
-                    {t("parkingLotManagement.infoView.addproductopistext")}
-                </Typography>
-                <Grid container spacing={4}>
+                <DisclaimerTextBox text={t("parkingLotManagement.infoView.addproductopistext")} />
+                <Grid container className="mainDataDiv">
                     {infoPanelObj?.panelData && Object.entries(infoPanelObj?.panelData).map(([key, value]: any[]) =>
                         <Fragment key={key}>
                             {value?.type === '2-col' && <TwoColSection data={value} />}

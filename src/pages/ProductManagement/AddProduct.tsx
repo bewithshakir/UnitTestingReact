@@ -13,6 +13,7 @@ import OpisRackSegment from './OpisRackSegment';
 import { formStatusObj, strCustomText, strCustomTextRetail, initFormValues, productFormFields } from './config';
 import { useGetProductTypes, useGetProductNames, useGetLotProductDetails, useGetPricingModel, useCreateProduct, useGetOPISRetail, useEditCustomProduct, SupplierPrice } from './queries';
 import { useAddedCustomerIdStore, useAddedCustomerNameStore, useShowConfirmationDialogBoxStore, useAddedParkingLotCityNmStore } from '../../store';
+import DisclaimerTextBox from "../../components/UIComponents/DisclaimerTextBox/DisclaimerTextBox.component";
 import { AddProductValidationSchema } from './validation';
 import './ProductManagement.scss';
 import { totalPricePerGallon } from '../../utils/helperFunctions';
@@ -368,9 +369,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                                 </Grid>
                                  
                             <Grid item lg={12} md={6} sm={8} xs={8} mx={4} my={1} mb={3} >
-                                <Typography color="#000000DE" variant="h5" px={1} pt={1} pb={1} pl={2} className="opis-rack-info-text">
-                                    {t("addProductFormLabels.addproductopistext")}
-                                </Typography>
+                                <DisclaimerTextBox text={t("addProductFormLabels.addproductopistext")}/>
                             </Grid>
                                 </>
                         {!isHiddenAddEditRow && (

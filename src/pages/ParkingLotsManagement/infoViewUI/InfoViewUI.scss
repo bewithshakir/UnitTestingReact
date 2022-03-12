@@ -1,27 +1,45 @@
 div {
   .right_info_panel_content {
     .infoPanelUI {
-      padding: 20px 0px 20px 35px;
       .MuiGrid-container {
         padding: 16px 0px;
         font-weight: bold;
-        .right_info_panel_content_label {
-          color: var(--Lightergray);
-          word-break: break-word;
-        }
-        .right_info_panel_content_value {
-          color: var(--Darkgray);
+      }
+      .mainDataDiv {
+        .sectionBox {
+          margin-bottom: 50px;
+          width: 100%;
+          font-size: 14px;
+          h4 {
+            font-size: 18px;
+            margin: 0px 0px 10px 0px;
+          }
+          .sectionRowLabel {
+            color: var(--Lightergray);
+            word-break: break-word;
+          }
+          .tripleColSectionRowLabel {
+            color: var(--Darkgray);
+          }
+          .sectionRowMidValue {
+            text-align: middle;
+          }
+          .sectionRowValue {
+            text-align: right;
+          }
+          .tripleColSectionRowValue {
+            font-weight: 100;
+          }
+          .subKey {
+            font-size: 12px;
+            font-weight: 100;
+            font-style: italic;
+          }
+          &:first-child{
+            margin-top: 20px;
+          }
         }
       }
-      .right_info_panel_content_item_divider {
-        width: 100%;
-      }
-      .opis-rack-info-text {
-        border: 1px solid #fbce06;
-        background: #fbce061a 0% 0% no-repeat padding-box;
     }
-    }
-    
-    
   }
 }
