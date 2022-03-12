@@ -133,6 +133,12 @@
       "zip": "Zip",
       "wallet status": "Wallet Status",
       "fuel type": "Fuel Type"
+    },
+    "infoView":{
+      "addproductopistext": "Fuel prices for Retail and Rack-based products are provided by the Oil Price Information Service (OPIS) are not fixed and are subject to change daily.",
+      "lotDetails":"Lot Details",
+      "pricing":"Pricing",
+      "lotContact": "Lot Contact"
     }
   },
   "parkingLot": {
