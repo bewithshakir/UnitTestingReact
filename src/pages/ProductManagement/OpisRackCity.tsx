@@ -83,8 +83,9 @@ export default function OpisRackCity({ isDisabled, formik, setSupplierPrice, isS
 
     useEffect(() => {
         if(productId){
-            setCityState();
+            return;
         }
+        setCityState();
     }, [productId]);
 
 
