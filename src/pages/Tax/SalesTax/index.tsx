@@ -170,6 +170,7 @@ const SalesTaxLandingContent: React.FC<SalesTaxLandingContentProps> = memo(() =>
             onRowActionSelect={handleRowAction}
             rowActionOptions={rowActionOptions}
             searchTerm={searchTerm}
+            filterData={filterData}
             noDataMsg='Add Tax by clicking on the "Add Tax" button.'
           />
           <RightInfoPanel panelType="dynamic-filter"

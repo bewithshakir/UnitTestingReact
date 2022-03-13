@@ -11,7 +11,6 @@ import { useGetServedCities, useGetSupplierBrandProducts } from "./queries";
 type Props = {
     isDisabled: boolean,
     formik: any,
-    editMode: boolean,
     setSupplierPrice: (value: any) => any,
     isSaveCancelShown: boolean,
     productId?:string
@@ -36,7 +35,7 @@ const getOptions = (dataArr?: string[]) => {
     return dataArr?.map(item => ({ label: item, value: item })) || [];
 };
 
-export default function OpisRackCity({ isDisabled, formik, editMode, setSupplierPrice, isSaveCancelShown , productId}: Props) {
+export default function OpisRackCity({ isDisabled, formik, setSupplierPrice, isSaveCancelShown , productId}: Props) {
 
     const { t } = useTranslation();
     const [cities, setCities] = useState<ServedCityOptions[]>([]);
@@ -107,10 +106,6 @@ export default function OpisRackCity({ isDisabled, formik, editMode, setSupplier
     
     return (<Fragment>
         <Grid item lg={5} md={8} sm={8} xs={8} mx={4} my={1} >
-            <div>
-            disabled {JSON.stringify(isDisabled)}
-        editMode {JSON.stringify(editMode)}
-                </div>
             <Select
                 id='city'
                 name='city'

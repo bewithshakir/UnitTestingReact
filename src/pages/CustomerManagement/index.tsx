@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import { PositiveCricleIcon, FilterIcon } from "../../assets/icons";
 import SortbyMenu from "../../components/UIComponents/Menu/SortbyMenu.component";
 import ActionsMenu from "../../components/UIComponents/Menu/ActionsMenu.component";
-import GridComponent from "../../components/UIComponents/DataGird/grid.component";
+import GridComponent, { filterObjType } from "../../components/UIComponents/DataGird/grid.component";
 import Table from "./SubTableLots";
 import { useCustomers } from "./queries";
 import SearchInput from "../../components/UIComponents/SearchInput/SearchInput";
@@ -48,7 +48,7 @@ const Content: React.FC<ContentProps> = () => {
   const [customerList, setCustomerList] = React.useState([]);
 
   // Customer filter state
-  const [filterData, setFilterData] = React.useState<{ [key: string]: string[] }>({});
+  const [filterData, setFilterData] = React.useState<filterObjType>({});
   const [custFilterPanelVisible, setCustFilterPanelVisible] = React.useState(false);
   const [customerId, setCustomerId] = React.useState('');
 
@@ -71,21 +71,27 @@ const Content: React.FC<ContentProps> = () => {
     }
   }, [data]);
 
-  const createInfoObjForRightInfoPanel = (row: any) => {
-    const infoObj = {
+  const setCardIcon = (cardAdded: string) => {
+    return ({
+      "Y": <PositiveCricleIcon />,
+      "N": 'Not yet assigned',
+    }[cardAdded] || '');
+  };
+
+  const createInfoObjForRightInfoPanel = (row: any) => (
+    {
       'Customer ID': row.customerInputId,
       'Name': row.contactName,
       'Email': row.email,
       'Phone': maskPhoneNumber(row.phone),
       'Settlement Type': row.paymentType,
-      'Card Added': row.cardAdded === "Y" ? <PositiveCricleIcon /> : row.cardAdded === "N" ? 'Not yet assigned' : '',
+      'Card Added': setCardIcon(row.cardAdded),
       'Address': row.address,
       'City': row.city,
       'State': row.state,
       'Zip Code': row.zipCode,
-    };
-    return infoObj;
-  };
+    }
+  );
 
   const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
   setVersion("NavLinks");
@@ -108,26 +114,26 @@ const Content: React.FC<ContentProps> = () => {
   };
 
   const onSortBySlected = (value: string) => {
-    let sortOrder;
+    let sortByOrder;
     switch (value) {
       case SORTBY_TYPES.CUSTOMER_NAME_AZ:
-        sortOrder = { sortBy: "customerName", order: "asc" };
+        sortByOrder = { sortBy: "customerName", order: "asc" };
         break;
       case SORTBY_TYPES.CUSTOMER_NAME_ZA:
-        sortOrder = { sortBy: "customerName", order: "desc" };
+        sortByOrder = { sortBy: "customerName", order: "desc" };
         break;
       case SORTBY_TYPES.NEWEST_TO_OLDEST:
-        sortOrder = { sortBy: "date", order: "desc" };
+        sortByOrder = { sortBy: "date", order: "desc" };
         break;
       case SORTBY_TYPES.OLDEST_TO_NEW:
-        sortOrder = { sortBy: "date", order: "asc" };
+        sortByOrder = { sortBy: "date", order: "asc" };
         break;
       default:
-        sortOrder = { sortBy: "", order: "" };
+        sortByOrder = { sortBy: "", order: "" };
         break;
     }
     setResetTableCollaps(true);
-    setSortOrder(sortOrder);
+    setSortOrder(sortByOrder);
   };
 
   const onInputChange = (value: string) => {
@@ -255,6 +261,7 @@ const Content: React.FC<ContentProps> = () => {
             rowActionOptions={rowActionOptions}
             openDrawer={openDrawer}
             searchTerm={searchTerm}
+            filterData={filterData}
             getId={(id: string) => setCustomerId(id)}
             resetCollaps={resetTableCollaps}
             onResetTableCollaps={setResetTableCollaps}

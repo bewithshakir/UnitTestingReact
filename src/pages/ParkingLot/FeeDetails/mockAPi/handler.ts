@@ -1,5 +1,5 @@
 import { rest } from "msw";
-import { feeDetailsResp } from "./sampleResponse";
+import { addEditFeeResponse, feeDetailsResp } from "./sampleResponse";
 
 export const getDelFeeSchduleHandler = () => {
     return rest.get('*/api/pricing-fee-service/fees/frequencies*', (req, res, ctx) => {
@@ -338,68 +338,7 @@ export const addFeeDetailsHandler = () => {
         return res(
             ctx.status(200),
             ctx.json({
-                "data": [
-                    {
-                        "feeTypeCd": "b63f7c95-6b44-440b-a36d-c279dc337954",
-                        "feeFrequencyCd": "3831dcc6-0565-442f-b526-f709597c063b",
-                        "deliveryLocationId": "9fa6d5b3-6a2b-441a-a400-212049ba7575",
-                        "applicableProductId": null,
-                        "vehicleTypeCd": null,
-                        "feeName": "Test Fee 2",
-                        "feeAmt": 2.908,
-                        "assetTypeCd": null,
-                        "assetInd": "N",
-                        "assetTypeOtherText": null,
-                        "salesTaxExemptInd": "N",
-                        "activeInd": "Y",
-                        "applicableFeeMiscId": ""
-                    },
-                    {
-                        "feeTypeCd": "bd60bcdc-c455-4c70-ac33-3b5508d8e7b7",
-                        "feeFrequencyCd": null,
-                        "deliveryLocationId": "9fa6d5b3-6a2b-441a-a400-212049ba7575",
-                        "applicableProductId": "3831dcc6-0565-442f-b526-f709597c063b",
-                        "vehicleTypeCd": null,
-                        "feeName": "Test Fee 2",
-                        "feeAmt": 3.565,
-                        "assetTypeCd": "3831dcc6-0565-442f-b526-f709597c063b",
-                        "assetInd": "Y",
-                        "assetTypeOtherText": "This is test asset",
-                        "salesTaxExemptInd": "N",
-                        "activeInd": "Y",
-                        "applicableFeeMiscId": "d8affa5d-0a66-4b8b-bd43-3b21736e7e15"
-                    },
-                    {
-                        "feeTypeCd": "bd60bcdc-c455-4c70-ac33-3b5508d8e7b7",
-                        "feeFrequencyCd": null,
-                        "deliveryLocationId": "9fa6d5b3-6a2b-441a-a400-212049ba7575",
-                        "applicableProductId": "2258a18e-e0af-4b01-8e42-2eef81cf23a6",
-                        "vehicleTypeCd": null,
-                        "feeName": "Test Fee 2",
-                        "feeAmt": 3.565,
-                        "assetTypeCd": "3831dcc6-0565-442f-b526-f709597c063b",
-                        "assetInd": "Y",
-                        "assetTypeOtherText": "This is test asset",
-                        "salesTaxExemptInd": "N",
-                        "activeInd": "Y",
-                        "applicableFeeMiscId": "d789b7d3-8ac3-478a-b4c1-75e2e1e1d2a6"
-                    },
-                    {
-                        "feeTypeCd": "bd60bcdc-c455-4c70-ac33-3b5508d8e7b7",
-                        "feeFrequencyCd": null,
-                        "deliveryLocationId": "9fa6d5b3-6a2b-441a-a400-212049ba7575",
-                        "applicableProductId": "c3007c39-c477-4e24-a9a4-e8394e143523",
-                        "vehicleTypeCd": null,
-                        "feeName": "Test Fee 2",
-                        "feeAmt": 3.565,
-                        "assetTypeCd": "3831dcc6-0565-442f-b526-f709597c063b",
-                        "assetInd": "Y",
-                        "assetTypeOtherText": "This is test asset",
-                        "salesTaxExemptInd": "N",
-                        "activeInd": "Y",
-                        "applicableFeeMiscId": "d789b7d3-8ac3-478a-b4c1-75e2e1e1d2a6"
-                    }
-                ],
+                "data": addEditFeeResponse,
                 "error": null
             })
         );
@@ -421,68 +360,7 @@ export const editFeeDetailsHandler = () => {
         return res(
             ctx.status(200),
             ctx.json({
-                "data": [
-                    {
-                        "feeTypeCd": "b63f7c95-6b44-440b-a36d-c279dc337954",
-                        "feeFrequencyCd": "3831dcc6-0565-442f-b526-f709597c063b",
-                        "deliveryLocationId": "9fa6d5b3-6a2b-441a-a400-212049ba7575",
-                        "applicableProductId": null,
-                        "vehicleTypeCd": null,
-                        "feeName": "Test Fee 2",
-                        "feeAmt": 2.908,
-                        "assetTypeCd": null,
-                        "assetInd": "N",
-                        "assetTypeOtherText": null,
-                        "salesTaxExemptInd": "N",
-                        "activeInd": "Y",
-                        "applicableFeeMiscId": ""
-                    },
-                    {
-                        "feeTypeCd": "bd60bcdc-c455-4c70-ac33-3b5508d8e7b7",
-                        "feeFrequencyCd": null,
-                        "deliveryLocationId": "9fa6d5b3-6a2b-441a-a400-212049ba7575",
-                        "applicableProductId": "3831dcc6-0565-442f-b526-f709597c063b",
-                        "vehicleTypeCd": null,
-                        "feeName": "Test Fee 2",
-                        "feeAmt": 3.565,
-                        "assetTypeCd": "3831dcc6-0565-442f-b526-f709597c063b",
-                        "assetInd": "Y",
-                        "assetTypeOtherText": "This is test asset",
-                        "salesTaxExemptInd": "N",
-                        "activeInd": "Y",
-                        "applicableFeeMiscId": "d8affa5d-0a66-4b8b-bd43-3b21736e7e15"
-                    },
-                    {
-                        "feeTypeCd": "bd60bcdc-c455-4c70-ac33-3b5508d8e7b7",
-                        "feeFrequencyCd": null,
-                        "deliveryLocationId": "9fa6d5b3-6a2b-441a-a400-212049ba7575",
-                        "applicableProductId": "2258a18e-e0af-4b01-8e42-2eef81cf23a6",
-                        "vehicleTypeCd": null,
-                        "feeName": "Test Fee 2",
-                        "feeAmt": 3.565,
-                        "assetTypeCd": "3831dcc6-0565-442f-b526-f709597c063b",
-                        "assetInd": "Y",
-                        "assetTypeOtherText": "This is test asset",
-                        "salesTaxExemptInd": "N",
-                        "activeInd": "Y",
-                        "applicableFeeMiscId": "d789b7d3-8ac3-478a-b4c1-75e2e1e1d2a6"
-                    },
-                    {
-                        "feeTypeCd": "bd60bcdc-c455-4c70-ac33-3b5508d8e7b7",
-                        "feeFrequencyCd": null,
-                        "deliveryLocationId": "9fa6d5b3-6a2b-441a-a400-212049ba7575",
-                        "applicableProductId": "c3007c39-c477-4e24-a9a4-e8394e143523",
-                        "vehicleTypeCd": null,
-                        "feeName": "Test Fee 2",
-                        "feeAmt": 3.565,
-                        "assetTypeCd": "3831dcc6-0565-442f-b526-f709597c063b",
-                        "assetInd": "Y",
-                        "assetTypeOtherText": "This is test asset",
-                        "salesTaxExemptInd": "N",
-                        "activeInd": "Y",
-                        "applicableFeeMiscId": "d789b7d3-8ac3-478a-b4c1-75e2e1e1d2a6"
-                    }
-                ],
+                "data": addEditFeeResponse,
                 "error": null
             })
         );

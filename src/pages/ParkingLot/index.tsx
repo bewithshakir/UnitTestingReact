@@ -246,6 +246,7 @@ const ParkingLotContent: React.FC<ContentProps> = () => {
             getPages={fetchNextPage}
             onRowActionSelect={handleRowAction}
             searchTerm={searchTerm}
+            filterData={filterData}
             rowActionOptions={rowActionOptions}
             openDrawer={openDrawer}
             noDataMsg='Add Parking lot by clicking on lot or any related sentence.'

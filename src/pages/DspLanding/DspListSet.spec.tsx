@@ -1,13 +1,16 @@
-import { renderHook } from '@testing-library/react-hooks';
-import { createWrapper } from '../../../tests/utils';
-import { useEditDspData } from './queries';
-import { serverMsw } from "../../../setupTests";
+import { renderHook, act } from '@testing-library/react-hooks';
+import { createWrapper } from '../../tests/utils';
+import { DspListSet } from './queries';
+import { serverMsw } from "../../setupTests";
 import { rest } from 'msw';
 
-describe('useGetProductTypes for useQuery method ', () => {
+describe('DspListSet for useInfiniteQuery method ', () => {
     it('successful returns data', async () => {
-        const { result, waitFor } = renderHook(() => useEditDspData('111edit', '22', jest.fn(), jest.fn()), {
+        const { result, waitFor } = renderHook(() => DspListSet("", { sortBy: "", order: "", }, '111edit', {}), {
             wrapper: createWrapper()
+        });
+        act(() => {
+            result.current.fetchNextPage();
         });
         await waitFor(() => {
             return result.current.isSuccess;
@@ -22,10 +25,12 @@ describe('useGetProductTypes for useQuery method ', () => {
             })
         );
 
-        const { result, waitFor } = renderHook(() => useEditDspData('111edit', '22', jest.fn(), jest.fn()), {
+        const { result, waitFor } = renderHook(() => DspListSet("", { sortBy: "", order: "", }, '111edit', {}), {
             wrapper: createWrapper()
         });
-
+        act(() => {
+            result.current.fetchNextPage();
+        });
         await waitFor(() => {
             return result.current.isError;
         });

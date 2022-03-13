@@ -132,6 +132,7 @@ const ProductManagementContent: React.FC<ProductManagementContentProps> = memo((
             onRowActionSelect={handleRowAction}
             rowActionOptions={rowActionOptions}
             searchTerm={searchTerm}
+            filterData={filterData}
             noDataMsg='Add Product by clicking on the "Add Product" button.'
           />
         </Grid>

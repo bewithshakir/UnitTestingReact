@@ -42,7 +42,7 @@ exports[`renders the MultiSelect component on change Should change value when on
             <ForwardRef(InputLabel)
               aria-labelledby="Select values"
               aria-required={false}
-              htmlFor="multi-select-on-change-test-label"
+              htmlFor="multi-select-on-change-test"
               shrink={true}
               style={
                 Object {
@@ -68,7 +68,7 @@ exports[`renders the MultiSelect component on change Should change value when on
                 }
               }
               hideSelectedOptions={false}
-              id="multi-select-on-change-test"
+              inputId="multi-select-on-change-test"
               isMulti={true}
               isSearchable={false}
               loadingMessage={[Function]}
@@ -117,7 +117,7 @@ exports[`renders the MultiSelect component on change Should change value when on
         <ForwardRef(InputLabel)
           aria-labelledby="Select values"
           aria-required={false}
-          htmlFor="multi-select-on-change-test-label"
+          htmlFor="multi-select-on-change-test"
           shrink={true}
           style={
             Object {
@@ -135,7 +135,7 @@ exports[`renders the MultiSelect component on change Should change value when on
               }
             }
             data-shrink={true}
-            htmlFor="multi-select-on-change-test-label"
+            htmlFor="multi-select-on-change-test"
             ownerState={
               Object {
                 "aria-labelledby": "Select values",
@@ -163,7 +163,7 @@ exports[`renders the MultiSelect component on change Should change value when on
                   "size": "medium",
                   "variant": "outlined",
                 },
-                "htmlFor": "multi-select-on-change-test-label",
+                "htmlFor": "multi-select-on-change-test",
                 "required": false,
                 "shrink": true,
                 "size": "medium",
@@ -190,7 +190,7 @@ exports[`renders the MultiSelect component on change Should change value when on
                 }
               }
               data-shrink={true}
-              htmlFor="multi-select-on-change-test-label"
+              htmlFor="multi-select-on-change-test"
               style={
                 Object {
                   "color": "var(--Darkgray)",
@@ -209,7 +209,7 @@ exports[`renders the MultiSelect component on change Should change value when on
                   }
                 }
                 data-shrink={true}
-                htmlFor="multi-select-on-change-test-label"
+                htmlFor="multi-select-on-change-test"
                 ownerState={
                   Object {
                     "aria-labelledby": "Select values",
@@ -229,7 +229,7 @@ exports[`renders the MultiSelect component on change Should change value when on
                     "error": false,
                     "filled": false,
                     "focused": false,
-                    "htmlFor": "multi-select-on-change-test-label",
+                    "htmlFor": "multi-select-on-change-test",
                     "required": false,
                     "style": Object {
                       "color": "var(--Darkgray)",
@@ -247,7 +247,7 @@ exports[`renders the MultiSelect component on change Should change value when on
                   aria-required={false}
                   className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary css-1kty9di-MuiFormLabel-root-MuiInputLabel-root"
                   data-shrink={true}
-                  htmlFor="multi-select-on-change-test-label"
+                  htmlFor="multi-select-on-change-test"
                   style={
                     Object {
                       "color": "var(--Darkgray)",
@@ -276,7 +276,7 @@ exports[`renders the MultiSelect component on change Should change value when on
             }
           }
           hideSelectedOptions={false}
-          id="multi-select-on-change-test"
+          inputId="multi-select-on-change-test"
           isMulti={true}
           isSearchable={false}
           loadingMessage={[Function]}
@@ -328,7 +328,7 @@ exports[`renders the MultiSelect component on change Should change value when on
             getOptionLabel={[Function]}
             getOptionValue={[Function]}
             hideSelectedOptions={false}
-            id="multi-select-on-change-test"
+            inputId="multi-select-on-change-test"
             inputValue=""
             isDisabled={false}
             isLoading={false}
@@ -387,7 +387,7 @@ exports[`renders the MultiSelect component on change Should change value when on
               hasValue={false}
               innerProps={
                 Object {
-                  "id": "multi-select-on-change-test",
+                  "id": undefined,
                   "onKeyDown": [Function],
                 }
               }
@@ -439,7 +439,7 @@ exports[`renders the MultiSelect component on change Should change value when on
                   "getOptionLabel": [Function],
                   "getOptionValue": [Function],
                   "hideSelectedOptions": false,
-                  "id": "multi-select-on-change-test",
+                  "inputId": "multi-select-on-change-test",
                   "inputValue": "",
                   "isDisabled": false,
                   "isLoading": false,
@@ -534,12 +534,10 @@ exports[`renders the MultiSelect component on change Should change value when on
                     "position": "relative",
                   }
                 }
-                id="multi-select-on-change-test"
                 onKeyDown={[Function]}
               >
                 <div
                   className="multi-select-container css-b62m3t-container"
-                  id="multi-select-on-change-test"
                   onKeyDown={[Function]}
                 >
                   <LiveRegion
@@ -600,7 +598,7 @@ exports[`renders the MultiSelect component on change Should change value when on
                         "getOptionLabel": [Function],
                         "getOptionValue": [Function],
                         "hideSelectedOptions": false,
-                        "id": "multi-select-on-change-test",
+                        "inputId": "multi-select-on-change-test",
                         "inputValue": "",
                         "isDisabled": false,
                         "isLoading": false,
@@ -796,7 +794,7 @@ exports[`renders the MultiSelect component on change Should change value when on
                         "getOptionLabel": [Function],
                         "getOptionValue": [Function],
                         "hideSelectedOptions": false,
-                        "id": "multi-select-on-change-test",
+                        "inputId": "multi-select-on-change-test",
                         "inputValue": "",
                         "isDisabled": false,
                         "isLoading": false,
@@ -967,7 +965,7 @@ exports[`renders the MultiSelect component on change Should change value when on
                               "getOptionLabel": [Function],
                               "getOptionValue": [Function],
                               "hideSelectedOptions": false,
-                              "id": "multi-select-on-change-test",
+                              "inputId": "multi-select-on-change-test",
                               "inputValue": "",
                               "isDisabled": false,
                               "isLoading": false,
@@ -1130,7 +1128,7 @@ exports[`renders the MultiSelect component on change Should change value when on
                                     "getOptionLabel": [Function],
                                     "getOptionValue": [Function],
                                     "hideSelectedOptions": false,
-                                    "id": "multi-select-on-change-test",
+                                    "inputId": "multi-select-on-change-test",
                                     "inputValue": "",
                                     "isDisabled": false,
                                     "isLoading": false,
@@ -1245,7 +1243,7 @@ exports[`renders the MultiSelect component on change Should change value when on
                                 aria-owns="react-select-4-listbox"
                                 aria-readonly={true}
                                 disabled={false}
-                                id="react-select-4-input"
+                                id="multi-select-on-change-test"
                                 innerRef={[Function]}
                                 inputMode="none"
                                 onBlur={[Function]}
@@ -1275,7 +1273,7 @@ exports[`renders the MultiSelect component on change Should change value when on
                                     }
                                   }
                                   disabled={false}
-                                  id="react-select-4-input"
+                                  id="multi-select-on-change-test"
                                   inputMode="none"
                                   onBlur={[Function]}
                                   onChange={[Function]}
@@ -1294,7 +1292,7 @@ exports[`renders the MultiSelect component on change Should change value when on
                                     aria-readonly={true}
                                     className="css-mohuvp-dummyInput-DummyInput"
                                     disabled={false}
-                                    id="react-select-4-input"
+                                    id="multi-select-on-change-test"
                                     inputMode="none"
                                     onBlur={[Function]}
                                     onChange={[Function]}
@@ -1361,7 +1359,7 @@ exports[`renders the MultiSelect component on change Should change value when on
                               "getOptionLabel": [Function],
                               "getOptionValue": [Function],
                               "hideSelectedOptions": false,
-                              "id": "multi-select-on-change-test",
+                              "inputId": "multi-select-on-change-test",
                               "inputValue": "",
                               "isDisabled": false,
                               "isLoading": false,
@@ -1514,7 +1512,7 @@ exports[`renders the MultiSelect component on change Should change value when on
                                     "getOptionLabel": [Function],
                                     "getOptionValue": [Function],
                                     "hideSelectedOptions": false,
-                                    "id": "multi-select-on-change-test",
+                                    "inputId": "multi-select-on-change-test",
                                     "inputValue": "",
                                     "isDisabled": false,
                                     "isLoading": false,
@@ -1657,7 +1655,7 @@ exports[`renders the MultiSelect component on change Should change value when on
                                     "getOptionLabel": [Function],
                                     "getOptionValue": [Function],
                                     "hideSelectedOptions": false,
-                                    "id": "multi-select-on-change-test",
+                                    "inputId": "multi-select-on-change-test",
                                     "inputValue": "",
                                     "isDisabled": false,
                                     "isLoading": false,
@@ -1800,7 +1798,7 @@ exports[`renders the MultiSelect component on change Should change value when on
                                       "getOptionLabel": [Function],
                                       "getOptionValue": [Function],
                                       "hideSelectedOptions": false,
-                                      "id": "multi-select-on-change-test",
+                                      "inputId": "multi-select-on-change-test",
                                       "inputValue": "",
                                       "isDisabled": false,
                                       "isLoading": false,
@@ -1954,7 +1952,7 @@ exports[`renders the MultiSelect component snapshot test for the MultiSelect com
     <ForwardRef(InputLabel)
       aria-labelledby="Input"
       aria-required={false}
-      htmlFor="multi-input-label"
+      htmlFor="multi-input"
       shrink={true}
       style={
         Object {
@@ -1980,7 +1978,7 @@ exports[`renders the MultiSelect component snapshot test for the MultiSelect com
         }
       }
       hideSelectedOptions={false}
-      id="multi-input"
+      inputId="multi-input"
       isMulti={true}
       isSearchable={false}
       loadingMessage={[Function]}
@@ -2019,7 +2017,7 @@ exports[`renders the MultiSelect component with error snapshot test for the Mult
     <ForwardRef(InputLabel)
       aria-labelledby="Input"
       aria-required={false}
-      htmlFor="multi-input-label"
+      htmlFor="multi-input"
       shrink={true}
       style={
         Object {
@@ -2045,7 +2043,7 @@ exports[`renders the MultiSelect component with error snapshot test for the Mult
         }
       }
       hideSelectedOptions={false}
-      id="multi-input"
+      inputId="multi-input"
       isMulti={true}
       isSearchable={false}
       loadingMessage={[Function]}
@@ -2093,7 +2091,7 @@ exports[`renders the MultiSelect component with helper text snapshot test for th
     <ForwardRef(InputLabel)
       aria-labelledby="Input"
       aria-required={false}
-      htmlFor="multi-input-label"
+      htmlFor="multi-input"
       shrink={true}
       style={
         Object {
@@ -2119,7 +2117,7 @@ exports[`renders the MultiSelect component with helper text snapshot test for th
         }
       }
       hideSelectedOptions={false}
-      id="multi-input"
+      inputId="multi-input"
       isMulti={true}
       isSearchable={false}
       loadingMessage={[Function]}
@@ -2173,7 +2171,7 @@ exports[`renders the MultiSelect component with loading snapshot test for the Mu
     <ForwardRef(InputLabel)
       aria-labelledby="Input"
       aria-required={true}
-      htmlFor="multi-input-label"
+      htmlFor="multi-input"
       shrink={true}
       style={
         Object {
@@ -2204,7 +2202,7 @@ exports[`renders the MultiSelect component with loading snapshot test for the Mu
         }
       }
       hideSelectedOptions={false}
-      id="multi-input"
+      inputId="multi-input"
       isMulti={true}
       isSearchable={false}
       loadingMessage={[Function]}
@@ -2243,7 +2241,7 @@ exports[`renders the MultiSelect component with no options msg snapshot test for
             <ForwardRef(InputLabel)
               aria-labelledby="Input"
               aria-required={true}
-              htmlFor="multi-input-label"
+              htmlFor="multi-input"
               shrink={true}
               style={
                 Object {
@@ -2274,7 +2272,7 @@ exports[`renders the MultiSelect component with no options msg snapshot test for
                 }
               }
               hideSelectedOptions={false}
-              id="multi-input"
+              inputId="multi-input"
               isMulti={true}
               isSearchable={false}
               loadingMessage={[Function]}
@@ -2306,7 +2304,7 @@ exports[`renders the MultiSelect component with no options msg snapshot test for
         <ForwardRef(InputLabel)
           aria-labelledby="Input"
           aria-required={true}
-          htmlFor="multi-input-label"
+          htmlFor="multi-input"
           shrink={true}
           style={
             Object {
@@ -2324,7 +2322,7 @@ exports[`renders the MultiSelect component with no options msg snapshot test for
               }
             }
             data-shrink={true}
-            htmlFor="multi-input-label"
+            htmlFor="multi-input"
             ownerState={
               Object {
                 "aria-labelledby": "Input",
@@ -2357,7 +2355,7 @@ exports[`renders the MultiSelect component with no options msg snapshot test for
                   "size": "medium",
                   "variant": "outlined",
                 },
-                "htmlFor": "multi-input-label",
+                "htmlFor": "multi-input",
                 "required": false,
                 "shrink": true,
                 "size": "medium",
@@ -2384,7 +2382,7 @@ exports[`renders the MultiSelect component with no options msg snapshot test for
                 }
               }
               data-shrink={true}
-              htmlFor="multi-input-label"
+              htmlFor="multi-input"
               style={
                 Object {
                   "color": "var(--Darkgray)",
@@ -2403,7 +2401,7 @@ exports[`renders the MultiSelect component with no options msg snapshot test for
                   }
                 }
                 data-shrink={true}
-                htmlFor="multi-input-label"
+                htmlFor="multi-input"
                 ownerState={
                   Object {
                     "aria-labelledby": "Input",
@@ -2428,7 +2426,7 @@ exports[`renders the MultiSelect component with no options msg snapshot test for
                     "error": false,
                     "filled": false,
                     "focused": false,
-                    "htmlFor": "multi-input-label",
+                    "htmlFor": "multi-input",
                     "required": false,
                     "style": Object {
                       "color": "var(--Darkgray)",
@@ -2446,7 +2444,7 @@ exports[`renders the MultiSelect component with no options msg snapshot test for
                   aria-required={true}
                   className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary css-1kty9di-MuiFormLabel-root-MuiInputLabel-root"
                   data-shrink={true}
-                  htmlFor="multi-input-label"
+                  htmlFor="multi-input"
                   style={
                     Object {
                       "color": "var(--Darkgray)",
@@ -2480,7 +2478,7 @@ exports[`renders the MultiSelect component with no options msg snapshot test for
             }
           }
           hideSelectedOptions={false}
-          id="multi-input"
+          inputId="multi-input"
           isMulti={true}
           isSearchable={false}
           loadingMessage={[Function]}
@@ -2515,7 +2513,7 @@ exports[`renders the MultiSelect component with no options msg snapshot test for
             getOptionLabel={[Function]}
             getOptionValue={[Function]}
             hideSelectedOptions={false}
-            id="multi-input"
+            inputId="multi-input"
             inputValue=""
             isDisabled={false}
             isLoading={false}
@@ -2556,7 +2554,7 @@ exports[`renders the MultiSelect component with no options msg snapshot test for
               hasValue={false}
               innerProps={
                 Object {
-                  "id": "multi-input",
+                  "id": undefined,
                   "onKeyDown": [Function],
                 }
               }
@@ -2590,7 +2588,7 @@ exports[`renders the MultiSelect component with no options msg snapshot test for
                   "getOptionLabel": [Function],
                   "getOptionValue": [Function],
                   "hideSelectedOptions": false,
-                  "id": "multi-input",
+                  "inputId": "multi-input",
                   "inputValue": "",
                   "isDisabled": false,
                   "isLoading": false,
@@ -2669,12 +2667,10 @@ exports[`renders the MultiSelect component with no options msg snapshot test for
                     "position": "relative",
                   }
                 }
-                id="multi-input"
                 onKeyDown={[Function]}
               >
                 <div
                   className="multi-select-container css-b62m3t-container"
-                  id="multi-input"
                   onKeyDown={[Function]}
                 >
                   <LiveRegion
@@ -2716,7 +2712,7 @@ exports[`renders the MultiSelect component with no options msg snapshot test for
                         "getOptionLabel": [Function],
                         "getOptionValue": [Function],
                         "hideSelectedOptions": false,
-                        "id": "multi-input",
+                        "inputId": "multi-input",
                         "inputValue": "",
                         "isDisabled": false,
                         "isLoading": false,
@@ -2878,7 +2874,7 @@ exports[`renders the MultiSelect component with no options msg snapshot test for
                         "getOptionLabel": [Function],
                         "getOptionValue": [Function],
                         "hideSelectedOptions": false,
-                        "id": "multi-input",
+                        "inputId": "multi-input",
                         "inputValue": "",
                         "isDisabled": false,
                         "isLoading": false,
@@ -3015,7 +3011,7 @@ exports[`renders the MultiSelect component with no options msg snapshot test for
                               "getOptionLabel": [Function],
                               "getOptionValue": [Function],
                               "hideSelectedOptions": false,
-                              "id": "multi-input",
+                              "inputId": "multi-input",
                               "inputValue": "",
                               "isDisabled": false,
                               "isLoading": false,
@@ -3144,7 +3140,7 @@ exports[`renders the MultiSelect component with no options msg snapshot test for
                                     "getOptionLabel": [Function],
                                     "getOptionValue": [Function],
                                     "hideSelectedOptions": false,
-                                    "id": "multi-input",
+                                    "inputId": "multi-input",
                                     "inputValue": "",
                                     "isDisabled": false,
                                     "isLoading": false,
@@ -3243,7 +3239,7 @@ exports[`renders the MultiSelect component with no options msg snapshot test for
                                 aria-owns="react-select-2-listbox"
                                 aria-readonly={true}
                                 disabled={false}
-                                id="react-select-2-input"
+                                id="multi-input"
                                 innerRef={[Function]}
                                 inputMode="none"
                                 onBlur={[Function]}
@@ -3273,7 +3269,7 @@ exports[`renders the MultiSelect component with no options msg snapshot test for
                                     }
                                   }
                                   disabled={false}
-                                  id="react-select-2-input"
+                                  id="multi-input"
                                   inputMode="none"
                                   onBlur={[Function]}
                                   onChange={[Function]}
@@ -3292,7 +3288,7 @@ exports[`renders the MultiSelect component with no options msg snapshot test for
                                     aria-readonly={true}
                                     className="css-mohuvp-dummyInput-DummyInput"
                                     disabled={false}
-                                    id="react-select-2-input"
+                                    id="multi-input"
                                     inputMode="none"
                                     onBlur={[Function]}
                                     onChange={[Function]}
@@ -3341,7 +3337,7 @@ exports[`renders the MultiSelect component with no options msg snapshot test for
                               "getOptionLabel": [Function],
                               "getOptionValue": [Function],
                               "hideSelectedOptions": false,
-                              "id": "multi-input",
+                              "inputId": "multi-input",
                               "inputValue": "",
                               "isDisabled": false,
                               "isLoading": false,
@@ -3460,7 +3456,7 @@ exports[`renders the MultiSelect component with no options msg snapshot test for
                                     "getOptionLabel": [Function],
                                     "getOptionValue": [Function],
                                     "hideSelectedOptions": false,
-                                    "id": "multi-input",
+                                    "inputId": "multi-input",
                                     "inputValue": "",
                                     "isDisabled": false,
                                     "isLoading": false,
@@ -3569,7 +3565,7 @@ exports[`renders the MultiSelect component with no options msg snapshot test for
                                     "getOptionLabel": [Function],
                                     "getOptionValue": [Function],
                                     "hideSelectedOptions": false,
-                                    "id": "multi-input",
+                                    "inputId": "multi-input",
                                     "inputValue": "",
                                     "isDisabled": false,
                                     "isLoading": false,
@@ -3678,7 +3674,7 @@ exports[`renders the MultiSelect component with no options msg snapshot test for
                                       "getOptionLabel": [Function],
                                       "getOptionValue": [Function],
                                       "hideSelectedOptions": false,
-                                      "id": "multi-input",
+                                      "inputId": "multi-input",
                                       "inputValue": "",
                                       "isDisabled": false,
                                       "isLoading": false,
@@ -3836,7 +3832,7 @@ exports[`renders the MultiSelect component with no options msg snapshot test for
                         "getOptionLabel": [Function],
                         "getOptionValue": [Function],
                         "hideSelectedOptions": false,
-                        "id": "multi-input",
+                        "inputId": "multi-input",
                         "inputValue": "",
                         "isDisabled": false,
                         "isLoading": false,
@@ -3951,7 +3947,7 @@ exports[`renders the MultiSelect component with no options msg snapshot test for
                           "getOptionLabel": [Function],
                           "getOptionValue": [Function],
                           "hideSelectedOptions": false,
-                          "id": "multi-input",
+                          "inputId": "multi-input",
                           "inputValue": "",
                           "isDisabled": false,
                           "isLoading": false,
@@ -4087,7 +4083,7 @@ exports[`renders the MultiSelect component with no options msg snapshot test for
                                   "getOptionLabel": [Function],
                                   "getOptionValue": [Function],
                                   "hideSelectedOptions": false,
-                                  "id": "multi-input",
+                                  "inputId": "multi-input",
                                   "inputValue": "",
                                   "isDisabled": false,
                                   "isLoading": false,
@@ -4206,7 +4202,7 @@ exports[`renders the MultiSelect component with no options msg snapshot test for
                                         "getOptionLabel": [Function],
                                         "getOptionValue": [Function],
                                         "hideSelectedOptions": false,
-                                        "id": "multi-input",
+                                        "inputId": "multi-input",
                                         "inputValue": "",
                                         "isDisabled": false,
                                         "isLoading": false,
@@ -4336,7 +4332,7 @@ exports[`renders the MultiSelect component with no options msg snapshot test for
             <ForwardRef(InputLabel)
               aria-labelledby="Input"
               aria-required={true}
-              htmlFor="multi-input-label"
+              htmlFor="multi-input"
               shrink={true}
               style={
                 Object {
@@ -4367,7 +4363,7 @@ exports[`renders the MultiSelect component with no options msg snapshot test for
                 }
               }
               hideSelectedOptions={false}
-              id="multi-input"
+              inputId="multi-input"
               isMulti={true}
               isSearchable={false}
               loadingMessage={[Function]}
@@ -4399,7 +4395,7 @@ exports[`renders the MultiSelect component with no options msg snapshot test for
         <ForwardRef(InputLabel)
           aria-labelledby="Input"
           aria-required={true}
-          htmlFor="multi-input-label"
+          htmlFor="multi-input"
           shrink={true}
           style={
             Object {
@@ -4417,7 +4413,7 @@ exports[`renders the MultiSelect component with no options msg snapshot test for
               }
             }
             data-shrink={true}
-            htmlFor="multi-input-label"
+            htmlFor="multi-input"
             ownerState={
               Object {
                 "aria-labelledby": "Input",
@@ -4450,7 +4446,7 @@ exports[`renders the MultiSelect component with no options msg snapshot test for
                   "size": "medium",
                   "variant": "outlined",
                 },
-                "htmlFor": "multi-input-label",
+                "htmlFor": "multi-input",
                 "required": false,
                 "shrink": true,
                 "size": "medium",
@@ -4477,7 +4473,7 @@ exports[`renders the MultiSelect component with no options msg snapshot test for
                 }
               }
               data-shrink={true}
-              htmlFor="multi-input-label"
+              htmlFor="multi-input"
               style={
                 Object {
                   "color": "var(--Darkgray)",
@@ -4496,7 +4492,7 @@ exports[`renders the MultiSelect component with no options msg snapshot test for
                   }
                 }
                 data-shrink={true}
-                htmlFor="multi-input-label"
+                htmlFor="multi-input"
                 ownerState={
                   Object {
                     "aria-labelledby": "Input",
@@ -4521,7 +4517,7 @@ exports[`renders the MultiSelect component with no options msg snapshot test for
                     "error": false,
                     "filled": false,
                     "focused": false,
-                    "htmlFor": "multi-input-label",
+                    "htmlFor": "multi-input",
                     "required": false,
                     "style": Object {
                       "color": "var(--Darkgray)",
@@ -4539,7 +4535,7 @@ exports[`renders the MultiSelect component with no options msg snapshot test for
                   aria-required={true}
                   className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary css-1kty9di-MuiFormLabel-root-MuiInputLabel-root"
                   data-shrink={true}
-                  htmlFor="multi-input-label"
+                  htmlFor="multi-input"
                   style={
                     Object {
                       "color": "var(--Darkgray)",
@@ -4573,7 +4569,7 @@ exports[`renders the MultiSelect component with no options msg snapshot test for
             }
           }
           hideSelectedOptions={false}
-          id="multi-input"
+          inputId="multi-input"
           isMulti={true}
           isSearchable={false}
           loadingMessage={[Function]}
@@ -4608,7 +4604,7 @@ exports[`renders the MultiSelect component with no options msg snapshot test for
             getOptionLabel={[Function]}
             getOptionValue={[Function]}
             hideSelectedOptions={false}
-            id="multi-input"
+            inputId="multi-input"
             inputValue=""
             isDisabled={false}
             isLoading={false}
@@ -4649,7 +4645,7 @@ exports[`renders the MultiSelect component with no options msg snapshot test for
               hasValue={false}
               innerProps={
                 Object {
-                  "id": "multi-input",
+                  "id": undefined,
                   "onKeyDown": [Function],
                 }
               }
@@ -4683,7 +4679,7 @@ exports[`renders the MultiSelect component with no options msg snapshot test for
                   "getOptionLabel": [Function],
                   "getOptionValue": [Function],
                   "hideSelectedOptions": false,
-                  "id": "multi-input",
+                  "inputId": "multi-input",
                   "inputValue": "",
                   "isDisabled": false,
                   "isLoading": false,
@@ -4762,12 +4758,10 @@ exports[`renders the MultiSelect component with no options msg snapshot test for
                     "position": "relative",
                   }
                 }
-                id="multi-input"
                 onKeyDown={[Function]}
               >
                 <div
                   className="multi-select-container css-b62m3t-container"
-                  id="multi-input"
                   onKeyDown={[Function]}
                 >
                   <LiveRegion
@@ -4809,7 +4803,7 @@ exports[`renders the MultiSelect component with no options msg snapshot test for
                         "getOptionLabel": [Function],
                         "getOptionValue": [Function],
                         "hideSelectedOptions": false,
-                        "id": "multi-input",
+                        "inputId": "multi-input",
                         "inputValue": "",
                         "isDisabled": false,
                         "isLoading": false,
@@ -4971,7 +4965,7 @@ exports[`renders the MultiSelect component with no options msg snapshot test for
                         "getOptionLabel": [Function],
                         "getOptionValue": [Function],
                         "hideSelectedOptions": false,
-                        "id": "multi-input",
+                        "inputId": "multi-input",
                         "inputValue": "",
                         "isDisabled": false,
                         "isLoading": false,
@@ -5108,7 +5102,7 @@ exports[`renders the MultiSelect component with no options msg snapshot test for
                               "getOptionLabel": [Function],
                               "getOptionValue": [Function],
                               "hideSelectedOptions": false,
-                              "id": "multi-input",
+                              "inputId": "multi-input",
                               "inputValue": "",
                               "isDisabled": false,
                               "isLoading": false,
@@ -5237,7 +5231,7 @@ exports[`renders the MultiSelect component with no options msg snapshot test for
                                     "getOptionLabel": [Function],
                                     "getOptionValue": [Function],
                                     "hideSelectedOptions": false,
-                                    "id": "multi-input",
+                                    "inputId": "multi-input",
                                     "inputValue": "",
                                     "isDisabled": false,
                                     "isLoading": false,
@@ -5336,7 +5330,7 @@ exports[`renders the MultiSelect component with no options msg snapshot test for
                                 aria-owns="react-select-3-listbox"
                                 aria-readonly={true}
                                 disabled={false}
-                                id="react-select-3-input"
+                                id="multi-input"
                                 innerRef={[Function]}
                                 inputMode="none"
                                 onBlur={[Function]}
@@ -5366,7 +5360,7 @@ exports[`renders the MultiSelect component with no options msg snapshot test for
                                     }
                                   }
                                   disabled={false}
-                                  id="react-select-3-input"
+                                  id="multi-input"
                                   inputMode="none"
                                   onBlur={[Function]}
                                   onChange={[Function]}
@@ -5385,7 +5379,7 @@ exports[`renders the MultiSelect component with no options msg snapshot test for
                                     aria-readonly={true}
                                     className="css-mohuvp-dummyInput-DummyInput"
                                     disabled={false}
-                                    id="react-select-3-input"
+                                    id="multi-input"
                                     inputMode="none"
                                     onBlur={[Function]}
                                     onChange={[Function]}
@@ -5434,7 +5428,7 @@ exports[`renders the MultiSelect component with no options msg snapshot test for
                               "getOptionLabel": [Function],
                               "getOptionValue": [Function],
                               "hideSelectedOptions": false,
-                              "id": "multi-input",
+                              "inputId": "multi-input",
                               "inputValue": "",
                               "isDisabled": false,
                               "isLoading": false,
@@ -5553,7 +5547,7 @@ exports[`renders the MultiSelect component with no options msg snapshot test for
                                     "getOptionLabel": [Function],
                                     "getOptionValue": [Function],
                                     "hideSelectedOptions": false,
-                                    "id": "multi-input",
+                                    "inputId": "multi-input",
                                     "inputValue": "",
                                     "isDisabled": false,
                                     "isLoading": false,
@@ -5662,7 +5656,7 @@ exports[`renders the MultiSelect component with no options msg snapshot test for
                                     "getOptionLabel": [Function],
                                     "getOptionValue": [Function],
                                     "hideSelectedOptions": false,
-                                    "id": "multi-input",
+                                    "inputId": "multi-input",
                                     "inputValue": "",
                                     "isDisabled": false,
                                     "isLoading": false,
@@ -5771,7 +5765,7 @@ exports[`renders the MultiSelect component with no options msg snapshot test for
                                       "getOptionLabel": [Function],
                                       "getOptionValue": [Function],
                                       "hideSelectedOptions": false,
-                                      "id": "multi-input",
+                                      "inputId": "multi-input",
                                       "inputValue": "",
                                       "isDisabled": false,
                                       "isLoading": false,
@@ -5929,7 +5923,7 @@ exports[`renders the MultiSelect component with no options msg snapshot test for
                         "getOptionLabel": [Function],
                         "getOptionValue": [Function],
                         "hideSelectedOptions": false,
-                        "id": "multi-input",
+                        "inputId": "multi-input",
                         "inputValue": "",
                         "isDisabled": false,
                         "isLoading": false,
@@ -6044,7 +6038,7 @@ exports[`renders the MultiSelect component with no options msg snapshot test for
                           "getOptionLabel": [Function],
                           "getOptionValue": [Function],
                           "hideSelectedOptions": false,
-                          "id": "multi-input",
+                          "inputId": "multi-input",
                           "inputValue": "",
                           "isDisabled": false,
                           "isLoading": false,
@@ -6180,7 +6174,7 @@ exports[`renders the MultiSelect component with no options msg snapshot test for
                                   "getOptionLabel": [Function],
                                   "getOptionValue": [Function],
                                   "hideSelectedOptions": false,
-                                  "id": "multi-input",
+                                  "inputId": "multi-input",
                                   "inputValue": "",
                                   "isDisabled": false,
                                   "isLoading": false,
@@ -6299,7 +6293,7 @@ exports[`renders the MultiSelect component with no options msg snapshot test for
                                         "getOptionLabel": [Function],
                                         "getOptionValue": [Function],
                                         "hideSelectedOptions": false,
-                                        "id": "multi-input",
+                                        "inputId": "multi-input",
                                         "inputValue": "",
                                         "isDisabled": false,
                                         "isLoading": false,
@@ -6412,7 +6406,7 @@ exports[`renders the MultiSelect component with required prop snapshot test for 
     <ForwardRef(InputLabel)
       aria-labelledby="Input"
       aria-required={true}
-      htmlFor="multi-input-label"
+      htmlFor="multi-input"
       shrink={true}
       style={
         Object {
@@ -6443,7 +6437,7 @@ exports[`renders the MultiSelect component with required prop snapshot test for 
         }
       }
       hideSelectedOptions={false}
-      id="multi-input"
+      inputId="multi-input"
       isMulti={true}
       isSearchable={false}
       loadingMessage={[Function]}
@@ -6491,7 +6485,7 @@ exports[`renders the MultiSelect component with values snapshot test for the Mul
     <ForwardRef(InputLabel)
       aria-labelledby="Input"
       aria-required={false}
-      htmlFor="multi-input-label"
+      htmlFor="multi-input"
       shrink={true}
       style={
         Object {
@@ -6517,7 +6511,7 @@ exports[`renders the MultiSelect component with values snapshot test for the Mul
         }
       }
       hideSelectedOptions={false}
-      id="multi-input"
+      inputId="multi-input"
       isMulti={true}
       isSearchable={false}
       loadingMessage={[Function]}

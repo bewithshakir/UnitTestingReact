@@ -162,9 +162,15 @@
     }
   },
   "dsp": {
-    "search": "Search",
+    "search": "DSP Name",
+    "results found": "results found",
+    "result(s) found": "result(s) found",
     "filterHeader": "Filters",
-    "nodataMsg": "Add DSP by clicking on add DSP or any related sentence."
+    "nodataMsg": "Add DSP by clicking on add DSP or any related sentence.",
+    "sortBy": {
+      "dspname_atoz": "DSP Name A-Z",
+      "dspname_ztoa": "DSP Name Z-A"
+    }
   },
   "addDSP": {
     "title": "Add DSP",
@@ -447,6 +453,11 @@
       "city": "City"
     }
   },
+  "filterForm": {
+    "state": "State",
+    "city": "City",
+    "zip": "Zip"
+  },
   "addTruckFormLabels": {
     "addTruckTitle": "Add Truck",
     "truckName": "TRUCK NAME",
@@ -469,6 +480,6 @@
     "sortBy": {
       "truckname_atoz": "Truck Name A-Z",
       "truckname_ztoa": "Truck Name Z-A"
-    } 
+    }
   }
 }

@@ -859,6 +859,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                       <GridComponent
                         enableRowAction={true}
                         enableRowSelection={true}
+                        filterData={Object {}}
                         getPages={[Function]}
                         header={
                           Array [
@@ -3936,6 +3937,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                           <GridComponent
                             enableRowAction={true}
                             enableRowSelection={true}
+                            filterData={Object {}}
                             getPages={[Function]}
                             header={
                               Array [
@@ -4155,6 +4157,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                       <GridComponent
                         enableRowAction={true}
                         enableRowSelection={true}
+                        filterData={Object {}}
                         getPages={[Function]}
                         header={
                           Array [
@@ -4386,6 +4389,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                   <EnhancedGridBody
                                     enableRowAction={true}
                                     enableRowSelection={true}
+                                    filterData={Object {}}
                                     getPages={[Function]}
                                     handleCheckChange={[Function]}
                                     headCells={
@@ -4721,6 +4725,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                         <EnhancedGridBody
                                           enableRowAction={true}
                                           enableRowSelection={true}
+                                          filterData={Object {}}
                                           getPages={[Function]}
                                           handleCheckChange={[Function]}
                                           headCells={
@@ -5805,6 +5810,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                     <EnhancedGridBody
                                       enableRowAction={true}
                                       enableRowSelection={true}
+                                      filterData={Object {}}
                                       getPages={[Function]}
                                       handleCheckChange={[Function]}
                                       headCells={

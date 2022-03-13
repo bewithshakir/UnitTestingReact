@@ -60,15 +60,15 @@ const TruckParkingLot: React.FC<ContentProps> = () => {
     const onSortBySlected = (value: string) => {
         let sortOrder;
         switch (value) {
-          case t('truck.sortBy.atoz'):
-            sortOrder = { sortBy: "parkingLocationNm", order: "asc" };
-            break;
-          case t('truck.sortBy.ztoa'):
-            sortOrder = { sortBy: "parkingLocationNm", order: "desc" };
-            break;
-          default:
-            sortOrder = { sortBy: "", order: "" };
-            break;
+            case t('truck.sortBy.atoz'):
+                sortOrder = { sortBy: "parkingLocationNm", order: "asc" };
+                break;
+            case t('truck.sortBy.ztoa'):
+                sortOrder = { sortBy: "parkingLocationNm", order: "desc" };
+                break;
+            default:
+                sortOrder = { sortBy: "", order: "" };
+                break;
         }
         setResetTableCollaps(true);
         setSortOrder(sortOrder);
@@ -188,6 +188,7 @@ const TruckParkingLot: React.FC<ContentProps> = () => {
                         onRowActionSelect={handleRowAction}
                         rowActionOptions={rowActionOptions}
                         searchTerm={searchTerm}
+                        filterData={filterData}
                         resetCollaps={resetTableCollaps}
                         onResetTableCollaps={setResetTableCollaps}
                         noDataMsg='Add Truck parking lot by clicking on the "Add Truck Parking Lot" button.'
