@@ -11,6 +11,7 @@ import { useGetServedCities, useGetSupplierBrandProducts } from "./queries";
 type Props = {
     isDisabled: boolean,
     formik: any,
+    editMode: boolean,
     setSupplierPrice: (value: any) => any,
     isSaveCancelShown: boolean,
     productId?:string
