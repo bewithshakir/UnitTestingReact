@@ -95,7 +95,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
             if (data?.data) {
                 const lotProduct = data.data;
                 setApplicableProductId(lotProduct?.applicableProductId);
-                const obj: productFormFields =  {
+                const obj: productFormFields = {
                     productType: initialFormikValues.productType,
                     masterProductName: initialFormikValues.masterProductName,
                     pricingModel: initialFormikValues.pricingModel,
@@ -104,18 +104,18 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                     addedPriceAmt: lotProduct.addedPriceAmt ? lotProduct.addedPriceAmt : 0,
                     discountPriceAmt: lotProduct.discountPriceAmt ? lotProduct.discountPriceAmt : 0,
                 };
-               
+
                 if (formik.values.pricingModel?.label.toLowerCase() === 'opis rack') {
-                    obj.cityId =  formik.values.cityId;
-                    obj.city =  formik.values.city;
-                    obj.state =   formik.values.state;
-                    obj.supplier =  formik.values.supplier;
-                    obj.branded =   formik.values.branded;
-                    obj.actualProduct =    formik.values.actualProduct;
+                    obj.cityId = formik.values.cityId;
+                    obj.city = formik.values.city;
+                    obj.state = formik.values.state;
+                    obj.supplier = formik.values.supplier;
+                    obj.branded = formik.values.branded;
+                    obj.actualProduct = formik.values.actualProduct;
                     obj.taxExemption = formik.values.taxExemption;
-                    obj.supplierPrice =  formik.values.supplierPrice;
+                    obj.supplierPrice = formik.values.supplierPrice;
                     obj.manualPriceAmt = formik.values.manualPriceAmt;
-                    obj.opisName =  formik.values.opisName;
+                    obj.opisName = formik.values.opisName;
 
                 }
                 setInitialFormikValues(obj);
@@ -189,7 +189,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
         return (!formik.isValid || !formik.dirty) || formik.isSubmitting;
     };
     const disableCancelBtn = () => {
-        return !editMode ;
+        return !editMode;
     };
 
     const handleFormDataChange = () => {
@@ -223,8 +223,8 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
             };
 
             if (form.pricingModel?.label.toLowerCase() === 'opis rack') {
-                payloadObj.pricingCityId = supplierPriceRowObj?.cityId ? supplierPriceRowObj?.cityId : formik.values.cityId ;
-                payloadObj.pricingProductKey = supplierPriceRowObj?.productKey ? supplierPriceRowObj?.productKey :  getProductKey;
+                payloadObj.pricingCityId = supplierPriceRowObj?.cityId ? supplierPriceRowObj?.cityId : formik.values.cityId;
+                payloadObj.pricingProductKey = supplierPriceRowObj?.productKey ? supplierPriceRowObj?.productKey : getProductKey;
                 if (form.taxExemption && form.taxExemption.length > 0) {
                     payloadObj.taxExemption = [...form.taxExemption];
                 }
@@ -253,15 +253,15 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                     addedPriceAmt: lotProduct.addedPriceAmt ? lotProduct.addedPriceAmt : 0,
                     discountPriceAmt: lotProduct.discountPriceAmt ? lotProduct.discountPriceAmt : 0,
                 };
-                if(lotProduct?.pricingModel?.pricingModelNm?.toLowerCase() === 'opis rack'){
-                    obj.cityId =  lotProduct?.opisRackInfo?.cityId;
-                    // obj.city =  [{ label: lotProduct?.opisRackInfo?.supplier, value: lotProduct?.opisRackInfo?.supplier }];
-                    obj.state =   lotProduct?.opisRackInfo?.state;
-                    obj.supplier =   [{ label: lotProduct?.opisRackInfo?.supplier, value: lotProduct?.opisRackInfo?.supplier }];
-                    obj.branded =   [{ label: lotProduct?.opisRackInfo?.brand, value: lotProduct?.opisRackInfo?.brand }];
-                    obj.actualProduct =   [{ label: lotProduct?.opisRackInfo?.actualProduct, value: lotProduct?.opisRackInfo?.actualProduct }];
+                if (lotProduct?.pricingModel?.pricingModelNm?.toLowerCase() === 'opis rack') {
+                    obj.cityId = lotProduct?.opisRackInfo?.cityId;
+                    // obj.city =   [{ label: lotProduct?.opisRackInfo?.supplier, value: lotProduct?.opisRackInfo?.supplier }];
+                    obj.state = lotProduct?.opisRackInfo?.state;
+                    obj.supplier = [{ label: lotProduct?.opisRackInfo?.supplier, value: lotProduct?.opisRackInfo?.supplier }];
+                    obj.branded = [{ label: lotProduct?.opisRackInfo?.brand, value: lotProduct?.opisRackInfo?.brand }];
+                    obj.actualProduct = [{ label: lotProduct?.opisRackInfo?.actualProduct, value: lotProduct?.opisRackInfo?.actualProduct }];
                     obj.taxExemption = JSON.parse(JSON.stringify(lotProduct?.opisRackInfo?.taxExemption));
-                    obj.supplierPrice =  truncateDecimals((lotProduct?.opisRackInfo?.grossPrice * .01), 4);
+                    obj.supplierPrice = truncateDecimals((lotProduct?.opisRackInfo?.grossPrice * .01), 4);
                     obj.manualPriceAmt = truncateDecimals((lotProduct?.opisRackInfo?.grossPrice * .01), 4);
                     obj.opisName = lotProduct?.opisRackInfo?.opisProductName;
                     saveGetProductKey(lotProduct?.opisRackInfo?.productKey);
@@ -374,21 +374,21 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                     className="productContainer">
                     <Grid item container lg={12} md={12} sm={12} xs={12}>
                         <>
-                           
-                                <Grid item lg={12} md={6} sm={8} xs={8} mx={4} my={1} >
+
+                            <Grid item lg={12} md={6} sm={8} xs={8} mx={4} my={1} >
                                 <b>{t("addProductFormLabels.addproductactiontext")}</b>
-                                </Grid>
-                                 
+                            </Grid>
+
                             <Grid item lg={12} md={6} sm={8} xs={8} mx={4} my={1} mb={3} >
                                 <Typography color="#000000DE" variant="h5" px={1} pt={1} pb={1} pl={2} className="opis-rack-info-text">
                                     {t("addProductFormLabels.addproductopistext")}
                                 </Typography>
                             </Grid>
-                                </>
+                        </>
                         {!isHiddenAddEditRow && (
-                                <>
+                            <>
                                 <Grid item lg={6} md={6} sm={8} xs={8} mx={4} my={1} >
-                                    
+
                                 </Grid>
 
                                 <Grid item lg={4} md={6} sm={8} xs={8} mx={4} my={1} >
@@ -414,8 +414,8 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                                     </Button>
 
                                 </Grid>
-                                </>
-                           
+                            </>
+
                         )}
 
                         <Grid item md={12} mx={4} >
@@ -543,7 +543,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                             </>
                         )}
                         {(formik.values?.pricingModel?.label?.toLowerCase() === 'opis rack') && !fuelTaxError && formik.values?.masterProductName?.label &&
-                            <OpisRackSegment isDisabled={isDisabled} isSaveCancelShown={isSaveCancelShown} formik={formik} editMode={editMode} fetchTaxList={fetchTaxList} showFuelTaxError={showFuelTaxError} setFetchTaxList={setFetchTaxList} setSupplierPrice={setSupplierPriceRowObj} productId={productId}  />
+                            <OpisRackSegment isDisabled={isDisabled} isSaveCancelShown={isSaveCancelShown} formik={formik} editMode={editMode} fetchTaxList={fetchTaxList} showFuelTaxError={showFuelTaxError} setFetchTaxList={setFetchTaxList} setSupplierPrice={setSupplierPriceRowObj} productId={productId} />
                         }
                         {(formik.values?.pricingModel?.label?.toLowerCase() === 'opis rack') && fuelTaxError &&
                             <Grid item lg={12} md={12} sm={12} xs={12} mx={4}>

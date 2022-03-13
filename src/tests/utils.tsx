@@ -24,7 +24,7 @@ import { rightInfoFilterHandler } from '../components/UIComponents/RightInfoPane
 // import { getDspDataHandler } from '../pages/DspLanding/mockApi/handlerDSPData';
 
 export const handlers = [
-    
+
     getProductTypesDropdownHandler(),
     productTypesHandler(),
     productColorsHandler(),
@@ -42,7 +42,7 @@ export const handlers = [
     getCustomerList(),
     addDspHandler(),
     getDspList(),
-    
+
     editDspHandler(),
     editProductHandler(),
     getFuelTaxList(),
