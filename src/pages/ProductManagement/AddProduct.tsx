@@ -91,38 +91,36 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
     };
 
     const onAddProductSuccess = (data: any) => {
-        if (editMode) {
-            if (data?.data) {
-                const lotProduct = data.data;
-                setApplicableProductId(lotProduct?.applicableProductId);
-                const obj: productFormFields = {
-                    productType: initialFormikValues.productType,
-                    masterProductName: initialFormikValues.masterProductName,
-                    pricingModel: initialFormikValues.pricingModel,
-                    productNm: lotProduct.productNm,
-                    manualPriceAmt: lotProduct.manualPriceAmt ? lotProduct.manualPriceAmt : 0,
-                    addedPriceAmt: lotProduct.addedPriceAmt ? lotProduct.addedPriceAmt : 0,
-                    discountPriceAmt: lotProduct.discountPriceAmt ? lotProduct.discountPriceAmt : 0,
-                };
+        if (editMode && data?.data) {
+            const lotProduct = data.data;
+            setApplicableProductId(lotProduct?.applicableProductId);
+            const obj: productFormFields = {
+                productType: initialFormikValues.productType,
+                masterProductName: initialFormikValues.masterProductName,
+                pricingModel: initialFormikValues.pricingModel,
+                productNm: lotProduct.productNm,
+                manualPriceAmt: lotProduct.manualPriceAmt ? lotProduct.manualPriceAmt : 0,
+                addedPriceAmt: lotProduct.addedPriceAmt ? lotProduct.addedPriceAmt : 0,
+                discountPriceAmt: lotProduct.discountPriceAmt ? lotProduct.discountPriceAmt : 0,
+            };
 
-                if (formik.values.pricingModel?.label.toLowerCase() === 'opis rack') {
-                    obj.cityId = formik.values.cityId;
-                    obj.city = formik.values.city;
-                    obj.state = formik.values.state;
-                    obj.supplier = formik.values.supplier;
-                    obj.branded = formik.values.branded;
-                    obj.actualProduct = formik.values.actualProduct;
-                    obj.taxExemption = formik.values.taxExemption;
-                    obj.supplierPrice = formik.values.supplierPrice;
-                    obj.manualPriceAmt = formik.values.manualPriceAmt;
-                    obj.opisName = formik.values.opisName;
+            if (formik.values.pricingModel?.label.toLowerCase() === 'opis rack') {
+                obj.cityId = formik.values.cityId;
+                obj.city = formik.values.city;
+                obj.state = formik.values.state;
+                obj.supplier = formik.values.supplier;
+                obj.branded = formik.values.branded;
+                obj.actualProduct = formik.values.actualProduct;
+                obj.taxExemption = formik.values.taxExemption;
+                obj.supplierPrice = formik.values.supplierPrice;
+                obj.manualPriceAmt = formik.values.manualPriceAmt;
+                obj.opisName = formik.values.opisName;
 
-                }
-                setInitialFormikValues(obj);
             }
-            setIsDisabled(true);
-            setSaveCancelShown(false);
+            setInitialFormikValues(obj);
         }
+        setIsDisabled(true);
+        setSaveCancelShown(false);
 
         hideDialogBox(false);
         setAPIResponse(true);
@@ -366,20 +364,20 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
         updateFetchTaxList(val);
     };
 
-    const getFormFieldError = (name: string) =>{
-        if((formik.touched as any)[name] && (formik.errors as any)[name]){
+    const getFormFieldError = (name: string) => {
+        if ((formik.touched as any)[name] && (formik.errors as any)[name]) {
             return true;
         }
         return false;
     };
 
-    const getFormFieldHelperText = (name: string, fieldType: string) =>{
-        if((formik.touched as any)[name] && (formik.errors as any)[name]){
-            if(fieldType === 'select'){
+    const getFormFieldHelperText = (name: string, fieldType: string) => {
+        if ((formik.touched as any)[name] && (formik.errors as any)[name]) {
+            if (fieldType === 'select') {
                 return (formik.errors as any)[name]?.value;
             }
-            if(fieldType === 'input'){
-                return (formik.errors as any)[name] ;
+            if (fieldType === 'input') {
+                return (formik.errors as any)[name];
             }
             return undefined;
         }
@@ -562,16 +560,16 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                             </>
                         )}
                         {(formik.values?.pricingModel?.label?.toLowerCase() === 'opis rack') && !fuelTaxError && formik.values?.masterProductName?.label &&
-                            <OpisRackSegment 
-                            isDisabled={isDisabled} 
-                            isSaveCancelShown={isSaveCancelShown} 
-                            formik={formik} 
-                            editMode={editMode} 
-                            fetchTaxList={fetchTaxList} 
-                            showFuelTaxError={showFuelTaxError} 
-                            setFetchTaxList={setFetchTaxList} 
-                            setSupplierPrice={setSupplierPriceRowObj} 
-                            productId={productId} />
+                            <OpisRackSegment
+                                isDisabled={isDisabled}
+                                isSaveCancelShown={isSaveCancelShown}
+                                formik={formik}
+                                editMode={editMode}
+                                fetchTaxList={fetchTaxList}
+                                showFuelTaxError={showFuelTaxError}
+                                setFetchTaxList={setFetchTaxList}
+                                setSupplierPrice={setSupplierPriceRowObj}
+                                productId={productId} />
                         }
                         {(formik.values?.pricingModel?.label?.toLowerCase() === 'opis rack') && fuelTaxError &&
                             <Grid item lg={12} md={12} sm={12} xs={12} mx={4}>
