@@ -1,5 +1,6 @@
 import { rest } from 'msw';
-
+const lotId = "d0535fcf-de9c-45ca-8a52-c2275710ae23";
+const rackUpdateTime = "27-02-2021 7:09 PM";
 export const getAllParkingLotsHandler = () => {
   return rest.get('*/api/customer-service/lots*', (req, res, ctx) => {
     return res(
@@ -13,7 +14,7 @@ export const getAllParkingLotsHandler = () => {
           },
           lots: [
             {
-              deliveryLocationId: 'd0535fcf-de9c-45ca-8a52-c2275710ae23',
+              deliveryLocationId: lotId,
               deliveryLocationNm: 'Barun Demo 5',
               lotId: '76123456',
               customerId: '167fd7be-c20e-412a-bac0-502672a055d6',
@@ -23,7 +24,7 @@ export const getAllParkingLotsHandler = () => {
               cityNm: 'Valley Stream',
               stateNm: 'NY',
               postalCd: '11581',
-              rackUpdate: '27-02-2021 7:09 PM',
+              rackUpdate: rackUpdateTime,
               walletStatus: 'Y',
               fuelStatus: [
                 {
@@ -62,7 +63,7 @@ export const getAllParkingLotsHandler = () => {
               lotId: '0786123',
               postalCd: '304803',
               primaryContactName: 'jasmin dave',
-              rackUpdate: '27-02-2021 7:09 PM',
+              rackUpdate: rackUpdateTime,
               stateNm: 'RJ',
               streetAddress: 'Rajkot,, Rajkot, India',
               vehicles: 20,
@@ -78,7 +79,7 @@ export const getAllParkingLotsHandler = () => {
               lotId: '12376542',
               postalCd: '77007',
               primaryContactName: 'Barun Sharma',
-              rackUpdate: '27-02-2021 7:09 PM',
+              rackUpdate: rackUpdateTime,
               stateNm: 'TX',
               streetAddress:
                 '111 Yale St, Washington Avenue Coalition / Memorial Park, Yale St,,  Yale St, USA',
@@ -104,7 +105,7 @@ export const getProductsForParkingLot = () => {
             lotProducts: [
               {
                 applicableProductId: 'c939d8dd-53f1-41f5-9fe6-a5dfd99ac812',
-                deliveryLocationId: 'd0535fcf-de9c-45ca-8a52-c2275710ae23',
+                deliveryLocationId: lotId,
                 productId: '0dd5f587-8c6f-40ce-9f77-1616f4b5b842',
                 productNm: 'Diesel',
                 productColor: {
@@ -130,7 +131,7 @@ export const getProductsForParkingLot = () => {
               },
               {
                 applicableProductId: '5eab3686-7ec9-4cdc-80d5-833dc080b54b',
-                deliveryLocationId: 'd0535fcf-de9c-45ca-8a52-c2275710ae23',
+                deliveryLocationId: lotId,
                 productId: '8ee38e73-f9dd-40ca-a53c-49327eab1487',
                 productNm: 'Regular1 Retail',
                 productColor: {

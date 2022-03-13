@@ -25,7 +25,6 @@ describe('load landing page', () => {
             expect(result.getByText(/Pricing/i)).toBeInTheDocument();
             expect(result.getByText(/Lot Details/i)).toBeInTheDocument();
             expect(result.getByText(/Pricing/i)).toBeInTheDocument();
-            expect(result.getByText(/Fuel prices for Retail and Rack-based products are provided by the Oil Price Information Service (OPIS) are not fixed and are subject to change daily/i)).toBeInTheDocument();
             expect(result).toHaveClass('right_info_panel_content');
             expect(result.getByText(/barunshrm@gmail.com/i)).toBeInTheDocument();
         });
