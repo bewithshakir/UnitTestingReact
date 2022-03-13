@@ -7,9 +7,27 @@ import { getAllParkingLotsHandler } from '../pages/ParkingLotsManagement/mockApi
 import { getAttachmentListHandler } from '../pages/Attachments/mockApi/AttachmentLandingPageHandler';
 import { addDspHandler, editDspHandler } from "../pages/DspLanding/AddDSP/mockApi/handlerAddDsp";
 import { getFormattedAddressHandler, getGoogleAddressHandler } from "../components/UIComponents/GoogleAddressComponent/mockApi/googleAddressAutoHandler";
-import { getProductByLotHandler, editProductHandler, getTaxExemptionsListHandler, getServedCitiesHandler, getSupplierPricesHandler, getSupplierBrandProductsHandler, getOpisRackProductDetailsHandler } from '../pages/ProductManagement/mockApi/handler';
+import { 
+    getProductByLotHandler, 
+    editProductHandler, 
+    getTaxExemptionsListHandler, 
+    getServedCitiesHandler, 
+    getSupplierPricesHandler, 
+    getSupplierBrandProductsHandler, 
+    getOpisRackProductDetailsHandler 
+} from '../pages/ProductManagement/mockApi/handler';
 import { getFuelTaxList, getFuelTaxProductsList } from '../pages/Tax/mockApi/handler';
-import { getDelFeeSchduleHandler, getProductTypeHandler, getVehicleTypeHandler, getAssetTypeHandler, getLotMasterProductNamesHandler, getLotProductNamesHandler, addFeeDetailsHandler, getFeeDetailsHandler, editFeeDetailsHandler } from '../pages/ParkingLot/FeeDetails/mockAPi/handler';
+import { 
+    getDelFeeSchduleHandler, 
+    getProductTypeHandler, 
+    getVehicleTypeHandler, 
+    getAssetTypeHandler, 
+    getLotMasterProductNamesHandler, 
+    getLotProductNamesHandler, 
+    addFeeDetailsHandler, 
+    getFeeDetailsHandler, 
+    editFeeDetailsHandler 
+} from '../pages/ParkingLot/FeeDetails/mockAPi/handler';
 import { addTruckParkingLotHandler, editTruckParkingLotHandler } from '../pages/Truck/TruckParkingLot/AddLot/mockApi/handlerAddTruckParkingLot';
 import { getProductTypesDropdownHandler } from '../pages/AddFuelTax/mockApi/handlerAddFuelTax';
 import { getTruckParkingLotList } from '../pages/Truck/TruckParkingLot/mockApi/handlerTruckParkingLot';
@@ -21,7 +39,6 @@ import { addTruckColorHandler, addTruckFuelHandler, addEditTruckHandler, useGetE
 import { getDspList } from '../pages/DspLanding/mockApi/handlerDspLanding';
 import { getCustomerList } from '../pages/CustomerManagement/mockApi/handlerCustomer';
 import { rightInfoFilterHandler } from '../components/UIComponents/RightInfoPanel/mockApi/handleRightInfoPanel';
-// import { getDspDataHandler } from '../pages/DspLanding/mockApi/handlerDSPData';
 
 export const handlers = [
 

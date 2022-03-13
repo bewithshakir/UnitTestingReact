@@ -255,7 +255,6 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                 };
                 if (lotProduct?.pricingModel?.pricingModelNm?.toLowerCase() === 'opis rack') {
                     obj.cityId = lotProduct?.opisRackInfo?.cityId;
-                    // obj.city =   [{ label: lotProduct?.opisRackInfo?.supplier, value: lotProduct?.opisRackInfo?.supplier }];
                     obj.state = lotProduct?.opisRackInfo?.state;
                     obj.supplier = [{ label: lotProduct?.opisRackInfo?.supplier, value: lotProduct?.opisRackInfo?.supplier }];
                     obj.branded = [{ label: lotProduct?.opisRackInfo?.brand, value: lotProduct?.opisRackInfo?.brand }];
@@ -543,7 +542,16 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                             </>
                         )}
                         {(formik.values?.pricingModel?.label?.toLowerCase() === 'opis rack') && !fuelTaxError && formik.values?.masterProductName?.label &&
-                            <OpisRackSegment isDisabled={isDisabled} isSaveCancelShown={isSaveCancelShown} formik={formik} editMode={editMode} fetchTaxList={fetchTaxList} showFuelTaxError={showFuelTaxError} setFetchTaxList={setFetchTaxList} setSupplierPrice={setSupplierPriceRowObj} productId={productId} />
+                            <OpisRackSegment 
+                            isDisabled={isDisabled} 
+                            isSaveCancelShown={isSaveCancelShown} 
+                            formik={formik} 
+                            editMode={editMode} 
+                            fetchTaxList={fetchTaxList} 
+                            showFuelTaxError={showFuelTaxError} 
+                            setFetchTaxList={setFetchTaxList} 
+                            setSupplierPrice={setSupplierPriceRowObj} 
+                            productId={productId} />
                         }
                         {(formik.values?.pricingModel?.label?.toLowerCase() === 'opis rack') && fuelTaxError &&
                             <Grid item lg={12} md={12} sm={12} xs={12} mx={4}>

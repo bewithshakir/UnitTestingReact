@@ -20,8 +20,9 @@ jest.mock("react-router-dom", () => ({
 }));
 
 describe('Rendering of Search in Parking Lot Content Component', () => {
-    const component = shallow(<QueryClientProvider client={queryCl}><ProductManagement /></QueryClientProvider>);
+  
     it('Parking Lot Content component Snapshot testing when', () => {
+        const component = shallow(<QueryClientProvider client={queryCl}><ProductManagement /></QueryClientProvider>);
         expect(component).toBeDefined();
         expect(component).toMatchSnapshot();
     });
@@ -46,14 +47,12 @@ function getAllElements (component: any) {
     const saveBtn = component.container.querySelector('#save-btn');
     const cancelBtn = component.container.querySelector('#cancel-btn');
     const formElem = component.container.querySelector('.saveProductFrom');
-    // const opisRackTableCell = component.container.querySelector('.saveProductFrom');
     const citySelectOPISRack = component.container.querySelector('#city') as HTMLInputElement;
     const stateInputOPISRack = component.container.querySelector('#state');
     const supplierSelectOPISRack = component.container.querySelector('#supplier') as HTMLInputElement;
     const brandedSelectOPISRack = component.container.querySelector('#branded') as HTMLInputElement;
     const cityIdInputOPISRack = component.container.querySelector('#cityId');
     const actualProductSelectOPISRack = component.container.querySelector('#actualProduct') as HTMLInputElement;
-    // const supplierPriceOPISRack = component.container.querySelector('#opisName';
     const opisNameOPISRack = component.container.querySelector('#opisName');
     const productNameOPISRack = component.container.querySelector('#productNm');
     const manualPriceAmtOPISRack = component.container.querySelector('#manualPriceAmt');
@@ -100,7 +99,7 @@ describe('product landing page', () => {
 describe('search product name in product list', () => {
     it('load data in product table', async () => {
         const result = renderWithClient(<ProductManagement />);
-        await act(() => {
+        act(() => {
             const { searchBox } = getAllElements(result);
             userEvent.type(searchBox, 'Product1');
         });
@@ -121,7 +120,7 @@ describe('search product name in product list', () => {
         );
         const result = renderWithClient(<ProductManagement />);
 
-        await act(() => {
+        act(() => {
             const { searchBox } = getAllElements(result);
             userEvent.type(searchBox, 'ABC');
         });
@@ -141,7 +140,7 @@ describe('on click of opis rack product opis rack form visible', () => {
             expect(result.getByText(/Product1/i)).toBeInTheDocument();
         });
 
-        await act(() => {
+        act(() => {
             const cell = result.getByText(/Product1/i);
             userEvent.click(cell);
         });
