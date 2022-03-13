@@ -47,16 +47,14 @@ export default function OpisRackCity({ isDisabled, formik, setSupplierPrice, isS
     const [resetSupplierValue, setResetSupplierValue] = useState<number | null>(null);
 
     const { data: servedCities } = useGetServedCities();
-    const { data: spplierBrandProducts } = useGetSupplierBrandProducts(formik?.values?.city?.cityId ? formik?.values?.city?.cityId :'');
+    const { data: spplierBrandProducts } = useGetSupplierBrandProducts(formik?.values?.city?.cityId || '');
 
     useEffect(() => {
         setSuppliers(getOptions(spplierBrandProducts?.data?.supplier));
         setbrandedList(getOptions(spplierBrandProducts?.data?.brand));
         setActualProductList(getOptions(spplierBrandProducts?.data?.actualProduct));
-        if(!isSaveCancelShown){
-            if(isDisabled){
-                formik.setFieldValue('city',viewProductCity);
-            }
+        if(!isSaveCancelShown && isDisabled){
+            formik.setFieldValue('city',viewProductCity);
         }
     }, [spplierBrandProducts]);
 
@@ -82,10 +80,7 @@ export default function OpisRackCity({ isDisabled, formik, setSupplierPrice, isS
     }, [cities]);
 
     useEffect(() => {
-        if(productId){
-            return;
-        }
-        setCityState();
+        if(productId) setCityState();
     }, [productId]);
 
 
