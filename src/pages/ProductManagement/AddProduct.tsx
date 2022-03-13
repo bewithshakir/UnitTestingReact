@@ -366,6 +366,26 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
         updateFetchTaxList(val);
     };
 
+    const getFormFieldError = (name: string) =>{
+        if((formik.touched as any)[name] && (formik.errors as any)[name]){
+            return true;
+        }
+        return false;
+    };
+
+    const getFormFieldHelperText = (name: string, fieldType: string) =>{
+        if((formik.touched as any)[name] && (formik.errors as any)[name]){
+            if(fieldType === 'select'){
+                return (formik.errors as any)[name]?.value;
+            }
+            if(fieldType === 'input'){
+                return (formik.errors as any)[name] ;
+            }
+            return undefined;
+        }
+        return undefined;
+    };
+
     return (
         <FormikProvider value={formik}>
             <form onSubmit={formik.handleSubmit} className="productForm" id='saveProductFrom' onBlur={handleFormDataChange}>
@@ -428,8 +448,8 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                                 value={formik.values.productType}
                                 placeholder='Select one'
                                 items={productTypes}
-                                helperText={(formik.touched.productType && formik.errors.productType) ? formik.errors.productType.value : undefined}
-                                error={(formik.touched.productType && formik.errors.productType) ? true : false}
+                                helperText={getFormFieldHelperText('productType', 'select')}
+                                error={getFormFieldError('productType')}
                                 onChange={handleProductTypeChange}
                                 onBlur={() => { formik.setFieldTouched("productType"); formik.validateField("productType"); }}
                                 required
@@ -444,8 +464,8 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                                 value={formik.values.masterProductName}
                                 placeholder='Select Master Product Name'
                                 items={productNames}
-                                helperText={(formik.touched.masterProductName && formik.errors.masterProductName) ? formik.errors.masterProductName.value : undefined}
-                                error={(formik.touched.masterProductName && formik.errors.masterProductName) ? true : false}
+                                helperText={getFormFieldHelperText('masterProductName', 'select')}
+                                error={getFormFieldError('masterProductName')}
                                 onChange={handleMasterProductNameChange}
                                 onBlur={() => { formik.setFieldTouched("masterProductName"); formik.validateField("masterProductName"); }}
                                 required
@@ -460,8 +480,8 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                                 value={formik.values.pricingModel}
                                 placeholder='Select one'
                                 items={pricingModelOptions}
-                                helperText={(formik.touched.pricingModel && formik.errors.pricingModel) ? formik.errors.pricingModel.value : undefined}
-                                error={(formik.touched.pricingModel && formik.errors.pricingModel) ? true : false}
+                                helperText={getFormFieldHelperText('pricingModel', 'select')}
+                                error={getFormFieldError('pricingModel')}
                                 onChange={handlePricingModelChange}
                                 onBlur={() => { formik.setFieldTouched("pricingModel"); formik.validateField("pricingModel"); }}
                                 required
@@ -479,8 +499,8 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                                         label={t("addProductFormLabels.productnamelabel")}
                                         type='text'
                                         placeholder='Enter Product Name'
-                                        helperText={(formik.touched.productNm && formik.errors.productNm) ? formik.errors.productNm : undefined}
-                                        error={(formik.touched.productNm && formik.errors.productNm) ? true : false}
+                                        helperText={getFormFieldHelperText('productNm', 'input')}
+                                        error={getFormFieldError('productNm')}
                                         description=''
                                         required
                                         {...formik.getFieldProps('productNm')}
@@ -495,8 +515,8 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                                         id='manualPriceAmt'
                                         label={t("addProductFormLabels.pricelabel")}
                                         type='text'
-                                        helperText={(formik.touched.manualPriceAmt && formik.errors.manualPriceAmt) ? formik.errors.manualPriceAmt : undefined}
-                                        error={(formik.touched.manualPriceAmt && formik.errors.manualPriceAmt) ? true : false}
+                                        helperText={getFormFieldHelperText('manualPriceAmt', 'input')}
+                                        error={getFormFieldError('manualPriceAmt')}
                                         description=''
                                         required
                                         {...formik.getFieldProps('manualPriceAmt')}
@@ -510,8 +530,8 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                                         id='addedPriceAmt'
                                         label={t("addProductFormLabels.adderlabel")}
                                         type='text'
-                                        helperText={(formik.touched.addedPriceAmt && formik.errors.addedPriceAmt) ? formik.errors.addedPriceAmt : undefined}
-                                        error={(formik.touched.addedPriceAmt && formik.errors.addedPriceAmt) ? true : false}
+                                        helperText={getFormFieldHelperText('addedPriceAmt', 'input')}
+                                        error={getFormFieldError('addedPriceAmt')}
                                         description=''
                                         {...formik.getFieldProps('addedPriceAmt')}
                                         disabled={isDisabled}
@@ -522,8 +542,8 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                                         id='discountPriceAmt'
                                         label={t("addProductFormLabels.discountlabel")}
                                         type='text'
-                                        helperText={(formik.touched.discountPriceAmt && formik.errors.discountPriceAmt) ? formik.errors.discountPriceAmt : undefined}
-                                        error={(formik.touched.discountPriceAmt && formik.errors.discountPriceAmt) ? true : false}
+                                        helperText={getFormFieldHelperText('discountPriceAmt', 'input')}
+                                        error={getFormFieldError('discountPriceAmt')}
                                         description=''
                                         {...formik.getFieldProps('discountPriceAmt')}
                                         disabled={isDisabled}
