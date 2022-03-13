@@ -36,11 +36,8 @@ export default function InfoViewUI({ lotData, rowLotId }: props) {
             createLotInfoObj(productDataObj);
         }
     };
-    const onGetProductError = (err: any) => {
-        console.warn(err);
-    };
 
-    useGetProductsByLotId(rowLotId, onGetProductSuccess, onGetProductError);
+    useGetProductsByLotId(rowLotId, onGetProductSuccess);
 
     const createLotInfoObj = (productData: any) => {
         const dataObj: any = {

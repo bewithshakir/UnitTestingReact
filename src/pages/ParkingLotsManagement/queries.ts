@@ -76,15 +76,13 @@ const getProductsByLotId = async (lotId: string) => {
 
 export const useGetProductsByLotId = (
   lotId: string,
-  onSuccess: any,
-  onError: any
+  onSuccess: any
 ) => {
   return useQuery(
-    ['getLotProductDetails', lotId, onSuccess, onError],
+    ['getLotProductDetails', lotId, onSuccess],
     () => getProductsByLotId(lotId),
     {
       onSuccess,
-      onError,
       retry: false,
     }
   );
