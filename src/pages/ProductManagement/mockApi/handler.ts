@@ -1,5 +1,12 @@
 import { rest } from "msw";
 
+const produtIconName = 'Parrot Green';
+const productIconCd = 'cdc00914-dbef-4603-89c5-9f18e4af3ccc';
+const productId = '684c58ab-d23c-4591-b9fd-41296c7a394e';
+const pricingModelNm = "OPIS Retail"
+const pricingModelCd = "945d3d8b-57bb-42c8-88a5-2dae9cd230f0";
+const lotId = "fe193659-fa71-481c-b30f-4d6c82b25e5b"
+
 export const getProductByLotHandler = () => {
     return rest.get('*/api/customer-service/lots/*/products*', (req, res, ctx) => {
         return res(
@@ -14,7 +21,7 @@ export const getProductByLotHandler = () => {
                 "lotProducts": [
                   {
                     "applicableProductId": "155f1447-23d4-4e1f-a3de-1fdd30170083",
-                    "deliveryLocationId": "fe193659-fa71-481c-b30f-4d6c82b25e5b",
+                    "deliveryLocationId": lotId,
                     "productId": "9fa85e21-fab8-48d2-af36-85c7686e7666",
                     "productNm": "1 Purple Product Retail",
                     "productColor": {
@@ -24,8 +31,8 @@ export const getProductByLotHandler = () => {
                       "activeInactiveInd": "Y"
                     },
                     "pricingModel": {
-                      "pricingModelCd": "945d3d8b-57bb-42c8-88a5-2dae9cd230f0",
-                      "pricingModelNm": "OPIS Retail",
+                      "pricingModelCd": pricingModelCd,
+                      "pricingModelNm": pricingModelNm,
                       "countryCd": "us",
                       "activeInactiveIndicator": "Y"
                     },
@@ -35,18 +42,18 @@ export const getProductByLotHandler = () => {
                   },
                   {
                     "applicableProductId": "75593724-17ae-4fa2-876b-4dfb4e82c9b6",
-                    "deliveryLocationId": "fe193659-fa71-481c-b30f-4d6c82b25e5b",
-                    "productId": "684c58ab-d23c-4591-b9fd-41296c7a394e",
+                    "deliveryLocationId": lotId,
+                    "productId": productId,
                     "productNm": "Diesel Retail",
                     "productColor": {
-                      "productIconCd": "cdc00914-dbef-4603-89c5-9f18e4af3ccc",
-                      "productIconNm": "Parrot Green",
+                      "productIconCd": productIconCd,
+                      "productIconNm": produtIconName,
                       "productIconHexCode": "#BED50F",
                       "activeInactiveInd": "Y"
                     },
                     "pricingModel": {
-                      "pricingModelCd": "945d3d8b-57bb-42c8-88a5-2dae9cd230f0",
-                      "pricingModelNm": "OPIS Retail",
+                      "pricingModelCd": pricingModelCd,
+                      "pricingModelNm": pricingModelNm,
                       "countryCd": "us",
                       "activeInactiveIndicator": "Y"
                     },
@@ -56,7 +63,7 @@ export const getProductByLotHandler = () => {
                   },
                   {
                     "applicableProductId": "480bb3a3-7475-448d-89ad-0eeabaa80a0d",
-                    "deliveryLocationId": "fe193659-fa71-481c-b30f-4d6c82b25e5b",
+                    "deliveryLocationId": lotId,
                     "productId": "21f72366-d691-4a5e-b6b7-44089d699f5a",
                     "productNm": "Prod one Retail",
                     "productColor": {
@@ -66,8 +73,8 @@ export const getProductByLotHandler = () => {
                       "activeInactiveInd": "Y"
                     },
                     "pricingModel": {
-                      "pricingModelCd": "945d3d8b-57bb-42c8-88a5-2dae9cd230f0",
-                      "pricingModelNm": "OPIS Retail",
+                      "pricingModelCd": pricingModelCd,
+                      "pricingModelNm": pricingModelNm,
                       "countryCd": "us",
                       "activeInactiveIndicator": "Y"
                     },
@@ -77,12 +84,12 @@ export const getProductByLotHandler = () => {
                   },
                   {
                     "applicableProductId": "6ed4ff41-9f3c-4260-83f4-8709c0949068",
-                    "deliveryLocationId": "fe193659-fa71-481c-b30f-4d6c82b25e5b",
-                    "productId": "684c58ab-d23c-4591-b9fd-41296c7a394e",
+                    "deliveryLocationId": lotId,
+                    "productId": productId,
                     "productNm": "Product 1",
                     "productColor": {
-                      "productIconCd": "cdc00914-dbef-4603-89c5-9f18e4af3ccc",
-                      "productIconNm": "Parrot Green",
+                      "productIconCd": productIconCd,
+                      "productIconNm": produtIconName,
                       "productIconHexCode": "#BED50F",
                       "activeInactiveInd": "Y"
                     },
@@ -98,12 +105,12 @@ export const getProductByLotHandler = () => {
                   },
                   {
                     "applicableProductId": "f7732a85-b920-4d2c-8644-4c4ed522132d",
-                    "deliveryLocationId": "fe193659-fa71-481c-b30f-4d6c82b25e5b",
-                    "productId": "684c58ab-d23c-4591-b9fd-41296c7a394e",
+                    "deliveryLocationId": lotId,
+                    "productId": productId,
                     "productNm": "Product1",
                     "productColor": {
-                      "productIconCd": "cdc00914-dbef-4603-89c5-9f18e4af3ccc",
-                      "productIconNm": "Parrot Green",
+                      "productIconCd": productIconCd,
+                      "productIconNm": produtIconName,
                       "productIconHexCode": "#BED50F",
                       "activeInactiveInd": "Y"
                     },
@@ -119,7 +126,7 @@ export const getProductByLotHandler = () => {
                   },
                   {
                     "applicableProductId": "b0170ed7-0fb3-4b3d-9e48-3f87715b84af",
-                    "deliveryLocationId": "fe193659-fa71-481c-b30f-4d6c82b25e5b",
+                    "deliveryLocationId": lotId,
                     "productId": "8ee38e73-f9dd-40ca-a53c-49327eab1487",
                     "productNm": "Regular Retail",
                     "productColor": {
@@ -129,8 +136,8 @@ export const getProductByLotHandler = () => {
                       "activeInactiveInd": "Y"
                     },
                     "pricingModel": {
-                      "pricingModelCd": "945d3d8b-57bb-42c8-88a5-2dae9cd230f0",
-                      "pricingModelNm": "OPIS Retail",
+                      "pricingModelCd": pricingModelCd,
+                      "pricingModelNm": pricingModelNm,
                       "countryCd": "us",
                       "activeInactiveIndicator": "Y"
                     },
@@ -140,7 +147,7 @@ export const getProductByLotHandler = () => {
                   },
                   {
                     "applicableProductId": "d783d7f6-7778-4cd3-a2d6-540e33a2c57e",
-                    "deliveryLocationId": "fe193659-fa71-481c-b30f-4d6c82b25e5b",
+                    "deliveryLocationId": lotId,
                     "productId": "9986b9d3-fe75-45a4-b131-9e7e4f1ecfc9",
                     "productNm": "Test Data Model 1 Retail",
                     "productColor": {
@@ -150,8 +157,8 @@ export const getProductByLotHandler = () => {
                       "activeInactiveInd": "Y"
                     },
                     "pricingModel": {
-                      "pricingModelCd": "945d3d8b-57bb-42c8-88a5-2dae9cd230f0",
-                      "pricingModelNm": "OPIS Retail",
+                      "pricingModelCd": pricingModelCd,
+                      "pricingModelNm": pricingModelNm,
                       "countryCd": "us",
                       "activeInactiveIndicator": "Y"
                     },
@@ -161,7 +168,7 @@ export const getProductByLotHandler = () => {
                   },
                   {
                     "applicableProductId": "a7d76e92-ad4e-48d6-bdff-d2ce15113a0a",
-                    "deliveryLocationId": "fe193659-fa71-481c-b30f-4d6c82b25e5b",
+                    "deliveryLocationId": lotId,
                     "productId": "3384bfc4-3c54-45d1-928e-6ba8f584fc3d",
                     "productNm": "Test product 2 Retail",
                     "productColor": {
@@ -171,8 +178,8 @@ export const getProductByLotHandler = () => {
                       "activeInactiveInd": "Y"
                     },
                     "pricingModel": {
-                      "pricingModelCd": "945d3d8b-57bb-42c8-88a5-2dae9cd230f0",
-                      "pricingModelNm": "OPIS Retail",
+                      "pricingModelCd": pricingModelCd,
+                      "pricingModelNm": pricingModelNm,
                       "countryCd": "us",
                       "activeInactiveIndicator": "Y"
                     },
@@ -308,7 +315,7 @@ export const getOpisRackProductDetailsHandler = () => {
                   "discountPriceAmt": null,
                   "totalPricePerGallon": 3.241,
                   "masterProduct": {
-                    "productId": "684c58ab-d23c-4591-b9fd-41296c7a394e",
+                    "productId": productId,
                     "productName": "A Diesel "
                   },
                   "productType": {
@@ -317,8 +324,8 @@ export const getOpisRackProductDetailsHandler = () => {
                     "activeInactiveInd": "Y"
                   },
                   "productColor": {
-                    "productIconCd": "cdc00914-dbef-4603-89c5-9f18e4af3ccc",
-                    "productIconNm": "Parrot Green",
+                    "productIconCd": productIconCd,
+                    "productIconNm": produtIconName,
                     "productIconHexCode": "#BED50F",
                     "activeInactiveInd": "Y"
                   },
