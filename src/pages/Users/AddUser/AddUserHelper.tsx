@@ -3,6 +3,7 @@ import { AlertExclamationIcon, LoadingIcon, PositiveCricleIcon } from '../../../
 import { getCountryCode } from '../../../navigation/utils';
 import { userAccessLevelSX } from '../config';
 
+//  Verify user Success Handler
 export const onSuccessVerfyUser = (response: any, formik: any, addedCustomerId: string) => {
     formik.setFieldValue('countryCd', getCountryCode());
     formik.setFieldValue('customerId', addedCustomerId);
@@ -19,33 +20,8 @@ export const onSuccessVerfyUser = (response: any, formik: any, addedCustomerId: 
     }
 };
 
-export const onClickCancel = (formik: any, addedCustomerId: string, showDialogBox: any, navigate: any) => {
-    if (!formik.isValid || formik.dirty) {
-        showDialogBox(true);
-    } else {
-        navigate(`/customer/${addedCustomerId}/users`);
-    }
-};
 
-export const disableButton = (formik: any, showVerifyLink: boolean) => {
-    if (formik.dirty) {
-        return !formik.isValid || formik.isSubmitting || showVerifyLink;
-    } else {
-        return true;
-    }
-};
-
-export const showToast = (isErrorAddUser: boolean, isSuccessAddUser: boolean,
-    isErrorUpdateUser: boolean, isSuccessUpdateUser: boolean, isErrorUserData: boolean) =>
-    (isErrorAddUser || isSuccessAddUser || isErrorUpdateUser || isSuccessUpdateUser || isErrorUserData);
-
-export const isUserNameErrorExist = (formik: any) => !!(formik.touched.userName && formik.errors.userName);
-export const isPhoneErrorExist = (formik: any) => !!(formik.touched.phone && formik.errors.phone);
-export const isEmailErrorExist = (formik: any) => !!(formik.touched.email && formik.errors.email);
-export const isUserGroupErrorExist = (formik: any) => !!(formik.touched.userGroup && formik.errors.userGroup);
-export const isDSPErrorExist = (formik: any) => !!(formik.touched.dsp && formik.errors.dsp);
-
-
+// User Verification Status Handler
 export const renderVerficationProcess = (userVerificationLoading: boolean, verifiedUserData: any) => {
     if (userVerificationLoading) {
         return <LoadingIcon data-testid="loading-spinner" style={{ position: "unset" }} className='loading_save_icon' />;
@@ -63,11 +39,50 @@ export const renderVerficationProcess = (userVerificationLoading: boolean, verif
     );
 };
 
+//  Cancel Button Handler
+export const onClickCancel = (formik: any, addedCustomerId: string, showDialogBox: any, navigate: any) => {
+    if (!formik.isValid || formik.dirty) {
+        showDialogBox(true);
+    } else {
+        navigate(`/customer/${addedCustomerId}/users`);
+    }
+};
+
+//  Save Button Handler
+export const disableButton = (formik: any, showVerifyLink: boolean) => {
+    if (formik.dirty) {
+        return !formik.isValid || formik.isSubmitting || showVerifyLink;
+    } else {
+        return true;
+    }
+};
+
+// Save Button Loading indication Handler
 export const renderButtonLoader = (isLoadingAddUser: boolean, isLoadingUpdateUser: boolean) =>
     (isLoadingAddUser || isLoadingUpdateUser) && <LoadingIcon data-testid="loading-spinner" className='loading_save_icon' />;
 
 
+// Toast Message Handler
+export const showToast = (isErrorAddUser: boolean, isSuccessAddUser: boolean,
+    isErrorUpdateUser: boolean, isSuccessUpdateUser: boolean, isErrorUserData: boolean) =>
+    (isErrorAddUser || isSuccessAddUser || isErrorUpdateUser || isSuccessUpdateUser || isErrorUserData);
 
+// Field level display Error Handler
+export const isUserNameErrorExist = (formik: any) => !!(formik.touched.userName && formik.errors.userName);
+export const isPhoneErrorExist = (formik: any) => !!(formik.touched.phone && formik.errors.phone);
+export const isEmailErrorExist = (formik: any) => !!(formik.touched.email && formik.errors.email);
+export const isUserGroupErrorExist = (formik: any) => !!(formik.touched.userGroup && formik.errors.userGroup);
+export const isDSPErrorExist = (formik: any) => !!(formik.touched.dsp && formik.errors.dsp);
+
+// Field level helper Taxt Error Handler
+export const userNameHelperText = (formik: any) => isUserNameErrorExist(formik) ? formik.errors.userName : undefined;
+export const phoneHelperText = (formik: any) => isPhoneErrorExist(formik) ? formik.errors.phone : undefined;
+export const emailHelperText = (formik: any) => isEmailErrorExist(formik) ? formik.errors.email : undefined;
+export const userGroupHelperText = (formik: any) => isUserGroupErrorExist(formik) ? formik?.errors?.userGroup?.value : undefined;
+export const dspHelperText = (formik: any) => isDSPErrorExist(formik) ? formik?.errors?.dsp?.value : undefined;
+
+
+// Display User Access Handler
 export const renderUserAccessDOM = (userPermissionList: any, formik: any, t: any) =>
     userPermissionList &&
     (<>

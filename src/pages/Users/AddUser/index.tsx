@@ -12,11 +12,13 @@ import { HorizontalBarVersionState, useAddedCustomerIdStore, useAddedCustomerPay
 import { toastErrorKey, toastSuccessKey } from '../../../utils/constants';
 import { userGroupStr } from '../config';
 import {
-    disableButton, isDSPErrorExist, isEmailErrorExist, isPhoneErrorExist, isUserGroupErrorExist, isUserNameErrorExist, onClickCancel, onSuccessVerfyUser, renderButtonLoader, renderUserAccessDOM, renderVerficationProcess, showToast
+    disableButton, isDSPErrorExist, isEmailErrorExist, isPhoneErrorExist, isUserGroupErrorExist,
+    isUserNameErrorExist, onClickCancel, onSuccessVerfyUser, renderButtonLoader, renderUserAccessDOM, dspHelperText,
+    renderVerficationProcess, showToast, userNameHelperText, userGroupHelperText, emailHelperText, phoneHelperText
 } from './AddUserHelper';
 import {
     useAddUser, useEditUserData, useGetUserGroupTypes, useGetUserPermissionList,
-    userGetUserDSPList, UserGoupsInt, useUpdateUserData, useVarifyUser
+    userGetUserDSPList, UserGoupsInt, useUpdateUserData, useVarifyUser,
 } from './queries';
 import { AddUserSchema } from "./validation";
 
@@ -178,7 +180,7 @@ const AddUser: React.FC<AddUserProps> = () => {
                                 placeholder='Choose'
                                 value={formik.values.userGroup}
                                 items={userGroupList?.filter((usrGrpObj: UserGoupsInt) => usrGrpObj.type.includes(selectedPaymentType))}
-                                helperText={isUserGroupErrorExist(formik) ? formik?.errors?.userGroup?.value : undefined}
+                                helperText={userGroupHelperText(formik)}
                                 error={isUserGroupErrorExist(formik)}
                                 onChange={formik.setFieldValue}
                                 onBlur={() => {
@@ -195,7 +197,7 @@ const AddUser: React.FC<AddUserProps> = () => {
                             name='email'
                             label={t("addUser.form.email")}
                             type='text'
-                            helperText={isEmailErrorExist(formik) ? formik.errors.email : undefined}
+                            helperText={emailHelperText(formik)}
                             error={isEmailErrorExist(formik)}
                             description=''
                             placeholder='Enter Email'
@@ -233,8 +235,8 @@ const AddUser: React.FC<AddUserProps> = () => {
                             id='userName'
                             label={t("addUser.form.userGroupAccessLevel.userName")}
                             type='text'
-                            helperText={isUserNameErrorExist(formik) ? formik.errors.userName : undefined}
-                            error={isUserNameErrorExist(formik) ? true : false}
+                            helperText={userNameHelperText(formik)}
+                            error={isUserNameErrorExist(formik)}
                             description=''
                             placeholder='User Name'
                             {...formik.getFieldProps('userName')}
@@ -247,8 +249,8 @@ const AddUser: React.FC<AddUserProps> = () => {
                             id='phone'
                             label={t("addUser.form.userGroupAccessLevel.phone")}
                             type='text'
-                            helperText={isPhoneErrorExist(formik) ? formik.errors.phone : undefined}
-                            error={isPhoneErrorExist(formik) ? true : false}
+                            helperText={phoneHelperText(formik)}
+                            error={isPhoneErrorExist(formik)}
                             description=''
                             placeholder='Phone Number Ex: 787 XXXX XXX'
                             disabled={true}
@@ -265,8 +267,8 @@ const AddUser: React.FC<AddUserProps> = () => {
                                     placeholder='Choose'
                                     value={formik.values.dsp}
                                     items={dspList}
-                                    helperText={isDSPErrorExist(formik) ? formik?.errors?.dsp?.value : undefined}
-                                    error={isDSPErrorExist(formik) ? true : false}
+                                    helperText={dspHelperText(formik)}
+                                    error={isDSPErrorExist(formik)}
                                     onChange={formik.setFieldValue}
                                     onBlur={() => {
                                         formik.setFieldTouched("dsp");
