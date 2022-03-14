@@ -23,6 +23,7 @@ import NotificationsMenu from '../Menu/NotificationsMenu.component';
 import ProfileMenu from '../Menu/ProfileMenu.component';
 import './HorizontalBar.style.scss';
 import { varsionNavLinks, versionBreadcrumbsMany, versionBreadcrumbsSingle } from './varsionNavLinksHelper';
+import { handleModelConfirm } from './handleConfirmDialog';
 
 const drawerWidth = 64;
 interface HorizontalBarProps {
@@ -59,75 +60,27 @@ export default function HorizontalBar (props: HorizontalBarProps) {
     return event;
   }
 
-  const handleBack = () => {
-    { isFormFieldChange ? showDialogBox(true) : handleModelConfirm(); }
-  };
+  function handleBack () {
+    if (isFormFieldChange) {
+      showDialogBox(true);
+    } else {
+      handleModelConfirm(
+        props.onBack, hideDialogBox, resetFormFieldValue, pathname,
+        navigate, selectedCustomerId, selectedCustomerName, backToParkingLot
+      );
+    }
+  }
 
   const handleModelToggle = () => {
     hideDialogBox(false);
   };
 
+  const fromParkingLotLanding = (searchParams: any) => searchParams.get('backTo') === ParkingLot_SearchParam ?
+    '/parkinglots' : `/customer/${selectedCustomerId}/parkingLots`;
 
   const backToParkingLot = () => {
     const searchParams = new URLSearchParams(search);
-    const fromParkingLotLanding = searchParams.get('backTo') === ParkingLot_SearchParam;
-    if (fromParkingLotLanding) {
-      return '/parkinglots';
-    } else {
-      return `/customer/${selectedCustomerId}/parkingLots`;
-    }
-  };
-
-  const handleModelConfirm = () => {
-    hideDialogBox(false);
-    resetFormFieldValue(false);
-    if (pathname.includes('viewLot')) {
-      navigate(backToParkingLot(), {
-        state: {
-          customerId: selectedCustomerId,
-          customerName: selectedCustomerName,
-        },
-      });
-    } else if (pathname.includes('addLot') || pathname.includes('addFuelTax')) {
-      navigate(-1);
-    } else if (pathname.includes('salesTax/add') || pathname.includes('salesTax/edit')) {
-      navigate('/salesTax');
-    } else if (pathname.includes('opisCities/add')) {
-      navigate('/opisCities');
-    } else if (pathname.includes('editFuelTax')) {
-      navigate('/taxes');
-    } else if (pathname.includes('productManagement/add') || pathname.includes('productManagement/edit')) {
-      navigate('/productManagement');
-    } else if (pathname.includes('AddAttachment')) {
-      navigate(-1);
-    }
-    else if (pathname.includes('dsps/addDsp') || pathname.includes('dsps/edit')) {
-      navigate(`/customer/${selectedCustomerId}/dsps`, {
-        state: {
-          customerId: selectedCustomerId,
-          customerName: selectedCustomerName
-        }
-      });
-    } else if (pathname.includes('users/addUser') || pathname.includes('users/editUser')) {
-      navigate(`/customer/${selectedCustomerId}/users`, {
-        state: {
-          customerId: selectedCustomerId,
-          customerName: selectedCustomerName
-        }
-      });
-    } else if (pathname.includes('/truckParkingLot/add')) {
-      navigate('/truckParkingLot');
-    } else if (pathname.includes('/truckParkingLot/edit')) {
-      navigate('/truckParkingLot');
-    } else if (pathname.includes('/assetManagement/add') || pathname.includes('/assetManagement/edit')) {
-      navigate('/assetManagement');
-    } else if (pathname.includes('/trucks/addTruck')) {
-      navigate('/trucks');
-    } else if (pathname.includes('/trucks/editTruck')) {
-      navigate('/trucks');
-    } else {
-      props.onBack();
-    }
+    return fromParkingLotLanding(searchParams);
   };
 
   const getHeaderText = () => {
@@ -181,7 +134,7 @@ export default function HorizontalBar (props: HorizontalBarProps) {
     }
   };
 
-  const renderHeader = () => {
+  const renderNavigationHeader = () => {
     switch (version) {
       case 'Breadcrumbs-Single':
         return versionBreadcrumbsSingle(getHeaderText, handleClick);
@@ -217,7 +170,7 @@ export default function HorizontalBar (props: HorizontalBarProps) {
                   startIcon={<SvgIcon component={BackIcon} />}
                 />
               )}
-            {renderHeader()}
+            {renderNavigationHeader()}
             <div className='app__header-section' />
             <div className='app__header-right-section-desktop'>
               <ColorLegendControl />
@@ -276,7 +229,10 @@ export default function HorizontalBar (props: HorizontalBarProps) {
           content={t('customerManagement.discardchangesdialog.content')}
           open={showConfirmationDialogBox}
           handleToggle={handleModelToggle}
-          handleConfirm={handleModelConfirm}
+          handleConfirm={() => handleModelConfirm(
+            props.onBack, hideDialogBox, resetFormFieldValue, pathname,
+            navigate, selectedCustomerId, selectedCustomerName, backToParkingLot
+          )}
         />
       </div>
     </>
