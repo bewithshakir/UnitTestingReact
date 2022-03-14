@@ -19,28 +19,6 @@ jest.mock('react-router-dom', () => ({
     })
 }));
 
-
-// jest.mock('formik', () => ({
-//     ...jest.requireActual('formik') as any,
-//     // useFormik: () => ({
-//     //     setFieldValue: jest.fn(),
-//     //     getFieldProps: jest.fn(),
-//     //     isValid: true,
-//     //     dirty: false,
-//     //     values: {
-//     //         userGroup: {
-//     //             label: '', value: ''
-//     //         }
-//     //     },
-//     //     touched: {
-//     //         userGroup: {}
-//     //     },
-//     //     errors: {
-//     //         userGroup: {}
-//     //     }
-//     // })
-// }));
-
 jest.mock('../../../store', () => ({
     ...jest.requireActual('../../../store') as any,
     useAddedCustomerIdStore: () => '123',
@@ -65,17 +43,8 @@ function getAllElements (component: any) {
 afterEach(cleanup);
 describe('renders AddUser component for add mode', () => {
     let result: RenderResult;
-    // const useFormik = jest.spyOn(Formik, 'useFormik');
-    // eslint-disable-next-line no-console
-    // console.log("Formik", Formik);
-
     beforeEach(() => {
         result = renderWithClient(<AddUser version="Breadcrumbs-Single" />);
-        // useFormik.mockReturnValue({
-        //     setFieldValue: jest.fn(),
-        //     isValid: true,
-        //     dirty: false,
-        // } as any);
     });
 
     it('renders all mendatory fields with blank value on add mode', () => {
@@ -88,38 +57,41 @@ describe('renders AddUser component for add mode', () => {
 
         it('enable save button when all mendatory fields are filled', async () => {
 
-            const { userEmailElem, userGroupElem } = getAllElements(result);
-            //  verifyUserLink, saveBtn, userAccessLevel, userDSP,userDSP
+            const { userEmailElem, userGroupElem, userDSP, verifyUserLink, saveBtn, userAccessLevel } = getAllElements(result);
+
+            // Choose USER GROUP
             await selectEvent.select(userGroupElem, ["DSP"]);
+
+            // Type EMAIL
             fireEvent.change(userEmailElem, { target: { value: 'xyz@gmail.com' } });
-            // eslint-disable-next-line no-console
-            // console.log("Formik", Formik);
 
-            result.debug(await result.findByTestId("abc"));
+            // Click Verify
+            await waitFor(() => {
+                userEvent.click(verifyUserLink);
+            });
 
-            // await selectEvent.select(userDSP, ["KrrishTest"]);
-            // eslint-disable-next-line no-console
-            // console.log("🚀 ~ fi============================");
-            // await waitFor(() => {
-            //     selectEvent.select(userDSP, ["KrrishTest"]);
-            // });
+            // Find USER NAME OR Phone
+            await waitFor(() => {
+                expect(result.getByText(/Nikhil/i)).toBeInTheDocument();
+            });
 
-            // result.debug(await result.findByTestId("abc"));
-            // act(() => {
-            //     userEvent.click(verifyUserLink);
-            // });
-            // await waitFor(() => {
-            //     expect(result.getByText(/Nikhil/i)).toBeInTheDocument();
-            // });
-            // // await selectEvent.select(userDSP, ["KrrishTest"]);
-            // await userEvent.click(userAccessLevel);
-            // await waitFor(() => {
-            //     userEvent.click(saveBtn);
-            // });
+            // Select USER GROUP ACCESS LEVEL
+            await userEvent.click(userAccessLevel);
 
-            // await waitFor(() => {
-            //     expect(result.getByText('formStatusProps.success.message')).toBeInTheDocument();
-            // });
+            // Choose DSP
+            await waitFor(() => {
+                selectEvent.select(userDSP, ["KrrishTest"]);
+            });
+
+            // Click Save
+            await waitFor(() => {
+                userEvent.click(saveBtn);
+            });
+
+
+            await waitFor(() => {
+                expect(result.getByText('formStatusProps.success.message')).toBeInTheDocument();
+            });
         });
     });
 });

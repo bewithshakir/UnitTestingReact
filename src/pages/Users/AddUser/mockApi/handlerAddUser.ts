@@ -1,7 +1,7 @@
 import { rest } from "msw";
 
 export const addUserHandler = () => {
-    return rest.post('*/api/product-service/assets', (req, res, ctx) => {
+    return rest.post('*/api/user-service/users', (req, res, ctx) => {
         return res(
             ctx.status(200),
             ctx.json({

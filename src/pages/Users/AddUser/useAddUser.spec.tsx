@@ -7,15 +7,15 @@ import { useAddUser } from "./queries";
 
 describe('useAddUser for useMutation', () => {
     const payload = {
-        shellDigitalAccountId: "12345",
-        customerId: "123",
-        firstNm: "Nikhil",
-        lastNm: "Patel",
-        email: "xyz@gmail.com",
-        permissionTypeCd: "5932",
-        userGroupCd: "555",
-        countryCd: "us",
-        dspId: "01c4"
+        "userId": "12345",
+        "customerId": "123",
+        "userName": "Nikhil Patel",
+        "email": "xyz@gmail.com",
+        "phone": "",
+        "userAccessLevel": "5932",
+        "userGroup": { "value": "555", "label": "DSP" },
+        "countryCd": "us",
+        "dsp": { "value": "01c4", "label": "DSP" },
     };
 
     it('succesfull add data using useAddUser', async () => {
