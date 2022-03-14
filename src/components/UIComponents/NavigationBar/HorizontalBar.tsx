@@ -1,29 +1,28 @@
-import { Breadcrumbs, Link, SvgIcon } from '@material-ui/core';
-import NavigateNextIcon from '@material-ui/icons/NavigateNext';
+import { SvgIcon } from '@material-ui/core';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { NavLink, useNavigate, useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import {
   BackIcon,
   CustomerProfileIcon2,
   LogoutIcon,
   SettingsIcon,
-  USAFlagIcon,
+  USAFlagIcon
 } from '../../../assets/icons';
-import { useAddedCustomerIdStore, useStore } from '../../../store';
+import DiscardChangesDialog from '../../../components/UIComponents/ConfirmationDialog/DiscardChangesDialog.component';
+import {
+  useAddedCustomerIdStore, useAddedCustomerNameStore,
+  useShowConfirmationDialogBoxStore, useStore
+} from '../../../store';
+import { ParkingLot_SearchParam } from "../../../utils/constants";
 import { Button } from '../Button/Button.component';
+import ColorLegendControl from '../ColorLegendControl';
 import NotificationsMenu from '../Menu/NotificationsMenu.component';
 import ProfileMenu from '../Menu/ProfileMenu.component';
 import './HorizontalBar.style.scss';
-import {
-  useAddedCustomerNameStore,
-  useShowConfirmationDialogBoxStore,
-} from '../../../store';
-import DiscardChangesDialog from '../../../components/UIComponents/ConfirmationDialog/DiscardChangesDialog.component';
-import { ParkingLot_SearchParam } from "../../../utils/constants";
-import ColorLegendControl from '../ColorLegendControl';
+import { varsionNavLinks, versionBreadcrumbsMany, versionBreadcrumbsSingle } from './varsionNavLinksHelper';
 
 const drawerWidth = 64;
 interface HorizontalBarProps {
@@ -182,207 +181,18 @@ export default function HorizontalBar (props: HorizontalBarProps) {
     }
   };
 
-  function versionBreadcrumbsSingle () {
-    return (
-      <>
-        <Breadcrumbs separator={<NavigateNextIcon />} aria-label='breadcrumb'>
-          <Link className='breadcrubs-title' href='#' onClick={handleClick}>
-            {getHeaderText()}
-          </Link>
-        </Breadcrumbs>
-      </>
-    );
-  }
-
-  function varsionNavLinks () {
-    if (
-      pathname.includes('taxes') ||
-      pathname.includes('salesTax') ||
-      pathname.includes('productManagement') ||
-      pathname.includes('opisCities') ||
-      pathname.includes('assetManagement')
-    ) {
-      return (
-        <>
-          <div
-            className={
-              pathname.includes('taxes') ? 'linkitem active' : 'linkitem'
-            }
-          >
-            <NavLink
-              className='breadcrubs-title'
-              to='/taxes'
-              onClick={handleClick}
-            >
-              {t('taxes.navBar.fuelTax')}
-            </NavLink>
-          </div>
-          <div
-            className={
-              pathname.includes('salesTax') ? 'linkitem active' : 'linkitem'
-            }
-          >
-            <NavLink
-              className='breadcrubs-title'
-              to='/salesTax'
-              onClick={handleClick}
-            >
-              {t('taxes.navBar.salesTax')}
-            </NavLink>
-          </div>
-          <div
-            className={
-              pathname.includes('opisCities') ? 'linkitem active' : 'linkitem'
-            }
-          >
-            <NavLink
-              className='breadcrubs-title'
-              to='/opisCities'
-              onClick={handleClick}
-            >
-              {t('taxes.navBar.opisCities')}
-            </NavLink>
-          </div>
-          <div
-            className={
-              pathname.includes('productManagement')
-                ? 'linkitem active'
-                : 'linkitem'
-            }
-          >
-            <NavLink
-              className='breadcrubs-title'
-              to='/productManagement'
-              onClick={handleClick}
-            >
-              {t('taxes.navBar.productManagement')}
-            </NavLink>
-          </div>
-          <div className={pathname.includes('assetManagement') ? 'linkitem active' : "linkitem"}>
-            <NavLink
-              className='breadcrubs-title'
-              to='/assetManagement'
-              onClick={handleClick}
-            >
-              {t('taxes.navBar.assetManagement')}
-            </NavLink>
-          </div>
-        </>
-      );
+  const renderHeader = () => {
+    switch (version) {
+      case 'Breadcrumbs-Single':
+        return versionBreadcrumbsSingle(getHeaderText, handleClick);
+      case 'Breadcrumbs-Many':
+        return versionBreadcrumbsMany(selectedCustomerName, getHeaderText);
+      case 'NavLinks':
+        return varsionNavLinks(pathname, handleClick, t);
+      default:
+        return null;
     }
-    else if (pathname.includes('trucks') || pathname.includes('truckParkingLot')) {
-      return (
-        <>
-          <div
-            className={
-              pathname.includes('trucks') ? 'linkitem active' : 'linkitem'
-            }
-          >
-            <NavLink
-              className='breadcrubs-title'
-              to='/trucks'
-              onClick={handleClick}
-            >
-              {t('truck.navBar.overview')}
-            </NavLink>
-          </div>
-          <div
-            className={
-              pathname.includes('salesTax') ? 'linkitem active' : 'linkitem'
-            }
-          >
-            <NavLink
-              className='breadcrubs-title'
-              to='/'
-              onClick={handleClick}
-            >
-              {t('truck.navBar.liveMap')}
-            </NavLink>
-          </div>
-          <div
-            className={
-              pathname.includes('truckParkingLot') ? 'linkitem active' : 'linkitem'
-            }
-          >
-            <NavLink
-              className='breadcrubs-title'
-              to='/truckParkingLot'
-              onClick={handleClick}
-            >
-              {t('truck.navBar.truckPlot')}
-            </NavLink>
-          </div>
-        </>
-      );
-    }
-    else {
-      return (
-        <>
-          <div className={pathname === '/' ? 'linkitem active' : 'linkitem'}>
-            <NavLink className='breadcrubs-title' to='/' onClick={handleClick}>
-              Customer List
-            </NavLink>
-          </div>
-          <div className={pathname.includes('parkinglots') ? 'linkitem active' : 'linkitem'}>
-            <NavLink
-              className='breadcrubs-title'
-              to='/parkinglots'
-              onClick={handleClick}
-            >
-              Parking Lots
-            </NavLink>
-          </div>
-          <div className='linkitem'>
-            <NavLink
-              className='breadcrubs-title'
-              to='/vehicles'
-              onClick={handleClick}
-            >
-              Vehicles
-            </NavLink>
-          </div>
-          <div className='linkitem'>
-            <NavLink
-              className='breadcrubs-title'
-              to='/users'
-              onClick={handleClick}
-            >
-              Users
-            </NavLink>
-          </div>
-          <div className='linkitem'>
-            <NavLink
-              className='breadcrubs-title'
-              to='/invoices'
-              onClick={handleClick}
-            >
-              Invoices
-            </NavLink>
-          </div>
-          <div className='linkitem'>
-            <NavLink className='breadcrubs-title' to='#' onClick={handleClick}>
-              Wallets
-            </NavLink>
-          </div>
-        </>
-      );
-    }
-  }
-
-  function versionBreadcrumbsMany () {
-    return (
-      <>
-        <Breadcrumbs separator={<NavigateNextIcon />} aria-label='breadcrumb'>
-          <Link className='breadcrubs-title'>
-            {selectedCustomerName}
-          </Link>
-          <Link className="breadcrubs-title" href="#" onClick={(event) => event.preventDefault()} >
-            {getHeaderText()}
-          </Link>
-        </Breadcrumbs>
-      </>
-    );
-  }
+  };
 
   return (
     <>
@@ -407,16 +217,10 @@ export default function HorizontalBar (props: HorizontalBarProps) {
                   startIcon={<SvgIcon component={BackIcon} />}
                 />
               )}
-            {version === 'Breadcrumbs-Single'
-              ? versionBreadcrumbsSingle()
-              : version === 'NavLinks'
-                ? varsionNavLinks()
-                : version === 'Breadcrumbs-Many'
-                  ? versionBreadcrumbsMany()
-                  : null}
+            {renderHeader()}
             <div className='app__header-section' />
             <div className='app__header-right-section-desktop'>
-            <ColorLegendControl/>
+              <ColorLegendControl />
               <div className='header__country-selector'>
                 <SvgIcon component={USAFlagIcon} />
                 <span className='country-title'>United States</span>
@@ -439,31 +243,31 @@ export default function HorizontalBar (props: HorizontalBarProps) {
                 }}
               />
               <div className='vl'></div>
-                <ProfileMenu
-                  options={[
-                    {
-                      label: t('menus.profile-actions.profile'),
-                      icon: <CustomerProfileIcon2 />,
-                    },
-                    {
-                      label: t('menus.profile-actions.settings'),
-                      icon: <SettingsIcon />,
-                    },
-                    {
-                      label: t('menus.profile-actions.logout'),
-                      icon: <LogoutIcon />,
-                    },
-                    {
-                      label: t(
-                        process.env.REACT_APP_VERSION_NUMBER?.toString() || ''
-                      ),
-                      icon: <SettingsIcon />,
-                    },
-                  ]}
-                  onSelect={(value) => {
-                    return value;
-                  }}
-                />
+              <ProfileMenu
+                options={[
+                  {
+                    label: t('menus.profile-actions.profile'),
+                    icon: <CustomerProfileIcon2 />,
+                  },
+                  {
+                    label: t('menus.profile-actions.settings'),
+                    icon: <SettingsIcon />,
+                  },
+                  {
+                    label: t('menus.profile-actions.logout'),
+                    icon: <LogoutIcon />,
+                  },
+                  {
+                    label: t(
+                      process.env.REACT_APP_VERSION_NUMBER?.toString() || ''
+                    ),
+                    icon: <SettingsIcon />,
+                  },
+                ]}
+                onSelect={(value) => {
+                  return value;
+                }}
+              />
             </div>
           </Toolbar>
         </AppBar>
