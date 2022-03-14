@@ -24,8 +24,6 @@ export const addUserHandler = () => {
 
 export const verifyUserHandler = () => {
     return rest.get('*/api/user-service/users/verification/janrain*', (req, res, ctx) => {
-        // const email = req.url.searchParams.get('email');
-        // if (email === 'xyz@gmail.com') {
         return res(
             ctx.status(200),
             ctx.json({
@@ -42,7 +40,6 @@ export const verifyUserHandler = () => {
                 error: null
             })
         );
-        // }
     });
 };
 

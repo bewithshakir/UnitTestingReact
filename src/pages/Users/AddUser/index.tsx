@@ -325,7 +325,6 @@ const AddUser: React.FC<AddUserProps> = () => {
                                     <RadioGroup
                                         aria-label="user-access-permission"
                                         defaultValue=""
-                                        data-testid="qxy"
                                         id="userAccessLevel"
                                         name="userAccessLevel"
                                         value={formik.values.userAccessLevel}
@@ -338,7 +337,6 @@ const AddUser: React.FC<AddUserProps> = () => {
                                                 sx={{ ...userAccessLevelSX }}
                                                 control={<Radio
                                                     role="radio"
-                                                    name={perObj.label}
                                                     id={`userAccessLevel-${index}`}
                                                     sx={{
                                                         '&.Mui-checked': {

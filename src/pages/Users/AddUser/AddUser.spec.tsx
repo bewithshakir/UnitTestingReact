@@ -25,18 +25,17 @@ jest.mock('../../../store', () => ({
     useAddedCustomerPaymentTypeStore: () => 'Voyager'
 }));
 
-function getAllElements (component: any) {
+function getAllElements (component: RenderResult) {
     const userGroupElem = component.container.querySelector('#userGroup') as HTMLInputElement;
     const userEmailElem = component.container.querySelector('#email') as HTMLInputElement;
     const userNameElem = component.container.querySelector('#userName') as HTMLInputElement;
     const userPhoneElem = component.container.querySelector('#phone') as HTMLInputElement;
-    const userDSP = component.container.querySelector('#dsp') as HTMLInputElement;
-    const userAccessLevel = component.container.querySelector('#userAccessLevel-1');
-    const verifyUserLink = component.container.querySelector('#verify-user-link');
-    const cancelBtn = component.container.querySelector('#cancelBtn');
-    const saveBtn = component.container.querySelector('#saveBtn');
-    const formElem = component.container.querySelector('#form');
-    return { userGroupElem, userEmailElem, userAccessLevel, userNameElem, userPhoneElem, userDSP, verifyUserLink, cancelBtn, saveBtn, formElem };
+    // const userDSP = component.container.querySelector('#dsp') as HTMLInputElement;
+    const verifyUserLink = component.container.querySelector('#verify-user-link') as HTMLAnchorElement;
+    const cancelBtn = component.container.querySelector('#cancelBtn') as HTMLButtonElement;
+    const saveBtn = component.container.querySelector('#saveBtn') as HTMLButtonElement;
+    const formElem = component.container.querySelector('#form') as HTMLFormElement;
+    return { userGroupElem, userEmailElem, userNameElem, userPhoneElem, verifyUserLink, cancelBtn, saveBtn, formElem };
 }
 
 
@@ -57,7 +56,7 @@ describe('renders AddUser component for add mode', () => {
 
         it('enable save button when all mendatory fields are filled', async () => {
 
-            const { userEmailElem, userGroupElem, userDSP, verifyUserLink, saveBtn, userNameElem, userAccessLevel } = getAllElements(result);
+            const { userEmailElem, userGroupElem, verifyUserLink, saveBtn, userNameElem } = getAllElements(result);
 
             // Choose USER GROUP
             await selectEvent.select(userGroupElem, ["DSP"]);
@@ -78,27 +77,22 @@ describe('renders AddUser component for add mode', () => {
             });
 
             // Select USER GROUP ACCESS LEVEL
-            result.debug(await result.findByTestId('qxy'));
-            // await waitFor(() => {
-            //     const button = result.getByRole("radio", { name: "View only" }) as HTMLInputElement;
-            //     const leftClick = { button: 0 };
-
-            //     userEvent.click(button, leftClick);
-
-            //     expect(button.checked).toBe(true);
-            // });
+            const viewOnlyRadio = result.getByRole("radio", { name: "View only" }) as HTMLInputElement;
+            fireEvent.click(viewOnlyRadio);
 
             // Choose DSP
             await waitFor(() => {
+                const userDSP = result.container.querySelector('#dsp') as HTMLInputElement;
                 selectEvent.select(userDSP, ["KrrishTest"]);
             });
 
             // Click Save
             await waitFor(() => {
+                expect(saveBtn).toBeEnabled();
                 userEvent.click(saveBtn);
             });
 
-
+            // Final Success Toast
             await waitFor(() => {
                 expect(result.getByText('formStatusProps.success.message')).toBeInTheDocument();
             });
