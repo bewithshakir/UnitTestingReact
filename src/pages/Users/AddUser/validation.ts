@@ -24,7 +24,7 @@ export const AddUserSchema = Yup.object().shape({
         .required('Required'),
     userName: Yup.string().required('Required'),
     phone: Yup.string().matches(
-        /^(?:\+?1[-.●]?)?\(?([0-9]{3})\)?[-.●]?([0-9]{3})[-.●]?([0-9]{4})$/,
+        /^(?:\+?1[-.●]?)?\(?([\d]{3})\)?[-.●]?([\d]{3})[-.●]?([\d]{4})$/,
         'Invalid phone number'
     ),
     userAccessLevel: Yup.string().required('Required'),
