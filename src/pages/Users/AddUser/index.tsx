@@ -190,12 +190,57 @@ const AddUser: React.FC<AddUserProps> = () => {
     };
     const disableButton = () => {
         if (formik.dirty) {
-            return !formik.isValid || formik.isSubmitting;
+            return !formik.isValid || formik.isSubmitting || showVerifyLink;
         } else {
             return true;
         }
     };
 
+    const renderUserAccessDOM = () =>
+        userPermissionList &&
+        (<>
+            <Grid item md={12} mt={3} mb={2}>
+                <Typography color="var(--Darkgray)" variant="h4" gutterBottom className="fw-bold">
+                    {t("addUser.form.userGroupAccessLevel.title")}
+                </Typography>
+            </Grid>
+            <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
+                <FormControl component="fieldset">
+                    <RadioGroup
+                        aria-label="user-access-permission"
+                        defaultValue=""
+                        id="userAccessLevel"
+                        name="userAccessLevel"
+                        value={formik.values.userAccessLevel}
+                        onChange={formik.handleChange}
+                    >
+                        {userPermissionList?.map((perObj: any, index: any) => (
+                            <FormControlLabel
+                                key={perObj.value}
+                                value={perObj.value}
+                                sx={{ ...userAccessLevelSX }}
+                                control={<Radio
+                                    role="radio"
+                                    id={`userAccessLevel-${index}`}
+                                    sx={{
+                                        '&.Mui-checked': {
+                                            color: "var(--Gray)",
+                                        },
+                                    }}
+                                    aria-label={perObj.label} />}
+                                label={
+                                    <Typography color="var(--Darkgray)" variant="h4" pl={2.5} className="fw-bold">
+                                        {perObj.label}
+                                    </Typography>
+                                } />
+                        ))}
+                    </RadioGroup>
+                </FormControl>
+            </Grid>
+        </>
+        );
+
+    const showToast = () => (isErrorAddUser || isSuccessAddUser || isErrorUpdateUser || isSuccessUpdateUser || isErrorUserData);
 
     // eslint-disable-next-line no-console
     console.log("🚀 ~ file: index.tsx ~ line 198 ~ formik.values", formik.values);
@@ -331,49 +376,7 @@ const AddUser: React.FC<AddUserProps> = () => {
                         </Grid>
                     )}
 
-                    {userPermissionList &&
-                        (<>
-                            <Grid item md={12} mt={3} mb={2}>
-                                <Typography color="var(--Darkgray)" variant="h4" gutterBottom className="fw-bold">
-                                    {t("addUser.form.userGroupAccessLevel.title")}
-                                </Typography>
-                            </Grid>
-                            <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
-                                <FormControl component="fieldset">
-                                    <RadioGroup
-                                        aria-label="user-access-permission"
-                                        defaultValue=""
-                                        id="userAccessLevel"
-                                        name="userAccessLevel"
-                                        value={formik.values.userAccessLevel}
-                                        onChange={formik.handleChange}
-                                    >
-                                        {userPermissionList?.map((perObj: any, index: any) => (
-                                            <FormControlLabel
-                                                key={perObj.value}
-                                                value={perObj.value}
-                                                sx={{ ...userAccessLevelSX }}
-                                                control={<Radio
-                                                    role="radio"
-                                                    id={`userAccessLevel-${index}`}
-                                                    sx={{
-                                                        '&.Mui-checked': {
-                                                            color: "var(--Gray)",
-                                                        },
-                                                    }}
-                                                    aria-label={perObj.label} />}
-                                                label={
-                                                    <Typography color="var(--Darkgray)" variant="h4" pl={2.5} className="fw-bold">
-                                                        {perObj.label}
-                                                    </Typography>
-                                                } />
-                                        ))}
-                                    </RadioGroup>
-                                </FormControl>
-                            </Grid>
-                        </>
-                        )
-                    }
+                    {renderUserAccessDOM()}
                     <Grid item xs={12} md={6} />
                     <Grid item md={12} pr={2.5} pb={2.5} mt={4}>
                         <Box className="form-action-section" alignItems="end">
@@ -394,18 +397,14 @@ const AddUser: React.FC<AddUserProps> = () => {
                                 aria-label={t("buttons.save")}
                                 className="ml-4"
                                 data-testid="save"
-                                disabled={disableButton() || showVerifyLink}
+                                disabled={disableButton()}
                             >
                                 {t("buttons.save")}
                                 {(isLoadingAddUser || isLoadingUpdateUser) && <LoadingIcon data-testid="loading-spinner" className='loading_save_icon' />}
                             </Button>
                         </Box>
                         <ToastMessage
-                            isOpen={
-                                isErrorAddUser || isSuccessAddUser ||
-                                isErrorUpdateUser || isSuccessUpdateUser ||
-                                isErrorUserData
-                            }
+                            isOpen={showToast()}
                             messageType={formStatus.type}
                             onClose={() => { return ''; }}
                             message={formStatus.message} />

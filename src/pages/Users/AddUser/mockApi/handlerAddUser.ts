@@ -1,8 +1,8 @@
 import { rest } from "msw";
 import { PayloadAddUserInt } from '../queries';
 
-export const addUserHandler = () => {
-    return rest.post('*/api/user-service/users', (req, res, ctx) => {
+export const addUserHandler = () =>
+    rest.post('*/api/user-service/users', (req, res, ctx) => {
         const { email } = req.body as PayloadAddUserInt;
         const passedEmail = "xyz@gmail.com";
         return res(
@@ -28,10 +28,10 @@ export const addUserHandler = () => {
             })
         );
     });
-};
 
-export const verifyUserHandler = () => {
-    return rest.get('*/api/user-service/users/verification/janrain*', (req, res, ctx) => {
+
+export const verifyUserHandler = () =>
+    rest.get('*/api/user-service/users/verification/janrain*', (req, res, ctx) => {
         const email = req.url.searchParams.get('email');
         return res(
             ctx.status(200),
@@ -50,12 +50,11 @@ export const verifyUserHandler = () => {
             })
         );
     });
-};
 
 
-export const getUserGroupsHandler = () => {
-    return rest.get('*/api/user-service/users/user-groups*', (req, res, ctx) => {
-        return res(
+export const getUserGroupsHandler = () =>
+    rest.get('*/api/user-service/users/user-groups*', (req, res, ctx) =>
+        res(
             ctx.status(200),
             ctx.json({
                 data: [
@@ -72,12 +71,11 @@ export const getUserGroupsHandler = () => {
                 ],
                 error: null
             })
-        );
-    });
-};
+        )
+    );
 
-export const getCustomerDSPHandler = () => {
-    return rest.get('*/api/customer-service/customers/*/dsps*', (req, res, ctx) => {
+export const getCustomerDSPHandler = () =>
+    rest.get('*/api/customer-service/customers/*/dsps*', (req, res, ctx) => {
         const skipPagination = req.url.searchParams.get('skipPagination');
         if (skipPagination) {
             return res(
@@ -105,10 +103,9 @@ export const getCustomerDSPHandler = () => {
             );
         }
     });
-};
 
-export const getUserPermissionHandler = () => {
-    return rest.get('*api/user-service/users/permission-types*', (req, res, ctx) => {
+export const getUserPermissionHandler = () =>
+    rest.get('*api/user-service/users/permission-types*', (req, res, ctx) => {
         return res(
             ctx.status(200),
             ctx.json({
@@ -128,4 +125,3 @@ export const getUserPermissionHandler = () => {
             })
         );
     });
-};

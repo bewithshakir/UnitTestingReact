@@ -20,11 +20,10 @@ const getDspList = async (pageParam: number, searchTerm: string, sortOrder: { so
         }
     }
 
-    const opisCityListEntitySet = `/api/customer-service/customers/${customerId}/dsps?limit=${pageDataLimit}&offset=${pageParam}`;
-    const url = query ? `&countryCode=us${query.toString().length ? `&${query.toString()}` : ''}` : `&countryCode=us`;
+    const opisCityListEntitySet = `/api/customer-service/customers/${customerId}/dsps?limit=${pageDataLimit}&offset=${pageParam}&countryCode=us`;
     const options: AxiosRequestConfig = {
         method: 'get',
-        url: opisCityListEntitySet + url
+        url: opisCityListEntitySet + query.toString()
     };
     const { data } = await axios(options);
     return data;
