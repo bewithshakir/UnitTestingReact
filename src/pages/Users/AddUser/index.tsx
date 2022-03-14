@@ -42,25 +42,11 @@ const AddUser: React.FC<AddUserProps> = () => {
     const { data: dspList } = userGetUserDSPList(addedCustomerId, 'us');
     const { data: userPermissionList } = useGetUserPermissionList('us');
 
-    const setVerfiedUserDetails = (data: any, verifiedUser: boolean) => {
-        if (verifiedUser) {
-            formik.setFieldValue('userId', data?.userProfile.uuid);
-            formik.setFieldValue('email', data?.userProfile.email);
-            formik.setFieldValue('phone', data?.userProfile.mobile || '');
-            formik.setFieldValue('userName', `${data?.userProfile.firstName} ${data?.userProfile.lastName}`);
-        } else {
-            formik.setFieldValue('userId', '');
-            formik.setFieldValue('email', '');
-            formik.setFieldValue('phone', '');
-            formik.setFieldValue('userName', '');
-        }
-    };
-
-    const setToast = (message: string, isSuccess: boolean) => {
+    const setToast = (responseMsg: string, isSuccess: boolean) => {
         if (isSuccess) {
-            setFormStatus({ message: message || t("formStatusProps.success.message"), type: 'Success' });
+            setFormStatus({ message: responseMsg || t("formStatusProps.success.message"), type: 'Success' });
         } else {
-            setFormStatus({ message: message || t("formStatusProps.error.message"), type: 'Error' });
+            setFormStatus({ message: responseMsg || t("formStatusProps.error.message"), type: 'Error' });
         }
     };
     // Verify User
@@ -69,7 +55,19 @@ const AddUser: React.FC<AddUserProps> = () => {
             const { data } = response;
             formik.setFieldValue('countryCd', getCountryCode());
             formik.setFieldValue('customerId', addedCustomerId);
-            setVerfiedUserDetails(data, data?.verifiedUser);
+            if (data?.verifiedUser) {
+                formik.setFieldValue('userId', data?.userProfile.uuid);
+                formik.setFieldValue('email', data?.userProfile.email);
+                if (data?.userProfile.mobile) {
+                    formik.setFieldValue('phone', data?.userProfile.mobile);
+                }
+                formik.setFieldValue('userName', `${data?.userProfile.firstName} ${data?.userProfile.lastName}`);
+            } else {
+                formik.setFieldValue('userId', '');
+                formik.setFieldValue('email', '');
+                formik.setFieldValue('phone', '');
+                formik.setFieldValue('userName', '');
+            }
         }
     };
 
@@ -198,6 +196,9 @@ const AddUser: React.FC<AddUserProps> = () => {
         }
     };
 
+
+    // eslint-disable-next-line no-console
+    console.log("🚀 ~ file: index.tsx ~ line 198 ~ formik.values", formik.values);
     return (
         <Grid item xl={7} lg={8}>
             <form onSubmit={formik.handleSubmit} id='form'>
