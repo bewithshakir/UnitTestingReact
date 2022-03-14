@@ -74,8 +74,8 @@ export const getUserGroupsHandler = () =>
         )
     );
 
-export const getCustomerDSPHandler = () =>
-    rest.get('*/api/customer-service/customers/*/dsps*', (req, res, ctx) => {
+export function getCustomerDSPHandler () {
+    return rest.get('*/api/customer-service/customers/*/dsps*', (req, res, ctx) => {
         const skipPagination = req.url.searchParams.get('skipPagination');
         if (skipPagination) {
             return res(
@@ -103,6 +103,7 @@ export const getCustomerDSPHandler = () =>
             );
         }
     });
+}
 
 export const getUserPermissionHandler = () =>
     rest.get('*api/user-service/users/permission-types*', (req, res, ctx) => {

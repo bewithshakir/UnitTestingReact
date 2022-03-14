@@ -75,7 +75,7 @@ export const useGetUserGroupTypes = (countryCode: string) => {
     });
 };
 
-const fetchUserDSPList = async (customerId: string, countryCode: string) => {
+async function fetchUserDSPList (customerId: string, countryCode: string) {
     if (customerId) {
         const options: AxiosRequestConfig = {
             method: 'get',
@@ -84,7 +84,7 @@ const fetchUserDSPList = async (customerId: string, countryCode: string) => {
         const { data } = await axios(options);
         return data;
     }
-};
+}
 
 export const userGetUserDSPList = (customerId: string, countryCode: string) => {
     return useQuery(["fetchUserDSPList", customerId, countryCode], () => fetchUserDSPList(customerId, countryCode), {
@@ -97,7 +97,7 @@ export const userGetUserDSPList = (customerId: string, countryCode: string) => {
     });
 };
 
-const fetchUserDetailsFromJenrin = async (email: string) => {
+async function fetchUserDetailsFromJenrin (email: string) {
     if (email) {
         const options: AxiosRequestConfig = {
             method: 'get',
@@ -106,7 +106,7 @@ const fetchUserDetailsFromJenrin = async (email: string) => {
         const { data } = await axios(options);
         return data;
     }
-};
+}
 
 export const useVarifyUser = (email: string, onSuccess?: any, onError?: any) => {
     return useQuery(["fetchUserDetailsFromJenrin", email], () => fetchUserDetailsFromJenrin(email), {

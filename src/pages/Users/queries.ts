@@ -32,7 +32,7 @@ const getDspList = async (pageParam: number, searchTerm: string, sortOrder: { so
 
 export const DspListSet = (query: string, sortOrder: { sortBy: string, order: string }, customerId: string, filterParams?: { [key: string]: string[] }) => {
     return useInfiniteQuery(["getDspList", query, sortOrder, filterParams, customerId], ({ pageParam = 0 }) => getDspList(pageParam, query, sortOrder, customerId, filterParams), {
-        getNextPageParam: (lastGroup: any) => {
+        getNextPageParam: function (lastGroup: any) {
             if (lastGroup.data.pagination.offset < lastGroup.data.pagination.totalCount) {
                 return lastGroup.data.pagination.offset + 15;
             }
