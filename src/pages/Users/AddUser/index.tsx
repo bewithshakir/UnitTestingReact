@@ -175,13 +175,13 @@ const AddUser: React.FC<AddUserProps> = () => {
     };
 
     // eslint-disable-next-line no-console
-    // console.log("-----", formik);
+    console.log("-----", formik.values);
     // eslint-disable-next-line no-console
     // console.log("🚀 ~ file: index.tsx ~ line 393 ~ userGroupList", userGroupList);
     // eslint-disable-next-line no-console
     // console.log("🚀 ~ file: index.tsx ~ line 393 ~ dspList", dspList);
     // eslint-disable-next-line no-console
-    // console.log("🚀 ~ file: index.tsx ~ line 393 ~ verifiedUserData", verifiedUserData);
+    console.log("🚀 ~ file: index.tsx ~ line 393 ~ verifiedUserData", verifiedUserData);
     // eslint-disable-next-line no-console
     // console.log("🚀 ~ file: index.tsx ~ line 393 ~ userPermissionList", userPermissionList);
 
@@ -294,7 +294,7 @@ const AddUser: React.FC<AddUserProps> = () => {
                     </Grid>
                     {(formik.values?.userGroup?.label?.toLowerCase() === userGroupStr.toLowerCase()) && (
                         <Grid item xs={12} md={12}>
-                            <Grid item xs={12} md={6} pr={2.5} pb={2.5} data-testid="abc">
+                            <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
                                 <Select
                                     id='dsp'
                                     name='dsp'
@@ -325,6 +325,7 @@ const AddUser: React.FC<AddUserProps> = () => {
                                     <RadioGroup
                                         aria-label="user-access-permission"
                                         defaultValue=""
+                                        data-testid="qxy"
                                         id="userAccessLevel"
                                         name="userAccessLevel"
                                         value={formik.values.userAccessLevel}
@@ -332,11 +333,13 @@ const AddUser: React.FC<AddUserProps> = () => {
                                     >
                                         {userPermissionList?.map((perObj: any, index: any) => (
                                             <FormControlLabel
-                                                id={`userAccessLevel-${index}`}
                                                 key={perObj.value}
                                                 value={perObj.value}
                                                 sx={{ ...userAccessLevelSX }}
                                                 control={<Radio
+                                                    role="radio"
+                                                    name={perObj.label}
+                                                    id={`userAccessLevel-${index}`}
                                                     sx={{
                                                         '&.Mui-checked': {
                                                             color: "var(--Gray)",

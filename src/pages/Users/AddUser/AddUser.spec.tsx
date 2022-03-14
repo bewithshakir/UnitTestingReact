@@ -57,26 +57,36 @@ describe('renders AddUser component for add mode', () => {
 
         it('enable save button when all mendatory fields are filled', async () => {
 
-            const { userEmailElem, userGroupElem, userDSP, verifyUserLink, saveBtn, userAccessLevel } = getAllElements(result);
+            const { userEmailElem, userGroupElem, userDSP, verifyUserLink, saveBtn, userNameElem, userAccessLevel } = getAllElements(result);
 
             // Choose USER GROUP
             await selectEvent.select(userGroupElem, ["DSP"]);
 
             // Type EMAIL
-            fireEvent.change(userEmailElem, { target: { value: 'xyz@gmail.com' } });
+            await waitFor(() => {
+                fireEvent.change(userEmailElem, { target: { value: 'xyz@gmail.com' } });
+            });
 
             // Click Verify
-            await waitFor(() => {
+            act(() => {
                 userEvent.click(verifyUserLink);
             });
 
             // Find USER NAME OR Phone
             await waitFor(() => {
-                expect(result.getByText(/Nikhil/i)).toBeInTheDocument();
+                expect(userNameElem).toHaveValue("Nikhil Patel");
             });
 
             // Select USER GROUP ACCESS LEVEL
-            await userEvent.click(userAccessLevel);
+            result.debug(await result.findByTestId('qxy'));
+            // await waitFor(() => {
+            //     const button = result.getByRole("radio", { name: "View only" }) as HTMLInputElement;
+            //     const leftClick = { button: 0 };
+
+            //     userEvent.click(button, leftClick);
+
+            //     expect(button.checked).toBe(true);
+            // });
 
             // Choose DSP
             await waitFor(() => {

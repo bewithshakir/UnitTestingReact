@@ -23,7 +23,7 @@ export const addUserHandler = () => {
 };
 
 export const verifyUserHandler = () => {
-    return rest.post('*/api/user-service/users/verification/janrain*', (req, res, ctx) => {
+    return rest.get('*/api/user-service/users/verification/janrain*', (req, res, ctx) => {
         // const email = req.url.searchParams.get('email');
         // if (email === 'xyz@gmail.com') {
         return res(

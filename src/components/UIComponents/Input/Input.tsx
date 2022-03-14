@@ -29,7 +29,7 @@ export interface InputProps {
   startAdornment?: any;
 }
 
-export default function Input(props: InputProps) {
+export default function Input (props: InputProps) {
 
   return (
     <Fragment>
@@ -41,6 +41,7 @@ export default function Input(props: InputProps) {
         ) : props.label}
         <InputBase
           id={props.id}
+          data-testid={props.id}
           ref={props.innerRef}
           style={{ width: props.width }}
           aria-describedby={props.description}
