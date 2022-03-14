@@ -86,7 +86,7 @@ const AddUser: React.FC<AddUserProps> = () => {
     const onErrorAddUser = (err: any) => {
         const { data } = err.response;
         formik.resetForm({ values: formik.values });
-        setFormStatus({ message: data?.error?.details[0] || t("formStatusProps.error.message"), type: 'Error' });
+        setFormStatus({ message: data?.error?.message || t("formStatusProps.error.message"), type: 'Error' });
     };
     const { mutate: addNewUser, isSuccess: isSuccessAddUser, isError: isErrorAddUser, isLoading: isLoadingAddUser } = useAddUser(onSuccessAddUser, onErrorAddUser);
     const createUserData = (form: UserModel) => {
@@ -173,22 +173,6 @@ const AddUser: React.FC<AddUserProps> = () => {
             return true;
         }
     };
-
-    // eslint-disable-next-line no-console
-    console.log("-----", formik.values);
-    // eslint-disable-next-line no-console
-    // console.log("🚀 ~ file: index.tsx ~ line 393 ~ userGroupList", userGroupList);
-    // eslint-disable-next-line no-console
-    // console.log("🚀 ~ file: index.tsx ~ line 393 ~ dspList", dspList);
-    // eslint-disable-next-line no-console
-    console.log("🚀 ~ file: index.tsx ~ line 393 ~ verifiedUserData", verifiedUserData);
-    // eslint-disable-next-line no-console
-    // console.log("🚀 ~ file: index.tsx ~ line 393 ~ userPermissionList", userPermissionList);
-
-    // eslint-disable-next-line no-console
-    // console.log("🚀 ~ file: index.tsx ~ line 387 ~ addedCustomerId", addedCustomerId);
-    // eslint-disable-next-line no-console
-    // console.log("🚀 ~ file: index.tsx ~ line 387 ~ selectedPaymentType", selectedPaymentType);
 
     return (
         <Grid item xl={7} lg={8}>

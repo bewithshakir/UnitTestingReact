@@ -1,12 +1,8 @@
-import { act, cleanup, fireEvent, RenderResult, waitFor } from "@testing-library/react";
+import { cleanup, fireEvent, RenderResult, waitFor } from "@testing-library/react";
 import userEvent from '@testing-library/user-event';
-// import { rest } from "msw";
 import selectEvent from 'react-select-event';
-// import { serverMsw } from "../../../setupTests";
 import { renderWithClient } from '../../../tests/utils';
 import AddUser from "./index";
-// import * as Formik from 'formik';
-
 
 jest.mock('react-router-dom', () => ({
     useNavigate: () => ({
@@ -40,98 +36,91 @@ function getAllElements (component: RenderResult) {
 
 
 afterEach(cleanup);
-describe('renders AddUser component for add mode', () => {
-    let result: RenderResult;
-    beforeEach(() => {
-        result = renderWithClient(<AddUser version="Breadcrumbs-Single" />);
-    });
 
-    it('renders all mendatory fields with blank value on add mode', () => {
-        const { formElem, saveBtn } = getAllElements(result);
-        expect(formElem).toBeInTheDocument();
-        expect(saveBtn).toBeDisabled();
-    });
+describe('AddUser with success', () => {
+    it('Add user with success save', async () => {
+        const result = renderWithClient(<AddUser version="Breadcrumbs-Single" />);
+        const { userEmailElem, userGroupElem, verifyUserLink, saveBtn, userNameElem } = getAllElements(result);
 
-    describe('AddUser screen on add mode', () => {
+        // Choose USER GROUP
+        await selectEvent.select(userGroupElem, ["DSP"]);
 
-        it('enable save button when all mendatory fields are filled', async () => {
+        // Type EMAIL
+        await waitFor(() => {
+            fireEvent.change(userEmailElem, { target: { value: 'xyz@gmail.com' } });
+        });
 
-            const { userEmailElem, userGroupElem, verifyUserLink, saveBtn, userNameElem } = getAllElements(result);
+        // Click Verify
+        await userEvent.click(verifyUserLink);
 
-            // Choose USER GROUP
-            await selectEvent.select(userGroupElem, ["DSP"]);
+        // Find USER NAME OR Phone
+        await waitFor(() => {
+            expect(userNameElem).toHaveValue("Nikhil Patel");
+        });
 
-            // Type EMAIL
-            await waitFor(() => {
-                fireEvent.change(userEmailElem, { target: { value: 'xyz@gmail.com' } });
-            });
+        // Select USER GROUP ACCESS LEVEL
+        const viewOnlyRadio = result.getByRole("radio", { name: "View only" }) as HTMLInputElement;
+        fireEvent.click(viewOnlyRadio);
 
-            // Click Verify
-            act(() => {
-                userEvent.click(verifyUserLink);
-            });
+        // Choose DSP
+        await waitFor(() => {
+            const userDSP = result.container.querySelector('#dsp') as HTMLInputElement;
+            selectEvent.select(userDSP, ["KrrishTest"]);
+        });
 
-            // Find USER NAME OR Phone
-            await waitFor(() => {
-                expect(userNameElem).toHaveValue("Nikhil Patel");
-            });
+        // Click Save
+        await waitFor(() => {
+            expect(saveBtn).toBeEnabled();
+            userEvent.click(saveBtn);
+        });
 
-            // Select USER GROUP ACCESS LEVEL
-            const viewOnlyRadio = result.getByRole("radio", { name: "View only" }) as HTMLInputElement;
-            fireEvent.click(viewOnlyRadio);
-
-            // Choose DSP
-            await waitFor(() => {
-                const userDSP = result.container.querySelector('#dsp') as HTMLInputElement;
-                selectEvent.select(userDSP, ["KrrishTest"]);
-            });
-
-            // Click Save
-            await waitFor(() => {
-                expect(saveBtn).toBeEnabled();
-                userEvent.click(saveBtn);
-            });
-
-            // Final Success Toast
-            await waitFor(() => {
-                expect(result.getByText('formStatusProps.success.message')).toBeInTheDocument();
-            });
+        // Final Success Toast
+        await waitFor(() => {
+            expect(result.getByText('formStatusProps.success.message')).toBeInTheDocument();
         });
     });
 });
 
+describe('AddUser with Error', () => {
+    it('Add user with error on save', async () => {
+        const result = renderWithClient(<AddUser version="Breadcrumbs-Single" />);
+        const { userEmailElem, userGroupElem, verifyUserLink, saveBtn, userNameElem } = getAllElements(result);
 
-/*
-it('show toaster with error message on save button clicked', async () => {
-           serverMsw.use(
-               rest.post('*', (req, res, ctx) => {
-                   return res(
-                       ctx.status(500),
-                       ctx.json({
-                           data: null,
-                           error: {
-                               businessCode: 111,
-                               details: null,
-                               httpCode: 409,
-                               message: "fail add asset"
-                           }
-                       })
-                   );
-               })
-           );
+        // Choose USER GROUP
+        await selectEvent.select(userGroupElem, ["DSP"]);
 
-           const { userGroupElem, userDSP, saveBtn } = getAllElements(result);
-           fireEvent.change(userGroupElem, { target: { value: 'John' } });
-           await selectEvent.select(userDSP, ["Enabled"]);
+        // Type EMAIL
+        await waitFor(() => {
+            fireEvent.change(userEmailElem, { target: { value: 'abc@gmail.com' } });
+        });
 
-           await waitFor(() => {
-               userEvent.tab();
-               expect(saveBtn).toBeEnabled();
-               userEvent.click(saveBtn);
-           });
-           await waitFor(() => {
-               expect(result.getByText(/fail add asset/i)).toBeInTheDocument();
-               expect(saveBtn).toBeDisabled();
-           });
-       });
-*/
+        // Click Verify
+        await userEvent.click(verifyUserLink);
+
+        // Find USER NAME OR Phone
+        await waitFor(() => {
+            expect(userNameElem).toHaveValue("Nikhil Patel");
+        });
+
+        // Select USER GROUP ACCESS LEVEL
+        const viewOnlyRadio = result.getByRole("radio", { name: "View only" }) as HTMLInputElement;
+        fireEvent.click(viewOnlyRadio);
+
+        // Choose DSP
+        await waitFor(() => {
+            const userDSP = result.container.querySelector('#dsp') as HTMLInputElement;
+            selectEvent.select(userDSP, ["KrrishTest"]);
+        });
+
+        // Click Save
+        await waitFor(() => {
+            expect(saveBtn).toBeEnabled();
+            userEvent.click(saveBtn);
+        });
+
+        // Final Error Toast
+        await waitFor(() => {
+            expect(result.getByText('Shell Digital account with given is already added')).toBeInTheDocument();
+        });
+    });
+});

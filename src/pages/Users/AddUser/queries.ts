@@ -98,8 +98,6 @@ export const userGetUserDSPList = (customerId: string, countryCode: string) => {
 };
 
 const fetchUserDetailsFromJenrin = async (email: string) => {
-    // eslint-disable-next-line no-console
-    console.log("🚀 ~ file: queries.ts ~ line 101 ~ fetchUserDetailsFromJenrin ~ email", email);
     if (email) {
         const options: AxiosRequestConfig = {
             method: 'get',

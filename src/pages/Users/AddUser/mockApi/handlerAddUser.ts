@@ -1,11 +1,13 @@
 import { rest } from "msw";
+import { PayloadAddUserInt } from '../queries';
 
 export const addUserHandler = () => {
     return rest.post('*/api/user-service/users', (req, res, ctx) => {
+        const { email } = req.body as PayloadAddUserInt;
         return res(
-            ctx.status(200),
+            ctx.status(email === "xyz@gmail.com" ? 200 : 500),
             ctx.json({
-                data: {
+                data: email === "xyz@gmail.com" ? {
                     shellDigitalAccountId: "12345",
                     customerId: "123",
                     firstNm: "Nikhil",
@@ -15,8 +17,13 @@ export const addUserHandler = () => {
                     userGroupCd: "555",
                     countryCd: "us",
                     dspId: "01c4"
-                },
-                error: null
+                } : null,
+                error: email === "xyz@gmail.com" ? null : {
+                    businessCode: 102,
+                    details: ["Shell Digital account with given is already added"],
+                    httpCode: 500,
+                    message: "Shell Digital account with given is already added"
+                }
             })
         );
     });
@@ -24,12 +31,13 @@ export const addUserHandler = () => {
 
 export const verifyUserHandler = () => {
     return rest.get('*/api/user-service/users/verification/janrain*', (req, res, ctx) => {
+        const email = req.url.searchParams.get('email');
         return res(
             ctx.status(200),
             ctx.json({
                 data: {
                     userProfile: {
-                        email: "xyz@gmail.com",
+                        email: email,
                         firstName: "Nikhil",
                         lastName: "Patel",
                         mobile: null,
