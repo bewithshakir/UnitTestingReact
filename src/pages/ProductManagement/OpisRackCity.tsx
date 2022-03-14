@@ -4,7 +4,7 @@ import MultiSelect from '../../components/UIComponents/Select/MultiSelect';
 import Input from '../../components/UIComponents/Input/Input';
 import { useTranslation } from 'react-i18next';
 import SupplierRack from './SupplierRackPrice';
-
+import {ServedCity, ServedCityOptions, SelectProps} from './config';
 import { Grid } from "@mui/material";
 import { useGetServedCities, useGetSupplierBrandProducts } from "./queries";
 
@@ -16,21 +16,6 @@ type Props = {
     isSaveCancelShown: boolean,
     productId?:string
 }
-interface ServedCity {
-    city?: string
-    cityId?: number
-    countryCd?: string
-    opisServedCityId?: string
-    state?: string
-}
-interface ServedCityOptions extends ServedCity {
-    label: string
-    value: string
-}
-interface GeneralOptions {
-    label: string
-    value: string
-}
 
 const getOptions = (dataArr?: string[]) => {
     return dataArr?.map(item => ({ label: item, value: item })) || [];
@@ -40,10 +25,10 @@ export default function OpisRackCity({ isDisabled, formik, setSupplierPrice, isS
 
     const { t } = useTranslation();
     const [cities, setCities] = useState<ServedCityOptions[]>([]);
-    const [suppliers, setSuppliers] = useState<GeneralOptions[]>([]);
-    const [brandedList, setbrandedList] = useState<GeneralOptions[]>([]);
+    const [suppliers, setSuppliers] = useState<SelectProps[]>([]);
+    const [brandedList, setbrandedList] = useState<SelectProps[]>([]);
     const [viewProductCity, setViewProductCity] = useState<any>(null);
-    const [actualProductList, setActualProductList] = useState<GeneralOptions[]>([]);
+    const [actualProductList, setActualProductList] = useState<SelectProps[]>([]);
     const [resetSupplierValue, setResetSupplierValue] = useState<number | null>(null);
 
     const { data: servedCities } = useGetServedCities();
@@ -121,7 +106,7 @@ export default function OpisRackCity({ isDisabled, formik, setSupplierPrice, isS
             return JSON.parse(JSON.stringify((formik.errors as any)[name])) ;
         }
         return undefined;
-    }
+    };
 
     const getFormFieldHelperText = (name: string, fieldType: string) => {
         if ((formik.touched as any)[name] && (formik.errors as any)[name]) {
