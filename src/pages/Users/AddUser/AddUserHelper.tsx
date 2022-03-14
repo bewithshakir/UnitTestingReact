@@ -1,4 +1,4 @@
-import { Box, FormControl, FormControlLabel, Grid, Icon, Radio, RadioGroup, Typography } from '@mui/material';
+import { Box, Link, FormControl, FormControlLabel, Grid, Icon, Radio, RadioGroup, Typography } from '@mui/material';
 import Select from '../../../components/UIComponents/Select/SingleSelect';
 import { AlertExclamationIcon, LoadingIcon, PositiveCricleIcon } from '../../../assets/icons';
 import { getCountryCode } from '../../../navigation/utils';
@@ -164,4 +164,28 @@ export const renderDSPDOM = (dspList: any, formik: any, t: any) => (
             </Grid>
         </Grid>
     )
+);
+
+// Display User Varification Section Handler
+export const renderUserVerificationDOM = (showVerifyLink: boolean, userVerificationLoading: boolean, verifiedUserData: any, formik: any, onClickVerifyUser: any) => (
+    <Grid item xs={12} md={6} pr={2.5} pt={isEmailErrorExist(formik) ? 0 : 3.5} pb={2.5} display="flex" alignItems="center">
+        {
+            showVerifyLink ?
+                <Link
+                    variant="body2"
+                    id="verify-user-link"
+                    className="add-link"
+                    onClick={onClickVerifyUser}
+                    sx={{ cursor: "pointer", color: "var(--Primary)" }}
+                >
+                    <Typography variant="h4" color="var(--Primary)" className="fw-bold" mb={1}>
+                        Verify
+                    </Typography>
+                </Link>
+                :
+                <Box>
+                    {renderVerficationProcess(userVerificationLoading, verifiedUserData)}
+                </Box>
+        }
+    </Grid>
 );

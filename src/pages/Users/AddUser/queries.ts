@@ -83,6 +83,8 @@ async function fetchUserDSPList (customerId: string, countryCode: string) {
         };
         const { data } = await axios(options);
         return data;
+    } else {
+        return {};
     }
 }
 
@@ -105,6 +107,8 @@ async function fetchUserDetailsFromJenrin (email: string) {
         };
         const { data } = await axios(options);
         return data;
+    } else {
+        return {};
     }
 }
 

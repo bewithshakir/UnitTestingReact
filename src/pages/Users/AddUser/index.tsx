@@ -1,4 +1,4 @@
-import { Box, Grid, Link, Typography } from '@mui/material';
+import { Box, Grid, Typography } from '@mui/material';
 import { useFormik } from 'formik';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -11,9 +11,9 @@ import UserModel from "../../../models/UserModel";
 import { HorizontalBarVersionState, useAddedCustomerIdStore, useAddedCustomerPaymentTypeStore, useShowConfirmationDialogBoxStore, useStore } from '../../../store';
 import { toastSuccessKey } from '../../../utils/constants';
 import {
-    disableButton, emailHelperText, isEmailErrorExist, isPhoneErrorExist, isUserGroupErrorExist, isUserNameErrorExist, onClickCancel,
-    onSuccessVerfyUser, phoneHelperText, renderButtonLoader, renderDSPDOM, renderUserAccessDOM, renderVerficationProcess,
-    showToast, userGroupHelperText, userNameHelperText, validateForm
+    disableButton, emailHelperText, isEmailErrorExist, isPhoneErrorExist, isUserGroupErrorExist, isUserNameErrorExist,
+    onSuccessVerfyUser, phoneHelperText, renderButtonLoader, renderDSPDOM, renderUserAccessDOM, onClickCancel,
+    showToast, userGroupHelperText, userNameHelperText, validateForm, renderUserVerificationDOM
 } from './AddUserHelper';
 import {
     useAddUser, useEditUserData, useGetUserGroupTypes, useGetUserPermissionList,
@@ -49,8 +49,7 @@ const AddUser: React.FC<AddUserProps> = () => {
     const { data: userPermissionList } = useGetUserPermissionList('us');
 
     // Verify User
-    const { data: verifiedUserData,
-        isLoading: userVerificationLoading } = useVarifyUser(userEmail, (response: any) => onSuccessVerfyUser(response, formik, addedCustomerId));
+    const { data: verifiedUserData, isLoading: userVerificationLoading } = useVarifyUser(userEmail, (response: any) => onSuccessVerfyUser(response, formik, addedCustomerId));
 
     useEffect(() => {
         setVersion("Breadcrumbs-Many");
@@ -201,27 +200,8 @@ const AddUser: React.FC<AddUserProps> = () => {
                             required
                         />
                     </Grid>
-                    <Grid item xs={12} md={6} pr={2.5} pt={isEmailErrorExist(formik) ? 0 : 3.5} pb={2.5} display="flex" alignItems="center">
-                        {
-                            showVerifyLink ?
-                                <Link
-                                    variant="body2"
-                                    id="verify-user-link"
-                                    className="add-link"
-                                    onClick={onClickVerifyUser}
-                                    sx={{ cursor: "pointer", color: "var(--Primary)" }}
-                                >
-                                    <Typography variant="h4" color="var(--Primary)" className="fw-bold" mb={1}>
-                                        Verify
-                                    </Typography>
-                                </Link>
-                                :
-                                <Box>
-                                    {renderVerficationProcess(userVerificationLoading, verifiedUserData)}
-                                </Box>
+                    {renderUserVerificationDOM(showVerifyLink, userVerificationLoading, verifiedUserData, formik, onClickVerifyUser)}
 
-                        }
-                    </Grid>
                     <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
                         <Input
                             id='userName'
