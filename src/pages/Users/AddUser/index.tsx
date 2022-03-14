@@ -14,6 +14,7 @@ import Select from '../../../components/UIComponents/Select/SingleSelect';
 import { AddUserSchema } from "./validation";
 import { userAccessLevelSX, userGroupStr } from '../config';
 import { getCountryCode } from '../../../navigation/utils';
+import { toastErrorKey, toastSuccessKey } from '../../../utils/constants';
 
 const initialValues = new UserModel();
 interface AddUserProps {
@@ -42,13 +43,6 @@ const AddUser: React.FC<AddUserProps> = () => {
     const { data: dspList } = userGetUserDSPList(addedCustomerId, 'us');
     const { data: userPermissionList } = useGetUserPermissionList('us');
 
-    const setToast = (responseMsg: string, isSuccess: boolean) => {
-        if (isSuccess) {
-            setFormStatus({ message: responseMsg || t("formStatusProps.success.message"), type: 'Success' });
-        } else {
-            setFormStatus({ message: responseMsg || t("formStatusProps.error.message"), type: 'Error' });
-        }
-    };
     // Verify User
     const onSuccessVerfyUser = (response: any) => {
         formik.setFieldValue('countryCd', getCountryCode());
@@ -91,19 +85,19 @@ const AddUser: React.FC<AddUserProps> = () => {
     const onSuccessAddUser = () => {
         isFormValidated(false);
         formik.resetForm({ values: formik.values });
-        setToast('', true);
+        setFormStatus({ message: t(toastSuccessKey), type: 'Success' });
     };
     const onErrorAddUser = (err: any) => {
         const { data } = err.response;
         formik.setSubmitting(false);
-        setToast(data?.error?.message, false);
+        setFormStatus({ message: data?.error?.message, type: 'Error' });
     };
     const { mutate: addNewUser, isSuccess: isSuccessAddUser, isError: isErrorAddUser, isLoading: isLoadingAddUser } = useAddUser(onSuccessAddUser, onErrorAddUser);
     const createUserData = (form: UserModel) => {
         try {
             addNewUser(form);
         } catch (error) {
-            setToast('', false);
+            setFormStatus({ message: t(toastErrorKey), type: 'Error' });
         }
     };
 
@@ -122,16 +116,16 @@ const AddUser: React.FC<AddUserProps> = () => {
     };
     const onErrorUserDetail = (error: any) => {
         setEditMode(true);
-        setToast(error?.response.data.error?.details[0], false);
+        setFormStatus({ message: error?.response.data.error?.details[0], type: 'Error' });
     };
     const { isError: isErrorUserData } = useEditUserData(addedCustomerId, userId, onSuccessUserDetail, onErrorUserDetail);
 
     const handleUpdateUserRepose = (isSuccess: boolean, data?: any) => {
         if (isSuccess) {
             isFormValidated(false);
-            setToast('', true);
+            setFormStatus({ message: t(toastSuccessKey), type: 'Success' });
         } else {
-            setToast(data?.error?.details[0], false);
+            setFormStatus({ message: data?.error?.message, type: 'Error' });
         }
         formik.resetForm({ values: formik.values });
     };
