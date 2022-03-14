@@ -56,6 +56,13 @@ const AddUser: React.FC<AddUserProps> = () => {
         }
     };
 
+    const setToast = (message: string, isSuccess: boolean) => {
+        if (isSuccess) {
+            setFormStatus({ message: message || t("formStatusProps.success.message"), type: 'Success' });
+        } else {
+            setFormStatus({ message: message || t("formStatusProps.error.message"), type: 'Error' });
+        }
+    };
     // Verify User
     const onSuccessVerfyUser = (response: any) => {
         if (response) {
@@ -90,19 +97,19 @@ const AddUser: React.FC<AddUserProps> = () => {
     const onSuccessAddUser = () => {
         isFormValidated(false);
         formik.resetForm({ values: formik.values });
-        setFormStatus({ message: t("formStatusProps.success.message"), type: 'Success' });
+        setToast('', true);
     };
     const onErrorAddUser = (err: any) => {
         const { data } = err.response;
         formik.setSubmitting(false);
-        setFormStatus({ message: data?.error?.message || t("formStatusProps.error.message"), type: 'Error' });
+        setToast(data?.error?.message, false);
     };
     const { mutate: addNewUser, isSuccess: isSuccessAddUser, isError: isErrorAddUser, isLoading: isLoadingAddUser } = useAddUser(onSuccessAddUser, onErrorAddUser);
     const createUserData = (form: UserModel) => {
         try {
             addNewUser(form);
         } catch (error) {
-            setFormStatus({ message: t("formStatusProps.error.message"), type: 'Error' });
+            setToast('', false);
         }
     };
 
@@ -121,16 +128,16 @@ const AddUser: React.FC<AddUserProps> = () => {
     };
     const onErrorUserDetail = (error: any) => {
         setEditMode(true);
-        setFormStatus({ message: error?.response.data.error?.details[0] || t("formStatusProps.error.message"), type: 'Error' });
+        setToast(error?.response.data.error?.details[0], false);
     };
     const { isError: isErrorUserData } = useEditUserData(addedCustomerId, userId, onSuccessUserDetail, onErrorUserDetail);
 
     const handleUpdateUserRepose = (isSuccess: boolean, data?: any) => {
         if (isSuccess) {
             isFormValidated(false);
-            setFormStatus({ message: t("formStatusProps.success.message"), type: 'Success' });
+            setToast('', true);
         } else {
-            setFormStatus({ message: data?.error?.details[0] || t("formStatusProps.error.message"), type: 'Error' });
+            setToast(data?.error?.details[0], false);
         }
         formik.resetForm({ values: formik.values });
     };

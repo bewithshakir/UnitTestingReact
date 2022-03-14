@@ -4,21 +4,22 @@ import { PayloadAddUserInt } from '../queries';
 export const addUserHandler = () => {
     return rest.post('*/api/user-service/users', (req, res, ctx) => {
         const { email } = req.body as PayloadAddUserInt;
+        const passedEmail = "xyz@gmail.com";
         return res(
-            ctx.status(email === "xyz@gmail.com" ? 200 : 500),
+            ctx.status(email === passedEmail ? 200 : 500),
             ctx.json({
-                data: email === "xyz@gmail.com" ? {
+                data: email === passedEmail ? {
                     shellDigitalAccountId: "12345",
                     customerId: "123",
                     firstNm: "Nikhil",
                     lastNm: "Patel",
-                    email: "xyz@gmail.com",
+                    email: passedEmail,
                     permissionTypeCd: "5932",
                     userGroupCd: "555",
                     countryCd: "us",
                     dspId: "01c4"
                 } : null,
-                error: email === "xyz@gmail.com" ? null : {
+                error: email === passedEmail ? null : {
                     businessCode: 102,
                     details: ["Shell Digital account with given is already added"],
                     httpCode: 500,
