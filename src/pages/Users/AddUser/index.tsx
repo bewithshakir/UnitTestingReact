@@ -9,16 +9,15 @@ import Select from '../../../components/UIComponents/Select/SingleSelect';
 import ToastMessage from '../../../components/UIComponents/ToastMessage/ToastMessage.component';
 import UserModel from "../../../models/UserModel";
 import { HorizontalBarVersionState, useAddedCustomerIdStore, useAddedCustomerPaymentTypeStore, useShowConfirmationDialogBoxStore, useStore } from '../../../store';
-import { toastErrorKey, toastSuccessKey } from '../../../utils/constants';
-import { userGroupStr } from '../config';
+import { toastSuccessKey } from '../../../utils/constants';
 import {
-    disableButton, isDSPErrorExist, isEmailErrorExist, isPhoneErrorExist, isUserGroupErrorExist,
-    isUserNameErrorExist, onClickCancel, onSuccessVerfyUser, renderButtonLoader, renderUserAccessDOM, dspHelperText,
-    renderVerficationProcess, showToast, userNameHelperText, userGroupHelperText, emailHelperText, phoneHelperText
+    disableButton, emailHelperText, isEmailErrorExist, isPhoneErrorExist, isUserGroupErrorExist, isUserNameErrorExist, onClickCancel,
+    onSuccessVerfyUser, phoneHelperText, renderButtonLoader, renderDSPDOM, renderUserAccessDOM, renderVerficationProcess,
+    showToast, userGroupHelperText, userNameHelperText, validateForm
 } from './AddUserHelper';
 import {
     useAddUser, useEditUserData, useGetUserGroupTypes, useGetUserPermissionList,
-    userGetUserDSPList, UserGoupsInt, useUpdateUserData, useVarifyUser,
+    userGetUserDSPList, UserGoupsInt, useUpdateUserData, useVarifyUser
 } from './queries';
 import { AddUserSchema } from "./validation";
 
@@ -83,11 +82,7 @@ const AddUser: React.FC<AddUserProps> = () => {
     };
     const { mutate: addNewUser, isSuccess: isSuccessAddUser, isError: isErrorAddUser, isLoading: isLoadingAddUser } = useAddUser(onSuccessAddUser, onErrorAddUser);
     const createUserData = (form: UserModel) => {
-        try {
-            addNewUser(form);
-        } catch (error) {
-            setFormStatus({ message: t(toastErrorKey), type: 'Error' });
-        }
+        addNewUser(form);
     };
     // Add User End
 
@@ -152,11 +147,7 @@ const AddUser: React.FC<AddUserProps> = () => {
     });
 
     useEffect(() => {
-        if (!formik.isValid || formik.dirty) {
-            isFormValidated(true);
-        } else {
-            isFormValidated(false);
-        }
+        validateForm(formik, isFormValidated);
     }, [formik.isValid, formik.dirty]);
 
     return (
@@ -197,6 +188,7 @@ const AddUser: React.FC<AddUserProps> = () => {
                             name='email'
                             label={t("addUser.form.email")}
                             type='text'
+                            value={formik.values.email}
                             helperText={emailHelperText(formik)}
                             error={isEmailErrorExist(formik)}
                             description=''
@@ -257,29 +249,8 @@ const AddUser: React.FC<AddUserProps> = () => {
                             {...formik.getFieldProps('phone')}
                         />
                     </Grid>
-                    {(formik.values?.userGroup?.label?.toLowerCase() === userGroupStr.toLowerCase()) && (
-                        <Grid item xs={12} md={12}>
-                            <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
-                                <Select
-                                    id='dsp'
-                                    name='dsp'
-                                    label={t("addUser.form.dsp")}
-                                    placeholder='Choose'
-                                    value={formik.values.dsp}
-                                    items={dspList}
-                                    helperText={dspHelperText(formik)}
-                                    error={isDSPErrorExist(formik)}
-                                    onChange={formik.setFieldValue}
-                                    onBlur={() => {
-                                        formik.setFieldTouched("dsp");
-                                        formik.validateField("dsp");
-                                    }}
-                                    noOptionsMessage={() => "No data available Please create/add the DSP first to create/add a user"}
-                                    required
-                                />
-                            </Grid>
-                        </Grid>
-                    )}
+
+                    {renderDSPDOM(dspList, formik, t)}
 
                     {renderUserAccessDOM(userPermissionList, formik, t)}
 

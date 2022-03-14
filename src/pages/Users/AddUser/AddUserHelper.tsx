@@ -1,22 +1,25 @@
 import { Box, FormControl, FormControlLabel, Grid, Icon, Radio, RadioGroup, Typography } from '@mui/material';
+import Select from '../../../components/UIComponents/Select/SingleSelect';
 import { AlertExclamationIcon, LoadingIcon, PositiveCricleIcon } from '../../../assets/icons';
 import { getCountryCode } from '../../../navigation/utils';
-import { userAccessLevelSX } from '../config';
+import { userAccessLevelSX, userGroupStr } from '../config';
 
 //  Verify user Success Handler
 export const onSuccessVerfyUser = (response: any, formik: any, addedCustomerId: string) => {
-    formik.setFieldValue('countryCd', getCountryCode());
-    formik.setFieldValue('customerId', addedCustomerId);
-    if (response?.data?.verifiedUser) {
-        formik.setFieldValue('userId', response.data?.userProfile.uuid);
-        formik.setFieldValue('email', response.data?.userProfile.email);
-        formik.setFieldValue('phone', response.data?.userProfile.mobile || "");
-        formik.setFieldValue('userName', `${response.data?.userProfile.firstName} ${response.data?.userProfile.lastName}`);
-    } else {
-        formik.setFieldValue('userId', '');
-        formik.setFieldValue('email', '');
-        formik.setFieldValue('phone', '');
-        formik.setFieldValue('userName', '');
+    if (response) {
+        const { data } = response;
+        formik.setFieldValue('countryCd', getCountryCode());
+        formik.setFieldValue('customerId', addedCustomerId);
+        if (data?.verifiedUser) {
+            formik.setFieldValue('userId', data?.userProfile.uuid);
+            formik.setFieldValue('email', data?.userProfile.email);
+            formik.setFieldValue('userName', `${data?.userProfile.firstName} ${data?.userProfile.lastName}`);
+            formik.setFieldValue('phone', data?.userProfile.mobile || "");
+        } else {
+            formik.setFieldValue('userId', '');
+            formik.setFieldValue('phone', '');
+            formik.setFieldValue('userName', '');
+        }
     }
 };
 
@@ -33,7 +36,7 @@ export const renderVerficationProcess = (userVerificationLoading: boolean, verif
         <Box display="flex" alignItems="center" >
             <Icon sx={{ width: "20px", height: "20px", marginRight: 2 }} component={AlertExclamationIcon} />
             <Typography variant="h4" color="var(--Tertiary)" className="fw-bold" >
-                Janrain account doesn & apos; t exist for this email.
+                Janrain account doesn&apos;t exist for this email.
             </Typography>
         </Box>
     );
@@ -45,6 +48,14 @@ export const onClickCancel = (formik: any, addedCustomerId: string, showDialogBo
         showDialogBox(true);
     } else {
         navigate(`/customer/${addedCustomerId}/users`);
+    }
+};
+
+export const validateForm = (formik: any, isFormValidated: any) => {
+    if (!formik.isValid || formik.dirty) {
+        isFormValidated(true);
+    } else {
+        isFormValidated(false);
     }
 };
 
@@ -83,7 +94,7 @@ export const dspHelperText = (formik: any) => isDSPErrorExist(formik) ? formik?.
 
 
 // Display User Access Handler
-export const renderUserAccessDOM = (userPermissionList: any, formik: any, t: any) =>
+export const renderUserAccessDOM = (userPermissionList: any, formik: any, t: any) => (
     userPermissionList &&
     (<>
         <Grid item md={12} mt={3} mb={2}>
@@ -125,4 +136,32 @@ export const renderUserAccessDOM = (userPermissionList: any, formik: any, t: any
             </FormControl>
         </Grid>
     </>
-    );
+    )
+);
+
+// Display Dsp dropdown
+export const renderDSPDOM = (dspList: any, formik: any, t: any) => (
+    (formik.values?.userGroup?.label?.toLowerCase() === userGroupStr.toLowerCase()) && (
+        <Grid item xs={12} md={12}>
+            <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
+                <Select
+                    id='dsp'
+                    name='dsp'
+                    label={t("addUser.form.dsp")}
+                    placeholder='Choose'
+                    value={formik.values.dsp}
+                    items={dspList}
+                    helperText={dspHelperText(formik)}
+                    error={isDSPErrorExist(formik)}
+                    onChange={formik.setFieldValue}
+                    onBlur={() => {
+                        formik.setFieldTouched("dsp");
+                        formik.validateField("dsp");
+                    }}
+                    noOptionsMessage={() => "No data available Please create/add the DSP first to create/add a user"}
+                    required
+                />
+            </Grid>
+        </Grid>
+    )
+);
