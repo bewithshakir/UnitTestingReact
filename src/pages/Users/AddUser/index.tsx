@@ -51,23 +51,19 @@ const AddUser: React.FC<AddUserProps> = () => {
     };
     // Verify User
     const onSuccessVerfyUser = (response: any) => {
-        if (response) {
-            const { data } = response;
-            formik.setFieldValue('countryCd', getCountryCode());
-            formik.setFieldValue('customerId', addedCustomerId);
-            if (data?.verifiedUser) {
-                formik.setFieldValue('userId', data?.userProfile.uuid);
-                formik.setFieldValue('email', data?.userProfile.email);
-                if (data?.userProfile.mobile) {
-                    formik.setFieldValue('phone', data?.userProfile.mobile);
-                }
-                formik.setFieldValue('userName', `${data?.userProfile.firstName} ${data?.userProfile.lastName}`);
-            } else {
-                formik.setFieldValue('userId', '');
-                formik.setFieldValue('email', '');
-                formik.setFieldValue('phone', '');
-                formik.setFieldValue('userName', '');
-            }
+        formik.setFieldValue('countryCd', getCountryCode());
+        formik.setFieldValue('customerId', addedCustomerId);
+        if (response?.data && response.data?.verifiedUser) {
+            formik.setFieldValue('userId', response.data?.userProfile.uuid);
+            formik.setFieldValue('email', response.data?.userProfile.email);
+            formik.setFieldValue('phone', response.data?.userProfile.mobile);
+            formik.setFieldValue('userName', `${response.data?.userProfile.firstName} ${response.data?.userProfile.lastName}`);
+
+        } else {
+            formik.setFieldValue('userId', '');
+            formik.setFieldValue('email', '');
+            formik.setFieldValue('phone', '');
+            formik.setFieldValue('userName', '');
         }
     };
 
@@ -242,8 +238,9 @@ const AddUser: React.FC<AddUserProps> = () => {
 
     const showToast = () => (isErrorAddUser || isSuccessAddUser || isErrorUpdateUser || isSuccessUpdateUser || isErrorUserData);
 
-    // eslint-disable-next-line no-console
-    console.log("🚀 ~ file: index.tsx ~ line 198 ~ formik.values", formik.values);
+    const isEmailErrorExist = () => (formik.touched.email && formik.errors.email);
+    const isUserGroupErrorExist = () => (formik.touched.userGroup && formik.errors.userGroup);
+
     return (
         <Grid item xl={7} lg={8}>
             <form onSubmit={formik.handleSubmit} id='form'>
@@ -265,8 +262,8 @@ const AddUser: React.FC<AddUserProps> = () => {
                                 placeholder='Choose'
                                 value={formik.values.userGroup}
                                 items={userGroupList?.filter((usrGrpObj: UserGoupsInt) => usrGrpObj.type.includes(selectedPaymentType)) || []}
-                                helperText={(formik.touched.userGroup && formik.errors.userGroup) ? formik.errors.userGroup.value : undefined}
-                                error={(formik.touched.userGroup && formik.errors.userGroup) ? true : false}
+                                helperText={isUserGroupErrorExist() ? formik?.errors?.userGroup?.value : undefined}
+                                error={isUserGroupErrorExist() ? true : false}
                                 onChange={formik.setFieldValue}
                                 onBlur={() => {
                                     formik.setFieldTouched("userGroup");
@@ -282,8 +279,8 @@ const AddUser: React.FC<AddUserProps> = () => {
                             name='email'
                             label={t("addUser.form.email")}
                             type='text'
-                            helperText={(formik.touched.email && formik.errors.email) ? formik.errors.email : undefined}
-                            error={(formik.touched.email && formik.errors.email) ? true : false}
+                            helperText={isEmailErrorExist() ? formik.errors.email : undefined}
+                            error={isEmailErrorExist() ? true : false}
                             description=''
                             placeholder='Enter Email'
                             onChange={handleEmailChange}
@@ -294,7 +291,7 @@ const AddUser: React.FC<AddUserProps> = () => {
                             required
                         />
                     </Grid>
-                    <Grid item xs={12} md={6} pr={2.5} pt={formik.errors.email ? 0 : 3.5} pb={2.5} display="flex" alignItems="center">
+                    <Grid item xs={12} md={6} pr={2.5} pt={isEmailErrorExist() ? 0 : 3.5} pb={2.5} display="flex" alignItems="center">
                         {
                             (!showVerifyLink && (verifiedUserData || userVerificationLoading || verifyUserError)) ?
                                 <Box>
@@ -377,6 +374,7 @@ const AddUser: React.FC<AddUserProps> = () => {
                     )}
 
                     {renderUserAccessDOM()}
+
                     <Grid item xs={12} md={6} />
                     <Grid item md={12} pr={2.5} pb={2.5} mt={4}>
                         <Box className="form-action-section" alignItems="end">
