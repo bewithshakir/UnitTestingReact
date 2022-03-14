@@ -34,13 +34,16 @@ const Legend: React.FC = () => {
   };
 
   const isDisabled = (to: string) => {
-    if (to.includes('addCustomer') && (pathname.includes('addCustomer') || pathname.includes('viewCustomer') || pathname.includes('parkingLots') || pathname.includes('attachments') || pathname.includes('dsps') || pathname.includes('users'))) {
+    if (to.includes('addCustomer') && (pathname.includes('addCustomer') || pathname.includes('viewCustomer') ||
+      pathname.includes('parkingLots') || pathname.includes('attachments') || pathname.includes('dsps') || pathname.includes('users'))) {
       return false;
-    } else if (to.includes('parkingLots') && (pathname.includes('viewCustomer') || pathname.includes('parkingLots') || pathname.includes('attachments') || pathname.includes('dsps') || pathname.includes('users'))) {
+    } else if (to.includes('parkingLots') && (pathname.includes('viewCustomer') || pathname.includes('parkingLots')
+      || pathname.includes('attachments') || pathname.includes('dsps') || pathname.includes('users'))) {
       return false;
     } else if (to.includes('attachments') && pathname.includes('addCustomer')) {
       return true;
-    } else if (to.includes('attachments') && (pathname.includes('viewCustomer') || pathname.includes('parkingLots') || pathname.includes('attachments') || pathname.includes('dsps') || pathname.includes('users'))) {
+    } else if (to.includes('attachments') && (pathname.includes('viewCustomer') || pathname.includes('parkingLots')
+      || pathname.includes('attachments') || pathname.includes('dsps') || pathname.includes('users'))) {
       return false;
     } else if ((to.includes('dsps') || to.includes('users')) && selectedPaymentType === 'Voyager') {
       return false;
@@ -65,10 +68,9 @@ const Legend: React.FC = () => {
       if (pathnameSegArr.includes("viewCustomer")) {
         return true;
       }
-    } else {
-      const splitCongfigArr = configItem.to.split('/');
-      return pathname.includes(splitCongfigArr[splitCongfigArr.length - 1]);
     }
+    const splitCongfigArr = configItem.to.split('/');
+    return pathname.includes(splitCongfigArr[splitCongfigArr.length - 1]);
   };
 
   const getLegendHeader = () => {
