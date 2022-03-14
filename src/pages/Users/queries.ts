@@ -36,6 +36,7 @@ export const DspListSet = (query: string, sortOrder: { sortBy: string, order: st
             if (lastGroup.data.pagination.offset < lastGroup.data.pagination.totalCount) {
                 return lastGroup.data.pagination.offset + 15;
             }
+            return lastGroup.data.pagination.offset;
         },
         keepPreviousData: true
     });

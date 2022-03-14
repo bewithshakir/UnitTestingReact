@@ -74,37 +74,6 @@ export const getUserGroupsHandler = () =>
         )
     );
 
-export function getCustomerDSPHandler () {
-    return rest.get('*/api/customer-service/customers/*/dsps*', function (req, res, ctx) {
-        const skipPagination = req.url.searchParams.get('skipPagination');
-        if (skipPagination) {
-            return res(
-                ctx.status(200),
-                ctx.json({
-                    data: {
-                        dsps: [
-                            {
-                                address: "12343 Bonfire Dr",
-                                city: "Reisterstown",
-                                contactName: "harikrishna",
-                                customerId: "123",
-                                email: "abc@gmail.com",
-                                id: "01c4",
-                                lots: [],
-                                name: "KrrishTest",
-                                postalCode: "21136",
-                                state: "MD",
-                                totalLotAssigned: 0,
-                            },
-                        ]
-                    },
-                    error: null
-                })
-            );
-        }
-    });
-}
-
 export const getUserPermissionHandler = () =>
     rest.get('*api/user-service/users/permission-types*', (req, res, ctx) => {
         return res(
