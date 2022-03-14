@@ -47,12 +47,11 @@ const AddUser: React.FC<AddUserProps> = () => {
     const onSuccessVerfyUser = (response: any) => {
         formik.setFieldValue('countryCd', getCountryCode());
         formik.setFieldValue('customerId', addedCustomerId);
-        if (response?.data && response.data?.verifiedUser) {
+        if (response?.data?.verifiedUser) {
             formik.setFieldValue('userId', response.data?.userProfile.uuid);
             formik.setFieldValue('email', response.data?.userProfile.email);
             formik.setFieldValue('phone', response.data?.userProfile.mobile);
             formik.setFieldValue('userName', `${response.data?.userProfile.firstName} ${response.data?.userProfile.lastName}`);
-
         } else {
             formik.setFieldValue('userId', '');
             formik.setFieldValue('email', '');
