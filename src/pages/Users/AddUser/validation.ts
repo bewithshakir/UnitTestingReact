@@ -19,7 +19,10 @@ export const AddUserSchema = Yup.object().shape({
                 return true;
             }
         }),
-    email: Yup.string().email('Invalid email').required('Required'),
+    // email: Yup.string().email('Invalid email').required('Required'),
+    email: Yup.string().email('Invalid email')
+        .max(100, 'Email should be less then or equal to 100 characters.')
+        .required('Required'),
     userName: Yup.string().required('Required'),
     phone: Yup.string().matches(
         /^(?:\+?1[-.●]?)?\(?([0-9]{3})\)?[-.●]?([0-9]{3})[-.●]?([0-9]{4})$/,
