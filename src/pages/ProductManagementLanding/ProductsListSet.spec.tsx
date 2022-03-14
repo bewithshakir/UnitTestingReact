@@ -1,14 +1,15 @@
-import { renderHook } from '@testing-library/react-hooks';
+import { renderHook, act } from '@testing-library/react-hooks';
 import { createWrapper } from '../../tests/utils';
-import { useGetProductData } from './queries';
+import { ProductsListSet } from './queries';
 import { serverMsw } from "../../setupTests";
 import { rest } from 'msw';
 
-describe('useGetProductColors for useQuery method ', () => {
+describe('ProductsListSet for useInfiniteQuery method ', () => {
     it('successful returns data', async () => {
-        const { result, waitFor } = renderHook(() => useGetProductData('editproduct', jest.fn(), jest.fn()), {
+        const { result, waitFor } = renderHook(() => ProductsListSet("", { sortBy: "", order: "", }, {}), {
             wrapper: createWrapper()
         });
+        result.current.fetchNextPage();
         await waitFor(() => {
             return result.current.isSuccess;
         });
@@ -22,10 +23,10 @@ describe('useGetProductColors for useQuery method ', () => {
             })
         );
 
-        const { result, waitFor } = renderHook(() => useGetProductData('editproduct', jest.fn(), jest.fn()), {
+        const { result, waitFor } = renderHook(() => ProductsListSet("", { sortBy: "", order: "", }, {}), {
             wrapper: createWrapper()
         });
-
+        result.current.fetchNextPage();
         await waitFor(() => {
             return result.current.isError;
         });
