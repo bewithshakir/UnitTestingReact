@@ -110,15 +110,22 @@ export default function OpisRackCity({ isDisabled, formik, setSupplierPrice, isS
         return false;
     };
 
+    const setHelperTextByFieldType = (name: string, fieldType: string) => {
+        if (fieldType === 'select') {
+            return (formik.errors as any)[name]?.value;
+        }
+        if (fieldType === 'input') {
+            return (formik.errors as any)[name];
+        }
+        if (fieldType === 'multiselect') {
+            return JSON.parse(JSON.stringify((formik.errors as any)[name])) ;
+        }
+        return undefined;
+    }
+
     const getFormFieldHelperText = (name: string, fieldType: string) => {
         if ((formik.touched as any)[name] && (formik.errors as any)[name]) {
-            if (fieldType === 'select') {
-                return (formik.errors as any)[name]?.value;
-            }
-            if (fieldType === 'input') {
-                return (formik.errors as any)[name];
-            }
-            return undefined;
+            setHelperTextByFieldType(name, fieldType);
         }
         return undefined;
     };
@@ -182,8 +189,9 @@ export default function OpisRackCity({ isDisabled, formik, setSupplierPrice, isS
                 value={formik.values.supplier}
                 disabled={isDisabled}
                 onChange={handleSupplierBrandProductChange}
+                
                 onBlur={() => { formik.setFieldTouched('supplier'); formik.validateField('supplier'); }}
-                helperText={(formik.touched.supplier && formik.errors.supplier) ? JSON.parse(JSON.stringify(formik.errors.supplier)) : undefined}
+                helperText={getFormFieldHelperText('supplier', 'mutiselect')}
                 error={getFormFieldError('supplier')}
             />
         </Grid>
@@ -199,7 +207,7 @@ export default function OpisRackCity({ isDisabled, formik, setSupplierPrice, isS
                 disabled={isDisabled}
                 onChange={handleSupplierBrandProductChange}
                 onBlur={() => { formik.setFieldTouched('branded'); formik.validateField('branded'); }}
-                helperText={(formik.touched.branded && formik.errors.branded) ? JSON.parse(JSON.stringify(formik.errors.branded)) : undefined}
+                helperText={getFormFieldHelperText('branded', 'mutiselect')}
                 error={getFormFieldError('branded')}
             />
         </Grid>
@@ -216,7 +224,7 @@ export default function OpisRackCity({ isDisabled, formik, setSupplierPrice, isS
                 disabled={isDisabled}
                 onChange={handleSupplierBrandProductChange}
                 onBlur={() => { formik.setFieldTouched('actualProduct'); formik.validateField('actualProduct'); }}
-                helperText={(formik.touched.actualProduct && formik.errors.actualProduct) ? JSON.parse(JSON.stringify(formik.errors.actualProduct)) : undefined}
+                helperText={getFormFieldHelperText('branded', 'actualProduct')}
                 error={getFormFieldError('actualProduct')}
             />
         </Grid>
