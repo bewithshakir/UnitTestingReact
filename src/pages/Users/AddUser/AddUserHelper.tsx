@@ -168,7 +168,7 @@ export const renderDSPDOM = (dspList: any, formik: any, t: any) => (
 );
 
 // Display User Varification Section Handler
-export const renderUserVerificationDOM = (showVerifyLink: boolean, userVerificationLoading: boolean, verifiedUserData: any, formik: any, t: any, onClickVerifyUser: any) => (
+export const renderUserVerificationDOM = (showVerifyLink: boolean, userVerificationLoading: boolean, verifiedUserData: any, t: any, formik: any, onClickVerifyUser: any) => (
     <>
         <Grid item xs={12} md={6} pr={2.5} pt={isEmailErrorExist(formik) ? 0 : 3.5} pb={2.5} display="flex" alignItems="center">
             {
