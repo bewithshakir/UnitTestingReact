@@ -103,7 +103,25 @@ export default function OpisRackCity({ isDisabled, formik, setSupplierPrice, isS
         setResetSupplierValue(Date.now());
     };
 
-   
+    const getFormFieldError = (name: string) => {
+        if ((formik.touched as any)[name] && (formik.errors as any)[name]) {
+            return true;
+        }
+        return false;
+    };
+
+    const getFormFieldHelperText = (name: string, fieldType: string) => {
+        if ((formik.touched as any)[name] && (formik.errors as any)[name]) {
+            if (fieldType === 'select') {
+                return (formik.errors as any)[name]?.value;
+            }
+            if (fieldType === 'input') {
+                return (formik.errors as any)[name];
+            }
+            return undefined;
+        }
+        return undefined;
+    };
     
     return (<Fragment>
         <Grid item lg={5} md={8} sm={8} xs={8} mx={4} my={1} >
@@ -114,8 +132,8 @@ export default function OpisRackCity({ isDisabled, formik, setSupplierPrice, isS
                 value={formik.values.city}
                 placeholder='Select one'
                 items={cities}
-                helperText={(formik.touched.city && formik.errors.city) ? formik.errors.city.value : undefined}
-                error={(formik.touched.city && formik.errors.city) ? true : false}
+                helperText={getFormFieldHelperText('city', 'select')}
+                error={getFormFieldError('city')}
                 onChange={handleCityChange}
                 onBlur={() => { formik.setFieldTouched("city"); formik.validateField("city"); }}
                 required
@@ -131,8 +149,8 @@ export default function OpisRackCity({ isDisabled, formik, setSupplierPrice, isS
                 label={t("addProductFormLabels.statelabel")}
                 type='text'
                 onClick={(e) => e.preventDefault()}
-                helperText={(formik.touched.state && formik.errors.state) ? formik.errors.state : undefined}
-                error={(formik.touched.state && formik.errors.state) ? true : false}
+                helperText={getFormFieldHelperText('state', 'input')}
+                error={getFormFieldError('state')}
                 description=''
                 {...formik.getFieldProps('state')}
                 disabled
@@ -144,8 +162,8 @@ export default function OpisRackCity({ isDisabled, formik, setSupplierPrice, isS
                 id='cityId'
                 label={t("addProductFormLabels.cityidlabel")}
                 type='text'
-                helperText={(formik.touched.cityId && formik.errors.cityId) ? formik.errors.cityId : undefined}
-                error={(formik.touched.cityId && formik.errors.cityId) ? true : false}
+                helperText={getFormFieldHelperText('cityId', 'input')}
+                error={getFormFieldError('cityId')}
                 description=''
                 {...formik.getFieldProps('cityId')}
                 disabled
@@ -166,7 +184,7 @@ export default function OpisRackCity({ isDisabled, formik, setSupplierPrice, isS
                 onChange={handleSupplierBrandProductChange}
                 onBlur={() => { formik.setFieldTouched('supplier'); formik.validateField('supplier'); }}
                 helperText={(formik.touched.supplier && formik.errors.supplier) ? JSON.parse(JSON.stringify(formik.errors.supplier)) : undefined}
-                error={(formik.touched.supplier && formik.errors.supplier) ? true : false}
+                error={getFormFieldError('supplier')}
             />
         </Grid>
         <Grid item lg={5} md={8} sm={8} xs={8} mx={4} my={1} >
@@ -182,7 +200,7 @@ export default function OpisRackCity({ isDisabled, formik, setSupplierPrice, isS
                 onChange={handleSupplierBrandProductChange}
                 onBlur={() => { formik.setFieldTouched('branded'); formik.validateField('branded'); }}
                 helperText={(formik.touched.branded && formik.errors.branded) ? JSON.parse(JSON.stringify(formik.errors.branded)) : undefined}
-                error={(formik.touched.branded && formik.errors.branded) ? true : false}
+                error={getFormFieldError('branded')}
             />
         </Grid>
 
@@ -199,7 +217,7 @@ export default function OpisRackCity({ isDisabled, formik, setSupplierPrice, isS
                 onChange={handleSupplierBrandProductChange}
                 onBlur={() => { formik.setFieldTouched('actualProduct'); formik.validateField('actualProduct'); }}
                 helperText={(formik.touched.actualProduct && formik.errors.actualProduct) ? JSON.parse(JSON.stringify(formik.errors.actualProduct)) : undefined}
-                error={(formik.touched.actualProduct && formik.errors.actualProduct) ? true : false}
+                error={getFormFieldError('actualProduct')}
             />
         </Grid>
         <Grid item lg={5} md={8} sm={8} xs={8} mx={4} my={1} >
@@ -216,8 +234,8 @@ export default function OpisRackCity({ isDisabled, formik, setSupplierPrice, isS
                 label={t("addProductFormLabels.addproductopisname")}
                 type='text'
                 onClick={(e) => e.preventDefault()}
-                helperText={(formik.touched.opisName && formik.errors.opisName) ? formik.errors.opisName : undefined}
-                error={(formik.touched.opisName && formik.errors.opisName) ? true : false}
+                helperText={getFormFieldHelperText('opisName', 'input')}
+                error={getFormFieldError('opisName')}
                 description=''
                 {...formik.getFieldProps('opisName')}
                 disabled
@@ -229,8 +247,8 @@ export default function OpisRackCity({ isDisabled, formik, setSupplierPrice, isS
                 label={t("addProductFormLabels.productnamelabel")}
                 type='text'
                 placeholder={t("addProductFormLabels.productnameplaceholder")}
-                helperText={(formik.touched.productNm && formik.errors.productNm) ? formik.errors.productNm : undefined}
-                error={(formik.touched.productNm && formik.errors.productNm) ? true : false}
+                helperText={getFormFieldHelperText('productNm', 'input')}
+                error={getFormFieldError('productNm')}
                 description=''
                 required
                 {...formik.getFieldProps('productNm')}
