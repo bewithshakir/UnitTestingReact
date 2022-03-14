@@ -27,7 +27,7 @@ export const config = [
         index: 5,
         label: "legend.users",
         secondaryText: true,
-        to: "/users"
+        to: "/customer/users"
     },
     {
         index: 6,

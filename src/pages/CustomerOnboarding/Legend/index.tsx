@@ -28,6 +28,8 @@ const Legend: React.FC = () => {
         'dsps': `/customer/${customerId}/dsps`,
         'attachments': `/customer/${customerId}/attachments`,
       }[x];
+    } else {
+      return undefined;
     }
   };
 
@@ -60,31 +62,12 @@ const Legend: React.FC = () => {
   const getSelectedLegendItem = (configItem: any) => {
     if (configItem.to == "/customer/addCustomer") {
       const pathnameSegArr = pathname.split("/");
-      if (pathnameSegArr.indexOf("viewCustomer") > -1 || pathnameSegArr.indexOf("addCustomer") > -1) {
-        return true;
-      }
-    } else if (configItem.to == "/customer/parkingLots") {
-      const pathnameSegArr = pathname.split("/");
-      if (pathnameSegArr.indexOf('parkingLots') > 0) {
-        return true;
-      }
-    } else if (configItem.to == "/customer/dsps") {
-      const pathnameSegArr = pathname.split("/");
-      if (pathnameSegArr.indexOf('dsps') > 0) {
-        return true;
-      }
-    } else if (configItem.to == "/customer/users") {
-      const pathnameSegArr = pathname.split("/");
-      if (pathnameSegArr.indexOf('users') > 0) {
-        return true;
-      }
-    } else if (configItem.to == "/customer/attachments") {
-      const pathnameSegArr = pathname.split("/");
-      if (pathnameSegArr.indexOf('attachments') > 0) {
+      if (pathnameSegArr.includes("viewCustomer")) {
         return true;
       }
     } else {
-      return pathname.includes(configItem.to);
+      const splitCongfigArr = configItem.to.split('/');
+      return pathname.includes(splitCongfigArr[splitCongfigArr.length - 1]);
     }
   };
 
