@@ -1,7 +1,6 @@
 import { render } from '@testing-library/react';
 import * as React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { addProductManagementHandler, editProductManagementHandler, getProductDataHandler, productColorsHandler, productTypesHandler } from '../pages/AddProductManagement/mockApi/handlerAddProduct';
 import { getOPISCitiesHandler } from '../pages/OPISCity/mockApi/handlerOPISCityLandingPage';
 import { getAllParkingLotsHandler } from '../pages/ParkingLotsManagement/mockApi/handlerAllParkingLotsLandingPage';
 import { getAttachmentListHandler } from '../pages/Attachments/mockApi/AttachmentLandingPageHandler';
@@ -22,32 +21,30 @@ import {
     getProductTypeHandler, 
     getVehicleTypeHandler, 
     getAssetTypeHandler, 
-    getLotMasterProductNamesHandler, 
     getLotProductNamesHandler, 
     addFeeDetailsHandler, 
     getFeeDetailsHandler, 
     editFeeDetailsHandler 
 } from '../pages/ParkingLot/FeeDetails/mockAPi/handler';
 import { addTruckParkingLotHandler, editTruckParkingLotHandler } from '../pages/Truck/TruckParkingLot/AddLot/mockApi/handlerAddTruckParkingLot';
-import { getProductTypesDropdownHandler } from '../pages/AddFuelTax/mockApi/handlerAddFuelTax';
+
 import { getTruckParkingLotList } from '../pages/Truck/TruckParkingLot/mockApi/handlerTruckParkingLot';
 import { getTrucksList } from '../pages/Truck/mockApi/handlerTruckList';
 import { getTanksList } from '../pages/Truck/mockApi/handlerTanksList';
 import { getLocationsList } from '../pages/Truck/mockApi/handlerLocations';
 import { addAssetHandler, getAssetDeatilsHandler, editAssetHandler } from '../pages/AssetManagement/AddAsset/mockApi/handlerAddAsset';
-import { addTruckColorHandler, addTruckFuelHandler, addEditTruckHandler, useGetEditTruckDetails } from '../pages/Truck/AddTruck/mockApi/handleAddTruck';
+import { addTruckColorHandler, addEditTruckHandler, useGetEditTruckDetails } from '../pages/Truck/AddTruck/mockApi/handleAddTruck';
 import { getDspList } from '../pages/DspLanding/mockApi/handlerDspLanding';
 import { getCustomerList } from '../pages/CustomerManagement/mockApi/handlerCustomer';
 import { rightInfoFilterHandler } from '../components/UIComponents/RightInfoPanel/mockApi/handleRightInfoPanel';
+import { getProductHandler } from '../mockAPI/productService/products/GET';
+import { postProductHandler } from '../mockAPI/productService/products/POST';
+import { putProductHandler } from '../mockAPI/productService/products/PUT';
 
 export const handlers = [
-
-    getProductTypesDropdownHandler(),
-    productTypesHandler(),
-    productColorsHandler(),
-    addProductManagementHandler(),
-    getProductDataHandler(),
-    editProductManagementHandler(),
+    getProductHandler(),
+    postProductHandler(),
+    putProductHandler(),
     getOPISCitiesHandler(),
     getAttachmentListHandler(),
     getProductByLotHandler(),
@@ -68,7 +65,6 @@ export const handlers = [
     getProductTypeHandler(),
     getVehicleTypeHandler(),
     getAssetTypeHandler(),
-    getLotMasterProductNamesHandler(),
     getLotProductNamesHandler(),
     addFeeDetailsHandler(),
     getFeeDetailsHandler(),
@@ -87,7 +83,6 @@ export const handlers = [
     getSupplierPricesHandler(),
     getTrucksList(),
     addTruckColorHandler(),
-    addTruckFuelHandler(),
     addEditTruckHandler(),
     useGetEditTruckDetails(),
     getOpisRackProductDetailsHandler()
