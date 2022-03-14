@@ -61,7 +61,7 @@ const AddUser: React.FC<AddUserProps> = () => {
     };
 
     const { data: verifiedUserData,
-        isLoading: userVerificationLoading, isError: verifyUserError } = useVarifyUser(userEmail, onSuccessVerfyUser);
+        isLoading: userVerificationLoading } = useVarifyUser(userEmail, onSuccessVerfyUser);
 
     useEffect(() => {
         setVersion("Breadcrumbs-Many");
@@ -142,7 +142,7 @@ const AddUser: React.FC<AddUserProps> = () => {
         isSuccess: isSuccessUpdateUser,
         isError: isErrorUpdateUser,
         isLoading: isLoadingUpdateUser } = useUpdateUserData(
-            userId || '',
+            userId,
             onSuccessUpdateUser,
             onErrorUpdateUser
         );
@@ -231,8 +231,25 @@ const AddUser: React.FC<AddUserProps> = () => {
 
     const showToast = () => (isErrorAddUser || isSuccessAddUser || isErrorUpdateUser || isSuccessUpdateUser || isErrorUserData);
 
-    const isEmailErrorExist = () => (formik.touched.email && formik.errors.email);
-    const isUserGroupErrorExist = () => (formik.touched.userGroup && formik.errors.userGroup);
+    const isEmailErrorExist = () => !!(formik.touched.email && formik.errors.email);
+    const isUserGroupErrorExist = () => !!(formik.touched.userGroup && formik.errors.userGroup);
+
+    const renderVerficationProcess = () => {
+        if (userVerificationLoading) {
+            return <LoadingIcon data-testid="loading-spinner" style={{ position: "unset" }} className='loading_save_icon' />;
+        }
+        if (verifiedUserData?.data?.verifiedUser) {
+            return <Icon component={PositiveCricleIcon} />;
+        }
+        return (
+            <Box display="flex" alignItems="center">
+                <Icon sx={{ width: "20px", height: "20px", marginRight: 2 }} component={AlertExclamationIcon} />
+                <Typography variant="h4" color="var(--Tertiary)" className="fw-bold">
+                    Janrain account doesn&apos;t exist for this email.
+                </Typography>
+            </Box>
+        );
+    };
 
     return (
         <Grid item xl={7} lg={8}>
@@ -254,9 +271,9 @@ const AddUser: React.FC<AddUserProps> = () => {
                                 label={t("addUser.form.userGroup")}
                                 placeholder='Choose'
                                 value={formik.values.userGroup}
-                                items={userGroupList?.filter((usrGrpObj: UserGoupsInt) => usrGrpObj.type.includes(selectedPaymentType)) || []}
+                                items={userGroupList?.filter((usrGrpObj: UserGoupsInt) => usrGrpObj.type.includes(selectedPaymentType))}
                                 helperText={isUserGroupErrorExist() ? formik?.errors?.userGroup?.value : undefined}
-                                error={isUserGroupErrorExist() ? true : false}
+                                error={isUserGroupErrorExist()}
                                 onChange={formik.setFieldValue}
                                 onBlur={() => {
                                     formik.setFieldTouched("userGroup");
@@ -273,7 +290,7 @@ const AddUser: React.FC<AddUserProps> = () => {
                             label={t("addUser.form.email")}
                             type='text'
                             helperText={isEmailErrorExist() ? formik.errors.email : undefined}
-                            error={isEmailErrorExist() ? true : false}
+                            error={isEmailErrorExist()}
                             description=''
                             placeholder='Enter Email'
                             onChange={handleEmailChange}
@@ -286,22 +303,7 @@ const AddUser: React.FC<AddUserProps> = () => {
                     </Grid>
                     <Grid item xs={12} md={6} pr={2.5} pt={isEmailErrorExist() ? 0 : 3.5} pb={2.5} display="flex" alignItems="center">
                         {
-                            (!showVerifyLink && (verifiedUserData || userVerificationLoading || verifyUserError)) ?
-                                <Box>
-                                    {userVerificationLoading && <LoadingIcon data-testid="loading-spinner" style={{ position: "unset" }} className='loading_save_icon' />}
-                                    {!userVerificationLoading && verifiedUserData?.data?.verifiedUser && <Icon component={PositiveCricleIcon} />}
-                                    {((!userVerificationLoading && !verifiedUserData?.data?.verifiedUser) || verifyUserError) &&
-                                        (
-                                            <Box display="flex" alignItems="center">
-                                                <Icon sx={{ width: "20px", height: "20px", marginRight: 2 }} component={AlertExclamationIcon} />
-                                                <Typography variant="h4" color="var(--Tertiary)" className="fw-bold">
-                                                    Janrain account doesn&apos;t exist for this email.
-                                                </Typography>
-                                            </Box>
-                                        )
-                                    }
-                                </Box>
-                                :
+                            showVerifyLink ?
                                 <Link
                                     variant="body2"
                                     id="verify-user-link"
@@ -313,6 +315,11 @@ const AddUser: React.FC<AddUserProps> = () => {
                                         Verify
                                     </Typography>
                                 </Link>
+                                :
+                                <Box>
+                                    {renderVerficationProcess()}
+                                </Box>
+
                         }
                     </Grid>
                     <Grid item xs={12} md={6} pr={2.5} pb={2.5}>

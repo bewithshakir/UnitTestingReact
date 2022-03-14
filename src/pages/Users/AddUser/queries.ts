@@ -178,9 +178,9 @@ export const useEditUserData = (customerId: string | undefined, query: string | 
     });
 };
 
-const updateUserData = async (payload: UserModel, userId: string) => {
+const updateUserData = async (payload: UserModel, userId?: string) => {
     const finalPayload: PayloadAddUserInt = {
-        shellDigitalAccountId: userId,
+        shellDigitalAccountId: userId || '',
         customerId: payload.customerId,
         firstNm: payload.userName.split(' ')[0],
         lastNm: payload.userName.split(' ')[1],
@@ -204,7 +204,7 @@ const updateUserData = async (payload: UserModel, userId: string) => {
     return data;
 };
 
-export const useUpdateUserData = (userId: string, onSuccess: any, onError: any) => {
+export const useUpdateUserData = (userId?: string, onSuccess?: any, onError?: any) => {
     return useMutation((payload: UserModel) =>
         updateUserData(payload, userId), {
         onSuccess,
