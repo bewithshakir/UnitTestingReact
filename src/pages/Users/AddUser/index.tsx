@@ -42,18 +42,27 @@ const AddUser: React.FC<AddUserProps> = () => {
     const { data: dspList } = userGetUserDSPList(addedCustomerId, 'us');
     const { data: userPermissionList } = useGetUserPermissionList('us');
 
+    const setVerfiedUserDetails = (data: any, verifiedUser?: boolean) => {
+        if (verifiedUser) {
+            formik.setFieldValue('userId', data?.userProfile.uuid);
+            formik.setFieldValue('email', data?.userProfile.email);
+            formik.setFieldValue('phone', data?.userProfile.mobile || '');
+            formik.setFieldValue('userName', `${data?.userProfile.firstName} ${data?.userProfile.lastName}`);
+        } else {
+            formik.setFieldValue('userId', '');
+            formik.setFieldValue('email', '');
+            formik.setFieldValue('phone', '');
+            formik.setFieldValue('userName', '');
+        }
+    };
+
     // Verify User
     const onSuccessVerfyUser = (response: any) => {
         if (response) {
             const { data } = response;
-            if (data?.verifiedUser) {
-                formik.setFieldValue('countryCd', getCountryCode());
-                formik.setFieldValue('customerId', addedCustomerId);
-                formik.setFieldValue('userId', data?.userProfile.uuid);
-                formik.setFieldValue('email', data?.userProfile.email);
-                formik.setFieldValue('phone', data?.userProfile.mobile || '');
-                formik.setFieldValue('userName', `${data?.userProfile.firstName} ${data?.userProfile.lastName}`);
-            }
+            formik.setFieldValue('countryCd', getCountryCode());
+            formik.setFieldValue('customerId', addedCustomerId);
+            setVerfiedUserDetails(data, data?.verifiedUser);
         }
     };
 
@@ -85,7 +94,7 @@ const AddUser: React.FC<AddUserProps> = () => {
     };
     const onErrorAddUser = (err: any) => {
         const { data } = err.response;
-        formik.resetForm({ values: formik.values });
+        formik.setSubmitting(false);
         setFormStatus({ message: data?.error?.message || t("formStatusProps.error.message"), type: 'Error' });
     };
     const { mutate: addNewUser, isSuccess: isSuccessAddUser, isError: isErrorAddUser, isLoading: isLoadingAddUser } = useAddUser(onSuccessAddUser, onErrorAddUser);
@@ -360,7 +369,7 @@ const AddUser: React.FC<AddUserProps> = () => {
                                 aria-label={t("buttons.save")}
                                 className="ml-4"
                                 data-testid="save"
-                                disabled={disableButton()}
+                                disabled={disableButton() || showVerifyLink}
                             >
                                 {t("buttons.save")}
                                 {(isLoadingAddUser || isLoadingUpdateUser) && <LoadingIcon data-testid="loading-spinner" className='loading_save_icon' />}
