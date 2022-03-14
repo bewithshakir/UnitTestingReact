@@ -8,12 +8,14 @@ import Input from '../../../components/UIComponents/Input/Input';
 import Select from '../../../components/UIComponents/Select/SingleSelect';
 import ToastMessage from '../../../components/UIComponents/ToastMessage/ToastMessage.component';
 import UserModel from "../../../models/UserModel";
-import { HorizontalBarVersionState, useAddedCustomerIdStore, useAddedCustomerPaymentTypeStore, useShowConfirmationDialogBoxStore, useStore } from '../../../store';
+import {
+    HorizontalBarVersionState, useAddedCustomerIdStore, useAddedCustomerPaymentTypeStore,
+    useShowConfirmationDialogBoxStore, useStore
+} from '../../../store';
 import { toastSuccessKey } from '../../../utils/constants';
 import {
-    disableButton, emailHelperText, isEmailErrorExist, isPhoneErrorExist, isUserGroupErrorExist, isUserNameErrorExist,
-    onSuccessVerfyUser, phoneHelperText, renderButtonLoader, renderDSPDOM, renderUserAccessDOM, onClickCancel,
-    showToast, userGroupHelperText, userNameHelperText, validateForm, renderUserVerificationDOM
+    disableButton, emailHelperText, isEmailErrorExist, isUserGroupErrorExist, onClickCancel, onSuccessVerfyUser,
+    renderButtonLoader, renderDSPDOM, renderUserAccessDOM, renderUserVerificationDOM, showToast, userGroupHelperText, validateForm
 } from './AddUserHelper';
 import {
     useAddUser, useEditUserData, useGetUserGroupTypes, useGetUserPermissionList,
@@ -49,7 +51,9 @@ const AddUser: React.FC<AddUserProps> = () => {
     const { data: userPermissionList } = useGetUserPermissionList('us');
 
     // Verify User
-    const { data: verifiedUserData, isLoading: userVerificationLoading } = useVarifyUser(userEmail, (response: any) => onSuccessVerfyUser(response, formik, addedCustomerId));
+    const { data: verifiedUserData, isLoading: userVerificationLoading } = useVarifyUser(
+        userEmail, (response: any) => onSuccessVerfyUser(response, formik, addedCustomerId)
+    );
 
     useEffect(() => {
         setVersion("Breadcrumbs-Many");
@@ -79,7 +83,9 @@ const AddUser: React.FC<AddUserProps> = () => {
         formik.setSubmitting(false);
         setFormStatus({ message: data?.error?.message, type: 'Error' });
     };
-    const { mutate: addNewUser, isSuccess: isSuccessAddUser, isError: isErrorAddUser, isLoading: isLoadingAddUser } = useAddUser(onSuccessAddUser, onErrorAddUser);
+    const { mutate: addNewUser, isSuccess: isSuccessAddUser, isError: isErrorAddUser, isLoading: isLoadingAddUser } = useAddUser(
+        onSuccessAddUser, onErrorAddUser
+    );
     const createUserData = (form: UserModel) => {
         addNewUser(form);
     };
@@ -200,35 +206,7 @@ const AddUser: React.FC<AddUserProps> = () => {
                             required
                         />
                     </Grid>
-                    {renderUserVerificationDOM(showVerifyLink, userVerificationLoading, verifiedUserData, formik, onClickVerifyUser)}
-
-                    <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
-                        <Input
-                            id='userName'
-                            label={t("addUser.form.userGroupAccessLevel.userName")}
-                            type='text'
-                            helperText={userNameHelperText(formik)}
-                            error={isUserNameErrorExist(formik)}
-                            description=''
-                            placeholder='User Name'
-                            {...formik.getFieldProps('userName')}
-                            disabled={true}
-                            required
-                        />
-                    </Grid>
-                    <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
-                        <Input
-                            id='phone'
-                            label={t("addUser.form.userGroupAccessLevel.phone")}
-                            type='text'
-                            helperText={phoneHelperText(formik)}
-                            error={isPhoneErrorExist(formik)}
-                            description=''
-                            placeholder='Phone Number Ex: 787 XXXX XXX'
-                            disabled={true}
-                            {...formik.getFieldProps('phone')}
-                        />
-                    </Grid>
+                    {renderUserVerificationDOM(showVerifyLink, userVerificationLoading, verifiedUserData, t, formik, onClickVerifyUser)}
 
                     {renderDSPDOM(dspList, formik, t)}
 

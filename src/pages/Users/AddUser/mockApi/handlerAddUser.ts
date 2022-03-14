@@ -75,7 +75,7 @@ export const getUserGroupsHandler = () =>
     );
 
 export function getCustomerDSPHandler () {
-    return rest.get('*/api/customer-service/customers/*/dsps*', (req, res, ctx) => {
+    return rest.get('*/api/customer-service/customers/*/dsps*', function (req, res, ctx) {
         const skipPagination = req.url.searchParams.get('skipPagination');
         if (skipPagination) {
             return res(
