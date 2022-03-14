@@ -13,8 +13,8 @@ import { useAddUser, useEditUserData, useUpdateUserData, useGetUserGroupTypes, U
 import Select from '../../../components/UIComponents/Select/SingleSelect';
 import { AddUserSchema } from "./validation";
 import { userAccessLevelSX, userGroupStr } from '../config';
-import { getCountryCode } from '../../../navigation/utils';
 import { toastErrorKey, toastSuccessKey } from '../../../utils/constants';
+import { disableButton, isEmailErrorExist, isUserGroupErrorExist, onClickCancel, onSuccessVerfyUser, showToast } from './AddUserHelper';
 
 const initialValues = new UserModel();
 interface AddUserProps {
@@ -44,24 +44,8 @@ const AddUser: React.FC<AddUserProps> = () => {
     const { data: userPermissionList } = useGetUserPermissionList('us');
 
     // Verify User
-    const onSuccessVerfyUser = (response: any) => {
-        formik.setFieldValue('countryCd', getCountryCode());
-        formik.setFieldValue('customerId', addedCustomerId);
-        if (response?.data?.verifiedUser) {
-            formik.setFieldValue('userId', response.data?.userProfile.uuid);
-            formik.setFieldValue('email', response.data?.userProfile.email);
-            formik.setFieldValue('phone', response.data?.userProfile.mobile);
-            formik.setFieldValue('userName', `${response.data?.userProfile.firstName} ${response.data?.userProfile.lastName}`);
-        } else {
-            formik.setFieldValue('userId', '');
-            formik.setFieldValue('email', '');
-            formik.setFieldValue('phone', '');
-            formik.setFieldValue('userName', '');
-        }
-    };
-
     const { data: verifiedUserData,
-        isLoading: userVerificationLoading } = useVarifyUser(userEmail, onSuccessVerfyUser);
+        isLoading: userVerificationLoading } = useVarifyUser(userEmail, (response: any) => onSuccessVerfyUser(response, formik, addedCustomerId));
 
     useEffect(() => {
         setVersion("Breadcrumbs-Many");
@@ -170,20 +154,6 @@ const AddUser: React.FC<AddUserProps> = () => {
         }
     }, [formik.isValid, formik.dirty]);
 
-    const onClickCancel = () => {
-        if (!formik.isValid || formik.dirty) {
-            showDialogBox(true);
-        } else {
-            navigate(`/customer/${addedCustomerId}/users`);
-        }
-    };
-    const disableButton = () => {
-        if (formik.dirty) {
-            return !formik.isValid || formik.isSubmitting || showVerifyLink;
-        } else {
-            return true;
-        }
-    };
 
     const renderUserAccessDOM = () =>
         userPermissionList &&
@@ -229,10 +199,7 @@ const AddUser: React.FC<AddUserProps> = () => {
         </>
         );
 
-    const showToast = () => (isErrorAddUser || isSuccessAddUser || isErrorUpdateUser || isSuccessUpdateUser || isErrorUserData);
 
-    const isEmailErrorExist = () => !!(formik.touched.email && formik.errors.email);
-    const isUserGroupErrorExist = () => !!(formik.touched.userGroup && formik.errors.userGroup);
 
     const renderVerficationProcess = () => {
         if (userVerificationLoading) {
@@ -272,8 +239,8 @@ const AddUser: React.FC<AddUserProps> = () => {
                                 placeholder='Choose'
                                 value={formik.values.userGroup}
                                 items={userGroupList?.filter((usrGrpObj: UserGoupsInt) => usrGrpObj.type.includes(selectedPaymentType))}
-                                helperText={isUserGroupErrorExist() ? formik?.errors?.userGroup?.value : undefined}
-                                error={isUserGroupErrorExist()}
+                                helperText={isUserGroupErrorExist(formik) ? formik?.errors?.userGroup?.value : undefined}
+                                error={isUserGroupErrorExist(formik)}
                                 onChange={formik.setFieldValue}
                                 onBlur={() => {
                                     formik.setFieldTouched("userGroup");
@@ -289,8 +256,8 @@ const AddUser: React.FC<AddUserProps> = () => {
                             name='email'
                             label={t("addUser.form.email")}
                             type='text'
-                            helperText={isEmailErrorExist() ? formik.errors.email : undefined}
-                            error={isEmailErrorExist()}
+                            helperText={isEmailErrorExist(formik) ? formik.errors.email : undefined}
+                            error={isEmailErrorExist(formik)}
                             description=''
                             placeholder='Enter Email'
                             onChange={handleEmailChange}
@@ -301,7 +268,7 @@ const AddUser: React.FC<AddUserProps> = () => {
                             required
                         />
                     </Grid>
-                    <Grid item xs={12} md={6} pr={2.5} pt={isEmailErrorExist() ? 0 : 3.5} pb={2.5} display="flex" alignItems="center">
+                    <Grid item xs={12} md={6} pr={2.5} pt={isEmailErrorExist(formik) ? 0 : 3.5} pb={2.5} display="flex" alignItems="center">
                         {
                             showVerifyLink ?
                                 <Link
@@ -383,7 +350,7 @@ const AddUser: React.FC<AddUserProps> = () => {
                                 types="cancel"
                                 aria-label={t("buttons.cancel")}
                                 className="mr-4"
-                                onClick={onClickCancel}
+                                onClick={() => onClickCancel(formik, addedCustomerId, showDialogBox, navigate)}
                                 data-test="cancel"
                             >
                                 {t("buttons.cancel")}
@@ -395,14 +362,14 @@ const AddUser: React.FC<AddUserProps> = () => {
                                 aria-label={t("buttons.save")}
                                 className="ml-4"
                                 data-testid="save"
-                                disabled={disableButton()}
+                                disabled={disableButton(formik, showVerifyLink)}
                             >
                                 {t("buttons.save")}
                                 {(isLoadingAddUser || isLoadingUpdateUser) && <LoadingIcon data-testid="loading-spinner" className='loading_save_icon' />}
                             </Button>
                         </Box>
                         <ToastMessage
-                            isOpen={showToast()}
+                            isOpen={showToast(isErrorAddUser, isSuccessAddUser, isErrorUpdateUser, isSuccessUpdateUser, isErrorUserData)}
                             messageType={formStatus.type}
                             onClose={() => { return ''; }}
                             message={formStatus.message} />
