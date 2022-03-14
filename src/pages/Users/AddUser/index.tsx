@@ -1,20 +1,24 @@
-import { Box, FormControl, FormControlLabel, Grid, Link, RadioGroup, Typography, Radio, Icon } from '@mui/material';
+import { Box, Grid, Link, Typography } from '@mui/material';
 import { useFormik } from 'formik';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate, useParams } from 'react-router-dom';
-import { AlertExclamationIcon, LoadingIcon, PositiveCricleIcon } from '../../../assets/icons';
 import { Button } from '../../../components/UIComponents/Button/Button.component';
 import Input from '../../../components/UIComponents/Input/Input';
+import Select from '../../../components/UIComponents/Select/SingleSelect';
 import ToastMessage from '../../../components/UIComponents/ToastMessage/ToastMessage.component';
 import UserModel from "../../../models/UserModel";
-import { HorizontalBarVersionState, useAddedCustomerIdStore, useShowConfirmationDialogBoxStore, useStore, useAddedCustomerPaymentTypeStore } from '../../../store';
-import { useAddUser, useEditUserData, useUpdateUserData, useGetUserGroupTypes, UserGoupsInt, useVarifyUser, useGetUserPermissionList, userGetUserDSPList } from './queries';
-import Select from '../../../components/UIComponents/Select/SingleSelect';
-import { AddUserSchema } from "./validation";
-import { userAccessLevelSX, userGroupStr } from '../config';
+import { HorizontalBarVersionState, useAddedCustomerIdStore, useAddedCustomerPaymentTypeStore, useShowConfirmationDialogBoxStore, useStore } from '../../../store';
 import { toastErrorKey, toastSuccessKey } from '../../../utils/constants';
-import { disableButton, isEmailErrorExist, isUserGroupErrorExist, onClickCancel, onSuccessVerfyUser, showToast } from './AddUserHelper';
+import { userGroupStr } from '../config';
+import {
+    disableButton, isDSPErrorExist, isEmailErrorExist, isPhoneErrorExist, isUserGroupErrorExist, isUserNameErrorExist, onClickCancel, onSuccessVerfyUser, renderButtonLoader, renderUserAccessDOM, renderVerficationProcess, showToast
+} from './AddUserHelper';
+import {
+    useAddUser, useEditUserData, useGetUserGroupTypes, useGetUserPermissionList,
+    userGetUserDSPList, UserGoupsInt, useUpdateUserData, useVarifyUser
+} from './queries';
+import { AddUserSchema } from "./validation";
 
 const initialValues = new UserModel();
 interface AddUserProps {
@@ -83,7 +87,6 @@ const AddUser: React.FC<AddUserProps> = () => {
             setFormStatus({ message: t(toastErrorKey), type: 'Error' });
         }
     };
-
     // Add User End
 
     // Edit User
@@ -154,70 +157,6 @@ const AddUser: React.FC<AddUserProps> = () => {
         }
     }, [formik.isValid, formik.dirty]);
 
-
-    const renderUserAccessDOM = () =>
-        userPermissionList &&
-        (<>
-            <Grid item md={12} mt={3} mb={2}>
-                <Typography color="var(--Darkgray)" variant="h4" gutterBottom className="fw-bold">
-                    {t("addUser.form.userGroupAccessLevel.title")}
-                </Typography>
-            </Grid>
-            <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
-                <FormControl component="fieldset">
-                    <RadioGroup
-                        aria-label="user-access-permission"
-                        defaultValue=""
-                        id="userAccessLevel"
-                        name="userAccessLevel"
-                        value={formik.values.userAccessLevel}
-                        onChange={formik.handleChange}
-                    >
-                        {userPermissionList?.map((perObj: any, index: any) => (
-                            <FormControlLabel
-                                key={perObj.value}
-                                value={perObj.value}
-                                sx={{ ...userAccessLevelSX }}
-                                control={<Radio
-                                    role="radio"
-                                    id={`userAccessLevel-${index}`}
-                                    sx={{
-                                        '&.Mui-checked': {
-                                            color: "var(--Gray)",
-                                        },
-                                    }}
-                                    aria-label={perObj.label} />}
-                                label={
-                                    <Typography color="var(--Darkgray)" variant="h4" pl={2.5} className="fw-bold">
-                                        {perObj.label}
-                                    </Typography>
-                                } />
-                        ))}
-                    </RadioGroup>
-                </FormControl>
-            </Grid>
-        </>
-        );
-
-
-
-    const renderVerficationProcess = () => {
-        if (userVerificationLoading) {
-            return <LoadingIcon data-testid="loading-spinner" style={{ position: "unset" }} className='loading_save_icon' />;
-        }
-        if (verifiedUserData?.data?.verifiedUser) {
-            return <Icon component={PositiveCricleIcon} />;
-        }
-        return (
-            <Box display="flex" alignItems="center">
-                <Icon sx={{ width: "20px", height: "20px", marginRight: 2 }} component={AlertExclamationIcon} />
-                <Typography variant="h4" color="var(--Tertiary)" className="fw-bold">
-                    Janrain account doesn&apos;t exist for this email.
-                </Typography>
-            </Box>
-        );
-    };
-
     return (
         <Grid item xl={7} lg={8}>
             <form onSubmit={formik.handleSubmit} id='form'>
@@ -284,7 +223,7 @@ const AddUser: React.FC<AddUserProps> = () => {
                                 </Link>
                                 :
                                 <Box>
-                                    {renderVerficationProcess()}
+                                    {renderVerficationProcess(userVerificationLoading, verifiedUserData)}
                                 </Box>
 
                         }
@@ -294,8 +233,8 @@ const AddUser: React.FC<AddUserProps> = () => {
                             id='userName'
                             label={t("addUser.form.userGroupAccessLevel.userName")}
                             type='text'
-                            helperText={(formik.touched.userName && formik.errors.userName) ? formik.errors.userName : undefined}
-                            error={(formik.touched.userName && formik.errors.userName) ? true : false}
+                            helperText={isUserNameErrorExist(formik) ? formik.errors.userName : undefined}
+                            error={isUserNameErrorExist(formik) ? true : false}
                             description=''
                             placeholder='User Name'
                             {...formik.getFieldProps('userName')}
@@ -308,8 +247,8 @@ const AddUser: React.FC<AddUserProps> = () => {
                             id='phone'
                             label={t("addUser.form.userGroupAccessLevel.phone")}
                             type='text'
-                            helperText={(formik.touched.phone && formik.errors.phone) ? formik.errors.phone : undefined}
-                            error={(formik.touched.phone && formik.errors.phone) ? true : false}
+                            helperText={isPhoneErrorExist(formik) ? formik.errors.phone : undefined}
+                            error={isPhoneErrorExist(formik) ? true : false}
                             description=''
                             placeholder='Phone Number Ex: 787 XXXX XXX'
                             disabled={true}
@@ -326,8 +265,8 @@ const AddUser: React.FC<AddUserProps> = () => {
                                     placeholder='Choose'
                                     value={formik.values.dsp}
                                     items={dspList}
-                                    helperText={(formik.touched.dsp && formik.errors.dsp) ? formik.errors.dsp.value : undefined}
-                                    error={(formik.touched.dsp && formik.errors.dsp) ? true : false}
+                                    helperText={isDSPErrorExist(formik) ? formik?.errors?.dsp?.value : undefined}
+                                    error={isDSPErrorExist(formik) ? true : false}
                                     onChange={formik.setFieldValue}
                                     onBlur={() => {
                                         formik.setFieldTouched("dsp");
@@ -340,7 +279,7 @@ const AddUser: React.FC<AddUserProps> = () => {
                         </Grid>
                     )}
 
-                    {renderUserAccessDOM()}
+                    {renderUserAccessDOM(userPermissionList, formik, t)}
 
                     <Grid item xs={12} md={6} />
                     <Grid item md={12} pr={2.5} pb={2.5} mt={4}>
@@ -365,7 +304,7 @@ const AddUser: React.FC<AddUserProps> = () => {
                                 disabled={disableButton(formik, showVerifyLink)}
                             >
                                 {t("buttons.save")}
-                                {(isLoadingAddUser || isLoadingUpdateUser) && <LoadingIcon data-testid="loading-spinner" className='loading_save_icon' />}
+                                {renderButtonLoader(isLoadingAddUser, isLoadingUpdateUser)}
                             </Button>
                         </Box>
                         <ToastMessage
