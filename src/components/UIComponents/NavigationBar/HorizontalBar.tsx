@@ -33,6 +33,7 @@ interface HorizontalBarProps {
 
 export default function HorizontalBar (props: HorizontalBarProps) {
   const { t } = useTranslation();
+  const { onBack } = props;
   const version = useStore((state) => state.version);
   const navigate = useNavigate();
   const { pathname, search } = useLocation();
@@ -64,10 +65,10 @@ export default function HorizontalBar (props: HorizontalBarProps) {
     if (isFormFieldChange) {
       showDialogBox(true);
     } else {
-      handleModelConfirm(
-        props.onBack, hideDialogBox, resetFormFieldValue, pathname,
+      handleModelConfirm({
+        onBack, hideDialogBox, resetFormFieldValue, pathname,
         navigate, selectedCustomerId, selectedCustomerName, backToParkingLot
-      );
+      });
     }
   }
 
@@ -229,10 +230,10 @@ export default function HorizontalBar (props: HorizontalBarProps) {
           content={t('customerManagement.discardchangesdialog.content')}
           open={showConfirmationDialogBox}
           handleToggle={handleModelToggle}
-          handleConfirm={() => handleModelConfirm(
-            props.onBack, hideDialogBox, resetFormFieldValue, pathname,
+          handleConfirm={() => handleModelConfirm({
+            onBack, hideDialogBox, resetFormFieldValue, pathname,
             navigate, selectedCustomerId, selectedCustomerName, backToParkingLot
-          )}
+          })}
         />
       </div>
     </>

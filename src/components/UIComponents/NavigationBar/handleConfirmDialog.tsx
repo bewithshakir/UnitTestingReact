@@ -1,6 +1,8 @@
+import { modelBackConfig } from "./config";
 
-export const handleModelConfirm = (onBack: any, hideDialogBox: any, resetFormFieldValue: any, pathname: string,
-  navigate: any, selectedCustomerId: string, selectedCustomerName: string, backToParkingLot: any) => {
+
+export const handleModelConfirm = (props: any) => {
+  const { onBack, hideDialogBox, resetFormFieldValue, pathname, navigate, selectedCustomerId, selectedCustomerName, backToParkingLot } = props;
   hideDialogBox(false);
   resetFormFieldValue(false);
   if (pathname.includes('viewLot')) {
@@ -10,26 +12,16 @@ export const handleModelConfirm = (onBack: any, hideDialogBox: any, resetFormFie
         customerName: selectedCustomerName,
       },
     });
-  } else if (pathname.includes('addLot') || pathname.includes('addFuelTax')) {
+  } else if (pathname.includes('addLot')) {
     navigate(-1);
-  } else if (pathname.includes('salesTax/add') || pathname.includes('salesTax/edit')) {
-    navigate('/salesTax');
-  } else if (pathname.includes('opisCities/add')) {
-    navigate('/opisCities');
-  } else if (pathname.includes('editFuelTax')) {
-    navigate('/taxes');
-  } else if (pathname.includes('productManagement/add') || pathname.includes('productManagement/edit')) {
-    navigate('/productManagement');
-  } else if (pathname.includes('/truckParkingLot/add') || pathname.includes('/truckParkingLot/edit')) {
-    navigate('/truckParkingLot');
-  } else if (pathname.includes('/assetManagement/add') || pathname.includes('/assetManagement/edit')) {
-    navigate('/assetManagement');
-  } else if (pathname.includes('/trucks/addTruck') || pathname.includes('/trucks/editTruck')) {
-    navigate('/trucks');
   } else if (pathname.includes('AddAttachment')) {
     navigate(-1);
-  }
-  else if (pathname.includes('dsps/addDsp') || pathname.includes('dsps/edit')) {
+  } else if (modelBackConfig.find(pathObj => pathname.includes(pathObj.path))) {
+    const foundPathObj = modelBackConfig.find(pathObj => pathname.includes(pathObj.path));
+    // eslint-disable-next-line no-console
+    console.log("🚀 ~ file: handleConfirmDialog.tsx ~ line 21 ~ foundPathObj", foundPathObj);
+    navigate(foundPathObj?.backTo);
+  } else if (pathname.includes('dsps/addDsp') || pathname.includes('dsps/edit')) {
     navigate(`/customer/${selectedCustomerId}/dsps`, {
       state: {
         customerId: selectedCustomerId,

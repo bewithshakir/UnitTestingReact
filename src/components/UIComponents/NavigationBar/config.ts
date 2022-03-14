@@ -76,3 +76,62 @@ export const truckNavBar = [
         to: "/truckParkingLot"
     },
 ];
+
+export const modelBackConfig = [
+    {
+        path: "/salesTax/add",
+        backTo: "/salesTax",
+    },
+    {
+        path: "/salesTax/edit",
+        backTo: "/salesTax",
+    },
+    {
+        path: "/opisCities/add",
+        backTo: "/opisCities",
+    },
+    {
+        path: "/opisCities/edit",
+        backTo: "/opisCities",
+    },
+    {
+        path: "/productManagement/add",
+        backTo: "/productManagement",
+    },
+    {
+        path: "/productManagement/edit",
+        backTo: "/productManagement",
+    },
+    {
+        path: "/truckParkingLot/add",
+        backTo: "/truckParkingLot",
+    },
+    {
+        path: "/truckParkingLot/edit",
+        backTo: "/truckParkingLot",
+    },
+    {
+        path: "/assetManagement/add",
+        backTo: "/assetManagement",
+    },
+    {
+        path: "/assetManagement/edit",
+        backTo: "/assetManagement",
+    },
+    {
+        path: "/addFuelTax",
+        backTo: "/taxes",
+    },
+    {
+        path: "/editFuelTax",
+        backTo: "/taxes",
+    },
+    {
+        path: "/trucks/addTruck",
+        backTo: "/trucks",
+    },
+    {
+        path: "/trucks/editTruck",
+        backTo: "/trucks",
+    },
+];
