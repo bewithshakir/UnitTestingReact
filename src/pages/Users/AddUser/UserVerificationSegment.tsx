@@ -15,7 +15,10 @@ type props = {
     onClickVerifyUser: (...args: any[]) => void;
 }
 
-export default function UserVerificationSegment ({ userVerificationLoading, formik, showVerifyLink, verifyUserError, verifiedUserData, handleEmailChange, onClickVerifyUser }: props) {
+export default function UserVerificationSegment ({
+    userVerificationLoading, formik, showVerifyLink, verifyUserError, verifiedUserData,
+    handleEmailChange, onClickVerifyUser
+}: props) {
 
     const { t } = useTranslation();
 

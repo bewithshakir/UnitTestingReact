@@ -1,20 +1,20 @@
-import { Box, FormControl, FormControlLabel, Grid, Radio, RadioGroup, Typography } from '@mui/material';
+import { Grid, Typography } from '@mui/material';
 import { useFormik } from 'formik';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate, useParams } from 'react-router-dom';
-import { LoadingIcon } from '../../../assets/icons';
-import { Button } from '../../../components/UIComponents/Button/Button.component';
 import Select from '../../../components/UIComponents/Select/SingleSelect';
-import ToastMessage from '../../../components/UIComponents/ToastMessage/ToastMessage.component';
 import UserModel from "../../../models/UserModel";
 import { getCountryCode } from '../../../navigation/utils';
 import { HorizontalBarVersionState, useAddedCustomerIdStore, useAddedCustomerPaymentTypeStore, useShowConfirmationDialogBoxStore, useStore } from '../../../store';
 import { toastErrorKey, toastSuccessKey } from '../../../utils/constants';
-import { userAccessLevelSX, userGroupStr } from '../config';
+import { userGroupStr } from '../config';
+import { dspHelperText, isDSPErrorExist, isUserGroupErrorExist, userGroupHelperText } from './AddUserHelper';
 import { useAddUser, useEditUserData, useGetUserGroupTypes, useGetUserPermissionList, userGetUserDSPList, UserGoupsInt, useUpdateUserData, useVarifyUser } from './queries';
-import { AddUserSchema } from "./validation";
+import UserAccessLevelSegment from './UserAccessLevelSegment';
 import UserVerificationSegment from './UserVerificationSegment';
+import { AddUserSchema } from "./validation";
+import FormActionSegment from './FormActionSegment';
 
 const initialValues = new UserModel();
 interface AddUserProps {
@@ -179,17 +179,6 @@ const AddUser: React.FC<AddUserProps> = () => {
             navigate(`/customer/${addedCustomerId}/users`);
         }
     };
-    const disableButton = () => {
-        if (formik.dirty) {
-            return !formik.isValid || formik.isSubmitting;
-        } else {
-            return true;
-        }
-    };
-
-    // eslint-disable-next-line no-console
-    console.log("🚀 ~ file: index.tsx ~ line 396 ~ formik", formik);
-
 
     return (
         <Grid item xl={7} lg={8}>
@@ -212,8 +201,8 @@ const AddUser: React.FC<AddUserProps> = () => {
                                 placeholder='Choose'
                                 value={formik.values.userGroup}
                                 items={userGroupList?.filter((usrGrpObj: UserGoupsInt) => usrGrpObj.type.includes(selectedPaymentType)) || []}
-                                helperText={(formik.touched.userGroup && formik.errors.userGroup) ? formik.errors.userGroup.value : undefined}
-                                error={(formik.touched.userGroup && formik.errors.userGroup) ? true : false}
+                                helperText={userGroupHelperText(formik)}
+                                error={isUserGroupErrorExist(formik)}
                                 onChange={formik.setFieldValue}
                                 onBlur={() => {
                                     formik.setFieldTouched("userGroup");
@@ -233,6 +222,7 @@ const AddUser: React.FC<AddUserProps> = () => {
                         handleEmailChange={handleEmailChange}
                         onClickVerifyUser={onClickVerifyUser}
                     />
+
                     {(formik.values?.userGroup?.label?.toLowerCase() === userGroupStr.toLowerCase()) && (
                         <Grid item xs={12} md={12}>
                             <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
@@ -243,8 +233,8 @@ const AddUser: React.FC<AddUserProps> = () => {
                                     placeholder='Choose'
                                     value={formik.values.dsp}
                                     items={dspList}
-                                    helperText={(formik.touched.dsp && formik.errors.dsp) ? formik.errors.dsp.value : undefined}
-                                    error={(formik.touched.dsp && formik.errors.dsp) ? true : false}
+                                    helperText={dspHelperText(formik)}
+                                    error={isDSPErrorExist(formik)}
                                     onChange={formik.setFieldValue}
                                     onBlur={() => {
                                         formik.setFieldTouched("dsp");
@@ -257,86 +247,28 @@ const AddUser: React.FC<AddUserProps> = () => {
                         </Grid>
                     )}
 
-                    {userPermissionList &&
-                        (<>
-                            <Grid item md={12} mt={3} mb={2}>
-                                <Typography color="var(--Darkgray)" variant="h4" gutterBottom className="fw-bold">
-                                    {t("addUser.form.userGroupAccessLevel.title")}
-                                </Typography>
-                            </Grid>
-                            <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
-                                <FormControl component="fieldset">
-                                    <RadioGroup
-                                        aria-label="user-access-permission"
-                                        defaultValue=""
-                                        id="userAccessLevel"
-                                        name="userAccessLevel"
-                                        value={formik.values.userAccessLevel}
-                                        onChange={formik.handleChange}
-                                    >
-                                        {userPermissionList?.map((perObj: any, index: any) => (
-                                            <FormControlLabel
-                                                key={perObj.value}
-                                                value={perObj.value}
-                                                sx={{ ...userAccessLevelSX }}
-                                                control={<Radio
-                                                    role="radio"
-                                                    id={`userAccessLevel-${index}`}
-                                                    sx={{
-                                                        '&.Mui-checked': {
-                                                            color: "var(--Gray)",
-                                                        },
-                                                    }}
-                                                    aria-label={perObj.label} />}
-                                                label={
-                                                    <Typography color="var(--Darkgray)" variant="h4" pl={2.5} className="fw-bold">
-                                                        {perObj.label}
-                                                    </Typography>
-                                                } />
-                                        ))}
-                                    </RadioGroup>
-                                </FormControl>
-                            </Grid>
-                        </>
-                        )
-                    }
-                    <Grid item xs={12} md={6} />
-                    <Grid item md={12} pr={2.5} pb={2.5} mt={4}>
-                        <Box className="form-action-section" alignItems="end">
-                            <Button
-                                id="cancelBtn"
-                                types="cancel"
-                                aria-label={t("buttons.cancel")}
-                                className="mr-4"
-                                onClick={onClickCancel}
-                                data-test="cancel"
-                            >
-                                {t("buttons.cancel")}
-                            </Button>
-                            <Button
-                                id="saveBtn"
-                                type="submit"
-                                types="save"
-                                aria-label={t("buttons.save")}
-                                className="ml-4"
-                                data-testid="save"
-                                disabled={(showVerifyLink || userVerificationLoading) || disableButton()}
-                            >
-                                {t("buttons.save")}
-                                {(isLoadingAddUser || isLoadingUpdateUser) && <LoadingIcon data-testid="loading-spinner" className='loading_save_icon' />}
-                            </Button>
-                        </Box>
-                        <ToastMessage
-                            isOpen={
-                                isErrorAddUser || isSuccessAddUser ||
-                                isErrorUpdateUser || isSuccessUpdateUser ||
-                                isErrorUserData
-                            }
-                            messageType={formStatus.type}
-                            onClose={() => { return ''; }}
-                            message={formStatus.message} />
-                    </Grid>
+                    {/* user access level section */}
+                    <UserAccessLevelSegment formik={formik} userPermissionList={userPermissionList} />
 
+                    <Grid item xs={12} md={6} />
+
+                    {/* form action section */}
+                    <FormActionSegment
+                        userVerificationLoading={userVerificationLoading}
+                        formik={formik}
+                        showVerifyLink={showVerifyLink}
+                        formStatus={formStatus}
+                        toastStatues={{
+                            isErrorAddUser,
+                            isSuccessAddUser,
+                            isErrorUpdateUser,
+                            isSuccessUpdateUser,
+                            isErrorUserData,
+                            isLoadingUpdateUser,
+                            isLoadingAddUser,
+                        }}
+                        onClickCancel={onClickCancel}
+                    />
                 </Grid>
             </form>
         </Grid>
