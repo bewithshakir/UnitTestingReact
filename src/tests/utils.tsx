@@ -13,8 +13,7 @@ import {
     getServedCitiesHandler, 
     getSupplierPricesHandler, 
     getSupplierBrandProductsHandler, 
-    getOpisRackProductDetailsHandler , 
-    getProductsHandler
+    getOpisRackProductDetailsHandler 
 } from '../pages/ProductManagement/mockApi/handler';
 import { getFuelTaxList, getFuelTaxProductsList } from '../pages/Tax/mockApi/handler';
 import { 
@@ -57,7 +56,7 @@ export const handlers = [
     getCustomerList(),
     addDspHandler(),
     getDspList(),
-    
+
     editDspHandler(),
     editProductHandler(),
     getFuelTaxList(),
@@ -86,9 +85,7 @@ export const handlers = [
     addTruckColorHandler(),
     addEditTruckHandler(),
     useGetEditTruckDetails(),
-    getOpisRackProductDetailsHandler(),
-    getProductsHandler(),
-    
+    getOpisRackProductDetailsHandler()
 ];
 
 const createTestQueryClient = () => new QueryClient({
