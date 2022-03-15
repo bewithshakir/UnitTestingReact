@@ -46,7 +46,7 @@ const checkPath = (condition: boolean) => condition ? 'linkitem active' : 'linki
 
 export function varsionNavLinks (pathname: any, handleClick: any, t: any) {
   if (pathname.includes('taxes') || pathname.includes('salesTax') || pathname.includes('productManagement') ||
-    pathname.includes('opisCities') || pathname.includes('assetManagement')
+    pathname.includes('opisCities') || pathname.includes('assetManagement') || pathname.includes('vehicleRule')
   ) {
     return renderNavHeader(taxesNavBar, pathname, handleClick, t);
   }

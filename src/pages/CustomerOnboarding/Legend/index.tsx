@@ -79,7 +79,7 @@ const Legend: React.FC = () => {
   };
 
   const getLegendHeader = () => {
-    if (pathname.includes("viewCustomer") || pathname.includes("parkingLots") || pathname.includes('attachments') || pathname.includes('vehicles')) {
+    if (pathname.includes("viewCustomer") || pathname.includes("parkingLots") || pathname.includes('attachments') || pathname.includes('vehicles') || pathname.includes('users')) {
       return selectedCustomerName;
     } else {
       return t("legend.customerName");

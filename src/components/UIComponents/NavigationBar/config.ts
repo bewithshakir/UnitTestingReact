@@ -24,6 +24,11 @@ export const taxesNavBar = [
         label: "taxes.navBar.assetManagement",
         to: "/assetManagement"
     },
+    {
+        index: 6,
+        label: "taxes.navBar.vehicleRule",
+        to: "/vehicleRule"
+    }
 ];
 
 export const customerNavBar = [
@@ -134,4 +139,8 @@ export const modelBackConfig = [
         path: "/trucks/editTruck",
         backTo: "/trucks",
     },
+    {
+        path: "/vehicleRule/add",
+        backTo: "/vehicleRule",
+    }
 ];
