@@ -14,7 +14,8 @@ interface ISelectInput {
         optionUrlKey: filterURLKey
         /** like 'states' | 'cities' | 'settlementType' */
         optionAPIResponseKey: string;
-        customerId?: string
+        customerId?: string;
+        options?: { label: string; value: string;[k: string]: any }[] | undefined;
     },
     handleSelect: (name: string, value: string[], singleSelect?: boolean) => void;
     formik: any
@@ -44,7 +45,7 @@ export const SelectInput: React.FC<ISelectInput> = ({ field, handleSelect, formi
             label={t(field.label)}
             placeholder=""
             value={value}
-            items={items}
+            items={field.optionUrlKey == "truckOverviewFilter" ? field['options'] :  items}
             onChange={(name, val) => handleSelect(name, val, true)}
             helperText={(touched && error) ? error : undefined}
             error={(touched && error) ? true : false} />

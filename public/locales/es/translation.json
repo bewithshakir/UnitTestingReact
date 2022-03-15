@@ -204,6 +204,13 @@
       "city": "Ciudad"
     }
   },
+  "filterForm": {
+    "status": "Estado",
+    "driver": "Conductor",
+    "state": "Estado",
+    "city": "ciudad",
+    "zip": "CÓDIGO POSTAL"
+  },
   "assetManagement": {
     "asset": "Tipo de activo",
     "sortBy": {

@@ -21,7 +21,18 @@ const getTruckList = async (pageParam: number, searchTerm: string, sortOrder: { 
     }
 
     const truckListEntitySet = `/api/truck-service/delivery-vehicles?limit=${pageDataLimit}&offset=${pageParam}`;
-    const url = query ? `&countryCode=us${query.toString().length ? `&${query.toString()}` : ''}` : `&countryCode=us`;
+    let url = query ? `&countryCode=us${query.toString().length ? `&${query.toString()}` : ''}` : `&countryCode=us`;
+    
+    let finalUrl = url;
+
+    if(url.includes('&activeInactiveInd=%22Y%22')) {
+        finalUrl = url.replace('&activeInactiveInd=%22Y%22', '&activeInactiveInd=Y');
+        url  = finalUrl;
+    } else if(url.includes('&activeInactiveInd=%22N%22')) {
+        finalUrl = url.replace('&activeInactiveInd=%22N%22', '&activeInactiveInd=N');
+        url = finalUrl;
+    }
+
     const options: AxiosRequestConfig = {
         method: 'get',
         url: truckListEntitySet + url

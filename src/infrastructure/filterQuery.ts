@@ -3,7 +3,7 @@ import { AxiosRequestConfig } from "axios";
 import axios from './ApiHelper';
 
 
-export type filterURLKey = 'customerFilter' | 'fuelTaxFilter' | 'parkingLotFilter' | 'salesTaxFilter' | 'opisCityFilter' | 'assetFilter' | 'parkingLotManagementFilter' | 'truckParkingLotFilter' | 'dspFilter';
+export type filterURLKey = 'customerFilter' | 'fuelTaxFilter' | 'parkingLotFilter' | 'salesTaxFilter' | 'opisCityFilter' | 'assetFilter' | 'parkingLotManagementFilter' | 'truckParkingLotFilter' | 'dspFilter' | 'truckOverviewFilter';
 
 
 const filterApis: { [k in filterURLKey]: string } = {
@@ -15,7 +15,8 @@ const filterApis: { [k in filterURLKey]: string } = {
     assetFilter: 'api/customer-service/lots/filter-options?countryCode=us',
     parkingLotManagementFilter: 'api/customer-service/lots/filter-options?countryCode=us',
     truckParkingLotFilter: 'api/truck-service/parking-locations/filter-options?countryCode=us',
-    dspFilter: 'dspFilter'
+    dspFilter: 'dspFilter',
+    truckOverviewFilter: 'api/truck-service/delivery-vehicles/filter-options?countryCode=us'
 };
 
 const getCustomerFilterData = async (urlKey: filterURLKey, customerId: string) => {
