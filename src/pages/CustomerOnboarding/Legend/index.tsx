@@ -25,6 +25,7 @@ const Legend: React.FC = () => {
         'addCustomer': `/customer/viewCustomer/${customerId}`,
         'parkingLots': `/customer/${customerId}/parkingLots`,
         'users': `/customer/${customerId}/users`,
+        'vehicles': `/customer/${customerId}/vehicles`,
         'dsps': `/customer/${customerId}/dsps`,
         'attachments': `/customer/${customerId}/attachments`,
       }[x];
@@ -35,19 +36,24 @@ const Legend: React.FC = () => {
 
   const isDisabled = (to: string) => {
     if (to.includes('addCustomer') && (pathname.includes('addCustomer') || pathname.includes('viewCustomer') ||
-      pathname.includes('parkingLots') || pathname.includes('attachments') || pathname.includes('dsps') || pathname.includes('users'))) {
+      pathname.includes('parkingLots') || pathname.includes('attachments') 
+      || pathname.includes('dsps') || pathname.includes('users') || pathname.includes('vehicles'))) {
       return false;
     } else if (to.includes('parkingLots') && (pathname.includes('viewCustomer') || pathname.includes('parkingLots')
-      || pathname.includes('attachments') || pathname.includes('dsps') || pathname.includes('users'))) {
+      || pathname.includes('attachments') || pathname.includes('dsps') || pathname.includes('users')|| pathname.includes('vehicles'))) {
       return false;
     } else if (to.includes('attachments') && pathname.includes('addCustomer')) {
       return true;
     } else if (to.includes('attachments') && (pathname.includes('viewCustomer') || pathname.includes('parkingLots')
-      || pathname.includes('attachments') || pathname.includes('dsps') || pathname.includes('users'))) {
+      || pathname.includes('attachments') || pathname.includes('dsps') || pathname.includes('users') || pathname.includes('vehicles'))) {
       return false;
     } else if (to.includes('dsps') && selectedPaymentType === 'Voyager') {
       return false;
     } else if (to.includes('users')) {
+      return false;
+    } else if (to.includes('vehicles') &&  (pathname.includes('viewCustomer') 
+      || pathname.includes('parkingLots') || pathname.includes('attachments') 
+      || pathname.includes('dsps') || pathname.includes('vehicles'))) {
       return false;
     } else return true;
   };
@@ -76,7 +82,8 @@ const Legend: React.FC = () => {
   };
 
   const getLegendHeader = () => {
-    if (pathname.includes("viewCustomer") || pathname.includes("parkingLots") || pathname.includes('attachments')) {
+    if (pathname.includes("viewCustomer") || pathname.includes("parkingLots") 
+    || pathname.includes('attachments') || pathname.includes('vehicles') || pathname.includes('users')) {
       return selectedCustomerName;
     } else {
       return t("legend.customerName");

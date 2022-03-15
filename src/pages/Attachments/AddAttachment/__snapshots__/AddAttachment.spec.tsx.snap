@@ -49,6 +49,7 @@ exports[`Rendering of Add Attachment Component Upload Attachment Component Snaps
                   "lg",
                   "xl",
                 ],
+                "not": [Function],
                 "only": [Function],
                 "unit": "px",
                 "up": [Function],

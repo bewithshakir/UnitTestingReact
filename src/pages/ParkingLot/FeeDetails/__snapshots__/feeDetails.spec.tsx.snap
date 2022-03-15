@@ -1960,6 +1960,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                     "lg",
                     "xl",
                   ],
+                  "not": [Function],
                   "only": [Function],
                   "unit": "px",
                   "up": [Function],
