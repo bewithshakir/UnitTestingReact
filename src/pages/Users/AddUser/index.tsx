@@ -1,20 +1,20 @@
-import { Box, FormControl, FormControlLabel, Grid, Link, RadioGroup, Typography, Radio, Icon } from '@mui/material';
+import { Box, FormControl, FormControlLabel, Grid, Radio, RadioGroup, Typography } from '@mui/material';
 import { useFormik } from 'formik';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate, useParams } from 'react-router-dom';
-import { AlertExclamationIcon, LoadingIcon, PositiveCricleIcon } from '../../../assets/icons';
+import { LoadingIcon } from '../../../assets/icons';
 import { Button } from '../../../components/UIComponents/Button/Button.component';
-import Input from '../../../components/UIComponents/Input/Input';
+import Select from '../../../components/UIComponents/Select/SingleSelect';
 import ToastMessage from '../../../components/UIComponents/ToastMessage/ToastMessage.component';
 import UserModel from "../../../models/UserModel";
-import { HorizontalBarVersionState, useAddedCustomerIdStore, useShowConfirmationDialogBoxStore, useStore, useAddedCustomerPaymentTypeStore } from '../../../store';
-import { useAddUser, useEditUserData, useUpdateUserData, useGetUserGroupTypes, UserGoupsInt, useVarifyUser, useGetUserPermissionList, userGetUserDSPList } from './queries';
-import Select from '../../../components/UIComponents/Select/SingleSelect';
-import { AddUserSchema } from "./validation";
-import { userAccessLevelSX, userGroupStr } from '../config';
 import { getCountryCode } from '../../../navigation/utils';
-import { toastSuccessKey, toastErrorKey } from '../../../utils/constants';
+import { HorizontalBarVersionState, useAddedCustomerIdStore, useAddedCustomerPaymentTypeStore, useShowConfirmationDialogBoxStore, useStore } from '../../../store';
+import { toastErrorKey, toastSuccessKey } from '../../../utils/constants';
+import { userAccessLevelSX, userGroupStr } from '../config';
+import { useAddUser, useEditUserData, useGetUserGroupTypes, useGetUserPermissionList, userGetUserDSPList, UserGoupsInt, useUpdateUserData, useVarifyUser } from './queries';
+import { AddUserSchema } from "./validation";
+import UserVerificationSegment from './UserVerificationSegment';
 
 const initialValues = new UserModel();
 interface AddUserProps {
@@ -53,7 +53,6 @@ const AddUser: React.FC<AddUserProps> = () => {
             formik.setFieldValue('userName', `${data?.userProfile.firstName} ${data?.userProfile.lastName}`);
         } else {
             formik.setFieldValue('userId', '');
-            formik.setFieldValue('email', '');
             formik.setFieldValue('phone', '');
             formik.setFieldValue('userName', '');
         }
@@ -224,82 +223,16 @@ const AddUser: React.FC<AddUserProps> = () => {
                             />
                         </Grid>
                     </Grid>
-                    <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
-                        <Input
-                            id='email'
-                            name='email'
-                            label={t("addUser.form.email")}
-                            type='text'
-                            helperText={(formik.touched.email && formik.errors.email) ? formik.errors.email : undefined}
-                            error={(formik.touched.email && formik.errors.email) ? true : false}
-                            description=''
-                            placeholder='Enter Email'
-                            onChange={handleEmailChange}
-                            onBlur={() => {
-                                formik.setFieldTouched("email");
-                                formik.validateField("email");
-                            }}
-                            required
-                        />
-                    </Grid>
-                    <Grid item xs={12} md={6} pr={2.5} pt={(formik.touched.email && formik.errors.email) ? 0 : 3.5} pb={2.5} display="flex" alignItems="center">
-                        {
-                            (!showVerifyLink && (verifiedUserData || userVerificationLoading || verifyUserError)) ?
-                                <Box>
-                                    {userVerificationLoading && <LoadingIcon data-testid="loading-spinner" style={{ position: "unset" }} className='loading_save_icon' />}
-                                    {!userVerificationLoading && verifiedUserData?.data?.verifiedUser && <Icon component={PositiveCricleIcon} />}
-                                    {((!userVerificationLoading && !verifiedUserData?.data?.verifiedUser) || verifyUserError) &&
-                                        (
-                                            <Box display="flex" alignItems="center">
-                                                <Icon sx={{ width: "20px", height: "20px", marginRight: 2 }} component={AlertExclamationIcon} />
-                                                <Typography variant="h4" color="var(--Tertiary)" className="fw-bold">
-                                                    Janrain account doesn&apos;t exist for this email.
-                                                </Typography>
-                                            </Box>
-                                        )
-                                    }
-                                </Box>
-                                :
-                                <Link
-                                    variant="body2"
-                                    id="verify-user-link"
-                                    className="add-link"
-                                    onClick={onClickVerifyUser}
-                                    sx={{ cursor: "pointer", color: "var(--Primary)" }}
-                                >
-                                    <Typography variant="h4" color="var(--Primary)" className="fw-bold" mb={1}>
-                                        Verify
-                                    </Typography>
-                                </Link>
-                        }
-                    </Grid>
-                    <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
-                        <Input
-                            id='userName'
-                            label={t("addUser.form.userGroupAccessLevel.userName")}
-                            type='text'
-                            helperText={(formik.touched.userName && formik.errors.userName) ? formik.errors.userName : undefined}
-                            error={(formik.touched.userName && formik.errors.userName) ? true : false}
-                            description=''
-                            placeholder='User Name'
-                            {...formik.getFieldProps('userName')}
-                            disabled={true}
-                            required
-                        />
-                    </Grid>
-                    <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
-                        <Input
-                            id='phone'
-                            label={t("addUser.form.userGroupAccessLevel.phone")}
-                            type='text'
-                            helperText={(formik.touched.phone && formik.errors.phone) ? formik.errors.phone : undefined}
-                            error={(formik.touched.phone && formik.errors.phone) ? true : false}
-                            description=''
-                            placeholder='Phone Number Ex: 787 XXXX XXX'
-                            disabled={true}
-                            {...formik.getFieldProps('phone')}
-                        />
-                    </Grid>
+                    {/* verify user section */}
+                    <UserVerificationSegment
+                        userVerificationLoading={userVerificationLoading}
+                        formik={formik}
+                        showVerifyLink={showVerifyLink}
+                        verifyUserError={verifyUserError}
+                        verifiedUserData={verifiedUserData}
+                        handleEmailChange={handleEmailChange}
+                        onClickVerifyUser={onClickVerifyUser}
+                    />
                     {(formik.values?.userGroup?.label?.toLowerCase() === userGroupStr.toLowerCase()) && (
                         <Grid item xs={12} md={12}>
                             <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
