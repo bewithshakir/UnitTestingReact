@@ -207,7 +207,8 @@
       "salesTax": "Sales Tax",
       "opisCities": "OPIS Cities",
       "productManagement": "Product Management",
-      "assetManagement": "Asset Management"
+      "assetManagement": "Asset Management",
+      "vehicleRule": "Vehicle Rules"
     },
     "fuelTax": {
       "search": "City",
@@ -280,6 +281,11 @@
         "city": "City",
         "city id": "City Id",
         "fill msg": "Fill all the Mandatory fields * "
+      }
+    },
+    "vehicleRule": {
+      "form": {
+        "titleAdd": "Add Vehicle Rule"
       }
     }
   },

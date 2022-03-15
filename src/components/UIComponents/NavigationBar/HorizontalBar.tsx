@@ -98,6 +98,8 @@ export default function HorizontalBar (props: HorizontalBarProps) {
       navigate('/taxes');
     } else if (pathname.includes('productManagement/add') || pathname.includes('productManagement/edit')) {
       navigate('/productManagement');
+    } else if (pathname.includes('vehicleRule/add')) {
+      navigate('/vehicleRule');
     } else if (pathname.includes('AddAttachment')) {
       navigate(-1);
     }
@@ -143,6 +145,8 @@ export default function HorizontalBar (props: HorizontalBarProps) {
         return t('productManagement.form.titleAdd');
       case pathname.includes('productManagement/edit'):
         return t('productManagement.form.titleEdit');
+      case pathname.includes('vehicleRule/add'):
+        return t('taxes.vehicleRule.form.titleAdd');
       case pathname.includes('dsps/addDsp'):
         return t("addDSP.title");
       case pathname.includes('dsps/edit'):
@@ -188,7 +192,8 @@ export default function HorizontalBar (props: HorizontalBarProps) {
       pathname.includes('salesTax') ||
       pathname.includes('productManagement') ||
       pathname.includes('opisCities') ||
-      pathname.includes('assetManagement')
+      pathname.includes('assetManagement') || 
+      pathname.includes('vehicleRule')
     ) {
       return (
         <>
@@ -253,6 +258,15 @@ export default function HorizontalBar (props: HorizontalBarProps) {
               onClick={handleClick}
             >
               {t('taxes.navBar.assetManagement')}
+            </NavLink>
+          </div>
+          <div className={pathname.includes('vehicleRule') ? 'linkitem active' : "linkitem"}>
+            <NavLink
+              className='breadcrubs-title'
+              to='/vehicleRule'
+              onClick={handleClick}
+            >
+              {t('taxes.navBar.vehicleRule')}
             </NavLink>
           </div>
         </>
