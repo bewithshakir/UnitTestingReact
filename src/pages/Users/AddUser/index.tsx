@@ -14,6 +14,7 @@ import Select from '../../../components/UIComponents/Select/SingleSelect';
 import { AddUserSchema } from "./validation";
 import { userAccessLevelSX, userGroupStr } from '../config';
 import { getCountryCode } from '../../../navigation/utils';
+import { toastSuccessKey, toastErrorKey } from '../../../utils/constants';
 
 const initialValues = new UserModel();
 interface AddUserProps {
@@ -90,19 +91,19 @@ const AddUser: React.FC<AddUserProps> = () => {
     const onSuccessAddUser = () => {
         isFormValidated(false);
         formik.resetForm({ values: formik.values });
-        setFormStatus({ message: t("formStatusProps.success.message"), type: 'Success' });
+        setFormStatus({ message: t(toastSuccessKey), type: 'Success' });
     };
     const onErrorAddUser = (err: any) => {
         const { data } = err.response;
         formik.setSubmitting(false);
-        setFormStatus({ message: data?.error?.message || t("formStatusProps.error.message"), type: 'Error' });
+        setFormStatus({ message: data?.error?.message || t(toastErrorKey), type: 'Error' });
     };
     const { mutate: addNewUser, isSuccess: isSuccessAddUser, isError: isErrorAddUser, isLoading: isLoadingAddUser } = useAddUser(onSuccessAddUser, onErrorAddUser);
     const createUserData = (form: UserModel) => {
         try {
             addNewUser(form);
         } catch (error) {
-            setFormStatus({ message: t("formStatusProps.error.message"), type: 'Error' });
+            setFormStatus({ message: t(toastErrorKey), type: 'Error' });
         }
     };
 
@@ -121,16 +122,16 @@ const AddUser: React.FC<AddUserProps> = () => {
     };
     const onErrorUserDetail = (error: any) => {
         setEditMode(true);
-        setFormStatus({ message: error?.response.data.error?.details[0] || t("formStatusProps.error.message"), type: 'Error' });
+        setFormStatus({ message: error?.response.data.error?.details[0] || t(toastErrorKey), type: 'Error' });
     };
     const { isError: isErrorUserData } = useEditUserData(addedCustomerId, userId, onSuccessUserDetail, onErrorUserDetail);
 
     const handleUpdateUserRepose = (isSuccess: boolean, data?: any) => {
         if (isSuccess) {
             isFormValidated(false);
-            setFormStatus({ message: t("formStatusProps.success.message"), type: 'Success' });
+            setFormStatus({ message: t(toastSuccessKey), type: 'Success' });
         } else {
-            setFormStatus({ message: data?.error?.details[0] || t("formStatusProps.error.message"), type: 'Error' });
+            setFormStatus({ message: data?.error?.details[0] || t(toastErrorKey), type: 'Error' });
         }
         formik.resetForm({ values: formik.values });
     };
