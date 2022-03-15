@@ -870,7 +870,6 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                             Object {
                               "field": "name",
                               "label": "DSP NAME",
-                              "sortable": true,
                               "type": "text",
                             },
                             Object {
@@ -3937,7 +3936,6 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                                 Object {
                                   "field": "name",
                                   "label": "DSP NAME",
-                                  "sortable": true,
                                   "type": "text",
                                 },
                                 Object {
@@ -4075,7 +4073,6 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                             Object {
                               "field": "name",
                               "label": "DSP NAME",
-                              "sortable": true,
                               "type": "text",
                             },
                             Object {
@@ -4160,7 +4157,6 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                                         Object {
                                           "field": "name",
                                           "label": "DSP NAME",
-                                          "sortable": true,
                                           "type": "text",
                                         },
                                         Object {
@@ -4219,7 +4215,6 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                                         Object {
                                           "field": "name",
                                           "label": "DSP NAME",
-                                          "sortable": true,
                                           "type": "text",
                                         },
                                         Object {
@@ -4265,7 +4260,6 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                                         Object {
                                           "field": "name",
                                           "label": "DSP NAME",
-                                          "sortable": true,
                                           "type": "text",
                                         },
                                         Object {
@@ -4362,7 +4356,6 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                                               Object {
                                                 "field": "name",
                                                 "label": "DSP NAME",
-                                                "sortable": true,
                                                 "type": "text",
                                               },
                                               Object {
@@ -4421,7 +4414,6 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                                               Object {
                                                 "field": "name",
                                                 "label": "DSP NAME",
-                                                "sortable": true,
                                                 "type": "text",
                                               },
                                               Object {
@@ -4467,7 +4459,6 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                                               Object {
                                                 "field": "name",
                                                 "label": "DSP NAME",
-                                                "sortable": true,
                                                 "type": "text",
                                               },
                                               Object {
@@ -4558,7 +4549,6 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                                           Object {
                                             "field": "name",
                                             "label": "DSP NAME",
-                                            "sortable": true,
                                             "type": "text",
                                           },
                                           Object {
@@ -4626,14 +4616,7 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                                                   sortDirection={false}
                                                   width="auto"
                                                 >
-                                                  <ForwardRef(TableSortLabel)
-                                                    IconComponent={[Function]}
-                                                    active={false}
-                                                    direction="asc"
-                                                    onClick={[Function]}
-                                                  >
-                                                    DSP NAME
-                                                  </ForwardRef(TableSortLabel)>
+                                                  DSP NAME
                                                 </ForwardRef(TableCell)>
                                                 <ForwardRef(TableCell)
                                                   className="header-options"
@@ -4729,14 +4712,7 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                                                           sortDirection={false}
                                                           width="auto"
                                                         >
-                                                          <ForwardRef(TableSortLabel)
-                                                            IconComponent={[Function]}
-                                                            active={false}
-                                                            direction="asc"
-                                                            onClick={[Function]}
-                                                          >
-                                                            DSP NAME
-                                                          </ForwardRef(TableSortLabel)>
+                                                          DSP NAME
                                                         </ForwardRef(TableCell)>,
                                                         <ForwardRef(TableCell)
                                                           className="header-options"
@@ -4828,14 +4804,7 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                                                       ownerState={
                                                         Object {
                                                           "align": "inherit",
-                                                          "children": <ForwardRef(TableSortLabel)
-                                                            IconComponent={[Function]}
-                                                            active={false}
-                                                            direction="asc"
-                                                            onClick={[Function]}
-                                                          >
-                                                            DSP NAME
-                                                          </ForwardRef(TableSortLabel)>,
+                                                          "children": "DSP NAME",
                                                           "className": "header-options",
                                                           "component": "th",
                                                           "padding": "normal",
@@ -4855,147 +4824,7 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                                                         scope="col"
                                                         width="auto"
                                                       >
-                                                        <ForwardRef(TableSortLabel)
-                                                          IconComponent={[Function]}
-                                                          active={false}
-                                                          direction="asc"
-                                                          onClick={[Function]}
-                                                        >
-                                                          <MuiTableSortLabelRoot
-                                                            className="MuiTableSortLabel-root"
-                                                            component="span"
-                                                            disableRipple={true}
-                                                            onClick={[Function]}
-                                                            ownerState={
-                                                              Object {
-                                                                "IconComponent": [Function],
-                                                                "active": false,
-                                                                "children": "DSP NAME",
-                                                                "direction": "asc",
-                                                                "hideSortIcon": false,
-                                                                "onClick": [Function],
-                                                              }
-                                                            }
-                                                          >
-                                                            <ForwardRef(ButtonBase)
-                                                              className="MuiTableSortLabel-root css-o11grf-MuiTableSortLabel-root"
-                                                              component="span"
-                                                              disableRipple={true}
-                                                              onClick={[Function]}
-                                                            >
-                                                              <MuiButtonBaseRoot
-                                                                as="span"
-                                                                className="MuiButtonBase-root MuiTableSortLabel-root css-o11grf-MuiTableSortLabel-root"
-                                                                onBlur={[Function]}
-                                                                onClick={[Function]}
-                                                                onContextMenu={[Function]}
-                                                                onDragLeave={[Function]}
-                                                                onFocus={[Function]}
-                                                                onKeyDown={[Function]}
-                                                                onKeyUp={[Function]}
-                                                                onMouseDown={[Function]}
-                                                                onMouseLeave={[Function]}
-                                                                onMouseUp={[Function]}
-                                                                onTouchEnd={[Function]}
-                                                                onTouchMove={[Function]}
-                                                                onTouchStart={[Function]}
-                                                                ownerState={
-                                                                  Object {
-                                                                    "centerRipple": false,
-                                                                    "children": Array [
-                                                                      "DSP NAME",
-                                                                      <MuiTableSortLabelIcon
-                                                                        as={[Function]}
-                                                                        className="MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc"
-                                                                        ownerState={
-                                                                          Object {
-                                                                            "IconComponent": [Function],
-                                                                            "active": false,
-                                                                            "children": "DSP NAME",
-                                                                            "direction": "asc",
-                                                                            "hideSortIcon": false,
-                                                                            "onClick": [Function],
-                                                                          }
-                                                                        }
-                                                                      />,
-                                                                    ],
-                                                                    "className": "MuiTableSortLabel-root css-o11grf-MuiTableSortLabel-root",
-                                                                    "component": "span",
-                                                                    "disableRipple": true,
-                                                                    "disableTouchRipple": false,
-                                                                    "disabled": false,
-                                                                    "focusRipple": false,
-                                                                    "focusVisible": false,
-                                                                    "onClick": [Function],
-                                                                    "tabIndex": 0,
-                                                                  }
-                                                                }
-                                                                role="button"
-                                                                tabIndex={0}
-                                                              >
-                                                                <span
-                                                                  className="MuiButtonBase-root MuiTableSortLabel-root css-1qgma8u-MuiButtonBase-root-MuiTableSortLabel-root"
-                                                                  onBlur={[Function]}
-                                                                  onClick={[Function]}
-                                                                  onContextMenu={[Function]}
-                                                                  onDragLeave={[Function]}
-                                                                  onFocus={[Function]}
-                                                                  onKeyDown={[Function]}
-                                                                  onKeyUp={[Function]}
-                                                                  onMouseDown={[Function]}
-                                                                  onMouseLeave={[Function]}
-                                                                  onMouseUp={[Function]}
-                                                                  onTouchEnd={[Function]}
-                                                                  onTouchMove={[Function]}
-                                                                  onTouchStart={[Function]}
-                                                                  role="button"
-                                                                  tabIndex={0}
-                                                                >
-                                                                  DSP NAME
-                                                                  <MuiTableSortLabelIcon
-                                                                    as={[Function]}
-                                                                    className="MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc"
-                                                                    ownerState={
-                                                                      Object {
-                                                                        "IconComponent": [Function],
-                                                                        "active": false,
-                                                                        "children": "DSP NAME",
-                                                                        "direction": "asc",
-                                                                        "hideSortIcon": false,
-                                                                        "onClick": [Function],
-                                                                      }
-                                                                    }
-                                                                  >
-                                                                    <SortByIcon
-                                                                      className="MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc css-1hi7cb7-MuiTableSortLabel-icon"
-                                                                    >
-                                                                      <svg
-                                                                        className="MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc css-1hi7cb7-MuiTableSortLabel-icon"
-                                                                        height="1em"
-                                                                        viewBox="0 0 20 20"
-                                                                        width="1em"
-                                                                      >
-                                                                        <g
-                                                                          data-name="Group 1863"
-                                                                        >
-                                                                          <path
-                                                                            d="M14 12l-4 5-4-5zm-4-8l4 5H6z"
-                                                                            fill="currentColor"
-                                                                          />
-                                                                          <path
-                                                                            d="M0 0h20v20H0z"
-                                                                            data-name="Rectangle 2251"
-                                                                            fill="none"
-                                                                          />
-                                                                        </g>
-                                                                      </svg>
-                                                                    </SortByIcon>
-                                                                  </MuiTableSortLabelIcon>
-                                                                </span>
-                                                              </MuiButtonBaseRoot>
-                                                            </ForwardRef(ButtonBase)>
-                                                          </MuiTableSortLabelRoot>
-                                                        </ForwardRef(TableSortLabel)>
+                                                        DSP NAME
                                                       </th>
                                                     </MuiTableCellRoot>
                                                   </ForwardRef(TableCell)>
@@ -5311,7 +5140,6 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                                           Object {
                                             "field": "name",
                                             "label": "DSP NAME",
-                                            "sortable": true,
                                             "type": "text",
                                           },
                                           Object {
@@ -5357,7 +5185,6 @@ exports[`Rendering of DSP Landing Component DSP Landing component Snapshot testi
                                           Object {
                                             "field": "name",
                                             "label": "DSP NAME",
-                                            "sortable": true,
                                             "type": "text",
                                           },
                                           Object {

@@ -900,42 +900,36 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                               "align": "left",
                               "field": "city",
                               "label": "CITY",
-                              "sortable": true,
                               "type": "text",
                             },
                             Object {
                               "align": "left",
                               "field": "state",
                               "label": "STATE",
-                              "sortable": true,
                               "type": "text",
                             },
                             Object {
                               "align": "left",
                               "field": "federalRate",
                               "label": "FEDERAL RATE (%)",
-                              "sortable": true,
                               "type": "text",
                             },
                             Object {
                               "align": "left",
                               "field": "stateRate",
                               "label": "STATE RATE (%)",
-                              "sortable": true,
                               "type": "text",
                             },
                             Object {
                               "align": "left",
                               "field": "localRate",
                               "label": "LOCAL RATE (%)",
-                              "sortable": true,
                               "type": "text",
                             },
                             Object {
                               "align": "left",
                               "field": "totalRate",
                               "label": "TOTAL RATE (%)",
-                              "sortable": true,
                               "type": "text",
                             },
                           ]
@@ -3916,42 +3910,36 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                   "align": "left",
                                   "field": "city",
                                   "label": "CITY",
-                                  "sortable": true,
                                   "type": "text",
                                 },
                                 Object {
                                   "align": "left",
                                   "field": "state",
                                   "label": "STATE",
-                                  "sortable": true,
                                   "type": "text",
                                 },
                                 Object {
                                   "align": "left",
                                   "field": "federalRate",
                                   "label": "FEDERAL RATE (%)",
-                                  "sortable": true,
                                   "type": "text",
                                 },
                                 Object {
                                   "align": "left",
                                   "field": "stateRate",
                                   "label": "STATE RATE (%)",
-                                  "sortable": true,
                                   "type": "text",
                                 },
                                 Object {
                                   "align": "left",
                                   "field": "localRate",
                                   "label": "LOCAL RATE (%)",
-                                  "sortable": true,
                                   "type": "text",
                                 },
                                 Object {
                                   "align": "left",
                                   "field": "totalRate",
                                   "label": "TOTAL RATE (%)",
-                                  "sortable": true,
                                   "type": "text",
                                 },
                               ]
@@ -4042,42 +4030,36 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                               "align": "left",
                               "field": "city",
                               "label": "CITY",
-                              "sortable": true,
                               "type": "text",
                             },
                             Object {
                               "align": "left",
                               "field": "state",
                               "label": "STATE",
-                              "sortable": true,
                               "type": "text",
                             },
                             Object {
                               "align": "left",
                               "field": "federalRate",
                               "label": "FEDERAL RATE (%)",
-                              "sortable": true,
                               "type": "text",
                             },
                             Object {
                               "align": "left",
                               "field": "stateRate",
                               "label": "STATE RATE (%)",
-                              "sortable": true,
                               "type": "text",
                             },
                             Object {
                               "align": "left",
                               "field": "localRate",
                               "label": "LOCAL RATE (%)",
-                              "sortable": true,
                               "type": "text",
                             },
                             Object {
                               "align": "left",
                               "field": "totalRate",
                               "label": "TOTAL RATE (%)",
-                              "sortable": true,
                               "type": "text",
                             },
                           ]
@@ -4125,42 +4107,36 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                           "align": "left",
                                           "field": "city",
                                           "label": "CITY",
-                                          "sortable": true,
                                           "type": "text",
                                         },
                                         Object {
                                           "align": "left",
                                           "field": "state",
                                           "label": "STATE",
-                                          "sortable": true,
                                           "type": "text",
                                         },
                                         Object {
                                           "align": "left",
                                           "field": "federalRate",
                                           "label": "FEDERAL RATE (%)",
-                                          "sortable": true,
                                           "type": "text",
                                         },
                                         Object {
                                           "align": "left",
                                           "field": "stateRate",
                                           "label": "STATE RATE (%)",
-                                          "sortable": true,
                                           "type": "text",
                                         },
                                         Object {
                                           "align": "left",
                                           "field": "localRate",
                                           "label": "LOCAL RATE (%)",
-                                          "sortable": true,
                                           "type": "text",
                                         },
                                         Object {
                                           "align": "left",
                                           "field": "totalRate",
                                           "label": "TOTAL RATE (%)",
-                                          "sortable": true,
                                           "type": "text",
                                         },
                                       ]
@@ -4184,42 +4160,36 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                           "align": "left",
                                           "field": "city",
                                           "label": "CITY",
-                                          "sortable": true,
                                           "type": "text",
                                         },
                                         Object {
                                           "align": "left",
                                           "field": "state",
                                           "label": "STATE",
-                                          "sortable": true,
                                           "type": "text",
                                         },
                                         Object {
                                           "align": "left",
                                           "field": "federalRate",
                                           "label": "FEDERAL RATE (%)",
-                                          "sortable": true,
                                           "type": "text",
                                         },
                                         Object {
                                           "align": "left",
                                           "field": "stateRate",
                                           "label": "STATE RATE (%)",
-                                          "sortable": true,
                                           "type": "text",
                                         },
                                         Object {
                                           "align": "left",
                                           "field": "localRate",
                                           "label": "LOCAL RATE (%)",
-                                          "sortable": true,
                                           "type": "text",
                                         },
                                         Object {
                                           "align": "left",
                                           "field": "totalRate",
                                           "label": "TOTAL RATE (%)",
-                                          "sortable": true,
                                           "type": "text",
                                         },
                                       ]
@@ -4230,42 +4200,36 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                           "align": "left",
                                           "field": "city",
                                           "label": "CITY",
-                                          "sortable": true,
                                           "type": "text",
                                         },
                                         Object {
                                           "align": "left",
                                           "field": "state",
                                           "label": "STATE",
-                                          "sortable": true,
                                           "type": "text",
                                         },
                                         Object {
                                           "align": "left",
                                           "field": "federalRate",
                                           "label": "FEDERAL RATE (%)",
-                                          "sortable": true,
                                           "type": "text",
                                         },
                                         Object {
                                           "align": "left",
                                           "field": "stateRate",
                                           "label": "STATE RATE (%)",
-                                          "sortable": true,
                                           "type": "text",
                                         },
                                         Object {
                                           "align": "left",
                                           "field": "localRate",
                                           "label": "LOCAL RATE (%)",
-                                          "sortable": true,
                                           "type": "text",
                                         },
                                         Object {
                                           "align": "left",
                                           "field": "totalRate",
                                           "label": "TOTAL RATE (%)",
-                                          "sortable": true,
                                           "type": "text",
                                         },
                                       ]
@@ -4325,42 +4289,36 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                 "align": "left",
                                                 "field": "city",
                                                 "label": "CITY",
-                                                "sortable": true,
                                                 "type": "text",
                                               },
                                               Object {
                                                 "align": "left",
                                                 "field": "state",
                                                 "label": "STATE",
-                                                "sortable": true,
                                                 "type": "text",
                                               },
                                               Object {
                                                 "align": "left",
                                                 "field": "federalRate",
                                                 "label": "FEDERAL RATE (%)",
-                                                "sortable": true,
                                                 "type": "text",
                                               },
                                               Object {
                                                 "align": "left",
                                                 "field": "stateRate",
                                                 "label": "STATE RATE (%)",
-                                                "sortable": true,
                                                 "type": "text",
                                               },
                                               Object {
                                                 "align": "left",
                                                 "field": "localRate",
                                                 "label": "LOCAL RATE (%)",
-                                                "sortable": true,
                                                 "type": "text",
                                               },
                                               Object {
                                                 "align": "left",
                                                 "field": "totalRate",
                                                 "label": "TOTAL RATE (%)",
-                                                "sortable": true,
                                                 "type": "text",
                                               },
                                             ]
@@ -4384,42 +4342,36 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                 "align": "left",
                                                 "field": "city",
                                                 "label": "CITY",
-                                                "sortable": true,
                                                 "type": "text",
                                               },
                                               Object {
                                                 "align": "left",
                                                 "field": "state",
                                                 "label": "STATE",
-                                                "sortable": true,
                                                 "type": "text",
                                               },
                                               Object {
                                                 "align": "left",
                                                 "field": "federalRate",
                                                 "label": "FEDERAL RATE (%)",
-                                                "sortable": true,
                                                 "type": "text",
                                               },
                                               Object {
                                                 "align": "left",
                                                 "field": "stateRate",
                                                 "label": "STATE RATE (%)",
-                                                "sortable": true,
                                                 "type": "text",
                                               },
                                               Object {
                                                 "align": "left",
                                                 "field": "localRate",
                                                 "label": "LOCAL RATE (%)",
-                                                "sortable": true,
                                                 "type": "text",
                                               },
                                               Object {
                                                 "align": "left",
                                                 "field": "totalRate",
                                                 "label": "TOTAL RATE (%)",
-                                                "sortable": true,
                                                 "type": "text",
                                               },
                                             ]
@@ -4430,42 +4382,36 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                 "align": "left",
                                                 "field": "city",
                                                 "label": "CITY",
-                                                "sortable": true,
                                                 "type": "text",
                                               },
                                               Object {
                                                 "align": "left",
                                                 "field": "state",
                                                 "label": "STATE",
-                                                "sortable": true,
                                                 "type": "text",
                                               },
                                               Object {
                                                 "align": "left",
                                                 "field": "federalRate",
                                                 "label": "FEDERAL RATE (%)",
-                                                "sortable": true,
                                                 "type": "text",
                                               },
                                               Object {
                                                 "align": "left",
                                                 "field": "stateRate",
                                                 "label": "STATE RATE (%)",
-                                                "sortable": true,
                                                 "type": "text",
                                               },
                                               Object {
                                                 "align": "left",
                                                 "field": "localRate",
                                                 "label": "LOCAL RATE (%)",
-                                                "sortable": true,
                                                 "type": "text",
                                               },
                                               Object {
                                                 "align": "left",
                                                 "field": "totalRate",
                                                 "label": "TOTAL RATE (%)",
-                                                "sortable": true,
                                                 "type": "text",
                                               },
                                             ]
@@ -4519,42 +4465,36 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                             "align": "left",
                                             "field": "city",
                                             "label": "CITY",
-                                            "sortable": true,
                                             "type": "text",
                                           },
                                           Object {
                                             "align": "left",
                                             "field": "state",
                                             "label": "STATE",
-                                            "sortable": true,
                                             "type": "text",
                                           },
                                           Object {
                                             "align": "left",
                                             "field": "federalRate",
                                             "label": "FEDERAL RATE (%)",
-                                            "sortable": true,
                                             "type": "text",
                                           },
                                           Object {
                                             "align": "left",
                                             "field": "stateRate",
                                             "label": "STATE RATE (%)",
-                                            "sortable": true,
                                             "type": "text",
                                           },
                                           Object {
                                             "align": "left",
                                             "field": "localRate",
                                             "label": "LOCAL RATE (%)",
-                                            "sortable": true,
                                             "type": "text",
                                           },
                                           Object {
                                             "align": "left",
                                             "field": "totalRate",
                                             "label": "TOTAL RATE (%)",
-                                            "sortable": true,
                                             "type": "text",
                                           },
                                         ]
@@ -4586,14 +4526,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                   sortDirection={false}
                                                   width="auto"
                                                 >
-                                                  <ForwardRef(TableSortLabel)
-                                                    IconComponent={[Function]}
-                                                    active={false}
-                                                    direction="asc"
-                                                    onClick={[Function]}
-                                                  >
-                                                    CITY
-                                                  </ForwardRef(TableSortLabel)>
+                                                  CITY
                                                 </ForwardRef(TableCell)>
                                                 <ForwardRef(TableCell)
                                                   align="left"
@@ -4602,14 +4535,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                   sortDirection={false}
                                                   width="auto"
                                                 >
-                                                  <ForwardRef(TableSortLabel)
-                                                    IconComponent={[Function]}
-                                                    active={false}
-                                                    direction="asc"
-                                                    onClick={[Function]}
-                                                  >
-                                                    STATE
-                                                  </ForwardRef(TableSortLabel)>
+                                                  STATE
                                                 </ForwardRef(TableCell)>
                                                 <ForwardRef(TableCell)
                                                   align="left"
@@ -4618,14 +4544,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                   sortDirection={false}
                                                   width="auto"
                                                 >
-                                                  <ForwardRef(TableSortLabel)
-                                                    IconComponent={[Function]}
-                                                    active={false}
-                                                    direction="asc"
-                                                    onClick={[Function]}
-                                                  >
-                                                    FEDERAL RATE (%)
-                                                  </ForwardRef(TableSortLabel)>
+                                                  FEDERAL RATE (%)
                                                 </ForwardRef(TableCell)>
                                                 <ForwardRef(TableCell)
                                                   align="left"
@@ -4634,14 +4553,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                   sortDirection={false}
                                                   width="auto"
                                                 >
-                                                  <ForwardRef(TableSortLabel)
-                                                    IconComponent={[Function]}
-                                                    active={false}
-                                                    direction="asc"
-                                                    onClick={[Function]}
-                                                  >
-                                                    STATE RATE (%)
-                                                  </ForwardRef(TableSortLabel)>
+                                                  STATE RATE (%)
                                                 </ForwardRef(TableCell)>
                                                 <ForwardRef(TableCell)
                                                   align="left"
@@ -4650,14 +4562,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                   sortDirection={false}
                                                   width="auto"
                                                 >
-                                                  <ForwardRef(TableSortLabel)
-                                                    IconComponent={[Function]}
-                                                    active={false}
-                                                    direction="asc"
-                                                    onClick={[Function]}
-                                                  >
-                                                    LOCAL RATE (%)
-                                                  </ForwardRef(TableSortLabel)>
+                                                  LOCAL RATE (%)
                                                 </ForwardRef(TableCell)>
                                                 <ForwardRef(TableCell)
                                                   align="left"
@@ -4666,14 +4571,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                   sortDirection={false}
                                                   width="auto"
                                                 >
-                                                  <ForwardRef(TableSortLabel)
-                                                    IconComponent={[Function]}
-                                                    active={false}
-                                                    direction="asc"
-                                                    onClick={[Function]}
-                                                  >
-                                                    TOTAL RATE (%)
-                                                  </ForwardRef(TableSortLabel)>
+                                                  TOTAL RATE (%)
                                                 </ForwardRef(TableCell)>
                                                 <ForwardRef(TableCell)
                                                   className="header-options"
@@ -4714,14 +4612,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                           sortDirection={false}
                                                           width="auto"
                                                         >
-                                                          <ForwardRef(TableSortLabel)
-                                                            IconComponent={[Function]}
-                                                            active={false}
-                                                            direction="asc"
-                                                            onClick={[Function]}
-                                                          >
-                                                            CITY
-                                                          </ForwardRef(TableSortLabel)>
+                                                          CITY
                                                         </ForwardRef(TableCell)>,
                                                         <ForwardRef(TableCell)
                                                           align="left"
@@ -4730,14 +4621,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                           sortDirection={false}
                                                           width="auto"
                                                         >
-                                                          <ForwardRef(TableSortLabel)
-                                                            IconComponent={[Function]}
-                                                            active={false}
-                                                            direction="asc"
-                                                            onClick={[Function]}
-                                                          >
-                                                            STATE
-                                                          </ForwardRef(TableSortLabel)>
+                                                          STATE
                                                         </ForwardRef(TableCell)>,
                                                         <ForwardRef(TableCell)
                                                           align="left"
@@ -4746,14 +4630,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                           sortDirection={false}
                                                           width="auto"
                                                         >
-                                                          <ForwardRef(TableSortLabel)
-                                                            IconComponent={[Function]}
-                                                            active={false}
-                                                            direction="asc"
-                                                            onClick={[Function]}
-                                                          >
-                                                            FEDERAL RATE (%)
-                                                          </ForwardRef(TableSortLabel)>
+                                                          FEDERAL RATE (%)
                                                         </ForwardRef(TableCell)>,
                                                         <ForwardRef(TableCell)
                                                           align="left"
@@ -4762,14 +4639,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                           sortDirection={false}
                                                           width="auto"
                                                         >
-                                                          <ForwardRef(TableSortLabel)
-                                                            IconComponent={[Function]}
-                                                            active={false}
-                                                            direction="asc"
-                                                            onClick={[Function]}
-                                                          >
-                                                            STATE RATE (%)
-                                                          </ForwardRef(TableSortLabel)>
+                                                          STATE RATE (%)
                                                         </ForwardRef(TableCell)>,
                                                         <ForwardRef(TableCell)
                                                           align="left"
@@ -4778,14 +4648,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                           sortDirection={false}
                                                           width="auto"
                                                         >
-                                                          <ForwardRef(TableSortLabel)
-                                                            IconComponent={[Function]}
-                                                            active={false}
-                                                            direction="asc"
-                                                            onClick={[Function]}
-                                                          >
-                                                            LOCAL RATE (%)
-                                                          </ForwardRef(TableSortLabel)>
+                                                          LOCAL RATE (%)
                                                         </ForwardRef(TableCell)>,
                                                         <ForwardRef(TableCell)
                                                           align="left"
@@ -4794,14 +4657,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                           sortDirection={false}
                                                           width="auto"
                                                         >
-                                                          <ForwardRef(TableSortLabel)
-                                                            IconComponent={[Function]}
-                                                            active={false}
-                                                            direction="asc"
-                                                            onClick={[Function]}
-                                                          >
-                                                            TOTAL RATE (%)
-                                                          </ForwardRef(TableSortLabel)>
+                                                          TOTAL RATE (%)
                                                         </ForwardRef(TableCell)>,
                                                       ],
                                                       <ForwardRef(TableCell)
@@ -4838,14 +4694,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                       ownerState={
                                                         Object {
                                                           "align": "left",
-                                                          "children": <ForwardRef(TableSortLabel)
-                                                            IconComponent={[Function]}
-                                                            active={false}
-                                                            direction="asc"
-                                                            onClick={[Function]}
-                                                          >
-                                                            CITY
-                                                          </ForwardRef(TableSortLabel)>,
+                                                          "children": "CITY",
                                                           "className": "header-options",
                                                           "component": "th",
                                                           "padding": "normal",
@@ -4865,147 +4714,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                         scope="col"
                                                         width="auto"
                                                       >
-                                                        <ForwardRef(TableSortLabel)
-                                                          IconComponent={[Function]}
-                                                          active={false}
-                                                          direction="asc"
-                                                          onClick={[Function]}
-                                                        >
-                                                          <MuiTableSortLabelRoot
-                                                            className="MuiTableSortLabel-root"
-                                                            component="span"
-                                                            disableRipple={true}
-                                                            onClick={[Function]}
-                                                            ownerState={
-                                                              Object {
-                                                                "IconComponent": [Function],
-                                                                "active": false,
-                                                                "children": "CITY",
-                                                                "direction": "asc",
-                                                                "hideSortIcon": false,
-                                                                "onClick": [Function],
-                                                              }
-                                                            }
-                                                          >
-                                                            <ForwardRef(ButtonBase)
-                                                              className="MuiTableSortLabel-root css-o11grf-MuiTableSortLabel-root"
-                                                              component="span"
-                                                              disableRipple={true}
-                                                              onClick={[Function]}
-                                                            >
-                                                              <MuiButtonBaseRoot
-                                                                as="span"
-                                                                className="MuiButtonBase-root MuiTableSortLabel-root css-o11grf-MuiTableSortLabel-root"
-                                                                onBlur={[Function]}
-                                                                onClick={[Function]}
-                                                                onContextMenu={[Function]}
-                                                                onDragLeave={[Function]}
-                                                                onFocus={[Function]}
-                                                                onKeyDown={[Function]}
-                                                                onKeyUp={[Function]}
-                                                                onMouseDown={[Function]}
-                                                                onMouseLeave={[Function]}
-                                                                onMouseUp={[Function]}
-                                                                onTouchEnd={[Function]}
-                                                                onTouchMove={[Function]}
-                                                                onTouchStart={[Function]}
-                                                                ownerState={
-                                                                  Object {
-                                                                    "centerRipple": false,
-                                                                    "children": Array [
-                                                                      "CITY",
-                                                                      <MuiTableSortLabelIcon
-                                                                        as={[Function]}
-                                                                        className="MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc"
-                                                                        ownerState={
-                                                                          Object {
-                                                                            "IconComponent": [Function],
-                                                                            "active": false,
-                                                                            "children": "CITY",
-                                                                            "direction": "asc",
-                                                                            "hideSortIcon": false,
-                                                                            "onClick": [Function],
-                                                                          }
-                                                                        }
-                                                                      />,
-                                                                    ],
-                                                                    "className": "MuiTableSortLabel-root css-o11grf-MuiTableSortLabel-root",
-                                                                    "component": "span",
-                                                                    "disableRipple": true,
-                                                                    "disableTouchRipple": false,
-                                                                    "disabled": false,
-                                                                    "focusRipple": false,
-                                                                    "focusVisible": false,
-                                                                    "onClick": [Function],
-                                                                    "tabIndex": 0,
-                                                                  }
-                                                                }
-                                                                role="button"
-                                                                tabIndex={0}
-                                                              >
-                                                                <span
-                                                                  className="MuiButtonBase-root MuiTableSortLabel-root css-1qgma8u-MuiButtonBase-root-MuiTableSortLabel-root"
-                                                                  onBlur={[Function]}
-                                                                  onClick={[Function]}
-                                                                  onContextMenu={[Function]}
-                                                                  onDragLeave={[Function]}
-                                                                  onFocus={[Function]}
-                                                                  onKeyDown={[Function]}
-                                                                  onKeyUp={[Function]}
-                                                                  onMouseDown={[Function]}
-                                                                  onMouseLeave={[Function]}
-                                                                  onMouseUp={[Function]}
-                                                                  onTouchEnd={[Function]}
-                                                                  onTouchMove={[Function]}
-                                                                  onTouchStart={[Function]}
-                                                                  role="button"
-                                                                  tabIndex={0}
-                                                                >
-                                                                  CITY
-                                                                  <MuiTableSortLabelIcon
-                                                                    as={[Function]}
-                                                                    className="MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc"
-                                                                    ownerState={
-                                                                      Object {
-                                                                        "IconComponent": [Function],
-                                                                        "active": false,
-                                                                        "children": "CITY",
-                                                                        "direction": "asc",
-                                                                        "hideSortIcon": false,
-                                                                        "onClick": [Function],
-                                                                      }
-                                                                    }
-                                                                  >
-                                                                    <SortByIcon
-                                                                      className="MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc css-1hi7cb7-MuiTableSortLabel-icon"
-                                                                    >
-                                                                      <svg
-                                                                        className="MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc css-1hi7cb7-MuiTableSortLabel-icon"
-                                                                        height="1em"
-                                                                        viewBox="0 0 20 20"
-                                                                        width="1em"
-                                                                      >
-                                                                        <g
-                                                                          data-name="Group 1863"
-                                                                        >
-                                                                          <path
-                                                                            d="M14 12l-4 5-4-5zm-4-8l4 5H6z"
-                                                                            fill="currentColor"
-                                                                          />
-                                                                          <path
-                                                                            d="M0 0h20v20H0z"
-                                                                            data-name="Rectangle 2251"
-                                                                            fill="none"
-                                                                          />
-                                                                        </g>
-                                                                      </svg>
-                                                                    </SortByIcon>
-                                                                  </MuiTableSortLabelIcon>
-                                                                </span>
-                                                              </MuiButtonBaseRoot>
-                                                            </ForwardRef(ButtonBase)>
-                                                          </MuiTableSortLabelRoot>
-                                                        </ForwardRef(TableSortLabel)>
+                                                        CITY
                                                       </th>
                                                     </MuiTableCellRoot>
                                                   </ForwardRef(TableCell)>
@@ -5024,14 +4733,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                       ownerState={
                                                         Object {
                                                           "align": "left",
-                                                          "children": <ForwardRef(TableSortLabel)
-                                                            IconComponent={[Function]}
-                                                            active={false}
-                                                            direction="asc"
-                                                            onClick={[Function]}
-                                                          >
-                                                            STATE
-                                                          </ForwardRef(TableSortLabel)>,
+                                                          "children": "STATE",
                                                           "className": "header-options",
                                                           "component": "th",
                                                           "padding": "normal",
@@ -5051,147 +4753,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                         scope="col"
                                                         width="auto"
                                                       >
-                                                        <ForwardRef(TableSortLabel)
-                                                          IconComponent={[Function]}
-                                                          active={false}
-                                                          direction="asc"
-                                                          onClick={[Function]}
-                                                        >
-                                                          <MuiTableSortLabelRoot
-                                                            className="MuiTableSortLabel-root"
-                                                            component="span"
-                                                            disableRipple={true}
-                                                            onClick={[Function]}
-                                                            ownerState={
-                                                              Object {
-                                                                "IconComponent": [Function],
-                                                                "active": false,
-                                                                "children": "STATE",
-                                                                "direction": "asc",
-                                                                "hideSortIcon": false,
-                                                                "onClick": [Function],
-                                                              }
-                                                            }
-                                                          >
-                                                            <ForwardRef(ButtonBase)
-                                                              className="MuiTableSortLabel-root css-o11grf-MuiTableSortLabel-root"
-                                                              component="span"
-                                                              disableRipple={true}
-                                                              onClick={[Function]}
-                                                            >
-                                                              <MuiButtonBaseRoot
-                                                                as="span"
-                                                                className="MuiButtonBase-root MuiTableSortLabel-root css-o11grf-MuiTableSortLabel-root"
-                                                                onBlur={[Function]}
-                                                                onClick={[Function]}
-                                                                onContextMenu={[Function]}
-                                                                onDragLeave={[Function]}
-                                                                onFocus={[Function]}
-                                                                onKeyDown={[Function]}
-                                                                onKeyUp={[Function]}
-                                                                onMouseDown={[Function]}
-                                                                onMouseLeave={[Function]}
-                                                                onMouseUp={[Function]}
-                                                                onTouchEnd={[Function]}
-                                                                onTouchMove={[Function]}
-                                                                onTouchStart={[Function]}
-                                                                ownerState={
-                                                                  Object {
-                                                                    "centerRipple": false,
-                                                                    "children": Array [
-                                                                      "STATE",
-                                                                      <MuiTableSortLabelIcon
-                                                                        as={[Function]}
-                                                                        className="MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc"
-                                                                        ownerState={
-                                                                          Object {
-                                                                            "IconComponent": [Function],
-                                                                            "active": false,
-                                                                            "children": "STATE",
-                                                                            "direction": "asc",
-                                                                            "hideSortIcon": false,
-                                                                            "onClick": [Function],
-                                                                          }
-                                                                        }
-                                                                      />,
-                                                                    ],
-                                                                    "className": "MuiTableSortLabel-root css-o11grf-MuiTableSortLabel-root",
-                                                                    "component": "span",
-                                                                    "disableRipple": true,
-                                                                    "disableTouchRipple": false,
-                                                                    "disabled": false,
-                                                                    "focusRipple": false,
-                                                                    "focusVisible": false,
-                                                                    "onClick": [Function],
-                                                                    "tabIndex": 0,
-                                                                  }
-                                                                }
-                                                                role="button"
-                                                                tabIndex={0}
-                                                              >
-                                                                <span
-                                                                  className="MuiButtonBase-root MuiTableSortLabel-root css-1qgma8u-MuiButtonBase-root-MuiTableSortLabel-root"
-                                                                  onBlur={[Function]}
-                                                                  onClick={[Function]}
-                                                                  onContextMenu={[Function]}
-                                                                  onDragLeave={[Function]}
-                                                                  onFocus={[Function]}
-                                                                  onKeyDown={[Function]}
-                                                                  onKeyUp={[Function]}
-                                                                  onMouseDown={[Function]}
-                                                                  onMouseLeave={[Function]}
-                                                                  onMouseUp={[Function]}
-                                                                  onTouchEnd={[Function]}
-                                                                  onTouchMove={[Function]}
-                                                                  onTouchStart={[Function]}
-                                                                  role="button"
-                                                                  tabIndex={0}
-                                                                >
-                                                                  STATE
-                                                                  <MuiTableSortLabelIcon
-                                                                    as={[Function]}
-                                                                    className="MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc"
-                                                                    ownerState={
-                                                                      Object {
-                                                                        "IconComponent": [Function],
-                                                                        "active": false,
-                                                                        "children": "STATE",
-                                                                        "direction": "asc",
-                                                                        "hideSortIcon": false,
-                                                                        "onClick": [Function],
-                                                                      }
-                                                                    }
-                                                                  >
-                                                                    <SortByIcon
-                                                                      className="MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc css-1hi7cb7-MuiTableSortLabel-icon"
-                                                                    >
-                                                                      <svg
-                                                                        className="MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc css-1hi7cb7-MuiTableSortLabel-icon"
-                                                                        height="1em"
-                                                                        viewBox="0 0 20 20"
-                                                                        width="1em"
-                                                                      >
-                                                                        <g
-                                                                          data-name="Group 1863"
-                                                                        >
-                                                                          <path
-                                                                            d="M14 12l-4 5-4-5zm-4-8l4 5H6z"
-                                                                            fill="currentColor"
-                                                                          />
-                                                                          <path
-                                                                            d="M0 0h20v20H0z"
-                                                                            data-name="Rectangle 2251"
-                                                                            fill="none"
-                                                                          />
-                                                                        </g>
-                                                                      </svg>
-                                                                    </SortByIcon>
-                                                                  </MuiTableSortLabelIcon>
-                                                                </span>
-                                                              </MuiButtonBaseRoot>
-                                                            </ForwardRef(ButtonBase)>
-                                                          </MuiTableSortLabelRoot>
-                                                        </ForwardRef(TableSortLabel)>
+                                                        STATE
                                                       </th>
                                                     </MuiTableCellRoot>
                                                   </ForwardRef(TableCell)>
@@ -5210,14 +4772,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                       ownerState={
                                                         Object {
                                                           "align": "left",
-                                                          "children": <ForwardRef(TableSortLabel)
-                                                            IconComponent={[Function]}
-                                                            active={false}
-                                                            direction="asc"
-                                                            onClick={[Function]}
-                                                          >
-                                                            FEDERAL RATE (%)
-                                                          </ForwardRef(TableSortLabel)>,
+                                                          "children": "FEDERAL RATE (%)",
                                                           "className": "header-options",
                                                           "component": "th",
                                                           "padding": "normal",
@@ -5237,147 +4792,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                         scope="col"
                                                         width="auto"
                                                       >
-                                                        <ForwardRef(TableSortLabel)
-                                                          IconComponent={[Function]}
-                                                          active={false}
-                                                          direction="asc"
-                                                          onClick={[Function]}
-                                                        >
-                                                          <MuiTableSortLabelRoot
-                                                            className="MuiTableSortLabel-root"
-                                                            component="span"
-                                                            disableRipple={true}
-                                                            onClick={[Function]}
-                                                            ownerState={
-                                                              Object {
-                                                                "IconComponent": [Function],
-                                                                "active": false,
-                                                                "children": "FEDERAL RATE (%)",
-                                                                "direction": "asc",
-                                                                "hideSortIcon": false,
-                                                                "onClick": [Function],
-                                                              }
-                                                            }
-                                                          >
-                                                            <ForwardRef(ButtonBase)
-                                                              className="MuiTableSortLabel-root css-o11grf-MuiTableSortLabel-root"
-                                                              component="span"
-                                                              disableRipple={true}
-                                                              onClick={[Function]}
-                                                            >
-                                                              <MuiButtonBaseRoot
-                                                                as="span"
-                                                                className="MuiButtonBase-root MuiTableSortLabel-root css-o11grf-MuiTableSortLabel-root"
-                                                                onBlur={[Function]}
-                                                                onClick={[Function]}
-                                                                onContextMenu={[Function]}
-                                                                onDragLeave={[Function]}
-                                                                onFocus={[Function]}
-                                                                onKeyDown={[Function]}
-                                                                onKeyUp={[Function]}
-                                                                onMouseDown={[Function]}
-                                                                onMouseLeave={[Function]}
-                                                                onMouseUp={[Function]}
-                                                                onTouchEnd={[Function]}
-                                                                onTouchMove={[Function]}
-                                                                onTouchStart={[Function]}
-                                                                ownerState={
-                                                                  Object {
-                                                                    "centerRipple": false,
-                                                                    "children": Array [
-                                                                      "FEDERAL RATE (%)",
-                                                                      <MuiTableSortLabelIcon
-                                                                        as={[Function]}
-                                                                        className="MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc"
-                                                                        ownerState={
-                                                                          Object {
-                                                                            "IconComponent": [Function],
-                                                                            "active": false,
-                                                                            "children": "FEDERAL RATE (%)",
-                                                                            "direction": "asc",
-                                                                            "hideSortIcon": false,
-                                                                            "onClick": [Function],
-                                                                          }
-                                                                        }
-                                                                      />,
-                                                                    ],
-                                                                    "className": "MuiTableSortLabel-root css-o11grf-MuiTableSortLabel-root",
-                                                                    "component": "span",
-                                                                    "disableRipple": true,
-                                                                    "disableTouchRipple": false,
-                                                                    "disabled": false,
-                                                                    "focusRipple": false,
-                                                                    "focusVisible": false,
-                                                                    "onClick": [Function],
-                                                                    "tabIndex": 0,
-                                                                  }
-                                                                }
-                                                                role="button"
-                                                                tabIndex={0}
-                                                              >
-                                                                <span
-                                                                  className="MuiButtonBase-root MuiTableSortLabel-root css-1qgma8u-MuiButtonBase-root-MuiTableSortLabel-root"
-                                                                  onBlur={[Function]}
-                                                                  onClick={[Function]}
-                                                                  onContextMenu={[Function]}
-                                                                  onDragLeave={[Function]}
-                                                                  onFocus={[Function]}
-                                                                  onKeyDown={[Function]}
-                                                                  onKeyUp={[Function]}
-                                                                  onMouseDown={[Function]}
-                                                                  onMouseLeave={[Function]}
-                                                                  onMouseUp={[Function]}
-                                                                  onTouchEnd={[Function]}
-                                                                  onTouchMove={[Function]}
-                                                                  onTouchStart={[Function]}
-                                                                  role="button"
-                                                                  tabIndex={0}
-                                                                >
-                                                                  FEDERAL RATE (%)
-                                                                  <MuiTableSortLabelIcon
-                                                                    as={[Function]}
-                                                                    className="MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc"
-                                                                    ownerState={
-                                                                      Object {
-                                                                        "IconComponent": [Function],
-                                                                        "active": false,
-                                                                        "children": "FEDERAL RATE (%)",
-                                                                        "direction": "asc",
-                                                                        "hideSortIcon": false,
-                                                                        "onClick": [Function],
-                                                                      }
-                                                                    }
-                                                                  >
-                                                                    <SortByIcon
-                                                                      className="MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc css-1hi7cb7-MuiTableSortLabel-icon"
-                                                                    >
-                                                                      <svg
-                                                                        className="MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc css-1hi7cb7-MuiTableSortLabel-icon"
-                                                                        height="1em"
-                                                                        viewBox="0 0 20 20"
-                                                                        width="1em"
-                                                                      >
-                                                                        <g
-                                                                          data-name="Group 1863"
-                                                                        >
-                                                                          <path
-                                                                            d="M14 12l-4 5-4-5zm-4-8l4 5H6z"
-                                                                            fill="currentColor"
-                                                                          />
-                                                                          <path
-                                                                            d="M0 0h20v20H0z"
-                                                                            data-name="Rectangle 2251"
-                                                                            fill="none"
-                                                                          />
-                                                                        </g>
-                                                                      </svg>
-                                                                    </SortByIcon>
-                                                                  </MuiTableSortLabelIcon>
-                                                                </span>
-                                                              </MuiButtonBaseRoot>
-                                                            </ForwardRef(ButtonBase)>
-                                                          </MuiTableSortLabelRoot>
-                                                        </ForwardRef(TableSortLabel)>
+                                                        FEDERAL RATE (%)
                                                       </th>
                                                     </MuiTableCellRoot>
                                                   </ForwardRef(TableCell)>
@@ -5396,14 +4811,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                       ownerState={
                                                         Object {
                                                           "align": "left",
-                                                          "children": <ForwardRef(TableSortLabel)
-                                                            IconComponent={[Function]}
-                                                            active={false}
-                                                            direction="asc"
-                                                            onClick={[Function]}
-                                                          >
-                                                            STATE RATE (%)
-                                                          </ForwardRef(TableSortLabel)>,
+                                                          "children": "STATE RATE (%)",
                                                           "className": "header-options",
                                                           "component": "th",
                                                           "padding": "normal",
@@ -5423,147 +4831,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                         scope="col"
                                                         width="auto"
                                                       >
-                                                        <ForwardRef(TableSortLabel)
-                                                          IconComponent={[Function]}
-                                                          active={false}
-                                                          direction="asc"
-                                                          onClick={[Function]}
-                                                        >
-                                                          <MuiTableSortLabelRoot
-                                                            className="MuiTableSortLabel-root"
-                                                            component="span"
-                                                            disableRipple={true}
-                                                            onClick={[Function]}
-                                                            ownerState={
-                                                              Object {
-                                                                "IconComponent": [Function],
-                                                                "active": false,
-                                                                "children": "STATE RATE (%)",
-                                                                "direction": "asc",
-                                                                "hideSortIcon": false,
-                                                                "onClick": [Function],
-                                                              }
-                                                            }
-                                                          >
-                                                            <ForwardRef(ButtonBase)
-                                                              className="MuiTableSortLabel-root css-o11grf-MuiTableSortLabel-root"
-                                                              component="span"
-                                                              disableRipple={true}
-                                                              onClick={[Function]}
-                                                            >
-                                                              <MuiButtonBaseRoot
-                                                                as="span"
-                                                                className="MuiButtonBase-root MuiTableSortLabel-root css-o11grf-MuiTableSortLabel-root"
-                                                                onBlur={[Function]}
-                                                                onClick={[Function]}
-                                                                onContextMenu={[Function]}
-                                                                onDragLeave={[Function]}
-                                                                onFocus={[Function]}
-                                                                onKeyDown={[Function]}
-                                                                onKeyUp={[Function]}
-                                                                onMouseDown={[Function]}
-                                                                onMouseLeave={[Function]}
-                                                                onMouseUp={[Function]}
-                                                                onTouchEnd={[Function]}
-                                                                onTouchMove={[Function]}
-                                                                onTouchStart={[Function]}
-                                                                ownerState={
-                                                                  Object {
-                                                                    "centerRipple": false,
-                                                                    "children": Array [
-                                                                      "STATE RATE (%)",
-                                                                      <MuiTableSortLabelIcon
-                                                                        as={[Function]}
-                                                                        className="MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc"
-                                                                        ownerState={
-                                                                          Object {
-                                                                            "IconComponent": [Function],
-                                                                            "active": false,
-                                                                            "children": "STATE RATE (%)",
-                                                                            "direction": "asc",
-                                                                            "hideSortIcon": false,
-                                                                            "onClick": [Function],
-                                                                          }
-                                                                        }
-                                                                      />,
-                                                                    ],
-                                                                    "className": "MuiTableSortLabel-root css-o11grf-MuiTableSortLabel-root",
-                                                                    "component": "span",
-                                                                    "disableRipple": true,
-                                                                    "disableTouchRipple": false,
-                                                                    "disabled": false,
-                                                                    "focusRipple": false,
-                                                                    "focusVisible": false,
-                                                                    "onClick": [Function],
-                                                                    "tabIndex": 0,
-                                                                  }
-                                                                }
-                                                                role="button"
-                                                                tabIndex={0}
-                                                              >
-                                                                <span
-                                                                  className="MuiButtonBase-root MuiTableSortLabel-root css-1qgma8u-MuiButtonBase-root-MuiTableSortLabel-root"
-                                                                  onBlur={[Function]}
-                                                                  onClick={[Function]}
-                                                                  onContextMenu={[Function]}
-                                                                  onDragLeave={[Function]}
-                                                                  onFocus={[Function]}
-                                                                  onKeyDown={[Function]}
-                                                                  onKeyUp={[Function]}
-                                                                  onMouseDown={[Function]}
-                                                                  onMouseLeave={[Function]}
-                                                                  onMouseUp={[Function]}
-                                                                  onTouchEnd={[Function]}
-                                                                  onTouchMove={[Function]}
-                                                                  onTouchStart={[Function]}
-                                                                  role="button"
-                                                                  tabIndex={0}
-                                                                >
-                                                                  STATE RATE (%)
-                                                                  <MuiTableSortLabelIcon
-                                                                    as={[Function]}
-                                                                    className="MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc"
-                                                                    ownerState={
-                                                                      Object {
-                                                                        "IconComponent": [Function],
-                                                                        "active": false,
-                                                                        "children": "STATE RATE (%)",
-                                                                        "direction": "asc",
-                                                                        "hideSortIcon": false,
-                                                                        "onClick": [Function],
-                                                                      }
-                                                                    }
-                                                                  >
-                                                                    <SortByIcon
-                                                                      className="MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc css-1hi7cb7-MuiTableSortLabel-icon"
-                                                                    >
-                                                                      <svg
-                                                                        className="MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc css-1hi7cb7-MuiTableSortLabel-icon"
-                                                                        height="1em"
-                                                                        viewBox="0 0 20 20"
-                                                                        width="1em"
-                                                                      >
-                                                                        <g
-                                                                          data-name="Group 1863"
-                                                                        >
-                                                                          <path
-                                                                            d="M14 12l-4 5-4-5zm-4-8l4 5H6z"
-                                                                            fill="currentColor"
-                                                                          />
-                                                                          <path
-                                                                            d="M0 0h20v20H0z"
-                                                                            data-name="Rectangle 2251"
-                                                                            fill="none"
-                                                                          />
-                                                                        </g>
-                                                                      </svg>
-                                                                    </SortByIcon>
-                                                                  </MuiTableSortLabelIcon>
-                                                                </span>
-                                                              </MuiButtonBaseRoot>
-                                                            </ForwardRef(ButtonBase)>
-                                                          </MuiTableSortLabelRoot>
-                                                        </ForwardRef(TableSortLabel)>
+                                                        STATE RATE (%)
                                                       </th>
                                                     </MuiTableCellRoot>
                                                   </ForwardRef(TableCell)>
@@ -5582,14 +4850,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                       ownerState={
                                                         Object {
                                                           "align": "left",
-                                                          "children": <ForwardRef(TableSortLabel)
-                                                            IconComponent={[Function]}
-                                                            active={false}
-                                                            direction="asc"
-                                                            onClick={[Function]}
-                                                          >
-                                                            LOCAL RATE (%)
-                                                          </ForwardRef(TableSortLabel)>,
+                                                          "children": "LOCAL RATE (%)",
                                                           "className": "header-options",
                                                           "component": "th",
                                                           "padding": "normal",
@@ -5609,147 +4870,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                         scope="col"
                                                         width="auto"
                                                       >
-                                                        <ForwardRef(TableSortLabel)
-                                                          IconComponent={[Function]}
-                                                          active={false}
-                                                          direction="asc"
-                                                          onClick={[Function]}
-                                                        >
-                                                          <MuiTableSortLabelRoot
-                                                            className="MuiTableSortLabel-root"
-                                                            component="span"
-                                                            disableRipple={true}
-                                                            onClick={[Function]}
-                                                            ownerState={
-                                                              Object {
-                                                                "IconComponent": [Function],
-                                                                "active": false,
-                                                                "children": "LOCAL RATE (%)",
-                                                                "direction": "asc",
-                                                                "hideSortIcon": false,
-                                                                "onClick": [Function],
-                                                              }
-                                                            }
-                                                          >
-                                                            <ForwardRef(ButtonBase)
-                                                              className="MuiTableSortLabel-root css-o11grf-MuiTableSortLabel-root"
-                                                              component="span"
-                                                              disableRipple={true}
-                                                              onClick={[Function]}
-                                                            >
-                                                              <MuiButtonBaseRoot
-                                                                as="span"
-                                                                className="MuiButtonBase-root MuiTableSortLabel-root css-o11grf-MuiTableSortLabel-root"
-                                                                onBlur={[Function]}
-                                                                onClick={[Function]}
-                                                                onContextMenu={[Function]}
-                                                                onDragLeave={[Function]}
-                                                                onFocus={[Function]}
-                                                                onKeyDown={[Function]}
-                                                                onKeyUp={[Function]}
-                                                                onMouseDown={[Function]}
-                                                                onMouseLeave={[Function]}
-                                                                onMouseUp={[Function]}
-                                                                onTouchEnd={[Function]}
-                                                                onTouchMove={[Function]}
-                                                                onTouchStart={[Function]}
-                                                                ownerState={
-                                                                  Object {
-                                                                    "centerRipple": false,
-                                                                    "children": Array [
-                                                                      "LOCAL RATE (%)",
-                                                                      <MuiTableSortLabelIcon
-                                                                        as={[Function]}
-                                                                        className="MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc"
-                                                                        ownerState={
-                                                                          Object {
-                                                                            "IconComponent": [Function],
-                                                                            "active": false,
-                                                                            "children": "LOCAL RATE (%)",
-                                                                            "direction": "asc",
-                                                                            "hideSortIcon": false,
-                                                                            "onClick": [Function],
-                                                                          }
-                                                                        }
-                                                                      />,
-                                                                    ],
-                                                                    "className": "MuiTableSortLabel-root css-o11grf-MuiTableSortLabel-root",
-                                                                    "component": "span",
-                                                                    "disableRipple": true,
-                                                                    "disableTouchRipple": false,
-                                                                    "disabled": false,
-                                                                    "focusRipple": false,
-                                                                    "focusVisible": false,
-                                                                    "onClick": [Function],
-                                                                    "tabIndex": 0,
-                                                                  }
-                                                                }
-                                                                role="button"
-                                                                tabIndex={0}
-                                                              >
-                                                                <span
-                                                                  className="MuiButtonBase-root MuiTableSortLabel-root css-1qgma8u-MuiButtonBase-root-MuiTableSortLabel-root"
-                                                                  onBlur={[Function]}
-                                                                  onClick={[Function]}
-                                                                  onContextMenu={[Function]}
-                                                                  onDragLeave={[Function]}
-                                                                  onFocus={[Function]}
-                                                                  onKeyDown={[Function]}
-                                                                  onKeyUp={[Function]}
-                                                                  onMouseDown={[Function]}
-                                                                  onMouseLeave={[Function]}
-                                                                  onMouseUp={[Function]}
-                                                                  onTouchEnd={[Function]}
-                                                                  onTouchMove={[Function]}
-                                                                  onTouchStart={[Function]}
-                                                                  role="button"
-                                                                  tabIndex={0}
-                                                                >
-                                                                  LOCAL RATE (%)
-                                                                  <MuiTableSortLabelIcon
-                                                                    as={[Function]}
-                                                                    className="MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc"
-                                                                    ownerState={
-                                                                      Object {
-                                                                        "IconComponent": [Function],
-                                                                        "active": false,
-                                                                        "children": "LOCAL RATE (%)",
-                                                                        "direction": "asc",
-                                                                        "hideSortIcon": false,
-                                                                        "onClick": [Function],
-                                                                      }
-                                                                    }
-                                                                  >
-                                                                    <SortByIcon
-                                                                      className="MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc css-1hi7cb7-MuiTableSortLabel-icon"
-                                                                    >
-                                                                      <svg
-                                                                        className="MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc css-1hi7cb7-MuiTableSortLabel-icon"
-                                                                        height="1em"
-                                                                        viewBox="0 0 20 20"
-                                                                        width="1em"
-                                                                      >
-                                                                        <g
-                                                                          data-name="Group 1863"
-                                                                        >
-                                                                          <path
-                                                                            d="M14 12l-4 5-4-5zm-4-8l4 5H6z"
-                                                                            fill="currentColor"
-                                                                          />
-                                                                          <path
-                                                                            d="M0 0h20v20H0z"
-                                                                            data-name="Rectangle 2251"
-                                                                            fill="none"
-                                                                          />
-                                                                        </g>
-                                                                      </svg>
-                                                                    </SortByIcon>
-                                                                  </MuiTableSortLabelIcon>
-                                                                </span>
-                                                              </MuiButtonBaseRoot>
-                                                            </ForwardRef(ButtonBase)>
-                                                          </MuiTableSortLabelRoot>
-                                                        </ForwardRef(TableSortLabel)>
+                                                        LOCAL RATE (%)
                                                       </th>
                                                     </MuiTableCellRoot>
                                                   </ForwardRef(TableCell)>
@@ -5768,14 +4889,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                       ownerState={
                                                         Object {
                                                           "align": "left",
-                                                          "children": <ForwardRef(TableSortLabel)
-                                                            IconComponent={[Function]}
-                                                            active={false}
-                                                            direction="asc"
-                                                            onClick={[Function]}
-                                                          >
-                                                            TOTAL RATE (%)
-                                                          </ForwardRef(TableSortLabel)>,
+                                                          "children": "TOTAL RATE (%)",
                                                           "className": "header-options",
                                                           "component": "th",
                                                           "padding": "normal",
@@ -5795,147 +4909,7 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                                         scope="col"
                                                         width="auto"
                                                       >
-                                                        <ForwardRef(TableSortLabel)
-                                                          IconComponent={[Function]}
-                                                          active={false}
-                                                          direction="asc"
-                                                          onClick={[Function]}
-                                                        >
-                                                          <MuiTableSortLabelRoot
-                                                            className="MuiTableSortLabel-root"
-                                                            component="span"
-                                                            disableRipple={true}
-                                                            onClick={[Function]}
-                                                            ownerState={
-                                                              Object {
-                                                                "IconComponent": [Function],
-                                                                "active": false,
-                                                                "children": "TOTAL RATE (%)",
-                                                                "direction": "asc",
-                                                                "hideSortIcon": false,
-                                                                "onClick": [Function],
-                                                              }
-                                                            }
-                                                          >
-                                                            <ForwardRef(ButtonBase)
-                                                              className="MuiTableSortLabel-root css-o11grf-MuiTableSortLabel-root"
-                                                              component="span"
-                                                              disableRipple={true}
-                                                              onClick={[Function]}
-                                                            >
-                                                              <MuiButtonBaseRoot
-                                                                as="span"
-                                                                className="MuiButtonBase-root MuiTableSortLabel-root css-o11grf-MuiTableSortLabel-root"
-                                                                onBlur={[Function]}
-                                                                onClick={[Function]}
-                                                                onContextMenu={[Function]}
-                                                                onDragLeave={[Function]}
-                                                                onFocus={[Function]}
-                                                                onKeyDown={[Function]}
-                                                                onKeyUp={[Function]}
-                                                                onMouseDown={[Function]}
-                                                                onMouseLeave={[Function]}
-                                                                onMouseUp={[Function]}
-                                                                onTouchEnd={[Function]}
-                                                                onTouchMove={[Function]}
-                                                                onTouchStart={[Function]}
-                                                                ownerState={
-                                                                  Object {
-                                                                    "centerRipple": false,
-                                                                    "children": Array [
-                                                                      "TOTAL RATE (%)",
-                                                                      <MuiTableSortLabelIcon
-                                                                        as={[Function]}
-                                                                        className="MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc"
-                                                                        ownerState={
-                                                                          Object {
-                                                                            "IconComponent": [Function],
-                                                                            "active": false,
-                                                                            "children": "TOTAL RATE (%)",
-                                                                            "direction": "asc",
-                                                                            "hideSortIcon": false,
-                                                                            "onClick": [Function],
-                                                                          }
-                                                                        }
-                                                                      />,
-                                                                    ],
-                                                                    "className": "MuiTableSortLabel-root css-o11grf-MuiTableSortLabel-root",
-                                                                    "component": "span",
-                                                                    "disableRipple": true,
-                                                                    "disableTouchRipple": false,
-                                                                    "disabled": false,
-                                                                    "focusRipple": false,
-                                                                    "focusVisible": false,
-                                                                    "onClick": [Function],
-                                                                    "tabIndex": 0,
-                                                                  }
-                                                                }
-                                                                role="button"
-                                                                tabIndex={0}
-                                                              >
-                                                                <span
-                                                                  className="MuiButtonBase-root MuiTableSortLabel-root css-1qgma8u-MuiButtonBase-root-MuiTableSortLabel-root"
-                                                                  onBlur={[Function]}
-                                                                  onClick={[Function]}
-                                                                  onContextMenu={[Function]}
-                                                                  onDragLeave={[Function]}
-                                                                  onFocus={[Function]}
-                                                                  onKeyDown={[Function]}
-                                                                  onKeyUp={[Function]}
-                                                                  onMouseDown={[Function]}
-                                                                  onMouseLeave={[Function]}
-                                                                  onMouseUp={[Function]}
-                                                                  onTouchEnd={[Function]}
-                                                                  onTouchMove={[Function]}
-                                                                  onTouchStart={[Function]}
-                                                                  role="button"
-                                                                  tabIndex={0}
-                                                                >
-                                                                  TOTAL RATE (%)
-                                                                  <MuiTableSortLabelIcon
-                                                                    as={[Function]}
-                                                                    className="MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc"
-                                                                    ownerState={
-                                                                      Object {
-                                                                        "IconComponent": [Function],
-                                                                        "active": false,
-                                                                        "children": "TOTAL RATE (%)",
-                                                                        "direction": "asc",
-                                                                        "hideSortIcon": false,
-                                                                        "onClick": [Function],
-                                                                      }
-                                                                    }
-                                                                  >
-                                                                    <SortByIcon
-                                                                      className="MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc css-1hi7cb7-MuiTableSortLabel-icon"
-                                                                    >
-                                                                      <svg
-                                                                        className="MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc css-1hi7cb7-MuiTableSortLabel-icon"
-                                                                        height="1em"
-                                                                        viewBox="0 0 20 20"
-                                                                        width="1em"
-                                                                      >
-                                                                        <g
-                                                                          data-name="Group 1863"
-                                                                        >
-                                                                          <path
-                                                                            d="M14 12l-4 5-4-5zm-4-8l4 5H6z"
-                                                                            fill="currentColor"
-                                                                          />
-                                                                          <path
-                                                                            d="M0 0h20v20H0z"
-                                                                            data-name="Rectangle 2251"
-                                                                            fill="none"
-                                                                          />
-                                                                        </g>
-                                                                      </svg>
-                                                                    </SortByIcon>
-                                                                  </MuiTableSortLabelIcon>
-                                                                </span>
-                                                              </MuiButtonBaseRoot>
-                                                            </ForwardRef(ButtonBase)>
-                                                          </MuiTableSortLabelRoot>
-                                                        </ForwardRef(TableSortLabel)>
+                                                        TOTAL RATE (%)
                                                       </th>
                                                     </MuiTableCellRoot>
                                                   </ForwardRef(TableCell)>
@@ -5987,42 +4961,36 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                             "align": "left",
                                             "field": "city",
                                             "label": "CITY",
-                                            "sortable": true,
                                             "type": "text",
                                           },
                                           Object {
                                             "align": "left",
                                             "field": "state",
                                             "label": "STATE",
-                                            "sortable": true,
                                             "type": "text",
                                           },
                                           Object {
                                             "align": "left",
                                             "field": "federalRate",
                                             "label": "FEDERAL RATE (%)",
-                                            "sortable": true,
                                             "type": "text",
                                           },
                                           Object {
                                             "align": "left",
                                             "field": "stateRate",
                                             "label": "STATE RATE (%)",
-                                            "sortable": true,
                                             "type": "text",
                                           },
                                           Object {
                                             "align": "left",
                                             "field": "localRate",
                                             "label": "LOCAL RATE (%)",
-                                            "sortable": true,
                                             "type": "text",
                                           },
                                           Object {
                                             "align": "left",
                                             "field": "totalRate",
                                             "label": "TOTAL RATE (%)",
-                                            "sortable": true,
                                             "type": "text",
                                           },
                                         ]
@@ -6033,42 +5001,36 @@ exports[`Rendering of Salestax landing page Component Salestax landing page comp
                                             "align": "left",
                                             "field": "city",
                                             "label": "CITY",
-                                            "sortable": true,
                                             "type": "text",
                                           },
                                           Object {
                                             "align": "left",
                                             "field": "state",
                                             "label": "STATE",
-                                            "sortable": true,
                                             "type": "text",
                                           },
                                           Object {
                                             "align": "left",
                                             "field": "federalRate",
                                             "label": "FEDERAL RATE (%)",
-                                            "sortable": true,
                                             "type": "text",
                                           },
                                           Object {
                                             "align": "left",
                                             "field": "stateRate",
                                             "label": "STATE RATE (%)",
-                                            "sortable": true,
                                             "type": "text",
                                           },
                                           Object {
                                             "align": "left",
                                             "field": "localRate",
                                             "label": "LOCAL RATE (%)",
-                                            "sortable": true,
                                             "type": "text",
                                           },
                                           Object {
                                             "align": "left",
                                             "field": "totalRate",
                                             "label": "TOTAL RATE (%)",
-                                            "sortable": true,
                                             "type": "text",
                                           },
                                         ]
