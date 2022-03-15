@@ -69,10 +69,8 @@ const AddVehicleRule: React.FC<AddVehicleRuleProps> = () => {
     const isFormFieldChange = () => formik.dirty;
     setVersion("Breadcrumbs-Single");
     const [apiResposneState, setAPIResponse] = useState(false);
-    // const [isDisabled, setDisabled] = useState(false);
 
     const navigate = useNavigate();
-    // const location = useLocation();
     const { t } = useTranslation();
     const [productNameList, setProductNameList]= useState([]);
     const [formStatus, setFormStatus] = useState<IFormStatus>({
@@ -85,84 +83,6 @@ const AddVehicleRule: React.FC<AddVehicleRuleProps> = () => {
     }, []);
 
 
-    // edit section
-    // const [isEditMode, setEditMode] = useState(false);
-
-
-    // const populateDataInAllFields = (formData: any) => {
-    //     formik.setFieldValue('addressLine1', formData.addressLine1);
-    //     formik.setFieldValue('city', formData.city);
-    //     formik.setFieldValue('state', formData.state);
-    //     formik.setFieldValue('countryCd', 'us');
-    //     formik.setFieldValue('federalRate', formData.federalRate);
-    //     formik.setFieldValue('stateRate', formData.stateRate);
-    //     formik.setFieldValue('localRate', formData.localRate);
-    // };
-
-    // const onGetSaleTaxSuccess = (response: any) => {
-    //     populateDataInAllFields(response.data.data);
-    //     setEditMode(true);
-    // };
-    // const onGetSaleTaxError = (err: any) => {
-    //     try {
-    //         const { data } = err.response;
-    //         setAPIResponse(true);
-    //         setFormStatus({ message: data?.error?.message || formStatusProps.error.message, type: 'Error' });
-    //         formik.setSubmitting(false);
-    //         setTimeout(() => {
-    //             setAPIResponse(false);
-    //         }, 6000);
-    //     } catch (error) {
-    //         setFormStatus(formStatusProps.error);
-    //     }
-
-    // };
-
-    // useGetSaleTax(location.search, onGetSaleTaxSuccess, onGetSaleTaxError);
-
-
-    // const onEditSaleTaxSuccess = () => {
-    //     setAPIResponse(true);
-    //     isFormValidated(false);
-    //     setFormStatus(formStatusProps.updated);
-    //     setTimeout(() => {
-    //         setAPIResponse(false);
-    //     }, 6000);
-    // };
-    // const onEditSaleTaxError = (err: any) => {
-    //     try {
-    //         const { data } = err.response;
-    //         setAPIResponse(true);
-    //         // setDisabled(false);
-    //         setFormStatus({ message: data?.error?.message || formStatusProps.error.message, type: 'Error' });
-    //         formik.setSubmitting(false);
-    //         setTimeout(() => {
-    //             setAPIResponse(false);
-    //         }, 6000);
-    //     } catch (error) {
-    //         setFormStatus(formStatusProps.error);
-    //     }
-    // };
-
-    // const { mutate: editSaleTax } = useEditSalesTax(onEditSaleTaxSuccess, onEditSaleTaxError);
-
-    // const updateSaleTax = (form: VehicleModel) => {
-    //     try {
-    //         const payload = {
-    //             "countryCode": form.countryCd,
-    //             "city": form.city,
-    //             "state": form.state,
-    //             "stateRate": form.federalRate ? parseFloat(form.stateRate) : 0,
-    //             "federalRate": form.federalRate ? parseFloat(form.federalRate) : 0,
-    //             "localRate": form.federalRate ? parseFloat(form.localRate) : 0
-    //         };
-    //         editSaleTax(payload);
-    //     } catch (error) {
-    //         setFormStatus(formStatusProps.error);
-    //     }
-    // };
-
-    // Edit end
 
 
     const onAddVehicleRuleSuccess = () => {
@@ -205,8 +125,7 @@ const AddVehicleRule: React.FC<AddVehicleRuleProps> = () => {
     }, [data]);
 
     const getFuelNonFuelProductList = (list: any) => {
-        // eslint-disable-next-line prefer-const
-        let temp: any = [];
+        const temp: any = [];
         list.map((obj: any) => { 
             if(obj.ProductGroup.productGroupNm == "Fuel" || obj.ProductGroup.productGroupNm == "Non-Fuel") {
                 temp.push({ label: '' + obj.productNm, value: '' + obj.productCd, icon: <Icon component={getProductIcon(obj.ProductIcon.productIconNm)}></Icon>, productDetail: obj});
@@ -218,7 +137,7 @@ const AddVehicleRule: React.FC<AddVehicleRuleProps> = () => {
     const getProductIds = (arr: any) => {
         const temp : any = [] ;
         arr.map((obj: any) => temp.push(obj.value));
- return temp;
+        return temp;
     };
 
     const { mutate: addNewVehicleRule } = useAddVehicleRule(onAddVehicleRuleError, onAddVehicleRuleSuccess);
@@ -244,22 +163,16 @@ const AddVehicleRule: React.FC<AddVehicleRuleProps> = () => {
         initialValues,
         validationSchema: AddVehicleRuleValidationSchema, 
         onSubmit: (values) => {
-            // if (isEditMode) {
-            //     updateSaleTax(values);
-            // } else {
             createNewVehicleRule(values);
-            // }
         }
     });
 
     const handleFormDataChange = () => {
-        // if (isEditMode) {
             if (formik.dirty) {
                 if (formik.initialValues != formik.values) {
                     isFormValidated(false);
                 }
             }
-        // }
         if (isFormFieldChange() && !formik.isSubmitting) {
             isFormValidated(true);
         }
@@ -305,45 +218,6 @@ const AddVehicleRule: React.FC<AddVehicleRuleProps> = () => {
     const handleStatusChange = (field: any, value: any) => {
         formik.setFieldValue(field, value);
     };
-
-
-
-    // function onClickBack() {
-    //     navigate('/vehicleRule');
-    //     //navigate to back page
-    // }
-
-    // const disableButton = () => {
-    //     // if (isEditMode) {
-    //     //     if (Object.keys(formik.errors).length > 1) {
-    //     //         return true;
-    //     //     }
-    //     //     else if ((formik.touched.stateRate && formik.errors.stateRate) ||
-    //     //         (formik.touched.federalRate && formik.errors.federalRate) ||
-    //     //         (formik.touched.localRate && formik.errors.localRate)) {
-    //     //         return true;
-    //     //     }
-    //     //     else if (Object.keys(formik.touched).length) {
-    //     //         return false;
-    //     //     }
-    //     // } else {
-    //         if ((formik.touched.year && formik.errors.year) ||
-    //             (formik.touched.status && formik.errors.status) 
-    //             ) {
-    //             return true;
-    //         }
-    //         else if (formik.values.addressLine1 &&
-    //             formik.values.city &&
-    //             formik.values.state &&
-    //             formik.values.year &&
-    //             formik.values.status 
-    //         ) {
-    //             return false;
-    //         } else {
-    //             return true;
-    //         }
-    //     // }
-    // };
 
     return (
         <Box display="flex" className="global_main_wrapper">
