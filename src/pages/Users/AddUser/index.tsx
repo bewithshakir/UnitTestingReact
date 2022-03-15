@@ -45,6 +45,8 @@ const AddUser: React.FC<AddUserProps> = () => {
 
     const setVerfiedUserDetails = (data: any, verifiedUser?: boolean) => {
         if (verifiedUser) {
+            formik.setFieldValue('countryCd', getCountryCode());
+            formik.setFieldValue('customerId', addedCustomerId);
             formik.setFieldValue('userId', data?.userProfile.uuid);
             formik.setFieldValue('email', data?.userProfile.email);
             formik.setFieldValue('phone', data?.userProfile.mobile || '');
@@ -59,10 +61,8 @@ const AddUser: React.FC<AddUserProps> = () => {
 
     // Verify User
     const onSuccessVerfyUser = (response: any) => {
-        if (response) {
+        if (response?.data) {
             const { data } = response;
-            formik.setFieldValue('countryCd', getCountryCode());
-            formik.setFieldValue('customerId', addedCustomerId);
             setVerfiedUserDetails(data, data?.verifiedUser);
         }
     };
@@ -183,6 +183,10 @@ const AddUser: React.FC<AddUserProps> = () => {
             return true;
         }
     };
+
+    // eslint-disable-next-line no-console
+    console.log("🚀 ~ file: index.tsx ~ line 396 ~ formik", formik);
+
 
     return (
         <Grid item xl={7} lg={8}>
