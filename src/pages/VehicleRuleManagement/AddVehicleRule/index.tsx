@@ -127,8 +127,9 @@ const AddVehicleRule: React.FC<AddVehicleRuleProps> = () => {
     const getFuelNonFuelProductList = (list: any) => {
         const temp: any = [];
         list.map((obj: any) => { 
-            if(obj.ProductGroup.productGroupNm == "Fuel" || obj.ProductGroup.productGroupNm == "Non-Fuel") {
-                temp.push({ label: '' + obj.productNm, value: '' + obj.productCd, icon: <Icon component={getProductIcon(obj.ProductIcon.productIconNm)}></Icon>, productDetail: obj});
+            if(obj.ProductGroup.productGroupNm === "Fuel" || obj.ProductGroup.productGroupNm === "Non-Fuel") {
+                temp.push({ label: '' + obj.productNm, value: '' + obj.productCd, 
+                icon: <Icon component={getProductIcon(obj.ProductIcon.productIconNm)}></Icon>, productDetail: obj});
             }
         });
         return temp;
@@ -169,7 +170,7 @@ const AddVehicleRule: React.FC<AddVehicleRuleProps> = () => {
 
     const handleFormDataChange = () => {
             if (formik.dirty) {
-                if (formik.initialValues != formik.values) {
+                if (formik.initialValues !== formik.values) {
                     isFormValidated(false);
                 }
             }
@@ -304,7 +305,8 @@ const AddVehicleRule: React.FC<AddVehicleRuleProps> = () => {
                                         helperText={(formik.touched.status && formik.errors.status) ? formik.errors.status.value : undefined}
                                         error={(formik.touched.status && formik.errors.status) ? true : false}
                                         onChange={handleStatusChange}
-                                        onBlur={() => { formik.setFieldTouched("status"); formik.validateField("status"); }}
+                                        onBlur={() => { formik.setFieldTouched("status"); 
+                                                        formik.validateField("status"); }}
                                         required
                                     />
                                 </Grid>
@@ -321,7 +323,8 @@ const AddVehicleRule: React.FC<AddVehicleRuleProps> = () => {
                                             name={'product'}
                                             value={formik.values.product}
                                             onChange={handleProductsSelected}
-                                            onBlur={() => { formik.setFieldTouched('product'); formik.validateField('product'); }}
+                                            onBlur={() => { formik.setFieldTouched('product'); 
+                                                            formik.validateField('product'); }}
                                             helperText={(formik.touched.product && formik.errors.product) ? JSON.parse(JSON.stringify(formik.errors.product)) : undefined}
                                             error={(formik.touched.product && formik.errors.product) ? true : false}
                                         />

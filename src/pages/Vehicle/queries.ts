@@ -5,7 +5,8 @@ import { pageDataLimit } from "../../utils/constants";
 
 
 
-const getParkingLotDetails = async (pageParam: number, searchTerm: string, sortOrder: { sortBy: string, order: string }, filterParams: { [key: string]: string[] }, customerId: string) => {
+const getParkingLotDetails = async (pageParam: number, searchTerm: string, sortOrder: { sortBy: string, order: string }, 
+    filterParams: { [key: string]: string[] }, customerId: string) => {
     const query = new URLSearchParams();
     if (searchTerm) {
         query.append("search", searchTerm);
@@ -30,12 +31,15 @@ const getParkingLotDetails = async (pageParam: number, searchTerm: string, sortO
     const { data } = await axios(options);
     return data;
 };
-export const useGetParkingLotDetails = (query: string, sortOrder: { sortBy: string, order: string }, filterParams: { [key: string]: string[] }, customerId: string) => {
-    return useInfiniteQuery(["getParkingLots", query, sortOrder, filterParams, customerId], ({ pageParam = 0 }) => getParkingLotDetails(pageParam, query, sortOrder, filterParams, customerId), {
+export const useGetParkingLotDetails = (query: string, sortOrder: { sortBy: string, order: string }, 
+    filterParams: { [key: string]: string[] }, customerId: string) => {
+    return useInfiniteQuery(["getParkingLots", query, sortOrder, filterParams, customerId], ({ pageParam = 0 }) => 
+    getParkingLotDetails(pageParam, query, sortOrder, filterParams, customerId), {
         getNextPageParam: (lastGroup: any) => {
             if (lastGroup.data.pagination.offset < lastGroup.data.pagination.totalCount) {
                 return lastGroup.data.pagination.offset + pageDataLimit;
             }
+            return false;
         },
         keepPreviousData: true
     });

@@ -1,11 +1,9 @@
 import { useTranslation } from 'react-i18next';
 import { headerObj } from '../components/UIComponents/DataGird/grid.component';
 import DriveEtaOutlinedIcon from '@material-ui/icons/DriveEtaOutlined';
-// import { PositiveCricleIcon, AlertExclamationIcon } from '../assets/icons';
 
 
 export interface Vehicle {
-    // General Information
     customerId: string,
     city: string,
     state: string,
@@ -24,7 +22,6 @@ export interface Vehicle {
 }
 
 export default class VehicleModel {
-    // General Information
     customerId: string;
     city: string;
     state: string;

@@ -36,7 +36,8 @@ const Legend: React.FC = () => {
 
   const isDisabled = (to: string) => {
     if (to.includes('addCustomer') && (pathname.includes('addCustomer') || pathname.includes('viewCustomer') ||
-      pathname.includes('parkingLots') || pathname.includes('attachments') || pathname.includes('dsps') || pathname.includes('users') || pathname.includes('vehicles'))) {
+      pathname.includes('parkingLots') || pathname.includes('attachments') 
+      || pathname.includes('dsps') || pathname.includes('users') || pathname.includes('vehicles'))) {
       return false;
     } else if (to.includes('parkingLots') && (pathname.includes('viewCustomer') || pathname.includes('parkingLots')
       || pathname.includes('attachments') || pathname.includes('dsps') || pathname.includes('users')|| pathname.includes('vehicles'))) {
@@ -50,7 +51,9 @@ const Legend: React.FC = () => {
       return false;
     } else if (to.includes('users')) {
       return false;
-    } else if (to.includes('vehicles') &&  (pathname.includes('viewCustomer') || pathname.includes('parkingLots') || pathname.includes('attachments') || pathname.includes('dsps') || pathname.includes('vehicles'))) {
+    } else if (to.includes('vehicles') &&  (pathname.includes('viewCustomer') 
+      || pathname.includes('parkingLots') || pathname.includes('attachments') 
+      || pathname.includes('dsps') || pathname.includes('vehicles'))) {
       return false;
     } else return true;
   };
@@ -79,7 +82,8 @@ const Legend: React.FC = () => {
   };
 
   const getLegendHeader = () => {
-    if (pathname.includes("viewCustomer") || pathname.includes("parkingLots") || pathname.includes('attachments') || pathname.includes('vehicles') || pathname.includes('users')) {
+    if (pathname.includes("viewCustomer") || pathname.includes("parkingLots") 
+    || pathname.includes('attachments') || pathname.includes('vehicles') || pathname.includes('users')) {
       return selectedCustomerName;
     } else {
       return t("legend.customerName");

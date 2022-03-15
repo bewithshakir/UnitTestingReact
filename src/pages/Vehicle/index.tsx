@@ -27,7 +27,6 @@ interface ContentProps {
 }
 
 const VehicleContent: React.FC<ContentProps> = () => {
-    console.log("VehicleContent");
     const VehicleObj = new VehicleModel();
     const headCells = VehicleObj.fieldsToDisplay();
     const rowActionOptions = VehicleObj.rowActions();
@@ -45,8 +44,6 @@ const VehicleContent: React.FC<ContentProps> = () => {
     const [custFilterPanelVisible, setCustFilterPanelVisible] = React.useState(false);
     const [parkingLotlist, setParkingLotList] = React.useState([]);
     const customerId = useAddedCustomerIdStore((state: addedCustomerIdState) => state.customerId);
-    // const [infoPanelName, setInfoPanelName] = React.useState('');
-    // const [infoPanelEditId, setInfoPanelEditId] = React.useState('');
 
     const { t } = useTranslation();
     const { data, fetchNextPage, isFetching, isLoading }: any = useGetParkingLotDetails(
@@ -69,42 +66,13 @@ const VehicleContent: React.FC<ContentProps> = () => {
         }
     });
 
-    // const createInfoObjForRightInfoPanel = (row: any) => {
-    //     setInfoPanelEditId(row.deliveryLocationId);
-    //     setInfoPanelName(row.deliveryLocationNm);
-    //     const infoObj = {
-    //         // 'Customer ID': row.customerInputId,
-    //         // 'Name': row.contactName,
-    //         // 'Email': row.email,
-    //         // 'Phone': maskPhoneNumber(row.phone),
-    //         // 'Settlement Type': row.paymentType,
-    //         // 'Card Added': row.cardAdded === "Y" ? <PositiveCricleIcon /> : row.cardAdded === "N" ? 'Not yet assigned' : '',
-    //         // 'Address': row.address,
-    //         // 'City': row.city,
-    //         // 'State': row.state,
-    //         // 'Zip Code': row.zipCode,
-    //     };
-    //     return infoObj;
-    // };
-
     const openDrawer = (row: SyntheticEvent) => {
       setInfo(row);
       setDrawerOpen(true);
     };
 
-    // const openDrawer = (row: SyntheticEvent) => {
-    //     const infoObj = createInfoObjForRightInfoPanel(row);
-    //     setInfo(row);
-    //     setDrawerOpen(true);
-    // };
-
-    // const drawerClose = () => {
-    //     setDrawerOpen(false);
-    // };
-
     const navigateToAddVehicle = () => {
         console.log("navigateToAddVehicle");
-        // navigate(`/customer/${customerId}/parkingLots/addLot`);
     };
 
     const onSortBySelected = (value: string) => {
@@ -132,7 +100,7 @@ const VehicleContent: React.FC<ContentProps> = () => {
         if (data) {
             const list: any = [];
             data?.pages?.forEach((item: any) => {
-                // list.push(...item.data.lots);
+                console.log(list);
             });
             setParkingLotList(list);
         }
@@ -162,7 +130,6 @@ const VehicleContent: React.FC<ContentProps> = () => {
         switch (action.action) {
             case ACTION_TYPES.EDIT:
                 // perform action 
-                //navigate(`/customer/${customerId}/parkingLots/viewLot/${row.deliveryLocationId}`);
                 console.log("navigate to edit =vehicle page");
                 break;
             case ACTION_TYPES.DELETE:
@@ -270,7 +237,6 @@ const VehicleContent: React.FC<ContentProps> = () => {
                         fields={filterByFields}
                         storeKey='parkingLot' />
 
-                    {/* <RightInfoPanel panelType="info-view" category="lot" open={drawerOpen} headingText={infoPanelName} info={info} idStrForEdit={infoPanelEditId} nameStrForEdit={infoPanelName} onClose={drawerClose} /> */}
 
                 </Grid>
             </Grid>

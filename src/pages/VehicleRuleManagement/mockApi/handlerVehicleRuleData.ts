@@ -1,5 +1,8 @@
 import { rest } from "msw";
 
+const PRODUCT_CODE_ID = "9fa85e21-fab8-48d2-af36-85c7686e7666";
+const PRODUCT_ICON_CODE = "a59eac7d-d7fe-4635-805a-dc8e38bfa750";
+
 export const getVehicleRuleDataHandler = () => {
     return rest.get('*api/vehicle-service/vehicle-rules*', (req, res, ctx) => {
         console.log('req--', req.url.pathname)
@@ -29,10 +32,10 @@ export const getVehicleRuleDataHandler = () => {
                                             "vehicleRuleProducts": [
                                                 {
                                                     "ruleExceptionId": "047974c3-9869-4046-ac35-c039875b60aa",
-                                                    "productCd": "9fa85e21-fab8-48d2-af36-85c7686e7666",
+                                                    "productCd": PRODUCT_CODE_ID,
                                                     "activeInactiveInd": "Y",
                                                     "productInfo": {
-                                                        "productCd": "9fa85e21-fab8-48d2-af36-85c7686e7666",
+                                                        "productCd": PRODUCT_CODE_ID,
                                                         "productNm": "1 Purple Product",
                                                         "activeInactiveInd": "Y",
                                                         "manualPricing": 0,
@@ -43,7 +46,7 @@ export const getVehicleRuleDataHandler = () => {
                                                             "activeInactiveInd": "Y"
                                                         },
                                                         "productIcon": {
-                                                            "productIconCd": "a59eac7d-d7fe-4635-805a-dc8e38bfa750",
+                                                            "productIconCd": PRODUCT_ICON_CODE,
                                                             "productIconNm": "Green",
                                                             "productIconHexCode": "#008443",
                                                             "activeInactiveInd": "Y"
@@ -98,10 +101,10 @@ export const getVehicleRuleDataHandler = () => {
                                     "vehicleRuleProducts": [
                                         {
                                             "ruleExceptionId": "047974c3-9869-4046-ac35-c039875b60aa",
-                                            "productCd": "9fa85e21-fab8-48d2-af36-85c7686e7666",
+                                            "productCd": PRODUCT_CODE_ID,
                                             "activeInactiveInd": "Y",
                                             "productInfo": {
-                                                "productCd": "9fa85e21-fab8-48d2-af36-85c7686e7666",
+                                                "productCd": PRODUCT_CODE_ID,
                                                 "productNm": "1 Purple Product",
                                                 "activeInactiveInd": "Y",
                                                 "manualPricing": 0,
@@ -112,7 +115,7 @@ export const getVehicleRuleDataHandler = () => {
                                                     "activeInactiveInd": "Y"
                                                 },
                                                 "productIcon": {
-                                                    "productIconCd": "a59eac7d-d7fe-4635-805a-dc8e38bfa750",
+                                                    "productIconCd": PRODUCT_ICON_CODE,
                                                     "productIconNm": "Green",
                                                     "productIconHexCode": "#008443",
                                                     "activeInactiveInd": "Y"

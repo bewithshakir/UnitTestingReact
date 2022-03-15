@@ -3,7 +3,6 @@ import { mount, shallow } from 'enzyme';
 import VehicleRuleManagementLandingContent from './index';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import SortbyMenu from '../../components/UIComponents/Menu/SortbyMenu.component';
-// import { sortByOptions } from "./config";
 const mockedUsedNavigate = jest.fn();
 
 jest.mock('react-router-dom', () => ({
