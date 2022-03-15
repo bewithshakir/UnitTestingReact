@@ -25,12 +25,13 @@
     "download": "Download (.csv format)",
     "primary": "Primary",
     "secondary": "Secondary",
-    "add customer": "Add Customer",
+    "add customer": "ADD CUSTOMER",
     "show more": "Show more",
     "sort by": "Sort by",
-    "add lot": "Add Lot",
-    "add tax": "Add Tax",
+    "add lot": "ADD LOT",
+    "add tax": "ADD TAX",
     "add dsp": "ADD DSP",
+    "add user": "ADD USER",
     "add opis city": "ADD OPIS CITY",
     "browse": "Browse",
     "filter": "Filters",
@@ -135,10 +136,10 @@
       "wallet status": "Wallet Status",
       "fuel type": "Fuel Type"
     },
-    "infoView":{
+    "infoView": {
       "addproductopistext": "Fuel prices for Retail and Rack-based products are provided by the Oil Price Information Service (OPIS) are not fixed and are subject to change daily.",
-      "lotDetails":"Lot Details",
-      "pricing":"Pricing",
+      "lotDetails": "Lot Details",
+      "pricing": "Pricing",
       "lotContact": "Lot Contact"
     }
   },
@@ -175,6 +176,28 @@
     "search": "Vehicle License Plate",
     "results found": "results found",
     "result(s) found": "result(s) found"
+  },
+  "user": {
+    "search": "User Name",
+    "results found": "results found",
+    "result(s) found": "result(s) found",
+    "filterHeader": "Filters",
+    "nodataMsg": "Add User by clicking on add User or any related sentence."
+  },
+  "addUser": {
+    "title": "Add User",
+    "form": {
+      "titleEdit": "Edit User",
+      "title": "User Details",
+      "userGroup": "User Group",
+      "email": "Email",
+      "dsp": "DSP Name",
+      "userGroupAccessLevel": {
+        "title": "USER GROUP ACCESS LEVEL *",
+        "userName": "User Name",
+        "phone": "Phone Number"
+      }
+    }
   },
   "dsp": {
     "search": "DSP Name",
