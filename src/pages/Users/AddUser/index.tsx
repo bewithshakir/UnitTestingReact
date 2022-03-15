@@ -43,7 +43,7 @@ const AddUser: React.FC<AddUserProps> = () => {
     const { data: dspList } = userGetUserDSPList(addedCustomerId, 'us');
     const { data: userPermissionList } = useGetUserPermissionList('us');
 
-    const setVerfiedUserDetails = (data: any, verifiedUser?: boolean) => {
+    const setVerfiedUserDetails = (data: any, verifiedUser: boolean) => {
         if (verifiedUser) {
             formik.setFieldValue('countryCd', getCountryCode());
             formik.setFieldValue('customerId', addedCustomerId);
@@ -63,7 +63,7 @@ const AddUser: React.FC<AddUserProps> = () => {
     const onSuccessVerfyUser = (response: any) => {
         if (response?.data) {
             const { data } = response;
-            setVerfiedUserDetails(data, data?.verifiedUser);
+            setVerfiedUserDetails(data, data.verifiedUser);
         }
     };
 
@@ -144,7 +144,11 @@ const AddUser: React.FC<AddUserProps> = () => {
         const { data } = error.response;
         handleUpdateUserRepose(false, data);
     };
-    const { mutate: updateUser, isSuccess: isSuccessUpdateUser, isError: isErrorUpdateUser, isLoading: isLoadingUpdateUser } = useUpdateUserData(userId || '', onSuccessUpdateUser, onErrorUpdateUser);
+    const { mutate: updateUser, isSuccess: isSuccessUpdateUser, isError: isErrorUpdateUser, isLoading: isLoadingUpdateUser } = useUpdateUserData(
+        userId || '',
+        onSuccessUpdateUser,
+        onErrorUpdateUser
+    );
 
     // Edit User End
     const formik = useFormik({
@@ -212,7 +216,10 @@ const AddUser: React.FC<AddUserProps> = () => {
                                 helperText={(formik.touched.userGroup && formik.errors.userGroup) ? formik.errors.userGroup.value : undefined}
                                 error={(formik.touched.userGroup && formik.errors.userGroup) ? true : false}
                                 onChange={formik.setFieldValue}
-                                onBlur={() => { formik.setFieldTouched("userGroup"); formik.validateField("userGroup"); }}
+                                onBlur={() => {
+                                    formik.setFieldTouched("userGroup");
+                                    formik.validateField("userGroup");
+                                }}
                                 required
                             />
                         </Grid>
@@ -228,7 +235,10 @@ const AddUser: React.FC<AddUserProps> = () => {
                             description=''
                             placeholder='Enter Email'
                             onChange={handleEmailChange}
-                            onBlur={() => { formik.setFieldTouched("email"); formik.validateField("email"); }}
+                            onBlur={() => {
+                                formik.setFieldTouched("email");
+                                formik.validateField("email");
+                            }}
                             required
                         />
                     </Grid>
@@ -303,7 +313,10 @@ const AddUser: React.FC<AddUserProps> = () => {
                                     helperText={(formik.touched.dsp && formik.errors.dsp) ? formik.errors.dsp.value : undefined}
                                     error={(formik.touched.dsp && formik.errors.dsp) ? true : false}
                                     onChange={formik.setFieldValue}
-                                    onBlur={() => { formik.setFieldTouched("dsp"); formik.validateField("dsp"); }}
+                                    onBlur={() => {
+                                        formik.setFieldTouched("dsp");
+                                        formik.validateField("dsp");
+                                    }}
                                     noOptionsMessage={() => "No data available Please create/add the DSP first to create/add a user"}
                                     required
                                 />
@@ -374,7 +387,7 @@ const AddUser: React.FC<AddUserProps> = () => {
                                 aria-label={t("buttons.save")}
                                 className="ml-4"
                                 data-testid="save"
-                                disabled={disableButton() || showVerifyLink}
+                                disabled={(showVerifyLink || userVerificationLoading) || disableButton()}
                             >
                                 {t("buttons.save")}
                                 {(isLoadingAddUser || isLoadingUpdateUser) && <LoadingIcon data-testid="loading-spinner" className='loading_save_icon' />}
