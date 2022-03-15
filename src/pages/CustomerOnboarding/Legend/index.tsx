@@ -45,7 +45,9 @@ const Legend: React.FC = () => {
     } else if (to.includes('attachments') && (pathname.includes('viewCustomer') || pathname.includes('parkingLots')
       || pathname.includes('attachments') || pathname.includes('dsps') || pathname.includes('users'))) {
       return false;
-    } else if ((to.includes('dsps') || to.includes('users')) && selectedPaymentType === 'Voyager') {
+    } else if (to.includes('dsps') && selectedPaymentType === 'Voyager') {
+      return false;
+    } else if (to.includes('users')) {
       return false;
     } else return true;
   };

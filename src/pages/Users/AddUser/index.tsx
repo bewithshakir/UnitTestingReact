@@ -1,27 +1,19 @@
-import { Box, Grid, Typography } from '@mui/material';
+import { Box, FormControl, FormControlLabel, Grid, Link, RadioGroup, Typography, Radio, Icon } from '@mui/material';
 import { useFormik } from 'formik';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate, useParams } from 'react-router-dom';
+import { AlertExclamationIcon, LoadingIcon, PositiveCricleIcon } from '../../../assets/icons';
 import { Button } from '../../../components/UIComponents/Button/Button.component';
 import Input from '../../../components/UIComponents/Input/Input';
-import Select from '../../../components/UIComponents/Select/SingleSelect';
 import ToastMessage from '../../../components/UIComponents/ToastMessage/ToastMessage.component';
 import UserModel from "../../../models/UserModel";
-import {
-    HorizontalBarVersionState, useAddedCustomerIdStore, useAddedCustomerPaymentTypeStore,
-    useShowConfirmationDialogBoxStore, useStore
-} from '../../../store';
-import { toastSuccessKey } from '../../../utils/constants';
-import {
-    disableButton, emailHelperText, isEmailErrorExist, isUserGroupErrorExist, onClickCancel, onSuccessVerfyUser,
-    renderButtonLoader, renderDSPDOM, renderUserAccessDOM, renderUserVerificationDOM, showToast, userGroupHelperText, validateForm
-} from './AddUserHelper';
-import {
-    useAddUser, useEditUserData, useGetUserGroupTypes, useGetUserPermissionList,
-    userGetUserDSPList, UserGoupsInt, useUpdateUserData, useVarifyUser
-} from './queries';
+import { HorizontalBarVersionState, useAddedCustomerIdStore, useShowConfirmationDialogBoxStore, useStore, useAddedCustomerPaymentTypeStore } from '../../../store';
+import { useAddUser, useEditUserData, useUpdateUserData, useGetUserGroupTypes, UserGoupsInt, useVarifyUser, useGetUserPermissionList, userGetUserDSPList } from './queries';
+import Select from '../../../components/UIComponents/Select/SingleSelect';
 import { AddUserSchema } from "./validation";
+import { userAccessLevelSX, userGroupStr } from '../config';
+import { getCountryCode } from '../../../navigation/utils';
 
 const initialValues = new UserModel();
 interface AddUserProps {
@@ -50,10 +42,32 @@ const AddUser: React.FC<AddUserProps> = () => {
     const { data: dspList } = userGetUserDSPList(addedCustomerId, 'us');
     const { data: userPermissionList } = useGetUserPermissionList('us');
 
+    const setVerfiedUserDetails = (data: any, verifiedUser?: boolean) => {
+        if (verifiedUser) {
+            formik.setFieldValue('userId', data?.userProfile.uuid);
+            formik.setFieldValue('email', data?.userProfile.email);
+            formik.setFieldValue('phone', data?.userProfile.mobile || '');
+            formik.setFieldValue('userName', `${data?.userProfile.firstName} ${data?.userProfile.lastName}`);
+        } else {
+            formik.setFieldValue('userId', '');
+            formik.setFieldValue('email', '');
+            formik.setFieldValue('phone', '');
+            formik.setFieldValue('userName', '');
+        }
+    };
+
     // Verify User
-    const { data: verifiedUserData, isLoading: userVerificationLoading } = useVarifyUser(
-        userEmail, (response: any) => onSuccessVerfyUser(response, formik, addedCustomerId)
-    );
+    const onSuccessVerfyUser = (response: any) => {
+        if (response) {
+            const { data } = response;
+            formik.setFieldValue('countryCd', getCountryCode());
+            formik.setFieldValue('customerId', addedCustomerId);
+            setVerfiedUserDetails(data, data?.verifiedUser);
+        }
+    };
+
+    const { data: verifiedUserData,
+        isLoading: userVerificationLoading, isError: verifyUserError } = useVarifyUser(userEmail, onSuccessVerfyUser);
 
     useEffect(() => {
         setVersion("Breadcrumbs-Many");
@@ -76,19 +90,22 @@ const AddUser: React.FC<AddUserProps> = () => {
     const onSuccessAddUser = () => {
         isFormValidated(false);
         formik.resetForm({ values: formik.values });
-        setFormStatus({ message: t(toastSuccessKey), type: 'Success' });
+        setFormStatus({ message: t("formStatusProps.success.message"), type: 'Success' });
     };
     const onErrorAddUser = (err: any) => {
         const { data } = err.response;
         formik.setSubmitting(false);
-        setFormStatus({ message: data?.error?.message, type: 'Error' });
+        setFormStatus({ message: data?.error?.message || t("formStatusProps.error.message"), type: 'Error' });
     };
-    const { mutate: addNewUser, isSuccess: isSuccessAddUser, isError: isErrorAddUser, isLoading: isLoadingAddUser } = useAddUser(
-        onSuccessAddUser, onErrorAddUser
-    );
+    const { mutate: addNewUser, isSuccess: isSuccessAddUser, isError: isErrorAddUser, isLoading: isLoadingAddUser } = useAddUser(onSuccessAddUser, onErrorAddUser);
     const createUserData = (form: UserModel) => {
-        addNewUser(form);
+        try {
+            addNewUser(form);
+        } catch (error) {
+            setFormStatus({ message: t("formStatusProps.error.message"), type: 'Error' });
+        }
     };
+
     // Add User End
 
     // Edit User
@@ -104,16 +121,16 @@ const AddUser: React.FC<AddUserProps> = () => {
     };
     const onErrorUserDetail = (error: any) => {
         setEditMode(true);
-        setFormStatus({ message: error?.response.data.error?.details[0], type: 'Error' });
+        setFormStatus({ message: error?.response.data.error?.details[0] || t("formStatusProps.error.message"), type: 'Error' });
     };
     const { isError: isErrorUserData } = useEditUserData(addedCustomerId, userId, onSuccessUserDetail, onErrorUserDetail);
 
     const handleUpdateUserRepose = (isSuccess: boolean, data?: any) => {
         if (isSuccess) {
             isFormValidated(false);
-            setFormStatus({ message: t(toastSuccessKey), type: 'Success' });
+            setFormStatus({ message: t("formStatusProps.success.message"), type: 'Success' });
         } else {
-            setFormStatus({ message: data?.error?.message, type: 'Error' });
+            setFormStatus({ message: data?.error?.details[0] || t("formStatusProps.error.message"), type: 'Error' });
         }
         formik.resetForm({ values: formik.values });
     };
@@ -126,15 +143,7 @@ const AddUser: React.FC<AddUserProps> = () => {
         const { data } = error.response;
         handleUpdateUserRepose(false, data);
     };
-    const {
-        mutate: updateUser,
-        isSuccess: isSuccessUpdateUser,
-        isError: isErrorUpdateUser,
-        isLoading: isLoadingUpdateUser } = useUpdateUserData(
-            userId,
-            onSuccessUpdateUser,
-            onErrorUpdateUser
-        );
+    const { mutate: updateUser, isSuccess: isSuccessUpdateUser, isError: isErrorUpdateUser, isLoading: isLoadingUpdateUser } = useUpdateUserData(userId || '', onSuccessUpdateUser, onErrorUpdateUser);
 
     // Edit User End
     const formik = useFormik({
@@ -152,8 +161,27 @@ const AddUser: React.FC<AddUserProps> = () => {
     });
 
     useEffect(() => {
-        validateForm(formik, isFormValidated);
+        if (!formik.isValid || formik.dirty) {
+            isFormValidated(true);
+        } else {
+            isFormValidated(false);
+        }
     }, [formik.isValid, formik.dirty]);
+
+    const onClickCancel = () => {
+        if (!formik.isValid || formik.dirty) {
+            showDialogBox(true);
+        } else {
+            navigate(`/customer/${addedCustomerId}/users`);
+        }
+    };
+    const disableButton = () => {
+        if (formik.dirty) {
+            return !formik.isValid || formik.isSubmitting;
+        } else {
+            return true;
+        }
+    };
 
     return (
         <Grid item xl={7} lg={8}>
@@ -175,14 +203,11 @@ const AddUser: React.FC<AddUserProps> = () => {
                                 label={t("addUser.form.userGroup")}
                                 placeholder='Choose'
                                 value={formik.values.userGroup}
-                                items={userGroupList?.filter((usrGrpObj: UserGoupsInt) => usrGrpObj.type.includes(selectedPaymentType))}
-                                helperText={userGroupHelperText(formik)}
-                                error={isUserGroupErrorExist(formik)}
+                                items={userGroupList?.filter((usrGrpObj: UserGoupsInt) => usrGrpObj.type.includes(selectedPaymentType)) || []}
+                                helperText={(formik.touched.userGroup && formik.errors.userGroup) ? formik.errors.userGroup.value : undefined}
+                                error={(formik.touched.userGroup && formik.errors.userGroup) ? true : false}
                                 onChange={formik.setFieldValue}
-                                onBlur={() => {
-                                    formik.setFieldTouched("userGroup");
-                                    formik.validateField("userGroup");
-                                }}
+                                onBlur={() => { formik.setFieldTouched("userGroup"); formik.validateField("userGroup"); }}
                                 required
                             />
                         </Grid>
@@ -193,25 +218,137 @@ const AddUser: React.FC<AddUserProps> = () => {
                             name='email'
                             label={t("addUser.form.email")}
                             type='text'
-                            value={formik.values.email}
-                            helperText={emailHelperText(formik)}
-                            error={isEmailErrorExist(formik)}
+                            helperText={(formik.touched.email && formik.errors.email) ? formik.errors.email : undefined}
+                            error={(formik.touched.email && formik.errors.email) ? true : false}
                             description=''
                             placeholder='Enter Email'
                             onChange={handleEmailChange}
-                            onBlur={() => {
-                                formik.setFieldTouched("email");
-                                formik.validateField("email");
-                            }}
+                            onBlur={() => { formik.setFieldTouched("email"); formik.validateField("email"); }}
                             required
                         />
                     </Grid>
-                    {renderUserVerificationDOM(showVerifyLink, userVerificationLoading, verifiedUserData, t, formik, onClickVerifyUser)}
+                    <Grid item xs={12} md={6} pr={2.5} pt={(formik.touched.email && formik.errors.email) ? 0 : 3.5} pb={2.5} display="flex" alignItems="center">
+                        {
+                            (!showVerifyLink && (verifiedUserData || userVerificationLoading || verifyUserError)) ?
+                                <Box>
+                                    {userVerificationLoading && <LoadingIcon data-testid="loading-spinner" style={{ position: "unset" }} className='loading_save_icon' />}
+                                    {!userVerificationLoading && verifiedUserData?.data?.verifiedUser && <Icon component={PositiveCricleIcon} />}
+                                    {((!userVerificationLoading && !verifiedUserData?.data?.verifiedUser) || verifyUserError) &&
+                                        (
+                                            <Box display="flex" alignItems="center">
+                                                <Icon sx={{ width: "20px", height: "20px", marginRight: 2 }} component={AlertExclamationIcon} />
+                                                <Typography variant="h4" color="var(--Tertiary)" className="fw-bold">
+                                                    Janrain account doesn&apos;t exist for this email.
+                                                </Typography>
+                                            </Box>
+                                        )
+                                    }
+                                </Box>
+                                :
+                                <Link
+                                    variant="body2"
+                                    id="verify-user-link"
+                                    className="add-link"
+                                    onClick={onClickVerifyUser}
+                                    sx={{ cursor: "pointer", color: "var(--Primary)" }}
+                                >
+                                    <Typography variant="h4" color="var(--Primary)" className="fw-bold" mb={1}>
+                                        Verify
+                                    </Typography>
+                                </Link>
+                        }
+                    </Grid>
+                    <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
+                        <Input
+                            id='userName'
+                            label={t("addUser.form.userGroupAccessLevel.userName")}
+                            type='text'
+                            helperText={(formik.touched.userName && formik.errors.userName) ? formik.errors.userName : undefined}
+                            error={(formik.touched.userName && formik.errors.userName) ? true : false}
+                            description=''
+                            placeholder='User Name'
+                            {...formik.getFieldProps('userName')}
+                            disabled={true}
+                            required
+                        />
+                    </Grid>
+                    <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
+                        <Input
+                            id='phone'
+                            label={t("addUser.form.userGroupAccessLevel.phone")}
+                            type='text'
+                            helperText={(formik.touched.phone && formik.errors.phone) ? formik.errors.phone : undefined}
+                            error={(formik.touched.phone && formik.errors.phone) ? true : false}
+                            description=''
+                            placeholder='Phone Number Ex: 787 XXXX XXX'
+                            disabled={true}
+                            {...formik.getFieldProps('phone')}
+                        />
+                    </Grid>
+                    {(formik.values?.userGroup?.label?.toLowerCase() === userGroupStr.toLowerCase()) && (
+                        <Grid item xs={12} md={12}>
+                            <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
+                                <Select
+                                    id='dsp'
+                                    name='dsp'
+                                    label={t("addUser.form.dsp")}
+                                    placeholder='Choose'
+                                    value={formik.values.dsp}
+                                    items={dspList}
+                                    helperText={(formik.touched.dsp && formik.errors.dsp) ? formik.errors.dsp.value : undefined}
+                                    error={(formik.touched.dsp && formik.errors.dsp) ? true : false}
+                                    onChange={formik.setFieldValue}
+                                    onBlur={() => { formik.setFieldTouched("dsp"); formik.validateField("dsp"); }}
+                                    noOptionsMessage={() => "No data available Please create/add the DSP first to create/add a user"}
+                                    required
+                                />
+                            </Grid>
+                        </Grid>
+                    )}
 
-                    {renderDSPDOM(dspList, formik, t)}
-
-                    {renderUserAccessDOM(userPermissionList, formik, t)}
-
+                    {userPermissionList &&
+                        (<>
+                            <Grid item md={12} mt={3} mb={2}>
+                                <Typography color="var(--Darkgray)" variant="h4" gutterBottom className="fw-bold">
+                                    {t("addUser.form.userGroupAccessLevel.title")}
+                                </Typography>
+                            </Grid>
+                            <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
+                                <FormControl component="fieldset">
+                                    <RadioGroup
+                                        aria-label="user-access-permission"
+                                        defaultValue=""
+                                        id="userAccessLevel"
+                                        name="userAccessLevel"
+                                        value={formik.values.userAccessLevel}
+                                        onChange={formik.handleChange}
+                                    >
+                                        {userPermissionList?.map((perObj: any, index: any) => (
+                                            <FormControlLabel
+                                                key={perObj.value}
+                                                value={perObj.value}
+                                                sx={{ ...userAccessLevelSX }}
+                                                control={<Radio
+                                                    role="radio"
+                                                    id={`userAccessLevel-${index}`}
+                                                    sx={{
+                                                        '&.Mui-checked': {
+                                                            color: "var(--Gray)",
+                                                        },
+                                                    }}
+                                                    aria-label={perObj.label} />}
+                                                label={
+                                                    <Typography color="var(--Darkgray)" variant="h4" pl={2.5} className="fw-bold">
+                                                        {perObj.label}
+                                                    </Typography>
+                                                } />
+                                        ))}
+                                    </RadioGroup>
+                                </FormControl>
+                            </Grid>
+                        </>
+                        )
+                    }
                     <Grid item xs={12} md={6} />
                     <Grid item md={12} pr={2.5} pb={2.5} mt={4}>
                         <Box className="form-action-section" alignItems="end">
@@ -220,7 +357,7 @@ const AddUser: React.FC<AddUserProps> = () => {
                                 types="cancel"
                                 aria-label={t("buttons.cancel")}
                                 className="mr-4"
-                                onClick={() => onClickCancel(formik, addedCustomerId, showDialogBox, navigate)}
+                                onClick={onClickCancel}
                                 data-test="cancel"
                             >
                                 {t("buttons.cancel")}
@@ -232,14 +369,18 @@ const AddUser: React.FC<AddUserProps> = () => {
                                 aria-label={t("buttons.save")}
                                 className="ml-4"
                                 data-testid="save"
-                                disabled={disableButton(formik, showVerifyLink)}
+                                disabled={disableButton() || showVerifyLink}
                             >
                                 {t("buttons.save")}
-                                {renderButtonLoader(isLoadingAddUser, isLoadingUpdateUser)}
+                                {(isLoadingAddUser || isLoadingUpdateUser) && <LoadingIcon data-testid="loading-spinner" className='loading_save_icon' />}
                             </Button>
                         </Box>
                         <ToastMessage
-                            isOpen={showToast(isErrorAddUser, isSuccessAddUser, isErrorUpdateUser, isSuccessUpdateUser, isErrorUserData)}
+                            isOpen={
+                                isErrorAddUser || isSuccessAddUser ||
+                                isErrorUpdateUser || isSuccessUpdateUser ||
+                                isErrorUserData
+                            }
                             messageType={formStatus.type}
                             onClose={() => { return ''; }}
                             message={formStatus.message} />
