@@ -27,6 +27,8 @@ const EditProductManagement = lazy(() => import('./pages/AddProductManagement/Ad
 const AssetManagement = lazy(() => import("./pages/AssetManagement"));
 const AddAttachment = lazy(() => import("./pages/Attachments/AddAttachment/AddAttachment"));
 const AddDSP = lazy(() => import("./pages/DspLanding/AddDSP"));
+const UsersLadingPage = lazy(() => import("./pages/Users/"));
+const AddUser = lazy(() => import("./pages/Users/AddUser/"));
 const AddTruckParkingLot = lazy(() => import("./pages/Truck/TruckParkingLot/AddLot"));
 const TruckParkingLot = lazy(() => import("./pages/Truck/TruckParkingLot"));
 const EditTruckParkingLot = lazy(() => import("./pages/Truck/TruckParkingLot/AddLot"));
@@ -82,7 +84,19 @@ export const routes: RouteObject[] = [
       {
         path: "/customer/:customerId/AddAttachment",
         element: <AddAttachment version='Breadcrumbs-Many' />
-      }
+      },
+      {
+        path: "/customer/:customerId/users",
+        element: <UsersLadingPage version='Breadcrumbs-Single' />
+      },
+      {
+        path: "/customer/:customerId/users/addUser",
+        element: <AddUser version='Breadcrumbs-Many' />
+      },
+      {
+        path: "/customer/:customerId/dsps/editUser/:userId",
+        element: <AddUser version='Breadcrumbs-Many' />
+      },
     ]
   },
   {
@@ -155,7 +169,7 @@ export const routes: RouteObject[] = [
   },
   {
     path: "/trucks",
-    element: <TruckLanding version="Breadcrumbs-Single" />,    
+    element: <TruckLanding version="Breadcrumbs-Single" />,
   },
   {
     path: "/truckParkingLot",
