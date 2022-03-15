@@ -23,6 +23,7 @@ import {
 } from '../../../store';
 import DiscardChangesDialog from '../../../components/UIComponents/ConfirmationDialog/DiscardChangesDialog.component';
 import { ParkingLot_SearchParam } from "../../../utils/constants";
+import ColorLegendControl from '../ColorLegendControl';
 
 const drawerWidth = 64;
 interface HorizontalBarProps {
@@ -404,6 +405,7 @@ export default function HorizontalBar (props: HorizontalBarProps) {
                   : null}
             <div className='app__header-section' />
             <div className='app__header-right-section-desktop'>
+            <ColorLegendControl/>
               <div className='header__country-selector'>
                 <SvgIcon component={USAFlagIcon} />
                 <span className='country-title'>United States</span>
@@ -426,31 +428,31 @@ export default function HorizontalBar (props: HorizontalBarProps) {
                 }}
               />
               <div className='vl'></div>
-              <ProfileMenu
-                options={[
-                  {
-                    label: t('menus.profile-actions.profile'),
-                    icon: <CustomerProfileIcon2 />,
-                  },
-                  {
-                    label: t('menus.profile-actions.settings'),
-                    icon: <SettingsIcon />,
-                  },
-                  {
-                    label: t('menus.profile-actions.logout'),
-                    icon: <LogoutIcon />,
-                  },
-                  {
-                    label: t(
-                      process.env.REACT_APP_VERSION_NUMBER?.toString() || ''
-                    ),
-                    icon: <SettingsIcon />,
-                  },
-                ]}
-                onSelect={(value) => {
-                  return value;
-                }}
-              />
+                <ProfileMenu
+                  options={[
+                    {
+                      label: t('menus.profile-actions.profile'),
+                      icon: <CustomerProfileIcon2 />,
+                    },
+                    {
+                      label: t('menus.profile-actions.settings'),
+                      icon: <SettingsIcon />,
+                    },
+                    {
+                      label: t('menus.profile-actions.logout'),
+                      icon: <LogoutIcon />,
+                    },
+                    {
+                      label: t(
+                        process.env.REACT_APP_VERSION_NUMBER?.toString() || ''
+                      ),
+                      icon: <SettingsIcon />,
+                    },
+                  ]}
+                  onSelect={(value) => {
+                    return value;
+                  }}
+                />
             </div>
           </Toolbar>
         </AppBar>
