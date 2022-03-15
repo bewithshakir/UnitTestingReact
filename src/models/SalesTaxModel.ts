@@ -79,12 +79,12 @@ export default class SalesTaxModel {
     
     fieldsToDisplay (): headerObj[] {
         return [
-            { field: "city", label: "CITY", type: 'text', align: 'left', sortable: true },
-            { field: "state", label: "STATE", type: 'text',  align: 'left', sortable: true},
-            { field: "federalRate", label: "FEDERAL RATE (%)", type: 'text',  align: 'left', sortable: true },
-            { field: "stateRate", label: "STATE RATE (%)", type: 'text',  align: 'left', sortable: true },
-            { field: "localRate", label: "LOCAL RATE (%)", type: 'text',  align: 'left', sortable: true },
-            { field: "totalRate", label: "TOTAL RATE (%)", type: 'text',  align: 'left', sortable: true },         
+            { field: "city", label: "CITY", type: 'text', align: 'left' },
+            { field: "state", label: "STATE", type: 'text',  align: 'left' },
+            { field: "federalRate", label: "FEDERAL RATE (%)", type: 'text',  align: 'left' },
+            { field: "stateRate", label: "STATE RATE (%)", type: 'text',  align: 'left' },
+            { field: "localRate", label: "LOCAL RATE (%)", type: 'text',  align: 'left' },
+            { field: "totalRate", label: "TOTAL RATE (%)", type: 'text',  align: 'left' },         
         ];
     }
 }

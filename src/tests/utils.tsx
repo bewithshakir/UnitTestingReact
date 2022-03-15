@@ -13,8 +13,7 @@ import {
     getServedCitiesHandler,
     getSupplierPricesHandler,
     getSupplierBrandProductsHandler,
-    getOpisRackProductDetailsHandler,
-    getProductsHandler
+    getOpisRackProductDetailsHandler
 } from '../pages/ProductManagement/mockApi/handler';
 import { getFuelTaxList, getFuelTaxProductsList } from '../pages/Tax/mockApi/handler';
 import {
@@ -88,8 +87,6 @@ export const handlers = [
     addEditTruckHandler(),
     useGetEditTruckDetails(),
     getOpisRackProductDetailsHandler(),
-    getProductsHandler(),
-
     addUserHandler(),
     verifyUserHandler(),
     getUserGroupsHandler(),

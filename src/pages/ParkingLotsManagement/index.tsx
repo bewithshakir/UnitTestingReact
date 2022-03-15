@@ -17,9 +17,11 @@ import { DataGridActionsMenuOption } from '../../components/UIComponents/Menu/Da
 import { AllParkingLots, MASS_ACTION_TYPES, ROW_ACTION_TYPES, SORTBY_TYPES } from './config';
 import { RightInfoPanel } from "../../components/UIComponents/RightInfoPanel/RightInfoPanel.component";
 import { getSeachedDataTotalCount } from '../../utils/helperFunctions';
+import InfoViewUI from './infoViewUI/InfoViewUI.component';
 export interface ParkingLotsManagementProps {
     version: string
 }
+
 
 
 const index: React.FC<ParkingLotsManagementProps> = memo(() => {
@@ -36,7 +38,8 @@ const index: React.FC<ParkingLotsManagementProps> = memo(() => {
     const [isFilterPanelOpen, toggleFilterPanel] = React.useState(false);
     const [sortOrder, setSortOrder] = React.useState<{ sortBy: string, order: string }>({ sortBy: "", order: "" });
     const [parkingLotList, setAllParkingLotList] = React.useState([]);
-
+    const [rowDataObj, saveRowDataObj] = React.useState<any>(null);
+    const [rowLotId, saveRowLotId] = React.useState<any>(null);
 
     const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
     setVersion("NavLinks");
@@ -58,10 +61,6 @@ const index: React.FC<ParkingLotsManagementProps> = memo(() => {
             setAllParkingLotList(list);
         }
     }, [data]);
-
-    const drawerClose = () => {
-        setDrawerOpen(false);
-    };
 
     const onInputChange = (value: string) => {
         setSearchTerm(value);
@@ -115,6 +114,16 @@ const index: React.FC<ParkingLotsManagementProps> = memo(() => {
 
     const getFilterParams = (filterObj: { [key: string]: string[] }) => {
         setFilterData(filterObj);
+    };
+
+    const openDrawer = (row: any) => {
+        setDrawerOpen(true);
+        saveRowLotId(row.deliveryLocationId);
+        saveRowDataObj({...row, editLotUrl:`/customer/${row.customerId}/parkingLots/viewLot/${row.deliveryLocationId}`});
+    };
+
+    const drawerClose = () => {
+        setDrawerOpen(false);
     };
 
     return (
@@ -195,18 +204,10 @@ const index: React.FC<ParkingLotsManagementProps> = memo(() => {
                         getPages={fetchNextPage}
                         searchTerm={searchTerm}
                         filterData={filterData}
+                        openDrawer={openDrawer}
                         noDataMsg='Add Parking Lot by clicking on the "ADD LOT" button.'
                         showImg={<ParkingLotNoDataIcon />}
                     />
-
-                    {/* <RightInfoPanel
-                        panelType="dynamic-filter"
-                        open={isFilterPanelOpen} headingText={t('parkingLotManagement.filterHeader')}
-                        provideFilterParams={getFilterParams}
-                        onClose={() => toggleFilterPanel(false)}
-                        fields={FilterByFields}
-                        storeKey={'parkingLotManagementFilter'}
-                    /> */}
 
                     <RightInfoPanel panelType="dynamic-filter"
                         open={isFilterPanelOpen} headingText={"customer-filter-panel.header.filter"}
@@ -214,10 +215,13 @@ const index: React.FC<ParkingLotsManagementProps> = memo(() => {
                         fields={FilterByFields}
                         storeKey={'customerFilter'}
                     />
-                    <RightInfoPanel panelType="info-view" open={drawerOpen} headingText={""} info={"info"} onClose={drawerClose} />
+
 
                 </Grid>
             </Grid>
+            <RightInfoPanel panelType="info-view" open={drawerOpen} editURL={rowDataObj?.editLotUrl} headingText={rowDataObj?.deliveryLocationNm} onClose={drawerClose}>
+                {rowDataObj ? <InfoViewUI lotData={rowDataObj} rowLotId={rowLotId} /> : ''}
+            </RightInfoPanel>
         </Box>
     );
 });

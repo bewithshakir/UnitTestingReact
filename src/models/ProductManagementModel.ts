@@ -52,10 +52,10 @@ export default class ProductManagementModel {
     fieldsToDisplay (): headerObj[] {
         const { PRODUCTNAME, PRODUCTTYPE, STATUS, MANUALPRICING } = DataGridFields;
         return [
-            { field: PRODUCTNAME.field, label: PRODUCTNAME.label, type: 'product', align: 'left', sortable: true },
-            { field: PRODUCTTYPE.field, label: PRODUCTTYPE.label, type: 'text', align: 'left', sortable: true },
+            { field: PRODUCTNAME.field, label: PRODUCTNAME.label, type: 'product', align: 'left' },
+            { field: PRODUCTTYPE.field, label: PRODUCTTYPE.label, type: 'text', align: 'left' },
             {
-                field: STATUS.field, label: STATUS.label, type: 'status', align: 'left', sortable: true,
+                field: STATUS.field, label: STATUS.label, type: 'status', align: 'left',
                 fieldOptions: [
                     {
                         value: "y",
@@ -71,7 +71,7 @@ export default class ProductManagementModel {
                     },
                 ]
             },
-            { field: MANUALPRICING.field, label: MANUALPRICING.label, type: 'text', align: 'left', sortable: true },
+            { field: MANUALPRICING.field, label: MANUALPRICING.label, type: 'text', align: 'left' },
         ];
     }
 

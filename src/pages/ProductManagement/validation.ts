@@ -1,15 +1,15 @@
 import * as Yup from 'yup';
 
 const selectOption = Yup.object().shape({
-  label: Yup.string(),
-  value: Yup.string(),
+  label: Yup.string().required('Required'),
+  value: Yup.string().required('Required'),
 });
 const priceSchema = Yup.string().matches(/^\d+(\.\d+)?$/, 'Invalid Price.');
 
 export const AddProductValidationSchema = Yup.object().shape({
-  productType: selectOption,
-  masterProductName: selectOption,
-  pricingModel: selectOption,
+  productType: selectOption.nullable().required('Required'),
+  masterProductName: selectOption.nullable().required('Required'),
+  pricingModel: selectOption.nullable().required('Required'),
   productNm: Yup.string().required('Required'),
   manualPriceAmt: priceSchema.required('Required'),
   addedPriceAmt: priceSchema,
