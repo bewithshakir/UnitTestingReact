@@ -14,8 +14,7 @@ import ToastMessage from '../../../components/UIComponents/ToastMessage/ToastMes
 import { HorizontalBarVersionState, useStore, useShowConfirmationDialogBoxStore } from '../../../store';
 import { AddVehicleRuleValidationSchema } from './validation';
 import { ProductsListSet } from '../../ProductManagementLanding/queries';
-import { getProductIcon } from '../../../utils/helperFunctions';
-
+import { getProductIcon, getInputHelperText, getInputError } from '../../../utils/helperFunctions';
 
 const initialValues = new VehicleRuleModel();
 
@@ -72,7 +71,7 @@ const AddVehicleRule: React.FC<AddVehicleRuleProps> = () => {
 
     const navigate = useNavigate();
     const { t } = useTranslation();
-    const [productNameList, setProductNameList]= useState([]);
+    const [productNameList, setProductNameList] = useState([]);
     const [formStatus, setFormStatus] = useState<IFormStatus>({
         message: '',
         type: '',
@@ -95,9 +94,9 @@ const AddVehicleRule: React.FC<AddVehicleRuleProps> = () => {
     };
     const onAddVehicleRuleError = (err: any) => {
         try {
-            const { data } = err.response;
+            const { data: errorData } = err.response;
             setAPIResponse(true);
-            setFormStatus({ message: data?.error?.message || formStatusProps.error.message, type: 'Error' });
+            setFormStatus({ message: errorData?.error?.message || formStatusProps.error.message, type: 'Error' });
             formik.setSubmitting(false);
             setTimeout(() => {
                 setAPIResponse(false);
@@ -126,17 +125,19 @@ const AddVehicleRule: React.FC<AddVehicleRuleProps> = () => {
 
     const getFuelNonFuelProductList = (list: any) => {
         const temp: any = [];
-        list.map((obj: any) => { 
-            if(obj.ProductGroup.productGroupNm === "Fuel" || obj.ProductGroup.productGroupNm === "Non-Fuel") {
-                temp.push({ label: '' + obj.productNm, value: '' + obj.productCd, 
-                icon: <Icon component={getProductIcon(obj.ProductIcon.productIconNm)}></Icon>, productDetail: obj});
+        list.map((obj: any) => {
+            if (obj.ProductGroup.productGroupNm === "Fuel" || obj.ProductGroup.productGroupNm === "Non-Fuel") {
+                temp.push({
+                    label: '' + obj.productNm, value: '' + obj.productCd,
+                    icon: <Icon component={getProductIcon(obj.ProductIcon.productIconNm)}></Icon>, productDetail: obj
+                });
             }
         });
         return temp;
     };
 
     const getProductIds = (arr: any) => {
-        const temp : any = [] ;
+        const temp: any = [];
         arr.map((obj: any) => temp.push(obj.value));
         return temp;
     };
@@ -162,18 +163,18 @@ const AddVehicleRule: React.FC<AddVehicleRuleProps> = () => {
 
     const formik = useFormik({
         initialValues,
-        validationSchema: AddVehicleRuleValidationSchema, 
+        validationSchema: AddVehicleRuleValidationSchema,
         onSubmit: (values) => {
             createNewVehicleRule(values);
         }
     });
 
     const handleFormDataChange = () => {
-            if (formik.dirty) {
-                if (formik.initialValues !== formik.values) {
-                    isFormValidated(false);
-                }
+        if (formik.dirty) {
+            if (formik.initialValues !== formik.values) {
+                isFormValidated(false);
             }
+        }
         if (isFormFieldChange() && !formik.isSubmitting) {
             isFormValidated(true);
         }
@@ -225,7 +226,10 @@ const AddVehicleRule: React.FC<AddVehicleRuleProps> = () => {
             <Grid item md={10} xs={10}>
                 <Container maxWidth="lg" className="page-container">
 
-                    <form onSubmit={formik.handleSubmit} onBlur={handleFormDataChange} data-test="component-AddVehicleRule" >
+                    <form
+                        onSubmit={formik.handleSubmit}
+                        onBlur={handleFormDataChange}
+                        data-test="component-AddVehicleRule" >
                         <Typography color="var(--Darkgray)" variant="h3" gutterBottom className="fw-bold" mb={1} pt={3}>
                             {t("taxes.salesTax.form.title")} *
                         </Typography>
@@ -238,8 +242,8 @@ const AddVehicleRule: React.FC<AddVehicleRuleProps> = () => {
                                         onChange={handleGoogleAddressChange}
                                         onBlur={handleGoogleAddressBlur}
                                         value={formik.values.addressLine1}
-                                        helperText={(formik.touched.addressLine1 && formik.errors.addressLine1) ? formik.errors.addressLine1 : undefined}
-                                        error={(formik.touched.addressLine1 && formik.errors.addressLine1) ? true : false}
+                                        helperText={getInputHelperText(formik, 'addressLine1')}
+                                        error={getInputError(formik, 'addressLine1')}
                                         required
                                         disabled={false}
                                     />
@@ -251,8 +255,8 @@ const AddVehicleRule: React.FC<AddVehicleRuleProps> = () => {
                                         id='city'
                                         label={t("taxes.salesTax.form.labelCity")}
                                         type='text'
-                                        helperText={(formik.touched.city && formik.errors.city) ? formik.errors.city : undefined}
-                                        error={(formik.touched.city && formik.errors.city) ? true : false}
+                                        helperText={getInputHelperText(formik, 'city')}
+                                        error={getInputError(formik, 'city')}
                                         description=''
                                         {...formik.getFieldProps('city')}
                                         data-test="city"
@@ -268,8 +272,8 @@ const AddVehicleRule: React.FC<AddVehicleRuleProps> = () => {
                                         label={t("taxes.salesTax.form.labelState")}
                                         type='text'
                                         description=''
-                                        helperText={(formik.touched.state && formik.errors.state) ? formik.errors.state : undefined}
-                                        error={(formik.touched.state && formik.errors.state) ? true : false}
+                                        helperText={getInputHelperText(formik, 'state')}
+                                        error={getInputError(formik, 'state')}
                                         {...formik.getFieldProps('state')}
                                         data-test="state"
                                         required
@@ -284,8 +288,8 @@ const AddVehicleRule: React.FC<AddVehicleRuleProps> = () => {
                                         label='Year'
                                         type='text'
                                         placeholder='Enter Year'
-                                        helperText={(formik.touched.year && formik.errors.year) ? formik.errors.year : undefined}
-                                        error={(formik.touched.year && formik.errors.year) ? true : false}
+                                        helperText={getInputHelperText(formik, 'year')}
+                                        error={getInputError(formik, 'year')}
                                         {...formik.getFieldProps('year')}
                                         required
                                         data-test="year"
@@ -302,32 +306,35 @@ const AddVehicleRule: React.FC<AddVehicleRuleProps> = () => {
                                         placeholder='Choose'
                                         value={formik.values.status}
                                         items={vehicleStatusList}
-                                        helperText={(formik.touched.status && formik.errors.status) ? formik.errors.status.value : undefined}
-                                        error={(formik.touched.status && formik.errors.status) ? true : false}
+                                        helperText={getInputHelperText(formik, 'status')}
+                                        error={getInputError(formik, 'status')}
                                         onChange={handleStatusChange}
-                                        onBlur={() => { formik.setFieldTouched("status"); 
-                                                        formik.validateField("status"); }}
+                                        onBlur={() => {
+                                            formik.setFieldTouched("status");
+                                            formik.validateField("status");
+                                        }}
                                         required
                                     />
                                 </Grid>
                             </Grid>
-
                             <Grid item xs={12} md={12} pr={2.5} pb={2.5}>
                                 <Grid item xs={12} md={6}>
-                                        <MultiSelect
-                                            id={'product'}
-                                            label='PRODUCT TYPE'
-                                            placeholder='Choose Multiple Products'
-                                            required
-                                            items={productNameList}
-                                            name={'product'}
-                                            value={formik.values.product}
-                                            onChange={handleProductsSelected}
-                                            onBlur={() => { formik.setFieldTouched('product'); 
-                                                            formik.validateField('product'); }}
-                                            helperText={(formik.touched.product && formik.errors.product) ? JSON.parse(JSON.stringify(formik.errors.product)) : undefined}
-                                            error={(formik.touched.product && formik.errors.product) ? true : false}
-                                        />
+                                    <MultiSelect
+                                        id={'product'}
+                                        label='PRODUCT TYPE'
+                                        placeholder='Choose Multiple Products'
+                                        required
+                                        items={productNameList}
+                                        name={'product'}
+                                        value={formik.values.product}
+                                        onChange={handleProductsSelected}
+                                        onBlur={() => {
+                                            formik.setFieldTouched('product');
+                                            formik.validateField('product');
+                                        }}
+                                        helperText={getInputHelperText(formik, 'product')}
+                                        error={getInputError(formik, 'product')}
+                                    />
                                 </Grid>
                             </Grid>
                             <Grid item xs={12} md={12} pr={2.5} mt={4} mb={4}>
@@ -353,7 +360,11 @@ const AddVehicleRule: React.FC<AddVehicleRuleProps> = () => {
                                             {t("buttons.save")}
                                         </Button>
                                     </Box>
-                                    <ToastMessage isOpen={apiResposneState} messageType={formStatus.type} onClose={() => { return ''; }} message={formStatus.message} />
+                                    <ToastMessage
+                                        isOpen={apiResposneState}
+                                        messageType={formStatus.type}
+                                        onClose={() => { return ''; }}
+                                        message={formStatus.message} />
                                 </Grid>
                             </Grid>
                         </Grid>

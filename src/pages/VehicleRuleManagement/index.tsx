@@ -1,5 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { memo, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Box, Grid, FormControl } from "@mui/material";
 
@@ -14,7 +13,7 @@ import { Add } from "@mui/icons-material";
 import GridComponent from "../../components/UIComponents/DataGird/grid.component";
 import { vehicleRuleManagementListSet } from './queries';
 import { DataGridActionsMenuOption } from '../../components/UIComponents/Menu/DataGridActionsMenu.component';
-import { VehicleRule, MASS_ACTION_TYPES, ROW_ACTION_TYPES, SORTBY_TYPES } from './config';
+import { VehicleRule, ROW_ACTION_TYPES, SORTBY_TYPES } from './config';
 import { RightInfoPanel } from "../../components/UIComponents/RightInfoPanel/RightInfoPanel.component";
 import VehicleRuleModel from '../../models/VehicleRuleModel';
 
@@ -22,7 +21,7 @@ export interface AddVehicleRuleProps {
     version: string
 }
 
-const VehicleRuleManagement: React.FC<AddVehicleRuleProps> = ()=> {
+const VehicleRuleManagement: React.FC<AddVehicleRuleProps> = () => {
 
     const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
     setVersion("NavLinks");
@@ -35,7 +34,7 @@ const VehicleRuleManagement: React.FC<AddVehicleRuleProps> = ()=> {
     const rowActionOptions = vehicleRuleObj.rowActions();
     const [vehicleRuleList, setVehicleRuleList] = React.useState([]);
     const headCells = vehicleRuleObj.fieldsToDisplay();
-    const [drawerOpen, setDrawerOpen] = React.useState(false);
+    const [, setDrawerOpen] = React.useState(false);
     const [vehicleRuleFilterPanelVisible, setVehicleRulePanelVisible] = React.useState(false);
     const [filterData, setFilterData] = React.useState<{ [key: string]: string[] }>({});
     const [searchTerm, setSearchTerm] = React.useState("");
@@ -68,19 +67,17 @@ const VehicleRuleManagement: React.FC<AddVehicleRuleProps> = ()=> {
     };
 
     const onSortBySlected = (value: string) => {
-        let sortOrder;
         switch (value) {
             case SORTBY_TYPES.ASSET_PAYMENT:
-                sortOrder = { sortBy: "city", order: "asc" };
+                setSortOrder({ sortBy: "city", order: "asc" });
                 break;
             case SORTBY_TYPES.RECENTLY_ADDED:
-                sortOrder = { sortBy: "city", order: "desc" };
+                setSortOrder({ sortBy: "city", order: "desc" });
                 break;
             default:
-                sortOrder = { sortBy: "", order: "" };
+                setSortOrder({ sortBy: "", order: "" });
                 break;
         }
-        setSortOrder(sortOrder);
     };
 
     const handleMassAction = () => {
@@ -90,9 +87,6 @@ const VehicleRuleManagement: React.FC<AddVehicleRuleProps> = ()=> {
     const openDrawer = () => {
         setDrawerOpen(true);
     };
-    const drawerClose = () => {
-        setDrawerOpen(false);
-    };
 
     const handleVehicleRuleFilterPanelClose = () => setVehicleRulePanelVisible(false);
 
@@ -100,7 +94,7 @@ const VehicleRuleManagement: React.FC<AddVehicleRuleProps> = ()=> {
         setFilterData(filterObj);
     };
 
-    const handleRowAction = (action: DataGridActionsMenuOption, row: any) => {
+    const handleRowAction = (action: DataGridActionsMenuOption) => {
         switch (action.action) {
             case ROW_ACTION_TYPES.EDIT:
                 // perform action

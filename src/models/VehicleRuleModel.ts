@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { useTranslation } from 'react-i18next';
 import { headerObj } from '../components/UIComponents/DataGird/grid.component';
 import { ExpireWalletIcon, PositiveCricleIcon } from './../assets/icons';

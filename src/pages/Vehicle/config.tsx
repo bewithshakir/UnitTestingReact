@@ -87,18 +87,19 @@ export const lotHeaderBoxSx = { width: '100%', marginTop: '-2.5em' };
 export const lotHeaderInnerBoxSx = { borderBottom: 1, borderColor: 'divider' };
 
 export const getCountry = () => {
-    let savedTheme = localStorage.getItem('theme');
+    const savedTheme = localStorage.getItem('theme');
+    const defaultCountry = "United States";
     if (savedTheme) {
-        savedTheme = JSON.parse(savedTheme);
-        switch (savedTheme) {
+        switch (JSON.parse(savedTheme)) {
             case "USA":
                 return "United States";
             case "UK":
                 return "UK";
             default:
-                return "United States";
+                return defaultCountry;
         }
     }
+    return defaultCountry;
 };
 
 export const filterByFields: IDynamicFilterProps['fields'] = [
