@@ -8,13 +8,13 @@ import UserModel from "../../../models/UserModel";
 import { getCountryCode } from '../../../navigation/utils';
 import { HorizontalBarVersionState, useAddedCustomerIdStore, useAddedCustomerPaymentTypeStore, useShowConfirmationDialogBoxStore, useStore } from '../../../store';
 import { toastErrorKey, toastSuccessKey } from '../../../utils/constants';
-import { userGroupStr } from '../config';
-import { dspHelperText, isDSPErrorExist, isUserGroupErrorExist, userGroupHelperText } from './AddUserHelper';
+import { isUserGroupErrorExist, userGroupHelperText } from './AddUserHelper';
+import DSPUserListSegment from './DSPUserListSegment';
+import FormActionSegment from './FormActionSegment';
 import { useAddUser, useEditUserData, useGetUserGroupTypes, useGetUserPermissionList, userGetUserDSPList, UserGoupsInt, useUpdateUserData, useVarifyUser } from './queries';
 import UserAccessLevelSegment from './UserAccessLevelSegment';
 import UserVerificationSegment from './UserVerificationSegment';
 import { AddUserSchema } from "./validation";
-import FormActionSegment from './FormActionSegment';
 
 const initialValues = new UserModel();
 interface AddUserProps {
@@ -212,7 +212,7 @@ const AddUser: React.FC<AddUserProps> = () => {
                             />
                         </Grid>
                     </Grid>
-                    {/* verify user section */}
+
                     <UserVerificationSegment
                         userVerificationLoading={userVerificationLoading}
                         formik={formik}
@@ -223,36 +223,10 @@ const AddUser: React.FC<AddUserProps> = () => {
                         onClickVerifyUser={onClickVerifyUser}
                     />
 
-                    {(formik.values?.userGroup?.label?.toLowerCase() === userGroupStr.toLowerCase()) && (
-                        <Grid item xs={12} md={12}>
-                            <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
-                                <Select
-                                    id='dsp'
-                                    name='dsp'
-                                    label={t("addUser.form.dsp")}
-                                    placeholder='Choose'
-                                    value={formik.values.dsp}
-                                    items={dspList}
-                                    helperText={dspHelperText(formik)}
-                                    error={isDSPErrorExist(formik)}
-                                    onChange={formik.setFieldValue}
-                                    onBlur={() => {
-                                        formik.setFieldTouched("dsp");
-                                        formik.validateField("dsp");
-                                    }}
-                                    noOptionsMessage={() => "No data available Please create/add the DSP first to create/add a user"}
-                                    required
-                                />
-                            </Grid>
-                        </Grid>
-                    )}
+                    <DSPUserListSegment formik={formik} dspList={dspList} />
 
-                    {/* user access level section */}
                     <UserAccessLevelSegment formik={formik} userPermissionList={userPermissionList} />
 
-                    <Grid item xs={12} md={6} />
-
-                    {/* form action section */}
                     <FormActionSegment
                         userVerificationLoading={userVerificationLoading}
                         formik={formik}
