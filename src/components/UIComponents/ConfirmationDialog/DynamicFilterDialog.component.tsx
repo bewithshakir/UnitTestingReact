@@ -7,8 +7,13 @@ import { useTheme } from '../../../contexts/Theme/Theme.context';
 import { FilterDialogField } from './config';
 import SelectPaginate from './inputComponents/selectPaginate';
 import Select from './inputComponents/select';
+import SelectDynamic from './inputComponents/selectDynamic';
 import MultiSelect from './inputComponents/multiSelect';
 import InputText from './inputComponents/inputText';
+import MultiSelectDynamic from './inputComponents/multiSelectDynamic';
+import Checkbox from './inputComponents/checkBox';
+import RadioBtn from './inputComponents/radiobtn';
+import DatePicker from './inputComponents/datePicker';
 import './DynamicFilterDialog.style.scss';
 
 interface Props {
@@ -37,25 +42,50 @@ function DynamicFilterDialog(props: Props) {
     });
 
     function getFieldComponent(field: FilterDialogField, fieldId: number | string) {
-        const { fieldType } = field;
+        const { fieldType, apiUrl } = field;
         const fieldKey = `dynFilt${fieldId}`;
         switch (fieldType) {
             case 'singleSelectPaginate':
-                return <SelectPaginate field={field} fieldId={fieldKey} formik={formik} onChange={formik.setFieldValue} />;
+                return <SelectPaginate
+                    field={field}
+                    fieldId={fieldKey}
+                    formik={formik}
+                    onChange={formik.setFieldValue}
+                />;
             case 'singleSelect':
-                return <Select field={field} fieldId={fieldKey} formik={formik} onChange={formik.setFieldValue} />;
+                return apiUrl ? <SelectDynamic
+                    field={field}
+                    fieldId={fieldKey}
+                    formik={formik}
+                    onChange={formik.setFieldValue}
+                /> : <Select
+                    field={field}
+                    fieldId={fieldKey}
+                    formik={formik}
+                    onChange={formik.setFieldValue}
+                />;
             case 'multiSelect':
-                return <MultiSelect field={field} fieldId={fieldKey} formik={formik} onChange={formik.setFieldValue} />;
+                return apiUrl ? <MultiSelectDynamic
+                    field={field}
+                    fieldId={fieldKey}
+                    formik={formik}
+                    onChange={formik.setFieldValue}
+                /> : <MultiSelect
+                    field={field}
+                    fieldId={fieldKey}
+                    formik={formik}
+                    onChange={formik.setFieldValue}
+                />;
             case 'text':
                 return <InputText field={field} fieldId={fieldKey} formik={formik} onChange={formik.setFieldValue} />;
             case 'date':
-                return 'date';
+                return <DatePicker field={field} fieldId={fieldKey} formik={formik} onChange={formik.setFieldValue} />;
             case 'dateRange':
                 return 'date range';
             case 'checkbox':
-                return 'check box';
+                return <Checkbox field={field} fieldId={fieldKey} formik={formik} onChange={formik.handleChange} />;
             case 'radio':
-                return 'radio';
+                return <RadioBtn field={field} fieldId={fieldKey} formik={formik} onChange={formik.handleChange} />;
             default:
                 return null;
         }

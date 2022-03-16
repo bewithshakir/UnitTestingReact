@@ -24,10 +24,17 @@ export interface ParkingLotsManagementProps {
 }
 
 const customerRespFormatter = (axiosData: any): { value: string; label: string }[] => {
-    if (!axiosData) {
+    if (!axiosData || !axiosData.customers) {
         return [];
     }
-    return axiosData?.customers?.map((item: any) => ({ value: item.customerId, label: item.customerName }));
+    return axiosData.customers.map((item: any) => ({ value: item.customerId, label: item.customerName }));
+};
+
+const fuelTaxFormatter = (axiosData: any) => {
+    if (!axiosData || !axiosData.cities) {
+        return [];
+    }
+    return axiosData.cities.map((item: any) => ({ value: item, label: item }));
 };
 
 
@@ -137,8 +144,7 @@ const index: FC<ParkingLotsManagementProps> = memo(() => {
             extraApiParams: { countryCode: 'us' },
             searchFieldName: 'search',
             placeHolder: t('parkingLotManagement.enterCustomername'),
-            initialValue: { lable: '', value: '' }
-
+            initialValue: { label: '', value: '' }
         },
         {
             name: 'fuelType',
@@ -155,7 +161,18 @@ const index: FC<ParkingLotsManagementProps> = memo(() => {
             required: true,
             fieldType: 'multiSelect',
             options: [{ label: 'fuel', value: 'fuel' }, { label: 'Non fuel', value: 'non fuuuuu' }],
-            initialValue: [{ label: '', value: '' }]
+            initialValue: []
+        },
+        {
+            name: 'multiCity',
+            label: 'Multiple Select city',
+            required: true,
+            fieldType: 'multiSelect',
+            apiUrl: '/api/tax-service/fuel-taxes/filter-options',
+            responseFormatter: fuelTaxFormatter,
+            extraApiParams: { countryCode: 'us' },
+            placeHolder: t('parkingLotManagement.enterCustomername'),
+            initialValue: []
         },
         {
             name: 'input123',
@@ -163,7 +180,56 @@ const index: FC<ParkingLotsManagementProps> = memo(() => {
             required: true,
             fieldType: 'text',
             initialValue: "hello sham"
-        }
+        },
+
+        {
+            name: 'startDate',
+            label: 'Start Date',
+            required: false,
+            fieldType: 'date',
+            initialValue: "hello sham"
+        },
+        {
+            name: 'addFuelTax',
+            label: 'Add fuel tax',
+            fieldType: 'checkbox',
+            initialValue: false,
+            disabled: false
+        },
+        {
+            name: 'productType',
+            label: 'Opis rack',
+            fieldType: 'radio',
+            initialValue: '',
+            disabled: false,
+            value: 'val1'
+        },
+        {
+            name: 'productType',
+            label: 'Opis retail',
+            fieldType: 'radio',
+            initialValue: '',
+            disabled: false,
+            value: 'val2'
+        },
+        {
+            name: 'productType',
+            label: 'Custom',
+            fieldType: 'radio',
+            initialValue: '',
+            disabled: false,
+            value: 'val3'
+        },
+        {
+            name: 'city',
+            label: 'Select city',
+            required: true,
+            fieldType: 'singleSelect',
+            apiUrl: '/api/tax-service/fuel-taxes/filter-options',
+            responseFormatter: fuelTaxFormatter,
+            extraApiParams: { countryCode: 'us' },
+            placeHolder: t('parkingLotManagement.enterCustomername'),
+        },
     ], []);
 
 

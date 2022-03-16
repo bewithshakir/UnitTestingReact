@@ -1,13 +1,11 @@
 
-import { useQuery } from "react-query";
 import { AxiosRequestConfig } from "axios";
+import { useQuery } from "react-query";
 import axios from "../../../infrastructure/ApiHelper";
-
 interface Payload {
     [k: string]: any
 }
-
-export const getDataFromServer = async (url: string, payload: Payload) => {
+const getFilterData = async (url: string, payload: Payload) => {
     const query = new URLSearchParams();
     for (const [key, value] of Object.entries(payload)) {
         query.append(key, value);
@@ -21,9 +19,9 @@ export const getDataFromServer = async (url: string, payload: Payload) => {
     return data;
 };
 
-export const useGetDataFromServer = (url: string, payload: Payload, enabled: boolean) => {
+export const useGetFilterData = (url: string, payload: Payload) => {
     return useQuery([url, payload], () => {
-        return getDataFromServer(url, payload);
-    }, { enabled });
+        return getFilterData(url, payload);
+    });
 };
 

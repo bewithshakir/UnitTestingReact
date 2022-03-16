@@ -1,6 +1,10 @@
-import { OptionItem } from "../Select/SingleSelectPaginate";
 import { FormikProps } from "formik";
 
+export interface OptionItem {
+    label: string
+    value: string
+    [k: string]: any
+}
 
 export interface FilterDialogField {
     fieldType: 'singleSelectPaginate' | 'singleSelect' | 'multiSelect' | 'text' | 'radio' | 'checkbox' | 'date' | 'dateRange'
@@ -14,7 +18,9 @@ export interface FilterDialogField {
     searchFieldName?: string
     responseFormatter?: (data: any) => OptionItem[]
     options?: OptionItem[]
-    initialValue: any
+    initialValue?: any
+    disabled?: boolean;
+    value?: any
 }
 
 

@@ -22,4 +22,11 @@ div{
             }
         }
     }
+    .dyn-dialog-field-label-div{
+        display: flex;
+        align-items: center;
+        .checkboxStyle{
+            padding-left: 0px;
+        }
+    }
 }

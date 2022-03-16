@@ -1,11 +1,12 @@
 import React, { useCallback } from "react";
-import { FormHelperText, InputLabel, FormControl } from '@mui/material';
+import { components } from 'react-select';
+import { FormHelperText, InputLabel, FormControl, Box, Icon, Typography } from '@mui/material';
 
 import { AsyncPaginate } from "react-select-async-paginate";
 import { getDataFromServer } from "./queries";
 import './SingleSelectPaginate.scss';
 
-export interface OptionItem {
+interface OptionItem {
     label: string
     value: string
     [k: string]: any
@@ -31,6 +32,20 @@ interface Props {
 
 const defaultAdditional = {
     page: 0
+};
+
+const { SingleValue } = components;
+const optionIconsSX = { width: "20px", height: "20px" };
+
+const SingleValueFrag = (props: any) => {
+    return (
+        <SingleValue {...props}>
+            <Box display="flex" alignItems="center" justifyContent="start">
+                {props.data.icon ? <Icon sx={optionIconsSX} component={props.data.icon} /> : null}
+                {props.data.label ? <Typography variant="h4" pl={props.data.icon ? 1 : 0}>{props.data.label}</Typography> : null}
+            </Box>
+        </SingleValue>
+    );
 };
 
 
@@ -97,6 +112,24 @@ const SingleSelectPaginate = (props: Props) => {
                 menuPosition={'fixed'}
                 placeholder={placeholder}
                 debounceTimeout={300}
+                components={{
+                    IndicatorSeparator: () => null,
+                    DropdownIndicator: () => null,
+                    SingleValue: SingleValueFrag,
+                }}
+                styles={{
+                    control: (provided) => ({
+                        ...provided,
+                        borderRadius: '0px',
+                        borderColor: 'green',
+                        height: '50px',
+                        fontSize: '14px',
+                        padding: '0px',
+                        margin: '0px',
+                        cursor: 'text',
+                        outline: 'none'
+                    })
+                }}
             />
             {helperText && (
                 <FormHelperText
