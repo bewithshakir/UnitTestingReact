@@ -30,9 +30,8 @@ export const addUserHandler = () =>
     });
 
 export const getUserDSPDropdownHandler = () =>
-    rest.get('*/api/customer-service/customers/*/dsps*', function (req, res, ctx) {
-        const skipPagination = req.url.searchParams.get('skipPagination');
-        if (skipPagination) {
+    rest.get('*/api/customer-service/customers/*/dsps*', (req, res, ctx) => {
+        if (req.url.searchParams.get('skipPagination')) {
             return res(
                 ctx.status(200),
                 ctx.json({
