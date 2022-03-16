@@ -45,7 +45,7 @@ export const SelectInput: React.FC<ISelectInput> = ({ field, handleSelect, formi
             label={t(field.label)}
             placeholder=""
             value={value}
-            items={field.optionUrlKey == "truckOverviewFilter" ? field['options'] :  items}
+            items={field.optionUrlKey === "truckOverviewFilter" ? field['options'] :  items}
             onChange={(name, val) => handleSelect(name, val, true)}
             helperText={(touched && error) ? error : undefined}
             error={(touched && error) ? true : false} />

@@ -124,9 +124,32 @@ export default class TruckModel {
     FilterByFields(): IDynamicFilterProps['fields'] {
         return (
             [
-                { name: 'driver', label: 'filterForm.driver', fieldType: 'select', optionUrlKey: 'truckOverviewFilter', optionAPIResponseKey: 'drivers', initialValue: [] },
-                { name: 'activeInactiveInd', label: 'filterForm.status', fieldType: 'select', optionUrlKey: 'truckOverviewFilter', optionAPIResponseKey: 'status', singleSelect: true, initialValue: null, options: [{label: "Enable", value: "Y"}, {label: "Disable", value: "N"}] },
-                { name: 'city', label: 'filterForm.city', fieldType: 'select', optionUrlKey: 'truckOverviewFilter', optionAPIResponseKey: 'cities', initialValue: [] },
+                { 
+                    name: 'driver', 
+                    label: 'filterForm.driver', 
+                    fieldType: 'select', 
+                    optionUrlKey: 'truckOverviewFilter', 
+                    optionAPIResponseKey: 'drivers', 
+                    initialValue: []
+                },
+                {
+                    name: 'activeInactiveInd', 
+                    label: 'filterForm.status', 
+                    fieldType: 'select', 
+                    optionUrlKey: 'truckOverviewFilter', 
+                    optionAPIResponseKey: 'status', 
+                    singleSelect: true, 
+                    initialValue: null, 
+                    options: [{label: "Enable", value: "Y"}, {label: "Disable", value: "N"}] 
+                },
+                { 
+                    name: 'city', 
+                    label: 'filterForm.city', 
+                    fieldType: 'select', 
+                    optionUrlKey: 'truckOverviewFilter', 
+                    optionAPIResponseKey: 'cities', 
+                    initialValue: []
+                },
             ]
         );
     }

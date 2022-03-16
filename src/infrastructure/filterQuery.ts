@@ -3,7 +3,16 @@ import { AxiosRequestConfig } from "axios";
 import axios from './ApiHelper';
 
 
-export type filterURLKey = 'customerFilter' | 'fuelTaxFilter' | 'parkingLotFilter' | 'salesTaxFilter' | 'opisCityFilter' | 'assetFilter' | 'parkingLotManagementFilter' | 'truckParkingLotFilter' | 'dspFilter' | 'truckOverviewFilter';
+export type filterURLKey = 'customerFilter' | 
+'fuelTaxFilter' | 
+'parkingLotFilter' | 
+'salesTaxFilter' | 
+'opisCityFilter' | 
+'assetFilter' | 
+'parkingLotManagementFilter' | 
+'truckParkingLotFilter' | 
+'dspFilter' | 
+'truckOverviewFilter';
 
 
 const filterApis: { [k in filterURLKey]: string } = {
