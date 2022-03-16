@@ -1,6 +1,7 @@
 div{
     .discard-dialog-container{
         max-width: 477px;
+        padding: 10px 20px 20px 20px;
         .dialog-content{
             padding: 1.25rem;
             .MuiTypography-body1{
@@ -14,9 +15,7 @@ div{
                 padding-right: 3.05rem;
                 margin-right: .9rem;
             }
-            .action-yes{
-                background-color: var(--Darkgray);
-                color: var(--White);
+            .action-yes{ 
                 margin-left: .9rem;
                 padding-left: 2.9rem;
                 padding-right: 2.9rem;

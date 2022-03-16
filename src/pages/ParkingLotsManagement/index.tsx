@@ -1,5 +1,4 @@
-/* eslint-disable no-console */
-import React, { memo, useEffect } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import { HorizontalBarVersionState, useStore } from '../../store';
 import { Box, Grid, FormControl, Typography } from "@mui/material";
 import { Button } from "../../components/UIComponents/Button/Button.component";
@@ -14,13 +13,21 @@ import ParkingLotsManagementModel from '../../models/ParkingLotsManagementModel'
 import { useAllParkingLotList } from './queries';
 import GridComponent from "../../components/UIComponents/DataGird/grid.component";
 import { DataGridActionsMenuOption } from '../../components/UIComponents/Menu/DataGridActionsMenu.component';
-import { AllParkingLots, MASS_ACTION_TYPES, ROW_ACTION_TYPES, SORTBY_TYPES } from './config';
+import { AllParkingLots, ROW_ACTION_TYPES, SORTBY_TYPES } from './config';
 import { RightInfoPanel } from "../../components/UIComponents/RightInfoPanel/RightInfoPanel.component";
 import { getSeachedDataTotalCount } from '../../utils/helperFunctions';
 import InfoViewUI from './infoViewUI/InfoViewUI.component';
+import DynamicFilterDialog from '../../components/UIComponents/ConfirmationDialog/DynamicFilterDialog.component';
 export interface ParkingLotsManagementProps {
     version: string
 }
+
+const customerRespFormatter = (axiosData: any): { value: string; label: string }[] => {
+    if (!axiosData) {
+        return [];
+    }
+    return axiosData?.customers?.map((item: any) => ({ value: item.customerId, label: item.customerName }));
+};
 
 
 
@@ -31,6 +38,7 @@ const index: React.FC<ParkingLotsManagementProps> = memo(() => {
     const rowActionOptions = ParkingLotObj.rowActions();
     const { SortByOptions, FilterByFields } = AllParkingLots.LandingPage;
     const [drawerOpen, setDrawerOpen] = React.useState(false);
+    const [filterDialogOpen, setFilterDialogOpen] = useState(false);
 
 
     const [searchTerm, setSearchTerm] = React.useState("");
@@ -66,42 +74,34 @@ const index: React.FC<ParkingLotsManagementProps> = memo(() => {
         setSearchTerm(value);
     };
 
-    const navigateHomePage = () => {
-        navigate("/customer/:customerId/parkingLots/addLot");
+    const handleAddBtnClick = () => {
+        setFilterDialogOpen(true);
     };
 
-    const handleMassAction = (action: DataGridActionsMenuOption) => {
-        switch (action.action) {
-            case MASS_ACTION_TYPES.EXPORT:
-                // perform action
-                break;
-            default: return;
-        }
+    const handleMassAction = () => {
+        return '';
     };
 
     const handleRowAction = (action: DataGridActionsMenuOption, row: any) => {
-        switch (action.action) {
-            case ROW_ACTION_TYPES.EDIT:
-                navigate(`/customer/${row.customerId}/parkingLots/viewLot/${row.deliveryLocationId}?backTo=parkinglotlanding`);
-                break;
-            default: return;
+        if (action.action === ROW_ACTION_TYPES.EDIT) {
+            navigate(`/customer/${row.customerId}/parkingLots/viewLot/${row.deliveryLocationId}?backTo=parkinglotlanding`);
         }
     };
 
     const onSortBySlected = (value: string) => {
-        let sortOrder;
+        let sortOrder1;
         switch (value) {
             case SORTBY_TYPES.LOT_NAME_AZ:
-                sortOrder = { sortBy: "deliveryLocationNm", order: "asc" };
+                sortOrder1 = { sortBy: "deliveryLocationNm", order: "asc" };
                 break;
             case SORTBY_TYPES.LOT_NAME_ZA:
-                sortOrder = { sortBy: "deliveryLocationNm", order: "desc" };
+                sortOrder1 = { sortBy: "deliveryLocationNm", order: "desc" };
                 break;
             default:
-                sortOrder = { sortBy: "", order: "" };
+                sortOrder1 = { sortBy: "", order: "" };
                 break;
         }
-        setSortOrder(sortOrder);
+        setSortOrder(sortOrder1);
     };
 
     const handleLotFilterPanelClose = () => toggleFilterPanel(!isFilterPanelOpen);
@@ -119,7 +119,7 @@ const index: React.FC<ParkingLotsManagementProps> = memo(() => {
     const openDrawer = (row: any) => {
         setDrawerOpen(true);
         saveRowLotId(row.deliveryLocationId);
-        saveRowDataObj({...row, editLotUrl:`/customer/${row.customerId}/parkingLots/viewLot/${row.deliveryLocationId}`});
+        saveRowDataObj({ ...row, editLotUrl: `/customer/${row.customerId}/parkingLots/viewLot/${row.deliveryLocationId}` });
     };
 
     const drawerClose = () => {
@@ -175,7 +175,7 @@ const index: React.FC<ParkingLotsManagementProps> = memo(() => {
                             <Button
                                 types="primary"
                                 aria-label="primary"
-                                onClick={navigateHomePage}
+                                onClick={handleAddBtnClick}
                                 startIcon={<Add />}
                             >
                                 {t("buttons.add lot")}
@@ -205,7 +205,7 @@ const index: React.FC<ParkingLotsManagementProps> = memo(() => {
                         searchTerm={searchTerm}
                         filterData={filterData}
                         openDrawer={openDrawer}
-                        noDataMsg='Add Parking Lot by clicking on the "ADD LOT" button.'
+                        noDataMsg={t('parkingLotManagement.noDataMsg')}
                         showImg={<ParkingLotNoDataIcon />}
                     />
 
@@ -222,6 +222,27 @@ const index: React.FC<ParkingLotsManagementProps> = memo(() => {
             <RightInfoPanel panelType="info-view" open={drawerOpen} editURL={rowDataObj?.editLotUrl} headingText={rowDataObj?.deliveryLocationNm} onClose={drawerClose}>
                 {rowDataObj ? <InfoViewUI lotData={rowDataObj} rowLotId={rowLotId} /> : ''}
             </RightInfoPanel>
+            <DynamicFilterDialog
+                open={filterDialogOpen}
+                title=""
+                handleConfirm={(formData) => {
+                    // eslint-disable-next-line no-console
+                    console.log(`Got data`, (formData));
+                }}
+                handleToggle={() => setFilterDialogOpen(false)}
+                fields={[{
+                    name: 'customer',
+                    label: 'Customer',
+                    required: true,
+                    fieldType: 'singleSelectPaginate',
+                    apiUrl: '/api/customer-service/customers',
+                    responseFormatter: customerRespFormatter,
+                    extraApiParams: { countryCode: 'us' },
+                    searchFieldName: 'search',
+                    placeHolder: t('parkingLotManagement.enterCustomername'),
+                    initialValue: ''
+                }]}
+            />
         </Box>
     );
 });
