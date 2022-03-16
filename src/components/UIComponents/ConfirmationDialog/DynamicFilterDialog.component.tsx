@@ -43,43 +43,18 @@ function DynamicFilterDialog(props: Props) {
 
     function getFieldComponent(field: FilterDialogField, fieldId: number | string) {
         const { fieldType, apiUrl } = field;
-        const fieldKey = `dynFilt${fieldId}`;
         const fieldCompMasterObj = {
-            'singleSelectPaginate':<SelectPaginate
-            field={field}
-            fieldId={fieldKey}
-            formik={formik}
-            onChange={formik.setFieldValue}
-        />,
-            'singleSelect':apiUrl ? <SelectDynamic
-            field={field}
-            fieldId={fieldKey}
-            formik={formik}
-            onChange={formik.setFieldValue}
-        /> : <Select
-            field={field}
-            fieldId={fieldKey}
-            formik={formik}
-            onChange={formik.setFieldValue}
-        />,
-            'multiSelect':apiUrl ? <MultiSelectDynamic
-            field={field}
-            fieldId={fieldKey}
-            formik={formik}
-            onChange={formik.setFieldValue}
-        /> : <MultiSelect
-            field={field}
-            fieldId={fieldKey}
-            formik={formik}
-            onChange={formik.setFieldValue}
-        />,
-            'text':<InputText field={field} fieldId={fieldKey} formik={formik} onChange={formik.setFieldValue} />,
-            'date':<DatePicker field={field} fieldId={fieldKey} formik={formik} onChange={formik.setFieldValue} />,
-            'dateRange':<DatePicker field={field} fieldId={fieldKey} formik={formik} onChange={formik.setFieldValue} />,
-            'checkbox':<Checkbox field={field} fieldId={fieldKey} formik={formik} onChange={formik.handleChange} />,
-            'radio':<RadioBtn field={field} fieldId={fieldKey} formik={formik} onChange={formik.handleChange} />
+            'singleSelectPaginate': SelectPaginate,
+            'singleSelect': apiUrl ? SelectDynamic : Select,
+            'multiSelect':apiUrl ? MultiSelectDynamic: MultiSelect,
+            'text': InputText,
+            'date': DatePicker,
+            'dateRange':DatePicker,
+            'checkbox':Checkbox,
+            'radio': RadioBtn
         };
-        return fieldCompMasterObj[fieldType];
+        const SpecificFieldComponent = fieldCompMasterObj[fieldType]; 
+        return <SpecificFieldComponent {...{field, fieldId:`dynFilt${fieldId}`, formik, onChange:  formik.setFieldValue}} />;
     }
 
     const ApplyBtn = styled(Button)(() => ({
@@ -94,10 +69,13 @@ function DynamicFilterDialog(props: Props) {
             }
         }
     }));
+
     const handleCancel = () => {
         handleToggle();
         formik.resetForm();
     };
+
+    console.warn("hello->", formik);
     return (
         <Dialog
             open={open}
