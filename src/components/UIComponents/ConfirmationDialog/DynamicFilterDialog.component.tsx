@@ -4,7 +4,7 @@ import { Dialog, DialogContent, DialogActions, Typography } from '@mui/material'
 import { styled } from '@mui/system';
 import { Button } from '../Button/Button.component';
 import { useTheme } from '../../../contexts/Theme/Theme.context';
-import { FilterDialogField } from './config';
+import { FilterDialogField , DailogProps} from './config';
 import SelectPaginate from './inputComponents/selectPaginate';
 import Select from './inputComponents/select';
 import SelectDynamic from './inputComponents/selectDynamic';
@@ -16,18 +16,7 @@ import RadioBtn from './inputComponents/radiobtn';
 import DatePicker from './inputComponents/datePicker';
 import './DynamicFilterDialog.style.scss';
 
-interface Props {
-    title: string;
-    open: boolean;
-    cancelBtnTitle?: string,
-    nextBtnTitle?: string,
-    handleToggle: () => void;
-    handleConfirm: (data: { [k: string]: any }) => void;
-    fields: FilterDialogField[]
-}
-
-
-function DynamicFilterDialog(props: Props) {
+function DynamicFilterDialog(props: DailogProps) {
     const { title, open, handleToggle, handleConfirm, cancelBtnTitle, nextBtnTitle, fields } = props;
     const { theme } = useTheme();
     const initialValues = fields.reduce((acc, field) => {

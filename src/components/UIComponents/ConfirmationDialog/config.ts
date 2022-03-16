@@ -6,8 +6,10 @@ export interface OptionItem {
     [k: string]: any
 }
 
+type DialogfieldType = 'singleSelectPaginate' | 'singleSelect' | 'multiSelect' | 'text' | 'radio' | 'checkbox' | 'date' | 'dateRange';
+
 export interface FilterDialogField {
-    fieldType: 'singleSelectPaginate' | 'singleSelect' | 'multiSelect' | 'text' | 'radio' | 'checkbox' | 'date' | 'dateRange'
+    fieldType: DialogfieldType;
     name: string;
     label: string;
     placeHolder?: string;
@@ -27,10 +29,19 @@ export interface FilterDialogField {
     }
 }
 
-
 export interface DialogInputProps {
     field: FilterDialogField
     fieldId: string
     formik: FormikProps<{ [k: string]: any }>
     onChange: (name: string, value: any) => any
+}
+
+export interface DailogProps {
+    title: string;
+    open: boolean;
+    cancelBtnTitle?: string,
+    nextBtnTitle?: string,
+    handleToggle: () => void;
+    handleConfirm: (data: { [k: string]: any }) => void;
+    fields: FilterDialogField[]
 }
