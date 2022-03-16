@@ -6,6 +6,7 @@ const CustomerOnboarding = lazy(() => import('./pages/CustomerOnboarding'));
 const AddCustomer = lazy(() => import('./pages/CustomerOnboarding/AddCustomer/AddCustomer'));
 const ViewCustomer = lazy(() => import('./pages/CustomerOnboarding/AddCustomer/AddCustomer'));
 const CustomerParkingLot = lazy(() => import("./pages/ParkingLot"));
+const CustomerVehicles = lazy(() => import("./pages/Vehicle"));
 const ParkingLotLandingPage = lazy(() => import("./pages/ParkingLotsManagement"));
 const CustomerAddParkingLot = lazy(() => import('./pages/ParkingLot/AddLot/AddLotWrapper'));
 const CustomerViewParkingLot = lazy(() => import('./pages/ParkingLot/AddLot/AddLotWrapper'));
@@ -27,12 +28,17 @@ const EditProductManagement = lazy(() => import('./pages/AddProductManagement/Ad
 const AssetManagement = lazy(() => import("./pages/AssetManagement"));
 const AddAttachment = lazy(() => import("./pages/Attachments/AddAttachment/AddAttachment"));
 const AddDSP = lazy(() => import("./pages/DspLanding/AddDSP"));
+const UsersLadingPage = lazy(() => import("./pages/Users/"));
+const AddUser = lazy(() => import("./pages/Users/AddUser/"));
 const AddTruckParkingLot = lazy(() => import("./pages/Truck/TruckParkingLot/AddLot"));
 const TruckParkingLot = lazy(() => import("./pages/Truck/TruckParkingLot"));
 const EditTruckParkingLot = lazy(() => import("./pages/Truck/TruckParkingLot/AddLot"));
 const AddAsset = lazy(() => import("./pages/AssetManagement/AddAsset"));
 const TruckLanding = lazy(() => import("./pages/Truck"));
 const AddTruck = lazy(() => import('./pages/Truck/AddTruck'));
+const VehicleRule = lazy(() => import('./pages/VehicleRuleManagement/'));
+const AddVehicleRule = lazy(() => import('./pages/VehicleRuleManagement/AddVehicleRule'));
+
 
 export const routes: RouteObject[] = [
   {
@@ -64,6 +70,10 @@ export const routes: RouteObject[] = [
         element: <CustomerViewParkingLot version='Breadcrumbs-Many' />
       },
       {
+        path: "/customer/:customerId/vehicles/",
+        element: <CustomerVehicles version='Breadcrumbs-Single' />
+      },
+      {
         path: "/customer/:customerId/dsps",
         element: <DspLandingContent version='Breadcrumbs-Single' />
       },
@@ -82,7 +92,19 @@ export const routes: RouteObject[] = [
       {
         path: "/customer/:customerId/AddAttachment",
         element: <AddAttachment version='Breadcrumbs-Many' />
-      }
+      },
+      {
+        path: "/customer/:customerId/users",
+        element: <UsersLadingPage version='Breadcrumbs-Single' />
+      },
+      {
+        path: "/customer/:customerId/users/addUser",
+        element: <AddUser version='Breadcrumbs-Many' />
+      },
+      {
+        path: "/customer/:customerId/dsps/editUser/:userId",
+        element: <AddUser version='Breadcrumbs-Many' />
+      },
     ]
   },
   {
@@ -122,6 +144,14 @@ export const routes: RouteObject[] = [
     element: <ProductManagement version="Breadcrumbs-Many" />
   },
   {
+    path: "/vehicleRule",
+    element: <VehicleRule version="Breadcrumbs-Many" />
+  },
+  {
+    path: "/vehicleRule/add",
+    element: <AddVehicleRule version="Breadcrumbs-Single" />
+  },
+  {
     path: "/opisCities/add",
     element: <AddOpisCities version="Breadcrumbs-Single" />,
   },
@@ -155,7 +185,7 @@ export const routes: RouteObject[] = [
   },
   {
     path: "/trucks",
-    element: <TruckLanding version="Breadcrumbs-Single" />,    
+    element: <TruckLanding version="Breadcrumbs-Single" />,
   },
   {
     path: "/truckParkingLot",

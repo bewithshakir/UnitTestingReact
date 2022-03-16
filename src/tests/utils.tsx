@@ -6,26 +6,25 @@ import { getAllParkingLotsHandler } from '../pages/ParkingLotsManagement/mockApi
 import { getAttachmentListHandler } from '../pages/Attachments/mockApi/AttachmentLandingPageHandler';
 import { addDspHandler, editDspHandler } from "../pages/DspLanding/AddDSP/mockApi/handlerAddDsp";
 import { getFormattedAddressHandler, getGoogleAddressHandler } from "../components/UIComponents/GoogleAddressComponent/mockApi/googleAddressAutoHandler";
-import { 
-    getProductByLotHandler, 
-    editProductHandler, 
-    getTaxExemptionsListHandler, 
-    getServedCitiesHandler, 
-    getSupplierPricesHandler, 
-    getSupplierBrandProductsHandler, 
-    getOpisRackProductDetailsHandler , 
-    getProductsHandler
+import {
+    getProductByLotHandler,
+    editProductHandler,
+    getTaxExemptionsListHandler,
+    getServedCitiesHandler,
+    getSupplierPricesHandler,
+    getSupplierBrandProductsHandler,
+    getOpisRackProductDetailsHandler
 } from '../pages/ProductManagement/mockApi/handler';
 import { getFuelTaxList, getFuelTaxProductsList } from '../pages/Tax/mockApi/handler';
-import { 
-    getDelFeeSchduleHandler, 
-    getProductTypeHandler, 
-    getVehicleTypeHandler, 
-    getAssetTypeHandler, 
-    getLotProductNamesHandler, 
-    addFeeDetailsHandler, 
-    getFeeDetailsHandler, 
-    editFeeDetailsHandler 
+import {
+    getDelFeeSchduleHandler,
+    getProductTypeHandler,
+    getVehicleTypeHandler,
+    getAssetTypeHandler,
+    getLotProductNamesHandler,
+    addFeeDetailsHandler,
+    getFeeDetailsHandler,
+    editFeeDetailsHandler
 } from '../pages/ParkingLot/FeeDetails/mockAPi/handler';
 import { addTruckParkingLotHandler, editTruckParkingLotHandler } from '../pages/Truck/TruckParkingLot/AddLot/mockApi/handlerAddTruckParkingLot';
 
@@ -41,6 +40,7 @@ import { rightInfoFilterHandler } from '../components/UIComponents/RightInfoPane
 import { getProductHandler } from '../mockAPI/productService/products/GET';
 import { postProductHandler } from '../mockAPI/productService/products/POST';
 import { putProductHandler } from '../mockAPI/productService/products/PUT';
+import { addUserHandler, verifyUserHandler, getUserGroupsHandler, getUserPermissionHandler } from '../pages/Users/AddUser/mockApi/handlerAddUser';
 
 export const handlers = [
     getProductHandler(),
@@ -57,7 +57,7 @@ export const handlers = [
     getCustomerList(),
     addDspHandler(),
     getDspList(),
-    
+
     editDspHandler(),
     editProductHandler(),
     getFuelTaxList(),
@@ -87,8 +87,10 @@ export const handlers = [
     addEditTruckHandler(),
     useGetEditTruckDetails(),
     getOpisRackProductDetailsHandler(),
-    getProductsHandler(),
-    
+    addUserHandler(),
+    verifyUserHandler(),
+    getUserGroupsHandler(),
+    getUserPermissionHandler(),
 ];
 
 const createTestQueryClient = () => new QueryClient({
@@ -99,7 +101,7 @@ const createTestQueryClient = () => new QueryClient({
     },
 });
 
-export function renderWithClient(ui: React.ReactElement) {
+export function renderWithClient (ui: React.ReactElement) {
     const testQueryClient = createTestQueryClient();
     const { rerender, ...result } = render(
         <QueryClientProvider client={testQueryClient}>{ui}</QueryClientProvider>
@@ -113,7 +115,7 @@ export function renderWithClient(ui: React.ReactElement) {
     };
 }
 
-export function createWrapper() {
+export function createWrapper () {
     const testQueryClient = createTestQueryClient();
     return ({ children }: { children: React.ReactNode }) => (
         <QueryClientProvider client={testQueryClient}>{children}</QueryClientProvider>

@@ -15,7 +15,7 @@ export const config = [
         index: 3,
         label: "legend.vehicles",
         secondaryText: true,
-        to: "/vehicles"
+        to: "/customer/vehicles"
     },
     {
         index: 4,
@@ -27,7 +27,7 @@ export const config = [
         index: 5,
         label: "legend.users",
         secondaryText: true,
-        to: "/users"
+        to: "/customer/users"
     },
     {
         index: 6,

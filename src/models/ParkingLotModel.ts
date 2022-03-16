@@ -163,7 +163,7 @@ export default class ParkingLotModel {
 
     fieldsToDisplay (): headerObj[] {
         return [
-            { field: "deliveryLocationNm", label: "LOT NAME", type: 'text', sortable: true },
+            { field: "deliveryLocationNm", label: "LOT NAME", type: 'text' },
             { field: "streetAddress", label: "STREET ADDRESS", type: 'text', width: "150px" },
             { field: "cityNm", label: "CITY", type: 'text' },
             { field: "stateNm", label: "STATE", type: 'text' },
