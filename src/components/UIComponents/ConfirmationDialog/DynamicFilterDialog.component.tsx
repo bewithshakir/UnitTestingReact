@@ -1,10 +1,10 @@
 
 import { FormikProvider, useFormik } from 'formik';
-import { Dialog, DialogContent, DialogActions, Typography } from '@mui/material';
+import { Grid, Dialog, DialogContent, DialogActions, Typography } from '@mui/material';
 import { styled } from '@mui/system';
 import { Button } from '../Button/Button.component';
 import { useTheme } from '../../../contexts/Theme/Theme.context';
-import { FilterDialogField , DailogProps} from './config';
+import { FilterDialogField, DailogProps } from './config';
 import SelectPaginate from './inputComponents/selectPaginate';
 import Select from './inputComponents/select';
 import SelectDynamic from './inputComponents/selectDynamic';
@@ -35,15 +35,15 @@ function DynamicFilterDialog(props: DailogProps) {
         const fieldCompMasterObj = {
             'singleSelectPaginate': SelectPaginate,
             'singleSelect': apiUrl ? SelectDynamic : Select,
-            'multiSelect':apiUrl ? MultiSelectDynamic: MultiSelect,
+            'multiSelect': apiUrl ? MultiSelectDynamic : MultiSelect,
             'text': InputText,
             'date': DatePicker,
-            'dateRange':DatePicker,
-            'checkbox':Checkbox,
+            'dateRange': DatePicker,
+            'checkbox': Checkbox,
             'radio': RadioBtn
         };
-        const SpecificFieldComponent = fieldCompMasterObj[fieldType]; 
-        return <SpecificFieldComponent {...{field, fieldId:`dynFilt${fieldId}`, formik, onChange:  formik.setFieldValue}} />;
+        const SpecificFieldComponent = fieldCompMasterObj[fieldType];
+        return <SpecificFieldComponent {...{ field, fieldId: `dynFilt${fieldId}`, formik, onChange: formik.setFieldValue }} />;
     }
 
     const ApplyBtn = styled(Button)(() => ({
@@ -64,7 +64,6 @@ function DynamicFilterDialog(props: DailogProps) {
         formik.resetForm();
     };
 
-    console.warn("hello->", formik);
     return (
         <Dialog
             open={open}
@@ -73,30 +72,38 @@ function DynamicFilterDialog(props: DailogProps) {
         >
             <FormikProvider value={formik}>
                 <form onSubmit={formik.handleSubmit} onReset={formik.handleReset} className="filterDialogForm">
-                    <div className="dyn-filter-dialog-container" id="discard-dialogue">
-                        {title && <Typography color="var(--Darkgray)" variant="h2" component="h2" className="fw-bold" px={2.5} pt={2.5} >
-                            {title}
-                        </Typography>}
-                        <DialogContent className="dialog-content">
-                            {fields.map((field, index) => getFieldComponent(field, index))}
-                        </DialogContent>
-                        <DialogActions className="dialog-actions">
-                            <Button variant="outlined" onClick={handleCancel} className="action-no" types='cancel'>
-                                {cancelBtnTitle || 'Cancel'}
-                            </Button>
-
-                            <ApplyBtn
-                                data-testid="applyAll"
-                                id="applyAll"
-                                type="submit"
-                                types="save"
-                                disabled={!formik.dirty}
-                                aria-label={nextBtnTitle}
-                            >
-                                {nextBtnTitle || 'Continue'}
-                            </ApplyBtn>
-                        </DialogActions>
-                    </div>
+                    <Grid container direction="column" className="sContainer" mb={3} mt={3} ml={5} mr={5}>
+                        <div className="dyn-filter-dialog-container" id="discard-dialogue">
+                            {title && <Typography color="var(--Darkgray)" variant="h2" component="h2" className="fw-bold" px={2.5} pt={2.5} >
+                                {title}
+                            </Typography>}
+                            <DialogContent className="dialog-content">
+                                {fields.map((field, index) => <Grid key={`dynFilDialogGrid${index}`} item mb={2.5} mt={2}>
+                                    {getFieldComponent(field, index)}</Grid>
+                                )}
+                            </DialogContent>
+                            <DialogActions className="dialog-actions">
+                                <Grid item className="lastItem" container direction="row" justifyContent="flex-end" mt={2.5} >
+                                    <Grid item>
+                                        <Button variant="outlined" onClick={handleCancel} className="action-no" types='cancel'>
+                                            {cancelBtnTitle || 'Cancel'}
+                                        </Button></Grid>
+                                    <Grid item>
+                                        <ApplyBtn
+                                            data-testid="applyAll"
+                                            id="applyAll"
+                                            type="submit"
+                                            types="save"
+                                            disabled={!formik.dirty}
+                                            aria-label={nextBtnTitle}
+                                        >
+                                            {nextBtnTitle || 'Continue'}
+                                        </ApplyBtn>
+                                    </Grid>
+                                </Grid>
+                            </DialogActions>
+                        </div>
+                    </Grid>
                 </form>
             </FormikProvider>
         </Dialog >

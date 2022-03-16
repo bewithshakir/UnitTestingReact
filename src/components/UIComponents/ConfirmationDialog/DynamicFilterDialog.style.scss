@@ -2,13 +2,15 @@ div{
     .dyn-filter-dialog-container{
         width: 477px;
         .dialog-content{
-            padding: 1.25rem;
+            padding:0px;
+            // padding: 1.25rem;
             .MuiTypography-body1{
                 font-size: 14px;
             }
         }
         .dialog-actions {
-            padding: 0rem 1.25rem 1.25rem 1.25rem;
+            padding:0px;
+            // padding: 0rem 1.25rem 1.25rem 1.25rem;
             .action-no {
                 padding-left: 3.05rem;
                 padding-right: 3.05rem;
