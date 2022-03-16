@@ -126,26 +126,45 @@ const index: FC<ParkingLotsManagementProps> = memo(() => {
         setDrawerOpen(false);
     };
 
-    const fields: FilterDialogField[] = useMemo(() => [{
-        name: 'customer',
-        label: 'Customer',
-        required: true,
-        fieldType: 'singleSelectPaginate',
-        apiUrl: '/api/customer-service/customers',
-        responseFormatter: customerRespFormatter,
-        extraApiParams: { countryCode: 'us' },
-        searchFieldName: 'search',
-        placeHolder: t('parkingLotManagement.enterCustomername'),
-        initialValue: { lable: '', value: '' }
-    },
-    {
-        name: 'fuelType',
-        label: 'Select fuel type',
-        required: true,
-        fieldType: 'singleSelect',
-        options: [{ label: 'fuel', value: 'fuel' }, { label: 'Non fuel', value: 'non fuuuuu' }],
-        initialValue: { label: '', value: '' }
-    }], []);
+    const fields: FilterDialogField[] = useMemo(() => [
+        {
+            name: 'customer',
+            label: 'Customer',
+            required: true,
+            fieldType: 'singleSelectPaginate',
+            apiUrl: '/api/customer-service/customers',
+            responseFormatter: customerRespFormatter,
+            extraApiParams: { countryCode: 'us' },
+            searchFieldName: 'search',
+            placeHolder: t('parkingLotManagement.enterCustomername'),
+            initialValue: { lable: '', value: '' }
+
+        },
+        {
+            name: 'fuelType',
+            label: 'Select fuel type',
+            required: true,
+            fieldType: 'singleSelect',
+            options: [{ label: 'fuel', value: 'fuel' }, { label: 'Non fuel', value: 'non fuuuuu' }],
+            initialValue: { label: '', value: '' }
+
+        },
+        {
+            name: 'multiFuelType',
+            label: 'Select multiple fuel type',
+            required: true,
+            fieldType: 'multiSelect',
+            options: [{ label: 'fuel', value: 'fuel' }, { label: 'Non fuel', value: 'non fuuuuu' }],
+            initialValue: [{ label: '', value: '' }]
+        },
+        {
+            name: 'input123',
+            label: 'Enter your name here',
+            required: true,
+            fieldType: 'text',
+            initialValue: "hello sham"
+        }
+    ], []);
 
 
     return (

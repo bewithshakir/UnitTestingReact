@@ -12,6 +12,7 @@ export interface OptionItem {
 }
 
 interface Props {
+    name: string
     label?: string
     required?: boolean
     id?: string
@@ -24,7 +25,7 @@ interface Props {
     /** default value is search */
     searchFieldName?: string
     responseFormatter: (data: any) => OptionItem[]
-    onChange: (value: OptionItem) => any
+    onChange: (name: string, value: OptionItem) => any
     value?: OptionItem
 }
 
@@ -34,7 +35,7 @@ const defaultAdditional = {
 
 
 const SingleSelectPaginate = (props: Props) => {
-    const { apiUrl,
+    const { name, apiUrl,
         onChange,
         responseFormatter,
         description,
@@ -68,7 +69,7 @@ const SingleSelectPaginate = (props: Props) => {
         };
     }, []);
     const handleChange = (newValue: any) => {
-        onChange(newValue);
+        onChange(name, newValue);
     };
 
     return (

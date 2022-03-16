@@ -1,17 +1,11 @@
-import { FormikProps } from "formik";
+
 import { useTranslation } from "react-i18next";
 import SingleSelectPaginate from "../../Select/SingleSelectPaginate";
-import { FilterDialogField } from "../config";
-
-interface Props {
-    field: FilterDialogField,
-    fieldId: string | number
-    formik: FormikProps<{ [k: string]: any }>
-}
+import { DialogInputProps } from "../config";
 
 
-const selectPaginate = (props: Props) => {
-    const { field, fieldId, formik } = props;
+const selectPaginate = (props: DialogInputProps) => {
+    const { field, fieldId, formik, onChange } = props;
     const { apiUrl, label, required, placeHolder, responseFormatter, extraApiParams, name } = field;
     const { t } = useTranslation();
     if (!apiUrl) {
@@ -22,14 +16,16 @@ const selectPaginate = (props: Props) => {
     }
     return (
         <SingleSelectPaginate
-            key={`dynFilt${fieldId}`}
+            name={name}
+            key={fieldId}
             label={label}
             required={required}
             placeholder={placeHolder}
             apiUrl={apiUrl}
+            value={formik?.values[field.name]}
             responseFormatter={responseFormatter}
             extraApiParams={extraApiParams}
-            onChange={(value => formik.setFieldValue(name, value))}
+            onChange={onChange}
         />
     );
 };

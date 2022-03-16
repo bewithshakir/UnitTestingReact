@@ -1,15 +1,14 @@
-
-import { getInputHelperText, getInputError } from "../../../../utils/helperFunctions";
-import SingleSelect from "../../Select/SingleSelect";
+import TextInput from "../../Input/Input";
 import { DialogInputProps, } from "../config";
+import { getInputHelperText, getInputError } from "../../../../utils/helperFunctions";
 
-const select = (props: DialogInputProps) => {
+
+const InputText = (props: DialogInputProps) => {
     const { field, fieldId, formik, onChange } = props;
-    if (!field.options) {
-        throw new Error('Options required');
-    }
-    return <SingleSelect
-        items={field.options}
+    return < TextInput
+        id={fieldId}
+        type='text'
+        required={field.required}
         key={fieldId}
         placeholder={field.placeHolder}
         label={field.label}
@@ -17,8 +16,8 @@ const select = (props: DialogInputProps) => {
         error={getInputError(formik, field.name)}
         name={field.name}
         value={formik?.values[field.name]}
-        onChange={onChange}
+        onChange={(e) => onChange(field.name, e.currentTarget.value)}
     />;
 };
 
-export default select;
+export default InputText;

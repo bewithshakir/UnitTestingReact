@@ -1,4 +1,5 @@
 import { OptionItem } from "../Select/SingleSelectPaginate";
+import { FormikProps } from "formik";
 
 
 export interface FilterDialogField {
@@ -14,4 +15,12 @@ export interface FilterDialogField {
     responseFormatter?: (data: any) => OptionItem[]
     options?: OptionItem[]
     initialValue: any
+}
+
+
+export interface DialogInputProps {
+    field: FilterDialogField
+    fieldId: string
+    formik: FormikProps<{ [k: string]: any }>
+    onChange: (name: string, value: any) => any
 }

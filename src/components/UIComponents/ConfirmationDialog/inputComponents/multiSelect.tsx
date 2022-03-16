@@ -1,14 +1,15 @@
 
 import { getInputHelperText, getInputError } from "../../../../utils/helperFunctions";
-import SingleSelect from "../../Select/SingleSelect";
-import { DialogInputProps, } from "../config";
+import MultiSelect from "../../Select/MultiSelect";
+import { DialogInputProps } from "../config";
 
-const select = (props: DialogInputProps) => {
+const multiSelect = (props: DialogInputProps) => {
     const { field, fieldId, formik, onChange } = props;
+
     if (!field.options) {
         throw new Error('Options required');
     }
-    return <SingleSelect
+    return <MultiSelect
         items={field.options}
         key={fieldId}
         placeholder={field.placeHolder}
@@ -21,4 +22,4 @@ const select = (props: DialogInputProps) => {
     />;
 };
 
-export default select;
+export default multiSelect;

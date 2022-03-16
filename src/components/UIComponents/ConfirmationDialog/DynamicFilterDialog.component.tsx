@@ -7,6 +7,8 @@ import { useTheme } from '../../../contexts/Theme/Theme.context';
 import { FilterDialogField } from './config';
 import SelectPaginate from './inputComponents/selectPaginate';
 import Select from './inputComponents/select';
+import MultiSelect from './inputComponents/multiSelect';
+import InputText from './inputComponents/inputText';
 import './DynamicFilterDialog.style.scss';
 
 interface Props {
@@ -34,18 +36,18 @@ function DynamicFilterDialog(props: Props) {
         },
     });
 
-
     function getFieldComponent(field: FilterDialogField, fieldId: number | string) {
         const { fieldType } = field;
+        const fieldKey = `dynFilt${fieldId}`;
         switch (fieldType) {
             case 'singleSelectPaginate':
-                return <SelectPaginate field={field} fieldId={fieldId} formik={formik} />;
+                return <SelectPaginate field={field} fieldId={fieldKey} formik={formik} onChange={formik.setFieldValue} />;
             case 'singleSelect':
-                return <Select field={field} fieldId={fieldId} formik={formik} />;
+                return <Select field={field} fieldId={fieldKey} formik={formik} onChange={formik.setFieldValue} />;
             case 'multiSelect':
-                return 'multi select';
+                return <MultiSelect field={field} fieldId={fieldKey} formik={formik} onChange={formik.setFieldValue} />;
             case 'text':
-                return 'text ';
+                return <InputText field={field} fieldId={fieldKey} formik={formik} onChange={formik.setFieldValue} />;
             case 'date':
                 return 'date';
             case 'dateRange':
