@@ -50,7 +50,6 @@ const TruckLandingContent: React.FC<TruckLandingContentProps> = memo(() => {
   const [resetTableCollaps, setResetTableCollaps] = useState(false);
   const { t } = useTranslation();
 
-  // const [drawerOpen, setDrawerOpen] = React.useState(false);
   const [filterPanelVisible, setFilterPanelVisible] = React.useState(false);
   const [filterData, setFilterData] = React.useState<{ [key: string]: string[] }>({});
 

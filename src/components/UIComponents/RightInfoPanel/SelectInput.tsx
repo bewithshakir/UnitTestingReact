@@ -1,3 +1,4 @@
+import { useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { useGetFilterData } from "../../../infrastructure/filterQuery";
 import Select from "../Select/MultiSelect";
@@ -31,13 +32,38 @@ export const SelectInput: React.FC<ISelectInput> = ({ field, handleSelect, formi
     const touched = (formik.touched as any)[field.name];
     const error = (formik.errors as any)[field.name];
     const value = (formik.values as any)[field.name];
-    const items = (field.optionAPIResponseKey == "customernames" && field.optionUrlKey == "parkingLotManagementFilter") ?
-    (customerNameData?.data?.pages[0]?.data?.customers) ?
-        customerNameData?.data?.pages[0]?.data?.customers.map((obj: any) => ({ label: obj.customerName, value: obj.customerId})) : []
-        : filterResponse.status === 'success' && filterResponse.data?.data ?
-        filterResponse.data.data[field.optionAPIResponseKey]?.map((s: any) => 
-        (s.productNm ? {label: s.productNm, value: s.productCd} : { label: s, value: s })) 
-        : [];
+
+    const getItems = useCallback(() => {
+        if (field.singleSelect && field.optionUrlKey === "truckOverviewFilter") {
+            return field['options'];
+        } else {
+            if (field.optionAPIResponseKey === "customernames"
+                && field.optionUrlKey === "parkingLotManagementFilter" &&
+                customerNameData?.data?.pages[0]?.data?.customers) {
+                return customerNameData?.data?.pages[0]?.data?.customers.map((obj: any) => ({ label: obj.customerName, value: obj.customerId }));
+            }
+            if (filterResponse.status === 'success' && filterResponse.data?.data) {
+                return filterResponse.data.data[field.optionAPIResponseKey]?.map((s: any) => {
+                    return (s.productNm ? { label: s.productNm, value: s.productCd } : { label: s, value: s });
+                });
+            }
+            else {
+                return [];
+            }
+        }
+
+    }, [filterResponse.data?.data[field.optionAPIResponseKey]]);
+
+    const helperText = useCallback(() => {
+        if (touched && error) return error;
+        else return undefined;
+    }, [touched, error]);
+
+    const isError = useCallback(() => {
+        if (touched && error) return true;
+        else return false;
+    }, [touched, error]);
+
     return field.singleSelect ?
         <SingleSelect
             id={field.name}
@@ -45,19 +71,19 @@ export const SelectInput: React.FC<ISelectInput> = ({ field, handleSelect, formi
             label={t(field.label)}
             placeholder=""
             value={value}
-            items={field.optionUrlKey === "truckOverviewFilter" ? field['options'] :  items}
+            items={getItems()}
             onChange={(name, val) => handleSelect(name, val, true)}
-            helperText={(touched && error) ? error : undefined}
-            error={(touched && error) ? true : false} />
+            helperText={helperText()}
+            error={isError()} />
         : <Select
             id={field.name}
             name={field.name}
             label={t(field.label)}
             placeholder=""
             value={value}
-            items={items}
+            items={getItems()}
             onChange={(name, val) => handleSelect(name, val)}
-            helperText={(touched && error) ? error : undefined}
-            error={(touched && error) ? true : false}
+            helperText={helperText()}
+            error={isError()}
         />;
 };
