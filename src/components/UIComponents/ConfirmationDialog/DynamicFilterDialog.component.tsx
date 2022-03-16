@@ -1,12 +1,12 @@
 
 import { FormikProvider, useFormik } from 'formik';
-import { useMemo } from 'react';
 import { Dialog, DialogContent, DialogActions, Typography } from '@mui/material';
 import { styled } from '@mui/system';
 import { Button } from '../Button/Button.component';
 import { useTheme } from '../../../contexts/Theme/Theme.context';
 import { FilterDialogField } from './config';
 import SelectPaginate from './inputComponents/selectPaginate';
+import Select from './inputComponents/select';
 import './DynamicFilterDialog.style.scss';
 
 interface Props {
@@ -23,21 +23,17 @@ interface Props {
 function DynamicFilterDialog(props: Props) {
     const { title, open, handleToggle, handleConfirm, cancelBtnTitle, nextBtnTitle, fields } = props;
     const { theme } = useTheme();
-    const initialValues = useMemo(() => {
-        return fields.reduce((acc, field) => {
-            acc[field.name] = field.initialValue;
-            return acc;
-        }, {} as any);
-
-    }, [fields]);
-
+    const initialValues = fields.reduce((acc, field) => {
+        acc[field.name] = field.initialValue;
+        return acc;
+    }, {} as any);
     const formik = useFormik({
         initialValues,
         onSubmit: (values) => {
             handleConfirm(values);
         },
-        enableReinitialize: true
     });
+
 
     function getFieldComponent(field: FilterDialogField, fieldId: number | string) {
         const { fieldType } = field;
@@ -45,9 +41,7 @@ function DynamicFilterDialog(props: Props) {
             case 'singleSelectPaginate':
                 return <SelectPaginate field={field} fieldId={fieldId} formik={formik} />;
             case 'singleSelect':
-                return (
-                    'singleSelect-----------'
-                );
+                return <Select field={field} fieldId={fieldId} formik={formik} />;
             case 'multiSelect':
                 return 'multi select';
             case 'text':

@@ -1,3 +1,4 @@
+import { FormikProps } from "formik";
 import { useTranslation } from "react-i18next";
 import SingleSelectPaginate from "../../Select/SingleSelectPaginate";
 import { FilterDialogField } from "../config";
@@ -5,7 +6,7 @@ import { FilterDialogField } from "../config";
 interface Props {
     field: FilterDialogField,
     fieldId: string | number
-    formik: any
+    formik: FormikProps<{ [k: string]: any }>
 }
 
 

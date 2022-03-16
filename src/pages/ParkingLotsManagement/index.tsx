@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useState } from 'react';
+import React, { FC, memo, useEffect, useMemo, useState } from 'react';
 import { HorizontalBarVersionState, useStore } from '../../store';
 import { Box, Grid, FormControl, Typography } from "@mui/material";
 import { Button } from "../../components/UIComponents/Button/Button.component";
@@ -18,6 +18,7 @@ import { RightInfoPanel } from "../../components/UIComponents/RightInfoPanel/Rig
 import { getSeachedDataTotalCount } from '../../utils/helperFunctions';
 import InfoViewUI from './infoViewUI/InfoViewUI.component';
 import DynamicFilterDialog from '../../components/UIComponents/ConfirmationDialog/DynamicFilterDialog.component';
+import { FilterDialogField } from '../../components/UIComponents/ConfirmationDialog/config';
 export interface ParkingLotsManagementProps {
     version: string
 }
@@ -31,23 +32,22 @@ const customerRespFormatter = (axiosData: any): { value: string; label: string }
 
 
 
-const index: React.FC<ParkingLotsManagementProps> = memo(() => {
+
+const index: FC<ParkingLotsManagementProps> = memo(() => {
     const ParkingLotObj = new ParkingLotsManagementModel();
     const headCells = ParkingLotObj.fieldsToDisplay();
     const massActionOptions = ParkingLotObj.massActions();
     const rowActionOptions = ParkingLotObj.rowActions();
     const { SortByOptions, FilterByFields } = AllParkingLots.LandingPage;
-    const [drawerOpen, setDrawerOpen] = React.useState(false);
+    const [drawerOpen, setDrawerOpen] = useState(false);
     const [filterDialogOpen, setFilterDialogOpen] = useState(false);
-
-
-    const [searchTerm, setSearchTerm] = React.useState("");
-    const [filterData, setFilterData] = React.useState<{ [key: string]: string[] }>({});
-    const [isFilterPanelOpen, toggleFilterPanel] = React.useState(false);
-    const [sortOrder, setSortOrder] = React.useState<{ sortBy: string, order: string }>({ sortBy: "", order: "" });
-    const [parkingLotList, setAllParkingLotList] = React.useState([]);
-    const [rowDataObj, saveRowDataObj] = React.useState<any>(null);
-    const [rowLotId, saveRowLotId] = React.useState<any>(null);
+    const [searchTerm, setSearchTerm] = useState("");
+    const [filterData, setFilterData] = useState<{ [key: string]: string[] }>({});
+    const [isFilterPanelOpen, toggleFilterPanel] = useState(false);
+    const [sortOrder, setSortOrder] = useState<{ sortBy: string, order: string }>({ sortBy: "", order: "" });
+    const [parkingLotList, setAllParkingLotList] = useState([]);
+    const [rowDataObj, saveRowDataObj] = useState<any>(null);
+    const [rowLotId, saveRowLotId] = useState<any>(null);
 
     const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
     setVersion("NavLinks");
@@ -125,6 +125,28 @@ const index: React.FC<ParkingLotsManagementProps> = memo(() => {
     const drawerClose = () => {
         setDrawerOpen(false);
     };
+
+    const fields: FilterDialogField[] = useMemo(() => [{
+        name: 'customer',
+        label: 'Customer',
+        required: true,
+        fieldType: 'singleSelectPaginate',
+        apiUrl: '/api/customer-service/customers',
+        responseFormatter: customerRespFormatter,
+        extraApiParams: { countryCode: 'us' },
+        searchFieldName: 'search',
+        placeHolder: t('parkingLotManagement.enterCustomername'),
+        initialValue: { lable: '', value: '' }
+    },
+    {
+        name: 'fuelType',
+        label: 'Select fuel type',
+        required: true,
+        fieldType: 'singleSelect',
+        options: [{ label: 'fuel', value: 'fuel' }, { label: 'Non fuel', value: 'non fuuuuu' }],
+        initialValue: { label: '', value: '' }
+    }], []);
+
 
     return (
         <Box display="flex" mt={10} ml={8}>
@@ -230,18 +252,7 @@ const index: React.FC<ParkingLotsManagementProps> = memo(() => {
                     console.log(`Got data`, (formData));
                 }}
                 handleToggle={() => setFilterDialogOpen(false)}
-                fields={[{
-                    name: 'customer',
-                    label: 'Customer',
-                    required: true,
-                    fieldType: 'singleSelectPaginate',
-                    apiUrl: '/api/customer-service/customers',
-                    responseFormatter: customerRespFormatter,
-                    extraApiParams: { countryCode: 'us' },
-                    searchFieldName: 'search',
-                    placeHolder: t('parkingLotManagement.enterCustomername'),
-                    initialValue: ''
-                }]}
+                fields={fields}
             />
         </Box>
     );

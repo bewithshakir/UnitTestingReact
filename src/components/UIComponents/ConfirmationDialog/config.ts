@@ -2,11 +2,11 @@ import { OptionItem } from "../Select/SingleSelectPaginate";
 
 
 export interface FilterDialogField {
+    fieldType: 'singleSelectPaginate' | 'singleSelect' | 'multiSelect' | 'text' | 'radio' | 'checkbox' | 'date' | 'dateRange'
     name: string;
     label: string;
     placeHolder?: string;
     required?: boolean;
-    fieldType: 'singleSelectPaginate' | 'singleSelect' | 'multiSelect' | 'text' | 'radio' | 'checkbox' | 'date' | 'dateRange'
     apiUrl?: string
     extraApiParams?: { [k: string]: any }
     /** default search */

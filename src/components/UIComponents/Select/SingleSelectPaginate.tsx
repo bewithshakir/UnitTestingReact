@@ -67,8 +67,8 @@ const SingleSelectPaginate = (props: Props) => {
             additional: { page: page + 1 }
         };
     }, []);
-    const handleChange = (value: any) => {
-        onChange(value);
+    const handleChange = (newValue: any) => {
+        onChange(newValue);
     };
 
     return (
