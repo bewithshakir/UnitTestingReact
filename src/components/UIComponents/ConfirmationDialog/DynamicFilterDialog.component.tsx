@@ -72,7 +72,7 @@ function DynamicFilterDialog(props: DailogProps) {
         >
             <FormikProvider value={formik}>
                 <form onSubmit={formik.handleSubmit} onReset={formik.handleReset} className="filterDialogForm">
-                    <Grid container direction="column" className="sContainer" mb={3} mt={3} ml={5} mr={5}>
+                    <Grid container direction="column" >
                         <div className="dyn-filter-dialog-container" id="discard-dialogue">
                             {title && <Typography color="var(--Darkgray)" variant="h2" component="h2" className="fw-bold" px={2.5} pt={2.5} >
                                 {title}

@@ -1,16 +1,19 @@
 div{
     .dyn-filter-dialog-container{
-        width: 477px;
+        width: 571px;
+        padding: 1em 2.5em;
         .dialog-content{
+            overflow: visible;
             padding:0px;
-            // padding: 1.25rem;
             .MuiTypography-body1{
                 font-size: 14px;
+            }
+            .date-picker-container{
+                width: 100%;
             }
         }
         .dialog-actions {
             padding:0px;
-            // padding: 0rem 1.25rem 1.25rem 1.25rem;
             .action-no {
                 padding-left: 3.05rem;
                 padding-right: 3.05rem;

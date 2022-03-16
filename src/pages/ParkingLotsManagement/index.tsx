@@ -179,10 +179,10 @@ const index: FC<ParkingLotsManagementProps> = memo(() => {
         },
         {
             name: 'input123',
-            label: 'Enter your name here',
+            label: 'Name',
             required: true,
             fieldType: 'text',
-            initialValue: "hello sham"
+            initialValue: ""
         },
         {
             name: 'deliveryDate',
