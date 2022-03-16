@@ -36,21 +36,18 @@ export const SelectInput: React.FC<ISelectInput> = ({ field, handleSelect, formi
     const getItems = useCallback(() => {
         if (field.singleSelect && field.optionUrlKey === "truckOverviewFilter") {
             return field['options'];
-        } else {
-            if (field.optionAPIResponseKey === "customernames"
-                && field.optionUrlKey === "parkingLotManagementFilter" &&
-                customerNameData?.data?.pages[0]?.data?.customers) {
-                return customerNameData?.data?.pages[0]?.data?.customers.map((obj: any) => ({ label: obj.customerName, value: obj.customerId }));
-            }
-            if (filterResponse.status === 'success' && filterResponse.data?.data) {
-                return filterResponse.data.data[field.optionAPIResponseKey]?.map((s: any) => {
-                    return (s.productNm ? { label: s.productNm, value: s.productCd } : { label: s, value: s });
-                });
-            }
-            else {
-                return [];
-            }
         }
+        if (field.optionAPIResponseKey === "customernames"
+            && field.optionUrlKey === "parkingLotManagementFilter" &&
+            customerNameData?.data?.pages[0]?.data?.customers) {
+            return customerNameData?.data?.pages[0]?.data?.customers.map((obj: any) => ({ label: obj.customerName, value: obj.customerId }));
+        }
+        if (filterResponse.status === 'success' && filterResponse.data?.data) {
+            return filterResponse.data.data[field.optionAPIResponseKey]?.map((s: any) => {
+                return (s.productNm ? { label: s.productNm, value: s.productCd } : { label: s, value: s });
+            });
+        }
+        return [];
 
     }, [filterResponse.data?.data[field.optionAPIResponseKey]]);
 

@@ -53,6 +53,8 @@ const TruckLandingContent: React.FC<TruckLandingContentProps> = memo(() => {
   const [filterPanelVisible, setFilterPanelVisible] = React.useState(false);
   const [filterData, setFilterData] = React.useState<{ [key: string]: string[] }>({});
 
+  
+  
   const { data, fetchNextPage, isLoading, isFetching }: any = useTruckList(
     searchTerm,
     sortOrder,
@@ -129,6 +131,7 @@ const TruckLandingContent: React.FC<TruckLandingContentProps> = memo(() => {
   };
   const getFilterParams = (filterObj: { [key: string]: string[] }) => {
     setResetTableCollaps(true);
+    
     setFilterData(filterObj);
   };
 

@@ -25,7 +25,7 @@ const getTruckList = async (pageParam: number, searchTerm: string, sortOrder: { 
     let url = query ? queryStr : `&countryCode=us`;
     
     let finalUrl = url;
-
+   
     if(url.includes('&activeInactiveInd=%22Y%22')) {
         finalUrl = url.replace('&activeInactiveInd=%22Y%22', '&activeInactiveInd=Y');
         url  = finalUrl;
