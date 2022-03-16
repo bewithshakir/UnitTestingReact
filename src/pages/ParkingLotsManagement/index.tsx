@@ -132,6 +132,9 @@ const index: FC<ParkingLotsManagementProps> = memo(() => {
     const drawerClose = () => {
         setDrawerOpen(false);
     };
+    const handleRedirectAddLot = (formData: any) => {
+        navigate(`/customer/${formData?.customer?.value}/parkingLots/addLot`);
+    };
 
     const fields: FilterDialogField[] = useMemo(() => [
         {
@@ -332,10 +335,7 @@ const index: FC<ParkingLotsManagementProps> = memo(() => {
             <DynamicFilterDialog
                 open={filterDialogOpen}
                 title=""
-                handleConfirm={(formData) => {
-                    // eslint-disable-next-line no-console
-                    console.log(`Got data`, (formData));
-                }}
+                handleConfirm={handleRedirectAddLot}
                 handleToggle={() => setFilterDialogOpen(false)}
                 fields={fields}
             />

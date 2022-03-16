@@ -103,6 +103,7 @@ const SingleSelectPaginate = (props: Props) => {
             )}
             <AsyncPaginate
                 className="select-paginate-custom"
+                classNamePrefix={'paginate-custom'}
                 additional={defaultAdditional}
                 value={value}
                 loadOptions={loadPageOptions}
@@ -116,19 +117,6 @@ const SingleSelectPaginate = (props: Props) => {
                     IndicatorSeparator: () => null,
                     DropdownIndicator: () => null,
                     SingleValue: SingleValueFrag,
-                }}
-                styles={{
-                    control: (provided) => ({
-                        ...provided,
-                        borderRadius: '0px',
-                        borderColor: 'green',
-                        height: '50px',
-                        fontSize: '14px',
-                        padding: '0px',
-                        margin: '0px',
-                        cursor: 'text',
-                        outline: 'none'
-                    })
                 }}
             />
             {helperText && (
