@@ -31,12 +31,12 @@ export const addUserHandler = () =>
 
 export const getUserDSPDropdownHandler = () =>
     rest.get('*/api/customer-service/customers/*/dsps*', (req, res, ctx) => {
-        if (req.url.searchParams.get('skipPagination')) {
-            return res(
-                ctx.status(200),
-                ctx.json({
-                    data: {
-                        dsps: [
+        return res(
+            ctx.status(200),
+            ctx.json({
+                data: {
+                    dsps: req.url.searchParams.get('skipPagination') ?
+                        [
                             {
                                 address: "12343 Bonfire Dr",
                                 city: "Reisterstown",
@@ -50,12 +50,11 @@ export const getUserDSPDropdownHandler = () =>
                                 state: "MD",
                                 totalLotAssigned: 0,
                             },
-                        ]
-                    },
-                    error: null
-                })
-            );
-        }
+                        ] : []
+                },
+                error: null
+            })
+        );
     });
 
 
