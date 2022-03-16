@@ -20,7 +20,11 @@ export interface FilterDialogField {
     options?: OptionItem[]
     initialValue?: any
     disabled?: boolean;
-    value?: any
+    value?: any;
+    dateRangerPlaceHolder?:{
+        start: string,
+        end: string,
+    }
 }
 
 

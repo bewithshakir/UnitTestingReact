@@ -184,13 +184,21 @@ const index: FC<ParkingLotsManagementProps> = memo(() => {
             fieldType: 'text',
             initialValue: "hello sham"
         },
-
         {
-            name: 'startDate',
-            label: 'Start Date',
-            required: false,
+            name: 'deliveryDate',
+            label: 'delivery Date',
+            required: true,
             fieldType: 'date',
-            initialValue: "hello sham"
+            initialValue: null,
+            placeHolder:'select delivery date'
+        },
+        {
+            name: 'pickupDateRange',
+            label: 'Select Pickup Dates',
+            required: true,
+            fieldType: 'dateRange',
+            initialValue: [null, null],
+            dateRangerPlaceHolder: {start: "Start", end: "End" }
         },
         {
             name: 'addFuelTax',

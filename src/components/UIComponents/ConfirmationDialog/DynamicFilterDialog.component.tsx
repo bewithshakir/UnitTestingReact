@@ -81,7 +81,7 @@ function DynamicFilterDialog(props: Props) {
             case 'date':
                 return <DatePicker field={field} fieldId={fieldKey} formik={formik} onChange={formik.setFieldValue} />;
             case 'dateRange':
-                return 'date range';
+                return  <DatePicker field={field} fieldId={fieldKey} formik={formik} onChange={formik.setFieldValue} />;
             case 'checkbox':
                 return <Checkbox field={field} fieldId={fieldKey} formik={formik} onChange={formik.handleChange} />;
             case 'radio':
