@@ -9,8 +9,9 @@ const checkBox = ({ field, fieldId, formik, onChange }: DialogInputProps) => {
             key={fieldId}
             checked={formik?.values[field.name]}
             name={field.name}
-            onChange={onChange as any}
+            onChange={(e) => onChange(e.target.name, e.target.checked)}
             disabled={field.disabled}
+            onClick={e => e.stopPropagation()}
         />
         <Typography color={field.disabled ? 'var(--Secondary-Background)' : "var(--Darkgray)"} variant="h4" className="fw-bold">
             {field.label}

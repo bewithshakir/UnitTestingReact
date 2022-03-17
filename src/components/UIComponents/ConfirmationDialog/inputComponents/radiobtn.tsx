@@ -9,15 +9,14 @@ const radioBtn = ({ field, fieldId, formik, onChange }: DialogInputProps) => {
             key={fieldId}
             checked={field.value === formik?.values[field.name]}
             name={field.name}
-            onChange={onChange as any}
+            onChange={(e) => onChange(e.target.name, e.target.value)}
             disabled={field.disabled}
             value={field.value ? field.value : field.label}
+            onClick={e => e.stopPropagation()}
         />
         <Typography color={field.disabled ? 'var(--Secondary-Background)' : "var(--Darkgray)"} variant="h4" className="fw-bold">
             {field.label}
         </Typography>
-
-
     </div>;
 };
 
