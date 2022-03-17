@@ -4,11 +4,14 @@ import MultiSelect from "../../Select/MultiSelect";
 import { DialogInputProps } from "../config";
 
 const multiSelect = (props: DialogInputProps) => {
-    const { field, fieldId, formik, onChange } = props;
+    const { field, fieldId, formik, onChange, hanleTouched } = props;
 
     if (!field.options) {
         throw new Error('Options required');
     }
+    const handleBlur = () => {
+        hanleTouched(field.name);
+    };
     return <MultiSelect
         items={field.options}
         key={fieldId}
@@ -19,6 +22,7 @@ const multiSelect = (props: DialogInputProps) => {
         name={field.name}
         value={formik?.values[field.name]}
         onChange={onChange}
+        onBlur={handleBlur}
     />;
 };
 

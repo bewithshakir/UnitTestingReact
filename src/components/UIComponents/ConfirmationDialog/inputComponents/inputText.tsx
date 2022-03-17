@@ -4,8 +4,11 @@ import { getInputHelperText, getInputError } from "../../../../utils/helperFunct
 
 
 const InputText = (props: DialogInputProps) => {
-    const { field, fieldId, formik, onChange } = props;
-    return < TextInput
+    const { field, fieldId, formik, onChange, hanleTouched } = props;
+    const handleBlur = () => {
+        hanleTouched(field.name);
+    };
+    return <TextInput
         id={fieldId}
         type='text'
         required={field.required}
@@ -17,6 +20,7 @@ const InputText = (props: DialogInputProps) => {
         name={field.name}
         value={formik?.values[field.name]}
         onChange={(e) => onChange(field.name, e.currentTarget.value)}
+        onBlur={handleBlur}
     />;
 };
 

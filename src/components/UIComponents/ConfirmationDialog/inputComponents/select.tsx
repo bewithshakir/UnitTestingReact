@@ -4,10 +4,13 @@ import SingleSelect from "../../Select/SingleSelect";
 import { DialogInputProps, } from "../config";
 
 const select = (props: DialogInputProps) => {
-    const { field, fieldId, formik, onChange } = props;
+    const { field, fieldId, formik, onChange, hanleTouched } = props;
     if (!field.options) {
         throw new Error('Options required');
     }
+    const handleBlur = () => {
+        hanleTouched(field.name);
+    };
     return <SingleSelect
         items={field.options}
         key={fieldId}
@@ -18,6 +21,7 @@ const select = (props: DialogInputProps) => {
         name={field.name}
         value={formik?.values[field.name]}
         onChange={onChange}
+        onBlur={handleBlur}
     />;
 };
 

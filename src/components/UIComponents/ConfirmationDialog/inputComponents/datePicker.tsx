@@ -2,7 +2,10 @@ import { DatePickerInput } from "../../DatePickerInput/DatePickerInput.component
 import { getInputHelperText, getInputError } from "../../../../utils/helperFunctions";
 import { DialogInputProps } from "../config";
 
-const datePicker = ({ field, fieldId, formik, onChange }: DialogInputProps) => {
+const datePicker = ({ field, fieldId, formik, onChange, hanleTouched }: DialogInputProps) => {
+    const handleBlur = () => {
+        hanleTouched(field.name);
+    };
 
     return <div className='dyn-dialog-field-label-div'>
         {field.fieldType === 'date' && <DatePickerInput
@@ -18,6 +21,7 @@ const datePicker = ({ field, fieldId, formik, onChange }: DialogInputProps) => {
             id={`datePickerId${fieldId}`}
             label={field.label}
             placeholder={field.placeHolder}
+            onBlur={handleBlur}
         />}
 
         {field.fieldType === 'dateRange' && <DatePickerInput
@@ -33,6 +37,7 @@ const datePicker = ({ field, fieldId, formik, onChange }: DialogInputProps) => {
             id={`datePickerId${fieldId}`}
             label={field.label}
             placeholder={field.dateRangerPlaceHolder}
+            onBlur={handleBlur}
         />}
 
     </div>;

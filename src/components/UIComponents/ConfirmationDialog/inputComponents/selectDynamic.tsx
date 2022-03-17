@@ -5,7 +5,7 @@ import { DialogInputProps, OptionItem, } from "../config";
 import { useGetFilterData } from "../queries";
 
 const SelectDynamic = (props: DialogInputProps) => {
-    const { field, fieldId, formik, onChange } = props;
+    const { field, fieldId, formik, onChange, hanleTouched } = props;
     const { apiUrl, extraApiParams, responseFormatter } = field;
     if (!apiUrl || !responseFormatter) {
         throw new Error('API URL and response formatter is required');
@@ -15,6 +15,9 @@ const SelectDynamic = (props: DialogInputProps) => {
     if (data) {
         options = responseFormatter(data?.data);
     }
+    const handleBlur = () => {
+        hanleTouched(field.name);
+    };
     return <SingleSelect
         items={options}
         key={fieldId}
@@ -25,6 +28,7 @@ const SelectDynamic = (props: DialogInputProps) => {
         name={field.name}
         value={formik?.values[field.name]}
         onChange={onChange}
+        onBlur={handleBlur}
     />;
 };
 

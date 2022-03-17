@@ -37,6 +37,11 @@ function DynamicFilterDialog(props: DailogProps) {
         },
     });
 
+    const hanleTouched = (fieldName: string) => {
+        formik.setFieldTouched(fieldName, true);
+    };
+
+
     function getFieldComponent(field: FilterDialogField, fieldId: number | string) {
         const { fieldType, apiUrl } = field;
         const fieldCompMasterObj = {
@@ -50,7 +55,13 @@ function DynamicFilterDialog(props: DailogProps) {
             'radio': RadioBtn
         };
         const SpecificFieldComponent = fieldCompMasterObj[fieldType];
-        return <SpecificFieldComponent {...{ field, fieldId: `dynFilt${fieldId}`, formik, onChange: formik.setFieldValue }} />;
+        return <SpecificFieldComponent {...{
+            field,
+            fieldId: `dynFilt${fieldId}`,
+            formik,
+            onChange: formik.setFieldValue,
+            hanleTouched
+        }} />;
     }
 
     const ApplyBtn = styled(Button)(() => ({

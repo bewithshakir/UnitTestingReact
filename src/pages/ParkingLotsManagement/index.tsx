@@ -30,16 +30,6 @@ const customerRespFormatter = (axiosData: any): { value: string; label: string }
     return axiosData.customers.map((item: any) => ({ value: item.customerId, label: item.customerName }));
 };
 
-const fuelTaxFormatter = (axiosData: any) => {
-    if (!axiosData || !axiosData.cities) {
-        return [];
-    }
-    return axiosData.cities.map((item: any) => ({ value: item, label: item }));
-};
-
-
-
-
 const index: FC<ParkingLotsManagementProps> = memo(() => {
     const ParkingLotObj = new ParkingLotsManagementModel();
     const headCells = ParkingLotObj.fieldsToDisplay();
@@ -150,99 +140,7 @@ const index: FC<ParkingLotsManagementProps> = memo(() => {
             searchFieldName: 'search',
             placeHolder: t('parkingLotManagement.enterCustomername'),
             initialValue: { label: '', value: '' }
-        },
-        {
-            name: 'fuelType',
-            label: 'Select fuel type',
-            required: true,
-            fieldType: 'singleSelect',
-            options: [{ label: 'fuel', value: 'fuel' }, { label: 'Non fuel', value: 'non fuuuuu' }],
-            initialValue: { label: '', value: '' }
-
-        },
-        {
-            name: 'multiFuelType',
-            label: 'Select multiple fuel type',
-            required: true,
-            fieldType: 'multiSelect',
-            options: [{ label: 'fuel', value: 'fuel' }, { label: 'Non fuel', value: 'non fuuuuu' }],
-            initialValue: []
-        },
-        {
-            name: 'multiCity',
-            label: 'Multiple Select city',
-            required: true,
-            fieldType: 'multiSelect',
-            apiUrl: '/api/tax-service/fuel-taxes/filter-options',
-            responseFormatter: fuelTaxFormatter,
-            extraApiParams: { countryCode: 'us' },
-            placeHolder: t('parkingLotManagement.enterCustomername'),
-            initialValue: []
-        },
-        {
-            name: 'input123',
-            label: 'Name',
-            required: true,
-            fieldType: 'text',
-            initialValue: ""
-        },
-        {
-            name: 'deliveryDate',
-            label: 'delivery Date',
-            required: true,
-            fieldType: 'date',
-            initialValue: null,
-            placeHolder:'select delivery date'
-        },
-        {
-            name: 'pickupDateRange',
-            label: 'Select Pickup Dates',
-            required: true,
-            fieldType: 'dateRange',
-            initialValue: [null, null],
-            dateRangerPlaceHolder: {start: "Start", end: "End" }
-        },
-        {
-            name: 'addFuelTax',
-            label: 'Add fuel tax',
-            fieldType: 'checkbox',
-            initialValue: false,
-            disabled: false
-        },
-        {
-            name: 'productType',
-            label: 'Opis rack',
-            fieldType: 'radio',
-            initialValue: '',
-            disabled: false,
-            value: 'val1'
-        },
-        {
-            name: 'productType',
-            label: 'Opis retail',
-            fieldType: 'radio',
-            initialValue: '',
-            disabled: false,
-            value: 'val2'
-        },
-        {
-            name: 'productType',
-            label: 'Custom',
-            fieldType: 'radio',
-            initialValue: '',
-            disabled: false,
-            value: 'val3'
-        },
-        {
-            name: 'city',
-            label: 'Select city',
-            required: true,
-            fieldType: 'singleSelect',
-            apiUrl: '/api/tax-service/fuel-taxes/filter-options',
-            responseFormatter: fuelTaxFormatter,
-            extraApiParams: { countryCode: 'us' },
-            placeHolder: t('parkingLotManagement.enterCustomername'),
-        },
+        }
     ], []);
 
 
@@ -285,7 +183,11 @@ const index: FC<ParkingLotsManagementProps> = memo(() => {
                             (searchTerm && !(isFetching || isLoading) && data) &&
                             <Grid item display="flex" alignItems="center" paddingLeft={2.5}>
                                 <Typography color="var(--Darkgray)" variant="h4" align="center" className="fw-bold">
-                                    {getSeachedDataTotalCount(data, [t('parkingLotManagement.result(s) found'), t('parkingLotManagement.results found')])}
+                                    {getSeachedDataTotalCount(
+                                        data,
+                                        [t('parkingLotManagement.result(s) found'),
+                                        t('parkingLotManagement.results found')
+                                        ])}
                                 </Typography>
                             </Grid>
                         }
@@ -330,8 +232,10 @@ const index: FC<ParkingLotsManagementProps> = memo(() => {
                     />
 
                     <RightInfoPanel panelType="dynamic-filter"
-                        open={isFilterPanelOpen} headingText={"customer-filter-panel.header.filter"}
-                        provideFilterParams={getFilterParams} onClose={handleLotFilterPanelClose}
+                        open={isFilterPanelOpen}
+                        headingText={"customer-filter-panel.header.filter"}
+                        provideFilterParams={getFilterParams}
+                        onClose={handleLotFilterPanelClose}
                         fields={FilterByFields}
                         storeKey={'customerFilter'}
                     />
@@ -339,7 +243,12 @@ const index: FC<ParkingLotsManagementProps> = memo(() => {
 
                 </Grid>
             </Grid>
-            <RightInfoPanel panelType="info-view" open={drawerOpen} editURL={rowDataObj?.editLotUrl} headingText={rowDataObj?.deliveryLocationNm} onClose={drawerClose}>
+            <RightInfoPanel
+                panelType="info-view"
+                open={drawerOpen}
+                editURL={rowDataObj?.editLotUrl}
+                headingText={rowDataObj?.deliveryLocationNm}
+                onClose={drawerClose}>
                 {rowDataObj ? <InfoViewUI lotData={rowDataObj} rowLotId={rowLotId} /> : ''}
             </RightInfoPanel>
             <DynamicFilterDialog

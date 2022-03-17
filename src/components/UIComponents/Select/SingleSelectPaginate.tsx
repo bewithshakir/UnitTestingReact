@@ -1,6 +1,5 @@
 import React, { useCallback } from "react";
-import { components } from 'react-select';
-import { FormHelperText, InputLabel, FormControl, Box, Icon, Typography } from '@mui/material';
+import { FormHelperText, InputLabel, FormControl } from '@mui/material';
 
 import { AsyncPaginate } from "react-select-async-paginate";
 import { getDataFromServer } from "./queries";
@@ -27,27 +26,13 @@ interface Props {
     searchFieldName?: string
     responseFormatter: (data: any) => OptionItem[]
     onChange: (name: string, value: OptionItem) => any
+    onBlur?: (name: string) => any
     value?: OptionItem
 }
 
 const defaultAdditional = {
     page: 0
 };
-
-const { SingleValue } = components;
-const optionIconsSX = { width: "20px", height: "20px" };
-
-const SingleValueFrag = (props: any) => {
-    return (
-        <SingleValue {...props}>
-            <Box display="flex" alignItems="center" justifyContent="start">
-                {props.data.icon ? <Icon sx={optionIconsSX} component={props.data.icon} /> : null}
-                {props.data.label ? <Typography variant="h4" pl={props.data.icon ? 1 : 0}>{props.data.label}</Typography> : null}
-            </Box>
-        </SingleValue>
-    );
-};
-
 
 const SingleSelectPaginate = (props: Props) => {
     const { name, apiUrl,
@@ -60,7 +45,7 @@ const SingleSelectPaginate = (props: Props) => {
         value,
         id, label,
         placeholder,
-        required, searchFieldName } = props;
+        required, searchFieldName, onBlur } = props;
 
     const loadPageOptions: any = useCallback(async (q: string, prevOptions: { length: number }, { page }: { page: number }) => {
         if (q) {
@@ -86,6 +71,9 @@ const SingleSelectPaginate = (props: Props) => {
     const handleChange = (newValue: any) => {
         onChange(name, newValue);
     };
+    const handleBlur = () => {
+        onBlur && onBlur(name);
+    };
 
     return (
 
@@ -102,12 +90,13 @@ const SingleSelectPaginate = (props: Props) => {
                 </InputLabel>
             )}
             <AsyncPaginate
-                className="select-paginate-custom"
+                className={props.error ? "select-paginate-custom error" : "select-paginate-custom"}
                 classNamePrefix={'paginate-custom'}
                 additional={defaultAdditional}
                 value={value}
                 loadOptions={loadPageOptions}
                 onChange={handleChange}
+                onBlur={handleBlur}
                 noOptionsMessage={() => null}
                 defaultOptions={false}
                 menuPosition={'fixed'}
@@ -116,7 +105,6 @@ const SingleSelectPaginate = (props: Props) => {
                 components={{
                     IndicatorSeparator: () => null,
                     DropdownIndicator: () => null,
-                    SingleValue: SingleValueFrag,
                 }}
             />
             {helperText && (

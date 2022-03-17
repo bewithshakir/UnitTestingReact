@@ -2,6 +2,28 @@
   width: 100%;
 }
 .select-paginate-custom{
+  &.error {
+    border: 2px solid var(--Tertiary);
+    box-shadow: none;
+    & .paginate-custom {
+      &__control {
+        border: none;
+        box-shadow: none;
+        &:hover,
+        &:active,
+        &--is-focused {
+          border: none;
+          box-shadow: none;
+        }
+        &--menu-is-open {
+          & .paginate-custom__indicator {
+            padding-left: 18px;
+            transform: rotate(180deg);
+          }
+        }
+      }
+    }
+  }
   .paginate-custom__control{
     height: 50px;
     border-radius: 0px;
