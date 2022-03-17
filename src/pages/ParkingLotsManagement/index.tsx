@@ -79,19 +79,19 @@ const index: FC<ParkingLotsManagementProps> = memo(() => {
     };
 
     const onSortBySlected = (value: string) => {
-        let sortOrder1;
+        let oederBy;
         switch (value) {
             case SORTBY_TYPES.LOT_NAME_AZ:
-                sortOrder1 = { sortBy: "deliveryLocationNm", order: "asc" };
+                oederBy = { sortBy: "deliveryLocationNm", order: "asc" };
                 break;
             case SORTBY_TYPES.LOT_NAME_ZA:
-                sortOrder1 = { sortBy: "deliveryLocationNm", order: "desc" };
+                oederBy = { sortBy: "deliveryLocationNm", order: "desc" };
                 break;
             default:
-                sortOrder1 = { sortBy: "", order: "" };
+                oederBy = { sortBy: "", order: "" };
                 break;
         }
-        setSortOrder(sortOrder1);
+        setSortOrder(oederBy);
     };
     const handleLotFilterPanelClose = () => toggleFilterPanel(!isFilterPanelOpen);
     const handleLotFilterPanelOpen = () => {
