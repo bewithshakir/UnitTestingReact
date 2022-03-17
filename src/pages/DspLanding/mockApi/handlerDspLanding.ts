@@ -1,36 +1,11 @@
 import { rest } from "msw";
 
 export const getDspList = () => {
-    return rest.get('*/api/customer-service/customers/*/dsps*', (req, res, ctx) => {
+    return rest.get('*/api/customer-service/customers/111edit/dsps*', (req, res, ctx) => {
 
         const search = req.url.searchParams.get('search');
         const limit = req.url.searchParams.get('limit');
-        const skipPagination = req.url.searchParams.get('skipPagination');
-        if (skipPagination) {
-            return res(
-                ctx.status(200),
-                ctx.json({
-                    data: {
-                        dsps: [
-                            {
-                                address: "12343 Bonfire Dr",
-                                city: "Reisterstown",
-                                contactName: "harikrishna",
-                                customerId: "123",
-                                email: "abc@gmail.com",
-                                id: "01c4",
-                                lots: [],
-                                name: "KrrishTest",
-                                postalCode: "21136",
-                                state: "MD",
-                                totalLotAssigned: 0,
-                            },
-                        ]
-                    },
-                    error: null
-                })
-            );
-        }
+
         if (limit && search) {
             // DSP Search
             return res(
@@ -93,6 +68,7 @@ export const getDspList = () => {
                 })
             );
         }
+
         if (req.params[1]) {
             // Edit DSP form
             return res(
@@ -118,8 +94,7 @@ export const getDspList = () => {
                     error: null
                 })
             );
-        }
-        else {
+        } else {
             // DSP Landing
             return res(
                 ctx.status(200),

@@ -40,7 +40,7 @@ import { rightInfoFilterHandler } from '../components/UIComponents/RightInfoPane
 import { getProductHandler } from '../mockAPI/productService/products/GET';
 import { postProductHandler } from '../mockAPI/productService/products/POST';
 import { putProductHandler } from '../mockAPI/productService/products/PUT';
-import { addUserHandler, verifyUserHandler, getUserGroupsHandler, getUserPermissionHandler } from '../pages/Users/AddUser/mockApi/handlerAddUser';
+import { addUserHandler, verifyUserHandler, getUserGroupsHandler, getUserDSPDropdownHandler, getUserPermissionHandler } from '../pages/Users/AddUser/mockApi/handlerAddUser';
 
 export const handlers = [
     getProductHandler(),
@@ -91,6 +91,7 @@ export const handlers = [
     verifyUserHandler(),
     getUserGroupsHandler(),
     getUserPermissionHandler(),
+    getUserDSPDropdownHandler(),
 ];
 
 const createTestQueryClient = () => new QueryClient({

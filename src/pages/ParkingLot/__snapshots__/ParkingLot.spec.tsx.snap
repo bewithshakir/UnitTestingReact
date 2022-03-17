@@ -719,7 +719,6 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                 "lg",
                 "xl",
               ],
-              "not": [Function],
               "only": [Function],
               "unit": "px",
               "up": [Function],
@@ -2282,7 +2281,6 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                                     "lg",
                                                     "xl",
                                                   ],
-                                                  "not": [Function],
                                                   "only": [Function],
                                                   "unit": "px",
                                                   "up": [Function],
@@ -2705,7 +2703,6 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                                   "lg",
                                                   "xl",
                                                 ],
-                                                "not": [Function],
                                                 "only": [Function],
                                                 "unit": "px",
                                                 "up": [Function],
@@ -3260,7 +3257,6 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                                       "lg",
                                                       "xl",
                                                     ],
-                                                    "not": [Function],
                                                     "only": [Function],
                                                     "unit": "px",
                                                     "up": [Function],
@@ -6107,7 +6103,6 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                                       "lg",
                                                       "xl",
                                                     ],
-                                                    "not": [Function],
                                                     "only": [Function],
                                                     "unit": "px",
                                                     "up": [Function],
@@ -7093,7 +7088,6 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                                           "lg",
                                                           "xl",
                                                         ],
-                                                        "not": [Function],
                                                         "only": [Function],
                                                         "unit": "px",
                                                         "up": [Function],
@@ -7921,14 +7915,6 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                                                           disablePortal={true}
                                                                           modifiers={
                                                                             Array [
-                                                                              Object {
-                                                                                "enabled": true,
-                                                                                "name": "flip",
-                                                                                "options": Object {
-                                                                                  "altBoundary": true,
-                                                                                  "rootBoundary": "viewport",
-                                                                                },
-                                                                              },
                                                                               Object {
                                                                                 "enabled": true,
                                                                                 "name": "preventOverflow",
