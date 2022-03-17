@@ -153,6 +153,7 @@ const index: FC<ParkingLotsManagementProps> = memo(() => {
                     <Grid item md={4} lg={3} display="flex" justifyContent="flex-end">
                         <Grid item pr={2.5}>
                             <Button
+                                className="add-lot-btn-lot-management"
                                 types="primary"
                                 aria-label="primary"
                                 onClick={handleAddBtnClick}

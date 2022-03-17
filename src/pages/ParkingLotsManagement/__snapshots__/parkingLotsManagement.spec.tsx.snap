@@ -148,6 +148,118 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                 "staleTimeoutId": undefined,
                 "trackedProps": Array [],
               },
+              InfiniteQueryObserver {
+                "client": [Circular],
+                "currentQuery": [Circular],
+                "currentQueryInitialState": Object {
+                  "data": undefined,
+                  "dataUpdateCount": 0,
+                  "dataUpdatedAt": 0,
+                  "error": null,
+                  "errorUpdateCount": 0,
+                  "errorUpdatedAt": 0,
+                  "fetchFailureCount": 0,
+                  "fetchMeta": null,
+                  "isFetching": true,
+                  "isInvalidated": false,
+                  "isPaused": false,
+                  "status": "loading",
+                },
+                "currentResult": Object {
+                  "data": undefined,
+                  "dataUpdatedAt": 0,
+                  "error": null,
+                  "errorUpdatedAt": 0,
+                  "failureCount": 0,
+                  "fetchNextPage": [Function],
+                  "fetchPreviousPage": [Function],
+                  "hasNextPage": undefined,
+                  "hasPreviousPage": undefined,
+                  "isError": false,
+                  "isFetched": false,
+                  "isFetchedAfterMount": false,
+                  "isFetching": true,
+                  "isFetchingNextPage": false,
+                  "isFetchingPreviousPage": false,
+                  "isIdle": false,
+                  "isLoading": true,
+                  "isLoadingError": false,
+                  "isPlaceholderData": false,
+                  "isPreviousData": false,
+                  "isRefetchError": false,
+                  "isStale": true,
+                  "isSuccess": false,
+                  "refetch": [Function],
+                  "remove": [Function],
+                  "status": "loading",
+                },
+                "currentResultOptions": Object {
+                  "_defaulted": true,
+                  "behavior": Object {
+                    "onFetch": [Function],
+                  },
+                  "getNextPageParam": [Function],
+                  "keepPreviousData": true,
+                  "optimisticResults": true,
+                  "queryFn": [Function],
+                  "queryHash": "[\\"getAllParkingLotList\\",\\"\\",{\\"order\\":\\"\\",\\"sortBy\\":\\"\\"},{}]",
+                  "queryKey": Array [
+                    "getAllParkingLotList",
+                    "",
+                    Object {
+                      "order": "",
+                      "sortBy": "",
+                    },
+                    Object {},
+                  ],
+                },
+                "currentResultState": Object {
+                  "data": undefined,
+                  "dataUpdateCount": 0,
+                  "dataUpdatedAt": 0,
+                  "error": null,
+                  "errorUpdateCount": 0,
+                  "errorUpdatedAt": 0,
+                  "fetchFailureCount": 0,
+                  "fetchMeta": null,
+                  "isFetching": true,
+                  "isInvalidated": false,
+                  "isPaused": false,
+                  "status": "loading",
+                },
+                "fetchNextPage": [Function],
+                "fetchPreviousPage": [Function],
+                "listeners": Array [
+                  [Function],
+                ],
+                "options": Object {
+                  "_defaulted": true,
+                  "behavior": Object {
+                    "onFetch": [Function],
+                  },
+                  "getNextPageParam": [Function],
+                  "keepPreviousData": true,
+                  "optimisticResults": true,
+                  "queryFn": [Function],
+                  "queryHash": "[\\"getAllParkingLotList\\",\\"\\",{\\"order\\":\\"\\",\\"sortBy\\":\\"\\"},{}]",
+                  "queryKey": Array [
+                    "getAllParkingLotList",
+                    "",
+                    Object {
+                      "order": "",
+                      "sortBy": "",
+                    },
+                    Object {},
+                  ],
+                },
+                "previousQueryResult": undefined,
+                "previousSelectError": null,
+                "refetch": [Function],
+                "refetchIntervalId": undefined,
+                "remove": [Function],
+                "staleTimeoutId": undefined,
+                "trackedProps": Array [],
+              },
             ],
             "options": Object {
               "_defaulted": true,
@@ -353,6 +465,118 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                 "staleTimeoutId": undefined,
                 "trackedProps": Array [],
               },
+              InfiniteQueryObserver {
+                "client": [Circular],
+                "currentQuery": [Circular],
+                "currentQueryInitialState": Object {
+                  "data": undefined,
+                  "dataUpdateCount": 0,
+                  "dataUpdatedAt": 0,
+                  "error": null,
+                  "errorUpdateCount": 0,
+                  "errorUpdatedAt": 0,
+                  "fetchFailureCount": 0,
+                  "fetchMeta": null,
+                  "isFetching": true,
+                  "isInvalidated": false,
+                  "isPaused": false,
+                  "status": "loading",
+                },
+                "currentResult": Object {
+                  "data": undefined,
+                  "dataUpdatedAt": 0,
+                  "error": null,
+                  "errorUpdatedAt": 0,
+                  "failureCount": 0,
+                  "fetchNextPage": [Function],
+                  "fetchPreviousPage": [Function],
+                  "hasNextPage": undefined,
+                  "hasPreviousPage": undefined,
+                  "isError": false,
+                  "isFetched": false,
+                  "isFetchedAfterMount": false,
+                  "isFetching": true,
+                  "isFetchingNextPage": false,
+                  "isFetchingPreviousPage": false,
+                  "isIdle": false,
+                  "isLoading": true,
+                  "isLoadingError": false,
+                  "isPlaceholderData": false,
+                  "isPreviousData": false,
+                  "isRefetchError": false,
+                  "isStale": true,
+                  "isSuccess": false,
+                  "refetch": [Function],
+                  "remove": [Function],
+                  "status": "loading",
+                },
+                "currentResultOptions": Object {
+                  "_defaulted": true,
+                  "behavior": Object {
+                    "onFetch": [Function],
+                  },
+                  "getNextPageParam": [Function],
+                  "keepPreviousData": true,
+                  "optimisticResults": true,
+                  "queryFn": [Function],
+                  "queryHash": "[\\"getAllParkingLotList\\",\\"\\",{\\"order\\":\\"\\",\\"sortBy\\":\\"\\"},{}]",
+                  "queryKey": Array [
+                    "getAllParkingLotList",
+                    "",
+                    Object {
+                      "order": "",
+                      "sortBy": "",
+                    },
+                    Object {},
+                  ],
+                },
+                "currentResultState": Object {
+                  "data": undefined,
+                  "dataUpdateCount": 0,
+                  "dataUpdatedAt": 0,
+                  "error": null,
+                  "errorUpdateCount": 0,
+                  "errorUpdatedAt": 0,
+                  "fetchFailureCount": 0,
+                  "fetchMeta": null,
+                  "isFetching": true,
+                  "isInvalidated": false,
+                  "isPaused": false,
+                  "status": "loading",
+                },
+                "fetchNextPage": [Function],
+                "fetchPreviousPage": [Function],
+                "listeners": Array [
+                  [Function],
+                ],
+                "options": Object {
+                  "_defaulted": true,
+                  "behavior": Object {
+                    "onFetch": [Function],
+                  },
+                  "getNextPageParam": [Function],
+                  "keepPreviousData": true,
+                  "optimisticResults": true,
+                  "queryFn": [Function],
+                  "queryHash": "[\\"getAllParkingLotList\\",\\"\\",{\\"order\\":\\"\\",\\"sortBy\\":\\"\\"},{}]",
+                  "queryKey": Array [
+                    "getAllParkingLotList",
+                    "",
+                    Object {
+                      "order": "",
+                      "sortBy": "",
+                    },
+                    Object {},
+                  ],
+                },
+                "previousQueryResult": undefined,
+                "previousSelectError": null,
+                "refetch": [Function],
+                "refetchIntervalId": undefined,
+                "remove": [Function],
+                "staleTimeoutId": undefined,
+                "trackedProps": Array [],
+              },
             ],
             "options": Object {
               "_defaulted": true,
@@ -462,7 +686,6 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                 "lg",
                 "xl",
               ],
-              "not": [Function],
               "only": [Function],
               "unit": "px",
               "up": [Function],
@@ -775,7 +998,9 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                             startIcon={<FilterIcon />}
                             types="filter"
                           >
+                             
                             buttons.filter
+                             
                           </Button>
                         </ForwardRef(Grid)>
                         <ForwardRef(Grid)
@@ -824,6 +1049,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                         >
                           <Button
                             aria-label="primary"
+                            className="add-lot-btn-lot-management"
                             onClick={[Function]}
                             startIcon={<Memo />}
                             types="primary"
@@ -954,7 +1180,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                           ]
                         }
                         isLoading={true}
-                        noDataMsg="Add Parking Lot by clicking on the \\"ADD LOT\\" button."
+                        noDataMsg="parkingLotManagement.noDataMsg"
                         onRowActionSelect={[Function]}
                         openDrawer={[Function]}
                         primaryKey="deliveryLocationId"
@@ -1099,7 +1325,9 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                 startIcon={<FilterIcon />}
                                 types="filter"
                               >
+                                 
                                 buttons.filter
+                                 
                               </Button>
                             </ForwardRef(Grid)>
                             <ForwardRef(Grid)
@@ -1148,6 +1376,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                             >
                               <Button
                                 aria-label="primary"
+                                className="add-lot-btn-lot-management"
                                 onClick={[Function]}
                                 startIcon={<Memo />}
                                 types="primary"
@@ -1227,7 +1456,9 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                     startIcon={<FilterIcon />}
                                     types="filter"
                                   >
+                                     
                                     buttons.filter
+                                     
                                   </Button>
                                 </ForwardRef(Grid)>,
                                 <ForwardRef(Grid)
@@ -1306,7 +1537,9 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                       startIcon={<FilterIcon />}
                                       types="filter"
                                     >
+                                       
                                       buttons.filter
+                                       
                                     </Button>,
                                     "columnSpacing": 0,
                                     "columns": 12,
@@ -1463,7 +1696,9 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                     </svg>
                                                   </FilterIcon>
                                                 </span>
+                                                 
                                                 buttons.filter
+                                                 
                                               </span>
                                               <WithStyles(memo)
                                                 center={false}
@@ -1980,7 +2215,6 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                     "lg",
                                                     "xl",
                                                   ],
-                                                  "not": [Function],
                                                   "only": [Function],
                                                   "unit": "px",
                                                   "up": [Function],
@@ -2403,7 +2637,6 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                   "lg",
                                                   "xl",
                                                 ],
-                                                "not": [Function],
                                                 "only": [Function],
                                                 "unit": "px",
                                                 "up": [Function],
@@ -2958,7 +3191,6 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                       "lg",
                                                       "xl",
                                                     ],
-                                                    "not": [Function],
                                                     "only": [Function],
                                                     "unit": "px",
                                                     "up": [Function],
@@ -3329,6 +3561,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                 >
                                   <Button
                                     aria-label="primary"
+                                    className="add-lot-btn-lot-management"
                                     onClick={[Function]}
                                     startIcon={<Memo />}
                                     types="primary"
@@ -3395,6 +3628,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                   Object {
                                     "children": <Button
                                       aria-label="primary"
+                                      className="add-lot-btn-lot-management"
                                       onClick={[Function]}
                                       startIcon={<Memo />}
                                       types="primary"
@@ -3430,20 +3664,21 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                 >
                                   <Button
                                     aria-label="primary"
+                                    className="add-lot-btn-lot-management"
                                     onClick={[Function]}
                                     startIcon={<Memo />}
                                     types="primary"
                                   >
                                     <WithStyles(ForwardRef(Button))
                                       aria-label="primary"
-                                      className="btn-primary "
+                                      className="btn-primary add-lot-btn-lot-management"
                                       onClick={[Function]}
                                       startIcon={<Memo />}
                                       variant="contained"
                                     >
                                       <ForwardRef(Button)
                                         aria-label="primary"
-                                        className="btn-primary "
+                                        className="btn-primary add-lot-btn-lot-management"
                                         classes={
                                           Object {
                                             "colorInherit": "MuiButton-colorInherit",
@@ -3483,7 +3718,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                       >
                                         <WithStyles(ForwardRef(ButtonBase))
                                           aria-label="primary"
-                                          className="MuiButton-root MuiButton-contained btn-primary "
+                                          className="MuiButton-root MuiButton-contained btn-primary add-lot-btn-lot-management"
                                           component="button"
                                           disabled={false}
                                           focusRipple={true}
@@ -3493,7 +3728,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                         >
                                           <ForwardRef(ButtonBase)
                                             aria-label="primary"
-                                            className="MuiButton-root MuiButton-contained btn-primary "
+                                            className="MuiButton-root MuiButton-contained btn-primary add-lot-btn-lot-management"
                                             classes={
                                               Object {
                                                 "disabled": "Mui-disabled",
@@ -3510,7 +3745,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                           >
                                             <button
                                               aria-label="primary"
-                                              className="MuiButtonBase-root MuiButton-root MuiButton-contained btn-primary "
+                                              className="MuiButtonBase-root MuiButton-root MuiButton-contained btn-primary add-lot-btn-lot-management"
                                               disabled={false}
                                               onBlur={[Function]}
                                               onClick={[Function]}
@@ -4029,7 +4264,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                               ]
                             }
                             isLoading={true}
-                            noDataMsg="Add Parking Lot by clicking on the \\"ADD LOT\\" button."
+                            noDataMsg="parkingLotManagement.noDataMsg"
                             onRowActionSelect={[Function]}
                             openDrawer={[Function]}
                             primaryKey="deliveryLocationId"
@@ -4243,7 +4478,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                           ]
                         }
                         isLoading={true}
-                        noDataMsg="Add Parking Lot by clicking on the \\"ADD LOT\\" button."
+                        noDataMsg="parkingLotManagement.noDataMsg"
                         onRowActionSelect={[Function]}
                         openDrawer={[Function]}
                         primaryKey="deliveryLocationId"
@@ -4568,7 +4803,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                       ]
                                     }
                                     isLoading={true}
-                                    noDataMsg="Add Parking Lot by clicking on the \\"ADD LOT\\" button."
+                                    noDataMsg="parkingLotManagement.noDataMsg"
                                     onRowActionSelect={[Function]}
                                     openDrawer={[Function]}
                                     order="asc"
@@ -4905,7 +5140,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                             ]
                                           }
                                           isLoading={true}
-                                          noDataMsg="Add Parking Lot by clicking on the \\"ADD LOT\\" button."
+                                          noDataMsg="parkingLotManagement.noDataMsg"
                                           onRowActionSelect={[Function]}
                                           openDrawer={[Function]}
                                           order="asc"
@@ -5991,7 +6226,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                         ]
                                       }
                                       isLoading={true}
-                                      noDataMsg="Add Parking Lot by clicking on the \\"ADD LOT\\" button."
+                                      noDataMsg="parkingLotManagement.noDataMsg"
                                       onRowActionSelect={[Function]}
                                       openDrawer={[Function]}
                                       order="asc"
@@ -6031,7 +6266,6 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                                                       "lg",
                                                       "xl",
                                                     ],
-                                                    "not": [Function],
                                                     "only": [Function],
                                                     "unit": "px",
                                                     "up": [Function],
@@ -7804,6 +8038,430 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
               </MuiDrawerDocked>
             </ForwardRef(Drawer)>
           </RightInfoPanel>
+          <DynamicFilterDialog
+            fields={
+              Array [
+                Object {
+                  "apiUrl": "/api/customer-service/customers",
+                  "extraApiParams": Object {
+                    "countryCode": "us",
+                  },
+                  "fieldType": "singleSelectPaginate",
+                  "initialValue": Object {
+                    "label": "",
+                    "value": "",
+                  },
+                  "label": "Customer",
+                  "name": "customer",
+                  "placeHolder": "parkingLotManagement.enterCustomername",
+                  "required": true,
+                  "responseFormatter": [Function],
+                  "searchFieldName": "search",
+                },
+              ]
+            }
+            handleConfirm={[Function]}
+            handleToggle={[Function]}
+            open={false}
+            title=""
+          >
+            <ForwardRef(Dialog)
+              aria-describedby="dynamic-filter-dialog-description"
+              aria-labelledby="dynamic-filter-dialog-title"
+              open={false}
+            >
+              <MuiDialogRoot
+                BackdropComponent={
+                  Object {
+                    "$$typeof": Symbol(react.forward_ref),
+                    "__emotion_base": Object {
+                      "$$typeof": Symbol(react.forward_ref),
+                      "propTypes": Object {
+                        "children": [Function],
+                        "className": [Function],
+                        "classes": [Function],
+                        "components": [Function],
+                        "componentsProps": [Function],
+                        "invisible": [Function],
+                        "open": [Function],
+                        "sx": [Function],
+                        "transitionDuration": [Function],
+                      },
+                      "render": [Function],
+                    },
+                    "__emotion_forwardProp": [Function],
+                    "__emotion_real": [Circular],
+                    "__emotion_styles": Array [
+                      "label:MuiDialog-backdrop;",
+                      Object {
+                        "zIndex": -1,
+                      },
+                      [Function],
+                    ],
+                    "defaultProps": undefined,
+                    "render": [Function],
+                    "withComponent": [Function],
+                  }
+                }
+                BackdropProps={
+                  Object {
+                    "as": undefined,
+                    "transitionDuration": Object {
+                      "enter": 225,
+                      "exit": 195,
+                    },
+                  }
+                }
+                className="MuiDialog-root"
+                closeAfterTransition={true}
+                disableEscapeKeyDown={false}
+                onClick={[Function]}
+                open={false}
+                ownerState={
+                  Object {
+                    "aria-describedby": "dynamic-filter-dialog-description",
+                    "aria-labelledby": "dynamic-filter-dialog-title",
+                    "children": <Context.Provider
+                      value={
+                        Object {
+                          "dirty": false,
+                          "errors": Object {},
+                          "getFieldHelpers": [Function],
+                          "getFieldMeta": [Function],
+                          "getFieldProps": [Function],
+                          "handleBlur": [Function],
+                          "handleChange": [Function],
+                          "handleReset": [Function],
+                          "handleSubmit": [Function],
+                          "initialErrors": Object {},
+                          "initialStatus": undefined,
+                          "initialTouched": Object {},
+                          "initialValues": Object {
+                            "customer": Object {
+                              "label": "",
+                              "value": "",
+                            },
+                          },
+                          "isSubmitting": false,
+                          "isValid": true,
+                          "isValidating": false,
+                          "registerField": [Function],
+                          "resetForm": [Function],
+                          "setErrors": [Function],
+                          "setFieldError": [Function],
+                          "setFieldTouched": [Function],
+                          "setFieldValue": [Function],
+                          "setFormikState": [Function],
+                          "setStatus": [Function],
+                          "setSubmitting": [Function],
+                          "setTouched": [Function],
+                          "setValues": [Function],
+                          "status": undefined,
+                          "submitCount": 0,
+                          "submitForm": [Function],
+                          "touched": Object {},
+                          "unregisterField": [Function],
+                          "validateField": [Function],
+                          "validateForm": [Function],
+                          "validateOnBlur": true,
+                          "validateOnChange": true,
+                          "validateOnMount": false,
+                          "values": Object {
+                            "customer": Object {
+                              "label": "",
+                              "value": "",
+                            },
+                          },
+                        }
+                      }
+                    >
+                      <form
+                        className="filterDialogForm"
+                        onReset={[Function]}
+                        onSubmit={[Function]}
+                      >
+                        <ForwardRef(Grid)
+                          container={true}
+                          direction="column"
+                        >
+                          <div
+                            className="dyn-filter-dialog-container"
+                            id="discard-dialogue"
+                          >
+                            
+                            <ForwardRef(DialogContent)
+                              className="dialog-content"
+                            >
+                              <ForwardRef(Grid)
+                                item={true}
+                                mb={2.5}
+                                mt={2}
+                              >
+                                <selectPaginate
+                                  field={
+                                    Object {
+                                      "apiUrl": "/api/customer-service/customers",
+                                      "extraApiParams": Object {
+                                        "countryCode": "us",
+                                      },
+                                      "fieldType": "singleSelectPaginate",
+                                      "initialValue": Object {
+                                        "label": "",
+                                        "value": "",
+                                      },
+                                      "label": "Customer",
+                                      "name": "customer",
+                                      "placeHolder": "parkingLotManagement.enterCustomername",
+                                      "required": true,
+                                      "responseFormatter": [Function],
+                                      "searchFieldName": "search",
+                                    }
+                                  }
+                                  fieldId="dynFilt0"
+                                  formik={
+                                    Object {
+                                      "dirty": false,
+                                      "errors": Object {},
+                                      "getFieldHelpers": [Function],
+                                      "getFieldMeta": [Function],
+                                      "getFieldProps": [Function],
+                                      "handleBlur": [Function],
+                                      "handleChange": [Function],
+                                      "handleReset": [Function],
+                                      "handleSubmit": [Function],
+                                      "initialErrors": Object {},
+                                      "initialStatus": undefined,
+                                      "initialTouched": Object {},
+                                      "initialValues": Object {
+                                        "customer": Object {
+                                          "label": "",
+                                          "value": "",
+                                        },
+                                      },
+                                      "isSubmitting": false,
+                                      "isValid": true,
+                                      "isValidating": false,
+                                      "registerField": [Function],
+                                      "resetForm": [Function],
+                                      "setErrors": [Function],
+                                      "setFieldError": [Function],
+                                      "setFieldTouched": [Function],
+                                      "setFieldValue": [Function],
+                                      "setFormikState": [Function],
+                                      "setStatus": [Function],
+                                      "setSubmitting": [Function],
+                                      "setTouched": [Function],
+                                      "setValues": [Function],
+                                      "status": undefined,
+                                      "submitCount": 0,
+                                      "submitForm": [Function],
+                                      "touched": Object {},
+                                      "unregisterField": [Function],
+                                      "validateField": [Function],
+                                      "validateForm": [Function],
+                                      "validateOnBlur": true,
+                                      "validateOnChange": true,
+                                      "validateOnMount": false,
+                                      "values": Object {
+                                        "customer": Object {
+                                          "label": "",
+                                          "value": "",
+                                        },
+                                      },
+                                    }
+                                  }
+                                  handleTouched={[Function]}
+                                  onChange={[Function]}
+                                />
+                              </ForwardRef(Grid)>
+                            </ForwardRef(DialogContent)>
+                            <ForwardRef(DialogActions)
+                              className="dialog-actions"
+                            >
+                              <ForwardRef(Grid)
+                                className="lastItem"
+                                container={true}
+                                direction="row"
+                                item={true}
+                                justifyContent="flex-end"
+                                mt={2.5}
+                              >
+                                <ForwardRef(Grid)
+                                  item={true}
+                                >
+                                  <Button
+                                    className="action-no"
+                                    onClick={[Function]}
+                                    types="cancel"
+                                    variant="outlined"
+                                  >
+                                    Cancel
+                                  </Button>
+                                </ForwardRef(Grid)>
+                                <ForwardRef(Grid)
+                                  item={true}
+                                >
+                                  <Styled(Button)
+                                    data-testid="applyAll"
+                                    disabled={true}
+                                    id="applyAll"
+                                    type="submit"
+                                    types="save"
+                                  >
+                                    Continue
+                                  </Styled(Button)>
+                                </ForwardRef(Grid)>
+                              </ForwardRef(Grid)>
+                            </ForwardRef(DialogActions)>
+                          </div>
+                        </ForwardRef(Grid)>
+                      </form>
+                    </Context.Provider>,
+                    "disableEscapeKeyDown": false,
+                    "fullScreen": false,
+                    "fullWidth": false,
+                    "maxWidth": "sm",
+                    "open": false,
+                    "scroll": "paper",
+                  }
+                }
+              >
+                <ForwardRef(Modal)
+                  BackdropComponent={
+                    Object {
+                      "$$typeof": Symbol(react.forward_ref),
+                      "__emotion_base": Object {
+                        "$$typeof": Symbol(react.forward_ref),
+                        "propTypes": Object {
+                          "children": [Function],
+                          "className": [Function],
+                          "classes": [Function],
+                          "components": [Function],
+                          "componentsProps": [Function],
+                          "invisible": [Function],
+                          "open": [Function],
+                          "sx": [Function],
+                          "transitionDuration": [Function],
+                        },
+                        "render": [Function],
+                      },
+                      "__emotion_forwardProp": [Function],
+                      "__emotion_real": [Circular],
+                      "__emotion_styles": Array [
+                        "label:MuiDialog-backdrop;",
+                        Object {
+                          "zIndex": -1,
+                        },
+                        [Function],
+                      ],
+                      "defaultProps": undefined,
+                      "render": [Function],
+                      "withComponent": [Function],
+                    }
+                  }
+                  BackdropProps={
+                    Object {
+                      "as": undefined,
+                      "transitionDuration": Object {
+                        "enter": 225,
+                        "exit": 195,
+                      },
+                    }
+                  }
+                  className="MuiDialog-root css-1h8td7x-MuiDialog-root"
+                  closeAfterTransition={true}
+                  disableEscapeKeyDown={false}
+                  onClick={[Function]}
+                  open={false}
+                >
+                  <ForwardRef(ModalUnstyled)
+                    BackdropComponent={
+                      Object {
+                        "$$typeof": Symbol(react.forward_ref),
+                        "__emotion_base": Object {
+                          "$$typeof": Symbol(react.forward_ref),
+                          "propTypes": Object {
+                            "children": [Function],
+                            "className": [Function],
+                            "classes": [Function],
+                            "components": [Function],
+                            "componentsProps": [Function],
+                            "invisible": [Function],
+                            "open": [Function],
+                            "sx": [Function],
+                            "transitionDuration": [Function],
+                          },
+                          "render": [Function],
+                        },
+                        "__emotion_forwardProp": [Function],
+                        "__emotion_real": [Circular],
+                        "__emotion_styles": Array [
+                          "label:MuiDialog-backdrop;",
+                          Object {
+                            "zIndex": -1,
+                          },
+                          [Function],
+                        ],
+                        "defaultProps": undefined,
+                        "render": [Function],
+                        "withComponent": [Function],
+                      }
+                    }
+                    BackdropProps={
+                      Object {
+                        "as": undefined,
+                        "transitionDuration": Object {
+                          "enter": 225,
+                          "exit": 195,
+                        },
+                      }
+                    }
+                    className="MuiDialog-root css-1h8td7x-MuiDialog-root"
+                    closeAfterTransition={true}
+                    components={
+                      Object {
+                        "Root": Object {
+                          "$$typeof": Symbol(react.forward_ref),
+                          "__emotion_base": "div",
+                          "__emotion_forwardProp": [Function],
+                          "__emotion_real": [Circular],
+                          "__emotion_styles": Array [
+                            "label:MuiModal-root;",
+                            [Function],
+                            [Function],
+                            [Function],
+                            [Function],
+                          ],
+                          "defaultProps": undefined,
+                          "render": [Function],
+                          "withComponent": [Function],
+                        },
+                      }
+                    }
+                    componentsProps={
+                      Object {
+                        "root": Object {
+                          "ownerState": Object {},
+                        },
+                      }
+                    }
+                    disableAutoFocus={false}
+                    disableEnforceFocus={false}
+                    disableEscapeKeyDown={false}
+                    disablePortal={false}
+                    disableRestoreFocus={false}
+                    disableScrollLock={false}
+                    hideBackdrop={false}
+                    keepMounted={false}
+                    onClick={[Function]}
+                    onTransitionEnter={[Function]}
+                    onTransitionExited={[Function]}
+                    open={false}
+                  />
+                </ForwardRef(Modal)>
+              </MuiDialogRoot>
+            </ForwardRef(Dialog)>
+          </DynamicFilterDialog>
         </div>
       </Styled(div)>
     </ForwardRef(Box)>

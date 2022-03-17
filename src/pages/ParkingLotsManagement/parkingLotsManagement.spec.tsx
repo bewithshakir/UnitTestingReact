@@ -54,3 +54,21 @@ describe('Given All ParkingLots Landing Page', () => {
     expect(BurgerMenu.find('.actions-popper').exists()).toBe(true);
   });
 });
+
+describe('on Click on add lot button dialog should open', () => {
+  const Page = mount(
+    <QueryClientProvider client={queryClient}>
+      <ParkingLotsManagementLadingPage version={'NavLinks'} />
+    </QueryClientProvider>
+  );
+  test('render search customer modal on btn click', () => {
+    const addLotBtn = Page.find("button.add-lot-btn-lot-management");
+    addLotBtn.simulate('click');
+    expect(Page.find('.dyn-filter-dialog-container').exists()).toBe(true);
+    const dialogBox = Page.find('.dyn-filter-dialog-container');
+    expect(dialogBox.find('label.MuiInputLabel-root').exists()).toBe(true);
+    const dialogBoxLabel = dialogBox.find('label.MuiInputLabel-root');
+    expect(dialogBoxLabel.find('b').text().includes('CUSTOMER*')).toBe(true);
+    expect(dialogBox.find('input.paginate-custom__input').exists()).toBe(true);
+  });
+});
