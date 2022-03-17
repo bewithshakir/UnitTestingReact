@@ -1,10 +1,11 @@
 
 import { FormikProvider, useFormik } from 'formik';
+import * as Yup from 'yup';
 import { Dialog, DialogContent, DialogActions, Typography } from '@mui/material';
 import { styled } from '@mui/system';
 import { Button } from '../Button/Button.component';
 import { useTheme } from '../../../contexts/Theme/Theme.context';
-import { FilterDialogField } from './config';
+import { FilterDialogField, getYupSchema } from './config';
 import SelectPaginate from './inputComponents/selectPaginate';
 import Select from './inputComponents/select';
 import SelectDynamic from './inputComponents/selectDynamic';
@@ -30,12 +31,18 @@ interface Props {
 function DynamicFilterDialog(props: Props) {
     const { title, open, handleToggle, handleConfirm, cancelBtnTitle, nextBtnTitle, fields } = props;
     const { theme } = useTheme();
+    const validationObject: { [k: string]: any } = {};
+
     const initialValues = fields.reduce((acc, field) => {
+        if (field.required) {
+            validationObject[field.name] = Yup.string().required();
+        }
         acc[field.name] = field.initialValue;
         return acc;
     }, {} as any);
     const formik = useFormik({
         initialValues,
+        validationSchema: getYupSchema(fields),
         onSubmit: (values) => {
             handleConfirm(values);
         },
@@ -132,7 +139,7 @@ function DynamicFilterDialog(props: Props) {
                                 id="applyAll"
                                 type="submit"
                                 types="save"
-                                disabled={!formik.dirty}
+                                disabled={!formik.dirty || !formik.isValid}
                                 aria-label={nextBtnTitle}
                             >
                                 {nextBtnTitle || 'Continue'}
