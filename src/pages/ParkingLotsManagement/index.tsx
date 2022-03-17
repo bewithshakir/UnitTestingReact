@@ -104,14 +104,14 @@ const index: FC<ParkingLotsManagementProps> = memo(() => {
     const openDrawer = (row: any) => {
         setDrawerOpen(true);
         saveRowLotId(row.deliveryLocationId);
-        saveRowDataObj({ ...row, editLotUrl: `/customer/${row.customerId}/parkingLots/viewLot/${row.deliveryLocationId}` });
+        saveRowDataObj({ ...row, editLotUrl: `/customer/${row.customerId}/parkingLots/viewLot/${row.deliveryLocationId}?backTo=parkinglotlanding` });
     };
     const drawerClose = () => {
         setDrawerOpen(false);
     };
     const handleRedirectAddLot = (formData: any) => {
         setPageCustomerName(formData?.customer?.label);
-        navigate(`/customer/${formData?.customer?.value}/parkingLots/addLot`);
+        navigate(`/customer/${formData?.customer?.value}/parkingLots/addLot?backTo=parkinglotlanding`);
     };
     return (
         <Box display="flex" mt={10} ml={8}>
@@ -153,6 +153,7 @@ const index: FC<ParkingLotsManagementProps> = memo(() => {
                     <Grid item md={4} lg={3} display="flex" justifyContent="flex-end">
                         <Grid item pr={2.5}>
                             <Button
+                                className="add-lot-btn-lot-management"
                                 types="primary"
                                 aria-label="primary"
                                 onClick={handleAddBtnClick}
