@@ -4,9 +4,9 @@ import { getInputHelperText, getInputError } from "../../../../utils/helperFunct
 
 
 const InputText = (props: DialogInputProps) => {
-    const { field, fieldId, formik, onChange, hanleTouched } = props;
+    const { field, fieldId, formik, onChange, handleTouched } = props;
     const handleBlur = () => {
-        hanleTouched(field.name);
+        handleTouched(field.name);
     };
     return <TextInput
         id={fieldId}

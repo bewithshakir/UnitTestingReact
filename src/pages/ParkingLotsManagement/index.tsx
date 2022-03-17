@@ -1,4 +1,4 @@
-import React, { FC, memo, useEffect, useMemo, useState } from 'react';
+import React, { FC, memo, useEffect, useState } from 'react';
 import { HorizontalBarVersionState, useAddedCustomerNameStore, useStore } from '../../store';
 import { Box, Grid, FormControl, Typography } from "@mui/material";
 import { Button } from "../../components/UIComponents/Button/Button.component";
@@ -13,22 +13,14 @@ import ParkingLotsManagementModel from '../../models/ParkingLotsManagementModel'
 import { useAllParkingLotList } from './queries';
 import GridComponent from "../../components/UIComponents/DataGird/grid.component";
 import { DataGridActionsMenuOption } from '../../components/UIComponents/Menu/DataGridActionsMenu.component';
-import { AllParkingLots, ROW_ACTION_TYPES, SORTBY_TYPES } from './config';
+import { AllParkingLots, getAddLotDialogFields, ROW_ACTION_TYPES, SORTBY_TYPES } from './config';
 import { RightInfoPanel } from "../../components/UIComponents/RightInfoPanel/RightInfoPanel.component";
 import { getSeachedDataTotalCount } from '../../utils/helperFunctions';
 import InfoViewUI from './infoViewUI/InfoViewUI.component';
 import DynamicFilterDialog from '../../components/UIComponents/ConfirmationDialog/DynamicFilterDialog.component';
-import { FilterDialogField } from '../../components/UIComponents/ConfirmationDialog/config';
 export interface ParkingLotsManagementProps {
     version: string
 }
-
-const customerRespFormatter = (axiosData: any): { value: string; label: string }[] => {
-    if (!axiosData || !axiosData.customers) {
-        return [];
-    }
-    return axiosData.customers.map((item: any) => ({ value: item.customerId, label: item.customerName }));
-};
 
 const index: FC<ParkingLotsManagementProps> = memo(() => {
     const ParkingLotObj = new ParkingLotsManagementModel();
@@ -101,25 +93,19 @@ const index: FC<ParkingLotsManagementProps> = memo(() => {
         }
         setSortOrder(sortOrder1);
     };
-
     const handleLotFilterPanelClose = () => toggleFilterPanel(!isFilterPanelOpen);
-
-
     const handleLotFilterPanelOpen = () => {
         setDrawerOpen(false);
         toggleFilterPanel(!isFilterPanelOpen);
     };
-
     const getFilterParams = (filterObj: { [key: string]: string[] }) => {
         setFilterData(filterObj);
     };
-
     const openDrawer = (row: any) => {
         setDrawerOpen(true);
         saveRowLotId(row.deliveryLocationId);
         saveRowDataObj({ ...row, editLotUrl: `/customer/${row.customerId}/parkingLots/viewLot/${row.deliveryLocationId}` });
     };
-
     const drawerClose = () => {
         setDrawerOpen(false);
     };
@@ -127,23 +113,6 @@ const index: FC<ParkingLotsManagementProps> = memo(() => {
         setPageCustomerName(formData?.customer?.label);
         navigate(`/customer/${formData?.customer?.value}/parkingLots/addLot`);
     };
-
-    const fields: FilterDialogField[] = useMemo(() => [
-        {
-            name: 'customer',
-            label: 'Customer',
-            required: true,
-            fieldType: 'singleSelectPaginate',
-            apiUrl: '/api/customer-service/customers',
-            responseFormatter: customerRespFormatter,
-            extraApiParams: { countryCode: 'us' },
-            searchFieldName: 'search',
-            placeHolder: t('parkingLotManagement.enterCustomername'),
-            initialValue: { label: '', value: '' }
-        }
-    ], []);
-
-
     return (
         <Box display="flex" mt={10} ml={8}>
             <Grid container pl={8} pr={8} className="main-area">
@@ -156,9 +125,7 @@ const index: FC<ParkingLotsManagementProps> = memo(() => {
                                 aria-label="dafault"
                                 onClick={handleLotFilterPanelOpen}
                                 startIcon={<FilterIcon />}
-                            >
-                                {t("buttons.filter")}
-                            </Button>
+                            > {t("buttons.filter")} </Button>
                         </Grid>
                         <Grid item pr={2.5}>
                             <FormControl>
@@ -170,27 +137,18 @@ const index: FC<ParkingLotsManagementProps> = memo(() => {
                             </FormControl>
                         </Grid>
                         <Grid item>
-                            <SearchInput
-                                id="parkingLotSearch"
-                                name="searchTerm"
-                                placeholder={t('parkingLotManagement.search')}
+                            <SearchInput id="parkingLotSearch" name="searchTerm" placeholder={t('parkingLotManagement.search')}
                                 value={searchTerm}
                                 delay={500}
                                 onChange={onInputChange}
                             />
                         </Grid>
-                        {
-                            (searchTerm && !(isFetching || isLoading) && data) &&
+                        {(searchTerm && !(isFetching || isLoading) && data) &&
                             <Grid item display="flex" alignItems="center" paddingLeft={2.5}>
                                 <Typography color="var(--Darkgray)" variant="h4" align="center" className="fw-bold">
-                                    {getSeachedDataTotalCount(
-                                        data,
-                                        [t('parkingLotManagement.result(s) found'),
-                                        t('parkingLotManagement.results found')
-                                        ])}
+                                    {getSeachedDataTotalCount(data, [t('parkingLotManagement.result(s) found'), t('parkingLotManagement.results found')])}
                                 </Typography>
-                            </Grid>
-                        }
+                            </Grid>}
                     </Grid>
                     <Grid item md={4} lg={3} display="flex" justifyContent="flex-end">
                         <Grid item pr={2.5}>
@@ -199,17 +157,10 @@ const index: FC<ParkingLotsManagementProps> = memo(() => {
                                 aria-label="primary"
                                 onClick={handleAddBtnClick}
                                 startIcon={<Add />}
-                            >
-                                {t("buttons.add lot")}
-                            </Button>
+                            >{t("buttons.add lot")}</Button>
                         </Grid>
                         <Grid item>
-                            <FormControl>
-                                <ActionsMenu
-                                    options={massActionOptions}
-                                    onSelect={handleMassAction}
-                                />
-                            </FormControl>
+                            <FormControl><ActionsMenu options={massActionOptions} onSelect={handleMassAction} /></FormControl>
                         </Grid>
                     </Grid>
                 </Grid>
@@ -239,8 +190,6 @@ const index: FC<ParkingLotsManagementProps> = memo(() => {
                         fields={FilterByFields}
                         storeKey={'customerFilter'}
                     />
-
-
                 </Grid>
             </Grid>
             <RightInfoPanel
@@ -256,7 +205,7 @@ const index: FC<ParkingLotsManagementProps> = memo(() => {
                 title=""
                 handleConfirm={handleRedirectAddLot}
                 handleToggle={() => setFilterDialogOpen(false)}
-                fields={fields}
+                fields={getAddLotDialogFields(t('parkingLotManagement.enterCustomername'))}
             />
         </Box>
     );

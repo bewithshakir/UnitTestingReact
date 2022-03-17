@@ -6,7 +6,7 @@ import { DialogInputProps } from "../config";
 
 
 const selectPaginate = (props: DialogInputProps) => {
-    const { field, fieldId, formik, onChange, hanleTouched } = props;
+    const { field, fieldId, formik, onChange, handleTouched } = props;
     const { apiUrl, label, required, placeHolder, responseFormatter, extraApiParams, name } = field;
     const { t } = useTranslation();
     if (!apiUrl) {
@@ -16,7 +16,7 @@ const selectPaginate = (props: DialogInputProps) => {
         throw new Error('dynamicFilterPopup.singleSelectPaginate.respFormatterRequired');
     }
     const handleBlur = () => {
-        hanleTouched(field.name);
+        handleTouched(field.name);
     };
     return (
         <SingleSelectPaginate

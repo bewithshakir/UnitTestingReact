@@ -4,13 +4,13 @@ import MultiSelect from "../../Select/MultiSelect";
 import { DialogInputProps } from "../config";
 
 const multiSelect = (props: DialogInputProps) => {
-    const { field, fieldId, formik, onChange, hanleTouched } = props;
+    const { field, fieldId, formik, onChange, handleTouched } = props;
 
     if (!field.options) {
         throw new Error('Options required');
     }
     const handleBlur = () => {
-        hanleTouched(field.name);
+        handleTouched(field.name);
     };
     return <MultiSelect
         items={field.options}
