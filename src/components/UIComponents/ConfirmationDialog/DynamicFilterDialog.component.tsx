@@ -1,19 +1,11 @@
 
 import { FormikProvider, useFormik } from 'formik';
-<<<<<<< HEAD
+import * as Yup from 'yup';
 import { Grid, Dialog, DialogContent, DialogActions, Typography } from '@mui/material';
 import { styled } from '@mui/system';
 import { Button } from '../Button/Button.component';
 import { useTheme } from '../../../contexts/Theme/Theme.context';
-import { FilterDialogField, DailogProps } from './config';
-=======
-import * as Yup from 'yup';
-import { Dialog, DialogContent, DialogActions, Typography } from '@mui/material';
-import { styled } from '@mui/system';
-import { Button } from '../Button/Button.component';
-import { useTheme } from '../../../contexts/Theme/Theme.context';
-import { FilterDialogField, getYupSchema } from './config';
->>>>>>> 3c95da26c1c6d9baed9ad33c0c6146d75ba591c3
+import { FilterDialogField, getYupSchema, DailogProps } from './config';
 import SelectPaginate from './inputComponents/selectPaginate';
 import Select from './inputComponents/select';
 import SelectDynamic from './inputComponents/selectDynamic';
