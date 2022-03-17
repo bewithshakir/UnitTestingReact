@@ -2,7 +2,19 @@ import { shallow } from 'enzyme';
 import DynamicFilterDialog from './DynamicFilterDialog.component';
 import { FilterDialogField } from './config';
 
-const dynamicPopupFieldsData:FilterDialogField[] = [
+const dynamicPopupFieldsData: FilterDialogField[] = [
+    {
+        name: 'customer',
+        label: 'Customer',
+        required: true,
+        fieldType: 'singleSelectPaginate',
+        apiUrl: '/api/customer-service/customers',
+        responseFormatter: jest.fn(),
+        extraApiParams: { countryCode: 'us' },
+        searchFieldName: 'search',
+        placeHolder: 'place holder',
+        initialValue: { label: '', value: '' }
+    },
     {
         name: 'fuelType',
         label: 'Select fuel type',
@@ -26,7 +38,7 @@ const dynamicPopupFieldsData:FilterDialogField[] = [
         required: true,
         fieldType: 'multiSelect',
         apiUrl: '/api/tax-service/fuel-taxes/filter-options',
-        responseFormatter:jest.fn(),
+        responseFormatter: jest.fn(),
         extraApiParams: { countryCode: 'us' },
         placeHolder: 'Select multiple city',
         initialValue: []
@@ -103,7 +115,7 @@ const dynamicPopupFieldsData:FilterDialogField[] = [
 
 describe('renders Dynamic filter dialog properly', () => {
     let DynamicFilterDialogComp: any;
-    beforeAll(() => {        
+    beforeAll(() => {
         DynamicFilterDialogComp = shallow(
             <DynamicFilterDialog
                 open={true}
@@ -112,9 +124,9 @@ describe('renders Dynamic filter dialog properly', () => {
                 handleToggle={jest.fn()}
                 fields={dynamicPopupFieldsData}
             />);
-    })
+    });
 
-    it('snapshot testing', ()=>{
+    it('snapshot testing', () => {
         expect(DynamicFilterDialogComp).toMatchSnapshot();
     });
-})
+});
