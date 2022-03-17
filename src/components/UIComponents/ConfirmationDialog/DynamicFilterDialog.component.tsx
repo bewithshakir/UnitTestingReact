@@ -1,4 +1,4 @@
-
+import { useMemo } from 'react';
 import { FormikProvider, useFormik } from 'formik';
 import * as Yup from 'yup';
 import { Grid, Dialog, DialogContent, DialogActions, Typography } from '@mui/material';
@@ -64,7 +64,7 @@ function DynamicFilterDialog(props: DailogProps) {
         }} />;
     }
 
-    const ApplyBtn = styled(Button)(() => ({
+    const ApplyBtn = useMemo(() => styled(Button)(() => ({
         "&&": {
             width: '200px',
             backgroundColor: theme["--Save-Btn"],
@@ -75,7 +75,7 @@ function DynamicFilterDialog(props: DailogProps) {
                 color: theme["--Save-Btn"],
             }
         }
-    }));
+    })), []);
 
     const handleCancel = () => {
         handleToggle();
@@ -105,7 +105,8 @@ function DynamicFilterDialog(props: DailogProps) {
                                     <Grid item>
                                         <Button variant="outlined" onClick={handleCancel} className="action-no" types='cancel'>
                                             {cancelBtnTitle || 'Cancel'}
-                                        </Button></Grid>
+                                        </Button>
+                                    </Grid>
                                     <Grid item>
                                         <ApplyBtn
                                             data-testid="applyAll"
@@ -114,9 +115,7 @@ function DynamicFilterDialog(props: DailogProps) {
                                             types="save"
                                             disabled={!formik.dirty || !formik.isValid}
                                             aria-label={nextBtnTitle}
-                                        >
-                                            {nextBtnTitle || 'Continue'}
-                                        </ApplyBtn>
+                                        >{nextBtnTitle || 'Continue'}</ApplyBtn>
                                     </Grid>
                                 </Grid>
                             </DialogActions>
