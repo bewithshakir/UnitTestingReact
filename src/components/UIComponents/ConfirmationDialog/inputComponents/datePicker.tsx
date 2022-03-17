@@ -2,9 +2,9 @@ import { DatePickerInput } from "../../DatePickerInput/DatePickerInput.component
 import { getInputHelperText, getInputError } from "../../../../utils/helperFunctions";
 import { DialogInputProps } from "../config";
 
-const datePicker = ({ field, fieldId, formik, onChange, hanleTouched }: DialogInputProps) => {
+const datePicker = ({ field, fieldId, formik, onChange, handleTouched }: DialogInputProps) => {
     const handleBlur = () => {
-        hanleTouched(field.name);
+        handleTouched(field.name);
     };
 
     return <div className='dyn-dialog-field-label-div'>

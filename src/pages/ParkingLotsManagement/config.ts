@@ -1,4 +1,5 @@
 import { ExportIcon } from '../../assets/icons';
+import { FilterDialogField } from '../../components/UIComponents/ConfirmationDialog/config';
 import { IDynamicFilterProps } from '../../components/UIComponents/RightInfoPanel/DynamicFilterContent.component';
 
 export const MASS_ACTION_TYPES = {
@@ -84,4 +85,29 @@ export const AllParkingLots = {
       },
     },
   }
+};
+
+
+
+const customerRespFormatter = (axiosData: any): { value: string; label: string }[] => {
+  if (!axiosData || !axiosData.customers) {
+    return [];
+  }
+  return axiosData.customers.map((item: any) => ({ value: item.customerId, label: item.customerName }));
+};
+
+
+export const getAddLotDialogFields = (customerPlaceHolder: string): FilterDialogField[] => {
+  return [{
+    name: 'customer',
+    label: 'Customer',
+    required: true,
+    fieldType: 'singleSelectPaginate',
+    apiUrl: '/api/customer-service/customers',
+    responseFormatter: customerRespFormatter,
+    extraApiParams: { countryCode: 'us' },
+    searchFieldName: 'search',
+    placeHolder: customerPlaceHolder,
+    initialValue: { label: '', value: '' }
+  }];
 };
