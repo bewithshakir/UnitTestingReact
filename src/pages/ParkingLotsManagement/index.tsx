@@ -117,7 +117,7 @@ const index: FC<ParkingLotsManagementProps> = memo(() => {
     const openDrawer = (row: any) => {
         setDrawerOpen(true);
         saveRowLotId(row.deliveryLocationId);
-        saveRowDataObj({ ...row, editLotUrl: `/customer/${row.customerId}/parkingLots/viewLot/${row.deliveryLocationId}` });
+        saveRowDataObj({ ...row, editLotUrl: `/customer/${row.customerId}/parkingLots/viewLot/${row.deliveryLocationId}?backTo=parkinglotlanding` });
     };
 
     const drawerClose = () => {
@@ -125,7 +125,7 @@ const index: FC<ParkingLotsManagementProps> = memo(() => {
     };
     const handleRedirectAddLot = (formData: any) => {
         setPageCustomerName(formData?.customer?.label);
-        navigate(`/customer/${formData?.customer?.value}/parkingLots/addLot`);
+        navigate(`/customer/${formData?.customer?.value}/parkingLots/addLot?backTo=parkinglotlanding`);
     };
 
     const fields: FilterDialogField[] = useMemo(() => [

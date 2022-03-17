@@ -37,7 +37,7 @@ function DynamicFilterDialog(props: DailogProps) {
         },
     });
 
-    const handleTouched = (fieldName: string) => {
+    const hanleTouched = (fieldName: string) => {
         formik.setFieldTouched(fieldName, true);
     };
 
@@ -60,7 +60,7 @@ function DynamicFilterDialog(props: DailogProps) {
             fieldId: `dynFilt${fieldId}`,
             formik,
             onChange: formik.setFieldValue,
-            handleTouched
+            hanleTouched
         }} />;
     }
 

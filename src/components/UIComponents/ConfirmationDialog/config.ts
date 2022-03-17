@@ -42,7 +42,7 @@ export interface DialogInputProps {
     fieldId: string
     formik: FormikProps<{ [k: string]: any }>
     onChange: (name: string, value: any) => any
-    handleTouched: (name: string) => any
+    hanleTouched: (name: string) => any
 }
 
 export interface DailogProps {
