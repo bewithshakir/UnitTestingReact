@@ -7,7 +7,7 @@ import AddUser from "./index";
 jest.mock('react-router-dom', () => ({
     useNavigate: () => ({
         navigate: () => ({
-            to: '/customer/*/users/addUser'
+            to: '/customer/*/users/add'
         })
     }),
     useParams: () => ({

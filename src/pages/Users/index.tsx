@@ -56,7 +56,7 @@ const UsersLadingContent: React.FC<ContentProps> = () => {
     }, [data]);
 
     const navigateToAddUser = () => {
-        navigate(`/customer/${customerId}/users/addUser`);
+        navigate(`/customer/${customerId}/users/add`);
     };
 
     const onInputChange = (value: string) => {
