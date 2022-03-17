@@ -1,5 +1,5 @@
 import React, { FC, memo, useEffect, useMemo, useState } from 'react';
-import { HorizontalBarVersionState, useStore } from '../../store';
+import { HorizontalBarVersionState, useAddedCustomerNameStore, useStore } from '../../store';
 import { Box, Grid, FormControl, Typography } from "@mui/material";
 import { Button } from "../../components/UIComponents/Button/Button.component";
 import { FilterIcon, ParkingLotNoDataIcon } from "../../assets/icons";
@@ -55,6 +55,7 @@ const index: FC<ParkingLotsManagementProps> = memo(() => {
     const [parkingLotList, setAllParkingLotList] = useState([]);
     const [rowDataObj, saveRowDataObj] = useState<any>(null);
     const [rowLotId, saveRowLotId] = useState<any>(null);
+    const setPageCustomerName = useAddedCustomerNameStore((state) => state.setCustomerName);
 
     const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
     setVersion("NavLinks");
@@ -133,6 +134,7 @@ const index: FC<ParkingLotsManagementProps> = memo(() => {
         setDrawerOpen(false);
     };
     const handleRedirectAddLot = (formData: any) => {
+        setPageCustomerName(formData?.customer?.label);
         navigate(`/customer/${formData?.customer?.value}/parkingLots/addLot`);
     };
 

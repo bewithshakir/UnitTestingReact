@@ -1,4 +1,5 @@
 import { FormikProps } from "formik";
+import * as Yup from 'yup';
 
 export interface OptionItem {
     label: string
@@ -45,3 +46,15 @@ export interface DailogProps {
     handleConfirm: (data: { [k: string]: any }) => void;
     fields: FilterDialogField[]
 }
+export const getYupSchema = (fields: FilterDialogField[]) => {
+    const yupFields = fields.reduce((acc, field) => {
+        if (field.required) {
+            acc[field.name] = Yup.mixed().required();
+        } else {
+            acc[field.name] = Yup.mixed();
+        }
+        acc[field.name] = Yup.mixed();
+        return acc;
+    }, {} as any);
+    return Yup.object().shape(yupFields);
+};

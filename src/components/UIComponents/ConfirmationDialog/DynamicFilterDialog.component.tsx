@@ -1,10 +1,19 @@
 
 import { FormikProvider, useFormik } from 'formik';
+<<<<<<< HEAD
 import { Grid, Dialog, DialogContent, DialogActions, Typography } from '@mui/material';
 import { styled } from '@mui/system';
 import { Button } from '../Button/Button.component';
 import { useTheme } from '../../../contexts/Theme/Theme.context';
 import { FilterDialogField, DailogProps } from './config';
+=======
+import * as Yup from 'yup';
+import { Dialog, DialogContent, DialogActions, Typography } from '@mui/material';
+import { styled } from '@mui/system';
+import { Button } from '../Button/Button.component';
+import { useTheme } from '../../../contexts/Theme/Theme.context';
+import { FilterDialogField, getYupSchema } from './config';
+>>>>>>> 3c95da26c1c6d9baed9ad33c0c6146d75ba591c3
 import SelectPaginate from './inputComponents/selectPaginate';
 import Select from './inputComponents/select';
 import SelectDynamic from './inputComponents/selectDynamic';
@@ -19,12 +28,18 @@ import './DynamicFilterDialog.style.scss';
 function DynamicFilterDialog(props: DailogProps) {
     const { title, open, handleToggle, handleConfirm, cancelBtnTitle, nextBtnTitle, fields } = props;
     const { theme } = useTheme();
+    const validationObject: { [k: string]: any } = {};
+
     const initialValues = fields.reduce((acc, field) => {
+        if (field.required) {
+            validationObject[field.name] = Yup.string().required();
+        }
         acc[field.name] = field.initialValue;
         return acc;
     }, {} as any);
     const formik = useFormik({
         initialValues,
+        validationSchema: getYupSchema(fields),
         onSubmit: (values) => {
             handleConfirm(values);
         },
@@ -94,7 +109,7 @@ function DynamicFilterDialog(props: DailogProps) {
                                             id="applyAll"
                                             type="submit"
                                             types="save"
-                                            disabled={!formik.dirty}
+                                            disabled={!formik.dirty || !formik.isValid}
                                             aria-label={nextBtnTitle}
                                         >
                                             {nextBtnTitle || 'Continue'}
