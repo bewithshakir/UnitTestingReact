@@ -46,7 +46,7 @@ export const PanelHeader: React.FC<InfoPanelProps> = ({
             <h2>{t(headingText)}</h2>
             {panelType === 'info-view' && (
               <DataGridActionsMenu
-                disablePortal
+                disablePortal={true}
                 options={[
                   {
                     label: t('right-info-panel.settings.view & edit details'),
