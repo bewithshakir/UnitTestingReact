@@ -119,19 +119,6 @@ const DataGridActionsMenu = forwardRef<RowActionHanddlerRef, DataGridActionsMenu
         className={"datagrid-actions-popper"}
         placement={"bottom-end"}
         disablePortal={props.disablePortal}
-        modifiers={
-          [
-            {
-              name: 'preventOverflow',
-              enabled: true,
-              options: {
-                altAxis: true,
-                altBoundary: true,
-                rootBoundary: 'viewport',
-              },
-            }
-          ]
-        }
       >
         {({ TransitionProps, placement }) => (
           <Grow
@@ -173,7 +160,8 @@ const DataGridActionsMenu = forwardRef<RowActionHanddlerRef, DataGridActionsMenu
 });
 
 DataGridActionsMenu.defaultProps = {
-  showInnerTableMenu: false
+  showInnerTableMenu: false,
+  disablePortal: false
 };
 
 export default DataGridActionsMenu;

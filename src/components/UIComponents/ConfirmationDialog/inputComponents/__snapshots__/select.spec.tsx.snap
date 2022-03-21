@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders inputText properly snapshot testing 1`] = `
+<SingleSelect
+  error={false}
+  id="select-label"
+  items={
+    Array [
+      Object {
+        "label": "a",
+        "value": "a",
+      },
+      Object {
+        "label": "b",
+        "value": "b",
+      },
+    ]
+  }
+  key="select"
+  label="Select City"
+  name="city"
+  onBlur={[Function]}
+  onChange={[MockFunction]}
+  placeholder="Select"
+  required={false}
+/>
+`;

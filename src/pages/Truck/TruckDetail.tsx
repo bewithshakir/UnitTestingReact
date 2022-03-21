@@ -44,6 +44,8 @@ const TruckDetail = (props: props) => {
                         // No onchange method required
                     }}
                 />,
+                'Make/Model': data.makeAndModelNm,
+                'Color': data.colorNm,
                 'Year': data.registrationYr,
                 'OPEX Fuel Type': data.productNm,
                 'Status': data.activeInactiveInd === "Y" ?

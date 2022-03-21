@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders inputText properly snapshot testing 1`] = `
+<Input
+  autoComplete="new-password"
+  disabled={false}
+  error={false}
+  id="textInput"
+  key="textInput"
+  label="Enter Name"
+  name="text"
+  onBlur={[Function]}
+  onChange={[Function]}
+  required={false}
+  type="text"
+  value=""
+  width="100%"
+/>
+`;
