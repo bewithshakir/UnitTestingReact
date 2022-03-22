@@ -60,7 +60,9 @@ describe('Select Dynamic component', () => {
         />
         );
         const query = container.querySelector('input');
-        fireEvent.blur(query!);
+        if (query) {
+            fireEvent.blur(query);
+        }
         expect(onBlurSpy).toHaveBeenCalledTimes(1);
     });
 });
