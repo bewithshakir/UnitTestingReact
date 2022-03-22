@@ -90,10 +90,10 @@ export const AllParkingLots = {
 
 
 const customerRespFormatter = (axiosData: any): { value: string; label: string }[] => {
-  if (!axiosData || !axiosData.customers) {
-    return [];
-  }
-  return axiosData.customers.map((item: any) => ({ value: item.customerId, label: item.customerName }));
+  return axiosData?.customers?.map((item: any) => ({
+    value: item.customerId,
+    label: item.customerName
+  })) || [];
 };
 
 
@@ -105,9 +105,8 @@ export const getAddLotDialogFields = (customerPlaceHolder: string): FilterDialog
     fieldType: 'singleSelectPaginate',
     apiUrl: '/api/customer-service/customers',
     responseFormatter: customerRespFormatter,
-    extraApiParams: { countryCode: 'us' },
+    extraApiParams: { countryCode: 'us', sortBy: 'customerName', order: 'asc' },
     searchFieldName: 'search',
     placeHolder: customerPlaceHolder,
-    initialValue: { label: '', value: '' }
   }];
 };
