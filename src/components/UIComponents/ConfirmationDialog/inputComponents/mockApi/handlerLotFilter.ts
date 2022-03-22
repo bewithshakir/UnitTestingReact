@@ -7,14 +7,23 @@ export const getAllLotFilterOptions = () => {
             ctx.json({
                 "data": {
                     "cities": [
-                        "Abilene", "Amissville", "Arlington", "Ashburn", "Baltimore", "Bengaluru", "Boligee", "calton", "Castleton", "Charlottesville", "Columbia", "Culpeper", "Elkton", "Fairfax", "Flint Hill", "Fredericksburg", "Herndon", "Houston", "Leesburg", "Markham", "Mumbai", "New Carrollton", "New York", "Portland",
-                        "Rajkot", "Reston", "Richmond", "Saratoga", "Sperryville", "Stanley", "Toronto", "Valley Stream", "Vienna", "Washington", "Woodville"
+                        "Abilene", "Amissville", "Arlington", "Ashburn", "Baltimore", "Bengaluru", "Boligee",
+                        "calton", "Castleton", "Charlottesville", "Columbia", "Culpeper", "Elkton",
+                        "Fairfax", "Flint Hill", "Fredericksburg", "Herndon", "Houston", "Leesburg",
+                        "Markham", "Mumbai", "New Carrollton", "New York", "Portland",
+                        "Rajkot", "Reston", "Richmond", "Saratoga", "Sperryville", "Stanley", "Toronto",
+                        "Valley Stream", "Vienna", "Washington", "Woodville"
                     ],
                     "states": [
                         "AL", "CA", "DC", "GJ", "KA", "MD", "MH", "MS", "NY", "ON", "OR", "RJ", "Scotland", "TX", "VA"
                     ],
                     "zipcode": [
-                        "10007", "11581", "123455", "20001abc", "20005", "20008", "20106", "20147", "20171", "20176", "20191", "2074511", "20784", "21045", "21227", "22030", "22182", "22202", "22408", "22627", "22643", "22701", "22716", "22740", "22740aS", "22747", "22749", "22827", "22851", "22903", "23234", "304803", "35443", "360311", "38851", "560099", "77001", "77007", "77096", "79601", "95070", "97035", "EH7 5AA", "M4H 1C3"
+                        "10007", "11581", "123455", "20001abc", "20005", "20008", "20106", "20147",
+                        "20171", "20176", "20191", "2074511", "20784", "21045", "21227", "22030",
+                        "22182", "22202", "22408", "22627", "22643", "22701", "22716", "22740",
+                        "22740aS", "22747", "22749", "22827", "22851", "22903", "23234", "304803",
+                        "35443", "360311", "38851", "560099", "77001", "77007", "77096", "79601",
+                        "95070", "97035", "EH7 5AA", "M4H 1C3"
                     ],
                     "walletStatus": [
                         "Active", "Attention", "Expire"
