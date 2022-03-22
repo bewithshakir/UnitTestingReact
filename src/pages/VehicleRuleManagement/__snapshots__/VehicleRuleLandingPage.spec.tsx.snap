@@ -929,7 +929,6 @@ exports[`Rendering of Vehicle Rule landing page Component Vehicle Rule Managemen
                 "lg",
                 "xl",
               ],
-              "not": [Function],
               "only": [Function],
               "unit": "px",
               "up": [Function],
@@ -1268,7 +1267,7 @@ exports[`Rendering of Vehicle Rule landing page Component Vehicle Rule Managemen
                             id="SearchInput"
                             name="searchTerm"
                             onChange={[Function]}
-                            placeholder="assetManagement.asset"
+                            placeholder="Vehicle Rule"
                             type="text"
                             value=""
                             width="100%"
@@ -1354,15 +1353,29 @@ exports[`Rendering of Vehicle Rule landing page Component Vehicle Rule Managemen
                               "type": "text",
                             },
                             Object {
-                              "field": "vehicleRuleProducts",
+                              "field": "fuelStatus",
                               "label": "PRODUCTS",
                               "type": "icons",
                               "width": "200px",
                             },
                             Object {
+                              "align": "left",
                               "field": "activeInactiveInd",
+                              "fieldOptions": Array [
+                                Object {
+                                  "displayValue": "Enabled",
+                                  "icon": [Function],
+                                  "value": "Y",
+                                },
+                                Object {
+                                  "displayValue": "Disabled",
+                                  "icon": [Function],
+                                  "value": "N",
+                                },
+                              ],
                               "label": "STATUS",
-                              "type": "text",
+                              "showIconLast": false,
+                              "type": "status",
                             },
                           ]
                         }
@@ -1500,7 +1513,7 @@ exports[`Rendering of Vehicle Rule landing page Component Vehicle Rule Managemen
                                 id="SearchInput"
                                 name="searchTerm"
                                 onChange={[Function]}
-                                placeholder="assetManagement.asset"
+                                placeholder="Vehicle Rule"
                                 type="text"
                                 value=""
                                 width="100%"
@@ -1635,7 +1648,7 @@ exports[`Rendering of Vehicle Rule landing page Component Vehicle Rule Managemen
                                     id="SearchInput"
                                     name="searchTerm"
                                     onChange={[Function]}
-                                    placeholder="assetManagement.asset"
+                                    placeholder="Vehicle Rule"
                                     type="text"
                                     value=""
                                     width="100%"
@@ -2160,7 +2173,7 @@ exports[`Rendering of Vehicle Rule landing page Component Vehicle Rule Managemen
                                       id="SearchInput"
                                       name="searchTerm"
                                       onChange={[Function]}
-                                      placeholder="assetManagement.asset"
+                                      placeholder="Vehicle Rule"
                                       type="text"
                                       value=""
                                       width="100%"
@@ -2191,7 +2204,7 @@ exports[`Rendering of Vehicle Rule landing page Component Vehicle Rule Managemen
                                     id="SearchInput"
                                     name="searchTerm"
                                     onChange={[Function]}
-                                    placeholder="assetManagement.asset"
+                                    placeholder="Vehicle Rule"
                                     type="text"
                                     value=""
                                     width="100%"
@@ -2206,7 +2219,7 @@ exports[`Rendering of Vehicle Rule landing page Component Vehicle Rule Managemen
                                       }
                                       name="searchTerm"
                                       onChange={[Function]}
-                                      placeholder="assetManagement.asset"
+                                      placeholder="Vehicle Rule"
                                       startAdornment={
                                         <ForwardRef(InputAdornment)
                                           className="adornment"
@@ -2292,7 +2305,7 @@ exports[`Rendering of Vehicle Rule landing page Component Vehicle Rule Managemen
                                         multiline={false}
                                         name="searchTerm"
                                         onChange={[Function]}
-                                        placeholder="assetManagement.asset"
+                                        placeholder="Vehicle Rule"
                                         renderSuffix={[Function]}
                                         startAdornment={
                                           <ForwardRef(InputAdornment)
@@ -2344,7 +2357,6 @@ exports[`Rendering of Vehicle Rule landing page Component Vehicle Rule Managemen
                                                     "lg",
                                                     "xl",
                                                   ],
-                                                  "not": [Function],
                                                   "only": [Function],
                                                   "unit": "px",
                                                   "up": [Function],
@@ -2729,7 +2741,7 @@ exports[`Rendering of Vehicle Rule landing page Component Vehicle Rule Managemen
                                               "name": "searchTerm",
                                               "onBlur": undefined,
                                               "onChange": [Function],
-                                              "placeholder": "assetManagement.asset",
+                                              "placeholder": "Vehicle Rule",
                                               "renderSuffix": [Function],
                                               "size": undefined,
                                               "startAdornment": <ForwardRef(InputAdornment)
@@ -2767,7 +2779,6 @@ exports[`Rendering of Vehicle Rule landing page Component Vehicle Rule Managemen
                                                   "lg",
                                                   "xl",
                                                 ],
-                                                "not": [Function],
                                                 "only": [Function],
                                                 "unit": "px",
                                                 "up": [Function],
@@ -3288,7 +3299,7 @@ exports[`Rendering of Vehicle Rule landing page Component Vehicle Rule Managemen
                                                   "name": "searchTerm",
                                                   "onBlur": undefined,
                                                   "onChange": [Function],
-                                                  "placeholder": "assetManagement.asset",
+                                                  "placeholder": "Vehicle Rule",
                                                   "renderSuffix": [Function],
                                                   "size": undefined,
                                                   "startAdornment": <ForwardRef(InputAdornment)
@@ -3309,7 +3320,7 @@ exports[`Rendering of Vehicle Rule landing page Component Vehicle Rule Managemen
                                                   "value": "",
                                                 }
                                               }
-                                              placeholder="assetManagement.asset"
+                                              placeholder="Vehicle Rule"
                                               theme={
                                                 Object {
                                                   "breakpoints": Object {
@@ -3322,7 +3333,6 @@ exports[`Rendering of Vehicle Rule landing page Component Vehicle Rule Managemen
                                                       "lg",
                                                       "xl",
                                                     ],
-                                                    "not": [Function],
                                                     "only": [Function],
                                                     "unit": "px",
                                                     "up": [Function],
@@ -3609,7 +3619,7 @@ exports[`Rendering of Vehicle Rule landing page Component Vehicle Rule Managemen
                                                 onBlur={[Function]}
                                                 onChange={[Function]}
                                                 onFocus={[Function]}
-                                                placeholder="assetManagement.asset"
+                                                placeholder="Vehicle Rule"
                                                 type="text"
                                                 value=""
                                               />
@@ -4359,15 +4369,29 @@ exports[`Rendering of Vehicle Rule landing page Component Vehicle Rule Managemen
                                   "type": "text",
                                 },
                                 Object {
-                                  "field": "vehicleRuleProducts",
+                                  "field": "fuelStatus",
                                   "label": "PRODUCTS",
                                   "type": "icons",
                                   "width": "200px",
                                 },
                                 Object {
+                                  "align": "left",
                                   "field": "activeInactiveInd",
+                                  "fieldOptions": Array [
+                                    Object {
+                                      "displayValue": "Enabled",
+                                      "icon": [Function],
+                                      "value": "Y",
+                                    },
+                                    Object {
+                                      "displayValue": "Disabled",
+                                      "icon": [Function],
+                                      "value": "N",
+                                    },
+                                  ],
                                   "label": "STATUS",
-                                  "type": "text",
+                                  "showIconLast": false,
+                                  "type": "status",
                                 },
                               ]
                             }
@@ -4474,15 +4498,29 @@ exports[`Rendering of Vehicle Rule landing page Component Vehicle Rule Managemen
                               "type": "text",
                             },
                             Object {
-                              "field": "vehicleRuleProducts",
+                              "field": "fuelStatus",
                               "label": "PRODUCTS",
                               "type": "icons",
                               "width": "200px",
                             },
                             Object {
+                              "align": "left",
                               "field": "activeInactiveInd",
+                              "fieldOptions": Array [
+                                Object {
+                                  "displayValue": "Enabled",
+                                  "icon": [Function],
+                                  "value": "Y",
+                                },
+                                Object {
+                                  "displayValue": "Disabled",
+                                  "icon": [Function],
+                                  "value": "N",
+                                },
+                              ],
                               "label": "STATUS",
-                              "type": "text",
+                              "showIconLast": false,
+                              "type": "status",
                             },
                           ]
                         }
@@ -4546,15 +4584,29 @@ exports[`Rendering of Vehicle Rule landing page Component Vehicle Rule Managemen
                                           "type": "text",
                                         },
                                         Object {
-                                          "field": "vehicleRuleProducts",
+                                          "field": "fuelStatus",
                                           "label": "PRODUCTS",
                                           "type": "icons",
                                           "width": "200px",
                                         },
                                         Object {
+                                          "align": "left",
                                           "field": "activeInactiveInd",
+                                          "fieldOptions": Array [
+                                            Object {
+                                              "displayValue": "Enabled",
+                                              "icon": [Function],
+                                              "value": "Y",
+                                            },
+                                            Object {
+                                              "displayValue": "Disabled",
+                                              "icon": [Function],
+                                              "value": "N",
+                                            },
+                                          ],
                                           "label": "STATUS",
-                                          "type": "text",
+                                          "showIconLast": false,
+                                          "type": "status",
                                         },
                                       ]
                                     }
@@ -4589,15 +4641,29 @@ exports[`Rendering of Vehicle Rule landing page Component Vehicle Rule Managemen
                                           "type": "text",
                                         },
                                         Object {
-                                          "field": "vehicleRuleProducts",
+                                          "field": "fuelStatus",
                                           "label": "PRODUCTS",
                                           "type": "icons",
                                           "width": "200px",
                                         },
                                         Object {
+                                          "align": "left",
                                           "field": "activeInactiveInd",
+                                          "fieldOptions": Array [
+                                            Object {
+                                              "displayValue": "Enabled",
+                                              "icon": [Function],
+                                              "value": "Y",
+                                            },
+                                            Object {
+                                              "displayValue": "Disabled",
+                                              "icon": [Function],
+                                              "value": "N",
+                                            },
+                                          ],
                                           "label": "STATUS",
-                                          "type": "text",
+                                          "showIconLast": false,
+                                          "type": "status",
                                         },
                                       ]
                                     }
@@ -4619,15 +4685,29 @@ exports[`Rendering of Vehicle Rule landing page Component Vehicle Rule Managemen
                                           "type": "text",
                                         },
                                         Object {
-                                          "field": "vehicleRuleProducts",
+                                          "field": "fuelStatus",
                                           "label": "PRODUCTS",
                                           "type": "icons",
                                           "width": "200px",
                                         },
                                         Object {
+                                          "align": "left",
                                           "field": "activeInactiveInd",
+                                          "fieldOptions": Array [
+                                            Object {
+                                              "displayValue": "Enabled",
+                                              "icon": [Function],
+                                              "value": "Y",
+                                            },
+                                            Object {
+                                              "displayValue": "Disabled",
+                                              "icon": [Function],
+                                              "value": "N",
+                                            },
+                                          ],
                                           "label": "STATUS",
-                                          "type": "text",
+                                          "showIconLast": false,
+                                          "type": "status",
                                         },
                                       ]
                                     }
@@ -4703,15 +4783,29 @@ exports[`Rendering of Vehicle Rule landing page Component Vehicle Rule Managemen
                                                 "type": "text",
                                               },
                                               Object {
-                                                "field": "vehicleRuleProducts",
+                                                "field": "fuelStatus",
                                                 "label": "PRODUCTS",
                                                 "type": "icons",
                                                 "width": "200px",
                                               },
                                               Object {
+                                                "align": "left",
                                                 "field": "activeInactiveInd",
+                                                "fieldOptions": Array [
+                                                  Object {
+                                                    "displayValue": "Enabled",
+                                                    "icon": [Function],
+                                                    "value": "Y",
+                                                  },
+                                                  Object {
+                                                    "displayValue": "Disabled",
+                                                    "icon": [Function],
+                                                    "value": "N",
+                                                  },
+                                                ],
                                                 "label": "STATUS",
-                                                "type": "text",
+                                                "showIconLast": false,
+                                                "type": "status",
                                               },
                                             ]
                                           }
@@ -4746,15 +4840,29 @@ exports[`Rendering of Vehicle Rule landing page Component Vehicle Rule Managemen
                                                 "type": "text",
                                               },
                                               Object {
-                                                "field": "vehicleRuleProducts",
+                                                "field": "fuelStatus",
                                                 "label": "PRODUCTS",
                                                 "type": "icons",
                                                 "width": "200px",
                                               },
                                               Object {
+                                                "align": "left",
                                                 "field": "activeInactiveInd",
+                                                "fieldOptions": Array [
+                                                  Object {
+                                                    "displayValue": "Enabled",
+                                                    "icon": [Function],
+                                                    "value": "Y",
+                                                  },
+                                                  Object {
+                                                    "displayValue": "Disabled",
+                                                    "icon": [Function],
+                                                    "value": "N",
+                                                  },
+                                                ],
                                                 "label": "STATUS",
-                                                "type": "text",
+                                                "showIconLast": false,
+                                                "type": "status",
                                               },
                                             ]
                                           }
@@ -4776,15 +4884,29 @@ exports[`Rendering of Vehicle Rule landing page Component Vehicle Rule Managemen
                                                 "type": "text",
                                               },
                                               Object {
-                                                "field": "vehicleRuleProducts",
+                                                "field": "fuelStatus",
                                                 "label": "PRODUCTS",
                                                 "type": "icons",
                                                 "width": "200px",
                                               },
                                               Object {
+                                                "align": "left",
                                                 "field": "activeInactiveInd",
+                                                "fieldOptions": Array [
+                                                  Object {
+                                                    "displayValue": "Enabled",
+                                                    "icon": [Function],
+                                                    "value": "Y",
+                                                  },
+                                                  Object {
+                                                    "displayValue": "Disabled",
+                                                    "icon": [Function],
+                                                    "value": "N",
+                                                  },
+                                                ],
                                                 "label": "STATUS",
-                                                "type": "text",
+                                                "showIconLast": false,
+                                                "type": "status",
                                               },
                                             ]
                                           }
@@ -4854,15 +4976,29 @@ exports[`Rendering of Vehicle Rule landing page Component Vehicle Rule Managemen
                                             "type": "text",
                                           },
                                           Object {
-                                            "field": "vehicleRuleProducts",
+                                            "field": "fuelStatus",
                                             "label": "PRODUCTS",
                                             "type": "icons",
                                             "width": "200px",
                                           },
                                           Object {
+                                            "align": "left",
                                             "field": "activeInactiveInd",
+                                            "fieldOptions": Array [
+                                              Object {
+                                                "displayValue": "Enabled",
+                                                "icon": [Function],
+                                                "value": "Y",
+                                              },
+                                              Object {
+                                                "displayValue": "Disabled",
+                                                "icon": [Function],
+                                                "value": "N",
+                                              },
+                                            ],
                                             "label": "STATUS",
-                                            "type": "text",
+                                            "showIconLast": false,
+                                            "type": "status",
                                           },
                                         ]
                                       }
@@ -4919,6 +5055,7 @@ exports[`Rendering of Vehicle Rule landing page Component Vehicle Rule Managemen
                                                   PRODUCTS
                                                 </ForwardRef(TableCell)>
                                                 <ForwardRef(TableCell)
+                                                  align="left"
                                                   className="header-options"
                                                   size="small"
                                                   sortDirection={false}
@@ -4991,6 +5128,7 @@ exports[`Rendering of Vehicle Rule landing page Component Vehicle Rule Managemen
                                                           PRODUCTS
                                                         </ForwardRef(TableCell)>,
                                                         <ForwardRef(TableCell)
+                                                          align="left"
                                                           className="header-options"
                                                           size="small"
                                                           sortDirection={false}
@@ -5134,7 +5272,7 @@ exports[`Rendering of Vehicle Rule landing page Component Vehicle Rule Managemen
                                                   </ForwardRef(TableCell)>
                                                   <ForwardRef(TableCell)
                                                     className="header-options"
-                                                    key="vehicleRuleProducts"
+                                                    key="fuelStatus"
                                                     size="small"
                                                     sortDirection={false}
                                                     width="200px"
@@ -5171,6 +5309,7 @@ exports[`Rendering of Vehicle Rule landing page Component Vehicle Rule Managemen
                                                     </MuiTableCellRoot>
                                                   </ForwardRef(TableCell)>
                                                   <ForwardRef(TableCell)
+                                                    align="left"
                                                     className="header-options"
                                                     key="activeInactiveInd"
                                                     size="small"
@@ -5180,10 +5319,10 @@ exports[`Rendering of Vehicle Rule landing page Component Vehicle Rule Managemen
                                                     <MuiTableCellRoot
                                                       aria-sort={null}
                                                       as="th"
-                                                      className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeSmall header-options"
+                                                      className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall header-options"
                                                       ownerState={
                                                         Object {
-                                                          "align": "inherit",
+                                                          "align": "left",
                                                           "children": "STATUS",
                                                           "className": "header-options",
                                                           "component": "th",
@@ -5200,7 +5339,7 @@ exports[`Rendering of Vehicle Rule landing page Component Vehicle Rule Managemen
                                                     >
                                                       <th
                                                         aria-sort={null}
-                                                        className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeSmall header-options css-1h37f49-MuiTableCell-root"
+                                                        className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall header-options css-1h37f49-MuiTableCell-root"
                                                         scope="col"
                                                         width="auto"
                                                       >
@@ -5268,15 +5407,29 @@ exports[`Rendering of Vehicle Rule landing page Component Vehicle Rule Managemen
                                             "type": "text",
                                           },
                                           Object {
-                                            "field": "vehicleRuleProducts",
+                                            "field": "fuelStatus",
                                             "label": "PRODUCTS",
                                             "type": "icons",
                                             "width": "200px",
                                           },
                                           Object {
+                                            "align": "left",
                                             "field": "activeInactiveInd",
+                                            "fieldOptions": Array [
+                                              Object {
+                                                "displayValue": "Enabled",
+                                                "icon": [Function],
+                                                "value": "Y",
+                                              },
+                                              Object {
+                                                "displayValue": "Disabled",
+                                                "icon": [Function],
+                                                "value": "N",
+                                              },
+                                            ],
                                             "label": "STATUS",
-                                            "type": "text",
+                                            "showIconLast": false,
+                                            "type": "status",
                                           },
                                         ]
                                       }
@@ -5298,15 +5451,29 @@ exports[`Rendering of Vehicle Rule landing page Component Vehicle Rule Managemen
                                             "type": "text",
                                           },
                                           Object {
-                                            "field": "vehicleRuleProducts",
+                                            "field": "fuelStatus",
                                             "label": "PRODUCTS",
                                             "type": "icons",
                                             "width": "200px",
                                           },
                                           Object {
+                                            "align": "left",
                                             "field": "activeInactiveInd",
+                                            "fieldOptions": Array [
+                                              Object {
+                                                "displayValue": "Enabled",
+                                                "icon": [Function],
+                                                "value": "Y",
+                                              },
+                                              Object {
+                                                "displayValue": "Disabled",
+                                                "icon": [Function],
+                                                "value": "N",
+                                              },
+                                            ],
                                             "label": "STATUS",
-                                            "type": "text",
+                                            "showIconLast": false,
+                                            "type": "status",
                                           },
                                         ]
                                       }
@@ -5354,7 +5521,6 @@ exports[`Rendering of Vehicle Rule landing page Component Vehicle Rule Managemen
                                                       "lg",
                                                       "xl",
                                                     ],
-                                                    "not": [Function],
                                                     "only": [Function],
                                                     "unit": "px",
                                                     "up": [Function],

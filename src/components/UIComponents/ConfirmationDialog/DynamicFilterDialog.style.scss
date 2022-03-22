@@ -1,32 +1,31 @@
 div{
-    .discard-dialog-container{
-        max-width: 477px;
-        padding: 10px 20px 20px 20px;
+    .dyn-filter-dialog-container{
+        width: 571px;
+        padding: 1em 2.5em;
         .dialog-content{
-            padding: 1.25rem;
+            overflow: visible;
+            padding:0px;
             .MuiTypography-body1{
                 font-size: 14px;
             }
+            .date-picker-container{
+                width: 100%;
+            }
         }
         .dialog-actions {
-            padding: 0rem 1.25rem 1.25rem 1.25rem;
+            padding:0px;
             .action-no {
                 padding-left: 3.05rem;
                 padding-right: 3.05rem;
                 margin-right: .9rem;
             }
-            .action-yes{ 
+            .action-yes{
+                background-color: var(--Darkgray);
+                color: var(--White);
                 margin-left: .9rem;
                 padding-left: 2.9rem;
                 padding-right: 2.9rem;
             }
-        }
-    }
-    .dyn-dialog-field-label-div{
-        display: flex;
-        align-items: center;
-        .checkboxStyle{
-            padding-left: 0px;
         }
     }
 }

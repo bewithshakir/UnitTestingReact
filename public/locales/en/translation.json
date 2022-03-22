@@ -124,6 +124,8 @@
     "search": "Lot Name",
     "results found": "results found",
     "result(s) found": "result(s) found",
+    "noDataMsg": "Add Parking Lot by clicking on the \"ADD LOT\" button.",
+    "enterCustomername": "Enter customer name to search and select",
     "sortBy": {
       "lotname_atoz": "Lot Name A-Z",
       "lotname_ztoa": "Lot Name Z-A"
@@ -526,6 +528,12 @@
     "sortBy": {
       "truckname_atoz": "Truck Name A-Z",
       "truckname_ztoa": "Truck Name Z-A"
+    }
+  },
+  "dynamicFilterPopup": {
+    "singleSelectPaginate": {
+      "apiUrlRequired": "Api URL is required!",
+      "respFormatterRequired": "Response Formatter is required!"
     }
   }
 }
