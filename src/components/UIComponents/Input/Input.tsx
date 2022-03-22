@@ -29,7 +29,7 @@ export interface InputProps {
   startAdornment?: any;
 }
 
-export default function Input(props: InputProps) {
+export default function Input (props: InputProps) {
 
   return (
     <Fragment>

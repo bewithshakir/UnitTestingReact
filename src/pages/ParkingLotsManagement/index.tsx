@@ -1,6 +1,5 @@
-/* eslint-disable no-console */
-import React, { memo, useEffect } from 'react';
-import { HorizontalBarVersionState, useStore } from '../../store';
+import React, { FC, memo, useEffect, useState } from 'react';
+import { HorizontalBarVersionState, useAddedCustomerNameStore, useStore } from '../../store';
 import { Box, Grid, FormControl, Typography } from "@mui/material";
 import { Button } from "../../components/UIComponents/Button/Button.component";
 import { FilterIcon, ParkingLotNoDataIcon } from "../../assets/icons";
@@ -14,29 +13,31 @@ import ParkingLotsManagementModel from '../../models/ParkingLotsManagementModel'
 import { useAllParkingLotList } from './queries';
 import GridComponent from "../../components/UIComponents/DataGird/grid.component";
 import { DataGridActionsMenuOption } from '../../components/UIComponents/Menu/DataGridActionsMenu.component';
-import { AllParkingLots, MASS_ACTION_TYPES, ROW_ACTION_TYPES, SORTBY_TYPES } from './config';
+import { AllParkingLots, getAddLotDialogFields, ROW_ACTION_TYPES, SORTBY_TYPES } from './config';
 import { RightInfoPanel } from "../../components/UIComponents/RightInfoPanel/RightInfoPanel.component";
 import { getSeachedDataTotalCount } from '../../utils/helperFunctions';
+import InfoViewUI from './infoViewUI/InfoViewUI.component';
+import DynamicFilterDialog from '../../components/UIComponents/ConfirmationDialog/DynamicFilterDialog.component';
 export interface ParkingLotsManagementProps {
     version: string
 }
 
-
-const index: React.FC<ParkingLotsManagementProps> = memo(() => {
+const index: FC<ParkingLotsManagementProps> = memo(() => {
     const ParkingLotObj = new ParkingLotsManagementModel();
     const headCells = ParkingLotObj.fieldsToDisplay();
     const massActionOptions = ParkingLotObj.massActions();
     const rowActionOptions = ParkingLotObj.rowActions();
     const { SortByOptions, FilterByFields } = AllParkingLots.LandingPage;
-    const [drawerOpen, setDrawerOpen] = React.useState(false);
-
-
-    const [searchTerm, setSearchTerm] = React.useState("");
-    const [filterData, setFilterData] = React.useState<{ [key: string]: string[] }>({});
-    const [isFilterPanelOpen, toggleFilterPanel] = React.useState(false);
-    const [sortOrder, setSortOrder] = React.useState<{ sortBy: string, order: string }>({ sortBy: "", order: "" });
-    const [parkingLotList, setAllParkingLotList] = React.useState([]);
-
+    const [drawerOpen, setDrawerOpen] = useState(false);
+    const [filterDialogOpen, setFilterDialogOpen] = useState(false);
+    const [searchTerm, setSearchTerm] = useState("");
+    const [filterData, setFilterData] = useState<{ [key: string]: string[] }>({});
+    const [isFilterPanelOpen, toggleFilterPanel] = useState(false);
+    const [sortOrder, setSortOrder] = useState<{ sortBy: string, order: string }>({ sortBy: "", order: "" });
+    const [parkingLotList, setAllParkingLotList] = useState([]);
+    const [rowDataObj, saveRowDataObj] = useState<any>(null);
+    const [rowLotId, saveRowLotId] = useState<any>(null);
+    const setPageCustomerName = useAddedCustomerNameStore((state) => state.setCustomerName);
 
     const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
     setVersion("NavLinks");
@@ -59,64 +60,59 @@ const index: React.FC<ParkingLotsManagementProps> = memo(() => {
         }
     }, [data]);
 
-    const drawerClose = () => {
-        setDrawerOpen(false);
-    };
-
     const onInputChange = (value: string) => {
         setSearchTerm(value);
     };
 
-    const navigateHomePage = () => {
-        navigate("/customer/:customerId/parkingLots/addLot");
+    const handleAddBtnClick = () => {
+        setFilterDialogOpen(true);
     };
 
-    const handleMassAction = (action: DataGridActionsMenuOption) => {
-        switch (action.action) {
-            case MASS_ACTION_TYPES.EXPORT:
-                // perform action
-                break;
-            default: return;
-        }
+    const handleMassAction = () => {
+        return '';
     };
 
     const handleRowAction = (action: DataGridActionsMenuOption, row: any) => {
-        switch (action.action) {
-            case ROW_ACTION_TYPES.EDIT:
-                navigate(`/customer/${row.customerId}/parkingLots/viewLot/${row.deliveryLocationId}?backTo=parkinglotlanding`);
-                break;
-            default: return;
+        if (action.action === ROW_ACTION_TYPES.EDIT) {
+            navigate(`/customer/${row.customerId}/parkingLots/viewLot/${row.deliveryLocationId}?backTo=parkinglotlanding`);
         }
     };
 
     const onSortBySlected = (value: string) => {
-        let sortOrder;
+        let oederBy;
         switch (value) {
             case SORTBY_TYPES.LOT_NAME_AZ:
-                sortOrder = { sortBy: "deliveryLocationNm", order: "asc" };
+                oederBy = { sortBy: "deliveryLocationNm", order: "asc" };
                 break;
             case SORTBY_TYPES.LOT_NAME_ZA:
-                sortOrder = { sortBy: "deliveryLocationNm", order: "desc" };
+                oederBy = { sortBy: "deliveryLocationNm", order: "desc" };
                 break;
             default:
-                sortOrder = { sortBy: "", order: "" };
+                oederBy = { sortBy: "", order: "" };
                 break;
         }
-        setSortOrder(sortOrder);
+        setSortOrder(oederBy);
     };
-
     const handleLotFilterPanelClose = () => toggleFilterPanel(!isFilterPanelOpen);
-
-
     const handleLotFilterPanelOpen = () => {
         setDrawerOpen(false);
         toggleFilterPanel(!isFilterPanelOpen);
     };
-
     const getFilterParams = (filterObj: { [key: string]: string[] }) => {
         setFilterData(filterObj);
     };
-
+    const openDrawer = (row: any) => {
+        setDrawerOpen(true);
+        saveRowLotId(row.deliveryLocationId);
+        saveRowDataObj({ ...row, editLotUrl: `/customer/${row.customerId}/parkingLots/viewLot/${row.deliveryLocationId}?backTo=parkinglotlanding` });
+    };
+    const drawerClose = () => {
+        setDrawerOpen(false);
+    };
+    const handleRedirectAddLot = (formData: any) => {
+        setPageCustomerName(formData?.customer?.label);
+        navigate(`/customer/${formData?.customer?.value}/parkingLots/addLot?backTo=parkinglotlanding`);
+    };
     return (
         <Box display="flex" mt={10} ml={8}>
             <Grid container pl={8} pr={8} className="main-area">
@@ -129,9 +125,7 @@ const index: React.FC<ParkingLotsManagementProps> = memo(() => {
                                 aria-label="dafault"
                                 onClick={handleLotFilterPanelOpen}
                                 startIcon={<FilterIcon />}
-                            >
-                                {t("buttons.filter")}
-                            </Button>
+                            > {t("buttons.filter")} </Button>
                         </Grid>
                         <Grid item pr={2.5}>
                             <FormControl>
@@ -143,42 +137,31 @@ const index: React.FC<ParkingLotsManagementProps> = memo(() => {
                             </FormControl>
                         </Grid>
                         <Grid item>
-                            <SearchInput
-                                id="parkingLotSearch"
-                                name="searchTerm"
-                                placeholder={t('parkingLotManagement.search')}
+                            <SearchInput id="parkingLotSearch" name="searchTerm" placeholder={t('parkingLotManagement.search')}
                                 value={searchTerm}
                                 delay={500}
                                 onChange={onInputChange}
                             />
                         </Grid>
-                        {
-                            (searchTerm && !(isFetching || isLoading) && data) &&
+                        {(searchTerm && !(isFetching || isLoading) && data) &&
                             <Grid item display="flex" alignItems="center" paddingLeft={2.5}>
                                 <Typography color="var(--Darkgray)" variant="h4" align="center" className="fw-bold">
                                     {getSeachedDataTotalCount(data, [t('parkingLotManagement.result(s) found'), t('parkingLotManagement.results found')])}
                                 </Typography>
-                            </Grid>
-                        }
+                            </Grid>}
                     </Grid>
                     <Grid item md={4} lg={3} display="flex" justifyContent="flex-end">
                         <Grid item pr={2.5}>
                             <Button
+                                className="add-lot-btn-lot-management"
                                 types="primary"
                                 aria-label="primary"
-                                onClick={navigateHomePage}
+                                onClick={handleAddBtnClick}
                                 startIcon={<Add />}
-                            >
-                                {t("buttons.add lot")}
-                            </Button>
+                            >{t("buttons.add lot")}</Button>
                         </Grid>
                         <Grid item>
-                            <FormControl>
-                                <ActionsMenu
-                                    options={massActionOptions}
-                                    onSelect={handleMassAction}
-                                />
-                            </FormControl>
+                            <FormControl><ActionsMenu options={massActionOptions} onSelect={handleMassAction} /></FormControl>
                         </Grid>
                     </Grid>
                 </Grid>
@@ -195,29 +178,36 @@ const index: React.FC<ParkingLotsManagementProps> = memo(() => {
                         getPages={fetchNextPage}
                         searchTerm={searchTerm}
                         filterData={filterData}
-                        noDataMsg='Add Parking Lot by clicking on the "ADD LOT" button.'
+                        openDrawer={openDrawer}
+                        noDataMsg={t('parkingLotManagement.noDataMsg')}
                         showImg={<ParkingLotNoDataIcon />}
                     />
 
-                    {/* <RightInfoPanel
-                        panelType="dynamic-filter"
-                        open={isFilterPanelOpen} headingText={t('parkingLotManagement.filterHeader')}
-                        provideFilterParams={getFilterParams}
-                        onClose={() => toggleFilterPanel(false)}
-                        fields={FilterByFields}
-                        storeKey={'parkingLotManagementFilter'}
-                    /> */}
-
                     <RightInfoPanel panelType="dynamic-filter"
-                        open={isFilterPanelOpen} headingText={"customer-filter-panel.header.filter"}
-                        provideFilterParams={getFilterParams} onClose={handleLotFilterPanelClose}
+                        open={isFilterPanelOpen}
+                        headingText={"customer-filter-panel.header.filter"}
+                        provideFilterParams={getFilterParams}
+                        onClose={handleLotFilterPanelClose}
                         fields={FilterByFields}
                         storeKey={'customerFilter'}
                     />
-                    <RightInfoPanel panelType="info-view" open={drawerOpen} headingText={""} info={"info"} onClose={drawerClose} />
-
                 </Grid>
             </Grid>
+            <RightInfoPanel
+                panelType="info-view"
+                open={drawerOpen}
+                editURL={rowDataObj?.editLotUrl}
+                headingText={rowDataObj?.deliveryLocationNm}
+                onClose={drawerClose}>
+                {rowDataObj ? <InfoViewUI lotData={rowDataObj} rowLotId={rowLotId} /> : ''}
+            </RightInfoPanel>
+            <DynamicFilterDialog
+                open={filterDialogOpen}
+                title=""
+                handleConfirm={handleRedirectAddLot}
+                handleToggle={() => setFilterDialogOpen(false)}
+                fields={getAddLotDialogFields(t('parkingLotManagement.enterCustomername'))}
+            />
         </Box>
     );
 });

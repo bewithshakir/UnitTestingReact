@@ -1711,6 +1711,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing ov
   >
     <form
       className="productForm"
+      id="saveProductFrom"
       onBlur={[Function]}
       onSubmit={[Function]}
     >
@@ -1757,17 +1758,9 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing ov
                       sm={8}
                       xs={8}
                     >
-                      <ForwardRef(Typography)
-                        className="opis-rack-info-text"
-                        color="#000000DE"
-                        pb={1}
-                        pl={2}
-                        pt={1}
-                        px={1}
-                        variant="h5"
-                      >
-                        addProductFormLabels.addproductopistext
-                      </ForwardRef(Typography)>
+                      <DisclaimerTextBox
+                        text="addProductFormLabels.addproductopistext"
+                      />
                     </ForwardRef(Grid)>
                   </React.Fragment>
                   <React.Fragment>
@@ -1947,6 +1940,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing ov
                         aria-label="cancel"
                         className="mr-4"
                         disabled={true}
+                        id="cancel-btn"
                         onClick={[Function]}
                         types="cancel"
                       >
@@ -1956,6 +1950,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing ov
                         aria-label="save"
                         className="mr-4 ml-4 saveProduct"
                         disabled={true}
+                        id="save-btn"
                         type="submit"
                         types="save"
                       >
@@ -2031,17 +2026,9 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing ov
                           sm={8}
                           xs={8}
                         >
-                          <ForwardRef(Typography)
-                            className="opis-rack-info-text"
-                            color="#000000DE"
-                            pb={1}
-                            pl={2}
-                            pt={1}
-                            px={1}
-                            variant="h5"
-                          >
-                            addProductFormLabels.addproductopistext
-                          </ForwardRef(Typography)>
+                          <DisclaimerTextBox
+                            text="addProductFormLabels.addproductopistext"
+                          />
                         </ForwardRef(Grid)>
                       </React.Fragment>,
                       <React.Fragment>
@@ -2286,17 +2273,9 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing ov
                       className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-8 MuiGrid-grid-sm-8 MuiGrid-grid-md-6 MuiGrid-grid-lg-12"
                       ownerState={
                         Object {
-                          "children": <ForwardRef(Typography)
-                            className="opis-rack-info-text"
-                            color="#000000DE"
-                            pb={1}
-                            pl={2}
-                            pt={1}
-                            px={1}
-                            variant="h5"
-                          >
-                            addProductFormLabels.addproductopistext
-                          </ForwardRef(Typography)>,
+                          "children": <DisclaimerTextBox
+                            text="addProductFormLabels.addproductopistext"
+                          />,
                           "columnSpacing": 0,
                           "columns": 12,
                           "container": false,
@@ -2328,68 +2307,72 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing ov
                       <div
                         className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-8 MuiGrid-grid-sm-8 MuiGrid-grid-md-6 MuiGrid-grid-lg-12 css-mz80vw-MuiGrid-root"
                       >
-                        <ForwardRef(Typography)
-                          className="opis-rack-info-text"
-                          color="#000000DE"
-                          pb={1}
-                          pl={2}
-                          pt={1}
-                          px={1}
-                          variant="h5"
+                        <DisclaimerTextBox
+                          text="addProductFormLabels.addproductopistext"
                         >
-                          <MuiTypographyRoot
-                            as="h5"
-                            className="MuiTypography-root MuiTypography-h5 opis-rack-info-text"
-                            ownerState={
-                              Object {
-                                "align": "inherit",
-                                "children": "addProductFormLabels.addproductopistext",
-                                "className": "opis-rack-info-text",
-                                "color": "#000000DE",
-                                "component": undefined,
-                                "gutterBottom": false,
-                                "noWrap": false,
-                                "paragraph": false,
-                                "sx": Object {
+                          <ForwardRef(Typography)
+                            className="disclaimerTextBox"
+                            color="#000000DE"
+                            pb={1}
+                            pl={2}
+                            pt={1}
+                            px={1}
+                            variant="h5"
+                          >
+                            <MuiTypographyRoot
+                              as="h5"
+                              className="MuiTypography-root MuiTypography-h5 disclaimerTextBox"
+                              ownerState={
+                                Object {
+                                  "align": "inherit",
+                                  "children": "addProductFormLabels.addproductopistext",
+                                  "className": "disclaimerTextBox",
+                                  "color": "#000000DE",
+                                  "component": undefined,
+                                  "gutterBottom": false,
+                                  "noWrap": false,
+                                  "paragraph": false,
+                                  "sx": Object {
+                                    "color": "#000000DE",
+                                    "pb": 1,
+                                    "pl": 2,
+                                    "pt": 1,
+                                    "px": 1,
+                                  },
+                                  "variant": "h5",
+                                  "variantMapping": Object {
+                                    "body1": "p",
+                                    "body2": "p",
+                                    "h1": "h1",
+                                    "h2": "h2",
+                                    "h3": "h3",
+                                    "h4": "h4",
+                                    "h5": "h5",
+                                    "h6": "h6",
+                                    "inherit": "p",
+                                    "subtitle1": "h6",
+                                    "subtitle2": "h6",
+                                  },
+                                }
+                              }
+                              sx={
+                                Object {
                                   "color": "#000000DE",
                                   "pb": 1,
                                   "pl": 2,
                                   "pt": 1,
                                   "px": 1,
-                                },
-                                "variant": "h5",
-                                "variantMapping": Object {
-                                  "body1": "p",
-                                  "body2": "p",
-                                  "h1": "h1",
-                                  "h2": "h2",
-                                  "h3": "h3",
-                                  "h4": "h4",
-                                  "h5": "h5",
-                                  "h6": "h6",
-                                  "inherit": "p",
-                                  "subtitle1": "h6",
-                                  "subtitle2": "h6",
-                                },
+                                }
                               }
-                            }
-                            sx={
-                              Object {
-                                "color": "#000000DE",
-                                "pb": 1,
-                                "pl": 2,
-                                "pt": 1,
-                                "px": 1,
-                              }
-                            }
-                          >
-                            <h5
-                              className="MuiTypography-root MuiTypography-h5 opis-rack-info-text css-17261w9-MuiTypography-root"
                             >
-                              addProductFormLabels.addproductopistext
-                            </h5>
-                          </MuiTypographyRoot>
-                        </ForwardRef(Typography)>
+                              <h5
+                                className="MuiTypography-root MuiTypography-h5 disclaimerTextBox css-17261w9-MuiTypography-root"
+                              >
+                                addProductFormLabels.addproductopistext
+                              </h5>
+                            </MuiTypographyRoot>
+                          </ForwardRef(Typography)>
+                        </DisclaimerTextBox>
                       </div>
                     </MuiGridRoot>
                   </ForwardRef(Grid)>
@@ -7953,6 +7936,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing ov
                           aria-label="cancel"
                           className="mr-4"
                           disabled={true}
+                          id="cancel-btn"
                           onClick={[Function]}
                           types="cancel"
                         >
@@ -7962,6 +7946,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing ov
                           aria-label="save"
                           className="mr-4 ml-4 saveProduct"
                           disabled={true}
+                          id="save-btn"
                           type="submit"
                           types="save"
                         >
@@ -8026,6 +8011,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing ov
                                 aria-label="cancel"
                                 className="mr-4"
                                 disabled={true}
+                                id="cancel-btn"
                                 onClick={[Function]}
                                 types="cancel"
                               >
@@ -8035,6 +8021,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing ov
                                 aria-label="save"
                                 className="mr-4 ml-4 saveProduct"
                                 disabled={true}
+                                id="save-btn"
                                 type="submit"
                                 types="save"
                               >
@@ -8084,6 +8071,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing ov
                             aria-label="cancel"
                             className="mr-4"
                             disabled={true}
+                            id="cancel-btn"
                             onClick={[Function]}
                             types="cancel"
                           >
@@ -8091,6 +8079,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing ov
                               aria-label="cancel"
                               className="btn-cancel mr-4"
                               disabled={true}
+                              id="cancel-btn"
                               onClick={[Function]}
                               variant="contained"
                             >
@@ -8131,6 +8120,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing ov
                                   }
                                 }
                                 disabled={true}
+                                id="cancel-btn"
                                 onClick={[Function]}
                                 variant="contained"
                               >
@@ -8141,6 +8131,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing ov
                                   disabled={true}
                                   focusRipple={true}
                                   focusVisibleClassName="Mui-focusVisible"
+                                  id="cancel-btn"
                                   onClick={[Function]}
                                   type="button"
                                 >
@@ -8158,6 +8149,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing ov
                                     disabled={true}
                                     focusRipple={true}
                                     focusVisibleClassName="Mui-focusVisible"
+                                    id="cancel-btn"
                                     onClick={[Function]}
                                     type="button"
                                   >
@@ -8165,6 +8157,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing ov
                                       aria-label="cancel"
                                       className="MuiButtonBase-root MuiButton-root MuiButton-contained btn-cancel mr-4 Mui-disabled Mui-disabled"
                                       disabled={true}
+                                      id="cancel-btn"
                                       onBlur={[Function]}
                                       onClick={[Function]}
                                       onDragLeave={[Function]}
@@ -8195,6 +8188,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing ov
                             aria-label="save"
                             className="mr-4 ml-4 saveProduct"
                             disabled={true}
+                            id="save-btn"
                             type="submit"
                             types="save"
                           >
@@ -8202,6 +8196,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing ov
                               aria-label="save"
                               className="btn-save mr-4 ml-4 saveProduct"
                               disabled={true}
+                              id="save-btn"
                               type="submit"
                               variant="contained"
                             >
@@ -8242,6 +8237,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing ov
                                   }
                                 }
                                 disabled={true}
+                                id="save-btn"
                                 type="submit"
                                 variant="contained"
                               >
@@ -8252,6 +8248,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing ov
                                   disabled={true}
                                   focusRipple={true}
                                   focusVisibleClassName="Mui-focusVisible"
+                                  id="save-btn"
                                   type="submit"
                                 >
                                   <ForwardRef(ButtonBase)
@@ -8268,12 +8265,14 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing ov
                                     disabled={true}
                                     focusRipple={true}
                                     focusVisibleClassName="Mui-focusVisible"
+                                    id="save-btn"
                                     type="submit"
                                   >
                                     <button
                                       aria-label="save"
                                       className="MuiButtonBase-root MuiButton-root MuiButton-contained btn-save mr-4 ml-4 saveProduct Mui-disabled Mui-disabled"
                                       disabled={true}
+                                      id="save-btn"
                                       onBlur={[Function]}
                                       onDragLeave={[Function]}
                                       onFocus={[Function]}

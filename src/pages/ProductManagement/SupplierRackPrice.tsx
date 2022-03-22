@@ -86,6 +86,8 @@ export default function SupplierRack({ isDisabled, formik, setSupplierPrice, res
         setSelectedRows(selectedIds);
     };
 
+   
+
     return (
         <React.Fragment>
             <h4 className='checkbox-heading price-heading'> {t("addProductFormLabels.supplierrackheading")} </h4>

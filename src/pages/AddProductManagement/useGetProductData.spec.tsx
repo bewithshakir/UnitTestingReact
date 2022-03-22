@@ -6,7 +6,7 @@ import { rest } from 'msw';
 
 describe('useGetProductColors for useQuery method ', () => {
     it('successful returns data', async () => {
-        const { result, waitFor } = renderHook(() => useGetProductData('0012', jest.fn(), jest.fn()), {
+        const { result, waitFor } = renderHook(() => useGetProductData('editproduct', jest.fn(), jest.fn()), {
             wrapper: createWrapper()
         });
         await waitFor(() => {
@@ -22,7 +22,7 @@ describe('useGetProductColors for useQuery method ', () => {
             })
         );
 
-        const { result, waitFor } = renderHook(() => useGetProductData('0012', jest.fn(), jest.fn()), {
+        const { result, waitFor } = renderHook(() => useGetProductData('editproduct', jest.fn(), jest.fn()), {
             wrapper: createWrapper()
         });
 

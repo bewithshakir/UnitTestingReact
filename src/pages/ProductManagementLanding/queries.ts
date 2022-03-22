@@ -38,6 +38,7 @@ export const ProductsListSet = (query: string, sortOrder: { sortBy: string, orde
                 return lastGroup.data.pagination.offset + 15;
             }
         },
-        keepPreviousData: true
+        keepPreviousData: true,
+        retry: false
     });
 };

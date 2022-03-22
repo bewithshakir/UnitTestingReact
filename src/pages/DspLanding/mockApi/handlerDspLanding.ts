@@ -5,7 +5,7 @@ export const getDspList = () => {
 
         const search = req.url.searchParams.get('search');
         const limit = req.url.searchParams.get('limit');
-        
+
         if (limit && search) {
             // DSP Search
             return res(
@@ -68,6 +68,7 @@ export const getDspList = () => {
                 })
             );
         }
+
         if (req.params[1]) {
             // Edit DSP form
             return res(
@@ -93,8 +94,7 @@ export const getDspList = () => {
                     error: null
                 })
             );
-        }
-        else {
+        } else {
             // DSP Landing
             return res(
                 ctx.status(200),
@@ -124,6 +124,6 @@ export const getDspList = () => {
                 })
             );
         }
-        
+
     });
 };

@@ -23,6 +23,18 @@ export type RowActionHanddlerRef = {
   closeMenu: () => void,
 };
 
+const renderListItemIcon = (option: DataGridActionsMenuOption) => (
+  option.icon &&
+  <ListItemIcon className="menuitem-icon">
+    {
+      React.isValidElement(option.icon) ?
+        option.icon
+        :
+        <Icon sx={{ height: "14px", width: "14px" }} component={option.icon} />
+    }
+  </ListItemIcon>
+);
+
 const DataGridActionsMenu = forwardRef<RowActionHanddlerRef, DataGridActionsMenuProps>((props, parentRef) => {
   const [open, setOpen] = React.useState(false);
   const [selectedIndex, setSelectedIndex] = React.useState(-1);
@@ -39,7 +51,7 @@ const DataGridActionsMenu = forwardRef<RowActionHanddlerRef, DataGridActionsMenu
   }));
 
   const handleToggle = () => {
-    setOpen((prevOpen) => !prevOpen);
+    setOpen((prevOpenState) => !prevOpenState);
   };
 
   const handleClose = (event: Event | React.SyntheticEvent) => {
@@ -76,13 +88,23 @@ const DataGridActionsMenu = forwardRef<RowActionHanddlerRef, DataGridActionsMenu
     prevOpen.current = open;
   }, [open]);
 
+  let activeClssName = '';
+  let ariaControlStr = undefined;
+  let ariaExpandedStr = undefined;
+
+  if (open) {
+    activeClssName = 'active';
+    ariaControlStr = 'datagrid-actions-menu-list';
+    ariaExpandedStr = true;
+  }
   return (
     <div>
       <Button
         ref={anchorRef}
         variant="contained"
-        className={`btn-grid-action ${open ? 'active' : ''}`}
-        aria-controls={open ? "datagrid-actions-menu-list" : undefined}
+        className={`btn-grid-action ${activeClssName}`}
+        aria-controls={ariaControlStr}
+        aria-expanded={ariaExpandedStr}
         aria-label="datagrid actions menu list"
         aria-haspopup="true"
         onClick={handleToggle}
@@ -97,27 +119,6 @@ const DataGridActionsMenu = forwardRef<RowActionHanddlerRef, DataGridActionsMenu
         className={"datagrid-actions-popper"}
         placement={"bottom-end"}
         disablePortal={props.disablePortal}
-        modifiers={
-          [
-            {
-              name: 'flip',
-              enabled: true,
-              options: {
-                altBoundary: true,
-                rootBoundary: 'viewport',
-              },
-            },
-            {
-              name: 'preventOverflow',
-              enabled: true,
-              options: {
-                altAxis: true,
-                altBoundary: true,
-                rootBoundary: 'viewport',
-              },
-            }
-          ]
-        }
       >
         {({ TransitionProps, placement }) => (
           <Grow
@@ -135,24 +136,14 @@ const DataGridActionsMenu = forwardRef<RowActionHanddlerRef, DataGridActionsMenu
                   id="datagrid-actions-menu-list"
                   onKeyDown={handleListKeyDown}
                 >
-                  {options && options.map((option, index) => (
+                  {options?.map((option, index) => (
                     <MenuItem
                       key={option.label}
                       className={"menuitem"}
                       selected={index === selectedIndex}
                       onClick={(event) => handleMenuItemClick(event, index)}
                     >
-                      {
-                        option.icon &&
-                        <ListItemIcon className="menuitem-icon">
-                          {
-                            React.isValidElement(option.icon) ?
-                              option.icon
-                              :
-                              <Icon sx={{ height: "14px", width: "14px" }} component={option.icon} />
-                          }
-                        </ListItemIcon>
-                      }
+                      {renderListItemIcon(option)}
                       <div className="menuitem-text">
                         <Typography color="var(--Darkgray)" variant="inherit">{option.label}</Typography>
                       </div>
@@ -169,7 +160,8 @@ const DataGridActionsMenu = forwardRef<RowActionHanddlerRef, DataGridActionsMenu
 });
 
 DataGridActionsMenu.defaultProps = {
-  showInnerTableMenu: false
+  showInnerTableMenu: false,
+  disablePortal: false
 };
 
 export default DataGridActionsMenu;

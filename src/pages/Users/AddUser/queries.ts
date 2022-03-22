@@ -7,13 +7,14 @@ import { SettlementTypes, userGroupStr } from '../config';
 export interface PayloadAddUserInt {
     shellDigitalAccountId: string,
     customerId: string,
-    dspId: string,
+    dspId?: string,
     firstNm: string,
     lastNm: string,
     email: string,
-    phone: string,
+    phone?: string,
     permissionTypeCd: string,
     userGroupCd: string
+    countryCd: string
 }
 export interface UserGoupsInt {
     activeInactiveInd: string,
@@ -67,37 +68,38 @@ export const useGetUserGroupTypes = (countryCode: string) => {
                 value: data.userGroupCd,
                 label: data.userGroupNm,
                 activeInactiveInd: data.activeInactiveInd,
-                type: data.userGroupNm === userGroupStr ? SettlementTypes.Voyager : "",
+                type: data.userGroupNm === userGroupStr ? SettlementTypes.Voyager :
+                    `${SettlementTypes.Internal},${SettlementTypes.WEX},${SettlementTypes.Invoice}`,
             }));
         }
     });
 };
 
-const fetchUserDSPList = async (customerId: string, countryCode: string) => {
+async function fetchUserDSPList (customerId: string, countryCode: string) {
     if (customerId) {
         const options: AxiosRequestConfig = {
             method: 'get',
-            url: `/api/user-service/users/dsp-groups?countryCode=${countryCode}`
+            url: `/api/customer-service/customers/${customerId}/dsps?limit=0&offset=0&skipPagination=true&countryCode=${countryCode}`
         };
         const { data } = await axios(options);
         return data;
+    } else {
+        return {};
     }
-};
+}
 
 export const userGetUserDSPList = (customerId: string, countryCode: string) => {
     return useQuery(["fetchUserDSPList", customerId, countryCode], () => fetchUserDSPList(customerId, countryCode), {
         retry: false,
         select: (response) =>
-            response?.data.map((data: UserGoupsInt) => ({
-                value: data.userGroupCd,
-                label: data.userGroupNm,
-                activeInactiveInd: data.activeInactiveInd,
-                type: data.userGroupNm === userGroupStr ? SettlementTypes.Voyager : "",
+            response?.data.dsps.map((data: any) => ({
+                value: data.id,
+                label: data.name,
             })),
     });
 };
 
-const fetchUserDetailsFromJenrin = async (email: string) => {
+async function fetchUserDetailsFromJenrin (email: string) {
     if (email) {
         const options: AxiosRequestConfig = {
             method: 'get',
@@ -105,27 +107,36 @@ const fetchUserDetailsFromJenrin = async (email: string) => {
         };
         const { data } = await axios(options);
         return data;
+    } else {
+        return {};
     }
-};
+}
 
-export const useVarifyUser = (email: string) => {
+export const useVarifyUser = (email: string, onSuccess?: any, onError?: any) => {
     return useQuery(["fetchUserDetailsFromJenrin", email], () => fetchUserDetailsFromJenrin(email), {
+        onError,
+        onSuccess,
         retry: false,
     });
 };
 
-const addUser = async (payload: UserModel, jenrinUserData: any) => {
+const addUser = async (payload: UserModel) => {
     const finalPayload: PayloadAddUserInt = {
-        shellDigitalAccountId: jenrinUserData.shellDigitalAccountId,
+        shellDigitalAccountId: payload.userId,
         customerId: payload.customerId,
-        dspId: payload.dsp.value,
         firstNm: payload.userName.split(' ')[0],
         lastNm: payload.userName.split(' ')[1],
         email: payload.email,
-        phone: payload.phone,
         permissionTypeCd: payload.userAccessLevel,
-        userGroupCd: payload.userGroup.value
+        userGroupCd: payload.userGroup.value,
+        countryCd: payload.countryCd
     };
+    if (payload?.dsp?.value) {
+        finalPayload.dspId = payload?.dsp?.value;
+    }
+    if (payload?.phone) {
+        finalPayload.phone = payload?.phone;
+    }
     const options: AxiosRequestConfig = {
         method: 'post',
         url: `/api/user-service/users`,
@@ -136,9 +147,9 @@ const addUser = async (payload: UserModel, jenrinUserData: any) => {
 };
 
 
-export const useAddUser = (jenrinUserData: any, onSuccess: any, onError: any) => {
+export const useAddUser = (onSuccess: any, onError: any) => {
     return useMutation((payload: UserModel) =>
-        addUser(payload, jenrinUserData), {
+        addUser(payload), {
         onError,
         onSuccess,
         retry: false,
@@ -171,18 +182,23 @@ export const useEditUserData = (customerId: string | undefined, query: string | 
     });
 };
 
-const updateUserData = async (payload: UserModel, userId: string) => {
+const updateUserData = async (payload: UserModel, userId?: string) => {
     const finalPayload: PayloadAddUserInt = {
-        shellDigitalAccountId: userId,
+        shellDigitalAccountId: userId || '',
         customerId: payload.customerId,
-        dspId: payload.dsp.value,
         firstNm: payload.userName.split(' ')[0],
         lastNm: payload.userName.split(' ')[1],
         email: payload.email,
-        phone: payload.phone,
         permissionTypeCd: payload.userAccessLevel,
-        userGroupCd: payload.userGroup.value
+        userGroupCd: payload.userGroup.value,
+        countryCd: payload.countryCd
     };
+    if (payload?.dsp?.value) {
+        finalPayload.dspId = payload?.dsp?.value;
+    }
+    if (payload?.phone) {
+        finalPayload.phone = payload?.phone;
+    }
     const options: AxiosRequestConfig = {
         method: 'put',
         url: `/api/user-service/users/${userId}`,
@@ -192,7 +208,7 @@ const updateUserData = async (payload: UserModel, userId: string) => {
     return data;
 };
 
-export const useUpdateUserData = (userId: string, onSuccess: any, onError: any) => {
+export const useUpdateUserData = (userId?: string, onSuccess?: any, onError?: any) => {
     return useMutation((payload: UserModel) =>
         updateUserData(payload, userId), {
         onSuccess,

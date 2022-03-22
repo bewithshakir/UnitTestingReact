@@ -1,6 +1,6 @@
 import React from 'react';
 import RadioButton from '@material-ui/core/Radio';
-interface checkBoxProps {
+interface RadioButtonProps {
     name: string;
     checked: boolean;
     disabled?: boolean;
@@ -11,7 +11,7 @@ interface checkBoxProps {
     style?: any,
 }
 
-export default function Radio (props: checkBoxProps) {
+export default function Radio(props: RadioButtonProps) {
 
     return (
         <RadioButton
@@ -24,6 +24,7 @@ export default function Radio (props: checkBoxProps) {
             name={props.name}
             disabled={props.disabled}
             style={props.style}
+            {...(props.value ? { value: props.value } : {})}
         />
     );
 }

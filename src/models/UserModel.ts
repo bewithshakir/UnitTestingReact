@@ -9,26 +9,36 @@ export interface SelectProps {
     value: string,
 }
 
+export const ACTION_TYPES = {
+    EDIT: 'edit',
+};
+
+
+export const MASS_ACTION_TYPES = {
+    EXPORT: 'export',
+};
+
 export default class UserModel {
     userGroup: SelectProps;
     email: string;
-    // jenrin user's fetched data
     userId: string;
     userName: string;
-    phone: string;
+    phone?: string;
     customerId: string;
     dsp: SelectProps;
     userAccessLevel: string;
+    countryCd: string;
+
     constructor() {
         this.userGroup = { label: '', value: '' };
         this.email = '';
-
         this.userId = '';
         this.userName = '';
         this.phone = '';
         this.customerId = '';
         this.dsp = { label: '', value: '' };
         this.userAccessLevel = '';
+        this.countryCd = '';
     }
 
     fieldsToDisplay (): headerObj[] {
@@ -44,30 +54,22 @@ export default class UserModel {
         ];
     }
 
-    ACTION_TYPES = {
-        EDIT: 'edit',
-    };
-
     rowActions () {
         const { t } = useTranslation();
         return [
             {
                 label: t("menus.data-grid-actions.edit"),
-                action: this.ACTION_TYPES.EDIT
+                action: ACTION_TYPES.EDIT
             },
         ];
     }
-
-    MASS_ACTION_TYPES = {
-        EXPORT: 'export',
-    };
 
     massActions () {
         const { t } = useTranslation();
         return [
             {
                 label: t("menus.actions.export data"),
-                action: this.MASS_ACTION_TYPES.EXPORT,
+                action: MASS_ACTION_TYPES.EXPORT,
                 icon: ExportIcon,
             },
         ];

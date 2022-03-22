@@ -144,3 +144,15 @@ export const formatSupplierPriceData = (supplierPrices: SupplierPrice[]) => {
     }
   ));
 };
+
+export interface ServedCity {
+  city?: string
+  cityId?: number
+  countryCd?: string
+  opisServedCityId?: string
+  state?: string
+}
+export interface ServedCityOptions extends ServedCity {
+  label: string
+  value: string
+}

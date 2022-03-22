@@ -12,7 +12,8 @@ export const maskPhoneNumber = (phNumber: string) => {
     return maskedPh ? "(" + maskedPh[1] + ") " + maskedPh[2] + "-" + maskedPh[3] : phNumber;
 };
 
-export const formatFileSizeUnit = (sizeInBytes: number, fileSizeUnit: fileFormatSize = 'MB') => {
+export const formatFileSizeUnit = (sizeInBytes: number,
+    fileSizeUnit: fileFormatSize = 'MB') => {
     let coversionParam = null;
     switch (fileSizeUnit) {
         case 'Bytes':
@@ -40,7 +41,10 @@ export const getCheckBoxDisabledByPaymentType = (value: string) => {
     }[value || 'default'];
 };
 
-export const getSeachedDataTotalCount = (data: { pages: [{ data: { pagination: { totalCount: number } } }] }, msg: string[]) => {
+export const getSeachedDataTotalCount = (data: {
+    pages: [{ data: { pagination: { totalCount: number } } }]
+},
+    msg: string[]) => {
     const totalCount = data?.pages[0]?.data?.pagination?.totalCount || 0;
     return (`${totalCount} ${totalCount > 1 ? msg[1] : msg[0]}`);
 };
@@ -102,11 +106,19 @@ export function capitalizeFirstLetter(str: string) {
     return str && str.charAt(0).toUpperCase() + str.substring(1);
 }
 
-export function calculateOPISTotalPriceWithTaxes(basePriceAmt: number, addedPriceAmt: number, discountPriceAmt: number, finalRate: number, finalCPGAmount: number) {
+export function calculateOPISTotalPriceWithTaxes(basePriceAmt: number,
+    addedPriceAmt: number,
+    discountPriceAmt: number,
+    finalRate: number,
+    finalCPGAmount: number) {
     const precision = 4;
     if (basePriceAmt) {
         const basePriceFinal = new Decimal(Number(basePriceAmt) || 0);
-        const sellingPrice = new Decimal(Number(basePriceFinal.plus(Number(addedPriceAmt) || 0).minus(Number(discountPriceAmt) || 0)));
+        const sellingPrice = new Decimal(
+            Number(basePriceFinal
+                .plus(Number(addedPriceAmt) || 0)
+                .minus(Number(discountPriceAmt) || 0))
+        );
         const rateComponentFinal = sellingPrice.mul(Number(finalRate));
         const totalPrice = sellingPrice.plus(Number(rateComponentFinal) || 0).plus(Number(finalCPGAmount) || 0);
         return totalPrice.toFixed(precision, Decimal.ROUND_DOWN);
@@ -115,19 +127,28 @@ export function calculateOPISTotalPriceWithTaxes(basePriceAmt: number, addedPric
     }
 }
 
-export function totalPricePerGallon(manualPriceAmt: number | string, addedPriceAmt: number | string, discountPriceAmt: number | string, precision: number) {
+export function totalPricePerGallon(manualPriceAmt: number | string,
+    addedPriceAmt: number | string,
+    discountPriceAmt: number | string,
+    precision: number) {
     const x = new Decimal(Number(manualPriceAmt) || 0);
     const result = x.plus(Number(addedPriceAmt) || 0).minus(Number(discountPriceAmt) || 0);
     return result.toFixed(precision, Decimal.ROUND_DOWN);
 }
 
-export function getInputHelperText(formik: { touched: { [k: string]: any }, errors: { [k: string]: any } }, fieldName: string) {
+export function getInputHelperText(formik: {
+    touched: { [k: string]: any },
+    errors: { [k: string]: any }
+}, fieldName: string) {
     return (formik?.touched[fieldName] && formik?.errors[fieldName])
-        ? formik.errors[fieldName].value
+        ? formik.errors[fieldName].value || formik.errors[fieldName]
         : undefined;
 }
 
 
-export function getInputError(formik: { touched: { [k: string]: any }, errors: { [k: string]: any } }, fieldName: string) {
+export function getInputError(formik: {
+    touched: { [k: string]: any },
+    errors: { [k: string]: any }
+}, fieldName: string) {
     return Boolean(formik?.touched[fieldName] && formik?.errors[fieldName]);
 }

@@ -38,7 +38,8 @@
     "add asset": "ADD ASSET",
     "import": "IMPORT",
     "filterText": "Filter",
-    "add truck": "ADD TRUCK"
+    "add truck": "ADD TRUCK",
+    "add vehicle": "Add Vehicle"
   },
   "menus": {
     "sortby": {
@@ -123,6 +124,8 @@
     "search": "Lot Name",
     "results found": "results found",
     "result(s) found": "result(s) found",
+    "noDataMsg": "Add Parking Lot by clicking on the \"ADD LOT\" button.",
+    "enterCustomername": "Enter customer name to search and select",
     "sortBy": {
       "lotname_atoz": "Lot Name A-Z",
       "lotname_ztoa": "Lot Name Z-A"
@@ -134,6 +137,12 @@
       "zip": "Zip",
       "wallet status": "Wallet Status",
       "fuel type": "Fuel Type"
+    },
+    "infoView": {
+      "addproductopistext": "Fuel prices for Retail and Rack-based products are provided by the Oil Price Information Service (OPIS) are not fixed and are subject to change daily.",
+      "lotDetails": "Lot Details",
+      "pricing": "Pricing",
+      "lotContact": "Lot Contact"
     }
   },
   "parkingLot": {
@@ -161,6 +170,14 @@
       "titleAdd": "Add Lot & Details",
       "titleEdit": "Edit Lot & Details"
     }
+  },
+  "vehicle": {
+    "header": {
+      "filter": "Filter"
+    },
+    "search": "Vehicle License Plate",
+    "results found": "results found",
+    "result(s) found": "result(s) found"
   },
   "user": {
     "search": "User Name",
@@ -221,7 +238,8 @@
       "salesTax": "Sales Tax",
       "opisCities": "OPIS Cities",
       "productManagement": "Product Management",
-      "assetManagement": "Asset Management"
+      "assetManagement": "Asset Management",
+      "vehicleRule": "Vehicle Rules"
     },
     "fuelTax": {
       "search": "City",
@@ -294,6 +312,11 @@
         "city": "City",
         "city id": "City Id",
         "fill msg": "Fill all the Mandatory fields * "
+      }
+    },
+    "vehicleRule": {
+      "form": {
+        "titleAdd": "Add Vehicle Rule"
       }
     }
   },
@@ -503,6 +526,12 @@
     "sortBy": {
       "truckname_atoz": "Truck Name A-Z",
       "truckname_ztoa": "Truck Name Z-A"
+    }
+  },
+  "dynamicFilterPopup": {
+    "singleSelectPaginate": {
+      "apiUrlRequired": "Api URL is required!",
+      "respFormatterRequired": "Response Formatter is required!"
     }
   }
 }

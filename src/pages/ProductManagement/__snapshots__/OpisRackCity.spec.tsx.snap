@@ -1106,6 +1106,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
     }
     isDisabled={false}
     isSaveCancelShown={false}
+    productId="abc"
     setSupplierPrice={[MockFunction]}
   >
     <ForwardRef(Grid)

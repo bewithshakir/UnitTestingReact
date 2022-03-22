@@ -15,19 +15,19 @@ export const config = [
         index: 3,
         label: "legend.vehicles",
         secondaryText: true,
-        to: "/vehicles"
+        to: "/customer/vehicles"
     },
     {
         index: 4,
-        label: "legend.users",
-        secondaryText: true,
-        to: "/customer/users"
-    },
-    {
-        index: 5,
         label: "legend.dsp",
         secondaryText: true,
         to: "/customer/dsps"
+    },
+    {
+        index: 5,
+        label: "legend.users",
+        secondaryText: true,
+        to: "/customer/users"
     },
     {
         index: 6,
@@ -40,3 +40,4 @@ export const config = [
 export const boxSystem = {
     border: 1
 };
+
