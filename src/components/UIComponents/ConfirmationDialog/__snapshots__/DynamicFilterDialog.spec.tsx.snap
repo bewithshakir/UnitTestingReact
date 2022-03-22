@@ -1,0 +1,1448 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders Dynamic filter dialog properly snapshot testing 1`] = `
+<ForwardRef(Dialog)
+  aria-describedby="dynamic-filter-dialog-description"
+  aria-labelledby="dynamic-filter-dialog-title"
+  open={true}
+>
+  <ContextProvider
+    value={
+      Object {
+        "dirty": false,
+        "errors": Object {},
+        "getFieldHelpers": [Function],
+        "getFieldMeta": [Function],
+        "getFieldProps": [Function],
+        "handleBlur": [Function],
+        "handleChange": [Function],
+        "handleReset": [Function],
+        "handleSubmit": [Function],
+        "initialErrors": Object {},
+        "initialStatus": undefined,
+        "initialTouched": Object {},
+        "initialValues": Object {
+          "addFuelTax": false,
+          "city": undefined,
+          "customer": Object {
+            "label": "",
+            "value": "",
+          },
+          "deliveryDate": null,
+          "fuelType": Object {
+            "label": "",
+            "value": "",
+          },
+          "input123": "",
+          "multiCity": Array [],
+          "multiFuelType": Array [],
+          "pickupDateRange": Array [
+            null,
+            null,
+          ],
+          "productType": "",
+        },
+        "isSubmitting": false,
+        "isValid": true,
+        "isValidating": false,
+        "registerField": [Function],
+        "resetForm": [Function],
+        "setErrors": [Function],
+        "setFieldError": [Function],
+        "setFieldTouched": [Function],
+        "setFieldValue": [Function],
+        "setFormikState": [Function],
+        "setStatus": [Function],
+        "setSubmitting": [Function],
+        "setTouched": [Function],
+        "setValues": [Function],
+        "status": undefined,
+        "submitCount": 0,
+        "submitForm": [Function],
+        "touched": Object {},
+        "unregisterField": [Function],
+        "validateField": [Function],
+        "validateForm": [Function],
+        "validateOnBlur": true,
+        "validateOnChange": true,
+        "validateOnMount": false,
+        "values": Object {
+          "addFuelTax": false,
+          "city": undefined,
+          "customer": Object {
+            "label": "",
+            "value": "",
+          },
+          "deliveryDate": null,
+          "fuelType": Object {
+            "label": "",
+            "value": "",
+          },
+          "input123": "",
+          "multiCity": Array [],
+          "multiFuelType": Array [],
+          "pickupDateRange": Array [
+            null,
+            null,
+          ],
+          "productType": "",
+        },
+      }
+    }
+  >
+    <form
+      className="filterDialogForm"
+      onReset={[Function]}
+      onSubmit={[Function]}
+    >
+      <ForwardRef(Grid)
+        container={true}
+        direction="column"
+      >
+        <div
+          className="dyn-filter-dialog-container"
+          id="discard-dialogue"
+        >
+          <ForwardRef(DialogContent)
+            className="dialog-content"
+          >
+            <ForwardRef(Grid)
+              item={true}
+              key="dynFilDialogGrid0"
+              mb={2.5}
+              mt={2}
+            >
+              <selectPaginate
+                field={
+                  Object {
+                    "apiUrl": "/api/customer-service/customers",
+                    "extraApiParams": Object {
+                      "countryCode": "us",
+                    },
+                    "fieldType": "singleSelectPaginate",
+                    "initialValue": Object {
+                      "label": "",
+                      "value": "",
+                    },
+                    "label": "Customer",
+                    "name": "customer",
+                    "placeHolder": "place holder",
+                    "required": true,
+                    "responseFormatter": [MockFunction],
+                    "searchFieldName": "search",
+                  }
+                }
+                fieldId="dynFilt0"
+                formik={
+                  Object {
+                    "dirty": false,
+                    "errors": Object {},
+                    "getFieldHelpers": [Function],
+                    "getFieldMeta": [Function],
+                    "getFieldProps": [Function],
+                    "handleBlur": [Function],
+                    "handleChange": [Function],
+                    "handleReset": [Function],
+                    "handleSubmit": [Function],
+                    "initialErrors": Object {},
+                    "initialStatus": undefined,
+                    "initialTouched": Object {},
+                    "initialValues": Object {
+                      "addFuelTax": false,
+                      "city": undefined,
+                      "customer": Object {
+                        "label": "",
+                        "value": "",
+                      },
+                      "deliveryDate": null,
+                      "fuelType": Object {
+                        "label": "",
+                        "value": "",
+                      },
+                      "input123": "",
+                      "multiCity": Array [],
+                      "multiFuelType": Array [],
+                      "pickupDateRange": Array [
+                        null,
+                        null,
+                      ],
+                      "productType": "",
+                    },
+                    "isSubmitting": false,
+                    "isValid": true,
+                    "isValidating": false,
+                    "registerField": [Function],
+                    "resetForm": [Function],
+                    "setErrors": [Function],
+                    "setFieldError": [Function],
+                    "setFieldTouched": [Function],
+                    "setFieldValue": [Function],
+                    "setFormikState": [Function],
+                    "setStatus": [Function],
+                    "setSubmitting": [Function],
+                    "setTouched": [Function],
+                    "setValues": [Function],
+                    "status": undefined,
+                    "submitCount": 0,
+                    "submitForm": [Function],
+                    "touched": Object {},
+                    "unregisterField": [Function],
+                    "validateField": [Function],
+                    "validateForm": [Function],
+                    "validateOnBlur": true,
+                    "validateOnChange": true,
+                    "validateOnMount": false,
+                    "values": Object {
+                      "addFuelTax": false,
+                      "city": undefined,
+                      "customer": Object {
+                        "label": "",
+                        "value": "",
+                      },
+                      "deliveryDate": null,
+                      "fuelType": Object {
+                        "label": "",
+                        "value": "",
+                      },
+                      "input123": "",
+                      "multiCity": Array [],
+                      "multiFuelType": Array [],
+                      "pickupDateRange": Array [
+                        null,
+                        null,
+                      ],
+                      "productType": "",
+                    },
+                  }
+                }
+                handleTouched={[Function]}
+                onChange={[Function]}
+              />
+            </ForwardRef(Grid)>
+            <ForwardRef(Grid)
+              item={true}
+              key="dynFilDialogGrid1"
+              mb={2.5}
+              mt={2}
+            >
+              <select
+                field={
+                  Object {
+                    "fieldType": "singleSelect",
+                    "initialValue": Object {
+                      "label": "",
+                      "value": "",
+                    },
+                    "label": "Select fuel type",
+                    "name": "fuelType",
+                    "options": Array [
+                      Object {
+                        "label": "fuel",
+                        "value": "fuel",
+                      },
+                      Object {
+                        "label": "Non fuel",
+                        "value": "non fuuuuu",
+                      },
+                    ],
+                    "required": true,
+                  }
+                }
+                fieldId="dynFilt1"
+                formik={
+                  Object {
+                    "dirty": false,
+                    "errors": Object {},
+                    "getFieldHelpers": [Function],
+                    "getFieldMeta": [Function],
+                    "getFieldProps": [Function],
+                    "handleBlur": [Function],
+                    "handleChange": [Function],
+                    "handleReset": [Function],
+                    "handleSubmit": [Function],
+                    "initialErrors": Object {},
+                    "initialStatus": undefined,
+                    "initialTouched": Object {},
+                    "initialValues": Object {
+                      "addFuelTax": false,
+                      "city": undefined,
+                      "customer": Object {
+                        "label": "",
+                        "value": "",
+                      },
+                      "deliveryDate": null,
+                      "fuelType": Object {
+                        "label": "",
+                        "value": "",
+                      },
+                      "input123": "",
+                      "multiCity": Array [],
+                      "multiFuelType": Array [],
+                      "pickupDateRange": Array [
+                        null,
+                        null,
+                      ],
+                      "productType": "",
+                    },
+                    "isSubmitting": false,
+                    "isValid": true,
+                    "isValidating": false,
+                    "registerField": [Function],
+                    "resetForm": [Function],
+                    "setErrors": [Function],
+                    "setFieldError": [Function],
+                    "setFieldTouched": [Function],
+                    "setFieldValue": [Function],
+                    "setFormikState": [Function],
+                    "setStatus": [Function],
+                    "setSubmitting": [Function],
+                    "setTouched": [Function],
+                    "setValues": [Function],
+                    "status": undefined,
+                    "submitCount": 0,
+                    "submitForm": [Function],
+                    "touched": Object {},
+                    "unregisterField": [Function],
+                    "validateField": [Function],
+                    "validateForm": [Function],
+                    "validateOnBlur": true,
+                    "validateOnChange": true,
+                    "validateOnMount": false,
+                    "values": Object {
+                      "addFuelTax": false,
+                      "city": undefined,
+                      "customer": Object {
+                        "label": "",
+                        "value": "",
+                      },
+                      "deliveryDate": null,
+                      "fuelType": Object {
+                        "label": "",
+                        "value": "",
+                      },
+                      "input123": "",
+                      "multiCity": Array [],
+                      "multiFuelType": Array [],
+                      "pickupDateRange": Array [
+                        null,
+                        null,
+                      ],
+                      "productType": "",
+                    },
+                  }
+                }
+                handleTouched={[Function]}
+                onChange={[Function]}
+              />
+            </ForwardRef(Grid)>
+            <ForwardRef(Grid)
+              item={true}
+              key="dynFilDialogGrid2"
+              mb={2.5}
+              mt={2}
+            >
+              <multiSelect
+                field={
+                  Object {
+                    "fieldType": "multiSelect",
+                    "initialValue": Array [],
+                    "label": "Select multiple fuel type",
+                    "name": "multiFuelType",
+                    "options": Array [
+                      Object {
+                        "label": "fuel",
+                        "value": "fuel",
+                      },
+                      Object {
+                        "label": "Non fuel",
+                        "value": "non fuuuuu",
+                      },
+                    ],
+                    "required": true,
+                  }
+                }
+                fieldId="dynFilt2"
+                formik={
+                  Object {
+                    "dirty": false,
+                    "errors": Object {},
+                    "getFieldHelpers": [Function],
+                    "getFieldMeta": [Function],
+                    "getFieldProps": [Function],
+                    "handleBlur": [Function],
+                    "handleChange": [Function],
+                    "handleReset": [Function],
+                    "handleSubmit": [Function],
+                    "initialErrors": Object {},
+                    "initialStatus": undefined,
+                    "initialTouched": Object {},
+                    "initialValues": Object {
+                      "addFuelTax": false,
+                      "city": undefined,
+                      "customer": Object {
+                        "label": "",
+                        "value": "",
+                      },
+                      "deliveryDate": null,
+                      "fuelType": Object {
+                        "label": "",
+                        "value": "",
+                      },
+                      "input123": "",
+                      "multiCity": Array [],
+                      "multiFuelType": Array [],
+                      "pickupDateRange": Array [
+                        null,
+                        null,
+                      ],
+                      "productType": "",
+                    },
+                    "isSubmitting": false,
+                    "isValid": true,
+                    "isValidating": false,
+                    "registerField": [Function],
+                    "resetForm": [Function],
+                    "setErrors": [Function],
+                    "setFieldError": [Function],
+                    "setFieldTouched": [Function],
+                    "setFieldValue": [Function],
+                    "setFormikState": [Function],
+                    "setStatus": [Function],
+                    "setSubmitting": [Function],
+                    "setTouched": [Function],
+                    "setValues": [Function],
+                    "status": undefined,
+                    "submitCount": 0,
+                    "submitForm": [Function],
+                    "touched": Object {},
+                    "unregisterField": [Function],
+                    "validateField": [Function],
+                    "validateForm": [Function],
+                    "validateOnBlur": true,
+                    "validateOnChange": true,
+                    "validateOnMount": false,
+                    "values": Object {
+                      "addFuelTax": false,
+                      "city": undefined,
+                      "customer": Object {
+                        "label": "",
+                        "value": "",
+                      },
+                      "deliveryDate": null,
+                      "fuelType": Object {
+                        "label": "",
+                        "value": "",
+                      },
+                      "input123": "",
+                      "multiCity": Array [],
+                      "multiFuelType": Array [],
+                      "pickupDateRange": Array [
+                        null,
+                        null,
+                      ],
+                      "productType": "",
+                    },
+                  }
+                }
+                handleTouched={[Function]}
+                onChange={[Function]}
+              />
+            </ForwardRef(Grid)>
+            <ForwardRef(Grid)
+              item={true}
+              key="dynFilDialogGrid3"
+              mb={2.5}
+              mt={2}
+            >
+              <MultiSelectDynamic
+                field={
+                  Object {
+                    "apiUrl": "/api/tax-service/fuel-taxes/filter-options",
+                    "extraApiParams": Object {
+                      "countryCode": "us",
+                    },
+                    "fieldType": "multiSelect",
+                    "initialValue": Array [],
+                    "label": "Multiple Select city",
+                    "name": "multiCity",
+                    "placeHolder": "Select multiple city",
+                    "required": true,
+                    "responseFormatter": [MockFunction],
+                  }
+                }
+                fieldId="dynFilt3"
+                formik={
+                  Object {
+                    "dirty": false,
+                    "errors": Object {},
+                    "getFieldHelpers": [Function],
+                    "getFieldMeta": [Function],
+                    "getFieldProps": [Function],
+                    "handleBlur": [Function],
+                    "handleChange": [Function],
+                    "handleReset": [Function],
+                    "handleSubmit": [Function],
+                    "initialErrors": Object {},
+                    "initialStatus": undefined,
+                    "initialTouched": Object {},
+                    "initialValues": Object {
+                      "addFuelTax": false,
+                      "city": undefined,
+                      "customer": Object {
+                        "label": "",
+                        "value": "",
+                      },
+                      "deliveryDate": null,
+                      "fuelType": Object {
+                        "label": "",
+                        "value": "",
+                      },
+                      "input123": "",
+                      "multiCity": Array [],
+                      "multiFuelType": Array [],
+                      "pickupDateRange": Array [
+                        null,
+                        null,
+                      ],
+                      "productType": "",
+                    },
+                    "isSubmitting": false,
+                    "isValid": true,
+                    "isValidating": false,
+                    "registerField": [Function],
+                    "resetForm": [Function],
+                    "setErrors": [Function],
+                    "setFieldError": [Function],
+                    "setFieldTouched": [Function],
+                    "setFieldValue": [Function],
+                    "setFormikState": [Function],
+                    "setStatus": [Function],
+                    "setSubmitting": [Function],
+                    "setTouched": [Function],
+                    "setValues": [Function],
+                    "status": undefined,
+                    "submitCount": 0,
+                    "submitForm": [Function],
+                    "touched": Object {},
+                    "unregisterField": [Function],
+                    "validateField": [Function],
+                    "validateForm": [Function],
+                    "validateOnBlur": true,
+                    "validateOnChange": true,
+                    "validateOnMount": false,
+                    "values": Object {
+                      "addFuelTax": false,
+                      "city": undefined,
+                      "customer": Object {
+                        "label": "",
+                        "value": "",
+                      },
+                      "deliveryDate": null,
+                      "fuelType": Object {
+                        "label": "",
+                        "value": "",
+                      },
+                      "input123": "",
+                      "multiCity": Array [],
+                      "multiFuelType": Array [],
+                      "pickupDateRange": Array [
+                        null,
+                        null,
+                      ],
+                      "productType": "",
+                    },
+                  }
+                }
+                handleTouched={[Function]}
+                onChange={[Function]}
+              />
+            </ForwardRef(Grid)>
+            <ForwardRef(Grid)
+              item={true}
+              key="dynFilDialogGrid4"
+              mb={2.5}
+              mt={2}
+            >
+              <InputText
+                field={
+                  Object {
+                    "fieldType": "text",
+                    "initialValue": "",
+                    "label": "Name",
+                    "name": "input123",
+                    "required": true,
+                  }
+                }
+                fieldId="dynFilt4"
+                formik={
+                  Object {
+                    "dirty": false,
+                    "errors": Object {},
+                    "getFieldHelpers": [Function],
+                    "getFieldMeta": [Function],
+                    "getFieldProps": [Function],
+                    "handleBlur": [Function],
+                    "handleChange": [Function],
+                    "handleReset": [Function],
+                    "handleSubmit": [Function],
+                    "initialErrors": Object {},
+                    "initialStatus": undefined,
+                    "initialTouched": Object {},
+                    "initialValues": Object {
+                      "addFuelTax": false,
+                      "city": undefined,
+                      "customer": Object {
+                        "label": "",
+                        "value": "",
+                      },
+                      "deliveryDate": null,
+                      "fuelType": Object {
+                        "label": "",
+                        "value": "",
+                      },
+                      "input123": "",
+                      "multiCity": Array [],
+                      "multiFuelType": Array [],
+                      "pickupDateRange": Array [
+                        null,
+                        null,
+                      ],
+                      "productType": "",
+                    },
+                    "isSubmitting": false,
+                    "isValid": true,
+                    "isValidating": false,
+                    "registerField": [Function],
+                    "resetForm": [Function],
+                    "setErrors": [Function],
+                    "setFieldError": [Function],
+                    "setFieldTouched": [Function],
+                    "setFieldValue": [Function],
+                    "setFormikState": [Function],
+                    "setStatus": [Function],
+                    "setSubmitting": [Function],
+                    "setTouched": [Function],
+                    "setValues": [Function],
+                    "status": undefined,
+                    "submitCount": 0,
+                    "submitForm": [Function],
+                    "touched": Object {},
+                    "unregisterField": [Function],
+                    "validateField": [Function],
+                    "validateForm": [Function],
+                    "validateOnBlur": true,
+                    "validateOnChange": true,
+                    "validateOnMount": false,
+                    "values": Object {
+                      "addFuelTax": false,
+                      "city": undefined,
+                      "customer": Object {
+                        "label": "",
+                        "value": "",
+                      },
+                      "deliveryDate": null,
+                      "fuelType": Object {
+                        "label": "",
+                        "value": "",
+                      },
+                      "input123": "",
+                      "multiCity": Array [],
+                      "multiFuelType": Array [],
+                      "pickupDateRange": Array [
+                        null,
+                        null,
+                      ],
+                      "productType": "",
+                    },
+                  }
+                }
+                handleTouched={[Function]}
+                onChange={[Function]}
+              />
+            </ForwardRef(Grid)>
+            <ForwardRef(Grid)
+              item={true}
+              key="dynFilDialogGrid5"
+              mb={2.5}
+              mt={2}
+            >
+              <datePicker
+                field={
+                  Object {
+                    "fieldType": "date",
+                    "initialValue": null,
+                    "label": "delivery Date",
+                    "name": "deliveryDate",
+                    "placeHolder": "select delivery date",
+                    "required": true,
+                  }
+                }
+                fieldId="dynFilt5"
+                formik={
+                  Object {
+                    "dirty": false,
+                    "errors": Object {},
+                    "getFieldHelpers": [Function],
+                    "getFieldMeta": [Function],
+                    "getFieldProps": [Function],
+                    "handleBlur": [Function],
+                    "handleChange": [Function],
+                    "handleReset": [Function],
+                    "handleSubmit": [Function],
+                    "initialErrors": Object {},
+                    "initialStatus": undefined,
+                    "initialTouched": Object {},
+                    "initialValues": Object {
+                      "addFuelTax": false,
+                      "city": undefined,
+                      "customer": Object {
+                        "label": "",
+                        "value": "",
+                      },
+                      "deliveryDate": null,
+                      "fuelType": Object {
+                        "label": "",
+                        "value": "",
+                      },
+                      "input123": "",
+                      "multiCity": Array [],
+                      "multiFuelType": Array [],
+                      "pickupDateRange": Array [
+                        null,
+                        null,
+                      ],
+                      "productType": "",
+                    },
+                    "isSubmitting": false,
+                    "isValid": true,
+                    "isValidating": false,
+                    "registerField": [Function],
+                    "resetForm": [Function],
+                    "setErrors": [Function],
+                    "setFieldError": [Function],
+                    "setFieldTouched": [Function],
+                    "setFieldValue": [Function],
+                    "setFormikState": [Function],
+                    "setStatus": [Function],
+                    "setSubmitting": [Function],
+                    "setTouched": [Function],
+                    "setValues": [Function],
+                    "status": undefined,
+                    "submitCount": 0,
+                    "submitForm": [Function],
+                    "touched": Object {},
+                    "unregisterField": [Function],
+                    "validateField": [Function],
+                    "validateForm": [Function],
+                    "validateOnBlur": true,
+                    "validateOnChange": true,
+                    "validateOnMount": false,
+                    "values": Object {
+                      "addFuelTax": false,
+                      "city": undefined,
+                      "customer": Object {
+                        "label": "",
+                        "value": "",
+                      },
+                      "deliveryDate": null,
+                      "fuelType": Object {
+                        "label": "",
+                        "value": "",
+                      },
+                      "input123": "",
+                      "multiCity": Array [],
+                      "multiFuelType": Array [],
+                      "pickupDateRange": Array [
+                        null,
+                        null,
+                      ],
+                      "productType": "",
+                    },
+                  }
+                }
+                handleTouched={[Function]}
+                onChange={[Function]}
+              />
+            </ForwardRef(Grid)>
+            <ForwardRef(Grid)
+              item={true}
+              key="dynFilDialogGrid6"
+              mb={2.5}
+              mt={2}
+            >
+              <datePicker
+                field={
+                  Object {
+                    "dateRangerPlaceHolder": Object {
+                      "end": "End",
+                      "start": "Start",
+                    },
+                    "fieldType": "dateRange",
+                    "initialValue": Array [
+                      null,
+                      null,
+                    ],
+                    "label": "Select Pickup Dates",
+                    "name": "pickupDateRange",
+                    "required": true,
+                  }
+                }
+                fieldId="dynFilt6"
+                formik={
+                  Object {
+                    "dirty": false,
+                    "errors": Object {},
+                    "getFieldHelpers": [Function],
+                    "getFieldMeta": [Function],
+                    "getFieldProps": [Function],
+                    "handleBlur": [Function],
+                    "handleChange": [Function],
+                    "handleReset": [Function],
+                    "handleSubmit": [Function],
+                    "initialErrors": Object {},
+                    "initialStatus": undefined,
+                    "initialTouched": Object {},
+                    "initialValues": Object {
+                      "addFuelTax": false,
+                      "city": undefined,
+                      "customer": Object {
+                        "label": "",
+                        "value": "",
+                      },
+                      "deliveryDate": null,
+                      "fuelType": Object {
+                        "label": "",
+                        "value": "",
+                      },
+                      "input123": "",
+                      "multiCity": Array [],
+                      "multiFuelType": Array [],
+                      "pickupDateRange": Array [
+                        null,
+                        null,
+                      ],
+                      "productType": "",
+                    },
+                    "isSubmitting": false,
+                    "isValid": true,
+                    "isValidating": false,
+                    "registerField": [Function],
+                    "resetForm": [Function],
+                    "setErrors": [Function],
+                    "setFieldError": [Function],
+                    "setFieldTouched": [Function],
+                    "setFieldValue": [Function],
+                    "setFormikState": [Function],
+                    "setStatus": [Function],
+                    "setSubmitting": [Function],
+                    "setTouched": [Function],
+                    "setValues": [Function],
+                    "status": undefined,
+                    "submitCount": 0,
+                    "submitForm": [Function],
+                    "touched": Object {},
+                    "unregisterField": [Function],
+                    "validateField": [Function],
+                    "validateForm": [Function],
+                    "validateOnBlur": true,
+                    "validateOnChange": true,
+                    "validateOnMount": false,
+                    "values": Object {
+                      "addFuelTax": false,
+                      "city": undefined,
+                      "customer": Object {
+                        "label": "",
+                        "value": "",
+                      },
+                      "deliveryDate": null,
+                      "fuelType": Object {
+                        "label": "",
+                        "value": "",
+                      },
+                      "input123": "",
+                      "multiCity": Array [],
+                      "multiFuelType": Array [],
+                      "pickupDateRange": Array [
+                        null,
+                        null,
+                      ],
+                      "productType": "",
+                    },
+                  }
+                }
+                handleTouched={[Function]}
+                onChange={[Function]}
+              />
+            </ForwardRef(Grid)>
+            <ForwardRef(Grid)
+              item={true}
+              key="dynFilDialogGrid7"
+              mb={2.5}
+              mt={2}
+            >
+              <checkBox
+                field={
+                  Object {
+                    "disabled": false,
+                    "fieldType": "checkbox",
+                    "initialValue": false,
+                    "label": "Add fuel tax",
+                    "name": "addFuelTax",
+                    "required": true,
+                  }
+                }
+                fieldId="dynFilt7"
+                formik={
+                  Object {
+                    "dirty": false,
+                    "errors": Object {},
+                    "getFieldHelpers": [Function],
+                    "getFieldMeta": [Function],
+                    "getFieldProps": [Function],
+                    "handleBlur": [Function],
+                    "handleChange": [Function],
+                    "handleReset": [Function],
+                    "handleSubmit": [Function],
+                    "initialErrors": Object {},
+                    "initialStatus": undefined,
+                    "initialTouched": Object {},
+                    "initialValues": Object {
+                      "addFuelTax": false,
+                      "city": undefined,
+                      "customer": Object {
+                        "label": "",
+                        "value": "",
+                      },
+                      "deliveryDate": null,
+                      "fuelType": Object {
+                        "label": "",
+                        "value": "",
+                      },
+                      "input123": "",
+                      "multiCity": Array [],
+                      "multiFuelType": Array [],
+                      "pickupDateRange": Array [
+                        null,
+                        null,
+                      ],
+                      "productType": "",
+                    },
+                    "isSubmitting": false,
+                    "isValid": true,
+                    "isValidating": false,
+                    "registerField": [Function],
+                    "resetForm": [Function],
+                    "setErrors": [Function],
+                    "setFieldError": [Function],
+                    "setFieldTouched": [Function],
+                    "setFieldValue": [Function],
+                    "setFormikState": [Function],
+                    "setStatus": [Function],
+                    "setSubmitting": [Function],
+                    "setTouched": [Function],
+                    "setValues": [Function],
+                    "status": undefined,
+                    "submitCount": 0,
+                    "submitForm": [Function],
+                    "touched": Object {},
+                    "unregisterField": [Function],
+                    "validateField": [Function],
+                    "validateForm": [Function],
+                    "validateOnBlur": true,
+                    "validateOnChange": true,
+                    "validateOnMount": false,
+                    "values": Object {
+                      "addFuelTax": false,
+                      "city": undefined,
+                      "customer": Object {
+                        "label": "",
+                        "value": "",
+                      },
+                      "deliveryDate": null,
+                      "fuelType": Object {
+                        "label": "",
+                        "value": "",
+                      },
+                      "input123": "",
+                      "multiCity": Array [],
+                      "multiFuelType": Array [],
+                      "pickupDateRange": Array [
+                        null,
+                        null,
+                      ],
+                      "productType": "",
+                    },
+                  }
+                }
+                handleTouched={[Function]}
+                onChange={[Function]}
+              />
+            </ForwardRef(Grid)>
+            <ForwardRef(Grid)
+              item={true}
+              key="dynFilDialogGrid8"
+              mb={2.5}
+              mt={2}
+            >
+              <radioBtn
+                field={
+                  Object {
+                    "disabled": false,
+                    "fieldType": "radio",
+                    "initialValue": "",
+                    "label": "Opis rack",
+                    "name": "productType",
+                    "required": true,
+                    "value": "val1",
+                  }
+                }
+                fieldId="dynFilt8"
+                formik={
+                  Object {
+                    "dirty": false,
+                    "errors": Object {},
+                    "getFieldHelpers": [Function],
+                    "getFieldMeta": [Function],
+                    "getFieldProps": [Function],
+                    "handleBlur": [Function],
+                    "handleChange": [Function],
+                    "handleReset": [Function],
+                    "handleSubmit": [Function],
+                    "initialErrors": Object {},
+                    "initialStatus": undefined,
+                    "initialTouched": Object {},
+                    "initialValues": Object {
+                      "addFuelTax": false,
+                      "city": undefined,
+                      "customer": Object {
+                        "label": "",
+                        "value": "",
+                      },
+                      "deliveryDate": null,
+                      "fuelType": Object {
+                        "label": "",
+                        "value": "",
+                      },
+                      "input123": "",
+                      "multiCity": Array [],
+                      "multiFuelType": Array [],
+                      "pickupDateRange": Array [
+                        null,
+                        null,
+                      ],
+                      "productType": "",
+                    },
+                    "isSubmitting": false,
+                    "isValid": true,
+                    "isValidating": false,
+                    "registerField": [Function],
+                    "resetForm": [Function],
+                    "setErrors": [Function],
+                    "setFieldError": [Function],
+                    "setFieldTouched": [Function],
+                    "setFieldValue": [Function],
+                    "setFormikState": [Function],
+                    "setStatus": [Function],
+                    "setSubmitting": [Function],
+                    "setTouched": [Function],
+                    "setValues": [Function],
+                    "status": undefined,
+                    "submitCount": 0,
+                    "submitForm": [Function],
+                    "touched": Object {},
+                    "unregisterField": [Function],
+                    "validateField": [Function],
+                    "validateForm": [Function],
+                    "validateOnBlur": true,
+                    "validateOnChange": true,
+                    "validateOnMount": false,
+                    "values": Object {
+                      "addFuelTax": false,
+                      "city": undefined,
+                      "customer": Object {
+                        "label": "",
+                        "value": "",
+                      },
+                      "deliveryDate": null,
+                      "fuelType": Object {
+                        "label": "",
+                        "value": "",
+                      },
+                      "input123": "",
+                      "multiCity": Array [],
+                      "multiFuelType": Array [],
+                      "pickupDateRange": Array [
+                        null,
+                        null,
+                      ],
+                      "productType": "",
+                    },
+                  }
+                }
+                handleTouched={[Function]}
+                onChange={[Function]}
+              />
+            </ForwardRef(Grid)>
+            <ForwardRef(Grid)
+              item={true}
+              key="dynFilDialogGrid9"
+              mb={2.5}
+              mt={2}
+            >
+              <radioBtn
+                field={
+                  Object {
+                    "disabled": false,
+                    "fieldType": "radio",
+                    "initialValue": "",
+                    "label": "Opis retail",
+                    "name": "productType",
+                    "required": true,
+                    "value": "val2",
+                  }
+                }
+                fieldId="dynFilt9"
+                formik={
+                  Object {
+                    "dirty": false,
+                    "errors": Object {},
+                    "getFieldHelpers": [Function],
+                    "getFieldMeta": [Function],
+                    "getFieldProps": [Function],
+                    "handleBlur": [Function],
+                    "handleChange": [Function],
+                    "handleReset": [Function],
+                    "handleSubmit": [Function],
+                    "initialErrors": Object {},
+                    "initialStatus": undefined,
+                    "initialTouched": Object {},
+                    "initialValues": Object {
+                      "addFuelTax": false,
+                      "city": undefined,
+                      "customer": Object {
+                        "label": "",
+                        "value": "",
+                      },
+                      "deliveryDate": null,
+                      "fuelType": Object {
+                        "label": "",
+                        "value": "",
+                      },
+                      "input123": "",
+                      "multiCity": Array [],
+                      "multiFuelType": Array [],
+                      "pickupDateRange": Array [
+                        null,
+                        null,
+                      ],
+                      "productType": "",
+                    },
+                    "isSubmitting": false,
+                    "isValid": true,
+                    "isValidating": false,
+                    "registerField": [Function],
+                    "resetForm": [Function],
+                    "setErrors": [Function],
+                    "setFieldError": [Function],
+                    "setFieldTouched": [Function],
+                    "setFieldValue": [Function],
+                    "setFormikState": [Function],
+                    "setStatus": [Function],
+                    "setSubmitting": [Function],
+                    "setTouched": [Function],
+                    "setValues": [Function],
+                    "status": undefined,
+                    "submitCount": 0,
+                    "submitForm": [Function],
+                    "touched": Object {},
+                    "unregisterField": [Function],
+                    "validateField": [Function],
+                    "validateForm": [Function],
+                    "validateOnBlur": true,
+                    "validateOnChange": true,
+                    "validateOnMount": false,
+                    "values": Object {
+                      "addFuelTax": false,
+                      "city": undefined,
+                      "customer": Object {
+                        "label": "",
+                        "value": "",
+                      },
+                      "deliveryDate": null,
+                      "fuelType": Object {
+                        "label": "",
+                        "value": "",
+                      },
+                      "input123": "",
+                      "multiCity": Array [],
+                      "multiFuelType": Array [],
+                      "pickupDateRange": Array [
+                        null,
+                        null,
+                      ],
+                      "productType": "",
+                    },
+                  }
+                }
+                handleTouched={[Function]}
+                onChange={[Function]}
+              />
+            </ForwardRef(Grid)>
+            <ForwardRef(Grid)
+              item={true}
+              key="dynFilDialogGrid10"
+              mb={2.5}
+              mt={2}
+            >
+              <radioBtn
+                field={
+                  Object {
+                    "disabled": false,
+                    "fieldType": "radio",
+                    "initialValue": "",
+                    "label": "Custom",
+                    "name": "productType",
+                    "required": true,
+                    "value": "val3",
+                  }
+                }
+                fieldId="dynFilt10"
+                formik={
+                  Object {
+                    "dirty": false,
+                    "errors": Object {},
+                    "getFieldHelpers": [Function],
+                    "getFieldMeta": [Function],
+                    "getFieldProps": [Function],
+                    "handleBlur": [Function],
+                    "handleChange": [Function],
+                    "handleReset": [Function],
+                    "handleSubmit": [Function],
+                    "initialErrors": Object {},
+                    "initialStatus": undefined,
+                    "initialTouched": Object {},
+                    "initialValues": Object {
+                      "addFuelTax": false,
+                      "city": undefined,
+                      "customer": Object {
+                        "label": "",
+                        "value": "",
+                      },
+                      "deliveryDate": null,
+                      "fuelType": Object {
+                        "label": "",
+                        "value": "",
+                      },
+                      "input123": "",
+                      "multiCity": Array [],
+                      "multiFuelType": Array [],
+                      "pickupDateRange": Array [
+                        null,
+                        null,
+                      ],
+                      "productType": "",
+                    },
+                    "isSubmitting": false,
+                    "isValid": true,
+                    "isValidating": false,
+                    "registerField": [Function],
+                    "resetForm": [Function],
+                    "setErrors": [Function],
+                    "setFieldError": [Function],
+                    "setFieldTouched": [Function],
+                    "setFieldValue": [Function],
+                    "setFormikState": [Function],
+                    "setStatus": [Function],
+                    "setSubmitting": [Function],
+                    "setTouched": [Function],
+                    "setValues": [Function],
+                    "status": undefined,
+                    "submitCount": 0,
+                    "submitForm": [Function],
+                    "touched": Object {},
+                    "unregisterField": [Function],
+                    "validateField": [Function],
+                    "validateForm": [Function],
+                    "validateOnBlur": true,
+                    "validateOnChange": true,
+                    "validateOnMount": false,
+                    "values": Object {
+                      "addFuelTax": false,
+                      "city": undefined,
+                      "customer": Object {
+                        "label": "",
+                        "value": "",
+                      },
+                      "deliveryDate": null,
+                      "fuelType": Object {
+                        "label": "",
+                        "value": "",
+                      },
+                      "input123": "",
+                      "multiCity": Array [],
+                      "multiFuelType": Array [],
+                      "pickupDateRange": Array [
+                        null,
+                        null,
+                      ],
+                      "productType": "",
+                    },
+                  }
+                }
+                handleTouched={[Function]}
+                onChange={[Function]}
+              />
+            </ForwardRef(Grid)>
+            <ForwardRef(Grid)
+              item={true}
+              key="dynFilDialogGrid11"
+              mb={2.5}
+              mt={2}
+            >
+              <SelectDynamic
+                field={
+                  Object {
+                    "apiUrl": "/api/tax-service/fuel-taxes/filter-options",
+                    "extraApiParams": Object {
+                      "countryCode": "us",
+                    },
+                    "fieldType": "singleSelect",
+                    "label": "Select city",
+                    "name": "city",
+                    "placeHolder": "Select City",
+                    "required": true,
+                    "responseFormatter": [MockFunction],
+                  }
+                }
+                fieldId="dynFilt11"
+                formik={
+                  Object {
+                    "dirty": false,
+                    "errors": Object {},
+                    "getFieldHelpers": [Function],
+                    "getFieldMeta": [Function],
+                    "getFieldProps": [Function],
+                    "handleBlur": [Function],
+                    "handleChange": [Function],
+                    "handleReset": [Function],
+                    "handleSubmit": [Function],
+                    "initialErrors": Object {},
+                    "initialStatus": undefined,
+                    "initialTouched": Object {},
+                    "initialValues": Object {
+                      "addFuelTax": false,
+                      "city": undefined,
+                      "customer": Object {
+                        "label": "",
+                        "value": "",
+                      },
+                      "deliveryDate": null,
+                      "fuelType": Object {
+                        "label": "",
+                        "value": "",
+                      },
+                      "input123": "",
+                      "multiCity": Array [],
+                      "multiFuelType": Array [],
+                      "pickupDateRange": Array [
+                        null,
+                        null,
+                      ],
+                      "productType": "",
+                    },
+                    "isSubmitting": false,
+                    "isValid": true,
+                    "isValidating": false,
+                    "registerField": [Function],
+                    "resetForm": [Function],
+                    "setErrors": [Function],
+                    "setFieldError": [Function],
+                    "setFieldTouched": [Function],
+                    "setFieldValue": [Function],
+                    "setFormikState": [Function],
+                    "setStatus": [Function],
+                    "setSubmitting": [Function],
+                    "setTouched": [Function],
+                    "setValues": [Function],
+                    "status": undefined,
+                    "submitCount": 0,
+                    "submitForm": [Function],
+                    "touched": Object {},
+                    "unregisterField": [Function],
+                    "validateField": [Function],
+                    "validateForm": [Function],
+                    "validateOnBlur": true,
+                    "validateOnChange": true,
+                    "validateOnMount": false,
+                    "values": Object {
+                      "addFuelTax": false,
+                      "city": undefined,
+                      "customer": Object {
+                        "label": "",
+                        "value": "",
+                      },
+                      "deliveryDate": null,
+                      "fuelType": Object {
+                        "label": "",
+                        "value": "",
+                      },
+                      "input123": "",
+                      "multiCity": Array [],
+                      "multiFuelType": Array [],
+                      "pickupDateRange": Array [
+                        null,
+                        null,
+                      ],
+                      "productType": "",
+                    },
+                  }
+                }
+                handleTouched={[Function]}
+                onChange={[Function]}
+              />
+            </ForwardRef(Grid)>
+          </ForwardRef(DialogContent)>
+          <ForwardRef(DialogActions)
+            className="dialog-actions"
+          >
+            <ForwardRef(Grid)
+              className="lastItem"
+              container={true}
+              direction="row"
+              item={true}
+              justifyContent="flex-end"
+              mt={2.5}
+            >
+              <ForwardRef(Grid)
+                item={true}
+              >
+                <Button
+                  className="action-no"
+                  onClick={[Function]}
+                  types="cancel"
+                  variant="outlined"
+                >
+                  Cancel
+                </Button>
+              </ForwardRef(Grid)>
+              <ForwardRef(Grid)
+                item={true}
+              >
+                <Styled(Button)
+                  data-testid="applyAll"
+                  disabled={true}
+                  id="applyAll"
+                  type="submit"
+                  types="save"
+                >
+                  Continue
+                </Styled(Button)>
+              </ForwardRef(Grid)>
+            </ForwardRef(Grid)>
+          </ForwardRef(DialogActions)>
+        </div>
+      </ForwardRef(Grid)>
+    </form>
+  </ContextProvider>
+</ForwardRef(Dialog)>
+`;

@@ -1,0 +1,83 @@
+.select {
+  width: 100%;
+}
+.select-paginate-custom{
+  &.error {
+    border: 2px solid var(--Tertiary);
+    box-shadow: none;
+    & .paginate-custom {
+      &__control {
+        border: none;
+        box-shadow: none;
+        &:hover,
+        &:active,
+        &--is-focused {
+          border: none;
+          box-shadow: none;
+        }
+        &--menu-is-open {
+          & .paginate-custom__indicator {
+            padding-left: 18px;
+            transform: rotate(180deg);
+          }
+        }
+      }
+    }
+  }
+  .paginate-custom__control{
+    height: 50px;
+    border-radius: 0px;
+    font-size: 14px;
+    padding: 0px;
+    margin: 0px;
+    cursor:text;
+    outline: none;  
+  }
+  .paginate-custom__control--is-focused{
+    border-radius: 0;
+    border-color: var(--Darkgray);
+    border: 2px solid var(--Darkgray);
+    box-shadow: none;
+  }
+  
+
+  .paginate-custom-singleValue{
+    padding: 14px 10px 15px;
+  } 
+  .paginate-custom__menu{
+    border-radius: 0;
+    padding: 0px;
+  }
+
+  .paginate-custom__menu-list{ 
+    border-radius: 0;
+    background: var(--White);
+    box-shadow: 3px 6px 14px #00000026;
+    padding: 0px;
+    z-index: 999;
+    .paginate-custom__option{
+      border-radius: 0;
+      height: 50px;
+      line-height: 27px;
+      font-size: 14px;
+      padding: 10px 15px;
+      box-sizing: border-box;
+      border-bottom: 1px solid var(--White);
+      cursor: pointer;
+      display: flex;
+    } 
+    .paginate-custom__option--is-focused{ 
+      border: none;
+      border-radius: 0;
+      background-color: var(--Lightgray_2);
+      opacity: 1;
+      font-size: 14px;
+    }
+    .paginate-custom__option--is-selected {
+      border-radius: 0;
+      border: 1px solid var(--White);
+      background-color: var(--Gray);
+      color: var(--White);
+    }
+  }
+} 

@@ -7917,14 +7917,6 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                                                             Array [
                                                                               Object {
                                                                                 "enabled": true,
-                                                                                "name": "flip",
-                                                                                "options": Object {
-                                                                                  "altBoundary": true,
-                                                                                  "rootBoundary": "viewport",
-                                                                                },
-                                                                              },
-                                                                              Object {
-                                                                                "enabled": true,
                                                                                 "name": "preventOverflow",
                                                                                 "options": Object {
                                                                                   "altAxis": true,

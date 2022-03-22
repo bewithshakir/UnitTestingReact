@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders inputText properly snapshot testing 1`] = `
+<MultiSelect
+  error={false}
+  id="select-label"
+  items={
+    Array [
+      Object {
+        "label": "a",
+        "value": "a",
+      },
+      Object {
+        "label": "b",
+        "value": "b",
+      },
+    ]
+  }
+  key="multiSelect"
+  label="Select City"
+  loadingMessage="Loading..."
+  name="city"
+  noOptionsMessage="No Options found"
+  onBlur={[Function]}
+  onChange={[MockFunction]}
+  placeholder="Select"
+  required={false}
+/>
+`;

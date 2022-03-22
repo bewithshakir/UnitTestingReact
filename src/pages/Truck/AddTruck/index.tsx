@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, Container, Grid, Link, Typography } from '@mui/material';
+import { Box, Grid, Link, Typography } from '@mui/material';
 import { FieldArray, FormikProvider, useFormik } from 'formik';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from '../../../contexts/Theme/Theme.context';
@@ -265,342 +265,344 @@ const AddTruck: React.FC<AddCustomerProps> = () => {
     };
 
     return (
-        <>
-            <Grid item md={10} xs={10}>
-                <Container maxWidth="lg" className="page-container">
-                    <FormikProvider value={formik}>
-                        <form id="addTruckForm" onSubmit={formik.handleSubmit} onBlur={handleFormDataChange} >
-                            <Grid container>
-                                <Grid item md={12} mt={12} mb={1}>
-                                    <Typography color="var(--Darkgray)" variant="h4" gutterBottom className="fw-bold" mb={1}>
+        <Box display='flex' ml={8}>
+            <Grid container pl={8} className='main-area'>
+                <Grid item md={10} xs={10} >
+                    <Grid item xl={7} lg={8}>
+                        <FormikProvider value={formik}>
+                            <form id="addTruckForm" onSubmit={formik.handleSubmit} onBlur={handleFormDataChange} >
+                                <Grid container>
+                                    <Grid item md={12} mt={12} mb={1}>
+                                        <Typography color="var(--Darkgray)" variant="h4" gutterBottom className="fw-bold" mb={1}>
                                             {t("addTruckFormLabels.fillDetailsTitle")}
-                                    </Typography>
-                                </Grid>
-                            <Grid container item xs={11} md={11}>
-                                <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
-                                    <Input
-                                        id='truckName'
-                                        label={t("addTruckFormLabels.truckName")}
-                                        type='text'
-                                        helperText={(formik.touched.truckName && formik.errors.truckName) ? formik.errors.truckName : undefined}
-                                        error={(formik.touched.truckName && formik.errors.truckName) ? true : false}
-                                        description=''
-                                        required
-                                        {...formik.getFieldProps('truckName')}
+                                        </Typography>
+                                    </Grid>
+                                    <Grid container item xs={11} md={11}>
+                                        <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
+                                            <Input
+                                                id='truckName'
+                                                label={t("addTruckFormLabels.truckName")}
+                                                type='text'
+                                                helperText={(formik.touched.truckName && formik.errors.truckName) ? formik.errors.truckName : undefined}
+                                                error={(formik.touched.truckName && formik.errors.truckName) ? true : false}
+                                                description=''
+                                                required
+                                                {...formik.getFieldProps('truckName')}
 
-                                    />
-                                </Grid>
-                                <Grid item xs={12} md={6} pl={2.5} pb={2.5}>
-                                    <Input
-                                        id='license'
-                                        label={t("addTruckFormLabels.license")}
-                                        type='text'
-                                        helperText={(formik.touched.license && formik.errors.license) ? formik.errors.license : undefined}
-                                        error={(formik.touched.license && formik.errors.license) ? true : false}
-                                        description=''
-                                        required
-                                        {...formik.getFieldProps('license')}
-                                    />
-                                </Grid>
-                                <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
-                                    <Input
-                                        id='vin'
-                                        label={t("addTruckFormLabels.vin")}
-                                        type='text'
-                                        helperText={(formik.touched.vin && formik.errors.vin) ? formik.errors.vin : undefined}
-                                        error={(formik.touched.vin && formik.errors.vin) ? true : false}
-                                        description=''
-                                        required
-                                        {...formik.getFieldProps('vin')}
-                                    />
-                                </Grid>
-                                <Grid item xs={12} md={6} pl={2.5} pb={2.5}>
-                                    <Input
-                                        id='makeModel'
-                                        label={t("addTruckFormLabels.makeModel")}
-                                        type='text'
-                                        helperText={(formik.touched.makeModel && formik.errors.makeModel) ? formik.errors.makeModel : undefined}
-                                        error={(formik.touched.makeModel && formik.errors.makeModel) ? true : false}
-                                        description=''
-                                        required
-                                        {...formik.getFieldProps('makeModel')}
-                                    />
-                                </Grid>
-                                <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
-                                    <Select
-                                        id='color'
-                                        name='color'
-                                        label={t("addTruckFormLabels.color")}
-                                        value={formik.values.color}
-                                        placeholder='Select One'
-                                        items={truckColorList}
-                                        helperText={(formik.touched.color && formik.errors.color) ? formik.errors.color.value : undefined}
-                                        error={(formik.touched.color && formik.errors.color) ? true : false}
-                                        onChange={formik.setFieldValue}
-                                        onBlur={() => { formik.setFieldTouched("color"); formik.validateField("color"); }}
-                                        required
-                                    />
+                                            />
+                                        </Grid>
+                                        <Grid item xs={12} md={6} pl={2.5} pb={2.5}>
+                                            <Input
+                                                id='license'
+                                                label={t("addTruckFormLabels.license")}
+                                                type='text'
+                                                helperText={(formik.touched.license && formik.errors.license) ? formik.errors.license : undefined}
+                                                error={(formik.touched.license && formik.errors.license) ? true : false}
+                                                description=''
+                                                required
+                                                {...formik.getFieldProps('license')}
+                                            />
+                                        </Grid>
+                                        <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
+                                            <Input
+                                                id='vin'
+                                                label={t("addTruckFormLabels.vin")}
+                                                type='text'
+                                                helperText={(formik.touched.vin && formik.errors.vin) ? formik.errors.vin : undefined}
+                                                error={(formik.touched.vin && formik.errors.vin) ? true : false}
+                                                description=''
+                                                required
+                                                {...formik.getFieldProps('vin')}
+                                            />
+                                        </Grid>
+                                        <Grid item xs={12} md={6} pl={2.5} pb={2.5}>
+                                            <Input
+                                                id='makeModel'
+                                                label={t("addTruckFormLabels.makeModel")}
+                                                type='text'
+                                                helperText={(formik.touched.makeModel && formik.errors.makeModel) ? formik.errors.makeModel : undefined}
+                                                error={(formik.touched.makeModel && formik.errors.makeModel) ? true : false}
+                                                description=''
+                                                required
+                                                {...formik.getFieldProps('makeModel')}
+                                            />
+                                        </Grid>
+                                        <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
+                                            <Select
+                                                id='color'
+                                                name='color'
+                                                label={t("addTruckFormLabels.color")}
+                                                value={formik.values.color}
+                                                placeholder='Select One'
+                                                items={truckColorList}
+                                                helperText={(formik.touched.color && formik.errors.color) ? formik.errors.color.value : undefined}
+                                                error={(formik.touched.color && formik.errors.color) ? true : false}
+                                                onChange={formik.setFieldValue}
+                                                onBlur={() => { formik.setFieldTouched("color"); formik.validateField("color"); }}
+                                                required
+                                            />
 
-                                </Grid>
-                                <Grid item xs={12} md={6} pl={2.5} pb={2.5}>
-                                    <Input
-                                        id='year'
-                                        label={t("addTruckFormLabels.year")}
-                                        type='text'
-                                        helperText={(formik.touched.year && formik.errors.year) ? formik.errors.year : undefined}
-                                        error={(formik.touched.year && formik.errors.year) ? true : false}
-                                        description=''
-                                        {...formik.getFieldProps('year')}
-                                       
-                                    />
-                                </Grid>
+                                        </Grid>
+                                        <Grid item xs={12} md={6} pl={2.5} pb={2.5}>
+                                            <Input
+                                                id='year'
+                                                label={t("addTruckFormLabels.year")}
+                                                type='text'
+                                                helperText={(formik.touched.year && formik.errors.year) ? formik.errors.year : undefined}
+                                                error={(formik.touched.year && formik.errors.year) ? true : false}
+                                                description=''
+                                                {...formik.getFieldProps('year')}
 
-                                <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
-                                    <Select
-                                        id='status'
-                                        name='status'
-                                        label={t("addTruckFormLabels.status")}
-                                        value={formik.values.status}
-                                        placeholder='Select One'
-                                        items={addTruckStatusList}
-                                        helperText={(formik.touched.status && formik.errors.status) ? formik.errors.status.value : undefined}
-                                        error={(formik.touched.status && formik.errors.status) ? true : false}
-                                        onChange={formik.setFieldValue}
-                                        onBlur={() => { formik.setFieldTouched("status"); formik.validateField("status"); }}
-                                    />
+                                            />
+                                        </Grid>
 
-                                </Grid>
-                                <Grid item xs={12} md={6} pl={2.5} pb={2.5}>
-                                    <MultiSelect
-                                        id='truckParkingLot'
-                                        name='truckParkingLot'
-                                        label={t("addTruckFormLabels.truckParkingLot")}
-                                        value={formik.values.truckParkingLot}
-                                        placeholder='Select Multiple lots'
-                                        items={truckParkingLotList}
-                                        onChange={formik.setFieldValue}
-                                        required
-                                        helperText={(formik.touched.truckParkingLot && formik.errors.truckParkingLot) ? formik.errors.truckParkingLot : undefined}
-                                        error={(formik.touched.truckParkingLot && formik.errors.truckParkingLot) ? true : false}
-                                        onBlur={() => { formik.setFieldTouched(`truckParkingLot`); formik.validateField(`truckParkingLot`); }}
-                                    />
+                                        <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
+                                            <Select
+                                                id='status'
+                                                name='status'
+                                                label={t("addTruckFormLabels.status")}
+                                                value={formik.values.status}
+                                                placeholder='Select One'
+                                                items={addTruckStatusList}
+                                                helperText={(formik.touched.status && formik.errors.status) ? formik.errors.status.value : undefined}
+                                                error={(formik.touched.status && formik.errors.status) ? true : false}
+                                                onChange={formik.setFieldValue}
+                                                onBlur={() => { formik.setFieldTouched("status"); formik.validateField("status"); }}
+                                            />
 
-                                </Grid>
-                                <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
-                                    <Select
-                                        id='opexFuelType'
-                                        name='opexFuelType'
-                                        label='OPEX FUEL TYPE'
-                                        value={formik.values.opexFuelType}
-                                        placeholder='Select One'
-                                        items={fuelProductsList}
-                                        helperText={(formik.touched.opexFuelType && formik.errors.opexFuelType) ? formik.errors.opexFuelType.value : undefined}
-                                        error={(formik.touched.opexFuelType && formik.errors.opexFuelType) ? true : false}
-                                        onChange={formik.setFieldValue}
-                                        onBlur={() => { formik.setFieldTouched("opexFuelType"); formik.validateField("opexFuelType"); }}
-                                        required
-                                    />
-                                </Grid>
-                            </Grid>
-                            <Grid item md={12} mt={2} mb={1}>
-                                <Typography color="var(--Darkgray)" variant="h4" gutterBottom className="fw-bold" mb={1}>
-                                {t("addTruckFormLabels.tankDetails")} (Max {maxTanks} Tanks)
-                                </Typography>
-                            </Grid>
-                            <FieldArray
-                                name="tankDetails"
-                                render={(arrayHelpers) => (
-                                    <React.Fragment>
-                                        {formik.values.tankDetails.map((contactList, index) => (
-                                            <React.Fragment key={`em${index}`}>
-                                                <Grid item md={12} mt={2} mb={1}>
-                                                    <Typography color="var(--Darkgray)" variant="h4" gutterBottom className="fw-bold" mb={1}>
-                                                        {t("addTruckFormLabels.tank")} {index + 1}
-                                                    </Typography>
-                                                </Grid>
-                                                <Grid container item xs={11} md={11}>
-                                                    <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
-                                                        <Input
-                                                            id={`tankDetails[${index}].tcsRegisterId`}
-                                                            label={t("addTruckFormLabels.tankTcsId")}
-                                                            type='text'
-                                                            helperText={
-                                                                formik?.errors?.tankDetails && formik?.touched?.tankDetails &&
-                                                                    (formik.touched?.tankDetails?.[index]?.tcsRegisterId && ((formik.errors?.tankDetails?.[index] as TankDetails)?.tcsRegisterId))
-                                                                    ?
-                                                                    (formik.errors.tankDetails[index] as TankDetails).tcsRegisterId : undefined
+                                        </Grid>
+                                        <Grid item xs={12} md={6} pl={2.5} pb={2.5}>
+                                            <MultiSelect
+                                                id='truckParkingLot'
+                                                name='truckParkingLot'
+                                                label={t("addTruckFormLabels.truckParkingLot")}
+                                                value={formik.values.truckParkingLot}
+                                                placeholder='Select Multiple lots'
+                                                items={truckParkingLotList}
+                                                onChange={formik.setFieldValue}
+                                                required
+                                                helperText={(formik.touched.truckParkingLot && formik.errors.truckParkingLot) ? formik.errors.truckParkingLot : undefined}
+                                                error={(formik.touched.truckParkingLot && formik.errors.truckParkingLot) ? true : false}
+                                                onBlur={() => { formik.setFieldTouched(`truckParkingLot`); formik.validateField(`truckParkingLot`); }}
+                                            />
+
+                                        </Grid>
+                                        <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
+                                            <Select
+                                                id='opexFuelType'
+                                                name='opexFuelType'
+                                                label='OPEX FUEL TYPE'
+                                                value={formik.values.opexFuelType}
+                                                placeholder='Select One'
+                                                items={fuelProductsList}
+                                                helperText={(formik.touched.opexFuelType && formik.errors.opexFuelType) ? formik.errors.opexFuelType.value : undefined}
+                                                error={(formik.touched.opexFuelType && formik.errors.opexFuelType) ? true : false}
+                                                onChange={formik.setFieldValue}
+                                                onBlur={() => { formik.setFieldTouched("opexFuelType"); formik.validateField("opexFuelType"); }}
+                                                required
+                                            />
+                                        </Grid>
+                                    </Grid>
+                                    <Grid item md={12} mt={2} mb={1}>
+                                        <Typography color="var(--Darkgray)" variant="h4" gutterBottom className="fw-bold" mb={1}>
+                                            {t("addTruckFormLabels.tankDetails")} (Max {maxTanks} Tanks)
+                                        </Typography>
+                                    </Grid>
+                                    <FieldArray
+                                        name="tankDetails"
+                                        render={(arrayHelpers) => (
+                                            <React.Fragment>
+                                                {formik.values.tankDetails.map((contactList, index) => (
+                                                    <React.Fragment key={`em${index}`}>
+                                                        <Grid item md={12} mt={2} mb={1}>
+                                                            <Typography color="var(--Darkgray)" variant="h4" gutterBottom className="fw-bold" mb={1}>
+                                                                {t("addTruckFormLabels.tank")} {index + 1}
+                                                            </Typography>
+                                                        </Grid>
+                                                        <Grid container item xs={11} md={11}>
+                                                            <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
+                                                                <Input
+                                                                    id={`tankDetails[${index}].tcsRegisterId`}
+                                                                    label={t("addTruckFormLabels.tankTcsId")}
+                                                                    type='text'
+                                                                    helperText={
+                                                                        formik?.errors?.tankDetails && formik?.touched?.tankDetails &&
+                                                                            (formik.touched?.tankDetails?.[index]?.tcsRegisterId && ((formik.errors?.tankDetails?.[index] as TankDetails)?.tcsRegisterId))
+                                                                            ?
+                                                                            (formik.errors.tankDetails[index] as TankDetails).tcsRegisterId : undefined
+                                                                    }
+                                                                    error={
+                                                                        formik?.errors?.tankDetails && formik?.touched?.tankDetails &&
+                                                                            (formik.touched?.tankDetails?.[index]?.tcsRegisterId && ((formik.errors?.tankDetails?.[index] as TankDetails)?.tcsRegisterId))
+                                                                            ? true : false
+                                                                    }
+                                                                    description=''
+                                                                    required
+                                                                    {...formik.getFieldProps(`tankDetails[${index}].tcsRegisterId`)}
+
+                                                                />
+                                                            </Grid>
+                                                            <Grid item xs={12} md={6} pl={2.5} pb={2.5}>
+
+
+
+
+                                                                <Select
+                                                                    id={`tankDetails[${index}].tankFuelType`}
+                                                                    name={`tankDetails[${index}].tankFuelType`}
+                                                                    label={t("addTruckFormLabels.tankFuelType")}
+                                                                    value={formik.values.tankDetails[index].tankFuelType}
+
+                                                                    placeholder='Select One'
+                                                                    items={fuelProductsList}
+                                                                    helperText={
+                                                                        formik?.errors?.tankDetails && formik?.touched?.tankDetails &&
+                                                                            (formik.touched?.tankDetails?.[index]?.tankFuelType?.value && ((formik.errors?.tankDetails?.[index] as TankDetails)?.tankFuelType.value))
+                                                                            ?
+                                                                            (formik.errors.tankDetails[index] as TankDetails).tankFuelType.value : undefined
+                                                                    }
+                                                                    error={
+                                                                        formik?.errors?.tankDetails && formik?.touched?.tankDetails &&
+                                                                            (formik.touched?.tankDetails?.[index]?.tankFuelType?.value && ((formik.errors?.tankDetails?.[index] as TankDetails)?.tankFuelType.value))
+                                                                            ? true : false
+                                                                    }
+
+
+                                                                    onChange={formik.setFieldValue}
+                                                                    onBlur={() => { formik.setFieldTouched(`tankDetails[${index}].tankFuelType`); formik.validateField(`tankDetails[${index}].tankFuelType`); }}
+                                                                    required
+                                                                />
+
+
+
+                                                            </Grid>
+                                                            <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
+                                                                <Input
+                                                                    id={`tankDetails[${index}].minCapacityVol`}
+                                                                    label={t("addTruckFormLabels.tankMinCapacity")}
+                                                                    type="text"
+                                                                    helperText={
+                                                                        formik?.errors?.tankDetails && formik?.touched?.tankDetails &&
+                                                                            (formik.touched?.tankDetails?.[index]?.minCapacityVol && ((formik.errors?.tankDetails?.[index] as TankDetails)?.minCapacityVol))
+                                                                            ?
+                                                                            (formik.errors.tankDetails[index] as TankDetails).minCapacityVol : undefined
+                                                                    }
+                                                                    error={
+                                                                        formik?.errors?.tankDetails && formik?.touched?.tankDetails &&
+                                                                            (formik.touched?.tankDetails?.[index]?.minCapacityVol && ((formik.errors?.tankDetails?.[index] as TankDetails)?.minCapacityVol))
+                                                                            ? true : false
+                                                                    }
+                                                                    description=''
+                                                                    required
+                                                                    {...formik.getFieldProps(`tankDetails[${index}].minCapacityVol`)}
+
+                                                                />
+                                                            </Grid>
+                                                            <Grid item xs={12} md={6} pl={2.5} pb={2.5}>
+                                                                <Input
+                                                                    id={`tankDetails[${index}].maxCapacityVol`}
+                                                                    label={t("addTruckFormLabels.tankMaxCapacity")}
+                                                                    type='text'
+                                                                    required
+                                                                    helperText={
+                                                                        formik?.errors?.tankDetails && formik?.touched?.tankDetails &&
+                                                                            (formik.touched?.tankDetails?.[index]?.maxCapacityVol && ((formik.errors?.tankDetails?.[index] as TankDetails)?.maxCapacityVol))
+                                                                            ?
+                                                                            (formik.errors.tankDetails[index] as TankDetails).maxCapacityVol : undefined
+                                                                    }
+                                                                    error={
+                                                                        formik?.errors?.tankDetails && formik?.touched?.tankDetails &&
+                                                                            (formik.touched?.tankDetails?.[index]?.maxCapacityVol && ((formik.errors?.tankDetails?.[index] as TankDetails)?.maxCapacityVol))
+                                                                            ? true : false
+                                                                    }
+                                                                    description=''
+                                                                    {...formik.getFieldProps(`tankDetails[${index}].maxCapacityVol`)}
+
+                                                                />
+                                                            </Grid>
+                                                        </Grid>
+                                                        <Grid container item xs={1} md={1}>
+                                                            <div className='deleteBtn'>
+                                                                {index !== 0 && (
+                                                                    <DeleteIcon color='#D7252C' height={16} onClick={() => deleteContact(index, arrayHelpers)} />
+                                                                )}
+                                                            </div>
+                                                        </Grid>
+                                                    </React.Fragment>
+                                                ))}
+
+                                                <Grid item md={12} mt={2} mb={4}>
+                                                    <Link
+                                                        variant="body2"
+                                                        className={formik.values.tankDetails.length === maxTanks ? "disabled-text-link" : "add-link"}
+                                                        sx={{
+                                                            display: "flex",
+                                                            alignItems: "center",
+                                                            width: "fit-content",
+                                                            cursor: "pointer"
+                                                        }}
+                                                        onClick={(event) => {
+                                                            if (formik.values.tankDetails.length === maxTanks) {
+                                                                event.preventDefault();
+                                                            } else {
+                                                                if (formik.values.tankDetails.length < maxTanks) {
+                                                                    arrayHelpers.push({ firstName: "", lastName: "", email: "", phoneNumber: "" });
+                                                                }
                                                             }
-                                                            error={
-                                                                formik?.errors?.tankDetails && formik?.touched?.tankDetails &&
-                                                                    (formik.touched?.tankDetails?.[index]?.tcsRegisterId && ((formik.errors?.tankDetails?.[index] as TankDetails)?.tcsRegisterId))
-                                                                    ? true : false
-                                                            }
-                                                            description=''
-                                                            required
-                                                            {...formik.getFieldProps(`tankDetails[${index}].tcsRegisterId`)}
-                                                            
-                                                        />
-                                                    </Grid>
-                                                    <Grid item xs={12} md={6} pl={2.5} pb={2.5}>
-
-
-
-
-                                                        <Select
-                                                            id={`tankDetails[${index}].tankFuelType`}
-                                                            name={`tankDetails[${index}].tankFuelType`}
-                                                            label={t("addTruckFormLabels.tankFuelType")}
-                                                            value={formik.values.tankDetails[index].tankFuelType}
-
-                                                            placeholder='Select One'
-                                                            items={fuelProductsList}
-                                                            helperText={
-                                                                formik?.errors?.tankDetails && formik?.touched?.tankDetails &&
-                                                                    (formik.touched?.tankDetails?.[index]?.tankFuelType?.value && ((formik.errors?.tankDetails?.[index] as TankDetails)?.tankFuelType.value))
-                                                                    ?
-                                                                    (formik.errors.tankDetails[index] as TankDetails).tankFuelType.value : undefined
-                                                            }
-                                                            error={
-                                                                formik?.errors?.tankDetails && formik?.touched?.tankDetails &&
-                                                                    (formik.touched?.tankDetails?.[index]?.tankFuelType?.value && ((formik.errors?.tankDetails?.[index] as TankDetails)?.tankFuelType.value))
-                                                                    ? true : false
-                                                            }
-
-
-                                                            onChange={formik.setFieldValue}
-                                                            onBlur={() => { formik.setFieldTouched(`tankDetails[${index}].tankFuelType`); formik.validateField(`tankDetails[${index}].tankFuelType`); }}
-                                                            required
-                                                        />
-
-
-
-                                                    </Grid>
-                                                    <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
-                                                        <Input
-                                                            id={`tankDetails[${index}].minCapacityVol`}
-                                                            label={t("addTruckFormLabels.tankMinCapacity")}
-                                                            type="text"
-                                                            helperText={
-                                                                formik?.errors?.tankDetails && formik?.touched?.tankDetails &&
-                                                                    (formik.touched?.tankDetails?.[index]?.minCapacityVol && ((formik.errors?.tankDetails?.[index] as TankDetails)?.minCapacityVol))
-                                                                    ?
-                                                                    (formik.errors.tankDetails[index] as TankDetails).minCapacityVol : undefined
-                                                            }
-                                                            error={
-                                                                formik?.errors?.tankDetails && formik?.touched?.tankDetails &&
-                                                                    (formik.touched?.tankDetails?.[index]?.minCapacityVol && ((formik.errors?.tankDetails?.[index] as TankDetails)?.minCapacityVol))
-                                                                    ? true : false
-                                                            }
-                                                            description=''
-                                                            required
-                                                            {...formik.getFieldProps(`tankDetails[${index}].minCapacityVol`)}
-                                                            
-                                                        />
-                                                    </Grid>
-                                                    <Grid item xs={12} md={6} pl={2.5} pb={2.5}>
-                                                        <Input
-                                                            id={`tankDetails[${index}].maxCapacityVol`}
-                                                            label={t("addTruckFormLabels.tankMaxCapacity")}
-                                                            type='text'
-                                                            required
-                                                            helperText={
-                                                                formik?.errors?.tankDetails && formik?.touched?.tankDetails &&
-                                                                    (formik.touched?.tankDetails?.[index]?.maxCapacityVol && ((formik.errors?.tankDetails?.[index] as TankDetails)?.maxCapacityVol))
-                                                                    ?
-                                                                    (formik.errors.tankDetails[index] as TankDetails).maxCapacityVol : undefined
-                                                            }
-                                                            error={
-                                                                formik?.errors?.tankDetails && formik?.touched?.tankDetails &&
-                                                                    (formik.touched?.tankDetails?.[index]?.maxCapacityVol && ((formik.errors?.tankDetails?.[index] as TankDetails)?.maxCapacityVol))
-                                                                    ? true : false
-                                                            }
-                                                            description=''
-                                                            {...formik.getFieldProps(`tankDetails[${index}].maxCapacityVol`)}
-                                                            
-                                                        />
-                                                    </Grid>
-                                                </Grid>
-                                                <Grid container item xs={1} md={1}>
-                                                    <div className='deleteBtn'>
-                                                        {index !== 0 && (
-                                                            <DeleteIcon color='#D7252C' height={16} onClick={() => deleteContact(index, arrayHelpers)} />
-                                                        )}
-                                                    </div>
+                                                        }}
+                                                    >
+                                                        <span className="add-icon-span">
+                                                            <PlusIcon color={formik.values.tankDetails.length === maxTanks ? theme["--Secondary-Background"] : theme["--Primary"]} />
+                                                        </span>
+                                                        <Typography variant="h3" component="h3" className="fw-bold MuiTypography-h5-primary disabled-text" mb={1}>
+                                                            {t("addTruckFormLabels.addAdditionalTank")}
+                                                        </Typography>
+                                                    </Link>
                                                 </Grid>
                                             </React.Fragment>
-                                        ))}
+                                        )}
+                                    />
+                                    <Grid item md={11} mt={2} mb={4}>
+                                        <Box className="form-action-section">
+                                            <Button
+                                                id="cancelBtn"
+                                                types="cancel"
+                                                aria-label="cancel"
+                                                className="mr-4"
+                                                onClick={onClickBack}
 
-                                        <Grid item md={12} mt={2} mb={4}>
-                                            <Link
-                                                variant="body2"
-                                                className={formik.values.tankDetails.length === maxTanks ? "disabled-text-link" : "add-link"}
-                                                sx={{
-                                                    display: "flex",
-                                                    alignItems: "center",
-                                                    width: "fit-content",
-                                                    cursor: "pointer"
-                                                }}
-                                                onClick={(event) => {
-                                                    if (formik.values.tankDetails.length === maxTanks) {
-                                                        event.preventDefault();
-                                                    } else {
-                                                        if (formik.values.tankDetails.length < maxTanks) {
-                                                            arrayHelpers.push({ firstName: "", lastName: "", email: "", phoneNumber: "" });
-                                                        }
-                                                    }
-                                                }}
                                             >
-                                                <span className="add-icon-span">
-                                                    <PlusIcon color={formik.values.tankDetails.length === maxTanks ? theme["--Secondary-Background"] : theme["--Primary"]} />
-                                                </span>
-                                                <Typography variant="h3" component="h3" className="fw-bold MuiTypography-h5-primary disabled-text" mb={1}>
-                                                {t("addTruckFormLabels.addAdditionalTank")}
-                                                </Typography>
-                                            </Link>
-                                        </Grid>
-                                    </React.Fragment>
-                                )}
-                            />
-                            <Grid item md={12} mt={2} mb={4}>
-                                <Box className="form-action-section">
-                                    <Button
-                                        id="cancelBtn"
-                                        types="cancel"
-                                        aria-label="cancel"
-                                        className="mr-4"
-                                        onClick={onClickBack}
+                                                {t("buttons.cancel")}
+                                            </Button>
+                                            <Button
+                                                id="saveBtn"
+                                                type="submit"
+                                                types="save"
+                                                aria-label="save"
+                                                className="ml-4"
+                                                disabled={disableSubmitBtn()}
+                                            >
+                                                {t("buttons.save")}
+                                            </Button>
+                                        </Box>
+                                        <ToastMessage
+                                            isOpen={
+                                                isSuccessAddTruck || isErrorAddTruck ||
+                                                isSuccessEditTruck || isErrorEditTruck
+                                            }
+                                            data-testid="toaster-message"
+                                            messageType={formStatus.type}
+                                            onClose={() => { return ''; }}
+                                            message={formStatus.message} />
 
-                                    >
-                                        {t("buttons.cancel")}
-                                    </Button>
-                                    <Button
-                                        id="saveBtn"
-                                        type="submit"
-                                        types="save"
-                                        aria-label="save"
-                                        className="ml-4"
-                                        disabled={disableSubmitBtn()}
-                                    >
-                                        {t("buttons.save")}
-                                    </Button>
-                                </Box>
-                                <ToastMessage
-                                    isOpen={
-                                        isSuccessAddTruck || isErrorAddTruck ||
-                                        isSuccessEditTruck || isErrorEditTruck
-                                    }
-                                    data-testid="toaster-message"
-                                    messageType={formStatus.type}
-                                    onClose={() => { return ''; }}
-                                    message={formStatus.message} />
-
-                            </Grid>
-                        </Grid>
-                    </form>
-                </FormikProvider>
-            </Container>
-        </Grid>
-        </>
+                                    </Grid>
+                                </Grid>
+                            </form>
+                        </FormikProvider>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Box>
     );
 };
 
