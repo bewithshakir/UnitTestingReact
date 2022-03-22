@@ -78,9 +78,8 @@ export default class UserModel {
     FilterByFields (): IDynamicFilterProps['fields'] {
         return (
             [
-                { name: 'city', label: 'filterForm.city', fieldType: 'select', optionUrlKey: 'dspFilter', optionAPIResponseKey: 'cities', initialValue: [] },
-                { name: 'state', label: 'filterForm.state', fieldType: 'select', optionUrlKey: 'dspFilter', optionAPIResponseKey: 'states', initialValue: [] },
-                { name: 'zip', label: 'filterForm.zip', fieldType: 'select', optionUrlKey: 'dspFilter', optionAPIResponseKey: 'zipCodes', initialValue: [] },
+                { name: 'date', label: 'date', fieldType: 'dateRange', initialValue: [null, null] },
+                { name: 'state', label: 'filterForm.userGroup', fieldType: 'select', optionUrlKey: 'dspFilter', optionAPIResponseKey: 'states', initialValue: [] },
             ]
         );
     }

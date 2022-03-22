@@ -204,6 +204,13 @@
       "city": "Ville"
     }
   },
+  "filterForm": {
+    "state": "État",
+    "city": "Ville",
+    "zip": "Zip",
+    "date": "Date",
+    "userGroup":"Groupe d'utilisateurs"
+  },
   "assetManagement": {
     "asset": "Type d'actif",
     "sortBy": {
