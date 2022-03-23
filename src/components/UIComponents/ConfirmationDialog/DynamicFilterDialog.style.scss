@@ -17,7 +17,7 @@ div{
             .action-no {
                 padding-left: 3.05rem;
                 padding-right: 3.05rem;
-                margin-right: .9rem;
+                margin-right: 1.9rem;
             }
             .action-yes{
                 background-color: var(--Darkgray);
@@ -26,6 +26,13 @@ div{
                 padding-left: 2.9rem;
                 padding-right: 2.9rem;
             }
+        }
+    }
+    .dyn-dialog-field-label-div{
+        display: flex;
+        align-items: center;
+        .checkboxStyle{
+            padding-left: 0px;
         }
     }
 }

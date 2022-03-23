@@ -17,10 +17,12 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
         "listeners": Array [],
         "queries": Array [
           Query {
+            "abortSignalConsumed": false,
             "cache": [Circular],
             "cacheTime": 300000,
             "defaultOptions": undefined,
             "gcTimeout": undefined,
+            "hadObservers": true,
             "initialState": Object {
               "data": undefined,
               "dataUpdateCount": 0,
@@ -35,6 +37,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
               "isPaused": false,
               "status": "idle",
             },
+            "meta": undefined,
             "observers": Array [
               QueryObserver {
                 "client": [Circular],
@@ -53,6 +56,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                   "isPaused": false,
                   "status": "idle",
                 },
+                "currentRefetchInterval": false,
                 "currentResult": Object {
                   "data": undefined,
                   "dataUpdatedAt": 0,
@@ -69,6 +73,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
+                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -142,9 +147,11 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
               15,
             ],
             "retryer": Retryer {
+              "abort": [Function],
               "cancel": [Function],
               "cancelRetry": [Function],
               "continue": [Function],
+              "continueRetry": [Function],
               "failureCount": 0,
               "isPaused": false,
               "isResolved": false,
@@ -181,10 +188,12 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
             },
           },
           Query {
+            "abortSignalConsumed": false,
             "cache": [Circular],
             "cacheTime": 300000,
             "defaultOptions": undefined,
             "gcTimeout": undefined,
+            "hadObservers": true,
             "initialState": Object {
               "data": undefined,
               "dataUpdateCount": 0,
@@ -199,6 +208,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
               "isPaused": false,
               "status": "idle",
             },
+            "meta": undefined,
             "observers": Array [
               QueryObserver {
                 "client": [Circular],
@@ -217,6 +227,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                   "isPaused": false,
                   "status": "idle",
                 },
+                "currentRefetchInterval": false,
                 "currentResult": Object {
                   "data": undefined,
                   "dataUpdatedAt": 0,
@@ -233,6 +244,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
+                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -302,9 +314,11 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
               "111122",
             ],
             "retryer": Retryer {
+              "abort": [Function],
               "cancel": [Function],
               "cancelRetry": [Function],
               "continue": [Function],
+              "continueRetry": [Function],
               "failureCount": 0,
               "isPaused": false,
               "isResolved": false,
@@ -341,10 +355,12 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
             },
           },
           Query {
+            "abortSignalConsumed": false,
             "cache": [Circular],
             "cacheTime": 300000,
             "defaultOptions": undefined,
             "gcTimeout": undefined,
+            "hadObservers": true,
             "initialState": Object {
               "data": undefined,
               "dataUpdateCount": 0,
@@ -359,6 +375,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
               "isPaused": false,
               "status": "idle",
             },
+            "meta": undefined,
             "observers": Array [
               QueryObserver {
                 "client": [Circular],
@@ -377,6 +394,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                   "isPaused": false,
                   "status": "idle",
                 },
+                "currentRefetchInterval": false,
                 "currentResult": Object {
                   "data": undefined,
                   "dataUpdatedAt": 0,
@@ -393,6 +411,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
+                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -458,9 +477,11 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
               "getLotVehicleTypes",
             ],
             "retryer": Retryer {
+              "abort": [Function],
               "cancel": [Function],
               "cancelRetry": [Function],
               "continue": [Function],
+              "continueRetry": [Function],
               "failureCount": 0,
               "isPaused": false,
               "isResolved": false,
@@ -497,10 +518,12 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
             },
           },
           Query {
+            "abortSignalConsumed": false,
             "cache": [Circular],
             "cacheTime": 300000,
             "defaultOptions": undefined,
             "gcTimeout": undefined,
+            "hadObservers": true,
             "initialState": Object {
               "data": undefined,
               "dataUpdateCount": 0,
@@ -515,6 +538,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
               "isPaused": false,
               "status": "idle",
             },
+            "meta": undefined,
             "observers": Array [
               QueryObserver {
                 "client": [Circular],
@@ -533,6 +557,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                   "isPaused": false,
                   "status": "idle",
                 },
+                "currentRefetchInterval": false,
                 "currentResult": Object {
                   "data": undefined,
                   "dataUpdatedAt": 0,
@@ -549,6 +574,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
+                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -614,9 +640,11 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
               "getLotAssetTypes",
             ],
             "retryer": Retryer {
+              "abort": [Function],
               "cancel": [Function],
               "cancelRetry": [Function],
               "continue": [Function],
+              "continueRetry": [Function],
               "failureCount": 0,
               "isPaused": false,
               "isResolved": false,
@@ -653,10 +681,12 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
             },
           },
           Query {
+            "abortSignalConsumed": false,
             "cache": [Circular],
             "cacheTime": 300000,
             "defaultOptions": undefined,
             "gcTimeout": undefined,
+            "hadObservers": true,
             "initialState": Object {
               "data": undefined,
               "dataUpdateCount": 0,
@@ -671,6 +701,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
               "isPaused": false,
               "status": "idle",
             },
+            "meta": undefined,
             "observers": Array [
               QueryObserver {
                 "client": [Circular],
@@ -689,6 +720,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                   "isPaused": false,
                   "status": "idle",
                 },
+                "currentRefetchInterval": false,
                 "currentResult": Object {
                   "data": undefined,
                   "dataUpdatedAt": 0,
@@ -705,6 +737,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
+                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -770,9 +803,11 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
               "getDeliveryFeeSchd",
             ],
             "retryer": Retryer {
+              "abort": [Function],
               "cancel": [Function],
               "cancelRetry": [Function],
               "continue": [Function],
+              "continueRetry": [Function],
               "failureCount": 0,
               "isPaused": false,
               "isResolved": false,
@@ -809,10 +844,12 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
             },
           },
           Query {
+            "abortSignalConsumed": false,
             "cache": [Circular],
             "cacheTime": 300000,
             "defaultOptions": undefined,
             "gcTimeout": undefined,
+            "hadObservers": true,
             "initialState": Object {
               "data": undefined,
               "dataUpdateCount": 0,
@@ -827,6 +864,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
               "isPaused": false,
               "status": "idle",
             },
+            "meta": undefined,
             "observers": Array [
               QueryObserver {
                 "client": [Circular],
@@ -845,6 +883,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                   "isPaused": false,
                   "status": "idle",
                 },
+                "currentRefetchInterval": false,
                 "currentResult": Object {
                   "data": undefined,
                   "dataUpdatedAt": 0,
@@ -861,6 +900,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
+                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -934,9 +974,11 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
               0,
             ],
             "retryer": Retryer {
+              "abort": [Function],
               "cancel": [Function],
               "cancelRetry": [Function],
               "continue": [Function],
+              "continueRetry": [Function],
               "failureCount": 0,
               "isPaused": false,
               "isResolved": false,
@@ -975,10 +1017,12 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
         ],
         "queriesMap": Object {
           "[\\"getDeliveryFeeSchd\\"]": Query {
+            "abortSignalConsumed": false,
             "cache": [Circular],
             "cacheTime": 300000,
             "defaultOptions": undefined,
             "gcTimeout": undefined,
+            "hadObservers": true,
             "initialState": Object {
               "data": undefined,
               "dataUpdateCount": 0,
@@ -993,6 +1037,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
               "isPaused": false,
               "status": "idle",
             },
+            "meta": undefined,
             "observers": Array [
               QueryObserver {
                 "client": [Circular],
@@ -1011,6 +1056,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                   "isPaused": false,
                   "status": "idle",
                 },
+                "currentRefetchInterval": false,
                 "currentResult": Object {
                   "data": undefined,
                   "dataUpdatedAt": 0,
@@ -1027,6 +1073,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
+                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -1092,9 +1139,11 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
               "getDeliveryFeeSchd",
             ],
             "retryer": Retryer {
+              "abort": [Function],
               "cancel": [Function],
               "cancelRetry": [Function],
               "continue": [Function],
+              "continueRetry": [Function],
               "failureCount": 0,
               "isPaused": false,
               "isResolved": false,
@@ -1131,10 +1180,12 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
             },
           },
           "[\\"getFeeDetailsByLotId\\",\\"111122\\"]": Query {
+            "abortSignalConsumed": false,
             "cache": [Circular],
             "cacheTime": 300000,
             "defaultOptions": undefined,
             "gcTimeout": undefined,
+            "hadObservers": true,
             "initialState": Object {
               "data": undefined,
               "dataUpdateCount": 0,
@@ -1149,6 +1200,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
               "isPaused": false,
               "status": "idle",
             },
+            "meta": undefined,
             "observers": Array [
               QueryObserver {
                 "client": [Circular],
@@ -1167,6 +1219,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                   "isPaused": false,
                   "status": "idle",
                 },
+                "currentRefetchInterval": false,
                 "currentResult": Object {
                   "data": undefined,
                   "dataUpdatedAt": 0,
@@ -1183,6 +1236,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
+                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -1252,9 +1306,11 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
               "111122",
             ],
             "retryer": Retryer {
+              "abort": [Function],
               "cancel": [Function],
               "cancelRetry": [Function],
               "continue": [Function],
+              "continueRetry": [Function],
               "failureCount": 0,
               "isPaused": false,
               "isResolved": false,
@@ -1291,10 +1347,12 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
             },
           },
           "[\\"getLotAssetTypes\\"]": Query {
+            "abortSignalConsumed": false,
             "cache": [Circular],
             "cacheTime": 300000,
             "defaultOptions": undefined,
             "gcTimeout": undefined,
+            "hadObservers": true,
             "initialState": Object {
               "data": undefined,
               "dataUpdateCount": 0,
@@ -1309,6 +1367,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
               "isPaused": false,
               "status": "idle",
             },
+            "meta": undefined,
             "observers": Array [
               QueryObserver {
                 "client": [Circular],
@@ -1327,6 +1386,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                   "isPaused": false,
                   "status": "idle",
                 },
+                "currentRefetchInterval": false,
                 "currentResult": Object {
                   "data": undefined,
                   "dataUpdatedAt": 0,
@@ -1343,6 +1403,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
+                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -1408,9 +1469,11 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
               "getLotAssetTypes",
             ],
             "retryer": Retryer {
+              "abort": [Function],
               "cancel": [Function],
               "cancelRetry": [Function],
               "continue": [Function],
+              "continueRetry": [Function],
               "failureCount": 0,
               "isPaused": false,
               "isResolved": false,
@@ -1447,10 +1510,12 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
             },
           },
           "[\\"getLotVehicleTypes\\"]": Query {
+            "abortSignalConsumed": false,
             "cache": [Circular],
             "cacheTime": 300000,
             "defaultOptions": undefined,
             "gcTimeout": undefined,
+            "hadObservers": true,
             "initialState": Object {
               "data": undefined,
               "dataUpdateCount": 0,
@@ -1465,6 +1530,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
               "isPaused": false,
               "status": "idle",
             },
+            "meta": undefined,
             "observers": Array [
               QueryObserver {
                 "client": [Circular],
@@ -1483,6 +1549,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                   "isPaused": false,
                   "status": "idle",
                 },
+                "currentRefetchInterval": false,
                 "currentResult": Object {
                   "data": undefined,
                   "dataUpdatedAt": 0,
@@ -1499,6 +1566,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
+                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -1564,9 +1632,11 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
               "getLotVehicleTypes",
             ],
             "retryer": Retryer {
+              "abort": [Function],
               "cancel": [Function],
               "cancelRetry": [Function],
               "continue": [Function],
+              "continueRetry": [Function],
               "failureCount": 0,
               "isPaused": false,
               "isResolved": false,
@@ -1603,10 +1673,12 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
             },
           },
           "[\\"getProductsDetailsByLotId\\",\\"111122\\",0]": Query {
+            "abortSignalConsumed": false,
             "cache": [Circular],
             "cacheTime": 300000,
             "defaultOptions": undefined,
             "gcTimeout": undefined,
+            "hadObservers": true,
             "initialState": Object {
               "data": undefined,
               "dataUpdateCount": 0,
@@ -1621,6 +1693,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
               "isPaused": false,
               "status": "idle",
             },
+            "meta": undefined,
             "observers": Array [
               QueryObserver {
                 "client": [Circular],
@@ -1639,6 +1712,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                   "isPaused": false,
                   "status": "idle",
                 },
+                "currentRefetchInterval": false,
                 "currentResult": Object {
                   "data": undefined,
                   "dataUpdatedAt": 0,
@@ -1655,6 +1729,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
+                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -1728,9 +1803,11 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
               0,
             ],
             "retryer": Retryer {
+              "abort": [Function],
               "cancel": [Function],
               "cancelRetry": [Function],
               "continue": [Function],
+              "continueRetry": [Function],
               "failureCount": 0,
               "isPaused": false,
               "isResolved": false,
@@ -1767,10 +1844,12 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
             },
           },
           "[\\"getProductsDetailsByLotId\\",\\"111122\\",15]": Query {
+            "abortSignalConsumed": false,
             "cache": [Circular],
             "cacheTime": 300000,
             "defaultOptions": undefined,
             "gcTimeout": undefined,
+            "hadObservers": true,
             "initialState": Object {
               "data": undefined,
               "dataUpdateCount": 0,
@@ -1785,6 +1864,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
               "isPaused": false,
               "status": "idle",
             },
+            "meta": undefined,
             "observers": Array [
               QueryObserver {
                 "client": [Circular],
@@ -1803,6 +1883,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                   "isPaused": false,
                   "status": "idle",
                 },
+                "currentRefetchInterval": false,
                 "currentResult": Object {
                   "data": undefined,
                   "dataUpdatedAt": 0,
@@ -1819,6 +1900,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
+                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -1892,9 +1974,11 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
               15,
             ],
             "retryer": Retryer {
+              "abort": [Function],
               "cancel": [Function],
               "cancelRetry": [Function],
               "continue": [Function],
+              "continueRetry": [Function],
               "failureCount": 0,
               "isPaused": false,
               "isResolved": false,
@@ -1960,6 +2044,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                     "lg",
                     "xl",
                   ],
+                  "not": [Function],
                   "only": [Function],
                   "unit": "px",
                   "up": [Function],
@@ -2067,7 +2152,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                     "contrastText": "#fff",
                     "dark": "#e65100",
                     "light": "#ff9800",
-                    "main": "#ED6C02",
+                    "main": "#ed6c02",
                   },
                 },
                 "shadows": Array [
@@ -2226,6 +2311,7 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                 "zIndex": Object {
                   "appBar": 1100,
                   "drawer": 1200,
+                  "fab": 1050,
                   "mobileStepper": 1000,
                   "modal": 1300,
                   "snackbar": 1400,
@@ -2235,6 +2321,161 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
               }
             }
           >
+            <Insertion
+              cache={
+                Object {
+                  "insert": [Function],
+                  "inserted": Object {
+                    "0": true,
+                    "176wh8e-MuiCircularProgress-circle": true,
+                    "18lrjg1-MuiCircularProgress-root": true,
+                    "1idz92c-MuiCircularProgress-svg": true,
+                    "animation-1p2h4ri": true,
+                    "animation-61bdi0": true,
+                  },
+                  "key": "css",
+                  "nonce": undefined,
+                  "registered": Object {},
+                  "sheet": StyleSheet {
+                    "_alreadyInsertedOrderInsensitiveRule": true,
+                    "_insertTag": [Function],
+                    "before": null,
+                    "container": <head>
+                      <style
+                        data-emotion="css"
+                        data-s=""
+                      >
+                        
+                        .css-0{}
+                      </style>
+                      <style
+                        data-emotion="css"
+                        data-s=""
+                      >
+                        
+                        .css-18lrjg1-MuiCircularProgress-root{display:inline-block;color:#1976d2;-webkit-animation:animation-61bdi0 1.4s linear infinite;animation:animation-61bdi0 1.4s linear infinite;}
+                      </style>
+                      <style
+                        data-emotion="css"
+                        data-s=""
+                      >
+                        
+                        @-webkit-keyframes animation-61bdi0{0%{-webkit-transform:rotate(0deg);-moz-transform:rotate(0deg);-ms-transform:rotate(0deg);transform:rotate(0deg);}100%{-webkit-transform:rotate(360deg);-moz-transform:rotate(360deg);-ms-transform:rotate(360deg);transform:rotate(360deg);}}
+                      </style>
+                      <style
+                        data-emotion="css"
+                        data-s=""
+                      >
+                        
+                        @keyframes animation-61bdi0{0%{-webkit-transform:rotate(0deg);-moz-transform:rotate(0deg);-ms-transform:rotate(0deg);transform:rotate(0deg);}100%{-webkit-transform:rotate(360deg);-moz-transform:rotate(360deg);-ms-transform:rotate(360deg);transform:rotate(360deg);}}
+                      </style>
+                      <style
+                        data-emotion="css"
+                        data-s=""
+                      >
+                        
+                        .css-1idz92c-MuiCircularProgress-svg{display:block;}
+                      </style>
+                      <style
+                        data-emotion="css"
+                        data-s=""
+                      >
+                        
+                        .css-176wh8e-MuiCircularProgress-circle{stroke:currentColor;stroke-dasharray:80px,200px;stroke-dashoffset:0;-webkit-animation:animation-1p2h4ri 1.4s ease-in-out infinite;animation:animation-1p2h4ri 1.4s ease-in-out infinite;}
+                      </style>
+                      <style
+                        data-emotion="css"
+                        data-s=""
+                      >
+                        
+                        @-webkit-keyframes animation-1p2h4ri{0%{stroke-dasharray:1px,200px;stroke-dashoffset:0;}50%{stroke-dasharray:100px,200px;stroke-dashoffset:-15px;}100%{stroke-dasharray:100px,200px;stroke-dashoffset:-125px;}}
+                      </style>
+                      <style
+                        data-emotion="css"
+                        data-s=""
+                      >
+                        
+                        @keyframes animation-1p2h4ri{0%{stroke-dasharray:1px,200px;stroke-dashoffset:0;}50%{stroke-dasharray:100px,200px;stroke-dashoffset:-15px;}100%{stroke-dasharray:100px,200px;stroke-dashoffset:-125px;}}
+                      </style>
+                    </head>,
+                    "ctr": 8,
+                    "insertionPoint": undefined,
+                    "isSpeedy": false,
+                    "key": "css",
+                    "nonce": undefined,
+                    "prepend": undefined,
+                    "tags": Array [
+                      <style
+                        data-emotion="css"
+                        data-s=""
+                      >
+                        
+                        .css-0{}
+                      </style>,
+                      <style
+                        data-emotion="css"
+                        data-s=""
+                      >
+                        
+                        .css-18lrjg1-MuiCircularProgress-root{display:inline-block;color:#1976d2;-webkit-animation:animation-61bdi0 1.4s linear infinite;animation:animation-61bdi0 1.4s linear infinite;}
+                      </style>,
+                      <style
+                        data-emotion="css"
+                        data-s=""
+                      >
+                        
+                        @-webkit-keyframes animation-61bdi0{0%{-webkit-transform:rotate(0deg);-moz-transform:rotate(0deg);-ms-transform:rotate(0deg);transform:rotate(0deg);}100%{-webkit-transform:rotate(360deg);-moz-transform:rotate(360deg);-ms-transform:rotate(360deg);transform:rotate(360deg);}}
+                      </style>,
+                      <style
+                        data-emotion="css"
+                        data-s=""
+                      >
+                        
+                        @keyframes animation-61bdi0{0%{-webkit-transform:rotate(0deg);-moz-transform:rotate(0deg);-ms-transform:rotate(0deg);transform:rotate(0deg);}100%{-webkit-transform:rotate(360deg);-moz-transform:rotate(360deg);-ms-transform:rotate(360deg);transform:rotate(360deg);}}
+                      </style>,
+                      <style
+                        data-emotion="css"
+                        data-s=""
+                      >
+                        
+                        .css-1idz92c-MuiCircularProgress-svg{display:block;}
+                      </style>,
+                      <style
+                        data-emotion="css"
+                        data-s=""
+                      >
+                        
+                        .css-176wh8e-MuiCircularProgress-circle{stroke:currentColor;stroke-dasharray:80px,200px;stroke-dashoffset:0;-webkit-animation:animation-1p2h4ri 1.4s ease-in-out infinite;animation:animation-1p2h4ri 1.4s ease-in-out infinite;}
+                      </style>,
+                      <style
+                        data-emotion="css"
+                        data-s=""
+                      >
+                        
+                        @-webkit-keyframes animation-1p2h4ri{0%{stroke-dasharray:1px,200px;stroke-dashoffset:0;}50%{stroke-dasharray:100px,200px;stroke-dashoffset:-15px;}100%{stroke-dasharray:100px,200px;stroke-dashoffset:-125px;}}
+                      </style>,
+                      <style
+                        data-emotion="css"
+                        data-s=""
+                      >
+                        
+                        @keyframes animation-1p2h4ri{0%{stroke-dasharray:1px,200px;stroke-dashoffset:0;}50%{stroke-dasharray:100px,200px;stroke-dashoffset:-15px;}100%{stroke-dasharray:100px,200px;stroke-dashoffset:-125px;}}
+                      </style>,
+                    ],
+                  },
+                }
+              }
+              isStringTag={true}
+              serialized={
+                Object {
+                  "map": undefined,
+                  "name": "0",
+                  "next": undefined,
+                  "styles": "",
+                  "toString": [Function],
+                }
+              }
+            />
             <div
               className="loader MuiBox-root css-0"
             >
@@ -2259,6 +2500,175 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                     }
                   }
                 >
+                  <Insertion
+                    cache={
+                      Object {
+                        "insert": [Function],
+                        "inserted": Object {
+                          "0": true,
+                          "176wh8e-MuiCircularProgress-circle": true,
+                          "18lrjg1-MuiCircularProgress-root": true,
+                          "1idz92c-MuiCircularProgress-svg": true,
+                          "animation-1p2h4ri": true,
+                          "animation-61bdi0": true,
+                        },
+                        "key": "css",
+                        "nonce": undefined,
+                        "registered": Object {},
+                        "sheet": StyleSheet {
+                          "_alreadyInsertedOrderInsensitiveRule": true,
+                          "_insertTag": [Function],
+                          "before": null,
+                          "container": <head>
+                            <style
+                              data-emotion="css"
+                              data-s=""
+                            >
+                              
+                              .css-0{}
+                            </style>
+                            <style
+                              data-emotion="css"
+                              data-s=""
+                            >
+                              
+                              .css-18lrjg1-MuiCircularProgress-root{display:inline-block;color:#1976d2;-webkit-animation:animation-61bdi0 1.4s linear infinite;animation:animation-61bdi0 1.4s linear infinite;}
+                            </style>
+                            <style
+                              data-emotion="css"
+                              data-s=""
+                            >
+                              
+                              @-webkit-keyframes animation-61bdi0{0%{-webkit-transform:rotate(0deg);-moz-transform:rotate(0deg);-ms-transform:rotate(0deg);transform:rotate(0deg);}100%{-webkit-transform:rotate(360deg);-moz-transform:rotate(360deg);-ms-transform:rotate(360deg);transform:rotate(360deg);}}
+                            </style>
+                            <style
+                              data-emotion="css"
+                              data-s=""
+                            >
+                              
+                              @keyframes animation-61bdi0{0%{-webkit-transform:rotate(0deg);-moz-transform:rotate(0deg);-ms-transform:rotate(0deg);transform:rotate(0deg);}100%{-webkit-transform:rotate(360deg);-moz-transform:rotate(360deg);-ms-transform:rotate(360deg);transform:rotate(360deg);}}
+                            </style>
+                            <style
+                              data-emotion="css"
+                              data-s=""
+                            >
+                              
+                              .css-1idz92c-MuiCircularProgress-svg{display:block;}
+                            </style>
+                            <style
+                              data-emotion="css"
+                              data-s=""
+                            >
+                              
+                              .css-176wh8e-MuiCircularProgress-circle{stroke:currentColor;stroke-dasharray:80px,200px;stroke-dashoffset:0;-webkit-animation:animation-1p2h4ri 1.4s ease-in-out infinite;animation:animation-1p2h4ri 1.4s ease-in-out infinite;}
+                            </style>
+                            <style
+                              data-emotion="css"
+                              data-s=""
+                            >
+                              
+                              @-webkit-keyframes animation-1p2h4ri{0%{stroke-dasharray:1px,200px;stroke-dashoffset:0;}50%{stroke-dasharray:100px,200px;stroke-dashoffset:-15px;}100%{stroke-dasharray:100px,200px;stroke-dashoffset:-125px;}}
+                            </style>
+                            <style
+                              data-emotion="css"
+                              data-s=""
+                            >
+                              
+                              @keyframes animation-1p2h4ri{0%{stroke-dasharray:1px,200px;stroke-dashoffset:0;}50%{stroke-dasharray:100px,200px;stroke-dashoffset:-15px;}100%{stroke-dasharray:100px,200px;stroke-dashoffset:-125px;}}
+                            </style>
+                          </head>,
+                          "ctr": 8,
+                          "insertionPoint": undefined,
+                          "isSpeedy": false,
+                          "key": "css",
+                          "nonce": undefined,
+                          "prepend": undefined,
+                          "tags": Array [
+                            <style
+                              data-emotion="css"
+                              data-s=""
+                            >
+                              
+                              .css-0{}
+                            </style>,
+                            <style
+                              data-emotion="css"
+                              data-s=""
+                            >
+                              
+                              .css-18lrjg1-MuiCircularProgress-root{display:inline-block;color:#1976d2;-webkit-animation:animation-61bdi0 1.4s linear infinite;animation:animation-61bdi0 1.4s linear infinite;}
+                            </style>,
+                            <style
+                              data-emotion="css"
+                              data-s=""
+                            >
+                              
+                              @-webkit-keyframes animation-61bdi0{0%{-webkit-transform:rotate(0deg);-moz-transform:rotate(0deg);-ms-transform:rotate(0deg);transform:rotate(0deg);}100%{-webkit-transform:rotate(360deg);-moz-transform:rotate(360deg);-ms-transform:rotate(360deg);transform:rotate(360deg);}}
+                            </style>,
+                            <style
+                              data-emotion="css"
+                              data-s=""
+                            >
+                              
+                              @keyframes animation-61bdi0{0%{-webkit-transform:rotate(0deg);-moz-transform:rotate(0deg);-ms-transform:rotate(0deg);transform:rotate(0deg);}100%{-webkit-transform:rotate(360deg);-moz-transform:rotate(360deg);-ms-transform:rotate(360deg);transform:rotate(360deg);}}
+                            </style>,
+                            <style
+                              data-emotion="css"
+                              data-s=""
+                            >
+                              
+                              .css-1idz92c-MuiCircularProgress-svg{display:block;}
+                            </style>,
+                            <style
+                              data-emotion="css"
+                              data-s=""
+                            >
+                              
+                              .css-176wh8e-MuiCircularProgress-circle{stroke:currentColor;stroke-dasharray:80px,200px;stroke-dashoffset:0;-webkit-animation:animation-1p2h4ri 1.4s ease-in-out infinite;animation:animation-1p2h4ri 1.4s ease-in-out infinite;}
+                            </style>,
+                            <style
+                              data-emotion="css"
+                              data-s=""
+                            >
+                              
+                              @-webkit-keyframes animation-1p2h4ri{0%{stroke-dasharray:1px,200px;stroke-dashoffset:0;}50%{stroke-dasharray:100px,200px;stroke-dashoffset:-15px;}100%{stroke-dasharray:100px,200px;stroke-dashoffset:-125px;}}
+                            </style>,
+                            <style
+                              data-emotion="css"
+                              data-s=""
+                            >
+                              
+                              @keyframes animation-1p2h4ri{0%{stroke-dasharray:1px,200px;stroke-dashoffset:0;}50%{stroke-dasharray:100px,200px;stroke-dashoffset:-15px;}100%{stroke-dasharray:100px,200px;stroke-dashoffset:-125px;}}
+                            </style>,
+                          ],
+                        },
+                      }
+                    }
+                    isStringTag={true}
+                    serialized={
+                      Object {
+                        "map": undefined,
+                        "name": "18lrjg1-MuiCircularProgress-root",
+                        "next": Object {
+                          "name": "animation-61bdi0",
+                          "next": undefined,
+                          "styles": "@keyframes animation-61bdi0{
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}",
+                        },
+                        "styles": "label:MuiCircularProgress-root;display:inline-block;color:#1976d2;
+      animation: animation-61bdi0 1.4s linear infinite;
+    ;",
+                        "toString": [Function],
+                      }
+                    }
+                  />
                   <span
                     className="MuiCircularProgress-root MuiCircularProgress-indeterminate MuiCircularProgress-colorPrimary css-18lrjg1-MuiCircularProgress-root"
                     role="progressbar"
@@ -2283,6 +2693,161 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                       }
                       viewBox="22 22 44 44"
                     >
+                      <Insertion
+                        cache={
+                          Object {
+                            "insert": [Function],
+                            "inserted": Object {
+                              "0": true,
+                              "176wh8e-MuiCircularProgress-circle": true,
+                              "18lrjg1-MuiCircularProgress-root": true,
+                              "1idz92c-MuiCircularProgress-svg": true,
+                              "animation-1p2h4ri": true,
+                              "animation-61bdi0": true,
+                            },
+                            "key": "css",
+                            "nonce": undefined,
+                            "registered": Object {},
+                            "sheet": StyleSheet {
+                              "_alreadyInsertedOrderInsensitiveRule": true,
+                              "_insertTag": [Function],
+                              "before": null,
+                              "container": <head>
+                                <style
+                                  data-emotion="css"
+                                  data-s=""
+                                >
+                                  
+                                  .css-0{}
+                                </style>
+                                <style
+                                  data-emotion="css"
+                                  data-s=""
+                                >
+                                  
+                                  .css-18lrjg1-MuiCircularProgress-root{display:inline-block;color:#1976d2;-webkit-animation:animation-61bdi0 1.4s linear infinite;animation:animation-61bdi0 1.4s linear infinite;}
+                                </style>
+                                <style
+                                  data-emotion="css"
+                                  data-s=""
+                                >
+                                  
+                                  @-webkit-keyframes animation-61bdi0{0%{-webkit-transform:rotate(0deg);-moz-transform:rotate(0deg);-ms-transform:rotate(0deg);transform:rotate(0deg);}100%{-webkit-transform:rotate(360deg);-moz-transform:rotate(360deg);-ms-transform:rotate(360deg);transform:rotate(360deg);}}
+                                </style>
+                                <style
+                                  data-emotion="css"
+                                  data-s=""
+                                >
+                                  
+                                  @keyframes animation-61bdi0{0%{-webkit-transform:rotate(0deg);-moz-transform:rotate(0deg);-ms-transform:rotate(0deg);transform:rotate(0deg);}100%{-webkit-transform:rotate(360deg);-moz-transform:rotate(360deg);-ms-transform:rotate(360deg);transform:rotate(360deg);}}
+                                </style>
+                                <style
+                                  data-emotion="css"
+                                  data-s=""
+                                >
+                                  
+                                  .css-1idz92c-MuiCircularProgress-svg{display:block;}
+                                </style>
+                                <style
+                                  data-emotion="css"
+                                  data-s=""
+                                >
+                                  
+                                  .css-176wh8e-MuiCircularProgress-circle{stroke:currentColor;stroke-dasharray:80px,200px;stroke-dashoffset:0;-webkit-animation:animation-1p2h4ri 1.4s ease-in-out infinite;animation:animation-1p2h4ri 1.4s ease-in-out infinite;}
+                                </style>
+                                <style
+                                  data-emotion="css"
+                                  data-s=""
+                                >
+                                  
+                                  @-webkit-keyframes animation-1p2h4ri{0%{stroke-dasharray:1px,200px;stroke-dashoffset:0;}50%{stroke-dasharray:100px,200px;stroke-dashoffset:-15px;}100%{stroke-dasharray:100px,200px;stroke-dashoffset:-125px;}}
+                                </style>
+                                <style
+                                  data-emotion="css"
+                                  data-s=""
+                                >
+                                  
+                                  @keyframes animation-1p2h4ri{0%{stroke-dasharray:1px,200px;stroke-dashoffset:0;}50%{stroke-dasharray:100px,200px;stroke-dashoffset:-15px;}100%{stroke-dasharray:100px,200px;stroke-dashoffset:-125px;}}
+                                </style>
+                              </head>,
+                              "ctr": 8,
+                              "insertionPoint": undefined,
+                              "isSpeedy": false,
+                              "key": "css",
+                              "nonce": undefined,
+                              "prepend": undefined,
+                              "tags": Array [
+                                <style
+                                  data-emotion="css"
+                                  data-s=""
+                                >
+                                  
+                                  .css-0{}
+                                </style>,
+                                <style
+                                  data-emotion="css"
+                                  data-s=""
+                                >
+                                  
+                                  .css-18lrjg1-MuiCircularProgress-root{display:inline-block;color:#1976d2;-webkit-animation:animation-61bdi0 1.4s linear infinite;animation:animation-61bdi0 1.4s linear infinite;}
+                                </style>,
+                                <style
+                                  data-emotion="css"
+                                  data-s=""
+                                >
+                                  
+                                  @-webkit-keyframes animation-61bdi0{0%{-webkit-transform:rotate(0deg);-moz-transform:rotate(0deg);-ms-transform:rotate(0deg);transform:rotate(0deg);}100%{-webkit-transform:rotate(360deg);-moz-transform:rotate(360deg);-ms-transform:rotate(360deg);transform:rotate(360deg);}}
+                                </style>,
+                                <style
+                                  data-emotion="css"
+                                  data-s=""
+                                >
+                                  
+                                  @keyframes animation-61bdi0{0%{-webkit-transform:rotate(0deg);-moz-transform:rotate(0deg);-ms-transform:rotate(0deg);transform:rotate(0deg);}100%{-webkit-transform:rotate(360deg);-moz-transform:rotate(360deg);-ms-transform:rotate(360deg);transform:rotate(360deg);}}
+                                </style>,
+                                <style
+                                  data-emotion="css"
+                                  data-s=""
+                                >
+                                  
+                                  .css-1idz92c-MuiCircularProgress-svg{display:block;}
+                                </style>,
+                                <style
+                                  data-emotion="css"
+                                  data-s=""
+                                >
+                                  
+                                  .css-176wh8e-MuiCircularProgress-circle{stroke:currentColor;stroke-dasharray:80px,200px;stroke-dashoffset:0;-webkit-animation:animation-1p2h4ri 1.4s ease-in-out infinite;animation:animation-1p2h4ri 1.4s ease-in-out infinite;}
+                                </style>,
+                                <style
+                                  data-emotion="css"
+                                  data-s=""
+                                >
+                                  
+                                  @-webkit-keyframes animation-1p2h4ri{0%{stroke-dasharray:1px,200px;stroke-dashoffset:0;}50%{stroke-dasharray:100px,200px;stroke-dashoffset:-15px;}100%{stroke-dasharray:100px,200px;stroke-dashoffset:-125px;}}
+                                </style>,
+                                <style
+                                  data-emotion="css"
+                                  data-s=""
+                                >
+                                  
+                                  @keyframes animation-1p2h4ri{0%{stroke-dasharray:1px,200px;stroke-dashoffset:0;}50%{stroke-dasharray:100px,200px;stroke-dashoffset:-15px;}100%{stroke-dasharray:100px,200px;stroke-dashoffset:-125px;}}
+                                </style>,
+                              ],
+                            },
+                          }
+                        }
+                        isStringTag={true}
+                        serialized={
+                          Object {
+                            "map": undefined,
+                            "name": "1idz92c-MuiCircularProgress-svg",
+                            "next": undefined,
+                            "styles": "label:MuiCircularProgress-svg;display:block;",
+                            "toString": [Function],
+                          }
+                        }
+                      />
                       <svg
                         className="MuiCircularProgress-svg css-1idz92c-MuiCircularProgress-svg"
                         viewBox="22 22 44 44"
@@ -2306,6 +2871,182 @@ exports[`Given All ParkingLots Landing Page Page Rendered Properly 1`] = `
                           strokeWidth={3.6}
                           style={Object {}}
                         >
+                          <Insertion
+                            cache={
+                              Object {
+                                "insert": [Function],
+                                "inserted": Object {
+                                  "0": true,
+                                  "176wh8e-MuiCircularProgress-circle": true,
+                                  "18lrjg1-MuiCircularProgress-root": true,
+                                  "1idz92c-MuiCircularProgress-svg": true,
+                                  "animation-1p2h4ri": true,
+                                  "animation-61bdi0": true,
+                                },
+                                "key": "css",
+                                "nonce": undefined,
+                                "registered": Object {},
+                                "sheet": StyleSheet {
+                                  "_alreadyInsertedOrderInsensitiveRule": true,
+                                  "_insertTag": [Function],
+                                  "before": null,
+                                  "container": <head>
+                                    <style
+                                      data-emotion="css"
+                                      data-s=""
+                                    >
+                                      
+                                      .css-0{}
+                                    </style>
+                                    <style
+                                      data-emotion="css"
+                                      data-s=""
+                                    >
+                                      
+                                      .css-18lrjg1-MuiCircularProgress-root{display:inline-block;color:#1976d2;-webkit-animation:animation-61bdi0 1.4s linear infinite;animation:animation-61bdi0 1.4s linear infinite;}
+                                    </style>
+                                    <style
+                                      data-emotion="css"
+                                      data-s=""
+                                    >
+                                      
+                                      @-webkit-keyframes animation-61bdi0{0%{-webkit-transform:rotate(0deg);-moz-transform:rotate(0deg);-ms-transform:rotate(0deg);transform:rotate(0deg);}100%{-webkit-transform:rotate(360deg);-moz-transform:rotate(360deg);-ms-transform:rotate(360deg);transform:rotate(360deg);}}
+                                    </style>
+                                    <style
+                                      data-emotion="css"
+                                      data-s=""
+                                    >
+                                      
+                                      @keyframes animation-61bdi0{0%{-webkit-transform:rotate(0deg);-moz-transform:rotate(0deg);-ms-transform:rotate(0deg);transform:rotate(0deg);}100%{-webkit-transform:rotate(360deg);-moz-transform:rotate(360deg);-ms-transform:rotate(360deg);transform:rotate(360deg);}}
+                                    </style>
+                                    <style
+                                      data-emotion="css"
+                                      data-s=""
+                                    >
+                                      
+                                      .css-1idz92c-MuiCircularProgress-svg{display:block;}
+                                    </style>
+                                    <style
+                                      data-emotion="css"
+                                      data-s=""
+                                    >
+                                      
+                                      .css-176wh8e-MuiCircularProgress-circle{stroke:currentColor;stroke-dasharray:80px,200px;stroke-dashoffset:0;-webkit-animation:animation-1p2h4ri 1.4s ease-in-out infinite;animation:animation-1p2h4ri 1.4s ease-in-out infinite;}
+                                    </style>
+                                    <style
+                                      data-emotion="css"
+                                      data-s=""
+                                    >
+                                      
+                                      @-webkit-keyframes animation-1p2h4ri{0%{stroke-dasharray:1px,200px;stroke-dashoffset:0;}50%{stroke-dasharray:100px,200px;stroke-dashoffset:-15px;}100%{stroke-dasharray:100px,200px;stroke-dashoffset:-125px;}}
+                                    </style>
+                                    <style
+                                      data-emotion="css"
+                                      data-s=""
+                                    >
+                                      
+                                      @keyframes animation-1p2h4ri{0%{stroke-dasharray:1px,200px;stroke-dashoffset:0;}50%{stroke-dasharray:100px,200px;stroke-dashoffset:-15px;}100%{stroke-dasharray:100px,200px;stroke-dashoffset:-125px;}}
+                                    </style>
+                                  </head>,
+                                  "ctr": 8,
+                                  "insertionPoint": undefined,
+                                  "isSpeedy": false,
+                                  "key": "css",
+                                  "nonce": undefined,
+                                  "prepend": undefined,
+                                  "tags": Array [
+                                    <style
+                                      data-emotion="css"
+                                      data-s=""
+                                    >
+                                      
+                                      .css-0{}
+                                    </style>,
+                                    <style
+                                      data-emotion="css"
+                                      data-s=""
+                                    >
+                                      
+                                      .css-18lrjg1-MuiCircularProgress-root{display:inline-block;color:#1976d2;-webkit-animation:animation-61bdi0 1.4s linear infinite;animation:animation-61bdi0 1.4s linear infinite;}
+                                    </style>,
+                                    <style
+                                      data-emotion="css"
+                                      data-s=""
+                                    >
+                                      
+                                      @-webkit-keyframes animation-61bdi0{0%{-webkit-transform:rotate(0deg);-moz-transform:rotate(0deg);-ms-transform:rotate(0deg);transform:rotate(0deg);}100%{-webkit-transform:rotate(360deg);-moz-transform:rotate(360deg);-ms-transform:rotate(360deg);transform:rotate(360deg);}}
+                                    </style>,
+                                    <style
+                                      data-emotion="css"
+                                      data-s=""
+                                    >
+                                      
+                                      @keyframes animation-61bdi0{0%{-webkit-transform:rotate(0deg);-moz-transform:rotate(0deg);-ms-transform:rotate(0deg);transform:rotate(0deg);}100%{-webkit-transform:rotate(360deg);-moz-transform:rotate(360deg);-ms-transform:rotate(360deg);transform:rotate(360deg);}}
+                                    </style>,
+                                    <style
+                                      data-emotion="css"
+                                      data-s=""
+                                    >
+                                      
+                                      .css-1idz92c-MuiCircularProgress-svg{display:block;}
+                                    </style>,
+                                    <style
+                                      data-emotion="css"
+                                      data-s=""
+                                    >
+                                      
+                                      .css-176wh8e-MuiCircularProgress-circle{stroke:currentColor;stroke-dasharray:80px,200px;stroke-dashoffset:0;-webkit-animation:animation-1p2h4ri 1.4s ease-in-out infinite;animation:animation-1p2h4ri 1.4s ease-in-out infinite;}
+                                    </style>,
+                                    <style
+                                      data-emotion="css"
+                                      data-s=""
+                                    >
+                                      
+                                      @-webkit-keyframes animation-1p2h4ri{0%{stroke-dasharray:1px,200px;stroke-dashoffset:0;}50%{stroke-dasharray:100px,200px;stroke-dashoffset:-15px;}100%{stroke-dasharray:100px,200px;stroke-dashoffset:-125px;}}
+                                    </style>,
+                                    <style
+                                      data-emotion="css"
+                                      data-s=""
+                                    >
+                                      
+                                      @keyframes animation-1p2h4ri{0%{stroke-dasharray:1px,200px;stroke-dashoffset:0;}50%{stroke-dasharray:100px,200px;stroke-dashoffset:-15px;}100%{stroke-dasharray:100px,200px;stroke-dashoffset:-125px;}}
+                                    </style>,
+                                  ],
+                                },
+                              }
+                            }
+                            isStringTag={true}
+                            serialized={
+                              Object {
+                                "map": undefined,
+                                "name": "176wh8e-MuiCircularProgress-circle",
+                                "next": Object {
+                                  "name": "animation-1p2h4ri",
+                                  "next": undefined,
+                                  "styles": "@keyframes animation-1p2h4ri{
+  0% {
+    stroke-dasharray: 1px, 200px;
+    stroke-dashoffset: 0;
+  }
+
+  50% {
+    stroke-dasharray: 100px, 200px;
+    stroke-dashoffset: -15px;
+  }
+
+  100% {
+    stroke-dasharray: 100px, 200px;
+    stroke-dashoffset: -125px;
+  }
+}",
+                                },
+                                "styles": "label:MuiCircularProgress-circle;stroke:currentColor;stroke-dasharray:80px, 200px;stroke-dashoffset:0;
+      animation: animation-1p2h4ri 1.4s ease-in-out infinite;
+    ;",
+                                "toString": [Function],
+                              }
+                            }
+                          />
                           <circle
                             className="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate css-176wh8e-MuiCircularProgress-circle"
                             cx={44}
