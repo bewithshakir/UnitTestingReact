@@ -21,7 +21,7 @@ export default function FormActionSegment ({
     const { t } = useTranslation();
 
     const {
-        isErrorAddUser, isSuccessAddUser,
+        isErrorAddUser, isSuccessAddUser, isEditMode,
         isErrorUpdateUser, isSuccessUpdateUser,
         isErrorUserData, isLoadingUpdateUser, isLoadingAddUser
     } = toastStatues;
@@ -33,6 +33,10 @@ export default function FormActionSegment ({
             return true;
         }
     };
+
+    // eslint-disable-next-line no-console
+    console.log("====>", showVerifyLink, userVerificationLoading, disableButton());
+
 
     return (
         <Fragment>
@@ -56,7 +60,7 @@ export default function FormActionSegment ({
                         aria-label={t("buttons.save")}
                         className="ml-4"
                         data-testid="save"
-                        disabled={(showVerifyLink || userVerificationLoading) || disableButton()}
+                        disabled={isEditMode ? disableButton() : (showVerifyLink || userVerificationLoading) || disableButton()}
                     >
                         {t("buttons.save")}
                         {(isLoadingAddUser || isLoadingUpdateUser) && <LoadingIcon data-testid="loading-spinner" className='loading_save_icon' />}

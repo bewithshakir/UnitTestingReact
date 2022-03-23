@@ -7,14 +7,13 @@ import Select from '../../../components/UIComponents/Select/SingleSelect';
 import UserModel from "../../../models/UserModel";
 import { getCountryCode } from '../../../navigation/utils';
 import { HorizontalBarVersionState, useAddedCustomerIdStore, useAddedCustomerPaymentTypeStore, useShowConfirmationDialogBoxStore, useStore } from '../../../store';
-import { toastErrorKey, toastSuccessKey } from '../../../utils/constants';
-import { isUserGroupErrorExist, userGroupHelperText } from './AddUserHelper';
+import { toastErrorKey, toastSuccessKey, toastEditSuccessKey } from '../../../utils/constants';
 import DSPUserListSegment from './DSPUserListSegment';
 import FormActionSegment from './FormActionSegment';
 import { useAddUser, useEditUserData, useGetUserGroupTypes, useGetUserPermissionList, userGetUserDSPList, UserGoupsInt, useUpdateUserData, useVarifyUser } from './queries';
 import UserAccessLevelSegment from './UserAccessLevelSegment';
 import UserVerificationSegment from './UserVerificationSegment';
-import { AddUserSchema } from "./validation";
+import { AddUserSchema, isUserGroupErrorExist, userGroupHelperText } from "./validation";
 
 const initialValues = new UserModel();
 interface AddUserProps {
@@ -67,11 +66,15 @@ const AddUser: React.FC<AddUserProps> = () => {
     };
 
     const { data: verifiedUserData,
-        isLoading: userVerificationLoading, isError: verifyUserError } = useVarifyUser(userEmail, onSuccessVerfyUser);
+        isLoading: userVerificationLoading, isError: isVerifyUserFailed } = useVarifyUser(userEmail, onSuccessVerfyUser);
 
     useEffect(() => {
         setVersion("Breadcrumbs-Many");
+        if (userId) {
+            setEditMode(true);
+        }
     }, []);
+
 
     const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target;
@@ -116,19 +119,17 @@ const AddUser: React.FC<AddUserProps> = () => {
     };
 
     const onSuccessUserDetail = (responseData: UserModel) => {
-        setEditMode(true);
         populateDataInAllFields(responseData);
     };
     const onErrorUserDetail = (error: any) => {
-        setEditMode(true);
         setFormStatus({ message: error?.response.data.error?.details[0] || t(toastErrorKey), type: 'Error' });
     };
-    const { isError: isErrorUserData } = useEditUserData(addedCustomerId, userId, onSuccessUserDetail, onErrorUserDetail);
+    const { isError: isErrorUserData, isLoading: isLoadingUserDetails } = useEditUserData(selectedPaymentType, userGroupList, dspList, userId, onSuccessUserDetail, onErrorUserDetail);
 
     const handleUpdateUserRepose = (isSuccess: boolean, data?: any) => {
         if (isSuccess) {
             isFormValidated(false);
-            setFormStatus({ message: t(toastSuccessKey), type: 'Success' });
+            setFormStatus({ message: t(toastEditSuccessKey), type: 'Success' });
         } else {
             setFormStatus({ message: data?.error?.details[0] || t(toastErrorKey), type: 'Error' });
         }
@@ -209,15 +210,20 @@ const AddUser: React.FC<AddUserProps> = () => {
                                     formik.validateField("userGroup");
                                 }}
                                 required
+                                isDisabled={isEditMode || isLoadingUserDetails}
                             />
                         </Grid>
                     </Grid>
 
                     <UserVerificationSegment
-                        userVerificationLoading={userVerificationLoading}
+                        formStatus={{
+                            isEditMode,
+                            isLoadingUserDetails,
+                            showVerifyLink,
+                            userVerificationLoading,
+                            isVerifyUserFailed,
+                        }}
                         formik={formik}
-                        showVerifyLink={showVerifyLink}
-                        verifyUserError={verifyUserError}
                         verifiedUserData={verifiedUserData}
                         handleEmailChange={handleEmailChange}
                         onClickVerifyUser={onClickVerifyUser}
@@ -233,6 +239,7 @@ const AddUser: React.FC<AddUserProps> = () => {
                         showVerifyLink={showVerifyLink}
                         formStatus={formStatus}
                         toastStatues={{
+                            isEditMode,
                             isErrorAddUser,
                             isSuccessAddUser,
                             isErrorUpdateUser,
