@@ -24,6 +24,10 @@ exports[`renders Dynamic filter dialog properly snapshot testing 1`] = `
         "initialValues": Object {
           "addFuelTax": false,
           "city": undefined,
+          "customer": Object {
+            "label": "",
+            "value": "",
+          },
           "deliveryDate": null,
           "fuelType": Object {
             "label": "",
@@ -65,6 +69,10 @@ exports[`renders Dynamic filter dialog properly snapshot testing 1`] = `
         "values": Object {
           "addFuelTax": false,
           "city": undefined,
+          "customer": Object {
+            "label": "",
+            "value": "",
+          },
           "deliveryDate": null,
           "fuelType": Object {
             "label": "",
@@ -104,27 +112,24 @@ exports[`renders Dynamic filter dialog properly snapshot testing 1`] = `
               mb={2.5}
               mt={2}
             >
-              <select
+              <selectPaginate
                 field={
                   Object {
-                    "fieldType": "singleSelect",
+                    "apiUrl": "/api/customer-service/customers",
+                    "extraApiParams": Object {
+                      "countryCode": "us",
+                    },
+                    "fieldType": "singleSelectPaginate",
                     "initialValue": Object {
                       "label": "",
                       "value": "",
                     },
-                    "label": "Select fuel type",
-                    "name": "fuelType",
-                    "options": Array [
-                      Object {
-                        "label": "fuel",
-                        "value": "fuel",
-                      },
-                      Object {
-                        "label": "Non fuel",
-                        "value": "non fuuuuu",
-                      },
-                    ],
+                    "label": "Customer",
+                    "name": "customer",
+                    "placeHolder": "place holder",
                     "required": true,
+                    "responseFormatter": [MockFunction],
+                    "searchFieldName": "search",
                   }
                 }
                 fieldId="dynFilt0"
@@ -145,6 +150,10 @@ exports[`renders Dynamic filter dialog properly snapshot testing 1`] = `
                     "initialValues": Object {
                       "addFuelTax": false,
                       "city": undefined,
+                      "customer": Object {
+                        "label": "",
+                        "value": "",
+                      },
                       "deliveryDate": null,
                       "fuelType": Object {
                         "label": "",
@@ -186,6 +195,10 @@ exports[`renders Dynamic filter dialog properly snapshot testing 1`] = `
                     "values": Object {
                       "addFuelTax": false,
                       "city": undefined,
+                      "customer": Object {
+                        "label": "",
+                        "value": "",
+                      },
                       "deliveryDate": null,
                       "fuelType": Object {
                         "label": "",
@@ -212,13 +225,16 @@ exports[`renders Dynamic filter dialog properly snapshot testing 1`] = `
               mb={2.5}
               mt={2}
             >
-              <multiSelect
+              <select
                 field={
                   Object {
-                    "fieldType": "multiSelect",
-                    "initialValue": Array [],
-                    "label": "Select multiple fuel type",
-                    "name": "multiFuelType",
+                    "fieldType": "singleSelect",
+                    "initialValue": Object {
+                      "label": "",
+                      "value": "",
+                    },
+                    "label": "Select fuel type",
+                    "name": "fuelType",
                     "options": Array [
                       Object {
                         "label": "fuel",
@@ -250,6 +266,10 @@ exports[`renders Dynamic filter dialog properly snapshot testing 1`] = `
                     "initialValues": Object {
                       "addFuelTax": false,
                       "city": undefined,
+                      "customer": Object {
+                        "label": "",
+                        "value": "",
+                      },
                       "deliveryDate": null,
                       "fuelType": Object {
                         "label": "",
@@ -291,6 +311,10 @@ exports[`renders Dynamic filter dialog properly snapshot testing 1`] = `
                     "values": Object {
                       "addFuelTax": false,
                       "city": undefined,
+                      "customer": Object {
+                        "label": "",
+                        "value": "",
+                      },
                       "deliveryDate": null,
                       "fuelType": Object {
                         "label": "",
@@ -317,20 +341,24 @@ exports[`renders Dynamic filter dialog properly snapshot testing 1`] = `
               mb={2.5}
               mt={2}
             >
-              <MultiSelectDynamic
+              <multiSelect
                 field={
                   Object {
-                    "apiUrl": "/api/tax-service/fuel-taxes/filter-options",
-                    "extraApiParams": Object {
-                      "countryCode": "us",
-                    },
                     "fieldType": "multiSelect",
                     "initialValue": Array [],
-                    "label": "Multiple Select city",
-                    "name": "multiCity",
-                    "placeHolder": "Select multiple city",
+                    "label": "Select multiple fuel type",
+                    "name": "multiFuelType",
+                    "options": Array [
+                      Object {
+                        "label": "fuel",
+                        "value": "fuel",
+                      },
+                      Object {
+                        "label": "Non fuel",
+                        "value": "non fuuuuu",
+                      },
+                    ],
                     "required": true,
-                    "responseFormatter": [MockFunction],
                   }
                 }
                 fieldId="dynFilt2"
@@ -351,6 +379,10 @@ exports[`renders Dynamic filter dialog properly snapshot testing 1`] = `
                     "initialValues": Object {
                       "addFuelTax": false,
                       "city": undefined,
+                      "customer": Object {
+                        "label": "",
+                        "value": "",
+                      },
                       "deliveryDate": null,
                       "fuelType": Object {
                         "label": "",
@@ -392,6 +424,10 @@ exports[`renders Dynamic filter dialog properly snapshot testing 1`] = `
                     "values": Object {
                       "addFuelTax": false,
                       "city": undefined,
+                      "customer": Object {
+                        "label": "",
+                        "value": "",
+                      },
                       "deliveryDate": null,
                       "fuelType": Object {
                         "label": "",
@@ -418,14 +454,20 @@ exports[`renders Dynamic filter dialog properly snapshot testing 1`] = `
               mb={2.5}
               mt={2}
             >
-              <InputText
+              <MultiSelectDynamic
                 field={
                   Object {
-                    "fieldType": "text",
-                    "initialValue": "",
-                    "label": "Name",
-                    "name": "input123",
+                    "apiUrl": "/api/tax-service/fuel-taxes/filter-options",
+                    "extraApiParams": Object {
+                      "countryCode": "us",
+                    },
+                    "fieldType": "multiSelect",
+                    "initialValue": Array [],
+                    "label": "Multiple Select city",
+                    "name": "multiCity",
+                    "placeHolder": "Select multiple city",
                     "required": true,
+                    "responseFormatter": [MockFunction],
                   }
                 }
                 fieldId="dynFilt3"
@@ -446,6 +488,10 @@ exports[`renders Dynamic filter dialog properly snapshot testing 1`] = `
                     "initialValues": Object {
                       "addFuelTax": false,
                       "city": undefined,
+                      "customer": Object {
+                        "label": "",
+                        "value": "",
+                      },
                       "deliveryDate": null,
                       "fuelType": Object {
                         "label": "",
@@ -487,6 +533,10 @@ exports[`renders Dynamic filter dialog properly snapshot testing 1`] = `
                     "values": Object {
                       "addFuelTax": false,
                       "city": undefined,
+                      "customer": Object {
+                        "label": "",
+                        "value": "",
+                      },
                       "deliveryDate": null,
                       "fuelType": Object {
                         "label": "",
@@ -513,14 +563,13 @@ exports[`renders Dynamic filter dialog properly snapshot testing 1`] = `
               mb={2.5}
               mt={2}
             >
-              <datePicker
+              <InputText
                 field={
                   Object {
-                    "fieldType": "date",
-                    "initialValue": null,
-                    "label": "delivery Date",
-                    "name": "deliveryDate",
-                    "placeHolder": "select delivery date",
+                    "fieldType": "text",
+                    "initialValue": "",
+                    "label": "Name",
+                    "name": "input123",
                     "required": true,
                   }
                 }
@@ -542,6 +591,10 @@ exports[`renders Dynamic filter dialog properly snapshot testing 1`] = `
                     "initialValues": Object {
                       "addFuelTax": false,
                       "city": undefined,
+                      "customer": Object {
+                        "label": "",
+                        "value": "",
+                      },
                       "deliveryDate": null,
                       "fuelType": Object {
                         "label": "",
@@ -583,6 +636,10 @@ exports[`renders Dynamic filter dialog properly snapshot testing 1`] = `
                     "values": Object {
                       "addFuelTax": false,
                       "city": undefined,
+                      "customer": Object {
+                        "label": "",
+                        "value": "",
+                      },
                       "deliveryDate": null,
                       "fuelType": Object {
                         "label": "",
@@ -612,17 +669,11 @@ exports[`renders Dynamic filter dialog properly snapshot testing 1`] = `
               <datePicker
                 field={
                   Object {
-                    "dateRangerPlaceHolder": Object {
-                      "end": "End",
-                      "start": "Start",
-                    },
-                    "fieldType": "dateRange",
-                    "initialValue": Array [
-                      null,
-                      null,
-                    ],
-                    "label": "Select Pickup Dates",
-                    "name": "pickupDateRange",
+                    "fieldType": "date",
+                    "initialValue": null,
+                    "label": "delivery Date",
+                    "name": "deliveryDate",
+                    "placeHolder": "select delivery date",
                     "required": true,
                   }
                 }
@@ -644,6 +695,10 @@ exports[`renders Dynamic filter dialog properly snapshot testing 1`] = `
                     "initialValues": Object {
                       "addFuelTax": false,
                       "city": undefined,
+                      "customer": Object {
+                        "label": "",
+                        "value": "",
+                      },
                       "deliveryDate": null,
                       "fuelType": Object {
                         "label": "",
@@ -685,6 +740,10 @@ exports[`renders Dynamic filter dialog properly snapshot testing 1`] = `
                     "values": Object {
                       "addFuelTax": false,
                       "city": undefined,
+                      "customer": Object {
+                        "label": "",
+                        "value": "",
+                      },
                       "deliveryDate": null,
                       "fuelType": Object {
                         "label": "",
@@ -711,14 +770,20 @@ exports[`renders Dynamic filter dialog properly snapshot testing 1`] = `
               mb={2.5}
               mt={2}
             >
-              <checkBox
+              <datePicker
                 field={
                   Object {
-                    "disabled": false,
-                    "fieldType": "checkbox",
-                    "initialValue": false,
-                    "label": "Add fuel tax",
-                    "name": "addFuelTax",
+                    "dateRangerPlaceHolder": Object {
+                      "end": "End",
+                      "start": "Start",
+                    },
+                    "fieldType": "dateRange",
+                    "initialValue": Array [
+                      null,
+                      null,
+                    ],
+                    "label": "Select Pickup Dates",
+                    "name": "pickupDateRange",
                     "required": true,
                   }
                 }
@@ -740,6 +805,10 @@ exports[`renders Dynamic filter dialog properly snapshot testing 1`] = `
                     "initialValues": Object {
                       "addFuelTax": false,
                       "city": undefined,
+                      "customer": Object {
+                        "label": "",
+                        "value": "",
+                      },
                       "deliveryDate": null,
                       "fuelType": Object {
                         "label": "",
@@ -781,6 +850,10 @@ exports[`renders Dynamic filter dialog properly snapshot testing 1`] = `
                     "values": Object {
                       "addFuelTax": false,
                       "city": undefined,
+                      "customer": Object {
+                        "label": "",
+                        "value": "",
+                      },
                       "deliveryDate": null,
                       "fuelType": Object {
                         "label": "",
@@ -807,16 +880,15 @@ exports[`renders Dynamic filter dialog properly snapshot testing 1`] = `
               mb={2.5}
               mt={2}
             >
-              <radioBtn
+              <checkBox
                 field={
                   Object {
                     "disabled": false,
-                    "fieldType": "radio",
-                    "initialValue": "",
-                    "label": "Opis rack",
-                    "name": "productType",
+                    "fieldType": "checkbox",
+                    "initialValue": false,
+                    "label": "Add fuel tax",
+                    "name": "addFuelTax",
                     "required": true,
-                    "value": "val1",
                   }
                 }
                 fieldId="dynFilt7"
@@ -837,6 +909,10 @@ exports[`renders Dynamic filter dialog properly snapshot testing 1`] = `
                     "initialValues": Object {
                       "addFuelTax": false,
                       "city": undefined,
+                      "customer": Object {
+                        "label": "",
+                        "value": "",
+                      },
                       "deliveryDate": null,
                       "fuelType": Object {
                         "label": "",
@@ -878,6 +954,10 @@ exports[`renders Dynamic filter dialog properly snapshot testing 1`] = `
                     "values": Object {
                       "addFuelTax": false,
                       "city": undefined,
+                      "customer": Object {
+                        "label": "",
+                        "value": "",
+                      },
                       "deliveryDate": null,
                       "fuelType": Object {
                         "label": "",
@@ -910,10 +990,10 @@ exports[`renders Dynamic filter dialog properly snapshot testing 1`] = `
                     "disabled": false,
                     "fieldType": "radio",
                     "initialValue": "",
-                    "label": "Opis retail",
+                    "label": "Opis rack",
                     "name": "productType",
                     "required": true,
-                    "value": "val2",
+                    "value": "val1",
                   }
                 }
                 fieldId="dynFilt8"
@@ -934,6 +1014,10 @@ exports[`renders Dynamic filter dialog properly snapshot testing 1`] = `
                     "initialValues": Object {
                       "addFuelTax": false,
                       "city": undefined,
+                      "customer": Object {
+                        "label": "",
+                        "value": "",
+                      },
                       "deliveryDate": null,
                       "fuelType": Object {
                         "label": "",
@@ -975,6 +1059,10 @@ exports[`renders Dynamic filter dialog properly snapshot testing 1`] = `
                     "values": Object {
                       "addFuelTax": false,
                       "city": undefined,
+                      "customer": Object {
+                        "label": "",
+                        "value": "",
+                      },
                       "deliveryDate": null,
                       "fuelType": Object {
                         "label": "",
@@ -1007,10 +1095,10 @@ exports[`renders Dynamic filter dialog properly snapshot testing 1`] = `
                     "disabled": false,
                     "fieldType": "radio",
                     "initialValue": "",
-                    "label": "Custom",
+                    "label": "Opis retail",
                     "name": "productType",
                     "required": true,
-                    "value": "val3",
+                    "value": "val2",
                   }
                 }
                 fieldId="dynFilt9"
@@ -1031,6 +1119,10 @@ exports[`renders Dynamic filter dialog properly snapshot testing 1`] = `
                     "initialValues": Object {
                       "addFuelTax": false,
                       "city": undefined,
+                      "customer": Object {
+                        "label": "",
+                        "value": "",
+                      },
                       "deliveryDate": null,
                       "fuelType": Object {
                         "label": "",
@@ -1072,6 +1164,10 @@ exports[`renders Dynamic filter dialog properly snapshot testing 1`] = `
                     "values": Object {
                       "addFuelTax": false,
                       "city": undefined,
+                      "customer": Object {
+                        "label": "",
+                        "value": "",
+                      },
                       "deliveryDate": null,
                       "fuelType": Object {
                         "label": "",
@@ -1098,19 +1194,16 @@ exports[`renders Dynamic filter dialog properly snapshot testing 1`] = `
               mb={2.5}
               mt={2}
             >
-              <SelectDynamic
+              <radioBtn
                 field={
                   Object {
-                    "apiUrl": "/api/tax-service/fuel-taxes/filter-options",
-                    "extraApiParams": Object {
-                      "countryCode": "us",
-                    },
-                    "fieldType": "singleSelect",
-                    "label": "Select city",
-                    "name": "city",
-                    "placeHolder": "Select City",
+                    "disabled": false,
+                    "fieldType": "radio",
+                    "initialValue": "",
+                    "label": "Custom",
+                    "name": "productType",
                     "required": true,
-                    "responseFormatter": [MockFunction],
+                    "value": "val3",
                   }
                 }
                 fieldId="dynFilt10"
@@ -1131,6 +1224,10 @@ exports[`renders Dynamic filter dialog properly snapshot testing 1`] = `
                     "initialValues": Object {
                       "addFuelTax": false,
                       "city": undefined,
+                      "customer": Object {
+                        "label": "",
+                        "value": "",
+                      },
                       "deliveryDate": null,
                       "fuelType": Object {
                         "label": "",
@@ -1172,6 +1269,118 @@ exports[`renders Dynamic filter dialog properly snapshot testing 1`] = `
                     "values": Object {
                       "addFuelTax": false,
                       "city": undefined,
+                      "customer": Object {
+                        "label": "",
+                        "value": "",
+                      },
+                      "deliveryDate": null,
+                      "fuelType": Object {
+                        "label": "",
+                        "value": "",
+                      },
+                      "input123": "",
+                      "multiCity": Array [],
+                      "multiFuelType": Array [],
+                      "pickupDateRange": Array [
+                        null,
+                        null,
+                      ],
+                      "productType": "",
+                    },
+                  }
+                }
+                handleTouched={[Function]}
+                onChange={[Function]}
+              />
+            </ForwardRef(Grid)>
+            <ForwardRef(Grid)
+              item={true}
+              key="dynFilDialogGrid11"
+              mb={2.5}
+              mt={2}
+            >
+              <SelectDynamic
+                field={
+                  Object {
+                    "apiUrl": "/api/tax-service/fuel-taxes/filter-options",
+                    "extraApiParams": Object {
+                      "countryCode": "us",
+                    },
+                    "fieldType": "singleSelect",
+                    "label": "Select city",
+                    "name": "city",
+                    "placeHolder": "Select City",
+                    "required": true,
+                    "responseFormatter": [MockFunction],
+                  }
+                }
+                fieldId="dynFilt11"
+                formik={
+                  Object {
+                    "dirty": false,
+                    "errors": Object {},
+                    "getFieldHelpers": [Function],
+                    "getFieldMeta": [Function],
+                    "getFieldProps": [Function],
+                    "handleBlur": [Function],
+                    "handleChange": [Function],
+                    "handleReset": [Function],
+                    "handleSubmit": [Function],
+                    "initialErrors": Object {},
+                    "initialStatus": undefined,
+                    "initialTouched": Object {},
+                    "initialValues": Object {
+                      "addFuelTax": false,
+                      "city": undefined,
+                      "customer": Object {
+                        "label": "",
+                        "value": "",
+                      },
+                      "deliveryDate": null,
+                      "fuelType": Object {
+                        "label": "",
+                        "value": "",
+                      },
+                      "input123": "",
+                      "multiCity": Array [],
+                      "multiFuelType": Array [],
+                      "pickupDateRange": Array [
+                        null,
+                        null,
+                      ],
+                      "productType": "",
+                    },
+                    "isSubmitting": false,
+                    "isValid": true,
+                    "isValidating": false,
+                    "registerField": [Function],
+                    "resetForm": [Function],
+                    "setErrors": [Function],
+                    "setFieldError": [Function],
+                    "setFieldTouched": [Function],
+                    "setFieldValue": [Function],
+                    "setFormikState": [Function],
+                    "setStatus": [Function],
+                    "setSubmitting": [Function],
+                    "setTouched": [Function],
+                    "setValues": [Function],
+                    "status": undefined,
+                    "submitCount": 0,
+                    "submitForm": [Function],
+                    "touched": Object {},
+                    "unregisterField": [Function],
+                    "validateField": [Function],
+                    "validateForm": [Function],
+                    "validateOnBlur": true,
+                    "validateOnChange": true,
+                    "validateOnMount": false,
+                    "values": Object {
+                      "addFuelTax": false,
+                      "city": undefined,
+                      "customer": Object {
+                        "label": "",
+                        "value": "",
+                      },
                       "deliveryDate": null,
                       "fuelType": Object {
                         "label": "",
