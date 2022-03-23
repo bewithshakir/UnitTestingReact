@@ -174,12 +174,19 @@ const fetchUserDetail = (userId?: string) => {
     return axios(options);
 };
 
+const isPreUserDetailsExist = (selectedPaymentType: string = '', userGroupList: any = [], dspList: any = [], userId?: string) => {
+    if (selectedPaymentType === SettlementTypes.Voyager) {
+        return !!(userId && userGroupList.length && dspList.length);
+    }
+    return !!(userId && userGroupList.length);
+};
+
 export const useEditUserData = (selectedPaymentType: string = '', userGroupList: any = [], dspList: any = [], userId?: string, onSuccess?: any, onError?: any) => {
     return useQuery(['fetchUserDetail', [userId, userGroupList, dspList]],
         () => fetchUserDetail(userId), {
         onSuccess,
         onError,
-        enabled: (selectedPaymentType === SettlementTypes.Voyager) ? !!(userId && userGroupList.length && dspList.length) : !!(userId && userGroupList.length),
+        enabled: isPreUserDetailsExist(selectedPaymentType, userGroupList, dspList, userId),
         select: (response: AxiosResponse) => {
             const { data } = response.data;
             return {

@@ -124,6 +124,7 @@ const AddUser: React.FC<AddUserProps> = () => {
     const onErrorUserDetail = (error: any) => {
         setFormStatus({ message: error?.response.data.error?.details[0] || t(toastErrorKey), type: 'Error' });
     };
+
     const { isError: isErrorUserData, isLoading: isLoadingUserDetails } = useEditUserData(selectedPaymentType, userGroupList, dspList, userId, onSuccessUserDetail, onErrorUserDetail);
 
     const handleUpdateUserRepose = (isSuccess: boolean, data?: any) => {

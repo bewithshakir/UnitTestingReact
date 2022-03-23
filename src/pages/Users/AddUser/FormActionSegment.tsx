@@ -34,10 +34,6 @@ export default function FormActionSegment ({
         }
     };
 
-    // eslint-disable-next-line no-console
-    console.log("====>", showVerifyLink, userVerificationLoading, disableButton());
-
-
     return (
         <Fragment>
             <Grid item xs={12} md={6} />
