@@ -3,7 +3,7 @@ import { AxiosRequestConfig } from "axios";
 import axios from "../../infrastructure/ApiHelper";
 import { pageDataLimit } from "../../utils/constants";
 
-const getDspList = async (pageParam: number, searchTerm: string, sortOrder: { sortBy: string, order: string }, customerId: string, filterParams?: { [key: string]: string[] }) => {
+const getUsersList = async (pageParam: number, searchTerm: string, sortOrder: { sortBy: string, order: string }, customerId: string, filterParams?: { [key: string]: string[] }) => {
     const query = new URLSearchParams();
     if (searchTerm) {
         query.append("search", searchTerm);
@@ -20,7 +20,7 @@ const getDspList = async (pageParam: number, searchTerm: string, sortOrder: { so
         }
     }
 
-    const opisCityListEntitySet = `/api/customer-service/customers/${customerId}/dsps?limit=${pageDataLimit}&offset=${pageParam}&countryCode=us`;
+    const opisCityListEntitySet = `/api/user-service/users?limit=${pageDataLimit}&offset=${pageParam}&customerId=${customerId}`;
     const options: AxiosRequestConfig = {
         method: 'get',
         url: opisCityListEntitySet + query.toString()
@@ -30,8 +30,8 @@ const getDspList = async (pageParam: number, searchTerm: string, sortOrder: { so
 };
 
 
-export const DspListSet = (query: string, sortOrder: { sortBy: string, order: string }, customerId: string, filterParams?: { [key: string]: string[] }) => {
-    return useInfiniteQuery(["getDspList", query, sortOrder, filterParams, customerId], ({ pageParam = 0 }) => getDspList(pageParam, query, sortOrder, customerId, filterParams), {
+export const UsersListSet = (query: string, sortOrder: { sortBy: string, order: string }, customerId: string, filterParams?: { [key: string]: string[] }) => {
+    return useInfiniteQuery(["getUsersList", query, sortOrder, filterParams, customerId], ({ pageParam = 0 }) => getUsersList(pageParam, query, sortOrder, customerId, filterParams), {
         getNextPageParam: function (lastGroup: any) {
             if (lastGroup.data.pagination.offset < lastGroup.data.pagination.totalCount) {
                 return lastGroup.data.pagination.offset + 15;

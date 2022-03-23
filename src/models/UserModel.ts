@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { headerObj } from '../components/UIComponents/DataGird/grid.component';
-import { ParkingLotIcon, ExportIcon } from '../assets/icons';
+import { ExportIcon } from '../assets/icons';
 import { IDynamicFilterProps } from '../components/UIComponents/RightInfoPanel/DynamicFilterContent.component';
 
 
@@ -43,14 +43,11 @@ export default class UserModel {
 
     fieldsToDisplay (): headerObj[] {
         return [
-            { field: "name", label: "DSP NAME", type: 'text', sortable: true },
-            { field: "contactName", label: "CONTACT NAME", type: 'text' },
-            { field: "email", label: "EMAIL", type: 'text' },
-            { field: "address", label: "STREET ADDRES", type: 'text' },
-            { field: "city", label: "CITY", type: 'text' },
-            { field: "state", label: "STATE", type: 'text' },
-            { field: "postalCode", label: "ZIP", type: 'text' },
-            { field: "totalLotAssigned", label: "LOTS ASSIGNED", type: 'button', icon: ParkingLotIcon },
+            { field: "fullName", label: "USER NAME", type: 'text', sortable: true },
+            { field: "customerInfo", label: "CONTACT INFO", type: 'multi' },
+            { field: "userGroupList", label: "USER GROUP", type: 'text' },
+            { field: "createdDtm", label: "DATE ADDED", type: 'text' },
+            { field: "shellDigitalAccountId", label: "UNIQUE ID", type: 'text' }
         ];
     }
 

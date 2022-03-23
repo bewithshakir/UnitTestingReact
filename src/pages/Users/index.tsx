@@ -15,7 +15,7 @@ import UserModel, { ACTION_TYPES, MASS_ACTION_TYPES } from "../../models/UserMod
 import { addedCustomerIdState, HorizontalBarVersionState, useAddedCustomerIdStore, useStore } from "../../store";
 import { getSeachedDataTotalCount } from "../../utils/helperFunctions";
 import { sortByOptions } from "./config";
-import { DspListSet } from './queries';
+import { UsersListSet } from './queries';
 import { DataGridActionsMenuOption } from "../../components/UIComponents/Menu/DataGridActionsMenu.component";
 import { RightInfoPanel } from '../../components/UIComponents/RightInfoPanel/RightInfoPanel.component';
 
@@ -25,10 +25,10 @@ interface ContentProps {
 }
 
 const UsersLadingContent: React.FC<ContentProps> = () => {
-    const dspObj = new UserModel();
-    const headCells = dspObj.fieldsToDisplay();
-    const rowActionOptions = dspObj.rowActions();
-    const massActionOptions = dspObj.massActions();
+    const userObj = new UserModel();
+    const headCells = userObj.fieldsToDisplay();
+    const rowActionOptions = userObj.rowActions();
+    const massActionOptions = userObj.massActions();
     const navigate = useNavigate();
     const [searchTerm, setSearchTerm] = React.useState("");
     const [resetTableCollaps, setResetTableCollaps] = React.useState(false);
@@ -39,7 +39,7 @@ const UsersLadingContent: React.FC<ContentProps> = () => {
 
     const [filterPanelVisible, setFilterPanelVisible] = React.useState(false);
 
-    const { data, fetchNextPage, isLoading, isFetching }: any = DspListSet(searchTerm, sortOrder, customerId, filterData);
+    const { data, fetchNextPage, isLoading, isFetching }: any = UsersListSet(searchTerm, sortOrder, customerId, filterData);
 
     const { t } = useTranslation();
     const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
@@ -49,8 +49,17 @@ const UsersLadingContent: React.FC<ContentProps> = () => {
         if (data) {
             const list: any = [];
             data?.pages?.forEach((item: any) => {
-                list.push(...item.data.dsps);
+                list.push(...item.data.users);
             });
+            list.forEach((data:any) => {
+                data['createdDtm'] = new Date(data.createdDtm).toLocaleDateString('en-US',{ year: 'numeric', month: '2-digit', day: '2-digit' });
+                data['fullName'] = data.firstNm + ' '+ data.lastNm;
+                data['customerInfo'] =  [data.email,data.phone];
+                data["userGroupList"] = data.userGroup.map((item:any) => {
+                    return item.userGroupNm;
+                });
+            });
+           
             setDspList(list);
         }
     }, [data]);
@@ -96,7 +105,7 @@ const UsersLadingContent: React.FC<ContentProps> = () => {
     };
 
     const getFields = () => {
-        const fields = dspObj.FilterByFields().map(item => {
+        const fields = userObj.FilterByFields().map(item => {
             return { ...item, customerId: customerId };
         });
         return fields;
@@ -121,6 +130,7 @@ const UsersLadingContent: React.FC<ContentProps> = () => {
                         <Grid item pr={2.5}>
                             <FormControl>
                                 <SortbyMenu
+                                    id="userSort"
                                     options={sortByOptions.map((sortByItem) => t(sortByItem))}
                                     onSelect={(value) => value}
                                 />
@@ -129,7 +139,7 @@ const UsersLadingContent: React.FC<ContentProps> = () => {
                         <Grid item>
                             <SearchInput
                                 name="searchTerm"
-                                id="dspSearch"
+                                id="userSearch"
                                 value={searchTerm}
                                 delay={600}
                                 onChange={onInputChange}
@@ -168,7 +178,7 @@ const UsersLadingContent: React.FC<ContentProps> = () => {
                 </Grid>
                 <Grid container pt={2.5} display="flex" flexGrow={1}>
                     <GridComponent
-                        primaryKey='dspId'
+                        primaryKey='usersId'
                         isLoading={isFetching || isLoading}
                         rows={dspList}
                         header={headCells}

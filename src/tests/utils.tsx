@@ -41,6 +41,7 @@ import { getProductHandler } from '../mockAPI/productService/products/GET';
 import { postProductHandler } from '../mockAPI/productService/products/POST';
 import { putProductHandler } from '../mockAPI/productService/products/PUT';
 import { addUserHandler, verifyUserHandler, getUserGroupsHandler, getUserDSPDropdownHandler, getUserPermissionHandler } from '../pages/Users/AddUser/mockApi/handlerAddUser';
+import { getUsersList } from '../pages/Users/mockApi/handlerUsersLanding';
 
 export const handlers = [
     getProductHandler(),
@@ -92,6 +93,7 @@ export const handlers = [
     getUserGroupsHandler(),
     getUserPermissionHandler(),
     getUserDSPDropdownHandler(),
+    getUsersList()
 ];
 
 const createTestQueryClient = () => new QueryClient({
