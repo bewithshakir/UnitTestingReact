@@ -3,7 +3,10 @@ import { AxiosRequestConfig } from "axios";
 import axios from "../../infrastructure/ApiHelper";
 import { pageDataLimit } from "../../utils/constants";
 
-const getUsersList = async (pageParam: number, searchTerm: string, sortOrder: { sortBy: string, order: string }, customerId: string, filterParams?: { [key: string]: string[] }) => {
+const getUsersList = async (pageParam: number, 
+                            searchTerm: string, 
+                            sortOrder: { sortBy: string, order: string }, 
+                            customerId: string, filterParams?: { [key: string]: string[] }) => {
     const query = new URLSearchParams();
     if (searchTerm) {
         query.append("search", searchTerm);
@@ -31,7 +34,10 @@ const getUsersList = async (pageParam: number, searchTerm: string, sortOrder: { 
 
 
 export const UsersListSet = (query: string, sortOrder: { sortBy: string, order: string }, customerId: string, filterParams?: { [key: string]: string[] }) => {
-    return useInfiniteQuery(["getUsersList", query, sortOrder, filterParams, customerId], ({ pageParam = 0 }) => getUsersList(pageParam, query, sortOrder, customerId, filterParams), {
+    return useInfiniteQuery(["getUsersList", query, 
+                                sortOrder, 
+                                filterParams, 
+                                customerId], ({ pageParam = 0 }) => getUsersList(pageParam, query, sortOrder, customerId, filterParams), {
         getNextPageParam: function (lastGroup: any) {
             if (lastGroup.data.pagination.offset < lastGroup.data.pagination.totalCount) {
                 return lastGroup.data.pagination.offset + 15;
