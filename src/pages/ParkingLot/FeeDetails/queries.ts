@@ -54,7 +54,7 @@ const getLotProductNames = async (lotId: string, productCd: string) => {
     if (lotId && productCd) {
         const options: AxiosRequestConfig = {
             method: 'get',
-            url: `/api/customer-service/lots/${lotId}/products?countryCode=us&productCd=${productCd}&skipPagination=false`
+            url: `/api/customer-service/lots/${lotId}/products?countryCode=us&productCd=${productCd}&skipPagination=true`
         };
         const { data } = await axios(options);
         return data;

@@ -14,7 +14,7 @@ Object {
           parkingLotManagement.infoView.addproductopistext
         </h5>
         <div
-          class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-undefined mainDataDiv css-11lq3yg-MuiGrid-root"
+          class="MuiGrid-root MuiGrid-container mainDataDiv css-11lq3yg-MuiGrid-root"
         />
       </div>
     </div>
@@ -29,7 +29,7 @@ Object {
         parkingLotManagement.infoView.addproductopistext
       </h5>
       <div
-        class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-undefined mainDataDiv css-11lq3yg-MuiGrid-root"
+        class="MuiGrid-root MuiGrid-container mainDataDiv css-11lq3yg-MuiGrid-root"
       />
     </div>
   </div>,
