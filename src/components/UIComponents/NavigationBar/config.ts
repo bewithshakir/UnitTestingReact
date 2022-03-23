@@ -142,5 +142,9 @@ export const modelBackConfig = [
     {
         path: "/vehicleRule/add",
         backTo: "/vehicleRule",
+    },
+    {
+        path: "/vehicleRule/edit",
+        backTo: "/vehicleRule",
     }
 ];

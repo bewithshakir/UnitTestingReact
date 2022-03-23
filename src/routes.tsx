@@ -38,7 +38,7 @@ const TruckLanding = lazy(() => import("./pages/Truck"));
 const AddTruck = lazy(() => import('./pages/Truck/AddTruck'));
 const VehicleRule = lazy(() => import('./pages/VehicleRuleManagement/'));
 const AddVehicleRule = lazy(() => import('./pages/VehicleRuleManagement/AddVehicleRule'));
-
+const EditVehicleRule = lazy(() => import('./pages/VehicleRuleManagement/AddVehicleRule'));
 
 export const routes: RouteObject[] = [
   {
@@ -150,6 +150,10 @@ export const routes: RouteObject[] = [
   {
     path: "/vehicleRule/add",
     element: <AddVehicleRule version="Breadcrumbs-Single" />
+  },
+  {
+    path: "/vehicleRule/edit/:ruleId",
+    element: <EditVehicleRule version="Breadcrumbs-Single" />
   },
   {
     path: "/opisCities/add",

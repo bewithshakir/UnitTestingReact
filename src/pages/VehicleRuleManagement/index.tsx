@@ -94,10 +94,11 @@ const VehicleRuleManagement: React.FC<AddVehicleRuleProps> = () => {
         setFilterData(filterObj);
     };
 
-    const handleRowAction = (action: DataGridActionsMenuOption) => {
+    const handleRowAction = (action: DataGridActionsMenuOption, row: any) => {
         switch (action.action) {
             case ROW_ACTION_TYPES.EDIT:
                 // perform action
+                navigate(`/vehicleRule/edit/${row.ruleId}`);
                 break;
             case ROW_ACTION_TYPES.DELETE:
                 // perform action
