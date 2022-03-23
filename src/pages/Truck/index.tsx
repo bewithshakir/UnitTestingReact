@@ -32,7 +32,7 @@ const TruckLandingContent: React.FC<TruckLandingContentProps> = memo(() => {
 
   const rowActionOptions = truckObj.rowActions();
   const navigate = useNavigate();
-  const [searchTerm,setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
   const [sortOrder, setSortOrder] = useState<{ sortBy: string, order: string }>({ sortBy: "", order: "" });
   const [truckList, setTruckList] = useState([]);
 
@@ -49,9 +49,16 @@ const TruckLandingContent: React.FC<TruckLandingContentProps> = memo(() => {
   const { SortByOptions, DataGridFields } = TruckManagement.LandingPage;
   const [resetTableCollaps, setResetTableCollaps] = useState(false);
   const { t } = useTranslation();
+
+  const [filterPanelVisible, setFilterPanelVisible] = React.useState(false);
+  const [filterData, setFilterData] = React.useState<{ [key: string]: string[] }>({});
+
+  
+  
   const { data, fetchNextPage, isLoading, isFetching }: any = useTruckList(
     searchTerm,
     sortOrder,
+    filterData
   );
 
   useEffect(() => {
@@ -65,10 +72,10 @@ const TruckLandingContent: React.FC<TruckLandingContentProps> = memo(() => {
   }, [data]);
 
 
-const onInputChange = (value: string) => {
-  setResetTableCollaps(true);
-  setSearchTerm(value);
-};  
+  const onInputChange = (value: string) => {
+    setResetTableCollaps(true);
+    setSearchTerm(value);
+  };
   const drawerClose = () => {
     setDrawerOpen(false);
   };
@@ -118,6 +125,22 @@ const onInputChange = (value: string) => {
     }
   };
 
+  // Filter Section Start
+  const handleFilterOpen = () => {
+    setFilterPanelVisible(true);
+  };
+  const getFilterParams = (filterObj: { [key: string]: string[] }) => {
+    setResetTableCollaps(true);
+    
+    setFilterData(filterObj);
+  };
+
+  const handleFilterClose = () => {
+    setFilterPanelVisible(false);
+  };
+
+  // Filter Section End
+
   return (
     <Box display="flex" mt={10} ml={8}>
       <Grid container pl={8} pr={8} className="main-area">
@@ -128,6 +151,7 @@ const onInputChange = (value: string) => {
                 data-testid="filter"
                 types="filter"
                 aria-label="dafault"
+                onClick={handleFilterOpen}
                 startIcon={<FilterIcon />}
               >
                 {t("buttons.filter")}
@@ -210,6 +234,14 @@ const onInputChange = (value: string) => {
               <TruckDetail info={info} drawerOpen={drawerOpen} />
             }
           </RightInfoPanel>
+
+          <RightInfoPanel panelType="dynamic-filter"
+            id="filterDrawer"
+            open={filterPanelVisible} headingText={"customer-filter-panel.header.filter"}
+            provideFilterParams={getFilterParams} onClose={handleFilterClose}
+            fields={truckObj.FilterByFields()}
+            storeKey={'truckOverviewFilter'}
+          />
 
         </Grid>
       </Grid>

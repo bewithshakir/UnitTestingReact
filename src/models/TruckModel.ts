@@ -4,6 +4,7 @@ import { PositiveCricleIcon, ExpireWalletIcon, OilTankIcon, OrderIcon } from '..
 import { ParkingLocationIcon } from '../assets/icons';
 import { useTranslation } from 'react-i18next';
 import { TruckManagement } from '../pages/Truck/config';
+import { IDynamicFilterProps } from '../components/UIComponents/RightInfoPanel/DynamicFilterContent.component';
 
 const { RowActionsOptions, DataGridFields } = TruckManagement.LandingPage;
 
@@ -119,5 +120,37 @@ export default class TruckModel {
                 ],
             });
         });
+    }
+    FilterByFields(): IDynamicFilterProps['fields'] {
+        return (
+            [
+                { 
+                    name: 'driver', 
+                    label: 'filterForm.driver', 
+                    fieldType: 'select', 
+                    optionUrlKey: 'truckOverviewFilter', 
+                    optionAPIResponseKey: 'drivers', 
+                    initialValue: []
+                },
+                {
+                    name: 'activeInactiveInd', 
+                    label: 'filterForm.status', 
+                    fieldType: 'select', 
+                    optionUrlKey: 'truckOverviewFilter', 
+                    optionAPIResponseKey: 'status', 
+                    singleSelect: true, 
+                    initialValue: null, 
+                    options: [{label: "Enable", value: "Y"}, {label: "Disable", value: "N"}] 
+                },
+                { 
+                    name: 'city', 
+                    label: 'filterForm.city', 
+                    fieldType: 'select', 
+                    optionUrlKey: 'truckOverviewFilter', 
+                    optionAPIResponseKey: 'cities', 
+                    initialValue: []
+                },
+            ]
+        );
     }
 }
