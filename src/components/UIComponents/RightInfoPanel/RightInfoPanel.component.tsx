@@ -19,9 +19,10 @@ interface InfoPanelProps {
   fields?: IDynamicFilterProps['fields']
   storeKey?: string,
   editURL?: string,
+  id?: string
 }
 
-export const RightInfoPanel: React.FC<InfoPanelProps> = ({ children, open, headingText, info, onClose, provideFilterParams, fields, panelType, storeKey, editURL }) => {
+export const RightInfoPanel: React.FC<InfoPanelProps> = ({ children, open, headingText, info, onClose, provideFilterParams, fields, panelType, storeKey, editURL, id }) => {
 
   const removeFormData = filterStore((state) => state.removeFormData);
   useEffect(() => {
@@ -46,7 +47,7 @@ export const RightInfoPanel: React.FC<InfoPanelProps> = ({ children, open, headi
   };
 
   const panelDrawer = <Drawer
-    data-testid="right-drawer"
+    data-testid={id || "right-drawer"}
     className={"right_panel_main_class " + (panelType === "info-view" ? "right_info_panel" : "customer_filter_panel")}
     variant={(panelType === "dynamic-filter") ? "temporary" : "persistent"}
     anchor="right"
