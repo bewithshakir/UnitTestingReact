@@ -31,11 +31,10 @@ function getAllElements (component: RenderResult) {
     const userEmailElem = component.container.querySelector('#email') as HTMLInputElement;
     const userNameElem = component.container.querySelector('#userName') as HTMLInputElement;
     const userPhoneElem = component.container.querySelector('#phone') as HTMLInputElement;
-    const verifyUserLink = component.container.querySelector('#verify-user-link') as HTMLAnchorElement;
     const cancelBtn = component.container.querySelector('#cancelBtn') as HTMLButtonElement;
     const saveBtn = component.container.querySelector('#saveBtn') as HTMLButtonElement;
     const formElem = component.container.querySelector('#form') as HTMLFormElement;
-    return { userGroupElem, userEmailElem, userNameElem, userPhoneElem, verifyUserLink, cancelBtn, saveBtn, formElem };
+    return { userGroupElem, userEmailElem, userNameElem, userPhoneElem, cancelBtn, saveBtn, formElem };
 }
 
 
