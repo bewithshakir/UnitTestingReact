@@ -51,6 +51,21 @@ export default class UserModel {
         ];
     }
 
+    dataModel (data: any) {
+        return data.map((obj: any) => {
+            return ({
+                ...obj,
+                fullName: obj.firstNm + ' '+obj.lastNm,
+                customerInfo: [obj.email,obj.phone],
+                userGroupList: obj.userGroup.map((item:any) => {
+                    return item.userGroupNm;
+                }),
+                createdDtm: new Date(obj.createdDtm).toLocaleDateString('en-US',{ year: 'numeric', month: '2-digit', day: '2-digit' }),
+                shellDigitalAccountId: obj.shellDigitalAccountId
+            });
+        });
+    }
+
     rowActions () {
         const { t } = useTranslation();
         return [
