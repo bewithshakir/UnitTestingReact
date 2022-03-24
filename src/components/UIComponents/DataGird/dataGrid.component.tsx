@@ -203,6 +203,13 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
         );
     };
 
+    const renderMultilineText = (data: any) => {
+        return (
+            <React.Fragment>
+                {data.map((value: any, i: any) => <Box key={i}>{value}</Box>)}
+            </React.Fragment>);
+    };
+
     const renderStatus = (fieldOpts: headerObj, data: any) => {
         let matchedStatus: fieldOptions[] = [];
         if (fieldOpts.fieldOptions) {
@@ -244,6 +251,7 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
             return (rowIndex === selectedRowIndex && selectedColIndex === colIndex) ? 'active' : '';
         }
     };
+
 
     const onCheckChange = (selectedRow: any) => {
         if (props.handleCheckChange) {
@@ -314,6 +322,8 @@ const EnhancedGridBody: React.FC<GridBodyProps> = (props) => {
                 return renderProduct(props.headCells[colIndex], row[key]);
             case 'component':
                 return renderComponent(props.headCells[colIndex], row[key]);
+            case 'multi':
+                return renderMultilineText(row[key]);
             default:
                 return "";
         }
