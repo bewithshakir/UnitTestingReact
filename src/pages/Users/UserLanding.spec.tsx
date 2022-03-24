@@ -1,17 +1,9 @@
-import { mount } from 'enzyme';
-import userEvent from '@testing-library/user-event';
-import { act, waitFor, waitForElementToBeRemoved } from '@testing-library/react';
-import { QueryClient, QueryClientProvider } from 'react-query';
-
-import UserLandingContent from './index';
+import { waitFor } from '@testing-library/react';
 import { renderWithClient } from '../../tests/utils';
-import selectEvent from 'react-select-event';
+import UserLandingContent from './index';
 
-
-const queryClient = new QueryClient();
 
 jest.mock("react-router-dom", () => ({
-   
     ...jest.requireActual("react-router-dom") as any,
     useNavigate: () => ({
         location: {
@@ -21,7 +13,7 @@ jest.mock("react-router-dom", () => ({
             }
         }
     }),
-    useLocation: ()=>({
+    useLocation: () => ({
         state: {
             customerName: "MockCustomer"
         }
@@ -29,19 +21,14 @@ jest.mock("react-router-dom", () => ({
 }));
 
 describe('Rendering of User Landing Component', () => {
-        const component = mount(<QueryClientProvider client={queryClient}><UserLandingContent version='1' /></QueryClientProvider>);
-        it('User Landing component Snapshot testing when', () => {
-            expect(component).toMatchSnapshot();
-        });   
-        it('renders filter button', () => {
-            expect(component.find({ types: "filter" })).toBeDefined();
+    it('check user landing page DOM', async () => {
+        const result = renderWithClient(<UserLandingContent version="Breadcrumbs-Many" />);
+        await waitFor(() => {
+            expect(result.container.querySelector('#filter')).toBeInTheDocument();
+            expect(result.container.querySelector('#userSort')).toBeInTheDocument();
+            expect(result.container.querySelector('#userSearch')).toBeInTheDocument();
         });
-        it('Renders sort by button', () => {
-            expect(component.find('SortbyMenu')).toBeDefined();
-        });
-        it('Renders Search Input ', ()=>{
-            expect(component.find('SearchInput')).toBeDefined();
-        });
+    });
 });
 
 describe('load User landing page', () => {
