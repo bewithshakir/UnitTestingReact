@@ -33,7 +33,7 @@ const getUsersList = async (pageParam: number,
 };
 
 
-export const usersListSet = (query: string, sortOrder: { sortBy: string, order: string }, customerId: string, filterParams?: { [key: string]: string[] }) => {
+export const UseGetUserListSet = (query: string, sortOrder: { sortBy: string, order: string }, customerId: string, filterParams?: { [key: string]: string[] }) => {
     return useInfiniteQuery(["getUsersList", query, 
                                 sortOrder, 
                                 filterParams, 

@@ -15,7 +15,7 @@ import UserModel, { ACTION_TYPES, MASS_ACTION_TYPES } from "../../models/UserMod
 import { addedCustomerIdState, HorizontalBarVersionState, useAddedCustomerIdStore, useStore } from "../../store";
 import { getSeachedDataTotalCount } from "../../utils/helperFunctions";
 import { sortByOptions } from "./config";
-import { usersListSet } from './queries';
+import { UseGetUserListSet } from './queries';
 import { DataGridActionsMenuOption } from "../../components/UIComponents/Menu/DataGridActionsMenu.component";
 import { RightInfoPanel } from '../../components/UIComponents/RightInfoPanel/RightInfoPanel.component';
 
@@ -39,7 +39,7 @@ const UsersLadingContent: React.FC<ContentProps> = () => {
 
     const [filterPanelVisible, setFilterPanelVisible] = React.useState(false);
 
-    const { data, fetchNextPage, isLoading, isFetching }: any = usersListSet(searchTerm, sortOrder, customerId, filterData);
+    const { data, fetchNextPage, isLoading, isFetching }: any = UseGetUserListSet(searchTerm, sortOrder, customerId, filterData);
 
     const { t } = useTranslation();
     const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);

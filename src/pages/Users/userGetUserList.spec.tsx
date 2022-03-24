@@ -1,12 +1,12 @@
 import { renderHook, act } from '@testing-library/react-hooks';
 import { createWrapper } from '../../tests/utils';
-import { UsersListSet } from './queries';
+import { UseGetUserListSet } from './queries';
 import { serverMsw } from "../../setupTests";
 import { rest } from 'msw';
 
 describe('UsersListSet for useInfiniteQuery method ', () => {
     it('successful returns data', async () => {
-        const { result, waitFor } = renderHook(() => UsersListSet("", { sortBy: "", order: "", }, 'c905ebe1-325a-4e27-b44e-d1049848e7a8', {}), {
+        const { result, waitFor } = renderHook(() => UseGetUserListSet("", { sortBy: "", order: "", }, 'c905ebe1-325a-4e27-b44e-d1049848e7a8', {}), {
             wrapper: createWrapper()
         });
         act(() => {
@@ -25,7 +25,7 @@ describe('UsersListSet for useInfiniteQuery method ', () => {
             })
         );
 
-        const { result, waitFor } = renderHook(() => UsersListSet("", { sortBy: "", order: "", }, 'c905ebe1-325a-4e27-b44e-d1049848e7a8', {}), {
+        const { result, waitFor } = renderHook(() => UseGetUserListSet("", { sortBy: "", order: "", }, 'c905ebe1-325a-4e27-b44e-d1049848e7a8', {}), {
             wrapper: createWrapper()
         });
         act(() => {
