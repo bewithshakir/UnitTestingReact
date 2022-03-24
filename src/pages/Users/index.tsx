@@ -81,7 +81,7 @@ const UsersLadingContent: React.FC<ContentProps> = () => {
         switch (action.action) {
             case ACTION_TYPES.EDIT:
                 // perform action 
-                navigate(`/customer/${customerId}/dsps/edit/${row.id}`);
+                navigate(`/customer/${customerId}/users/edit/${row.userId}`);
                 break;
             default: return;
         }
@@ -95,12 +95,7 @@ const UsersLadingContent: React.FC<ContentProps> = () => {
         setFilterPanelVisible(false);
     };
 
-    const getFields = () => {
-        const fields = userObj.FilterByFields().map(item => {
-            return { ...item, customerId: customerId };
-        });
-        return fields;
-    };
+    const getFields = () => userObj.FilterByFields().map((item) => ({ ...item, customerId: customerId }));
 
     return (
         <Box display="flex">
