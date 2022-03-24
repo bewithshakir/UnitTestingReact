@@ -205,11 +205,13 @@
     }
   },
   "filterForm": {
-    "state": "Estado",
-    "city": "Ciudad",
-    "zip": "Zip",
     "date": "Fecha",
-    "userGroup":"Grupo de usuario"
+    "userGroup":"Grupo de usuario",
+    "status": "Estado",
+    "driver": "Conductor",
+    "state": "Estado",
+    "city": "ciudad",
+    "zip": "CÓDIGO POSTAL"
   },
   "assetManagement": {
     "asset": "Tipo de activo",

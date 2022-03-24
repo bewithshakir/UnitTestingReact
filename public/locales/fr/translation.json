@@ -205,11 +205,13 @@
     }
   },
   "filterForm": {
+    "date": "Date",
+    "userGroup":"Groupe d'utilisateurs",
+    "status": "Statut",
+    "driver": "Chauffeur",
     "state": "État",
     "city": "Ville",
-    "zip": "Zip",
-    "date": "Date",
-    "userGroup":"Groupe d'utilisateurs"
+    "zip": "Zip"
   },
   "assetManagement": {
     "asset": "Type d'actif",

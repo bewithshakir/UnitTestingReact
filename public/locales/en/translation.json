@@ -500,6 +500,8 @@
     }
   },
   "filterForm": {
+    "status": "Status",
+    "driver": "Driver",
     "state": "State",
     "city": "City",
     "zip": "Zip",
