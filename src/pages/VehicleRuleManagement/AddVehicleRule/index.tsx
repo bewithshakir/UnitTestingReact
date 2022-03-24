@@ -96,7 +96,7 @@ const AddVehicleRule: React.FC<AddVehicleRuleProps> = () => {
     };
 
     const onGetVehicleRuleSuccess = (response: any) => {
-        populateDataInAllFields(response?.data);
+        response && populateDataInAllFields(response?.data);
         setEditMode(true);
     };
     const onGetVehicleRuleError = (err: any) => {
@@ -123,6 +123,7 @@ const AddVehicleRule: React.FC<AddVehicleRuleProps> = () => {
             setAPIResponse(false);
         }, 6000);
     };
+
     const onEditVehicleRuleError = (err: any) => {
         try {
             const { data } = err.response;
@@ -137,7 +138,7 @@ const AddVehicleRule: React.FC<AddVehicleRuleProps> = () => {
         }
     };
 
-    const { mutate: editVehicleRule } = useEditVehicleRule(onEditVehicleRuleSuccess, onEditVehicleRuleError);
+    const { mutate: editVehicleRule } = useEditVehicleRule(ruleId, onEditVehicleRuleError, onEditVehicleRuleSuccess);
 
     const updateVehicleRule = (form: VehicleRuleModel) => {
         try {

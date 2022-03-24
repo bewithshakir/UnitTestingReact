@@ -23,10 +23,10 @@ export const useAddVehicleRule = (onError: any, onSuccess: any) => {
     });
 };
 
-const editVehicleRule = async (payload: any) => {
+const editVehicleRule = async (payload: any, ruleId: string) => {
     const options: AxiosRequestConfig = {
-        method: 'post',
-        url: 'api/vehicle-service/vehicle-rules',
+        method: 'put',
+        url: `api/vehicle-service/vehicle-rules/${ruleId}`,
         data: payload,
     };
     const { data } = await axios(options);
@@ -34,9 +34,9 @@ const editVehicleRule = async (payload: any) => {
 };
 
 
-export const useEditVehicleRule = (onError: any, onSuccess: any) => {
+export const useEditVehicleRule = (ruleId: string, onError: any, onSuccess: any) => {
     return useMutation((payload: any) =>
-        editVehicleRule(payload), {
+        editVehicleRule(payload, ruleId), {
         onError,
         onSuccess,
         retry: false,

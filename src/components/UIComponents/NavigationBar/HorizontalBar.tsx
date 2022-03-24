@@ -107,7 +107,7 @@ export default function HorizontalBar (props: HorizontalBarProps) {
       case pathname.includes('vehicleRule/add'):
         return t('taxes.vehicleRule.form.titleAdd');
       case pathname.includes('vehicleRule/edit'):
-        return 'Edit Vehicle Rule';
+        return t('taxes.vehicleRule.form.titleEdit');
       case pathname.includes('dsps/addDsp'):
         return t("addDSP.title");
       case pathname.includes('dsps/edit'):

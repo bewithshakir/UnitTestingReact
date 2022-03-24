@@ -316,7 +316,8 @@
     },
     "vehicleRule": {
       "form": {
-        "titleAdd": "Add Vehicle Rule"
+        "titleAdd": "Add Vehicle Rule",
+        "titleEdit": "Edit Vehicle Rule"
       }
     }
   },
