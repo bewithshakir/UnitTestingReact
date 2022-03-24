@@ -15,7 +15,7 @@ jest.mock('react-router-dom', () => ({
         })
     }),
     useParams: () => ({
-        customerId: '123',
+        customerId: '123456',
     }),
     useLocation: () => ({
         search: "backTo=parkingLot",
