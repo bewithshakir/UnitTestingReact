@@ -814,7 +814,7 @@ function AddLotForm(): React.ReactElement {
                                                 </>
                                             ))}
                                             <Grid item md={12} mt={2} mb={4}>
-                                                <Link
+                                                <Link data-testid="add-another-order"
                                                     variant="body2"
                                                     className={`add-link add-another-schedule ${isAddScheduleDisabled() && "add-link disabled-text-link"}`}
                                                     onClick={(e: any) => addSchedule(e, arr)}
