@@ -1,7 +1,7 @@
 import { rest } from "msw";
 
 export const getUsersList = () => {
-    return rest.get('*/api/user-service/users?/*', (req, res, ctx) => {
+    return rest.get('*/api/user-service/users*', (req, res, ctx) => {
            const urlHref = req.url.href;
            if (urlHref.includes('limit=10&offset=0&customerId=')) {
             return res(
