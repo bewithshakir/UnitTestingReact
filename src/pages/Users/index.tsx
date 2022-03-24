@@ -51,15 +51,6 @@ const UsersLadingContent: React.FC<ContentProps> = () => {
             data?.pages?.forEach((item: any) => {
                 list.push(...item.data.users);
             });
-            list.forEach((data:any) => {
-                data['createdDtm'] = new Date(data.createdDtm).toLocaleDateString('en-US',{ year: 'numeric', month: '2-digit', day: '2-digit' });
-                data['fullName'] = data.firstNm + ' '+ data.lastNm;
-                data['customerInfo'] =  [data.email,data.phone];
-                data["userGroupList"] = data.userGroup.map((item:any) => {
-                    return item.userGroupNm;
-                });
-            });
-           
             setDspList(list);
         }
     }, [data]);
@@ -180,7 +171,7 @@ const UsersLadingContent: React.FC<ContentProps> = () => {
                     <GridComponent
                         primaryKey='usersId'
                         isLoading={isFetching || isLoading}
-                        rows={dspList}
+                        rows={userObj.dataModel(dspList)}
                         header={headCells}
                         enableRowSelection
                         enableRowAction

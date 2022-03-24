@@ -56,7 +56,7 @@ export const getUsersList = () => {
                                 "email": "abc123@bacancy.com",
                                 "phone": null,
                                 "customerId": "ID-344-4536",
-                                "dspId": "ID-9878-5646",
+                                "dspId": "ID-9878-5600",
                                 "createdDtm": "2022-04-21T10:41:11.603Z",
                                 "userGroup": [
                                     {
