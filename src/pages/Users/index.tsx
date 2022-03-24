@@ -104,7 +104,7 @@ const UsersLadingContent: React.FC<ContentProps> = () => {
                     <Grid item md={8} lg={9} display="flex" >
                         <Grid item pr={2.5}>
                             <Button
-                                data-testid="filter"
+                                id="filter"
                                 types="filter"
                                 aria-label="default"
                                 onClick={handleFilterOpen}
