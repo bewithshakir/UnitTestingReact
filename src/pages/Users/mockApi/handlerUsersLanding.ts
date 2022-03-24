@@ -53,14 +53,14 @@ export const getUsersList = () => {
                                 "shellDigitalAccountId": "ID-123",
                                 "firstNm": "USER NAME",
                                 "lastNm": "USER NAME",
-                                "email": "test@bacancy.com",
+                                "email": "abc123@bacancy.com",
                                 "phone": null,
                                 "customerId": "ID-344-4536",
                                 "dspId": "ID-9878-5646",
-                                "createdDtm": "2022-03-21T10:41:11.603Z",
+                                "createdDtm": "2022-04-21T10:41:11.603Z",
                                 "userGroup": [
                                     {
-                                        "userGroupCd": "4fba4054-fc0d-4d60-88fd-dab70c7611b9",
+                                        "userGroupCd": "4fba423054-fc0d-4d60-88fd-dab70c7611b9",
                                         "userGroupNm": "DSP"
                                     }
                                 ],
@@ -71,14 +71,14 @@ export const getUsersList = () => {
                                     "shellDigitalAccountId": "ID-123",
                                     "firstNm": "USER NAME",
                                     "lastNm": "USER NAME",
-                                    "email": "test@bacancy.com",
+                                    "email": "abc345@bacancy.com",
                                     "phone": null,
-                                    "customerId": "ID-344-4536",
+                                    "customerId": "ID-34456-4536",
                                     "dspId": "ID-9878-5646",
-                                    "createdDtm": "2022-03-21T10:41:11.603Z",
+                                    "createdDtm": "2022-05-21T10:41:11.603Z",
                                     "userGroup": [
                                         {
-                                            "userGroupCd": "4fba4054-fc0d-4d60-88fd-dab70c7611b9",
+                                            "userGroupCd": "4fba40674-fc0d-4d60-88fd-dab70c7611b9",
                                             "userGroupNm": "DSP"
                                         }
                                     ],
