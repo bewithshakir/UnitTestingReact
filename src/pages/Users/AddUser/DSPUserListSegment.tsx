@@ -3,7 +3,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { userGroupStr } from '../config';
 import Select from '../../../components/UIComponents/Select/SingleSelect';
-import { dspHelperText, isDSPErrorExist } from './AddUserHelper';
+import { dspHelperText, isDSPErrorExist } from "./validation";
 
 type props = {
     formik: any,

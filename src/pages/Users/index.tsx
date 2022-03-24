@@ -56,7 +56,7 @@ const UsersLadingContent: React.FC<ContentProps> = () => {
     }, [data]);
 
     const navigateToAddUser = () => {
-        navigate(`/customer/${customerId}/users/addUser`);
+        navigate(`/customer/${customerId}/users/add`);
     };
 
     const onInputChange = (value: string) => {
@@ -81,7 +81,7 @@ const UsersLadingContent: React.FC<ContentProps> = () => {
         switch (action.action) {
             case ACTION_TYPES.EDIT:
                 // perform action 
-                navigate(`/customer/${customerId}/dsps/edit/${row.id}`);
+                navigate(`/customer/${customerId}/users/edit/${row.userId}`);
                 break;
             default: return;
         }
@@ -95,12 +95,7 @@ const UsersLadingContent: React.FC<ContentProps> = () => {
         setFilterPanelVisible(false);
     };
 
-    const getFields = () => {
-        const fields = userObj.FilterByFields().map(item => {
-            return { ...item, customerId: customerId };
-        });
-        return fields;
-    };
+    const getFields = () => userObj.FilterByFields().map((item) => ({ ...item, customerId: customerId }));
 
     return (
         <Box display="flex">
@@ -109,7 +104,7 @@ const UsersLadingContent: React.FC<ContentProps> = () => {
                     <Grid item md={8} lg={9} display="flex" >
                         <Grid item pr={2.5}>
                             <Button
-                                data-testid="filter"
+                                id="filter"
                                 types="filter"
                                 aria-label="default"
                                 onClick={handleFilterOpen}

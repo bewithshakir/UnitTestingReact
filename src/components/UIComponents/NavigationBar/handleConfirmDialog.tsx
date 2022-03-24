@@ -28,7 +28,7 @@ export const handleModelConfirm = (props: any) => {
         customerName: selectedCustomerName
       }
     });
-  } else if (pathname.includes('users/addUser') || pathname.includes('users/editUser')) {
+  } else if (pathname.includes('users/add') || pathname.includes('users/edit')) {
     navigate(`/customer/${selectedCustomerId}/users`, {
       state: {
         customerId: selectedCustomerId,

@@ -3,6 +3,8 @@ import { AxiosRequestConfig, AxiosResponse } from "axios";
 import axios from "../../../infrastructure/ApiHelper";
 import UserModel from "../../../models/UserModel";
 import { SettlementTypes, userGroupStr } from '../config';
+import _ from "lodash";
+import { getCountryCode } from '../../../navigation/utils';
 
 export interface PayloadAddUserInt {
     shellDigitalAccountId: string,
@@ -12,6 +14,14 @@ export interface PayloadAddUserInt {
     lastNm: string,
     email: string,
     phone?: string,
+    permissionTypeCd: string,
+    userGroupCd: string
+    countryCd: string
+}
+
+export interface PayloadEditUserInt {
+    customerId: string,
+    dspId?: string,
     permissionTypeCd: string,
     userGroupCd: string
     countryCd: string
@@ -156,26 +166,39 @@ export const useAddUser = (onSuccess: any, onError: any) => {
     });
 };
 
-const fetchUserDetail = (customerId: string | undefined, query: string | undefined,) => {
+const fetchUserDetail = (userId?: string) => {
     const options: AxiosRequestConfig = {
         method: 'get',
-        url: `/api/user-service/${customerId}/users/${query}`
+        url: `/api/user-service/users/${userId}`
     };
     return axios(options);
 };
 
-export const useEditUserData = (customerId: string | undefined, query: string | undefined, onSuccess: any, onError: any) => {
-    return useQuery(['fetchUserDetail', customerId, query], () => fetchUserDetail(customerId, query), {
+const isPreUserDetailsExist = (selectedPaymentType = '', userGroupList: any = [], dspList: any = [], userId?: string) => {
+    if (selectedPaymentType === SettlementTypes.Voyager) {
+        return !!(userId && userGroupList.length && dspList.length);
+    }
+    return !!(userId && userGroupList.length);
+};
+
+export const useGetUserDetails = (selectedPaymentType = '', userGroupList: any = [], dspList: any = [], userId?: string, onSuccess?: any, onError?: any) => {
+    return useQuery(['fetchUserDetail', [userId, userGroupList, dspList]],
+        () => fetchUserDetail(userId), {
         onSuccess,
         onError,
-        enabled: !!query,
+        enabled: isPreUserDetailsExist(selectedPaymentType, userGroupList, dspList, userId),
         select: (response: AxiosResponse) => {
             const { data } = response.data;
             return {
-                userName: data.userName,
-                contactNm: data.contactName,
-                email: data.contactEmailId,
-                phone: data.contactPhoneNumber,
+                userId: data.userId,
+                customerId: data.customerId,
+                userName: `${data.firstNm} ${data.lastNm}`,
+                email: data.email,
+                phone: data.phone || '',
+                userAccessLevel: data.permissionTypeCd,
+                userGroup: _.find(userGroupList, { value: data.userGroupCd }),
+                dsp: data.dspId ? _.find(dspList, { value: data.dspId }) : { label: '', value: '' },
+                countryCd: getCountryCode()
             };
         },
         retry: false,
@@ -183,21 +206,14 @@ export const useEditUserData = (customerId: string | undefined, query: string | 
 };
 
 const updateUserData = async (payload: UserModel, userId?: string) => {
-    const finalPayload: PayloadAddUserInt = {
-        shellDigitalAccountId: userId || '',
+    const finalPayload: PayloadEditUserInt = {
         customerId: payload.customerId,
-        firstNm: payload.userName.split(' ')[0],
-        lastNm: payload.userName.split(' ')[1],
-        email: payload.email,
         permissionTypeCd: payload.userAccessLevel,
         userGroupCd: payload.userGroup.value,
         countryCd: payload.countryCd
     };
     if (payload?.dsp?.value) {
         finalPayload.dspId = payload?.dsp?.value;
-    }
-    if (payload?.phone) {
-        finalPayload.phone = payload?.phone;
     }
     const options: AxiosRequestConfig = {
         method: 'put',
