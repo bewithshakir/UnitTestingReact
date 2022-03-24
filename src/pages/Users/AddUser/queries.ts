@@ -181,7 +181,7 @@ const isPreUserDetailsExist = (selectedPaymentType: string = '', userGroupList: 
     return !!(userId && userGroupList.length);
 };
 
-export const useEditUserData = (selectedPaymentType: string = '', userGroupList: any = [], dspList: any = [], userId?: string, onSuccess?: any, onError?: any) => {
+export const useGetUserDetails = (selectedPaymentType: string = '', userGroupList: any = [], dspList: any = [], userId?: string, onSuccess?: any, onError?: any) => {
     return useQuery(['fetchUserDetail', [userId, userGroupList, dspList]],
         () => fetchUserDetail(userId), {
         onSuccess,

@@ -1,14 +1,14 @@
 import { renderHook } from '@testing-library/react-hooks';
-import { useEditUserData } from './queries';
+import { useGetUserDetails } from './queries';
 import { rest } from 'msw';
 import { createWrapper } from '../../../tests/utils';
 import { serverMsw } from '../../../setupTests';
 import { SettlementTypes } from '../config';
 
 
-describe('useEditUserData for useQuery method ', () => {
+describe('useGetUserDetails for useQuery method ', () => {
     it('successful returns data', async () => {
-        const { result, waitFor } = renderHook(() => useEditUserData(
+        const { result, waitFor } = renderHook(() => useGetUserDetails(
             SettlementTypes.Voyager,
             [{ value: '111', label: 'testGrp', activeInactiveInd: 'Y', type: SettlementTypes.Voyager }],
             [{ value: '123', label: 'testDSP' }], 'test1234', jest.fn(), jest.fn()
@@ -28,7 +28,7 @@ describe('useEditUserData for useQuery method ', () => {
             })
         );
 
-        const { result, waitFor } = renderHook(() => useEditUserData(
+        const { result, waitFor } = renderHook(() => useGetUserDetails(
             SettlementTypes.Voyager,
             [{ value: '111', label: 'testGrp', activeInactiveInd: 'Y', type: SettlementTypes.Voyager }],
             [{ value: '123', label: 'testDSP' }], 'test1111', jest.fn(), jest.fn()), {

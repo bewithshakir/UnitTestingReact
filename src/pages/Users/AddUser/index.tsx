@@ -10,7 +10,7 @@ import { HorizontalBarVersionState, useAddedCustomerIdStore, useAddedCustomerPay
 import { toastErrorKey, toastSuccessKey, toastEditSuccessKey } from '../../../utils/constants';
 import DSPUserListSegment from './DSPUserListSegment';
 import FormActionSegment from './FormActionSegment';
-import { useAddUser, useEditUserData, useGetUserGroupTypes, useGetUserPermissionList, userGetUserDSPList, UserGoupsInt, useUpdateUserData, useVarifyUser } from './queries';
+import { useAddUser, useGetUserDetails, useGetUserGroupTypes, useGetUserPermissionList, userGetUserDSPList, UserGoupsInt, useUpdateUserData, useVarifyUser } from './queries';
 import UserAccessLevelSegment from './UserAccessLevelSegment';
 import UserVerificationSegment from './UserVerificationSegment';
 import { AddUserSchema, isUserGroupErrorExist, userGroupHelperText } from "./validation";
@@ -125,7 +125,7 @@ const AddUser: React.FC<AddUserProps> = () => {
         setFormStatus({ message: error?.response.data.error?.details[0] || t(toastErrorKey), type: 'Error' });
     };
 
-    const { isError: isErrorUserData, isLoading: isLoadingUserDetails } = useEditUserData(selectedPaymentType, userGroupList, dspList, userId, onSuccessUserDetail, onErrorUserDetail);
+    const { isError: isErrorUserData, isLoading: isLoadingUserDetails } = useGetUserDetails(selectedPaymentType, userGroupList, dspList, userId, onSuccessUserDetail, onErrorUserDetail);
 
     const handleUpdateUserRepose = (isSuccess: boolean, data?: any) => {
         if (isSuccess) {
