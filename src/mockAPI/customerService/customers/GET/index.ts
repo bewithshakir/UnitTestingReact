@@ -6,9 +6,6 @@ import getDSPList from './getDSPList';
 
 export const getCustomerHandler = () => {
     return rest.get('*/api/customer-service/customers*', (req, res, ctx) => {
-        // eslint-disable-next-line no-console
-        console.log("req customers ===========>", req);
-
         if (Object.values(req.params)[1].includes('/files')) {
             // User Access Permission List
             return getAttachmentList(res, ctx);

@@ -7,9 +7,6 @@ import getUserList from './getUserList';
 
 export const getUserHandler = () => {
     return rest.get('*/api/user-service/users*', (req, res, ctx) => {
-        // eslint-disable-next-line no-console
-        // console.log("req ===========>", req);
-
         const params = req.params;
         if (Object.values(params)[1] === '/user-groups') {
             // User Group Types select
