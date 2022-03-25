@@ -1,5 +1,9 @@
 import { rest } from "msw";
 
+const productGroupCd = "acad56a6-1e77-4f38-92e5-30a656e786fb";
+const productIconNm = "Parrot Green";
+const productIconCd = "f5f52aa5-9a03-4ea5-8885-d872151b819d";
+const productCd = "0dd5f587-8c6f-40ce-9f77-1616f4b5b842";
 export const getVehicleRules = () => {
     return rest.get('*/api/vehicle-service/vehicle-rules', (req, res, ctx) => {
         return res(
@@ -25,12 +29,12 @@ export const getVehicleRules = () => {
                                 "manualPricing": 0,
                                 "countryCode": "us",
                                 "productGroup": {
-                                    "productGroupCd": "acad56a6-1e77-4f38-92e5-30a656e786fb",
+                                    "productGroupCd": productGroupCd,
                                     "productGroupNm": "Fuel",
                                     "activeInactiveInd": "Y"
                                 },
                                 "productIcon": {
-                                    "productIconCd": "f5f52aa5-9a03-4ea5-8885-d872151b819d",
+                                    "productIconCd": productIconCd,
                                     "productIconNm": "Brown",
                                     "productIconHexCode": "#743410",
                                     "activeInactiveInd": "Y"
@@ -47,12 +51,12 @@ export const getVehicleRules = () => {
                                 "manualPricing": 0,
                                 "countryCode": "us",
                                 "productGroup": {
-                                    "productGroupCd": "acad56a6-1e77-4f38-92e5-30a656e786fb",
+                                    "productGroupCd": productGroupCd,
                                     "productGroupNm": "Fuel",
                                     "activeInactiveInd": "Y"
                                 },
                                 "productIcon": {
-                                    "productIconCd": "f5f52aa5-9a03-4ea5-8885-d872151b819d",
+                                    "productIconCd": productIconCd,
                                     "productIconNm": "Brown",
                                     "productIconHexCode": "#743410",
                                     "activeInactiveInd": "Y"
@@ -60,22 +64,22 @@ export const getVehicleRules = () => {
                             }
                         }, {
                             "ruleExceptionId": "8f556264-06f0-4d85-b2e5-191dfb0869a8",
-                            "productCd": "0dd5f587-8c6f-40ce-9f77-1616f4b5b842",
+                            "productCd": productCd,
                             "activeInactiveInd": "Y",
                             "productInfo": {
-                                "productCd": "0dd5f587-8c6f-40ce-9f77-1616f4b5b842",
+                                "productCd": productCd,
                                 "productNm": "Barun 1",
                                 "activeInactiveInd": "N",
                                 "manualPricing": 0,
                                 "countryCode": "us",
                                 "productGroup": {
-                                    "productGroupCd": "acad56a6-1e77-4f38-92e5-30a656e786fb",
+                                    "productGroupCd": productGroupCd,
                                     "productGroupNm": "Fuel",
                                     "activeInactiveInd": "Y"
                                 },
                                 "productIcon": {
                                     "productIconCd": "cdc00914-dbef-4603-89c5-9f18e4af3ccc",
-                                    "productIconNm": "Parrot Green",
+                                    "productIconNm": productIconNm,
                                     "productIconHexCode": "#BED50F",
                                     "activeInactiveInd": "Y"
                                 }
@@ -91,12 +95,12 @@ export const getVehicleRules = () => {
                                 "manualPricing": 0,
                                 "countryCode": "us",
                                 "productGroup": {
-                                    "productGroupCd": "acad56a6-1e77-4f38-92e5-30a656e786fb",
+                                    "productGroupCd": productGroupCd,
                                     "productGroupNm": "Fuel",
                                     "activeInactiveInd": "Y"
                                 },
                                 "productIcon": {
-                                    "productIconCd": "f5f52aa5-9a03-4ea5-8885-d872151b819d",
+                                    "productIconCd": productIconCd,
                                     "productIconNm": "Brown",
                                     "productIconHexCode": "#743410",
                                     "activeInactiveInd": "Y"
@@ -113,7 +117,7 @@ export const getVehicleRules = () => {
                                 "manualPricing": 0,
                                 "countryCode": "us",
                                 "productGroup": {
-                                    "productGroupCd": "acad56a6-1e77-4f38-92e5-30a656e786fb",
+                                    "productGroupCd": productGroupCd,
                                     "productGroupNm": "Fuel",
                                     "activeInactiveInd": "Y"
                                 },
@@ -143,35 +147,35 @@ export const getVehicleRules = () => {
                                 "manualPricing": 0,
                                 "countryCode": "us",
                                 "productGroup": {
-                                    "productGroupCd": "acad56a6-1e77-4f38-92e5-30a656e786fb",
+                                    "productGroupCd": productGroupCd,
                                     "productGroupNm": "Fuel",
                                     "activeInactiveInd": "Y"
                                 },
                                 "productIcon": {
                                     "productIconCd": "cdc00914-dbef-4603-89c5-9f18e4af3ccc",
-                                    "productIconNm": "Parrot Green",
+                                    "productIconNm": productIconNm,
                                     "productIconHexCode": "#BED50F",
                                     "activeInactiveInd": "Y"
                                 }
                             }
                         }, {
                             "ruleExceptionId": "70c31d41-ea26-4cab-8b54-e3021425cace",
-                            "productCd": "0dd5f587-8c6f-40ce-9f77-1616f4b5b842",
+                            "productCd": productCd,
                             "activeInactiveInd": "Y",
                             "productInfo": {
-                                "productCd": "0dd5f587-8c6f-40ce-9f77-1616f4b5b842",
+                                "productCd": productCd,
                                 "productNm": "Barun 1",
                                 "activeInactiveInd": "N",
                                 "manualPricing": 0,
                                 "countryCode": "us",
                                 "productGroup": {
-                                    "productGroupCd": "acad56a6-1e77-4f38-92e5-30a656e786fb",
+                                    "productGroupCd": productGroupCd,
                                     "productGroupNm": "Fuel",
                                     "activeInactiveInd": "Y"
                                 },
                                 "productIcon": {
                                     "productIconCd": "cdc00914-dbef-4603-89c5-9f18e4af3ccc",
-                                    "productIconNm": "Parrot Green",
+                                    "productIconNm": productIconNm,
                                     "productIconHexCode": "#BED50F",
                                     "activeInactiveInd": "Y"
                                 }

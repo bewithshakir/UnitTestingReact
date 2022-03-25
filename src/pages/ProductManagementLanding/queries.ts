@@ -3,8 +3,9 @@ import { AxiosRequestConfig } from "axios";
 import axios from "../../infrastructure/ApiHelper";
 import { pageDataLimit } from "../../utils/constants";
 
+type FilterParamTypes = string[] | boolean | string | number
 interface FilterParams {
-    [key: string]: string[] | boolean | string | number
+    [key: string]: FilterParamTypes
 }
 
 const getProductsList = async (pageParam: number, searchTerm: string, sortOrder: { sortBy: string, order: string }, filterParams?: FilterParams) => {
@@ -31,7 +32,7 @@ const getProductsList = async (pageParam: number, searchTerm: string, sortOrder:
     const url = `/api/product-service/products?${query.toString()}`;
     const options: AxiosRequestConfig = {
         method: 'get',
-        url: url
+        url
     };
     const { data } = await axios(options);
     return data;
