@@ -99,11 +99,11 @@ export const routes: RouteObject[] = [
         element: <UsersLadingPage version='Breadcrumbs-Single' />
       },
       {
-        path: "/customer/:customerId/users/addUser",
+        path: "/customer/:customerId/users/add",
         element: <AddUser version='Breadcrumbs-Many' />
       },
       {
-        path: "/customer/:customerId/dsps/editUser/:userId",
+        path: "/customer/:customerId/users/edit/:userId",
         element: <AddUser version='Breadcrumbs-Many' />
       },
     ]

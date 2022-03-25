@@ -103,8 +103,8 @@ export const getUserGroupsHandler = () =>
     );
 
 export const getUserPermissionHandler = () =>
-    rest.get('*api/user-service/users/permission-types*', (req, res, ctx) => {
-        return res(
+    rest.get('*api/user-service/users/permission-types*', (req, res, ctx) =>
+        res(
             ctx.status(200),
             ctx.json({
                 data: [
@@ -120,6 +120,58 @@ export const getUserPermissionHandler = () =>
                     }
                 ],
                 error: null
+            })
+        )
+    );
+
+export const getUserDetailsHandler = () =>
+    rest.get('*/api/user-service/users/:userId', (req, res, ctx) => {
+        const { userId } = req.params;
+        return res(
+            ctx.status(200),
+            ctx.json({
+                data: {
+                    shellDigitalAccountId: "12345",
+                    customerId: "123",
+                    firstNm: "Nikhil",
+                    lastNm: "Patel",
+                    email: "xyz@gmail.com",
+                    phone: null,
+                    permissionTypeCd: "5932",
+                    userGroupCd: "555",
+                    dspId: "01c4",
+                    userId: userId,
+                },
+                error: null
+            })
+        );
+    });
+
+export const editUserHandler = () =>
+    rest.put('*/api/user-service/users/:userId', (req, res, ctx) => {
+        const { userId } = req.params;
+        const testUserId = "test1234";
+        return res(
+            ctx.status(userId === testUserId ? 200 : 500),
+            ctx.json({
+                data: userId === testUserId ? {
+                    shellDigitalAccountId: "12345",
+                    customerId: "123",
+                    firstNm: "Nikhil",
+                    lastNm: "Patel",
+                    email: "xyz@gmail.com",
+                    permissionTypeCd: "5932",
+                    userGroupCd: "555",
+                    countryCd: "us",
+                    dspId: "01c4",
+                    userId: testUserId
+                } : null,
+                error: userId === testUserId ? null : {
+                    businessCode: 102,
+                    details: ["Edit User Operation failed"],
+                    httpCode: 500,
+                    message: "Edit User Operation failed"
+                }
             })
         );
     });

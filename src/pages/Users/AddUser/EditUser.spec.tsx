@@ -1,17 +1,18 @@
 import { cleanup, fireEvent, RenderResult, waitFor } from "@testing-library/react";
 import userEvent from '@testing-library/user-event';
-import selectEvent from 'react-select-event';
 import { renderWithClient } from '../../../tests/utils';
 import AddUser from "./index";
+import routeDataDom from 'react-router-dom';
 
 jest.mock('react-router-dom', () => ({
     useNavigate: () => ({
         navigate: () => ({
-            to: '/customer/*/users/add'
+            to: '/customer/*/users/edit/*'
         })
     }),
     useParams: () => ({
         customerId: '123',
+        userId: 'test1234',
     })
 }));
 
@@ -21,53 +22,38 @@ jest.mock('../../../store', () => ({
     useAddedCustomerPaymentTypeStore: () => 'Voyager'
 }));
 
+jest.mock('../../../navigation/utils', () => ({
+    getCountryCode: () => 'us'
+}));
+
 function getAllElements (component: RenderResult) {
     const userGroupElem = component.container.querySelector('#userGroup') as HTMLInputElement;
     const userEmailElem = component.container.querySelector('#email') as HTMLInputElement;
     const userNameElem = component.container.querySelector('#userName') as HTMLInputElement;
     const userPhoneElem = component.container.querySelector('#phone') as HTMLInputElement;
-    const verifyUserLink = component.container.querySelector('#verify-user-link') as HTMLAnchorElement;
     const cancelBtn = component.container.querySelector('#cancelBtn') as HTMLButtonElement;
     const saveBtn = component.container.querySelector('#saveBtn') as HTMLButtonElement;
     const formElem = component.container.querySelector('#form') as HTMLFormElement;
-    return { userGroupElem, userEmailElem, userNameElem, userPhoneElem, verifyUserLink, cancelBtn, saveBtn, formElem };
+    return { userGroupElem, userEmailElem, userNameElem, userPhoneElem, cancelBtn, saveBtn, formElem };
 }
 
 
 afterEach(cleanup);
 
-describe('AddUser with success', () => {
-    it('Add user with success save', async () => {
+describe('EditUser with success', () => {
+    it('Edit user with success save', async () => {
         const result = renderWithClient(<AddUser version="Breadcrumbs-Single" />);
-        const { userEmailElem, userGroupElem, verifyUserLink, saveBtn, userNameElem } = getAllElements(result);
+        const { userEmailElem, saveBtn, userNameElem } = getAllElements(result);
 
-        // Choose USER GROUP
-        await selectEvent.select(userGroupElem, ["DSP"]);
-
-        // Type EMAIL
+        // Check Poplulated Form Values
         await waitFor(() => {
-            fireEvent.change(userEmailElem, { target: { value: 'xyz@gmail.com' } });
-        });
-
-        // Click Verify
-        await waitFor(() => {
-            userEvent.click(verifyUserLink);
-        });
-
-        // Find USER NAME OR Phone
-        await waitFor(() => {
+            expect(userEmailElem).toHaveValue("xyz@gmail.com");
             expect(userNameElem).toHaveValue("Nikhil Patel");
         });
 
         // Select USER GROUP ACCESS LEVEL
         const viewOnlyRadio = result.getByRole("radio", { name: "View only" }) as HTMLInputElement;
         fireEvent.click(viewOnlyRadio);
-
-        // Choose DSP
-        await waitFor(() => {
-            const userDSP = result.container.querySelector('#dsp') as HTMLInputElement;
-            selectEvent.select(userDSP, ["KrrishTest"]);
-        });
 
         // Click Save
         await waitFor(() => {
@@ -77,29 +63,25 @@ describe('AddUser with success', () => {
 
         // Final Success Toast
         await waitFor(() => {
-            expect(result.getByText('formStatusProps.success.message')).toBeInTheDocument();
+            expect(result.getByText('formStatusProps.editsuccess.message')).toBeInTheDocument();
         });
     });
 });
 
-describe('AddUser with Error', () => {
-    it('Add user with error on save', async () => {
+describe('EditUser with Error', () => {
+    beforeEach(() => {
+        jest.spyOn(routeDataDom, 'useParams').mockImplementation(() => ({
+            userId: 'test1111',
+        }));
+    });
+
+    it('Edit user with error on save', async () => {
         const result = renderWithClient(<AddUser version="Breadcrumbs-Single" />);
-        const { userEmailElem, userGroupElem, verifyUserLink, saveBtn, userNameElem } = getAllElements(result);
+        const { userEmailElem, saveBtn, userNameElem } = getAllElements(result);
 
-        // Choose USER GROUP
-        await selectEvent.select(userGroupElem, ["DSP"]);
-
-        // Type EMAIL
+        // Check Poplulated Form Values
         await waitFor(() => {
-            fireEvent.change(userEmailElem, { target: { value: 'abc@gmail.com' } });
-        });
-
-        // Click Verify
-        userEvent.click(verifyUserLink);
-
-        // Find USER NAME OR Phone
-        await waitFor(() => {
+            expect(userEmailElem).toHaveValue("xyz@gmail.com");
             expect(userNameElem).toHaveValue("Nikhil Patel");
         });
 
@@ -107,21 +89,16 @@ describe('AddUser with Error', () => {
         const viewOnlyRadio = result.getByRole("radio", { name: "View only" }) as HTMLInputElement;
         fireEvent.click(viewOnlyRadio);
 
-        // Choose DSP
-        await waitFor(() => {
-            const userDSP = result.container.querySelector('#dsp') as HTMLInputElement;
-            selectEvent.select(userDSP, ["KrrishTest"]);
-        });
-
         // Click Save
         await waitFor(() => {
             expect(saveBtn).toBeEnabled();
             userEvent.click(saveBtn);
         });
 
+
         // Final Error Toast
         await waitFor(() => {
-            expect(result.getByText('Shell Digital account with given is already added')).toBeInTheDocument();
+            expect(result.getByText('Edit User Operation failed')).toBeInTheDocument();
         });
     });
 });

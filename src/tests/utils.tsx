@@ -40,7 +40,11 @@ import { rightInfoFilterHandler } from '../components/UIComponents/RightInfoPane
 import { getProductHandler } from '../mockAPI/productService/products/GET';
 import { postProductHandler } from '../mockAPI/productService/products/POST';
 import { putProductHandler } from '../mockAPI/productService/products/PUT';
-import { addUserHandler, verifyUserHandler, getUserGroupsHandler, getUserDSPDropdownHandler, getUserPermissionHandler } from '../pages/Users/AddUser/mockApi/handlerAddUser';
+import {
+    addUserHandler, verifyUserHandler, getUserGroupsHandler, getUserDSPDropdownHandler,
+    getUserPermissionHandler, getUserDetailsHandler, editUserHandler
+} from '../pages/Users/AddUser/mockApi/handlerAddUser';
+import { getUsersList } from '../pages/Users/mockApi/handlerUsersLanding';
 import { getAllLotFilterOptions } from '../components/UIComponents/ConfirmationDialog/inputComponents/mockApi/handlerLotFilter';
 
 export const handlers = [
@@ -94,6 +98,9 @@ export const handlers = [
     getUserGroupsHandler(),
     getUserPermissionHandler(),
     getUserDSPDropdownHandler(),
+    getUserDetailsHandler(),
+    editUserHandler(),
+    getUsersList()
 ];
 
 const createTestQueryClient = () => new QueryClient({
@@ -104,7 +111,7 @@ const createTestQueryClient = () => new QueryClient({
     },
 });
 
-export function renderWithClient(ui: React.ReactElement) {
+export function renderWithClient (ui: React.ReactElement) {
     const testQueryClient = createTestQueryClient();
     const { rerender, ...result } = render(
         <QueryClientProvider client={testQueryClient}>{ui}</QueryClientProvider>
@@ -118,7 +125,7 @@ export function renderWithClient(ui: React.ReactElement) {
     };
 }
 
-export function createWrapper() {
+export function createWrapper () {
     const testQueryClient = createTestQueryClient();
     return ({ children }: { children: React.ReactNode }) => (
         <QueryClientProvider client={testQueryClient}>{children}</QueryClientProvider>
