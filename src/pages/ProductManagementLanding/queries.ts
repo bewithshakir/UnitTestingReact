@@ -1,10 +1,18 @@
-import { useInfiniteQuery } from "react-query";
+import { useInfiniteQuery, useQuery } from "react-query";
 import { AxiosRequestConfig } from "axios";
 import axios from "../../infrastructure/ApiHelper";
 import { pageDataLimit } from "../../utils/constants";
 
-const getProductsList = async (pageParam: number, searchTerm: string, sortOrder: { sortBy: string, order: string }, filterParams?: { [key: string]: string[] }) => {
+interface FilterParams {
+    [key: string]: string[] | boolean | string | number
+}
+
+const getProductsList = async (pageParam: number, searchTerm: string, sortOrder: { sortBy: string, order: string }, filterParams?: FilterParams) => {
     const query = new URLSearchParams();
+
+    query.append('limit', String(pageDataLimit));
+    query.append('offset', String(pageParam));
+    query.append('countryCode', 'us');
     if (searchTerm) {
         query.append("search", searchTerm);
     }
@@ -15,16 +23,15 @@ const getProductsList = async (pageParam: number, searchTerm: string, sortOrder:
         query.append("order", sortOrder.order);
     }
     if (filterParams && Object.keys(filterParams).length > 0) {
-        for (const key of Object.keys(filterParams)) {
-            query.append(key, JSON.stringify(filterParams[key]));
+        for (const [key, value] of Object.entries(filterParams)) {
+            query.append(key, JSON.stringify(value));
         }
     }
 
-    const productListEntitySet = `/api/product-service/products?limit=${pageDataLimit}&offset=${pageParam}`;
-    const url = query ? `&countryCode=us${query.toString().length ? `&${query.toString()}` : ''}` : `&countryCode=us`;
+    const url = `/api/product-service/products?${query.toString()}`;
     const options: AxiosRequestConfig = {
         method: 'get',
-        url: productListEntitySet + url
+        url: url
     };
     const { data } = await axios(options);
     return data;
@@ -40,5 +47,11 @@ export const ProductsListSet = (query: string, sortOrder: { sortBy: string, orde
         },
         keepPreviousData: true,
         retry: false
+    });
+};
+
+export const useGetProductList = (query: string, sortOrder: { sortBy: string, order: string }, filterParams?: FilterParams) => {
+    return useQuery(['getProductsList', query, sortOrder, filterParams], () => {
+        return getProductsList(0, query, sortOrder, filterParams);
     });
 };
