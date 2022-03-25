@@ -63,7 +63,7 @@ const VehicleRuleManagement: React.FC<AddVehicleRuleProps> = () => {
     };
 
     const navigateAddPage = () => {
-        navigate('/vehicleRule/add');
+        navigate('/addVehicleRule');
     };
 
     const onSortBySlected = (value: string) => {
@@ -98,7 +98,7 @@ const VehicleRuleManagement: React.FC<AddVehicleRuleProps> = () => {
         switch (action.action) {
             case ROW_ACTION_TYPES.EDIT:
                 // perform action
-                navigate(`/vehicleRule/edit/${row.ruleId}`);
+                navigate(`/editVehicleRule/${row.ruleId}`);
                 break;
             case ROW_ACTION_TYPES.DELETE:
                 // perform action

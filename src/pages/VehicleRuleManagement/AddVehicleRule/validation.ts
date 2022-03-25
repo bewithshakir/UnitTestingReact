@@ -21,6 +21,7 @@ export const AddVehicleRuleValidationSchema = Yup.object().shape({
 
 
 export const EditVehicleRuleValidationSchema = Yup.object().shape({
+    addressLine1: Yup.string().nullable(),
     state: Yup.string().matches(/^.{1,50}$/, 'Invalid State.').required('Required'),
     city: Yup.string().matches(/^.{1,50}$/, 'Invalid City.').required('Required'),
     status: Yup.object().shape({ label: Yup.string().required('Required'), value: Yup.string().required('Required') }).required('Required'),
