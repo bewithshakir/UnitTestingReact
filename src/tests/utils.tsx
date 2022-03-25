@@ -50,6 +50,7 @@ import { getCustomerHandler } from '../mockAPI/customerService/contactTypes/GET'
 import { getConfigServiceTimezones } from '../mockAPI/configService/timeZones/GET';
 import { getConfigServiceDeliveryFreq } from '../mockAPI/configService/deliveryFrequencies/GET';
 import { getConfigServiceDays } from '../mockAPI/configService/days/GET';
+import { getVehicleRules } from '../mockAPI/vehicleService/vehicleRules/GET';
 
 export const handlers = [
     getCustomerHandler(),
@@ -57,6 +58,7 @@ export const handlers = [
     getConfigServiceTimezones(),
     getConfigServiceDeliveryFreq(),
     getConfigServiceDays(),
+    getVehicleRules(),
     getProductHandler(),
     postProductHandler(),
     putProductHandler(),

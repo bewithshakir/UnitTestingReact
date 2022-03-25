@@ -13,7 +13,7 @@ import { useAddVehicleRule } from './queries';
 import ToastMessage from '../../../components/UIComponents/ToastMessage/ToastMessage.component';
 import { HorizontalBarVersionState, useStore, useShowConfirmationDialogBoxStore } from '../../../store';
 import { AddVehicleRuleValidationSchema } from './validation';
-import { ProductsListSet } from '../../ProductManagementLanding/queries';
+import { useGetProductList } from '../../ProductManagementLanding/queries';
 import { getProductIcon, getInputHelperText, getInputError } from '../../../utils/helperFunctions';
 
 const initialValues = new VehicleRuleModel();
@@ -58,6 +58,25 @@ const vehicleStatusList = [
     { label: 'Enabled', value: 'Y', },
     { label: 'Disabled', value: 'N' },
 ];
+
+
+
+const getFuelNonFuelProductList = (productData?: { data?: any[] }): any => {
+    if (!productData?.data) {
+        return [];
+    }
+    return productData?.data?.filter((product: any) => (
+        (product.activeInactiveInd === 'Y')
+        && (product.ProductGroup.productGroupNm === "Fuel"
+            || product.ProductGroup.productGroupNm === "Non-Fuel"
+        )
+    )).map(obj => ({
+        label: '' + obj.productNm,
+        value: '' + obj.productCd,
+        icon: <Icon component={getProductIcon(obj.ProductIcon.productIconNm)}></Icon>, productDetail: obj
+    })) || [];
+};
+
 
 const AddVehicleRule: React.FC<AddVehicleRuleProps> = () => {
     const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
@@ -106,35 +125,11 @@ const AddVehicleRule: React.FC<AddVehicleRuleProps> = () => {
         }
     };
 
-    const [filterData] = React.useState<{ [key: string]: string[] }>({});
-    const [searchTerm] = React.useState("");
-    const [sortOrder] = React.useState<{ sortBy: string, order: string }>({ sortBy: "", order: "" });
-
-
-    const { data }: any = ProductsListSet(searchTerm, sortOrder, filterData);
+    const { data } = useGetProductList("", { sortBy: "", order: "" }, { skipPagination: true });
 
     useEffect(() => {
-        if (data) {
-            const list: any = [];
-            data?.pages?.forEach((item: any) => {
-                list.push(...item.data.products);
-            });
-            setProductNameList(getFuelNonFuelProductList(list));
-        }
+        setProductNameList(getFuelNonFuelProductList(data));
     }, [data]);
-
-    const getFuelNonFuelProductList = (list: any) => {
-        const temp: any = [];
-        list.map((obj: any) => {
-            if (obj.ProductGroup.productGroupNm === "Fuel" || obj.ProductGroup.productGroupNm === "Non-Fuel") {
-                temp.push({
-                    label: '' + obj.productNm, value: '' + obj.productCd,
-                    icon: <Icon component={getProductIcon(obj.ProductIcon.productIconNm)}></Icon>, productDetail: obj
-                });
-            }
-        });
-        return temp;
-    };
 
     const getProductIds = (arr: any) => {
         const temp: any = [];
