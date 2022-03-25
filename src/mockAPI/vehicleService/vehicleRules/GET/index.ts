@@ -3,6 +3,7 @@ import { rest } from "msw";
 const productGroupCd = "acad56a6-1e77-4f38-92e5-30a656e786fb";
 const productIconNm = "Parrot Green";
 const productIconCd = "f5f52aa5-9a03-4ea5-8885-d872151b819d";
+const productIconCd2 = "cdc00914-dbef-4603-89c5-9f18e4af3ccc";
 const productCd = "0dd5f587-8c6f-40ce-9f77-1616f4b5b842";
 export const getVehicleRules = () => {
     return rest.get('*/api/vehicle-service/vehicle-rules', (req, res, ctx) => {
@@ -78,7 +79,7 @@ export const getVehicleRules = () => {
                                     "activeInactiveInd": "Y"
                                 },
                                 "productIcon": {
-                                    "productIconCd": "cdc00914-dbef-4603-89c5-9f18e4af3ccc",
+                                    "productIconCd": productIconCd2,
                                     "productIconNm": productIconNm,
                                     "productIconHexCode": "#BED50F",
                                     "activeInactiveInd": "Y"
@@ -152,7 +153,7 @@ export const getVehicleRules = () => {
                                     "activeInactiveInd": "Y"
                                 },
                                 "productIcon": {
-                                    "productIconCd": "cdc00914-dbef-4603-89c5-9f18e4af3ccc",
+                                    "productIconCd": productIconCd2,
                                     "productIconNm": productIconNm,
                                     "productIconHexCode": "#BED50F",
                                     "activeInactiveInd": "Y"
@@ -174,7 +175,7 @@ export const getVehicleRules = () => {
                                     "activeInactiveInd": "Y"
                                 },
                                 "productIcon": {
-                                    "productIconCd": "cdc00914-dbef-4603-89c5-9f18e4af3ccc",
+                                    "productIconCd": productIconCd2,
                                     "productIconNm": productIconNm,
                                     "productIconHexCode": "#BED50F",
                                     "activeInactiveInd": "Y"
