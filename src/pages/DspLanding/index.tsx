@@ -35,7 +35,7 @@ const DspLandingContent: React.FC<ContentProps> = () => {
   const [resetTableCollaps, setResetTableCollaps] = React.useState(false);
   const [dspList, setDspList] = React.useState([]);
   const customerId = useAddedCustomerIdStore((state: addedCustomerIdState) => state.customerId);
-  const [sortOrder,setSortOrder] = React.useState<{ sortBy: string, order: string }>({ sortBy: "", order: "" });
+  const [sortOrder, setSortOrder] = React.useState<{ sortBy: string, order: string }>({ sortBy: "", order: "" });
   const [filterData, setFilterData] = React.useState<{ [key: string]: string[] }>({});
   const [filterPanelVisible, setFilterPanelVisible] = React.useState(false);
 
@@ -95,13 +95,13 @@ const DspLandingContent: React.FC<ContentProps> = () => {
     setFilterPanelVisible(false);
   };
 
-  const getFields = ()=> {
-    const fields = dspObj.FilterByFields().map(item=> {
-      return {...item, customerId: customerId};
+  const getFields = () => {
+    const fields = dspObj.FilterByFields().map(item => {
+      return { ...item, customerId: customerId };
     });
     return fields;
   };
-  
+
   const onSortBySlected = (value: string) => {
     let sortOrder;
     switch (value) {
@@ -117,7 +117,7 @@ const DspLandingContent: React.FC<ContentProps> = () => {
     }
     setResetTableCollaps(true);
     setSortOrder(sortOrder);
-};
+  };
 
   return (
     <Box display="flex">
@@ -137,10 +137,10 @@ const DspLandingContent: React.FC<ContentProps> = () => {
             </Grid>
             <Grid item pr={2.5}>
               <FormControl>
-                <SortbyMenu                  
-                    id="dspSort"
-                    options={dspObj.getSortByOptions().map((sortByItem) => t(sortByItem))}
-                    onSelect={(value) => onSortBySlected(value)}
+                <SortbyMenu
+                  id="dspSort"
+                  options={dspObj.getSortByOptions().map((sortByItem) => t(sortByItem))}
+                  onSelect={(value) => onSortBySlected(value)}
                 />
               </FormControl>
             </Grid>
@@ -202,10 +202,10 @@ const DspLandingContent: React.FC<ContentProps> = () => {
           />
 
           <RightInfoPanel panelType="dynamic-filter"
-              open={filterPanelVisible} headingText={"customer-filter-panel.header.filter"}
-              provideFilterParams={getFilterParams} onClose={handleFilterClose}
-              fields={getFields()}
-              storeKey={'dspFilter'}
+            open={filterPanelVisible} headingText={"customer-filter-panel.header.filter"}
+            provideFilterParams={getFilterParams} onClose={handleFilterClose}
+            fields={getFields()}
+            storeKey={'dspFilter'}
           />
         </Grid>
       </Grid>
