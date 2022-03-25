@@ -27,10 +27,6 @@ const getDspList = async (pageParam: number, searchTerm: string, sortOrder: { so
         url: opisCityListEntitySet + url
     };
     const { data } = await axios(options);
-    // eslint-disable-next-line no-console
-    console.log("searchTerm", searchTerm);
-    // eslint-disable-next-line no-console
-    console.log("dspList", data);
     return data;
 };
 

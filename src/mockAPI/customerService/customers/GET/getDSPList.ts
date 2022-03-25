@@ -3,9 +3,6 @@ import { DefaultRequestBody, PathParams, ResponseComposition, RestContext, RestR
 const getDSPListHandler = (req: RestRequest<never, PathParams>, res: ResponseComposition<DefaultRequestBody>, ctx: RestContext) => {
     const search = req.url.searchParams.get('search');
     const limit = req.url.searchParams.get('limit');
-    const sortBy = req.url.searchParams.get('sortBy');
-    // eslint-disable-next-line no-console
-    console.log("req customers ===========>", sortBy, limit, req.params);
     if (limit && search) {
         // DSP Search
         return res(
