@@ -3,7 +3,6 @@ import * as React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { getOPISCitiesHandler } from '../pages/OPISCity/mockApi/handlerOPISCityLandingPage';
 import { getAllParkingLotsHandler } from '../pages/ParkingLotsManagement/mockApi/handlerAllParkingLotsLandingPage';
-// import { getAttachmentListHandler } from '../pages/Attachments/mockApi/AttachmentLandingPageHandler';
 import { addDspHandler, editDspHandler } from "../pages/DspLanding/AddDSP/mockApi/handlerAddDsp";
 import { getFormattedAddressHandler, getGoogleAddressHandler } from "../components/UIComponents/GoogleAddressComponent/mockApi/googleAddressAutoHandler";
 import {
@@ -34,8 +33,6 @@ import { getTanksList } from '../pages/Truck/mockApi/handlerTanksList';
 import { getLocationsList } from '../pages/Truck/mockApi/handlerLocations';
 import { addAssetHandler, getAssetDeatilsHandler, editAssetHandler } from '../pages/AssetManagement/AddAsset/mockApi/handlerAddAsset';
 import { addTruckColorHandler, addEditTruckHandler, useGetEditTruckDetails } from '../pages/Truck/AddTruck/mockApi/handleAddTruck';
-// import { getDspList } from '../pages/DspLanding/mockApi/handlerDspLanding';
-// import { getCustomerList } from '../pages/CustomerManagement/mockApi/handlerCustomer';
 import { rightInfoFilterHandler } from '../components/UIComponents/RightInfoPanel/mockApi/handleRightInfoPanel';
 
 
@@ -46,15 +43,6 @@ import { putProductHandler } from '../mockAPI/productService/products/PUT';
 import { getUserHandler } from '../mockAPI/userService/users/GET';
 import { postUserHandler } from '../mockAPI/userService/users/POST';
 import { putUserHandler } from '../mockAPI/userService/users/PUT';
-
-
-// import {
-//     // addUserHandler,editUserHandler
-//     // getUserDSPDropdownHandler,
-//     // getUserPermissionHandler, getUserDetailsHandler, verifyUserHandler, getUserGroupsHandler
-// } from '../pages/Users/AddUser/mockApi/handlerAddUser';
-
-// import { getUsersList } from '../pages/Users/mockApi/handlerUsersLanding';
 import { getAllLotFilterOptions } from '../components/UIComponents/ConfirmationDialog/inputComponents/mockApi/handlerLotFilter';
 import { getCustomerContactTypesHandler } from '../mockAPI/customerService/contactTypes/GET';
 import { getConfigServiceTimezones } from '../mockAPI/configService/timeZones/GET';
@@ -71,22 +59,13 @@ export const handlers = [
     postProductHandler(),
     putProductHandler(),
     getOPISCitiesHandler(),
-    // getAttachmentListHandler(),
     getProductByLotHandler(),
     getAllParkingLotsHandler(),
     getFormattedAddressHandler(),
     getGoogleAddressHandler(),
-
     rightInfoFilterHandler(),
-    // getCustomerList(),
-
-
     addDspHandler(),
-    // getDspList(),
-
     getCustomerHandler(),
-
-
     editDspHandler(),
     editProductHandler(),
     getFuelTaxList(),
@@ -116,19 +95,10 @@ export const handlers = [
     addEditTruckHandler(),
     useGetEditTruckDetails(),
     getOpisRackProductDetailsHandler(),
-    // user-services 
     getUserHandler(),
     postUserHandler(),
     putUserHandler(),
-    // addUserHandler(),
-    // verifyUserHandler(),
-    // getUserGroupsHandler(),
-    // getUserPermissionHandler(),
-    // getUserDetailsHandler(),
-    // getUserDSPDropdownHandler(),
     getCustomerHandler(),
-    // editUserHandler(),
-    // getUsersList()
 ];
 
 const createTestQueryClient = () => new QueryClient({
