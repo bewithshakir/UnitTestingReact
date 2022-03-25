@@ -11,7 +11,7 @@ jest.mock('react-router-dom', () => ({
 }));
 describe('Rendering of Vehicle Rule landing page Component', () => {
     it('Check mocked API response render', async () => {
-        const component = renderWithClient(<VehicleRuleManagementLandingContent version='1' />);
+        const component = renderWithClient(<VehicleRuleManagementLandingContent version='Breadcrumbs-Many' />);
         await waitFor(() => {
             const foundRows = component.getAllByText('Culpeper');
             expect(foundRows.length).not.toBe(0);
@@ -23,7 +23,7 @@ describe('Rendering of Vehicle Rule landing page Component', () => {
 
 describe('Given Sortby Menu on Vehicle Rule landing Page', () => {
     test('Sortby Menu Menu With Options', async () => {
-        const component = renderWithClient(<VehicleRuleManagementLandingContent version='1' />);
+        const component = renderWithClient(<VehicleRuleManagementLandingContent version='Breadcrumbs-Many' />);
         const sortButton = component.container.querySelector('.btn-sortby') as HTMLButtonElement;
         expect(sortButton).toBeInTheDocument();
         userEvent.click(sortButton);
