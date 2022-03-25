@@ -14,6 +14,9 @@ jest.mock('react-router-dom', () => ({
             to: '/truckParkingLot/add'
         })
     }),
+    useLocation: () => ({
+        pathname: '/customer/12345/parkingLots/addLot'
+    }),
     useParams: () => ({
         customerId: '111add',
         dspId: '',
@@ -26,7 +29,7 @@ jest.mock('react-router-dom', () => ({
 
 
 
-function getAllElements (component: any) {
+function getAllElements(component: any) {
     const parkingLocationNmElem = component.container.querySelector('#parkingLocationNm');
     const addressLine1Elem = component.container.querySelector('#addressLine1') as HTMLInputElement;
     const addressLine2Elem = component.container.querySelector('#addressLine2');
@@ -51,7 +54,6 @@ describe('renders AddDSP component for add/edit mode', () => {
     let stateElem: HTMLInputElement;
     let postalCodeElem: HTMLInputElement;
     let saveBtn: HTMLButtonElement;
-    let cancelBtn: HTMLButtonElement;
 
     beforeEach(() => {
         result = renderWithClient(<AddLot version="Breadcrumbs-Many" />);
@@ -63,7 +65,6 @@ describe('renders AddDSP component for add/edit mode', () => {
         stateElem = getAllElements(result).stateElem;
         postalCodeElem = getAllElements(result).postalCodeElem;
         saveBtn = getAllElements(result).saveBtn;
-        cancelBtn = getAllElements(result).cancelBtn;
     });
 
     it('renders all mendatory fields with blank value on add mode', () => {
