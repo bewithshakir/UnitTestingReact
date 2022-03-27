@@ -46,9 +46,19 @@ import {
 } from '../pages/Users/AddUser/mockApi/handlerAddUser';
 import { getUsersList } from '../pages/Users/mockApi/handlerUsersLanding';
 import { getAllLotFilterOptions } from '../components/UIComponents/ConfirmationDialog/inputComponents/mockApi/handlerLotFilter';
+import { getCustomerHandler } from '../mockAPI/customerService/contactTypes/GET';
+import { getConfigServiceTimezones } from '../mockAPI/configService/timeZones/GET';
+import { getConfigServiceDeliveryFreq } from '../mockAPI/configService/deliveryFrequencies/GET';
+import { getConfigServiceDays } from '../mockAPI/configService/days/GET';
+import { getVehicleRules } from '../mockAPI/vehicleService/vehicleRules/GET';
 
 export const handlers = [
+    getCustomerHandler(),
     getAllLotFilterOptions(),
+    getConfigServiceTimezones(),
+    getConfigServiceDeliveryFreq(),
+    getConfigServiceDays(),
+    getVehicleRules(),
     getProductHandler(),
     postProductHandler(),
     putProductHandler(),
@@ -111,7 +121,7 @@ const createTestQueryClient = () => new QueryClient({
     },
 });
 
-export function renderWithClient (ui: React.ReactElement) {
+export function renderWithClient(ui: React.ReactElement) {
     const testQueryClient = createTestQueryClient();
     const { rerender, ...result } = render(
         <QueryClientProvider client={testQueryClient}>{ui}</QueryClientProvider>
@@ -125,7 +135,7 @@ export function renderWithClient (ui: React.ReactElement) {
     };
 }
 
-export function createWrapper () {
+export function createWrapper() {
     const testQueryClient = createTestQueryClient();
     return ({ children }: { children: React.ReactNode }) => (
         <QueryClientProvider client={testQueryClient}>{children}</QueryClientProvider>
