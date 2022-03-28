@@ -37,7 +37,8 @@ export const getUsersList = () => {
                     "error": null
                 })
             );
-           } else {
+           }
+            else {
                return res(
                    ctx.status(200),
                    ctx.json({
@@ -67,10 +68,10 @@ export const getUsersList = () => {
                                 "fullName": 'test test'
                                 },
                                 {
-                                    "userId": "ID-4536",
-                                    "shellDigitalAccountId": "ID-123",
-                                    "firstNm": "USER NAME",
-                                    "lastNm": "USER NAME",
+                                    "userId": "ID-4537",
+                                    "shellDigitalAccountId": "ID-123-1",
+                                    "firstNm": "USER NAME 1",
+                                    "lastNm": "USER NAME 1",
                                     "email": "abc345@bacancy.com",
                                     "phone": null,
                                     "customerId": "ID-34456-4536",

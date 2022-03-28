@@ -91,7 +91,7 @@ export default class UserModel {
         return (
             [
                 { name: 'date', label: 'date', fieldType: 'dateRange', initialValue: [null, null] },
-                { name: 'state', label: 'filterForm.userGroup', fieldType: 'select', optionUrlKey: 'dspFilter', optionAPIResponseKey: 'states', initialValue: [] },
+                { name: 'userGroupName', label: 'filterForm.userGroup', fieldType: 'select', optionUrlKey: 'custUserFilter', optionAPIResponseKey: 'userGroups', initialValue: [] },
             ]
         );
     }

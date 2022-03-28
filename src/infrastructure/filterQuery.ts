@@ -12,7 +12,8 @@ export type filterURLKey = 'customerFilter' |
 'parkingLotManagementFilter' | 
 'truckParkingLotFilter' | 
 'dspFilter' | 
-'truckOverviewFilter';
+'truckOverviewFilter' | 
+'custUserFilter';
 
 
 const filterApis: { [k in filterURLKey]: string } = {
@@ -25,7 +26,8 @@ const filterApis: { [k in filterURLKey]: string } = {
     parkingLotManagementFilter: 'api/customer-service/lots/filter-options?countryCode=us',
     truckParkingLotFilter: 'api/truck-service/parking-locations/filter-options?countryCode=us',
     dspFilter: 'dspFilter',
-    truckOverviewFilter: 'api/truck-service/delivery-vehicles/filter-options?countryCode=us'
+    truckOverviewFilter: 'api/truck-service/delivery-vehicles/filter-options?countryCode=us',
+    custUserFilter: 'api/user-service/users/filter-options?countryCode=us'
 };
 
 const getCustomerFilterData = async (urlKey: filterURLKey, customerId: string) => {

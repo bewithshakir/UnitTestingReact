@@ -2,6 +2,7 @@ import { rest } from "msw";
 
 export const rightInfoFilterHandler = () => {
     return rest.get('*/*/filter-options', (req, res, ctx) => {
+        console.log('-----req----', req.url.href);
         return res(
             ctx.status(200),
             ctx.json({
@@ -16,7 +17,10 @@ export const rightInfoFilterHandler = () => {
                     "zipCodes": [
                         "20166",
                         "22827"
-                    ]
+                    ],
+                    "userGroups": [
+                        "user filter test"
+                    ],
                 },
                 error: null
             })
