@@ -13,12 +13,14 @@ jest.mock('react-router-dom', () => ({
 }));
 
 describe('render drawer on filter click', ()=> {
+    const rightDrawerId = 'right-drawer';
+
     it('show filter Drawer on "Filter" button clicked', async()=> {
         const result = renderWithClient(<UsersLadingContent version="Breadcrumbs-Single" />);
         const filterBtn = result.getByTestId('filter');
         userEvent.click(filterBtn);
         await waitFor(()=> {
-            expect(result.getByTestId('right-drawer')).toBeInTheDocument();
+            expect(result.getByTestId(rightDrawerId)).toBeInTheDocument();
         });
     });
 
@@ -30,7 +32,7 @@ describe('render drawer on filter click', ()=> {
 
         
         await waitFor(()=> {
-            expect(result.getByTestId('right-drawer')).toBeInTheDocument();
+            expect(result.getByTestId(rightDrawerId)).toBeInTheDocument();
         });
         const userGrpElem = document.querySelector('#userGroupName') as HTMLInputElement;
         
@@ -54,12 +56,9 @@ describe('render drawer on filter click', ()=> {
 
         
         await waitFor(()=> {
-            expect(result.getByTestId('right-drawer')).toBeInTheDocument();
+            expect(result.getByTestId(rightDrawerId)).toBeInTheDocument();
         });
-        const userGrpElem = document.querySelector('#userGroupName') as HTMLInputElement;
         
-        // select one  or two value...,
-        // await selectEvent.select(userGrpElem, ['user filter test']);
         const clearAllBtn = result.getByTestId('clearAll');
         userEvent.click(clearAllBtn);
 
@@ -72,7 +71,7 @@ describe('render drawer on filter click', ()=> {
         
     });
 
-    /* it('hide filter Drawer on "Filter" button clicked', async()=> {
+    it('hide filter Drawer on "Filter" button clicked', async()=> {
         const result = renderWithClient(<UsersLadingContent version="Breadcrumbs-Single" />);
         const filterBtn = result.getByTestId('filter');
         userEvent.click(filterBtn);
@@ -81,7 +80,7 @@ describe('render drawer on filter click', ()=> {
         userEvent.click(closeBtn);
     
         await waitForElementToBeRemoved(()=> {
-            return result.getByTestId('right-drawer');
+            return result.getByTestId(rightDrawerId);
         });
-    }); */
+    });
 });
