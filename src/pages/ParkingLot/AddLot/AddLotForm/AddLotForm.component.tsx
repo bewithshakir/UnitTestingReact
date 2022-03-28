@@ -1,12 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { FieldArray, FormikProvider, useFormik } from 'formik';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import moment from 'moment';
 import { Box, Container, Grid, Link, Typography } from '@mui/material';
 import { Button } from '../../../../components/UIComponents/Button/Button.component';
 import Input from '../../../../components/UIComponents/Input/Input';
-import Select from '../../../../components/UIComponents/Select/SingleSelect';
 import ToastMessage from '../../../../components/UIComponents/ToastMessage/ToastMessage.component';
 import Divider from '@mui/material/Divider';
 import { AddParkingLotForm, addLotFormInitialValues, lotContact, orderSchDel } from '../../../../models/ParkingLotModel';
@@ -23,6 +22,7 @@ import { TimePicker } from '../../../../components/UIComponents/TimePicker/TimeP
 import { useAddedCustomerIdStore, useAddedCustomerNameStore, useAddedParkingLotIdStore, useShowConfirmationDialogBoxStore, useAddedParkingLotCityNmStore } from '../../../../store';
 import { isEqual } from 'lodash';
 import './AddLotForm.style.scss';
+import { ParkingLot_SearchParam } from '../../../../utils/constants';
 interface FormStatusType {
     message: string
     type: string
@@ -33,8 +33,9 @@ interface FormStatusProps {
 
 const formStatusProps: FormStatusProps = formStatusObj;
 
-function AddLotForm (): React.ReactElement {
+function AddLotForm(): React.ReactElement {
     const { t } = useTranslation();
+    const { search } = useLocation();
     const navigate = useNavigate();
     const { theme } = useTheme();
     const { data: contactTypeList } = useGetContactTypes();
@@ -147,7 +148,7 @@ function AddLotForm (): React.ReactElement {
     };
 
     const { mutate: addNewLot } = useCreateLot(onAddLotError, onAddLotSuccess);
-    const { mutate: editParkingLot } = useEditParkingLot(addedLotId as string, onEditLotSuccess, onEditLotError);
+    const { mutate: editParkingLot } = useEditParkingLot(addedLotId, onEditLotSuccess, onEditLotError);
     useGetParkingLotData(activeLotId, isTrigger, onGetLotSuccess, onGetLotError);
     useEffect(() => {
         if (lotData) {
@@ -232,9 +233,11 @@ function AddLotForm (): React.ReactElement {
     }, [location]);
 
     const onClickBack = () => {
+        const searchParams = new URLSearchParams(search);
+        const backTo = searchParams.get('backTo');
         if (isEqual(lotState, formik.values)) {
             isFormValidated(false);
-            navigate(`/customer/${addedCustomerId}/parkingLots`, {
+            backTo === ParkingLot_SearchParam ? navigate(`/parkinglots`) : navigate(`/customer/${addedCustomerId}/parkingLots`, {
                 state: {
                     customerId: addedCustomerId,
                     customerName: selectedCustomerName
@@ -246,7 +249,7 @@ function AddLotForm (): React.ReactElement {
     };
 
     const createAddLotPayload = (form: AddParkingLotForm) => {
-        const apiPayload = {
+        return {
             customer_id: addedCustomerId ? addedCustomerId : "",
             lot_name: form.lotName,
             lot_id: form.lotId,
@@ -278,11 +281,10 @@ function AddLotForm (): React.ReactElement {
                 isPrimary: index === 0 ? "Y" : "N"
             }))
         };
-        return apiPayload;
     };
 
     const createEditLotPayload = (form: AddParkingLotForm) => {
-        const apiPayload = {
+        return {
             customer_id: addedCustomerId ? addedCustomerId : "",
             lot_name: form.lotName,
             lot_id: form.lotId,
@@ -318,7 +320,6 @@ function AddLotForm (): React.ReactElement {
                 isPrimary: orderSchedule.isPrimary || (index === 0 ? "Y" : "N")
             }))
         };
-        return apiPayload;
     };
 
     const createNewLot = (form: AddParkingLotForm) => {
@@ -337,7 +338,7 @@ function AddLotForm (): React.ReactElement {
         }
     };
 
-    function handleGoogleAddressChange (addressObj: any) {
+    function handleGoogleAddressChange(addressObj: any) {
         formik.setFieldValue('addressLine1', addressObj.addressLine1);
         formik.setFieldValue('addressLine2', addressObj.addressLine2);
         formik.setFieldValue('city', addressObj.city);
@@ -345,7 +346,7 @@ function AddLotForm (): React.ReactElement {
         formik.setFieldValue('postalCode', addressObj.postalCode);
     }
 
-    function handleGoogleAddressBlur () {
+    function handleGoogleAddressBlur() {
         formik.setFieldTouched("addressLine1");
         formik.validateField("addressLine1");
         formik.setFieldTouched("addressLine2");
@@ -400,9 +401,9 @@ function AddLotForm (): React.ReactElement {
 
     const isAddScheduleDisabled = () => {
         if (formik?.values?.productDelFreq?.value && formik?.values?.orderScheduleDel?.length < 10 && !isDisabled) {
-            if(isOrderScheduleDelInfoEmpty(formik?.values?.orderScheduleDel)) {
+            if (isOrderScheduleDelInfoEmpty(formik?.values?.orderScheduleDel)) {
                 return false;
-            } 
+            }
         }
         return true;
     };
@@ -411,10 +412,10 @@ function AddLotForm (): React.ReactElement {
         if (fieldArr[(fieldArr.length - 1)].fromDate != null
             && fieldArr[(fieldArr.length - 1)].startTime != null
             && fieldArr[(fieldArr.length - 1)].endTime != null) {
-                return true;
-            } else {
-                return false;
-            }
+            return true;
+        } else {
+            return false;
+        }
     };
 
     const isLocationContactDisabled = () => {
@@ -432,7 +433,7 @@ function AddLotForm (): React.ReactElement {
         componentArr.remove(index);
     };
 
-    const addSchedule = (e:any ,fieldArr: any) => {
+    const addSchedule = (e: any, fieldArr: any) => {
         if (isOrderScheduleDelInfoEmpty(fieldArr.form.values.orderScheduleDel)) {
             if (!isAddScheduleDisabled()) {
                 fieldArr.push({
@@ -588,7 +589,7 @@ function AddLotForm (): React.ReactElement {
                                     />
                                 </Grid>
                                 <Grid item xs={12} md={6} pl={2.5} pb={2.5}>
-                                    <Select
+                                    <SingleSelect
                                         id='timeZone'
                                         name='timeZone'
                                         label='Time Zone'
@@ -623,7 +624,7 @@ function AddLotForm (): React.ReactElement {
                                     </Typography>
                                 </Grid>
                                 <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
-                                    <Select
+                                    <SingleSelect
                                         id='productDelFreq'
                                         name='productDelFreq'
                                         label='PRODUCT DELIVERY FREQUENCY'
@@ -638,7 +639,7 @@ function AddLotForm (): React.ReactElement {
                                         onBlur={() => { formik.setFieldTouched("productDelFreq"); formik.validateField("productDelFreq"); }}
                                     />
                                 </Grid>
-                                <Grid item md={12} mt={5} mb={3}>
+                                <Grid item md={12} mt={3}>
                                     <Typography variant="h4" component="h4" gutterBottom className="fw-bold" mb={1}>
                                         Order Schedule Delivery info (Max 10)
                                     </Typography>
@@ -813,10 +814,10 @@ function AddLotForm (): React.ReactElement {
                                                 </>
                                             ))}
                                             <Grid item md={12} mt={2} mb={4}>
-                                                <Link
+                                                <Link data-testid="add-another-order"
                                                     variant="body2"
                                                     className={`add-link add-another-schedule ${isAddScheduleDisabled() && "add-link disabled-text-link"}`}
-                                                    onClick={(e:any) => addSchedule(e, arr)}
+                                                    onClick={(e: any) => addSchedule(e, arr)}
                                                 >
                                                     <span className="add-icon-span"><PlusIcon color={isAddScheduleDisabled() ? theme["--Secondary-Background"] : theme["--Primary"]} /></span>
                                                     <Typography variant="h3" component="h3" className="fw-bold MuiTypography-h5-primary disabled-text" mb={1}>
@@ -932,7 +933,7 @@ function AddLotForm (): React.ReactElement {
                                                 <Link
                                                     variant="body2"
                                                     className={`add-link add-another-schedule ${isLocationContactDisabled() && "add-link disabled-text-link"}`}
-                                                    onClick={(event:any) => {
+                                                    onClick={(event: any) => {
                                                         if (isLocationContactDisabled()) {
                                                             event.preventDefault();
                                                         } else {
