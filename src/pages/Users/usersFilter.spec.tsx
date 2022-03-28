@@ -41,7 +41,7 @@ describe('render drawer on filter click', ()=> {
 
         userEvent.click(applyBtn);
         await waitFor(()=> {
-            expect(result.getByText(/USER NAME USER NAME/i)).toBeInTheDocument();
+            expect(result.getByText(/Victor test/i)).toBeInTheDocument();
         });
         
     });
@@ -66,7 +66,7 @@ describe('render drawer on filter click', ()=> {
         await waitFor(()=> {
             const formElem = result.getByTestId('filterFormik');
             expect(formElem).toHaveFormValues({ userGroupName: "" });
-            expect(result.getByText(/USER NAME USER NAME/i)).toBeInTheDocument();
+            expect(result.getByText(/Victor test/i)).toBeInTheDocument();
         });
         
         
