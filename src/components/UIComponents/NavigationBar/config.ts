@@ -140,11 +140,11 @@ export const modelBackConfig = [
         backTo: "/trucks",
     },
     {
-        path: "/vehicleRule/add",
+        path: "/addVehicleRule",
         backTo: "/vehicleRule",
     },
     {
-        path: "/vehicleRule/edit",
+        path: "/editVehicleRule",
         backTo: "/vehicleRule",
     }
 ];

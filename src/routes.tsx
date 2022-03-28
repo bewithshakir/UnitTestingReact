@@ -148,11 +148,11 @@ export const routes: RouteObject[] = [
     element: <VehicleRule version="Breadcrumbs-Many" />
   },
   {
-    path: "/vehicleRule/add",
+    path: "/addVehicleRule",
     element: <AddVehicleRule version="Breadcrumbs-Single" />
   },
   {
-    path: "/vehicleRule/edit/:ruleId",
+    path: "/editVehicleRule/:ruleId",
     element: <EditVehicleRule version="Breadcrumbs-Single" />
   },
   {

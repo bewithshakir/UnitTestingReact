@@ -92,12 +92,14 @@ const AddVehicleRule: React.FC<AddVehicleRuleProps> = () => {
         formik.setFieldValue('countryCd', 'us');
         formik.setFieldValue('year', formData.yearNo);
         formik.setFieldValue('status', vehicleStatusList.filter((obj) => obj.value === formData.activeInactiveInd)[0]);
-        // formik.setFieldValue('product', formData.localRate);
+        formik.setFieldValue('product',getFilteredProductsFromMainList(formData.vehicleRuleProducts));
     };
 
     const onGetVehicleRuleSuccess = (response: any) => {
-        response && populateDataInAllFields(response?.data);
-        setEditMode(true);
+        if(response?.data){
+            setEditMode(true);
+            populateDataInAllFields(response?.data);
+        }
     };
     const onGetVehicleRuleError = (err: any) => {
         try {
@@ -197,6 +199,14 @@ const AddVehicleRule: React.FC<AddVehicleRuleProps> = () => {
             setProductNameList(getFuelNonFuelProductList(list));
         }
     }, [data]);
+
+    const getFilteredProductsFromMainList = (vehicleRuleProducts: any) => {
+        return productNameList?.filter((el:any) => {
+            return vehicleRuleProducts.some((f:any) => {
+              return f.productCd === el.value;
+            });
+          });
+    };
 
     const getFuelNonFuelProductList = (list: any) => {
         const temp: any = [];
