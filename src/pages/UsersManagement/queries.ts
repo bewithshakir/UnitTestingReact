@@ -10,6 +10,7 @@ const getAllUsersList = async (
   filterParams?: { [key: string]: string[] }
 ) => {
   const query = new URLSearchParams();
+  query.append('countryCode', 'us');
   if (searchTerm) {
     query.append('search', searchTerm);
   }
@@ -26,13 +27,9 @@ const getAllUsersList = async (
   }
 
   const allUsersListEntitySet = `api/user-service/users?limit=${pageDataLimit}&offset=${pageParam}`;
-  const queryStr = query && query.toString().length ? `&${query.toString()}` : '';
-  const url = query
-    ? `&countryCode=us${queryStr}`
-    : `&countryCode=us`;
   const options: AxiosRequestConfig = {
     method: 'get',
-    url: allUsersListEntitySet + url,
+    url: `${allUsersListEntitySet}&${query.toString()}`,
   };
   const { data } = await axios(options);
   return data;
