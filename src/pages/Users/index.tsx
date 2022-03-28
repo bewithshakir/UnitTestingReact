@@ -14,7 +14,6 @@ import SearchInput from "../../components/UIComponents/SearchInput/SearchInput";
 import UserModel, { ACTION_TYPES, MASS_ACTION_TYPES } from "../../models/UserModel";
 import { addedCustomerIdState, HorizontalBarVersionState, useAddedCustomerIdStore, useStore } from "../../store";
 import { getSeachedDataTotalCount } from "../../utils/helperFunctions";
-//import { sortByOptions } from "./config";
 import { useGetUsersList } from './queries';
 import { DataGridActionsMenuOption } from "../../components/UIComponents/Menu/DataGridActionsMenu.component";
 import { RightInfoPanel } from '../../components/UIComponents/RightInfoPanel/RightInfoPanel.component';
