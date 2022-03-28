@@ -49,12 +49,10 @@ export const useAllUsersList = (
       getAllUsersList(pageParam, query, sortOrder),
     {
       getNextPageParam: (lastGroup: any) => {
-        if (
-          lastGroup.data.pagination.offset <
-          lastGroup.data.pagination.totalCount
-        ) {
+        if (lastGroup.data.pagination.offset < lastGroup.data.pagination.totalCount) {
           return lastGroup.data.pagination.offset + pageDataLimit;
         }
+        return lastGroup.data.pagination.offset; 
       },
       keepPreviousData: true,
     }

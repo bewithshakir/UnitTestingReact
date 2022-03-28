@@ -16,7 +16,7 @@ interface UsersManagementProps {
     version: string
 }
 
-const index: FC<UsersManagementProps> = memo(() => {
+const UserLandingPage: FC<UsersManagementProps> = memo(() => {
     const UserObj = new UserManagementModel();
     const headCells = UserObj.fieldsToDisplay();
     const rowActions = UserObj.rowActions();
@@ -113,4 +113,4 @@ const index: FC<UsersManagementProps> = memo(() => {
     );
 });
 
-export default index;
+export default UserLandingPage;
