@@ -23,9 +23,9 @@ const getUsersList = async (pageParam: number,
         }
     }
 
-    const usersGetListEntitySet = `/api/user-service/users?limit=${pageDataLimit}&offset=${pageParam}&customerId=fdd19f8e-7862-4875-9b11-73d022a6e025`;
-    const querySplit = `&countryCode=us${query.toString().length ? `&${query.toString()}` : ''}`;
-    const url = query ? querySplit : `&countryCode=us`;
+    const usersGetListEntitySet = `/api/user-service/users?limit=${pageDataLimit}&offset=${pageParam}&customerId=${customerId}`;
+
+    const url = query ? `&countryCode=us${query.toString().length ? `&${query.toString()}` : ''}` : `&countryCode=us`;
 
     const options: AxiosRequestConfig = {
         method: 'get',
