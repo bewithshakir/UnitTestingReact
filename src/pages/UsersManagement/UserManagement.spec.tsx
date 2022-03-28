@@ -18,7 +18,7 @@ describe('tests User landing page', () => {
     it('test load data in grid using mock api', async () => {
         const result = renderWithClient(<UserLandingPage version="NavLinks" />);
         await waitFor(() => {
-            expect(result.getByText(/abc345@bacancy.com/i)).toBeInTheDocument();
+            expect(result.getByText(/dsp1@bacancy.com/i)).toBeInTheDocument();
         });
     });
 });
