@@ -16,6 +16,10 @@ import { SelectInput } from "./SelectInput";
 import Input from '../../../components/UIComponents/Input/Input';
 import Checkbox from '../Checkbox/Checkbox.component';
 import Radio from '../Radio/Radio.component';
+import isPlainObject from 'lodash/isPlainObject';
+import pickBy from 'lodash/pickBy';
+import identity from 'lodash/identity';
+
 type DatePickerRange = DateRange<Date>;
 
 interface filterParamsProps {
@@ -51,6 +55,22 @@ const timeValidation = (str: any) => {
     return moment(str, 'MM-DD-YYYY', true).isValid();
 };
 
+const finalAppliedVal = (values: any) => {
+    const obj = {} as any;
+    for (const key in values) {
+        if (Array.isArray(values[key]) && values[key].length) {
+            obj[key] = values[key];
+        }
+        else if (isPlainObject(values[key])) {
+            obj[key] = values[key];
+        }
+        else {
+            obj[key] = null;
+        }
+    }
+    const finalObj = pickBy(obj, identity);
+    return finalObj;
+};
 export const DynamicFilterContent: React.FC<IDynamicFilterProps> = ({ provideFilterParams, onClose, fields, storeKey }) => {
     const filterFormData = filterStore((state) => {
         return state.filterFormData ? state.filterFormData[storeKey] : null;
@@ -175,7 +195,8 @@ export const DynamicFilterContent: React.FC<IDynamicFilterProps> = ({ provideFil
     const formik = useFormik({
         initialValues,
         onSubmit: (values) => {
-            applyFilter(values);
+            const finalObj = finalAppliedVal(values);
+            applyFilter(finalObj);
         },
         enableReinitialize: true
     });
@@ -250,9 +271,9 @@ export const DynamicFilterContent: React.FC<IDynamicFilterProps> = ({ provideFil
                                             }}
                                         />
                                         : field.fieldType === 'select' ?
-                                        
+
                                             (field.optionUrlKey && field.optionAPIResponseKey) ?
-                                               
+
                                                 (< SelectInput field={{
                                                     ...field,
                                                     optionUrlKey: field.optionUrlKey,
@@ -271,7 +292,7 @@ export const DynamicFilterContent: React.FC<IDynamicFilterProps> = ({ provideFil
                                                         onChange={(name, val) => handleSelect(name, val, true)}
                                                         helperText={(touched && error) ? error : undefined}
                                                         error={(touched && error) ? true : false} />
-                                                        
+
                                                     :
                                                     <Select
                                                         id={field.name}
@@ -290,7 +311,7 @@ export const DynamicFilterContent: React.FC<IDynamicFilterProps> = ({ provideFil
                                                         <b>{t(field.label)}</b >
                                                     </InputLabel>
                                                     {(field.options && field.options.map(opt => {
-                                                        
+
                                                         return (
                                                             <FormControlLabel key={`${field.name}-${opt.label}`}
                                                                 className="checkbox-field"

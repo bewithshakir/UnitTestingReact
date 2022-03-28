@@ -29,7 +29,7 @@ interface Props {
     onBlur?: (name: string) => any
     value?: OptionItem
 }
-
+const limit = 15;
 const defaultAdditional = {
     page: 0
 };
@@ -51,8 +51,8 @@ const SingleSelectPaginate = (props: Props) => {
         if (q) {
             const { data } = await getDataFromServer(apiUrl, {
                 ...(extraApiParams || {}),
-                limit: 10,
-                offset: page,
+                limit,
+                offset: page * limit,
                 [searchFieldName || 'search']: q
             });
             const options = responseFormatter(data);
@@ -76,7 +76,6 @@ const SingleSelectPaginate = (props: Props) => {
     };
 
     return (
-
         <FormControl className='select' >
             {label && (
                 <InputLabel

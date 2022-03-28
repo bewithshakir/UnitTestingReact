@@ -112,9 +112,9 @@ export default function HorizontalBar (props: HorizontalBarProps) {
         return t("addDSP.title");
       case pathname.includes('dsps/edit'):
         return t("addDSP.form.titleEdit");
-      case pathname.includes('users/addUser'):
+      case pathname.includes('users/add'):
         return t("addUser.title");
-      case pathname.includes('users/editUser'):
+      case pathname.includes('users/edit'):
         return t("addUser.form.titleEdit");
       case (pathname.includes('addLot')):
         return t('parkingLot.form.titleAdd');

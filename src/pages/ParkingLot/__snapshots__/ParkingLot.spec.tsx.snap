@@ -7913,19 +7913,6 @@ exports[`Rendering of Parking Lot Content Component Parking Lot Content componen
                                                                           }
                                                                           className="datagrid-actions-popper"
                                                                           disablePortal={true}
-                                                                          modifiers={
-                                                                            Array [
-                                                                              Object {
-                                                                                "enabled": true,
-                                                                                "name": "preventOverflow",
-                                                                                "options": Object {
-                                                                                  "altAxis": true,
-                                                                                  "altBoundary": true,
-                                                                                  "rootBoundary": "viewport",
-                                                                                },
-                                                                              },
-                                                                            ]
-                                                                          }
                                                                           open={false}
                                                                           placement="bottom-end"
                                                                           transition={true}
