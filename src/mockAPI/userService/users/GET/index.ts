@@ -26,7 +26,7 @@ export const getUserHandler = () => {
         }
         else {
             // Customer Onboarding : Users Landing > Default
-            return getUserList(res, ctx);
+            return getUserList(req, res, ctx);
         }
     });
 };
