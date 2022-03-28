@@ -1,7 +1,7 @@
 import { rest } from "msw";
 
 
-export const getCustomerHandler = () => rest.get('*/api/customer-service/contact-types', (req, res, ctx) => {
+export const getCustomerContactTypesHandler = () => rest.get('*/api/customer-service/contact-types', (req, res, ctx) => {
     return res(
         ctx.status(200),
         ctx.json({

@@ -1,26 +1,27 @@
-import { mount } from 'enzyme';
-import userEvent from '@testing-library/user-event';
 import { act, waitFor, waitForElementToBeRemoved } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { mount } from 'enzyme';
 import { QueryClient, QueryClientProvider } from 'react-query';
-
-import DspLandingContent from './index';
-import { renderWithClient } from '../../tests/utils';
 import selectEvent from 'react-select-event';
-
+import { renderWithClient } from '../../tests/utils';
+import DspLandingContent from './index';
 
 const queryClient = new QueryClient();
 
-const mockedUsedNavigate = jest.fn();
-
 jest.mock('react-router-dom', () => ({
-    ...jest.requireActual('react-router-dom') as any,
-    useNavigate: () => mockedUsedNavigate,
+    useNavigate: () => ({
+        navigate: () => ({
+            to: "/customer/*/dsps"
+        })
+    }),
+    useParams: () => ({
+        customerId: '111edit',
+    })
 }));
-
 
 jest.mock('../../store', () => ({
     ...jest.requireActual('../../store') as any,
-    useAddedCustomerIdStore: ()=> '111edit'
+    useAddedCustomerIdStore: () => '111edit'
 }));
 
 function getAllElements (component: any) {
@@ -30,40 +31,40 @@ function getAllElements (component: any) {
 }
 
 describe('Rendering of DSP Landing Component', () => {
-        const component = mount(<QueryClientProvider client={queryClient}><DspLandingContent version='1' /></QueryClientProvider>);
-        it('DSP Landing component Snapshot testing when', () => {
-            expect(component).toMatchSnapshot();
-        });   
-        it('renders filter button', () => {
-            expect(component.find({ types: "filter" })).toBeDefined();
-        });
-        it('Renders sort by button', () => {
-            expect(component.find('SortbyMenu')).toBeDefined();
-        });
-        it('Renders Search Input ', ()=>{
-            expect(component.find('SearchInput')).toBeDefined();
-        });
+    const component = mount(<QueryClientProvider client={queryClient}><DspLandingContent version='1' /></QueryClientProvider>);
+    it('DSP Landing component Snapshot testing when', () => {
+        expect(component).toMatchSnapshot();
+    });
+    it('renders filter button', () => {
+        expect(component.find({ types: "filter" })).toBeDefined();
+    });
+    it('Renders sort by button', () => {
+        expect(component.find('SortbyMenu')).toBeDefined();
+    });
+    it('Renders Search Input ', () => {
+        expect(component.find('SearchInput')).toBeDefined();
+    });
 
 
-    describe('render drawer on filter click', ()=> {
-        it('show filter Drawer on "Filter" button clicked', async()=> {
-           
+    describe('render drawer on filter click', () => {
+        it('show filter Drawer on "Filter" button clicked', async () => {
+
             const result = renderWithClient(<DspLandingContent version='1' />);
             const filterBtn = result.getByTestId('filter');
             userEvent.click(filterBtn);
-            await waitFor(()=> {
+            await waitFor(() => {
                 expect(result.getByTestId('right-drawer')).toBeInTheDocument();
             });
         });
 
-        it('update data on apply button clicked', async()=> {
-           
+        it('update data on apply button clicked', async () => {
+
             const result = renderWithClient(<DspLandingContent version='1' />);
             const filterBtn = result.getByTestId('filter');
             userEvent.click(filterBtn);
 
-            
-            await waitFor(()=> {
+
+            await waitFor(() => {
                 expect(result.getByTestId('right-drawer')).toBeInTheDocument();
             });
             const cityElem = document.querySelector('#city') as HTMLInputElement;
@@ -73,23 +74,23 @@ describe('Rendering of DSP Landing Component', () => {
             expect(applyBtn).toBeEnabled();
 
             userEvent.click(applyBtn);
-            await waitFor(()=> {
+            await waitFor(() => {
                 expect(result.getByText(/DSP city search/i)).toBeInTheDocument();
             });
 
-            
-        });
-        
 
-        it('show filter Drawer on "Filter" button clicked', async()=> {
+        });
+
+
+        it('show filter Drawer on "Filter" button clicked', async () => {
             const result = renderWithClient(<DspLandingContent version="1" />);
             const filterBtn = result.getByTestId('filter');
             userEvent.click(filterBtn);
 
             const closeBtn = result.getByTestId('closeIcon');
             userEvent.click(closeBtn);
-        
-            await waitForElementToBeRemoved(()=> {
+
+            await waitForElementToBeRemoved(() => {
                 return result.getByTestId('right-drawer');
             });
         });
