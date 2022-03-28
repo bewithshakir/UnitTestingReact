@@ -14,7 +14,7 @@ import SearchInput from "../../components/UIComponents/SearchInput/SearchInput";
 import UserModel, { ACTION_TYPES, MASS_ACTION_TYPES } from "../../models/UserModel";
 import { addedCustomerIdState, HorizontalBarVersionState, useAddedCustomerIdStore, useStore } from "../../store";
 import { getSeachedDataTotalCount } from "../../utils/helperFunctions";
-import { sortByOptions } from "./config";
+//import { sortByOptions } from "./config";
 import { useGetUsersList } from './queries';
 import { DataGridActionsMenuOption } from "../../components/UIComponents/Menu/DataGridActionsMenu.component";
 import { RightInfoPanel } from '../../components/UIComponents/RightInfoPanel/RightInfoPanel.component';
@@ -34,7 +34,7 @@ const UsersLadingContent: React.FC<ContentProps> = () => {
     const [resetTableCollaps, setResetTableCollaps] = React.useState(false);
     const [dspList, setDspList] = React.useState([]);
     const customerId = useAddedCustomerIdStore((state: addedCustomerIdState) => state.customerId);
-    const [sortOrder] = React.useState<{ sortBy: string, order: string }>({ sortBy: "", order: "" });
+    const [sortOrder,setSortOrder] = React.useState<{ sortBy: string, order: string }>({ sortBy: "", order: "" });
     const [filterData, setFilterData] = React.useState<{ [key: string]: string[] }>({});
 
     const [filterPanelVisible, setFilterPanelVisible] = React.useState(false);
@@ -97,6 +97,23 @@ const UsersLadingContent: React.FC<ContentProps> = () => {
 
     const getFields = () => userObj.FilterByFields().map((item) => ({ ...item, customerId: customerId }));
 
+    const onSortBySlected = (value: string) => {
+        let sortOrder;
+        switch (value) {
+          case t('user.sortBy.users_atoz'):
+            sortOrder = { sortBy: "firstNm", order: "asc" };
+            break;
+          case t('user.sortBy.users_ztoa'):
+            sortOrder = { sortBy: "firstNm", order: "desc" };
+            break;
+          default:
+            sortOrder = { sortBy: "", order: "" };
+            break;
+        }
+        setResetTableCollaps(true);
+        setSortOrder(sortOrder);
+    };
+
     return (
         <Box display="flex">
             <Grid container pl={2.25} pr={6.25} className="main-area">
@@ -117,8 +134,8 @@ const UsersLadingContent: React.FC<ContentProps> = () => {
                             <FormControl>
                                 <SortbyMenu
                                     id="userSort"
-                                    options={sortByOptions.map((sortByItem) => t(sortByItem))}
-                                    onSelect={(value) => value}
+                                    options={userObj.getSortByOptions().map((sortByItem) => t(sortByItem))}
+                                    onSelect={(value) => onSortBySlected(value)}
                                 />
                             </FormControl>
                         </Grid>

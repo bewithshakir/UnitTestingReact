@@ -23,10 +23,13 @@ const getUsersList = async (pageParam: number,
         }
     }
 
-    const opisCityListEntitySet = `/api/user-service/users?limit=${pageDataLimit}&offset=${pageParam}&customerId=${customerId}`;
+    const usersGetListEntitySet = `/api/user-service/users?limit=${pageDataLimit}&offset=${pageParam}&customerId=fdd19f8e-7862-4875-9b11-73d022a6e025`;
+
+    const url = query ? `&countryCode=us${query.toString().length ? `&${query.toString()}` : ''}` : `&countryCode=us`;
+
     const options: AxiosRequestConfig = {
         method: 'get',
-        url: opisCityListEntitySet + query.toString()
+        url: usersGetListEntitySet + url
     };
     const { data } = await axios(options);
     return data;

@@ -66,6 +66,13 @@ export default class UserModel {
         });
     }
 
+    getSortByOptions () {
+        return [
+            "user.sortBy.users_atoz",
+            "user.sortBy.users_ztoa",
+        ];
+    }
+
     rowActions () {
         const { t } = useTranslation();
         return [

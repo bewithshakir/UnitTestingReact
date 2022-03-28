@@ -224,5 +224,16 @@
       "assetType": "Type d'actif",
       "assetStatus": "Statut"
     }
+  },
+  "user": {
+    "search": "Nom d'utilisateur",
+    "results found": "résultats trouvés",
+    "result(s) found": "résultats trouvés",
+    "filterHeader": "Filtres",
+    "nodataMsg": "Ajoutez un utilisateur en cliquant sur ajouter un utilisateur ou sur toute phrase connexe.",
+    "sortBy": {
+      "users_atoz": "Nom d'utilisateur de A à Z",
+      "users_ztoa": "Nom d'utilisateur de Z à A"
+    }
   }
 }
