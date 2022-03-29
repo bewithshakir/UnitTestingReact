@@ -15,7 +15,8 @@ import { HorizontalBarVersionState, useStore, useShowConfirmationDialogBoxStore 
 import { AddVehicleRuleValidationSchema, EditVehicleRuleValidationSchema } from './validation';
 import { ProductsListSet } from '../../ProductManagementLanding/queries';
 import { getProductIcon, getInputHelperText, getInputError } from '../../../utils/helperFunctions';
-import { getProductIds } from './helperMethods';
+import { getProductIds, getFilteredProductsFromMainList } from './helperMethods';
+
 const initialValues = new VehicleRuleModel();
 
 export interface AddVehicleRuleProps {
@@ -90,7 +91,7 @@ const AddVehicleRule: React.FC<AddVehicleRuleProps> = () => {
         formik.setFieldValue('countryCd', 'us');
         formik.setFieldValue('year', formData.yearNo);
         formik.setFieldValue('status', vehicleStatusList.filter((obj) => obj.value === formData.activeInactiveInd)[0]);
-        formik.setFieldValue('product',getFilteredProductsFromMainList(formData.vehicleRuleProducts));
+        formik.setFieldValue('product',getFilteredProductsFromMainList(formData.vehicleRuleProducts, productNameList));
     };
 
     const onGetVehicleRuleSuccess = (response: any) => {
@@ -198,13 +199,7 @@ const AddVehicleRule: React.FC<AddVehicleRuleProps> = () => {
         }
     }, [data]);
 
-    const getFilteredProductsFromMainList = (vehicleRuleProducts: any) => {
-        return productNameList?.filter((el:any) => {
-            return vehicleRuleProducts.some((f:any) => {
-              return f.productCd === el.value;
-            });
-          });
-    };
+    
 
     const getFuelNonFuelProductList = (list: any) => {
         const temp: any = [];
@@ -293,14 +288,11 @@ const AddVehicleRule: React.FC<AddVehicleRuleProps> = () => {
             navigate(`/vehicleRule`);
         }
     };
-    const disableButton = () => {
-        if (formik.dirty) {
-            return !formik.isValid || formik.isSubmitting;
-        } else {
-            return true;
-        }
-    };
 
+    const disableButton = () => {
+        return (!formik.isValid || !formik.dirty) || formik.isSubmitting;
+    };
+    
     const handleStatusChange = (field: any, value: any) => {
         formik.setFieldValue(field, value);
     };
