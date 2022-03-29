@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import Checkbox from '../../components/UIComponents/Checkbox/Checkbox.component';
-import { capitalizeFirstLetter } from '../../utils/helperFunctions';
 import { FormControlLabel, Typography } from "@mui/material";
 import { useTranslation } from 'react-i18next';
 import { checkboxConfig } from './config';
 import { useGetTaxRates } from './queries';
 import { useAddedParkingLotCityNmStore } from '../../store';
-import Decimal from 'decimal.js';
+import { calculateTaxesMaster, updateTaxOnCheckBoxChange } from './utils';
+
 
 
 type props = {
@@ -40,79 +40,22 @@ export default function CheckBoxSegment({ isDisabled, formik, showFuelTaxError, 
         }
     };
 
-    const includeExemptionsFromGetProductDetails = (arr: Array<any>, rateCalcModified: number, CPGCalcModified: number) => {
-        let rcm = rateCalcModified;
-        let cpgcm = CPGCalcModified;
-        const taxArrEditProduct = arr.filter((obj: any) => formik?.values?.taxExemption.some((exStr: any) => obj.taxRateId === exStr));
-        taxArrEditProduct.forEach((obj: any) => {
-            formik.setFieldValue(`${obj.taxRateId}`, true);
-            let rQ = 0;
-            let cQ = 0;
-
-            if (obj?.moneyPctIndicator?.toLowerCase() === 'p') {
-                rQ = Number((new Decimal(Number(obj.taxRateAmt))).dividedBy(100));
-                rcm = Number((new Decimal(rcm)).minus(Number(rQ)));
-            } else if (obj?.moneyPctIndicator?.toLowerCase() === 'm') {
-                cQ = Number(obj.taxRateAmt);
-                cpgcm = Number((new Decimal(cpgcm)).minus(Number(cQ)));
-            }
-        });
-        return { rateCalcModified: rcm, CPGCalcModified: cpgcm };
-    };
-
     const onTaxExsSuccess = (data: any) => {
-        if (data && data.data && data.data.length > 0) {
-            const arr: Array<any> = [];
-            let ppdTaxAm = 0;
-            let ppdTaxId = '';
-            showFuelTaxError(false);
-            setFetchTaxList(false);
-            let totalRateCalc = 0;
-            let totalCPGCalc = 0;
-            data.data.forEach((checkBoxObj: any) => {
-                const exmptnListObj = { ...checkBoxObj, label: capitalizeFirstLetter(checkBoxObj.taxRateTypeNm.replace(/-/g, ' ')), value: false };
-                arr.push(exmptnListObj);
-                formik.setFieldValue(`${checkBoxObj.taxRateId}`, false);
-                if (checkBoxObj?.moneyPctIndicator?.toLowerCase() === 'p') {
 
-                    const rateQ = Number((new Decimal(Number(checkBoxObj.taxRateAmt))).dividedBy(100));
-                    const totalVal = new Decimal(Number(totalRateCalc));
-                    totalRateCalc = Number(totalVal.plus(rateQ));
-                } else if (checkBoxObj?.moneyPctIndicator?.toLowerCase() === 'm') {
-                    const cpgQ = Number(checkBoxObj.taxRateAmt);
-                    const totalVal = new Decimal(Number(totalCPGCalc));
-                    totalCPGCalc = Number(totalVal.plus(cpgQ));
-                }
-                if (isSaveCancelShown && checkBoxObj.taxRateTypeNm?.toLowerCase() === "ppd-sales-tax") {
-                    ppdTaxAm = checkBoxObj.taxRateAmt;
-                    ppdTaxId = checkBoxObj.taxRateId;
-                }
-
-            });
-            let CPGCalcModified = totalCPGCalc;
-            let rateCalcModified = totalRateCalc;
-
-            if (isSaveCancelShown && ppdTaxId) {
-                formik.setFieldValue(`${ppdTaxId}`, true);
-                formik.setFieldValue('taxExemption', [ppdTaxId]);
-                CPGCalcModified = Number((new Decimal(totalCPGCalc)).minus(Number(ppdTaxAm)));
-            }
-
-            if (!isSaveCancelShown && isDisabled && formik?.values?.taxExemption && formik?.values?.taxExemption.length > 0) {
-                const exmptionsObjModified = includeExemptionsFromGetProductDetails(arr, rateCalcModified, CPGCalcModified);
-                rateCalcModified = exmptionsObjModified.rateCalcModified;
-                CPGCalcModified = exmptionsObjModified.CPGCalcModified;
-
-            }
-
-            updateTotalRate(totalRateCalc);
-            updateTotalCPG(totalCPGCalc);
-
-            updateFinalRate(rateCalcModified);
-            updateFinalCPG(CPGCalcModified);
-
-            updateTaxExemptionList(arr);
+        if (!data?.data?.length) {
+            return;
         }
+        showFuelTaxError(false);
+        setFetchTaxList(false);
+        const { arr, totalRateCalc, totalCPGCalc, rateCalcModified, CPGCalcModified, checkAllBoxes } = calculateTaxesMaster(data.data, formik, isSaveCancelShown, isDisabled);
+        if(checkAllBoxes){
+            setSelectAll(true);
+        }
+        updateTotalRate(totalRateCalc);
+        updateTotalCPG(totalCPGCalc);
+        updateFinalRate(rateCalcModified);
+        updateFinalCPG(CPGCalcModified);
+        updateTaxExemptionList(arr);
     };
 
     useGetTaxRates(fetchTaxList, formik?.values?.masterProductName?.value, parkingLotCityNm, onTaxExsSuccess, onTaxExsError);
@@ -148,31 +91,8 @@ export default function CheckBoxSegment({ isDisabled, formik, showFuelTaxError, 
         const checked = e.target.checked;
         const name = e.target.name;
         formik.setFieldValue(name, e.target.checked);
-        if (checked) {
-            formik.setFieldValue('taxExemption', [...formik.values.taxExemption, name]);
-            if (taxExemptionList[index]?.moneyPctIndicator?.toLowerCase() === 'p') {
-                const rateQ = Number((new Decimal(Number(taxExemptionList[index].taxRateAmt))).dividedBy(100));
-                updateFinalRate(prevState => Number((new Decimal(Number(prevState))).minus(rateQ)));
-
-            } else if (taxExemptionList[index]?.moneyPctIndicator?.toLowerCase() === 'm') {
-                const cpgQ = Number(taxExemptionList[index].taxRateAmt);
-                updateFinalCPG(prevState => Number((new Decimal(Number(prevState))).minus(cpgQ)));
-
-            }
-
-        } else {
-            if (selectAll) {
-                setSelectAll(false);
-            }
-            if (taxExemptionList[index]?.moneyPctIndicator?.toLowerCase() === 'p') {
-                const rateQ = Number((new Decimal(Number(taxExemptionList[index].taxRateAmt))).dividedBy(100));
-                updateFinalRate(prevState => Number((new Decimal(Number(prevState))).plus(rateQ)));
-            } else if (taxExemptionList[index]?.moneyPctIndicator?.toLowerCase() === 'm') {
-                const cpgQ = Number(taxExemptionList[index].taxRateAmt);
-                updateFinalCPG(prevState => Number((new Decimal(Number(prevState))).plus(cpgQ)));
-            }
-            formik.setFieldValue('taxExemption', formik.values.taxExemption.filter((item: any) => item !== name));
-        }
+        const moneyIndicator = taxExemptionList[index]?.moneyPctIndicator?.toLowerCase();
+        updateTaxOnCheckBoxChange({selectAll, formik, moneyIndicator,taxExemptionList, index, checked, name, finalRate, finalCPG, updateFinalRate,  updateFinalCPG,setSelectAll });
     };
 
     useEffect(() => {
@@ -214,4 +134,3 @@ export default function CheckBoxSegment({ isDisabled, formik, showFuelTaxError, 
         </React.Fragment>
     );
 }
-

@@ -118,6 +118,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
                 obj.opisName = formik.values.opisName;
 
             }
+            updateFetchTaxList(true);
             setInitialFormikValues(obj);
         }
         setIsDisabled(true);
@@ -224,9 +225,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
             if (form.pricingModel?.label.toLowerCase() === 'opis rack') {
                 payloadObj.pricingCityId = supplierPriceRowObj?.cityId ? supplierPriceRowObj?.cityId : formik.values.cityId;
                 payloadObj.pricingProductKey = supplierPriceRowObj?.productKey ? supplierPriceRowObj?.productKey : getProductKey;
-                if (form.taxExemption && form.taxExemption.length > 0) {
-                    payloadObj.taxExemption = [...form.taxExemption];
-                }
+                payloadObj.taxExemption = [...form.taxExemption];
             }
 
             if (editMode) {
