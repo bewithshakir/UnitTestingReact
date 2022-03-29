@@ -7,6 +7,7 @@ import { IDynamicFilterProps } from '../components/UIComponents/RightInfoPanel/D
 export interface SelectProps {
     label: string,
     value: string,
+    type?: string,
 }
 
 export const ACTION_TYPES = {
@@ -30,7 +31,7 @@ export default class UserModel {
     countryCd: string;
 
     constructor() {
-        this.userGroup = { label: '', value: '' };
+        this.userGroup = { label: '', value: '', type: '' };
         this.email = '';
         this.userId = '';
         this.userName = '';
@@ -55,12 +56,12 @@ export default class UserModel {
         return data.map((obj: any) => {
             return ({
                 ...obj,
-                fullName: obj.firstNm + ' '+obj.lastNm,
-                customerInfo: [obj.email,obj.phone],
-                userGroupList: obj.userGroup.map((item:any) => {
+                fullName: obj.firstNm + ' ' + obj.lastNm,
+                customerInfo: [obj.email, obj.phone],
+                userGroupList: obj.userGroup.map((item: any) => {
                     return item.userGroupNm;
                 }),
-                createdDtm: new Date(obj.createdDtm).toLocaleDateString('en-US',{ year: 'numeric', month: '2-digit', day: '2-digit' }),
+                createdDtm: new Date(obj.createdDtm).toLocaleDateString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' }),
                 shellDigitalAccountId: obj.shellDigitalAccountId
             });
         });
