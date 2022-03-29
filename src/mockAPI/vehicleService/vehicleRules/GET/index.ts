@@ -188,3 +188,32 @@ export const getVehicleRules = () => {
         );
     });
 };
+
+
+
+export const getVehicleDetails = () => {
+    return rest.get('*/api/vehicle-service/vehicle-rules*', (req, res, ctx) => {
+        return res(
+            ctx.status(200),
+            ctx.json({
+                "data": {
+                  "ruleId": "aa87757d-8e84-485c-a324-6e4b7e83a84e",
+                  "city": "Culpeper",
+                  "state": "VA",
+                  "countryCode": "us",
+                  "yearNo": 2006,
+                  "activeInactiveInd": "Y",
+                  "vehicleRuleProducts": [
+                    {
+                      "ruleExceptionId": "275da655-5581-49ad-98a7-c92472e95464",
+                      "productCd": "dd36329a-f802-47a4-9551-e6eb6f35634f",
+                      "activeInactiveInd": "Y",
+                      "productInfo": {}
+                    }
+                  ]
+                },
+                "error": null
+              })
+        );
+    });
+};

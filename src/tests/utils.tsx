@@ -48,8 +48,10 @@ import { getCustomerContactTypesHandler } from '../mockAPI/customerService/conta
 import { getConfigServiceTimezones } from '../mockAPI/configService/timeZones/GET';
 import { getConfigServiceDeliveryFreq } from '../mockAPI/configService/deliveryFrequencies/GET';
 import { getConfigServiceDays } from '../mockAPI/configService/days/GET';
-import { getVehicleRules } from '../mockAPI/vehicleService/vehicleRules/GET';
+import { getVehicleRules , getVehicleDetails} from '../mockAPI/vehicleService/vehicleRules/GET';
 import { addVehicleRule } from '../mockAPI/vehicleService/vehicleRules/POST';
+import { editVehicleRule } from '../mockAPI/vehicleService/vehicleRules/PUT';
+
 
 export const handlers = [
     getCustomerContactTypesHandler(),
@@ -101,6 +103,8 @@ export const handlers = [
     postUserHandler(),
     putUserHandler(),
     getCustomerHandler(),
+    getVehicleDetails(),
+    editVehicleRule()
 ];
 
 const createTestQueryClient = () => new QueryClient({
