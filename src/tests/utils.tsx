@@ -40,11 +40,27 @@ import { rightInfoFilterHandler } from '../components/UIComponents/RightInfoPane
 import { getProductHandler } from '../mockAPI/productService/products/GET';
 import { postProductHandler } from '../mockAPI/productService/products/POST';
 import { putProductHandler } from '../mockAPI/productService/products/PUT';
-import { addUserHandler, verifyUserHandler, getUserGroupsHandler, getUserDSPDropdownHandler, getUserPermissionHandler } from '../pages/Users/AddUser/mockApi/handlerAddUser';
+import {
+    addUserHandler, verifyUserHandler, getUserGroupsHandler, getUserDSPDropdownHandler,
+    getUserPermissionHandler, getUserDetailsHandler, editUserHandler
+} from '../pages/Users/AddUser/mockApi/handlerAddUser';
+import { getUsersList } from '../pages/Users/mockApi/handlerUsersLanding';
 import { getAllLotFilterOptions } from '../components/UIComponents/ConfirmationDialog/inputComponents/mockApi/handlerLotFilter';
+import { getCustomerHandler } from '../mockAPI/customerService/contactTypes/GET';
+import { getConfigServiceTimezones } from '../mockAPI/configService/timeZones/GET';
+import { getConfigServiceDeliveryFreq } from '../mockAPI/configService/deliveryFrequencies/GET';
+import { getConfigServiceDays } from '../mockAPI/configService/days/GET';
+import { getVehicleRules } from '../mockAPI/vehicleService/vehicleRules/GET';
+import { addVehicleRule } from '../mockAPI/vehicleService/vehicleRules/POST';
 
 export const handlers = [
+    getCustomerHandler(),
     getAllLotFilterOptions(),
+    getConfigServiceTimezones(),
+    getConfigServiceDeliveryFreq(),
+    getConfigServiceDays(),
+    getVehicleRules(),
+    addVehicleRule(),
     getProductHandler(),
     postProductHandler(),
     putProductHandler(),
@@ -94,6 +110,9 @@ export const handlers = [
     getUserGroupsHandler(),
     getUserPermissionHandler(),
     getUserDSPDropdownHandler(),
+    getUserDetailsHandler(),
+    editUserHandler(),
+    getUsersList()
 ];
 
 const createTestQueryClient = () => new QueryClient({

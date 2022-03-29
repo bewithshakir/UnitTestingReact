@@ -1,81 +1,56 @@
-import { mount } from "enzyme";
-import Select from '../../../../components/UIComponents/Select/SingleSelect';
 import AddLotForm from './AddLotForm.component';
-import { QueryClientProvider } from 'react-query';
-import * as ReactQuery from 'react-query';
-const queryClient = new ReactQuery.QueryClient();
+import userEvent from '@testing-library/user-event';
+import { renderWithClient } from "../../../../tests/utils";
+import { waitFor } from '@testing-library/react';
 
 beforeAll(() => {
     jest.useFakeTimers('modern');
     jest.setSystemTime(new Date(1638338756741));
-});const mockedUsedNavigate = jest.fn();
+});
 
 jest.mock('react-router-dom', () => ({
-   ...jest.requireActual('react-router-dom') as any,
-  useNavigate: () => mockedUsedNavigate,
+    useNavigate: () => ({
+        navigate: () => ({
+            to: '/customer/123456/parkingLots/viewLot/89898'
+        })
+    }),
+    useParams: () => ({
+        customerId: '123456',
+    }),
+    useLocation: () => ({
+        search: "backTo=parkingLot",
+    }),
 }));
 
 
-
-
 describe('Rendering of Add Lot Component', () => {
-    jest.mock("react-router-dom", () => ({
-        ...jest.requireActual("react-router-dom") as any,
-        useLocation: () => ({
-            pathname: "localhost:3000/customer/123456/parkingLots/addLot"
-        })
-    }));
-
-    it('Add Lot component Snapshot testing', () => {
-        const component = mount(<QueryClientProvider client={queryClient}>
-            <AddLotForm />
-        </QueryClientProvider>
-        );
-        expect(component).toMatchSnapshot();
-    });
     it('ADD ANOTHER ORDER SCHEDULE should disable', () => {
-        const component = mount(<QueryClientProvider client={queryClient}>
-            <AddLotForm />
-        </QueryClientProvider>
-        );
-        expect(component.find('.add-link.disabled-text-link.add-another-schedule')).toBeDefined();
+        const component = renderWithClient(<AddLotForm />);
+        expect(component.getByTestId('add-another-order').classList.contains('disabled-text-link')).toBe(true);
     });
 });
 
 describe('Rendering of Edit Lot Component', () => {
     jest.mock("react-router-dom", () => ({
-        ...jest.requireActual("react-router-dom") as any,
+        ...jest.requireActual("react-router-dom"),
         useLocation: () => ({
             pathname: "localhost:3000/customer/123456/parkingLots/viewLot/89898"
         })
     }));
-
-    it('Edit/View Lot component Snapshot testing', () => {
-        const component = mount(<QueryClientProvider client={queryClient}>
-            <AddLotForm />
-        </QueryClientProvider>
-        );
-        expect(component).toMatchSnapshot();
-        expect(component.find(Select)).toHaveLength(2);
-    });
     it('when land on this page, Edit button is by default shown', () => {
-        const component = mount(<ReactQuery.QueryClientProvider client={queryClient}> <AddLotForm /> </ReactQuery.QueryClientProvider >);
-        expect(component.find('.edit-button').exists()).toBe(true);
-        expect(component.find('.cancelBtnPL').exists()).toBe(false);
-        expect(component.find('.saveBtnPL').exists()).toBe(false);
+        const component = renderWithClient(<AddLotForm />);
+        expect(component.container.getElementsByClassName('edit-button').length).toBe(1);
+        expect(component.container.getElementsByClassName('cancelBtnPL').length).toBe(0);
+        expect(component.container.getElementsByClassName('saveBtnPL').length).toBe(0);
     });
-    it('After clicking Edit button, show Save and Cancel buttons ', () => {
-        const component = mount(<ReactQuery.QueryClientProvider client={queryClient}> <AddLotForm /> </ReactQuery.QueryClientProvider >);
-        component.find('.edit-button').at(0).simulate('click');
-        expect(component.find('.cancelBtnPL').exists()).toBe(true);
-        expect(component.find('.saveBtnPL').exists()).toBe(true);
-    });
-    it('ADD ANOTHER ORDER SCHEDULE should disable', () => {
-        const component = mount(<QueryClientProvider client={queryClient}>
-            <AddLotForm />
-        </QueryClientProvider>
-        );
-        expect(component.find('.add-link.disabled-text-link.add-another-schedule')).toBeDefined();
+    it('After clicking Edit button, show Save and Cancel buttons ', async () => {
+        const component = renderWithClient(<AddLotForm />);
+        const editBtn = component.container.querySelector('.edit-button') as HTMLButtonElement;
+        await waitFor(() => {
+            userEvent.click(editBtn);
+        });
+        expect(component.container.getElementsByClassName('cancelBtnPL').length).toBe(1);
+        expect(component.container.getElementsByClassName('saveBtnPL').length).toBe(1);
     });
 });
 

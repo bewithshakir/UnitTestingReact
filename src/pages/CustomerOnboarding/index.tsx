@@ -17,8 +17,8 @@ const customerOnboarding: React.FC<CustomerOnboardingProps> = memo(() => {
   const { pathname } = useLocation();
   const dis = pathname.includes('addLot') || pathname.includes('viewLot') ||
     pathname.includes('AddAttachment') || pathname.includes('addDsp') ||
-    pathname.includes('dsps/edit') || pathname.includes('addUser')
-    || pathname.includes('users/editUser');
+    pathname.includes('dsps/edit') || pathname.includes('users/add')
+    || pathname.includes('users/edit');
   return (
     <Box display='flex' mt={8} ml={8}>
       <CssBaseline />
