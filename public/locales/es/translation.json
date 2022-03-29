@@ -248,5 +248,16 @@
       "assetType": "Tipo de activo",
       "assetStatus": "Estado"
     }
+  },
+  "user": {
+    "search": "Nombre de usuario",
+    "results found": "resultados encontrados",
+    "result(s) found": "resultados encontrados",
+    "filterHeader": "filtros",
+    "nodataMsg": "Agregar usuario haciendo clic en agregar usuario o cualquier oración relacionada.",
+    "sortBy": {
+      "users_atoz": "Nombre de usuario de la A a la Z",
+      "users_ztoa": "Nombre de usuario de la Z a la A"
+    }
   }
 }
