@@ -69,7 +69,7 @@ describe('Add vehicle Rule with Error', () => {
     it('Add vehicle Rule with error on save', async () => {
 
         const result = renderWithClient(<AddVehicleRule version="Breadcrumbs-Single" />);
-        const { addLine1Ele, cityEle, stateEle, yearEle, statusEle, productEle , cancelBtn,  saveBtn, formElem } = getAllElements(result);
+        const { addLine1Ele, cityEle, stateEle, yearEle, productEle , cancelBtn, formElem } = getAllElements(result);
 
 
         fireEvent.change(addLine1Ele, { target: {value: 'ABC Auto'} } );

@@ -58,7 +58,6 @@ export const handlers = [
     getConfigServiceDeliveryFreq(),
     getConfigServiceDays(),
     getVehicleRules(),
-    addVehicleRule(),
     getProductHandler(),
     postProductHandler(),
     putProductHandler(),
@@ -67,14 +66,8 @@ export const handlers = [
     getAllParkingLotsHandler(),
     getFormattedAddressHandler(),
     getGoogleAddressHandler(),
-<<<<<<< HEAD
-
     addVehicleRule(),
-=======
->>>>>>> 190c14680ec7ba2771389079ae6131ea71ab22e4
     rightInfoFilterHandler(),
-    addDspHandler(),
-    getCustomerHandler(),
     editDspHandler(),
     editProductHandler(),
     getFuelTaxList(),

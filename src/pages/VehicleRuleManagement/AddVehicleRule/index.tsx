@@ -82,8 +82,6 @@ const AddVehicleRule: React.FC<AddVehicleRuleProps> = () => {
         resetFormFieldValue();
     }, []);
 
-
-    // edit section starts
     const [isEditMode, setEditMode] = useState(false);
 
     const populateDataInAllFields = (formData: any) => {
