@@ -17,9 +17,6 @@ jest.mock('react-router-dom', () => ({
             to: '/addVehicleRule'
         })
     }),
-    // useParams: () => ({
-    //     customerId: '123',
-    // })
 }));
 
 function getAllElements (component: RenderResult) {
