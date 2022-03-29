@@ -48,7 +48,7 @@ function getAllElements (component: any) {
 }
 
 describe('sortby dsp name on users landing page', () => {
-    it('load data in form', async () => {
+    it('sort options on page load', async () => {
         const result = renderWithClient(<UserLandingContent version="Breadcrumbs-Many" />);
         const { sortBy } = getAllElements(result);
         userEvent.click(sortBy);
@@ -56,7 +56,17 @@ describe('sortby dsp name on users landing page', () => {
         await waitFor(() => {
             expect(result.getByText(/users_atoz/i)).toBeInTheDocument();
             expect(result.getByText(/users_ztoa/i)).toBeInTheDocument();
-            expect(result.getAllByText(/DSP/i));
+        });
+    });
+
+    it('perform users sorting', async () => {
+        const result = renderWithClient(<UserLandingContent version="Breadcrumbs-Many" />);
+        const { sortBy } = getAllElements(result);
+        userEvent.click(sortBy);
+
+        await waitFor(() => {
+            expect(result.getByText(/USER NAME/i)).toBeInTheDocument();
+            expect(result.getByText(/ID/i)).toBeInTheDocument();
         });
     });
 });
