@@ -1,4 +1,3 @@
-import { mount } from 'enzyme';
 import { cleanup, fireEvent, RenderResult, waitFor } from "@testing-library/react";
 import userEvent from '@testing-library/user-event';
 import selectEvent from 'react-select-event';
@@ -26,10 +25,8 @@ function getAllElements (component: RenderResult) {
     const yearEle = component.container.querySelector('#year') as HTMLInputElement;
     const statusEle = component.container.querySelector('#status') as HTMLInputElement;
     const productEle = component.container.querySelector('#product') as HTMLInputElement;
-    const cancelBtn = component.container.querySelector('#cancelBtn') as HTMLButtonElement;
     const saveBtn = component.container.querySelector('#saveBtn') as HTMLButtonElement;
-    const formElem = component.container.querySelector('#vehicleRuleform') as HTMLFormElement;
-    return { addLine1Ele, cityEle, stateEle, yearEle, statusEle, productEle, cancelBtn,  saveBtn, formElem };
+    return { addLine1Ele, cityEle, stateEle, yearEle, statusEle, productEle,  saveBtn };
 }
 
 
@@ -43,7 +40,7 @@ describe('Add vehicle Rule with success', () => {
     });
     it('Add vehicle Rule with success save btn', async () => {
         const result = renderWithClient(<AddVehicleRule version="Breadcrumbs-Single" />);
-        const { addLine1Ele, cityEle, stateEle, yearEle, statusEle, productEle , cancelBtn,  saveBtn, formElem } = getAllElements(result);
+        const { addLine1Ele, cityEle, stateEle, yearEle, statusEle, productEle ,  saveBtn } = getAllElements(result);
 
         selectEvent.select(statusEle, "Enabled");
         fireEvent.change(addLine1Ele, { target: {value: 'ABC Auto Sales Inc,  Rixeyville Rd,'} } );
@@ -69,7 +66,7 @@ describe('Add vehicle Rule with Error', () => {
     it('Add vehicle Rule with error on save', async () => {
 
         const result = renderWithClient(<AddVehicleRule version="Breadcrumbs-Single" />);
-        const { addLine1Ele, cityEle, stateEle, yearEle, productEle , cancelBtn, formElem } = getAllElements(result);
+        const { addLine1Ele, cityEle, stateEle, yearEle, productEle, saveBtn } = getAllElements(result);
 
 
         fireEvent.change(addLine1Ele, { target: {value: 'ABC Auto'} } );
