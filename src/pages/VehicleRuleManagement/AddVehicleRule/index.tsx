@@ -15,6 +15,7 @@ import { HorizontalBarVersionState, useStore, useShowConfirmationDialogBoxStore 
 import { AddVehicleRuleValidationSchema, EditVehicleRuleValidationSchema } from './validation';
 import { ProductsListSet } from '../../ProductManagementLanding/queries';
 import { getProductIcon, getInputHelperText, getInputError } from '../../../utils/helperFunctions';
+import { getProductIds, getFilteredProductsFromMainList } from './helperMethods';
 
 const initialValues = new VehicleRuleModel();
 
@@ -90,7 +91,7 @@ const AddVehicleRule: React.FC<AddVehicleRuleProps> = () => {
         formik.setFieldValue('countryCd', 'us');
         formik.setFieldValue('year', formData.yearNo);
         formik.setFieldValue('status', vehicleStatusList.filter((obj) => obj.value === formData.activeInactiveInd)[0]);
-        formik.setFieldValue('product',getFilteredProductsFromMainList(formData.vehicleRuleProducts));
+        formik.setFieldValue('product',getFilteredProductsFromMainList(formData.vehicleRuleProducts, productNameList));
     };
 
     const onGetVehicleRuleSuccess = (response: any) => {
@@ -124,9 +125,9 @@ const AddVehicleRule: React.FC<AddVehicleRuleProps> = () => {
         }, 6000);
     };
 
-    const onEditVehicleRuleError = (err: any) => {
+    const onEditVehicleRuleError = (errResponse: any) => {
         try {
-            const { data } = err.response;
+            const { data } = errResponse.response;
             setAPIResponse(true);
             setFormStatus({ message: data?.error?.message || formStatusProps.error.message, type: 'Error' });
             formik.setSubmitting(false);
@@ -198,13 +199,7 @@ const AddVehicleRule: React.FC<AddVehicleRuleProps> = () => {
         }
     }, [data]);
 
-    const getFilteredProductsFromMainList = (vehicleRuleProducts: any) => {
-        return productNameList?.filter((el:any) => {
-            return vehicleRuleProducts.some((f:any) => {
-              return f.productCd === el.value;
-            });
-          });
-    };
+    
 
     const getFuelNonFuelProductList = (list: any) => {
         const temp: any = [];
@@ -218,11 +213,7 @@ const AddVehicleRule: React.FC<AddVehicleRuleProps> = () => {
         return temp;
     };
 
-    const getProductIds = (arr: any) => {
-        const temp: any = [];
-        arr.map((obj: any) => temp.push(obj.value));
-        return temp;
-    };
+    
 
     const { mutate: addNewVehicleRule } = useAddVehicleRule(onAddVehicleRuleError, onAddVehicleRuleSuccess);
 
@@ -257,11 +248,11 @@ const AddVehicleRule: React.FC<AddVehicleRuleProps> = () => {
 
     const handleFormDataChange = () => {
         if (isEditMode) {
-        if (formik.dirty) {
-            if (formik.initialValues !== formik.values) {
-                isFormValidated(false);
+            if (formik.dirty) {
+                if (formik.initialValues !== formik.values) {
+                    isFormValidated(false);
+                }
             }
-        }
         }
         if (isFormFieldChange() && !formik.isSubmitting) {
             isFormValidated(true);
@@ -297,14 +288,11 @@ const AddVehicleRule: React.FC<AddVehicleRuleProps> = () => {
             navigate(`/vehicleRule`);
         }
     };
-    const disableButton = () => {
-        if (formik.dirty) {
-            return !formik.isValid || formik.isSubmitting;
-        } else {
-            return true;
-        }
-    };
 
+    const disableButton = () => {
+        return (!formik.isValid || !formik.dirty) || formik.isSubmitting;
+    };
+    
     const handleStatusChange = (field: any, value: any) => {
         formik.setFieldValue(field, value);
     };

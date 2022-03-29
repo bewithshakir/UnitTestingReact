@@ -27,7 +27,7 @@ export const addLotHeaderConfig = [
     index: 2,
   },
   {
-    label: "Items",
+    label: "Vehicles / Items",
     index: 3,
     containsValue: true,
     value: 0
