@@ -51,6 +51,8 @@ const getVehicleRule = async (ruleId: string) => {
         };
         const { data } = await axios(options);
         return data;
+    } else {
+        return [];
     }
 };
 

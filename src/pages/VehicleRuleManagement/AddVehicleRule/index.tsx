@@ -124,9 +124,9 @@ const AddVehicleRule: React.FC<AddVehicleRuleProps> = () => {
         }, 6000);
     };
 
-    const onEditVehicleRuleError = (err: any) => {
+    const onEditVehicleRuleError = (errResponse: any) => {
         try {
-            const { data } = err.response;
+            const { data } = errResponse.response;
             setAPIResponse(true);
             setFormStatus({ message: data?.error?.message || formStatusProps.error.message, type: 'Error' });
             formik.setSubmitting(false);
