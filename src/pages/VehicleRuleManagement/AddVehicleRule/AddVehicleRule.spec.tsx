@@ -23,112 +23,75 @@ jest.mock('react-router-dom', () => ({
 }));
 
 function getAllElements (component: RenderResult) {
-    const userGroupElem = component.container.querySelector('#userGroup') as HTMLInputElement;
-    const userEmailElem = component.container.querySelector('#email') as HTMLInputElement;
-    const userNameElem = component.container.querySelector('#userName') as HTMLInputElement;
-    const userPhoneElem = component.container.querySelector('#phone') as HTMLInputElement;
-    const verifyUserLink = component.container.querySelector('#verify-user-link') as HTMLAnchorElement;
+    const addLine1Ele = component.container.querySelector('#addLine1') as HTMLInputElement;
+    const cityEle = component.container.querySelector('#city') as HTMLInputElement;
+    const stateEle = component.container.querySelector('#state') as HTMLInputElement;
+    const yearEle = component.container.querySelector('#year') as HTMLInputElement;
+    const statusEle = component.container.querySelector('#status') as HTMLInputElement;
+    const productEle = component.container.querySelector('#product') as HTMLInputElement;
     const cancelBtn = component.container.querySelector('#cancelBtn') as HTMLButtonElement;
     const saveBtn = component.container.querySelector('#saveBtn') as HTMLButtonElement;
-    const formElem = component.container.querySelector('#form') as HTMLFormElement;
-    return { userGroupElem, userEmailElem, userNameElem, userPhoneElem, verifyUserLink, cancelBtn, saveBtn, formElem };
+    const formElem = component.container.querySelector('#vehicleRuleform') as HTMLFormElement;
+    return { addLine1Ele, cityEle, stateEle, yearEle, statusEle, productEle, cancelBtn,  saveBtn, formElem };
 }
 
 
 afterEach(cleanup);
 
-describe('AddUser with success', () => {
+describe('Add vehicle Rule with success', () => {
 
-    it('Add product snapshot testing overall', () => {
+    it('Add vehicle Rule snapshot testing overall', () => {
         const component = renderWithClient(<AddVehicleRule version="Breadcrumbs-Single"  />);
         expect(component).toBeDefined();
         expect(component).toMatchSnapshot();
     });
-    // it('Add user with success save', async () => {
-    //     const result = renderWithClient(<AddVehicleRule version="Breadcrumbs-Single" />);
-    //     const { userEmailElem, userGroupElem, verifyUserLink, saveBtn, userNameElem } = getAllElements(result);
+    it('Add vehicle Rule with success save btn', async () => {
+        const result = renderWithClient(<AddVehicleRule version="Breadcrumbs-Single" />);
+        const { addLine1Ele, cityEle, stateEle, yearEle, statusEle, productEle , cancelBtn,  saveBtn, formElem } = getAllElements(result);
 
-    //     // Choose USER GROUP
-    //     await selectEvent.select(userGroupElem, ["DSP"]);
+        await selectEvent.select(statusEle, "Enabled");
 
-    //     // Type EMAIL
-    //     await waitFor(() => {
-    //         fireEvent.change(userEmailElem, { target: { value: 'xyz@gmail.com' } });
-    //     });
+        waitFor(() => {
+            fireEvent.change(addLine1Ele, { target: {value: 'ABC Auto Sales Inc,  Rixeyville Rd,'} } );
+            fireEvent.change(stateEle, { target: { value: 'VA' } });
+            fireEvent.change(cityEle, { target: { value: 'Culpeper' } });
+            fireEvent.change(yearEle, { target: { value: '2001' } });
+            selectEvent.select(productEle, ["Barun 1 test"]);
+        });
 
-    //     // Click Verify
-    //     await waitFor(() => {
-    //         userEvent.click(verifyUserLink);
-    //     });
+         await waitFor(() => {
+            expect(saveBtn).toBeEnabled();
+            userEvent.click(saveBtn);
+        });
 
-    //     // Find USER NAME OR Phone
-    //     await waitFor(() => {
-    //         expect(userNameElem).toHaveValue("Nikhil Patel");
-    //     });
+         await waitFor(() => {
+            expect(result.getByText('Data added successfully.')).toBeInTheDocument();
+        });
 
-    //     // Select USER GROUP ACCESS LEVEL
-    //     const viewOnlyRadio = result.getByRole("radio", { name: "View only" }) as HTMLInputElement;
-    //     fireEvent.click(viewOnlyRadio);
-
-    //     // Choose DSP
-    //     await waitFor(() => {
-    //         const userDSP = result.container.querySelector('#dsp') as HTMLInputElement;
-    //         selectEvent.select(userDSP, ["KrrishTest"]);
-    //     });
-
-    //     // Click Save
-    //     await waitFor(() => {
-    //         expect(saveBtn).toBeEnabled();
-    //         userEvent.click(saveBtn);
-    //     });
-
-    //     // Final Success Toast
-    //     await waitFor(() => {
-    //         expect(result.getByText('formStatusProps.success.message')).toBeInTheDocument();
-    //     });
-    // });
+    });
 });
 
-// describe('AddUser with Error', () => {
-//     it('Add user with error on save', async () => {
-//         const result = renderWithClient(<AddUser version="Breadcrumbs-Single" />);
-//         const { userEmailElem, userGroupElem, verifyUserLink, saveBtn, userNameElem } = getAllElements(result);
+describe('Add vehicle Rule with Error', () => {
+    it('Add vehicle Rule with error on save', async () => {
+        const result = renderWithClient(<AddVehicleRule version="Breadcrumbs-Single" />);
+        const { addLine1Ele, cityEle, stateEle, yearEle, statusEle, productEle , cancelBtn,  saveBtn, formElem } = getAllElements(result);
+        await selectEvent.select(statusEle, "Enabled");
 
-//         // Choose USER GROUP
-//         await selectEvent.select(userGroupElem, ["DSP"]);
+        waitFor(() => {
+            fireEvent.change(addLine1Ele, { target: {value: 'ABC Auto Sales Inc,  Rixeyville Rd,'} } );
+            fireEvent.change(stateEle, { target: { value: 'VA' } });
+            fireEvent.change(cityEle, { target: { value: 'Culpeper' } });
+            fireEvent.change(yearEle, { target: { value: '2009' } });
+            selectEvent.select(productEle, ["Regular-Ethanol 12"]);
+        });
 
-//         // Type EMAIL
-//         await waitFor(() => {
-//             fireEvent.change(userEmailElem, { target: { value: 'abc@gmail.com' } });
-//         });
+         await waitFor(() => {
+            expect(saveBtn).toBeEnabled();
+            userEvent.click(saveBtn);
+        });
 
-//         // Click Verify
-//         userEvent.click(verifyUserLink);
-
-//         // Find USER NAME OR Phone
-//         await waitFor(() => {
-//             expect(userNameElem).toHaveValue("Nikhil Patel");
-//         });
-
-//         // Select USER GROUP ACCESS LEVEL
-//         const viewOnlyRadio = result.getByRole("radio", { name: "View only" }) as HTMLInputElement;
-//         fireEvent.click(viewOnlyRadio);
-
-//         // Choose DSP
-//         await waitFor(() => {
-//             const userDSP = result.container.querySelector('#dsp') as HTMLInputElement;
-//             selectEvent.select(userDSP, ["KrrishTest"]);
-//         });
-
-//         // Click Save
-//         await waitFor(() => {
-//             expect(saveBtn).toBeEnabled();
-//             userEvent.click(saveBtn);
-//         });
-
-//         // Final Error Toast
-//         await waitFor(() => {
-//             expect(result.getByText('Shell Digital account with given is already added')).toBeInTheDocument();
-//         });
-//     });
-// });
+         await waitFor(() => {
+            expect(result.getByText('Something went wrong. Please try again.')).toBeInTheDocument();
+        });
+    });
+});

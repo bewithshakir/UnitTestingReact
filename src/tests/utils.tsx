@@ -71,6 +71,7 @@ export const handlers = [
     getFormattedAddressHandler(),
     getGoogleAddressHandler(),
 
+    addVehicleRule(),
     rightInfoFilterHandler(),
     getCustomerList(),
     addDspHandler(),

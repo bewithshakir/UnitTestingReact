@@ -44,10 +44,6 @@ describe('Rendering of Add product in Parking lot', () => {
         expect(component.find(Select).exists()).toBe(true);
         expect(component.find(Select)).toHaveLength(3);
     });
-    it('Add product with informative text', () => {
-        const component = mount(<ReactQuery.QueryClientProvider client={queryClient}> <AddProduct lotId="" productId="" disableAddEditButton={true} isHiddenAddEditRow={true} /> </ReactQuery.QueryClientProvider >);
-        expect(component.find('.opis-rack-info-text').exists()).toBe(true);
-    });
 });
 
 afterAll(() => {

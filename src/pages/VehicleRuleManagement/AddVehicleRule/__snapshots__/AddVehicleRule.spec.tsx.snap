@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AddUser with success Add product snapshot testing overall 1`] = `
+exports[`Add vehicle Rule with success Add vehicle Rule snapshot testing overall 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": <body>
@@ -16,6 +16,7 @@ Object {
           >
             <form
               data-test="component-AddVehicleRule"
+              id="vehicleRuleform"
             >
               <h3
                 class="MuiTypography-root MuiTypography-h3 MuiTypography-gutterBottom fw-bold css-1h1br7j-MuiTypography-root"
@@ -40,7 +41,7 @@ Object {
                         aria-required="true"
                         class="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary css-1kty9di-MuiFormLabel-root-MuiInputLabel-root"
                         data-shrink="true"
-                        for="select-label"
+                        for="addLine1"
                       >
                         <b>
                           TAXES.SALESTAX.FORM.LABELLOCATION
@@ -87,7 +88,7 @@ Object {
                                 autocomplete="off"
                                 autocorrect="off"
                                 class="react-select__input"
-                                id="select-label"
+                                id="addLine1"
                                 role="combobox"
                                 spellcheck="false"
                                 style="opacity: 1; width: 100%; grid-area: 1 / 2; min-width: 2px; border: 0px; margin: 0px; outline: 0; padding: 0px;"
@@ -454,6 +455,7 @@ Object {
                         aria-label="buttons.cancel"
                         class="MuiButtonBase-root MuiButton-root MuiButton-contained btn-cancel mr-4"
                         data-test="cancel"
+                        id="cancelBtn"
                         tabindex="0"
                         type="button"
                       >
@@ -471,6 +473,7 @@ Object {
                         class="MuiButtonBase-root MuiButton-root MuiButton-contained btn-save ml-4 Mui-disabled Mui-disabled"
                         data-test="save"
                         disabled=""
+                        id="saveBtn"
                         tabindex="-1"
                         type="submit"
                       >
@@ -506,6 +509,7 @@ Object {
         >
           <form
             data-test="component-AddVehicleRule"
+            id="vehicleRuleform"
           >
             <h3
               class="MuiTypography-root MuiTypography-h3 MuiTypography-gutterBottom fw-bold css-1h1br7j-MuiTypography-root"
@@ -530,7 +534,7 @@ Object {
                       aria-required="true"
                       class="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary css-1kty9di-MuiFormLabel-root-MuiInputLabel-root"
                       data-shrink="true"
-                      for="select-label"
+                      for="addLine1"
                     >
                       <b>
                         TAXES.SALESTAX.FORM.LABELLOCATION
@@ -577,7 +581,7 @@ Object {
                               autocomplete="off"
                               autocorrect="off"
                               class="react-select__input"
-                              id="select-label"
+                              id="addLine1"
                               role="combobox"
                               spellcheck="false"
                               style="opacity: 1; width: 100%; grid-area: 1 / 2; min-width: 2px; border: 0px; margin: 0px; outline: 0; padding: 0px;"
@@ -944,6 +948,7 @@ Object {
                       aria-label="buttons.cancel"
                       class="MuiButtonBase-root MuiButton-root MuiButton-contained btn-cancel mr-4"
                       data-test="cancel"
+                      id="cancelBtn"
                       tabindex="0"
                       type="button"
                     >
@@ -961,6 +966,7 @@ Object {
                       class="MuiButtonBase-root MuiButton-root MuiButton-contained btn-save ml-4 Mui-disabled Mui-disabled"
                       data-test="save"
                       disabled=""
+                      id="saveBtn"
                       tabindex="-1"
                       type="submit"
                     >

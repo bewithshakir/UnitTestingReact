@@ -311,12 +311,13 @@ const AddVehicleRule: React.FC<AddVehicleRuleProps> = () => {
         formik.setFieldValue(field, value);
     };
 
-    return (
+return (
         <Box display="flex" className="global_main_wrapper">
             <Grid item md={10} xs={10}>
                 <Container maxWidth="lg" className="page-container">
 
                     <form 
+                    id='vehicleRuleform'
                     onSubmit={formik.handleSubmit} 
                     onBlur={handleFormDataChange} 
                     data-test="component-AddVehicleRule" >
@@ -327,6 +328,7 @@ const AddVehicleRule: React.FC<AddVehicleRuleProps> = () => {
                             <Grid item xs={12} md={12} pr={2.5} pb={2.5}>
                                 <Grid item xs={12} md={6}>
                                     <AutocompleteInput
+                                        id="addLine1"
                                         name='addressLine1'
                                         label={t("taxes.salesTax.form.labelLocation")}
                                         onChange={handleGoogleAddressChange}
@@ -431,6 +433,7 @@ const AddVehicleRule: React.FC<AddVehicleRuleProps> = () => {
                                 <Grid item xs={12} md={6}>
                                     <Box className="form-action-section">
                                         <Button
+                                            id="cancelBtn"
                                             types="cancel"
                                             aria-label={t("buttons.cancel")}
                                             className="mr-4"
@@ -440,6 +443,7 @@ const AddVehicleRule: React.FC<AddVehicleRuleProps> = () => {
                                             {t("buttons.cancel")}
                                         </Button>
                                         <Button
+                                            id="saveBtn"
                                             type="submit"
                                             types="save"
                                             aria-label={t("buttons.save")}
