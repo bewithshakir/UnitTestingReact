@@ -202,7 +202,7 @@ export const DynamicFilterContent: React.FC<IDynamicFilterProps> = ({ provideFil
     });
 
     return <FormikProvider value={formik}>
-        <form onSubmit={formik.handleSubmit} onReset={formik.handleReset} className="dynamicForm">
+        <form onSubmit={formik.handleSubmit} onReset={formik.handleReset} className="dynamicForm" data-testid="filterFormik">
             <Grid container direction="column" className="sContainer">
                 {fields && fields.map(field => {
                     const touched = (formik.touched as any)[field.name];
@@ -378,6 +378,7 @@ export const DynamicFilterContent: React.FC<IDynamicFilterProps> = ({ provideFil
                 <Grid item className="lastItem" container direction="row" justifyContent="flex-end" >
                     <Grid item m={2} >
                         <ClearBtn
+                            data-testid="clearAll"
                             id="clearAll"
                             type="reset"
                             types="cancel"

@@ -208,7 +208,11 @@
     "results found": "results found",
     "result(s) found": "result(s) found",
     "filterHeader": "Filters",
-    "nodataMsg": "Add User by clicking on add User or any related sentence."
+    "nodataMsg": "Add User by clicking on add User or any related sentence.",
+    "sortBy": {
+      "users_atoz": "User Name A-Z",
+      "users_ztoa": "User Name Z-A"
+    }
   },
   "addUser": {
     "title": "Add User",
@@ -529,7 +533,9 @@
     "driver": "Driver",
     "state": "State",
     "city": "City",
-    "zip": "Zip"
+    "zip": "Zip",
+    "date": "Date",
+    "userGroup":"User Group"
   },
   "addTruckFormLabels": {
     "addTruckTitle": "Add Truck",

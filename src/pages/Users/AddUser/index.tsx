@@ -4,13 +4,14 @@ import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate, useParams } from 'react-router-dom';
 import Select from '../../../components/UIComponents/Select/SingleSelect';
-import UserModel from "../../../models/UserModel";
+import UserModel, { SelectProps } from "../../../models/UserModel";
 import { getCountryCode } from '../../../navigation/utils';
 import { HorizontalBarVersionState, useAddedCustomerIdStore, useAddedCustomerPaymentTypeStore, useShowConfirmationDialogBoxStore, useStore } from '../../../store';
 import { toastErrorKey, toastSuccessKey, toastEditSuccessKey } from '../../../utils/constants';
+import { userGroupDriverStr } from '../config';
 import DSPUserListSegment from './DSPUserListSegment';
 import FormActionSegment from './FormActionSegment';
-import { useAddUser, useGetUserDetails, useGetUserGroupTypes, useGetUserPermissionList, userGetUserDSPList, UserGoupsInt, useUpdateUserData, useVarifyUser } from './queries';
+import { useAddUser, useGetUserDetails, useGetUserGroupTypes, useGetUserPermissionList, userGetUserDSPList, useUpdateUserData, useVarifyUser } from './queries';
 import UserAccessLevelSegment from './UserAccessLevelSegment';
 import UserVerificationSegment from './UserVerificationSegment';
 import { AddUserSchema, isUserGroupErrorExist, userGroupHelperText } from "./validation";
@@ -208,7 +209,9 @@ const AddUser: React.FC<AddUserProps> = () => {
                                 label={t("addUser.form.userGroup")}
                                 placeholder='Choose'
                                 value={formik.values.userGroup}
-                                items={userGroupList?.filter((usrGrpObj: UserGoupsInt) => usrGrpObj.type.includes(selectedPaymentType)) || []}
+                                items={userGroupList?.filter((usrGrpObj: SelectProps) =>
+                                    (usrGrpObj.label !== userGroupDriverStr && usrGrpObj?.type?.includes(selectedPaymentType))
+                                ) || []}
                                 helperText={userGroupHelperText(formik)}
                                 error={isUserGroupErrorExist(formik)}
                                 onChange={formik.setFieldValue}
