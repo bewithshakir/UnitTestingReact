@@ -15,7 +15,7 @@ import { HorizontalBarVersionState, useStore, useShowConfirmationDialogBoxStore 
 import { AddVehicleRuleValidationSchema, EditVehicleRuleValidationSchema } from './validation';
 import { ProductsListSet } from '../../ProductManagementLanding/queries';
 import { getProductIcon, getInputHelperText, getInputError } from '../../../utils/helperFunctions';
-import { getProductIds, getFilteredProductsFromMainList } from './helperMethods';
+import { getProductIds, getFilteredProductsFromMainList, isFuelNonFuelProduct } from './helperMethods';
 
 const initialValues = new VehicleRuleModel();
 
@@ -208,14 +208,14 @@ const AddVehicleRule: React.FC<AddVehicleRuleProps> = () => {
     const getFuelNonFuelProductList = (list: any) => {
         const temp: any = [];
         list.map((obj: any) => {
-            if (obj.ProductGroup.productGroupNm === ("Fuel" || "Non-Fuel")) {
+            isFuelNonFuelProduct(obj) &&
                 temp.push({ 
                     label: '' + obj.productNm, 
                     value: '' + obj.productCd, 
                     icon: <Icon component={getProductIcon(obj.ProductIcon.productIconNm)}></Icon>, 
                     productDetail: obj 
                 });
-            }
+            
         });
         return temp;
     };

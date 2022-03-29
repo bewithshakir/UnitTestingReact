@@ -13,3 +13,11 @@ export const getFilteredProductsFromMainList = (vehicleRuleProducts: any, produc
         });
     });
 };
+
+export const isFuelNonFuelProduct = (obj: any) => {
+    if (obj.ProductGroup.productGroupNm === ("Fuel" || "Non-Fuel")) {
+        return true;
+    } else {
+        return false;
+    }
+};
