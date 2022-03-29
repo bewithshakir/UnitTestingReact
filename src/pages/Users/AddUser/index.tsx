@@ -209,7 +209,9 @@ const AddUser: React.FC<AddUserProps> = () => {
                                 label={t("addUser.form.userGroup")}
                                 placeholder='Choose'
                                 value={formik.values.userGroup}
-                                items={userGroupList?.filter((usrGrpObj: SelectProps) => (usrGrpObj.label !== userGroupDriverStr && usrGrpObj?.type?.includes(selectedPaymentType))) || []}
+                                items={userGroupList?.filter((usrGrpObj: SelectProps) =>
+                                    (usrGrpObj.label !== userGroupDriverStr && usrGrpObj?.type?.includes(selectedPaymentType))
+                                ) || []}
                                 helperText={userGroupHelperText(formik)}
                                 error={isUserGroupErrorExist(formik)}
                                 onChange={formik.setFieldValue}
