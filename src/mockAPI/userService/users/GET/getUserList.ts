@@ -1,7 +1,9 @@
-import { DefaultRequestBody, ResponseComposition, RestContext } from "msw";
+import { DefaultRequestBody, PathParams, ResponseComposition, RestContext, RestRequest } from "msw";
 
-const getUserListHandler = (res: ResponseComposition<DefaultRequestBody>, ctx: RestContext) =>
-    res(
+const getUserListHandler = (req: RestRequest<never, PathParams>, res: ResponseComposition<DefaultRequestBody>, ctx: RestContext) => {
+
+    const customerId = req.url.searchParams.get('customerId');
+    return res(
         ctx.status(200),
         ctx.json({
             data: {
@@ -10,7 +12,44 @@ const getUserListHandler = (res: ResponseComposition<DefaultRequestBody>, ctx: R
                     "limit": 10,
                     "offset": 0
                 },
-                users: [
+                users: !customerId ? [
+                    {
+                        "userId": "ID-4536",
+                        "shellDigitalAccountId": "ID-123",
+                        "firstNm": "USER NAME",
+                        "lastNm": "USER NAME",
+                        "email": "dsp@shell.com",
+                        "phone": null,
+                        "customerId": "ID-344-4536",
+                        "dspId": "ID-9878-5600",
+                        "createdDtm": "2022-04-21T10:41:11.603Z",
+                        "userGroup": [
+                            {
+                                "userGroupCd": "4fba423054-fc0d-4d60-88fd-dab70c7611b9",
+                                "userGroupNm": "DSP"
+                            }
+                        ],
+                        "fullName": 'test test'
+                    },
+                    {
+                        "userId": "ID-4536",
+                        "shellDigitalAccountId": "ID-123",
+                        "firstNm": "USER NAME",
+                        "lastNm": "USER NAME",
+                        "email": "dsp1@bacancy.com",
+                        "phone": null,
+                        "customerId": "ID-34456-4536",
+                        "dspId": "ID-9878-5646",
+                        "createdDtm": "2022-05-21T10:41:11.603Z",
+                        "userGroup": [
+                            {
+                                "userGroupCd": "4fba40674-fc0d-4d60-88fd-dab70c7611b9",
+                                "userGroupNm": "DSP"
+                            }
+                        ],
+                        "fullName": 'test test'
+                    }
+                ] : [
                     {
                         "userId": "ID-4536",
                         "shellDigitalAccountId": "ID-123",
@@ -52,5 +91,6 @@ const getUserListHandler = (res: ResponseComposition<DefaultRequestBody>, ctx: R
             "error": null
         })
     );
+}
 
 export default getUserListHandler;
