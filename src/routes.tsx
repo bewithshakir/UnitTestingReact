@@ -38,6 +38,7 @@ const TruckLanding = lazy(() => import("./pages/Truck"));
 const AddTruck = lazy(() => import('./pages/Truck/AddTruck'));
 const VehicleRule = lazy(() => import('./pages/VehicleRuleManagement/'));
 const AddVehicleRule = lazy(() => import('./pages/VehicleRuleManagement/AddVehicleRule'));
+const UsersLandingGeneric = lazy(()=> import('./pages/UsersManagement'));
 
 
 export const routes: RouteObject[] = [
@@ -110,6 +111,10 @@ export const routes: RouteObject[] = [
   {
     path: "/parkinglots",
     element: <ParkingLotLandingPage version='NavLinks' />,
+  },
+  {
+    path: "/users",
+    element: <UsersLandingGeneric version='NavLinks' />,
   },
   {
     path: "/taxes",
