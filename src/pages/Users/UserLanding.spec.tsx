@@ -24,7 +24,7 @@ describe('Rendering of User Landing Component', () => {
     it('check user landing page DOM', async () => {
         const result = renderWithClient(<UserLandingContent version="Breadcrumbs-Many" />);
         await waitFor(() => {
-            expect(result.container.querySelector('#filter')).toBeInTheDocument();
+            expect(result.getByTestId('filter')).toBeInTheDocument();
             expect(result.container.querySelector('#userSort')).toBeInTheDocument();
             expect(result.container.querySelector('#userSearch')).toBeInTheDocument();
         });

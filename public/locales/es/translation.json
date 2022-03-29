@@ -229,6 +229,8 @@
     }
   },
   "filterForm": {
+    "date": "Fecha",
+    "userGroup":"Grupo de usuario",
     "status": "Estado",
     "driver": "Conductor",
     "state": "Estado",

@@ -229,6 +229,8 @@
     }
   },
   "filterForm": {
+    "date": "Date",
+    "userGroup":"Groupe d'utilisateurs",
     "status": "Statut",
     "driver": "Chauffeur",
     "state": "État",

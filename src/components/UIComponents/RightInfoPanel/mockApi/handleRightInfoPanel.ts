@@ -16,7 +16,10 @@ export const rightInfoFilterHandler = () => {
                     "zipCodes": [
                         "20166",
                         "22827"
-                    ]
+                    ],
+                    "userGroups": [
+                        "user filter test"
+                    ],
                 },
                 error: null
             })

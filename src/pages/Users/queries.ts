@@ -3,6 +3,17 @@ import { AxiosRequestConfig } from "axios";
 import axios from "../../infrastructure/ApiHelper";
 import { pageDataLimit } from "../../utils/constants";
 
+function getQueryStr(query: any) {
+    if(query) {
+        if (query.toString().length) {
+            return `&countryCode=us&${query.toString()}`;
+        }
+        return '&countryCode=us';
+        
+    }
+    return '&countryCode=us';
+}
+
 const getUsersList = async (pageParam: number, 
                             searchTerm: string, 
                             sortOrder: { sortBy: string, order: string }, 

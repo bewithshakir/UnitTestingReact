@@ -533,7 +533,9 @@
     "driver": "Driver",
     "state": "State",
     "city": "City",
-    "zip": "Zip"
+    "zip": "Zip",
+    "date": "Date",
+    "userGroup":"User Group"
   },
   "addTruckFormLabels": {
     "addTruckTitle": "Add Truck",
