@@ -12,3 +12,4 @@ export const SettlementTypes = {
 };
 
 export const userGroupStr = "DSP";
+export const userGroupDriverStr = "Driver";
