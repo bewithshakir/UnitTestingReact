@@ -1,6 +1,6 @@
 import { renderHook, act } from '@testing-library/react-hooks';
 import { createWrapper } from '../../tests/utils';
-import { useAddVehicleRule} from './AddVehicleRule/queries';
+import { useAddVehicleRule, useEditVehicleRule} from './AddVehicleRule/queries';
 import { serverMsw } from "../../setupTests";
 import { rest } from 'msw';
 
@@ -26,6 +26,17 @@ const addVehicleRulePayload = {
     ],
     "activeInactiveInd": "Y"
   }
+
+  const editVehicleRulePayload ={
+    "countryCode": "us",
+    "city": "Culpeper",
+    "state": "VA",
+    "yearNo": "2007",
+    "productId": [
+      "dd36329a-f802-47a4-9551-e6eb6f35634f"
+    ],
+    "activeInactiveInd": "Y"
+  };
 describe('save vehicle rule', () => {
     
     it('succesfully added vehicle rule', async()=> {
@@ -61,5 +72,22 @@ describe('save vehicle rule', () => {
         });
         expect(result.current.error).toBeDefined();
 
+    });
+});
+
+describe('edit vehicle rule', () => {
+    
+    it('succesfully edited vehicle rule', async()=> {
+        const { result, waitFor } = renderHook(()=> useEditVehicleRule('aa87757d-8e84-485c-a324-6e4b7e83a84e', jest.fn(), jest.fn()), {
+            wrapper: createWrapper()
+        });
+        act(()=> {
+            result.current.mutate(editVehicleRulePayload as any);
+        });
+        await waitFor(()=> {
+            return result.current.isSuccess;
+        });
+
+        expect(result.current.status).toBe('success');
     });
 });

@@ -52,6 +52,8 @@ import { addVehicleRule } from '../mockAPI/vehicleService/vehicleRules/POST';
 import { getVehicleColorsHandler } from '../mockAPI/vehicleService/vehicleColors/GET';
 import { getVehicleTypeHandler } from '../mockAPI/vehicleService/vehicleTypes/GET';
 import { addVehicleAssetHandler } from '../mockAPI/vehicleService/vehicleAsset/POST';
+import { editVehicleRule } from '../mockAPI/vehicleService/vehicleRules/PUT';
+
 
 export const handlers = [
     getCustomerContactTypesHandler(),
@@ -107,6 +109,8 @@ export const handlers = [
     postUserHandler(),
     putUserHandler(),
     getCustomerHandler(),
+    getVehicleDetails(),
+    editVehicleRule()
 ];
 
 const createTestQueryClient = () => new QueryClient({
