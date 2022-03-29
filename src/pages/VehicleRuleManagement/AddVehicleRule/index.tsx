@@ -85,6 +85,10 @@ const AddVehicleRule: React.FC<AddVehicleRuleProps> = () => {
 
     const [isEditMode, setEditMode] = useState(false);
 
+    const updateFormStatus = (data: any) => {
+        setFormStatus({ message: data?.error?.message || formStatusProps.error.message, type: 'Error' });
+    };
+
     const populateDataInAllFields = (formData: any) => {
         formik.setFieldValue('city', formData.city);
         formik.setFieldValue('state', formData.state);
@@ -104,7 +108,7 @@ const AddVehicleRule: React.FC<AddVehicleRuleProps> = () => {
         try {
             const { data } = err.response;
             setAPIResponse(true);
-            setFormStatus({ message: data?.error?.message || formStatusProps.error.message, type: 'Error' });
+            updateFormStatus(data);
             formik.setSubmitting(false);
             setTimeout(() => {
                 setAPIResponse(false);
@@ -129,7 +133,7 @@ const AddVehicleRule: React.FC<AddVehicleRuleProps> = () => {
         try {
             const { data } = errResponse.response;
             setAPIResponse(true);
-            setFormStatus({ message: data?.error?.message || formStatusProps.error.message, type: 'Error' });
+            updateFormStatus(data);
             formik.setSubmitting(false);
             setTimeout(() => {
                 setAPIResponse(false);
@@ -172,7 +176,7 @@ const AddVehicleRule: React.FC<AddVehicleRuleProps> = () => {
         try {
             const { errorData } = err.response;
             setAPIResponse(true);
-            setFormStatus({ message: errorData?.error?.message || formStatusProps.error.message, type: 'Error' });
+            updateFormStatus(errorData);
             formik.setSubmitting(false);
             setTimeout(() => {
                 setAPIResponse(false);
