@@ -48,22 +48,19 @@ describe('Add vehicle Rule with success', () => {
         const result = renderWithClient(<AddVehicleRule version="Breadcrumbs-Single" />);
         const { addLine1Ele, cityEle, stateEle, yearEle, statusEle, productEle , cancelBtn,  saveBtn, formElem } = getAllElements(result);
 
-        await selectEvent.select(statusEle, "Enabled");
-
-        waitFor(() => {
-            fireEvent.change(addLine1Ele, { target: {value: 'ABC Auto Sales Inc,  Rixeyville Rd,'} } );
-            fireEvent.change(stateEle, { target: { value: 'VA' } });
-            fireEvent.change(cityEle, { target: { value: 'Culpeper' } });
-            fireEvent.change(yearEle, { target: { value: '2001' } });
-            selectEvent.select(productEle, ["Barun 1 test"]);
-        });
+        selectEvent.select(statusEle, "Enabled");
+        fireEvent.change(addLine1Ele, { target: {value: 'ABC Auto Sales Inc,  Rixeyville Rd,'} } );
+        fireEvent.change(stateEle, { target: { value: 'VA' } });
+        fireEvent.change(cityEle, { target: { value: 'Culpeper' } });
+        fireEvent.change(yearEle, { target: { value: '2001' } });
+        selectEvent.select(productEle, ["Barun 1 test"]);
 
          await waitFor(() => {
             expect(saveBtn).toBeEnabled();
             userEvent.click(saveBtn);
         });
 
-         await waitFor(() => {
+        waitFor(() => {
             expect(result.getByText('Data added successfully.')).toBeInTheDocument();
         });
 
@@ -73,45 +70,24 @@ describe('Add vehicle Rule with success', () => {
 describe('Add vehicle Rule with Error', () => {
 
     it('Add vehicle Rule with error on save', async () => {
-        // serverMsw.use(
-        //     rest.post('*', (req, res, ctx) => {
-        //         return res(
-        //             ctx.status(500)
-        //         );
-        //     })
-        // );
 
         const result = renderWithClient(<AddVehicleRule version="Breadcrumbs-Single" />);
         const { addLine1Ele, cityEle, stateEle, yearEle, statusEle, productEle , cancelBtn,  saveBtn, formElem } = getAllElements(result);
 
-        fireEvent.change(addLine1Ele, {target: {value: 'El'}});
 
-        console.log('111');
-        await selectEvent.select(addLine1Ele, ["Elkton Test"]);
-        console.log('222');
-        // result.debug(await result.findByTestId('address-line'));
-       
+        fireEvent.change(addLine1Ele, { target: {value: 'ABC Auto'} } );
+        fireEvent.change(stateEle, { target: { value: 'VA' } });
+        fireEvent.change(cityEle, { target: { value: 'Culpeper' } });
+        fireEvent.change(yearEle, { target: { value: '2009' } });
+        selectEvent.select(productEle, ["Regular-Ethanol 12"]);
+    
+         await waitFor(() => {
+            expect(saveBtn).toBeEnabled();
+            userEvent.click(saveBtn);
+        });
 
-
-
-        // await selectEvent.select(statusEle, "Enabled");
-
-
-        // waitFor(() => {
-        //     fireEvent.change(addLine1Ele, { target: {value: 'ABC Auto'} } );
-        //     fireEvent.change(stateEle, { target: { value: 'VA' } });
-        //     fireEvent.change(cityEle, { target: { value: 'Culpeper' } });
-        //     fireEvent.change(yearEle, { target: { value: '2009' } });
-        //     selectEvent.select(productEle, ["Regular-Ethanol 12"]);
-        // });
-
-        //  await waitFor(() => {
-        //     expect(saveBtn).toBeEnabled();
-        //     userEvent.click(saveBtn);
-        // });
-
-        //  await waitFor(() => {
-        //     expect(result.getByText('Something went wrong. Please try again.')).toBeInTheDocument();
-        // });
+        waitFor(() => {
+            expect(result.getByText('Something went wrong. Please try again.')).toBeInTheDocument();
+        });
     });
 });
