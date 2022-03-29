@@ -15,7 +15,7 @@ import { HorizontalBarVersionState, useStore, useShowConfirmationDialogBoxStore 
 import { AddVehicleRuleValidationSchema, EditVehicleRuleValidationSchema } from './validation';
 import { ProductsListSet } from '../../ProductManagementLanding/queries';
 import { getProductIcon, getInputHelperText, getInputError } from '../../../utils/helperFunctions';
-
+import { getProductIds } from './helperMethods';
 const initialValues = new VehicleRuleModel();
 
 export interface AddVehicleRuleProps {
@@ -218,11 +218,7 @@ const AddVehicleRule: React.FC<AddVehicleRuleProps> = () => {
         return temp;
     };
 
-    const getProductIds = (arr: any) => {
-        const temp: any = [];
-        arr.map((obj: any) => temp.push(obj.value));
-        return temp;
-    };
+    
 
     const { mutate: addNewVehicleRule } = useAddVehicleRule(onAddVehicleRuleError, onAddVehicleRuleSuccess);
 
@@ -257,11 +253,11 @@ const AddVehicleRule: React.FC<AddVehicleRuleProps> = () => {
 
     const handleFormDataChange = () => {
         if (isEditMode) {
-        if (formik.dirty) {
-            if (formik.initialValues !== formik.values) {
-                isFormValidated(false);
+            if (formik.dirty) {
+                if (formik.initialValues !== formik.values) {
+                    isFormValidated(false);
+                }
             }
-        }
         }
         if (isFormFieldChange() && !formik.isSubmitting) {
             isFormValidated(true);
