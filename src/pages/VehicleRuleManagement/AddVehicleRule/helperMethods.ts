@@ -13,3 +13,5 @@ export const getFilteredProductsFromMainList = (vehicleRuleProducts: any, produc
         });
     });
 };
+
+//sonar check
