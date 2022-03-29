@@ -208,7 +208,7 @@ const AddVehicleRule: React.FC<AddVehicleRuleProps> = () => {
     const getFuelNonFuelProductList = (list: any) => {
         const temp: any = [];
         list.map((obj: any) => {
-            if ((obj.ProductGroup.productGroupNm === "Fuel") || (obj.ProductGroup.productGroupNm === "Non-Fuel")) {
+            if (obj.ProductGroup.productGroupNm === ("Fuel" || "Non-Fuel")) {
                 temp.push({ 
                     label: '' + obj.productNm, 
                     value: '' + obj.productCd, 
