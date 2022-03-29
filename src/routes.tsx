@@ -38,6 +38,7 @@ const TruckLanding = lazy(() => import("./pages/Truck"));
 const AddTruck = lazy(() => import('./pages/Truck/AddTruck'));
 const VehicleRule = lazy(() => import('./pages/VehicleRuleManagement/'));
 const AddVehicleRule = lazy(() => import('./pages/VehicleRuleManagement/AddVehicleRule'));
+const EditVehicleRule = lazy(() => import('./pages/VehicleRuleManagement/AddVehicleRule'));
 const UsersLandingGeneric = lazy(()=> import('./pages/UsersManagement'));
 
 
@@ -153,8 +154,12 @@ export const routes: RouteObject[] = [
     element: <VehicleRule version="Breadcrumbs-Many" />
   },
   {
-    path: "/vehicleRule/add",
+    path: "/addVehicleRule",
     element: <AddVehicleRule version="Breadcrumbs-Single" />
+  },
+  {
+    path: "/editVehicleRule/:ruleId",
+    element: <EditVehicleRule version="Breadcrumbs-Single" />
   },
   {
     path: "/opisCities/add",

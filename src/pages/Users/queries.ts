@@ -34,12 +34,13 @@ const getUsersList = async (pageParam: number,
         }
     }
 
-    const usersEntitySet = `/api/user-service/users?limit=${pageDataLimit}&offset=${pageParam}&customerId=${customerId}`;
-    const url = getQueryStr(query);
+    const usersGetListEntitySet = `/api/user-service/users?limit=${pageDataLimit}&offset=${pageParam}&customerId=${customerId}`;
+
+    const url = query ? `&countryCode=us${query.toString().length ?  '&' + query.toString() : ''}` : `&countryCode=us`;
 
     const options: AxiosRequestConfig = {
         method: 'get',
-        url: usersEntitySet + url
+        url: usersGetListEntitySet + url
     };
     const { data } = await axios(options);
     return data;

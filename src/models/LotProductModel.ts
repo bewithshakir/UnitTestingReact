@@ -114,28 +114,3 @@ export default class ProductModel {
     }
 
 }
-
-
-// actualProduct: "NO2"
-// addedDate: "2022-02-16T10:51:58.644Z"
-// bioType: "MULT      "
-// brandIndicator: "u"
-// city: "Colton"
-// cityId: 870
-// countryCd: "us"
-// dieselBlend: "CULSD"
-// generatedProductName: "sxuno20"
-// grossPrice: 333.5
-// lastUpdatedDate: "2022-02-16T13:02:25.557Z"
-// octaneValue: 0
-// opisProductName: "Biodiesel B0-5 MULT Carb ULS Dye"
-// opisServedCityId: "f3584b2f-6682-4230-aaff-58d9abf206b1"
-// priceDate: "2022-02-15T00:00:00.000Z"
-// productCategoryId: null
-// productIndicator: "S"
-// productKey: "biodieselb0-5multcarbulsdyesx870marathonwithcar0uno2n-10cacoltonmult"
-// productType: "x"
-// rvp: "0.00"
-// state: "CA"
-// supplier: "Marathon With CAR"
-// terms: " N-10"

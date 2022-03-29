@@ -171,6 +171,30 @@
       "titleEdit": "Edit Lot & Details"
     }
   },
+  "addVehicle": {
+    "noDataMsg": "Add Vehicles to lot to fulfil the requirements",
+    "generalInfo": "General Information",
+    "addVehicleText": "Add new Vehicle or Select the Vehicle from the table to edit the details",
+    "addSuccessMsg": "Vehicle is successfully added and Please add other details",
+    "editSuccessMsg": "Vehicle is successfully edited",
+    "error": "Something went wrong. Please try again.",
+    "vehicleBusinessRule": "Apply vehicle business rule validation",
+    "considerAsAsset": "Consider this as an asset",
+    "vehicleType": "Vehicle Type",
+    "selectOne": "Select One",
+    "licencePlate": "Licence Plate",
+    "vin": "VIN",
+    "year": "YEAR",
+    "make": "Make",
+    "model": "Model",
+    "color": "COLOR",
+    "productName": "Product Name",
+    "productCustomName": "PRODUCT CUSTOM NAME",
+    "nonFuel": "Non-fuel",
+    "nonFuelProductName": "NON-FUEL PRODUCT NAME",
+    "select": "Select",
+    "addOnProductName": "ADD-ON SERVICE PRODUCT NAME"
+  },
   "vehicle": {
     "header": {
       "filter": "Filter"
@@ -184,7 +208,11 @@
     "results found": "results found",
     "result(s) found": "result(s) found",
     "filterHeader": "Filters",
-    "nodataMsg": "Add User by clicking on add User or any related sentence."
+    "nodataMsg": "Add User by clicking on add User or any related sentence.",
+    "sortBy": {
+      "users_atoz": "User Name A-Z",
+      "users_ztoa": "User Name Z-A"
+    }
   },
   "addUser": {
     "title": "Add User",
@@ -316,7 +344,8 @@
     },
     "vehicleRule": {
       "form": {
-        "titleAdd": "Add Vehicle Rule"
+        "titleAdd": "Add Vehicle Rule",
+        "titleEdit": "Edit Vehicle Rule"
       }
     }
   },

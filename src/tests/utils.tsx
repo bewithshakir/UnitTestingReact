@@ -3,7 +3,7 @@ import * as React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { getOPISCitiesHandler } from '../pages/OPISCity/mockApi/handlerOPISCityLandingPage';
 import { getAllParkingLotsHandler } from '../pages/ParkingLotsManagement/mockApi/handlerAllParkingLotsLandingPage';
-import { addDspHandler, editDspHandler } from "../pages/DspLanding/AddDSP/mockApi/handlerAddDsp";
+import { editDspHandler } from "../pages/DspLanding/AddDSP/mockApi/handlerAddDsp";
 import { getFormattedAddressHandler, getGoogleAddressHandler } from "../components/UIComponents/GoogleAddressComponent/mockApi/googleAddressAutoHandler";
 import {
     getProductByLotHandler,
@@ -18,7 +18,6 @@ import { getFuelTaxList, getFuelTaxProductsList } from '../pages/Tax/mockApi/han
 import {
     getDelFeeSchduleHandler,
     getProductTypeHandler,
-    getVehicleTypeHandler,
     getAssetTypeHandler,
     getLotProductNamesHandler,
     addFeeDetailsHandler,
@@ -48,7 +47,13 @@ import { getCustomerContactTypesHandler } from '../mockAPI/customerService/conta
 import { getConfigServiceTimezones } from '../mockAPI/configService/timeZones/GET';
 import { getConfigServiceDeliveryFreq } from '../mockAPI/configService/deliveryFrequencies/GET';
 import { getConfigServiceDays } from '../mockAPI/configService/days/GET';
-import { getVehicleRules } from '../mockAPI/vehicleService/vehicleRules/GET';
+import { getVehicleRules , getVehicleDetails} from '../mockAPI/vehicleService/vehicleRules/GET';
+import { addVehicleRule } from '../mockAPI/vehicleService/vehicleRules/POST';
+import { editVehicleRule } from '../mockAPI/vehicleService/vehicleRules/PUT';
+
+import { getVehicleColorsHandler } from '../mockAPI/vehicleService/vehicleColors/GET';
+import { getVehicleTypeHandler } from '../mockAPI/vehicleService/vehicleTypes/GET';
+import { addVehicleAssetHandler } from '../mockAPI/vehicleService/vehicleAsset/POST';
 
 export const handlers = [
     getCustomerContactTypesHandler(),
@@ -56,7 +61,12 @@ export const handlers = [
     getConfigServiceTimezones(),
     getConfigServiceDeliveryFreq(),
     getConfigServiceDays(),
+
     getVehicleRules(),
+    getVehicleColorsHandler(),
+    getVehicleTypeHandler(),
+    addVehicleAssetHandler(),
+
     getProductHandler(),
     postProductHandler(),
     putProductHandler(),
@@ -65,16 +75,14 @@ export const handlers = [
     getAllParkingLotsHandler(),
     getFormattedAddressHandler(),
     getGoogleAddressHandler(),
+    addVehicleRule(),
     rightInfoFilterHandler(),
-    addDspHandler(),
-    getCustomerHandler(),
     editDspHandler(),
     editProductHandler(),
     getFuelTaxList(),
     getFuelTaxProductsList(),
     getDelFeeSchduleHandler(),
     getProductTypeHandler(),
-    getVehicleTypeHandler(),
     getAssetTypeHandler(),
     getLotProductNamesHandler(),
     addFeeDetailsHandler(),
@@ -101,6 +109,8 @@ export const handlers = [
     postUserHandler(),
     putUserHandler(),
     getCustomerHandler(),
+    getVehicleDetails(),
+    editVehicleRule()
 ];
 
 const createTestQueryClient = () => new QueryClient({
@@ -111,7 +121,7 @@ const createTestQueryClient = () => new QueryClient({
     },
 });
 
-export function renderWithClient (ui: React.ReactElement) {
+export function renderWithClient(ui: React.ReactElement) {
     const testQueryClient = createTestQueryClient();
     const { rerender, ...result } = render(
         <QueryClientProvider client={testQueryClient}>{ui}</QueryClientProvider>
@@ -125,7 +135,7 @@ export function renderWithClient (ui: React.ReactElement) {
     };
 }
 
-export function createWrapper () {
+export function createWrapper() {
     const testQueryClient = createTestQueryClient();
     return ({ children }: { children: React.ReactNode }) => (
         <QueryClientProvider client={testQueryClient}>{children}</QueryClientProvider>
