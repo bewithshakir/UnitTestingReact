@@ -34,12 +34,12 @@ const getUsersList = async (pageParam: number,
         }
     }
 
-    const opisCityListEntitySet = `/api/user-service/users?limit=${pageDataLimit}&offset=${pageParam}&customerId=${customerId}`;
+    const usersEntitySet = `/api/user-service/users?limit=${pageDataLimit}&offset=${pageParam}&customerId=${customerId}`;
     const url = getQueryStr(query);
 
     const options: AxiosRequestConfig = {
         method: 'get',
-        url: opisCityListEntitySet + url
+        url: usersEntitySet + url
     };
     const { data } = await axios(options);
     return data;
