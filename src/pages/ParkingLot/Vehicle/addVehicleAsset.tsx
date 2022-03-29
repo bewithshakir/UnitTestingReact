@@ -5,7 +5,7 @@ import { Grid, Typography, FormControlLabel } from '@mui/material';
 import { Button } from '../../../components/UIComponents/Button/Button.component';
 import Checkbox from '../../../components/UIComponents/Checkbox/Checkbox.component';
 import { AddVehicleValidationSchema } from './validation';
-import { checkboxConfig, formatSave, FormFieldName, formStatusObj, initialFormValues, VehicleAssetFormField } from './config';
+import { checkboxConfig, formatSave, FormFieldName, formStatusObj, initialFormValues, labelColor, VehicleAssetFormField } from './config';
 import { useAddedCustomerIdStore, useShowConfirmationDialogBoxStore } from '../../../store';
 import { ImportIcon } from '../../../assets/icons';
 import VehicleSegment from './vehicleSegment';
@@ -142,13 +142,13 @@ export default function AddVehicleAsset({ lotId }: Props) {
                                     checked={Boolean(formik.values.isApplyRule)}
                                     {...formik.getFieldProps('isApplyRule')}
                                 />}
-                                label={<Typography color={"var(--Darkgray)"} variant="h4" >
+                                label={<Typography color={{ labelColor }} variant="h4" >
                                     {t("addVehicle.vehicleBusinessRule")}
                                 </Typography>} />
                         </Grid>
 
                         <Grid item md={12} mx={4}>
-                            <Typography color="var(--Darkgray)" variant="h4"
+                            <Typography color={labelColor} variant="h4"
                                 gutterBottom className="fw-bold"
                                 mb={1}>
                                 {t('addVehicle.generalInfo')}
@@ -160,7 +160,7 @@ export default function AddVehicleAsset({ lotId }: Props) {
                                 sx={checkboxConfig}
                                 className="checkbox-field"
                                 control={<Checkbox checked={true} name="isAsset" />}
-                                label={<Typography color={"var(--Darkgray)"} variant="h4" >
+                                label={<Typography color={{ labelColor }} variant="h4" >
                                     {t('addVehicle.considerAsAsset')}
                                 </Typography>} />
                         </Grid>
@@ -182,7 +182,7 @@ export default function AddVehicleAsset({ lotId }: Props) {
                                     checked={Boolean(formik.values.isNonFuel)}
                                     onChange={handleInNonFuelChange}
                                 />}
-                                label={<Typography color={"var(--Darkgray)"} variant="h4">
+                                label={<Typography color={labelColor} variant="h4">
                                     {t('addVehicle.nonFuel')}
                                 </Typography>} />
                         </Grid>
@@ -204,7 +204,7 @@ export default function AddVehicleAsset({ lotId }: Props) {
                                     checked={Boolean(formik.values.isAddOn)}
                                     onChange={handleIsAddOnChange}
                                 />}
-                                label={<Typography color={"var(--Darkgray)"} variant="h4">
+                                label={<Typography color={{ labelColor }} variant="h4">
                                     Add On Services
                                 </Typography>} />
                         </Grid>

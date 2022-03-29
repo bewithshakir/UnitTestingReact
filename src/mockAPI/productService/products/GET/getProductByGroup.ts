@@ -1,6 +1,7 @@
 import { DefaultRequestBody, ResponseComposition, RestContext } from "msw";
 
 export const getProductByGroup = (res: ResponseComposition<DefaultRequestBody>, ctx: RestContext) => {
+    const productGroupCd = "acad56a6-1e77-4f38-92e5-30a656e786fb";
     return res(
         ctx.status(200),
         ctx.json({
@@ -17,7 +18,7 @@ export const getProductByGroup = (res: ResponseComposition<DefaultRequestBody>, 
                     "activeInactiveInd": "Y"
                 },
                 "ProductGroup": {
-                    "productGroupCd": "acad56a6-1e77-4f38-92e5-30a656e786fb",
+                    "productGroupCd": productGroupCd,
                     "productGroupNm": "Fuel",
                     "activeInactiveInd": "Y"
                 }
@@ -34,7 +35,7 @@ export const getProductByGroup = (res: ResponseComposition<DefaultRequestBody>, 
                     "activeInactiveInd": "Y"
                 },
                 "ProductGroup": {
-                    "productGroupCd": "acad56a6-1e77-4f38-92e5-30a656e786fb",
+                    "productGroupCd": productGroupCd,
                     "productGroupNm": "Fuel",
                     "activeInactiveInd": "Y"
                 }
@@ -51,7 +52,7 @@ export const getProductByGroup = (res: ResponseComposition<DefaultRequestBody>, 
                     "activeInactiveInd": "Y"
                 },
                 "ProductGroup": {
-                    "productGroupCd": "acad56a6-1e77-4f38-92e5-30a656e786fb",
+                    "productGroupCd": productGroupCd,
                     "productGroupNm": "Fuel",
                     "activeInactiveInd": "Y"
                 }
@@ -68,7 +69,7 @@ export const getProductByGroup = (res: ResponseComposition<DefaultRequestBody>, 
                     "activeInactiveInd": "Y"
                 },
                 "ProductGroup": {
-                    "productGroupCd": "acad56a6-1e77-4f38-92e5-30a656e786fb",
+                    "productGroupCd": productGroupCd,
                     "productGroupNm": "Fuel",
                     "activeInactiveInd": "Y"
                 }
@@ -85,7 +86,7 @@ export const getProductByGroup = (res: ResponseComposition<DefaultRequestBody>, 
                     "activeInactiveInd": "Y"
                 },
                 "ProductGroup": {
-                    "productGroupCd": "acad56a6-1e77-4f38-92e5-30a656e786fb",
+                    "productGroupCd": productGroupCd,
                     "productGroupNm": "Fuel",
                     "activeInactiveInd": "Y"
                 }
@@ -102,7 +103,7 @@ export const getProductByGroup = (res: ResponseComposition<DefaultRequestBody>, 
                     "activeInactiveInd": "Y"
                 },
                 "ProductGroup": {
-                    "productGroupCd": "acad56a6-1e77-4f38-92e5-30a656e786fb",
+                    "productGroupCd": productGroupCd,
                     "productGroupNm": "Fuel",
                     "activeInactiveInd": "Y"
                 }

@@ -86,6 +86,9 @@ export interface SegmentProps {
 
 export const checkboxConfig = { marginLeft: "-0.5rem", marginBottom: "1rem", fontWeight: "bold" };
 
+export const labelColor = "var(--Darkgray)";
+export const selectOneText = 'addVehicle.selectOne';
+
 export const formatSave = (customerId: string, lotId: string, formData: VehicleAssetFormField) => {
     const products = [formData.fuelCustomProductName.value];
     if (formData.isNonFuel) {

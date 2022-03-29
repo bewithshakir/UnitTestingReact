@@ -4,7 +4,7 @@ import { FormikProps } from 'formik';
 import { Grid } from '@mui/material';
 import Select from '../../../components/UIComponents/Select/SingleSelect';
 import Input from '../../../components/UIComponents/Input/FormikInput';
-import { FormFieldName, VehicleAssetFormField } from './config';
+import { FormFieldName, selectOneText, VehicleAssetFormField } from './config';
 import { useGetLotVehicleTypes } from '../FeeDetails/queries';
 import { ProductGroupObj, useGetMasterProducts, useGetProducts, useGetVehicleColors } from './queries';
 import { getCountryCode } from '../../../navigation/utils';
@@ -51,7 +51,7 @@ export default function VehicleSegment({ lotId, formik, productGroupObj, getForm
                 <Select
                     id='vehicleType'
                     label={t('addVehicle.vehicleType')}
-                    placeholder={t('addVehicle.selectOne')}
+                    placeholder={t(selectOneText)}
                     required
                     items={getVehicleTypes(vehicleTypes)}
                     {...getFormikProps('vehicleType')}
@@ -106,7 +106,7 @@ export default function VehicleSegment({ lotId, formik, productGroupObj, getForm
             <Grid item lg={5} md={8} sm={8} xs={8} mx={4} my={1}>
                 <Select
                     label={t("addVehicle.color")}
-                    placeholder={t('addVehicle.selectOne')}
+                    placeholder={t(selectOneText)}
                     required
                     items={vehicleColors || []}
                     {...getFormikProps('color')}
@@ -115,7 +115,7 @@ export default function VehicleSegment({ lotId, formik, productGroupObj, getForm
             <Grid item lg={5} md={8} sm={8} xs={8} mx={4} my={1}>
                 <Select
                     label={t("addVehicle.productName")}
-                    placeholder={t('addVehicle.selectOne')}
+                    placeholder={t(selectOneText)}
                     required
                     items={fuelProducts || []}
                     {...getFormikProps('fuelProductName', ['fuelCustomProductName'])}
@@ -124,7 +124,7 @@ export default function VehicleSegment({ lotId, formik, productGroupObj, getForm
             <Grid item lg={5} md={8} sm={8} xs={8} mx={4} my={1}>
                 <Select
                     label={t("addVehicle.productCustomName")}
-                    placeholder={t('addVehicle.selectOne')}
+                    placeholder={t(selectOneText)}
                     required
                     items={fuelMasterProducts || []}
                     {...getFormikProps('fuelCustomProductName')}
