@@ -1,5 +1,5 @@
 import { rest } from "msw";
-import { getFeeDetails } from "./getFeeDetails";
+import { getProductByGroup } from "./getProductByGroup";
 import { getProductColor } from "./getProductColor";
 import { getProductDetails } from "./getProductDetails";
 import { getProductName } from "./getProductName";
@@ -7,28 +7,28 @@ import { getPropductType } from "./getProductType";
 
 export const getProductHandler = () => {
     return rest.get('*/api/product-service/products*', (req, res, ctx) => {
-        
+
         const urlHref = req.url.href;
         if (urlHref.includes('product-groups')) {
             // Product Type select
-           return getPropductType(res, ctx);
-        } 
+            return getPropductType(res, ctx);
+        }
         else if (urlHref.includes('product-icons')) {
             // Product Color select
-            return getProductColor(res,ctx);
-        } 
+            return getProductColor(res, ctx);
+        }
         else if (urlHref.includes('&skipPagination=true&productGroups=[')) {
             // Add Fuel Tax > Product Name
             return getProductName(res, ctx);
-        } 
-        else if (urlHref.includes('&productGroupCd=')) {
+        }
+        else if (urlHref.includes('productGroupCd=')) {
             // Fee Details > useGetLotMasterProductNames
-            return getFeeDetails(res, ctx);
+            return getProductByGroup(res, ctx);
         }
         else if (urlHref.includes('editproduct')) {
             // Edit product details
             return getProductDetails(res, ctx);
-        } 
+        }
         else {
             // Product management Landing > Default
             return res(
@@ -84,6 +84,3 @@ export const getProductHandler = () => {
         }
     });
 };
-
-
-

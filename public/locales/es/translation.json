@@ -117,20 +117,20 @@
       "type": "Éxito"
     },
     "success": {
-        "message": "Datos agregados con éxito.",
-        "type": "Éxito"
+      "message": "Datos agregados con éxito.",
+      "type": "Éxito"
     },
     "updated": {
-        "message": "Datos actualizados con éxito",
-        "type": "Éxito"
+      "message": "Datos actualizados con éxito",
+      "type": "Éxito"
     },
     "duplicate": {
-        "message": "La identificación del cliente ya existe. Utilice un ID de cliente diferente.",
-        "type": "Error"
+      "message": "La identificación del cliente ya existe. Utilice un ID de cliente diferente.",
+      "type": "Error"
     },
     "error": {
-        "message": "Algo salió mal. Inténtalo de nuevo.",
-        "type": "Error"
+      "message": "Algo salió mal. Inténtalo de nuevo.",
+      "type": "Error"
     }
   },
   "parkingLot": {
@@ -159,8 +159,32 @@
       "titleEdit": "Editar lote y detalles"
     }
   },
+  "addVehicle": {
+    "noDataMsg": "Agregar vehículos al lote para cumplir con los requisitos",
+    "generalInfo": "Información general",
+    "addVehicleText": "Agregue un nuevo vehículo o seleccione el vehículo de la tabla para editar los detalles",
+    "addSuccessMsg": "El vehículo se agregó con éxito y agregue otros detalles",
+    "editSuccessMsg": "El vehículo se editó con éxito",
+    "error": "Algo salió mal. Inténtalo de nuevo.",
+    "vehicleBusinessRule": "Aplicar validación de reglas de negocio de vehículos",
+    "considerAsAsset": "Considere esto como un activo",
+    "vehicleType": "tipo de vehiculo",
+    "selectOne": "Seleccione uno",
+    "licencePlate": "Placa de matrícula",
+    "vin": "VIN",
+    "year": "AÑO",
+    "make": "Make",
+    "model": "Model",
+    "color": "COLOR",
+    "productName": "nombre del producto",
+    "productCustomName": "NOMBRE PERSONALIZADO DEL PRODUCTO",
+    "nonFuel": "sin combustible",
+    "nonFuelProductName": "NOMBRE DEL PRODUCTO NO COMBUSTIBLE",
+    "select": "Seleccione",
+    "addOnProductName": "NOMBRE DEL PRODUCTO DEL SERVICIO ADICIONAL"
+  },
   "dsp": {
-    "search": "Nombre DSP", 
+    "search": "Nombre DSP",
     "results found": "resultados encontrados",
     "result(s) found": "resultados encontrados",
     "filterHeader": "filtros",
