@@ -1,0 +1,14 @@
+.vehicle-list { 
+    &  tbody{
+            &.no-data{
+                .nodata{
+                   padding: 40% 0% 0% 0%;
+                }
+            }
+           
+        }   
+    
+    & .MuiTable-root{
+        min-width: auto;
+    }
+}

@@ -1,0 +1,32 @@
+.vehicleForm {
+    min-height: calc(100vh - 200px);
+    height: 100%;
+    .MuiInputLabel-formControl {
+      font-size: 14px;
+    } 
+  
+    .multi-select__control--is-disabled {
+      background: var(--Lightgray_4) 0% 0% no-repeat padding-box;
+      color: var(--Lightergray);
+      border: 1px solid var(--Lightgray_2);
+      opacity: 1;
+    }
+}
+
+.addVehicleContainer {
+    min-height: 100%;
+    .lastItem {
+      margin-top: auto;
+      .cancelButton {
+        margin-top: auto;
+        margin-bottom: 34px;
+      }
+    }
+}
+
+.vehicle-management{
+    .masterRightLayout {
+        background: var(--Lightgray_4);
+        min-height: 100%;
+    }
+}
