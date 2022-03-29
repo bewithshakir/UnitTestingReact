@@ -117,20 +117,20 @@
       "type": "Succès"
     },
     "success": {
-        "message": "Données ajoutées avec succès.",
-        "type": "Succès"
+      "message": "Données ajoutées avec succès.",
+      "type": "Succès"
     },
     "updated": {
-        "message": "Données mises à jour avec succès.",
-        "type": "Succès"
+      "message": "Données mises à jour avec succès.",
+      "type": "Succès"
     },
     "duplicate": {
-        "message": "L'ID client existe déjà. Veuillez utiliser un identifiant client différent.",
-        "type": "Erreur"
+      "message": "L'ID client existe déjà. Veuillez utiliser un identifiant client différent.",
+      "type": "Erreur"
     },
     "error": {
-        "message": "Quelque chose s'est mal passé. Veuillez réessayer.",
-        "type": "Erreur"
+      "message": "Quelque chose s'est mal passé. Veuillez réessayer.",
+      "type": "Erreur"
     }
   },
   "parkingLot": {
@@ -158,6 +158,30 @@
       "titleAdd": "Ajouter un lot et des détails",
       "titleEdit": "Modifier le lot et les détails"
     }
+  },
+  "addVehicle": {
+    "noDataMsg": "Ajouter des véhicules au lot pour répondre aux exigences",
+    "generalInfo": "Informations générales",
+    "addVehicleText": "Ajouter un nouveau véhicule ou sélectionner le véhicule dans le tableau pour modifier les détails",
+    "addSuccessMsg": "Le véhicule a été ajouté avec succès et veuillez ajouter d'autres détails",
+    "editSuccessMsg": "Le véhicule est modifié avec succès",
+    "error": "Quelque chose s'est mal passé. Veuillez réessayer.",
+    "vehicleBusinessRule": "Appliquer la validation des règles métier du véhicule",
+    "considerAsAsset": "Considérez cela comme un atout",
+    "vehicleType": "Type de véhicule",
+    "selectOne": "Sélectionnez-en un",
+    "licencePlate": "Plaque d'immatriculation",
+    "vin": "VIN",
+    "year": "AN",
+    "make": "Make",
+    "model": "Model",
+    "color": "COLOR",
+    "productName": "Nom du produit",
+    "productCustomName": "NOM PERSONNALISÉ DU PRODUIT",
+    "nonFuel": "Non-carburant",
+    "nonFuelProductName": "NOM DU PRODUIT NON COMBUSTIBLE",
+    "select": "Sélectionner",
+    "addOnProductName": "SERVICE ADDITIONNEL NOM DU PRODUIT"
   },
   "dsp": {
     "search": "Nom du DSP",

@@ -6,6 +6,7 @@ import Box from '@mui/material/Box';
 import AddLotForm from './AddLotForm/AddLotForm.component';
 import ProductManagement from '../../ProductManagement/index';
 import FeeDetails from '../FeeDetails/index';
+import VehiclManagement from '../Vehicle/index';
 import './AddLotWrapper.style.scss';
 import { addLotHeaderConfig, lotHeaderBoxSx, lotHeaderInnerBoxSx } from '../config';
 import { HorizontalBarVersionState, useStore } from '../../../store';
@@ -19,7 +20,7 @@ interface TabPanelProps {
 interface MenuProps {
     config?: any;
     current?: number;
-    version:string
+    version: string
 }
 
 const a11yProps = (index: number) => {
@@ -58,8 +59,8 @@ const AddLotWrapper: React.FC<MenuProps> = () => {
     setVersion("Breadcrumbs-Many");
 
     const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-        if(check){
-        setValue(newValue);
+        if (check) {
+            setValue(newValue);
         }
     };
 
@@ -68,12 +69,16 @@ const AddLotWrapper: React.FC<MenuProps> = () => {
             <Box sx={lotHeaderInnerBoxSx} className={"lot-header-tab"}>
                 <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
                     {addLotHeaderConfig.map((headerTab, index) =>
-                        <Tab key={headerTab.index} label={<React.Fragment>
-                            <div className="tab-div">
-                                <div className="verticle-middle"> {headerTab.label}  </div>
-                                {headerTab.containsValue && <div className='verticle-middle number-box'>{headerTab.value}</div>}
-                            </div>
-                        </React.Fragment>} {...a11yProps(index)} />
+                        <Tab
+                            key={headerTab.index}
+                            label={<React.Fragment>
+                                <div className="tab-div">
+                                    <div className="verticle-middle"> {headerTab.label}  </div>
+                                    {headerTab.containsValue && <div className='verticle-middle number-box'>{headerTab.value}</div>}
+                                </div>
+                            </React.Fragment>}
+                            {...a11yProps(index)}
+                        />
                     )}
                 </Tabs>
             </Box>
@@ -82,13 +87,13 @@ const AddLotWrapper: React.FC<MenuProps> = () => {
                     <AddLotForm />
                 </TabPanel>
                 <TabPanel value={value} index={1}>
-                    {check && (<ProductManagement />  )}
+                    {check && (<ProductManagement />)}
                 </TabPanel>
                 <TabPanel value={value} index={2}>
-                    <FeeDetails />       
+                    <FeeDetails />
                 </TabPanel>
                 <TabPanel value={value} index={3}>
-
+                    <VehiclManagement />
                 </TabPanel>
                 <TabPanel value={value} index={4}>
 
