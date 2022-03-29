@@ -44,6 +44,10 @@ describe('save vehicle rule', () => {
 
     it('erorr with add data using use Add vehicle rule', async () => {
 
+        serverMsw.use(
+            rest.post('*', (req, res, ctx) => res(ctx.status(500)))
+        );
+
         const { result, waitFor } = renderHook(() => useAddVehicleRule(jest.fn(), jest.fn()), {
             wrapper: createWrapper()
         });
@@ -52,7 +56,9 @@ describe('save vehicle rule', () => {
             result.current.mutate(addVehicleRulePayloadError as any);
         });
 
-        await waitFor(() => result.current.isError);
+        await waitFor(() => {
+            return result.current.isError
+        });
         expect(result.current.error).toBeDefined();
 
     });

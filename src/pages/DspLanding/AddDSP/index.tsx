@@ -221,7 +221,7 @@ const AddDSP: React.FC<AddDSPProps> = () => {
                         </Grid>
                     </Grid>
 
-                    <Grid item xs={12} md={6} pr={2.5} pb={2.5}>
+                    <Grid item xs={12} md={6} pr={2.5} pb={2.5} data-testid="address-line">
                         <AutocompleteInput
                             id="addressLine1"
                             name='addressLine1'

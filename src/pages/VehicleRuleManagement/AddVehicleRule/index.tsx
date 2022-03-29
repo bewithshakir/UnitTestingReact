@@ -329,7 +329,7 @@ return (
                                 <Grid item xs={12} md={6}>
                                     <AutocompleteInput
                                         id="addLine1"
-                                        name='addressLine1'
+                                        name='addLine1'
                                         label={t("taxes.salesTax.form.labelLocation")}
                                         onChange={handleGoogleAddressChange}
                                         onBlur={handleGoogleAddressBlur}
