@@ -13,7 +13,7 @@ const getUserListHandler = (req: RestRequest<never, PathParams>, res: ResponseCo
                     "limit": 10,
                     "offset": 0
                 },
-                users: !customerId ? [
+                users: !customerId && sortBy ? [
                     {
                         "userId": "ID-4536",
                         "shellDigitalAccountId": "ID-123",
@@ -51,12 +51,12 @@ const getUserListHandler = (req: RestRequest<never, PathParams>, res: ResponseCo
                         "fullName": 'test test'
                     }
                 ] : 
-                !sortBy ?[
+                customerId && sortBy === "firstNm"?[
                     {
                         "userId": "ID-45362",
                         "shellDigitalAccountId": "ID-1233",
-                        "firstNm": "USER NAME",
-                        "lastNm": "USER NAME",
+                        "firstNm": "12344USER NAME",
+                        "lastNm": "434764837USER NAME",
                         "email": "dsp@shell.com",
                         "phone": null,
                         "customerId": "ID-34124-4536",
@@ -73,8 +73,8 @@ const getUserListHandler = (req: RestRequest<never, PathParams>, res: ResponseCo
                     {
                         "userId": "ID-453644",
                         "shellDigitalAccountId": "ID-12344",
-                        "firstNm": "USER NAME",
-                        "lastNm": "USER NAME",
+                        "firstNm": "4386483USER NAME",
+                        "lastNm": "424782USER NAME",
                         "email": "dsp1@bacancy.com",
                         "phone": null,
                         "customerId": "ID-344456-4536",
@@ -92,8 +92,8 @@ const getUserListHandler = (req: RestRequest<never, PathParams>, res: ResponseCo
                     {
                         "userId": "ID-4536",
                         "shellDigitalAccountId": "ID-123",
-                        "firstNm": "USER NAME",
-                        "lastNm": "USER NAME",
+                        "firstNm": "Sort By First Name",
+                        "lastNm": "Sort By Last Name",
                         "email": "abc123@bacancy.com",
                         "phone": null,
                         "customerId": "ID-344-4536",

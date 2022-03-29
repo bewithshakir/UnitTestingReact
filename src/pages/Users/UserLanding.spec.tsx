@@ -1,4 +1,4 @@
-import { waitFor } from '@testing-library/react';
+import { waitFor , screen} from '@testing-library/react';
 import { renderWithClient } from '../../tests/utils';
 import UserLandingContent from './index';
 import userEvent from '@testing-library/user-event';
@@ -58,15 +58,15 @@ describe('sortby dsp name on users landing page', () => {
             expect(result.getByText(/users_ztoa/i)).toBeInTheDocument();
         });
     });
-
+    
     it('perform users sorting', async () => {
         const result = renderWithClient(<UserLandingContent version="Breadcrumbs-Many" />);
         const { sortBy } = getAllElements(result);
         userEvent.click(sortBy);
-
+        userEvent.click(await screen.findByText('user.sortBy.users_atoz'));
         await waitFor(() => {
-            expect(result.getByText(/USER NAME/i)).toBeInTheDocument();
-            expect(result.getByText(/ID/i)).toBeInTheDocument();
+            expect(result.getByText(/Sort By First Name/i)).toBeInTheDocument();
+            expect(result.getByText(/abc123@bacancy.com/i)).toBeInTheDocument();
         });
     });
 });
