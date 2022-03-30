@@ -14,7 +14,7 @@ import ToastMessage from '../../../components/UIComponents/ToastMessage/ToastMes
 import { HorizontalBarVersionState, useStore, useShowConfirmationDialogBoxStore } from '../../../store';
 import { ProductsListSet } from '../../ProductManagementLanding/queries';
 import { getProductIcon, getInputHelperText, getInputError } from '../../../utils/helperFunctions';
-import { getProductIds, getFilteredProductsFromMainList, isFuelNonFuelProduct, getValidationSchema } from './helperMethods';
+import { getProductIds, getFilteredProductsFromMainList, getFuelNonFuelProduct, getValidationSchema } from './helperMethods';
 import { isEqual } from 'lodash';
 
 const initialValues = new VehicleRuleModel();
@@ -192,7 +192,7 @@ const AddVehicleRule: React.FC<AddVehicleRuleProps> = () => {
     const getFuelNonFuelProductList = (list: any) => {
         const temp: any = [];
         list.map((obj: any) => {
-            isFuelNonFuelProduct(obj) &&
+            getFuelNonFuelProduct(obj) &&
                 temp.push({ 
                     label: '' + obj.productNm, 
                     value: '' + obj.productCd, 
