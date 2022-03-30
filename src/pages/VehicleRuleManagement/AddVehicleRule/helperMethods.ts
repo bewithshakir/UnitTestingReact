@@ -24,6 +24,4 @@ export const isFuelNonFuelProduct = (obj: any) => {
 
 export const getValidationSchema = (isEditMode: boolean) => {
     return isEditMode ? EditVehicleRuleValidationSchema : AddVehicleRuleValidationSchema;
-};
-
-    
+};  
