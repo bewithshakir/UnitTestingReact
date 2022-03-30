@@ -1,4 +1,4 @@
-
+import { AddVehicleRuleValidationSchema, EditVehicleRuleValidationSchema } from './validation';
 
 export const getProductIds = (arr: any) => {
     const temp: any = [];
@@ -21,3 +21,9 @@ export const isFuelNonFuelProduct = (obj: any) => {
         return false;
     }
 };
+
+export const getValidationSchema = (isEditMode: boolean) => {
+    return isEditMode ? EditVehicleRuleValidationSchema : AddVehicleRuleValidationSchema;
+};
+
+    

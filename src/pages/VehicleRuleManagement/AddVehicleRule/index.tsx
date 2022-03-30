@@ -12,10 +12,10 @@ import { Button } from '../../../components/UIComponents/Button/Button.component
 import { useAddVehicleRule, useEditVehicleRule, useGetVehicleRule } from './queries';
 import ToastMessage from '../../../components/UIComponents/ToastMessage/ToastMessage.component';
 import { HorizontalBarVersionState, useStore, useShowConfirmationDialogBoxStore } from '../../../store';
-import { AddVehicleRuleValidationSchema, EditVehicleRuleValidationSchema } from './validation';
 import { ProductsListSet } from '../../ProductManagementLanding/queries';
 import { getProductIcon, getInputHelperText, getInputError } from '../../../utils/helperFunctions';
-import { getProductIds, getFilteredProductsFromMainList, isFuelNonFuelProduct } from './helperMethods';
+import { getProductIds, getFilteredProductsFromMainList, isFuelNonFuelProduct, getValidationSchema } from './helperMethods';
+import { isEqual } from 'lodash';
 
 const initialValues = new VehicleRuleModel();
 
@@ -243,7 +243,7 @@ const AddVehicleRule: React.FC<AddVehicleRuleProps> = () => {
 
     const formik = useFormik({
         initialValues,
-        validationSchema: isEditMode ? EditVehicleRuleValidationSchema : AddVehicleRuleValidationSchema,
+        validationSchema: getValidationSchema(isEditMode),
         onSubmit: (values) => {
             if (isEditMode) {
                 updateVehicleRule(values);
@@ -255,8 +255,8 @@ const AddVehicleRule: React.FC<AddVehicleRuleProps> = () => {
 
     const handleFormDataChange = () => {
         if (isEditMode) {
-            if (formik.dirty) {
-                if (formik.initialValues !== formik.values) {
+            if (isFormFieldChange()) {
+                if (!(isEqual(formik.initialValues, formik.values))) {
                     isFormValidated(false);
                 }
             }
