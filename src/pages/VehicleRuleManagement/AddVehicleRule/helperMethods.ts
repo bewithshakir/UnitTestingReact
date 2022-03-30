@@ -15,7 +15,7 @@ export const getFilteredProductsFromMainList = (vehicleRuleProducts: any, produc
 };
 
 export const getFuelNonFuelProduct = (obj: any) => {
-    if (obj.ProductGroup.productGroupNm === ("Fuel" || "Non-Fuel")) {
+    if (obj.ProductGroup.productGroupNm === "Fuel" || obj.ProductGroup.productGroupNm === "Non-Fuel") {
         return true;
     } else {
         return false;

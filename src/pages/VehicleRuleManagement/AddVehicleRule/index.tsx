@@ -15,7 +15,6 @@ import { HorizontalBarVersionState, useStore, useShowConfirmationDialogBoxStore 
 import { ProductsListSet } from '../../ProductManagementLanding/queries';
 import { getProductIcon, getInputHelperText, getInputError } from '../../../utils/helperFunctions';
 import { getProductIds, getFilteredProductsFromMainList, getFuelNonFuelProduct, getValidationSchema } from './helperMethods';
-import { isEqual } from 'lodash';
 
 const initialValues = new VehicleRuleModel();
 
@@ -238,14 +237,7 @@ const AddVehicleRule: React.FC<AddVehicleRuleProps> = () => {
     });
 
     const handleFormDataChange = () => {
-        if (isEditMode) {
-            if (isFormFieldChange()) {
-                if (!(isEqual(formik.initialValues, formik.values))) {
-                    isFormValidated(false);
-                }
-            }
-        }
-        if (isFormFieldChange() && !formik.isSubmitting) {
+        if (isFormFieldChange()) {
             isFormValidated(true);
         }
     };
