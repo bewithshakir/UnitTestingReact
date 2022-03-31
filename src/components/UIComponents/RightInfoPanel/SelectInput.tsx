@@ -49,7 +49,7 @@ export const SelectInput: React.FC<ISelectInput> = ({ field, handleSelect, formi
         }
         return [];
 
-    }, [filterResponse.data?.data[field.optionAPIResponseKey]]);
+    }, [filterResponse.data]);
 
     const helperText = useCallback(() => {
         if (touched && error) return error;
