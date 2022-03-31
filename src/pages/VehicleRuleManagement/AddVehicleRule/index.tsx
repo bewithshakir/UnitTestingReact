@@ -153,10 +153,9 @@ const AddVehicleRule: React.FC<AddVehicleRuleProps> = () => {
             setFormStatus(formStatusProps.error);
         }
     };
-
     // Edit end
 
-
+    
     const onAddVehicleRuleSuccess = () => {
         setAPIResponse(true);
         isFormValidated(false);
@@ -173,15 +172,9 @@ const AddVehicleRule: React.FC<AddVehicleRuleProps> = () => {
 
     useEffect(() => {
         if (data) {
-            const list: any = [];
-            data?.pages?.forEach((item: any) => {
-                list.push(...item.data.products);
-            });
-            setProductNameList(getFuelNonFuelProductList(list));
+            setProductNameList(getFuelNonFuelProductList(data));
         }
     }, [data]);
-
-    
 
     const getFuelNonFuelProductList = (productData?: { data?: any[] }): any => {
         if (!productData?.data) {
