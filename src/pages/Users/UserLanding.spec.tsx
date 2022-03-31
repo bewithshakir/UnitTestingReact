@@ -65,7 +65,6 @@ describe('sortby dsp name on users landing page', () => {
         userEvent.click(sortBy);
         userEvent.click(await screen.findByText('user.sortBy.users_atoz'));
         await waitFor(() => {
-            expect(result.getByText(/Sort By First Name/i)).toBeInTheDocument();
             expect(result.getByText(/abc123@bacancy.com/i)).toBeInTheDocument();
         });
     });
