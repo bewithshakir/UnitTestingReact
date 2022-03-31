@@ -47,10 +47,9 @@ import { getCustomerContactTypesHandler } from '../mockAPI/customerService/conta
 import { getConfigServiceTimezones } from '../mockAPI/configService/timeZones/GET';
 import { getConfigServiceDeliveryFreq } from '../mockAPI/configService/deliveryFrequencies/GET';
 import { getConfigServiceDays } from '../mockAPI/configService/days/GET';
-import { getVehicleRules , getVehicleDetails} from '../mockAPI/vehicleService/vehicleRules/GET';
+import { getVehicleRules, getVehicleDetails } from '../mockAPI/vehicleService/vehicleRules/GET';
 import { addVehicleRule } from '../mockAPI/vehicleService/vehicleRules/POST';
 import { editVehicleRule } from '../mockAPI/vehicleService/vehicleRules/PUT';
-
 import { getVehicleColorsHandler } from '../mockAPI/vehicleService/vehicleColors/GET';
 import { getVehicleTypeHandler } from '../mockAPI/vehicleService/vehicleTypes/GET';
 import { addVehicleAssetHandler } from '../mockAPI/vehicleService/vehicleAsset/POST';

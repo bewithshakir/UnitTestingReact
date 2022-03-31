@@ -12,10 +12,9 @@ import { Button } from '../../../components/UIComponents/Button/Button.component
 import { useAddVehicleRule, useEditVehicleRule, useGetVehicleRule } from './queries';
 import ToastMessage from '../../../components/UIComponents/ToastMessage/ToastMessage.component';
 import { HorizontalBarVersionState, useStore, useShowConfirmationDialogBoxStore } from '../../../store';
-import { AddVehicleRuleValidationSchema, EditVehicleRuleValidationSchema } from './validation';
-import { ProductsListSet } from '../../ProductManagementLanding/queries';
+import { useGetProductList } from '../../ProductManagementLanding/queries';
 import { getProductIcon, getInputHelperText, getInputError } from '../../../utils/helperFunctions';
-import { getProductIds, getFilteredProductsFromMainList } from './helperMethods';
+import { getProductIds, getFilteredProductsFromMainList, getValidationSchema } from './helperMethods';
 
 const initialValues = new VehicleRuleModel();
 
@@ -85,6 +84,24 @@ const AddVehicleRule: React.FC<AddVehicleRuleProps> = () => {
 
     const [isEditMode, setEditMode] = useState(false);
 
+    const updateFormStatus = (data: any) => {
+        setFormStatus({ message: data?.error?.message || formStatusProps.error.message, type: 'Error' });
+    };
+
+    const executeErrorScenario = (errorResponse: any) => {
+        try {
+            const { data } = errorResponse.response;
+            setAPIResponse(true);
+            updateFormStatus(data);
+            formik.setSubmitting(false);
+            setTimeout(() => {
+                setAPIResponse(false);
+            }, 6000);
+        } catch (error) {
+            setFormStatus(formStatusProps.error);
+        }
+    };
+
     const populateDataInAllFields = (formData: any) => {
         formik.setFieldValue('city', formData.city);
         formik.setFieldValue('state', formData.state);
@@ -100,18 +117,8 @@ const AddVehicleRule: React.FC<AddVehicleRuleProps> = () => {
             populateDataInAllFields(response?.data);
         }
     };
-    const onGetVehicleRuleError = (err: any) => {
-        try {
-            const { data } = err.response;
-            setAPIResponse(true);
-            setFormStatus({ message: data?.error?.message || formStatusProps.error.message, type: 'Error' });
-            formik.setSubmitting(false);
-            setTimeout(() => {
-                setAPIResponse(false);
-            }, 6000);
-        } catch (error) {
-            setFormStatus(formStatusProps.error);
-        }
+    const onGetVehicleRuleError = (response: any) => {
+        executeErrorScenario(response);
     };
 
     useGetVehicleRule(ruleId, onGetVehicleRuleSuccess, onGetVehicleRuleError);
@@ -125,18 +132,8 @@ const AddVehicleRule: React.FC<AddVehicleRuleProps> = () => {
         }, 6000);
     };
 
-    const onEditVehicleRuleError = (errResponse: any) => {
-        try {
-            const { data } = errResponse.response;
-            setAPIResponse(true);
-            setFormStatus({ message: data?.error?.message || formStatusProps.error.message, type: 'Error' });
-            formik.setSubmitting(false);
-            setTimeout(() => {
-                setAPIResponse(false);
-            }, 6000);
-        } catch (error) {
-            setFormStatus(formStatusProps.error);
-        }
+    const onEditVehicleRuleError = (errorResponse: any) => {
+        executeErrorScenario(errorResponse);
     };
 
     const { mutate: editVehicleRule } = useEditVehicleRule(ruleId, onEditVehicleRuleError, onEditVehicleRuleSuccess);
@@ -156,10 +153,9 @@ const AddVehicleRule: React.FC<AddVehicleRuleProps> = () => {
             setFormStatus(formStatusProps.error);
         }
     };
-
     // Edit end
 
-
+    
     const onAddVehicleRuleSuccess = () => {
         setAPIResponse(true);
         isFormValidated(false);
@@ -169,51 +165,32 @@ const AddVehicleRule: React.FC<AddVehicleRuleProps> = () => {
         }, 6000);
     };
     const onAddVehicleRuleError = (err: any) => {
-        try {
-            const { errorData } = err.response;
-            setAPIResponse(true);
-            setFormStatus({ message: errorData?.error?.message || formStatusProps.error.message, type: 'Error' });
-            formik.setSubmitting(false);
-            setTimeout(() => {
-                setAPIResponse(false);
-            }, 6000);
-        } catch (error) {
-            setFormStatus(formStatusProps.error);
-        }
+        executeErrorScenario(err);
     };
 
-    const [filterData] = React.useState<{ [key: string]: string[] }>({});
-    const [searchTerm] = React.useState("");
-    const [sortOrder] = React.useState<{ sortBy: string, order: string }>({ sortBy: "", order: "" });
-
-
-    const { data }: any = ProductsListSet(searchTerm, sortOrder, filterData);
+    const { data } = useGetProductList("", { sortBy: "", order: "" }, { skipPagination: true });
 
     useEffect(() => {
         if (data) {
-            const list: any = [];
-            data?.pages?.forEach((item: any) => {
-                list.push(...item.data.products);
-            });
-            setProductNameList(getFuelNonFuelProductList(list));
+            setProductNameList(getFuelNonFuelProductList(data));
         }
     }, [data]);
 
-    
-
-    const getFuelNonFuelProductList = (list: any) => {
-        const temp: any = [];
-        list.map((obj: any) => {
-            if (obj.ProductGroup.productGroupNm === "Fuel" || obj.ProductGroup.productGroupNm === "Non-Fuel") {
-                temp.push({ 
-                    label: '' + obj.productNm, value: '' + obj.productCd, 
-                    icon: <Icon component={getProductIcon(obj.ProductIcon.productIconNm)}></Icon>, productDetail: obj });
-            }
-        });
-        return temp;
+    const getFuelNonFuelProductList = (productData?: { data?: any[] }): any => {
+        if (!productData?.data) {
+            return [];
+        }
+        return productData?.data?.filter((product: any) => (
+            (product.activeInactiveInd === 'Y')
+            && (product.ProductGroup.productGroupNm === "Fuel"
+                || product.ProductGroup.productGroupNm === "Non-Fuel"
+            )
+        )).map(obj => ({
+            label: '' + obj.productNm,
+            value: '' + obj.productCd,
+            icon: <Icon component={getProductIcon(obj.ProductIcon.productIconNm)}></Icon>, productDetail: obj
+        })) || [];
     };
-
-    
 
     const { mutate: addNewVehicleRule } = useAddVehicleRule(onAddVehicleRuleError, onAddVehicleRuleSuccess);
 
@@ -236,7 +213,7 @@ const AddVehicleRule: React.FC<AddVehicleRuleProps> = () => {
 
     const formik = useFormik({
         initialValues,
-        validationSchema: isEditMode ? EditVehicleRuleValidationSchema : AddVehicleRuleValidationSchema,
+        validationSchema: getValidationSchema(isEditMode),
         onSubmit: (values) => {
             if (isEditMode) {
                 updateVehicleRule(values);
@@ -247,14 +224,7 @@ const AddVehicleRule: React.FC<AddVehicleRuleProps> = () => {
     });
 
     const handleFormDataChange = () => {
-        if (isEditMode) {
-            if (formik.dirty) {
-                if (formik.initialValues !== formik.values) {
-                    isFormValidated(false);
-                }
-            }
-        }
-        if (isFormFieldChange() && !formik.isSubmitting) {
+        if (isFormFieldChange()) {
             isFormValidated(true);
         }
     };

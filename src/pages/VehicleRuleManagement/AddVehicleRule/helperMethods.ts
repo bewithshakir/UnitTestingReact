@@ -1,4 +1,4 @@
-
+import { AddVehicleRuleValidationSchema, EditVehicleRuleValidationSchema } from './validation';
 
 export const getProductIds = (arr: any) => {
     const temp: any = [];
@@ -13,5 +13,6 @@ export const getFilteredProductsFromMainList = (vehicleRuleProducts: any, produc
         });
     });
 };
-
-//sonar check
+export const getValidationSchema = (isEditMode: boolean) => {
+    return isEditMode ? EditVehicleRuleValidationSchema : AddVehicleRuleValidationSchema;
+};  
