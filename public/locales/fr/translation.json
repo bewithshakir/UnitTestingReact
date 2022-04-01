@@ -93,6 +93,12 @@
         "labelFederalRate": "Taux fédéral",
         "labelLocalRate": "Tarif local"
       }
+    },
+    "vehicleRule": {
+      "form": {
+        "titleAdd": "Add Vehicle Rule",
+        "titleEdit": "Edit Vehicle Rule"
+      }
     }
   },
   "productManagement": {
