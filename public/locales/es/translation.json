@@ -93,6 +93,12 @@
         "labelFederalRate": "Tasa federal",
         "labelLocalRate": "Tarifa local"
       }
+    },
+    "vehicleRule": {
+      "form": {
+        "titleAdd": "Add Vehicle Rule",
+        "titleEdit": "Edit Vehicle Rule"
+      }
     }
   },
   "productManagement": {
