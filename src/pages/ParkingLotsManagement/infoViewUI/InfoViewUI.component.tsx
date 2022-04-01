@@ -26,8 +26,8 @@ export default function InfoViewUI({ lotData, rowLotId }: props) {
                 productDataObj = {};
                 lotProductData.forEach((product: any) => {
                     productDataObj[product.productNm] = {
-                        key: product.productNm,
-                        subKey: '(Custom name)',
+                        key: product.masterProductName,
+                        subKey: `(${product.productNm})`,
                         midValue: product.totalPricePerGallon,
                         endValue: product.pricingModel?.pricingModelNm
                     };

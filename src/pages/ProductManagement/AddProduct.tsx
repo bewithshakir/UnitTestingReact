@@ -189,7 +189,7 @@ export default function AddProduct({ lotId, reloadSibling, productId, disableAdd
         return (!formik.isValid || !formik.dirty) || formik.isSubmitting;
     };
     const disableCancelBtn = () => {
-        return !editMode;
+        return isDisabled;
     };
 
     const handleFormDataChange = () => {
