@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import MultiSelect from '../../../components/UIComponents/Select/MultiSelect';
-import VehicleRuleModel from '../../../models/VehicleRuleModel';
+import { VehicleRule as vehicleRuleType, initialFormValuesVehicleRule }  from '../../../models/VehicleRuleModel';
 import AutocompleteInput from '../../../components/UIComponents/GoogleAddressComponent/GoogleAutoCompleteAddress';
 import Select from '../../../components/UIComponents/Select/SingleSelect';
 import Input from '../../../components/UIComponents/Input/Input';
@@ -16,7 +16,7 @@ import { useGetProductList } from '../../ProductManagementLanding/queries';
 import { getProductIcon, getInputHelperText, getInputError } from '../../../utils/helperFunctions';
 import { getProductIds, getFilteredProductsFromMainList, getValidationSchema } from './helperMethods';
 
-const initialValues = new VehicleRuleModel();
+// const initialValues = new VehicleRuleModel();
 
 export interface AddVehicleRuleProps {
     version: string
@@ -64,6 +64,7 @@ const AddVehicleRule: React.FC<AddVehicleRuleProps> = () => {
     const isFormValidated = useShowConfirmationDialogBoxStore((state) => state.setFormFieldValue);
     const resetFormFieldValue = useShowConfirmationDialogBoxStore((state) => state.resetFormFieldValue);
     const showDialogBox = useShowConfirmationDialogBoxStore((state) => state.showDialogBox);
+    const [initialFormikValues, setInitialFormikValues] = useState<vehicleRuleType>(initialFormValuesVehicleRule);
 
     const isFormFieldChange = () => formik.dirty;
     setVersion("Breadcrumbs-Single");
@@ -103,12 +104,22 @@ const AddVehicleRule: React.FC<AddVehicleRuleProps> = () => {
     };
 
     const populateDataInAllFields = (formData: any) => {
-        formik.setFieldValue('city', formData.city);
-        formik.setFieldValue('state', formData.state);
-        formik.setFieldValue('countryCd', 'us');
-        formik.setFieldValue('year', formData.yearNo);
-        formik.setFieldValue('status', vehicleStatusList.filter((obj) => obj.value === formData.activeInactiveInd)[0]);
-        formik.setFieldValue('product',getFilteredProductsFromMainList(formData.vehicleRuleProducts, productNameList));
+        // formik.setFieldValue('city', formData.city);
+        // formik.setFieldValue('state', formData.state);
+        // formik.setFieldValue('countryCd', 'us');
+        // formik.setFieldValue('year', formData.yearNo);
+        // formik.setFieldValue('status', vehicleStatusList.filter((obj) => obj.value === formData.activeInactiveInd)[0]);
+        // formik.setFieldValue('product',getFilteredProductsFromMainList(formData.vehicleRuleProducts, productNameList));
+        const obj:vehicleRuleType  = {
+            addressLine1: '',
+            city: formData.city,
+            state: formData.state,
+            countryCd: 'us',
+            year: formData.yearNo,
+            status: vehicleStatusList.filter((obj) => obj.value === formData.activeInactiveInd)[0],
+            product: getFilteredProductsFromMainList(formData.vehicleRuleProducts, productNameList)
+        };
+        setInitialFormikValues(obj);
     };
 
     const onGetVehicleRuleSuccess = (response: any) => {
@@ -138,7 +149,7 @@ const AddVehicleRule: React.FC<AddVehicleRuleProps> = () => {
 
     const { mutate: editVehicleRule } = useEditVehicleRule(ruleId, onEditVehicleRuleError, onEditVehicleRuleSuccess);
 
-    const updateVehicleRule = (form: VehicleRuleModel) => {
+    const updateVehicleRule = (form: vehicleRuleType) => {
         try {
             const payload = {
                 "countryCode": form.countryCd,
@@ -194,7 +205,7 @@ const AddVehicleRule: React.FC<AddVehicleRuleProps> = () => {
 
     const { mutate: addNewVehicleRule } = useAddVehicleRule(onAddVehicleRuleError, onAddVehicleRuleSuccess);
 
-    const createNewVehicleRule = (form: VehicleRuleModel) => {
+    const createNewVehicleRule = (form: vehicleRuleType) => {
         try {
             const apiPayload = {
                 "countryCode": form.countryCd,
@@ -212,7 +223,8 @@ const AddVehicleRule: React.FC<AddVehicleRuleProps> = () => {
     };
 
     const formik = useFormik({
-        initialValues,
+        initialValues: initialFormikValues,
+        enableReinitialize: true,
         validationSchema: getValidationSchema(isEditMode),
         onSubmit: (values) => {
             if (isEditMode) {
@@ -252,7 +264,7 @@ const AddVehicleRule: React.FC<AddVehicleRuleProps> = () => {
 
 
     const onClickCancel = () => {
-        if (!formik.isValid || formik.dirty) {
+        if (isFormFieldChange()) {
             showDialogBox(true);
         } else {
             navigate(`/vehicleRule`);

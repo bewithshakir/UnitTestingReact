@@ -10,12 +10,22 @@ export interface SelectPropsInt {
 export interface VehicleRule {
     city: string,
     state: string,
-    product: [],
+    product: Array<SelectPropsInt>,
     addressLine1: string,
     countryCd: string,
     year: string,
     status: SelectPropsInt
 }
+
+export const initialFormValuesVehicleRule = {
+    city : '',
+    state : '',
+    product : [],
+    addressLine1 : '',
+    countryCd : 'us',
+    status : { label: '', value: '' },
+    year : ''
+};
 
 export default class VehicleRuleModel {
     // General Information
