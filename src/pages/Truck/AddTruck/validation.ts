@@ -5,15 +5,22 @@ const dropDownSchema = Yup.object().shape({ label: Yup.string().required('Requir
 const statusDropDownSchema = Yup.object().shape({ label: Yup.string(), value: Yup.string() });
 
 const contactSchema = Yup.object().shape({
-    tcsRegisterId: Yup.string().matches(/^[0-9]+([.][0-9]+)?$/, 'Invalid ID.').required('Required'),
+    tcsRegisterId: Yup.string().max(10,'TCS register id must be at most 10 characters').matches(/^[a-zA-Z0-9]*$/, 'Invalid ID.').required('Required'),
     tankFuelType: dropDownSchema,
-    minCapacityVol: Yup.string().matches(/^[0-9]+([.][0-9]+)?$/, 'Invalid Min Capacity.').required('Required'),
+    minCapacityVol: Yup.string().matches(/^[0-9]+([.][0-9]+)?$/, 'Invalid Min Capacity.').required('Required').test('mintest',
+    'Min capacity should be less than max tank capacity',
+        (value, context) => {
+            if (value && context.parent.maxCapacityVol) {
+                return parseInt(value) < parseInt(context.parent.maxCapacityVol);
+            }
+            return true;
+        }),
     maxCapacityVol: Yup.string().matches(/^[0-9]+([.][0-9]+)?$/, 'Invalid Max Capacity.').required('Required')
 });
 
 const AddTruckValidationSchema = Yup.object().shape({
     truckName: Yup.string().required('Required'),
-    license: Yup.string().required('Required'),
+    license: Yup.string().required('Required').matches(/^[a-zA-Z0-9]*$/,'License should be alpha numeric').max(10),
     vin: Yup.string().required('Required'),
     makeModel: Yup.string().required('Required'),
     color: dropDownSchema,
