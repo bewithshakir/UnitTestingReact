@@ -16,8 +16,6 @@ import { useGetProductList } from '../../ProductManagementLanding/queries';
 import { getProductIcon, getInputHelperText, getInputError } from '../../../utils/helperFunctions';
 import { getProductIds, getFilteredProductsFromMainList, getValidationSchema } from './helperMethods';
 
-// const initialValues = new VehicleRuleModel();
-
 export interface AddVehicleRuleProps {
     version: string
 }
@@ -104,12 +102,6 @@ const AddVehicleRule: React.FC<AddVehicleRuleProps> = () => {
     };
 
     const populateDataInAllFields = (formData: any) => {
-        // formik.setFieldValue('city', formData.city);
-        // formik.setFieldValue('state', formData.state);
-        // formik.setFieldValue('countryCd', 'us');
-        // formik.setFieldValue('year', formData.yearNo);
-        // formik.setFieldValue('status', vehicleStatusList.filter((obj) => obj.value === formData.activeInactiveInd)[0]);
-        // formik.setFieldValue('product',getFilteredProductsFromMainList(formData.vehicleRuleProducts, productNameList));
         const obj:vehicleRuleType  = {
             addressLine1: '',
             city: formData.city,
