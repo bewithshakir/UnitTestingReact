@@ -1939,7 +1939,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing ov
                       <Button
                         aria-label="cancel"
                         className="mr-4"
-                        disabled={true}
+                        disabled={false}
                         id="cancel-btn"
                         onClick={[Function]}
                         types="cancel"
@@ -7935,7 +7935,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing ov
                         <Button
                           aria-label="cancel"
                           className="mr-4"
-                          disabled={true}
+                          disabled={false}
                           id="cancel-btn"
                           onClick={[Function]}
                           types="cancel"
@@ -8010,7 +8010,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing ov
                               <Button
                                 aria-label="cancel"
                                 className="mr-4"
-                                disabled={true}
+                                disabled={false}
                                 id="cancel-btn"
                                 onClick={[Function]}
                                 types="cancel"
@@ -8070,7 +8070,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing ov
                           <Button
                             aria-label="cancel"
                             className="mr-4"
-                            disabled={true}
+                            disabled={false}
                             id="cancel-btn"
                             onClick={[Function]}
                             types="cancel"
@@ -8078,7 +8078,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing ov
                             <WithStyles(ForwardRef(Button))
                               aria-label="cancel"
                               className="btn-cancel mr-4"
-                              disabled={true}
+                              disabled={false}
                               id="cancel-btn"
                               onClick={[Function]}
                               variant="contained"
@@ -8119,16 +8119,16 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing ov
                                     "textSizeSmall": "MuiButton-textSizeSmall",
                                   }
                                 }
-                                disabled={true}
+                                disabled={false}
                                 id="cancel-btn"
                                 onClick={[Function]}
                                 variant="contained"
                               >
                                 <WithStyles(ForwardRef(ButtonBase))
                                   aria-label="cancel"
-                                  className="MuiButton-root MuiButton-contained btn-cancel mr-4 Mui-disabled"
+                                  className="MuiButton-root MuiButton-contained btn-cancel mr-4"
                                   component="button"
-                                  disabled={true}
+                                  disabled={false}
                                   focusRipple={true}
                                   focusVisibleClassName="Mui-focusVisible"
                                   id="cancel-btn"
@@ -8137,7 +8137,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing ov
                                 >
                                   <ForwardRef(ButtonBase)
                                     aria-label="cancel"
-                                    className="MuiButton-root MuiButton-contained btn-cancel mr-4 Mui-disabled"
+                                    className="MuiButton-root MuiButton-contained btn-cancel mr-4"
                                     classes={
                                       Object {
                                         "disabled": "Mui-disabled",
@@ -8146,7 +8146,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing ov
                                       }
                                     }
                                     component="button"
-                                    disabled={true}
+                                    disabled={false}
                                     focusRipple={true}
                                     focusVisibleClassName="Mui-focusVisible"
                                     id="cancel-btn"
@@ -8155,8 +8155,8 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing ov
                                   >
                                     <button
                                       aria-label="cancel"
-                                      className="MuiButtonBase-root MuiButton-root MuiButton-contained btn-cancel mr-4 Mui-disabled Mui-disabled"
-                                      disabled={true}
+                                      className="MuiButtonBase-root MuiButton-root MuiButton-contained btn-cancel mr-4"
+                                      disabled={false}
                                       id="cancel-btn"
                                       onBlur={[Function]}
                                       onClick={[Function]}
@@ -8170,7 +8170,7 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing ov
                                       onTouchEnd={[Function]}
                                       onTouchMove={[Function]}
                                       onTouchStart={[Function]}
-                                      tabIndex={-1}
+                                      tabIndex={0}
                                       type="button"
                                     >
                                       <span
@@ -8178,6 +8178,34 @@ exports[`Rendering of Add product in Parking lot Add product snapshot testing ov
                                       >
                                         buttons.cancel
                                       </span>
+                                      <WithStyles(memo)
+                                        center={false}
+                                      >
+                                        <ForwardRef(TouchRipple)
+                                          center={false}
+                                          classes={
+                                            Object {
+                                              "child": "MuiTouchRipple-child",
+                                              "childLeaving": "MuiTouchRipple-childLeaving",
+                                              "childPulsate": "MuiTouchRipple-childPulsate",
+                                              "ripple": "MuiTouchRipple-ripple",
+                                              "ripplePulsate": "MuiTouchRipple-ripplePulsate",
+                                              "rippleVisible": "MuiTouchRipple-rippleVisible",
+                                              "root": "MuiTouchRipple-root",
+                                            }
+                                          }
+                                        >
+                                          <span
+                                            className="MuiTouchRipple-root"
+                                          >
+                                            <TransitionGroup
+                                              childFactory={[Function]}
+                                              component={null}
+                                              exit={true}
+                                            />
+                                          </span>
+                                        </ForwardRef(TouchRipple)>
+                                      </WithStyles(memo)>
                                     </button>
                                   </ForwardRef(ButtonBase)>
                                 </WithStyles(ForwardRef(ButtonBase))>
