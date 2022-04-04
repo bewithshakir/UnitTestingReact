@@ -41,6 +41,12 @@ export default class UsersModel {
             { field: "shellDigitalAccountId", label: "UNIQUE ID", type: 'text' },
         ];
     }
+    getSortByOptions () {
+        return [
+            "user.sortBy.users_atoz",
+            "user.sortBy.users_ztoa",
+        ];
+    }
 
     dataModel (data: any) {
         return data.map((obj: any) => {
