@@ -3,7 +3,6 @@ import * as React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { getOPISCitiesHandler } from '../pages/OPISCity/mockApi/handlerOPISCityLandingPage';
 import { getAllParkingLotsHandler } from '../pages/ParkingLotsManagement/mockApi/handlerAllParkingLotsLandingPage';
-import { editDspHandler } from "../pages/DspLanding/AddDSP/mockApi/handlerAddDsp";
 import { getFormattedAddressHandler, getGoogleAddressHandler } from "../components/UIComponents/GoogleAddressComponent/mockApi/googleAddressAutoHandler";
 import {
     getProductByLotHandler,
@@ -53,6 +52,8 @@ import { editVehicleRule } from '../mockAPI/vehicleService/vehicleRules/PUT';
 import { getVehicleColorsHandler } from '../mockAPI/vehicleService/vehicleColors/GET';
 import { getVehicleTypeHandler } from '../mockAPI/vehicleService/vehicleTypes/GET';
 import { addVehicleAssetHandler } from '../mockAPI/vehicleService/vehicleAsset/POST';
+import { postCustomersHandler } from '../mockAPI/customerService/customers/POST';
+import { putCustomersHandler } from '../mockAPI/customerService/customers/PUT';
 
 export const handlers = [
     getCustomerContactTypesHandler(),
@@ -76,7 +77,6 @@ export const handlers = [
     getGoogleAddressHandler(),
     addVehicleRule(),
     rightInfoFilterHandler(),
-    editDspHandler(),
     editProductHandler(),
     getFuelTaxList(),
     getFuelTaxProductsList(),
@@ -108,6 +108,8 @@ export const handlers = [
     postUserHandler(),
     putUserHandler(),
     getCustomerHandler(),
+    postCustomersHandler(),
+    putCustomersHandler(),
     getVehicleDetails(),
     editVehicleRule()
 ];

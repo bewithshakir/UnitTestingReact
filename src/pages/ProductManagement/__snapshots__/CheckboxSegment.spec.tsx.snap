@@ -17,10 +17,12 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
         "listeners": Array [],
         "queries": Array [
           Query {
+            "abortSignalConsumed": false,
             "cache": [Circular],
             "cacheTime": 300000,
             "defaultOptions": undefined,
             "gcTimeout": undefined,
+            "hadObservers": true,
             "initialState": Object {
               "data": undefined,
               "dataUpdateCount": 0,
@@ -35,6 +37,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
               "isPaused": false,
               "status": "idle",
             },
+            "meta": undefined,
             "observers": Array [
               QueryObserver {
                 "client": [Circular],
@@ -53,6 +56,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                   "isPaused": false,
                   "status": "idle",
                 },
+                "currentRefetchInterval": false,
                 "currentResult": Object {
                   "data": undefined,
                   "dataUpdatedAt": 0,
@@ -69,6 +73,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
+                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -163,9 +168,11 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
               [Function],
             ],
             "retryer": Retryer {
+              "abort": [Function],
               "cancel": [Function],
               "cancelRetry": [Function],
               "continue": [Function],
+              "continueRetry": [Function],
               "failureCount": 0,
               "isPaused": false,
               "isResolved": false,
@@ -204,10 +211,12 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
         ],
         "queriesMap": Object {
           "[\\"getTaxRates\\",false,\\"\\",\\"\\",null,null]": Query {
+            "abortSignalConsumed": false,
             "cache": [Circular],
             "cacheTime": 300000,
             "defaultOptions": undefined,
             "gcTimeout": undefined,
+            "hadObservers": true,
             "initialState": Object {
               "data": undefined,
               "dataUpdateCount": 0,
@@ -222,6 +231,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
               "isPaused": false,
               "status": "idle",
             },
+            "meta": undefined,
             "observers": Array [
               QueryObserver {
                 "client": [Circular],
@@ -240,6 +250,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                   "isPaused": false,
                   "status": "idle",
                 },
+                "currentRefetchInterval": false,
                 "currentResult": Object {
                   "data": undefined,
                   "dataUpdatedAt": 0,
@@ -256,6 +267,7 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
                   "isPlaceholderData": false,
                   "isPreviousData": false,
                   "isRefetchError": false,
+                  "isRefetching": false,
                   "isStale": true,
                   "isSuccess": false,
                   "refetch": [Function],
@@ -350,9 +362,11 @@ exports[`Rendering of opis rack segment should render snapshot for opis rack seg
               [Function],
             ],
             "retryer": Retryer {
+              "abort": [Function],
               "cancel": [Function],
               "cancelRetry": [Function],
               "continue": [Function],
+              "continueRetry": [Function],
               "failureCount": 0,
               "isPaused": false,
               "isResolved": false,
