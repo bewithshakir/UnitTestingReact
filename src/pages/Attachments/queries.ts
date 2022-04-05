@@ -6,6 +6,7 @@ import { pageDataLimit } from '../../utils/constants';
 
 
 const getAttachmentList = async (pageParam: number, searchTerm: string, sortOrder: { sortBy: string, order: string }, filterParams: { [key: string]: string[] }, customerId: string) => {
+    console.warn("Search term->", searchTerm);
     const query = new URLSearchParams();
     if (searchTerm) {
         query.append("search", searchTerm);
