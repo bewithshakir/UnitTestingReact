@@ -21,8 +21,9 @@ const UserLandingPage: FC<UsersManagementProps> = memo(() => {
     const headCells = UserObj.fieldsToDisplay();
     const rowActions = UserObj.rowActions();
     const [searchTerm, setSearchTerm] = useState("");
-    const sortOrder = { sortBy: "", order: "" };
+    const [sortOrder,setSortOrder] = useState<{ sortBy: string, order: string }>({ sortBy: "", order: "" });
     const [usersList, setAllUsersList] = useState([]);
+    const [resetTableCollaps, setResetTableCollaps] = useState(false);
 
     const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
     setVersion("NavLinks");
@@ -47,6 +48,22 @@ const UserLandingPage: FC<UsersManagementProps> = memo(() => {
         setSearchTerm(value);
     };
     
+    const onSortBySlected = (value: string) => {
+        let sortOrder;
+        switch (value) {
+          case t('user.sortBy.users_atoz'):
+            sortOrder = { sortBy: "firstNm", order: "asc" };
+            break;
+          case t('user.sortBy.users_ztoa'):
+            sortOrder = { sortBy: "firstNm", order: "desc" };
+            break;
+          default:
+            sortOrder = { sortBy: "", order: "" };
+            break;
+        }
+        setResetTableCollaps(true);
+        setSortOrder(sortOrder);
+    };
     
     return (
         <Box display="flex" mt={10} ml={8}>
@@ -64,9 +81,9 @@ const UserLandingPage: FC<UsersManagementProps> = memo(() => {
                         <Grid item pr={2.5}>
                             <FormControl>
                                 <SortbyMenu
-                                    id={"userSort"}
-                                    options={[]}
-                                    onSelect={(value) => value}
+                                    id="userSort"
+                                    options={UserObj.getSortByOptions().map((sortByItem) => t(sortByItem))}
+                                    onSelect={(value) => onSortBySlected(value)}
                                 />
                             </FormControl>
                         </Grid>
@@ -105,6 +122,8 @@ const UserLandingPage: FC<UsersManagementProps> = memo(() => {
                         rowActionOptions={rowActions}
                         getPages={fetchNextPage}
                         searchTerm={searchTerm}
+                        resetCollaps={resetTableCollaps}
+                        onResetTableCollaps={setResetTableCollaps}
                         noDataMsg={t('user.nodataMsg')}
                     />
                 </Grid>
