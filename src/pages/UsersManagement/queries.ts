@@ -3,6 +3,17 @@ import { AxiosRequestConfig } from 'axios';
 import axios from '../../infrastructure/ApiHelper';
 import { pageDataLimit } from '../../utils/constants';
 
+function getQueryStr (query: any) {
+  if (query) {
+      if (query.toString().length) {
+          return `&countryCode=us&${query.toString()}`;
+      }
+      return '&countryCode=us';
+
+  }
+  return '&countryCode=us';
+}
+
 const getAllUsersList = async (
   pageParam: number,
   searchTerm: string,
@@ -10,7 +21,6 @@ const getAllUsersList = async (
   filterParams?: { [key: string]: string[] }
 ) => {
   const query = new URLSearchParams();
-  query.append('countryCode', 'us');
   if (searchTerm) {
     query.append('search', searchTerm);
   }
@@ -26,10 +36,13 @@ const getAllUsersList = async (
     }
   }
 
+
   const allUsersListEntitySet = `api/user-service/users?limit=${pageDataLimit}&offset=${pageParam}`;
+  const url = getQueryStr(query);
+
   const options: AxiosRequestConfig = {
-    method: 'get',
-    url: `${allUsersListEntitySet}&${query.toString()}`,
+      method: 'get',
+      url: allUsersListEntitySet + url
   };
   const { data } = await axios(options);
   return data;
@@ -43,7 +56,7 @@ export const useAllUsersList = (
   return useInfiniteQuery(
     ['getAllUsersList', query, sortOrder, filterParams],
     ({ pageParam = 0 }) =>
-      getAllUsersList(pageParam, query, sortOrder),
+      getAllUsersList(pageParam, query, sortOrder, filterParams),
     {
       getNextPageParam: (lastGroup: any) => {
         if (lastGroup.data.pagination.offset < lastGroup.data.pagination.totalCount) {

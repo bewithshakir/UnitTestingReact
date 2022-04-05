@@ -241,7 +241,8 @@
     "driver": "Chauffeur",
     "state": "État",
     "city": "Ville",
-    "zip": "Zip"
+    "zip": "Zip",
+    "customerName": "Nom du client"
   },
   "assetManagement": {
     "asset": "Type d'actif",

@@ -241,7 +241,8 @@
     "driver": "Conductor",
     "state": "Estado",
     "city": "ciudad",
-    "zip": "CÓDIGO POSTAL"
+    "zip": "CÓDIGO POSTAL",
+    "customerName": "Nombre del cliente"
   },
   "assetManagement": {
     "asset": "Tipo de activo",

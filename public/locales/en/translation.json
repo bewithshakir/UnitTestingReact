@@ -535,7 +535,8 @@
     "city": "City",
     "zip": "Zip",
     "date": "Date",
-    "userGroup":"User Group"
+    "userGroup":"User Group",
+    "customerName": "Customer Name"
   },
   "addTruckFormLabels": {
     "addTruckTitle": "Add Truck",
