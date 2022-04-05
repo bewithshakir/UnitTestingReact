@@ -1,38 +1,4 @@
-import { rest, DefaultRequestBody, ResponseComposition, RestContext, RestRequest, PathParams } from "msw";
-import { addEditFeeResponse, feeDetailsResp } from "./sampleResponse";
-
-export const getDelFeeSchduleHandler = () => {
-    return rest.get('*/api/pricing-fee-service/fees/frequencies*', (req, res, ctx) => {
-        return res(
-            ctx.status(200),
-            ctx.json({
-                "data": [
-                    {
-                        "feeFrequencyCd": "04a06dbf-9f2f-4414-aae8-9045aad0cb87",
-                        "feeFrequencyNm": "Per Day",
-                        "activeInactiveIndicator": "Y"
-                    },
-                    {
-                        "feeFrequencyCd": "2014186b-8e1a-40e6-b23f-04456eb02816",
-                        "feeFrequencyNm": "Per Month",
-                        "activeInactiveIndicator": "Y"
-                    },
-                    {
-                        "feeFrequencyCd": "32c0986d-aa76-4b1c-9feb-e5f82b41c326",
-                        "feeFrequencyNm": "Per Week",
-                        "activeInactiveIndicator": "Y"
-                    },
-                    {
-                        "feeFrequencyCd": "58664ce4-49f7-4038-82a9-af7d5d0c9831",
-                        "feeFrequencyNm": "Per Order",
-                        "activeInactiveIndicator": "Y"
-                    }
-                ],
-                "error": null
-            })
-        );
-    });
-};
+import { rest } from "msw";
 
 export const getAssetTypeHandler = () => {
     return rest.get('*/api/product-service/assets', (req, res, ctx) => {
@@ -137,36 +103,4 @@ export const getAssetTypeHandler = () => {
             })
         );
     });
-};
-
-const handleAddFeeResp = (
-    req: RestRequest<DefaultRequestBody, PathParams>,
-    res: ResponseComposition<DefaultRequestBody>,
-    ctx: RestContext) => {
-    return res(
-        ctx.status(200),
-        ctx.json({
-            "data": addEditFeeResponse,
-            "error": null
-        })
-    );
-};
-
-
-export const addFeeDetailsHandler = () => {
-    return rest.post('*/api/pricing-fee-service/fees', handleAddFeeResp);
-};
-
-export const getFeeDetailsHandler = () => {
-    return rest.get('*/api/pricing-fee-service/fees', (req, res, ctx) => {
-        return res(
-            ctx.status(200),
-            ctx.json(feeDetailsResp)
-        );
-    });
-};
-
-
-export const editFeeDetailsHandler = () => {
-    return rest.put('*/api/pricing-fee-service/fees', handleAddFeeResp);
 };

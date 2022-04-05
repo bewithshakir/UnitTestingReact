@@ -30,7 +30,7 @@
       }
     }
 
-    & .react-select, .react-select-product-color {
+    & .react-select, .multi-select, .react-select-product-color {
       &__control {
         height: 50px;
         border-radius: 0px;
@@ -196,7 +196,7 @@
     &.error {
       border: 2px solid var(--Tertiary);
       box-shadow: none;
-      & .react-select {
+      & .multi-select {
         &__control {
           border: none;
           box-shadow: none;
@@ -207,7 +207,7 @@
             box-shadow: none;
           }
           &--menu-is-open {
-            & .react-select__indicator {
+            & .multi-select__indicator {
               padding-left: 18px;
               transform: rotate(180deg);
             }

@@ -1,7 +1,8 @@
 import React from 'react';
 import Checkbox from '@material-ui/core/Checkbox';
 import { UncheckedCheckboxIcon, CheckedCheckboxIcon } from '../../../assets/icons';
-interface checkBoxProps {
+interface CheckBoxProps {
+    id?: string
     name: string;
     checked: boolean;
     disabled?: boolean;
@@ -12,10 +13,11 @@ interface checkBoxProps {
     style?: any
 }
 
-export default function Checkboxes (props: checkBoxProps) {
+export default function Checkboxes(props: CheckBoxProps) {
 
     return (
         <Checkbox
+            id={props.id}
             color="default"
             className={'checkboxStyle'}
             checkedIcon={<CheckedCheckboxIcon />}

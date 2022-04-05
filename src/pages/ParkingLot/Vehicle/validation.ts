@@ -5,39 +5,83 @@ const selectOption = Yup.object().shape({
     value: Yup.string().required('Required'),
 }).required('Required');
 
-const getMaxAlphaNumScehma = (maxChar: number) => {
-    return Yup.string().matches(/^[a-z0-9]+$/i, 'Invalid').max(maxChar).required('Required');
+const getAlphaNumScehma = (charLength?: number, lengthType?: 'max' | 'length') => {
+    const stringSchema = Yup.string().matches(/^[a-z0-9]+$/i, 'Invalid').required('Required');
+    switch (lengthType) {
+        case 'length':
+            stringSchema.length(charLength || 0);
+            return stringSchema;
+        case 'max':
+            stringSchema.max(charLength || 0);
+            return stringSchema;
+        default:
+            return stringSchema;
+    }
 };
+
+interface SelectSchemaOptions {
+    validateOnField: string
+    fieldValue: any
+    isMultiSelect?: boolean
+}
+
+const conditionalSelectSchema = ({
+    validateOnField,
+    fieldValue,
+    isMultiSelect }: SelectSchemaOptions) => Yup.mixed().test(
+        validateOnField,
+        function (value: any, context: any) {
+            const isFieldValid = isMultiSelect ? value.length === 0 : !value?.value;
+            return context.parent[validateOnField] === fieldValue &&
+                isFieldValid ?
+                this.createError({ message: 'Required' }) :
+                true;
+        }
+    );
+
 
 export const AddVehicleValidationSchema = Yup.object().shape({
     isApplyRule: Yup.boolean(),
     isAsset: Yup.boolean().required('Required'),
-    vehicleType: selectOption,
 
     /** Vehicle section */
-    licenceNo: getMaxAlphaNumScehma(10),
-    vin: Yup.string().matches(/^[a-z0-9]+$/i, 'Invalid').length(17).required('Required'),
-    year: Yup.string().matches(/^\d{4}$/, 'Year should be a 4 digits number').required('Required'),
-    make: getMaxAlphaNumScehma(15),
-    model: getMaxAlphaNumScehma(15),
-    color: selectOption,
+    vehicleType: conditionalSelectSchema({ validateOnField: 'isAsset', fieldValue: false }),
+    licenceNo: Yup.string().when('isAsset', {
+        is: false,
+        then: getAlphaNumScehma(10, 'max')
+    }),
+    vin: Yup.string().when('isAsset', {
+        is: false,
+        then: getAlphaNumScehma(17, 'length')
+    }),
+    year: Yup.string().when('isAsset', {
+        is: false,
+        then: Yup.string().matches(/^\d{4}$/, 'Year should be a 4 digits number').required('Required')
+    }),
+    make: Yup.string().when('isAsset', {
+        is: false,
+        then: getAlphaNumScehma(15, 'max')
+    }),
+    model: Yup.string().when('isAsset', {
+        is: false,
+        then: getAlphaNumScehma(15, 'max')
+    }),
+    color: conditionalSelectSchema({ validateOnField: 'isAsset', fieldValue: false }),
+
+    /** Asset section */
+    assetType: conditionalSelectSchema({ validateOnField: 'isAsset', fieldValue: true }),
+    assetId: Yup.string().when('isAsset', {
+        is: true,
+        then: getAlphaNumScehma()
+    }),
+    assetNote: Yup.string(),
+
     fuelProductName: selectOption,
     fuelCustomProductName: selectOption,
 
     isNonFuel: Yup.boolean().required('Required'),
-    nonFuelCustomProductName: Yup.array().test('isNonFuel', function (value: any, context: any) {
-        if (context.parent.isNonFuel && value.length === 0) {
-            return this.createError({ message: 'Required' });
-        }
-        return true;
-    }),
+    nonFuelCustomProductName: conditionalSelectSchema({ validateOnField: 'isNonFuel', fieldValue: true, isMultiSelect: true }),
 
     isAddOn: Yup.boolean().required('Required'),
-    addOnCustomProductName: Yup.array().test('isAddOn', function (value: any, context: any) {
-        if (context.parent.isAddOn && value.length === 0) {
-            return this.createError({ message: 'Required' });
-        }
-        return true;
-    }),
-
+    addOnCustomProductName: conditionalSelectSchema({ validateOnField: 'isAddOn', fieldValue: true, isMultiSelect: true }),
 });
