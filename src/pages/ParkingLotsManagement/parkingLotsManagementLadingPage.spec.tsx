@@ -5,7 +5,7 @@ const mockedUsedNavigate = jest.fn();
 import userEvent from '@testing-library/user-event';
 
 jest.mock('react-router-dom', () => ({
-    ...jest.requireActual('react-router-dom') as any,
+    ...jest.requireActual('react-router-dom'),
     useNavigate: () => mockedUsedNavigate,
 }));
 
@@ -19,14 +19,19 @@ describe('load landing page', () => {
             expect(result.getByText(/76123456/i)).toBeInTheDocument();
         });
 
-        act(async() => {
-            const cell = result.getByText(/76123456/i);
+        const cell = result.getByText(/76123456/i);
+        await act(async () => {
             userEvent.click(cell);
-            expect(result.getByText(/Pricing/i)).toBeInTheDocument();
-            expect(result.getByText(/Lot Details/i)).toBeInTheDocument();
-            expect(result.getByText(/Pricing/i)).toBeInTheDocument();
-            expect(result).toHaveClass('right_info_panel_content');
-            expect(result.getByText(/barunshrm@gmail.com/i)).toBeInTheDocument();
+        });
+        await waitFor(async () => {
+            expect(result.container.querySelector('.disclaimerTextBox')).toBeInTheDocument();
+        });
+        await waitFor(async () => {
+            expect(result.getByText('parkingLotManagement.infoView.lotDetails')).toBeInTheDocument();
+        });
+        await waitFor(async () => {
+            expect(result.getByText('parkingLotManagement.infoView.pricing')).toBeInTheDocument();
+            expect(result.getByText('barunshrm@gmail.com')).toBeInTheDocument();
         });
     });
 });
