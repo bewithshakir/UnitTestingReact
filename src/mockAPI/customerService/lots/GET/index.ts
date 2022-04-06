@@ -5,7 +5,7 @@ import { getLotProductTypes } from "./getProductTypes";
 import { getLotProducts } from "./lotProducts";
 
 export const getCustomerLotHandler = () => {
-    return rest.get('*/api/customer-service/lots/*', (req, res, ctx) => {
+    return rest.get('*/api/customer-service/lots*', (req, res, ctx) => {
         const pathName = req.url.pathname;
         if (pathName.includes('/products')) {
             return getLotProducts(pathName, res, ctx);
