@@ -80,8 +80,22 @@ export default class UsersModel {
     FilterByFields (): IDynamicFilterProps['fields'] {
         return (
             [
-                { name: 'customerName', label: 'filterForm.customerName', fieldType: 'select', optionUrlKey: 'custUserFilter', optionAPIResponseKey: 'customers', initialValue: [] },
-                { name: 'userGroupName', label: 'filterForm.userGroup', fieldType: 'select', optionUrlKey: 'custUserFilter', optionAPIResponseKey: 'userGroups', initialValue: [] },
+                { 
+                    name: 'customerName', 
+                    label: 'filterForm.customerName', 
+                    fieldType: 'select', 
+                    optionUrlKey: 'custUserFilter', 
+                    optionAPIResponseKey: 'customers', 
+                    initialValue: [] 
+                },
+                { 
+                    name: 'userGroupName', 
+                    label: 'filterForm.userGroup', 
+                    fieldType: 'select',
+                    optionUrlKey: 'custUserFilter', 
+                    optionAPIResponseKey: 'userGroups', 
+                    initialValue: [] 
+                },
             ]
         );
     }
