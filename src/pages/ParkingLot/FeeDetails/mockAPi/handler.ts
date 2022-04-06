@@ -152,13 +152,14 @@ const handleAddFeeResp = (
     );
 };
 
+const feeDetailsAPIPath = '*/api/pricing-fee-service/fees';
 
 export const addFeeDetailsHandler = () => {
-    return rest.post('*/api/pricing-fee-service/fees', handleAddFeeResp);
+    return rest.post(feeDetailsAPIPath, handleAddFeeResp);
 };
 
 export const getFeeDetailsHandler = () => {
-    return rest.get('*/api/pricing-fee-service/fees', (req, res, ctx) => {
+    return rest.get(feeDetailsAPIPath, (req, res, ctx) => {
         return res(
             ctx.status(200),
             ctx.json(feeDetailsResp)
@@ -168,5 +169,5 @@ export const getFeeDetailsHandler = () => {
 
 
 export const editFeeDetailsHandler = () => {
-    return rest.put('*/api/pricing-fee-service/fees', handleAddFeeResp);
+    return rest.put(feeDetailsAPIPath, handleAddFeeResp);
 };

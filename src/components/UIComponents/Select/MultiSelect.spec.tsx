@@ -9,6 +9,8 @@ const l1 = { label: 'Label1', value: 'Value1', icon: <YellowFuelIcon /> };
 const l2 = { label: 'Label2', value: 'Value2', icon: <YellowFuelIcon /> };
 const l3 = { label: 'Label3', value: 'Value3', icon: <YellowFuelIcon /> };
 
+const indicatorClass = 'div.multi-select__dropdown-indicator';
+
 describe('renders the MultiSelect component on change', () => {
 
     it('Should change value when onChange was called', async () => {
@@ -39,7 +41,7 @@ describe('renders the MultiSelect component with correct no of options', () => {
             items: options
         };
         const wrapper = render(<MultiSelect {...props} />);
-        const indicator = wrapper.container.querySelector('div.multi-select__dropdown-indicator') as Element;
+        const indicator = wrapper.container.querySelector(indicatorClass) as Element;
         userEvent.click(indicator);
         const foundOptions = wrapper.container.querySelectorAll('div.multi-select__option');
         expect(foundOptions.length).toEqual(options.length);
@@ -57,7 +59,7 @@ describe('renders the MultiSelect component with more than 2 clicked options', (
             items: options
         };
         const wrapper = render(<MultiSelect {...props} />);
-        const indicator = wrapper.container.querySelector('div.multi-select__dropdown-indicator') as Element;
+        const indicator = wrapper.container.querySelector(indicatorClass) as Element;
         await act(async () => {
             userEvent.click(indicator);
         });
@@ -81,7 +83,7 @@ describe('renders the MultiSelect', () => {
             name: 'multiTest',
         };
         const wrapper = render(<MultiSelect {...props} />);
-        const indicator = wrapper.container.querySelector('div.multi-select__dropdown-indicator') as Element;
+        const indicator = wrapper.container.querySelector(indicatorClass) as Element;
         await act(async () => {
             userEvent.click(indicator);
         });

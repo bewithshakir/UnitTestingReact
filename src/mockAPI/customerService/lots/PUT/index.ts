@@ -8,5 +8,9 @@ export const editCustomerLotHandler = () => {
         if (pathName.includes('/products')) {
             return editProductHandler(res, ctx);
         }
+        return res(
+            ctx.status(404),
+            ctx.json({})
+        );
     });
 };

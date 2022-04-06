@@ -1,5 +1,6 @@
 import { rest } from "msw";
 import { getAllLotFilterOptions } from "./getFilterOptions";
+import { getLots } from "./getLots";
 import { getLotProductTypes } from "./getProductTypes";
 import { getLotProducts } from "./lotProducts";
 
@@ -15,5 +16,6 @@ export const getCustomerLotHandler = () => {
         if (pathName.includes('filter-options')) {
             return getAllLotFilterOptions(res, ctx);
         }
+        return getLots(res, ctx);
     });
 };

@@ -10,16 +10,7 @@ export const getLotProducts = (pathName: string, res: ResponseComposition<Defaul
     if (pathName.includes('emptyRespUser123')) {
         return res(
             ctx.status(200),
-            ctx.json({
-                "data": {
-                    "pagination": {
-                        "totalCount": 0,
-                        "limit": 15,
-                        "offset": 0
-                    },
-                    "lotProducts": [],
-                }
-            })
+            ctx.json({ "data": { "pagination": { "totalCount": 0, "limit": 15, "offset": 0 }, "lotProducts": [], } })
         );
     }
     return res(
@@ -27,11 +18,7 @@ export const getLotProducts = (pathName: string, res: ResponseComposition<Defaul
         ctx.json({
             "data": {
                 ...(pathName.includes('skipPagination=true') ? {} : {
-                    "pagination": {
-                        "totalCount": 8,
-                        "limit": 15,
-                        "offset": 0
-                    },
+                    "pagination": { "totalCount": 8, "limit": 15, "offset": 0 },
                 }),
                 "lotProducts": [
                     {
