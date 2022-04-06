@@ -140,7 +140,7 @@ export const getAssetTypeHandler = () => {
 };
 
 const handleAddFeeResp = (
-    _req: RestRequest<DefaultRequestBody>,
+    _req: RestRequest,
     res: ResponseComposition<DefaultRequestBody>,
     ctx: RestContext) => {
     return res(
