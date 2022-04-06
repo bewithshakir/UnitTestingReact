@@ -5,8 +5,7 @@ import { AllParkingLots } from './config';
 
 const queryClient = new QueryClient();
 jest.mock("react-router-dom", () => ({
-
-  ...jest.requireActual("react-router-dom") as any,
+  ...jest.requireActual("react-router-dom"),
   useNavigate: () => ({
     location: {
       pathname: "/parkingLots"
@@ -20,9 +19,6 @@ describe('Given All ParkingLots Landing Page', () => {
       <ParkingLotsManagementLadingPage version={'NavLinks'} />
     </QueryClientProvider>
   );
-  test('Page Rendered Properly', () => {
-    expect(Page).toMatchSnapshot();
-  });
   test('Filter Menu Rendered With Options', () => {
     const Filter = Page.find('[types="filter"]');
     Filter.simulate('click');
@@ -47,11 +43,6 @@ describe('Given All ParkingLots Landing Page', () => {
   test('Search Box Rendered', () => {
     const BurgerMenu = Page.find('SearchInput');
     expect(BurgerMenu.find('#parkingLotSearch').exists()).toBe(true);
-  });
-  test('Kabab Menu Rendered With Options', () => {
-    const BurgerMenu = Page.find('ActionsMenu');
-    BurgerMenu.simulate('click');
-    expect(BurgerMenu.find('.actions-popper').exists()).toBe(true);
   });
 });
 

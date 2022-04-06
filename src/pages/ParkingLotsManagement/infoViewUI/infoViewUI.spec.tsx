@@ -1,7 +1,6 @@
 import { waitFor } from "@testing-library/react";
 import { renderWithClient } from '../../../tests/utils';
 import InfoViewUI from './InfoViewUI.component';
-const mockedUsedNavigate = jest.fn();
 import { serverMsw } from '../../../setupTests';
 import { rest } from "msw";
 
@@ -104,19 +103,13 @@ const productsData = {
     ],
   },
   error: null,
-}
+};
 
 
 describe('load inforView component', () => {
-
-  it('load component', async () => {
-    const result = renderWithClient(<InfoViewUI rowLotId={lotId} lotData={lotData} />);
-    expect(result).toMatchSnapshot();
-  });
-
   it('load pricing data', async () => {
     serverMsw.use(
-      rest.get('*', (req, res, ctx) => {
+      rest.get('*', (_req, res, ctx) => {
         return res(
           ctx.status(200),
           ctx.json(productsData)
