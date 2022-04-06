@@ -1,4 +1,4 @@
-import { rest, DefaultRequestBody, ResponseComposition, RestContext, RestRequest, PathParams } from "msw";
+import { rest, DefaultRequestBody, ResponseComposition, RestContext, RestRequest } from "msw";
 import { addEditFeeResponse, feeDetailsResp } from "./sampleResponse";
 
 export const getDelFeeSchduleHandler = () => {
@@ -140,7 +140,7 @@ export const getAssetTypeHandler = () => {
 };
 
 const handleAddFeeResp = (
-    req: RestRequest<DefaultRequestBody, PathParams>,
+    _req: RestRequest<DefaultRequestBody>,
     res: ResponseComposition<DefaultRequestBody>,
     ctx: RestContext) => {
     return res(
