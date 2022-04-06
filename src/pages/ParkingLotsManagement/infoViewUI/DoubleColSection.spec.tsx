@@ -17,6 +17,6 @@ const doubleSectionCompData = {
 describe('load double col section component', () => {
   it('load component', async () => {
     const result = renderWithClient(<TwoColSection data={doubleSectionCompData} />);
-    expect(result).toMatchSnapshot();
+    expect(result.container.querySelector('.sectionBox')).toBeInTheDocument();
   });
 });
