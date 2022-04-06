@@ -18,7 +18,6 @@ export default function NonFuelSegment({ lotId, getFormikProps, productGroupObj 
         <>
             <Grid item lg={5} md={8} sm={8} xs={8} mx={4}>
                 <MultiSelect
-                    id='addOnServiceProductName'
                     label={t("addVehicle.addOnProductName")}
                     placeholder={t('addVehicle.select')}
                     required

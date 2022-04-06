@@ -10,10 +10,10 @@ interface VehicleType {
     vehicleColorNm: string
 }
 
-const getVehicleColors = async (): Promise<{ data?: VehicleType[] }> => {
+const getVehicleColors = async (countryCode: string): Promise<{ data?: VehicleType[] }> => {
     const options: AxiosRequestConfig = {
         method: 'get',
-        url: '/api/vehicle-service/vehicle-colors?countryCode=us'
+        url: `/api/vehicle-service/vehicle-colors?countryCode=${countryCode}`
     };
     const { data } = await axios(options);
     return data;
@@ -28,10 +28,10 @@ const selectVehice = (response: { data?: VehicleType[] }) => {
         })) || [];
 };
 
-export const useGetVehicleColors = () => {
+export const useGetVehicleColors = (countryCode: string) => {
     return useQuery(
-        'getVehicleColors',
-        () => getVehicleColors(),
+        ['getVehicleColors', countryCode],
+        () => getVehicleColors(countryCode),
         {
             retry: false,
             select: selectVehice
@@ -44,10 +44,10 @@ interface ProductGroups {
     productGroupCd: string
     productGroupNm: "Non-Fuel" | "Add-On service" | "Fuel"
 }
-const getProductGroups = async (): Promise<{ data?: ProductGroups[] }> => {
+const getProductGroups = async (countryCode: string): Promise<{ data?: ProductGroups[] }> => {
     const options: AxiosRequestConfig = {
         method: 'get',
-        url: '/api/product-service/products/product-groups?countryCode=us'
+        url: `/api/product-service/products/product-groups?countryCode=${countryCode}`
     };
     const { data } = await axios(options);
     return data;
@@ -64,8 +64,12 @@ const formatProductGroup = (response: { data?: ProductGroups[] }) => {
     }, {} as ProductGroupObj);
 };
 
-export const useGetProductGroups = () => {
-    return useQuery('getProductGroups', () => getProductGroups(), { retry: false, select: formatProductGroup });
+export const useGetProductGroups = (countryCode: string) => {
+    return useQuery(
+        ['getProductGroups', countryCode],
+        () => getProductGroups(countryCode),
+        { retry: false, select: formatProductGroup }
+    );
 };
 
 
@@ -212,4 +216,48 @@ export const useAddVehicleAsset = (countryCode: string, onSuccess: any, onError:
         onSuccess,
         onError,
         retry: false
-    }); 
+    });
+
+interface AssetType {
+    assetId: string
+    assetNm: string
+    activeInactiveInd: "Y" | "N"
+}
+interface AssetTypeResp {
+    data?: {
+        assets: AssetType[]
+    }
+}
+
+//Asset Type Dropdown 
+const selectAsset = (result?: AssetTypeResp) => {
+    return result?.data?.assets.map(item => ({
+        ...item,
+        label: item.assetNm,
+        value: item.assetId
+    })) || [];
+};
+
+const getAssetTypes = async (filter: Filter) => {
+    const query = new URLSearchParams();
+    for (const [key, value] of Object.entries(filter)) {
+        query.append(key, String(value));
+    }
+    const options: AxiosRequestConfig = {
+        method: 'get',
+        url: `/api/product-service/assets?${query.toString()}`
+    };
+    const { data } = await axios(options);
+    return data;
+};
+
+export const useGetAssetTypes = (filter: Filter) => {
+    return useQuery(
+        ["getAssetTypes", filter],
+        () => getAssetTypes(filter),
+        {
+            retry: false,
+            select: selectAsset
+        }
+    );
+};

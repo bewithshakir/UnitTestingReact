@@ -1,20 +1,22 @@
-import React, { ChangeEvent, useState } from 'react';
+import React, { useState } from 'react';
 import { FormikProvider, useFormik } from 'formik';
 import { useTranslation } from 'react-i18next';
-import { Grid, Typography, FormControlLabel } from '@mui/material';
+import { Grid, Typography } from '@mui/material';
 import { Button } from '../../../components/UIComponents/Button/Button.component';
-import Checkbox from '../../../components/UIComponents/Checkbox/Checkbox.component';
-import { AddVehicleValidationSchema } from './validation';
-import { checkboxConfig, formatSave, FormFieldName, formStatusObj, initialFormValues, labelColor, VehicleAssetFormField } from './config';
+import CheckboxControl from '../../../components/UIComponents/Checkbox/CheckboxControl.component';
+import { formatSave, FormFieldName, formStatusObj, initialFormValues, labelColor, VehicleAssetFormField } from './config';
 import { useAddedCustomerIdStore, useShowConfirmationDialogBoxStore } from '../../../store';
 import { ImportIcon } from '../../../assets/icons';
 import VehicleSegment from './vehicleSegment';
-import { getInputError, getInputHelperText } from '../../../utils/helperFunctions';
-import { useAddVehicleAsset, useGetProductGroups } from './queries';
+import AssetSegment from './assetSegment';
 import NonFuelSegment from './nonFuelSegment';
 import AddOnSegment from './addOnSegment';
-import { getCountryCode } from '../../../navigation/utils';
 import FormActionSegment from './formActionSegment';
+import { getInputError, getInputHelperText } from '../../../utils/helperFunctions';
+import { useAddVehicleAsset, useGetProductGroups } from './queries';
+import { AddVehicleValidationSchema } from './validation';
+import { getCountryCode } from '../../../navigation/utils';
+import FuelSegment from './fuelSegment';
 
 
 interface Props {
@@ -34,17 +36,19 @@ export default function AddVehicleAsset({ lotId }: Props) {
     const [apiResposneState, setAPIResponse] = useState(false);
 
     const [formStatus, setFormStatus] = useState({ message: '', type: '' });
+
     const isFormValidated = useShowConfirmationDialogBoxStore((state) => state.setFormFieldValue);
     const hideDialogBox = useShowConfirmationDialogBoxStore((state) => state.hideDialogBox);
+    const countryCode = getCountryCode() || "";
 
     const handleFormBlur = () => {
         isFormValidated(formik.dirty);
     };
 
     const handleSaveError = (err: any) => {
-        const { data } = err.message;
+        const errResp = err?.response?.data?.error;
         formik.setSubmitting(false);
-        setFormStatus({ message: data?.error.message || formStatusObj.error.message, type: 'Error' });
+        setFormStatus({ message: errResp?.message || formStatusObj.error.message, type: 'Error' });
         setAPIResponse(true);
         hideDialogBox();
         setTimeout(() => {
@@ -63,9 +67,9 @@ export default function AddVehicleAsset({ lotId }: Props) {
         }, 6000);
     };
 
-    const { mutate: addVehicleAsset } = useAddVehicleAsset(getCountryCode() || "", handleSaveSuccess, handleSaveError);
+    const { mutate: addVehicleAsset } = useAddVehicleAsset(countryCode, handleSaveSuccess, handleSaveError);
 
-    const { data: productGroupObj } = useGetProductGroups();
+    const { data: productGroupObj } = useGetProductGroups(countryCode);
 
     const saveVehicle = (values: VehicleAssetFormField) => {
         addVehicleAsset(formatSave(customerId, lotId, values));
@@ -98,22 +102,6 @@ export default function AddVehicleAsset({ lotId }: Props) {
             }
         };
     };
-
-    const handleInNonFuelChange = (event: ChangeEvent<HTMLInputElement>) => {
-        formik.setValues({
-            ...formik.values,
-            isNonFuel: event.target.checked,
-            nonFuelCustomProductName: formik.initialValues.nonFuelCustomProductName
-        });
-    };
-
-    const handleIsAddOnChange = (event: ChangeEvent<HTMLInputElement>) => {
-        formik.setValues({
-            ...formik.values,
-            isAddOn: event.target.checked,
-            addOnCustomProductName: formik.initialValues.addOnCustomProductName
-        });
-    };
     return (
         <FormikProvider value={formik}>
             <form onSubmit={formik.handleSubmit} className="vehicleForm" id='saveVehicleForm' onBlur={handleFormBlur}>
@@ -134,17 +122,11 @@ export default function AddVehicleAsset({ lotId }: Props) {
                             </Button>
                         </Grid>
 
-
                         <Grid item lg={5} md={8} sm={8} xs={8} mx={4} my={1}>
-                            <FormControlLabel
-                                sx={checkboxConfig}
-                                control={<Checkbox
-                                    checked={Boolean(formik.values.isApplyRule)}
-                                    {...formik.getFieldProps('isApplyRule')}
-                                />}
-                                label={<Typography color={{ labelColor }} variant="h4" >
-                                    {t("addVehicle.vehicleBusinessRule")}
-                                </Typography>} />
+                            <CheckboxControl
+                                label={t("addVehicle.vehicleBusinessRule")}
+                                {...getFormikProps('isApplyRule')}
+                            />
                         </Grid>
 
                         <Grid item md={12} mx={4}>
@@ -156,35 +138,34 @@ export default function AddVehicleAsset({ lotId }: Props) {
                         </Grid>
 
                         <Grid item lg={5} md={8} sm={8} xs={8} mx={4} my={2}>
-                            <FormControlLabel
-                                sx={checkboxConfig}
-                                className="checkbox-field"
-                                control={<Checkbox checked={true} name="isAsset" />}
-                                label={<Typography color={{ labelColor }} variant="h4" >
-                                    {t('addVehicle.considerAsAsset')}
-                                </Typography>} />
+                            <CheckboxControl
+                                label={t("addVehicle.considerAsAsset")}
+                                {...getFormikProps('isAsset')}
+                            />
                         </Grid>
                         <Grid item lg={5} md={8} sm={8} xs={8} mx={4} my={1}></Grid>
+                        {formik.values.isAsset ? (
+                            <AssetSegment formik={formik} productGroupObj={productGroupObj} lotId={lotId} getFormikProps={getFormikProps} />
+                        ) : (
+                            <VehicleSegment
+                                formik={formik}
+                                productGroupObj={productGroupObj}
+                                lotId={lotId}
+                                getFormikProps={getFormikProps}
+                            />
+                        )}
 
-                        <VehicleSegment
+                        <FuelSegment
                             formik={formik}
                             productGroupObj={productGroupObj}
                             lotId={lotId}
                             getFormikProps={getFormikProps}
                         />
-
                         <Grid item lg={5} md={8} sm={8} xs={8} mx={4} my={2}>
-                            <FormControlLabel
-                                sx={checkboxConfig}
-                                className="checkbox-field"
-                                control={<Checkbox
-                                    name='isNonFuel'
-                                    checked={Boolean(formik.values.isNonFuel)}
-                                    onChange={handleInNonFuelChange}
-                                />}
-                                label={<Typography color={labelColor} variant="h4">
-                                    {t('addVehicle.nonFuel')}
-                                </Typography>} />
+                            <CheckboxControl
+                                label={t('addVehicle.nonFuel')}
+                                {...getFormikProps('isNonFuel', ['nonFuelCustomProductName'])}
+                            />
                         </Grid>
                         <Grid item lg={5} md={8} sm={8} xs={8} mx={4} my={1}></Grid>
 
@@ -196,17 +177,10 @@ export default function AddVehicleAsset({ lotId }: Props) {
                         />}
 
                         <Grid item lg={5} md={8} sm={8} xs={8} mx={4} my={1}>
-                            <FormControlLabel
-                                sx={checkboxConfig}
-                                className="checkbox-field"
-                                control={<Checkbox
-                                    name='isAddOn'
-                                    checked={Boolean(formik.values.isAddOn)}
-                                    onChange={handleIsAddOnChange}
-                                />}
-                                label={<Typography color={{ labelColor }} variant="h4">
-                                    Add On Services
-                                </Typography>} />
+                            <CheckboxControl
+                                label={t('addVehicle.addOnService')}
+                                {...getFormikProps('isAddOn', ['addOnCustomProductName'])}
+                            />
                         </Grid>
                         <Grid item lg={5} md={8} sm={8} xs={8} mx={4} my={1}></Grid>
                         {formik.values.isAddOn && <AddOnSegment
