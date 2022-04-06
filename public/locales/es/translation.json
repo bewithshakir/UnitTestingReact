@@ -187,7 +187,13 @@
     "nonFuel": "sin combustible",
     "nonFuelProductName": "NOMBRE DEL PRODUCTO NO COMBUSTIBLE",
     "select": "Seleccione",
-    "addOnProductName": "NOMBRE DEL PRODUCTO DEL SERVICIO ADICIONAL"
+    "addOnProductName": "NOMBRE DEL PRODUCTO DEL SERVICIO ADICIONAL",
+    "addOnService": "Servicios adicionales",
+    "assetType": "TIPO DE ACTIVO",
+    "identificationNumber": "NÚMERO DE IDENTIFICACIÓN",
+    "DESCRIPTION": "DESCRIPCIÓN",
+    "17GalRedTank": "TANQUE DE 17 GAL COLOR ROJO COLOCADO AL LADO DE LA OFICINA",
+    "noProdDataMsg": "Ajoutez d'abord des produits avant de configurer des véhicules"
   },
   "dsp": {
     "search": "Nombre DSP",
@@ -236,7 +242,7 @@
   },
   "filterForm": {
     "date": "Fecha",
-    "userGroup":"Grupo de usuario",
+    "userGroup": "Grupo de usuario",
     "status": "Estado",
     "driver": "Conductor",
     "state": "Estado",

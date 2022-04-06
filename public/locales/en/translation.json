@@ -193,7 +193,13 @@
     "nonFuel": "Non-fuel",
     "nonFuelProductName": "NON-FUEL PRODUCT NAME",
     "select": "Select",
-    "addOnProductName": "ADD-ON SERVICE PRODUCT NAME"
+    "addOnProductName": "ADD-ON SERVICE PRODUCT NAME",
+    "addOnService": "Add On Services",
+    "assetType": "ASSET TYPE",
+    "identificationNumber": "IDENTIFICATION NUMBER",
+    "DESCRIPTION": "DESCRIPTION",
+    "17GalRedTank": "17 GAL RED COLOR TANK PLACED NEXT TO THE OFFICE",
+    "noProdDataMsg": "Add Products first before setting up Vehicles"
   },
   "vehicle": {
     "header": {

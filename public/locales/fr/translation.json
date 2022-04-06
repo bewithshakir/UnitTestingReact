@@ -187,7 +187,13 @@
     "nonFuel": "Non-carburant",
     "nonFuelProductName": "NOM DU PRODUIT NON COMBUSTIBLE",
     "select": "Sélectionner",
-    "addOnProductName": "SERVICE ADDITIONNEL NOM DU PRODUIT"
+    "addOnProductName": "SERVICE ADDITIONNEL NOM DU PRODUIT",
+    "addOnService": "Services complémentaires",
+    "assetType": "TYPE D'ACTIF",
+    "identificationNumber": "NUMÉRO D'IDENTIFICATION",
+    "DESCRIPTION": "LA DESCRIPTION",
+    "17GalRedTank": "RÉSERVOIR DE COULEUR ROUGE DE 17 GAL PLACÉ À CÔTÉ DU BUREAU",
+    "noProdDataMsg": "Agregue productos primero antes de configurar vehículos"
   },
   "dsp": {
     "search": "Nom du DSP",
@@ -236,7 +242,7 @@
   },
   "filterForm": {
     "date": "Date",
-    "userGroup":"Groupe d'utilisateurs",
+    "userGroup": "Groupe d'utilisateurs",
     "status": "Statut",
     "driver": "Chauffeur",
     "state": "État",

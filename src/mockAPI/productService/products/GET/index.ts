@@ -20,7 +20,7 @@ export const getProductHandler = () => {
             // Product Color select
             return getProductColor(res, ctx);
         }
-        else if (urlHref.includes('&skipPagination=true&productGroups=[')) {
+        else if (urlHref.includes('skipPagination=true')) {
             // Add Fuel Tax > Product Name
             return getProductName(res, ctx);
         }
