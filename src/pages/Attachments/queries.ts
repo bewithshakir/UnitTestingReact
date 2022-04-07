@@ -32,7 +32,15 @@ const getAttachmentList = async (pageParam: number, searchTerm: string, sortOrde
 };
 
 export const useAttachmentList = (searchTerm: string, sortOrder: { sortBy: string, order: string }, filterParams: { [key: string]: string[] }, customerId: string) => {
-    return useInfiniteQuery(["getAttachmentList", searchTerm, sortOrder, filterParams], ({ pageParam = 0 }) => getAttachmentList(pageParam, searchTerm, sortOrder, filterParams, customerId), {
+    return useInfiniteQuery(["getAttachmentList", 
+    searchTerm,
+    sortOrder, 
+    filterParams], 
+    ({ pageParam = 0 }) => getAttachmentList(pageParam, 
+        searchTerm, 
+        sortOrder, 
+        filterParams, 
+        customerId), {
         getNextPageParam: (lastGroup: any) => {
             if (lastGroup.data.pagination.offset < lastGroup.data.pagination.totalCount) {
                 return lastGroup.data.pagination.offset + pageDataLimit;
