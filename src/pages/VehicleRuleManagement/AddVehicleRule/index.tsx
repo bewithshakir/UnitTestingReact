@@ -102,7 +102,7 @@ const AddVehicleRule: React.FC<AddVehicleRuleProps> = () => {
     };
 
     const populateDataInAllFields = (formData: any) => {
-        const obj:vehicleRuleType  = {
+        const vehicleObj:vehicleRuleType  = {
             addressLine1: '',
             city: formData.city,
             state: formData.state,
@@ -111,7 +111,7 @@ const AddVehicleRule: React.FC<AddVehicleRuleProps> = () => {
             status: vehicleStatusList.filter((obj) => obj.value === formData.activeInactiveInd)[0],
             product: getFilteredProductsFromMainList(formData.vehicleRuleProducts, productNameList)
         };
-        setInitialFormikValues(obj);
+        setInitialFormikValues(vehicleObj);
     };
 
     const onGetVehicleRuleSuccess = (response: any) => {

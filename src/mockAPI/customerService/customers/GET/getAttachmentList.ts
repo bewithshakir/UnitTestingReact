@@ -1,28 +1,81 @@
-import { DefaultRequestBody, ResponseComposition, RestContext } from "msw";
+import {
+  DefaultRequestBody,
+  PathParams,
+  ResponseComposition,
+  RestContext,
+  RestRequest,
+} from 'msw';
 
-const getAttachmentListHandler = (res: ResponseComposition<DefaultRequestBody>, ctx: RestContext) =>
-    res(
-        ctx.status(200),
-        ctx.json({
-            data: {
-                pagination: {
-                    limit: 15,
-                    offset: 0,
-                    totalCount: 1,
-                },
-                customerDocuments: [
-                    {
-                        "customerDocumentId": "95a6c816-05bd-4a6e-b2c5-bcf4b271b8f0",
-                        "customerId": "045b08e9-5147-42dd-a8ed-0c6e01287189",
-                        "documentName": "sample.pdf",
-                        "documentFormat": "pdf",
-                        "dateAdded": "2022-01-17T06:17:18.312Z",
-                        "uploadedBy": "Abc",
-                        "uploadedIn": "customerContract"
-                    },
-                ],
+const customerId = '167fd7be-c20e-412a-bac0-502672a055d6';
+const uploadedByName = 'Dinesh Chakkravarthi';
+
+const getAttachmentListHandler = (
+  req: RestRequest<never, PathParams>,
+  res: ResponseComposition<DefaultRequestBody>,
+  ctx: RestContext
+) => {
+  const search = req.url.searchParams.get('search');
+  if (search) {
+    // attachment Search
+    return res(
+      ctx.status(200),
+      ctx.json({
+        data: {
+          pagination: {
+            totalCount: 1,
+            limit: 15,
+            offset: 0,
+          },
+          customerDocuments: [
+            {
+              customerDocumentId: '39d6f8b5-a721-4a8d-b13a-277468ed78de',
+              customerId: customerId,
+              documentName: 'sample.pdf',
+              documentFormat: 'pdf',
+              dateAdded: '2022-04-07T07:31:47.470Z',
+              uploadedBy: uploadedByName,
+              uploadedIn: 'Attachments',
             },
-            error: null
-        })
+          ],
+        },
+        error: null,
+      })
     );
+  }
+  // entire list
+  return res(
+    ctx.status(200),
+    ctx.json({
+      data: {
+        pagination: {
+          totalCount: 1,
+          limit: 15,
+          offset: 0,
+        },
+        customerDocuments: [
+          {
+            customerDocumentId: '39d6f8b5-a721-4a8d-b13a-277468ed78de',
+            customerId: customerId,
+            documentName: 'sample.pdf',
+            documentFormat: 'pdf',
+            dateAdded: '2022-04-07T07:31:47.470Z',
+            uploadedBy: uploadedByName,
+            uploadedIn: 'Attachments',
+          },
+          {
+            customerDocumentId: 'afc5dbed-fe20-411f-93bf-0ba20dbb5ebe',
+            customerId: customerId,
+            documentName: 'Sprint 13.xlsx',
+            documentFormat: 'xlsx',
+            dateAdded: '2022-03-10T13:42:02.764Z',
+            uploadedBy: uploadedByName,
+            uploadedIn: 'Add Customer',
+          },
+        ],
+      },
+      error: null,
+    })
+  );
+};
+
 export default getAttachmentListHandler;

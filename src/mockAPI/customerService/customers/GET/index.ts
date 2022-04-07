@@ -1,14 +1,14 @@
 import { rest } from "msw";
 import getUserDSPDropdownHandler from "./getUserDSPDropdown";
 import getCustomerList from './getCustomerList';
-import getAttachmentList from './getAttachmentList';
+import getAttachmentListHandler from './getAttachmentList';
 import getDSPList from './getDSPList';
 
 export const getCustomerHandler = () => {
     return rest.get('*/api/customer-service/customers*', (req, res, ctx) => {
-        if (Object.values(req.params)[1].includes('/files')) {
-            // User Access Permission List
-            return getAttachmentList(res, ctx);
+     if (Object.values(req.params)[1].includes('/files')) {
+            // Attachment List
+            return getAttachmentListHandler(req, res, ctx);
         }
         else if (Object.values(req.params)[1].includes('/dsps')) {
             const skipPagination = req.url.searchParams.get('skipPagination');
