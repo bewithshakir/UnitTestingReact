@@ -44,15 +44,12 @@ import { editVehicleRule } from '../mockAPI/vehicleService/vehicleRules/PUT';
 import { getVehicleColorsHandler } from '../mockAPI/vehicleService/vehicleColors/GET';
 import { getVehicleTypeHandler } from '../mockAPI/vehicleService/vehicleTypes/GET';
 import { addVehicleAssetHandler } from '../mockAPI/vehicleService/vehicleAsset/POST';
-<<<<<<< HEAD
 import { getAttachmentList } from '../mockAPI/attachmentService/GET';
-=======
 import { postCustomersHandler } from '../mockAPI/customerService/customers/POST';
 import { putCustomersHandler } from '../mockAPI/customerService/customers/PUT';
 import { getAssetTypeHandler } from '../mockAPI/productService/assets/GET';
 import { getCustomerLotHandler } from '../mockAPI/customerService/lots/GET';
 import { editCustomerLotHandler } from '../mockAPI/customerService/lots/PUT';
->>>>>>> 8ef088f6a62f64eb56c6965bd8481972cb6d23ad
 
 export const handlers = [
     getCustomerContactTypesHandler(),

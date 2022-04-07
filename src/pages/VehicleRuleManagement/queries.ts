@@ -30,7 +30,14 @@ const getVehicleRuleManagementList = async (pageParam: number, searchTerm: strin
 };
 
 export const vehicleRuleManagementListSet = (query: string, sortOrder: any, filterParams: { [key: string]: string[] }) => {
-    return useInfiniteQuery(["getVehicleRuleManagementList", query, sortOrder, filterParams], ({ pageParam = 0 }) => getVehicleRuleManagementList(pageParam, query, sortOrder, filterParams), {
+    return useInfiniteQuery(["getVehicleRuleManagementList", 
+    query, 
+    sortOrder, 
+    filterParams
+], ({ pageParam = 0 }) => getVehicleRuleManagementList(pageParam, 
+    query, 
+    sortOrder, 
+    filterParams), {
         getNextPageParam: (lastGroup: any) => {
             if (lastGroup.data.pagination.offset < lastGroup.data.pagination.totalCount) {
                 return lastGroup.data.pagination.offset + 15;
