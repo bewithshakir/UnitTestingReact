@@ -44,7 +44,6 @@ import { editVehicleRule } from '../mockAPI/vehicleService/vehicleRules/PUT';
 import { getVehicleColorsHandler } from '../mockAPI/vehicleService/vehicleColors/GET';
 import { getVehicleTypeHandler } from '../mockAPI/vehicleService/vehicleTypes/GET';
 import { addVehicleAssetHandler } from '../mockAPI/vehicleService/vehicleAsset/POST';
-import { getAttachmentList } from '../mockAPI/customerService/customers/GET/getAttachmentList';
 import { postCustomersHandler } from '../mockAPI/customerService/customers/POST';
 import { putCustomersHandler } from '../mockAPI/customerService/customers/PUT';
 import { getAssetTypeHandler } from '../mockAPI/productService/assets/GET';
@@ -69,7 +68,6 @@ export const handlers = [
 
     getCustomerLotHandler(),
     editCustomerLotHandler(),
-    getAttachmentList(),
 
     getOPISCitiesHandler(),
     getFormattedAddressHandler(),

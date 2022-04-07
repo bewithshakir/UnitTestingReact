@@ -26,19 +26,17 @@ describe('get data on load in Landing Page', () => {
         const result = renderWithClient(<LandingPage version="Breadcrumbs-Single" />);
         await waitFor(() => {
             expect(result.getByText(/sample.pdf/i)).toBeInTheDocument();
-            expect(result.getByText(/Dinesh Chakkravarthi/i)).toBeInTheDocument();
+            expect(result.getByText(/sprint/i)).toBeInTheDocument();
         });
     });
 });
 
 
-function getAllElements (component: any) {
+function getAllElements(component: any) {
     const searchInput = component.container.querySelector('#SearchInput') as HTMLInputElement;
-    
-
-    return { 
-            searchInput
-        };
+    return {
+        searchInput
+    };
 }
 
 describe('search attachment name in attachment list', () => {
@@ -59,7 +57,7 @@ describe('search attachment name in attachment list', () => {
             rest.get('*', (req, res, ctx) => {
                 return res(
                     ctx.status(200),
-                    ctx.json({"data":{"pagination":{"totalCount":0,"limit":15,"offset":0},"customerDocuments":[]},"error":null})
+                    ctx.json({ "data": { "pagination": { "totalCount": 0, "limit": 15, "offset": 0 }, "customerDocuments": [] }, "error": null })
                 );
             })
         );

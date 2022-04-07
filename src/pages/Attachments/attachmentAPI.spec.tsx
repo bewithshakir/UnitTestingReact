@@ -6,7 +6,7 @@ import { rest } from 'msw';
 
 describe('useSearch Attachment for useInfiniteQuery method ', () => {
     it('successfully returns data', async () => {
-        const { result, waitFor } = renderHook(() => useAttachmentList('Sprint', { sortBy: '', order:'' },  { abc: [''] }, '167fd7be-c20e-412a-bac0-502672a055d6'), {
+        const { result, waitFor } = renderHook(() => useAttachmentList('Sample', { sortBy: '', order:'' },  { abc: [''] }, '167fd7be-c20e-412a-bac0-502672a055d6'), {
             wrapper: createWrapper()
         });
         act(() => {
