@@ -2,24 +2,16 @@ import { render } from '@testing-library/react';
 import * as React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { getOPISCitiesHandler } from '../pages/OPISCity/mockApi/handlerOPISCityLandingPage';
-import { getAllParkingLotsHandler } from '../pages/ParkingLotsManagement/mockApi/handlerAllParkingLotsLandingPage';
-import { editDspHandler } from "../pages/DspLanding/AddDSP/mockApi/handlerAddDsp";
 import { getFormattedAddressHandler, getGoogleAddressHandler } from "../components/UIComponents/GoogleAddressComponent/mockApi/googleAddressAutoHandler";
 import {
-    getProductByLotHandler,
-    editProductHandler,
     getTaxExemptionsListHandler,
     getServedCitiesHandler,
     getSupplierPricesHandler,
     getSupplierBrandProductsHandler,
-    getOpisRackProductDetailsHandler
 } from '../pages/ProductManagement/mockApi/handler';
 import { getFuelTaxList, getFuelTaxProductsList } from '../pages/Tax/mockApi/handler';
 import {
     getDelFeeSchduleHandler,
-    getProductTypeHandler,
-    getAssetTypeHandler,
-    getLotProductNamesHandler,
     addFeeDetailsHandler,
     getFeeDetailsHandler,
     editFeeDetailsHandler
@@ -42,7 +34,6 @@ import { putProductHandler } from '../mockAPI/productService/products/PUT';
 import { getUserHandler } from '../mockAPI/userService/users/GET';
 import { postUserHandler } from '../mockAPI/userService/users/POST';
 import { putUserHandler } from '../mockAPI/userService/users/PUT';
-import { getAllLotFilterOptions } from '../components/UIComponents/ConfirmationDialog/inputComponents/mockApi/handlerLotFilter';
 import { getCustomerContactTypesHandler } from '../mockAPI/customerService/contactTypes/GET';
 import { getConfigServiceTimezones } from '../mockAPI/configService/timeZones/GET';
 import { getConfigServiceDeliveryFreq } from '../mockAPI/configService/deliveryFrequencies/GET';
@@ -53,11 +44,18 @@ import { editVehicleRule } from '../mockAPI/vehicleService/vehicleRules/PUT';
 import { getVehicleColorsHandler } from '../mockAPI/vehicleService/vehicleColors/GET';
 import { getVehicleTypeHandler } from '../mockAPI/vehicleService/vehicleTypes/GET';
 import { addVehicleAssetHandler } from '../mockAPI/vehicleService/vehicleAsset/POST';
+<<<<<<< HEAD
 import { getAttachmentList } from '../mockAPI/attachmentService/GET';
+=======
+import { postCustomersHandler } from '../mockAPI/customerService/customers/POST';
+import { putCustomersHandler } from '../mockAPI/customerService/customers/PUT';
+import { getAssetTypeHandler } from '../mockAPI/productService/assets/GET';
+import { getCustomerLotHandler } from '../mockAPI/customerService/lots/GET';
+import { editCustomerLotHandler } from '../mockAPI/customerService/lots/PUT';
+>>>>>>> 8ef088f6a62f64eb56c6965bd8481972cb6d23ad
 
 export const handlers = [
     getCustomerContactTypesHandler(),
-    getAllLotFilterOptions(),
     getConfigServiceTimezones(),
     getConfigServiceDeliveryFreq(),
     getConfigServiceDays(),
@@ -70,21 +68,19 @@ export const handlers = [
     getProductHandler(),
     postProductHandler(),
     putProductHandler(),
+    getAssetTypeHandler(),
+
+    getCustomerLotHandler(),
+    editCustomerLotHandler(),
+
     getOPISCitiesHandler(),
-    getProductByLotHandler(),
-    getAllParkingLotsHandler(),
     getFormattedAddressHandler(),
     getGoogleAddressHandler(),
     addVehicleRule(),
     rightInfoFilterHandler(),
-    editDspHandler(),
-    editProductHandler(),
     getFuelTaxList(),
     getFuelTaxProductsList(),
     getDelFeeSchduleHandler(),
-    getProductTypeHandler(),
-    getAssetTypeHandler(),
-    getLotProductNamesHandler(),
     addFeeDetailsHandler(),
     getFeeDetailsHandler(),
     editFeeDetailsHandler(),
@@ -104,11 +100,12 @@ export const handlers = [
     addTruckColorHandler(),
     addEditTruckHandler(),
     useGetEditTruckDetails(),
-    getOpisRackProductDetailsHandler(),
     getUserHandler(),
     postUserHandler(),
     putUserHandler(),
     getCustomerHandler(),
+    postCustomersHandler(),
+    putCustomersHandler(),
     getVehicleDetails(),
     editVehicleRule(),
     getAttachmentList()

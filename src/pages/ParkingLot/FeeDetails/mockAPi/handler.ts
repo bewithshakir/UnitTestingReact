@@ -1,4 +1,4 @@
-import { rest } from "msw";
+import { rest, DefaultRequestBody, ResponseComposition, RestContext, RestRequest } from "msw";
 import { addEditFeeResponse, feeDetailsResp } from "./sampleResponse";
 
 export const getDelFeeSchduleHandler = () => {
@@ -33,27 +33,6 @@ export const getDelFeeSchduleHandler = () => {
         );
     });
 };
-
-export const getProductTypeHandler = () => {
-    return rest.get('*/api/customer-service/lots/*', (req, res, ctx) => {
-        return res(
-            ctx.status(200),
-            ctx.json({
-                "data": {
-                    "lotProductTypes": [
-                        {
-                            "productGroupCd": "bfd5cdb8-e0a5-428a-abfc-9d5c9185fe81",
-                            "productGroupNm": "Fuel",
-                            "activeInactiveInd": "Y"
-                        }
-                    ]
-                },
-                "error": null
-            })
-        );
-    });
-};
-
 
 export const getAssetTypeHandler = () => {
     return rest.get('*/api/product-service/assets', (req, res, ctx) => {
@@ -160,94 +139,27 @@ export const getAssetTypeHandler = () => {
     });
 };
 
-
-export const getLotProductNamesHandler = () => {
-    return rest.get('*/api/customer-service/lots/*', (req, res, ctx) => {
-        return res(
-            ctx.status(200),
-            ctx.json({
-                "data": {
-                    "pagination": {},
-                    "lotProducts": [
-                        {
-                            "applicableProductId": "cede7489-0258-4e33-b6c7-78e4a1c7e43d",
-                            "deliveryLocationId": "39ac4e30-4119-4b31-b1fd-ae31a0e0eccc",
-                            "productId": "8493c923-8bc5-4f9e-889a-1bc35303e797",
-                            "productNm": "regular-Custom_6",
-                            "productColor": {
-                                "productIconCd": "3b427583-7507-406e-815b-30f3033ceac0",
-                                "productIconNm": "Green",
-                                "productIconHexCode": "#008443",
-                                "activeInactiveInd": "Y"
-                            },
-                            "pricingModel": {
-                                "pricingModelCd": "d3e2659d-0b4b-403a-9ccb-9a35649d4957",
-                                "pricingModelNm": "Custom",
-                                "countryCd": "us",
-                                "activeInactiveIndicator": "Y"
-                            },
-                            "activeInactiveInd": "Y"
-                        },
-                        {
-                            "applicableProductId": "75fdf205-d9b7-4fc7-a3ae-517c133249e3",
-                            "deliveryLocationId": "39ac4e30-4119-4b31-b1fd-ae31a0e0eccc",
-                            "productId": "8493c923-8bc5-4f9e-889a-1bc35303e797",
-                            "productNm": "regular-Custom_8",
-                            "productColor": {
-                                "productIconCd": "3b427583-7507-406e-815b-30f3033ceac0",
-                                "productIconNm": "Green",
-                                "productIconHexCode": "#008443",
-                                "activeInactiveInd": "Y"
-                            },
-                            "pricingModel": {
-                                "pricingModelCd": "d3e2659d-0b4b-403a-9ccb-9a35649d4957",
-                                "pricingModelNm": "Custom",
-                                "countryCd": "us",
-                                "activeInactiveIndicator": "Y"
-                            },
-                            "activeInactiveInd": "Y"
-                        },
-                        {
-                            "applicableProductId": "d1c5c7b0-19eb-4db4-85ff-7481a5e1a4c5",
-                            "deliveryLocationId": "39ac4e30-4119-4b31-b1fd-ae31a0e0eccc",
-                            "productId": "8493c923-8bc5-4f9e-889a-1bc35303e797",
-                            "productNm": "regular-Custom_9",
-                            "productColor": {
-                                "productIconCd": "3b427583-7507-406e-815b-30f3033ceac0",
-                                "productIconNm": "Green",
-                                "productIconHexCode": "#008443",
-                                "activeInactiveInd": "Y"
-                            },
-                            "pricingModel": {
-                                "pricingModelCd": "d3e2659d-0b4b-403a-9ccb-9a35649d4957",
-                                "pricingModelNm": "Custom",
-                                "countryCd": "us",
-                                "activeInactiveIndicator": "Y"
-                            },
-                            "activeInactiveInd": "Y"
-                        }
-                    ]
-                },
-                "error": null
-            })
-        );
-    });
+const handleAddFeeResp = (
+    _req: RestRequest,
+    res: ResponseComposition<DefaultRequestBody>,
+    ctx: RestContext) => {
+    return res(
+        ctx.status(200),
+        ctx.json({
+            "data": addEditFeeResponse,
+            "error": null
+        })
+    );
 };
 
+const feeDetailsAPIPath = '*/api/pricing-fee-service/fees';
+
 export const addFeeDetailsHandler = () => {
-    return rest.post('*/api/pricing-fee-service/fees', (req, res, ctx) => {
-        return res(
-            ctx.status(200),
-            ctx.json({
-                "data": addEditFeeResponse,
-                "error": null
-            })
-        );
-    });
+    return rest.post(feeDetailsAPIPath, handleAddFeeResp);
 };
 
 export const getFeeDetailsHandler = () => {
-    return rest.get('*/api/pricing-fee-service/fees', (req, res, ctx) => {
+    return rest.get(feeDetailsAPIPath, (req, res, ctx) => {
         return res(
             ctx.status(200),
             ctx.json(feeDetailsResp)
@@ -257,13 +169,5 @@ export const getFeeDetailsHandler = () => {
 
 
 export const editFeeDetailsHandler = () => {
-    return rest.put('*/api/pricing-fee-service/fees', (req, res, ctx) => {
-        return res(
-            ctx.status(200),
-            ctx.json({
-                "data": addEditFeeResponse,
-                "error": null
-            })
-        );
-    });
+    return rest.put(feeDetailsAPIPath, handleAddFeeResp);
 };

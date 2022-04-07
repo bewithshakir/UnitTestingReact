@@ -11,6 +11,7 @@ import { Add } from "@mui/icons-material";
 import UserManagementModel from '../../models/UserManagementModel';
 import { useAllUsersList } from './queries';
 import GridComponent from "../../components/UIComponents/DataGird/grid.component";
+import { RightInfoPanel } from '../../components/UIComponents/RightInfoPanel/RightInfoPanel.component';
 
 interface UsersManagementProps {
     version: string
@@ -28,12 +29,17 @@ const UserLandingPage: FC<UsersManagementProps> = memo(() => {
     const setVersion = useStore((state: HorizontalBarVersionState) => state.setVersion);
     setVersion("NavLinks");
 
+    const [filterPanelVisible, setFilterPanelVisible] = useState(false);
+    const [filterData, setFilterData] = useState<{ [key: string]: string[] }>({});
+
     const { t } = useTranslation();
     const { data, fetchNextPage, isLoading, isFetching }: any = useAllUsersList(
         searchTerm,
         sortOrder,
+        filterData
     );
 
+    
     useEffect(() => {
         if (data) {
             const list: any = [];
@@ -64,6 +70,22 @@ const UserLandingPage: FC<UsersManagementProps> = memo(() => {
         setResetTableCollaps(true);
         setSortOrder(sortOrder);
     };
+
+    // Filter Section Start
+    const handleFilterOpen = () => {
+        setFilterPanelVisible(true);
+    };
+    const getFilterParams = (filterObj: { [key: string]: string[] }) => {
+        setResetTableCollaps(true);
+        
+        setFilterData(filterObj);
+    };
+
+    const handleFilterClose = () => {
+        setFilterPanelVisible(false);
+    };
+
+    // Filter Section End
     
     return (
         <Box display="flex" mt={10} ml={8}>
@@ -73,8 +95,10 @@ const UserLandingPage: FC<UsersManagementProps> = memo(() => {
                         <Grid item pr={2.5}>
                             <Button
                                 id="usersFilter"
+                                data-testid="filter"
                                 types="filter"
                                 aria-label="dafault"
+                                onClick={handleFilterOpen}
                                 startIcon={<FilterIcon />}
                             > {t("buttons.filter")} </Button>
                         </Grid>
@@ -88,9 +112,10 @@ const UserLandingPage: FC<UsersManagementProps> = memo(() => {
                             </FormControl>
                         </Grid>
                         <Grid item>
-                            <SearchInput id="userSearch" name="searchTerm" placeholder="Search"
+                            <SearchInput id="usersSearch" name="searchTerm" placeholder={t("user.searchInfo")}
                                 value={searchTerm}
                                 delay={500}
+                                width={270}
                                 onChange={onInputChange}
                             />
                         </Grid>
@@ -125,6 +150,12 @@ const UserLandingPage: FC<UsersManagementProps> = memo(() => {
                         resetCollaps={resetTableCollaps}
                         onResetTableCollaps={setResetTableCollaps}
                         noDataMsg={t('user.nodataMsg')}
+                    />
+                    <RightInfoPanel panelType="dynamic-filter"
+                        open={filterPanelVisible} headingText={"customer-filter-panel.header.filter"}
+                        provideFilterParams={getFilterParams} onClose={handleFilterClose}
+                        fields={UserObj.FilterByFields()}
+                        storeKey={'truckOverviewFilter'}
                     />
                 </Grid>
             </Grid>

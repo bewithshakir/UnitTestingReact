@@ -14,8 +14,18 @@ export const getPropductType = (res: ResponseComposition<DefaultRequestBody>, ct
                     "productGroupCd": "222",
                     "productGroupNm": "Fuel",
                     "activeInactiveInd": "Y"
+                },
+                {
+                    activeInactiveInd: "Y",
+                    productGroupCd: "0f117f3d-02a8-4d5e-9a97-eb67a66509cf",
+                    productGroupNm: "Non-Fuel"
+                },
+                {
+                    activeInactiveInd: "Y",
+                    productGroupCd: "4af508ce-c380-4f40-a424-923188935ecf",
+                    productGroupNm: "Add-On service"
                 }
             ]
         })
     );
-}
+};

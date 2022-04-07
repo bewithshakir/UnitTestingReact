@@ -29,4 +29,12 @@
         background: var(--Lightgray_4);
         min-height: 100%;
     }
+ 
+  & .nodata{   
+    z-index: 9999;
+    height: 50%;
+    left: 50%;
+    transform: translate(-50%, 650%);
+    position: absolute;
+  } 
 }

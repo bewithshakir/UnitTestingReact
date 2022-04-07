@@ -11,6 +11,7 @@ exports[`Rendering of File Upload Component File Upload component Snapshot testi
     onDrop={[Function]}
     onFocus={[Function]}
     onKeyDown={[Function]}
+    role="button"
     tabIndex={0}
   >
     <input

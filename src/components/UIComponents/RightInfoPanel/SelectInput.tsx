@@ -4,7 +4,6 @@ import { useGetFilterData } from "../../../infrastructure/filterQuery";
 import Select from "../Select/MultiSelect";
 import SingleSelect from "../Select/SingleSelect";
 import { filterURLKey } from '../../../infrastructure/filterQuery';
-import { useCustomers } from "../../../pages/CustomerManagement/queries";
 interface ISelectInput {
     field: {
         name: string;
@@ -23,11 +22,7 @@ interface ISelectInput {
 }
 export const SelectInput: React.FC<ISelectInput> = ({ field, handleSelect, formik }) => {
     const filterResponse = useGetFilterData(field.optionUrlKey, field.customerId);
-    const customerNameData: any = useCustomers(
-        "",
-        { sortBy: "", order: "" },
-        {}
-    );
+
     const { t } = useTranslation();
     const touched = (formik.touched as any)[field.name];
     const error = (formik.errors as any)[field.name];
@@ -36,11 +31,6 @@ export const SelectInput: React.FC<ISelectInput> = ({ field, handleSelect, formi
     const getItems = useCallback(() => {
         if (field.singleSelect && field.optionUrlKey === "truckOverviewFilter") {
             return field['options'];
-        }
-        if (field.optionAPIResponseKey === "customernames"
-            && field.optionUrlKey === "parkingLotManagementFilter" &&
-            customerNameData?.data?.pages[0]?.data?.customers) {
-            return customerNameData?.data?.pages[0]?.data?.customers.map((obj: any) => ({ label: obj.customerName, value: obj.customerId }));
         }
         if (filterResponse.status === 'success' && filterResponse.data?.data) {
             return filterResponse.data.data[field.optionAPIResponseKey]?.map((s: any) => {

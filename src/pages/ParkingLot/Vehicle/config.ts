@@ -34,6 +34,12 @@ export interface VehicleAssetFormField {
     make: string
     model: string
     color: SelectProps
+
+    /** Asset section */
+    assetType: SelectProps
+    assetId: string
+    assetNote: string
+
     fuelProductName: SelectProps
     fuelCustomProductName: SelectProps
 
@@ -59,7 +65,13 @@ export const initialFormValues: VehicleAssetFormField = {
     year: "",
     make: "",
     model: "",
-    color: { ...emptyOption },
+    color: { label: '', value: '' },
+    /** Asset section */
+
+    assetType: { ...emptyOption },
+    assetId: "",
+    assetNote: "",
+
     fuelProductName: { ...emptyOption },
     fuelCustomProductName: { ...emptyOption },
 
@@ -101,11 +113,23 @@ export const formatSave = (customerId: string, lotId: string, formData: VehicleA
             products.push(item.value);
         });
     }
-    return {
+    const commonData = {
         isAsset: formData.isAsset ? "Y" : "N",
         customerId,
         deliveryLocationId: lotId,
         isApplyRule: formData.isApplyRule ? "Y" : "N",
+        isNonFuel: formData.isNonFuel ? "Y" : "N",
+        isAddOn: formData.isAddOn ? "Y" : "N",
+        products: products
+    };
+    const assetData: { [k: string]: any } = {
+        assetType: formData.assetType.value,
+        assetIdNo: formData.assetId
+    };
+    if (formData.assetNote) {
+        assetData.assetNotes = formData.assetNote;
+    }
+    const vehicleData = {
         vehicleType: formData.vehicleType.value,
         licenceNo: formData.licenceNo,
         vinNo: formData.vin,
@@ -114,8 +138,10 @@ export const formatSave = (customerId: string, lotId: string, formData: VehicleA
         model: formData.model,
         vehicleColor: formData.color.value,
         isFuel: "Y",
-        isNonFuel: formData.isNonFuel ? "Y" : "N",
-        isAddOn: formData.isAddOn ? "Y" : "N",
-        products: products
+    };
+
+    return {
+        ...commonData,
+        ...(formData.isAsset ? assetData : vehicleData)
     };
 };

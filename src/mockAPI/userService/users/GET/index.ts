@@ -8,6 +8,7 @@ import getUserList from './getUserList';
 export const getUserHandler = () => {
     return rest.get('*/api/user-service/users*', (req, res, ctx) => {
         const params = req.params;
+
         if (Object.values(params)[1] === '/user-groups') {
             // User Group Types select
             return getUserGroups(res, ctx);

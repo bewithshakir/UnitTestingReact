@@ -59,10 +59,11 @@ describe('render edit vehicle form on edit vehicle page', () => {
         it('enable save button when all mendatory fields are filled', async () => {
             const { yearEle, saveBtn } = getAllElements(result);
             fireEvent.change(yearEle, { target: { value: '2016' } });
+
             await waitFor(() => {
                 expect(saveBtn).toBeEnabled();
-                userEvent.click(saveBtn);
             });
+            userEvent.click(saveBtn);
             waitFor(() => {
                 expect(result.getByText('Data updated successfully.')).toBeInTheDocument();
             });
