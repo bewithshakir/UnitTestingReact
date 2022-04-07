@@ -6,7 +6,6 @@ import { pageDataLimit } from '../../utils/constants';
 
 
 const getAttachmentList = async (pageParam: number, searchTerm: string, sortOrder: { sortBy: string, order: string }, filterParams: { [key: string]: string[] }, customerId: string) => {
-    console.warn("Search term->", searchTerm);
     const query = new URLSearchParams();
     if (searchTerm) {
         query.append("search", searchTerm);
@@ -32,8 +31,8 @@ const getAttachmentList = async (pageParam: number, searchTerm: string, sortOrde
     return data;
 };
 
-export const useAttachmentList = (query: string, sortOrder: { sortBy: string, order: string }, filterParams: { [key: string]: string[] }, customerId: string) => {
-    return useInfiniteQuery(["getAttachmentList", query, sortOrder, filterParams], ({ pageParam = 0 }) => getAttachmentList(pageParam, query, sortOrder, filterParams, customerId), {
+export const useAttachmentList = (searchTerm: string, sortOrder: { sortBy: string, order: string }, filterParams: { [key: string]: string[] }, customerId: string) => {
+    return useInfiniteQuery(["getAttachmentList", searchTerm, sortOrder, filterParams], ({ pageParam = 0 }) => getAttachmentList(pageParam, searchTerm, sortOrder, filterParams, customerId), {
         getNextPageParam: (lastGroup: any) => {
             if (lastGroup.data.pagination.offset < lastGroup.data.pagination.totalCount) {
                 return lastGroup.data.pagination.offset + pageDataLimit;

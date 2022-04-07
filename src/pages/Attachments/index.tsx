@@ -76,8 +76,7 @@ const LandingPage: React.FC<props> = () => {
     const getFilterParams = (filterObj: { [key: string]: string[] }) => {
         setFilterData(filterObj);
     };
-
-    console.warn("check->", searchTerm);
+    
     return (
         <Box display='flex' className='attachments'>
             <Grid container pr={8} className='main-area'>
