@@ -260,6 +260,7 @@
     "sortBy": {
       "users_atoz": "Nombre de usuario de la A a la Z",
       "users_ztoa": "Nombre de usuario de la Z a la A"
-    }
+    },
+    "searchInfo": "Nombre de usuario/cliente/DSP"
   }
 }
