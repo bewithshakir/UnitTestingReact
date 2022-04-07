@@ -1,28 +1,34 @@
-import { DefaultRequestBody, ResponseComposition, RestContext } from "msw";
+import { rest } from "msw";
 
-const getAttachmentListHandler = (res: ResponseComposition<DefaultRequestBody>, ctx: RestContext) =>
-    res(
-        ctx.status(200),
-        ctx.json({
-            data: {
-                pagination: {
-                    limit: 15,
-                    offset: 0,
-                    totalCount: 1,
-                },
-                customerDocuments: [
+export const getAttachmentList = () => {
+    return rest.get('*/api/customer-service/customers/167fd7be-c20e-412a-bac0-502672a055d6/files*', (req, res, ctx) => {
+        return res(
+            ctx.status(200),
+            ctx.json({
+                "data": {
+                  "pagination": {
+                    "totalCount": 1,
+                    "limit": 15,
+                    "offset": 0
+                  },
+                  "customerDocuments": [
                     {
-                        "customerDocumentId": "95a6c816-05bd-4a6e-b2c5-bcf4b271b8f0",
-                        "customerId": "045b08e9-5147-42dd-a8ed-0c6e01287189",
-                        "documentName": "sample.pdf",
-                        "documentFormat": "pdf",
-                        "dateAdded": "2022-01-17T06:17:18.312Z",
-                        "uploadedBy": "Abc",
-                        "uploadedIn": "customerContract"
-                    },
-                ],
-            },
-            error: null
-        })
-    );
-export default getAttachmentListHandler;
+                      "customerDocumentId": "39d6f8b5-a721-4a8d-b13a-277468ed78de",
+                      "customerId": "167fd7be-c20e-412a-bac0-502672a055d6",
+                      "documentName": "sample.pdf",
+                      "documentFormat": "pdf",
+                      "dateAdded": "2022-04-07T07:31:47.470Z",
+                      "uploadedBy": "Dinesh Chakkravarthi",
+                      "uploadedIn": "Attachments"
+                    }
+                  ]
+                },
+                "error": null
+              })
+        );
+    });
+};
+
+
+
+

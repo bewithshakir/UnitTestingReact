@@ -26,7 +26,7 @@ describe('get data on load in Landing Page', () => {
         const result = renderWithClient(<LandingPage version="Breadcrumbs-Single" />);
         await waitFor(() => {
             expect(result.getByText(/sample.pdf/i)).toBeInTheDocument();
-            expect(result.getByText(/Abc/i)).toBeInTheDocument();
+            expect(result.getByText(/Dinesh Chakkravarthi/i)).toBeInTheDocument();
         });
     });
 });
