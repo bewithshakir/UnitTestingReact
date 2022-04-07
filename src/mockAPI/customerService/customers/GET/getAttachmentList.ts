@@ -6,6 +6,9 @@ import {
   RestRequest,
 } from 'msw';
 
+const customerId = '167fd7be-c20e-412a-bac0-502672a055d6';
+const uploadedByName = 'Dinesh Chakkravarthi';
+
 const getAttachmentListHandler = (
   req: RestRequest<never, PathParams>,
   res: ResponseComposition<DefaultRequestBody>,
@@ -26,11 +29,11 @@ const getAttachmentListHandler = (
           customerDocuments: [
             {
               customerDocumentId: '39d6f8b5-a721-4a8d-b13a-277468ed78de',
-              customerId: '167fd7be-c20e-412a-bac0-502672a055d6',
+              customerId: customerId,
               documentName: 'sample.pdf',
               documentFormat: 'pdf',
               dateAdded: '2022-04-07T07:31:47.470Z',
-              uploadedBy: 'Dinesh Chakkravarthi',
+              uploadedBy: uploadedByName,
               uploadedIn: 'Attachments',
             },
           ],
@@ -52,20 +55,20 @@ const getAttachmentListHandler = (
         customerDocuments: [
           {
             customerDocumentId: '39d6f8b5-a721-4a8d-b13a-277468ed78de',
-            customerId: '167fd7be-c20e-412a-bac0-502672a055d6',
+            customerId: customerId,
             documentName: 'sample.pdf',
             documentFormat: 'pdf',
             dateAdded: '2022-04-07T07:31:47.470Z',
-            uploadedBy: 'Dinesh Chakkravarthi',
+            uploadedBy: uploadedByName,
             uploadedIn: 'Attachments',
           },
           {
             customerDocumentId: 'afc5dbed-fe20-411f-93bf-0ba20dbb5ebe',
-            customerId: '167fd7be-c20e-412a-bac0-502672a055d6',
+            customerId: customerId,
             documentName: 'Sprint 13.xlsx',
             documentFormat: 'xlsx',
             dateAdded: '2022-03-10T13:42:02.764Z',
-            uploadedBy: 'Dinesh Chakkravarthi',
+            uploadedBy: uploadedByName,
             uploadedIn: 'Add Customer',
           },
         ],
