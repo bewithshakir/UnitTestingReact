@@ -4,6 +4,57 @@ const getUserListHandler = (req: RestRequest<never, PathParams>, res: ResponseCo
 
     const customerId = req.url.searchParams.get('customerId');
     const sortBy = req.url.searchParams.get('sortBy');
+    const search = req.url.searchParams.get('search');
+    if (search?.trim()) {
+        if(search !== "Users Data") {
+          return res(
+            ctx.status(200),
+            ctx.json({
+                data: {
+                    pagination: {
+                        "totalCount": 1,
+                        "limit": 10,
+                        "offset": 0
+                    },
+                    users: [
+                        {
+                            "userId": "ID-09890",
+                            "shellDigitalAccountId": "ID-Data123",
+                            "firstNm": "USER First Name Search",
+                            "lastNm": "USER Last Name Search",
+                            "email": "search@shell.com",
+                            "phone": null,
+                            "customerId": "ID-XYZ-4536",
+                            "dspId": "ID-XYZ-5600",
+                            "createdDtm": "2022-03-21T10:41:11.603Z",
+                            "userGroup": [
+                                {
+                                    "userGroupCd": "4fva423054-fc0d-4d60-88fd-dab70c7611b9",
+                                    "userGroupNm": "DSP Search User"
+                                }
+                            ],
+                            "fullName": 'Search User'
+                        }
+                    ]
+                }
+            })
+          )
+        } else {
+          return res(
+            ctx.status(200),
+            ctx.json({
+                data: {
+                    pagination: {
+                        "totalCount": 1,
+                        "limit": 10,
+                        "offset": 0
+                    },
+                    users: []
+                }
+            })
+          )
+        }
+    } else {   
     return res(
         ctx.status(200),
         ctx.json({
@@ -130,6 +181,7 @@ const getUserListHandler = (req: RestRequest<never, PathParams>, res: ResponseCo
             "error": null
         })
     );
+ }
 }
 
 export default getUserListHandler;

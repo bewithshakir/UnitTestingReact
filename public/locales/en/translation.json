@@ -218,7 +218,8 @@
     "sortBy": {
       "users_atoz": "User Name A-Z",
       "users_ztoa": "User Name Z-A"
-    }
+    },
+    "searchInfo": "User/Customer/DSP Name"
   },
   "addUser": {
     "title": "Add User",

@@ -88,9 +88,10 @@ const UserLandingPage: FC<UsersManagementProps> = memo(() => {
                             </FormControl>
                         </Grid>
                         <Grid item>
-                            <SearchInput id="userSearch" name="searchTerm" placeholder="Search"
+                            <SearchInput id="usersSearch" name="searchTerm" placeholder={t("user.searchInfo")}
                                 value={searchTerm}
                                 delay={500}
+                                width={270}
                                 onChange={onInputChange}
                             />
                         </Grid>

@@ -2,6 +2,7 @@ import { waitFor,screen } from '@testing-library/react';
 import { renderWithClient } from '../../tests/utils';
 import UserLandingPage from './index';
 import userEvent from '@testing-library/user-event';
+import { fireEvent } from '@testing-library/react';
 
 describe('Rendering of User Landing Component', () => {
     it('check user landing page DOM', async () => {
@@ -9,7 +10,7 @@ describe('Rendering of User Landing Component', () => {
         await waitFor(() => {
             expect(result.container.querySelector('#usersFilter')).toBeInTheDocument();
             expect(result.container.querySelector('#userSort')).toBeInTheDocument();
-            expect(result.container.querySelector('#userSearch')).toBeInTheDocument();
+            expect(result.container.querySelector('#usersSearch')).toBeInTheDocument();
         });
     });
 });
@@ -25,7 +26,8 @@ describe('tests User landing page', () => {
 
 function getAllElements (component: any) {
     const sortBy = component.container.querySelector('#userSort');
-    return { sortBy };
+    const searchElem = component.container.querySelector('#usersSearch') as HTMLInputElement;
+    return { sortBy, searchElem };
 }
 
 describe('sortby user name on users landing page', () => {
@@ -48,5 +50,24 @@ describe('sortby user name on users landing page', () => {
         await waitFor(() => {
             expect(result.getByText(/dsp@shell.com/i)).toBeInTheDocument();
         });
+    });
+});
+
+it('search truck parking lot with success', async () => {
+    const result = renderWithClient(<UserLandingPage version="Breadcrumbs-Single" />);
+    const { searchElem } = getAllElements(result);
+    fireEvent.change(searchElem, { target: { value: 'Users Info Data' } });
+
+    await waitFor(() => {
+        expect(result.getByText(/Victor/i)).toBeInTheDocument();
+    });
+});
+it('search truck parking lot with no data found', async () => {
+    const result = renderWithClient(<UserLandingPage version="Breadcrumbs-Single" />);
+    const { searchElem } = getAllElements(result);
+    fireEvent.change(searchElem, { target: { value: 'Users Data' } });
+
+    await waitFor(() => {
+        expect(result.getByText(/No Results Found/i)).toBeInTheDocument();
     });
 });
