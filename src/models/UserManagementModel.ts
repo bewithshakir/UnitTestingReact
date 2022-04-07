@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { headerObj } from '../components/UIComponents/DataGird/grid.component';
+import { IDynamicFilterProps } from '../components/UIComponents/RightInfoPanel/DynamicFilterContent.component';
 
 export const ACTION_TYPES = {
     EDIT: 'edit',
@@ -74,5 +75,28 @@ export default class UsersModel {
                 action: ACTION_TYPES.DELETE
             },
         ];
+    }
+
+    FilterByFields (): IDynamicFilterProps['fields'] {
+        return (
+            [
+                { 
+                    name: 'customerName', 
+                    label: 'filterForm.customerName', 
+                    fieldType: 'select', 
+                    optionUrlKey: 'custUserFilter', 
+                    optionAPIResponseKey: 'customers', 
+                    initialValue: [] 
+                },
+                { 
+                    name: 'userGroupName', 
+                    label: 'filterForm.userGroup', 
+                    fieldType: 'select',
+                    optionUrlKey: 'custUserFilter', 
+                    optionAPIResponseKey: 'userGroups', 
+                    initialValue: [] 
+                },
+            ]
+        );
     }
 }

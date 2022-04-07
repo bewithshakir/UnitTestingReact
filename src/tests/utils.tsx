@@ -2,7 +2,6 @@ import { render } from '@testing-library/react';
 import * as React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { getOPISCitiesHandler } from '../pages/OPISCity/mockApi/handlerOPISCityLandingPage';
-import { editDspHandler } from "../pages/DspLanding/AddDSP/mockApi/handlerAddDsp";
 import { getFormattedAddressHandler, getGoogleAddressHandler } from "../components/UIComponents/GoogleAddressComponent/mockApi/googleAddressAutoHandler";
 import {
     getTaxExemptionsListHandler,
@@ -45,6 +44,8 @@ import { editVehicleRule } from '../mockAPI/vehicleService/vehicleRules/PUT';
 import { getVehicleColorsHandler } from '../mockAPI/vehicleService/vehicleColors/GET';
 import { getVehicleTypeHandler } from '../mockAPI/vehicleService/vehicleTypes/GET';
 import { addVehicleAssetHandler } from '../mockAPI/vehicleService/vehicleAsset/POST';
+import { postCustomersHandler } from '../mockAPI/customerService/customers/POST';
+import { putCustomersHandler } from '../mockAPI/customerService/customers/PUT';
 import { getAssetTypeHandler } from '../mockAPI/productService/assets/GET';
 import { getCustomerLotHandler } from '../mockAPI/customerService/lots/GET';
 import { editCustomerLotHandler } from '../mockAPI/customerService/lots/PUT';
@@ -73,7 +74,6 @@ export const handlers = [
     getGoogleAddressHandler(),
     addVehicleRule(),
     rightInfoFilterHandler(),
-    editDspHandler(),
     getFuelTaxList(),
     getFuelTaxProductsList(),
     getDelFeeSchduleHandler(),
@@ -100,6 +100,8 @@ export const handlers = [
     postUserHandler(),
     putUserHandler(),
     getCustomerHandler(),
+    postCustomersHandler(),
+    putCustomersHandler(),
     getVehicleDetails(),
     editVehicleRule()
 ];
